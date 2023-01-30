@@ -14,7 +14,7 @@ ECS instance stop induces stress on an AWS ECS cluster. It derives the instance 
 <details>
 <summary>View fault usage</summary>
 <div>
-EC2 instance stop breaks the agent that manages the task container on ECS cluster, thereby impacting its delivery. Killing the EC2 instance disrupts the performance of the task container. This fault helps determine the resilience of applications when an EC2 instance unexpectedly stops.
+EC2 instance stop breaks the agent that manages the task container on ECS cluster, thereby impacting its delivery. Killing the EC2 instance disrupts the performance of the task container.
 </div>
 </details>
 

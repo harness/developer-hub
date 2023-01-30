@@ -17,7 +17,7 @@ ECS container network latency disrupts the state of infrastructure resources. It
 <details>
 <summary>View fault usage</summary>
 <div>
-This degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
+This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
 This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
 This can also be resolved by highlighting the degradation using notifications (or alerts).
 It also determines the impact of the fault on the microservice. 

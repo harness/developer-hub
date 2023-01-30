@@ -12,6 +12,8 @@ VMware IO stress causes disk stress on the target VMware VMs. It aims to verify 
 <summary>View the uses of the fault</summary>
 <div>
 This fault helps determine how resilient an application is to unexpected spikes in resources. It determines how well an application handles unexpected stress at a given point in time.
+It simulates slower disk operations by the application and nosiy neighbour problems by hogging the disk bandwidth. It also verifies the disk performance on increasing I/O threads and varying I/O block sizes.
+It checks if the application functions under high disk latency conditions, when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
 </div>
 </details>
 

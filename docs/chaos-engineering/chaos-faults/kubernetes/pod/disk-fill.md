@@ -15,7 +15,7 @@ Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by fill
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions.
+This fault tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions. It simulates the filled (data) mount points, verifies file system performance, thin-provisioning support, and space reclamation (UNMAP) capabilities on storage. 
 </div>
 </details>
 

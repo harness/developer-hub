@@ -15,7 +15,8 @@ Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on 
 <details>
 <summary>View fault usage</summary>
 <div>
-It can test the application's resilience to lossy/flaky HTTP connection.
+It can test the application's resilience to lossy/flaky HTTP connection. It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
+
 </div>
 </details>
 

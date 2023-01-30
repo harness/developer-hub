@@ -13,7 +13,7 @@ EC2 HTTP reset peer injects HTTP reset on the service whose port is specified us
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 </div>
 </details>
 

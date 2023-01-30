@@ -45,7 +45,9 @@ Azure instance CPU hog disrupts the state of infrastructure resources.
 
 <accordion color="green">
     <summary>Fault usage</summary>
-This fault determines the resilience of an Azure instance when CPU resources are utilized in excess, unexpectedly. It determines how Azure scales the CPU resources to maintain the application when it is under stress. 
+This fault determines the resilience of an Azure instance and the application deployed on the instance when CPU resources are utilized in excess, unexpectedly. It determines how Azure scales the CPU resources to maintain the application when it is under stress. 
+It causes CPU stress on the Azure instance(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers).
 </accordion>
 
 </FaultDetailsCard>
@@ -82,8 +84,9 @@ Azure instance memory hog disrupts the state of infrastructure resources.
 
 
 <accordion color="green">
-    <summary>Fault usage</summary>
-    This fault determines the resilience of an Azure instance when memory resources are utilized in excess, unexpectedly. It determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
+<summary>Fault usage</summary>
+This fault determines the resilience of an Azure instance when memory resources are utilized in excess, unexpectedly. It determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
+It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills.
 </accordion>
 
 </FaultDetailsCard>
@@ -101,7 +104,7 @@ Azure instance stop powers off from an Azure instance during a specific duration
 
 <accordion color="green">
     <summary>Fault usage</summary>
-This fault determines the resilience of an application to unexpected power offs from Azure instances. It determines how the application handles the requests and how quickly it recovers from such failures. 
+This fault determines the resilience of an application to unexpected power-off of the Azure instances. It determines how the application handles the requests and how quickly it recovers from such failures.
 </accordion>
 
 </FaultDetailsCard>
@@ -137,7 +140,7 @@ Azure web app stop shuts down the application.
 
 <accordion color="green">
     <summary>Fault usage</summary>
-This fault determines the resilience of a web application to unplanned halts (or stops). It determines the resilience based on how quicly (and efficiently) the application recovers from the failure by re-routing the traffic to a different instance on the same application service. 
+This fault determines the resilience of a web application to unplanned halts (or stops). It determines the resilience based on how quickly (and efficiently) the application recovers from the failure by re-routing the traffic to a different instance on the same application service. 
 </accordion>
 
 </FaultDetailsCard>

@@ -14,6 +14,8 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM.
 <summary>View the uses of the fault</summary>
 <div>
 This fault helps determine how resilient an application is when stress is applied on the CPU resources of a VMware virtual machine.
+The fault causes CPU stress on the target resource(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 </div>
 </details>
 

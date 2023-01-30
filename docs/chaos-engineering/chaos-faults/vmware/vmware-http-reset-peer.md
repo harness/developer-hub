@@ -15,7 +15,8 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-This fault helps determine how resilient an application is when outgoing HTTP requests are halted unexpectly. It determines how quickly and efficiently an application recovers from these unexpected halts. 
+This fault helps determine how resilient an application is when outgoing HTTP requests are halted unexpectly. It determines how quickly and efficiently an application recovers from these unexpected halts. It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
+
 </div>
 </details>
 

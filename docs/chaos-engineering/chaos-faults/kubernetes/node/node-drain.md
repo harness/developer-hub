@@ -13,7 +13,8 @@ Node drain drains the node of all its resources running on it.
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-This fault determines the resilience of the application when the nodes are deprived of resources. 
+Node drain fault drains all the resources running on a node. This fault determines the resilience of the application when the application replicas scheduled on a node are removed. It validates the application failover capabilities when a node suddenly becomes unavailable.
+It simulates node maintenance activity (hardware refresh, OS patching, Kubernetes upgrade). It verifies resource budgeting on cluster nodes (whether request (or limit) settings honored on available nodes), and whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not. 
 </div>
 </details>
 

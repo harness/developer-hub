@@ -15,6 +15,7 @@ Azure instance I/O stress disrupts the state of infra resources.
 <summary>View fault usage</summary>
 <div>
 This fault determines the resilience of an Azure instance when I/O sources are in excess, unexpectedly. It determines how Azure scales the resources to maintain the application when it is under stress. 
+It simulates slower disk operations by the application and nosiy neighbour problems by hogging the disk bandwidth. It also verifies the disk performance on increasing I/O threads and varying I/O block sizes. It checks if the application functions under high disk latency conditions, when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
 </div>
 </details>
 

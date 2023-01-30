@@ -13,7 +13,7 @@ RDS instance reboot can induce an RDS instance reboot chaos on AWS RDS cluster. 
 <details>
 <summary>View fault usage</summary>
 <div>
-It determines the resilience of an application to RDS instance reboots.
+This fault determines the resilience of an application to RDS instance reboot.
 </div>
 </details>
 

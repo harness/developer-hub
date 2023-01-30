@@ -13,7 +13,7 @@ EC2 IO stress disrupts the state of infrastructure resources.
 <details>
 <summary>View fault usage</summary>
 <div>
-Failure in file system read and write impacts the delivery, which is also known as "noisy neighbour' problems.
+Failure in file system read and write impacts the delivery, which is also known as "noisy neighbour' problems. It simulates slower disk operations by the application and nosiy neighbour problems by hogging the disk bandwidth. It also verifies the disk performance on increasing I/O threads and varying I/O block sizes. It checks if the application functions under high disk latency conditions, when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
 Injecting a rogue process into an EC2 instance may starve the main processes (or applications) (typically pid 1) of the resources allocated to it. This may slow down the application traffic or exhaust the resources resulting in degradation of the performance of the application. These faults determine the resilience of the application that undergo this stress.
 </div>
 </details>

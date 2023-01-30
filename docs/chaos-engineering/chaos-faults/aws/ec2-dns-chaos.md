@@ -2,7 +2,7 @@
 id: ec2-dns-chaos
 title: EC2 DNS chaos
 ---
-EC2 DNS chaos causes DNS errors on the specified EC2 instance for a specific duration. 
+EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration. 
 - It determines the performance of the application (or process) running on the EC2 instance(s).
 
 ![EC2 DNS Chaos](./static/images/ec2-dns-chaos.png)
@@ -11,7 +11,8 @@ EC2 DNS chaos causes DNS errors on the specified EC2 instance for a specific dur
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks. It simulates unavailability of DNS server (loss of access to any external domain from a given microservice) and malfunctioning of DNS server (loss of access to specific domains from a given microservice, access to cloud provider dependencies, and access to specific third party services).
+
 </div>
 </details>
 

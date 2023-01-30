@@ -14,7 +14,8 @@ Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP respons
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault evaluates the application's resilience to lossy (or flaky) HTTP responses.
+This fault evaluates the application's resilience to lossy (or flaky) HTTP responses. It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
+
 </div>
 </details>
 

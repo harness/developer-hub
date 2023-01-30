@@ -16,7 +16,9 @@ Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random
 <div>
 In distributed systems like Kubernetes, your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to failures.
 It is important to ensure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases, and how the horizontal pod autoscaler scales based on the observed resource utilization. It is also important to understand how much time it takes for persistent volume to after rescheduling. 
-This fault helps reproduce such a situation with forced (or graceful) pod failure on specific (or random) replicas of an application resource. It checks the deployment sanity (replica availability and uninterrupted service) and recovery workflow of the application.
+It simulates graceful delete (or reschedule) of pods as a result of upgrades, forced delete of pods as a result of eviction, and leader-election in complex applications.
+It verifies disk (or volume) re-attachment times in stateful applications, application start-up times, readiness probe configuration (health endpoints and delays), topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies), proxy registration times in service-mesh environments, post (lifecycle)-hooks and terminationSeconds configuration for the microservices (under active load) - i.e. graceful termination handling, resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes for successful schedule).
+
 </div>
 </details>
 

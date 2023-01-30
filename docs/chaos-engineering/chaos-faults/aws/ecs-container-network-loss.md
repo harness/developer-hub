@@ -18,11 +18,13 @@ ECS container network loss disrupts the state of infrastructure resources.
 <details>
 <summary>View fault usage</summary>
 <div>
-This degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
+This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
 This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
 This can also be resolved by highlighting the degradation using notifications (or alerts).
 It also determines the impact of the fault on the microservice. 
-The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). This fault helps improve the resilience of the services over time.
+The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). 
+It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+This fault helps improve the resilience of the services over time.
 </div>
 </details>
 

@@ -13,7 +13,7 @@ EC2 HTTP modify body injects HTTP chaos which affects the request/response by mo
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+It can test the application's resilience to erroneous or incorrect HTTP response body.
 </div>
 </details>
 

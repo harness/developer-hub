@@ -86,7 +86,8 @@ EC2 HTTP latency disrupts the state of infrastructure resources. This fault indu
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+This fault results in delays on the target EC2 instances. This results in delayed network connectivity from the VM to the target hosts.
+It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
 </accordion>
 </FaultDetailsCard>
 
@@ -100,7 +101,7 @@ EC2 HTTP modify body injects HTTP chaos which affects the request/response by mo
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+It can test the application's resilience to erroneous or incorrect HTTP response body.
 </accordion>
 </FaultDetailsCard>
 
@@ -115,7 +116,7 @@ EC2 HTTP modify header injects HTTP chaos which affects the request (or response
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+This can be used to test service resilience towards incorrect or incomplete headers.
 </accordion>
 </FaultDetailsCard>
 
@@ -130,7 +131,7 @@ EC2 HTTP reset peer injects HTTP reset on the service whose port is specified us
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 </accordion>
 </FaultDetailsCard>
 
@@ -144,7 +145,7 @@ EC2 HTTP status code injects HTTP chaos that affects the request (or response) b
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+It simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404), unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x).
 </accordion>
 </FaultDetailsCard>
 
@@ -234,7 +235,7 @@ EC2 stop by ID stops an EC2 instance using the provided instance ID or list of i
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault determines the resilience of an application to unexpected halts in the EC2 instance.
+This fault determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 </accordion>
 </FaultDetailsCard>
 
@@ -250,7 +251,7 @@ EC2 stop by tag stops an EC2 instance using the provided tag.
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault determines the resilience of an application to unexpected halts in the EC2 instance.
+This fault determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 </accordion>
 </FaultDetailsCard>
 
@@ -265,7 +266,7 @@ ECS agent stop disrupts the state of infrastructure resources.
 
 <accordion color="green">
     <summary>View fault usage</summary>
-Agent chaos stop stops the ECS clusters that break an agent that used to manage the task container on the ECS cluster, thereby impacting its delivery. Killing the agent container disrupts the performance of task containers.
+ECS agent stop chaos stops the agent that manages the task container on the ECS cluster, thereby impacting its delivery. Killing the agent container disrupts the performance of the task containers.
 </accordion>
 </FaultDetailsCard>
 
@@ -334,7 +335,7 @@ ECS container network latency disrupts the state of infrastructure resources. It
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
+This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
 This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
 This can also be resolved by highlighting the degradation using notifications (or alerts).
 It also determines the impact of the fault on the microservice. 
@@ -355,11 +356,13 @@ ECS container network loss disrupts the state of infrastructure resources.
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
+This fault degrades the network of the task container without the container being marked as unhealthy/ (or unworthy) of traffic. It simulates issues within the ECS task network or communication across services in different availability zones (or regions).
 This can be resolved using middleware that switches traffic based on certain SLOs (or performance parameters).
 This can also be resolved by highlighting the degradation using notifications (or alerts).
 It also determines the impact of the fault on the microservice. 
-The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). This fault helps improve the resilience of the services over time.
+The task may stall or get corrupted while waiting endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the service to find TUC (Task Under Chaos). 
+It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+This fault helps improve the resilience of the services over time.
 </accordion>
 </FaultDetailsCard>
 
@@ -373,7 +376,7 @@ ECS instance stop induces stress on an AWS ECS cluster. It derives the instance 
 
 <accordion color="green">
     <summary>View fault usage</summary>
-EC2 instance stop breaks the agent that manages the task container on ECS cluster, thereby impacting its delivery. Killing the EC2 instance disrupts the performance of the task container. This fault helps determine the resilience of applications when an EC2 instance unexpectedly stops.
+EC2 instance stop breaks the agent that manages the task container on ECS cluster, thereby impacting its delivery. Killing the EC2 instance disrupts the performance of the task container.
 </accordion>
 </FaultDetailsCard>
 
@@ -401,7 +404,7 @@ ELB AZ down takes down the availability zones on a target ELB for a specific dur
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault breaks the connectivity with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
+This fault breaks the connectivity of an ELB with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
 </accordion>
 </FaultDetailsCard>
 
@@ -504,7 +507,7 @@ RDS instance delete removes an instances from AWS RDS cluster.
 
 <accordion color="green">
     <summary>View fault usage</summary>
-It determines how quickly an application can recover from an unexpected cluster deletion. 
+This fault determines how quickly an application can recover from an unexpected RDS cluster deletion. 
 </accordion>
 </FaultDetailsCard>
 
@@ -516,6 +519,6 @@ RDS instance reboot can induce an RDS instance reboot chaos on AWS RDS cluster. 
 
 <accordion color="green">
     <summary>View fault usage</summary>
-It determines the resilience of an application to RDS instance reboots.
+This fault determines the resilience of an application to RDS instance reboot.
 </accordion>
 </FaultDetailsCard>

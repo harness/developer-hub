@@ -61,7 +61,9 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node. The CPU chaos is i
 
 <accordion color="green">
     <summary>View fault usage</summary>
-The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of CPU resources.
+The fault aims to verify the resiliency of applications whose replicas may be evicted on account of nodes turning unschedulable (Not Ready) or new replicas not being able to schedule due to a lack of CPU resources.
+The fault causes CPU stress on the target node(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 </accordion>
 
 </FaultDetailsCard>
@@ -74,7 +76,8 @@ Node drain drains the node of all its resources running on it. Due to this, serv
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault determines the resilience of the application when the nodes are deprived of resources. 
+Node drain fault drains all the resources running on a node. This fault determines the resilience of the application when the application replicas scheduled on a node are removed. It validates the application failover capabilities when a node suddenly becomes unavailable.
+It simulates node maintenance activity (hardware refresh, OS patching, Kubernetes upgrade). It verifies resource budgeting on cluster nodes (whether request (or limit) settings honored on available nodes), and whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not. 
 </accordion>
 
 </FaultDetailsCard>
@@ -87,7 +90,8 @@ Node IO stress causes I/O stress on the Kubernetes node. The amount of I/O stres
 
 <accordion color="green">
     <summary>View fault usage</summary>
-The fault aims to verify the resilience of applications that share the disk resource for ephemeral or persistent storage purposes.
+The fault aims to verify the resilience of applications that share the disk resource for ephemeral or persistent storage purposes during high disk I/O usage.
+It simulates slower disk operations by the application and nosiy neighbour problems by hogging the disk bandwidth. It also verifies the disk performance on increasing I/O threads and varying I/O block sizes. It checks if the application functions under high disk latency conditions, when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
 </accordion>
 
 </FaultDetailsCard>
@@ -101,6 +105,7 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node. It is 
 <accordion color="green">
     <summary>View fault usage</summary>
 Node memory hog causes memory resource exhaustion on the Kubernetes node. The fault aims to verify resilience of applications whose replicas may be evicted on account on nodes becoming unschedulable (Not Ready) due to lack of memory resources.
+It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills. 
 </accordion>
 
 </FaultDetailsCard>
@@ -113,7 +118,7 @@ Node restart disrupts the state of the node by restarting it. It tests deploymen
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
+This fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod in the event of an unexpected node restart. It simulates loss of critical services (or node-crash). It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes), and whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
 </accordion>
 
 </FaultDetailsCard>
@@ -126,7 +131,7 @@ Node taint taints (contaminates) the node by applying the desired effect. The re
 
 <accordion color="green">
     <summary>View fault usage</summary>
-The fault aims to verify resiliency of applications when the nodes of a container (or deployment) are contaminated.
+The fault aims to verify the resiliency of applications when a certain taint is added to a node. It simulates loss of critical services (or node-crash). It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes), and whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
 </accordion>
 
 </FaultDetailsCard>
@@ -142,7 +147,7 @@ Container kill is a Kubernetes pod-level chaos fault that causes container failu
 
 <accordion color="green">
     <summary>View fault usage</summary>
-It tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
+It tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow when certain replicas are not available.
 </accordion>
 
 </FaultDetailsCard>
@@ -189,9 +194,10 @@ Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU 
 
 <accordion color="green">
     <summary>View fault usage</summary>
-Disk pressure or CPU hog affects Kubernetes applications that results in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
-
+Disk pressure or CPU hog affects Kubernetes applications which result in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
+The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
 Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 </accordion>
 
 </FaultDetailsCard>
@@ -206,9 +212,10 @@ Pod CPU hog is a Kubernetes pod-level chaos fault that excessively consumes CPU 
 
 <accordion color="green">
     <summary>View fault usage</summary>
-Disk pressure or CPU hog affects Kubernetes applications that results in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
-
+Disk pressure or CPU hog affects Kubernetes applications which result in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
+The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
 Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers).
 </accordion>
 
 </FaultDetailsCard>
@@ -254,7 +261,7 @@ Pod DNS spoof is a Kubernetes pod-level chaos fault that injects chaos into pods
 
 <accordion color="green">
     <summary>View fault usage</summary>
-This fault determines the resilience of an application to blocked DNS host names. It determines how quickly an application can resolve the host names and recover from the failure. 
+This fault determines the resilience of an application when host names are resolved incorrectly. It determines how quickly an application can resolve the host names and recover from the failure. It simulates custom responses from a spoofed upstream service.
 </accordion>
 
 </FaultDetailsCard>

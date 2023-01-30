@@ -13,7 +13,7 @@ Pod DNS spoof is a Kubernetes pod-level chaos fault that injects chaos into pods
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault determines the resilience of an application to blocked DNS host names. It determines how quickly an application can resolve the host names and recover from the failure. 
+This fault determines the resilience of an application when host names are resolved incorrectly. It determines how quickly an application can resolve the host names and recover from the failure. It simulates custom responses from a spoofed upstream service.
 </div>
 </details>
 

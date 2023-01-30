@@ -17,6 +17,7 @@ Azure instance memory hog disrupts the state of infrastructure resources.
 <summary>View fault usage</summary>
 <div>
 This fault determines the resilience of an Azure instance when memory resources are utilized in excess, unexpectedly. It determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
+It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills.
 </div>
 </details>
 

@@ -15,7 +15,7 @@ tip Fault execution flow chart
 <details>
 <summary>View fault usage</summary>
 <div>
-It tests the application's resilience to error code HTTP responses from the provided application server.
+It tests the application's resilience to error code HTTP responses from the provided application server. It simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404), unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x). 
 </div>
 </details>
 

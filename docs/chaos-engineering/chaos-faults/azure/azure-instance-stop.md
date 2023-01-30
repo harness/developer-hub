@@ -12,7 +12,7 @@ Azure instance stop powers off from an Azure instance during a specific duration
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault determines the resilience of an application to unexpected power offs from Azure instances. It determines how the application handles the requests and how quickly it recovers from such failures. 
+This fault determines the resilience of an application to unexpected power-off of the Azure instances. It determines how the application handles the requests and how quickly it recovers from such failures.
 </div>
 </details>
 

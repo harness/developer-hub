@@ -13,7 +13,7 @@ Pod network corruption is a Kubernetes pod-level chaos fault that injects corrup
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault tests the application's resilience to lossy (or flaky) network.
+This fault tests the application's resilience to lossy (or flaky) network. It simulates degraded network with varied percentages of dropped packets between microservices (dropped at the destination).
 </div>
 </details>
 

@@ -13,7 +13,8 @@ Pod DNS error is a Kubernetes pod-level chaos fault that injects chaos to disrup
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault determines the resilience of an application to DNS errors. It determines how quickly an application can resolve the host names and recover from the failure. 
+This fault determines the resilience of an application to DNS errors. It determines how quickly an application can resolve the host names and recover from the failure. It simulates unavailability of DNS server (loss of access to any external domain from a given microservice) and malfunctioning of DNS server (loss of access to specific domains from a given microservice, access to cloud provider dependencies, and access to specific third party services).
+
 </div>
 </details>
 
