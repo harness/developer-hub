@@ -263,7 +263,7 @@ Use the following steps to create a task definition. For information about task 
     aws ecs registger-task-definition --cli-input-json file://task-spec.json
     ```
     
- 4. Register the service definition:
+ 4. Then register the service definition:
  
     ```
     aws ecs create-service --cli-input-json file://service.json
