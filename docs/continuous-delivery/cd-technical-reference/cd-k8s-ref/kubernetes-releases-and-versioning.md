@@ -14,6 +14,12 @@ Every Harness deployment creates a new release with an incrementally increasing 
 
 By default, all managed workloads like Deployment, StatefulSet, DaemonSet and DeploymentConfig are versioned by Harness. Corresponding references in PodSpec are also updated with versions.
 
+:::note
+
+ConfigMap and Secret are not versioned by Harness.
+
+:::
+
 You can see the use of release numbers and versioning in the **Deployments** page details (`Current release number is`, `Previous Successful Release is 4`):
 
 
