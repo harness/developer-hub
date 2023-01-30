@@ -99,7 +99,7 @@ This happens in the following cases:
 
 - The secret manager is KMS (GCP KMS, AWS KMS).
 
-- The secret manager is GCP Secret Manager: The metadata contains the version information. Every time the inline secret is edited, the incremented version is updated in the database. However, because metadata is cached, and it has older version information, the older value keeps getting retrieved.
+- The secret manager is GCP Secret Manager: It contains version information in its metadata. Every time the inline secret is edited, the incremented version is updated in the database. However, the older value is retrieved because cached metadata contains information about older versions.
 
 - Secret is of reference type: If a secret's reference path is changed during editing, it will update in the database, but the cache value still holds the older path, so it will fetch the secret from the older path.
 
