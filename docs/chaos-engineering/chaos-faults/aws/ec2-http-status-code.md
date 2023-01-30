@@ -12,6 +12,8 @@ EC2 HTTP status code injects HTTP chaos that affects the request (or response) b
 <summary>View fault usage</summary>
 <div>
 This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks.
+It simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404), unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x)
+
 </div>
 </details>
 

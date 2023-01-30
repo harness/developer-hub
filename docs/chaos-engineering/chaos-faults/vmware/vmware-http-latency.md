@@ -13,7 +13,7 @@ VMware HTTP latency injects HTTP response latency into the service whose port is
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-This fault helps determine how resilient an application is to HTTP latency. It helps determine how the system recovers or fetches the responses when there is a delay in accessing the service.
+This fault helps determine how resilient an application is to HTTP latency. It helps determine how the system recovers or fetches the responses when there is a delay in accessing the service. It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
 </div>
 </details>
 

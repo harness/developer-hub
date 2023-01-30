@@ -14,7 +14,7 @@ Node restart disrupts the state of the node by restarting it.
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-This fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
+This fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod. It simulates loss of critical services (or node-crash). It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes), and whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
 </div>
 </details>
 

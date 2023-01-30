@@ -18,7 +18,11 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
 This fault helps determine how resilient an application is to the unplanned scaling of K8s pods.
 In distributed systems like Kube resilience, application replicas may not be sufficient to manage the traffic (indicated by SLIs) during any kind of failures (system or application failure). In such cases, the application needs to meet the SLOs (service level objectives). For this purpose, it is important to ensure that the application has a minimum number of replicas available. 
 A common application failure is when the pressure on other replicas increases, how the horizontal pod autoscaler (HPA) scales based on the observed resource utilization, and the amount of time the persistent volume takes to mount on rescheduling.
-  </div>
+It simulates pod-storm (due to autoscale) on high traffic conditions and verifies successful functioning of the application services (from latency and availability standpoint).
+It ensures that the topology constraints are adhered to on pod scale (node selectors, tolerations, zone distribution, affinity (or anti-affinity policies)). 
+It also verifies pod creation and scheduling SLIs on the cluster nodes.
+ 
+</div>
 </details>
 
 ## Prerequisites
