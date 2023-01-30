@@ -79,10 +79,31 @@ To enable automatic caching on a CI Build stage, add the following lines to  the
         description: ""
         type: CI
         spec:
-          caching:          # --------------- ADD LINE
-            enabled: true   # ----------------ADD LINE
+          caching:            # --------------- ADD LINE
+            enabled: true     # ----------------ADD LINE
+            path:             # optional paths to support specific frameworks
+              - /root/.mvn       # - absolute path if outside /harness 
+              - vendor           # - relative path -- i.e., /harness/vendor
           cloneCodebase: true
 ```
+You can also use the followinging API calls to download and delete cache data:
+
+##### Download cache from pipeline
+
+```
+curl --location --request GET 'https://app.harness.io:7171/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer $AUTH_TOKEN'
+```
+
+##### Delete cache for pipeline
+
+```
+curl --location --request DELETE 'https://app.harness.io:7171/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
+--header 'Accept: application/json' \
+--header 'Authorization: Bearer $AUTH_TOKEN'
+```
+
 
 #### Manual Caching
 
