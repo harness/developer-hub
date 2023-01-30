@@ -91,7 +91,7 @@ You can also use the followinging API calls to download and delete cache data:
 ##### Download cache from pipeline
 
 ```
-curl --location --request GET 'https://app.harness.io:7171/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
+curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer $AUTH_TOKEN'
 ```
@@ -99,7 +99,7 @@ curl --location --request GET 'https://app.harness.io:7171/cache/info?accountIde
 ##### Delete cache for pipeline
 
 ```
-curl --location --request DELETE 'https://app.harness.io:7171/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
+curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer $AUTH_TOKEN'
 ```
