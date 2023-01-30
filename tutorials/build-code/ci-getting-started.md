@@ -210,7 +210,7 @@ import TabItem from '@theme/TabItem';
 ## Run your pipeline​
 
 1. In the **Pipeline Studio**, select **Run**.​
-2. In the **Build Type** field, select **Git Branch**, and then enter **main** in the **Branch Name** field.
+2. In the **Build Type** field, select **Git Branch**, and then enter **master** in the **Branch Name** field.
 3. Select **Run Pipeline**.
 4. You can see the pipeline execute the steps in the Execution View.
 
