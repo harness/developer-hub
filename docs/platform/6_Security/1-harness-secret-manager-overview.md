@@ -89,7 +89,7 @@ If you select **Connect Through Delegate**, Harness Delegate, which runs in your
 
 #### Secret Cache
 
-In the secrets manager, Harness maintains a cache of the encrypted data, except for those stored in HashiCorp Vault. The cache also contains metadata associated with the secret, such as paths for the secret references, encryption key, and version. The time to live (TTL) for the cache is 30 minutes.
+In the secrets manager, Harness maintains a cache of the encrypted data, except for those stored in HashiCorp Vault. The cache also contains metadata associated with the secret, such as path to the secret, encryption key, and version. The time to live (TTL) for the cache is 30 minutes.
 
 Decrypting a secret sometimes requires its metadata. When you edit a secret, its metadata changes and a stale value is retrieved from the cache. This happens in the following cases:
 
