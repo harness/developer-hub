@@ -75,8 +75,5 @@ This section explains steps to move an [inline pipeline](../8_Pipelines/add-a-st
 
 
 :::warning
-If your pipeline has input sets, ensure that the input sets are also moved to Git. Executing a remote pipeline with inline inputs or vice versa leads to an error.
-
-![](../10_Git-Experience/static/inline-remote-error.png)
-
+When you switch an inline pipeline into a remote pipeline, the pipeline's associated entities aren't automatically moved to a Git repository. You must also move the corresponding input sets and triggers to the remote repository.
 :::
