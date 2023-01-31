@@ -8,7 +8,7 @@ export const experiments: ExperimentDetails[] = [
     category: "kubernetes",
   },
   {
-    name: "Kubelet Service Kill",
+    name: "Kubelet service kill",
     description:"Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).",
     tags: ["node"],
     category: "kubernetes",
