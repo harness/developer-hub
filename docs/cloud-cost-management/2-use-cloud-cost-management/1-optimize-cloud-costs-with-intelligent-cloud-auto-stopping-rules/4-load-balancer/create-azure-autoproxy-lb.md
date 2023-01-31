@@ -16,7 +16,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 1. In the **Harness** application, go to **Cloud Costs**.
 2. Under **Setup**, click **Load Balancers**.
 3. Click **Create New Load Balancer**.
-4. Select Azure. 
+4. Select **Azure**. 
 5. Choose an existing connector or create a new one.
 6. Click **Continue**.
 7. Click **Create AutoStopping Proxy**. 
@@ -25,15 +25,22 @@ Perform the following steps to create an AutoStopping proxy for your resources i
     1. Provide a name for the AutoStopping Proxy.
     2. Enter the URL to specify the domain.
     3. Click **Continue**.
+
+      ![](./static/azure-autoproxy-creation.png)
+
 10. Select the region where you have your cloud resources hosted.
 11. Select the Resource Group to which the resource belongs.
 12. Select the **Virtual Network**.
 13. Select the **Subnet**.
 14. Select the **Security Group** to define the security rules that determine the inbound and outbound traffic.
-15. **TLS Certificate Secret Version**: Enter the value displayed in the **Secret Identifier** field on the Azure console.  \
+15. **TLS Certificate Secret Version**: Enter the value displayed in the **Secret Identifier** field on the Azure console. 
 On your Azure console, go to **Key Vaults**. Under **Objects**, click **Secrets**. 
 
-    **Note**: It is recommended to create the secret using the Azure CLI, and not use the Generate/import option on the UI. this is to avoid some unwanted characters that gets added to the certificate value.
+
+:::note
+It is recommended to create the secret using the Azure CLI, and not use the Generate/Import option on the UI. This is to avoid some unwanted characters that get added to the certificate value. For more information, go to [Set and retrieve a secret from Azure Key Vault using Azure CLI](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-cli).
+:::
+
 
 Example:
        
@@ -84,6 +91,6 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
 
 16. **TLS Private Key Secret Version**: Create another secret for the private key and enter the value in this field.
 17. **Key Pair**: Enter the SSH key pair.
-18. **API Key**: Enter the NG API key.
+18. **API Key**: Enter the NG API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
 19. Enable **Allocate Static IP** if you need to access the VM outside the VPC. Ensure that the DNS resolves.
 20. Click **Save**.

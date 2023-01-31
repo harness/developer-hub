@@ -250,7 +250,7 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 
 If you need to access the resources managed by this AutoStopping rule using an HTTP or HTTPS URL, you need to perform the following steps: 
 
-Choose an Application Load Balancer or an AutoStopping Proxy load balancer (custom) from the dropdown list to set up access.
+Choose an Application Load Balancer or an AutoStopping Proxy load balancer from the dropdown list to set up access.
 
 ### Use an Application Load Balancer
   If you have not created a load balancer already, go to [Create an Application load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md).
