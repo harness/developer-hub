@@ -1,4 +1,4 @@
-  ---
+---
 title: Configure delegate metrics
 description: This topic describes how to configure Prometheus and Grafana for delegate metrics collection.
 # sidebar_position: 2
