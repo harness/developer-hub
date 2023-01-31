@@ -64,7 +64,7 @@ In Community and Self-Managed Enterprise Edition accounts, Harness uses a ra
 
 
 :::note
-Once you have installed Self-Managed Enterprise Edition, [Add a Secrets Manager](./5-add-secrets-manager.md). By default, Self-Managed Enterprise Edition installations use the local Harness MongoDB for the default Harness Secrets Manager. This is not recommended.
+By default, Self-Managed Enterprise Edition installations use the local MongoDB database for the default Harness Secrets Manager. Harness does not recommend using the local MongoDB database. Once you have installed Self-Managed Enterprise Edition, [Add a secrets manager](./5-add-secrets-manager.md). 
 
 :::
 
