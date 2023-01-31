@@ -630,7 +630,7 @@ This section lists the feature support matrix for the supported cloud platforms:
 |             |                         |                     |                  |
 | ----------- | ----------------------- | ------------------- | ---------------- |
 |             | **Inventory Dashboard** | **Recommendations** | **AutoStopping** |
-| **GCE VMs** | Yes                     | Coming soon         | Coming soon      |
+| **GCE VMs** | Yes                     | Coming soon         | Yes     |
 | **GKE**     | Yes                     | Yes                 | Yes              |
 
 ##### Azure Product
