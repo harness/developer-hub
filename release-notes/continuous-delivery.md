@@ -13,6 +13,159 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## February 1, 2023, version 78300
+
+### What's new
+
+- Active Directory Federation Services (ADFS) is now supported for ServiceNow authentication. (CDS-49406, CDS-49229)
+  
+  Any API call Harness makes to ServiceNow requires an authentication token. Previously, Harness supported username and password authentication only. Now we support ADFS authentication.
+
+  ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)  
+- Kubernetes Dry Run step added. (CDS-43839)
+  
+  You can now add the Dry Run step for Kubernetes and Native Helm deployments.
+
+  ![Dry Run step](static/bb64e94a2baf0858bbefe20ecede63ff1e4de692c15882c4f131df7e17c9906b.png)
+
+  The Dry Run step fetches the Kubernetes manifests or Helm charts in a stage and performs a dry run of those resources. This is the same as running a `kubectl apply --filename=manifests.yaml --dry-run`.
+  
+  You can use the Dry Run step to check your manifests before deployment. You can follow the step with an [Approval](https://developer.harness.io/docs/category/approvals/) step to ensure the manifests are valid before deployment.
+  
+  You can reference the resolved manifest from the Dry Run step in subsequent steps using a Harness variable expression.
+  ```
+  <+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.ManifestDryRun>
+  ```
+
+  For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:
+
+  ```
+  <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
+  ```
+- NPM/Maven/NuGet repository format support for Nexus artifacts with Tanzu Application Services (TAS). (CDS-50551)
+  You can now use NPM/Maven/NuGet repository formats for Nexus artifacts in TAS Harness services.
+
+  ![Nexus artifacts](static/44009d0aa38851738ebed25ff3dabeb232bc729f904e219bb14d8cdd0178a283.png)
+
+### Fixed issues
+
+- Harness UI is no longer trying to populate the **Chart Version** setting for OCI Helm charts when using the AWS ECR repository. (CDS-49513)
+  
+  Harness does not support automatically listing chart versions when using OCI with Helm. The Harness UI was trying to populate the **Helm Chart Version** setting by fetching the versions from the OCI registry. This resulted in an error:
+  
+  ![picture 35](static/e26a39e9055f3202fb7158fcd65ab91805888cefa75124cbfcfe79ff6c9192ed.png)
+  
+  This has been fixed and now the UI will not try to populate the **Chart Version** setting. You must enter the version manually.
+- Improving validations for pipeline templates. (CDS-48962, ZD-38804, ZD-39478)
+  
+  Previously, if a pipeline used a step or stage template and an input setting or reference in a template changed the pipeline YAML, the pipeline could not be deployed. 
+
+  ![48962](static/5f0db5eded426ea187e51dc1a234bb10eee3257d817cb0ec272deb3f7dfac2c0.png)  
+  
+  Now, the pipeline can be deployed and input validation is performed during execution.
+- Users can no longer change **Deployment Type** for services. (CDS-48299)
+  
+  Previously, you could change the **Deployment Type** for an existing Harness service. It's very unlikely that you would ever need to change deployment types. For example, changing from **Kubernetes** to **Serverless**. Changing **Deployment Type** can cause issues as you will lose the previous **Deployment Type** settings.
+
+  Harness has removed the ability to change **Deployment Type** to prevent any issues.
+
+  ![48299](static/cd918d222ff863717a8307978f57deac90df4ada0544f193d9e51b55e91184c0.png)  
+- The **Update** button for templates/pipelines is now hidden when there are no child entities. (CDS-47324)
+  
+  Harness now hides the **Update** button when there no child entities to resolve. This removes redundancy as you can use the **Save** button to save the template/pipeline when there are no child entities to resolve.
+- No pagination on the trigger listing page. (CDS-52024)
+  
+  Added pagination support on the trigger listing page.
+- Users are able to select the **Loading** option when using the Azure Container Registry as an artifact source. (CDS-50599)
+  
+  User were able to select the **Loading** option for the **Subscription Id** setting. This is now fixed and users can only select an actual Azure subscription Id. The **Loading** option cannot be selected.
+
+  ![Loading](static/321f95d7ed33a9b49edcda9eea76ae8ecec352bce47c2da4050b7697a22ba560.png)
+- Iterator was leading to high CPU usage on the Harness manager. (CDS-50507)
+  
+  Unregisted the iterator handler. It no longer runs on the Harness manager.
+- Account level stage templates **Service** and **Environment** settings are expecting fixed values even when **Runtime Input** is selected. (CDS-50487)
+
+  This is now fixed and the **Runtime Input** selection is respected.
+- Null pointer exception occurred when checking the secret file used by a secret in the Command step (in SSH deployments). (CDS-50388)
+
+  We have added null pointer checks for the decrypted value secret.
+- Jira connector Id reference is not retained when creating a Jira Approval step.	(CDS-50338)
+  
+  Now the Id value for the connector reference (`connectorRef`) is retained when saving the Jira Approval step.
+- An incorrect error code is displayed when a template is not found. (CDS-50337)
+  
+  The templates REST GET call was throwing a 400 Bad Request with error code `INVALID_REQUEST`. We have updated this error code to `RESOURCE_NOT_FOUND_EXCEPTION`. This is in line with best practices.
+- Unable to see the Harness file store at the projects level.	(CDS-50139)
+
+  The [Harness file store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
+
+  The file store was not showing up at the projects level. This has been fixed and now you can use the file store in your projects.
+
+  ![file store](static/e6e71ed5ce6113726c8385b19408341220d153944a0683dbc76614e7a6aeed9d.png)
+- Runtime **Tag** setting discrepancy when switching between YAML and Visual views.	(CDS-50033)
+  
+  When a user set the **Tag** setting in the Visual view and then switched to the YAML view, made an edit, and switched back, the value was not preserved. Now users can select tags or enter values from YAML without any discrepancies.
+- The PagerDuty notifications are not showing start and end dates for pipeline/stage execution. (CDS-49852)
+
+  The PagerDuty template was using the wrong placeholder for [PagerDuty notifications](https://developer.harness.io/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events/#option-pagerduty-notifications). The template is now modified to use the correct placeholder name.
+- Deployment freeze recurrence time should be greater than start time. (CDS-49840)
+  
+  Harness was letting users set a recurrence time in the past. We have added a check to prevent users from creating a freeze window with a recurrence time that is before than the current time.
+- An empty trigger name is not disabling the **Continue** button. (CDS-49631)
+  
+  When the trigger **Name** was empty a validation error appeared but the **Continue** button could still be clicked.
+  
+  Now, when the trigger **Name** is empty a validation error appears and the **Continue** button is disabled.
+- **Infrastructure** setting retained in the UI when environment is marked as **Runtime Input**. (CDS-49236)
+  
+  Now the **Runtime Input** setting is maintained and the **Infrastructure** setting is a runtime input.
+- Different artifacts with the same build Id are not considered in services listed in the **Environments** dashboard. (CDS-49189)
+  
+  Earlier, only the build Id was used to group instances in the **Environments** dashboard. When a user deployed a service with the same build Id but different artifact paths, either of the artifact paths would be present in the hover over the build Id in **Artifacts**.
+
+  Now we group services on their display name (artifact path + build Id) so that there are different entries for different artifacts even if they have the same build Id.
+  
+  | First artifact  | Second artifact   |
+  |-------------- | -------------- |
+  | ![picture 28](static/12cf46c32d1fc632084fabb8de410303ad7f5cbc0217cbba5a8206174ed29ee4.png)  |  ![picture 29](static/e6864f470d938ae81cec899bc895ddf5447de432ec024179233086e475066813.png)  |
+- The Jira searchUser API call was failing with the error `INVALID_IDENTIFIER_REF`. (CDS-49181)
+
+  Now Harness passes the connector reference in the payload when calling the searchUser API.
+- The pipeline variable was not resolved in the **Image Path** setting for a Docker artifact source until the pipeline was saved. (CDS-48981)
+  
+  If you use a pipeline variable in the **Image Path** setting for a Docker artifact source, and then switch the setting to **Fixed Value**, Harness cannot resolve the artifact path until pipeline is saved.
+  
+  No code changes were made but an improved error message was added.
+
+  ![picture 43](static/71120e82c81def7d301c5a40596ea3c31e1ed990e019c363a5dd6edaf155824d.png)
+- Dangling service references prevented the deletion of other resources. (CDS-48890)
+  
+  When an org/project was deleted, the references to services within that org/project were not cleaned up. As a result, there were dangling references preventing the deletion of other resources.
+  
+  This is now fixed and the service references are cleaned up when you delete the org/project.
+- Updating a Harness file store file does not take users to the file already selected. (CDS-48618)
+  
+  When you updated a selected file in the file store and clicked **Save**, Harness was not returning you to the file, but the full file list.
+  This is now fixed and you are returned to the file.
+- The Kubernetes namespace in **Infrastructure** cannot contain capital letters, but they were allowed in Harness YAML. (CDS-48514)
+  
+  Added schema validation for Kubernetes infrastructure **Namespace** setting to match Kubernetes requirements (`[a-z0-9]([-a-z0-9]*[a-z0-9])`).
+- Deployment freeze was missing a check on timezone and accepting the wrong value in YAML. (CDS-48311)
+  
+  Now there is a check to validate if the timezone entered in the freeze window is correct.
+- After fixing runtime input settings in the pipeline **Run** form YAML, users cannot run the pipeline. (CDS-48009)
+  
+  The pipeline **Run** form accepts Visual and YAML entry. When you entered runtime input values in the YAML the **Run** button was disabled.
+  
+  Now you can submit runtime input values as Visual or YAML entries and run the pipeline.
+- Connector settings do not display in the **Run** pipeline form. (CDS-46632)
+  
+  When users selected an environment and infrastructure, cleared the selected environment, and then reselected the same environment and infrastructure, connector settings did not display in the **Run** pipeline form.
+    
+  Now, the connector setting appear when reselecting the environment and infrastructure.
+
+
 ## January 17, 2023, version 78214
 
 ### What's new
