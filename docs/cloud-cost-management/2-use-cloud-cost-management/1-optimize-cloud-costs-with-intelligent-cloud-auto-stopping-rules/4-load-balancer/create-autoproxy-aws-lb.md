@@ -1,6 +1,6 @@
 ---
 title: Create a custom load balancer in AWS
-description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
+description: A load balancer distributes user traffic across multiple instances of your applications. Load balancing reduces the chances of performance issues in your applications by spreading the load.
 # sidebar_position: 3
 ---
 

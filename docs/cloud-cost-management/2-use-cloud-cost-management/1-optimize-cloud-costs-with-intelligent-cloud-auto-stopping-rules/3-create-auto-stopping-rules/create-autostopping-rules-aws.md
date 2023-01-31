@@ -225,10 +225,11 @@ The fixed schedule takes precedence over the defined AutoStopping Rule.To create
        ![](./static/create-autostopping-rules-aws-100.png)
 8. Click **Apply**.
 
-Now that you have the AutoStopping rule configured, define how you would want to access the underlying application running on the resources managed by this Rule. You can use any of the following methods:
+Now that you have the AutoStopping rule configured, define how you would want to access the underlying application running on the resources managed by this Rule. You can use either of the following or both the methods depending on your requirement:
 
 * Set up Access for HTTP/HTTPS workload: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
 * Setup Access for TCP workload or SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via TCP, SSH or RDP.
+* You could skip this step for now and use the CLI to set up access. Go to [Use the Harness CLI to access resources through SSH/RDP](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md#use-the-harness-cli-to-access-resources-through-sshrdp) for details.
 
 ## Setup Access for TCP workload or SSH/RDP 
 
@@ -241,7 +242,7 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 
 1. Choose an AutoStopping Proxy load balancer (custom) from the **Specify AutoStopping Proxy** dropdown list to set up access.
 2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated.
-3. Specify all the TCP ports your application is listening.
+3. Specify all the TCP ports your application is listening. Ensure these ports are open.
 4. Click **Next**.
 
 
