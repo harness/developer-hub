@@ -70,7 +70,7 @@ By default, Self-Managed Enterprise Edition installations use the local MongoDB 
 
 
 :::note
-Harness does not currently support migrating secrets from the random-key secrets store. If you add secrets here, you will need to recreate them in any custom secrets manager you configure later.
+Harness does not currently support migrating secrets from the random-key secrets store. If you add secrets to the random-key secrets store, you will need to re-create them in any custom secrets manager you configure later.
 
 :::
 
