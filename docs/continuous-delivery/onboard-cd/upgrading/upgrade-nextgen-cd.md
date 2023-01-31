@@ -22,18 +22,35 @@ For more information, go to [Harness FirstGen vs Harness NextGen](../../../getti
 
 ## What's happening to the FirstGen CD product?
 
-The Harness FirstGen CD module will be phased out and will reach End of Life (EOL) in about 12 months. 
+The Harness FirstGen CD module will be phased out and will reach End of Life (EOL) in about 4/1/2024. 
 
 ### Timeline
 The FirstGen to NextGen CD upgrade will occur on the following dates:
-- 1/1/2023. This is maintenance mode. No new features will be added and no new bugs and security issues will be fixed.
-- 10/1/2023. End of SMP releases.
+
+- 1/1/2023: Harness First Gen will be in maintenance mode. 
+  - No new features will be added.
+  - The Security and Bug fixes will continue to be addressed
+
+
+- 10/1/2023. End of SMP releases
+  - Harness will no longer publish new versions of the Self Hosted Harness Platform for Current Gen
+  - Only Harness Next Gen versions will be released in our SMP releases. 
+
+
 - 1/1/2024. End of support for FirstGen CD.
+  - Harness Support will no longer be taking support requests for the First Gen CD Product.
+  - Security Fixes will still be addressed however, product defects will not be.
+
+
 - 4/1/2024. FirstGen SaaS product shutdown.
+  - Harness Delegates will no longer register with Harness SaaS
+  - User's will no longer be able to use the Harness First Gen UI to perform CD Deployment Tasks.
+  - Trigger's will fail as the webhook URL will be deprecated
+  - The default experience for signing into Harness will be Harness CD Next Gen. 
 
 As a first step towards that change, starting January 1st, 2023, Harness will no longer accept feature/enhancement requests and releasing new features for the FirstGen CD module.
 
-Harness will continue to support the FirstGen CD module and ensure the current system remains reliable. Support includes any customer found product defects and security issues. 
+Harness will continue to support the FirstGen CD module and ensure the current system remains reliable. Support includes any customer found product defects and security issues.
 
 ## What's new in Harness NextGen?
 
