@@ -7,7 +7,7 @@ description: This topic describes how to configure Prometheus and Grafana for de
 ## About delegate metrics
 
 Harness captures delegate agent metrics for delegates that are immutable. The delegate is instrumented for the collection of the following delegate agent metrics:
-
+  
 | **Metric name** | **Description** |
 | :-- | :-- |
 | task_execution_time | The time it takes to complete a task. |
