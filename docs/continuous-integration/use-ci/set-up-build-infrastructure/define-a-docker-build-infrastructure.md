@@ -27,7 +27,7 @@ You can define a CI build infrastructure on any Linux or macOS host. This is the
 5. Click **Continue**.   
 The UI shows the delegate as not connected. This is expected behavior. You need to complete this workflow to establish connectivity between the delegate and your instance.
 6. Update the **docker-compose.yml** file you just downloaded as follows:
-	1. For `DELEGATE TAGS=`, specify one of the following: `macos-amd64` | `windows-amd64` | `linux-amd64`
+	1. For `DELEGATE TAGS=`, specify one of the following: `macos-amd64` | `macos-arm64` |`windows-amd64` | `linux-amd64` | `linux-arm64`
 	2. *macOS only —* Add this setting to the `environment` list:  
 	`- RUNNER_URL=`[`http://host.docker.internal:3000`](http://host.docker.internal:3000/)
 	3. *Linux only —* Add the following line immediately after `restart: unless-stopped"`:  
@@ -50,7 +50,7 @@ Update the pipeline where you want to use the Docker delegate, either from YAML 
   Replace the `stages : stage : spec : infrastructure` section for the stage to use `platform` and `runtime` as follows.
   
     1. For the `os:` field, specify `Linux` | `MacOS` | `Windows`
-    2. For the `arch:` field, specify `Amd64`
+    2. For the `arch:` field, select the architectre that matches the tag set duting the delegate setup. For example, 'macos-amd64'.
 
 ##### `infrastructure` Field (*before*)
 
