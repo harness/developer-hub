@@ -44,10 +44,10 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
 
 
 - 4/1/2024. FirstGen SaaS product shutdown.
-  - Harness Delegates will no longer register with Harness SaaS
-  - User's will no longer be able to use the Harness First Gen UI to perform CD Deployment Tasks.
-  - Trigger's will fail as the webhook URL will be deprecated
-  - The default experience for signing into Harness will be Harness CD Next Gen. 
+  - Harness delegates will no longer register with Harness SaaS.
+  - Users will no longer be able to use the Harness FirstGen UI to perform CD deployments.
+  - Triggers will fail as webhook URLs will be deprecated.
+  - The default experience for signing into Harness will be Harness CD NextGen. 
 
 As a first step towards that change, starting January 1st, 2023, Harness will no longer accept feature/enhancement requests and releasing new features for the FirstGen CD module.
 
