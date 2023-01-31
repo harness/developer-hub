@@ -93,7 +93,7 @@ In the secrets manager, Harness maintains a cache of the encrypted data, except 
 
 Decrypting a secret sometimes requires its metadata. When you edit a secret, its metadata changes and a stale value is retrieved from the cache. This happens in the following cases:
 
-- The secrets manager is a KMS (GCP KMS or AWS KMS).
+- The secrets manager is Google Cloud KMS or AWS KMS.
 
 - The secret manager is Google Cloud Secret Manager: It contains version information in its metadata. Every time you edit the inline secret, its version is incremented and updated in the database. However, on subsequent access, the older value is retrieved because cached metadata contains information about older versions.
 
