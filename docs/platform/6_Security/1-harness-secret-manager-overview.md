@@ -95,7 +95,7 @@ Decrypting a secret sometimes requires its metadata. When you edit a secret, its
 
 This happens in the following cases:
 
-- The secret manager is KMS (GCP KMS, AWS KMS).
+- The secrets manager is a KMS (GCP KMS or AWS KMS).
 
 - The secret manager is GCP Secret Manager: It contains version information in its metadata. Every time the inline secret is edited, the incremented version is updated in the database. However, the older value is retrieved because cached metadata contains information about older versions.
 
