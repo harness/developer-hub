@@ -59,7 +59,7 @@ The following practices can reduce your testing and resulting build times:
 
 Caching and reusing can be useful for data that your builds need to fetch, but that you cannot include in an optimized image as described above. Caching ensures faster job execution by reusing the expensive fetch operation data from previous jobs. For an comprehensive overview, go to [Harness CI for UI Builds](https://harness.io/blog/continuous-integration/harness-cie-ui-builds/). 
 
-#### Automatic Caching
+#### Automatic caching
 
 You can set up your pipeline to cache your build artifacts automatically. Note the following:  
 
