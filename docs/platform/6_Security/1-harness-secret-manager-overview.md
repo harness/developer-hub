@@ -74,8 +74,6 @@ Harness does not currently support migrating secrets from the random-key secrets
 
 :::
 
-All Harness secrets managers require a running Harness Delegate to encrypt and decrypt secrets.
-
 If you created a Harness trial account, a Delegate is typically provisioned by Harness, and the default Harness Secrets Manager performs encryption/decryption.
 
 #### Harness Secrets and Harness Git Experience
