@@ -23,9 +23,10 @@ export default function ExperimentListSection({
     React.useState(experiments);
 
   React.useEffect(() => {
-    if (search === "" || search.match(/(\s)/g))
+    if (search === "" || search.match(/(\s)/g)) {
       setFilteredExperiments(experiments);
-    else {
+      setPage(0);
+    } else {
       const filtered = experiments.filter((experiment) => {
         return (
           experiment.name.toLowerCase().includes(search.toLowerCase()) ||
@@ -70,6 +71,7 @@ export default function ExperimentListSection({
       {filteredExperiments.length > 0 ? (
         <div className={styles.experimentListSectionContent}>
           {filteredExperiments
+            .sort()
             .slice(
               showAll ? 0 : page * 6,
               showAll ? filteredExperiments.length : page * 6 + 6
@@ -85,20 +87,22 @@ export default function ExperimentListSection({
                 }
               >
                 <div key={index} className={styles.experimentCard}>
-                  <img
-                    src={getCategoryDetails(experiment.category).icon}
-                    alt={experiment.name}
-                    height={40}
-                    width={40}
-                    draggable={false}
-                  />
+                  <div className={styles.experimentCardHeader}>
+                    <img
+                      src={getCategoryDetails(experiment.category).icon}
+                      alt={experiment.name}
+                      height={40}
+                      width={40}
+                      draggable={false}
+                    />
+
+                    <p className={styles.title}>{experiment.name}</p>
+                  </div>
                   <div className={styles.experimentCardContent}>
-                    <div>
-                      <p className={styles.title}>{experiment.name}</p>
-                      <p className={styles.description}>
-                        {experiment.description}
-                      </p>
-                    </div>
+                    <p className={styles.description}>
+                      {experiment.description}
+                    </p>
+
                     <div className={styles.experimentCardTags}>
                       {experiment.tags &&
                         experiment.tags.map((tag, index) => (

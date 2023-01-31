@@ -64,37 +64,44 @@ a:hover {
   }
   .experimentCard {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
-    gap: 0.5rem;
+    gap: 0.6rem;
     box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04),
       0px 2px 4px rgba(96, 97, 112, 0.16);
     height: 200px;
     border-radius: 8px;
     background-color: #fff;
-    padding: 1.5rem 1rem;
+    padding: 1rem 1rem;
+    .experimentCardHeader {
+      display: flex;
+      align-items: center;
+      .title {
+        font-size: 0.95rem;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #000000;
+        margin: 0 0 0 0.5rem;
+      }
+    }
     .experimentCardContent {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      gap: 1.5rem;
       height: 100%;
-      .title {
-        font-size: 1rem;
-        font-weight: 600;
-        margin: 0 0 0.5rem 0;
-        line-height: 1.2;
-      }
+      margin-left: 0.25rem;
       .description {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
         margin: 0 0 0rem 0;
         line-height: 1.2;
-        max-height: 70px;
+        max-height: 80px;
         text-overflow: ellipsis;
         overflow: hidden;
         display: -webkit-box !important;
-        -webkit-line-clamp: 4;
+        -webkit-line-clamp: 5;
         -webkit-box-orient: vertical;
         white-space: normal;
+        color: #000000;
       }
       .experimentCardTags {
         display: flex;
