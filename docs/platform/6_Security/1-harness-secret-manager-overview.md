@@ -34,7 +34,7 @@ Harness sends only encrypted data to the Secrets Manager, as follows: 
 
 
 :::note
-Any secret manager requires a running Harness Delegate to encrypt and decrypt secrets. Any Delegate that references a secret requires direct access to the Secrets Manager.
+Any secret manager requires a running Harness Delegate to encrypt and decrypt secrets. Any delegate that references a secret requires direct access to the Secrets Manager.
 
 :::
 
