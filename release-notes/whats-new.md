@@ -20,7 +20,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   This results in a seamless search experience.
 
-- Entities in Harness can now have `/` for the Name. (PL-29929)
+- Entity names can now include the `/` character. (PL-29929)
 
 ## January 17, 2023, version 78214
 
