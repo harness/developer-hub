@@ -64,8 +64,8 @@ Caching and reusing can be useful for data that your builds need to fetch, but t
 You can set up your pipeline to cache your build artifacts automatically. Note the following:  
 
 * Automatic caching is currently supported for the following. 
-  - Harness Cloud build infrastructures
-  - Basel, Maven, Gradle, Yarn, and Node frameworks
+  - Harness Cloud build infrastructures.
+  - Basel, Maven, Gradle, Yarn, and Node frameworks.
 * You can implement [manual caching](#manual-caching) for other infrastructures, frameworks, and languages. 
 * Harness Cloud can cache up to 2GB of data per account. All pipelines in the account can use the same cache. 
 * Cache retention window is 15 days, which resets whenever the cache gets updated.
