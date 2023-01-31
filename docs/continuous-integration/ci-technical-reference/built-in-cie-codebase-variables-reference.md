@@ -104,7 +104,7 @@ Here's the output in the Harness UI:
 
 Manual Tag Builds are the builds that occur when you manually run your Harness Pipeline from the Harness UI and select your Codebase as **Git Tag**. Harness will look for the source code attached to the **Git Tag** that you specify in your **Codebase** and will clone that specific source code for the build.
 
-You can refer to the Manual Tag Builds in Harness with the expression `<+codebase.build.type> == “tag”`.
+You can refer to the Manual Tag Builds in Harness with the expression `<+codebase.build.type>==“tag”`.
 
 Use the following expressions in Harness Stages to refer to the following Git attributes for manual tag builds.
 
@@ -120,7 +120,7 @@ Git commit Id of the build.
 
 Manual Branch Builds are the builds that occur when you manually run your Pipeline in the Harness UI and select your Codebase as **Git** **Branch**. Harness looks for the source code attached to the **Git Branch** that you specify in your **Codebase** and clones that specific source code for the build.
 
-You can refer to the manual branch builds in Harness with the expression`<+codebase.build.type> == “branch”`.
+You can refer to the manual branch builds in Harness with the expression`<+codebase.build.type>==“branch”`.
 
 Use the following expressions in Harness to refer to the various Git attributes for manual branch builds.
 
@@ -136,7 +136,7 @@ Git commit id of the build.
 
 Manual Pull Request Builds are the builds that occur when you manually run your Pipeline in the Harness UI and select your Codebase as **Git Pull Request Number**. Harness looks for the source code attached to the **Git Pull Request Number** that you specify in your **Codebase** and clones that specific source code for the build.
 
-You can refer to the manual pull request builds in Harness with the expression`<+codebase.build.type> == “PR”`.
+You can refer to the manual pull request builds in Harness with the expression`<+codebase.build.type>==“PR”`.
 
 Use the following expressions in Harness to refer to the various Git attributes for manual pull request builds.
 
@@ -216,7 +216,7 @@ State of the Git working directory.
 
 You can configure [Triggers](/docs/category/triggers) in Harness for events in your Git repo. Harness automatically triggers a build whenever there's a new action on your Git repo. A **Pull Request Webhook Event** is when your build is automatically triggered in Harness due to a new pull event on your Git repo. See [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md) to set up a **Trigger** in Harness.
 
-You can refer to the webhook pull request in Harness with the expression`<+codebase.build.type> == “PR”`.
+You can refer to the webhook pull request in Harness with the expression`<+codebase.build.type>==“PR”`.
 
 Use the following expressions in Harness to refer to the following Git attributes for webhook-triggered pull request events.
 
@@ -296,7 +296,7 @@ State of the Git working directory.
 
 You can configure [Trigger](/docs/category/triggers) in Harness for an event on your Git repo, and Harness will automatically trigger a build whenever there is a new action on your Git repo. A **Push Webhook Event** is when your build is automatically triggered in Harness due to a new push action on your Git repo. See [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md) to set up a **Trigger** in Harness.
 
-You can refer to the webhook pull request in Harness with the expression`<+codebase.build.type> == “Push”`.
+You can refer to the webhook pull request in Harness with the expression`<+codebase.build.type>==“Push”`.
 
 Use the following expressions in Harness to refer to the following Git attributes for webhook-triggered push request events.
 
