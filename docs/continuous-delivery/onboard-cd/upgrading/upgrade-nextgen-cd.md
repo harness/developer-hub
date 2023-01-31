@@ -29,7 +29,7 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
 
 - 1/1/2023: Harness First Gen will be in maintenance mode. 
   - No new features will be added.
-  - The Security and Bug fixes will continue to be addressed
+  - Security and bug fixes will continue to be addressed.
 
 
 - 10/1/2023. End of SMP releases
