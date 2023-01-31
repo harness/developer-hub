@@ -25,7 +25,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Early access
 
-- You can delete a user provisioned in Harness through SCIM in NextGen while retaining the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
+- You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
 
 ### Fixed issues
 
