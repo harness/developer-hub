@@ -38,8 +38,9 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
 
 
 - 1/1/2024. End of support for FirstGen CD.
-  - Harness Support will no longer be taking support requests for the First Gen CD Product.
-  - Security Fixes will still be addressed however, product defects will not be.
+  - Harness Support will no longer accept support requests for FirstGen CD.
+  - Security fixes will still be addressed.
+  - Product defects will not be addressed.
 
 
 - 4/1/2024. FirstGen SaaS product shutdown.
