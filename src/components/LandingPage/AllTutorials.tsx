@@ -459,6 +459,18 @@ const CEList: CardItem[] = [
     time: "15min",
     link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
   },
+  {
+    title: "Your first chaos experiment execution using APIs",
+    module: "ce",
+    icon: "/img/icon_ce.svg",
+    description: (
+      <>Executing a chaos experiment on Kubernetes for the first time using APIs.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+  },
 ];
 
 const PlatformList: CardItem[] = [

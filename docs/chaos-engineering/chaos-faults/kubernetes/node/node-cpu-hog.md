@@ -1,38 +1,37 @@
 ---
 id: node-cpu-hog
-title: Node CPU Hog
+title: Node CPU hog
 ---
+Node CPU hog exhausts the CPU resources on a Kubernetes node. 
+- The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator). 
+- The chaos affects the application for a period defined by the `TOTAL_CHAOS_DURATION` environment variable.
 
-## Introduction
-- This fault causes CPU resource exhaustion on the Kubernetes node. The fault aims to verify resiliency of applications whose replicas may be evicted on account on nodes turning unschedulable (Not Ready) due to lack of CPU resources.
-- The CPU chaos is injected using a helper pod running the linux stress tool (a workload generator). The chaos is effected for a period equalling the `TOTAL_CHAOS_DURATION`
-Application implies services. Can be reframed as: Tests application resiliency upon replica evictions caused due to lack of CPU resources.
 
-:::tip Fault execution flow chart 
 ![Node CPU Hog](./static/images/node-stress.png)
-:::
 
-## Uses
+
+## Usage
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-Coming soon.
+The fault aims to verify the resiliency of applications whose replicas may be evicted on account of nodes turning unschedulable (Not Ready) or new replicas not being able to schedule due to a lack of CPU resources.
+The fault causes CPU stress on the target node(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
-The target nodes should be in ready state before and after chaos injection.
-:::
+- Kubernetes > 1.16.
 
-## Fault Tunables
+
+## Default validations
+
+The target nodes should be in the ready state before and after injecting chaos.
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
       <tr>
@@ -42,16 +41,16 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TARGET_NODES </td>
-        <td> Comma separated list of nodes, subjected to node CPU hog chaos</td>
+        <td> Comma-separated list of nodes subject to node CPU hog. </td>
         <td> </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target nodes if TARGET_NODES ENV is not set </td>
-        <td>It is mutually exclusive with the TARGET_NODES ENV. If both are provided then it will use the TARGET_NODES</td>
+        <td> It contains the node label that is used to filter the target nodes.</td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence.</td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -60,52 +59,47 @@ The target nodes should be in ready state before and after chaos injection.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Defaults to 60 </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 60s. </td>
       </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to <code>litmus</code> </td>
-      </tr>
-      <tr>
+        <tr>
         <td> LIB_IMAGE </td>
-        <td> Image used to run the stress command </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
+        <td> Image used to inject stress. </td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before & after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s.</td>
         <td> </td>
       </tr>
       <tr>
         <td> NODE_CPU_CORE </td>
-        <td> Number of cores of node CPU to be consumed </td>
-        <td> Defaults to <code>2</code> </td>
+        <td> Number of cores of the CPU to be consumed. </td>
+        <td> Defaults to <code>2</code>. </td>
       </tr>  
         <tr>
             <td> NODES_AFFECTED_PERC </td>
-            <td> The Percentage of total nodes to target </td>
-            <td> Defaults to 0 (corresponds to 1 node), provide numeric value only </td>
+            <td> Percentage of total nodes to target, that takes numeric values only. </td>
+            <td> Defaults to 0 (corresponds to 1 node). </td>
         </tr> 
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple target pods </td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> Sequence of chaos execution for multiple target pods. </td>
+            <td> Defaults to parallel. Supports serial sequence as well. </td>
         </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
+### Common and node-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [node-specific tunables](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
-### Node CPU Cores
-It contains number of cores of node CPU to be consumed. It can be tuned via `NODE_CPU_CORE` ENV.
+### Node CPU cores
+It contains the number of cores of CPU that will be consumed. You can tune it using the `NODE_CPU_CORE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/node-cpu-hog/node-cpu-core.yaml yaml)
 ```yaml
@@ -130,11 +124,11 @@ spec:
           VALUE: '60'
 ```
 
-### Node CPU Load
+### Node CPU load
 
-It contains percentage of node CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
+It contains the percentage of CPU that will be consumed. You can tune it using the `CPU_LOAD` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/node-cpu-hog/node-cpu-load.yaml yaml)
 ```yaml

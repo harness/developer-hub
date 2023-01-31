@@ -2,25 +2,22 @@
 id: ecs-task-stop
 title: ECS task stop
 ---
-ECS task stop is an AWS fault that:
-- Injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.
+ECS task stop is an AWS fault that injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.
+- This fault results in the unavailability of the application running on the tasks.
 
-:::tip Fault execution flow chart
 ![ECS Task Stop](./static/images/ecs-task-stop.png)
-:::
+
 
 ## Usage
 
 <details>
 <summary>View fault usage</summary>
 <div>
-ECS task stop chaos is a frequent scenario observed with ECS clusters. This chaos results in the unavailability of the application running on the tasks.
+This fault determines the resilience of an application when ECS tasks unexpectedly stop due to task being unavailable.
 </div>
 </details>
 
 ## Prerequisites
-
-:::info
 
 - Kubernetes >= 1.17
 - Sufficient AWS access to stop the ECS tasks.
@@ -41,11 +38,10 @@ stringData:
 ```
 
 - If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the ChaosExperiment CR with the same name.
-:::
 
 ## Permissions required
 
-- Here is an example AWS policy to help execute the ECS task stop fault.
+Here is an example AWS policy to help execute the fault.
 
 <details>
 <summary>View policy for this fault</summary>
@@ -71,15 +67,11 @@ stringData:
 ```
 </details>
 
-- Refer to the [superset permission (or policy)](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission (or policy)](./policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validation
+## Default validations
 
-:::info
-
-- Target ECS tasks should be in a healthy state.
-
-:::
+The target ECS tasks should be in a healthy state.
 
 ## Fault tunables   
 
@@ -155,9 +147,9 @@ stringData:
 
 ## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### ECS service name
 

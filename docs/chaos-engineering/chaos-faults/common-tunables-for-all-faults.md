@@ -1,11 +1,11 @@
 ---
-title: Common Tunables for All Faults
+title: Common tunables for all faults
 ---
-Fault tunables are common for all the faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
+Fault tunables common to all the faults are provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
 ### Duration of the chaos
 
-It defines the total duration of the chaos injection. You can tune it using the `TOTAL_CHAOS_DURATION` environment variable. It is in unit of seconds.
+It defines the total duration of the chaos injection (in seconds). You can tune it using the `TOTAL_CHAOS_DURATION` environment variable.
 
 Use the following example to tune it:
 
@@ -34,7 +34,7 @@ spec:
           VALUE: '60'
 ```
 
-### Multiple Iterations Of Chaos
+### Multiple iterations of chaos
 
 Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. This variable defines the delay between each chaos iteration.
 
@@ -68,7 +68,7 @@ spec:
           VALUE: '60'
 ```
 
-### Chaos Interval
+### Chaos interval
 
 Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. This variable defines the delay between each chaos iteration.
 
@@ -102,7 +102,7 @@ spec:
           VALUE: '60'
 ```
 
-### Ramp Time
+### Ramp time
 
 It defines the period to wait before and after injecting chaos. You can tune it using the `RAMP_TIME` environment variable. It is in unit of seconds.
 
@@ -171,7 +171,7 @@ spec:
 
 ### Instance ID
 
-It defines a user-defined string that holds metadata/info about the current run/instance of chaos. For example: 04-05-2020-9-00. This string is appended as a suffix in the chaosresult CR name. It can be tuned using the `INSTANCE_ID` environment variable.
+It defines a user-defined string that holds metadata/info about the current run/instance of chaos. For example: `04-05-2020-9-00`. This string is appended as a suffix in the chaosresult CR name. It can be tuned using the `INSTANCE_ID` environment variable.
 
 Use the following example to tune it:
 
@@ -229,7 +229,7 @@ spec:
     spec:
       components:
         env:
-        # nane of the lib image
+        # name of the lib image
         - name: LIB_IMAGE
           value: 'litmuschaos/go-runner:latest'
 ```

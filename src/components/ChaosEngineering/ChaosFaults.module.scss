@@ -1,0 +1,9 @@
+.spaceBetween {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 3rem auto;
+	gap: 2rem;
+	a:hover {
+		text-decoration: none;
+	}
+}

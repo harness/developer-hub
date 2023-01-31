@@ -1,12 +1,12 @@
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-loss
+  - name: VMware-network-loss
     spec:
       components:
         env:
