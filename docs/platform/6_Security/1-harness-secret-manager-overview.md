@@ -38,7 +38,7 @@ Any secret manager requires a running Harness Delegate to encrypt and decrypt se
 
 :::
 
-You can manage your secrets in Harness using either a Key Management Service or third-party Secrets Manager.
+You can manage your secrets in Harness by using either a key management service (KMS) or a third-party secrets manager.
 
 #### Using Key Management Services
 
