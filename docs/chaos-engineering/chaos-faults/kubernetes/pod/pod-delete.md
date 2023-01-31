@@ -5,37 +5,25 @@ title: Pod delete
 
 Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random) replicas of an application resource to fail forcibly (or gracefully).
 - It tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
+- It verifies disk (or volume) re-attachment times in stateful applications, application start-up times, and readiness probe configuration (health endpoints and delays).
+- It also verifies adherence to topology constraints (node selectors, tolerations, zone distribution, affinity (or anti-affinity) policies), proxy registration times in service-mesh environments, post (lifecycle)-hooks and termination seconds configuration for the microservices (under active load)- i.e. graceful termination handling, resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes for successful schedule).
 
 
 ![Pod Delete](./static/images/pod-delete.png)
 
+## When can you use pod delete?
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
 In distributed systems like Kubernetes, your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to failures.
-It is important to ensure that the applications have minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases, and how the horizontal pod autoscaler scales based on the observed resource utilization. It is also important to understand how much time it takes for persistent volume to after rescheduling. 
-It simulates graceful delete (or reschedule) of pods as a result of upgrades, forced delete of pods as a result of eviction, and leader-election in complex applications.
-It verifies disk (or volume) re-attachment times in stateful applications, application start-up times, readiness probe configuration (health endpoints and delays), topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies), proxy registration times in service-mesh environments, post (lifecycle)-hooks and terminationSeconds configuration for the microservices (under active load) - i.e. graceful termination handling, resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes for successful schedule).
+It is important to ensure that the applications have a minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases, and how the horizontal pod autoscaler scales based on the observed resource utilization. It is also important to understand how much time it takes for persistent volume after rescheduling. 
+It simulates graceful delete (or rescheduling) of pods as a result of upgrades, forced delete of pods as a result of eviction, and leader-election in complex applications.
 
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes> 1.16.
-
-
-## Default validations
-
-The application pods should be in running state before and after chaos injection.
+**Note**
+- You will need Kubernetes > 1.16 to execute this fault.
+- Ensure that application pods are in running state before and after chaos injection.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+<h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -44,51 +32,46 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (in sec) </td>
-        <td> Defaults to 15s, <b>:</b> Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few min </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Defaults to 15s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Time interval b/w two successive pod failures (in sec) </td>
-        <td> Defaults to 5s </td>
+        <td> Time interval between two successive pod failures (in seconds). </td>
+        <td> Defaults to 5s. </td>
       </tr>
       <tr>
         <td> RANDOMNESS </td>
-        <td> Introduces randomness to pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
-        <td> It supports true or false. Default value: false </td>
+        <td> Introduces randomness into pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
+        <td> Defaults to false. Supports true as well. </td>
       </tr>
       <tr>
         <td> FORCE </td>
-        <td> Application Pod deletion mode. <code>false</code> indicates graceful deletion with default termination period of 30s. <code>true</code> indicates an immediate forceful deletion with 0s grace period</td>
-        <td> Default to <code>true</code>, With <code>terminationGracePeriodSeconds=0</code> </td>
+        <td> Application Pod deletion mode. <code>false</code> indicates graceful deletion with the default termination period of 30s. <code>true</code> indicates an immediate forceful deletion with 0s grace period</td>
+        <td> Defaults to <code>true</code>, with <code>terminationGracePeriodSeconds=0</code> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod delete chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        <td> Comma-separated list of application pod names subject to chaos. </td>
+        <td> If it is not provided, it selects target pods based on provided appLabels. </td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+        <td> Percentage of total pods to target (takes numeric values only). </td>
+        <td> Defaults to 0 (corresponds to 1 replica). </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods. </td>
+        <td> Defaults to parallel. Supports serial as well. </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
 
 ### Force delete
 
@@ -167,3 +150,5 @@ spec:
             - name: CHAOS_INTERVAL
               value: "5-10"
 ```
+
+**Note:** Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod-specific tunables. 
