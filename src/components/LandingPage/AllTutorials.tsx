@@ -462,7 +462,7 @@ const CEList: CardItem[] = [
   {
     title: "Your first chaos experiment execution using APIs",
     module: "ce",
-    icon: "/img/icon_ce.svg",
+    icon: "img/icon_ce.svg",
     description: (
       <>Executing a chaos experiment on Kubernetes for the first time using APIs.</>
     ),
