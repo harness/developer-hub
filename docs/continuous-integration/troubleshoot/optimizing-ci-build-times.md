@@ -12,13 +12,13 @@ helpdocs_is_published: true
 
 You can use the following methods to speed up your CI builds.
 
-### Test Intelligence
+## Test Intelligence
 
 Testing is an important part of Continuous Integration. Testing safeguards the quality of your product before shipping. But testing can also take a lot of time because a test cycle involves multiple tests. Often, the tests run are irrelevant to the code changes that triggered the build.
 
 [Test Intelligence](../ci-quickstarts/test-intelligence-concepts.md) dramatically improves test times by running only the tests required to confirm the quality of the code changes that triggered the CI Pipeline. 
 
-### Looping Strategies
+## Looping strategies
 
 [Looping strategies](../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) enable you to run a Stage or Step multiple times with different inputs. This eliminates the need to copy the same Stage or Step for each variation you need. It also makes the Pipeline more readable, clean, and easy to maintain. Looping strategies enable use cases such as:
 
@@ -26,7 +26,7 @@ Testing is an important part of Continuous Integration. Testing safeguards the q
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
 * You have a Build Pipeline with 20 unit tests. To speed up execution, you want to run the tests in parallel across 4 jobs that run 5 tests each.
 
-### Optimize Docker Images to Reduce Build Times
+## Optimize Docker images to reduce build times
 
 The following practices can reduce your build times significantly: 
 
@@ -37,7 +37,7 @@ Pre-building images with all required dependencies is more efficient than downlo
 
 For more best practices, see [Best Practices for Writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) in the Docker documentation.
  
-### Enable Docker Layer Caching in Build Steps
+## Enable Docker Layer Caching in Build steps
 
 Remote Docker Layer Caching can dramatically improve build times by sharing layers across Pipelines, Stages, and Steps. You can set up Docker Layer Caching in the following Build Steps:
 
@@ -45,7 +45,7 @@ Remote Docker Layer Caching can dramatically improve build times by sharing laye
 * [Build and Push to ECR](../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
 * [Build and Push to GCR](../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
 
-### Optimize your Build Tests
+## Optimize your build tests
 
 The following practices can reduce your testing and resulting build times:
 
@@ -55,18 +55,18 @@ The following practices can reduce your testing and resulting build times:
 * Look for unnecessary `sleep` statements in your unit test code.
 * Order your tests so that the tests most likely to fail come first.
 
-### Cache and Reuse Data for Your Fetch Operations
+## Cache and reuse data for your fetch operations
 
 Caching and reusing can be useful for data that your builds need to fetch, but that you cannot include in an optimized image as described above. Caching ensures faster job execution by reusing the expensive fetch operation data from previous jobs. For an comprehensive overview, go to [Harness CI for UI Builds](https://harness.io/blog/continuous-integration/harness-cie-ui-builds/). 
 
-#### Automatic caching
+### Automatic caching
 
 You can set up your pipeline to cache your build artifacts automatically. Note the following:  
 
 * Automatic caching is currently supported for the following. 
-  - Harness Cloud build infrastructures.
-  - Basel, Maven, Gradle, Yarn, and Node frameworks.
-* You can implement [manual caching](#manual-caching) for other infrastructures, frameworks, and languages. 
+  - Harness Cloud build infrastructures
+  - Basel, Maven, Gradle, Yarn, and Node frameworks
+[manual caching](#manual-caching)
 * Harness Cloud can cache up to 2GB of data per account. All pipelines in the account can use the same cache. 
 * Cache retention window is 15 days, which resets whenever the cache gets updated.
 
@@ -86,9 +86,19 @@ To enable automatic caching on a CI Build stage, add the following lines to  the
               - vendor           # - relative path -- i.e., /harness/vendor
           cloneCodebase: true
 ```
-You can also use the followinging API calls to download and delete cache data:
+This feature includes the following API calls. 
 
-##### Download cache from pipeline
+:::note
+
+You must have an API Key with [core_account_edit](/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference#harness-api-permissions) permissions to use these commands.
+
+For information about API keys, go to [Add and Manage API Keys](/docs/platform/role-based-access-control/add-and-manage-api-keys). 
+
+:::
+
+#### Get cache metadata
+
+Get metadata about the cache, such as size and location. 
 
 ```
 curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
@@ -96,23 +106,24 @@ curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?acco
 --header 'Authorization: Bearer $AUTH_TOKEN'
 ```
 
-##### Delete cache for pipeline
+#### Delete cache for pipeline
+
+Delete the cache. You can include an optional `path` parameter to delete a specific subfolder in the cache.
 
 ```
-curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
+curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID&path=/path/to/deleted/folder' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer $AUTH_TOKEN'
 ```
 
+### Manual caching
 
-#### Manual Caching
-
-You can set up manual caching in pipelines where [automatical caching](#manual-caching) is not yet available. See the following for end-to-end-workflow descriptions:  
+[automatical caching](#manual-caching)
 
 * [Save and Restore Cache from S3](../use-ci/caching-ci-data/saving-cache.md)
 * [Save and Restore Cache from GCS](../use-ci/caching-ci-data/save-cache-in-gcs.md)
 
-### Increase Step Resources
+## Increase step resources
 
 If you still find that your builds are taking too long, check your infrastructure monitoring tools for potential bottlenecks during the time windows when your builds are running. Increasing memory or CPU capacity in your Build Steps might help speed up your builds. 
 
