@@ -32,9 +32,9 @@ The FirstGen to NextGen CD upgrade will occur on the following dates:
   - Security and bug fixes will continue to be addressed.
 
 
-- 10/1/2023. End of SMP releases
-  - Harness will no longer publish new versions of the Self Hosted Harness Platform for Current Gen
-  - Only Harness Next Gen versions will be released in our SMP releases. 
+- 10/1/2023. End of SMP releases.
+  - Harness will no longer publish new versions of the Self Hosted Harness Platform (SMP) for Harness FirstGen.
+  - Only Harness NextGen versions will be released in our SMP releases. 
 
 
 - 1/1/2024. End of support for FirstGen CD.
