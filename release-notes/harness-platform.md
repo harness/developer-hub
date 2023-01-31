@@ -13,6 +13,47 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## January 31, 2023, version 783xx
+
+### What's new
+
+- The pages in app.harness.io autofocus the search input box by default. (PL-30656)
+  
+  This results in a seamless search experience.
+
+- Entities in Harness can now have `/` for the Name. (PL-29929)
+
+### Early access
+
+- The feature flag `PL_USER_DELETION_V2` lets you delete SCIM provisioned users in Harness NextGen without affecting users in FirstGen. (PL-23577)
+
+### Fixed issues
+
+- The user group details page in the project and org scope does not display correctly when opened using the **Open in new tab** option. (PL-30911)
+  
+  An enhancement to the code has fixed this issue.
+
+- The email update for SCIM users does not work. (PL-30439)
+  
+  A code enhancement to support user metadata updates has fixed this issue.
+  
+- Force deletion of a secret used to create a Secrets Manager throws an incorrect error. (PL-29983)
+
+  This has been fixed by displaying the appropriate error message.
+
+- Pipelines with input sets and triggers chained together do not display input set fields correctly. (PIE-7681)
+  
+  An enhancement to the code has fixed this issue.
+
+- If an execution has a matrix strategy, the text on the pipeline execution page overlaps. (PIE-7429)
+  
+  An adjustment to the height of the matrix wrapper has fixed this issue.
+
+- API PUT operations for Bitbucket SaaS and on-prem connectors return an incorrect status code when there are no changes. (PIE-6230)
+  
+  A modification to the error message to display an appropriate explanation of the error has fixed this issue.
+  
+
 ## January 17, 2023, version 78214
 
 ### What's new
