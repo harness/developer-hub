@@ -99,7 +99,7 @@ Decrypting a secret sometimes requires its metadata. When you edit a secret, its
 
 - The secret is of the reference type: If a secret's reference path is edited, the path is updated in the database. However, the cached value continues to store the older path and fetches the stale secret.
 
-The same does not happen for secret managers who do not use KMS. The secrets for non-KMS secret managers are inline, and no meta-data is used to retrieve the value. 
+This issue does not occur with secrets managers that do not use a KMS. In such secrets managers. secrets are inline, and no metadata is used to retrieve the value. 
 
 
 
