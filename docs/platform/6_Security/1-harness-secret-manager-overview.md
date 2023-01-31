@@ -85,7 +85,7 @@ When you set up [Harness Git Experience](../10_Git-Experience/git-experience-ove
 
 If you select **Connect Through Manager**, the Harness Manager decrypts the secrets you have set up in the Harness Secrets Manager.
 
-This is different from **Connect Through Delegate** where only the Harness Delegate, which sits in your private network, has access to your key management system.
+If you select **Connect Through Delegate**, Harness Delegate, which runs in your private network and therefore has access to your key management system, decrypts the secrets.
 
 #### Secret Cache
 
