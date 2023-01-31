@@ -846,12 +846,3 @@ Mobile browsers are not supported.
 
 Minimum supported screen resolution is 1440x900.
 
-<p id="see-also"></p>
-### See Also
-
-- [Kubernetes](/docs/category/kubernetes)
-- [Helm v3.0](../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md)
-- [Serverless Lambda](../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md)
-- [Azure Web App](../continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial.md)
-- [Secure Shell (SSH](../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md)
-- [AWS ECS](../continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md)
