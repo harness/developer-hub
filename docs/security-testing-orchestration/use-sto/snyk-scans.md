@@ -71,12 +71,12 @@ The following example describes how to scan a local .NET image built using Mavan
           customer_artifacts_path: /shared/customer_artifacts
           manual_upload_filename: SubSolution.json
         imagePullPolicy: Always
-   ```      
+   ```     
+
+<!--  
 ### YAML pipeline example
 
 The following illustrates an end-to-end pipeline for building and scanning a .NET image.
-
-**TBD I TOOK THIS YAML FROM [THIS PIPELINE](https://qa.harness.io/ng/#/account/BdsgiWzwT7CQFeJl9XkQ3A/ci/orgs/default/projects/STO/pipelines/snykcodeingestion/pipeline-studio/?storeType=INLINE&stageId=build). THE BUILD CODE IS DIFFERENT FROM WHAT IS DESCRIBED ABOVE AND IN THE DESCRIPTION FIELD OF [DOC-2239](https://harness.atlassian.net/browse/DOC-2239) **
 
 ```yaml 
 pipeline:
@@ -164,6 +164,6 @@ pipeline:
             value: dev
 
 ```
-   
+--> 
 
 
