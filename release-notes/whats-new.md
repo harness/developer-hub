@@ -46,10 +46,6 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   ![Nexus artifacts](static/44009d0aa38851738ebed25ff3dabeb232bc729f904e219bb14d8cdd0178a283.png) 
 
-### Harness Platform
-
-- (Looping strategies)[https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/] are no longer behind a feature flag.
-
 ## January 17, 2023, version 78214
 
 ### Continuous Delivery
@@ -69,7 +65,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   Hover over the error message to see the full message.
   
-### Harness Platform
+### Platform
 
 - A dedicated release notes page was introduced for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
 
