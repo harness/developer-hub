@@ -109,7 +109,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - The PagerDuty notifications are not showing start and end dates for pipeline/stage execution. (CDS-49852)
 
   The PagerDuty template was using the wrong placeholder for [PagerDuty notifications](https://developer.harness.io/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events/#option-pagerduty-notifications). The template is now modified to use the correct placeholder name.
-- Deployment freeze recurrence time should be greater than start time. (CDS-49840)
+- The deployment freeze recurrence time should be greater than the start time. (CDS-49840)
   
   Harness was letting users set a recurrence time in the past. We have added a check to prevent users from creating a freeze window with a recurrence time that is before than the current time.
 - An empty trigger name is not disabling the **Continue** button. (CDS-49631)
@@ -117,14 +117,14 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   When the trigger **Name** was empty a validation error appeared but the **Continue** button could still be clicked.
   
   Now, when the trigger **Name** is empty a validation error appears and the **Continue** button is disabled.
-- **Infrastructure** setting retained in the UI when environment is marked as **Runtime Input**. (CDS-49236)
+- The **Infrastructure** setting is retained in the UI when the environment is marked as **Runtime Input**. (CDS-49236)
   
   Now the **Runtime Input** setting is maintained and the **Infrastructure** setting is a runtime input.
 - Different artifacts with the same build Id are not considered in services listed in the **Environments** dashboard. (CDS-49189)
   
   Earlier, only the build Id was used to group instances in the **Environments** dashboard. When a user deployed a service with the same build Id but different artifact paths, either of the artifact paths would be present in the hover over the build Id in **Artifacts**.
 
-  Now we group services on their display name (artifact path + build Id) so that there are different entries for different artifacts even if they have the same build Id.
+  Now we group services based on their display name (artifact path + build Id) so that there are different entries for different artifacts even if they have the same build Id.
   
   | First artifact  | Second artifact   |
   |-------------- | -------------- |
@@ -163,7 +163,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   When users selected an environment and infrastructure, cleared the selected environment, and then reselected the same environment and infrastructure, connector settings did not display in the **Run** pipeline form.
     
-  Now, the connector setting appear when reselecting the environment and infrastructure.
+  Now, the connector settings appear when you reselect the environment and infrastructure.
 
 
 ## January 17, 2023, version 78214
