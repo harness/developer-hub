@@ -172,9 +172,11 @@ The console view can also help view multiple deployments clearly:
 
 ## Propagating multiple Services in stages
 
-When you add additional CD stages to a pipeline you can propagate the multiple Services the same way you would with one Service.
+Service propagation is not supported when using multiple services in a single stage (multi service deployments).
 
-For details on propagating Services in stages, go to [Propagate CD services](../cd-services/cd-services-general/propagate-and-override-cd-services.md).
+When you add additional CD stages to a pipeline you cannot propagate the multiple services the same way you would with one service.
+
+For details on propagating services in stages, go to [Propagate CD services](../cd-services/cd-services-general/propagate-and-override-cd-services.md).
 
 ## Rollback with multiple Services and Environments
 
