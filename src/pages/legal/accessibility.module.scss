@@ -1,0 +1,10 @@
+.container {
+    padding-top: 3em;
+    padding-bottom: 3em;
+    a {
+        color: var(--primary);
+        &:hover {
+            color: var(--primary-5);
+        }
+    }
+}

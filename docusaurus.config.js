@@ -327,6 +327,10 @@ const config = {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
                 // href: "javascript: alert(33)",
               },
+              {
+                label: "Accessibility",
+                to: "legal/accessibility",
+              },
             ],
           },
         ],
