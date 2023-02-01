@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2020-12-02T10:00
+date: 2023-02-01T10:00
 sidebar_position: 9
 ---
 
@@ -13,12 +13,63 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+
+## January 17, 2023, version 0.7
+
+### What's new
+
+* Resilience tab introduced on the pipeline execution screen (Chaos-963)
+    * This release adds a resilience tab, which displays the experiment results as a list of probes, their logs (descriptions), and probe status. Instead of navigating to the **View detailed execution** section of the experiment, you can now view the results of all the experiments on the pipeline execution screen. 
+
+* Support for X-API-KEY authentication (Chaos-667)
+    * This release adds support for X-API-KEY authentication for user facing chaos APIs. This way, you can avoid using the JWT token which gives more control over the module and set your own custom expiration time on the X-API-KEY. 
+
+* Supports deployment on existing chaos infrastructure
+    * This release adds support for deploying your project on existing chaos infrastructure (also known as the greenfield method of deployment). You can specify the name of the delegate and other details like installation mode, service account name, and namespace, after which the YAML manifest is generated and sent over to the cluster rather than being downloaded on your system. Once the cluster receives the manifest, the delegate deploys your project on the selected infrastructure. Currently, you can only connect to the chaos infrastructure using account-level delegates.
+
+* Details of an experiment are pre-filled when adding it to chaoshub (Chaos-989)
+    * Instead of having to re-enter the same details, this release pre-fills the details of the experiment that you want to add to chaoshub. You can simply navigate to the experiment, and click on **Add to ChaosHub**. This will display a screen with the name of the experiment, a description (optional), and tags (optional). You can add your experiment to the chaoshub of your choice by clicking **Save**.
+
+* One sync retry to connect to a disconnected chaoshub (Chaos-999)
+    * When you try to connect to a chaoshub that is disconnected, you will not see any faults or experiments in the chaoshub. This release adds a feature such that when you click on a disconnected chaoshub, it tries to synchronize and connect to the chaoshub at least once. 
+
+* Filter chaos experiment based on target infrastructure (Chaos-959)
+    * In the **Deployment** tab, when you click on **Pipeline** and select a chaos experiment, you can filter experiments based on their names. This release adds another filter so that you can view experiments based on the target infrastructure.
+
+* Display an error message when URL is incorrect (Chaos-1011)
+    * When a user enters an incorrect URL in their browser when they are inside a chaos experiment, previously the user interface would show a blank screen. This release displays an error message on the user interface stating that the entered URL is invalid.
+
+* Last updated by field shows updated user name (Chaos-916)
+    * In a chaos experiment, when an experiment is saved, it shows the **Resilience score** field, **Last run status**, and **Last updated by** as **N/A**. This release updates the  **Last updated by** field with the name of the user who updated the chaos experiment most recently.
+
+* Average resilience score shows difference between current and last executed resilience scores (Chaos-916)
+    * In the chaos experiments tab, the **Resilience score** field displays the resilience score as well as the percentage increase in resilience scores between the current and previous runs. This release removes the percentage increase, and instead, displays the difference between the current run and previous run’s resilience score for the same experiment for better readability.
+
+* Experiments overview page categorizes experiments based on average resilience score (Chaos-802)
+    * This release categorizes and displays all the chaos experiments based on the average resilience score. It also displays the number of experiments in each category. It shows three categories, i.e., experiments with an average resilience score between 0 and 40, 40 to 80, and 80 to 100. This provides better insights about the chaos experiments and their resilience scores. Previously, the overview page only showed the number of experiments that passed and the number of experiments that failed. 
+
+* Every run of an experiment is clickable to view detailed execution (Chaos-1032)
+    * In the **Chaos Experiments** tab, you can see the detailed execution of an experiment's runs by clicking on **View run**. This release makes every run of an experiment clickable so that you can view the detailed execution of an experiment by just clicking on the experiment.
+
+### Early access
+* There are no early access features in this release. 
+
+### Fixed issues
+* Searching for chaos experiments in the search bar only showed experiments that had been run at least once. Now it has been fixed such that when you search for an experiment, the search results include those experiments that were aborted and experiments that were saved but not run. (Chaos 916)
+* If some of the parameters were left as empty strings when specifying the target application parameters through a YAML manifest, the user interface for the target application page would crash. This has been fixed so that irrespective of the values entered in the YAML manifest, you can change the values of the target application on the user interface. (Chaos-970)
+* In a chaos experiment, the fault library would incorrectly show fault categories and fault labels even when the hub had been disconnected. It would persist data from the previously selected chaos hub. This has now been fixed. When you click on a disconnected chaos hub, it displays the message “No faults found in the selected hub”. (Chaos 971)
+* On the chaos hub screen, you could not scroll over the list of hubs from all places on the screen. Now the scroll bar has been shifted to the extreme right so that you can scroll through from anywhere on the screen. (Chaos-964)
+* When you hovered over a probe, the name of the probe would not be displayed fully if it was long. Now it has been fixed. (Chaos-990)
+* In the chaos hub, when the number of chaos faults that you wished to view on a page was altered (or increased), it would result in a blank page. Now it has been fixed. (Chaos-984)
+* When a chaos experiment was imported into the chaos hub, it would not be logged as an audit event and would not be displayed on the user interface. It has been fixed. (Chaos-779)
+* If no chaos infrastructure is connected with your project, it previously showed a blank screen. Now it displays the message, "There are no chaos infrastructure in your project." (Chaos-1009) 
+* In CRON experiments, the scheduled run time would always be shown in GMT. Now it has been fixed to show the run time in your browser’s time zone. (Chaos-1035)
+* The parameters in the YAML manifest of different runs of the same chaos experiment were inconsistent with the changes made (if any) in their respective runs. Now it has been fixed.
+
+
 ## December 23, 2022, version 0.6
 
 ### What’s new
-
-* Error boundary to avoid page crash (Chaos-843)
-    * This release adds an error boundary that avoids crashing the page when a component on the user interface is missing due to incompatibilities. Instead of the page crash, the component field is empty. 
 
 * Optimized listWorkflow and listWorkflowRun queries in the chaos manager (Chaos-860)
     * This release optimizes the listWorkflow and listWorkflowRun queries in the chaos manager by only fetching those experiments that the user requests, instead of loading all the experiments at once.
@@ -39,6 +90,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * There are no early access features in this release. 
 
 ### Fixed issues
+* When a component on the user interface was missing due to incompatibilities, the page would crash. Now it has been fixed so that instead of the page crashing, the component field shows as empty. (Chaos-843)
 * Experiments executed and triggered by respective categories (a pipeline, a scheduled CRON job, or a user) are correctly shown. (Chaos-800)
 * When a chaos experiment contains characters such as ‘ ‘, ‘/’, and so on, logs are correctly parsed and displayed on the screen. The execution is encoded before being sent to the control plane and decoded after being received by the user interface. (Chaos-854)
 * After deleting a chaos experiment from a particular page, the pagination is reset and only shows the available experiments. (Chaos-923)
@@ -46,9 +98,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * When a chaos experiment was pushed to the chaos hub, only a single fault associated with the experiment was being pushed, rather than all the faults. This is now fixed. (Chaos-973)
 * When a chaos experiment was deleted, only the most recent run was deleted, and the previous runs were retained in the cluster. Now it has been fixed such that when a chaos experiment is deleted, all the runs associated with it are deleted from the cluster. 
 * When a chaos experiment was deleted, the fault running within the experiment was not stopped). Now it has been fixed such that, when an experiment is deleted, the chaos fault running on the Kubernetes cluster is halted, the fault is deleted, and the experiment (as a whole) is deleted. (Chaos-782)
-
-* While 
-When a chaos experiment was running, the user interface incorrectly showed probes that were still being executed as failed probes. Now it has been fixed so that the interface shows the correct status of the probes being executed. (Chaos-911)
+* When a chaos experiment was running, the user interface incorrectly showed probes that were still being executed as failed probes. Now it has been fixed so that the interface shows the correct status of the probes being executed. (Chaos-911)
 * The term “agent” was changed to “infrastructure”. While selecting (or creating) an infrastructure, the search bar showed all available infrastructures irrespective of the search string entered by the user in the search bar. (Chaos-920) 
 * When a CRON experiment was stopped by the user, the current run used to stop, but the upcoming (and subsequent) runs were not being affected by the stop. It has been fixed now so that stopping an experiment will stop the upcoming schedules as well. (Chaos-713)
 
