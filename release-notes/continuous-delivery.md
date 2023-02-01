@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2022-12-22T10:00
+date: 2022-01-31T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
