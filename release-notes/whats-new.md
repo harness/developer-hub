@@ -48,7 +48,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Harness Platform
 
-- (Looping strategies)[https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/] are no longer behind a feature flag.
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) are no longer behind a feature flag. (PIE-5010)
 
 ## January 17, 2023, version 78214
 
