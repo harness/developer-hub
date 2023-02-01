@@ -1,6 +1,6 @@
 ---
 title: Build and Push an Image to Docker Registry Step Settings
-description: This topic provides settings you will need to build and push an Image to Docker Registry step, which creates a Docker image from a Dockerfile and pushes it to a Docker registry. You may also use this…
+description: This topic describes the settings you will need to utilize the "Build and Push an Image to Docker Registry" step, which creates a Docker image from a Dockerfile and pushes it to a Docker registry. You may also use this…
 tags: 
    - helpDocs
 # sidebar_position: 2
