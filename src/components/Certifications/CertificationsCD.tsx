@@ -30,9 +30,9 @@ export default function CertificationsCD() {
           </div>
           <h1>Continuous Delivery Certification</h1>
           <div>
-            Learn intelligent software delivery skills at your own pace and in
-            once place. Step-by-step tutorials, videos, and reference docs to
-            help you create and deliver software.
+              Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
+              Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
+              advanced verification, and intelligent rollback
           </div>
         </div>
         <div className={styles.right}>
@@ -51,7 +51,7 @@ export default function CertificationsCD() {
             <h3>Developer</h3>
             <div className={styles.descContainer}>
               Validate your broad knowledge of cloud concepts and the products,
-              services, tools, features, benefits, and use cases of CI.
+              services, tools, features, benefits, and use cases of CD.
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
@@ -81,7 +81,7 @@ export default function CertificationsCD() {
           <div className={styles.certCardContainer}>
             <h3>Administrator</h3>
             <div className={styles.descContainer}>
-              Assesses the fundamental skills to deploy and maintain CI
+              Assesses the fundamental skills to deploy and maintain CD
               projects.
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
@@ -116,7 +116,7 @@ export default function CertificationsCD() {
             <h3>Architect</h3>
             <div className={styles.descContainer}>
               Assess key technical job functions and advanced skills in design,
-              implementation and management of CI.
+              implementation and management of CD.
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
@@ -159,7 +159,7 @@ export default function CertificationsCD() {
 
       {/* Developer Study Guide */}
       <div className={styles.studyGuide}>
-        <h2>Developer Study Guide</h2>
+        <h2 id="cd-developer-study-guide">Developer Study Guide</h2>
         <div className={styles.studyGuideCard}>
           <div className={styles.info}>
             <i className="fa-solid fa-circle-info"></i>
@@ -180,11 +180,9 @@ export default function CertificationsCD() {
             <div className={styles.right}>
               <h3>Review Study Guide</h3>
               <div className={styles.desc}>
-                The CI Overview provides a bird's-eye view of all your Builds —
-                successful, failed, aborted, and expired — and the percentage of
-                successful builds for individual codebases. You can easily see
-                where your builds have failed and drill down into specific
-                builds to troubleshoot and analyze the root causes.
+                Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
+                Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
+                advanced verification, and intelligent rollback
               </div>
               <CertificationReviewGuide />
               <div className={styles.btnContainer}>

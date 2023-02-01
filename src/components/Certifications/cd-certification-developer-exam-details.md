@@ -6,7 +6,7 @@ title: Review Guide
 
 ## Preparing for the Exam
 
-The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and drill down into specific builds to troubleshoot and analyze the root causes.
+The CD Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and drill down into specific builds to troubleshoot and analyze the root causes.
 
 ### Exam Details
 
@@ -22,7 +22,7 @@ The CI Overview provides a bird's-eye view of all your Builds — successful, fa
 <details open>
 <summary>Exam Objectives</summary>
 
-The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and drill down into specific builds to troubleshoot and analyze the root causes.
+The CD Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and drill down into specific builds to troubleshoot and analyze the root causes.
 
 | #     | Objectives                                                                                |
 | ----- | ----------------------------------------------------------------------------------------- |
@@ -41,8 +41,6 @@ The CI Overview provides a bird's-eye view of all your Builds — successful, fa
 <br />
 
 ## Next steps
-
-The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and drill down into specific builds to troubleshoot and analyze the root causes.
 
 1. Create an account
 2. Register for an exam
