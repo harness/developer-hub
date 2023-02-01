@@ -50,7 +50,7 @@ Update the pipeline where you want to use the Docker delegate, either from YAML 
   Replace the `stages : stage : spec : infrastructure` section for the stage to use `platform` and `runtime` as follows.
   
     1. For the `os:` field, specify `Linux` | `MacOS` | `Windows`
-    2. For the `arch:` field, select the architectre that matches the tag set during the delegate setup. For example, 'macos-amd64'.
+    2. For the `arch:` field, specify `Amd64` | `Arm64`
 
 ##### `infrastructure` Field (*before*)
 
