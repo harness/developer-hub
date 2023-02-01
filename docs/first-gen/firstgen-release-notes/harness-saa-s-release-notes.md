@@ -35,7 +35,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 - When the scheduling of background jobs is skipped during startup, background jobs like the deletion of old records do not work.  (PL-31009)
    
-  An enhancement to the code has fixed this issue.
+  A code enhancement has fixed this issue.
 
 - Selecting a specific audit filter for an API key causes the UI to become unresponsive. (PL-30715, ZD-38400)
   
@@ -43,7 +43,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 - SAML users removed from the LDAP group are displayed in the linked user group in Harness. (PL-30291, ZD-37758)
 
-  An enhancement to the code has fixed this issue.
+  A code enhancement has fixed this issue.
 
 
 ### January 17, 2023, version 78105
