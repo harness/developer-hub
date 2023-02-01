@@ -16,7 +16,7 @@ This topic describes how to create AutoStopping Rules with Terraform using scrip
 
 * [AutoStopping Rules Overview](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md)
 * [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md)
-* [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
+* [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-azure)
 
 Perform the following steps to create AutoStopping Rules for Terraform.
 
@@ -58,16 +58,16 @@ Here are some of the sample scripts for different scenarios:
 
 #### Create AutoStopping Rules for an Instance
 
-The following sample script creates AutoStopping rules for an instance.
+The following sample scripts create AutoStopping rules for an instance.
 
-Specify the following details:
+  Example 1: Specify the following details:
 
 * **Token**: Specify the API Key.
 * **API\_URL**: Specify the endpoint.
 * **Account Identifier**: Specify the Account ID.
 * **Name**: Specify a name for your AutoStopping Rule.
 * **Fulfilment**: Specify the instance fulfillment type, **On-Demand** or **Spot**.
-* **L****oad balancer**: Specify the name of the load balancer domain name. You can obtain this information from the screen where you create the load balancer.
+* **Load balancer**: Specify the name of the load balancer domain name. You can obtain this information from the screen where you create the load balancer.
 * **Hosted Zone ID**: Specify the domain name for your Route 53 hosted zone.
 * **Resource\_ID**: Specify the instance ID.
 * **Routing**: Specify listeners information.
@@ -159,6 +159,99 @@ resource "harness-ccm_autostopping_rule" "rule_i2" {
   }  
 }
 ```
+
+Example 2:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+> 
+```
+> `terraform {
+>   required_providers {
+>     harness-ccm = {
+>       source = "harness.io/ccm/harness-ccm"
+>       version = "3.0.0"
+>     }
+>   }
+> }
+> provider "harness-ccm" {
+>   token = "pat.wFHXHD0RRQWoO8tIZT5YVw.62fdd5e88261467efba58c92.pJYInpG22oc40V0SzKPi"
+>   api_url = "https://app.harness.io/gateway/lw/api"
+>   account_identifier = "wFHXHD0RRQWoO8tIZT5YVw"
+> }
+> 
+> resource "harness-ccm_autostopping_rule" "rule_i2" {
+>   name = "Azure Terraform https"
+>   fulfilment = "ondemand"
+>   disabled = false
+>   cloud_account_id = "LightwingProd"
+>   kind = "instance"
+>   custom_domains = "ssl.lightwingtest.com"
+>   idle_time_mins = 5
+>   
+>   filter {
+>       resource_id = "/subscriptions/12d2db62-5aa9-471d-84bb-faa489b3e319/resourceGroups/lightwing-r-and-d/providers/Microsoft.Compute/virtualMachines/tls-nginx"
+>       region = "southcentralus"
+>   }
+>   http {
+>     load_balancer = "ssl.lightwingtest.com"
+> 
+>     routing {
+>         source_protocol = "https"
+>         target_protocol = "https"
+>         source_port = 443
+>         target_port = 443
+>         action = "forward"
+>     }
+> 
+>     routing {
+>         source_protocol = "http"
+>         target_protocol = "http"
+>         source_port = 80
+>         target_port = 80
+>         action = "forward"
+>     }
+>   }
+> 
+>   tcp {
+>     load_balancer = "azure-tf.io"
+>     routing {
+>         # ssh = 22
+>         # rdp = 3389
+>         ports = [80]
+>     }
+>   }
+> 
+>   health {
+>     protocol = "http"
+>     port = 80
+>     path = "/"
+>     timeout = 30
+>     status_code_from = 200
+>     status_code_to = 299
+>   }
+>  
+> }
+> 
+```
+
+
+
+
 #### Create AWS Instances and Enable AutoStopping Rules for the Instances
 
 The following sample script creates AWS instances and enables AutoStopping rules for those instances.

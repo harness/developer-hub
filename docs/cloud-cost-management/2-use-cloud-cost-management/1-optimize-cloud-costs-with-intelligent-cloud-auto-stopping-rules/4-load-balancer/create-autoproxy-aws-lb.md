@@ -1,5 +1,5 @@
 ---
-title: Create a custom load balancer in AWS
+title: Create an AutoStopping Proxy in AWS
 description: A load balancer distributes user traffic across multiple instances of your applications. Load balancing reduces the chances of performance issues in your applications by spreading the load.
 # sidebar_position: 3
 ---
@@ -21,7 +21,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 6. Click **Continue**.
 7. Click **Create AutoStopping Proxy**. 
 8. Click **Continue**.
-9. In the** Create a new AutoStopping Proxy **window, enter the following information:
+9. In the **Create a new AutoStopping Proxy** window, enter the following information:
     1. Provide a name for the AutoStopping Proxy.
     2. Select your preferred DNS provider and perform the mapping:
         *  If you select **Route 53**, you must choose a hosted zone from the available zones and enter the domain name. AutoStopping manages Route 53 configuration automatically. 
@@ -42,7 +42,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 
 ![](./static/aws-autoproxy-secrets-manager.png)
 
-14.  Enter the API key generated in Harness New Generation. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
+14.  Enter the API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
 15.  Select the **Security Group** of your instance.
 16.  Select the SSH key pair to connect to your VM.
 17.  Enter the **Secret ARN** in the **TLS Private Key Secret Version **field**.**

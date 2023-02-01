@@ -240,8 +240,8 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
   ![](./static/aws-set-up-tcp.png)
 
 
-1. Choose an AutoStopping Proxy load balancer (custom) from the **Specify AutoStopping Proxy** dropdown list to set up access.
-2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated.
+1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access.
+2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated based on the security group.
 3. Specify all the TCP ports your application is listening. Ensure these ports are open.
 4. Click **Next**.
 
@@ -331,7 +331,12 @@ Requests from these IP addresses or to these paths do not disturb the idle time 
 Similarly, you can configure custom inclusions. Requests to the specified path or from the specified IP address alone can invoke the cloud resource managed by AutoStopping. Only these requests are detected as traffic by the AutoStopping rule.
 
 ### Use an AutoStopping Proxy load balancer
-If you have not created a load balancer already, go to [Create an AutoStopping Proxy load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-autoproxy-aws-lb.md).
+If you have not created an AutoStopping proxy load balancer already, go to [Create an AutoStopping Proxy load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-autoproxy-aws-lb.md).
+
+
+:::note
+You can use the same proxy load balancer for more than one rule managing resources (VMs, ASG) within the same VPC.
+:::
 
 #### Enter Routing Configuration and Health Check Details
 

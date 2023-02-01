@@ -1,5 +1,5 @@
 ---
-title: Create a custom load balancer in Azure
+title: Create an AutoStopping Proxy in Azure
 description: A load balancer distributes user traffic across multiple instances of your applications. Load balancing reduces the chances of performance issues in your applications by spreading the load.
 # sidebar_position: 3
 ---
@@ -7,9 +7,9 @@ description: A load balancer distributes user traffic across multiple instances 
 
 A load balancer distributes user traffic across multiple instances of your applications. Load balancing reduces the chances of performance issues in your applications by spreading the load.
 
-You can create a custom load balancer using the AutoStopping proxy option. This feature allows you to launch a VM with the load balancer.
+You can create an AutoStopping proxy and launch a VM with the load balancer.
 
-Perform the following steps to create an AutoStopping proxy for your resources in Azure:
+Perform the following steps to create an AutoStopping proxy for your cloud resources in Azure:
 
 
 
@@ -91,6 +91,6 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
 
 16. **TLS Private Key Secret Version**: Create another secret for the private key and enter the value in this field.
 17. **Key Pair**: Enter the SSH key pair.
-18. **API Key**: Enter the NG API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
+18. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
 19. Enable **Allocate Static IP** if you need to access the VM outside the VPC. Ensure that the DNS resolves.
 20. Click **Save**.
