@@ -122,7 +122,7 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:</strong> CI Drone 1.0
+                  <strong>Product version:&nbsp;</strong> Harness CD Free Tier
                 </span>
               </div>
               <div className={styles.right}>
@@ -688,7 +688,7 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:</strong> CI Drone 1.0
+                  <strong>Product version:&nbsp;</strong> Harness CD Enterprise Tier
                 </span>
               </div>
               <div className={styles.right}>
@@ -775,7 +775,7 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:</strong> CI Drone 1.0
+                  <strong>Product version:&nbsp;</strong> Harness CD Enterprise Tier
                 </span>
               </div>
               <div className={styles.right}>

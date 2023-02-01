@@ -82,12 +82,8 @@ export default function CertificationsCD() {
             <h3>Administrator</h3>
             <div className={styles.descContainer}>
               Assesses the fundamental skills to deploy and maintain CD
-              projects.
+              projects and the overall Harness Platform. 
               <ul className={styles.courseList}>
-                <li className={styles.courseItem}>
-                  <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
-                </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
                   Deploy and implement
@@ -118,18 +114,6 @@ export default function CertificationsCD() {
               Assess key technical job functions and advanced skills in design,
               implementation and management of CD.
               <ul className={styles.courseList}>
-                <li className={styles.courseItem}>
-                  <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
-                </li>
-                <li className={styles.courseItem}>
-                  <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
-                </li>
-                <li className={styles.courseItem}>
-                  <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
-                </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
                   Deploy and implement
