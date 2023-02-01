@@ -22,9 +22,7 @@ export default function Certifications() {
         <div className={styles.left}>
           <h1>Harness Certified Expert</h1>
           <div>
-            Learn intelligent software delivery skills at your own pace and in
-            once place. Step-by-step tutorials, videos, and reference docs to
-            help you create and deliver software.
+            Build, Advance and Certify your Software Delivery and Harness expertise with us
           </div>
         </div>
         <div className={styles.right}>
@@ -129,10 +127,10 @@ export default function Certifications() {
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="/certifications/continuous-delivery">
                     <button className={styles.moreDetails}>More Details</button>
                   </Link>
-                  <Link href="#">
+                  <Link href="certifications/continuous-delivery#cd-developer-study-guide">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
                       <i className="fa-regular fa-arrow-right"></i>
@@ -143,7 +141,8 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* CI */}
+
+          {/* CI 
           <div className={clsx(styles.certCard, styles.moduleCI)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -223,7 +222,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* FF */}
+          {/* FF *
           <div className={clsx(styles.certCard, styles.moduleFF)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -302,7 +301,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* CCM */}
+          {/* CCM 
           <div className={clsx(styles.certCard, styles.moduleCCM)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -381,7 +380,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* STO */}
+          {/* STO 
           <div className={clsx(styles.certCard, styles.moduleSTO)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -461,7 +460,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* STO */}
+          {/* STO 
           <div className={clsx(styles.certCard, styles.moduleSRM)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -541,7 +540,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* CE */}
+          {/* CE 
           <div className={clsx(styles.certCard, styles.moduleCE)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -619,6 +618,7 @@ export default function Certifications() {
               </div>
             </div>
           </div>
+          */}
         </div>
 
         {/* Administrator Tab Content */}
