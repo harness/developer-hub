@@ -25,16 +25,16 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
     * This release adds support for X-API-KEY authentication for user facing chaos APIs. This way, you can avoid using the JWT token which gives more control over the module and set your own custom expiration time on the X-API-KEY. 
 
 * Supports deployment on existing chaos infrastructure
-    * This release adds support for deploying your project on existing chaos infrastructure (also known as the greenfield method of deployment). You can specify the name of the delegate and other details like installation mode, service account name, and namespace, after which the YAML manifest is generated and sent over to the cluster rather than being downloaded on your system. Once the cluster receives the manifest, the delegate deploys your project on the selected infrastructure. Currently, you can only connect to the chaos infrastructure using account-level delegates.
+    * This release adds support for deploying your chaos infrastructures on clusters using the existing (deployed) Harness delegates (also known as the brownfield method of deployment). You can select the connector that points to the required delegate and other details like installation mode, service account name, and namespace, after which the YAML manifest is generated and sent over to the cluster rather than being downloaded on your system. Once the delegate receives the manifest, it deploys your chaos infrastructure on the selected cluster. Currently, you can only deploy the chaos infrastructure using account-level delegates.
 
 * Details of an experiment are pre-filled when adding it to chaoshub (Chaos-989)
     * Instead of having to re-enter the same details, this release pre-fills the details of the experiment that you want to add to chaoshub. You can simply navigate to the experiment, and click on **Add to ChaosHub**. This will display a screen with the name of the experiment, a description (optional), and tags (optional). You can add your experiment to the chaoshub of your choice by clicking **Save**.
 
 * One sync retry to connect to a disconnected chaoshub (Chaos-999)
-    * When you try to connect to a chaoshub that is disconnected, you will not see any faults or experiments in the chaoshub. This release adds a feature such that when you click on a disconnected chaoshub, it tries to synchronize and connect to the chaoshub at least once. 
+    * When you try to open a chaoshub that is disconnected, you will not see any faults or experiments in the chaoshub. This release adds a feature such that when you click on a disconnected chaoshub, it tries to synchronize and connect to the chaoshub at least once. 
 
 * Filter chaos experiment based on target infrastructure (Chaos-959)
-    * In the **Deployment** tab, when you click on **Pipeline** and select a chaos experiment, you can filter experiments based on their names. This release adds another filter so that you can view experiments based on the target infrastructure.
+    * In the **Deployment** tab, when you click on **Pipeline** and select a chaos experiment, you can filter experiments based on their names. This release adds another filter so that you can view experiments based on the target chaos infrastructure.
 
 * Display an error message when URL is incorrect (Chaos-1011)
     * When a user enters an incorrect URL in their browser when they are inside a chaos experiment, previously the user interface would show a blank screen. This release displays an error message on the user interface stating that the entered URL is invalid.
@@ -49,7 +49,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
     * This release categorizes and displays all the chaos experiments based on the average resilience score. It also displays the number of experiments in each category. It shows three categories, i.e., experiments with an average resilience score between 0 and 40, 40 to 80, and 80 to 100. This provides better insights about the chaos experiments and their resilience scores. Previously, the overview page only showed the number of experiments that passed and the number of experiments that failed. 
 
 * Every run of an experiment is clickable to view detailed execution (Chaos-1032)
-    * In the **Chaos Experiments** tab, you can see the detailed execution of an experiment's runs by clicking on **View run**. This release makes every run of an experiment clickable so that you can view the detailed execution of an experiment by just clicking on the experiment.
+    * In the **Chaos Experiments** tab, you can see the detailed execution of an experiment's runs by clicking on **View run**. This release makes every run of an experiment clickable so that you can view the detailed execution of an experiment run by just clicking on the experiment run row.
 
 ### Early access
 * There are no early access features in this release. 
@@ -59,7 +59,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * If some of the parameters were left as empty strings when specifying the target application parameters through a YAML manifest, the user interface for the target application page would crash. This has been fixed so that irrespective of the values entered in the YAML manifest, you can change the values of the target application on the user interface. (Chaos-970)
 * In a chaos experiment, the fault library would incorrectly show fault categories and fault labels even when the hub had been disconnected. It would persist data from the previously selected chaos hub. This has now been fixed. When you click on a disconnected chaos hub, it displays the message “No faults found in the selected hub”. (Chaos 971)
 * On the chaos hub screen, you could not scroll over the list of hubs from all places on the screen. Now the scroll bar has been shifted to the extreme right so that you can scroll through from anywhere on the screen. (Chaos-964)
-* When you hovered over a probe, the name of the probe would not be displayed fully if it was long. Now it has been fixed. (Chaos-990)
+* If you hovered over a probe, its details would overflow if it was long. Now it has been fixed. (Chaos-990)
 * In the chaos hub, when the number of chaos faults that you wished to view on a page was altered (or increased), it would result in a blank page. Now it has been fixed. (Chaos-984)
 * When a chaos experiment was imported into the chaos hub, it would not be logged as an audit event and would not be displayed on the user interface. It has been fixed. (Chaos-779)
 * If no chaos infrastructure is connected with your project, it previously showed a blank screen. Now it displays the message, "There are no chaos infrastructure in your project." (Chaos-1009) 
