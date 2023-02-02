@@ -24,7 +24,7 @@ Before you can link a feature flag with a Jira issue for the first time, you mus
 7. In the left pane, at the bottom, select your user profile. 
 8. Under **My API Keys**, select the token for the API key you want to use, and then copy the value. 
 9. Go to Jira, and then from the **Apps** menu, select **Harness Feature Flag Addon**.
-10. On the **API Key** screen, enter the API key token that you copied in step 3, and then select **Save**.
+10. On the **API Key** screen, enter the API key token that you copied in step 8, and then select **Save**.
 
 
 ## Link a Jira issue to a feature flag
