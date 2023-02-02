@@ -21,6 +21,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   This results in a seamless search experience.
 
 - Entity names can now include the `/` character. (PL-29929)
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
 ## January 17, 2023, version 78214
 
