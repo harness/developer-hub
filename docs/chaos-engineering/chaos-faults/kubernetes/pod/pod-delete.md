@@ -13,11 +13,13 @@ Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random
 
 ## When can you use pod delete?
 
-In distributed systems like Kubernetes, your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to failures.
-It is important to ensure that the applications have a minimum number of available replicas. One of the common application failures is when the pressure on other replicas increases, and how the horizontal pod autoscaler scales based on the observed resource utilization. It is also important to understand how much time it takes for persistent volume after rescheduling. 
-It simulates graceful delete (or rescheduling) of pods as a result of upgrades, forced delete of pods as a result of eviction, and leader-election in complex applications.
+- In distributed systems like Kubernetes, your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to failures.
+- It is important to ensure that the applications have a minimum number of available replicas. 
+- One of the common application failures is when the pressure on other replicas increases, and how the horizontal pod autoscaler scales based on the observed resource utilization. 
+- It is also important to understand how much time it takes for persistent volume after rescheduling. 
+- It simulates graceful delete (or rescheduling) of pods as a result of upgrades, forced delete of pods as a result of eviction, and leader-election in complex applications.
 
-**Note**
+### **Note**
 - You will need Kubernetes > 1.16 to execute this fault.
 - Ensure that application pods are in running state before and after chaos injection.
 
@@ -33,49 +35,49 @@ It simulates graceful delete (or rescheduling) of pods as a result of upgrades, 
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 15s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. </td>
+        <td> Defaults to 15s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">here.</a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive pod failures (in seconds). </td>
-        <td> Defaults to 5s. </td>
+        <td> Defaults to 5s. More information <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval">here.</a></td>
       </tr>
       <tr>
         <td> RANDOMNESS </td>
         <td> Introduces randomness into pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
-        <td> Defaults to false. Supports true as well. </td>
+        <td> Defaults to false. Supports true as well. More information <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#random-interval">here.</a> </td>
       </tr>
       <tr>
         <td> FORCE </td>
         <td> Application Pod deletion mode. <code>false</code> indicates graceful deletion with the default termination period of 30s. <code>true</code> indicates an immediate forceful deletion with 0s grace period</td>
-        <td> Defaults to <code>true</code>, with <code>terminationGracePeriodSeconds=0</code> </td>
+        <td> Defaults to <code>true</code>, with <code>terminationGracePeriodSeconds=0</code>.More information <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#force-delete">here.</a> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to chaos. </td>
-        <td> If it is not provided, it selects target pods based on provided appLabels. </td>
+        <td> If it is not provided, it selects target pods based on provided appLabels. More information <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">here.</a> </td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target (takes numeric values only). </td>
-        <td> Defaults to 0 (corresponds to 1 replica). </td>
+        <td> Defaults to 0 (corresponds to 1 replica). More information <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">here.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30s. More information <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">here.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Defaults to parallel. Supports serial as well. </td>
+        <td> Defaults to parallel. Supports serial as well. More information <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">here.</a></td>
       </tr>
     </table>
 
 
 ### Force delete
 
-The targeted pod can be deleted `forcefully` or `gracefully`. It can be tuned with the `FORCE` env. It will delete the pod forcefully if `FORCE` is provided as `true` and it will delete the pod gracefully if `FORCE` is provided as `false`.
+The target pod can be deleted `forcefully` or `gracefully`. It can be tuned with the `FORCE` env. It will delete the pod forcefully if `FORCE` is set to `true` and it will delete the pod gracefully if `FORCE` is provided as `false`.
 
 Use the following example to tune it:
 
@@ -150,5 +152,3 @@ spec:
             - name: CHAOS_INTERVAL
               value: "5-10"
 ```
-
-**Note:** Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod-specific tunables. 
