@@ -48,7 +48,7 @@ To run this pipeline in your project, do the following.
    b. Create a [Harness secret](/docs/platform/6_Security/3-add-file-secrets) for this file. 
  -->
 
-1. Create the following connectors if you don't have them:
+2. Create the following connectors if you don't have them:
 
    -  [GitHub Connector](/docs/platform/connectors/add-a-git-hub-connector)
    - [GCP Connector](/docs/platform/connectors/connect-to-google-cloud-platform-gcp) 
@@ -56,9 +56,9 @@ To run this pipeline in your project, do the following.
    - [Docker Hub Connector](/docs/platform/connectors/ref-cloud-providers/docker-registry-connector-settings-reference)  
       You can choose to download Harness images from the [Harness Image Registry](/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector) instead of Docker Hub.
 
-2.  Create a [publicly available bucket in GCS](https://cloud.google.com/storage/docs/access-control/making-data-public#objects) to store the report. 
+3.  Create a [publicly available bucket in GCS](https://cloud.google.com/storage/docs/access-control/making-data-public#objects) to store the report. 
 
-3.  Update the report URL with your GCS bucket name. See `YOUR_GCS_BUCKET_NAME` in steps 4 and 5 in the YAML pipeline below.
+4.  Update the report URL with your GCS bucket name. See `YOUR_GCS_BUCKET_NAME` in steps 4 and 5 in the YAML pipeline below.
 
 ### Pipeline template
 
