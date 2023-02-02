@@ -129,7 +129,7 @@ This release does not include new features.
 
 ### Fixed issues
 
-* Fixed an issue where the issue counts reported in output variables vs. the Security Tests page were inconsistent for scans of baseline targets, or for targets with no specified baseline. (STO-5042)	
+* Fixed an issue where the issue counts reported in output variables vs. the Security Tests page were inconsistent for scans of target baselines, or for targets with no specified baseline. (STO-5042)	
 
 
 ## October 31, 2022
