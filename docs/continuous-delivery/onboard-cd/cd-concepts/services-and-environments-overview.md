@@ -142,6 +142,15 @@ Service Overrides are different from Environment Configuration in the following 
 * Environment **Service Overrides**: applies to specific Services you select. Whenever that Service is used with that Environment, the Service Override is applied.
 
 
+### Variable References for Services and Environments
+
+- To reference service override variable for a particular environment or the base service variable you can use this expression `<+serviceVariables.test>` 
+- For Global Environment Variables, you can use the expression `<+env.variables.test>`
+- You can reference these variables in your CD Steps, Service Manifests
+
+
+
+
 
 ### Override Priority
 
