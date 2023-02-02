@@ -4,20 +4,20 @@ description: This topic describes how to configure Prometheus and Grafana for de
 # sidebar_position: 2
 ---
 
-## About delegate metrics
-
-Harness captures delegate agent metrics for delegates shipped on immutable image types. The delegate is instrumented for the collection of the following delegate agent metrics:
+Harness captures delegate agent metrics for delegates shipped on immutable image types. The delegate is instrumented for the collection of the following delegate agent metrics.
   
 | **Metric name** | **Description** |
 | :-- | :-- |
-| task_execution_time | The time it takes to complete a task. |
-| tasks_currently_executing | The number of tasks underway. |
-| tasks_in_queue | The number of tasks that are waiting in the queue. |
-| task_timeout | The number of tasks that time out before completion. |
+| `task_execution_time` | The time it takes to complete a task. |
+| `tasks_currently_executing` | The number of tasks underway. |
+| `tasks_in_queue` | The number of tasks that are waiting in the queue. |
+| `task_timeout` | The number of tasks that time out before completion. |
+
+This document explains how to configure the Prometheus monitoring tool for metrics collection, and how to configure the Grafana analytics tool for metrics display. This document includes example YAML you can use to create application manifests for both configurations.
 
 ## Install Prometheus
 
-You'll need to install and run Prometheus to collect metrics. You can install Prometheus locally using the brew package manager:
+You'll need to install and run Prometheus to collect metrics. You can install Prometheus locally using the `brew` package manager:
 
 ```
 brew install prometheus
@@ -31,7 +31,7 @@ prometheus --web.external-url http://localhost:19090/prometheus/ --config.file=p
 
 ## Configure the Prometheus database
 
-You can use Prometheus to collect delegate metrics. Prometheus “scrapes” metrics from the delegate replica pods you deploy in a cluster. To collect delegate metrics, Prometheus must be configured with the following settings. The configuration of Prometheus is specified as a Kubernetes ConfigMap and saved as a prometheus.yml file. For a prometheus.yml file configured with the settings described in this document, see the last section.
+You can use Prometheus to collect delegate metrics. Prometheus “scrapes” metrics from the delegate replica pods you deploy in a cluster. To collect delegate metrics, Prometheus must be configured with the following settings. The configuration of Prometheus is specified as a Kubernetes **ConfigMap** and saved as a prometheus.yml file. 
 
 ### Configure the namespace
 
@@ -65,7 +65,7 @@ If Prometheus is correctly configured, you should be able to see metrics collect
 kubectl port-forward {prometheus-pod-name} 8084:9090 -n {namespace}
 ```
 
-In this command, you replace `{prometheus-pod-name}` with the name of the deployed Prometheus pod. You replace `{namespace}` with the namespace from the `metadata.namespace` field in the prometheus.yml file. 
+In this command, replace `{prometheus-pod-name}` with the name of the deployed Prometheus pod. Replace `{namespace}` with the namespace from the `metadata.namespace` field in the prometheus.yml file. 
 
 ```
 kubectl port-forward prometheus-deployment-7fd6bcf85-5gm8j 8084:9090 -n harness-delegate-ng
@@ -92,7 +92,7 @@ spec:
 
 These values are specified in the definition of the Prometheus service in the prometheus.yml file.
 
-Open your browser and navigate to localhost:8084
+Open your browser and navigate to `localhost:8084`.
 
 ### Example prometheus.yml file
 
@@ -245,7 +245,7 @@ spec:
 
 ## Set up Grafana
 
-To set up Grafana, you'll need to use the following grafana.yml file.
+To set up Grafana, use the following example grafana.yml file.
 
 1. Copy the grafana.yml file.
 
@@ -263,7 +263,7 @@ To set up Grafana, you'll need to use the following grafana.yml file.
    kubectl port-forward {grafana-pod-name} 8084:9090 -n {namespace]
    ```
    
-5. Open your browser and navigate to localhost:3000.
+5. Open your browser and navigate to `localhost:3000`.
 
 
 ### Example grafana.yml file
