@@ -1,7 +1,7 @@
 ---
 title: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2022-10-31T10:00
+date: 2023-02-02T11:30
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 8
 ---
@@ -53,7 +53,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Fixed issues
 
-N/A
+This release does not include fixed issues.
 
 ## January 1, 2023	
 
@@ -63,7 +63,7 @@ N/A
 
 ### Fixed issues
 
-N/A 
+This release does not include fixed issues.
 
 
 ## December 18, 2022			
@@ -89,7 +89,7 @@ N/A
 
 ### Fixed issues
 
-N/A 
+This release does not include fixed issues.
 
 
 ## December 4, 2023			
@@ -116,7 +116,7 @@ This release does not include new features.
 
 * Fixed an issue where the Security Tests tab would show previously-found issues while the scan was in progress. Now this tab does not show results until the scan is complete. (STO-4985)	
 
-* Improved the Security Tests UI to highlight new issues found in the current target only vs. issues also found in the baseline or (if no baseline was specified) the previous scan. (STO-5198)	
+* Improved the Security Tests UI to highlight new issues found in the current target only vs. issues also found in the baseline, or in the previous scan if no baseline was specified. (STO-5198)	
 
 
 ## November 6, 2023	
