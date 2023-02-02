@@ -1,6 +1,6 @@
 ---
-title: Harness Kubernetes Services
-description: This topic show you how to define a Kubernetes Service in a CD Pipeline, including its manifests and artifacts.
+title: Harness Kubernetes services
+description: Define a Kubernetes service.
 sidebar_position: 1
 helpdocs_topic_id: 2nx0de3w99
 helpdocs_category_id: wfnd8y0ifs
@@ -839,9 +839,15 @@ You can use Pipeline, Stage, Service, and Built-in variables in your values YAML
 
 See [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
 
-### Propagate and Override Artifacts, Manifests, and Service Variables
+### Propagate and override artifacts, manifests, and service variables
 
-See [Add and Override Values YAML Files](../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md).
+You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**. 
+
+For more information, go to:
+
+- [Propagating CD services](../cd-services-general/propagate-and-override-cd-services.md)
+- [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
+
 
 ## Next Steps
 

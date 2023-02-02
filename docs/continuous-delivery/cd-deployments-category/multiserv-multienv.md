@@ -1,6 +1,6 @@
 ---
-title: Use multiple Services and multiple Environments in a deployment
-description: This topic describes how to use multiple Services and multiple Environments in a deployment.
+title: Use multiple services and environments in a deployment
+description: Deploy multiple services to multiple environments.
 sidebar_position: 7
 helpdocs_topic_id: tabk4u2e9n
 helpdocs_category_id: etz0u5kujd
@@ -172,9 +172,11 @@ The console view can also help view multiple deployments clearly:
 
 ## Propagating multiple Services in stages
 
-When you add additional CD stages to a pipeline you can propagate the multiple Services the same way you would with one Service.
+Service propagation is not supported when using multiple services in a single stage (this is called a multiple service deployment).
 
-For details on propagating Services in stages, go to [Propagate and Override CD Services](../cd-services/cd-services-general/propagate-and-override-cd-services.md).
+When you add subsequent CD stages to a pipeline you cannot propagate the multiple services like you would with one service.
+
+For details on propagating services in stages, go to [Propagate CD services](../cd-services/cd-services-general/propagate-and-override-cd-services.md).
 
 ## Rollback with multiple Services and Environments
 
