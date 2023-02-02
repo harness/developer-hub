@@ -53,7 +53,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Fixed issues
 
-This release does not include fixed issues. 
+N/A
 
 ## January 1, 2023	
 
@@ -63,7 +63,7 @@ This release does not include fixed issues.
 
 ### Fixed issues
 
-This release does not include fixed issues. 
+N/A 
 
 
 ## December 18, 2022			
@@ -72,7 +72,6 @@ This release does not include fixed issues.
 
 * Remediated issues are no longer included in the issue counts logged near the end of a Security Step run and provided as output variables. (STO-5304)	
 
-<!-- IN_REVIEW -->
 *  With this release, you can run a SonarQube scan and specify a collection of SSL certificates rather than a single certificate. This option is useful when you don't know which specific certificate in a collection is required by the server. (STO-5243)	
 
 ### Fixed issues
@@ -90,7 +89,7 @@ This release does not include fixed issues.
 
 ### Fixed issues
 
-This release does not include fixed issues. 
+N/A 
 
 
 ## December 4, 2023			
