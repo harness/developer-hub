@@ -841,7 +841,7 @@ See [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Ex
 
 ### Propagate and override artifacts, manifests, and service variables
 
-You can propagate services between stages and override service settings using multiple values YAML files and/or **Environment Overrides**. 
+You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**. 
 
 For more information, go to:
 
