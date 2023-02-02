@@ -1,6 +1,6 @@
 ---
 title: Early Access
-date: 2022-12-13T10:00
+date: 2023-02-03T10:00
 sidebar_position: 2
 ---
 
@@ -12,7 +12,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## January 31, 2023
+## February 3, 2023
 
 ### Harness Platform
 
