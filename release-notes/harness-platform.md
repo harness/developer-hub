@@ -43,7 +43,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   A code enhancement to support user metadata updates has fixed this issue.
   
-- Forced deletion of a secret used to create a Secrets Manager throws an incorrect error. (PL-29983)
+- Force deletion of a secret used for the creation of a Secrets Manager throws an incorrect error. (PL-29983)
 
   This has been fixed by displaying the appropriate error message.
 
