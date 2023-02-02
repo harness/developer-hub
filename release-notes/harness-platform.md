@@ -22,6 +22,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   This results in a seamless search experience.
 
 - Entities in Harness can now have `/` for the Name. (PL-29929)
+
 - [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
 ### Early access
@@ -29,6 +30,10 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
 
 ### Fixed issues
+
+- In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect     information. (PL-30862)
+
+  A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details   as per the schema.
 
 - The user group details page in the project and org scope does not display correctly when opened using the **Open in new tab** option. (PL-30911)
   
