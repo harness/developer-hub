@@ -31,7 +31,7 @@ prometheus --web.external-url http://localhost:19090/prometheus/ --config.file=p
 
 ## Configure the Prometheus database
 
-You can use Prometheus to collect delegate metrics. Prometheus “scrapes” metrics from the delegate replica pods you deploy in a cluster. To collect delegate metrics, Prometheus must be configured with the following settings. The configuration of Prometheus is specified as a Kubernetes **ConfigMap** and saved as a prometheus.yml file. 
+You can use Prometheus to collect delegate metrics. Prometheus “scrapes” metrics from the delegate replica pods you deploy in a cluster. To collect delegate metrics, Prometheus must be configured with the following settings. The configuration of Prometheus is specified as a Kubernetes `ConfigMap` and saved as a prometheus.yml file. 
 
 ### Configure the namespace
 
