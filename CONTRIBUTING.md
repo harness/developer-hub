@@ -10,6 +10,9 @@
 
 Thanks for considering to contribute to the Harness Developer Hub! Contributions come in all shapes and sizes and we appreciate them all. Contributions to the Harness Developer Hub come in the form of creating pull requests or submitting issues. 
 
+## First Change
+Check out this [YouTube video](https://www.youtube.com/watch?v=_Nj9EYYuSqY) of creating your first PR on the HDH. 
+
 ## Change process
 GitHub is the primary mechanism for changes. Pull requests are the mechanism to submit and approve changes. 
 
