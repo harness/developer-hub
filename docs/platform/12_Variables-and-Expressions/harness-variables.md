@@ -789,7 +789,13 @@ Command completed with ExitCode (0)
 ```
 #### <+artifact.tag>
 
-Not Harness Tags. This expression evaluates to the tags on the artifact pushed, pulled, or deployed. For example, AMI tags, or if you are deploying Docker image `nginx:stable-perl` then `stable-perl` is the tag.
+You can also use `<+artifacts.primary.tag>`.
+
+Not Harness Tags. This expression evaluates to the tags on the artifact pushed, pulled, or deployed. For example, AMI tags, or if you are deploying the Docker image `nginx:stable-perl` then `stable-perl` is the tag.
+
+The `<+artifact.tag>` and `<+artifacts.primary.tag>` expressions are for accessing the tag within the same stage.
+
+If you want to access the tag in a subsequent stage, use the FQN `<+pipeline.stages.[stage Id].spec.artifacts.primary.tag>`.
 
 #### <+artifact.image>
 
