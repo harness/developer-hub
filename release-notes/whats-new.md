@@ -46,7 +46,18 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   ![Nexus artifacts](static/44009d0aa38851738ebed25ff3dabeb232bc729f904e219bb14d8cdd0178a283.png) 
 
-## January 17, 2023, version 78214
+
+### Security Testing Orchestration
+
+* You can now ingest results from a specific Checkmarx scan. This option is useful for ensuring that a pipeline ingests the scan triggered by a specific event. Add the setting `product_scan_id` = `MY_SCAN_ID` to the Checkmarx step. This overrides the default behavior, which is to ingest results for the most recent scan. (STO-5424)	
+
+* You can now enable debug-level logging for Snyk and Aqua Trivy scans. To do this, add this setting to the scan step: `log_level` = `debug`. (STO-5405)
+
+* Grype scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To scan all layers in an image, for example, add this setting to the Grype scan step: `tool_args` = `--scope all-layers`. (STO-5400)
+
+* To make the Issue Details pane easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398)	
+
+## January 17, 2023
 
 ### Continuous Delivery
 
@@ -64,10 +75,39 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   ![picture 21](static/8ca12a2c84cf95499024fd11b11c055bc13ec9de4e0e767ae6f8422aeb596d91.png)  
   
   Hover over the error message to see the full message.
+
+### Continuous Integration
+
+* This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only. 
+   - An Actions step to run GitHub Actions.
+   - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
+* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
+   
+  ![](./static/ci-rerun-build-in-debug-mode.png) 
+
+* You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
+
+``` yaml 
+infrastructure:
+    type: KubernetesDirect
+    spec:
+      connectorRef: account.test
+      namespace: harness-delegate
+    hostNames:
+      - abc.com
+      - xyz.com
+```
   
 ### Platform
 
 - A dedicated release notes page was introduced for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
+
+## January 15, 2023		
+
+### Security Testing Orchestration
+
+* Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, `specify tool_args` = `---offline-scan`. (STO-5388)	
+
 
 ## January 10, 2023, version 78105
 
@@ -107,6 +147,21 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
   
+## January 8, 2023		
+
+### Security Testing Orchestration
+
+* Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, `specify tool_args` = `-incremental`. (STO-5041)	
+
+* STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference). (STO-5161)	
+
+## January 1, 2023	
+
+### Security Testing Orchestration
+
+* The Issues Details pane has been revised to make it easier to navigate. Raw JSON data now appears at the bottom of each occurrence and is collapsed by default. (STO-4839)	
+
+
 ## December 22, 2022, version 77908
 
 ### Harness Platform
@@ -154,6 +209,14 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
 
 * The onboarding workflow now caters to customers who do not have a codebase with which to connect. (CI-6348)
+
+## December 18, 2022			
+
+### Security Testing Orchestration
+
+* Remediated issues are no longer included in the issue counts logged near the end of a Security Step run and provided as output variables. (STO-5304)	
+
+*  With this release, you can run a SonarQube scan and specify a collection of SSL certificates rather than a single certificate. This option is useful when you don't know which specific certificate in a collection is required by the server. (STO-5243)	
 
 ## December 13, 2022, version 77808
 
@@ -208,6 +271,15 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 
   To do this, enable Use Git client for commits in the default settings at the account scope. Harness checks out the code on the delegate and uses the Git client to make the commits to your Git repository.
+
+## December 11, 2023			
+
+### Security Testing Orchestration
+	
+* STO is now supported on Linux (amd64 and arm64 platforms) in Harness Cloud. (STO-5314)	
+
+* Instead of using Service Dependencies for Docker-in-Docker configuration, users should use new Background steps. (STO-5268)
+
 
 ## December 7, 2022, version 77716
 
@@ -274,6 +346,14 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 
   The corresponding information for these fields are fetched from Git.
 
+### Continuous Integration
+
+- New Subscription ID field. (CI-6032)
+  An Azure subscription ID is now required in the Build and Push ACR step to enable the display of artifacts uploaded by the steps on the Artifacts tab.
+
+- New background step to define the service dependency. (CI-5580)
+  A new background step has been added to define the service dependency in CI. The previous stage settings of service dependency are now deprecated. The new background step allows for better control and configuration of services.
+
 ## November 21, 2022
 
 ### Continuous Delivery
@@ -331,6 +411,13 @@ The option to disable Harness Secret Manager is now a part of the core settings 
 ### Continuous Integration
 
 The Custom Git Connector now supports connection via the Harness Platform, in addition to the ability to connect through the Harness Delegate. Connecting through Harness Secrets Manager is required to use the generic git connector on the Harness Cloud build infrastructure hosted by Harness. (CI-5666)
+
+### Security Testing Orchestration
+
+* You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
+
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans). (STO-4958)	
+
 
 ## October 31, 2022
 

@@ -16,9 +16,5 @@ spec:
     spec:
       components:
         env:
-        # name of lib
-        # it supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'

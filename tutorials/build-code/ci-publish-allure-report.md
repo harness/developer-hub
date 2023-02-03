@@ -41,18 +41,11 @@ To run this pipeline in your project, do the following.
 
 1. Create a file secret with your GCP authorization credentials. Do the following:
 
-  a. Run this command on the VM:
-    ```
-    gcloud auth application-default login
-    ```
-    This creates the following credentials file:  
-    `/home/$(whoami)/.config/gcloud/application_default_credentials.json`
-   b. Create a [Harness secret](/docs/platform/security/add-file-secrets) for this file. 
-<!-- 
-   b. Create a [Harness secret](/docs/platform/6_Security/3-add-file-secrets) for this file. 
- -->
+  a. [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) as described in the Google Cloud documentation. 
 
-2. Create the following connectors if you don't have them:
+  b. Create a [Harness secret](/docs/platform/security/add-file-secrets) for your key. 
+
+1. Create the following connectors if you don't have them:
 
    -  [GitHub Connector](/docs/platform/connectors/add-a-git-hub-connector)
    - [GCP Connector](/docs/platform/connectors/connect-to-google-cloud-platform-gcp) 
@@ -60,9 +53,9 @@ To run this pipeline in your project, do the following.
    - [Docker Hub Connector](/docs/platform/connectors/ref-cloud-providers/docker-registry-connector-settings-reference)  
       You can choose to download Harness images from the [Harness Image Registry](/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector) instead of Docker Hub.
 
-3.  Create a [publicly available bucket in GCS](https://cloud.google.com/storage/docs/access-control/making-data-public#objects) to store the report. 
+2.  Create a [publicly available bucket in GCS](https://cloud.google.com/storage/docs/access-control/making-data-public#objects) to store the report. 
 
-4.  Update the report URL with your GCS bucket name. See `$GCS_BUCKET_NAME` in steps 4 and 5 in the YAML pipeline below.
+3.  Update the report URL with your GCS bucket name. See `YOUR_GCS_BUCKET_NAME` in steps 4 and 5 in the YAML pipeline below.
 
 ### Pipeline template
 
@@ -76,7 +69,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: $GITHUB_CONNECTOR
+        connectorRef: YOUR_GITHUB_CONNECTOR
         repoName: allure-examples/allure-testng-example
         build: <+input>
   stages:
@@ -94,7 +87,7 @@ pipeline:
                   name: Run tests
                   identifier: tests
                   spec:
-                    connectorRef: $HARNESS_IMAGE_CONNECTOR
+                    connectorRef: YOUR_HARNESS_IMAGE_CONNECTOR
                     image: openjdk:11
                     shell: Sh
                     command: ./mvnw clean test site
@@ -104,7 +97,7 @@ pipeline:
                   name: allure
                   identifier: allure
                   spec:
-                    connectorRef: $HARNESS_IMAGE_CONNECTOR
+                    connectorRef: YOUR_HARNESS_IMAGE_CONNECTOR
                     image: solutis/allure:2.9.0
                     command: |
                       cd target
@@ -115,7 +108,7 @@ pipeline:
                   name: combine report
                   identifier: allure_combine
                   spec:
-                    connectorRef: $HARNESS_IMAGE_CONNECTOR
+                    connectorRef: YOUR_HARNESS_IMAGE_CONNECTOR
                     image: shubham149/allure-combine:latest
                     command: |
                       cd target/allure-report
@@ -128,9 +121,9 @@ pipeline:
                   name: upload-report
                   identifier: uploadreport
                   spec:
-                    connectorRef: $GCP_CONNECTOR
+                    connectorRef: YOUR_GCP_CONNECTOR
                     bucket: demo-allure-report
-                    sourcePath: target/$GCS_BUCKET_NAME/complete.html
+                    sourcePath: target/YOUR_GCS_BUCKET_NAME/complete.html
                     target: <+pipeline.sequenceId>/index.html
 # STEP 5: Publish upload report url in artifact tab
                - step:                 
@@ -138,15 +131,15 @@ pipeline:
                   name: publish metadata for allure report
                   identifier: publish_allure_report_metadata
                   spec:
-                    connectorRef: $HARNESS_IMAGE_CONNECTOR
+                    connectorRef: YOUR_HARNESS_IMAGE_CONNECTOR
                     image: plugins/artifact-metadata-publisher
                     settings:
-                      file_urls: https://storage.googleapis.com/$GCS_BUCKET_NAME/<+pipeline.sequenceId>/index.html
+                      file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET_NAME/<+pipeline.sequenceId>/index.html
                       artifact_file: artifact.txt
           serviceDependencies: []
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: $KUBERNETES_DELEGATE_CONNECTOR
+              connectorRef: YOUR_KUBERNETES_DELEGATE_CONNECTOR
               namespace: harness-delegate-prod
 ```

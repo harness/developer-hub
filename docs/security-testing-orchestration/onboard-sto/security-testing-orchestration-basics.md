@@ -68,26 +68,99 @@ Harness STO automatically aggregates, normalizes, and deduplicates data to ident
 
 You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. See [STO Quickstart 2: Integrated STO/CI/CD Workflows](sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
 
-![](./static/security-testing-orchestration-basics-31.png)Now let's apply these features to common use cases:
+![](./static/security-testing-orchestration-basics-31.png)
 
+Now let's apply these features to common use cases:
 
-
-|  |  |  |  |
-| --- | --- | --- | --- |
-| **Use Cases** | **Shift Left Security Testing To CI/CD Pipeline** | **Developer-first Remediation** | **Governance, Dashboards & Reports** |
-| **Features** | * STO built into Harness CI/CD Pipelines.
-* STO standalone stage added to Harness CD.
-* STO standalone stage initiated from any CI/CD stage.
- | * Deduplication and prioritization across all scanners.
-* Categorization of new vs. existing vulnerabilities (with/without exemptions).
- | * Pipeline design and deployment governance.
-* Audit trails for scan execution, approvals, and policy enforcement.
-* Enterprise dashboards and reports.
- |
+<table>
+    <tr>
+        <th>Use Cases</th>
+        <th>Shift Left Security Testing To CI/CD Pipeline</th>
+        <th>Developer-first Remediation</th>
+        <th>Governance, Dashboards, and Reports</th>
+    </tr>
+    <tr>
+        <th>Features</th>
+        <td  valign="top">
+            <ul>
+              <li>STO built into Harness CI/CD Pipelines.</li>
+              <li>STO standalone stage added to Harness CD.</li>
+              <li>STO standalone stage initiated from any CI/CD stage.</li>
+            </ul>
+        </td>
+        <td valign="top">
+            <ul>
+              <li>Deduplication and prioritization across all scanners.</li>
+              <li>Categorization of new vs. existing vulnerabilities (with/without exemptions).</li>
+            </ul>
+        </td>
+        <td  valign="top">
+            <ul>
+              <li>Pipeline design and deployment governance.</li>
+              <li>Audit trails for scan execution, approvals, and policy enforcement.</li>
+              <li>Enterprise dashboards and reports.</li>
+            </ul>
+        </td>
+    </tr>
+</table>
 
 ### Scanner Coverage
 
 For a list of supported scanners, see [Scanners, Target Types, and Scan Approach](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
+
+### STO support by CI build infrastructure type
+
+STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) to orchestrate scans and ingest issues. The following table shows STO support for each infrastructure type.
+
+<table>
+    <tr>
+        <th>Operating System</th>
+        <th>Architecture</th>
+        <th>Harness Cloud</th>
+        <th>Docker</th>
+        <th>VMs</th>
+        <th>Kubernetes</th>
+    </tr>
+    <tr>
+        <td>Linux</td>
+        <td>amd64</td>
+        <td align="center">✅</td>
+        <td align="center">Roadmap</td>
+        <td align="center">✅</td>
+        <td align="center">✅</td>
+    </tr>
+    <tr>
+        <td>Linux</td>
+        <td>arm64</td>
+        <td align="center">✅</td>
+        <td align="center">Roadmap</td>
+        <td align="center">✅</td>
+        <td align="center">✅</td>
+    </tr>
+    <tr>
+        <td>MacOS</td>
+        <td>arm64</td>
+        <td align="center">Not Verified</td>
+        <td align="center">Not Verified</td>
+        <td align="center">Not Verified</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td>Windows</td>
+        <td>amd64</td>
+        <td align="center">Roadmap</td>
+        <td align="center">❌</td>
+        <td align="center">Roadmap</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td>MacOS</td>
+        <td>arm64</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+    </tr></table>
 
 ### Next Steps
 

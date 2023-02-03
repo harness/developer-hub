@@ -1,23 +1,28 @@
 ---
 id: rds-instance-delete
-title: RDS Instance Delete
+title: RDS instance delete
 ---
 
-## Introduction
+RDS instance delete removes an instances from AWS RDS cluster. 
+- This makes the cluster unavailable for a specific duration.
+- It determines how quickly an application can recover from an unexpected cluster deletion. 
 
-- RDS Instance delete induces an RDS instance delete chaos on the AWS RDS cluster. It derives the instance under chaos from the RDS cluster.
 
-
-:::tip Fault execution flow chart
 ![RDS Instance Delete](./static/images/rds-instance-delete.png)
-:::
 
+## Usage
+
+<details>
+<summary>View fault usage</summary>
+<div>
+This fault determines how quickly an application can recover from an unexpected RDS cluster deletion. 
+</div>
+</details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes >= 1.17
+- AWS access to delete RDS instances.
 - Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -36,12 +41,12 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value in the ChaosExperiment CR with the same name.
 
-## Permission Requirement
+## Permissions required
 
-- Here is an example AWS policy to execute this fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -63,19 +68,18 @@ stringData:
 ```
 </details>
 
-## Default Validations
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
-:::info
+## Default validations
 
-- The RDS instance should be in a healthy state.
+The RDS instance should be in a healthy state.
 
-:::
 
 ## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
         <th> Variables </th>
@@ -85,20 +89,20 @@ stringData:
         <tr> 
         <td> CLUSTER_NAME </td>
         <td> Name of the target RDS cluster</td>
-        <td> Eg. rds-cluster-1 </td>
+        <td> For example, rds-cluster-1 </td>
         </tr>
         <tr> 
         <td> RDS_INSTANCE_IDENTIFIER </td>
         <td> Name of the target RDS Instances</td>
-        <td> Eg. rds-cluster-1-instance </td>
+        <td> For example, rds-cluster-1-instance </td>
         </tr>
         <tr>
         <td> REGION </td>
         <td> The region name of the target RDS cluster</td>
-        <td> Eg. us-east-1 </td>
+        <td> For example, us-east-1 </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -128,18 +132,18 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### RDS_CLUSTER_NAME
+### RDS cluster name
 
 It defines the cluster name of the target RDS cluster. You can provide the `RDS_CLUSTER_NAME` using `CLUSTER_NAME` environment variable. If it hasn't been provided, the fault selects the Instance Identifier provided.
 
@@ -169,7 +173,7 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
-### RDS_INSTANCE_IDENTIFIER 
+### RDS instance identifier 
  
 It defines the RDS instance name. You can provide the RDS_INSTANCE_IDENTIFIER using `RDS_INSTANCE_IDENTIFIER` environment variable.
 

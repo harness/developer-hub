@@ -8,7 +8,7 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-host-reboot
+    - name: VMware-host-reboot
       spec:
         components:
           env:

@@ -82,13 +82,32 @@ Note that the CI definition includes a few additional fields and that some field
 ##### Example from Drone Download description
 
 ```
-steps:- name: download    image: plugins/download  settings:    username:     from_secret: username    password:      from_secret: password    source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz                                  
+steps:
+    - name: download
+	  image: plugins/download
+	  settings:    
+	    username:     
+		    from_secret: username
+		password:      
+			from_secret: password
+		source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz                                  
 ```
 
 ##### Equivalent definition in Harness CI Pipeline
 
 ```
-  - step:        type: Plugin        name: download-drone        identifier: downloaddrone        spec:            connectorRef: mygithubconnector            image: plugins/download            privileged: false            settings:                username: <+secrets.getValue("myusernamesecret")>                password: <+secrets.getValue("mypasswordsecret")>                source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
+  - step:
+    type: Plugin
+	name: download-drone
+	identifier: downloaddrone
+	spec:            
+	    connectorRef: mygithubconnector            
+		image: plugins/download
+		privileged: false
+		settings:
+		    username: <+secrets.getValue("myusernamesecret")>
+			password: <+secrets.getValue("mypasswordsecret")>
+			source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
 

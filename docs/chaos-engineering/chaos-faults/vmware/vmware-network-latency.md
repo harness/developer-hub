@@ -1,34 +1,30 @@
 ---
-id: vmware-network-latency
-title: VMware Network Latency
+id: VMware-network-latency
+title: VMware network latency
 ---
+VMware network latency injects network packet latency from the VMware VM(s) into the application (or service).
+- It results in flaky access to the application. 
+- It causes network degradation without the VM being marked as unhealthy (or unworthy) of traffic.
+- It checks the performance of the application (or process) running on the VMware VM(s).
 
-## Introduction
-- It injects network packet latency from the VMware VM(s) into the application (or service) and results in flaky access. 
-- It checks the performance of the application (or process) running on the VMWare VM(s).
 
-:::tip Fault execution flow chart
 ![VMware Network Latency](./static/images/vmware-network-chaos.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-The fault results in network degradation without the VM being marked unhealthy (or unworthy) of traffic. The goal of this fault is to simulate issues within your VM network or microservice communication across services in different hosts etc.
-
-Mitigation (in this case, keeping the timeout i.e, the network latency low) can be achieved using a middleware that can switch traffic based on certain SLOs/performance parameters. If such an arrangement is not available, the next best solution would be to verify if a degradation is highlighted by notifying about it using alerts so that the admin (or SRE) has the opportunity to investigate and fix these issues. 
-Another utility of the test is to see the extent of impact caused to the end-user or the last point in the application stack on account of degradation in accessing a downstream/dependent microservice; whether it accepts or breaks the system to an unacceptable degree. The fault provides `DESTINATION_IPS` or `DESTINATION_HOSTS` so that you can control the chaos against specific services within or outside the VM.
-
-The VM may stall or get corrupted while it waits endlessly for a packet. The fault limits the impact (blast radius) to only the traffic you wish to test by specifying the IP addresses or application information. This fault helps improve the resilience of your services over time.
+This fault simulates issues within the VM network (or microservice) communication across services in different hosts.
+It helps determine the impact of degradation while accessing a microservice. 
+The VM may stall (or get corrupted) while waiting endlessly for a packet. The fault limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses.
+It simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network). It also simulates jittery connection with transient latency spikes between microservices, slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.
 </div>
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16 
 - Vcenter access to stop and start the VM.
-- Kubernetes secret that has Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes secret that has Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -42,20 +38,16 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as a secret or as a chaosengine environment variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
+## Default validations
+The VM should be in a healthy state before and after chaos.
 
-## Default Validations
-:::info
-- The VM should be in a healthy state before and after chaos.
-:::
-
-## Fault Tunables
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -64,21 +56,21 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> VM_NAMES </td>
-        <td> Provide the target VM names.</td>
-        <td> You can provide multiple VM names as comma separated values, for example: vm-1,vm-2. </td>
+        <td> Names of the target VMs as comma-separated values.</td>
+        <td> For example, <code> vm-1,vm-2</code>. </td>
       </tr>
       <tr>
         <td> VM_USER_NAME </td>
-        <td> Provide the username of the target VM(s).</td>
-        <td> Multiple usernames can be provided as comma separated values (for more than one VM under chaos). It is used to run the 'govc' command.</td>
+        <td> Username of the target VM(s).</td>
+        <td> Multiple usernames can be provided as comma-separated values which corresponds to more than one VM under chaos. It is used to run the govc command.</td>
       </tr>
       <tr>
         <td> VM_PASSWORD </td>
-        <td> Provide the password for the target VM(s).</td>
+        <td> Password for the target VM(s).</td>
         <td> It is used to run the govc command.</td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -87,46 +79,46 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total duration to insert chaos (in seconds). </td>
-        <td> Its default value is 30s. </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval between successive instance terminations (in seconds). </td>
-        <td> Its default value is 30s. </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> NETWORK_LATENCY </td>
-        <td> The latency (or delay) in milliseconds.</td>
-        <td> Its default value is 2000, and it accepts numeric values only. </td>
+        <td> Delay (in milliseconds). Provide numeric value only.</td>
+        <td> Defaults to 2000 ms.  </td>
       </tr>
       <tr>
         <td> JITTER </td>
-        <td> The network jitter value in milliseconds.</td>
-        <td> Its default value is 0, and it accepts numeric values only. </td>
+        <td> Network jitter (in milliseconds). Provide numeric value only.</td>
+        <td> Defaults to 0.</td>
       </tr>
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> The IP addresses of the services or the CIDR blocks(range of IPs), whose accessibility is impacted. </td>
-        <td> Comma separated IP(S) or CIDR(S) can be provided. If it is not provided, it induces network chaos for all IPs/destinations. </td>
+        <td> IP addresses of the services or pods whose accessibility you want to affect. You can also specify a CIDR block. </td>
+        <td> Comma-separated IPs (or CIDRs) can be provided. If it has not been provided, network chaos is induced on all IPs (or destinations). </td>
       </tr>
       <tr>
         <td> DESTINATION_HOSTS </td>
-        <td> DNS Names of the services whose accessibility is impacted. </td>
-        <td> If it is not provided, it induces network chaos for all IPs/destinations or `DESTINATION_IPS` if already defined. </td>
+        <td> DNS names (or FQDN names) of the services whose accessibility is affected. </td>
+        <td> If it has not been provided, network chaos is induced on all IPs (or destinations). </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines the sequence of chaos execution for multiple instances. </td>
-        <td> Its default value is 'parallel', and it supports 'serial' value too. </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos (in seconds).</td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30s. </td>
       </tr>
     </table>
-    <h2>Secret Fields</h2>
+    <h2>Secret fields</h2>
      <table>
       <tr>
         <th> Variables </th>
@@ -135,35 +127,35 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
       </tr>
       <tr>
         <td> GOVC_URL </td>
-        <td> Provide the VMCenter Server URL. </td>
-        <td> It is used to perform the VMware API calls using the 'govc' command and is derived from a secret.</td>
+        <td> vCenter server URL used to perform API calls using the govc command. </td>
+        <td> It is derived from a secret.</td>
       </tr>
-      <tr>
+        <tr>
         <td> GOVC_USERNAME </td>
-        <td> Provide the username of VMCenter Server.</td>
-        <td> This environment variable is used for authentiation purposes and is setup using a secret.</td>
+        <td> Username of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_PASSWORD </td>
-        <td> Provide the password of VMCenter Server. </td>
-        <td> This environment variable is used for authentiation purposes and is setup using a secret.</td>
+        <td> Password of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_INSECURE </td>
-        <td> Provide the value as <code>true</code>. </td>
-        <td> This environment variable is used to run the 'govc' command in insecure mode and is setup using a secret.</td>
+        <td> Runs the govc command in insecure mode. It is set to <code>true</code>. </td>
+        <td> It can be set up using a secret.</td>
       </tr>
      </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Common fault tunables
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Network Packet Latency
+### Network packet latency
 
-It defines the network packet latency that is injected to the VM. You can tune it using the `NETWORK_LATENCY` environment variable.
+It defines the network packet latency that is injected into the VM. You can tune it using the `NETWORK_LATENCY` environment variable.
 
 Use the following example to tune it:
 
@@ -172,12 +164,12 @@ Use the following example to tune it:
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-latency
+  - name: VMware-network-latency
     spec:
       components:
         env:
@@ -192,9 +184,9 @@ spec:
           value: '123,123'
 ```
 
-### Run With Jitter
+### Run with jitter
 
-It defines jitter (in ms), a parameter that introduces a network delay variation. You can tune it using the `JITTER` environment variable. Its default value is 0.
+It defines jitter (in ms), a parameter that introduces network delay variation. You can tune it using the `JITTER` environment variable. Its default value is 0.
 
 Use the following example to tune it:
 
@@ -203,12 +195,12 @@ Use the following example to tune it:
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-latency
+  - name: VMware-network-latency
     spec:
       components:
         env:
@@ -225,12 +217,12 @@ spec:
           value: '123,123'
 ```
 
-### Run With Destination IPs And Destination Hosts
+### Run with destination IPs and destination hosts
 
-The network faults interrupt traffic for all the IPs/hosts by default. You can tune this using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables.
+The network faults interrupt traffic for all the IPs/hosts by default. You can tune this using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variables, respectively.
 
-`DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks(range of IPs) that impacts its accessibility.
-`DESTINATION_HOSTS`: It contains the DNS Names of the services that impacts its accessibility.
+`DESTINATION_IPS`: It contains the IP addresses of the services or the CIDR blocks (range of IPs) that impacts its accessibility.
+`DESTINATION_HOSTS`: It contains the DNS names of the services that impact its accessibility.
 
 Use the following example to tune it:
 
@@ -240,12 +232,12 @@ Use the following example to tune it:
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-latency
+  - name: VMware-network-latency
     spec:
       components:
         env:
@@ -263,7 +255,7 @@ spec:
           value: '123,123'
 ```
 
-###  Network Interface
+###  Network interface
 
 The name of the ethernet interface that shapes the traffic. You can tune it using the `NETWORK_INTERFACE` environment variable. Its default value is `eth0`.
 
@@ -275,12 +267,12 @@ Use the following example to tune it:
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-network-latency
+  - name: VMware-network-latency
     spec:
       components:
         env:

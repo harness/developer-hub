@@ -1,33 +1,30 @@
 ---
-id: vmware-dns-chaos
-title: VMware DNS Chaos
+id: VMware-DNS-chaos
+title: VMware DNS chaos
 ---
+VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS server being unavailable or malfunctioning for a specific duration. 
+- It checks the performance of the application (or process) running on the VMware VMs.
 
-## Introduction
-- It causes DNS errors in the VMWare VMs for a specified chaos duration.
-- It checks the performance of the application/process running on the VMWare VMs.
 
-:::tip Fault execution flow chart
 ![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-The fault causes DNS errors on the target VMs which results in unavailability/distorted network connectivity from the VM to the target hosts. This will also help produce a hypothesis where certain services of an application are unreachable from the VM. This will help the user take mitigation steps to overcome such situation. This fault also helps understand how the DNS error can impact your infrastructure and standalone tasks.
+This fault causes DNS errors on the target VMs which results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault provides a hypothesis wherein certain services of an application could be unreachable from the VM. This fault determines how DNS errors impact the infrastructure and standalone tasks in the application.
+It simulates unavailability of DNS server (loss of access to any external domain from a given microservice) and malfunctioning of DNS server (loss of access to specific domains from a given microservice, access to cloud provider dependencies, and access to specific third party services).
+
 </div>
 </details>
 
 ## Prerequisites
-:::info
 - Kubernetes > 1.16
+- Execution plane is connected to vCenter and the hosts on port 443. 
+- VMware tool is installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions to access the hosts and the VMs.
+- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
-**vCenter Requirements**
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -41,20 +38,17 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+
+## Default validations
+The VM should be in a healthy state before and after injecting chaos.
 
 
-## Default Validations
-:::info
-- VM should be in healthy state before and after chaos.
-:::
-
-## Fault Tunables
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -63,21 +57,21 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> VM_USER_NAME </td>
-        <td> Provide the username of the target VM(s)</td>
-        <td> Multiple usernames can be provided as comma separated (for more than one VM under chaos). It is used to run the govc command.</td>
+        <td> Username of the target VM(s).</td>
+        <td> Multiple usernames can be provided as comma-separated values (when there are multiple VMs subject to chaos). It also helps run the govc command.</td>
       </tr>
       <tr>
         <td> VM_PASSWORD </td>
-        <td> Provide the password for the target VM(s)</td>
-        <td> It is used to run the govc command.</td>
+        <td> Password for the target VM(s).</td>
+        <td> It helps run the govc command.</td>
       </tr>
       <tr>
         <td> PORT </td>
-        <td> Provide the DNS Port</td>
-        <td> Default value is 54 </td>
+        <td> DNS Port</td>
+        <td> Defaults to 54 </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -86,38 +80,38 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds).</td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).</td>
+        <td> For example, 30s. </td>
       </tr>
       <tr>
         <td> TARGET_HOSTNAMES </td>
-        <td> List of the target hostnames or keywords eg. '["litmuschaos","chaosnative.com"]' </td>
-        <td> If not provided, all hostnames/domains will be targeted</td>
+        <td> List of the target host names. If it is not provided, all host names (or domains) are targeted. </td>
+        <td> For example, '["litmuschaos","chaosnative.com"]'.</td>
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
-        <td> Determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. Can be either exact or substring </td>
-        <td> if not provided, it will be set as exact</td>
+        <td> Determines whether the DNS query should exactly match the targets or can be a substring. </td>
+        <td> Defaults to exact.</td>
       </tr>
       <tr>
         <td> UPSTREAM_SERVER </td>
-        <td> Custom upstream server to which intercepted dns requests will be forwarded </td>
-        <td> defaults to the server mentioned in resolv.conf </td>
+        <td> Custom upstream server to which the intercepted DNS requests will be forwarded. </td>
+        <td> Defaults to the server mentioned in resolv.conf file.</td>
       </tr>
     </table>
     <h2>Secret Fields</h2>
@@ -129,50 +123,50 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> GOVC_URL </td>
-        <td> Provide the VMCenter Server URL</td>
-        <td> It is used to perform the VMware API calls using govc command and is derived from secret.</td>
+        <td> vCenter server URL used to perform API calls using the govc command.</td>
+        <td> It is derived from a secret.</td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
-        <td> Provide the username of VMCenter Server</td>
-        <td> It is used for auth purpose and this ENV is setup using secret.</td>
+        <td> Username of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_PASSWORD </td>
-        <td> Provide the password of VMCenter Server</td>
-        <td> It is used for auth purpose and this ENV is setup using secret.</td>
+        <td> Password of the vCenter server used for authentication purposes. </td>
+        <td> It can be set up using a secret.</td>
       </tr>
       <tr>
         <td> GOVC_INSECURE </td>
-        <td> Provide the value as <code>true</code> </td>
-        <td> It is used to run the govc in insecure mode and this ENV is setup using secret.</td>
+        <td> Runs the govc command in insecure mode. It is set to <code>true</code>. </td>
+        <td> It can be set up using a secret.</td>
       </tr>
      </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+### Common fault tunables
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Run DNS Chaos With Port
+### Run DNS chaos with port
 
-It contains the DNS port to inject the DNS chaos. The value can be provided using `PORT` Env.
+It specifies the DNS port where DNS chaos is injected. You can tune it using the `PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-port.yaml yaml)
 ```yaml
-# induces dns chaos on the VMWare VM
+# induces DNS chaos on the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-dns-chaos
+  - name: VMware-DNS-chaos
     spec:
       components:
         env:
@@ -186,15 +180,15 @@ spec:
           value: '123,123'
 ```
 
-### Run DNS Chaos With Target HostNames
+### Run DNS chaos with target host names
 
-It contains the list of the target host name to inject the DNS chaos. The value can be provided using `TARGET_HOSTNAMES` Env.
+It contains the list of the target host names into which DNS chaos is injected. You can tune it using the `TARGET_HOSTNAMES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-target-hostnames.yaml yaml)
 ```yaml
-# induces dns chaos on the VMware VMs
+# induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -203,7 +197,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-dns-chaos
+  - name: VMware-DNS-chaos
     spec:
       components:
         env:
@@ -219,15 +213,15 @@ spec:
 ```
 
 
-### Run DNS Chaos With Match scheme
+### Run DNS chaos with match scheme
 
-It determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
+It determines whether the DNS query should exactly match the targets or can be a substring. You can tune it using the `MATCH_SCHEME` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-match-scheme.yaml yaml)
 ```yaml
-# induces dns chaos on the VMware VMs
+# induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -236,7 +230,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-dns-chaos
+  - name: VMware-DNS-chaos
     spec:
       components:
         env:
@@ -252,15 +246,15 @@ spec:
 ```
 
 
-### Run DNS Chaos With Upstream server
+### Run DNS chaos with upstream server
 
-It contains the custom upstream server to which intercepted dns requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
+It specifies the custom upstream server to which the intercepted DNS requests are forwarded. It defaults to the server mentioned in the resolv.conf file. The value can be provided using `UPSTREAM_SERVER` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-dns-chaos/vmware-dns-upstream-server.yaml yaml)
 ```yaml
-# induces dns chaos on the VMware VMs
+# induces DNS chaos on the VMware VMs
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -269,7 +263,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-dns-chaos
+  - name: VMware-DNS-chaos
     spec:
       components:
         env:
