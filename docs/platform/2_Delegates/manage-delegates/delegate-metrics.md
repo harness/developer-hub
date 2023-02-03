@@ -15,84 +15,15 @@ Harness captures delegate agent metrics for delegates shipped on immutable image
 
 This document explains how to configure the Prometheus monitoring tool for metrics collection, and how to configure the Grafana analytics tool for metrics display. This document includes example YAML you can use to create application manifests for both configurations.
 
-## Install Prometheus
-
-You'll need to install and run Prometheus to collect metrics. You can install Prometheus locally using the `brew` package manager:
-
-```
-brew install prometheus
-```
-
-After you install Prometheus and set up your config file, you can run Prometheus as follows:
-
-```
-prometheus --web.external-url http://localhost:19090/prometheus/ --config.file=prometheus.yml
-```
-
-## Configure the Prometheus database
-
-You can use Prometheus to collect delegate metrics. Prometheus “scrapes” metrics from the delegate replica pods you deploy in a cluster. To collect delegate metrics, Prometheus must be configured with the following settings. The configuration of Prometheus is specified as a Kubernetes `ConfigMap` and saved as a prometheus.yml file. 
-
-### Configure the namespace
-
-Prometheus must be configured to use the namespace to which your delegates were deployed. 
-
-```
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: prometheus-delegate-conf
-  Labels:
-    name: prometheus-delegate-conf
-  namespace: harness-delegate-ng
-```
-
-You can skip this step if you’re using the Harness prometheus.yml file and your delegates are deployed to the `harness-delegate-ng` namespace. This namespace is configured in the prometheus.yml file by default. 
-
 ### Apply the prometheus.yml file
+
+Take the below example for prometheus.yaml, this install prometheus workload (harness-delegate-prometheus-deployment) and a service (harness-delegate-prometheus-service) in your kubernetes cluster. This will also create a load balancer with ip for you to access the prometheus UI
 
 Deploy the Prometheus configuration map. Use the following command:
 
 ```
 kubectl apply -f prometheus.yml
 ```
-
-### Confirm the configuration
-
-If Prometheus is correctly configured, you should be able to see metrics collection. To check, use the following command to port-forward the Prometheus service:
-
-```
-kubectl port-forward {prometheus-pod-name} 8084:9090 -n {namespace}
-```
-
-In this command, replace `{prometheus-pod-name}` with the name of the deployed Prometheus pod. Replace `{namespace}` with the namespace from the `metadata.namespace` field in the prometheus.yml file. 
-
-```
-kubectl port-forward prometheus-deployment-7fd6bcf85-5gm8j 8084:9090 -n harness-delegate-ng
-```
-
-As shown in this example, the default namespace is `harness-delegate-ng`.
-
-The Prometheus service runs at port 8084 with a target port of 9090.
-
-```
-apiVersion: v1
-kind: Service
-metadata:
-  name: harness-delegate-prometheus-service
-  namespace: harness-delegate-ng
-spec:
-  selector:
-    app: prometheus-delegate
-  type: LoadBalancer
-  ports:
-   - port: 8084
-     targetPort: 9090
-```
-
-These values are specified in the definition of the Prometheus service in the prometheus.yml file.
-
-Open your browser and navigate to `localhost:8084`.
 
 ### Example prometheus.yml file
 
@@ -257,13 +188,7 @@ To set up Grafana, use the following example grafana.yml file.
    kubectl apply -f grafana.yml
    ```
    
-4. Port-forward the Prometheus service to view the metrics:
-
-   ```
-   kubectl port-forward {grafana-pod-name} 8084:9090 -n {namespace]
-   ```
-   
-5. Open your browser and navigate to `localhost:3000`.
+4. This manifest also creates a load balancer and service in your Kubernetes cluster. Click the exposed URL to access Grafana.
 
 
 ### Example grafana.yml file
