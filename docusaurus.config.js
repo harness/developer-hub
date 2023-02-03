@@ -324,12 +324,12 @@ const config = {
                 href: "https://harness.io/legal/privacy",
               },
               {
-                html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
-                // href: "javascript: alert(33)",
-              },
-              {
                 label: "Accessibility",
                 to: "legal/accessibility",
+              },
+              {
+                html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
+                // href: "javascript: alert(33)",
               },
             ],
           },
