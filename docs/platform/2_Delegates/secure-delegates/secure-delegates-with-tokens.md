@@ -75,7 +75,7 @@ Paste the token in the Delegate `ACCOUNT_SECRET` setting in the `StatefulSet` sp
 ---  
   
 apiVersion: apps/v1  
-kind: StatefulSet  
+kind: Deployment  
 ...  
         env:  
 ...  
@@ -104,7 +104,7 @@ services:
         limits:  
           cpus: "0.5"  
           memory: 2048M  
-    image: harness/delegate:latest  
+    image: harness/delegate:23.01.78102  
     environment:  
       - ACCOUNT_ID=12345678910  
       - ACCOUNT_SECRET=[enter new token here]  

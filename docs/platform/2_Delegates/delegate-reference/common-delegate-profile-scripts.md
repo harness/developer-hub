@@ -23,18 +23,6 @@ You can add any commands supported on the host/container/pod running the delegat
 
 The base image for the delegate is Ubuntu 18.04 or later. This means you can use any default Ubuntu package in delegate script.
 
-#### Legacy delegates
-
-Legacy Delegates include `cURL`, `tar,` and `unzip` as part of their installation package. This means you can use `cURL`, `tar`, and `unzip` in delegate scripts without installing them. For example, the following script works without the installation of any packages:
-
-
-```
-usr/bin/apt-get install -y python  
-curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"  
-unzip awscli-bundle.zip  
-./awscli-bundle/install -b ~/bin/aws
-```
-
 #### Harness Delegate
 
 Harness Delegate is packaged with `cURL` and `tar`.
@@ -112,22 +100,22 @@ You do not need to add a script for Helm 3. Harness includes Helm 3 support in a
 
 ### Pip
 
-Ensure that you run `apt-get update` before running any `apt-get` commands.
+Ensure that you run `microdnf update` before running any `microdnf` commands.
 ```
-apt-get update  
+microdnf update  
 # Install pip  
-apt-get -y install python-pip  
+microdnf -y install python3-pip  
 # Check pip install  
 pip -v
 ```
 
 ### Unzip
 
-Ensure that you run `apt-get update` before running any `apt-get` commands.
+Ensure that you run `microdnf update` before running any `microdnf` commands.
 ```
-apt-get update  
+microdnf update  
 # Install Unzip  
-apt-get install unzip
+microdnf install unzip
 ```
 
 ### AWS CLI
@@ -140,7 +128,7 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 unzip awscliv2.zip  
 ./awscli-bundle/install -b ~/bin/aws  
 # install  
-sudo ./aws/install  
+./aws/install  
 # Check AWS CLI install  
 aws --version
 ```
@@ -165,12 +153,12 @@ aws ec2 describe-instances --query 'Reservations[*].Instances[*].[InstanceId,Sta
 
 ### Git CLI
 
-Run `apt-get update` before you run`apt-get` commands.
+Run `microdnf update` before you run`microdnf` commands.
 
 ```
-apt-get update  
+microdnf update  
 # Install Git with auto approval  
-yes | apt-get install git  
+microdnf -y install git  
 # Check git install  
 git --version
 ```
@@ -184,9 +172,9 @@ For example, if you are using buildpacks in the manifest.yml of your Harness ser
 The following example script installs Cloud Foundry CLI on a delegate:
 
 ```
-sudo wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo  
+wget -O /etc/yum.repos.d/cloudfoundry-cli.repo https://packages.cloudfoundry.org/fedora/cloudfoundry-cli.repo  
   
-sudo yum -y install cf-cli
+microdnf -y install cf-cli
 ```
 The `-y` parameter is needed for a prompt.
 
@@ -206,44 +194,4 @@ Complete!
 
 For information on installing the CLI on different distributions, see [Installing the cf CLI](https://docs.pivotal.io/pivotalcf/2-3/cf-cli/install-go-cli.html) from PCF.
 
-### Docker Installation
-
-To install Docker on the Delegate, use the following script:
-
-
-```
-apt-get update  
-apt-get install -y apt-utils dnsutils docker
-```
-
-Ensure that you run `apt-get update` before you run `apt-get` commands.
-
-### PowerShell
-
-You can run PowerShell scripts on Harness Delegate, even though the delegate must be run on Linux. Linux supports PowerShell using [PowerShell core](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-windows?view=powershell-7).
-
-For information about how to create your script, see [Installing PowerShell on Linux](https://docs.microsoft.com/en-us/powershell/scripting/install/installing-powershell-core-on-linux?view=powershell-7) from Microsoft.
-
-The scripts you run must be supported by the version of PowerShell you install.
-
-Here is an example for Ubuntu 16.04:
-
-```
-# Download the Microsoft repository GPG keys  
-wget -q https://packages.microsoft.com/config/ubuntu/16.04/packages-microsoft-prod.deb  
-  
-# Register the Microsoft repository GPG keys  
-sudo dpkg -i packages-microsoft-prod.deb  
-  
-# Update the list of products  
-sudo apt-get update  
-  
-# Install PowerShell  
-sudo apt-get install -y powershell  
-  
-# Start PowerShell  
-pwsh
-```
-
-If `apt-get` is not installed on the delegate host, you can use `snap` (`snap install powershell --classic`). See [Install PowerShell Easily via Snap in Ubuntu 18.04](http://ubuntuhandbook.org/index.php/2018/07/install-powershell-snap-ubuntu-18-04/).
 

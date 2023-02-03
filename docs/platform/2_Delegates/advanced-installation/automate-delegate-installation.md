@@ -26,7 +26,7 @@ For example, in Kubernetes deployments, you can set up two delegates, each in it
 ```
 ...  
 apiVersion: apps/v1beta1  
-kind: StatefulSet  
+kind: Deployment  
 metadata:  
   labels:  
     harness.io/app: harness-delegate  
@@ -65,18 +65,22 @@ The Delegate Environment Variables are described in the relevant Delegate instal
 
 ### Step 2: Rename the New Delegate
 
-The process you use to rename a delegate depends on its type. For Docker delegates, you change the name in one environment variable in the Docker compose file. For the Kubernetes delegate, you change multiple instances of the name.
+The process you use to rename a delegate depends on its type. For Docker delegates, you change the name in the command line. For the Kubernetes delegate, you change multiple instances of the name.
 
 #### Kubernetes delegate renaming
 
 In the Kubernetes delegate config file, several labels must be updated:
 
 * `Secret.metadata.name`
-* `StatefulSet.metadata.labels.harness.io/name`
-* `StatefulSet.metadata.name`
-* `StatefulSet.metadata.spec.selector.matchLabels.harness.io/name`
-* `StatefulSet.metadata.spec.template.metadata.labels.harness.io/name`
-* `StatefulSet.metadata.spec.template.spec.env.name: DELEGATE_NAME`
+* `Deployment.metadata.labels.harness.io/name`
+* `Deployment.metadata.name`
+* `Deployment.spec.selector.matchLabels.harness.io/name`
+* `Deployment.spec.template.metadata.labels.harness.io/name`
+* `Deployment.spec.containers.envFrom.secretRef`
+* `Deployment.metadata.spec.template.spec.env.name: DELEGATE_NAME`
+* `Service.metadata.selector.harness.io/name`
+* `CronJob.metadata.labels.harness.io/name`
+* `CronJob.metadata.name`
 
 The `DELEGATE_NAME` environment variable looks like this:
 

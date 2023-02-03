@@ -31,7 +31,7 @@ You can build on either of the following Harness-provided images.
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
 | Harness Minimal Delegate Docker image | A minimal delegate image available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
 
-You can use the `latest` version minimal image from the Docker repository.
+You can use the  last published `YY.MM.XXXXX` version minimal image from the Docker repository.
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-07.png)
 ### Build the delegate image
@@ -54,7 +54,7 @@ The first `RUN` block installs or updates the `unzip` and `yum-utils` tools. The
 RUN microdnf update \  
   && microdnf install --nodocs \  
     unzip \  
-    Yum-utils
+    yum-utils
 ```
 The second `RUN` block uses the `yum` utility to create a configuration file for the HashiCorp repository, and then uses the `microdnf` package manager to install the required Terraform components:
 
@@ -88,7 +88,7 @@ USER root
 RUN microdnf update \  
   && microdnf install --nodocs \  
     unzip \  
-    Yum-utils  
+    yum-utils  
   
 RUN yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo \  
   && microdnf install -y terraform     

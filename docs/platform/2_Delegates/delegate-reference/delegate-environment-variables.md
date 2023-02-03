@@ -19,7 +19,7 @@ This value is automatically added to the delegate configuration file (the applic
 
 ```
 - name: ACCOUNT_ID
-  value: H5W8iol5TNWc4G9h5A2MXg 
+  value: XXXXXXXXXXXXXXXXXXXX 
 ```
 
 ### ACCOUNT_SECRET
@@ -28,24 +28,7 @@ The Harness account token that is used to register the delegate.
 
 ```
 - name: ACCOUNT_SECRET
-  value: d239xx88bf7xxxxxxx836ea 
-```
-
-### CDN_URL
-The CDN URL for delegate versions. 
-
-```
-- name: CDN_URL
-  value: https://app.harness.io
-```
-  
-### DELEGATE_CHECK_LOCATION
-
-The storage location that hosts published versions of the delegate. 
-
-```
-- name: DELEGATE_CHECK_LOCATION
-  value: delegateprod.txt
+  value: XXXXXXXXXXXXXXXXXXXX 
 ```
 
 ### DELEGATE_DESCRIPTION
@@ -101,15 +84,6 @@ Delegates at the account or organization level do not have a value for this vari
   value: "myproject"
 ```
 
-### DELEGATE_STORAGE_URL
-
-The URL location at which published delegate JAR files are stored.
-
-```
-- name: DELEGATE_STORAGE_URL
-  value: https://app.harness.io 
-```
-
 ### DELEGATE_TAGS
 
 Delegate tags are descriptors that are added to the delegate before the registration process, in Harness Manager or in YAML. Harness generates tags based on the delegate name; you can add others. You can specify multiple tags in YAML as a comma-separated list.
@@ -124,17 +98,6 @@ Tags are displayed on the delegate details page in Harness Manager. See [Tags Re
   value: has_jq, has_gcloud 
 ```
 
-### DELEGATE_TASK_LIMIT
-
-The maximum number of tasks the delegate can concurrently perform.
-
-Delegate operations are categorized as different types of tasks.
-
-```
-- name: DELEGATE_TASK_LIMIT
-  value: "50" 
-```
-
 ### DELEGATE_TYPE
 
 The type of the delegate.
@@ -143,36 +106,6 @@ The type of the delegate.
 - name: DELEGATE_TYPE
   value: "KUBERNETES" 
 ```
-
-### DEPLOY_MODE
-
-The mode of deployment, for example, Kubernetes or Docker. 
-
-```
-- name: DEPLOY_MODE
-  value: KUBERNETES
-```
-
-### GRPC_SERVICE_ENABLED, GRPC_SERVICE_CONNECTOR_PORT
-
-By default, the delegate requires HTTP/2 for gRPC (remote procedure calls) to be enabled for connectivity between the delegate and Harness Manager. 
-
-```
-- name: GRPC_SERVICE_ENABLED
-  value: "true"
-- name: GRPC_SERVICE_CONNECTOR_PORT
-  value: "8080"`
-```
-
-### HELM_DESIRED_VERSION
-
-By default, Harness Delegates are installed with and use Helm 3. You can set the Helm version in the delegate YAML file using the `HELM\_DESIRED\_VERSION` environment property. Include the "v" with the version. For example, `HELM\_DESIRED\_VERSION: v2.13.0`. 
-
-```
-- name: HELM_DESIRED_VERSION
-  value: ""
-```
-
 ### INIT_SCRIPT
 
 Used to specify a script that runs when the delegate is initialized. You can use this environment variable to run scripts on the delegate but this is not a best practice. Delegate initialization should be built into the image; not determined on startup.
@@ -192,15 +125,6 @@ Use the `JAVA_OPTS` environment variable to add or override JVM parameters. The 
 - name: JAVA_OPTS
   value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M"
 ``` 
-
-### JRE_VERSION
-
-The Java Runtime Environment (JRE) version that the delegate uses.
-
-```
-- name: JRE_VERSION
-  value: 1.8.0_242
-```
 
 ### LOG_STREAMING_SERVICE_URL
 
@@ -266,50 +190,4 @@ The `secretKeyRef` values are named based on delegate name.
     secretKeyRef:
       name: mydel-proxy
       key: PROXY_PASSWORD
-```
-
-### REMOTE_WATCHER_URL_CDN 
-
-The CDN URL for Watcher builds. 
-
-```
-- name: REMOTE_WATCHER_URL_CDN
-  value: https://app.harness.io/public/shared/watchers/builds 
-```
-
-### USE_CDN
-Makes the delegate use a CDN for new versions. 
-
-```
-- name: USE_CDN
-  value: "true"
-```
-
-
-### VERSION_CHECK_DISABLED
-
-By default, the delegate checks for new versions, obtaining the information from the Watcher. 
-
-```
-- name: VERSION_CHECK_DISABLED
-  value: "false"
-```
-
-
-### WATCHER_CHECK_LOCATION
-
-The delegate version location that the Watcher checks for.
-
-```
-- name: WATCHER_CHECK_LOCATION
-  value: current.version` 
-```
-
-### WATCHER_STORAGE_URL
-
-The URL for the Watcher versions. See [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md). 
-
-```
-- name: WATCHER_STORAGE_URL
-  value: https://app.harness.io/public/prod/premium/watchers 
 ```
