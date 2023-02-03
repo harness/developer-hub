@@ -160,7 +160,7 @@ resource "harness-ccm_autostopping_rule" "rule_i2" {
 }
 ```
 
-Example 2: This is an example of a terraform template to create an AutoStopping rule:
+Example 2: This is an example script to create an AutoStopping rule for a VM that has both TCP and HTTP/HTTPS workloads running:
 
 * **Token**: Specify the API Key.
 * **API_URL**: Specify the endpoint.
@@ -172,7 +172,6 @@ Example 2: This is an example of a terraform template to create an AutoStopping 
 * **Resource_ID**: Specify the instance ID.
 * **Routing**: Specify listeners information.
 * **(Optional) Health Check**: A health check makes sure that the specified parameters are met before stopping the instances. Health check status should be successful for the AutoStopping rules to come into effect.
-
 
 
 > 

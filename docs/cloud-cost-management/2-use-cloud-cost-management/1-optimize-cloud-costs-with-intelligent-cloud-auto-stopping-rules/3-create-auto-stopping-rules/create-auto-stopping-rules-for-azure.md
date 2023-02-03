@@ -66,7 +66,7 @@ Perform the following steps to get started with AutoStopping Rule.
 2. In the cloud account type, select **Azure**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
 3. Select your Azure account from the **Connect to your Azure account**.  
   
-  If you have not added an Azure cloud account, see [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md).
+  If you have not added an Azure cloud account, see [Connect to an Azure Connector](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/add-azure-connector.md).
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
 5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.  
 AutoStopping will shut down (for on-demand) or snapshot and terminate (for spot) the instances after the idle time period has elapsed.
@@ -403,10 +403,10 @@ harness rdp --host default-test-rdp-1.abc1000test.lightwingtest.com --internal-i
 
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.  
   
-Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](../3-create-auto-stopping-rules/autostopping-dashboard.md).
+Your AutoStopping rule is listed under the [AutoStopping Rules summary page](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
 
 ## Next Step
 
-* [Create AutoStopping Rules for a Kubernetes Cluster](create-autostopping-rules-for-kubernetes.md)
-* [Use AutoStopping Rules Dashboard](../3-create-auto-stopping-rules/autostopping-dashboard.md)
+* [Create AutoStopping Rules for a Kubernetes Cluster](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md)
+* [Use AutoStopping Rules Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md)
 
