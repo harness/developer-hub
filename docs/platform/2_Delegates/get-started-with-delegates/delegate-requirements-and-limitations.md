@@ -30,11 +30,7 @@ One Delegate size does not fit all use cases, so Harness let's you pick from sev
 ![](./static/delegate-requirements-and-limitations-00
 Remember that the memory and CPU requirements are for the Delegate only. You Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
 
-The Delegate runs on a Linux/UNIX server or container.
-
-Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system. For example, an AWS EC2 instance type such as m5a.xlarge has 16GB of RAM, 8 for the Delegate and 8 for the remaining operations.
-
-The ​Shell Script Delegate requires cURL 7.64.1 or later.
+The Delegate runs on a Linux/UNIX container.
 
 Access to artifact servers, deployment environments, and cloud providers. As shown in the following illustration:
 
@@ -50,7 +46,6 @@ See [Allowlist Harness Domains and IPs](/docs/platform/20_References/whitelist-h
 The following network requirements are for connectivity between the Harness Delegate you run in your network and the **Harness Manager** (SaaS or On-Prem), and for your browser connection to the Harness Manager.
 
 All network connections from your local network to Harness SaaS are outbound-only.* HTTPS port 443 outbound from the Delegate to Harness.
-* HTTP/2 for gRPC (gRPC Remote Procedure Calls)
 * Delegate requirements: The Delegate will need API/SSH/HTTP access to the providers you add to Harness, such as:
 	+ Cloud Providers.
 	+ Verification Providers.
@@ -64,7 +59,6 @@ All network connections from your local network to Harness SaaS are outbound-onl
 If you do not enable gRPC connections, the following limitations apply:
 
 * [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) will not collect events.
-* If the `ARTIFACT_PERPETUAL_TASK` feature flag is enabled in your account, Harness performs perpetual artifact collection. If you do not enable gRPC connections, this will not work.
 
 Contact [Harness Support](mailto:support@harness.io) to enable or disable feature flags.### Permissions and Ports
 
@@ -76,7 +70,7 @@ For steps on adding certs or other software to the Delegate, see [Common Delegat
 
 ### Delegate Access Requirements
 
-* The Harness Delegate does NOT require root account access, but the Kubernetes and Docker Delegates run as root by default. If you do not need to install applications using Delegate Profiles, then you can use a non-root account or install the application without the Delegate.  
+* The Harness Delegate does NOT require root account access, but the Kubernetes and Docker Delegates run as root by default. If you do not need to install applications using INIT_SCRIPT, then you can use a non-root account or install the application without the Delegate.  
 See [Non-Root Delegate Installation](/docs/platform/2_Delegates/advanced-installation/non-root-delegate-installation.md).
 * If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 
