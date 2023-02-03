@@ -100,7 +100,7 @@ The following information describes how the Harness Manager validates and assign
 
 * **Heartbeats** - Running Delegates send heartbeats to the Harness Manager in 1 minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
 * **Tags** - For more information, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
-* **Capability** - Delegate checks connectity to your external systems to know whether it can do the task or not. This gives chance to other delegates in case the reachability is not present. 
+* **Capability** - The delegate checks connectivity to your external systems to determine whether it can carry out the task. This process allows other delegates to assist in case access issues are found. 
 
 #### Delegate selection in pipelines
 
