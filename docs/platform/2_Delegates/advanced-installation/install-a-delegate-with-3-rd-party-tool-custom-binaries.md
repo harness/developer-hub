@@ -88,6 +88,7 @@ For Native Helm deployments, include the following SDKs/tools.
 
 | --- | --- | --- | --- |
 | **Manifest Type** | **Required Tool/SDK** | **Certified Version** | **Installation Command** |
+| :-- | :-- | :--: | :-- |
 | Helm Chart | helm | v3.9.2 | ```curl -L0 https://get.helm.sh/helm-v3.9.2-linux-amd64.tar.gz -o helm-v3.9.2.tar.gz && tar -xvzf helm-v3.9.2.tar.gz && chmod +x ./linux-amd64/helm && mv ./linux-amd64/helm /opt/harness-delegate/custom-client-tools/helm3```|
 |  | kubectlRequired if Kubernetes version is 1.16+. | v1.24.3 | ```curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectl && mv kubectl /opt/harness-delegate/custom-client-tools/kubectl```|
 
