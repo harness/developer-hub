@@ -31,7 +31,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Fixed issues
 
-- In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect     information. (PL-30862)
+- In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. (PL-30862)
 
   A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details   as per the schema.
 
@@ -43,7 +43,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   A code enhancement to support user metadata updates has fixed this issue.
   
-- Force deletion of a secret used for the creation of a Secrets Manager throws an incorrect error. (PL-29983)
+- Force deletion of a secret used for the creation of a secrets manager throws an incorrect error. (PL-29983)
 
   This has been fixed by displaying the appropriate error message.
 
