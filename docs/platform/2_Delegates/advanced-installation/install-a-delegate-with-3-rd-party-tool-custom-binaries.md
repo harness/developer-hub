@@ -86,7 +86,6 @@ For Native Helm deployments, include the following SDKs/tools.
 
 
 
-|  |  |  |  |
 | --- | --- | --- | --- |
 | **Manifest Type** | **Required Tool/SDK** | **Certified Version** | **Installation Command** |
 | Helm Chart | helm | v3.9.2 | ```curl -L0 https://get.helm.sh/helm-v3.9.2-linux-amd64.tar.gz -o helm-v3.9.2.tar.gz && tar -xvzf helm-v3.9.2.tar.gz && chmod +x ./linux-amd64/helm && mv ./linux-amd64/helm /opt/harness-delegate/custom-client-tools/helm3```|
