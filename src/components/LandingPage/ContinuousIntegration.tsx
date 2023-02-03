@@ -249,6 +249,22 @@ const CIList: CardItem[] = [
   time: '15 min',
   link: '/tutorials/build-code/ci-tutorial-push-to-gar',
 },
+{
+  title: 'Publish an Allure report to the Artifacts tab',
+  module: 'ci',
+  icon: "img/icon_ci.svg",
+  description: (
+    <>
+    This tutorial provides an example pipeline that builds a Java Maven application and generates an Allure Report that you can view in the Harness UI.
+
+    </>
+  ),
+  newDoc: true,
+  type: [docType.Documentation],
+  time: '15 min',
+  link: '/tutorials/build-code/ci-publish-allure-report',
+},
+
 ];
 
 export default function CI() {

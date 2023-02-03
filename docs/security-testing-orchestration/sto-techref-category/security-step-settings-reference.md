@@ -649,6 +649,8 @@ When `product_name` is set to `sniper`
 
 ### Snyk
 
+For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
+
 When `product_name` is set to `snyk`:
 
 * `scan_type`

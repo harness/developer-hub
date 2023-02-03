@@ -13,7 +13,7 @@ spec:
         env:
         # modified status code for the http response
         # if no value is provided, a random status code from the supported code list will selected
-        # if multiple comma separated values are provided, then a random value
+        # if multiple comma-separated values are provided, then a random value
         # from the provided list will be selected
         # if an invalid status code is provided, the fault will fail
         # supported status code list:

@@ -1,6 +1,6 @@
 ---
-title: Deploy Manifests Separately using Apply Step
-description: This topic describes how to deploy Kubernetes workloads separate from the primary workloads deployed by the stage.
+title: Deploy manifests separately using Apply step
+description: Deploy secondary workloads separately.
 sidebar_position: 4
 helpdocs_topic_id: 00el61pzok
 helpdocs_category_id: uj8bqz9j0q
@@ -16,14 +16,28 @@ For example, you might want to deploy an additional resource only after Harness 
 
 CD stages include an **Apply** step that allows you to deploy any resource you have set up in the **Manifests** section.
 
-## Before You Begin
+## Apply step behavior
 
-* [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+The Apply step performs the following tasks:
+
+1. Fetches the Kubernetes manifests from the repo defined the Harness service.
+2. Renders any values.yaml and manifest files using Go templating and previews the files in the step log.
+3. Performs a dry run to show you what resources are about to be created.
+4. Applies the resources to the target Kubernetes cluster.
+5. Checks that all deployed resources reached steady state. Steady state means the pods are healthy and up and running in the cluster.
+6. Prints a summary of the applied resources to the step log.
+
+### Apply step failures
+
+In the event of deployment failure, Harness will not roll back the Apply step action because there is no record of its state when the Apply step is performed. 
+
+We recommend users define rollback steps in the **Rollback** section of the stage to undo the Apply step(s) actions. 
+
+Harness will roll back any infrastructure or deployments that happened prior to the failed step.
 
 ## What Kubernetes workloads can I include?
 
-The **​Apply Step** can deploy all workload types, including Jobs.
+The **Apply Step** can deploy all workload types, including Jobs.
 
 All workloads deployed by the Apply step are managed workloads. Managed workloads are tracked until steady state is reached.
 
@@ -31,7 +45,7 @@ The Apply Step is primarily used for deploying Jobs controllers, but it can be u
 
 For a detailed list of what Kubernetes workloads you can deploy in Harness, see [What Can I Deploy in Kubernetes?](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
-### Rolling vs Apply
+### Rolling vs apply
 
 The following table lists the differences between the Rolling Deployment step (default in a Rolling strategy) and the Apply step (which may be used with any strategy).
 
@@ -40,9 +54,9 @@ The following table lists the differences between the Rolling Deployment step (d
 | **Rolling Deployment step** | No | Yes |
 | **Apply step** | Yes | No |
 
-## Step 1: Skip a Specific Workload
+## Skip a specific workload
 
-By default, when you run a CD Pipeline, Harness will use all of the manifests in the **Manifests** section, and deploy all of its workloads.
+By default, when you run a CD pipeline, Harness will use all of the manifests in the **Manifests** section, and deploy all of its workloads.
 
 To avoid having a specific workload deployed as part of the standard deployment, you add the Harness comment  `# harness.io/skip-file-for-deploy` to the **top** of the file.
 
@@ -51,7 +65,7 @@ This comment instructs Harness to ignore this manifest. Later, you will use the 
 For example, here is a ConfigMap file using the `# harness.io/skip-file-for-deploy` comment:
 
 
-```go
+```yaml
 # harness.io/skip-file-for-deploy  
   
 {{- if .Values.env.config}}  
@@ -64,47 +78,70 @@ data:
 ---  
 {{- end}}
 ```
-Now, when this Pipeline is executed, this ConfigMap resource will not be applied.
+
+Now, when this pipeline is executed, this resource will not be applied.
+
+Later, you can apply a skipped manifest using the **Apply** step. Here's an example using a Kubernetes Job:
+
+<!-- ![](./static/5ec2523eac5fa7169bf2101a9b4920cfe7aa2efe688075fea0ee57f775c0b05b.png) -->
+
+<docimage path={require('./static/5ec2523eac5fa7169bf2101a9b4920cfe7aa2efe688075fea0ee57f775c0b05b.png')} />
 
 ### Important
 
 * The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main stage rollout.
 * If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resource but do not use the resource in an **Apply** step, the resource is never deployed.
 
-## Step 2: Add the Manifest
+## Add the manifest
 
-Add the commented manifest to the **Manifests** section of your CD stage.
+1. Add the commented manifest to the **Manifests** section of your CD stage.
 
 See [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
 
-## Step 3: Add the Apply Step
+## Add the Apply step
 
-In your Pipeline, click **Add Step**, and then click **Apply**. The Apply step appears.
+1. In your pipeline, click **Add step**, and then click **Apply**. The Apply step appears.
 
-![](./static/deploy-manifests-using-apply-step-23.png)
+![picture 3](static/2395737cc5f68e35651e0a4def0dd58bf416e48c609461571c4711e3d6046cd5.png)  
+
 
 Enter a name for the step. Harness will create a step Id using the name, but you can change it.
 
-## Step 4: Enter the Path and Name of the Manifest
+## Timeout
 
-In **File Path**, enter the path to a manifest file.
+You can use:
 
-**File Path** has the following requirements:
+- `w` for weeks.
+- `d` for days.
+- `h` for hours.
+- `m` for minutes.
+- `s` for seconds.
+- `ms` for milliseconds.
 
-* The path to the manifest for the Apply step must be subordinate to the path for the manifest in the **Manifests** section of the Service Definition. The manifest cannot be in the same folder as **Manifests**.
-* The path must include the folder name and the file name.
+The maximum is `53w`.
+
+Timeouts can be set at the pipeline-level also, in the pipeline **Advanced Options**.
+
+## Enter the path and name of the manifest
+
+1. In **File Path**, enter the path to a manifest file.
+
+The **File Path** setting contains the path to the file you want deployed. The file must be in the same repo as the manifest(s) you selected in the Harness service being deployed by this stage. 
+
+The repo is specified in the service's **Service Definition** settings, in **Manifests**. The file entered in **File Path** must be subordinate to that path.
 
 In the following example, the path used in the **Manifests** section of the Service Definition is `default-k8s-manifests/Manifests/Files/templates/`. The **Apply** step uses a Job manifest in the subfolder `jobs/job.yaml`.
 
-![](./static/deploy-manifests-using-apply-step-24.png)
+<!-- ![](./static/bded796afd9394b571b7c2229ac96ad99ff608558bfa4aa2daf5ab670f886578.png) -->
 
-You can enter multiple file paths in File Path. Simply click **Add file**.
+<docimage path={require('./static/bded796afd9394b571b7c2229ac96ad99ff608558bfa4aa2daf5ab670f886578.png')} />
 
-### File Path Runtime Inputs
 
-You can set [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md) for File Path settings:
+You can enter multiple file paths in **File Path**. Simply click **Add File**.
 
-![](./static/deploy-manifests-using-apply-step-25.png)
+### File path runtime inputs
+
+You can set [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md) for File Path settings.
 
 Here are the options:
 
@@ -115,17 +152,17 @@ Here are the options:
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path in the step.
 	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](../../../platform/8_Pipelines/add-a-stage.md).
 
-## Option: Skip Dry Run
+## Skip dry run
 
 By default, Harness uses the `--dry-run` flag on the `kubectl apply` command, which prints the object that would be sent to the cluster without really sending it. If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.
 
-## Option: Skip Steady State Check
+## Skip steady state check
 
 By default, Harness checks to see if a deployed workload has reached steady state.
 
 If you select this option, Harness will not check that the workload has reached steady state.
 
-## Option: Skip K8s Manifest(s) Rendering
+## Skip k8s manifest(s) rendering
 
 By default, Harness uses Go templating and a values.yaml for templating manifest files. 
 
@@ -135,23 +172,71 @@ Use the **Skip K8s Manifest(s) Rendering** option if you want Harness to skip 
 
 For details, go to [Deploy Manifests Separately using Apply Step](deploy-manifests-using-apply-step.md).
 
-## Option: Override Value
+## Command flags
+
+Kubernetes command flags are command-line options that can be passed to a Kubernetes command to modify its behavior.
+
+You can add command flags in your Apply step and Harness will run them after the `kubectl apply -f <filename>` command it runs to deploy your manifest.
+
+The availability of specific command flags is based on the version of the kubectl binary that is installed on the Harness delegate performing deployment. For example, `kubectl apply -f <filename> --server-side` is only available on kubectl version 1.22. 
+
+To use command flags, do the following:
+
+1. In the Apply step, click **Advanced**.
+2. In **Command Flags**, click **Add**.
+3. In **Command Type**, select **Apply**.
+4. In Flag, enter the flag in the standard `kubectl` format of `--[flag name]`, such as `--server-side`.
+
+![picture 1](static/a49029b13f887434df1093b299ad179f7eaa6d3a7f8f601f40c34c0f47e41059.png)  
+
+
+:::note
+
+You cannot use `kubectl` subcommands in the **Command Flags** setting. For example, the subcommand `kubectl apply set-last-applied` will not work.
+
+:::
+
+For more information on command flags, go to [Apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) in the Kubernetes documentation.
+
+For more information on installing custom binaries on the delegate, go to [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries/).
+
+## Advanced settings
+
+In **Advanced**, you can use the following options:
+
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+
+## Override value
+
+You can override some or all of the values in the values.yaml file selected in the Harness service **Service Definition** or environment overrides.
 
 Values YAML files can be specified at several places in Harness:
 
-* Environment Service Overrides (if you are using [Services and Environments v2](../../onboard-cd/cd-concepts/services-and-environments-overview.md))
-* Environment Configuration (if you are using [Services and Environments v2](../../onboard-cd/cd-concepts/services-and-environments-overview.md))
-* Service Definition Manifests
+* Environment service overrides (if you are using [Services and Environments v2](../../onboard-cd/cd-concepts/services-and-environments-overview.md))
+* Environment configuration (if you are using [Services and Environments v2](../../onboard-cd/cd-concepts/services-and-environments-overview.md))
+* Service definition manifests
 
-You can also add a Values YAML values and/or files in the Kubernetes Apply Step **Override Value**.
+You can also add a values YAML values and/or files in the Apply Step **Override Value**.
 
-### Override Priority
+1. Click **Add Manifest**.
+2. Select a values YAML type and click **Continue**.
+3. Select a values YAML store. You can select remote or inline.
+   - If you selected a remote store, select or add a connector to that repo, and then enter a path to the folder or file.
+   - If you selected **Inline**, enter a name for you to identify values YAML and the `name:value` pairs for the override.
+4. Click **Submit**. 
 
-At Pipeline runtime, Harness compiles a single Values YAML for the deployment using all of the Values YAML files you have set up across the stage's Service, Environment, and Kubernetes Apply.
+You can add multiple overrides to the Apply step.
 
-Harness merges all of the Values YAML values/files into one file.
+### Override priority
 
-If two or more sources have the same name:values pairs (for example, `replicas`), that is a conflict that Harness resolves using the following priority order (from highest to lowest):
+At pipeline runtime, Harness compiles a single values YAML for the deployment using all of the values YAML files you have set up across the stage's service, environment overrides, and the Apply step.
+
+Harness merges all of the values YAML values/files into one file.
+
+If two or more sources have the same `name:value` pairs (for example, `replicas: 2`), that is a conflict that Harness resolves using the following priority order (from highest to lowest):
 
 1. Kubernetes Apply Step **Override Value**.
 2. Environment Service Overrides (if you are using [Services and Environments v2](../../onboard-cd/cd-concepts/services-and-environments-overview.md)).
@@ -160,25 +245,60 @@ If two or more sources have the same name:values pairs (for example, `replicas`)
 
 ![](./static/deploy-manifests-using-apply-step-26.png)
 
-You can add multiple overrides to the Kubernetes Apply step:
-
-![](./static/deploy-manifests-using-apply-step-27.png)
-
 The override priority for these is in reverse order, so 2 overrides 1 and so on.
 
-### Remote and inline Values YAML
+## YAML example of Apply step
 
-You can add remote or inline Values YAML files/values in the Kubernetes Apply Step **Override Value**.
+Here's a YAML example of an Apply step.
 
-Example remote Values YAML:
+```yaml
+...
+          - step:
+              type: K8sApply
+              name: Apply DB Migration Job
+              identifier: Apply_DB_Migration_Job
+              spec:
+                filePaths:
+                  - database-migration.yaml
+                skipDryRun: false
+                skipSteadyStateCheck: true
+                skipRendering: false
+                commandFlags: 
+                  - commandType: Apply
+                    flag: "--dry-run=true --server-side"
+                overrides:
+                  - manifest:
+                      identifier: DBValues
+                      type: Values
+                      spec:
+                        store:
+                          type: Github
+                          spec:
+                            connectorRef: account.ThisRohanGupta
+                            gitFetchType: Branch
+                            paths:
+                              - migration-values.yaml
+                            repoName: Product-Management
+                            branch: "main"
+              timeout: 10m
+              failureStrategies:
+                - onFailure:
+                    errors:
+                      - AllErrors
+                    action:
+                      type: Retry
+                      spec:
+                        retryCount: 3
+                        retryIntervals:
+                          - 2s
+                        onRetryFailure:
+                          action:
+                            type: StageRollback
+...
+```
 
-![](./static/deploy-manifests-using-apply-step-28.png)
 
-Example inline Values YAML:
-
-![](./static/deploy-manifests-using-apply-step-29.png)
-
-## Apply Step Examples
+## Apply step examples
 
 Deploying a resource out of sync with the main resource deployment in a stage can be useful if a specific resource requires some external service processing that is orchestrated around your main rollout, such as database migration.
 
@@ -200,7 +320,6 @@ For details, see **Kustomize deployment with the Apply step** in [Use Kustomize 
 
 * The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: true`). See [Kubernetes Releases and Versioning](../../cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
-## Next Steps
+## Next steps
 
 * [Kubernetes Annotations and Labels](../../cd-technical-reference/cd-k8s-ref/kubernetes-annotations-and-labels.md)
-

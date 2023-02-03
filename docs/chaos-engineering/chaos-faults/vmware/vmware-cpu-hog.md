@@ -1,25 +1,30 @@
 ---
 id: vmware-cpu-hog
-title: VMware CPU Hog
+title: VMware CPU hog
 ---
 
-## Introduction
-- VMware CPU hog fault consumes the CPU resources on Linux OS based VMware VM .
-- It helps to check the performance of the application running on the VMWare VMs.
+VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM.
+- It checks the performance of the application running on the VMware VMs.
 
-:::tip Fault execution flow chart
 ![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
-:::
+
+## Usage
+
+<details>
+<summary>View the uses of the fault</summary>
+<div>
+This fault helps determine how resilient an application is when stress is applied on the CPU resources of a VMware virtual machine.
+The fault causes CPU stress on the target resource(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
+</div>
+</details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
-
-** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.16
+- Execution plane is connected to vCenter and the hosts on port 443. 
+- VMware tool is installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions to access the hosts and the VMs.
+- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -33,20 +38,18 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 
-## Default Validations
-:::info
-- VM should be in healthy state.
-:::
+## Default validations
+The VM should be in a healthy state.
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -55,11 +58,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> VM_NAME </td>
-        <td> Name of the target VM </td>
-        <td> ubuntu-vm-1 </td>
+        <td> Name of the target VM. </td>
+        <td> For example, <code>ubuntu-vm-1</code>code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -68,50 +71,50 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> CPU_CORES </td>
-        <td> Number of the CPU cores subjected to CPU stress </td>
-        <td> Default to 1 </td>
+        <td> Number of CPU cores subject to CPU stress. </td>
+        <td> Default to 1. </td>
         </tr>
       <tr>
         <td> CPU_LOAD </td>
-        <td> Percentage of CPU to be consumed </td>
-        <td> Default to 100 </td>
+        <td> Load exerted on each CPU core (in percentage).</td>
+        <td> Defaults to 100%.</td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations. </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+### Common fault tunables
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### CPU_CORES
-It stresses the `CPU_CORE` of the targeted vm for the `TOTAL_CHAOS_DURATION` duration
+It stresses the `CPU_CORE` of the target VM for the duration defined by the `TOTAL_CHAOS_DURATION` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-core.yaml yaml)
 ```yaml
-# CPU hog in the VMWare VM
+# CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -120,7 +123,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-cpu-hog
+  - name: VMware-cpu-hog
     spec:
       components:
         env:
@@ -131,14 +134,14 @@ spec:
         - name: CPU_CORES 
           value: '1'
 ```
-### CPU Load
-It contains percentage of vm CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
+### CPU load
+It specifies the load exerted on each VM CPU core (in percentage). You can tune it using the `CPU_LOAD` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-cpu-hog/vm-cpu-hog-load.yaml yaml)
 ```yaml
-# CPU hog in the VMWare VM
+# CPU hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -147,7 +150,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-cpu-hog
+  - name: VMware-cpu-hog
     spec:
       components:
         env:

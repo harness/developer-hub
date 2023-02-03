@@ -1,33 +1,28 @@
 ---
 id: ebs-loss-by-tag
-title: EBS Loss By Tag
+title: EBS loss by tag
 ---
+EBS loss by tag disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.
+- In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
+- It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
-## Introduction
-- It causes chaos to disrupt state of EBS volume by detaching it from the node/EC2 instance for a certain chaos duration using volume tags.
-- In case of EBS persistent volumes, the volumes can get self-attached and the re-attachment step is skipped.
-Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
 
-:::tip Fault execution flow chart
 ![EBS Loss By Tag](./static/images/ebs-loss.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 </div>
 </details>
 
 ## Prerequisites
-
-:::info
-
-- Ensure that Kubernetes Version > 1.17
-- Ensure that you have sufficient AWS access to attach or detach an EBS volume for the instance. 
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.16.
+- Adequate AWS access to attach or detach an EBS volume for the instance. 
+- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -41,15 +36,14 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
-:::
+- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the chaos experiment with the new name.
 
-## Permission Requirement
+## Permissions required
 
-- Here is an example AWS policy to execute ebs loss fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -81,21 +75,17 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
-:::info
+EBS volume is attached to the instance.
 
-- EBS volume is attached to the instance.
-
-:::
-
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -110,10 +100,10 @@ stringData:
       <tr>
         <td> REGION </td>
         <td> The region name for the target volumes</td>
-        <td> Eg. us-east-1 </td>
+        <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -143,16 +133,16 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg: 30 </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target single volume
 
@@ -185,11 +175,11 @@ spec:
           VALUE: '60'
 ```
 
-### Target Percent of volumes
+### Target percent of volumes
 
 It will detach the `VOLUME_AFFECTED_PERC` percentage of EBS volumes with the given `EBS_VOLUME_TAG` tag and `REGION` region.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-tag/volume-affected-percentage.yaml yaml)
 ```yaml

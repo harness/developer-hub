@@ -1,4 +1,4 @@
-# Service Stop in the VMWare VM
+# Service Stop in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-service-stop
+    - name: VMware-service-stop
       spec:
         components:
           env:
