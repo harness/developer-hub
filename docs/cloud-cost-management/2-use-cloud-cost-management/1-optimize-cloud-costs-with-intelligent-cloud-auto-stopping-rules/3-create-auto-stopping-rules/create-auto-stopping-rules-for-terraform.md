@@ -63,13 +63,13 @@ The following sample scripts create AutoStopping rules for an instance.
   Example 1: Specify the following details:
 
 * **Token**: Specify the API Key.
-* **API\_URL**: Specify the endpoint.
+* **API_URL**: Specify the endpoint.
 * **Account Identifier**: Specify the Account ID.
 * **Name**: Specify a name for your AutoStopping Rule.
 * **Fulfilment**: Specify the instance fulfillment type, **On-Demand** or **Spot**.
 * **Load balancer**: Specify the name of the load balancer domain name. You can obtain this information from the screen where you create the load balancer.
 * **Hosted Zone ID**: Specify the domain name for your Route 53 hosted zone.
-* **Resource\_ID**: Specify the instance ID.
+* **Resource_ID**: Specify the instance ID.
 * **Routing**: Specify listeners information.
 * **(Optional) Health Check**: A health check makes sure that the specified parameters are met before stopping the instances. Health check status should be successful for the AutoStopping rules to come into effect.
 
@@ -160,21 +160,18 @@ resource "harness-ccm_autostopping_rule" "rule_i2" {
 }
 ```
 
-Example 2:
+Example 2: This is an example of a terraform template to create an AutoStopping rule:
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+* **Token**: Specify the API Key.
+* **API_URL**: Specify the endpoint.
+* **Account Identifier**: Specify the Account ID.
+* **Name**: Specify a name for your AutoStopping Rule.
+* **Fulfilment**: Specify the instance fulfillment type, **On-Demand** or **Spot**.
+* **Load balancer**: Specify the name of the load balancer domain name. You can obtain this information from the screen where you create the load balancer.
+* **Hosted Zone ID**: Specify the domain name for your Route 53 hosted zone.
+* **Resource_ID**: Specify the instance ID.
+* **Routing**: Specify listeners information.
+* **(Optional) Health Check**: A health check makes sure that the specified parameters are met before stopping the instances. Health check status should be successful for the AutoStopping rules to come into effect.
 
 
 
@@ -248,8 +245,6 @@ Example 2:
 > }
 > 
 ```
-
-
 
 
 #### Create AWS Instances and Enable AutoStopping Rules for the Instances

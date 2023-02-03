@@ -1,5 +1,5 @@
 ---
-title: Create an AutoStopping Proxy in Azure
+title: Create an AutoStopping Proxy for Azure
 description: A load balancer distributes user traffic across multiple instances of your applications. Load balancing reduces the chances of performance issues in your applications by spreading the load.
 # sidebar_position: 3
 ---
@@ -21,7 +21,7 @@ Perform the following steps to create an AutoStopping proxy for your cloud resou
 6. Click **Continue**.
 7. Click **Create AutoStopping Proxy**. 
 8. Click **Continue**.
-9. In the** Create a new AutoStopping Proxy **window, enter the following information:
+9. In the **Create a new AutoStopping Proxy** window, enter the following information:
     1. Provide a name for the AutoStopping Proxy.
     2. Enter the URL to specify the domain.
     3. Click **Continue**.
@@ -90,7 +90,8 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
 
 
 16. **TLS Private Key Secret Version**: Create another secret for the private key and enter the value in this field.
-17. **Key Pair**: Enter the SSH key pair.
-18. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
-19. Enable **Allocate Static IP** if you need to access the VM outside the VPC. Ensure that the DNS resolves.
-20. Click **Save**.
+17. **Machine type**: Select the type of VM that you want to set the AutoStopping rule for.
+18. **Key Pair**: Enter the SSH key pair.
+19. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
+20. Enable **Allocate Static IP** if you need to access the VM outside the VPC. Ensure that the DNS resolves.
+21. Click **Save**.
