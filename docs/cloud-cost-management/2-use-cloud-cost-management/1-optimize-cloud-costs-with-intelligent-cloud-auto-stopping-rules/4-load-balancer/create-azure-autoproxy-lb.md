@@ -29,7 +29,7 @@ Perform the following steps to create an AutoStopping proxy for your cloud resou
       ![](./static/azure-autoproxy-creation.png)
 
 10. Select the region where you have your cloud resources hosted.
-11. Select the Resource Group to which the resource belongs.
+11. Select the **Resource Group** to which the resource belongs.
 12. Select the **Virtual Network**.
 13. Select the **Subnet**.
 14. Select the **Security Group** to define the security rules that determine the inbound and outbound traffic.

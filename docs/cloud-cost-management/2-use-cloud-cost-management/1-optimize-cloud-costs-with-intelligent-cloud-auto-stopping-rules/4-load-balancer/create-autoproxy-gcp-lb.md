@@ -41,7 +41,7 @@ Ensure that the file uploaded in the Secret value field is not encrypted or enco
 ![](./static/gcp-secret-version.png)
 
 15. **TLS Private Key Secret Version**: Create another secret for private key and enter the resource ID in this field.
-16. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
+16. **API Key**: Enter a valid NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
 
 17. Enable **Allocate Static IP** if you need to assign an elastic IP address to make the VM publicly accessible.
 18. 19.   Click **Save Load Balancer**.
