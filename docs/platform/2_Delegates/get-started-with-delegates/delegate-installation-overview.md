@@ -31,7 +31,6 @@ Currently, for Harness NextGen, you can install the following types of Delegates
 * [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
 * [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
 
-More Delegate types will be added soon.
 
 ### Where do I Install the Delegate?
 
@@ -40,21 +39,8 @@ More Delegate types will be added soon.
 
 ### Delegate Updates
 
-The Delegate updates automatically. The Delegate installation also installs a **Watcher** program that checks the Harness cloud periodically for new versions.
+By defauult the the delegate auto upgrade is off. For kubernets delegates you can turn on the auto upgrade by turning it on in the helm command or by enabling the upgrader cron job in the yaml file. For kubernetes delegates the cron job called upgrader runs every hour and if there is a new release it does a rolling deployment of delegates with newer image. This process is graceful which means the older pods will finish the tasks they were doing before terminating. Note that this functionality is not present with Docker delegate and a user has to manually run docker command with newer image.
 
-Watcher checks regularly with the Harness cloud to see what published Delegate versions should be running. Watcher ensures there is exactly one Delegate process of each published version running.
-
-If there is a published version that is not running, Watcher downloads the jar file for that version securely over HTTPS, installs it, and updates the Delegate connection to the Harness Manager. There is no downtime.
-
-#### What Happens to the Old Delegate?
-
-Harness keeps the last Delegate's files (JARS, logs, etc) in case you need to rollback. Any previous Delegate's files are removed by Harness.
-
-### How Does Harness Manager Identify Delegates?
-
-All Delegates are identified by your Harness account ID. But, depending on the type of Delegate, there are additional factors.
-
-For Kubernetes Delegates, the IP can change if a pod is rescheduled, for example. Consequently, Kubernetes Delegates are identified by a suffix using a unique six letter code in their **Hostname** (the first six letters that occur in your account ID).
 
 ### Third-Party Tools installed with the Delegate
 
