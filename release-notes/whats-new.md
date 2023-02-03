@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2022-12-22T10:00
+date: 2023-02-06T10:00
 sidebar_position: 1
 ---
 
@@ -11,6 +11,18 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+
+## February 6, 2023, version 78321
+
+### Harness Platform
+
+- The pages in app.harness.io autofocus the search input box by default. (PL-30656)
+  
+  This results in a seamless search experience.
+
+- Entity names can now include the `/` character. (PL-29929)
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
 ## January 29, 2023	
 
@@ -65,7 +77,7 @@ infrastructure:
       - xyz.com
 ```
   
-### Platform
+### Harness Platform
 
 - A dedicated release notes page was introduced for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
 
