@@ -22,7 +22,7 @@ You might also want to install tools that Harness does not include.
 
 To support this customization, Harness provides a delegate image that does not include any third-party SDK binaries. We call this image the minimal image.
 
-Using minimal image and delegate YAML, you can install the specific SDK versions you want. You install software on the Delegate using the `INIT_SCRIPT` environment variable in the delegate YAML.
+Using the minimal image and delegate YAML, you can install the specific SDK versions you want. You can install software on the delegate using the `INIT_SCRIPT` environment variable in the delegate YAML.
 
 This topic explains how to use the No Tools delegate image and install specific SDK versions.
 
@@ -61,9 +61,9 @@ For Kubernetes deployments, include the SDKs and tools that your manifest type r
 
 
 
-|  |  |  |  |
 | --- | --- | --- | --- |
 | **Manifest Type** | **Required Tool/SDK** | **Certified Version** | **Installation Command** |
+| :-- | :-- | :-: | :-- |
 | Kubernetes | `kubectl` | v1.24.3 | ```curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectl && mv kubectl /opt/harness-delegate/custom-client-tools/kubectl```|
 | | `go-template` | v0.4.1 | ```mkdir -p /opt/harness-delegate/client-tools/go-template/v0.4.1/ && curl -L https://app.harness.io/public/shared/tools/go-template/release/v0.4.1/bin/linux/amd64/go-template -o go-template && chmod +x ./go-template && mv go-template /opt/harness-delegate/client-tools/go-template/v0.4.1/go-template```|
 | Helm | `kubectl` | v1.24.3 | ```curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectl && mv kubectl /opt/harness-delegate/custom-client-tools/kubectl```|
