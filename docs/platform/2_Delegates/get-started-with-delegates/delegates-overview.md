@@ -74,6 +74,7 @@ For advanced installation topics, see the following:
 One Delegate size does not fit all use cases, so Harness let's you pick from several options:
 
 ![](./static/delegates-overview-01.png)
+
 Remember that the memory and CPU requirements are for the Delegate only. Your Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
 
 
