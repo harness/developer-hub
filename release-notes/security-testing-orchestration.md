@@ -114,7 +114,7 @@ This release does not include new features.
 
 * Fixed an issue where the Security Tests tab on the Pipeline Execution page was periodically reloading in a visually jarring way and losing scroll position. (STO-5208)
 
-* Fixed an issue where the Security Tests tab would show previously-found issues while the scan was in progress. Now this tab does not show results until the scan is complete. (STO-4985)	
+* Fixed an issue where the Security Tests tab would show previously-found issues as "remediated" while the scan was in progress.  (STO-4985)	
 
 * Improved the Security Tests UI to highlight new issues found in the current target only vs. issues also found in the baseline, or in the previous scan if no baseline was specified. (STO-5198)	
 
