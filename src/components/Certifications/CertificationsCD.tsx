@@ -55,21 +55,21 @@ export default function CertificationsCD() {
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Kubernetes Deployments
                 </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Policy as Code
                 </li>
               </ul>
             </div>
             <div className={styles.btnContainer}>
-              <Link href="#">
+              <Link href="/certifications/continuous-delivery#cd-developer-study-guide">
                 <button className={styles.moreDetails}>
                   Go to Study Guide
                 </button>
               </Link>
-              <Link href="#">
+              <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
                   <i className="fa-regular fa-arrow-right"></i>
@@ -86,11 +86,11 @@ export default function CertificationsCD() {
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Coming Soon
                 </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Administer at Scale
                 </li>
               </ul>
             </div>
@@ -100,7 +100,7 @@ export default function CertificationsCD() {
                   Go to Study Guide
                 </button>
               </Link>
-              <Link href="#">
+              <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
                   <i className="fa-regular fa-arrow-right"></i>
@@ -116,11 +116,11 @@ export default function CertificationsCD() {
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Coming Soon
                 </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  CD Architecture
                 </li>
               </ul>
             </div>
@@ -130,7 +130,7 @@ export default function CertificationsCD() {
                   Go to Study Guide
                 </button>
               </Link>
-              <Link href="#">
+              <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
                   <i className="fa-regular fa-arrow-right"></i>
@@ -170,7 +170,7 @@ export default function CertificationsCD() {
               </div>
               <CertificationReviewGuide />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="/tutorials/deploy-services">
                   <button className={styles.startLearning}>
                     <span>Start learning</span>
                     <i className="fa-regular fa-arrow-right"></i>
@@ -189,10 +189,10 @@ export default function CertificationsCD() {
           <CertificationExamDetails />
 
           <div className={styles.btnContainer}>
-            <Link href="#">
+            <Link href="https://training.harness.io/page/continuous-delivery-developer">
               <button className={styles.moreDetails}>Register for Exam</button>
             </Link>
-            <Link href="#">
+            <Link href="/tutorials/deploy-services">
               <button className={styles.startLearning}>
                 <span>Start learning</span>
                 <i className="fa-regular fa-arrow-right"></i>

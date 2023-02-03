@@ -81,38 +81,38 @@ export default function Certifications() {
                 <ul className={styles.courseList}>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Application Deployments
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Visability
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Continuous Delivery
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Continuous Verification
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    GitOps
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Security
                   </li>
                 </ul>
-                <Link href="#">
+                <Link href="/certifications/continuous-delivery#exam-details">
                   <div className={styles.certCardBtn}>
                     <span>Exam Details</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
-                <Link href="#">
+                <Link href="https://training.harness.io/page/continuous-delivery-developer">
                   <div className={styles.certCardBtn}>
-                    <span>Requirements</span>
+                    <span>Register for Exam</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
@@ -130,7 +130,7 @@ export default function Certifications() {
                   <Link href="/certifications/continuous-delivery">
                     <button className={styles.moreDetails}>More Details</button>
                   </Link>
-                  <Link href="certifications/continuous-delivery#cd-developer-study-guide">
+                  <Link href="/tutorials/deploy-services">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
                       <i className="fa-regular fa-arrow-right"></i>
@@ -647,27 +647,7 @@ export default function Certifications() {
                 <ul className={styles.courseList}>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Coming Soon
                   </li>
                 </ul>
                 <Link href="#">
@@ -678,7 +658,7 @@ export default function Certifications() {
                 </Link>
                 <Link href="#">
                   <div className={styles.certCardBtn}>
-                    <span>Requirements</span>
+                    <span>Register for Exam</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
@@ -696,7 +676,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.moreDetails}>More Details</button>
                   </Link>
-                  <Link href="#">
+                  <Link href="/tutorials/deploy-services">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
                       <i className="fa-regular fa-arrow-right"></i>
@@ -734,27 +714,7 @@ export default function Certifications() {
                 <ul className={styles.courseList}>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Coming Soon
                   </li>
                 </ul>
                 <Link href="#">
@@ -765,7 +725,7 @@ export default function Certifications() {
                 </Link>
                 <Link href="#">
                   <div className={styles.certCardBtn}>
-                    <span>Requirements</span>
+                    <span>Register for Exam</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
@@ -780,10 +740,10 @@ export default function Certifications() {
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
-                  <Link href="#">
+                  <Link href="/certifications/continuous-delivery">
                     <button className={styles.moreDetails}>More Details</button>
                   </Link>
-                  <Link href="#">
+                  <Link href="/tutorials/deploy-services">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
                       <i className="fa-regular fa-arrow-right"></i>
