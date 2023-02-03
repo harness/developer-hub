@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-02-01T10:00
+date: 2023-02-03T10:00
 sidebar_position: 9
 ---
 
@@ -102,36 +102,47 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * The term “agent” was changed to “infrastructure”. While selecting (or creating) an infrastructure, the search bar showed all available infrastructures irrespective of the search string entered by the user in the search bar. (CHAOS-920) 
 * When a CRON experiment was stopped by the user, the current run used to stop, but the upcoming (and subsequent) runs were not being affected by the stop. It has been fixed now so that stopping an experiment will stop the upcoming schedules as well. (CHAOS-713)
 
-
 ## December 2, 2022, version 0.4.2
 
 ### What’s new
 
-1. Update feature for ChaosHub enabling users to update details like Git Connector, Repository Name, Branch name & Name for an already connected ChaosHub.
-2. Adds CDN Support for Chaos module static artifacts, making UI load faster on client's devices.
-3. Added version info in ChaosDriver & ChaosManager. Now, the versions will be available over provided endpoints `/chaos/driver/api/version` & `/chaos/manager/api/version` for ChaosDriver & ChaosManager respectively.
-4. Adds a range filter dropdown in the Experiment Runs bar graph under Experiment overview allowing users to set the range on the last runs to be shown in the graph.
-5. Adds support for all faults statuses in the Experiment Runs graph. Previously only `Failed` & `Passed` faults were getting shown, now faults in `Awaited`, `Stopped` & `N/A` states will also be available under the Experiment Runs graph.
-6. Adds manifest download button in UI for Chaos Infrastructures enabling users to have seamless upgrade.
-7. Adds consistent loaders for all components and screens in UI.
+* Provision to update chaos hub details (CHAOS-699)
+    * This release allows you to update the details (such as name, Git connector, repository name, and branch name) of a connected chaos hub. 
+
+* CDN support for static artifacts (CHAOS-600)
+    * This release adds CDN support for static artifacts. CDN support reduces the latency while loading the user interface on client devices.
+
+* Version information for Chaos Driver and Chaos Manager (CHAOS-729)
+    * This release adds version numbers to **Chaos Driver** and **Chaos Manager**. Versioning the Chaos Driver and Chaos Manager enables Harness to version the corresponding endpoints (/chaos/driver/api/version for ChaosDriver and /chaos/manager/api/version for ChaosManager).
+
+* Range filter for experiment runs in the experiment overview (CHAOS-824)
+    * This release adds a range filter option in the **Experiment Runs** bar graph under **Experiment overview** that allows setting the range on the last run in the graph.
+
+* Support for fault statuses (CHAOS-826)
+    * This release adds support to show all the fault statuses in the Experiment Runs graph. In addition to the **Failed** and **Passed** fault status, faults in the **Awaited**, **Stopped**, and **N/A** states are also seen. 
+
+* Seamless upgrade 
+    * This release adds a manifest download button for the chaos infrastructures, to enable a seamless upgrade.
+
+* Loaders for components and screens (CHAOS-822)
+    * This release adds consistent loaders for all the components and screens in the user interface. These loaders decouple API requests and avoid blocking the rendering of the entire page due to chained API calls.
+
+* Configurable response timeout for HTTP probes
+    * This release adds a new response timeout parameter for HTTP probes in the user interface. The response timeout is in units of seconds. You can use this parameter to specify timeouts during HTTP probe health checks during chaos fault execution.
 
 ### Early access features
 
 No early access features are available in this release.
 
 ### Fixed issues
-
-1. Fixes Enterprise ChaosHub shown irrespective of searched terms by the users.
-2. Fixes httpProbe schema in UI to add support for new response timeout changes for HTTP probe. Now, probeTimeout for HTTP probes will be treated as response timeout & should be provided in seconds.
-3. Fixes the issue when the details of previously connected chaos infrastructure were getting pre-filled while connecting new chaos infrastructure.
-4. Fixes the Run button returning an error even when the Experiment run is already completed.
-5. Fixes calendar on the Experiments & Experiment Runs page having a default selection of one week. Now, all experiments & runs will be shown by default.
-6. Fixes panic error for k8sObjects and k8sLogs go-routines resulting in closed channel error.
-7. Fixes cancel(X) button & back button missing in Enable Chaos Infrastructure screen
-8. Fixes repeated error logs for ChaosHub in Chaos-Manager when it was not available to find some of the icons.
-9. Fixes the Expected Resilience Score changing to NaN when trying to override the same completely.
-10. Fixes resource-type not coming for aborting a Chaos Experiment in audit-trail.
-11. Fixes Minor UI/UX Issues making the UI more user-friendly and more accessible.
+* Enterprise ChaosHub appeared in the search results irrespective of the terms searched. Now it has been fixed.
+* Details of a previously connected chaos infrastructure were prefilled when connecting to a new chaos infrastructure. Now it has been fixed. (CHAOS-777)
+* The **Run** button was activated even when the chaos experiment was running. Now, the button is reactivated only after the chaos experiment is complete.(CHAOS-807)
+* The chaos access page shows all experiments and experiment runs instead of showing experiments that were performed within a specific time frame. (CHAOS-810, CHAOS-762) 
+* A cancel button and a back button have been added to the enable chaos screen. The buttons have made it easy to navigate between screens when setting up the chaos infrastructure.
+* When you search for a specific chaos fault and the chaos manager cannot map this chaos fault to a chaos fault icon, the user interface used to display an error. Now, instead of showing the error, it silently skips the error logs. (CHAOS-814)
+* The expected resilience score changed to `NaN` (not a number) when it was overridden. Now it has been fixed. (CHAOS-791)
+* The resource-type field was previously not available. Now, it has been made available and you can use this field to abort a chaos experiment in the audit trail. (CHAOS-714)
 
 ## November 14, 2022
 

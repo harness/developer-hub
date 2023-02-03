@@ -18,9 +18,13 @@
 .env.production.local
 .markdownlint.json
 
+# NPM
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 # *.lock, leave yarn.lock
 *-lock.json
 .env
+
+# VS Code
+**/.vscode/

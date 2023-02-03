@@ -1,8 +1,7 @@
 ---
-sidebar_position: 0
 hide_table_of_contents: true
 hide_title: true
-id: certifications
+id: all-certifications
 title: Certifications
 slug: /
 ---
