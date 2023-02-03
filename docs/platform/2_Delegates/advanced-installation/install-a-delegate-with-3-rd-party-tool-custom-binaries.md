@@ -61,7 +61,6 @@ For Kubernetes deployments, include the SDKs and tools that your manifest type r
 
 
 
-| --- | --- | --- | --- |
 | **Manifest Type** | **Required Tool/SDK** | **Certified Version** | **Installation Command** |
 | :-- | :-- | :-: | :-- |
 | Kubernetes | `kubectl` | v1.24.3 | ```curl -LO https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl && chmod +x ./kubectl && mv kubectl /opt/harness-delegate/custom-client-tools/kubectl```|
