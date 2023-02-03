@@ -3,7 +3,7 @@ title: Get Started With Feature Flags
 description: This guide describes the basic steps for getting started with Harness Feature Flags. Visual summary. For an overview of Harness Feature Flags, watch the following video --  Watch Feature Flag overview v…
 tags: 
    - helpDocs
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 0a2u2ppp8s
 helpdocs_category_id: iqgyied1c0
 helpdocs_is_private: false

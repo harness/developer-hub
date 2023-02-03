@@ -25,7 +25,7 @@ To read more about the Harness Platform, go to [Harness Platform](https://harnes
 
 ## Before you begin
 
-Before you create a Feature Flag, you must have [Created an Organization](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](../../1-ff-onboarding/3-ff-security-compliance/1-manage-access-control.md).
+Before you create a Feature Flag, you must have [Created an Organization](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](../../ff-onboarding/ff-security-compliance/manage-access-control.md).
 
 ## Create a Project
 
@@ -54,7 +54,7 @@ Before you create a Feature Flag, you must have [Created an Organization](../../
 * Gitops Admin Role
 * Feature Flag Manage Role
 
-For more information about the permissions for each role, go to [Manage Access Control](../../1-ff-onboarding/3-ff-security-compliance/1-manage-access-control.md) and [Permissions Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
+For more information about the permissions for each role, go to [Manage Access Control](../../ff-onboarding/ff-security-compliance/manage-access-control.md) and [Permissions Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
 
 3. Click **Save and Continue**. Your Project is created.
 

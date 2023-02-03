@@ -20,8 +20,8 @@ Important: Although the PHP SDK is a Server SDK, you must use a Client SDK Key t
 
 Make sure you've read and understood:
 
-* [Feature Flags Overview](../../1-ff-onboarding/1-cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](../../1-ff-onboarding/2-ff-getting-started/2-getting-started-with-feature-flags.md)
+* [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
+* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
 * [Client-Side and Server-Side SDKs](../1-sdk-overview/1-client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../1-sdk-overview/2-communication-sdks-harness-feature-flags.md)
 

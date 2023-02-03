@@ -201,7 +201,7 @@ The Policy step in a Pipeline also enables evaluating policies during Pipeline e
 
 #### Feature Flags
 
-Policies are evaluated against Harness [Feature Flags](../../feature-flags/1-ff-onboarding/1-cf-feature-flag-overview.md).  
+Policies are evaluated against Harness [Feature Flags](../../feature-flags/ff-onboarding/cf-feature-flag-overview.md).  
 
 Policy Sets can be configured to evaluate policies on these Feature Flag events:
 

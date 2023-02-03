@@ -2,10 +2,9 @@
 title: Manage Access Control
 description: This topic describes how to add and manage access control for Feature Flags.
 tags: 
-   - helpDocs
    - Access Control
    - feature flag
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: g8ajhy6msi
 helpdocs_category_id: u0gbfyk4p4
 helpdocs_is_private: false

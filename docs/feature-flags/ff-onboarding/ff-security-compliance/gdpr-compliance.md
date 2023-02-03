@@ -3,7 +3,7 @@ title: Comply with GDPR
 description: Harness Feature Flags are General Data Protection Regulation (GDPR) compliant. To ensure this --  Harness doesn't provide a European data residency option, but it does provide teams easy abstractions to…
 tags: 
    - helpDocs
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: ly5w6cjljy
 helpdocs_category_id: u0gbfyk4p4
 helpdocs_is_private: false
