@@ -54,7 +54,7 @@ The first `RUN` block installs or updates the `unzip` and `yum-utils` tools. The
 RUN microdnf update \  
   && microdnf install --nodocs \  
     unzip \  
-    Yum-utils
+    yum-utils
 ```
 The second `RUN` block uses the `yum` utility to create a configuration file for the HashiCorp repository, and then uses the `microdnf` package manager to install the required Terraform components:
 
