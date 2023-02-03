@@ -35,13 +35,13 @@ Check the status of the Delegate on your cluster:
 
 
 ```
-kubectl describe pod <your-delegate-pod> -n harness-delegate
+kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 ```
 Check the Delegate logs:
 
 
 ```
-kubectl logs -f <harness-delegate> -n harness-delegate
+kubectl logs -f <harness-delegate> -n harness-delegate-ng
 ```
 If the pod isn't up, you might see the following error in your cluster:
 
@@ -55,5 +55,5 @@ If the Delegate didn’t reach a healthy state, try this:
 
 
 ```
-kubectl describe pod <your-delegate-pod> -n harness-delegate
+kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 ```
