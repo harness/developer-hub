@@ -188,7 +188,7 @@ To set up Grafana, use the following example grafana.yml file.
    kubectl apply -f grafana.yml
    ```
    
-4. This will also create a load balancer and service in kubernetes cluster. Click on the exposed URL to access grafana 
+4. This manifest also creates a load balancer and service in your Kubernetes cluster. Click the exposed URL to access Grafana.
 
 
 ### Example grafana.yml file
