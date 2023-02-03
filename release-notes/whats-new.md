@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-01-31T10:00
+date: 2023-02-06T10:00
 sidebar_position: 1
 ---
 
@@ -44,8 +44,16 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - NPM/Maven/NuGet repository format support for Nexus artifacts with Tanzu Application Services (TAS). (CDS-50551)
   You can now use NPM/Maven/NuGet repository formats for Nexus artifacts in TAS Harness services.
 
-  ![Nexus artifacts](static/44009d0aa38851738ebed25ff3dabeb232bc729f904e219bb14d8cdd0178a283.png) 
+  ![Nexus artifacts](static/44009d0aa38851738ebed25ff3dabeb232bc729f904e219bb14d8cdd0178a283.png)
 
+### Harness Platform
+
+- The pages in app.harness.io autofocus the search input box by default. (PL-30656)
+  
+  This results in a seamless search experience.
+
+- Entity names can now include the `/` character. (PL-29929)
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
 ### Security Testing Orchestration
 
@@ -98,7 +106,7 @@ infrastructure:
       - xyz.com
 ```
   
-### Platform
+### Harness Platform
 
 - A dedicated release notes page was introduced for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
 

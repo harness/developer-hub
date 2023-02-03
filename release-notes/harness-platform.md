@@ -1,7 +1,7 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2022-12-22T10:00
+date: 2023-02-06T10:00
 sidebar_position: 10
 ---
 
@@ -12,6 +12,53 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 6, 2023, version 78321
+
+### What's new
+
+- The pages in app.harness.io autofocus the search input box by default. (PL-30656)
+  
+  This results in a seamless search experience.
+
+- Entities in Harness can now have `/` for the Name. (PL-29929)
+
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
+
+### Early access
+
+- You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
+
+### Fixed issues
+
+- In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. (PL-30862)
+
+  A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details   as per the schema.
+
+- The user group details page in the project and org scope does not display correctly when opened using the **Open in new tab** option. (PL-30911)
+  
+  An enhancement to the code has fixed this issue.
+
+- The email update for SCIM users does not work. (PL-30439)
+  
+  A code enhancement to support user metadata updates has fixed this issue.
+  
+- Force deletion of a secret used for the creation of a secrets manager throws an incorrect error. (PL-29983)
+
+  This has been fixed by displaying the appropriate error message.
+
+- Pipelines with input sets and triggers chained together do not display input set fields correctly. (PIE-7681)
+  
+  An enhancement to the code has fixed this issue.
+
+- If an execution has a matrix strategy, the text on the pipeline execution page overlaps. (PIE-7429)
+  
+  An adjustment to the height of the matrix wrapper has fixed this issue.
+
+- API PUT operations for Bitbucket SaaS and on-prem connectors return an incorrect status code when there are no changes. (PIE-6230)
+  
+  A modification to the error message to display an appropriate explanation of the error has fixed this issue.
+  
 
 ## January 17, 2023, version 78214
 
