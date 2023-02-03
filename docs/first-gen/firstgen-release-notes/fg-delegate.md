@@ -22,7 +22,7 @@ This release introduces the following security enhancements:
 
 - The immutable delegate image was refreshed with updated versions of client tools. This reduces security vulnerabilities for the delegate and enhances security. The following table details the updates. (DEL-5688)
   
-  | **Third-party tool** | **781xx and earlier** | **783xx and later** |
+  | **Third-party tool** | **78101 and earlier** | **78306 and later** |
   | :-- | :-: | :-: |
   | kubectl | 1.13.2 | 1.24.3 |
   | | 1.19.2 | |
