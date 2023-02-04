@@ -46,7 +46,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
     * On the chaos experiments tab, the **Resilience score** field displayed the resilience score and the percentage increase in resilience score between the current and previous runs of an experiment. This release removes the percentage increase and, instead, displays the difference between the current run's and previous run’s resilience score for better readability.
 
 * The **Experiments overview** page categorizes experiments on the basis of average resilience score (CHAOS-802)
-    * This release categorizes and displays all the chaos experiments on the basis of average resilience score. It also displays the number of experiments in each category. It shows three categories, which corresponds to experiments with an average resilience score between 0 through 39, 40 through 79, and 80 through 100. This provides better insights about the chaos experiments and their resilience scores. Previously, the overview page showed only the number of experiments that passed and the number of experiments that failed. 
+    * This release categorizes and displays all the chaos experiments on the basis of average resilience score. It also displays the number of experiments in each category. It shows three categories based on the average resilience scores of the experiments: 0 through 39, 40 through 79, and 80 through 100. This provides better insights about the chaos experiments and their resilience scores. Previously, the overview page showed only the number of experiments that passed and the number of experiments that failed. 
 
 * Every run of an experiment is clickable to view detailed execution (CHAOS-1032)
     * On the **Chaos Experiments** tab, you could see the detailed execution of an experiment's runs by clicking the three vertical dots corresponding to a run, and then clicking **View run**. In this release, you can also directly click the experiment run to view its detailed execution.
@@ -77,14 +77,14 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * Pagination on the faults and experiments screen (CHAOS-689)
     * This release adds pagination on the faults and experiment screen in ChaosHub that allows you to scroll and navigate through the experiments by pages. 
 
-* Enable save and run buttons on the experiment builder (CHAOS-913)
-    * This release enables the save and run buttons after you tune the application by specifying the parameters on the user interface. As a consequence, the default weight is set to 10 since the user would not move to the next step of setting fault weights.
+* Enable **Save** and **Run** buttons on the experiment builder (CHAOS-913)
+    * This release enables the **Save** and **Run** buttons after you tune the application by specifying the parameters on the user interface. As a consequence, the default weight is set to 10 since the user would not move to the next step of setting fault weights.
  
 * Experiment can be viewed during execution (CHAOS-835)
     * This release allows you to view the experiment even when it is being executed. Previously, an experiment could be viewed only after the run was complete.  
 
 * Edit chaos experiment is separated into two action components (CHAOS-685)
-    * This release divides the edit experiment action into two actions: edit experiment and clone experiment. The edit experiment action helps you make changes to the current (or selected) experiment. The clone experiment action helps the user create a new experiment from an already existing experiment. The cloned experiment retains the same configuration as the original experiment with the ability to tune the configurations if required.
+    * This release divides the **Edit experiment** action into two actions: **Edit Experiment** and **Clone Experiment**. The **Edit Experiment** action helps you make changes to the current (or selected) experiment. The **Clone Experiment** action helps you create a new experiment from an already existing experiment. The cloned experiment retains the same configuration as the original experiment with the ability to tune the configurations if required.
 
 ### Early access
 * There are no early access features in this release. 
@@ -97,7 +97,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * When a chaos infrastructure is deleted, details on the user interface wrongly showed the infrastructure ID instead of the infrastructure name. This is now fixed. (CHAOS-952)
 * When a chaos experiment was pushed to the ChaosHub, only a single fault associated with the experiment was being pushed, rather than all the faults. This is now fixed. (CHAOS-973)
 * When a chaos experiment was deleted, only the most recent run was deleted, and the previous runs were retained in the cluster. Now it has been fixed such that when a chaos experiment is deleted, all the runs associated with it are deleted from the cluster. 
-* When a chaos experiment was deleted, the fault running within the experiment was not stopped). Now it has been fixed such that, when an experiment is deleted, the chaos fault running on the Kubernetes cluster is halted, the fault is deleted, and the experiment (as a whole) is deleted. (CHAOS-782)
+* When a chaos experiment was deleted, the fault running within the experiment was not stopped. Now it has been fixed such that, when an experiment is deleted, the chaos fault running on the Kubernetes cluster is halted, the fault is deleted, and the experiment as a whole is deleted. (CHAOS-782)
 * When a chaos experiment was running, the user interface incorrectly showed probes that were still being executed as failed probes. Now it has been fixed so that the interface shows the correct status of the probes being executed. (CHAOS-911)
 * The term “agent” was changed to “infrastructure”. While selecting (or creating) an infrastructure, the search bar showed all available infrastructures irrespective of the search string entered by the user in the search bar. (CHAOS-920) 
 * When a CRON experiment was stopped by the user, the current run used to stop, but the upcoming (and subsequent) runs were not being affected by the stop. It has been fixed now so that stopping an experiment will stop the upcoming schedules as well. (CHAOS-713)
@@ -140,7 +140,7 @@ No early access features are available in this release.
 * The **Run** button was activated even when the chaos experiment was running. Now, the button is reactivated only after the chaos experiment is complete.(CHAOS-807)
 * The chaos access page shows all experiments and experiment runs instead of showing experiments that were performed within a specific time frame. (CHAOS-810, CHAOS-762) 
 * A cancel button and a back button have been added to the enable chaos screen. The buttons have made it easy to navigate between screens when setting up the chaos infrastructure.
-* When you search for a specific chaos fault and the chaos manager cannot map this chaos fault to a chaos fault icon, the user interface used to display an error. Now, instead of showing the error, it silently skips the error logs. (CHAOS-814)
+* When you search for a specific chaos fault and the chaos manager cannot map this chaos fault to a chaos fault icon, the user interface previously displayed an error. Now, instead of showing the error, it silently skips the error logs. (CHAOS-814)
 * The expected resilience score changed to `NaN` (not a number) when it was overridden. Now it has been fixed. (CHAOS-791)
 * The resource-type field was previously not available. Now, it has been made available and you can use this field to abort a chaos experiment in the audit trail. (CHAOS-714)
 
