@@ -25,17 +25,17 @@ This topic explains how to build a Feature Flag Pipeline.
 
 ## Before you begin
 
-You should be familiar with the [Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
+You should be familiar with the [Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
 
 ## Create a Pipeline
 
-This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md) to create one.
+This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md) to create one.
 
 This topic shows you how to create a Pipeline from the Feature Flags module.
 
 To do this, perform the following steps:
 
-1. Under **Feature Flags,** select an existing project or [Create a new project](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md#step-3-create-a-project).
+1. Under **Feature Flags,** select an existing project or [Create a new project](../../../platform/organizations-and-projects/create-an-organization.md#step-3-create-a-project).
 2. Once the project is selected or created, navigate to **Pipelines** and **Create a Pipeline**.
 3. In **Name**, enter a name for your Pipeline. An ID will be generated automatically.
 4. Enter **Description** and **Tags** for your Pipeline.

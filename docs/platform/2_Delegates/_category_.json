@@ -1,1 +1,15 @@
-{"label": "Delegates", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Delegates"}, "customProps": {"position": 20, "helpdocs_category_id": "seizygxv7b", "helpdocs_parent_category_id": "9i5thr0ot2"}}
+{
+    "label": "Delegates",
+    "position": 20,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Delegates"
+    },
+    "customProps": {
+        "helpdocs_category_id": "seizygxv7b",
+        "helpdocs_parent_category_id": "9i5thr0ot2"
+    }
+}

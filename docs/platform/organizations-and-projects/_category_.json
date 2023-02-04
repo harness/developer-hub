@@ -1,14 +1,14 @@
 {
-    "label": "Authentication",
+    "label": "Organizations and Projects",
+    "position": 10,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Authentication"
+        "title": "Organizations and Projects"
     },
     "customProps": {
-        "position": 30,
-        "helpdocs_category_id": "fe0577j8ie"
+        "helpdocs_category_id": "3trbf8xckk"
     }
 }

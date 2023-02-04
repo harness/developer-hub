@@ -66,7 +66,7 @@ For example, Harness Canary and Blue/Green steps support a single **Deployment**
 
 All the steps necessary can be performed inline with creating your CD Pipeline. You can also set up resources like Connectors in your Resources and then select them within your Pipeline.
 
-The following list describes the major steps of a Harness Kubernetes deployment. We assume you have a [Harness Project](../../../platform/1_Organizations-and-Projects/1-projects-and-organizations.md) set up.
+The following list describes the major steps of a Harness Kubernetes deployment. We assume you have a [Harness Project](../../../platform/organizations-and-projects/projects-and-organizations.md) set up.
 
 | **Step** | **Name** | **Description and Links** |
 | --- | --- | --- |

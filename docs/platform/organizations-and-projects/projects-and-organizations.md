@@ -1,7 +1,7 @@
 ---
 title: Organizations and Projects Overview
 description: This topic explains Organizations and Projects in Harness. In this topic --  Before you begin. Visual Summary. What is an Organization?. What is a Project?. What is a Product Module?. Resources Across S…
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 7fibxie636
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
@@ -22,18 +22,18 @@ Harness enables you to manage access control at the following [scopes](../4_Role
 * Organization
 * Project
 
-![](./static/projects-and-organizations-04.png)
+![](static/projects-and-organizations-04.png)
 ### What is an Organization?
 
 Harness Organizations (Orgs) allow you to group Projects that are related and share the same goals. For example, all projects for a business unit or division.
 
 You can create multiple Organizations within an Account. Any resource that you create within the Organization's scope is available for use in all the Projects created within this Organization.
 
-![](./static/projects-and-organizations-05.png)
+![](static/projects-and-organizations-05.png)
 Within each Org you can add several Harness Projects.
 
-![](./static/projects-and-organizations-06.png)
-To create a new Organization, make sure you have the **Create** permissions for Organizations. For more information, see [Create a Harness Org](../1_Organizations-and-Projects/2-create-an-organization.md#step-1-create-a-harness-org).
+![](static/projects-and-organizations-06.png)
+To create a new Organization, make sure you have the **Create** permissions for Organizations. For more information, see [Create a Harness Org](create-an-organization.md#step-1-create-a-harness-org).
 
 ### What is a Project?
 
@@ -43,17 +43,17 @@ Think of projects as a common space for managing teams working on similar techno
 
 You can create multiple Projects within an Organization.
 
-![](./static/projects-and-organizations-07.png)
-To create a new Project, make sure you have the **Create** permissions for Projects. For more information, see [Create a Project](../1_Organizations-and-Projects/2-create-an-organization.md#step-3-create-a-project).
+![](static/projects-and-organizations-07.png)
+To create a new Project, make sure you have the **Create** permissions for Projects. For more information, see [Create a Project](create-an-organization.md#step-3-create-a-project).
 
 Much like Account-level roles, project members can be assigned Project Admin, Member, and Viewer roles.
 
-![](./static/projects-and-organizations-08.png)
+![](static/projects-and-organizations-08.png)
 ### What is a Product Module?
 
 Your Project can add Harness products as modules, such as Continuous Integration or Continuous Delivery.
 
-![](./static/projects-and-organizations-09.png)
+![](static/projects-and-organizations-09.png)
 ### Resources Across Scopes
 
 The following table lists the resources that are available at various scopes in Harness:

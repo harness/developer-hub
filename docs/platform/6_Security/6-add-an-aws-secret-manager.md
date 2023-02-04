@@ -71,7 +71,7 @@ To test use the AWS account when running [aws secretsmanager list-secrets](https
 
 ### Step 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project SETUP, or in your Organization, or Account Resources.
 

@@ -29,7 +29,7 @@ To read more about the Harness Platform, see [Harness Platform](https://harness.
 
 Before you create a Feature Flag, you must have:
 
-1. [Created an Organization](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md)
+1. [Created an Organization](../../../platform/organizations-and-projects/create-an-organization.md)
 2. [Created a Project](create-a-project.md)
 
 ## Create an Environment
