@@ -15,7 +15,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). For Self-Managed Enterprise Edition, see [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
 
-## February 1, 2023, version 783xx
+## February 6, 2023, version 78321
 ### Delegate version 78306
 
 Harness NextGen release 783xx includes the following changes for Harness Delegate.
