@@ -1,7 +1,7 @@
 ---
 title: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-01-13T10:00
+date: 2023-02-06T10:00
 sidebar_position: 12
 ---
 
@@ -18,7 +18,7 @@ For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/do
 ## February 6, 2023, version 78321
 ### Delegate version 78306
 
-Harness NextGen release 783xx includes the following changes for Harness Delegate.
+Harness NextGen release 78321 includes the following changes for Harness Delegate.
 
 :::note
 The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576)
