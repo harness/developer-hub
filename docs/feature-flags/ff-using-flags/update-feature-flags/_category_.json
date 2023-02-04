@@ -1,14 +1,14 @@
 {
-    "label": "Subscribe to Feature Flags",
-    "position": 50,
+    "label": "Update Your Feature Flags",
+    "position": 20,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Subscribe to Feature Flags"
+        "title": "Update Your Feature Flags"
     },
     "customProps": {
-        "helpdocs_category_id": "hdxts68dvo"
+        "helpdocs_category_id": "skrwlcueml"
     }
 }

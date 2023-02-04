@@ -1,14 +1,14 @@
 {
-    "label": "Subscribe to Feature Flags",
-    "position": 50,
+    "label": "Use the Harness Relay Proxy",
+    "position": 70,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Subscribe to Feature Flags"
+        "title": "Use the Harness Relay Proxy"
     },
     "customProps": {
-        "helpdocs_category_id": "hdxts68dvo"
+        "helpdocs_category_id": "0dqv0mh8xu"
     }
 }

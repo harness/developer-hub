@@ -1,1 +1,14 @@
-{"label": "Get Data on Your Feature Flags", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Get Data on Your Feature Flags"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "axthyiihah"}}
+{
+    "label": "Get Data on Your Feature Flags",
+    "position": 30,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Get Data on Your Feature Flags"
+    },
+    "customProps": {
+        "helpdocs_category_id": "axthyiihah"
+    }
+}

@@ -45,8 +45,8 @@ To check if you have installed the prerequisites, run the `flutter doctor` comma
 
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)
 * Create a Flutter application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-flutter-client-sdk).
-* [Create a Feature Flag on the Harness Platform](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md#step-3-create-an-sdk-key).
+* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
 
 ## Install the SDK
 
@@ -80,7 +80,7 @@ To initialize the Flutter SDK, you need to:
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about Targets, go to [Targeting Users With Flags](../../2-ff-using-flags/4-ff-target-management/3-targeting-users-with-flags.md).
+For more information about Targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
 
 To add a Target, build it and pass in arguments for the following:
 
@@ -158,7 +158,7 @@ var conf = CfConfigurationBuilder()
 
 To initialize the SDK, you must pass in the following:
 
-* `apiKey` - The Client SDK Key you created when [creating the Feature Flag](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md#step-3-create-an-sdk-key).
+* `apiKey` - The Client SDK Key you created when [creating the Feature Flag](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
 * Any configuration options you want to use.
 * The Target you want to evaluate.
 

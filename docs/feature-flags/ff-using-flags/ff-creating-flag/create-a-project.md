@@ -1,9 +1,7 @@
 ---
 title: Create a Project
 description: Before you can create a Feature Flag, you need to create a Project in the Harness platform. A Feature Flag is available only for the Project the Flag is created in, so you need to create any Flags in…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 47fkt1ric5
 helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false
@@ -68,7 +66,7 @@ For more information about the permissions for each role, go to [Manage Access C
 
 ## Next step
 
-* [Create an Environment](2-create-an-environment.md) to host your Feature Flags. 
+* [Create an Environment](create-an-environment.md) to host your Feature Flags. 
 
 
 

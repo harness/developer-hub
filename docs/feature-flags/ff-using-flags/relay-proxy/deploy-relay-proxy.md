@@ -1,12 +1,7 @@
 ---
 title: Deploy the Relay Proxy
 description: This topic describes how to deploy and start the Relay Proxy.
-tags: 
-   - helpDocs
-   - Relay Proxy
-   - Build deployment
-   - feature flag
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: rae6uk12hk
 helpdocs_category_id: 0dqv0mh8xu
 helpdocs_is_private: false
@@ -15,7 +10,7 @@ helpdocs_is_published: true
 
 The Relay Proxy enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.
 
-This topic describes how to deploy and start the [Relay Proxy](1-relay-proxy.md). For an overview, go to the [Relay Proxy Overview](1-relay-proxy.md).
+This topic describes how to deploy and start the [Relay Proxy](relay-proxy.md). For an overview, go to the [Relay Proxy Overview](relay-proxy.md).
 
 ## Requirements
 
@@ -154,7 +149,7 @@ The following are the required configuration variables to connect to the Feature
 * **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](../../../platform/4_Role-Based-Access-Control/6-add-and-manage-service-account.md#create-a-service-account).
 * **account-identifier**: Enter your account identifier for which you want to retrieve the config. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL. For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.
 * **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md#step-1-create-a-harness-org).
-* **api-keys**: Enter you server SDK key. For more information, go to [Add and Manage API Keys](../1-ff-creating-flag/4-create-a-feature-flag.md#step-3-create-an-sdk-key).
+* **api-keys**: Enter you server SDK key. For more information, go to [Add and Manage API Keys](../ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
 * **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](../../../platform/6_Security/5-add-secrets-manager.md).
 1. Specify your configuration details and Docker run the proxy image. The following are the examples:
 	1. Here is an example of a Docker Relay Proxy image with the required configuration details:  

@@ -16,10 +16,10 @@ This guide describes the basic steps for getting started with Harness Feature Fl
 
 To create a Flag, you need to complete the following steps:
 
-1. [Create a Project](../../2-ff-using-flags/1-ff-creating-flag/1-create-a-project.md) to host your Flags in.
-2. [Create an Environment](../../2-ff-using-flags/1-ff-creating-flag/2-create-an-environment.md) within your Project. You can have multiple Environments in a single Project.
-3. [Create an SDK Key](../../2-ff-using-flags/1-ff-creating-flag/3-create-an-sdk-key.md) for your Environment. You use this to connect to a Feature Flag SDK.
-4. [Create a Feature Flag](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md).
+1. [Create a Project](../../ff-using-flags/ff-creating-flag/create-a-project.md) to host your Flags in.
+2. [Create an Environment](../../ff-using-flags/ff-creating-flag/create-an-environment.md) within your Project. You can have multiple Environments in a single Project.
+3. [Create an SDK Key](../../ff-using-flags/ff-creating-flag/create-an-sdk-key.md) for your Environment. You use this to connect to a Feature Flag SDK.
+4. [Create a Feature Flag](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md).
 5. [Connect your application using one of our SDKs](../../4-ff-sdks/1-sdk-overview/1-client-side-and-server-side-sdks.md).
 
 You can also follow the Get Started tutorial for Feature Flags on the Harness Platform.
@@ -30,7 +30,7 @@ You can also follow the Get Started tutorial for Feature Flags on the Harness Pl
 
 Once you have created your Flag, you can then:
 
-* [Manage Targets](../../2-ff-using-flags/4-ff-target-management/3-targeting-users-with-flags.md)
-* Modify [Variations](../../2-ff-using-flags/2-update-feature-flags/3-manage-variations.md) and [Rules](../../2-ff-using-flags/4-ff-target-management/3-targeting-users-with-flags.md)
-* [Add Prerequisites](../../2-ff-using-flags/3-add-prerequisites-to-feature-flag.md)
+* [Manage Targets](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md)
+* Modify [Variations](../../ff-using-flags/update-feature-flags/manage-variations.md) and [Rules](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md)
+* [Add Prerequisites](../../ff-using-flags/add-prerequisites-to-feature-flag.md)
 

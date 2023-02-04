@@ -1,15 +1,14 @@
 {
-    "label": "Use Feature Flag SDKs",
+    "label": "Manage Feature Flag Targets",
     "position": 40,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Server SDK Guides"
+        "title": "Manage Feature Flag Targets"
     },
     "customProps": {
-        "helpdocs_category_id": "kkiqy1f6d7",
-        "helpdocs_parent_category_id": "rtce97j1wu"
+        "helpdocs_category_id": "xw2hz815l8"
     }
 }

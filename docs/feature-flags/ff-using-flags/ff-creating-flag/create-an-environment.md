@@ -1,9 +1,7 @@
 ---
 title: Create an Environment
 description: Once you've created a Project, you need to create an Environment before you create a Feature Flag. Feature Flags can be used independently across multiple Environments within a single Project, for ex…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: nh1n5qtjmm
 helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false
@@ -32,7 +30,7 @@ To read more about the Harness Platform, see [Harness Platform](https://harness.
 Before you create a Feature Flag, you must have:
 
 1. [Created an Organization](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md)
-2. [Created a Project](1-create-a-project.md)
+2. [Created a Project](create-a-project.md)
 
 ## Create an Environment
 
@@ -49,5 +47,5 @@ Before you create a Feature Flag, you must have:
 
 ## Next step
 
-* [Create an SDK Key](3-create-an-sdk-key.md) to authorize your application's access to the Feature Flag client.
+* [Create an SDK Key](create-an-sdk-key.md) to authorize your application's access to the Feature Flag client.
 

@@ -5,7 +5,7 @@ tags:
    - helpDocs
    - feature flag
    - variation
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: 8bf3us11kz
 helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false
@@ -62,7 +62,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 ``` 
 *Figure 3: Variations when the Flag is enabled and disabled*
 :::note
- For information about Specific Targeting, go to [Targeting Users with Flags](../4-ff-target-management/3-targeting-users-with-flags.md)
+ For information about Specific Targeting, go to [Targeting Users with Flags](../ff-target-management/targeting-users-with-flags.md)
 :::
 3. Click **Save** to save your changes.
 

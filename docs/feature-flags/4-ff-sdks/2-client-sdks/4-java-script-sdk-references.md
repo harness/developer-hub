@@ -36,8 +36,8 @@ To use this SDK, make sure you:
 
 * Create a JavaScript application to use with the SDK, or [clone our sample application](https://github.com/harness/ff-javascript-client-sdk) to use.
 * Download the SDK from our [GitHub Repository](https://github.com/harness/ff-javascript-client-sdk).
-* [Create a Feature Flag on the Harness Platform](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create a Client SDK key and make a copy of it](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md#step-3-create-an-sdk-key).
+* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create a Client SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
 
 ## Install the SDK
 
@@ -112,7 +112,7 @@ To connect to the correct Environment that you set up on the Harness Platform, y
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about Targets, go to [Targeting Users With Flags](../../2-ff-using-flags/4-ff-target-management/3-targeting-users-with-flags.md).
+For more information about Targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
 
 To create a Target, you **must enter an identifier** but you can optionally add a name and additional attributes.
 

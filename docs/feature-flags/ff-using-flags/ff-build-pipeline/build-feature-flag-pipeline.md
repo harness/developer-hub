@@ -5,7 +5,7 @@ tags:
    - helpDocs
    - Pipelines
    - feature flag
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 4r53zx73pv
 helpdocs_category_id: fsgwbaegql
 helpdocs_is_private: false
@@ -94,9 +94,9 @@ When you run the Pipeline, give the inputs for flag type.
 	1. In **Set Flag Switch**, Select ON and OFF for the Flag switch.
 	2. **Define rules for the flag,** Define the variation you want to see by default when the Flag is ON or OFF. Once you save the variations, a Flag is created for the Environment with these variations set as ON and OFF.  
 	For example, if the flag is `ON`, serve the variation `True`. If the flag is `OFF`, serve the variation `False`.  
-	For more information, go to [**Manage Variations for Feature Flags.**](../2-update-feature-flags/3-manage-variations.md)
-	3. **Serve Variations to Target Group**, Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation. For more information, go to [Targeting Users with Flags](../4-ff-target-management/3-targeting-users-with-flags.md).
-	4. **Serve Percentage Rollout**, use **Percentage Rollout** to distribute users dynamically between variations. For more information, go to [Percentage Rollout](../4-ff-target-management/3-targeting-users-with-flags.md#percentage-rollouts).
+	For more information, go to [**Manage Variations for Feature Flags.**](../update-feature-flags/manage-variations.md)
+	3. **Serve Variations to Target Group**, Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation. For more information, go to [Targeting Users with Flags](../ff-target-management/targeting-users-with-flags.md).
+	4. **Serve Percentage Rollout**, use **Percentage Rollout** to distribute users dynamically between variations. For more information, go to [Percentage Rollout](../ff-target-management/targeting-users-with-flags.md#percentage-rollouts).
 2. Click **Apply Changes**.
 3. With this you finish making configuration changes in your flag. Now your pipeline is ready to be saved and run.
 4. Click **Save**.

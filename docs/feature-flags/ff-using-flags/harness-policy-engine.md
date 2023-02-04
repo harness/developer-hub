@@ -2,11 +2,10 @@
 title: Policies Overview for Feature Flags
 description: This topic gives an overview of how Harness Policy Engine works with Feature Flags and OPA.
 tags: 
-   - helpDocs
    - harness policy engine
    - OPA
    - feature flag
-# sidebar_position: 2
+sidebar_position: 80
 helpdocs_topic_id: 4vx27jqwv2
 helpdocs_category_id: yo726tfqly
 helpdocs_is_private: false

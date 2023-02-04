@@ -2,11 +2,10 @@
 title: Enable or Disable Your Flags
 description: This topic describes how to turn on or off a flag in a specific environment.
 tags: 
-   - helpDocs
    - feature flag
    - Enable
    - Disable
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 0tlih9lee5
 helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false

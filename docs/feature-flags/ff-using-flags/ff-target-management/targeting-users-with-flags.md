@@ -1,11 +1,7 @@
 ---
 title: Target Users with Flags
 description: This topic describes how to use targeting rules to control variations that you want to serve to your users.
-tags: 
-   - helpDocs
-   - feature flag
-   - Target Users
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: xf3hmxbaji
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
@@ -34,7 +30,7 @@ For example:
 This topic describes how to set up Targeting for a Feature Flag you’ve created. 
 
 :::note
- To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](../2-update-feature-flags/3-manage-variations.md).
+ To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](../update-feature-flags/manage-variations.md).
 :::
 
 ## Important things to consider
@@ -52,12 +48,12 @@ You should understand how the Harness Platform prioritizes targets and target gr
    - As the target group prioritization of `Group_A` is `0`, and the target group prioritization of `Group_C` is `2`, the flag is disabled for `Target_1`. This is because the lower-numbered target group priority, `0`, takes precedence. 
    
 :::note
-If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](../5-manage-featureflags-in-git-repos.md).
+If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](../manage-featureflags-in-git-repos.md).
 :::
 
 ## Target specific users or Target Groups when a Flag is enabled
 
-To target specific users, you first need to add them as a Target or Target Group on the Harness platform. To do this, go to [Adding Targets](1-add-targets.md) and [Managing Target Groups](2-add-target-groups.md). 
+To target specific users, you first need to add them as a Target or Target Group on the Harness platform. To do this, go to [Adding Targets](add-targets.md) and [Managing Target Groups](add-target-groups.md). 
 
 After you have added the Target or Target Group, you can then choose the Variation to serve them when the Feature Flag is Enabled:
 

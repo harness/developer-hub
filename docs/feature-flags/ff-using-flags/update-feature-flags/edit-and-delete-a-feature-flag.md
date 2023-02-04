@@ -4,7 +4,7 @@ description: After you have created a Flag, you can edit the following details o
 tags: 
    - helpDocs
    - feature flag
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: u80hwpf1wq
 helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false
@@ -60,8 +60,8 @@ To edit a Flag:
 You can also:
 
 
-* [Edit your Flag Variations](3-manage-variations.md)
-* [Add Prerequisite Flags](../3-add-prerequisites-to-feature-flag.md)
+* [Edit your Flag Variations](manage-variations.md)
+* [Add Prerequisite Flags](../add-prerequisites-to-feature-flag.md)
 * [Manage Your Targets](/docs/category/manage-feature-flag-targets)
 
 

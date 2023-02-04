@@ -100,7 +100,7 @@ If you need to make the Flag a permanent Flag, select the checkbox **This is a 
 5. Click **Save and Close**. The Feature Flag is created. By default, the Flag is set to OFF.
 
 :::note
-Once you have created your Flag type, optionally you can [manage targets](../../2-ff-using-flags/4-ff-target-management/1-add-targets.md) and modify the [variations](../../2-ff-using-flags/2-update-feature-flags/3-manage-variations.md), [rules](../../2-ff-using-flags/4-ff-target-management/3-targeting-users-with-flags.md), and [add prerequisites](../../2-ff-using-flags/3-add-prerequisites-to-feature-flag.md) of your flag.
+Once you have created your Flag type, optionally you can [manage targets](../../ff-using-flags/ff-target-management/add-targets.md) and modify the [variations](../../ff-using-flags/update-feature-flags/manage-variations.md), [rules](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md), and [add prerequisites](../../ff-using-flags/add-prerequisites-to-feature-flag.md) of your flag.
 :::
 
 ## Use Harness Feature Flags SDKs with Java applications
@@ -182,7 +182,7 @@ Evaluate a Target for your Feature Flag. Once you have added the Target, evaluat
 ```
 boolean result = cfClient.boolVariation(<feature_identifier>, target, <default_result>);
 ```
-The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md) and [Create a flag type](../../2-ff-using-flags/1-ff-creating-flag/4-create-a-feature-flag.md#create-a-boolean-flag).
+The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md) and [Create a flag type](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#create-a-boolean-flag).
 
 **Sample code for a boolean Flag**
 

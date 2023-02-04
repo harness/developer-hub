@@ -1,16 +1,14 @@
 ---
 title: Create an SDK Key
 description: After you’ve created your Environment , you need to create an SDK key for it. You need to use this SDK key in your application’s code to authenticate your connection to the Harness Feature Flag clien…
-tags: 
-   - feature flags
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: 8ja1j98xgp
 helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-After you’ve [created your Environment](2-create-an-environment.md), you need to create an SDK key for it. You need to use this SDK key in your application’s code to authenticate your connection to the Harness Feature Flag client. 
+After you’ve [created your Environment](create-an-environment.md), you need to create an SDK key for it. You need to use this SDK key in your application’s code to authenticate your connection to the Harness Feature Flag client. 
 
 :::note
  You can view and copy the SDK key only immediately after it is created. For security, after you leave the page, the key is redacted and you can’t view it. Make sure you make a copy of the key to use in your application.
@@ -30,5 +28,5 @@ After you’ve [created your Environment](2-create-an-environment.md), you need 
 
 ## Next step
 
-After you have created an SDK Key, you can then [Create a Feature Flag](4-create-a-feature-flag.md).
+After you have created an SDK Key, you can then [Create a Feature Flag](create-a-feature-flag.md).
 

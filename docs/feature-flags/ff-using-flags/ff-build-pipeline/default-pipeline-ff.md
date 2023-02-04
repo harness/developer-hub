@@ -1,9 +1,7 @@
 ---
 title: Add a Default Pipeline for Flag Changes
 description: This feature is available to use only by Project Admins. You can add a Pipeline to your Flags that will be applied when you or your team make the following changes --  Enable or disable a Flag. Add Targ…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: sjzsn4etz9
 helpdocs_category_id: fsgwbaegql
 helpdocs_is_private: false

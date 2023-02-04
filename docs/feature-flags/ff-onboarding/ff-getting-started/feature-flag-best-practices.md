@@ -41,7 +41,7 @@ Determine if the Flag needs Prerequisite Flags and be prepared to add them. For 
 
 ### Rollout rules
 
-Create a set of rules with your team to ensure your rollouts run smoothly. There are a number of Harness Features you can utilize to help with this, such as using [approval steps in pipelines](../../2-ff-using-flags/6-ff-build-pipeline/1-build-feature-flag-pipeline.md) or using the [Harness Policy Engine](../../2-ff-using-flags/8-harness-policy-engine.md). When creating roll out rules, it’s important to consider:
+Create a set of rules with your team to ensure your rollouts run smoothly. There are a number of Harness Features you can utilize to help with this, such as using [approval steps in pipelines](../../ff-using-flags/ff-build-pipeline/build-feature-flag-pipeline.md) or using the [Harness Policy Engine](../../ff-using-flags/harness-policy-engine.md). When creating roll out rules, it’s important to consider:
 
 * Types of roll outs you may run, and the strategy for each.
 * Rules that must be applied for all roll outs, for example, a rule stating that a Flag cannot be switched on in your production environment until it has been tested in your QA environment for one week.
@@ -53,7 +53,7 @@ It is likely that you’ll use many Flags and it’s important to keep them orga
 * Flag names should be unique. Although on the Harness Platform, only unique identifiers are enforced, it’s good practice to keep your Flag names unique too so your team don’t confuse them.
 * Make the names user friendly; they should describe what the Flag does. For example, EnableVersion2UI describes that the Flag enables Version 2 of the user interface.
 * If your Flags are specific to a team, consider adding the team to the Flag name, for example, Dev\_EnableVersion2UI.
-* To help with keeping your naming consistent, you could use the [Harness Policy Engine to enforce it](../../2-ff-using-flags/8-harness-policy-engine.md).
+* To help with keeping your naming consistent, you could use the [Harness Policy Engine to enforce it](../../ff-using-flags/harness-policy-engine.md).
 * Don’t forget to tell your whole team what the naming convention is, so that anyone who creates a Flag uses the correct convention.
 
 ## Add descriptions to your Flags
@@ -65,7 +65,7 @@ Add a description to your Flag. This is optional on the Harness Platform, but we
 * Any Prerequisite Flags that need to be toggled on before you use this Flag.
 * Links to information or tickets related to the Flag.
 
-![An example flag description](./static/1-feature-flag-best-practices-04.png)To help with this, you can use the [Harness Policy Engine to enforce descriptions](../../2-ff-using-flags/8-harness-policy-engine.md) when creating a Flag.
+![An example flag description](./static/1-feature-flag-best-practices-04.png)To help with this, you can use the [Harness Policy Engine to enforce descriptions](../../ff-using-flags/harness-policy-engine.md) when creating a Flag.
 
 
 

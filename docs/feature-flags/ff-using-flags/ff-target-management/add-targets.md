@@ -1,11 +1,7 @@
 ---
 title: Add Targets
 description: This topic describes how to add targets to your environment.
-tags: 
-   - helpDocs
-   - feature flag
-   - Target Users
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: dbk9uoaid3
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
@@ -20,7 +16,7 @@ import add_target_2 from './static/1-add-targets-01.png'
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing or a beta program before a broader roll out, you can enable the Flag for some users and not others. While we refer to targeting users, when you create a Target you give it a name and a unique identifier, so a Target can be anything that can be uniquely identified. For example, a Target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
 
 
-This topic describes how to add Targets to an Environment. After you’ve added the Target, you can add it to a [Target Group](2-add-target-groups.md) or to a [Feature Flag](3-targeting-users-with-flags.md). 
+This topic describes how to add Targets to an Environment. After you’ve added the Target, you can add it to a [Target Group](add-target-groups.md) or to a [Feature Flag](targeting-users-with-flags.md 
 
 
 
@@ -74,7 +70,7 @@ The characters can be lowercase or uppercase but cannot include accented letters
 ### Add a Target
 
 
-A Target is identified by a name and an identifier. Make sure your Target names and identifiers conform to the regex explained in [Review Regex Requirements for Target Names and Identifiers](1-add-targets.md#review-regex-requirements-for-target-names-and-identifiers).
+A Target is identified by a name and an identifier. Make sure your Target names and identifiers conform to the regex explained in [Review Regex Requirements for Target Names and Identifiers](add-targets.md#review-regex-requirements-for-target-names-and-identifiers).
 To add a Target:
 
 
@@ -82,7 +78,7 @@ To add a Target:
 2. Click **+ Target**.
 3. In **Add Target(s)**, select **Add a Target**.
 4. In **Name**, enter the name that will appear in the Target Management page so you can identify this Target.
-5. In **Identifier**, enter a unique identifier for your Target. When [Targeting Users with Flags](3-targeting-users-with-flags.md) or [Managing Target Groups](2-add-target-groups.md), the Targets are identified by the identifier you give them.
+5. In **Identifier**, enter a unique identifier for your Target. When [Targeting Users with Flags](targeting-users-with-flags.md) or [Managing Target Groups](add-target-groups.md), the Targets are identified by the identifier you give them.
 6. You can add multiple Targets. Click **+** to add more Targets.
 
 ```mdx-code-block
@@ -137,7 +133,7 @@ This option allows you to import a list of Targets in CSV format. To do this:
 After your have created a Target, you can:
 
 
-* [Add them to Target Groups](2-add-target-groups.md)
-* [Target Users with Flags](3-targeting-users-with-flags.md)
+* [Add them to Target Groups](add-target-groups.md)
+* [Target Users with Flags](targeting-users-with-flags.md)
 
 

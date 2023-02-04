@@ -1,9 +1,7 @@
 ---
 title: Add or Exclude a Target in a Target Group
 description: This topic describes how to add a Target Group to your Environment, add Targets to the group, and apply the Target Group to a Feature Flag. 
-tags: 
-   - feature flags
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 5qz1qrugyk
 helpdocs_category_id: xw2hz815l8
 helpdocs_is_private: false
@@ -22,7 +20,7 @@ import target_group_5 from './static/2-add-target-groups-10.png'
  While we refer to targeting users, when you create a Target you give it a name and a unique identifier, so a Target can be anything that can be uniquely identified. For example, a Target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
 :::
 
-Target Groups are a collection of [Targets](1-add-targets.md) that allow you to serve Feature Flag Variations to a list of users in bulk. You can group Targets into a group either by picking individual Targets or by defining rules that automatically map Targets to a Target Group. For example, you can add individual Targets `joe@harness.io` and `jane@harness.io` to the QA internal users group or you can define a rule that all the emails ending with `@harness.io` are added to the QA internal users group.
+Target Groups are a collection of [Targets](add-targets.md) that allow you to serve Feature Flag Variations to a list of users in bulk. You can group Targets into a group either by picking individual Targets or by defining rules that automatically map Targets to a Target Group. For example, you can add individual Targets `joe@harness.io` and `jane@harness.io` to the QA internal users group or you can define a rule that all the emails ending with `@harness.io` are added to the QA internal users group.
 
 You can also do the opposite and exclude specific Targets from a Target Group.  
 
@@ -30,7 +28,7 @@ This topic describes how to add a Target Group to your Environment, add Targets 
 
 ## Before you begin
 
-Make sure you've [created Targets to add to the Target Group](1-add-targets.md).
+Make sure you've [created Targets to add to the Target Group](add-targets.md).
 
 ## Create a Target Group and add Targets
 
@@ -137,5 +135,5 @@ You can use Target Settings to include or exclude Targets from a Target Group. C
 
 ## Next step
 
-After you have added the Targets and Target Groups, you can then [use them on your Feature Flags.](3-targeting-users-with-flags.md)
+After you have added the Targets and Target Groups, you can then [use them on your Feature Flags.](targeting-users-with-flags.md)
 

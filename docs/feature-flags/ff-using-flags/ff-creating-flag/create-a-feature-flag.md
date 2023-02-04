@@ -1,9 +1,7 @@
 ---
 title: Create a Feature Flag
 description: This topic describes how to create a feature flag in Harness.
-tags: 
-   - feature flag
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: 1j7pdkqh7j
 helpdocs_category_id: gjyyhm9f9h
 helpdocs_is_private: false
@@ -26,9 +24,9 @@ You can use the same Flags across multiple Environments within a single project,
 
 Before you create a Feature Flag, you must have:
 
-1. [Created a Project](1-create-a-project.md)
-2. [Created an Environment](2-create-an-environment.md)
-3. [Created an SDK Key](3-create-an-sdk-key.md)
+1. [Created a Project](create-a-project.md)
+2. [Created an Environment](create-an-environment.md)
+3. [Created an SDK Key](create-an-sdk-key.md)
 
 ## How Feature Flag Variations work
 
@@ -68,9 +66,9 @@ When you create a Feature Flag, you also create different options to label the l
 
 After you have created your Boolean Flag, you can then:
 
-* [Manage the Variations of the Feature Flag](../2-update-feature-flags/3-manage-variations.md)
-* [Add Flag Prerequisites](../3-add-prerequisites-to-feature-flag.md)
-* [Targeting Users with Flags](../4-ff-target-management/3-targeting-users-with-flags.md)
+* [Manage the Variations of the Feature Flag](../update-feature-flags/manage-variations.md)
+* [Add Flag Prerequisites](../add-prerequisites-to-feature-flag.md)
+* [Targeting Users with Flags](../ff-target-management/targeting-users-with-flags.md)
 
 ## Create a multivariate Flag
 
@@ -100,7 +98,7 @@ To create a multivariate Flag:
 
 After you have created your multivariate Flag, you can then:
 
-* [Manage the Variations of the Feature Flag](../2-update-feature-flags/3-manage-variations.md)
-* [Add Flag Prerequisites](../3-add-prerequisites-to-feature-flag.md)
-* [Target Users with Flags](../4-ff-target-management/3-targeting-users-with-flags.md)
+* [Manage the Variations of the Feature Flag](../update-feature-flags/manage-variations.md)
+* [Add Flag Prerequisites](../add-prerequisites-to-feature-flag.md)
+* [Target Users with Flags](../ff-target-management/targeting-users-with-flags.md)
 
