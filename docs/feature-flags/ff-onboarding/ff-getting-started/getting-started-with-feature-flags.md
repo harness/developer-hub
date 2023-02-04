@@ -20,7 +20,7 @@ To create a Flag, you need to complete the following steps:
 2. [Create an Environment](../../ff-using-flags/ff-creating-flag/create-an-environment.md) within your Project. You can have multiple Environments in a single Project.
 3. [Create an SDK Key](../../ff-using-flags/ff-creating-flag/create-an-sdk-key.md) for your Environment. You use this to connect to a Feature Flag SDK.
 4. [Create a Feature Flag](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md).
-5. [Connect your application using one of our SDKs](../../4-ff-sdks/1-sdk-overview/1-client-side-and-server-side-sdks.md).
+5. [Connect your application using one of our SDKs](../../ff-sdks/sdk-overview/client-side-and-server-side-sdks.md).
 
 You can also follow the Get Started tutorial for Feature Flags on the Harness Platform.
 
