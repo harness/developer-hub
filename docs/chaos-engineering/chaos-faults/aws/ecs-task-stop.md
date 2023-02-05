@@ -37,7 +37,9 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the ChaosExperiment CR with the same name.
+- It is recommended to use the same secret name that is `cloud-secret` or else you need to update the `AWS_SHARED_CREDENTIALS_FILE` env in the fault template and you may not be able to use the default healthcheck probes. 
+
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
 ## Permissions required
 
@@ -67,7 +69,7 @@ Here is an example AWS policy to help execute the fault.
 ```
 </details>
 
-Refer to the [superset permission (or policy)](./policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission (or policy)](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 ## Default validations
 
