@@ -27,7 +27,7 @@ Locust loadgen chaos fault causes load generation on the given target hosts for 
 
 <accordion color="green">
     <summary>Fault usage</summary>
-This fault determines the resilience of the application under load. It determines how quickly the application scale/recover to aviod such such a failure. 
+This fault determines the resilience of the application under load. It determines how quickly the application scale/recover to avoid such failure. 
 </accordion>
 
 </FaultDetailsCard>
