@@ -69,7 +69,7 @@ The target host should be accessible
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+            <td> Duration for which chaos is injected into the target resource (in seconds).</td>
             <td> Defaults to 60s </td>
         </tr>
         <tr>
