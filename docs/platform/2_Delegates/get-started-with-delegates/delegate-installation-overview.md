@@ -39,7 +39,9 @@ Currently, for Harness NextGen, you can install the following types of Delegates
 
 ### Delegate Updates
 
-By defauult the the delegate auto upgrade is off. For kubernets delegates you can turn on the auto upgrade by turning it on in the helm command or by enabling the upgrader cron job in the yaml file. For kubernetes delegates the cron job called upgrader runs every hour and if there is a new release it does a rolling deployment of delegates with newer image. This process is graceful which means the older pods will finish the tasks they were doing before terminating. Note that this functionality is not present with Docker delegate and a user has to manually run docker command with newer image.
+Delegate auto-upgrade is off by default. To enable auto-upgrade for Kubernetes delegates, use the `helm` CLI or enable the upgrader `cron` job in the delegate YAML.  For Kubernetes delegates, the upgrader `cron` job runs on an hourly basis; new releases are issued in a rolling deployment of delegates with updated images. 
+
+The upgrade process is graceful. This means that older pods finish their tasks before shutting down. This functionality is not, however, present in Docker delegates; users must manually run a `docker` command to update.
 
 
 ### Third-Party Tools installed with the Delegate
