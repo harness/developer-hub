@@ -680,7 +680,7 @@ See [Security Step Settings Reference](../security-testing-orchestration/sto-tec
 
 ### Feature Flags
 
-Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/4-ff-sdks/1-sdk-overview/1-client-side-and-server-side-sdks.md) for a number of programming languages.
+Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
 #### Client-side SDKs
 
@@ -688,12 +688,12 @@ The following table lists the Client-side Feature Flag SDKs Harness supports.
 
 | SDK                                                                   | Documentation                                                                                          |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| [Android](https://github.com/harness/ff-android-client-sdk)           | [Android SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/1-android-sdk-reference.md)           |
-| [iOS](https://github.com/harness/ff-ios-client-sdk)                   | [iOS SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/3-ios-sdk-reference.md)                   |
-| [Flutter](https://github.com/harness/ff-flutter-client-sdk)           | [Flutter SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/2-flutter-sdk-reference.md)           |
-| [Javascript](https://github.com/harness/ff-javascript-client-sdk)     | [Javascript SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/4-java-script-sdk-references.md)   |
-| [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/5-react-native-sdk-reference.md) |
-| [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/6-xamarin-sdk-reference.md)           |
+| [Android](https://github.com/harness/ff-android-client-sdk)           | [Android SDK Reference](../feature-flags/ff-sdks/client-sdks/android-sdk-reference.md)           |
+| [iOS](https://github.com/harness/ff-ios-client-sdk)                   | [iOS SDK Reference](../feature-flags/ff-sdks/client-sdks/ios-sdk-reference.md)                   |
+| [Flutter](https://github.com/harness/ff-flutter-client-sdk)           | [Flutter SDK Reference](../feature-flags/ff-sdks/client-sdks/flutter-sdk-reference.md)           |
+| [Javascript](https://github.com/harness/ff-javascript-client-sdk)     | [Javascript SDK Reference](../feature-flags/ff-sdks/client-sdks/java-script-sdk-references.md)   |
+| [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](../feature-flags/ff-sdks/client-sdks/react-native-sdk-reference.md) |
+| [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](../feature-flags/ff-sdks/client-sdks/xamarin-sdk-reference.md)           |
 
 #### Server-side SDKs
 
@@ -701,13 +701,13 @@ The following table lists the Server-side Feature Flag SDKs Harness supports.
 
 | SDK                                                        | Documentation                                                                                            |
 | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [.NET](https://github.com/harness/ff-dotnet-server-sdk)    | [.NET SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/4-net-sdk-reference.md)                    |
-| [Go](https://github.com/harness/ff-golang-server-sdk)      | [Go SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/2-feature-flag-sdks-go-application.md)       |
-| [Java](https://github.com/harness/ff-java-server-sdk)      | [Java SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/3-integrate-feature-flag-with-java-sdk.md) |
-| [Node.js](https://github.com/harness/ff-nodejs-server-sdk) | [Node.js SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/5-node-js-sdk-reference.md)             |
-| [Python](https://github.com/harness/ff-python-server-sdk)  | [Python SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/7-python-sdk-reference.md)               |
-| [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/8-ruby-sdk-reference.md)                   |
-| [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/6-php-sdk-reference.md)                     |
+| [.NET](https://github.com/harness/ff-dotnet-server-sdk)    | [.NET SDK Reference](../feature-flags/ff-sdks/server-sdks/net-sdk-reference.md)                    |
+| [Go](https://github.com/harness/ff-golang-server-sdk)      | [Go SDK Reference](../feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application.md)       |
+| [Java](https://github.com/harness/ff-java-server-sdk)      | [Java SDK Reference](../feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk.md) |
+| [Node.js](https://github.com/harness/ff-nodejs-server-sdk) | [Node.js SDK Reference](../feature-flags/ff-sdks/server-sdks/node-js-sdk-reference.md)             |
+| [Python](https://github.com/harness/ff-python-server-sdk)  | [Python SDK Reference](../feature-flags/ff-sdks/server-sdks/python-sdk-reference.md)               |
+| [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](../feature-flags/ff-sdks/server-sdks/ruby-sdk-reference.md)                   |
+| [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](../feature-flags/ff-sdks/server-sdks/php-sdk-reference.md)                     |
 
 ### Harness Chaos Engineering
 
@@ -738,7 +738,7 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 
 The following table lists Harness support for SSO protocols and tools.
 
-See [Add and Manage Access Control](../feature-flags/1-ff-onboarding/3-ff-security-compliance/1-manage-access-control.md).
+See [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-compliance/manage-access-control.md).
 
 | SSO Type                                                                     | SSO Providers          | Authentication Supported | Authorization (Group Linking) Supported | SCIM Provisioning |
 | ---------------------------------------------------------------------------- | ---------------------- | ------------------------ | --------------------------------------- | ----------------- |

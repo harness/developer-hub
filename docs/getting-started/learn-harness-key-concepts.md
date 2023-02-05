@@ -43,7 +43,7 @@ Much like account-level roles, project members can be assigned Project Admin, Me
 
 Project users have at least view access to all configuration and runtime data of a project and share the same assets (environments, services, infrastructure, etc).
 
-See [Projects and Organizations](../platform/1_Organizations-and-Projects/1-projects-and-organizations.md).
+See [Projects and Organizations](../platform/organizations-and-projects/projects-and-organizations.md).
 
 ### Product modules
 

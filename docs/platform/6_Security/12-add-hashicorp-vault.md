@@ -19,7 +19,7 @@ To store and use encrypted secrets (such as access keys), you can add a HashiCor
 
 ### Step 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can add a Connector at Project/Organization/Account scope. To do this, go to Project setup, Organization, or Account Resources.
 

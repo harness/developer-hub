@@ -14,7 +14,7 @@ This topic describes how to add a text secret in Harness.
 
 ### Step 1: Add Text Secret
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 Secrets can be added inline while setting up a Connector or other setting, and they can also be set up in the Account/Organization/Project resources.
 

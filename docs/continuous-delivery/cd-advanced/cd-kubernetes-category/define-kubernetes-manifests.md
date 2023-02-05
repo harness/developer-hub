@@ -125,7 +125,7 @@ See [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Ex
 
 ## Step 1: Start a Pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
 
 You can create a Pipeline from any module in your Project, or in the **Project Overview**, and then add stages for any module.
 
