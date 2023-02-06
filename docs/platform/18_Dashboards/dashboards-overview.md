@@ -4,7 +4,7 @@ description: An overview of dashboards in Harness.
 sidebar_position: 2
 ---
 
-Harness Dashboards display key metrics and data related to your builds, deployments, security, and cloud costs. Dashboards let you track the health and performance of your deployments, monitor key metrics and KPIs, and quickly identify potential issues. You can customize the dashboards to show specific metrics and data relevant to your needs, and you will be able to access them from a central location. The Harness Dashboards provide actionable insights into continuous delivery processes, so you can achieve faster and more efficient deployments.
+Harness Dashboards display key metrics and data related to your builds, deployments, security, and cloud costs. Dashboards let you track the health and performance of your deployments, monitor key metrics and KPIs, and quickly identify potential issues. You can customize the dashboards to show specific metrics and data relevant to your needs, and access them from a central location. The Harness Dashboards provide actionable insights into continuous delivery processes, so you can achieve faster and more efficient deployments.
 
 Harness provides the following out-of-the-box dashboards across its products:
 
@@ -27,7 +27,7 @@ You can filter the data on the dashboards by selecting specific module(s).
 
 ![](./static/filter-dashboard-data.png)
 
-Once you have one or more custom dashboards available to you, the **Dashboards** page lists them.
+After you have one or more custom dashboards available to you, the **Dashboards** page lists them.
 
 ![](./static/dashboards-overview.png)
 
@@ -53,7 +53,7 @@ You can clone a dashboard by following these steps:
 - Click on "Clone" to create the cloned dashboard.
  
 :::note
-The cloned dashboard will contain all the same widgets and configurations as the original dashboard.
+The cloned dashboard contains all the same widgets and configurations as the original dashboard.
 
 :::
 
