@@ -14,6 +14,50 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
+### February 6, 2023, version 78109
+
+Delegate: 78106
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 78109 |
+| Delegate | 78106 |
+| Watcher | 77431 |
+| Verification Service | 78109 |
+| UI | 78100 |
+| Learning Engine | 66700 | 
+| Gateway | 2000137 |
+
+#### New features and enhancements
+
+This release introduces the following features and enhancements.
+
+CDS-46240
+DEL-5383
+DEL-5440
+DEL-5507
+DEL-5591
+DEL-5632
+
+#### Issues fixed in this release
+
+This release includes the following fixes.
+
+CDS-17420
+CDS-45074
+CDS-47328, ZD-37309
+CDS-47901
+DEL-3913
+DEL-4924
+DEL-5438
+DEL-5443
+PL-30005, ZD-34766
+PL-30070
+PL-30124
+
+
 ### December 21, 2022, version 77622
 
 Delegate: 77621
