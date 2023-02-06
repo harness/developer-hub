@@ -62,7 +62,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * If you hovered over a probe, its details would overflow if they were too long. Now, it has been fixed. (CHAOS-990)
 * Any increase in the number of chaos faults that you wished to view on a single page in a ChaosHub would result in a blank page. Now, it has been fixed. (CHAOS-984)
 * When a chaos experiment was imported into the ChaosHub, it would not be logged as an audit event and would not be displayed on the user interface. It has been fixed. (CHAOS-779)
-* If no chaos infrastructure is connected with your project, a blank screen would be displayed. Now, the message "There are no chaos infrastructure in your project." is displayed. (CHAOS-1009) 
+* If no chaos infrastructure is connected with your project, a blank screen would be displayed. Now, the message "There are no chaos infrastructures in your project." is displayed. (CHAOS-1009) 
 * In CRON experiments, the scheduled run time would always be shown in GMT. Now, it has been fixed to show the run time in your browser’s time zone. (CHAOS-1035)
 * The parameters in the YAML manifest of different runs of the same chaos experiment were inconsistent with the changes made (if any) in their respective runs. Now, it has been fixed.
 
