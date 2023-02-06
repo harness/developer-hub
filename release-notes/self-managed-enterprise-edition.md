@@ -1,7 +1,7 @@
 ---
 title: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2022-02-06T10:00
+date: 2023-02-06T10:00
 sidebar_position: 11
 ---
 

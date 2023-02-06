@@ -46,7 +46,7 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-cont
 
 ### Step 1: Add a secret manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can add a connector from any module in your project, in the Project setup, or in your organization or account resources.
 
