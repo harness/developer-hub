@@ -48,11 +48,11 @@ Perform the following steps to get started with AutoStopping Rule.
 2. In the cloud account type, select **GCP**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
 3. Select your GCP account from the **Connect to your GCP account** drop-down list and click **Next**. If you have not added a GCP cloud account, see [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
-5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
+5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule waits before stopping the idle instances.
 
 ## Select the resources to be managed by the AutoStopping rules
 
-Select the Kubernetes workloads that you want to manage using this rule. AutoStopping Rule will monitor the selected resources and stop them when they are idle beyond the configured idle time.
+Select the Kubernetes workloads that you want to manage using this rule. AutoStopping Rule monitors the selected resources and stop them when they are idle beyond the configured idle time.
 
 ### Option 1: Select Google Compute Engine (GCE) VM(s)
 
@@ -85,14 +85,14 @@ Set dependencies between two or more AutoStopping Rules when you want one Rule t
 
 1. Click **add dependency** to add a dependency on any existing rule.
 2. Select the rule from the **RULES** drop-down list.
-3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2 and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then first Rule 2 (dependent rule) is warmed up, and then there will be a delay of 5 seconds before warming up Rule 1.
+3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2 and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then first Rule 2 (dependent rule) is warmed up, and then there is a delay of 5 seconds before warming up Rule 1.
 4. Once you're done with all the configurations, click **Next**.
 
 ### Fixed Schedule
 
 Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
 
-In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource will be forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
+In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
 
 :::note
 The fixed schedule takes precedence over the defined AutoStopping Rule.
@@ -105,27 +105,27 @@ To create a fixed schedule for your rule, do the following:
    
      ![](./static/create-auto-stopping-rules-for-gcp-20.png)
 2. In **New Fixed Schedule**, enter a **Name** for your schedule.
-3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources will go up or down.
+3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources go up or down.
 4. Select the **Time Zone** from the drop-down list.
 5. In **Set schedule period**, use the date picker to set the start and end time for your schedule.
 	1. In **Begins on**, select the start date and time for your schedule. You can select a date and specify the time.
 	2. In **Ends on**, select the end date and time for your schedule. You can select a date and specify the time. Ensure that **Never ends** checkbox is unselected to set the end time.  
 	  
-	  If you don't specify an end time, the schedule will continue to run until you manually update the settings or remove the schedule.
+	  If you don't specify an end time, the schedule continues to run until you manually update the settings or remove the schedule.
 6. Select the checbox **Never ends** if you do not want to set end time for your schedule.
 7. You can also set a recurring schedule for the rule. If you want to set a recurring schedule, in **Uptime/Downtime in the selected period**, in **Repeats**, select the repeat frequency.
-	1. Select which days of the week you'd like your schedule to repeat. You can choose any day between Sunday and Saturday.
-	2. Select **Everyday**, to set the schedule for all seven days of the week.
-	3. Set your repeat schedule's beginning and ending time. In the **Time** field, specify the start and end time for the fixed schedule.
-	4. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.  
+	3. Select which days of the week you'd like your schedule to repeat. You can choose any day between Sunday and Saturday.
+	4. Select **Everyday**, to set the schedule for all seven days of the week.
+	5. Set your repeat schedule's beginning and ending time. In the **Time** field, specify the start and end time for the fixed schedule.
+	6. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.  
 	  
 	**Example 1**:  
-	In the following example, resources will be up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
+	In the following example, resources are up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
 	
 	  ![](./static/create-auto-stopping-rules-for-gcp-21.png)
 	
 	**Example 2**:  
-	In the following example, resources will be down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.
+	In the following example, resources are down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.
 	
 	  ![](./static/create-auto-stopping-rules-for-gcp-22.png)
 8. Click **Apply**.
@@ -166,20 +166,20 @@ You can use the same proxy load balancer for more than one rule managing resourc
 
 #### Enter Routing Configuration and Health Check Details
 
-1. If the security groups are configured for the selected instances, then the routing information is auto-populated for those instances.  
+1. If the security groups are configured for the selected instances, then the routing information is autopopulated for those instances.  
 You can edit or delete the routing information. However, it is mandatory to have at least one port listed. For more information, see [Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html). 
 
-  This is the load balancer routing configuration for the underlying application that is running on the cloud resources managed by this AutoStopping rule.
+This is the load balancer routing configuration for the underlying application that is running on the cloud resources managed by this AutoStopping rule.
 
 
   ![](./static/aws-proxy-port-config.png)
 
 
-2. Click **Add** if you wish to add more ports. The following are some points to consider:  
+2. Click **Add** if you need to add more ports. The following are some points to consider:  
 	  
   * If you are forwarding the same action to different ports, then specify the server name and/or path match.  
 	  
-  * If you specify the server name, then the host will use the custom URL to access the resources. You cannot use an auto-generated URL to access the resources.
+  * If you specify the server name, then the host uses the custom URL to access the resources. You cannot use an auto-generated URL to access the resources.
   
 
 3. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect. Set a health check for the underlying application that is running on the cloud resources managed by this AutoStopping rule. The load balancer periodically sends requests as per the settings below to the application. If your application does not support health check, or you do not have any application running, you can disable the health check.
@@ -187,7 +187,7 @@ You can edit or delete the routing information. However, it is mandatory to have
   By default, the health check is turned on.
 
 4. In Protocol, select **http** or **https**.
-5. Enter Path, port, and timeout details. For example, if you have configured port 80 and the timeout as 30 seconds for your instance, then the AutoStopping rule will check these specified parameters before bringing AutoStopping Rule into effect.
+5. Enter Path, port, and timeout details. For example, if you have configured port 80 and the timeout as 30 seconds for your instance, then the AutoStopping rule checks these specified parameters before bringing AutoStopping Rule into effect.
    
 
    ![](./static/aws-proxy-healthcheck.png)
@@ -201,7 +201,7 @@ You can use either of the following methods:
 
 **Auto-generated URL**
 
-Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
+Every AutoStopping rule has an auto-generated URL. This URL is a subdomain to the domain name specified for the [load balancer](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL works automatically and points to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
@@ -215,8 +215,101 @@ Enter the custom URL currently used to access the instances. The domain name sho
 
 ![](./static/create-autostopping-rules-aws-108.png)
 
+## Use the Harness CLI to access resources through SSH/RDP 
+
+
+SSH/RDP allows you to access the resources managed by the AutoStopping rule via SSH or RDP HTTPS URL. Select this option if the underlying applications running on the resources managed by AutoStopping Rule are accessed via SSH or RDP.
+
+
+1. In **Setup Access**, select **SSH/RDP**.
+2. Select your operating system to download the Harness CLI for your system.
+ 
+    ![](./static/create-auto-stopping-rules-for-gcp-29.png)
+3. Click **Download CLI**.
+4. You can connect using SSH or RDP.
+
+
+#### SSH Commands
+
+
+To connect to remote servers via SSH/RDP, such as PuTTY, use the Harness CLI `connect` command. The `connect` command opens a proxy connection in your machine which can be used from other applications.
+
+
+
+
+```
+harness connect --host hostname --port <ssh/rdp port>
+```
+You can simply copy the hostname from the AutoStopping Rule dashboard view. Click on the AutoStopping Rule that you want to connect and copy the hostname.
+
+
+![](./static/create-auto-stopping-rules-for-gcp-30.png)
+
+
+ For example:
+
+
+
+
+```
+harness connect --host default-test-ssh-1.abc1000test.lightwingtest.com --port 22 -- -i ~/.ssh/ry-jupyter.pem
+```
+Here is the output:
+
+
+
+
+```
+Proxy listening details: 
+   Rule name:           Test SSH 1 
+   Listen address:      127.0.0.1 
+   Port forwarding:     14527 => 22 
+   Protocol:            tcp 
+   Started at:          2021-05-19 21:53:38.320943 +0530 IST m=+48.950643931
+```
+Harness `connect` created a secure tunnel from your computer to the given port after bringing up the VM. Now open the RDP/SSH client and use the hostname and port information provided above to connect.
+
+
+
+
+```
+harness ssh --host default-test-ssh-1.abc1000test.lightwingtest.com --user ubuntu --config lwc.toml -- -i ~/.ssh/ry-jupyter.pem
+```
+#### RDP Commands
+
+
+For RDP run the following command:
+
+
+
+
+```
+harness rdp --host default-test-rdp-1.abc1000test.lightwingtest.com
+```
+Run the following command to connect via private IP:
+
+
+
+
+```
+harness rdp --host default-test-rdp-1.abc1000test.lightwingtest.com --internal-ip
+```
+4. Click **Next**.
+
+
+### Review
+
+
+In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
+
+
+Your AutoStopping rule is listed under the [AutoStopping Rules summary page](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
+
+
+## Setup Access for Kubernetes Clusters
+For more information on setting up access for Kubernetes clusters, see [Create AutoStopping Rules for a Kubernetes Cluster](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md).
 
 ### Next Step
 
-* [Use AutoStopping Rules Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
+* [Use AutoStopping Rules summary page](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
 

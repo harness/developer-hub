@@ -95,5 +95,5 @@ qhhpq85lkBaErOwIZUJzxJuG2AveiOMcn7XKaxxC4IizJtuLNUnnmsHwBYYr8c2c
 
 
 
-18.   Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
+18.   Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field if it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
 19.   Click **Save Load Balancer**.

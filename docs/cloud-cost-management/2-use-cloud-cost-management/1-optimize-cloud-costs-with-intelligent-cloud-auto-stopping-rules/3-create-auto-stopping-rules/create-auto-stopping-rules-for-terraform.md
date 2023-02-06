@@ -162,17 +162,6 @@ resource "harness-ccm_autostopping_rule" "rule_i2" {
 
 Example 2: This is an example script to create an AutoStopping rule for a VM that has both TCP and HTTP/HTTPS workloads running:
 
-* **Token**: Specify the API Key.
-* **API_URL**: Specify the endpoint.
-* **Account Identifier**: Specify the Account ID.
-* **Name**: Specify a name for your AutoStopping Rule.
-* **Fulfilment**: Specify the instance fulfillment type, **On-Demand** or **Spot**.
-* **Load balancer**: Specify the name of the load balancer domain name. You can obtain this information from the screen where you create the load balancer.
-* **Hosted Zone ID**: Specify the domain name for your Route 53 hosted zone.
-* **Resource_ID**: Specify the instance ID.
-* **Routing**: Specify listeners information.
-* **(Optional) Health Check**: A health check makes sure that the specified parameters are met before stopping the instances. Health check status should be successful for the AutoStopping rules to come into effect.
-
 
 > 
 ```
@@ -424,12 +413,25 @@ resource "harness-ccm_autostopping_rule" "rule_i3" {
     }  
     region = "ap-south-1"  
   }  
-  routing {  
-    source_protocol = "http"  
-    target_protocol = "http"  
-    source_port = 80  
-    target_port = 80  
-    action = "forward"  
+  http {
+    load_balancer = "ssl.lightwingtest.com"
+
+    routing {
+        source_protocol = "https"
+        target_protocol = "https"
+        source_port = 443
+        target_port = 443
+        action = "forward"
+    }
+
+    routing {
+        source_protocol = "http"
+        target_protocol = "http"
+        source_port = 80
+        target_port = 80
+        action = "forward"
+    }
+  } 
   }  
    
   health {  
