@@ -39,7 +39,11 @@ This release introduces the following new features and enhancements:
 This release includes the following fixes:
 
 - Added error checking to ensure that delegates immediately reject tasks that are not supported. (DEL-5602)
-
+- Fixed the security vulnerabilities in delegate docker image by upgrading the below client libraries.
+| Client library  | Old version  | Upgraded version |
+| :-------------: |:------------:| :---------------:|
+| Kubectl         | v1.13.2 | v1.24.3 |
+|                 | v1.19.2 |    |
 
 
 ## January 17, 2023, version 78214
