@@ -32,7 +32,9 @@ This release includes the following Harness module and component versions.
 
 This release introduces the following features and enhancements.
 
-(CCM-10203)
+- Introducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
+  
+  While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
 
 - The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
 
@@ -44,7 +46,7 @@ This release introduces the following features and enhancements.
 
   This feature was previously behind the `HELM_STEADY_STATE_CHECK_1_16` feature flag and is now GA.
 
-(CDS-41332)
+- Schema validation was added for service entities. This includes field-level validation similar to that given to pipeline YAML files. (CDS-41332)
 
 - Harness Serverless Lambda and ECS support now supports AWS S3 (CDS-46204, CDS-45642)
 
@@ -64,7 +66,7 @@ This release introduces the following features and enhancements.
 
   This functionality is behind a feature flag: `AZURE_WEB_APP_NG_NEXUS_PACKAGE`.
 
-(CDS-47984)
+- ECS Run Task supports configuration of task definition using ARN. This allows for the creation of definitions for AWS ECS tasks using ARN or task definition in JSON/YAML. (CDS-47984)
 
 - The [Deployment Templates](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
 
@@ -152,7 +154,7 @@ This release includes the following fixed issues.
 
   Removed **Skip Dry Run** from unnecessary steps.
 
-(CDS-36750)
+- There was a rare care in which an exception was generated during data retrieval from timescale. Because of the absence of proper logging, we could not determine the origin of the exception. We have since increased logging to improve our understanding of this error. (CDS-36750)
 
 - Getting NPE when using `useFromStage` in YAML. (CDS-41036)
 
@@ -166,9 +168,9 @@ This release includes the following fixed issues.
 
   Going forward, when Helm upgrade or rollback fails with "No deployed releases", we offer a better hint and explanation on how to fix it.
 
-(CDS-43137)
+- Resolved a problem that interfered with editing an existing SSH secret in the infrastructure definition. (CDS-43137)
 
-(CDS-44812, ZD-36809)
+- There is no YAML validation during the process of retrieving or importing remote templates. The YAML will be validated on the GET operation for the new GitX. (CDS-44812, ZD-36809)
 
 - Service dashboard is not displaying instances in the instances section (CDS-46083)
 
@@ -245,7 +247,7 @@ This release includes the following fixed issues.
 
   Added left margin to tooltip.
   
-(CDS-46974)
+- Small cosmetic changes were implemented for the pipeline UI. (CDS-46974)
 
 - Github Package: package dropdown and version dropdown failing at project level stage template (CDS-46982)
 
@@ -254,8 +256,6 @@ This release includes the following fixed issues.
 - Rename "Active Service Instances" on Service Dashboard to "Running Service Instances (Current)" (CDS-47074)
 
   We have changed the title of these cards from "Active Service Instances" and "Active Deployments" to "Running Service Instances (Current)" and "Recent Deployments" respectively, as the previous ones were creating confusion.
-
-(CDS-47100, ZD-37272)
 
 - "YAML paths could not be parsed" error on running pipelines (CDS-47244)
 
@@ -310,8 +310,6 @@ This release includes the following fixed issues.
 - Input sets do not respect environment variable overrides. (CDS-47879, ZD-37675, ZD-38078)
 
   Service override input values were being cleared on the loading of the input set or when applied in a pipeline. This has been fixed now and the user can now run the pipeline with the input set directly from the **Input Set** page.
-
-(CDS-47880)
 
 - A subtask can't be created in JIRA. The parent key or ID is missing. (CDS-47905, ZD-37640)
 
@@ -409,15 +407,13 @@ This release includes the following fixed issues.
 
 - Previously, users were unable to apply changes after updating the Language field in the Configure Run Tests Step because the Build Tool and Arguments fields were required. The Build Tool and Arguments can now be set dynamically using inputs, allowing users to add and edit the Configure Run Tests Step and save it as a template. (CI-4868)
  
-(CI-5919, ZD-35820, ZD-36710)
+- Looping strategy will now be applicable between stages. Where first stage generates an output, which can further be used by the second stage as part of looping strategies. (CI-5919, ZD-35820, ZD-36710)
 
 - An unnecessary view appeared momentarily in the new CI Get Started flow. This issue has been fixed. (CI-6103)
 
 - Added a log entry when a CI step skips a directory when uploading to an S3 bucket. (CI-6205)
 
 - Fixed an issue where a build did not run when a user selected **Run** in the **Pipeline Editor** UI. To run the build, the user needed to go to the YAML editor, save, and then run. (CI-6239)
-
-(CI-6271)
 
 - Recently, Harness added a new background step to allow CI users to easily set service dependencies instead of using the stage setting for service dependencies. However, since the feature flag stage still relies on the stage service dependencies, this capability was added back to the UI with this fix. (CI-6308)
 
@@ -431,7 +427,7 @@ This release includes the following fixed issues.
 
 - Fixed an issue in the onboarding UI. In some cases, the web UI did not connect with the specified git account immediately after OAuth setup. (CI-6518)
 
-(DEL-5259)
+- The automatically gernerated delegate name was shortened to eliminate problems due to length. (DEL-5259)
 
 -  Changed how the Docker delegate is identified in the NextGen delegate section log. The Docker delegate is now identified by the delegate ID, which is the concatenation of `delegateName` and `delegateHostName`. This replaces the use of the delegate name (`delegateHostName`), which was usually the `containerId` value. (DEL-5280) 
 
