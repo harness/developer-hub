@@ -24,7 +24,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
     1. Provide a name for the AutoStopping Proxy.
     2. Select your preferred DNS provider and perform the mapping:
         *  If you select **Route 53**, you must choose a hosted zone from the available zones and enter the domain name. AutoStopping manages Route 53 configuration automatically. 
-        * If you select **Others**, enter the URL of the DNS provider.
+        * If you select **Others**, enter the URL of the DNS provider. Make sure that you have updated the DNS mapping in your DNS provider.
     3. Click **Continue**.
 
     
@@ -95,5 +95,5 @@ qhhpq85lkBaErOwIZUJzxJuG2AveiOMcn7XKaxxC4IizJtuLNUnnmsHwBYYr8c2c
 
 
 
-18.   Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible.
+18.   Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
 19.   Click **Save Load Balancer**.

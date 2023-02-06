@@ -440,13 +440,13 @@ Together, this helps customers achieve savings that are 2-3x that of any static 
 
 No. Currently, an Application Gateway is required for Azure AS to work. See [Create an Application Gateway for Azure](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-an-application-gateway-for-azure.md).
 
-### GCP AutoStopping rules
+### AutoStopping Proxy load balancers
 
-#### Can I use a native GCP HTTP(s) load balancer for AutoStopping in GCP?
+#### What is an Autostopping Proxy load balancer?
 
-No. Currently, only a custom load balancer is supported as the GCP load balancer is in Beta. It is also cost-effective to use a custom load balancer as it is not limited by the number of rules that can be configured.
+It is a custom VM launched in the customer's cloud account which comes pre-installed with the necessary proxy and load balancing services. Go to [Load Balancers](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/)
 
-#### Which custom load balancer is used in GCP?
+#### How to provision/size the proxy VM?
 
-Envoy is the custom load balancer that is preferred. See [Create a Custom Load Balancer for GCP](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-custom-load-balancer-for-gcp.md).
+You can configure the default instance type offered by the different cloud providers according to your preference based on the expected traffic. 
 
