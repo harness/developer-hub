@@ -14,32 +14,30 @@ export default function HarnessU(): JSX.Element {
 
         {/* <div className={styles.subSectionName}><h3>Platform</h3></div> */}
         <ul className={styles.platformList}>
-          <a
-            href="https://university.harness.io/page/job-role-certifications"
-            target="_blank"
-          >
+          <a href="certifications/">
+            <li>
+              <div className={styles.titleAndDesc}>
+                <h4>All Certifications</h4>
+                <p>Test your knowdledge of modern software delivery</p>
+              </div>
+            </li>
+          </a>
+          <a href="certifications/continuous-delivery">
+            <li>
+              <div className={styles.titleAndDesc}>
+                <h4>Continuous Delivery & GitOps Certifications</h4>
+                <p>BETA Coming Soon</p>
+              </div>
+            </li>
+          </a>
+          <a href="https://university.harness.io/page/job-role-certifications"
+            target="_blank">
             <li>
               <div className={styles.titleAndDesc}>
                 <h4>Software Delivery Foundations</h4>
-                <p>Test the foundational skills necessary to deliver modern software</p>
-              </div>
-              <div className={styles.harnessUPath}>
-                <img
-                  src={`${baseUrl}img/icon_univ-min.svg`}
-                  className={styles.harnssUIcon}
-                />
-                <span>1 Certification</span>
               </div>
             </li>
-          </a>
-          <a>
-            <li>
-              <div className={styles.titleAndDesc}>
-                <h4>Additional Certifications</h4>
-                <p>Coming Soon</p>
-              </div>
-            </li>
-          </a>
+          </a>    
         </ul>
       </div>
     </section>

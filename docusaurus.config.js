@@ -210,6 +210,14 @@ const config = {
             type: "dropdown",
             items: [
               {
+                label: "All Certifications",
+                to: "certifications",
+              },
+              {
+                label: "Continuous Delivery & GitOps",
+                to: "certifications/continuous-delivery",
+              },
+              {
                 label: "Software Delivery Foundations",
                 href: "https://university.harness.io/page/job-role-certifications",
               },
