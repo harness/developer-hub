@@ -10,7 +10,6 @@ Harness captures delegate agent metrics for delegates shipped on immutable image
 | :-- | :-- |
 | `task_execution_time` | The time it takes to complete a task. |
 | `tasks_currently_executing` | The number of tasks underway. |
-| `tasks_in_queue` | The number of tasks that are waiting in the queue. |
 | `task_timeout` | The number of tasks that time out before completion. |
 
 This document explains how to configure the Prometheus monitoring tool for metrics collection, and how to configure the Grafana analytics tool for metrics display. This document includes example YAML you can use to create application manifests for both configurations.
