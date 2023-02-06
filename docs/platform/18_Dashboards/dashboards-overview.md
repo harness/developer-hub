@@ -19,7 +19,6 @@ Harness provides the following out-of-the-box dashboards across its products:
 - You can create custom dashboards at the [account scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope) only.
 - Make sure you have the `Manage` permissions for **Dashboards** to create, edit, and delete custom dashboards.
 - Make sure you have the `View` permissions for **Dashboards** to view the custom dashboards.
-- By default, custom dashboards have data for the past 30 days.
 
 ## Navigate to Dashboards
 
