@@ -5,7 +5,7 @@ description: A load balancer distributes user traffic across multiple instances 
 ---
 
 
-A load balancer distributes user traffic across multiple instances of your applications. Load balancing reduces the chances of performance issues in your applications by spreading the load.
+An AutoStopping proxy load balancer automatically distributes user traffic across multiple instances of your applications coupled with the capabilities of the CCM AutoStopping feature that makes sure that your non-production resources run only when used. Load balancing reduces the chances of performance issues in your applications by spreading the load.
 
 You can create an AutoStopping proxy and launch a VM with the load balancer.
 
