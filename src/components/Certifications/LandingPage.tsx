@@ -5,9 +5,9 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 
 enum TabValues {
-  Developer = "Developer",
-  Administrator = "Administrator",
-  Architect = "Architect",
+  Developer = "For Developers",
+  Administrator = "For Administrators",
+  Architect = "For Architects",
 }
 
 export default function Certifications() {
@@ -20,9 +20,9 @@ export default function Certifications() {
     <div className={styles.certifications}>
       <div className={styles.hero}>
         <div className={styles.left}>
-          <h1>Harness Certified Expert</h1>
+          <h1>Harness Certifications</h1>
           <div>
-            Build, Advance and Certify your Software Delivery and Harness expertise with us
+            Test and validate your knowledge of modern software delivery by becoming a Harness Certified Expert.
           </div>
         </div>
         <div className={styles.right}>
@@ -65,7 +65,7 @@ export default function Certifications() {
           <div className={clsx(styles.certCard, styles.moduleCD)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
-                <h2>Continuous Delivery & GitOps Certifications</h2>
+                <h2>Continuous Delivery & GitOps - Developer (BETA COMING SOON)</h2>
                 <img
                   src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
                   alt="Harness Certified Expert - Developer - CD"
@@ -85,7 +85,7 @@ export default function Certifications() {
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Visability
+                    Visibility
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
@@ -122,7 +122,7 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:&nbsp;</strong> Harness CD Free Tier
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps Free/Team Plans
                 </span>
               </div>
               <div className={styles.right}>
@@ -668,7 +668,7 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:&nbsp;</strong> Harness CD Enterprise Tier
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps Enterprise Plan
                 </span>
               </div>
               <div className={styles.right}>
@@ -735,7 +735,7 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:&nbsp;</strong> Harness CD Enterprise Tier
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps Enterprise Plan
                 </span>
               </div>
               <div className={styles.right}>

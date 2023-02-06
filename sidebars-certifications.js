@@ -19,7 +19,7 @@ const sidebars = {
         // CD
         {
           type: "doc",
-          label: "Continuous Delivery",
+          label: "Continuous Delivery & GitOps",
           id: "continuous-delivery/continuous-delivery",
         },
       ],

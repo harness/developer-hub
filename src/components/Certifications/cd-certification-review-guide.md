@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-description: Continuous Delivery Certification Review Guide
+description: Continuous Delivery & GitOps Certification Review Guide
 title: Review Guide
 ---
 

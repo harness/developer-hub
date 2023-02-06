@@ -28,7 +28,7 @@ export default function CertificationsCD() {
               certifications
             </Link>
           </div>
-          <h1>Continuous Delivery Certification</h1>
+          <h1>Continuous Delivery & GitOps Certifications</h1>
           <div>
               Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
               Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
@@ -45,7 +45,7 @@ export default function CertificationsCD() {
 
       {/* Cert Content */}
       <div className={styles.certDesc}>
-        <h2>Which Continuous Delivery Certification is right for you?</h2>
+        <h2>Which CD & GitOps Certification is right for you?</h2>
         <div className={clsx(styles.certCard)}>
           <div className={styles.certCardContainer}>
             <h3>Developer</h3>
@@ -151,14 +151,14 @@ export default function CertificationsCD() {
           </div>
           <div className={styles.innerCard}>
             <div className={styles.left}>
-              <h2>Continuous Delivery & GitOps Certifications</h2>
+              <h2>Continuous Delivery & GitOps - Developer (BETA COMING SOON)</h2>
               <img
                 src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
                 alt="Harness Certified Expert - Developer - CD"
                 className={styles.badge}
               />
               <span className={styles.productVersion}>
-                <strong>Product version: </strong> CI Drone 1.0
+                <strong>Product version: </strong> Harness CD & GitOps Free/Team Plans
               </span>
             </div>
             <div className={styles.right}>
