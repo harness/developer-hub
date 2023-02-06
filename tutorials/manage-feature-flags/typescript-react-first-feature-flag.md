@@ -5,6 +5,11 @@ description: Walks you through adding JavaScript Feature Flags to a TypeScript a
 
 # Add feature flags to JavaScript app
 
+## Video Tutorial
+<!-- Video:
+Your First Feature Flag-->
+<docvideo src="https://www.youtube.com/watch?v=Zf51EDcDa80" />
+
 ## Background on Feature Flags
 
 It takes two things to build software; teamwork and iteration. As software engineers, we dive into creating the unknown, sometimes for the first time. Core to innovative work is experimenting and prototyping as incremental success builds greater success. As changes near production, the experimentation that was appropriate in lower environments tapers off as the potential blast radius grows, e.g. if we get the experiment wrong, there’s a greater impact on a larger number of users.
