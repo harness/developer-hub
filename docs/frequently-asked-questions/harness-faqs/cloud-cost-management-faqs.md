@@ -444,7 +444,7 @@ No. Currently, an Application Gateway is required for Azure AS to work. See [Cre
 
 #### What is an Autostopping Proxy load balancer?
 
-It is a custom VM launched in the customer's cloud account which comes pre-installed with the necessary proxy and load balancing services. Go to [Load Balancers](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/)
+It is a custom VM launched in the customer's cloud account which comes pre-installed with the necessary proxy and load balancing services. Go to [Add Load Balancer for AutoStopping Rules](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) for more information.
 
 #### How to provision/size the proxy VM?
 
