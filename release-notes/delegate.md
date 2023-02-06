@@ -40,6 +40,33 @@ This release includes the following fixes:
 
 - Added error checking to ensure that delegates immediately reject tasks that are not supported. (DEL-5602)
 
+### Security enhancements
+
+This release introduces the following security enhancements:
+
+- The immutable delegate image was refreshed with updated versions of client tools. This reduces security vulnerabilities for the delegate and enhances security. The following table details the updates. (DEL-5688)
+  
+  | **Third-party tool** | **78101 and earlier** | **78306 and later** |
+  | :-- | :-: | :-: |
+  | kubectl | 1.13.2 | 1.24.3 |
+  | | 1.19.2 | |
+  | go-template | 0.4 | 0.4.1 |
+  | | 0.4.1 | |
+  | harness-pywinrm | 0.4-dev | 0.4-dev |
+  | helm | 2.13.1 | 2.13.1 |
+  | | 3.1.2 | 3.1.2 |
+  | | 3.8.0 | 3.8.0 |
+  | chartmuseum | 0.12.0 | 0.15.0 |
+  | | 0.8.2 | |
+  | tf-config-inspect | 1.0 | 1.1 |
+  | | 1.1 | |
+  | oc | 4.2.16 | 4.2.16 |
+  | kustomize | 3.5.4 | 4.5.4 |
+  | | 4.0.0 | |
+  | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
+  
+ 
+
 
 
 ## January 17, 2023, version 78214
