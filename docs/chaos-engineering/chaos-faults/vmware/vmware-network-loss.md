@@ -7,7 +7,7 @@ VMware network loss injects network packet loss from the VMware VM(s) into the a
 - It checks the performance of the application (or process) running on the VMware VM(s).
 
 
-![VMware Network Loss](./static/images/vmware-network-chaos.png)
+![VMware Network Loss](./static/images/vmware-network-loss.png)
 
 
 ## Usage
