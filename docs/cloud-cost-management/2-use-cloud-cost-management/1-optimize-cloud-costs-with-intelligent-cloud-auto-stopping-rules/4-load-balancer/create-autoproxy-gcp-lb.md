@@ -20,7 +20,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 6. Click **Create AutoStopping Proxy**.
 7. In the **Create a new AutoStopping Proxy** window, enter the following information:
     1. Provide a name for the AutoStopping Proxy.
-    2. Enter the URL to specify the domain. 
+    2. Enter the URL to specify the domain. Make sure that you have updated the DNS mapping in your DNS provider.
     3. Click **Continue**.
    
      ![](./static/gcp-autoproxy-lb-creation.png)
@@ -44,4 +44,4 @@ Ensure that the file uploaded in the Secret value field is not encrypted or enco
 16. **API Key**: Enter a valid NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
 
 17. Enable **Allocate Static IP** if you need to assign an elastic IP address to make the VM publicly accessible.
-18. 19.   Click **Save Load Balancer**.
+18. Click **Save Load Balancer**.

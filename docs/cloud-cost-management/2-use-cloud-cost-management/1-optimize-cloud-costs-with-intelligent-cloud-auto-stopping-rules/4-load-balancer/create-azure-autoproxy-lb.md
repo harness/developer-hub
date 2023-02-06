@@ -23,7 +23,7 @@ Perform the following steps to create an AutoStopping proxy for your cloud resou
 8. Click **Continue**.
 9. In the **Create a new AutoStopping Proxy** window, enter the following information:
     1. Provide a name for the AutoStopping Proxy.
-    2. Enter the URL to specify the domain.
+    2. Enter the URL to specify the domain. Make sure that you have updated the DNS mapping in your DNS provider.
     3. Click **Continue**.
 
       ![](./static/azure-autoproxy-creation.png)
@@ -93,5 +93,5 @@ sandeepbhat@Sandeep Bhat key-vault % az keyvault secret set --vault-name "sandy-
 17. **Machine type**: Select the type of VM that you want to set the AutoStopping rule for.
 18. **Key Pair**: Enter the SSH key pair.
 19. **API Key**: Enter the NG API key. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
-20. Enable **Allocate Static IP** if you need to access the VM outside the VPC. Ensure that the DNS resolves.
+20. Enable **Allocate Static IP** if you need to access the VM outside the VPC. Update the DNS route to point to the public IP. You don't need to enable this field it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
 21. Click **Save**.
