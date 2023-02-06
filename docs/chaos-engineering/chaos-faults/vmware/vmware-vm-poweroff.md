@@ -8,7 +8,7 @@ VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.
 - It checks the performance of the application running on the VMware VMs.
 
 
-![VMware VM Poweroff](./static/images/vm-poweroff.png)
+![VMware VM Poweroff](./static/images/vmware-vm-poweroff.png)
 
 
 ## Usage

@@ -8,7 +8,7 @@ VMware network latency injects network packet latency from the VMware VM(s) into
 - It checks the performance of the application (or process) running on the VMware VM(s).
 
 
-![VMware Network Latency](./static/images/vmware-network-chaos.png)
+![VMware Network Latency](./static/images/vmware-network-latency.png)
 
 ## Usage
 <details>
