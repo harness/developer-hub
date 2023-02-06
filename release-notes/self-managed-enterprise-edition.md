@@ -639,8 +639,6 @@ This release introduces the following features and enhancements.
 
 - The functionality of the delegate auto-upgrade components was enhanced. On installation, the AutoUpgrade feature displays a status message of Synchronizing. If the component does not receive an API call from the upgrader within 90 minutes, the status message changes to OFF. This affects delegates that are installed with upgrader components. (DEL-4840)
 
-  For more information about delegate auto-upgrade, see [Delegate Auto-Update](/docs/platform/delegates/configure-delegates/delegate-auto-update.md).
-
 - The RGB colors that are used in the console were updated to conform with accessibility standards. The specifications for orange, yellow and red were changed for contrast and readability. (PIE-4369)
 
 - You can now use a read-only vault as your default Secrets Manager. This applies to Hashicorp Vault. (PL-24491)
