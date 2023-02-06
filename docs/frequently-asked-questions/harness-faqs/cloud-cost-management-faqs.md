@@ -448,5 +448,5 @@ It is a custom VM launched in the customer's cloud account which comes pre-insta
 
 #### How to provision/size the proxy VM?
 
-You can configure the default instance type offered by the different cloud providers according to your preference based on the expected traffic. 
+You can choose an instance type of your preference as the proxy from the different types of instances offered by each of the cloud provider based on the expected traffic. 
 
