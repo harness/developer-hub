@@ -95,7 +95,7 @@ This release includes the following fixes.
  
 - Fixed a shell delegate issue that occurred on restart. The delegate name was not visible. (DEL-5443)
 
-- Functionality was added to send an alert within 30 minutes of delegate shutdown. If delegate groups are in use, the alert is sent only when all the delegate members of a group shut down. To use this functionality, enable the `INSTANT_DELEGATE_DOWN_ALERT` feature flag. (PL-30005, ZD-34766)
+- Functionality was added to send an alert within 30 minutes of delegate shutdown. If delegate groups are in use, the alert is sent only when all the delegate members shut down. To use this functionality, enable the `INSTANT_DELEGATE_DOWN_ALERT` feature flag. (PL-30005, ZD-34766)
 
 - Hide NextGen option was enabled by default for the **Account Admin** user group in new trial accounts. (PL-30070)  
   The **Harness NextGen** option is no longer enabled by default for **Account Admin** user groups.
