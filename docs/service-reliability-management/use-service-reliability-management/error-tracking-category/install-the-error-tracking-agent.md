@@ -72,7 +72,7 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
 
   | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
-| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://app.harness.io/gratis/et-collector/ |
+| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://collector.et.harness.io/prod1|
 | `ET_APPLICATION_NAME` | Name of your application or Service. | myapp |
 | `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | 1 |
 | `ET_ENV_ID` | ID of your Harness Environment. | production |
@@ -83,7 +83,7 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
   For example:
 
 ```
-ENV ET_COLLECTOR_URL=https://app.harness.io/prod1/et-collector/  
+ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/et-collector/  
 ENV ET_APPLICATION_NAME=yourapp  
 ENV ET_DEPLOYMENT_NAME=1  
 ENV ET_ENV_ID=env1  
