@@ -1,12 +1,12 @@
 ---
 title: Cache Intelligence
-description: You can set up your pipeline to cache your build artifacts automatically.
+description: Set up your pipeline to cache build dependencies automatically.
 sidebar_position: 20
 ---
 
 ### Automatic caching
 
-You can set up your pipeline to cache your build artifacts automatically. Note the following:  
+You can set up your pipeline to cache build dependencies automatically. Note the following:  
 
 * Cache Intelligence is currently supported for the following. 
   - [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructure
@@ -51,9 +51,9 @@ curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?acco
 --header 'Authorization: Bearer $AUTH_TOKEN'
 ```
 
-#### Delete cache for pipeline
+#### Delete cache
 
-Delete the cache. You can include an optional `path` parameter to delete a specific subfolder in the cache.
+Delete the cache. You can include an optional `path` parameter to delete a specific sub-directory in the cache.
 
 ```
 curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID&path=/path/to/deleted/folder' \
