@@ -36,7 +36,7 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- It is recommended to use the same secret name that is `cloud-secret` or else you need to update the `AWS_SHARED_CREDENTIALS_FILE` env in the fault template and you may not be able to use the default healthcheck probes. 
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
 - Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
