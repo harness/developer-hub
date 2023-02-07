@@ -10,29 +10,21 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
 ![Node CPU Hog](./static/images/node-stress.png)
 
 
-## Usage
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-The fault aims to verify the resiliency of applications whose replicas may be evicted on account of nodes turning unschedulable (Not Ready) or new replicas not being able to schedule due to a lack of CPU resources.
-The fault causes CPU stress on the target node(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
-It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
-</div>
-</details>
+## Use cases
+- This fault helps verify the resilience of applications whose replicas get evicted on the account of the nodes turning unschedulable (in **NotReady** state) or new replicas unable to be scheduled due to a lack of CPU resources.
+- It causes CPU stress on the target node(s). 
+- It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
+- It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e., demand based CPU addition. 
+- It helps scalability of nodes based on growth beyond budgeted pods. 
+- It verifies the autopilot functionality of (cloud) managed clusters. 
+- It also verifies multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 
-## Prerequisites
-
-- Kubernetes > 1.16.
-
-
-## Default validations
-
-The target nodes should be in the ready state before and after injecting chaos.
+**Note**
+- You will need Kubernetes > 1.16 to execute this fault.
+- The target nodes should be in the ready state before and after injecting chaos.
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+<h3>Mandatory Fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -41,13 +33,13 @@ The target nodes should be in the ready state before and after injecting chaos.
       </tr>
       <tr>
         <td> TARGET_NODES </td>
-        <td> Comma-separated list of nodes subject to node CPU hog. </td>
+        <td> Comma-separated list of nodes subject to node CPU hog. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">here.</a></td>
         <td> </td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> It contains the node label that is used to filter the target nodes.</td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence.</td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">here.</a></td>
       </tr>
     </table>
     <h2>Optional fields</h2>
@@ -60,44 +52,38 @@ The target nodes should be in the ready state before and after injecting chaos.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 60s. </td>
+        <td> Defaults to 60s. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">here.</a></td>
       </tr>
         <tr>
         <td> LIB_IMAGE </td>
         <td> Image used to inject stress. </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. </td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">here.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s.</td>
+        <td> For example, 30s. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">here.</a></td>
         <td> </td>
       </tr>
       <tr>
         <td> NODE_CPU_CORE </td>
         <td> Number of cores of the CPU to be consumed. </td>
-        <td> Defaults to <code>2</code>. </td>
-      </tr>  
+        <td> Defaults to <code>2</code>. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog#node-cpu-cores">here.</a></td>
+      </tr>
         <tr>
             <td> NODES_AFFECTED_PERC </td>
             <td> Percentage of total nodes to target, that takes numeric values only. </td>
-            <td> Defaults to 0 (corresponds to 1 node). </td>
+            <td> Defaults to 0 (corresponds to 1 node). More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">here.</a></td>
         </tr> 
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple target pods. </td>
-            <td> Defaults to parallel. Supports serial sequence as well. </td>
+            <td> Defaults to parallel. Supports serial sequence as well. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> here.</a></td>
         </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and node-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [node-specific tunables](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
 
 ### Node CPU cores
-It contains the number of cores of CPU that will be consumed. You can tune it using the `NODE_CPU_CORE` environment variable.
+It contains the number of cores of CPU that will be consumed. Tune it by using the `NODE_CPU_CORE` environment variable.
 
 Use the following example to tune it:
 
@@ -126,7 +112,7 @@ spec:
 
 ### Node CPU load
 
-It contains the percentage of CPU that will be consumed. You can tune it using the `CPU_LOAD` environment variable.
+It contains the percentage of CPU that will be consumed. Tune it by using the `CPU_LOAD` environment variable.
 
 Use the following example to tune it:
 
