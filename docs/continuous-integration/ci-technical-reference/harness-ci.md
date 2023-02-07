@@ -24,17 +24,16 @@ curl -X  GET https://app.harness.io/registry/_catalog
 
 ### Example: CI images list
 
-This is an example of the Harness CI images list:
+Here is an example of the Harness CI images list and the purpose of each image:
 
-* `harness/ci-addon`
-* `harness/ci-lite-engine`
-* `harness/drone-git`
-* `plugins/cache`
-* `plugins/kaniko`
-* `plugins/kaniko-ecr`
-* `plugins/kaniko-gcr`
-* `plugins/s3`
-* `plugins/gcs`
-* `plugins/cache`
+* `harness/ci-addon`: Used to execute steps on containers in Kubernetes pods
+* `harness/ci-lite-engine`: Used to orchestrate execution of steps on a Kubernetes pods
+* `harness/drone-git`: Used to clone git repos
+* `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds
+* `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box
+* `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box
+* `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box
+* `plugins/s3`: Used to upload files to AWS S3 buckets out of the box
+* `plugins/gcs`: Used to uploads files to GCP GCS service out of the box
 
 The tags for these images change often.
