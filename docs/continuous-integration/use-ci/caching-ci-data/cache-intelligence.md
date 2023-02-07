@@ -26,9 +26,6 @@ To enable Cache Intelligence on a CI Build stage, add the following lines to the
         spec:
           caching:            # --------------- ADD LINE
             enabled: true     # ----------------ADD LINE
-            path:             # optional paths to support specific frameworks
-              - /root/.mvn       # - absolute path if outside /harness 
-              - vendor           # - relative path -- i.e., /harness/vendor
           cloneCodebase: true
 ```
 ### Cache Intelligence API
