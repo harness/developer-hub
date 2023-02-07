@@ -6,7 +6,7 @@ title: Pod network latency
 Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
 - It tests the application's resilience to lossy (or flaky) networks.
 
-![Pod Network Latency](./static/images/network-chaos.png)
+![Pod Network Latency](./static/images/pod-network-latency.png)
 
 
 ## Usage
