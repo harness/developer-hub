@@ -83,7 +83,7 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
   For example:
 
 ```
-ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/et-collector/  
+ENV ET_COLLECTOR_URL=//collector.et.harness.io/prod1/et-collector/
 ENV ET_APPLICATION_NAME=yourapp  
 ENV ET_DEPLOYMENT_NAME=1  
 ENV ET_ENV_ID=env1  
