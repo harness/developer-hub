@@ -4,22 +4,29 @@ title: Pod delete
 ---
 
 Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random) replicas of an application resource to fail forcibly (or gracefully).
-- It tests an application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
-- It verifies disk (or volume) re-attachment times in stateful applications, application start-up times, and readiness probe configuration (health endpoints and delays).
-- It also verifies adherence to topology constraints (node selectors, tolerations, zone distribution, affinity (or anti-affinity) policies), proxy registration times in service-mesh environments, post (lifecycle)-hooks and termination seconds configuration for the microservices (under active load)- i.e. graceful termination handling, resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes for successful schedule).
-
+- It simulates:
+  - Graceful delete (or rescheduling) of pods as a result of upgrades; 
+  - Forced deletion of pods as a result of eviction; and 
+  - Leader-election in complex applications.
+- In distributed systems like Kubernetes, your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when certain replicas are unavailable.
+- To ensure smooth usage, is important for the applications to have a minimum number of available replicas.
+- When the pressure on other replicas increases, the horizontal pod autoscaler scales based on the observed resource utilization.
 
 ![Pod Delete](./static/images/pod-delete.png)
 
-## When can you use pod delete?
+## Use cases
 
-- In distributed systems like Kubernetes, your application replicas may not be sufficient to manage the traffic (indicated by SLIs) when some of the replicas are unavailable due to failures.
-- It is important to ensure that the applications have a minimum number of available replicas. 
-- One of the common application failures is when the pressure on other replicas increases, and how the horizontal pod autoscaler scales based on the observed resource utilization. 
-- It is also important to understand how much time it takes for persistent volume after rescheduling. 
-- It simulates graceful delete (or rescheduling) of pods as a result of upgrades, forced delete of pods as a result of eviction, and leader-election in complex applications.
+- It can be used to check the application's deployment sanity (replica availability and uninterrupted service) and recovery workflow.
+- It can be used to verify:
+  - Disk (or volume) re-attachment times in stateful applications, 
+  - Application start-up times, and readiness probe configuration (health endpoints and delays)
+  - Adherence to topology constraints (node selectors, tolerations, zone distribution, affinity (or anti-affinity) policies),
+  - Proxy registration times in service-mesh environments, 
+  - Post (lifecycle) hooks and termination seconds configuration for the microservices (under active load)- i.e. graceful termination handling, 
+  - Whether resource budgeting on cluster nodes (whether request(or limit) settings are honored on available nodes for successful schedule).
 
-### **Note**
+
+**Note**
 - You will need Kubernetes > 1.16 to execute this fault.
 - Ensure that application pods are in running state before and after chaos injection.
 
