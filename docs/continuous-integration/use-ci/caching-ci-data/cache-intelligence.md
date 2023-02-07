@@ -10,7 +10,7 @@ You can set up your pipeline to cache your build artifacts automatically. Note t
 
 * Cache Intelligence is currently supported for the following. 
   - [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructure
-  - Basel, Maven, Gradle, Yarn, and Node frameworks
+  - Bazel, Maven, Gradle, Yarn, and Node build tools
 
 * Harness Cloud can cache up to 2GB of data per account. All pipelines in the account can use the same cache. 
 * Cache retention window is 15 days, which resets whenever the cache gets updated.
