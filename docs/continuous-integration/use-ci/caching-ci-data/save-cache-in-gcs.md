@@ -3,7 +3,7 @@ title: Save and Restore Cache from GCS
 description: Caching enables you to share data across stages. It also speed up builds by reusing the expensive fetch operation from previous jobs.
 tags: 
    - helpDocs
-sidebar_position: 10
+sidebar_position: 40
 helpdocs_topic_id: v0agy0hlyj
 helpdocs_category_id: 01tyeraya4
 helpdocs_is_private: false
