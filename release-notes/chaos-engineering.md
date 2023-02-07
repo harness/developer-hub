@@ -27,9 +27,9 @@ No early access features are available in this release.
 
 * When the connection between the control plane (user interface) and your cluster was broken (or closed), the chaos infrastructure displayed ‘disconnected’ status with the incorrect message "chaos infrastructure is already connected." Now, it has been fixed such that chaos infrastructure displays ‘disconnected’ status only after confirming the status of the connection, i.e., the control plane sends a message to the user cluster, and if the user cluster does not respond to it, the status is ‘disconnected’. Consequently, the message "chaos infrastructure is disconnected" is displayed. (CHAOS-1113)
 
-* The user cluster would stop responding if even one of the pods (or replicas) of the execution plane was not in **Running** state. Now, it has been fixed so that the user cluster requires a minimum of one pod (replica) to be in the **Running** state. This way, pod evictions on the account of node shutdown or scaling operations will not affect the deployments on the user cluster. (CHAOS-1114)
+* The chaos infrastructure would stop responding if even one of the pods (or replicas) of the associated components was not in **Running** state. Now, it has been fixed so that the chaos infrastructure requires a minimum of one pod (replica) to be in the **Running** state for all the required components. As a result, pod evictions caused by node shutdown or scaling operations will have no effect on the status of the chaos infrastructure. (CHAOS-1114)
 
-## January 17, 2023, version 0.7
+## January 17, 2023, version 0.7.2
 
 ### What's new
 
