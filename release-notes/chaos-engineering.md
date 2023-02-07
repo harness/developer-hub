@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-02-03T10:00
+date: 2023-02-07T10:00
 sidebar_position: 9
 ---
 
@@ -13,6 +13,21 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## February 7, 2023, version 0.7.3
+
+### What’s new
+
+No new features are available in this release.
+
+### Early access features
+
+No early access features are available in this release.
+
+### Fixed issues
+
+* When the connection between the control plane (user interface) and your cluster was broken (or closed), the chaos infrastructure displayed ‘disconnected’ status with the incorrect message "chaos infrastructure is already connected." Now, it has been fixed such that chaos infrastructure displays ‘disconnected’ status only after confirming the status of the connection, i.e., the control plane sends a message to the user cluster, and if the user cluster does not respond to it, the status is ‘disconnected’. Consequently, the message "chaos infrastructure is disconnected" is displayed. (CHAOS-1113)
+
+* The user cluster would stop responding if even one of the pods (or replicas) of the execution plane was not in **Running** state. Now, it has been fixed so that the user cluster requires a minimum of one pod (replica) to be in the **Running** state. This way, pod evictions on the account of node shutdown or scaling operations will not affect the deployments on the user cluster. (CHAOS-1114)
 
 ## January 17, 2023, version 0.7
 
