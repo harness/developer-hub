@@ -6,7 +6,7 @@ title: Pod CPU hog exec
 Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU resources of the application container.
 - It simulates conditions where the application pods experience CPU spikes due to expected (or undesired) processes thereby testing the behaviour of application stack.
 
-![Pod CPU Hog Exec](./static/images/pod-stress.png)
+![Pod CPU Hog Exec](./static/images/pod-cpu-hog-exec.png)
 
 
 ## Usage

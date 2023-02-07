@@ -8,7 +8,7 @@ Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on 
 - It can test the application's resilience to lossy/flaky HTTP connection.
 
 
-![Pod HTTP Reset Peer](./static/images/pod-http.png)
+![Pod HTTP Reset Peer](./static/images/pod-http-reset-peer.png)
 
 
 ## Usage

@@ -6,7 +6,7 @@ title: Pod IO stress
 Pod I/O stress is a Kubernetes pod-level chaos fault that causes IO stress on the application pod by spiking the number of input and output requests.
 - Aims to verify the resiliency of applications that share this disk resource for ephemeral (or persistent) storage.
 
-![Pod IO Stress](./static/images/pod-stress.png)
+![Pod IO Stress](./static/images/pod-io-stress.png)
 
 
 ## Usage

@@ -6,7 +6,7 @@ title: Pod memory hog
 Pod memory hog is a Kubernetes pod-level chaos fault that consumes memory resources in excess, resulting in a significant spike in the memory usage of a pod.
 - Simulates a condition where the memory usage of an application spikes up unexpectedly.
 
-![Pod Memory Hog](./static/images/pod-stress.png)
+![Pod Memory Hog](./static/images/pod-memory-hog.png)
 
 
 ## Usage
