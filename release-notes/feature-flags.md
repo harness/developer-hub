@@ -24,8 +24,17 @@ This release does not include new features.
 This release does not include early access features.
 
 ### Fixed issues
+### Feature Flags on the Harness Platform
 
-Th **Complete** button at the end of the onboarding flow was always enabled. Now, it is disabled until the user receives a successful evaluation. (FFM-5987)
+The **Complete** button at the end of the onboarding flow was always enabled. Now, it is disabled until the user receives a successful evaluation. (FFM-5987)
+
+### Feature Flag SDKs
+
+When adding targets to a group based on conditions, the `in` operator is now case-sensitive in the SDK. (FFM-5991)
+
+:::note
+If you are targeting any groups using the `in` operator, ensure that your target condition takes into account the case sensitivity of the operator.
+:::
 
 ## January 26, 2023
 
