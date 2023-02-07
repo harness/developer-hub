@@ -556,12 +556,6 @@ The Artifact is added to the Service Definition.
 
 ### Github Packages
 
-:::note
-
-Currently, this feature is behind the feature flag `GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 You can use Github Packages as artifacts for deployments.
 
 Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. You connect to Github using a Harness Github Connector, username, and Personal Access Token (PAT).
