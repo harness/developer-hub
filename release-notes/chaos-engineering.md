@@ -17,11 +17,11 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What’s new
 
-No new features are available in this release.
+* No new features are available in this release.
 
 ### Early access features
 
-No early access features are available in this release.
+* No early access features are available in this release.
 
 ### Fixed issues
 
