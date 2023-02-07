@@ -1,7 +1,7 @@
 ---
 title: Pipeline Settings
 description: This topic describes centralized pipeline settings.
-# sidebar_position: 3
+sidebar_position: 3
 ---
 If you are an account administrator, you can enforce limits on the usage of pipelines in your account. Possible and default values, along with other aspects of each setting (such as whether or not you can edit the setting), depend on the plan to which you are subscribed.
 
