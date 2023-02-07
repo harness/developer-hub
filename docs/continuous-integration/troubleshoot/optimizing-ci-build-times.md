@@ -55,13 +55,13 @@ The following practices can reduce your testing and resulting build times:
 * Look for unnecessary `sleep` statements in your unit test code.
 * Order your tests so that the tests most likely to fail come first.
 
-### Cache and Reuse the Data for Your Fetch Operations
+### Cache and reuse the data for your fetch operations
 
-Caching and reusing can be useful for data that your builds need to fetch, but that you cannot include in an optimized image as described above. Caching ensures faster job execution by reusing the expensive fetch operation data from previous jobs. 
+Caching and reusing is useful for data that your builds need to fetch, but that you can't include in an optimized image as described above. Caching expedites job execution by reusing expensive fetch operation data from previous jobs. 
 
 You can use Cache Intelligence to enable automated caching on a pipeline. This is the easiest to set up but is not supported for all pipelines. For more information, go to [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md). 
 
-You can also implement manual caching on pipelines where Cache Intelligence is not supported. For end-to-end descriptions, go to the following:  
+You can use manual caching on pipelines that don't support Cache Intelligence. For end-to-end descriptions, go to the following:  
 
 * [Harness CI for UI Builds](https://harness.io/blog/continuous-integration/harness-cie-ui-builds/)
 * [Save and Restore Cache from S3](../use-ci/caching-ci-data/saving-cache.md)

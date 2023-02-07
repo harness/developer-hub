@@ -8,14 +8,14 @@ sidebar_position: 20
 
 You can set up your pipeline to cache build dependencies automatically. Note the following:  
 
-* Cache Intelligence is currently supported for the following. 
+* Cache Intelligence is currently supported for the following:
   - [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructure
   - Bazel, Maven, Gradle, Yarn, and Node build tools
 
-* Harness Cloud can cache up to 2GB of data per account. All pipelines in the account can use the same cache. 
+* Harness Cloud can cache up to 2GB of data per account. All pipelines in the account use the same cache. 
 * Cache retention window is 15 days, which resets whenever the cache gets updated.
 
-To enable Cache Intelligence on a CI Build stage, add the following lines to  the stage YAML definition: 
+To enable Cache Intelligence on a CI Build stage, add the following lines to the stage YAML definition: 
 
 ```yaml
     - stage:
@@ -31,7 +31,9 @@ To enable Cache Intelligence on a CI Build stage, add the following lines to  th
               - vendor           # - relative path -- i.e., /harness/vendor
           cloneCodebase: true
 ```
-The Cache Intelligence API includes the following calls. 
+### Cache Intelligence API
+
+Use the Cache Intelligence API to get information about the cache or delete the cache.
 
 :::note
 
