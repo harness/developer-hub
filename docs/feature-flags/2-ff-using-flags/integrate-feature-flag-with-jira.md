@@ -38,7 +38,7 @@ Before you can link a feature flag with a Jira issue for the first time, you mus
 5. In **Harness Flag URL**, paste the URL for the flag you want to link to this Jira issue, and then select **Save**. 
     To locate the URL for the flag, go to your instance of Harness Feature Flags and select the flag. Copy the entire URL for the flag. Make sure the flag you choose has an environment associated with it. 
 
-# Viewing information about a feature flag from a Jira issue
+# View information about a feature flag from a Jira issue
 
 From within a Jira issue, you can see details about a linked feature flag, including the environment name, status, rollout details, and when it was last updated. 
 
