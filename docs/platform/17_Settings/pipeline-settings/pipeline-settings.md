@@ -33,23 +33,23 @@ The following table describes what each setting means and how it applies to the 
         <ul>
           <li>Default: 2</li>
           <li>Editable: No</li>
-          <li>Scope: Account </li>
+          <li>Scope: Account</li>
         </ul>
       </td>
       <td>
         <ul>
           <li>Default: 200</li>
-          <li>Default: 500</li>
+          <li>Maximum: 500</li>
           <li>Editable: Yes</li>
-          <li>Scope: Account </li>
+          <li>Scope: Account</li>
         </ul>
       </td>
             <td>
         <ul>
           <li>Default: 500</li>
-          <li>Default: 1000</li>
+          <li>Maximum: 1000</li>
           <li>Editable: Yes</li>
-          <li>Scope: Account </li>
+          <li>Scope: Account</li>
         </ul>
       </td>
     </tr>
