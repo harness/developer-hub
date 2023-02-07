@@ -7,7 +7,7 @@ Docker service kill makes the application unreachable on the account of the node
 - Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration defined by the `TOTAL_CHAOS_DURATION` environment variable. 
 - The application node goes back to normal state and services are resumed after the chaos duration. 
 
-![Docker Service Kill](./static/images/svc-kill.png)
+![Docker Service Kill](./static/images/docker-service-kill.png)
 
 
 ## Usage

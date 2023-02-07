@@ -8,7 +8,7 @@ Kubelet service kill makes the application unreachable on the account of the nod
 - The application node goes back to normal state and services are resumed after the chaos duration. 
 
 
-![Kubelet Service Kill](./static/images/svc-kill.png)
+![Kubelet Service Kill](./static/images/kubelet-service-kill.png)
 
 
 ## Usage
