@@ -34,6 +34,6 @@ Here is an example of the Harness CI images list and the purpose of each image:
 * `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box
 * `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box
 * `plugins/s3`: Used to upload files to AWS S3 buckets out of the box
-* `plugins/gcs`: Used to uploads files to GCP GCS service out of the box
+* `plugins/gcs`: Used to upload files to GCP GCS service out of the box
 
 The tags for these images change often.
