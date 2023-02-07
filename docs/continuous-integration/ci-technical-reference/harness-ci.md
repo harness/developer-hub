@@ -1,7 +1,7 @@
 ---
-title: Harness CI Images List
-description: The public Harness CI images on DockerHub needed for CI Pipelines are pulled automatically when you run your Harness Pipeline. You can find them at https &#8212; //hub.docker.com/u/harness. If you do not wan…
-tags: 
+title: Harness CI images list
+description: Public Harness CI images on DockerHub are pulled automatically when you run Harness CI pipelines.
+tags:
    - helpDocs
 # sidebar_position: 2
 helpdocs_topic_id: 275bcj03j4
@@ -10,25 +10,21 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The public Harness CI images on DockerHub needed for CI Pipelines are pulled automatically when you run your Harness Pipeline. You can find them at `https://hub.docker.com/u/harness`.
+The public Harness CI images on DockerHub that needed for CI Pipelines are pulled automatically when you run a Harness CI pipeline. You can find them a: (https://hub.docker.com/u/harness).
 
-If you do not want the Harness Delegate to pull images from a public repo for security reasons, you can add a special Harness Connector to your Harness account, and the Delegate will pull these images from the **Harness Container Image Registry** only.
+If you don't want the Harness Delegate to pull images from a public repo for security reasons, you can add a special **Harness Container Image Registry** connector to your Harness account. With this connector, the Delegate pulls these images from the **Harness Container Image Registry** only. For instructions on configuring this connector, go to [Connect to Harness Container Image Registry using Docker connector](../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
 
-For steps on setting this up, see [Connect to Harness Container Image Registry Using Docker Connector](../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md). 
+### View the CI Images List
 
-To help you obtain the required Harness CI images, they are listed in this topic.
-
-### Viewing the CI Images List
-
-You can view the list of images using the following command:
-
+Use the following command to get the Harness CI images list:
 
 ```
 curl -X  GET https://app.harness.io/registry/_catalog
 ```
-### CI Images List
 
-Here is an example of the list of images for Harness CI:
+### Example: CI images list
+
+This is an example of the Harness CI images list:
 
 * `harness/ci-addon`
 * `harness/ci-lite-engine`
