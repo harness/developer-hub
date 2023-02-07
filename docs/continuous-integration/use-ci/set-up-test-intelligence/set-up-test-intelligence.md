@@ -1,7 +1,7 @@
 ---
 title: Set up Test Intelligence
-description: Test Intelligence (TI) dramatically improves test time by running only those tests required to confirm the quality of the code changes which triggered the build. You can enable Test Intelligence for…
-tags: 
+description: Test Intelligence improves test time by running only the tests required to confirm the quality of the code changes that triggered the build.
+tags:
    - helpDocs
 # sidebar_position: 2
 helpdocs_topic_id: 428cs02e6u
@@ -10,170 +10,185 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Test Intelligence (TI) dramatically improves test time by running only those tests required to confirm the quality of the code changes which triggered the build. You can enable Test Intelligence for your build in your CI stages using the Run Tests step.
+Test Intelligence (TI) improves test time by running only the tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works,go to [Test Intelligence Overview](../../ci-quickstarts/test-intelligence-concepts.md).
 
-In this topic, we'll cover how to set up Test Intelligence in a Harness CI Stage.
+You can enable Test Intelligence for builds in CI pipeline stages that use the **Run Tests** step. This topic explains how to set up Test Intelligence in a Harness CI pipeline stage.
 
-### Before You Begin
+### Before you begin
 
-* [Test Intelligence Overview](../../ci-quickstarts/test-intelligence-concepts.md)
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
+You'll need a pipeline where you can enable Test Intelligence.
+
+If you haven't created a pipeline before, try the [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
 ### Limitations
 
-Test Intelligence is supported for Java and .NET Core codebases only at this time.
+At this time, Test Intelligence supports the following codebases:
 
-Currently, Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* Java
+* Kotlin
+* .NET Core
+* Scala
 
-### Step 1: Create the CI Stage
+Currently, Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-In your Harness Pipeline, click **Add Stage**, and then click Build.
+### Create the Build stage
 
-### Step 2: Add the Codebase
+Go to the pipeline where you want to enable Test Intelligence, and do one of the following:
 
-Do one of the following:
+* If the pipeline doesn't already have a **Build** stage:
+   1. Select **Add Stage**, and then select **Build**.
+   2. Input a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
+* If the pipeline already has as **Build** stage, select **Codebase** to configure the pipeline's codebase settings.
 
-* If this is the first CI stage in the Pipeline, in the Build stage settings, enable **Clone Codebase**.
-* If you have an existing Pipeline with a Build stage, click **Codebase** to configure your codebase settings**.**
+For more information, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
 
-See [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
+### Define the build farm infrastructure
 
-### Step 3: Define the Build Farm Infrastructure
+1. Select your **Build** stage, and then select the **Infrastructure** tab.
+2. Define the build farm for the codebase. For more information, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
-In the Build stage **Infrastructure**, define the build farm for the codebase. See [Kubernetes Cluster Build Infrastructure Setup](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
-
-### Step 4: Configure a Run Tests Stage
-
-In the Build stage **Execution**, click **Add step** and then click **Run Tests**.
-
-![](./static/set-up-set-up-test-intelligence-530.png)
+### Configure a Run Tests step
 
 The **Run Tests** step executes one or more commands on a container image.
 
-The following screenshot explains the various parameters of **Configure Run Tests Step**. See [Run Test Step Settings](../../ci-technical-reference/configure-run-tests-step-settings.md) for details about specific settings.
+1. Go to the **Build** stage's **Execution** tab.
+2. Select **Add Step**, select **Add Step** again, and then select **Run Tests** from the **Step Library**.
+3. Complete the **Configure Run Tests Step** fields as follows:
+   1. **Name**: Input a unique name for the step.
+   2. **Description**: Input a description for the step.
+   3. **Container Registry**: Select a container registry connector. Harness pulls the image to run build commands on from this container registry, for example, DockerHub.
+   4. **Image**: The name of the Docker image to use for running the build commands. Enter a Fully Qualified Image Name (FQIN) when using a private container registry.
+   5. **Language**: Select the source code language to build.
+   6. **Build Tool**: Select the build automation tool. Supported tools vary by **Language**. For example, Harness supports [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/) for **Java** and [NET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) and [Nunit](https://nunit.org/) for **.NET:** .
+   7. **Build Arguments**: Input the [arguments](../../ci-technical-reference/configure-run-tests-step-settings.md) for the build tool. These are used as input for the chosen build tool.
+   8. **Test Report Paths**: Input one or more test report paths.
+4. Expand **Additional Configuration** and complete these fields:
+   1. **Packages**: Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If blank, Harness auto-detects the package.
+   2. **Test Annotations**: Provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. The defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
+   3. **Namespaces**: For .NET C# only, supply a comma-separated list of namespaces prefixes that you want to test.
+1. Select **Apply Changes** to save the step settings, and then select **Save** to save the pipeline.
 
 ![](./static/set-up-test-intelligence-02.png)
 
-|  |  |
-| --- | --- |
-| **Name** | Enter a unique name for the step. |
-| **Description** | Enter a description for the step. |
-| **Container Registry** | The Harness connector for a container registry. This is the container registry from which Harness pulls the image to run build commands on, for example, DockerHub. |
-| **Image** | The name of the Docker image to use for running the build commands. Enter a Fully Qualified Image Name(FQIN) when using a private container registry. |
-| **Arguments** | Enter the [arguments](../../ci-technical-reference/configure-run-tests-step-settings.md) for the build tool. These are used as input for the build tool choice. |
-| **Build Tool** | Enter the build automation tool. Currently, Harness supports the following:*<p></p><p>**Java:** [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/).</p><p>**.NET:** .[NET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) and [Nunit](https://nunit.org/).</p>|
-| **Language** | Select the source code language to build, such as Java or C#. |
-| **Namespaces** | (*C# only*) A comma-separated list of the Namespace prefixes that you want to test. |
-| **Packages** | List of source code package prefixes supported by a comma. For example `com.company.`, `io.company.`, migrations. |
-| **Test Annotations** | Enter the list of test annotations used in unit testing, separated by commas. Any method annotated with this will be treated as a test method. The defaults are: `org.junit.Test`, `org.junit.jupiter.api.Test`, `org.testng.annotations.Test` |
+For more information about all **Run Tests** step settings, go to [Run Tests step settings](../../ci-technical-reference/configure-run-tests-step-settings.md).
 
-### Step 5: Perform the Bootstrap
+### Perform the bootstrap
 
-Bootstrapping helps generate the initial call graph for Test Intelligence. Once the call graph is generated, TI can perform Test Selection. Perform the bootstrap in the following steps:
+Bootstrapping generates the initial call graph for TI. Once the call graph is generated, TI can perform Test Selection.
 
-Configure the Webhook.
+To perform the bootstrap:
+1. Add a webhook trigger to the pipeline. Webhook triggers start pipelines automatically in response to Git events. For instructions on configuring a webhook trigger, go to [Add a Trigger](../../../platform/11_Triggers/triggering-pipelines.md#step-1-add-a-trigger-to-a-pipeline).
+2. Open a PR against the pipeline's codebase repo.
 
-You can trigger Pipelines in response to Git events automatically. For configuring the webhook for the Trigger, see [Add a Trigger](../../../platform/11_Triggers/triggering-pipelines.md#step-1-add-a-trigger-to-a-pipeline). 
+   :::caution
 
-Open the PR.
+   Make sure the PR will trigger all tests, such as pom.xml, non-Java, and so on.
 
-:::note
-This PR should trigger all the tests (pom.xml, non-Java, etc.)
-:::
+   :::
 
-Merge the PR.
+3. Merge the PR.
 
-### Step 6: View the Test Report
+### View the test report
 
-Once the Pipeline is executed, click **Tests**. **Tests** shows the test report of the test you configured and ran. Harness publishes test results in JUnit format. 
+1. Wait while the pipeline executes. To monitor the build's progress, go to **Builds** and select the build that was started by the PR.
+2. After the build succeeds, on the build details page, select **Tests**. **Tests** shows the test report for the test you configured for the **Run Tests** step. Harness publishes test results in JUnit format.
 
 ![](./static/set-up-test-intelligence-03.png)
 
+The test report is comprised of the following sections:
+
 #### Test Execution Overview
 
-Displays the overview of Total Test, Tests Selected, Duration of the Selected Tests, and Time Saved.
+Displays an overview of **Total Tests**, number of **Selected Tests**, total **Duration** of all tests, and **Time Saved**.
+
+**Duration** reflects the sum of all test durations collected as-is from the JUnit report. These values corresponds with the CPU time, and it is possible that the sum of these times may exceed the total pipeline execution time.
 
 #### Test Execution Result
 
-Displays the graphical representation of the successful and failed tests.
+Displays a graphical representation of successful and failed tests.
 
 #### Test Selection Breakdown
 
-Displays the selection of Tests on the following metrics: changed code, changed tests, and new tests.
+Test Intelligence makes decisions about which tests to run by assessing changes to the pipeline's codebase or the individual tests.
+
+- **Correlated with Code Changes**: The number of tests that Test Intelligence ran based on changes in the codebase
+- **New Tests**: The number of tests that Test Intelligence ran because they are new
+- **Updated Tests**: The number of tests that Test Intelligence ran because the tests themselves were changed
 
 #### Test Execution
 
 Displays the detailed list of all tests: class methods and test methods.
 
+You can filter the list to only show failed tests; sort the list by failure rate, duration, and total tests; and expand test suites to see details about individual tests in that suite.
+
 #### Call Graph
 
-A call graph is generated once the bootstrap is completed. In each later run, the test tab will display stats corresponding to the selection. 
+A call graph is generated after completing the bootstrap.
 
-#### Visualization
+In subsequent pipeline runs, the test report shows stats corresponding to the tests selected by Test Intelligence for that run.
 
-Visualization shows why a specific test was selected and the reason behind every test selection. Click on any test (the purple node), and you can see all the classes and methods covered by this test. These are the changed classes and methods (denoted by the blue nodes), which led to the selection of that test.
+Select **Expand graph** to display the Test Intelligence Visualization. Visualization shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changed classes and methods that caused Test Intelligence to select that test.
 
 ![](./static/set-up-set-up-test-intelligence-531.png)
 
-### Optional: YAML Configure As Code
+### Reference: Test Intelligence pipeline configuration as code
 
-Here's a working example of Test Intelligence on the open-source project Dubbo. Use this YAML template to create and configure the TI pipeline on the go.
-
+This is a working example of Test Intelligence on the open-source project Dubbo. You can use this YAML template to configure a pipeline that uses Test Intelligence.
 
 ```
-pipeline:  
-    name: ti-dubbo  
-    identifier: tidubbo  
-    properties:  
-        ci:  
-            codebase:  
-                connectorRef: account.howdi  
-                repoName: dubbo  
-                build: <+input>  
-    stages:  
-        - stage:  
-              name: unit-test  
-              identifier: unitteststi  
-              type: CI  
-              spec:  
-                  cloneCodebase: true  
-                  execution:  
-                      steps:  
-                          - step:  
-                                type: RunTests  
-                                name: runTestsWithIntelligence  
-                                identifier: runTestsWithIntelligence  
-                                spec:  
-                                    connectorRef: account.GCR  
-                                    image: maven:3-openjdk-8  
-                                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false  
-                                    buildTool: Maven  
-                                    language: Java  
-                                    packages: org.apache.dubbo,com.alibaba.dubbo  
-                                    runOnlySelectedTests: true  
-                                    reports:  
-                                        type: JUnit  
-                                        spec:  
-                                            paths:  
-                                                - "**/*.xml"  
-                                    resources:  
-                                        limits:  
-                                            memory: 2Gi  
-                                            cpu: 2000m  
-                                timeout: 60m  
-                  serviceDependencies: []  
-                  infrastructure:  
-                      type: KubernetesDirect  
-                      spec:  
-                          connectorRef: Kubernetes_Quickstart  
-                          namespace: harness-delegate  
-              variables: []  
-    projectIdentifier: CD_Examples  
-    orgIdentifier: default  
-    description: TI for open source project dubbo  
+pipeline:
+    name: ti-dubbo
+    identifier: tidubbo
+    properties:
+        ci:
+            codebase:
+                connectorRef: account.howdi
+                repoName: dubbo
+                build: <+input>
+    stages:
+        - stage:
+              name: unit-test
+              identifier: unitteststi
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  execution:
+                      steps:
+                          - step:
+                                type: RunTests
+                                name: runTestsWithIntelligence
+                                identifier: runTestsWithIntelligence
+                                spec:
+                                    connectorRef: account.GCR
+                                    image: maven:3-openjdk-8
+                                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                                    buildTool: Maven
+                                    language: Java
+                                    packages: org.apache.dubbo,com.alibaba.dubbo
+                                    runOnlySelectedTests: true
+                                    reports:
+                                        type: JUnit
+                                        spec:
+                                            paths:
+                                                - "**/*.xml"
+                                    resources:
+                                        limits:
+                                            memory: 2Gi
+                                            cpu: 2000m
+                                timeout: 60m
+                  serviceDependencies: []
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                          connectorRef: Kubernetes_Quickstart
+                          namespace: harness-delegate
+              variables: []
+    projectIdentifier: CD_Examples
+    orgIdentifier: default
+    description: TI for open source project dubbo
     tags: {}
 ```
-### See Also
+### See also
 
 * [Test Intelligence Concepts](../../ci-quickstarts/test-intelligence-concepts.md)
 * [View Test Report](../view-your-builds/viewing-tests.md)
