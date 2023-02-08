@@ -9,7 +9,7 @@ EC2 stop by tag stops an EC2 instance using the provided tag.
 - When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
 
-![EC2 Stop By Tag](./static/images/ec2-stop.png)
+![EC2 Stop By Tag](./static/images/ec2-stop-by-tag.png)
 
 ## Usage
 

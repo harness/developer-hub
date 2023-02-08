@@ -64,7 +64,7 @@ export default function CertificationsCD() {
               </ul>
             </div>
             <div className={styles.btnContainer}>
-              <Link href="/certifications/continuous-delivery#cd-developer-study-guide">
+              <Link href="/certifications/continuous-delivery/cd-developer-cert#cd-developer-study-guide">
                 <button className={styles.moreDetails}>
                   Go to Study Guide
                 </button>
@@ -141,7 +141,7 @@ export default function CertificationsCD() {
         </div>
       </div>
 
-      {/* Developer Study Guide */}
+      {/* Developer Study Guide 
       <div className={styles.studyGuide}>
         <h2 id="cd-developer-study-guide">Developer Study Guide</h2>
         <div className={styles.studyGuideCard}>
@@ -182,7 +182,7 @@ export default function CertificationsCD() {
         </div>
       </div>
 
-      {/* Developer Exam Details */}
+      {/* Developer Exam Details 
       <div className={styles.examDetails}>
         <h2>Developer Exam Details</h2>
         <div className={styles.examDetailsCard}>
@@ -200,7 +200,7 @@ export default function CertificationsCD() {
             </Link>
           </div>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }

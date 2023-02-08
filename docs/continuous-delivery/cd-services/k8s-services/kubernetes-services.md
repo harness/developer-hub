@@ -379,12 +379,6 @@ The Artifact is added to the Service Definition.
 
 ### Google Artifact Registry
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_GOOGLE_ARTIFACT_REGISTRY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
 For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
@@ -555,12 +549,6 @@ Click **Submit**.
 The Artifact is added to the Service Definition.
 
 ### Github Packages
-
-:::note
-
-Currently, this feature is behind the feature flag `GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You can use Github Packages as artifacts for deployments.
 

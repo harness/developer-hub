@@ -6,13 +6,6 @@ sidebar_position: 50
 
 # Composite SLO
 
-
-:::note
-Currently, this feature is in Beta and behind Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
-
 A composite SLO is a combination of two or more SLOs that provides a comprehensive view of the overall reliability, performance, and health of the application or service. It allows the creation of SLOs based on user journeys.
 
 Consider this example: traditionally, you would configure one SLO for each microservice. By themselves, individual SLOs do not add up to indicate the overall health of the application. For overall health, you must combine the individual SLOs into a composite SLO.
@@ -75,7 +68,7 @@ The following sections explain how to create a composite SLO.
 
 ### Define SLO identification
 
-In the **Define SLO** section, enter the following information and click **Next**:
+In the **Define SLO** section, enter the following information and select **Next**:
 
 * **SLO Name**: Enter a name for the composite SLO.
 * **Description (Optional):** Select the pencil icon and enter a description for the composite SLO.
@@ -218,7 +211,7 @@ You can implement an error budget policy to notify team members when the composi
 
 7. Enable the notification rule to begin sending alerts.
 8. Select **Save** to save the settings and close the New Notification page.
-9.  Click **Continue**.
+9.  Select **Continue**.
     
     The composite SLO is created and added to the list of SLOs on the Service Level Objective page.
 
