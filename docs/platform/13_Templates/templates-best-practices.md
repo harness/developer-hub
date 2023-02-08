@@ -12,11 +12,24 @@ Maintaining a good template management system is essential for your deployments.
 
 Here are some of the best practices you can follow: 
 
-- **Branches**: For different stages of development, use separate branches and merge them once they are ready.
-- **Version control**: Maintain different versions of your templates in Git and track their changes.
 - **Regular updates:** Regularly update your templates and fix any bugs to keep them up-to-date.
 - **Sharing**: Share your templates with others in your organization or open-source them, to get feedback and make improvements.
 - **Policies**: Set up policies that outlines who should create, manage, and review the templates before they are approved.
 - **Track changes**: Make sure that changes are documented and tracked, so any future changes or updates can be easily identified.
 - **Test changes**: When making changes to templates, make sure to test them thoroughly before approving them for use.
 - **Backup changes**: Templates can be critical resources when you need them. Backing up your templates in multiple locations allows for quick and easy access when needed, reducing downtime during critical moments.
+
+## Branches and version control
+- Maintain different versions of your templates in Git and track their changes.
+- Harness recommends updating the same file and using branches to manage different versions and changes to your template.
+  Manage templates on different branches to ensure that changes to an existing version don't affect users on the stable, main branch.
+
+:::caution
+When tracking template changes, Harness versioning should not be combined with GitHub versioning.
+:::
+
+- When you reference a pipeline with a template, ensure the pipeline branch matches the template branch.
+
+## Template version 
+
+  - When you create a new version of a template, Harness creates a new file with the file name `<template_name>_<version>.yaml`. 
