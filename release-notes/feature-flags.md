@@ -30,6 +30,8 @@ The **Complete** button at the end of the onboarding flow was always enabled. No
 
 ### Feature Flag SDKs
 
+The Python SDK has been updated to version 1.1.7 and includes the following new feature:
+
 When adding targets to a group based on conditions, the `in` operator is now case-sensitive in the SDK. (FFM-5991)
 
 :::note
