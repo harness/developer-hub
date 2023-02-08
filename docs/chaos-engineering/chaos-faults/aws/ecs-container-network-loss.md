@@ -10,7 +10,7 @@ ECS container network loss disrupts the state of infrastructure resources.
 - It tests the ECS task sanity (service availability) and recovery of the task containers subjected to network chaos.
 
 
-![ECS Container Network Loss](./static/images/ecs-network-chaos.png)
+![ECS Container Network Loss](./static/images/ecs-container-network-loss.png)
 
 
 ## Usage

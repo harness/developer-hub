@@ -5,7 +5,7 @@ title: EC2 network latency
 EC2 network latency causes flaky access to the application (or services) by injecting network packet latency to EC2 instance(s).
 - It determines the performance of the application (or process) running on the EC2 instances.
 
-![EC2 Network Latency](./static/images/ec2-network-chaos.png)
+![EC2 Network Latency](./static/images/ec2-network-latency.png)
 
 ## Usage
 <details>
