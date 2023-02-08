@@ -1,9 +1,7 @@
 ---
 title: CI Cluster Requirements
 description: The resources required for the Kubernetes cluster depend on the number of builds running in parallel, as well as the resources required for each build. Below is a rough estimation of the resources re…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 220
 helpdocs_topic_id: gv6zctvy4c
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

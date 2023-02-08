@@ -1,9 +1,7 @@
 ---
 title: Built-in CI Codebase Variables Reference
 description: In Harness, you set up your Codebase through a Harness connector to a Git repo to clone the code you want to build and test in your Pipeline. Once a Pipeline is executed, Harness also fetches your Gi…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 190
 helpdocs_topic_id: 576gjpak61
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

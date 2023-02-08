@@ -1,7 +1,7 @@
 ---
 title: Harness CI images list
 description: When you run a Harness CI build, the pipeline pulls the Harness CI images it needs from DockerHub.
-# sidebar_position: 2
+sidebar_position: 200
 helpdocs_topic_id: 275bcj03j4
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
