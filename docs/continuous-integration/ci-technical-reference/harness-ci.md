@@ -10,7 +10,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The public Harness CI images on DockerHub that needed for CI Pipelines are pulled automatically when you run a Harness CI pipeline. You can find them a: (https://hub.docker.com/u/harness).
+The public Harness CI images on DockerHub that needed for CI Pipelines are pulled automatically when you run a Harness CI pipeline. You can find them at: (https://hub.docker.com/u/harness)
 
 If you don't want the Harness Delegate to pull images from a public repo for security reasons, you can add a special **Harness Container Image Registry** connector to your Harness account. With this connector, the Delegate pulls these images from the **Harness Container Image Registry** only. For instructions on configuring this connector, go to [Connect to Harness Container Image Registry using Docker connector](../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
 
