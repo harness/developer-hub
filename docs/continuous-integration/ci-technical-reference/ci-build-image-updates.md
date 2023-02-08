@@ -33,7 +33,7 @@ Harness CI includes an `execution-config` API that enables you to update the ima
 
 1. Send a `get-default-config` request to get a list of the latest Harness CI build images and tags. You can use the `infra` parameter to get `k8` images or `VM` images.
 ```
-curl --location --request GET 'https://app.harness.io/gateway/ci/execution-config/get-default-config?accountIdentifier=$ACCOUNT_ID&infra=k8' \  
+curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-default-config?accountIdentifier=$ACCOUNT_ID&infra=K8"
 --header 'Authorization: Bearer $API_KEY'
 ```
 The response payload shows the latest supported images and their tags.
@@ -60,30 +60,39 @@ The response payload shows the latest supported images and their tags.
 ```
 2. Send a `get-customer-config` request to get the build images that your CI pipelines currently use. When `overridesOnly` is `true`(the default), this endpoint returns the non-default images that your Pipeline uses. If this returns `null`, your Pipeline is using all default images:
 ```
-curl --location --request GET 'https://app.harness.io/gateway/ci/execution-config/get-customer-config?accountIdentifier=$ACCOUNT_ID&infra=K8&overridesOnly=true' \  
---header 'Authorization: Bearer $API_KEY'   
+curl --location --request GET "https://app.harness.io/gateway/ci/execution-config/get-customer-config?accountIdentifier=$ACCOUNT_ID&infra=K8&overridesOnly=true"
+--header 'Authorization: Bearer $API_KEY'
+```
+```
 {"status":"SUCCESS","data":{},"metaData":null,"correlationId":"11ce1bc8-b337-4687-9ab9-e13d553ae82f" 
 ```
 3. Send an `update-config` (POST) request with a list of the images you want to update and the new tags to apply.
 ```
-curl --location --request POST 'https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=$ACCOUNT_ID&infra=K8' \  
---header 'Authorization: Bearer $API_KEY' \  
---header 'Content-Type: application/json' \  
+curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/update-config?accountIdentifier=$ACCOUNT_ID&infra=K8"
+--header 'Authorization: Bearer $API_KEY'
+--header 'Content-Type: application/json'
 --data-raw '[  
     {  
         "field": "gitCloneTag",  
         "value": "harness/drone-git:1.0.9-rootless"  
-    }  
+    },
+    {  
+        "field": "gcsUploadTag",  
+        "value": "plugins/gcs:1.3.0"  
+    }
 ]'
 ```
 4. To reset one or more images to their defaults, send a`reset-config` (POST) request with a list of the images to reset.
 ```
-curl --location --request POST 'https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=$ACCOUNT_ID&infra=K8' \  
---header 'Authorization: Bearer $API_KEY' \  
---header 'Content-Type: application/json' \  
+curl --location --request POST "https://app.harness.io/gateway/ci/execution-config/reset-config?accountIdentifier=$ACCOUNT_ID&infra=K8"
+--header 'Authorization: Bearer $API_KEY'
+--header 'Content-Type: application/json'
 --data-raw '[  
     {  
         "field": "gitCloneTag"  
+    },
+    {  
+        "field": "gcsUploadTag"  
     }  
 ]'
 ```
