@@ -1,0 +1,14 @@
+{
+    "label": "Manage Feature Flag Targets",
+    "position": 40,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Manage Feature Flag Targets"
+    },
+    "customProps": {
+        "helpdocs_category_id": "xw2hz815l8"
+    }
+}

@@ -40,7 +40,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new Pipel
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
 
 :::
 
@@ -248,7 +248,7 @@ Next, try Harness [Continuous Integration](docs/continuous-integration) to build
 
 ## Clean Up
 
-For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
+For steps on deleting the Delgate, go to [Delete a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
 
 ## Next Steps
 

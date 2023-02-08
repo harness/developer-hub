@@ -9,6 +9,10 @@ module.exports = {
       from: "/docs",
       to: "/docs/category/documentation",
     },
+    {
+      from: "/tutorials/get-started",
+      to: "/tutorials",
+    },
 
     
     //===================================================================================

@@ -26,7 +26,7 @@ You will learn how to:
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md)
+* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 * For information on creating a Pipeline and adding a Stage, see [Add a Stage](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline).
 * Make sure you have **Admin** rights for the Account/Org/Project where you want to configure Access Management.
 
@@ -36,7 +36,7 @@ You will learn how to:
 * You must have **View** and **Manage** permissions for **User Groups**.
 * You must have **View**, **Create/Edit**, and **Delete** permissions for **Resource Groups**.
 * You must have **View**, **Create/Edit**, and **Delete** permissions for **Roles**.
-* You must have created your Organizations and Projects. See [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+* You must have created your Organizations and Projects. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 ### RBAC Components
 

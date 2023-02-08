@@ -1,6 +1,6 @@
 ---
-sidebar_position: 5
-description: This build automation guide walks you through building a Go application and publish the container image of the application using a CI Pipeline
+sidebar_position: 30
+description: This build automation guide describes building a Go container in a a CI Pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Go,Ko]
 ---
 

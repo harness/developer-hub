@@ -1,33 +1,27 @@
 ---
 id: lambda-toggle-event-mapping-state
-title: Lambda Toggle Event Mapping State
+title: Lambda toggle event mapping state
 ---
 
-## Introduction
+Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration.
+- It checks the performance of the running application (or service) when the event source mapping is not enabled which may cause missing entries in a database.
 
-- It toggles the event source mapping state to <code>disable</code> for a lambda function during a specified chaos duration, causing failed invocation of the function.
-- It checks the performance of the running application/service when the event source mapping is not enabled which can cause, for example, missing entries on a database.
 
-:::tip Fault execution flow chart
 ![Lambda Toggle Event Mapping State](./static/images/lambda-toggle-event-mapping-state.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
- Toggling between different states of event source mapping from a lambda function is critical. It can lead to scenarios such as failure to update the database on an event trigger which can break the service and impact their delivery. Such scenarios can occur despite  availability aids provided by AWS or determined by you.
-
-It helps understand if you have proper error handling or auto recovery configured for such cases. Hence, this category of chaos fault helps build the immunity of the application.
+Toggling between different states of event source mapping from a Lambda function may lead to failures in updating the database on an event trigger. This can break the service and impact its delivery. It helps determine if the application has proper error handling or auto recovery actions configured.
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes >= 1.17
 - AWS Lambda event source mapping attached to the lambda function.
 - Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
 
@@ -47,12 +41,12 @@ stringData:
 
 - If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
 
-## Permission Requirement
+## Permissions required
 
-- Here is an example AWS policy to execute this fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -78,21 +72,18 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
-:::info
+The AWS Lambda event source mapping is healthy and attached to the lambda function.
 
-- The AWS Lambda event source mapping is healthy and attached to the lambda function.
 
-:::
-
-## Experiment Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -102,20 +93,20 @@ stringData:
       <tr>
         <td> FUNCTION_NAME </td>
         <td> Function name of the target lambda function. It supports single function name.</td>
-        <td> Eg: <code>test-function</code> </td>
+        <td> For example, <code>test-function</code> </td>
       </tr>
       <tr>
         <td> EVENT_UUIDS </td>
         <td> Provide the UUID for the target event source mapping.</td>
-        <td> You can provide multiple values as (,) comma separated values. Eg: <code>id1,id2</code> </td>
+        <td> You can provide multiple values as (,) comma-separated values. For example, <code>id1,id2</code> </td>
       </tr>
       <tr>
         <td> REGION </td>
         <td> The region name of the target lambda function</td>
-        <td> Eg: <code>us-east-2</code></td>
+        <td> For example, <code>us-east-2</code></td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -135,20 +126,20 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Multiple Event Source Mapping
+### Multiple event source mapping
 
-It toggles between multiple event source mapping for a certain chaos duration using `EVENT_UUIDS` environment variable that takes the UUID of the events as a comma separated value (CSV file).
+It toggles between multiple event source mapping for a certain chaos duration using `EVENT_UUIDS` environment variable that takes the UUID of the events as a comma-separated value (CSV file).
 
 Use the following example to tune it:
 

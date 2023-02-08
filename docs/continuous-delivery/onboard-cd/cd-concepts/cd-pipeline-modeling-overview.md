@@ -30,7 +30,7 @@ The image above shows you the order for modeling a CD stage:
 
 You can model visually, using code, or via the REST API.
 
-#### Visual Studio
+#### Pipeline Studio (Visual)
 
 Model your process visually using a guided sequence:
 
@@ -60,7 +60,7 @@ For more details, go to [Harness API Quickstart](../../../platform/16_APIs/api-q
 
 ### How do I automate my CD process in Harness?
 
-Harness Continuous Delivery provides Triggers for automating the execution of Pipelines, multiple settings for adding conditions to how the Pipeline executes and rolls back, and Approvals to ensure that Pipeline only proceed safely.
+Harness Continuous Delivery provides Triggers for automating the execution of Pipelines, multiple settings for adding conditions to how the Pipeline executes and rolls back, and Approvals to ensure that the Pipeline only proceeds when safe to do so.
 
 #### Triggers
 

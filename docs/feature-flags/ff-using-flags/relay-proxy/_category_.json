@@ -1,0 +1,14 @@
+{
+    "label": "Use the Harness Relay Proxy",
+    "position": 70,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Use the Harness Relay Proxy"
+    },
+    "customProps": {
+        "helpdocs_category_id": "0dqv0mh8xu"
+    }
+}

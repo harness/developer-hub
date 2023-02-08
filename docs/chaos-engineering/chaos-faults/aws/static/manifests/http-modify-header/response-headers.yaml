@@ -11,8 +11,8 @@ spec:
     spec:
       components:
         env:
-        # map of headers to modify/add; Eg: {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
-        # to remove a header, just set the value to ""; Eg: {"X-Litmus-Test-Header": ""}
+        # map of headers to modify/add; For example, {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
+        # to remove a header, just set the value to ""; For example, {"X-Litmus-Test-Header": ""}
         - name: HEADERS_MAP
           value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
         # whether to modify response headers or request headers. Accepted values: request, response

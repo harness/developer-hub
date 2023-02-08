@@ -17,7 +17,7 @@ There are several types of Delegates. This topic describes how to install the Do
 ### Before you begin
 
 * [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md)
-* [Projects and Organizations](/docs/platform/1_Organizations-and-Projects/1-projects-and-organizations.md)
+* [Projects and Organizations](/docs/platform/organizations-and-projects/projects-and-organizations.md)
 
 ### Review: System Requirements
 

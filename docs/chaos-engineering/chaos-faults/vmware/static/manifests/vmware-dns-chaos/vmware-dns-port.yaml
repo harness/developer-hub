@@ -1,13 +1,13 @@
-# induces dns chaos on the VMWare VM
+# induces DNS chaos on the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
-  name: vmware-engine
+  name: VMware-engine
 spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-dns-chaos
+  - name: VMware-DNS-chaos
     spec:
       components:
         env:

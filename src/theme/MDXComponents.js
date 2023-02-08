@@ -4,6 +4,7 @@ import MDXComponents from "@theme-original/MDXComponents";
 import DocVideo from "@site/src/components/DocVideo";
 import CTABanner from "@site/src/components/CTABanner";
 import DocImage from "@site/src/components/DocImage";
+import Accordion from "@site/src/components/ChaosEngineering/Accordion";
 
 export default {
   // Re-use the default mapping
@@ -13,4 +14,5 @@ export default {
   docvideo: DocVideo,
   ctabanner: CTABanner,
   docimage: DocImage,
+  accordion: Accordion,
 };

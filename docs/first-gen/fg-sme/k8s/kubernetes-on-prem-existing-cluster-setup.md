@@ -50,13 +50,7 @@ Finally, when you configure the Harness Self-Managed Enterprise Edition applicat
 
 If you are creating the load balancer's Service type using `NodePort`, create a load balancer that points to any port in the range of 30000 to 32767 on the node pool on which the Kubernetes cluster is running.
 
-<!-- bad link
-
-If you are using `NodePort`, you can skip to [Step 3: Install KOTS](kubernetes-on-prem-existing-cluster-setup.md#step-3-install-kots). 
-
--->
-
-If you are using `NodePort`, you can skip to [Step 3: Install KOTS](#step-3-install-kots).
+If you are using `NodePort`, you can skip to [Install KOTS](/docs/first-gen/fg-sme/k8s/kubernetes-on-prem-existing-cluster-setup.md#install-kots). 
 
 
 ### Set up a static external IP address
@@ -101,7 +95,7 @@ oc adm policy add-scc-to-user anyuid -z harness-default -n harness
 oc adm policy add-scc-to-user anyuid -z default -n harness
 ```
 
-For information about installing Harness Delegate on OpenShift, see [Delegates and OpenShift](#delegates_and_open_shift).
+For information about installing Harness Delegate on OpenShift, see [Delegates and OpenShift](/docs/first-gen/fg-sme/k8s/kubernetes-on-prem-existing-cluster-setup.md#delegates_and_open_shift).
 
 ## Option 1: Disconnected (air-gap) installation
 
@@ -618,7 +612,7 @@ Harness Self-Managed Enterprise Edition installations do not currently support t
 
 ## Remove previous kustomization for ingress controller
 
-**This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](kubernetes-on-prem-existing-cluster-setup.md#step-4-configure-harness).
+**This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](/docs/first-gen/fg-sme/k8s/kubernetes-on-prem-existing-cluster-setup.md##step-3-configure-harness).
 
 If you installed Harness Self-Managed Enterprise Edition before, you updated Harness manifests using kustomize for the ingress controller. This is no longer required.
 

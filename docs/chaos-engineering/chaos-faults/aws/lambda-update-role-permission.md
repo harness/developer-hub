@@ -3,15 +3,12 @@ id: lambda-update-role-permission
 title: Lambda update role permission
 ---
 
-Lambda update role permission is an AWS fault that:
-- Modifies the role policies associated with a Lambda function.
-- Verifies the handling mechanism for function failures.
-- Can also be used to update the role attached to a Lambda function.
-- Checks the performance of the running lambda application in case it does not have enough permissions.
+Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.
+- It verifies the handling mechanism for function failures.
+- It can also be used to update the role attached to a Lambda function.
+- It checks the performance of the running lambda application in case it does not have enough permissions.
 
-:::tip Fault execution flow chart
 ![Lambda Update Role Permission](./static/images/lambda-update-role-permission.png)
-:::
 
 ## Usage
 
@@ -19,13 +16,10 @@ Lambda update role permission is an AWS fault that:
 <summary>View fault usage</summary>
 <div>
 Lambda functions sometimes depend on services such as RDS, DynamoDB, S3, etc. In such cases, certain permissions are required to access these services. This chaos fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
-
 </div>
 </details>
 
 ## Prerequisites
-
-:::info
 
 - Kubernetes >= 1.17
 - Kubernetes secret that has AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -45,10 +39,11 @@ stringData:
 ```
 
 - If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable on `experiment.yaml` with the same name.
-:::
+
+
 ## Permissions required
 
-- Here is an example AWS policy to execute the Lambda update role permission fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
 <summary>View policy for this fault if `ROLE_ARN` environment variable is set.</summary>
@@ -96,17 +91,14 @@ stringData:
 ```
 </details>
 
-- Refer to the [superset permission (or policy)](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission (or policy)](./policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default validation
+## Default validations
 
-:::info
+The Lambda function should be up and running.
 
-- The Lambda function should be up and running.
 
-:::
-
-## Experiment tunables
+## Fault tunables
 
 <details>
     <summary>Fault tunables</summary>
@@ -170,9 +162,9 @@ stringData:
 
 ## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Role ARN
 

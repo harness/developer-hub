@@ -24,7 +24,10 @@ sidebar_position: 40
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
 	- `container_access_id`: Username
-	- `container_access_token`: Password/token if `container_type` = `aws_ecr`
+	- `container_access_token`: Password/token 
++ if `container_type` = `aws_ecr`
+	- `container_access_id`: Username
+	- `container_access_token`: Password/token 
 	- `container_region`: Image registry AWS region
 + if `container_type` = `jfrog_artifactory`
 	- `container_access_id`: Username

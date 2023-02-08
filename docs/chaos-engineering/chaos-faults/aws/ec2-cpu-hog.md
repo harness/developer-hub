@@ -1,35 +1,29 @@
 ---
 id: ec2-cpu-hog
-title: EC2 CPU Hog
+title: EC2 CPU hog
 ---
 
-## Introduction
+EC2 CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
+- It causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
 
-- EC2 CPU Hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on AWS EC2 Instance using Amazon SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the given chaos scenario.
-- It causes CPU Hog chaos on EC2 Instance using an SSM doc for a certain chaos duration.
 
-:::tip Fault execution flow chart
 ![EC2 CPU Hog](./static/images/ec2-cpu-hog.png)
-:::
 
-## Uses
+## Usage
 
-### Uses of the experiment
-
-:::info
-
-> The fault causes CPU hog/stress on the target AWS EC2 Instance(s). The idea of this fault is to simulate issues when there is lack of cpu for other runnning processes/applications resulting into degrading their performance.
-> Injecting a rogue process into a target EC2 instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
-
-:::
+<details>
+<summary>View fault usage</summary>
+<div>
+The fault causes CPU stress on the target AWS EC2 instance(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases. 
+</div>
+</details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
-- Ensure that SSM agent is installed and running in the target EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes >= 1.17
+- SSM agent is installed and running on the target EC2 instance.
+- Create a Kubernetes secret that has the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
 apiVersion: v1
@@ -45,16 +39,14 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret key name (from `experiment.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the chaos experiment with the new name.
 
-:::
+## Permissions required
 
-## Permission Requirement
-
-- Here is an example AWS policy to execute ec2-cpu-hog fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -104,22 +96,17 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
+
+## Default validations
+The EC2 instance should be in a healthy state.
 
 
-## Default Validations
-
-:::info
-
-- EC2 instance should be in healthy state.
-
-:::
-
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -137,7 +124,7 @@ stringData:
             <td> For example: <code>us-east-1</code> </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -181,23 +168,23 @@ stringData:
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. </td>
         </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Fault tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### CPU CORE
+### CPU core
 
-It defines the CPU core value to be utilised on the EC2 instance. It can be tuned via `CPU_CORE` ENV.
+It defines the CPU core value to be utilised on the EC2 instance. You can tune it using the `CPU_CORE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ec2-cpu-hog/cpu-core.yaml yaml)
 ```yaml
@@ -224,11 +211,11 @@ spec:
           value: 'us-east-1'
 ```
 
-### CPU PERCENTAGE
+### CPU percentage
 
-It defines the CPU percentage value to be utilised on the EC2 instance. It can be tuned via `CPU_LOAD` ENV.
+It defines the CPU percentage value to be utilised on the EC2 instance. You can tune it using the `CPU_LOAD` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ec2-cpu-hog/cpu-percentage.yaml yaml)
 ```yaml
@@ -255,11 +242,11 @@ spec:
           value: 'us-east-1'
 ```
 
-### MULTIPLE EC2 INSTANCES
+### Multiple EC2 instances
 
-Multiple EC2 instances can be targeted in one chaos run. It can be tuned via `EC2_INSTANCE_ID` ENV.
+Multiple EC2 instances can be targeted in one chaos run. You can tune it using the `EC2_INSTANCE_ID` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ec2-cpu-hog/multiple-instances.yaml yaml)
 ```yaml
@@ -284,11 +271,11 @@ spec:
           value: 'us-east-1'
 ```
 
-### CPU CORE WITH PERCENTAGE CONSUMPTION
+### CPU core with percentage consumption
 
-It defines how many CPU cores to utilise with percentage of utilisation on the EC2 instance. It can be tuned via `CPU_CORE` and `CPU_LOAD` ENV.
+It defines how many CPU cores to utilise with percentage of utilisation on the EC2 instance. You can tune it using the `CPU_CORE` and `CPU_LOAD` environment variables, respectively.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ec2-cpu-hog/cpu-core-with-percentage.yaml yaml)
 ```yaml

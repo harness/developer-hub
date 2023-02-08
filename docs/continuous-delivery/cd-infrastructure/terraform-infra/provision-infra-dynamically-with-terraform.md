@@ -8,6 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info
+
+Dynamic provisioning is only supported in [Service and Environments v1](../../onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+
+:::
+
 This topic describes how to provision a CD stage's target deployment infrastructure using the **Terraform Plan** and **Apply** steps.
 
 You use the Terraform steps to run the Terraform script and supporting files from your repo. Harness uses the files to create the infrastructure that your Pipeline will deploy to.
@@ -164,7 +170,9 @@ In **Source Module**, you can select **Use Connector credentials** to have Harne
 
 If you do not select **Use Connector credentials**, Terraform will use the credentials that have been set up in the system.
 
-The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.### Option: Workspace
+The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
+
+## Option: Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
 
@@ -315,7 +323,9 @@ You can use the **Targets** setting to target one or more specific modules in yo
 
 You simply identify the module using the standard format `module.name`, like you would using `terraform plan -target="module.s3_bucket"`.
 
-If you have multiple modules in your script and you don't select one in **Targets**, all modules are used.### Option: Environment Variables
+If you have multiple modules in your script and you don't select one in **Targets**, all modules are used.
+
+## Option: Environment Variables
 
 If your Terraform script uses [environment variables](https://www.terraform.io/docs/cli/config/environment-variables.html), you can provide values for those variables here.
 
