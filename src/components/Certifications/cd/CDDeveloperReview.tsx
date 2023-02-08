@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import CertificationReviewGuide from "./cd-certification-review-guide.md";
+import CertificationReviewGuide from "./cd-certification-developer-review-guide.md";
 import CertificationExamDetails from "./cd-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
@@ -28,11 +28,10 @@ export default function CertificationsCD() {
               certifications
             </Link>
           </div>
-          <h1>Continuous Delivery & GitOps Certifications</h1>
+          <h1>Continuous Delivery Developer Certification</h1>
           <div>
-              Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
-              Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
-              advanced verification, and intelligent rollback
+          Validate your broad knowledge of cloud concepts and the products, services, tools, 
+          features, benefits, and use cases of CD.
           </div>
         </div>
         <div className={styles.right}>
@@ -43,7 +42,7 @@ export default function CertificationsCD() {
         </div>
       </div>
 
-      {/* Cert Content */}
+      {/* Cert Content 
       <div className={styles.certDesc}>
         <h2>Which CD & GitOps Certification is right for you?</h2>
         <div className={clsx(styles.certCard)}>
@@ -64,7 +63,7 @@ export default function CertificationsCD() {
               </ul>
             </div>
             <div className={styles.btnContainer}>
-              <Link href="/certifications/continuous-delivery/cd-developer-cert#cd-developer-study-guide">
+              <Link href="/certifications/continuous-delivery#cd-developer-study-guide">
                 <button className={styles.moreDetails}>
                   Go to Study Guide
                 </button>
@@ -141,7 +140,7 @@ export default function CertificationsCD() {
         </div>
       </div>
 
-      {/* Developer Study Guide 
+      {/* Developer Study Guide */}
       <div className={styles.studyGuide}>
         <h2 id="cd-developer-study-guide">Developer Study Guide</h2>
         <div className={styles.studyGuideCard}>
@@ -182,7 +181,7 @@ export default function CertificationsCD() {
         </div>
       </div>
 
-      {/* Developer Exam Details 
+      {/* Developer Exam Details */}
       <div className={styles.examDetails}>
         <h2>Developer Exam Details</h2>
         <div className={styles.examDetailsCard}>
@@ -200,7 +199,7 @@ export default function CertificationsCD() {
             </Link>
           </div>
         </div>
-      </div>*/}
+      </div>
     </div>
   );
 }
