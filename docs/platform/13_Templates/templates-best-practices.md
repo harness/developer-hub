@@ -19,6 +19,76 @@ Here are some of the best practices you can follow:
 - **Test changes**: When making changes to templates, make sure to test them thoroughly before approving them for use.
 - **Backup changes**: Templates can be critical resources when you need them. Backing up your templates in multiple locations allows for quick and easy access when needed, reducing downtime during critical moments.
 
+## Role-based access control for templates
+
+You can create templates at the account, org, or project scope and can configure corresponding permissions at each of these scopes.
+
+The following table explains the permissions associated with templates:
+
+|**Permission**       |  **Description**     |
+|  ---  |  ---  |
+|  Create     | Can create a template.      |
+|  Edit or Delete     |  Can edit or delete an existing template.     |
+|  Access     |  Can add the template to a pipeline for deployment or build.     |
+|  Copy     |   Can copy the template configuration to a pipeline.    |
+
+
+
+## Template creation guidelines
+
+Harness supports the following types of templates that can be referenced in a pipeline:
+
+- [Step Template](./run-step-template-quickstart.md)
+- [Stage Template](./add-a-stage-template.md)
+- [Pipeline Template](./create-pipeline-template.md)
+
+For each template, irrespective of its type, you must provide a unique identifier.
+
+## Template versioning guidelines
+
+You can create versions of your templates in Harness and Git.
+
+Harness creates a new file each time you create a version of a template. 
+
+The file name is in the following format:
+
+```
+<template_name>_<version>.yaml.
+```
+
+### Inline template versioning
+
+### Remote template versioning
+
+## Template referencing guidelines
+
+To reference a template at the account scope, use the following expression: 
+
+
+```
+account.<templateIdentifier>
+```
+
+
+To reference a template at the organization scope, use the following expression: 
+
+
+```
+org.<templateIdentifier>
+```
+
+
+## Backward compatibility
+
+- Version the template with the latest and most stable versions to avoid backward compatibility issues. These types of templates require more maintenance because changes to imported templates can break pipelines for all projects that use them.
+
+- Version the template with the most up-to-date and stable versions in order to avoid problems with backward compatibility.
+- A template change cannot always be backward compatible, especially when a variable is configured and referenced in a step or stage.
+- If you revert a template, the corresponding version will no longer contain the variable and could break the referenced step.
+- A backward-compatible change is one that affects the configuration of the Harness deployment steps. Configurations often change behavior but pose minimal risk to the pipeline's overall performance.
+
+
+
 ## Branches and version control
 - Maintain different versions of your templates in Git and track their changes.
 - Harness recommends updating the same file and using branches to manage different versions and changes to your template.
@@ -29,7 +99,3 @@ When tracking template changes, Harness versioning should not be combined with G
 :::
 
 - When you reference a pipeline with a template, ensure the pipeline branch matches the template branch.
-
-## Template version 
-
-  - When you create a new version of a template, Harness creates a new file with the file name `<template_name>_<version>.yaml`. 
