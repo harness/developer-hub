@@ -60,12 +60,12 @@ Node restart disrupts the state of the node by restarting it.
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node subject to chaos. If this is not provided, a random node is selected. </td>
-        <td> More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">here.</a></td>
+        <td> For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node.</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
        <td> It contains the node label that is used to filter the target nodes.</td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. More information <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">here.</a></td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">tagret node with labels.</a></td>
       </tr>
     </table>
     <h2>Optional fields</h2>
@@ -78,32 +78,32 @@ Node restart disrupts the state of the node by restarting it.
        <tr>    
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">here.</a></td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SSH_USER </td>
         <td> Name of the SSH user. </td>
-        <td> Defaults to <code>root</code>. More information <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#ssh-user"> here.</a></td>
+        <td> Defaults to <code>root</code>. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#ssh-user"> SSH user.</a></td>
       </tr>
       <tr>
         <td> TARGET_NODE_IP </td>
         <td> Internal IP of the target node subject to chaos. If not provided, the fault uses the node IP of the <code>TARGET_NODE</code>. </td>
-        <td> Defaults to empty. More information <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#target-node-internal-ip"> here.</a></td>
+        <td> Defaults to empty. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#target-node-internal-ip"> target node internal IP.</a></td>
       </tr>
       <tr>
         <td> REBOOT_COMMAND </td>
         <td> Command used to reboot. </td>
-        <td> Defaults to <code>sudo systemctl reboot</code>. More information <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#reboot-command"> here.</a></td>
+        <td> Defaults to <code>sudo systemctl reboot</code>. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#reboot-command"> reboot command.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default to 120s. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">here.</a></td>
+        <td> Default to 120s. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">here.</a></td>
+        <td> For example, 30s. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
 
