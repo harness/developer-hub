@@ -4,7 +4,7 @@ title: GCP VM disk loss by label
 ---
 GCP VM disk loss by label disrupts the state of GCP persistent disk volume filtered using a label by detaching it from its VM instance for a specific duration.
 
-![GCP VM Disk Loss By Label](./static/images/gcp-vm-disk-loss.png)
+![GCP VM Disk Loss By Label](./static/images/gcp-vm-disk-loss-by-label.png)
 
 ## Usage
 <details>
