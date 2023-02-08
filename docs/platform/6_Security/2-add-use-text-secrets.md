@@ -162,7 +162,7 @@ echo <+secrets.getValue("linebreaks")> | base64 -d
 The result loses any secret sanitization.
 
 ![](./static/add-use-text-secrets-52.png)
-### Nested expressions uing string concatenation
+### Nested expressions using string concatenation
 
 You can use the + operator or concat method inside the secret reference. For example, each of these expressions use one method and another Harness variable expression:
 
