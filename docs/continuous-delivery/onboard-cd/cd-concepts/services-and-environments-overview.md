@@ -175,11 +175,11 @@ If you use Runtime Inputs in your Services and Environments, users will need to 
 
 If you use Expressions in your Services and Environments, Harness must be able to resolve these expressions when users run Pipeline using these Services and Environments.
 
-Select Runtime input for Service and Environment.
+Select **Runtime input** for the service and environment.
 
 ![](./static/services-and-environments-runtime-input-01.png)
 
-When you run the pipeline, you can select the Service and Environment as runtime inputs.
+When you run the pipeline, you can select the service and environment for their runtime inputs.
 
 ![](./static/services-and-environments-runtime-input-02.png)
 
