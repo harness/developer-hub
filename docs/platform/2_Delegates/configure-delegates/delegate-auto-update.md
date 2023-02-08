@@ -1,6 +1,6 @@
 ---
 title: Delegate auto-upgrade
-description: Harness Delegate is installed with automatic upgrades enabled. Harness recommends that you accept automatic upgrades to the delegate image. If you prefer to disable auto-upgrade, use one of the followin…
+description: Describes automatic upgrades for the Harness Delegate and options to disable them. 
 # sidebar_position: 2
 helpdocs_topic_id: iusry91f4u
 helpdocs_category_id: m9iau0y3hv
@@ -11,6 +11,8 @@ helpdocs_is_published: true
 Harness Delegate is installed with automatic upgrades enabled. Harness recommends that you accept automatic upgrades to the delegate image. 
 
 Delegate upgrades do not affect pipelines. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then gracefully shuts down. 
+
+## Disable auto-upgrade
 
 If you prefer to disable auto-upgrade, use one of the following options:
 
@@ -29,7 +31,7 @@ If you prefer to disable auto-upgrade, use one of the following options:
 
 * Remove the `cronJob` section before you apply the manifest.
 
-### Delegate YAML changes
+### Update the delegate YAML
 
 Harness does not recommend the use of delegate images that are not current. However, if you require an earlier image version, check the repository on [Docker Hub](https://hub.docker.com/).
 
