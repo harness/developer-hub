@@ -1,5 +1,5 @@
 ---
-title: Best Practices for Template Versioning
+title: Best Practices and Guidelines for Templates
 description: Best Practices for Template Versioning with GitExperience
 sidebar_position: 10
 ---
