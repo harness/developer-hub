@@ -14,7 +14,7 @@ You can set up your pipeline to cache build dependencies automatically. Note the
   - The build tool must store cache data in the default location for that tool.  
 
 * Harness Cloud can cache up to 2GB of data per account. All pipelines in the account use the same cache. 
-* Cache Intelligence stores cache data in the `/harness` folder by default. 
+* Cache Intelligence stores cache data in the `/harness` directory by default. 
 * Cache retention window is 15 days, which resets whenever the cache gets updated.
 
 To enable Cache Intelligence on a CI Build stage, add the following lines to the stage YAML definition: 
@@ -57,7 +57,7 @@ curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?acco
 Delete the cache. You can include an optional `path` parameter to delete a specific sub-directory in the cache.
 
 ```
-curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID&path=/path/to/deleted/folder' \
+curl --location --request DELETE 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID&path=/path/to/deleted/directory' \
 --header 'Accept: application/json' \
 --header 'Authorization: Bearer $AUTH_TOKEN'
 ```
