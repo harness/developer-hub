@@ -7,7 +7,7 @@ EBS loss by tag disrupts the state of EBS volume by detaching it from the node (
 - It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
 
-![EBS Loss By Tag](./static/images/ebs-loss.png)
+![EBS Loss By Tag](./static/images/ebs-loss-by-tag.png)
 
 
 ## Usage
