@@ -24,11 +24,13 @@ A quick summary of the internal security controls and processes for the chaos mo
 
 ### Connectivity from target clusters and request authentication
 
-Users are needed to connect their Kubernetes infrastructure (clusters or namespaces) to HCE in order to perform discovery of microservices and execute chaos experiments against them. This is enabled by a set of deployments on the cluster, which comprise a relay (subscriber) that communicates with the HCE control plane and certain custom controllers, which carry out the chaos experiment business logic. This group of deployments (known as the execution plane) is referenced within the HCE platform as an entity called [chaos infrastructure](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures). 
+Users need to connect their Kubernetes infrastructure (clusters or namespaces) to HCE to discover the microservices and execute chaos experiments against them. This is enabled by a set of deployments on the cluster, which comprises of a relay (subscriber) that communicates with the HCE control plane and certain custom controllers, which carry out the chaos experiment business logic. 
 
-The chaos infrastructure connects to the control plane by making outbound requests over HTTPS (443) to claim and perform chaos tasks. It doesn’t require creating rules for inbound traffic. A unique ID (cluster-id) is assigned to it and shares a dedicated key (access-key) with the control plane (both of which are generated upon installation/setup), with each API to the control plane request equipped with these identifiers for authentication purposes.
+This group of deployments (known as the execution plane) is referenced within the HCE platform as an entity called [chaos infrastructure](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures). 
 
-IMAGE
+The chaos infrastructure connects to the control plane by making outbound requests over HTTPS (443) to claim and perform chaos tasks. It doesn’t require creating rules for inbound traffic. A unique ID (clusterID) is assigned to it which shares a dedicated key (access-key) with the control plane (both of which are generated upon installation/setup), with each API to the control plane request equipped with these identifiers for authentication purposes.
+
+![Overview](../static/overview/overview.png)
 
 **Note:** Harness can leverage the same cluster (or namespace) to inject chaos into infrastructure targets within the user environment (such as VMs, cloud resources etc.) provided they are accessible from within the cluster. Refer to [this](https://docs.google.com/presentation/d/1wymQAHUHhCOz4q-1aOlKU5paLv4GO0yFi3tVcOjeL7M/edit#slide=id.g1436a2e0aac_0_391) diagram for more information on Cloud Secrets.
 
@@ -40,18 +42,18 @@ The permissions are listed below for reference.
 
 **Note:** The permissions listed an be tuned for further minimization based on environments connected, type of experiments needed etc. Refer [here](#Blast-radius-control-using-permissions) to learn more blast radius control using permissions.
 
-| Resource                                                                                       | Permissions                                                       | Uses                                                                                                |
-|------------------------------------------------------------------------------------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
-| * deployments * replicationcontrollers * daemonsets * replicasets * statefulsets               | get, list                                                         | For asset discovery of available resources on the cluster which can be picked as a target for chaos |
-| secrets configmaps                                                                             | get, list                                                         | To read auth info (cluster-id, access-keys), configuration  tunables                                |
-| jobs                                                                                           | create, get, list, delete, deletecollection                       | Chaos experiments are launched as Kubernetes jobs                                                   |
-| pods events                                                                                    | get, create, update, patch, delete, list, watch, deletecollectio  | Manage transient pods created to perform chaos. Generate and manage chaos events                    |
-| pod/logs                                                                                       | get, list, watch                                                  | Track execution logs. Leverage to validate resource behavior/chaos impact.                          |
-| nodes                                                                                          | patch, get, list, update                                          | To filter/isolate chaos targets to specific nodes. Subject nodes to chaos (only in cluster-scope)   |
-| network policies                                                                               | create, delete, list, get                                         | To cause chaos via network partitions.                                                              |
-| services                                                                                       | create, update, get, list, watch, delete, deletecollection        | Generate chaos metrics. Watch/probe application service metrics for health.                         |
-| custom resource definitions Chaosengines chaosengines/finalizers chaosexperiments chaosresults | get, create, update, patch, delete, list, watch, deletecollection | Lifecycle management of Harness chaos custom resources.                                             |
-| leases (CRDs)                                                                                  | get, create, list, update, delete                                 | Enable high-availability of chaos custom controllers via leader-elections                           |
+| Resource                                                                              | Permissions                                                       | Uses                                                                                                |
+|---------------------------------------------------------------------------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
+| deployments, replicationcontrollers, daemonsets, replicasets, statefulsets            | get, list                                                         | For asset discovery of available resources on the cluster which can be picked as a target for chaos |
+| secrets, configmaps                                                                   | get, list                                                         | To read auth info (cluster-id, access-keys), configuration  tunables                                |
+| jobs                                                                                  | create, get, list, delete, deletecollection                       | Chaos experiments are launched as Kubernetes jobs                                                   |
+| pods, events                                                                          | get, create, update, patch, delete, list, watch, deletecollectio  | Manage transient pods created to perform chaos. Generate and manage chaos events                    |
+| pod/logs                                                                              | get, list, watch                                                  | Track execution logs. Leverage to validate resource behavior/chaos impact.                          |
+| nodes                                                                                 | patch, get, list, update                                          | To filter/isolate chaos targets to specific nodes. Subject nodes to chaos (only in cluster-scope)   |
+| network policies                                                                      | create, delete, list, get                                         | To cause chaos via network partitions.                                                              |
+| services                                                                              | create, update, get, list, watch, delete, deletecollection        | Generate chaos metrics. Watch/probe application service metrics for health.                         |
+| custom resource definitions, chaosengines, finalizers, chaosexperiments, chaosresults | get, create, update, patch, delete, list, watch, deletecollection | Lifecycle management of Harness chaos custom resources.                                             |
+| leases (CRDs)                                                                         | get, create, list, update, delete                                 | Enable high-availability of chaos custom controllers via leader-elections                           |
 
 ### User authentication
 
@@ -73,7 +75,7 @@ Users with administrative privileges on the project can create predefined role(s
 
 Harness Chaos Engineering leverages secrets for administrative/management purposes as well as at runtime (during execution of chaos experiments). The former involves users leveraging the Harness Secret Manager on the control plane, while the latter is purely managed by the users themselves in their respective Kubernetes clusters.   
 
-#### Secrets to access chaos artifact (Git) repositories  
+### Secrets to access chaos artifact (Git) repositories  
 
 The chaos module allows addition of one or more [ChaosHubs](https://developer.harness.io/docs/chaos-engineering/overview/glossary/) to enable selection of stored chaos artifacts (fault and experiment templates). This involves connecting to the respective canonical source, i.e., the Git repository via personal access tokens (PAT) or SSH keys. Since the module also supports committing artifacts into the repository, the keys need to be provided with the right scope/permissions within the Git organization. 
 
