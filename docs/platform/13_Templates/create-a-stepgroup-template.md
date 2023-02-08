@@ -48,7 +48,7 @@ Let us start by creating a template in the project scope within the **Deployment
 
    You can also select other types of stages. This topic uses the **Deploy** stage type.
    
-   The stage type you choose determines where you can reference the step group template in the pipeline. If you select Deploy as the stage type, you can      reference the template in any pipeline's Deploy stage. If you select Build as the stage type, you can reference the template in any pipeline's Build stage.
+   The stage type you choose determines where you can reference the step group template in the pipeline. If you select **Deploy** as the stage type, you can reference the template in any pipeline's deploy stage. If you select **Build** as the stage type, you can reference the template in any pipeline's build stage.
 
 2. In your stage, click **Add Step** and then click **Add Step**.
 
@@ -67,8 +67,17 @@ Let us start by creating a template in the project scope within the **Deployment
    Enter a name for this step. Select the user groups and then click **Apply Changes**.
 
    You can add more steps to form a step group.
+   
 
-   Here is an example of a step group template YAML.
+You can also create step group templates through the Harness API or Harness Terraform Provider.
+
+Harness detects the step group object and automatically creates the step group template based on the YAML body. You need not define any additional fields in the API or Terraform provider.
+
+For more information on creating templates through API, see [Create Templates API](https://apidocs.harness.io/tag/Templates#operation/createTemplate).
+
+For more information on creating templates through Terraform Provider, see [Platform Template](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
+
+Here is an example of a step group template YAML.
    
    ```YAML
     template:
