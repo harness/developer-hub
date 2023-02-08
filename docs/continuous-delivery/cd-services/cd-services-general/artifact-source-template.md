@@ -97,7 +97,7 @@ For example, if the build is `todolist-v2.0`, the regex `todolist-v\d.\d` will m
 
 If the regex expression does not result in a match, Harness ignores the value.
 
-Harness supports standard Java regex. For example, if **Regex** is enabled and the intent is to match a filename, the wildcard should be `.*` instead of simply a wildcard `*`. If you wanted to match all of the files that end in `-DEV.tgz` you would enter `.*-DEV\.tgz`.
+Harness supports standard Java regex. For example, if you enable **Regex** with the intent is to match a filename, the wildcard must be `.*` instead of only `*`. Similarly, if you want to match all files ending in `-DEV.tgz`, your wildcard regex phrase would be: `.*-DEV\.tgz`
 
 ```mdx-code-block
   </TabItem>
@@ -134,7 +134,7 @@ Note that `connectorRef` refers to the Id of a Harness connector.
 
 ## Saving templates to project, org, or account level
 
-If you are creating a template at the Harness project level, in **Save To**, you can select where you want to save the template.
+If you are creating a template at the Harness project level, in **Save To**, you can select where you want to save the template:
 
 - **Project**: The template is saved to this project. You will see it in the **Templates** list in all of the modules in this project that support templates (Deployments, Builds, Security Tests, etc).
 - **Organization**: The template is saved to the org where this project is located. The template will only appear in the **Templates** list at the org level, but the template can be selected in any project in that org.
@@ -159,7 +159,7 @@ Expressions can be useful in artifact source templates because you can use defau
 
 ## Use artifact templates in stage templates
 
-Once you have created an artifact source template you can add it as the artifact source in stage templates.
+After creating an artifact source template, you can add it as the artifact source in stage templates.
 
 Using stage templates with artifact source templates is useful for getting your team onboarded quickly.
 
@@ -191,7 +191,7 @@ To add an artifact source template to a stage template, do the following:
 
 ## Use artifact templates in CD services
 
-Once you have created an artifact source template you can add it as the artifact source of a Harness service.
+After creating an artifact source template, you can add it as the artifact source of a Harness service.
 
 To add an artifact source template to a service, do the following:
 
