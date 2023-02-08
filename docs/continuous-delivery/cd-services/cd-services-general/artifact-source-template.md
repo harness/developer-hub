@@ -30,7 +30,7 @@ Create the artifact source template at the level you want to share it. For examp
 
 ## Create an artifact source template
 
-To create an artifact source, do the following:
+To create an artifact source template, do the following:
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
