@@ -166,18 +166,16 @@ Here's the inputs and outputs for a Kubernetes Rollout Deployment step:
 
 
 
-|  |  |
-| --- | --- |
 | **Inputs** | **Outputs** |
+| :--- | :--- |
 | ![](./static/rolloutdeployment1.png) | ![](./static/rolloutdeployment2.png) |
 
 You can copy the expressions for the names or values of any input or output.
 
 
 
-|  |  |
-| --- | --- |
 | **Name** | **Value** |
+| :--- | :--- |
 |  ![](./static/name.png)|![](./static/value.png)  |
 
 Here are the **Name** and **Value** expressions for the `podIP` setting:
