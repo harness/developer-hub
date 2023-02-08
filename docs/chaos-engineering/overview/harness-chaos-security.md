@@ -34,13 +34,13 @@ The chaos infrastructure connects to the control plane by making outbound reques
 
 **Note:** Harness can leverage the same cluster (or namespace) to inject chaos into infrastructure targets within the user environment (such as VMs, cloud resources etc.) provided they are accessible from within the cluster. Refer to [this](https://docs.google.com/presentation/d/1wymQAHUHhCOz4q-1aOlKU5paLv4GO0yFi3tVcOjeL7M/edit#slide=id.g1436a2e0aac_0_391) diagram for more information on Cloud Secrets.
 
-### Kubernetes roles for the chaos infrastructure 
+### Kubernetes roles for chaos infrastructure 
 
 The deployments making up the chaos infrastructure can be installed with cluster-wide scope or namespace-only scope. These deployments are mapped to a dedicated service account that is equipped with the ability to execute all supported chaos experiments for that scope. Refer [here](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures) to learn more about connecting to a chaos infrastructure in cluster or namespace mode. This is considered as the first level of blast radius control.
 
 The permissions are listed below for reference. 
 
-**Note:** The permissions listed an be tuned for further minimization based on environments connected, type of experiments needed etc. Refer [here](#Blast-radius-control-using-permissions) to learn more blast radius control using permissions.
+**Note:** The permissions listed an be tuned for further minimization based on environments connected, type of experiments needed etc. Refer [here](#blast-radius-control-using-permissions) to learn more blast radius control using permissions.
 
 | Resource                                                                              | Permissions                                                       | Uses                                                                                                |
 |---------------------------------------------------------------------------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
@@ -104,8 +104,8 @@ Both of the above-mentioned actions require specific access to the infrastructur
 
 Depending upon (a) the infrastructure where chaos experiments are executed, and (b) desired list of chaos experiments, the permissions used can be modified (reduced) to create a lower blast radius and impact from a security perspective. This applies both to Kubernetes-based as well as non-Kubernetes chaos. 
 
-In the case of the Kubernetes chaos, it is achieved through [service accounts](https://docs.google.com/document/d/1uB7BVFDdD8NfaT97MTj0qrF0eE3rnQOmpOOi4AqCzWE/edit#heading=h.p793kkfaj1zi) mapped to custom roles (instead of the default ones mentioned in the [Kubernetes roles for chaos infrastructure](#Kubernetes-roles-for-the-chaos-infrastructure) section. For non-Kubernetes chaos, it is achieved via cloud-specific role definitions (for example, IAM) mapped to the user account.  
-
+In the case of the Kubernetes chaos, it is achieved through [service accounts](https://docs.google.com/document/d/1uB7BVFDdD8NfaT97MTj0qrF0eE3rnQOmpOOi4AqCzWE/edit#heading=h.p793kkfaj1zi) mapped to custom roles instead of the default ones mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, it is achieved via cloud-specific role definitions (for example, IAM) mapped to the user account.  
+ 
 Each fault in the enterprise ChaosHub publishes the permissions needed in order to execute it and users are free to tune their roles accordingly. Also available are common permission templates that work as subsets/supersets for a specific category of experiments. For example, here are recommended roles for all [AWS resource faults](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/policy-for-all-aws-faults). 
 
 
@@ -115,5 +115,5 @@ The deployments that comprise of the chaos infrastructure and the transient expe
 
 Some faults (mainly, the pod network and stress faults) necessitate container-runtime specific operations which necessitate privilege escalation, such as entering the network and pid namespaces, manipulating cgroup etc. In these cases, some of the pods are designed to run with privileged containers and root users. These pods also mount the runtime-specific socket files from the underlying host. However, it is important to note that such pods are short-lived (they exist for the duration of chaos) and can be run only if the users equip the serviceaccounts with access to the right security policy. 
 
-Harness recommends security policy templates ([PSP](https://kubernetes.io/docs/concepts/security/pod-security-policy/), [OpenShift](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_scc.html) SCC, [Kyverno](https://kyverno.io/policies/)) to enable the execution of such experiments. 
+Harness recommends security policy templates ([PSP](https://kubernetes.io/docs/concepts/security/pod-security-policy/), [OpenShift SCC](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_scc.html), [Kyverno](https://kyverno.io/policies/)) to enable the execution of such experiments. 
 
