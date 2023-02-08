@@ -20,67 +20,29 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
 - It also verifies multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 
 **Note**
-- You will need Kubernetes > 1.16 to execute this fault.
+- Kubernetes > 1.16 is required to execute this fault.
 - The target nodes should be in the ready state before and after injecting chaos.
 
 ## Fault tunables
-<h3>Mandatory Fields</h3>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TARGET_NODES </td>
-        <td> Comma-separated list of nodes subject to node CPU hog. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">here.</a></td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> NODE_LABEL </td>
-        <td> It contains the node label that is used to filter the target nodes.</td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">here.</a></td>
-      </tr>
-    </table>
-    <h2>Optional fields</h2>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 60s. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">here.</a></td>
-      </tr>
-        <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to inject stress. </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">here.</a></td>
-      </tr>
-      <tr>
-        <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">here.</a></td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> NODE_CPU_CORE </td>
-        <td> Number of cores of the CPU to be consumed. </td>
-        <td> Defaults to <code>2</code>. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog#node-cpu-cores">here.</a></td>
-      </tr>
-        <tr>
-            <td> NODES_AFFECTED_PERC </td>
-            <td> Percentage of total nodes to target, that takes numeric values only. </td>
-            <td> Defaults to 0 (corresponds to 1 node). More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">here.</a></td>
-        </tr> 
-        <tr>
-            <td> SEQUENCE </td>
-            <td> Sequence of chaos execution for multiple target pods. </td>
-            <td> Defaults to parallel. Supports serial sequence as well. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> here.</a></td>
-        </tr>
-    </table>
+
+### Mandatory Fields
+
+| Variables    | Description                                                         | Notes                                                                                                                                                                                                                                                                                                                                |
+|--------------|---------------------------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TARGET_NODES | Comma-separated list of nodes subject to node CPU hog.              | More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">here.</a>                                                                                                                                                        |
+| NODE_LABEL   | It contains the node label that is used to filter the target nodes. | It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">here.</a> |
+
+
+### Optional fields
+| Variables            | Description                                                                                       | Notes                                                                                                                                                                                                                       |
+|----------------------|---------------------------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| TOTAL_CHAOS_DURATION | Duration that you specify, through which chaos is injected into the target resource (in seconds). | Defaults to 60s. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">here.</a>                                               |
+| LIB_IMAGE            | Image used to inject stress.                                                                      | Defaults to <code>litmuschaos/go-runner:latest</code>. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">here.</a>  |
+| RAMP_TIME            | Period to wait before and after injecting chaos (in seconds).                                     | For example, 30s. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">here.</a>                                                          |
+| NODE_CPU_CORE        | Number of cores of the CPU to be consumed.                                                        | Defaults to <code>2</code>. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog#node-cpu-cores">here.</a>                                             |
+| NODES_AFFECTED_PERC  | Percentage of total nodes to target, that takes numeric values only.                              | Defaults to 0 (corresponds to 1 node). More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">here.</a>     |
+| SEQUENCE             | Sequence of chaos execution for multiple target pods.                                             | Defaults to parallel. Supports serial sequence as well. More information <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> here.</a> |
+
 
 ### Node CPU cores
 It contains the number of cores of CPU that will be consumed. Tune it by using the `NODE_CPU_CORE` environment variable.
