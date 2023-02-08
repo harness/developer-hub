@@ -4,7 +4,7 @@ title: Kubelet service kill
 ---
 
 Kubelet service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** state).
-- Kubelet service is stopped (or killed) on a node to make it unschedulable for a specific duration defined by the `TOTAL_CHAOS_DURATION` environment variable. 
+- Kubelet service is stopped (or killed) on a node to make it unschedulable for a specific duration. 
 - The application node goes back to normal state and services are resumed after the chaos duration. 
 
 

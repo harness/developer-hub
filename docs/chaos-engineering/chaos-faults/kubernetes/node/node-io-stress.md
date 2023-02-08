@@ -4,8 +4,6 @@ id: node-io-stress
 ---
 
 Node IO stress causes I/O stress on the Kubernetes node. 
-- The amount of I/O stress is specifed as the size in percentage of the total free space available on the file system using `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable or in gigabytes(GB) using `FILESYSTEM_UTILIZATION_BYTES` environment variable. 
-- When both the values are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precendence. 
 - It tests application resiliency on replica evictions that occur due I/O stress on the available disk space.
 
 
