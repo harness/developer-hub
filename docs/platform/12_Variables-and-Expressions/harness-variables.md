@@ -497,11 +497,11 @@ Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 
 | **<+pipeline.triggerType>** | **<+trigger.type>** | **Description** |
 | :--- | :--- | :--- |
-| ARTIFACT | Artifact | New Artifact trigger. For example, new Docker Hub image tab |
+| ARTIFACT | Artifact | New Artifact trigger. For example, new Docker Hub image tag |
 | SCHEDULER_CRON | Scheduled | Scheduled Cron trigger |
 | MANUAL | *null* | Pipeline triggered using the RUN button in the user interface |
 | WEBHOOK_CUSTOM | Custom | Custom webhook trigger |
-| WEBHOOK | Webhook | GitHub webhook trigger |
+| WEBHOOK | Webhook | SCM webhook trigger. For example, GitHub pull request |
 
 #### <+pipeline.triggeredBy.name>
 
