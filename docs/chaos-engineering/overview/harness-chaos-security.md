@@ -40,7 +40,7 @@ The deployments making up the chaos infrastructure can be installed with cluster
 
 The permissions are listed below for reference. 
 
-**Note:** The permissions listed an be tuned for further minimization based on environments connected, type of experiments needed etc. Refer [here](#blast-radius-control-using-permissions) to learn more blast radius control using permissions.
+**Note:** The permissions listed an be tuned for further minimization based on environments connected, type of experiments needed etc. Refer to [blast radius control using permissions](#blast-radius-control-using-permissions) to learn more.
 
 | Resource                                                                              | Permissions                                                       | Uses                                                                                                |
 |---------------------------------------------------------------------------------------|-------------------------------------------------------------------|-----------------------------------------------------------------------------------------------------|
