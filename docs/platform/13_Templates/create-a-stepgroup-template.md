@@ -36,12 +36,20 @@ Let us start by creating a template in the project scope within the **Deployment
 
   1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For more information, go to [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
   2. In **Repository**, select your repository.
-     
+
      :::note
-     If your repository isn't listed, enter its name since only a select few repositories are filled here. Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.
+     If your repository is not listed, enter the repository name to search and select it. Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
+
      :::
      
-  3. In **Git Branch**, select your branch.​ If your branch isn't listed, enter its name since only a select few branches are filled here.Create the branch in your repository before entering it in Git Branch. ​Harness does not create the branch for you​​
+     
+  3. In **Git Branch**, select your branch.​ 
+     
+     
+     :::note
+     If your branch is not listed, enter the branch name to search and select it. Create the branch in your repository before entering it in **Git Branch**. ​Harness does not create the branch for you​​
+     :::
+
   4. ​Harness auto-populates the **YAML Path**.​ You can change this path and the file name.
   5. Select **Start**.
 
@@ -51,25 +59,25 @@ Let us start by creating a template in the project scope within the **Deployment
 
    ![](./static/stage-type.png)
 
-   You can also select other types of stages. This topic uses the **Deploy** stage type.
+   This topic uses the **Deploy** stage type. You can select a different stage type. 
    
-   The stage type you choose determines where you can reference the step group template in the pipeline. If you select **Deploy** as the stage type, you can reference the template in any pipeline's deploy stage. If you select **Build** as the stage type, you can reference the template in any pipeline's build stage.
+   The stage type you select determines where you can reference the step group template in the pipeline. If you select **Deploy** as the stage type, you can reference the template in any pipeline's deploy stage. If you select **Build** as the stage type, you can reference the template in any pipeline's build stage.
 
-2. In your stage, click **Add Step** and then click **Add Step**.
+2. In your stage, select **Add Step** and then select **Add Step**.
 
-   Select a step type from the step library.
+   1. Select a step type from the step library.
 
-   Let us add a **Canary Deployment** step.
+   2. Let us add a **Canary Deployment** step.
 
-   Enter a name for the step and then click **Apply Changes**.
+   3. Enter a name for the step and then select **Apply Changes**.
 
 3. Next, let us add an approval step.
 
-   Click **Add Step** and then click **Add Step**.
+   1. Select **Add Step** and then select **Add Step**.
 
-   In **Approval**, select **Harness Approval**.
+   2. In **Approval**, select **Harness Approval**.
 
-   Enter a name for the step. Select the user groups and then click **Apply Changes**.
+   3. Enter a name for the step. Select the user groups and then select **Apply Changes**.
 
    You can add more steps to form a step group.
    
@@ -78,9 +86,9 @@ You can also create step group templates using the Harness API or Harness Terraf
 
 Harness detects the step group object and automatically creates the step group template based on the YAML body. You need not define any additional fields in the API or Terraform provider.
 
-For more information on creating templates through API, see [Create Templates API](https://apidocs.harness.io/tag/Templates#operation/createTemplate).
+For more information on creating templates using API, see [Create Templates API](https://apidocs.harness.io/tag/Templates#operation/createTemplate).
 
-For more information on creating templates through Terraform Provider, see [Platform Template](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
+For more information on creating templates using Terraform Provider, see [Platform Template](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
 
 Here is an example of a step group template YAML.
    
@@ -126,19 +134,19 @@ Here is an example of a step group template YAML.
         condition: <+input>
     identifier: Validate_Kubernetes_Rollout
     versionLabel: "1.0"
-    ```
+```
 
 4. Click **Save** to save the step group template you just created.
 
 ## Add details for conditional execution
 
-A step group can have its own **Conditional Execution** settings separate from the Conditional Execution settings for the Stage. The Conditional Execution settings of the step group apply to all of its steps.
+A step group can have its own **Conditional Execution** settings. This is in addition to the **Conditional Execution** settings at the Stage level. The Conditional Execution settings of the step group apply to all of its steps.
 
-See Step Skip Condition Settings.
+For more information, see [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 The Conditional Execution settings of any step in a step group overrides the conditional execution settings of the step group.
 
-If you do not use step group Conditional Execution settings, then the stage's conditional execution settings are used.
+If you do not use step group Conditional Execution settings, then the stage's conditional execution settings are applied.
 
 ## Add a failure strategy
 
@@ -150,18 +158,19 @@ For more information, see [Step Failure Strategy Settings](../8_Pipelines/w_pipe
 
 The Failure Strategy of any step in a step group overrides the Failure Strategy of the step group.
 
-If you do not use a step group Failure Strategy, then the Stage's Failure Strategy is used.
+If you do not use a step group Failure Strategy, then the Stage's Failure Strategy is applied.
 
 ## Add looping strategy
 
-Select one of the following **Looping Strategy** to run your step multiple times with different inputs: 
+Select one of the following **Looping Strategy** options to run step multiple times with different inputs: 
 - Matrix
 - Repeat
 - Parallelism
 
+
 For more information, see [Looping Strategies Overview](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 
-Click **Save**. Enter a comment for you changes and click **Save**.
+Select **Save**. Enter a comment for the changes and then select **Save**.
 
 ## Add the step group template to a pipeline
 
@@ -170,10 +179,10 @@ You can use the step group template in any pipeline within your project.
 To add a step group template to a pipeline: 
 
 1. Go to the pipeline, and then select the stage where you want to add the template.
-2. Click **Add Step**.
+2. Select **Add Step**.
 3. Select **Use template**.
 4. Select your step group template from the list of templates.
-5. Click **Use Template**.
-6. Enter a name for the template and click **Apply Changes**.
-7. Click **Save**.
+5. Select **Use Template**.
+6. Enter a name for the template and select **Apply Changes**.
+7. Select **Save**.
    Your pipeline now includes a reference to the template.
