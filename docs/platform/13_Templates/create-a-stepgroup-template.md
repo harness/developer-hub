@@ -17,7 +17,7 @@ Let us start by creating a template in the project scope within the **Deployment
 
 1. Navigate to the **Deployments** module and in **Projects** select the desired project.
 2. Under **Project Setup**, select **Templates**.
-3. Click **New Template**.
+3. Select **New Template**.
 4. Select **Step Group** to create a stage template.
    
    ![](./static/step-group-template-option.png)
