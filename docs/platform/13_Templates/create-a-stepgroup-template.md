@@ -171,4 +171,4 @@ To add a step group template to a pipeline:
 5. Click **Use Template**.
 6. Enter a name for the template and click **Apply Changes**.
 7. Click **Save**.
-   The template is now referenced in your pipeline.
+   Your pipeline now includes a reference to the template.
