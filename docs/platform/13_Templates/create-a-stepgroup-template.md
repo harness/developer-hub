@@ -16,7 +16,7 @@ You can create a step group template at the project, organization, and account l
 Let us start by creating a template in the project scope within the **Deployments** module.  You can do this in any project.
 
 1. Navigate to the **Deployments** module and in **Projects** select the desired project.
-2. Next select **Templates** under **Project Setup**.
+2. Under **Project Setup**, select **Templates**.
 3. Click **New Template**.
 4. Select **Step Group** to create a stage template.
    
