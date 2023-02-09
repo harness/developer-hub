@@ -34,7 +34,7 @@ Let us start by creating a template in the project scope within the **Deployment
   
 ### Create a remote template
 
-  1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For steps, see [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
+  1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For more information, go to [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
   2. In **Repository**, select your repository.​ If your repository isn't listed, enter its name since only a select few repositories are filled here.​Create the repository in Git before entering it in Select Repository. ​Harness does not create the repository for you.​
   3. In **Git Branch**, select your branch.​ If your branch isn't listed, enter its name since only a select few branches are filled here.Create the branch in your repository before entering it in Git Branch. ​Harness does not create the branch for you​​
   4. ​Harness auto-populates the **YAML Path**.​ You can change this path and the file name.
