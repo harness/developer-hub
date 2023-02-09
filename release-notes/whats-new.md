@@ -65,6 +65,13 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 * To make the Issue Details pane easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398)	
 
+## February 3, 2023
+
+### Security Testing Orchestration
+
+* The Issue Details pane now shows the message “No recommendations are available at this time” when the scan tool didn’t return remediation steps for a specific issue. (STO-5380)
+
+
 ## January 17, 2023
 
 ### Continuous Delivery
