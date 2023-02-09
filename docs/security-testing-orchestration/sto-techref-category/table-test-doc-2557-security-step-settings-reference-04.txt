@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 This topic includes the Security step settings for each of the scanner providers supported by Harness.
 
-Harness STO scanner support
+## Harness STO scanner support
 
-## Data ingestion methods
+### Data ingestion methods
 
 Harness Security Testing Orchestration integrates with multiple scanners and targets. Different types of scan approaches can be done on each scanner-target combination:
 
@@ -22,7 +22,7 @@ Harness Security Testing Orchestration integrates with multiple scanners and tar
 
 The scanner, targets, and scan approach combinations are covered in the next section.
 
-## Scan modes
+### Scan modes
 
 The following table shows the scan types that STO supports for each scanner:
 
@@ -32,7 +32,7 @@ The following table shows the scan types that STO supports for each scanner:
 * **Container Scanning** identifies known vulnerabilities in a Docker container.
 
 
-#### Table 1: Harness STO-supported Scanners by scan mode and ingestion method
+## Harness STO-supported Scanners by scan mode and ingestion method
 
 <table>
     <tr>
@@ -55,7 +55,7 @@ The following table shows the scan types that STO supports for each scanner:
           		<li><a href="#data-theorem">Data Theorem</a> Extraction, Ingestion</li>
           		<li><a href="#fortify-on-demand">Fortify on Demand</a> Ingestion</li>
           		<li><a href="#mend">Mend</a> Orchestration, Ingestion</li>
-          		<li><a href="reapsaw">Reapsaw</a> Ingestion</li>
+          		<li><a href="$reapsaw">Reapsaw</a> Ingestion</li>
           		<li><a href="#snyk">Snyk Code</a>  Ingestion</li>
           		<li><a href="#checkmarx">Veracode</a> Extraction, Ingestion</li>
         	</ul>
@@ -95,7 +95,7 @@ The following table shows the scan types that STO supports for each scanner:
           		<li><a href="#nessus">Nessus</a> Orchestration, Ingestion </li>
           		<li><a href="#nexus">Nexus</a> Orchestration, Ingestion</li>
           		<li><a href="#nmap">Nmap</a> Orchestration, Ingestion </li>
-          		<li><a href="openvas">Open VAS</a> Orchestration, Ingestion</li>
+          		<li><a href="#openvas">Open VAS</a> Orchestration, Ingestion</li>
           		<li><a href="#qualys-web-application-scanning-was">Qualys Web Application Scanning (WAS)</a>  Ingestion </li>
           		<li><a href="#prowler">Prowler</a> Orchestration, Ingestion</li>
           		<li><a href="#tenableio">Tenable.io</a> Orchestration, Extraction, Ingestion </li>
