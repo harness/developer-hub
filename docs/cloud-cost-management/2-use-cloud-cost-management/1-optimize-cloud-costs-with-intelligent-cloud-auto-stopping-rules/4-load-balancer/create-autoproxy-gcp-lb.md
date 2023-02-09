@@ -25,10 +25,10 @@ Perform the following steps to create an AutoStopping proxy for your resources i
    
      ![](./static/gcp-autoproxy-lb-creation.png)
 
-8. Select the region where you have your cloud resources hosted.
-9. Select the zone from the dropdown list.
+8. **Region**: Select the region where you have your cloud resources hosted.
+9. **Zone**: Select the zone from the dropdown list.
 10. Select the **VPC** and **Subnet** to which the resource belongs.
-11. Select the **Network tags** to enable ports on the proxy VM which would be receiving traffic or which would be used to access the proxy.
+11. Select the **Network tags** to enable ports on the proxy VM which would be receiving traffic or the one that would be used to access the proxy.
 12. Select the **Virtual Network**.
 13. In the **Machine type** dropdown list, select the instance type.
 14. **TLS Certificate Secret Version**: Create a secret in your GCP account. Go to [Create a secret](https://cloud.google.com/secret-manager/docs/creating-and-accessing-secrets). Enter the **Resource ID** displayed in the **Overview** tab.

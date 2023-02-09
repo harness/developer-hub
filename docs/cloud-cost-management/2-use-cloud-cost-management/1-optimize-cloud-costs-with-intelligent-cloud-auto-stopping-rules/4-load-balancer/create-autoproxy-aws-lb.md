@@ -32,9 +32,9 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 ![](./static/aws-autoproxy-lb.png)
 
 
-10.  Select the region where you have your cloud resources hosted.
+10.  **Select region**: Select the region where you have your cloud resources hosted.
 11.  Select the **VPC** from the dropdown list.
-12.  Select the instance family type from the dropdown list.
+12.  **Machine type**: Select the instance family type from the dropdown list.
 13.  **TLS Certificate Secret Version**: On the AWS console, go to **Secrets Manager**, and store a secret. It is recommended to use _harness/_ in the secret name. You must choose the **Other type of secret** option. Go to [https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html) for more information. After successfully storing the secret, enter the **Secret ARN** in this field. 
 
   Sample certificate:
@@ -67,10 +67,10 @@ zUfdbO+mWOKNUQDyQiBnlNNM3Gkkn5P8zYHfL97kSLXyadOOWwU0eEDd4iJJSDtJ
 
 
 
-14.   Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
-15.   Select the **Security Group** of your instance.
-16.   Select the SSH key pair to connect to your VM.
-17.   Enter the **Secret ARN** in the **TLS Private Key Secret Version field**.
+14.  **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
+15.   **Select security groups**: Select the **Security Group** of your instance.
+16.   **Key pair**: Select the SSH key pair to connect to your VM.
+17.   **TLS Private Key Secret Version**: Enter the **Secret ARN** in this field.
 
   Private key:
 
