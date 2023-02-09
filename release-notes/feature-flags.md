@@ -32,8 +32,8 @@ This release does not include early access features.
   - This update fixes excessive network calls when calling flag evaluation functions. (FFM-6822)
 
 - The Python Server SDK has been updated to version 1.1.8 and includes the following updates:
-  - Add `wait_for_initialization` to the client API, which can be called to block the thread until all groups and flags have been retrieved and loaded into the cache. (FFM-6549)
-  - Add `is_initialized` to the client API, which can be called at any time to check if the initial retrieval and caching of groups and flags has been completed. (FFM-6549)
+  - Added `wait_for_initialization` to the client API, which can be called to block the thread until all groups and flags have been retrieved and loaded into the cache. (FFM-6549)
+  - Added `is_initialized` to the client API, which can be called at any time to check if the initial retrieval and caching of groups and flags has been completed. (FFM-6549)
 
 :::note
 For an example usage of `wait_for_initialization` go to [the SDK's repository](https://github.com/harness/ff-python-server-sdk/blob/main/examples/wait_for_initialization_example/wait_for_initialization.py).
