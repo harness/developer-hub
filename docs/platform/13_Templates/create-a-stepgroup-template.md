@@ -25,7 +25,7 @@ Let us start by creating a template in the project scope within the **Deployment
    The **Create New Step Group Template** settings appear.
 
 5. In **Name**, enter a name for the template.
-6. In **Version Label**, enter the version of the stage. You can enter v1.
+6. In **Version Label**, enter the version of the stage. For example, v1.
 7. Select the scope at which you want to save this template in **Save To**.
 8. To set up your template, select one of the following: 
    - **Inline**: Save the template in Harness.
