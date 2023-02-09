@@ -56,7 +56,7 @@ Let us start by creating a template in the project scope within the **Deployment
 
    Let us add a **Canary Deployment** step.
 
-   Enter a name for this step and then click **Apply Changes**.
+   Enter a name for the step and then click **Apply Changes**.
 
 3. Next, let us add an approval step.
 
