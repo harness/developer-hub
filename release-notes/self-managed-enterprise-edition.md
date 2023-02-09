@@ -11,7 +11,7 @@ Harness Self-Managed Enterprise Edition is updated regularly in Harness SaaS. Re
 The release notes below are only for Self-Managed Enterprise Edition. NextGen SaaS release notes are available [here](/release-notes/whats-new) and FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 :::
 
-## February 6, 2023, version 78109
+## February 9, 2023, version 78109
 
 This release includes the following Harness module and component versions.
 
