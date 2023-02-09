@@ -64,7 +64,7 @@ Let us start by creating a template in the project scope within the **Deployment
 
    In **Approval**, select **Harness Approval**.
 
-   Enter a name for this step. Select the user groups and then click **Apply Changes**.
+   Enter a name for the step. Select the user groups and then click **Apply Changes**.
 
    You can add more steps to form a step group.
    
