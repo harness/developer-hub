@@ -67,9 +67,9 @@ You must create the Harness Docker Connector at the Account level. Make sure tha
    ![](./static/connect-to-harness-container-image-registry-using-docker-connector-47.png)
 
 3. In **Name**, enter a name for this connector.
-   Harness automatically generates the corresponding ID ([entity identifier](../20_References/entity-identifier-reference.md)).
-   If you want to override the Account-level Connector, modify the ID and set it to `harnessImage`. You must use the Id `harnessImage`.
-   Harness gives precedence to the Connector with the `harnessImage` identifier, and uses it to pull from the Harness Container Image Registry, as opposed to pulling from DockerHub directly.
+   Harness automatically generates the corresponding Id ([entity identifier](../20_References/entity-identifier-reference.md)).
+   If you want to override the account-level connector, modify the Id and set it to `harnessImage`. You must use the Id `harnessImage`.
+   Harness gives precedence to the connector with the `harnessImage` identifier, and uses it to pull from the Harness Container Image Registry, as opposed to pulling from DockerHub directly.
 4. Click **Continue**.
 
 ### Step 2: Enter credentials
