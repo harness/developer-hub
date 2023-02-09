@@ -101,7 +101,7 @@ Suppose you create a Service Dependency with the Name and Id **myloginservice**.
 
 - A containerized Step talks to the service using **myloginservice:*****container\_port***.
 
-- A Run or Run Test Step that runs directly on the VM talks to the service using **localhost:*****host\_port***.
+- A Run or Run Test Step that runs directly on the VM or in a Kubernetes cluster talks to the service using **localhost:*****host\_port***.
 
 The binding of Host and Container Ports is similar to [port mapping in Docker](https://docs.docker.com/config/containers/container-networking/). Usually the ports are the same unless the default Host Port for the service dependency is already in use by another local service.
 

@@ -52,7 +52,7 @@ The entry point takes precedence over any commands in the **Command** field.
 
 ## Additional Configuration
 
-Use these settings to add additional configuration to the step.
+Use these optional settings to add additional configuration to the step. Settings considered optional depend on the stage's **Infrastructure** settings. Not all options are available for all build infrastructure types.
 
 ### Privileged
 
@@ -82,6 +82,27 @@ If the service is running in a container, you can select an option to set the pu
 * **If Not Present**: The image is pulled only if it is not already present locally.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
+### Port Bindings
+
+Depending on the Build stage's **Infrastructure**, some steps might run on a bare-metal VM while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: bare-metal steps use the **Host Port** and containerized steps use the **Container Port**.
+
+<details>
+<summary>Port Bindings example</summary>
+
+Assume you create a Background step with the **Name** and **Id** `myloginservice`.
+- A containerized step talks to this service using `myloginservice:*****container\_port*`.
+- A Run or Run Test step that runs directly on a VM or in a Kubernetes cluster talks to the service using `localhost:*****host\_port*`.
+
+</details>
+
+The host port and container port binding are similar to [port mapping in Docker](https://docs.docker.com/config/containers/container-networking/). Usually the ports are the same unless the default host port for the Background step is already in use by another local service.
+
+:::note
+
+If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a `curl` command in a Run step).
+
+:::
+
 ### Run as User
 
 If the service is running in a container, you can set the value to specify the user Id for all processes in the pod. For more information about how to set the value, see [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
@@ -99,4 +120,3 @@ Do not include spaces when entering a fixed value. The default value, if unspeci
 #### Limit CPU
 
 The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed; you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-
