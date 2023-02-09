@@ -18,7 +18,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### New features
 
-* The Issue Details pane now shows the message “No recommendations are available at this time” when the scan tool didn’t return remediation steps for a specific issue. (STO-5380)
+* The Issue Details pane now shows the message “No recommendations are available at this time” when the scan tool doesn't return remediation steps for a specific issue. (STO-5380)
 
 ### Fixed issues
 
