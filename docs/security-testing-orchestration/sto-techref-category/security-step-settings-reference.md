@@ -10,59 +10,119 @@ helpdocs_is_published: true
 
 This topic includes the Security step settings for each of the scanner providers supported by Harness.
 
-### Scan Approach Types
+## Harness STO scanner support
+
+### Scan modes
+
+The following table shows the scan types that STO supports for each scanner:
+
+* **SAST (_Static Application Security Testing_)** scans a code repo and identifies known vulnerabilities in the proprietary code.
+* **SCA (Software Composition Analysis)** scans a code repo and identifies known vulnerabilities in open-source libraries and packages used by the code. 
+* **DAST (Dynamic Application Security Testing)** scans a running application for vulnerabilties by simulating a malicious external actor exploiting known vulnerabilties. 
+* **Container Scanning** identifies known vulnerabilities in a Docker container.
+
+
+### Data ingestion methods
 
 Harness Security Testing Orchestration integrates with multiple scanners and targets. Different types of scan approaches can be done on each scanner-target combination:
 
-* **orchestratedScan:** `orchestratedScan` is fully orchestrated. A new scan is orchestrated and the scan results are normalized and compressed by Security Testing Orchestration.
-* **ingestionOnly:** `ingestionOnly` is not orchestrated. For a scan that was done previously (or an earlier step in the a Pipeline), the results are presented to Security Testing Orchestration for normalization and compression.
-* **dataLoad:** `dataLoad` is partially orchestrated. A previously run scan where the results exist in scan tool vendors SaaS. The data is pulled, normalized, and compressed for Security Testing Orchestration.
+* **Orchestrated (`orchestratedScan`) Scans**  are fully orchestrated. A Security step in the Harness pipeline orchestrates a scan and then normalizes and compresses the results.
+* **Extraction (`dataLoad`) Scans** are partially orchestrated. The Security step pulls scan results from an external SaaS service and then normalizes and compresses the data.
+* **Ingestion (`ingestionOnly`) Scans**  are not orchestrated. The Security step ingest results from a previous scan (for for a scan run in an previous step) and then normallizes and compresses the results. 
 
 The scanner, targets, and scan approach combinations are covered in the next section.
 
-### Scanners, Target Types, and Scan Approach
+## Harness STO-supported Scanners by scan mode and ingestion method
 
-The following scanners are supported.
+<table>
+    <tr>
+        <th>Scan Mode</th>
+        <th>Open Source</th>
+        <th>Licensed</th>
+    </tr>
+    <tr>
+        <td valign="top">SAST</td>
+        <td valign="top">
+         	<ul>
+        		<li><a href="#bandit">Bandit</a>  Orchestration, Ingestion </li>
+         		<li><a href="#brakeman">Brakeman</a> Orchestration, Ingestion </li>
+         		<li><a href="#shiftleft">ShiftLeft</a> Orchestration, Extraction, Ingestion</li>
+        	</ul>
+        </td>
+        <td valign="top">
+        	<ul>
+          		<li><a href="#checkmarx">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="#data-theorem">Data Theorem</a> Extraction, Ingestion</li>
+          		<li><a href="#fortify-on-demand">Fortify on Demand</a> Ingestion</li>
+          		<li><a href="#mend">Mend</a> Orchestration, Ingestion</li>
+          		<li><a href="#reapsaw">Reapsaw</a> Ingestion</li>
+          		<li><a href="#snyk">Snyk Code</a>  Ingestion</li>
+          		<li><a href="#checkmarx">Veracode</a> Extraction, Ingestion</li>
+        	</ul>
+     </td>
+   </tr>
+    <tr>
+        <td valign="top">SCA</td>
+        <td valign="top">
+         	<ul>
+        		<li><a href="#clair">Clair</a> Orchestration, Ingestion   </li>
+         		<li><a href="#owasp">OWASP</a>  Orchestration, Ingestion</li>
+         		<li><a href="#owasp">SonarQube/SonarCloud</a>  Orchestration, Extraction, Ingestion </li>
+        	</ul>
+        </td>
+        <td valign="top">
+        	<ul>
+          		<li><a href="#black-duck-open-hub">Black Duck Open Hub</a> Orchestration, Ingestion</li>
+          		<li><a href="#checkmarx">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="#data-theorem">Data Theorem</a> Extraction, Ingestion </li>
+          		<li><a href="#snyk">Snyk Container</a>  Orchestration, Ingestion</li>
+          		<li><a href="#veracode">Veracode</a> Orchestration, Extraction, Ingestion </li>
+        	</ul>
+     </td>
+   </tr>
+    <tr>
+        <td valign="top">DAST</td>
+        <td valign="top">
+         	<ul>
+          		<li><a href="#metasploit">Metasploit Open Source</a> Orchestration, Ingestion </li>
+        		<li><a href="#nikto">Nikto</a>  Orchestration, Ingestion </li>
+         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion  </li>
+        	</ul>
+        </td>
+        <td valign="top">
+        	<ul>
+          		<li><a href="#metasploit">Metasploit Pro</a> Orchestration, Ingestion </li>
+          		<li><a href="#nessus">Nessus</a> Orchestration, Ingestion </li>
+          		<li><a href="#nexus">Nexus</a> Orchestration, Ingestion</li>
+          		<li><a href="#nmap">Nmap</a> Orchestration, Ingestion </li>
+          		<li><a href="#openvas">Open VAS</a> Orchestration, Ingestion</li>
+          		<li><a href="#qualys-web-application-scanning-was">Qualys Web Application Scanning (WAS)</a>  Ingestion </li>
+          		<li><a href="#prowler">Prowler</a> Orchestration, Ingestion</li>
+          		<li><a href="#tenableio">Tenable.io</a> Orchestration, Extraction, Ingestion </li>
+        	</ul>
+     </td>
+   </tr>
+    <tr>
+        <td valign="top">Containers</td>
+        <td valign="top">
+         	<ul>
+        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy</a> Orchestration, Ingestion  </li>
+         		<li><a href="#grype">Grype</a>  Orchestration, Ingestion </li>
+        	</ul>
+        </td>
+        <td valign="top">
+        	<ul>
+          		<li><a href="#image-scanning---amazon-ecr">Amazon ECR</a> Extraction </li>
+          		<li><a href="#black-duck-open-hub">Black Duck Open Hub</a> Orchestration, Ingestion</li>
+          		<li><a href="#docker-content-trust-dct">Docker Content Trust (DCT</a> Orchestration, Ingestion</li>
+          		<li><a href="#docker-content-trust-clair">Docker Content Trust (clair)</a> Orchestration, Ingestion </li>
+          		<li><a href="#prisma-cloud-formerly-twistlock">Prisma Cloud (formerly Twistlock)</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="#tenableio">Tennable.io</a> Orchestration, Extraction, Ingestion  </li>
+        	</ul>
+     </td>
+   </tr>
 
-|  |  |  |
-| --- | --- | --- |
-| **Scanner Name** | **Scan Target Type** | **Scan Approach** |
-|  [Aqua Trivy](aqua-trivy-scanner-reference.md) | container | orchestratedScan, ingestionOnly |
-|  [Image scanning - Amazon ECR](#image-scanning---amazon-ecr) | container | dataLoad |
-|  [AWS Security Hub](#aws-security-hub) | container | dataLoad |
-|  [Bandit](veracode-scanner-reference.md) | repository | orchestratedScan, ingestionOnly |
-|  [Black Duck Open Hub](#black-duck-open-hub) | repository, container | orchestratedScan, ingestionOnly |
-|  [Brakeman](#brakeman) | repository | orchestratedScan, ingestionOnly |
-|  [Burp](#burp) | instance | ingestionOnly |
-|  [Checkmarx](#checkmarx) | repository | orchestratedScan, dataLoad, ingestionOnly |
-|  [Data Theorem](#data-theorem) | repository | dataLoad, ingestionOnly |
-|  [Docker Content Trust (DCT)](#docker-content-trust-dct) | container | orchestratedScan, ingestionOnly |
-|  [Docker Content Trust (clair)](#docker-content-trust-clair) | container | orchestratedScan, ingestionOnly |
-|  [External (JSON upload v2)](../use-sto/ingesting-issues-from-other-scanners.md) | container, repository, instance, configuration | ingestionOnly |
-|  [Fortify](#fortify) | repository | ingestionOnly |
-|  [Fortify on Demand](#fortify-on-demand) | repository | orchestratedScan, dataLoad, ingestionOnly |
-|  [Grype](grype-scanner-reference.md) | container, repository | orchestratedScan, ingestionOnly |
-|  [Mend (formerly WhiteSource)](#mend-formerly-whitesource) | repository | orchestratedScan, ingestionOnly |
-|  [Metasploit](#metasploit) | instance | orchestratedScan, ingestionOnly |
-|  [Nessus](#nessus) | instance | orchestratedScan, ingestionOnly |
-|  [Nexus IQ](#nexus-iq) | instance | orchestratedScan, ingestionOnly |
-|  [Nikto](#nikto) | instance | orchestratedScan, ingestionOnly |
-|  [Nmap ("Network Mapper")](#nmap-network-mapper) | instance | orchestratedScan, ingestionOnly |
-|  [OpenVAS](#openvas) | instance | orchestratedScan, ingestionOnly |
-|  [OWASP](#owasp) | repository | orchestratedScan, ingestionOnly |
-|  [Prisma Cloud (formerly Twistlock)](#prisma-cloud-formerly-twistlock) | container | orchestratedScan, dataLoad, ingestionOnly |
-|  [Prowler](#prowler) | repository | orchestratedScan, ingestionOnly |
-|  [Qualys Web Application Scanning (WAS)](#qualys-web-application-scanning-was) | instance | ingestionOnly |
-|  [Reapsaw](#reapsaw) | repository | ingestionOnly |
-|  [ScoutSuite](#scoutsuite) | configuration | ingestionOnly |
-|  [ShiftLeft](#shiftleft) | repository | orchestratedScan, dataLoad, ingestionOnly |
-|  [Sniper](#sniper) | instance | orchestratedScan, ingestionOnly |
-|  [Snyk](#snyk) | repository, container | orchestratedScan (repository only), ingestionOnly |
-|  [SonarQube SonarScanner](sonarqube-sonar-scanner-reference.md) | repository | orchestratedScan, dataLoad, ingestionOnly |
-|  [Tenable.io](#tenableio) | instance | orchestratedScan, dataLoad, ingestionOnly |
-|  [Veracode](veracode-scanner-reference.md) | repository | orchestratedScan, dataLoad, ingestionOnly |
-|  [JFrog Xray](#jfrog-xray) | container | ingestionOnly |
-|  [Zed Attack Proxy (ZAP)](zap-scanner-reference.md) | instance | orchestratedScan, ingestionOnly |
+   </table>
 
 ### Test Targets
 
