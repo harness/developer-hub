@@ -160,7 +160,7 @@ Click **Save**. Enter a comment for you changes and click **Save**.
 
 ## Add the step group template to a pipeline
 
-You can use the step group template in any pipeline in your project now that you have it.
+You can use the step group template in any pipeline within your project.
 
 To add a step group template to a pipeline: 
 
