@@ -69,7 +69,7 @@ Let us start by creating a template in the project scope within the **Deployment
    You can add more steps to form a step group.
    
 
-You can also create step group templates through the Harness API or Harness Terraform Provider.
+You can also create step group templates using the Harness API or Harness Terraform Provider.
 
 Harness detects the step group object and automatically creates the step group template based on the YAML body. You need not define any additional fields in the API or Terraform provider.
 
