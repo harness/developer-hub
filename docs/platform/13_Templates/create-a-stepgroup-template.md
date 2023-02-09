@@ -7,7 +7,7 @@ sidebar_position: 6
 
 A step group in Harness is a collection of deployment steps that are executed together as a single unit. This allows you to organize and manage complex deployment processes by dividing them into smaller, manageable steps. A step group can contain any type of pipeline step, including script steps, artifact deployment steps, and infrastructure deployment steps. You can also control the order in which the steps in a step group are executed. In addition, you can specify conditions for skipping certain steps based on the outcome of previous steps. Overall, step groups are a useful tool for streamlining and organizing your deployment processes in Harness.
 
-By creating a step group template, you can standardize and simplify your deployment processes, and reduce the time and effort required to create new pipelines and templates. You can parameterize certain aspects of the template to allow for customization when it is used in a deployment. Additionally, you can apply conditions to the steps in a step group template to make it more flexible and reusable in different deployment scenarios. 
+By creating a step group template, you can standardize and simplify your deployment processes, and reduce the time and effort required to create new pipelines and templates. When using in a deployment, you can customize certain aspects of the template. Additionally, you can apply conditions to the steps in a step group template to make it more flexible and reusable in different deployment scenarios. 
 
 You can create your step group template at the project, organization, and account levels.
 
