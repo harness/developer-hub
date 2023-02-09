@@ -26,7 +26,7 @@ Let us start by creating a template in the project scope within the **Deployment
 
 5. In **Name**, enter a name for the template.
 6. In **Version Label**, enter the version of the stage. For example, v1.
-7. Select the scope at which you want to save this template in **Save To**.
+7. In **Save To**, select the scope at which you want save the template.
 8. To set up your template, select one of the following: 
    - **Inline**: Save the template in Harness.
    - **Remote**: Save the template in a Git repository.
