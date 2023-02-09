@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
-## Before You Begin
+## Before you begin
 
 * [Create an Azure Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/add-azure-connector.md)
 * [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md)
@@ -31,7 +31,7 @@ For more information, see [Manage Subscriptions](https://docs.microsoft.com/en-
 * Permissions to create Azure function and a dedicated storage account
 * SSL certificate in **\*.pfx** format to support HTTPS traffic if required. You can use a wild card certificate or specific to the domain certificate
 
-## Add a Cloud Provider
+## Add a Cloud provider
 
 Perform the following steps to link your Azure cloud account to Harness.
 
@@ -180,7 +180,7 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 
 
 1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access. Go to [Create an AutoStopping Proxy for Azure](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-azure-autoproxy-lb.md) to create an AutoStopping load balancer.
-2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated based on the security group.
+2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated.
 3. Specify all the TCP ports your application is listening. Ensure that these ports are open and accessible.
 4. Click **Next**.
 
@@ -349,7 +349,7 @@ SSH/RDP allows you to access the resources managed by the AutoStopping rule via 
 3. Click **Download CLI**.
 4. You can connect using SSH or RDP.
 
-### SSH Commands
+### SSH commands
 
 To connect to remote servers via SSH/RDP, such as PuTTY, use the Harness CLI `connect` command. The `connect` command opens a proxy connection in your machine which can be used from other applications.
 
@@ -382,7 +382,7 @@ Harness `connect` created a secure tunnel from your computer to the given port a
 ```
 harness ssh --host default-test-ssh-1.abc1000test.lightwingtest.com --user ubuntu --config lwc.toml -- -i ~/.ssh/ry-jupyter.pem
 ```
-### RDP Commands
+### RDP commands
 
 For RDP run the following command:
 
@@ -404,7 +404,7 @@ In Review, verify all the configuration details and click **Save Rule**. To edit
   
 Your AutoStopping rule is listed under the [AutoStopping Rules summary page](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
 
-## Next Step
+## See also
 
 * [Create AutoStopping Rules for a Kubernetes Cluster](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md)
 * [Use AutoStopping Rules Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md)
