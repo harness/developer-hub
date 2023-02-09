@@ -1,9 +1,7 @@
 ---
 title: Background Step Settings
 description: Background steps are useful for running services that need to run for the entire lifetime of a build. Use cases include running services for a local, multi-service app.
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: kddyd0f33o
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

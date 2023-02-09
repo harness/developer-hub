@@ -1,9 +1,7 @@
 ---
 title: Configure Service Dependency Step Settings
 description: A Service Dependency is a detached service that's accessible to all Steps in a Stage. Service dependencies support workflows such as Integration testing &#8212;  You can set up a service and then run tests a…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 60
 helpdocs_topic_id: vo4sjbd09g
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

@@ -1,9 +1,7 @@
 ---
 title: Build and Push an Image to Docker Registry Step Settings
 description: This topic describes settings for the Build and Push an image to Docker registry step.
-tags:
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: q6fr5bj63w
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

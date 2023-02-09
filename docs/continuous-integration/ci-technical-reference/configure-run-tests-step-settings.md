@@ -1,9 +1,7 @@
 ---
 title: Run Tests Step Settings
 description: This topic provides settings and permissions for the Harness CI Run Tests step, which executes one or more tests on a container image. Name. The unique name for this step. ID. See Entity Identifier R…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 110
 helpdocs_topic_id: axzckflbt2
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
