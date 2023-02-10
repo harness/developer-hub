@@ -32,7 +32,7 @@ For more information, see [Manage Subscriptions](https://docs.microsoft.com/en-
 * SSL certificate in **\*.pfx** format to support HTTPS traffic if required. You can use a wild card certificate or specific to the domain certificate
 * To create an AutoStopping rule using an AutoStopping proxy load balancer: 
    * You must provide the required permissions to Harness to create an instance in your Azure account.
-   * You must provide the required permissions to read the secrets and fetch the certificates stored in them for TLS based flows.
+   * You must provide the required permissions to read the secrets and fetch the certificates stored in them for TLS-based flows.
    * Ensure that you reserve some IPs if you intend to allocate elastic IP while creating an AutoStopping proxy.
 
 
