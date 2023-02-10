@@ -61,11 +61,17 @@ In a Pipeline, click **Add Stage.**
 
 In **Select Stage Type**, click **Approval**.
 
-![](./static/custom-approvals-00.png)In **About your Stage**, enter a name for this stage, select **Custom**, and click **Set Up Stage**. The Approval Stage is set up.
+![](./static/custom-approvals-00.png)
 
-![](./static/custom-approvals-01.png)Click the **Custom Approval** step to set up your **Step Parameters**.
+In **About your Stage**, enter a name for this stage, select **Custom**, and click **Set Up Stage**. The Approval Stage is set up.
 
-![](./static/custom-approvals-02.png)If you were adding a Custom Approval step to a different type of stage, you would simply click **Add Step** in that stage's **Execution** and select **Custom Approval**.### Step 2: Set up a Custom Approval Step
+![](./static/custom-approvals-01.png)
+
+Click the **Custom Approval** step to set up your **Step Parameters**.
+
+![](./static/custom-approvals-02.png)
+
+If you were adding a Custom Approval step to a different type of stage, you would simply click **Add Step** in that stage's **Execution** and select **Custom Approval**.### Step 2: Set up a Custom Approval Step
 
 The Custom Approval step has the following settings.
 
@@ -113,25 +119,35 @@ You do not need to export the variables with `export` to use them with **Script
 
 In **Name**, enter a name to use in other steps that will reference this variable. This is the output variable name that will be used in a Harness expression for referencing the output variable.
 
-![](./static/custom-approvals-03.png)The format to reference the output variable is `<+steps.[step_id].output.outputVariables.[output_variable_name]>`.
+![](./static/custom-approvals-03.png)
+
+The format to reference the output variable is `<+steps.[step_id].output.outputVariables.[output_variable_name]>`.
 
 Here's an example showing how the **Script Output Variables** references the exported variable **test**, and how you reference the output variable Name **var1** in a subsequent Shell Script step to get that value:
 
-![](./static/custom-approvals-04.png)To find the expression to reference your output variables, execute the Pipeline, locate the step, and click its **Output** tab. You can copy the Output variable there.
+![](./static/custom-approvals-04.png)
 
-![](./static/custom-approvals-05.png)#### Using Variables in Approval or Rejection Criteria
+To find the expression to reference your output variables, execute the Pipeline, locate the step, and click its **Output** tab. You can copy the Output variable there.
+
+![](./static/custom-approvals-05.png)
+
+#### Using Variables in Approval or Rejection Criteria
 
 You can use script variables in your approval or rejection criteria by use them in **Script Output Variables**.
 
 First, you create the variable in **Script**, then create a variable in **Script Output Variables** that references that variable, and then use the **Script Output Variables** variable and the **Script** variable's value in the **Approval Criteria**:
 
-![](./static/custom-approvals-06.png)### Step 3: Set Approval Criteria
+![](./static/custom-approvals-06.png)
+
+### Step 3: Set Approval Criteria
 
 The **Approval Criteria** in the step determines if the Pipeline or stage is approved.
 
 **Approval Criteria** is mandatory, but you can also set **Rejection Criteria**.
 
-![](./static/custom-approvals-07.png)Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
+![](./static/custom-approvals-07.png)
+
+Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
 
 In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../12_Variables-and-Expressions/harness-variables.md), or your custom ticketing system.
 
@@ -154,9 +170,13 @@ You can also use expressions in **Value**. For example, if you have an Output V
 
 In **Script Input Variables**, you simply select **Expression** and paste the expression in **Value**.
 
-![](./static/custom-approvals-08.png)In **Script**, you declare the variable using the **Name** value:
+![](./static/custom-approvals-08.png)
 
-![](./static/custom-approvals-09.png)At deployment runtime, Harness will evaluate the expression and the variable will contain its output.
+In **Script**, you declare the variable using the **Name** value:
+
+![](./static/custom-approvals-09.png)
+
+At deployment runtime, Harness will evaluate the expression and the variable will contain its output.
 
 ### Option: Set Rejection Criteria
 
