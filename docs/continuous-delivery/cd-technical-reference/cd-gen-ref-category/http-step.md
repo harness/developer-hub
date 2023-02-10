@@ -67,10 +67,13 @@ For example, in **Key**, enter `Token` .
 
 In **Value**, enter `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
 
+You can copy the key and paste it in the HTTP step **Header** setting. See [Add and Manage API Keys](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/).
+
 Another example:
 
 * **Key**: `variable:`
 * **Value**: `var1,var2:var3`
+
 
 ## Output
 
