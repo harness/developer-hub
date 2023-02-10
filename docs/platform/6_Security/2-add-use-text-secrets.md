@@ -25,9 +25,11 @@ Click **Secrets**.
 Click **Secret** and select **Text.**
 
 ![](./static/add-use-text-secrets-45.png)
+
 The **Add new Encrypted Text** settings appear.
 
 ![](./static/add-use-text-secrets-46.png)
+
 Select the **Secret Manager** you will use to encrypt this secret.
 
 In **Secret Name**, enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your resources.
@@ -57,11 +59,12 @@ All of the passwords and keys used in Harness Connectors are stored as Encrypted
 
 You can either create the Encrypted Text secret first and then select it in the Connector or you can create/select it from the Connector by clicking **Create or Select a Secret**:
 
-![](./static/add-use-text-secrets-47.png)![]
-(./static/add-use-text-secrets-48.png)
+![](./static/add-use-text-secrets-47.png)
+
 You can also edit it in the Connector.
 
 ![](./static/add-use-text-secrets-49.png)
+
 ### Step 3: Reference the Encrypted Text by Identifier
 
 For an Encrypted Text secret that's been scoped to a Project, you reference the secret in using the secret identifier in the expression: `<+secrets.getValue("your_secret_Id")>`.
