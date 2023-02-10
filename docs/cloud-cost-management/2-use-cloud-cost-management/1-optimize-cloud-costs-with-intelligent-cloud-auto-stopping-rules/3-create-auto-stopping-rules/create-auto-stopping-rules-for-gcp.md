@@ -18,6 +18,12 @@ This topic describes how to create AutoStopping Rules for GCP.
 * [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md)
 * [AutoStopping Rules Overview](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md)
 
+## Prerequisites
+To create an AutoStopping rule using an AutoStopping proxy load balancer: 
+   * You must provide the required permissions to Harness to create an instance in your GCP account.
+   * You must provide the required permissions to read the secrets and fetch the certificates stored in the secret for TLS-based flows.
+   * Ensure that you reserve some IPs if you intend to allocate elastic IP while creating an AutoStopping proxy.
+
 ## Visual summary
 
 Here is an AutoStopping architecture for GCP resources:
