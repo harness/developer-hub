@@ -13,6 +13,23 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## February 14, 2023, version 784xx
+
+content
+
+### What's new
+
+content
+
+### Early access
+
+No early access features added in this release.
+
+### Fixed issues
+
+content
+
+
 ## February 6, 2023, version 78321
 
 ### What's new
@@ -22,7 +39,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Early access features
 
-This release does not include early access features.
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -34,18 +51,18 @@ This release does not include early access features.
 
 ### What's new
 
-* This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only. 
+* This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only.
    - An Actions step to run GitHub Actions.
    - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
-* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
-   
-  ![](./static/ci-rerun-build-in-debug-mode.png) 
+* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350)
+
+  ![](./static/ci-rerun-build-in-debug-mode.png)
 
 * You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
 
 ##### Defining hostnames to use in a Kubernetes build infrastructure
 
-``` yaml 
+``` yaml
 infrastructure:
     type: KubernetesDirect
     spec:
@@ -58,21 +75,21 @@ infrastructure:
 
 ### Early access features
 
-This release does not include early access features.
+No early access features added in this release.
 
 ### Fixed issues
 
-This release does not include fixed issues.
+No fixed issues included in this release.
 
 ## January 10, 2023, version 78105
 
 ### What's new
 
-No new features are available in this release.
+No new features added in this release.
 
 ### Early access features
 
-No early access features are available for this release.
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -101,21 +118,21 @@ No early access features are available for this release.
 
 ### Early access features
 
-No early access features are available for this release.
+No early access features added in this release.
 
 ### Fixed issues
 
-No fixed issues are available for this release. 
+No fixed issues included in this release.
 
 ## December 13, 2022, version 77808
 
 ### What's new
 
-No new features are available for this release.
+No new features added in this release.
 
 ### Early access features
 
-No early access features are available for this release.
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -127,15 +144,15 @@ No early access features are available for this release.
 
 ### What's new
 
-No new features are available in this release.
+No new features added in this release.
 
 ### Early access features
 
-No early access features are available in this release.
+No early access features added in this release.
 
 ### Fixed issues
 
-No fixed issues are available in this release.
+No fixed issues included in this release.
 
 ## November 29, 2022, version 77608
 
@@ -149,7 +166,7 @@ No fixed issues are available in this release.
 
 ### Early access features
 
-No early access features are available in this release.
+No early access features added in this release.
 
 ### Deprecated features
 
@@ -161,17 +178,17 @@ No early access features are available in this release.
 
 ### Fixed issues
 
-No fixed issues are available in this release.
+No fixed issues included in this release.
 
 ## November 11, 2022, version 77433
 
 ### What's new
 
-No new features are available in this release.
+No new features added in this release.
 
 ### Early access features
 
-No early access features are available in this release.
+No early access features added in this release.
 
 ###
 
@@ -192,7 +209,7 @@ The Custom Git Connector now supports connection via the Harness Platform, in ad
 
 ### Early access features
 
-No early access features are available in this release.
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -222,11 +239,11 @@ No early access features are available in this release.
 
 ### What's new
 
-NA
+No new features added in this release.
 
 ### Early access features
 
-NA
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -241,7 +258,7 @@ The Infrastructure tab in Build steps has been updated to show only supported op
 
 ### Early access features
 
-NA
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -276,11 +293,11 @@ This release includes a new Docker delegate that you can install and run directl
 
 ### What's new
 
-N/A
+No new features added in this release.
 
 ### Early access features
 
-N/A
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -296,17 +313,17 @@ N/A
 
 ### What's new
 
-N/A
+No new features added in this release.
 
 ### Early access features
 
-N/A
+No early access features added in this release.
 
 ### Fixed issues
 
 - Added UI validation to ensure the Limit Memory and Limit CPU fields have the required formats. Previously, incorrect values for these fields were flagged during a build, which would cause the build to fail. (CI-5463)
 - Added a force-kill flag to ensure that CI pods are deleted during a build cleanup. This ensures that pods get cleaned up even if they are in an Unknown or Not-Ready state. (CI-5377)
-- Changed the “exit x” button that appears when creating a connector to make it more visible. (CI-5323)
+- Changed the "exit x" button that appears when creating a connector to make it more visible. (CI-5323)
 - Added a validation to ensure that a user provides a repo name when setting up a trigger with an account-level Git connector. Without this validation, the UI would allow users to click Save without a repo name but the trigger would not get created. (CI-5315)
 - Improved the error message that appears when a connection test fails because an account-level resource is trying to use a project-level secret. (CI-4705)
 - Fixed an issue in the Run Tests step that could cause a manual build to fail if a Git branch was not specified. (CI-4581)
@@ -315,11 +332,11 @@ N/A
 
 ### What's new
 
-N/A
+No new features added in this release.
 
 ### Early access features
 
-N/A
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -329,11 +346,11 @@ Improved the Harness UI to make it easier to search for a specific test under th
 
 ### What's new
 
-N/A
+No new features added in this release.
 
 ### Early access features
 
-N/A
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -352,7 +369,7 @@ N/A
 
 ### Early access features
 
-N/A
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -368,7 +385,7 @@ You can now run connection tests for AWS, GCP, and Azure connectors. By default,
 
 ### Early access features
 
-N/A
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -384,7 +401,7 @@ This release introduces validations for Custom Webhook events. The event handler
 
 ### Early access features
 
-N/A
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -409,7 +426,7 @@ Users can now use Azure Repos connectors in pipeline codebase configuration and 
 
 ### Early access features
 
-N/A
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -425,11 +442,11 @@ N/A
 
 ### What's new
 
-n/a
+No new features added in this release.
 
 ### Early access features
 
-n/a
+No early access features added in this release.
 
 ### Fixed issues
 
@@ -444,7 +461,7 @@ The Build UI now shows a new VM icon. (CI-4630)
 
 ### Early access features
 
-n/a
+No early access features added in this release.
 
 ### Fixed issues
 
