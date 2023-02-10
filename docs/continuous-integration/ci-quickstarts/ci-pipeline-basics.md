@@ -1,8 +1,6 @@
 ---
-title: CI Pipeline Basics
-description: This topic covers CI Pipeline basics to get you ready to start building Pipelines easily. For details on general Harness concepts, see Learn Harness' Key Concepts. Pipelines. A CI Pipeline is an end-…
-tags: 
-   - helpDocs
+title: CI pipeline basics
+description: This topic covers CI Pipeline basics to get you ready to start building Pipelines easily.
 sidebar_position: 20
 helpdocs_topic_id: 3amcd8hn53
 helpdocs_category_id: pjovrkldfq
@@ -40,9 +38,9 @@ You can use Shared Paths in a Stage to share data across Steps. By default, all 
 
 If you need to share additional volumes, you can add Shared Paths.
 
-### Service Dependencies
+### Dependent and background services
 
-A Service Dependency enables multiple Stages to access the same service. For example, your Pipeline might include unit tests that require a running Redis server. Service Dependencies run in an isolated container, so you don't need to handle dependencies. See [Configure Service Dependency](../ci-technical-reference/configure-service-dependency-step-settings.md).
+If you decide to split your pipeline into multiple stages, you need to make sure each stage has access to any dependencies. An example of a use case for background services is when your unit tests require a running Redis server. Background services run in an isolated container, so you don't need to handle the dependencies. For information about configuring and calling background services, go to [Background step settings](../ci-technical-reference/background-step-settings.md).
 
 ### Plugins
 
