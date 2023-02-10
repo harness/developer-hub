@@ -82,7 +82,7 @@ To perform the bootstrap:
 
    :::caution
 
-   Make sure that the build triggered by this PR runs all tests, such as pom.xml, non-Java, and so on.
+   Make sure that the build triggered by this PR runs all tests.
 
    :::
 
