@@ -68,7 +68,7 @@ The final `RUN` block retrieves the Kubernetes `kubectl` command-line tool that 
 
 ```
 RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \  
-  && curl -LO "<https://dl.k8s.io/release/$(curl> -L -s<https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl>" && chmod +x kubectl 
+  && curl -LO "https://dl.k8s.io/release/$(curl> -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x kubectl 
 ```
   
 
