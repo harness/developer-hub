@@ -23,7 +23,7 @@ AutoStopping Rules make sure that your non-production resources run only when us
 * Permissions to create a cross-account role. See [AWS Access Permissions](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions).
 * To create an AutoStopping rule using an AutoStopping proxy load balancer: 
    * You must provide the required permissions to Harness to create a VM in your AWS account.
-   * You must provide the required permissions to read the secrets and fetch the certificates stored in them for TLS-based flows.
+   * You must provide the required permissions to read the secrets and fetch the certificates stored in the secret for TLS-based flows.
    * Ensure that you reserve some IPs if you intend to allocate elastic IP while creating an AutoStopping proxy.
 
 ## How Spot orchestration works?

@@ -21,7 +21,7 @@ This topic describes how to create AutoStopping Rules for GCP.
 ## Prerequisites
 To create an AutoStopping rule using an AutoStopping proxy load balancer: 
    * You must provide the required permissions to Harness to create an instance in your GCP account.
-   * You must provide the required permissions to read the secrets and fetch the certificates stored in them for TLS-based flows.
+   * You must provide the required permissions to read the secrets and fetch the certificates stored in the secret for TLS-based flows.
    * Ensure that you reserve some IPs if you intend to allocate elastic IP while creating an AutoStopping proxy.
 
 ## Visual summary
