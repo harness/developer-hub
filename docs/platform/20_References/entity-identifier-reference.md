@@ -61,8 +61,6 @@ Identifiers have the following restrictions:
 	+ org
 	+ account
 
-* Identifiers aren't case-sensitive. For example, the Identifiers `myIdentifier` and `myidentifier` are the same.
-
 #### Identifier uniqueness
 
 Identifiers are unique for the scope in which they are created.
