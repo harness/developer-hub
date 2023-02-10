@@ -59,7 +59,7 @@ The most common use case for triggering CI builds is in response to a Git event.
 
 ## Expression Example
 
-Here's a simple example of a Shell Script step that echoes some codebase variable expressions:
+Here's a simple example of a shell script in a Run step that echoes some codebase variable expressions:
 
 ```
 echo <+codebase.commitSha>
@@ -78,7 +78,7 @@ echo <+codebase.pullRequestBody>
 echo <+codebase.state>
 ```
 
-Here's an example of possible output from that Shell Script step:
+Here's an example of possible output from that shell script:
 
 ```
 + echo 85116fa2f04858cd5e946d69f24d7359205a0737
@@ -105,7 +105,7 @@ https://github.com/**************/CI-How-Tos/pull/8
 Open
 ```
 
-Here's how that output would look in the Harness UI:
+Here's how the Run step and the output look in the Harness UI:
 
 ![](./static/built-in-cie-codebase-variables-reference-512.png)
 
