@@ -74,7 +74,6 @@ Another example:
 * **Key**: `variable:`
 * **Value**: `var1,var2:var3`
 
-
 ## Output
 
 Create output variables to be used by other steps in the stage. The **Value** setting can contain any HTTP step input, output, or response information.
