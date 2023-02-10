@@ -1,7 +1,7 @@
 ---
 title: CI build image updates
 description: Your organization has a one-month window to run security scans or other tests on new CI build images before you deploy them.
-# sidebar_position: 2
+sidebar_position: 210
 helpdocs_topic_id: 1h724b6txn
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

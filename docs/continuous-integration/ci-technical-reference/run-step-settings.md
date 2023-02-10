@@ -1,9 +1,7 @@
 ---
 title: CI Run Step Settings
 description: This topic provides settings and permissions for the Harness CI Run step. The Build stage Run step can be used to run scripts in your CI stages. The Run step pulls in a Docker image, such as a Docker…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

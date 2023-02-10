@@ -1,9 +1,7 @@
 ---
 title: Upload Artifacts to S3 Step Settings
 description: This topic provides settings for the Upload Artifacts to S3 step, which uploads artifacts to AWS or other S3 providers such as MinIo. S3 buckets use private ACLs by default. To use a different ACL, s…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 160
 helpdocs_topic_id: wdzojt3ep3
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

@@ -1,9 +1,7 @@
 ---
 title: Group CI Steps Using Step Groups
 description: Add CI steps to Pipelines individually or as a step group. Steps in a step group can be run serially or in parallel.
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 180
 helpdocs_topic_id: 5w7wbq3vok
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
