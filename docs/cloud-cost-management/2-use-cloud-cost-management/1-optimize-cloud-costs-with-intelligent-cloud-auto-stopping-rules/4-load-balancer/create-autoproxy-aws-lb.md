@@ -7,7 +7,7 @@ description: A load balancer distributes user traffic across multiple instances 
 
 An AutoStopping proxy load balancer automatically distributes user traffic across multiple instances of your applications coupled with the capabilities of the CCM AutoStopping feature that makes sure that your non-production resources run only when used. Load balancing reduces the chances of performance issues in your applications by spreading the load.
 
-You can create a custom load balancer using the AutoStopping proxy option. This feature allows you to launch a VM with the load balancer. AutoStopping proxy supports PEM-encoded certificates. Cert and the private key need to be provided. A Cert chain is not required for the configuration. 
+You can create a custom load balancer using the AutoStopping proxy option. This feature allows you to launch a VM with the load balancer. AutoStopping proxy supports PEM-encoded certificates. The certificate and the private key need to be provided. A Cert chain is not required for the configuration. 
 
 Perform the following steps to create an AutoStopping proxy for your resources in AWS:
 
