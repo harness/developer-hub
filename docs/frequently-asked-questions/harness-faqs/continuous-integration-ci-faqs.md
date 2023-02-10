@@ -26,9 +26,9 @@ In this topic:
 
 ### General
 
-#### How can a step call service dependency?
+#### How can a step call a service started by a Background step?
 
-A step can call a service dependency on `localhost` or `127.0.0.1`along with the port on which the service dependency is running. See [Configure service dependency](../../continuous-integration/ci-technical-reference/configure-service-dependency-step-settings.md).
+For information about calling services started by Background steps, go to **Important notes** and **Port Bindings** in [Background step settings](../continuous-integration/ci-technical-reference/../../../continuous-integration/ci-technical-reference/background-step-settings.md).
 
 #### What is the maximum timeout for a CIE step or stage?
 

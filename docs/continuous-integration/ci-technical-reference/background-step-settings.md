@@ -12,7 +12,7 @@ Background steps are useful for running services that need to run for the entire
 
 ![](./static/background-step-settings-07.png)
 
-## Important Notes
+## Important notes
 
 * Background steps do not support failure strategies or output variables.
 * A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests. You can use the Background step **Id** to call services started by Background steps in later steps, such as `curl` commands in Run steps.
