@@ -10,9 +10,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Test Intelligence (TI) improves test time by running only the tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works,go to [Test Intelligence Overview](../../ci-quickstarts/test-intelligence-concepts.md).
+Test Intelligence (TI) improves test time by running only the tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works, go to [Test Intelligence Overview](../../ci-quickstarts/test-intelligence-concepts.md).
 
-You can enable Test Intelligence for builds in CI pipeline stages that use the **Run Tests** step. This topic explains how to set up Test Intelligence in a Harness CI pipeline stage.
+You can enable Test Intelligence by including a **Run Tests** step in your CI pipeline **Build** stages. This topic explains how to set up Test Intelligence in a Harness CI pipeline stage.
 
 ### Before you begin
 
@@ -56,16 +56,16 @@ The **Run Tests** step executes one or more commands on a container image.
 3. Complete the **Configure Run Tests Step** fields as follows:
    1. **Name**: Input a unique name for the step.
    2. **Description**: Input a description for the step.
-   3. **Container Registry**: Select a container registry connector. Harness pulls the image to run build commands on from this container registry, for example, DockerHub.
-   4. **Image**: The name of the Docker image to use for running the build commands. Enter a Fully Qualified Image Name (FQIN) when using a private container registry.
+   3. **Container Registry**: Select a container registry connector. This is the container registry, such as DockerHub, where Harness pulls the image on which it runs build commands. This is optional for stages that use Harness Cloud build infrastructure.
+   4. **Image**: The name of the Docker image to use for running the build commands. Enter a Fully Qualified Image Name (FQIN) when using a private container registry. This is optional for stages that use Harness Cloud build infrastructure.
    5. **Language**: Select the source code language to build.
    6. **Build Tool**: Select the build automation tool. Supported tools vary by **Language**. For example, Harness supports [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/) for **Java** and [NET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) and [Nunit](https://nunit.org/) for **.NET:** .
    7. **Build Arguments**: Input the [arguments](../../ci-technical-reference/configure-run-tests-step-settings.md) for the build tool. These are used as input for the chosen build tool.
    8. **Test Report Paths**: Input one or more test report paths.
 4. Expand **Additional Configuration** and complete these fields:
-   1. **Packages**: Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If blank, Harness auto-detects the package.
+   1. **Packages**: Leave blank or provide a comma-separated list of source code package prefixes, such as `com.company., io.company.migrations`. If blank, Harness auto-detects the packages.
    2. **Test Annotations**: Provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. The defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
-   3. **Namespaces**: For .NET C# only, supply a comma-separated list of namespaces prefixes that you want to test.
+   3. **Namespaces**: For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.
 1. Select **Apply Changes** to save the step settings, and then select **Save** to save the pipeline.
 
 ![](./static/set-up-test-intelligence-02.png)
@@ -82,7 +82,7 @@ To perform the bootstrap:
 
    :::caution
 
-   Make sure the PR will trigger all tests, such as pom.xml, non-Java, and so on.
+   Make sure that the build triggered by this PR runs all tests, such as pom.xml, non-Java, and so on.
 
    :::
 
@@ -91,7 +91,7 @@ To perform the bootstrap:
 ### View the test report
 
 1. Wait while the pipeline executes. To monitor the build's progress, go to **Builds** and select the build that was started by the PR.
-2. After the build succeeds, on the build details page, select **Tests**. **Tests** shows the test report for the test you configured for the **Run Tests** step. Harness publishes test results in JUnit format.
+2. After the build succeeds, on the build details page, select **Tests**. **Tests** shows the test report for the test you configured for the **Run Tests** step. In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format. Harness parses test reports that are in JUnit XML format only.
 
 ![](./static/set-up-test-intelligence-03.png)
 
@@ -101,7 +101,7 @@ The test report is comprised of the following sections:
 
 Displays an overview of **Total Tests**, number of **Selected Tests**, total **Duration** of all tests, and **Time Saved**.
 
-**Duration** reflects the sum of all test durations collected as-is from the JUnit report. These values corresponds with the CPU time, and it is possible that the sum of these times may exceed the total pipeline execution time.
+**Duration** reflects the sum of CPU time taken for all tests to complete. The values are collected as-is from the JUnit report, and they don't correspond with wall clock time. In contrast, the pipeline execution time is a measure of wall clock time. Therefore, it is possible that the **Duration** may exceed the total pipeline execution time.
 
 #### Test Execution Result
 
@@ -109,7 +109,7 @@ Displays a graphical representation of successful and failed tests.
 
 #### Test Selection Breakdown
 
-Test Intelligence makes decisions about which tests to run by assessing changes to the pipeline's codebase or the individual tests.
+Test Intelligence makes decisions about which tests to run by assessing changes to source files and test files in the codebase.
 
 - **Correlated with Code Changes**: The number of tests that Test Intelligence ran based on changes in the codebase
 - **New Tests**: The number of tests that Test Intelligence ran because they are new
@@ -119,7 +119,9 @@ Test Intelligence makes decisions about which tests to run by assessing changes 
 
 Displays the detailed list of all tests: class methods and test methods.
 
-You can filter the list to only show failed tests; sort the list by failure rate, duration, and total tests; and expand test suites to see details about individual tests in that suite.
+Initially, the list shows only failed tests. To see all tests, toggle **Show all Tests**.
+
+You can sort the list by failure rate, duration, and total tests. You can also expand test suites to see details about individual tests in that suite.
 
 #### Call Graph
 
@@ -183,7 +185,7 @@ pipeline:
                           connectorRef: Kubernetes_Quickstart
                           namespace: harness-delegate
               variables: []
-    projectIdentifier: CD_Examples
+    projectIdentifier: CI_Examples
     orgIdentifier: default
     description: TI for open source project dubbo
     tags: {}
