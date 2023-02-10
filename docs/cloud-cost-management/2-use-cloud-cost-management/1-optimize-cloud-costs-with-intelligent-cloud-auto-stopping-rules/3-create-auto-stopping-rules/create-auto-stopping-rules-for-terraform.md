@@ -174,9 +174,9 @@ Example 2: This is an example script to create an AutoStopping rule for a VM tha
 >   }
 > }
 > provider "harness-ccm" {
->   token = "pat.wFHXHD0RRQWoO8tIZT5YVw.62fdd5e88261467efba58c92.pJYInpG22oc40V0SzKPi"
+>   token = ""
 >   api_url = "https://app.harness.io/gateway/lw/api"
->   account_identifier = "wFHXHD0RRQWoO8tIZT5YVw"
+>   account_identifier = ""
 > }
 > 
 > resource "harness-ccm_autostopping_rule" "rule_i2" {
