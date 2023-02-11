@@ -27,24 +27,28 @@ The AWS IAM roles and policies associated with the account connected to the Harn
 <details>
 <summary>Stage variable required for non-default ACLs</summary>
 
+```mdx-code-block
 S3 buckets use [private ACLs](https://docs.aws.amazon.com/AmazonS3/latest/userguide/acl-overview.html#canned-acl) by default. Your pipeline must have a `PLUGIN_ACL` stage variable if you want to use a different ACL.
 
 1. In the Pipeline Studio, select the relevant stage, and then select the **Overview** tab.
 2. In the **Advanced** section, add a stage variable.
 3. Input `PLUGIN_ACL` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
 4. Input the relevant ACL in the **Value** field.
-
+```
 </details>
 
 <details>
 <summary>Stage variable required for ARNs</summary>
 
+```mdx-code-block
 If your AWS connector's authentication uses a cross-account role (ARN), pipeline stages with **Upload Artifacts to S3** steps must have a `PLUGIN_USER_ROLE_ARN` stage variable.
 
 1. In the Pipeline Studio, select the stage with the **Upload Artifacts to S3** step, and then select the **Overview** tab.
 2. In the **Advanced** section, add a stage variable.
 3. Input `PLUGIN_USER_ROLE_ARN` as the **Variable Name**, set the **Type** to **String**, and then select **Save**.
 4. In the **Value** field, input the full ARN value that corresponds with the AWS connector's ARN.
+```
+
 </details>
 
 ## Region
