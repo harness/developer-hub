@@ -10,7 +10,7 @@ Node drain drains the node of all its resources running on it.
 
 
 ## Use cases
-- This fault drains all the resources running on a node. 
+- Node drain fault drains all the resources running on a node. 
 - It determines the resilience of the application when the application replicas scheduled on a node are removed.
 - It validates the application failover capabilities when a node suddenly becomes unavailable.
 - It simulates node maintenance activity (hardware refresh, OS patching, Kubernetes upgrade). 
@@ -36,12 +36,12 @@ Node drain drains the node of all its resources running on it.
       <tr>
         <td> TARGET_NODES </td>
         <td> Comma-separated list of nodes subject to node CPU hog. </td>
-        <td> For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">target nodes.</a></td>
+        <td> For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">target nodes.</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
         <td> It contains the node label that is used to filter the target nodes.</td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
     </table>
     <h2>Optional fields</h2>
@@ -54,18 +54,18 @@ Node drain drains the node of all its resources running on it.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 60s. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
+        <td> Defaults to 60s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
 
 ### Drain node
 
-It contains the name of the target node subject to the chaos. Tune it by using the `TARGET_NODE` environment variable.
+It specifies the name of the target node subject to the chaos. Tune it by using the `TARGET_NODE` environment variable.
 
 Use the following example to tune it:
 

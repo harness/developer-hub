@@ -9,7 +9,7 @@ Node taint taints the node by applying the desired effect.
 ![Node Taint](./static/images/node-taint.png)
 
 ## Use cases
-- This fault verifies the resilience of applications when a certain taint is added to a node. 
+- Node taint fault verifies the resilience of applications when a certain taint is added to a node. 
 - It simulates loss of critical services (or node-crash). 
 - It verifies resource budgeting on cluster nodes (whether request(or limit) settings are honored on the available nodes).
 - It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
@@ -33,17 +33,17 @@ Node taint taints the node by applying the desired effect.
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the node to be tainted. </td>
-        <td> For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node.</a></td>
+        <td> For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node.</a></td>
       </tr>
       <tr>
          <td> NODE_LABEL </td>
         <td> It contains node label, which will be used to filter the target nodes if <code>TARGET_NODES</code> ENV is not set </td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> ENV. If both are provided then it will use the <code>TARGET_NODES</code>. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, the fault uses the <code>TARGET_NODES</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
       <tr>
         <td> TAINT_LABEL </td>
         <td> Label and the effect to be tainted on the application node. </td>
-        <td> For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-taint/#taint-label"> taint label.</a></td>
+        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-taint/#taint-label"> taint label.</a></td>
       </tr>
     </table>
     <h2>Optional fields</h2>
@@ -56,19 +56,19 @@ Node taint taints the node by applying the desired effect.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 60s. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
+        <td> Defaults to 60s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
 
 
 ### Taint label
 
-It contains the label and the effect to be tainted on the application node. Tune it by using the `TAINT_LABEL` environment variable.
+It specifies the label and the effect that is tainted on the application node. Tune it by using the `TAINT_LABEL` environment variable.
 
 Use the following example to tune it:
 

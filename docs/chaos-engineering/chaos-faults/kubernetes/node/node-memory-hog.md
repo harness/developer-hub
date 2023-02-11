@@ -12,7 +12,7 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
 
 ## Use cases
 
-- This fault causes memory resource exhaustion on the Kubernetes node. 
+- Node memory hog fault causes memory resource exhaustion on the Kubernetes node. 
 - It aims to verify resilience of applications whose replicas may be evicted on account on nodes becoming unschedulable (in **NotReady** state) due to lack of memory resources.
 - It simulates the situation of memory leaks in the deployment of microservices.
 - It simulates application slowness due to memory starvation.
@@ -23,9 +23,7 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
 **Note**
 - The target nodes should be in the ready state before and after injecting chaos.
 
-
 ## Fault tunables
-
 
    <h3>Mandatory fields</h3>
     <table>
@@ -37,12 +35,12 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
       <tr>
         <td> TARGET_NODES </td>
         <td> Comma-separated list of nodes subject to node I/O stress.</td>
-        <td> For example, <code>node-1,node-2</code>. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">target nodes.</a></td>
+        <td> For example, <code>node-1,node-2</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-multiple-nodes">target nodes.</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
        <td> It contains the node label that is used to filter the target nodes.</td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">target nodes with labels.</a></td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">target nodes with labels.</a></td>
       </tr>
     </table>
     <h2>Optional fields</h2>
@@ -55,42 +53,42 @@ Node memory hog causes memory resource exhaustion on the Kubernetes node.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default to 120s. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
+        <td> Default to 120s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>    
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
         <td> Percent of the total node memory capacity. </td>
-        <td> Defaults to 30. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog/#memory-consumption-percentage"> memory consumption percentage.</a></td>
+        <td> Defaults to 30. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog/#memory-consumption-percentage"> memory consumption percentage.</a></td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
         <td> Amount of the total available memory (in mebibytes). It is mutually exclusive with <code>MEMORY_CONSUMPTION_PERCENTAGE</code>. </td>
-        <td> For example, 256. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog/#memory-consumption-mebibytes"> memory consumption bytes.</a></td>
+        <td> For example, 256. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog/#memory-consumption-mebibytes"> memory consumption bytes.</a></td>
       </tr>  
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of VM workers involved in the stress. </td>
-        <td> Defaults to 1. For more information, refer to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
+        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
       </tr> 
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>
         <td> Percentage of the total nodes to target. It takes numeric values only. </td>
-        <td> Defaults to 0 (corresponds to 1 node). For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
+        <td> Defaults to 0 (corresponds to 1 node). For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
       </tr> 
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 
@@ -128,7 +126,7 @@ spec:
 
 ### Memory consumption mebibytes
 
-It specifies the amount of memory available. Tune it by using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable. It is mutually exclusive with the `MEMORY_CONSUMPTION_PERCENTAGE` environment variable. If `MEMORY_CONSUMPTION_PERCENTAGE` environment variable is set, then it uses this value for the stress.
+It specifies the amount of memory available. Tune it by using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable. It is mutually exclusive with the `MEMORY_CONSUMPTION_PERCENTAGE` environment variable. If `MEMORY_CONSUMPTION_PERCENTAGE` environment variable is set, the fault uses this value for the stress.
 
 Use the following example to tune it:
 
