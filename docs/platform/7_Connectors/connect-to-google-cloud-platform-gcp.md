@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Use a Harness Google Cloud Platform (GCP) connector to integrate GCP with Harness. Use GCP with Harness to obtain artifacts, communicate with GCP services, provision infrastructure, deploy microservices, and manage other workloads.
+Use a Harness Google Cloud Platform (GCP) connector to integrate GCP with Harness. Use GCP with Harness to obtain artifacts, communicate with GCP services, provision infrastructure, and deploy microservices and other workloads.
 
 You can use the GCP connector to connect to Kubernetes clusters in GCP. You can also use the [platform-agnostic Kubernetes Cluster connector](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
@@ -21,7 +21,7 @@ Before you begin, you must:
 * **Assign IAM roles to the GCP service account or Harness delegate that you will attach to the connector.**
   * The necessary IAM roles and policies depend on which GCP service you'll use with Harness and which operations you'll want Harness to perform in GCP.
   * GCP connectors can also inherit IAM roles from Harness delegates running in GCP. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
-  * If you find that the IAM role associated with your GCP connector don't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the GCP account or the Harness delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
+  * If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the GCP account or the Harness delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
   * For a list of roles and policies, go to [Google Cloud Platform (GCP) Connector Settings Reference](ref-cloud-providers/gcs-connector-settings-reference.md).
   * The [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access) is useful for evaluating policies and access.
 * **Check your GKE version.**
@@ -47,7 +47,7 @@ Before you begin, you must:
 
 * **IAM role inheritance:** The connector inherits the GCP IAM role assigned to the delegate in GCP, such a Harness Kubernetes delegate running in Google Kubernetes Engine (GKE). Make sure the delegate has the IAM roles that your connector needs.
 * **GCP workload identity:** If you installed the Harness [Kubernetes delegate](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
-* **Role and policy changes:** If you find that the IAM role associated with your GCP connector don't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
+* **Role and policy changes:** If you find that the IAM role associated with your GCP connector doesn't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
 * **See also:**
   * [Google Cloud Platform (GCP) Connector Settings Reference](ref-cloud-providers/gcs-connector-settings-reference.md)
   * [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access)
@@ -82,6 +82,6 @@ For a list of roles and policies, go to the [Google Cloud Platform (GCP) Connect
 
 ## See also
 
-* [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md).
-* [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
+* [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md)
 * [Google Cloud Platform (GCP) Connector Settings Reference](ref-cloud-providers/gcs-connector-settings-reference.md)

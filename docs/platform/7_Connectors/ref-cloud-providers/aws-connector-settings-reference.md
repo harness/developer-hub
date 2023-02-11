@@ -378,7 +378,7 @@ This example policy gives limited permission to EKS clusters.
 
 ## Connect to EKS
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes Cluster Connector](kubernetes-cluster-connector-settings-reference.md).
+If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md).
 
 ## AWS Serverless Lambda
 
@@ -571,7 +571,7 @@ In rare cases when the delegate OS does not support `apt`, such as Red Hat Linux
 
 ### Serverless cross-account access (STS Role)
 
-If you use the **Enable cross-account access (STS Role)** option in the AWS connector for a Serverless Lambda deployment, the delegate that is used by the Connector must have the AWS CLI installed. The AWS CLI is not required for the other authentication methods.
+If you use the **Enable cross-account access (STS Role)** option in the AWS connector for a Serverless Lambda deployment, the delegate that is used by the connector must have the AWS CLI installed. The AWS CLI is not required for the other authentication methods.
 
 For instructions on installing software with the delegate, go to [Run initialization scripts on delegates](../../2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 

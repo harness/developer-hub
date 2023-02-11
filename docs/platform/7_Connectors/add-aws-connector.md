@@ -1,6 +1,6 @@
 ---
-title: Add an AWS Connector
-description: Add a Harness AWS Connector.
+title: Add an AWS connector
+description: Add a Harness AWS connector.
 # sidebar_position: 2
 helpdocs_topic_id: 98ezfwox9u
 helpdocs_category_id: o1zhrfo8n5
@@ -8,105 +8,138 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-AWS is integrated with Harness using a Harness AWS Connector. You can use AWS with Harness for obtaining artifacts, communicating with AWS services, provisioning infrastructure, and deploying microservices and other workloads.
+Use a Harness AWS connector to integrate AWS with Harness. Use AWS with Harness to obtain artifacts, communicate with AWS services, provision infrastructure, and deploy microservices and other workloads. If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), you must use the platform-agnostic [Kubernetes Cluster connector](connect-to-a-cloud-provider.md).
 
-This topic explains how to set up the AWS Connector.
+This topic explains how to set up an AWS connector.
 
-**What IAM roles should my AWS account have?** What IAM roles and policies needed by the AWS account used in the Connector depend on what AWS service you are using with Harness and what operations you want Harness to perform in AWS. For a list of roles and policies, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
+## Configure roles and policies
 
-### Before you begin
+The necessary IAM roles and policies needed by the AWS account used in the connector depend on which AWS service you are using with Harness and which operations you want Harness to perform in AWS. For an extensive description of roles and policies, go to the [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+AWS connectors can also inherit IAM roles from Harness delegates running in AWS. If you want your connector to inherit from a delegate, make sure the delegate has the necessary roles.
 
-### Review: IAM Roles and Policies for the Connector
+:::caution
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.The IAM roles and policies needed by the AWS account used in the Connector depend on what AWS service you are using with Harness and what operations you want Harness to perform in AWS.
+The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS connectors regardless of what AWS service you are using for your target infrastructure.
 
-For a list of roles and policies, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
+:::
 
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
+If you find that the IAM role associated with your AWS connector doesn't have the policies required by the AWS service you want to access, you can modify or change the role assigned to the AWS account or the Harness delegate that your AWS connector is using. You may need to wait up to five minutes for the change to take effect.
 
-### Review: Kubernetes Cluster Connector for EKS
+:::tip
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes Cluster Connector](connect-to-a-cloud-provider.md).
+The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.
 
-### Review: Switching IAM Policies
+:::
 
-If the IAM role used by your AWS Connector does not have the policies required by the AWS service you want to access, you can modify or switch the role.
+## Add an AWS connector and configure credentials
 
-You simply change the role assigned to the AWS account or the Harness Delegate your AWS Connector is using.
+1. Open a Harness project, and select **Connectors** under **Project Setup**.
+2. Select **New Connector**, and then select **AWS** under **Cloud Providers**.
 
-When you switch or modify the IAM role, it might take up to 5 minutes to take effect.
+   ![](./static/add-aws-connector-77.png)
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.
+3. Input a **Name** for the connector. **Description** and **Tags** are optional.
+   Harness automatically creates an **Id** ([entity identifier](../20_References/entity-identifier-reference.md)) for the connector based on the **Name**.
+4. Select **Continue** to configure credentials.
+5. Select one of the following three primary options:
+  * **Assume IAM Role on Delegate:** The connector inherits its authentication credentials from the Harness delegate that is running in AWS. For example, you can select a Harness delegate running in Amazon Elastic Kubernetes Service (EKS).
+  * **AWS Access Key:** Provide an [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for the IAM role you want the connector to use.
+  * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account. Instead, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. This option requires modifications to the delegate YAML, as described below.
 
-### Supported Platforms and Technologies
+<details>
+<summary>Configure delegate YAML for IRSA</summary>
 
-For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
+Setting up IRSA credentials requires a few more steps than other methods, but it is a simple process.
 
-### Step 1: Add an AWS Connector
+1. Create the IAM role with the policies you want the Delegate to use. The policies you select depend on what AWS resources you are deploying via the delegate.
+2. In the cluster where the delegate will be installed, create a service account and attach the IAM role to it.
+   Here is an example of how to create a new service account in the cluster where you will install the delegate and attach the IAM policy to it:
 
-Open a Harness Project.
+   ```
+   eksctl create iamserviceaccount \
+       --name=cdp-admin \
+       --namespace=default \
+       --cluster=test-eks \
+       --attach-policy-arn=<policy-arn> \
+       --approve \
+       --override-existing-serviceaccounts —region=us-east-1
+   ```
 
-In **Project Setup**, click **Connectors**.
+3. In Harness, download the Harness Kubernetes delegate YAML file. For instructions, go to [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+4. Open the delegate YAML file in text editor.
+5. Add the service account with access to IAM role to the delegate YAML. There are two sections in the Delegate YAML that you must update:
+   1. Update the `ClusterRoleBinding` by replacing the subject name `default` with the name of the service account with the attached IAM role, for example:
 
-Click **New Connector**, and click **AWS**. The AWS Connector settings appear.
+      ```
+      ---
+      apiVersion: rbac.authorization.k8s.io/v1beta1
+      kind: ClusterRoleBinding
+      metadata:
+        name: harness-delegate-cluster-admin
+      subjects:
+        - kind: ServiceAccount
+          name: default           // Change to relevant service account name, such as myserviceaccount
+          namespace: harness-delegate-ng
+      roleRef:
+        kind: ClusterRole
+        name: cluster-admin
+        apiGroup: rbac.authorization.k8s.io
+      ---
+      ```
 
-![](./static/add-aws-connector-77.png)
-In **Name**, enter a name for this connector.
+    2. Add `serviceAccountName` to the `StatefulSet` spec. For example:
 
-Harness automatically creates the corresponding Id.
+      ```
+      ...
+          spec:
+            serviceAccountName: myserviceaccount  // New line. Use the same service account name you used in the ClusterRole Binding.
+            containers:
+            - image: harness/delegate:latest
+              imagePullPolicy: Always
+              name: harness-delegate-instance
+              ports:
+               - containerPort: 8080
+      ...
+      ```
 
-Click **Continue**.
+6. Save the delegate YAML file.
+7. If you haven't already installed the delegate, [Install the Kubernetes delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
 
-### Step 2: Enter Credentials
+</details>
 
-The [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Connectors regardless of what AWS service you are using for your target infrastructure.There are three options for authenticating with AWS:
+6. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](ref-cloud-providers/aws-connector-settings-reference.md).
+7. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](ref-cloud-providers/aws-connector-settings-reference.md).
+8. Select **Continue** to proceed to **Select Connectivity Mode**.
 
-* **AWS Access Key:** enter the AWS access and secret key for an AWS IAM user.
-* **Assume IAM role on Delegate:** add or select a Harness Delegate running in AWS. The AWS IAM role used when installing the Delegate in AWS is used for authentication by the AWS Connector.  
-For example, you can add or select a Harness Kubernetes Delegate running in Amazon Elastic Kubernetes Service (Amazon EKS).
-* **Use IRSA:** have the Harness Kubernetes Delegate in AWS EKS use a specific IAM role when making authenticated requests to resources. This option uses [IRSA (IAM roles for service accounts)](https://docs.aws.amazon.com/emr/latest/EMR-on-EKS-DevelopmentGuide/setting-up-enable-IAM.html).
+## Select connectivity mode
 
-All of the settings for these options are described in detail in [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
+Harness uses AWS connectors during pipeline runs to authenticate and perform operations with AWS.
 
-### Test Region and AWS GovCloud Support
+1. Select how you want Harness to connect to AWS:
+   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and AWS.
+   * **Connect through a Harness Delegate:** Harness communicates with AWS through a Harness delegate in AWS. You must choose this option if you chose **Use IRSA** or **Assume IAM Role on Delegate**.
+2. If connecting through a Harness delegate, select either:
+   * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
+   * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+     * Select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
-By default, Harness uses the **us-east-1** region to test the credentials for this Connector.
+<details>
+<summary>AWS connector errors</summary>
 
-If you want to use an AWS GovCloud account for this Connector, select it in **Test Region**.
+If the connection test fails due to a credentials issue, use the AWS CLI or console to check the credentials. The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is useful for evaluating policies and access.
 
-GovCloud is used by organizations such as government agencies at the federal, state, and local level, as well as contractors, educational institutions. It is also used for regulatory compliance with these organizations.
+Due to the limited scope of the initial connection test, credentials can pass the connection test and then fail when you use the connector in a pipeline if the IAM role the connector is using doesn't have the roles and policies needed for the pipeline's operations. For example, if a pipeline has a Run step that references an AWS connector, the connector may need to have specific roles or policies to be able to execute the operations required by the Run step.
 
-#### Restrictions
+If you experience any errors with AWS connectors, verify that the IAM roles and policies it is using are correct. Notably, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
 
-You can access AWS GovCloud with AWS GovCloud credentials (AWS GovCloud account access key and AWS GovCloud IAM user credentials).
+For a list of roles and policies, go to the [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
 
-You cannot access AWS GovCloud with standard AWS credentials. Likewise, you cannot access standard AWS regions using AWS GovCloud credentials.
+</details>
 
-### Step 3: Set Up Delegates
+## See also
 
-Harness uses AWS Connectors at Pipeline runtime to authenticate and perform operations with AWS. Authentications and operations are performed by Harness Delegates.
-
-You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
-
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
-
-If you need to install a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
-
-Click **Save and Continue**.
-
-Harness tests the credentials you provided using the Delegates you selected.
-
-If the credentials fail, you'll see an error such as `AWS was not able to validate the provided access credentials`. Check your credentials by using them with the AWS CLI or console.
-
-The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_testing-policies.html) is a useful tool for evaluating policies and access.The credentials might work fine for authentication, but might fail later when you use the Connector with a Pipeline because the IAM role the Connector is using does not have the roles and policies needed for the Pipeline's operations.
-
-For example, the [DescribeRegions](https://docs.aws.amazon.com/AWSEC2/latest/APIReference/API_DescribeRegions.html) action is required for all AWS Cloud Providers regardless of what AWS service you are using for your target infrastructure.
-
-If you run into any error with an AWS Connector, verify that the IAM roles and policies it using are correct.
-
-For a list of roles and policies, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
-
-Click **Finish**.
-
+* [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md)
+* [AWS connector settings reference](ref-cloud-providers/gcs-connector-settings-reference.md)
