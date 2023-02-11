@@ -59,8 +59,8 @@ Before you begin, you must:
 Harness uses GCP connectors during pipeline runs to authenticate and perform operations with GCP.
 
 1. Select how you want Harness to connect to GCP:
-   *  **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP.
-   *  **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
+   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and GCP.
+   * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
 2. If connecting through a Harness delegate, select either:
    * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
    * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
