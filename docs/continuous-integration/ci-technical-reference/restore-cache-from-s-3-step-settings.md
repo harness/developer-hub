@@ -24,6 +24,16 @@ The Harness Connector to use when restoring the cache from AWS S3. Typically, th
 
 The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to read from S3. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
+:::note
+
+This step supports AWS connectors using **AWS Access Key** and **Assume IAM role on Delegate** authentication methods *without* cross account access (ARN/STS).
+
+AWS connectors using IRSA authentication may encounter problems during pipeline execution.
+
+This step does not support AWS connectors that have enabled cross account access (ARN/STS), regardless of authentication method.
+
+:::
+
 ### Region
 
 An AWS region you used when you saved the cache. See [Save Cache to S3 Step Settings](save-cache-to-s-3-step-settings.md).

@@ -24,6 +24,14 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 The Harness AWS Connector to use to connect to ECR. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to push to ECR. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
+
+:::note
+
+This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross account access).
+
+:::
+
+
 ### Region
 
 The AWS region to use when pushing the image. The registry format for ECR is `aws_account_id.dkr.ecr.region.amazonaws.com` and a region is required. See [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html) from AWS.

@@ -24,6 +24,16 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 The Harness Connector to use when saving the cache to an S3. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to write to S3. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
+:::note
+
+This step supports AWS connectors using **AWS Access Key** and **Assume IAM role on Delegate** authentication methods *without* cross account access (ARN/STS).
+
+AWS connectors using IRSA authentication may encounter problems during pipeline execution.
+
+This step does not support AWS connectors that have enabled cross account access (ARN/STS), regardless of authentication method.
+
+:::
+
 ### Region
 
 An AWS region you selected when you created AWS S3 bucket. See [Creating and configuring an S3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-configure-bucket.html) in the AWS docs.
