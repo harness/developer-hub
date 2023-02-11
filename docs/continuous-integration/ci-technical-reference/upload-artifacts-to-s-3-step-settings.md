@@ -10,17 +10,19 @@ helpdocs_is_published: true
 
 This topic provides details about the settings for the Upload Artifacts to S3 step, which uploads artifacts to AWS or other S3 providers such as [MinIo](https://docs.min.io/docs/minio-gateway-for-s3.html).
 
-### Name
+## Name
 
 The unique name for this step.
 
-### Id
+An **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) is generated based on the name The **Id** can be edited.
 
-See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
+## AWS Connector
 
-### AWS Connector
+The Harness AWS connector to use when connecting to AWS S3.
 
-The Harness Connector to use when connecting to AWS S3. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to push to S3. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to S3. For more information about roles and permissions for AWS connectors, go to:
+* [Add an AWS connector](../../platform/7_Connectors/add-aws-connector.md)
+* [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
 <details>
 <summary>Stage variable required for non-default ACLs</summary>
@@ -45,52 +47,47 @@ If your AWS connector's authentication uses a cross-account role (ARN), pipeline
 4. In the **Value** field, input the full ARN value that corresponds with the AWS connector's ARN.
 </details>
 
-### Bucket
+## Region
 
-The bucket name for the uploaded artifact.
+Define the AWS region to use when pushing the image.
 
-### Source Path
+## Bucket
 
-Path to the artifact files you want to upload. You can use standard [glob expressions](https://en.wikipedia.org/wiki/Glob_(programming)) to upload multiple files. For example, `src/js/**/*.js` will upload all Javascript files in `src/js/subfolder-1/`, `src/js/subfolder-2`, and so on.
+The S3 bucket name for the uploaded artifact.
 
-### Optional Configuration
+## Source Path
 
-Configure the following options to add additional configuration for the Step.
+Path to the artifact files that you want to upload.
 
-#### Endpoint URL
+You can use standard [glob expressions](https://en.wikipedia.org/wiki/Glob_(programming)) to upload multiple files. For example, `src/js/**/*.js` uploads all Javascript files in matching directories, such as `src/js/subfolder-1/`, `src/js/subfolder-2`, and so on.
 
-Endpoint URL for S3-compatible providers (not needed for AWS).
+## Optional Configuration
 
-#### Target
+Use the following settings to add additional configuration to the step.
 
-The bucket path where the artifact will be stored.
+### Endpoint URL
 
-Do not include the bucket name. It is specified in **Bucket**.
+Endpoint URL for S3-compatible providers. It is not needed for AWS.
 
-If no target is provided, the cache is saved to `[bucket]/[key]`.
+### Target
 
-#### Run as User
+The path, relative to the S3 **Bucket**, where you want to store the artifact. Do not include the bucket name; you specified this in **Bucket**.
 
-Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+If unspecified, the cache is saved to `[bucket]/[key]`.
 
-#### Set container resources
+### Run as User
 
-Maximum resources limit values for the resources used by the container at runtime.
+Set the value to specify the user id for all processes in the pod, running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-##### Limit Memory
+### Set Container Resources
 
-Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+Maximum resources limits for the resources used by the container at runtime:
 
-##### Limit CPU
+* **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Timeout:** Timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution continues.
 
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed: you can specify one hundred millicpu as `0.1` or `100m`. See [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-
-##### Timeout
-
-Timeout for the step. Once the timeout is reached, the step fails, and the Pipeline execution continues.ACL
-
-### See Also
+## See Also
 
 * [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
