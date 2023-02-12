@@ -19,7 +19,7 @@ Node drain drains the node of all its resources running on it.
 
 **Note**
 - Kubernetes > 1.16 is required to execute this fault.
-- Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
+- Node specified in the <code>TARGET_NODE</code> environment variable should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.

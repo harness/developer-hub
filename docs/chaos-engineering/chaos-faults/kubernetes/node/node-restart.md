@@ -14,7 +14,7 @@ Node restart disrupts the state of the node by restarting it.
 - Node restart fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod in the event of an unexpected node restart. 
 - It simulates loss of critical services (or node-crash). 
 - It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes).
-- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
+- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity or anti-affinity policies) or not.
 
 **Note**
 - Kubernetes > 1.16 is required to execute this fault.
