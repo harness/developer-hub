@@ -37,8 +37,8 @@ Node IO stress causes I/O stress on the Kubernetes node.
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-       <td> It contains the node label that is used to filter the target nodes.</td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
+       <td> It contains the node label that is used to filter the target nodes. It is mutually exclusive with the <code>TARGET_NODES</code> environment variable.</td>
+        <td>If both the environment variables are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
     </table>
     <h2>Optional fields</h2>
@@ -60,8 +60,8 @@ Node IO stress causes I/O stress on the Kubernetes node.
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specify the size of the files used per worker (in GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress/#filesystem-utilization-bytes"> file system utilization bytes.</a></td>
-        <td> </td>
+        <td> Specify the size of the files used per worker (in GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. </td>
+        <td>If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress/#filesystem-utilization-bytes"> file system utilization bytes.</a></td>
       </tr>
       <tr>
         <td> CPU </td>
