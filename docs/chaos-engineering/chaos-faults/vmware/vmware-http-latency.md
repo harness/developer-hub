@@ -8,17 +8,13 @@ VMware HTTP latency injects HTTP response latency into the service whose port is
 
 ![VMware HTTP Latency](./static/images/vmware-http-latency.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
 This fault helps determine how resilient an application is to HTTP latency. It helps determine how the system recovers or fetches the responses when there is a delay in accessing the service.
-</div>
-</details>
 
-## Prerequisites
-- Kubernetes >= 1.17
+
+**Note**
+- Kubernetes > 1.17 is required to execute this fault. 
 - Vcenter access to stop and start the VM.
 - Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
@@ -39,15 +35,13 @@ stringData:
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 
-## Default validations
+
 - The VM should be in a healthy state.
 
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+  <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -80,7 +74,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
             <td> Defaults to port 80. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -128,9 +122,6 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
           <td> Defaults to eth0. </td>
         </tr>
     </table>
-</details>
-
-## Fault examples
 
 ### Common fault tunables
 

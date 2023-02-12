@@ -7,17 +7,13 @@ VMware disk loss detaches the disks that are attached to a Linux OS based VMware
 
 ![VMware Disk Loss](./static/images/vmware-disk-loss.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
 This fault helps determine how resilient an application is to the unplanned scaling of K8s pods.
-</div>
-</details>
 
-## Prerequisites
-- Kubernetes > 1.16
+
+**Note**
+- Kubernetes > 1.16 is required to execute this fault. 
 - Execution plane is connected to vCenter and the hosts on port 443. 
 - VMware tool is installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions to access the hosts and the VMs.
@@ -36,15 +32,14 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-## Default validations
+
 - The VM should be in a healthy state.
 - The target disks should be attached to the VM.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -59,10 +54,10 @@ stringData:
       <tr>
         <td> VIRTUAL_DISK_NAMES </td>
         <td> Name of the target disks provided as comma-separated values. </td>
-        <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. </td>
+        <td> For example, <code>disk-1.vmdk, disk-2.vmdk</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -90,12 +85,6 @@ stringData:
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Virtual disk names
 It contains the name of the target disks attached to a particular VM. You can tune it using the `VIRTUAL_DISK_NAMES` environment variable.

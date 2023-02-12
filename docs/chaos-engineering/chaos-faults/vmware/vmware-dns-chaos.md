@@ -8,16 +8,13 @@ VMware DNS chaos causes DNS errors in the VMware VMs for a specific duration.
 
 ![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault causes DNS errors on the target VMs which results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault provides a hypothesis wherein certain services of an application could be unreachable from the VM. This fault determines how DNS errors impact the infrastructure and standalone tasks in the application.
-</div>
-</details>
+## Use cases
 
-## Prerequisites
-- Kubernetes > 1.16
+This fault causes DNS errors on the target VMs which results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault provides a hypothesis wherein certain services of an application could be unreachable from the VM. This fault determines how DNS errors impact the infrastructure and standalone tasks in the application.
+
+
+**Note**
+- Kubernetes > 1.16 is required to execute this fault. 
 - Execution plane is connected to vCenter and the hosts on port 443. 
 - VMware tool is installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions to access the hosts and the VMs.
@@ -39,14 +36,13 @@ stringData:
 ### Note
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Default validations
+
 - The VM should be in a healthy state before and after injecting chaos.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -69,7 +65,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> Defaults to 54 </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -140,12 +136,6 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> It can be set up using a secret.</td>
       </tr>
      </table>
-</details>
-
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Run DNS chaos with port
 

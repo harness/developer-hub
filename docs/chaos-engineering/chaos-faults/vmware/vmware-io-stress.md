@@ -6,17 +6,13 @@ VMware IO stress causes disk stress on the target VMware VMs. It aims to verify 
 
 ![VMware IO Stress](./static/images/vmware-io-stress.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
 This fault helps determine how resilient an application is to unexpected spikes in resources. It determines how well an application handles unexpected stress at a given point in time.
-</div>
-</details>
 
-## Prerequisites
-- Kubernetes > 1.16
+
+**Note**
+- Kubernetes > 1.16 is required to execute this fault. 
 - Execution plane is connected to vCenter and the hosts on port 443. 
 - VMware tool is installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions to access the hosts and the VMs.
@@ -37,14 +33,13 @@ stringData:
 ### Note
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Default validations
+
 - The VM should be in a healthy state.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -57,7 +52,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -110,12 +105,6 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Filesystem utilization percentage
 It specifes the size as a percentage of free space on the file system. You can tune it using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. 

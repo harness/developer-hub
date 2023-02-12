@@ -9,16 +9,13 @@ VMware process kill kills the target processes that are running as a part of a L
 ![VMware Process kill](./static/images/vmware-process-kill.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault disrupts critical processes running within the application, such as databases or message queues. These services may be running in the VMware VM, and this fault kills their underlying processes or threads. Such faults help determine how efficiently and quickly the VMware instance recovers from the unexpected disruption.
-</div>
-</details>
+## Use cases
 
-## Prerequisites
-- Kubernetes > 1.16
+This fault disrupts critical processes running within the application, such as databases or message queues. These services may be running in the VMware VM, and this fault kills their underlying processes or threads. Such faults help determine how efficiently and quickly the VMware instance recovers from the unexpected disruption.
+
+
+
+- Kubernetes > 1.16 is required to execute this fault. 
 - Execution plane is connected to vCenter and the hosts on port 443. 
 - VMware tool is installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions to access the hosts and the VMs.
@@ -40,15 +37,14 @@ stringData:
 ### Note
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Default validations
+
 - The VM should be in a healthy state.
 - The target processes should exist inside the VM.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -66,7 +62,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, <code>183,253,857</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -84,12 +80,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Process IDs
 It contains the target process IDs running on a particular VM. You can tune it using the `PROCESS_IDS` environment variable.

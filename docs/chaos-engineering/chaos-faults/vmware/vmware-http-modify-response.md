@@ -10,17 +10,13 @@ VMware HTTP modify response injects HTTP chaos by modifying the status code, bod
 
 ![VMware HTTP Modify Response](./static/images/vmware-http-modify-response.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
 This fault helps determine how resilient an application is when the status code or body or header of the request (or response) is modified. It determines the resilience of an application by how accurately the application spots incorrect HTTP response body.
-</div>
-</details>
 
-## Prerequisites
-- Kubernetes >= 1.17
+
+**Note**
+- Kubernetes > 1.17 is required to execute this fault. 
 - Vcenter access to stop and start the VM.
 - Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
@@ -41,15 +37,14 @@ stringData:
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 
-## Default validations
+
 - The VM should be in a healthy state.
 
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -118,7 +113,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
             <td> Defaults to response. Supports request as well.  </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -166,9 +161,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
           <td> Defaults to eth0. </td>
         </tr>
     </table>
-</details>
 
-## Fault examples
 
 ### Common fault tunables
 

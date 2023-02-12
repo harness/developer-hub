@@ -8,21 +8,16 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM.
 
 ![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
 
-## Usage
+## Use cases
+VMware CPU hog fault helps determine the resilience of an application when stress is applied on the CPU resources of a VMware virtual machine.
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-This fault helps determine how resilient an application is when stress is applied on the CPU resources of a VMware virtual machine.
-</div>
-</details>
-
-## Prerequisites
-- Kubernetes > 1.16
-- Execution plane is connected to vCenter and the hosts on port 443. 
-- VMware tool is installed on the target VM with remote execution enabled.
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- The VM should be in a healthy state.
+- Execution plane should be connected to vCenter and should host on port 443. 
+- VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions to access the hosts and the VMs.
-- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Kubernetes secret that has the Vcenter credentials should be present in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -36,18 +31,11 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-
-## Default validations
-- The VM should be in a healthy state.
-
+**Tip:** You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -57,10 +45,10 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
       <tr>
         <td> VM_NAME </td>
         <td> Name of the target VM. </td>
-        <td> For example, <code>ubuntu-vm-1</code>code>. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -98,15 +86,9 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-
-### CPU_CORES
-It stresses the `CPU_CORE` of the target VM for the duration defined by the `TOTAL_CHAOS_DURATION` environment variable.
+### CPU cores
+It specifies the number of CPU cores on which stress should be applied. Tune it by using the `CPU_CORE` environment variable.
 
 Use the following example to tune it:
 
@@ -133,7 +115,7 @@ spec:
           value: '1'
 ```
 ### CPU load
-It specifies the load exerted on each VM CPU core (in percentage). You can tune it using the `CPU_LOAD` environment variable.
+It specifies the load exerted on each VM CPU core (in percentage). Tune it by using the `CPU_LOAD` environment variable.
 
 Use the following example to tune it:
 

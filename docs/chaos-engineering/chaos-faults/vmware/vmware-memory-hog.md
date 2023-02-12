@@ -9,18 +9,13 @@ VMware memory hog fault consumes excessive memory resources on Linux OS based VM
 
 ![VMware Memory Hog](./static/images/vmware-memory-hog.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
 This fault helps determine how resilient an application is when excessive memory is unexpectedly consumed by resources.
-</div>
-</details>
 
 
-## Prerequisites
-- Kubernetes > 1.16
+**Note**
+- Kubernetes > 1.16 is required to execute this fault. 
 - Execution plane is connected to vCenter and the hosts on port 443. 
 - VMware tool is installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions to access the hosts and the VMs.
@@ -42,13 +37,12 @@ stringData:
 ### Note
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Default validations
+
 - The VM should be in a healthy state.
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -61,7 +55,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -104,12 +98,6 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Memory consumption in mebibytes
 It defines the memory consumed by the target VM in mebibytes (MiB) for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable.

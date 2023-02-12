@@ -9,16 +9,13 @@ VMware host reboot reboots a VMware host that is attached to the Vcenter.
 
 ![VMware Host Reboot](./static/images/vmware-host-reboot.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault has a high blast radius due to which all the VMs under the target host are disrupted. It measures the impact of the host reboot on the VMs and its underlying applications. It also measures the effectiveness of a HA cluster.
-</div>
-</details>
+## Use cases
 
-## Prerequisites
-- Kubernetes > 1.16
+This fault has a high blast radius due to which all the VMs under the target host are disrupted. It measures the impact of the host reboot on the VMs and its underlying applications. It also measures the effectiveness of a HA cluster.
+
+
+**Note**
+- Kubernetes > 1.16 is required to execute this fault. 
 - Execution plane is connected to vCenter and the hosts on port 443. 
 - VMware tool is installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions to access the hosts and the VMs.
@@ -39,14 +36,13 @@ stringData:
 ### Note
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Default validations
+
 - The host should be in a healthy state.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -69,7 +65,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> Defaults to disable. Supports enable as well. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -82,12 +78,6 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Host reboot
 It reboots a vCenter host.

@@ -10,19 +10,15 @@ VMware network loss injects network packet loss from the VMware VM(s) into the a
 ![VMware Network Loss](./static/images/vmware-network-chaos.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 This fault simulates issues within the VM network (or microservice) communication across services in different hosts.
 It helps determine the impact of degradation while accessing a microservice. 
 The VM may stall (or get corrupted) while waiting endlessly for a packet. The fault limits the impact (blast radius) to the traffic that you wish to test by specifying the IP addresses.
-</div>
-</details>
 
-## Prerequisites
 
-- Kubernetes > 1.16 
+**Note**
+- Kubernetes > 1.16 is required to execute this fault. 
 - Vcenter access to stop and start the VM.
 - Kubernetes secret that has Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
@@ -41,14 +37,13 @@ stringData:
 ### Note
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Default validations
+
 - The VM should be in a healthy state before and after chaos.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -71,7 +66,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> It is used to run the govc command.</td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -142,12 +137,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> It can be set up using a secret.</td>
       </tr>
      </table>
-</details>
 
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Network packet loss
 

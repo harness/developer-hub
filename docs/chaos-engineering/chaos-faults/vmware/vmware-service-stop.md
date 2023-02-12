@@ -7,17 +7,13 @@ VMware service stop stops the target system services running on a Linux OS based
 
 ![VMware ServiceStop](./static/images/vmware-service-stop.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
 This fault helps determine how resilient an application is to random halts. It determines how efficiently an application recovers and restarts the services.
-</div>
-</details>
 
-## Prerequisites
-- Kubernetes > 1.16
+
+**Note**
+- Kubernetes > 1.16 is required to execute this fault. 
 - Execution plane is connected to vCenter and the hosts on port 443. 
 - VMware tool is installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions to access the hosts and the VMs.
@@ -38,15 +34,14 @@ stringData:
 ### Note
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Default validations
+
 - The VM should be in a healthy state.
 - The target services should exist inside the VM.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -64,7 +59,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, <code>nginx</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -97,12 +92,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Service name
 It contains the target service name running on a particular VM.

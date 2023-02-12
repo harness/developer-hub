@@ -10,18 +10,13 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 
 ![VMware HTTP Reset Peer](./static/images/vmware-http-reset-peer.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
 This fault helps determine how resilient an application is when outgoing HTTP requests are halted unexpectly. It determines how quickly and efficiently an application recovers from these unexpected halts. 
-</div>
-</details>
 
-## Prerequisites
 
-- Kubernetes >= 1.17
+**Note**
+- Kubernetes > 1.17 is required to execute this fault. 
 - Vcenter access to stop and start the VM.
 - Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
@@ -42,15 +37,13 @@ stringData:
 You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
 
-## Default validations
+
 - The VM should be in a healthy state.
 
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -83,7 +76,7 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
             <td> Defaults to port 80. </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -131,9 +124,6 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
           <td> Defaults to eth0. </td>
         </tr>
     </table>
-</details>
-
-## Fault examples
 
 ### Common fault tunables
 
