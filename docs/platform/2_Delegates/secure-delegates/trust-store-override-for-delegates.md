@@ -131,7 +131,7 @@ Edit the Kubernetes delegate YAML file. It's named **harness-delegate.yaml**.
 
 Open the delegate YAML file in a text editor.
 
-In the `Deployment` manifest, under `env`, locate `JAVA_OPTS`.
+In the `Deployment` specification, locate the `env` field, and then find the `JAVA_OPTS` environment variable.
 
 Here's what the default setting looks like:
 
