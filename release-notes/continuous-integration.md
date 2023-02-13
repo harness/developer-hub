@@ -29,7 +29,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Early access
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Deprecations
 
@@ -37,8 +37,8 @@ The Configure Service Dependency step is deprecated in favor of the [Background 
 
 ### Fixed issues
 
-* With the NEW_LEFT_NAV_BAR feature flag enabled, you can view builds details at the project level without drilling down into individual modules. We fixed an issue where the **Commits** tab produced a `404` error when viewing build details from the project level. (CI-6817)
-* We fixed an issue where expressions used in a pipeline's codebase properties resolved to `null` rather than their expected values. (CI-6679, ZD-38122, ZD-38241, ZD-38698, ZD-39088)
+* With the feature flag `NEW_LEFT_NAV_BAR` enabled, you can view builds details at the project level without drilling down into individual modules. When viewing build details from project level, the **Commits** tab produced a `404` error. This is fixed. (CI-6817)
+* Expressions used in pipeline codebase properties unexpectedly resolved to `null`, which caused builds to fail due to missing variable input. These expressions now resolve to their expected values. (CI-6679, ZD-38122, ZD-38241, ZD-38698, ZD-39088)
    ![The CI Codebase Configuration window with the fields set to accept variable expression input.](static/ci-codebase-config-exp-values.png)
 * The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. We fixed an issue where exiting the Getting Started workflow before creating a pipeline resulted in incomplete connector configuration. Attempting to use the incomplete connector in a pipeline produced the following error: `Invalid argument(s): Both plain text and secret value cannot be null for the field`. If you encounter this error, replace the pipeline's SCM connector with a new one. (CI-6443)
 
@@ -51,7 +51,7 @@ The Configure Service Dependency step is deprecated in favor of the [Background 
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -83,21 +83,21 @@ infrastructure:
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
-No fixed issues included in this release.
+This release does not include fixed issues.
 
 ## January 10, 2023, version 78105
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -126,21 +126,21 @@ No early access features added in this release.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
-No fixed issues included in this release.
+This release does not include fixed issues.
 
 ## December 13, 2022, version 77808
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -152,15 +152,15 @@ No early access features added in this release.
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
-No fixed issues included in this release.
+This release does not include fixed issues.
 
 ## November 29, 2022, version 77608
 
@@ -174,7 +174,7 @@ No fixed issues included in this release.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Deprecated features
 
@@ -186,17 +186,17 @@ No early access features added in this release.
 
 ### Fixed issues
 
-No fixed issues included in this release.
+This release does not include fixed issues.
 
 ## November 11, 2022, version 77433
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ###
 
@@ -217,7 +217,7 @@ The Custom Git Connector now supports connection via the Harness Platform, in ad
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -247,11 +247,11 @@ No early access features added in this release.
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -266,7 +266,7 @@ The Infrastructure tab in Build steps has been updated to show only supported op
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -301,11 +301,11 @@ This release includes a new Docker delegate that you can install and run directl
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -321,11 +321,11 @@ No early access features added in this release.
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -340,11 +340,11 @@ No early access features added in this release.
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -354,11 +354,11 @@ Improved the Harness UI to make it easier to search for a specific test under th
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -377,7 +377,7 @@ No early access features added in this release.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -393,7 +393,7 @@ You can now run connection tests for AWS, GCP, and Azure connectors. By default,
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -409,7 +409,7 @@ This release introduces validations for Custom Webhook events. The event handler
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -434,7 +434,7 @@ Users can now use Azure Repos connectors in pipeline codebase configuration and 
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -450,11 +450,11 @@ No early access features added in this release.
 
 ### What's new
 
-No new features added in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -469,7 +469,7 @@ The Build UI now shows a new VM icon. (CI-4630)
 
 ### Early access features
 
-No early access features added in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
