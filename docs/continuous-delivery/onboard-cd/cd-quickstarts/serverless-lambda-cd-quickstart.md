@@ -24,7 +24,7 @@ Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key
 * **Kubernetes** **Delegate cluster with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. For this quickstart, we'll install a Kubernetes Delegate running in a Kubernetes cluster.
 	+ You can use a cluster hosted on a cloud platform or run one in minikube using Docker Desktop locally. The installation steps are the same.
 	+ The Delegate host must have Serverless installed. We'll add the Serverless installation script to the Delegate YAML file later in this quickstart.
-* **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless.com . To create the AWS User, do the following:
+* **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless.com. To create the AWS User, do the following:
 	+ Log into your AWS account and go to the Identity & Access Management (IAM) page.
 	+ Click **Users**, and then **Add user**. Enter a name. Enable **Programmatic access** by clicking the checkbox. Click **Next** to go to the **Permissions** page. Do one of the following:
 		- **Full Admin Access:** click on **Attach existing policies directly**. Search for and select **AdministratorAccess** then click **Next: Review**. Check to make sure everything looks good and click **Create user**.
