@@ -70,7 +70,7 @@ For steps on adding certs or other software to the Delegate, see [Common Delegat
 
 ### Delegate Access Requirements
 
-* The Harness Delegate does NOT require root account access, but the Kubernetes and Docker Delegates run as root by default. If you do not need to install applications using INIT_SCRIPT, then you can use a non-root account or install the application without the Delegate.  
+* Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate.  
 See [Non-Root Delegate Installation](/docs/platform/2_Delegates/advanced-installation/non-root-delegate-installation.md).
 * If you do not run the Delegate as root, be aware that you cannot install any software using a [Delegate Initialization Script](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 
