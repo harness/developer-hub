@@ -44,6 +44,12 @@ Select the Code Repo Connector that connects to your Git provider account.
 
 See [Code Repo Connectors Tech Ref](/docs/category/code-repo-connectors).
 
+:::note
+
+Git webhook triggers do not support generic Git connectors. You must create specific connectors for each provider to use them with webhook triggers.
+
+:::
+
 ### Repository Name
 
 Enter the name of the repo in the account.
