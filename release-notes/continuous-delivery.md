@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2023-03-09T10:00
+date: 2023-03-13T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -48,7 +48,7 @@ This release does not include new features.
 
 ### Fixed issues
 
-- Settings in **Run Pipeline** were getting reset when settings were selected for the second stage. (CDS-47362)
+- Settings in **Run Pipeline** were being reset when settings were selected for the second stage. (CDS-47362)
   
   The **Run Pipeline** settings were getting reset when a user selected a new environment in another stage. We were updating all the settings with older values for services or environments. This caused the completed settings values to be cleared. This has been fixed.
 - Improve the error message for when regex is used for the Artifactory connector. (CDS-48340)
@@ -64,15 +64,15 @@ This release does not include new features.
   The route URLs for environments and environment groups under the CD module are updated. When you select **Environment Groups**, the navigation now highlights **Environments**.
   
   **User action:** If any bookmarks have been stored with the older URLs, they will need to be updated. Simply navigate to **Environment Groups** and bookmark the page.
-- The stage template YAML should be validated if it has both service and services nodes together. (CDS-50122)
+- The stage template YAML should be validated if it has both `service` and `services` nodes together. (CDS-50122)
   
-  Added schema validation to ensure that the YAML should contain only one of service, services, or serviceConfig.
+  Added schema validation to ensure that the YAML contains only one of `service`, `services`, or `serviceConfig`.
 
   ![picture 45](static/7cd69654456b73a540ae1b63e20e18c8d7a4b3da2a477bee23a9ab54390935e4.png)
 
 - Variable values are not visible in pipeline **Input** and **Output** tabs for the GitOps **Update Release Repo** and **Merge PR** steps. (CDS-50152)
   
-  The values of variables should be visible in the pipeline's **Input** and **Output** tabs for the GitOps **Update Release Repo** and **Merge PR** steps. Now, when you click on the steps in an executed pipeline, their **Input** and **Output** tabs are displaying all variable values. 
+  The values of variables should be visible in the pipeline's **Input** and **Output** tabs for the GitOps **Update Release Repo** and **Merge PR** steps. Now, when you click on the steps in an executed pipeline, their **Input** and **Output** tabs display all the variable values.
 
   ![picture 46](static/8e8505663a06ebf516784c0eb7316e5ca680a119515af7ae027259ec271df198.png)
 
@@ -102,7 +102,7 @@ This release does not include new features.
   ![Deployment Type](static/adc95dc9af6b3beecc06149fc8045fd66f6ad514a37d2583addea35354643801.png)
 - The [Email step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/email_step/) is sending an error even though the email is sent. (CDS-50952)
 
-  In Email step, when there is an invalid address in the **to** setting and a valid email in the **cc** setting, mail is sent to the cc address, but the step is marked as failed. This has been fixed. The Email step is marked as success if emails are sent to the cc address.
+  In the **Email** step, when there is an invalid address in the **to** setting and a valid email in the **cc** setting, mail is sent to the cc address, but the step is marked as failed. This has been fixed. The Email step is marked as success if emails are sent to the cc address.
 - The Custom Approval step doesn't show logs and output variables. (CDS-51347,ZD-39060)
 
   Custom approvals did not show console logs for every shell script execution. This was happening due to closing the associated log stream when the shell script execution succeeds or fails. Hence, only the first trial was logged on the console.
@@ -111,7 +111,7 @@ This release does not include new features.
 - Users cannot manually type if the Helm chart **Version** dropdown loading fails. (CDS-51559)
   
   Users can now manually enter a Helm chart version if Harness is unable to fetch versions from the chart repo.
-- Deployed service Logs don't show fetch details for a Jenkins artifact source.	(CDS-51566)
+- Deployed service logs don't show fetch details for a Jenkins artifact source.	(CDS-51566)
 
   The logs were missing this information but now Harness captures the type, job name, path, and build for Jenkins.
 
