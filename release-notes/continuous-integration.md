@@ -17,16 +17,15 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-* Pipeline execution status links in pull requests now direct you to the associated stage within the pipeline. (CI-6813)
+* Microsoft Windows (amd64) is now a supported Harness Cloud build infrastructure option. (CI-5455)
 * Added **Python** as a built-in **Shell** option for [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md). (CI-6692)
 * [GCP connectors](../docs/platform/7_Connectors/connect-to-google-cloud-platform-gcp.md) are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. Run steps can now reference images in GCR through GCP connectors with inherited credentials. (CI-5758, ZD-38986)
-* Improved handling of Azure repo URLs in Git webhook pipeline triggers. (CI-5720) <!--not clear-->
-* Microsoft Windows (amd64) is now a supported Harness Cloud build infrastructure option. (CI-5455)
 * Use [Background steps](../docs/continuous-integration/ci-technical-reference/background-step-settings.md) to configure service dependencies.
   * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
   * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
   * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option. (CI-5580)
-
+* Pipeline execution status links in pull requests now direct you to the associated stage within the pipeline. (CI-6813)
+* Improved handling of Azure repo URLs in Git webhook pipeline triggers. (CI-5720)
 ### Early access
 
 No early access features added in this release.
