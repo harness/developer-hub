@@ -27,7 +27,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
   * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option. (CI-5580)
 * Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
-* Improved handling of Azure repo URLs in Git webhook pipeline triggers. (CI-5720)
+* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](../docs/platform/11_Triggers/triggering-pipelines.md). (CI-5720)
 
 ### Early access
 
@@ -48,7 +48,7 @@ The Configure Service Dependency step is deprecated in favor of the [Background 
 
 ### What's new
 
-* Linux ARM is now supported in Harness Cloud build infrastructures. (CI-5787)
+* Linux ARM is now supported in [Harness Cloud](../docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) build infrastructures. (CI-5787)
 * The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
 
 ### Early access features
