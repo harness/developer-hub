@@ -1,9 +1,7 @@
 ---
 title: Set up Test Intelligence
-description: Test Intelligence improves test time by running only the tests required to confirm the quality of the code changes that triggered the build.
-tags:
-   - helpDocs
-# sidebar_position: 2
+description: Reduce test time by running only relevant tests.
+sidebar_position: 10
 helpdocs_topic_id: 428cs02e6u
 helpdocs_category_id: 29nai2tbs6
 helpdocs_is_private: false
@@ -12,24 +10,14 @@ helpdocs_is_published: true
 
 Test Intelligence (TI) improves test time by running only the tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works, go to [Test Intelligence Overview](../../ci-quickstarts/test-intelligence-concepts.md).
 
-You can enable Test Intelligence by including a **Run Tests** step in your CI pipeline **Build** stages. This topic explains how to set up Test Intelligence in a Harness CI pipeline stage.
-
-### Before you begin
-
-You'll need a pipeline where you can enable Test Intelligence.
-
-If you haven't created a pipeline before, try the [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md).
-
-### Limitations
-
-At this time, Test Intelligence supports the following codebases:
+Test Intelligence is available for the following codebases:
 
 * Java
 * Kotlin
-* .NET Core
+* .NET Core: Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 * Scala
 
-Currently, Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+To enable Test Intelligence, add a **Run Tests** step in your CI pipeline **Build** stages. This topic explains how to enable Test Intelligence in a Harness CI Build stage. To complete these steps, you need a pipeline where you can enable Test Intelligence. If you haven't created a pipeline before, try the [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
 ### Create the Build stage
 
