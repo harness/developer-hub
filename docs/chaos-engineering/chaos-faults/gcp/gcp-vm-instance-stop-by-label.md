@@ -5,7 +5,7 @@ title: GCP VM instance stop by label
 GCP VM instance stop by label powers off from the GCP VM instances (filtered by a label before) for a specific duration.
 - When the `MANAGED_INSTANCE_GROUP` environment variable is set to `enable`, the fault does not start the VM instances after chaos. Instead, the fault checks the instance group for new instances.
 
-![GCP VM Instance Stop By Label](./static/images/gcp-vm-instance-stop.png)
+![GCP VM Instance Stop By Label](./static/images/gcp-vm-instance-stop-by-label.png)
 
 ## Usage
 <details>

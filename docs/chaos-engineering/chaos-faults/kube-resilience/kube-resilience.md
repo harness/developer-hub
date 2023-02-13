@@ -23,7 +23,7 @@ import { experiments } from "./experiments"
 
 <!-- Code for Fault Card starts from here -->
 
-<FaultDetailsCard category="kubelet-density">
+<FaultDetailsCard category="kube-resilience">
 
 <!-- please specify category in above tag to generate correct experiment icons and links by itself, if links are broken please contact @Sahil, that's me -->
 

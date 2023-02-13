@@ -1,9 +1,7 @@
 ---
 title: Restore Cache from S3 Step Settings
 description: This topic provides settings for the Restore Cache from S3 step. Name. The unique name for this step. ID. See Entity Identifier Reference. AWS Connector. The Harness Connector to use when restoring t…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 100
 helpdocs_topic_id: zlpx6lli6d
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

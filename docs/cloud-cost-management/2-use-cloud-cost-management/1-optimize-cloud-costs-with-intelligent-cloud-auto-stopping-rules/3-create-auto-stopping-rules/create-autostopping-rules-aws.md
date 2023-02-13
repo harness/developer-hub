@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
-## Before You Begin
+## Before you begin
 
 * [Create an AWS Connector for Autostopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md)
 * [Create a Kubernetes Connector for AutoStopping Rules](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-for-kubernetes.md)
@@ -19,27 +19,31 @@ AutoStopping Rules make sure that your non-production resources run only when us
 ## Prerequisites
 
 * Ensure that you have AWS EC2 VMs or Auto Scaling Groups created.
-* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws#cost-and-usage-reports-cur-and-ccm-requirements).
-* Permissions to create a cross-account role. See [AWS Access Permissions](/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws#aws-access-permissions).
+* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
+* Permissions to create a cross-account role. See [AWS Access Permissions](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions).
+* To create an AutoStopping rule using an AutoStopping proxy load balancer: 
+   * You must provide the required permissions to Harness to create a VM in your AWS account.
+   * You must provide the required permissions to read the secrets and fetch the certificates stored in the secret for TLS-based flows.
+   * Ensure that you reserve some IPs if you intend to allocate elastic IP while creating an AutoStopping proxy.
 
-## How Spot Orchestration Works?
+## How Spot orchestration works?
 
 For spot instances, periodic snapshots are taken every two minutes. A snapshot is also taken before the instance is shut down. It is important to note here that only the last three successful snapshots are kept, while the rest are deleted. When an interruption occurs, or when the next activity after idleness occurs, the last known snapshot is used to create a new spot instance. If there is no available spot capacity, we fall back to an on-demand instance. AWS spot instance creation API is used to create a new spot instance.
 
 When there is idleness, the spot instance, along with the root EBS volume, is terminated after a successful snapshot is taken (snapshots in AWS are incremental, so subsequent snapshots after the first one are very fast). When a new spot instance is created, the root EBS volume is recreated from the most recent successful snapshot and the additional EBS volumes are reattached. As a result, there is no data loss. All network interfaces and metadata are also saved. As a result, even though it's a new spot instance, the user sees it to be the same machine.
 
-## Visual Summary
+## Visual summary
 
 This section provides an overview of AutoStopping Rules.
 <figure><iframe src="//fast.wistia.com/embed/iframe/8wo6shjqqh" width="560" height="315" frameborder="0" allowfullscreen=""></iframe></figure>
 
-## AutoStopping Architecture
+## AutoStopping architecture
 
 Here is an AutoStopping architecture for AWS resources:
 
 ![](./static/create-autostopping-rules-aws-88.png)
 
-## Step 1: Add a Cloud Provider
+## Add a Cloud provider
 
 Perform the following steps to link your AWS cloud account to Harness.
 
@@ -54,7 +58,7 @@ Perform the following steps to link your AWS cloud account to Harness.
    
      ![](./static/create-autostopping-rules-aws-91.png)
 
-## Step 2: Add a New AutoStopping Rule
+## Add a new AutoStopping rule
 
 Perform the following steps to add a new AWS AutoStopping rule:
 
@@ -72,7 +76,7 @@ Perform the following steps to add a new AWS AutoStopping rule:
 	+ Setup Access for HTTP/HTTPS workload
 * Review: Verify the configurations.
 
-### Define an AutoStopping Rule
+### Define an AutoStopping rule
 
 Perform the following steps to get started with AutoStopping Rule.
 
@@ -86,13 +90,13 @@ Perform the following steps to get started with AutoStopping Rule.
   
   After the idle time elapses:  
   
-  - For Spot Instances, a snapshot is taken and then the instances are terminated. See **How Spot Orchestration Works?** section.  
+  - For Spot Instances, a snapshot is taken, and then the instances are terminated. See **How Spot Orchestration Works?** section.  
   
   - On-Demand Instances are shut down without a snapshot.
   
    ![](./static/create-autostopping-rules-aws-93.png)
 
-### Select the Resources to be managed by the AutoStopping Rule
+### Select the resources to be managed by the AutoStopping Rule
 
 Select the cloud resources that you want to manage using this rule. AutoStopping Rule monitors the selected resources and stop them when they are idle beyond the configured idle time. You can select any of the following:
 
@@ -243,7 +247,7 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 
 1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access.
 2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated based on the security group.
-3. Specify all the TCP ports your application is listening. Ensure these ports are open.
+3. Specify all the TCP ports your application is listening. Ensure that these ports are open.
 4. Click **Next**.
 
 

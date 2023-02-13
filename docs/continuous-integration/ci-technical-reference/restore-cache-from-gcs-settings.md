@@ -1,9 +1,7 @@
 ---
 title: Restore Cache from GCS Settings
 description: This topic provides settings for the Restore Cache from GCS step, which restores files and directories that were saved using the Save Cache to GCS step. Name. The unique name for this step. Id. See E…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 90
 helpdocs_topic_id: e2o4sektz1
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

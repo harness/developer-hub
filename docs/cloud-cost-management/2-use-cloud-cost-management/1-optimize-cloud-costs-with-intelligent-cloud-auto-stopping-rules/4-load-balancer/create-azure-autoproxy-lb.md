@@ -28,7 +28,7 @@ Perform the following steps to create an AutoStopping proxy for your cloud resou
 
       ![](./static/azure-autoproxy-creation.png)
 
-10. Select the region where you have your cloud resources hosted.
+10. Select the **Region** where you have your cloud resources hosted.
 11. Select the **Resource Group** to which the resource belongs.
 12. Select the **Virtual Network**.
 13. Select the **Subnet**.
@@ -38,7 +38,7 @@ On your Azure console, go to **Key Vaults**. Under **Objects**, click **Secrets*
 
 
 :::note
-It is recommended to create the secret using the Azure CLI, and not use the Generate/Import option on the UI. This is to avoid some unwanted characters that get added to the certificate value. For more information, go to [Set and retrieve a secret from Azure Key Vault using Azure CLI](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-cli).
+It is recommended to create the secret using the Azure CLI, and not using the Generate/Import option on the UI. This is to avoid some unwanted characters that get added to the certificate value. For more information, go to [Set and retrieve a secret from Azure Key Vault using Azure CLI](https://learn.microsoft.com/en-us/azure/key-vault/secrets/quick-create-cli).
 :::
 
 

@@ -6,7 +6,7 @@ EBS loss by ID disrupts the state of EBS volume by detaching it from the node (o
 - In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
 - It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
-![EBS Loss By ID](./static/images/ebs-loss.png)
+![EBS Loss By ID](./static/images/ebs-loss-by-id.png)
 
 ## Usage
 

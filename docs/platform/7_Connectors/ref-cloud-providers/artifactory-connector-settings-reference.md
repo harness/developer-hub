@@ -105,7 +105,7 @@ Enter the name of the repository where the artifact source is located.
 
 Harness supports only the Docker repository format as the artifact source.
 
-#### Artifact Path
+#### Artifact/Image Path
 
 Enter the name of the artifact you want to deploy.
 
@@ -114,5 +114,7 @@ The repository and artifact path must not begin or end with `/`.
 #### Tag
 
 Select a Tag from the list.
+
+**Note:** The Artifactory user account you use in the Harness Artifact connector requires [Basic Authentication](https://www.jfrog.com/confluence/display/JFROG/Access+Tokens#AccessTokens-BasicAuthentication) to fetch the Artifact/Image Path and Tag.
 
 ![](./static/artifactory-connector-settings-reference-11.png)
