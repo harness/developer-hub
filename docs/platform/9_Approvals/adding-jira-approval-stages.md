@@ -1,7 +1,7 @@
 ---
 title: Adding Jira Approval Stages and Steps
 description: Use Jira issues to approve or reject a Pipeline or stage at any point in its execution.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 2lhfk506r8
 helpdocs_category_id: 2d7y1cr09y
 helpdocs_is_private: false
