@@ -79,7 +79,7 @@ terraform {
   required_providers {  
     harness-ccm = {  
       source = "harness.io/ccm/harness-ccm"  
-      version = "0.0.4"  
+      version = "3.0.1"  
     }  
   }  
 }  
@@ -169,7 +169,7 @@ Example 2: This is an example script to create an AutoStopping rule for a VM tha
 >   required_providers {
 >     harness-ccm = {
 >       source = "harness.io/ccm/harness-ccm"
->       version = "3.0.0"
+>       version = "3.0.1"
 >     }
 >   }
 > }
@@ -245,7 +245,7 @@ terraform {
   required_providers {  
     harness-ccm = {  
       source = "harness.io/ccm/harness-ccm"  
-      version = "0.0.1"  
+      version = "3.0.1"  
     }  
   }  
 }  
@@ -375,7 +375,7 @@ terraform {
   required_providers {  
     harness-ccm = {  
       source = "harness.io/ccm/harness-ccm"  
-      version = "0.0.4"  
+      version = "3.0.1"  
     }  
   }  
 }  
@@ -454,7 +454,7 @@ terraform {
   required_providers {  
     harness-ccm = {  
       source = "harness.io/ccm/harness-ccm"  
-      version = "1.0.1"  
+      version = "3.0.1"  
     }  
   }  
 }  
