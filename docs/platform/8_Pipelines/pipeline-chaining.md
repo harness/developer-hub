@@ -60,7 +60,7 @@ To chain pipelines in Harness, perform the following steps:
    ![](./static/pipeline-chain-list.png)
    
    :::note
-   For a succesfull execution, user must have execute access to both parent & child pipeline.
+   You must have execute permissions for the parent and child pipeline to ensure successful execution.
    :::
 
 4. Click **Apply Selected**.
