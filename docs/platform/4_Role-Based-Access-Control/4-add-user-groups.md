@@ -18,7 +18,7 @@ This topic explains the steps to create and manage User Groups within Harness.
 
 ### Step: Add New User Group
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can add a User Group in Project/Organization/Account scope. To do this, go to Project SETUP, Organization, or Account Resources.
 

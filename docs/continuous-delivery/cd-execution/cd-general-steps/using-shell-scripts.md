@@ -38,7 +38,7 @@ In the stage, in **Execution**, click **Add Step**.
 
 Select **Shell Script**.
 
-Enter a name for the step. An Id is generated. This Id identifies the step and is used in variable expressions. For example, if the Id is **Shell Script**, the expression might be `<+steps.Shell_Script.output.outputVariables.myvar>`.
+Enter a name for the step. An Id is generated. This Id identifies the step and is used in variable expressions. For example, if the Id is **Shell Script**, the expression might be `<+execution.steps.Shell_Script.output.outputVariables.myvar>`.
 
 In **Script**, enter a bash script. For example, the variable names `BUILD_NO`and `LANG`:
 
@@ -71,11 +71,11 @@ In **Script Input Variables**, you simply select **Expression** and paste the ex
 
 ![](./static/using-shell-scripts-18.png)
 
-In the Script, you declare the variable using the **Name** value.
+In the Script, you declare the variable using the **Name** value (in this example, `foo`).
 
-![](./static/using-shell-scripts-19.png)
+![picture 3](static/3efd3f47e73c3ca4804bd0e728d8815194ae80c9284ddfe0c11fb07c520b3b0c.png)
 
-At deployment runtime, Harness will evaluate the expression and the variable will contain its output.
+At deployment runtime, Harness evaluates the expression and the variable contains its output.
 
 ## Option: Specify Output Variables
 
@@ -97,30 +97,27 @@ In **Name**, enter a name to use in other steps that will reference this variabl
 The format to reference the output variable can be one of the following:
 
 * Within the stage:
-	+ Referencing the step output:
-		- `<+steps.[step_id].output.outputVariables.[output_variable_name]>`.
-	+ Referencing the step output execution:
-		- `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
-* Anywhere in the Pipeline:
-	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
+	+ `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
+* Anywhere in the pipeline:
+	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]>`
 
-For example, it could be `<+steps.Shell_Script.output.outputVariables.newname>`.
+For example, you could reference the output variable `newname` like this:
+
+```
+echo "anywhere in the pipeline: " <+pipeline.stages.Shell_Script_stage.spec.execution.steps.ShellScript_1.output.outputVariables.newname>
+echo "anywhere in the stage: " <+execution.steps.ShellScript_1.output.outputVariables.newname>
+```
 
 Here's an example showing how the **Script Output Variables** references the exported variable, and how you reference the output variable name to get that value:
 
-![](./static/using-shell-scripts-21.png)
+![picture 1](static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png)  
 
-So now the result of `<+steps.Shell_Script.output.outputVariables.newname>` is `123`.
+
+So now the result of `<+execution.steps.ShellScript_1.output.outputVariables.newname>` is `123`.
 
 To find the expression to reference your output variables, find the step in the Pipeline execution, and click its **Output** tab.
 
 ![](./static/using-shell-scripts-22.png)
-
-You will get the full path to the variable, like this:`<+pipeline.stages.Shell_Script.execution.steps.Shell_Script.outputVariables.newname>`.
-
-If you are using it in the same stage, you can remove everything up to `steps` (`pipeline.stages.Shell_Script.execution.`).
-
-Now you can use `<+steps.Shell_Script.output.outputVariables.newname>` to reference the output variable.
 
 ### Output Variables as Secrets
 
@@ -138,7 +135,7 @@ Next, you reference that output variable as a secret, like this:
 
 
 ```
-echo "my secret: " <+steps.CreateScript.output.outputVariables.myvar>
+echo "my secret: " <+execution.steps.CreateScript.output.outputVariables.myvar>
 ```
 When you run the Pipeline, the resolved output variable expression is sanitized:
 
@@ -158,7 +155,7 @@ In **Execution Target**, select **Specify on** **Target Host** or **On Delegate*
 
 In you select On Delegate, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 
-See [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+See [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 If you select **Target Host**, enter the following:
 

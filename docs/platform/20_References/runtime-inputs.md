@@ -79,9 +79,7 @@ Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact
 
 The following limitations and requirements apply to this feature:
 
-ServiceV2 and EnvironmentV2 are not supported for runtime input.
-
-As a user, you must have the Pipeline Execute permission to be able to submit runtime input during execution.
+- A Harness user must have the **Pipeline Execute** permission to be able to submit runtime input during execution.
 
 #### Using Runtime Input During Execution With a Shell Script
 
@@ -89,7 +87,7 @@ If a runtime input was specified for a step with execution input, you are prompt
 
 When you create a pipeline with a custom stage, add a variable to the step and select **Running input**. To specify an input as runtime input during execution, add the following to the input by substituting the value within the quotes:
 
-`<+input>.default("abc").runtimeInput()`
+`<+input>.default("abc").executiontimeInput()`
 
 The **Value** field is populated with <+input>.
 

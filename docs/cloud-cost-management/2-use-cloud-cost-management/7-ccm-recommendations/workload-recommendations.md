@@ -1,5 +1,5 @@
 ---
-title: Optimize Kubernetes Costs with Workload Recommendations
+title: Optimize Kubernetes costs with workload recommendations
 description: Harness Cloud Cost Management (CCM) provides recommendations for your Kubernetes clusters. These recommendations show you resource optimization opportunities to potentially reduce your monthly spending.
 # sidebar_position: 2
 helpdocs_topic_id: o75arkcg8i
@@ -19,18 +19,18 @@ This topic describes how CCM computes workload recommendations and how you can u
 Before using recommendations in your cluster environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.  
 Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 
-## Before You Begin
+## Before You begin
 
 * [Set Up Cloud Cost Management for Kubernetes](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
 * [CCM Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
 
-## How are Workload Recommendations Computed?
+## How are workload recommendations computed?
 
 In Harness CCM, the workload recommendations are computed by analyzing the past utilization of CPU and memory of your workload. The implementation uses a histogram method to compute the recommendations.
 
 The computation adds a 15% buffer to the recommended resources by default. CCM also allows you to add any additional buffer using the Tune recommendations option.
 
-When you enable [Cost Visibility](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for your [Kubernetes Cluster](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md), the [Delegate](../../../platform/2_Delegates/delegates-overview.md) associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server.  CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
+When you enable [Cost Visibility](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md) for your [Kubernetes Cluster](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md), the [Delegate](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md) associated with your Connector starts collecting CPU and memory resource utilization metrics for every node and pod (including individual containers) present in the cluster every minute using a metrics server.  CCM relies on the Metrics Server and initializes recommendations after an initial data collection of 24-48 hours. The Metrics Server is queried by the controller every minute for utilization data.
 
 The utilization data collected every minute is then aggregated in the Delegate for a 20-minute window. The 20-minute aggregated data is then sent to Harness:
 
@@ -56,7 +56,7 @@ A histogram is used to account for the seasonality of high resource utilization 
 
 To avoid this, we use the histogram method and give equal weight to all previous days.
 
-##  Types of Workload Recommendations
+##  Types of workload recommendations
 
 The recommendations are categorized as the following:
 
@@ -110,7 +110,7 @@ requests:
 The current resources are provisioned using `8Gi memory` and `1 CPU`, the recommended resources require only `3.5Gi memory` and `1.1m CPU` for limits and requests both.
 
 
-## Step: Tune and Share Recommendations
+## Step: Tune and share recommendations
 
 Tune the recommendations by changing the Quality of Service (QoS) and the percentage of recommended CPU and memory requests/limits buffer.
 
@@ -149,7 +149,7 @@ To change the QoS, do the following:
    
    Based on your selection, the recommendations for your resources are made.
 
-### Buffer for Workloads
+### Buffer for workloads
 
 You can set the percentage of buffer for recommended requests/limits.
 
@@ -163,7 +163,7 @@ The resource recommendations are based on the percentage of the buffer you set.
 
 See [Optimize Kubernetes Costs with Node Pool Recommendations](node-pool-recommendations.md).
 
-### Sharing Recommendations
+### Sharing recommendations
 
 When you tune a recommendation, the URL for the recommendation captures your changes.
 
@@ -171,7 +171,7 @@ You can see the changes following `details?` in the URL. For example, `details?b
 
 Capturing your changes in the URL enables you to share your tuned recommendation and ensure others can see you tuning. Simply tune the recommendation and then share the URL.
 
-## View Workload Details
+## View workload details
 
 You can also view the following information:
 
@@ -242,12 +242,12 @@ In the case of **absolute**, the utilization value is calculated as the followin
 
 which is equal to `0.4 + 0.4 + 0.4 = 1.2`
 
-### Next Steps
+### Next steps
 
 * [Optimize Kubernetes Costs with Node Pool Recommendations](node-pool-recommendations.md)
 * [Analyze Cost for Kubernetes Using Perspectives](../4-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
 
-### See Also
+### See also
 
 The following blog post walks you through workload recommendations:
 

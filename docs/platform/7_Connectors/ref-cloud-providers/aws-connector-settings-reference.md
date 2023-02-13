@@ -571,7 +571,7 @@ If you use the ​**Enable cross-account access (STS Role)** option in the AWS C
 
 The AWS CLI is not required for the other authentication methods.
 
-For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](../../2_Delegates/delegate-guide/run-scripts-on-delegates.md).
+For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](../../2_Delegates/configure-delegates/run-scripts-on-delegates.md).
 
 ### Switching Policies
 
@@ -685,7 +685,7 @@ eksctl create iamserviceaccount \
     --approve \  
     --override-existing-serviceaccounts —region=us-east-1
 ```
-In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+In Harness, download the Harness Kubernetes Delegate YAML file. See [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 Open the Delegate YAML file in text editor.
 
@@ -695,33 +695,78 @@ There are two sections in the Delegate YAML that you must update.
 
 First, update the `ClusterRoleBinding` by adding replacing the subject name `default` with the name of the service account with the attached IAM role.
 
+Old `ClusterRoleBinding`:
 
+```
+---  
+apiVersion: rbac.authorization.k8s.io/v1beta1  
+kind: ClusterRoleBinding  
+metadata:  
+  name: harness-delegate-cluster-admin  
+subjects:  
+  - kind: ServiceAccount  
+    name: default  
+    namespace: harness-delegate-ng 
+roleRef:  
+  kind: ClusterRole  
+  name: cluster-admin  
+  apiGroup: rbac.authorization.k8s.io  
+---
+```
 
-|  |  |
-| --- | --- |
-| Old `ClusterRoleBinding`: | New `ClusterRoleBinding` (for example, using the name `iamserviceaccount`): |
-| --- <br/> apiVersion: rbac.authorization.k8s.io/v1beta1 <br/> kind: ClusterRoleBinding <br/>metadata:  <br/> &nbsp;name: harness-delegate-cluster-admin <br/>subjects:  <br/> &nbsp;- kind: ServiceAccount    <br/>name: default    <br/>namespace: harness-delegate-ng <br/>roleRef: <br/> &nbsp; kind: ClusterRole  <br/>name: cluster-admin  <br/>apiGroup: rbac.authorization.k8s.io <br/>--- | ---<br/>apiVersion: rbac.authorization.k8s.io/v1beta1 <br/>kind: ClusterRoleBinding <br/>metadata:  <br/>&nbsp;name: harness-delegate-cluster-admin <br/>subjects:  - kind: ServiceAccount    <br/>name: iamserviceaccount   <br/> namespace: harness-delegate-ng<br/>roleRef:  <br/>kind: ClusterRole  <br/>name: cluster-admin  <br/>apiGroup: rbac.authorization.k8s.io <br/>---|
+New `ClusterRoleBinding` (for example, using the name `iamserviceaccount`):
+
+```
+---  
+apiVersion: rbac.authorization.k8s.io/v1beta1  
+kind: ClusterRoleBinding  
+metadata:  
+  name: harness-delegate-cluster-admin  
+subjects:  
+  - kind: ServiceAccount  
+    name: iamserviceaccount
+    namespace: harness-delegate-ng
+roleRef:  
+  kind: ClusterRole  
+  name: cluster-admin  
+  apiGroup: rbac.authorization.k8s.io  
+---
+```
 
 Next, update StatefulSet spec with the new `serviceAccountName`.
 
+Old StatefulSet spec `serviceAccountName`:
 
+```
+...  
+    spec:  
+      containers:  
+      - image: harness/delegate:latest  
+        imagePullPolicy: Always  
+        name: harness-delegate-instance  
+        ports:  
+          - containerPort: 8080  
+...
+```
 
-|  |  |
-| --- | --- |
-| Old StatefulSet spec `serviceAccountName`: | New StatefulSet spec serviceAccountName (for example, using the name `iamserviceaccount`): |
-| 
+New StatefulSet spec serviceAccountName (for example, using the name `iamserviceaccount`):
+
 ```
-...    spec:      containers:      - image: harness/delegate:latest        imagePullPolicy: Always        name: harness-delegate-instance        ports:          - containerPort: 8080...
+...  
+    spec:  
+      serviceAccountName: iamserviceaccount
+      containers:  
+      - image: harness/delegate:latest  
+        imagePullPolicy: Always  
+        name: harness-delegate-instance  
+        ports:  
+          - containerPort: 8080  
+...
 ```
- | 
-```
-...    spec:      serviceAccountName: iamserviceaccount      containers:      - image: harness/delegate:latest        imagePullPolicy: Always        name: harness-delegate-instance        ports:          - containerPort: 8080...
-```
- |
 
 Save the Delegate YAML file.
 
-Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/delegate-guide/install-a-kubernetes-delegate.md).
+Install the Delegate in your EKS cluster and register the Delegate with Harness. See [Install a Kubernetes Delegate](../../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 
 :::note

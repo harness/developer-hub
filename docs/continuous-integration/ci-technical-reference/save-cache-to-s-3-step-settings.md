@@ -1,9 +1,7 @@
 ---
 title: Save Cache to S3 Step Settings
 description: This topic provides settings for the Save Cache to S3 step.
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 130
 helpdocs_topic_id: qtvjvrp9sn
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

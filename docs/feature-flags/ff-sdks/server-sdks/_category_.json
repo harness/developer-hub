@@ -1,0 +1,14 @@
+{
+    "label": "Server SDK Guides",
+    "position": 30,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Server SDK Guides"
+    },
+    "customProps": {
+        "helpdocs_category_id": "kkiqy1f6d7"
+    }
+}

@@ -1,34 +1,30 @@
 ---
 id: ec2-stop-by-id
-title: EC2 Stop By ID
+title: EC2 stop by ID
 ---
 
-## Introduction
+EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs.
+- It brings back the instance after a specific duration. 
+- It checks the performance of the application (or process) running on the EC2 instance.
+- When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
-- It causes stopping of an EC2 instance using the provided instance ID or list of instance IDs before bringing it back to running state after the specified chaos duration.
-- It helps to check the performance of the application/process running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` is enabled then the fault will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
+![EC2 Stop By ID](./static/images/ec2-stop-by-id.png)
 
-:::tip Fault execution flow chart
-![EC2 Stop By ID](./static/images/ec2-stop.png)
-:::
 
-## Uses
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version > 1.17
+- Kubernetes >= 1.17
 - Access to start and stop an EC2 instance in AWS.
-- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like:
+- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is the sample secret file.
 
 ```yaml
 apiVersion: v1
@@ -44,19 +40,18 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `experiment.yaml` with the same name.
+- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable on `experiment.yaml` with the new name.
 
 ### WARNING
 
 If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the fault pods are not scheduled on it.
-:::
 
-## Permission Requirement
+## Permissions required
 
-- Here is an example AWS policy to execute this fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -84,21 +79,17 @@ If the target EC2 instance is a part of a managed node group, drain the target n
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
+## Default validations
+The EC2 instance should be in a healthy state.
 
-:::info
 
-- The EC2 instance should be in a healthy state.
-
-:::
-
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -107,16 +98,16 @@ If the target EC2 instance is a part of a managed node group, drain the target n
       </tr>
       <tr>
         <td> EC2_INSTANCE_ID </td>
-        <td> Instance ID of the target EC2 instance. Multiple IDs can also be provided as a comma(,) separated values</td>
-        <td> Multiple IDs can be provided as `id1,id2` </td>
+        <td> Instance ID of the target EC2 instance. Multiple IDs can also be provided as a comma(,) separated values.</td>
+        <td> Multiple IDs can be provided as `id1,id2`. </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name of the target instance</td>
+        <td> The region name of the target instance.</td>
         <td> </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -125,43 +116,43 @@ If the target EC2 instance is a part of a managed node group, drain the target n
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination.</td>
-        <td> Defaults to 30s </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> MANAGED_NODEGROUP </td>
-        <td> Set to <code>enable</code> if the target instance is the part of self-managed nodegroups </td>
-        <td> Defaults to <code>disable</code> </td>
+        <td> Set to <code>enable</code> if the target instance is the part of self-managed nodegroups. </td>
+        <td> Defaults to <code>disable</code>. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> It defines sequence of chaos execution for multiple instance.</td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Stop Instances By ID
 
-It contains comma separated list of instances IDs subjected to EC2 stop chaos. It can be tuned via `EC2_INSTANCE_ID` ENV.
+It contains a comma-separated list of instance IDs subjected to EC2 stop chaos. You can tune it using the `EC2_INSTANCE_ID` environment variable.
 
-Use the following example to tune this:
+You can tune it using the following example.
 
 [embedmd]:# (./static/manifests/ec2-stop-by-id/instance-id.yaml yaml)
 ```yaml

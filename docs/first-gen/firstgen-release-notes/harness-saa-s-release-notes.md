@@ -16,6 +16,36 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### February 6, 2023, version 78321
+
+#### What's new
+
+- The elastic search client version is upgraded to `7.17.7`. (PL-30666)
+
+#### Early access
+
+- The feature flag `NOTIFY_GIT_SYNC_ERRORS_PER_APP` lets you receive git sync error alerts. (PL-29306)
+  
+  The alert contains the name of the application where the git sync error occurred.
+
+- You can delete a user provisioned in Harness through SCIM in FirstGen and retain the user in NextGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
+
+
+#### Fixed issues
+
+- When the scheduling of background jobs is skipped during startup, background jobs like the deletion of old records do not work.  (PL-31009)
+   
+  A code enhancement has fixed this issue.
+
+- Selecting a specific audit filter for an API key causes the UI to become unresponsive. (PL-30715, ZD-38400)
+  
+  An added check ensures that only essential data is sent for display. This has fixed the issue.
+
+- SAML users removed from the LDAP group are displayed in the linked user group in Harness. (PL-30291, ZD-37758)
+
+  A code enhancement has fixed this issue.
+
+
 ### January 17, 2023, version 78105
 
 Delegate version: 78101
@@ -209,7 +239,7 @@ Delegate: 77609
 
 #### Fixed issues
 
-* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](../../platform/2_Delegates/delegates-overview.md). (DEL-4888)
+* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md). (DEL-4888)
 * Removed the delegate dependency on Java driver component `mongo-java-driver` . This eliminates vulnerability [CVE-2021-20328](https://nvd.nist.gov/vuln/detail/CVE-2021-20328) affecting client-side field level encryption (CSFLE). (DEL-5308)
 * Changed the base image that the non-legacy delegate uses to `redhat/ubi8-minimal:latest`. This ensures that each release includes all OS-level security updates. (DEL-5386)
 * Disabling the feature flag `LDAP_SECRET_AUTH` restricts referencing secrets for LDAP connection. (PL-29668)  

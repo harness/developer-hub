@@ -1,6 +1,6 @@
 ---
 title: Early Access
-date: 2022-12-13T10:00
+date: 2023-02-06T10:00
 sidebar_position: 2
 ---
 
@@ -11,6 +11,12 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 6, 2023
+
+### Harness Platform
+
+- You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
 
 ## January 12, 2023
 

@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2022-12-22T10:00
+date: 2023-02-06T10:00
 sidebar_position: 3
 ---
 
@@ -12,6 +12,23 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 6, 2023, version 78321
+
+### What's new
+
+* Linux ARM is now supported in Harness Cloud build infrastructures. (CI-5787)
+* The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+* Improved the error message that appears in the UI when a Git test connection fails. (CI-6889)
+* Fixed an issue where feature flags would sometimes not work with CI due to a backwards-compatibility issue. (CI-6687)
+* Fixed an issue where the Commits tab would show a 404 error in the CD build UI. (CI-6632)
 
 ## January 17, 2023, version 78215
 
@@ -333,7 +350,7 @@ N/A
 
 - You can now use a hosted delegate for Docker, Artifactory, AWS, GCP, BitBucket, GitLab, and Azure connectors. (CI-4828, CI-5241)
 
-## Early access features
+### Early access features
 
 N/A
 

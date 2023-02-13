@@ -30,8 +30,8 @@ To add an SSH key that can be referenced in Harness entities, do the following:
 6. In **User Name**, provide the username for the user account on the remote server. For example, if you want to SSH into an AWS EC2 instance, the username would be **ec2-user**.
 7. In **Select or create a SSH Key**, click **Create or Select a Secret**.
 8. You can do one of the following:
-	1. Click **Create a new secret**. You can create an [Encrypted File Secret](./3-add-file-secrets.md) or an [Encrypted Text Secret](./2-add-use-text-secrets.md).
-	2. Click **Select an existing secret.** You can add an existing [Encrypted File Secret](./3-add-file-secrets.md) or an [Encrypted Text Secret](./2-add-use-text-secrets.md) present at your Project, Account or Organization level.
+	1. Click **Create a new secret**. You can create an [Encrypted File Secret](./3-add-file-secrets.md) 
+	2. Click **Select an existing secret.** You can add an existing [Encrypted File Secret](./3-add-file-secrets.md) present at your Project, Account or Organization level.
 
 
 :::note

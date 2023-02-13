@@ -3,8 +3,10 @@ title: Define a MacOS Build Infrastructure
 description: Currently, this feature is behind the Feature Flag CI_VM_INFRASTRUCTURE Contact Harness Support to enable the feature. This topic describes how to set up virtualization on MacOS hardware platforms to…
 tags: 
    - helpDocs
-sidebar_position: 40
-helpdocs_topic_id: d79v3d2uwv
+   - MacOS
+   - OSX
+sidebar_position: 70
+helpdocs_topic_id: mwzlb0x2mt
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
 helpdocs_is_published: true
@@ -21,7 +23,7 @@ The following diagram shows the architecture of a CI build infrastructure on Mac
 This topic assumes you're familiar with the following:
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](../../../platform/2_Delegates/delegates-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [VM Runner](https://docs.drone.io/runner/vm/overview/)

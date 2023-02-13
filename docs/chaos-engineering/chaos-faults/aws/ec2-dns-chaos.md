@@ -1,29 +1,25 @@
 ---
 id: ec2-dns-chaos
-title: EC2 DNS Chaos
+title: EC2 DNS chaos
 ---
+EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration. 
+- It determines the performance of the application (or process) running on the EC2 instance(s).
 
-## Introduction
-- It causes DNS errors in the provided EC2 instance for a specified chaos duration. 
-- It helps to check the performance of the application/process running on the EC2 instance(s).
-
-:::tip Fault execution flow chart
 ![EC2 DNS Chaos](./static/images/ec2-dns-chaos.png)
-:::
 
-## Uses
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-The fault causes DNS errors on the target EC2 instances which can result in unavailability/distorted network connectivity from the VM to the target hosts. This will also help to produce a hypothesis where some services of an application are unreachable from the EC2 instance. This will help the user to think the mitigation steps that should be taken to overcome such situation. This fault can also be used to know how the DNS error can impact your infra and standalone tasks as well.
+This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks. It simulates unavailability of DNS server (loss of access to any external domain from a given microservice) and malfunctioning of DNS server (loss of access to specific domains from a given microservice, access to cloud provider dependencies, and access to specific third party services).
+
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.17
-- Ensure that SSM agent is installed and running in the target EC2 instance.
-- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.16
+- SSM agent is installed and running on the target EC2 instance.
+- Create a Kubernetes secret that has the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -39,18 +35,17 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret name then please also update the `experiment.yml` ENV values for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
+- If you change the secret name, ensure that you update the `experiment.yml` environment variables to derive the data from the secret. Also account for the path at which this secret is mounted as a file in the manifest ENV `AWS_SHARED_CREDENTIALS_FILE`.
 
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+### Note
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-## Permission Requirement
+## Permissions required
 
-- Here is an example AWS policy to execute ec2-dns-chaos fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -100,17 +95,15 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
-:::info
-- EC2 instance should be in healthy state.
-:::
+## Default validations
+The EC2 instance should be in a healthy state.
 
-## Fault Tunables
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -119,21 +112,21 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> EC2_INSTANCE_ID </td>
-        <td> ID of the target EC2 instance </td>
-        <td> For example: <code>i-044d3cb4b03b8af1f</code> </td>
+        <td> ID of the target EC2 instance. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The AWS region ID where the EC2 instance has been created </td>
-        <td> For example: <code>us-east-1</code> </td>
+        <td> AWS region ID where the EC2 instance has been created. </td>
+        <td> For example: <code>us-east-1</code>. </td>
       </tr>
       <tr>
         <td> PORT </td>
-        <td> Provide the DNS Port</td>
-        <td> Default value is 54 </td>
+        <td> DNS port where chaos is injected. </td>
+        <td> Defaults to port 54. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -142,23 +135,23 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30s </td>
       </tr>
       <tr>
         <td> INSTALL_DEPENDENCY </td>
@@ -167,32 +160,32 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> TARGET_HOSTNAMES </td>
-        <td> List of the target hostnames or keywords eg. '["litmuschaos","chaosnative.com"]' </td>
-        <td> If not provided, all hostnames/domains will be targeted</td>
+        <td> List of the target host names. If this is not provided, all the host names (or domains) will be targeted. </td>
+        <td> For example, <code>'["litmuschaos","chaosnative.com"]'</code>.</td>
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
-        <td> Determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. Can be either exact or substring </td>
-        <td> if not provided, it will be set as exact</td>
+        <td> Determines whether the DNS query should exactly match the targets or can be a substring. </td>
+        <td> Defaults to exact.</td>
       </tr>
       <tr>
         <td> UPSTREAM_SERVER </td>
-        <td> Custom upstream server to which intercepted dns requests will be forwarded </td>
-        <td> defaults to the server mentioned in resolv.conf </td>
+        <td> Custom upstream server to which the intercepted DNS requests are forwarded. </td>
+        <td> defaults to the server mentioned in the resolv.conf file. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+### Fault tunables
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Run DNS Chaos With Port
+### Run DNS chaos with port
 
-It contains the DNS port to inject the DNS chaos. The value can be provided using `PORT` Env.
+It contains the DNS port to inject DNS chaos. You can tune it using the `PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-port.yaml yaml)
 ```yaml
@@ -218,11 +211,11 @@ spec:
           value: 'us-west-2'
 ```
 
-### Run DNS Chaos With Target HostNames
+### Run DNS chaos with target host names
 
-It contains the list of the target host name to inject the DNS chaos. The value can be provided using `TARGET_HOSTNAMES` Env.
+It contains the list of the target host names to inject DNS chaos. You can tune it using the `TARGET_HOSTNAMES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-target-hostnames.yaml yaml)
 ```yaml
@@ -249,11 +242,11 @@ spec:
 ```
 
 
-### Run DNS Chaos With Match scheme
+### Run DNS chaos with match scheme
 
-It determines whether the dns query has to match exactly with one of the targets or can have any of the targets as substring. It can be either exact or substring. The value can be provided using `MATCH_SCHEME` Env.
+It determines whether the DNS query exactly matches the target or is a substring. You can tune it using the `MATCH_SCHEME` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-match-scheme.yaml yaml)
 ```yaml
@@ -280,11 +273,11 @@ spec:
 ```
 
 
-### Run DNS Chaos With Upstream server
+### Run DNS chaos with upstream server
 
-It contains the custom upstream server to which intercepted dns requests will be forwarded. It is defaults to the server mentioned in resolv.conf. The value can be provided using `UPSTREAM_SERVER` Env.
+It contains the custom upstream server to which intercepted DNS requests are forwarded. It defaults to the server mentioned in the resolv.conf file. You can tune it using the `UPSTREAM_SERVER` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-upstream-server.yaml yaml)
 ```yaml

@@ -1,9 +1,7 @@
 ---
 title: Upload Artifacts to JFrog Artifactory Step Settings
 description: This topic provides settings for the Upload Artifacts to JFrog Artifactory step. Name. The unique name for this Connector. Description. Text string. Artifactory Connector. Select the Harness Artifact…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 150
 helpdocs_topic_id: gjoggc66fy
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

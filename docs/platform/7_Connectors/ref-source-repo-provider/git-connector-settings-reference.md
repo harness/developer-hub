@@ -82,5 +82,5 @@ If you selected **SSH** as the connection protocol, you must add the **Usernam
 
 You can select **Connect via any available delegate** or **Connect only via delegates which has all of the following tags**.
 
-You need to enter **Selectors** to connect via specific delegates. For more information see [Select Delegates with Tags](../../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+You need to enter **Selectors** to connect via specific delegates. For more information see [Select Delegates with Tags](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 

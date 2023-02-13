@@ -1,5 +1,5 @@
 ---
-sidebar_position: 1
+sidebar_position: 10
 description: This tutorial helps you get started with Harness CI and explore some of the features that make it four times faster than the leading competitors.
 keywords: [CI]
 slug: /build-code/fastest-ci
@@ -32,12 +32,12 @@ Developers are frustrated with the time it takes to ship code and often end up w
 ![XKCD](static/ci-tutorial-fast/xkcd.png)
 
 With Harness CI, you can build faster and be more productive. Harness CI's pricing is competitive to other leading CI providers, which gives you more cost savings with the speed benefit.
-Harness CI is built on Drone, and over the last 10 years we have been focusing on solving the developer's frustration with the time it took to ship code with existing CI tools. Harness CI’s vision is to create a CI tool that is fast, simple, open, and secure.
+Harness CI is built on Drone, and over the last 10 years we have been focusing on solving the developer's frustration with the time it took to ship code with existing CI tools. Harness CI's vision is to create a CI tool that is fast, simple, open, and secure.
 
 ### Build pipelines 4 times faster than GitHub Actions
 
-Harness CI is 4 times faster due to optimized defaults with hosted builds so you don’t have to set up and manage infrastructure or optimize caching and other technologies to improve build times. Cache Intelligence dramatically reduces pipeline execution time by automatically caching well-known directories for Java, Node package managers, and more. Test Intelligence
-can build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, speed up test cycles even more by splitting and running tests concurrently.
+Harness CI is 4 times faster due to optimized defaults with hosted builds so you don't have to set up and manage infrastructure or optimize caching and other technologies to improve build times. Cache Intelligence dramatically reduces pipeline execution time by automatically caching well-known directories for Java, Node package managers, and more. Test Intelligence
+can improve build cycles by up to 90% with machine learning (ML) that runs only the necessary tests relevant to code changes. Once tests are identified, speed up test cycles even more by splitting and running tests concurrently.
 
 In this demo, Harness goes head-to-head with GitHub Actions. You can follow [these instructions](https://github.com/harness-community/kafka/blob/trunk/.harness/README.md) to reproduce the results and see for yourself.
 
@@ -55,7 +55,7 @@ Developer productivity is a core pillar for Harness. We didn't want to build a C
 
 Harness uses containers to drop pre‑configured steps into your pipeline. Choose from thousands of existing plugins, or create your own and run it on a container or the host virtual machine.
 
-## Create a pipeline​ for your favorite language
+## Create a pipeline for your favorite language
 
 Build, test, and deploy applications in Node.js, Python, Java, Ruby, PHP, Go, Rust, .NET, and more. Use VMs or containers for Linux, Windows, and Mac operating systems.
 
@@ -75,21 +75,6 @@ import TabItem from '@theme/TabItem';
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
 5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 6. Select **Starter Pipeline**, and then select **Create Pipeline**.
-7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-8. Replace the sample step section with the following and **Save** the pipeline.
-
-```
-              - step:
-                  type: Run
-                  name: Build Go App
-                  identifier: Build_Go_App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      go build
-                      go test
-```
 
 ```mdx-code-block
 </TabItem>
@@ -102,20 +87,6 @@ import TabItem from '@theme/TabItem';
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
 5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 6. Select **Starter Pipeline**, and then select **Create Pipeline**.
-7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-8. Replace the sample step section with the following and **Save** the pipeline.
-
-```
-              - step:
-                  type: Run
-                  name: Build Java App
-                  identifier: Build_Java_App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      mvn -B package --file pom.xml
-```
 
 ```mdx-code-block
 </TabItem>
@@ -128,23 +99,6 @@ import TabItem from '@theme/TabItem';
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
 5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 6. Select **Starter Pipeline**, and then select **Create Pipeline**.
-7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-8. Replace the sample step section with the following and **Save** the pipeline.
-
-```
-              - step:
-                  type: Run
-                  name: Build JavaScript App
-                  identifier: Build_JavaScript_App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      node --version
-                      npm install
-                      npm run build --if-present
-                      npm test
-```
 
 ```mdx-code-block
 </TabItem>
@@ -157,22 +111,6 @@ import TabItem from '@theme/TabItem';
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
 5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 6. Select **Starter Pipeline**, and then select **Create Pipeline**.
-7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-8. Replace the sample step section with the following and **Save** the pipeline.
-
-```
-              - step:
-                  type: Run
-                  name: Build DotNet App
-                  identifier: Build_DotNet_App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      dotnet restore
-                      dotnet build --no-restore
-                      dotnet test --no-build --verbosity normal
-```
 
 ```mdx-code-block
 </TabItem>
@@ -185,32 +123,16 @@ import TabItem from '@theme/TabItem';
 4. In the **Which code repository do you use** step, select GitHub and then select either the **OAuth** or the **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
 5. When you are prompted to select a repository, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
 6. Select **Starter Pipeline**, and then select **Create Pipeline**.
-7. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-8. Replace the sample step section with the following and **Save** the pipeline.
-
-```
-              - step:
-                  type: Run
-                  name: Build Python App
-                  identifier: Build_Python_App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      python -m pip install --upgrade pip
-                      pip install  pytest
-                      if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
-```
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
 
-## Run your pipeline​
+## Run your pipeline
 
-1. In the **Pipeline Studio**, select **Run**.​
-2. In the **Build Type** field, select **Git Branch**, and then enter **main** in the **Branch Name** field.
+1. In the **Pipeline Studio**, select **Run**.
+2. In the **Build Type** field, select **Git Branch**, and then enter **master** or **main** in the **Branch Name** field, depending on the repo you forked.
 3. Select **Run Pipeline**.
 4. You can see the pipeline execute the steps in the Execution View.
 

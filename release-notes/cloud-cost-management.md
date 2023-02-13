@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-01-04T10:00
+date: 2023-02-07T10:00
 sidebar_position: 5
 ---
 
@@ -12,6 +12,59 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## January 31, 2023
+
+### What's new
+
+  This release does not include new features.
+
+### Early access
+
+  This release does not include early access features.
+
+### Fixed issues
+
+* Hourly data on the **Perspectives** page showed an incorrect billing amount for multiple accounts. CloudFunction was unable to delete the existing records but continued ingesting a new entry in clusterDataHourly in BigQuery. (CCM-10711)
+
+  This issue is fixed. Now, the Instance_Billing_Hourly job execution is limited to 5 times per minute to avoid CloudFunction failure.
+
+* The total costs displayed on the **Overview** page and the **license-util** page (or API) were incorrect in accounts with at least one Azure connector. (CCM-10678)
+
+  A bug fix in the ingestion of aggregated costs for Azure resolved this issue. 
+
+  
+
+
+
+## January 18, 2023
+
+
+### What's new
+
+  This release does not include new features.
+
+### Early access
+
+  This release does not include early access features.
+
+### Fixed issues
+* The potential monthly savings displayed on the UI did not match with the Spot or On-Demand recommendations. (CCM-10698)
+
+  The logic to calculate the potential monthly cost displayed on the UI has been fixed. Now, the savings match with the Spot or On-Demand recommendations.
+
+* While creating a Jira ticket to apply EC2 recommendations, the **Account Name** field in the Jira description incorrectly displayed the Account ID. (CCM-10507)
+
+  Now, the issue is fixed, and the account name is displayed correctly. 
+
+* When you create a budget with an invalid **Period Starts from** date with respect to the **Budget Period**, the error message displayed was unclear - "Invalid request: Error in create budget operation. Start time of budget is invalid." (CCM-10487)
+
+ Now, the message is changed to "Invalid request: Budget Period and Period Start date cannot add up to be in the past."
+
+* Added the missing instance family types for Azure node pool recommendations. (CCM-10246)
+
+
+
 ## January 4, 2023
 
 ### What's new
@@ -44,8 +97,8 @@ This release does not include fixed issues.
   
 ### Early access
 
-This release does not include early access features.
 
+  
 
 ### Fixed issues
 

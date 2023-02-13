@@ -210,6 +210,14 @@ const config = {
             type: "dropdown",
             items: [
               {
+                label: "All Certifications",
+                to: "certifications",
+              },
+              {
+                label: "Continuous Delivery & GitOps",
+                to: "certifications/continuous-delivery",
+              },
+              {
                 label: "Software Delivery Foundations",
                 href: "https://university.harness.io/page/job-role-certifications",
               },
@@ -322,6 +330,10 @@ const config = {
               {
                 label: "Privacy Policy",
                 href: "https://harness.io/legal/privacy",
+              },
+              {
+                label: "Accessibility",
+                to: "legal/accessibility",
               },
               {
                 html: "<a href='javascript:void(0)' class='footer__link-item' onclick='window.OneTrust && window.OneTrust.ToggleInfoDisplay()'>Cookie Management</a>",
@@ -448,6 +460,18 @@ const config = {
         routeBasePath: "certifications",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-certifications.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "kb",
+        path: "kb",
+        routeBasePath: "kb",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-kb.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },

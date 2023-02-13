@@ -14,6 +14,96 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
+### February 9, 2023, version 78109
+
+Delegate: 78106
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 78109 |
+| Delegate | 78106 |
+| Watcher | 77431 |
+| Verification Service | 78109 |
+| UI | 78100 |
+| Learning Engine | 66700 | 
+| Gateway | 2000137 |
+
+#### New features and enhancements
+
+This release introduces the following features and enhancements.
+
+- Decreasing the overall **all perpetual task** count. (CDS-46240)
+
+  Now we create a perpetual task on the basis of the cloud provider. This decreases the **all perpetual task** counts overall. Harness Manager was not changed and no user action is required.
+  
+- Added internal metrics to track the pattern of automatic delegate upgrades. (DEL-5383)
+ 
+- Added a check to the container start process to ensure the user has the file permissions required to run the delegate. If user permissions are inadequate, the delegate fails fast and displays an error message. (DEL-5440)
+
+- The following libraries of the Apache CXF open-source services framework (`org.apache.cxf`) were upgraded to version 3.5.5 to fix vulnerabilities. The delegate base image was updated from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7` to reflect these changes. (DEL-5591)
+
+- The following libraries of the `io.netty:netty*` client/server framework were updated to version 4.1.86.Final to fix vulnerabilities. (DEL-5632)
+
+  The `io.netty:netty*` libraries were upgraded to mitigate the risk of denial-of-service (DoS) attack. Netty versions 4.1.0 to 4.1.67 are vulnerable, for example, to the exploits described in [CVE02021-37136](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37136) and [CVE-2021-37137](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37137). 
+  
+  | Library name and version | 
+  | :-- | 
+  | `io.netty:netty-all:4.1.77.Final` | 
+  | `io.netty:netty-buffer:4.1.77.Final` |
+  | `io.netty:netty-handler-proxy:4.1.77.Final` |
+  | `io.netty:netty-common:4.1.77.Final` |
+  | `io.netty:netty-handler:4.1.77.Final` |
+  | `io.netty:netty-resolver-dns:4.1.77.Final` |
+  | `io.netty:netty-resolver:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-epoll:linux-x86_64:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-kqueue:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-unix-common:4.1.77.Final` | 
+  | `io.netty:netty-transport:4.1.77.Final` |
+
+#### Issues fixed in this release
+
+This release includes the following fixes.
+
+- **Rollback Deployment** button incorrectly showing Not Authorized (CDS-17420)  
+  When the `FREEZE_DURING_MIGRATION` feature flag was enabled in an account, the **Rollback Deployment** button was marked User Not Authorized.   
+  Now, when the `FREEZE_DURING_MIGRATION` feature flag is enabled in an account, the **Rollback Deployment** button is available if the user has the correct permissions).
+
+- Slow running Looker queries in Deployments (FirstGen) dashboard (CDS-45074)  
+  When the customer uses fields for Deployments Tags, the queries became extremely slow.  
+  Removed a few unused indexes and added a few indexes to improve the speed of queries.
+
+- Rollback artifact number (`${rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
+  Fixed a problem where incorrect metadata was being populated into executions after updating the environment's infra definitions.  
+  For more information, go to [Artifact Rollback Variables](../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact-rollback-variables).
+
+- Log improvement when only the ConfigMap is deployed. (CDS-47901)
+
+  Harness only performs versioning when a Deployment, StatefulSet, DaemonSet and DeploymentConfig is performed. These are called managed workloads.
+  
+  In deployments of ConfigMaps without managed workloads, no versioning is performed. 
+  
+  The logs have been improved to indicate that no managed workloads were found
+  
+  **Note:** If the `harness.io/skip-versioning: "true"` annotation is in a manifest, Harness does not track release versions.  
+
+- `DelegateGroup` is not removed from the database or the UI after the associated delegate is deleted. (DEL-3913)
+   The code was changed to ensure that an inactive delegate is deleted from the UI after seven days.
+
+- Avoid calling `closeChannel` more than one time during watcher shutdown. Invoking the method two times can cause the `logsAvoid` method to unnecessarily wait during executor shutdown. (DEL-4924)
+ 
+- Fixed a shell delegate issue that occurred on restart. The delegate name was not visible. (DEL-5443)
+
+- Functionality was added to send an alert within 30 minutes of delegate shutdown. If delegate groups are in use, the alert is sent only when all the delegate members shut down. To use this functionality, enable the `INSTANT_DELEGATE_DOWN_ALERT` feature flag. (PL-30005, ZD-34766)
+
+- Hide NextGen option was enabled by default for the **Account Admin** user group in new trial accounts. (PL-30070)  
+  The **Harness NextGen** option is no longer enabled by default for **Account Admin** user groups.
+
+- Users are not added to the user groups through SCIM when the authentication mechanism is username and password. (PL-30124)  
+  A notification email is sent to the users instead of an email invite and the system throws an exception.  
+
+
 ### December 21, 2022, version 77622
 
 Delegate: 77621
@@ -39,7 +129,7 @@ This release introduces the following features and enhancements.
 | CDS-40179 | Added reconciliation for `looker` entities to ensure data synchronization between mongoDB and timescaleDB. |
 | CDS-45694 | Deployment recon task failing. Longer retention for deployment in custom dashboards was failing due to a missing null check which has been added. (CDS-45694) |
 | CDS-47016 | Changed how search functionality on the deployments page works. Instead of using regex, search operations now use mongo stemming algorithms. |
-| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/delegates-overview). |
+| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegates-overview.md). |
 | DEL-5073 | Updated the Core Protocol Buffers library `protobuf-java/protobuf-javalite` to version 3.21.7. This update fixes CVE-2022-3171, a vulnerability that affects some earlier versions. The vulnerability was linked with denial-of-service (DoS) attacks. |
 | DEL-5153 | Upgraded `org.apache.commons:commons-text` to version 1.10.0 to fix a critical vulnerability in the delegate. |
 | DEL-5308 | Removed the delegate dependency on Java driver component `mongo-java-driver`. This eliminates the CVE-2021-20328 vulnerability that affects client-side field-level encryption (CSFLE). |
@@ -91,7 +181,6 @@ Delegate: 77021
 #### New features and enhancements.
 
 This release introduces the following features and enhancements.
-
 
 | **Feature or enhancement** | **Description** |
 | --- | --- |
@@ -553,7 +642,7 @@ We're pleased to present Harness Self-Managed Enterprise Edition Minor Release 7
 The following new features and enhancements were added to Harness Self-Managed Enterprise Edition:
 
 * Custom selector API for Delegate NG Token management is available now. (DEL-3558, ZD-21717, ZD-27515)
-	+ See [Secure Delegates with Tokens](../../platform/2_Delegates/delegate-guide/secure-delegates-with-tokens.md).
+	+ See [Secure Delegates with Tokens](../../platform/2_Delegates/secure-delegates/secure-delegates-with-tokens.md).
 * Harness can now send key Workflow and Pipeline deployment events to a URL endpoint as a JSON payload. This helps in analyzing how Workflows and Pipelines are performing, using other tools that consume and build dashboards for the events. This feature is now public and not behind the Feature Flag`FF APP_TELEMETRY`. (CDS-35193)
 	+ See [Publish Workflow Events](../continuous-delivery/concepts-cd/deployments-overview/publish-workflow-events-to-an-http-endpoint.md).
 	+ See [Publish Pipeline Events](../continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint.md).
@@ -715,8 +804,6 @@ See [Select Nodes Workflow Step](../firstgen-platform/techref-category/cd-ref/w
 
 The following table lists the component versions in this release.
 
-
-
 | **Name** | **Version** |
 | --- | --- |
 | Manager  | 73807 |
@@ -805,8 +892,6 @@ We're pleased to present Harness On-Premise Minor Release 73406.
 
 The following table lists the component versions in this release.
 
-
-
 | **Name** | **Version** |
 | --- | --- |
 | **Manager**  | 73406 |
@@ -861,8 +946,6 @@ The following new features were added to the Harness platform components:
 #### Component Versions
 
 The following table lists the component versions in this release.
-
-
 
 | **Name** | **Version** |
 | --- | --- |

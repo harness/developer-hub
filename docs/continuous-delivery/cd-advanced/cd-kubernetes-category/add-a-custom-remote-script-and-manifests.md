@@ -59,7 +59,7 @@ For more information, see [Add and Reference Text Secrets](../../../platform/6_S
 
 ## Start a pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
 
 You can create a Pipeline from any module in your Project, or in the **Project Overview**, and then add stages for any module.
 
@@ -100,7 +100,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
 1. Enter the name in **Manifest Name**.
 1. In the **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
 2. In **Extracted Manifest File Location**, enter the folder path for the manifests.
-3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
+3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
 4. In the **Values.yaml**, the field is populated with the folder path for the values.yaml.
 5. Click **Submit**. The new manifest is created and added to **Manifests** in Harness.
 

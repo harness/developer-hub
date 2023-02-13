@@ -203,6 +203,37 @@ const CIList: CardItem[] = [
     time: "10 min",
     link: "/tutorials/build-code/ci-github-action-step",
   },
+  {
+    title: "Build, test, and publish a Docker image for a sample React application",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Learn how to build and test a sample React application in a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/build-code/ci-react-quickstart",
+  },
+  {
+    title: 'Push application containers to Google Artifact Registry',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to build and push an application container image to Google Artifact Registry using a CI pipeline.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-push-to-gar',
+  },
 ];
 
 const CDList: CardItem[] = [
@@ -427,6 +458,18 @@ const CEList: CardItem[] = [
     type: [docType.Documentation],
     time: "15min",
     link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
+  },
+  {
+    title: "Your first chaos experiment execution using APIs",
+    module: "ce",
+    icon: "img/icon_ce.svg",
+    description: (
+      <>Executing a chaos experiment on Kubernetes for the first time using APIs.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
   },
 ];
 

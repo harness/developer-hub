@@ -69,7 +69,7 @@ The set of security features that Harness provides includes the following featur
 
 Yes. All network connections from the delegate on your local network or VPC to Harness SaaS are HTTPS outbound-only.
 
-See [Delegates overview](../../platform/2_Delegates/delegates-overview.md).
+See [Delegates overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 
 #### What data does the delegate send to Harness Manager?
 
@@ -78,7 +78,7 @@ The delegate and Harness Manager (SaaS) establish a Secure WebSocket channel (We
 * **Heartbeat** - The delegate sends a [heartbeat](https://en.wikipedia.org/wiki/Heartbeat_(computing)) to let Harness Manager know that it is running.
 * **Deployment data** - The information from the API executions the delegate performs is sent to Harness Manager for display on the **Deployments** page.
 * **Time series and log data for Continuous Verification** - The delegate connects to the verification providers you have configured and sends their data to Harness Manager for display in Harness Continuous Verification.  
-See [Delegates overview](../../platform/2_Delegates/delegates-overview.md).
+See [Delegates overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 
 ### Harness role-based access control (RBAC)
 

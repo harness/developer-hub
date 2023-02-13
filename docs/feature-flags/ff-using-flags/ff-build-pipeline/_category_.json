@@ -1,0 +1,14 @@
+{
+    "label": "Use Pipelines with Feature Flags",
+    "position": 60,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Use Pipelines with Feature Flags"
+    },
+    "customProps": {
+        "helpdocs_category_id": "fsgwbaegql"
+    }
+}

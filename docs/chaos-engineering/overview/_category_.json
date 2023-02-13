@@ -1,0 +1,9 @@
+{
+  "position": 1,
+  "label": "Overview",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Overview of Harness Chaos Engineering"
+  }
+}

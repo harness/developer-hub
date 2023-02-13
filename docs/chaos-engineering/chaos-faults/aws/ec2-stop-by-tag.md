@@ -1,32 +1,30 @@
 ---
 id: ec2-stop-by-tag
-title: EC2 Stop By Tag
+title: EC2 stop by tag
 ---
 
-## Introduction
-- It causes termination of an EC2 instance by tag before bringing it back to running state after the specified chaos duration.
-- It helps to check the performance of the application/process running on the EC2 instance.
-When the `MANAGED_NODEGROUP` is enable then the fault will not try to start the instance post chaos instead it will check of the addition of the new node instance to the cluster.
+EC2 stop by tag stops an EC2 instance using the provided tag.
+- It brings back the instance after a specific duration. 
+- It checks the performance of the application (or process) running on the EC2 instance.
+- When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
-:::tip Fault execution flow chart
-![EC2 Stop By Tag](./static/images/ec2-stop.png)
-:::
 
-## Uses
+![EC2 Stop By Tag](./static/images/ec2-stop-by-tag.png)
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-- Ensure that Kubernetes Version > 1.17
+- Kubernetes > 1.16.
 - Ensure that you have sufficient AWS access to stop and start an EC2 instance. 
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is the sample secret file.
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -40,19 +38,18 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
+- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the ChaosExperiment CR with the new name.
 
-### WARNING
+### Warning
 
-If the target EC2 instance is a part of a self-managed nodegroup then make sure to drain the target node if any application is running on it and also ensure to cordon the target node before running the fault so that the fault pods do not schedule on it.
-:::
+If the target EC2 instance is a part of a self-managed nodegroup, ensure that you drain the target node if any application is running on it. Cordon the target node before running the fault so that the fault pods do not schedule on it.
 
-## Permission Requirement
+## Permissions required
 
-- Here is an example AWS policy to execute this fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -80,21 +77,19 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
-:::info
+The EC2 instances should be in a healthy state.
 
-- EC2 instance should be in healthy state.
 
-:::
 
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -104,15 +99,15 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
       <tr>
         <td> INSTANCE_TAG </td>
         <td> Instance Tag to filter the target EC2 instance.</td>
-        <td> The <code>INSTANCE_TAG</code> should be provided as <code>key:value</code> ex: <code>team:devops</code></td>
+        <td> The <code>INSTANCE_TAG</code> should be provided as <code>key:value</code> ex: <code>team:devops</code>.</td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name of the target instance</td>
+        <td> The region name of the target instance.</td>
         <td> </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -121,48 +116,48 @@ If the target EC2 instance is a part of a self-managed nodegroup then make sure 
       </tr>
       <tr>
         <td> INSTANCE_AFFECTED_PERC </td>
-        <td> The Percentage of total EC2 instance to target </td>
-        <td> Defaults to 0 (corresponds to 1 instance), provide numeric value only </td>
+        <td> The Percentage of total EC2 instance to target. </td>
+        <td> Defaults to 0 (corresponds to 1 instance), provide numeric value only. </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination.</td>
-        <td> Defaults to 30s </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> MANAGED_NODEGROUP </td>
-        <td> Set to <code>enable</code> if the target instance is the part of self-managed nodegroups </td>
-        <td> Defaults to <code>disable</code> </td>
+        <td> Set to <code>enable</code> if the target instance is the part of self-managed nodegroups. </td>
+        <td> Defaults to <code>disable</code>. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> It defines sequence of chaos execution for multiple instance.</td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> For example, 30s. </td>
       </tr>    
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target single instance
 
 It will stop a random single EC2 instance with the given `INSTANCE_TAG` tag and the `REGION` region.
 
-Use the following example to tune this:
+You can tune it using the following example.
 
 [embedmd]:# (./static/manifests/ec2-stop-by-tag/instance-tag.yaml yaml)
 ```yaml
@@ -191,7 +186,7 @@ spec:
 
 It will stop the `INSTANCE_AFFECTED_PERC` percentage of EC2 instances with the given `INSTANCE_TAG` tag and `REGION` region.
 
-Use the following example to tune this:
+You can tune it using the following example.
 
 [embedmd]:# (./static/manifests/ec2-stop-by-tag/instance-affected-percentage.yaml yaml)
 ```yaml

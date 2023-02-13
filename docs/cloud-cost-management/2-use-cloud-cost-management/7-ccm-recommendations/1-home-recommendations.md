@@ -13,7 +13,7 @@ To know how these recommendations are computed, see the following topics:
 * [Optimize Kubernetes Costs with Node Pool Recommendations](/docs/cloud-cost-management/2-use-cloud-cost-management/7-ccm-recommendations/node-pool-recommendations.md)
 * [Optimize Kubernetes Costs with Workload Recommendations](/docs/cloud-cost-management/2-use-cloud-cost-management/7-ccm-recommendations/workload-recommendations.md)
 
-## View Recommendations
+## View recommendations
 The Recommendations page displays the following information:
 
 ![](./static/Recommendations-home-page.png)
@@ -43,7 +43,7 @@ If you want to view the ignored recommendations in the table, select the **Ignor
 
 To remove a recommendation from the ignore list, click **Manage Ignore List**. Then, click **Remove**.
 
-## Apply Recommendations
+## Apply recommendations
 You can use the **Create a ticket** link to raise a JIRA ticket to apply the recommendations.
 
 ![](./static/Recommendations-Create-a-ticket.png)
@@ -64,7 +64,7 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
 
 
 
-### Create a Jira Connector
+### Create a Jira connector
 1. In the **Overview** step, enter the name. 
 2. Optionally, enter a short description and tags.
 3. In the **Details** step, enter the base URL. For example, https://mycompany.atlassian.net. For more information, go to [Configuring the base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html).
@@ -77,7 +77,7 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
      
       * **Heartbeats**: Running Delegates send heartbeats to the Harness Manager in one-minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
      
-      * **Tags**: see [Select Delegates with Tags](/docs/platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+      * **Tags**: see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
        
       * **Allowlisting**: After a Delegate is validated for a task, it is allowlisted for that task. This Delegate is likely to be used again for that task. The allowlisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A Delegate is allowlisted for all tasks using that URL. The Time-To-Live (TTL) for the allowlisting is 6 hours, and the TTL is reset with each successful task validation.
      

@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:

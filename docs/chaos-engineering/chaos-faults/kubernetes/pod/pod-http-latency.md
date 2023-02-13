@@ -1,37 +1,37 @@
 ---
 id: pod-http-latency
-title: Pod HTTP Latency
+title: Pod HTTP latency
 ---
 
-## Introduction
-- It injects http response latency on the service whose port is provided as `TARGET_SERVICE_PORT` by starting proxy server and then redirecting the traffic through the proxy server.
-- It can test the application's resilience to lossy/flaky http responses.
+Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP response latency by starting proxy server and redirecting the traffic through it.
+- It injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) HTTP responses.
 
-:::tip Fault execution flow chart
-![Pod HTTP Latency](./static/images/pod-http.png)
-:::
+![Pod HTTP Latency](./static/images/pod-http-latency.png)
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault evaluates the application's resilience to lossy (or flaky) HTTP responses. It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
+
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
+    <summary>Fault tunables</summary>
     <h2>Mandatory Fields</h2>
     <table>
     <tr>
@@ -50,7 +50,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 2000 </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -105,7 +105,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -115,18 +115,19 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Target Service Port
+### Target service port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
+It defines the port of the targeted service that is being targeted. You can tune it using the `TARGET_SERVICE_PORT` ENV.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-http-latency/target-service-port.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-latency/target-service-port.yaml yaml"
+
 ```yaml
 ## provide the port of the targeted service
 apiVersion: litmuschaos.io/v1alpha1
@@ -142,21 +143,23 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-latency
-    spec:
-      components:
-        env:
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-latency
+      spec:
+        components:
+          env:
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
-### Proxy Port
 
-It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
+### Proxy port
 
-Use the following example to tune this:
+It defines the port on which the proxy server will listen for requests. You can tune it using the `PROXY_PORT` ENV.
 
-[embedmd]:# (./static/manifests/pod-http-latency/proxy-port.yaml yaml)
+Use the following example to tune it:
+
+[embedmd]: # "./static/manifests/pod-http-latency/proxy-port.yaml yaml"
+
 ```yaml
 # provide the port for proxy server
 apiVersion: litmuschaos.io/v1alpha1
@@ -172,25 +175,26 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-latency
-    spec:
-      components:
-        env:
-        # provide the port for proxy server
-        - name: PROXY_PORT
-          value: '8080'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-latency
+      spec:
+        components:
+          env:
+            # provide the port for proxy server
+            - name: PROXY_PORT
+              value: "8080"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Latency
 
-It defines the latency value to be added to the http request. It can be tuned via `LATENCY` ENV.
+It defines the latency value to be added to the http request. You can tune it using the `LATENCY` ENV.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-http-latency/latency.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-latency/latency.yaml yaml"
+
 ```yaml
 ## provide the latency value
 apiVersion: litmuschaos.io/v1alpha1
@@ -206,25 +210,27 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-latency
-    spec:
-      components:
-        env:
-        # provide the latency value
-        - name: LATENCY
-          value: '2000'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-latency
+      spec:
+        components:
+          env:
+            # provide the latency value
+            - name: LATENCY
+              value: "2000"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
 ### Toxicity
-It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` ENV.
+
+It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` ENV.
 Toxicity value defines the percentage of the total number of http requests to be affected.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-http-latency/toxicity.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-latency/toxicity.yaml yaml"
+
 ```yaml
 ## provide the toxicity
 apiVersion: litmuschaos.io/v1alpha1
@@ -240,26 +246,28 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-latency
-    spec:
-      components:
-        env:
-        # toxicity is the probability of the request to be affected
-        # provide the percentage value in the range of 0-100
-        # 0 means no request will be affected and 100 means all request will be affected
-        - name: TOXICITY
-          value: "100"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-latency
+      spec:
+        components:
+          env:
+            # toxicity is the probability of the request to be affected
+            # provide the percentage value in the range of 0-100
+            # 0 means no request will be affected and 100 means all request will be affected
+            - name: TOXICITY
+              value: "100"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
-### Network Interface
-It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
+### Network interface
 
-Use the following example to tune this:
+It defines the network interface to be used for the proxy. You can tune it using the `NETWORK_INTERFACE` ENV.
 
-[embedmd]:# (./static/manifests/pod-http-latency/network-interface.yaml yaml)
+Use the following example to tune it:
+
+[embedmd]: # "./static/manifests/pod-http-latency/network-interface.yaml yaml"
+
 ```yaml
 ## provide the network interface for proxy
 apiVersion: litmuschaos.io/v1alpha1
@@ -275,28 +283,29 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-latency
-    spec:
-      components:
-        env:
-        # provide the network interface for proxy
-        - name: NETWORK_INTERFACE
-          value: "eth0"
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: '80'
+    - name: pod-http-latency
+      spec:
+        components:
+          env:
+            # provide the network interface for proxy
+            - name: NETWORK_INTERFACE
+              value: "eth0"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```
 
-### Container Runtime Socket Path
+### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
+- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For `containerd`, specify path as `/var/containerd/containerd.sock`. For `crio`, speecify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-http-latency/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-http-latency/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -312,18 +321,18 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-http-latency
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
+    - name: pod-http-latency
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "docker"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/var/run/docker.sock"
+            # provide the port of the targeted service
+            - name: TARGET_SERVICE_PORT
+              value: "80"
 ```

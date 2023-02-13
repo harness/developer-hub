@@ -44,9 +44,13 @@ If you don’t want to use `verbs: [“*”]` for the Role, you can list out all
 
 The YAML provided for the Harness Delegate defaults to `cluster-admin` because that ensures anything could be applied. Any restriction must take into account the actual manifests to be deployed.
 
-### Review: Kubernetes Cluster Connector for EKS
+### Review: Use the platform-agnostic Kubernetes Cluster Connector to connect to EKS
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic Kubernetes Cluster Connector discussed here. Do not use an [AWS Connector](add-aws-connector.md).
+Harness does not have an out of the box connector for Elastic Kubernetes Service (Amazon EKS).
+
+If you want to connect Harness to Amazon EKS, use the platform-agnostic Kubernetes Cluster Connector discussed in this topic. 
+
+Do not use an [AWS Connector](add-aws-connector.md).
 
 ### Review: AKS Clusters Must have Local Accounts Enabled
 
@@ -161,11 +165,11 @@ If you do not have Harness Delegates, click **Install New Delegate** to add one 
 
 Harness uses Kubernetes Cluster Connectors at Pipeline runtime to authenticate and perform operations with Kubernetes. Authentications and operations are performed by Harness Delegates.
 
-You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](../2_Delegates/delegates-overview.md).
+You can select **Any Available Harness Delegate** and Harness will select the Delegate. For a description of how Harness picks Delegates, see [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 
-You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md).
+You can use Delegate Tags to select one or more Delegates. For details on Delegate Tags, see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
-If you need to install a Delegate, see [Delegate Installation Overview](../2_Delegates/delegate-installation-overview.md) or the [Visual Summary](#visual_summary) above.
+If you need to install a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md) or the [Visual Summary](#visual_summary) above.
 
 Click **Save and Continue**.
 

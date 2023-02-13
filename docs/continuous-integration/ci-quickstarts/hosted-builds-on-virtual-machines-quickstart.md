@@ -19,16 +19,16 @@ Hosted builds provide the following advantages:
 * Get free monthly credits for up to 2,000 build minutes.
 * Get started quickly with starter pipelines for different programming languages.
 * Run blazing fast builds.
-* Run anywhere. Use hosted runners to run your builds on Linux, Windows\*, or MacOS\*.  
-\* Support for Windows and MacOS is coming soon.
+* Run anywhere. Use hosted runners to run your builds on Linux, macOS, or Windows\*.  
+\* Support for Windows is coming soon.
 
 [Sign up now](https://harness.io/products/continuous-integration) to get started.
 
-When a pipeline is executed, Harness executes each of its CI stages in a new ephemeral VM.
+When a pipeline runs, Harness executes each CI stage in a new ephemeral VM.
 
 ![Example pipeline on Harness Cloud](./static/hosted-builds-on-virtual-machines-quickstart-11.png)All steps in the stage execute on the VM, allowing the steps in that job to share information using the underlying filesystem. You can run CI steps either directly on the VM or in a Docker container. When the job is finished, the VM is automatically terminated.
 
-The following example YAML file shows a pipeline with one CI stage that contains a Run step executing an Echo command. The Platform property is used to define the target machine where the stage will be executed.
+The following example YAML file shows a pipeline with one CI stage that contains a __Run__ step executing an `echo` command. The `platform` property defines the target machine where the stage will be executed.
 
 
 ```

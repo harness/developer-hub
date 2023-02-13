@@ -1,9 +1,7 @@
 ---
 title: Build and Push to ECR Step Settings
 description: This topic provides settings for the Build and Push to ECR step, which builds an image and pushes it to AWS ECR. See also Pushing a Docker image in the AWS docs. Name. The unique name for this Connec…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: aiqbxaef15
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

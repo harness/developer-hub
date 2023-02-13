@@ -21,7 +21,7 @@ This topic describes how to add a Google KMS Secret Manager in Harness.
 
 ### Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization or Account Resources.
 
@@ -101,7 +101,7 @@ Click **Save** and then **Continue**.
 
 ### Setup Delegates
 
-In **Delegates** **Setup**, use [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** that you want this Connector to use. Click **Save and Continue.**
+In **Delegates** **Setup**, use [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** that you want this Connector to use. Click **Save and Continue.**
 
 ### Test Connection
 

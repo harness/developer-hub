@@ -166,18 +166,16 @@ Here's the inputs and outputs for a Kubernetes Rollout Deployment step:
 
 
 
-|  |  |
-| --- | --- |
 | **Inputs** | **Outputs** |
+| :--- | :--- |
 | ![](./static/rolloutdeployment1.png) | ![](./static/rolloutdeployment2.png) |
 
 You can copy the expressions for the names or values of any input or output.
 
 
 
-|  |  |
-| --- | --- |
 | **Name** | **Value** |
+| :--- | :--- |
 |  ![](./static/name.png)|![](./static/value.png)  |
 
 Here are the **Name** and **Value** expressions for the `podIP` setting:
@@ -340,6 +338,10 @@ Whether the number in a variable is treated as a double or string depends on the
 
 If you entered 123 in a string filed, such as a name, it is treated as a string. If you entered 123 in a count field, such as instance count, it is treated as a double.
 
+### Ternary Operators
+
+When using Ternary conditional `?:` operators, do not use spaces between the operators and values.
+
 ## Built-in CIE codebase variables reference
 
 In Harness, you set up your [Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [Connector](../7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your Pipeline.
@@ -437,6 +439,10 @@ See [Add Account, Org, and Project-level Variables](add-a-variable.md).
 
 Here's a quick video that explains how to create and reference Pipeline, Stage, and Service variables:
 
+<!-- Video:
+https://www.youtube.com/watch?v=lqbmO6EVGuU-->
+<docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
+
 #### <+pipeline.identifier>
 
 The [Entity Identifier](../20_References/entity-identifier-reference.md) (Id) for the Pipeline.
@@ -489,6 +495,16 @@ The start time of a Pipeline execution in [Unix Epoch format](https://www.epoch1
 
 The type of Trigger. See [Trigger How-tos](/docs/category/triggers).
 
+Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
+
+| **<+pipeline.triggerType>** | **<+trigger.type>** | **Description** |
+| :--- | :--- | :--- |
+| ARTIFACT | Artifact | New Artifact trigger. For example, new Docker Hub image tag |
+| SCHEDULER_CRON | Scheduled | Scheduled Cron trigger |
+| MANUAL | *null* | Pipeline triggered using the RUN button in the user interface |
+| WEBHOOK_CUSTOM | Custom | Custom webhook trigger |
+| WEBHOOK | Webhook | SCM webhook trigger. For example, GitHub pull request |
+
 #### <+pipeline.triggeredBy.name>
 
 The name of the user or the Trigger name if the Pipeline is triggered using a Webhook. See [Trigger Pipelines using Git Events](../11_Triggers/triggering-pipelines.md).
@@ -518,6 +534,10 @@ You must use the expression after the step in Execution.
 #### Stage-level variables
 
 Here's a quick video that explains how to create and reference Pipeline, Stage, and Service variables:
+
+<!-- Video:
+https://www.youtube.com/watch?v=lqbmO6EVGuU-->
+<docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
 
 Once you've created a stage, its settings are in the **Overview** tab. For example, here's the **Overview** tab for a Deploy stage:
 
@@ -601,6 +621,11 @@ For example, `<+serviceVariables.myvar>`.
 #### Service-level variables for service v1
 
 Here's a quick video that explains how to create and reference Pipeline, Stage, and Service variables:
+
+
+<!-- Video:
+https://www.youtube.com/watch?v=lqbmO6EVGuU-->
+<docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
 
 #### <+serviceConfig.serviceDefinition.spec.variables.[var\_name]>
 
@@ -746,7 +771,7 @@ For example, here's how the common artifact expressions resolve for a Kubernetes
 * **<+artifact.tag>:** `stable`
 * **<+artifact.image>:** `index.docker.io/library/nginx:stable`
 * **<+artifact.imagePath>:** `library/nginx`
-* **<+artifact.imagePullSecret>:** `eJjcmV0em1hbiIsInBhc3N3b3JkIjoiIzhDNjk3QVhUdSJ9fQ==:`
+* **<+artifact.imagePullSecret>:** `secret-value`
 * **<+artifact.type>:** `DockerRegistry`
 * **<+artifact.connectorRef>:** `DockerHub`
 
@@ -769,7 +794,7 @@ Executing command ...
 artifact.tag: stable  
 artifact.image: index.docker.io/library/nginx:stable  
 artifact.imagePath: library/nginx  
-artifact.imagePullSecret: eyJodHRwczovL2luZGV4LmRvY2tlci5pby92MS8iOnsidXNlcm5hbWUiOiJjcmV0em1hbiIsInBhc3N3b3JkIjoiIzhDNjk3QVhUdSJ9fQ==  
+artifact.imagePullSecret: secret-value
 artifact.type: DockerRegistry  
 artifact.connectorRef: DockerHub  
 Command completed with ExitCode (0)
