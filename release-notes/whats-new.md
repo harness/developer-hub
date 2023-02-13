@@ -46,6 +46,11 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   ![Nexus artifacts](static/44009d0aa38851738ebed25ff3dabeb232bc729f904e219bb14d8cdd0178a283.png)
 
+### Continuous Integration
+
+- Linux ARM is now supported in [Harness Cloud](../docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) build infrastructures. (CI-5787)
+- The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
+
 ### Harness Platform
 
 - The pages in app.harness.io autofocus the search input box by default. (PL-30656)
