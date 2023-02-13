@@ -28,7 +28,7 @@ The Delegate is installed in your network and connects to the Harness Manager.
 One Delegate size does not fit all use cases, so Harness let's you pick from several options:
 
 ![](./static/delegate-requirements-and-limitations-00
-Remember that the memory and CPU requirements are for the Delegate only. You Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
+The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services such as Docker or Kubernetes.
 
 The delegate runs in a Linux/UNIX container.
 
