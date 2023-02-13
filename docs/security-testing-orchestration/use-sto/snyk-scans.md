@@ -4,7 +4,10 @@ description: This workflow describes how to ingest Snyk scan results into a Harn
 sidebar_position: 50
 ---
 
-This workflow describes how to ingest Snyk scan results into a Harness pipeline.
+This workflow describes how to ingest Snyk scan results into a Harness pipeline. STO supports the following scan approaches for the following Snyk products:
+* Snyk Open Source ([orchestratedScan](./run-an-orchestrated-scan-in-sto.md), [ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
+* Snyk Code ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
+* Snyk Container ([ingestionOnly](./ingest-scan-results-into-an-sto-pipeline.md))
 
 ### Important notes
 
