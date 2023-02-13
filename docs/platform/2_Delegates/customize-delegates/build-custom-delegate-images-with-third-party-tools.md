@@ -31,7 +31,7 @@ You can build on either of the following Harness-provided images.
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
 | Harness Minimal Delegate Docker image | A minimal delegate image available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
 
-You can use the  last published `YY.MM.XXXXX` version of the minimal image from the Docker repository.
+Use the  last published `YY.MM.XXXXX` version of the minimal image from the Docker repository.
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-07.png)
 ### Build the delegate image
