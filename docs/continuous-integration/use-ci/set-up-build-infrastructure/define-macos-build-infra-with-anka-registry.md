@@ -18,7 +18,7 @@ The following steps describe the high-level workflow.
 - [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm)
 - [Set up the Anka controller and registry](#set-up-the-anka-controller-and-registry)
 - [Install the Harness delegate and runner](#install-the-harness-delegate-and-runner)
-- [Update the Anka controller and Harness delegate](#update-the-anka-controller-and-harness-delegate)
+- [Update the Anka controller and Harness runner](#update-the-anka-controller-and-harness-runner)
   - [Stop the Anka controller](#stop-the-anka-controller)
   - [Set up authentication and port mapping on the Anka controller](#set-up-authentication-and-port-mapping-on-the-anka-controller)
   - [Set up the Harness runner to communicate with the Anka controller](#set-up-the-harness-runner-to-communicate-with-the-anka-controller)
@@ -68,7 +68,7 @@ Set up the Harness delegate and runner on the same node as your Anka controller 
 You can run your delegate and runner on [Docker](define-a-docker-build-infrastructure.md), [MacOS](./define-macos-build-infra-with-anka-registry.md), [AWS](./set-up-an-aws-vm-build-infrastructure.md), [Azure](./define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](./define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
 
-### Update the Anka controller and Harness delegate
+### Update the Anka controller and Harness runner
 
 Do the following steps.
 
