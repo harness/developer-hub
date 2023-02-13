@@ -36,7 +36,6 @@ const STOList: CardItem[] = [
   },
 ];
 
-
 export default function STO() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
