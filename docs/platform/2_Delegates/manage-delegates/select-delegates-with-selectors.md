@@ -25,7 +25,7 @@ A delegate tag with the same name as your delegate is automatically added to you
 ...
 ```
 
-You can also add more tags in the **Tags** field during the setup process:
+You can also add tags to the **Tags** field during the setup process:
 
 ![](./static/select-delegates-with-selectors-17.png)
 
