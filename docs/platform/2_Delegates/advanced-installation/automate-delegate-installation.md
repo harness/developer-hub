@@ -65,7 +65,7 @@ The Delegate Environment Variables are described in the relevant Delegate instal
 
 ### Step 2: Rename the New Delegate
 
-The process you use to rename a delegate depends on its type. For a Docker delegate, you change the name on the command line. For a Kubernetes delegate, you change multiple instances of the name.
+The process you use to rename a delegate depends on its type. For a Docker delegate,  you can change the name on the command line. For a Kubernetes delegate, you must change multiple instances of the name.
 
 #### Kubernetes delegate renaming
 
