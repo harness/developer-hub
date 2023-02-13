@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness Delegates perform most Harness tasks. Delegates make outbound TLS/SSL connections to the Harness SaaS platform to obtain these task assignments. The TLS/SSL connection from the delegate to Harness requires a trusted certificate.
 
-Harness Delegate ships with a Java Runtime Environment (JRE) that includes a default trusted certificate in its [truststore](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) (located at `/etc/pki/java/cacerts`). This truststore uses multiple trusted certificates, however, you might want to limit them to conform to your company's security protocols.
+Harness Delegate ships with a Java Runtime Environment (JRE) that includes a default trusted certificate in its [truststore](https://docs.oracle.com/cd/E19830-01/819-4712/ablqw/index.html) (located at `/etc/pki/java/cacerts`). This truststore uses multiple trusted certificates. You can limit the number you use based on your company security protocols.
 
 Harness' only requirement is that the JRE truststore includes the certificate delegates use to trust Harness (app.harness.io).
 
