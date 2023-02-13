@@ -1,6 +1,6 @@
 ---
-title: Adding Custom Approval Stages and Steps
-description: Use a Custom Approval stage and Custom Approval step to approve or reject a Pipeline or stage at any point in its execution
+title: Adding Custom Approval stages and steps
+description: Custom Approval stages and steps add control gates to pipelines
 sidebar_position: 40
 helpdocs_topic_id: 9ulc3vrpf2
 helpdocs_category_id: 2d7y1cr09y
@@ -8,11 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `NG_CUSTOM_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness has first class support for [Jira](adding-jira-approval-stages.md) and [ServiceNow](service-now-approvals.md) approval stages and steps, and Harness has a built-in [Manual](adding-harness-approval-stages.md) approval stages and steps.
+Currently, this feature is behind the feature flag `NG_CUSTOM_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-In some cases, you might have a custom shell script ticketing system or prefer to script your approvals. You can use the Custom Approval stage and step with these methods.
+Custom approval stages and steps add control gates to your pipelines by allowing you to approve or reject a pipeline or stage at any point during build execution. When you add a Custom Approval step, you add a script to the step, and then use the script results as approval or rejection criteria.
 
-A Custom Approval stage and step can approve or reject a Pipeline or stage at any point in their execution. You add a script to a Custom Approval step and use the script results as approval and rejection criteria.
+You might use a Custom Approval stage and step, for example, if you have a custom shell script ticketing system or if you prefer to script your approvals.
+
+Harness has first class support for [Jira](adding-jira-approval-stages.md) and [ServiceNow](service-now-approvals.md) approval stages and steps, and Harness has a built-in [Manual](adding-harness-approval-stages.md) approval stages and steps.
+
 
 This topic describes how to add Custom Approval stages and steps.
 
@@ -21,14 +24,14 @@ This topic describes how to add Custom Approval stages and steps.
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Add a Stage](../8_Pipelines/add-a-stage.md)
 
-### Requirements and Limitations
+## Requirements and limitations
 
-* A Custom Approval stage can be added to any Pipeline created in any module, such as in Continuous Delivery (CD), Continuous Integration (CI), or Feature Flags.
+* A Custom Approval stage can be added to any pipeline created in any module, such as in Continuous Delivery (CD), Continuous Integration (CI), or Feature Flags.
 * A Custom Approval step can be added to a Custom Approval stage, CD Build stage, or Feature Flags stage.
-* A Custom Approval step is not available in the the CI stage currently.
-* The Custom Approval step must have at least one Approval criteria. Rejection criteria is optional.
+* A Custom Approval step is not available in the CI stage currently.
+* A Custom Approval step must have at least one Approval criteria. Rejection criteria is optional.
 
-### Review: Custom Approval Stages and Steps
+## Review: Custom Approval stages and steps
 
 When you add a Custom Approval stage, a Custom Approval step is added to the stage automatically. You can also add a Custom Approval step to a Continuous Delivery (CD) Deploy or Feature Flags stage.
 
@@ -51,11 +54,9 @@ Criteria can be the following:
 	+ For example, you could evaluate the output from a previous [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
 	+ See [Built-in and Custom Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md) and [Extracting Characters from Harness Variable Expressions](../12_Variables-and-Expressions/extracting-characters-from-harness-variable-expressions.md).
 
-### Step 1: Add a Custom Approval Stage
+## Add a Custom Approval stage
 
-A Custom Approval stage contains a Custom Approval step, but you can also add a Custom Approval step to other Approval stages, as well as CD Build and Feature Flags stages.
-
-Let's add a Custom Approval stage and see the Custom Approval step added automatically.
+Custom Approval stages automatically contain Custom Approval steps, and you can add Custom Approval steps to other Approval stages, CD Build stages, and Feature Flags stages.
 
 In a Pipeline, click **Add Stage.**
 
@@ -139,11 +140,11 @@ First, you create the variable in **Script**, then create a variable in **Script
 
 ![](./static/custom-approvals-06.png)
 
-### Step 3: Set Approval Criteria
+## Set Approval Criteria
 
 The **Approval Criteria** in the step determines if the Pipeline or stage is approved.
 
-**Approval Criteria** is mandatory, but you can also set **Rejection Criteria**.
+Custom Approval steps must have at least one **Approval Criteria**. You can also specify **Rejection Criteria**.
 
 ![](./static/custom-approvals-07.png)
 
@@ -198,7 +199,7 @@ In **Advanced**, you can use the following options:
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-### Step 3: Apply and Test
+## Apply and Test
 
 Click **Apply Changes**. The Custom Approval step is added to the stage.
 
@@ -206,7 +207,7 @@ Run the Pipeline.
 
 When the Custom Approval step is reached, you can see its approval and rejection criteria.
 
-### YAML Example
+## YAML example
 
 Here's the YAML for a Pipeline that demonstrates how to set up a Custom Approval stage and step.
 
@@ -286,7 +287,7 @@ pipeline:
               tags: {}  
 
 ```
-### Notes
+## Notes
 
 #### Stopping Scripts After Failures
 
