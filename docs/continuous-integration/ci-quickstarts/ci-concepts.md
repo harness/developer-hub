@@ -134,7 +134,7 @@ If you need to share additional volumes, you can add Shared Paths.
 
 #### Dependent and background services
 
-If you decide to split your pipeline into multiple stages, you need to make sure each stage has access to any dependencies. An example of a use case for background services is when your unit tests require a running Redis server. Background services are also run in an isolated container, so you don't need to handle the dependencies. For information about configuring and calling background services, go to [Background step settings](../ci-technical-reference/background-step-settings.md).
+If you decide to split your pipeline into multiple stages, you need to make sure each stage has access to any dependencies. An example of a use case for background services is when your unit tests require a running Redis server. Background services can run in an isolated container or on the host. For information about configuring and calling background services, go to [Background step settings](../ci-technical-reference/background-step-settings.md).
 
 #### Plugins
 
