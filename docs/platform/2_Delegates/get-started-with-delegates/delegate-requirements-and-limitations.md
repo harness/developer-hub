@@ -30,7 +30,7 @@ One Delegate size does not fit all use cases, so Harness let's you pick from sev
 ![](./static/delegate-requirements-and-limitations-00
 Remember that the memory and CPU requirements are for the Delegate only. You Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
 
-The Delegate runs on a Linux/UNIX container.
+The delegate runs in a Linux/UNIX container.
 
 Access to artifact servers, deployment environments, and cloud providers. As shown in the following illustration:
 
