@@ -71,6 +71,6 @@ For steps on adding certs or other software to the Delegate, see [Common Delegat
 ### Delegate Access Requirements
 
 * Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate.  
-See [Non-Root Delegate Installation](/docs/platform/2_Delegates/advanced-installation/non-root-delegate-installation.md).
+See [Non-Root Delegate Installation](/docs/platform/Delegates/advanced-installation/non-root-delegate-installation.md).
 * If you do not run the delegate as root, you cannot use [delegate initialization scripts](/docs/platform/Delegates/delegate-reference/common-delegate-profile-scripts.md) to install software.
 
