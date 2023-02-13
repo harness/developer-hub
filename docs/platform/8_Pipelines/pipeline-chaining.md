@@ -58,6 +58,10 @@ To chain pipelines in Harness, perform the following steps:
    For more information on access, see [Role-based access control](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 
    ![](./static/pipeline-chain-list.png)
+   
+   :::note
+   For a succesfull execution, user must have execute access to both parent & child pipeline.
+   :::
 
 4. Click **Apply Selected**.
 
