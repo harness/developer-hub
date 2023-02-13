@@ -172,20 +172,17 @@ Environment variables may be injected into the container and used in the script 
 
 When using these environment variables, make sure to enter a **Name** and **Value** for each variable.
 
-For example, if you created the environment variables `DB_HOST`, `DB_URL`, and `DB_PASSWORD`, your script could reference them like this:
-
-```
-echo "Running DB Migration Job"
-
-liquibase $DB_URL --username=$DB_HOST --password=$DB_PASSWORD
-
-liquibase —defaultsFile=liquibase_dev.properties update
-
-```
-
 You may also reference environment variables in the script by their name. For example, in Bash, this would be (`$var_name` or `${var_name}`). In Windows PowerShell, the reference would be (`$Env:varName`).
 
 For **Value**, you may enter [fixed values, runtime inputs, and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+
+For example, if you created the environment variables `DB_HOST`, `DB_URL`, and `DB_PASSWORD`, your script could reference them like this:
+
+```
+DB_URL=$DB_URL
+user=$DB_HOST
+password=$DB_PASSWORD
+```
 
 For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
 
