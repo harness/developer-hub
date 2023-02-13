@@ -327,7 +327,7 @@ Harness assumes that you trust your Harness users to add safe scripts to your Cu
 
 Please ensure that users adding scripts, as well as executing deployments that run the scripts, are trusted.
 
-### See Also
+## See also
 
 * [Add a Custom Stage](../8_Pipelines/add-a-custom-stage.md)
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
