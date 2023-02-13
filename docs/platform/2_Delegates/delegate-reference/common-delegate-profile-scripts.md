@@ -19,7 +19,7 @@ For more information about running scripts, see [Install Software on the Delegat
 
 ### Review: What can I run In a script?
 
-You can add any commands supported on the host/container/pod running the delegate. Linux shell commands are most common. If `kubectl`, Helm, or Docker is running on the host/container/pod where you install the delegate, then you can use their commands. Kubernetes and Docker delegates include Helm.
+You can add any command that the host, container, or pod running the delegate supports. Linux shell commands are most common. If `kubectl`, Helm, or Docker is running on the host, container, or pod where you install the delegate, you can use those commands. Kubernetes and Docker delegates include Helm.
 
 The base image for the delegate uses Ubuntu 18.04 or later. This means you can use any default Ubuntu package in delegate script.
 
