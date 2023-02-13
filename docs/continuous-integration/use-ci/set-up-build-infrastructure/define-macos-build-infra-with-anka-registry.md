@@ -14,19 +14,36 @@ The following diagram shows how Harness CI and Anka work together. Once you set 
 The following steps describe the high-level workflow.
 
 
+- [Install Anka and create a VM on a Mac node](#install-anka-and-create-a-vm-on-a-mac-node)
+- [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm)
 - [Set up the Anka controller and registry](#set-up-the-anka-controller-and-registry)
-- [Add other Mac nodes and VM templates to the Anka registry](#add-other-mac-nodes-and-vm-templates-to-the-anka-registry)
 - [Install the Harness delegate and runner](#install-the-harness-delegate-and-runner)
 - [Update the Anka controller and Harness delegate](#update-the-anka-controller-and-harness-delegate)
   - [Stop the Anka controller](#stop-the-anka-controller)
   - [Set up authentication and port mapping on the Anka controller](#set-up-authentication-and-port-mapping-on-the-anka-controller)
   - [Set up the Harness runner to communicate with the Anka controller](#set-up-the-harness-runner-to-communicate-with-the-anka-controller)
   - [Restart the controller](#restart-the-controller)
-- [Set up port forwarding on each VM template in the registry](#set-up-port-forwarding-on-each-vm-template-in-the-registry)
 - [Set up the delegate in the Harness pipeline](#set-up-the-delegate-in-the-harness-pipeline)
+- [Add other Mac nodes and VM templates to the Anka registry](#add-other-mac-nodes-and-vm-templates-to-the-anka-registry)
 - [YAML config examples](#yaml-config-examples)
   - [Anka controller `docker-compose.yml` example](#anka-controller-docker-composeyml-example)
   - [Harness runner `pool.yml` example](#harness-runner-poolyml-example)
+
+
+### Install Anka and create a VM on a Mac node
+ 
+ The first step is to set up the Anka software on one of your Mac nodes (such as a Mac Mini) and create a VM. For details, go to [Getting Started](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/) in the Anka documentation.
+
+ When you finish this workflow, you will have a MacOS node with a working VM. After you set up the Anka registry, you can then push the node and the VM to the registry. 
+
+
+### Set up port forwarding on the VM
+ 
+ This enables connectivity between the Harness runner and the VMs. On the VM host, run the following command for each VM template:
+
+    anka modify $VM_NAME add port-forwarding service -g 9079
+
+For details, go to [Modifying your VM](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/modifying-your-vm/) in the Anka documentation.
 
 
 ###  Set up the Anka controller and registry
@@ -38,22 +55,17 @@ When you finish this workflow you will have:
 
 * A Mac node (such as a Mac Mini) in the Anka registry cluster. This node has Anka virtualization software installed. 
 
-* A Mac VM template in the Anka registry. You can use this to create VMs on other nodes as you add them to the registry. 
+* A VM template in the registry. You can use this to create VMs on other nodes as you add them to the registry. 
 
 :::note
 Harness recommends that you also enable token authentication on the registry host. For details, go to [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication) in the Anka documentation.
 ::: 
 
 
-###  Add other Mac nodes and VM templates to the Anka registry
-
-Now that you've gone through the workflow for setting up one node and VM template, you can add more nodes and templates as needed. AAfter you join a node to the cluster, it can pull templates from the registry and use them to create nodes.
-
-
 ### Install the Harness delegate and runner
 Set up the Harness delegate and runner on the same node as your Anka controller and registry or on a separate node. 
 
-You can run your delegate and runner on [Docker](define-a-docker-build-infrastructure.md), [MacOS](./define-macos-build-infra-with-anka-registry.md), [AWS](/./set-up-an-aws-vm-build-infrastructure.md), [Azure](./define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](./define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
+You can run your delegate and runner on [Docker](define-a-docker-build-infrastructure.md), [MacOS](./define-macos-build-infra-with-anka-registry.md), [AWS](./set-up-an-aws-vm-build-infrastructure.md), [Azure](./define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](./define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
 
 ### Update the Anka controller and Harness delegate
@@ -86,7 +98,7 @@ On the controller host, **`cd`** to the the `docker-compose.yml` folder and ente
 
    `5001:5001` 
 
-  For an example, go to the [Anka controller `docker-compose.yml` example](#anka-controller-docker-composeyml-example) below.
+[Anka controller `docker-compose.yml` example](#anka-controller-docker-composeyml-example)
 
 
 #### Set up the Harness runner to communicate with the Anka controller
@@ -107,13 +119,6 @@ On the Harness runner host, update up your pool.env file as follows:
 
 Go back to the the docker-compose.yml folder and restart the controller: **`docker-compose -f docker-compose.yml up -d`**
 
-### Set up port forwarding on each VM template in the registry
- 
- This enables connectivity between the Harness runner and the VMs. For each template, run the following command:
-
-`anka modify $VM_TEMPLATE_NAME add port-forwarding service -g 9079`
-
-For more information, go to [Modifying your VM](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/modifying-your-vm/) in the Anka documentation.
 
 ### Set up the delegate in the Harness pipeline
 
@@ -126,6 +131,15 @@ In the Infrastructure tab of the Build Stage, define your infrastructure as foll
 * OS = **MacOS**
 
 Your MacOS build infrastructure is now set up. You can now run your Build stages in your build infrastructure. 
+
+###  Add other Mac nodes and VM templates to the Anka registry
+
+Now that you've gone through the entire end-to-end workflow, you can add more nodes and templates as needed. After you join a node to the cluster, it can pull templates from the registry and use them to create nodes.
+
+:::note
+Before you push each VM to the registry, make sure that you enable port forwarding as described in [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm) above.
+:::
+
 
 ### YAML config examples
 
