@@ -111,7 +111,7 @@ pip -v
 
 ### Unzip
 
-Ensure that you run `microdnf update` before running any `microdnf` commands.
+Run `microdnf update` before you run `microdnf` commands.
 ```
 microdnf update  
 # Install Unzip  
