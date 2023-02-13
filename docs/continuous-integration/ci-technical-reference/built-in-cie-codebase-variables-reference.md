@@ -32,7 +32,7 @@ The following use cases specify which codebase variables get resolved and when.
 When you start a build manually using **Input Sets**, the variables are based on the input set defined for the **Trigger** type:
 
 [Manual branch build](#manual-branch-build)
-[Manual tag build](#manual-tag-build)
+[Manual tag build](#manual-tag-build-expressions)
 [Manual pull request build](#manual-pull-request-build)
 
 </details>
@@ -109,7 +109,7 @@ Here's how the Run step and the output look in the Harness UI:
 
 ![](./static/built-in-cie-codebase-variables-reference-512.png)
 
-## Manual tag build
+## Manual tag build expressions
 
 Manual tag builds are builds that occur when you manually run your Harness pipeline from the Harness UI and select the **Git Tag** build type. Harness looks for the source code attached to the specified **Tag Name**, and it clones that specific source code for the build.
 
@@ -117,19 +117,11 @@ You can refer to manual tag builds in Harness with the expression `<+codebase.bu
 
 To refer to specific Git attributes associated with a manual tag build, use the following expressions in your Harness stages:
 
-### <+codebase.tag>
+* `<+codebase.commitSha>`: The build's full Git commit id
+* `<+codebase.shortCommitSha>`: The short SHA version of the build's commit SHA
+* `<+codebase.tag>`: The build's Git tag
 
-The build's Git tag.
-
-### <+codebase.commitSha>
-
-The build's full Git commit id.
-
-### <+codebase.shortCommitSha>
-
-The short SHA version of the build's commit SHA.
-
-## Manual branch build
+## Manual branch build expressions
 
 Manual branch builds are the builds that occur when you manually run your pipeline in the Harness UI and select the **Git Branch** build type. Harness looks for the source code attached to the specified **Branch Name**, and it clones that specific source code for the build.
 
@@ -137,19 +129,11 @@ You can refer to manual branch builds in Harness with the expression `<+codebase
 
 To refer to specific Git attributes associated with a manual branch build, use the following expressions in your Harness stages:
 
-### <+codebase.branch>
+* `<+codebase.branch>`: The name of the Git branch used for the build
+* `<+codebase.commitSha>`: The build's full Git commit id
+* `<+codebase.shortCommitSha>`: The short SHA version of the build's commit SHA
 
-The name of the Git branch used for the build.
-
-### <+codebase.commitSha>
-
-The build's full Git commit id.
-
-### <+codebase.shortCommitSha>
-
-The short SHA version of the build's commit SHA.
-
-## Manual pull request build
+## Manual pull request build expressions
 
 Manual pull request builds are builds that occur when you manually run your pipeline in the Harness UI and select the **Git Pull Request** build type. Harness looks for the source code attached to the specified **Pull Request Number**, and it clones that specific source code for the build.
 
@@ -157,17 +141,24 @@ You can refer to manual pull request builds in Harness with the expression `<+co
 
 To refer to specific Git attributes associated with a manual pull request build, use the following expressions in your Harness stages:
 
-### <+codebase.branch>
-
-The name of the Git branch associated with the pull request used for the build.
-
-### <+codebase.tag>
-
-The build's Git tag.
-
-### <+codebase.commitSha>
-
-The build's full Git commit id.
+* `<+codebase.baseCommitSha>`: Git base commit id of the build
+* `<+codebase.branch>`: The name of the Git branch associated with the pull request used for the build
+* `<+codebase.commitRef>`: Git commit id reference
+* `<+codebase.commitSha>`: The build's full Git commit id
+* `<+codebase.gitUser>`: User name of the Git account associated with the build
+* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the build
+* `<+codebase.gitUserEmail>`: User email of the Git account associated with the build
+* `<+codebase.gitUserId>`: User id of the Git account associated with the build
+* `<+codebase.prNumber>` Git pull request number
+* `<+codebase.prTitle>`: Git pull request description
+* `<+codebase.pullRequestBody>`: Git pull request body
+* `<+codebase.pullRequestLink>`: Git pull request link
+* `<+codebase.repoUrl>`: Git repo URL of the build
+* `<+codebase.shortCommitSha>`: Short SHA version of the build's commit SHA
+* `<+codebase.sourceBranch>`: Git source branch of the build
+* `<+codebase.state>`: State of the Git working directory
+* `<+codebase.tag>`: The build's Git tag
+* `<+codebase.targetBranch>`: Git target branch of the build
 
 :::info
 
@@ -177,67 +168,7 @@ This is not the same as a short SHA, which is returned by the variable `<+codeba
 
 :::
 
-### <+codebase.shortCommitSha>
-
-The short SHA version of the build's commit SHA.
-
-### <+codebase.baseCommitSha>
-
-Git base commit id of the build.
-
-### <+codebase.commitRef>
-
-Git commit id reference.
-
-### <+codebase.targetBranch>
-
-The Git target branch of the build.
-
-### <+codebase.sourceBranch>
-
-The Git source branch of the build.
-
-### <+codebase.prNumber>
-
-Git pull request number.
-
-### <+codebase.prTitle>
-
-Git pull request description.
-
-### <+codebase.repoUrl>
-
-Git repo URL of the build.
-
-### <+codebase.gitUserId>
-
-User id of the Git account associated with the build.
-
-### <+codebase.gitUserEmail>
-
-User email of the Git account associated with the build.
-
-### <+codebase.gitUser>
-
-User name of the Git account associated with the build.
-
-### <+codebase.gitUserAvatar>
-
-User avatar of the Git account associated with the build.
-
-### <+codebase.pullRequestLink>
-
-Git pull request link.
-
-### <+codebase.pullRequestBody>
-
-Git pull request body.
-
-### <+codebase.state>
-
-State of the Git working directory.
-
-## Pull request webhook event
+## Pull request webhook event expressions
 
 You can configure [Triggers](/docs/category/triggers) in Harness for an event on your Git repo, and Harness automatically triggers a build whenever there is a new instance of that event type on your Git repo. A **Pull Request Webhook Event** automatically starts a build in Harness when there is a new pull request event on the pipeline's associated Git repo. For information about setting up triggers, go to [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md).
 
@@ -245,17 +176,24 @@ You can refer to webhook pull request builds in Harness with the expression `<+c
 
 To refer to specific Git attributes associated with a webhook-triggered pull request build, use the following expressions in your Harness stages:
 
-### <+codebase.branch>
-
-Git branch name of the pull request.
-
-### <+codebase.tag>
-
-Git tag of the build.
-
-### <+codebase.commitSha>
-
-The build's full Git commit id.
+* `<+codebase.baseCommitSha>`: Git base commit id of the build
+* `<+codebase.branch>`: The name of the Git branch associated with the pull request used for the build
+* `<+codebase.commitRef>`: Git commit id reference
+* `<+codebase.commitSha>`: The build's full Git commit id
+* `<+codebase.gitUser>`: User name of the Git account associated with the build
+* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the build
+* `<+codebase.gitUserEmail>`: User email of the Git account associated with the build
+* `<+codebase.gitUserId>`: User id of the Git account associated with the build
+* `<+codebase.prNumber>` Git pull request number
+* `<+codebase.prTitle>`: Git pull request description
+* `<+codebase.pullRequestBody>`: Git pull request body
+* `<+codebase.pullRequestLink>`: Git pull request link
+* `<+codebase.repoUrl>`: Git repo URL of the build
+* `<+codebase.shortCommitSha>`: Short SHA version of the build's commit SHA
+* `<+codebase.sourceBranch>`: Git source branch of the build
+* `<+codebase.state>`: State of the Git working directory
+* `<+codebase.tag>`: The build's Git tag
+* `<+codebase.targetBranch>`: Git target branch of the build
 
 :::info
 
@@ -265,67 +203,7 @@ This is not the same as a short SHA, which is returned by the variable `<+codeba
 
 :::
 
-### <+codebase.shortCommitSha>
-
-The short SHA version of the build's commit SHA.
-
-### <+codebase.baseCommitSha>
-
-Git base commit id of the build.
-
-### <+codebase.commitRef>
-
-Git commit id reference.
-
-### <+codebase.targetBranch>
-
-The Git target branch of the build.
-
-### <+codebase.sourceBranch>
-
-The Git source branch of the build.
-
-### <+codebase.prNumber>
-
-Git pull request number.
-
-### <+codebase.prTitle>
-
-Git pull request description.
-
-### <+codebase.repoUrl>
-
-Git repo URL of the build.
-
-### <+codebase.gitUserId>
-
-User id of the Git account associated with the build.
-
-### <+codebase.gitUserEmail>
-
-User email of the Git account associated with the build.
-
-### <+codebase.gitUser>
-
-User name of the Git account associated with the build.
-
-### <+codebase.gitUserAvatar>
-
-User avatar of the Git account associated with the build.
-
-### <+codebase.pullRequestLink>
-
-Git pull request link.
-
-### <+codebase.pullRequestBody>
-
-Git pull request body.
-
-### <+codebase.state>
-
-State of the Git working directory.
-
-## Push webhook event
+## Push webhook event expressions
 
 You can configure [Triggers](/docs/category/triggers) in Harness for an event on your Git repo, and Harness automatically triggers a build whenever there is a new instance of that event type on your Git repo. A **Push Webhook Event** automatically starts a build in Harness when there is a new push event on the pipeline's associated Git repo. For information about setting up triggers, go to [Trigger Pipelines using Git Events](../../platform/11_Triggers/triggering-pipelines.md).
 
@@ -333,42 +211,13 @@ You can refer to webhook push builds in Harness with the expression `<+codebase.
 
 To refer to specific Git attributes associated with a webhook-triggered push build, use the following expressions in your Harness stages:
 
-### <+codebase.branch>
-
-The name of the Git branch associated with the push webhook event.
-
-### <+codebase.tag>
-
-Git tag of the build for the push webhook event.
-
-### <+codebase.commitSha>
-
-The full Git commit id associated with the push webhook event.
-
-### <+codebase.shortCommitSha>
-
-The short SHA version of the build's associated commit SHA.
-
-### <+codebase.targetBranch>
-
-Git target branch associated with the push webhook event.
-
-### <+codebase.repoUrl>
-
-Git repo URL associated with the push webhook event.
-
-### <+codebase.gitUserId>
-
-User id of the Git account associated with the push webhook event.
-
-### <+codebase.gitUserEmail>
-
-User email of the Git account associated with the push webhook event.
-
-### <+codebase.gitUser>
-
-User name of the Git account associated with the push webhook event.
-
-### <+codebase.gitUserAvatar>
-
-User avatar of the Git account associated with the push webhook event.
+* `<+codebase.branch>`: The name of the Git branch associated with the push webhook event
+* `<+codebase.commitSha>`: The full Git commit id associated with the push webhook event
+* `<+codebase.gitUser>`: User name of the Git account associated with the push webhook event
+* `<+codebase.gitUserAvatar>`: User avatar of the Git account associated with the push webhook event
+* `<+codebase.gitUserEmail>`: User email of the Git account associated with the push webhook event
+* `<+codebase.gitUserId>`: User id of the Git account associated with the push webhook event
+* `<+codebase.repoUrl>`: Git repo URL associated with the push webhook event
+* `<+codebase.shortCommitSha>`: The short SHA version of the build's associated commit SHA
+* `<+codebase.tag>`: Git tag of the build for the push webhook event
+* `<+codebase.targetBranch>`: Git target branch associated with the push webhook event
