@@ -12,6 +12,22 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## February 14, 2023, version 784xx
+
+### Continuous Integration
+
+* Microsoft Windows (amd64) is now a supported [Harness Cloud](../docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) build infrastructure option. (CI-5455)
+* Added **Python** as a built-in **Shell** option for [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md). (CI-6692)
+* [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md) can now reference images in GCR through [GCP connectors](../docs/platform/7_Connectors/connect-to-google-cloud-platform-gcp.md) that use inherited credentials.
+  * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
+  * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method. (CI-5758, ZD-38986)
+* Use [Background steps](../docs/continuous-integration/ci-technical-reference/background-step-settings.md) to configure service dependencies.
+  * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
+  * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
+  * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option. (CI-5580)
+* Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
+* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](../docs/platform/11_Triggers/triggering-pipelines.md). (CI-5720)
+
 ## February 6, 2023, version 78321
 
 ### Continuous Delivery
