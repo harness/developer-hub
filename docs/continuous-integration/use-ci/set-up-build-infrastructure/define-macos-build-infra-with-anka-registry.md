@@ -17,20 +17,20 @@ The following steps describe the high-level workflow.
 - [Set up the Anka controller and registry](#set-up-the-anka-controller-and-registry)
 - [Add other Mac nodes and VM templates to the Anka registry](#add-other-mac-nodes-and-vm-templates-to-the-anka-registry)
 - [Install the Harness delegate and runner](#install-the-harness-delegate-and-runner)
-- [Update the Harness delegate and runner](#update-the-harness-delegate-and-runner)
-  - [Stop the Harness delegate](#stop-the-harness-delegate)
-  - [Enable authentication on the Harness delegate](#enable-authentication-on-the-harness-delegate)
+- [Update the Anka controller and Harness delegate](#update-the-anka-controller-and-harness-delegate)
+  - [Stop the Anka controller](#stop-the-anka-controller)
+  - [Set up authentication and port mapping on the Anka controller](#set-up-authentication-and-port-mapping-on-the-anka-controller)
   - [Set up the Harness runner to communicate with the Anka controller](#set-up-the-harness-runner-to-communicate-with-the-anka-controller)
-  - [Restart the delegate](#restart-the-delegate)
-- [Set up port forwarding on each Mac node in the registry](#set-up-port-forwarding-on-each-mac-node-in-the-registry)
+  - [Restart the controller](#restart-the-controller)
+- [Set up port forwarding on each VM template in the registry](#set-up-port-forwarding-on-each-vm-template-in-the-registry)
 - [Set up the delegate in the Harness pipeline](#set-up-the-delegate-in-the-harness-pipeline)
 - [YAML config examples](#yaml-config-examples)
-  - [Harness delegate `docker-compose.yml` example](#harness-delegate-docker-composeyml-example)
-  - [Drone Runner `pool.yml` example](#drone-runner-poolyml-example)
+  - [Anka controller `docker-compose.yml` example](#anka-controller-docker-composeyml-example)
+  - [Harness runner `pool.yml` example](#harness-runner-poolyml-example)
 
 
 ###  Set up the Anka controller and registry
-Set up the Anka registry and controller on a Linux host as described in [Setting up the Controller & Registry](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/) (Anka docs). 
+Set up the Anka registry and controller on a Linux host. For details, go to  [Setting up the Controller & Registry](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/) in the Anka documentation. 
 
 When you finish this workflow you will have:
 
@@ -41,39 +41,38 @@ When you finish this workflow you will have:
 * A Mac VM template in the Anka registry. You can use this to create VMs on other nodes as you add them to the registry. 
 
 :::note
-Harness recommends that you also enable token authentication on the registry host as described in [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication) (Anka docs).
+Harness recommends that you also enable token authentication on the registry host. For details, go to [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication) in the Anka documentation.
 ::: 
 
 
 ###  Add other Mac nodes and VM templates to the Anka registry
 
-Now that you've gone through the workflow for setting up one node and VM template, you can add more nodes and templates as needed. After you join each node to the cluster, you can create VM instances by pushing templates from the registry to the node. 
+Now that you've gone through the workflow for setting up one node and VM template, you can add more nodes and templates as needed. AAfter you join a node to the cluster, it can pull templates from the registry and use them to create nodes.
 
 
 ### Install the Harness delegate and runner
 Set up the Harness delegate and runner on the same node as your Anka controller and registry or on a separate node. 
 
-You can run your delegate and runner on any Harness-supported platform. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure). 
+You can run your delegate and runner on [Docker](define-a-docker-build-infrastructure.md), [MacOS](./define-macos-build-infra-with-anka-registry.md), [AWS](/./set-up-an-aws-vm-build-infrastructure.md), [Azure](./define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](./define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
-** TBD What about k8s? Kubernetes clusters don't use runners and VMs, do they?**
 
-### Update the Harness delegate and runner
+### Update the Anka controller and Harness delegate
 
 Do the following steps.
 
 
-#### Stop the Harness delegate
+#### Stop the Anka controller
 
-**`cd`** to the the docker-compose.yml folder and enter **`docker-compose down`**. 
+On the controller host, **`cd`** to the the `docker-compose.yml` folder and enter **`docker-compose down`**. 
 
 
-#### Enable authentication on the Harness delegate
+#### Set up authentication and port mapping on the Anka controller
 
-1. Enable authentication on the Harness delegate. 
+1. Enable authentication on the Anka controller. 
 
    This step assumes you have set up root token authentication as described in [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication) (Anka docs).
 
-   Set up these variables to the environment section in the docker-compose.yml file on the delegate host:
+   Set up these variables to the environment section in the docker-compose.yml file on the controller host:
 
    * `ANKA_ENABLE_AUTH : true`
 
@@ -81,20 +80,18 @@ Do the following steps.
  
    * `ANKA_QUEUE_ADDR : 0.0.0.0:9001`  
  
-    **TBD This is how it's specified in [Eoin's google doc](https://docs.google.com/document/d/1nI9p8TuSdTpZjaby6IeE2hwGZxTaJFmTrWgoA5T429U/edit?usp=sharing). Do you specify this the same way on all hosts? **
+     <!-- TBD clarify -->
 
 2. Add this mapping to the `ports` section of the  docker-compose.yml file:
 
    `5001:5001` 
-   
-   **TBD This is how it's specified in [Eoin's google doc](https://docs.google.com/document/d/1nI9p8TuSdTpZjaby6IeE2hwGZxTaJFmTrWgoA5T429U/edit?usp=sharing). Do you specify this the same way on all hosts?**
 
-  See the [Harness Delegate `docker-compose.yml` example](#harness-delegate-docker-composeyml-example) below.
+  For an example, go to the [Anka controller `docker-compose.yml` example](#anka-controller-docker-composeyml-example) below.
 
 
 #### Set up the Harness runner to communicate with the Anka controller
 
-Update up your pool.env file as follows:
+On the Harness runner host, update up your pool.env file as follows:
 
 ``` yaml
   spec: 
@@ -104,22 +101,19 @@ Update up your pool.env file as follows:
     controller_url : $ANKA_CONTROLLER_URL
 ```
 
-** TBD Port number required for controller URL? ** 
-** TBD Has registry_url been updated to controller_url? **
+[Drone Runner config example](#harness-runner-poolyml-example)
 
-See the [Drone Runner config example](#drone-runner-poolyml-example) below. 
+#### Restart the controller 
 
-#### Restart the delegate 
+Go back to the the docker-compose.yml folder and restart the controller: **`docker-compose -f docker-compose.yml up -d`**
 
-Go back to the the docker-compose.yml folder and restart the delegate: **`docker-compose -f docker-compose.yml up -d`**
-
-### Set up port forwarding on each Mac node in the registry
+### Set up port forwarding on each VM template in the registry
  
- This enables connectivity between the Harness runner and the VMs. For each VM on each host, run the following command:
+ This enables connectivity between the Harness runner and the VMs. For each template, run the following command:
 
-`anka modify $VM_NAME add port-forwarding service -g 9079`
+`anka modify $VM_TEMPLATE_NAME add port-forwarding service -g 9079`
 
-Suppose you're setting up two MacOS nodes. One node has two VM instances and the other node has three. In this scenario, you would need to run this command five times. 
+For more information, go to [Modifying your VM](https://docs.veertu.com/anka/anka-virtualization-cli/getting-started/modifying-your-vm/) in the Anka documentation.
 
 ### Set up the delegate in the Harness pipeline
 
@@ -131,11 +125,11 @@ In the Infrastructure tab of the Build Stage, define your infrastructure as foll
 * Pool Name = The `name` field in your `pool.yml` file.
 * OS = **MacOS**
 
-Your MacOS build infrastructure is set up. You can now run your Build stages in your build infrastructure. 
+Your MacOS build infrastructure is now set up. You can now run your Build stages in your build infrastructure. 
 
 ### YAML config examples
 
-#### Harness delegate `docker-compose.yml` example
+#### Anka controller `docker-compose.yml` example
 ``` yaml
 version: "2"
 services: 
@@ -175,7 +169,7 @@ services:
      restart: always
   ```
 
-#### Drone Runner `pool.yml` example
+#### Harness runner `pool.yml` example
 ``` yaml
  - name: anka-build
    default: true
