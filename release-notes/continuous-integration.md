@@ -19,13 +19,13 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 * Microsoft Windows (amd64) is now a supported [Harness Cloud](../docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) build infrastructure option. (CI-5455)
 * **Python** is now available as a built-in **Shell** option for [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md). (CI-6692)
-* [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md) can now reference images in GCR through [GCP connectors](../docs/platform/7_Connectors/connect-to-google-cloud-platform-gcp.md) that use inherited credentials.
+* [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md) can now reference images in GCR through [GCP connectors](../docs/platform/7_Connectors/connect-to-google-cloud-platform-gcp.md) that use inherited credentials. (CI-5758, ZD-38986)
   * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
-  * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method. (CI-5758, ZD-38986)
-* Use [Background steps](../docs/continuous-integration/ci-technical-reference/background-step-settings.md) to configure service dependencies.
+  * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
+* Use [Background steps](../docs/continuous-integration/ci-technical-reference/background-step-settings.md) to configure service dependencies. (CI-5580)
   * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
   * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
-  * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option. (CI-5580)
+  * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option.
 * Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
 * Improved handling of Azure repo URLs in [Git webhook pipeline triggers](../docs/platform/11_Triggers/triggering-pipelines.md). (CI-5720)
 
@@ -42,7 +42,7 @@ The Configure Service Dependency step is deprecated in favor of the [Background 
 * With the feature flag `NEW_LEFT_NAV_BAR` enabled, you can view build details at the project level without drilling down into individual modules. When viewing build details from the project level, the **Commits** tab produced a `404` error. This is fixed. (CI-6817)
 * Expressions used in pipeline codebase properties unexpectedly resolved to `null`, which caused builds to fail due to missing variable input. These expressions now resolve to their expected values. (CI-6679, ZD-38122, ZD-38241, ZD-38698, ZD-39088)
    ![The CI Codebase Configuration window with the fields set to accept variable expression input.](static/ci-codebase-config-exp-values.png)
-* The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. We fixed an issue where exiting the Getting Started workflow before creating a pipeline resulted in incomplete connector configuration. Attempting to use the incomplete connector in a pipeline produced the following error: `Invalid argument(s): Both plain text and secret value cannot be null for the field`. If you encounter this error, replace the pipeline's SCM connector with a new one. (CI-6443)
+* The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. Previously, exiting the Getting Started workflow before creating a pipeline resulted in incomplete connector configuration, and attempting to use the incomplete connector in a pipeline produced the following error: `Invalid argument(s): Both plain text and secret value cannot be null for the field`. If you encounter this error, replace the pipeline's SCM connector with a new one. (CI-6443)
 
 ## February 6, 2023, version 78321
 
