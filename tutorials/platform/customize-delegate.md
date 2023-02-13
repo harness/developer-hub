@@ -1,4 +1,4 @@
-# Customize the delegate to run your favorite third-party tools
+# Customize the Delegate to Run Your Favorite Third-Party Tools
 
 Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. With the delegate installed, you can connect to third-party resources. The delegate performs all pipeline operations, including deployment and integration.
 
