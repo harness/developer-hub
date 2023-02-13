@@ -100,7 +100,7 @@ You do not need to add a script for Helm 3. Harness includes Helm 3 support in a
 
 ### Pip
 
-Ensure that you run `microdnf update` before running any `microdnf` commands.
+Run `microdnf update` before you run `microdnf` commands.
 ```
 microdnf update  
 # Install pip  
