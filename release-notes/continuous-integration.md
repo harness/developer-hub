@@ -26,6 +26,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option. (CI-5580)
 * Pipeline execution status links in pull requests now direct you to the associated stage within the pipeline. (CI-6813)
 * Improved handling of Azure repo URLs in Git webhook pipeline triggers. (CI-5720)
+
 ### Early access
 
 No early access features added in this release.
