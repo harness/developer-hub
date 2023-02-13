@@ -430,6 +430,18 @@ const PlatformList: CardItem[] = [
     link: "/tutorials/platform/install-delegate",
   },
   {
+    title: "Customize the Delegate to Run Your Favorite Third-Party Tools",
+    module: "platform",
+    icon: "img/logo.svg",
+    description: (
+      <>Customize the Delegate to run any of your favorite tools Such as Helm, Terraform, AWS CLI, etc.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/platform/customize-delegate",
+  },
+  {
     title: "Onboard with Terraform",
     module: "platform",
     icon: "img/logo.svg",
