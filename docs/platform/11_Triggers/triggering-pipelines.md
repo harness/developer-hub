@@ -26,7 +26,7 @@ For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeli
 * Currently, Harness supports Git-based Triggers for the most common Git providers. Harness includes a Custom Trigger for other repo providers.
 * In Harness, you can select who is able to create and use Triggers within Harness, but you must use your repos' RBAC to control who can initiate the Git events that start the Harness Trigger.
 
-## Visual Summary
+## Visual summary
 
 Here's a two minute video showing you how to create and run a Trigger in response to Git events.
 
