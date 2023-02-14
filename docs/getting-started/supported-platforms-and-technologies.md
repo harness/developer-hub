@@ -831,7 +831,13 @@ Using the No Tools Image and Delegate YAML, you can install the specific SDK ver
 
 For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
-### Supported browsers
+## Harness Open Source Software (OSS) components
+
+The following document lists the open source libraries and third-party software Harness uses.
+
+- [Harness Open Source Software (OSS) components](static/harness-open-source-software-components.pdf)
+
+## Supported browsers
 
 The following browsers are supported:
 
@@ -842,7 +848,7 @@ The following browsers are supported:
 
 Mobile browsers are not supported.
 
-#### Supported screen resolution
+## Supported screen resolution
 
 Minimum supported screen resolution is 1440x900.
 
