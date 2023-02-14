@@ -20,9 +20,8 @@ Harness provides the following Delegate images. Each image includes a set of too
 
 
 
-|  |  |
+| **Delegate Image**  | **Description** |
 | --- | --- |
-| **Delegate Image** | **Description** |
 | harness/delegate:*YY.MM.xxxxx* | Includes the Delegate and its dependencies.Includes client tools such as `kubectl`, Helm, and ChartMuseum. |
 | harness/delegate:*YY.MM.xxxxx*.minimal | Includes the Delegate and its dependencies. |
 
