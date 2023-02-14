@@ -8,15 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-With Harness Cloud you can run builds in isolation on Harness-hosted virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are pre-configured with tools, packages, and settings commonly used in CI pipelines.
+With Harness Cloud you can run builds in isolation on Harness-hosted virtual machines (VMs). You can run builds at scale on Linux, Windows, and macOS machines that are preconfigured with the tools, packages, and settings that are commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on building great software instead of maintaining build infrastructure.
 
 Harness Cloud provides the following advantages:
 
-* Get free monthly credits for up to 2,000 build minutes.
-* Get started quickly with starter pipelines for different programming languages.
-* Run blazing fast builds.
+* Free monthly credits for up to 2,000 build minutes.
+* Starter pipelines for different programming languages.
+* Blazing fast builds.
 * Run anywhere. Use hosted runners to run your builds on Linux, macOS, or Windows.
 
 [Sign up now](https://harness.io/products/continuous-integration) to get started.
@@ -33,7 +33,7 @@ All steps in the stage execute on the VM, allowing the steps in that job to shar
 
 ### Sample pipeline
 
-The following example YAML file shows a pipeline with one CI stage that contains a __Run__ step executing an `echo` command. The `platform` property defines the target machine where the stage is executed.
+The following YAML shows a pipeline with one CI stage that contains a __Run__ step executing an `echo` command. The `platform` property defines the target machine where the stage is executed.
 
 ```
  pipeline:
@@ -43,7 +43,7 @@ The following example YAML file shows a pipeline with one CI stage that contains
   name: Hello World
   properties:
     ci:
-      codebase: // The codebase section is needed if the stage is set to automatically clone the codebase.
+      codebase: //  Use the codebase section if the stage is set to automatically clone the codebase.
         connectorRef: account.Github // The git connector holds your Docker credentials. It's needed to pull the image from Docker.
         repoName: keen-software/jhttp
         build: <+input>
@@ -58,7 +58,7 @@ The following example YAML file shows a pipeline with one CI stage that contains
             os: Linux
             arch: Amd64
           runtime:
-            type: Cloud // To run the build on infrastructure provided by Harness.
+            type: Cloud // Run the build on Harness-provided infrastructure.
             spec: {}
           execution:
             steps:
@@ -68,7 +68,7 @@ The following example YAML file shows a pipeline with one CI stage that contains
                   identifier: Welcome
                   spec:
                     connectorRef: my_dockerhub // (Optional) The Docker connectors hold your Docker credentials. It's needed to pull the image from Docker.
-                    image: alpine // (Optional) If the image isn't provided, the step will run directly on the host machine,
+                    image: alpine // (Optional) If no image is specified, the step runs on the host machine,
                     shell: Sh
                     command: Echo "Welcome to Harness CI"
 ```
