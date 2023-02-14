@@ -39,12 +39,6 @@ You can reference pre-existing Vault secrets in the Harness YAML editor.
 
 ### Option: HashiCorp Vault Secrets
 
-
-:::note
-Currently, this feature is behind the feature flag `PL_ACCESS_SECRET_DYNAMICALLY_BY_PATH`. Contact Harness Support to enable the feature.​
-
-:::
-
 ​For HashiCorp Vault, you can also use expressions to reference pre-existing secrets in Vault using a fully-qualified path, such as `hashicorpvault://LocalVault/foo/bar/mysecret#mykey`. 
 
 With this kind of referencing, you don't need to pre-create secrets.
@@ -101,12 +95,6 @@ To reference a specific key in your Harness secret, add the key name following t
 
 #### Referencing pre-existing secrets
 
-
-:::note
-Currently, this feature is behind the feature flag `PL_ACCESS_SECRET_DYNAMICALLY_BY_PATH`. Contact Harness Support to enable the feature.​​
-
-:::
-
 For AWS secret manager, you can also use expressions to reference pre-existing secrets using a fully-qualified path, such as `awssecretsmanager://<connector_identifier>/<secret>`.
 
 With this kind of reference, you don't need to pre-create secrets.
@@ -142,11 +130,6 @@ To dynamically reference secrets in the AWS secret manager, make sure you use th
 You can create a Harness secret that refers to an existing secret in Azure Key Vault, using that secret's name (for example: `azureSecret`). You can also specify the secret's version (for example: `azureSecret/05`).
 
 #### Referencing pre-existing secrets
-
-
-:::note
-Currently, this feature is behind the feature flag `PL_ACCESS_SECRET_DYNAMICALLY_BY_PATH`. Contact Harness Support to enable the feature.​​
-:::
 
 For Azure Key Vault secret manager, you can also use expressions to reference pre-existing secrets using a fully-qualified path, such as `azurevault://My_AzureVault/mySecret`.
 
@@ -184,10 +167,6 @@ To dynamically reference secrets in the Azure Key Vault, make sure you use the e
 :::
 
 ### Option: GCP Secret Manager
-
-:::note
-Currently, this feature is behind the feature flag `PL_ACCESS_SECRET_DYNAMICALLY_BY_PATH`. Contact Harness Support to enable the feature.​​
-:::
 
 For GCP secret manager, you can also use expressions to reference pre-existing secrets using a fully-qualified path, such as `gcpsecretsmanager://My_GoogleSM/mySecret`. 
 
