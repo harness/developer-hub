@@ -32,7 +32,7 @@ No early access features are available in this release.
 
 - On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
   
-  The introduction of the feature flag SPG_DISABLE_SECRET_DETAILS has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
 
 ### February 6, 2023, version 78321
 
