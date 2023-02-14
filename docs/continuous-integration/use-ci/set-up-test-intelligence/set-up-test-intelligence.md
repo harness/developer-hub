@@ -80,20 +80,13 @@ The **Run Tests** step executes one or more commands on a container image. Addin
    2. **Test Annotations**: Provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. The defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
    3. **Namespaces**: For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.
 5. Select **Apply Changes** to save the step settings, and then select **Save** to save the pipeline.
-6. Use bootstrapping to generate the initial Test Intelligence call graph. Once the call graph is generated, Test Intelligence can perform test selection and begin optimizing test time in future builds. To perform the bootstrap:
+6. When you first enable Test Intelligence on a repo, you must run all tests to generate an initial call graph. This creates a baseline for test selection in future builds. To generate the initial call graph:
    1. [Add a webhook trigger](../../../platform/11_Triggers/triggering-pipelines.md) to the pipeline that listens for PR merge events.
-   2. Open a PR against the pipeline's codebase repo. To properly build the initial call graph, the build triggered by this PR must run all tests.
+   2. Open a PR against the pipeline's codebase. Make sure the build triggered by this PR runs all tests.
    3. Merge the PR.
    4. Wait while the pipeline executes. To monitor the build's progress, go to **Builds** and select the build that was started by the PR.
-7. Go to the build details page and select **Tests** to view the test report.
 
-:::caution
-
-Make sure that the build triggered by the bootstrap PR runs all tests.
-
-:::
-
-## Test report contents
+## View test reports
 
 To view the test report, go to the build details page and select **Tests**. The test report content is based on the tests you configured for the **Run Tests** step. In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format. Harness parses test reports that are in JUnit XML format only.
 
