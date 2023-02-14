@@ -39,15 +39,9 @@ You can reference pre-existing Vault secrets in the Harness YAML editor.
 
 ### Option: HashiCorp Vault Secrets
 
-
-:::note
-Currently, this feature is behind the feature flag `PL_ACCESS_SECRET_DYNAMICALLY_BY_PATH`. Contact Harness Support to enable the feature.​
-
-:::
-
 ​For HashiCorp Vault, you can also use expressions to reference pre-existing secrets in Vault using a fully-qualified path, such as `hashicorpvault://LocalVault/foo/bar/mysecret#mykey`. 
 
-With this kind of referencing, you don't need to pre-create secrets.
+With this type of referencing, you don't need to pre-create secrets.
 
 The scheme `hashicorpvault://` is needed to distinguish a Vault secret from other secret references. It is followed by the identifier of the Vault secret manager.
 
@@ -101,15 +95,9 @@ To reference a specific key in your Harness secret, add the key name following t
 
 #### Referencing pre-existing secrets
 
-
-:::note
-Currently, this feature is behind the feature flag `PL_ACCESS_SECRET_DYNAMICALLY_BY_PATH`. Contact Harness Support to enable the feature.​​
-
-:::
-
 For AWS secret manager, you can also use expressions to reference pre-existing secrets using a fully-qualified path, such as `awssecretsmanager://<connector_identifier>/<secret>`.
 
-With this kind of reference, you don't need to pre-create secrets.
+With this type of reference, you don't need to pre-create secrets.
 
 The scheme `awssecretsmanager://` is needed to distinguish an AWS secret manager secret from other secret references. The identifier of the secret manager follows this.
 
@@ -143,14 +131,9 @@ You can create a Harness secret that refers to an existing secret in Azure Key V
 
 #### Referencing pre-existing secrets
 
-
-:::note
-Currently, this feature is behind the feature flag `PL_ACCESS_SECRET_DYNAMICALLY_BY_PATH`. Contact Harness Support to enable the feature.​​
-:::
-
 For Azure Key Vault secret manager, you can also use expressions to reference pre-existing secrets using a fully-qualified path, such as `azurevault://My_AzureVault/mySecret`.
 
-With this kind of reference, you don't need to pre-create secrets.
+With this type of reference, you don't need to pre-create secrets.
 
 The scheme `azurevault://` is needed to distinguish an Azure Key Vault secret from other secret references. The identifier of the secret manager follows this.
 
@@ -185,13 +168,9 @@ To dynamically reference secrets in the Azure Key Vault, make sure you use the e
 
 ### Option: GCP Secret Manager
 
-:::note
-Currently, this feature is behind the feature flag `PL_ACCESS_SECRET_DYNAMICALLY_BY_PATH`. Contact Harness Support to enable the feature.​​
-:::
-
 For GCP secret manager, you can also use expressions to reference pre-existing secrets using a fully-qualified path, such as `gcpsecretsmanager://My_GoogleSM/mySecret`. 
 
-With this kind of reference, you don't need to pre-create secrets.
+With this type of reference, you don't need to pre-create secrets.
 
 The scheme `gcpsecretsmanager://` is needed to distinguish a GCP secret manager secret from other secret references. The identifier of the secret manager follows this.
 
