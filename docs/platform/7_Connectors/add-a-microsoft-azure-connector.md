@@ -455,7 +455,7 @@ You can add Azure Cloud Provider connectors at the account, org, or project leve
 There are two primary ways for the Harness connector to authenticate with Azure:
 
 * Select **Specify credentials here** to use an Application (client) and Tenant (directory) Id.
-* Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness delegate that is running in AKS.
+* Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness delegate that is running in your Azure subscription or AKS cluster.
 
 <details>
 <summary>Specify credentials</summary>
@@ -490,70 +490,69 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
    ![](./static/add-a-microsoft-azure-connector-69.png)
 
+6. Select **Continue**.
+
 </details>
 
 <details>
 <summary>Inherit credentials from the delegate</summary>
 
-If you have a Harness Delegate installed in your Azure subscription (preferably in your target AKS cluster) you can select **Use the credentials of a specific Harness Delegate**.
+If you have [installed a Harness Delegate](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
 
-For steps on installing a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+1. For **Environment**, select **Azure Global** or **US Government**.
+2. For **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.
 
-![](./static/add-a-microsoft-azure-connector-66.png)
-In **Environment**, select **Azure Global** or **US Government**.
+   **System Assigned Managed Identity** uses the AKS cluster predefined [Kubelet Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities). The [Control plane AKS Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities), which has name format `<AKSName>`, must have the **Reader** permission on the AKS cluster itself. If used for image storage, the Kubelet Managed Identity, which has name format `<AKSName>-agentpool`, must have the **acrPull** permission on ACR.
 
-In **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.
+   For more information about managed identities, go to the follow Azure documentation:
 
-See [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) and [How to use managed identities with Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity) from Azure.If you selected **User Assigned Managed Identity**, in **Client Id**, enter the Client Id from your Managed Identity.
+   * [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity)
+   * [How to use managed identities with Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity) from Azure.
 
-![](./static/add-a-microsoft-azure-connector-67.png)
-If you selected **User Assigned Managed Identity**, you can also use a [Pod Assigned Managed identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity).
+   ![](./static/add-a-microsoft-azure-connector-66.png)
 
-If you selected **System Assigned Managed Identity**, click **Continue**.
+3. If you selected **User Assigned Managed Identity**, input the Managed Identity's **Client Id**, which you can find in your Azure **Managed Identities**. You can also use a [Pod Assigned Managed identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity).
 
-#### System Assigned Managed Identity Notes
+   ![](./static/add-a-microsoft-azure-connector-67.png)
 
-* If you select **System Assigned Managed Identity** in the Harness Azure Connector, the identity used is actually AKS cluster predefined [Kubelet Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities).
-* Kubelet Managed Identity (which has name format `<AKSName>-agentpool`) must have the **acrPull** permission on ACR (if used for image storage).
-* [Control plane AKS Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities) (which has name format `<AKSName>`) must have the **Reader** permission on the AKS cluster itself.
+4. Select **Continue**
 
 </details>
 
+## Select connectivity mode
 
+1. Select how you want Harness to connect to Azure:
 
+   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azuree.
+   * **Connect through a Harness Delegate:** Harness communicates with Azure through a Harness delegate in your Azure subscription or AKS cluster. You must choose this option if you chose to inherit delegate credentials.
 
+2. If connecting through a Harness delegate, select either:
 
+   * **Use any available Delegate:** Harness selects an available Delegate at runtime.
+   * **Only use Delegates with all of the following tags:** Use tags to match one or more suitable delegates. You can also install a new delegate at this time.
 
+3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 
+   If the connection test fails, make sure that your delegate is running and that your credentials are valid. For example, check that the secret has not expired in your App registration.
 
-## Step 7: Delegates Setup
-
-Select the Delegate(s) to use with this Connector.
-
-Click **Save and Continue**.
-
-In **Connection Test**, the connection is verified.
-
-If you run into errors, make sure that your Delegate is running and that your credentials are valid. For example, check that the secret has not expired in your App registration.
-
-## Review: Using ${HARNESS\_KUBE\_CONFIG\_PATH} with Azure
+## Using ${HARNESS\_KUBE\_CONFIG\_PATH} with Azure
 
 The Harness `${HARNESS_KUBE_CONFIG_PATH}` expression resolves to the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness.
 
 The credentials can be used by kubectl commands by exporting its value to the `KUBECONFIG` environment variable.
 
-For example, you could use a Harness Shell Script step and the expression like this:
-
+For example, you could use this shell script in a Harness Run step:
 
 ```
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
 ```
-Steps can be executed on any Delegate or you can select specific Delegates using the steps [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting.
+
+Steps can be executed on any delegate or you can select specific delegates using the [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting.
 
 For Azure deployments, note the following:
 
-* If the Azure Connector used in the Stage's **Infrastructure** uses Azure Managed Identity for authentication, then the Shell Script step must use a Delegate Selector for a Delegate running in AKS.
-* If the Azure Connector used in the Stage's **Infrastructure** uses Azure Service Principal for authentication, then the Shell Script step can use any Delegate.
+* If the Azure connector used in the stage's **Infrastructure** uses Azure Managed Identity for authentication, then the Run step with the shell script must use a **Delegate Selector** for a delegate running in AKS.
+* If the Azure connector used in the stage's **Infrastructure** uses Azure Service Principal for authentication, then the Run step with the shell script can use any Delegate.
 
 ## See also
 
