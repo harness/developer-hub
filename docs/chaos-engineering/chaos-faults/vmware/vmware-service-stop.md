@@ -2,26 +2,23 @@
 id: VMware-service-stop
 title: VMware service stop
 ---
-VMware service stop stops the target system services running on a Linux OS based VMware VM.
-- It determines the performance and resilience of the application (or service) running on the VMware VMs.
+VMware service stop stops the target system services running on a Linux OS based VMware VM. It determines the performance and resilience of the application (or service) running on the VMware VMs.
 
 ![VMware ServiceStop](./static/images/vmware-service-stop.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-This fault helps determine how resilient an application is to random halts. It determines how efficiently an application recovers and restarts the services.
-</div>
-</details>
+- VMware service stop determines the resilience of an application to random halts. 
+- It determines how efficiently an application recovers and restarts the services.
 
-## Prerequisites
-- Kubernetes > 1.16
-- Execution plane is connected to vCenter and the hosts on port 443. 
-- VMware tool is installed on the target VM with remote execution enabled.
-- Adequate vCenter permissions to access the hosts and the VMs.
-- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- Execution plane should be connected to vCenter and host vCenter on port 443.
+- The VM should be in a healthy state before and after injecting chaos. 
+- VMware tool should be installed on the target VM with remote execution enabled.
+- The target processes should exist within the VM. 
+- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -35,18 +32,10 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-## Default validations
-- The VM should be in a healthy state.
-- The target services should exist inside the VM.
-
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -61,10 +50,10 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
       <tr>
         <td> SERVICE_NAME </td>
         <td> Name of the target service. </td>
-        <td> For example, <code>nginx</code>. </td>
+        <td> For example, <code>nginx</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-service-stop#service-name"> service name.</a></td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -74,38 +63,63 @@ You can pass the VM credentials as secrets or as a `ChaosEngine` environment var
       <tr>
         <td> SELF_HEALING_SERVICES </td>
         <td> Set to <code>enable</code> if the target service is self-healing. </td>
-        <td> Defaults to <code>disable</code>. </td>
+        <td> Defaults to <code>disable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-service-stop#self-healing-services"> self-healing services.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
-</details>
 
-## Fault examples
+### Self-healing services
+It specifies whether the target service has the ability to self-heal. It is self-healing if it is set to `enable`. Its default value is `disable`. Tune it by using the `SELF_HEALING_SERVICES` environment variable. 
 
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Use the following example to tune this:
+
+[embedmd]:# (./static/manifests/vmware-service-stop/vmware-service-stop-self-healing.yaml yaml)
+```yaml
+# Service Stop in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-service-stop
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # Name of service
+            - name: SERVICE_NAME
+              value: 'nginx'
+            # Self-heling ability
+            - name: SELF_HEALING_SERVICES
+              value: 'enable'
+```
 
 ### Service name
-It contains the target service name running on a particular VM.
+It specifies the name of the target service running on a particular VM. Tune it by using the `SERVICE_NAME` environment variable. 
 
 Use the following example to tune this:
 
