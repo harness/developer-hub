@@ -16,7 +16,7 @@ GCP VM instance stop powers off from a GCP VM instance using the instance name (
 - Kubernetes > 1.16 is required to execute this fault.
 - Adequate GCP permissions to stop and start the GCP VM instances.
 - The VM instances should be in a healthy state.
-- Kubernetes secret that has the GCP service account credentials in the default namespace. Below is a sample secret file:
+- Kubernetes secret should have the GCP service account credentials in the default namespace. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -46,7 +46,7 @@ stringData:
       </tr>
       <tr>
         <td> GCP_PROJECT_ID </td>
-        <td> ID of the GCP project, to which the VM instances belong. </td>
+        <td> Id of the GCP project that belong to the VM instances. </td>
         <td> All the VM instances must belong to a single GCP project. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label#detach-volumes-by-label#gcp-project-id">GCP project ID. </a></td>
       </tr>
       <tr>

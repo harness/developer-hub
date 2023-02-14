@@ -8,15 +8,14 @@ GCP VM disk loss disrupts the state of GCP persistent disk volume using the disk
 
 ## Use cases
 
-- GCP VM disk loss fault determines the resilience of the GKE infrastructure. 
-- It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
+- GCP VM disk loss fault determines the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 
 **Note**
 - Kubernetes > 1.16 is required to execute this fault.
 - Service account should have editor access (or owner access) to the GCP project.
 - Target disk volume should not be a boot disk of any VM instance.
 - Disk volumes with the target label should be attached to their respective instances.
-- Kubernetes secret that has the GCP service account credentials in the default namespace. Below is a sample secret file:
+- Kubernetes secret should have the GCP service account credentials in the default namespace. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -47,7 +46,7 @@ stringData:
       </tr>
       <tr>
         <td> GCP_PROJECT_ID </td>
-        <td> ID of the GCP project, of which the disk volumes are a part. </td>
+        <td> Id of the GCP project containing the disk volumes. </td>
         <td> All the target disk volumes should belong to a single GCP project. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label#detach-volumes-by-label#gcp-project-id">GCP project ID.</a></td>
       </tr>
       <tr>
