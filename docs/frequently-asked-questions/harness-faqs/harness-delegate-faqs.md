@@ -146,7 +146,7 @@ See [Delegate requirements and limitations](../../platform/2_Delegates/get-start
 * The Harness delegate does not require root account access, but the Kubernetes and Docker delegates run as root by default. This is to enable the delegate to install applications using the INIT environment variable in the delegate YAML. If you do not need to install applications, then you can use a non-root account or install the application without the delegate.
 * If you do not run the Delegate as root, be aware that you cannot install any software using a delegate.
 
-See [Run scripts on delegates](../../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+See [Build custom delegate images with third-party tools](../../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### What are the delegate limitations for deployments?
 
@@ -202,7 +202,7 @@ See [Run scripts on delegates](../../platform/2_Delegates/configure-delegates/ru
 
 #### Can I install software on delegate hosts using Harness?
 
-Yes. See [Run scripts on delegates](../../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+Yes. See [Build custom delegate images with third-party tools](../../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Can I use Harness secret expressions in a delegate script?
 

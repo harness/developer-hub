@@ -52,7 +52,7 @@ Each of these steps is described below in [Terragrunt steps](#terragrunt-steps).
 
 Terraform and Terragrunt must be installed on the Harness delegates used for deployment. You can install Terraform and Terragrunt manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-For steps on using the `INIT_SCRIPT` environment variable, go to [Install software on the delegate with initialization scripts](https://developer.harness.io/docs/platform/Delegates/configure-delegates/run-scripts-on-delegates).
+For steps on using the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](../../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 Here's an example of the installation script to install Terraform and Terragrunt:
 
