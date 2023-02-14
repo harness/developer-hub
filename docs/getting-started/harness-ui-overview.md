@@ -1,6 +1,6 @@
 ---
 title: Harness UI Overview
-description: Exploare the Harness UI and navigate to the desired modules.
+description: Explore the Harness UI and navigate to the desired modules.
 sidebar_position: 3
 
 ---
