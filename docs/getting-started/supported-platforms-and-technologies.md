@@ -794,7 +794,7 @@ For Kubernetes deployments, the following SDKs/tools are included in the Delegat
 
 The versions can be found in this public GitHub repo: <https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools>
 
-For details on updating the default tool versions, go to [Install Software on the Delegate with Initialization Scripts](../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+For details on updating the default tool versions, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 For Kubernetes deployments, the following SDKs/tools are certified.
 
@@ -845,10 +845,13 @@ Harness includes native TUF support via the following:
   - Harness provides [token key rotation natively](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/#rotate-token).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step/#review-what-is-harness-continuous-verification-cv).
 
+## Harness Open Source Software (OSS) components
 
+The following document lists the open source libraries and third-party software Harness uses.
 
+- [Harness Open Source Software (OSS) components](static/harness-open-source-software-components.pdf)
 
-### Supported browsers
+## Supported browsers
 
 The following browsers are supported:
 
@@ -859,7 +862,7 @@ The following browsers are supported:
 
 Mobile browsers are not supported.
 
-#### Supported screen resolution
+## Supported screen resolution
 
 Minimum supported screen resolution is 1440x900.
 

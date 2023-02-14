@@ -21,12 +21,12 @@ For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeli
 :::
 
 
-## Limitations
+## Important notes
 
 * Currently, Harness supports Git-based Triggers for the most common Git providers. Harness includes a Custom Trigger for other repo providers.
 * In Harness, you can select who is able to create and use Triggers within Harness, but you must use your repos' RBAC to control who can initiate the Git events that start the Harness Trigger.
 
-## Visual Summary
+## Visual summary
 
 Here's a two minute video showing you how to create and run a Trigger in response to Git events.
 
@@ -61,6 +61,13 @@ You add triggers in the pipeline Studio, in **Triggers**.
    
    * **If you set up an account-level Code Repo Connector:** in **Repository Name**, enter the name of the repo in the account in the Connector.
    * **If you set up a repo-level Code Repo Connector:** the repo name cannot be edited.
+  
+  :::note
+
+  Git webhook triggers do not support generic Git connectors. You must create provider-specific connectors for each provider (Github, GitLab, Bitbucket, etc) to use them with webhook triggers. For information on each Git provider connector, go to [Connect to a Git Repo](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo).
+
+  :::
+
 4. In **Event**, select the Git event for the Webhook.
    
    If the event you select results in the **Actions** settings appearing, select the actions for the Webhook or select **Any Actions**.
