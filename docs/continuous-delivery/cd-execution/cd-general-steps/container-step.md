@@ -106,13 +106,13 @@ Note that these scripts are just examples and may need to be modified to fit you
 
 ### Edge and IoT deployments
 
-Harness continuous delivery can be used to automate the process of deploying new versions of applications and services to edge and IoT devices, reducing the risk of human error, minimizing downtime, and improving the security of your IoT ecosystem.
+You can use Harness continuous delivery to automate the process of deploying new versions of applications and services to edge and IoT devices, reducing the risk of human error, minimizing downtime, and improving the security of your IoT ecosystem.
 
 
 <details>
 <summary>Edge script example</summary>
 
-The following script can be used to deploy a new version of an application to an edge device. The script assumes that the device is already set up with the necessary dependencies, and that it is accessible via SSH.
+You can use the following script to deploy a new version of an application to an edge device. The script assumes that the device is already set up with the necessary dependencies, and that it is accessible via SSH.
 
 ```bash
 # Define variables
@@ -133,7 +133,7 @@ ssh $REMOTE_USER@$REMOTE_HOST "systemctl restart $APP_NAME.service"
 <details>
 <summary>IoT script example</summary>
 
-The following script can be used to deploy a new version of an IoT device firmware. The script assumes that the device is connected to the network and can be accessed via SSH.
+You can use the following script to deploy a new version of an IoT device firmware. The script assumes that the device is connected to the network and can be accessed via SSH.
 
 ```bash
 # Define variables
