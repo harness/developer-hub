@@ -47,7 +47,7 @@ In addition to a Harness account, you need the following accounts and tools:
 - A [Google Cloud account](https://cloud.google.com)
 
 ```mdx-code-block
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+import CISignupTip from '../shared/ci-signup-tip.md';
 ```
 
 ## Configure a container registry
