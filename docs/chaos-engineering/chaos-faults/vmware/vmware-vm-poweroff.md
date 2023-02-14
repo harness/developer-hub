@@ -7,20 +7,19 @@ VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.
 - After the duration, the VMs are back to original state.
 - It checks the performance of the application running on the VMware VMs.
 
-
 ![VMware VM Poweroff](./static/images/vmware-vm-poweroff.png)
 
 
 ## Use cases
 
-This fault helps determine how resilient an application is to random power failures. It determines how efficiently an application recovers and restarts the services.
+- VMware VM poweroff determines the resilience of an application to random power failures. 
+- It determines how efficiently an application recovers and restarts the services.
 
-
-
-
+**Note**
 - Kubernetes >= 1.17 is required to execute this fault.
 - Adequate vCenter permissions should be provided to start and stop the VMs.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -35,13 +34,6 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-
-
-The VM should be in a healthy state.
-
 ## Fault tunables
 
   <h3>Mandatory fields</h3>
@@ -54,7 +46,7 @@ The VM should be in a healthy state.
       <tr>
         <td> APP_VM_MOIDS </td>
         <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
-        <td> For example, <code>vm-5365</code>. For more information, go to <a href=""> </a></td>
+        <td> For example, <code>vm-5365</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-vm-power-off#stoppoweroff-the-vm-by-moid"> stop VM based on MOID. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>

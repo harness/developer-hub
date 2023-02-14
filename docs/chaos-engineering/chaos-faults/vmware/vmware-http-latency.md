@@ -2,21 +2,23 @@
 id: VMware-http-latency
 title: VMware HTTP latency
 ---
-VMware HTTP latency injects HTTP response latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+VMware HTTP latency injects HTTP response latency into the service of a specific port.
+- This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 - It helps determine the application's resilience to lossy (or flaky) HTTP responses.
-
 
 ![VMware HTTP Latency](./static/images/vmware-http-latency.png)
 
 ## Use cases
 
-This fault helps determine how resilient an application is to HTTP latency. It helps determine how the system recovers or fetches the responses when there is a delay in accessing the service. It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
+- VMware HTTP latency determines the resilience of an application to HTTP latency. 
+- It determines how the system recovers or fetches the responses when there is a delay in accessing the service. - It simulates latency to specific API services for (or from) a given microservice. 
+- It also simulates a slow response on specific third party (or dependent) components (or services). 
 
-
-
+**Note**
 - Kubernetes >= 1.17 is required to execute this fault.
 - Adequate vCenter permissions should be provided to start and stop the VMs.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -31,14 +33,6 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-
-
-The VM should be in a healthy state.
-
-
 ## Fault tunables
 
    <h3>Mandatory fields</h3>
@@ -51,27 +45,27 @@ The VM should be in a healthy state.
         <tr>
             <td> VM_NAME </td>
             <td> Name of the VMware VM.</td>
-            <td> For example, test-vm. For more information, go to <a href=""> </a></td>
+            <td> For example, test-vm. </td>
         </tr>
         <tr>
             <td> VM_USER_NAME </td>
             <td> Username with sudo privileges.</td>
-            <td> For example, vm-user. For more information, go to <a href=""> </a></td>
+            <td> For example, vm-user. </td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
             <td> User password. </td>
-            <td> For example, 1234. For more information, go to <a href=""> </a></td>
+            <td> For example, 1234. </td>
         </tr>
         <tr>
             <td> LATENCY </td>
             <td> Delay added to the request (in milliseconds).</td>
-            <td> For example, 1000ms. For more information, go to <a href=""> </a></td>
+            <td> For example, 1000ms. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#latency"> latency.</a></td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Service port to target. </td>
-            <td> Defaults to port 80. For more information, go to <a href=""> </a></td>
+            <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#target-service-port"> target service port.</a></td>
         </tr>
     </table>
     <h3>Optional fields</h3>
@@ -104,29 +98,29 @@ The VM should be in a healthy state.
         <tr>
             <td> INSTALL_DEPENDENCY </td>
             <td> Whether to install the dependency to run the fault </td>
-            <td> If the dependency already exists, you can turn it off. Its default value is 'True'. For more information, go to <a href=""> </a></td>
+            <td> If the dependency already exists, you can turn it off. Its default value is 'True'. </td>
         </tr>
         <tr>
             <td> PROXY_PORT </td>
             <td> Port where the proxy listens for requests.</td>
-            <td> Defaults to 20000. For more information, go to <a href=""> </a></td>
+            <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests affected. </td>
-            <td> Defaults to 100. For more information, go to <a href=""> </a></td>
+            <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
-          <td> NETWORK_INTERFACE  </td>
+          <td> NETWORK_INTERFACE </td>
           <td> Network interface used for the proxy. </td>
-          <td> Defaults to eth0. For more information, go to <a href=""> </a></td>
+          <td> Defaults to eth0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#network-interface"> network interface. </a></td>
         </tr>
     </table>
 
 
 ### Target service port
 
-It defines the port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
+It specifies the port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
 Use the following example to tune it:
 
@@ -152,7 +146,7 @@ spec:
 
 ### Proxy Port
 
-It defines the port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+It specifies the port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
 Use the following example to tune it:
 
@@ -181,7 +175,7 @@ spec:
 
 ### Latency
 
-It defines the latency value added to the HTTP request. Tune it by using the `LATENCY` environment variable.
+It specifies the latency value added to the HTTP request. Tune it by using the `LATENCY` environment variable.
 
 Use the following example to tune it:
 
@@ -210,7 +204,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value added to the HTTP request. Toxicity value defines the percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
+It specifies the toxicity value added to the HTTP request. Toxicity value defines the percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
 
 Use the following example to tune it:
 
@@ -241,7 +235,7 @@ spec:
 
 ### Network interface
 
-It defines the network interface to be used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
+It specifies the network interface to be used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
 Use the following example to tune it:
 

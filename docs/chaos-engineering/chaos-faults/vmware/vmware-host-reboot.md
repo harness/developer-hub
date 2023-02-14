@@ -6,20 +6,21 @@ VMware host reboot reboots a VMware host that is attached to the Vcenter.
 - It helps determine the VMware infrastructure resilience when the host reboots.
 - It also measures the infrastructure resilience in case of an high availability (HA) cluster.
 
-
 ![VMware Host Reboot](./static/images/vmware-host-reboot.png)
 
 ## Use cases
 
-This fault has a high blast radius due to which all the VMs under the target host are disrupted. It measures the impact of the host reboot on the VMs and its underlying applications. It also measures the effectiveness of a HA cluster.
+- VMware host reboot has a high blast radius due to which all the VMs under the target host are disrupted. 
+- It measures the impact of the host reboot on the VMs and its underlying applications. 
+- It also measures the effectiveness of a HA cluster.
 
-
-
+**Note**
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
+- The VM should be in a healthy state before and after injecting chaos.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
-- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -33,12 +34,6 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-
-The host should be in a healthy state.
-
 
 ## Fault tunables
 
@@ -52,17 +47,17 @@ The host should be in a healthy state.
       <tr>
         <td> HOST_NAME </td>
         <td> Name of the target host </td>
-        <td> For example, <code>host-1</code>. For more information, go to <a href=""> </a></td>
+        <td> For example, <code>host-1</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#host-reboot"> host name.</a></td>
       </tr>
       <tr>
         <td> HOST_DATACENTER </td>
         <td> Name of the data center to which the host belongs. </td>
-        <td> For example, <code>datacenter-1</code>. For more information, go to <a href=""> </a></td>
+        <td> For example, <code>datacenter-1</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#host-reboot"> host datacenter. </a></td>
       </tr>
       <tr>
         <td> HIGH_AVAILABILITY_CLUSTER </td>
         <td> Specify whether the host is a part of the high availability cluster. </td>
-        <td> Defaults to disable. Supports enable as well. For more information, go to <a href=""> </a></td>
+        <td> Defaults to disable. Supports enable as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#ha-cluster"> high availablity cluster. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>

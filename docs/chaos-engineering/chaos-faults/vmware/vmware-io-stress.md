@@ -8,17 +8,22 @@ VMware IO stress causes disk stress on the target VMware VMs. It aims to verify 
 
 ## Use cases
 
-This fault helps determine how resilient an application is to unexpected spikes in resources. It determines how well an application handles unexpected stress at a given point in time.
-It simulates slower disk operations by the application and nosiy neighbour problems by hogging the disk bandwidth. It also verifies the disk performance on increasing I/O threads and varying I/O block sizes.
-It checks if the application functions under high disk latency conditions, when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
+- VMware IO stress determines the resilience of an application to unexpected spikes in resources. 
+- It determines how well an application handles unexpected I/O stress.
+- It simulates slower disk operations by the application.
+- It simulates noisy neighbour problems by hogging the disk bandwidth. 
+- It verifies the disk performance on increasing I/O threads and varying I/O block sizes.
+- It checks whether the application functions well under high disk latency conditions.
+- It checks for high I/O traffic that includes large I/O blocks, and in what cases other services monopolize the I/O disks. 
 
 
-
+**Note**
 - Kubernetes > 1.16 is required to execute this fault.
-- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- Execution plane should be connected to vCenter and host vCenter on port 443.
+- The VM should be in a healthy state before and after injecting chaos.
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
-- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -32,12 +37,6 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-
-The VM should be in a healthy state.
-
 
 ## Fault tunables
 
@@ -51,7 +50,7 @@ The VM should be in a healthy state.
       <tr>
         <td> VM_NAME </td>
         <td> Name of the target VM. </td>
-        <td> For example, <code>ubuntu-vm-1</code>. For more information, go to <a href=""> </a></td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -64,27 +63,27 @@ The VM should be in a healthy state.
        <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as a percentage of free space on the file system. </td>
-        <td> For example, <code>40</code>. For more information, go to <a href=""> </a></td>
+        <td> For example, <code>40</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-io-stress#filesystem-utilization-percentage"> file system utilization percentage.</a></td>
       </tr>   
        <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in gigabytes(GB). FILESYSTEM_UTILIZATION_PERCENTAGE and FILESYSTEM_UTILIZATION_BYTES environment variables are mutually exclusive. If both are provided, FILESYSTEM_UTILIZATION_PERCENTAGE takes precedence. </td>
-        <td> For example, <code>100</code>. For more information, go to <a href=""> </a></td>
+        <td> For example, <code>100</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-io-stress#filesystem-utilization-bytes"> file system utilization bytes. </a></td>
       </tr>  
        <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of I/O workers involved in I/O disk stress. </td>
-        <td> Defaults to 4. For more information, go to <a href=""> </a> </td>
+        <td> Defaults to 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-io-stress#workers-for-stress"> workers for stress. </a> </td>
       </tr>
        <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Location that points to the volume mount path used in I/O stress. </td>
-        <td> For example, <code>/Users/admin/disk-02</code>. For more information, go to <a href=""> </a></td>
+        <td> For example, <code>/Users/admin/disk-02</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-io-stress#mount-path"> mount path.</a></td>
       </tr>   
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores that are subject to CPU stress.</td>
-        <td> Defaults to 1. For more information, go to <a href=""> </a></td>
+        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog#cpu_cores"> CPU cores. </a></td>
         </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

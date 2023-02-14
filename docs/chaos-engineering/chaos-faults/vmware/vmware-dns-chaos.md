@@ -2,8 +2,7 @@
 id: VMware-DNS-chaos
 title: VMware DNS chaos
 ---
-VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS server being unavailable or malfunctioning for a specific duration. 
-- It checks the performance of the application (or process) running on the VMware VMs.
+VMware DNS chaos causes DNS errors in the VMware VMs which results in the DNS server being unavailable or malfunctioning for a specific duration. It checks the performance of the application (or process) running on the VMware VMs.
 
 
 ![VMware DNS Chaos](./static/images/vmware-dns-chaos.png)
@@ -36,7 +35,7 @@ stringData:
     VCENTERSERVER: XXXXXXXXXXX
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
-```
+``` 
 
 ## Fault tunables
 
@@ -50,17 +49,17 @@ stringData:
       <tr>
         <td> VM_USER_NAME </td>
         <td> Username of the target VM(s).</td>
-        <td> Multiple usernames can be provided as comma-separated values (when there are multiple VMs subject to chaos). It also helps run the govc command. For more information, go to <a href=""> </a></td>
+        <td> Multiple usernames can be provided as comma-separated values (when there are multiple VMs subject to chaos). It also helps run the govc command. </td>
       </tr>
       <tr>
         <td> VM_PASSWORD </td>
         <td> Password for the target VM(s).</td>
-        <td> It helps run the govc command. For more information, go to <a href=""> </a></td>
+        <td> It helps run the govc command. </td>
       </tr>
       <tr>
         <td> PORT </td>
         <td> DNS Port</td>
-        <td> Defaults to 54. For more information, go to <a href=""> </a> </td>
+        <td> Defaults to 54. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos#run-dns-chaos-with-port"> DNS chaos with port.</a> </td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -93,17 +92,17 @@ stringData:
       <tr>
         <td> TARGET_HOSTNAMES </td>
         <td> List of the target host names. If it is not provided, all host names (or domains) are targeted. </td>
-        <td> For example, '["litmuschaos","chaosnative.com"]'. For more information, go to <a href=""> </a></td>
+        <td> For example, '["litmuschaos","chaosnative.com"]'. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos#run-dns-chaos-with-target-host-names"> target host names. </a></td>
       </tr>
       <tr>
         <td> MATCH_SCHEME </td>
         <td> Determines whether the DNS query should exactly match the targets or can be a substring. </td>
-        <td> Defaults to exact. For more information, go to <a href=""> </a></td>
+        <td> Defaults to exact. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos#run-dns-chaos-with-match-scheme"> DNS chaos with match scheme. </a></td>
       </tr>
       <tr>
         <td> UPSTREAM_SERVER </td>
         <td> Custom upstream server to which the intercepted DNS requests will be forwarded. </td>
-        <td> Defaults to the server mentioned in resolv.conf file. For more information, go to <a href=""> </a></td>
+        <td> Defaults to the server mentioned in <code>resolv.conf</code> file. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos#run-dns-chaos-with-upstream-server"> DNS chaos with upstream server. </a></td>
       </tr>
     </table>
     <h3>Secret fields</h3>
@@ -116,22 +115,22 @@ stringData:
       <tr>
         <td> GOVC_URL </td>
         <td> vCenter server URL used to perform API calls using the govc command.</td>
-        <td> It is derived from a secret. For more information, go to <a href=""> </a></td>
+        <td> It is derived from a secret. </td>
       </tr>
       <tr>
         <td> GOVC_USERNAME </td>
         <td> Username of the vCenter server used for authentication purposes. </td>
-        <td> It can be set up using a secret. For more information, go to <a href=""> </a></td>
+        <td> It can be set up using a secret. </td>
       </tr>
       <tr>
         <td> GOVC_PASSWORD </td>
         <td> Password of the vCenter server used for authentication purposes. </td>
-        <td> It can be set up using a secret. For more information, go to <a href=""> </a></td>
+        <td> It can be set up using a secret. </td>
       </tr>
       <tr>
         <td> GOVC_INSECURE </td>
         <td> Runs the govc command in insecure mode. It is set to <code>true</code>. </td>
-        <td> It can be set up using a secret. For more information, go to <a href=""> </a></td>
+        <td> It can be set up using a secret. </td>
       </tr>
      </table>
 
@@ -202,7 +201,7 @@ spec:
 
 ### Run DNS chaos with match scheme
 
-It determines whether the DNS query should exactly match the targets or can be a substring. Tune it by using the `MATCH_SCHEME` environment variable.
+It specifies whether the DNS query should exactly match the targets or can be a substring. Tune it by using the `MATCH_SCHEME` environment variable.
 
 Use the following example to tune it:
 

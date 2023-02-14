@@ -3,15 +3,14 @@ id: vmware-cpu-hog
 title: VMware CPU hog
 ---
 
-VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM.
-- It checks the performance of the application running on the VMware VMs.
+VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. It checks the performance of the application running on the VMware VMs.
 
 ![VMware Cpu Hog](./static/images/vmware-cpu-hog.png)
 
 ## Use cases
 
 - VMware CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware virtual machine.
-- It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
+- VMware CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
 - It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
 - It helps the scalability of nodes based on growth beyond budgeted pods. 
 - It verifies the autopilot functionality of cloud managed clusters. 
@@ -49,7 +48,7 @@ stringData:
       <tr>
         <td> VM_NAME </td>
         <td> Name of the target VM. </td>
-        <td> For example, <code>ubuntu-vm-1</code>code>.</td>
+        <td> For example, <code>ubuntu-vm-1</code>.</td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -90,9 +89,6 @@ stringData:
         <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
-
-### VM name
-It specifies the name of the virtual machine subject to CPU hog. Tune it by using the `VM_NAME` environment variable.
 
 ### CPU cores
 It specifies the number of CPU cores of the target VM on which stress is applied. Tune it by using the `CPU_CORE` environment variable.
