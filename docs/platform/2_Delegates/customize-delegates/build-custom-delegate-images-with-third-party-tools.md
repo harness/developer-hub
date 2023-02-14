@@ -18,8 +18,6 @@ This document explains how you can:
 * Build and host a custom delegate image that includes the tools you select.
 * Use your custom delegate in CI/CD pipelines.
 
-This is not a runtime process. For information on how to install tools on the delegate in runtime, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
-
 ### Select the delegate image
 
 You can build on either of the following Harness-provided images.
