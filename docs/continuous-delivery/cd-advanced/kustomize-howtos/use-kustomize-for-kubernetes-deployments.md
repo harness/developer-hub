@@ -384,7 +384,7 @@ When Harness deploys, it will apply the plugin you reference just like you would
 
 To add a plugin to the Delegate, you can install it manually or use the `INIT_SCRIPT` environment variable in the Delegate config file to install it.
 
-For steps on running scripts in Delegate config files, see [Run Scripts on Delegates](../../../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](../../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 Once the plugin is installed, you add its path to the Harness Service you are using for the kustomization. See [Path to Plugin in Service Manifest](#path_to_plugin_in_service_manifest).
 

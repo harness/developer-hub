@@ -107,5 +107,5 @@ After you update the delegate names, you can apply the configuration file. The d
 
 ### See also
 
-* [Run Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md)
+* [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md)
 

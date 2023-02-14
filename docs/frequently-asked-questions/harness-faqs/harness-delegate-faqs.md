@@ -198,7 +198,7 @@ Yes. The delegate config file includes an `INIT` environment variable that you c
 
 You can run scripts when you first install the delegate, or add your scripts to an existing delegate and rerun its setup.
 
-See [Run scripts on delegates](../../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+See [Build custom delegate images with third-party tools](../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Can I install software on delegate hosts using Harness?
 
