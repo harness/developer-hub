@@ -4,15 +4,105 @@ description: Bring your own container and let Harness orchestrate it.
 sidebar_position: 7
 ---
 
-The Container step lets you run any Docker container in your Kubernetes cluster as part of your CD stage.
+The Container step lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage.
 
 Harness orchestrates the container in your cluster as part of your Harness deployment. 
 
 ## Use cases
 
-A common use case of the Container step is running tests on your cluster.
+Typically, the primary deployment operations are handled by the default Harness deployment steps, such as the [Kubernetes Rollout Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-rollout-step.md).
 
-Another example is implementing Mobile Device Management (MDM)/User Experience Management (UEM). You can leverage the Container step and call the MDM/UEM APIs from Harness.
+The Container step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more. 
+
+<details>
+<summary>Common secondary script examples</summary>
+
+Some common secondary scripts that are run in a Kubernetes container as part of CD are:
+
+- Database migrations. Update the database schema and apply any necessary data migrations.
+- Configuration updates. Update the configuration of the application or service being deployed.
+- Health checks. Perform health checks on the application or service being deployed, ensuring that it is running correctly and responding to requests.
+- Load testing. Perform load testing on the application or service, ensuring that it can handle the expected traffic and load.
+- Monitoring setup. Set up monitoring and logging for the application or service, so that any issues can be quickly detected and addressed.
+- Smoke tests. Perform simple tests to confirm that the application or service is running correctly after deployment.
+- Cleanup. Clean up any resources or files that were created during the deployment process.
+
+These secondary scripts are usually run as part of the CD pipeline, either as part of the build process or as separate jobs. They can be written in a variety of scripting languages. In many cases, these scripts are run in containers within the Kubernetes cluster, so that the necessary dependencies and tools are available.
+
+</details>
+
+### Mobile Device Management (MDM)/User Experience Management (UEM)
+
+Harness supports MDM/UEM through interaction using MDM/UEM APIs.
+
+You can leverage the Container step to call the MDM/UEM APIs from Harness.
+
+Here are some example scripts for MDM and UEM that you might use as part of a DevOps continuous delivery pipeline:
+
+<details>
+<summary>MDM script example</summary>
+
+This script sets some variables for the MDM server URL, the MDM username and password, and the configuration file to install. It then uses the curl command to send the configuration file to the MDM server and install it on devices. Finally, it checks for errors and reports success or failure.
+
+```bash
+# This script deploys a new Mobile Device Management (MDM) configuration to devices
+
+# Set variables
+MDM_SERVER="https://your-mdm-server.com"
+MDM_USERNAME="your-mdm-username"
+MDM_PASSWORD="your-mdm-password"
+MDM_CONFIG_FILE="your-mdm-config-file.plist"
+
+# Install the MDM configuration on devices
+curl --request POST \
+     --user "$MDM_USERNAME:$MDM_PASSWORD" \
+     --header "Content-Type: application/xml" \
+     --data-binary "@$MDM_CONFIG_FILE" \
+     "$MDM_SERVER/devicemanagement/api/mdm/profiles"
+
+# Check for errors
+if [ $? -eq 0 ]; then
+  echo "MDM configuration installed successfully."
+else
+  echo "ERROR: MDM configuration failed to install."
+fi
+```
+</details>
+
+<details>
+<summary>UEM script example</summary>
+
+This script sets similar variables for the UEM server URL, username, password, and configuration file to install. It then uses curl to send the configuration file to the UEM server and install it on endpoints. Finally, it checks for errors and reports success or failure.
+
+```bash
+# This script deploys a new Unified Endpoint Management (UEM) configuration to endpoints
+
+# Set variables
+UEM_SERVER="https://your-uem-server.com"
+UEM_USERNAME="your-uem-username"
+UEM_PASSWORD="your-uem-password"
+UEM_CONFIG_FILE="your-uem-config-file.json"
+
+# Install the UEM configuration on endpoints
+curl --request POST \
+     --user "$UEM_USERNAME:$UEM_PASSWORD" \
+     --header "Content-Type: application/json" \
+     --data-binary "@$UEM_CONFIG_FILE" \
+     "$UEM_SERVER/api/config"
+
+# Check for errors
+if [ $? -eq 0 ]; then
+  echo "UEM configuration installed successfully."
+else
+  echo "ERROR: UEM configuration failed to install."
+fi
+
+```
+
+</details>
+
+
+Note that these scripts are just examples and may need to be modified to fit your specific use case. You may also want to include additional steps in your pipeline, such as testing and verification, before deploying MDM or UEM configurations to production devices.
 
 ## Important notes
 
