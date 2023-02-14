@@ -57,7 +57,7 @@ No. The YAML specifications for the two types are different.
 
 #### Can I create my own delegate?
 
-Yes. See [Create a custom delegate that includes custom tools](../../platform/2_Delegates/customize-delegates/custom-delegate.md).
+Yes. See [Create a custom delegate that includes custom tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### How does Harness Manager identify delegates?
 
