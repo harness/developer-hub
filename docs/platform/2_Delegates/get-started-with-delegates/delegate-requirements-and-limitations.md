@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic lists the requirements for the Harness Delegate.
+This topic lists the requirements for Harness Delegate.
 
 ## Important notes
 
@@ -16,9 +16,9 @@ Note the following important information about delegates:
 
 * Deployment limits are set by account type.
 
-* You might need to install multiple delegates depending on how many continuous delivery tasks you do concurrently, and on the number of compute resources you provide to each delegate. Typically, you need one delegate for every 300-500 service instances across your applications.  
+* You might need to install multiple delegates depending on how many continuous delivery tasks you do concurrently, and on the number of compute resources you provide to each delegate. Typically, you need one delegate for every 300 to 500 service instances across your applications.  
 
-	A service instance is when you use Harness to deploy the underlying infrastructure for the instance.  
+	A service instance is created when you use Harness to deploy the underlying infrastructure for the instance.  
 
 	For example, an instance of a Kubernetes workload where Harness creates the pods, or an instance of an ECS task where Harness creates the service for the task.
 
@@ -72,16 +72,16 @@ If you do not enable gRPC connections, the following limitations apply:
 
 ## Add certificates and other software to the delegate
 
-For steps on adding certificates or other software to the delegate, go to [Common Delegate Initialization Scripts](/docs/platform/Delegates/delegate-reference/common-delegate-profile-scripts.md).
+For steps on adding certificates or other software to the delegate, go to [Common Delegate Initialization Scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 
 ## Delegate access requirements
 
-The Harness delegate does NOT require root account access, but the Kubernetes and Docker delegates run as root by default. If you do not need to install applications using Delegate Profiles, then you can use a non-root account or install the application without the delegate.  
+Harness delegate does NOT require root account access, but the Kubernetes and Docker delegates run as root by default. If you do not need to install applications using Delegate Profiles, then you can use a non-root account or install the application without the delegate.  
 
-For more information, go to [Delegate installation overview](/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview.md).
+For more information, see [Delegate installation overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 
 * Delegates do not require root account access. Kubernetes and Docker delegates do, however, run as root by default. If you do not need to install applications during the initialization process (`INIT_SCRIPT`), you can use a non-root account or install the application without the delegate.  
-See [Delegate installation overview](/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview.md).
-* If you do not run the delegate as root, you cannot use [delegate initialization scripts](/docs/platform/Delegates/delegate-reference/common-delegate-profile-scripts.md) to install software.
+See [Delegate installation overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+* If you do not run the delegate as root, you cannot use [delegate initialization scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md) to install software.
 
 
