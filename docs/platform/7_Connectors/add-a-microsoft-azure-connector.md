@@ -441,32 +441,59 @@ Here's an example of Azure RBAC permissions used for System Assigned Managed Ide
 </Tabs>
 ```
 
-## Step 1: Add the Azure Cloud Connector
+## Add an Azure Cloud Provider connector
 
-You can add the Azure Cloud Connector inline, when adding artifacts or setting up the target infrastructure for a deployment Pipeline stage, or you can add the Connector separately and use it whenever you need it.
+You can add Azure Cloud Provider connectors at the account, org, or project level at any time, or you can add them while setting up pipelines. For example, to add a connector at the project level you would select **Project Setup**, select **Connectors**, and then select **New Connector**.
 
-To add the Connector separately, in your Account, Org, or Project **Connectors**, click **New Connector**.
+1. From the Connectors library, select **Azure** under **Cloud Providers**.
+1. Input a **Name**. Harness automatically creates an **Id** ([Entity Identifier](../20_References/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable.
+1. Optionally, you can add a description and [tags](../20_References/tags-reference.md).
+1. Select **Continue** to configure the connector's credentials.
 
-Click **Azure**.
+## Configure credentials
 
-Enter a name for the Connector. Harness automatically creates the Id ([Entity Identifier](../20_References/entity-identifier-reference.md)) for the Connector. You can edit the Id before the Connector is saved. Once it is saved, it is immutable.
+There are two primary ways for the Harness connector to authenticate with Azure:
 
-Add a Description and [Tags](../20_References/tags-reference.md) if needed.
+* Select **Specify credentials here** to use an Application (client) and Tenant (directory) Id.
+* Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness delegate that is running in AKS.
 
-Click **Continue**.
+<details>
+<summary>Specify credentials</summary>
 
-## Option: Credentials or Inherit from Delegate
+If you select **Specify credentials here**, you must provide Microsoft Azure app registration details.
 
-In **Details**, you can select how you'd like Harness to authenticate with Azure.
+![A comparison of app registration details and corresponding fields in the Harness connector settings.](./static/add-a-microsoft-azure-connector-63.png)
 
-### Visual Summary
+1. In Microsoft Azure, go to the App registration **Overview** or **Managed Identity** page and make note of the **Application (client) ID** and **Directory (tenant) ID**.
 
-The following example shows how to connect Harness to Azure using the Azure Cloud Connector and an Azure App registration.
+   The **Application (client) ID** is the application Id for the app registration you want to associated with your Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
 
-![](./static/add-a-microsoft-azure-connector-63.png)
+   * [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+   * [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)
+   * [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
+   The **Directory (tenant) ID** is the Id for the Azure Active Directory (AAD) that exists in your app. For more information, go to the following Azure documentation:
 
-### Delegate
+   * [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+   * [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+
+   ![Microsoft Azure app registration Overview page.](./static/add-a-microsoft-azure-connector-68.png)
+
+2. In the Harness Azure Cloud Provider settings, select the **Environment**: Either **Azure Global** or **US Government**.
+3. Input the **Application (client) ID** from Azure in the connector's **Application Id** field.
+4. Input the **Directory (tenant) ID** from Azure in the connector's **Tenant Id** field.
+5. Provide an authentication key for your app. For **Authentication**, select either **Secret** or **Certificate**, and then select or create a [Harness Text Secret](../6_Security/2-add-use-text-secrets.md) or [Harness File Secret](../6_Security/3-add-file-secrets.md).
+
+   Harness supports only PEM files. Harness doesn't support PFX files.
+
+   If you need to create a secret key for your app, go to **App Registrations** in Azure Active Directory, select the app you're connecting to Harness, select **Certificates & secrets**, and then select **New client secret**. For more information, go to the Azure documentation about [Creating a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
+
+   ![](./static/add-a-microsoft-azure-connector-69.png)
+
+</details>
+
+<details>
+<summary>Inherit credentials from the delegate</summary>
 
 If you have a Harness Delegate installed in your Azure subscription (preferably in your target AKS cluster) you can select **Use the credentials of a specific Harness Delegate**.
 
@@ -484,50 +511,20 @@ If you selected **User Assigned Managed Identity**, you can also use a [Pod Assi
 
 If you selected **System Assigned Managed Identity**, click **Continue**.
 
-### System Assigned Managed Identity Notes
+#### System Assigned Managed Identity Notes
 
 * If you select **System Assigned Managed Identity** in the Harness Azure Connector, the identity used is actually AKS cluster predefined [Kubelet Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities).
 * Kubelet Managed Identity (which has name format `<AKSName>-agentpool`) must have the **acrPull** permission on ACR (if used for image storage).
 * [Control plane AKS Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities) (which has name format `<AKSName>`) must have the **Reader** permission on the AKS cluster itself.
 
-### Credentials
+</details>
 
-Using Azure credentials is covered in the following steps.
 
-## Step 2: Gather the Required Information
 
-In Microsoft Azure, you can find the information you need on the App registration **Overview** page:
 
-![](./static/add-a-microsoft-azure-connector-68.png)
-## Step 3: Environment
 
-In **Environment**, select **Azure Global** or **US Government**.
 
-## Step 4: Application (Client) Id
 
-This is the **Application (Client) Id** for the Azure app registration you are using. It is found in the Azure Active Directory (AAD) **App registrations** or **Managed Identity**. For more information, see [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app) from Microsoft.
-
-To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription.
-
-For more information, see [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) and [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Microsoft.
-
-## Step 5: Tenant (Directory) Id
-
-The **Tenant Id** is the ID of the Azure Active Directory (AAD) in which you created your application. This Id is also called the **Directory ID**. For more information, see [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id) and [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
-
-## Step 6: Secret or Certificate
-
-Harness supports PEM files only. Currently, Harness does not support PFX files.In **Authentication**, select **Secret** or **Certificate**.
-
-This is the authentication key for your application. This is found in **Azure Active Directory**, **App Registrations**. Click the App name. Click **Certificates & secrets**, and then click **New client secret**.
-
-![](./static/add-a-microsoft-azure-connector-69.png)
-(./static/add-a-microsoft-azure-connector-69.png)
-You cannot view existing secret values, but you can create a new key. For more information, see [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
-
-If you select **Secret**, create or use an existing [Harness Text Secret](../6_Security/2-add-use-text-secrets.md).
-
-If you select **Certificate**, create or use an existing [Harness File Secret](../6_Security/3-add-file-secrets.md).
 
 ## Step 7: Delegates Setup
 
