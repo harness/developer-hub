@@ -66,7 +66,7 @@ You can use:
 
 The maximum is `53w`.
 
-Timeouts can be set at the pipeline-level also, in the pipeline **Advanced Options**.
+Timeouts can be set at the pipeline level also, in the pipeline **Advanced Options**.
 
 ### Container registry
 
@@ -75,9 +75,9 @@ Timeouts can be set at the pipeline-level also, in the pipeline **Advanced Optio
 
 ### Image
 
-1. Enter the image and tag to use for this container. For example, `maven:3.6.3-jdk-8` or `curlimages/curl:7.73.0`.
+1. Enter the image and tag to use for this container, for example: `maven:3.6.3-jdk-8` or `curlimages/curl:7.73.0`.
 
-If you are fetching the image from a provider that requires a FQN (fully-qualified name), such as GCR or ECR, of the Docker image, use the FQN here. 
+If you are fetching the image from a provider that requires the Docker image's FQN (fully-qualified name), such as GCR or ECR, use the FQN here. 
 
 Here are some examples:
 
@@ -94,7 +94,7 @@ Here are some examples:
 
 1. Enter the commands you want to run in the container.
 
-You don't need to create a Kubernetes deployment and service for the container in your script. Harness will take care of Kubernetes orchestration.
+You don't need to create a Kubernetes deployment and service for the container in your script, because Harness handles Kubernetes orchestration.
 
 You also don't need to add `docker run` to your script.
 
@@ -120,18 +120,18 @@ You can just enter what you would write in `...`.
 
 1. Set the maximum resources limit values for the resources used by the container at runtime.
 
-- **Limit Memory:** the maximum memory that the container can use. You may express memory as a plain integer or as a fixed-point number using the suffixes G or M. You may also use the power-of-two equivalents Gi and Mi.
-- **Limit CPU:** the maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed; you can specify one hundred millicpu as 0.1 or 100m. 
+- **Limit Memory:** The maximum memory that the container can use. You may express memory as a plain integer or as a fixed-point number using the suffixes G or M. You may also use the power-of-two equivalents Gi and Mi.
+- **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed; you can specify one hundred millicpu as 0.1 or 100m. 
 
-For more information, go to [Resource units in Kubernetes ](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes) from Kubernetes.
+For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes) from Kubernetes.
 
 ### Image pull policy
 
-1. Select an option to set the pull policy for the image.
+1. Select an option to set the pull policy for the image:
 
-- **Always:** the kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
-- **If Not Present:** the image is pulled only if it is not already present locally.
-- **Never:** the image is assumed to exist locally. No attempt is made to pull the image.
+- **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+- **If Not Present:** The image is pulled only if it is not already present locally.
+- **Never:** The image is assumed to exist locally. No attempt is made to pull the image.
 
 ### Output variables
 
