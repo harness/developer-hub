@@ -163,6 +163,15 @@ Enables or disables polling for delegate tasks.By default, the Delegate uses Sec
   value: "false" 
 ```
 
+### STACK_DRIVER_LOGGING_ENABLED
+
+By default delegates send logs to harness for debugging and support. Set this to false if you want to disable sending logs to us. 
+
+```
+- name: STACK_DRIVER_LOGGING_ENABLED
+  value: "false" 
+```
+
 ### PROXY_*
 
 You can use delegate proxy settings to change how the delegate connects to Harness Manager.
