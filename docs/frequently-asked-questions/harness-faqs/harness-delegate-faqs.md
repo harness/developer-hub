@@ -146,7 +146,7 @@ See [Delegate requirements and limitations](../../platform/2_Delegates/get-start
 * The Harness delegate does not require root account access, but the Kubernetes and Docker delegates run as root by default. This is to enable the delegate to install applications using the INIT environment variable in the delegate YAML. If you do not need to install applications, then you can use a non-root account or install the application without the delegate.
 * If you do not run the Delegate as root, be aware that you cannot install any software using a delegate.
 
-See [Build custom delegate images with third-party tools](../../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### What are the delegate limitations for deployments?
 
@@ -198,11 +198,11 @@ Yes. The delegate config file includes an `INIT` environment variable that you c
 
 You can run scripts when you first install the delegate, or add your scripts to an existing delegate and rerun its setup.
 
-See [Build custom delegate images with third-party tools](../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Can I install software on delegate hosts using Harness?
 
-Yes. See [Build custom delegate images with third-party tools](../../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+Yes. See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Can I use Harness secret expressions in a delegate script?
 
@@ -216,7 +216,7 @@ For an overview of Harness support for platforms, methodologies, and related tec
 
 Yes. By default, the delegate uses a trusted certificate to connect to the Harness Manager over HTTPS.
 
-For the Harness SaaS edition, you can add a self-signed certificates on the delegate host using a [Delegate script](../../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md), or by simply importing the certificate on the host.
+For the Harness SaaS edition, you can add a self-signed certificates on the delegate host using a [delegate script](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md), or by simply importing the certificate on the host.
 
 #### Can I override the truststore of the delegate?
 

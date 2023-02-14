@@ -47,7 +47,7 @@ In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to 
 
 The SDKs you need to add depend on what type of deployment you are doing with Harness.
 
-For more information on how to use the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](../../../platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information on how to use the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Table: Certified SDK versions for deployment types
 
