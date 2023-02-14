@@ -118,7 +118,7 @@ You can refer to manual tag builds in Harness with the expression `<+codebase.bu
 To refer to specific Git attributes associated with a manual tag build, use the following expressions in your Harness stages:
 
 * `<+codebase.commitSha>`: The build's full Git commit id
-* `<+codebase.shortCommitSha>`: The short SHA version of the build's commit SHA
+* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the build's commit SHA
 * `<+codebase.tag>`: The build's Git tag
 
 ## Manual branch build expressions
@@ -131,7 +131,7 @@ To refer to specific Git attributes associated with a manual branch build, use t
 
 * `<+codebase.branch>`: The name of the Git branch used for the build
 * `<+codebase.commitSha>`: The build's full Git commit id
-* `<+codebase.shortCommitSha>`: The short SHA version of the build's commit SHA
+* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the build's commit SHA
 
 ## Manual pull request build expressions
 
@@ -154,7 +154,7 @@ To refer to specific Git attributes associated with a manual pull request build,
 * `<+codebase.pullRequestBody>`: Git pull request body
 * `<+codebase.pullRequestLink>`: Git pull request link
 * `<+codebase.repoUrl>`: Git repo URL of the build
-* `<+codebase.shortCommitSha>`: Short SHA version of the build's commit SHA
+* `<+codebase.shortCommitSha>`: Short SHA (seven characters) version of the build's commit SHA
 * `<+codebase.sourceBranch>`: Git source branch of the build
 * `<+codebase.state>`: State of the Git working directory
 * `<+codebase.tag>`: The build's Git tag
@@ -189,7 +189,7 @@ To refer to specific Git attributes associated with a webhook-triggered pull req
 * `<+codebase.pullRequestBody>`: Git pull request body
 * `<+codebase.pullRequestLink>`: Git pull request link
 * `<+codebase.repoUrl>`: Git repo URL of the build
-* `<+codebase.shortCommitSha>`: Short SHA version of the build's commit SHA
+* `<+codebase.shortCommitSha>`: Short SHA (seven characters) version of the build's commit SHA
 * `<+codebase.sourceBranch>`: Git source branch of the build
 * `<+codebase.state>`: State of the Git working directory
 * `<+codebase.tag>`: The build's Git tag
@@ -218,6 +218,6 @@ To refer to specific Git attributes associated with a webhook-triggered push bui
 * `<+codebase.gitUserEmail>`: User email of the Git account associated with the push webhook event
 * `<+codebase.gitUserId>`: User id of the Git account associated with the push webhook event
 * `<+codebase.repoUrl>`: Git repo URL associated with the push webhook event
-* `<+codebase.shortCommitSha>`: The short SHA version of the build's associated commit SHA
+* `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the build's associated commit SHA
 * `<+codebase.tag>`: Git tag of the build for the push webhook event
 * `<+codebase.targetBranch>`: Git target branch associated with the push webhook event
