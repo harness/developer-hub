@@ -35,7 +35,7 @@ Currently, Harness can fetch containers from the following registries:
 
 ## Add a Container step
 
-You add the Container step in the CD stage **Execution** section. The Container step is supported in all the deployment strategies (rolling blue green canary, custom).
+You add the Container step in the CD stage **Execution** section. The Container step is supported in all the deployment strategies (rolling, blue green canary, custom).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -98,7 +98,7 @@ You don't need to create a Kubernetes deployment and service for the container i
 
 You also don't need to add `docker run` to your script.
 
-Simply add the contents of the script you want to execute.
+Instead, add the contents of the script you want to execute.
 
 For example, if you would normally run this:
 
@@ -172,7 +172,7 @@ Environment variables may be injected into the container and used in the script 
 
 When using these environment variables, make sure to enter a **Name** and **Value** for each variable.
 
-You may also reference environment variables in the script by their name. For example, in Bash, this would be (`$var_name` or `${var_name}`). In Windows PowerShell, the reference would be (`$Env:varName`).
+You may also reference environment variables in the script by their name. For example, in Bash, this would be `$var_name` or `${var_name}`. In Windows PowerShell, the reference would be `$Env:varName`.
 
 For **Value**, you may enter [fixed values, runtime inputs, and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
 
