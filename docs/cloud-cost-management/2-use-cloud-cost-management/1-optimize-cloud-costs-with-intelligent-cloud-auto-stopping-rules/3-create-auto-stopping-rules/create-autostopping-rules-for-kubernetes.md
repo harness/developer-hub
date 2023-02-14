@@ -188,6 +188,7 @@ spec:
     idleTimeMins: <40>  
     workloadName: <*postgres>*  
     workloadType: <*Deployment*>
+    hideProgressPage: false
 ```
 1. After updating the YAML file with all the details, click **Validate YAML**.
 2. Click **Next** once the YAML is validated.
