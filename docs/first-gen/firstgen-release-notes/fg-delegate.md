@@ -10,6 +10,14 @@ To identify the cluster that hosts your account, open Harness FirstGen and go to
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
+## February 13, 2023, version 784xx
+### Delegate version 78306
+
+Harness FirstGen release 784xx includes the following feature changes and fixes for Harness Delegate.
+
+### New features and enhancements
+
+- The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a DTO that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
 
 ## February 6, 2023, version 78321
 ### Delegate version 78306
