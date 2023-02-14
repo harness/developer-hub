@@ -26,7 +26,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/Security/add-a-google-cloud-secret-manager)
 
-- There is now a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
+- There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
   
   Following are the entity creation limits: 
 
@@ -38,13 +38,13 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - You can now add policy sets under the **Advanced** section of each step. (PIE-7794)
 
-  In this way, you can validate step outputs generated during pipeline execution without requesting a payload explicitly. Policy sets receive steps and their outputs as payloads, with a predefined schema for every step.
+  In this way, you can validate step outputs generated during pipeline execution without explicitly requesting a payload. Policy sets receive the steps and their outputs as payloads, with a pre-defined schema for every step.
 
 - Accessing the CD module redirects you to one of the following: 
 
-  - Get Started: If you don't have any pipelines in your project
+  - Get Started: If you don't have any pipelines in your project.
 
-  - Deployment list page: This is the default selection page.(PIE-7625)
+  - Deployment list page: This is the default selection page. (PIE-7625)
 
 ### Early access
 
