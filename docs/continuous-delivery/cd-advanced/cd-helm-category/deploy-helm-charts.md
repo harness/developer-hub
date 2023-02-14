@@ -30,14 +30,14 @@ See [Supported Platforms and Technologies](../../../getting-started/supported-pl
 
 ## ChartMuseum binaries
 
-Many Helm Chart users use ChartMuseum as their Helm Chart Repository server.
+Many Helm chart users use ChartMuseum as their Helm chart repository server.
 
 * **ChartMuseum binary v0.8.2:** the default ChartMuseum binary used by Harness is v0.8.2.
 * **ChartMuseum binary v0.12.0:** to use ChartMuseum binary v0.12.0 you must enable the feature flag `USE_LATEST_CHARTMUSEUM_VERSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 ## Visual summary
 
-Here's a quick video showing you how to add different types of manifests. It also describes how to add Helm Charts and multiple Values YAML files in the same repo as the chart, or in separate repos.
+Here's a quick video showing you how to add different types of manifests. It also describes how to add Helm charts and multiple values YAML files in the same repo as the chart, or in separate repos.
 
 <!-- Video:
 https://www.youtube.com/watch?v=dVk6-8tfwJc-->
@@ -61,11 +61,11 @@ containers:
 ...
 ```
 
-If the image is hardcoded then you do not use the **Artifacts** section of the Service. Any artifacts added here are ignored.
+If the image is hardcoded then you do not use the **Artifacts** section of the service. Any artifacts added here are ignored.
 
 ### Helm chart using artifact added to the stage
 
-You add an image artifact to the **Artifacts** section of the Service and then reference it in the Helm chart values.yaml file.
+You add an image artifact to the **Artifacts** section of the service and then reference it in the Helm chart values.yaml file.
 
 Artifacts in the **Artifacts** section are referenced using the `<+artifact.image>` expression. For example:
 
@@ -78,7 +78,7 @@ dockercfg: <+artifact.imagePullSecret>
 ...
 ```
 
-This is the same method when using Artifacts with standard Kubernetes deployments. See [Add Container Images as Artifacts for Kubernetes Deployments](../cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+This is the same method when using artifacts with standard Kubernetes deployments. See [Add Container Images as Artifacts for Kubernetes Deployments](../cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
 
 ## Step 1: Add the Helm chart
 
@@ -101,9 +101,9 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
 - **Manifest Identifier**: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. Ex: `helm_chart`.
 - **Chart name**: Enter the name of the Helm chart for Harness to pull. Don't include the chart version. You will add that in the **Chart Version** setting. Ex: `todolist`.
-- **Chart Version**: Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart.You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
+- **Chart Version**: Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
   - If you leave **Chart Version** empty Harness gets the latest chart.
-  - If you are going to use a Harness Trigger to run this Pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the Trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md). Ex: `1.4.1`.
+  - If you are going to use a Harness trigger to run this pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md). Ex: `1.4.1`.
 - **Helm Version**: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm. Ex: `Version 2`.
 - **Values YAML**: Your chart will have a default values.yaml file in its root folder.
   - If you do not enter a values.yaml in **Values YAML**, Harness uses the default values.yaml file in the root of the chart.
@@ -114,7 +114,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
   * prod-values.yaml
   * sample-chart/test-values.yaml
 
-  You can specify the Values YAML file based using a path to the file within the retrieved Helm Chart.
+  You can specify the values YAML file based using a path to the file within the retrieved Helm chart.
 
   If you have additional values YAML files in the chart, and you want to use those to override some settings of the default values.yaml file for this deployment, you can enter the addition values YAML file(s) in **Values YAML**.
 
@@ -132,10 +132,10 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
-  You can also select **Expression** and use [Harness expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a Stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
-- **Skip Resource Versioning**: By default, Harness versions ConfigMaps and Secrets deployed into Kubernetes clusters.
-  In some cases, such as when using public manifests or Helm charts, you cannot add the annotation.When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and Secrets for the resource.If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and Secrets.
-- **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart.Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
+  You can also select **Expression** and use [Harness expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
+- **Skip Resource Versioning**: By default, Harness versions configmaps and secrets deployed into Kubernetes clusters.
+  In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of configmaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning configmaps and secrets.
+- **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
   - [Template](https://v2.helm.sh/docs/helm/#helm-template): `helm template` to render the helm template files.
   - [Pull](https://helm.sh/docs/helm/helm_pull/): `helm pull` (v2) to get the Helm chart.
@@ -145,7 +145,7 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
@@ -164,11 +164,11 @@ dockercfg: <+artifact.imagePullSecret>
 ...
 ```
 
-This is the same method when using Artifacts with standard Kubernetes deployments. See [Add Container Images as Artifacts for Kubernetes Deployments](../cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+This is the same method when using artifacts with standard Kubernetes deployments. For more information, go to [Add Container Images as Artifacts for Kubernetes Deployments](../cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
 
 ## Option: Override chart values YAML in service
 
-You can override the values YAML in the Helm chart by adding multiple Values YAML files when you add the chart.
+You can override the values YAML in the Helm chart by adding multiple values YAML files when you add the chart.
 
 If you use multiple files, priority is given from the last file to the first file.
 
@@ -184,7 +184,7 @@ See [Example Kubernetes Manifests using Go Templating](../../cd-technical-refer
 
 ## Option: Override chart values YAML in environment
 
-You can override the values YAML file for a stage's Environment by mapping the Environment name to the values file or folder. Next, you use the `<+env.name>` Harness expression in the values YAML path.
+You can override the values YAML file for a stage's environment by mapping the environment name to the values file or folder. Next, you use the `<+env.name>` Harness expression in the values YAML path.
 
 Let's look at an example.
 
@@ -192,25 +192,25 @@ Let's say there is a repo with three values YAML files, dev.yaml, qa.yaml. prod.
 
 ![](./static/deploy-helm-charts-06.png)
 
-Next, in the Environment setting, you add three Environments, one for each YAML file name.
+Next, in the environment setting, you add three environments, one for each YAML file name.
 
-When you select an Environment, such as **qa**, the name of the Environment is used in **File Path** and resolves to **qa.yaml**. At runtime, the **qa.yaml** values file is used, and it overrides the values.yaml file in the chart.
+When you select an environment, such as **qa**, the name of the environment is used in **File Path** and resolves to **qa.yaml**. At runtime, the **qa.yaml** values file is used, and it overrides the values.yaml file in the chart.
 
-Instead of selecting the Environment in the **Infrastructure** each time, you can set the Environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime.
+Instead of selecting the environment in the **Infrastructure** each time, you can set the environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime.
 
 ## Step 2: Define the infrastructure and execution
 
-There is nothing unique about defining the target cluster Infrastructure Definition for a Helm chart deployment. It is the same process as a typical Harness Kubernetes deployment.
+There is nothing unique about defining the target cluster infrastructure definition for a Helm chart deployment. It is the same process as a typical Harness Kubernetes deployment.
 
-See [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+For more information, go to [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
-Helm charts can be deployed using any of the Execution steps and deployment strategies used in other Kubernetes deployments. See [Kubernetes How-tos](/docs/category/kubernetes).
+Helm charts can be deployed using any of the execution steps and deployment strategies used in other Kubernetes deployments. For more information, go to [Kubernetes How-tos](/docs/category/kubernetes).
 
 ## Step 3: Deploy
 
 Each Helm chart deployment is treated as a release. During deployment, when Harness detects that there is a previous release for the chart, it upgrades the chart to the new release.
 
-In your Pipeline, click **Run**.
+In your pipeline, click **Run**.
 
 The Helm chart deployment runs.
 
@@ -323,19 +323,19 @@ You deployment is successful.
 
 Helm chart deployments support versioning and rollback in the same way as standard Kubernetes deployments.
 
-See [Kubernetes Rollback](../../cd-technical-reference/cd-k8s-ref/kubernetes-rollback.md).
+For more information, go to [Kubernetes Rollback](../../cd-technical-reference/cd-k8s-ref/kubernetes-rollback.md).
 
 ## Option: Trigger the pipeline on a new chart version
 
-You can set up a Harness Trigger to listen on the chart repo and execute the Pipeline when a new chart version appears. See [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md).
+You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md).
 
 ## Notes
 
 #### Uninstall command flag
 
-If you want to use the Uninstall command in the **Manifest Details**, be aware of the following:
+If you want to use the uninstall command in the **Manifest Details**, be aware of the following:
 
 * When the deployment is successful, Harness won't execute this command.
 * If the deployment fails on the very first execution, then Harness will apply the `--uninstall` flag itself. You can see this in the logs under `Wait For Steady State`.
-* If you want to pass in some command flags when Harness performs the `--uninstall`, enter Uninstall in **Manifest Details** and enter in the relevant command flags.
+* If you want to pass in some command flags when Harness performs the `--uninstall`, enter uninstall in **Manifest Details** and enter in the relevant command flags.
 
