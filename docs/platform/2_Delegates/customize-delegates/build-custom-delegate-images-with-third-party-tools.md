@@ -18,7 +18,7 @@ This document explains how you can:
 * Build and host a custom delegate image that includes the tools you select.
 * Use your custom delegate in CI/CD pipelines.
 
-This is not a runtime process. For information on how to install tools on the delegate in runtime, see [Install Delegates with Third-Party Tools](/docs/platform/2_Delegates/customize-delegates/install-delegates-with-third-party-tools.md).
+This is not a runtime process. For information on how to install tools on the delegate in runtime, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
 
 ### Select the delegate image
 
