@@ -104,6 +104,55 @@ fi
 
 Note that these scripts are just examples and may need to be modified to fit your specific use case. You may also want to include additional steps in your pipeline, such as testing and verification, before deploying MDM or UEM configurations to production devices.
 
+### Edge and IoT deployments
+
+Harness continuous delivery can be used to automate the process of deploying new versions of applications and services to edge and IoT devices, reducing the risk of human error, minimizing downtime, and improving the security of your IoT ecosystem.
+
+
+<details>
+<summary>Edge script example</summary>
+
+The following script can be used to deploy a new version of an application to an edge device. The script assumes that the device is already set up with the necessary dependencies, and that it is accessible via SSH.
+
+```bash
+# Define variables
+APP_NAME="my-app"
+REMOTE_HOST="my-edge-device"
+REMOTE_USER="root"
+REMOTE_DIR="/opt/$APP_NAME"
+
+# Copy the new version of the application to the remote host
+scp -r ./build $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR
+
+# Restart the application on the remote host
+ssh $REMOTE_USER@$REMOTE_HOST "systemctl restart $APP_NAME.service"
+```
+</details>
+
+
+<details>
+<summary>IoT script example</summary>
+
+The following script can be used to deploy a new version of an IoT device firmware. The script assumes that the device is connected to the network and can be accessed via SSH.
+
+```bash
+# Define variables
+DEVICE_IP="192.168.1.100"
+DEVICE_USER="pi"
+DEVICE_PASS="raspberry"
+FIRMWARE_FILE="firmware-v2.0.bin"
+
+# Copy the new firmware to the device
+sshpass -p $DEVICE_PASS scp $FIRMWARE_FILE $DEVICE_USER@$DEVICE_IP:/home/$DEVICE_USER/
+
+# Install the new firmware on the device
+sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEVICE_USER/$FIRMWARE_FILE"
+```
+
+</details>
+
+
+
 ## Important notes
 
 Please review the following important notes.
