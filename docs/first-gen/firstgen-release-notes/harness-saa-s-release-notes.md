@@ -16,6 +16,22 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### February 16, 2023, version 784xx
+
+#### What's new
+
+- LDAP throws a null pointer exception if more than one user is returned for a given base DN and search query. (PL-31106)
+  
+  A code enhancement has fixed this and appropriate error message is displayed.
+
+#### Early access
+
+No early access features are available in this release.
+
+#### Fixed issues
+
+No fixed issues are available in this release.
+
 ### February 6, 2023, version 78321
 
 #### What's new
