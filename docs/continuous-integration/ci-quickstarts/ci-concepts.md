@@ -60,7 +60,7 @@ When a Build finishes successfully, the build infrastructure then sends the arti
 
 ### Demo: Set Up a CI Pipeline
 
-Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through this workflow yourself in the [CI Tutorial](ci-pipeline-quickstart.md) or [Get started for free with the fasted CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
+Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through this workflow yourself in the [CI Tutorial](ci-pipeline-quickstart.md) or [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -72,7 +72,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 #### Test Intelligence
 
-Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. Go to [Test Intelligence Overview](test-intelligence-concepts.md).
+Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. For more information, go to [Test Intelligence Overview](test-intelligence-concepts.md).
 
 <!-- ![](./static/ci-concepts-600.png) -->
 
