@@ -1,6 +1,6 @@
 ---
-title: Delegate auto-update
-description: Harness Delegate is installed with automatic updates enabled. Harness recommends that you accept automatic updates to the delegate image. If you prefer to disable auto-update, use one of the followin…
+title: Delegate auto-upgrade
+description: Describes automatic upgrades for the Harness Delegate and options to disable them. 
 # sidebar_position: 2
 helpdocs_topic_id: iusry91f4u
 helpdocs_category_id: m9iau0y3hv
@@ -8,28 +8,30 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Delegate is installed with automatic updates enabled. Harness recommends that you accept automatic updates to the delegate image. 
+Harness Delegate is installed with automatic upgrades enabled. Harness recommends that you accept automatic upgrades to the delegate image. 
 
-Delegate updates do not affect pipelines. Before an update is made, the delegate finishes the tasks that are underway. The delegate then gracefully shuts down. 
+Delegate upgrades do not affect pipelines. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then gracefully shuts down. 
 
-If you prefer to disable auto-update, use one of the following options:
+## Disable auto-upgrade
 
-* Modify the delegate YAML to prevent installation of the auto-update component.
-* Suspend auto-updates to the installed delegate image.
+If you prefer to disable auto-upgrade, use one of the following options:
 
-**To suspend auto-update on an installed image**
+* Modify the delegate YAML to prevent installation of the auto-upgrade component.
+* Suspend auto-upgrades to the installed delegate image.
 
-1. Run the following command to suspend auto-update on the installed image:  
+**To suspend auto-upgrade on an installed image**
+
+1. Run the following command to suspend auto-upgrade on the installed image:  
 `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>`
 2. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`:   
 `spec:`  
 --`suspend: true`
 
-**To prevent installation of the auto-update feature**
+**To prevent installation of the auto-upgrade feature**
 
 * Remove the `cronJob` section before you apply the manifest.
 
-### Delegate YAML changes
+### Update the delegate YAML
 
 Harness does not recommend the use of delegate images that are not current. However, if you require an earlier image version, check the repository on [Docker Hub](https://hub.docker.com/).
 

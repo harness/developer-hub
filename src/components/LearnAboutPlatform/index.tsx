@@ -86,6 +86,12 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
+            <a href="/docs/category/audit-trail">
+              <h4>Audit Trail</h4>
+              <p>Review every important change to your Harness account</p>
+            </a>
+          </li>
+          <li>
             <a href="/docs/category/dashboards">
               <h4>Dashboards &amp; Reports</h4>
               <p>
@@ -212,6 +218,12 @@ export default function LearnAboutPlatform(): JSX.Element {
                 New features and fixed issues for the self-managed (fka
                 on-premises) edition
               </p>
+            </a>
+          </li>
+          <li>
+            <a href="/release-notes/delegate">
+              <h4>Delegate</h4>
+              <p>New features and fixed issues for the Harness Delegate</p>
             </a>
           </li>
         </ul>

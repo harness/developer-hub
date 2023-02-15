@@ -56,6 +56,11 @@ If you want to add tools to the image, Harness recommends the creation of a cust
 
 ### Install Harness Delegate
 
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://harness-1.wistia.com/medias/f9nqiluelc" /> 
+
+
 For basic information on installing Harness Delegate, see the following topics:
 
 * [Install Harness Delegate on Kubernetes](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes.md)
@@ -66,7 +71,6 @@ For basic information on installing Harness Delegate, see the following topics:
 For advanced installation topics, see the following:
 
 * [Automate Delegate Installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
-* [Non-Root Delegate Installation](/docs/platform/2_Delegates/advanced-installation/non-root-delegate-installation.md)
 * [Install a Delegate with Third-Party Custom Tool Binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
 
 ### Delegate sizes

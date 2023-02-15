@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-02-03T10:00
+date: 2023-02-07T10:00
 sidebar_position: 9
 ---
 
@@ -13,8 +13,27 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## February 7, 2023, version 0.7.3
 
-## January 17, 2023, version 0.7
+### What’s new
+
+* No new features are available in this release.
+
+### Early access features
+
+* No early access features are available in this release.
+
+### Fixed issues
+
+* When the connection between the control plane (user interface) and your cluster was broken (or closed), the chaos infrastructure displayed ‘disconnected’ status with the incorrect message "chaos infrastructure is already connected." Now, it has been fixed such that chaos infrastructure displays ‘disconnected’ status only after confirming the status of the connection using the Ping-Pong model, i.e., the control plane sends a message to the user cluster, and if the user cluster does not respond to it, the status is ‘disconnected’. Consequently, the message "chaos infrastructure is disconnected" is displayed. (CHAOS-1113)
+
+* There was no response from the chaos infrastructure when one or more pods (or replicas) of the associated components were not running. Now, it has been fixed so that the chaos infrastructure requires a minimum of one pod (replica) to be in the running state for all the required components. As a result, pod evictions caused by node shutdown or scaling operations will have no effect on the status of the chaos infrastructure. (CHAOS-1114)
+
+**Note**
+
+This release introduces the Ping-Pong model, which requires the users to upgrade their existing chaos infrastructures to the latest version by re-downloading the chaos infrastructure manifest from the user interface and applying it to the respective cluster.
+
+## January 17, 2023, version 0.7.2
 
 ### What's new
 
@@ -62,7 +81,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * If you hovered over a probe, its details would overflow if they were too long. Now, it has been fixed. (CHAOS-990)
 * Any increase in the number of chaos faults that you wished to view on a single page in a ChaosHub would result in a blank page. Now, it has been fixed. (CHAOS-984)
 * When a chaos experiment was imported into the ChaosHub, it would not be logged as an audit event and would not be displayed on the user interface. It has been fixed. (CHAOS-779)
-* If no chaos infrastructure is connected with your project, a blank screen would be displayed. Now, the message "There are no chaos infrastructure in your project." is displayed. (CHAOS-1009) 
+* If no chaos infrastructure is connected with your project, a blank screen would be displayed. Now, the message "There are no chaos infrastructures in your project." is displayed. (CHAOS-1009) 
 * In CRON experiments, the scheduled run time would always be shown in GMT. Now, it has been fixed to show the run time in your browser’s time zone. (CHAOS-1035)
 * The parameters in the YAML manifest of different runs of the same chaos experiment were inconsistent with the changes made (if any) in their respective runs. Now, it has been fixed.
 

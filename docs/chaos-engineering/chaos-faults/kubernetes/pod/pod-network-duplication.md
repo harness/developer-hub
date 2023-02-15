@@ -7,7 +7,7 @@ Pod network duplication is a Kubernetes pod-level chaos fault that injects chaos
 - It determines the application's resilience to duplicate network.
 
 
-![Pod Network Duplication](./static/images/network-chaos.png)
+![Pod Network Duplication](./static/images/pod-network-duplication.png)
 
 
 ## Usage

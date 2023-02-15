@@ -1,6 +1,6 @@
 ---
-title: Automate delegate lnstallation
-description: Automate Delegate installation and registration.
+title: Automate delegate installation
+description: Automate delegate installation and registration.
 # sidebar_position: 2
 helpdocs_topic_id: 9deaame3qz
 helpdocs_category_id: m9iau0y3hv
@@ -26,7 +26,7 @@ For example, in Kubernetes deployments, you can set up two delegates, each in it
 ```
 ...  
 apiVersion: apps/v1beta1  
-kind: StatefulSet  
+kind: Deployment  
 metadata:  
   labels:  
     harness.io/app: harness-delegate  
@@ -65,18 +65,22 @@ The Delegate Environment Variables are described in the relevant Delegate instal
 
 ### Step 2: Rename the New Delegate
 
-The process you use to rename a delegate depends on its type. For Docker delegates, you change the name in one environment variable in the Docker compose file. For the Kubernetes delegate, you change multiple instances of the name.
+The process you use to rename a delegate depends on its type. For a Docker delegate,  you can change the name on the command line. For a Kubernetes delegate, you must change multiple instances of the name.
 
 #### Kubernetes delegate renaming
 
 In the Kubernetes delegate config file, several labels must be updated:
 
 * `Secret.metadata.name`
-* `StatefulSet.metadata.labels.harness.io/name`
-* `StatefulSet.metadata.name`
-* `StatefulSet.metadata.spec.selector.matchLabels.harness.io/name`
-* `StatefulSet.metadata.spec.template.metadata.labels.harness.io/name`
-* `StatefulSet.metadata.spec.template.spec.env.name: DELEGATE_NAME`
+* `Deployment.metadata.labels.harness.io/name`
+* `Deployment.metadata.name`
+* `Deployment.spec.selector.matchLabels.harness.io/name`
+* `Deployment.spec.template.metadata.labels.harness.io/name`
+* `Deployment.spec.containers.envFrom.secretRef`
+* `Deployment.metadata.spec.template.spec.env.name: DELEGATE_NAME`
+* `Service.metadata.selector.harness.io/name`
+* `CronJob.metadata.labels.harness.io/name`
+* `CronJob.metadata.name`
 
 The `DELEGATE_NAME` environment variable looks like this:
 
@@ -103,5 +107,5 @@ After you update the delegate names, you can apply the configuration file. The d
 
 ### See also
 
-* [Run Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md)
+* [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md)
 

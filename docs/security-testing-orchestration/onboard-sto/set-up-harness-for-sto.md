@@ -31,7 +31,7 @@ Before you start setting up Harness, make sure you have the following:
 
 * Git account and Personal Access Token — If you are scanning a repo, you need an account and access token with the Git provider.
 * Docker Hub account — STO uses Docker-in-Docker to run scans. The Pipeline needs to pull the **docker:dind** image from Docker Hub.
-* [Kubernetes cluster](#install-the-harness-delegate) — Running builds in your infrastructure, rather than in a vendor's cloud, has significant benefits. Vendor clouds often experience outages that can result in backlogs and delayed builds. You can build software and run tests, repeatedly and automatically, on a scalable platform with no outages or backlogs.
+* [Kubernetes cluster](#install-the-harness-delegate) — Infrastructure for running builds.
 
 ### Harness User Requirements
 

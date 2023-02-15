@@ -5,7 +5,7 @@ title: Pod memory hog exec
 Pod memory hog exec is a Kubernetes pod-level chaos fault that consumes memory resources on the application container in megabytes.
 - It simulates conditions where app pods experience Memory spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
 
-![Pod Memory Hog Exec](./static/images/pod-stress.png)
+![Pod Memory Hog Exec](./static/images/pod-memory-hog-exec.png)
 
 
 ## Usage

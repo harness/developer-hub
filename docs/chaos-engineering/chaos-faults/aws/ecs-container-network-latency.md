@@ -9,7 +9,7 @@ ECS container network latency disrupts the state of infrastructure resources. It
 - It tests the ECS task sanity (service availability) and recovery of the task containers subject to network stress.
 
 
-![ECS Container Network Latency](./static/images/ecs-network-chaos.png)
+![ECS Container Network Latency](./static/images/ecs-container-network-latency.png)
 
 
 ## Usage

@@ -350,7 +350,7 @@ N/A
 
 - You can now use a hosted delegate for Docker, Artifactory, AWS, GCP, BitBucket, GitLab, and Azure connectors. (CI-4828, CI-5241)
 
-## Early access features
+### Early access features
 
 N/A
 

@@ -1,9 +1,7 @@
 ---
 title: Plugin Step Settings
 description: This topic provides settings for the CI Plugin step. Plugins are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 80
 helpdocs_topic_id: 8r5c3yvb8k
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

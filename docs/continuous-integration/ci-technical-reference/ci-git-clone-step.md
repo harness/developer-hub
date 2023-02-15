@@ -1,9 +1,7 @@
 ---
-title: Git Clone Step
+title: Git Clone Step Settings
 description: A Git Clone step is useful when you want to include multiple repositories in your build. Each step clones its repo to the pipeline workspace along with the cloned codebase.
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 70
 helpdocs_topic_id: nl3ixvew4o
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

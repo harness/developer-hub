@@ -47,7 +47,7 @@ In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to 
 
 The SDKs you need to add depend on what type of deployment you are doing with Harness.
 
-For more information on how to use the `INIT_SCRIPT` environment variable, see [Run Initialization Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+For more information on how to use the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 #### Table: Certified SDK versions for deployment types
 
@@ -108,51 +108,40 @@ You can edit the YAML to include only the SDKs and versions Harness requires for
               fieldPath: metadata.namespace  
         - name: INIT_SCRIPT  
           value: |  
-            mkdir -p /opt/harness-delegate/custom-client-tools/  
-            mkdir -p /opt/harness-delegate/download-tools/  
-            cd /opt/harness-delegate/download-tools  
               
             ## Kubectl   
             curl -L0 https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl  
             chmod +x ./kubectl  
-            mv kubectl /opt/harness-delegate/custom-client-tools/kubectl  
+            mv kubectl /usr/local/bin/
               
             ## Helm V3  
             curl -L0 https://get.helm.sh/helm-v3.9.2-linux-amd64.tar.gz -o helm-v3.9.2.tar.gz  
             tar -xvzf helm-v3.9.2.tar.gz  
             chmod +x ./linux-amd64/helm  
-            mv ./linux-amd64/helm /opt/harness-delegate/custom-client-tools/helm3  
+            mv ./linux-amd64/helm /usr/local/bin/ 
   
             ## Kustomize  
             curl -L0 https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv4.5.4/kustomize_v4.5.4_linux_amd64.tar.gz -o kustomize_v4.5.4.tar.gz  
             tar -xvzf kustomize_v4.5.4.tar.gz  
             chmod +x ./kustomize  
-            mv kustomize /opt/harness-delegate/custom-client-tools/kustomize  
+            mv kustomize /usr/local/bin/
   
             ## OpenShift OC  
             curl -L0 https://mirror.openshift.com/pub/openshift-v4/clients/oc/latest/linux/oc.tar.gz -o oc.tar.gz  
             tar -xvzf oc.tar.gz  
             chmod +x ./oc  
-            mv oc /opt/harness-delegate/custom-client-tools/oc  
+            mv oc /usr/local/bin/ 
               
             ## go-template   
             mkdir -p /opt/harness-delegate/client-tools/go-template/v0.4.1/  
             curl -L0 https://app.harness.io/public/shared/tools/go-template/release/v0.4.1/bin/linux/amd64/go-template -o go-template  
             chmod +x ./go-template  
-            mv go-template /opt/harness-delegate/client-tools/go-template/v0.4.1/go-template  
+            mv go-template /usr/local/bin/
               
-            ## scm  
-            mkdir -p /opt/harness-delegate/client-tools/scm/36d92fd8/  
-            curl -L0 https://app.harness.io/public/shared/tools/scm/release/36d92fd8/bin/linux/amd64/scm -o scm  
-            chmod +x ./scm  
-            mv scm /opt/harness-delegate/client-tools/scm/36d92fd8/scm  
-              
-            ## Replace default version of chartmuseum v0.12.0 with v0.14  
-            ## USE_LATEST_CHARTMUSEUM_VERSION is enabled for account  
             curl -L https://get.helm.sh/chartmuseum-v0.14.0-linux-amd64.tar.gz -o chartmuseum-v0.14.tar.gz  
             tar xzvf chartmuseum-v0.14.tar.gz  
             chmod +x ./linux-amd64/chartmuseum  
-            mv ./linux-amd64/chartmuseum /opt/harness-delegate/client-tools/chartmuseum/v0.12.0/chartmuseum  
+            mv ./linux-amd64/chartmuseum /usr/local/bin/ 
               
             cd /opt/harness-delegate  
 ...
