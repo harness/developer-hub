@@ -84,7 +84,7 @@ Your delegate is installed.
 
 You registered delegate appears in the delegate list.
 
-![](./static/install-a-docker-delegate-03)
+![](./static/install-a-docker-delegate-03.png)
 
 Note the **Connected** status. If there is a connectivity error, the status is **Not Connected**. If there's an error, ensure the Docker host can connect to `https://app.harness.io`.
 
