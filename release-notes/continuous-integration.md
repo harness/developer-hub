@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-02-06T10:00
+date: 2023-02-15T10:00
 sidebar_position: 3
 ---
 
