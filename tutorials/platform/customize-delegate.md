@@ -1,4 +1,4 @@
-# Customize the Delegate to Run Your Favorite Third-Party Tools
+# Customize the delegate to run your favorite third-party tools
 
 Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. With the delegate installed, you can connect to third-party resources. The delegate performs all pipeline operations, including deployment and integration.
 
@@ -19,7 +19,7 @@ You can start by inviting collaborators to work with you, or you can click **Sav
 
 ![invite collaborators](./static/customizing-delegate/collaborators.png)
 
-Next, you need to pick a Harness module for your project. Click the **Continuous Delivery** card.
+Next, pick a Harness module for your project. Click the **Continuous Delivery** card.
 
 ![cd module](./static/customizing-delegate/cd_module.png)
 
@@ -124,7 +124,7 @@ Now, you can use any Git command in your project.
 
 ### Install AWS CLI
 
-You can add the AWS CLI tooling on your Delegate just the way we added Git.
+You can add AWS CLI tooling to your delegate the same way we added Git.
 
 Here is the AWS CLI script to add into our `INIT_SCRIPT` section:
 
@@ -138,7 +138,7 @@ See the screenshot below for more clarity.
 
 ![aws cli step](./static/customizing-delegate/aws_cli_script.png)
 
-Let’s add the shell script as a step just like how we added Git.
+Let’s add the shell script as a step the same way we added Git.
 
 In the script, add the command `aws –version`
 ![aws cli version check](./static/customizing-delegate/aws_version.png)
@@ -153,7 +153,7 @@ You can see the AWS CLI version.
 
 ### Install kubectl
 
-Add the following script into your script and apply the yaml just like how we did previously.
+Add the following script into your script and apply the YAML the same way we did before.
 
 ```
 curl -L0 https://dl.k8s.io/release/v1.24.3/bin/linux/amd64/kubectl -o kubectl  
@@ -167,11 +167,11 @@ See the screenshot below for more clarity.
 
 Save the YAML and apply the `kubectl` command for the delegate.
 
-Add the shell script step as shown below with the `kubectl version` command.
+Add the shell script step as shown below. Use the `kubectl version` command.
 
 ![kubectl version adding](./static/customizing-delegate/kubectl_version_command.png)
 
-Make sure you specify the delegate on the **Advanced** tab of the above step.
+Make sure you specify the delegate on the **Advanced** tab of the step.
 
 Save everything and run the pipeline.
 
@@ -191,7 +191,7 @@ mv ./terraform /usr/bin/
 
 Save the YAML and apply the `kubectl` command.
 
-Add the shell script step as shown below, with the `terraform --version` command.
+Add the shell script step as follows. Use the `terraform --version` command.
 
 ![Terraform version checking](./static/customizing-delegate/terraform_version.png)
 
@@ -250,6 +250,6 @@ Save the configuration and run the pipeline. On success, you should see output t
 
 ![running the pipeline successfully](./static/customizing-delegate/together_execution.png)
 
-This way, you can install and play with any of your favorite tools on Harness Delegate. This customization gives a lot of flexibility to developers working with these tools.  
+You can use these steps to install and play with any of your favorite tools on Harness Delegate. This customization gives you a lot of flexibility.  
 
 #### Get started with [*Harness Delegate*](https://developer.harness.io/docs/category/delegates/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started) today!
