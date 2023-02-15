@@ -23,7 +23,7 @@ Harness NextGen release 784xx includes the following changes for Harness Delegat
 :::note
 The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576)
 
-The repository is being deprecated. Updates to the chart will not be made to https://app.harness.io/storage/harness-download/delegate-helm-chart/ and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
+The repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/ is being deprecated. The Helm chart in https://app.harness.io/storage/harness-download/delegate-helm-chart/ will no longer be updated and will no longer be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
 :::
 
 ### New features and enhancements
