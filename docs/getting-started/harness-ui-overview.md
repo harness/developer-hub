@@ -67,12 +67,18 @@ To navigate to your desired module, perform the following steps:
    - Manage Impact
      - Cloud Cost Management
      - Service Reliability Management
+  
+    You can find more information about each module by selecting the info icon beside it.
+    
+    ![](./static/module-info.png)
 
 2. Select **Customize your navigation** to configure your left navigation.
 
    ![](./static/configure-leftnav.png)
 
 3. To re-order the modules and set the priority, drag and drop the modules. 
+   
+   ![](./static/drag-drop-modules.png)
 
 4. Click the modules you want to see in the left navigation. Harness automatically saves your selection, and you can see the selected modules in your left navigation.
    
