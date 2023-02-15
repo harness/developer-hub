@@ -18,7 +18,7 @@ For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/do
 ## February 14, 2023, version 78421
 ### Delegate version 78306
 
-Harness NextGen release 784xx includes the following changes for Harness Delegate.
+Harness NextGen release 78421 includes the following changes for Harness Delegate.
 
 :::note
 The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576)
