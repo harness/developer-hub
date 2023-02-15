@@ -1,6 +1,6 @@
 ---
 title: Google Cloud Platform (GCP) connector settings reference
-description: This topic provides settings and permissions for the GCP connector.
+description: Settings and permissions for the GCP connector.
 # sidebar_position: 2
 helpdocs_topic_id: yykfduond6
 helpdocs_category_id: 1ehb4tcksy
