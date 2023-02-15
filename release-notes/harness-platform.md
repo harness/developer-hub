@@ -1,7 +1,7 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-02-06T10:00
+date: 2023-02-15T10:00
 sidebar_position: 10
 ---
 
@@ -12,6 +12,100 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 16, 2023, version 78421
+
+### What's new
+
+- The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. (PL-31136)
+  This update will not affect any business operations.
+
+- The [Role Assignment](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now includes the principal's name and email address in the response.(PL-31064, ZD-36050)
+
+- Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
+  
+  For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/Security/add-a-google-cloud-secret-manager)
+
+- There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
+  
+  Following are the entity creation limits: 
+
+  - Project - 100
+  - Secrets - 100
+  - Variables - 100
+  - User groups -100
+  - Service accounts - 100
+
+- You can now add policy sets under the **Advanced** section of each step. (PIE-7794)
+
+  In this way, you can validate step outputs generated during pipeline execution without explicitly requesting a payload. Policy sets receive the steps and their outputs as payloads, with a pre-defined schema for every step.
+
+- Accessing the CD module redirects you to one of the following: 
+
+  - Get Started: If you don't have any pipelines in your project.
+
+  - Deployment list page: This is the default selection page. (PIE-7625)
+
+### Early access
+
+No early access features are available in this release.
+
+
+### Fixed issues
+
+- The **Remove** option is disabled for the first user added to a user group through SCIM. A code check prevents the deletion of a user from a user group if the user is externally managed. (PL-31125, ZD-39358)
+
+  ![](./static/remove-scim-user-issue.png)
+
+  This issue has now been resolved and users can now remove any user from a user group created through the Harness UI.
+
+- Deletion of externally managed users from organizations and projects is disabled. (PL-31104, ZD-39109,39110)
+  
+  ![](./static/delete-scim-user-issue.png)
+
+  A code enhancement has fixed this issue.
+
+- Capitalization of user emails in SCIM impacts SAML authentication. (PL-31038)
+  
+  A code enhancement has fixed this issue.
+
+- When trying to delete or update an externally managed user group in Harness, the error message is unclear. (PL-30641)
+  
+  It has been enhanced to "User is externally managed by your Identity Provider and cannot be deleted via UI / API. To delete the user from Harness, delete it from your Identity Provider."
+
+- The default secret manager does not appear in the **Secrets Manager** list when there are more than 100 secret managers.(PL-29635)
+  
+  A code enhancement has fixed this issue. The default secret manager is now displayed if you enter its name in the **Secrets Manager** field.
+
+- Deletion of vault connectors does not delete the corresponding perpetual tasks. (PL-27621)
+  
+  A code enhancement has fixed this issue.
+
+- When using Firefox, the YAML Difference is not displayed in the audit trail summary. (PL-25659)
+
+  ![](./static/audittrail-chrome-issue.png)
+
+  A change in the configuration to load the web workers fixed this issue.
+
+- When the pipeline is not saved in the default branch in Git, the retry pipeline does not work. (PIE-8132)
+  
+  A code enhancement has fixed this issue.
+
+- In pipeline execution, the YAML builder does not support read-only operations and throws an error. (PIE-8040)
+  
+  A code enhancement has fixed this issue.
+
+- The pipeline execution details page does not have a **View Compiled YAML** option.(PIE-7967)
+  
+  This option is now available on the execution page.
+
+- Creating an input set results in an error. (PIE-7849, ZD-39180,39240,39250)
+  
+  ![](./static/inputset-create-error.png)
+
+  A code enhancement has fixed this issue.
+
+
 
 ## February 6, 2023, version 78321
 

@@ -85,7 +85,7 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Install Software on the Delegate with Initialization Scripts](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 
 ```bash

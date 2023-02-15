@@ -65,7 +65,9 @@ The following procedure creates a new User Group and defines permissions for its
 
 	2. Click in the text area and select the members for the group, and then click **SUBMIT**. The **Member Users** section of the group page is updated with the new members.
 5. Set **Account** Permissions.
-	1. In **Account Permissions**, enable one or more of the account permissions for this group. For most users, you will enable only the **Create/Delete** Application permissions. For more information, see [Permissions](#permissions).![](./static/users-and-permissions-238.png)
+	1. In **Account Permissions**, enable one or more of the account permissions for this group. For most users, you will enable only the **Create/Delete** Application permissions. For more information, see [Permissions](#permissions).
+    
+	![](./static/firstgen-accountpermissions.png)
 
 6. Add **Application** Permissions.![](./static/users-and-permissions-239.png)
 
@@ -93,7 +95,8 @@ When a Harness User is a member of two or more User Groups, that user's permissi
 
 A user group might have the **Account permission** to add an application, but only the **Application permission** to add services:
 
-![](./static/users-and-permissions-240.png)
+![](./static/firstgen-accountpermissions.png)
+
 Users in this group will be able to create applications and add Services to them, but not will not be able to add Environments, Workflows, or other Application components.
 
 ### Account Permissions
@@ -135,6 +138,7 @@ Account permissions enable the following Harness features:
 | **Manage Delegate Profiles** | Enables User Group members to add, update, and configure [Delegate Profiles](../../account/manage-delegates/run-scripts-on-the-delegate-using-profiles.md). |
 | **Manage SSH and WinRM Connection** | Enables User Group members to add, update and delete SSH Keys and WinRM Connection Credentials. |
 | **Allow Deployments During Freeze** | Enables Admin members to deploy even if there is an active Deployment Freeze window. See [Deployment Freeze](../governance-howtos/deployment-freeze.md). |
+| **Hide NextGen Button** | Hides the `Launch Harness Next Generation` option from the UI. |
 
 #### Administer Other Account Functions Permissions
 

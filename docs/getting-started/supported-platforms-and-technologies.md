@@ -155,7 +155,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="#see-also">Serverless Lambda</a></p>
+      <p><a href="#see-also">Serverless.com Framework - Lambda</a></p>
     </td>
     <td>
       <ul>
@@ -392,7 +392,7 @@ The following table lists Harness integrations and their artifact source support
 | **Azure Web Apps** | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          |            |                              |                              |             |            |
 | **SSH**            |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
 | **WinRM**          |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
-| **Serverless**     |                | ✅      |         |         | ✅              |             |            |                              |                              |             | ✅         |
+| **Serverless.com Framework**     |                | ✅      |         |         | ✅              |             |            |                              |                              |             | ✅         |
 
 ##### Manifest and Config file Store Support
 
@@ -409,7 +409,7 @@ The following table lists where you can store your manifests or config files for
 | **Openshift\*\***Params\*\*   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
 | **AWS ECS**                   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
 | **Helm Chart**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
-| **Serverless.com**            | ✅         | ✅         | ✅            |                       | ✅          |              |               |            |            |                          |                           |
+| **Serverless.com Framework**            | ✅         | ✅         | ✅            |                       | ✅          |              |               |            |            |                          |                           |
 | **SSH**                       |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **WinRM**                     |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **Azure Web Apps**            |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
@@ -794,7 +794,7 @@ For Kubernetes deployments, the following SDKs/tools are included in the Delegat
 
 The versions can be found in this public GitHub repo: <https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools>
 
-For details on updating the default tool versions, go to [Install Software on the Delegate with Initialization Scripts](../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+For details on updating the default tool versions, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 For Kubernetes deployments, the following SDKs/tools are certified.
 
@@ -831,7 +831,27 @@ Using the No Tools Image and Delegate YAML, you can install the specific SDK ver
 
 For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
-### Supported browsers
+### The Update Framework (TUF)
+
+The Update Framework (TUF) is an open source specification for that provides instructions on how to organize, sign, and interact with metadata to secure package managers. 
+
+Harness includes native TUF support via the following:
+
+- Deployment templates: [Deployment Templates](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
+  - Deployment Templates can obtain the required metadata for native TUF support, and generate and validate signatures in the software lifecycle.
+- OCI image registry support:
+  - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
+- Enforce the rotation of secrets and key management practices:
+  - Harness provides [token key rotation natively](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/#rotate-token).
+- Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step/#review-what-is-harness-continuous-verification-cv).
+
+## Harness Open Source Software (OSS) components
+
+The following document lists the open source libraries and third-party software Harness uses.
+
+- [Harness Open Source Software (OSS) components](static/harness-open-source-software-components.pdf)
+
+## Supported browsers
 
 The following browsers are supported:
 
@@ -842,7 +862,7 @@ The following browsers are supported:
 
 Mobile browsers are not supported.
 
-#### Supported screen resolution
+## Supported screen resolution
 
 Minimum supported screen resolution is 1440x900.
 

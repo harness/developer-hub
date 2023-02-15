@@ -5,14 +5,20 @@ sidebar_position: 3
 ---
 If you are an account administrator, you can enforce limits on the usage of pipelines in your account. Possible and default values, along with other aspects of each setting (such as whether or not you can edit the setting), depend on the plan to which you are subscribed.
 
-The following table describes what each setting means and how it applies to the various plans.
+This article provides a detailed description of the pipeline settings in various categories.
+
+## Pipeline Execution Concurrency
+
+### Concurrent Active Pipeline Executions
+
+Number of concurrent pipeline executions per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily in steps such as the wait step or approval step), not those that have executed to completion. Any executions that users trigger when the limit is reached are added to the execution queue.
+
+The following table describes how this setting applies to each plan.
 
 <table>
   <thead>
     <tr>
-      <th>Category</th>
-      <th>Setting</th>
-      <th>Description</th>
+      <th></th>
       <th>Free Plan</th>
       <th>Team Plan</th>
       <th>Enterprise Plan</th>
@@ -21,48 +27,83 @@ The following table describes what each setting means and how it applies to the 
   <tbody>
     <tr valign="top">
       <td>
-        <strong>Pipeline Execution Concurrency</strong>
+        <strong>Default</strong>
       </td>
       <td>
-        <p>Concurrent Active Pipeline Executions</p>
+        <p>2</p>
       </td>
       <td>
-        <p>Number of concurrent pipeline executions per execution API request. The setting considers only those executions that are in progress (including those that are paused temporarily in steps such as the wait step or approval step), not those that have executed to completion. Any executions that users trigger when the limit is reached are added to the execution queue.</p>
+        <p>200</p>
       </td>
       <td>
-        <ul>
-          <li>Default: 2</li>
-          <li>Editable: No</li>
-          <li>Scope: Account</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Default: 200</li>
-          <li>Maximum: 500</li>
-          <li>Editable: Yes</li>
-          <li>Scope: Account</li>
-        </ul>
-      </td>
-            <td>
-        <ul>
-          <li>Default: 500</li>
-          <li>Maximum: 1000</li>
-          <li>Editable: Yes</li>
-          <li>Scope: Account</li>
-        </ul>
+        <p>500</p>
       </td>
     </tr>
     <tr valign="top">
       <td>
-        <strong>Parallelism</strong>
+        <strong>Maximum</strong>
       </td>
       <td>
-        <p>Parallelism Limit</p>
+        <p>NA</p>
       </td>
       <td>
-        <p>Number of parallel steps or stages at a given level in a pipeline, regardless of whether you use a matrix, configure parallelism, or configure the steps or stages manually. For example, in the Free plan, you can add a maximum of 10 parallel stages at a level, and you can add a maximum of 10 parallel steps in each of those stages. This is a hard limit at the account scope; it is not made available to account administrators and users cannot configure this limit for their pipelines. If a user specifies a value for their pipeline, they can save the pipeline but not execute it.</p>
+        <p>500</p>
       </td>
+      <td>
+        <p>1000</p>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td>
+        <strong>Editable</strong>  
+      </td>
+      <td>
+        <p>No</p>
+      </td>
+      <td>
+        <p>Yes</p>
+      </td>
+      <td>
+        <p>Yes</p>
+      </td>
+    </tr>
+    <tr valign="top">
+      <td>
+        <strong>Scope</strong>
+      </td>
+      <td>
+        <p>Account</p>
+      </td>
+      <td>
+        <p>Account</p>
+      </td>
+      <td>    
+        <p>Account</p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+## Parallelism
+
+### Parallelism Limit
+
+Number of parallel steps or stages at a given level in a pipeline, regardless of whether you use a matrix, configure parallelism, or configure the steps or stages manually. For example, in the Free plan, you can add a maximum of 10 parallel stages at a level, and you can add a maximum of 10 parallel steps in each of those stages. 
+
+This is a hard limit at the account scope; it is not made available to account administrators and users cannot configure this limit for their pipelines. Users who specify a value for their pipeline can save the pipeline but not execute it.
+
+The following table shows the value of this setting on each plan.
+
+<table>
+  <thead>
+    <tr>
+      <th>Free Plan</th>
+      <th>Team Plan</th>
+      <th>Enterprise Plan</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr valign="top">
       <td>
         <p>10</p>
       </td>
