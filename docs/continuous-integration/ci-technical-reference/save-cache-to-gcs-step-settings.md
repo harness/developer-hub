@@ -22,11 +22,7 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 The Harness Connector for the GCP account where you want to save the cache.
 
-:::note
-
-This step has been tested with GCP connectors that use access key authentication. GCP connectors that inherit delegate credentials may encounter problems during pipeline execution.
-
-:::
+This step support GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
 ### Bucket
 

@@ -18,13 +18,7 @@ The unique name for this step.
 
 ### Docker Connector
 
-The Harness Docker Registry Connector to use for uploading the image. See [Docker Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
-
-:::note
-
-This step supports Docker connectors that use either anonymous or username and password authentication.
-
-:::
+The Harness Docker Registry Connector to use for uploading the image. See [Docker Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md). This step supports Docker connectors that use either anonymous or username and password authentication.
 
 ### Docker Repository
 

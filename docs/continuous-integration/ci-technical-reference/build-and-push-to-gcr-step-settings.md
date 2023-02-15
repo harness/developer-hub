@@ -26,11 +26,7 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 The Harness GCP Connector to use to connect to GCR. See [Google Cloud Platform (GCP) Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
-:::note
-
-This step has been tested with GCP connectors that use access key authentication. GCP connectors that inherit delegate credentials may encounter problems during pipeline execution.
-
-:::
+This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
 ### Host
 
