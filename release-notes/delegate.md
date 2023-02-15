@@ -26,7 +26,7 @@ The repository location of the Helm chart for the NextGen delegate is changing. 
 The repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/ is being deprecated. The Helm chart will no longer be available from the repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
 :::
 
-### New features and enhancements
+### What's new
 
 This release introduces the following new features and enhancements:
 
