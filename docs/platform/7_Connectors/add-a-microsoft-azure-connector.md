@@ -139,12 +139,12 @@ If you connect to an ACR repo via the platform-agnostic [Docker Connector](ref-c
 Harness Azure Cloud connectors that you'll use to connect to Azure Web Apps with Service Principal or Managed Identity credentials, must have the **Contributor** role, at minimum, or an equivalent or better custom role.
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 ```
 ```mdx-code-block
-<Tabs>
-  <TabItem value="contrib" label="Contributor permissions" default>
+<Tabs2>
+  <TabItem2 value="contrib" label="Contributor permissions" default>
 ```
 
 The follow are the Azure RBAC permissions used for System Assigned Managed Identity permissions to perform Azure Web App deployments for container and non-container artifacts:
@@ -176,8 +176,8 @@ The follow are the Azure RBAC permissions used for System Assigned Managed Ident
 ```
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="custom" label="Custom role">
+  </TabItem2>
+  <TabItem2 value="custom" label="Custom role">
 ```
 
 The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
@@ -244,8 +244,8 @@ The following JSON sample creates a custom role with the required permissions. T
 ```
 
 ```mdx-code-block
-  </TabItem>
-</Tabs>
+  </TabItem2>
+</Tabs2>
 ```
 
 ## Connect Harness to Azure Kubernetes Services (AKS)
@@ -277,12 +277,12 @@ There are three options for connecting Harness to an AKS cluster:
 If you use the Microsoft Azure Cloud connector to connect to AKS with Service Principal or Managed Identity credentials, you must assign the **Owner** role or an equivalent custom role.
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs3 from '@theme/Tabs';
+import TabItem3 from '@theme/TabItem';
 ```
 ```mdx-code-block
-<Tabs>
-  <TabItem value="custom" label="Custom role" default>
+<Tabs3>
+  <TabItem3 value="custom" label="Custom role" default>
 ```
 
 The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
@@ -349,8 +349,8 @@ The following JSON sample creates a custom role with the required permissions. T
 ```
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="k8sRbac" label="Kubernetes RBAC example">
+  </TabItem3>
+  <TabItem3 value="k8sRbac" label="Kubernetes RBAC example">
 ```
 
 Here's an example of Kubernetes RBAC permissions used for System Assigned Managed Identity.
@@ -382,8 +382,8 @@ subjects:
 ```
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="azureRbac" label="Azure RBAC example">
+  </TabItem3>
+  <TabItem3 value="azureRbac" label="Azure RBAC example">
 ```
 
 Here's an example of Azure RBAC permissions used for System Assigned Managed Identity. To use this sample, replace `xxxx` with the subscription Id and resource group Id.
@@ -437,8 +437,8 @@ Here's an example of Azure RBAC permissions used for System Assigned Managed Ide
 ```
 
 ```mdx-code-block
-  </TabItem>
-</Tabs>
+  </TabItem3>
+</Tabs3>
 ```
 
 ## Add an Azure Cloud Provider connector
