@@ -18,9 +18,9 @@ aws_access_key_id=AKERI44QH8DHBEXAMPLE
 aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 ```
 
-### To prepare multiple profiles for HCE follow the below mentioned steps:
+### To prepare multiple profiles for HCE ,follow the below mentioned steps:
 
-#### 1. Prepare Kubernetes Secret
+#### 1. Prepare Kubernetes secret
 
 - To get authenticated with AWS cloud you can use the Kubernetes secret with AWS credentials. Here is a sample Kubernetes secret with multiple named profiles.
 
@@ -54,7 +54,7 @@ stringData:
 
 - It is recommended to use the secret name the same as `cloud-secret`, if you want to use a custom name then you would need to update the experiment manifest and you may need to use your own default healthcheck probes.
 
-#### 2. Provide AWS Profile In Experiment
+#### 2. Provide AWS profile in the experiment
 
 - Once you have created the secret and are ready to launch your AWS fault, you need to add a custom env `AWS_PROFILE` in the fault with a value containing the profile name you want to use for that particular fault, for example, if I want to execute the fault with `dev` profile I need to set up the `AWS_PROFILE` env to `dev`. By default, the `default` profile will be used to run the faults.
 
