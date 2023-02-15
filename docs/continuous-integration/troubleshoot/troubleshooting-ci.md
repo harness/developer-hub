@@ -50,3 +50,9 @@ The parsed Test report in the Test tab comes strictly from the JUnit reports pro
 
 Refer to the standard [JUnit format](https://llg.cubic.org/docs/junit/).
 
+
+### Truncated execution logs
+
+Currently we support only upto 5 MB for each CI step. If the log size is exceeding 5 MB, logs will be truncated.
+
+
