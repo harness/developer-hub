@@ -17,7 +17,7 @@ Harness FirstGen release 784xx includes the following feature changes and fixes 
 
 ### What's new
 
-- The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a DTO that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
+- The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a data transfer object (DTO) that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
 
 ## February 6, 2023, version 78321
 ### Delegate version 78306
