@@ -2,25 +2,23 @@
 id: azure-disk-loss
 title: Azure disk loss
 ---
-Azure disk loss detaches the virtual disk from an Azure instance during chaos. 
-- After the specific chaos duration, the virtual disk is re-attached to the instance. 
+Azure disk loss detaches the virtual disk from an Azure instance. 
+- After a specific duration, the virtual disk is re-attached to the instance. 
 - This fault checks the performance of the application (or process) running on the instance.
 
 ![Azure Disk Loss](./static/images/azure-disk-loss.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault determines the resilience of an application to unexpected disk detachment. It determines how quickly the Azure instance recovers from such a failure. 
-</div>
-</details>
+## Use cases
 
-## Prerequisites
-- Kubernetes > 1.16
-- Adequate Azure access to detach and attach a disk. 
+- Azure disk loss determines the resilience of an application to unexpected disk detachment. 
+- It determines how quickly the Azure instance recovers from such a failure. 
+
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- Adequate Azure access is required to detach and attach a disk.
+- Azure disk should be connected to an instance.
 - Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Create a Kubernetes secret that contains the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -42,17 +40,11 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-
-- If you change the secret key name (from `azure.auth`), ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
-
-## Default validations
-Azure disk should be connected to an instance.
-
+- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+
+   <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -62,15 +54,15 @@ Azure disk should be connected to an instance.
         <tr>
             <td> VIRTUAL_DISK_NAMES </td>
             <td> Name of the virtual disks to target.</td>
-            <td> Provide comma-separated names for multiple disks. </td>
+            <td> Provide comma-separated names for multiple disks. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss#detach-virtual-disks-by-name"> detach virtual disks by name.</a></td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
-            <td> The name of the resource group for the target disk(s). </td>
-            <td> For example, <code>TeamDevops</code>. </td>
+            <td> Name of the resource group for the target disk(s). </td>
+            <td> For example, <code>TeamDevops</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss#detach-virtual-disks-by-name"> resource group field in the YAML file. </a></td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -80,40 +72,33 @@ Azure disk should be connected to an instance.
         <tr>
             <td> SCALE_SET </td>
             <td> Checks if the disk is connected to scale set instance.</td>
-            <td> Defaults to disable. Supports enable as well. </td>
+            <td> Defaults to disable. Supports enable as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss#detach-virtual-disks-attached-to-scale-set-instances-by-name"> scale set instances.</a></td>
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-            <td> Defaults to 30s </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance poweroffs (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple target pods.</td>
-            <td> Defaults to parallel. Supports serial sequence as well. </td>
+            <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. </td>
+            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common fault tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Detach virtual disks by name
 
-It contains a comma-separated list of disk names that are subject to disk loss. You can tune it using the `VIRTUAL_DISK_NAMES` environment variable.
+It specifies a comma-separated list of disk names that are subject to disk loss. Tune it by using the `VIRTUAL_DISK_NAMES` environment variable.
 
 Use the following example to tune it:
 
@@ -142,7 +127,7 @@ spec:
 
 ### Detach virtual disks attached to scale set instances by name
 
-It contains a comma-separated list of disk names attached to Scale Set instances subject to disk loss. You can tune it using the `VIRTUAL_DISK_NAMES` and `SCALE_SET` environment variables, respectively.
+It specifies a comma-separated list of disk names attached to Scale Set instances subject to disk loss. Tune it by using the `VIRTUAL_DISK_NAMES` and `SCALE_SET` environment variables, respectively.
 
 Use the following example to tune it:
 
