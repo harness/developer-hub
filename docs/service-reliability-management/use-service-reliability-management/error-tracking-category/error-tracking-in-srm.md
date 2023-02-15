@@ -30,7 +30,7 @@ Harness Error Tracking consists of an Error Tracking that Agent runs on a Java V
 This quickstart describes how to set up a monitored service in Harness and install an Error Tracking Agent on a JVM to identify and troubleshoot errors and exceptions in your code.
 
 
-## Add a Monitored Service
+## Add a monitored service
 
 A Harness Monitored Service is a Service and Environment combination. Harness monitors the following via a Monitored Service:
 
@@ -150,7 +150,7 @@ The Error Tracking dashboard displays a comprehensive list of all the monitored 
 
 By default, the dashboard displays the data for the last 24 hours time period. You can customize the dashboard using following filters:
 
-* **Time period**: Choose a period to for which you want to see the data. The default option is **Last 24 hours**.
+* **Time period**: Choose a period for which you want to see the data. The default option is **Last 24 hours**.
 * **Services**: Choose a service to see its data. The default option is **All**.
 * **Environment**: Choose an environment to see its data. The default option is **All**.
 * **Deployment** version: Choose a deployment version in order to view the data associated with the Monitored Services of that specific version. The default option is **All**.
@@ -181,15 +181,15 @@ The following is a list of columns included in the Event List:
   * HTTP Error - HTTP communication errors
   * Custom Errors - Events that occur in the custom SDK  
 
-* **Description:** Name of the event. In case of an exception this is the exception class name. For example, AmazonException, NullPointerException, and so on. You can see the complete exception message of an event by hovering over the **Description** field.
+* **Description:** Name of the event. In case of an exception,F this is the exception class name. For example, AmazonException, NullPointerException, and so on. You can see the complete exception message of an event by hovering over the **Description** field.
 
-* **Location**: Service class and method in which the event occurred. You can also view the actual line of code in which the error occurred even if the error was caused by a 3rd-party or core JDK frameworks. This can help quickly identify the root cause of the error. Event location can also be filtered according to packages.
+* **Location**: Service class and method in which the event occurred. You can also view the actual line of code in which the error occurred even if the error was caused by a third party or core JDK framework. This can help quickly identify the root cause of the error. Event location can also be filtered according to packages.
 
 * **Count**: Number of times the event has occurred in the selected time period. This value indicates the severity of the event.
 
 * **Error Rate**: Percentage of time the event occurs in comparison to all the calls made to the event's location. This is calculated by dividing the number of occurrences by the total number of calls to that location.
 
-* **First Seen**: Time at which the event was first detected in the environment.
+* **First Seen**: Time when the event was first detected in the environment.
 
 * **Last Seen**: Last time this event was detected in the environment. This value indicates whether this event is still impacting your application.
 
