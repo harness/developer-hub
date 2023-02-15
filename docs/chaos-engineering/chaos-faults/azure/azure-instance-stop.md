@@ -2,7 +2,7 @@
 id: azure-instance-stop
 title: Azure instance stop
 ---
-Azure instance stop powers off from an Azure instance during a specific duration. It checks the performance of the application or process running on the instance.
+Azure instance stop powers off from an Azure instance for a specific duration. It checks the performance of the application or process running on the instance.
 
 ![Azure Instance Stop](./static/images/azure-instance-stop.png)
 
