@@ -55,15 +55,28 @@ To navigate to your desired module, perform the following steps:
    
    ![](./static/select-modules-leftnav.png)
 
-2. Click the desired module from the list. 
-   
-   ![](./static/select-modules-list.png)
+   The modules appear in the following categories: 
+   - Build & Test
+     - Continuous Integration
+     - Chaos Engineering
+     - Security Tests
+     - Infra as Code Management
+   - Deploy Changes
+     - Continuous Delivery & GitOps
+     - Feature Flags
+   - Manage Impact
+     - Cloud Cost Management
+     - Service Reliability Management
 
-   You can also configure your left navigation. To do this, select **Customize your navigation**.
+2. Select **Customize your navigation** to configure your left navigation.
 
    ![](./static/configure-leftnav.png)
 
-   Click the modules you want to see in the left navigation. Harness automatically saves your selection, and you can see the selected modules in your left navigation.
+3. To re-order the modules and set the priority, drag and drop the modules. 
+
+4. Click the modules you want to see in the left navigation. Harness automatically saves your selection, and you can see the selected modules in your left navigation.
+   
+   ![](./static/select-modules-list.png)
 
 ## Account Settings
 
