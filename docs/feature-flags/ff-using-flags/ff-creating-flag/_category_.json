@@ -1,0 +1,14 @@
+{
+    "label": "Create a Feature Flag",
+    "position": 10,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Create a Feature Flag"
+    },
+    "customProps": {
+        "helpdocs_category_id": "gjyyhm9f9h"
+    }
+}

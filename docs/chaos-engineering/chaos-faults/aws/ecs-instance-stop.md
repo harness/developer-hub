@@ -1,37 +1,28 @@
 ---
 id: ecs-instance-stop
-title: ECS Instance Stop
+title: ECS instance stop
 ---
 
-## Introduction
+ECS instance stop induces stress on an AWS ECS cluster. It derives the instance under chaos from the ECS cluster.
+- It causes EC2 instance to stop and get deleted from the ECS cluster for a specific duration.
 
-- It inject chaos to stop the ECS instance based on id and checks the app availability.
-- The instances may get into terminated state as managed by an autoscaler and a new instance will come up.
-
-:::tip Fault execution flow chart
 ![ECS Instance Stop](./static/images/ecs-instance-stop.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-EC2 instance chaos stop is another very common and frequent scenario we find with ECS clusters that can result in breaking of agent that manages task container on ECS cluster and impact its delivery. Such scenarios that can still occur despite whatever availability aids docker provides.
-
-Killing the EC2 instance container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos fault helps to build the immunity on the application undergoing any such scenarios.
+EC2 instance stop breaks the agent that manages the task container on ECS cluster, thereby impacting its delivery. Killing the EC2 instance disrupts the performance of the task container.
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
-
-- Ensure that you have sufficient AWS access to stop and start an EC2 instance.
-
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes >= 1.17
+- Adequate AWS access to stop and start an EC2 instance.
+- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -47,15 +38,16 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
-:::
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-## Permission Requirement
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-- Here is an example AWS policy to execute this fault.
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -93,21 +85,17 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
-:::info
+The ECS container instance should be in a healthy state.
 
-- ECS container instance should be in healthy state.
-
-:::
-
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
         <th> Variables </th>
@@ -117,15 +105,15 @@ stringData:
         <tr> 
         <td> CLUSTER_NAME </td>
         <td> Name of the target ECS cluster</td>
-        <td> Eg. cluster-1 </td>
+        <td> For example, cluster-1 </td>
         </tr>
         <tr>
         <td> REGION </td>
         <td> The region name of the target ECS cluster</td>
-        <td> Eg. us-east-1 </td>
+        <td> For example, us-east-1 </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -134,8 +122,8 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
@@ -155,27 +143,27 @@ stringData:
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### ECS Instance Stop
 
 It stops the instance of an ECS cluster for a certain chaos duration. We can provide the EC2 instance ID using `EC2_INSTANCE_ID` ENVs as well. If not provided it will select randomly.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-instance-stop/instance-stop.yaml yaml)
 ```yaml

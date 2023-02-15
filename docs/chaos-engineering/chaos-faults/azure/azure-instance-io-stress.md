@@ -1,41 +1,31 @@
 ---
 id: azure-instance-io-stress
-title: Azure Instance IO Stress
+title: Azure instance IO stress
 ---
 
-## Introduction
+Azure instance I/O stress disrupts the state of infra resources. 
+- This fault induces stress on the Azure instance using the Azure `Run` command. The Azure `Run` command is executed using the in-built bash scripts within the fault.
+- It causes I/O stress on the Azure Instance using the bash script for a specific duration.
 
-- Azure Instance IO Stress contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on Azure Instance using Azure Run Command, this is carried out by using bash scripts which are in-built in the fault for the given chaos scenario.
-- It causes IO Stress chaos on Azure Instance using an bash script for a certain chaos duration.
-
-:::tip Fault execution flow chart
 ![Azure Instances IO Stress](./static/images/azure-instance-io-stress.png)
-:::
 
-## Uses
+## Use cases
+Azure instance I/O stress:
+- Determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
+- Determines how Azure scales the resources to maintain the application under stress. 
+- Simulates slower disk operations by the application.
+- Simulates noisy neighbour problems by hogging the disk bandwidth. 
+- Verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
+- Checks whether or not the application functions under high disk latency conditions.
+- Checks whether or not the application functions under high I/O traffic, and large I/O blocks.
+- Checks if other services monopolize the I/O disks during stress. 
 
-### Uses of the fault
-
-:::info
-
-- Filesystem read and write is another very common and frequent scenario we find with processes/applications that can result in the impact on its delivery. These problems are generally referred to as "Noisy Neighbour" problems.
-- Injecting a rogue process into a target Azure instance, we starve the main processes/applications (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to degradation in performance of processes/applications present on the instance. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
-
-:::
-
-## Prerequisites
-
-:::info
-
-### Verify the prerequisites
-
-- Ensure that Kubernetes Version >= 1.17
-
-**Azure Access Requirement:**
-
-- Ensure that Azure Run Command agent is installed and running in the target Azure instance.
-- We will use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the fault. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+:::note
+- Kubernetes >= 1.17 is required to execute this fault.
+- Azure Run Command agent is installed and running in the target Azure instance.
+- Azure instance should be in a healthy state.
+- Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. to generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -58,26 +48,13 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
-
-:::
-
-## Default Validations
-
-:::info
-
-- Azure instance should be in healthy state.
+- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
 :::
 
-## Fault Tunables
+## Fault tunables
 
-<details>
-<summary>Check the Fault Tunables</summary>
-
-<h2>Mandatory Fields</h2>
-
+<h3>Mandatory fields</h3>
 <table>
     <tr>
         <th> Variables </th>
@@ -86,18 +63,17 @@ stringData:
     </tr>
      <tr>
         <td> AZURE_INSTANCE_NAMES </td>
-        <td> Names of the target Azure instances </td>
-        <td> Multiple values can be provided as comma-separated string. Eg: instance-1,instance-2 </td>
+        <td> Names of the target Azure instances. </td>
+        <td> Multiple values can be provided as a comma-separated string. For example, <code>instance-1,instance-2</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> stop instance by name. </a></td>
     </tr>
     <tr>
         <td> RESOURCE_GROUP </td>
-        <td> The Azure Resource Group name where the instances has been created </td>
-        <td> All the instances must be from the same resource group </td>
+        <td> The Azure Resource Group name where the instances will be created. </td>
+        <td> All the instances must be from the same resource group. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#multiple-workers"> resource group field in the YAML file. </a></td>
     </tr>
 </table>
 
-<h2>Optional Fields</h2>
-
+<h3>Optional fields</h3>
 <table>
     <tr>
         <th> Variables </th>
@@ -106,74 +82,67 @@ stringData:
     </tr>
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos injection (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
     </tr>
     <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive chaos injection</td>
-        <td> Defaults to 60s </td>
+        <td> Time interval between two successive container kills (in seconds).</td>
+        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
     </tr>
     <tr>
         <td> AZURE_AUTH_LOCATION </td>
-        <td> Provide the name of the Azure secret credentials files</td>
-        <td> Defaults to <code>azure.auth</code> </td>
+        <td> Name of the Azure secret credentials files.</td>
+        <td> Defaults to <code>azure.auth</code>. </td>
     </tr>
     <tr>
         <td> SCALE_SET </td>
-        <td> Whether the Instance are part of ScaleSet or not. It can be either disable or enable</td>
-        <td> Defaults to <code>disable</code> </td>
+        <td> Check if the instance is a part of Scale Set.</td>
+        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
     </tr>
     <tr>
         <td> INSTALL_DEPENDENCIES </td>
-        <td> Select to install dependencies used to run the io chaos. It can be either True or False</td>
-        <td> Defaults to True </td>
+        <td> Install dependencies to run I/O stress. </td>
+        <td> Defaults to <code>true</code>. Also supports <code>false</code>. </td>
     </tr>
     <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as percentage of free space on the file system </td>
-        <td> Default to 0%, which will result in 1 GB Utilization </td>
+        <td> Specify the size as a percentage of free space on the file system.</td>
+        <td> Defaults to 0 %, which results in 1 GB utilization. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#file-system-utilization-in-percentage"> file system utilization in percentage. </a></td>
     </tr>
     <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td> Default to 0GB, which will result in 1 GB Utilization </td>
+        <td> Specify the size of the files used per worker (in GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are specified, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes precedence. </td>
+        <td> Defaults to 0 GB, which results in 1 GB utilization. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#file-system-utilization-in-gigabytes"> file system utilization in gigabytes. </a></td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> It is the number of IO workers involved in IO disk stress </td>
-        <td> Default to 4 </td>
+        <td> Number of I/O workers involved in I/O disk stress. </td>
+        <td> Default to 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#multiple-workers"> multiple workers. </a></td>
     </tr>
     <tr>
         <td> VOLUME_MOUNT_PATH </td>
-        <td> Fill the given volume mount path</td>
-        <td> Defaults to the user HOME directory </td>
+        <td> Location that points to the volume mount path used in I/O stress.</td>
+        <td> Defaults to the user HOME directory. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress#volume-mount-path"> volume mount path. </a></td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods.</td>
+        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg: 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
     </tr>
 </table>
 
-</details>
 
-## Fault Examples
+### File system utilization in gigabytes
 
-### Common Fault Tunables
+It specifies the size of file utilised by the Azure instance (in gigabytes). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable.
 
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-
-### FILESYSTEM UTILIZATION IN MEGABYTES
-
-It defines the filesytem value to be utilised in megabytes on the Azure instance. It can be tuned via `FILESYSTEM_UTILIZATION_BYTES` ENV.
-
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-io-stress/filesystem-bytes.yaml yaml)
 ```yaml
@@ -200,11 +169,10 @@ spec:
           value: 'rg-azure'
 ```
 
-### FILESYSTEM UTILIZATION IN PERCENTAGE
+### File system utilization in percentage
+It specifies the size of files utilised on the Azure instance (in percentage). Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
 
-It defines the filesytem percentage to be utilised on the Azure instance. It can be tuned via `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV.
-
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-io-stress/filesystem-percentage.yaml yaml)
 ```yaml
@@ -231,11 +199,11 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE WORKERS
+### Multiple workers
 
-It defines the CPU threads to be run to spike the filesystem utilisation, this will increase the growth of filesystem consumption. It can be tuned via `NUMBER_OF_WORKERS` ENV.
+It specifies the CPU threads that will be run to spike the file system utilisation. As a consequence, it increases file system consumption. Tune it by using the `NUMBER_OF_WORKERS` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-io-stress/multiple-workers.yaml yaml)
 ```yaml
@@ -262,11 +230,11 @@ spec:
           value: 'rg-azure'
 ```
 
-### VOLUME MOUNT PATH
+### Volume mount path
 
-It defines volume mount path to target attached to the Azure instance. It can be tuned via `VOLUME_MOUNT_PATH` ENV.
+It specifies the location that points to the volume mount path used in I/O stress with respect to the Azure instance. Tune it by using the `VOLUME_MOUNT_PATH` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-io-stress/volume-path.yaml yaml)
 ```yaml
@@ -293,11 +261,11 @@ spec:
           value: 'rg-azure'
 ```
 
-### MULTIPLE Azure INSTANCES
+### Multiple Azure instances
 
-Multiple Azure instances can be targeted in one chaos run. It can be tuned via `AZURE_INSTANCE_NAMES` ENV.
+It specifies comma-separated Azure instance names that are subject to chaos in a single run. Tune it by using the `AZURE_INSTANCE_NAMES` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-instance-io-stress/multiple-instances.yaml yaml)
 ```yaml

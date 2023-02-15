@@ -1,16 +1,14 @@
 ---
 title: Build and Push an Image to Docker Registry Step Settings
-description: This topic provides settings you will need to build and push an Image to Docker Registry step, which creates a Docker image from a Dockerfile and pushes it to a Docker registry. You may also use this…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+description: This topic describes settings for the Build and Push an image to Docker registry step.
+sidebar_position: 20
 helpdocs_topic_id: q6fr5bj63w
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings you will need to build and push an Image to Docker Registry step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry.
+This topic describes settings for the **Build and Push an image to Docker registry** step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry.
 
 You may also use this step to push to an Azure Container Registry (ACR)This step is the equivalent to the [docker build command](https://docs.docker.com/engine/reference/commandline/build/).
 
@@ -48,10 +46,10 @@ The name of the Dockerfile. If you don't provide a name, Harness assumes that th
 
 #### Context
 
-Context represents a directory containing a Dockerfile which kaniko will use to build your image. For example, a`COPY` command in your Dockerfile should refer to a file in the build context.
+Context represents a directory containing a Dockerfile which kaniko will use to build your image. For example, a`COPY` command in your Dockerfile should refer to a file in the build context.
 
-Kaniko requires root access to build the docker image. If you have not already enabled root access, you will receive the following error:  
-  
+Kaniko requires root access to build the docker image. If you have not already enabled root access, you will receive the following error:
+
 `failed to create docker config file: open/kaniko/ .docker/config.json: permission denied`
 
 #### Labels
@@ -80,7 +78,7 @@ You can also specify the same Docker repo for multiple Build and Push steps, ena
 
 Remote Docker Layer Caching can dramatically improve build time by sharing layers across Pipelines, Stages, and steps.
 
-The remote cache repository needs to be created in the same host and project as the build image. The repository will be automatically created if it doesn’t exist.
+The remote cache repository needs to be created in the same host and project as the build image. The repository will be automatically created if it doesn't exist.
 
 Enter the name of the remote cache repo where the cached image layers will be stored.
 
@@ -88,7 +86,7 @@ The Remote Cache Repository must be in the same account and organization as the 
 
 #### Run as User
 
-Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 #### Set container resources
 
@@ -96,11 +94,11 @@ Maximum resources limit values for the resources used by the container at runtim
 
 ##### Limit Memory
 
-Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
 
 ##### Limit CPU
 
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed: you can specify one hundred millicpu as `0.1` or `100m`. See [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed: you can specify one hundred millicpu as `0.1` or `100m`. See [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ##### Timeout
 

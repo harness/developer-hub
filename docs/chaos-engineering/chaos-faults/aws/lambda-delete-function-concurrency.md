@@ -2,13 +2,12 @@
 id: lambda-delete-function-concurrency
 title: Lambda delete function concurrency
 ---
-Lambda delete function concurrency is an AWS fault that:
-- Deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
+Lambda delete function concurrency is an AWS fault that deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
 - Examines the performance of the running Lambda application, if the Lambda function lacks sufficient concurrency.
 
-:::tip Fault execution flow chart
+
 ![Lambda Delete Function Concurrency](./static/images/lambda-delete-function-concurrency.png)
-:::
+
 
 ## Usage
 
@@ -16,13 +15,10 @@ Lambda delete function concurrency is an AWS fault that:
 <summary>View fault usage</summary>
 <div>
 When there is no unreserved concurrency left to run the Lambda function, this chaos fault can be used to check how your application behaves.
-
 </div>
 </details>
 
 ## Prerequisites
-
-:::info
 
 - Kubernetes >= 1.17
 - Reserved concurrency set on the target Lambda function.
@@ -41,13 +37,13 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the `experiment.yaml` with the same name.
-:::
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
 ## Permissions required
 
-- Here is an example AWS policy to execute the Lambda delete function concurrency fault.
+Here is an example AWS policy to execute the fault.
 
 <details>
 <summary>View policy for this fault</summary>
@@ -72,17 +68,13 @@ stringData:
 ```
 </details>
 
-- Refer to the [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
-## Default validation
+## Default validations
 
-:::info
+The Lambda function should be up and running.
 
-- The Lambda function should be up and running.
-
-:::
-
-## Experiment tunables
+## Fault tunables
 
 <details>
     <summary>Fault tunables</summary>
@@ -136,6 +128,6 @@ stringData:
 
 ## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.

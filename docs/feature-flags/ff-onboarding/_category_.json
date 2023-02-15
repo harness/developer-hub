@@ -1,0 +1,15 @@
+{
+    "label": "Get Started with Feature Flags",
+    "position": 10,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Get Started with Feature Flags"
+    },
+    "customProps": {
+         "helpdocs_category_id": "iqgyied1c0",
+        "helpdocs_parent_category_id": "ro04d5mcj1"
+    }
+}

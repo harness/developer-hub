@@ -1,5 +1,5 @@
 ---
-title: Use AutoStopping Rules Dashboard
+title: Use AutoStopping Rules Summary Page
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. This topic describes how to use AutoStopping Dashboard.
 # sidebar_position: 2
 helpdocs_topic_id: ehmi6kiynl

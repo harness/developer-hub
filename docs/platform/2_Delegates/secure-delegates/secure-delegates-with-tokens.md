@@ -89,6 +89,7 @@ kind: Secret
 type: Opaque
 data:
   DELEGATE_TOKEN: "[enter new token here]"
+
 ...
 ```
 Run `kubectl apply -f harness-delegate.yaml`
@@ -112,7 +113,7 @@ services:
         limits:  
           cpus: "0.5"  
           memory: 2048M  
-    image: harness/delegate:latest  
+    image: harness/delegate:23.01.78102  
     environment:  
       - ACCOUNT_ID=12345678910  
       - ACCOUNT_SECRET=[enter new token here]  

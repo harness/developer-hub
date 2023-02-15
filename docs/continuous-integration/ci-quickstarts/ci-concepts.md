@@ -84,7 +84,7 @@ Test Intelligence (TI) reduces test time significantly by running only the tests
 
 <docimage path={require('./static/ci-concepts-501.png')} />
 
-Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](../../continuous-delivery/cd-deployments-category/deployment-concepts.md), [Cloud Cost Management](/docs/category/set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/1-ff-onboarding/1-cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.
+Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](../../continuous-delivery/cd-deployments-category/deployment-concepts.md), [Cloud Cost Management](/docs/category/set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/ff-onboarding/cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.
 
 #### Containerized Steps
 

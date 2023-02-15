@@ -28,11 +28,11 @@ export default function CertificationsCD() {
               certifications
             </Link>
           </div>
-          <h1>Continuous Delivery Certification</h1>
+          <h1>Continuous Delivery & GitOps Certifications</h1>
           <div>
-            Learn intelligent software delivery skills at your own pace and in
-            once place. Step-by-step tutorials, videos, and reference docs to
-            help you create and deliver software.
+              Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
+              Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
+              advanced verification, and intelligent rollback
           </div>
         </div>
         <div className={styles.right}>
@@ -45,31 +45,31 @@ export default function CertificationsCD() {
 
       {/* Cert Content */}
       <div className={styles.certDesc}>
-        <h2>Which Continuous Delivery Certification is right for you?</h2>
+        <h2>Which CD & GitOps Certification is right for you?</h2>
         <div className={clsx(styles.certCard)}>
           <div className={styles.certCardContainer}>
             <h3>Developer</h3>
             <div className={styles.descContainer}>
               Validate your broad knowledge of cloud concepts and the products,
-              services, tools, features, benefits, and use cases of CI.
+              services, tools, features, benefits, and use cases of CD.
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Kubernetes Deployments
                 </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Policy as Code
                 </li>
               </ul>
             </div>
             <div className={styles.btnContainer}>
-              <Link href="#">
+              <Link href="/certifications/continuous-delivery/cd-developer-cert#cd-developer-study-guide">
                 <button className={styles.moreDetails}>
                   Go to Study Guide
                 </button>
               </Link>
-              <Link href="#">
+              <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
                   <i className="fa-regular fa-arrow-right"></i>
@@ -81,20 +81,16 @@ export default function CertificationsCD() {
           <div className={styles.certCardContainer}>
             <h3>Administrator</h3>
             <div className={styles.descContainer}>
-              Assesses the fundamental skills to deploy and maintain CI
-              projects.
+              Assesses the fundamental skills to deploy and maintain CD
+              projects and the overall Harness Platform. 
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Coming Soon
                 </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
-                </li>
-                <li className={styles.courseItem}>
-                  <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Administer at Scale
                 </li>
               </ul>
             </div>
@@ -104,7 +100,7 @@ export default function CertificationsCD() {
                   Go to Study Guide
                 </button>
               </Link>
-              <Link href="#">
+              <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
                   <i className="fa-regular fa-arrow-right"></i>
@@ -116,27 +112,15 @@ export default function CertificationsCD() {
             <h3>Architect</h3>
             <div className={styles.descContainer}>
               Assess key technical job functions and advanced skills in design,
-              implementation and management of CI.
+              implementation and management of CD.
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  Coming Soon
                 </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
-                </li>
-                <li className={styles.courseItem}>
-                  <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
-                </li>
-                <li className={styles.courseItem}>
-                  <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
-                </li>
-                <li className={styles.courseItem}>
-                  <i className="fa-solid fa-circle-check"></i>
-                  Deploy and implement
+                  CD Architecture
                 </li>
               </ul>
             </div>
@@ -146,7 +130,7 @@ export default function CertificationsCD() {
                   Go to Study Guide
                 </button>
               </Link>
-              <Link href="#">
+              <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
                   <i className="fa-regular fa-arrow-right"></i>
@@ -157,9 +141,9 @@ export default function CertificationsCD() {
         </div>
       </div>
 
-      {/* Developer Study Guide */}
+      {/* Developer Study Guide 
       <div className={styles.studyGuide}>
-        <h2>Developer Study Guide</h2>
+        <h2 id="cd-developer-study-guide">Developer Study Guide</h2>
         <div className={styles.studyGuideCard}>
           <div className={styles.info}>
             <i className="fa-solid fa-circle-info"></i>
@@ -167,28 +151,26 @@ export default function CertificationsCD() {
           </div>
           <div className={styles.innerCard}>
             <div className={styles.left}>
-              <h2>Continuous Delivery & GitOps Certifications</h2>
+              <h2>Continuous Delivery & GitOps - Developer (BETA COMING SOON)</h2>
               <img
                 src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
                 alt="Harness Certified Expert - Developer - CD"
                 className={styles.badge}
               />
               <span className={styles.productVersion}>
-                <strong>Product version: </strong> CI Drone 1.0
+                <strong>Product version: </strong> Harness CD & GitOps Free/Team Plans
               </span>
             </div>
             <div className={styles.right}>
               <h3>Review Study Guide</h3>
               <div className={styles.desc}>
-                The CI Overview provides a bird's-eye view of all your Builds —
-                successful, failed, aborted, and expired — and the percentage of
-                successful builds for individual codebases. You can easily see
-                where your builds have failed and drill down into specific
-                builds to troubleshoot and analyze the root causes.
+                Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
+                Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
+                advanced verification, and intelligent rollback
               </div>
               <CertificationReviewGuide />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="/tutorials/deploy-services">
                   <button className={styles.startLearning}>
                     <span>Start learning</span>
                     <i className="fa-regular fa-arrow-right"></i>
@@ -200,17 +182,17 @@ export default function CertificationsCD() {
         </div>
       </div>
 
-      {/* Developer Exam Details */}
+      {/* Developer Exam Details 
       <div className={styles.examDetails}>
         <h2>Developer Exam Details</h2>
         <div className={styles.examDetailsCard}>
           <CertificationExamDetails />
 
           <div className={styles.btnContainer}>
-            <Link href="#">
+            <Link href="https://training.harness.io/page/continuous-delivery-developer">
               <button className={styles.moreDetails}>Register for Exam</button>
             </Link>
-            <Link href="#">
+            <Link href="/tutorials/deploy-services">
               <button className={styles.startLearning}>
                 <span>Start learning</span>
                 <i className="fa-regular fa-arrow-right"></i>
@@ -218,7 +200,7 @@ export default function CertificationsCD() {
             </Link>
           </div>
         </div>
-      </div>
+      </div>*/}
     </div>
   );
 }

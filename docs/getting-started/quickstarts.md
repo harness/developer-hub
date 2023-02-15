@@ -38,8 +38,8 @@ Select the tutorial for the platform you want to use to deploy.
 
 The following quickstart guides are available for Feature Flags:
 
-* [Getting Started with Feature Flags](../feature-flags/1-ff-onboarding/2-ff-getting-started/2-getting-started-with-feature-flags.md) provides a high-level summary of Feature Flag (FF), with video and Quick Guide walkthroughs.
-* [Java Quickstart](../feature-flags/1-ff-onboarding/2-ff-getting-started/3-java-quickstart.md) helps you to create a feature flag and use the feature flag SDK in your Java application.
+* [Getting Started with Feature Flags](../feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md) provides a high-level summary of Feature Flag (FF), with video and Quick Guide walkthroughs.
+* [Java Quickstart](../feature-flags/ff-onboarding/ff-getting-started/java-quickstart.md) helps you to create a feature flag and use the feature flag SDK in your Java application.
 
 ### Cloud Cost Management (CCM)
 

@@ -285,6 +285,12 @@
 	 font-size: 18px;
 	 line-height: 28px;
 }
+
+.CoveoResult .CoveoPrintableUri a.CoveoResultLink {
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+}
  .CoveoResult a.CoveoResultLink:hover, .CoveoResultLink, a.CoveoResultLink:hover {
 	 color: #0278d5;
 }
@@ -641,68 +647,23 @@
 }
 
 @media screen and (max-width: 996px) {
-    #searchBoxCoveo {
-        width: 300px;
-    }
-	#searchResultsCoveo .coveo-search-results {
-		left: 15px;
-		width: calc(100vw - 30px);
-	}
-	#coveo-search {
-		min-width: unset;
-	}
-}
-
-@media screen and (max-width: 834px) {
-	 .coveo-result-frame .coveo-result-row, .CoveoResult.coveo-result-frame .coveo-result-row {
-		 display: block;
-	}
-}
-
-@media screen and (max-width: 678px) {
-    #searchBoxCoveo {
-        width: 300px;
+	.navbar #searchBoxCoveo {
+        // width: 300px;
 		display: none;
     }
-}
-
-/*
-@media screen and (max-width: 1058px) {
-    #searchBoxCoveo {
-
-		width: calc(100vw - 880px);
-        .CoveoSearchButton {
-            display: none;
-        }
-        .magic-box-input > input {
-            font-size: 14px;
-        }
+	.navbar .navbar-sidebar #searchBoxCoveo {
+        width: 100%;
+		display: block;
     }
-}
 
-@media screen and (max-width: 996px) {
-    #searchBoxCoveo {
-        width: 300px;
-    }
 	#searchResultsCoveo .coveo-search-results {
-		left: 15px;
-		width: calc(100vw - 30px);
+		top: 50px;
+		margin-right: 0;
+		z-index: 1;
 	}
-	#coveo-search {
+	#searchResultsCoveo #coveo-search {
 		min-width: unset;
 	}
+	
 }
 
-@media screen and (max-width: 834px) {
-	 .coveo-result-frame .coveo-result-row, .CoveoResult.coveo-result-frame .coveo-result-row {
-		 display: block;
-	}
-}
-
-@media screen and (max-width: 678px) {
-    #searchBoxCoveo {
-        width: 300px;
-		display: none;
-    }
-}
-*/

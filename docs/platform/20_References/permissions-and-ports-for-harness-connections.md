@@ -1,6 +1,6 @@
 ---
 title: Permissions and Ports for Harness Connections
-description: The permissions and ports listed in this topic are for all of the integrations Harness supports across its FirstGen and CurrentGen product suites. For more information, see Harness FirstGen vs Harnes…
+description: Permissions and ports for all of the integrations.
 # sidebar_position: 2
 helpdocs_topic_id: ga1155j91x
 helpdocs_category_id: fb16ljb8lu
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The permissions and ports listed in this topic are for all of the integrations Harness supports across its FirstGen and CurrentGen product suites. For more information, see [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).The following table lists the permissions and ports needed for the Harness Delegate to access Connectors such as artifact servers, cloud providers, verification, and security providers. You configure these settings in the Harness Manager.
+The permissions and ports listed in this topic are for all of the integrations Harness supports across its FirstGen and NextGen product suites. For more information, see [Harness FirstGen vs Harness NextGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md).The following table lists the permissions and ports needed for the Harness Delegate to access Connectors such as artifact servers, cloud providers, verification, and security providers. You configure these settings in the Harness Manager.
 
 * **Artifact servers:** The Delegate pulls artifacts and metadata from artifact servers using the account and ports required by the artifact server.
 * **Deployments:** Most Harness deployments to Virtual Machines (for example, AWS, GCP, Azure, Datacenter) are performed using SSH over port 22. The VPC firewall setting might also require additional open ports for administration, such as HTTP 443.
@@ -17,7 +17,7 @@ The permissions and ports listed in this topic are for all of the integrations H
 
 In general, if you are already connecting to your artifact servers, cloud, verification, and security providers from within your network or VPC, and you install the Harness Delegate inside that network or VPC, there is little network or VPC configuration needed. You simply need to specify accounts and ports when configuring Harness to use the providers.
 
-|  |  |  |  |
+
 | --- | --- | --- | --- |
 | **Connections** | **Permissions and Harness Docs** | **Ports for Delegate Connections to Services** | **Provider References** |
 | Active Directory LDAP | User account in the Active Directory. | HTTPS: 443.LDAP without SSL: 389.Secure LDAP (LDAPS): 636. |  [Users and Groups](https://docs.microsoft.com/en-us/windows/desktop/secauthz/users-and-groups) |

@@ -15,6 +15,6 @@ spec:
         # Provide the action for a rule
         - name: ACTION
           value: 'deny'
-         # time duration for the chaos execution
+         # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'

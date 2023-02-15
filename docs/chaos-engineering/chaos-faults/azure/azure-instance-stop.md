@@ -1,32 +1,22 @@
 ---
 id: azure-instance-stop
-title: Azure Instance Stop
+title: Azure instance stop
 ---
+Azure instance stop powers off from an Azure instance for a specific duration. It checks the performance of the application or process running on the instance.
 
-## Introduction
-- It results in PowerOff of an Azure instance before bringing it back to running state after the specified chaos duration.
-- It checks the performance of the application/process running on the instance.
-
-:::tip Fault execution flow chart
 ![Azure Instance Stop](./static/images/azure-instance-stop.png)
-:::
 
-## Uses
+## Use cases
+Azure instance stop:
+- Determines the resilience of an application to unexpected power off of the Azure instances. 
+- Determines how the application handles the requests and how quickly it recovers from such failures.
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-Coming soon.
-</div>
-</details>
-
-## Prerequisites
-
-:::info
-- Kubernetes > 1.16.
-- Azure access to stop and start the an instance. 
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- Appropriate Azure access to start and stop an instance.
+- Azure instance should be in a healthy state.
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK in the experiment. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Kubernetes secret that has the auth file created in the earlier step in `CHAOS_NAMESPACE`. A secret file looks like:
+- Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -49,19 +39,12 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
+- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 :::
 
-## Default Validations
+## Fault tunables
 
-:::info
-- The Azure instance should be in healthy state.
-:::
-
-## Fault Tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -69,17 +52,17 @@ stringData:
         <th> Notes </th>
       </tr>
       <tr>
-        <td> AZURE_INSTANCE_NAME </td>
-        <td> Instance name of the target Azure instance</td>
-        <td> For AKS nodes, the instance name is from the scale set section in Azure and not the node name from AKS node pool </td>
+        <td> AZURE_INSTANCE_NAMES </td>
+        <td> Name of the target Azure instance. </td>
+        <td> For AKS nodes, the instance name is from the Scale Set in Azure and not the node name from AKS node pool. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> stop instance by name. </a></td>
       </tr>
       <tr>
         <td> RESOURCE_GROUP </td>
-        <td> The resource group of the target instance</td>
-        <td> </td>
+        <td> The name of the resource group for the target instance.</td>
+        <td> For example, <code>TeamDevops</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-instances-by-name"> resource group field in the YAML file. </a></td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -89,40 +72,33 @@ stringData:
       <tr>
         <td> SCALE_SET </td>
         <td> Whether instance is part of Scale set</td>
-        <td> Accepts "enable"/"disable". Default is "disable"</td>
+        <td> Accepts "enable"/"disable". Default is "disable" For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance power off.</td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance power offs (in seconds).</td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target instances. </td>
+        <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
-</details>
 
-## Fault Examples
+### Stop instances by name
 
-### Common Fault Tunables
-
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-
-### Stop Instances By Name
-
-It has comma separated list of instance names subject to instance stop chaos. You can tune it using the `AZURE_INSTANCE_NAME` environment variable.
+It specifies a comma-separated list of instance names subject to chaos. Tune it by using the `AZURE_INSTANCE_NAME` environment variable.
 
 You can use the following example to tune it:
 
@@ -149,9 +125,9 @@ spec:
           value: 'rg-azure'
 ```
 
-### Stop Scale Set Instances
+### Stop scale set instances
 
-It has comma separated list of instance names subject to instance stop chaos that belong to Scale Set or AKS. You can tune it using the `SCALE_SET` environment variable.
+It specifies a comma-separated list of instance names that belong to Scale Set or AKS which are subject to chaos. Tune it by using the `SCALE_SET` environment variable.
 
 You can use the following example to tune it:
 

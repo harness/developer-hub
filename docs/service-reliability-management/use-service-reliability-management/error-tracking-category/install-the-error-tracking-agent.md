@@ -72,27 +72,23 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
 
   | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
-| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://app.harness.io/gratis/et-collector/ |
+| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://collector.et.harness.io/prod1|
 | `ET_APPLICATION_NAME` | Name of your application or Service. | myapp |
 | `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | 1 |
 | `ET_ENV_ID` | ID of your Harness Environment. | production |
-| `ET_ACCOUNT_ID` | Harness Account ID for which Error Tracking will be configured. | abCdEFgHIjK0\_LMnoPQRSTU |
-| `ET_ORG_ID` | Harness Organization ID for which Error Tracking will be configured. | default |
-| `ET_PROJECT_ID` | Harness Project ID for which Error Tracking will be configured. | myproject |
+| `ET_TOKEN` | ET Agent Token created on Harness. | b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a |
 
   For example:
 
 ```
-ENV ET_COLLECTOR_URL=https://app.harness.io/prod1/et-collector/  
+ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/
 ENV ET_APPLICATION_NAME=yourapp  
 ENV ET_DEPLOYMENT_NAME=1  
-ENV ET_ENV_ID=env1  
-ENV ET_ACCOUNT_ID=<myaccount_id>  
-ENV ET_ORG_ID=<myorg_id>  
-ENV ET_PROJECT_ID=<yourproject_id>
+ENV ET_ENV_ID=env1
+ENV ET_TOKEN= agenttoken
 ```
 
-5. Restart your application after installing the Error Tracking Agent.
+1. Restart your application after installing the Error Tracking Agent.
 
 #### Modify a Docker Image
 
@@ -106,37 +102,31 @@ RUN wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar
 
   | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
-| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://app.harness.io/gratis/et-collector/ |
+| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://collector.et.harness.io/prod1 |
 | `ET_APPLICATION_NAME` | Name of your application or Service. | myapp |
 | `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | 1 |
 | `ET_ENV_ID` | ID of your Harness Environment. | production |
-| `ET_ACCOUNT_ID` | Harness Account ID for which Error Tracking will be configured. | abCdEFgHIjK0\_LMnoPQRSTU |
-| `ET_ORG_ID` | Harness Organization ID for which Error Tracking will be configured. | default |
-| `ET_PROJECT_ID` | Harness Project ID for which Error Tracking will be configured. | myproject |
+| `ET_TOKEN` | ET Agent Token created on Harness. | b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a |
 
   For example:
 ```
-ENV ET_COLLECTOR_URL=https://app.harness.io/prod1/et-collector/  
+ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1
 ENV ET_APPLICATION_NAME=yourapp  
 ENV ET_DEPLOYMENT_NAME=1  
-ENV ET_ENV_ID=env1  
-ENV ET_ACCOUNT_ID=<myaccount_id>  
-ENV ET_ORG_ID=<myorg_id>  
-ENV ET_PROJECT_ID=<yourproject_id>
+ENV ET_ENV_ID=env1 
+ENV ET_TOKEN= agenttoken
 ```
-3. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding`agentpath:/harness/lib/libETAgent.so`to the application`ENTRYPOINT`. For example,`ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using`JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
-4. Once the Dockerfile is updated, rebuild the Docker image and restart any containers running on it to start monitoring using Error Tracking.
+1. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding`agentpath:/harness/lib/libETAgent.so`to the application`ENTRYPOINT`. For example,`ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using`JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
+2. Once the Dockerfile is updated, rebuild the Docker image and restart any containers running on it to start monitoring using Error Tracking.
 
 ```
  FROM openjdk:8-jre  
 ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"  
-ENV ET_COLLECTOR_URL=https://app.harness.io/prod1/et-collector/  
+ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/  
 ENV ET_APPLICATION_NAME=yourapp  
 ENV ET_DEPLOYMENT_NAME=1  
 ENV ET_ENV_ID=env1  
-ENV ET_ACCOUNT_ID=<myaccount_id>  
-ENV ET_ORG_ID=<myorg_id>  
-ENV ET_PROJECT_ID=<yourproject_id>  
+ENV ET_TOKEN= agenttoken 
 RUN wget -qO- <https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz> | tar -xz  
 ENTRYPOINT java -jar yourapp.jar
 ```
@@ -164,17 +154,13 @@ env:
 - name: JAVA_TOOL_OPTIONS
 value: "-agentpath=/opt/harness-et-agent/lib/libETAgent.so"
 - name: ET_COLLECTOR_URL
-value: "https://app.harness.io/prod1/et-collector"
+value: "https://collector.et.harness.io/prod1/"
 - name: ET_APPLICATION_NAME
 value: yourapp
 - name: ET_DEPLOYMENT_NAME
 value: 1
 - name: ET_ENV_ID
 value: production
-- name: ET_ACCOUNT_ID
-value: abCdEFgHIjK0_LMnoPQRSTU
-- name: ET_ORG_ID
-value: default
-- name: ENV ET_PROJECT_ID
-value: myproject
+- name: ET_TOKEN
+value: b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a
 ```

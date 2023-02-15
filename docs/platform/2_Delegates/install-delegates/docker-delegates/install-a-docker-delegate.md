@@ -17,7 +17,7 @@ There are several types of Delegates. This topic describes how to install the Do
 ### Before you begin
 
 * [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md)
-* [Projects and Organizations](/docs/platform/1_Organizations-and-Projects/1-projects-and-organizations.md)
+* [Projects and Organizations](/docs/platform/organizations-and-projects/projects-and-organizations.md)
 
 ### Review: System Requirements
 
@@ -110,7 +110,7 @@ The following table lists each of the environment variables in the Harness Docke
 | `DELEGATE_ORG_IDENTIFIER` | The Harness Organization [Identifier](/docs/platform/20_References/entity-identifier-reference.md) where the Delegate will register.Delegates at the account-level do not have a value for this variable. | ```- name: DELEGATE_ORG_IDENTIFIER  value: "engg"```|
 | `DELEGATE_PROJECT_IDENTIFIER` | The Harness Project [Identifier](/docs/platform/20_References/entity-identifier-reference.md) where the Delegate will register.Delegates at the account or Org-level do not have a value for this variable. | ```-name: DELEGATE_PROJECT_IDENTIFIER  value: "myproject"```|
 | `PROXY_MANAGER` | Indicates whether to use the Harness Manager or a proxy. If you use `true` (the default) you are indicating that you proxy outbound traffic to Harness. | ```- PROXY_MANAGER=true```|
-| `INIT_SCRIPT` | You can run scripts on the Delegate using `INIT_SCRIPT`.For example, if you wanted to install software on the Delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the Delegate YAML.A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).See [Run Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md). | ```- INIT_SCRIPT=  echo hello world!```|
+| `INIT_SCRIPT` | You can run scripts on the Delegate using `INIT_SCRIPT`.For example, if you wanted to install software on the Delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the Delegate YAML.A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md). | ```- INIT_SCRIPT=  echo hello world!```|
 | `USE_CDN` | Makes the Delegate use a CDN for new versions. | ```- name: USE_CDN  value: "true"```|
 | `CDN_URL` | The CDN URL for Delegate versions. | ```- name: CDN_URL  value: https://app.harness.io```|
 | `VERSION_CHECK_DISABLED` | By default, the Delegate always checks for new versions (via the Watcher). | ```- name: VERSION_CHECK_DISABLED  value: "false"```|

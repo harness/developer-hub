@@ -1,0 +1,14 @@
+{
+    "label": "Feature Flag Security",
+    "position": 30,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Feature Flag Security"
+    },
+    "customProps": {
+        "helpdocs_category_id": "u0gbfyk4p4"
+    }
+}

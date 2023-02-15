@@ -1,22 +1,25 @@
 ---
 id: ec2-http-modify-header
-title: EC2 HTTP Modify Header
+title: EC2 HTTP modify header
 ---
 
-## Introduction
+EC2 HTTP modify header injects HTTP chaos which affects the request (or response) by modifying the status code (or the body or the headers) by starting the proxy server and redirecting the traffic through the proxy server.
+- It modifies the headers of requests and responses of the service. 
+- This can be used to test the resilience of the application to incorrect (or incomplete) headers.
 
-- It injects HTTP chaos which affects the request/response by modifying the status code or the body or the headers by starting proxy server and redirecting the traffic through the proxy server.
-- It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers
-
-:::tip Fault execution flow chart
 ![EC2 HTTP Modify Response](./static/images/ec2-http-modify-header.png)
-:::
+
+## Usage
+<details>
+<summary>View fault usage</summary>
+<div>
+This can be used to test service resilience towards incorrect or incomplete headers.
+</div>
+</details>
+
 
 ## Prerequisites
-
-:::info
-
-- Ensure that Kubernetes Version > 1.17
+- Kubernetes >= 1.17
 - SSM agent is installed and running in the target EC2 instance.
 - Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A secret file looks like:
 
@@ -34,19 +37,20 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-### NOTE
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-You can pass the VM credentials as secrets or as an chaosengine environment variable.
-:::
+### Note
 
-## Permission Requirement
+You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 
-- Here is an example AWS policy to execute ec2-modify-header fault.
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -96,22 +100,17 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
+
+## Default validations
+The The EC2 instance should be in a healthy state.
 
 
-## Default Validations
-
-:::info
-
-- The EC2 instance should be in a healthy state.
-
-:::
-
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -120,31 +119,31 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
         </tr>
         <tr>
           <td> EC2_INSTANCE_ID </td>
-          <td> ID of the target EC2 instance </td>
-          <td> For example: <code>i-044d3cb4b03b8af1f</code> </td>
+          <td> ID of the target EC2 instance. </td>
+          <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
         </tr>
         <tr>
           <td> REGION </td>
-          <td> The AWS region ID where the EC2 instance has been created </td>
-          <td> For example: <code>us-east-1</code> </td>
+          <td> The AWS region ID where the EC2 instance has been created. </td>
+          <td> For example, <code>us-east-1</code>. </td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
-            <td> Port of the service to target </td>
-            <td> Defaults to port 80 </td>
+            <td> Port of the service to target. </td>
+            <td> Defaults to port 80. </td>
         </tr>
         <tr>
             <td> HEADERS_MAP </td>
-            <td> Map of headers to modify/add </td>
-            <td> For example: &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example: &#123;"X-Litmus-Test-Header": ""&#125; </td>
+            <td> Map of headers to modify (or add). </td>
+            <td> For example, &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example: &#123;"X-Litmus-Test-Header": ""&#125; </td>
         </tr>
         <tr>
             <td> HEADER_MODE </td>
-            <td> Whether to modify response headers or request headers. Accepted values: request, response</td>
-            <td> Defaults to response </td>
+            <td> Whether to modify response headers or request headers. Accepted values: request, response.</td>
+            <td> Defaults to response. </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
         <tr>
             <th> Variables </th>
@@ -153,63 +152,63 @@ You can pass the VM credentials as secrets or as an chaosengine environment vari
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (in sec) </td>
-            <td> Defaults to 30s </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive instance termination </td>
-            <td> Defaults to 30s </td>
+            <td> Time interval between two successive instance terminations (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for aws secret credentials</td>
-            <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
+            <td> Provide the path for aws secret credentials.</td>
+            <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance </td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> It defines the sequence of chaos execution for multiple instances. </td>
+            <td> Defaults to parallel. Supports serial sequence as well. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in sec) </td>
-            <td> For example: 30 </td>
+            <td> Period to wait before and after injection of chaos (in seconds). </td>
+            <td> For example, 30s. </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependency to run the fault </td>
+            <td> Select to install dependencies used to run the network chaos. It can be either True or False. </td>
             <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
         </tr>
         <tr>
             <td> PROXY_PORT </td>
-            <td> Port where the proxy will be listening for requests</td>
-            <td> Defaults to 20000 </td>
+            <td> Port where the proxy will be listening for requests.</td>
+            <td> Defaults to 20000. </td>
         </tr>
         <tr>
             <td> TOXICITY </td>
-            <td> Percentage of HTTP requests to be affected </td>
-            <td> Defaults to 100 </td>
+            <td> Percentage of HTTP requests to be affected. </td>
+            <td> Defaults to 100. </td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE </td>
-          <td> Network interface to be used for the proxy </td>
-          <td> Defaults to `eth0` </td>
+          <td> Network interface to be used for the proxy. </td>
+          <td> Defaults to `eth0`. </td>
         </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common Fault Tunables
+### Fault tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Target Service Port
+### Target service port
 
 It is the targeted service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
 
-You can use the following example to tune it:
+You can tune it using the following example:
 
 [embedmd]:# (./static/manifests/http-modify-header/target-service-port.yaml yaml)
 ```yaml
@@ -231,42 +230,9 @@ spec:
           value: "80"
 ```
 
-### Modifying the Response Headers
+### Modifying the response headers
 
-You can use the following example to modify the response body:
-
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`
-
-[embedmd]:# (./static/manifests/http-modify-header/response-headers.yaml yaml)
-```yaml
-## provide the headers as a map
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-http-modify-header
-    spec:
-      components:
-        env:
-        # map of headers to modify/add; Eg: {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
-        # to remove a header, just set the value to ""; Eg: {"X-Litmus-Test-Header": ""}
-        - name: HEADERS_MAP
-          value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
-        # whether to modify response headers or request headers. Accepted values: request, response
-        - name: HEADER_MODE
-          value: 'response'
-        # provide the port of the targeted service
-        - name: TARGET_SERVICE_PORT
-          value: "80"
-```
-
-### Modifying the Request Headers
-
-You can use the following example to modify the response body:
+You can modify the response body using the following example:
 
 ***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`
 
@@ -285,8 +251,8 @@ spec:
     spec:
       components:
         env:
-        # map of headers to modify/add; Eg: {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
-        # to remove a header, just set the value to ""; Eg: {"X-Litmus-Test-Header": ""}
+        # map of headers to modify/add; For example, {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
+        # to remove a header, just set the value to ""; For example, {"X-Litmus-Test-Header": ""}
         - name: HEADERS_MAP
           value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
         # whether to modify response headers or request headers. Accepted values: request, response
@@ -297,11 +263,44 @@ spec:
           value: "80"
 ```
 
-### Proxy Port
+### Modifying the request headers
+
+You can modify the response body using the following example:
+
+***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`
+
+[embedmd]:# (./static/manifests/http-modify-header/response-headers.yaml yaml)
+```yaml
+## provide the headers as a map
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ec2-http-modify-header
+    spec:
+      components:
+        env:
+        # map of headers to modify/add; For example, {"X-Litmus-Test-Header": "X-Litmus-Test-Value"}
+        # to remove a header, just set the value to ""; For example, {"X-Litmus-Test-Header": ""}
+        - name: HEADERS_MAP
+          value: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'
+        # whether to modify response headers or request headers. Accepted values: request, response
+        - name: HEADER_MODE
+          value: 'response'
+        # provide the port of the targeted service
+        - name: TARGET_SERVICE_PORT
+          value: "80"
+```
+
+### Proxy port
 
 It is the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
 
-You can use the following example to tune it:
+You can tune it using the following example:
 
 [embedmd]:# (./static/manifests/http-modify-header/proxy-port.yaml yaml)
 ```yaml
@@ -331,7 +330,7 @@ spec:
 It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` environment variable.
 Toxicity value defines the percentage of the total number of http requests that are affected.
 
-You can use the following example to tune it:
+You can tune it using the following example:
 
 [embedmd]:# (./static/manifests/http-modify-header/toxicity.yaml yaml)
 ```yaml
@@ -358,11 +357,11 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 
 It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
 
-You can use the following example to tune it:
+You can tune it using the following example:
 
 [embedmd]:# (./static/manifests/http-modify-header/network-interface.yaml yaml)
 ```yaml

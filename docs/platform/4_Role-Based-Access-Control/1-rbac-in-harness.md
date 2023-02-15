@@ -90,7 +90,7 @@ The following table shows what it means to add users and resources at different 
 | **Organization** | To have visibility and control over all of the projects within this Org, add users to the Org scope. | Add resources to the Org scope to allow sharing across projects within this Org while isolating from other organizations. |
 | **Project** | To manage or contribute to this Project, add users to the Project scope. | Add resources to the Project scope to provide total control to the Project teams. |
 
-To know more about Organizations and Projects, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+To know more about Organizations and Projects, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 ### Resource group
 

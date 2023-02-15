@@ -1,35 +1,28 @@
 ---
 id: elb-az-down
-title: ELB AZ Down
+title: ELB AZ down
 ---
 
-## Introduction
-- It takes AZ down chaos on a target ELB for a specified duration. It causes access restrictions for certain availability zones.
-- It tests application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
+ELB AZ down takes down the AZ (availability zones) on a target ELB for a specific duration. 
+- It restricts access to certain availability zones for a specific duration.
+- It tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
-:::tip Fault execution flow chart
 ![ELB AZ Down](./static/images/elb-az-down.png)
-:::
 
 ## Uses
 
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-AZ down is another very common and frequent scenario we find with ELB that can break the connectivity with the given zones and impacts their delivery. Such scenarios can still occur despite whatever availability aids AWS provides.
-
-Detaching the AZ from the load balancer will disrupt an application's performance and impact its smooth working. So this category of chaos fault helps build immunity in the application undergoing such scenarios.
-
+This fault breaks the connectivity of an ELB with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes > 1.17
 - AWS access to attach or detach an AZ from ELB.
 - Minimum number of AZ is attached to the ELB, else the fault fails to detach the given AZ.
-- Ensure that the target ELB is a classic load balancer as the experiment right now only supports classic load balancer.
 - Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -44,15 +37,16 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value on `fault.yaml`with the same name.
-:::
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-## Permission Requirement
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-- Here is an example AWS policy to execute this fault.
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -75,19 +69,17 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
-:::info
-- The ELB is attached to the given availability zones.
-:::
+The ELB is attached to the given availability zones.
 
 ## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -97,20 +89,20 @@ stringData:
       <tr>
         <td> LOAD_BALANCER_NAME </td>
         <td> Provide the name of load balancer whose AZ has to be detached</td>
-        <td> Eg. <code>elb-name</code> </td>
+        <td> For example, <code>elb-name</code> </td>
       </tr>
       <tr>
         <td> ZONES </td>
         <td> Provide the target zones that have to be detached from ELB</td>
-        <td> Eg. <code>us-east-1a</code> </td>
+        <td> For example, <code>us-east-1a</code> </td>
       </tr>
       <tr>
         <td> REGION </td>
         <td> The region name for the target volumes</td>
-        <td> Eg. <code>us-east-1</code> </td>
+        <td> For example, <code>us-east-1</code> </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -135,20 +127,20 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg: 30 </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Target Zones
+### Target zones
 
-It contains comma separated list of target zones. It can be tuned via `ZONES` environment variable.
+It contains comma-separated list of target zones. You can tune it using the `ZONES` environment variable.
 
 Use the following example to tune it:
 
