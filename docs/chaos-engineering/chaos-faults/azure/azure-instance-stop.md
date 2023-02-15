@@ -7,13 +7,13 @@ Azure instance stop powers off from an Azure instance for a specific duration. I
 ![Azure Instance Stop](./static/images/azure-instance-stop.png)
 
 ## Use cases
+Azure instance stop:
+- Determines the resilience of an application to unexpected power off of the Azure instances. 
+- Determines how the application handles the requests and how quickly it recovers from such failures.
 
-- Azure instance stop determines the resilience of an application to unexpected power off of the Azure instances. 
-- It determines how the application handles the requests and how quickly it recovers from such failures.
-
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
-- Adequate Azure access is required to start and stop an instance.
+- Appropriate Azure access to start and stop an instance.
 - Azure instance should be in a healthy state.
 - Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK in the experiment. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -40,6 +40,7 @@ stringData:
     }
 ```
 - If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+:::
 
 ## Fault tunables
 
@@ -86,7 +87,7 @@ stringData:
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>

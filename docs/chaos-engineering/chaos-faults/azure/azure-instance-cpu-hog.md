@@ -10,18 +10,18 @@ Azure instance CPU hog disrupts the state of infrastructure resources.
 ![Azure Instance CPU Hog](./static/images/azure-instance-cpu-hog.png)
 
 ## Use cases
+Azure instance CPU hog:
+- Determines the resilience of an Azure instance and the application deployed on the instance during unexpected excessive utilization of the CPU resources. 
+- Determines how Azure scales the CPU resources to maintain the application when it is under stress. 
+- Causes CPU stress on the Azure instance(s). 
+- Simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
+- Verifies metrics-based horizontal pod autoscaling.
+- Verifies vertical autoscale, that is, demand based CPU addition. 
+- Facilitates the scalability of nodes based on growth beyond budgeted pods. 
+- Verifies the autopilot functionality of cloud managed clusters. 
+- Verifies multi-tenant load issues. When the load on one container increases, the fault checks for any downtime in other containers. 
 
-- Azure instance CPU hog determines the resilience of an Azure instance and the application deployed on the instance when CPU resources are unexpectedly utilized in excess. 
-- It determines how Azure scales the CPU resources to maintain the application when it is under stress. 
-- It causes CPU stress on the Azure instance(s). 
-- It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
-- It verifies metrics-based horizontal pod autoscaling.
-- It verifies vertical autoscale, that is, demand based CPU addition. 
-- It facilitates the scalability of nodes based on growth beyond budgeted pods. 
-- It verifies the autopilot functionality of cloud managed clusters. 
-- It verifies multi-tenant load issues, that is, when the load increases on one container, the fault checks to see that it does not cause downtime in other containers. 
-
-**Note**
+:::note
 - Kubernetes >= 1.17 is required to execute this fault.
 - Azure Run Command agent should be installed and running in the target Azure instance.
 - Azure disk should be in a healthy state.
@@ -50,6 +50,7 @@ stringData:
     }
 ```
 - If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+:::
 
 ## Fault tunables
 
@@ -96,12 +97,12 @@ stringData:
         <tr>
             <td> SCALE_SET </td>
             <td> Check if the instance is a part of Scale Set.</td>
-            <td> Defaults to <code>disable</code>. Supports enable as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances.</a></td>
+            <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances.</a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCIES </td>
             <td> Install dependencies to run the chaos. </td>
-            <td> Defaults to true. Supports false as well. </td>
+            <td> Defaults to <code>true</code>. Also supports <code>false</code>. </td>
         </tr>
         <tr>
             <td> CPU_CORE </td>
@@ -116,7 +117,7 @@ stringData:
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple target pods.</td>
-            <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+            <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>

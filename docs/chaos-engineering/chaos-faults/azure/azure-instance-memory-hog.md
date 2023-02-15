@@ -10,16 +10,16 @@ Azure instance memory hog disrupts the state of infrastructure resources.
 ![Azure Instance Memory Hog](./static/images/azure-instance-memory-hog.png)
 
 ## Use cases
+Azure instance memory hog:
+- Determines the resilience of an Azure instance when memory resources are unexpectedly utilized in excess. 
+- Determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
+- Simulates the situation of memory leaks in the deployment of microservices.
+- Simulates a slowed application caused by lack of memory.
+- Simulates noisy neighbour problems due to hogging. 
+- Verifies pod priority and QoS setting for eviction purposes. 
+- Verifies application restarts on OOM (out of memory) kills.
 
-- Azure instance memory hog determines the resilience of an Azure instance when memory resources are unexpectedly utilized in excess. 
-- It determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
-- It simulates the situation of memory leaks in the deployment of microservices.
-- It simulates a slowed application caused by lack of memory.
-- It simulates noisy neighbour problems due to hogging. 
-- It verifies pod priority and QoS setting for eviction purposes. 
-- It verifies application restarts on OOM (out of memory) kills.
-
-**Note**
+:::note
 - Kubernetes >= 1.17 is required to execute this fault.
 - Azure Run Command agent is installed and running in the target Azure instance.
 - Azure instance should be in a healthy state.
@@ -48,7 +48,7 @@ stringData:
     }
 ```
 - If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
-
+:::
 
 ## Fault tunables
 
@@ -95,7 +95,7 @@ stringData:
     <tr>
         <td> SCALE_SET </td>
         <td> Check if the instance is a part of Scale Set.</td>
-        <td> Defaults to <code>disable</code>. Supports enable as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
+        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
     </tr>
     <tr>
         <td> MEMORY_CONSUMPTION </td>
@@ -115,7 +115,7 @@ stringData:
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>

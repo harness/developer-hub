@@ -28,8 +28,8 @@ Azure disk loss detaches the virtual disk from an Azure instance.
 <accordion color="green">
     <summary>Use cases</summary>
 
-- Azure disk loss determines the resilience of an application to unexpected disk detachment. 
-- It determines how quickly the Azure instance recovers from such a failure. 
+- Determines the resilience of an application to unexpected disk detachment. 
+- Determines how quickly the Azure instance recovers from such failures. 
 
 </accordion>
 
@@ -48,15 +48,15 @@ Azure instance CPU hog disrupts the state of infrastructure resources.
 <accordion color="green">
     <summary>Use cases</summary>
 
-- Azure instance CPU hog determines the resilience of an Azure instance and the application deployed on the instance when CPU resources are unexpectedly utilized in excess. 
-- It determines how Azure scales the CPU resources to maintain the application when it is under stress. 
-- It causes CPU stress on the Azure instance(s). 
-- It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
-- It verifies metrics-based horizontal pod autoscaling.
-- It verifies vertical autoscale, that is, demand based CPU addition. 
-- It facilitates the scalability of nodes based on growth beyond budgeted pods. 
-- It verifies the autopilot functionality of cloud managed clusters. 
-- It verifies multi-tenant load issues, that is, when the load increases on one container, the fault checks to see that it does not cause downtime in other containers.
+- Determines the resilience of an Azure instance and the application deployed on the instance during unexpected excessive utilization of the CPU resources. 
+- Determines how Azure scales the CPU resources to maintain the application when it is under stress. 
+- Causes CPU stress on the Azure instance(s). 
+- Simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
+- Verifies metrics-based horizontal pod autoscaling.
+- Verifies vertical autoscale, that is, demand based CPU addition. 
+- Facilitates the scalability of nodes based on growth beyond budgeted pods. 
+- Verifies the autopilot functionality of cloud managed clusters. 
+- Verifies multi-tenant load issues. When the load on one container increases, the fault checks for any downtime in other containers. 
 
 </accordion>
 
@@ -74,14 +74,14 @@ Azure instance I/O stress disrupts the state of infra resources.
 <accordion color="green">
     <summary>Use cases</summary>
 
-- Azure instance I/O stress determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
-- It determines how Azure scales the resources to maintain the application under stress. 
-- It simulates slower disk operations by the application.
-- It simulates noisy neighbour problems by hogging the disk bandwidth. 
-- It verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
-- It checks whether or not the application functions under high disk latency conditions.
-- It checks whether or not the application functions under high I/O traffic, and large I/O blocks.
-- It checks if other services monopolize the I/O disks during stress. 
+- Determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
+- Determines how Azure scales the resources to maintain the application under stress. 
+- Simulates slower disk operations by the application.
+- Simulates noisy neighbour problems by hogging the disk bandwidth. 
+- Verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
+- Checks whether or not the application functions under high disk latency conditions.
+- Checks whether or not the application functions under high I/O traffic, and large I/O blocks.
+- Checks if other services monopolize the I/O disks during stress. 
 
 </accordion>
 
@@ -100,13 +100,13 @@ Azure instance memory hog disrupts the state of infrastructure resources.
 <accordion color="green">
 <summary>Fault usage</summary>
 
-- Azure instance memory hog determines the resilience of an Azure instance when memory resources are unexpectedly utilized in excess. 
-- It determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
-- It simulates the situation of memory leaks in the deployment of microservices.
-- It simulates a slowed application caused by lack of memory.
-- It simulates noisy neighbour problems due to hogging. 
-- It verifies pod priority and QoS setting for eviction purposes. 
-- It verifies application restarts on OOM (out of memory) kills.
+- Determines the resilience of an Azure instance when memory resources are unexpectedly utilized in excess. 
+- Determines how Azure scales the memory to maintain the application when resources are consumed heavily. 
+- Simulates the situation of memory leaks in the deployment of microservices.
+- Simulates a slowed application caused by lack of memory.
+- Simulates noisy neighbour problems due to hogging. 
+- Verifies pod priority and QoS setting for eviction purposes. 
+- Verifies application restarts on OOM (out of memory) kills.
 
 </accordion>
 
@@ -123,8 +123,8 @@ Azure instance stop powers off from an Azure instance during a specific duration
 <accordion color="green">
     <summary>Use cases</summary>
 
-- Azure instance stop determines the resilience of an application to unexpected power off of the Azure instances. 
-- It determines how the application handles the requests and how quickly it recovers from such failures.
+- Determines the resilience of an application to unexpected power off of the Azure instances. 
+- Determines how the application handles the requests and how quickly it recovers from such failures.
 
 </accordion>
 
@@ -157,8 +157,8 @@ Azure web app stop shuts down the application. It checks whether the requests ha
 <accordion color="green">
     <summary>Use cases</summary>
 
-- Azure web app stop determines the resilience of a web application to unplanned halts (or stops). 
-- It determines the resilience based on how quickly and efficiently the application recovers from the failure by re-routing the traffic to a different instance on the same application service. 
+- Determines the resilience of a web application to unplanned halts (or stops). 
+- Determines the resilience based on how quickly and efficiently the application recovers from the failure by re-routing the traffic to a different instance on the same application service.
 
 </accordion>
 

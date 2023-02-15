@@ -9,13 +9,13 @@ Azure disk loss detaches the virtual disk from an Azure instance.
 ![Azure Disk Loss](./static/images/azure-disk-loss.png)
 
 ## Use cases
+Azure disk loss:
+- Determines the resilience of an application to unexpected disk detachment. 
+- Determines how quickly the Azure instance recovers from such failures. 
 
-- Azure disk loss determines the resilience of an application to unexpected disk detachment. 
-- It determines how quickly the Azure instance recovers from such a failure. 
-
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
-- Adequate Azure access is required to detach and attach a disk.
+- Appropriate Azure access to detach and attach a disk.
 - Azure disk should be connected to an instance.
 - Use Azure [file-based authentication](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
 - Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
@@ -41,6 +41,7 @@ stringData:
     }
 ```
 - If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
+:::
 
 ## Fault tunables
 
@@ -72,7 +73,7 @@ stringData:
         <tr>
             <td> SCALE_SET </td>
             <td> Checks if the disk is connected to scale set instance.</td>
-            <td> Defaults to disable. Supports enable as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss#detach-virtual-disks-attached-to-scale-set-instances-by-name"> scale set instances.</a></td>
+            <td> Defaults to disable. Also supports <code>enable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss#detach-virtual-disks-attached-to-scale-set-instances-by-name"> scale set instances.</a></td>
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
@@ -87,7 +88,7 @@ stringData:
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple target pods.</td>
-            <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+            <td> Defaults to parallel. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>

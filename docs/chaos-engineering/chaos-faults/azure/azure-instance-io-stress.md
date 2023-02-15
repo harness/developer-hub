@@ -10,17 +10,17 @@ Azure instance I/O stress disrupts the state of infra resources.
 ![Azure Instances IO Stress](./static/images/azure-instance-io-stress.png)
 
 ## Use cases
+Azure instance I/O stress:
+- Determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
+- Determines how Azure scales the resources to maintain the application under stress. 
+- Simulates slower disk operations by the application.
+- Simulates noisy neighbour problems by hogging the disk bandwidth. 
+- Verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
+- Checks whether or not the application functions under high disk latency conditions.
+- Checks whether or not the application functions under high I/O traffic, and large I/O blocks.
+- Checks if other services monopolize the I/O disks during stress. 
 
-- Azure instance I/O stress determines the resilience of an Azure instance when unexpected stress is applied on the I/O sources. 
-- It determines how Azure scales the resources to maintain the application under stress. 
-- It simulates slower disk operations by the application.
-- It simulates noisy neighbour problems by hogging the disk bandwidth. 
-- It verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
-- It checks whether or not the application functions under high disk latency conditions.
-- It checks whether or not the application functions under high I/O traffic, and large I/O blocks.
-- It checks if other services monopolize the I/O disks during stress. 
-
-**Note**
+:::note
 - Kubernetes >= 1.17 is required to execute this fault.
 - Azure Run Command agent is installed and running in the target Azure instance.
 - Azure instance should be in a healthy state.
@@ -50,6 +50,7 @@ stringData:
 ```
 - If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 
+:::
 
 ## Fault tunables
 
@@ -97,12 +98,12 @@ stringData:
     <tr>
         <td> SCALE_SET </td>
         <td> Check if the instance is a part of Scale Set.</td>
-        <td> Defaults to <code>disable</code>. Supports enable as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
+        <td> Defaults to <code>disable</code>. Also supports <code>enable</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop#stop-scale-set-instances"> scale set instances. </a></td>
     </tr>
     <tr>
         <td> INSTALL_DEPENDENCIES </td>
         <td> Install dependencies to run I/O stress. </td>
-        <td> Defaults to true. Supports false as well. </td>
+        <td> Defaults to <code>true</code>. Also supports <code>false</code>. </td>
     </tr>
     <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
@@ -127,7 +128,7 @@ stringData:
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
