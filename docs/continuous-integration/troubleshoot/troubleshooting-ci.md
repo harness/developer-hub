@@ -13,7 +13,7 @@ This topic contains general troubleshooting information for error messages and o
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
 
 
-### Use debug mode to troubleshoot remote builds
+## Use debug mode to troubleshoot remote builds
 
 The Harness CI **Re-run in Debug Mode** feature can troubleshoot remote builds. This command is available for builds in remote infrastructures: Harness Cloud, Kubernetes, or VMs on remote hosts. Additionally, the build must have failed at a Run step within a CI stage.
 
@@ -39,10 +39,10 @@ You can troubleshoot pipelines that appear to build successfully but still needs
 
 :::
 
-### Test suites wrongly parsed
+## Test suites wrongly parsed
 
 The parsed test report in the **Tests** tab comes strictly from the provided test reports. The reports must be in JUnit XML format. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing.
 
-### Truncated execution logs
+## Truncated execution logs
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
