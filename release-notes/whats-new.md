@@ -20,31 +20,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   Any API call Harness makes to ServiceNow requires an authentication token. Previously, Harness supported username and password authentication only. Now we support ADFS authentication.
 
-  ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)  
-- Kubernetes Dry Run step added. (CDS-43839)
-  
-  You can now add the Dry Run step for Kubernetes and Native Helm deployments.
-
-  ![Dry Run step](static/bb64e94a2baf0858bbefe20ecede63ff1e4de692c15882c4f131df7e17c9906b.png)
-
-  The Dry Run step fetches the Kubernetes manifests or Helm charts in a stage and performs a dry run of those resources. This is the same as running a `kubectl apply --filename=manifests.yaml --dry-run`.
-  
-  You can use the Dry Run step to check your manifests before deployment. You can follow the step with an [Approval](https://developer.harness.io/docs/category/approvals/) step to ensure the manifests are valid before deployment.
-  
-  You can reference the resolved manifest from the Dry Run step in subsequent steps using a Harness variable expression.
-  ```
-  <+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.ManifestDryRun>
-  ```
-
-  For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:
-
-  ```
-  <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
-  ```
-- NPM/Maven/NuGet repository format support for Nexus artifacts with Tanzu Application Services (TAS). (CDS-50551)
-  You can now use NPM/Maven/NuGet repository formats for Nexus artifacts in TAS Harness services.
-
-  ![Nexus artifacts](static/44009d0aa38851738ebed25ff3dabeb232bc729f904e219bb14d8cdd0178a283.png)
+  ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)
 
 ### Harness Platform
 

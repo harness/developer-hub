@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2022-01-31T10:00
+date: 2023-03-15T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -13,18 +13,20 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## February 6, 2023, version 78321
+## February 15, 2023, version 78421
 
 ### What's new
 
-- Active Directory Federation Services (ADFS) is now supported for ServiceNow authentication. (CDS-49406, CDS-49229)
-  
-  Any API call Harness makes to ServiceNow requires an authentication token. Previously, Harness supported username and password authentication only. Now we support ADFS authentication.
+This release does not include new features.
 
-  ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)  
+
+### Early access
+
 - Kubernetes Dry Run step added. (CDS-43839)
   
   You can now add the Dry Run step for Kubernetes and Native Helm deployments.
+
+  This functionality is behind a feature flag: `K8S_DRY_RUN_NG`.
 
   ![Dry Run step](static/bb64e94a2baf0858bbefe20ecede63ff1e4de692c15882c4f131df7e17c9906b.png)
 
@@ -42,6 +44,119 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   ```
   <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
   ```
+  For more information, go to [Perform a Kubernetes dry run](https://developer.harness.io/docs/continuous-delivery/cd-execution/kubernetes-executions/k8s-dry-run/).
+
+### Fixed issues
+
+- Settings in **Run Pipeline** were being reset when settings were selected for the second stage. (CDS-47362)
+  
+  The **Run Pipeline** settings were getting reset when a user selected a new environment in another stage. We were updating all the settings with older values for services or environments. This caused the completed settings values to be cleared. This has been fixed.
+- Improve the error message for when regex is used for the Artifactory connector. (CDS-48340)
+  
+  We have enhanced error handling when fetching artifacts from Artifactory. Now we tell users to use **Runtime input**.
+  
+  ![picture 44](static/30462d87d71128c2d3b4026b5bdd69c83db1a9163d0321165f0eaeba145ead44.png)
+- The error message that appeared when Azure WebApps infrastructure connector as a runtime input is improved. (CDS-49026)
+  
+  The new error message is `Azure connector is required to fetch this field. Alternatively, you can make this field a runtime input`.
+- **Environment** is not highlighted in the navigation when **Environment Groups** is selected. (CDS-49922)
+  
+  The route URLs for environments and environment groups under the CD module are updated. When you select **Environment Groups**, the navigation now highlights **Environments**.
+  
+  **User action:** If any bookmarks have been stored with the older URLs, they will need to be updated. Simply navigate to **Environment Groups** and bookmark the page.
+- The stage template YAML should be validated if it has both `service` and `services` nodes together. (CDS-50122)
+  
+  Added schema validation to ensure that the YAML contains only one of `service`, `services`, or `serviceConfig`.
+
+  ![picture 45](static/7cd69654456b73a540ae1b63e20e18c8d7a4b3da2a477bee23a9ab54390935e4.png)
+
+- Variable values are not visible in pipeline **Input** and **Output** tabs for the GitOps **Update Release Repo** and **Merge PR** steps. (CDS-50152)
+  
+  The values of variables should be visible in the pipeline's **Input** and **Output** tabs for the GitOps **Update Release Repo** and **Merge PR** steps. Now, when you click on the steps in an executed pipeline, their **Input** and **Output** tabs display all the variable values.
+
+  ![picture 46](static/8e8505663a06ebf516784c0eb7316e5ca680a119515af7ae027259ec271df198.png)
+
+- Added an **Anonymous** credential option in [OCI Helm Registry connector](https://developer.harness.io/docs/platform/connectors/connect-to-an-artifact-repo/). (CDS-50173, ZD-38625)
+  
+  The OCI Helm Registry connector supported anonymous credentials but there was no UI option. This issue has been resolved. The OCI Helm Registry now has an **Anonymous** option. This enables you to connect to public OCI registries from Azure, AWS, JFrog, etc., and deploy Helm charts from these registries.
+- The warning message should be different when the pipeline executor is not allowed to approve/reject a pipeline. (CDS-50503)
+  
+  The error message is improved to explain why the user is not able to execute the pipeline.
+
+  ![picture 47](static/3eab70ec71e953d8d0d3401a3176bfb0b646489c306b54866fbcd3f9144db1fb.png)  
+- When an existing Azure Artifacts feed is updated to one that doesn’t contain any package type, the UI is not refreshing the **Package Type** field. (CDS-50708)
+
+  We now refresh the **Package Type** field when a new type is selected and have added validation.
+
+  ![picture 49](static/470a4828ff0a95dc8bab6dddb746b2ae0156bffe8043a62afd752af8841cd398.png)
+- A runtime input in the **Tags** setting in the SSH AWS infrastructure page is not respected when no value is selected in **Run Pipeline**. (CDS-50781)
+  
+  When **Runtime input** is selected for **Tags** in the SSH AWS infrastructure and no value is selected in **Run Pipeline**, the **Tags** value is set to an empty string in the pipeline YAML. This is now fixed and an empty object is added instead.
+- ServiceNow [Import Set step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/servicenow-import-set/) not showing error message when the staging list call fails. (CDS-50874)
+  
+  We now show a detailed error message when the API fails to select the ServiceNow connector.
+- The **Clear All** option in the filter on the **Deployments** page is not working for the **Deployment Type** option.	(CDS-50924)
+  
+  Now the **Deployment Type** filter is cleared when selecting the **Clear All** button.
+
+  ![Deployment Type](static/adc95dc9af6b3beecc06149fc8045fd66f6ad514a37d2583addea35354643801.png)
+- The [Email step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/email_step/) is sending an error even though the email is sent. (CDS-50952)
+
+  In the **Email** step, when there is an invalid address in the **to** setting and a valid email in the **cc** setting, mail is sent to the cc address, but the step is marked as failed. This has been fixed. The Email step is marked as success if emails are sent to the cc address.
+- The Custom Approval step doesn't show logs and output variables. (CDS-51347,ZD-39060)
+
+  Custom approvals did not show console logs for every shell script execution. This was happening due to closing the associated log stream when the shell script execution succeeds or fails. Hence, only the first trial was logged on the console.
+
+  This issue has been resolved. Custom approvals now have shell script execution logs associated with each retry of execution made even when the custom approval is in a waiting state. This will help users to know the shell script output associated with each retry and understand why an approval is in a particular state.
+- Users cannot manually type if the Helm chart **Version** dropdown loading fails. (CDS-51559)
+  
+  Users can now manually enter a Helm chart version if Harness is unable to fetch versions from the chart repo.
+- Deployed service logs don't show fetch details for a Jenkins artifact source.	(CDS-51566)
+
+  The logs were missing this information but now Harness captures the type, job name, path, and build for Jenkins.
+
+  ![jenkins](static/9fbfbbcac81b31e7fab75875393d7cb3e4369069f84750f18eb316543102f4ab.png)  
+- Users are unable to save the Verify step in a stage template. (CDS-51695, ZD-38467)
+  
+  In addition, the error message does not explain why users are unable to save the Verify step in a stage template.
+  
+  We have added a fail check as a temporary solution until the API is enhanced for templates.
+- The dashboard UI is cramped at the top. (CDS-51781)
+  
+  The environments header section was cramped when the environment request DTO had a description but there was no description in the environment YAML. This is now fixed.
+- An error appears when overriding a variable with a secret/number using an [environment override](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/#service-overrides). (CDS-51783)
+
+  This is now fixed and both secrets and numbers can be used to override service variables using environment overrides.
+- In the **Delegates Setup** section of a GitLab connector, the delegate selection radio buttons were not working. (CDS-51793)
+  
+  Now users can select the option to use any available delegate or select a delegate using tags.
+
+  ![Delegates Setup](static/98e09021f3650f11fd83635440cc761a74e480d0562a0150ab39715e19097bc5.png)
+- For org level environment CRUD, the resource group is not honored. (CDS-51824)
+  
+  RBAC permissions specific to environment resource identifiers were not being honored. Harness was not calling the ACL when switching to the **Environments** tab in an org. This has been fixed and the RBAC is verified when the **Environments** tab is selected.
+- When special characters are used for a trigger **Name** field, the info message looks different than the actual name entered. (CDS-52105)
+
+  This issue was happening because users were allowed to use restricted special characters for the trigger **Name** field. We have updated the validation for the **Name** field so now users will not be able to use restricted special characters.
+- There is a [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts/) discrepancy when adding multiple steps. (CDS-52120)
+  
+  The template case was missing for calculating the step count using of the default step name. Now a template case for calculating correct step count of the default name is added.
+- The Kubernetes [Apply step](https://developer.harness.io/docs/continuous-delivery/cd-execution/kubernetes-executions/deploy-manifests-using-apply-step) does not work with inline values overrides. (CDS-52167)
+  
+  Overriding inline values using the Harness file store was not working. We have incorporated a new method to handle this use case and it is working.
+- The Azure connector was connecting to the US endpoint for Azure instead of the US Government Azure endpoint. (CDS-52251, ZD-39474)
+
+  This is now resolved. The Azure Government environment and network support is fully functional.
+
+## February 6, 2023, version 78321
+
+### What's new
+
+- Active Directory Federation Services (ADFS) is now supported for ServiceNow authentication. (CDS-49406, CDS-49229)
+  
+  Any API call Harness makes to ServiceNow requires an authentication token. Previously, Harness supported username and password authentication only. Now we support ADFS authentication.
+
+  ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)
 - NPM/Maven/NuGet repository format support for Nexus artifacts with Tanzu Application Services (TAS). (CDS-50551)
   You can now use NPM/Maven/NuGet repository formats for Nexus artifacts in TAS Harness services.
 
