@@ -50,7 +50,7 @@ The repository location of the Helm chart for the NextGen delegate is changing. 
 The repository is being deprecated. Updates to the chart will not be made to https://app.harness.io/storage/harness-download/delegate-helm-chart/ and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
 :::
 
-### New features and enhancements
+### What's new
 
 This release introduces the following new features and enhancements:
 
@@ -89,8 +89,6 @@ This release introduces the following security enhancements:
   | | 4.0.0 | |
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
   
- 
-
 
 
 ## January 17, 2023, version 78214
