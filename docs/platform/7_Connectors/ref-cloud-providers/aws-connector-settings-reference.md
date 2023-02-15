@@ -571,7 +571,7 @@ If you use the ​**Enable cross-account access (STS Role)** option in the AWS C
 
 The AWS CLI is not required for the other authentication methods.
 
-For steps on installing software with the Delegate, see [Run Initialization Scripts on Delegates](../../2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+For steps on installing software with the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 ### Switching Policies
 

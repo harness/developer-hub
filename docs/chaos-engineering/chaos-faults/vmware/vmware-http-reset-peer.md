@@ -10,21 +10,19 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 
 ![VMware HTTP Reset Peer](./static/images/vmware-http-reset-peer.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-This fault helps determine how resilient an application is when outgoing HTTP requests are halted unexpectly. It determines how quickly and efficiently an application recovers from these unexpected halts. It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
+- VMware HTTP reset peer determines the resilience of an application to unexpected halts in the outgoing HTTP requests. 
+- It determines how quickly and efficiently an application recovers from these unexpected halts. 
+- It simulates premature connection loss, such as firewall issues, between microservices by verifying connection timeouts.
+- It simulates connection resets due to resource limitations on the server side, such as running out of memory, killing processes, or overloading the server due to high amounts of traffic.
 
-</div>
-</details>
 
-## Prerequisites
-
-- Kubernetes >= 1.17
-- Vcenter access to stop and start the VM.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+**Note**
+- Kubernetes >= 1.17 is required to execute this fault.
+- Adequate vCenter permissions should be provided to start and stop the VMs.
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -39,19 +37,9 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-
-## Default validations
-The VM should be in a healthy state.
-
-
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -66,7 +54,7 @@ The VM should be in a healthy state.
        <tr>
             <td> VM_USER_NAME </td>
             <td> Username with sudo privileges.</td>
-            <td> For example, <code>vm-user</code>.</td>
+            <td> For example, <code>vm-user</code>. </td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
@@ -76,15 +64,15 @@ The VM should be in a healthy state.
         <tr>
             <td> RESET_TIMEOUT  </td>
             <td> It specifies the duration after which the connect is reset. </td>
-            <td> Defaults to 0. </td>
+            <td> Defaults to 0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#reset-timeout"> reset timeout.</a></td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Service port to target </td>
-            <td> Defaults to port 80. </td>
+            <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#target-service-port"> target service port.</a></td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -94,22 +82,22 @@ The VM should be in a healthy state.
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. </td>
+            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
@@ -119,30 +107,24 @@ The VM should be in a healthy state.
         <tr>
             <td> PROXY_PORT  </td>
             <td> Port where the proxy listens for requests.</td>
-            <td> Defaults to 20000. </td>
+            <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests that are affected. </td>
-            <td> Defaults to 100. </td>
+            <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Defaults to eth0. </td>
+          <td> Defaults to eth0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer#network-interface"> network interface.</a></td>
         </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common fault tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target service port
 
-It defines the port of the target service. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
+It specifies the port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
 Use the following example to tune it:
 
@@ -168,7 +150,7 @@ spec:
 
 ### Proxy port
 
-It defines the port where proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
+It specifies the port where proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
 Use the following example to tune it:
 
@@ -197,7 +179,7 @@ spec:
 
 ### Reset timeout
 
-It defines the reset timeout value that is added to the HTTP request. You can tune it using the `RESET_TIMEOUT` environment variable.
+It specifies the reset timeout value that is added to the HTTP request. Tune it by using the `RESET_TIMEOUT` environment variable.
 
 Use the following example to tune it:
 
@@ -226,7 +208,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value, i.e the percentage of the total number of HTTP requests that are affected. You can tune it using the `TOXICITY` environment variable.
+It specifies the toxicity value, that is, the percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
 
 Use the following example to tune it:
 
@@ -257,7 +239,7 @@ spec:
 
 ### Network interface
 
-It defines the network interface that is used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
+It specifies the network interface that is used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
 Use the following example to tune it:
 

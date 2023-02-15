@@ -22,13 +22,13 @@ Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random
   - Application start-up times, and readiness probe configuration (health endpoints and delays)
   - Adherence to topology constraints (node selectors, tolerations, zone distribution, and affinity (or anti-affinity) policies)
   - Proxy registration times in service-mesh environments
-  - Post (lifecycle) hooks and termination seconds configuration for the microservices (under active load)- i.e. graceful termination handling
+  - Post (lifecycle) hooks and termination seconds configuration for the microservices (under active load)- that is, graceful termination handling
   - Resource budgeting on cluster nodes (whether request or limit settings are honored on available nodes for successful schedule)
 
 
 **Note**
 - Kubernetes > 1.16 is required to execute this fault.
-- Ensure that application pods are in running state before and after chaos injection.
+- The application pods are in the running state before and after chaos injection.
 
 
 ## Fault tunables
@@ -42,42 +42,42 @@ Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 15s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. For more information, refer to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">total chaos duration.</a></td>
+        <td> Defaults to 15s. Overall run duration of the fault may exceed the <code>TOTAL_CHAOS_DURATION</code> by a few minutes. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive pod failures (in seconds). </td>
-        <td> Defaults to 5s. For more information, refer to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
+        <td> Defaults to 5s. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval">chaos interval.</a></td>
       </tr>
       <tr>
         <td> RANDOMNESS </td>
         <td> Introduces randomness into pod deletions with a minimum period defined by <code>CHAOS_INTERVAL</code> </td>
-        <td> Defaults to false. Supports true as well. For more information, refer to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#random-interval">random interval.</a> </td>
+        <td> Defaults to false. Supports true as well. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#random-interval">random interval.</a> </td>
       </tr>
       <tr>
         <td> FORCE </td>
         <td> Application Pod deletion mode. <code>false</code> indicates graceful deletion with the default termination period of 30s. <code>true</code> indicates an immediate forceful deletion with 0s grace period</td>
-        <td> Defaults to <code>true</code>, with <code>terminationGracePeriodSeconds=0</code>. For more information, refer to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#force-delete">force delete.</a> </td>
+        <td> Defaults to <code>true</code>, with <code>terminationGracePeriodSeconds=0</code>. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete#force-delete">force delete.</a> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to chaos. </td>
-        <td> If it is not provided, it selects target pods based on provided appLabels. For more information, refer to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods.</a> </td>
+        <td> If it is not provided, it selects target pods based on provided appLabels. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods.</a> </td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
         <td> Percentage of total pods to target (takes numeric values only). </td>
-        <td> Defaults to 0 (corresponds to 1 replica). For more information, refer to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage.</a> </td>
+        <td> Defaults to 0 (corresponds to 1 replica). For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, refer to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Defaults to parallel. Supports serial as well. For more information, refer to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
+        <td> Defaults to parallel. Supports serial as well. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
       </tr>
     </table>
 
@@ -122,8 +122,8 @@ spec:
 The randomness in the chaos interval can be enabled by setting `RANDOMNESS` environment variable to `true`. It supports boolean values. The default value is `false`.
 Tune it by using the `CHAOS_INTERVAL` environment variable.
 
-- If `CHAOS_INTERVAL` is set in the form of `l-r` i.e, `5-10` then it will select a random interval between l and r.
-- If `CHAOS_INTERVAL` is set in the form of `value` i.e, `10` then it will select a random interval between 0 and value.
+- If `CHAOS_INTERVAL` is set in the form of `l-r` that is, `5-10` then it will select a random interval between l and r.
+- If `CHAOS_INTERVAL` is set in the form of `value` that is, `10` then it will select a random interval between 0 and value.
 
 Use the following example to tune it:
 

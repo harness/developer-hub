@@ -71,7 +71,6 @@ For basic information on installing Harness Delegate, see the following topics:
 For advanced installation topics, see the following:
 
 * [Automate Delegate Installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
-* [Non-Root Delegate Installation](/docs/platform/2_Delegates/advanced-installation/non-root-delegate-installation.md)
 * [Install a Delegate with Third-Party Custom Tool Binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
 
 ### Delegate sizes
