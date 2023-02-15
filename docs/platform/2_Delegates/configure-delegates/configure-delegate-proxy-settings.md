@@ -59,3 +59,8 @@ The mask should be set in the cluster itself. For example:
 ```
 kubectl -n default get service kubernetes -o json | jq -r '.spec.clusterIP'
 ```
+
+:::info
+
+Harness also support mTLS functionality on a case to case basis, please contact Harness support to enable it.
+:::
