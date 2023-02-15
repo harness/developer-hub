@@ -37,7 +37,8 @@ The `identifier` field is immutable because Harness Entities use this field to i
 Identifiers have the following restrictions:
 
 * Identifiers must start with a-z, A-Z, or \_. Identifiers can then be followed by 0-9, a-z, A-Z, \_ or $.
-* Identifiers shouldn't be any of the following words
+* Identifiers are case-sensitive. 
+* Identifiers shouldn't be any of the following words:
 	+ or
 	+ and
 	+ eq
@@ -60,8 +61,6 @@ Identifiers have the following restrictions:
 	+ stepGroup
 	+ org
 	+ account
-
-* Identifiers aren't case-sensitive. For example, the Identifiers `myIdentifier` and `myidentifier` are the same.
 
 #### Identifier uniqueness
 

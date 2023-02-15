@@ -5,6 +5,7 @@ import Head from "@docusaurus/Head";
 import "./CoveoSearch.scss";
 
 // Space => keyCode: 32
+const RESP_BREAK_POINT = 996;
 
 const CoveoSearch = () => {
   const searchBoxEl = useRef(null);
@@ -14,7 +15,8 @@ const CoveoSearch = () => {
     location: { pathname },
   } = useHistory();
   const checkCoveo = () => {
-    const coveoJustLoaded = !isCoveoLoaded && !!window.Coveo;
+    // const coveoJustLoaded = !isCoveoLoaded && !!window.Coveo;
+    const coveoJustLoaded = !!window.Coveo;
     if (coveoJustLoaded) {
       setIsCoveoLoaded(true);
     } else {
@@ -22,17 +24,19 @@ const CoveoSearch = () => {
     }
   };
 
-  useEffect(() => {
-    checkCoveo();
-  }, []);
+  // useEffect(() => {
+  //   checkCoveo();
+  // }, []);
 
   useEffect(() => {
+    checkCoveo();
     const elemSearchResultConainer = searchResultsEl.current;
-    if (
-      window.Coveo &&
-      elemSearchResultConainer.getElementsByClassName("coveo-search-results")
-        .length < 1
-    ) {
+    const searchSesultsElemLen =
+      elemSearchResultConainer.getElementsByClassName(
+        "coveo-search-results"
+      ).length;
+
+    if (window.Coveo && searchSesultsElemLen < 1) {
       /*
       const elemSearchMask = document.getElementById("coveo-search-mask");
       if (elemSearchMask) {
@@ -100,7 +104,7 @@ const CoveoSearch = () => {
                     </div>
                 </div>
             </div>`;
-        let coveoRoot = document.getElementById("coveo-search");
+        let coveoRoot = searchRoot.querySelector("#coveo-search"); // document.getElementById("coveo-search");
 
         const resToken = await fetch(
           "https://next.harness.io/api/gettoken-all/"
@@ -138,7 +142,9 @@ const CoveoSearch = () => {
           let q = args.queryBuilder.expression.build();
           if (q) {
             searchRoot.style.display = "block";
-            activeSearchMask.style.display = "block";
+            if (window.innerWidth > RESP_BREAK_POINT) {
+              activeSearchMask.style.display = "block";
+            }
             // if (elmContent) {
             //   elmContent.style.display = "none";
             // }
@@ -149,6 +155,8 @@ const CoveoSearch = () => {
             //   elmContent.style.display = "block";
             // }
           }
+          window.dispatchEvent(new Event("resize"));
+          window.dispatchEvent(new Event("orientationchange"));
         });
         Coveo.$$(coveoRoot).on("afterInitialization", function (e, args) {
           Coveo.state(coveoRoot, "f:@commonsource", ["Developer Hub"]);
@@ -185,18 +193,14 @@ const CoveoSearch = () => {
         });
 
         // Coveo.$$(coveoRoot).on("newQuery", function (e, args) {
-        //   console.log("...1.newQuery..", e, args);
         // });
         // Coveo.$$(coveoRoot).on("duringQuery", function (e, args) {
-        //   console.log("...2.duringQuery..", e, args);
         // });
 
         Coveo.init(coveoRoot, {
           externalComponents: [searchboxRoot],
         });
       })();
-      // }, 900);
-      // }, false);
     }
   }, [isCoveoLoaded, pathname]);
   return (

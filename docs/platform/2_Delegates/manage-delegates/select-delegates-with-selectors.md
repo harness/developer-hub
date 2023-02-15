@@ -14,9 +14,18 @@ In some cases, you might want Harness to select specific delegates. In these cas
 
 ### Review: Delegate tags
 
-A delegate tag is added to your delegate automatically when you set it up in Harness. The tag is added using the name you give your Delegate.
+A delegate tag with the same name as your delegate is automatically added to your delegate during the configuration process. You can add one or more comma-separated tags on the `helm` command line or in the Kubernetes YAML file, as shown in the following example.
 
-You can also add more tags in the **Tags** field during the setup process:
+```
+...  
+    env:
+    ....
+    - name: DELEGATE_TAGS
+      value: "tag1,tag2"
+...
+```
+
+You can also add tags to the **Tags** field during the setup process:
 
 ![](./static/select-delegates-with-selectors-17.png)
 

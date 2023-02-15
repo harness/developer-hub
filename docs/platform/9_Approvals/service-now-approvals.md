@@ -1,7 +1,7 @@
 ---
 title: Adding ServiceNow Approval Steps and Stages
 description: Describes how to add ServiceNow-based approvals for a Pipeline.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: h1so82u9ub
 helpdocs_category_id: 2d7y1cr09y
 helpdocs_is_private: false
