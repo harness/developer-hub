@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes settings for the **Build and Push an image to Docker registry** step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry.
 
-You may also use this step to push to an Azure Container Registry (ACR)This step is the equivalent to the [docker build command](https://docs.docker.com/engine/reference/commandline/build/).
+You also use this step to push to Azure Container Registry (ACR) because this step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands.
 
 ### Name
 
@@ -18,7 +18,7 @@ The unique name for this step.
 
 ### Docker Connector
 
-The Harness Docker Registry Connector to use for uploading the image. See [Docker Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
+The Harness Docker Registry Connector to use for uploading the image. See [Docker Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md). This step supports Docker connectors that use either anonymous or username and password authentication.
 
 ### Docker Repository
 
