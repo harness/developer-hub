@@ -573,7 +573,7 @@ In rare cases when the delegate OS does not support `apt`, such as Red Hat Linux
 
 If you use the **Enable cross-account access (STS Role)** option in the AWS connector for a Serverless Lambda deployment, the delegate that is used by the connector must have the AWS CLI installed. The AWS CLI is not required for the other authentication methods.
 
-For instructions on installing software with the delegate, go to [Run initialization scripts on delegates](../../2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+For more information about installing software with the delegate, go to [Build custom delegate images with third-party tools](../../2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 ## Harness AWS connector settings
 
