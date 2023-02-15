@@ -24,7 +24,7 @@ Harness FirstGen release 784xx includes the following feature changes and fixes 
 
 Harness FirstGen release 78321 includes the following feature changes and fixes for Harness Delegate.
 
-### Security enhancements
+### What's new
 
 This release introduces the following security enhancements:
 
