@@ -19,19 +19,23 @@ You can install a delegate from the **New Delegate** installation page.
 | :-: | :-: | :-: |
 | [image] | [image] | [image] |
 
+![](./static/install-a-delegate-01.png)
+![](./static/install-a-delegate-02.png)
+![](./static/install-a-delegate-03.png)
+
 In addition to providing basic information about installed delegates, the **Delegates** page gives you access to the delegate installer.
 
-[Account Resources: Delegates screenshot]
+![](./static/install-a-delegate-04.png)
 
 To install a delegate, click **+ New Delegate**.
 
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
 
-[screenshot of New Delegate page]
+![](./static/install-a-delegate-05.png)
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
 
-[screenshot of Switch back button]
+![](./static/install-a-delegate-06.png)
 
 Otherwise, continue with the following steps.
 
@@ -41,25 +45,25 @@ Select your target environment: Kubernetes or Docker.
 
 ## Kubernetes environment
 
-[Kubernetes image]
+![](./static/install-a-delegate-07.png)
 
 In **Install your Delegate**, select **Helm Chart**, **Terraform**, or **Kubernetes Manifest**.
 
 ### Helm-based install on Kubernetes
 
-[Helm Chart image]
+![](./static/install-a-delegate-08.png)
 
 Use the following steps to install a delegate on Kubernetes using a Helm chart.
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Helm Chart**.
 
-[Install your Delegate image]
+![](./static/install-a-delegate-09.png)
 
 #### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
-[Delegate Name image]
+![](./static/install-a-delegate-10.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -75,7 +79,9 @@ helm repo add harness-delegate https://app.harness.io/storage/harness-download/d
 
 Use the following command to ensure you retrieve the latest version of the Harness Helm chart:
 
+```
 helm repo update
+```
 
 #### Install the delegate
 
@@ -98,25 +104,25 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-[Verify Delegate connection image]
+![](./static/install-a-delegate-11.png)
 
 To verify the delegate, click **Verify**.
 
 ### Terraform-based install on Kubernetes
 
-[Terraform image]
+![](./static/install-a-delegate-12.png)
 
 Use the following steps to install a delegate on Kubernetes using a Terraform Plan.
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Terraform**.
 
-[Install your Delegate image]
+![](./static/install-a-delegate-13.png)
 
 #### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
-[Delegate Name image]
+![](./static/install-a-delegate-14.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -142,21 +148,21 @@ Delegates are identified by their names. Delegate names must be unique within a 
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-[Verify connection image]
+![](./static/install-a-delegate-15.png)
 
 ### Kubernetes-install on Kubernetes 
 
-[Kubernetes Manifest image]
+![](./static/install-a-delegate-16.png)
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
 
-[Install your Delegate image]
+![](./static/install-a-delegate-17.png)
 
 #### Name the delegate
 
 Before you install the delegate, you must give it a name.
 
-[Delegate Name image]
+![](./static/install-a-delegate-18.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -186,13 +192,13 @@ $ kubectl apply -f harness-delegate.yml
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-[insert Verify image]
+![](./static/install-a-delegate-19.png)
 
 To verify the delegate, click **Verify**.
 
 ### Docker environment
 
-[Docker button]
+![](./static/install-a-delegate-20.png)
 
 Use the following process to install a delegate on Docker.
 
@@ -202,7 +208,7 @@ On the **New Delegate** page, select **Docker**.
 
 Accept or change the default delegate name of `docker-delegate`.
 
-[Delegate Name image]
+![](./static/install-a-delegate-21.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -225,7 +231,7 @@ docker run --cpus=1 --memory=2g \
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-[Verify Delegate image]
+![](./static/install-a-delegate-22.png)
 
 To verify the delegate, click **Verify**.
 
