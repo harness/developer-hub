@@ -147,7 +147,7 @@ Harness provides the following plans:
 - Team
 - Enterprise
 
-You can activate a Yearly or Monthly subscription to Harness after choosing your modules and plan.
+You can activate a yearly or monthly subscription with Harness after choosing your modules and plan.
 
 Your subscription and plan details are displayed in Subscriptions.
 
