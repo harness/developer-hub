@@ -227,10 +227,10 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 
 <Tabs>
-  <TabItem value="codeTab" label="Code tab" default>
+  <TabItem value="code" label="Code" default>
 
 
-Information displayed in the **Code** tab is divided into following categories:
+Information displayed in the Code view is divided into following categories:
 
 ![ARC screen Code tab](./static/et-quickstart-arc-code-tab.png)
 
@@ -298,32 +298,28 @@ In some scenarios, such as asynchronous message passing, the MDC objects contain
 The choice of the collected variables most relevant within an allocated timeframe is determined by the Error Tracking Agent using an adaptive machine learning algorithm. The selection process is based on which and how many variables to collect, the number of items to collect, the length of string to capture, and so on.
 
 
-  </TabItem>
+</TabItem>
 
 
-  <TabItem value="logTab" label="Log tab">
+<TabItem value="log" label="Log">
     
-    The **Log** tab displays the last 250 log statements leading up to the event. The log statements are collected directly from the JVM/CLR memory. This ensures that the DEBUG, TRACE, and INFO statements are visible even when they are not logged to a file.  
-
-In the **Log** tab, the error or exception lines are displayed first, followed by the stack trace. It also displays the context of the event, by highlighting the beginning of the relevant transaction in which the event occurred.
-
-![ARC screen Log tab](./static/et-quickstart-arc-log-tab.png)
 
 
 #### Log level
 
-* Logback: TRACE level and up
-* Log4j/Log4j2: According to the user's config
+The Log view displays the last 250 log statements leading up to the event. The log statements are collected directly from JVM/CLR memory. This ensures that DEBUG, TRACE, and INFO statements are visible even when they are not logged to a file.  
+
+The error or exception lines are displayed first, followed by the Stack Trace. Error Tracking also displays the context of the event, by highlighting the beginning of the relevant transaction in which the event occurred.
 
 
 :::note
-Log4j2 allows you to create custom log levels and names. However, Error Tracking reports only on log levels that are less than or equal to 300.
+Log4j2 allows you to create custom log levels and names, however, Error Tracking reports only on log levels that are equal to or less than 300 (<span>&#8804;</span> 300).
 :::
 
 
 #### Missing log statements
 
-The table below describes the various missing log statements you may come across in the **Log** tab.
+The table bellow describes the various missing log statement you may come across in the Log tab.
 
 | Message                                                                                                                                                                                | Cause                                    |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
@@ -337,9 +333,9 @@ The table below describes the various missing log statements you may come across
   </TabItem>
 
 
-  <TabItem value="environmentTab" label="Environment tab">
+  <TabItem value="environment" label="Environment">
     
-    The environment view displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
+    The Environment view displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
 
 ![ARC screen Environment tab](./static/et-quickstart-environment-tab.png)
 
