@@ -153,7 +153,7 @@ Your subscription and plan details are displayed in Subscriptions.
 
 ### Audit Trail
 
-With Audit Trail in Harness, you can view and track changes to your Harness resources within your Harness account.​
+With Audit Trail in Harness, you can view and track changes to the Harness resources in your Harness account.​
 
 The audit data retention period is 2 years. Harness reserves the right to delete audit data after 2 years. You can request a longer retention period by contacting Harness.​
 
