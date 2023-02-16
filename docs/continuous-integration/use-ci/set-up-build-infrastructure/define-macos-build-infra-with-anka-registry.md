@@ -13,21 +13,14 @@ The following diagram shows how Harness CI and Anka work together. Once you set 
 
 The following steps describe the high-level workflow.
 
-
 - [Install Anka and create a VM on a Mac node](#install-anka-and-create-a-vm-on-a-mac-node)
 - [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm)
 - [Set up the Anka controller and registry](#set-up-the-anka-controller-and-registry)
 - [Install the Harness delegate and runner](#install-the-harness-delegate-and-runner)
-- [Update the Anka controller and Harness runner](#update-the-anka-controller-and-harness-runner)
-  - [Stop the Anka controller](#stop-the-anka-controller)
-  - [Set up authentication and port mapping on the Anka controller](#set-up-authentication-and-port-mapping-on-the-anka-controller)
-  - [Set up the Harness runner to communicate with the Anka controller](#set-up-the-harness-runner-to-communicate-with-the-anka-controller)
-  - [Restart the controller](#restart-the-controller)
+- [Set up the Harness runner to communicate with the Anka controller](#set-up-the-harness-runner-to-communicate-with-the-anka-controller)
 - [Set up the delegate in the Harness pipeline](#set-up-the-delegate-in-the-harness-pipeline)
 - [Add other Mac nodes and VM templates to the Anka registry](#add-other-mac-nodes-and-vm-templates-to-the-anka-registry)
-- [YAML config examples](#yaml-config-examples)
-  - [Anka controller `docker-compose.yml` example](#anka-controller-docker-composeyml-example)
-  - [Harness runner `pool.yml` example](#harness-runner-poolyml-example)
+- [Harness runner `pool.yml` example](#harness-runner-poolyml-example)
 
 
 ### Install Anka and create a VM on a Mac node
