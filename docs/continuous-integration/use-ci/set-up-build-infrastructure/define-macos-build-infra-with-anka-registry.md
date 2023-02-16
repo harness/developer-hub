@@ -1,6 +1,6 @@
 ---
 title: Define a MacOS Build Infrastructure and Anka Registry
-description: This topic describes how to setu up a Harness MacOS build farm that uses an Anka registry and controller.
+description: This topic describes how to set up a Harness MacOS build farm that uses an Anka registry and controller.
 sidebar_position: 45
 ---
 
