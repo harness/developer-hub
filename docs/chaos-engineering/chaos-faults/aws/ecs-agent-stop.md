@@ -1,78 +1,30 @@
 ---
 id: ecs-agent-stop
-title: ECS Agent Stop
+title: ECS agent stop
 ---
 
-## Introduction
+ECS agent stop disrupts the state of infrastructure resources. 
+- The fault induces an agent stop chaos on AWS ECS using Amazon SSM Run command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
+- It causes agent container stop on ECS with a given `CLUSTER_NAME` envrionment variable using an SSM docs for a specific duration.
 
-- It stops the ECS agent on the EC2 instance which is responsible for managing the task containers, for the given chaos duration. Task container management is disrupted during this period.
-
--  The fault can induce an agent stop on AWS ECS using SSM Run Command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
-
-:::tip Fault execution flow chart
 ![ECS Agent Stop](./static/images/ecs-agent-stop.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Agent chaos stop is another very common and frequent scenario we find with ECS clusters that can break an agent that manages the task container on the ECS cluster and impacts their delivery. Such scenarios can still occur despite whatever availability aids docker provides.
-
-Killing the agent container will distrupt the performance of it and impact to smooth working of task containers. So this category of chaos fault helps to build the immunity on the application undergoing any such scenarios.
-
+ECS agent stop chaos stops the agent that manages the task container on the ECS cluster, thereby impacting its delivery. Killing the agent container disrupts the performance of the task containers.
 </div>
 </details>
 
 ## Prerequisites
+- Kubernetes >= 1.17
 
-:::info
+- Ensure that the ECS container metadata is enabled this feature is disabled by default. To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
 
-- Ensure that Kubernetes Version >= 1.17
-
-<details>
-<summary>Enable Container Metadata</summary>
-
-Ensure that the ECS container metadata is <code>enabled</code>;this feature is <code>disabled</code> by default. Refer AWS docs - <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html">Enabling container metadata</a>. This will allow HCE to know the container details like containerID that is running the ECS tasks.
-
-<b>NOTE:</b> You need to do the following steps to enable container metadata and attach IAM role to the cluster instances:
-
-- In the EC2 dashboard sidebar click on Launch Configurations under Auto Scaling.
-
-![autoscaling-config](https://user-images.githubusercontent.com/35391335/207263427-559bd2cb-f0f1-478c-badd-90d8ec0dace7.png)
-
-- Create a copy of autoscaling configuration used in target ECS cluster. This will create a new (copied) Launch Template.
-
-![create-copy-of-lc](https://user-images.githubusercontent.com/35391335/207265148-421ed263-434d-48a5-a5fc-7be0bb0d859e.png)
-
-- In the new(copied) Launch Template, update the IAM role of the instances with ECS-SSM permissions (as shown in below permission requirement section).
-
-![iam-instance-profile](https://user-images.githubusercontent.com/35391335/207267931-c5bad3a2-b57b-4587-a3c0-a26829eec52f.png)
-
-- Now update the user data with <code>ECS_ENABLE_CONTAINER_METADATA</code> to be <code>true</code> as shown below.
-
-![user-data](https://user-images.githubusercontent.com/35391335/207268623-cac27c20-b03d-4739-9770-9b64953ccbf3.png)
-
-- Now save the launch configuration by clicking on ‘Create Launch Template'.
-
-![create-launch-config](https://user-images.githubusercontent.com/35391335/207270515-2c0b194c-2d74-4b3d-bcb6-d41df25db881.png)
-
-- Now go back to auto scaling group and switch to launch template (as launch configuration is deprecating by AWS).
-
-![switch-to-launch-template](https://user-images.githubusercontent.com/35391335/207272155-79c63a17-bbf1-4b3f-a34c-e6808b0944e9.png)
-
-- Update the cluster auto-scaling group with the newer launch template.
-
-![update-launch-config](https://user-images.githubusercontent.com/35391335/207272408-27b1562d-2bcb-478d-90ac-5c702fb6b548.png)
-
-- Restart the instances of the ECS cluster to pull the updated configuration:
-
-![restart-instances](https://user-images.githubusercontent.com/35391335/206241766-6c684660-89f9-4868-b0ff-88d0409304bc.png)
-
-</details>
-
-- Ensure both user and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the fault.
+- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the fault (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
 
 - Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
@@ -90,15 +42,16 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
-:::
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-## Permission Requirement
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-- Here is an example AWS policy to execute this fault.
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -162,21 +115,17 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
-:::info
+The ECS container instance should be in healthy state.
 
-- ECS container instance should be in healthy state.
-
-:::
-
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
           <th> Variables </th>
@@ -186,15 +135,15 @@ stringData:
         <tr> 
           <td> CLUSTER_NAME </td>
           <td> Name of the target ECS cluster</td>
-          <td> Single name supported eg: <code>demo-cluster</code></td>
+          <td> Single name supported For example, <code>demo-cluster</code></td>
         </tr>
         <tr>
           <td> REGION </td>
           <td> The AWS region name of the target ECS cluster</td>
-          <td> Eg: <code>us-east-2</code></td>
+          <td> For example, <code>us-east-2</code></td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -224,16 +173,16 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Agent Stop
 

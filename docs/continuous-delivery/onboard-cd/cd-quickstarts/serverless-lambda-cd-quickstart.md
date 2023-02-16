@@ -1,5 +1,5 @@
 ---
-title: Serverless Lambda deployment tutorial
+title: Serverless.com Framework - AWS Lambda deployment tutorial
 description: This topic walks you through deploying a Serverless Lambda application to AWS Lambda using Harness.
 sidebar_position: 7
 helpdocs_topic_id: 5fnx4hgwsa
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This quickstart shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness. We'll use a publicly-available serverless.yaml and artifact and deploy them to your AWS Lambda service using a Harness Pipeline.
 
-New to Serverless? See [Tutorial: Your First Serverless Framework Project](https://www.serverless.com/framework/docs/tutorial) from Serverless.
+New to Serverless.com Framework? See [Tutorial: Your First Serverless Framework Project](https://www.serverless.com/framework/docs/tutorial) from Serverless.
 
 ## Objectives
 
@@ -24,7 +24,7 @@ Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key
 * **Kubernetes** **Delegate cluster with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. For this quickstart, we'll install a Kubernetes Delegate running in a Kubernetes cluster.
 	+ You can use a cluster hosted on a cloud platform or run one in minikube using Docker Desktop locally. The installation steps are the same.
 	+ The Delegate host must have Serverless installed. We'll add the Serverless installation script to the Delegate YAML file later in this quickstart.
-* **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless. To create the AWS User, do the following:
+* **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless.com. To create the AWS User, do the following:
 	+ Log into your AWS account and go to the Identity & Access Management (IAM) page.
 	+ Click **Users**, and then **Add user**. Enter a name. Enable **Programmatic access** by clicking the checkbox. Click **Next** to go to the **Permissions** page. Do one of the following:
 		- **Full Admin Access:** click on **Attach existing policies directly**. Search for and select **AdministratorAccess** then click **Next: Review**. Check to make sure everything looks good and click **Create user**.
@@ -160,7 +160,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Make sure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/1_Organizations-and-Projects/2-create-an-organization.md).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Make sure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
 
 :::
 
@@ -467,7 +467,7 @@ Congratulations! You have successfully deployed a function using Serverless Lamb
 
 ## Clean up
 
-For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/delegate-guide/delete-a-delegate.md).
+For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
 
 ## Notes
 
@@ -504,6 +504,17 @@ See:
 * [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
 * [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
 * [Run Pipelines using Input Sets and Overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
+
+### Supported stores for Serverless Lambda YAML files
+
+Harness can fetch your YAML files and packaged code from the following stores:
+
+- AWS S3 buckets.
+  - You can store the serverless.yml and the artifact code in AWS S3, including in the same bucket.
+  - You can use the .Zip format to grab the serverless.yaml and the packaged code that has been bundled in .zip and published in S3.
+  - Harness will extrapolate the serverless.yaml file and use that for deployment.
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](../../../platform/connectors/../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md#aws-s3).
+- Git providers.
 
 ### Rollback timestamps
 

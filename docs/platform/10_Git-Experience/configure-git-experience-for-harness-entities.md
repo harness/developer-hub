@@ -35,7 +35,11 @@ Make sure you have the following set up Before you begin this quickstart:
 		- Bitbucket:![](./static/configure-git-experience-for-harness-entities-36.png)
 	+ To enable Git Experience for your resources, make sure that you have Create/Edit permissions for them.​​
 
+
+:::note
 Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo, and the branch is created.
+
+:::
 
 ### Supported Git providers
 
@@ -77,23 +81,56 @@ Enter a **Name** for your Pipeline.
 Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
-In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
+In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
 
 ![](./static/configure-git-experience-for-harness-entities-40.png)
-Important: Connector must use the Enable API access option and Token**Important**: The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​  
-![](./static/configure-git-experience-for-harness-entities-41.png)  
-For GitHub, the token must have the following scopes:  
-![](./static/configure-git-experience-for-harness-entities-42.png)Here's an example of a GitHub Connector that has the correct settings:​
 
-![](./static/configure-git-experience-for-harness-entities-43.png)In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here.
+<details>
+<summary> IMPORTANT </summary>
+
+Connector must use the Enable API access option and Token
+The Connector must use the Enable API access option and Username and Token authentication. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector.​
+
+![](./static/configure-git-experience-for-harness-entities-41.png) 
+
+For GitHub, the token must have the following scopes: 
+
+![](./static/configure-git-experience-for-harness-entities-42.png)
+
+</details>
+
+Here's an example of a GitHub Connector with the correct settings:​
+
+![](./static/configure-git-experience-for-harness-entities-43.png)
+
+In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here.
 
 ![](./static/configure-git-experience-for-harness-entities-44.png)
-Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here.
+
+
+:::note
+Create the repository in Git before entering it in **Select Repository**. Harness does not create the repository for you.
+
+:::
+
+In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here.
 
 ![](./static/configure-git-experience-for-harness-entities-45.png)
-Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.Harness auto-populates the **YAML Path**. You can change this path and the file name. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
 
-Make sure that your YAML path starts with `.harness/` and is unique.Click **Start**.
+
+:::note
+Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you. 
+
+:::
+
+Harness pre-populates the **YAML Path**. You can change this path and the file name. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
+
+
+:::note
+Make sure that your YAML path starts with `.harness/` and is unique.
+:::
+
+Click **Start**.
 
 The Pipeline Studio is displayed with your repo and branch name.
 
@@ -113,14 +150,24 @@ Add a step and click **Save**.
 The **Save Pipelines to Git** settings appear.
 
 ![](./static/configure-git-experience-for-harness-entities-47.png)
+
 In **Select Branch to Commit**, commit to an existing or new branch.
 
 * **Commit to an existing branch**: you can start a pull request if you like.
 * **Commit to a new branch**: enter the new branch name. You can start a pull request if you like.
 
-Click **Save**. Your Pipeline is saved to the repo branch.
+Click **Save**. 
+
+
+:::note
+If you are using Bitbucket on-prem and `feature.file.editor` is set to `false` in the `bitbucket.properties`, make sure you enable **Use Git client for commits** in the [default settings](../17_Settings/default-settings.md) at the account scope. Harness will checkout the code on the delegate and use the Git client to make the commits to your Git repository.
+:::
+
+
+Your Pipeline is saved to the repo branch.
 
 ![](./static/configure-git-experience-for-harness-entities-48.png)
+
 Click the YAML file to see the YAML for the Pipeline.
 
 Edit the Pipeline YAML. For example, change the name of a step.
@@ -141,14 +188,25 @@ In your Project, click **Pipelines**.
 
 Click on your Pipeline.
 
-Select the branch from which you want to execute your Pipeline.
+Harness loads your pipeline depending on where you saved your remote pipeline.
 
-![](./static/configure-git-experience-for-harness-entities-49.png)
+- If you saved your pipeline on the default branch, Harness loads it from the default branch.
+- If you saved your pipeline on a non-default branch, Harness uses the metadata of this pipeline to load it from the non-default branch.
+- If you saved your pipeline in a branch that is no longer available, Harness throws an error. You must select a branch to load your pipeline in this case.
+  
+
+:::caution
+Harness fetches your pipeline details from the default branch if you created your remote pipeline before version 77808. Select the corresponding branch and proceed to load a pipeline residing in a branch other than the default branch.
+
+:::
+
+
+<!-- ![](./static/configure-git-experience-for-harness-entities-49.png) -->
+
 Click **Run**.
 
-Your Pipeline is ready to run from the branch you just selected.
-
 ![](./static/configure-git-experience-for-harness-entities-50.png)
+
 Click **Run Pipeline**.
 
 During Pipeline execution, the configurations of the required resources and any referenced entities like Input Sets, are fetched from Git.

@@ -3,7 +3,7 @@ title: Run Windows Builds in a Kubernetes Build Infrastructure
 description: You can run Windows builds in your Kubernetes build infrastructure. Windows Server 2019 images are available for running CI Builds and for out-of-the-box Ci Steps.
 tags: 
    - helpDocs
-sidebar_position: 50
+sidebar_position: 80
 helpdocs_topic_id: ud5rjfcp8h
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

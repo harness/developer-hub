@@ -1,7 +1,7 @@
 ---
 title: Add a Custom Stage
 description: The Custom stage provides flexibility to support any use case that doesn't require the pre-defined settings of CI, CD, or Approvals.
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: o60eizonnn
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -34,7 +34,7 @@ The steps available in a Custom stage are also available in standard stages.
 * Licensing is applied to the steps in Custom stage. For example, CD Steps such as the HTTP step are available inside Custom stage only if you have CD license.
 * There is no Rollback functionality in a Custom stage.
 	+ Rollbacks can be achieved via conditional execution. For example, run a step only is something failed/succeeded previously.
-* You can select which Delegate to use for each step in a Custom stage using the step's **Delegate Selector** setting. If this setting is not used, then Harness will select a Delegate using its standard selection process. See [Delegates Overview](../2_Delegates/delegates-overview.md).
+* You can select which Delegate to use for each step in a Custom stage using the step's **Delegate Selector** setting. If this setting is not used, then Harness will select a Delegate using its standard selection process. See [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
 * Custom stage can be used as a template like other stage types. Step templates can be used inside a Custom stage, and the Pipeline containing the Custom stage can also be used as a Template.
 
 ### Visual Summary

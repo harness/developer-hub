@@ -1,25 +1,29 @@
 ---
-id: vmware-memory-hog
-title: VMware Memory Hog
+id: VMware-memory-hog
+title: VMware memory hog
 ---
 
-## Introduction
-- VMware memory hog fault consumes the Memory resources on Linux OS based VMware VM .
-- It helps to check the performance of the application running on the VMWare VMs.
+VMware memory hog fault consumes excessive memory resources on Linux OS based VMware VMs. It determines the performance of the application running on the VMware VMs.
 
-:::tip Fault execution flow chart
 ![VMware Memory Hog](./static/images/vmware-memory-hog.png)
-:::
 
-## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
+## Use cases
 
-** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- VMware memory hog determines the resilience of an application to unexpected consumption of excessive memory by application resources.
+- It simulates the situation of memory leaks in the deployment of microservices.
+- It simulates application slowness due to memory starvation.
+- It also simulates noisy neighbour problems due to hogging. 
+- It verifies pod priority and QoS setting for eviction purposes. 
+- It also verifies application restarts on OOM (out of memory) kills. 
+
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- Execution plane should be connected to vCenter and host vCenter on port 443.
+- The VM should be in a healthy state before and after injecting chaos.
+- VMware tool should be installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -33,20 +37,9 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+## Fault tunables
 
-
-## Default Validations
-:::info
-- VM should be in healthy state.
-:::
-
-## Fault Tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -55,11 +48,11 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> VM_NAME </td>
-        <td> Name of the target VM </td>
-        <td> ubuntu-vm-1 </td>
+        <td> Name of the target VM. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -68,55 +61,49 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
      <tr>
         <td> MEMORY_CONSUMPTION_MEBIBYTES </td>
-        <td> The amount of memory used of hogging VMware VMs(megabytes) </td>
-        <td> </td>
+        <td> Amount of memory consumed by VMware VMs (in MiB). </td>
+        <td> For example, <code>4024</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-memory-hog#memory-consumption-in-mebibytes"> memory consumption in mebibytes. </a></td>
       </tr>
       <tr>
         <td> MEMORY_CONSUMPTION_PERCENTAGE </td>
-        <td> Percentage of memory to be consumed </td>
-        <td> Default to 100 </td>
+        <td> Amount of total memory to be consumed (in percentage). </td>
+        <td> Default to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-memory-hog#memory-consumption-in-percentage"> memory consumption in percentage. </a></td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> The number of workers used to run the stress process </td>
-        <td> Default to 4 </td>
+        <td> Number of workers used to run the stress process. </td>
+        <td> Defaults to 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-memory-hog#workers-for-stress"> workers for stress. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
-</details>
 
-## Fault Examples
+### Memory consumption in percentage
+It specifies the memory consumed by the target VM (in percentage). Tune it by using the `MEMORY_CONSUMPTION_PERCENTAGE` environment variable.
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+Use the following example to tune it:
 
-### MEMORY_CONSUMPTION_MEBIBYTES
-It stresses the MEMORY_CONSUMPTION MB memory of the targeted VM for the TOTAL_CHAOS_DURATION duration.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memconsumptionperc.yaml yaml)
 ```yaml
-# Memory hog in the VMWare VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -125,7 +112,35 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-memory-hog
+    - name: VMware-memory-hog
+      spec:
+        components:
+          env:
+            # Name of the VM
+            - name: VM_NAME
+              value: 'test-vm-01'
+            # memory consumption value
+            - name: MEMORY_CONSUMPTION_PERCENTAGE
+              value: '50'
+```
+
+### Memory consumption in mebibytes
+It specifies the memory consumed by the target VM in mebibytes (MiB). Tune it by using the `MEMORY_CONSUMPTION_MEBIBYTES` environment variable.
+
+Use the following example to tune it:
+
+[embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-memoryconsumption.yaml yaml)
+```yaml
+# Memory hog in the VMware VM
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: VMware-memory-hog
       spec:
         components:
           env:
@@ -136,14 +151,15 @@ spec:
             - name: MEMORY_CONSUMPTION_MEBIBYTES
               value: '500'
 ```
-### Workers For Stress
-The worker's count for the stress can be tuned with NUMBER_OF_WORKERS ENV.
 
-Use the following example to tune this:
+### Workers for stress
+It specifies the worker's count for stress. Tune it by using the `NUMBER_OF_WORKERS` environment variable.
+
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-memory-hog/vm-memory-hog-worker.yaml yaml)
 ```yaml
-# Memory hog in the VMWare VM
+# Memory hog in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -152,7 +168,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-memory-hog
+    - name: VMware-memory-hog
       spec:
         components:
           env:

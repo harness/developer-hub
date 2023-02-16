@@ -8,14 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-**Dashboards** are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a combination of available business metrics and operational data. You can use this data to make data-driven informed business decisions.
 
-
-:::note
-For information on core Dashboard functionality, see [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md).
-:::
-
-Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Azure Cost Dashboard** you can:
+Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Azure Cost Dashboard** you can:
 
 * Discover new analytical insights into your Azure cloud costs
 * Track various cloud cost indicators across different zones and time range
@@ -34,7 +28,7 @@ This topic describes how to view **By Harness** **Azure Cost Dashboard** and g
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have **Dashboard-All View** permissions assigned. Go to [Manage Access Control for CCM Dashboards](../access-control/manage-access-control-for-ccm-dashboards.md).
 * Ensure that you have set up Cloud Cost Management (CCM) for the Azure account.
 * Ensure that you have added all the required permissions for your cloud provider. The data available in the Dashboard depends on the permissions you provided to the Azure cloud provider when setting up CCM. 
 
@@ -46,10 +40,12 @@ Once you have set up cost visibility for the Azure account and the data is ava
 
 Perform the following steps to view Azure Cost Dashboard:
 
-1. In Harness, click **Dashboards**.
-2. In **All Dashboards**, select **By Harness** and click **Azure Cost Dashboard**. The Azure Cost Dashboard is displayed. 
+1. In the **Harness** application, click **Dashboards**.
+2. Select **By Harness** and then, click **Azure Cost Dashboard**. The Azure Cost Dashboard is displayed. 
+
+    ![](./static/Azure-cost-dashboard.gif)
+
    
-     ![](./static/azure-cost-dashboard-34.png)
 	 
 
 | **Dimension** | **Description** |
@@ -68,7 +64,8 @@ Perform the following steps to view Azure Cost Dashboard:
 	* Last 7 Days
 	* Last 30 Days
 	* Last 90 Days
-	* Last year
+	* Last 12 months
+	* Last 24 months
 4. Once you have selected the **Time Range**, click **Update**. The data is refreshed with the latest data from the database. By default, **Last 30 Days** is selected.
    
    ![](./static/azure-cost-dashboard-35.png)
@@ -85,7 +82,8 @@ The dashboard displays the data based on the set filter.
   ![](./static/azure-cost-dashboard-38.png)
 8. Click the Filter icon to hide or show the filters.
    
-     ![](./static/azure-cost-dashboard-39.png)
+
+  ![](./static/azure-cost-dashboard-39.png)
 
 ### See Also
 

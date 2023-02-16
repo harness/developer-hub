@@ -1,15 +1,184 @@
 ---
 title: Feature Flags
-date: 2022-12-15T10:00
+date: 2023-02-06T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
 
-Harness Feature Flags is updated regularly. Review the notes below for details about recent changes.
+Harness Feature Flags is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 9, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+- The Flutter Client SDK has been updated to version 1.0.10 and includes the following updates:
+  - This SDK now uses Android SDK 1.0.20. (FFM-6822)
+  - This update fixes excessive network calls when calling flag evaluation functions. (FFM-6822)
+
+- The Python Server SDK has been updated to version 1.1.8 and includes the following updates:
+  - Added `wait_for_initialization` to the client API, which can be called to block the thread until all groups and flags have been retrieved and loaded into the cache. (FFM-6549)
+  - Added `is_initialized` to the client API, which can be called at any time to check if the initial retrieval and caching of groups and flags has been completed. (FFM-6549)
+
+:::note
+For an example usage of `wait_for_initialization` go to [the SDK's repository](https://github.com/harness/ff-python-server-sdk/blob/main/examples/wait_for_initialization_example/wait_for_initialization.py).
+:::
+
+
+## February 6, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flags on the Harness Platform
+
+The **Complete** button at the end of the onboarding flow was always enabled. Now, it is disabled until the user receives a successful evaluation. (FFM-5987)
+
+#### Feature Flag SDKs
+
+The Python SDK has been updated to version 1.1.7 and includes the following new feature:
+
+When adding targets to a group based on conditions, the `in` operator is now case-sensitive in the SDK. (FFM-5991)
+
+:::note
+If you are targeting any groups using the `in` operator, ensure that your target condition takes into account the case sensitivity of the operator.
+:::
+
+## January 26, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flag SDKs
+- The React Client SDK has been updated to version 1.1.0 and includes the following changes:
+  - You can now listen for errors that are caused by network issues. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578)
+  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578) 
+
+- The Javascript SDK has been updated to version 1.8.0 and includes the following change:
+  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489) 
+
+## January 24, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flag SDKs
+- The Android SDK has been updated to version 1.0.18. This fixes a bug that caused unhandled exception errors due to duplicate callbacks during the SDK initialization. (FFM-6395)
+- The Flutter SDK has been updated to version 1.0.8. This includes the following:
+  - Fixed a bug that caused applications to shut down in response to API errors caused by no internet connection. (FFM-6395)
+  - Fixed a bug that caused streaming to stop working if internet connectivity was lost. (FFM-6395) 
+
+## January 23, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flag SDKs
+- The Javascript SDK has been updated to version 1.7.0. This fix adds the `Harness-AccountID` and `Harness-EnvironmentID` fields to the HTTP request header in all calls after the initial authorization request. These values are extracted from the JWT, so you don't need to add a value for them. (FFM-6507)
+
+- The Android SDK has been updated to version 1.0.17. This includes the following changes:
+  - Fixed a bug that caused a 401 error when the SDK tried to send a request to the `stream` endpoint if the request was to a non-production environment. (FFM-4603)
+  -   Fixed a bug that caused the SDK to stop working if an identifier isn't provided during the SDK initialization. The SDK will now use the name if you don't provide an identifier. You will receive an error if you don't provide either a name or identifier as at least one of these is required for all client-side SDKs. (FFM-6396)
+
+## January 19, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flag SDKs
+- The Javascript SDK has been updated to version 1.6.0. This includes the following changes:
+  - You can now customise the interval of how often metrics data is sent to the metrics endpoint. (FFM-6498)
+  - If the metrics data is not successfully posted to the endpoint after two attempts, the data is cleared to ensure the metrics data doesn't get too large and cause performance issues. (FFM-6509)
+
+- The Java SDK has been updated to version 1.1.10. This includes the following changes:
+  -  Improvements to how the metrics endpoint processes platform targets. (FFM-6392)
+  -  Fixed a bug that caused an error due to incompatibility with an older version of OkHttp. (FFM-6442)
+  
+- The Ruby SDK has been updated to version 1.0.6. This fixes dependency issues with OpenAPI that caused errors when trying to initialize the SDK. (FFM-6523)
+
+## January 17, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flags on the Harness Platform
+If you changed the environment, and then opened the **Pipeline** tab or **Environment** tab on a second screen, the environment you set defaulted to the original one. This has been fixed and the environment you select is consistent through all tabs. 
+
+
+## January 10, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flags on the Harness Platform
+
+- Fixed a bug that prevented a completion tick from appearing in the UI after an evaluation had successfully passed. (FFM-6127)
+
+- Fixed an error that caused the Complete button at the end of the Get Started flow to link to the beginning of the flow instead of linking to the expected Feature Flag list page. (FFM-5988)
+
+- Resolved an issue that caused you to scroll unnecessarily when you expanded the target attribute or operator dropdown menus when creating a target. (FFM-5187)
+
+- Fixed a bug where scrollbars were unnecessarily displayed in the target groups section of the targets page during loading. (FFM-4053)
+
+#### Feature Flag SDKs
+The Ruby SDK has been updated to version 1.0.5. This fixes a bug that caused the SDK to not wait for initialization when using the `wait_for_initialization` method. (FFM-6393)
 
 ## December 22, 2022
 

@@ -947,7 +947,7 @@ See the following docs from PingFederate:
 
 ### Harness Local Login
 
-To prevent lockouts or in the event of OAuth downtime, a User in the Harness Administrators Group can use the [**Local Login**](http://app.harness.io/auth/#/local-login) URL (http://app.harness.io/auth/#/local-login) to log in and update the OAuth settings.
+To prevent lockouts or in the event of OAuth downtime, a User in the Harness Administrators Group can use the [**Local Login**](https://app.harness.io/auth/#/local-login) URL (https://app.harness.io/auth/#/local-login) to log in and update the OAuth settings.
 
 ![](./static/single-sign-on-sso-with-saml-85.png)
 1. Log in using **Harness Local Login**.

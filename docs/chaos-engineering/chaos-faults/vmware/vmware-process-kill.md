@@ -1,33 +1,26 @@
 ---
-id: vmware-process-kill
-title: VMware Process kill
+id: VMware-process-kill
+title: VMware process kill
 ---
 
-## Introduction
-- VMware Process Kill fault kills the target processes running as part of a Linux OS based VMware VM to determine the application/process resilience.
-- It helps to check the performance of the application/process running on the VMWare VMs.
+VMware process kill kills the target processes that are running as a part of a Linux OS based VMware VM. It helps determine the resilience of an application (or process) running on the VMware VMs.
 
-:::tip Fault execution flow chart
 ![VMware Process kill](./static/images/vmware-process-kill.png)
-:::
 
-## Uses
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-Disrupt the application critical processes such as databases or message queues running in the VMware VM by killing their underlying processes or threads.
-</div>
-</details>
+## Use cases
 
-## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
+- VMware process kill disrupts critical processes running within the application, such as databases or message queues. 
+- The services that are disrupted might be running in the VMware VM, and this fault kills their underlying processes or threads. Such faults help determine how efficiently and quickly the VMware instance recovers from the unexpected disruption.
 
-** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- Execution plane should be connected to vCenter and host vCenter on port 443.
+- The VM should be in a healthy state before and after injecting chaos.
+- VMware tool should be installed on the target VM with remote execution enabled.
+- The target processes should exist within the VM. 
+- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -41,21 +34,9 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
+## Fault tunables
 
-
-## Default Validations
-:::info
-- VM should be in healthy state.
-- The target processes should exist in the VM.
-:::
-
-## Fault Tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -64,16 +45,16 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> VM_NAME </td>
-        <td> Name of the VM in which the target processes reside </td>
-        <td> ubuntu-vm-1 </td>
+        <td> Name of the VM where the target processes reside. </td>
+        <td> For example, <code>ubuntu-vm-1</code>. </td>
       </tr>
       <tr>
         <td> PROCESS_IDS </td>
-        <td> Process IDs of the target processes provided as comma separated values </td>
-        <td> 183,253,857 </td>
+        <td> Process IDs of the target processes that are provided as comma-separated values. </td>
+        <td> For example, <code>183,253,857</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-process-kill#process-ids"> process Ids. </a></td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -82,31 +63,25 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
-</details>
-
-## Fault Examples
-
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-
-### PROCESS_IDS
-It contains the target process Ids running on a particular VM
 
 
-Use the following example to tune this:
+### Process Ids
+It specifies the target process Ids running on a particular VM. Tune it by using the `PROCESS_IDS` environment variable.
 
-[embedmd]:# (./static/manifests/vmware-process-kill/vmware-process-kill.yaml yaml)
+Use the following example to tune it:
+
+[embedmd]:# (./static/manifests/vmware-process-kill/VMware-process-kill.yaml yaml)
 ```yaml
-# Process kill in the VMWare VM
+# Process kill in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -115,7 +90,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-process-kill
+    - name: VMware-process-kill
       spec:
         components:
           env:

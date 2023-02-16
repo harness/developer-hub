@@ -1,4 +1,6 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+@import "fontawesome/css/fontawesome.min.css";
+@import "fontawesome/css/solid.min.css";
 /**
  * Any CSS included here will be global. The classic template
  * bundles Infima by default. Infima is a CSS framework designed to
@@ -256,6 +258,10 @@ body {
   font-family: var(--harness-font-family) !important;
 }
 
+a:hover {
+  color: var(--ifm-color-primary-light);
+}
+
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme="dark"] {
   --ifm-color-primary: var(--primary-5);
@@ -308,6 +314,28 @@ body {
 }
 .theme-doc-markdown h3 > img {
   margin-right: 0.2em;
+}
+
+/* #DLP-36 styles for details + summary */
+.alert--info {
+  --ifm-alert-background-color: var(--primary-1);
+  --ifm-alert-border-color: var(--primary-3);
+  --ifm-tabs-color-active: var(--primary);
+  --ifm-tabs-color-active-border: var(--primary);
+}
+details summary {
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 140%;
+}
+details summary::before {
+  border-left-color: var(--black) !important;
+}
+.tabs {
+  border-bottom: 1px solid var(--gray-200);
+}
+.tabs__item--active {
+  border-bottom-color: var(--primary);
 }
 
 .color-ci {

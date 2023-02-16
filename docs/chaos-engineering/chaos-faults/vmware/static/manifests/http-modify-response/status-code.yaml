@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:
@@ -24,7 +24,7 @@ spec:
         - name: STATUS_CODE
           value: '500'
         # whether to modify the body as per the status code provided
-        - name: "MODIFY_RESPONSE_BODY"
+        - name: MODIFY_RESPONSE_BODY
           value: "true"
         # provide the port of the targeted service
         - name: TARGET_SERVICE_PORT

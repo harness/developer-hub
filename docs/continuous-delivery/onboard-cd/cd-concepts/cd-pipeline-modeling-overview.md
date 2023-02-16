@@ -20,9 +20,17 @@ For example, a **Service** uses your Kubernetes manifests and Docker image, an *
 
 ![](./static/cd-pipeline-modeling-overview-02.png)
 
-You can model visually, using code, or REST API.
+The image above shows you the order for modeling a CD stage:
 
-#### Visual Studio
+1. Create a pipeline.
+2. Add a CD stage.
+3. Define a service.
+4. Target an environment and infrastructure.
+5. Select execution steps.
+
+You can model visually, using code, or via the REST API.
+
+#### Pipeline Studio (Visual)
 
 Model your process visually using a guided sequence:
 
@@ -52,7 +60,7 @@ For more details, go to [Harness API Quickstart](../../../platform/16_APIs/api-q
 
 ### How do I automate my CD process in Harness?
 
-Harness Continuous Delivery provides Triggers for automating the execution of Pipelines, multiple settings for adding conditions to how the Pipeline executes and rolls back, and Approvals to ensure that Pipeline only proceed safely.
+Harness Continuous Delivery provides Triggers for automating the execution of Pipelines, multiple settings for adding conditions to how the Pipeline executes and rolls back, and Approvals to ensure that the Pipeline only proceeds when safe to do so.
 
 #### Triggers
 

@@ -8,6 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info
+
+Dynamic provisioning is only supported in [Service and Environments v1](../../onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+
+:::
+
 This topic describes how to use Terraform to provision infrastructure as part of your deployment process.
 
 Harness can provision any resource that is supported by a Terraform [provider or plugin](https://www.terraform.io/docs/configuration/providers.html).
@@ -79,14 +85,15 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 
 ```bash
 # Install TF  
-curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip  
-unzip terraform_0.12.25_linux_amd64.zip  
-mv ./terraform /usr/bin/  
-# Check TF install  
+microdnf install unzip
+curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
+unzip terraform_1.3.5_darwin_amd64.zip
+mv ./terraform /usr/bin/
+# Check TF install
 terraform --version
 ```

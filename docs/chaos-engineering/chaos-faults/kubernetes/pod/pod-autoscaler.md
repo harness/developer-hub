@@ -1,39 +1,36 @@
 ---
 id: pod-autoscaler
-title: Pod Autoscaler
+title: Pod autoscaler
 ---
 
-## Introduction
-- The fault aims to check the ability of nodes to accommodate the number of replicas a given application pod.
+Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod.
+- It examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
 
-- This fault can be used for other scenarios as well, such as for checking the Node auto-scaling feature. For example, check if the pods are successfully rescheduled within a specified period in cases where the existing nodes are already running at the specified limits.
-
-:::tip Fault execution flow chart
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault determines how an application accomodates multiple replicas of a given application pod at unexpected point in time.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes > 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -42,11 +39,11 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> REPLICA_COUNT </td>
-        <td> Number of replicas upto which we want to scale </td>
+        <td> Number of replicas to which you wish to scale. </td>
         <td> <code>nil</code> </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -55,36 +52,32 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The timeout for the chaos fault (in seconds) </td>
-        <td> Defaults to 60 </td>
-      </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Defaults to <code>litmus</code> </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 60s. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Replica counts
 
-It defines the number of replicas, which should be present in the targeted application during the chaos. It can be tuned via `REPLICA_COUNT` ENV.
+It defines the number of replicas that are required to be present in the target application during chaos. You can tune it using the `REPLICA_COUNT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-autoscaler/replica-count.yaml yaml)
+[embedmd]: # "./static/manifests/pod-autoscaler/replica-count.yaml yaml"
+
 ```yaml
-# provide the number of replicas 
+# provide the number of replicas
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -98,13 +91,13 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-autoscaler
-    spec:
-      components:
-        env:
-        # number of replica, needs to scale
-        - name: REPLICA_COUNT
-          value: '3'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-autoscaler
+      spec:
+        components:
+          env:
+            # number of replica, needs to scale
+            - name: REPLICA_COUNT
+              value: "3"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

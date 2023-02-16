@@ -1,7 +1,7 @@
 ---
 title: Using Manual Harness Approval Stages
 description: Approve or reject a Pipeline at any point in its execution using Manual Approval Stages.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: fkvso46bok
 helpdocs_category_id: 2d7y1cr09y
 helpdocs_is_private: false
@@ -130,7 +130,7 @@ See:
 
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Select Delegates with Selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### See also
 

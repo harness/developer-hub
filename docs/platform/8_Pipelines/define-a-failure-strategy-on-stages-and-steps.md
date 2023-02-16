@@ -1,7 +1,7 @@
 ---
 title: Define a Failure Strategy on Stages and Steps
 description: Currently, only the All Errors Failure Type is supported. A failure strategy defines how your stages and steps handle different failure conditions. The failure strategy contains error conditions that…
-# sidebar_position: 2
+sidebar_position: 11
 helpdocs_topic_id: 0zvnn5s1ph
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -30,9 +30,14 @@ For details on strategy options and how strategies work, see [Step and Stage Fai
 
 Here's a quick video of how to set up failure strategies:
 
+<!-- Video:
+https://www.youtube.com/watch?v=4KYGllvJ42U-->
+<docvideo src="https://www.youtube.com/watch?v=4KYGllvJ42U" />
+
 Here is what a Manual Intervention action looks like when a failure occurs:
 
 ![](./static/define-a-failure-strategy-on-stages-and-steps-11.png)
+
 You can select an option or, if the Manual Intervention exceeds its Timeout setting, select the Post Timeout Action that will happen automatically.
 
 ### Review: Failure Strategy takes Precedence over Conditional Execution

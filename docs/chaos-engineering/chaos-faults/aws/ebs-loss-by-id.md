@@ -1,33 +1,27 @@
 ---
 id: ebs-loss-by-id
-title: EBS Loss By ID
+title: EBS loss by ID
 ---
+EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.
+- In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
+- It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
-## Introduction
-- It Detaches an EBS volume from the EC2 instance for a specified chaos duration using instance ids.
-- In case of EBS persistent volumes, the volumes can get self-attached and the re-attachment step is skipped.
+![EBS Loss By ID](./static/images/ebs-loss-by-id.png)
 
-Tests deployment sanity (replica availability & uninterrupted service) and recovery workflows of the application pod.
-
-:::tip Fault execution flow chart
-![EBS Loss By ID](./static/images/ebs-loss.png)
-:::
-
-## Uses
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-- Ensure that Kubernetes Version > 1.17
-- Ensure that you have sufficient AWS access to attach or detach an EBS volume form the instance (as mentioned in permission section below). 
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes > 1.16.
+- Adequate AWS access to attach or detach an EBS volume for the instance. 
+- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -41,15 +35,16 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
-:::
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes.
 
-## Permission Requirement
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-- Here is an example AWS policy to execute ebs loss fault.
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -81,19 +76,18 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
-## Default Validations
 
-:::info
-- EBS volume is attached to the instance.
-:::
+## Default validations
 
-## Fault Tunables
+EBS volume is attached to the instance.
+
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -102,16 +96,16 @@ stringData:
       </tr>
       <tr>
         <td> EBS_VOLUME_ID </td>
-        <td> Comma separated list of volume IDs subjected to EBS detach chaos</td>
-        <td> Eg. ebs-vol-1,ebs-vol-2 </td>
+        <td> Comma-separated list of volume IDs subject to EBS detach. </td>
+        <td> For example, <code>ebs-vol-1,ebs-vol-2</code>. </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name for the target volumes</td>
-        <td> Eg. us-east-1 </td>
+        <td> Region name for the target volumes.</td>
+        <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -120,38 +114,38 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The time duration between the attachment and detachment of the volumes (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between the attachment and detachment of the volumes (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple volumes</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple volumes.</td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg: 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Detach Volumes By ID
+### Detach volumes by ID
 
-It contains comma separated list of volume IDs subjected to EBS detach chaos. It can be tuned via `EBS_VOLUME_ID` ENV.
+It contains a comma-separated list of volume IDs that will be subject to EBS detach. You can tune it using the `EBS_VOLUME_ID` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-id/ebs-volume-id.yaml yaml)
 ```yaml

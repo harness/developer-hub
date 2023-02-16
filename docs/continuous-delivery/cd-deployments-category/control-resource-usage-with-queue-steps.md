@@ -51,7 +51,7 @@ In **Advanced**, you can use the following options:
 
 * [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Select Delegates with Selectors](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ### Step 2: Test
 
@@ -59,7 +59,7 @@ Let's look at a simple example to show how Queue steps work.
 
 Here's the YAML for the Pipeline that contains a Custom Stage with a Queue Step followed by a [Shell Script](../cd-execution/cd-general-steps/using-shell-scripts.md) step that runs a Bash `sleep 30`.
 
-You can copy it and paste it into your Harness Project. You simply need to update the `projectIdentifier` and `orgIdentifier` settings to match your current [Project and Org](../../platform/1_Organizations-and-Projects/1-projects-and-organizations.md).
+You can copy it and paste it into your Harness Project. You simply need to update the `projectIdentifier` and `orgIdentifier` settings to match your current [Project and Org](../../platform/organizations-and-projects/projects-and-organizations.md).
 
 
 ```yaml

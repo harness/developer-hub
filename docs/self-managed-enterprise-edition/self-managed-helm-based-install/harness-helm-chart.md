@@ -17,24 +17,7 @@ Harness recommends Helm package manager for the installation and deployment of S
 
 The Harness Helm chart packages the core modules and components that are required to operate Harness at scale.
 
-For instructions on installing Self-Managed Enterprise Edition using Helm, see Install Harness Self-Managed Enterprise Edition Using Helm.
-
-## Supported modules
-
-Self-Managed Enterprise Edition supports the installation of the following Harness modules by Helm chart.
-
-
-
-| **Module** | **Helm Install** | **Notes** |
-| :-- | :-: | :-- |
-| Continuous Delivery | ✓ | Gitops is not included. |
-| Security Testing Orchestration | ✓ |  |
-| Service Reliability Management | ✓ | Error Tracking is not included. |
-| Continuous Integration | ✓ |  |
-| Feature Flags | X |  |
-| Cloud Costs Management | X |  |
-| Harness Chaos Engineering | X |  |
-| Harness Platform | ✓ | Policy as Code (Harness Policy Engine) and Custom Dashboards are not included. |
+For instructions on installing Self-Managed Enterprise Edition using Helm, see [Install Harness Self-Managed Enterprise Edition using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
 
 ## Requirements
 
@@ -47,22 +30,22 @@ Support each node with 8 cores vCPU and a minimum of 12 GB memory.
 The production environment requires the following resources.
 
 | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-| --- | --- | --- | --- | --- |
-| CD (including Platform) | 38 | 49.3 | 123.2 | 1070 |
-| CD and CI | 40 | 51.3 | 135.2 | 1070 |
-| CD and STO | 42 | 52.3 | 130.2 | 1070 |
-| CD, CI and STO | 44 | 54.3 | 142.2 | 1070 |
+| :-- | :-: | :-: | :-: | :-: |
+| Platform (including CD, GitOps, OPA) | 40 | 50.4 | 125.4 | 1090 |
+| CI | 2 | 2 | 12 | 0 |
+| STO | 4 | 3 | 7 | 0 |
+| FF | 3 | 3 | 6 | 0 |
 
 ### Development environment
 
 The development environment requires the following resources.
 
 | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
-| --- | --- | --- | --- | --- |
-| CD (including Platform) | 20 | 22.8 | 58.4 | 530 |
-| CD and CI | 21 | 23.8 | 64.4 | 530 |
-| CD and STO | 22 | 24.3 | 61.9 | 530 |
-| CD, CI and STO | 23 | 25.3 | 67.9 | 530 |
+| :-- | :-: | :-: | :-: | :-: |
+| Platform (including CD, GitOps, OPA) | 22 | 23.9 | 60.6 | 550 |
+| CI | 1 | 1 | 6 | 0 |
+| STO | 2 | 1.5 | 3.5 | 0 |
+| FF | 3 | 3 | 6 | 0 |
 
 ## Included components
 

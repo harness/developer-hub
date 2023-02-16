@@ -1,7 +1,7 @@
 ---
 title: Grype Scanner Reference
 description: You can set up a Security step with Grype to detect vulnerabilities and misconfigurations in your container images.
-sidebar_position: 35
+sidebar_position: 40
 ---
 
  You can set up a Security step with [Grype](https://github.com/anchore/grype) to detect vulnerabilities and misconfigurations in your container images.
@@ -24,7 +24,10 @@ sidebar_position: 35
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
 	- `container_access_id`: Username
-	- `container_access_token`: Password/token if `container_type` = `aws_ecr`
+	- `container_access_token`: Password/token 
++ if `container_type` = `aws_ecr`
+	- `container_access_id`: Username
+	- `container_access_token`: Password/token 
 	- `container_region`: Image registry AWS region
 + if `container_type` = `jfrog_artifactory`
 	- `container_access_id`: Username

@@ -46,7 +46,7 @@ For details on settings and permissions, see [Artifactory Connector Settings Ref
 	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 	2. **Anonymous (no credentials required)**.
 8. Click **Continue**.
-9. In **Delegates Setup,**use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+9. In **Delegates Setup,**use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 10. Click **Save and Continue**.
 11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -65,7 +65,7 @@ For details on settings and permissions, see [Docker Connector Settings Referenc
 	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 	2. **Anonymous (no credentials required)**.
 9. Click **Continue**.
-10. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+10. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 11. Click **Save and Continue**.
 12. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -73,7 +73,9 @@ For details on settings and permissions, see [Docker Connector Settings Referenc
 
 You can add Helm Charts from an HTTP Helm Repo. Once you set up the Connector, you can use it in a Stage to add your Helm Chart.
 
-Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](../../continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-charts.md).
+Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added to the service **Manifests** section and not its **Artifacts** section. 
+
+If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to the service **Artifacts** section. See [Deploy Helm Charts](../../continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-charts.md).
 
 For details on settings and permissions, see [HTTP Helm Repo Connector Settings Reference](ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
 
@@ -87,7 +89,7 @@ For details on settings and permissions, see [HTTP Helm Repo Connector Settings 
 	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 	2. **Anonymous (no credentials required)**.
 8. Click **Continue**.
-9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 10. Click **Save and Continue**.
 11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -106,7 +108,7 @@ Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart
 You don't need to include the `oci://` scheme in **Helm Repository URL**. Harness will preface the domain name you enter with `oci://`.
 7. In **Authentication**, in **Username and Password**, enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 8. Click **Continue**.
-9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 10. Click **Save and Continue**.
 11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
@@ -147,7 +149,9 @@ The AWS ECR authorization token in only valid for 12 hours. [This is an AWS limi
 
 ### Step: Add a Nexus Repository
 
-For details on settings and permissions, see [Nexus Connector Settings Reference](../8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).1. Open a Harness Project.
+For details on settings and permissions, see [Nexus Connector Settings Reference](../8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
+
+1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
 3. Click **New Connector**, and click **Nexus** in **Artifact Repositories**. The Nexus Repository settings appear.
 4. In **Name**, enter a name for this connector.
@@ -155,15 +159,15 @@ For details on settings and permissions, see [Nexus Connector Settings Reference
 6. Enter the **Nexus Repository URL**.
 7. Select a **Version**.
 8. In **Authentication**, select one of the following options:
-	1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
-	2. **Anonymous (no credentials required)**.
+  1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
+  2. **Anonymous (no credentials required)**.
 9. Click **Continue**.
-10. In **Delegates Setup****,**use any Delegate or enter [Tags](../2_Delegates/delegate-guide/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
+10. In **Delegates Setup****,**use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
 11. Click **Save and Continue**.
 12. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
 ### See also
 
-* [Select Delegates with Selectors](../2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Select Delegates with Selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 * [Add a Secrets Manager](../6_Security/5-add-secrets-manager.md)
 

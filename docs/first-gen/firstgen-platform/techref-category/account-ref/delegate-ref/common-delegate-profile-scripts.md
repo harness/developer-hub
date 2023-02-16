@@ -31,11 +31,11 @@ microdnf install wget
 
 ```
 # Install TF  
-microdnf install unzip  
-curl -O -L https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_darwin_amd64.zip  
-unzip terraform_1.1.9_darwin_amd64.zip  
-mv ./terraform /usr/bin/  
-# Check TF install  
+microdnf install unzip
+curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
+unzip terraform_1.3.5_darwin_amd64.zip
+mv ./terraform /usr/bin/
+# Check TF install
 terraform --version
 ```
 #### Upgrade Terraform
@@ -49,8 +49,8 @@ set +x
 apt-get update  
 apt-get install wget  
 apt-get -y install git  
-wget https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_darwin_amd64.zip apt-get install unzip  
-unzip terraform_1.1.9_darwin_amd64.zip  
+wget https://releases.hashicorp.com/terraform/1.1.9/terraform_1.3.5_darwin_amd64.zip apt-get install unzip  
+unzip terraform_1.3.5_darwin_amd64.zip  
 cp terraform /usr/bin/  
 terraform --version
 ```
@@ -59,13 +59,12 @@ terraform --version
 
 ```
 #Terraform  
-microdnf install unzip  
-microdnf install wget  
-curl -O -L https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_darwin_amd64.zip  
-unzip terraform_1.1.9_darwin_amd64.zip  
-yes | mv ./terraform /usr/bin/  
-# Check TF install  
-terraform --version  
+microdnf install unzip
+curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
+unzip terraform_1.3.5_darwin_amd64.zip
+mv ./terraform /usr/bin/
+# Check TF install
+terraform --version 
   
 #Terragrunt  
 microdnf install unzip  

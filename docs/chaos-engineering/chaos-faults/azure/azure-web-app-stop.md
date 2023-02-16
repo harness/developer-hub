@@ -1,32 +1,24 @@
 ---
 id: azure-web-app-stop
-title: Azure Web App Stop
+title: Azure web app stop
 ---
 
-## Introduction
-- It shutdowns the app and verify if the requests are re-routed to another instance on app service.
-- It helps to check the performance of the web application when subjected to such chaos scenario.
+Azure web app stop shuts down the application. It checks whether the requests have been re-routed to another instance on the application service.
 
-:::tip Fault execution flow chart
 ![Azure Web App Stop](./static/images/azure-web-app-stop.png)
-:::
 
-## Uses
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-Web App stop is another very frequent scenario we find with Azure web app service which stops a running web app and impacts its delivery. Such scenarios can still occur despite whatever availability aids web app service provides.
+## Use cases
+Azure web app stop
+- Determines the resilience of a web application to unplanned halts (or stops). 
+- Determines the resilience based on how quickly and efficiently the application recovers from the failure by re-routing the traffic to a different instance on the same application service. 
 
-Stopping the web app will disrupt its performance and impact the smooth working of the application. So this category of chaos fault helps to build immunity to the application undergoing any such scenarios.
-</div>
-</details>
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- Appropriate Azure access to start and stop the web applications.
+- The target Azure web application should be in the running state. 
+- Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
-## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-- Ensure that you have sufficient Azure access to stop and start web apps. 
-- We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -48,18 +40,12 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
+- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 :::
 
-## Default Validations
-:::info
-- Azure target web app should be in running state.
-:::
+## Fault tunables
 
-## Fault Tunables
-<details>
-    <summary>Check the Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+<h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -68,16 +54,16 @@ stringData:
         </tr>
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
-            <td> Name of Azure web app services to target.</td>
-            <td> Provide comma-separated names of the web apps </td>
+            <td> Name of the Azure web application services to target.</td>
+            <td> Comma-separated names of web applications. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-stop#stop-web-app-by-name"> stop Azure web app by name.</a></td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
-            <td> The resource group of the target web apps</td>
-            <td> All the web apps must belong to the same resource group </td>
+            <td> Name of the resource group for the target web applications. </td>
+            <td> All the web applications must belong to the same resource group. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-stop#stop-web-app-by-name"> resource group field in the YAML file. </a></td>
         </tr> 
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -86,38 +72,32 @@ stringData:
         </tr>
         <tr> 
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (sec) </td>
-            <td> Defaults to 30s </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
         </tr>
         <tr> 
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive instance poweroff.</td>
-            <td> Defaults to 30s </td>
+            <td> Time interval between two successive instance power offs (in seconds).</td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance</td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
-</details>
 
-## Fault Examples
 
-### Common Fault Tunables
+### Stop web application by name
 
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
+It specifies a comma-separated list of web application names subject to chaos. Tune it by using the `AZURE_WEB_APP_NAMES` environment variable.
 
-### Stop Web App By Name
-
-It contains comma separated list of web app names subjected to web app stop chaos. It can be tuned via `AZURE_WEB_APP_NAMES` ENV.
-
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-app-stop/web-app-stop.yaml yaml)
 ```yaml
@@ -135,7 +115,7 @@ spec:
     spec:
       components:
         env:
-        # comma separated names of the Azure web app
+        # comma-separated names of the Azure web app
         - name: AZURE_WEB_APP_NAMES
           value: 'webApp-01,webApp-02'
         # name of the resource group

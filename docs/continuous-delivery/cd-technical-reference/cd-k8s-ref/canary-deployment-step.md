@@ -20,6 +20,25 @@ In this step, you will define how many pods are deployed for a Canary test of th
 
 See [Create a Kubernetes Canary Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md).
 
+## YAML
+
+```YAML
+              - step:
+                  type: K8sCanaryDeploy
+                  name: Canary Deploy
+                  identifier: Canary_Deploy
+                  spec:
+                    skipDryRun: false
+                    instanceSelection:
+                      type: Count
+                      spec:
+                        count: 1
+                  timeout: 10m
+```
+
+
+
+
 ## Name
 
 Enter the name for the step.
@@ -52,7 +71,7 @@ See the following topics for these settings:
 
 * [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Select Delegates with Selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ## See Also
 

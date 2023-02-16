@@ -71,7 +71,7 @@ To test use the AWS account when running [aws secretsmanager list-secrets](https
 
 ### Step 1: Add a Secret Manager
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can add a Connector from any module in your Project in Project SETUP, or in your Organization, or Account Resources.
 
@@ -163,7 +163,7 @@ Enter the AssumeRole Session Duration. See Session Duration in the [AssumeRole A
 
 ### Step 4: Setup Delegates
 
-In **Setup Delegates,** enter [**Selectors**](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector.
+In **Setup Delegates,** enter [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector.
 
 ### Step 5: Test Connection
 

@@ -155,7 +155,7 @@ Create the Infrastructure Definition for the target hosts.
    
    ![](./static/ssh-ng-178.png)
    
-   If you do not have a Delegate installed, go to [Delegate how-to](../../../platform/2_Delegates/delegate-guide/delegate-how-tos.md) and follow one of the installation topics.
+   For information on installing a delegate, see [Delegate installation overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 15. Click **Finish**. The Infrastructure Definition is updated with the PDC Connector.
   
 ![](./static/ssh-ng-179.png)

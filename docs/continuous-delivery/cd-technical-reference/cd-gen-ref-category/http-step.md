@@ -67,6 +67,8 @@ For example, in **Key**, enter `Token` .
 
 In **Value**, enter `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
 
+You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [Add and Manage API Keys](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/).
+
 Another example:
 
 * **Key**: `variable:`
@@ -121,7 +123,7 @@ In Advanced, you can use the following options:
 
 * [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ## Header Capability Check
 

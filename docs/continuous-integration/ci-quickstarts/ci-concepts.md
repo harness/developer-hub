@@ -13,7 +13,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness CI simplifies the development and testing of code. In Harness Pipelines, you visually model your build and test processes as CI Stages. Each Stage includes steps for building, testing, and pushing your code.
+Harness CI simplifies the development and testing of code. In Harness CI pipelines, you visually model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code.
 
 CI executes steps as containers, packaging code, and dependencies in isolation from other steps. You simply specify a container to use, and Harness locates and launches the container in which the job will run. There is no longer a dependency chain to manage with Steps and Plugins running in their own containers.
 
@@ -40,7 +40,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ### CI Overview
 
-Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness CI extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies CI Pipelines, enabling you to model stages visually, and automates all processes of building and testing software.
+Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness CI extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies CI pipelines, enabling you to model stages visually, and automates all processes of building and testing software.
 
 ### Architecture
 
@@ -50,17 +50,17 @@ The architecture diagram of the Harness CI setup is as follows:
 
 <docimage path={require('./static/ci-concepts-10.png')} />
 
-The [Harness Delegate](../../platform/2_Delegates/delegates-overview.md) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers. See also [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
+The [Harness Delegate](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers. See also [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md).
 
 The build infrastructure communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms such as GitHub or DockerHub.
 
-The Delegate manages your build instructure to run build jobs and tests as needed, and sends data back to the Harness Manager. You can use this data for DAG orchestration, debugging, health checks, analytics, notifications, and the generation of ML models.
+The Delegate manages your build infrastructure to run build jobs and tests as needed, and sends data back to the Harness Manager. You can use this data for DAG orchestration, debugging, health checks, analytics, notifications, and the generation of ML models.
 
 When a Build finishes successfully, the build infrastructure then sends the artifacts to the registry of your choice.
 
 ### Demo: Set Up a CI Pipeline
 
-Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through this workflow yourself in the [CI Tutorial](ci-pipeline-quickstart.md).
+Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through this workflow yourself in the [CI Tutorial](ci-pipeline-quickstart.md) or [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -72,7 +72,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 #### Test Intelligence
 
-Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. See [Test Intelligence Overview](test-intelligence-concepts.md).
+Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. For more information, go to [Test Intelligence Overview](test-intelligence-concepts.md).
 
 <!-- ![](./static/ci-concepts-600.png) -->
 
@@ -84,7 +84,7 @@ Test Intelligence (TI) reduces test time significantly by running only the tests
 
 <docimage path={require('./static/ci-concepts-501.png')} />
 
-Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](../../continuous-delivery/cd-deployments-category/deployment-concepts.md), [Cloud Cost Management](/docs/category/set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/1-ff-onboarding/1-cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.
+Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](../../continuous-delivery/cd-deployments-category/deployment-concepts.md), [Cloud Cost Management](/docs/category/set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/ff-onboarding/cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the Pipeline. Harness platform offers unified CI/CD Pipelines with visual controls and approval gates.
 
 #### Containerized Steps
 
@@ -104,7 +104,7 @@ Scripting Pipelines can be time-consuming and tedious. You may also be unaware o
 
 #### Harness Git Experience
 
-Harness Git Experience provides seamless integration between your Harness Projects, Pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This will trigger a build within Harness CI once a commit is detected. See [Git Experience](../../platform/10_Git-Experience/harness-git-experience-overview.md).
+Harness Git Experience provides seamless integration between your Harness projects, pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This will trigger a build within Harness CI once a commit is detected. See [Git Experience](../../platform/10_Git-Experience/harness-git-experience-overview.md).
 
 <!-- ![](./static/ci-concepts-506.png) -->
 
@@ -128,17 +128,17 @@ Harness CI provides the following options as Step Library.
 
 #### Shared Path
 
-Shared Path in a Stage allows you to share data in the Stage. By default, all of a Stage’s Steps use the same workspace to share data. By default, `/harness` is the working directory and is shared by all the Steps of the Stage. For example, the Maven m2 repo is stored in `/root/.m2` by default. So you can specify the same shared paths `/root/.m2` when using the Maven install in a later Step.
+Shared Path in a Stage allows you to share data in the Stage. By default, all of a Stage's Steps use the same workspace to share data. By default, `/harness` is the working directory and is shared by all the Steps of the Stage. For example, the Maven m2 repo is stored in `/root/.m2` by default. So you can specify the same shared paths `/root/.m2` when using the Maven install in a later Step.
 
 If you need to share additional volumes, you can add Shared Paths.
 
-#### Service Dependencies
+#### Dependent and background services
 
-If you decide to split your pipeline into multiple stages, you need to make sure each Stage has access to any dependencies. A typical use case for services is when your unit tests require a running Redis server. Service Dependencies are also run in an isolated container, so you don't need to handle the dependencies. See [Configure Service Dependency](../ci-technical-reference/configure-service-dependency-step-settings.md).
+If you decide to split your pipeline into multiple stages, you need to make sure each stage has access to any dependencies. An example of a use case for background services is when your unit tests require a running Redis server. Background services can run in an isolated container or on the host. For information about configuring and calling background services, go to [Background step settings](../ci-technical-reference/background-step-settings.md).
 
 #### Plugins
 
-Plugins are Docker containers that perform predefined tasks and are configured as Steps in your Stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more. See [Plugin Step Settings](../ci-technical-reference/plugin-step-settings-reference.md).
+Plugins are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more. Go to [Plugin Step Settings](../ci-technical-reference/plugin-step-settings-reference.md).
 
 #### Caching
 
@@ -152,18 +152,12 @@ This is different from other CI vendors that are limited to local caching and pe
 
 You can also specify the same Docker repo for multiple Build and Push steps, which enables them to share the same remote cache.
 
-Remote Docker Layer Caching can dramatically improve build time by sharing layers across Pipelines, Stages, and Steps.
+Remote Docker Layer Caching can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
 #### Artifact Repos
 
-Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS to which you can push your artifacts. Object storage repos are set up as Pipeline Steps by using the Upload Artifacts step from the Step library.
+Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS to which you can push your artifacts. Object storage repos are set up as pipeline steps by using the Upload Artifacts step from the Step library.
 
-### Try It Yourself
+### Try Harness CI
 
-Interested in trying CI yourself? No need to wait any longer! Book your [Demo](https://harness.io/demo) and give it a spin! The [CI Pipeline Quickstart](ci-pipeline-quickstart.md) should assist you in getting started.
-
-### See Also
-
-[CI Pipeline Quickstart](ci-pipeline-quickstart.md)
-
-[Test Intelligence](test-intelligence-concepts.md)
+Interested in trying CI for yourself? No need to wait any longer! Book your [Demo](https://harness.io/demo) and [Get started for free with the fasted CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).

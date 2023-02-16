@@ -1,7 +1,7 @@
 ---
 title: Adding ServiceNow Approval Steps and Stages
 description: Describes how to add ServiceNow-based approvals for a Pipeline.
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: h1so82u9ub
 helpdocs_category_id: 2d7y1cr09y
 helpdocs_is_private: false
@@ -95,7 +95,7 @@ The start and end times use the time zone set in the ServiceNow account selected
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](../2_Delegates/delegate-guide/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
+* [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-step-using-tags)
 * [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 

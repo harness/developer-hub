@@ -1,7 +1,7 @@
 ---
 title: Harness API Quickstart
 description: This document explains the steps to get started with Harness NG APIs.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: f0aqiv3td7
 helpdocs_category_id: pm96bpz4kf
 helpdocs_is_private: false
@@ -277,7 +277,9 @@ To explore the Harness API, see [Harness API Reference Docs](https://harness.io/
 
 ### Notes
 
-* **Rate Limiting:** the Harness API does not impose any rate limits per account. Harness reserves the right to change these limits, to optimize performance for all API consumers.
+* **Rate Limiting:** Harness uses rate limiting to control API traffic and ensure the stability of the system. The Harness APIs are protected against sudden large bursts of traffic, and sustained high volumes of requests, for example, frequent polling.
+    The rate limit set in Harness is 1000 requests per minute per API key. Harness reserves the rights to change this limit at any time to protect the platform.
+
 * **Cross-origin Resource Sharing (CORS):** Harness APIs support CORS. This allows interactions between resources from different origins, which is normally prohibited to prevent malicious behavior. Each request must provide credentials (personal access tokens and service access tokens are both supported options).
 * **Errors:** Harness uses conventional HTTP response codes to indicate the success or failure of an API request.
 
@@ -292,5 +294,8 @@ To explore the Harness API, see [Harness API Reference Docs](https://harness.io/
 | 402 - Request Failed | The request cannot be processed. |
 | 403 - Forbidden | The API Key does not have permission to perform the request. |
 | 404 - Not Found | The requested resource does not exist. |
+| 429 - Server Errors | The rate limit is exceeded. |
 | 500, 502, 503, 504 - Server Errors | The Harness server encountered an unexpected error. |
+
+
 

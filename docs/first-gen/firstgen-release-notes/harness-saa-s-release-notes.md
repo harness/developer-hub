@@ -12,9 +12,162 @@ Harness progressively deploys updates to different Harness cluster hosting accou
 
 Harness is updated regularly. This document describes recent changes.
 
-For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md).Release notes are displayed with the most recent release first.
+For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+### February 15, 2023, version 78421
+
+#### What's new
+
+- LDAP throws a null pointer exception if more than one user is returned for a given base DN and search query. (PL-31106)
+
+  A code enhancement has fixed this and an appropriate error message is displayed.
+
+#### Early access
+
+No early access features are available in this release.
+
+#### Fixed issues
+
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+
+### February 6, 2023, version 78321
+
+#### What's new
+
+- The elastic search client version is upgraded to `7.17.7`. (PL-30666)
+
+#### Early access
+
+- The feature flag `NOTIFY_GIT_SYNC_ERRORS_PER_APP` lets you receive git sync error alerts. (PL-29306)
+  
+  The alert contains the name of the application where the git sync error occurred.
+
+- You can delete a user provisioned in Harness through SCIM in FirstGen and retain the user in NextGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
+
+
+#### Fixed issues
+
+- When the scheduling of background jobs is skipped during startup, background jobs like the deletion of old records do not work.  (PL-31009)
+   
+  A code enhancement has fixed this issue.
+
+- Selecting a specific audit filter for an API key causes the UI to become unresponsive. (PL-30715, ZD-38400)
+  
+  An added check ensures that only essential data is sent for display. This has fixed the issue.
+
+- SAML users removed from the LDAP group are displayed in the linked user group in Harness. (PL-30291, ZD-37758)
+
+  A code enhancement has fixed this issue.
+
+
+### January 17, 2023, version 78105
+
+Delegate version: 78101
+
+#### What's new
+
+- Convert imperative Kubernetes rollback to declarative rollback. (CDS-2993)
+
+  This functionality is behind a feature flag: `CDP_USE_K8S_DECLARATIVE_ROLLBACK_NG`.
+
+  Harness applies Kubernetes manifest  using `kubectl apply`, which is a declarative way of creating Kubernetes objects. But when rolling back, we perform `kubectl rollout undo workloadType/workloadName --to-revision=<REVISION_NUMBER>`, which is an imperative way of rolling back. Using imperative and declarative commands together is not recommended and can cause issues.
+
+ In some instances, the workload spec was not updated properly when `rollout undo` was performed. Subsequent deployments then refered to an invalid spec of the workload and caused Kubernetes issues like [kubectl rollout undo should warn about undefined behaviour with kubectl apply](https://github.com/kubernetes/kubernetes/issues/94698).
+
+  **What is the fix?**
+  We had to redesign our release history to store all rendered manifests in secrets, just like Helm does. While rolling back, we are now reapplying the last successful release's manifests. This solves this issue.
+
+  **What is the impact on customers?**
+    - Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
+    - The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/).
+
+#### Early access
+
+- Support for AWS S3 as a Terraform script file source for the Terraform Provision and Apply steps. (CDS-2970)
+  
+  This functionality is behind a feature flag: `CDS_TERRAFORM_S3_SUPPORT`.
+  
+  You can now use AWS S3 as a file source in the Terraform [Provision](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/terraform-provisioner-step) and [Apply](https://developer.harness.io/docs/first-gen/continuous-delivery/terraform-category/using-the-terraform-apply-command) steps.
+
+#### Fixed issues
+
+- Clicking on the **Forgot password** button after disabling SSO authentication is redirecting to the Harness FirstGen authentication UI. (PL-24649)
+  
+  This is now fixed and users are redirected to the NextGen authentication UI.
+
+### January 5, 2023, version 78105
+
+Delegate version: 78100
+
+#### What's new
+  
+- Add the status of the collection in the artifactsource response in GraphQL API. (CDS-44426)
+  
+  You can retrieve the value of the collectionEnabled field for an Artifact Source using GraphQL APIs, like in the example below:
+  ```
+    {
+      services(limit: 5) {
+        nodes {
+          name
+          artifactSources {
+            name
+            collectionEnabled
+          }
+        }
+      }
+    }	
+  ```
+  
+- Delegate tasks are now limited based on account. (DEL-5371)
+
+  Limits are being introduced on the maximum number of tasks that can be created based on the account. Enforcement of task limits will be implemented at a later date and based on the product license.
+  
+- The following libraries of the Apache CXF open-source services framework (`org.apache.cxf`) were upgraded to version 3.5.5 to fix vulnerabilities. The delegate base image was updated from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7` to reflect these changes. (DEL-5591)
+
+  The Apache CXF libraries were found to be vulnerable to exploits including reflected Cross-Site Scripting (XSS) and code exfiltration. For a list of Common Vulnerabilities and Exposures (CVEs), see [CVE Details](https://www.cvedetails.com/vulnerability-list/vendor_id-45/product_id-19906/Apache-CXF.html). 
+  
+  | Library name and version | 
+  | :-- |
+  | `org.apache.cxf:cxf-core:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-bindings-soap:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-bindings-xml:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-databinding-jaxb:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-frontend-jaxws:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-frontend-simple:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-transports-http-hc:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-transports-http:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-ws-addr:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-ws-policy:3.5.4` | 
+  | `org.apache.cxf:cxf-rt-wsdl:3.5.4` | 
+ 
+- The following libraries of the `io.netty:netty*` client/server framework were updated to version 4.1.86.Final to fix vulnerabilities. (DEL-5632)
+
+  The `io.netty:netty*` libraries were upgraded to mitigate the risk of denial-of-service (DoS) attack. Netty versions 4.1.0 to 4.1.67 are vulnerable, for example, to the exploits described in [CVE02021-37136](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37136) and [CVE-2021-37137](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2021-37137). 
+  
+  | Library name and version | 
+  | :-- | 
+  | `io.netty:netty-all:4.1.77.Final` | 
+  | `io.netty:netty-buffer:4.1.77.Final` |
+  | `io.netty:netty-handler-proxy:4.1.77.Final` |
+  | `io.netty:netty-common:4.1.77.Final` |
+  | `io.netty:netty-handler:4.1.77.Final` |
+  | `io.netty:netty-resolver-dns:4.1.77.Final` |
+  | `io.netty:netty-resolver:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-epoll:linux-x86_64:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-kqueue:4.1.77.Final` | 
+  | `io.netty:netty-transport-native-unix-common:4.1.77.Final` | 
+  | `io.netty:netty-transport:4.1.77.Final` |
+
+#### Fixed issues
+  
+- `DelegateGroup` is not removed from the database or the UI after the associated delegate is deleted (DEL-3913)
+  - Changed code to ensure that an inactive delegate is deleted from the UI after seven days.
+  
+
 
 ### December 22, 2022, version 77908
 
@@ -104,7 +257,7 @@ Delegate: 77609
 
 #### Fixed issues
 
-* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](../../platform/2_Delegates/delegates-overview.md). (DEL-4888)
+* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md). (DEL-4888)
 * Removed the delegate dependency on Java driver component `mongo-java-driver` . This eliminates vulnerability [CVE-2021-20328](https://nvd.nist.gov/vuln/detail/CVE-2021-20328) affecting client-side field level encryption (CSFLE). (DEL-5308)
 * Changed the base image that the non-legacy delegate uses to `redhat/ubi8-minimal:latest`. This ensures that each release includes all OS-level security updates. (DEL-5386)
 * Disabling the feature flag `LDAP_SECRET_AUTH` restricts referencing secrets for LDAP connection. (PL-29668)  
@@ -1181,9 +1334,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73700 |
 | Portal | 1.0.74407-000 |
 | Delegate | 1.0.74407-000 |
@@ -1222,9 +1374,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73604 |
 | Portal | 1.0.74307-000 |
 | Delegate | 1.0.74307-000 |
@@ -1261,9 +1412,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73502 |
 | Portal | 1.0.74214-000 |
 | Delegate | 1.0.74214-000 |
@@ -1300,9 +1450,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73402 |
 | Portal | 1.0.74109-000 |
 | Delegate | 1.0.74109-000 |
@@ -1349,9 +1498,8 @@ The following new features are added to the Harness SaaS components:
 The following table lists the component versions in this release.
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73300 |
 | Portal | 1.0.74006-000 |
 | Delegate | 1.0.74006-000 |
@@ -1395,9 +1543,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73200 |
 | Portal | 1.0.73913-000 |
 | Delegate | 1.0.73913-000 |
@@ -1435,9 +1582,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73100 |
 | Portal | 1.0.73803-000 |
 | Delegate | 1.0.73803-000 |
@@ -1477,9 +1623,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 73002 |
 | Portal | 1.0.73717-000 |
 | Delegate | 1.0.73717-000 |
@@ -1518,9 +1663,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72900 |
 | Portal | 1.0.73609-000 |
 | Delegate | 1.0.73609-000 |
@@ -1555,9 +1699,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72800 |
 | Portal | 1.0.73503-000 |
 | Delegate | 1.0.73503-000 |
@@ -1592,9 +1735,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
-| --- | --- |
 | **Component** | **Version** |
+| --- | --- |
 | UI | 72700 |
 | Portal | 1.0.73406-000 |
 | Delegate | 1.0.73406-000 |
@@ -1632,9 +1774,8 @@ The following table lists the component versions in this release.
 
 
 
-|  |  |
+| **Component**  | **Version**  |
 | --- | --- |
-| **Component** | **Version** |
 | UI | 72500 |
 | Portal | 1.0.73316-000 |
 | Delegate | 1.0.73316-000 |

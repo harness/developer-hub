@@ -22,7 +22,7 @@ With a Harness artifact, you can template your manifests, detaching them from a 
 
 Make sure you've reviewed and set up the following:
 
-* [Install a Kubernetes Delegate](../../../platform/2_Delegates/delegate-guide/install-a-kubernetes-delegate.md). You must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
+* [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md). You must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
 * [Kubernetes Deployments Overview](kubernetes-deployments-overview.md)
 
 ## Visual Summary

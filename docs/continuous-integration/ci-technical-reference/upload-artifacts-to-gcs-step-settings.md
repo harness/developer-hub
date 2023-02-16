@@ -1,9 +1,7 @@
 ---
 title: Upload Artifacts to GCS Step Settings
 description: This topic provides settings for the Upload Artifacts to GCS step, which uploads artifacts to Google Cloud Storage. See Uploads and downloads in the Google Cloud docs. Name. The unique name for this…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 140
 helpdocs_topic_id: 3qeqd8pls7
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -22,8 +20,7 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 ### GCP Connector
 
-The Harness Connector for the GCP account where you want to upload the artifact. See [Google Cloud Platform (GCP) Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
-
+The Harness connector for the GCP account where you want to upload the artifact. For more information, go to [Google Cloud Platform (GCP) connector settings reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md). This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 ### Bucket
 
 GCS destination bucket name.

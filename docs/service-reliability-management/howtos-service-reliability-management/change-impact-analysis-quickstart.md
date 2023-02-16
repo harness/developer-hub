@@ -23,7 +23,7 @@ This topic describes how you can correlate change events and understand their im
 
 ### Prerequisites
 
-* Install a [Harness Kubernetes (K8S) Delegate](../../platform/2_Delegates/delegate-installation-overview.md) and ensure that this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled
+* Install a [Harness Kubernetes (K8S) Delegate](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md) and ensure that this Delegate is able to communicate with Harness Manager. Also, the Delegate must be gRPC protocol enabled
 * Ensure that the installed Delegate can communicate with the Health Source and Change Source
 
 ### Step 1: Add a New Monitored Service

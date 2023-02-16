@@ -5,6 +5,7 @@ import Head from "@docusaurus/Head";
 import "./CoveoSearch.scss";
 
 // Space => keyCode: 32
+const RESP_BREAK_POINT = 996;
 
 const CoveoSearch = () => {
   const searchBoxEl = useRef(null);
@@ -14,7 +15,8 @@ const CoveoSearch = () => {
     location: { pathname },
   } = useHistory();
   const checkCoveo = () => {
-    const coveoJustLoaded = !isCoveoLoaded && !!window.Coveo;
+    // const coveoJustLoaded = !isCoveoLoaded && !!window.Coveo;
+    const coveoJustLoaded = !!window.Coveo;
     if (coveoJustLoaded) {
       setIsCoveoLoaded(true);
     } else {
@@ -22,17 +24,19 @@ const CoveoSearch = () => {
     }
   };
 
-  useEffect(() => {
-    checkCoveo();
-  }, []);
+  // useEffect(() => {
+  //   checkCoveo();
+  // }, []);
 
   useEffect(() => {
+    checkCoveo();
     const elemSearchResultConainer = searchResultsEl.current;
-    if (
-      window.Coveo &&
-      elemSearchResultConainer.getElementsByClassName("coveo-search-results")
-        .length < 1
-    ) {
+    const searchSesultsElemLen =
+      elemSearchResultConainer.getElementsByClassName(
+        "coveo-search-results"
+      ).length;
+
+    if (window.Coveo && searchSesultsElemLen < 1) {
       /*
       const elemSearchMask = document.getElementById("coveo-search-mask");
       if (elemSearchMask) {
@@ -65,7 +69,7 @@ const CoveoSearch = () => {
                 <div class="coveo-main-section">
                     <div class="coveo-facet-column">
                         <div class="CoveoDynamicFacet" data-title="Source" data-field="@commonsource" data-tab="All" data-enable-facet-search="false" data-number-of-values="10" data-custom-sort="Harness Hub"></div>
-                        <div class="CoveoDynamicFacet" data-title="Category" data-field="@categoryname" data-tab="All" data-enable-facet-search="false" data-number-of-values="15"></div>
+                        <div class="CoveoDynamicFacet" data-title="Content Type" data-field="@categoryname" data-tab="All" data-enable-facet-search="false" data-number-of-values="15"></div>
                         <div class="CoveoDynamicFacet" data-title="Module" data-field="@commonmodule" data-tab="All" data-enable-facet-search="false" data-number-of-values="10"></div>
                     </div>
                     <div class="coveo-results-column">
@@ -100,19 +104,15 @@ const CoveoSearch = () => {
                     </div>
                 </div>
             </div>`;
-        let coveoRoot = document.getElementById("coveo-search");
+        let coveoRoot = searchRoot.querySelector("#coveo-search"); // document.getElementById("coveo-search");
 
-        /* it's more secure to use token, but the new API key got in Dec 2022 doesn't have permission to call the Coveo APIs to generate token.
         const resToken = await fetch(
           "https://next.harness.io/api/gettoken-all/"
         );
         const dataToken = await resToken.json();
         const orgId = dataToken?.orgId;
         const apiToken = dataToken?.apiKey;
-        */
-        const orgId = "harnessproductionp9tivsqy";
-        const apiKey = "xx37be67b8-68cb-49d1-8f39-1de3f72cdda5";
-        Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiKey);
+        Coveo.SearchEndpoint.configureCloudV2Endpoint(orgId, apiToken);
 
         const elemSearchMask = document.getElementById("coveo-search-mask");
         const elemDocusaurusRoot = document.getElementById("__docusaurus");
@@ -142,7 +142,9 @@ const CoveoSearch = () => {
           let q = args.queryBuilder.expression.build();
           if (q) {
             searchRoot.style.display = "block";
-            activeSearchMask.style.display = "block";
+            if (window.innerWidth > RESP_BREAK_POINT) {
+              activeSearchMask.style.display = "block";
+            }
             // if (elmContent) {
             //   elmContent.style.display = "none";
             // }
@@ -153,6 +155,8 @@ const CoveoSearch = () => {
             //   elmContent.style.display = "block";
             // }
           }
+          window.dispatchEvent(new Event("resize"));
+          window.dispatchEvent(new Event("orientationchange"));
         });
         Coveo.$$(coveoRoot).on("afterInitialization", function (e, args) {
           Coveo.state(coveoRoot, "f:@commonsource", ["Developer Hub"]);
@@ -189,18 +193,14 @@ const CoveoSearch = () => {
         });
 
         // Coveo.$$(coveoRoot).on("newQuery", function (e, args) {
-        //   console.log("...1.newQuery..", e, args);
         // });
         // Coveo.$$(coveoRoot).on("duringQuery", function (e, args) {
-        //   console.log("...2.duringQuery..", e, args);
         // });
 
         Coveo.init(coveoRoot, {
           externalComponents: [searchboxRoot],
         });
       })();
-      // }, 900);
-      // }, false);
     }
   }, [isCoveoLoaded, pathname]);
   return (
@@ -218,7 +218,8 @@ const CoveoSearch = () => {
       </Head>
       {isCoveoLoaded && (
         <Head>
-          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn/js/coveo_template.js"></script>
+          <script src="https://cdn.jsdelivr.net/gh/wei-harness/cdn@v0.2.2/js/coveo_template.js"></script>
+          {/* <script src="/coveo_template.js"></script> */}
         </Head>
       )}
       <div id="searchBoxCoveo" ref={searchBoxEl}></div>

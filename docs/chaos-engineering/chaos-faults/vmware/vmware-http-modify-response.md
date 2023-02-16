@@ -1,25 +1,26 @@
 ---
-id: vmware-http-modify-response
-title: VMware HTTP Modify Response
+id: VMware-http-modify-response
+title: VMware HTTP modify response
 ---
+VMware HTTP modify response injects HTTP chaos by modifying the status code, body or the headers, which affects the request (or response).  
+- Chaos is injected by starting the proxy server and redirecting the traffic through the proxy server.
+- It tests the application's resilience to erroneous (or incorrect) HTTP response body.
+- It modifies the headers of the requests and the responses of the service. This helps test the service's resilience towards incorrect or incomplete headers.
 
-## Introduction
 
-- It injects HTTP chaos that affects the request or response by modifying the status code, body or the headers. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
-- It tests the application's resilience to error code HTTP responses from the application server.
-- It tests the application's resilience to error or incorrect HTTP response body.
-- It modifies the headers of requests and responses of the service. This is used to test the service resilience towards incorrect or incomplete headers.
-
-:::tip Fault execution flow chart
 ![VMware HTTP Modify Response](./static/images/vmware-http-modify-response.png)
-:::
 
-## Prerequisites
+## Use cases
 
-:::info
-- Kubernetes >= 1.17
-- Vcenter access to stop and start the VM.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- VMware HTTP modify response determines the resilience of an application to modifications in the status code or body or header of the request (or response). 
+- It measures how accurately the application spots incorrect HTTP response body.
+
+
+**Note**
+- Kubernetes >= 1.17 is required to execute this fault.
+- Adequate vCenter permissions should be provided to start and stop the VMs.
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -34,24 +35,9 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
+## Fault tunables
 
-You can pass the VM credentials as a secret or as a chaosengine environment variable.
-:::
-
-## Default Validations
-
-:::info
-
-- The VM should be in a healthy state.
-
-:::
-
-## Fault Tunables
-
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+  <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -60,68 +46,67 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
         </tr>
         <tr>
             <td> VM_NAME </td>
-            <td> Name of VMware VM</td>
-            <td> For example: test-vm </td>
+            <td> Name of the VMware VM. </td>
+            <td> For example, <code>test-vm</code>. </td>
         </tr>
         <tr>
             <td> VM_USER_NAME </td>
             <td> Username with sudo privileges.</td>
-            <td> For example: vm-user</td>
+            <td> For example, <code>vm-user</code>. </td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
-            <td> User password </td>
-            <td> For example: 1234</td>
+            <td> User password. </td>
+            <td> For example, <code>1234</code>. </td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
-            <td> Service port to target </td>
-            <td> Its default value is port 80 </td>
+            <td> Service port to target. </td>
+            <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#target-service-port"> target service port.</a></td>
         </tr>
         <tr>
             <td> HTTP_CHAOS_TYPE </td>
-            <td> Type of HTTP Modify Response chaos to be injected. </td>
-            <td> Accepted values are 'status_code', 'body', 'header'. Its default value is 'status_code'. </td>
+            <td> Type of the HTTP modify response chaos that is injected. </td>
+            <td> Defaults to 'status_code'. It accepts 'body', and 'header' as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-response-status-code"> modifying status code of the response.</a></td>
         </tr>
     </table>
-    <h2> Status Code Modification Related Fields </h2>
+    <h3> Status code modification fields </h3>
     <table>
     <tr>
         <td> STATUS_CODE </td>
-        <td> Modified status code for the HTTP response</td>
-        <td> If no value is provided, a random value is selected from the list of supported values.
-        Multiple values can be provided as comma separated values, and a random value from the list is selected
-        Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
-        Its default value is a random status code </td>
+        <td> Modified the status code for the HTTP response. </td>
+        <td> If no value has been provided, a random value is selected from the list of supported values.
+        Multiple values can be provided as comma-separated values, and a random value from the list is selected.
+        Supported values include 200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504. Defaults to a random status code. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-response-status-code"> modify status code of response. </a></td>
     </tr>
     <tr>
         <td> MODIFY_RESPONSE_BODY </td>
-        <td> Whether to modify the body according to the status code provided.</td>
-        <td> If true, the body is replaced by a default template for the status code. Its default value is 'True'. </td>
+        <td> Specify if the body should be modified according to the status code provided. </td>
+        <td> Defaults to true, wherein the body is replaced by a default template for the status code. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-response-status-code"> modify response body field. </a></td>
     </tr>
     </table>
-    <h2> Body Modification Related Fields </h2>
+    <h3> Body modification fields </h3>
     <table>
         <tr>
             <td> RESPONSE_BODY </td>
-            <td> Body string to overwrite the http response body</td>
-            <td> If no value is provided, response will be an empty body. Its default is an empty body. </td>
+            <td> Body string used to overwrite the HTTP response body. </td>
+            <td> If no value has been provided, the response will be an empty body. Defaults to empty body. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-response-body"> response body field. </a></td>
         </tr>
     </table>
-    <h2> Header Modification Related Fields</h2>
+    <h3> Header modification fields</h3>
     <table>
         <tr>
             <td> HEADERS_MAP </td>
-            <td> Map of headers to modify/add </td>
-            <td> For example: &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example: &#123;"X-Litmus-Test-Header": ""&#125; </td>
+            <td> Map of the headers to modify (or add). </td>
+            <td> For example, &#123;"X-Litmus-Test-Header":"X-Litmus-Test-Value"&#125;. To remove a header, set the value to "". For example, &#123;"X-Litmus-Test-Header": ""&#125;. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-request-headers"> </a> header map field. </td>
         </tr>
         <tr>
             <td> HEADER_MODE </td>
-            <td> Whether to modify response headers or request headers. Accepted values: request, response</td>
-            <td> Its default value is 'response'. </td>
+            <td> Specify whether the response headers (or request headers) should be modified. </td>
+            <td> Defaults to response. Supports request as well.  For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#modifying-the-request-headers"> header mode field. </a></td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -130,56 +115,49 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total duration to insert chaos (in seconds). </td>
-            <td> Its default value is 30s. </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval between successive instance terminations (in seconds). </td>
-            <td> Its default value is 30s. </td>
+            <td> Time interval between two successive instance terminations (in seconds). </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance </td>
-            <td> Its default value is 'parallel', and it supports 'serial' value too. </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+            <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example: 30. </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
-            <td> Whether to install the dependancy to run the experiment </td>
-            <td> If the dependency already exists, you can turn it off. Its default value is 'True'.</td>
+            <td> Specify whether you wish to install the dependency to run the experiment. </td>
+            <td> Defaults to true. If the dependency already exists, you can turn it off. </td>
         </tr>
         <tr>
             <td> PROXY_PORT  </td>
             <td> Port where the proxy listens for requests. </td>
-            <td> Its default value is 20000. </td>
+            <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
-            <td> Percentage of HTTP requests affected. </td>
-            <td> Its default value is 100. </td>
+            <td> Percentage of HTTP requests that are affected. </td>
+            <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Its default value is `eth0`. </td>
+          <td> Defaults to eth0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response#network-interface"> network interface.</a></td>
         </tr>
     </table>
-</details>
 
-## Fault Examples
+### Target service port
 
-### Common Fault Tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-
-### Target Service Port
-
-It defines the port of the target service. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
+It defines the port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
 Use the following example to tune it:
 
@@ -194,7 +172,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:
@@ -203,11 +181,9 @@ spec:
           value: "80"
 ```
 
-### Modifying the Response Status Code
+### Modifying the response status code
 
-Use this example to modify the status code of the response.
-
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `status_code`.
+It specifies the status code of the response that is to be modified. Tune it by using the `HTTP_CHAOS_TYPE` environment variable that is provided as the `status_code`.
 
 [embedmd]:# (./static/manifests/http-modify-response/status-code.yaml yaml)
 ```yaml
@@ -220,7 +196,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:
@@ -237,18 +213,16 @@ spec:
         - name: STATUS_CODE
           value: '500'
         # whether to modify the body as per the status code provided
-        - name: "MODIFY_RESPONSE_BODY"
+        - name: MODIFY_RESPONSE_BODY
           value: "true"
         # provide the port of the targeted service
         - name: TARGET_SERVICE_PORT
           value: "80"
 ```
 
-### Modifying the Response Headers
+### Modifying the response headers
 
-Use this example to modify the headers of the response.
-
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`.
+It specifies the response header that is to be modified. Tune it by using the `HTTP_CHAOS_TYPE` environment variable that is provided as the `header`.
 
 [embedmd]:# (./static/manifests/http-modify-response/response-headers.yaml yaml)
 ```yaml
@@ -261,7 +235,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:
@@ -280,11 +254,9 @@ spec:
           value: "80"
 ```
 
-### Modifying the Request Headers
+### Modifying the request headers
 
-Use this example to modify the headers of the response.
-
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `header`.
+It specifies the request header that is to be modified. Tune it by using the `HTTP_CHAOS_TYPE` environment variable that is provided as the `header`.
 
 [embedmd]:# (./static/manifests/http-modify-response/response-headers.yaml yaml)
 ```yaml
@@ -297,7 +269,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:
@@ -316,11 +288,9 @@ spec:
           value: "80"
 ```
 
-### Modifying the Response Body
+### Modifying the response body
 
-Use this example to modify the body of the response.
-
-***Note***: `HTTP_CHAOS_TYPE` should be provided as `body`.
+It specifies the response body that is to be modified. Tune it by using the `HTTP_CHAOS_TYPE` environment variable that is provided as the `body`.
 
 [embedmd]:# (./static/manifests/http-modify-response/response-body.yaml yaml)
 ```yaml
@@ -333,7 +303,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:
@@ -348,9 +318,9 @@ spec:
           value: "80"
 ```
 
-### Proxy Port
+### Proxy port
 
-It defines the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
+It specifies the port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
 Use the following example to tune it:
 
@@ -365,7 +335,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:
@@ -379,8 +349,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value added to the HTTP request. You can tune it using the `TOXICITY` environment variable.
-Toxicity value defines the percentage of the total number of HTTP requests that are affected.
+It specifies the toxicity value added to the HTTP request. Toxicity value defines the percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
 
 Use the following example to tune it:
 
@@ -395,7 +364,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:
@@ -409,9 +378,9 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 
-It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
+It specifies the network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
 Use the following example to tune it:
 
@@ -426,7 +395,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-modify-response
+  - name: VMware-http-modify-response
     spec:
       components:
         env:

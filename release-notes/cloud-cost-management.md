@@ -1,15 +1,90 @@
 ---
 title: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2022-12-15T10:00
+date: 2023-02-07T10:00
 sidebar_position: 5
 ---
 
-Harness Cloud Cost Management is updated regularly. Review the notes below for details about recent changes.
+Harness Cloud Cost Management is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## January 31, 2023
+
+### What's new
+
+  This release does not include new features.
+
+### Early access
+
+  This release does not include early access features.
+
+### Fixed issues
+
+* Hourly data on the **Perspectives** page showed an incorrect billing amount for multiple accounts. CloudFunction was unable to delete the existing records but continued ingesting a new entry in clusterDataHourly in BigQuery. (CCM-10711)
+
+  This issue is fixed. Now, the Instance_Billing_Hourly job execution is limited to 5 times per minute to avoid CloudFunction failure.
+
+* The total costs displayed on the **Overview** page and the **license-util** page (or API) were incorrect in accounts with at least one Azure connector. (CCM-10678)
+
+  A bug fix in the ingestion of aggregated costs for Azure resolved this issue. 
+
+  
+
+
+
+## January 18, 2023
+
+
+### What's new
+
+  This release does not include new features.
+
+### Early access
+
+  This release does not include early access features.
+
+### Fixed issues
+* The potential monthly savings displayed on the UI did not match with the Spot or On-Demand recommendations. (CCM-10698)
+
+  The logic to calculate the potential monthly cost displayed on the UI has been fixed. Now, the savings match with the Spot or On-Demand recommendations.
+
+* While creating a Jira ticket to apply EC2 recommendations, the **Account Name** field in the Jira description incorrectly displayed the Account ID. (CCM-10507)
+
+  Now, the issue is fixed, and the account name is displayed correctly. 
+
+* When you create a budget with an invalid **Period Starts from** date with respect to the **Budget Period**, the error message displayed was unclear - "Invalid request: Error in create budget operation. Start time of budget is invalid." (CCM-10487)
+
+ Now, the message is changed to "Invalid request: Budget Period and Period Start date cannot add up to be in the past."
+
+* Added the missing instance family types for Azure node pool recommendations. (CCM-10246)
+
+
+
+## January 4, 2023
+
+### What's new
+This release does not include new features.
+
+
+### Early access
+* Standardize your currency across Harness CCM (CCM-9280)
+
+  This release introduces Currency Preference that enables you to view the entire CCM application in your preferred currency for different cloud providers. This feature is behind a feature flag CCM_CURRENCY_PREFERENCES.
+
+* API implementation for the Currency Preferences feature (CCM-9632)
+
+  You can now use the Currency Preference API to select the currency in which you want to view your entire CCM application across different cloud providers. Go to [Harness API Documentation](https://apidocs.harness.io/) for more information.
+
+
+### Fixed issues
+This release does not include fixed issues.
+
+
 
 ## December 16, 2022
 
@@ -22,8 +97,8 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
   
 ### Early access
 
-This release does not include early access features.
 
+  
 
 ### Fixed issues
 

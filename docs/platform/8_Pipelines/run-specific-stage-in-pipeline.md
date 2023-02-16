@@ -1,7 +1,7 @@
 ---
 title: Run Specific Stages in Pipeline
 description: You can choose to run a specific stage instead of running the whole Pipeline in Harness. The ability to run a specific stage helps in situations when only a few stages fail in a Pipeline This topic e…
-# sidebar_position: 2
+sidebar_position: 7
 helpdocs_topic_id: 95q2sp1hpr
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -18,7 +18,7 @@ This topic explains how to run specific stages in a Pipeline.
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md)
+* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 * [Add a Stage](../8_Pipelines/add-a-stage.md)
 * Make sure you have **Execute** permissions for Pipeline to run a specific Stage of the Pipeline. For example, the [Pipeline Executor](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md) default role in the Project where your Pipeline is located.
 
@@ -47,7 +47,7 @@ In **Stage Execution Settings**, set **Allow selective stage(s) executions?** to
 ![](./static/run-specific-stage-in-pipeline-44.png)
 ### Option: Run Specific Independent Stages
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can [create a Pipeline](add-a-stage.md#step-1-create-a-pipeline) from any module in your Project, and then [add Stages](../8_Pipelines/add-a-stage.md) for any module.
 

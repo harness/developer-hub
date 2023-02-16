@@ -25,16 +25,16 @@ For steps on using the Terraform Plan to provision the target infrastructure for
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Install Software on the Delegate with Initialization Scripts](../../../platform/2_Delegates/delegate-guide/run-scripts-on-delegates.md).
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 
 ```bash
 # Install TF  
-microdnf install unzip  
-curl -O -L https://releases.hashicorp.com/terraform/1.1.9/terraform_1.1.9_darwin_amd64.zip  
-unzip terraform_1.1.9_darwin_amd64.zip  
-mv ./terraform /usr/bin/  
-# Check TF install  
+microdnf install unzip
+curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
+unzip terraform_1.3.5_darwin_amd64.zip
+mv ./terraform /usr/bin/
+# Check TF install
 terraform --version
 ```
 
@@ -486,7 +486,7 @@ In **Advanced**, you can use the following options:
 
 * [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../../platform/2_Delegates/delegate-guide/select-delegates-with-selectors.md)
+* [Select Delegates with Selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ## See Also
 

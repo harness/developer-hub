@@ -5,14 +5,14 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import TermsOfUse from "../../../docs/legal/terms-of-use.md";
 import styles from "./terms-of-use.module.scss";
 
-export default function LandingPage() {
+export default function TermsOfUsePage() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <div>
       <MDXContent>
         <Layout
-          title={`${siteConfig.title}`}
-          description="Description will go into a meta tag in <head />"
+          title="Terms of Use" // {`${siteConfig.title}`}
+          description={`${siteConfig.tagline}`} // "Description will go into a meta tag in <head />"
         >
           <main className={`container ${styles.container}`}>
             <TermsOfUse />

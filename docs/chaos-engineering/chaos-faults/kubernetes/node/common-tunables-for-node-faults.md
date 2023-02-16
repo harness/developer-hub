@@ -1,14 +1,16 @@
 ---
-title: Common Node Fault Tunables
+title: Common node fault tunables
 ---
-Fault tunables which are common for all the node faults. These tunables can be provided at `.spec.experiment[*].spec.components.env` in chaosengine.
+Fault tunables which are common to all the node faults are described here. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
-### Target Single Node
+### Target single node
 
-It defines the name of the target node subjected to chaos. The target node can be tuned via `TARGET_NODE` ENV. It contains only a single node name.
-`NOTE`: It is supported by [node-drain, node-taint, node-restart, kubelet-service-kill, docker-service-kill] faults. 
+It defines the name of the target node subject to chaos. You can tune it using the `TARGET_NODE` environment variable. It contains a single node name.
 
-Use the following example to tune this:
+### Note
+It supports node drain, node taint, node restart, kubelet service kill, and docker service kill faults. 
+
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/target-node.yaml yaml)
 ```yaml
@@ -32,12 +34,12 @@ spec:
           value: 'node01'
 ```
 
-### Target Multiple Nodes
+### Target multiple nodes
 
-It defines the comma-separated name of the target nodes subjected to chaos. The target nodes can be tuned via `TARGET_NODES` ENV.
-`NOTE`: It is supported by [node-cpu-hog, node-memory-hog, node-io-stress] faults.
+It defines the comma-separated names of the target nodes subject to chaos. You can tune it using the `TARGET_NODES` environment variable.
+`NOTE`: It supports node CPU hog, node memory hog, and node I/O stress faults.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/target-nodes.yaml yaml)
 ```yaml
@@ -61,12 +63,12 @@ spec:
           value: 'node01,node02'
 ```
 
-### Target Nodes With Labels
+### Target nodes with labels
 
-It defines the labels of the targeted node(s) subjected to chaos. The node labels can be tuned via `NODE_LABEL` ENV.
-It is mutually exclusive with the `TARGET_NODE(S)` ENV. If `TARGET_NODE(S)` ENV is set then it will use the nodes provided inside it otherwise, it will derive the node name(s) with matching node labels.
+It defines the labels of the target node(s) subject to chaos. You can tune it using the `NODE_LABEL` environment variable.
+It is mutually exclusive with the `TARGET_NODE` environment variable. If `TARGET_NODE` environment variable is set, the nodes provided will be used. Otherwise, it derives the node name(s) by matching it with the node labels.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/target-label.yaml yaml)
 ```yaml
@@ -90,12 +92,12 @@ spec:
           value: 'key=value'
 ```
 
-### Node Affected Percentage
+### Node affected percentage
 
-It defines the percentage of nodes subjected to chaos with matching node labels. It can be tuned with `NODES_AFFECTED_PERC` ENV. If `NODES_AFFECTED_PERC` is provided as `empty` or `0` then it will target a minimum of one node.
-It is supported by [node-cpu-hog, node-memory-hog, node-io-stress] faults. The rest of the fault selects only a single node for the chaos.
+It defines the percentage of nodes subject to chaos by matching the node labels. You can tune it using the `NODES_AFFECTED_PERC` environment variable. If `NODES_AFFECTED_PERC` environment variable is set to `empty` or `0`, it targets a minimum of one node.
+It supports node CPU hog, node memory hog, and node I/O stress faults.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/node-affected-percentage.yaml yaml)
 ```yaml

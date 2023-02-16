@@ -1,15 +1,259 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2022-12-15T10:00
+date: 2023-02-15T10:00
 sidebar_position: 10
 ---
 
-Harness Platform is updated regularly. Review the notes below for details about recent changes.
+Harness Platform is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
 :::note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 15, 2023, version 78421
+
+### What's new
+
+- The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. (PL-31136)
+  This update will not affect any business operations.
+
+- The [Role Assignment](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now includes the principal's name and email address in the response.(PL-31064, ZD-36050)
+
+- Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
+  
+  For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/Security/add-a-google-cloud-secret-manager)
+
+- There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
+  
+  Following are the entity creation limits: 
+
+  - Project - 100
+  - Secrets - 100
+  - Variables - 100
+  - User groups -100
+  - Service accounts - 100
+
+- You can now add policy sets under the **Advanced** section of each step. (PIE-7794)
+
+  In this way, you can validate step outputs generated during pipeline execution without explicitly requesting a payload. Policy sets receive the steps and their outputs as payloads, with a pre-defined schema for every step.
+
+- Accessing the CD module redirects you to one of the following: 
+
+  - Get Started: If you don't have any pipelines in your project.
+
+  - Deployment list page: This is the default selection page. (PIE-7625)
+
+### Early access
+
+No early access features are available in this release.
+
+
+### Fixed issues
+
+- The **Remove** option is disabled for the first user added to a user group through SCIM. A code check prevents the deletion of a user from a user group if the user is externally managed. (PL-31125, ZD-39358)
+
+  ![](./static/remove-scim-user-issue.png)
+
+  This issue has now been resolved and users can now remove any user from a user group created through the Harness UI.
+
+- Deletion of externally managed users from organizations and projects is disabled. (PL-31104, ZD-39109,39110)
+  
+  ![](./static/delete-scim-user-issue.png)
+
+  A code enhancement has fixed this issue.
+
+- Capitalization of user emails in SCIM impacts SAML authentication. (PL-31038)
+  
+  A code enhancement has fixed this issue.
+
+- When trying to delete or update an externally managed user group in Harness, the error message is unclear. (PL-30641)
+  
+  It has been enhanced to "User is externally managed by your Identity Provider and cannot be deleted via UI / API. To delete the user from Harness, delete it from your Identity Provider."
+
+- The default secret manager does not appear in the **Secrets Manager** list when there are more than 100 secret managers.(PL-29635)
+  
+  A code enhancement has fixed this issue. The default secret manager is now displayed if you enter its name in the **Secrets Manager** field.
+
+- Deletion of vault connectors does not delete the corresponding perpetual tasks. (PL-27621)
+  
+  A code enhancement has fixed this issue.
+
+- When using Firefox, the YAML Difference is not displayed in the audit trail summary. (PL-25659)
+
+  ![](./static/audittrail-chrome-issue.png)
+
+  A change in the configuration to load the web workers fixed this issue.
+
+- When the pipeline is not saved in the default branch in Git, the retry pipeline does not work. (PIE-8132)
+  
+  A code enhancement has fixed this issue.
+
+- In pipeline execution, the YAML builder does not support read-only operations and throws an error. (PIE-8040)
+  
+  A code enhancement has fixed this issue.
+
+- The pipeline execution details page does not have a **View Compiled YAML** option.(PIE-7967)
+  
+  This option is now available on the execution page.
+
+- Creating an input set results in an error. (PIE-7849, ZD-39180,39240,39250)
+  
+  ![](./static/inputset-create-error.png)
+
+  A code enhancement has fixed this issue.
+
+
+
+## February 6, 2023, version 78321
+
+### What's new
+
+- The pages in app.harness.io autofocus the search input box by default. (PL-30656)
+  
+  This results in a seamless search experience.
+
+- Entities in Harness can now have `/` for the Name. (PL-29929)
+
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
+
+### Early access
+
+- You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
+
+### Fixed issues
+
+- In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. (PL-30862)
+
+  A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details   as per the schema.
+
+- The user group details page in the project and org scope does not display correctly when opened using the **Open in new tab** option. (PL-30911)
+  
+  An enhancement to the code has fixed this issue.
+
+- The email update for SCIM users does not work. (PL-30439)
+  
+  A code enhancement to support user metadata updates has fixed this issue.
+  
+- Force deletion of a secret used for the creation of a secrets manager throws an incorrect error. (PL-29983)
+
+  This has been fixed by displaying the appropriate error message.
+
+- Pipelines with input sets and triggers chained together do not display input set fields correctly. (PIE-7681)
+  
+  An enhancement to the code has fixed this issue.
+
+- If an execution has a matrix strategy, the text on the pipeline execution page overlaps. (PIE-7429)
+  
+  An adjustment to the height of the matrix wrapper has fixed this issue.
+
+- API PUT operations for Bitbucket SaaS and on-prem connectors return an incorrect status code when there are no changes. (PIE-6230)
+  
+  A modification to the error message to display an appropriate explanation of the error has fixed this issue.
+  
+
+## January 17, 2023, version 78214
+
+### What's new
+
+This release introduces a dedicated release notes page for Harness Delegate &mdash; SaaS. You can find release notes for the NextGen delegate at [Delegate](/release-notes/delegate).
+
+### Early access
+
+No early access features are available in this release.
+
+
+### Fixed issues
+- The Harness APIs return a status code of HTTP 400 instead of HTTP 401 for an invalid or expired token. (PL-30757, ZD-38494,38547)
+
+  An enhancement to the code has fixed this issue.
+  
+- The project selector component selects multiple projects with the same project name across different organization IDs.(PL-30663)
+  
+  The project selection code has been enhanced to select projects corresponding to specific organization IDs.
+
+- The error message displayed when creating the GitHub connector and selecting **Harness Platform** as the connectivity option is not clear and informative. (PL-29953)
+  
+  Modifying the error message to indicate that the secret manager being used is not Harness' built-in secret manager fixed the problem.
+
+## January 10, 2023, version 78105
+
+Delegate version: 78100
+
+### Important announcements
+
+**Update repository references to the NextGen Helm delegate** 
+
+The location of the repository that contains the NextGen Helm chart is changing. Change your references to the repository location from [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/). Updates to the chart will not be made to the deprecated repository.
+
+**The following role-assignments are removed for all the existing users across all the accounts:**(PL-28848)
+
+  - **Account Viewer - All Account Level Resources**: This was a role-assignment within the account scope and has been removed for all the users.
+  This does not apply in the following scenarios: 
+    - If an account has enabled the feature flag `ACCOUNT_BASIC_ROLE_ONLY`.
+    - If an account does not have the **Account Viewer - All Account Level Resources** role-assignment for the default user group `All Account Users`.
+- **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
+- **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
+
+For more information, see [Default User Group](https://developer.harness.io/docs/platform/role-based-access-control/harness-default-user-groups/)
+
+
+### What's new
+
+- Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
+  
+- The [Role-Assignments](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now fetches role assignments by scope. 
+(PL-29496, ZD-36050)
+  This helps you keep a track of the role assignments within a specific scope.
+
+- The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576) 
+
+  The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
+
+### Early access
+
+No early access features are available in this release.
+
+### Fixed issues
+- Inline selection does not display connectors and secrets according to their scope. (PL-30655)
+  
+  An enhancement in the pre-select logic has fixed this issue.
+
+- In spite of selecting **Start TLS** in the UI, the SMTP configuration does not support StartTLS. (PL-30574)
+
+  A code enhancement has resolved this issue.
+
+- The Get Resource Group API returns an HTTP 200 response code when an entity is missing. (PL-30236)
+
+  This has been fixed, and the API now returns an HTTP 404 response code if an entity is missing.
+
+- Editing a connector through connector selection does not automatically select it. (PL-28175)
+
+  Enhancing the connector selection component logic to pre-select the connector in the list if it is in edit mode fixed this issue.
+
+- Unauthorized user login to a Harness account displays a white label error. This happens when the account has SAML enabled with restricted email domain access.(PL-15022)
+  
+  This has been fixed by displaying appropriate error message.
+
+- The date format in Pipeline Studio is incorrect. (PIE-7040)
+
+  Changing the date format to `DD/MM/YYYY` has fixed this issue.
+
+- Input sets with expression set fields does not support autocomplete. (PIE-6990)
+
+  The addition of pipeline variables context provider to the input set form has fixed this issue.
+
+- A hover over the stage does not display the condition details for skipping the stage. (PIE-6987)
+
+  A correction to the path used to collect the details has fixed this issue.
+  
+  -   Changed how the NextGen Docker delegate is identified in the delegate section log. The Docker delegate is now identified by the delegate ID, which is the concatenation of `delegateName` and `delegateHostName`. This replaces the use of the delegate name (`delegateHostName`), which was usually the `containerId` value. (DEL-5280) 
+
+- Changed the behavior of the delegate dropdown menu. The UI core library was updated to add a parameter that prevents the reset of expanded states when new data loads in a table. This resolved an issue with the dropdown menu collapsing automatically. (DEL-5541)
+
+- Fixed a problem that was causing the `kryo` component to fail. The problem was caused when nested `java.lang.RuntimeException` errors occurred during manager response. (DEL-5609)    
 
 ## December 22, 2022, version 77908
 

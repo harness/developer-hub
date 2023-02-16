@@ -1,8 +1,6 @@
 ---
 title: Run Docker-in-Docker in a CI Stage
-description: You can run Docker-in-Docker as a Service Dependency in a CI Stage. This example illustrates using Docker-in-Docker to build and push an image in a Run step. This can be useful if you want to build f…
-tags: 
-   - helpDocs
+description: You can run Docker-in-Docker as a Background step in a CI Stage.
 # sidebar_position: 2
 helpdocs_topic_id: ajehk588p4
 helpdocs_category_id: 7ljl8n7mzn
@@ -10,12 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can run Docker-in-Docker (**dind**) in a CI Stage. This is useful whenever you need to run Docker commands as part of your build process. For example, you can build images from two separate codebases in the same Pipeline: one using a step such as [Build and Push an Image to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md), and another using Docker commands in a Run step.
+You can run Docker-in-Docker (**DinD**) in a CI stage. This is useful whenever you need to run Docker commands as part of your build process. For example, you can build images from two separate codebases in the same pipeline: one using a step such as [Build and Push an Image to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md), and another using Docker commands in a Run step.
 
 This topic illustrates a simple build-and-push workflow using Docker-in-Docker.
 
-Docker-in-Docker must run in privileged mode to work properly. You need to be careful because this provides full access to the host environment. See [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) in the Docker docs.  
-Docker-in-Docker is not supported in Harness-hosted build infrastructures or on platforms (such as those running Windows containers) that don't support Privileged mode. 
+Docker-in-Docker must run in privileged mode to work properly. You need to be careful because this provides full access to the host environment. See [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) in the Docker docs. Docker-in-Docker is not supported in Harness-hosted build infrastructures or on platforms (such as those running Windows containers) that don't support Privileged mode.
 
 ### Before You Begin
 
@@ -37,18 +34,18 @@ In the Overview tab for the new Build Stage, configure the Stage as follows:
 * Under Shared Paths, add the following:
 	+ `/var/run`
 	+ `/var/lib/docker`
-* Under Advanced, add a Stage Variables for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select Secret as the variable type.
+* Under Advanced, add Stage Variables for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select Secret as the variable type.
 
 ### Step 2: Define the Build Farm Infrastructure
 
-In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
+In the CI Build stage > **Infrastructure** tab, define the build infrastructure for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
-### Step 3: Add a dind Service Dependency
+### Step 3: Add a DinD Background step
 
-In the Execution tab, click **Add Service Dependency** and configure the dependency as follows:
+In the Execution tab, add a [Background step](../../ci-technical-reference/background-step-settings.md) and configure it as follows:
 
-* **Dependency Name:** dind\_Service.
-* **Container Registry:** A Connector to your Docker registry.
+* **Name:** dind_Service.
+* **Container Registry:** A connector to your Docker registry.
 * **Image:** The image you want to use, such as [docker:dind](https://hub.docker.com/_/docker).
 * **Optional Configuration:** Select **Privileged**. This is required for Docker-in-Docker.
 
@@ -57,7 +54,7 @@ In the Execution tab, click **Add Service Dependency** and configure the depende
 In the Execution tab, add a [Run Step](../../ci-technical-reference/run-step-settings.md) and configure it as follows:
 
 * **Container Registry:** A Connector to your Docker registry.
-* **Image:** The same image you specified for the Service Dependency.
+* **Image:** The same image you specified for the Background step.
 * **Command:** Enter the shell commands you want to run in the dind container.
 
 Once the container is started, the software inside the container takes time to initialize and start accepting connections. Give the service adequate time to initialize before trying to connect. You can use a `while` loop, as shown here:
@@ -103,89 +100,92 @@ To configure your pipeline as YAML in CI, go to Harness **Pipeline Studio**, cli
 
 
 ```
-pipeline:  
-    name: docker-in-docker-test  
-    identifier: dockerindockertest  
-    allowStageExecutions: false  
-    projectIdentifier:   # your Project Id  
-    orgIdentifier: default             
-    description: test of Trigger and Codebase variables  
-    tags: {}  
-    properties:  
-        ci:  
-            codebase:  
-                connectorRef:  # Connector to your GitHub account  
-                repoName: $GITHUB_REPO            
-                build: <+input>  
-    stages:  
-        - stage:  
-              name: Build Alpha  
-              identifier: Build_Test_and_Push  
-              type: CI  
-              spec:  
-                  cloneCodebase: false  
-                  infrastructure:  
-                      type: KubernetesDirect  
-                      spec:  
-                          connectorRef:    # Connector to you build infrastructure   
-                          namespace: harness-delegate-ng  
-                          automountServiceAccountToken: true  
-                  execution:  
-                      steps:  
-                          - step:  
-                                type: Run  
-                                name: build-alpha-service  
-                                identifier: echotriggervarscustom  
-                                spec:  
-                                    connectorRef:   # Connector to your Docker repo   
-                                    image: docker:dind  
-                                    shell: Sh  
-                                    command: |  
-                                        while ! docker ps ;do  
-                                            echo "Docker not available yet"  
-                                        done  
-                                        echo "Docker service is up"  
-                                        docker ps   
-  
-                                        apk add git  
-                                        git --version  
-                                        git clone https://github.com/$GITHUB_USERNAME/$GITHUB_REPO  
-                                        cd $GITHUB_REPO  
-  
-                                        echo $DOCKERHUB_PAT > my_password.txt  
-                                        cat my_password.txt | docker login --username $DOCKERHUB_USERNAME --password-stdin  
-                                        docker build -t $DOCKER_IMAGE_LABEL .  
-                                        docker tag $DOCKER_IMAGE_LABEL $DOCKERHUB_USERNAME/$DOCKER_IMAGE_LABEL:<+pipeline.sequenceId>  
-                                        docker push $DOCKERHUB_USERNAME/$DOCKER_IMAGE_LABEL:<+pipeline.sequenceId>  
-                                    privileged: true  
-                  serviceDependencies:  
-                      - identifier: dind_service  
-                        name: dind_service  
-                        type: Service  
-                        description: dind service  
-                        spec:  
-                            connectorRef:   # Connector to your Docker repo   
-                            image: docker:dind  
-                            privileged: true  
-                  sharedPaths:  
-                      - /var/run  
-                      - /var/lib/docker  
-              variables:  
-                  - name: DOCKERHUB_USERNAME  
-                    type: String  
-                    value: # username  
-                  - name: DOCKERHUB_PAT  
-                    type: Secret  
-                    value: # Personal Access Token  
-                  - name: GITHUB_USERNAME  
-                    type: String  
-                    value: # username  
-                  - name: GITHUB_REPO  
-                    type: String  
-                    value: # repo  
-                  - name: DOCKER_IMAGE_LABEL  
-                    type: String  
-                    value: # label  
+pipeline:
+  name: dind-w-background-step
+  identifier: dindwbackgroundstep
+  projectIdentifier: myproject
+  orgIdentifier: myorg
+  tags: {}
+  stages:
+    - stage:
+        name: build-bg
+        identifier: buildbg
+        type: CI
+        spec:
+          cloneCodebase: false
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: Background
+                  identifier: Background
+                  spec:
+                    connectorRef: mydockerhubconnector
+                    image: docker:dind
+                    shell: Sh
+                    privileged: true
+              - step:
+                  type: Run
+                  name: Run
+                  identifier: Run
+                  spec:
+                    connectorRef: mydockerhubconnector
+                    image: docker:dind
+                    shell: Sh
+                    command: |-
+                      while ! docker ps ;do   
+                            echo "Docker not available yet"  
+                      done  
+                      echo "Docker Service Ready"  
+                      docker ps 
+
+                      apk add git  
+                      git --version  
+                      git clone https://github.com/john-doe/$GITHUB_REPO  
+                      cd $GITHUB_REPO  
+                        
+                      echo $DOCKERHUB_PAT > my_password.txt  
+                      cat my_password.txt | docker login --username $DOCKERHUB_USERNAME --password-stdin  
+                        
+                      docker build -t $DOCKER_IMAGE_LABEL .  
+                      docker tag $DOCKER_IMAGE_LABEL $DOCKERHUB_USERNAME/$DOCKER_IMAGE_LABEL:<+pipeline.sequenceId>  
+                      docker push $DOCKERHUB_USERNAME/$DOCKER_IMAGE_LABEL:<+pipeline.sequenceId>
+                    privileged: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: docsexampledelegate
+              namespace: harness-delegate-ng
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
+            - /var/lib/docker
+        variables:
+          - name: DOCKERHUB_USERNAME
+            type: String
+            description: ""
+            value: jdoe
+          - name: DOCKERHUB_PAT
+            type: Secret
+            description: ""
+            value: jdoedockerhubpat
+          - name: GITHUB_USERNAME
+            type: String
+            description: ""
+            value: john-doe
+          - name: GITHUB_REPO
+            type: String
+            description: ""
+            value: codebaseAlpha
+          - name: GITHUB_PAT
+            type: Secret
+            description: ""
+            value: johndoegithubpat
+          - name: DOCKER_IMAGE_LABEL
+            type: String
+            description: ""
+            value: dind-w-bg-step
 
 ```
 ### See Also

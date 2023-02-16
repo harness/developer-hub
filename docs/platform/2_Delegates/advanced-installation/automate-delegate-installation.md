@@ -1,6 +1,6 @@
 ---
-title: Automate delegate lnstallation
-description: Automate Delegate installation and registration.
+title: Automate delegate installation
+description: Automate delegate installation and registration.
 # sidebar_position: 2
 helpdocs_topic_id: 9deaame3qz
 helpdocs_category_id: m9iau0y3hv
@@ -26,7 +26,7 @@ For example, in Kubernetes deployments, you can set up two delegates, each in it
 ```
 ...  
 apiVersion: apps/v1beta1  
-kind: StatefulSet  
+kind: Deployment  
 metadata:  
   labels:  
     harness.io/app: harness-delegate  
@@ -46,10 +46,6 @@ In this example, the `spec` section of the harness-kubernetes.yaml file was chan
 
 A Kubernetes cluster requires only one delegate. To create high availability in the cluster, you can increase the number of delegate replica pods. Do not add another delegate to the cluster. 
 
-If you want to install Kubernetes delegates in separate clusters, do not use the same harness-kubernetes.yaml and name for both delegates. Download a new Kubernetes YAML `spec` from Harness for each delegate you want to install. This prevents name conflicts. 
-
-In every case, the delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, high availability is provided by default. The failure of a single delegate does not stop Harness from performing deployments. For greater availability, increase the number of replica pods to run three delegates in case you lose two, and so on.
-
 ### Limitations
 
 * Two delegates in different locations with different connectivity do not support high availability. For example, if you have one delegate in a development environment and another in a production environment, the development delegate does not communicate with the production delegate. The reverse is also true. If the one delegate deployed to an environment stops running, Harness ceases operation in that environment.
@@ -58,7 +54,7 @@ In every case, the delegates must be identical in terms of permissions, keys, co
 
 Duplicate the configuration file for a delegate that is installed and registered with your Harness account.
 
-Ensure that the delegate environment variables are correctly set.
+Ensure that the delegate environment variables are set correctly.
 
 The delegate configuration file contains environment variables for account, organization, and project. The account variable is always set with your Harness account ID.
 
@@ -75,11 +71,15 @@ The process you use to rename a delegate depends on its type. For Docker delegat
 For the Kubernetes delegate, the name is referenced in multiple fields:
 
 * `Secret.metadata.name`
-* `StatefulSet.metadata.labels.harness.io/name`
-* `StatefulSet.metadata.name`
-* `StatefulSet.metadata.spec.selector.matchLabels.harness.io/name`
-* `StatefulSet.metadata.spec.template.metadata.labels.harness.io/name`
-* `StatefulSet.metadata.spec.template.spec.env.name: DELEGATE_NAME`
+* `Deployment.metadata.labels.harness.io/name`
+* `Deployment.metadata.name`
+* `Deployment.spec.selector.matchLabels.harness.io/name`
+* `Deployment.spec.template.metadata.labels.harness.io/name`
+* `Deployment.spec.containers.envFrom.secretRef`
+* `Deployment.metadata.spec.template.spec.env.name: DELEGATE_NAME`
+* `Service.metadata.selector.harness.io/name`
+* `CronJob.metadata.labels.harness.io/name`
+* `CronJob.metadata.name`
 
 The `DELEGATE_NAME` environment variable is specified as a YAML list item:
 
@@ -102,9 +102,9 @@ To rename the Docker delegate, set the `DELEGATE_NAME` environment variable to t
 
 ### Step 3: Install the new delegate
 
-After you update the delegate name values, apply the configuration file. You can confirm the installed and registered delegate in Harness Manager.
+After you update the delegate names, you can apply the configuration file. The delegate installs and registers with Harness.
 
 ### See also
 
-* [Run Scripts on Delegates](run-scripts-on-delegates.md)
+* [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md)
 

@@ -1,21 +1,24 @@
 ---
-id: vmware-http-latency
-title: VMware HTTP Latency
+id: VMware-http-latency
+title: VMware HTTP latency
 ---
+VMware HTTP latency injects HTTP response latency into the service of a specific port.
+- This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
+- It helps determine the application's resilience to lossy (or flaky) HTTP responses.
 
-## Introduction
-- It injects HTTP response latency on the service whose port is provided as `TARGET_SERVICE_PORT` by starting the proxy server and redirecting the traffic through the proxy server.
-- It tests the application's resilience to lossy/flaky HTTP responses.
-
-:::tip Fault execution flow chart
 ![VMware HTTP Latency](./static/images/vmware-http-latency.png)
-:::
 
-## Prerequisites
-:::info
-- Kubernetes >= 1.17
-- Vcenter access to stop and start the VM.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+## Use cases
+
+- VMware HTTP latency determines the resilience of an application to HTTP latency. 
+- It determines how the system recovers or fetches the responses when there is a delay in accessing the service. - It simulates latency to specific API services for (or from) a given microservice. 
+- It also simulates a slow response on specific third party (or dependent) components (or services). 
+
+**Note**
+- Kubernetes >= 1.17 is required to execute this fault.
+- Adequate vCenter permissions should be provided to start and stop the VMs.
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -30,20 +33,9 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-### NOTE
-You can pass the VM credentials as a secret or as a chaosengine environment variable.
-:::
+## Fault tunables
 
-## Default Validations
-:::info
-- The VM should be in a healthy state.
-:::
-
-## Fault Tunables
-
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+   <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -52,31 +44,31 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
         </tr>
         <tr>
             <td> VM_NAME </td>
-            <td> Name of VMware VM</td>
-            <td> For example: test-vm </td>
+            <td> Name of the VMware VM.</td>
+            <td> For example, test-vm. </td>
         </tr>
         <tr>
             <td> VM_USER_NAME </td>
-            <td> Username with sudo priviliges.</td>
-            <td> For example: vm-user</td>
+            <td> Username with sudo privileges.</td>
+            <td> For example, vm-user. </td>
         </tr>
         <tr>
             <td> VM_PASSWORD </td>
-            <td> User password </td>
-            <td> For example: 1234</td>
+            <td> User password. </td>
+            <td> For example, 1234. </td>
         </tr>
         <tr>
             <td> LATENCY </td>
-            <td> Provide latency that is added to the request (in milliseconds).</td>
-            <td> For example: 1000. </td>
+            <td> Delay added to the request (in milliseconds).</td>
+            <td> For example, 1000ms. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#latency"> latency.</a></td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
-            <td> Service port to target </td>
-            <td> Its default value is port 80. </td>
+            <td> Service port to target. </td>
+            <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#target-service-port"> target service port.</a></td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -85,56 +77,50 @@ You can pass the VM credentials as a secret or as a chaosengine environment vari
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total duration to insert chaos (in seconds). </td>
-            <td> Its default value is 30s. </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
-            <td> The interval between successive instance terminations (in seconds). </td>
-            <td> Its default value is 30s. </td>
+            <td> Time interval between two successive instance terminations (in seconds). </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines the sequence of chaos execution for multiple instances </td>
-            <td> The default value is 'parallel', and it supports 'serial' value too. </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
-            <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example: 30 </td>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
             <td> Whether to install the dependency to run the fault </td>
-            <td> If the dependency already exists, you can turn it off. Its default value is 'True'.</td>
+            <td> If the dependency already exists, you can turn it off. Its default value is 'True'. </td>
         </tr>
         <tr>
             <td> PROXY_PORT </td>
             <td> Port where the proxy listens for requests.</td>
-            <td> Its default value is 20000 </td>
+            <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#proxy-port"> proxy port.</a></td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests affected. </td>
-            <td> Its default value is 100 </td>
+            <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#toxicity"> toxicity.</a></td>
         </tr>
         <tr>
-          <td> NETWORK_INTERFACE  </td>
+          <td> NETWORK_INTERFACE </td>
           <td> Network interface used for the proxy. </td>
-          <td> Its default value is `eth0` </td>
+          <td> Defaults to eth0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency#network-interface"> network interface. </a></td>
         </tr>
     </table>
-</details>
 
-## Fault Examples
 
-### Common Fault Tunables
+### Target service port
 
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-
-### Target Service Port
-
-It defines the port of the target service. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
+It specifies the port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
 Use the following example to tune it:
 
@@ -149,7 +135,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
@@ -160,7 +146,7 @@ spec:
 
 ### Proxy Port
 
-It defines the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
+It specifies the port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
 Use the following example to tune it:
 
@@ -175,7 +161,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
@@ -189,7 +175,7 @@ spec:
 
 ### Latency
 
-It defines the latency value added to the HTTP request. You can tune it using the `LATENCY` environment variable.
+It specifies the latency value added to the HTTP request. Tune it by using the `LATENCY` environment variable.
 
 Use the following example to tune it:
 
@@ -204,7 +190,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
@@ -218,8 +204,7 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value added to the HTTP request. You can tune it using the `TOXICITY` environment variable.
-Toxicity value defines the percentage of the total number of HTTP requests that are affected.
+It specifies the toxicity value added to the HTTP request. Toxicity value defines the percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
 
 Use the following example to tune it:
 
@@ -234,7 +219,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
@@ -248,9 +233,9 @@ spec:
           value: "80"
 ```
 
-### Network Interface
+### Network interface
 
-It defines the network interface to be used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
+It specifies the network interface to be used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
 Use the following example to tune it:
 
@@ -265,7 +250,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-latency
+  - name: VMware-http-latency
     spec:
       components:
         env:
