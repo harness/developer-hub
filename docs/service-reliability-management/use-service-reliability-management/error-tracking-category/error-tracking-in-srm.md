@@ -214,7 +214,7 @@ To view the ARC screen, do the following:
 
 ![View ARC screen](./static/et-quickstart-open-arc.png)
 
-The ARC screen is divided into following tabs to help you create a complete picture of the event.
+The ARC is divided into following tabs to help you create a complete picture of the event.
 
 * Code
 * Log
@@ -230,7 +230,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="code" label="Code" default>
 
 
-Information displayed in the Code view is divided into following categories:
+Information displayed in the Code tab is divided into following categories:
 
 ![ARC screen Code tab](./static/et-quickstart-arc-code-tab.png)
 
@@ -302,14 +302,15 @@ The choice of the collected variables most relevant within an allocated timefram
 
 
 <TabItem value="log" label="Log">
-    
 
+The Log tab displays the last 250 log statements leading up to the event. The log statements are collected directly from JVM/CLR memory. This ensures that DEBUG, TRACE, and INFO statements are visible even when they are not logged to a file.  
+
+The error or exception lines are displayed first, followed by the Stack Trace. Error Tracking also displays the context of the event, by highlighting the beginning of the relevant transaction in which the event occurred.
 
 #### Log level
 
-The Log view displays the last 250 log statements leading up to the event. The log statements are collected directly from JVM/CLR memory. This ensures that DEBUG, TRACE, and INFO statements are visible even when they are not logged to a file.  
-
-The error or exception lines are displayed first, followed by the Stack Trace. Error Tracking also displays the context of the event, by highlighting the beginning of the relevant transaction in which the event occurred.
+- Logback: TRACE level and up
+- Log4j/Log4j2: According to the user's config
 
 
 :::note
@@ -335,7 +336,7 @@ The table bellow describes the various missing log statement you may come across
 
   <TabItem value="environment" label="Environment">
     
-    The Environment view displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
+    The Environment tab displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
 
 ![ARC screen Environment tab](./static/et-quickstart-environment-tab.png)
 
