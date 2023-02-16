@@ -123,7 +123,7 @@ For more information, refer to [Authentication Overview](../platform/3_Authentic
 
 ### Account Resources
 
-Account Resources are shared and available for use within any organization or Project within your account.​
+Account resources are shared and available for use within any organization or project within your account.​
 
 For better isolation of resources, it is recommended that you create resources at the organization or project scope respectively.​
 
