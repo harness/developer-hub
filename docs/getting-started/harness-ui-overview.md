@@ -80,7 +80,7 @@ To navigate to your desired module, perform the following steps:
    
    ![](./static/drag-drop-modules.png)
 
-4. Click the modules you want to see in the left navigation. Harness automatically saves your selection, and you can see the selected modules in your left navigation.
+4. Select the modules you want to see in the left navigation. Harness automatically saves your selection, and you can see the selected modules in your left navigation.
    
    ![](./static/select-modules-list.png)
 
