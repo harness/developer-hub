@@ -165,7 +165,7 @@ For more information, refer to [Projects and Organizations](https://developer.ha
 
 ## My Profile
 
-To view your profile information go to MY PROFILE.
+To view your profile information, go to MY PROFILE.
 
 The following profile information is displayed:
 
