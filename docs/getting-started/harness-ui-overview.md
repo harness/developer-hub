@@ -76,7 +76,7 @@ To navigate to your desired module, perform the following steps:
 
    ![](./static/configure-leftnav.png)
 
-3. To re-order the modules and set the priority, drag and drop the modules. 
+3. To reorder the modules, drag each module to its desired position. 
    
    ![](./static/drag-drop-modules.png)
 
