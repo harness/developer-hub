@@ -5,6 +5,15 @@ sidebar_position: 3
 
 ---
 
+```mdx-code-block
+import new_left_nav from './static/new-nav-left.png'
+import select_modules from './static/select-modules-leftnav.png'
+import module_info from './static/module-info.png'
+import customize_left_nav from './static/configure-leftnav.png'
+import reorder_modules from './static/drag-drop-modules.png'
+
+```
+
 Harness is a comprehensive CI/CD platform that streamlines software delivery for modern enterprises. It provides a powerful and user-friendly interface for managing software releases, deployments, and rollbacks.
 
 You can interact with the Harness platform through the Harness UI. It is designed to be intuitive and easy to use, while also providing robust features and capabilities for managing software releases.
@@ -14,7 +23,12 @@ The Harness UI is organized into several key areas. This topic explains how you 
 - View subscription details.
 - Navigate and select modules.
 
-![](./static/new-nav-left.png)
+```mdx-code-block
+<img src={new_left_nav} alt="new-left-nav" height="50" width="200" />
+```
+
+
+
 
 ## Projects
 
@@ -53,9 +67,12 @@ Harness also has the following modules:
 To navigate to your desired module, perform the following steps: 
 1. In the left navigation, click **Select Modules**.
    
-   ![](./static/select-modules-leftnav.png)
+   ```mdx-code-block
+   <img src={select_modules} alt="Select module option in left nav" height="50" width="200"/>
 
-   The modules appear in the following categories: 
+   ```
+
+   The modules appear in various functional categories: 
    - Build & Test
      - Continuous Integration
      - Chaos Engineering
@@ -69,21 +86,25 @@ To navigate to your desired module, perform the following steps:
      - Service Reliability Management
   
     You can find more information about each module by selecting the info icon beside it.
-    
-    ![](./static/module-info.png)
+
+    ```mdx-code-block
+    <img src={module_info} alt="Option to view module info" height="70" width="300"/>
+    ```
 
 2. To configure your left navigation, select **Customize your navigation**.
 
-   ![](./static/configure-leftnav.png)
+    ```mdx-code-block
+    <img src={customize_left_nav} alt="Option to customize left nav" height="70" width="300"/>
+    ```
 
 3. To reorder the modules, drag each module to its desired position. 
    
-   ![](./static/drag-drop-modules.png)
+     ```mdx-code-block
+    <img src={reorder_modules} alt="Reorder modules" height="70" width="300"/>
+    ```
 
 4. Select the modules you want to see in the left navigation. Harness automatically saves your selection, and you can see the selected modules in your left navigation.
    
-   ![](./static/select-modules-list.png)
-
 ## Account Settings
 
 ### Overview 
