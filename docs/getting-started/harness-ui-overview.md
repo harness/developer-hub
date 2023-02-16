@@ -72,7 +72,7 @@ To navigate to your desired module, perform the following steps:
     
     ![](./static/module-info.png)
 
-2. Select **Customize your navigation** to configure your left navigation.
+2. To configure your left navigation, select **Customize your navigation**.
 
    ![](./static/configure-leftnav.png)
 
