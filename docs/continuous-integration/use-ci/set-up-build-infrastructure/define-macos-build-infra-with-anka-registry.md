@@ -47,78 +47,30 @@ For details, go to [Modifying your VM](https://docs.veertu.com/anka/anka-virtual
 
 
 ###  Set up the Anka controller and registry
-Set up the Anka registry and controller on a Linux host. For details, go to  [Setting up the Controller & Registry](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/) in the Anka documentation. 
+Set up the Anka registry and controller. For details, go to  [Setting up the Controller & Registry](https://docs.veertu.com/anka/anka-build-cloud/getting-started/setup-controller-and-registry/) in the Anka documentation. 
 
 When you finish this workflow you will have:
 
-* An running instance of the Anka controller and registry.
+* A running instance of the Anka controller and registry.
 
-* A Mac node (such as a Mac Mini) in the Anka registry cluster. This node has Anka virtualization software installed. 
+* A Mac node (such as a Mac Mini) in the Anka cluster. This node has Anka virtualization software installed. 
 
-* A VM template in the registry. You can use this to create VMs on other nodes as you add them to the registry. 
+* A VM template in the registry. You can use this to create VMs on other nodes as you add them to the cluster. 
 
 :::note
-Harness recommends that you also enable token authentication on the registry host. For details, go to [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication) in the Anka documentation.
+Optionally, you can enable token authentication for the controller and registry as described in [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication) in the Anka documentation.
 ::: 
 
 
 ### Install the Harness delegate and runner
-Set up the Harness delegate and runner on the same node as your Anka controller and registry or on a separate node. 
+Set up the Harness delegate and runner.  
 
 You can run your delegate and runner on [Docker](define-a-docker-build-infrastructure.md), [MacOS](./define-macos-build-infra-with-anka-registry.md), [AWS](./set-up-an-aws-vm-build-infrastructure.md), [Azure](./define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](./define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
 
-### Update the Anka controller and Harness runner
+### Set up the Harness runner to communicate with the Anka controller
 
-Do the following steps.
-
-
-#### Stop the Anka controller
-
-On the controller host, **`cd`** to the the `docker-compose.yml` folder and enter **`docker-compose down`**. 
-
-
-#### Set up authentication and port mapping on the Anka controller
-
-1. Enable authentication on the Anka controller. 
-
-   This step assumes you have set up root token authentication as described in [Configuring Token Authentication](https://docs.veertu.com/anka/anka-build-cloud/advanced-security-features/token-authentication) (Anka docs).
-
-   Set up these variables to the environment section in the docker-compose.yml file on the controller host:
-
-   * `ANKA_ENABLE_AUTH : true`
-
-   * `ANKA_ROOT_TOKEN` = The root token you specified on the Anka Controller host
- 
-   * `ANKA_QUEUE_ADDR : 0.0.0.0:9001`  
- 
-     <!-- TBD clarify -->
-
-2. Add this mapping to the `ports` section of the  docker-compose.yml file:
-
-   `5001:5001` 
-
-[Anka controller `docker-compose.yml` example](#anka-controller-docker-composeyml-example)
-
-
-#### Set up the Harness runner to communicate with the Anka controller
-
-On the Harness runner host, update up your pool.env file as follows:
-
-``` yaml
-  spec: 
-    account: 
-      username     : $ANKA_CONTROLLER_USERNAME
-      password     : $ANKA_CONTROLLER_PASSWORD_OR_TOKEN
-    controller_url : $ANKA_CONTROLLER_URL
-```
-
-[Drone Runner config example](#harness-runner-poolyml-example)
-
-#### Restart the controller 
-
-Go back to the the docker-compose.yml folder and restart the controller: **`docker-compose -f docker-compose.yml up -d`**
-
+On the Harness runner host, update up your pool.env file shown in the [Drone Runner config example](#harness-runner-poolyml-example) below.
 
 ### Set up the delegate in the Harness pipeline
 
@@ -140,50 +92,7 @@ Now that you've gone through the entire end-to-end workflow, you can add more no
 Before you push each VM to the registry, make sure that you enable port forwarding as described in [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm) above.
 :::
 
-
-### YAML config examples
-
-#### Anka controller `docker-compose.yml` example
-``` yaml
-version: "2"
-services: 
-   anka-controller:
-     build:
-       context: controller
-     ports:
-       - 80:80
-       - 5001:5001
-     depends_on:
-       - etcd
-       - anka-registry
-     env_file:
-       - controller/controller.env
-     restart: always
-     environment:
-       ANKA_ENABLE_AUTH: "true"
-       ANKA_ROOT_TOKEN: $TOKEN
-       ANKA_QUEUE_ADDR: 0.0.0.0:9001
-   anka-registry:
-     build:
-       context: registry
-     env_file:
-       - registry/registry.env
-     ports:
-       - 8089:8089
-     restart: always
-     volumes:
-       - /var/registry:/mnt/vol
-   etcd:
-     build:
-       context: etcd
-     volumes:
-       - /var/etcd-data:/etcd-data
-     env_file:
-       - etcd/etcd.env
-     restart: always
-  ```
-
-#### Harness runner `pool.yml` example
+### Harness runner `pool.yml` example
 ``` yaml
  - name: anka-build
    default: true
@@ -199,7 +108,7 @@ services:
        password: admin
      vm_id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxx 
 #    node_id: // create pool from specific node
-     controller_url: https://anka-controller.myorg.com:8089 
+     registry_url: https://anka-controller.myorg.com:8089 # 
      tag: 1.0.6
      auth_token: sometoken
 ```
