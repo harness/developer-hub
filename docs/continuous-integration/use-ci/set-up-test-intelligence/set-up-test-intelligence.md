@@ -37,8 +37,8 @@ If you haven't created a pipeline before, [Get started with the fasted CI on the
 
 To add a **Build** stage to an existing pipeline:
 1. Go to the pipeline you want to edit.
-1. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
-2. Input a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
+2. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
+3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
 
 To check codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
 
@@ -67,9 +67,9 @@ Use these steps to configure the **Run Tests** step and generate an initial call
    * **Build Arguments**
    * **Test Report Paths**
    * **Run Only Selected Tests**
-   * **Packages** (Leave blank or provide a comma-separated list of source code package prefixes)
-   * **Test Annotations**: (Leave blank or provide a comma-separated list of test annotations to use in unit testing. If blank, the default is `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.)
-   * **Namespaces** (For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.)
+   * **Packages:** Leave blank or provide a comma-separated list of source code package prefixes
+   * **Test Annotations:** Leave blank or provide a comma-separated list of test annotations to use in unit testing. If you do not provide a list of test annotations, the default is `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
+   * **Namespaces:** For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.
 
    For more information about these settings, go to [Run Tests step settings](../../ci-technical-reference/configure-run-tests-step-settings.md).
 
@@ -154,7 +154,7 @@ Expand the sections below to learn more about the test report contents.
 
 Provides an overview of **Total Tests**, number of **Selected Tests**, total **Duration** of all tests, and **Time Saved**.
 
-**Duration** reflects the sum of CPU time taken for all tests to complete. The values are collected as-is from the JUnit report, and they don't correspond with wall clock time. In contrast, the pipeline execution time is a measure of wall clock time. Therefore, it is possible that the **Duration** may exceed the total pipeline execution time.
+**Duration** reflects the sum of CPU time taken for all tests to complete. The values are collected as-is from the JUnit report, and they don't correspond with wall-clock time. In contrast, the pipeline execution time is a measure of wall-clock time. Therefore, it is possible that the **Duration** may exceed the total pipeline execution time.
 
 </details>
 
@@ -168,7 +168,7 @@ Graphical representation of successful and failed tests.
 <details>
 <summary>Test Selection Breakdown</summary>
 
-Test Intelligence analyzes changes to source files and test files in the codebase and then runs only those tests relevant to the detected changes. This section reports how many tests ran based on different the types of code changes included in this build:
+Test Intelligence analyzes changes to source files and test files in the codebase and then runs only the tests that are relevant to the detected changes. This section reports how many tests ran based on the different the types of code changes included in this build:
 
 * **Correlated with Code Changes**: The number of tests that ran due to changes in the codebase.
 * **New Tests**: The number of tests that ran because they are new.
