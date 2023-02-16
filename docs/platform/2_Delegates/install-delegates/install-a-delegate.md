@@ -15,7 +15,7 @@ The process of installing a delegate includes the following steps:
 
 You can install a delegate from the **New Delegate** installation page.
 
-| 1<br>Go to Account Settings | 2<br>Select Account Resources | 3<br>Choose Delegates |
+| 1 Go to Account Settings | 2 Select Account Resources | 3 Choose Delegates |
 | :-: | :-: | :-: |
 | [image1] | [image] | [image] |
 
