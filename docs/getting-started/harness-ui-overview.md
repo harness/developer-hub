@@ -51,7 +51,7 @@ Harness also has the following modules:
 - Service Reliability Management
 
 To navigate to your desired module, perform the following steps: 
-1. Click **Select Modules** in your Harness account, in the left navigation.
+1. In the left navigation, click **Select Modules**.
    
    ![](./static/select-modules-leftnav.png)
 
