@@ -222,8 +222,13 @@ The ARC screen is divided into following tabs to help you create a complete pict
 
 ![The Automated Root Cause (ARC) screen](./static/et-quickstart-arc-screen.png)
 
+## Understand ARC screen
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
-### Code tab
+<Tabs>
+  <TabItem value="codeTab" label="Code tab" default>
+
 
 Information displayed in the **Code** tab is divided into following categories:
 
@@ -293,9 +298,12 @@ In some scenarios, such as asynchronous message passing, the MDC objects contain
 The choice of the collected variables most relevant within an allocated timeframe is determined by the Error Tracking Agent using an adaptive machine learning algorithm. The selection process is based on which and how many variables to collect, the number of items to collect, the length of string to capture, and so on.
 
 
-### Log tab
+  </TabItem>
 
-The **Log** tab displays the last 250 log statements leading up to the event. The log statements are collected directly from the JVM/CLR memory. This ensures that the DEBUG, TRACE, and INFO statements are visible even when they are not logged to a file.  
+
+  <TabItem value="logTab" label="Log tab">
+    
+    The **Log** tab displays the last 250 log statements leading up to the event. The log statements are collected directly from the JVM/CLR memory. This ensures that the DEBUG, TRACE, and INFO statements are visible even when they are not logged to a file.  
 
 In the **Log** tab, the error or exception lines are displayed first, followed by the stack trace. It also displays the context of the event, by highlighting the beginning of the relevant transaction in which the event occurred.
 
@@ -326,9 +334,14 @@ The table below describes the various missing log statements you may come across
 | Ooops, something went wrong… An error has occurred while recording log messages for this snapshot. Please try viewing another snapshot.                                                | Cerebro exception or Unknown error.      |
 | No log messages were detected for current entry point. This might also occur during new event initialization - in this case log messages will be captured starting from next snapshot. | Context or transaction data is missing.  |
 
+  </TabItem>
 
-### Environment tab
 
-The environment view displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
+  <TabItem value="environmentTab" label="Environment tab">
+    
+    The environment view displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
 
 ![ARC screen Environment tab](./static/et-quickstart-environment-tab.png)
+
+  </TabItem>
+</Tabs>
