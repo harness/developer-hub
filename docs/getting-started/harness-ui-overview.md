@@ -129,7 +129,7 @@ For better isolation of resources, it is recommended that you create resources a
 
 ### Policies
 
-You can centrally define and store policies and then select where (which entities) and when (which events) they will be applied across the Harness Platform.
+You can define and store policies centrally and then apply them to entities and events across the Harness Platform.
 
 For more information, see [Harness Policy as Code](https://developer.harness.io/docs/category/policy-as-code)
 
