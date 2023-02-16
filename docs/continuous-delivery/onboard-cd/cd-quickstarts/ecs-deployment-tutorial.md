@@ -1126,7 +1126,7 @@ deploymentConfiguration:
   maximumPercent: 100
   minimumHealthyPercent: 0
 **serviceRegistries:**
-  ** - registryArn: arn:aws:servicediscovery:us-east-1:479370281431:service/srv-xeycgshb42ydmokf**
+  ** - registryArn: arn:aws:servicediscovery:us-east-1:1234567890:service/srv-xeycgshb42ydmokf**
 ```
 
 With the above Service Registry ARN specified in ECS Service Definition ,deployed services are marked with Service Discovery capability
