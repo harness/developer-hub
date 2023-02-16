@@ -14,7 +14,7 @@ The restrictive policies are often enforced via [pod security policies](https://
 
 - To run the HCE pods with operating characteristics described above, create a custom PodSecurityPolicy that allows the same: 
 
-[embedmd]:# (add-path/overview/manifest/psp/psp-litmus.yaml yaml)
+[embedmd]:# (./static/overview/manifest/psp/psp-litmus.yaml yaml)
 ```yaml
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
@@ -86,7 +86,7 @@ This PodSecurityPolicy is a sample configuration which works for a majority of t
 - Subscribe to the created PSP in the experiment RBAC (or in the [admin-mode](https://v1-docs.litmuschaos.io/docs/admin-mode/#prepare-rbac-manifest) RBAC, as applicable).
 For example, the pod-delete experiment RBAC instrumented with the PSP is shown below:
 
-[embedmd]:# (add-path/overview/manifest/psp/rbac-psp.yaml yaml) 
+[embedmd]:# (./static/overview/manifest/psp/rbac-psp.yaml yaml) 
 ```yaml
 ---
 apiVersion: v1
