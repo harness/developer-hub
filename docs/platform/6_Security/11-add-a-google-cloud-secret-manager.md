@@ -8,8 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `PL_ENABLE_GOOGLE_SECRET_MANAGER_IN_NG`. Contact Harness Support to enable the feature.You can use your [Google Cloud Secret Manager](https://cloud.google.com/secret-manager/docs) as a secret manager in Harness.
-
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
 Harness also supports [Google KMS as a secrets manager](../6_Security/10-add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
