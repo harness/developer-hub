@@ -46,6 +46,11 @@ In this example, the `spec` section of the harness-kubernetes.yaml file was chan
 
 A Kubernetes cluster requires only one delegate. To create high availability in the cluster, you can increase the number of delegate replica pods. Do not add another delegate to the cluster. 
 
+If you want to install Kubernetes delegates in separate clusters, do not use the same harness-kubernetes.yaml and name for both delegates. Download a new Kubernetes YAML `spec` from Harness for each delegate you want to install. This prevents name conflicts. 
+
+In every case, the delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, high availability is provided by default. The failure of a single delegate does not stop Harness from performing deployments. For greater availability, increase the number of replica pods to run three delegates in case you lose two, and so on.
+
+
 ### Limitations
 
 * Two delegates in different locations with different connectivity do not support high availability. For example, if you have one delegate in a development environment and another in a production environment, the development delegate does not communicate with the production delegate. The reverse is also true. If the one delegate deployed to an environment stops running, Harness ceases operation in that environment.
