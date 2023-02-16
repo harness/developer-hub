@@ -55,7 +55,7 @@ Feature flags are a key component of Harness that allows you to control the avai
 
 For more information, see [Feature Flags](https://developer.harness.io/docs/feature-flags)
 
-## Module selection
+## Select modules and customize left navigation
 
 Harness also has the following modules: 
 
@@ -169,14 +169,15 @@ To view your profile information, go to MY PROFILE.
 
 The following profile information is displayed:
 
-- Basic Information
-- Your Projects
-- Your Source Code Managers
-- Your API keys
+- Basic information
+- Projects
+- Source code managers
+- API keys
+
 You can also do the following from the profile page:
-- Enable/disable Two-Factor Authentication​
-- Change Password
-- ​Switch Account​
-- Add a new API key and Token.
+- Enable/disable two-factor authentication​
+- Change password
+- Switch account​
+- Add a new API key and token.
 
 
