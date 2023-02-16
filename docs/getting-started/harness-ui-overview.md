@@ -90,7 +90,7 @@ To navigate to your desired module, perform the following steps:
 
 Account Overview has your Harness Account Details.
 
-To view your Harness Account Details, go to Account Settings and click Overview.
+To view your Harness account details, go to **Account Settings** and click **Overview**.
 
 Your Account Overview details are shown.
 
