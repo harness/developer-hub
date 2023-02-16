@@ -8,7 +8,7 @@ This document introduces the delegate installer and installation of Harness dele
 
 The process of installing a delegate includes the following steps:
 
-- Go to the New Delegate page
+- Go to the **New Delegate** page
 - Select an environment: Kubernetes or Docker
 - Select the mode of installation: Helm chart, Terraform Plan, or Kubernetes manifest
 
@@ -16,11 +16,9 @@ The process of installing a delegate includes the following steps:
 
 You can install a delegate from the **New Delegate** installation page.
 
-| 1 <p>Go to Account Settings</p> | 2 <p>Select Account Resources</p> | 3 <p>Choose Delegates</p> |
+| 1 <p>Go to **Account Settings**</p> | 2 <p>Select **Account Resources**</p> | 3 <p>Choose **Delegates**</p> |
 | :-: | :-: | :-: |
 | ![](./static/install-a-delegate-01.png) | ![](./static/install-a-delegate-02.png)] | ![](./static/install-a-delegate-03.png) |
-
-
 
 
 
@@ -30,13 +28,16 @@ In addition to providing basic information about installed delegates, the **Dele
 
 To install a delegate, click **+ New Delegate**.
 
+![](./static/install-a-delegate-05.png)
+
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
 
-![](./static/install-a-delegate-05.png)
+![](./static/install-a-delegate-06.png)
+
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
 
-![](./static/install-a-delegate-06.png)
+![](./static/install-a-delegate-07.png)
 
 Otherwise, continue with the following steps.
 
@@ -44,27 +45,29 @@ Otherwise, continue with the following steps.
 
 Select your target environment: Kubernetes or Docker.
 
+![](./static/install-a-delegate-08.png)
+
 ## Kubernetes environment
 
-![](./static/install-a-delegate-07.png)
+![](./static/install-a-delegate-08.png)
 
 In **Install your Delegate**, select **Helm Chart**, **Terraform**, or **Kubernetes Manifest**.
 
 ### Helm-based install on Kubernetes
 
-![](./static/install-a-delegate-08.png)
+![](./static/install-a-delegate-09.png)
 
 Use the following steps to install a delegate on Kubernetes using a Helm chart.
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Helm Chart**.
 
-![](./static/install-a-delegate-09.png)
+![](./static/install-a-delegate-10.png)
 
 #### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
-![](./static/install-a-delegate-10.png)
+![](./static/install-a-delegate-11.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -105,13 +108,14 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](./static/install-a-delegate-11.png)
+![](./static/install-a-delegate-10-5.png)
+[INSERT HEARTBEAT]
 
 To verify the delegate, click **Verify**.
 
 ### Terraform-based install on Kubernetes
 
-![](./static/install-a-delegate-12.png)
+![](./static/install-a-delegate-11.png)
 
 Use the following steps to install a delegate on Kubernetes using a Terraform Plan.
 
