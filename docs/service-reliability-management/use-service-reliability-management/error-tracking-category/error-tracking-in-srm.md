@@ -16,18 +16,18 @@ Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Conta
 :::
 
 
-Error Tracking is a continuous reliability solution in the Harness [Service Reliability Management (SRM)](https://developer.harness.io/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics#sort=relevancy&f:@commonsource=%5BNextGen%20Docs%5D) module that enables you to identify, triage, and resolve errors in your service. This helps in implementing rapid code changes by ensuring that the code is always in a deployable state.
+Error Tracking is a continuous reliability solution in the Harness [Service Reliability Management (SRM)](https://developer.harness.io/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics#sort=relevancy&f:@commonsource=%5BNextGen%20Docs%5D) module that enables developers to identify, triage, and resolve errors in applications. This helps in implementing rapid code changes by ensuring that the code is always in a deployable state.
 
 
 ## Overview
 
-With the increase in release velocity, the risk to code quality also increases. Using Harness Error Tracking you can:
+With the increase in release velocity, the risk to code quality also increases. Using Harness Error Tracking, as a developer, you can:
 
 * Quickly identify and address any critical issues during each release with real-time notifications sent to email and Slack channels - ensuring that the right people can make the right decisions fast.
-* Deepen understanding of your Java applications in all environments, from production to development, testing, and staging, through code-level visibility.
-* Automate issue root-cause analysis at runtime, eliminating the need for manual log analysis to identify critical errors.
-* Quickly and accurately identify and fix detected issues with Automated Root Cause Analysis (ARC) screen, leveraging source code, variable values, environment state of the host/container, and DEBUG-level logs to get the full context.
-* Integrate the ARC screen with existing tools including APMs, log analyzers, and issue-tracking software.
+* Deepen understanding of your Java applications in all environments, from production to development, testing, and staging, through code level visibility.
+* Automate issue root cause analysis at runtime, eliminating the need for manual log analysis to identify critical errors.
+* Quickly and accurately identify and fix detected issues with Automated Root Cause Analysis (ARC) screen, leveraging source code, variable values, environment state of the host/container, and DEBUG level logs to get the full context.
+* Integrate the ARC screen with existing tools including APMs, log analyzers, and issue tracking software.
 
 Harness Error Tracking consists of an Error Tracking Agent that runs on a Java Virtual Machine (JVM). It monitors the Java applications for run-time exceptions, log events, and the custom events that you set up. When an exception or an event occurs, the Agent sends the statistics and snapshots to a monitored service on Harness SRM. SRM analyzes the data using Machine Learning (ML) and provides deep insights via comprehensive dashboards such as the Event List and ARC.
 
@@ -66,7 +66,7 @@ The following steps explain how to create a monitored service, and define servic
             The New Service dialog appears.
       2. Enter the following information, and then select **Save**:
        
-          *  **Name** : Enter a name for the service.
+          *  **Name** : Enter a name for the service. For example, _sample_service_.
           *  **Description (Optional)**
           *  **Tag (Optional)** 
 
@@ -84,11 +84,11 @@ The following steps explain how to create a monitored service, and define servic
             * **Tag (Optional)**
             * **Environment Type**: Select an environment type. The available options are **Production** and **Non-Production**.
 
-    Harness automatically fills the **Monitored Service Name** field by combining the **Service** and **Environment** names.
+    Harness autopopulates the **Monitored Service Name** field by combining the **Service** and **Environment** names.
 
 4. Select **Save**.
  
-   The newly created monitored service is added to the Monitored Services list.  
+   You can view the new monitored service in the **Monitored Services** list. 
 
     ![Monitored Service is created](./static/et-quickstart-moniterdservice-created.png)
 
@@ -247,11 +247,11 @@ Error Tracking captures snapshots when events, application errors (exceptions), 
 
 An Error Tracking snapshot contains valuable information about events in the monitored application. This includes:
 
-* Date and time of the snapshot.
-* The server and application where the event occurred.
-* The deployment where the event was captured.
-* The full call stack.
-* The source code.
+* Date and time of the snapshot
+* The server and application where the event occurred
+* The deployment where the event was captured
+* The full call stack
+* The source code
 
 
 #### Forced snapshot
@@ -269,7 +269,7 @@ Select a method in the call stack to see its source code.
 
 The call stack displays the chain of methods within the environment leading up to the event. The first method in the line is the last method on a non-third party code within your application.
 
-When an exception is caught and re-thrown once or multiple times within the thread, the **Related Errors** drop-down displays the error analysis. This feature is available only when such exceptions exist.
+When an exception is caught and re-thrown once or multiple times within the thread, the **Related Errors** dropdown displays the error analysis. This feature is available only when such exceptions exist.
 
 
 #### Third party utilities and methods
@@ -315,7 +315,7 @@ Log4j2 allows you to create custom log levels and names. However, Error Tracking
 
 #### Missing log statements
 
-The table bellow describes the various missing log statements you may come across in the **Log** tab.
+The table below describes the various missing log statements you may come across in the **Log** tab.
 
 | Message                                                                                                                                                                                | Cause                                    |
 | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
