@@ -18,8 +18,6 @@ This document explains how you can:
 * Build and host a custom delegate image that includes the tools you select.
 * Use your custom delegate in CI/CD pipelines.
 
-This is not a runtime process. For information on how to install tools on the delegate in runtime, see [Install Delegates with Third-Party Tools](/docs/platform/2_Delegates/customize-delegates/install-delegates-with-third-party-tools.md).
-
 ### Select the delegate image
 
 You can build on either of the following Harness-provided images.
@@ -31,7 +29,7 @@ You can build on either of the following Harness-provided images.
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
 | Harness Minimal Delegate Docker image | A minimal delegate image available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
 
-You can use the `latest` version minimal image from the Docker repository.
+Use the  last published `YY.MM.XXXXX` version of the minimal image from the Docker repository.
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-07.png)
 ### Build the delegate image
@@ -54,7 +52,7 @@ The first `RUN` block installs or updates the `unzip` and `yum-utils` tools. The
 RUN microdnf update \  
   && microdnf install --nodocs \  
     unzip \  
-    Yum-utils
+    yum-utils
 ```
 The second `RUN` block uses the `yum` utility to create a configuration file for the HashiCorp repository, and then uses the `microdnf` package manager to install the required Terraform components:
 
@@ -68,7 +66,7 @@ The final `RUN` block retrieves the Kubernetes `kubectl` command-line tool that 
 
 ```
 RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \  
-  && curl -LO "<https://dl.k8s.io/release/$(curl> -L -s<https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl>" && chmod +x kubectl 
+  && curl -LO "https://dl.k8s.io/release/$(curl> -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl" && chmod +x kubectl 
 ```
   
 
@@ -88,7 +86,7 @@ USER root
 RUN microdnf update \  
   && microdnf install --nodocs \  
     unzip \  
-    Yum-utils  
+    yum-utils  
   
 RUN yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo \  
   && microdnf install -y terraform     

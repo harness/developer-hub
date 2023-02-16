@@ -7,7 +7,7 @@ Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos 
 - This is done by starting the proxy server and redirecting the traffic through the proxy server.
 - It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers.
 
-![Pod HTTP Modify Header](./static/images/pod-http.png)
+![Pod HTTP Modify Header](./static/images/pod-http-modify-header.png)
 
 
 ## Usage

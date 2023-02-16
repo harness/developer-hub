@@ -1,9 +1,7 @@
 ---
 title: Build and Push to GCR Step Settings
 description: This topic provides settings for the Build and Push to GCR Step, which builds an image and pushes it to GCR. Requirements. This step assumes that the target GCR registry meets the GCR requirements fo…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: 66ykcm0sf0
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -27,6 +25,8 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 ### GCP Connector
 
 The Harness GCP Connector to use to connect to GCR. See [Google Cloud Platform (GCP) Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
+
+This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
 ### Host
 

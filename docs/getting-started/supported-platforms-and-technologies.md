@@ -155,7 +155,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="#see-also">Serverless Lambda</a></p>
+      <p><a href="#see-also">Serverless.com Framework - Lambda</a></p>
     </td>
     <td>
       <ul>
@@ -392,7 +392,7 @@ The following table lists Harness integrations and their artifact source support
 | **Azure Web Apps** | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          |            |                              |                              |             |            |
 | **SSH**            |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
 | **WinRM**          |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
-| **Serverless**     |                | ✅      |         |         | ✅              |             |            |                              |                              |             | ✅         |
+| **Serverless.com Framework**     |                | ✅      |         |         | ✅              |             |            |                              |                              |             | ✅         |
 
 ##### Manifest and Config file Store Support
 
@@ -409,7 +409,7 @@ The following table lists where you can store your manifests or config files for
 | **Openshift\*\***Params\*\*   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
 | **AWS ECS**                   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
 | **Helm Chart**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
-| **Serverless.com**            | ✅         | ✅         | ✅            |                       | ✅          |              |               |            |            |                          |                           |
+| **Serverless.com Framework**            | ✅         | ✅         | ✅            |                       | ✅          |              |               |            |            |                          |                           |
 | **SSH**                       |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **WinRM**                     |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **Azure Web Apps**            |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
@@ -680,7 +680,7 @@ See [Security Step Settings Reference](../security-testing-orchestration/sto-tec
 
 ### Feature Flags
 
-Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/4-ff-sdks/1-sdk-overview/1-client-side-and-server-side-sdks.md) for a number of programming languages.
+Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
 #### Client-side SDKs
 
@@ -688,12 +688,12 @@ The following table lists the Client-side Feature Flag SDKs Harness supports.
 
 | SDK                                                                   | Documentation                                                                                          |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| [Android](https://github.com/harness/ff-android-client-sdk)           | [Android SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/1-android-sdk-reference.md)           |
-| [iOS](https://github.com/harness/ff-ios-client-sdk)                   | [iOS SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/3-ios-sdk-reference.md)                   |
-| [Flutter](https://github.com/harness/ff-flutter-client-sdk)           | [Flutter SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/2-flutter-sdk-reference.md)           |
-| [Javascript](https://github.com/harness/ff-javascript-client-sdk)     | [Javascript SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/4-java-script-sdk-references.md)   |
-| [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/5-react-native-sdk-reference.md) |
-| [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](../feature-flags/4-ff-sdks/2-client-sdks/6-xamarin-sdk-reference.md)           |
+| [Android](https://github.com/harness/ff-android-client-sdk)           | [Android SDK Reference](../feature-flags/ff-sdks/client-sdks/android-sdk-reference.md)           |
+| [iOS](https://github.com/harness/ff-ios-client-sdk)                   | [iOS SDK Reference](../feature-flags/ff-sdks/client-sdks/ios-sdk-reference.md)                   |
+| [Flutter](https://github.com/harness/ff-flutter-client-sdk)           | [Flutter SDK Reference](../feature-flags/ff-sdks/client-sdks/flutter-sdk-reference.md)           |
+| [Javascript](https://github.com/harness/ff-javascript-client-sdk)     | [Javascript SDK Reference](../feature-flags/ff-sdks/client-sdks/java-script-sdk-references.md)   |
+| [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](../feature-flags/ff-sdks/client-sdks/react-native-sdk-reference.md) |
+| [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](../feature-flags/ff-sdks/client-sdks/xamarin-sdk-reference.md)           |
 
 #### Server-side SDKs
 
@@ -701,13 +701,13 @@ The following table lists the Server-side Feature Flag SDKs Harness supports.
 
 | SDK                                                        | Documentation                                                                                            |
 | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [.NET](https://github.com/harness/ff-dotnet-server-sdk)    | [.NET SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/4-net-sdk-reference.md)                    |
-| [Go](https://github.com/harness/ff-golang-server-sdk)      | [Go SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/2-feature-flag-sdks-go-application.md)       |
-| [Java](https://github.com/harness/ff-java-server-sdk)      | [Java SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/3-integrate-feature-flag-with-java-sdk.md) |
-| [Node.js](https://github.com/harness/ff-nodejs-server-sdk) | [Node.js SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/5-node-js-sdk-reference.md)             |
-| [Python](https://github.com/harness/ff-python-server-sdk)  | [Python SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/7-python-sdk-reference.md)               |
-| [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/8-ruby-sdk-reference.md)                   |
-| [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](../feature-flags/4-ff-sdks/3-server-sdks/6-php-sdk-reference.md)                     |
+| [.NET](https://github.com/harness/ff-dotnet-server-sdk)    | [.NET SDK Reference](../feature-flags/ff-sdks/server-sdks/net-sdk-reference.md)                    |
+| [Go](https://github.com/harness/ff-golang-server-sdk)      | [Go SDK Reference](../feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application.md)       |
+| [Java](https://github.com/harness/ff-java-server-sdk)      | [Java SDK Reference](../feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk.md) |
+| [Node.js](https://github.com/harness/ff-nodejs-server-sdk) | [Node.js SDK Reference](../feature-flags/ff-sdks/server-sdks/node-js-sdk-reference.md)             |
+| [Python](https://github.com/harness/ff-python-server-sdk)  | [Python SDK Reference](../feature-flags/ff-sdks/server-sdks/python-sdk-reference.md)               |
+| [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](../feature-flags/ff-sdks/server-sdks/ruby-sdk-reference.md)                   |
+| [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](../feature-flags/ff-sdks/server-sdks/php-sdk-reference.md)                     |
 
 ### Harness Chaos Engineering
 
@@ -738,7 +738,7 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 
 The following table lists Harness support for SSO protocols and tools.
 
-See [Add and Manage Access Control](../feature-flags/1-ff-onboarding/3-ff-security-compliance/1-manage-access-control.md).
+See [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-compliance/manage-access-control.md).
 
 | SSO Type                                                                     | SSO Providers          | Authentication Supported | Authorization (Group Linking) Supported | SCIM Provisioning |
 | ---------------------------------------------------------------------------- | ---------------------- | ------------------------ | --------------------------------------- | ----------------- |
@@ -794,7 +794,7 @@ For Kubernetes deployments, the following SDKs/tools are included in the Delegat
 
 The versions can be found in this public GitHub repo: <https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools>
 
-For details on updating the default tool versions, go to [Install Software on the Delegate with Initialization Scripts](../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+For details on updating the default tool versions, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 For Kubernetes deployments, the following SDKs/tools are certified.
 
@@ -831,7 +831,27 @@ Using the No Tools Image and Delegate YAML, you can install the specific SDK ver
 
 For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
-### Supported browsers
+### The Update Framework (TUF)
+
+The Update Framework (TUF) is an open source specification for that provides instructions on how to organize, sign, and interact with metadata to secure package managers. 
+
+Harness includes native TUF support via the following:
+
+- Deployment templates: [Deployment Templates](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
+  - Deployment Templates can obtain the required metadata for native TUF support, and generate and validate signatures in the software lifecycle.
+- OCI image registry support:
+  - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
+- Enforce the rotation of secrets and key management practices:
+  - Harness provides [token key rotation natively](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/#rotate-token).
+- Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step/#review-what-is-harness-continuous-verification-cv).
+
+## Harness Open Source Software (OSS) components
+
+The following document lists the open source libraries and third-party software Harness uses.
+
+- [Harness Open Source Software (OSS) components](static/harness-open-source-software-components.pdf)
+
+## Supported browsers
 
 The following browsers are supported:
 
@@ -842,7 +862,7 @@ The following browsers are supported:
 
 Mobile browsers are not supported.
 
-#### Supported screen resolution
+## Supported screen resolution
 
 Minimum supported screen resolution is 1440x900.
 

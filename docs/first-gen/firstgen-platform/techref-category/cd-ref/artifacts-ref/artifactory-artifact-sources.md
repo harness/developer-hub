@@ -126,6 +126,8 @@ For non-Docker artifacts, you specify the file path to the artifact on Artifacto
 
 Enter the artifact path in the repository. You can use wildcards (not regex) such as `todolist/*/*.rpm`.
 
+**Note:** The Artifactory user account you use in the Harness Artifact connector requires [Basic Authentication](https://www.jfrog.com/confluence/display/JFROG/Access+Tokens#AccessTokens-BasicAuthentication) to fetch the Artifact Path.
+
 ##### Deploying the Artifact
 
 When you deploy your Harness Workflow, you will select the artifact version to use. Harness will display the latest 25 artifact versions.

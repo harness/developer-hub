@@ -323,7 +323,7 @@ The following table lists each of the environment variables in the Harness Kuber
 - name: PROXY_HOST  value: ""- name: PROXY_PORT  value: ""- name: PROXY_SCHEME  value: ""- name: NO_PROXY  value: ""- name: PROXY_MANAGER  value: "true"- name: PROXY_USER  valueFrom:    secretKeyRef:      name: mydel-proxy      key: PROXY_USER- name: PROXY_PASSWORD  valueFrom:    secretKeyRef:      name: mydel-proxy      key: PROXY_PASSWORD
 ```
  |
-| `INIT_SCRIPT` | You can run scripts on the Delegate using `INIT_SCRIPT`.For example, if you wanted to install software on the Delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the Delegate YAML.A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).See [Run Scripts on Delegates](/docs/platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md). | 
+| `INIT_SCRIPT` | You can run scripts on the Delegate using `INIT_SCRIPT`.For example, if you wanted to install software on the Delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the Delegate YAML.A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md). | 
 ```
 - name: INIT_SCRIPT  value: |-    echo install wget    apt-get install wget    echo wget installed
 ```

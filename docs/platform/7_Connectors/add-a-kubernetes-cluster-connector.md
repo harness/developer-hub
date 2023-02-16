@@ -44,9 +44,13 @@ If you don’t want to use `verbs: [“*”]` for the Role, you can list out all
 
 The YAML provided for the Harness Delegate defaults to `cluster-admin` because that ensures anything could be applied. Any restriction must take into account the actual manifests to be deployed.
 
-### Review: Kubernetes Cluster Connector for EKS
+### Review: Use the platform-agnostic Kubernetes Cluster Connector to connect to EKS
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic Kubernetes Cluster Connector discussed here. Do not use an [AWS Connector](add-aws-connector.md).
+Harness does not have an out of the box connector for Elastic Kubernetes Service (Amazon EKS).
+
+If you want to connect Harness to Amazon EKS, use the platform-agnostic Kubernetes Cluster Connector discussed in this topic. 
+
+Do not use an [AWS Connector](add-aws-connector.md).
 
 ### Review: AKS Clusters Must have Local Accounts Enabled
 

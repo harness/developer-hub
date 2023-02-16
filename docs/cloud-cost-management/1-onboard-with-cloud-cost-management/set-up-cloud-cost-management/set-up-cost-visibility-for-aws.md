@@ -51,18 +51,18 @@ The cost visibility policy performs the following actions:
 * Put objects into the Harness S3 bucket
 ```
   HarnessBillingMonitoringPolicy:  
-    Type: 'AWS::IAM::ManagedPolicy'  
-    Condition: CreatingHarnessBillingMonitoringPolicy  
-    Properties:  
-      Description: Policy granting Harness Access to Collect Billing Data    
-      PolicyDocument:  
-        Version: 2012-10-17  
-        Statement:  
-          - Effect: Allow  
-            Action:  
-              - 's3:GetBucketLocation'  
-              - 's3:ListBucket'  
-              - 's3:GetObject'  
+    "Type": "AWS::IAM::ManagedPolicy"  
+    "Condition": "CreatingHarnessBillingMonitoringPolicy"  
+    "Properties":  
+      "Description": "Policy granting Harness Access to Collect Billing Data"    
+      "PolicyDocument":  
+        "Version": "2012-10-17"  
+        "Statement":  
+          - "Effect": "Allow"  
+            "Action":  
+              - "s3:GetBucketLocation"
+              - "s3:ListBucket" 
+              - "s3:GetObject" 
             Resource:  
               - !Join  
                 - ''  
@@ -72,25 +72,25 @@ The cost visibility policy performs the following actions:
                 - /  
                 - - !Join  
                     - ''  
-                    - - 'arn:aws:s3:::'  
+                    - - "arn:aws:s3:::"
                       - !Ref BucketName  
                   - '*'  
-          - Effect: Allow  
-            Action:  
-              - 's3:ListBucket'  
-              - 's3:PutObject'  
-              - 's3:PutObjectAcl'  
-            Resource:  
-              - 'arn:aws:s3:::ce-customer-billing-data-prod*'  
-              - 'arn:aws:s3:::ce-customer-billing-data-prod*/*'  
-          - Effect: Allow  
-            Action:   
-              - 'cur:DescribeReportDefinitions'  
-              - 'organizations:Describe*'  
-              - 'organizations:List*'  
-            Resource: "*"  
-      Roles:  
-        - !Ref HarnessCloudFormationRole
+          - "Effect": "Allow"  
+            "Action":  
+              - "s3:ListBucket"
+              - "s3:PutObject"
+              - "s3:PutObjectAcl"  
+            "Resource":  
+              - "arn:aws:s3:::ce-customer-billing-data-prod*"
+              - "arn:aws:s3:::ce-customer-billing-data-prod*/*"
+          - "Effect": "Allow"  
+            "Action":   
+              - "cur:DescribeReportDefinitions" 
+              - "organizations:Describe*"
+              - "organizations:List*"  
+            "Resource": "*"  
+      "Roles":  
+        - "!Ref HarnessCloudFormationRole"
 ```
 
 If the `cur:DescribeReportDefinitions`, `organizations:Describe`, and `organizations:List*` permissions are too wide, you can modify these to the following:
@@ -124,35 +124,35 @@ The inventory management policy performs the following actions:
 
 ```
 HarnessEventsMonitoringPolicy:  
-  Type: 'AWS::IAM::ManagedPolicy'  
-  Condition: CreateHarnessEventsMonitoringPolicy  
-  Properties:  
-    Description: Policy granting Harness Access to Enable Event Collection  
-    PolicyDocument:  
-      Version: 2012-10-17  
-      Statement:  
-        - Effect: Allow  
-          Action:  
-              - 'ecs:ListClusters*'  
-              - 'ecs:DescribeClusters'  
-              - 'ecs:ListServices'  
-              - 'ecs:DescribeServices'  
-              - 'ecs:DescribeContainerInstances'  
-              - 'ecs:ListTasks'  
-              - 'ecs:ListContainerInstances'  
-              - 'ecs:DescribeTasks'  
-              - 'ec2:DescribeInstances*'  
-              - 'ec2:DescribeRegions'  
-              - 'cloudwatch:GetMetricData'  
-              - 'ec2:DescribeVolumes'  
-              - 'ec2:DescribeSnapshots'  
-              - 'rds:DescribeDBSnapshots'  
-              - 'rds:DescribeDBInstances'  
-              - 'rds:DescribeDBClusters'  
-              - 'rds:DescribeDBSnapshotAttributes'  
-          Resource: '*'  
-    Roles:  
-      - !Ref HarnessCloudFormationRole
+  "Type": "AWS::IAM::ManagedPolicy"  
+  "Condition": "CreateHarnessEventsMonitoringPolicy"  
+  "Properties":  
+    "Description": "Policy granting Harness Access to Enable Event Collection"  
+    "PolicyDocument":  
+      "Version": "2012-10-17"  
+      "Statement":  
+        - "Effect": "Allow"  
+          "Action":  
+              - "ecs:ListClusters*"  
+              - "ecs:DescribeClusters"
+              - "ecs:ListServices"
+              - "ecs:DescribeServices"
+              - "ecs:DescribeContainerInstances" 
+              - "ecs:ListTasks"
+              - "ecs:ListContainerInstances"  
+              - "ecs:DescribeTasks"
+              - "ec2:DescribeInstances*"
+              - "ec2:DescribeRegions"
+              - "cloudwatch:GetMetricData"
+              - "ec2:DescribeVolumes"
+              - "ec2:DescribeSnapshots"
+              - "rds:DescribeDBSnapshots"  
+              - "rds:DescribeDBInstances"  
+              - "rds:DescribeDBClusters" 
+              - "rds:DescribeDBSnapshotAttributes"
+          "Resource": "*" 
+    "Roles":  
+      - "!Ref HarnessCloudFormationRole"
 ```
 
 ### Insight into RDS instances
@@ -171,7 +171,7 @@ The AutoStopping policy performs the following actions:
 * Permissions for creating AutoStopping Rules
 ```
  HarnessOptimizationLambdaExecutionRole:  
-    Type: 'AWS::IAM::Role'  
+    Type: "AWS::IAM::Role"
     Condition: CreateHarnessOptimisationPolicy  
     Properties:  
       RoleName: !Ref LambdaExecutionRoleName  
@@ -187,68 +187,68 @@ The AutoStopping policy performs the following actions:
 
 ```
 HarnessOptimsationLambdaPolicy:  
-    Type: 'AWS::IAM::ManagedPolicy'  
-    Condition: CreateHarnessOptimisationPolicy  
-    Properties:  
-      Description: Policy granting Harness Access to Enable Cost Optimisation  
-      PolicyDocument:  
-        Version: 2012-10-17  
-        Statement:  
-          - Effect: Allow  
-            Action:  
-              - 'ec2:CreateNetworkInterface'  
-              - 'ec2:CreateNetworkInsightsPath'  
-              - 'ec2:CreateNetworkInterfacePermission'  
-              - 'ec2:CreateNetworkAcl'  
-              - 'ec2:*'  
-              - 'ec2:CreateNetworkAclEntry'  
-              - 'logs:CreateLogGroup'  
-              - 'logs:CreateLogStream'  
-              - 'logs:PutLogEvents'  
-            Resource: "*"  
-      Roles:  
-        - !Ref HarnessOptimizationLambdaExecutionRole
+    "Type": "AWS::IAM::ManagedPolicy" 
+    "Condition": "CreateHarnessOptimisationPolicy"  
+    "Properties":  
+      "Description": "Policy granting Harness Access to Enable Cost Optimisation"  
+      "PolicyDocument":  
+        "Version": "2012-10-17"  
+        "Statement":  
+          - "Effect": "Allow"  
+            "Action":  
+              - "ec2:CreateNetworkInterface"
+              - "ec2:CreateNetworkInsightsPath" 
+              - "ec2:CreateNetworkInterfacePermission"  
+              - "ec2:CreateNetworkAcl"
+              - "ec2:*"
+              - "ec2:CreateNetworkAclEntry"  
+              - "logs:CreateLogGroup"
+              - "logs:CreateLogStream"  
+              - "logs:PutLogEvents"
+            "Resource": "*"  
+      "Roles":  
+        - "!Ref HarnessOptimizationLambdaExecutionRole"
 ```
 
 ```
 HarnessOptimisationPolicy:  
-    Type: 'AWS::IAM::ManagedPolicy'  
-    Condition: CreateHarnessOptimisationPolicy  
-    Properties:  
-      Description: Policy granting Harness Access to Enable Cost Optimisation  
-      PolicyDocument:  
-        Version: 2012-10-17  
-        Statement:  
-              - Effect: Allow  
-                Action:  
-                  - elasticloadbalancing:*  
-                  - ec2:StopInstances  
-                  - autoscaling:*  
-                  - ec2:Describe*  
-                  - iam:CreateServiceLinkedRole  
-                  - iam:ListInstanceProfiles  
-                  - iam:ListInstanceProfilesForRole  
-                  - iam:AddRoleToInstanceProfile  
-                  - iam:PassRole  
-                  - ec2:StartInstances  
-                  - ec2:*  
-                  - iam:GetUser  
-                  - ec2:ModifyInstanceAttribute  
-                  - iam:ListRoles  
-                  - acm:ListCertificates  
-                  - lambda:*  
-                  - cloudwatch:ListMetrics  
-                  - cloudwatch:GetMetricData  
-                  - route53:GetHostedZone  
-                  - route53:ListHostedZones  
-                  - route53:ListHostedZonesByName  
-                  - route53:ChangeResourceRecordSets  
-                  - route53:ListResourceRecordSets  
-                  - route53:GetHealthCheck  
-                  - route53:GetHealthCheckStatus  
-                  - cloudwatch:GetMetricStatistics  
-                Resource: "*"  
-      Roles:  
+    "Type": "AWS::IAM::ManagedPolicy"
+    "Condition": "CreateHarnessOptimisationPolicy"  
+    "Properties":  
+      "Description": "Policy granting Harness Access to Enable Cost Optimisation"  
+      "PolicyDocument":  
+        "Version": "2012-10-17"  
+        "Statement":  
+              - "Effect": "Allow"  
+                "Action":  
+                  - "elasticloadbalancing:*"  
+                  - "ec2:StopInstances"  
+                  - "autoscaling:*"  
+                  - "ec2:Describe*"  
+                  - "iam:CreateServiceLinkedRole"  
+                  - "iam:ListInstanceProfiles"  
+                  - "iam:ListInstanceProfilesForRole"  
+                  - "iam:AddRoleToInstanceProfile"  
+                  - "iam:PassRole"  
+                  - "ec2:StartInstances"  
+                  - "ec2:*"  
+                  - "iam:GetUser"  
+                  - "ec2:ModifyInstanceAttribute"  
+                  - "iam:ListRoles"  
+                  - "acm:ListCertificates"  
+                  - "lambda:*"  
+                  - "cloudwatch:ListMetrics"  
+                  - "cloudwatch:GetMetricData"  
+                  - "route53:GetHostedZone"  
+                  - "route53:ListHostedZones"  
+                  - route53:ListHostedZonesByName"  
+                  - "route53:ChangeResourceRecordSets"  
+                  - "route53:ListResourceRecordSets"  
+                  - "route53:GetHealthCheck"  
+                  - "route53:GetHealthCheckStatus"  
+                  - "cloudwatch:GetMetricStatistics"  
+                "Resource": "*"  
+      "Roles":  
         - !Ref HarnessCloudFormationRole 
 ```
 

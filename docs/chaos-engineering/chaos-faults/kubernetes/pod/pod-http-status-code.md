@@ -8,7 +8,7 @@ Pod HTTP status code is a Kubernetes pod-level fault injects chaos inside the po
 - It tests the application's resilience to error code HTTP responses from the provided application server.
 
 tip Fault execution flow chart
-![Pod HTTP Status Code](./static/images/pod-http.png)
+![Pod HTTP Status Code](./static/images/pod-http-status-code.png)
 
 
 ## Usage

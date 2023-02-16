@@ -7,20 +7,17 @@ VMware disk loss detaches the disks that are attached to a Linux OS based VMware
 
 ![VMware Disk Loss](./static/images/vmware-disk-loss.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-This fault helps determine how resilient an application is to the unplanned scaling of K8s pods.
-</div>
-</details>
+- VMware disk loss determines the resilience of an application to the unplanned scaling of K8s pods.
 
-## Prerequisites
-- Kubernetes > 1.16
-- Execution plane is connected to vCenter and the hosts on port 443. 
-- VMware tool is installed on the target VM with remote execution enabled.
-- Adequate vCenter permissions to access the hosts and the VMs.
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- The VM should be in a healthy state before and after injecting chaos.
+- The target disks should be attached to the VM.
+- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- VMware tool should be installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
@@ -36,15 +33,9 @@ stringData:
     VCENTERPASS: XXXXXXXXXXXXX
 ```
 
-## Default validations
-- The VM should be in a healthy state.
-- The target disks should be attached to the VM.
-
-
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -54,15 +45,15 @@ stringData:
       <tr>
         <td> APP_VM_MOIDS </td>
         <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
-        <td> For example, <code>vm-5365</code>. </td>
+        <td> For example, <code>vm-5365</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-vm-power-off/#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
       </tr>
       <tr>
         <td> VIRTUAL_DISK_NAMES </td>
         <td> Name of the target disks provided as comma-separated values. </td>
-        <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. </td>
+        <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-disk-loss#virtual-disk-names"> virtual disk names. </a></td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -72,33 +63,27 @@ stringData:
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive instance terminations (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).</td>
-        <td> For example, 30s. </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Virtual disk names
-It contains the name of the target disks attached to a particular VM. You can tune it using the `VIRTUAL_DISK_NAMES` environment variable.
+It specifies the name of the target disks attached to a particular VM. Tune it by using the `VIRTUAL_DISK_NAMES` environment variable.
 
 Use the following example to tune it:
 
@@ -124,4 +109,3 @@ spec:
         - name: VIRTUAL_DISK_NAMES
           value: 'disk-1.vmdk'
 ```
-

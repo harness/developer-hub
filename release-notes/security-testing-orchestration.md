@@ -14,6 +14,16 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
  			
+## February 5, 2023
+
+### New features
+
+* The Issue Details pane now shows the message “No recommendations are available at this time” when the scan tool doesn't return remediation steps for a specific issue. (STO-5380)
+
+### Fixed issues
+
+This release does not include fixed issues.
+
 ## January 29, 2023	
 
 ### New features
@@ -36,7 +46,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### New features
 
-* Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, `specify tool_args` = `---offline-scan`. (STO-5388)	
+* Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, specify `tool_args` = `---offline-scan`. (STO-5388)	
 
 ### Fixed issues
 
@@ -47,7 +57,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### New features
 
-* Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, `specify tool_args` = `-incremental`. (STO-5041)	
+* Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`. (STO-5041)	
 
 * STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference). (STO-5161)	
 
@@ -76,14 +86,14 @@ This release does not include fixed issues.
 
 ### Fixed issues
 
-* Fixed an issue where`product_lookup_type` being set to `byTokens` causes the step to perform a Dataload instead of OrchestratedScan. (STO-5166)	
+* Fixed an issue where `product_lookup_type` being set to `byTokens` causes the step to perform a Dataload instead of OrchestratedScan. (STO-5166)	
 
 
 ## December 11, 2023			
 
 ### New features
 	
-* STO is now supported on Linux (amd64 and arm64 platforms) in Harness Cloud. (STO-5314)	
+* STO is now supported on Linux (amd64 and arm64 platforms) in [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart). (STO-5314)	
 
 * Instead of using Service Dependencies for Docker-in-Docker configuration, users should use new Background steps. (STO-5268)
 
@@ -114,7 +124,7 @@ This release does not include new features.
 
 * Fixed an issue where the Security Tests tab on the Pipeline Execution page was periodically reloading in a visually jarring way and losing scroll position. (STO-5208)
 
-* Fixed an issue where the Security Tests tab would show previously-found issues while the scan was in progress. Now this tab does not show results until the scan is complete. (STO-4985)	
+* Fixed an issue where the Security Tests tab would show previously-found issues as "remediated" while the scan was in progress.  (STO-4985)	
 
 * Improved the Security Tests UI to highlight new issues found in the current target only vs. issues also found in the baseline, or in the previous scan if no baseline was specified. (STO-5198)	
 
@@ -129,7 +139,7 @@ This release does not include new features.
 
 ### Fixed issues
 
-* Fixed an issue where the issue counts reported in output variables vs. the Security Tests page were inconsistent for scans of baseline targets, or for targets with no specified baseline. (STO-5042)	
+* Fixed an issue where the issue counts reported in output variables vs. the Security Tests page were inconsistent for scans of target baselines, or for targets with no specified baseline. (STO-5042)	
 
 
 ## October 31, 2022

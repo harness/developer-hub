@@ -1,9 +1,7 @@
 ---
 title: Save Cache to GCS Step Settings
 description: This topic provides settings and permissions for the Save Cache to GCS step, which preserves files and directories between builds. Name. The unique name for this step. ID. See Entity Identifier Refer…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 120
 helpdocs_topic_id: 11nzeuntrz
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -23,6 +21,8 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 ### GCP Connector
 
 The Harness Connector for the GCP account where you want to save the cache.
+
+This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
 ### Bucket
 

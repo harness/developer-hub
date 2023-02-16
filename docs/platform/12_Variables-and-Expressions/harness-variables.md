@@ -166,18 +166,16 @@ Here's the inputs and outputs for a Kubernetes Rollout Deployment step:
 
 
 
-|  |  |
-| --- | --- |
 | **Inputs** | **Outputs** |
+| :--- | :--- |
 | ![](./static/rolloutdeployment1.png) | ![](./static/rolloutdeployment2.png) |
 
 You can copy the expressions for the names or values of any input or output.
 
 
 
-|  |  |
-| --- | --- |
 | **Name** | **Value** |
+| :--- | :--- |
 |  ![](./static/name.png)|![](./static/value.png)  |
 
 Here are the **Name** and **Value** expressions for the `podIP` setting:
@@ -340,6 +338,10 @@ Whether the number in a variable is treated as a double or string depends on the
 
 If you entered 123 in a string filed, such as a name, it is treated as a string. If you entered 123 in a count field, such as instance count, it is treated as a double.
 
+### Ternary Operators
+
+When using Ternary conditional `?:` operators, do not use spaces between the operators and values.
+
 ## Built-in CIE codebase variables reference
 
 In Harness, you set up your [Codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [Connector](../7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your Pipeline.
@@ -492,6 +494,16 @@ The start time of a Pipeline execution in [Unix Epoch format](https://www.epoch1
 #### <+pipeline.triggerType>
 
 The type of Trigger. See [Trigger How-tos](/docs/category/triggers).
+
+Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
+
+| **<+pipeline.triggerType>** | **<+trigger.type>** | **Description** |
+| :--- | :--- | :--- |
+| ARTIFACT | Artifact | New Artifact trigger. For example, new Docker Hub image tag |
+| SCHEDULER_CRON | Scheduled | Scheduled Cron trigger |
+| MANUAL | *null* | Pipeline triggered using the RUN button in the user interface |
+| WEBHOOK_CUSTOM | Custom | Custom webhook trigger |
+| WEBHOOK | Webhook | SCM webhook trigger. For example, GitHub pull request |
 
 #### <+pipeline.triggeredBy.name>
 
@@ -914,45 +926,7 @@ Here are the sidecar expressions:
 * `<+artifacts.sidecars.[sidecar_identifier].tag>`
 * `<+artifacts.sidecars.[sidecar_identifier].connectorRef>`
 
-### Artifact rollback variables
-
-Artifact rollback variable expressions output information on the artifact used for a deployment rollback.
-
-To copy and use the expressions from an executed pipeline, do the following:
-
-1. In a CD pipeline deployment, select **Infrastructure Section**.
-2. In **Infrastructure Section**, select the **Output** tab.
-3. View the names and values in **Artifact Rollback**.
-4. Select **Copy** for any **Output Name** to copy the expression.
-
-The following is an example for an ECS deployment using a Docker image in Artifactory:
-
-![artifact rollback](static/156302d5dbad242d2faf55205335ec9f152dd13462666bfc197707bfd1d6c393.png)  
-
-For example, if you added a Shell Script step and included both `<+artifact.displayName>` and `<+rollbackArtifact.description>`, you would get the name of the artifact being deployed and the artifact that will be used in case of rollback.
-
-If the output of `<+artifact.displayName>` was `harness/todolist-sample_11_0702794`, then the output of `<+rollbackArtifact.description>` would be the previous release that would be used in case of rollback: `harness/todolist-sample_10_0702581`.
-
-Harness pulls rollback artifact information from the last successful deployment. If there's no previous, successful deployment, then the rollback artifact returns null.
-
-The following is the list of the rollback artifact variables. Review the [artifact variables](#artifact) for definitions of each variable.
-
-- `<+rollbackArtifact.bucketName>`
-- `<+rollbackArtifact.buildNo>`
-- `<+rollbackArtifact.buildFullDisplayName>`
-- `<+rollbackArtifact.ArtifactPath>`
-- `<+rollbackArtifact.description>`
-- `<+rollbackArtifact.displayName>`
-- `<+rollbackArtifact.fileName>`
-- `<+rollbackArtifact.key>`
-- `<+rollbackArtifact.metadata.image>`
-- `<+rollbackArtifact.metadata.tag>`
-- `<+rollbackArtifact.source.registryUrl>`
-- `<+rollbackArtifact.url>`
-
 ### Environment
-
-This section contains common variable expressions for environments.
 
 #### Environment-level variables for service v2
 
