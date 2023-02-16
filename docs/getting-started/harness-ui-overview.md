@@ -96,7 +96,7 @@ Your account overview details are shown.
 
 ### Authentication
 
-This section provides options for you to set up Authentication for users, enforce Password policies and restrict email domain.
+This section provides options for you to set up authentication for users, enforce Password policies and restrict email domain.
 
 For more information, refer to [Authentication Overview](../platform/3_Authentication/1-authentication-overview.md).
 
