@@ -53,7 +53,7 @@ In every case, the delegates must be identical in terms of permissions, keys, co
 
 ### Limitations
 
-* Two delegates in different locations with different connectivity do not support high availability. For example, if you have one delegate in a development environment and another in a production environment, the development delegate does not communicate with the production delegate. The reverse is also true. If the one delegate deployed to an environment stops running, Harness ceases operation in that environment.
+* Two delegates in different locations do not support high availability. For example, if you have one delegate in a development environment and another in a production environment, the development delegate does not communicate with the production delegate. The reverse is also true. If the one delegate deployed to an environment stops running, Harness ceases operation in that environment.
 
 ### Step 1: Duplicate the delegate configuration file
 
@@ -61,7 +61,7 @@ Duplicate the configuration file for a delegate that is installed and registered
 
 Ensure that the delegate environment variables are set correctly.
 
-The delegate configuration file contains environment variables for account, organization, and project. The account variable is always set with your Harness account ID.
+The delegate configuration file contains environment variables for account, organization, and project. The account variable is set to your Harness account ID.
 
 If your delegate is registered at the account level, the Organization and Project variables will be empty. If your delegate is registered at the Organization level, the Project variable will be empty.
 
@@ -69,11 +69,11 @@ Before you duplicate the file, review the list of environment variables in the d
 
 ### Step 2: Rename the new delegate
 
-The process you use to rename a delegate depends on its type. For Docker delegates, you change the name in one environment variable in the Docker compose file. For the Kubernetes delegate, you change multiple instances of the name.
+The process that is used to rename a delegate depends on its type. 
 
 #### Rename the Kubernetes delegate 
 
-For the Kubernetes delegate, the name is referenced in multiple fields:
+To change the name of a Kubernetes delegate, modify the following fields:
 
 * `Secret.metadata.name`
 * `Deployment.metadata.labels.harness.io/name`
@@ -97,11 +97,11 @@ The `DELEGATE_NAME` environment variable is specified as a YAML list item:
 
 #### Rename the Docker delegate 
 
-To rename the Docker delegate, set the `DELEGATE_NAME` environment variable to the new name.
+To change the name of a Docker delegate, set the `DELEGATE_NAME` environment variable to the new name:
 
 ```
 ...  
-    - DELEGATE_NAME=my-new-delegate  
+    - DELEGATE_NAME = my-new-delegate  
 ...
 ```
 
