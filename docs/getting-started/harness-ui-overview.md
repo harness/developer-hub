@@ -92,7 +92,7 @@ Account Overview has your Harness Account Details.
 
 To view your Harness account details, go to **Account Settings** and click **Overview**.
 
-Your Account Overview details are shown.
+Your account overview details are shown.
 
 ### Authentication
 
