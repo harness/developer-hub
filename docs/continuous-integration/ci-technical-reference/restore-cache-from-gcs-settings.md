@@ -1,9 +1,7 @@
 ---
 title: Restore Cache from GCS Settings
 description: This topic provides settings for the Restore Cache from GCS step, which restores files and directories that were saved using the Save Cache to GCS step. Name. The unique name for this step. Id. See E…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 90
 helpdocs_topic_id: e2o4sektz1
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -22,7 +20,9 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 ### GCP Connector
 
-The Harness Connector for the GCP account where you saved the cache.
+The Harness connector for the GCP account where you saved the cache. This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+
+:::
 
 ### Bucket
 

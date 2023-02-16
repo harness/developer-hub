@@ -56,7 +56,7 @@ Perform the following steps to create a new Application Load Balancer in AWS.
 7. (Optional) Set up advanced configuration. See Step: Set Up Advanced Configuration.
 8. In **Setup Access**, select **DNS Link**.
 9.  In **Select a load balancer**, click **New Load Balancer** to add a load balancer.
-    
+     
 	  ![](./static/create-load-balancer-aws-19.png)
 10. In **Create a new Load Balancer**, in **Provide a name for the Load balancer**, enter a name for your load balancer. This name will appear in your load balancer list.
 

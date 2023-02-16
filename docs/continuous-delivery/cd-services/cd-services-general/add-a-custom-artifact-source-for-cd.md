@@ -20,7 +20,7 @@ This topic described how to use the Custom Artifact repository type in your Harn
 
 ## Before You Begin
 
-* [Kubernetes Deployment Tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart)
+* [Kubernetes deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart)
 
 ## Limitations
 

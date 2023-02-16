@@ -51,7 +51,7 @@ Consider the following CI Stage:
   Assume that you configure your Stage resources as follows:
 
 
-* redis (service dependency): 5GB, 2 cpu
+* redis (service dependency in Background step): 5GB, 2 cpu
 * s1 step: 2GB, 2 cpu
 * s2 step: 3GB, 1 cpu
 * s3 step: 4GB, 1 cpu

@@ -6,7 +6,7 @@ Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss i
 - It tests the application's resilience to lossy (or flaky) network.
 
 
-![Pod Network Loss](./static/images/network-chaos.png)
+![Pod Network Loss](./static/images/pod-network-loss.png)
 
 
 ## Usage

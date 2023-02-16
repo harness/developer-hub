@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2022-12-22T10:00
+date: 2023-02-15T10:00
 sidebar_position: 3
 ---
 
@@ -13,22 +13,66 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## February 15, 2023, version 78421
+
+### What's new
+
+* Microsoft Windows (amd64) is now a supported [Harness Cloud](../docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) build infrastructure option. (CI-5455)
+* **Python** is now available as a built-in **Shell** option for [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md). (CI-6692)
+* [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md) can now reference images in GCR through [GCP connectors](../docs/platform/7_Connectors/connect-to-google-cloud-platform-gcp.md) that use inherited credentials. (CI-5758, ZD-38986)
+  * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
+  * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
+* Use [Background steps](../docs/continuous-integration/ci-technical-reference/background-step-settings.md) to configure service dependencies. (CI-5580)
+  * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
+  * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
+  * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option.
+* Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
+* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](../docs/platform/11_Triggers/triggering-pipelines.md). (CI-5720)
+
+### Early access
+
+This release does not include early access features.
+
+### Deprecations
+
+The Configure Service Dependency step is deprecated in favor of the [Background step](../docs/continuous-integration/ci-technical-reference/background-step-settings.md), which allows for better control and configuration of services. Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines. Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration options. (CI-5580)
+
+### Fixed issues
+
+* With the feature flag `NEW_LEFT_NAV_BAR` enabled, you can view build details at the project level without drilling down into individual modules. When viewing build details from the project level, the **Commits** tab produced a `404` error. This is fixed. (CI-6817)
+* Expressions used in pipeline codebase properties unexpectedly resolved to `null`, which caused builds to fail due to missing variable input. These expressions now resolve to their expected values. (CI-6679, ZD-38122, ZD-38241, ZD-38698, ZD-39088)
+   ![The CI Codebase Configuration window with the fields set to accept variable expression input.](static/ci-codebase-config-exp-values.png)
+* The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. Previously, exiting the Getting Started workflow before creating a pipeline resulted in incomplete connector configuration, and attempting to use the incomplete connector in a pipeline produced the following error: `Invalid argument(s): Both plain text and secret value cannot be null for the field`. If you encounter this error, replace the pipeline's SCM connector with a new one. (CI-6443)
+
+## February 6, 2023, version 78321
+
+### What's new
+
+* Linux ARM is now supported in [Harness Cloud](../docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) build infrastructures. (CI-5787)
+* The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed issues
+
+* Improved the error message that appears in the UI when a Git test connection fails. (CI-6889)
+* Fixed an issue where feature flags would sometimes not work with CI due to a backwards-compatibility issue. (CI-6687)
+* Fixed an issue where the Commits tab would show a 404 error in the CD build UI. (CI-6632)
+
 ## January 17, 2023, version 78215
 
 ### What's new
 
-* This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only. 
+* This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only.
    - An Actions step to run GitHub Actions.
    - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
-* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
-   
-  ![](./static/ci-rerun-build-in-debug-mode.png) 
-
 * You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
 
 ##### Defining hostnames to use in a Kubernetes build infrastructure
 
-``` yaml 
+``` yaml
 infrastructure:
     type: KubernetesDirect
     spec:
@@ -51,11 +95,11 @@ This release does not include fixed issues.
 
 ### What's new
 
-No new features are available in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features are available for this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -84,21 +128,21 @@ No early access features are available for this release.
 
 ### Early access features
 
-No early access features are available for this release.
+This release does not include early access features.
 
 ### Fixed issues
 
-No fixed issues are available for this release. 
+This release does not include fixed issues.
 
 ## December 13, 2022, version 77808
 
 ### What's new
 
-No new features are available for this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features are available for this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -110,15 +154,15 @@ No early access features are available for this release.
 
 ### What's new
 
-No new features are available in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features are available in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
-No fixed issues are available in this release.
+This release does not include fixed issues.
 
 ## November 29, 2022, version 77608
 
@@ -132,7 +176,7 @@ No fixed issues are available in this release.
 
 ### Early access features
 
-No early access features are available in this release.
+This release does not include early access features.
 
 ### Deprecated features
 
@@ -144,17 +188,17 @@ No early access features are available in this release.
 
 ### Fixed issues
 
-No fixed issues are available in this release.
+This release does not include fixed issues.
 
 ## November 11, 2022, version 77433
 
 ### What's new
 
-No new features are available in this release.
+This release does not include new features.
 
 ### Early access features
 
-No early access features are available in this release.
+This release does not include early access features.
 
 ###
 
@@ -175,7 +219,7 @@ The Custom Git Connector now supports connection via the Harness Platform, in ad
 
 ### Early access features
 
-No early access features are available in this release.
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -205,11 +249,11 @@ No early access features are available in this release.
 
 ### What's new
 
-NA
+This release does not include new features.
 
 ### Early access features
 
-NA
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -224,7 +268,7 @@ The Infrastructure tab in Build steps has been updated to show only supported op
 
 ### Early access features
 
-NA
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -259,11 +303,11 @@ This release includes a new Docker delegate that you can install and run directl
 
 ### What's new
 
-N/A
+This release does not include new features.
 
 ### Early access features
 
-N/A
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -279,17 +323,17 @@ N/A
 
 ### What's new
 
-N/A
+This release does not include new features.
 
 ### Early access features
 
-N/A
+This release does not include early access features.
 
 ### Fixed issues
 
 - Added UI validation to ensure the Limit Memory and Limit CPU fields have the required formats. Previously, incorrect values for these fields were flagged during a build, which would cause the build to fail. (CI-5463)
 - Added a force-kill flag to ensure that CI pods are deleted during a build cleanup. This ensures that pods get cleaned up even if they are in an Unknown or Not-Ready state. (CI-5377)
-- Changed the “exit x” button that appears when creating a connector to make it more visible. (CI-5323)
+- Changed the "exit x" button that appears when creating a connector to make it more visible. (CI-5323)
 - Added a validation to ensure that a user provides a repo name when setting up a trigger with an account-level Git connector. Without this validation, the UI would allow users to click Save without a repo name but the trigger would not get created. (CI-5315)
 - Improved the error message that appears when a connection test fails because an account-level resource is trying to use a project-level secret. (CI-4705)
 - Fixed an issue in the Run Tests step that could cause a manual build to fail if a Git branch was not specified. (CI-4581)
@@ -298,11 +342,11 @@ N/A
 
 ### What's new
 
-N/A
+This release does not include new features.
 
 ### Early access features
 
-N/A
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -312,11 +356,11 @@ Improved the Harness UI to make it easier to search for a specific test under th
 
 ### What's new
 
-N/A
+This release does not include new features.
 
 ### Early access features
 
-N/A
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -333,9 +377,9 @@ N/A
 
 - You can now use a hosted delegate for Docker, Artifactory, AWS, GCP, BitBucket, GitLab, and Azure connectors. (CI-4828, CI-5241)
 
-## Early access features
+### Early access features
 
-N/A
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -351,7 +395,7 @@ You can now run connection tests for AWS, GCP, and Azure connectors. By default,
 
 ### Early access features
 
-N/A
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -367,7 +411,7 @@ This release introduces validations for Custom Webhook events. The event handler
 
 ### Early access features
 
-N/A
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -392,7 +436,7 @@ Users can now use Azure Repos connectors in pipeline codebase configuration and 
 
 ### Early access features
 
-N/A
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -408,11 +452,11 @@ N/A
 
 ### What's new
 
-n/a
+This release does not include new features.
 
 ### Early access features
 
-n/a
+This release does not include early access features.
 
 ### Fixed issues
 
@@ -427,7 +471,7 @@ The Build UI now shows a new VM icon. (CI-4630)
 
 ### Early access features
 
-n/a
+This release does not include early access features.
 
 ### Fixed issues
 

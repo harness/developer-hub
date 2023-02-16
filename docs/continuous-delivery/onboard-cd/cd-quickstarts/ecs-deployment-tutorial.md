@@ -8,9 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -1100,3 +1097,33 @@ If you do not select this option, Harness will not check to see if the task was 
 
 If you do select this option, Harness will poll the ECS task to see if it triggered successfully.
 
+### Support for ECS Deployments with AWS Service Mesh Configuration
+Harness ECS Deployments supports deploying of ECS Services with AWS Service Discovery Configuration
+
+AWS Service Discovery is a cloud service provided by Amazon Web Services (AWS) that makes it easy for microservices applications to discover and communicate with each other. It enables you to manage and discover the addresses of the services within your microservices application without the need for hard-coded IP addresses or hostnames.
+
+It is possible to provide AWS Service Discovery as part of ECS Service Definiton and deploy using Harness.
+
+Following are the steps required to configure a Service Discovery and deploy
+
+1.Create a Namespace in AWS Cloud Map
+2.Create Service Discovery with above namespace,generate ARN
+3.Provide the Service Discovery ARN in Service Definition
+	
+launchType: FARGATE
+serviceName: ecs-svc-discovery
+desiredCount: 1
+networkConfiguration:
+  awsvpcConfiguration:
+    securityGroups:
+    - sg-afc848e7 
+    subnets:
+    - subnet-9757dc98
+    assignPublicIp: ENABLED 
+deploymentConfiguration:
+  maximumPercent: 100
+  minimumHealthyPercent: 0
+**serviceRegistries:**
+  ** - registryArn: arn:aws:servicediscovery:us-east-1:479370281431:service/srv-xeycgshb42ydmokf**
+	
+With the above Service Registry ARN specified in ECS Service Definition ,deployed services are marked with Service Discovery capability

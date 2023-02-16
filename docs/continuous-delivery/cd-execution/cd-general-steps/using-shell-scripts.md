@@ -12,19 +12,158 @@ You can run shell scripts in a CD stage using the **Shell Script** step.
 
 With the Shell Script step, you can execute scripts in the shell session of the stage in the following ways:
 
-* Execute scripts on the host running a Harness Delegate. You can use Delegate Selectors to identify which Harness Delegate to use.
-* Execute scripts on a remote target host in the deployment Infrastructure Definition.
+* Execute scripts on the host running a Harness delegate. You can use delegate selectors to identify which Harness delegate to use.
+* Execute scripts on a remote target host in the deployment infrastructure definition.
 
 This topic provides a simple demonstration of how to create a script in a Shell Script step, publish its output in a variable, and use the published variable in a subsequent step.
 
-## Before You Begin
-
-* [Kubernetes deployment tutoral](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md): You can run a Shell Script step in a CD stage without specifying specs or artifacts, but you do need to set up the Infrastructure Definition.
-
-## Limitations
+## Important notes
 
 See [Shell Script Step Reference](../../cd-technical-reference/cd-gen-ref-category/shell-script-step.md).
+
+## Use cases
+
+Typically, the primary deployment operations are handled by the default Harness deployment steps, such as the [Kubernetes Rollout Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-rollout-step.md).
+
+The Shell Script step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more. 
+
+<details>
+<summary>Common secondary script examples</summary>
+
+Some common secondary scripts that are run in a Kubernetes container as part of CD are:
+
+- Database migrations. Update the database schema and apply any necessary data migrations.
+- Configuration updates. Update the configuration of the application or service being deployed.
+- Health checks. Perform health checks on the application or service being deployed, ensuring that it is running correctly and responding to requests.
+- Load testing. Perform load testing on the application or service, ensuring that it can handle the expected traffic and load.
+- Monitoring setup. Set up monitoring and logging for the application or service, so that any issues can be quickly detected and addressed.
+- Smoke tests. Perform simple tests to confirm that the application or service is running correctly after deployment.
+- Cleanup. Clean up any resources or files that were created during the deployment process.
+
+These secondary scripts are usually run as part of the CD pipeline, either as part of the build process or as separate jobs. They can be written in a variety of scripting languages. In many cases, these scripts are run in containers within the Kubernetes cluster, so that the necessary dependencies and tools are available.
+
+</details>
+
+### Mobile Device Management (MDM)/User Experience Management (UEM)
+
+Harness supports MDM/UEM through interaction using MDM/UEM APIs.
+
+You can leverage the Shell Script step to call the MDM/UEM APIs from Harness.
+
+Here are some example scripts for MDM and UEM that you might use as part of a DevOps continuous delivery pipeline:
+
+<details>
+<summary>MDM script example</summary>
+
+This script sets some variables for the MDM server URL, the MDM username and password, and the configuration file to install. It then uses the curl command to send the configuration file to the MDM server and install it on devices. Finally, it checks for errors and reports success or failure.
+
+```bash
+# This script deploys a new Mobile Device Management (MDM) configuration to devices
+
+# Set variables
+MDM_SERVER="https://your-mdm-server.com"
+MDM_USERNAME="your-mdm-username"
+MDM_PASSWORD="your-mdm-password"
+MDM_CONFIG_FILE="your-mdm-config-file.plist"
+
+# Install the MDM configuration on devices
+curl --request POST \
+     --user "$MDM_USERNAME:$MDM_PASSWORD" \
+     --header "Content-Type: application/xml" \
+     --data-binary "@$MDM_CONFIG_FILE" \
+     "$MDM_SERVER/devicemanagement/api/mdm/profiles"
+
+# Check for errors
+if [ $? -eq 0 ]; then
+  echo "MDM configuration installed successfully."
+else
+  echo "ERROR: MDM configuration failed to install."
+fi
+```
+</details>
+
+<details>
+<summary>UEM script example</summary>
+
+This script sets similar variables for the UEM server URL, username, password, and configuration file to install. It then uses curl to send the configuration file to the UEM server and install it on endpoints. Finally, it checks for errors and reports success or failure.
+
+```bash
+# This script deploys a new Unified Endpoint Management (UEM) configuration to endpoints
+
+# Set variables
+UEM_SERVER="https://your-uem-server.com"
+UEM_USERNAME="your-uem-username"
+UEM_PASSWORD="your-uem-password"
+UEM_CONFIG_FILE="your-uem-config-file.json"
+
+# Install the UEM configuration on endpoints
+curl --request POST \
+     --user "$UEM_USERNAME:$UEM_PASSWORD" \
+     --header "Content-Type: application/json" \
+     --data-binary "@$UEM_CONFIG_FILE" \
+     "$UEM_SERVER/api/config"
+
+# Check for errors
+if [ $? -eq 0 ]; then
+  echo "UEM configuration installed successfully."
+else
+  echo "ERROR: UEM configuration failed to install."
+fi
+
+```
+
+</details>
+
+
+Note that these scripts are just examples and may need to be modified to fit your specific use case. You may also want to include additional steps in your pipeline, such as testing and verification, before deploying MDM or UEM configurations to production devices.
+
+### Edge and IoT deployments
+
+You can use Harness continuous delivery to automate the process of deploying new versions of applications and services to edge and IoT devices, reducing the risk of human error, minimizing downtime, and improving the security of your IoT ecosystem.
+
+
+<details>
+<summary>Edge script example</summary>
+
+You can use the following script to deploy a new version of an application to an edge device. The script assumes that the device is already set up with the necessary dependencies, and that it is accessible via SSH.
+
+```bash
+# Define variables
+APP_NAME="my-app"
+REMOTE_HOST="my-edge-device"
+REMOTE_USER="root"
+REMOTE_DIR="/opt/$APP_NAME"
+
+# Copy the new version of the application to the remote host
+scp -r ./build $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR
+
+# Restart the application on the remote host
+ssh $REMOTE_USER@$REMOTE_HOST "systemctl restart $APP_NAME.service"
+```
+</details>
+
+
+<details>
+<summary>IoT script example</summary>
+
+You can use the following script to deploy a new version of an IoT device firmware. The script assumes that the device is connected to the network and can be accessed via SSH.
+
+```bash
+# Define variables
+DEVICE_IP="192.168.1.100"
+DEVICE_USER="pi"
+DEVICE_PASS="raspberry"
+FIRMWARE_FILE="firmware-v2.0.bin"
+
+# Copy the new firmware to the device
+sshpass -p $DEVICE_PASS scp $FIRMWARE_FILE $DEVICE_USER@$DEVICE_IP:/home/$DEVICE_USER/
+
+# Install the new firmware on the device
+sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEVICE_USER/$FIRMWARE_FILE"
+```
+
+</details>
+
 
 ## Step 1: Add Your Script
 

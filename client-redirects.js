@@ -9,6 +9,10 @@ module.exports = {
       from: "/docs",
       to: "/docs/category/documentation",
     },
+    {
+      from: "/tutorials/get-started",
+      to: "/tutorials",
+    },
 
     
     //===================================================================================
@@ -81,13 +85,13 @@ module.exports = {
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/install-delegates-with-third-party-tools",
-         to: "/docs/platform/Delegates/customize-delegates/install-delegates-with-third-party-tools",
+         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/support-for-delegate-docker-images",
-         to: "/docs/platform/Delegates/configure-delegates/support-for-delegate-docker-images",
+         to: "/docs/platform/Delegates/install-delegates/docker-delegates/install-a-docker-delegate",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
@@ -129,13 +133,13 @@ module.exports = {
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/non-root-delegate-installation",
-         to: "/docs/platform/Delegates/advanced-installation/non-root-delegate-installation",
+         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/custom-delegate",
-         to: "/docs/platform/Delegates/customize-delegates/custom-delegate",
+         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
        },   
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
@@ -147,7 +151,7 @@ module.exports = {
      // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/run-scripts-on-delegates",
-         to: "/docs/platform/Delegates/configure-delegates/run-scripts-on-delegates",
+         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023

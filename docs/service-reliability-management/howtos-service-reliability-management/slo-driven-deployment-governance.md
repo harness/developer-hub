@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the Feature Flag `OPA_PIPELINE_GOVERNANCE`. Contact Harness Support to enable the feature.Harness provides governance using [Open Policy Agent (OPA)](https://www.openpolicyagent.org/), Policy Management, and Rego policies. You can use Harness Governance to ensure that Harness entities like Pipelines meet specific compliance requirements when specific events happen (On Save, On Run, etc). Harness Governance uses OPA as the central service to store and analyze policies for the different entities and processes across the Harness platform.
+You can use Harness Governance to ensure that Harness entities like Pipelines meet specific compliance requirements when specific events happen (On Save, On Run, etc). Harness Governance uses OPA as the central service to store and analyze policies for the different entities and processes across the Harness platform.
 
 [SLO-driven](slo-management-quickstart.md) governance policies ensure that Harness entities like SLOs (service level objectives) and Error Budgets meet specific compliance requirements when specific events happen (On Save, On Run, etc). These policies prevent Pipelines from deploying if:
 

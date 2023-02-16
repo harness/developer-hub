@@ -38,7 +38,7 @@ For example, if you try to add a Connector to a Project that already has a Conne
 
 Entities in different Harness Orgs can use identical Ids, and entities in the different Projects in the same Org can use identical Ids.
 
-For information on Organizations and Projects, see [Organizations and Projects Overview](../1_Organizations-and-Projects/1-projects-and-organizations.md).For example, here are two GitHub Connectors with the same names and Ids but in different Harness Orgs:
+For information on Organizations and Projects, see [Organizations and Projects Overview](../organizations-and-projects/projects-and-organizations.md).For example, here are two GitHub Connectors with the same names and Ids but in different Harness Orgs:
 
 ![](./static/renaming-entities-and-resources-14.png)
 
@@ -58,7 +58,7 @@ For example, in this Project there are four different types of entities with ide
 
 ### See also
 
-* [Organizations and Projects Overview](../1_Organizations-and-Projects/1-projects-and-organizations.md)
+* [Organizations and Projects Overview](../organizations-and-projects/projects-and-organizations.md)
 * [Entity Deletion Reference](entity-deletion-reference.md)
 * [Entity Retention Policy](entity-retention-policy.md)
 * [Entity Identifier Reference](entity-identifier-reference.md)

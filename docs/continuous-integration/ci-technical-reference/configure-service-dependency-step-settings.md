@@ -1,47 +1,58 @@
 ---
-title: Configure Service Dependency Step Settings
-description: A Service Dependency is a detached service that's accessible to all Steps in a Stage. Service dependencies support workflows such as Integration testing &#8212;  You can set up a service and then run tests a…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+title: Configure Service Dependency step settings (Deprecated)
+description: A Service Dependency is a detached service that's accessible to all Steps in a Stage.
+sidebar_position: 60
 helpdocs_topic_id: vo4sjbd09g
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-A *Service Dependency* is a detached service that's accessible to all Steps in a Stage. Service dependencies support workflows such as
+:::caution
+
+The Configure Service Dependency step is deprecated. Instead, use [Background step](./background-step-settings.md).
+
+For a short time, this step will be backwards compatible. Any pipelines that include Configure Service Dependency steps will remain valid until the step is removed from Harness CI. You are encouraged to replace Configure Service Dependency steps with Background steps as soon as possible.
+
+:::
+
+A *service dependency* is a detached service that's accessible to all steps in a stage. Service dependencies support workflows such as:
 
 * Integration testing: You can set up a service and then run tests against this service.
-* Running Docker-in-Docker: You can [set up a dind service](../use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to process Docker commands in Run Steps.
+* Running Docker-in-Docker: You can [set up a DinD service](../use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to process Docker commands in Run Steps.
 
 This topic provides settings and permissions for the Configure Service Dependency step.
 
 ### Before You Begin
 
-#### Good Practice: Add a Health Check to Verify that the Service is Up
+Review this important information about Configure Service Dependency steps.
 
+<details>
+<summary>Add a Health Check to Verify that the Service is Up</summary>
 After a container starts, the software running inside the container takes time to initialize and begin accepting requests. Before you send the first request, add a health check to verify that the service is running. You can add a `sleep` command to a Run Step, or implement a simple `while` loop to make the Step wait until the service is up. For example, if your Stage uses a dind step, you can run the following:
 
-
 ```
-while ! docker ps ;do   
-     echo "Docker not available yet"  
+while ! docker ps ;do
+     echo "Docker not available yet"
 done
 ```
-#### Service and Step Networking
+</details>
+
+<details>
+<summary>Service and Step Networking</summary>
 
 Service and Step containers within the same Stage all share the same network. To communicate with a Service, use the local-host address and the port number defined in the Docker image. For example, you can use `127.0.0.1:6379` to communicate with a Redis server or `localhost:27017` to communicate with a Mongo database (assuming the default ports aren't overridden).
 
-In a Kubernetes build infrastructure, all Steps run in Containers. In an AWS build infrastructure, some Steps might run directly on the VM. See [Port Bindings](#port-bindings) below.
+In a Kubernetes build infrastructure, all steps run in containers. In an AWS build infrastructure, some steps might run directly on the VM. For more information, go to [Port Bindings](#port-bindings) below.
+</details>
 
 ### Name
 
 The unique name for this step.
 
-### ID
+### Id
 
-See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
+For information about this setting, go to [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -65,7 +76,7 @@ Example: `mysql:5`
 
 #### Privileged
 
-Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
+Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
 
 #### Environment Variables
 
@@ -103,7 +114,7 @@ Suppose you create a Service Dependency with the Name and Id **myloginservice**.
 
 - A containerized Step talks to the service using **myloginservice:*****container\_port***.
 
-- A Run or Run Test Step that runs directly on the VM talks to the service using **localhost:*****host\_port***.
+- A Run or Run Test Step that runs directly on the VM or in a Kubernetes cluster talks to the service using **localhost:*****host\_port***.
 
 The binding of Host and Container Ports is similar to [port mapping in Docker](https://docs.docker.com/config/containers/container-networking/). Usually the ports are the same unless the default Host Port for the service dependency is already in use by another local service.
 
@@ -117,7 +128,7 @@ Select an option to set the pull policy for the image.
 
 #### Run as User
 
-Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 #### Set container resources
 

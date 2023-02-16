@@ -16,6 +16,54 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### February 15, 2023, version 78421
+
+#### What's new
+
+- LDAP throws a null pointer exception if more than one user is returned for a given base DN and search query. (PL-31106)
+
+  A code enhancement has fixed this and an appropriate error message is displayed.
+
+#### Early access
+
+No early access features are available in this release.
+
+#### Fixed issues
+
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+
+### February 6, 2023, version 78321
+
+#### What's new
+
+- The elastic search client version is upgraded to `7.17.7`. (PL-30666)
+
+#### Early access
+
+- The feature flag `NOTIFY_GIT_SYNC_ERRORS_PER_APP` lets you receive git sync error alerts. (PL-29306)
+  
+  The alert contains the name of the application where the git sync error occurred.
+
+- You can delete a user provisioned in Harness through SCIM in FirstGen and retain the user in NextGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
+
+
+#### Fixed issues
+
+- When the scheduling of background jobs is skipped during startup, background jobs like the deletion of old records do not work.  (PL-31009)
+   
+  A code enhancement has fixed this issue.
+
+- Selecting a specific audit filter for an API key causes the UI to become unresponsive. (PL-30715, ZD-38400)
+  
+  An added check ensures that only essential data is sent for display. This has fixed the issue.
+
+- SAML users removed from the LDAP group are displayed in the linked user group in Harness. (PL-30291, ZD-37758)
+
+  A code enhancement has fixed this issue.
+
+
 ### January 17, 2023, version 78105
 
 Delegate version: 78101
