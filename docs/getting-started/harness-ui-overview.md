@@ -157,7 +157,7 @@ With Audit Trail in Harness, you can view and track changes to your Harness reso
 
 The audit data retention period is 2 years. Harness reserves the right to delete audit data after 2 years. You can request a longer retention period by contacting Harness.​
 
-For more information, refer to [Audit Trail](https://developer.harness.io/docs/category/audit-trail).
+For more information, go to [Audit Trail](https://developer.harness.io/docs/category/audit-trail).
 
 ### Organizations
 
