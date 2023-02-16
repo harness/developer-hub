@@ -175,7 +175,7 @@ The following profile information is displayed:
 - Your Projects
 - Your Source Code Managers
 - Your API keys
-- You can also do the following from the profile page:
+You can also do the following from the profile page:
 - Enable/disable Two-Factor Authentication​
 - Change Password
 - ​Switch Account​
