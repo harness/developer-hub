@@ -111,7 +111,7 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/static/install-harness-delegate-on-kubernetes-18.png)
+![](/kubernetes-delegates/static/install-harness-delegate-on-kubernetes-18.png)
 
 To verify the delegate, click **Verify**.
 
