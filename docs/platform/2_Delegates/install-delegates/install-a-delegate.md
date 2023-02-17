@@ -4,7 +4,7 @@ description: This document explains how to install Harness delegates in NextGen 
 # sidebar_position: 2
 ---
 ```mdx-code-block
-import install_a_delegate_02 from './static/install-a-delegate-02.png'
+import install_two from './static/install-a-delegate-02.png'
 ```
 
 
@@ -17,17 +17,17 @@ The process of installing a delegate includes the following steps:
 - Select the mode of installation: Helm chart, Terraform Plan, or Kubernetes manifest
 
 # Go to the New Delegate page
-
+TEST
+```mdx-code-block
+<img src{install_two} width="200" />
+```
 You can install a delegate from the **New Delegate** installation page.
 
 | 1 <p>Go to **Account Settings**</p> | 2 <p>Select **Account Resources**</p> | 3 <p>Choose **Delegates**</p> |
 | :-: | :-: | :-: |
-| ![](./static/install-a-delegate-01.png) | ![](./static/install-a-delegate-02.png)] | ![](./static/install-a-delegate-03.png) |
+| ![](./static/install-a-delegate-01.png) | ] | ![](./static/install-a-delegate-03.png) |
 
-TEST
-```mdx-code-block
-<img src{install_a_delegate_02} width="200" />
-```
+
 
 In addition to providing basic information about installed delegates, the **Delegates** page gives you access to the delegate installer.
 
