@@ -30,7 +30,7 @@ To install a delegate, click **+ New Delegate**.
 
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
 
-![](./static/install-a-delegate-06.png)
+![](./static/install-a-delegate-27.png)
 
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
