@@ -17,10 +17,13 @@ The process of installing a delegate includes the following steps:
 - Select the mode of installation: Helm chart, Terraform Plan, or Kubernetes manifest
 
 # Go to the New Delegate page
+
 TEST
+
 ```mdx-code-block
-<img src{install_two} width="200" />
+<img src={install_two} alt="meh." height="100" width="200" />
 ```
+
 You can install a delegate from the **New Delegate** installation page.
 
 | 1 <p>Go to **Account Settings**</p> | 2 <p>Select **Account Resources**</p> | 3 <p>Choose **Delegates**</p> |
