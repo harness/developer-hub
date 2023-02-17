@@ -55,19 +55,17 @@ In **Install your Delegate**, select **Helm Chart**, **Terraform**, or **Kuberne
 
 ### Helm-based install on Kubernetes
 
-![](./static/install-a-delegate-09.png)
-
 Use the following steps to install a delegate on Kubernetes using a Helm chart.
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Helm Chart**.
 
-![](./static/install-a-delegate-10.png)
+![](./static/install-a-delegate-11.png)
 
 #### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
-![](./static/install-a-delegate-11.png)
+![](./static/install-a-delegate-12.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -114,19 +112,17 @@ To verify the delegate, click **Verify**.
 
 ### Terraform-based install on Kubernetes
 
-![](./static/install-a-delegate-11.png)
-
 Use the following steps to install a delegate on Kubernetes using a Terraform Plan.
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Terraform**.
 
-![](./static/install-a-delegate-13.png)
+![](./static/install-a-delegate-11.png)
 
 #### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
-![](./static/install-a-delegate-14.png)
+![](./static/install-a-delegate-12.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -152,21 +148,21 @@ Delegates are identified by their names. Delegate names must be unique within a 
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](./static/install-a-delegate-15.png)
+![](./static/install-a-delegate-13.png)
 
 ### Kubernetes-install on Kubernetes 
 
-![](./static/install-a-delegate-16.png)
+![](./static/install-a-delegate-14.png)
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
 
-![](./static/install-a-delegate-17.png)
+![](./static/install-a-delegate-15.png)
 
 #### Name the delegate
 
 Before you install the delegate, you must give it a name.
 
-![](./static/install-a-delegate-18.png)
+![](./static/install-a-delegate-16.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -196,13 +192,13 @@ $ kubectl apply -f harness-delegate.yml
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](./static/install-a-delegate-19.png)
+![](./static/install-a-delegate-17.png)
 
 To verify the delegate, click **Verify**.
 
 ### Docker environment
 
-![](./static/install-a-delegate-20.png)
+![](./static/install-a-delegate-18.png)
 
 Use the following process to install a delegate on Docker.
 
@@ -212,7 +208,7 @@ On the **New Delegate** page, select **Docker**.
 
 Accept or change the default delegate name of `docker-delegate`.
 
-![](./static/install-a-delegate-21.png)
+![](./static/install-a-delegate-19.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -235,7 +231,7 @@ docker run --cpus=1 --memory=2g \
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](./static/install-a-delegate-22.png)
+![](./static/install-a-delegate-20.png)
 
 To verify the delegate, click **Verify**.
 
