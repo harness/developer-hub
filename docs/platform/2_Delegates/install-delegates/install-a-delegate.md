@@ -28,7 +28,9 @@ You can install a delegate from the **New Delegate** installation page.
 
 | 1 <p>Go to **Account Settings**</p> | 2 <p>Select **Account Resources**</p> | 3 <p>Choose **Delegates**</p> |
 | :-: | :-: | :-: |
-| ![](./static/install-a-delegate-01.png) | ] | ![](./static/install-a-delegate-03.png) |
+| ![](./static/install-a-delegate-01.png) | ```mdx-code-block
+<img src={install_two} width="50" />
+``` | ![](./static/install-a-delegate-03.png) |
 
 
 
