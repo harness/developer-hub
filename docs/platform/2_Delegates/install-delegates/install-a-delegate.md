@@ -21,7 +21,7 @@ The process of installing a delegate includes the following steps:
 TEST
 
 ```mdx-code-block
-<img src={install_two} alt="meh." height="100" width="200" />
+<img src={install_two} alt="meh." width="50" />
 ```
 
 You can install a delegate from the **New Delegate** installation page.
