@@ -20,8 +20,6 @@ You can install a delegate from the **New Delegate** installation page.
 | :-: | :-: | :-: |
 | ![](./static/install-a-delegate-01.png) | ![](./static/install-a-delegate-02.png)] | ![](./static/install-a-delegate-03.png) |
 
-
-
 In addition to providing basic information about installed delegates, the **Delegates** page gives you access to the delegate installer.
 
 ![](./static/install-a-delegate-04.png)
@@ -47,171 +45,6 @@ Select your target environment: **Kubernetes** or **Docker**.
 
 ![](./static/install-a-delegate-08.png)
 
-<details>
-  <summary>Kubernetes</summary>
-  <div>
-    <div>
-    ## Kubernetes environment
-
-![](./static/install-a-delegate-08.png)
-
-In **Install your Delegate**, select **Helm Chart**, **Terraform**, or **Kubernetes Manifest**.
-
-### Helm-based install on Kubernetes
-
-Use the following steps to install a delegate on Kubernetes using a Helm chart.
-
-On the **New Delegate** page, select **Kubernetes**, and then click **Helm Chart**.
-
-![](./static/install-a-delegate-11.png)
-
-#### Name the delegate
-
-Before you install the delegate, accept or modify the default delegate name.
-
-![](./static/install-a-delegate-12.png)
-
-Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
-
-#### Add the repository
-
-Add the Harness Helm chart repository to your local Helm registry. Use the following command:
-
-```
-helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
-```
-
-#### Update the repository
-
-Use the following command to ensure you retrieve the latest version of the Harness Helm chart:
-
-```
-helm repo update
-```
-
-#### Install the delegate
-
-Copy and paste the following instructions into your CLI. These instructions are modified based on your account settings and the configuration options selected above.
-
-```
-helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
-  harness-delegate/harness-delegate-ng \
-  --set delegateName=helm-delegate \
-  --set accountId=yOGUkZC9THWFWgVA6tSj-g \
-  --set delegateToken=NTg4YzNjZDc1NzAyMTE2MzBhMTJlYTI1MDkyYjRjMzg= \
-  --set managerEndpoint=https://stress.harness.io \
-  --set delegateDockerImage=harness/delegate-test:23.02.78306 \
-  --set replicas=1 --set upgrader.enabled=false
-```
-
-[INSERT TABLE OF VALUES]
-
-#### Verify the delegate connection
-
-The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
-
-[INSERT HEARTBEAT]
-
-To verify the delegate, click **Verify**.
-
-### Terraform-based install on Kubernetes
-
-Use the following steps to install a delegate on Kubernetes using a Terraform Plan.
-
-On the **New Delegate** page, select **Kubernetes**, and then click **Terraform**.
-
-![](./static/install-a-delegate-11.png)
-
-#### Name the delegate
-
-Before you install the delegate, accept or modify the default delegate name.
-
-![](./static/install-a-delegate-12.png)
-
-Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
-
-#### Create and apply the Terraform Plan
-
-1. Copy the Terraform module definition code from the Create the main.tf file section.
-
-2. Save the code in the main.tf file in some location.
-
-3. Use the following instruction to initialize Terraform:
-
-   ```
-   terraform init
-   ```
-
-4. Apply the delegate module definition file:
-
-   ```
-   terraform apply
-   ```
-   
-#### Verify the delegate connection
-
-The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
-
-![](./static/install-a-delegate-13.png)
-
-### Kubernetes-install on Kubernetes 
-
-![](./static/install-a-delegate-14.png)
-
-On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
-
-![](./static/install-a-delegate-15.png)
-
-#### Name the delegate
-
-Before you install the delegate, you must give it a name.
-
-![](./static/install-a-delegate-16.png)
-
-Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
-
-#### Download the delegate YAML
-
-Use the following cURL instruction to download the Kubernetes YAML file to the target directory for installation:
-
-```
-curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml
-```
-
-#### Modify the delegate YAML
-
-Open the harness-delegate.yaml file. Find and specify the following placeholder values as described.
-
-[insert value table]
-
-#### Install the delegate
-
-Use the `kubectl apply` command to apply the harness-delegate.yaml file.
-
-```
-$ kubectl apply -f harness-delegate.yml
-```
-
-#### Verify the delegate connection
-
-The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
-
-![](./static/install-a-delegate-17.png)
-
-To verify the delegate, click **Verify**.
-
-    </div>
-    <br/>
-    <details>
-      <summary>
-        Nested toggle!
-      </summary>
-      <div>
-      Something here
-      </div>
-    </details>
-  </div>
-</details>
 
 ## Kubernetes environment
 
@@ -253,7 +86,7 @@ helm repo update
 
 #### Install the delegate
 
-Copy and paste the following instructions into your CLI. These instructions are modified based on your account settings and the configuration options selected above.
+Copy and paste the following instructions into your CLI. These instructions are modified based on your account settings and the configuration options selected above. For descriptions of the values, see the table that follows.
 
 ```
 helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
@@ -266,7 +99,14 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
   --set replicas=1 --set upgrader.enabled=false
 ```
 
-[INSERT TABLE OF VALUES]
+| **Value** | **Description** |
+| `delegateName` | The name of the delegate. This value identifies the delegate. |
+| `accountId` | The account ID for the account with which the delegate is associated. You can find this value in **Account Settings**. |
+| `delegateToken` | The value of the delegate token. The token authenticates your delegate to Harness Manager. |
+| `managerEndpoint` | The endpoint of Harness Manager in your Harness cluster. | 
+| `delegateDockerImage` | The location and version of the Docker image that delivers your delegate |
+| `replicas` | The replica pods to be created for the delegate. By default, the installation creates one replica pod. |
+| `upgrader.enabled` | Whether the delegate is automatically updated. Automatic update is not compatible with customizations of the delegate image. For more information, see [Delegate auto-upgrade](/docs/platform/delegates/configure-delegates/delegate-auto-update/). |
 
 #### Verify the delegate connection
 
@@ -344,14 +184,27 @@ curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/
 
 Open the harness-delegate.yaml file. Find and specify the following placeholder values as described.
 
-[insert value table]
+| **Value** | **Description** |
+| PUT_YOUR_DELEGATE_NAME | The name of the delegate. |
+| PUT_YOUR_ACCOUNT_ID | Your Harness account ID. |
+| PUT_YOUR_MANAGER_ENDPOINT | The URL of your cluster. See the following table of Harness clusters and endpoints. |
+| PUT_YOUR_DELEGATE_TOKEN | Your delegate token. To find it, go to **Account Settings > Account Resources**, select **Delegate**, and then select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, see [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+
+Your Harness Manager endpoint depends on your Harness cluster location. Use the following table to find your Harness Manager endpoint on your Harness cluster.
+
+| **Harness cluster location** | **Harness Manager endpoint** |
+| SaaS prod-1 | https://app.harness.io |
+| SaaS prod-2 | https://app.harness.io/gratis |
+| SaaS prod-3 | https://app3.harness.io |
+| [CDCE Docker](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | https://<HARNESS_HOST> if the Docker delegate is remoted from CDCE or http://host.docker.internal if the Docker delegate is located on the same host as CDCE |
+| [CDCE Helm](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | http://<HARNESS_HOST>:7143 where HARNESS_HOST is the public IP address of the Kubernetes node that runs CDCE Helm. |
 
 #### Install the delegate
 
 Use the `kubectl apply` command to apply the harness-delegate.yaml file.
 
 ```
-$ kubectl apply -f harness-delegate.yml
+$ kubectl apply -f harness-delegate.yaml
 ```
 
 #### Verify the delegate connection
@@ -388,6 +241,7 @@ docker run --cpus=1 --memory=2g \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=XXXXXXXxxxxxxxxx \
   -e DELEGATE_TOKEN=XXXXXXXxxxxxxxxx \
+  -e LOG_STREAMING_SERVICE_URL=https://myserver.io/log-service/ \
   -e MANAGER_HOST_AND_PORT=https://myserver.io harness/new-delegate:23.02.78306
 ```
 
