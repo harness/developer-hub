@@ -111,7 +111,7 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](/kubernetes-delegates/static/install-harness-delegate-on-kubernetes-18.png)
+![](./static/install-a-delegate-13.png)
 
 To verify the delegate, click **Verify**.
 
@@ -121,13 +121,13 @@ Use the following steps to install a delegate on Kubernetes using a Terraform Pl
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Terraform**.
 
-![](./static/install-a-delegate-11.png)
+![](./static/install-a-delegate-15.png)
 
 #### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
-![](./static/install-a-delegate-12.png)
+![](./static/install-a-delegate-16.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -157,17 +157,15 @@ The delegate installation process ends in delegate registration with Harness Man
 
 ### Kubernetes-install on Kubernetes 
 
-![](./static/install-a-delegate-14.png)
-
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
 
-![](./static/install-a-delegate-15.png)
+![](./static/install-a-delegate-19.png)
 
 #### Name the delegate
 
 Before you install the delegate, you must give it a name.
 
-![](./static/install-a-delegate-16.png)
+![](./static/install-a-delegate-20.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -212,7 +210,7 @@ $ kubectl apply -f harness-delegate.yaml
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](./static/install-a-delegate-17.png)
+![](./static/install-a-delegate-13.png)
 
 To verify the delegate, click **Verify**.
 
@@ -221,6 +219,8 @@ To verify the delegate, click **Verify**.
 Use the following process to install a delegate on Docker.
 
 On the **New Delegate** page, select **Docker**.
+
+![](./static/install-a-delegate-25.png)
 
 #### Name the delegate
 
@@ -245,11 +245,23 @@ docker run --cpus=1 --memory=2g \
   -e MANAGER_HOST_AND_PORT=https://myserver.io harness/new-delegate:23.02.78306
 ```
 
+Specify the parameters as follows.
+
+| **Value** | **Description** |
+| :-- | :-- |
+| `DELEGATE_NAME` | The specified name of the delegate. This value identifies the delegate. |
+| `NEXT_GEN` | Whether the delegate runs in NextGen or FirstGen Harness. A value of "true" indicates NextGen. |
+| `DELEGATE_TYPE` | The type of the delegate, in this case `DOCKER`. |
+| `ACCOUNT_ID` | The account ID for the account with which the delegate is associated. You can find this value in **Account Settings**. | 
+| `DELEGATE_TOKEN` | The value of the delegate token. The token authenticates your delegate to Harness Manager.  |
+| `LOG_STREAMING_SERVICE_URL` |  |
+| `MANAGER_HOST_AND_PORT` | The endpoint and port number of Harness Manager in your Harness cluster. |
+
 #### Verify the delegate connection
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](./static/install-a-delegate-24.png)
+![](./static/install-a-delegate-13.png)
 
 To verify the delegate, click **Verify**.
 
