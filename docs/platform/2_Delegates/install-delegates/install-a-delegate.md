@@ -49,15 +49,21 @@ Select your target environment: **Kubernetes** or **Docker**.
 
 ![](./static/install-a-delegate-08.png)
 
-<Tabs
-  defaultValue="kubernetes"
-  values={[
-    {label: 'Kubernetes', value: kubernetes},
-    {label: 'Docker', value: docker},
-  ]}>
-  <TabItem value="kubernetes">Kubernetes</TabItem>
-  <TabItem value="docker">Docker</TabItem>
-  </Tabs>
+<details>
+  <summary>Kubernetes</summary>
+  <div>
+    <div> </div>
+    <br/>
+    <details>
+      <summary>
+        Nested toggle!
+      </summary>
+      <div>
+      Something here
+      </div>
+    </details>
+  </div>
+</details>
 
 ## Kubernetes environment
 
