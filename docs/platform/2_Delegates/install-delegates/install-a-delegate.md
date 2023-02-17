@@ -60,9 +60,8 @@ The delegate installation process has changed. The installation process is entir
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
 
-![](./static/install-a-delegate-07.png)
 ```mdx-code-block
-<img src={install_seven} width="200" />
+<img src={install_seven} width="350" />
 ```
 
 Otherwise, continue with the following steps.
@@ -72,7 +71,7 @@ Otherwise, continue with the following steps.
 Select your target environment: **Kubernetes** or **Docker**.
 
 ```mdx-code-block
-<img src={install_eight} width="300" />
+<img src={install_eight} width="350" />
 ```
 
 ## Kubernetes environment
@@ -80,7 +79,7 @@ Select your target environment: **Kubernetes** or **Docker**.
 In **Install your Delegate**, select **Helm Chart**, **Terraform**, or **Kubernetes Manifest**.
 
 ```mdx-code-block
-<img src={install_eleven} width="300" />
+<img src={install_eleven} width="350" />
 ```
 
 ### Helm-based install on Kubernetes
@@ -145,7 +144,7 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ```mdx-code-block
-<img src={install_onethree} width="300" />
+<img src={install_onethree} width="400" />
 ```
 
 To verify the delegate, click **Verify**.
@@ -157,7 +156,7 @@ Use the following steps to install a delegate on Kubernetes using a Terraform Pl
 On the **New Delegate** page, select **Kubernetes**, and then click **Terraform**.
 
 ```mdx-code-block
-<img src={install_onefive} width="300" />
+<img src={install_onefive} width="350" />
 ```
 
 #### Name the delegate
@@ -193,7 +192,7 @@ Delegates are identified by their names. Delegate names must be unique within a 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ```mdx-code-block
-<img src={install_onethree} width="500" />
+<img src={install_onethree} width="600" />
 ```
 
 ### Kubernetes-install on Kubernetes 
@@ -201,7 +200,7 @@ The delegate installation process ends in delegate registration with Harness Man
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
 
 ```mdx-code-block
-<img src={install_onenine} width="300" />
+<img src={install_onenine} width="350" />
 ```
 
 #### Name the delegate
@@ -256,7 +255,7 @@ $ kubectl apply -f harness-delegate.yaml
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ```mdx-code-block
-<img src={install_onethree} width="300" />
+<img src={install_onethree} width="500" />
 ```
 
 To verify the delegate, click **Verify**.
@@ -268,7 +267,7 @@ Use the following process to install a delegate on Docker.
 On the **New Delegate** page, select **Docker**.
 
 ```mdx-code-block
-<img src={install_twofive} width="300" />
+<img src={install_twofive} width="350" />
 ```
 
 #### Name the delegate
@@ -313,7 +312,7 @@ Specify the parameters as follows.
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ```mdx-code-block
-<img src={install_onethree} width="300" />
+<img src={install_onethree} width="500" />
 ```
 
 To verify the delegate, click **Verify**.
