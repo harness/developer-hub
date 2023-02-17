@@ -198,8 +198,6 @@ To verify the delegate, click **Verify**.
 
 ### Docker environment
 
-![](./static/install-a-delegate-18.png)
-
 Use the following process to install a delegate on Docker.
 
 On the **New Delegate** page, select **Docker**.
@@ -208,7 +206,7 @@ On the **New Delegate** page, select **Docker**.
 
 Accept or change the default delegate name of `docker-delegate`.
 
-![](./static/install-a-delegate-19.png)
+![](./static/install-a-delegate-23.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
@@ -231,7 +229,7 @@ docker run --cpus=1 --memory=2g \
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-![](./static/install-a-delegate-20.png)
+![](./static/install-a-delegate-24.png)
 
 To verify the delegate, click **Verify**.
 
