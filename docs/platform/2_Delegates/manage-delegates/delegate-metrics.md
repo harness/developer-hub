@@ -16,9 +16,9 @@ This document explains how to configure the Prometheus monitoring tool for metri
 
 ### Apply the prometheus.yml file
 
-Take the below example for prometheus.yaml, this install prometheus workload (harness-delegate-prometheus-deployment) and a service (harness-delegate-prometheus-service) in your kubernetes cluster. This will also create a load balancer with ip for you to access the prometheus UI
+The configuration of Prometheus requires the installation of a Prometheus workload and service in your Kubernetes cluster. Use the following example configuration file to install the `harness-delegate-prometheus-deployment` workload and a service named `harness-delegate-prometheus-service`. The configuration includes a load balancer with an IP address you can use to access the Prometheus UI. 
 
-Deploy the Prometheus configuration map. Use the following command:
+Use the following command to deploy the configuration file. 
 
 ```
 kubectl apply -f prometheus.yml
