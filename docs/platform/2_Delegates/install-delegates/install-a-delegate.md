@@ -79,7 +79,7 @@ helm repo add harness-delegate https://app.harness.io/storage/harness-download/d
 Use the following command to ensure you retrieve the latest version of the Harness Helm chart:
 
 ```
-helm repo update
+helm repo update harness-delegate
 ```
 
 #### Install the delegate
