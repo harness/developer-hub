@@ -5,6 +5,21 @@ description: This document explains how to install Harness delegates in NextGen 
 ---
 ```mdx-code-block
 import install_two from './static/install-a-delegate-02.png'
+import install_four from './static/install-a-delegate-04.png'
+import install_five from './static/install-a-delegate-05.png'
+import install_twoseven from './static/install-a-delegate-27.png'
+import install_seven from './static/install-a-delegate-07.png'
+import install_eight from './static/install-a-delegate-08.png'
+import install_eleven from './static/install-a-delegate-11.png'
+import install_twelve from './static/install-a-delegate-12.png'
+import install_onethree from './static/install-a-delegate-13.png'
+import install_onefive from './static/install-a-delegate-15.png'
+import install_onesix from './static/install-a-delegate-16.png'
+import install_onenine from './static/install-a-delegate-19.png'
+import install_twenty from './static/install-a-delegate-20.png'
+import install_twofive from './static/install-a-delegate-25.png'
+import install_twothree from './static/install-a-delegate-23.png'
+
 ```
 
 
@@ -18,36 +33,42 @@ The process of installing a delegate includes the following steps:
 
 # Go to the New Delegate page
 
-TEST
-
-```mdx-code-block
-<img src={install_two} alt="meh." width="50" />
-```
-
 You can install a delegate from the **New Delegate** installation page.
 
 | 1 <p>Go to **Account Settings**</p> | 2 <p>Select **Account Resources**</p> | 3 <p>Choose **Delegates**</p> |
 | :-: | :-: | :-: |
-| ![](./static/install-a-delegate-01.png) | ```mdx-code-block <img src={install_two} width="50" />``` | ![](./static/install-a-delegate-03.png) |
-
+| ![](./static/install-a-delegate-01.png) | ![](./static/install-a-delegate-02.png) | ![](./static/install-a-delegate-03.png) |
 
 
 In addition to providing basic information about installed delegates, the **Delegates** page gives you access to the delegate installer.
 
 ![](./static/install-a-delegate-04.png)
 
+```mdx-code-block
+<img src={install_four} width="400" />
+```
+
 To install a delegate, click **+ New Delegate**.
 
 ![](./static/install-a-delegate-05.png)
 
+```mdx-code-block
+<img src={install_five} width="200" />
+```
+
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
 
 ![](./static/install-a-delegate-27.png)
-
+```mdx-code-block
+<img src={install_twoseven} width="500" />
+```
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
 
 ![](./static/install-a-delegate-07.png)
+```mdx-code-block
+<img src={install_seven} width="300" />
+```
 
 Otherwise, continue with the following steps.
 
@@ -55,6 +76,9 @@ Otherwise, continue with the following steps.
 
 Select your target environment: **Kubernetes** or **Docker**.
 
+```mdx-code-block
+<img src={install_eight} width="200" />
+```
 ![](./static/install-a-delegate-08.png)
 
 
@@ -62,6 +86,9 @@ Select your target environment: **Kubernetes** or **Docker**.
 
 In **Install your Delegate**, select **Helm Chart**, **Terraform**, or **Kubernetes Manifest**.
 
+```mdx-code-block
+<img src={install_eleven} width="200" />
+```
 ![](./static/install-a-delegate-11.png)
 
 ### Helm-based install on Kubernetes
@@ -74,6 +101,9 @@ On the **New Delegate** page, select **Kubernetes**, and then click **Helm Chart
 
 Before you install the delegate, accept or modify the default delegate name.
 
+```mdx-code-block
+<img src={install_twelve} width="200" />
+```
 ![](./static/install-a-delegate-12.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
@@ -123,6 +153,9 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
+```mdx-code-block
+<img src={install_onethree} width="200" />
+```
 ![](./static/install-a-delegate-13.png)
 
 To verify the delegate, click **Verify**.
@@ -133,12 +166,18 @@ Use the following steps to install a delegate on Kubernetes using a Terraform Pl
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Terraform**.
 
+```mdx-code-block
+<img src={install_onefive} width="200" />
+```
 ![](./static/install-a-delegate-15.png)
 
 #### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
+```mdx-code-block
+<img src={install_onesix} width="200" />
+```
 ![](./static/install-a-delegate-16.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
@@ -165,18 +204,27 @@ Delegates are identified by their names. Delegate names must be unique within a 
 
 The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
+```mdx-code-block
+<img src={install_onethree} width="200" />
+```
 ![](./static/install-a-delegate-13.png)
 
 ### Kubernetes-install on Kubernetes 
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
 
+```mdx-code-block
+<img src={install_onenine} width="200" />
+```
 ![](./static/install-a-delegate-19.png)
 
 #### Name the delegate
 
 Before you install the delegate, you must give it a name.
 
+```mdx-code-block
+<img src={install_twenty} width="200" />
+```
 ![](./static/install-a-delegate-20.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
@@ -222,6 +270,9 @@ $ kubectl apply -f harness-delegate.yaml
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
+```mdx-code-block
+<img src={install_onethree} width="200" />
+```
 ![](./static/install-a-delegate-13.png)
 
 To verify the delegate, click **Verify**.
@@ -232,12 +283,18 @@ Use the following process to install a delegate on Docker.
 
 On the **New Delegate** page, select **Docker**.
 
+```mdx-code-block
+<img src={install_twofive} width="200" />
+```
 ![](./static/install-a-delegate-25.png)
 
 #### Name the delegate
 
 Accept or change the default delegate name of `docker-delegate`.
 
+```mdx-code-block
+<img src={install_twothree} width="200" />
+```
 ![](./static/install-a-delegate-23.png)
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
@@ -273,6 +330,9 @@ Specify the parameters as follows.
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
+```mdx-code-block
+<img src={install_onethree} width="200" />
+```
 ![](./static/install-a-delegate-13.png)
 
 To verify the delegate, click **Verify**.
