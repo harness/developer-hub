@@ -26,7 +26,7 @@ You can install a delegate from the **New Delegate** installation page.
 
 TEST
 ```mdx-code-block
-<img src{install-a-delegate-02} width="200" />
+<img src{install_a_delegate_02} width="200" />
 ```
 
 In addition to providing basic information about installed delegates, the **Delegates** page gives you access to the delegate installer.
