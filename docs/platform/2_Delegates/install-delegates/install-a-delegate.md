@@ -247,7 +247,7 @@ docker run --cpus=1 --memory=2g \
 
 #### Verify the delegate connection
 
-The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
+The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ![](./static/install-a-delegate-24.png)
 
