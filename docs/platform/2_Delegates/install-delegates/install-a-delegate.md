@@ -109,9 +109,9 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 
 #### Verify the delegate connection
 
-The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
+The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
-[INSERT HEARTBEAT]
+![](/docs/platform/2_Delegates/install-delegates/kubernetes-delegates/static/install-harness-delegate-on-kubernetes-18.png)
 
 To verify the delegate, click **Verify**.
 
@@ -197,12 +197,12 @@ Your Harness Manager endpoint depends on your Harness cluster location. Use the 
 | SaaS prod-1 | https://app.harness.io |
 | SaaS prod-2 | https://app.harness.io/gratis |
 | SaaS prod-3 | https://app3.harness.io |
-| [CDCE Docker](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | https://<HARNESS_HOST> if the Docker delegate is remoted from CDCE or http://host.docker.internal if the Docker delegate is located on the same host as CDCE |
-| [CDCE Helm](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | http://<HARNESS_HOST>:7143 where HARNESS_HOST is the public IP address of the Kubernetes node that runs CDCE Helm. |
+| [CDCE Docker](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | `https://<HARNESS_HOST>` if the Docker delegate is remoted from CDCE or http://host.docker.internal if the Docker delegate is located on the same host as CDCE |
+| [CDCE Helm](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | `http://<HARNESS_HOST>:7143` where `HARNESS_HOST` is the public IP address of the Kubernetes node that runs CDCE Helm. |
 
 #### Install the delegate
 
-Use the `kubectl apply` command to apply the harness-delegate.yaml file.
+Use the `kubectl apply` command to apply the harness-delegate.yaml file:
 
 ```
 $ kubectl apply -f harness-delegate.yaml
@@ -210,7 +210,7 @@ $ kubectl apply -f harness-delegate.yaml
 
 #### Verify the delegate connection
 
-The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
+The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ![](./static/install-a-delegate-17.png)
 
