@@ -48,17 +48,15 @@ Select your target environment: **Kubernetes** or **Docker**.
 
 ## Kubernetes environment
 
-![](./static/install-a-delegate-08.png)
-
 In **Install your Delegate**, select **Helm Chart**, **Terraform**, or **Kubernetes Manifest**.
+
+![](./static/install-a-delegate-11.png)
 
 ### Helm-based install on Kubernetes
 
 Use the following steps to install a delegate on Kubernetes using a Helm chart.
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Helm Chart**.
-
-![](./static/install-a-delegate-11.png)
 
 #### Name the delegate
 
@@ -100,6 +98,7 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 ```
 
 | **Value** | **Description** |
+| :-- | :-- |
 | `delegateName` | The name of the delegate. This value identifies the delegate. |
 | `accountId` | The account ID for the account with which the delegate is associated. You can find this value in **Account Settings**. |
 | `delegateToken` | The value of the delegate token. The token authenticates your delegate to Harness Manager. |
@@ -185,14 +184,16 @@ curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/
 Open the harness-delegate.yaml file. Find and specify the following placeholder values as described.
 
 | **Value** | **Description** |
-| PUT_YOUR_DELEGATE_NAME | The name of the delegate. |
-| PUT_YOUR_ACCOUNT_ID | Your Harness account ID. |
-| PUT_YOUR_MANAGER_ENDPOINT | The URL of your cluster. See the following table of Harness clusters and endpoints. |
-| PUT_YOUR_DELEGATE_TOKEN | Your delegate token. To find it, go to **Account Settings > Account Resources**, select **Delegate**, and then select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, see [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+| :-- | :-- |
+| `PUT_YOUR_DELEGATE_NAME` | The name of the delegate. |
+| `PUT_YOUR_ACCOUNT_ID` | Your Harness account ID. |
+| `PUT_YOUR_MANAGER_ENDPOINT` | The URL of your cluster. See the following table of Harness clusters and endpoints. |
+| `PUT_YOUR_DELEGATE_TOKEN` | Your delegate token. To find it, go to **Account Settings > Account Resources**, select **Delegate**, and then select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, see [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
 
 Your Harness Manager endpoint depends on your Harness cluster location. Use the following table to find your Harness Manager endpoint on your Harness cluster.
 
 | **Harness cluster location** | **Harness Manager endpoint** |
+| :-- | :-- |
 | SaaS prod-1 | https://app.harness.io |
 | SaaS prod-2 | https://app.harness.io/gratis |
 | SaaS prod-3 | https://app3.harness.io |
@@ -229,7 +230,6 @@ Accept or change the default delegate name of `docker-delegate`.
 
 Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
 
-
 #### Install the delegate
 
 Use the `docker run` command to install the delegate with the specified parameters:
@@ -252,11 +252,6 @@ The delegate installation process ends in delegate registration with Harness Man
 ![](./static/install-a-delegate-24.png)
 
 To verify the delegate, click **Verify**.
-
-
-
-
-
 
 
 
