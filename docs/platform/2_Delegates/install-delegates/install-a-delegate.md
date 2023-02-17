@@ -4,7 +4,7 @@ description: This document explains how to install Harness delegates in NextGen 
 # sidebar_position: 2
 ---
 ```mdx-code-block
-import install-a-delegate-02 from './static/install-a-delegate-02.png'
+import install_a_delegate_02 from './static/install-a-delegate-02.png'
 ```
 
 
