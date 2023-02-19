@@ -1,0 +1,2 @@
+#### Context Name (`TBD`)
+The context to use for the scan. If you’re running a ZAP scan, for example, you can define contexts to include multiple URLs in the same scan.  

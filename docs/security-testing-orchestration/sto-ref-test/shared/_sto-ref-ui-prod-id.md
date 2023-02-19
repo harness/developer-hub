@@ -1,0 +1,3 @@
+#### Access Id (`product_access_id`)
+
+The Identifier that you want to assign to the target you’re scanning in the pipeline. Use a unique, descriptive name such as `codebaseAlpha` or `jsmith/myalphaservice`.

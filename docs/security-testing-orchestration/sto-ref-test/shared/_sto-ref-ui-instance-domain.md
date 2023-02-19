@@ -1,0 +1,2 @@
+#### Domain (`instance_domain`)
+Domain of the application instance to scan. You can include the full path to the app in this field, or split the full path between the Domain and the Path fields. Example: `https://myapp.io/portal/us`
