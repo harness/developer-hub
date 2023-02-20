@@ -66,7 +66,7 @@ Make sure you have:
     :::
         
     :::note
-    We recommend that you use VSCode editor or Sublime to edit payload information to avoid format issues.
+    We recommend that you use VS Code or Sublime Text to edit payload information to avoid format issues.
     :::
 
 2. Run the updated cURL command on Terminal. 
