@@ -340,7 +340,7 @@ If you entered 123 in a string filed, such as a name, it is treated as a string.
 
 When using ternary conditional `?:` operators, do not use spaces between the operators and values.
 
-For example, `condition ? <value_if_true> : <value_if_false> will not work. Use `condition?<value_if_true>:<value_if_false>` instead.
+For example, `condition ? <value_if_true> : <value_if_false>` will not work. Use `condition?<value_if_true>:<value_if_false>` instead.
 
 ### Variable concatenation
 
