@@ -2,7 +2,7 @@
 
 ** --------------------------------------------------------------------------------------- **
 
-## Scan Mode `securityStepMode`
+## Scan Mode
 
 * [`policy_type`](#scan-mode)
 
@@ -11,15 +11,17 @@ import StoSettingScanMode from './shared/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeData from './shared/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanModeYaml  from './shared/_sto-ref-ui-scan-mode-yaml.md';
 ```
 <a name="scan-mode"></a>
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
+<StoSettingScanModeYaml />
 
 
-### Scan Configuration `securityStepConfig`
+## Scan Configuration
 
 * ['product_config_name`](#product-config-name)
 
@@ -29,12 +31,9 @@ import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-nam
 <a name="#product-config-name"></a>
 <StoSettingProductConfigName />
 
-## Target
 
 
-** --------------------------------------------------------------------------------------- **
-
-### Target  `securityStepTargetType`
+## Type
 
 * [`scan_type`](#scan-type)
 
@@ -44,6 +43,7 @@ import StoSettingScanTypeRepo     from './shared/_sto-ref-ui-scan-type-00-repo.m
 import StoSettingScanTypeCont     from './shared/_sto-ref-ui-scan-type-01-container.md';
 import StoSettingScanTypeInst     from './shared/_sto-ref-ui-scan-type-02-instance.md';
 import StoSettingScanTypeConfig  from './shared/_sto-ref-ui-scan-type-03-config.md';
+import StoSettingScanTypeYaml  from './shared/_sto-ref-ui-scan-type-yaml.md';
 ```
 <a name="scan-type"></a>
 <StoSettingScanType />
@@ -51,12 +51,13 @@ import StoSettingScanTypeConfig  from './shared/_sto-ref-ui-scan-type-03-config.
 <StoSettingScanTypeCont />
 <StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
+<StoSettingScanTypeYaml />
 
 
 
 ** --------------------------------------------------------------------------------------- **
 
-### Name  (`securityStepTargetName`) 
+## Name  (`securityStepTargetName`) 
 
 [`product_access_id`](#product-access-id)
 
