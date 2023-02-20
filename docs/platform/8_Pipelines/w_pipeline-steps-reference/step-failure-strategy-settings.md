@@ -29,12 +29,12 @@ Currently, only **All Errors** is supported.
 
 | **Error Type** | **Description** |
 | :--- | :--- |
-| **Authentication** | Credentials provided in a connector are not valid. Typically, the Harness secret used for one of the credentials is incorrect. If Harness cannot determine if an error is authentication and authorization, then it is treated as an authentication error. |
-| **Authorization** | The credentials are valid but the user permissions needed to access the resource are not sufficient. If Harness cannot determine if an error is authentication and authorization, then it is treated as an authentication error. |
-| **Connectivity** | A Harness delegate cannot connect to a specific resource. For example, the delegate cannot connect to repo or a VM or a Secrets Manager. |
-| **Timeout** | A Harness delegate failed to complete a task within the timeout setting in the stage or step. For example, if the Kubernetes workload you are deploying fails to reach steady state within the step timeout. |
-| **Delegate Provisioning** | No available delegate can accomplish the task or the task is invalid. For example, if an HTTP step attempts to connect to a URL but there is no available delegate to perform the task. |
-| **Verification** | A Harness continuous verification step failed. |
+| **Authentication Errors** | Credentials provided in a connector are not valid. Typically, the Harness secret used for one of the credentials is incorrect. If Harness cannot determine if an error is authentication and authorization, then it is treated as an authentication error. |
+| **Authorization Errors** | The credentials are valid but the user permissions needed to access the resource are not sufficient. If Harness cannot determine if an error is authentication and authorization, then it is treated as an authentication error. |
+| **Connectivity Errors** | A Harness delegate cannot connect to a specific resource. For example, the delegate cannot connect to repo or a VM or a Secrets Manager. |
+| **Delegate Provisioning Errors** | No available delegate can accomplish the task or the task is invalid. For example, if an HTTP step attempts to connect to a URL but there is no available delegate to perform the task. |
+| **Timeout Errors** | A Harness delegate failed to complete a task within the timeout setting in the stage or step. For example, if the Kubernetes workload you are deploying fails to reach steady state within the step timeout. |
+| **Verification Failures** | A Harness continuous verification step failed. |
 | **Approval Rejection** | Rollback pipeline stage if approval is rejected for a step or stage. You can select specific failure strategies for approval rejection across steps and stages.
 | **All Errors** | An error whether defined by the other error types or not. |
 
