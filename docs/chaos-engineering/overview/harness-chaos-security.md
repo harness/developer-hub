@@ -90,7 +90,7 @@ The chaos module leverages the native Git Connectors provided by the Harness pla
 ![Experiment secrets](../static/overview/experiment-secrets.png)
 
 
-#### Secrets to access and inject chaos on public and on-prem cloud resources
+### Secrets to access and inject chaos on public and on-prem cloud resources
 
 HCE supports fault injection into non-Kubernetes resources such as on-premises VMs, bare-metal machines, cloud infrastructure resources (compute, storage, and network), and cloud-managed services. It leverages provider-specific APIs to inject chaos.
 

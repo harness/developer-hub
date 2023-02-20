@@ -3,18 +3,18 @@ title: PSP
 ---
 ## Using pod security policies with HCE
 
-- While working in environments (clusters) that have restrictive security policies, the default HCE experiment execution procedure can be inhibited. 
-- This is due to the experiment pods running the chaos injection tasks in privileged mode. This, in turn, is necessitated due to the mounting of container runtime-specific socket files from the Kubernetes nodes in order to invoke runtime APIs. 
-- While this is not needed for all experiments (a considerable number of them use purely the K8s API), those involving injection of chaos processes into the network/process namespaces of other containers have this requirement (for example, netem, stress).
+- While working in environments (clusters) that have restrictive security policies, you can inhibit the default HCE experiment execution procedure. 
+- This is due to the experiment pods running the chaos injection tasks in privileged mode. This, in turn, is required due to the mounting of container runtime-specific socket files from the Kubernetes nodes to invoke runtime APIs. 
+- This is not required for all experiments (a considerable number of them use purely the K8s API). It is required for those experiments that inject chaos processes into the network or process namespaces of other containers (for example, netem, stress).
 
-The restrictive policies are often enforced via [pod security policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) (PSP) today, with organizations opting for the default ["restricted"](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies) policy. 
+The restrictive policies are often enforced via [pod security policies](https://kubernetes.io/docs/concepts/policy/pod-security-policy/) (PSP), with organizations opting for the default ["restricted"](https://kubernetes.io/docs/concepts/policy/pod-security-policy/#example-policies) policy. 
 
 
 ### Applying pod security policies to HCE pods
 
-- To run the HCE pods with operating characteristics described above, create a custom PodSecurityPolicy that allows the same: 
+- To run the HCE pods with operating characteristics described above, create a custom `PodSecurityPolicy` that allows the same: 
 
-[embedmd]:# (./static/overview/manifest/psp/psp-litmus.yaml yaml)
+[embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/psp/psp-litmus.yaml yaml)
 ```yaml
 apiVersion: policy/v1beta1
 kind: PodSecurityPolicy
@@ -80,13 +80,13 @@ readOnlyRootFilesystem: false
 ```
 
 :::note
-This PodSecurityPolicy is a sample configuration which works for a majority of the usecases. It is left to the user's discretion to modify it based on the environment. For example, if the experiment doesn't need the socket file to be mounted, `allowedHostPaths` can be excluded from the psp spec. On the other hand, in case of CRI-O runtime, network-chaos tests need the chaos pods executed in privileged mode. It is also possible that different PSP configs are used in different namespaces based on ChaosExperiments installed/executed in them.
+This `PodSecurityPolicy` is a sample configuration which works for a majority of the use cases. It is left to the user's discretion to modify it based on their environment. For example, if the experiment doesn't need the socket file to be mounted, `allowedHostPaths` can be excluded from the PSP specification. In case of CRI-O runtime, network-chaos tests need the chaos pods to execute in privileged mode. Different PSP configurations can be used in different namespaces based on the chaos experiments installed or executed in them.
 :::
 
 - Subscribe to the created PSP in the experiment RBAC (or in the [admin-mode](https://v1-docs.litmuschaos.io/docs/admin-mode/#prepare-rbac-manifest) RBAC, as applicable).
 For example, the pod-delete experiment RBAC instrumented with the PSP is shown below:
 
-[embedmd]:# (./static/overview/manifest/psp/rbac-psp.yaml yaml) 
+[embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/psp/rbac-psp.yaml yaml) 
 ```yaml
 ---
 apiVersion: v1

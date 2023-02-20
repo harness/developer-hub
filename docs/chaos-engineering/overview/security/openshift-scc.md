@@ -35,7 +35,7 @@ restricted         false     []        MustRunAs   MustRunAsRange     MustRunAs 
 
 By default, applications would run under the <code>restricted</code> SCC. You can use the default SCC or create your own SCC to provide the HCE experiment service account (here litmus-admin) to run all the experiments. Here is one such SCC that can be used:
 
-[embedmd]:# (add-path//overview/manifest/openshift-scc-policies/litmus-scc.yaml yaml)
+[embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/openshift-scc-policies/litmus-scc.yaml yaml)
 ```yaml
 apiVersion: security.openshift.io/v1
   kind: SecurityContextConstraints

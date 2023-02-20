@@ -34,7 +34,7 @@ If a setup contains restricted policies, it will not allow HCE experiments to be
 
 To allow HCE pods to use the privileged escalation, add the HCE serviceAcccount or ClusterRole or Role inside the exclude block as:
 
-[embedmd]:# (./static/overview/manifest/kyverno-policies/restricted-policies.yaml yaml)
+[embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/kyverno-policies/restricted-policies.yaml yaml)
 ```yaml
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
