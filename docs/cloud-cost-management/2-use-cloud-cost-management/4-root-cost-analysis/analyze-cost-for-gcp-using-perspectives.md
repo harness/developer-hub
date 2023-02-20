@@ -25,7 +25,7 @@ Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and
 
 ### Step: Analyze GCP Cost
 
-The Perspectives provides deep insights into your GCP costs. The cost includes all the applicable credits and discounts.
+The **Perspectives** page provides deep insights into your GCP costs. The cost includes all the applicable discounts.
 
 1. In **Cloud Costs**, click **Perspectives**,and then click **GCP**. The GCP products are displayed.
    
