@@ -340,17 +340,13 @@ If you entered 123 in a string filed, such as a name, it is treated as a string.
 
 When using ternary conditional `?:` operators, do not use spaces between the operators and values.
 
+For example, `condition ? <value_if_true> : <value_if_false> will not work. Use `condition?<value_if_true>:<value_if_false>` instead.
+
 ### Variable concatenation
 
-Use Java string method for concatenating pipeline variables.
+Harness recommends that you use Java string method for concatenating pipeline variables.
 
-For example, `<+pipeline.variable.var1>_suffix` will not work. 
-
-Use syntax:
-
-`<+pipeline.variables.var1>.concat("_suffix")` 
-
-`<+pipeline.variables.var1>.+("_suffix")` 
+For example, use syntax `<+pipeline.variables.var1>.concat("_suffix")` or `<+pipeline.variables.var1>.+("_suffix")` instead of `<+pipeline.variable.var1>_suffix`. 
 
 ## Built-in CIE codebase variables reference
 
