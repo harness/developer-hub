@@ -1,5 +1,3 @@
-### Access Id
-
 Username to log in to the scanner.
 
 import Tabs from '@theme/Tabs';

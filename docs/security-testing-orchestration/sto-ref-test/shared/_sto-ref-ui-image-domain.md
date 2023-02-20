@@ -1,4 +1,3 @@
-#### Domain (`container_domain`)
 The URL of the artifact repository that contains the image to scan. Examples: 
 * `docker.io`
 * `app.harness.io/registry`

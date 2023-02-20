@@ -1,2 +1,1 @@
-#### Scan Type (`scan_type`)
-The target type to scan for vulnerabilities. This scanner supports the following:  
+The target type to scan for vulnerabilities. The following list includes the UI and YAML values for the supported options.

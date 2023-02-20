@@ -1,41 +1,101 @@
 # ALL SETTINGS V2
 
-** --------------------------------------------------------------------------------------- **
+You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest results from $PRODUCT ] into your pipelines. This topics describes the required and optional settings for setting up a $PRODUCT scan. 
 
-## Scan Mode
+You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
 
-* [`policy_type`](#scan-mode)
+<table>
+    <tr>
+        <th> Setting </th>
+        <th> CI step key </th>
+        <th> SecurityTests step key</th>
+    </tr>
+    <tr>
+        <td><a href="#scan-mode">Scan Mode</a></td> 
+        <td><code>policy_type</code></td>
+        <td><code>mode</code></td>
+    </tr>
+    <tr>
+        <td><a href="#scan-configuration">Scan Configuration</a></td> 
+        <td><code>product_config_name</code></td>
+        <td><code>config</code></td>
+    </tr>
+    <tr>
+        <td><a href="#type">Type</a></td> 
+        <td><code>scan_type</code></td>
+        <td><code>type</code></td>
+    </tr>
+    <tr>
+        <td><a href="#name">Name</a></td> 
+        <td><code>product_access_id</code></td>
+        <td><code>name</code></td>
+    </tr>
+    <tr>
+        <td><a href="#variant">Variant</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>variant</code></td>
+    </tr>
+    <tr>
+        <td><a href="#workspace">Workspace</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>workspace</code></td>
+    </tr>
+    <tr>
+        <td><a href="#file">File</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>file</code></td>
+    </tr>
+    <tr>
+        <td><a href="#file">Type</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>type</code></td>
+    </tr>
+    <tr>
+        <td><a href="#file">File</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>file</code></td>
+    </tr>
+    <tr>
+        <td><a href="#file">File</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>file</code></td>
+    </tr>
+    <tr>
+        <td><a href="#file">File</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>file</code></td>
+    </tr>
+    <tr>
+        <td><a href="#file">File</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>file</code></td>
+    </tr>
+</table>
+
+### Scan Mode
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/_sto-ref-ui-scan-mode.md';
 import StoSettingScanModeOrch from './shared/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeData from './shared/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/_sto-ref-ui-scan-mode-02-ingestonly.md';
-import StoSettingScanModeYaml  from './shared/_sto-ref-ui-scan-mode-yaml.md';
 ```
 <a name="scan-mode"></a>
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
-<StoSettingScanModeYaml />
 
 
-## Scan Configuration
-
-* ['product_config_name`](#product-config-name)
+### Scan Configuration
 
 ```mdx-code-block
 import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-name.md';
 ```
-<a name="#product-config-name"></a>
+
 <StoSettingProductConfigName />
 
-
-
-## Type
-
-* [`scan_type`](#scan-type)
+### Type
 
 ```mdx-code-block
 import StoSettingScanType from './shared/_sto-ref-ui-scan-type.md';
@@ -43,7 +103,6 @@ import StoSettingScanTypeRepo     from './shared/_sto-ref-ui-scan-type-00-repo.m
 import StoSettingScanTypeCont     from './shared/_sto-ref-ui-scan-type-01-container.md';
 import StoSettingScanTypeInst     from './shared/_sto-ref-ui-scan-type-02-instance.md';
 import StoSettingScanTypeConfig  from './shared/_sto-ref-ui-scan-type-03-config.md';
-import StoSettingScanTypeYaml  from './shared/_sto-ref-ui-scan-type-yaml.md';
 ```
 <a name="scan-type"></a>
 <StoSettingScanType />
@@ -51,15 +110,8 @@ import StoSettingScanTypeYaml  from './shared/_sto-ref-ui-scan-type-yaml.md';
 <StoSettingScanTypeCont />
 <StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
-<StoSettingScanTypeYaml />
 
-
-
-** --------------------------------------------------------------------------------------- **
-
-## Name  (`securityStepTargetName`) 
-
-[`product_access_id`](#product-access-id)
+### Name 
 
 ```mdx-code-block
 import StoSettingProductID from './shared/_sto-ref-ui-prod-id.md';
@@ -69,104 +121,92 @@ import StoSettingProductID from './shared/_sto-ref-ui-prod-id.md';
 <StoSettingProductID />
 
 
+### Variant
 
-** --------------------------------------------------------------------------------------- **
+```mdx-code-block
+import StoSettingTargetVariant from './shared/_sto-ref-ui-target-variant.md';
+```
 
-### Variant  (`securityStepTargetVarient`) 
-
-*** TBD what does this map to on [this page](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)? **
-
-
-
-** --------------------------------------------------------------------------------------- **
-
-### Workspace (`securityStepTargetWorkspace`)  
-
-*** TBD what does this map to on [this page](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)? **
+<StoSettingTargetVariant  />
 
 
-## Ingestion
+### Workspace
 
-** --------------------------------------------------------------------------------------- **
+```mdx-code-block
+import StoSettingTargetWorkspace from './shared/_sto-ref-ui-target-workspace.md';
+```
 
-### File ( `securityStepIngestionFile`) 
-
-*** TBD what does this map to on [this page](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)? **
+<StoSettingTargetWorkspace  />
 
 
 
-## Container Image
+## Ingestion settings
 
-** --------------------------------------------------------------------------------------- **
 
-### Type  (`securityStepImageType`)  
+### File
 
-[`container_type`](#container-type)
+```mdx-code-block
+import StoSettingIngestionFile from './shared/_sto-ref-ui-ingestion-file.md';
+```
+
+<StoSettingIngestionFile  />
+
+
+## Container Image settings
+
+### Type  
 
 ```mdx-code-block
 import StoSettingImageType from './shared/_sto-ref-ui-image-type.md';
 ```
 
-<a name="container-type"></a>
 <StoSettingImageType />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
 
-### Name (`securityStepImageName`)  
-
-[`container_project`](#container-project)
+### Name
 
 ```mdx-code-block
 import StoSettingImageName from './shared/_sto-ref-ui-image-name.md';
 ```
 
-<a name="container-project"></a>
 <StoSettingImageName />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
 
-### Domain (`securityStepImageDomain`)  
+### Domain
 
-[`container_domain`](#container-domain)
 
 ```mdx-code-block
 import StoSettingImageDomain from './shared/_sto-ref-ui-image-domain.md';
 ```
 
-<a name="container-domain"></a>
 <StoSettingImageDomain />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
 
-### Tag (`securityStepImageTag`)  
-
-[`container_tag`](#container-tag)
+### Tag
 
 ```mdx-code-block
 import StoSettingImageTag from './shared/_sto-ref-ui-image-tag.md';
 ```
 
-<a name="container-tag"></a>
 <StoSettingImageTag />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
 
-### Access Id (`securityStepImageAccessId`)  
-
-[`container-access_id`](#container-access-id)
+### Access Id
 
 ```mdx-code-block
 import StoSettingImageAccessID from './shared/_sto-ref-ui-image-access-id.md';
 ```
 
 <a name="container-access-id"></a>
-<StoSettingImageTag />
+<StoSettingImageAccessID />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
 
-### Access Token (`securityStepImageAccessId`)  
-
-[`container-access_token`](#container-access-token)
+### Access Token 
 
 ```mdx-code-block
 import StoSettingImageAccessToken from './shared/_sto-ref-ui-image-access-token.md';
@@ -175,32 +215,27 @@ import StoSettingImageAccessToken from './shared/_sto-ref-ui-image-access-token.
 <a name="container-access-token"></a>
 <StoSettingImageAccessToken />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
 
-### Region (`securityStepImageRegion`)  
-
-[`container-region`](#container-region)
+### Region  
 
 ```mdx-code-block
 import StoSettingImageRegion from './shared/_sto-ref-ui-image-region.md';
 ```
 
-<a name="container-region"></a>
 <StoSettingImageRegion />
 
-## Auth
+## Authentication Settings
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
 
-### Access ID (`securityStepAuthAccessId`) 
+### Access ID
 
-[`product_access_id`](#product-access-id)
 
 ```mdx-code-block
 import StoSettingAuthAccessID from './shared/_sto-ref-ui-auth-access-id.md';
 ```
 
-<a name="product-access-id"></a>
 <StoSettingAuthAccessID />
 
 ** --------------------------------------------------------------------------------------- **
