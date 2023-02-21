@@ -43,19 +43,19 @@ You can install a delegate from the **New Delegate** installation page.
 In addition to providing basic information about installed delegates, the **Delegates** page gives you access to the delegate installer.
 
 ```mdx-code-block
-<img src={install_four} width="600"  border="1" />
+<img src={install_four} width="600" />
 ```
 
 To install a delegate, click **+ New Delegate**.
 
 ```mdx-code-block
-<img src={install_five} width="200" border="1"/>
+<img src={install_five} width="200" style="border: 3px" />
 ```
 
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
 
 ```mdx-code-block
-<img src={install_twoseven} width="800"  border="1" />
+<img src={install_twoseven} width="800"  style="border: 3px"  />
 ```
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
