@@ -28,7 +28,7 @@ The AWS IAM roles and policies associated with the account used in the Harness A
 
 This step supports AWS connectors using **AWS Access Key** and **Assume IAM role on Delegate** authentication methods *without* cross account access (ARN/STS).
 
-This step does not support AWS connectors using IRSA authentication, and it does not support AWS connectors that have enabled cross account access (ARN/STS) for any authentication method.
+This step supports AWS connectors using IRSA authentication, and it does not support AWS connectors that have enabled cross account access (ARN/STS) for any authentication method.
 
 :::
 ### Region
