@@ -110,7 +110,7 @@ Below is a visual representation of how an experiment pod in your chaos infrastr
 
 You can fine-tune permissions to suit specific infrastructures and experiments if you want to reduce the blast radius and impact from a security perspective. This applies to both Kubernetes-based and non-Kubernetes chaos. 
 
-In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](namespace-considerations.md) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.  
+In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](namespace-considerations) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.  
  
 Every fault in the Enterprise ChaosHub publishes the permissions that users need to execute the fault. Users can tune their roles. Also available are common permission templates that work as subsets or supersets for a specific category of experiments. For example, for information about recommended roles for AWS resource faults, go [here](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults). 
 
@@ -121,4 +121,4 @@ The deployments that comprise the chaos infrastructure and the transient experim
 
 Some faults (mainly, the pod network and stress faults) necessitate container-runtime-specific operations such as entering the network and pid namespaces. These operations in turn necessitate privilege escalation, manipulating the cgroup, and so on. In these cases, some of the pods are designed to run with privileged containers and root users. These pods also mount the runtime-specific socket files from the underlying host. However, it is important to note that such pods are short-lived (they exist for the duration of chaos) and can be run only if the users equip the serviceaccounts with access to the right security policy. 
 
-To enable the execution of such experiments, Harness recommends the security policy templates ([PSP](../security-templates/psp.md), [OpenShift SCC](../security-templates/openshift-scc.md), and [Kyverno](../security-templates/kyverno-policies.md)). 
+To enable the execution of such experiments, Harness recommends the security policy templates ([PSP](../Security/security-templates/psp), [OpenShift SCC](../Security/security-templates/openshift-scc), and [Kyverno](../Security/security-templates/kyverno-policies)). 
