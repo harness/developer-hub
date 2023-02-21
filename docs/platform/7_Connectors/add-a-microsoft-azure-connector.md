@@ -190,7 +190,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1  
 metadata:  
   name: cdp-qa-deployer-role  
-  namespace: default  
+  namespace: cdp-qa-app
 rules:  
   - apiGroups: ["", "apps"]  
     resources: ["pods", "configmaps", "deployments", "secrets", "events", "services",  "replicasets", "deployments/scale", "namespaces", "resourcequotas", "limitranges"]  
@@ -201,14 +201,14 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1  
 metadata:  
   name: cdp-qa-deployer-role-binding  
-  namespace: default  
+  namespace: cdp-qa-app  
 roleRef:  
   apiGroup: rbac.authorization.k8s.io  
   kind: Role  
   name: cdp-qa-deployer-role  
 subjects:  
   - kind: Group  
-    namespace: default  
+    namespace: cdp-qa-app  
     name: <AD group id to which the SP and MSI users are assigned to>
 ```
 ### Azure Container Repository (ACR) Roles
