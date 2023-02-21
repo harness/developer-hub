@@ -64,6 +64,21 @@ const FeaturedList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-container-signing",
   },
+  {
+    title: 'Build and Publish a Rust application',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+       Learn how to build, test and publish multi architecture Rust application container image.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-rust-container.md',
+  },
 ];
 
 const CIList: CardItem[] = [
@@ -233,6 +248,21 @@ const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: '15 min',
     link: '/tutorials/build-code/ci-tutorial-push-to-gar',
+  },
+  {
+    title: 'Build and Publish a Rust application',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+       Learn how to build, test and publish multi architecture Rust application container image.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-rust-container.md',
   },
 ];
 
