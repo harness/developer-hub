@@ -26,7 +26,7 @@ When you use a variable, you add it as an expression.
 
 Harness expressions are identified using the `<+...>` syntax. For example, `<+pipeline.name>` references the name of the pipeline where the expression is evaluated.
 
-The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here's an expression that uses Webhook Trigger payload information:
+The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
 
 
 ```
@@ -36,7 +36,7 @@ Harness pre-populates many variables, as documented below, and you can set your 
 
 ### You can use all Java string methods
 
-You can use all Java string methods on Harness variables expressions.
+You can use all Java string methods on Harness variable expressions.
 
 The above example used `contains()`:
 
@@ -198,19 +198,19 @@ Simply click a variable expression name to use it as the value for this setting.
 
 At runtime, Harness will replace the variable with the runtime value.
 
-You can also paste in expressions that don't appear. Such as expressions that reference settings in previous stages.
+You can also paste expressions that don't appear. For example, expressions that reference settings in previous stages.
 
 See [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 
 #### Only use expressions after they ll be resolved
 
-When Harness encounters an expression during pipeline execution, it tries to resolve it with the information it has at that point in the execution. Consequently, you can only use an expression after Harness has the required information. If you try to use an expression before Harness has its information, it will fail.
+When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. Consequently, you can use an expression only after Harness has the required information. If you try to use an expression before Harness has its information, it will fail.
 
-In this illustration, you can see how the information in each section of the stage are referenced.
+In this illustration, you can see how the information in each section of the stage is referenced.
 
 ![](./static/harness-variables-20.png)
 
-Here's how you reference the information in each of these sections.
+Here is how you reference the information in each of these sections.
 
 * **Service expressions** can only be used after Harness has progressed through the **Service** section of the pipeline.
 	+ **Service** expressions they can be used in **Infrastructure** and **Execution**.
@@ -279,7 +279,7 @@ if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
 ### Variable names across the pipeline
 
-Variables names must be unique in the same stage. You can use the same variable names in different stages in the same pipeline or other pipelines.
+Variables names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines.
 
 ### Hyphens in variable names
 
@@ -313,12 +313,12 @@ See [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/
 
 ### Number variables
 
-Number type variables are always treated as a double (double-precision floating-point).
+Number type variables are always treated as doubles (double-precision floating-point).
 
 * -1.79769313486231E308 to -4.94065645841247E-324 for negative values
 * 4.94065645841247E-324 to 1.79769313486232E308 for positive values
 
-For example, here's a pipeline variable of number type.
+For example, here is a pipeline variable of number type.
 
 
 ```
@@ -334,7 +334,7 @@ The expression to reference that pipeline variable, `<+pipeline.variables.double
 
 Whether the number in a variable is treated as a double or string depends on the field that you use it in.
 
-If you entered 123 in a string filed, such as a name, it is treated as a string. If you entered 123 in a count field, such as instance count, it is treated as a double.
+If you enter 123 in a string filed, such as a name, it is treated as a string. If you enter 123 in a count field, such as instance count, it is treated as a double.
 
 ### Ternary operators
 
@@ -356,7 +356,7 @@ Harness also retrieves your Git details and presents them in your build stage on
 
 Using Harness built-in expressions, you can refer to the various attributes of your codebase in Harness stages.
 
-Here's a simple example of a Shell script step echoing some common codebase variable expressions.
+Here is a simple example of a Shell script step echoing some common codebase variable expressions.
 
 
 ```
@@ -443,7 +443,7 @@ See [Add Account, Org, and Project-level Variables](add-a-variable.md).
 
 #### Pipeline-level variables
 
-Here's a quick video that explains how to create and reference pipeline, stage, and service variables.
+Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
 
 <!-- Video:
 https://www.youtube.com/watch?v=lqbmO6EVGuU-->
@@ -459,7 +459,7 @@ The [Entity Identifier](../20_References/entity-identifier-reference.md) (Id) fo
 
 Every execution of a pipeline is given a universally unique identifier (UUID). The UUID can be referenced anywhere.
 
-For example, in the following execution URL the UUID follows `executions` and is `kNHtmOaLTu66f_QNU-wdDw`.
+For example, in the following execution URL, the UUID follows `executions` and is `kNHtmOaLTu66f_QNU-wdDw`.
 
 
 ```
@@ -539,13 +539,13 @@ You must use the expression after the step in execution.
 
 #### Stage-level variables
 
-Here's a quick video that explains how to create and reference pipeline, stage, and service variables.
+Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
 
 <!-- Video:
 https://www.youtube.com/watch?v=lqbmO6EVGuU-->
 <docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
 
-Once you've created a stage, its settings are in the **Overview** tab. For example, here's the **Overview** tab for a deploy stage.
+Once you've created a stage, its settings are in the **Overview** tab. For example, here is the **Overview** tab for a deploy stage.
 
 ![](./static/harness-variables-28.png)
 
@@ -604,7 +604,7 @@ To run the step on all hosts, you use the repeat [Looping Strategy](../8_Pipelin
 repeat:  
   items: <+stage.output.hosts>
 ```
-Here's an example with a Shell script step.
+Here is an example with a Shell script step.
 
 ![](./static/harness-variables-31.png)
 
@@ -612,7 +612,7 @@ For examples, see the looping strategies used in the [Secure Shell (SSH) deploym
 
 ### Service
 
-Currently, there are two versions of services and environments, v1 and v2. services and environments v1 is being replaced by services and environments v2.
+Currently, there are two versions of services and environments, v1 and v2. Services and environments v1 are being replaced by services and environments v2.
 
 The use of variable expressions is different between v1 and v2.
 
@@ -626,7 +626,7 @@ For example, `<+serviceVariables.myvar>`.
 
 #### Service-level variables for service v1
 
-Here's a quick video that explains how to create and reference pipeline, stage, and service variables.
+Here is a quick video that explains how to create and reference pipeline, stage, and service variables.
 
 
 <!-- Video:
@@ -656,7 +656,7 @@ You can use these expressions in any setting in your pipeline. Select the expres
 
 ![](./static/harness-variables-34.png)
 
-To override the service variable in a script, you simply reference its name and use a new value.
+To override the service variable in a script, reference its name and use a new value.
 
 #### <+service.name>
 
@@ -772,7 +772,7 @@ If an artifact expression is in a manifest or step and you have not selected an 
 
 If you want to reference an artifact that isn't the primary deployment artifact without being prompted, you can use an expression with quotes, like `docker pull <+artifact<+".metadata.image">>`.The artifact expressions will resolve to settings and values specified in a service's **Artifacts** section.
 
-For example, here's how the common artifact expressions resolve for a Kubernetes deployment with a Docker image on Docker Hub:
+For example, here is how the common artifact expressions resolve for a Kubernetes deployment with a Docker image on Docker Hub:
 
 * **<+artifact.tag>:** `stable`
 * **<+artifact.image>:** `index.docker.io/library/nginx:stable`
@@ -781,7 +781,7 @@ For example, here's how the common artifact expressions resolve for a Kubernetes
 * **<+artifact.type>:** `DockerRegistry`
 * **<+artifact.connectorRef>:** `DockerHub`
 
-Here's a script you can add to a [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step to view the artifact info:
+Here is a script you can add to a [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step to view the artifact info:
 
 
 ```
@@ -792,7 +792,7 @@ echo "artifact.imagePullSecret: "<+artifact.imagePullSecret>
 echo "artifact.type: "<+artifact.type>  
 echo "artifact.connectorRef: "<+artifact.connectorRef>
 ```
-Here's the example log from the deployment:
+Here is the example log from the deployment:
 
 
 ```
@@ -807,7 +807,7 @@ Command completed with ExitCode (0)
 ```
 #### <+artifact.tag>
 
-Not Harness tags. This expression evaluates to the tags on the artifact pushed, pulled, or deployed. For example, AMI tags, or if you are deploying Docker image `nginx:stable-perl` then `stable-perl` is the tag.
+Not Harness tags. This expression evaluates to the tags on the artifact pushed, pulled, or deployed. For example, AMI tags. If you are deploying the Docker image `nginx:stable-perl`, the tag would be `stable-perl`.
 
 #### <+artifact.image>
 
@@ -817,11 +817,11 @@ For non-containerized artifacts, use `<+artifact.path>`, described [below](#arti
 
 You use `<+artifact.image>` or `<+artifact.imagePath>` is your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
 
-For example, here's the **Artifacts** section with an artifact:
+For example, here is the **Artifacts** section with an artifact:
 
 ![](./static/harness-variables-38.png)
 
-Here's the Values YAML file referencing the artifact in **Artifacts**:
+Here is the Values YAML file referencing the artifact in **Artifacts**:
 
 
 ```
@@ -854,7 +854,7 @@ The image name, such as `nginx`. To see the entire image location use `<+artifac
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml or manifest file in service definition **Manifests** section must use the `dockercfg` parameter.
 
-If the Docker image is added in the service definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifact.imagePullSecret>`.
+If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockercfg: <+artifact.imagePullSecret>`.
 
 values.yaml:
 
@@ -874,11 +874,11 @@ See [Pull an Image from a Private Registry for Kubernetes](../../continuous-deli
 
 #### <+artifact.type>
 
-The type of repository used to add this artifact in the service **Artifacts**. For example, Dockerhub, Ecr, or Gcr.
+The type of repository used to add this artifact in the service **Artifacts**. For example, Docker Hub, ECR, or GCR.
 
 #### <+artifact.connectorRef>
 
-The [entity identifier](../20_References/entity-identifier-reference.md) for the connector used to connect to the artifact repo.
+The [entity identifier](../20_References/entity-identifier-reference.md) for the connector used to connect to the artifact repository.
 
 ![](./static/harness-variables-39.png)
 
@@ -894,7 +894,7 @@ For example, here are the labels for a Docker image:
 * `key-value=xyz`
 * `multi.key.value=abc`
 
-In a Harness Shell Script step or any setting where you want use the labels, you can reference them.
+In a Harness Shell script step or any setting where you want use the labels, you can reference them.
 
 
 ```
@@ -920,7 +920,7 @@ Sidecar artifact expressions use the **Sidecar Identifier** to reference the sid
 
 ![](./static/harness-variables-42.png)
 
-The sidecar identifier is set when you add the sidecar artifact. It can bee seen in the artifact listing.
+The sidecar identifier is set when you add the sidecar artifact. You can see it in the artifact listing.
 
 ![](./static/harness-variables-43.png)
 
@@ -936,7 +936,7 @@ Here are the sidecar expressions:
 
 #### Environment-level variables for service v2
 
-Currently, there are two versions of services and environments, v1 and v2. services and environments v1 is being replaced by Services and Environments v2.
+Currently, there are two versions of services and environments, v1 and v2. Services and environments v1 are being replaced by services and environments v2.
 
 The use of variable expressions is different between v1 and v2.
 
@@ -984,7 +984,7 @@ The name of the connector used in the infrastructure definition.
 
 The infrastructure key. The key is a unique string that identifies a deployment target infrastructure. It is typically used in the **Release Name** setting to add labels to release for tracking.
 
-For example, in a deploy stage's infrastructure definition, the `<+INFRA_KEY>` is used in the **Release Name** to give the release a unique name.
+For example, in the infrastructure definition of a deploy stage, the `<+INFRA_KEY>` is used in the **Release Name** to give the release a unique name.
 
 ![](./static/harness-variables-47.png)
 
@@ -1099,7 +1099,7 @@ If you use this variable in a pipeline, such as in a Shell script step, Harness 
 
 The public IP of the host where the service is deployed.
 
-If you use this variable in a Pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
+If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
 
 ### Triggers
 
@@ -1107,13 +1107,13 @@ If you use this variable in a Pipeline, such as in a Shell script step, Harness 
 
 Resolves to the artifact version (such as a Docker Tag) that initiated an [On New Artifact Trigger](../11_Triggers/trigger-on-a-new-artifact.md).
 
-When you add a new artifact trigger, you select the artifact to listen on and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
+When you add a new artifact trigger, you select the artifact to listen on, and its **Tag** setting is automatically populated with `<+trigger.artifact.build>`.
 
 ![](./static/harness-variables-50.png)
 
-The `<+trigger.artifact.build>` is used for **Tag** to ensure that the new artifact version that executed the trigger is used for the deployment.
+The `<+trigger.artifact.build>` used for **Tag** makes sure that the new artifact version that executed the trigger is used for the deployment.
 
-When a new tag is added to the artifact, the trigger is fired and the pipeline executes. Harness then resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This ensures that the new tag is used when pulling the artifact and that version is deployed.
+Adding a new tag to the artifact fires the trigger and executes the pipeline. Harness resolves `<+trigger.artifact.build>` to the tag that fired the trigger. This makes sure that the new tag is used when pulling the artifact and the new artifact version is deployed.
 
 #### Git trigger and payload expressions
 
@@ -1132,11 +1132,11 @@ For a complete list, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-re
 
 #### Triggers and RBAC
 
-Harness RBAC is applied to triggers in Harness, but it is not applied to the repos used by the triggers.
+Harness RBAC is applied to triggers in Harness, but it is not applied to the repositories used by the triggers.
 
 For example, you might have an [On New Artifact Trigger](../11_Triggers/trigger-on-a-new-artifact.md) that is started when a new artifact is added to the artifact repo. Or a [Webhook Trigger](../11_Triggers/triggering-pipelines.md) that is started when a PR is merged.
 
-In Harness, you can select who is able to create and use these triggers within Harness, but you must use your repos' RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
+You can select who can create and use these triggers within Harness. However, you must use your repository's RBAC to control who can add the artifacts or initiate events that start the Harness trigger.
 
 ### Kubernetes
 
