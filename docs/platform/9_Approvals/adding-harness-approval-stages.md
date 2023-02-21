@@ -87,7 +87,7 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
 
 In **Approval Message**, add the message for the Users in **Approvers**.
 
-### Option: Include Pipeline Execution History in Approval Details
+### Option: Include stage execution details in approval
 
 Enable this option to provide approvers with the execution history for this Pipeline. This can help approvers make their decision.
 
