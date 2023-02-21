@@ -80,27 +80,56 @@ To control access to resources using RBAC, you assign permissions to users and g
 
 ## RBAC scope
 
-Harness accounts allow you to group organizations and projects that share the same goal. These have their own scope of access.
+Managing access to resources within Harness is determined by the following scopes: 
+- Account
+- Organization 
+- Project
 
-In Harness, you can specify scopes at three levels:
+This hierarchical structure allows administrators to apply permissions at different levels, making it easy to delegate responsibilities to different teams. Using this structure, Harness provides a granular approach to access control that is flexible, scalable, and easy to manage.
 
-* Account
-* Organization
-* Project
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="account" label="Account" default>
+    The scope of an account is at the highest level, encompassing all the resources within the Harness subscription. It provides a way to manage billing, user authentication, and global settings for all the organizations and projects within the account. Users with the appropriate permissions can manage the account-level settings, including billing, subscription, and SSO configuration.
+    <p/>
+    <h3>When to add users in this scope?</h3>
+    To manage administrative functions or have total access and authority over the whole hierarchy, add them to the account scope.
+    <p/>
+    <h3>When to add resources in this scope?</h3>
+    Add resources to the account scope to allow sharing across the entire hierarchy.
+  </TabItem>
+
+  <TabItem value="org" label="Organization">
+  The scope of an organization is used to group related projects, resources, and users within a specific domain or business unit. It provides a way to manage resources and permissions specific to a particular organization. Users with the appropriate permissions can manage organization-level settings, including the creation of projects and user groups, and assigning access policies to those user groups.
+   <p/>
+   <h3>When to add users in this scope?</h3>
+   To have visibility and control over all the projects within this org, add users to the org scope.
+   <p/>
+   <h3>When to add resources in this scope?</h3>
+   Add resources to the org scope to allow sharing across projects within this org while isolating from other organizations.
+  </TabItem>
+
+  <TabItem value="project" label="Project">
+  The scope of a project is used to group related resources, such as applications, pipelines, and environments. It provides a way to manage resources and permissions specific to a particular project. Users with the appropriate permissions can manage project-level settings, including the creation of pipelines, environments, and infrastructure definitions.
+  <p/>
+   <h3>When to add users in this scope?</h3>
+   Add resources to the org scope to allow sharing across projects within this org while isolating from other organizations.
+   <p/>
+   <h3>When to add resources in this scope?</h3>
+   Add resources to the project scope to provide total control to the project teams.
+  </TabItem>
+</Tabs>
+```
+
 
 Scopes are structured in a parent-child relationship. You can assign roles at any of these levels of scope.
 
+### Visual summary of scopes in a hierarchy
+
 ![](./static/rbac-in-harness-02.png)
-The following table shows what it means to add users and resources at different scopes or hierarchies:
-
-
-
-|  |  |  |
-| --- | --- | --- |
-| **Scope** | **When to add users?** | **When to add resources?** |
-| **Account** | To manage administrative functions or have total access and authority over the whole hierarchy, add them to the account scope. | Add resources to the account scope to allow sharing across the entire hierarchy. |
-| **Organization** | To have visibility and control over all the projects within this org, add users to the org scope. | Add resources to the org scope to allow sharing across projects within this org while isolating from other organizations. |
-| **Project** | To manage or contribute to this project, add users to the project scope. | Add resources to the project scope to provide total control to the project teams. |
 
 To know more about organizations and projects, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
