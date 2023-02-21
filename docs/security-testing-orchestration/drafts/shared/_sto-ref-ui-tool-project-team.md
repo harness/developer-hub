@@ -1,2 +1,1 @@
-#### Team Name (`product_team_name`)
 The product team name. In Checkmarx, for example, supports team names in the format `/<server-name>/<team-name>` such as `/server1.myorg.org/devOpsEast`.

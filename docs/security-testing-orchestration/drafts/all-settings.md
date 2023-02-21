@@ -1,4 +1,10 @@
-# ALL SETTINGS V2
+---
+title: STO Settings Reference
+description: All the available settings to configure individual scans.
+sidebar_position: hidden
+---
+
+# ALL SETTINGS
 
 You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest results from $PRODUCT ] into your pipelines. This topics describes the required and optional settings for setting up a $PRODUCT scan. 
 
@@ -8,12 +14,12 @@ You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners,
 ## Scan settings
 
 <details>
-    <summary>YAML keys</summary>
+    <summary>YAML keys to use in Security step</summary>
 <table>
     <tr>
         <th> Setting </th>
-        <th> CI step key </th>
-        <th> SecurityTests step key</th>
+        <th> CI Build stage </th>
+        <th> Security Tests stage</th>
     </tr>
     <tr>
         <td><a href="#scan-mode">Scan Mode</a></td> 
@@ -146,7 +152,7 @@ import StoSettingTargetWorkspace from './shared/_sto-ref-ui-target-workspace.md'
 ## Ingestion settings
 
 <details>
-    <summary>YAML keys</summary>
+    <summary>YAML keys to use in Security step</summary>
 <table>
     <tr>
         <th> Setting </th>
@@ -302,7 +308,7 @@ import StoSettingImageRegion from './shared/_sto-ref-ui-image-region.md';
 
 ## Authentication Settings
 <details>
-    <summary>YAML keys</summary> 
+    <summary>YAML keys to use in Security step</summary> 
 <table>
     <tr>
         <th> Setting </th>
@@ -412,7 +418,7 @@ import StoSettingProductSSL from './shared/_sto-ref-ui-auth-ssl.md';
 ## Tool Settings
 
 <details>
-    <summary>YAML keys</summary> 
+    <summary>YAML keys to use in Security step</summary> 
 
 <table>
     <tr>
@@ -652,7 +658,7 @@ import StoSettingToolLookupType from './shared/_sto-ref-ui-tool-prod-lookup-type
 ## Instance Settings
 
 <details>
-    <summary>YAML keys</summary> 
+    <summary>YAML keys to use in Security step</summary> 
 
 <table>
     <tr>
@@ -720,7 +726,7 @@ import StoSettingInstancePort from './shared/_sto-ref-ui-instance-port.md';
 <!-- ============================================================================= -->
 <a name="instance-path"></a>
 
-### Path (`securityStepInstancePath`)
+### Path
 
 ```mdx-code-block
 import StoSettingInstancePath from './shared/_sto-ref-ui-instance-path.md';
@@ -731,10 +737,10 @@ import StoSettingInstancePath from './shared/_sto-ref-ui-instance-path.md';
 
 <!-- ============================================================================= -->
 
-## Logging, CLI Arguments, and Fail on Severity
+## Logging, CLI Flags, and Fail on Severity
 
 <details>
-    <summary>YAML keys</summary> 
+    <summary>YAML keys to use in Security step</summary> 
 <table>
     <tr>
         <th> Setting </th>

@@ -3,7 +3,3 @@ The URL of the artifact repository that contains the image to scan. Examples:
 * `app.harness.io/registry`
 * `us-east1-docker.pkg.dev`
 * `us.gcr.io`
-
-| CI stage YAML key | SecurityTests stage YAML key |
-| ------------ | ----------------------- |
-| `container_domain` | `domain` |
