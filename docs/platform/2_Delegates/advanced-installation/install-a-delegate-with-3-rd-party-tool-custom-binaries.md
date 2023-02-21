@@ -12,7 +12,8 @@ Harness delegates include binaries for the third-party SDKs that are required fo
 
 Harness includes multiple binary versions to support customers using code that requires versions other than the latest.
 
-For a list of the SDK versions that are certified for different types of deployments, see [Delegate-required SDKs](/docs/2_Delegates/delegate-reference/delegate-required-sdks.md).
+For a list of the SDK versions that are certified for different types of deployments, see Delegate-required SDKs.
+
 
 ##### Problem
 
@@ -30,7 +31,7 @@ This topic explains how to use the No Tools delegate image and install specific 
 
 ##### Required SDKs for Harness
 
-If you use the No Tools Image, you must install certain SDKs so that Harness can perform its tasks. These SDKs are covered in this topic and listed below in [Table: Certified SDK Versions for Deployment Types](#table_certified_sdk_versions_for_deployment_types).
+If you use the No Tools Image, you must install certain SDKs so that Harness can perform its tasks. 
 
 ### Step 1: Edit delegate YAML
 
@@ -47,7 +48,7 @@ These steps are below.
 
 In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to download the certified SDK versions required by Harness.
 
-The SDKs you need to add depend on what type of deployment you are doing with Harness. For a list of the SDK versions that are certified for different types of deployments, see [Delegate-required SDKs](/docs/2_Delegates/delegate-reference/delegate-required-sdks.md).
+The SDKs you need to add depend on what type of deployment you are doing with Harness. For a list of the SDK versions that are certified for different types of deployments, see Delegate-required SDKs.
 
 For more information on how to use the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
