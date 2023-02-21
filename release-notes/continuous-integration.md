@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-02-15T10:00
+date: 2023-02-23T10:00
 sidebar_position: 3
 ---
 
@@ -12,6 +12,23 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 23, 2023, version 785xx
+
+### What's new
+
+In addition to fixed values and runtime inputs, you can now use [expressions](../docs/platform/20_References/runtime-inputs.md#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+
+![The CI pipeline codebase configuration settings window](static/ci-pipeline-codebase-reponame-exp.png)
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+Modifying a step template's **Step Parameters** no longer removes failure strategies from the template's **Advanced** settings. (CI-6801, ZD-39108)
+<!-- Alternate longer version: When you edit a step template that includes a failure strategy, modifying the template's **Step Parameters** no longer removes the **Failure Strategy** configuration from the template's **Advanced** settings. -->
 
 ## February 15, 2023, version 78421
 
