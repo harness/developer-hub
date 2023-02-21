@@ -486,11 +486,9 @@ This functionality requires the Feature Flag `SORT_ARTIFACTS_IN_UPDATED_ORDER`.
 
 ### September 7, 2022, version 76619
 
-#### Enhancements for Harness Platform
+#### Enhancements for CD
 
-* You can exclude applications when assigning permissions to User Groups in Harness. (PL-26819)  
-See [Exclude Applications](../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
-* The support for CyberArk secret manager is now deprecated. (PL-25423)
+* Nexus RAW Repository type support (CDS-38260, ZD-20638, ZD-30449, ZD-33630). You can now add artifacts from Nexus3 raw repository formats in Harness CG.
 
 #### Fixed Issues for CD
 
@@ -499,6 +497,11 @@ See [Exclude Applications](../firstgen-platform/security/access-management-howto
 * Terraform plan should be encrypted and not be visible in the UI (CDS-41149, ZD-32913). When the feature flag `OPTIMIZED_TF_PLAN` is enabled, the shell script step will not fail for $(terrformPlan.jsonFilePath()) expression and the value of this expression will be null.
 * Fixed the display of an error message in the UI. The error message was not properly displayed when a pipeline selector was added using invalid characters. (DEL-4755)
 
+#### Enhancements for Harness Platform
+
+* You can exclude applications when assigning permissions to User Groups in Harness. (PL-26819)  
+See [Exclude Applications](../firstgen-platform/security/access-management-howtos/users-and-permissions.md).
+* The support for CyberArk secret manager is now deprecated. (PL-25423)
 
 ### August 31, 2022, version 76518
 
