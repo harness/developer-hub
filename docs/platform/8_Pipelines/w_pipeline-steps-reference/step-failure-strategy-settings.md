@@ -42,7 +42,7 @@ The scope of a failure strategy is confined to where it is set.
 
 For example, a failure strategy set on a step doesn't impact the failure strategy set on a stage. Likewise, the failure strategy set at the stage doesn't override any failure strategies on its steps.
 
-### Rollback stage only
+### Rollback stage
 
 Both step and stage failure strategies include the **Rollback Stage** action option. There is no rollback step option.
 
@@ -73,11 +73,11 @@ Using these settings together in multiple stages require some considerations.
 
 For example, you have a pipeline with two stages: **stage 1** followed by **stage 2**. 
 
-Stage 2's **Conditional Execution** is set to **Execute this step only if prior stage or step failed**. Stage 1's **Failure Strategy** is set to **Rollback Stage on All Errors**.
+The **Conditional Execution** of stage 2 is set to **Execute this step only if prior stage or step failed**. The **Failure Strategy** of stage 1 is set to **Rollback Stage on All Errors**.
 
-If stage 1 has any error, it is rolled back. It is not considered a failure. Hence, stage 2's **Conditional Execution** is not executed.
+If stage 1 has any error, it is rolled back. It is not considered a failure. Hence, the **Conditional Execution** of stage 2 is not executed.
 
-In order to execute stage 2, you can set the stage 1 **Failure Strategy** to **Ignore Failure**. In this case, rollback will not occur, and stage 2's **Conditional Execution** is executed.
+To execute stage 2, you can set the stage 1 **Failure Strategy** to **Ignore Failure**. In this case, rollback will not occur, and the **Conditional Execution** of stage 2 is executed.
 
 In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section.
 
@@ -123,7 +123,7 @@ Here is what will happen:
 
 If there is a clash between selected errors in strategies on different levels, the step-level strategy is used and the stage-level strategy is ignored.
 
-### Related reference material
+### Reference material
 
 * [Stage and Step Execution Condition Settings](step-skip-condition-settings.md)
 
