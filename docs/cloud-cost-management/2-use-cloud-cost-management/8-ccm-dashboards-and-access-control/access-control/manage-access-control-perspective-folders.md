@@ -42,11 +42,17 @@ The following steps illustrate how to restrict access to a Resource Group:
 11. Add the selected folders and save the resource group settings.
 12. You need to bind the **Role** with the **Resource Group**. Go to the **Users** tab on the **Access Control** page.
 13. Select the user you want to restrict access to.
-14. Click **Manage Roles**.
-15. Select the **Role** and **Resource Group** in the **Manage Role Bindings **window.
-16. Click **Apply**. 
+14. Click **Manage Roles**. 
+15. Click **Add** in the **Manage Role Bindings** window.
+16. Select the **Role** and the newly created **Resource Group** to restrict access to folders.
+17. Select another **Role** and **Resource Group** to provide access to all other resources.
+18. Click **Apply**. 
     
       ![](./static/manage-role-bindings.png)
 
 
-In Harness, the **Perspectives** page displays only the folders to which the user has access. The user can create Budgets for Perspectives only in the folders that the user can access. A user with restrictions to folders does not have permission to create new folders.
+In Harness, the **Perspectives** page shows only the folders that the user has been granted access to. This means that the user will not be able to see or interact with any folders that they do not have permission to access.
+
+When it comes to creating Budgets for Perspectives, a user can only do so within the folders that they have been granted access to.
+
+A user with restrictions to folders does not have permission to create new folders. This means that the user will only be able to work within the existing folder structure that has been set up for them by an administrator.
