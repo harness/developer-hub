@@ -88,8 +88,6 @@ You registered delegate appears in the delegate list.
 
 Note the **Connected** status. If there is a connectivity error, the status is **Not Connected**. If there's an error, ensure the Docker host can connect to `https://app.harness.io`.
 
-For a list of the environment variables you can use with the Docker delegate, see [Docker delegate environment variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables).
-
 ### See also
 
 * [Automate delegate installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
