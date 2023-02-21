@@ -43,25 +43,25 @@ You can install a delegate from the **New Delegate** installation page.
 In addition to providing basic information about installed delegates, the **Delegates** page gives you access to the delegate installer.
 
 ```mdx-code-block
-<img src={install_four} width="600" />
+<img src={install_four} width="600"  border="1" />
 ```
 
 To install a delegate, click **+ New Delegate**.
 
 ```mdx-code-block
-<img src={install_five} width="200" />
+<img src={install_five} width="200" border="1"/>
 ```
 
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
 
 ```mdx-code-block
-<img src={install_twoseven} width="800" />
+<img src={install_twoseven} width="800"  border="1" />
 ```
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
 
 ```mdx-code-block
-<img src={install_seven} width="350" />
+<img src={install_seven} width="350"  border="1" />
 ```
 
 Otherwise, continue with the following steps.
@@ -71,7 +71,7 @@ Otherwise, continue with the following steps.
 Select your target environment: **Kubernetes** or **Docker**.
 
 ```mdx-code-block
-<img src={install_eight} width="350" />
+<img src={install_eight} width="350"  border="1" />
 ```
 
 ## Kubernetes environment
