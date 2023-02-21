@@ -4,6 +4,11 @@ You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest res
 
 You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
 
+
+## Scan settings
+
+<details>
+    <summary>YAML keys</summary>
 <table>
     <tr>
         <th> Setting </th>
@@ -16,61 +21,15 @@ You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners,
         <td><code>mode</code></td>
     </tr>
     <tr>
-        <td><a href="#scan-configuration">Scan Configuration</a></td> 
+        <td><a href="#scan-config">Scan Configuration</a></td> 
         <td><code>product_config_name</code></td>
         <td><code>config</code></td>
     </tr>
-    <tr>
-        <td><a href="#type">Type</a></td> 
-        <td><code>scan_type</code></td>
-        <td><code>type</code></td>
-    </tr>
-    <tr>
-        <td><a href="#name">Name</a></td> 
-        <td><code>product_access_id</code></td>
-        <td><code>name</code></td>
-    </tr>
-    <tr>
-        <td><a href="#variant">Variant</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>variant</code></td>
-    </tr>
-    <tr>
-        <td><a href="#workspace">Workspace</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>workspace</code></td>
-    </tr>
-    <tr>
-        <td><a href="#file">File</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>file</code></td>
-    </tr>
-    <tr>
-        <td><a href="#file">Type</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>type</code></td>
-    </tr>
-    <tr>
-        <td><a href="#file">File</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>file</code></td>
-    </tr>
-    <tr>
-        <td><a href="#file">File</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>file</code></td>
-    </tr>
-    <tr>
-        <td><a href="#file">File</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>file</code></td>
-    </tr>
-    <tr>
-        <td><a href="#file">File</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>file</code></td>
-    </tr>
 </table>
+</details>
+
+<!-- ============================================================================= -->
+<a name="scan-mode"></a>
 
 ### Scan Mode
 
@@ -80,12 +39,14 @@ import StoSettingScanModeOrch from './shared/_sto-ref-ui-scan-mode-00-orchestrat
 import StoSettingScanModeData from './shared/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
-<a name="scan-mode"></a>
+
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
+<!-- ============================================================================= -->
+<a name="scan-config"></a>
 
 ### Scan Configuration
 
@@ -94,6 +55,43 @@ import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-nam
 ```
 
 <StoSettingProductConfigName />
+
+## Target settings
+
+<details>
+    <summary>YAML keys</summary>
+<table>
+    <tr>
+        <th> Setting </th>
+        <th> CI step key </th>
+        <th> SecurityTests step key</th>
+    </tr>
+    <tr>
+        <td><a href="#target-type">Type</a></td> 
+        <td><code>policy_type</code></td>
+        <td><code>type</code></td>
+    </tr>
+     <tr>
+        <td><a href="#target-name">Name</a></td> 
+        <td><code>product_access_id</code></td>
+        <td><code>name</code></td>
+    </tr>
+    <tr>
+        <td><a href="#target-variant">Variant</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>variant</code></td>
+    </tr>
+    <tr>
+        <td><a href="#target-workspace">Workspace</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>type</code></td>
+    </tr>
+</table>
+</details>
+
+
+<!-- ============================================================================= -->
+<a name="target-type"></a>
 
 ### Type
 
@@ -111,15 +109,19 @@ import StoSettingScanTypeConfig  from './shared/_sto-ref-ui-scan-type-03-config.
 <StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
 
+<!-- ============================================================================= -->
+<a name="target-name"></a>
+
 ### Name 
 
 ```mdx-code-block
 import StoSettingProductID from './shared/_sto-ref-ui-prod-id.md';
 ```
 
-<a name="product-access-id"></a>
 <StoSettingProductID />
 
+<!-- ============================================================================= -->
+<a name="target-variant"></a>
 
 ### Variant
 
@@ -129,6 +131,8 @@ import StoSettingTargetVariant from './shared/_sto-ref-ui-target-variant.md';
 
 <StoSettingTargetVariant  />
 
+<!-- ============================================================================= -->
+<a name="target-workspace"></a>
 
 ### Workspace
 
@@ -139,9 +143,26 @@ import StoSettingTargetWorkspace from './shared/_sto-ref-ui-target-workspace.md'
 <StoSettingTargetWorkspace  />
 
 
-
 ## Ingestion settings
 
+<details>
+    <summary>YAML keys</summary>
+<table>
+    <tr>
+        <th> Setting </th>
+        <th> CI step key </th>
+        <th> SecurityTests step key</th>
+    </tr>
+    <tr>
+        <td><a href="#ingestion-file">File</a></td> 
+        <td><code></code>TBD</td>
+        <td><code>file</code></td>
+    </tr>
+</table>
+</details>
+
+<!-- ============================================================================= -->
+<a name="ingestion-file"></a>
 
 ### File
 
@@ -154,6 +175,56 @@ import StoSettingIngestionFile from './shared/_sto-ref-ui-ingestion-file.md';
 
 ## Container Image settings
 
+<details>
+    <summary>YAML keys</summary>
+<table>
+    <tr>
+        <th> Setting </th>
+        <th> CI step key </th>
+        <th> SecurityTests step key</th>
+    </tr>
+    <tr>
+        <td><a href="#container-type"></a>Type</td> 
+        <td><code>container_type</code></td>
+        <td><code>type</code></td>
+    </tr>
+     <tr>
+        <td><a href="#container-name">Name</a></td> 
+        <td><code>container_project</code></td>
+        <td><code>name</code></td>
+    </tr>
+    <tr>
+        <td><a href="#container-domain">Domain</a></td> 
+        <td><code>container_domain</code></td>
+        <td><code>domain</code></td>
+    </tr>
+    <tr>
+        <td><a href="#container-tag">Tag</a></td> 
+        <td><code>container_tag</code></td>
+        <td><code>access_id</code></td>
+    </tr>
+     <tr>
+        <td><a href="#container-access-id">Access Id</a></td> 
+        <td><code>container_access_id</code></td>
+        <td><code>name</code></td>
+    </tr>
+    <tr>
+        <td><a href="#container-access-token">Access Token</a></td> 
+        <td><code>container_access_token</code></td>
+        <td><code>access_token</code></td>
+    </tr>
+    <tr>
+        <td><a href="#container-region">Region</a></td> 
+        <td><code>container_region</code></td>
+        <td><code>region</code></td>
+    </tr>
+</table>
+
+</details>
+
+<!-- ============================================================================= -->
+<a name="container-type"></a>
+
 ### Type  
 
 ```mdx-code-block
@@ -163,6 +234,7 @@ import StoSettingImageType from './shared/_sto-ref-ui-image-type.md';
 <StoSettingImageType />
 
 <!-- ============================================================================= -->
+<a name="container-name"></a>
 
 ### Name
 
@@ -173,6 +245,7 @@ import StoSettingImageName from './shared/_sto-ref-ui-image-name.md';
 <StoSettingImageName />
 
 <!-- ============================================================================= -->
+<a name="container-domain"></a>
 
 ### Domain
 
@@ -184,6 +257,7 @@ import StoSettingImageDomain from './shared/_sto-ref-ui-image-domain.md';
 <StoSettingImageDomain />
 
 <!-- ============================================================================= -->
+<a name="container-tag"></a>
 
 ### Tag
 
@@ -194,6 +268,7 @@ import StoSettingImageTag from './shared/_sto-ref-ui-image-tag.md';
 <StoSettingImageTag />
 
 <!-- ============================================================================= -->
+<a name="container-access-id"></a>
 
 ### Access Id
 
@@ -201,10 +276,10 @@ import StoSettingImageTag from './shared/_sto-ref-ui-image-tag.md';
 import StoSettingImageAccessID from './shared/_sto-ref-ui-image-access-id.md';
 ```
 
-<a name="container-access-id"></a>
 <StoSettingImageAccessID />
 
 <!-- ============================================================================= -->
+<a name="container-access-token"></a>
 
 ### Access Token 
 
@@ -212,10 +287,10 @@ import StoSettingImageAccessID from './shared/_sto-ref-ui-image-access-id.md';
 import StoSettingImageAccessToken from './shared/_sto-ref-ui-image-access-token.md';
 ```
 
-<a name="container-access-token"></a>
 <StoSettingImageAccessToken />
 
 <!-- ============================================================================= -->
+<a name="container-access-token"></a>
 
 ### Region  
 
@@ -226,11 +301,51 @@ import StoSettingImageRegion from './shared/_sto-ref-ui-image-region.md';
 <StoSettingImageRegion />
 
 ## Authentication Settings
+<details>
+    <summary>YAML keys</summary> 
+<table>
+    <tr>
+        <th> Setting </th>
+        <th> CI step key </th>
+        <th> SecurityTests step key</th>
+    </tr>
+    <tr>
+        <td><a href="#auth-access-id"></a>Access Id</td> 
+        <td><code>product_access_id</code></td>
+        <td><code>access_id</code></td>
+    </tr>
+     <tr>
+        <td><a href="#auth-access-token">Access Token</a></td> 
+        <td><code>product_access_token</code></td>
+        <td><code>access_token</code></td>
+    </tr>
+    <tr>
+        <td><a href="#auth-domain">Domain</a></td> 
+        <td><code>product_domain</code></td>
+        <td><code>domain</code></td>
+    </tr>
+    <tr>
+        <td><a href="#auth-access-api-version">API Version</a></td> 
+        <td><code>product_api_version</code></td>
+        <td><code>version</code></td>
+    </tr>
+     <tr>
+        <td><a href="#auth-type">Type</a></td> 
+        <td><code>product_auth_type</code></td>
+        <td><code>type</code></td>
+    </tr>
+    <tr>
+        <td><a href="#auth-enforce-ssl">Enforce SSL</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>ssl</code></td>
+    </tr>
+</table>
+</details>
 
 <!-- ============================================================================= -->
+<a name="auth-access-id"></a>
 
 ### Access ID
-
 
 ```mdx-code-block
 import StoSettingAuthAccessID from './shared/_sto-ref-ui-auth-access-id.md';
@@ -238,147 +353,206 @@ import StoSettingAuthAccessID from './shared/_sto-ref-ui-auth-access-id.md';
 
 <StoSettingAuthAccessID />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="auth-access-token"></a>
 
-### Access Token (`securityStepAuthAccessToken`) 
-
-[`product_access_token`](#product-access-token)
+### Access Token
 
 ```mdx-code-block
 import StoSettingAuthAccessToken from './shared/_sto-ref-ui-auth-access-token.md';
 ```
 
-<a name="product-access-token"></a>
+
 <StoSettingAuthAccessToken />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="auth-domain"></a>
 
-### Domain (`securityStepAuthDomain`) 
-
-[`product_domain`](#product-domain)
+### Domain 
 
 ```mdx-code-block
 import StoSettingAuthDomain from './shared/_sto-ref-ui-auth-domain.md';
 ```
 
-<a name="product-domain"></a>
 <StoSettingAuthDomain />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="auth-access-api-version"></a>
 
-### API Version (`securityStepAuthVersion`) 
-
-[`product_api_version`](#product-api-version)
+### API Version
 
 ```mdx-code-block
 import StoSettingApiVersion from './shared/_sto-ref-ui-auth-api-version.md';
 ```
 
-<a name="product-domain"></a>
 <StoSettingApiVersion />
 
-### Type (`securityStepAuthType`) 
+<!-- ============================================================================= -->
+<a name="auth-type"></a>
 
-[`product_auth_type`](#product-auth-type)
+### Type
 
 ```mdx-code-block
 import StoSettingAuthType from './shared/_sto-ref-ui-auth-type.md';
 ```
 
-<a name="product-auth-type"></a>
 <StoSettingAuthType />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="auth-enforce-ssl"></a>
 
-### Enforce SSL (`securityStepAuthSSL`) 
-
-*** TBD what does this map to on [this page](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)? **
-
-[`product_enforce_ssl_TBD`](#product-enforce-ssl-TBD)
+### Enforce SSL
 
 ```mdx-code-block
 import StoSettingProductSSL from './shared/_sto-ref-ui-auth-ssl.md';
 ```
 
-<a name="pproduct-enforce-ssl-TBD"></a>
 <StoSettingProductSSL />
 
-## Tool
+## Tool Settings
 
+<details>
+    <summary>YAML keys</summary> 
 
-** --------------------------------------------------------------------------------------- **
+<table>
+    <tr>
+        <th> Setting </th>
+        <th> CI step key </th>
+        <th> SecurityTests step key</th>
+    </tr>
+    <tr>
+        <td><a href="#tool-include">Include</a></td> 
+        <td><code>product_include</code></td>
+        <td><code>include</code></td>
+    </tr>
+     <tr>
+        <td><a href="#tool-exclude">Exclude</a></td> 
+        <td><code>product_exclude</code></td>
+        <td><code>exclude</code></td>
+    </tr>
+    <tr>
+        <td><a href="#tool-context">Context</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>context</code></td>
+    </tr>
+    <tr>
+        <td><a href="#tool-context-image">Context (images)</a></td> 
+        <td><code>product_image_name</code></td>
+        <td><code>image_name</code></td>
+    </tr>
+     <tr>
+        <td><a href="#tool-project-name">Project Name</a></td> 
+        <td><code>product_project_name</code></td>
+        <td><code>project_name</code></td>
+    </tr>
+    <tr>
+        <td><a href="#tool-project-version">Project Version</a></td> 
+        <td><code>product_project_version</code></td>
+        <td><code>project_version</code></td>
+    </tr>
+    <tr>
+        <td><a href="#tool-team-name">Team Name</a></td> 
+        <td><code>product_team_name</code></td>
+        <td><code>team_name</code></td>
+    </tr>
+     <tr>
+        <td><a href="#tool-port">Port</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>port</code></td>
+    </tr>
+    <tr>
+        <td><a href="#tool-java-libraries">Java Libraries</a></td> 
+        <td><code>product_java_libraries</code></td>
+        <td><code>libraries</code></td>
+    </tr>
+    <tr>
+        <td><a href="#tool-java-binaries">Java Binaries</a></td> 
+        <td><code>product_java_binaries</code></td>
+        <td><code>binaries</code></td>
+    </tr>
+     <tr>
+        <td><a href="#tool-product-name">Product Token</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>product_token</code></td>
+    </tr>
+    <tr>
+        <td><a href="#tool-product-name">Project Name</a></td> 
+        <td><code>product_access_id</code></td>
+        <td><code>product_name</code></td>
+    </tr>
+     <tr>
+        <td><a href="#tool-project-token">Project Token</a></td> 
+        <td><code>TBD</code></td>
+        <td><code>project_token</code></td>
+    </tr>
+     <tr>
+        <td><a href="#tool-product-lookup">Product Lookup</a></td> 
+        <td><code>product_lookup_type</code></td>
+        <td><code>product-lookup</code></td>
+    </tr>
+</table>
 
-### Include (`securityStepToolInclude`) 
+</details>
 
-[`product_include`](#product-include)
+<!-- ============================================================================= -->
+<a name="tool-include"></a>	
+
+### Include 
 
 ```mdx-code-block
 import StoSettingToolInclude from './shared/_sto-ref-ui-tool-include.md';
 ```
-<a name="product-include"></a>
+
 <StoSettingToolInclude />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-exclude"></a>	
 
-### Exclude (`securityStepToolExclude`) 
-
-[`product_exclude`](#product-exclude)
+### Exclude
 
 ```mdx-code-block
 import StoSettingToolExclude from './shared/_sto-ref-ui-tool-exclude.md';
 ```
 
-<a name="product-exclude"></a>
 <StoSettingToolExclude />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-context"></a>	
 
-### Context Name (`securityStepToolContext`) 
-
-*** TBD what does this map to on [this page](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)? **
-
-[`product_context_TBD`](#product-context)
+### Context Name
 
 ```mdx-code-block
 import StoSettingToolContext from './shared/_sto-ref-ui-tool-context.md';
 ```
 
-<a name="product-context"></a>
 <StoSettingToolContext />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-context-image"></a>
 
-### Context Name (`securityStepToolImageName`) 
-
-*** TBD what does this map to on [this page](https://developer.harness.io/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)? **
-
-[`product_image_name_TBD`](#product-image-name)
+### Context Name (images) 
 
 ```mdx-code-block
 import StoSettingToolImageName from './shared/_sto-ref-ui-tool-context-image.md';
 ```
 
-<a name="product-image-name"></a>
 <StoSettingToolImageName />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-project-name"></a>
 
-### Project Name (`securityStepToolProjectName`) 
-
-[`product_project_name`](#product-project-name)
+### Project Name
 
 ```mdx-code-block
 import StoSettingToolProjectName from './shared/_sto-ref-ui-tool-project-name.md';
 ```
 
-<a name="product-project-name"></a>
 <StoSettingToolProjectName />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-project-version"></a>
 
-### Project Version (`securityStepToolProjectVersion`) 
-
-[`product_project_version`](#product-project-version)
+### Project Version
 
 ```mdx-code-block
 import StoSettingToolProjectVersion from './shared/_sto-ref-ui-tool-project-version.md';
@@ -387,207 +561,237 @@ import StoSettingToolProjectVersion from './shared/_sto-ref-ui-tool-project-vers
 <a name="product-project-version"></a>
 <StoSettingToolProjectVersion />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-team-name"></a>
 
-### Team Name (`securityStepToolTeamName`) 
-
-[`product_team_name`](#product-team-name)
+### Team Name
 
 ```mdx-code-block
 import StoSettingToolProductTeamName from './shared/_sto-ref-ui-tool-project-team.md';
 ```
 
-<a name="product-team-name"></a>
 <StoSettingToolProductTeamName  />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-port"></a>
 
-### Port (`securityStepToolPort`) 
+### Port  
 
-[`product_port_TBD`](#product-port-TBD)
 
 ```mdx-code-block
 import StoSettingToolPort from './shared/_sto-ref-ui-tool-port.md';
 ```
 
-<a name="product-port-TBD"></a>
 <StoSettingToolPort  />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-java-libraries"></a>
 
-### Java Libraries (`securityStepToolJavaLibraries`) 
-
-[`product_java_libraries`](#product-java-libraries)
+### Java Libraries
 
 ```mdx-code-block
 import StoSettingTooJavaLibraries from './shared/_sto-ref-ui-tool-java-libraries.md';
 ```
 
-<a name="product-java-libraries"></a>
 <StoSettingTooJavaLibraries  />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-java-binaries"></a>
 
-### Java Binaries (`securityStepToolJavaBinaries`) 
+### Java Binaries
 
-[`product_java_binaries`](#product-java-binaries)
 
 ```mdx-code-block
 import StoSettingToolJavaBinaries from './shared/_sto-ref-ui-tool-java-binaries.md';
 ```
-
-<a name="product-java-binaries"></a>
 <StoSettingToolJavaBinaries  />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-product-token"></a>
 
-### Product Token (`securityStepToolProductToken`) 
+### Product Token  
 
-[`product_access_token`](#product-access-token)
 
 ```mdx-code-block
 import StoSettingToolProductToken from './shared/_sto-ref-ui-tool-prod-token.md';
 ```
 
-<a name="product-access-token"></a>
 <StoSettingToolProductToken  />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-product-name"></a>
 
-### Name (`securityStepToolProductName`) 
-
-[`product_access_id`](#product-access-id)
+### Name 
 
 ```mdx-code-block
 import StoSettingToolProductAccessID from './shared/_sto-ref-ui-tool-prod-name.md';
 ```
-
-<a name="product-access-id"></a>
 <StoSettingToolProductAccessID  />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-project-token"></a>
 
-### Project Token (`securityStepToolProjectToken`) 
-
-[`product_access_token`](#product-access-token)
+### Project Token
 
 ```mdx-code-block
 import toSettingToolProductToken from './shared/_sto-ref-ui-tool-prod-token.md';
 ```
 
-<a name="product-access-token"></a>
 <StoSettingToolProductToken  />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="tool-product-lookup-type"></a>
 
-### Lookup Type (`toolProductLookupType`) 
-
-[`product_lookup_type-TBD`](#product-lookup-type-TBD)
+### Lookup Type
 
 ```mdx-code-block
 import StoSettingToolLookupType from './shared/_sto-ref-ui-tool-prod-lookup-type.md';
 ```
-
-<a name="product-lookup-type-TBD"></a>
 <StoSettingToolLookupType  />
 
-## Instance 
+## Instance Settings
 
-** --------------------------------------------------------------------------------------- **
+<details>
+    <summary>YAML keys</summary> 
 
-### Domain (`securityStepInstanceDomain`)
+<table>
+    <tr>
+        <th> Setting </th>
+        <th> CI step key </th>
+        <th> SecurityTests step key</th>
+    </tr>
+    <tr>
+        <td><a href="#instance-domain"></a>Domain</td> 
+        <td><code>instance_domain</code></td>
+        <td><code>domain</code></td>
+    </tr>
+     <tr>
+        <td><a href="#instance-protocol">Protocol</a></td> 
+        <td><code>instance_protocol</code></td>
+        <td><code>protocol</code></td>
+    </tr>
+    <tr>
+        <td><a href="#instance-port">Port</a></td> 
+        <td><code>instance_port</code></td>
+        <td><code>port</code></td>
+    </tr>
+    <tr>
+        <td><a href="#instance-path">Path</a></td> 
+        <td><code>instance_path</code></td>
+        <td><code>path</code></td>
+    </tr>
+</table>
 
-[`instance_domain`](#instance-domain)
+</details>
+
+
+<!-- ============================================================================= -->
+<a name="instance-domain"></a>
+
+### Domain
 
 ```mdx-code-block
 import StoSettingInstanceDomain from './shared/_sto-ref-ui-instance-domain.md';
 ```
-
-<a name="#instance-domain"></a>
 <StoSettingInstanceDomain />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="instance-protocol"></a>
 
-### Protocol (`securityStepInstanceProtocol`)
-
-[`instance_protocol`](#instance-protocol)
+### Protocol
 
 ```mdx-code-block
 import StoSettingInstanceProtocol from './shared/_sto-ref-ui-instance-protocol.md';
 ```
 
-<a name="#instance-protocol"></a>
 <StoSettingInstanceProtocol />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="instance-port"></a>
 
-### Port (`securityStepInstancePort`)
-
-[`instance_port`](#instance-port)
+### Port
 
 ```mdx-code-block
 import StoSettingInstancePort from './shared/_sto-ref-ui-instance-port.md';
 ```
 
-<a name="#instance-port"></a>
 <StoSettingInstancePort />
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="instance-path"></a>
 
 ### Path (`securityStepInstancePath`)
-
-[`instance_path`](#instance-path)
 
 ```mdx-code-block
 import StoSettingInstancePath from './shared/_sto-ref-ui-instance-path.md';
 ```
 
-<a name="#instance-path"></a>
 <StoSettingInstancePath />
 
-## Log 
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
 
-### Log Level (`securityStepLogLevel`)
+## Logging, CLI Arguments, and Fail on Severity
 
-[`log_level_TBD`](#log-level-TBD)
+<details>
+    <summary>YAML keys</summary> 
+<table>
+    <tr>
+        <th> Setting </th>
+        <th> CI step key </th>
+        <th> SecurityTests step key</th>
+    </tr>
+    <tr>
+        <td><a href="#log-level"></a>Log Level</td> 
+        <td><code>TBD</code></td>
+        <td><code>level</code></td>
+    </tr>
+    <tr>
+        <td><a href="#cli-flags"></a>Additional CLI Flags</td> 
+        <td><code>tool_args</code></td>
+        <td><code>cli</code></td>
+    </tr>
+    <tr>
+        <td><a href="#cli-flags"></a>Fail on Severity</td> 
+        <td><code>fail_on_severity</code></td>
+        <td><code>fail_on_severity</code></td>
+    </tr>
+</table>
+
+</details>
+
+
+<!-- ============================================================================= -->
+<a name="log-level"></a>
+
+### Log Level
 
 ```mdx-code-block
 import StoSettingLogLevel from './shared/_sto-ref-ui-log-level.md';
 ```
 
-<a name="#log-level-TBD"></a>
-<SStoSettingLogLevel />
+<StoSettingLogLevel />
 
-## Args 
 
-** --------------------------------------------------------------------------------------- **
+<!-- ============================================================================= -->
+<a name="cli-flags"></a>
 
-### Additional CLI flags (`securityStepArgsCli`)
-
-[`tool_args`](#tool-args)
+### Additional CLI flags
 
 ```mdx-code-block
-import StoSettingCliFlags from './shared/_sto-ref-ui-log-level.md';
+import StoSettingCliFlags from './shared/_sto-ref-ui-cli-flags.md';
 ```
 
-<a name="#tool-args"></a>
 <StoSettingCliFlags />
 
-## Additional Configuration
+<!-- ============================================================================= -->
+<a name="fail-on-severity"></a>
 
-** --------------------------------------------------------------------------------------- **
-
-### Fail on severity (`failOnSeverity`)
-
-[`fail_on_severity`](#fail-on-severity)
+### Fail on severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/_sto-ref-ui-fail-on-severity.md';
 ```
-
-<a name="#fail-on-severity"></a>
 <StoSettingFailOnSeverity />
 
 

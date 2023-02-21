@@ -1,3 +1,5 @@
 #### Domain (`product_domain`)
 
-The fully-qualified URL to the scanner. 
+| CI stage YAML key | SecurityTests stage YAML key |
+| ------------ | ----------------------- |
+| `product_domain` | `domain` |

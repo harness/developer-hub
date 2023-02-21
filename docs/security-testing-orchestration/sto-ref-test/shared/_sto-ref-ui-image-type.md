@@ -7,3 +7,7 @@ The registry type where the image is stored:
 * **[JFrog Docker Registry](https://aws.amazon.com/ecr/)**
 
 * **Local Image**
+
+| CI stage YAML key | SecurityTests stage YAML key |
+| ------------ | ----------------------- |
+| `container_type` | `type` |
