@@ -1,9 +1,7 @@
 ---
-sidebar_position: 4
-title: Harness Chaos Security
+sidebar_position: 1
+title: Overview
 ---
-# Harness Chaos Security
-
 ## Introduction
 
 Harness provides several controls to ensure safe execution of chaos experiments on your infrastructure. This page explains security considerations and associated features across administrative and runtime environments, including: 
@@ -30,7 +28,7 @@ This group of deployments (known as the execution plane) is referred to as the [
 
 The chaos infrastructure connects to the control plane by making outbound requests over HTTPS (port number 443) to claim and perform chaos tasks. The connections don’t require you to create rules for inbound traffic. A unique ID, named cluster ID, is assigned to the chaos infrastructure. The chaos infrastructure shares a dedicated key, named access-key, with the control plane. Both cluster ID and access key are generated during installation. Every API request made to the control plane includes these identifiers for authentication purposes.
 
-![Overview](../static/overview/overview.png)
+![Overview](../../static/overview/overview.png)
 
 :::note
 Harness can leverage the same cluster (or namespace) to inject chaos into infrastructure targets (such as VMs, cloud resources etc.) within the user environment, provided that the cluster can access them. For more information on Cloud Secrets, refer to the above diagram.
@@ -73,7 +71,7 @@ The foundational elements of the chaos engineering process, chaos infrastructure
 
 Users with administrative privileges on the project can create predefined role(s) pertaining to chaos resource access, that is, Create (Execute) and Edit (Update), View and Delete, and map them to the other invited users or user-groups. 
 
-![User auth and RBAC](../static/overview/user-auth-rbac.png)
+![User auth and RBAC](../../static/overview/user-auth-rbac.png)
 
 ### Secrets management
 
@@ -85,9 +83,9 @@ HCE allows you to add one or more [ChaosHubs](https://developer.harness.io/docs/
 
 The chaos module leverages the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leverages the Harness Secret Manager to store the PAT or SSH keys 
 
-![Control plane secrets](../static/overview/control-plane-secrets.png)
+![Control plane secrets](../../static/overview/control-plane-secrets.png)
 
-![Experiment secrets](../static/overview/experiment-secrets.png)
+![Experiment secrets](../../static/overview/experiment-secrets.png)
 
 
 ### Secrets to access and inject chaos on public and on-prem cloud resources
@@ -104,7 +102,7 @@ The experiment artifact that is stored in a ChaosHub or supplied when you create
 
 Below is a visual representation of how an experiment pod in your chaos infrastructure consumes a secret.
 
-![chaos consuming a secret](../static/overview/functional-diagram.png)
+![chaos consuming a secret](../../static/overview/functional-diagram.png)
 
 [Here](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/ec2-cpu-hog#prerequisites) is an example of AWS access information being fed to the experiment pods through a Kubernetes secret.
 
@@ -112,7 +110,7 @@ Below is a visual representation of how an experiment pod in your chaos infrastr
 
 You can fine-tune permissions to suit specific infrastructures and experiments if you want to reduce the blast radius and impact from a security perspective. This applies to both Kubernetes-based and non-Kubernetes chaos. 
 
-In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](./security/chaos-on-specific-ns.md) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.  
+In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](namespace-considerations.md) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.  
  
 Every fault in the Enterprise ChaosHub publishes the permissions that users need to execute the fault. Users can tune their roles. Also available are common permission templates that work as subsets or supersets for a specific category of experiments. For example, for information about recommended roles for AWS resource faults, go [here](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults). 
 
@@ -121,6 +119,6 @@ Every fault in the Enterprise ChaosHub publishes the permissions that users need
 
 The deployments that comprise the chaos infrastructure and the transient experiment pods launched to inject faults use the [in-cluster configuration](https://kubernetes.io/docs/tasks/run-application/access-api-from-pod/) to make Kubernetes API calls, and thereby auto-mount service token secrets. The execution happens through non-root users with containers running secure base images. 
 
-Some faults (mainly, the pod network and stress faults) necessitate container-runtime—specific operations such as entering the network and pid namespaces. These operations in turn necessitate privilege escalation, manipulating the cgroup, and so on. In these cases, some of the pods are designed to run with privileged containers and root users. These pods also mount the runtime-specific socket files from the underlying host. However, it is important to note that such pods are short-lived (they exist for the duration of chaos) and can be run only if the users equip the serviceaccounts with access to the right security policy. 
+Some faults (mainly, the pod network and stress faults) necessitate container-runtime-specific operations such as entering the network and pid namespaces. These operations in turn necessitate privilege escalation, manipulating the cgroup, and so on. In these cases, some of the pods are designed to run with privileged containers and root users. These pods also mount the runtime-specific socket files from the underlying host. However, it is important to note that such pods are short-lived (they exist for the duration of chaos) and can be run only if the users equip the serviceaccounts with access to the right security policy. 
 
-To enable the execution of such experiments, Harness recommends the security policy templates ([PSP](./security/psp.md), [OpenShift SCC](./security/openshift-scc.md), and [Kyverno](./security/kyverno-policies.md)). 
+To enable the execution of such experiments, Harness recommends the security policy templates ([PSP](../security-templates/psp.md), [OpenShift SCC](../security-templates/openshift-scc.md), and [Kyverno](../security-templates/kyverno-policies.md)). 

@@ -1,24 +1,25 @@
 ---
 title: Kyverno policies
+sidebar_position: 3
 ---
 [Kyverno policies](https://kyverno.io/policies/pod-security/) block the configurations that don't match a policy (enforce mode) or can generate policy violations (audit mode). It scans existing configurations and reports violations in the cluster. 
 HCE recommends using the provided policy configuration to enable the execution of all supported (out-of-the-box) experiments listed in the enterprise ChaosHub. Having said that, this is recommendatory in nature and left to user discretion/choice depending upon experiments desired.  
 
-The details listed here are expected to aid users of Kyverno. If you are using alternate means to enforce runtime security, such as native Kubernetes PSPs (pod security policies), go [here](./psp.md).
+The details listed here are expected to aid users of Kyverno. If you are using alternate means to enforce runtime security, such as native Kubernetes PSPs (pod security policies), go [here](psp.md).
 
 ## Policies in HCE
 
 HCE recommends using the following policies:
 
-1. [Add Capabilities](../../static/overview/manifest/kyverno-policies/allow-capabilities-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts add capabilities except the `NET_ADMIN` and `SYS_ADMIN` for the pods that use runtime API
-2. [Host Namespaces](../../static/overview/manifest/kyverno-policies/allow-host-namespaces-for-litmus-experiments-which-uses-runtime-api.yaml): It validates following host namespaces for the pods that use runtime API.
+1. [Add Capabilities](../../chaos-engineering/static/overview/manifest/kyverno-policies/allow-capabilities-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts add capabilities except the `NET_ADMIN` and `SYS_ADMIN` for the pods that use runtime API
+2. [Host Namespaces](../../chaos-engineering/static/overview/manifest/kyverno-policies/allow-host-namespaces-for-litmus-experiments-which-uses-runtime-api.yaml): It validates following host namespaces for the pods that use runtime API.
     1. HostPID: It allows hostPID. It should be set to `true`.
     2. HostIPC: It restricts the host IPC. It should be set to `false`.
     3. HostNetwork: It restricts the hostNetwork. It should be set to `false`.
-3. [Host Paths](../../static/overview/manifest/kyverno-policies/allow-host-paths-for-litmus-experiments-which-uses-hostPaths.yaml): It restricts hostPath except the `socket-path` and `container-path` host paths for the pods that uses runtime API. It allows hostPaths for service-kill experiments.
-4. [Privilege Escalation](../../static/overview/manifest/kyverno-policies/allow-privilege-escalation-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts privilege escalation except for the pods that use runtime API
-5. [Privilege Container](../../static/overview/manifest/kyverno-policies/allow-privileged-containers-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts privileged containers except for the pods that use runtime API
-6. [User Groups](../../static/overview/manifest/kyverno-policies/allow-user-groups-for-litmus-experiments.yaml): It allows users groups for all the experiment pods
+3. [Host Paths](../../chaos-engineering/static/overview/manifest/kyverno-policies/allow-host-paths-for-litmus-experiments-which-uses-hostPaths.yaml): It restricts hostPath except the `socket-path` and `container-path` host paths for the pods that uses runtime API. It allows hostPaths for service-kill experiments.
+4. [Privilege Escalation](../../chaos-engineering/static/overview/manifest/kyverno-policies/allow-privilege-escalation-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts privilege escalation except for the pods that use runtime API
+5. [Privilege Container](../../chaos-engineering/static/overview/manifest/kyverno-policies/allow-privileged-containers-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts privileged containers except for the pods that use runtime API
+6. [User Groups](../../chaos-engineering/static/overview/manifest/kyverno-policies/allow-user-groups-for-litmus-experiments.yaml): It allows users groups for all the experiment pods
 
 ## Install policies
 
