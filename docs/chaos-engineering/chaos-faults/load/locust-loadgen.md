@@ -61,7 +61,7 @@ data:
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Time taken to inject chaos into the target resource (in seconds). </td>
             <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
@@ -76,7 +76,7 @@ data:
         </tr>
         <tr>
             <td> SPAWN_RATE </td>
-            <td> Rate to spawn users at (users per second).</td>
+            <td> Number of users spawned per second.</td>
             <td> Defaults <code>30</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos#spawn-rate"> spawn rate.</a></td>
         </tr>
         <tr>
@@ -96,7 +96,7 @@ data:
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> Wait period before and after injecting chaos (in seconds). </td>
             <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
@@ -104,9 +104,9 @@ data:
 
 ### Target host
 
-It specifies the value of the target host under chaos. Tune it by using the `HOST` environment variable.
+It specifies the value of the target host. Tune it by using the `HOST` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the target host:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/host.yaml yaml)
 ```yaml
@@ -131,7 +131,7 @@ spec:
 
 It specifies the number of users or workers involved in the load generation. Tune it by using the `USERS` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the number of users:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/users.yaml yaml)
 ```yaml
@@ -156,9 +156,9 @@ spec:
 
 ### Custom load image
 
-It specifies the rate at which users are spawned (users spawned per second). Tune it by using the `LOAD_IMAGE` environment variable.
+It specifies the custom image name of the load generated. Tune it by using the `SPAWN_RATE` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the custom load image:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/spawn-rate.yaml yaml)
 ```yaml
@@ -183,9 +183,9 @@ spec:
 
 ### Spawn rate
 
-It specifies the custom image name of the load generation. Tune it by using the `SPAWN_RATE` environment variable.
+It specifies the rate at which users are spawned per second. Tune it by using the `LOAD_IMAGE` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the spawn rate:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/load-image.yaml yaml)
 ```yaml
