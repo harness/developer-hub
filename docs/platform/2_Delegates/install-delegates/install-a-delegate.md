@@ -19,6 +19,7 @@ import install_onenine from './static/install-a-delegate-19.png'
 import install_twenty from './static/install-a-delegate-20.png'
 import install_twofive from './static/install-a-delegate-25.png'
 import install_twothree from './static/install-a-delegate-23.png'
+import install_twonine from './static/install-a-delegate-29.png'
 
 ```
 
@@ -147,7 +148,16 @@ The delegate installation process ends with delegate registration with Harness M
 <img src={install_onethree} width="400" />
 ```
 
-To verify the delegate, click **Verify**.
+To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
+
+```mdx-code-block
+<img src={install_twonine} width="400" />
+```
+
+After the delegate is registered and initialized, a success message is shown.
+
+Click **Done** to close the installer. 
+
 
 ### Terraform-based install on Kubernetes
 
@@ -193,6 +203,16 @@ The delegate installation process ends in delegate registration with Harness Man
 
 ```mdx-code-block
 <img src={install_onethree} width="600" />
+
+To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
+
+```mdx-code-block
+<img src={install_twonine} width="400" />
+```
+
+After the delegate is registered and initialized, a success message is shown.
+
+Click **Done** to close the installer. 
 ```
 
 ### Kubernetes-install on Kubernetes 
@@ -258,7 +278,16 @@ The delegate installation process ends with delegate registration with Harness M
 <img src={install_onethree} width="500" />
 ```
 
-To verify the delegate, click **Verify**.
+To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
+
+```mdx-code-block
+<img src={install_twonine} width="400" />
+```
+
+After the delegate is registered and initialized, a success message is shown.
+
+Click **Done** to close the installer. 
+
 
 ### Docker environment
 
@@ -315,7 +344,13 @@ The delegate installation process ends with delegate registration with Harness M
 <img src={install_onethree} width="500" />
 ```
 
-To verify the delegate, click **Verify**.
+To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
 
+```mdx-code-block
+<img src={install_twonine} width="400" />
+```
 
+After the delegate is registered and initialized, a success message is shown.
+
+Click **Done** to close the installer. 
 
