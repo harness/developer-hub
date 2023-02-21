@@ -8,99 +8,205 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to add and configure a Harness Kubernetes Service.
+This topic describes how to add and configure a Harness Kubernetes service.
 
-A Kubernetes **Service** represents the app/microservice you are deploying using Harness Pipelines.
+A Kubernetes service represents the microservices and other workloads you want to deploy to the cluster.
 
-Each Stage's **Service Definition** includes the manifests and artifacts for the Service you are deploying in a specific Stage.
+Setting up a Kubernetes service involves the following steps:
 
-Setting up your Kubernetes Service Definition involves the following steps:
+1. Add your manifests.
+2. Add the artifacts you want to deploy.
+3. Add any service variables you want to use in your manifests or pipeline.
 
-* [Step 1: Add Manifests for Your Service](kubernetes-services.md#lb-add-manifests-for-your-service)
-* [Option: Add the Primary Artifact Source](kubernetes-services.md#option-add-the-primary-artifact-source)
-* [Additional Settings and Options](kubernetes-services.md#additional-settings-and-options)
+## Manifests
 
-## Before You Begin
+Harness supports the following manifest types and orchestration methods.
 
-If you are new to Harness CD Pipelines, see:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-* [CD Pipeline Basics](../../onboard-cd/cd-concepts/cd-pipeline-basics.md)
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+### Kubernetes
 
-## Visual Summary
+You can use:
 
+- Standard Kubernetes manifests hosted in any repo or in Harness.
+- Values YAML files with Go templating.
+- Hardcoded values and Harness expressions in your values YAML files.
+
+<details>
+<summary>Watch a short video</summary>
 Here's a quick video showing you how to add manifests and Values YAML files in Harness. It covers Kubernetes as well as other types like Helm Charts.
 
 <!-- Video:
 https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 <docvideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
+</details>
 
-## Add Manifests for Your Service
 
-In a CD Stage **Service**, in **Manifests**, you add the specific manifests and config files your **Service Definition** requires.
+```mdx-code-block
+<Tabs>
+  <TabItem value="YAML" label="YAML">
+```
+Here's a YAML example for a service with manifests hosted in Github and the nginx image hosted in Docker Hub.
 
-Harness supports a number of Kubernetes manifest types and orchestration methods.
+<details>
+<summary>Example</summary>
 
-![](./static/kubernetes-services-00.png)
+```yaml
+service:
+  name: Kubernetes
+  identifier: Kubernetes
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: Docker_Hub_with_Pwd
+                imagePath: library/nginx
+                tag: <+input>
+              identifier: nginx
+              type: DockerRegistry
+      manifests:
+        - manifest:
+            identifier: nginx
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: harnessdocs2
+                  gitFetchType: Branch
+                  paths:
+                    - default-k8s-manifests/Manifests/Files/templates
+                  branch: main
+              valuesPaths:
+                - default-k8s-manifests/Manifests/Files/ng-values.yaml
+              skipResourceVersioning: false
+  gitOpsEnabled: false
+```
+</details>
 
-Here are the supported manifest types and how to set them up.
+```mdx-code-block
+  </TabItem>
+  <TabItem value="API" label="API">
+```
+Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
-### Kubernetes Manifest
 
-Harness supports Kubernetes deployments using Kubernetes manifests.
 
-If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+```mdx-code-block
+  </TabItem>  
+  <TabItem value="Terraform Provider" label="Terraform Provider">
+```
 
-For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
+For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
-Add a Kubernetes ManifestYou can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests. See [Reference Artifacts in Manifests](kubernetes-services.md#reference-artifacts-in-manifests).
+<details>
+<summary>Example</summary>
 
-Let's take a quick look at adding Kubernetes manifests to your Stage.
+```yaml
+resource "harness_platform_service" "example" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  org_id      = "org_id"
+  project_id  = "project_id"
 
-In your CD stage, click **Service**.
+  ## SERVICE V2 UPDATE
+  ## We now take in a YAML that can define the service definition for a given Service
+  ## It isn't mandatory for Service creation 
+  ## It is mandatory for Service use in a pipeline
 
-In **Service Definition**, select **Kubernetes**.
+  yaml = <<-EOT
+                service:
+                  name: name
+                  identifier: identifier
+                  serviceDefinition:
+                    spec:
+                      manifests:
+                        - manifest:
+                            identifier: manifest1
+                            type: K8sManifest
+                            spec:
+                              store:
+                                type: Github
+                                spec:
+                                  connectorRef: <+input>
+                                  gitFetchType: Branch
+                                  paths:
+                                    - files1
+                                  repoName: <+input>
+                                  branch: master
+                              skipResourceVersioning: false
+                      configFiles:
+                        - configFile:
+                            identifier: configFile1
+                            spec:
+                              store:
+                                type: Harness
+                                spec:
+                                  files:
+                                    - <+org.description>
+                      variables:
+                        - name: var1
+                          type: String
+                          value: val1
+                        - name: var2
+                          type: String
+                          value: val2
+                    type: Kubernetes
+                  gitOpsEnabled: false
+              EOT
+}
+```
+</details>
 
-In **Manifests**, click **Add Manifest**.
 
-In **Specify Manifest Type**, select **K8s Manifest**, and then click **Continue**.
+```mdx-code-block
+  </TabItem>  
+  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+```
+To add Kubernetes manifests to your service, do the following:
 
-In **Specify K8s Manifest Store**, select the Git provider.
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes**.
+6. In **Manifests**, click **Add Manifest**.
+7. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Continue**.
+8. In **Specify K8s Manifest Store**, select the Git provider.
+   
+   The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+9.  Click **Continue**. **Manifest Details** appears.
+10. In **Manifest Identifier**, enter an Id for the manifest.
+11. If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
+12. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**, and then enter the branch or commit Id for the repo.
+13. For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
+14. In **File/Folder Path**, enter the path to the manifest file or folder in the repo. The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo.
+    
+    If you are using a values.yaml file and it's in the same repo as your manifests, in **Values YAML**, click **Add File**.
+15. Enter the path to the values.yaml file from the root of the repo.
+    
+    Here's an example with the manifest and values.yaml file added.
+    
+    ![](./static/kubernetes-services-01.png)
+    
+    If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
+    
+    ![](./static/kubernetes-services-02.png)
+16. Click **Submit**. The manifest is added to **Manifests**.
 
-The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 
-Click **Continue**. **Manifest Details** appears.
-
-In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this manifest's settings.
-
-For example, if the Pipeline is named **MyPipeline** and **Manifest Identifier** were **manifests**, you could reference the **Branch** setting using this expression:
-
-* Within the Stage: `<+serviceConfig.serviceDefinition.spec.manifests.values.spec.store.spec.branch>`.
-* Anywhere in the Pipeline (the Stage name is **deploy**): `<+pipeline.stages.deploy.spec.serviceConfig.serviceDefinition.spec.manifests.values.spec.store.spec.branch>`.
-
-If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
-
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**, and then enter the branch or commit Id for the repo.
-
-For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
-
-In **File/Folder Path**, enter the path to the manifest file or folder in the repo. The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo.
-
-If you are using a values.yaml file and it's in the same repo as your manifests, in **Values YAML**, click **Add File**.
-
-Enter the path to the values.yaml file from the root of the repo.
-
-Here's an example with the manifest and values.yaml file added.
-
-![](./static/kubernetes-services-01.png)
-
-If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
-
-![](./static/kubernetes-services-02.png)
-
-Click **Submit**. The manifest is added to **Manifests**.
-
-### Values YAML
+```mdx-code-block
+  </TabItem>  
+  <TabItem value="Values YAML" label="Values YAML">
+```
 
 Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in the Values YAML files.
 
@@ -113,39 +219,32 @@ You cannot use Harness variables expressions in your Kubernetes object manifest 
 * **Same folder as manifests:** If you are using a values.yaml file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
 * **Separate from manifests:** If your values file is located in a different folder, you can add it separately as a **Values YAML** manifest type, described below.
 
-In your CD stage, click **Service**.
+To add a Values YAML file, do the following:
 
-In **Service Definition**, select **Kubernetes**.
-
-In **Manifests**, click **Add Manifest**.
-
-In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
-
-In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
-
-If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
-
-Once you've selected a Connector, click **Continue**.
-
-In **Manifest Details**, you tell Harness where the values.yaml is located.
-
-In **Manifest Identifier**, enter a name that identifies the file, like **values**.
-
-If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
-
-In **Git Fetch Type**, select a branch or commit Id for the manifest, and then enter the Id or branch.
-
-﻿For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
-
-﻿In **File Path**, enter the path to the values.yaml file in the repo.
-
-You can enter multiple values file paths by clicking **Add File**. At runtime, Harness will compile the files into one values file.
-
-If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
-
-![](./static/kubernetes-services-03.png)
-
-Click **Submit**.
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes**.
+6. In **Manifests**, click **Add Manifest**.
+7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
+8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+   
+   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+9.  Once you've selected a Connector, click **Continue**.
+10. In **Manifest Details**, you tell Harness where the values.yaml is located.
+11. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
+12. If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
+13. In **Git Fetch Type**, select a branch or commit Id for the manifest, and then enter the Id or branch.
+    * For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
+    * In **File Path**, enter the path to the values.yaml file in the repo.
+   
+   You can enter multiple values file paths by clicking **Add File**. At runtime, Harness will compile the files into one values file.
+   
+   If you use multiple files, the highest priority is given from the last file, and the lowest priority to the first file. For example, if you have 3 files and the second and third files contain the same key:value as the first file, the third file's key:value overrides the second and first files.
+   
+   ![](./static/kubernetes-services-03.png)
+14. Click **Submit**.
 
 The values file(s) are added to the Service.
 
@@ -154,6 +253,22 @@ The values file(s) are added to the Service.
 If you have Values files in both the K8s Manifest **File/Folder Path** and the Values YAML, the Values YAML will overwrite any matching values in the Values YAML in the Manifest **File/Folder Path**.
 
 ![](./static/kubernetes-services-04.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Notes" label="Notes">
+```
+
+If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+
+For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
+
+You can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests. See [Reference Artifacts in Manifests](kubernetes-services.md#reference-artifacts-in-manifests).
+
+```mdx-code-block
+  </TabItem>  
+</Tabs>
+```
 
 ### Helm Chart
 
@@ -291,7 +406,8 @@ In **Paths**, enter the path(s) to the param file(s). The Connector you selecte
 
 Click **Submit**. The template is added to **Manifests**.
 
-## Add the Primary Artifact Source
+
+## Artifacts
 
 The **Artifacts** settings in the **Service Definition** allow you to select the artifacts for deployment instead of hardcoding them in your manifest and values YAML files.
 
@@ -805,6 +921,34 @@ With these requirements met, the cluster imports the credentials from the Docker
 
 You can use Harness to deploy both primary and sidecar Kubernetes workloads. Sidecar containers are common where you have multiple colocated containers that share resources.
 
+## Variables
+
+### Harness Pipeline, Stage, Service, and Built-in Variables
+
+You can use Pipeline, Stage, Service, and Built-in variables in your values YAML files and Service settings.
+
+See [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
+
+### Propagate and override artifacts, manifests, and service variables
+
+You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**. 
+
+For more information, go to:
+
+- [Propagating CD services](../cd-services-general/propagate-and-override-cd-services.md)
+- [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
+
+
+
+
+## Add Manifests for Your Service
+
+
+
+## Add the Primary Artifact Source
+
+
+
 See [Add a Kubernetes Sidecar Container](../../cd-advanced/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
 
 ## Additional Settings and Options
@@ -821,20 +965,6 @@ Instead, you can tell Harness to ignore these files and then apply them separate
 
 See [Ignore a Manifest File During Deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and [Kubernetes Apply Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md).
 
-### Harness Pipeline, Stage, Service, and Built-in Variables
-
-You can use Pipeline, Stage, Service, and Built-in variables in your values YAML files and Service settings.
-
-See [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
-
-### Propagate and override artifacts, manifests, and service variables
-
-You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**. 
-
-For more information, go to:
-
-- [Propagating CD services](../cd-services-general/propagate-and-override-cd-services.md)
-- [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
 
 
 ## Next Steps
