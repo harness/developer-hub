@@ -70,7 +70,7 @@ export default function SRM() {
             <img src={`${baseUrl}img/icon_srm.svg`} />
             <h1>Service Reliability Management</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/service-reliability-management">
               <button
                 className={clsx(
@@ -79,7 +79,21 @@ export default function SRM() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <i className="fa-regular fa-file"></i>
+                Documentation
+              </button>
+            </Link>
+
+            <Link href="/release-notes/service-reliability-management">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <i className="fa-regular fa-file"></i>
+                Release Notes
               </button>
             </Link>
           </div>

@@ -45,6 +45,7 @@
         display: flex;
         align-items: center;
         margin-bottom: 36px;
+        flex-shrink: 1;
         img{
             padding-right: 10px;
         }
@@ -91,23 +92,36 @@
         color: var(--primary-8);
     }
 }
+.btnContainer {
+    display: flex;
+    flex-shrink: 0;
+    &>a {
+        margin-left: 12px;
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+}
 .btn{
     color: white;
     border-radius: 4px;
-    padding-right: 18px;
-    padding-left: 18px;
+    padding-right: 16px;
+    padding-left: 16px;
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
+    &>i, &>img {
+        margin-right: 4px;
+    }
 }
 .btnLight{
     background: #F3F3FA;
     border: 1px solid #B0B1C4;
-    color: #22222A;
+    color: var(--gray-600);
     align-items: center;
     display: flex;
     img{
-        padding-right: 10px;
+        padding-right: 8px;
     }
     &:hover {
         // color: var(--black)
@@ -216,6 +230,9 @@
             text-align: center;
         }
     }
+    .btn {
+        font-size: 14px;
+    }
 }
 
 @media screen and (max-width: 393px) {
@@ -227,10 +244,15 @@
             text-align: left;
         }
     }
-    .btn {
-        padding-right: 26px;
-        width: 100%;
-        margin-bottom: 4px;
+    .btnContainer {
+        &>a {
+            margin-left: 0;
+        }
+        .btn {
+            padding-right: 26px;
+            width: 100%;
+            margin-bottom: 6px;
+        }
     }
     .subSection{
         .SectionName{
