@@ -77,7 +77,7 @@ const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-rust-container.md',
+    link: '/tutorials/build-code/ci-tutorial-rust-container',
   },
 ];
 
@@ -262,7 +262,7 @@ const CIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-rust-container.md',
+    link: '/tutorials/build-code/ci-tutorial-rust-container',
   },
 ];
 
