@@ -127,7 +127,7 @@ This library is available for download from [CDN](https://app.harness.io/public/
 For native Helm deployments, include the following SDKs and tools.
 
 
-## Helm Chart 
+### Helm Chart 
 
 `helm` v3.9.2 
 
