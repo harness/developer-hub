@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 With the Microsoft Azure Cloud connector, your Harness pipelines can pull Azure artifacts and deploy your applications to Azure.
 
-Currently, the Microsoft Azure Cloud Connector is for ACR, AKS, Web Apps, and Virtual Machines for Traditional (SSH) deployments. Support for other services such as ARM and Blueprint are coming soon.
+The Microsoft Azure Cloud Connector is for ACR, AKS, ARM, Blueprints, Web Apps, and Virtual Machines for Traditional (SSH) deployments.
 
 :::tip
 
@@ -40,7 +40,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="reader" label="Reader role" default>
 ```
-The **Reader** role must be assigned at the **Subscription** level that is used by the Application (Client) Id that you'll use in the Azure Cloud connector's settings. The application must have permission to list **all** container registries.
+The **Reader** role must be assigned at the **Subscription** or **Resource Group** level that is used by the Application (Client) Id that you'll use in the Azure Cloud connector's settings. The application must have permission to list **all** container registries.
 
 ![](./static/add-a-microsoft-azure-connector-65.png)
 
@@ -268,9 +268,8 @@ There are three options for connecting Harness to an AKS cluster:
 * AKS managed AAD, enabled or disabled.
 * Kubernetes RBAC, enabled.
 * Azure RBAC, enabled or disabled.
-	+ For more information, go to the **Deployments (CD)** section of the [Kubernetes cluster connector settings reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
-* AKS property `disableLocalAccounts`, enabled or disabled, unless used for deployment.
-    + To use an AKS cluster for deployment, the AKS cluster must have local accounts enabled (`disableLocalAccounts=false`).
+
+For more information, go to the **Deployments (CD)** section of the [Kubernetes cluster connector settings reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 ### AKS role requirements
 
