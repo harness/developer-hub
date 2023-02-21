@@ -14,6 +14,16 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
  			
+## February 16, 2023
+
+### New features
+
+This release does not include new features.
+
+### Fixed issues
+
+* Fixed a bug that would cause the step to fail when a twistcli policy encountered a Compliance or Vulnerabilities threshold check that failed. (STO-5559)
+
 ## February 5, 2023
 
 ### New features
