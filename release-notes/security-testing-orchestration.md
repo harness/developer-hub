@@ -22,7 +22,7 @@ This release does not include new features.
 
 ### Fixed issues
 
-* Fixed a bug that would cause the step to fail when a twistcli policy encountered a Compliance or Vulnerabilities threshold check that failed. (STO-5559)
+* Fixed an issue with Prisma Cloud (formerly Twistlock) scans where the step would fail when a twistcli policy encountered a Compliance or Vulnerabilities threshold check that failed. (STO-5559)
 
 ## February 5, 2023
 
