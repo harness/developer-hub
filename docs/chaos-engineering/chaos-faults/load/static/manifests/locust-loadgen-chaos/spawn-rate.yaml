@@ -1,4 +1,4 @@
-# provid number of spawn users at (users per second)
+# provide number of spawned users (users per second)
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

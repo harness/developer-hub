@@ -2,10 +2,10 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 
 export const experiments: ExperimentDetails[] = [
   {
-    name: "Locust Loadgen Chaos",
+    name: "Locust loadgen",
     description:
-      "Locust Loadgen chaos generates a load on the given target hosts for a specified duration.",
-    tags: ["load locust loadgen"],
+      "Locust loadgen fault simulates load generation on the target hosts for a specific duration.",
+    tags: ["load","locust","loadgen"],
     category: "load",
   },
 ];

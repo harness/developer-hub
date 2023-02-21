@@ -1,26 +1,21 @@
 ---
-id: locust-loadgen-chaos
-title: Locust Loadgen Chaos
+id: locust-loadgen
+title: Locust loadgen
 ---
-Locust loadgen chaos fault causes load generation on the given target hosts for a specified chaos duration
-- It can result in the slowness or unavailability of the target host due to heavy load.
-- This fault checks the performance of the application (or process) running on the instance.
+Locust loadgen fault simulates load generation on the target hosts for a specific chaos duration. This fault:
+- Slows down or makes the target host unavailable due to heavy load.
+- Checks the performance of the application or process running on the instance.
 
 ![Locust Loadgen Chaos](./static/images/locust-loadgen-chaos.png)
 
-## Usage
+## Use cases
+- Locust loadgen fault determines the resilience of an application under heavy load. 
+- It determines how quickly the target application recovers from such a failure. 
 
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault determines the resilience of an application under heavy load. It determines how quickly the target application recovers from such a failure. 
-</div>
-</details>
-
-## Prerequisites
-- Kubernetes > 1.17
-
-- Create a Kubernetes configmap that contains the `config.py` file used as a locustfile to generate load in the `CHAOS_NAMESPACE`. Below is a sample configmap:
+:::note
+- Kubernetes > 1.17 is required to execute this fault.
+- The target host should be accessible.
+- Kubernetes configmap that contains the `config.py` file is required. This file is used as a locustfile to generate load in the `CHAOS_NAMESPACE`. Below is a sample configmap:
 
 ```yaml
 apiVersion: v1
@@ -38,16 +33,13 @@ data:
         def hello_world(self):
             self.client.get("")
 ```
-
 - If you change the `config.py` file, ensure that you update the `CONFIG_MAP_FILE` environment variable in the chaos experiment with the new name.
+:::
 
-## Default validations
-The target host should be accessible
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -56,11 +48,11 @@ The target host should be accessible
         </tr>
         <tr>
             <td> HOST </td>
-            <td> Name of the target host under chaos</td>
-            <td> Provide the name of target host ex: <code>https://google.com</code> </td>
+            <td> Name of the target host under chaos. </td>
+            <td> Provide the name of target host ex: <code>https://google.com</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos#target-host"> target host.</a></td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -69,56 +61,50 @@ The target host should be accessible
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration for which chaos is injected into the target resource (in seconds).</td>
-            <td> Defaults to 60s </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#duration-of-the-chaos"> duration of the chaos. </a></td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance poweroffs (in seconds). </td>
-            <td> Defaults to 60s. </td>
+            <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> USERS </td>
-            <td> Peak number of concurrent Locust users causing load</td>
-            <td> Defaults <code>30</code>. </td>
+            <td> Peak number of concurrent Locust users causing the load. </td>
+            <td> Defaults <code>30</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos#number-of-users"> number of users.</a></td>
         </tr>
         <tr>
             <td> SPAWN_RATE </td>
             <td> Rate to spawn users at (users per second).</td>
-            <td> Defaults <code>30</code>. </td>
+            <td> Defaults <code>30</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos#spawn-rate"> spawn rate.</a></td>
         </tr>
         <tr>
             <td> REPLICA </td>
-            <td> Number of helper pod replicas generating load</td>
+            <td> Number of helper pod replicas generating the load. </td>
             <td> Defaults to <code>1</code>. </td>
         </tr>
         <tr>
             <td> LOAD_IMAGE </td>
-            <td> Image used in helper pod (contains the chaos injection logic)</td>
-            <td> Defaults <code>chaosnative/locust-loadgen:latest</code></td>
+            <td> Image used in helper pod that contains the chaos injection logic. </td>
+            <td> Defaults <code>chaosnative/locust-loadgen:latest</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos#custom-load-image"> custom load image.</a></td>
         </tr>
         <tr>
             <td> LOAD_TYPE </td>
-            <td> Used as suffix in load file name</td>
-            <td> Defaults to <code>load</code> </td>
+            <td> Used as a suffix in the load file name. </td>
+            <td> Defaults to <code>load</code>. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. </td>
+            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults/#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
-</details>
 
-## Fault examples
 
-### Common fault tunables
+### Target host
 
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-
-### Target Host
-
-It contains a value of target host under load chaos. You can tune it using the `HOST` environment variable.
+It specifies the value of the target host under chaos. Tune it by using the `HOST` environment variable.
 
 Use the following example to tune it:
 
@@ -141,9 +127,9 @@ spec:
           value: 'https://www.google.com'
 ```
 
-### Number of Users
+### Number of users
 
-It contains the number of users/workers involved in load generation. You can tune it using the `USERS` environment variable.
+It specifies the number of users or workers involved in the load generation. Tune it by using the `USERS` environment variable.
 
 Use the following example to tune it:
 
@@ -168,9 +154,9 @@ spec:
           value: 'https://www.google.com'
 ```
 
-### Number of Spawn rate
+### Custom load image
 
-It contains the rate to spawn users at (users per second). You can tune it using the `LOAD_IMAGE` environment variable.
+It specifies the rate at which users are spawned (users spawned per second). Tune it by using the `LOAD_IMAGE` environment variable.
 
 Use the following example to tune it:
 
@@ -195,9 +181,9 @@ spec:
           value: 'https://www.google.com'
 ```
 
-### Custom Load Image
+### Spawn rate
 
-It contains custom image name of load generation. You can tune it using the `SPAWN_RATE` environment variable.
+It specifies the custom image name of the load generation. Tune it by using the `SPAWN_RATE` environment variable.
 
 Use the following example to tune it:
 

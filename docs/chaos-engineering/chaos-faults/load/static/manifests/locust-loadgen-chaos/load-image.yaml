@@ -1,4 +1,4 @@
-# provid a custom image for load generation
+# provide a custom image for load generation
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:

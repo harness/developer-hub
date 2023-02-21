@@ -1,4 +1,4 @@
-# provid number of users for loadgen
+# provide number of users for loadgen
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
