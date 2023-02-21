@@ -8,9 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness delegates include binaries for the third-party SDKs that are required for Harness-supported integrations including Kubernetes, Helm, and so on. The binaries are listed below in [Table: Certified SDK Versions for Deployment Types](#table_certified_sdk_versions_for_deployment_types).
+Harness delegates include binaries for the third-party SDKs that are required for Harness-supported integrations including Kubernetes, Helm, and so on. 
 
 Harness includes multiple binary versions to support customers using code that requires versions other than the latest.
+
+For a list of the SDK versions that are certified for different types of deployments, see [Delegate-required SDKs](/docs/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
 ##### Problem
 
@@ -56,9 +58,8 @@ The following delegate YAML contains examples of downloads for all Harness SDKs.
 
 You can edit the YAML to include only the SDKs and versions Harness requires for your deployment type.
 
-
 ```
-...  
+...   
         - name: DELEGATE_TYPE  
           value: "KUBERNETES"  
         - name: DELEGATE_NAMESPACE  
