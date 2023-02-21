@@ -1,6 +1,6 @@
 ---
 title: Delegate-required SDKs
-description: This topic provides information about the delegate-required development kits and libraries. These resources a listed by manifest type.
+description: This topic provides information about the delegate-required development kits and libraries. These resources are listed by manifest type.
 ---
 
 This topic provides information about the SDK versions that are certified for use with Harness Delegate based on manifest type. 
