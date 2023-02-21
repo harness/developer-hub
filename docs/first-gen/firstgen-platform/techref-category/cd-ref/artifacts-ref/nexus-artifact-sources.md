@@ -63,10 +63,6 @@ For Nexus 2.x, Harness supports repository formats Maven, npm, and NuGet. See So
 
 For Nexus 3.x, Harness supports repository formats Docker 3.0 and greater, Maven, npm, and NuGet.
 
-#### RAW Format Support
-
-Currently, this feature is behind the feature flag `NEXUS3_RAW_REPOSITORY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
 ### Credentials
 
 Enter the username and select and encrypted password.
