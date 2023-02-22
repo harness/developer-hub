@@ -242,7 +242,7 @@ $ docker logs <runner-container-id>
 
 The Delegate and Runner have now been successfully installed, registered, and connected.
 
-For details on the environment variables of the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md#harness-docker-delegate-environment-variables).
+For details on the environment variables of the Harness Docker Delegate, see [Docker delegate environment variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
 
 ### Step 6: Run a CI Build
 

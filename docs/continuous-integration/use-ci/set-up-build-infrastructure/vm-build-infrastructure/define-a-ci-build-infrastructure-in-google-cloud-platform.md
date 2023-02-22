@@ -209,7 +209,7 @@ services:
 
 	 The Delegate and Runner have now been successfully installed, registered, and connected.
 
-	 To configure the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md#harness-docker-delegate-environment-variables).
+	 To configure the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
 
 ### Step 6: Run a CI build
 
