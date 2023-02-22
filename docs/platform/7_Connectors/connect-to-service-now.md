@@ -7,55 +7,103 @@ helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import adfs_settings from './static/adfs-settings.png'
+import adfs_clientid from './static/adfs-clientid.png'
+```
 
-You can connect Harness to ServiceNow using a Harness ServiceNow Connector. This Connector allows you to approve and reject Pipeline steps.
+You can connect Harness to ServiceNow using a Harness ServiceNow connector. This connector allows you to approve and reject pipeline steps.
 
-### Before you begin
-
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-
-### Limitations
+### Important notes
 
 * Your ServiceNow account should ideally have the `admin` role. If this is not possible, it should have at least the `itil_admin` or `itil` role to create and modify tickets.
 * Your account should also have the `import_admin` or `import_transformer` role to manage import set transform maps. For details, see ServiceNow's [Base System Roles](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/roles/reference/r_BaseSystemRoles.html) documentation.
 * Your ServiceNow REST API account must have permission to view tickets.
 
-### Step: Add ServiceNow Connector
+### Add a ServiceNow connector
 
 This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
-You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
+You can add a Connector from any module in your project in project setup, or in your organization, or account resources.
 
-This topic shows you how to add a ServiceNow Connector to your Project.
+This topic shows you how to add a ServiceNow connector to your project.
 
-In **Project Setup**, click **Connectors**.
+1. In **Project Setup**, click **Connectors**.
 
-Click **New Connector**, and then click **ServiceNow**. The ServiceNow Connector settings appear.
+2. Click **New Connector**, and then click **ServiceNow**. The ServiceNow connector settings appear.
 
-![](./static/connect-to-service-now-43.png)
-Enter **Name** for this Connector.
+   ![](./static/connect-to-service-now-43.png)
 
-You can choose to update the **Id** or let it be the same as your ServiceNow Connector's name. For more information, see [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
+3. Enter **Name** for this connector.
 
-Enter **Description** and **Tags** for your Connector.
+   You can choose to update the **Id** or let it be the same as your ServiceNow Connector's name. For more information, see [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
 
-Click **Continue**.
+4. Enter **Description** and **Tags** for your connector.
 
-Enter your **Username**.
+5. Click **Continue**.
+   
+### Add details for the ServiceNow connector
 
-In **URL**, enter the base URL by which your users will access ServiceNow. For example: `https://example.service-now.com`**.**
+1. In **ServiceNow URL**, enter the base URL by which your users will access ServiceNow. For example: `https://example.service-now.com`.
 
-Enter your credentials. For **API Key**, use a Harness [Text Secret](../6_Security/2-add-use-text-secrets.md). 
+2. In **Authentication**, select one of the following: 
+   - **Username and Password**
+   - **ADFS Client Credentials with Certificate**
 
-Click **Continue**.
 
-Select the Harness Delegate(s) to use when making a connection to ServiceNow using this Connector.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="usernamepwd" label="Username and Password" default border-bottom-color="red">
+```
+To use username and password for authentication, do the following:
+
+1. Enter **Username**.
+2. In **Password/API Key**, create a new password or API key or enter an existing one. For **API Key**, use a [Harness Text Secret](https://developer.harness.io/docs/platform/Security/add-use-text-secrets).
+  
+
+```mdx-code-block
+</TabItem>
+<TabItem value="adfs" label="ADFS Client Credentials with Certificate">
+```
+  To use AD FS credentials for authentication, do the following:
+  
+  1. Select an existing secret or create one that has the resource id of ServiceNow as its value for the **Resource ID** field.
+  2. Select an existing secret or create one that has the application (client) id assigned to your application by AD FS for the **Client ID** field.
+   
+
+```mdx-code-block
+<img src={adfs_clientid} alt="adfs-clientid" height="150" width="400"/>
+```
+
+
+  3. Select an existing encrypted file or create one that has the certificate for the **Certificate** field. Certificates are digital documents that contain a public key and other information about the certificate holder.
+  4. In **Private Key**, create a new secret or choose an existing one that has the AD FS private key as the value.
+  5. In **ADFS URL**, enter the AD FS URL.
+  
+```mdx-code-block
+<img src={adfs_settings} alt="adfs-settings" height="350" width="600"/>
+```
+  
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+3. Click **Continue**.
+
+### Set up delegates
+
+Select the Harness delegate(s) to use when making a connection to ServiceNow using this connector.
 
 Click **Save and Continue**.
 
 Harness tests the connection.
 
 ![](./static/connect-to-service-now-44.png)
+
 Click **Finish**.
 
 The ServiceNow Connector is listed in Connectors.
