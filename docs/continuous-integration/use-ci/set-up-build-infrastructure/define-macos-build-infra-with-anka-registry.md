@@ -8,14 +8,14 @@ sidebar_position: 45
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-This topic describes the high-level workflow for setting up a Harness MacOS build farm that works with [Anka's virtualization platform for MacOS](https://docs.veertu.com/anka/what-is-anka/). Using this workflow, you can set up a highly scalable build farm with multiple VMs and nodes to run your MacOS builds with Harness CI. 
+This topic describes the high-level workflow for setting up a Harness macOS build farm that works with [Anka's virtualization platform for MacOS](https://docs.veertu.com/anka/what-is-anka/). Using this workflow, you can set up a highly scalable build farm with multiple VMs and nodes to run your macOS builds with Harness CI. 
 
 The following diagram shows how Harness CI and Anka work together. Once you set up the Harness and Anka components, you can easily scale up your build farm with additional templates, build nodes, and VMs. 
 
 ![](./static/macos-build-infra-with-anka-registry-mult-nodes.png)
 
 
-The following steps describe the workflow.
+The following steps describe the workflow:
 
 - [Install Anka and create a VM on a Mac node](#install-anka-and-create-a-vm-on-a-mac-node)
 - [Set up port forwarding on the VM](#set-up-port-forwarding-on-the-vm)
@@ -48,9 +48,7 @@ Set up the Anka registry and controller. For details, go to  [Setting up the Con
 When you finish this workflow you will have:
 
 * A running instance of the Anka controller and registry.
-
 * A Mac node (such as a Mac Mini) in the Anka cluster. This node has Anka virtualization software installed. 
-
 * A VM template in the registry. You can use this to create VMs on other nodes as you add them to the cluster. 
 
 :::note
@@ -59,6 +57,7 @@ Optionally, you can enable token authentication for the controller and registry 
 
 
 ### Install the Harness delegate and runner
+
 Set up the Harness delegate and runner.  
 
 You can run your delegate and runner on [Docker](define-a-docker-build-infrastructure.md), [MacOS](./define-macos-build-infra-with-anka-registry.md), [AWS](./set-up-an-aws-vm-build-infrastructure.md), [Azure](./define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](./define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
