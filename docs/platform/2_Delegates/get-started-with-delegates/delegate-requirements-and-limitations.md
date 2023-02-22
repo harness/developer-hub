@@ -36,7 +36,7 @@ This topic describes the basic requirements of Harness Delegate.
 
 ## Allowlist Harness domains and IP addresses
 
-Harness delegates in SaaS environments require only outbound access to the Harness domain name &mdash; most commonly, **app.harness.io** &mdash; and optionally, to **logging.googleapis.com**. The **logging.googleapis.com** URL provides logs to Harness Support.
+Harness delegates in SaaS environments require only outbound access to the Harness domain name -- most commonly, **app.harness.io** -- and optionally, to **logging.googleapis.com**. The **logging.googleapis.com** URL provides logs to Harness Support.
 
 Go to [Allowlist Harness Domains and IPs](/docs/platform/20_References/whitelist-harness-domains-and-ips.md).
 
