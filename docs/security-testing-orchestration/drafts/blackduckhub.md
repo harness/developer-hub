@@ -126,6 +126,7 @@ import StoSettingScanModeIngest from './shared/_sto-ref-ui-scan-mode-02-ingeston
 import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-name.md';
 ```
 
+
 <StoSettingProductConfigName />
 
 ## Target settings

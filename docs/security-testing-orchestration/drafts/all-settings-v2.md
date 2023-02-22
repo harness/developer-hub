@@ -23,9 +23,7 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 <!-- ============================================================================= -->
 
-## Security Parameters 
-
-
+## Step Parameters 
 
 <a name="scan-mode"></a>
 
@@ -54,7 +52,7 @@ import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-nam
 
 <StoSettingProductConfigName />
 
-## Target settings
+## Target
 
 
 <!-- ============================================================================= -->
@@ -110,7 +108,7 @@ import StoSettingTargetWorkspace from './shared/_sto-ref-ui-target-workspace.md'
 <StoSettingTargetWorkspace  />
 
 
-## Ingestion settings
+## Ingestion
 
 
 <!-- ============================================================================= -->
@@ -132,6 +130,8 @@ import StoSettingIngestionFile from './shared/_sto-ref-ui-ingestion-file.md';
 <a name="container-type"></a>
 
 ### Type  
+
+#### Orchstrated scans
 
 ```mdx-code-block
 import StoSettingImageType from './shared/_sto-ref-ui-image-type.md';
