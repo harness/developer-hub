@@ -630,90 +630,173 @@ import TabItem3 from '@theme/TabItem';
 
 <Tabs3>
   <TabItem3 value="YAML" label="YAML" default>
-```
 
-YAML
+Here's a YAML example for a service using an OpenShift template that is stored in the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
+
+<details>
+<summary>Example</summary>
+
+```yaml
+service:
+  name: OpenShift Template
+  identifier: OpenShift
+  tags: {}
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: nginx
+            type: OpenshiftTemplate
+            spec:
+              store:
+                type: Harness
+                spec:
+                  files:
+                    - /OpenShift/templates/example-template.yml
+              skipResourceVersioning: false
+    type: Kubernetes
+```
+</details>
 
 ```mdx-code-block
   </TabItem3>
   <TabItem3 value="API" label="API">
 ```
 
-API
+Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 ```mdx-code-block
   </TabItem3>
   <TabItem3 value="Terraform Provider" label="Terraform Provider">
 ```
 
-Terraform Provider
+For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
+
+<details>
+<summary>Example</summary>
+
+```yaml
+resource "harness_platform_service" "example" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  org_id      = "org_id"
+  project_id  = "project_id"
+
+  ## SERVICE V2 UPDATE
+  ## We now take in a YAML that can define the service definition for a given Service
+  ## It isn't mandatory for Service creation 
+  ## It is mandatory for Service use in a pipeline
+
+  yaml = <<-EOT
+              service:
+                name: OpenShift Template
+                identifier: OpenShift
+                tags: {}
+                serviceDefinition:
+                  spec:
+                    manifests:
+                      - manifest:
+                          identifier: nginx
+                          type: OpenshiftTemplate
+                          spec:
+                            store:
+                              type: Harness
+                              spec:
+                                files:
+                                  - /OpenShift/templates/example-template.yml
+                            skipResourceVersioning: false
+                  type: Kubernetes
+              EOT
+}
+```
+</details>
 
 ```mdx-code-block
   </TabItem3>
   <TabItem3 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-Add an OpenShift TemplateIn your CD stage, click **Service**.
+To add an OpenShift Template to a service, do the following:
 
-In **Service Definition**, select **Kubernetes**.
-
-In **Manifests**, click **Add Manifest**.
-
-In **Specify Manifest Type**, select **OpenShift Template**, and then click **Continue.**
-
-In **Specify OpenShift Template Store**, select the Git provider where your template is located.
-
-For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
-
-Click **Continue**. **Manifest Details** appears.
-
-In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.
-
-For example, if the Pipeline is named **MyPipeline** and **Manifest Identifier** were **myapp**, you could reference the **Branch** setting using this expression:
-
-`<+pipeline.stages.MyPipeline.spec.serviceConfig.serviceDefinition.spec.manifests.myapp.spec.store.spec.branch>`
-
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
-
-In **Template** **File Path**, enter the path to the template file. The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file.
-
-Click **Submit**. The template is added to **Manifests**.
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes**.
+6. In **Manifests**, click **Add Manifest**.
+7.  In **Specify Manifest Type**, select **OpenShift Template**, and then select **Continue.**
+8.  In **Specify OpenShift Template Store**, select where your template is located. 
+  
+  You can use a Git provider, the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/), a custom repo, or Azure Repos.
+1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+2.  Select **Continue**. **Manifest Details** appears.
+3.  In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.
+4.  In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
+5.  In **Template** **File Path**, enter the path to the template file. The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file.
+6.  Select **Submit**. The template is added to **Manifests**.
 
 ```mdx-code-block
   </TabItem3>
   <TabItem3 value="OpenShift Param" label="OpenShift Param" default>
 ```
 
+OpenShift Param Files can be added in the following ways:
+
+1. Attached to the OpenShift Template you added.
+2. Added as a separate manifest.
+
+![Params](static/9e15cbd984b566f357edc930d15ff7ce9d186c4d843615f5299710605926f811.png)
+
 For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../cd-technical-reference/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
 
-Add an OpenShift Param FileIn your CD stage, click **Service**.
+Let's look at an example where the OpenShift Param is attached to a template already added:
 
-In **Service Definition**, select **Kubernetes**.
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select the service with the OpenShift template.
+3. Select **Configuration**.
+4. In **Manifests**, select **Attach OpenShift Param**.
+5. In **Enter File Path**, select where your params file is located.
+6. Select **Submit**. The params file is added to **Manifests**.
 
-In **Manifests**, click **Add Manifest**.
+You can now see the params file in the OpenShift Template **Manifest Details**.
 
-In **Specify Manifest Type**, select **OpenShift Param**, and then click **Continue.**
+![Manifest Details](static/bbeb75857343eb531ec2025d898bceb40393fa5068529e4ae69970ca3eaa8f4d.png)
 
-In **Specify OpenShift Param Store**, select the Git provider where your param file is located.
-
-For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
-
-Click **Continue**. **Manifest Details** appears.
-
-In **Manifest Identifier**, enter an Id for the param file. It must be unique. It can be used in Harness expressions to reference this param file's settings.
-
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
-
-In **Paths**, enter the path(s) to the param file(s). The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file.
-
-Click **Submit**. The template is added to **Manifests**.
 
 ```mdx-code-block
   </TabItem3>
   <TabItem3 value="Notes" label="Notes">
 ```
 
-Notes
+#### Deployment strategy support
+
+In addition to standard workload type support in Harness (see [What can I deploy in Kubernetes?](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes)), Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies.
+
+Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
+
+#### Harness supports list objects
+
+You can leverage Kubernetes list objects as needed without modifying your YAML for Harness.
+
+When you deploy, Harness will render the lists and show all the templated and rendered values in the log.
+
+Harness supports:
+
+* List
+* NamespaceList
+* ServiceList
+* For Kubernetes deployments, these objects are supported for all deployment strategies (Canary, Rolling, Blue/Green).
+* For Native Helm, these objects are supported for Rolling deployments.
+
+If you run `kubectl api-resources` you should see a list of resources, and `kubectl explain` will work with any of these.
+
+#### Important notes
+
+* Make sure that you update your version to `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
+* The token does not need to have global read permissions. The token can be scoped to the namespace.
+* The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: <https://hub.docker.com/u/openshift> and <https://access.redhat.com/containers>.
+* Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
 
 ```mdx-code-block
   </TabItem3>
@@ -1238,7 +1321,11 @@ You can use Harness to deploy both primary and sidecar Kubernetes workloads. Sid
 
 ## Variables
 
-### Harness Pipeline, Stage, Service, and Built-in Variables
+In the Variables section of the service you can add variables are use them in values YAML and params files, or in other settings in your stage that support expressions.
+
+For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+
+### Harness pipeline, stage, service, and built-in variables
 
 You can use Pipeline, Stage, Service, and Built-in variables in your values YAML files and Service settings.
 
@@ -1254,18 +1341,6 @@ For more information, go to:
 - [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
 
 
-
-
-## Add Manifests for Your Service
-
-
-
-## Add the Primary Artifact Source
-
-
-
-See [Add a Kubernetes Sidecar Container](../../cd-advanced/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
-
 ## Additional Settings and Options
 
 This topic has covered the Kubernetes Service basics to get your started, but we've only scratched the surface of what you have do in Harness.
@@ -1278,15 +1353,14 @@ You might have manifest files for resources that you do not want to deploy as pa
 
 Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) step. Or you can simply ignore them and deploy them later.
 
-See [Ignore a Manifest File During Deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and [Kubernetes Apply Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md).
-
+See [Ignore a manifest file during deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and [Kubernetes Apply Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md).
 
 
 ## Next Steps
 
-Once you've configured your Service, you can move onto the Stage's Infrastructure settings and define the target Kubernetes cluster and namespace for your deployment.
+Once you've configured your service, you can move onto the stage's **Environment** settings and define the target Kubernetes cluster and namespace for your deployment.
 
-See [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your Kubernetes target infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
 ## See Also
 
