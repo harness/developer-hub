@@ -128,7 +128,7 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
   --set delegateName=helm-delegate \
   --set accountId=yOGUkZC9THWFWgVA6tSj-g \
   --set delegateToken=NTg4YzNjZDc1NzAyMTE2MzBhMTJlYTI1MDkyYjRjMzg= \
-  --set managerEndpoint=https://stress.harness.io \
+  --set managerEndpoint=https://myserver.io  \
   --set delegateDockerImage=harness/delegate:23.02.78306 \
   --set replicas=1 --set upgrader.enabled=false
 ```
@@ -335,7 +335,7 @@ docker run --cpus=1 --memory=2g \
   -e ACCOUNT_ID=XXXXXXXxxxxxxxxx \
   -e DELEGATE_TOKEN=XXXXXXXxxxxxxxxx \
   -e LOG_STREAMING_SERVICE_URL=https://myserver.io/log-service/ \
-  -e MANAGER_HOST_AND_PORT=https://myserver.io harness/new-delegate:23.02.78306
+  -e MANAGER_HOST_AND_PORT=https://myserver.io harness/delegate:23.02.78306
 ```
 
 Specify the parameters as follows.
