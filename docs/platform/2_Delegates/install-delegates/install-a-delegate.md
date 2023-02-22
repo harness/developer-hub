@@ -20,7 +20,6 @@ import install_twenty from './static/install-a-delegate-20.png'
 import install_twofive from './static/install-a-delegate-25.png'
 import install_twothree from './static/install-a-delegate-23.png'
 import install_twonine from './static/install-a-delegate-29.png'
-
 ```
 
 
@@ -29,7 +28,7 @@ This document introduces the delegate installer and installation of Harness dele
 The process of installing a delegate includes the following steps:
 
 - Go to the **New Delegate** page
-- Select an environment: Kubernetes or Docker
+- Select an environment: **Kubernetes** or **Docker**
 - Select the mode of installation: Helm chart, Terraform Plan, or Kubernetes manifest
 
 # Go to the New Delegate page
@@ -50,19 +49,19 @@ In addition to providing basic information about installed delegates, the **Dele
 To install a delegate, click **+ New Delegate**.
 
 ```mdx-code-block
-<img src={install_five} width="200" style="border: 3px" />
+<img src={install_five} width="200" />
 ```
 
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
 
 ```mdx-code-block
-<img src={install_twoseven} width="800"  style="border: 3px"  />
+<img src={install_twoseven} width="800" />
 ```
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
 
 ```mdx-code-block
-<img src={install_seven} width="350"  border="1" />
+<img src={install_seven} width="350" />
 ```
 
 Otherwise, continue with the following steps.
@@ -72,12 +71,12 @@ Otherwise, continue with the following steps.
 Select your target environment: **Kubernetes** or **Docker**.
 
 ```mdx-code-block
-<img src={install_eight} width="350"  border="1" />
+<img src={install_eight} width="350" />
 ```
 
 ## Kubernetes environment
 
-In **Install your Delegate**, select **Helm Chart**, **Terraform**, or **Kubernetes Manifest**.
+In **Install your Delegate**, select [**Helm Chart**](#helm-based-install-on-kubernetes), [**Terraform**](#terraform-based-install-on-kubernetes), or [**Kubernetes Manifest**](#kubernetes-based-install-on-kubernetes).
 
 ```mdx-code-block
 <img src={install_eleven} width="350" />
@@ -97,7 +96,11 @@ Before you install the delegate, accept or modify the default delegate name.
 <img src={install_twelve} width="300" />
 ```
 
-Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
+Delegates are identified by their names. Delegate names must conform to the following guidelines:
+
+- Delegate names must be unique within a namespace and should be unique in your cluster. 
+- A valid name includes only lowercase letters and does not start or end with a number. 
+- The dash character (“-”) can be used as a separator between letters.
 
 #### Add the repository
 
@@ -177,7 +180,11 @@ Before you install the delegate, accept or modify the default delegate name.
 <img src={install_onesix} width="300" />
 ```
 
-Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
+Delegates are identified by their names. Delegate names must conform to the following guidelines:
+
+- Delegate names must be unique within a namespace and should be unique in your cluster. 
+- A valid name includes only lowercase letters and does not start or end with a number. 
+- The dash character (“-”) can be used as a separator between letters.
 
 #### Create and apply the Terraform Plan
 
@@ -213,9 +220,8 @@ To verify the delegate, click **Verify**. Harness Manager listens for the delega
 After the delegate is registered and initialized, a success message is shown.
 
 Click **Done** to close the installer. 
-```
 
-### Kubernetes-install on Kubernetes 
+### Kubernetes-based install on Kubernetes 
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
 
@@ -231,7 +237,11 @@ Before you install the delegate, you must give it a name.
 <img src={install_twenty} width="300" />
 ```
 
-Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
+Delegates are identified by their names. Delegate names must conform to the following guidelines:
+
+- Delegate names must be unique within a namespace and should be unique in your cluster. 
+- A valid name includes only lowercase letters and does not start or end with a number. 
+- The dash character (“-”) can be used as a separator between letters.
 
 #### Download the delegate YAML
 
@@ -307,7 +317,11 @@ Accept or change the default delegate name of `docker-delegate`.
 <img src={install_twothree} width="300" />
 ```
 
-Delegates are identified by their names. Delegate names must be unique within a namespace and should be unique in your cluster. A valid name includes only lowercase letters and does not start or end with a number. The dash character (“-”) can be used as a separator between letters.
+Delegates are identified by their names. Delegate names must conform to the following guidelines:
+
+- Delegate names must be unique within a namespace and should be unique in your cluster. 
+- A valid name includes only lowercase letters and does not start or end with a number. 
+- The dash character (“-”) can be used as a separator between letters.
 
 #### Install the delegate
 
@@ -347,7 +361,7 @@ The delegate installation process ends with delegate registration with Harness M
 To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
 
 ```mdx-code-block
-<img src={install_twonine} width="400" />
+<img src={install_twonine} width="600" />
 ```
 
 After the delegate is registered and initialized, a success message is shown.
