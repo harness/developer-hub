@@ -143,24 +143,6 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 | `replicas` | The replica pods to be created for the delegate. By default, the installation creates one replica pod. |
 | `upgrader.enabled` | Whether the delegate is automatically updated. Automatic update is not compatible with customizations of the delegate image. For more information, see [Delegate auto-upgrade](/docs/platform/delegates/configure-delegates/delegate-auto-update/). |
 
-#### Verify the delegate connection
-
-The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
-
-```mdx-code-block
-<img src={install_onethree} width="400" />
-```
-
-To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
-
-```mdx-code-block
-<img src={install_twonine} width="400" />
-```
-
-After the delegate is registered and initialized, a success message is shown.
-
-Click **Done** to close the installer. 
-
 
 ### Terraform-based install on Kubernetes
 
@@ -204,23 +186,6 @@ Delegates are identified by their names. Delegate names must conform to the foll
    terraform apply
    ```
    
-#### Verify the delegate connection
-
-The delegate installation process ends in delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
-
-```mdx-code-block
-<img src={install_onethree} width="600" />
-
-To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
-
-```mdx-code-block
-<img src={install_twonine} width="400" />
-```
-
-After the delegate is registered and initialized, a success message is shown.
-
-Click **Done** to close the installer. 
-
 ### Kubernetes-based install on Kubernetes 
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
@@ -280,24 +245,6 @@ Use the `kubectl apply` command to apply the harness-delegate.yaml file:
 $ kubectl apply -f harness-delegate.yaml
 ```
 
-#### Verify the delegate connection
-
-The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
-
-```mdx-code-block
-<img src={install_onethree} width="500" />
-```
-
-To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
-
-```mdx-code-block
-<img src={install_twonine} width="400" />
-```
-
-After the delegate is registered and initialized, a success message is shown.
-
-Click **Done** to close the installer. 
-
 
 ### Docker environment
 
@@ -350,7 +297,7 @@ Specify the parameters as follows.
 | `LOG_STREAMING_SERVICE_URL` |  |
 | `MANAGER_HOST_AND_PORT` | The endpoint and port number of Harness Manager in your Harness cluster. |
 
-#### Verify the delegate connection
+### Verify the delegate connection
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
