@@ -488,7 +488,7 @@ This functionality requires the Feature Flag `SORT_ARTIFACTS_IN_UPDATED_ORDER`.
 
 #### Enhancements for CD
 
-* Nexus RAW Repository type support (CDS-38260, ZD-20638, ZD-30449, ZD-33630). You can now add artifacts from Nexus3 raw repository formats in Harness CG.
+* Nexus RAW Repository type support (CDS-38260, ZD-20638, ZD-30449, ZD-33630). You can now add artifacts from Nexus3 raw repository formats in Harness CG. Enable the feature flag `NEXUS3_RAW_REPOSITORY`for this feature, and the raw repository format will be available as an artifact source.
 
 #### Fixed Issues for CD
 
