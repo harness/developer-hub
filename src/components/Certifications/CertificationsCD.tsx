@@ -2,22 +2,22 @@ import React, { useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import CertificationReviewGuide from "./cd-certification-review-guide.md";
-import CertificationExamDetails from "./cd-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
+/*
 enum TabValues {
   Developer = "Developer",
   Administrator = "Administrator",
   Architect = "Architect",
-}
+}*/
 
 export default function CertificationsCD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  /*
   const [tab, setTab] = useState(TabValues.Developer);
   const handleSwitchTab = (tabVal) => {
     setTab(tabVal);
-  };
+  };*/
   return (
     <div className={styles.certificationsCD}>
       <div className={styles.hero}>
@@ -64,14 +64,14 @@ export default function CertificationsCD() {
               </ul>
             </div>
             <div className={styles.btnContainer}>
-              <Link href="/certifications/continuous-delivery/cd-developer-cert#cd-developer-study-guide">
+              <Link href="/certifications/continuous-delivery/cd-developer-cert#prepare">
                 <button className={styles.moreDetails}>
-                  Go to Study Guide
+                  Study Guide
                 </button>
               </Link>
-              <Link href="/tutorials/deploy-services">
+              <Link href="/certifications/continuous-delivery/cd-developer-cert#exam-details">
                 <button className={styles.startLearning}>
-                  <span>Start learning</span>
+                  <span>Exam Details</span>
                   <i className="fa-regular fa-arrow-right"></i>
                 </button>
               </Link>
@@ -97,12 +97,12 @@ export default function CertificationsCD() {
             <div className={styles.btnContainer}>
               <Link href="#">
                 <button className={styles.moreDetails}>
-                  Go to Study Guide
+                  Study Guide
                 </button>
               </Link>
               <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
-                  <span>Start learning</span>
+                  <span>Exam Details</span>
                   <i className="fa-regular fa-arrow-right"></i>
                 </button>
               </Link>
@@ -127,12 +127,12 @@ export default function CertificationsCD() {
             <div className={styles.btnContainer}>
               <Link href="#">
                 <button className={styles.moreDetails}>
-                  Go to Study Guide
+                  Study Guide
                 </button>
               </Link>
               <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
-                  <span>Start learning</span>
+                  <span>Exam Details</span>
                   <i className="fa-regular fa-arrow-right"></i>
                 </button>
               </Link>
@@ -140,67 +140,6 @@ export default function CertificationsCD() {
           </div>
         </div>
       </div>
-
-      {/* Developer Study Guide 
-      <div className={styles.studyGuide}>
-        <h2 id="cd-developer-study-guide">Developer Study Guide</h2>
-        <div className={styles.studyGuideCard}>
-          <div className={styles.info}>
-            <i className="fa-solid fa-circle-info"></i>
-            <strong>Get Certified</strong> | Harness Expert
-          </div>
-          <div className={styles.innerCard}>
-            <div className={styles.left}>
-              <h2>Continuous Delivery & GitOps - Developer (BETA COMING SOON)</h2>
-              <img
-                src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
-                alt="Harness Certified Expert - Developer - CD"
-                className={styles.badge}
-              />
-              <span className={styles.productVersion}>
-                <strong>Product version: </strong> Harness CD & GitOps Free/Team Plans
-              </span>
-            </div>
-            <div className={styles.right}>
-              <h3>Review Study Guide</h3>
-              <div className={styles.desc}>
-                Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
-                Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
-                advanced verification, and intelligent rollback
-              </div>
-              <CertificationReviewGuide />
-              <div className={styles.btnContainer}>
-                <Link href="/tutorials/deploy-services">
-                  <button className={styles.startLearning}>
-                    <span>Start learning</span>
-                    <i className="fa-regular fa-arrow-right"></i>
-                  </button>
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Developer Exam Details 
-      <div className={styles.examDetails}>
-        <h2>Developer Exam Details</h2>
-        <div className={styles.examDetailsCard}>
-          <CertificationExamDetails />
-
-          <div className={styles.btnContainer}>
-            <Link href="https://training.harness.io/page/continuous-delivery-developer">
-              <button className={styles.moreDetails}>Register for Exam</button>
-            </Link>
-            <Link href="/tutorials/deploy-services">
-              <button className={styles.startLearning}>
-                <span>Start learning</span>
-                <i className="fa-regular fa-arrow-right"></i>
-              </button>
-            </Link>
-          </div>
-        </div>
-      </div>*/}
     </div>
   );
 }

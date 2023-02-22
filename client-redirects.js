@@ -31,8 +31,15 @@ module.exports = {
     //  },    
     //===================================================================================
     
+    // Platform Tutorial
+
+    // Created by schoudhury on Feb 21, 2023
+       {
+         from: "/tutorials/platform/provision-azure-infrastructure",
+         to: "/tutorials/platform/install-delegate",
+       },
     
-    // DELEGATE NODE
+    // Delegate Docs
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
