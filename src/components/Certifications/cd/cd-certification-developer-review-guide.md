@@ -1,10 +1,4 @@
----
-sidebar_position: 2
-description: Continuous Delivery & GitOps Certification Review Guide
-title: Review Guide
----
-
-| Understanding CD Concept        | Material                                                                                                                                                             
+| Topic       | Material                                                                                                                                                             
 | :------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | 
 | Define Continuous Delivery | [CD overview and key concepts](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics) |
 | Describe Dashboards| [Overview and Service dashboards](https://developer.harness.io/docs/continuous-delivery/cd-dashboards/monitor-cd-deployments/#overview-and-services-dashboards) |

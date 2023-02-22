@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Security",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Harness Chaos Security"
+  }
+}

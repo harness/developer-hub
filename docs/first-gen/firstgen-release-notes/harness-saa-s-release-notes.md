@@ -505,9 +505,9 @@ See [Exclude Applications](../firstgen-platform/security/access-management-howto
 
 ### August 31, 2022, version 76518
 
-#### Enhancements
+#### New features and enhancements
 
-N/A
+This release does not include new features.
 
 #### Fixed Issues for CD
 

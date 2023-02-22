@@ -61,11 +61,7 @@ The **Version** field in the dialog lists the supported Nexus versions, 2.x an
 
 For Nexus 2.x, Harness supports repository formats Maven, npm, and NuGet. See Sonatype's website at [Supported Formats](https://help.sonatype.com/repomanager3/supported-formats).
 
-For Nexus 3.x, Harness supports repository formats Docker 3.0 and greater, Maven, npm, and NuGet.
-
-#### RAW Format Support
-
-Currently, this feature is behind the feature flag `NEXUS3_RAW_REPOSITORY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+For Nexus 3.x, Harness supports repository formats Docker 3.0 and greater, Maven, npm, Raw, and NuGet.
 
 ### Credentials
 

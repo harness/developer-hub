@@ -1,71 +1,24 @@
-# Customize the delegate to run your favorite third-party tools
+---
+sidebar_position: 2
+description: Customize Delegate to Install Third-Party Tools
+---
 
-Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. With the delegate installed, you can connect to third-party resources. The delegate performs all pipeline operations, including deployment and integration.
+# Customize Delegate to Install Third-Party Tools
 
-In this tutorial, we'll show you how to install Harness Delegate, and how to customize the delegate to run your favorite tools. 
+[Harness Delegate](/docs/platform/Delegates/get-started-with-delegates/delegates-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network. 
+
+Connecting to external systems usually requires a third-party client tool or library to be present locally. Some of the Harness CD and Platform tasks require such client tools to be present in the same container instance where the delegate runs. You can either create a custom delegate image (using the harness-provided delegate image as base image) or install these client tools along with the delegate. The former approach works best when you know all the client tools ahead of time while the latter approach works best when you are still building your CD pipelines and do not have the final list of client tools yet. This tutorials shows you to execute the latter approach using a delegate feature known as `INIT_SCRIPT`.
 
 ## Prerequisites
 
 - A free [Harness cloud](https://app.harness.io/auth/#/signup/utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started) account 
 - A deployment target such as Kubernetes cluster. You can use Minikube or Kind to create a cluster. In this tutorial, we'll use a cluster that was created on Google Cloud.
-  
-### Tutorial
+- Install a Kubernetes delegate onto the above Kubernetes cluster using the [Install Delegate](./install-delegate) tutorial. Use the `Kubernetes Manifest` option since we will modify the same manifest YAML to add customizations in this tutorial. Since the delegate is declaratively defined in YAML, it is easy to add new custom scripts and customize the delegate in other ways too. 
 
-Now that you've got a Harness cloud account, you can create a project.
+You can have the Git client, Helm, Terraform, PowerShell, Docker, AWS CLI, and other tools installed with your delegate, so there's a lot you can do. 
 
-![about the project](./static/customizing-delegate/about_project.png)
+## Install Git Client
 
-You can start by inviting collaborators to work with you, or you can click **Save and continue**. 
-
-![invite collaborators](./static/customizing-delegate/collaborators.png)
-
-Next, pick a Harness module for your project. Click the **Continuous Delivery** card.
-
-![cd module](./static/customizing-delegate/cd_module.png)
-
-Now you can create your first Continuous Delivery (CD) pipeline. 
-
-![cd get started stage](./static/customizing-delegate/cd_get_started.png)
-
-The major part of the work we're going to do is to install a delegate to perform pipeline activities. Click **Get Started**, and we'll move on to delegate installation.
-
-Decide where to install your delegate. This is your target. 
-
-You have two options: ‘Kubernetes’ or ‘Docker’. In this tutorial, we'll install the delegate on ‘Kubernetes’, 
-
-![installing delegate step](./static/customizing-delegate/install_delegate_step.png)
-
-After you choose your target &mdash; in this case, Kubernetes &mdash; you'll see the steps you need to use to install and verify the delegate. 
-
-![installing delegate](./static/customizing-delegate/install_delegate_second.png)
-
-The first thing you need to do is to download the YAML file and store it on your local machine. Keep a note of where you store it. 
-
-Next, make sure your Kubernetes cluster is up and running. You can use a cluster from any cloud provider. You can also use a cluster you install on your laptop with Minikube or Kind. 
-
-We're going to install the delegate on a cluster that was created on Google Cloud Platform (GCP). We'll apply the YAML to the cluster by running the `kubectl apply` command from the directory that contains the harness-delegate.yml file.
-
- `kubectl apply -f harness-delegate.yml`
-
-Make sure you run this command from the right path. It must be run from the directory location of your harness-delegate.yml file.
-
-This command triggers the creation of a bunch of configurations. 
-
-![cluster configurations applied](./static/customizing-delegate/cluster_configurations.png)
-
-When the work is done, you can go back and check the status of your delegate. You should see an installation success message within a few minutes. 
-
-![delegate installation successful](./static/customizing-delegate/delegate_successfull_install.png)
-
-Congratulations! Harness Delegate is installed and ready to carry out the work of your pipeline. 
-
-## Let’s customize our delegate
-
-Now let's run through some customizations of the delegate.
-
-### Install Git
-
-Your delegate is declaratively defined in YAML. This makes it easy to add custom scripts and customize the delegate in other ways too. You can have Git, Helm, Terraform, PowerShell, Docker, AWS CLI, and other tools installed with your delegate, so there's a lot you can do. 
 
 Open the delegate YAML file and look for the location of the `INIT_SCRIPT'.
 
@@ -73,7 +26,7 @@ Open the delegate YAML file and look for the location of the `INIT_SCRIPT'.
 
 You'll need to add your custom scripts to this location and install any utilities on top of the delegate.
 
-Let’s begin by installing Git on the delegate. We'll need to add the following script as the value of the `INIT_SCRIPT` field: 
+Let’s begin by installing `git` on the delegate. We'll need to add the following script as the value of the `INIT_SCRIPT` field: 
 
 `apt-get update 
 yes | apt-get install git`
@@ -122,7 +75,7 @@ You should see the Git command execution.
 
 Now, you can use any Git command in your project. 
 
-### Install AWS CLI
+## Install AWS CLI
 
 You can add AWS CLI tooling to your delegate the same way we added Git.
 
@@ -151,7 +104,7 @@ Save everything and run the pipeline.
 ![running the pipeline](./static/customizing-delegate/aws_run_pipeline.png)
 You can see the AWS CLI version.
 
-### Install kubectl
+## Install kubectl
 
 Add the following script into your script and apply the YAML the same way we did before.
 
@@ -179,9 +132,9 @@ Save everything and run the pipeline.
 
 The `kubectl` version information is displayed. 
 
-### Install Terraform
+## Install Terraform
 
-Add this script to the `IN_IT` section:
+Add this script to the `INIT_SCRIPT` section:
 
 ```
 curl -O -L  https://releases.hashicorp.com/terraform/0.12.25/terraform_0.12.25_linux_amd64.zip  
@@ -201,7 +154,7 @@ Apply your changes, save everything, and run the pipeline. You should see the Te
 
 ![Terraform console logs](./static/customizing-delegate/console_logs_terraform.png)
 
-### Install Helm
+## Install Helm
 
 The following `IN_IT` script installs Helm 3:
 
@@ -234,7 +187,7 @@ Apply changes, save the configuration, and run the pipeline. Your chart should b
 
 ![deploying helm chart](./static/customizing-delegate/helm_chart_deployed.png)
 
-### Install all at once
+## Install all at once
 
 Let’s combine all the tools and add them all to the `IN_IT` script. 
 
@@ -251,5 +204,3 @@ Save the configuration and run the pipeline. On success, you should see output t
 ![running the pipeline successfully](./static/customizing-delegate/together_execution.png)
 
 You can use these steps to install and play with any of your favorite tools on Harness Delegate. This customization gives you a lot of flexibility.  
-
-#### Get started with [*Harness Delegate*](https://developer.harness.io/docs/category/delegates/?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started) today!

@@ -60,7 +60,7 @@ export default function CCM() {
             <img src={`${baseUrl}img/icon_ccm.svg`} />
             <h1>Cloud Cost Management</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/cloud-cost-management">
               <button
                 className={clsx(
@@ -69,7 +69,21 @@ export default function CCM() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <i className="fa-regular fa-file"></i>
+                Documentation
+              </button>
+            </Link>
+
+            <Link href="/release-notes/cloud-cost-management">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <i className="fa-regular fa-file"></i>
+                Release Notes
               </button>
             </Link>
           </div>
@@ -77,9 +91,9 @@ export default function CCM() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness CCM is an intelligent cloud cost
-              management solution for FinOps, Infrastructure, and Engineering
-              teams. Harness CCM provides:
+              Harness CCM is an intelligent cloud cost management solution for
+              FinOps, Infrastructure, and Engineering teams. Harness CCM
+              provides:
               <ul>
                 <li>
                   Complete cost transparency across engineering and finance with

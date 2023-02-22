@@ -105,6 +105,12 @@ This release introduces the following new features and enhancements:
 
 * The Issue Details pane now shows the message “No recommendations are available at this time” when the scan tool doesn't return remediation steps for a specific issue. (STO-5380)
 
+## January 29, 2023
+
+### Continuous Integration
+
+- CI pipelines now support workflows that can run with some runtime inputs undefined. Previously a pipeline would fail if any runtime input was undefined for any field such as an environment variable, label, build argument, or port binding. (CI-5116 , ZD-33893, ZD-34255)
+
 
 ## January 17, 2023
 
