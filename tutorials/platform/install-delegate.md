@@ -86,15 +86,15 @@ NAME                                	CHART VERSION	APP VERSION	DESCRIPTION
 harness-delegate/harness-delegate-ng	1.0.8        	1.16.0     	A Helm chart for deploying harness-delegate
 ```
 
-Now we are ready to install the delegate. The following command installs/upgrades `firstk8sdel` delegate (which is a Kubernetes workload) in the `harness-delegate-ng` namespace by using the `harness-delegate/harness-delegate-ng` helm chart. 
+Now we are ready to install the delegate. The following command installs/upgrades `helm-delegate` delegate (which is a Kubernetes workload) in the `harness-delegate-ng` namespace by using the `harness-delegate/harness-delegate-ng` helm chart.
 
 ```
-helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
+helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
   harness-delegate/harness-delegate-ng \
-  --set delegateName=firstk8sdel \
-  --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-  --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
-  --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+  --set delegateName=helm-delegate \
+  --set accountId=FkdfjqooTSu4Uy_Unr070A \
+  --set delegateToken=Zjc0ZTA3NGU1Zjk4NTg4MTAyYzBiMjM1OGViMDU3NmY= \
+  --set managerEndpoint=https://app.harness.io/gratis \
   --set delegateDockerImage=harness/delegate:23.02.78306 \
   --set replicas=1 --set upgrader.enabled=false
 ```
@@ -123,11 +123,11 @@ module "delegate" {
   source = "harness/harness-delegate/kubernetes"
   version = "0.1.5"
 
-  account_id = "PUT_YOUR_HARNESS_ACCOUNTID_HERE"
-  delegate_token = "PUT_YOUR_DELEGATE_TOKEN_HERE"
-  delegate_name = "firstk8sdel"
+  account_id = "FkdfjqooTSu4Uy_Unr070A"
+  delegate_token = "Zjc0ZTA3NGU1Zjk4NTg4MTAyYzBiMjM1OGViMDU3NmY="
+  delegate_name = "terraform-delegate"
   namespace = "harness-delegate-ng"
-  manager_endpoint = "PUT_YOUR_MANAGER_HOST_AND_PORT_HERE"
+  manager_endpoint = "https://app.harness.io/gratis"
   delegate_image = "harness/delegate:23.02.78306"
   replicas = 1
   upgrader_enabled = false
@@ -243,14 +243,14 @@ Ensure that you have the Docker runtime installed on your host. If not, use one 
 Now you can install the delegate using the following command.
 
 ```bash
-docker run -d --name="firstdockerdel" --cpus="0.5" --memory="2g" \
--e DELEGATE_NAME=firstdockerdel \
--e NEXT_GEN=true \
--e DELEGATE_TYPE=DOCKER \
--e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
--e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
--e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-harness/delegate:22.11.77436
+docker run --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=FkdfjqooTSu4Uy_Unr070A \
+  -e DELEGATE_TOKEN=Zjc0ZTA3NGU1Zjk4NTg4MTAyYzBiMjM1OGViMDU3NmY= \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.02.78306
 ```
 `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` should be replaced by the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location in the Account Overview page under Account Settings section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
