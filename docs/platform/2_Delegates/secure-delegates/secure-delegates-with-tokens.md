@@ -67,7 +67,7 @@ The Delegate is set up using the **harness-delegate.yaml** you downloaded origin
 
 Edit the **harness-delegate.yaml** you downloaded originally with the new token and then run `kubectl apply -f harness-delegate.yaml` to restart the Delegate pods.
 
-Paste the token in the Delegate `UPGRADER_TOKEN` setting in the `Secret` spec and `DELEGATE_TOKEN` setting setting in the `Secret` spec:
+Paste the token into the delegate `spec` of the `Secret`, in the `UPGRADER_TOKEN` field. Then paste the token into the specification of the `Secret` in the `DELEGATE_TOKEN` field. 
 
 
 ```
