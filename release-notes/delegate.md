@@ -14,6 +14,28 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). For Self-Managed Enterprise Edition, see [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
+## February 23, 2023, version 785xx
+### Delegate version 78500
+
+Harness NextGen release 785xx includes the following changes for Harness Delegate.
+
+:::note
+The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576)
+
+The repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/ is being deprecated. The Helm chart will no longer be available from the repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
+:::
+
+### What's new
+
+This release introduces the following new features and enhancements:
+
+-  - The delegate hostname can be used for dynamic selection. You can select a delegate from those in your delegate groups during pipeline runtime. (DEL-5052)
+
+### Fixed issues
+
+This release includes the following fixes:
+
+- Fixed an issue that interfered with the delegate installation process. Delegate API requests did not include the context that was required; organization and project ID information was not being sent with requests. The required context is now included. (DEL-5951)
 
 ## February 15, 2023, version 78421
 ### Delegate version 78306
