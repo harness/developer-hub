@@ -1,5 +1,6 @@
 ---
 title: Openshift SCC
+sidebar_position: 1
 ---
 ## OpenShift Security Context Constraint (SCC)
 

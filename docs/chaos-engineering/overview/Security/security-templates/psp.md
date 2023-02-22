@@ -1,5 +1,6 @@
 ---
 title: PSP
+sidebar_position: 2
 ---
 ## Using pod security policies with HCE
 

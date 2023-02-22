@@ -1,28 +1,29 @@
 ---
 title: Kyverno policies
+sidebar_position: 3
 ---
 [Kyverno policies](https://kyverno.io/policies/pod-security/) block the configurations that don't match a policy (enforce mode) or can generate policy violations (audit mode). It scans existing configurations and reports violations in the cluster. 
 HCE recommends using the provided policy configuration to enable the execution of all supported (out-of-the-box) experiments listed in the enterprise ChaosHub. Having said that, this is recommendatory in nature and left to user discretion/choice depending upon experiments desired.  
 
-The details listed here are expected to aid users of Kyverno. If you are using alternate means to enforce runtime security, such as native Kubernetes PSPs (pod security policies), go [here](./psp.md).
+The details listed here are expected to aid users of Kyverno. If you are using alternate means to enforce runtime security, such as native Kubernetes PSPs (pod security policies), go [here](psp).
 
 ## Policies in HCE
 
 HCE recommends using the following policies:
 
-1. [Add Capabilities](../../static/overview/manifest/kyverno-policies/allow-capabilities-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts add capabilities except the `NET_ADMIN` and `SYS_ADMIN` for the pods that use runtime API
-2. [Host Namespaces](../../static/overview/manifest/kyverno-policies/allow-host-namespaces-for-litmus-experiments-which-uses-runtime-api.yaml): It validates following host namespaces for the pods that use runtime API.
+1. [Add capabilities](../../../static/overview/manifest/kyverno-policies/allow-capabilities-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts add capabilities except the `NET_ADMIN` and `SYS_ADMIN` for the pods that use runtime API.
+2. [Host namespaces](../../../static/overview/manifest/kyverno-policies/allow-host-namespaces-for-litmus-experiments-which-uses-runtime-api.yaml): It validates following host namespaces for the pods that use runtime API.
     1. HostPID: It allows hostPID. It should be set to `true`.
     2. HostIPC: It restricts the host IPC. It should be set to `false`.
     3. HostNetwork: It restricts the hostNetwork. It should be set to `false`.
-3. [Host Paths](../../static/overview/manifest/kyverno-policies/allow-host-paths-for-litmus-experiments-which-uses-hostPaths.yaml): It restricts hostPath except the `socket-path` and `container-path` host paths for the pods that uses runtime API. It allows hostPaths for service-kill experiments.
-4. [Privilege Escalation](../../static/overview/manifest/kyverno-policies/allow-privilege-escalation-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts privilege escalation except for the pods that use runtime API
-5. [Privilege Container](../../static/overview/manifest/kyverno-policies/allow-privileged-containers-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts privileged containers except for the pods that use runtime API
-6. [User Groups](../../static/overview/manifest/kyverno-policies/allow-user-groups-for-litmus-experiments.yaml): It allows users groups for all the experiment pods
+3. [Host paths](../../../static/overview/manifest/kyverno-policies/allow-host-paths-for-litmus-experiments-which-uses-hostPaths.yaml): It restricts hostPath except the `socket-path` and `container-path` host paths for the pods that uses runtime API. It allows hostPaths for service-kill experiments.
+4. [Privilege escalation](../../../static/overview/manifest/kyverno-policies/allow-privilege-escalation-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts privilege escalation except for the pods that use runtime API.
+5. [Privilege container](../../../static/overview/manifest/kyverno-policies/allow-privileged-containers-for-litmus-experiments-which-uses-runtime-api.yaml): It restricts privileged containers except for the pods that use runtime API.
+6. [User groups](../../../static/overview/manifest/kyverno-policies/allow-user-groups-for-litmus-experiments.yaml): It allows users groups for all the experiment pods.
 
 ## Install policies
 
-Kyverno policies are based on the [Kubernetes Pod Security Standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) definitions. It is recommended that you apply all the pod security policies. To apply all the pod security policies, [install Kyverno](https://kyverno.io/docs/installation/) and [kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/binaries/), and run:
+Kyverno policies are based on the [Kubernetes pod security standards](https://kubernetes.io/docs/concepts/security/pod-security-standards/) definitions. It is recommended that you apply all the pod security policies. To apply all the pod security policies, [install Kyverno](https://kyverno.io/docs/installation/) and [kustomize](https://kubectl.docs.kubernetes.io/installation/kustomize/binaries/), and run:
 
 ```bash
 kustomize build https://github.com/litmuschaos/chaos-charts/security/kyverno-policies | kubectl apply -f -
@@ -32,7 +33,7 @@ kustomize build https://github.com/litmuschaos/chaos-charts/security/kyverno-pol
 
 If a setup contains restricted policies, it will not allow HCE experiments to be executed by default. For example, [deny-privilege-escalation](https://kyverno.io/policies/pod-security/restricted/deny-privilege-escalation/deny-privilege-escalation/) policy doesn't allow privileged escalation. It denies all the pods of privileged escalation.
 
-To allow HCE pods to use the privileged escalation, add the HCE serviceAcccount or ClusterRole or Role inside the exclude block as:
+To allow HCE pods to use the privileged escalation, add the HCE service acccount or ClusterRole or Role inside the exclude block as:
 
 [embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/kyverno-policies/restricted-policies.yaml yaml)
 ```yaml

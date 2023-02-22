@@ -1,5 +1,6 @@
 ---
-title: Chaos on specific namespaces 
+title: Namespace considerations
+sidebar_position: 2
 ---
 To run chaos experiments on specific namespaces, follow the below mentioned steps.
 

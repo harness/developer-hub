@@ -1,9 +1,9 @@
 {
   "position": 4,
-  "label": "Overview",
+  "label": "Security",
   "collapsible": true,
   "collapsed": true,
   "customProps": {
-    "description": "Overview of Harness Chaos Engineering"
+    "description": "Harness Chaos Security"
   }
 }
