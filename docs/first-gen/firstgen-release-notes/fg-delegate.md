@@ -10,6 +10,19 @@ To identify the cluster that hosts your account, open Harness FirstGen and go to
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
+## February 23, 2023, version 785xx
+### Delegate version 78500
+
+Harness FirstGen release 785xx includes the following feature changes and fixes for Harness Delegate.
+
+### What's new
+
+- The delegate hostname can be used for dynamic selection. You can select a delegate from those in your delegate groups during pipeline runtime. (DEL-5052)
+
+### Fixed issues
+
+This release does not include fixed issues for Harness Delegate.
+
 ## February 15, 2023, version 78421
 ### Delegate version 78306
 
