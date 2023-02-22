@@ -1,7 +1,7 @@
 ---
 title: Define a MacOS Build Infrastructure and Anka Registry
 description: This topic describes how to set up a Harness MacOS build farm that uses an Anka registry and controller.
-sidebar_position: 45
+sidebar_position: 40
 ---
 
 :::note
@@ -12,7 +12,7 @@ This topic describes the high-level workflow for setting up a Harness macOS buil
 
 The following diagram shows how Harness CI and Anka work together. Once you set up the Harness and Anka components, you can easily scale up your build farm with additional templates, build nodes, and VMs. 
 
-![](./static/macos-build-infra-with-anka-registry-mult-nodes.png)
+![](../static/macos-build-infra-with-anka-registry-mult-nodes.png)
 
 
 The following steps describe the workflow:
@@ -60,7 +60,7 @@ Optionally, you can enable token authentication for the controller and registry 
 
 Set up the Harness delegate and runner.  
 
-You can run your delegate and runner on [Docker](define-a-docker-build-infrastructure.md), [MacOS](./define-macos-build-infra-with-anka-registry.md), [AWS](./set-up-an-aws-vm-build-infrastructure.md), [Azure](./define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](./define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
+You can run your delegate and runner on [Docker](../define-a-docker-build-infrastructure.md), [MacOS](./define-macos-build-infra-with-anka-registry.md), [Azure](./define-a-ci-build-infrastructure-in-azure.mdd), and [Google Cloud Platform](./define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
 
 ### Set up the Harness runner to communicate with the Anka controller
