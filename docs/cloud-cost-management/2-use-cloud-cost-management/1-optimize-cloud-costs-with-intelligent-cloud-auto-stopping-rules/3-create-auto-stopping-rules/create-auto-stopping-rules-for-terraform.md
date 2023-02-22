@@ -28,11 +28,10 @@ To use Terraform you first need to install it. To install Terraform, download th
 * Linux: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.0.1/tf_3.0.1_linux_amd64.zip>
 * Windows: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.0.1/tf_3.0.1_windows_amd64.zip>
 
-For Windows, you need to manually extract the contents of the Zip folder and place it in the following location:
+For Windows, you need to place the Zip file in the following location:
 
 `C:\Users\Administrator\AppData\Roaming\terraform.d\plugins\harness.io\ccm\harness-ccm\{version}\windows_386\terraform-provider-harness-ccm.exe
 `
-
 
 
 For more information on installing Terraform, see [Install Terraform for AWS](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/aws-get-started) and [Install Terraform for Azure](https://learn.hashicorp.com/tutorials/terraform/install-cli?in=terraform/azure-get-started).
