@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-02-06T10:00
+date: 2023-02-15T10:00
 sidebar_position: 1
 ---
 
@@ -12,6 +12,59 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## February 15, 2023, version 78421
+
+### Continuous Integration
+
+* Microsoft Windows (amd64) is now a supported [Harness Cloud](../docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) build infrastructure option. (CI-5455)
+* **Python** is now available as a built-in **Shell** option for [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md). (CI-6692)
+* [Run steps](../docs/continuous-integration/ci-technical-reference/run-step-settings.md) can now reference images in GCR through [GCP connectors](../docs/platform/7_Connectors/connect-to-google-cloud-platform-gcp.md) that use inherited credentials. (CI-5758, ZD-38986)
+  * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
+  * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
+* Use [Background steps](../docs/continuous-integration/ci-technical-reference/background-step-settings.md) to configure service dependencies. (CI-5580)
+  * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
+  * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
+  * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option.
+* Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
+* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](../docs/platform/11_Triggers/triggering-pipelines.md). (CI-5720)
+
+### Delegate version 78306
+
+This release introduces the following new features and enhancements:
+
+- Added the `helm repo update` command to the delegate installer. The command is included in the instructions that apply the delegate manifest. This change reduces the chance of retrieving the wrong file from the repository. (DEL-5540)
+
+### Harness Platform
+
+- The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. (PL-31136)
+  This update will not affect any business operations.
+
+- The [Role Assignment](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now includes the principal's name and email address in the response.(PL-31064, ZD-36050)
+
+- Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
+  
+  For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/Security/add-a-google-cloud-secret-manager)
+
+- There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
+  
+  Following are the entity creation limits: 
+
+  - Project - 100
+  - Secrets - 100
+  - Variables - 100
+  - User groups -100
+  - Service accounts - 100
+
+- You can now add policy sets under the **Advanced** section of each step. (PIE-7794)
+
+  In this way, you can validate step outputs generated during pipeline execution without explicitly requesting a payload. Policy sets receive the steps and their outputs as payloads, with a pre-defined schema for every step.
+
+- Accessing the CD module redirects you to one of the following: 
+
+  - Get Started: If you don't have any pipelines in your project.
+
+  - Deployment list page: This is the default selection page. (PIE-7625)
+
 ## February 6, 2023, version 78321
 
 ### Continuous Delivery
@@ -20,31 +73,12 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   Any API call Harness makes to ServiceNow requires an authentication token. Previously, Harness supported username and password authentication only. Now we support ADFS authentication.
 
-  ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)  
-- Kubernetes Dry Run step added. (CDS-43839)
-  
-  You can now add the Dry Run step for Kubernetes and Native Helm deployments.
+  ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)
 
-  ![Dry Run step](static/bb64e94a2baf0858bbefe20ecede63ff1e4de692c15882c4f131df7e17c9906b.png)
+### Continuous Integration
 
-  The Dry Run step fetches the Kubernetes manifests or Helm charts in a stage and performs a dry run of those resources. This is the same as running a `kubectl apply --filename=manifests.yaml --dry-run`.
-  
-  You can use the Dry Run step to check your manifests before deployment. You can follow the step with an [Approval](https://developer.harness.io/docs/category/approvals/) step to ensure the manifests are valid before deployment.
-  
-  You can reference the resolved manifest from the Dry Run step in subsequent steps using a Harness variable expression.
-  ```
-  <+pipeline.stages.[Stage_Id].spec.execution.steps.[Step_Id].k8s.ManifestDryRun>
-  ```
-
-  For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` the expression would be:
-
-  ```
-  <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
-  ```
-- NPM/Maven/NuGet repository format support for Nexus artifacts with Tanzu Application Services (TAS). (CDS-50551)
-  You can now use NPM/Maven/NuGet repository formats for Nexus artifacts in TAS Harness services.
-
-  ![Nexus artifacts](static/44009d0aa38851738ebed25ff3dabeb232bc729f904e219bb14d8cdd0178a283.png)
+- Linux ARM is now supported in [Harness Cloud](../docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) build infrastructures. (CI-5787)
+- The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
 
 ### Harness Platform
 

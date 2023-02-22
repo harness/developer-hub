@@ -26,6 +26,8 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 The Harness GCP Connector to use to connect to GCR. See [Google Cloud Platform (GCP) Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
+This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+
 ### Host
 
 The GCR registry hostname. For example, `us.gcr.io` hosts images in data centers in the United States, in a separate storage bucket from images hosted by `gcr.io`.

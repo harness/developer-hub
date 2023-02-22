@@ -22,7 +22,7 @@ Text string.
 
 Select the Harness Artifactory Connector to use for this upload.
 
-See [Artifactory Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+See [Artifactory Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md). This step supports Artifactory connectors that use either anonymous or username and password authentication.
 
 ### Target
 

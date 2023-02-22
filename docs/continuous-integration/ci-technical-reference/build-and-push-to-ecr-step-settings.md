@@ -22,7 +22,7 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 
 ### AWS Connector
 
-The Harness AWS Connector to use to connect to ECR. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to push to ECR. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+The Harness AWS Connector to use to connect to ECR. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to push to ECR. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md). This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross account access).
 
 ### Region
 
@@ -48,7 +48,7 @@ Each tag should added separately.
 
 #### Base Image Connector
 
-Select an authenticated Connector to download base images from the container registry. Otherwise, the Step downloads base images without authentication. Specifying a Base Image Connector is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads. ​
+Select an authenticated connector to download base images from a DockerHub container registry. If you do not specify a **Base Image Connector**, the step downloads base images without authentication. Specifying a **Base Image Connector** is recommended because unauthenticated downloads generally have a lower rate limit than authenticated downloads.
 
 #### Optimize
 
