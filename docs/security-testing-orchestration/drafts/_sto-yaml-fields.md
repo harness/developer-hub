@@ -116,37 +116,38 @@
         <th> SecurityTests step key</th>
     </tr>
     <tr>
-        <td><a href="#auth-access-id">Access Id</td> 
+        <td>Access Id</td> 
         <td><code></code>TBD</td>
         <td><code>access_id</code></td>
     </tr>
      <tr>
-        <td><a href="#auth-access-token">Access Token</td> 
+        <td>Access Token</td> 
         <td><code></code>TBD</td>
         <td><code>access_token</code></td>
     </tr>
     <tr>
-        <td><a href="#auth-domain">Domain</td> 
+        <td>Domain</td> 
         <td><code></code>TBD</td>
         <td><code>domain</code></td>
     </tr>
     <tr>
-        <td><a href="#auth-access-api-version">API Version</td> 
+        <td>API Version</td> 
         <td><code></code>TBD</td>
         <td><code>version</code></td>
     </tr>
      <tr>
-        <td><a href="#auth-type">Type</td> 
+        <td>Type</td> 
         <td><code></code>TBD</td>
         <td><code>type</code></td>
     </tr>
     <tr>
-        <td><a href="#auth-enforce-ssl">Enforce SSL</td> 
+        <td>>Enforce SSL</td> 
         <td><code></code>TBD</td>
         <td><code>ssl</code></td>
     </tr>
 </table>
 
+<!-- 
 ## Tool Settings
 
 <table>
@@ -157,22 +158,22 @@
     </tr>
     <tr>
         <td><Include</td> 
-        <td><code></code>TBD</td>
+        <td><code>TBD</code></td>
         <td><code>include</code></td>
     </tr>
      <tr>
         <td>Exclude</td> 
-        <td><code></code>TBD</td>
+        <td><code>TBD</code></td>
         <td><code>exclude</code></td>
     </tr>
     <tr>
         <td>Context</td> 
-        <td><code></code>TBD</td>
+        <td><code>TBD</code></td>
         <td><code>context</code></td>
     </tr>
     <tr>
         <td>Context (images) </td> 
-        <td><code></code>TBD</td>
+        <td><code>TBD</code></td>
         <td><code>image_name</code></td>
     </tr>
      <tr>
@@ -226,6 +227,8 @@
         <td><code>product-lookup</code></td>
     </tr>
 </table>
+
+-->
 
 ## Instance Settings
 

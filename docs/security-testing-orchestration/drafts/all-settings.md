@@ -1,7 +1,7 @@
 ---
 title: STO Settings Reference
 description: All the available settings to configure individual scans.
-sidebar_position: hidden
+sidebar_position: 0
 ---
 
 # ALL SETTINGS
@@ -10,11 +10,76 @@ You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest res
 
 You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
 
+## Setting up a scan step
+
+<!-- ============================================================================= -->
+
+### Using the Step Palette 
+
+To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a $PRODUCT scan step to the stage and configure it as described below. 
+
+<details>
+    <summary>Step Palette</summary>
+
+![](./static/step-palette-00.png) 
+
+</details>
+
+<!-- ============================================================================= 
+
+### Security step settings 
+To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a Security scan step to the stage and configure it as described below. 
+
+:::note
+Add each setting to the *Settings* field in the Run step UI, or configure the pipeline YAML as shown in the following example. Refer to each section for the YAML keys to use. 
+:::
+
+<details>
+    <summary>Configure a step in the UI</summary>
+
+![](../sto-techref-category/static/security-step-settings-reference-00.png) 
+
+</details>
+
+<details>
+    <summary>Configure a step in the pipeline YAML</summary>
+            
+        ```yaml
+
+        - step:
+            type: Security
+            name: brakeman scan
+            identifier: brakeman_scan
+            spec:
+            connectorRef: account.harnessImage
+            privileged: true
+            settings:
+                policy_type: 
+                scan_type: repository
+                repository_project: TBD
+                repository_branch: TBD
+                product_name: brakeman
+                product_config_name: brakeman-default
+                fail_on_severity: HIGH
+            imagePullPolicy: Always
+            failureStrategies:
+            - onFailure:
+                errors:
+                    - AllErrors
+                action:
+                    type: Ignore
+
+        ```
+
+</details>
+
+<!-- ============================================================================= -->
+
 
 ## Scan settings
 
 <details>
-    <summary>YAML keys to use in Security step</summary>
+    <summary>Security step YAML keys</summary>
 <table>
     <tr>
         <th> Setting </th>
@@ -35,6 +100,7 @@ You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners,
 </details>
 
 <!-- ============================================================================= -->
+
 <a name="scan-mode"></a>
 
 ### Scan Mode
@@ -65,12 +131,12 @@ import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-nam
 ## Target settings
 
 <details>
-    <summary>YAML keys</summary>
+    <summary>Security step YAML keys</summary>
 <table>
     <tr>
         <th> Setting </th>
-        <th> CI step key </th>
-        <th> SecurityTests step key</th>
+        <th> CI Build stage </th>
+        <th> Security Tests stage</th>
     </tr>
     <tr>
         <td><a href="#target-type">Type</a></td> 
@@ -152,12 +218,12 @@ import StoSettingTargetWorkspace from './shared/_sto-ref-ui-target-workspace.md'
 ## Ingestion settings
 
 <details>
-    <summary>YAML keys to use in Security step</summary>
+    <summary>Security step YAML keys</summary>
 <table>
     <tr>
         <th> Setting </th>
-        <th> CI step key </th>
-        <th> SecurityTests step key</th>
+        <th> CI Build stage </th>
+        <th> Security Tests stage</th>
     </tr>
     <tr>
         <td><a href="#ingestion-file">File</a></td> 
@@ -308,12 +374,12 @@ import StoSettingImageRegion from './shared/_sto-ref-ui-image-region.md';
 
 ## Authentication Settings
 <details>
-    <summary>YAML keys to use in Security step</summary> 
+    <summary>Security step YAML keys</summary>
 <table>
     <tr>
         <th> Setting </th>
-        <th> CI step key </th>
-        <th> SecurityTests step key</th>
+        <th> CI Build stage </th>
+        <th> Security Tests stage</th>
     </tr>
     <tr>
         <td><a href="#auth-access-id"></a>Access Id</td> 
@@ -418,13 +484,12 @@ import StoSettingProductSSL from './shared/_sto-ref-ui-auth-ssl.md';
 ## Tool Settings
 
 <details>
-    <summary>YAML keys to use in Security step</summary> 
-
+    <summary>Security step YAML keys</summary>
 <table>
     <tr>
         <th> Setting </th>
-        <th> CI step key </th>
-        <th> SecurityTests step key</th>
+        <th> CI Build stage </th>
+        <th> Security Tests stage</th>
     </tr>
     <tr>
         <td><a href="#tool-include">Include</a></td> 
@@ -658,13 +723,12 @@ import StoSettingToolLookupType from './shared/_sto-ref-ui-tool-prod-lookup-type
 ## Instance Settings
 
 <details>
-    <summary>YAML keys to use in Security step</summary> 
-
+    <summary>Security step YAML keys</summary>
 <table>
     <tr>
         <th> Setting </th>
-        <th> CI step key </th>
-        <th> SecurityTests step key</th>
+        <th> CI Build stage </th>
+        <th> Security Tests stage</th>
     </tr>
     <tr>
         <td><a href="#instance-domain"></a>Domain</td> 
@@ -740,12 +804,12 @@ import StoSettingInstancePath from './shared/_sto-ref-ui-instance-path.md';
 ## Logging, CLI Flags, and Fail on Severity
 
 <details>
-    <summary>YAML keys to use in Security step</summary> 
+    <summary>Security step YAML keys</summary>
 <table>
     <tr>
         <th> Setting </th>
-        <th> CI step key </th>
-        <th> SecurityTests step key</th>
+        <th> CI Build stage </th>
+        <th> Security Tests stage</th>
     </tr>
     <tr>
         <td><a href="#log-level"></a>Log Level</td> 

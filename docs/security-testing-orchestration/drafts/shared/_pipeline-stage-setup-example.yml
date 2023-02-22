@@ -1,0 +1,22 @@
+- step:
+    type: Security
+    name: brakeman scan
+    identifier: brakeman_scan
+    spec:
+      connectorRef: account.harnessImage
+      privileged: true
+      settings:
+        policy_type: orchestratedScan
+        scan_type: repository
+        repository_project: nodegoat
+        repository_branch: <+codebase.branch>
+        product_name: brakeman
+        product_config_name: brakeman-default
+        fail_on_severity: HIGH
+      imagePullPolicy: Always
+    failureStrategies:
+      - onFailure:
+          errors:
+            - AllErrors
+          action:
+            type: Ignore
