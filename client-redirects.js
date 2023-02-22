@@ -95,12 +95,6 @@ module.exports = {
          to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
-
-    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
-       {
-         from: "/docs/platform/Delegates/delegate-guide/install-a-kubernetes-delegate",
-         to: "/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate",
-       },
     
     
     // Created by kat-enos for PR-738 on Feb 21, 2023
@@ -109,7 +103,6 @@ module.exports = {
           to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
         },
     
-  
 
     // Created by kat-enos for PR-738 on Feb 21, 2023
     {
@@ -117,12 +110,6 @@ module.exports = {
       to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
     },
     
-
-    // Created by kat-enos for PR-738 on Feb 21, 2023
-    {
-      from: "/docs/platform/Delegates/install-delegates/docker-delegates/install-a-docker-delegate",
-      to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
-    },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
