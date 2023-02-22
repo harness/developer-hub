@@ -19,7 +19,7 @@ Running builds in your infrastructure, rather than in a vendor's cloud, has sign
 
 For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [​Harness Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a build farm. The [​Harness Docker Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ##### CI build infrastructure in Google Cloud Platform
 ![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-29.png)
@@ -101,7 +101,7 @@ Later in this workflow, you'll reference the pool identifier in Harness Manager 
 
 1. Navigate to the Delegates page for your Harness account, organization, or project.
 2. Click **New Delegate** and select **Docker**.
-3. Follow the steps in [Install the Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md) and download the **docker-compose.yaml** file to your local machine.
+3. Follow the steps in [Install a delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) and download the **docker-compose.yaml** file to your local machine.
 
 ### Step 4: Configure the 'docker-compose.yml' file
 
@@ -209,7 +209,7 @@ services:
 
 	 The Delegate and Runner have now been successfully installed, registered, and connected.
 
-	 To configure the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md#harness-docker-delegate-environment-variables).
+	 To configure the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md#harness-docker-delegate-environment-variables).
 
 ### Step 6: Run a CI build
 
