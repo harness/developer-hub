@@ -80,7 +80,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock<code> </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>

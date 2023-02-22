@@ -50,7 +50,7 @@ spec:
              # substitutes this path with an appropriate container path
              # ex: '/var/lib/docker/containers', '/var/lib/containerd/io.containerd.runtime.v1.linux/k8s.io', '/var/lib/containers/storage/overlay/'
             - =(hostPath):
-                path: "/var/lib/docker/containers"
+                path: "/var/lib/containerd/io.containerd.runtime.v1.linux/k8s.io"
     - name: check service-kill host-path
       match:
         resources:
