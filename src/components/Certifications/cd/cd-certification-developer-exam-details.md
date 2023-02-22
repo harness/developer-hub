@@ -1,14 +1,11 @@
----
-sidebar_position: 2
-description: Continuous Delivery & GitOps Certification Review Guide
-title: Review Guide
----
-
-## Preparing for the Exam
-
 The Continuous Delivery Developer exam tests your knowledge and skills of the Harness Continuous Delivery module.  
 
-### Exam Details
+## Prerequisites
+
+- Basic terminal skills
+- Basic understanding of on premise or cloud architecture
+
+## Exam Details
 
 Exam Duration: 90 minutes <br/>
 Question Type: Multiple choice
@@ -25,8 +22,10 @@ Question Type: Multiple choice
 
 <br />
 
+## Exam Objectives
+
 <details>
-<summary>Exam Objectives</summary>
+<summary>List of Objectives</summary>
 
 The following is a detailed list of exam objectives:
 
@@ -104,7 +103,7 @@ The following is a detailed list of exam objectives:
 
 <br />
 
-## Next steps
+## Next Steps
 
 1. Create an account in 
 2. Register for an exam 
