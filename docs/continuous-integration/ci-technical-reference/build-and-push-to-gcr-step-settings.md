@@ -112,12 +112,9 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-## See also
+## Advanced settings
 
-You can find the following settings on the **Advanced** tab in the step settings pane.
-
-### Conditional Execution
+You can find the following settings on the **Advanced** tab in the step settings pane:
 
 * [Conditional Execution](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
 * [Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.
-* 

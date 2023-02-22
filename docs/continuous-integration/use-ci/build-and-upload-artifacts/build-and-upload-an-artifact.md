@@ -55,10 +55,10 @@ The codebase configuration specifies the repo to use for this pipeline. When you
 
 For all Build and Push steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the reference topic that corresponds with your registry provider:
 
-* Docker: [Build and Push to Docker Registry Step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* Azure Container Registry (ACR): Use [Build and Push to Docker Registry Step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* Google Container Registry (GCR): [Build and Push to GCR Step](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
-* Amazon Elastic Container Registry (ECR): [Build and Push to ECR Step Settings](../../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
+* Docker: [Build and Push an image to Docker registry step settings](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
+* Azure Container Registry (ACR): [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-to-acr-step-settings.md) or [Build and Push an image to Docker registry step settings](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
+* Google Container Registry (GCR): [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
+* Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](../../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
 
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
