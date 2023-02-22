@@ -1,0 +1,74 @@
+---
+title: Changes dashboard
+description: Get a quick overview of all the change events.
+sidebar_position: 30
+---
+
+
+The Changes dashboard provides a quick overview of change events from multiple change Sources. A Change Source is a combination of a Harness Service and associated Environment that monitors changes such as deployments, infrastructure changes, and incidents. Change events are grouped in one location, enabling you to see how a certain change affects the rest of the system.
+
+The Changes dashboard helps you understand when the change occurred, why it took place, and what kind of effect it had.
+
+Perform the following steps to go to the Changes dashboard:
+
+1. In your Harness project, navigate to the **Service Reliability** module, and then select **Changes**.  
+   The Changes dashboard is displayed.
+
+The dashboard is divided into the following sections:
+
+- Filters
+- Changes Timeline
+- Changes list
+
+![Changes dashboard](./static/change-impact-changes-dashboard.png)
+
+#### Filters
+
+You can customize the Changes dashboard using the following filters:
+
+- Time Range: Select the time period for which you want to see the change events. The available filters are **Last 4 hours**, **Last 24 hours**, **Last 3 days**, **Last 7 days**, and **Last month**.
+- Services: Select the monitored service for which you want to see the changes. You can select multiple monitored services.
+- Environments: Select the environment for which you want to see the changes. You can select multiple environments.
+- Change Types: Select the type of change source for which you want to see the changes. The available filters are Deployment, Infrastructure, Incidents, and Feature Flags.
+- Sources: Filters the change events based on change source. For example, Harness CD NextGen, Harness CD, Kubernetes, PagerDuty, Feature Flags, and so on. You can select multiple change sources.
+
+
+#### Changes Timeline
+
+The Changes Timeline is a graphical representation of all the changes that occurred based on the filter settings.  
+
+You can hover over a change event icon to see the details.
+
+![Change event details](./static/change-impact-hover-change-events.png)
+
+To view the change details for a specific time slot, select the time slot on the Changes Timeline. A time window appears with the details of all the changes that occurred in that specific time slot. You can increase or decrease the time slot using the handles.
+
+![change event time window](./static/change-impact-change-event-timewindow.png)
+
+
+#### Changes list
+
+The Changes list displays all the change events along with the following details:
+
+- TIME: Time at which the event occurred
+- DESCRIPTION: Description of the event. For example, Kubernetes ConfigMap event.
+- MONITORED SERVICE NAME: Name of the monitored service associated with the event.
+- TYPE: Type of the change source. For example, Infrastructure.
+- SOURCE: Name of the change source. For example, K8sCluster.
+
+![changes list](./static/change-impact-changes-list.png)
+
+
+### View change event details
+
+Select a change event to see more details about that event. The change event details screen appears. It has the following details:
+
+- Name of the service, environment, source, and event type.
+- Time and date at which the event was triggered.
+- YAML file for the event
+- Service Health score timeline displaying the health of the service.
+
+You can hover over the timeline to view the change event details.
+
+#### View Changes in YAML Format
+You can compare the current and previous YAML files for the event. To do this, select **Show YAML Change**.
