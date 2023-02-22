@@ -1,14 +1,14 @@
 ---
-title: STO Settings Template 1
+title: BlackDuckHub Scanner Reference
 description: All the available settings to configure individual scans.
-sidebar_position: 10
+sidebar_position: 30
 ---
 
 # ALL SETTINGS
 
-You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest results from $PRODUCT ] into your pipelines. This topics describes the required and optional settings for setting up a $PRODUCT scan. 
+You can orchestrate Black Duck Open Hub scans and ingest scan results into your pipelines. This topics describes the required and optional settings for setting up a Black Duck Open Hub scan. 
 
-You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
+You can set up a Black Duck Open Hub scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
 
 ## Setting up a scan step
 
@@ -16,7 +16,7 @@ You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners,
 
 ### Using the Step Palette 
 
-To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a $PRODUCT scan step to the stage and configure it as described below. 
+To set up a Black Duck Open Hub scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a Black Duck Open Hub scan step to the stage and configure it as described below. 
 
 <details>
     <summary>Step Palette</summary>
@@ -28,7 +28,7 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 <!-- ============================================================================= 
 
 ### Security step settings 
-To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a Security scan step to the stage and configure it as described below. 
+To set up a Black Duck Open Hub scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a Security scan step to the stage and configure it as described below. 
 
 :::note
 Add each setting to the *Settings* field in the Run step UI, or configure the pipeline YAML as shown in the following example. Refer to each section for the YAML keys to use. 

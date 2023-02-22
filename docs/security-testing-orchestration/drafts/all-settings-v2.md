@@ -1,7 +1,7 @@
 ---
-title: STO Settings Template 1
+title: STO Settings Template 2
 description: All the available settings to configure individual scans.
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 # ALL SETTINGS
@@ -10,11 +10,7 @@ You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest res
 
 You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
 
-## Setting up a scan step
-
-<!-- ============================================================================= -->
-
-### Using the Step Palette 
+## Setting up a $PRODUCT step using the Step Palette
 
 To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a $PRODUCT scan step to the stage and configure it as described below. 
 
@@ -25,81 +21,11 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 </details>
 
-<!-- ============================================================================= 
-
-### Security step settings 
-To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a Security scan step to the stage and configure it as described below. 
-
-:::note
-Add each setting to the *Settings* field in the Run step UI, or configure the pipeline YAML as shown in the following example. Refer to each section for the YAML keys to use. 
-:::
-
-<details>
-    <summary>Configure a step in the UI</summary>
-
-![](../sto-techref-category/static/security-step-settings-reference-00.png) 
-
-</details>
-
-<details>
-    <summary>Configure a step in the pipeline YAML</summary>
-            
-        ```yaml
-
-        - step:
-            type: Security
-            name: brakeman scan
-            identifier: brakeman_scan
-            spec:
-            connectorRef: account.harnessImage
-            privileged: true
-            settings:
-                policy_type: 
-                scan_type: repository
-                repository_project: TBD
-                repository_branch: TBD
-                product_name: brakeman
-                product_config_name: brakeman-default
-                fail_on_severity: HIGH
-            imagePullPolicy: Always
-            failureStrategies:
-            - onFailure:
-                errors:
-                    - AllErrors
-                action:
-                    type: Ignore
-
-        ```
-
-</details>
-
 <!-- ============================================================================= -->
 
+## Security Parameters 
 
-## Scan settings
 
-<details>
-    <summary>Security step YAML keys</summary>
-<table>
-    <tr>
-        <th> Setting </th>
-        <th> CI Build stage </th>
-        <th> Security Tests stage</th>
-    </tr>
-    <tr>
-        <td><a href="#scan-mode">Scan Mode</a></td> 
-        <td><code>policy_type</code></td>
-        <td><code>mode</code></td>
-    </tr>
-    <tr>
-        <td><a href="#scan-config">Scan Configuration</a></td> 
-        <td><code>product_config_name</code></td>
-        <td><code>config</code></td>
-    </tr>
-</table>
-</details>
-
-<!-- ============================================================================= -->
 
 <a name="scan-mode"></a>
 
@@ -129,37 +55,6 @@ import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-nam
 <StoSettingProductConfigName />
 
 ## Target settings
-
-<details>
-    <summary>Security step YAML keys</summary>
-<table>
-    <tr>
-        <th> Setting </th>
-        <th> CI Build stage </th>
-        <th> Security Tests stage</th>
-    </tr>
-    <tr>
-        <td><a href="#target-type">Type</a></td> 
-        <td><code>policy_type</code></td>
-        <td><code>type</code></td>
-    </tr>
-     <tr>
-        <td><a href="#target-name">Name</a></td> 
-        <td><code>product_access_id</code></td>
-        <td><code>name</code></td>
-    </tr>
-    <tr>
-        <td><a href="#target-variant">Variant</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>variant</code></td>
-    </tr>
-    <tr>
-        <td><a href="#target-workspace">Workspace</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>type</code></td>
-    </tr>
-</table>
-</details>
 
 
 <!-- ============================================================================= -->
@@ -217,21 +112,6 @@ import StoSettingTargetWorkspace from './shared/_sto-ref-ui-target-workspace.md'
 
 ## Ingestion settings
 
-<details>
-    <summary>Security step YAML keys</summary>
-<table>
-    <tr>
-        <th> Setting </th>
-        <th> CI Build stage </th>
-        <th> Security Tests stage</th>
-    </tr>
-    <tr>
-        <td><a href="#ingestion-file">File</a></td> 
-        <td><code></code>TBD</td>
-        <td><code>file</code></td>
-    </tr>
-</table>
-</details>
 
 <!-- ============================================================================= -->
 <a name="ingestion-file"></a>
@@ -247,52 +127,6 @@ import StoSettingIngestionFile from './shared/_sto-ref-ui-ingestion-file.md';
 
 ## Container Image settings
 
-<details>
-    <summary>YAML keys</summary>
-<table>
-    <tr>
-        <th> Setting </th>
-        <th> CI step key </th>
-        <th> SecurityTests step key</th>
-    </tr>
-    <tr>
-        <td><a href="#container-type"></a>Type</td> 
-        <td><code>container_type</code></td>
-        <td><code>type</code></td>
-    </tr>
-     <tr>
-        <td><a href="#container-name">Name</a></td> 
-        <td><code>container_project</code></td>
-        <td><code>name</code></td>
-    </tr>
-    <tr>
-        <td><a href="#container-domain">Domain</a></td> 
-        <td><code>container_domain</code></td>
-        <td><code>domain</code></td>
-    </tr>
-    <tr>
-        <td><a href="#container-tag">Tag</a></td> 
-        <td><code>container_tag</code></td>
-        <td><code>access_id</code></td>
-    </tr>
-     <tr>
-        <td><a href="#container-access-id">Access Id</a></td> 
-        <td><code>container_access_id</code></td>
-        <td><code>name</code></td>
-    </tr>
-    <tr>
-        <td><a href="#container-access-token">Access Token</a></td> 
-        <td><code>container_access_token</code></td>
-        <td><code>access_token</code></td>
-    </tr>
-    <tr>
-        <td><a href="#container-region">Region</a></td> 
-        <td><code>container_region</code></td>
-        <td><code>region</code></td>
-    </tr>
-</table>
-
-</details>
 
 <!-- ============================================================================= -->
 <a name="container-type"></a>
@@ -372,47 +206,6 @@ import StoSettingImageRegion from './shared/_sto-ref-ui-image-region.md';
 
 <StoSettingImageRegion />
 
-## Authentication Settings
-<details>
-    <summary>Security step YAML keys</summary>
-<table>
-    <tr>
-        <th> Setting </th>
-        <th> CI Build stage </th>
-        <th> Security Tests stage</th>
-    </tr>
-    <tr>
-        <td><a href="#auth-access-id"></a>Access Id</td> 
-        <td><code>product_access_id</code></td>
-        <td><code>access_id</code></td>
-    </tr>
-     <tr>
-        <td><a href="#auth-access-token">Access Token</a></td> 
-        <td><code>product_access_token</code></td>
-        <td><code>access_token</code></td>
-    </tr>
-    <tr>
-        <td><a href="#auth-domain">Domain</a></td> 
-        <td><code>product_domain</code></td>
-        <td><code>domain</code></td>
-    </tr>
-    <tr>
-        <td><a href="#auth-access-api-version">API Version</a></td> 
-        <td><code>product_api_version</code></td>
-        <td><code>version</code></td>
-    </tr>
-     <tr>
-        <td><a href="#auth-type">Type</a></td> 
-        <td><code>product_auth_type</code></td>
-        <td><code>type</code></td>
-    </tr>
-    <tr>
-        <td><a href="#auth-enforce-ssl">Enforce SSL</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>ssl</code></td>
-    </tr>
-</table>
-</details>
 
 <!-- ============================================================================= -->
 <a name="auth-access-id"></a>
@@ -483,87 +276,6 @@ import StoSettingProductSSL from './shared/_sto-ref-ui-auth-ssl.md';
 
 ## Tool Settings
 
-<details>
-    <summary>Security step YAML keys</summary>
-<table>
-    <tr>
-        <th> Setting </th>
-        <th> CI Build stage </th>
-        <th> Security Tests stage</th>
-    </tr>
-    <tr>
-        <td><a href="#tool-include">Include</a></td> 
-        <td><code>product_include</code></td>
-        <td><code>include</code></td>
-    </tr>
-     <tr>
-        <td><a href="#tool-exclude">Exclude</a></td> 
-        <td><code>product_exclude</code></td>
-        <td><code>exclude</code></td>
-    </tr>
-    <tr>
-        <td><a href="#tool-context">Context</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>context</code></td>
-    </tr>
-    <tr>
-        <td><a href="#tool-context-image">Context (images)</a></td> 
-        <td><code>product_image_name</code></td>
-        <td><code>image_name</code></td>
-    </tr>
-     <tr>
-        <td><a href="#tool-project-name">Project Name</a></td> 
-        <td><code>product_project_name</code></td>
-        <td><code>project_name</code></td>
-    </tr>
-    <tr>
-        <td><a href="#tool-project-version">Project Version</a></td> 
-        <td><code>product_project_version</code></td>
-        <td><code>project_version</code></td>
-    </tr>
-    <tr>
-        <td><a href="#tool-team-name">Team Name</a></td> 
-        <td><code>product_team_name</code></td>
-        <td><code>team_name</code></td>
-    </tr>
-     <tr>
-        <td><a href="#tool-port">Port</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>port</code></td>
-    </tr>
-    <tr>
-        <td><a href="#tool-java-libraries">Java Libraries</a></td> 
-        <td><code>product_java_libraries</code></td>
-        <td><code>libraries</code></td>
-    </tr>
-    <tr>
-        <td><a href="#tool-java-binaries">Java Binaries</a></td> 
-        <td><code>product_java_binaries</code></td>
-        <td><code>binaries</code></td>
-    </tr>
-     <tr>
-        <td><a href="#tool-product-name">Product Token</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>product_token</code></td>
-    </tr>
-    <tr>
-        <td><a href="#tool-product-name">Project Name</a></td> 
-        <td><code>product_access_id</code></td>
-        <td><code>product_name</code></td>
-    </tr>
-     <tr>
-        <td><a href="#tool-project-token">Project Token</a></td> 
-        <td><code>TBD</code></td>
-        <td><code>project_token</code></td>
-    </tr>
-     <tr>
-        <td><a href="#tool-product-lookup">Product Lookup</a></td> 
-        <td><code>product_lookup_type</code></td>
-        <td><code>product-lookup</code></td>
-    </tr>
-</table>
-
-</details>
 
 <!-- ============================================================================= -->
 <a name="tool-include"></a>	
