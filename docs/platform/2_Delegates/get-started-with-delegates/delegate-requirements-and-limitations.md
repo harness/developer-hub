@@ -67,7 +67,7 @@ All network connections from your local network to Harness SaaS are outbound-onl
 If you do not enable gRPC connections, the following limitations apply:
 
 
-* [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) does not collect events.
+* [Cloud Cost Management (CCM)](/docs/cloud-cost-management) does not collect events.
 
 
 ## Add certificates and other software to the delegate
