@@ -24,7 +24,7 @@ Note the following important information about delegates:
 
 * The delegate is installed in your network and connects to the Harness Manager.
 
-  ![](./static/delegate-requirements-and-limitations-00
+  ![](./static/delegate-requirements-and-limitations-00.png)
   
   The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services such as Docker or Kubernetes.
 
