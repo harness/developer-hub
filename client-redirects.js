@@ -112,18 +112,36 @@ module.exports = {
          from: "/docs/platform/Delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes",
          to: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes",
        },
+
+    // Created by kat-enos for PR-738 on Feb 21, 2023
+       {
+          from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes",
+          to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
+        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-install-kubernetes/install-harness-delegate-using-helm",
          to: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm",
        },
+
+    // Created by kat-enos for PR-738 on Feb 21, 2023
+    {
+      from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm",
+      to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
+    },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-install-docker/install-a-docker-delegate",
          to: "/docs/platform/Delegates/install-delegates/docker-delegates/install-a-docker-delegate",
        },
+
+    // Created by kat-enos for PR-738 on Feb 21, 2023
+    {
+      from: "/docs/platform/Delegates/install-delegates/docker-delegates/install-a-docker-delegate",
+      to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
+    },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
