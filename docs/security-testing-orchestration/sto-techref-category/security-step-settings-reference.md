@@ -14,8 +14,8 @@ This topic includes the Security step settings for each of the scanner providers
 
 The following table shows the scanner categories that STO supports for each scanner:
 
-* **SAST (_Static Application Security Testing_)** scans a code repo and identifies known vulnerabilities in the proprietary code.
-* **SCA (Software Composition Analysis)** scans a code repo and identifies known vulnerabilities in open-source libraries and packages used by the code. 
+* **SAST (_Static Application Security Testing_)** scans a code repository and identifies known vulnerabilities in the proprietary code.
+* **SCA (Software Composition Analysis)** scans a code repository and identifies known vulnerabilities in open-source libraries and packages used by the code. 
 * **DAST (Dynamic Application Security Testing)** scans a running application for vulnerabilties by simulating a malicious external actor exploiting known vulnerabilties. 
 * **Container Scanning** identifies known vulnerabilities in a Docker container.
 
@@ -26,7 +26,7 @@ Harness Security Testing Orchestration integrates with multiple scanners and tar
 
 * **Orchestrated (`orchestratedScan`) Scans**  are fully orchestrated. A Security step in the Harness pipeline orchestrates a scan and then normalizes and compresses the results.
 * **Extraction (`dataLoad`) Scans** are partially orchestrated. The Security step pulls scan results from an external SaaS service and then normalizes and compresses the data.
-* **Ingestion (`ingestionOnly`) Scans**  are not orchestrated. The Security step ingest results from a previous scan (for for a scan run in an previous step) and then normallizes and compresses the results. 
+* **Ingestion (`ingestionOnly`) Scans**  are not orchestrated. The Security step ingests results from a previous scan (for for a scan run in an previous step) and then normallizes and compresses the results. 
 
 The scanner, targets, and scan approach combinations are covered in the next section.
 
