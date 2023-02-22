@@ -95,8 +95,8 @@ service:
   </TabItem>
   <TabItem value="API" label="API">
 ```
-Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
+Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 
 ```mdx-code-block
@@ -272,83 +272,340 @@ You can hardcode your artifact in your manifests, our add your artifact source t
 
 ### Helm Chart
 
-Harness supports Helm Chart deployments. If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+You can use Helm charts stored in an HTTP Helm Repository, OCI Registry, a Git repo provider, a cloud storage service (Google Cloud Storage, AWS S3, Azure Repo), a custom repo, or the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
 
-For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](../../cd-advanced/cd-helm-category/deploy-helm-charts.md). Here's a [video walkthrough](https://youtu.be/Wvr52UKDOJQ).
 
-Add a Helm ChartIn your CD stage, click **Service**.
+```mdx-code-block
+import Tabs1 from '@theme/Tabs';
+import TabItem1 from '@theme/TabItem';
+```
 
-In **Service Definition**, select **Kubernetes**.
+<Tabs1>
+  <TabItem1 value="YAML" label="YAML" default>
 
-In **Manifests**, click **Add Manifest**.
+Here's a YAML example for a service with manifests hosted in Github and the nginx image hosted in Docker Hub.
 
-In **Specify Manifest Type**, select **Helm Chart**, and click **Continue**.
+<details>
+<summary>Example</summary>
 
-In **Specify Helm Chart Store**, select HTTP Helm Repository, OCI Registry, a Git repo provider, or a cloud storage service (Google Cloud Storage, AWS S3) you're using.
+```yaml
+service:
+  name: Helm Chart
+  identifier: Helm_Chart
+  tags: {}
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: nginx
+            type: HelmChart
+            spec:
+              store:
+                type: Http
+                spec:
+                  connectorRef: Bitnami
+              chartName: nginx
+              helmVersion: V3
+              skipResourceVersioning: false
+              commandFlags:
+                - commandType: Template
+                  flag: mychart -x templates/deployment.yaml
+    type: Kubernetes
+```
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md) or [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md) How-tos.
+</details>
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
-If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+```mdx-code-block
+  </TabItem1>
+  <TabItem1 value="API" label="API">
+```
 
-Once your Helm chart is added, it appears in the **Manifests** section. For example:
+Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
-![](./static/kubernetes-services-05.png)
+```mdx-code-block
+  </TabItem1>
+  <TabItem1 value="Terraform Provider" label="Terraform Provider">
+```
+
+For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
+
+<details>
+<summary>Example</summary>
+
+```yaml
+resource "harness_platform_service" "example" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  org_id      = "org_id"
+  project_id  = "project_id"
+
+  ## SERVICE V2 UPDATE
+  ## We now take in a YAML that can define the service definition for a given Service
+  ## It isn't mandatory for Service creation 
+  ## It is mandatory for Service use in a pipeline
+
+  yaml = <<-EOT
+                service:
+                  name: Helm Chart
+                  identifier: Helm_Chart
+                  tags: {}
+                  serviceDefinition:
+                    spec:
+                      manifests:
+                        - manifest:
+                            identifier: nginx
+                            type: HelmChart
+                            spec:
+                              store:
+                                type: Http
+                                spec:
+                                  connectorRef: Bitnami
+                              chartName: nginx
+                              helmVersion: V3
+                              skipResourceVersioning: false
+                              commandFlags:
+                                - commandType: Template
+                                  flag: mychart -x templates/deployment.yaml
+                    type: Kubernetes
+              EOT
+}
+```
+</details>
+
+```mdx-code-block
+  </TabItem1>
+  <TabItem1 value="Pipeline Studio" label="Pipeline Studio">
+```
+
+To add a Helm chart to your service, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes**.
+6. In **Manifests**, click **Add Manifest**.
+7. In **Specify Manifest Type**, select **Helm Chart**, and click **Continue**.
+8. In **Specify Helm Chart Store**, select the storage service you're using.
+   
+   ![helm storage](static/a49287968d8e99d3368420384bab12d62206d48fa714cd0c61eed12ca14c641f.png)  
+
+
+   For the steps and settings of each option, go to [Connectors](https://developer.harness.io/docs/category/connectors) or [Connect to a Git repo](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo).
+   
+   Once your Helm chart is added, it appears in the **Manifests** section. For example:
+   
+   ![](./static/kubernetes-services-05.png)
+
+```mdx-code-block
+  </TabItem1>
+  <TabItem1 value="Notes" label="Notes">
+```
+
+If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+
+For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](../../cd-advanced/cd-helm-category/deploy-helm-charts.md).
+
+Important notes:
+
+* Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
+* Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
+* Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
+
+```mdx-code-block
+  </TabItem1>
+</Tabs1>
+```
+
+
 
 ### Kustomize
 
-Harness supports Kustomize deployments.
+Harness supports Kustomize deployments. You can use overlays, multibase, plugins, sealed secrets, patches, etc, just as you would in any native kustomization.
 
-If this is your first time using Harness for a Kustomize deployment, see the [Kustomize Quickstart](../../onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+```mdx-code-block
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
+```
 
-For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+<Tabs2>
+  <TabItem2 value="YAML" label="YAML" default>
 
-Add a KustomizationIn your CD stage, click **Service**.
+Here's a YAML example for a service using a publicly available [helloword kustomization](https://github.com/wings-software/harness-docs/tree/main/kustomize/helloWorld) cloned from Kustomize.
 
-In **Service Definition**, select **Kubernetes**.
+<details>
+<summary>Example</summary>
 
-In **Manifests**, click **Add Manifest**.
+```yaml
+service:
+  name: Kustomize
+  identifier: Kustomize
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: kustomize
+            type: Kustomize
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: Kustomize
+                  gitFetchType: Branch
+                  folderPath: kustomize/helloworld
+                  branch: main
+              pluginPath: ""
+              skipResourceVersioning: false
+  gitOpsEnabled: false
+```
+</details>
 
-In **Specify Manifest Type**, click **Kustomize**, and click **Continue**.
 
-In **Specify Manifest Type**, select the Git provider.
+```mdx-code-block
+  </TabItem2>
+  <TabItem2 value="API" label="API">
+```
 
-In **Manifest Details**, enter the following settings, test the connection, and click **Submit**. We are going to provide connection and path information for a kustomization located at https://github.com/wings-software/harness-docs/blob/main/kustomize/helloWorld/kustomization.yaml.
+Create a service using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
-* **Manifest Identifier:** enter **kustomize**.
-* **Git Fetch Type:** select **Latest from Branch**.
-* **Branch:** enter **main**.
-* **Kustomize Folder Path:** kustomize/helloWorld. This is the path from the repo root.
+```mdx-code-block
+  </TabItem2>
+  <TabItem2 value="Terraform Provider" label="Terraform Provider">
+```
 
-The kustomization is now listed.
+For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
-![](./static/kubernetes-services-06.png)
+<details>
+<summary>Example</summary>
 
-### Kustomize Patches
+```yaml
+resource "harness_platform_service" "example" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  org_id      = "org_id"
+  project_id  = "project_id"
+
+  ## SERVICE V2 UPDATE
+  ## We now take in a YAML that can define the service definition for a given Service
+  ## It isn't mandatory for Service creation 
+  ## It is mandatory for Service use in a pipeline
+
+  yaml = <<-EOT
+              service:
+                name: Kustomize
+                identifier: Kustomize
+                serviceDefinition:
+                  type: Kubernetes
+                  spec:
+                    manifests:
+                      - manifest:
+                          identifier: kustomize
+                          type: Kustomize
+                          spec:
+                            store:
+                              type: Github
+                              spec:
+                                connectorRef: Kustomize
+                                gitFetchType: Branch
+                                folderPath: kustomize/helloworld
+                                branch: main
+                            pluginPath: ""
+                            skipResourceVersioning: false
+                gitOpsEnabled: false
+            EOT
+}
+```
+</details>
+
+```mdx-code-block
+  </TabItem2>
+  <TabItem2 value="Pipeline Studio" label="Pipeline Studio">
+```
+
+To add a kustomization, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes**.
+6. In **Manifests**, click **Add Manifest**.
+7. In your CD stage, click **Service**.
+8. In **Service Definition**, select **Kubernetes**.
+9. In **Manifests**, click **Add Manifest**.
+10. In **Specify Manifest Type**, click **Kustomize**, and click **Continue**.
+11. In **Specify Manifest Type**, select a Git provider, [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/), or Azure Repo.
+12. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**.
+
+    + **Manifest Identifier:** enter **kustomize**.
+    + **Git Fetch Type:** select **Latest from Branch**.
+    + **Branch:** enter **main**.
+    + **Kustomize Folder Path:** kustomize/helloWorld. This is the path from the repo root.
+    
+    The kustomization is now listed.
+    
+    ![](./static/kubernetes-services-06.png)
+
+```mdx-code-block
+  </TabItem2>
+  <TabItem2 value="Kustomize Patches" label="Kustomize Patches" default>
+```
+
+You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
+
+Kustomize patches override values in the base manifest. Harness supports the `patchesStrategicMerge` patches type.
+
+To use Kustomize Patches, do the following:
 
 Add Kustomize PatchesIn the Stage's **Service**, in **Manifests**, click **Add Manifest**.
-
 In **Specify Manifest Type**, select **Kustomize Patches**, and click **Continue**.
-
 In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
-
 The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
-
 Click **Continue**.
-
 In **Manifest Details**, enter the path to your patch file(s):
-
 * **Manifest Identifier:** enter a name that identifies the patch file(s). You don't have to add the actual filename.
 * **Git Fetch Type:** select whether to use the latest branch or a specific commit Id.
 * **Branch**/**Commit Id**: enter the branch or commit Id.
 * **File/Folder Path:** enter the path to the patch file(s) from the root of the repo. Click **Add File** to add each patch file. The files you add should be the same files listed in `patchesStrategicMerge` of the main kustomize file in your Service.
 
-The order in which you add file paths for patches in **File/Folder Path** is the same order that Harness applies the patches during the kustomization build.Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.Click **Submit**. The patch file(s) is added to **Manifests**.
+The order in which you add file paths for patches in **File/Folder Path** is the same order that Harness applies the patches during the kustomization build.
+
+Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.
+
+Click **Submit**. The patch file(s) is added to **Manifests**.
 
 When the main kustomization.yaml is deployed, the patch is rendered and its overrides are added to the deployment.yaml that is deployed.
 
 **How Harness uses patchesStrategicMerge:** If the `patchesStrategicMerge` label is missing from the kustomization YAML file, but you have added Kustomize Patches to your Harness Service, Harness will add the Kustomize Patches you added in Harness to the `patchesStrategicMerge` in the kustomization file. If you have hardcoded patches in `patchesStrategicMerge`, but not add these patches to Harness as Kustomize Patches, Harness will ignore them.
+
+```mdx-code-block
+  </TabItem2>  
+  <TabItem2 value="Notes" label="Notes">
+```
+
+If this is your first time using Harness for a Kustomize deployment, see the [Kustomize Quickstart](../../onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+
+For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+
+Important notes:
+
+
+* Harness supports Kustomize and Kustomize Patches for [Rolling](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md), [Canary](../../cd-technical-reference/cd-k8s-ref/canary-deployment-step.md), [Blue Green](../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) strategies, and the Kubernetes [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md) steps.
+* Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
+* You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
+* **Kustomize binary versions:**
+  * Harness includes Kustomize binary versions 3.5.4 and 4.0.0. By default, Harness uses 3.5.4. 
+  * To use 4.0.0, you must enable the feature flag `NEW_KUSTOMIZE_BINARY` in your account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* Harness will not follow symlinks in the Kustomize and Kustomize Patches files it pulls.
+
+```mdx-code-block
+  </TabItem2>
+</Tabs2>
+```
 
 ### OpenShift Template
 
