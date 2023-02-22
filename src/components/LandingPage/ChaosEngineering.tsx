@@ -66,7 +66,10 @@ const CEList: CardItem[] = [
     module: "ce",
     icon: "img/icon_ce.svg",
     description: (
-      <>Executing a chaos experiment on Kubernetes for the first time using APIs.</>
+      <>
+        Executing a chaos experiment on Kubernetes for the first time using
+        APIs.
+      </>
     ),
     newDoc: false,
     type: [docType.Documentation],
@@ -93,7 +96,7 @@ export default function CE() {
             <img src={`${baseUrl}img/icon_ce.svg`} />
             <h1>Chaos Engineering</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/chaos-engineering">
               <button
                 className={clsx(
@@ -102,7 +105,21 @@ export default function CE() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <i className="fa-regular fa-file"></i>
+                Documentation
+              </button>
+            </Link>
+
+            <Link href="/release-notes/chaos-engineering">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <i className="fa-regular fa-file"></i>
+                Release Notes
               </button>
             </Link>
           </div>

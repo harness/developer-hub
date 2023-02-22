@@ -60,7 +60,7 @@ export default function FF() {
             <img src={`${baseUrl}img/icon_ff.svg`} />
             <h1>Feature Flags</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/feature-flags">
               <button
                 className={clsx(
@@ -69,7 +69,21 @@ export default function FF() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <i className="fa-regular fa-file"></i>
+                Documentation
+              </button>
+            </Link>
+
+            <Link href="/release-notes/feature-flags">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <i className="fa-regular fa-file"></i>
+                Release Notes
               </button>
             </Link>
           </div>

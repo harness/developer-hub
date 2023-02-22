@@ -39,36 +39,38 @@ const FeaturedList: CardItem[] = [
     link: "/tutorials/build-code/ci-node-docker-quickstart",
   },
   {
-    title: 'Build Go application containers using a CI Pipeline',
+    title: "Build Go application containers using a CI Pipeline",
 
-    module: 'ci',
+    module: "ci",
     icon: "img/icon_ci.svg",
     description: (
       <>
-        This build automation guide describes building a Go container image in a CI Pipeline.
-
+        This build automation guide describes building a Go container image in a
+        CI Pipeline.
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
-    time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-go-containers',
-  },{
-    title: 'Sign application containers using a CI Pipeline',
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-go-containers",
+  },
+  {
+    title: "Sign application containers using a CI Pipeline",
 
-    module: 'ci',
+    module: "ci",
     icon: "img/icon_ci.svg",
     description: (
       <>
-        This build automation guide describes how to sign a container image using a CI pipeline.
-
+        This build automation guide describes how to sign a container image
+        using a CI pipeline.
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
-    time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-container-signing',
-  },];
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
+  },
+];
 
 const DroneList: CardItem[] = [
   {
@@ -148,12 +150,7 @@ const CIList: CardItem[] = [
 
     module: "ci",
     icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Build, test, and publish a container image to AWS ECR.
-
-      </>
-    ),
+    description: <>Build, test, and publish a container image to AWS ECR.</>,
     newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
@@ -175,96 +172,96 @@ const CIList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
   },
-{
-  title: 'Build Go application containers',
+  {
+    title: "Build Go application containers",
 
-  module: 'ci',
-  icon: "img/icon_ci.svg",
-  description: (
-    <>
-      This build automation guide describes building a Go container image in a CI Pipeline.
-
-    </>
-  ),
-  newDoc: true,
-  type: [docType.Documentation],
-  time: '15 min',
-  link: '/tutorials/build-code/ci-tutorial-go-containers',
-},{
-  title: 'Sign Application Containers',
-  module: 'ci',
-  icon: "img/icon_ci.svg",
-  description: (
-    <>
-      This build automation guide describes how to sign a container image using a CI pipeline.
-
-    </>
-  ),
-  newDoc: true,
-  type: [docType.Documentation],
-  time: '15 min',
-  link: '/tutorials/build-code/ci-tutorial-container-signing',
-},{
-  title: "Build, test, and publish a Docker image for a sample React application",
-  module: "ci",
-  icon: "img/icon_ci.svg",
-  description: (
-    <>
-      Learn how to build and test a sample React application in a CI pipeline.
-
-    </>
-  ),
-  newDoc: true,
-  type: [docType.Documentation],
-  time: "20 min",
-  link: "/tutorials/build-code/ci-react-quickstart",
-},
-{
-  title: "Github Action steps",
-  module: "ci",
-  icon: "img/icon_ci.svg",
-  description: (
-    <>
-     This guide shows how to run GitHub Actions natively with harness CI.
-
-     </>
-  ),
-  newDoc: true,
-  type: [docType.Documentation],
-  time: "10 min",
-  link: "/tutorials/build-code/ci-github-action-step",
-},
-{
-  title: 'Push application containers to Google Artifact Registry',
-  module: 'ci',
-  icon: "img/icon_ci.svg",
-  description: (
-    <>
-    This build automation guide describes how to build and push an application container image to Google Artifact Registry using a CI pipeline.
-
-    </>
-  ),
-  newDoc: true,
-  type: [docType.Documentation],
-  time: '15 min',
-  link: '/tutorials/build-code/ci-tutorial-push-to-gar',
-},
-{
-  title: 'Publish an Allure report to the Artifacts tab',
-  module: 'ci',
-  icon: "img/icon_ci.svg",
-  description: (
-    <>
-    This tutorial provides an example pipeline that builds a Java Maven application and generates an Allure Report that you can view in the Harness UI.
-
-    </>
-  ),
-  newDoc: true,
-  type: [docType.Documentation],
-  time: '15 min',
-  link: '/tutorials/build-code/ci-publish-allure-report',
-},
-
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes building a Go container image in a
+        CI Pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-go-containers",
+  },
+  {
+    title: "Sign Application Containers",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to sign a container image
+        using a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
+  },
+  {
+    title:
+      "Build, test, and publish a Docker image for a sample React application",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Learn how to build and test a sample React application in a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "20 min",
+    link: "/tutorials/build-code/ci-react-quickstart",
+  },
+  {
+    title: "Github Action steps",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>This guide shows how to run GitHub Actions natively with harness CI.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/build-code/ci-github-action-step",
+  },
+  {
+    title: "Push application containers to Google Artifact Registry",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to build and push an
+        application container image to Google Artifact Registry using a CI
+        pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-push-to-gar",
+  },
+  {
+    title: "Publish an Allure report to the Artifacts tab",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This tutorial provides an example pipeline that builds a Java Maven
+        application and generates an Allure Report that you can view in the
+        Harness UI.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-publish-allure-report",
+  },
 ];
 
 export default function CI() {
@@ -285,7 +282,7 @@ export default function CI() {
             <img src={`${baseUrl}img/icon_ci.svg`} />
             <h1>Continuous Integration</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/continuous-integration">
               <button
                 className={clsx(
@@ -294,11 +291,11 @@ export default function CI() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <i className="fa-regular fa-file"></i>
+                Documentation
               </button>
             </Link>
-          </div>
-          <div>
+
             <Link href="/release-notes/continuous-integration">
               <button
                 className={clsx(
@@ -307,7 +304,8 @@ export default function CI() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Release Notes
+                <i className="fa-regular fa-file"></i>
+                Release Notes
               </button>
             </Link>
           </div>
@@ -315,11 +313,12 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness CI helps you build and test your code. It also provides a bird's-eye view of all your builds —
-              successful, failed, aborted, and expired — and the percentage of
-              successful builds for individual codebases. You can easily see
-              where your builds have failed and drill down into specific builds
-              to troubleshoot and analyze the root causes.
+              Harness CI helps you build and test your code. It also provides a
+              bird's-eye view of all your builds — successful, failed, aborted,
+              and expired — and the percentage of successful builds for
+              individual codebases. You can easily see where your builds have
+              failed and drill down into specific builds to troubleshoot and
+              analyze the root causes.
             </p>
             <div className={styles.alignCenter}>
               <Link

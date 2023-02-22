@@ -6,29 +6,31 @@ import CertificationReviewGuide from "./cd-certification-developer-review-guide.
 import CertificationExamDetails from "./cd-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
+/*
 enum TabValues {
   Developer = "Developer",
   Administrator = "Administrator",
   Architect = "Architect",
-}
+}*/
 
 export default function CertificationsCD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
+  /*
   const [tab, setTab] = useState(TabValues.Developer);
   const handleSwitchTab = (tabVal) => {
     setTab(tabVal);
-  };
+  };*/
   return (
     <div className={styles.certificationsCD}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
-            <Link to={`${baseUrl}certifications`}>
+            <Link to={`${baseUrl}certifications/continuous-delivery`}>
               <i className="fa-regular fa-arrow-left"></i> Back to all
-              certifications
+              CD & GitOps certifications
             </Link>
           </div>
-          <h1>Continuous Delivery Developer Certification</h1>
+          <h1>Continuous Delivery & GitOps - Developer</h1>
           <div>
           Validate your broad knowledge of cloud concepts and the products, services, tools, 
           features, benefits, and use cases of CD.
@@ -142,7 +144,7 @@ export default function CertificationsCD() {
 
       {/* Developer Study Guide */}
       <div className={styles.studyGuide}>
-        <h2 id="cd-developer-study-guide">Developer Study Guide</h2>
+        <h2 id="prepare">Prepare for the Exam</h2>
         <div className={styles.studyGuideCard}>
           <div className={styles.info}>
             <i className="fa-solid fa-circle-info"></i>
@@ -153,7 +155,7 @@ export default function CertificationsCD() {
               <h2>Continuous Delivery & GitOps - Developer (BETA COMING SOON)</h2>
               <img
                 src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
-                alt="Harness Certified Expert - Developer - CD"
+                alt="Harness Certified Expert - CD & GitOps Developer"
                 className={styles.badge}
               />
               <span className={styles.productVersion}>
@@ -183,7 +185,7 @@ export default function CertificationsCD() {
 
       {/* Developer Exam Details */}
       <div className={styles.examDetails}>
-        <h2>Developer Exam Details</h2>
+        <h2 id="exam-details">Exam Details</h2>
         <div className={styles.examDetailsCard}>
           <CertificationExamDetails />
 
@@ -193,7 +195,7 @@ export default function CertificationsCD() {
             </Link>
             <Link href="/tutorials/deploy-services">
               <button className={styles.startLearning}>
-                <span>Start learning</span>
+                <span>Start Learning</span>
                 <i className="fa-regular fa-arrow-right"></i>
               </button>
             </Link>

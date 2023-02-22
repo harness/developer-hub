@@ -83,9 +83,7 @@ const CDList: CardItem[] = [
     module: "cd",
     icon: "img/icon_cd.svg",
     description: (
-      <>
-        Build and deploy a simple nodejs application using Harness CI and CD.
-      </>
+      <>Build and deploy a simple nodejs application using Harness CI and CD.</>
     ),
     newDoc: false,
     type: [docType.Documentation],
@@ -153,7 +151,7 @@ export default function CD() {
             <img src={`${baseUrl}img/icon_cd.svg`} />
             <h1>Continuous Delivery & GitOps</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/continuous-delivery">
               <button
                 className={clsx(
@@ -162,7 +160,21 @@ export default function CD() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <i className="fa-regular fa-file"></i>
+                Documentation
+              </button>
+            </Link>
+
+            <Link href="/release-notes/continuous-delivery">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <i className="fa-regular fa-file"></i>
+                Release Notes
               </button>
             </Link>
           </div>
@@ -184,9 +196,7 @@ export default function CD() {
                 <img src={`${baseUrl}img/Stroke.svg`} />
               </Link>
               <Link href="https://harness.io/products/continuous-delivery">
-                <button className={styles.link}>
-                  Learn more
-                </button>
+                <button className={styles.link}>Learn more</button>
               </Link>
             </div>
           </div>
