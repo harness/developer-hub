@@ -557,30 +557,41 @@ To add a kustomization, do the following:
 
 You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 
-Kustomize patches override values in the base manifest. Harness supports the `patchesStrategicMerge` patches type.
+**How Harness uses patchesStrategicMerge:** 
+
+- Kustomize patches override values in the base manifest. Harness supports the `patchesStrategicMerge` patches type.
+- If the `patchesStrategicMerge` label is missing from the kustomization YAML file, but you have added Kustomize Patches to your Harness Service, Harness will add the Kustomize Patches you added in Harness to the `patchesStrategicMerge` in the kustomization file. If you have hardcoded patches in `patchesStrategicMerge`, but not add these patches to Harness as Kustomize Patches, Harness will ignore them.
+
+For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
 To use Kustomize Patches, do the following:
 
-Add Kustomize PatchesIn the Stage's **Service**, in **Manifests**, click **Add Manifest**.
-In **Specify Manifest Type**, select **Kustomize Patches**, and click **Continue**.
-In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
-The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
-Click **Continue**.
-In **Manifest Details**, enter the path to your patch file(s):
-* **Manifest Identifier:** enter a name that identifies the patch file(s). You don't have to add the actual filename.
-* **Git Fetch Type:** select whether to use the latest branch or a specific commit Id.
-* **Branch**/**Commit Id**: enter the branch or commit Id.
-* **File/Folder Path:** enter the path to the patch file(s) from the root of the repo. Click **Add File** to add each patch file. The files you add should be the same files listed in `patchesStrategicMerge` of the main kustomize file in your Service.
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes**.
+6. In **Manifests**, select **Add Manifest**.
+7. In **Specify Manifest Type**, select **Kustomize Patches**, and select**Continue**.
+8. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+   
+   The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
+9.  Select **Continue**.
+10. In **Manifest Details**, enter the path to your patch file(s):
+    + **Manifest Identifier:** enter a name that identifies the patch file(s). You don't have to add the actual filename.
+    + **Git Fetch Type:** select whether to use the latest branch or a specific commit Id.
+    + **Branch**/**Commit Id**: enter the branch or commit Id.
+    + **File/Folder Path:** enter the path to the patch file(s) from the root of the repo.
+11. Click **Add File** to add each patch file. The files you add should be the same files listed in `patchesStrategicMerge` of the main kustomize file in your Service.
+    
+    The order in which you add file paths for patches in **File/Folder Path** is the same order that Harness applies the patches during the kustomization build.
+    
+    Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.
+12. Select **Submit**. The patch file(s) is added to **Manifests**.
+    
+    When the main kustomization.yaml is deployed, the patch is rendered and its overrides are added to the deployment.yaml that is deployed.
 
-The order in which you add file paths for patches in **File/Folder Path** is the same order that Harness applies the patches during the kustomization build.
 
-Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.
-
-Click **Submit**. The patch file(s) is added to **Manifests**.
-
-When the main kustomization.yaml is deployed, the patch is rendered and its overrides are added to the deployment.yaml that is deployed.
-
-**How Harness uses patchesStrategicMerge:** If the `patchesStrategicMerge` label is missing from the kustomization YAML file, but you have added Kustomize Patches to your Harness Service, Harness will add the Kustomize Patches you added in Harness to the `patchesStrategicMerge` in the kustomization file. If you have hardcoded patches in `patchesStrategicMerge`, but not add these patches to Harness as Kustomize Patches, Harness will ignore them.
 
 ```mdx-code-block
   </TabItem2>  
@@ -592,7 +603,6 @@ If this is your first time using Harness for a Kustomize deployment, see the [Ku
 For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
 Important notes:
-
 
 * Harness supports Kustomize and Kustomize Patches for [Rolling](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md), [Canary](../../cd-technical-reference/cd-k8s-ref/canary-deployment-step.md), [Blue Green](../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) strategies, and the Kubernetes [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md) steps.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
@@ -609,7 +619,39 @@ Important notes:
 
 ### OpenShift Template
 
+Harness supports OpenShift for Kubernetes deployments.
+
 For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../cd-technical-reference/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
+
+```mdx-code-block
+import Tabs3 from '@theme/Tabs';
+import TabItem3 from '@theme/TabItem';
+```
+
+<Tabs3>
+  <TabItem3 value="YAML" label="YAML" default>
+```
+
+YAML
+
+```mdx-code-block
+  </TabItem3>
+  <TabItem3 value="API" label="API">
+```
+
+API
+
+```mdx-code-block
+  </TabItem3>
+  <TabItem3 value="Terraform Provider" label="Terraform Provider">
+```
+
+Terraform Provider
+
+```mdx-code-block
+  </TabItem3>
+  <TabItem3 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 Add an OpenShift TemplateIn your CD stage, click **Service**.
 
@@ -637,7 +679,10 @@ In **Template** **File Path**, enter the path to the template file. The Connect
 
 Click **Submit**. The template is added to **Manifests**.
 
-### OpenShift Param
+```mdx-code-block
+  </TabItem3>
+  <TabItem3 value="OpenShift Param" label="OpenShift Param" default>
+```
 
 For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../cd-technical-reference/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
 
@@ -662,6 +707,19 @@ In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id
 In **Paths**, enter the path(s) to the param file(s). The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file.
 
 Click **Submit**. The template is added to **Manifests**.
+
+```mdx-code-block
+  </TabItem3>
+  <TabItem3 value="Notes" label="Notes">
+```
+
+Notes
+
+```mdx-code-block
+  </TabItem3>
+</Tabs3>
+```
+
 
 
 ## Artifacts
