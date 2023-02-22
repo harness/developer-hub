@@ -1,6 +1,6 @@
 ---
 title: CI Run step settings
-description: This topic provides settings and permissions for the Harness CI Run step. The Build stage Run step can be used to run scripts in your CI stages. The Run step pulls in a Docker image, such as a Docker…
+description: This topic provides settings and permissions for the Harness CI Run step.
 sidebar_position: 50
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
@@ -8,40 +8,38 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Harness CI Run step.
+This topic provides settings and permissions for the Harness CI Run step. In a **Build** stage, the **Run** step can be used to run scripts in your CI pipeline. The **Run** step pulls in a Docker image, such as a Docker image for Maven, and then runs a script with the tool, such as `mvn clean install`. You can use any Docker image from any public or private Docker registry.
 
-The Build stage **Run** step can be used to run scripts in your CI stages.
+:::info
 
-The **Run** step pulls in a Docker image, such as a Docker image for Maven, and then runs a script with the tool, like `mvn clean install`. Note that you may use any Docker image from any public or private Docker registry.
+Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
+
+:::
 
 ## Name
 
-The unique name for this step.
-
-## Id
-
-For information about this setting, go to [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
+The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
-Text string.
+Optional text string describing the step's purpose.
 
 ## Container Registry
 
-The Harness Connector for a container registry. This is the container registry for the image that you want Harness to run build commands on, such as DockerHub.
+A Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
 
 ## Image
 
-The FQN (fully-qualified name) of the Docker image to use when running build commands. For example: `us.gcr.io/playground-123/quickstart-image`.
+The FQN (fully-qualified name) of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`.
 
-The image name should include the tag, or it defaults to the latest tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries.
+The image name should include the tag. If you don't include a tag, Harness uses the latest tag.
 
-Different container registries require different name formats:
+You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
 * **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported.
 * **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `us.gcr.io/playground-123/quickstart-image:latest`.
 
-![](./static/run-step-settings-03.png)
+   ![](./static/run-step-settings-03.png)
 
 * **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
 
@@ -67,11 +65,11 @@ You can reference services started in [Background steps](./background-step-setti
 
 ## Optional Configuration
 
-Use these settings to add additional configuration to the step.
+Use the following settings to add additional configuration to the step.
 
 ### Privileged
 
-Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
+Enable this option to run the container with escalated privileges. This is equivalent to running a container with the Docker `--privileged` flag.
 
 ### Report Paths
 
@@ -162,27 +160,18 @@ Select an option to set the pull policy for the image.
 
 ### Run as User
 
-Set the value to specify the user Id for all processes in the pod, running in containers. For more information about how to set the value, see [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 ### Set Container Resources
 
-Set maximum resources limits for the resources used by the container at runtime.
+Maximum resources limits for the resources used by the container at runtime:
 
-#### Limit Memory
+* **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You may also use the power-of-two equivalents `Gi` and `Mi`.
+### Timeout
 
-Do not include spaces when entering a fixed value. The default value, if unspecified, is `500Mi`.
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-#### Limit CPU
-
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed; you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-
-#### Timeout
-
-The timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution continues.
-
-## See also
-
-* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

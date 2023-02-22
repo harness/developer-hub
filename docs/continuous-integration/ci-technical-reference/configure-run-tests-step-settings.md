@@ -56,7 +56,7 @@ This field is required for the Run Tests step to publish test results.
 
 Specify one or more paths to test report files. You can specify multiple paths, and [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported. Test reports must be in JUnit XML format.
 
-## Additional Configurations
+## Additional Configuration
 
 Use these optional settings to specify additional configurations.
 
@@ -129,7 +129,7 @@ Select an option to set the pull policy for the image:
 
 ### Run as User
 
-Set the value to specify the user ID for all processes in the pod running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+Specify the user ID to use for all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 ### Set Container Resources
 

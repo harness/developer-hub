@@ -1,6 +1,6 @@
 ---
-title: Plugin Step Settings
-description: This topic provides settings for the CI Plugin step. Plugins are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish…
+title: Plugin step settings
+description: Plugins are Docker containers that perform predefined tasks and are configured as steps.
 sidebar_position: 80
 helpdocs_topic_id: 8r5c3yvb8k
 helpdocs_category_id: 4xo13zdnfx
@@ -8,76 +8,66 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the CI Plugin step.
+This topic provides settings for the CI Plugin step. Plugins are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more.
 
-Plugins are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more.
+:::info
 
-### Name
+Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
 
-The unique name for this step.
+:::
 
-### ID
+## Name
 
-See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
+The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-### Description
+## Description
 
-Text string.
+Optional text string describing the step's purpose.
 
-### Tags
+## Container Registry
 
-See [Tags Reference](../../platform/20_References/tags-reference.md).
+Harness connector for the container registry where the plugin image is located.
 
-### Container Registry
+## Image
 
-Harness Connector for the container registry where the plugin image is located.
-
-### Image
-
-The name of the Plugin Docker image. The image name should include the tag and will default to the latest tag if unspecified.
+The name of the plugin's Docker image. The image name should include the tag. If you don't include a tag, Harness uses the latest tag. For more information about tags, go to [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag).
 
 You can use any Docker image from any Docker registry, including Docker images from private registries.
 
-### Optional Configurations
+## Optional Configuration
 
-#### Privileged
+Use the following settings to add additional configuration to the step.
 
-Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
+### Privileged
 
-#### Settings
+Select this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
 
-Plugin-specific settings. See [Drone plugins docs](http://plugins.drone.io/).
+### Settings
 
-#### Image Pull Policy
+Specify plugin-specific settings according to the plugin's documentation. For more information, go to the [Drone plugins documentation](http://plugins.drone.io/).
 
-Select an option to set the pull policy for the image.
+### Image Pull Policy
 
-* **Always**: The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
-* **If Not Present**: The image is pulled only if it isn't already present locally.
-* **Never**: The kubelet assumes that the image exists locally and doesn't try to pull the image.
+Select an option to set the pull policy for the image:
 
-#### Run as User
+* **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+* **If Not Present:** The image is pulled only if it isn't already present locally.
+* **Never:** The image is assumed to exist locally. No attempt is made to pull the image.
 
-Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+### Run as User
 
-#### Set container resources
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-These settings specify the maximum resources used by the container at runtime.
+### Set container resources
 
-##### Limit Memory
+Set maximum resource limits for the resources used by the container at runtime:
 
-Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+* * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-##### Limit CPU
+### Timeout
 
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed: you can specify one hundred millicpu as `0.1` or `100m`. See [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-##### Timeout
-
-Timeout for the step. Once the timeout is reached, the step fails, and the Pipeline execution continues.
-
-### See Also
-
-* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
+* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

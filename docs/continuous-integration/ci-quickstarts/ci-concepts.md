@@ -160,4 +160,4 @@ Harness CI offers popular object storage options such as JFrog, Amazon S3, and G
 
 ### Try Harness CI
 
-Interested in trying CI for yourself? No need to wait any longer! Book your [Demo](https://harness.io/demo) and [Get started for free with the fasted CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
+Interested in trying CI for yourself? No need to wait any longer! Book your [Demo](https://harness.io/demo) and [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).

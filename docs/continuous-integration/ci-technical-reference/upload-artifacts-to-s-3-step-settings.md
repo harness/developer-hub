@@ -10,17 +10,24 @@ helpdocs_is_published: true
 
 This topic provides details about the settings for the Upload Artifacts to S3 step, which uploads artifacts to AWS or other S3 providers such as [MinIo](https://docs.min.io/docs/minio-gateway-for-s3.html).
 
+:::info
+
+Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
+
+:::
+
 ## Name
 
 The unique name for this step.
 
-An **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) is generated based on the name The **Id** can be edited.
+Harness generates an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
 ## AWS Connector
 
 The Harness AWS connector to use when connecting to AWS S3.
 
 The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to S3. For more information about roles and permissions for AWS connectors, go to:
+
 * [Add an AWS connector](../../platform/7_Connectors/add-aws-connector.md)
 * [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
@@ -57,7 +64,7 @@ Define the AWS region to use when pushing the image.
 
 ## Bucket
 
-The S3 bucket name for the uploaded artifact.
+The name of the S3 bucket name where you want to upload the artifact.
 
 ## Source Path
 
@@ -71,17 +78,17 @@ Use the following settings to add additional configuration to the step.
 
 ### Endpoint URL
 
-Endpoint URL for S3-compatible providers. It is not needed for AWS.
+Endpoint URL for S3-compatible providers. This setting is not needed for AWS.
 
 ### Target
 
 The path, relative to the S3 **Bucket**, where you want to store the artifact. Do not include the bucket name; you specified this in **Bucket**.
 
-If unspecified, the cache is saved to `[bucket]/[key]`.
+If no path is specified, the cache is saved to `[bucket]/[key]`.
 
 ### Run as User
 
-Set the value to specify the user id for all processes in the pod, running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 ### Set Container Resources
 
@@ -89,9 +96,10 @@ Maximum resources limits for the resources used by the container at runtime:
 
 * **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-* **Timeout:** Timeout limit for the step. Once the timeout is reached, the step fails and pipeline execution continues.
 
-## See Also
+### Timeout
 
-* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
+
+* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

@@ -1,6 +1,6 @@
 ---
-title: Restore Cache from GCS Settings
-description: This topic provides settings for the Restore Cache from GCS step, which restores files and directories that were saved using the Save Cache to GCS step. Name. The unique name for this step. Id. See E…
+title: Restore Cache from GCS step settings
+description: This topic provides settings for the Restore Cache from GCS step.
 sidebar_position: 90
 helpdocs_topic_id: e2o4sektz1
 helpdocs_category_id: 4xo13zdnfx
@@ -10,69 +10,63 @@ helpdocs_is_published: true
 
 This topic provides settings for the Restore Cache from GCS step, which restores files and directories that were saved using the [Save Cache to GCS](save-cache-to-gcs-step-settings.md) step.
 
-### Name
+:::info
 
-The unique name for this step.
-
-### Id
-
-See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
-
-### GCP Connector
-
-The Harness connector for the GCP account where you saved the cache. This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
 
 :::
 
-### Bucket
+## Name
 
-GCS bucket name.
+The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-### Key
+## GCP Connector
 
-The key used to identify the cache.
+The Harness connector for the GCP account where you saved the cache.
 
-The backslash character isn't allowed as part of the checksum added here. This is a limitation of the Go language (golang) template. Use a forward slash instead. 
+This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+
+## Bucket
+
+GCS bucket name where you saved the cache.
+
+## Key
+
+The key to identify the cache.
+
+The backslash character isn't allowed as part of the checksum value here. This is a limitation of the Go language (golang) template. You must use a forward slash instead:
 
 * Incorrect format: `cache-{{ checksum ".\src\common\myproj.csproj" }`
 * Correct format: `cache-{{ checksum "./src/common/myproj.csproj" }}`
 
-### Optional Configurations
+## Optional Configuration
 
-#### Archive Format
+Use the following settings to add additional configuration to the step.
 
-Select the archive format.
+### Archive Format
 
-The default archive format is Tar.
+Select the archive format. The default archive format is Tar.
 
-#### Fail if Key Doesn't Exist
+### Fail if Key Doesn't Exist
 
-Select this option to fail the step if the key doesn’t exist.
+Select this option to fail the step if the specified **Key** doesn't exist.
 
-By default, the Fail if Key Doesn't Exist option is set to False.
+By default, this option is set to false (unselected).
 
-#### Run as User
+### Run as User
 
-Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-#### Set Container Resources
+### Set Container Resources
 
-Maximum resources limit values for the resources used by the container at runtime.
+Maximum resources limits for the resources used by the container at runtime:
 
-##### Limit Memory
+* **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+### Timeout
 
-##### Limit CPU
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed: you can specify one hundred millicpu as `0.1` or `100m`. See [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-
-##### Timeout
-
-Timeout for the step. Once the timeout is reached, the step fails and the Pipeline execution continues.
-
-### See Also
-
-* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
+* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

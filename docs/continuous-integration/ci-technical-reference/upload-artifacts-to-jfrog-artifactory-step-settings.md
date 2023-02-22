@@ -1,6 +1,6 @@
 ---
-title: Upload Artifacts to JFrog Artifactory Step Settings
-description: This topic provides settings for the Upload Artifacts to JFrog Artifactory step. Name. The unique name for this Connector. Description. Text string. Artifactory Connector. Select the Harness Artifact…
+title: Upload Artifacts to JFrog Artifactory step settings
+description: This topic provides settings for the Upload Artifacts to JFrog Artifactory step.
 sidebar_position: 150
 helpdocs_topic_id: gjoggc66fy
 helpdocs_category_id: 4xo13zdnfx
@@ -10,55 +10,54 @@ helpdocs_is_published: true
 
 This topic provides settings for the Upload Artifacts to JFrog Artifactory step.
 
-### Name
+:::info
 
-The unique name for this Connector.
+Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
 
-### Description
+:::
 
-Text string.
+## Name
 
-### Artifactory Connector
+The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-Select the Harness Artifactory Connector to use for this upload.
+## Description
 
-See [Artifactory Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md). This step supports Artifactory connectors that use either anonymous or username and password authentication.
+Text string describing the step's purpose.
 
-### Target
+## Artifactory Connector
+
+Select the Harness Artifactory connector to use for this upload. For more information, go to the [Artifactory connector settings reference](../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+
+This step supports Artifactory connectors that use either anonymous or username and password authentication.
+
+## Target
 
 The target folder in the registry.
 
-### Source Path
+Target repository name relative to the server URL in the connector. If `pom.xml` is not present, then the **Target** must be a full path to an artifacts folder, such as `groupId/artifactId/version`.
 
-Path to the artifact file/folder you want to upload.
+## Source Path
 
-You can use regex to upload multiple files.
+Path to the artifact file/folder you want to upload. You can use glob expressions to upload multiple files. For example, `src/js/**/*.js` uploads all Javascript files in `src/js/subfolder-1/`, `src/js/subfolder-2`, and so on. Harness creates the compressed file automatically.
 
-Harness will automatically create the compressed file.
+## Optional Configuration
 
-### Optional Configurations
+Use the following settings to add additional configuration to the step.
 
-#### Run as User
+### Run as User
 
-Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-#### Set container resources
+### Set container resources
 
-Maximum resources limit values for the resources used by the container at runtime.
+Set maximum resource limits for the resources used by the container at runtime:
 
-##### Limit Memory
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+* * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+### Timeout
 
-##### Limit CPU
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed: you can specify one hundred millicpu as `0.1` or `100m`. See [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-
-##### Timeout
-
-Timeout for the step. Once the timeout is reached, the step fails, and the Pipeline execution continues.
-
-### See Also
-
-* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-
+* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

@@ -1,6 +1,6 @@
 ---
-title: Upload Artifacts to GCS Step Settings
-description: This topic provides settings for the Upload Artifacts to GCS step, which uploads artifacts to Google Cloud Storage. See Uploads and downloads in the Google Cloud docs. Name. The unique name for this…
+title: Upload Artifacts to GCS step settings
+description: This topic provides settings for the Upload Artifacts to GCS step.
 sidebar_position: 140
 helpdocs_topic_id: 3qeqd8pls7
 helpdocs_category_id: 4xo13zdnfx
@@ -10,53 +10,50 @@ helpdocs_is_published: true
 
 This topic provides settings for the Upload Artifacts to GCS step, which uploads artifacts to Google Cloud Storage. See [Uploads and downloads](https://cloud.google.com/storage/docs/uploads-downloads) in the Google Cloud docs.
 
-### Name
+:::info
 
-The unique name for this Connector.
+Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
 
-### ID
+:::
 
-See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
+## Name
 
-### GCP Connector
+The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+
+## GCP Connector
 
 The Harness connector for the GCP account where you want to upload the artifact. For more information, go to [Google Cloud Platform (GCP) connector settings reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md). This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
-### Bucket
 
-GCS destination bucket name.
+## Bucket
 
-### Source Path
+The GCS destination bucket name.
 
-Path to the artifact file/folder you want to upload. You can use regex to upload multiple files. Harness creates the compressed file automatically.
+## Source Path
 
-### Optional Configurations
+Path to the artifact file/folder you want to upload. You can use glob expressions to upload multiple files. For example, `src/js/**/*.js` uploads all Javascript files in `src/js/subfolder-1/`, `src/js/subfolder-2`, and so on. Harness creates the compressed file automatically.
 
-#### Target
+## Optional Configuration
 
-The name of the artifact file.
+Use the following settings to add additional configuration to the step.
 
-#### Run as User
+### Target
 
-Set the value to specify the user id for all processes in the pod, running in containers. See [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+The path, relative to the **Bucket** where you want to store the cache. If no target path is provided, the cache is saved to `[bucket]/`.
 
-#### Set container resources
+### Run as User
 
-Maximum resources limit values for the resources used by the container at runtime.
+Specify the user ID to use to run all processes in the pod, if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-##### Limit Memory
+### Set container resources
 
-Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+Set maximum resource limits for the resources used by the container at runtime:
 
-##### Limit CPU
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
+* * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed: you can specify one hundred millicpu as `0.1` or `100m`. See [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+### Timeout
 
-##### Timeout
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-Timeout for the step. Once the timeout is reached, the step fails, and the Pipeline execution continues.ACL
-
-### See Also
-
-* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
+* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
