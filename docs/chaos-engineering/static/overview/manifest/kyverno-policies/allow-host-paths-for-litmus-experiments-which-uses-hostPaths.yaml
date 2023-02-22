@@ -31,7 +31,7 @@ spec:
             # substitutes this path with an appropriate socket path
             # ex: '/var/run/docker.sock', '/run/containerd/containerd.sock', '/run/crio/crio.sock'
             - =(hostPath):
-                path: "/var/run/docker.sock"     
+                path: "/run/containerd/containerd.sock"     
     - name: check container host-path
       match:
         resources:
