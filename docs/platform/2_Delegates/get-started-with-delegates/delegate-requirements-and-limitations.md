@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes the basic requirements of Harness Delegate.
+This topic describes the basic requirements for Harness Delegate.
 
 * Deployment limits are set by account type.
 
