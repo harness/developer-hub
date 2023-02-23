@@ -57,9 +57,9 @@ The following quickstart guides are available for Feature Flags:
 
 The following quickstart guides are available for Service Reliability Management: 
 
-* [Change Impact Analysis Quickstart](../service-reliability-management/howtos-service-reliability-management/change-impact-analysis-quickstart.md) describes how you can correlate change events and understand their impact on a Monitored Service. 
+* [Change Impact Analysis Quickstart](../service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-quickstart.md) describes how you can correlate change events and understand their impact on a Monitored Service. 
 
-* [SLO Management Quickstart](../service-reliability-management/howtos-service-reliability-management/slo-management-quickstart.md) swalks you through the steps to create and manage an SLO. 
+* [SLO Management Quickstart](../service-reliability-management/howtos-service-reliability-management/slo-management-quickstart.md) walks you through the steps to create and manage an SLO. 
 
 ### Security Testing Orchestration 
 
