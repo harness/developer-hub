@@ -20,6 +20,11 @@ import install_twenty from './static/install-a-delegate-20.png'
 import install_twofive from './static/install-a-delegate-25.png'
 import install_twothree from './static/install-a-delegate-23.png'
 import install_twonine from './static/install-a-delegate-29.png'
+import install_39 from './static/install-a-delegate-30-1.png'
+import install_31 from './static/install-a-delegate-31.png'
+import install_33 from './static/install-a-delegate-33.png'
+import install_35 from './static/install-a-delegate-35.png'
+import install_37 from './static/install-a-delegate-37.png'
 ```
 
 
@@ -314,4 +319,61 @@ To verify the delegate, click **Verify**. Harness Manager listens for the delega
 After the delegate is registered and initialized, a success message is shown.
 
 Click **Done** to close the installer. 
+
+### Troubleshooting
+
+The delegate installer provides troubleshooting information for each installation process. If the delegate cannot be verified, click Troubleshoot for steps you can use to resolve the problem. This section includes the same information.
+
+Harness asks for feedback after the troubleshooting steps. You are asked **Did the delegate come up?** 
+
+
+```mdx-code-block
+<img src={install_40} width="600" />
+```
+
+If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to Harness Documentation.
+
+#### Troubleshoot:
+
+- Helm
+- Terraform
+- Kubernetes
+- Docker
+
+
+#### Helm
+
+
+
+```mdx-code-block
+<img src={install_31} width="600" />
+```
+
+#### Terraform
+
+
+
+```mdx-code-block
+<img src={install_33} width="600" />
+```
+
+#### Kubernetes
+
+
+
+```mdx-code-block
+<img src={install_35} width="600" />
+```
+
+#### Docker
+
+
+```mdx-code-block
+<img src={install_37} width="600" />
+```
+
+
+
+
+
 
