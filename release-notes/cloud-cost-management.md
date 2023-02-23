@@ -28,7 +28,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-*  The potential monthly savings displayed on the UI did not match with the Spot or On-Demand recommendations. (CCM-10698)
+* The potential monthly savings displayed on the UI did not match with the Spot or On-Demand recommendations. (CCM-10698)
 
 The logic to calculate the potential monthly cost displayed on the UI has been fixed. Now, the savings match with the Spot or On-Demand recommendations.
 
