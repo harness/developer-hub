@@ -1,8 +1,11 @@
 ---
-title: Scanner Setup Template 2 (EXPAND)
+title: Scanner Setup Template 3 (TABS)
 description: All the available settings to configure individual scans.
-sidebar_position: 20
+sidebar_position: 30
 ---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/_sto-ref-ui-scan-mode.md';
@@ -52,9 +55,11 @@ import StoSettingInstancePort from './shared/_sto-ref-ui-instance-port.md';
 import StoSettingInstancePath from './shared/_sto-ref-ui-instance-path.md';
 import StoSettingLogLevel from './shared/_sto-ref-ui-log-level.md';
 import StoSettingFailOnSeverity from './shared/_sto-ref-ui-fail-on-severity.md';
+import StoSettingCliFlags from './shared/_sto-ref-ui-cli-flags.md';
 ```
 
 
+# ALL SETTINGS
 
 You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest results from $PRODUCT ] into your pipelines. This topics describes the required and optional settings for setting up a $PRODUCT scan. 
 
@@ -63,21 +68,9 @@ You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners,
 ## Step Palette Configuration 
 To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a $PRODUCT scan step to the stage and configure it as described below. 
 
-<!-- 
-<details>
-    <summary>Step Palette</summary>
-
-![](./static/step-palette-00.png) 
-
-</details>
-
--->
-
-<!-- ============================================================================= -->
-
-<details><summary>Scan settings</summary>
-
-### Scan Settings
+<Tabs>
+  
+<TabItem value="scan" label="Scan" default>
 
 #### Scan Mode
 
@@ -88,13 +81,11 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 #### Scan Configuration
 <StoSettingProductConfigName />
+  
+</TabItem>
 
-</details>
+<TabItem value="target" label="Target" default>
 
-<details>
-<summary>Target Settings</summary>
-
-### Target Settings
 
 #### Type
 <StoSettingScanType />
@@ -115,13 +106,9 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 #### Ingestion File (_ingestion_)
 <StoSettingIngestionFile  />
 
-</details>
+</TabItem>
 
-<!-- ============================================================================= -->
-
-<details><summary>Authentication Settings</summary>
-
-### Authentication Settings
+<TabItem value="auth" label="Authentication" default>
 
 #### Domain (_extraction_)
 <StoSettingAuthDomain />
@@ -141,11 +128,9 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 #### Access Token
 <StoSettingAuthAccessToken />
 
-</details>
+</TabItem>
 
-<!-- ============================================================================= -->
-
-<details><summary>Container Image settings</summary>
+<TabItem value="cont" label="Image" default>
 
 #### Type  (_orchestration_)
 <StoSettingImageType />
@@ -168,13 +153,9 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 #### Region  
 <StoSettingImageRegion />
 
-</details>
+</TabItem>
 
-<!-- ============================================================================= -->
-
-<details><summary>Scan Tool Settings</summary>
-
-### Scan Tool settings
+<TabItem value="tool" label="Tool" default>
 
 #### Project Name
 <StoSettingToolProjectName />
@@ -220,13 +201,9 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 #### Lookup Type
 <StoSettingToolLookupType  />
 
-</details>
+</TabItem>
 
-<!-- ============================================================================= -->
-
-<details><summary>Instance settings</summary>
-
-### Instance Settings
+<TabItem value="inst" label="Instance" default>
 
 #### Domain
 <StoSettingInstanceDomain />
@@ -240,47 +217,21 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 #### Path
 <StoSettingInstancePath />
 
-</details>
 
+</TabItem>
 
-<!-- ============================================================================= -->
+<TabItem value="misc" label="Misc" default>
 
-<!-- ============================================================================= -->
-
-<details><summary>Log Level, CLI flags, and Fail on Severity</summary>
-
-### Log Level, CLI flags, and Fail on Severity 
-
-### Log Level
+#### Log Level
 <StoSettingLogLevel />
 
-### Additional CLI flags
+#### Additional CLI flags
 <StoSettingCliFlags />
 
-### Fail on severity
+#### Fail on severity
 <StoSettingFailOnSeverity />
 
-</details>
+</TabItem>
 
-## Legacy configuration
 
-Optionally, you can set up a $PRODUCT scan manually in a Security step. Enter the keys and values in the **Settings** fields as shown in the following YAML example. 
-
-* `product_name` : `blackduckhub`
-* `scan_type`
-	+ accepted value(s): `repository`, `containerImage`
-* `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan`
-	+ `product_domain`
-	+ `product_auth_type`
-		- accepted value(s): `usernamePassword`, `apiKey`
-	+ `product_access_id`: api username
-	+ `product_access_token` api password or api key
-	+ `product_api_version`
-	+ `product_project_name`
-	+ `product_project_version`
-* `product_config_name`
-	+ Accepted values(s): `default`
-
-## YAML configuration
+</Tabs>

@@ -1,7 +1,7 @@
 ---
 title: BlackDuckHub Scanner Reference
 description: All the available settings to configure individual scans.
-sidebar_position: 30
+sidebar_position: 200
 ---
 
 # ALL SETTINGS

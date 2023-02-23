@@ -1,10 +1,9 @@
 ---
-title: STO Settings Template 1
+title: Template Test A (Ignore)
 description: All the available settings to configure individual scans.
-sidebar_position: 10
----
+sidebar_position: 100
 
-# ALL SETTINGS
+---
 
 You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest results from $PRODUCT ] into your pipelines. This topics describes the required and optional settings for setting up a $PRODUCT scan. 
 
