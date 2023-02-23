@@ -29,7 +29,7 @@ The repository at https://app.harness.io/storage/harness-download/delegate-helm-
 
 This release introduces the following new features and enhancements:
 
--  - The delegate hostname can be used for dynamic selection. You can select a delegate from those in your delegate groups during pipeline runtime. (DEL-5052)
+You can dynamically select delegates by hostname during pipeline runs. To do so, select delegates by hostname from your delegate groups. (DEL-5052)
 
 ### Fixed issues
 
