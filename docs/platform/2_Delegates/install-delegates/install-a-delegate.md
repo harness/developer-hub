@@ -1,6 +1,6 @@
 ---
 title: Install a delegate
-description: How to install Harness delegates using Helm chart, Terraform Plan, Kubernetes manifest, or Docker.
+description: How to install Harness delegates using Helm, Terraform, Kubernetes, or Docker.
 # sidebar_position: 2
 ---
 ```mdx-code-block
