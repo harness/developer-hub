@@ -8,9 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-A load balancer serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application.
+A load balancer serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application.
 
 An Application Load Balancer makes routing decisions at the application layer (HTTP/HTTPS), supports path-based routing, and can route requests to one or more ports on each container instance in your cluster.
+
 
 This topic describes how to create a new application load balancer for creating AutoStopping Rules for AWS. 
 
