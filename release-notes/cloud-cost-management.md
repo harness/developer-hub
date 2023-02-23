@@ -30,7 +30,7 @@ This release does not include early access features.
 
 *  The potential monthly savings displayed on the UI did not match with the Spot or On-Demand recommendations. (CCM-10698)
 
-  The logic to calculate the potential monthly cost displayed on the UI has been fixed. Now, the savings match with the Spot or On-Demand recommendations.
+The logic to calculate the potential monthly cost displayed on the UI has been fixed. Now, the savings match with the Spot or On-Demand recommendations.
 
 * Added the missing instance family types for Azure node pool recommendations. (CCM-10246)
 
