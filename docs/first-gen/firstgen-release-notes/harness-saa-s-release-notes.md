@@ -16,6 +16,25 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### February 24, 2023, version 785xx
+
+#### What's new
+
+- Upgrades have been made to the following libraries:
+
+  - The Spring Data MongoDB package has been upgraded to version 3.4.7.
+  - Spring Data Commons has been upgraded to version 2.77.
+  - The MongoDB Java Driver has been upgraded to version 4.6.1. (PL-30730)
+
+#### Early access
+
+This release does not include any early access feature.
+
+#### Fixed issues
+
+This release does not include any fixed issue.
+
+
 ### February 15, 2023, version 78421
 
 #### What's new
