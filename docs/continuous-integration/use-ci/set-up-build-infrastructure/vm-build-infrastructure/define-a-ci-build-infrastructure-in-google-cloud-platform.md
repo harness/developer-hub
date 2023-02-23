@@ -2,7 +2,7 @@
 title: Define a CI Build Infrastructure in Google Cloud Platform
 description: This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
 
-sidebar_position: 95
+sidebar_position: 30
 helpdocs_topic_id: k5rvvhw49i
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: true
@@ -17,12 +17,12 @@ This topic describes how to set up a CI build infrastructure in Google Cloud Pla
 
 Running builds in your infrastructure, rather than in a vendor's cloud, has significant benefits. Vendor clouds often experience outages that can result in backlogs and delayed builds. You can build software and run tests, repeatedly and automatically, on a scalable platform with no outages or backlogs.
 
-For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](./set-up-a-kubernetes-cluster-build-infrastructure.md).
+For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 The following diagram illustrates a build farm. The [​Harness Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ##### CI build infrastructure in Google Cloud Platform
-![](./static/define-a-ci-build-infrastructure-in-google-cloud-platform-29.png)
+![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-29.png)
 
 ### Important Notes
 
@@ -203,7 +203,7 @@ services:
 	 $ docker logs <delegate-container-id>  
 	 $ docker logs <runner-container-id>
 	 ```
-5. In the Harness UI, verify that the delegate appears in the delegates list. This might take two or three minutes. You should see **Connected** next to the Delegate listing.![](./static/define-a-ci-build-infrastructure-in-google-cloud-platform-30.png)
+5. In the Harness UI, verify that the delegate appears in the delegates list. This might take two or three minutes. You should see **Connected** next to the Delegate listing.![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-30.png)
 
 6. If you see **Not Connected**, make sure the Docker host can connect to **https://app.harness.io**.
 
@@ -216,7 +216,7 @@ services:
 1. In the Harness CI Stage, in **Infrastructure**, select **VMs**.
 2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in [Step 2: Configure the Drone Pool on the Google VM](set-up-an-aws-vm-build-infrastructure.md#step-2-configure-the-drone-pool-on-the-google-vm).
 
-   ![](./static/define-a-ci-build-infrastructure-in-google-cloud-platform-31.png)
+   ![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-31.png)
 
 You can now run builds in your GCP build infrastructure.
 
@@ -267,6 +267,6 @@ If you have problems running the delegate, runner, or VMs, you can collect debug
 
 ### See Also
 
-* [Set Up a Kubernetes Cluster Build Infrastructure](./set-up-a-kubernetes-cluster-build-infrastructure.md)
+* [Set Up a Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md)
 * For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
 
