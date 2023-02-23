@@ -17,7 +17,7 @@ Harness FirstGen release 785xx includes the following feature changes and fixes 
 
 ### What's new
 
-- The delegate hostname can be used for dynamic selection. You can select a delegate from those in your delegate groups during pipeline runtime. (DEL-5052)
+- You can dynamically select delegates by hostname during pipeline runs. To do so, select delegates by hostname from your delegate groups.
 
 ### Fixed issues
 
