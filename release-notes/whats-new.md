@@ -35,7 +35,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - The reference page for entities is improved to provide detailed information about each reference. (PL-31247)
 
-  The following details have been added to the existing reference pages:
+  The following details are added to the existing reference pages:
 
   - Date or timestamp 
   - Name and type of entity
