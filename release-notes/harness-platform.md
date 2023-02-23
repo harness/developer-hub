@@ -36,7 +36,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - The reference page for entities is improved to provide detailed information about each reference. (PL-31247)
 
-  The following details have been added to the existing reference pages:
+  The following details are added to the existing reference pages:
 
   - Date or timestamp 
   - Name and type of entity
@@ -59,7 +59,7 @@ This release does not include any early access feature.
   
    A code enhancement to include server side validation has fixed this issue.
 
-- The user interface does not display an error message when the referred connector in infra does not exist.(PL-30130)
+- The UI does not display an error message when the referred connector in infra does not exist.(PL-30130)
   
   An enhancement to the error handling system has fixed this issue. Whenever the connector API fails, an error message is displayed on the UI.
 
