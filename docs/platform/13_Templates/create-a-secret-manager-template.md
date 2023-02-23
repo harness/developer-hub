@@ -82,7 +82,7 @@ In this example, this script assigns the secret variable to your final value. He
 - This script makes a cURL call to the API URL of the third-party Secrets Manager and stores the output in the file secret.json.
 - It includes some parameters such as engine name and path.
 - It uses an existing, already configured Secrets Manager for API access.
-- After getting the file, as shown in the example, it gets the secret by using a third-party tool to retrieve the key from the data object. The key is also a parameter that can be assigned later.
+- After fetching the file, as shown in the example, it gets the secret by using a third-party tool to retrieve the key from the data object. The key is also a parameter that can be assigned later.
 - In the script, make sure to include a variable to store the fetched secret, and make sure to name the variable `secret`.
 
 ### Configure Input Variables for the shell script
