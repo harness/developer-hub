@@ -5,9 +5,16 @@ description: A load balancer distributes user traffic across multiple instances 
 ---
 
 
-An AutoStopping proxy load balancer automatically distributes user traffic across multiple instances of your applications coupled with the capabilities of the CCM AutoStopping feature that makes sure that your non-production resources run only when used. Load balancing reduces the chances of performance issues in your applications by spreading the load.
+AutoStopping is a solution that is well-suited for use with native load-balancing options like AWS ALB. However, there are certain use cases, such as SSH/RDP/RDS connections, that cannot be addressed by native load balancer integrations for AutoStopping.
 
-You can create a custom load balancer using the AutoStopping proxy option. This feature allows you to launch a VM with the load balancer. AutoStopping proxy supports PEM-encoded certificates. You need to provide the certificate and the private key. A Cert chain is not required for the configuration. 
+To address these use cases, AutoStopping offers a reverse proxy called the AutoStopping proxy. This proxy sits in front of the virtual machines (VMs) and manages the start and stop of the VMs based on network traffic. The proxy is capable of supporting both HTTP(S) and TCP connections.
+
+For HTTP(S) traffic, the AutoStopping proxy provides Layer-7 load balancing and request routing capabilities, as well as SSL support. For all other TCP traffic, the proxy provides a dynamically generated ephemeral port-based configuration.
+
+The AutoStopping proxy runs in a VM and uses the Envoy proxy, an open-source solution that has been thoroughly tested. One proxy VM can handle traffic to multiple AutoStopping-controlled VMs.
+
+  
+  ![](./static/autostopping-proxy-architecture-diagram.png)
 
 Perform the following steps to create an AutoStopping proxy for your resources in AWS:
 
@@ -35,7 +42,7 @@ Perform the following steps to create an AutoStopping proxy for your resources i
 10.  **Select region**: Select the region where you have your cloud resources hosted.
 11.  Select the **VPC** from the dropdown list.
 12.  **Machine type**: Select the instance family type from the dropdown list.
-13.  **TLS Certificate Secret Version**: On the AWS console, go to **Secrets Manager**, and store a secret. It is recommended to use _harness/_ in the secret name. You must choose the **Other type of secret** option. Go to [https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html) for more information. After successfully storing the secret, enter the **Secret ARN** in this field. 
+13.  **TLS Certificate Secret Version**: AutoStopping proxy supports PEM-encoded certificates. You need to provide the certificate and the private key. A Cert chain is not required for the configuration. On the AWS console, go to **Secrets Manager**, and store a secret. It is recommended to use _harness/_ in the secret name. You must choose the **Other type of secret** option. Go to [https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html) for more information. After successfully storing the secret, enter the **Secret ARN** in this field. 
 
   Sample certificate:
 
@@ -58,7 +65,6 @@ zUfdbO+mWOKNUQDyQiBnlNNM3Gkkn5P8zYHfL97kSLXyadOOWwU0eEDd4iJJSDtJ
 ```
 
 
-![](./static/aws-autoproxy-secrets-manager.png)
 
 ![](./static/secret-name-convention-aws.png)
 
@@ -67,10 +73,10 @@ zUfdbO+mWOKNUQDyQiBnlNNM3Gkkn5P8zYHfL97kSLXyadOOWwU0eEDd4iJJSDtJ
 
 
 
-14.  **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
-15.   **Select security groups**: Select the **Security Group** of your instance.
-16.   **Key pair**: Select the SSH key pair to connect to your VM.
-17.   **TLS Private Key Secret Version**: Enter the **Secret ARN** in this field.
+14.   **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
+15.    **Select security groups**: Select the **Security Group** of your instance.
+16.    **Key pair**: Select the SSH key pair to connect to your VM.
+17.    **TLS Private Key Secret Version**: Enter the **Secret ARN** in this field.
 
   Private key:
 
@@ -95,5 +101,5 @@ qhhpq85lkBaErOwIZUJzxJuG2AveiOMcn7XKaxxC4IizJtuLNUnnmsHwBYYr8c2c
 
 
 
-18.   Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field if it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
-19.   Click **Save Load Balancer**.
+18.    Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field if it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
+19.    Click **Save Load Balancer**.

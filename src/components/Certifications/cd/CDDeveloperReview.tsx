@@ -190,7 +190,7 @@ export default function CertificationsCD() {
           <CertificationExamDetails />
 
           <div className={styles.btnContainer}>
-            <Link href="https://training.harness.io/page/continuous-delivery-developer">
+            <Link href="https://university.harness.io/page/continuous-delivery-developer">
               <button className={styles.moreDetails}>Register for Exam</button>
             </Link>
             <Link href="/tutorials/deploy-services">

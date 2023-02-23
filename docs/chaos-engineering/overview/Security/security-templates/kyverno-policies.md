@@ -1,5 +1,5 @@
 ---
-title: Kyverno policies
+title: Kyverno
 sidebar_position: 3
 ---
 [Kyverno policies](https://kyverno.io/policies/pod-security/) block the configurations that don't match a policy (enforce mode) or can generate policy violations (audit mode). It scans existing configurations and reports violations in the cluster. 
