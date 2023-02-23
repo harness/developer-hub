@@ -101,7 +101,7 @@ export default function Certifications() {
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Security
+                    Infrastructure Providers
                   </li>
                 </ul>
                 <Link href="/certifications/continuous-delivery/cd-developer-cert#prepare">
@@ -127,7 +127,7 @@ export default function Certifications() {
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
-                  <Link href="https://training.harness.io/page/continuous-delivery-developer">
+                  <Link href="https://university.harness.io/page/continuous-delivery-developer">
                     <button className={styles.moreDetails}>Register for the Exam</button>
                   </Link>
                   <Link href="/certifications/continuous-delivery">

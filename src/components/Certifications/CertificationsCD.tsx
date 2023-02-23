@@ -59,7 +59,7 @@ export default function CertificationsCD() {
                 </li>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
-                  Policy as Code
+                  GitOps
                 </li>
               </ul>
             </div>
