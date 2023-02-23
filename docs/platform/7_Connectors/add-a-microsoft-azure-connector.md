@@ -359,7 +359,7 @@ kind: Role
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: cdp-qa-deployer-role
-  namespace: default
+  namespace: cdp-qa-app
 rules:
   - apiGroups: ["", "apps"]
     resources: ["pods", "configmaps", "deployments", "secrets", "events", "services",  "replicasets", "deployments/scale", "namespaces", "resourcequotas", "limitranges"]
@@ -369,14 +369,14 @@ kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: cdp-qa-deployer-role-binding
-  namespace: default
+  namespace: cdp-qa-app
 roleRef:
   apiGroup: rbac.authorization.k8s.io
   kind: Role
   name: cdp-qa-deployer-role
 subjects:
   - kind: Group
-    namespace: default
+    namespace: cdp-qa-app
     name: <AD group id to which the SP and MSI users are assigned>
 ```
 
@@ -543,7 +543,7 @@ The credentials can be used by kubectl commands by exporting its value to the `K
 For example, you could use this shell script in a Harness Run step:
 
 ```
-export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n <namespace>
 ```
 
 Steps can be executed on any delegate or you can select specific delegates using the [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting.
