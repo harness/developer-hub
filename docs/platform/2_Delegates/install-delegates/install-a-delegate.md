@@ -340,8 +340,6 @@ If the steps did not resolve the problem, click **No** and use the form to descr
 
 Use the following steps to troubleshoot your installation of the delegate using Helm.
 
-
-
 ```mdx-code-block
 <img src={install_31} width="600" />
 ```
