@@ -1,7 +1,7 @@
 ---
-title: Scanner Setup Template 1 (PLAIN)
+title: Template Test E (ignore)
 description: All the available settings to configure individual scans.
-sidebar_position: 10
+sidebar_position: 150
 ---
 
 
@@ -9,7 +9,7 @@ You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest res
 
 You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
 
-## Setting up a $PRODUCT step using the Step Palette
+# Step Palette Configuration 
 
 To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a $PRODUCT scan step to the stage and configure it as described below. 
 

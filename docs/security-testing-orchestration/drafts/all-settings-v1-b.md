@@ -1,8 +1,9 @@
 ---
-title: Scanner Setup Template 2 (EXPAND)
+title: Scanner Setup Template 1a (Plain)
 description: All the available settings to configure individual scans.
-sidebar_position: 20
+sidebar_position: 2
 ---
+
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/_sto-ref-ui-scan-mode.md';
@@ -55,15 +56,16 @@ import StoSettingFailOnSeverity from './shared/_sto-ref-ui-fail-on-severity.md';
 ```
 
 
-
 You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest results from $PRODUCT ] into your pipelines. This topics describes the required and optional settings for setting up a $PRODUCT scan. 
 
 You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
 
 ## Step Palette Configuration 
+
 To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a $PRODUCT scan step to the stage and configure it as described below. 
 
-<!-- 
+<a name="toc"></a>
+
 <details>
     <summary>Step Palette</summary>
 
@@ -71,216 +73,362 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 </details>
 
--->
+
+
+- [Step Palette Configuration](#step-palette-configuration)
+- [Step Parameters](#step-parameters)
+  - [Scan Mode](#scan-mode)
+  - [Scan Configuration](#scan-configuration)
+- [Target](#target)
+  - [Type](#type)
+  - [Name](#name)
+  - [Variant](#variant)
+  - [Workspace (_repository_)](#workspace-repository)
+- [Ingestion (_ingestion_)](#ingestion-ingestion)
+  - [Ingestion File (_ingestion_)](#ingestion-file-ingestion)
+- [Authentication](#authentication)
+  - [Domain (_extraction_)](#domain-extraction)
+  - [Enforce SSL](#enforce-ssl)
+  - [API Version](#api-version)
+  - [Type](#type-1)
+  - [Access ID (_orchestration_)](#access-id-orchestration)
+  - [Access Token](#access-token)
+- [Container Image](#container-image)
+  - [Type  (_orchestration_)](#type--orchestration)
+  - [Domain (_extraction_)](#domain-extraction-1)
+  - [Name](#name-1)
+  - [Tag](#tag)
+  - [Access Id](#access-id)
+  - [Access Token](#access-token-1)
+  - [Region](#region)
+- [Scan Tool](#scan-tool)
+  - [Project Name](#project-name)
+  - [Project Version](#project-version)
+  - [Include](#include)
+  - [Exclude](#exclude)
+  - [Context Name](#context-name)
+  - [Context Name (images)](#context-name-images)
+  - [Team Name](#team-name)
+  - [Port](#port)
+  - [Java Libraries](#java-libraries)
+  - [Java Binaries](#java-binaries)
+  - [Product Token](#product-token)
+  - [Name](#name-2)
+  - [Project Token](#project-token)
+  - [Lookup Type](#lookup-type)
+- [Instance Settings](#instance-settings)
+  - [Domain](#domain)
+  - [Protocol](#protocol)
+  - [Port](#port-1)
+  - [Path](#path)
+- [Log Level, CLI flags, and Fail on Severity](#log-level-cli-flags-and-fail-on-severity)
+  - [Log Level](#log-level)
+  - [Additional CLI flags](#additional-cli-flags)
+  - [Fail on severity](#fail-on-severity)
+
+
+
 
 <!-- ============================================================================= -->
+## Step Parameters 
 
-<details><summary>Scan settings</summary>
 
-### Scan Settings
-
-#### Scan Mode
-
+<a name="scan-mode"></a>
+### Scan Mode
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
+[TOC &uarr;](#toc)
 
-#### Scan Configuration
+<a name="scan-config"></a>
+### Scan Configuration
 <StoSettingProductConfigName />
+[TOC &uarr;](#toc)
 
-</details>
 
-<details>
-<summary>Target Settings</summary>
 
-### Target Settings
+<!-- ============================================================================= -->
 
-#### Type
+## Target
+
+<a name="target-type"></a>
+### Type
+<a name="scan-type"></a>
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
 <StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
+[TOC &uarr;](#toc)
 
-#### Name 
+<a name="target-name"></a>
+### Name 
 <StoSettingProductID />
+[TOC &uarr;](#toc)
 
-#### Variant
+<!-- ============================================================================= -->
+<a name="target-variant"></a>
+### Variant
 <StoSettingTargetVariant  />
+[TOC &uarr;](#toc)
 
-#### Workspace (_repository_)
+
+<a name="target-workspace"></a>
+### Workspace (_repository_)
 <StoSettingTargetWorkspace  />
+[TOC &uarr;](#toc)
 
-#### Ingestion File (_ingestion_)
+
+<!-- ============================================================================= -->
+
+## Ingestion (_ingestion_)
+
+<a name="ingestion-file"></a>
+### Ingestion File (_ingestion_)
 <StoSettingIngestionFile  />
+[TOC &uarr;](#toc)
 
-</details>
 
 <!-- ============================================================================= -->
+## Authentication
 
-<details><summary>Authentication Settings</summary>
-
-### Authentication Settings
-
-#### Domain (_extraction_)
+<a name="auth-domain"></a>
+### Domain (_extraction_)
 <StoSettingAuthDomain />
+[TOC &uarr;](#toc)
 
-#### Enforce SSL
+
+<a name="auth-enforce-ssl"></a>
+### Enforce SSL
 <StoSettingProductSSL />
+[TOC &uarr;](#toc)
 
-#### API Version
+
+<a name="auth-access-api-version"></a>
+### API Version
 <StoSettingApiVersion />
+[TOC &uarr;](#toc)
 
-#### Type
+
+<a name="auth-type"></a>
+### Type
 <StoSettingAuthType />
+[TOC &uarr;](#toc)
 
-#### Access ID (_orchestration_)
+
+<a name="auth-access-id"></a>
+### Access ID (_orchestration_)
 <StoSettingAuthAccessID />
+[TOC &uarr;](#toc)
 
-#### Access Token
+
+<a name="auth-access-token"></a>
+### Access Token
 <StoSettingAuthAccessToken />
+[TOC &uarr;](#toc)
 
-</details>
+
+
+
+## Container Image 
 
 <!-- ============================================================================= -->
-
-<details><summary>Container Image settings</summary>
-
-#### Type  (_orchestration_)
+<a name="container-type"></a>
+### Type  (_orchestration_)
 <StoSettingImageType />
+[TOC &uarr;](#toc)
 
-#### Domain (_extraction_)
+
+<a name="container-domain"></a>
+### Domain (_extraction_)
 <StoSettingImageDomain />
+[TOC &uarr;](#toc)
 
-#### Name
+
+<a name="container-name"></a>
+### Name
 <StoSettingImageName />
+[TOC &uarr;](#toc)
 
-#### Tag
+
+<a name="container-tag"></a>
+### Tag
 <StoSettingImageTag />
+[TOC &uarr;](#toc)
 
-#### Access Id
+
+<a name="container-access-id"></a>
+### Access Id
 <StoSettingImageAccessID />
+[TOC &uarr;](#toc)
 
-#### Access Token 
+
+<a name="container-access-token"></a>
+### Access Token 
 <StoSettingImageAccessToken />
+[TOC &uarr;](#toc)
 
-#### Region  
+
+<a name="container-access-token"></a>
+### Region  
 <StoSettingImageRegion />
-
-</details>
+[TOC &uarr;](#toc)
 
 <!-- ============================================================================= -->
+## Scan Tool
 
-<details><summary>Scan Tool Settings</summary>
 
-### Scan Tool settings
-
-#### Project Name
+<a name="tool-project-name"></a>
+### Project Name
 <StoSettingToolProjectName />
+[TOC &uarr;](#toc)
 
-#### Project Version
+<a name="tool-project-version"></a>
+### Project Version
 <StoSettingToolProjectVersion />
+[TOC &uarr;](#toc)
 
-#### Include 
+
+<a name="tool-include"></a>	
+### Include 
 <StoSettingToolInclude />
+[TOC &uarr;](#toc)
 
-#### Exclude
+
+<a name="tool-exclude"></a>	
+### Exclude
 <StoSettingToolExclude />
+[TOC &uarr;](#toc)
 
 
-#### Context Name
+<a name="tool-context"></a>	
+### Context Name
 <StoSettingToolContext />
+[TOC &uarr;](#toc)
 
-
-#### Context Name (images) 
+<a name="tool-context-image"></a>
+### Context Name (images) 
 <StoSettingToolImageName />
+[TOC &uarr;](#toc)
 
-#### Team Name
+
+<a name="tool-team-name"></a>
+### Team Name
 <StoSettingToolProductTeamName  />
+[TOC &uarr;](#toc)
 
-#### Port  
+
+<a name="tool-port"></a>
+### Port  
 <StoSettingToolPort  />
+[TOC &uarr;](#toc)
 
-#### Java Libraries
+
+<a name="tool-java-libraries"></a>
+### Java Libraries
 <StoSettingTooJavaLibraries  />
+[TOC &uarr;](#toc)
 
-#### Java Binaries
+
+<a name="tool-java-binaries"></a>
+### Java Binaries
 <StoSettingToolJavaBinaries  />
+[TOC &uarr;](#toc)
 
-#### Product Token  
+
+<a name="tool-product-token"></a>
+### Product Token  
 <StoSettingToolProductToken  />
+[TOC &uarr;](#toc)
 
-#### Name 
+
+<a name="tool-product-name"></a>
+### Name 
 <StoSettingToolProductAccessID  />
+[TOC &uarr;](#toc)
 
-#### Project Token
+
+<a name="tool-project-token"></a>
+### Project Token
 <StoSettingToolProductToken  />
+[TOC &uarr;](#toc)
 
-#### Lookup Type
+
+<a name="tool-product-lookup-type"></a>
+### Lookup Type
 <StoSettingToolLookupType  />
+[TOC &uarr;](#toc)
 
-</details>
 
 <!-- ============================================================================= -->
+## Instance Settings
 
-<details><summary>Instance settings</summary>
 
-### Instance Settings
-
-#### Domain
+<a name="instance-domain"></a>
+### Domain
 <StoSettingInstanceDomain />
+[TOC &uarr;](#toc)
 
-#### Protocol
+
+<a name="instance-protocol"></a>
+### Protocol
 <StoSettingInstanceProtocol />
+[TOC &uarr;](#toc)
 
-#### Port
+
+<a name="instance-port"></a>
+### Port
 <StoSettingInstancePort />
+[TOC &uarr;](#toc)
 
-#### Path
+
+<a name="instance-path"></a>
+### Path
 <StoSettingInstancePath />
+[TOC &uarr;](#toc)
 
-</details>
-
-
-<!-- ============================================================================= -->
 
 <!-- ============================================================================= -->
+## Log Level, CLI flags, and Fail on Severity 
 
-<details><summary>Log Level, CLI flags, and Fail on Severity</summary>
-
-### Log Level, CLI flags, and Fail on Severity 
-
-#### Log Level
+<a name="log-level"></a>
+### Log Level
 <StoSettingLogLevel />
+[TOC &uarr;](#toc)
 
-#### Additional CLI flags
+
+<a name="cli-flags"></a>
+### Additional CLI flags
 <StoSettingCliFlags />
+[TOC &uarr;](#toc)
 
-#### Fail on severity
+<a name="fail-on-severity"></a>
+###  Fail on severity
 <StoSettingFailOnSeverity />
+[TOC &uarr;](#toc)
 
-</details>
 
-## Legacy configuration
 
-Optionally, you can set up a $PRODUCT scan manually in a Security step. Enter the keys and values in the **Settings** fields as shown in the following YAML example. 
 
-* `product_name` : `blackduckhub`
-* `scan_type`
-	+ accepted value(s): `repository`, `containerImage`
-* `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan`
-	+ `product_domain`
-	+ `product_auth_type`
-		- accepted value(s): `usernamePassword`, `apiKey`
-	+ `product_access_id`: api username
-	+ `product_access_token` api password or api key
-	+ `product_api_version`
-	+ `product_project_name`
-	+ `product_project_version`
-* `product_config_name`
-	+ Accepted values(s): `default`
 
-## YAML configuration
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
