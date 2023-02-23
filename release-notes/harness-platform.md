@@ -47,7 +47,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - Sorting functionality is available on the project listing page and the project selector dropdown. (PL-27493)
   With this enhancement, you can easily sort and find projects you need and organize them according to your preferences.
 
-- The run pipeline form now retains old values when changing stages. (PIE-4663)
+- You can now change stages without losing the values you enter in the **Run Pipeline** form. (PIE-4663)
 
 ### Early access
 
