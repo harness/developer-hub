@@ -79,10 +79,11 @@ curl -o secret.json -X GET https://vaultqa.harness.io/v1/<+spec.environmentVaria
 secret=$(jq -r '.data."<+spec.environmentVariables.key>"' secret.json)
 ```
 In this example, this script assigns the secret variable to your final value. Here are the details of the entries in the script.
-	* This script makes a cURL call to the API URL of the third-party Secrets Manager and gets the output to the file secret.json.
-	* It includes some parameters such as engine name and path.
-	* It uses an existing, already configured Secrets Manager for API access.
-	* After getting the file, as shown in the example, it gets the secret by using a third-party tool to retrieve the key from the data object. The key is also a parameter that can be assigned later.In the script, make sure to include a variable to store the fetched secret, and make sure to name the variable `secret`.
+- This script makes a cURL call to the API URL of the third-party Secrets Manager and gets the output to the file secret.json.
+- It includes some parameters such as engine name and path.
+- It uses an existing, already configured Secrets Manager for API access.
+- After getting the file, as shown in the example, it gets the secret by using a third-party tool to retrieve the key from the data object. The key is also a parameter that can be assigned later.
+- In the script, make sure to include a variable to store the fetched secret, and make sure to name the variable `secret`.
 
 ### Configure Input Variables for the shell script
 
@@ -97,11 +98,16 @@ Harness allows you to use [Fixed Values and Runtime Inputs](../20_References/ru
 If you want to run the Shell Script on a target host and not on the Harness Delegate, you must first create the required connection attributes.  
 To access an SSH-based Custom Secrets Manager, create an SSH credential first. See [Add SSH Keys](../6_Security/4-add-use-ssh-secrets.md) for the procedure to create SSH credentials.  
 This does not apply if you want to run the Custom Secrets Manager on the Harness Delegate.
-	1. Select **Specify Host** to execute the script on a specific host.![](./static/create-a-secret-manager-template-33.png)In **Target Host**, enter the host address.  
-	In **SSH Connection Attribute**, create or select an existing secret that has the SSh credential as its value.  
-	In **Working Directory**, enter the directory name.
-	2. Select **Delegate**, to execute the script on a specific Delegate.
-4. Click **Save**. Your Secret Manager Template is now listed in the Template Library.
+4. Select **Specify Host** to execute the script on a specific host.
+   
+       ![](./static/create-a-secret-manager-template-33.png)
+
+5. In **Target Host**, enter the host address.
+6. In **SSH Connection Attribute**, create or select an existing secret that has the SSh credential as its value.  
+7. In **Working Directory**, enter the directory name.
+8. Select **Delegate**, to execute the script on a specific Delegate.
+9.  Click **Save**. 
+   Your Secret Manager Template is now listed in the Template Library.
 
 ### See also
 
