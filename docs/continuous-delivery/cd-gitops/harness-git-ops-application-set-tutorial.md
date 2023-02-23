@@ -11,7 +11,6 @@ helpdocs_is_published: true
 
 Currently, this feature is behind the feature flags `ENV_GROUP`, `NG_SVC_ENV_REDESIGN`, and `OPTIMIZED_GIT_FETCH_FILES` `MULTI_SERVICE_INFRA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-:::
 
 This tutorial shows you how to create a GitOps ApplicationSet and PR Pipeline in Harness GitOps.
 
