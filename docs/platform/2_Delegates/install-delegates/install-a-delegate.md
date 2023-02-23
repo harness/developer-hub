@@ -340,19 +340,25 @@ If the steps did not resolve the problem, click **No** and use the form to descr
 
 Use the following steps to troubleshoot your installation of the delegate using Helm.
 
+
+
+```mdx-code-block
+<img src={install_31} width="600" />
+```
+
 1. Verify that Helm is correctly installed:
 
    Check for Helm:
    
-```
+   ```
    helm
-```
+   ```
    
-And then check for the installed version of Helm:
+   And then check for the installed version of Helm:
 
-```
+   ```
    helm version
-```
+   ```
 
    If you receive the message `Error: rendered manifests contain a resource that already exists...`, delete the existing namespace and retry the Helm upgrade command to deploy the delegate.
    
@@ -360,53 +366,128 @@ And then check for the installed version of Helm:
 
 2. Check the status of the delegate on your cluster:
 
-```
+   ```
    kubectl describe pods -n <namespace>
-```
+   ```
 
-If the pod did not start, check the delegate logs:
+3. If the pod did not start, check the delegate logs:
 
-```
-kubectl logs -f <harnessDelegateName> -n <namespace>
-```
+   ```
+   kubectl logs -f <harnessDelegateName> -n <namespace>
+   ```
 
-3. If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
 
-4. If the delegate did not reach a healthy state, use the `kubectl describe` command to get more information:
+4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
 
-```
+   ```
    kubectl describe <pod_name> -n <namespace>
-```
+   ```
 
-
-```mdx-code-block
-<img src={install_31} width="600" />
-```
 
 #### Troubleshoot Terraform
 
+Use the following steps to troubleshoot your installation of the delegate using Terraform.
 
 
 ```mdx-code-block
 <img src={install_33} width="600" />
 ```
 
+1. Verify that Terraform is correctly installed:
+
+   ```
+   terraform -version
+   ```
+   
+   For further instructions on troubleshooting your installation of Terraform, see the [Terraform troubleshooting guide]().
+
+2. Check the status of the delegate on your cluster:
+
+   ```
+   kubectl describe pods -n <namespace>
+   ```
+
+3. If the pod did not start, check the delegate logs:
+
+   ```
+   kubectl logs -f <harnessDelegateName> -n <namespace>
+   ```
+
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+
+4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
+
+   ```
+   kubectl describe <pod_name> -n <namespace>
+   ```
+
 #### Troubleshoot Kubernetes
 
-
+Use the following steps to troubleshoot your installation of the delegate using Kubernetes.
 
 ```mdx-code-block
 <img src={install_35} width="600" />
 ```
 
+1. Check the status of the delegate on your cluster:
+
+   ```
+   kubectl describe pods -n <namespace>
+   ```
+
+2. If the pod did not start, check the delegate logs:
+
+   ```
+   kubectl logs -f <harnessDelegateName> -n <namespace>
+   ```
+
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+
+3. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
+
+   ```
+   kubectl describe <pod_name> -n <namespace>
+   ```
+
+
 #### Troubleshoot Docker
 
+Use the following steps to troubleshoot your installation of the delegate using Docker:
 
 ```mdx-code-block
 <img src={install_37} width="600" />
 ```
 
+1. Check the status of the delegate on your cluster:
 
+   ```
+   docker container ls -a
+   ```
+   
+2. If the pod is not running, check the delegate logs:
+
+   ```
+   docker container logs <delegatename> -f
+   ```
+   
+3. Restart the delegate container. To stop it:
+
+   ```
+   docker container stop <delegatename>
+   ```
+   
+   To start it:
+   
+   ```
+   docker container start <delegatename>
+   ```
+   
+4. Make sure the contain has sufficient CPU and memory resources. If not, remove the older containers:
+
+   ```
+   docker container rm [container id]
+   ```
 
 
 
