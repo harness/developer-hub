@@ -324,34 +324,66 @@ Click **Done** to close the installer.
 
 ### Troubleshooting
 
-The delegate installer provides troubleshooting information for each installation process. If the delegate cannot be verified, click Troubleshoot for steps you can use to resolve the problem. This section includes the same information.
+The delegate installer provides troubleshooting information for each installation process. If the delegate cannot be verified, click **Troubleshoot** for steps you can use to resolve the problem. This section includes the same information.
 
-Harness asks for feedback after the troubleshooting steps. You are asked **Did the delegate come up?** 
+Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
 
 
 ```mdx-code-block
 <img src={install_40} width="600" />
 ```
 
-If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to Harness Documentation.
-
-#### Troubleshoot:
-
-- Helm
-- Terraform
-- Kubernetes
-- Docker
+If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to [Harness Support]() and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
 
 
-#### Helm
+#### Troubleshoot Helm
 
+Use the following steps to troubleshoot your installation of the delegate using Helm.
+
+1. Verify that Helm is correctly installed:
+
+   Check for Helm:
+   
+```
+   helm
+```
+   
+And then check for the installed version of Helm:
+
+```
+   helm version
+```
+
+   If you receive the message `Error: rendered manifests contain a resource that already exists...`, delete the existing namespace and retry the Helm upgrade command to deploy the delegate.
+   
+   For further instructions on troubleshooting your Helm installation, go to [Helm troubleshooting guide]().
+
+2. Check the status of the delegate on your cluster:
+
+```
+   kubectl describe pods -n <namespace>
+```
+
+If the pod did not start, check the delegate logs:
+
+```
+kubectl logs -f <harnessDelegateName> -n <namespace>
+```
+
+3. If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+
+4. If the delegate did not reach a healthy state, use the `kubectl describe` command to get more information:
+
+```
+   kubectl describe <pod_name> -n <namespace>
+```
 
 
 ```mdx-code-block
 <img src={install_31} width="600" />
 ```
 
-#### Terraform
+#### Troubleshoot Terraform
 
 
 
@@ -359,7 +391,7 @@ If the steps did not resolve the problem, click **No** and use the form to descr
 <img src={install_33} width="600" />
 ```
 
-#### Kubernetes
+#### Troubleshoot Kubernetes
 
 
 
@@ -367,7 +399,7 @@ If the steps did not resolve the problem, click **No** and use the form to descr
 <img src={install_35} width="600" />
 ```
 
-#### Docker
+#### Troubleshoot Docker
 
 
 ```mdx-code-block
