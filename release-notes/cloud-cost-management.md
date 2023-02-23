@@ -36,7 +36,7 @@ The logic to calculate the potential monthly cost displayed on the UI has been f
 
 * When you create a budget with an invalid **Period Starts from** date with respect to the **Budget Period**, the error message displayed was unclear - "Invalid request: Error in create budget operation. Start time of budget is invalid." (CCM-10487)
 
- Now, the message is changed to "Invalid request: Budget Period and Period Start date cannot add up to be in the past."
+ Now, the message clarifies why the date is invalid - "Invalid request: Budget Period and Period Start date cannot add up to be in the past."
 
 * The cost details API was returning only the AWS account ID without the account name. (CCM-10573)
 
