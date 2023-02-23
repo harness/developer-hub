@@ -79,7 +79,7 @@ curl -o secret.json -X GET https://vaultqa.harness.io/v1/<+spec.environmentVaria
 secret=$(jq -r '.data."<+spec.environmentVariables.key>"' secret.json)
 ```
 In this example, this script assigns the secret variable to your final value. Here are the details of the entries in the script.
-- This script makes a cURL call to the API URL of the third-party Secrets Manager and gets the output to the file secret.json.
+- This script makes a cURL call to the API URL of the third-party Secrets Manager and stores the output in the file secret.json.
 - It includes some parameters such as engine name and path.
 - It uses an existing, already configured Secrets Manager for API access.
 - After getting the file, as shown in the example, it gets the secret by using a third-party tool to retrieve the key from the data object. The key is also a parameter that can be assigned later.
