@@ -360,7 +360,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 
    If you receive the message `Error: rendered manifests contain a resource that already exists...`, delete the existing namespace and retry the Helm upgrade command to deploy the delegate.
    
-   For further instructions on troubleshooting your Helm installation, go to [Helm troubleshooting guide]().
+   For further instructions on troubleshooting your Helm installation, go to [Helm troubleshooting guide](https://helm.sh/docs/faq/troubleshooting/).
 
 2. Check the status of the delegate on your cluster:
 
@@ -398,7 +398,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    terraform -version
    ```
    
-   For further instructions on troubleshooting your installation of Terraform, see the Terraform troubleshooting guide.
+   For further instructions on troubleshooting your installation of Terraform, see the [Terraform troubleshooting guide](https://developer.hashicorp.com/terraform/enterprise/vcs/troubleshooting).
 
 2. Check the status of the delegate on your cluster:
 
