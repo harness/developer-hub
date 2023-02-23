@@ -1,8 +1,7 @@
 ---
 sidebar_position: 1
-title: Overview
+title: Introduction
 ---
-## Introduction
 
 Harness provides several controls to ensure safe execution of chaos experiments on your infrastructure. This page explains security considerations and associated features across administrative and runtime environments, including: 
 
