@@ -1,7 +1,7 @@
 ---
 title: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-02-15T10:00
+date: 2023-02-23T10:00
 sidebar_position: 12
 ---
 
