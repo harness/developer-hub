@@ -20,11 +20,13 @@ import install_twenty from './static/install-a-delegate-20.png'
 import install_twofive from './static/install-a-delegate-25.png'
 import install_twothree from './static/install-a-delegate-23.png'
 import install_twonine from './static/install-a-delegate-29.png'
-import install_39 from './static/install-a-delegate-30-1.png'
+import install_30 from './static/install-a-delegate-30.png'
+import install_39 from './static/install-a-delegate-39.png'
 import install_31 from './static/install-a-delegate-31.png'
 import install_33 from './static/install-a-delegate-33.png'
 import install_35 from './static/install-a-delegate-35.png'
 import install_37 from './static/install-a-delegate-37.png'
+import install_40 from './static/install-a-delegate-40.png'
 ```
 
 
