@@ -33,5 +33,5 @@ Navigate between the stages by hovering over them and selecting the stage.
 
 A [Resource Constraint](../..continuous-delivery/cd-deployments-category/deployment-resource-constraints/) step is added to every stage automatically to make sure that two infrastructures are not being deployed concurrently. Hence, one of the two parallel stages will deploy first. Once the deployment of the winning stage finishes, the other stages will start.
 
-You can deploy multiple services and multiple environments in a single stage. However, using multi-service will deploy each selected services to selected environments. We recommend that you use multiple stages for such use cases.
+You can deploy multiple services and multiple environments in a single stage. However, using multi-service will deploy each selected service to a selected environment. For such use cases, we recommend using multiple stages.
 
