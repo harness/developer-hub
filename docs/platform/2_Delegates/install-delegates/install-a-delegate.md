@@ -1,6 +1,6 @@
 ---
 title: Install a delegate
-description: This document explains how to install Harness delegates in NextGen environments on Kubernetes or Docker using Helm chart, Terraform Plan, Kubernetes manifest or Docker.
+description: This document explains how to install Harness delegates in NextGen environments on Kubernetes or Docker using Helm chart, Terraform Plan, Kubernetes manifest, or Docker.
 # sidebar_position: 2
 ---
 ```mdx-code-block
