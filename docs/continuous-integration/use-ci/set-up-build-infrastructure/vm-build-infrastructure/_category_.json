@@ -1,11 +1,11 @@
 {
-   "label":"Set up VM build infrastructure",
+   "label":"Set up VM build infrastructures",
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Set up VM build infrastructure"
+      "title":"Set up VM build infrastructures"
    },
    "customProps":{
       "helpdocs_category_id":"rg8mrhqm95"
