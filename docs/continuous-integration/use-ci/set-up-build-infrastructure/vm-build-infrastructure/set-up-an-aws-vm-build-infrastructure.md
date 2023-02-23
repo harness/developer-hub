@@ -4,7 +4,7 @@ description: Set up a CI Build Infrastructure using AWS VMs
 
 tags: 
    - helpDocs
-sidebar_position: 40
+sidebar_position: 10
 helpdocs_topic_id: z56wmnris8
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
@@ -19,18 +19,18 @@ This topic describes how to set up and use AWS VMs as build infrastructures for 
 
 Running builds in your infrastructure, rather than in a vendor's cloud, has significant benefits. Vendor clouds often experience outages that can result in backlogs and delayed builds. AWS has been battle-tested for large container workloads. You can build software and run tests, repeatedly and automatically, on a scalable platform with no outages or backlogs.
 
-For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](set-up-a-kubernetes-cluster-build-infrastructure.md).The following diagram illustrates an AWS build farm. The [​Harness Docker Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
-![](./static/set-up-an-aws-vm-build-infrastructure-12.png)
+![](../static/set-up-an-aws-vm-build-infrastructure-12.png)
 
 ### Before You Begin
 
 This topic assumes you're familiar with the following:
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [CI Pipeline Quickstart](../../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
-* [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [CI Stage Settings](../../../ci-technical-reference/ci-stage-settings.md)
+* [Learn Harness' Key Concepts](../../../../getting-started/learn-harness-key-concepts.md)
 * [VM Runner](https://docs.drone.io/runner/vm/overview/)
 
 ### Alternate Workflow: Set Up using Terraform
@@ -236,23 +236,23 @@ $ docker logs <runner-container-id>
 ```
 5. In the Harness UI, verify that the Delegate appears in the Delegates list. This might take two or three minutes. You should see Connected next to the Delegate listing.
 
-   ![](./static/set-up-an-aws-vm-build-infrastructure-13.png)
+   ![](../static/set-up-an-aws-vm-build-infrastructure-13.png)
    
 6. If you see **Not Connected**, make sure the Docker host can connect to **https://app.harness.io**.
 
 The Delegate and Runner have now been successfully installed, registered, and connected.
 
-For details on the environment variables of the Harness Docker Delegate, see [Docker delegate environment variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
+For details on the environment variables of the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
 
 ### Step 6: Run a CI Build
 
 1. In the Harness CI Stage, in **Infrastructure**, select **AWS VMs**.
 
-   ![](./static/set-up-an-aws-vm-build-infrastructure-14.png)
+   ![](../static/set-up-an-aws-vm-build-infrastructure-14.png)
 
 2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in Step 2.
 
-   ![](./static/set-up-an-aws-vm-build-infrastructure-15.png)
+   ![](../static/set-up-an-aws-vm-build-infrastructure-15.png)
 
 3. Your AWS build infrastructure is now set up. You can now run your Build Stages on AWS VMs.
 
@@ -438,6 +438,6 @@ Configure the following fields in the **.env** file to allow Runner to access an
 
 ### See Also
 
-* [Set Up a Kubernetes Cluster Build Infrastructure](set-up-a-kubernetes-cluster-build-infrastructure.md)
+* [Set Up a Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md)
 * For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
 
