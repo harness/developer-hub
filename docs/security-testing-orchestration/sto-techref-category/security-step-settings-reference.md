@@ -10,6 +10,125 @@ helpdocs_is_published: true
 
 This topic includes the Security step settings for each of the scanner providers supported by Harness.
 
+### Scanner categories
+
+The following table shows the scanner categories that STO supports for each scanner:
+
+* **SAST (_Static Application Security Testing_)** scans a code repository and identifies known vulnerabilities in the proprietary code.
+* **SCA (Software Composition Analysis)** scans a code repository and identifies known vulnerabilities in open-source libraries and packages used by the code. 
+* **DAST (Dynamic Application Security Testing)** scans a running application for vulnerabilties by simulating a malicious external actor exploiting known vulnerabilties. 
+* **Container Scanning** identifies known vulnerabilities in a Docker container.
+
+
+### Data ingestion methods
+
+Harness Security Testing Orchestration integrates with multiple scanners and targets. Different types of scan approaches can be done on each scanner-target combination:
+
+* **Orchestrated (`orchestratedScan`) Scans**  are fully orchestrated. A Security step in the Harness pipeline orchestrates a scan and then normalizes and compresses the results.
+* **Extraction (`dataLoad`) Scans** are partially orchestrated. The Security step pulls scan results from an external SaaS service and then normalizes and compresses the data.
+* **Ingestion (`ingestionOnly`) Scans**  are not orchestrated. The Security step ingests results from a previous scan (for for a scan run in an previous step) and then normallizes and compresses the results. 
+
+The scanner, targets, and scan approach combinations are covered in the next section.
+
+## Harness STO scanner support
+
+<table>
+    <tr>
+        <th>Scan Mode</th>
+        <th>Open Source</th>
+        <th>Licensed</th>
+    </tr>
+    <tr>
+        <td valign="top">SAST</td>
+        <td valign="top">
+         	<ul>
+        		<li><a href="#bandit">Bandit</a>  Orchestration, Ingestion </li>
+         		<li><a href="#brakeman">Brakeman</a> Orchestration, Ingestion </li>
+         		<li><a href="#shiftleft">ShiftLeft</a> Orchestration, Extraction, Ingestion</li>
+        	</ul>
+        </td>
+        <td valign="top">
+        	<ul>
+          		<li><a href="#checkmarx">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="#data-theorem">Data Theorem</a> Extraction, Ingestion</li>
+          		<li><a href="#fortify-on-demand">Fortify on Demand</a> Ingestion</li>
+          		<li><a href="#fortify">Fortify Static Code Analyzer</a> Ingestion</li>
+          		<li><a href="#mend">Mend</a> Orchestration, Ingestion</li>
+                <li><a href="#owasp">OWASP</a> Orchestration, Ingestion</li>
+          		<li><a href="#reapsaw">Reapsaw</a> Ingestion</li>
+          		<li><a href="#snyk">Snyk Code</a>  Ingestion</li>
+                <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (free option)</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="#veracode">Veracode</a> Extraction, Ingestion</li>
+        	</ul>
+     </td>
+   </tr>
+    <tr>
+        <td valign="top">SCA</td>
+        <td valign="top">
+         	<ul>
+        		<li><a href="#clair">Clair</a> Orchestration, Ingestion   </li>
+        	</ul>
+        </td>
+        <td valign="top">
+        	<ul>
+          		<li><a href="#black-duck-open-hub">Black Duck Open Hub</a> Orchestration, Ingestion</li>
+          		<li><a href="#checkmarx">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="#data-theorem">Data Theorem</a> Extraction, Ingestion </li>
+          		<li><a href="#fortify-on-demand">Fortify on Demand</a> Ingestion</li>
+          		<li><a href="#jfrog-xray">JFrog Xray</a>Ingestion </li>
+         		<li><a href="#owasp">OWASP</a>  Orchestration, Ingestion</li>
+          		<li><a href="#snyk">Snyk Open Source</a>  Orchestration, Ingestion</li>
+          		<li><a href="#veracode">Veracode</a> Orchestration, Extraction, Ingestion </li>
+        	</ul>
+     </td>
+   </tr>
+    <tr>
+        <td valign="top">DAST</td>
+        <td valign="top">
+         	<ul>
+        		<li><a href="#nikto">Nikto</a>  Orchestration, Ingestion </li>
+         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
+        	</ul>
+        </td>
+        <td valign="top">
+        	<ul>
+          		<li><a href="#fortify-on-demand">Fortify on Demand</a> Ingestion</li>
+                <li><a href="#metasploit">Metasploit Pro</a> Orchestration, Ingestion </li>
+          		<li><a href="#nessus">Nessus</a> Orchestration, Ingestion </li>
+          		<li><a href="#nexus">Nexus IQ</a> Orchestration, Ingestion</li>
+          		<li><a href="#nmap-network-mapper">Nmap ("Network Mapper")</a> Orchestration, Ingestion</li>
+          		<li><a href="#prowler">Prowler</a> Orchestration, Ingestion</li>
+          		<li><a href="#qualys-web-application-scanning-was">Qualys Web Application Scanning (WAS)</a>  Ingestion </li>
+          		<li><a href="#sniper">Sniper</a> Orchestration, Ingestion </li>
+          		<li><a href="#tenableio">Tenable.io</a> Orchestration, Extraction, Ingestion </li>
+        	</ul>
+     </td>
+   </tr>
+    <tr>
+        <td valign="top">Containers</td>
+        <td valign="top">
+         	<ul>
+        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy</a> Orchestration, Ingestion  </li>
+         		<li><a href="#grype">Grype</a>  Orchestration, Ingestion </li>
+        	</ul>
+        </td>
+        <td valign="top">
+        	<ul>
+          		<li><a href="#image-scanning---amazon-ecr">Amazon ECR</a> Extraction </li>
+          		<li><a href="#black-duck-open-hub">Black Duck Open Hub</a> Orchestration, Ingestion</li>
+          		<li><a href="#docker-content-trust-dct">Docker Content Trust (DCT</a> Orchestration, Ingestion</li>
+          		<li><a href="#docker-content-trust-clair">Docker Content Trust (clair)</a> Orchestration, Ingestion </li>
+          		<li><a href="#prisma-cloud-formerly-twistlock">Prisma Cloud (formerly Twistlock)</a> Orchestration, Extraction, Ingestion</li>
+                <li><a href="#snyk">Snyk Container</a>  Orchestration, Ingestion</li>
+          		<li><a href="#tenableio">Tenable.io</a> Orchestration, Extraction, Ingestion  </li>
+        	</ul>
+     </td>
+   </tr>
+
+   </table>
+
+
+<!-- 
 ### Scan Approach Types
 
 Harness Security Testing Orchestration integrates with multiple scanners and targets. Different types of scan approaches can be done on each scanner-target combination:
@@ -64,6 +183,8 @@ The following scanners are supported.
 |  [JFrog Xray](#jfrog-xray) | container | ingestionOnly |
 |  [Zed Attack Proxy (ZAP)](zap-scanner-reference.md) | instance | orchestratedScan, ingestionOnly |
 
+-->
+
 ### Test Targets
 
 The following table specifies where the target to be tested is located.
@@ -112,16 +233,16 @@ The following settings apply to all scanners where the `scan_type` is `container
 * `container_project` (required)
 * `container_tag` (required)
 * `container_type`
-	+ accepted value(s): `local_image`, `docker_v2`, `jfrog_artifactory`, `aws_ecr`
-		- for `container_type` set to `local`
+	+ accepted value(s): `local_image`, `docker_v2`, `jfrog_artifactory`, `aws_ecr`
+		- for `container_type` set to `local`
 			* `None`
-		- for `container_type` set to `docker_v2`
+		- for `container_type` set to `docker_v2`
 			* `container_access_id`: Username
 			* `container_access_token`: Password/Token
-		- for `container_type` set to `jfrog_artifactory`
+		- for `container_type` set to `jfrog_artifactory`
 			* `container_access_id`: Username
 			* `container_access_token`: Password/Token
-		- for `container_type` set to `aws_ecr`
+		- for `container_type` set to `aws_ecr`
 			* `container_access_id`: Username
 			* `container_access_token`: Password/Token
 			* `container_region`: AWS default region
@@ -138,14 +259,14 @@ The following settings apply to all scanners where the `scan_type` is `instance`
 * `instance_protocol`
 * `instance_port`
 * `instance_type`
-	+ accepted value(s): `website`
+	+ accepted value(s): `website`
 
 ### Configuration Scan Type Settings
 
 The following settings apply to all scanners where the `scan_type` is `configuration`.
 
 * `configuration_type`
-	+ accepted value(s)s: `aws_account`
+	+ accepted value(s)s: `aws_account`
 * `configuration_region`
 * `configuration_environment`
 * `configuration_access_id`
@@ -161,10 +282,10 @@ See [Aqua Trivy Scanner Reference](aqua-trivy-scanner-reference.md)
 
 ### Image scanning - Amazon ECR
 
-When `product_name` is set to `aws-ecr`:
+When `product_name` is set to `aws-ecr`:
 
 * `scan_type` =`container`
-* `policy_type`= `dataLoad`
+* `policy_type`= `dataLoad`
 * `product_config_name` =`default`
 * `container_project` = The name of the scanned ECR container with the results you want to ingest.
 * `container_tag` = The container tag for the given container project.
@@ -177,12 +298,12 @@ When `product_name` is set to `aws-ecr`:
 
 ### AWS Security Hub
 
-When `product_name` is set to `aws-security-hub`
+When `product_name` is set to `aws-security-hub`
 
 * `scan_type`
-	+ accepted value(s): `configuration`
+	+ accepted value(s): `configuration`
 * `policy_type`
-	+ accepted value(s): `dataLoad`,  `ingestionOnly`
+	+ accepted value(s): `dataLoad`,  `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s): `default`
 
@@ -196,18 +317,18 @@ See [Bandit Scanner Reference](bandit-scanner-reference.md).
 
 ### Black Duck Open Hub
 
-When `product_name` is set to `blackduckhub`
+When `product_name` is set to `blackduckhub`
 
 * `scan_type`
-	+ accepted value(s): `repository`, `containerImage`
+	+ accepted value(s): `repository`, `containerImage`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan`
 	+ `product_domain`
 	+ `product_auth_type`
-		- accepted value(s): `usernamePassword`, `apiKey`
+		- accepted value(s): `usernamePassword`, `apiKey`
 	+ `product_access_id`: api username
-	+ `product_access_token` api password or api key
+	+ `product_access_token` api password or api key
 	+ `product_api_version`
 	+ `product_project_name`
 	+ `product_project_version`
@@ -218,12 +339,12 @@ When `product_name` is set to `blackduckhub`
 
 ### Brakeman
 
-When `product_name` is set to `brakeman`
+When `product_name` is set to `brakeman`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s): `default`
 
@@ -231,12 +352,12 @@ When `product_name` is set to `brakeman`
 
 ### Burp
 
-When `product_name` is set to `burp`
+When `product_name` is set to `burp`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `ingestionOnly`
+	+ accepted value(s): `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `burp-default` (CLI interface uses a Cybric extension)
@@ -247,13 +368,13 @@ When `product_name` is set to `burp`
 
 ### Checkmarx
 
-When `product_name` is set to `checkmarx`
+When `product_name` is set to `checkmarx`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan` or `dataLoad`
+	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan` or `dataLoad`
 	+ `product_domain`
 	+ `product_access_id`
 	+ `product_access_token` — The account password
@@ -262,7 +383,7 @@ When `product_name` is set to `checkmarx`
 	+ `product_project_name`
 * `product_config_name`
 	+ Accepted values(s): `default`
-* When `policy_type` is set to `orchestratedScan`
+* When `policy_type` is set to `orchestratedScan`
 	+ `tool_args`
 	   You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
 
@@ -278,13 +399,13 @@ You should consider carefully when to run incremental vs. full scans. See [When 
 
 ### Data Theorem
 
-When `product_name` is set to `data-theorem`
+When `product_name` is set to `data-theorem`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `dataLoad`
+	+ accepted value(s): `dataLoad`, `ingestionOnly`
+* When `policy_type` is set to `dataLoad`
 	+ `product_app_id`
 	+ `product_access_token`
 * `product_config_name`
@@ -294,12 +415,12 @@ When `product_name` is set to `data-theorem`
 
 ### Docker Content Trust (DCT)
 
-When `product_name` is set to `docker-content-trust`
+When `product_name` is set to `docker-content-trust`
 
 * `scan_type`
-	+ accepted value(s): `containerImage`
+	+ accepted value(s): `containerImage`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s): `default`
 
@@ -307,12 +428,12 @@ When `product_name` is set to `docker-content-trust`
 
 ### Docker Content Trust (clair)
 
-When `product_name` is set to `docker-content-trust` (clair)
+When `product_name` is set to `docker-content-trust` (clair)
 
 * `scan_type`
-	+ accepted value(s): `containerImage`
+	+ accepted value(s): `containerImage`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_url`
 * `product_access_id`
 * `product_access_token`
@@ -345,13 +466,13 @@ When `product_name` is set to `fortify`
 
 ### Fortify on Demand
 
-When `product_name` is set to `fortifyondemand`
+When `product_name` is set to `fortifyondemand`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan` or `dataLoad`
+	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan` or `dataLoad`
 	+ `product_domain`
 	+ `product_access_id`
 	+ `product_access_token`
@@ -363,21 +484,21 @@ When `product_name` is set to `fortifyondemand`
 	+ `product_target_language`
 	+ `product_target_language_version`
 	+ `product_scan_settings`
-		- accepted values: `Custom`, `default`
+		- accepted values: `Custom`, `default`
 	+ `product_audit_type`
 	+ `product_lookup_type`
-		- accepted values: `Dynamic`, `Static`, `Mobile`
+		- accepted values: `Dynamic`, `Static`, `Mobile`
 	+ `product_data_center`
 * `product_config_name`
 	+ Accepted values(s):
-	+ `sast` ( if `product_lookup_type` = `Static`)
-	+ `dast` ( if `product_lookup_type` = `Dynamic`)
+	+ `sast` ( if `product_lookup_type` = `Static`)
+	+ `dast` ( if `product_lookup_type` = `Dynamic`)
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
 ### Mend (formerly WhiteSource)
 
-When `product_name` is set to `whitesource`
+When `product_name` is set to `whitesource`
 
   * `scan_type`
 	  - Accepted value(s): `ingestionOnly`, `dataLoad`, `orchestratedScan`
@@ -407,12 +528,12 @@ You must configure the following settings depending on the product lookup type  
 
 ### Metasploit
 
-When `product_name` is set to `metasploit`
+When `product_name` is set to `metasploit`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `metasploit-weak-ssh` (Brute-force test a host for SSH weak ssh/pass)
@@ -423,13 +544,13 @@ When `product_name` is set to `metasploit`
 
 ### Nessus
 
-When `product_name` is set to `nessus`
+When `product_name` is set to `nessus`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan`
 	+ `product_domain`
 	+ `product_access_id`
 	+ `product_access_token`
@@ -444,23 +565,23 @@ When `product_name` is set to `nessus`
 
 ### Nexus IQ
 
-When `product_name` is set to `nexusiq`
+When `product_name` is set to `nexusiq`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan`
 	+ `product_domain`
 	+ `product_access_id`
 	+ `product_access_token`
 	+ `product_organization_id`
 	+ `product_project_name`
 	+ `product_lookup_type`
-		- accepted value(s): `byPrivateId`, `byPublicId`
-	+ When `product_lookup_type` is set to `byPublicId`
+		- accepted value(s): `byPrivateId`, `byPublicId`
+	+ When `product_lookup_type` is set to `byPublicId`
 		- product\_public\_id
-	+ When `product_lookup_type` is set to `byPrivateId`
+	+ When `product_lookup_type` is set to `byPrivateId`
 		- product\_private\_id
 	+ `product_config_name`
 		- Accepted values(s): `default`
@@ -469,12 +590,12 @@ When `product_name` is set to `nexusiq`
 
 ### Nikto
 
-When `product_name` is set to `nikto`
+When `product_name` is set to `nikto`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`(Scan the host on port 80)
@@ -485,12 +606,12 @@ When `product_name` is set to `nikto`
 
 ### Nmap ("Network Mapper")
 
-When `product_name` is set to `nmap`
+When `product_name` is set to `nmap`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
@@ -504,12 +625,12 @@ When `product_name` is set to `nmap`
 
 ### OpenVAS
 
-When `product_name` is set to `openvas`
+When `product_name` is set to `openvas`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_domain`
 * `product_access_id`
 * `product_access_token`
@@ -525,12 +646,12 @@ When `product_name` is set to `openvas`
 
 ### OWASP
 
-When `product_name` is set to `owasp`
+When `product_name` is set to `owasp`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
@@ -539,13 +660,13 @@ When `product_name` is set to `owasp`
 
 ### Prisma Cloud (formerly Twistlock)
 
-When `product_name` is set to `twistlock`
+When `product_name` is set to `twistlock`
 
 * `scan_type`
-	+ accepted value(s): `containerImage`
+	+ accepted value(s): `containerImage`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan` or `dataLoad`
+	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan` or `dataLoad`
 	+ `product_image_name`
 	+ `product_domain`
 	+ `product_access_id`
@@ -559,12 +680,12 @@ When `product_name` is set to `twistlock`
 
 ### Prowler
 
-When `product_name` is set to `prowler`
+When `product_name` is set to `prowler`
 
 * `scan_type`
-	+ accepted value(s): `configuration`
+	+ accepted value(s): `configuration`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`, `hipaa`, `gdpr`, `exclude_extras`
@@ -573,12 +694,12 @@ When `product_name` is set to `prowler`
 
 ### Qualys Web Application Scanning (WAS)
 
-When `product_name` is set to `qualys`
+When `product_name` is set to `qualys`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `ingestionOnly`
+	+ accepted value(s): `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
@@ -587,12 +708,12 @@ When `product_name` is set to `qualys`
 
 ### Reapsaw
 
-When `product_name` is set to `reapsaw`
+When `product_name` is set to `reapsaw`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `ingestionOnly`
+	+ accepted value(s): `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
@@ -601,12 +722,12 @@ When `product_name` is set to `reapsaw`
 
 ### ScoutSuite
 
-When `product_name` is set to `scoutsuite` (aws only)
+When `product_name` is set to `scoutsuite` (aws only)
 
 * `scan_type`
-	+ accepted value(s): `configuration`
+	+ accepted value(s): `configuration`
 * `policy_type`
-	+ accepted value(s): `ingestionOnly`
+	+ accepted value(s): `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s): `default`
 
@@ -614,13 +735,13 @@ When `product_name` is set to `scoutsuite` (aws only)
 
 ### ShiftLeft
 
-When `product_name` is set to `shiftleft`
+When `product_name` is set to `shiftleft`
 
 * `scan_type`
-	+ accepted value(s): `repository`
+	+ accepted value(s): `repository`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan` or `dataLoad`
+	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan` or `dataLoad`
 	+ `product_access_id`
 	+ `product_access_token`
 	+ `product_app_name`
@@ -633,12 +754,12 @@ When `product_name` is set to `shiftleft`
 
 ### Sniper
 
-When `product_name` is set to `sniper`
+When `product_name` is set to `sniper`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default` (Run a basic sniper scan on a target)
@@ -650,19 +771,19 @@ When `product_name` is set to `sniper`
 ### Snyk
 
 STO supports the following scan approaches for the following Snyk products:
-* Snyk Open Source (`orchestratedScan`, `ingestionOnly`)
+* Snyk Open Source (`orchestratedScan`, `ingestionOnly`)
 * Snyk Code (`ingestionOnly`)
 * Snyk Container (`ingestionOnly`)
 
 For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
 
-When `product_name` is set to `snyk`:
+When `product_name` is set to `snyk`:
 
 * `scan_type`
-	+ accepted value(s): `containerImage`, `repository`
+	+ accepted value(s): `containerImage`, `repository`
 * `policy_type`
 	+ accepted value for `containerImage`: `ingestionOnly`
-	+ accepted values for `repository`: `orchestratedScan`, `ingestionOnly`
+	+ accepted values for `repository`: `orchestratedScan`, `ingestionOnly`
 * `product_access_token`
 * `product_config_name` = `default`
 * `snyk_api` = URL to the Snyk instance, if you're using an on-prem installation.
@@ -677,13 +798,13 @@ Go to [SonarQube SonarScanner Reference.](sonarqube-sonar-scanner-reference.md)
 
 ### Tenable.io
 
-When `product_name` is set to `tenableio`
+When `product_name` is set to `tenableio`
 
 * `scan_type`
-	+ accepted value(s): `instance`
+	+ accepted value(s): `instance`
 * `policy_type`
-	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan` or `dataLoad`
+	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan` or `dataLoad`
 	+ `product_domain`
 	+ `product_access_id`
 	+ `product_access_token`
@@ -705,12 +826,12 @@ Go to [Veracode Scanner Reference](veracode-scanner-reference.md).
 
 ### JFrog Xray
 
-When `product_name` is set to `xray`
+When `product_name` is set to `xray`
 
 * `scan_type`
-	+ accepted value(s): `containerImage`
+	+ accepted value(s): `containerImage`
 * `policy_type`
-	+ accepted value(s): `ingestionOnly`
+	+ accepted value(s): `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
@@ -722,4 +843,3 @@ When `product_name` is set to `xray`
 Go to [Zed Attack Proxy (ZAP) Scanner Reference](zap-scanner-reference.md).
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
-

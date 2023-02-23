@@ -16,7 +16,6 @@ By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme setting
 
 The proxy settings are in the **harness-delegate.yaml** file:
 
-
 ```
 ...  
         - name: PROXY_HOST  
@@ -55,7 +54,10 @@ Harness does not allow any methods of representing a subnet mask.
 
 The mask should be set in the cluster itself. For example:
 
-
 ```
 kubectl -n default get service kubernetes -o json | jq -r '.spec.clusterIP'
 ```
+
+:::info
+Harness supports mTLS authentication on a case-by-case basis. Contact Harness Support to enable it.
+:::

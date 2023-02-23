@@ -54,7 +54,7 @@ export default function STO() {
             <img src={`${baseUrl}img/icon_sto.svg`} />
             <h1>Security Testing Orchestration</h1>
           </div>
-          <div>
+          <div className={styles.btnContainer}>
             <Link href="/docs/security-testing-orchestration">
               <button
                 className={clsx(
@@ -63,7 +63,21 @@ export default function STO() {
                   styles.btnLight
                 )}
               >
-                <img src={`${baseUrl}img/icon_document.png`} /> Documentation
+                <i className="fa-regular fa-file"></i>
+                Documentation
+              </button>
+            </Link>
+
+            <Link href="/release-notes/security-testing-orchestration">
+              <button
+                className={clsx(
+                  "button button--lg",
+                  styles.btn,
+                  styles.btnLight
+                )}
+              >
+                <i className="fa-regular fa-file"></i>
+                Release Notes
               </button>
             </Link>
           </div>
@@ -71,12 +85,13 @@ export default function STO() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness STO enables DevOps and Security teams teams to left shift security testing as a key outcome of their DevSecOps initiative. STO orchestrates
-              scanning, intelligently deduplicating scanner output, prioritizing
-              remediations, and enforcing governance into your Pipeline. STO
-              puts scanning directly into your Pipelines to ensure that
-              vulnerabilities are caught and fixed before your products are ever
-              released.
+              Harness STO enables DevOps and Security teams teams to left shift
+              security testing as a key outcome of their DevSecOps initiative.
+              STO orchestrates scanning, intelligently deduplicating scanner
+              output, prioritizing remediations, and enforcing governance into
+              your Pipeline. STO puts scanning directly into your Pipelines to
+              ensure that vulnerabilities are caught and fixed before your
+              products are ever released.
             </p>
             <div className={styles.alignCenter}>
               <Link
