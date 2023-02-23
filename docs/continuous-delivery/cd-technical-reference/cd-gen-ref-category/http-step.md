@@ -23,7 +23,7 @@ For example, if the step name is HTTP and you want to reference the URL entered 
 
 ## Timeout
 
-The timeout for the step. You can use:
+The timeout for the step. Use:
 
 * `w` for weeks
 * `d` for days
@@ -50,7 +50,7 @@ The message body of the HTTP message.
 
 ## Assertion
 
-The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `<+httpResponseCode> == 200`.
+Assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, use the assertion `<+httpResponseCode> == 200`.
 
 The expression `<+httpResponseCode> == 200` will evaluate to true if the HTTP call returns a 200 code.
 
