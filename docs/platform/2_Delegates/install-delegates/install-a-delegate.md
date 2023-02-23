@@ -469,19 +469,19 @@ Use the following steps to troubleshoot your installation of the delegate using 
    docker container logs <delegatename> -f
    ```
    
-3. Restart the delegate container. To stop it:
+3. Restart the delegate container. To stop the container:
 
    ```
    docker container stop <delegatename>
    ```
    
-   To start it:
+   To start the container:
    
    ```
    docker container start <delegatename>
    ```
    
-4. Make sure the contain has sufficient CPU and memory resources. If not, remove the older containers:
+4. Make sure the container has sufficient CPU and memory resources. If not, remove the older containers:
 
    ```
    docker container rm [container id]
