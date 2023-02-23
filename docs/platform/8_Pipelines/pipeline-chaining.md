@@ -85,6 +85,7 @@ Harness recommends testing the pipeline before executing it in production.
 
 
 :::note
+
 Consider the following points for executing remote chained pipelines:
 
 - A chained pipeline is fetched from the default branch when the parent pipeline is defined inline, and the chained pipeline is defined remotely.
