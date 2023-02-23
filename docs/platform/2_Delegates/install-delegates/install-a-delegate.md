@@ -301,8 +301,19 @@ Specify the parameters as follows.
 | `DELEGATE_TYPE` | The type of the delegate, in this case `DOCKER`. |
 | `ACCOUNT_ID` | The account ID for the account with which the delegate is associated. You can find this value in **Account Settings**. | 
 | `DELEGATE_TOKEN` | The value of the delegate token. The token authenticates your delegate to Harness Manager.  |
-| `LOG_STREAMING_SERVICE_URL` |  |
+| `LOG_STREAMING_SERVICE_URL` | The location of the log service in your Harness cluster. |
 | `MANAGER_HOST_AND_PORT` | The endpoint and port number of Harness Manager in your Harness cluster. |
+
+Your Harness Manager endpoint depends on your Harness cluster location. Use the following table to find your Harness Manager endpoint on your Harness cluster.
+
+| **Harness cluster location** | **Harness Manager endpoint** |
+| :-- | :-- |
+| SaaS prod-1 | https://app.harness.io |
+| SaaS prod-2 | https://app.harness.io/gratis |
+| SaaS prod-3 | https://app3.harness.io |
+| [CDCE Docker](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | `https://<HARNESS_HOST>` if the Docker delegate is remoted from CDCE or http://host.docker.internal if the Docker delegate is located on the same host as CDCE |
+| [CDCE Helm](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | `http://<HARNESS_HOST>:7143` where `HARNESS_HOST` is the public IP address of the Kubernetes node that runs CDCE Helm. |
+
 
 ### Verify the delegate connection
 
