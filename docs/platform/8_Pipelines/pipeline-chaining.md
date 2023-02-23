@@ -82,3 +82,15 @@ To chain pipelines in Harness, perform the following steps:
    After you have chained the pipelines, you can run the parent pipeline.
    
 Harness recommends testing the pipeline before executing it in production.
+
+
+:::note
+Consider the following points for executing remote chained pipelines:
+
+- A chained pipeline executes on the default branch when the parent pipeline is defined inline, and the chained pipeline is defined remotely.
+- When the parent pipeline is defined remotely, and the chained pipeline is defined inline, the parent pipeline executes on its branch, and the chained pipeline executes inline.
+- When both the chained pipeline and the parent pipeline are defined remotely, but under the same repository, the chained pipeline should belong to the same branch and execute on the same branch as the parent pipeline.
+- A chained pipeline executes on its default branch when both the parent and chained pipelines are defined remotely. This is irrespective of the branch of the parent pipeline.
+
+:::
+
