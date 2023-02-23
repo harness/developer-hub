@@ -16,7 +16,7 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### February 24, 2023, version 785xx
+### February 23, 2023, version 78507
 
 #### What's new
 
