@@ -209,6 +209,30 @@ module.exports = {
       from: "/docs/platform/Delegates/delegate-reference/sample-create-a-permanent-volume-nfs-server",
       to: "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
      },
+
+    //  Created by aimurphy for PR-783 on Feb 23, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure",
+    },
+
+    //  Created by aimurphy for PR-783 on Feb 23, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-ci-build-infrastructure-in-azure",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure",
+    },
+
+    //  Created by aimurphy for PR-783 on Feb 23, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform",
+    },
+
+    //  Created by aimurphy for PR-783 on Feb 23, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-macos-build-infra-with-anka-registry",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry",
+    },
   ],
 };
 
