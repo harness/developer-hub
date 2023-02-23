@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-02-24T10:00
+date: 2023-02-23T10:00
 sidebar_position: 1
 ---
 
@@ -16,7 +16,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## February 24, 2023, version 785xx
+## February 23, 2023, version 78507
 
 ### Harness Platform
 
@@ -25,7 +25,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   You also have the option to revert to the previous installation method if desired.
 
 
-- Deletion of a project or organization displays a warning message in the UI. Deletes will require confirmation from the user. (PL-31292)
+-  A warning message now appears in the UI when you delete a project or organization. Deletions require confirmation from the user. (PL-31292)
   
   ```mdx-code-block
   <img src={delete_project} alt="delete-project" height="150" width="400"></img>
