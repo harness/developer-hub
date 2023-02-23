@@ -23,7 +23,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Early access
 
-  This release does not include early access features.
+This release does not include early access features.
 
 
 ### Fixed issues
