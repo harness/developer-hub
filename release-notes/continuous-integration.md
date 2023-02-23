@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-02-15T10:00
+date: 2023-02-23T10:00
 sidebar_position: 3
 ---
 
@@ -13,6 +13,23 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## February 23, 2023, version 78507
+
+### What's new
+
+In addition to fixed values and runtime inputs, you can now use [expressions](https://developer.harness.io/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+
+![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+Modifying a step template's **Step Parameters** no longer removes failure strategies from the template's **Advanced** settings. (CI-6801, ZD-39108)
+<!-- Alternate longer version: When you edit a step template that includes a failure strategy, modifying the template's **Step Parameters** no longer removes the **Failure Strategy** configuration from the template's **Advanced** settings. -->
+
 ## February 15, 2023, version 78421
 
 ### What's new
@@ -22,12 +39,12 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](/docs/platform/Connectors/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
   * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
   * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
-* Use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)
+* Use [Background steps](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)
   * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
   * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
   * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option.
 * Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
-* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](/docs/platform/triggers/triggering-pipelines). (CI-5720)
+* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](https://developer.harness.io/docs/platform/Triggers/triggering-pipelines). (CI-5720)
 
 ### Early access
 
@@ -35,20 +52,22 @@ This release does not include early access features.
 
 ### Deprecations
 
-The Configure Service Dependency step is deprecated in favor of the [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings), which allows for better control and configuration of services. Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines. Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration options. (CI-5580)
+The Configure Service Dependency step is deprecated in favor of the [Background step](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/background-step-settings), which allows for better control and configuration of services. Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines. Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration options. (CI-5580)
 
 ### Fixed issues
 
 * With the feature flag `NEW_LEFT_NAV_BAR` enabled, you can view build details at the project level without drilling down into individual modules. When viewing build details from the project level, the **Commits** tab produced a `404` error. This is fixed. (CI-6817)
 * Expressions used in pipeline codebase properties unexpectedly resolved to `null`, which caused builds to fail due to missing variable input. These expressions now resolve to their expected values. (CI-6679, ZD-38122, ZD-38241, ZD-38698, ZD-39088)
+
    ![The CI Codebase Configuration window with the fields set to accept variable expression input.](static/ci-codebase-config-exp-values.png)
+
 * The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. Previously, exiting the Getting Started workflow before creating a pipeline resulted in incomplete connector configuration, and attempting to use the incomplete connector in a pipeline produced the following error: `Invalid argument(s): Both plain text and secret value cannot be null for the field`. If you encounter this error, replace the pipeline's SCM connector with a new one. (CI-6443)
 
 ## February 6, 2023, version 78321
 
 ### What's new
 
-* Linux ARM is now supported in [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructures. (CI-5787)
+* Linux ARM is now supported in [Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructures. (CI-5787)
 * The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
 
 ### Early access features
@@ -104,26 +123,18 @@ This release does not include early access features.
 ### Fixed issues
 
 * Fixed an issue in the onboarding UI. In some cases, the web UI did not connect with the specified git account immediately after OAuth setup. (CI-6518)
-
 * You can now use codebase fields as expressions. Previously, when the codebase repository name was defined by `<+pipeline.name>`, the built-in variables `<+codebase.branch>` and `<+codebase.commitSha>` returned null. (CI-6478, ZD-38122, ZD-38241)
-
 * Fixed an issue that prevented Azure connectors from connecting to repos with URLs that contained spaces or `%20`. (CI-6465)
-
 * Fixed an issue where CI reported an upload to an S3 as successful even if the upload failed. (CI-6420, ZD-37931)
-
 * Fixed an issue in the onboarding UI where the **Select Your Repository** progress bar was incorrect. (CI-6335)
-
 * Fixed an issue where a build did not run when a user selected **Run** in the **Pipeline Editor** UI. To run the build, the user needed to go to the YAML editor, save, and then run. (CI-6239)
-
 * Added a log entry when a CI step skips a directory when uploading to an S3 bucket. (CI-6205)
-
 
 ## December 22, 2022, version 77908
 
 ### What's new
 
 * Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
-
 * The onboarding experience for new users has been enhanced. You can now create a sample "Hello-world" pipeline even without a repository selected/created.  (CI-6348)
 
 ### Early access features
