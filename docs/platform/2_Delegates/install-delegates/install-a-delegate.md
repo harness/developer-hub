@@ -333,7 +333,7 @@ Harness asks for feedback after the troubleshooting steps. You are asked, **Did 
 <img src={install_40} width="600" />
 ```
 
-If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to [Harness Support]() and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
+If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
 
 
 #### Troubleshoot Helm
@@ -398,7 +398,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
    terraform -version
    ```
    
-   For further instructions on troubleshooting your installation of Terraform, see the [Terraform troubleshooting guide]().
+   For further instructions on troubleshooting your installation of Terraform, see the Terraform troubleshooting guide.
 
 2. Check the status of the delegate on your cluster:
 
