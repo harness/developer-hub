@@ -99,10 +99,6 @@ Both of the aforementioned actions require specific access to the infrastructure
 The experiment artifact that is stored in a ChaosHub or supplied when you create an experiment only references the names of secrets. The life cycle of the secrets themselves is fully managed by the users within their clusters.  
 ::: 
 
-Below is a visual representation of how an experiment pod in your chaos infrastructure consumes a secret.
-
-![chaos consuming a secret](../../static/overview/functional-diagram.png)
-
 [Here](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/ec2-cpu-hog#prerequisites) is an example of AWS access information being fed to the experiment pods through a Kubernetes secret.
 
 ### Blast radius control using permissions 
