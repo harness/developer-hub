@@ -43,6 +43,9 @@ const getCategoryDetails = (category: string): Record<string, string> => {
     case FaultCategory.VMware:
       setDetails(FaultCategory.VMware);
       break;
+    case FaultCategory.Load:
+      setDetails(FaultCategory.Load);
+      break;
     default:
       details.icon = `${path}/default.svg`;
       details.link = `#`;
@@ -96,6 +99,9 @@ const getFaultDetails = (
       break;
     case FaultCategory.VMware:
       setDetails(FaultCategory.VMware);
+      break;
+    case FaultCategory.Load:
+      setDetails(FaultCategory.Load);
       break;
     default:
       details.icon = `${path}/default.svg`;

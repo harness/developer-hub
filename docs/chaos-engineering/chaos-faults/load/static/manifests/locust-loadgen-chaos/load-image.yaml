@@ -1,0 +1,15 @@
+# provide a custom image for load generation
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: locust-loadgen-chaos
+    spec:
+      components:
+        env:
+        - name: LOAD_IMAGE
+          value: 'chaosnative/locust-loadgen:latest'
