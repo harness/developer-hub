@@ -1,7 +1,7 @@
 ---
 title: HTTP Helm Repo Connector Settings Reference
 description: This topic provides settings and permissions for the HTTP Helm Repo Connector.
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: a0jotsvsi7
 helpdocs_category_id: xyexvcc206
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Bitbucket connector settings reference
 description: This topic describes settings and permissions for the Bitbucket connector.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: iz5tucdwyu
 helpdocs_category_id: xyexvcc206
 helpdocs_is_private: false
