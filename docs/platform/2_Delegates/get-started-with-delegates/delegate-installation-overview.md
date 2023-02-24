@@ -29,7 +29,7 @@ Harness provides different types of Delegates to give you flexibility in how you
 Currently, for Harness NextGen, you can install the following types of Delegates:
 
 * [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md)
 
 
 ### Where do I Install the Delegate?

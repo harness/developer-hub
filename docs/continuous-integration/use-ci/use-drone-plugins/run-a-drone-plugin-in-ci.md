@@ -24,7 +24,7 @@ To install and run a plugin, you need the following:
 	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A build infrastructure and Delegate to run builds:
 	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
-	+ [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) *or* [Install a Docker Delegate](../../../platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
+	+ [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) *or* [Install a Docker Delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md)
 * A CI Pipeline with a Build Stage to run the plugin:
 	+ [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.

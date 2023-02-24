@@ -24,6 +24,9 @@ You can set conditions on the Triggers, such as matching a Docker tag or label o
 
 This Trigger is a simple way to automate deployments for new builds.
 
+:::note
+Here we need to have artifact source declared in service definition for the trigger to work.
+
 ### Before you begin
 
 * You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).

@@ -1,9 +1,13 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-02-15T10:00
+date: 2023-02-23T10:00
 sidebar_position: 10
 ---
+
+```mdx-code-block
+import delete_project from './static/delete-project.png'
+```
 
 Harness Platform is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
@@ -12,6 +16,56 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 23, 2023, version 78507
+
+### What's new
+
+- The new delegate installation wizard is now generally available. (PL-31305)
+  
+  You also have the option to revert to the previous installation method if desired.
+
+
+- A warning message now appears in the UI when you delete a project or organization. Deletions require confirmation from the user. (PL-31292)
+  
+  ```mdx-code-block
+  <img src={delete_project} alt="delete-project" height="150" width="400"></img>
+  ```
+
+  This enhancement prevents the accidental deletion of important projects or organizations and provides an extra layer of caution for users.
+
+- The entities reference page has been improved to provide detailed information about each reference. (PL-31247)
+
+  The following details were added to the existing reference pages:
+
+  - Date or timestamp 
+  - Name and type of entity
+  - Scope of reference
+
+  These enhancements provide comprehensive information about each reference.
+
+- Sorting functionality is available on the project listing page and the project selector dropdown. (PL-27493)
+  With this enhancement, you can easily sort and find projects you need and organize them according to your preferences.
+
+- You can now change stages without losing the values you enter in the **Run Pipeline** form. (PIE-4663)
+
+### Early access
+
+This release does not include any early access feature.
+
+### Fixed issues
+
+-  HTML injection occurs due to a lack of server-side validation. (PLG-657)
+  
+   Server-side validation now occurs. 
+
+- The UI does not display an error message when the referred connector in infra does not exist.(PL-30130)
+  
+  An enhancement to the error-handling system enables an error message to appear when the connector API fails.
+
+- Removing the default value from a variable in a service results in the addition of `.nan` as the default value in the YAML. (PIE-8129)
+  
+  In the absence of a value, the default value is now removed from the YAML.
 
 ## February 15, 2023, version 78421
 
