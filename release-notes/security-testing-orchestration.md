@@ -1,7 +1,7 @@
 ---
 title: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-02-16T10:00
+date: 2023-02-24T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 8
 ---
@@ -14,6 +14,17 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
  			
+## February 24, 2023
+
+### New features
+
+This release does not include new features.
+
+### Fixed issues
+
+* Fixed a race condition allowing for duplicate targets to get created. (STO-5481)
+
+
 ## February 16, 2023
 
 ### New features
