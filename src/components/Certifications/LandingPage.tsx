@@ -22,7 +22,8 @@ export default function Certifications() {
         <div className={styles.left}>
           <h1>Harness Certifications</h1>
           <div>
-            Test and validate your knowledge of modern software delivery by becoming a Harness Certified Expert.
+            Test and validate your knowledge of modern software delivery by
+            becoming a Harness Certified Expert.
           </div>
         </div>
         <div className={styles.right}>
@@ -65,7 +66,9 @@ export default function Certifications() {
           <div className={clsx(styles.certCard, styles.moduleCD)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
-                <h2>Continuous Delivery & GitOps - Developer (BETA COMING SOON)</h2>
+                <h2>
+                  Continuous Delivery & GitOps - Developer (BETA COMING SOON)
+                </h2>
                 <img
                   src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
                   alt="Harness Certified Expert - CD & GitOps Developer"
@@ -122,25 +125,27 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps Free/Team Plans
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps
+                  Free/Team Plans
                 </span>
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
                   <Link href="https://university.harness.io/page/continuous-delivery-developer">
-                    <button className={styles.moreDetails}>Register for the Exam</button>
+                    <button className={styles.moreDetails}>
+                      Register for the Exam
+                    </button>
                   </Link>
                   <Link href="/certifications/continuous-delivery">
                     <button className={styles.startLearning}>
                       <span>See All CD & GitOps Certifications</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
               </div>
             </div>
           </div>
-
 
           {/* CI 
           <div className={clsx(styles.certCard, styles.moduleCI)}>
@@ -214,7 +219,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -293,7 +298,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -372,7 +377,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -452,7 +457,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -532,7 +537,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -611,7 +616,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -632,7 +637,10 @@ export default function Certifications() {
           <div className={clsx(styles.certCard)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
-                <h2>Continuous Delivery & GitOps - Administrator (BETA COMING SOON)</h2>
+                <h2>
+                  Continuous Delivery & GitOps - Administrator (BETA COMING
+                  SOON)
+                </h2>
                 <img
                   src={`${baseUrl}img/cert_adm_badge.svg`}
                   alt="Harness Certified Expert - Developer - CD"
@@ -668,18 +676,21 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps Enterprise Plan
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps
+                  Enterprise Plan
                 </span>
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
                   <Link href="#">
-                    <button className={styles.moreDetails}>Register for the Exam</button>
+                    <button className={styles.moreDetails}>
+                      Register for the Exam
+                    </button>
                   </Link>
                   <Link href="/tutorials/deploy-services">
                     <button className={styles.startLearning}>
                       <span>See All CD & GitOps Certifications</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -699,7 +710,9 @@ export default function Certifications() {
           <div className={clsx(styles.certCard)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
-                <h2>Continuous Delivery & GitOps - Architect (BETA COMING SOON)</h2>
+                <h2>
+                  Continuous Delivery & GitOps - Architect (BETA COMING SOON)
+                </h2>
                 <img
                   src={`${baseUrl}img/cert_arc_badge.svg`}
                   alt="Harness Certified Expert - Developer - CD"
@@ -735,18 +748,21 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps Enterprise Plan
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps
+                  Enterprise Plan
                 </span>
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
                   <Link href="/certifications/continuous-delivery">
-                    <button className={styles.moreDetails}>Register for the Exam</button>
+                    <button className={styles.moreDetails}>
+                      Register for the Exam
+                    </button>
                   </Link>
                   <Link href="/tutorials/deploy-services">
                     <button className={styles.startLearning}>
                       <span>See All CD & GitOps Certifications</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>

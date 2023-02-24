@@ -24,15 +24,17 @@ export default function CertificationsCD() {
         <div className={styles.left}>
           <div className={styles.linkBack}>
             <Link to={`${baseUrl}certifications`}>
-              <i className="fa-regular fa-arrow-left"></i> Back to all
+              <i className="fa-solid fa-arrow-left"></i> Back to all
               certifications
             </Link>
           </div>
           <h1>Continuous Delivery & GitOps Certifications</h1>
           <div>
-              Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
-              Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
-              advanced verification, and intelligent rollback
+            Eliminate scripting and manual deployments with Argo CD-as-a-Service
+            and powerful, easy-to-use pipelines. Empower your teams to deliver
+            new features, faster – with AI/ML for automated canary and
+            blue/green deployments, advanced verification, and intelligent
+            rollback
           </div>
         </div>
         <div className={styles.right}>
@@ -65,14 +67,12 @@ export default function CertificationsCD() {
             </div>
             <div className={styles.btnContainer}>
               <Link href="/certifications/continuous-delivery/cd-developer-cert#prepare">
-                <button className={styles.moreDetails}>
-                  Study Guide
-                </button>
+                <button className={styles.moreDetails}>Study Guide</button>
               </Link>
               <Link href="/certifications/continuous-delivery/cd-developer-cert#exam-details">
                 <button className={styles.startLearning}>
                   <span>Exam Details</span>
-                  <i className="fa-regular fa-arrow-right"></i>
+                  <i className="fa-solid fa-arrow-right"></i>
                 </button>
               </Link>
             </div>
@@ -81,8 +81,8 @@ export default function CertificationsCD() {
           <div className={styles.certCardContainer}>
             <h3>Administrator</h3>
             <div className={styles.descContainer}>
-              Assesses the fundamental skills to deploy and maintain CD
-              projects and the overall Harness Platform. 
+              Assesses the fundamental skills to deploy and maintain CD projects
+              and the overall Harness Platform.
               <ul className={styles.courseList}>
                 <li className={styles.courseItem}>
                   <i className="fa-solid fa-circle-check"></i>
@@ -96,14 +96,12 @@ export default function CertificationsCD() {
             </div>
             <div className={styles.btnContainer}>
               <Link href="#">
-                <button className={styles.moreDetails}>
-                  Study Guide
-                </button>
+                <button className={styles.moreDetails}>Study Guide</button>
               </Link>
               <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Exam Details</span>
-                  <i className="fa-regular fa-arrow-right"></i>
+                  <i className="fa-solid fa-arrow-right"></i>
                 </button>
               </Link>
             </div>
@@ -126,14 +124,12 @@ export default function CertificationsCD() {
             </div>
             <div className={styles.btnContainer}>
               <Link href="#">
-                <button className={styles.moreDetails}>
-                  Study Guide
-                </button>
+                <button className={styles.moreDetails}>Study Guide</button>
               </Link>
               <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Exam Details</span>
-                  <i className="fa-regular fa-arrow-right"></i>
+                  <i className="fa-solid fa-arrow-right"></i>
                 </button>
               </Link>
             </div>
