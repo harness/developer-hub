@@ -156,7 +156,7 @@ export default function CertificationsCD() {
                 Continuous Delivery & GitOps - Developer (BETA COMING SOON)
               </h2>
               <img
-                src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
+                src={`${baseUrl}img/cert_dev_cd_badge.svg`}
                 alt="Harness Certified Expert - CD & GitOps Developer"
                 className={styles.badge}
               />
