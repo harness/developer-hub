@@ -26,14 +26,14 @@ export default function CertificationsCD() {
         <div className={styles.left}>
           <div className={styles.linkBack}>
             <Link to={`${baseUrl}certifications/continuous-delivery`}>
-              <i className="fa-regular fa-arrow-left"></i> Back to all
-              CD & GitOps certifications
+              <i className="fa-solid fa-arrow-left"></i> Back to all CD & GitOps
+              certifications
             </Link>
           </div>
           <h1>Continuous Delivery & GitOps - Developer</h1>
           <div>
-          Validate your broad knowledge of cloud concepts and the products, services, tools, 
-          features, benefits, and use cases of CD.
+            Validate your broad knowledge of cloud concepts and the products,
+            services, tools, features, benefits, and use cases of CD.
           </div>
         </div>
         <div className={styles.right}>
@@ -73,7 +73,7 @@ export default function CertificationsCD() {
               <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
-                  <i className="fa-regular fa-arrow-right"></i>
+                  <i className="fa-solid fa-arrow-right"></i>
                 </button>
               </Link>
             </div>
@@ -104,7 +104,7 @@ export default function CertificationsCD() {
               <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
-                  <i className="fa-regular fa-arrow-right"></i>
+                  <i className="fa-solid fa-arrow-right"></i>
                 </button>
               </Link>
             </div>
@@ -134,7 +134,7 @@ export default function CertificationsCD() {
               <Link href="/tutorials/deploy-services">
                 <button className={styles.startLearning}>
                   <span>Start learning</span>
-                  <i className="fa-regular fa-arrow-right"></i>
+                  <i className="fa-solid fa-arrow-right"></i>
                 </button>
               </Link>
             </div>
@@ -152,29 +152,34 @@ export default function CertificationsCD() {
           </div>
           <div className={styles.innerCard}>
             <div className={styles.left}>
-              <h2>Continuous Delivery & GitOps - Developer (BETA COMING SOON)</h2>
+              <h2>
+                Continuous Delivery & GitOps - Developer (BETA COMING SOON)
+              </h2>
               <img
                 src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
                 alt="Harness Certified Expert - CD & GitOps Developer"
                 className={styles.badge}
               />
               <span className={styles.productVersion}>
-                <strong>Product version: </strong> Harness CD & GitOps Free/Team Plans
+                <strong>Product version: </strong> Harness CD & GitOps Free/Team
+                Plans
               </span>
             </div>
             <div className={styles.right}>
               <h3>Review Study Guide</h3>
               <div className={styles.desc}>
-                Eliminate scripting and manual deployments with Argo CD-as-a-Service and powerful, easy-to-use pipelines. 
-                Empower your teams to deliver new features, faster – with AI/ML for automated canary and blue/green deployments, 
-                advanced verification, and intelligent rollback
+                Eliminate scripting and manual deployments with Argo
+                CD-as-a-Service and powerful, easy-to-use pipelines. Empower
+                your teams to deliver new features, faster – with AI/ML for
+                automated canary and blue/green deployments, advanced
+                verification, and intelligent rollback
               </div>
               <CertificationReviewGuide />
               <div className={styles.btnContainer}>
                 <Link href="/tutorials/deploy-services">
                   <button className={styles.startLearning}>
                     <span>Start learning</span>
-                    <i className="fa-regular fa-arrow-right"></i>
+                    <i className="fa-solid fa-arrow-right"></i>
                   </button>
                 </Link>
               </div>
@@ -196,7 +201,7 @@ export default function CertificationsCD() {
             <Link href="/tutorials/deploy-services">
               <button className={styles.startLearning}>
                 <span>Start Learning</span>
-                <i className="fa-regular fa-arrow-right"></i>
+                <i className="fa-solid fa-arrow-right"></i>
               </button>
             </Link>
           </div>
