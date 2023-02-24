@@ -1,7 +1,7 @@
 ---
 title: Scanner Setup YAML Configuration
 description: All the available settings to configure individual scans.
-sidebar_position: 2
+sidebar_position: 35
 ---
 
 The following YAML sample 

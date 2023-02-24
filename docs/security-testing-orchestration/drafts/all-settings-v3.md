@@ -235,3 +235,32 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 
 </Tabs>
+
+## Legacy configuration
+
+Optionally, you can set up a $PRODUCT scan manually in a Security step. Enter the keys and values in the **Settings** fields as shown in the following YAML example. 
+
+* `product_name` : `blackduckhub`
+* `scan_type`
+	+ accepted value(s): `repository`, `containerImage`
+* `policy_type`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan`
+	+ `product_domain`
+	+ `product_auth_type`
+		- accepted value(s): `usernamePassword`, `apiKey`
+	+ `product_access_id`: api username
+	+ `product_access_token` api password or api key
+	+ `product_api_version`
+	+ `product_project_name`
+	+ `product_project_version`
+* `product_config_name`
+	+ Accepted values(s): `default`
+
+## YAML example
+
+The following YAML example shows a Bandit scan step. If you want to configure Bandit steps programmatically, the recommended practice is to set up one Bandit scanner using the [Step Palette](#step-palette-configuration) in the Harness UI. Then switch over to the YAML view in the Pipeline Editor, and copy and edit the YAML specification as needed.
+
+```yaml
+
+```
