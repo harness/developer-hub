@@ -32,11 +32,11 @@ export default function Certifications() {
             alt="Harness Certified Expert - Developer"
           />
           <img
-            src={`${baseUrl}img/cert_adm_badge.svg`}
+            src={`${baseUrl}img/cert_adm_cd_badge.svg`}
             alt="Harness Certified Expert - Administrator"
           />
           <img
-            src={`${baseUrl}img/cert_arc_badge.svg`}
+            src={`${baseUrl}img/cert_arc_cd_badge.svg`}
             alt="Harness Certified Expert - Architect"
           />
         </div>
@@ -70,7 +70,7 @@ export default function Certifications() {
                   Continuous Delivery & GitOps - Developer (BETA COMING SOON)
                 </h2>
                 <img
-                  src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
+                  src={`${baseUrl}img/cert_dev_cd_badge.svg`}
                   alt="Harness Certified Expert - CD & GitOps Developer"
                   className={styles.badge}
                 />
@@ -642,7 +642,7 @@ export default function Certifications() {
                   SOON)
                 </h2>
                 <img
-                  src={`${baseUrl}img/cert_adm_badge.svg`}
+                  src={`${baseUrl}img/cert_adm_cd_badge.svg`}
                   alt="Harness Certified Expert - Developer - CD"
                   className={styles.badge}
                 />
@@ -714,7 +714,7 @@ export default function Certifications() {
                   Continuous Delivery & GitOps - Architect (BETA COMING SOON)
                 </h2>
                 <img
-                  src={`${baseUrl}img/cert_arc_badge.svg`}
+                  src={`${baseUrl}img/cert_arc_cd_badge.svg`}
                   alt="Harness Certified Expert - Developer - CD"
                   className={styles.badge}
                 />
