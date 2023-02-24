@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="reader" label="Reader role" default>
+  <TabItem value="reader" label="Reader role:"default">
 ```
 The **Reader** role must be assigned at the **Subscription** or **Resource Group** level that is used by the Application (Client) Id that you'll use in the Azure Cloud connector's settings. The application must have permission to list **all** container registries.
 
