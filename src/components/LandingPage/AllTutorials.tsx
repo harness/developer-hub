@@ -479,12 +479,26 @@ const PlatformList: CardItem[] = [
     module: "platform",
     icon: "img/logo.svg",
     description: (
-      <>Install a Docker or Kubernetes Delegate on your infrastructure.</>
+      <>Install a Kubernetes or Docker Delegate on your infrastructure.</>
     ),
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/install-delegate",
+  },
+  {
+    title: "Customize the delegate to run your favorite third-party tools",
+
+    module: "platform",
+    icon: "img/logo.svg",
+    description: (
+      <>Customize the delegate to run your favorite tools, including Helm, Terraform, and AWS CLI.</>
+
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/platform/customize-delegate",
   },
   {
     title: "Onboard with Terraform",
@@ -500,21 +514,6 @@ const PlatformList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
-  },
-  {
-    title: "Provision Azure Infrastructure for Harness Delegate",
-    module: "platform",
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Tutorial on how to set up a Kubernetes cluster on Azure and will serve
-        as the foundation for your CI/CD pipeline infrastructure.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "3 min",
-    link: "/tutorials/platform/provision-azure-infrastructure",
   },
 ];
 

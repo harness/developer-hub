@@ -1,8 +1,6 @@
 ---
 title: Run Docker-in-Docker in a CI Stage
-description: You can run Docker-in-Docker as a Service Dependency in a CI Stage. This example illustrates using Docker-in-Docker to build and push an image in a Run step. This can be useful if you want to build f…
-tags: 
-   - helpDocs
+description: You can run Docker-in-Docker as a Background step in a CI Stage.
 # sidebar_position: 2
 helpdocs_topic_id: ajehk588p4
 helpdocs_category_id: 7ljl8n7mzn
@@ -10,12 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can run Docker-in-Docker (**dind**) in a CI Stage. This is useful whenever you need to run Docker commands as part of your build process. For example, you can build images from two separate codebases in the same Pipeline: one using a step such as [Build and Push an Image to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md), and another using Docker commands in a Run step.
+You can run Docker-in-Docker (**DinD**) in a CI stage. This is useful whenever you need to run Docker commands as part of your build process. For example, you can build images from two separate codebases in the same pipeline: one using a step such as [Build and Push an Image to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md), and another using Docker commands in a Run step.
 
 This topic illustrates a simple build-and-push workflow using Docker-in-Docker.
 
-Docker-in-Docker must run in privileged mode to work properly. You need to be careful because this provides full access to the host environment. See [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) in the Docker docs.  
-Docker-in-Docker is not supported in Harness-hosted build infrastructures or on platforms (such as those running Windows containers) that don't support Privileged mode. 
+Docker-in-Docker must run in privileged mode to work properly. You need to be careful because this provides full access to the host environment. See [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) in the Docker docs. Docker-in-Docker is not supported in Harness-hosted build infrastructures or on platforms (such as those running Windows containers) that don't support Privileged mode.
 
 ### Before You Begin
 
@@ -43,9 +40,9 @@ In the Overview tab for the new Build Stage, configure the Stage as follows:
 
 In the CI Build stage > **Infrastructure** tab, define the build infrastructure for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
-### Step 3: Add a dind Background step
+### Step 3: Add a DinD Background step
 
-In the Execution tab, add a [Service Dependency Step](../../ci-technical-reference/configure-service-dependency-step-settings.md) and configure it as follows:
+In the Execution tab, add a [Background step](../../ci-technical-reference/background-step-settings.md) and configure it as follows:
 
 * **Name:** dind_Service.
 * **Container Registry:** A connector to your Docker registry.
@@ -57,7 +54,7 @@ In the Execution tab, add a [Service Dependency Step](../../ci-technical-referen
 In the Execution tab, add a [Run Step](../../ci-technical-reference/run-step-settings.md) and configure it as follows:
 
 * **Container Registry:** A Connector to your Docker registry.
-* **Image:** The same image you specified for the Service Dependency.
+* **Image:** The same image you specified for the Background step.
 * **Command:** Enter the shell commands you want to run in the dind container.
 
 Once the container is started, the software inside the container takes time to initialize and start accepting connections. Give the service adequate time to initialize before trying to connect. You can use a `while` loop, as shown here:

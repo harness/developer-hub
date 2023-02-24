@@ -50,6 +50,8 @@ In addition to a Harness account, you need the following accounts and tools:
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
+<CISignupTip />
+
 ## Configure a container registry
 
 To avoid scenarios where builds only work on specific machines, you can use Docker containers to provide clean environments that run specified toolsets. This is a __DevOps__ best practice that helps identify potential problems throughout development.

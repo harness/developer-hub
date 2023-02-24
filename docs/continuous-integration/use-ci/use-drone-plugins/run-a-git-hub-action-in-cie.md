@@ -46,7 +46,7 @@ For example, if the account URL is `https://github.com/mycompany` and the repo i
 
 In the CI stage Infrastructure, define the build farm for the codebase.
 
-The following example uses a Kubernetes cluster build farm. You can use AWS for your build infrastructure as well. See [Set Up an AWS VM Build Infrastructure](../set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md). 
+The following example uses a Kubernetes cluster build farm. You can use AWS for your build infrastructure as well. See [Set Up an AWS VM Build Infrastructure](../set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure.md). 
 
 In **Select a Kubernetes Cluster**, select, or create, a Kubernetes Connector. See [Kubernetes Cluster Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md). This Connector connects Harness to the cluster to use as the build farm.
 

@@ -44,7 +44,9 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret name,ensure that you update the `experiment.yml` environment variable for deriving the respective data from the secret. Also account for the path at which this secret is mounted as a file in the manifest environment variable  `AWS_SHARED_CREDENTIALS_FILE`.
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
 ## Permissions required
 
@@ -101,7 +103,7 @@ Here is an example AWS policy to execute the fault.
 ```
 </details>
 
-Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 ## Default validations
 
