@@ -1,6 +1,6 @@
 ---
-title: Bitbucket Connector Settings Reference
-description: This topic provides settings and permissions for the Bitbucket Connector.
+title: Bitbucket connector settings reference
+description: This topic describes settings and permissions for the Bitbucket connector.
 # sidebar_position: 2
 helpdocs_topic_id: iz5tucdwyu
 helpdocs_category_id: xyexvcc206
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Bitbucket Connector.
+This topic describes settings and permissions for the Bitbucket connector.
 
 ### Limitations
 
@@ -67,7 +67,11 @@ If you log into Bitbucket using a Google account, you can create an application 
 
 #### Username
 
-The username for the account.
+The Bitbucket account username.
+
+If the connection test returns a `not authorized` error, make sure you used the **Username** shown in the Bitbucket **Account settings**.
+
+![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
 #### Password
 
