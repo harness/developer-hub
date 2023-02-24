@@ -1,7 +1,7 @@
 ---
-title: Scanner Setup Template 2 (EXPAND)
+title: Black Duck Hub scanner reference
 description: All the available settings to configure individual scans.
-sidebar_position: 20
+sidebar_position: 300
 ---
 
 ```mdx-code-block
@@ -51,18 +51,19 @@ import StoSettingInstanceProtocol from './shared/_sto-ref-ui-instance-protocol.m
 import StoSettingInstancePort from './shared/_sto-ref-ui-instance-port.md';
 import StoSettingInstancePath from './shared/_sto-ref-ui-instance-path.md';
 import StoSettingLogLevel from './shared/_sto-ref-ui-log-level.md';
-import StoSettingFailOnSeverity from './shared/_sto-ref-ui-fail-on-severity.md';
 import StoSettingCliFlags from './shared/_sto-ref-ui-cli-flags.md';
+import StoSettingFailOnSeverity from './shared/_sto-ref-ui-fail-on-severity.md';
 ```
 
 
 
-You can ingest [ orchestrate $PRODUCT scans and ingest scan results | ingest results from $PRODUCT ] into your pipelines. This topics describes the required and optional settings for setting up a $PRODUCT scan. 
+You can orchestrate Black Duck Hub scans and ingest scan results into your Harness pipelines. This topic describes the required and optional settings for setting up a Black Duck Hub scan. 
 
-You can set up a $PRODUCT scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
+You can set up a Black Duck Hub scan in CI and SecurityTest stages. For some scanners, you can set up the scan in the UI. The following examples show the YAML fields to configure.
 
 ## Step Palette Configuration 
-To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a $PRODUCT scan step to the stage and configure it as described below. 
+To set up a Black Duck Hub scan, add a Build (CI) or a SecurityTests stage to your pipeline. Then add a Black Duck Hub scan step to the stage and configure it as described below. 
+
 
 <!-- 
 <details>
@@ -77,8 +78,6 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 <!-- ============================================================================= -->
 
 <details><summary>Scan settings</summary>
-
-### Scan Settings
 
 #### Scan Mode
 
@@ -95,14 +94,10 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 <details>
 <summary>Target Settings</summary>
 
-### Target Settings
-
 #### Type
 <StoSettingScanType />
 <StoSettingScanTypeRepo />
 <StoSettingScanTypeCont />
-<StoSettingScanTypeInst />
-<StoSettingScanTypeConfig />
 
 #### Name 
 <StoSettingProductID />
@@ -110,10 +105,10 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 #### Variant
 <StoSettingTargetVariant  />
 
-#### Workspace (_repository_)
+#### Workspace 
 <StoSettingTargetWorkspace  />
 
-#### Ingestion File (_ingestion_)
+#### Ingestion File
 <StoSettingIngestionFile  />
 
 </details>
@@ -122,9 +117,7 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 <details><summary>Authentication Settings</summary>
 
-### Authentication Settings
-
-#### Domain (_extraction_)
+#### Domain 
 <StoSettingAuthDomain />
 
 #### Enforce SSL
@@ -136,8 +129,11 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 #### Type
 <StoSettingAuthType />
 
+<!-- 
 #### Access ID (_orchestration_)
 <StoSettingAuthAccessID />
+
+-->
 
 #### Access Token
 <StoSettingAuthAccessToken />
@@ -166,8 +162,6 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 #### Access Token 
 <StoSettingImageAccessToken />
 
-#### Region  
-<StoSettingImageRegion />
 
 </details>
 
@@ -175,59 +169,17 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 <details><summary>Scan Tool Settings</summary>
 
-### Scan Tool settings
-
 #### Project Name
 <StoSettingToolProjectName />
 
 #### Project Version
 <StoSettingToolProjectVersion />
 
-#### Include 
-<StoSettingToolInclude />
-
-#### Exclude
-<StoSettingToolExclude />
-
-
-#### Context Name
-<StoSettingToolContext />
-
-
-#### Context Name (images) 
-<StoSettingToolImageName />
-
-#### Team Name
-<StoSettingToolProductTeamName  />
-
-#### Port  
-<StoSettingToolPort  />
-
-#### Java Libraries
-<StoSettingTooJavaLibraries  />
-
-#### Java Binaries
-<StoSettingToolJavaBinaries  />
-
-#### Product Token  
-<StoSettingToolProductToken  />
-
-#### Name 
-<StoSettingToolProductAccessID  />
-
-#### Project Token
-<StoSettingToolProductToken  />
-
-#### Lookup Type
-<StoSettingToolLookupType  />
-
 </details>
 
 <!-- ============================================================================= -->
 
 <details><summary>Instance settings</summary>
-
-### Instance Settings
 
 #### Domain
 <StoSettingInstanceDomain />
@@ -250,8 +202,6 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 <details><summary>Log Level, CLI flags, and Fail on Severity</summary>
 
-### Log Level, CLI flags, and Fail on Severity 
-
 #### Log Level
 <StoSettingLogLevel />
 
@@ -265,7 +215,7 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 ## Legacy configuration
 
-Optionally, you can set up a $PRODUCT scan manually in a Security step. Enter the keys and values in the **Settings** fields as shown in the following YAML example. 
+Optionally, you can set up a Black Duck Hub scan manually in a Security step. Enter the keys and values in the **Settings** fields as shown in the following YAML example. 
 
 * `product_name` : `blackduckhub`
 * `scan_type`
@@ -289,6 +239,51 @@ Optionally, you can set up a $PRODUCT scan manually in a Security step. Enter th
 The following YAML example shows a Bandit scan step. If you want to configure Bandit steps programmatically, the recommended practice is to set up one Bandit scanner using the [Step Palette](#step-palette-configuration) in the Harness UI. Then switch over to the YAML view in the Pipeline Editor, and copy and edit the YAML specification as needed.
 
 ```yaml
-
+- step:
+      type: BlackDuck
+      name: step
+      identifier: blackduck
+      spec:
+        mode: orchestration
+        config: default # always set, cannot override
+        target: 
+          type: repository # repository|image
+          name: <sto_plugin>
+          variant: main|develop|feature/STO-213
+          workspace: /harness
+        
+        # For image scan only
+        image:
+         type: docker_v2 # local_image|docker_v2|aws_ecr|jfrog_artifactory
+         domain: hub.docker.io
+         access_token: abc12345
+         region: us-west-1   
+        
+        # Authentication Options
+        auth:
+          access_id: admin
+          access_token: password
+          type: apiKey # apiKey | usernamePassword
+          version: "5.0.2"
+          domain: https://custom-blackduck-domain.mycompany.com
+          ssl: true
+        
+        tool:
+          project_name: <bdh-project>
+          project_version: <bdh-project-version>
+        
+        # ONLY IF scan_type == ingestionOnly
+        ingestion:
+          file: /shared/customer_artifacts/issues.json
+        
+        # ADVANCED OPTIONS
+        advanced:
+          log:
+            level: INFO # INFO|DEBUG|WARNING|ERROR
+            serializer: SIMPLE_ONPREM # SIMPLE|BASIC|BUNYAN|SIMPLE_ONPREM|ONPREM|        
+          # ADVANCED OPTIONS - YAML ONLY
+          args: 
+            cli: "--version -test blah"
+          fail_on_severity: Critical
 ```
 

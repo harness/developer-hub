@@ -1,5 +1,5 @@
 ---
-title: BlackDuckHub Scanner Reference
+title: BDH test (ignore)
 description: All the available settings to configure individual scans.
 sidebar_position: 200
 ---
