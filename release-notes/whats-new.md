@@ -1,8 +1,12 @@
 ---
 title: What's New
-date: 2023-02-15T10:00
+date: 2023-02-23T10:00
 sidebar_position: 1
 ---
+
+```mdx-code-block
+import delete_project from './static/delete-project.png'
+```
 
 Learn about the new features that are Generally Available (GA) in Harness SaaS across all Harness modules and the Harness Platform.
 
@@ -11,6 +15,44 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 23, 2023, version 78507
+
+### Harness Platform
+
+- The new delegate installation wizard is now generally available. (PL-31305)
+  
+  You also have the option to revert to the previous installation method if desired.
+
+
+-  A warning message now appears in the UI when you delete a project or organization. Deletions require confirmation from the user. (PL-31292)
+  
+  ```mdx-code-block
+  <img src={delete_project} alt="delete-project" height="150" width="400"></img>
+  ```
+
+  This enhancement prevents the accidental deletion of important projects or organizations and provides an extra layer of caution for users.
+
+- The reference page for entities is improved to provide detailed information about each reference. (PL-31247)
+
+  The following details are added to the existing reference pages:
+
+  - Date or timestamp 
+  - Name and type of entity
+  - Scope of reference
+
+  These enhancements provide comprehensive information about each reference.
+
+- Sorting functionality is available on the project listing page and the project selector dropdown. (PL-27493)
+  With this enhancement, you can easily sort and find projects you need and organize them according to your preferences.
+
+- You can now change stages without losing the values you enter in the **Run Pipeline** form. (PIE-4663)
+
+### Continuous Integration
+
+In addition to fixed values and runtime inputs, you can now use [expressions](https://developer.harness.io/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+
+![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
 
 ## February 15, 2023, version 78421
 

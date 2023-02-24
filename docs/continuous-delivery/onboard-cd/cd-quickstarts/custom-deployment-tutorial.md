@@ -70,7 +70,7 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 ## Harness Delegate setup
 
-1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install Harness Delegate on Kubernetes](../../../platform/2_Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes.md).
+1. Install a Harness Kubernetes Delegate in a cluster. For steps on installing a Delegate, go to [Install a delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md).
 
   The Delegate you use for Deployment Templates should be in an environment where it can connect and query your artifact repo and target instances. Typically, you'll want a Delegate in the same subnet as the target instances.
 
