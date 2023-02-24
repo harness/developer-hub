@@ -36,9 +36,10 @@ Harness Azure Cloud connectors that you'll use to connect to ACR must have the *
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+
 ```mdx-code-block
 <Tabs>
-  <TabItem value="reader" label="Reader role:"default">
+  <TabItem value="reader" label="Reader" default>
 ```
 The **Reader** role must be assigned at the **Subscription** or **Resource Group** level that is used by the Application (Client) Id that you'll use in the Azure Cloud connector's settings. The application must have permission to list **all** container registries.
 
