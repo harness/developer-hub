@@ -502,7 +502,7 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 ```yaml
 - KUSTOMIZE_PATH=<path>
 ```
-See [Install the Docker Delegate](../../../platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md).
+See [Install a delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md).
 
 ## Next Steps
 
