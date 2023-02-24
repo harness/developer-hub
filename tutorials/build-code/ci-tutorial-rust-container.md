@@ -1,611 +1,479 @@
 ---
 sidebar_position: 30
-description: This build automation guide describes building a rust application container in a a CI Pipeline.
+description: Use a CI pipeline to build and push a multi-arch application container image.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Rust]
 ---
 
-# Build Rust Application Containers
+# Build Rust application containers
 
-## Objectives
+This tutorial shows how you can use a Harness Continuous Integration (CI) pipeline to build a multi-architecture [Rust](https://rust-lang.org) application container image and push it to a Docker container registry.
 
-At the end of this tutorial you will learn,
+You'll learn how to:
 
-- [x] How to register for a Harness Account and activate your Free Tier
-- [x] What is a __Project__ and how to configure one on your Harness Account
-- [x] What are [__Secrets__](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts#secrets_management) and how to add them to your Project
-- [x] What are [__Connectors__](https://docs.harness.io/article/hv2758ro4e-learn-harness-key-concepts#connectors) and how to add a Docker Registry Connector to your Project
-- [x] How to build multi architecture [rust](https://www.rust-lang.org/) application container image
+- [x] Create [__projects__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#organizations-and-projects) in your Harness account.
+- [x] Add [__secrets__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#secrets-management) to projects.
+- [x] Add a Docker Registry [__Connector__](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/#connectors) to a project.
+- [x] Use a CI pipeline to build and push a multi-architecture Rust application container image.
 
-## Pre-requisites
+In this tutorial, you'll use [Rust](https://rust-lang.org) to build a simple REST API called `greeter-api`.
 
-Before you get started with the tutorial make sure you have the following accounts,credentials and tools,
+## Prerequisites
 
-- A [GitHub](https://github.com) account, where you may need to fork the tutorial sources.
-- A Docker Registry account, e.g [DockerHub](https://hub.docker.com), [Quay.io](https://quay.io)
-- [Drone CLI](https://docs.drone.io/cli/install/) to build the application locally.
+In addition to a Harness account, you need the following accounts and tools:
+
+- A [GitHub](https://github.com) account where you can fork the tutorial repo
+- A Docker registry account, such as [DockerHub](https://hub.docker.com) or [Quay.io](https://quay.io)
+- [Drone CLI](https://docs.drone.io/cli/install/) to build the application locally
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
+
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+```
 
 <CISignupTip />
 
-## Overview
+## Configure the container registry
 
-As part of this tutorial we will be building a simple REST API called `greeter-api` using [Rust](https://rust-lang.org).
+To avoid scenarios where builds only work on specific machines, you can use Docker containers to provide clean environments that run specified toolsets. This is a __DevOps__ best practice that helps identify potential problems throughout development.
 
-## Tutorial Source
+[Drone by Harness](https://drone.io) is an open source CI platform that helps developers build and test on local machines without manually installing different tools for each language.
 
-The complete demo source is available here <https://github.com/harness-apps/rust-greeter>, fork the repository on to your GitHub account. For rest of the tutorial we will refer to this repository as `$TUTORIAL_GIT_REPO`.
+Before building the application, you need a location to store build artifacts, which are also known as container images. Externally-hosted locations are ideal because they are more accessible. Container image storage spaces are called __Container Registries__. Examples of container registry providers include Docker Hub, Quay.io, Harbor, Google Artifact Registry (GAR), and Elastic Container Registry (ECR).
 
-## Building Application Locally
+This tutorial pushes a `fruits-api` application container image to a [DockerHub](https://hub.docker.com/) repository named `fruits-api`. You can use another container registry if you prefer.
 
-Languages and package formats have build specific tools. One of the core problems that a developer might face is to install the right version of those tools on their local machines. This approach has potential pit falls and leads to __Works only on my machine__ scenarios.
-
-Docker containers solved this problem and helped us to have clean environment that had right set of tools, encouraging the __DevOps__ best practices right from the start. This approach also helps to identify the potential issues with the application at development stage.
-
-[Drone by Harness](https://drone.io) is an open source CI platform that can help building and testing on your local machines without the need of installing the tools as required by the programming languages.
-
-But before we start to build the application, we need place to store the artifacts of the build i.e. container images. In container/Cloud Native world this is called a __Container Registry__ e.g Docker Hub, Quay.io, Harbor etc.,
-
-## Configure Container Registry
-
-Like any file you want to share with the world, storing them in an external spot makes them more accessible. A big benefit of using containers as a packaging format is the ecosystem of container registries out there. Your firm might have a registry provider such as Docker Hub, Quay.io, Harbor, Google Container Registry(GCR), Elastic Container Registry(ECR) etc.,
-
-For this tutorial we will be using [Docker Hub](https://hub.docker.com/). If you do not have a registry available to you, you can create a [Docker Hub account](https://hub.docker.com/signup) and then create a repository `fruits-api`, where we will push our `fruits-api` application container image.
+1. Create a public repository named `fruits-api` in your container registry.
 
 ![Fruits API Docker Repository](static/ci-tutorial-go-containers/create-docker-repo.png)
 
-With us having created the `fruits-api` repository, lets test our repository by building and pushing the image to the registry,
+2. Test your `fruits-api` repository by manually building and pushing an application image to the registry. First, log in to the DockerHub account associated with the `fruits-api` repository:
 
-Login to your Docker Hub Account,
+  ```shell
+   echo -n "$DOCKER_HUB_PASSWORD" |\
+     docker login -u `$DOCKER_HUB_USERNAME` --password-stdin
+   ```
 
-```shell
-echo -n "$DOCKER_HUB_PASSWORD" |\
-  docker login -u `$DOCKER_HUB_USERNAME` --password-stdin
-```
+3. This tutorial uses a sample repo referred to as the tutorial repo or `$TUTORIAL_GIT_REPO`. Clone the [tutorial repo](https://github.com/harness-apps/rust-greeter):
 
-:::info
+   ```shell
+   #  clone rust-greeter repository
+   git clone https://github.com/harness-apps/rust-greeter.git \
+     && cd "$(basename "$_" .git)"
+   # navigate to the clone repository folder
+   export TUTORIAL_HOME="$PWD"
+   ```
 
-- `$DOCKER_HUB_USERNAME` - Docker Hub username, the one you used while registering the for the Docker Hub account or the one you wish to use if you already have an account with Docker Hub.
-- `$DOCKER_HUB_PASSWORD` - Docker Hub user password
+   :::tip
 
-:::
+   [GitHub CLI](https://cli.github.com/) is useful for working with GitHub repositories on the command line.
 
-Let us clone the tutorial application from <https://github.com/harness-apps/rust-greeter>,
+   :::
 
-```shell
-#  clone rust-greeter repository
-git clone https://github.com/harness-apps/rust-greeter.git \
-  && cd "$(basename "$_" .git)"
-# navigate to the clone repository folder
-export TUTORIAL_HOME="$PWD"
-```
+4. Fork the tutorial repository:
 
-:::tip
+   ```shell
+   gh repo fork
+   ```
 
-[GitHub Cli](https://cli.github.com/) is very handy tool to work with the GitHub repositories from the command line.
+   :::note
 
-:::
+   You can also fork the [tutorial repo](https://github.com/harness-apps/rust-greeter) from the GitHub web UI.
 
-Create your fork of the tutorial repository,
+   :::
 
-```shell
-gh repo fork
-```
+## Use Drone to build and push an image
 
-:::note
+Run a simple [Drone](https://drone.io) pipeline locally to build and push an application image from your computer to your `fruits-api` repository.
 
-You can also create your fork from the tutorial repository <https://github.com/harness-apps/rust-greeter> directly from GitHub.
+1. Copy `$TUTORIAL_HOME/.env.example` to `$TUTORIAL_HOME/.env`:
 
-:::
+   ```shell
+   cp $TUTORIAL_HOME/.env.example $TUTORIAL_HOME/.env
+   ```
 
-To make things simple let use [Drone by Harness](https://drone.io) to build and push the image from your laptops to the Docker Hub repository `fruits-api`,
+2. Edit the `$TUTORIAL_HOME/.env` as follows, replacing `$DOCKER_HUB_USERNAME`, `DOCKER_HUB_PASSWORD` with the username and password for the DockerHub account associated with the `fruits-api` repository:
 
-Copy `$TUTORIAL_HOME/.env.example` to `$TUTORIAL_HOME/.env`,
+   ```properties
+   PLUGIN_REGISTRY=docker.io
+   PLUGIN_USERNAME=$DOCKER_HUB_USERNAME
+   PLUGIN_PASSWORD=$DOCKER_HUB_PASSWORD
+   PLUGIN_REPO=$DOCKER_HUB_USERNAME/rust-greeter
+   PLUGIN_TAG=0.0.1
+   ```
 
-```shell
-cp $TUTORIAL_HOME/.env.example $TUTORIAL_HOME/.env
-```
+3. Use Drone to build the image and push it to DockerHub:
 
-Edit the `$TUTORIAL_HOME/.env` and update it with following,
+   ```shell
+   drone exec --trusted --env-file=.env
+   ```
 
-```properties
-PLUGIN_REGISTRY=docker.io
-PLUGIN_USERNAME=$DOCKER_HUB_USERNAME
-PLUGIN_PASSWORD=$DOCKER_HUB_PASSWORD
-PLUGIN_REPO=$DOCKER_HUB_USERNAME/rust-greeter
-PLUGIN_TAG=0.0.1
-```
-
-:::note
-Replace the `$DOCKER_HUB_USERNAME`, `DOCKER_HUB_PASSWORD` with your docker hub username and password values.
-:::
-
-```shell
-drone exec --trusted --env-file=.env
-```
-
-:::note
-It will take few mins for the build and push to complete as Drone will try to pull the container images if not exists.
-:::
-
-If all went well your command line output(trimmed for brevity) should like,
-
-```text
-...
-[push:350] The push refers to repository [docker.io/$DOCKER_HUB_USERNAME/rust-greeter:0.0.1]
-[push:351] 639e874c7280: Preparing
-[push:352] 96e320b34b54: Preparing
-[push:353] c306578afebb: Preparing
-[push:354] 96e320b34b54: Layer already exists
-[push:355] c306578afebb: Pushed
-[push:356] 639e874c7280: Pushed
-...
-```
-
-You can check the pushed image at <https://hub.docker.com/repository/docker/$DOCKER_HUB_USERNAME/rust-greeter>.
-
-Simple enough locally to get your local build and packaging in. Our process to build and push the __go__ application looks like,
+This command runs a simple **pipeline**. The pipeline's `push` step uses [drone-docker-buildx](https://drone-plugin-index.geekdocs.de/plugins/drone-docker-buildx/), which can build multi-architecture container images. The pipeline you'll create in this tutorial builds `linux/arm64` and `linux/amd64` images.
 
 ![Pipeline Steps](static/ci-tutorial-go-containers/pipeline_steps.png)
 
-These sequence of steps is referred to as a __Pipeline__ in Continuous Integration(CI) world.
+4. Wait while the pipeline runs. It can take some time to build and push, because Drone tries to pull container images if they don't already exist. A successful run produces output similar to the following:
 
-The drone pipeline `push` step uses [drone-docker-buildx](https://drone-plugin-index.geekdocs.de/plugins/drone-docker-buildx/) which can build multi architecture container images. In this tutorial we will be build `linux/arm64` and `linux/amd64` images.
+   ```text
+   ...
+   [push:350] The push refers to repository [docker.io/$DOCKER_HUB_USERNAME/rust-greeter:0.0.1]
+   [push:351] 639e874c7280: Preparing
+   [push:352] 96e320b34b54: Preparing
+   [push:353] c306578afebb: Preparing
+   [push:354] 96e320b34b54: Layer already exists
+   [push:355] c306578afebb: Pushed
+   [push:356] 639e874c7280: Pushed
+   ...
+   ```
 
-The `drone exec` that we did earlier is OK as long you are playing/learning a technology in other words laptop use cases, when you are working on a team to deliver some enterprise application then it becomes super critical that this process be centralized and automated. [Harness Platform](https://harness.io/) helps you do exactly that and much more.
+5. To check the pushed image, navigate to `https://hub.docker.com/repository/docker/$DOCKER_HUB_USERNAME/rust-greeter`.
 
-The next sections this tutorial helps you get started on the building your CI Pipeline using Harness platform.
+If you monitored your machine while running `drone exec`, you may have noticed a temporary slowdown. This might not be a problem for a single engineer, but scaling this process up to dozens, hundreds, or even thousands of engineers can strain system resources. Fortunately, modern continuous integration platforms use distributed nodes to support infrastructure at scale. [Harness CI](https://www.harness.io/products/continuous-integration) supports scaling and helps you externalize, centralize, and automate the build processes, as demonstrated in the next part of this tutorial.
 
-## Your Continuous Integration Infrastructure
+## Build the Harness CI pipeline
 
-If you took a closer look at what your machine was doing during those local builds, the machine was bogged down for a few moments. For yourself, that is fine, but imagine having to support 10’s or 100’s or even 1000’s of engineers, this process can be taxing on systems. Luckily, modern Continuous Integration Platforms are designed to scale with distributed nodes. Harness Continuous Integration is designed to scale and simplify getting your local steps externalized; this is the Continuous Integration Pipeline. Let’s enable Harness Continuous Integration to mimic your local steps and create your first CI Pipeline. Once you are done, you will have a repeatable, consistent, and distributed build process.
+The `drone exec` command you ran in the previous section is adequate while you're learning or building locally for yourself. However, when working on a team to deliver enterprise applications, you need to offload, centralize, and automate this process. With Harness CI, you can create pipelines that make your build processes repeatable, consistent, and distributed.
 
-There are a few Harness resources to create along the way, which this guide will walk through step-by-step.There are two paths to take. One path is to have Harness host all of the needed infrastructure for a distributed build. The second is to bring your own infrastructure for the distributed build.
+The rest of this tutorial shows how to create a Harness CI pipelines that mimics the local `drone exec` steps that build and push a multi-architecture application container image to a container registry.
 
-__Hosted Infrastructure__:
-
-![Harness CI Hosted Overview](static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
-
-__Bring Your Own Infrastructure__:
-
-![Harness CI Bring Your Own Overview](static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
-
-For this tutorial we will be using the __Hosted Infrastructure__ as thats the only infrastructure available for _Free Tier_.
-
-### Starting off with Harness
-
-Harness is a Platform which has lot of modules, but for this tutorial we will focus on the Continuous Integration(CI) module. 
-
-First, sign up for a [Harness account to get started](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
+While the Harness platform has several modules, this tutorial focuses on the Continuous Integration (CI) module. If you don't already have a Harness account, [sign up for a Harness account](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
 
 ![Harness Signup](static/ci-tutorial-node-docker/harness_signup.png)
 
-### GitHub Personal Access Token(PAT)
+### Compare build infrastructure options
 
-Assuming you are leveraging GitHub, Harness will need access to the repository. It is recommended to use GitHub [Personal Access Token(PAT)](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) as a mode of providing Github credentials.
+Pipelines require build infrastructure to run. When you create CI pipelines, you can use either Harness-hosted infrastructure or bring your own build infrastructure. This tutorial uses Harness-hosted infrastructure, also called Harness Cloud.
 
-If you have not created a PAT before, on your GitHub account navigate to __Settings__ -> __Developer Settings__ -> __Personal Access Tokens__.
+```mdx-code-block
+<Tabs>
+<TabItem value="cloud" label="Harness Cloud" default>
+```
+
+[Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart/) uses Harness-hosted machines to run builds. Harness maintains and upgrades these machines, which gives you more time to focus on development.
+
+![Harness CI Hosted Overview](static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
+
+```mdx-code-block
+</TabItem>
+<TabItem value="self" label="Self-hosted infrastructure">
+```
+
+With self-hosted build infrastructure, your pipelines run on your local machines or your Kubernetes clusters. To learn about self-hosted options, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
+
+![Harness CI Bring Your Own Overview](static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Create a GitHub personal access token
+
+For this tutorial, Harness needs access to your fork of the tutorial repo on GitHub. GitHub personal access tokens are the preferred mode for providing Github credentials.
+
+The GitHub documentation explains how to [Create a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token).
+
+If you are using an existing personal access token, make sure it has the `admin:repo_hook` and `user` scopes.
 
 ![GitHub PAT](static/ci-tutorial-go-containers/gh_pat_scopes.png)
 
 :::important
 
-- Make sure to jot down the __token__ as the token will only be displayed once. For rest of the tutorial we will refer to this token value as `$GITHUB_PAT`.
-  
+The __token__ is displayed only one time. Copy the token and save it to your password manager or another secure place. The rest of this tutorial refers to this token value as `$GITHUB_PAT`.
+
 :::
 
-If you plan to bring in your PAT then make sure it has the scopes `admin:repo_hook` and `user`.
+### Create a project
 
-### Create Project
+In the Harness Platform, you declare and configure resources, such as pipelines, secrets, and connectors. The availability of these resources depends on the scope where the resource was declared. Resources can be available across an entire account, to an organization within an account, or limited to a single project. For this tutorial, you'll create all resources at the project scope.
 
-Harness Platform organizes the resources like pipelines, secrets, connectors at various scopes such as Account, Organization and Project. For this tutorial we will create all our resources at Project scope.
+1. Log in to your Harness account that you created earlier and create a project. If you haven't created a project before, select **Create a project**. If you've already created a project, select the active project on the navigation menu, select **View All Projects**, and then select **New Project**.
 
-Login to your Harness Account that you created earlier and create a new project,
+   ![New Project](static/ci-tutorial-go-containers/new_project.png)
 
-![New Project](static/ci-tutorial-go-containers/new_project.png)
+2. Name the new project _Greeter API_, leave the other options as their defaults, and then select __Save and Continue__.
 
-On the new project page, click __Create Project__ to create a new project named _Greeter API_.
+   ![Create Fruits API Project](static/ci-tutorial-rust-container/rust_greeter_project_api.png)
 
-![Create Fruits API Project](static/ci-tutorial-rust-container/rust_greeter_project_api.png)
+3. Select the **Continuous Integration** module, and then select **Go to Module**.
 
-Leave other options to defaults and click __Save and Continue__. On the modules select _Continuous Integration_,
+   ![Module CI](static/ci-tutorial-go-containers/modules_ci.png)
 
-![Module CI](static/ci-tutorial-go-containers/modules_ci.png)
+### Create a pipeline
 
-Now you are ready to wire in the pieces to Harness Continuous Integration.
+The Harness CI pipeline wizard creates a basic pipeline for you.
 
-## Create Your First Pipeline
+1. Select __Get Started__ to launch the pipeline wizard.
 
-In the Build Module [Harness Continuous Integration], walking through the wizard is the fastest path to get your build running. Click Get Started. This will create a basic Pipeline for you.
+   ![Get Started](static/ci-tutorial-node-docker/get_started.png)
 
-![Get Started](static/ci-tutorial-node-docker/get_started.png)
+2. If you do not have any Git repository connectors at either the account or organization level, select __GitHub__ as the repository type, select the __Access token__ authentication method, input your GitHub personal access token (`$GITHUB_PAT`) in the __Access Token__ field, and select __Test Connection__ to verify your credentials.
 
-Click __Get Started__, select GitHub as the repository to use, and enter your GitHub Access Token `$GITHUB_PAT` and finally click __Test Connection__ to verify your credentials work,
+   ![SCM Choice](static/ci-tutorial-go-containers/scm_choice.png)
 
-![SCM Choice](static/ci-tutorial-go-containers/scm_choice.png)
+3. Select __Next: Select Repository__, choose your fork of the tutorial repo `rust-greeter`, and then select __Next: Configure Pipeline__.
 
-Click __Continue__, click __Select Repository__ to select the Git Hub Repository that you want to build _harness-apps/rust-greeter_.
+   ![Rust Source Repo](static/ci-tutorial-rust-container/rust_source_repo.png)
 
-![Rust Source Repo](static/ci-tutorial-rust-container/rust_source_repo.png)
+   :::info
 
-:::note
-Please ensure the repository you select here is your fork of <https://github.com/harness-apps/rust-greeter>.
-:::
+   Make sure you choose your personal fork of the [tutorial repo](https://github.com/harness-apps/rust-greeter).
 
-Can leverage one of the Starter Configs or create a Starter Pipeline. In this case we will use the default __Starter Pipeline__
+   If your account has a Git repo connector at the account or organization level, the wizard may generate a list of repositories for you to choose from.
 
-![Configure Go](static/ci-tutorial-rust-container/starter_pipeline.png)
+   If the wizard generated a list of repos but your tutorial repo fork isn't listed, then you need to add a GitHub connector so that Harness can access your tutorial repo fork. Since you can't add a new connector in the wizard, you can turn off **Clone Git Repository** and then configure your pipeline's **Codebase** after exiting the wizard.
 
-Click __Create Pipeline__ to start adding the pipeline steps.
+   :::
 
-There are two ways to add your pipeline steps, _visual_ or _YAML_. For rest of the tutorial we will use the _visual_ editor.
+4. Select __Starter Pipeline__ and then select __Create Pipeline__.
+
+   ![Select starter pipeline.](static/ci-tutorial-rust-container/starter_pipeline.png)
+
+You can use either the visual editor or the YAML editor to add pipeline steps. This tutorial uses the visual editor.
 
 ![Pipeline Visual](static/ci-tutorial-rust-container/starter_pipeline_visual.png)
 
-The scaffolding would have added a single step called _Echo Welcome Message_.
+Initially, your starter pipeline has a single stage, called _Build_, and single step, called _Echo Welcome Message_. You'll modify this stage so that the pipeline builds and pushes a multi-architecture Rust application container image to DockerHub. However, first you must configure additional resources that the steps require, namely secrets and connectors.
 
-Before we get to adding other steps, we need some resources that the steps require namely secrets and connectors.
+### Create a DockerHub password secret
 
-### Create Docker Hub Password Secret
+1. Under __Project Setup__, select __Secrets__.
 
-Navigate to __Project Setup__ --> __Secrets__,
+   ![Project Secrets](static/ci-tutorial-rust-container/project_secrets.png)
 
-![Project Secrets](static/ci-tutorial-rust-container/project_secrets.png)
+2. Select __New Secret__, and then select __Text__.
 
-Click __+ New Secret__ and select __Text__,
+   ![New Text Secret](static/ci-tutorial-rust-container/new_text_secret.png)
 
-![New Text Secret](static/ci-tutorial-rust-container/new_text_secret.png)
+3. On the __Add new Encrypted Text__ window, populate the fields as follows, and then select __Save__.
 
-Fill your Docker Hub password on the  __Add new Encrypted Text__ window,
+   - __Secrets Manager__: __Harness Built-in Secret Manager__
+   - __Secret Name__: _dockerhub password_
+   - __Secret Value__: DockerHub password for the account associated with the `fruits-api` repo
+   - __Description__ and __Tags__: Optional
 
-![Docker Hub Password](static/ci-tutorial-rust-container/docker_hub_password_secret.png)
+   ![Docker Hub Password](static/ci-tutorial-rust-container/docker_hub_password_secret.png)
 
-### Create Docker Hub Registry Connector
+4. On the secrets list, make a note of the `id` for the __dockerhub password__. You need this `id` later for your CI pipeline.
 
-Next let we need to add __Connector__ that allows us to connect and later push the image to our Docker Hub repository.
+### Create a DockerHub Registry connector
 
-Navigate to __Project Setup__ --> __Connectors__,
+You must add a __connector__ that allows Harness to connect to your DockerHub container registry.
 
-![Project Connectors](static/ci-tutorial-rust-container/project_connectors.png)
+1. Under __Project Setup__, select __Connectors__.
 
-Click __+ New Connector__ and select __Docker registry__,
+   ![Project Connectors](static/ci-tutorial-rust-container/project_connectors.png)
 
-![Docker Registry Connector](static/ci-tutorial-rust-container/docker_registry_connector.png)
+2. Select __New Connector__ and then select __Docker Registry__,
 
-On the new connector wizard __Overview__ screen, enter the name of the connector as `docker hub`,
+   ![Docker Registry Connector](static/ci-tutorial-rust-container/docker_registry_connector.png)
 
-![Docker Connector Overview](static/ci-tutorial-rust-container/docker_connector_overview.png)
+3. Follow the prompts in the new connector wizard. On the __Overview__ page, enter _docker hub_ as the connector __Name__. Then select __Continue__ to configure the credentials.
 
-Click __Continue__ to configure the credentials,
+   ![Docker Connector Overview](static/ci-tutorial-rust-container/docker_connector_overview.png)
 
-![Docker Connector Credentials](static/ci-tutorial-rust-container/docker_connector_details.png)
+4. On the __Details__ page, select **DockerHub** as the provider type, and then enter the URL for the Docker registry where you created the `fruits-api` repo.
+5. For **Authentication**, select **Username and Password**, enter the DockerHub username, select the __dockerhub password__ secret that you created earlier, and then select __Continue__.
 
-:::note
+   ![Docker Connector Credentials](static/ci-tutorial-rust-container/docker_connector_details.png)
 
-- Update the __Username__ with your `$DOCKER_HUB_USERNAME`
-- For the __Password__ field click _Create or Select a Secret_ to select the secret _**docker hub password**_(Project Scope).
+6. Select __Connect through Harness Platform__.
 
-:::
+   ![Docker Connector Connectivity Mode](static/ci-tutorial-rust-container/docker_connector_thru_harness_platform.png)
 
-Click __Continue__  and use the _Harness Platform_ as the connectivity mode option,
+7. Select __Save and Continue__ to run the connection test,
 
-![Docker Connector Connectivity Mode](static/ci-tutorial-rust-container/docker_connector_thru_harness_platform.png)
+   ![Docker Connector Success](static/ci-tutorial-go-containers/docker_connector_test_successful.png)
 
-Click __Save and Continue__ to perform the connectivity test,
+8. If the connection is successful, select __Finish__.
 
-![Docker Connector Success](static/ci-tutorial-go-containers/docker_connector_test_successful.png)
+   ![Connectors List](static/ci-tutorial-rust-container/project_connectors_list.png)
 
-Click __Finish__ to complete the creation of Connector resource.
+### Add service dependency, wait, and test steps
 
-![Connectors List](static/ci-tutorial-rust-container/project_connectors_list.png)
+1. Go back to __Pipelines__ and select the __Build rust-greeter__ pipeline that you created earlier.
 
-Now you are all set to add other steps to the __Build Go__ pipeline.
+   ![Pipelines List](static/ci-tutorial-rust-container/project_pipelines.png)
 
-### Update Pipeline
+2. Select the __Build__ stage.
 
-Navigate to the __Projects__ --> __Pipelines__,
+   ![Build Pipeline](static/ci-tutorial-rust-container/select_rust-greeter.png)
 
-![Pipelines List](static/ci-tutorial-rust-container/project_pipelines.png)
+3. Delete the __Echo Welcome Message__ step by selecting the `x` that appears when you hover over the step.
+4. Select __Save__ to save the pipeline.
 
-Click __Build__ pipeline,
+Next, you'll use a **Background** step to add a dependent service called `rgreeter`.
 
-![Build Pipeline](static/ci-tutorial-rust-container/select_rust-greeter.png)
+<details>
+<summary>How can Harness pipeline steps connect to dependent services?</summary>
 
-Delete the existing __Echo Welcome Message__ step by clicking the `x` that appears when you hover over the step.
+Harness pipelines support a concept called __Service Dependencies__, which are detached services that are accessible to all steps in a stage. Service dependencies support workflows such as:
 
-__How can the _test_ step connect to other dependent services ?__
+- Integration testing: Set up a service and then run tests against that service.
+- Running Docker-in-Docker: Set up a [DinD service](https://ngdocs.harness.io/article/ajehk588p4) to process Docker commands in **Run** steps.
 
-Harness Pipelines support a concept called as __Service Dependency__, it is a detached service that's accessible to all Steps in a Stage. Service dependencies support workflows such as
+Later in this tutorial, you'll use the _Integration testing_ workflow to make a step called `test` connect to a dependent service called `rgreeter` and run integration test cases against it.
 
-- Integration testing: You can set up a service and then run tests against this service.
+</details>
 
-- Running Docker-in-Docker: You can set up a [dind service](https://ngdocs.harness.io/article/ajehk588p4) to process Docker commands in Run Steps.
+5. Select **Add Step**, select **Add Step** again, and then select **Background** from the Step Library.
+6. Configure the standard step settings as follows:
 
-In our tutorial we will use the _Integration testing_ workflow to make the __test__ step to connect to _rgreeter_ and run the integration test cases against it.
+   * **Name:** `rgreeter`
+   * **Description:** `runs the Greeter API service.`
+   * **Shell:** Bash
+   * **Command:** `cargo run --target-dir=/tmp/build`
 
-### Add the rgreeter Service Dependency
+   ![Background rgreeter Step](static/ci-tutorial-rust-container/rust_pipeline_bg_step.png)
 
-Click __Add Step__ to add a new step called __rgreeter__, from the _Step Library_ choose step type as __Background__ and configure the step with details:
+7. Expand **Additional Configuration**. Select your DockerHub connector for the **Container Registry**, and then specify the **Image** as `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`.
+8. Add the following two **Environment Variables**:
 
-__Name__:
+   |  Key    | Value   |
+   | ---  | ----------- |
+   |`PORT`|`8080`|
+   |`RUST_LOG`|`info`|
 
-```text
-rgreeter
-```
+   ![Background rgreeter Step Env](static/ci-tutorial-rust-container/rust_pipeline_bg_step_env.png)
 
-__Description__:
+9. Select __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
 
-```text
-runs the Greeter API Service
-```
+When the pipeline runs, the `rgreeter` service takes a few minutes to start up. To prevent steps from running before the service starts, add a wait to the pipeline.
 
-Select the __Shell__ to be `Bash`.
+10. Select **Add Step**, select **Add Step** again, and then select **Run** from the Step Library.
+11. Configure the standard step settings as follows:
 
-__Command__:
+   * **Name:** `wait for service`
+   * **Description:** `wait for the rgreeter service to be ready.`
+   * **Shell:** Sh
+   * **Command:**
 
-```shell
-cargo run --target-dir=/tmp/build
-```
+      ```shell
+      apk add -U --no-cache curl
+      until curl --output /dev/null --silent --head --fail $SERVICE_URL ; do sleep 5; done;
+      ```
 
-Expand __Additional Configuration__ and select the __Container Registry__ to be `docker hub`.
+12. Expand **Additional Configuration**. Select your DockerHub connector for the **Container Registry**, and then specify the **Image** as `alpine`.
 
-__Image__:
+   ![Configure Wait Service](static/ci-tutorial-rust-container/wait_service.png)
 
-```text
-kameshsampath/rust-zig-builder:v0.1.0
-```
+13. The wait step needs the URL of the `rgreeter` service from the **Background** step. This URL is usually formed from the service ID and port number. In your **Run** step's **Environment Variables**, add an environment variable called `SERVICE_URL` with the value `http://rgreeter:8080`.
 
-![Background rgreeter Step](static/ci-tutorial-rust-container/rust_pipeline_bg_step.png)
+   ![Configure Wait Service Env](static/ci-tutorial-rust-container/wait_service_env.png)
 
-Add environment variables to be used in the step,
+14. Select  __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
+15. Add another **Run** step with the following settings:
 
-![Background rgreeter Step Env](static/ci-tutorial-rust-container/rust_pipeline_bg_step_env.png)
+   * **Name:** `test`
+   * **Description:** `Run unit and integration tests`
+   * **Shell:** Bash
+   * **Command:** `cargo test --target-dir=/tmp/build`
+   * **Container Registry:** Your DockerHub connector
+   * **Image:** `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`
 
-Click __Apply Changes__ to save the step and click __Save__ to save the pipeline.
+   ![Test Step](static/ci-tutorial-rust-container/rust_pipeline_step_test.png)
 
-As  __rgreeter__ service takes few mins to come up, we need to wait before other steps start to use them,
+16. For the `test` step to connect to the `rgreeter` service, add an environment variable called `SERVICE_URL` with the value `http://rgreeter:8080`
 
-Click __Add Step__ to add a new step called __wait for service__, from the _Step Library_ choose step type as __Run__ and configure the step with details:
+   ![Test environment Variables](static/ci-tutorial-rust-container/rust_pipeline_step_test_env_vars.png)
 
-Configure the wait  service with details:
+17. Select __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
+18. Click **Run** to verify that the pipeline is able to test the Rust application. On the __Run Pipeline__ screen, make sure __Git Branch__ is selected and the __Branch Name__ is set to _main_. Select __Run Pipeline__ to start the pipeline run.
 
-__Name__:
+   ![Run Pipeline](static/ci-tutorial-rust-container/run_pipeline.png)
 
-```text
-wait for service
-```
+19. Wait while the pipeline runs to make sure it succeeds.
 
-__Description__:
+   ![Test Success](static/ci-tutorial-rust-container/test_success.png)
 
-```text
-wait for the rgreeter service to be ready
-```
+   :::tip
 
-Select the __Shell__ to be `Sh`.
+   Select a step to view the step's logs.
 
-__Command__:
+   :::
 
-```shell
-apk add -U --no-cache curl
-until curl --output /dev/null --silent --head --fail $SERVICE_URL ; do sleep 5; done;
-```
+If your pipeline succeeded, add two more steps to build your Rust application image and push it to your container registry.
 
-Expand __Additional Configuration__ and select the __Container Registry__ to be `docker hub`.
+### Add build and push steps
 
-__Image__:
+1. Go back to the Pipeline Studio. From the build execution page, you can select __Edit Pipeline__ to get back the __Pipeline Studio__.
+2. Select the __Build__ stage, and add another **Run** step with the following settings:
 
-```text
-alpine
-```
+   * **Name:** `build`
+   * **Description:** `Build the application and cross compile the binary with architectures linux/arm64 and linux/amd64`
+   * **Shell:** Bash
+   * **Command:** `task cross`
+   * **Container Registry:** Your DockerHub connector
+   * **Image:** `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`
 
-![Configure Wait Service](static/ci-tutorial-rust-container/wait_service.png)
+   :::info
 
-The wait service need to be configured with the url of the __Background__ service name, which is usually the service id and port, in this case it will be `http://rgreeter:8080`
+   The `build` step's **Command** uses [Taskfile](https://taskfile.dev). Task is a task runner/build tool that aims to be simpler and easier to use than, for example, [GNU Make](https://www.gnu.org/software/make/).
 
-```shell
-SERVICE_URL: http://rgreeter:8080
-```
+   `task cross` executes the [Taskfile.yaml](https://github.com/harness-apps/rust-greeter/blob/main/Taskfile.yaml#L95-L101) that does cross compilation.
 
-![Configure Wait Service Env](static/ci-tutorial-rust-container/wait_service_env.png)
+   :::
 
-Click __Apply Changes__ to save the step and then click __Save__ to save the pipeline.
+   ![Build Step](static/ci-tutorial-rust-container/rust_pipeline_step_build.png)
 
-As did earlier click __Add Step__ to add a new step called __test__, from the _Step Library_ choose step type as __Run__ and configure the step with details:
+3. Select __Apply Changes__ to save the step, and then add a final **Run** step with the following settings:
 
-__Name__:
+   * **Name:** `push`
+   * **Description:** `Publish the multi architecture images to container registry`
+   * **Shell:** Bash
+   * **Command:**
 
-```text
-test
-```
+    ```shell
+    echo "$IMAGE_REGISTRY_PASSWORD" | \
+    docker login "$IMAGE_REGISTRY" -u "$IMAGE_REGISTRY_USER" --password-stdin
+    docker buildx inspect "buildx-multi-arch" ||\
+      docker buildx create --name="buildx-multi-arch" --driver=docker-container --driver-opt=network=host
+    docker buildx build --builder="buildx-multi-arch" --push \
+      --tag "$IMAGE_REGISTRY/$IMAGE_REPO:$IMAGE_TAG" \
+      --tag "$IMAGE_REGISTRY/$IMAGE_REPO:latest" \
+      --platform="linux/amd64" --platform="linux/arm64" \
+      --file Dockerfile "$CONTEXT"
+    ```
 
-__Description__:
+   ![Step Push](static/ci-tutorial-rust-container/rust_pipeline_step_push.png)
 
-```text
-Run the unit and integration tests
-```
+4. The `push` step's **Command** runs the `docker buildx build` that builds a multi-architecture image for the platforms `linux/amd64` and `linux/arm64`. This script uses several environment variables. You must add these variables to the step's **Environment Variables**:
 
-Select the __Shell__ to be `Bash`.
+   |  Key    | Value    |
+   | ---  | ----------- |
+   |`DOCKER_HUB_USERNAME`| The username for the DockerHub account where you want to push the image|
+   |`DOCKER_HUB_PASSWORD`| `<+secrets.getValue("docker_hub_password")>`|
+   |`CONTEXT`| `/harness/target`|
+   |`IMAGE_REGISTRY`| `docker.io`|
+   |`IMAGE_REPO`| `YOUR_DOCKERHUB_USERNAME/rust-greeter`|
+   |`IMAGE_TAG`| `<+codebase.shortCommitSha>`|
 
-__Command__:
+   ![Step Push Env](static/ci-tutorial-rust-container/rust_pipeline_step_push_env_vars.png)
 
-```shell
-cargo test --target-dir=/tmp/build
-```
+   :::important
 
-Expand __Additional Configuration__ and select the __Container Registry__ to be `docker hub`.
+   The `DOCKER_HUB_PASSWORD` and `IMAGE_TAG` environment variable values must be the __Expression__ type. Select the thumbtack to change the value type.
 
-__Image__:
+   `secrets.getValue` is an expression that allows Harness to get the value from your `docker_hub_password` secret that you created earlier in the tutorial. For more information, go to [Add and Reference Text Secrets - Reference encrypted text by identifier](https://developer.harness.io/docs/platform/security/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier).
 
-```text
-kameshsampath/rust-zig-builder:v0.1.0
-```
+   `codebase.shortCommitSha` allows you to get the Git commit short SHA. It is one of several [Build-in codebase variables](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference/).
 
-![Test Step](static/ci-tutorial-rust-container/rust_pipeline_step_test.png)
+   :::
 
-For the __test__ step to connect to the __rgreeter__ service add the following environment variables to the step configuration.
+5. Select __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
 
-```shell
-SERVICE_URL: http://rgreeter:8080
-```
+  ![Final Pipeline](static/ci-tutorial-rust-container/all_steps.png)
 
-The _environment_ variables could be added by clicking __+ Add__ under __Environment Variables__ section of the step configuration,
+6. Click **Run** to verify that the pipeline can test, build, and push your multi-architecture Rust application. On the __Run Pipeline__ screen, make sure __Git Branch__ is selected and the __Branch Name__ is set to _main_. Select __Run Pipeline__ to start the pipeline run.
 
-![Test environment Variables](static/ci-tutorial-rust-container/rust_pipeline_step_test_env_vars.png)
+   ![Run Pipeline](static/ci-tutorial-rust-container/run_pipeline.png)
 
-Click __Apply Changes__ to save the step.
+7. If the pipeline succeeds, go to your DockerHub repo. Check that the tags `latest` and `last git commit sha` are present.
 
-:::tip
-You can awake step configuration screen by clicking the step on the visual editor.
-:::
+   ![Success](static/ci-tutorial-rust-container/rust_pipeline_success.png)
 
-Click __Save__ to save the pipeline.
+## Use Docker Compose to test the application
 
-### Test the Application
-
-Let us verify if were able to _**test**_ our rust application.
-
-Click __Run__ from the pipeline editor page,
-
-![Run Pipeline](static/ci-tutorial-rust-container/run_pipeline.png)
-
-Leaving everything to defaults namely __Git Branch__ and __Branch Name__ to be _main_, click __Run Pipeline__ to start the pipeline run. If all ran well you should see a successful pipeline run as shown,
-
-![Test Success](static/ci-tutorial-rust-container/test_success.png)
-
-:::tip
-You can click on each step to view the logs of the respective step
-:::
-
-Having tasted the success with our pipeline run, let us two more steps __build__ and __push__ that will build and push the rust application to the container registry.
-
-### Build and Push Image to Container Registry
-
-From execution window click __Edit Pipeline__ to get back the __Pipeline Studio__, click the __Build__ stage to open the pipeline editor,
-
-#### Build the Application
-
-As did earlier click __Add Step__ to add a new step called __build__, from the _Step Library_ choose step type as __Run__ and configure the step with details:
-
-__Name__:
-
-```text
-build
-```
-
-__Description__:
-
-```text
-Build the application and cross compile the binary with architectures linux/arm64 and linux/amd64
-```
-
-Select the __Shell__ to be `Bash`.
-
-__Command__:
-
-```shell
-task cross
-```
-
-:::tip
-
-The command uses [Taskfile](https://taskfile.dev) -- Task is a task runner / build tool that aims to be simpler and easier to use than, for example, [GNU Make](https://www.gnu.org/software/make/) --
-
-The `task cross` executes the <https://github.com/harness-apps/rust-greeter/blob/main/Taskfile.yaml#L95-L101> that does cross compilation.
-
-:::
-
-Expand __Additional Configuration__ and select the __Container Registry__ to be `docker hub`.
-
-__Image__:
-
-```text
-kameshsampath/rust-zig-builder:v0.1.0
-```
-
-![Build Step](static/ci-tutorial-rust-container/rust_pipeline_step_build.png)
-
-### Push Image to Container Registry
-
-Click __Add Step__ to add a new step called __push__, from the _Step Library_ choose step type as __Run__ and configure the step with details,
-
-__Name__:
-
-```text
-push
-```
-
-__Description__:
-
-```text
-Publish the multi architecture images to container registry
-```
-
-Choose __Bash__ to be the __Shell__
-
-__Command__:
-
-```shell
-echo "$IMAGE_REGISTRY_PASSWORD" | \
-docker login "$IMAGE_REGISTRY" -u "$IMAGE_REGISTRY_USER" --password-stdin
-docker buildx inspect "buildx-multi-arch" ||\
-  docker buildx create --name="buildx-multi-arch" --driver=docker-container --driver-opt=network=host
-docker buildx build --builder="buildx-multi-arch" --push \
-  --tag "$IMAGE_REGISTRY/$IMAGE_REPO:$IMAGE_TAG" \
-  --tag "$IMAGE_REGISTRY/$IMAGE_REPO:latest" \
-  --platform="linux/amd64" --platform="linux/arm64" \
-  --file Dockerfile "$CONTEXT"
-```
-
-![Step Push](static/ci-tutorial-rust-container/rust_pipeline_step_push.png)
-
-The shell command runs the `docker buildx build`, that will build a multi architecture image for platforms `linux/amd64` and `linux/arm64`. You also notice we are using a bunch of environment variables in the shell script.
-
-Update the __Environment Variables__ section with values,
-
-```shell
-DOCKER_HUB_USERNAME: $DOCKER_HUB_USERNAME
-DOCKER_HUB_PASSWORD: <+secrets.getValue("docker_hub_password")>
-CONTEXT: /harness/target
-IMAGE_REGISTRY: docker.io
-IMAGE_REPO: $DOCKER_HUB_USERNAME/rust-greeter
-IMAGE_TAG: <+codebase.shortCommitSha>
-```
-
-Expand the __Optional Configuration__ section and add the environment variables,
-
-![Step Push Env](static/ci-tutorial-rust-container/rust_pipeline_step_push_env_vars.png)
-
-:::note
-
-- As marked ensure the `DOCKER_HUB_PASSWORD`, `IMAGE_TAG` is of type __Expression__
-- `secrets.getValue` is an expression that allows to get the value from the secret `docker_hub_password`, that was created earlier in the tutorial. Check the [docs](https://developer.harness.io/docs/platform/security/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier) for more info
-- All `$DOCKER_HUB_USERNAME` references should your Docker Hub Username
-- `codebase.shortCommitSha` allows you to get the short git commit SHA, you can check the  built-in [codebase variables](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference/) for other variables that are available.
-
-:::
-
-Click __Apply Changes__ to save the step and click __Save__ to save the pipeline.
-
-![Final Pipeline](static/ci-tutorial-rust-container/all_steps.png)
-
-With those changes saved, you are ready to test, build and push your __rust__ application to container registry(DockerHub).
-
-### Run CI Pipeline
-
-As did earlier click __Run__ from the pipeline editor window,
-
-![Run Pipeline](static/ci-tutorial-rust-container/run_pipeline.png)
-
-Leaving everything to defaults namely __Git Branch__ and __Branch Name__ to be _main_, click __Run Pipeline__ to start the pipeline run.
-
-Now you are ready to execute. Click "Run Pipeline".
-
-Once a successful run, head back to Docker Hub, and tag `latest` and `last git commit sha` is there!
-
-![Success](static/ci-tutorial-rust-container/rust_pipeline_success.png)
-
-## Test Application
-
-You can test the application using [Docker Compose](https://docs.docker.com/compose/) like,
+You can use [Docker Compose](https://docs.docker.com/compose/) to test the Rust application, for example:
 
 ```dockercompose
 services:
@@ -619,42 +487,26 @@ services:
       - "8080:8080"
 ```
 
-You can then try the urls to verify the application,
+Use these URLs to verify the application:
 
-- <http://localhost:8080/> - returns a plain text `Hello World!`
-- <http://localhost:8080/> - returns a JSON like,
-  ```json
-  {
-    "message": "Hello! Anonymous!"
-  }
-  ```
-- <http://localhost:8080/?name=Jack> - returns a JSON like
- ```json
-  {
-    "message": "Hello! Jack!"
-  }
-  ```
+- `http://localhost:8080/`: Returns plain text `Hello World!`
+- `http://localhost:8080/`: Returns a JSON object containing `"message": "Hello! Anonymous!"`
+- `http://localhost:8080/?name=Jack`: Returns a JSON object containing `"message": "Hello! Jack!"`
 
-## Making Builds Faster
+## Optional exercise: Improve build times
 
-As you have noticed that rust build downloads the need crates from the registry for each step `rgreeter`, `test` and `build`. Ideally these steps can reuse the cache by sharing them between steps. Check the [Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data) to learn more.
+You may have noticed that the Rust build downloads crates from the registry for each step: `rgreeter`, `test` and `build`. You can improve build times by allowing steps to share a cache. For more information, go to [Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data).
 
-:::note Exercise
-
-As an exercise add two additional steps that can cache and restore the rust crates.
-
-__Clues__:
+If you want to try this with your Rust app tutorial pipeline, you'll need to add two additional steps to create and restore a cache. Here are some hints to help you with this exercise:
 
 - You need to cache `/usr/local/cargo/registry` and make it available to all steps.
-- Add one step before `rgreeter`, that restores or downloads cache.
-- Add one step after `push`, that uploads the cache.
-  
-:::
+- Add one step before `rgreeter` that restores or downloads the cache.
+- Add one step after `push` that uploads the cache.
 
-## Continuing on Your Continuous Integration Journey
+## Continue your Continuous Integration journey
 
-This is just the start of your Continuous Integration journey. It might seem like multiple steps to get your local build in the platform, but it unlocks the world of possibilities.
+With CI pipelines you can consistently execute your builds at any time. Try modifying the pipeline trigger to watch for SCM events so that, for example, each commit automatically kicks off the pipeline. All objects you create are available to reuse in your pipelines.
 
-You can now execute your builds whenever you want in a consistent fashion. Can modify the trigger to watch for SCM events so upon commit, for example, the Pipeline gets kicked off automatically. All of the objects you create are available for you to re-use. Lastly, you can even save your backing work / have it as part of your source code. Everything that you do in Harness is represented by YAML; feel free to store it as part of your project.
+You can also save your build pipelines as part of your source code. Everything that you do in Harness is represented by YAML; you can store it all alongside your project files.
 
-After you have built your artifact, the next step is to deploy your artifact. This is where Continuous Delivery steps in and make sure to check out some other [CD Tutorials](/tutorials/deploy-services#all-tutorials).
+After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/tutorials/deploy-services#all-tutorials).
