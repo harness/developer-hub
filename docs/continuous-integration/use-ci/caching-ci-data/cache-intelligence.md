@@ -17,7 +17,7 @@ With Cache Intelligence, Harness will automatically cache and restore common dep
 Note the following:  
 
 * Cache Intelligence is currently avaiable only when using [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), Harness hosted build environemnt
-* Cache Intelligence currently supports Bazel, Maven, Gradle, Yarn, and Node build tools, assuming the dependencies are stored in the default location for the tool used.
+* Cache Intelligence currently supports Bazel, Maven, Gradle, Yarn, and Node build tools, assuming the dependencies are stored in the default location for the tool used. If you are using a different build tool or a non-default cache location, you can still leverage our cache storage by specifying the location(s) to cache. 
 * Harness Cloud can cache up to 2GB of data per account. All pipelines in the account use the same cache. 
 * Cache retention window is 15 days, which resets whenever the cache gets updated.
 
