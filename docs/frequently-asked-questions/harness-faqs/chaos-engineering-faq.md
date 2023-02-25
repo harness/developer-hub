@@ -48,14 +48,13 @@ Total Resilience for one single experiment = (Weight Given to that experiment * 
 
 #### I’m having trouble creating an experiment YAML from scratch, can I generate one?
 
-Yes, you can generate a YAML by choosing the normal flow of creating an experiment (blank canvas or via template), in the YAML/Visual toggle you can see a generated YAML based on the inputs provided by you. A generated YAML can also be downloaded after navigating to `Chaos Experiments` and clicking on `Download Experiments`.
+Yes, you can generate a YAML file by choosing the normal flow of creating an experiment (blank canvas or through a template), in the YAML/Visual toggle you can see a generated YAML based on the inputs provided by you. A generated YAML can also be downloaded after navigating to `Chaos Experiments` and clicking on `Download Experiments`.
 
-Additionally you can also leverage Harness Go SDK repository and generate a template
-[https://github.com/harness/harness-go-sdk](https://github.com/harness/harness-go-sdk).
+Additionally you can also leverage Harness [Go SDK repository] (https://github.com/harness/harness-go-sdk) and generate a template.
 
 #### My issue is not mentioned here, how can I report it?
 
-In order to report an issue which is not mentioned here head over to `Help` in Harness SaaS and click on `Submit a ticket` and provide your feedback.
+To report an issue which is not mentioned here, head over to **Help** in Harness SaaS and click on **Submit a ticket** and provide your feedback.
 
 ## Security
 
@@ -72,40 +71,41 @@ The chaos infrastructure connects to the Harness control plane through outbound 
 
 The chaos infrastructure setup involves the creation of CRDs and RBAC resources. This setup typically needs cluster-admin intervention. Go to [Kubernetes roles for the chaos infrastructure](https://developer.harness.io/docs/chaos-engineering/overview/harness-chaos-security#kubernetes-roles-for-chaos-infrastructure) to learn more.
 
-#### How do I control user actions in a given environment in Harness Chaos? 
+#### How do I control user actions in a given environment in Harness Chaos?
 
 The scope of a user's access to chaos resources added to a given Harness account or project can be controlled by assigning them a predefined or custom role. Go to [chaos access control](https://developer.harness.io/docs/chaos-engineering/overview/harness-chaos-security#user-authorization-and-role-based-access-control) to learn more.
 
 #### How do I control the security blast radius in terms of access to application microservices and infrastructure resources in a user environment? 
 
-The chaos infrastructure can be installed in a cluster-wide scope (with the ability to discover and inject chaos on microservices across namespaces and on infrastructure components such as nodes and volumes) as well as in a namespace-specific scope (where discovery and chaos injection are limited to resources within a specific namespace).
+The chaos infrastructure can be installed in a cluster-wide scope (with the ability to discover and inject chaos on microservices across namespaces and infrastructure components such as nodes and volumes) as well as in a namespace-specific scope (where discovery and chaos injection are limited to resources within a specific namespace).
+
 In addition, users can provide a custom service account to carry out experiments, thereby limiting the fault types in the user environment. Go to [blast radius control using permissions](https://developer.harness.io/docs/chaos-engineering/overview/harness-chaos-security/#blast-radius-control-using-permissions) to learn more. 
 
 #### How does Harness Chaos access cloud resources in the users’ environment?
 
 Harness Chaos experiment pods consume Kubernetes secrets that contain access credentials, which are leveraged to make provider-specific API calls to the cloud platform to inject chaos. Go to [Secrets management](https://developer.harness.io/docs/chaos-engineering/overview/harness-chaos-security/#secrets-management) to learn more.
 
-#### Can cloud service accounts be used instead of user credentials for access to cloud resources? 
+#### Can cloud service accounts be used instead of user credentials to access cloud resources? 
 
-In cases where the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details. Go to [IRSA support for AWS EKS] to learn more.
+When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details.
 
 #### How does Harness Chaos access APM platforms to perform hypothesis validation? 
 
-Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and leverage it within the command-probe pods that leverage this information to make the right (provider-specific) API calls to retrieve metrics and other pertinent data. Go to [command probes to query datadog] to learn more.
+Harness Chaos experiments can consume K8s secrets containing authentication information for the desired APM and use it within the command-probe pods that leverage this information to make the right provider-specific API calls to retrieve metrics and other pertinent data. Go to [command probes](https://developer.harness.io/docs/chaos-engineering/technical-reference/probes/cmd-probe) to learn more.
 
 #### What are the details about the user and the user’s environment accessed and stored by Harness?
 
-The following information about the user environment is stored in the Harness database and object store:
+The following user information is stored in the Harness database and object store:
 
 - FQDNs or URLs or IPs of microservices in user clusters
 - Chaos experiment execution logs, with process information and results
 
 The information is purged on a policy basis, with defaults set at "x" days.
 
-#### How do I track the actions of a user on the Harness platform? 
+#### How can I track the actions of a user on the Harness platform? 
 
-Harness provides an audit log to the account admin, wherein user actions on the chaos resources are logged with timestamps. Go to [audit trail](https://developer.harness.io/docs/platform/audit-trail/audit-trail/) to learn more. 
+Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. Go to [audit trail](https://developer.harness.io/docs/platform/audit-trail/audit-trail/) to learn more. 
 
 #### Can Harness perform security chaos tests in the users’ environments?
 
-Harness Chaos supports experiments that simulate DoS attacks on services. This is achieved by simulating very high loads that would render the system slow (if the right rate limits are in place) or non-functional (if rate limiting is not implemented). Go to [generic locust fault] to learn more.
+Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that renders the system slow (if the right rate limits are in place) or non-functional (if rate limiting is not implemented). Go to [generic locust fault](https://developer.harness.io/docs/chaos-engineering/chaos-faults/load/locust-loadgen/) to learn more.
