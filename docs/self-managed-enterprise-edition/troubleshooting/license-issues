@@ -1,0 +1,58 @@
+---
+title: License issues
+description: Troubleshoot license issues in Self-Managed Enterprise Edition
+---
+
+Check for NG license
+Get mongo password
+
+kubectl get secret -n <namespace> mongodb-replicaset-chart -o jsonpath={.data.mongodb-root-password} | base64 --decode | awk '{print $1}'
+
+Shell into mongo,
+
+kubectl exec -it mongodb-replicaset-chart-0 -n <namespace> -- /bin/sh
+
+mongo
+
+Mongo Commands
+
+use admin
+
+db.auth('admin', <password>)
+
+use ng-harness
+
+db.moduleLicenses.find({})
+
+The above command should return some documents which confirm the presence of NG license
+
+ Refresh NG License
+Drop NG License redis cache
+Get redis master host
+
+kubectl exec -it redis-sentinel-harness-server-0 -n <namespace> -- redis-cli info | grep master_host | cut -c 13-
+
+Find redis master service
+
+kubectl get svc -n <namespace> | grep <IP-From-Previous-Command>
+
+Copy the service name
+
+Delete the license keys
+
+kubectl exec -it <Service-From-Previous-Step> -n <namespace> -- redis-cli del "hCache/NGLicense" "jcache_timeout_set:{hCache/NGLicense}"
+
+Try loading the UI again
+
+If this does not work, repeat the same process and wait for 5 minutes before loading the UI
+
+If it still does not work, disable caching temporarily in ng-manager
+
+Disable NG cache
+kubectl edit configmap ng-manager -n <namespace>
+
+Change the value of CACHE_BACKEND to NOOP
+
+Restart ng-manager pods
+
+kubectl rollout restart deploy ng-manager -n <namespace>
