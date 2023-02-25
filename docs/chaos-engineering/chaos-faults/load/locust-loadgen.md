@@ -156,9 +156,34 @@ spec:
 
 ### Custom load image
 
-It specifies the custom image name of the load generated. Tune it by using the `SPAWN_RATE` environment variable.
+It specifies the rate at which users are spawned per second. Tune it by using the `LOAD_IMAGE` environment variable.
 
 Use the following example to tune the custom load image:
+
+[embedmd]:# (./static/manifests/locust-loadgen-chaos/load-image.yaml yaml)
+```yaml
+# provid a custom image for load generation
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: load-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: locust-loadgen-chaos
+    spec:
+      components:
+        env:
+        - name: LOAD_IMAGE
+          value: 'chaosnative/locust-loadgen:latest'
+```
+
+### Spawn rate
+
+It specifies the custom image name of the load generated. Tune it by using the `SPAWN_RATE` environment variable.
+
+Use the following example to tune the spawn rate:
 
 [embedmd]:# (./static/manifests/locust-loadgen-chaos/spawn-rate.yaml yaml)
 ```yaml
@@ -179,29 +204,4 @@ spec:
           value: '100'
         - name: HOST
           value: 'https://www.google.com'
-```
-
-### Spawn rate
-
-It specifies the rate at which users are spawned per second. Tune it by using the `LOAD_IMAGE` environment variable.
-
-Use the following example to tune the spawn rate:
-
-[embedmd]:# (./static/manifests/locust-loadgen-chaos/load-image.yaml yaml)
-```yaml
-# provid a custom image for load generation
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: load-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: locust-loadgen-chaos
-    spec:
-      components:
-        env:
-        - name: LOAD_IMAGE
-          value: 'chaosnative/locust-loadgen:latest'
 ```
