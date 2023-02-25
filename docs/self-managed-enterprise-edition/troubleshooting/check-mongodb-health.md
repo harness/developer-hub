@@ -5,7 +5,7 @@ description: How to check for MongoDB health before Helm-based installation
 
 Use these instructions to check the health of MongoDB before using Helm to install Self-Managed Enterprise Edition.
 
-In the following command sequence, replace `harness-smp1` with the your namespace. 
+In the following command sequence, replace `harness-smp1` with your namespace. 
 
 ```
 ns=<harness-smp1>
