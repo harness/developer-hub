@@ -11,13 +11,15 @@ Variables are enclosed in angle brackets (< >).
 
 ## Retrieve your MongoDB password
 
+To print your MongoDB password to the command line, use `kubectl get secret`:
+
 ```
 kubectl get secret -n <namespace> mongodb-replicaset-chart -o jsonpath={.data.mongodb-root-password} | base64 --decode | awk '{print $1}'
 ```
 
 ## Shell into MongoDB 
 
-Use the following command to start a shell session in the contaner that is running MongoDB. Modify the command for your MongoDB configuration:
+Use the `kubectl exec` command to start a shell session in the container that is running MongoDB. Modify the command for your MongoDB configuration:
 
    ```
    kubectl exec -it mongodb-replicaset-chart-0 -n <namespace> -- /bin/sh
@@ -39,23 +41,23 @@ Use the following commands to access your installation of TimescaleDB:
 Check the name of the TimescaleDB pod. 
 :::
 
-1. Exec into the pod:
+1. Use the `kubectl exec` command to open a shell session in the TimescaleDB pod:
 
    ```
    kubectl exec -it harness-timescale-0 -n <namespace> -- /bin/sh 
    ```
 
-2. Connect using the default user role.
+2. Connect using the default user role:
 
    ```
    psql -U postgres
    ```
 
-3. Enter your password.
+3. Enter your password and return.
 
 ## Shell into postgres
 
-Use the following command to shell into postgres:
+Use the `kubectl exec` command to open a shell session in your postgres pod:
 
 ```
 kubectl exec --stdin --tty postgres-0 -n <namespace> -- /opt/bitnami/scripts/postgresql/entrypoint.sh /bin/bash
