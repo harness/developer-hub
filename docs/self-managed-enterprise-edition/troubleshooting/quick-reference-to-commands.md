@@ -3,7 +3,7 @@ title: Quick command reference
 description: Commands that come in useful for troubleshooting
 ---
 
-This page provides a short list of commands that come in useful for troubleshooting Harness Self-Managed Platform Edition.
+This topic provides a short list of commands that come in useful for troubleshooting Harness Self-Managed Platform Edition.
 
 :::note
 Variables are enclosed in angle brackets (< >).
