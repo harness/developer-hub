@@ -5,19 +5,19 @@ title: Docker service kill
 
 Docker service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** status).
 - Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration.
-- The application node goes back to normal state and services are resumed after a specific duration. 
 
 ![Docker Service Kill](./static/images/docker-service-kill.png)
 
 ## Use cases
-Docker service kill fault determines the resilience of an application when a node becomes unschedulable, that is, NotReady state.
+Docker service kill fault determines the resilience of an application when a node becomes unschedulable, that is, **NotReady** state.
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it or subject to eviction. This is achieved using the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.
+:::
 
 ## Fault tunables
 

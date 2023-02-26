@@ -3,8 +3,7 @@ id: node-drain
 title: Node drain
 ---
 
-Node drain drains the node of all its resources running on it. 
-- Due to this, services running on the target node should be rescheduled to run on other nodes. 
+Node drain drains the node of all its resources running on it. Due to this, services running on the target node should be rescheduled to run on other nodes. 
 
 ![Node Drain](./static/images/node-drain.png)
 
@@ -17,12 +16,13 @@ Node drain drains the node of all its resources running on it.
 - It verifies resource budgeting on cluster nodes (whether request (or limit) settings are honored on available nodes).
 - It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not. 
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Node specified in the <code>TARGET_NODE</code> environment variable should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.
+:::
 
 ## Fault tunables
 

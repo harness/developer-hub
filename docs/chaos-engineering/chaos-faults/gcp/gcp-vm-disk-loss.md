@@ -8,9 +8,10 @@ GCP VM disk loss disrupts the state of GCP persistent disk volume using the disk
 
 ## Use cases
 
-- GCP VM disk loss fault determines the resilience of the GKE infrastructure. It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
+- GCP VM disk loss fault determines the resilience of the GKE infrastructure. 
+- It helps determine how quickly a node can recover when a persistent disk volume is detached from the VM instance associated with it.
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Service account should have editor access (or owner access) to the GCP project.
 - Target disk volume should not be a boot disk of any VM instance.
@@ -35,6 +36,7 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
+:::
 
 ## Fault tunables
   <h3>Mandatory fields</h3>

@@ -7,7 +7,7 @@ Fault tunables which are common to all the node faults are described here. These
 
 It defines the name of the target node subject to chaos. You can tune it using the `TARGET_NODE` environment variable. It contains a single node name.
 
-### Note
+**Note**
 It supports node drain, node taint, node restart, kubelet service kill, and docker service kill faults. 
 
 Use the following example to tune it:
@@ -37,7 +37,7 @@ spec:
 ### Target multiple nodes
 
 It defines the comma-separated names of the target nodes subject to chaos. You can tune it using the `TARGET_NODES` environment variable.
-`NOTE`: It supports node CPU hog, node memory hog, and node I/O stress faults.
+**Note:** It supports node CPU hog, node memory hog, and node I/O stress faults.
 
 Use the following example to tune it:
 

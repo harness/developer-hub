@@ -3,23 +3,23 @@ id: node-taint
 title: Node taint
 ---
 
-Node taint taints the node by applying the desired effect. 
-- The resources that contain the corresponding tolerations only can bypass the taints.
+Node taint taints the node by applying the desired effect. The resources that contain the corresponding tolerations only can bypass the taints.
 
 ![Node Taint](./static/images/node-taint.png)
 
 ## Use cases
 - Node taint fault verifies the resilience of applications when a certain taint is added to a node. 
-- It simulates loss of critical services (or node-crash). 
-- It verifies resource budgeting on cluster nodes (whether request(or limit) settings are honored on the available nodes).
-- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
+- It simulates loss of critical services or node crash. 
+- It verifies resource budgeting on cluster nodes (whether request or limit settings are honored on the available nodes).
+- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity or anti-affinity policies).
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Node specified in the <code>TARGET_NODE</code> environment variable should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
 - The target nodes should be in the ready state before and after injecting chaos.
+:::
 
 ## Fault tunables
 

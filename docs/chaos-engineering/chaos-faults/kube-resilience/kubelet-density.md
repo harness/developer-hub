@@ -16,12 +16,13 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
 - It simulates pod-storm (due to autoscale) on high traffic conditions.
 - It verifies functioning of the application services from latency and availability standpoint.
 - It ensures that the topology constraints are adhered to on pod scale (node selectors, tolerations, zone distribution, affinity or anti-affinity policies). 
-- It also verifies pod creation and scheduling SLIs on the cluster nodes.
-- It also helps determine the performance of the kubelet for a specific node.
+- It verifies pod creation and scheduling SLIs on the cluster nodes.
+- It helps determine the performance of the kubelet for a specific node.
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - The target nodes should be in the healthy state before and after injecting chaos.
+:::
 
 ## Fault tunables
 
@@ -73,17 +74,17 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
       <tr>
         <td> POD_SELECTOR </td>
         <td> Labels of destination pods.</td>
-        <td> Defaults to <code>&#123;name: kubelet-density-app&#125;</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density#pod-image-and-pod-selectors">pod selector.</a> </td>
+        <td> Defaults to <code>&#123;name: kubelet-density-app&#125;</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density#pod-image-and-pod-selectors"> pod selector.</a> </td>
       </tr>
       <tr>
         <td> POD_IMAGE </td>
         <td> Pod image used to create multiple pods. </td>
-        <td> Defaults to <code>gcr.io/google_containers/pause-amd64:3.0</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density#pod-image-and-pod-selectors">pod image.</a> </td>
+        <td> Defaults to <code>gcr.io/google_containers/pause-amd64:3.0</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density#pod-image-and-pod-selectors"> pod image.</a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30s. For more information, go to <a href= "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
 
@@ -182,7 +183,7 @@ spec:
 
 ### Pod image and pod selectors
 
-Tune the pod image and label selectors by using the `POD_IMAGE` and `POD_SELECTOR` environment variables, respectively.
+It specifies the pod image and the label of destination pods, respectively. Tune the pod image and label selectors by using the `POD_IMAGE` and `POD_SELECTOR` environment variables, respectively.
 
 Use the following example to tune it:
 

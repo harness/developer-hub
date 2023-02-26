@@ -3,20 +3,18 @@ id: node-restart
 title: Node restart
 ---
 
-Node restart disrupts the state of the node by restarting it.
-- It tests deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
-
+Node restart disrupts the state of the node by restarting it. It tests deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
 ![Node Restart](./static/images/node-restart.png)
 
 
 ## Use cases
 - Node restart fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod in the event of an unexpected node restart. 
-- It simulates loss of critical services (or node-crash). 
-- It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes).
-- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity or anti-affinity policies) or not.
+- It simulates loss of critical services or node crash. 
+- It verifies resource budgeting on cluster nodes (whether request or limit settings are honored on available nodes).
+- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity or anti-affinity policies).
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Create a Kubernetes secret named `id-rsa` where the fault will be executed. The contents of the secret will be the private SSH key for `SSH_USER` that will be used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. 
   - Below is a sample secret file:
@@ -46,7 +44,7 @@ Node restart disrupts the state of the node by restarting it.
     For further details, refer to [this](https://www.ssh.com/ssh/keygen/) documentation. After copying the public key to all nodes and creating the secret, you are all set to execute the fault.
 
 - The target nodes should be in the ready state before and after injecting chaos.
-
+:::
 
 ## Fault tunables
 

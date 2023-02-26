@@ -4,7 +4,6 @@ title: Node CPU hog
 ---
 Node CPU hog exhausts the CPU resources on a Kubernetes node. 
 - The CPU chaos is injected using a helper pod running the Linux stress tool (a workload generator). 
-- The chaos affects the application for a specific duration. 
 
 ![Node CPU Hog](./static/images/node-stress.png)
 
@@ -18,9 +17,10 @@ Node CPU hog exhausts the CPU resources on a Kubernetes node.
 - It verifies the autopilot functionality of cloud managed clusters. 
 - It also verifies multi-tenant load issues; that is, when the load increases on one container, it does not cause downtime in other containers. 
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - The target nodes should be in the ready state before and after injecting chaos.
+:::
 
 ## Fault tunables
 
