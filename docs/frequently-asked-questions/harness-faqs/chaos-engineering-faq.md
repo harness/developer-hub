@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 ## General
 
-For an overview of Harness support for platforms, methodologies, and related technologies, see [supported platforms and technologies](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies).
+For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies).
 
 #### How to add and manage a custom ChaosHub?
 
-You can navigate to ChaosHubs in the chaos module and click on `+ New ChaosHub` and fill in the details regarding your public or private hub. Make sure you have ChaosHub Read/Write permission enabled and also a GitHub connector configured for the repository you are about to connect.
+You can navigate to ChaosHubs in the chaos module and click `+ New ChaosHub` and fill in the details regarding your public or private hub. Ensure you have ChaosHub Read/Write permission enabled and a GitHub connector configured for the repository you are about to connect.
 
 #### How do I connect a private chaoshub?
 
@@ -108,4 +108,4 @@ Harness provides an audit log to the account admin where user actions on the cha
 
 #### Can Harness perform security chaos tests in the users’ environments?
 
-Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that renders the system slow (if the right rate limits are in place) or non-functional (if rate limiting is not implemented). Go to [generic locust fault](https://developer.harness.io/docs/chaos-engineering/chaos-faults/load/locust-loadgen/) to learn more.
+Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that render the system slow (if the right rate limits are in place) or non-functional (if rate limiting is not implemented). Go to [generic locust fault](https://developer.harness.io/docs/chaos-engineering/chaos-faults/load/locust-loadgen/) to learn more.
