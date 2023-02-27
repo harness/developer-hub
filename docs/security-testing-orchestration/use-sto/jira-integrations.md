@@ -15,7 +15,7 @@ import ticket_summary from './static/jira-integration-05-ticket-summary.png'
 You can easily create Jira tickets for issues detected during an STO build. This topic describes how to set up this integration
 
 :::note
-* This feature is supported on [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructures only.
+* This feature is not supported in Self-Managed Enterprise Edition.
 * This feature is behind the Feature Flag `STO_JIRA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
