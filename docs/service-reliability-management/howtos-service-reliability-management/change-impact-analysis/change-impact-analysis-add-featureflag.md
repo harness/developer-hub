@@ -9,12 +9,20 @@ You can add Harness Feature Flag as a change source. This helps you monitor the 
 
 1. In your Harness project, navigate to the **Feature Flag** module, and then select **Feature Flags**.  
    A list of all your feature flags is displayed.
+
+   ![Feature Flag list](./static/change-impact-view-ff-navigation.png)
+
 2. Select the feature flag that you want to add as a change source.  
-   For example, my flag.
-   The settings page of the new feature flag appears.
+   The feature flag settings page appears.
+
+   ![Feature Flag Settings](./static/change-impact-view-ff-settings.png)
+
+
 3. In the **Services** section, select the pencil icon next to the **Services**.  
    The Monitored Service dialog appears.
-4. Select the monitored service to which you want to add the feature flag as a change source. You can add feature flag as change source to multiple monitored services. 
+4. Select the monitored service to which you want to add the feature flag as a change source. You can add a single feature flag to multiple monitored services as a change source.
+   ![Select Monitored Service](./static/change-impact-view-ff-select-monitoredservice.png)
+
 5. Select **Save**.  
    The feature flag gets configured as a change source for the monitored service that you selected.  
    
@@ -22,4 +30,6 @@ The monitored service that you selected appears in the **Services** section.
 
 When the feature flag is turned off or on, a change event is recorded in the monitored service.
 
-The following figure shows an event getting recorded in the Service Health page of monitored service when the feature flag is turned on.
+The following figure shows an event getting recorded in the Service Health page of a monitored service when the feature flag is turned on.
+
+![FF event generated](./static/change-impact-view-ff-event-generated.png)
