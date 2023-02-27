@@ -3,56 +3,93 @@ title: License issues
 description: Troubleshoot license issues in Self-Managed Enterprise Edition
 ---
 
-Check for NG license
-Get mongo password
+Use the following processes to identify and troubleshoot license issues.
 
-kubectl get secret -n <namespace> mongodb-replicaset-chart -o jsonpath={.data.mongodb-root-password} | base64 --decode | awk '{print $1}'
 
-Shell into mongo,
+## Check for a NextGen license
 
-kubectl exec -it mongodb-replicaset-chart-0 -n <namespace> -- /bin/sh
+Use the following steps to confirm that your Harness installation includes a NextGen license:
 
-mongo
+1. Use the `kubectl get secret` command to retrieve your MongoDB password:
 
-Mongo Commands
+   ```
+   kubectl get secret -n <namespace> mongodb-replicaset-chart -o jsonpath={.data.mongodb-root-password} | base64 --decode | awk '{print $1}'
+   ```
 
-use admin
+2. Use `kubectl exec` to open an interactive shell session in the MongoDB container:
 
-db.auth('admin', <password>)
+   ```
+   kubectl exec -it mongodb-replicaset-chart-0 -n <namespace> -- /bin/sh
+   ```
+3. Connect to the MongoDB instance:
 
-use ng-harness
+   ```
+   mongo
+   ```
 
-db.moduleLicenses.find({})
+4. Use the following commands to authenticate to the database in the `admin` role: 
 
-The above command should return some documents which confirm the presence of NG license
+   ```
+   use admin
+   db.auth(`admin`, <password>)
+   ```
+   
+5. Set the context to Harness NextGen and run the `find` operation to locate the license for Harness NextGen:
+   
+   ```
+   use ng-harness
+   db.moduleLicenses.find({})
 
- Refresh NG License
-Drop NG License redis cache
-Get redis master host
+## Refresh a NextGen license
 
-kubectl exec -it redis-sentinel-harness-server-0 -n <namespace> -- redis-cli info | grep master_host | cut -c 13-
+Use the following strategies to refresh a NextGen license.
 
-Find redis master service
+### Discard the redis cache for the NextGen license
 
-kubectl get svc -n <namespace> | grep <IP-From-Previous-Command>
+Use the following commands to discard the redis cache for the NG license
 
-Copy the service name
+1. Retrieve the redis master host:
 
-Delete the license keys
+   ```
+   kubectl exec -it redis-sentinel-harness-server-0 -n <namespace> -- redis-cli info | grep master_host | cut -c 13-
+   ```
 
-kubectl exec -it <Service-From-Previous-Step> -n <namespace> -- redis-cli del "hCache/NGLicense" "jcache_timeout_set:{hCache/NGLicense}"
+2. Find the redis master service:
 
-Try loading the UI again
+   ```
+   kubectl get svc -n <namespace> | grep <IP-From-Previous-Command>
+   ```
+   Copy the service name.
+   
+3. Delete the license keys:
 
-If this does not work, repeat the same process and wait for 5 minutes before loading the UI
+   ```
+   kubectl exec -it <Service-From-Previous-Step> -n <namespace> -- redis-cli del "hCache/NGLicense" "jcache_timeout_set:{hCache/NGLicense}"
+   ```
 
-If it still does not work, disable caching temporarily in ng-manager
+   Reload the UI.
 
-Disable NG cache
-kubectl edit configmap ng-manager -n <namespace>
+If this does not refresh the license:
 
-Change the value of CACHE_BACKEND to NOOP
+   - Repeat the process a second time
+   - Wait five minutes before you reload the UI
 
-Restart ng-manager pods
+If the license does not refresh, use the following process to temporarily disable caching in `ng-manager`.
 
-kubectl rollout restart deploy ng-manager -n <namespace>
+### Disable NG cache
+
+When discarding the `redis` cache does not refresh the NextGen license, use the following process to temporarily disable caching in `ng-manager`.
+
+1. Use the `kubectl edit configmap` command to open the `ng-manager` **ConfigMap** for editing. Replace the <namespace> placeholder with your Harness installation namespace.
+
+   ```
+   kubectl edit configmap ng-manager -n <namespace>
+   ```
+
+2. Change the value of `CACHE_BACKEND` to `NOOP`
+
+3.  Restart your `ng-manager` pods:
+
+    ```
+    kubectl rollout restart deploy ng-manager -n <namespace>
+    ```
