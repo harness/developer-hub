@@ -1,6 +1,6 @@
 ---
 id: windows-ec2-memory-hog
-title: Windows EC2 memory hog
+title: Windows EC2 Memory Hog
 ---
 
 EC2 windows memory hog disrupts the state of infrastructure resources. 
