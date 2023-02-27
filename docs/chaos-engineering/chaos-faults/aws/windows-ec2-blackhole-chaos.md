@@ -2,7 +2,7 @@
 id: windows-ec2-blackhole-chaos
 title: Windows EC2 Blackhole Chaos
 ---
-Windows EC2 blackhole causes access loss to the given target hosts by injecting firefall rules to restrict the access.
+Windows EC2 blackhole chaos causes access loss to the given target hosts/ips by injecting firefall rules.
 - It checks the performance of the application (or process) running on the EC2 instances.
 
 ![Windows EC2 Blackhole Chaos](./static/images/windows-ec2-blackhole-chaos.png)
@@ -11,9 +11,7 @@ Windows EC2 blackhole causes access loss to the given target hosts by injecting 
 <details>
 <summary>View fault usage</summary>
 <div>
-This fault degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches traffic based on some SLOs (performance parameters). The EC2 instance may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test, by specifying the IP addresses. 
-
-It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+This fault degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches traffic based on some SLOs (performance parameters). This fault limits the impact (blast radius) to only the traffic that you wish to test, by specifying the destination hosts or IP addresses. 
 
 This fault helps improve the resilience of your services over time.
 </div>
@@ -117,12 +115,12 @@ The EC2 instance should be in healthy state.
       <tr>
         <td> EC2_INSTANCE_ID </td>
         <td> ID of the target EC2 instance. </td>
-        <td> For example, <code>i-044d3cb4b03b8af1f</code>. Provide any one value either instance id or tag </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. Provide any one value either instance id or tag.</td>
       </tr>
       <tr>
         <td> EC2_INSTANCE_TAGS </td>
         <td> Tag of the target EC2 instances. </td>
-        <td> For example, <code>type:chaos</code>. Provide any one value either instance id or tag </td>
+        <td> For example, <code>type:chaos</code>. Provide any one value either instance id or tag.</td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -146,11 +144,6 @@ The EC2 instance should be in healthy state.
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
             <td> Provide the path for aws secret credentials.</td>
             <td> Defaults to <code>/tmp/cloud_config.yml</code>.</td>
-        </tr>
-        <tr>
-            <td> NETWORK_PACKET_LOSS_PERCENTAGE </td>
-            <td> The packet loss in percentage. </td>
-            <td> Default to 100 percentage. </td>
         </tr>
         <tr>
             <td> IP_ADDRESSES </td>
