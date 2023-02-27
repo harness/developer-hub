@@ -1,4 +1,4 @@
-# CPU percentage to utilize
+# memory percentage to utilize
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,11 +7,11 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-cpu-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:
-        - name: CPU_LOAD
+        - name: MEMORY_PERCENTAGE
           value: '50'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID

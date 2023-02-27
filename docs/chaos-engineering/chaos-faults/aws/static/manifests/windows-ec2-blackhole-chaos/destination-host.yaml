@@ -1,4 +1,4 @@
-# CPU core with percentage to utilize
+# it injects the chaos into the egress traffic for specific IPs/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,17 +7,14 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-cpu-hog
+  - name: windows-ec2-blackhole-chaos
     spec:
       components:
         env:
-        - name: CPU_CORE
-          value: '2'
-        - name: CPU_LOAD
-          VALUE: '50'
-        # ID of the EC2 instance
+        # supports comma-separated destination hosts
+        - name: DESTINATION_HOSTS
+          value: 'google.com'
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the EC2 instance
         - name: REGION
-          value: 'us-east-1'
+          value: 'us-west-2'

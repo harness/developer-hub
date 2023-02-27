@@ -1,4 +1,4 @@
-# mutilple instance targets
+# multiple instance targets
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-cpu-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:

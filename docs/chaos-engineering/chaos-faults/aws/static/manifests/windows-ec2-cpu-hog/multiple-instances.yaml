@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-cpu-hog
+  - name: windows-ec2-cpu-hog
     spec:
       components:
         env:

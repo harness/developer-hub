@@ -173,36 +173,6 @@ The EC2 instance should be in healthy state.
 ### Fault tunables
 Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
-### Network packet loss
-
-It defines the network packet loss percentage to be injected on the EC2 instances. You can tune it using the `NETWORK_PACKET_LOSS_PERCENTAGE` environment variable.
-
-You can tune it using the following example:
-
-[embedmd]:# (./static/manifests/windows-ec2-blackhole-chaos/network-packet-loss-percentage.yaml yaml)
-```yaml
-# it injects the chaos into the egress traffic
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: windows-ec2-blackhole-chaos
-    spec:
-      components:
-        env:
-        # network packet loss percentage
-        - name: NETWORK_PACKET_LOSS_PERCENTAGE
-          value: '100'
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
-        - name: REGION
-          value: 'us-west-2'
-```
-
 ### Run with destination IPs
 
 The network faults interrupt traffic for all the given IPs. You can be tuned via `IP_ADDRESSES` environment variable.
@@ -211,7 +181,7 @@ The network faults interrupt traffic for all the given IPs. You can be tuned via
 
 You can tune it using the following example:
 
-[embedmd]:# (./static/manifests/windows-ec2-blackhole-chaos/destination-host-and-ip.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-blackhole-chaos/destination-ip.yaml yaml)
 ```yaml
 # it injects the chaos into the egress traffic for specific IPs/hosts
 apiVersion: litmuschaos.io/v1alpha1
@@ -243,7 +213,7 @@ The network faults interrupt traffic for all the hosts by default. The interrupt
 
 You can tune it using the following example:
 
-[embedmd]:# (./static/manifests/windows-ec2-blackhole-chaos/destination-host-and-ip.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-blackhole-chaos/destination-host.yaml yaml)
 ```yaml
 # it injects the chaos into the egress traffic for specific IPs/hosts
 apiVersion: litmuschaos.io/v1alpha1
