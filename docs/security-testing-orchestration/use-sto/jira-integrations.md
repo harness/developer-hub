@@ -1,6 +1,6 @@
 ---
 title: Create Jira tickets for detected issues
-description: You can easily create for any issue detected during an STO build.
+description: You can easily create Jira tickets for any issue detected during an STO build.
 sidebar_position: 200
 ---
 
