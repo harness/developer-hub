@@ -16,10 +16,10 @@ This topic describes the failure strategy settings for pipeline steps and stages
 You can apply a failure strategy to the following:
 
 * **Step:** This failure strategy overrides (or enhances) the stage failure strategy.
-* **Step Group:** You can set up a failure strategy for all steps in the group. Individual steps in the group will not have a failure strategy.
+* **Step Group:** You can set up a failure strategy for all steps in the group. Individual steps in the group don't have a failure strategy.
 * **Stage:** The failure strategy for all steps and step groups in the stage. If step and step group failure strategies exist, they override this failure strategy.
 
-See [Define a Failure Strategy on Stages and Steps](../define-a-failure-strategy-on-stages-and-steps.md).
+For more information, go to [Define a Failure Strategy on Stages and Steps](../define-a-failure-strategy-on-stages-and-steps.md).
 
 ### Error types
 
@@ -27,14 +27,14 @@ The following error types can be selected in a failure strategy.
 
 | **Error Type** | **Description** |
 | :--- | :--- |
-| **Authentication Errors** | Credentials provided in a connector are not valid. Typically, the Harness secret used for one of the credentials is incorrect. If Harness cannot determine if an error is authentication and authorization, then it is treated as an authentication error. |
-| **Authorization Errors** | The credentials are valid but the user permissions needed to access the resource are not sufficient. If Harness cannot determine if an error is authentication and authorization, then it is treated as an authentication error. |
-| **Connectivity Errors** | A Harness delegate cannot connect to a specific resource. For example, the delegate cannot connect to repo or a VM or a Secrets Manager. |
-| **Delegate Provisioning Errors** | No available delegate can accomplish the task or the task is invalid. For example, if an HTTP step attempts to connect to a URL but there is no available delegate to perform the task. |
-| **Timeout Errors** | A Harness delegate failed to complete a task within the timeout setting in the stage or step. For example, if the Kubernetes workload you are deploying fails to reach steady state within the step timeout. |
-| **Unknown Errors** | Errors that don't fall in to any other category. This includes Harness application errors. |
-| **Verification Failures** | A Harness continuous verification step failed. |
-| **Policy Evaluation Failures** | An Open Policy Evaluation (OPA) applied on a step failed. |
+| **Authentication Errors** | Credentials provided in a connector are not valid. Typically, the Harness secret used for one of the credentials is incorrect. If Harness cannot determine if an error is authentication and authorization, it is treated as an authentication error. |
+| **Authorization Errors** | The credentials are valid but the user permissions needed to access the resource are not sufficient. If Harness cannot determine if an error is authentication and authorization, it is treated as an authentication error. |
+| **Connectivity Errors** | A Harness delegate cannot connect to a specific resource. For example, the delegate cannot connect to repository or VM or Secrets Manager. |
+| **Delegate Provisioning Errors** | No available delegate can accomplish the task, or the task is invalid. For example, if an HTTP step attempts to connect to a URL but there is no available delegate to perform the task. |
+| **Timeout Errors** | A Harness delegate fails to complete a task within the timeout setting in the stage or step. For example, if the Kubernetes workload you are deploying fails to reach steady state within the step timeout. |
+| **Unknown Errors** | Errors that don't fall into any other category. This includes Harness application errors. |
+| **Verification Failures** | A Harness continuous verification step fails. |
+| **Policy Evaluation Failures** | An Open Policy Evaluation (OPA) applied on a step fails. |
 | **Execution-time Inputs Timeout Errors**| A step times out when running a pipeline due to the unavailability of a runtime input. |
 | **Approval Rejection** | An approval step is rejected. You can select specific failure strategies for approval rejection across steps and stages. |
 | **Delegate Restart** | An error triggered when the delegate is unreachable when running a pipeline. |
@@ -59,13 +59,13 @@ These actions can be applied to the failure strategy as primary action and timeo
 
 | **Action** | **Step** | **Step Group** | **Stage** |
 | :--- | :--- | :--- | :--- |
-| **Manual Intervention** | A Harness user will perform a manual intervention when the error type occurs. There are several options to select from: <li> **Mark as Success**</li><li>**Ignore Failure**</li><li>**Retry**</li><li>**Abort**</li><li>**Rollback Stage**</li>Harness pauses the pipeline execution while waiting for manual intervention. The state of the Pipeline execution is displayed as **Paused**. | Same as step. | Same as step, but applies to all steps. |
-| **Mark as Success** | The step is marked as **Successful** and the stage execution continues. | Same as step. | The step that failed is marked as **Successful** and the pipeline execution continues. |
-| **Ignore Failure** | The stage execution continues. The step is marked as **Failed**, but no rollback is triggered. | Same as step. | Same as step. |
-| **Retry** | Harness will retry the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. | Same as step. | Same as step. |
+| **Manual Intervention** | A Harness user can perform a manual intervention when the error type occurs. There are several options to select from: <li> **Mark as Success**</li><li>**Ignore Failure**</li><li>**Retry**</li><li>**Abort**</li><li>**Rollback Stage**</li>Harness pauses the pipeline execution when waiting for manual intervention. The pipeline execution state appears as **Paused**. | Same as step. | Same as step, but applies to all steps. |
+| **Mark as Success** | The step is marked as **Successful** and the stage execution continues. | Same as step. | The failed step is marked as **Successful** and the pipeline execution continues. |
+| **Ignore Failure** | The stage execution continues. The step is marked as **Failed**, but rollback is not triggered. | Same as step. | Same as step. |
+| **Retry** | Harness retries the execution of the failed step automatically. You can set **Retry Count** and **Retry Intervals**. | Same as step. | Same as step. |
 | **Abort** | Pipeline execution is aborted. If you select this option, no timeout is needed. | Same as step. | Same as step. |
-| **Rollback Stage** | The stage is rolled back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing. | Same as step. | Same as step. |
-| **Rollback Step Group** | N/A | The step group is rolled back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was preforming. | N/A |
+| **Rollback Stage** | The stage rolls back to the state prior to stage execution. How the stage rolls back depends on the type of build or deployment it was performing. | Same as step. | Same as step. |
+| **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was preforming. | N/A |
 
 ### Review: Failure strategy takes precedence over conditional execution
 
