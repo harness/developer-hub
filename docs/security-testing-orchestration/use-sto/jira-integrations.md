@@ -59,7 +59,7 @@ You can only create Jira tickets for [targets](/docs/security-testing-orchestrat
 
     5. **Notes** Any notes you want to add to the ticket. 
 
-      ![](./static/jira-integration-02-create-ticket.png)
+       ![](./static/jira-integration-02-create-ticket.png)
 
 <!--
 ```mdx-code-block
@@ -73,22 +73,33 @@ You can only create Jira tickets for [targets](/docs/security-testing-orchestrat
 Note the following: 
 
    * In the Issue Details pane, the **Create Ticket** button is replace with the Jira ticket number.
-   
+     
+     ![](./static/jira-integration-03-ticket-num-in-issue-details.png)
+      <!--
       ```mdx-code-block
       <img src={ticket_num} alt="Jira ticket number in STO UI" height="50%" width="50%" />
       ```
+      -->
 
    * The Jira ticket includes a link back to the issue in the STO UI.
+     
+     ![](./static/jira-integration-04-link-in-jira-ticket.png)
+      <!--
    
       ```mdx-code-block
       <img src={issue_link} alt="STO issue link in Jira ticket" height="50%" width="50%" />
       ```
+      -->
 
    * The link in the Jira ticket points back a **Ticket Summary** that shows all detected issues tracked by the ticket.
+     
+     ![](./static/jira-integration-05-ticket-summary.png)
+      <!--
    
       ```mdx-code-block
       <img src={ticket_summary} alt="STO issue link in Jira ticket" height="75%" width="75%" />
       ```
+      -->
 
 
 
