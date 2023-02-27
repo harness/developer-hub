@@ -1,6 +1,6 @@
 ---
-title: Add a Microsoft Azure Cloud Provider connector
-description: The Azure Cloud Provider connector connects Harness to Azure.
+title: Add a Microsoft Azure connector
+description: The Azure connector connects Harness to Azure.
 # sidebar_position: 2
 helpdocs_topic_id: 9epdx5m9ae
 helpdocs_category_id: o1zhrfo8n5
@@ -8,9 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-With the Microsoft Azure Cloud connector, your Harness pipelines can pull Azure artifacts and deploy your applications to Azure.
+With the Microsoft Azure connector, your Harness pipelines can pull Azure artifacts, provision Azure infrastructure, and deploy your applications to Azure.
 
-The Microsoft Azure Cloud Connector is for ACR, AKS, ARM, Blueprints, Web Apps, and Virtual Machines for Traditional (SSH) deployments.
+The Microsoft Azure connector is for ACR, AKS, ARM, Blueprint, Web Apps, and virtual machines for traditional (SSH/WinRM) deployments.
+
+Use the Azure Repos connector to [connect to Azure SCM repos](./connect-to-a-azure-repo.md)
 
 :::tip
 
@@ -18,7 +20,7 @@ If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud C
 
 :::
 
-## Roles and permissions
+## Roles, permission, and cluster requirements
 
 This section assumes you're familiar with Azure RBAC. For details, go to the Azure documentation: [Assign Azure roles using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal).
 
@@ -30,7 +32,7 @@ For security reasons, Harness uses an application object and service principal r
 
 ### Azure Container Repository (ACR) role requirements
 
-Harness Azure Cloud connectors that you'll use to connect to ACR must have the **Reader** role, at minimum, or an equivalent or better custom role.
+The Harness Azure connectors that you'll use to connect Harness to ACR must have the **Reader** role, at minimum. You can also use a custom role that includes the permissions of the **Reader** role.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -41,7 +43,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="reader" label="Reader" default>
 ```
-The **Reader** role must be assigned at the **Subscription** or **Resource Group** level that is used by the Application (Client) Id that you'll use in the Azure Cloud connector's settings. The application must have permission to list **all** container registries.
+The **Reader** role must be assigned at the **Subscription** or **Resource Group** level that is used by the Application (Client) Id that you'll use in the Azure connector's settings. The application must have permission to list **all** container registries.
 
 ![](./static/add-a-microsoft-azure-connector-65.png)
 
@@ -137,7 +139,7 @@ If you connect to an ACR repo via the platform-agnostic [Docker Connector](ref-c
 
 ### Azure Web App role requirements
 
-Harness Azure Cloud connectors that you'll use to connect to Azure Web Apps with Service Principal or Managed Identity credentials, must have the **Contributor** role, at minimum, or an equivalent or better custom role.
+Harness Azure connectors that you'll use to connect to Azure Web Apps with Service Principal or Managed Identity credentials, must have the **Contributor** role, at minimum. You can also use a custom role that includes the permissions of the **Contributor** role.
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
@@ -249,15 +251,15 @@ The following JSON sample creates a custom role with the required permissions. T
 </Tabs2>
 ```
 
-## Connect Harness to Azure Kubernetes Services (AKS)
+### Connect Harness to Azure Kubernetes Services (AKS)
 
 There are three options for connecting Harness to an AKS cluster:
 
-* Use the platform-agnostic [Kubernetes cluster connector](add-a-kubernetes-cluster-connector.md). with a Kubernetes delegate.
+* Use the platform-agnostic [Kubernetes cluster connector](add-a-kubernetes-cluster-connector.md) with a Kubernetes or Helm delegate.
     + You'll need to install a [Kubernetes delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster, and then use the delegate's credentials for the Kubernetes cluster connector's authentication method.
 	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
 * Use a **Microsoft Azure Cloud Provider connector**, as described in this topic, with a Kubernetes delegate.
-    + You'll need to install a [Kubernetes delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster, and then use the delegate's credentials for the Azure Cloud connector's authentication method.
+    + You'll need to install a [Kubernetes delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster, and then use the delegate's credentials for the Azure connector's authentication method.
 	+ You'll need to provide the Microsoft Azure Environment.
 	+ If you use a User Assigned Managed Identity, you'll need to provide the Application (client) Id.
 	+ If you use a System Assigned Managed Identity, you won't need to provide any Ids.
@@ -274,7 +276,7 @@ For more information, go to the **Deployments (CD)** section of the [Kubernetes 
 
 ### AKS role requirements
 
-If you use the Microsoft Azure Cloud connector to connect to AKS with Service Principal or Managed Identity credentials, you must assign the **Owner** role or an equivalent custom role.
+If you use the Microsoft Azure connector to connect to AKS with Service Principal or Managed Identity credentials, you must assign the **Owner** role or a custom role that includes the permissions of the **Owner** role.
 
 ```mdx-code-block
 import Tabs3 from '@theme/Tabs';
@@ -441,9 +443,9 @@ Here's an example of Azure RBAC permissions used for System Assigned Managed Ide
 </Tabs3>
 ```
 
-## Add an Azure Cloud Provider connector
+## Add an Azure connector
 
-You can add Azure Cloud Provider connectors at the account, org, or project level at any time, or you can add them while setting up pipelines. For example, to add a connector at the project level you would select **Project Setup**, select **Connectors**, and then select **New Connector**.
+You can add Azure connectors at the account, org, or project level at any time, or you can add them while setting up pipelines. For example, to add a connector at the project level you would select **Project Setup**, select **Connectors**, and then select **New Connector**.
 
 1. From the Connectors library, select **Azure** under **Cloud Providers**.
 1. Input a **Name**. Harness automatically creates an **Id** ([Entity Identifier](../20_References/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable.
@@ -466,7 +468,7 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 
 1. In Microsoft Azure, go to the App registration **Overview** or **Managed Identity** page and make note of the **Application (client) ID** and **Directory (tenant) ID**.
 
-   The **Application (client) ID** is the application Id for the app registration you want to associated with your Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
+   The **Application (client) ID** is the application Id for the app registration you want to use the Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
 
    * [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
    * [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)
@@ -523,12 +525,12 @@ If you have [installed a Harness Delegate](/docs/platform/2_Delegates/get-starte
 
 1. Select how you want Harness to connect to Azure:
 
-   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azuree.
+   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azure.
    * **Connect through a Harness Delegate:** Harness communicates with Azure through a Harness delegate in your Azure subscription or AKS cluster. You must choose this option if you chose to inherit delegate credentials.
 
 2. If connecting through a Harness delegate, select either:
 
-   * **Use any available Delegate:** Harness selects an available Delegate at runtime.
+   * **Use any available Delegate:** Harness selects an available delegate at runtime.
    * **Only use Delegates with all of the following tags:** Use tags to match one or more suitable delegates. You can also install a new delegate at this time.
 
 3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
@@ -551,8 +553,8 @@ Steps can be executed on any delegate or you can select specific delegates using
 
 For Azure deployments, note the following:
 
-* If the Azure connector used in the stage's **Infrastructure** uses Azure Managed Identity for authentication, then the Run step with the shell script must use a **Delegate Selector** for a delegate running in AKS.
-* If the Azure connector used in the stage's **Infrastructure** uses Azure Service Principal for authentication, then the Run step with the shell script can use any Delegate.
+* If the Azure connector used in the stage's Infrastructure uses Azure Managed Identity for authentication, then the Shell Script step must use a **Delegate Selector** for a delegate running in AKS.
+* If the Azure connector used in the stage's Infrastructure uses Azure Service Principal for authentication, then the Shell Script step can use any delegate.
 
 ## See also
 
