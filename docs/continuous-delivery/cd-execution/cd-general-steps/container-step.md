@@ -174,7 +174,7 @@ Currently, Harness can fetch containers from the following registries:
 
 ## Add a Container step
 
-You add the Container step in the CD stage **Execution** section. The Container step is supported in all the deployment strategies (rolling, blue green canary, custom).
+You add the Container step in the CD stage **Execution** section. The Container step is supported in all the deployment strategies (rolling, blue green canary, custom). You need to have delegate version > 1.0.780xx to run this step.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
