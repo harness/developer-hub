@@ -24,7 +24,7 @@ To connect a private chaoshub repository you would need to first connect a Harne
 
 Faults refer to the failures that are injected into the target resource as part of an experiment. Whereas a chaos experiment is a set of different faults coupled together to achieve a desired chaos impact.
 
-#### Possible reasons you can’t see tunables in **Tune Fault** UI
+#### What are the possible reasons I can’t see tunables in **Tune Fault** UI?
 
 Since the tuning of a chaos experiment is highly declarative, sometimes it may cause parsing issues, these may be the possible reasons:
 
