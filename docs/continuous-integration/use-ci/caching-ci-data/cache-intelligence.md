@@ -7,17 +7,17 @@ sidebar_position: 20
 ### Automatic caching
 
 Caching dependencies is an effective way to speed up your build. 
-Modern continuous integration systems execute pipelines inside ephemeral environments, such as a container or virtual machine, provisioned solely for pipeline execution, and not reused from a prior execution. As builds often require the the download and installation of a large number of dependencies such as libraries, and other software components, caching these dependencies can save a significant amount of time. 
+Modern continuous integration systems execute pipelines inside ephemeral environments, such as a container or virtual machine, that is provisioned solely for pipeline execution and is not reused from a prior execution. As builds often require downloading and installing many dependencies, such as libraries and other software components, caching these dependencies can save a significant amount of time. 
 
-While caching can already be configured in various ways (save/restore cache steps, mounting volumes, etc), the burden of confugring caching, as well as managing the cache itself, lies on the users. 
+There are several ways to configure caching, such as save/restore cache steps and mounting volumes, which require users to enable caching and manage the cache itself.
 
-With Cache Intelligence, Harness will automatically cache and restore common dependencies , making it easy for anyone to use caching. The cache is stored in Harness Cloud, our hosted environment, so you don't need to worry about bringng your own storage. 
+With Cache Intelligence, Harness can automatically cache and restore common dependencies, making it easy to start using caching in your pipelines. You don't need to bring your own storage, because we store the cache in Harness Cloud, our hosted environment.
 
 
 Note the following:  
 
-* Cache Intelligence is currently avaiable only when using [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), Harness hosted build environemnt
-* Cache Intelligence currently supports Bazel, Maven, Gradle, Yarn, and Node build tools, assuming the dependencies are stored in the default location for the tool used. If you are using a different build tool or a non-default cache location, you can still leverage our cache storage by specifying the location(s) to cache. 
+* Currently, Cache Intelligence is available only when using [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), the Harness-hosted build environment.
+* Currently, Cache Intelligence supports Bazel, Maven, Gradle, Yarn, and Node build tools, if the dependencies are stored in the default location for the tool used. If you are using a different build tool or a non-default cache location, you can still leverage our cache storage by specifying the location(s) to cache.
 * Harness Cloud can cache up to 2GB of data per account. All pipelines in the account use the same cache. 
 * Cache retention window is 15 days, which resets whenever the cache gets updated.
 
