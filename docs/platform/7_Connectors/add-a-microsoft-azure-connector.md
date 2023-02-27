@@ -1,6 +1,6 @@
 ---
-title: Add a Microsoft Azure Cloud Connector
-description: Connect Harness to Azure using the Azure Cloud Connector.
+title: Add a Microsoft Azure connector
+description: The Azure connector connects Harness to Azure.
 # sidebar_position: 2
 helpdocs_topic_id: 9epdx5m9ae
 helpdocs_category_id: o1zhrfo8n5
@@ -8,369 +8,557 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic explains how to connect Harness to the Microsoft Azure cloud. Using this Connector, you can pull Azure artifacts and deploy your applications to Azure using Harness.
+With the Microsoft Azure connector, your Harness pipelines can pull Azure artifacts, provision Azure infrastructure, and deploy your applications to Azure.
 
-Using Harness **Cloud Cost Management (CCM)**? See [Set Up Cloud Cost Management for Azure](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+The Microsoft Azure connector is for ACR, AKS, ARM, Blueprint, Web Apps, and virtual machines for traditional (SSH/WinRM) deployments.
 
-### Before you begin
+Use the Azure Repos connector to [connect to Azure SCM repos](./connect-to-a-azure-repo.md)
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [CD Pipeline Basics](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md)
+:::tip
 
-### Limitations
+If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
 
-* Currently, the Microsoft Azure Cloud Connector is for: ACR, AKS, Web Apps, and Virtual Machines for Traditional (SSH) deployments. Support for other services such as ARM and Blueprint are coming soon.
-* To use an AKS cluster for deployment, the AKS cluster must have local accounts enabled (AKS property `disableLocalAccounts=false`).
+:::
 
-### Visual Summary
+## Roles, permission, and cluster requirements
 
-The following example shows how to connect Harness to Azure using the Azure Cloud Connector and an Azure App registration.
+This section assumes you're familiar with Azure RBAC. For details, go to the Azure documentation: [Assign Azure roles using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal).
 
-![](./static/add-a-microsoft-azure-connector-63.png)
-### Review: Permissions
+This graphic from Azure is a useful reminder of how Azure manages RBAC:
 
-This section assumes you're familiar with Azure RBAC. For details, [Assign Azure roles using the Azure portal](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-portal) from Azure.
+![Azure RBAC hierarchy showing that Resources are managed by Resource groups, which are in turn managed by Subscriptions, and all of these are under a Management group.](./static/add-a-microsoft-azure-connector-64.png)
 
-This graphic from Azure can be helpful as a reminder of how Azure manages RBAC:
+For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in that Azure documentation: [How to use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal).
 
-![](./static/add-a-microsoft-azure-connector-64.png)
+### Azure Container Repository (ACR) role requirements
 
-For security reasons, Harness uses an application object and service principal rather than a user identity. The process is described in [How to: Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
+The Harness Azure connectors that you'll use to connect Harness to ACR must have the **Reader** role, at minimum. You can also use a custom role that includes the permissions of the **Reader** role.
 
-### AKS Cluster Setup Requirements
-
-* AKS managed AAD (enabled or disabled).
-* Kubernetes RBAC enabled.
-* Azure RBAC (enabled or disabled).
-	+ See **Deployments (CD)** in [Kubernetes Cluster Connector Settings Reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
-* AKS property `disableLocalAccounts` (enabled or disabled).
-
-##### Permissions List
-
-We cover the roles needed for Azure services in later sections. In this section, we provide the permissions needed in case you want to use them with a custom role.
-
-The following permissions (actions) are necessary for any user (Service Principal or Managed Identity):
-
-* Service Principal and/or Managed Identity Azure permissions (these are necessary regardless if you are using Kubernetes RBAC or Azure RBAC):
-	+ Microsoft.ContainerRegistry/registries/read
-	+ Microsoft.ContainerRegistry/registries/builds/read
-	+ Microsoft.ContainerRegistry/registries/metadata/read
-	+ Microsoft.ContainerRegistry/registries/pull/read
-	+ Microsoft.ContainerService/managedClusters/read
-	+ Microsoft.ContainerService/managedClusters/listClusterUserCredential/action
-	+ Microsoft.Resource/subscriptions/resourceGroup/read
-* For Helm deployments, the version of Helm must be >= 3.2.0 (the Harness `HELM_VERSION_3_8_0` feature flag must be activated).
-* Pod Assigned Managed Identity and System Assigned Managed Identity cannot be used for the same cluster.
-
-Here is the JSON for creating a custom role with these permissions (replace `xxxx` with the role name, subscription Id, and resource group Id):
-
-
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 ```
-{  
-    "id": "/subscriptions/xxxx/providers/Microsoft.Authorization/roleDefinitions/xxxx",  
-    "properties": {  
-        "roleName": "xxxx",  
-        "description": "",  
-        "assignableScopes": [  
-            "/subscriptions/xxxx/resourceGroups/xxxx"  
-        ],  
-        "permissions": [  
-            {  
-                "actions": [],  
-                "notActions": [],  
-                "dataActions": [  
-                    "Microsoft.ContainerService/managedClusters/configmaps/read",  
-                    "Microsoft.ContainerService/managedClusters/configmaps/write",  
-                    "Microsoft.ContainerService/managedClusters/configmaps/delete",  
-                    "Microsoft.ContainerService/managedClusters/secrets/read",  
-                    "Microsoft.ContainerService/managedClusters/secrets/write",  
-                    "Microsoft.ContainerService/managedClusters/secrets/delete",  
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/read",  
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/write",  
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/delete",  
-                    "Microsoft.ContainerService/managedClusters/events/read",  
-                    "Microsoft.ContainerService/managedClusters/events/write",  
-                    "Microsoft.ContainerService/managedClusters/events/delete",  
-                    "Microsoft.ContainerService/managedClusters/namespaces/read",  
-                    "Microsoft.ContainerService/managedClusters/nodes/read",  
-                    "Microsoft.ContainerService/managedClusters/pods/read",  
-                    "Microsoft.ContainerService/managedClusters/pods/write",  
-                    "Microsoft.ContainerService/managedClusters/pods/delete",  
-                    "Microsoft.ContainerService/managedClusters/services/read",  
-                    "Microsoft.ContainerService/managedClusters/services/write",  
-                    "Microsoft.ContainerService/managedClusters/services/delete",  
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",  
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",  
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",  
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/read",  
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/write",  
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"  
-                ],  
-                "notDataActions": []  
-            }  
-        ]  
-    }  
-}
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="reader" label="Reader" default>
 ```
-#### Azure Kubernetes Services (AKS) Roles
-
-If you use Microsoft Azure Cloud Connector and Service Principal or Managed Identity credentials, you can use a custom role or the Owner role.
-
-If you do not use a custom role, the **Owner** role must be assigned.
-
-Here are the options for connecting Harness to your target AKS cluster:
-
-* Install a [Kubernetes Delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness [Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md). The Harness Kubernetes Cluster Connector is platform-agnostic.
-	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
-* Install a [Kubernetes Delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster and use it for authentication in a Harness **Microsoft Azure Cloud Connector**, as described in this topic.
-	+ You'll need to provide the Microsoft Azure Environment.
-	+ If you use a User Assigned Managed Identity, you will need to provide the Application (client) Id.
-	+ If you use a System Assigned Managed Identity, you do not need to provide any Ids.
-* Use a **Microsoft Azure Cloud Connector** and Service Principal or Managed Identity credentials, as described in this topic. In this option, the **Owner** role must be assigned.
-
-#### Azure RBAC Example
-
-Here's an example of Azure RBAC permissions used for System Assigned Managed Identity:
-
-
-```
-{  
-    "id": "/subscriptions/xxxx/providers/Microsoft.Authorization/roleDefinitions/xxxx",  
-    "properties": {  
-        "roleName": "HarnessSysMSIRole",  
-        "description": "",  
-        "assignableScopes": [  
-            "/subscriptions/xxxx/resourceGroups/xxxx"  
-        ],  
-        "permissions": [  
-            {  
-                "actions": [],  
-                "notActions": [],  
-                "dataActions": [  
-                    "Microsoft.ContainerService/managedClusters/configmaps/read",  
-                    "Microsoft.ContainerService/managedClusters/configmaps/write",  
-                    "Microsoft.ContainerService/managedClusters/configmaps/delete",  
-                    "Microsoft.ContainerService/managedClusters/secrets/read",  
-                    "Microsoft.ContainerService/managedClusters/secrets/write",  
-                    "Microsoft.ContainerService/managedClusters/secrets/delete",  
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/read",  
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/write",  
-                    "Microsoft.ContainerService/managedClusters/apps/deployments/delete",  
-                    "Microsoft.ContainerService/managedClusters/events/read",  
-                    "Microsoft.ContainerService/managedClusters/events/write",  
-                    "Microsoft.ContainerService/managedClusters/events/delete",  
-                    "Microsoft.ContainerService/managedClusters/namespaces/read",  
-                    "Microsoft.ContainerService/managedClusters/nodes/read",  
-                    "Microsoft.ContainerService/managedClusters/pods/read",  
-                    "Microsoft.ContainerService/managedClusters/pods/write",  
-                    "Microsoft.ContainerService/managedClusters/pods/delete",  
-                    "Microsoft.ContainerService/managedClusters/services/read",  
-                    "Microsoft.ContainerService/managedClusters/services/write",  
-                    "Microsoft.ContainerService/managedClusters/services/delete",  
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",  
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",  
-                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",  
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/read",  
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/write",  
-                    "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"  
-                ],  
-                "notDataActions": []  
-            }  
-        ]  
-    }  
-}
-```
-#### Kubernetes RBAC Example
-
-Here's an example of Kubernetes RBAC:
-
-
-```
-kind: Role  
-apiVersion: rbac.authorization.k8s.io/v1  
-metadata:  
-  name: cdp-qa-deployer-role  
-  namespace: default  
-rules:  
-  - apiGroups: ["", "apps"]  
-    resources: ["pods", "configmaps", "deployments", "secrets", "events", "services",  "replicasets", "deployments/scale", "namespaces", "resourcequotas", "limitranges"]  
-    verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]  
-  
----  
-kind: RoleBinding  
-apiVersion: rbac.authorization.k8s.io/v1  
-metadata:  
-  name: cdp-qa-deployer-role-binding  
-  namespace: default  
-roleRef:  
-  apiGroup: rbac.authorization.k8s.io  
-  kind: Role  
-  name: cdp-qa-deployer-role  
-subjects:  
-  - kind: Group  
-    namespace: default  
-    name: <AD group id to which the SP and MSI users are assigned to>
-```
-### Azure Container Repository (ACR) Roles
-
-If you do not use a custom role, the **Reader** role must be assigned. **This is the minimum requirement.**
+The **Reader** role must be assigned at the **Subscription** or **Resource Group** level that is used by the Application (Client) Id that you'll use in the Azure connector's settings. The application must have permission to list **all** container registries.
 
 ![](./static/add-a-microsoft-azure-connector-65.png)
-You must provide the **Reader** role in the role assignment at the **Subscription** level used by the Application (Client) Id entered in the Connector. The application needs permission to list **all** container registries.
 
-Some common mistakes:
+:::tip
 
-* If you put the **Reader** role in a different IAM section of Azure.
-* If you provide only the **AcrPull** role instead of **Reader**. It might appear that the AcrPull role gives access to a specific registry, but Harness needs to list **all** registries.
+Make sure you:
 
-Harness supports 500 images from an ACR repo. If you don't see some of your images you might have exceeded this limit. This is the result of an Azure API limitation.  
-  
-If you connect to an ACR repo via the platform agnostic [Docker Connector](ref-cloud-providers/docker-registry-connector-settings-reference.md), the limit is 100.
+* Don't put the **Reader** role in a different IAM section of Azure.
+* Don't provide only the **AcrPull** role, instead of **Reader**. It might appear that the **AcrPull** role gives access to a specific registry, but Harness needs to list **all** registries.
 
-### Azure Web App Permissions
+:::
 
-If you use Microsoft Azure Cloud Connector and Service Principal or Managed Identity credentials, you can use a custom role or the **Contributor** role. The Contributor role is the minimum requirement.
-
-Below are the Azure RBAC permissions used for System Assigned Managed Identity permissions to perform Azure Web App deployments for container and non-container artifacts.
-
-
+```mdx-code-block
+  </TabItem>
+  <TabItem value="custom" label="Custom role">
 ```
-[  
-                    "microsoft.web/sites/slots/deployments/read",  
-                    "Microsoft.Web/sites/Read",  
-                    "Microsoft.Web/sites/config/Read",  
-                    "Microsoft.Web/sites/slots/config/Read",  
-                    "microsoft.web/sites/slots/config/appsettings/read",  
-                    "Microsoft.Web/sites/slots/*/Read",  
-                    "Microsoft.Web/sites/slots/config/list/Action",  
-                    "Microsoft.Web/sites/slots/stop/Action",  
-                    "Microsoft.Web/sites/slots/start/Action",  
-                    "Microsoft.Web/sites/slots/config/Write",  
-                    "Microsoft.Web/sites/slots/Write",  
-                    "microsoft.web/sites/slots/containerlogs/action",  
-                    "Microsoft.Web/sites/config/Write",  
-                    "Microsoft.Web/sites/slots/slotsswap/Action",  
-                    "Microsoft.Web/sites/config/list/Action",  
-                    "Microsoft.Web/sites/start/Action",  
-                    "Microsoft.Web/sites/stop/Action",  
-                    "Microsoft.Web/sites/Write",  
-                    "microsoft.web/sites/containerlogs/action",  
-                    "Microsoft.Web/sites/publish/Action",  
-                    "Microsoft.Web/sites/slots/publish/Action"  
+
+The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
+* `Microsoft.ContainerRegistry/registries/read`
+* `Microsoft.ContainerRegistry/registries/builds/read`
+* `Microsoft.ContainerRegistry/registries/metadata/read`
+* `Microsoft.ContainerRegistry/registries/pull/read`
+* `Microsoft.ContainerService/managedClusters/read`
+* `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
+* `Microsoft.Resource/subscriptions/resourceGroup/read`
+
+For Helm deployments, the version of Helm must be >= 3.2.0. The Harness `HELM_VERSION_3_8_0` feature flag must be activated.
+
+You can't use Pod Assigned Managed Identity and System Assigned Managed Identity for the same cluster.
+
+The following JSON sample creates a custom role with the required permissions. To use this sample, replace `xxxx` with the role name, subscription Id, and resource group Id.
+
+```json
+{
+    "id": "/subscriptions/xxxx/providers/Microsoft.Authorization/roleDefinitions/xxxx",
+    "properties": {
+        "roleName": "xxxx",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/xxxx/resourceGroups/xxxx"
+        ],
+        "permissions": [
+            {
+                "actions": [],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.ContainerService/managedClusters/configmaps/read",
+                    "Microsoft.ContainerService/managedClusters/configmaps/write",
+                    "Microsoft.ContainerService/managedClusters/configmaps/delete",
+                    "Microsoft.ContainerService/managedClusters/secrets/read",
+                    "Microsoft.ContainerService/managedClusters/secrets/write",
+                    "Microsoft.ContainerService/managedClusters/secrets/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/read",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/write",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/delete",
+                    "Microsoft.ContainerService/managedClusters/events/read",
+                    "Microsoft.ContainerService/managedClusters/events/write",
+                    "Microsoft.ContainerService/managedClusters/events/delete",
+                    "Microsoft.ContainerService/managedClusters/namespaces/read",
+                    "Microsoft.ContainerService/managedClusters/nodes/read",
+                    "Microsoft.ContainerService/managedClusters/pods/read",
+                    "Microsoft.ContainerService/managedClusters/pods/write",
+                    "Microsoft.ContainerService/managedClusters/pods/delete",
+                    "Microsoft.ContainerService/managedClusters/services/read",
+                    "Microsoft.ContainerService/managedClusters/services/write",
+                    "Microsoft.ContainerService/managedClusters/services/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/write",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"
+                ],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+:::info
+
+Harness supports 500 images from an ACR repo. If you don't see some of your images, then you might have exceeded this limit. This is the result of an Azure API limitation.
+
+If you connect to an ACR repo via the platform-agnostic [Docker Connector](ref-cloud-providers/docker-registry-connector-settings-reference.md), the limit is 100.
+
+:::
+
+### Azure Web App role requirements
+
+Harness Azure connectors that you'll use to connect to Azure Web Apps with Service Principal or Managed Identity credentials, must have the **Contributor** role, at minimum. You can also use a custom role that includes the permissions of the **Contributor** role.
+
+```mdx-code-block
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs2>
+  <TabItem2 value="contrib" label="Contributor permissions" default>
+```
+
+The follow are the Azure RBAC permissions used for System Assigned Managed Identity permissions to perform Azure Web App deployments for container and non-container artifacts:
+
+```json
+[
+                    "microsoft.web/sites/slots/deployments/read",
+                    "Microsoft.Web/sites/Read",
+                    "Microsoft.Web/sites/config/Read",
+                    "Microsoft.Web/sites/slots/config/Read",
+                    "microsoft.web/sites/slots/config/appsettings/read",
+                    "Microsoft.Web/sites/slots/*/Read",
+                    "Microsoft.Web/sites/slots/config/list/Action",
+                    "Microsoft.Web/sites/slots/stop/Action",
+                    "Microsoft.Web/sites/slots/start/Action",
+                    "Microsoft.Web/sites/slots/config/Write",
+                    "Microsoft.Web/sites/slots/Write",
+                    "microsoft.web/sites/slots/containerlogs/action",
+                    "Microsoft.Web/sites/config/Write",
+                    "Microsoft.Web/sites/slots/slotsswap/Action",
+                    "Microsoft.Web/sites/config/list/Action",
+                    "Microsoft.Web/sites/start/Action",
+                    "Microsoft.Web/sites/stop/Action",
+                    "Microsoft.Web/sites/Write",
+                    "microsoft.web/sites/containerlogs/action",
+                    "Microsoft.Web/sites/publish/Action",
+                    "Microsoft.Web/sites/slots/publish/Action"
 ]
 ```
-### Step 1: Add the Azure Cloud Connector
 
-You can add the Azure Cloud Connector inline, when adding artifacts or setting up the target infrastructure for a deployment Pipeline stage, or you can add the Connector separately and use it whenever you need it.
+```mdx-code-block
+  </TabItem2>
+  <TabItem2 value="custom" label="Custom role">
+```
 
-To add the Connector separately, in your Account, Org, or Project **Connectors**, click **New Connector**.
+The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
+* `Microsoft.ContainerRegistry/registries/read`
+* `Microsoft.ContainerRegistry/registries/builds/read`
+* `Microsoft.ContainerRegistry/registries/metadata/read`
+* `Microsoft.ContainerRegistry/registries/pull/read`
+* `Microsoft.ContainerService/managedClusters/read`
+* `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
+* `Microsoft.Resource/subscriptions/resourceGroup/read`
 
-Click **Azure**.
+For Helm deployments, the version of Helm must be >= 3.2.0. The Harness `HELM_VERSION_3_8_0` feature flag must be activated.
 
-Enter a name for the Connector. Harness automatically creates the Id ([Entity Identifier](../20_References/entity-identifier-reference.md)) for the Connector. You can edit the Id before the Connector is saved. Once it is saved, it is immutable.
+You can't use Pod Assigned Managed Identity and System Assigned Managed Identity for the same cluster.
 
-Add a Description and [Tags](../20_References/tags-reference.md) if needed.
+The following JSON sample creates a custom role with the required permissions. To use this sample, replace `xxxx` with the role name, subscription Id, and resource group Id.
 
-Click **Continue**.
+```json
+{
+    "id": "/subscriptions/xxxx/providers/Microsoft.Authorization/roleDefinitions/xxxx",
+    "properties": {
+        "roleName": "xxxx",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/xxxx/resourceGroups/xxxx"
+        ],
+        "permissions": [
+            {
+                "actions": [],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.ContainerService/managedClusters/configmaps/read",
+                    "Microsoft.ContainerService/managedClusters/configmaps/write",
+                    "Microsoft.ContainerService/managedClusters/configmaps/delete",
+                    "Microsoft.ContainerService/managedClusters/secrets/read",
+                    "Microsoft.ContainerService/managedClusters/secrets/write",
+                    "Microsoft.ContainerService/managedClusters/secrets/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/read",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/write",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/delete",
+                    "Microsoft.ContainerService/managedClusters/events/read",
+                    "Microsoft.ContainerService/managedClusters/events/write",
+                    "Microsoft.ContainerService/managedClusters/events/delete",
+                    "Microsoft.ContainerService/managedClusters/namespaces/read",
+                    "Microsoft.ContainerService/managedClusters/nodes/read",
+                    "Microsoft.ContainerService/managedClusters/pods/read",
+                    "Microsoft.ContainerService/managedClusters/pods/write",
+                    "Microsoft.ContainerService/managedClusters/pods/delete",
+                    "Microsoft.ContainerService/managedClusters/services/read",
+                    "Microsoft.ContainerService/managedClusters/services/write",
+                    "Microsoft.ContainerService/managedClusters/services/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/write",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"
+                ],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
 
-### Option: Credentials or Inherit from Delegate
+```mdx-code-block
+  </TabItem2>
+</Tabs2>
+```
 
-In **Details**, you can select how you'd like Harness to authenticate with Azure.
+### Connect Harness to Azure Kubernetes Services (AKS)
 
-#### Delegate
+There are three options for connecting Harness to an AKS cluster:
 
-If you have a Harness Delegate installed in your Azure subscription (preferably in your target AKS cluster) you can select **Use the credentials of a specific Harness Delegate**.
+* Use the platform-agnostic [Kubernetes cluster connector](add-a-kubernetes-cluster-connector.md) with a Kubernetes or Helm delegate.
+    + You'll need to install a [Kubernetes delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster, and then use the delegate's credentials for the Kubernetes cluster connector's authentication method.
+	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
+* Use a **Microsoft Azure Cloud Provider connector**, as described in this topic, with a Kubernetes delegate.
+    + You'll need to install a [Kubernetes delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster, and then use the delegate's credentials for the Azure connector's authentication method.
+	+ You'll need to provide the Microsoft Azure Environment.
+	+ If you use a User Assigned Managed Identity, you'll need to provide the Application (client) Id.
+	+ If you use a System Assigned Managed Identity, you won't need to provide any Ids.
+* Use a **Microsoft Azure Cloud Connector** with Service Principal or Managed Identity credentials, as described in this topic.
+    + You must assign the **Owner** role or an equivalent custom role, as explained in [AKS role requirements](#aks-role-requirements).
 
-For steps on installing a Delegate, see [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+### AKS cluster setup requirements
 
-![](./static/add-a-microsoft-azure-connector-66.png)
-In **Environment**, select **Azure Global** or **US Government**.
+* AKS managed AAD, enabled or disabled.
+* Kubernetes RBAC, enabled.
+* Azure RBAC, enabled or disabled.
 
-In **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.
+For more information, go to the **Deployments (CD)** section of the [Kubernetes cluster connector settings reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
-See [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity) and [How to use managed identities with Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity) from Azure.If you selected **User Assigned Managed Identity**, in **Client Id**, enter the Client Id from your Managed Identity.
+### AKS role requirements
 
-![](./static/add-a-microsoft-azure-connector-67.png)
-If you selected **User Assigned Managed Identity**, you can also use a [Pod Assigned Managed identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity).
+If you use the Microsoft Azure connector to connect to AKS with Service Principal or Managed Identity credentials, you must assign the **Owner** role or a custom role that includes the permissions of the **Owner** role.
 
-If you selected **System Assigned Managed Identity**, click **Continue**.
+```mdx-code-block
+import Tabs3 from '@theme/Tabs';
+import TabItem3 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs3>
+  <TabItem3 value="custom" label="Custom role" default>
+```
 
-#### System Assigned Managed Identity Notes
+The following permissions (actions) are necessary for any Service Principal and/or Managed Identity user, regardless of whether you are using Kubernetes RBAC or Azure RBAC:
+* `Microsoft.ContainerRegistry/registries/read`
+* `Microsoft.ContainerRegistry/registries/builds/read`
+* `Microsoft.ContainerRegistry/registries/metadata/read`
+* `Microsoft.ContainerRegistry/registries/pull/read`
+* `Microsoft.ContainerService/managedClusters/read`
+* `Microsoft.ContainerService/managedClusters/listClusterUserCredential/action`
+* `Microsoft.Resource/subscriptions/resourceGroup/read`
 
-* If you select **System Assigned Managed Identity** in the Harness Azure Connector, the identity used is actually AKS cluster predefined [Kubelet Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities).
-* Kubelet Managed Identity (which has name format `<AKSName>-agentpool`) must have the **acrPull** permission on ACR (if used for image storage).
-* [Control plane AKS Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities) (which has name format `<AKSName>`) must have the **Reader** permission on the AKS cluster itself.
+For Helm deployments, the version of Helm must be >= 3.2.0. The Harness `HELM_VERSION_3_8_0` feature flag must be activated.
 
-#### Credentials
+You can't use Pod Assigned Managed Identity and System Assigned Managed Identity for the same cluster.
 
-Using Azure credentials is covered in the following steps.
+The following JSON sample creates a custom role with the required permissions. To use this sample, replace `xxxx` with the role name, subscription Id, and resource group Id.
 
-### Step 2: Gather the Required Information
+```json
+{
+    "id": "/subscriptions/xxxx/providers/Microsoft.Authorization/roleDefinitions/xxxx",
+    "properties": {
+        "roleName": "xxxx",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/xxxx/resourceGroups/xxxx"
+        ],
+        "permissions": [
+            {
+                "actions": [],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.ContainerService/managedClusters/configmaps/read",
+                    "Microsoft.ContainerService/managedClusters/configmaps/write",
+                    "Microsoft.ContainerService/managedClusters/configmaps/delete",
+                    "Microsoft.ContainerService/managedClusters/secrets/read",
+                    "Microsoft.ContainerService/managedClusters/secrets/write",
+                    "Microsoft.ContainerService/managedClusters/secrets/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/read",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/write",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/delete",
+                    "Microsoft.ContainerService/managedClusters/events/read",
+                    "Microsoft.ContainerService/managedClusters/events/write",
+                    "Microsoft.ContainerService/managedClusters/events/delete",
+                    "Microsoft.ContainerService/managedClusters/namespaces/read",
+                    "Microsoft.ContainerService/managedClusters/nodes/read",
+                    "Microsoft.ContainerService/managedClusters/pods/read",
+                    "Microsoft.ContainerService/managedClusters/pods/write",
+                    "Microsoft.ContainerService/managedClusters/pods/delete",
+                    "Microsoft.ContainerService/managedClusters/services/read",
+                    "Microsoft.ContainerService/managedClusters/services/write",
+                    "Microsoft.ContainerService/managedClusters/services/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/write",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"
+                ],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
 
-In Microsoft Azure, you can find the information you need on the App registration **Overview** page:
+```mdx-code-block
+  </TabItem3>
+  <TabItem3 value="k8sRbac" label="Kubernetes RBAC example">
+```
 
-![](./static/add-a-microsoft-azure-connector-68.png)
-### Step 3: Environment
+Here's an example of Kubernetes RBAC permissions used for System Assigned Managed Identity.
 
-In **Environment**, select **Azure Global** or **US Government**.
+```
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cdp-qa-deployer-role
+  namespace: cdp-qa-app
+rules:
+  - apiGroups: ["", "apps"]
+    resources: ["pods", "configmaps", "deployments", "secrets", "events", "services",  "replicasets", "deployments/scale", "namespaces", "resourcequotas", "limitranges"]
+    verbs: ["get", "watch", "list", "create", "update", "patch", "delete"]
+---
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: cdp-qa-deployer-role-binding
+  namespace: cdp-qa-app
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: cdp-qa-deployer-role
+subjects:
+  - kind: Group
+    namespace: cdp-qa-app
+    name: <AD group id to which the SP and MSI users are assigned>
+```
 
-### Step 4: Application (Client) Id
+```mdx-code-block
+  </TabItem3>
+  <TabItem3 value="azureRbac" label="Azure RBAC example">
+```
 
-This is the **Application (Client) Id** for the Azure app registration you are using. It is found in the Azure Active Directory (AAD) **App registrations** or **Managed Identity**. For more information, see [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app) from Microsoft.
+Here's an example of Azure RBAC permissions used for System Assigned Managed Identity. To use this sample, replace `xxxx` with the subscription Id and resource group Id.
 
-To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription.
+```json
+{
+    "id": "/subscriptions/xxxx/providers/Microsoft.Authorization/roleDefinitions/xxxx",
+    "properties": {
+        "roleName": "HarnessSysMSIRole",
+        "description": "",
+        "assignableScopes": [
+            "/subscriptions/xxxx/resourceGroups/xxxx"
+        ],
+        "permissions": [
+            {
+                "actions": [],
+                "notActions": [],
+                "dataActions": [
+                    "Microsoft.ContainerService/managedClusters/configmaps/read",
+                    "Microsoft.ContainerService/managedClusters/configmaps/write",
+                    "Microsoft.ContainerService/managedClusters/configmaps/delete",
+                    "Microsoft.ContainerService/managedClusters/secrets/read",
+                    "Microsoft.ContainerService/managedClusters/secrets/write",
+                    "Microsoft.ContainerService/managedClusters/secrets/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/read",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/write",
+                    "Microsoft.ContainerService/managedClusters/apps/deployments/delete",
+                    "Microsoft.ContainerService/managedClusters/events/read",
+                    "Microsoft.ContainerService/managedClusters/events/write",
+                    "Microsoft.ContainerService/managedClusters/events/delete",
+                    "Microsoft.ContainerService/managedClusters/namespaces/read",
+                    "Microsoft.ContainerService/managedClusters/nodes/read",
+                    "Microsoft.ContainerService/managedClusters/pods/read",
+                    "Microsoft.ContainerService/managedClusters/pods/write",
+                    "Microsoft.ContainerService/managedClusters/pods/delete",
+                    "Microsoft.ContainerService/managedClusters/services/read",
+                    "Microsoft.ContainerService/managedClusters/services/write",
+                    "Microsoft.ContainerService/managedClusters/services/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/read",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/write",
+                    "Microsoft.ContainerService/managedClusters/apps/statefulsets/delete",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/read",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/write",
+                    "Microsoft.ContainerService/managedClusters/apps/replicasets/delete"
+                ],
+                "notDataActions": []
+            }
+        ]
+    }
+}
+```
 
-For more information, see [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) and [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Microsoft.
+```mdx-code-block
+  </TabItem3>
+</Tabs3>
+```
 
-### Step 5: Tenant (Directory) Id
+## Add an Azure connector
 
-The **Tenant Id** is the ID of the Azure Active Directory (AAD) in which you created your application. This Id is also called the **Directory ID**. For more information, see [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id) and [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal) from Azure.
+You can add Azure connectors at the account, org, or project level at any time, or you can add them while setting up pipelines. For example, to add a connector at the project level you would select **Project Setup**, select **Connectors**, and then select **New Connector**.
 
-### Step 6: Secret or Certificate
+1. From the Connectors library, select **Azure** under **Cloud Providers**.
+1. Input a **Name**. Harness automatically creates an **Id** ([Entity Identifier](../20_References/entity-identifier-reference.md)) for the connector based on the name. You can edit the Id before saving the connector. Once the connector is saved, the Id is immutable.
+1. Optionally, you can add a description and [tags](../20_References/tags-reference.md).
+1. Select **Continue** to configure the connector's credentials.
 
-Harness supports PEM files only. Currently, Harness does not support PFX files.In **Authentication**, select **Secret** or **Certificate**.
+## Configure credentials
 
-This is the authentication key for your application. This is found in **Azure Active Directory**, **App Registrations**. Click the App name. Click **Certificates & secrets**, and then click **New client secret**.
+There are two primary ways for the Harness connector to authenticate with Azure:
 
-![](./static/add-a-microsoft-azure-connector-69.png)
-(./static/add-a-microsoft-azure-connector-69.png)
-You cannot view existing secret values, but you can create a new key. For more information, see [Create a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret) from Azure.
+* Select **Specify credentials here** to use an Application (client) and Tenant (directory) Id.
+* Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its credentials from the Harness delegate that is running in your Azure subscription or AKS cluster.
 
-If you select **Secret**, create or use an existing [Harness Text Secret](../6_Security/2-add-use-text-secrets.md).
+<details>
+<summary>Specify credentials</summary>
 
-If you select **Certificate**, create or use an existing [Harness File Secret](../6_Security/3-add-file-secrets.md).
+If you select **Specify credentials here**, you must provide Microsoft Azure app registration details.
 
-### Step 7: Delegates Setup
+![A comparison of app registration details and corresponding fields in the Harness connector settings.](./static/add-a-microsoft-azure-connector-63.png)
 
-Select the Delegate(s) to use with this Connector.
+1. In Microsoft Azure, go to the App registration **Overview** or **Managed Identity** page and make note of the **Application (client) ID** and **Directory (tenant) ID**.
 
-Click **Save and Continue**.
+   The **Application (client) ID** is the application Id for the app registration you want to use the Harness connector. To access resources in your Azure subscription, you must assign the Azure App registration using this Application Id to a role in that subscription. For more information, go to the following Microsoft documentation:
 
-In **Connection Test**, the connection is verified.
+   * [Quickstart: Register an app with the Azure Active Directory v1.0 endpoint](https://docs.microsoft.com/en-us/azure/active-directory/develop/quickstart-v1-add-azure-ad-app)
+   * [Assign the application to a role](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role)
+   * [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
 
-If you run into errors, make sure that your Delegate is running and that your credentials are valid. For example, check that the secret has not expired in your App registration.
+   The **Directory (tenant) ID** is the Id for the Azure Active Directory (AAD) that exists in your app. For more information, go to the following Azure documentation:
 
-### Review: Using ${HARNESS\_KUBE\_CONFIG\_PATH} with Azure
+   * [Get tenant ID](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id)
+   * [Use the portal to create an Azure AD application and service principal that can access resources](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal)
+
+   ![Microsoft Azure app registration Overview page.](./static/add-a-microsoft-azure-connector-68.png)
+
+2. In the Harness Azure Cloud Provider settings, select the **Environment**: Either **Azure Global** or **US Government**.
+3. Input the **Application (client) ID** from Azure in the connector's **Application Id** field.
+4. Input the **Directory (tenant) ID** from Azure in the connector's **Tenant Id** field.
+5. Provide an authentication key for your app. For **Authentication**, select either **Secret** or **Certificate**, and then select or create a [Harness Text Secret](../6_Security/2-add-use-text-secrets.md) or [Harness File Secret](../6_Security/3-add-file-secrets.md).
+
+   Harness supports only PEM files. Harness doesn't support PFX files.
+
+   If you need to create a secret key for your app, go to **App Registrations** in Azure Active Directory, select the app you're connecting to Harness, select **Certificates & secrets**, and then select **New client secret**. For more information, go to the Azure documentation about [Creating a new application secret](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#create-a-new-application-secret).
+
+   ![](./static/add-a-microsoft-azure-connector-69.png)
+
+6. Select **Continue**.
+
+</details>
+
+<details>
+<summary>Inherit credentials from the delegate</summary>
+
+If you have [installed a Harness Delegate](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
+
+1. For **Environment**, select **Azure Global** or **US Government**.
+2. For **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.
+
+   **System Assigned Managed Identity** uses the AKS cluster predefined [Kubelet Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities). The [Control plane AKS Managed Identity](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity#summary-of-managed-identities), which has name format `<AKSName>`, must have the **Reader** permission on the AKS cluster itself. If used for image storage, the Kubelet Managed Identity, which has name format `<AKSName>-agentpool`, must have the **acrPull** permission on ACR.
+
+   For more information about managed identities, go to the follow Azure documentation:
+
+   * [Use managed identities in Azure Kubernetes Service](https://docs.microsoft.com/en-us/azure/aks/use-managed-identity)
+   * [How to use managed identities with Azure Container Instances](https://docs.microsoft.com/en-us/azure/container-instances/container-instances-managed-identity) from Azure.
+
+   ![](./static/add-a-microsoft-azure-connector-66.png)
+
+3. If you selected **User Assigned Managed Identity**, input the Managed Identity's **Client Id**, which you can find in your Azure **Managed Identities**. You can also use a [Pod Assigned Managed identity](https://docs.microsoft.com/en-us/azure/aks/use-azure-ad-pod-identity).
+
+   ![](./static/add-a-microsoft-azure-connector-67.png)
+
+4. Select **Continue**
+
+</details>
+
+## Select connectivity mode
+
+1. Select how you want Harness to connect to Azure:
+
+   * **Connect through Harness Platform:** Use a direct, secure communication between Harness and Azure.
+   * **Connect through a Harness Delegate:** Harness communicates with Azure through a Harness delegate in your Azure subscription or AKS cluster. You must choose this option if you chose to inherit delegate credentials.
+
+2. If connecting through a Harness delegate, select either:
+
+   * **Use any available Delegate:** Harness selects an available delegate at runtime.
+   * **Only use Delegates with all of the following tags:** Use tags to match one or more suitable delegates. You can also install a new delegate at this time.
+
+3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
+
+   If the connection test fails, make sure that your delegate is running and that your credentials are valid. For example, check that the secret has not expired in your App registration.
+
+## Using ${HARNESS\_KUBE\_CONFIG\_PATH} with Azure
 
 The Harness `${HARNESS_KUBE_CONFIG_PATH}` expression resolves to the path to a Harness-generated kubeconfig file containing the credentials you provided to Harness.
 
 The credentials can be used by kubectl commands by exporting its value to the `KUBECONFIG` environment variable.
 
-For example, you could use a Harness Shell Script step and the expression like this:
-
+For example, you could use this shell script in a Harness Run step:
 
 ```
-export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
+export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n <namespace>
 ```
-Steps can be executed on any Delegate or you can select specific Delegates using the steps [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting.
+
+Steps can be executed on any delegate or you can select specific delegates using the [Delegate Selector](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) setting.
 
 For Azure deployments, note the following:
 
-* If the Azure Connector used in the Stage's **Infrastructure** uses Azure Managed Identity for authentication, then the Shell Script step must use a Delegate Selector for a Delegate running in AKS.
-* If the Azure Connector used in the Stage's **Infrastructure** uses Azure Service Principal for authentication, then the Shell Script step can use any Delegate.
+* If the Azure connector used in the stage's Infrastructure uses Azure Managed Identity for authentication, then the Shell Script step must use a **Delegate Selector** for a delegate running in AKS.
+* If the Azure connector used in the stage's Infrastructure uses Azure Service Principal for authentication, then the Shell Script step can use any delegate.
 
-### See also
+## See also
 
 * [Azure ACR to AKS CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md)
 * [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-
+* [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [CD Pipeline Basics](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md)
