@@ -204,12 +204,20 @@ Similar to how you [Speed up CI pipelines using parallelism](../../../platform/8
 
 Parallelism in the Run Tests step is different than parallelism elsewhere in your pipelines. Parallelism in other steps and stages requires you to specify how you want to divide up the workload (for example, `maxConcurrency`). Whereas, when you enable parallelism for Test Intelligence, Harness manages dividing the workload.
 
-To enable parallelism for Test Intelligence, you must add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`. Currently, this is only configurable in the YAML editor.
+To enable parallelism for Test Intelligence, you must enable parallelism for the <!--stage/step--> and add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`. Currently, you must use the YAML editor for this configuration.
 
 1. Go to the pipeline where you want to enable parallelism for Test Intelligence.
 2. Switch to the YAML editor.
-3. In the pipeline's YAML, find the `RunTests` step, and then find the `spec` section.
-4. Add the `enableTestSplitting` and optional `testSplitStrategy` parameters, and then save your pipeline. For example:
+3. In the pipeline's YAML, find the stage <!-- Need to add parallelism for stage or step-->.
+
+   ```yaml
+                    strategy:
+                        parallelism: 5
+                        maxConcurrency: 5
+   ```
+
+4. Find the `RunTests` step, and then find the `spec` section.
+5. Add the `enableTestSplitting` and optional `testSplitStrategy` parameters, and then save your pipeline. For example:
 
    ```yaml
                 - step:
@@ -223,8 +231,8 @@ To enable parallelism for Test Intelligence, you must add the `enableTestSplitti
 
    You must set `enableTestSplitting` to `true`.
 
-   The `TestSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming` for `testSplitStrategy`. Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test Count uses simple division to create workloads based on the total number of tests to run. The default is `ClassTiming` if you omit this parameter.
+   The `TestSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming` for `testSplitStrategy`. Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test Count uses simple division to create workloads based on the total number of tests to run. The default is `ClassTiming` if you omit this parameter. The maximum number of workloads that can exist at once is determined by the `strategy`.
 
-5. Save and run your pipeline.
+6. Save and run your pipeline.
 
 Note that while parallelism for Test Intelligence can improve the total time it takes to run all tests, some tests may still take a long time to run if, by their nature, they are intensive, long-running tests.
