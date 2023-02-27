@@ -1,12 +1,12 @@
 ---
-id: ec2-windows-cpu-hog
-title: EC2 Windows CPU hog
+id: windows-ec2-cpu-hog
+title: Windows EC2 CPU hog
 ---
 
 EC2 windows CPU hog induces stress on the AWS EC2 instances using Amazon SSM Run command, which is carried out using SSM docs that is in-built into the fault.
 - It causes CPU chaos on the target windows ec2 instances using the given `EC2_INSTANCE_ID` environment variable for a specific duration.
 
-![EC2 Windows CPU Hog](./static/images/ec2-cpu-hog.png)
+![Windows EC2 CPU hog](./static/images/ec2-cpu-hog.png)
 
 ## Usage
 
@@ -170,7 +170,7 @@ It defines the CPU core value to be utilised on the EC2 instance. You can tune i
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/ec2-windows-cpu-hog/cpu-core.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-cpu-hog/cpu-core.yaml yaml)
 ```yaml
 # CPU cores to utilize
 apiVersion: litmuschaos.io/v1alpha1
@@ -181,7 +181,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-windows-cpu-hog
+  - name: windows-ec2-cpu-hog
     spec:
       components:
         env:
@@ -201,7 +201,7 @@ Multiple EC2 instances can be targeted in one chaos run. You can tune it using t
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/ec2-windows-cpu-hog/multiple-instances.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-cpu-hog/multiple-instances.yaml yaml)
 ```yaml
 # mutilple instance targets
 apiVersion: litmuschaos.io/v1alpha1
@@ -212,7 +212,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-windows-cpu-hog
+  - name: windows-ec2-cpu-hog
     spec:
       components:
         env:

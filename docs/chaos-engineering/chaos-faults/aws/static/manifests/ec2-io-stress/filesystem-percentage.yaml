@@ -12,7 +12,7 @@ spec:
       components:
         env:
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
-          VALUE: '50'
+          value: '50'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'

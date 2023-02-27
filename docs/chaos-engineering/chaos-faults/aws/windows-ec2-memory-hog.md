@@ -1,24 +1,21 @@
 ---
-id: ec2-memory-hog
-title: EC2 memory hog
+id: windows-ec2-memory-hog
+title: Windows EC2 memory hog
 ---
 
-EC2 memory hog disrupts the state of infrastructure resources. 
-- The fault induces stress on AWS EC2 instance using Amazon SSM Run command that is carried out using the SSM docs that comes in-built in the fault.
+EC2 windows memory hog disrupts the state of infrastructure resources. 
+- The fault induces memory stress on target AWS windows EC2 instance using Amazon SSM Run command that is carried out using the SSM docs that comes in-built in the fault.
 - It causes memory exhaustion on the EC2 instance for a specific duration.
 
 
-![EC2 Memory Hog](./static/images/ec2-memory-hog.png)
+![Windows EC2 Memory Hog](./static/images/windows-ec2-memory-hog.png)
 
 
 ## Usage
 <details>
 <summary>View fault usage</summary>
 <div>
-The fault causes memory stress on the target AWS EC2 instance(s). It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging.
-Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases. 
-
-
+The fault causes memory stress on the target AWS windows EC2 instance(s). Injecting a rogue process into the target EC2 windows instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases.
 </div>
 </details>
 
@@ -26,8 +23,8 @@ Injecting a rogue process into the target EC2 instance starves the main processe
 ## Prerequisites
 
 - Kubernetes >= 1.17
-
-- Ensure that the SSM agent is installed and running on the target EC2 instance.
+- SSM agent is installed and running on the target EC2 Windows instance in Administator mode.
+- SSM IAM role should be attached to the target EC2 instance(s).
 - Ensure to create a Kubernetes secret has the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
 
 ```yaml
@@ -145,11 +142,6 @@ The EC2 instance should be in a healthy state.
         <td> Defaults to 30s. </td>
     </tr>
     <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive instance terminations (in seconds).</td>
-        <td> Defaults to 60s. </td>
-    </tr>
-    <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for aws secret credentials.</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
@@ -162,17 +154,12 @@ The EC2 instance should be in a healthy state.
     <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> The amount of memory to be hogged in the EC2 instance in terms of megabytes. </td>
-        <td> Defaults to 500MB. </td>
+        <td> Defaults to 0MB. </td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
         <td> The amount of memory to be hogged in the EC2 instance in terms of percentage.</td>
-        <td> Defaults to 0. </td>
-    </tr>
-    <tr>
-        <td> NUMBER_OF_WORKERS </td>
-        <td> The number of workers used to run the stress process. </td>
-        <td> Defaults to 1. </td>
+        <td> Defaults to 50. </td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
@@ -200,7 +187,7 @@ It defines the memory value to be utilized in megabytes on the EC2 instance. You
 
 You can tune it using the following example:
 
-[embedmd]:# (./static/manifests/ec2-memory-hog/memory-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-bytes.yaml yaml)
 ```yaml
 # memory in mb to utilize
 apiVersion: litmuschaos.io/v1alpha1
@@ -211,7 +198,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-memory-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:
@@ -231,7 +218,7 @@ It defines the memory percentage value to be utilized on the EC2 instance. You c
 
 You can tune it using the following example:
 
-[embedmd]:# (./static/manifests/ec2-memory-hog/memory-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-percentage.yaml yaml)
 ```yaml
 # memory percentage to utilize
 apiVersion: litmuschaos.io/v1alpha1
@@ -242,12 +229,14 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-memory-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:
         - name: MEMORY_PERCENTAGE
           value: '50'
+        - name: MEMORY_CONSUMPTION
+          value: '0'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
@@ -262,7 +251,7 @@ Multiple EC2 instances can be targeted in one chaos run by providing comma-separ
 
 You can tune it using the following example:
 
-[embedmd]:# (./static/manifests/ec2-memory-hog/multiple-instances.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/multiple-instances.yaml yaml)
 ```yaml
 # multiple instance targets
 apiVersion: litmuschaos.io/v1alpha1
@@ -273,44 +262,13 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-memory-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:
         # ids of the EC2 instances
         - name: EC2_INSTANCE_ID
           value: 'instance-1,instance-2,instance-3'
-        # region for the EC2 instance
-        - name: REGION
-          value: 'us-east-1'
-```
-
-### Multiple workers
-
-It defines the CPU threads to be run to spike the memory utilization, this will increase the growth of memory consumption. You can tune it using the `NUMBER_OF_WORKERS` environment variable.
-
-You can tune it using the following example:
-
-[embedmd]:# (./static/manifests/ec2-memory-hog/multiple-workers.yaml yaml)
-```yaml
-# multiple workers to utilize resources
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-memory-hog
-    spec:
-      components:
-        env:
-        - name: NUMBER_OF_WORKERS
-          value: '3'
-        # ID of the EC2 instance
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
         # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'

@@ -203,7 +203,7 @@ spec:
       components:
         env:
         - name: CPU_CORE
-          VALUE: '2'
+          value: '2'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
@@ -234,7 +234,7 @@ spec:
       components:
         env:
         - name: CPU_LOAD
-          VALUE: '50'
+          value: '50'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
@@ -294,9 +294,9 @@ spec:
       components:
         env:
         - name: CPU_CORE
-          VALUE: '2'
+          value: '2'
         - name: CPU_LOAD
-          VALUE: '50'
+          value: '50'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'

@@ -220,7 +220,7 @@ spec:
       components:
         env:
         - name: FILESYSTEM_UTILIZATION_BYTES
-          VALUE: '1024'
+          value: '1024'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
@@ -251,7 +251,7 @@ spec:
       components:
         env:
         - name: FILESYSTEM_UTILIZATION_PERCENTAGE
-          VALUE: '50'
+          value: '50'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
@@ -282,7 +282,7 @@ spec:
       components:
         env:
         - name: NUMBER_OF_WORKERS
-          VALUE: '3'
+          value: '3'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
@@ -313,7 +313,7 @@ spec:
       components:
         env:
         - name: VOLUME_MOUNT_PATH
-          VALUE: '/tmp'
+          value: '/tmp'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
