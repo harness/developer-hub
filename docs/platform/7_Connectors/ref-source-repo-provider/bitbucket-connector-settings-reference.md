@@ -190,13 +190,13 @@ App passwords need the following permissions:
 * Repositories: Read, Write
 * Pull requests: Read, Write
 
+![](./static/bitbucket-connector-settings-reference-05.png)
+
 :::caution
 
 For **HTTP** Connection Types, use the same password you used earlier, and make sure the **Username** fields are both plaintext or encrypted. You can't use a plain-text username for one field and a secret for the other.
 
 :::
-
-![](./static/bitbucket-connector-settings-reference-05.png)
 
 ## Connectivity Mode settings
 
