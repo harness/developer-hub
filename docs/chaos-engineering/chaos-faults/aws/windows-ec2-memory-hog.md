@@ -1,6 +1,6 @@
 ---
 id: windows-ec2-memory-hog
-title: Windows EC2 Memory Hog
+title: Windows EC2 memory hog
 ---
 
 Windows EC2 Memory Hog induces memory stress on target AWS windows EC2 instance using Amazon SSM Run command that is carried out using the SSM docs that comes in-built in the fault.

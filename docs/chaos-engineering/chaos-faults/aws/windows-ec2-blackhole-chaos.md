@@ -1,6 +1,6 @@
 ---
 id: windows-ec2-blackhole-chaos
-title: Windows EC2 Blackhole Chaos
+title: Windows EC2 blackhole chaos
 ---
 Windows EC2 blackhole chaos causes access loss to the given target hosts/ips by injecting firefall rules.
 - It checks the performance of the application (or process) running on the EC2 instances.
