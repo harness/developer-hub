@@ -14,7 +14,7 @@ import ticket_summary from './static/jira-integration-05-ticket-summary.png'
 -->
 
 
-You can easily create Jira tickets for issues detected during an STO build. This topic describes how to set up this integration
+You can easily create Jira tickets for issues detected during an STO build. This topic describes how to set up this integration.
 
 :::note
 * This feature is not supported in Self-Managed Enterprise Edition.
