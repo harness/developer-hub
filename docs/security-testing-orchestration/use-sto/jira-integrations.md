@@ -4,12 +4,14 @@ description: You can easily create Jira tickets for any issue detected during an
 sidebar_position: 200
 ---
 
+<!--
 ```mdx-code-block
 import create_ticket from './static/jira-integration-02-create-ticket.png'
 import ticket_num from './static/jira-integration-03-ticket-num-in-issue-details.png'
 import issue_link from './static/jira-integration-04-link-in-jira-ticket.png'
 import ticket_summary from './static/jira-integration-05-ticket-summary.png'
 ```
+-->
 
 
 You can easily create Jira tickets for issues detected during an STO build. This topic describes how to set up this integration
