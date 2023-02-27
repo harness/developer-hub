@@ -34,24 +34,81 @@ Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication.
 
 ### Bitbucket Account/Repository URL
 
-Enter the URL for the Bitbucket account or repository that you want to connect to. The required value is determined by the **URL Type**, **Connection Type**, and your Bitbucket account type (Cloud or Data Center).
+Enter the URL for the Bitbucket account or repository that you want to connect to. The required value is determined by the **URL Type**, **Connection Type**, and your Bitbucket account type (Cloud or Data Center)
 
-| URL Type | Description | HTTP Connection Type URL format | SSH Connection Type URL format |
-| -------- | ----------- | ------------------------------- | ------------------------------ |
-| Account | The Bitbucket account URL without a repo name | <ul><li>Cloud: `https://bitbucket.org/<username>`</li><li>Data Center: `https://<on-prem-hostname>:<port>/<username>`</li></ul> | <ul><li>Cloud: `git@bitbucket.org:<username>`</li><li>Data Center: `?`</li></ul> |
-| Repository | The complete Bitbucket repository URL | <ul><li>Cloud: `https://bitbucket.org/<username>/<repo-name>.git`</li><li>Data Center: `https://<on-prem-hostname>:<port>/<username>/<project-id>/<repo-name>.git`</li></ul> | <ul><li>Cloud: `git@bitbucket.org:<username>/<repo-name>.git`</li><li>Data Center: `?`</li></ul> |
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="account" label="URL Type: Account" default>
+```
+
+In the **Bitbucket Account URL** field, provide only the account-identifying portion of the Bitbucket URL, such as `https://bitbucket.org/my-bitbucket`. Do not include a repo name or project name.
+
+The URL format depends on the **Connection Type** and your Bitbucket account type (Cloud or Data Center). The following table provides format examples for each combination.
+
+| Connection Type | Bitbucket Cloud | Bitbucket Data Center (On-Prem) |
+| --------------- | --------------- | ------------------------------- |
+| HTTP | `https://bitbucket.org/<username>` | `https://bitbucket.<your-org-hostname>/scm` |
+| SSH | `git@bitbucket.org:<username>` | `git@bitbucket.<your-org-hostname>` |
+
+Here is an example of the **Details** for a Bitbucket Cloud account URL in HTTP and SSH format:
+
+![Bitbucket Account URL field with a Bitbucket Cloud account HTTPS URL](./static/bitbucket-account-http-cloud-url.png)
+
+Here is an example of the **Details** for a Bitbucket Data Center URL in HTTP and SSH format:
+
+![Bitbucket Account URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-account-http-onprem-url.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="repo" label="URL Type: Repository">
+```
+
+In the **Bitbucket Repository URL** field, provide the complete URL to the Bitbucket repository that you want this connector to point to.
+
+The URL format depends on the **Connection Type** and your Bitbucket account type (Cloud or Data Center). The following table provides format examples for each combination.
+
+| Connection Type | Bitbucket Cloud | Bitbucket Data Center (On-Prem) |
+| --------------- | --------------- | ------------------------------- |
+| HTTP | `https://bitbucket.org/<username>/<repo-name>.git` | `https://bitbucket.<your-org-hostname>/scm/<project-id>/<repo-name>.git` |
+| SSH | `git@bitbucket.org:<username>/<repo-name>.git` | `git@bitbucket.<your-org-hostname>/<project-id>/<repo-name>.git` |
+
+Here is an example of the **Details** for a Bitbucket Cloud repository URL in SSH format:
+
+![Bitbucket Repository URL field with a Bitbucket Cloud SSH URL](./static/bitbucket-repo-ssh-cloud-url.png)
+
+Here is an example of the **Details** for a Bitbucket Data Center repository URL in HTTP format:
+
+![Bitbucket Repository URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-repo-http-onprem-url.png)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 :::tip
 
-Bitbucket Data Center (On-Prem) accounts use the `<domain-name>:<port>` format for the authority portion of the URL.
+Bitbucket Data Center (On-Prem) accounts may use a `<domain-name>:<port>` format for the authority portion of SSH URLs, for example `bitbucket.your-company.com:8080`. This depends on your server and firewall configuration.
+
+![Bitbucket connector Details settings configured to connect to an On-Prep account using an SSH URL with a port number.](./static/bitbucket-connector-settings-reference-ssh-with-port.png)
 
 :::
 
 ### Test Repository
 
-This field is required only if the **URL Type** is **Account**. Provide the path to a repo in your Bitbucket account that Harness can use to test the connector, such as `<repo-name>.git`. For BitBucket Data Center (On-Prem) accounts, include the project ID, such as `<project-id>/<repo-name>.git`.
+This field is only required if the **URL Type** is **Account**. Provide a path to a repo in your Bitbucket account that Harness can use to test the connector. Harness uses this repo path to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
-Harness uses this repo path to validate the connection only. When you use this connector in a pipeline, you'll specify a repo in your pipeline configuration or at runtime.
+For Bitbucket Cloud accounts, the **Test Repository** path format is: `<repo-name>.git`.
+
+![Test Repository field populated with the path to a Bitbucket Cloud repo.](./static/bitbucket-account-cloud-testrepo.png)
+
+For BitBucket Data Center (On-Prem) accounts, you must include the project ID, such as `<project-id>/<repo-name>.git`.
+
+![Test Repository field populated with the path to a Bitbucket Data Center repo.](./static/bitbucket-account-onprem-testrepo.png)
 
 ## Credentials settings
 
@@ -62,13 +119,13 @@ Provide authentication credentials for the connector.
 The **Authentication** method is determined by the **Connection Type** you chose in the [Details settings](#details-settings).
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 ```
 
 ```mdx-code-block
-<Tabs>
-  <TabItem value="http" label="Username and Password" default>
+<Tabs2>
+  <TabItem2 value="http" label="Username and Password" default>
 ```
 
 The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
@@ -92,8 +149,8 @@ Bitbucket accounts with two-factor authentication must use access tokens.
 ![](./static/bitbucket-connector-settings-reference-05.png)
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="ssh" label="SSH Key">
+  </TabItem2>
+  <TabItem2 value="ssh" label="SSH Key">
 ```
 
 The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../6_Security/3-add-file-secrets.md).
@@ -113,8 +170,8 @@ Make sure to follow the prompts to finish creating the key. For more information
 :::
 
 ```mdx-code-block
-  </TabItem>
-</Tabs>
+  </TabItem2>
+</Tabs2>
 ```
 
 ### Enable API access
