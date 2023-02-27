@@ -59,9 +59,13 @@ You can only create Jira tickets for [targets](/docs/security-testing-orchestrat
 
     5. **Notes** Any notes you want to add to the ticket. 
 
+      ![](./static/jira-integration-02-create-ticket.png)
+
+<!--
 ```mdx-code-block
 <img src={create_ticket} alt="Create Jira Ticket options" height="50%" width="50%" />
 ```
+-->
 
 4. Click **Create**. The Jira connector sends the request to the Jira API and Jira creates the ticket. 
 
