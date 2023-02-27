@@ -3,7 +3,7 @@ id: windows-ec2-cpu-hog
 title: Windows EC2 CPU Hog
 ---
 
-EC2 windows CPU hog induces stress on the AWS EC2 instances using Amazon SSM Run command, which is carried out using SSM docs that is in-built into the fault.
+EC2 windows CPU hog induces CPU stress on the AWS windows EC2 instances using Amazon SSM Run command, which is carried out using SSM docs that is in-built into the fault.
 - It causes CPU chaos on the target windows ec2 instances using the given `EC2_INSTANCE_ID` environment variable for a specific duration.
 
 ![Windows EC2 CPU hog](./static/images/windows-ec2-cpu-hog.png)
@@ -13,7 +13,7 @@ EC2 windows CPU hog induces stress on the AWS EC2 instances using Amazon SSM Run
 <details>
 <summary>View fault usage</summary>
 <div>
-The fault causes CPU stress on the target AWS Windows EC2 instance(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases.
+The fault causes CPU stress on the target AWS Windows EC2 instance(s). It simulates the situation of lack of CPU for processes running on the instance, which degrades their performance. Injecting a rogue process into the target EC2 instance starves the main processes (or applications of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience against such stress cases.
 </div>
 </details>
 

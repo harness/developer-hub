@@ -3,9 +3,8 @@ id: windows-ec2-memory-hog
 title: Windows EC2 Memory Hog
 ---
 
-EC2 windows memory hog disrupts the state of infrastructure resources. 
-- The fault induces memory stress on target AWS windows EC2 instance using Amazon SSM Run command that is carried out using the SSM docs that comes in-built in the fault.
-- It causes memory exhaustion on the EC2 instance for a specific duration.
+Windows EC2 Memory Hog induces memory stress on target AWS windows EC2 instance using Amazon SSM Run command that is carried out using the SSM docs that comes in-built in the fault.
+- It causes memory exhaustion on the target windows EC2 instance for a specific duration.
 
 
 ![Windows EC2 Memory Hog](./static/images/windows-ec2-memory-hog.png)
@@ -15,7 +14,7 @@ EC2 windows memory hog disrupts the state of infrastructure resources.
 <details>
 <summary>View fault usage</summary>
 <div>
-The fault causes memory stress on the target AWS windows EC2 instance(s). Injecting a rogue process into the target EC2 windows instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases.
+The fault causes memory stress on the target AWS windows EC2 instance(s). Injecting a rogue process into the target EC2 windows instance starves the main processes (or applications) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience against such stress cases.
 </div>
 </details>
 
