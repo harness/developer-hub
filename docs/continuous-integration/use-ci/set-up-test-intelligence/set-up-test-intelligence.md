@@ -202,36 +202,46 @@ Select **Expand graph** to view the Test Intelligence Visualization, which shows
 
 Similar to how you [Speed up CI pipelines using parallelism](../../../platform/8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md), you can enable parallelism in your Run Tests steps to improve the total Run Tests step duration.
 
-Parallelism in the Run Tests step is different than parallelism elsewhere in your pipelines. Parallelism in other steps and stages requires you to specify how you want to divide up the workload (for example, `maxConcurrency`). Whereas, when you enable parallelism for Test Intelligence, Harness manages dividing the workload.
+Parallelism in the Run Tests step is different than parallelism elsewhere in your pipelines. Parallelism in other steps and stages requires you to specify how you want to divide up the workload (for example, `maxConcurrency`). Whereas, when you enable parallelism for Test Intelligence, you tell Harness the maximum workload to create and Harness manages the workload division.
 
-To enable parallelism for Test Intelligence, you must enable parallelism for the <!--stage/step--> and add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`. Currently, you must use the YAML editor for this configuration.
+To enable parallelism for Test Intelligence, you must set a parallelism `strategy` on either the Run Tests step or stage where you have the Run Tests step, and you must add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`.
 
 1. Go to the pipeline where you want to enable parallelism for Test Intelligence.
-2. Switch to the YAML editor.
-3. In the pipeline's YAML, find the stage <!-- Need to add parallelism for stage or step-->.
+2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy` and `paralleism`. Other options, such as `maxConcurrency` are optional. For example:
 
    ```yaml
-                    strategy:
-                        parallelism: 5
-                        maxConcurrency: 5
+        strategy:
+          parallelism: 5
+          maxConcurrency: 5
    ```
 
+   You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
+
+   :::caution
+
+   If you use step-level parallelism, you must ensure that your test runners won't interfere with each other, because all parallel steps work on the same directory.
+
+   :::
+
+3. Switch to the YAML editor, if you were not already using it.
 4. Find the `RunTests` step, and then find the `spec` section.
-5. Add the `enableTestSplitting` and optional `testSplitStrategy` parameters, and then save your pipeline. For example:
+5. Add the `enableTestSplitting` parameter and the optional `testSplitStrategy` parameter. You must set `enableTestSplitting` to `true`.
+
+   The `TestSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming` for `testSplitStrategy`. Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter.
+
+   The maximum number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
+
+   Here is a truncated YAML example of a Run Tests step with `enableTestSplitting` and `testSplitStrategy`:
 
    ```yaml
                 - step:
-                      type: RunTests
-                     name: Run Test With Intelligence
-                      identifier: run-tests-with-intelligence
-                      spec:
-                        enableTestSplitting: true
-                        testSplitStrategy: ClassTiming
+                    type: RunTests
+                    name: Run Test With Intelligence
+                    identifier: run-tests-with-intelligence
+                    spec:
+                      enableTestSplitting: true
+                      testSplitStrategy: ClassTiming
    ```
-
-   You must set `enableTestSplitting` to `true`.
-
-   The `TestSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming` for `testSplitStrategy`. Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test Count uses simple division to create workloads based on the total number of tests to run. The default is `ClassTiming` if you omit this parameter. The maximum number of workloads that can exist at once is determined by the `strategy`.
 
 6. Save and run your pipeline.
 
