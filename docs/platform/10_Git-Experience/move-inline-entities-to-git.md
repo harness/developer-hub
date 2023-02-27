@@ -75,5 +75,5 @@ This section explains steps to move an [inline pipeline](../8_Pipelines/add-a-st
 
 
 :::warning
-When you switch an inline pipeline into a remote pipeline, the pipeline's associated entities aren't automatically moved to a Git repository. You must also move the corresponding input sets and triggers to the remote repository.
+When you switch an inline pipeline into a remote pipeline, the pipeline's associated entities aren't automatically moved to a Git repository. You must also move the corresponding input sets to the remote repository.
 :::
