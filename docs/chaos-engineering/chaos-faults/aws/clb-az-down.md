@@ -1,28 +1,28 @@
 ---
-id: elb-az-down
-title: ELB AZ down
+id: clb-az-down
+title: CLB AZ down
 ---
 
-ELB AZ down takes down the AZ (availability zones) on a target ELB for a specific duration. 
+CLB AZ down takes down the AZ (availability zones) on a target CLB for a specific duration. 
 - It restricts access to certain availability zones for a specific duration.
 - It tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
-![ELB AZ Down](./static/images/elb-az-down.png)
+![CLB AZ Down](./static/images/clb-az-down.png)
 
 ## Uses
 
 <details>
 <summary>View the uses of the fault</summary>
 <div>
-This fault breaks the connectivity of an ELB with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
+This fault breaks the connectivity of an CLB with the given zones and impacts their delivery. Detaching the AZ from the classic load balancer disrupts the dependent application's performance. 
 </div>
 </details>
 
 ## Prerequisites
 
 - Kubernetes > 1.17
-- AWS access to attach or detach an AZ from ELB.
-- Minimum number of AZ is attached to the ELB, else the fault fails to detach the given AZ.
+- AWS access to attach or detach an AZ from CLB.
+- Minimum one AZ should be attached to the CLB even after the chaos injection, else the fault fails to detach the given AZ.
 - Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 ```yaml
 apiVersion: v1
@@ -73,7 +73,7 @@ Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.m
 
 ## Default validations
 
-The ELB is attached to the given availability zones.
+The clb is attached to the given availability zones.
 
 ## Fault tunables
 
@@ -89,11 +89,11 @@ The ELB is attached to the given availability zones.
       <tr>
         <td> LOAD_BALANCER_NAME </td>
         <td> Provide the name of load balancer whose AZ has to be detached</td>
-        <td> For example, <code>elb-name</code> </td>
+        <td> For example, <code>clb-name</code> </td>
       </tr>
       <tr>
         <td> ZONES </td>
-        <td> Provide the target zones that have to be detached from ELB</td>
+        <td> Provide the target zones that have to be detached from CLB</td>
         <td> For example, <code>us-east-1a</code> </td>
       </tr>
       <tr>
@@ -144,9 +144,9 @@ It contains comma-separated list of target zones. You can tune it using the `ZON
 
 Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/elb-az-down/target-zones.yaml yaml)
+[embedmd]:# (./static/manifests/clb-az-down/target-zones.yaml yaml)
 ```yaml
-# contains elb az down for given zones
+# contains clb az down for given zones
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -155,13 +155,13 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: elb-az-down
+  - name: clb-az-down
     spec:
       components:
         env:
         # load balancer name for chaos
         - name: LOAD_BALANCER_NAME
-          value: 'tes-elb'
+          value: 'tes-clb'
         # target zones for the chaos
         - name: ZONES
           value: 'us-east-1a,us-east-1b'
