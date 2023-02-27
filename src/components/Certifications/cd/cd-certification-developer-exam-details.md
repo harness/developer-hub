@@ -10,15 +10,15 @@ The Continuous Delivery Developer exam tests your knowledge and skills of the Ha
 Exam Duration: 90 minutes <br/>
 Question Type: Multiple choice
 
-| Type                                | Coverage         |
+| Covered Domain                                | Coverage         |
 | ----------------------------------- | --------------- |
-| **Domain 1: Application Architectures and Services for Deployment** | 25% |
-| **Domain 2: Swimlanes** | 15% |
-| **Domain 3: Continuous Delivery**   | 30% |
-| **Domain 4: Continuous Verification**  | 8% |
-| **Domain 5: GitOps**  | 10% |
-| **Domain 6: Data Visibility**  | 8% |
-| **Domain 7: Security**  | 7%|
+| **Application Architectures and Services for Deployment** | 25% |
+| **Product Swimlanes** | 15% |
+| **Continuous Delivery**   | 30% |
+| **Continuous Verification**  | 8% |
+| **GitOps**  | 10% |
+| **Data Visibility**  | 8% |
+| **Security**  | 7%|
 
 <br />
 
@@ -105,8 +105,8 @@ The following is a detailed list of exam objectives:
 
 ## Next Steps
 
-1. Create an account in 
+The Continuous Delivery Developer exam can start immediatly after registering. Please allow 90 mins for the exam.
+
+1. Create an account in Harness University
 2. Register for an exam 
-3. Take the pre-req protctor course
-4. Schedule the exam
-5. Take the exam
+3. Take the exam
