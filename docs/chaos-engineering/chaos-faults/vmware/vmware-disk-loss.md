@@ -1,24 +1,25 @@
 ---
-id: vmware-disk-loss
-title: VMware Disk Loss
+id: VMware-disk-loss
+title: VMware disk loss
 ---
 
-## Introduction
-- VMware Disk Loss fault will detach the disks attached to a Linux OS based VMware VM.
+VMware disk loss detaches the disks that are attached to a Linux OS based VMware VM.
 
-:::tip Fault execution flow chart
 ![VMware Disk Loss](./static/images/vmware-disk-loss.png)
-:::
 
-## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
+## Use cases
 
-** vCenter Requirements **
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- VMware disk loss determines the resilience of an application to the unplanned scaling of K8s pods.
+
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- The VM should be in a healthy state before and after injecting chaos.
+- The target disks should be attached to the VM.
+- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- VMware tool should be installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -31,17 +32,10 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-:::
-## Default Validations
-:::info
-- VM should be in healthy state.
-- The target disks should be attached to the VM.
-:::
 
-## Fault Tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+## Fault tunables
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -50,16 +44,16 @@ stringData:
       </tr>
       <tr>
         <td> APP_VM_MOIDS </td>
-        <td> Once you open VM in vCenter WebClient, you can find MOID in address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID </td>
-        <td> vm-5365 </td>
+        <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
+        <td> For example, <code>vm-5365</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-vm-power-off/#stoppoweroff-the-vm-by-moid"> MOIDs of the VMware instance.</a></td>
       </tr>
       <tr>
         <td> VIRTUAL_DISK_NAMES </td>
-        <td> Name of target disks provided as comma separated values </td>
-        <td> disk-1.vmdk,disk-2.vmdk </td>
+        <td> Name of the target disks provided as comma-separated values. </td>
+        <td> For example, <code>disk-1.vmdk,disk-2.vmdk</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-disk-loss#virtual-disk-names"> virtual disk names. </a></td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -68,40 +62,34 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination </td>
-        <td> Defaults to 30s </td>
+        <td> Time interval between two successive instance terminations (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).</td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
-</details>
 
-## Fault Examples
+### Virtual disk names
+It specifies the name of the target disks attached to a particular VM. Tune it by using the `VIRTUAL_DISK_NAMES` environment variable.
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
-
-### VIRTUAL_DISK_NAMES
-It contains the name of target disks attached to a particular VM. It can be tuned via `VIRTUAL_DISK_NAMES` ENV.
-
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-disk-loss/vm-disk-loss-diskname.yaml yaml)
 ```yaml
-# Disk loss in the VMWare VM
+# Disk loss in the VMware VM
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -110,7 +98,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-disk-loss
+  - name: VMware-disk-loss
     spec:
       components:
         env:
@@ -121,4 +109,3 @@ spec:
         - name: VIRTUAL_DISK_NAMES
           value: 'disk-1.vmdk'
 ```
-

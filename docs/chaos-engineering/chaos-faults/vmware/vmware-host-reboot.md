@@ -1,33 +1,27 @@
 ---
-id: vmware-host-reboot
-title: VMware Host Reboot
+id: VMware-host-reboot
+title: VMware host reboot
 ---
-## Introduction
-- VMware Host Reboot fault reboots a VMware host attached to the Vcenter.
-- It helps determining VMware infrastructure resiliency upon host reboot.
-- It can also be used to measure the infrastructure resiliency in case of an HA cluster.
+VMware host reboot reboots a VMware host that is attached to the Vcenter.
+- It helps determine the VMware infrastructure resilience when the host reboots.
+- It also measures the infrastructure resilience in case of an high availability (HA) cluster.
 
-:::tip Fault execution flow chart
 ![VMware Host Reboot](./static/images/vmware-host-reboot.png)
-:::
 
-## Uses
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-This fault has a high blast radius wherein all the VMs under the target host get disrupted. It can be used to measure the impact of host reboot on the VMs and underlying applications. It can be also used to measure the effectiveness of an HA cluster.
-</div>
-</details>
+## Use cases
 
-## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16 
+- VMware host reboot has a high blast radius due to which all the VMs under the target host are disrupted. 
+- It measures the impact of the host reboot on the VMs and its underlying applications. 
+- It also measures the effectiveness of a HA cluster.
 
-**vCenter Requirements**
-- Ensure the connectivity of execution plane with vCenter and the hosts over 443 port. 
-- Ensure that VMware tool is installed on the target VM with remote execution enabled.
-- Ensure that you have sufficient vCenter permission to access hosts and VMs.
-- Ensure to create a Kubernetes secret having the Vcenter credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- Execution plane should be connected to vCenter and host vCenter on port 443. 
+- The VM should be in a healthy state before and after injecting chaos.
+- VMware tool should be installed on the target VM with remote execution enabled.
+- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -40,19 +34,10 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-### NOTE
-You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
-:::
 
-## Default Validations
-:::info
-- Host should be in healthy state.
-:::
+## Fault tunables
 
-## Fault Tunables
-<details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -61,21 +46,21 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> HOST_NAME </td>
-        <td> The name of the target host </td>
-        <td> Eg. host-1 </td>
+        <td> Name of the target host </td>
+        <td> For example, <code>host-1</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#host-reboot"> host name.</a></td>
       </tr>
       <tr>
         <td> HOST_DATACENTER </td>
-        <td> The name of the datacenter to which the host belongs </td>
-        <td> Eg. datacenter-1 </td>
+        <td> Name of the data center to which the host belongs. </td>
+        <td> For example, <code>datacenter-1</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#host-reboot"> host datacenter. </a></td>
       </tr>
       <tr>
         <td> HIGH_AVAILABILITY_CLUSTER </td>
-        <td> Whether the host is part of a high availability cluster </td>
-        <td> Default value: disable. Supported: disable, enable </td>
+        <td> Specify whether the host is a part of the high availability cluster. </td>
+        <td> Defaults to disable. Supports enable as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot#ha-cluster"> high availablity cluster. </a></td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -84,21 +69,16 @@ You can pass the VM credentials as secrets or as an ChaosEngine ENV variable.
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).</td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
-</details>
 
-## Fault Examples
 
-### Common Fault Tunables
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+### Host reboot
+It reboots a vCenter host.
 
-### Host Reboot
-Reboot a vCenter host.
-
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-host-reboot/host-reboot.yaml yaml)
 ```yaml
@@ -112,7 +92,7 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-host-reboot
+    - name: VMware-host-reboot
       spec:
         components:
           env:
@@ -124,10 +104,10 @@ spec:
               value: 'datacenter-1'
 ```
 
-### HA Cluster
-Reboot a vCenter host which is part of an HA cluster.
+### HA cluster
+It specifies whether to reboot a vCenter host which is a part of a high availability cluster. Tune it by using the `HIGH_AVAILABILITY_CLUSTER` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/vmware-host-reboot/ha-host-reboot.yaml yaml)
 ```yaml
@@ -141,7 +121,7 @@ spec:
   annotationCheck: "false"
   chaosServiceAccount: litmus-admin
   experiments:
-    - name: vmware-host-reboot
+    - name: VMware-host-reboot
       spec:
         components:
           env:

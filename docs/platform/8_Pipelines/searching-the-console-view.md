@@ -1,7 +1,7 @@
 ---
 title: Searching the Console View
 description: Pipeline executions can be viewed in Console View and you can quickly search the logs for each step.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: gnht939ijo
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false

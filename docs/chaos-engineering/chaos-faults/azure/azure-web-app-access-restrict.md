@@ -1,30 +1,24 @@
 ---
 id: azure-web-app-access-restrict
-title: Azure Web App Access Restrict
+title: Azure web app access restrict
 ---
+Azure web app access restrict causes a split brain condition by restricting the access to an application service instance.
+- This fault checks if the requests have been serviced and recovery is automated after the restrictions have been lifted.
+- It checks the performance of the application (or process) running on the instance.
 
-## Introduction
-- Cause a split brain condition by restricting access to app-service instance and verify if requests are serviced and recovery is automated upon lifting restrictions
-- It helps to check the performance of the application/process running on the instance.
-
-:::tip Fault execution flow chart
 ![Azure Web App Access Restrict](./static/images/azure-web-app-access-restrict.png)
-:::
 
-## Uses
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-Coming soon.
-</div>
-</details>
+## Use cases
 
-## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16
-- Ensure that you have sufficient Azure access to web apps 
-- We will use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect with the instance using Azure GO SDK in the experiment. For generating auth file run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
-- Ensure to create a Kubernetes secret having the auth file created in the step in `CHAOS_NAMESPACE`. A sample secret file looks like:
+Azure web app access restrict determines the resilience of an application when access to a specific application service instance is restricted.
+
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- Appropriate Azure access to the web applications.
+- The target Azure web application should be in the running state.
+- Use Azure [ file-based authentication ](https://docs.microsoft.com/en-us/azure/developer/go/azure-sdk-authorization#use-file-based-authentication) to connect to the instance using Azure GO SDK. To generate the auth file, run `az ad sp create-for-rbac --sdk-auth > azure.auth` Azure CLI command.
+- Kubernetes secret should contain the auth file created in the previous step in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -46,18 +40,12 @@ stringData:
       "managementEndpointUrl": "XXXXXXXXX"
     }
 ```
-- If you change the secret key name (from `azure.auth`) please also update the `AZURE_AUTH_LOCATION` ENV value in the ChaosExperiment CR with the same name.
+- If you change the secret key name from `azure.auth` to a new name, ensure that you update the `AZURE_AUTH_LOCATION` environment variable in the chaos experiment with the new name.
 :::
 
-## Default Validations
-:::info
-- Azure target web app should be in running state.
-:::
+## Fault tunables
 
-## Fault Tunables
-<details>
-    <summary>Check the Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+  <h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -66,16 +54,16 @@ stringData:
         </tr>
         <tr> 
             <td> AZURE_WEB_APP_NAMES </td>
-            <td> Name of Azure web app services to target.</td>
-            <td> Provide comma-separated names of the web apps </td>
+            <td> Name of Athe zure web app services to target.</td>
+            <td> Comma-separated names of the web applications. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#web-app-access-restrict-by-name"> restrict by name.</a></td>
         </tr>
         <tr>
             <td> RESOURCE_GROUP </td>
-            <td> The resource group of the target web app</td>
-            <td> </td>
+            <td> The name of the resource group for the target web app</td>
+            <td> For example, <code>TeamDevops</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#web-app-access-restrict-by-name"> resource group field in the YAML file.</a></td>
         </tr> 
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -84,58 +72,52 @@ stringData:
         </tr>
         <tr>
             <td> RULE_NAME </td>
-            <td> Provide the rule name that should be added as part of chaos injection</td>
-            <td> If not provided it will use a default name <code>litmus-experiment-rule</code></td>
+            <td> Rule name that is added as a part of the chaos injection. </td>
+            <td> If this is not provided, the fault uses the default name, i.e. <code>litmus-experiment-rule</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#access-restrict-with-custom-rule-name"> restrict with custom rule. </a></td>
         </tr>
         <tr>
             <td> IP_ADDRESS_BLOCK </td>
-            <td> Provide the IP address/CIDR Range for the rule</td>
-            <td>  Default is <code>0.0.0.0/0</code></td>
+            <td> IP address (or CIDR range) for the rule. </td>
+            <td>  Defaults to <code>0.0.0.0/0</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#access-restrict-for-a-certain-cidr-range"> restrict for a CIDR range. </a></td>
         </tr>
         <tr>
             <td> ACTION </td>
-            <td> Provide the action you want to perfrom with the rule</td>
-            <td> Accepts "allow"/"deny". Default is "deny"</td>
+            <td> Action you wish to perfrom with the rule. </td>
+            <td> Defaults to <code>deny</code>. Also supports <code>allow</code> action. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#access-restrict-with-action"> restrict with action. </a></td>
         </tr>
         <tr>
             <td> PRIORITY </td>
-            <td> Provide the priority of the rule. Lower the number higher the priority and vice versa</td>
-            <td>  Default is "300". For more info <a href="https://learn.microsoft.com/en-us/azure/virtual-network/network-security-groups-overview">refer</a></td>
+            <td> Priority of the rule, wherein lower the number, higher is the priority and vice-versa. </td>
+            <td> Defaults to 300. For more information, refer <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict#access-restrict-with-priority"> restrict with priority.</a></td>
         </tr>
         <tr> 
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos insertion (sec) </td>
-            <td> Defaults to 30s </td>
+            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
         </tr>
         <tr> 
             <td> CHAOS_INTERVAL </td>
-            <td> The interval (in sec) between successive instance poweroff.</td>
-            <td> Defaults to 30s </td>
+            <td> Time interval between two successive instance power offs (in seconds).</td>
+            <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance</td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to <code>parallel</code>. Also supports <code>serial</code> sequence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
-            <td> Period to wait before and after injection of chaos in sec </td>
-            <td> Eg: 30 </td>
+            <td> Period to wait before and after injecting chaos (in seconds). </td>
+            <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
         </tr>
     </table>
-</details>
 
-## Fault Examples
 
-### Common Fault Tunables
+### Web app access restrict by name
 
-Refer the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the experiments.
+It specifies a comma-separated list of web application names subject to chaos. Tune it by using the `AZURE_WEB_APP_NAMES` environment variable.
 
-### Web App Access Restrict By Name
-
-It contains comma separated list of web app names subjected to chaos. It can be tuned via `AZURE_WEB_APP_NAMES` ENV.
-
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/azure-web-app-name.yaml yaml)
 ```yaml
@@ -164,11 +146,11 @@ spec:
 ```
 
 
-### Access Restrict For A Certain CIDR Range
+### Access restrict for a certain CIDR range
 
-It contains a CIDR range to be used in rule. It can be tuned via `IP_ADDRESS_BLOCK`.
+It specifies a CIDR range used in the rule. Tune it by using the `IP_ADDRESS_BLOCK` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/ip-address-block.yaml yaml)
 ```yaml
@@ -196,11 +178,11 @@ spec:
           VALUE: '60'
 ```
 
-### Access Restrict With Action
+### Access restrict with action
 
-You can tune if you want to allow or deny traffic for the provided rule using `ACTION` ENV. By default it is set to deny.
+It specifies whether to allow or deny the traffic for the rule provided. Tune it by using the `ACTION` environment variable. By default, it is set to `deny`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/action.yaml yaml)
 ```yaml
@@ -221,16 +203,16 @@ spec:
         # Provide the action for a rule
         - name: ACTION
           value: 'deny'
-         # time duration for the chaos execution
+         # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
 
-### Access Restrict With Priority
+### Access restrict with priority
 
-You can define the priority of the network rule created by fault using `PRIORITY` ENV. By default it is set to `300`.
+It specifies the priority of the network rule created by the fault. Tune it by using the `PRIORITY` environment variable. By default, it is set to 300.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/priority.yaml yaml)
 ```yaml
@@ -251,16 +233,16 @@ spec:
         # Provide the priority for a rule
         - name: PRIORITY
           value: '300'
-         # time duration for the chaos execution
+         # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
 ```
 
-### Access Restrict With Custom Rule Name
+### Access restrict with custom rule name
 
-You can define a custom rule name for this chaos using `RULE_NAME` ENV. This rule will be added for a period of chaos duration. If not provided it will by default use `litmus-experiment-rule`.
+It specifies a custom rule name for the chaos. Tune it by using the `RULE_NAME` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/azure-web-access-restrict/rule-name.yaml yaml)
 ```yaml

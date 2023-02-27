@@ -1,0 +1,14 @@
+{
+    "label": "Organizations and Projects",
+    "position": 10,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Organizations and Projects"
+    },
+    "customProps": {
+        "helpdocs_category_id": "3trbf8xckk"
+    }
+}

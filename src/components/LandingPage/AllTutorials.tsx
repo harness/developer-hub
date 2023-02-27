@@ -64,6 +64,21 @@ const FeaturedList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-container-signing",
   },
+  {
+    title: 'Build and Publish a Rust application',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+       Learn how to build, test and publish multi architecture Rust application container image.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-rust-container',
+  },
 ];
 
 const CIList: CardItem[] = [
@@ -217,6 +232,37 @@ const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "20 min",
     link: "/tutorials/build-code/ci-react-quickstart",
+  },
+  {
+    title: 'Push application containers to Google Artifact Registry',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        This build automation guide describes how to build and push an application container image to Google Artifact Registry using a CI pipeline.
+
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-push-to-gar',
+  },
+  {
+    title: 'Build and Publish a Rust application',
+
+    module: 'ci',
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+       Learn how to build, test and publish multi architecture Rust application container image.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '15 min',
+    link: '/tutorials/build-code/ci-tutorial-rust-container',
   },
 ];
 
@@ -443,6 +489,18 @@ const CEList: CardItem[] = [
     time: "15min",
     link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
   },
+  {
+    title: "Your first chaos experiment execution using APIs",
+    module: "ce",
+    icon: "img/icon_ce.svg",
+    description: (
+      <>Executing a chaos experiment on Kubernetes for the first time using APIs.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+  },
 ];
 
 const PlatformList: CardItem[] = [
@@ -451,12 +509,26 @@ const PlatformList: CardItem[] = [
     module: "platform",
     icon: "img/logo.svg",
     description: (
-      <>Install a Docker or Kubernetes Delegate on your infrastructure.</>
+      <>Install a Kubernetes or Docker Delegate on your infrastructure.</>
     ),
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/install-delegate",
+  },
+  {
+    title: "Customize the delegate to run your favorite third-party tools",
+
+    module: "platform",
+    icon: "img/logo.svg",
+    description: (
+      <>Customize the delegate to run your favorite tools, including Helm, Terraform, and AWS CLI.</>
+
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/platform/customize-delegate",
   },
   {
     title: "Onboard with Terraform",
@@ -472,21 +544,6 @@ const PlatformList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
-  },
-  {
-    title: "Provision Azure Infrastructure for Harness Delegate",
-    module: "platform",
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Tutorial on how to set up a Kubernetes cluster on Azure and will serve
-        as the foundation for your CI/CD pipeline infrastructure.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "3 min",
-    link: "/tutorials/platform/provision-azure-infrastructure",
   },
 ];
 

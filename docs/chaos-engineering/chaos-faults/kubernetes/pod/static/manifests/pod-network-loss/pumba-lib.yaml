@@ -16,10 +16,6 @@ spec:
     spec:
       components:
         env:
-        # name of the chaoslib
-        # supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
         # image used for the traffic control in linux
         # applicable for pumba lib only
         - name: TC_IMAGE

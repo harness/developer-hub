@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: vmware-http-reset-peer
+  - name: VMware-http-reset-peer
     spec:
       components:
         env:

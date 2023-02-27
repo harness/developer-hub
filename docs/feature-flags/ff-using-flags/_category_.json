@@ -1,0 +1,15 @@
+{
+    "label": "Use Your Feature Flags",
+    "position": 20,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Add Prerequisites to Your Feature Flags"
+    },
+    "customProps": {
+        "helpdocs_category_id": "jqfkw27d3u",
+        "helpdocs_parent_category_id": "n3y8cried4"
+    }
+}

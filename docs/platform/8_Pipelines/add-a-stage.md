@@ -1,7 +1,7 @@
 ---
 title: Add a Stage
 description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature is coming soon. A Stage is a subset of a Pipeline that contains the logic to p…
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: 2chyf1acil
 helpdocs_category_id: kncngmy17o
 helpdocs_is_private: false
@@ -17,11 +17,11 @@ The module you select determines the stage settings.
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md)
+* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 
 ### Step 1: Create a Pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 You can create a Pipeline from any module in your Project, and then add stages for any module.
 
@@ -44,7 +44,7 @@ Select a stage type and follow its steps.
 
 The steps you see depend on the type of stage you selected.
 
-Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).Enter a name for the stage.
+Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).Enter a name for the stage.
 
 You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
 
@@ -93,5 +93,5 @@ You can drag stages on top of each other to run them in parallel:
 ![](./static/add-a-stage-57.png)
 ### See also
 
-* [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md)
+* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 

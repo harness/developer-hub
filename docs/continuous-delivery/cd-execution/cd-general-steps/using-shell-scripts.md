@@ -12,19 +12,158 @@ You can run shell scripts in a CD stage using the **Shell Script** step.
 
 With the Shell Script step, you can execute scripts in the shell session of the stage in the following ways:
 
-* Execute scripts on the host running a Harness Delegate. You can use Delegate Selectors to identify which Harness Delegate to use.
-* Execute scripts on a remote target host in the deployment Infrastructure Definition.
+* Execute scripts on the host running a Harness delegate. You can use delegate selectors to identify which Harness delegate to use.
+* Execute scripts on a remote target host in the deployment infrastructure definition.
 
 This topic provides a simple demonstration of how to create a script in a Shell Script step, publish its output in a variable, and use the published variable in a subsequent step.
 
-## Before You Begin
-
-* [Kubernetes deployment tutoral](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md): You can run a Shell Script step in a CD stage without specifying specs or artifacts, but you do need to set up the Infrastructure Definition.
-
-## Limitations
+## Important notes
 
 See [Shell Script Step Reference](../../cd-technical-reference/cd-gen-ref-category/shell-script-step.md).
+
+## Use cases
+
+Typically, the primary deployment operations are handled by the default Harness deployment steps, such as the [Kubernetes Rollout Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-rollout-step.md).
+
+The Shell Script step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more. 
+
+<details>
+<summary>Common secondary script examples</summary>
+
+Some common secondary scripts that are run in a Kubernetes container as part of CD are:
+
+- Database migrations. Update the database schema and apply any necessary data migrations.
+- Configuration updates. Update the configuration of the application or service being deployed.
+- Health checks. Perform health checks on the application or service being deployed, ensuring that it is running correctly and responding to requests.
+- Load testing. Perform load testing on the application or service, ensuring that it can handle the expected traffic and load.
+- Monitoring setup. Set up monitoring and logging for the application or service, so that any issues can be quickly detected and addressed.
+- Smoke tests. Perform simple tests to confirm that the application or service is running correctly after deployment.
+- Cleanup. Clean up any resources or files that were created during the deployment process.
+
+These secondary scripts are usually run as part of the CD pipeline, either as part of the build process or as separate jobs. They can be written in a variety of scripting languages. In many cases, these scripts are run in containers within the Kubernetes cluster, so that the necessary dependencies and tools are available.
+
+</details>
+
+### Mobile Device Management (MDM)/User Experience Management (UEM)
+
+Harness supports MDM/UEM through interaction using MDM/UEM APIs.
+
+You can leverage the Shell Script step to call the MDM/UEM APIs from Harness.
+
+Here are some example scripts for MDM and UEM that you might use as part of a DevOps continuous delivery pipeline:
+
+<details>
+<summary>MDM script example</summary>
+
+This script sets some variables for the MDM server URL, the MDM username and password, and the configuration file to install. It then uses the curl command to send the configuration file to the MDM server and install it on devices. Finally, it checks for errors and reports success or failure.
+
+```bash
+# This script deploys a new Mobile Device Management (MDM) configuration to devices
+
+# Set variables
+MDM_SERVER="https://your-mdm-server.com"
+MDM_USERNAME="your-mdm-username"
+MDM_PASSWORD="your-mdm-password"
+MDM_CONFIG_FILE="your-mdm-config-file.plist"
+
+# Install the MDM configuration on devices
+curl --request POST \
+     --user "$MDM_USERNAME:$MDM_PASSWORD" \
+     --header "Content-Type: application/xml" \
+     --data-binary "@$MDM_CONFIG_FILE" \
+     "$MDM_SERVER/devicemanagement/api/mdm/profiles"
+
+# Check for errors
+if [ $? -eq 0 ]; then
+  echo "MDM configuration installed successfully."
+else
+  echo "ERROR: MDM configuration failed to install."
+fi
+```
+</details>
+
+<details>
+<summary>UEM script example</summary>
+
+This script sets similar variables for the UEM server URL, username, password, and configuration file to install. It then uses curl to send the configuration file to the UEM server and install it on endpoints. Finally, it checks for errors and reports success or failure.
+
+```bash
+# This script deploys a new Unified Endpoint Management (UEM) configuration to endpoints
+
+# Set variables
+UEM_SERVER="https://your-uem-server.com"
+UEM_USERNAME="your-uem-username"
+UEM_PASSWORD="your-uem-password"
+UEM_CONFIG_FILE="your-uem-config-file.json"
+
+# Install the UEM configuration on endpoints
+curl --request POST \
+     --user "$UEM_USERNAME:$UEM_PASSWORD" \
+     --header "Content-Type: application/json" \
+     --data-binary "@$UEM_CONFIG_FILE" \
+     "$UEM_SERVER/api/config"
+
+# Check for errors
+if [ $? -eq 0 ]; then
+  echo "UEM configuration installed successfully."
+else
+  echo "ERROR: UEM configuration failed to install."
+fi
+
+```
+
+</details>
+
+
+Note that these scripts are just examples and may need to be modified to fit your specific use case. You may also want to include additional steps in your pipeline, such as testing and verification, before deploying MDM or UEM configurations to production devices.
+
+### Edge and IoT deployments
+
+You can use Harness continuous delivery to automate the process of deploying new versions of applications and services to edge and IoT devices, reducing the risk of human error, minimizing downtime, and improving the security of your IoT ecosystem.
+
+
+<details>
+<summary>Edge script example</summary>
+
+You can use the following script to deploy a new version of an application to an edge device. The script assumes that the device is already set up with the necessary dependencies, and that it is accessible via SSH.
+
+```bash
+# Define variables
+APP_NAME="my-app"
+REMOTE_HOST="my-edge-device"
+REMOTE_USER="root"
+REMOTE_DIR="/opt/$APP_NAME"
+
+# Copy the new version of the application to the remote host
+scp -r ./build $REMOTE_USER@$REMOTE_HOST:$REMOTE_DIR
+
+# Restart the application on the remote host
+ssh $REMOTE_USER@$REMOTE_HOST "systemctl restart $APP_NAME.service"
+```
+</details>
+
+
+<details>
+<summary>IoT script example</summary>
+
+You can use the following script to deploy a new version of an IoT device firmware. The script assumes that the device is connected to the network and can be accessed via SSH.
+
+```bash
+# Define variables
+DEVICE_IP="192.168.1.100"
+DEVICE_USER="pi"
+DEVICE_PASS="raspberry"
+FIRMWARE_FILE="firmware-v2.0.bin"
+
+# Copy the new firmware to the device
+sshpass -p $DEVICE_PASS scp $FIRMWARE_FILE $DEVICE_USER@$DEVICE_IP:/home/$DEVICE_USER/
+
+# Install the new firmware on the device
+sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEVICE_USER/$FIRMWARE_FILE"
+```
+
+</details>
+
 
 ## Step 1: Add Your Script
 
@@ -38,7 +177,7 @@ In the stage, in **Execution**, click **Add Step**.
 
 Select **Shell Script**.
 
-Enter a name for the step. An Id is generated. This Id identifies the step and is used in variable expressions. For example, if the Id is **Shell Script**, the expression might be `<+steps.Shell_Script.output.outputVariables.myvar>`.
+Enter a name for the step. An Id is generated. This Id identifies the step and is used in variable expressions. For example, if the Id is **Shell Script**, the expression might be `<+execution.steps.Shell_Script.output.outputVariables.myvar>`.
 
 In **Script**, enter a bash script. For example, the variable names `BUILD_NO`and `LANG`:
 
@@ -71,11 +210,11 @@ In **Script Input Variables**, you simply select **Expression** and paste the ex
 
 ![](./static/using-shell-scripts-18.png)
 
-In the Script, you declare the variable using the **Name** value.
+In the Script, you declare the variable using the **Name** value (in this example, `foo`).
 
-![](./static/using-shell-scripts-19.png)
+![picture 3](static/3efd3f47e73c3ca4804bd0e728d8815194ae80c9284ddfe0c11fb07c520b3b0c.png)
 
-At deployment runtime, Harness will evaluate the expression and the variable will contain its output.
+At deployment runtime, Harness evaluates the expression and the variable contains its output.
 
 ## Option: Specify Output Variables
 
@@ -97,30 +236,27 @@ In **Name**, enter a name to use in other steps that will reference this variabl
 The format to reference the output variable can be one of the following:
 
 * Within the stage:
-	+ Referencing the step output:
-		- `<+steps.[step_id].output.outputVariables.[output_variable_name]>`.
-	+ Referencing the step output execution:
-		- `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
-* Anywhere in the Pipeline:
-	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
+	+ `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
+* Anywhere in the pipeline:
+	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]>`
 
-For example, it could be `<+steps.Shell_Script.output.outputVariables.newname>`.
+For example, you could reference the output variable `newname` like this:
+
+```
+echo "anywhere in the pipeline: " <+pipeline.stages.Shell_Script_stage.spec.execution.steps.ShellScript_1.output.outputVariables.newname>
+echo "anywhere in the stage: " <+execution.steps.ShellScript_1.output.outputVariables.newname>
+```
 
 Here's an example showing how the **Script Output Variables** references the exported variable, and how you reference the output variable name to get that value:
 
-![](./static/using-shell-scripts-21.png)
+![picture 1](static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png)  
 
-So now the result of `<+steps.Shell_Script.output.outputVariables.newname>` is `123`.
+
+So now the result of `<+execution.steps.ShellScript_1.output.outputVariables.newname>` is `123`.
 
 To find the expression to reference your output variables, find the step in the Pipeline execution, and click its **Output** tab.
 
 ![](./static/using-shell-scripts-22.png)
-
-You will get the full path to the variable, like this:`<+pipeline.stages.Shell_Script.execution.steps.Shell_Script.outputVariables.newname>`.
-
-If you are using it in the same stage, you can remove everything up to `steps` (`pipeline.stages.Shell_Script.execution.`).
-
-Now you can use `<+steps.Shell_Script.output.outputVariables.newname>` to reference the output variable.
 
 ### Output Variables as Secrets
 
@@ -138,7 +274,7 @@ Next, you reference that output variable as a secret, like this:
 
 
 ```
-echo "my secret: " <+steps.CreateScript.output.outputVariables.myvar>
+echo "my secret: " <+execution.steps.CreateScript.output.outputVariables.myvar>
 ```
 When you run the Pipeline, the resolved output variable expression is sanitized:
 

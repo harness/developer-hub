@@ -44,6 +44,12 @@ Select the Code Repo Connector that connects to your Git provider account.
 
 See [Code Repo Connectors Tech Ref](/docs/category/code-repo-connectors).
 
+:::note
+
+Git webhook triggers do not support generic Git connectors. You must create provider-specific connectors for each provider (Github, GitLab, Bitbucket, etc) to use them with webhook triggers. For information on each Git provider connector, go to [Connect to a Git Repo](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo).
+
+:::
+
 ### Repository Name
 
 Enter the name of the repo in the account.
@@ -247,7 +253,8 @@ Some operators work on single values and some work on multiple values:
 
 **Multiple values:** `in`, `not in`.
 
-The **IN** and **NOT IN** operators don't support Regex.
+The **IN** and **NOT IN** operators can take comma-separated values. You can also use regex as a value. For example, `Not In master,release/.*`.
+
 
 ### Pipeline Input
 

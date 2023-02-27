@@ -3,36 +3,34 @@ id: pod-dns-spoof
 title: Pod DNS Spoof
 ---
 
-## Introduction
-- Pod-dns-spoof injects chaos to spoof dns resolution in kubernetes pods.
-- It causes dns resolution of target hostnames/domains to wrong IPs as specified by SPOOF_MAP in the engine config.
+Pod DNS spoof is a Kubernetes pod-level chaos fault that injects chaos into pods to mimic DNS resolution.
+- It resolves DNS target host names (or domains) to other IPs as specified in the `SPOOF_MAP` environment variable in the chaosengine configuration.
 
-:::tip Fault execution flow chart
 ![Pod DNS Spoof](./static/images/dns-chaos.png)
-:::
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+This fault determines the resilience of an application when host names are resolved incorrectly. It determines how quickly an application can resolve the host names and recover from the failure. It simulates custom responses from a spoofed upstream service.
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -51,7 +49,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> SPOOF_MAP </td>
-        <td> Map of the target hostnames eg. '&#123;"abc.com":"spoofabc.com"&#125;' where key is the hostname that needs to be spoofed and value is the hostname where it will be spoofed/redirected to.</td>
+        <td> Map of the target hostnames For example, '&#123;"abc.com":"spoofabc.com"&#125;' where key is the hostname that needs to be spoofed and value is the hostname where it will be spoofed/redirected to.</td>
         <td> If not provided, no hostnames/domains will be spoofed</td>
       </tr>
       <tr>
@@ -62,17 +60,12 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker</td>
+        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the docker socket file </td>
-        <td> Defaults to <code>/var/run/docker.sock</code> </td>
-      </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default value: litmus, supported values: litmus </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
@@ -82,7 +75,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -92,18 +85,19 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
-### Spoof Map
+### Spoof map
 
-It defines the map of the target hostnames eg. '{"abc.com":"spoofabc.com"}' where the key is the hostname that needs to be spoofed and value is the hostname where it will be spoofed/redirected to. It can be tuned via `SPOOF_MAP` ENV.
+It defines the map of the target host names. For example, '{"abc.com":"spoofabc.com"}' where the key is the host name that needs to be spoofed and the value is the host name to which the key is spoofed (or redirected). You can tune it using `SPOOF_MAP` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-dns-spoof/spoof-map.yaml yaml)
+[embedmd]: # "./static/manifests/pod-dns-spoof/spoof-map.yaml yaml"
+
 ```yaml
 # contains the spoof map for the dns spoofing
 apiVersion: litmuschaos.io/v1alpha1
@@ -119,27 +113,28 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-dns-spoof
-    spec:
-      components:
-        env:
-        # map of host names
-        - name: SPOOF_MAP
-          value: '{"abc.com":"spoofabc.com"}'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-dns-spoof
+      spec:
+        components:
+          env:
+            # map of host names
+            - name: SPOOF_MAP
+              value: '{"abc.com":"spoofabc.com"}'
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
-### Container Runtime Socket Path
+### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
-- `CONTAINER_RUNTIME`: It supports `docker` runtime only.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`).
+- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
+- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.sock`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-dns-spoof/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-dns-spoof/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -155,20 +150,20 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-dns-spoof
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        # map of host names
-        - name: SPOOF_MAP
-          value: '{"abc.com":"spoofabc.com"}'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
+    - name: pod-dns-spoof
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker
+            - name: CONTAINER_RUNTIME
+              value: "containerd"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/run/containerd/containerd.sock"
+            # map of host names
+            - name: SPOOF_MAP
+              value: '{"abc.com":"spoofabc.com"}'
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

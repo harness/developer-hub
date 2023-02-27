@@ -5,9 +5,9 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 
 enum TabValues {
-  Developer = "Developer",
-  Administrator = "Administrator",
-  Architect = "Architect",
+  Developer = "For Developers",
+  Administrator = "For Administrators",
+  Architect = "For Architects",
 }
 
 export default function Certifications() {
@@ -20,11 +20,10 @@ export default function Certifications() {
     <div className={styles.certifications}>
       <div className={styles.hero}>
         <div className={styles.left}>
-          <h1>Harness Certified Expert</h1>
+          <h1>Harness Certifications</h1>
           <div>
-            Learn intelligent software delivery skills at your own pace and in
-            once place. Step-by-step tutorials, videos, and reference docs to
-            help you create and deliver software.
+            Test and validate your knowledge of modern software delivery by
+            becoming a Harness Certified Expert.
           </div>
         </div>
         <div className={styles.right}>
@@ -33,11 +32,11 @@ export default function Certifications() {
             alt="Harness Certified Expert - Developer"
           />
           <img
-            src={`${baseUrl}img/cert_adm_badge.svg`}
+            src={`${baseUrl}img/cert_adm_cd_badge.svg`}
             alt="Harness Certified Expert - Administrator"
           />
           <img
-            src={`${baseUrl}img/cert_arc_badge.svg`}
+            src={`${baseUrl}img/cert_arc_cd_badge.svg`}
             alt="Harness Certified Expert - Architect"
           />
         </div>
@@ -67,10 +66,12 @@ export default function Certifications() {
           <div className={clsx(styles.certCard, styles.moduleCD)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
-                <h2>Continuous Delivery & GitOps Certifications</h2>
+                <h2>
+                  Continuous Delivery & GitOps - Developer (BETA COMING SOON)
+                </h2>
                 <img
-                  src={`${baseUrl}img/cert_dev_cd_badge_s.svg`}
-                  alt="Harness Certified Expert - Developer - CD"
+                  src={`${baseUrl}img/cert_dev_cd_badge.svg`}
+                  alt="Harness Certified Expert - CD & GitOps Developer"
                   className={styles.badge}
                 />
               </div>
@@ -83,38 +84,38 @@ export default function Certifications() {
                 <ul className={styles.courseList}>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Application Deployments
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Visibility
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Continuous Delivery
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Continuous Verification
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    GitOps
                   </li>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Infrastructure Providers
                   </li>
                 </ul>
-                <Link href="#">
+                <Link href="/certifications/continuous-delivery/cd-developer-cert#prepare">
                   <div className={styles.certCardBtn}>
-                    <span>Exam Details</span>
+                    <span>Prepare for the Exam</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
-                <Link href="#">
+                <Link href="/certifications/continuous-delivery/cd-developer-cert#exam-details">
                   <div className={styles.certCardBtn}>
-                    <span>Requirements</span>
+                    <span>Review Exam Details</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
@@ -124,18 +125,21 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:</strong> CI Drone 1.0
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps
+                  Free/Team Plans
                 </span>
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
-                  <Link href="#">
-                    <button className={styles.moreDetails}>More Details</button>
+                  <Link href="https://university.harness.io/page/continuous-delivery-developer">
+                    <button className={styles.moreDetails}>
+                      Register for the Exam
+                    </button>
                   </Link>
-                  <Link href="#">
+                  <Link href="/certifications/continuous-delivery">
                     <button className={styles.startLearning}>
-                      <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <span>See All CD & GitOps Certifications</span>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -143,7 +147,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* CI */}
+          {/* CI 
           <div className={clsx(styles.certCard, styles.moduleCI)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -215,7 +219,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -223,7 +227,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* FF */}
+          {/* FF *
           <div className={clsx(styles.certCard, styles.moduleFF)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -294,7 +298,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -302,7 +306,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* CCM */}
+          {/* CCM 
           <div className={clsx(styles.certCard, styles.moduleCCM)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -373,7 +377,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -381,7 +385,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* STO */}
+          {/* STO 
           <div className={clsx(styles.certCard, styles.moduleSTO)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -453,7 +457,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -461,7 +465,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* STO */}
+          {/* STO 
           <div className={clsx(styles.certCard, styles.moduleSRM)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -533,7 +537,7 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -541,7 +545,7 @@ export default function Certifications() {
             </div>
           </div>
 
-          {/* CE */}
+          {/* CE 
           <div className={clsx(styles.certCard, styles.moduleCE)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
@@ -612,13 +616,14 @@ export default function Certifications() {
                   <Link href="#">
                     <button className={styles.startLearning}>
                       <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
               </div>
             </div>
           </div>
+          */}
         </div>
 
         {/* Administrator Tab Content */}
@@ -632,9 +637,12 @@ export default function Certifications() {
           <div className={clsx(styles.certCard)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
-                <h2>Administrator Certifications</h2>
+                <h2>
+                  Continuous Delivery & GitOps - Administrator (BETA COMING
+                  SOON)
+                </h2>
                 <img
-                  src={`${baseUrl}img/cert_adm_badge.svg`}
+                  src={`${baseUrl}img/cert_adm_cd_badge.svg`}
                   alt="Harness Certified Expert - Developer - CD"
                   className={styles.badge}
                 />
@@ -647,38 +655,18 @@ export default function Certifications() {
                 <ul className={styles.courseList}>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Coming Soon
                   </li>
                 </ul>
                 <Link href="#">
                   <div className={styles.certCardBtn}>
-                    <span>Exam Details</span>
+                    <span>Prepare for the Exam</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
                 <Link href="#">
                   <div className={styles.certCardBtn}>
-                    <span>Requirements</span>
+                    <span>Review Exam Details</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
@@ -688,18 +676,21 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:</strong> CI Drone 1.0
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps
+                  Enterprise Plan
                 </span>
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
                   <Link href="#">
-                    <button className={styles.moreDetails}>More Details</button>
+                    <button className={styles.moreDetails}>
+                      Register for the Exam
+                    </button>
                   </Link>
-                  <Link href="#">
+                  <Link href="/tutorials/deploy-services">
                     <button className={styles.startLearning}>
-                      <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <span>See All CD & GitOps Certifications</span>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>
@@ -719,9 +710,11 @@ export default function Certifications() {
           <div className={clsx(styles.certCard)}>
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
-                <h2>Architect Certifications</h2>
+                <h2>
+                  Continuous Delivery & GitOps - Architect (BETA COMING SOON)
+                </h2>
                 <img
-                  src={`${baseUrl}img/cert_arc_badge.svg`}
+                  src={`${baseUrl}img/cert_arc_cd_badge.svg`}
                   alt="Harness Certified Expert - Developer - CD"
                   className={styles.badge}
                 />
@@ -734,38 +727,18 @@ export default function Certifications() {
                 <ul className={styles.courseList}>
                   <li className={styles.courseItem}>
                     <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
-                  </li>
-                  <li className={styles.courseItem}>
-                    <i className="fa-solid fa-circle-check"></i>
-                    Deploy and implement
+                    Coming Soon
                   </li>
                 </ul>
                 <Link href="#">
                   <div className={styles.certCardBtn}>
-                    <span>Exam Details</span>
+                    <span>Prepare for the Exam</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
                 <Link href="#">
                   <div className={styles.certCardBtn}>
-                    <span>Requirements</span>
+                    <span>Review Exam Details</span>
                     <i className="fa-solid fa-chevron-right"></i>
                   </div>
                 </Link>
@@ -775,18 +748,21 @@ export default function Certifications() {
             <div className={styles.certCardContainer}>
               <div className={styles.left}>
                 <span className={styles.productVersion}>
-                  <strong>Product version:</strong> CI Drone 1.0
+                  <strong>Product version:&nbsp;</strong> Harness CD & GitOps
+                  Enterprise Plan
                 </span>
               </div>
               <div className={styles.right}>
                 <div className={styles.btnContainer}>
-                  <Link href="#">
-                    <button className={styles.moreDetails}>More Details</button>
+                  <Link href="/certifications/continuous-delivery">
+                    <button className={styles.moreDetails}>
+                      Register for the Exam
+                    </button>
                   </Link>
-                  <Link href="#">
+                  <Link href="/tutorials/deploy-services">
                     <button className={styles.startLearning}>
-                      <span>Start learning</span>
-                      <i className="fa-regular fa-arrow-right"></i>
+                      <span>See All CD & GitOps Certifications</span>
+                      <i className="fa-solid fa-arrow-right"></i>
                     </button>
                   </Link>
                 </div>

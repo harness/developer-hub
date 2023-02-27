@@ -1,9 +1,7 @@
 ---
 title: CI Build Stage Settings
 description: This topic provides settings and permissions for a CI Build Stage. Permissions. Role(s) required to create, retrieve, update, and delete data in Pipeline stage. Project Admin, Project Member. Stage N…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 170
 helpdocs_topic_id: yn4x8vzw3q
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

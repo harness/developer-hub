@@ -14,7 +14,9 @@ Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kuber
 
 In a nutshell, kustomizations let you create specific Kubernetes deployments while leaving the original manifests untouched. You drop a kustomization.yaml file next to your Kubernetes YAML files and it defines new behavior to be performed during deployment.  
 
-Please review the video [Kustomize: Deploy Your App with Template Free YAML](https://youtu.be/ahMIBxufNR0) (30min).### Before You Begin
+Please review the video [Kustomize: Deploy Your App with Template Free YAML](https://youtu.be/ahMIBxufNR0) (30min).
+
+### Before You Begin
 
 * [Kustomize Quickstart](../../onboard-cd/cd-quickstarts/kustomize-quickstart.md)
 
@@ -210,7 +212,9 @@ In **Manifest Details**, enter the path to your patch file(s):
   * **Branch**/**Commit Id**: enter the branch or commit Id.
   * **File/Folder Path:** enter the path to the patch file(s) from the root of the repo. Click **Add File** to add each patch file. The files you add should be the same files listed in `patchesStrategicMerge` of the main kustomize file in your Service.
 
-The order in which you add file paths for patches in **File/Folder Path** is the same order that Harness applies the patches during the kustomization build.Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.Click **Submit**. The patch file(s) is added to **Manifests**.
+The order in which you add file paths for patches in **File/Folder Path** is the same order that Harness applies the patches during the kustomization build.Small patches that do one thing are recommended. For example, create one patch for increasing the deployment replica number and another patch for setting the memory limit.
+
+Click **Submit**. The patch file(s) is added to **Manifests**.
 
 When the main kustomization.yaml is deployed, the patch is rendered and its overrides are added to the deployment.yaml that is deployed.
 
@@ -384,7 +388,7 @@ When Harness deploys, it will apply the plugin you reference just like you would
 
 To add a plugin to the Delegate, you can install it manually or use the `INIT_SCRIPT` environment variable in the Delegate config file to install it.
 
-For steps on running scripts in Delegate config files, see [Run Scripts on Delegates](../../../platform/2_Delegates/configure-delegates/run-scripts-on-delegates.md).
+For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 Once the plugin is installed, you add its path to the Harness Service you are using for the kustomization. See [Path to Plugin in Service Manifest](#path_to_plugin_in_service_manifest).
 
@@ -431,7 +435,9 @@ $HOME/K_PLUGINS/kustomize/plugin/myDevOpsTeam/sillyconfigmapgenerator
 ```
 Note the location of the plugin because you will use that location in the Harness Service to indicate where the plugin is located (described below).
 
-Plugins can only be applied to Harness Kubernetes Delegates.#### Path to Plugin in Service Manifest
+Plugins can only be applied to Harness Kubernetes Delegates.
+
+#### Path to Plugin in Service Manifest
 
 In the Harness Service that uses the Kustomization and plugin, in **Manifests**, select the existing Kustomize manifest or click **Add Manifest** and add a new as described in [Step 1: Add Manifests and Kustomization](#step_1_add_manifests_and_kustomization) above.
 
@@ -496,7 +502,7 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 ```yaml
 - KUSTOMIZE_PATH=<path>
 ```
-See [Install the Docker Delegate](../../../platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md).
+See [Install a delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md).
 
 ## Next Steps
 

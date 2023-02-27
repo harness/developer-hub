@@ -8,9 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-A load balancer serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application.
+A load balancer serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application.
 
 An Application Load Balancer makes routing decisions at the application layer (HTTP/HTTPS), supports path-based routing, and can route requests to one or more ports on each container instance in your cluster.
+
 
 This topic describes how to create a new application load balancer for creating AutoStopping Rules for AWS. 
 
@@ -56,7 +57,7 @@ Perform the following steps to create a new Application Load Balancer in AWS.
 7. (Optional) Set up advanced configuration. See Step: Set Up Advanced Configuration.
 8. In **Setup Access**, select **DNS Link**.
 9.  In **Select a load balancer**, click **New Load Balancer** to add a load balancer.
-    
+     
 	  ![](./static/create-load-balancer-aws-19.png)
 10. In **Create a new Load Balancer**, in **Provide a name for the Load balancer**, enter a name for your load balancer. This name will appear in your load balancer list.
 

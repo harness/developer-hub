@@ -1,7 +1,7 @@
 ---
 title: Using Manual Harness Approval Stages
 description: Approve or reject a Pipeline at any point in its execution using Manual Approval Stages.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: fkvso46bok
 helpdocs_category_id: 2d7y1cr09y
 helpdocs_is_private: false
@@ -87,7 +87,7 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
 
 In **Approval Message**, add the message for the Users in **Approvers**.
 
-### Option: Include Pipeline Execution History in Approval Details
+### Option: Include stage execution details in approval
 
 Enable this option to provide approvers with the execution history for this Pipeline. This can help approvers make their decision.
 

@@ -1,23 +1,26 @@
 ---
 id: rds-instance-reboot
-title: RDS Instance Reboot
+title: RDS instance reboot
 ---
 
-## Introduction
+RDS instance reboot can induce an RDS instance reboot chaos on AWS RDS cluster. It derives the instance under chaos from RDS cluster.
 
-- RDS Instance Reboot can induce an RDS Instance Reboot chaos on AWS RDS cluster. It derives the instance under chaos from RDS cluster.
-
-
-:::tip Fault execution flow chart
 ![RDS Instance Reboot](./static/images/rds-instance-reboot.png)
-:::
 
+
+## Usage
+
+<details>
+<summary>View fault usage</summary>
+<div>
+This fault determines the resilience of an application to RDS instance reboot.
+</div>
+</details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
+- Kubernetes >= 1.17
+- AWS access to reboot RDS instances.
 - Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
 
 ```yaml
@@ -34,14 +37,16 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`), update the `AWS_SHARED_CREDENTIALS_FILE` environment variable value in the ChaosExperiment CR with the same name.
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-## Permission Requirement
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-- Here is an example AWS policy to execute this fault.
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -63,19 +68,17 @@ stringData:
 ```
 </details>
 
-## Default Validations
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
-:::info
+## Default validations
 
 - The RDS instance should be in a healthy state.
-
-:::
 
 ## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
         <th> Variables </th>
@@ -85,20 +88,20 @@ stringData:
         <tr> 
         <td> CLUSTER_NAME </td>
         <td> Name of the target RDS cluster</td>
-        <td> Eg. rds-cluster-1 </td>
+        <td> For example, rds-cluster-1 </td>
         </tr>
         <tr> 
         <td> RDS_INSTANCE_IDENTIFIER </td>
         <td> Name of the target RDS Instances</td>
-        <td> Eg. rds-cluster-1-instance </td>
+        <td> For example, rds-cluster-1-instance </td>
         </tr>
         <tr>
         <td> REGION </td>
         <td> The region name of the target ECS cluster</td>
-        <td> Eg. us-east-1 </td>
+        <td> For example, us-east-1 </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -128,18 +131,18 @@ stringData:
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
     </table>
 </details>
 
-## Experiment Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### RDS_CLUSTER_NAME
+### RDS cluster name
 
 It defines the cluster name of the target RDS cluster. You can provide the RDS_CLUSTER_NAME using `CLUSTER_NAME` environment variable as well. If not provided, the fault selects the Instance Idenfier provided.
 
@@ -169,7 +172,7 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
-### RDS_INSTANCE_IDENTIFIER 
+### RDS instance identifier 
  
 It defines the RDS instance name. You can provide the RDS_INSTANCE_IDENTIFIER using `RDS_INSTANCE_IDENTIFIER` environment variable.
 

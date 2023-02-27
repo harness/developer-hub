@@ -1,0 +1,12 @@
+.accordionGreen {
+	border-color: #aadc72;
+	background-color: #f6fff2;
+	summary {
+		&::before {
+			border-color: transparent transparent transparent #aadc72;
+		}
+	}
+	:nth-child(2) > div {
+		border-top: 1px solid #aadc72;
+	}
+}

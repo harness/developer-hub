@@ -1,9 +1,7 @@
 ---
 title: Share CI Data Across Steps and Stages
 description: This topic describes how to share CI data across Steps and Stages. Share Data Across Steps. Each Stage has a common /harness folder. Any Step in the Stage can create, retrieve, update, and delete fil…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: fbrgw2ixjr
 helpdocs_category_id: 01tyeraya4
 helpdocs_is_private: false

@@ -1,9 +1,7 @@
 ---
 title: Restore Cache from S3 Step Settings
 description: This topic provides settings for the Restore Cache from S3 step. Name. The unique name for this step. ID. See Entity Identifier Reference. AWS Connector. The Harness Connector to use when restoring t…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 100
 helpdocs_topic_id: zlpx6lli6d
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -26,6 +24,13 @@ The Harness Connector to use when restoring the cache from AWS S3. Typically, th
 
 The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to read from S3. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
+:::note
+
+This step supports AWS connectors using **AWS Access Key**, **Assume IAM role on Delegate**, and IRSA authentication methods *without* cross account access (ARN/STS).
+
+This step doesn't support AWS connectors that have enabled cross account access (ARN/STS) for any authentication method.
+
+:::
 ### Region
 
 An AWS region you used when you saved the cache. See [Save Cache to S3 Step Settings](save-cache-to-s-3-step-settings.md).

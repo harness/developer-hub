@@ -1,9 +1,7 @@
 ---
 title: Save Cache to S3 Step Settings
 description: This topic provides settings for the Save Cache to S3 step.
-tags: 
-   - helpDocs
-# sidebar_position: 2
+sidebar_position: 130
 helpdocs_topic_id: qtvjvrp9sn
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -25,6 +23,14 @@ See [Entity Identifier Reference](../../platform/20_References/entity-identifier
 ### AWS Connector
 
 The Harness Connector to use when saving the cache to an S3. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to write to S3. See [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+
+:::note
+
+This step supports AWS connectors using **AWS Access Key**, **Assume IAM role on Delegate**, and IRSA authentication methods *without* cross account access (ARN/STS).
+
+This step doesn't support AWS connectors that have enabled cross account access (ARN/STS) for any authentication method.
+
+:::
 
 ### Region
 

@@ -67,20 +67,29 @@ The Delegate is set up using the **harness-delegate.yaml** you downloaded origin
 
 Edit the **harness-delegate.yaml** you downloaded originally with the new token and then run `kubectl apply -f harness-delegate.yaml` to restart the Delegate pods.
 
-Paste the token in the Delegate `ACCOUNT_SECRET` setting in the `StatefulSet` spec:
+Paste the token into the delegate `spec` of the `Secret`, in the `UPGRADER_TOKEN` field. Then paste the token into the specification of the `Secret` in the `DELEGATE_TOKEN` field. 
 
 
 ```
 ...  
 ---  
   
-apiVersion: apps/v1  
-kind: StatefulSet  
-...  
-        env:  
-...  
-        - name: ACCOUNT_SECRET  
-          value: [enter new token here]  
+apiVersion: v1
+kind: Secret
+...
+type: Opaque
+data:
+  UPGRADER_TOKEN: "[enter new token here]"
+...
+---
+
+apiVersion: v1
+kind: Secret
+...
+type: Opaque
+data:
+  DELEGATE_TOKEN: "[enter new token here]"
+
 ...
 ```
 Run `kubectl apply -f harness-delegate.yaml`
@@ -104,7 +113,7 @@ services:
         limits:  
           cpus: "0.5"  
           memory: 2048M  
-    image: harness/delegate:latest  
+    image: harness/delegate:23.01.78102  
     environment:  
       - ACCOUNT_ID=12345678910  
       - ACCOUNT_SECRET=[enter new token here]  

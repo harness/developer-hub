@@ -1,7 +1,7 @@
 ---
 title: Create a Pipeline Template
 description: This quickstart walks you through the steps to create a Pipeline Template.
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: gvbaldmib5
 helpdocs_category_id: m8tm1mgn2g
 helpdocs_is_private: false
@@ -25,7 +25,7 @@ This topic walks you through the steps to create a Pipeline Template.
 
 * Review [Templates Overview](template.md) to understand different concepts of Templates.
 * Review [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md) to know about the permissions required to create a Template at various scopes.
-* Review [Pipelines and Stages](/docs/category/pipelines).
+* Review [Pipelines and Stages](https://developer.harness.io/docs/category/pipelines).
 
 ### Limitations
 

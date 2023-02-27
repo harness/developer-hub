@@ -1,8 +1,12 @@
 ---
 title: What's New
-date: 2022-12-22T10:00
+date: 2023-02-23T10:00
 sidebar_position: 1
 ---
+
+```mdx-code-block
+import delete_project from './static/delete-project.png'
+```
 
 Learn about the new features that are Generally Available (GA) in Harness SaaS across all Harness modules and the Harness Platform.
 
@@ -12,7 +16,145 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## January 17, 2023, version 78214
+## February 23, 2023, version 78507
+
+### Harness Platform
+
+- The new delegate installation wizard is now generally available. (PL-31305)
+  
+  You also have the option to revert to the previous installation method if desired.
+
+
+-  A warning message now appears in the UI when you delete a project or organization. Deletions require confirmation from the user. (PL-31292)
+  
+  ```mdx-code-block
+  <img src={delete_project} alt="delete-project" height="150" width="400"></img>
+  ```
+
+  This enhancement prevents the accidental deletion of important projects or organizations and provides an extra layer of caution for users.
+
+- The reference page for entities is improved to provide detailed information about each reference. (PL-31247)
+
+  The following details are added to the existing reference pages:
+
+  - Date or timestamp 
+  - Name and type of entity
+  - Scope of reference
+
+  These enhancements provide comprehensive information about each reference.
+
+- Sorting functionality is available on the project listing page and the project selector dropdown. (PL-27493)
+  With this enhancement, you can easily sort and find projects you need and organize them according to your preferences.
+
+- You can now change stages without losing the values you enter in the **Run Pipeline** form. (PIE-4663)
+
+### Continuous Integration
+
+In addition to fixed values and runtime inputs, you can now use [expressions](https://developer.harness.io/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+
+![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
+
+## February 15, 2023, version 78421
+
+### Continuous Integration
+
+* Microsoft Windows (amd64) is now a supported [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructure option. (CI-5455)
+* **Python** is now available as a built-in **Shell** option for [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings). (CI-6692)
+* [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](/docs/platform/Connectors/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
+  * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
+  * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
+* Use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)
+  * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
+  * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
+  * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option.
+* Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
+* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](/docs/platform/triggers/triggering-pipelines). (CI-5720)
+
+### Delegate version 78306
+
+This release introduces the following new features and enhancements:
+
+- Added the `helm repo update` command to the delegate installer. The command is included in the instructions that apply the delegate manifest. This change reduces the chance of retrieving the wrong file from the repository. (DEL-5540)
+
+### Harness Platform
+
+- The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. (PL-31136)
+  This update will not affect any business operations.
+
+- The [Role Assignment](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now includes the principal's name and email address in the response.(PL-31064, ZD-36050)
+
+- Harness now supports the integration of GCP Secrets Manager for all users. (PL-31051)
+  
+  For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/Security/add-a-google-cloud-secret-manager)
+
+- There is a limit on the number of entities that can be created for **FREE** and **COMMUNITY** users in Harness. (PL-30838)
+  
+  Following are the entity creation limits: 
+
+  - Project - 100
+  - Secrets - 100
+  - Variables - 100
+  - User groups -100
+  - Service accounts - 100
+
+- You can now add policy sets under the **Advanced** section of each step. (PIE-7794)
+
+  In this way, you can validate step outputs generated during pipeline execution without explicitly requesting a payload. Policy sets receive the steps and their outputs as payloads, with a pre-defined schema for every step.
+
+- Accessing the CD module redirects you to one of the following: 
+
+  - Get Started: If you don't have any pipelines in your project.
+
+  - Deployment list page: This is the default selection page. (PIE-7625)
+
+## February 6, 2023, version 78321
+
+### Continuous Delivery
+
+- Active Directory Federation Services (ADFS) is now supported for ServiceNow authentication. (CDS-49406, CDS-49229)
+  
+  Any API call Harness makes to ServiceNow requires an authentication token. Previously, Harness supported username and password authentication only. Now we support ADFS authentication.
+
+  ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)
+
+### Continuous Integration
+
+- Linux ARM is now supported in [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructures. (CI-5787)
+- The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
+
+### Harness Platform
+
+- The pages in app.harness.io autofocus the search input box by default. (PL-30656)
+  
+  This results in a seamless search experience.
+
+- Entity names can now include the `/` character. (PL-29929)
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
+
+### Security Testing Orchestration
+
+* You can now ingest results from a specific Checkmarx scan. This option is useful for ensuring that a pipeline ingests the scan triggered by a specific event. Add the setting `product_scan_id` = `MY_SCAN_ID` to the Checkmarx step. This overrides the default behavior, which is to ingest results for the most recent scan. (STO-5424)	
+
+* You can now enable debug-level logging for Snyk and Aqua Trivy scans. To do this, add this setting to the scan step: `log_level` = `debug`. (STO-5405)
+
+* Grype scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To scan all layers in an image, for example, add this setting to the Grype scan step: `tool_args` = `--scope all-layers`. (STO-5400)
+
+* To make the Issue Details pane easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398)	
+
+## February 3, 2023
+
+### Security Testing Orchestration
+
+* The Issue Details pane now shows the message “No recommendations are available at this time” when the scan tool doesn't return remediation steps for a specific issue. (STO-5380)
+
+## January 29, 2023
+
+### Continuous Integration
+
+- CI pipelines now support workflows that can run with some runtime inputs undefined. Previously a pipeline would fail if any runtime input was undefined for any field such as an environment variable, label, build argument, or port binding. (CI-5116 , ZD-33893, ZD-34255)
+
+
+## January 17, 2023
 
 ### Continuous Delivery
 
@@ -30,10 +172,39 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   ![picture 21](static/8ca12a2c84cf95499024fd11b11c055bc13ec9de4e0e767ae6f8422aeb596d91.png)  
   
   Hover over the error message to see the full message.
+
+### Continuous Integration
+
+* This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only. 
+   - An Actions step to run GitHub Actions.
+   - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
+* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
+   
+  ![](./static/ci-rerun-build-in-debug-mode.png) 
+
+* You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
+
+``` yaml 
+infrastructure:
+    type: KubernetesDirect
+    spec:
+      connectorRef: account.test
+      namespace: harness-delegate
+    hostNames:
+      - abc.com
+      - xyz.com
+```
   
-### Platform
+### Harness Platform
 
 - A dedicated release notes page was introduced for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
+
+## January 15, 2023		
+
+### Security Testing Orchestration
+
+* Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, `specify tool_args` = `---offline-scan`. (STO-5388)	
+
 
 ## January 10, 2023, version 78105
 
@@ -73,6 +244,21 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
   
+## January 8, 2023		
+
+### Security Testing Orchestration
+
+* Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, `specify tool_args` = `-incremental`. (STO-5041)	
+
+* STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference). (STO-5161)	
+
+## January 1, 2023	
+
+### Security Testing Orchestration
+
+* The Issues Details pane has been revised to make it easier to navigate. Raw JSON data now appears at the bottom of each occurrence and is collapsed by default. (STO-4839)	
+
+
 ## December 22, 2022, version 77908
 
 ### Harness Platform
@@ -120,6 +306,14 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
 
 * The onboarding workflow now caters to customers who do not have a codebase with which to connect. (CI-6348)
+
+## December 18, 2022			
+
+### Security Testing Orchestration
+
+* Remediated issues are no longer included in the issue counts logged near the end of a Security Step run and provided as output variables. (STO-5304)	
+
+*  With this release, you can run a SonarQube scan and specify a collection of SSL certificates rather than a single certificate. This option is useful when you don't know which specific certificate in a collection is required by the server. (STO-5243)	
 
 ## December 13, 2022, version 77808
 
@@ -174,6 +368,15 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 
   To do this, enable Use Git client for commits in the default settings at the account scope. Harness checks out the code on the delegate and uses the Git client to make the commits to your Git repository.
+
+## December 11, 2023			
+
+### Security Testing Orchestration
+	
+* STO is now supported on Linux (amd64 and arm64 platforms) in Harness Cloud. (STO-5314)	
+
+* Instead of using Service Dependencies for Docker-in-Docker configuration, users should use new Background steps. (STO-5268)
+
 
 ## December 7, 2022, version 77716
 
@@ -240,6 +443,14 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 
   The corresponding information for these fields are fetched from Git.
 
+### Continuous Integration
+
+- New Subscription ID field. (CI-6032)
+  An Azure subscription ID is now required in the Build and Push ACR step to enable the display of artifacts uploaded by the steps on the Artifacts tab.
+
+- New background step to define the service dependency. (CI-5580)
+  A new background step has been added to define the service dependency in CI. The previous stage settings of service dependency are now deprecated. The new background step allows for better control and configuration of services.
+
 ## November 21, 2022
 
 ### Continuous Delivery
@@ -297,6 +508,13 @@ The option to disable Harness Secret Manager is now a part of the core settings 
 ### Continuous Integration
 
 The Custom Git Connector now supports connection via the Harness Platform, in addition to the ability to connect through the Harness Delegate. Connecting through Harness Secrets Manager is required to use the generic git connector on the Harness Cloud build infrastructure hosted by Harness. (CI-5666)
+
+### Security Testing Orchestration
+
+* You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
+
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans). (STO-4958)	
+
 
 ## October 31, 2022
 

@@ -1,83 +1,36 @@
 ---
 id: ecs-container-cpu-hog
-title: ECS Container CPU Hog
+title: ECS container CPU hog
 ---
 
-## Introduction
+ECS Container CPU hog disrupts the state of infrastructure resources. It induces stress on the AWS ECS container using Amazon SSM Run command, which is carried out using SSM docs which is in-built into the fault.
+- It causes CPU chaos on the containers of the ECS task using the given `CLUSTER_NAME` environment variable for a specific duration.
+- To select the Task Under Chaos (TUC), use the servie name associated with the task. If you provide the service name along with the cluster name, all the tasks associated with the given service will be selected as chaos targets.
+- It tests the ECS task sanity (service availability) and recovery of the task containers subject to CPU stress.
 
-- ECS Container CPU hog contains chaos to disrupt the state of infra resources. The fault can induce stress chaos on the AWS ECS container using SSM Run Command, this is carried out by using SSM Docs which is in-built into the fault for the give chaos experiment.
 
-- Injects cpu resource stress/exhaustion on the target task container for the given duration. The number of cpu cores stressed can be provided as input. 
-
-- To select the Task Under Chaos (TUC) you can make use of servie name associated with the task that is - if you provide the service name along with cluster name only all the tasks associated with the given service will be selected as chaos targets.
-
-- It tests the ECS task sanity (service availability) and recovery of the task containers subjected to CPU stress.
-
-:::tip Fault execution flow chart
 ![ECS Container CPU Hog](./static/images/ecs-stress-chaos.png)
-:::
 
-## Uses
+
+## Usage
 
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-CPU hogs are another very common and frequent scenario we find with containers/applications that can result in the eviction of the application (task container) and impact its delivery. Such scenarios can still occur despite whatever availability aids docker provides. These problems are generally referred to as "Noisy Neighbour" problems.
+CPU hogs evict the application (task container) and impact its delivery. These issues are also known as noisy neighbour problems. The fault causes CPU stress on the target AWS EC2 instance(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters.
 
-Injecting a rogue process into a target task container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause instance to exhaust resources leading to eviction of all task container. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
+
+Injecting a rogue process into a target container starves the main microservice process (typically pid 1) of the resources allocated to it (where the limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all task containers. This fault determines how a container recovers from such a memory exhaustion.
 </div>
 </details>
 
 ## Prerequisites
 
-:::info
-
-- Ensure that Kubernetes Version >= 1.17
-
-<details>
-<summary>Enable Container Metadata</summary>
-
-Ensure that the ECS container metadata is <code>enabled</code>;this feature is <code>disabled</code> by default. Refer AWS docs - <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html">Enabling container metadata</a>. This will allow HCE to know the container details like containerID that is running the ECS tasks.
-
-<b>NOTE:</b> You need to do the following steps to enable container metadata and attach IAM role to the cluster instances:
-
-- In the EC2 dashboard sidebar click on Launch Configurations under Auto Scaling.
-
-![autoscaling-config](https://user-images.githubusercontent.com/35391335/207263427-559bd2cb-f0f1-478c-badd-90d8ec0dace7.png)
-
-- Create a copy of autoscaling configuration used in target ECS cluster. This will create a new (copied) Launch Template.
-
-![create-copy-of-lc](https://user-images.githubusercontent.com/35391335/207265148-421ed263-434d-48a5-a5fc-7be0bb0d859e.png)
-
-- In the new(copied) Launch Template, update the IAM role of the instances with ECS-SSM permissions (as shown in below permission requirement section).
-
-![iam-instance-profile](https://user-images.githubusercontent.com/35391335/207267931-c5bad3a2-b57b-4587-a3c0-a26829eec52f.png)
-
-- Now update the user data with <code>ECS_ENABLE_CONTAINER_METADATA</code> to be <code>true</code> as shown below.
-
-![user-data](https://user-images.githubusercontent.com/35391335/207268623-cac27c20-b03d-4739-9770-9b64953ccbf3.png)
-
-- Now save the launch configuration by clicking on ‘Create Launch Template'.
-
-![create-launch-config](https://user-images.githubusercontent.com/35391335/207270515-2c0b194c-2d74-4b3d-bcb6-d41df25db881.png)
-
-- Now go back to auto scaling group and switch to launch template (as launch configuration is deprecating by AWS).
-
-![switch-to-launch-template](https://user-images.githubusercontent.com/35391335/207272155-79c63a17-bbf1-4b3f-a34c-e6808b0944e9.png)
-
-- Update the cluster auto-scaling group with the newer launch template.
-
-![update-launch-config](https://user-images.githubusercontent.com/35391335/207272408-27b1562d-2bcb-478d-90ac-5c702fb6b548.png)
-
-- Restart the instances of the ECS cluster to pull the updated configuration:
-
-![restart-instances](https://user-images.githubusercontent.com/35391335/206241766-6c684660-89f9-4868-b0ff-88d0409304bc.png)
-
-</details>
-
-- Ensure both user and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the fault.
-
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- Kubernetes >= 1.17
+- ECS container metadata is enabled (disabled by default). To enable it, refer to this [docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
+- You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations. Refer to [systems manager docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
+- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -93,15 +46,16 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- If you change the secret key name (from `cloud_config.yml`) please also update the `AWS_SHARED_CREDENTIALS_FILE` ENV value in the ChaosExperiment CR with the same name.
-:::
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-## Permission Requirement
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-- Here is an example AWS policy to execute this fault.
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
 
 <details>
-<summary>View policy for this fault</summary>
+<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -165,21 +119,17 @@ stringData:
 ```
 </details>
 
-- Refer a [superset permission/policy](../policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
-## Default Validations
+## Default validations
 
-:::info
+The ECS container instance should be in a healthy state.
 
-- ECS container instance should be in healthy state.
-
-:::
-
-## Fault Tunables
+## Fault tunables
 
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Mandatory Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Mandatory fields</h2>
     <table>
         <tr>
         <th> Variables </th>
@@ -188,16 +138,16 @@ stringData:
         </tr>
         <tr> 
         <td> CLUSTER_NAME </td>
-        <td> Name of the target ECS cluster</td>
-        <td> Eg. cluster-1 </td>
+        <td> Name of the target ECS cluster. </td>
+        <td> For example, <code>cluster-1</code>. </td>
         </tr>
         <tr>
         <td> REGION </td>
-        <td> The region name of the target ECS cluster</td>
-        <td> Eg. us-east-1 </td>
+        <td> Region name of the target ECS cluster</td>
+        <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -206,53 +156,53 @@ stringData:
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The interval (in sec) between successive instance termination.</td>
-        <td> Defaults to 30s </td>
+        <td> Interval between successive instance terminations (in seconds).</td>
+        <td> Defaults to 30s. </td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
-        <td> Provide the path for aws secret credentials</td>
-        <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
+        <td> Path to the AWS secret credentials.</td>
+        <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
       <tr> 
         <td> CPU_CORE </td>
-        <td> Provide the number of cpu core to consume</td>
-        <td> Defaults to 0 </td>
+        <td> Number of CPU cores to consume.</td>
+        <td> Defaults to 0. </td>
       </tr>
       <tr> 
         <td> CPU_LOAD </td>
-        <td> Provide the percentage of CPU to be consumed</td>
-        <td> Defaults to 100 </td>
+        <td> Percentage of the CPU to consume.</td>
+        <td> Defaults to 100. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple instances</td>
+        <td> Defaults to parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> For example, 30s. </td>
       </tr>
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and AWS specific tunables
+### Common and AWS-specific tunables
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS specific tunable](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### CPU Cores
+### CPU cores
 
-It contains the cores of CPU to hog for the target container instances. It can be tuned via ` CPU_CORE` ENV. `0` core means all the available CPU resources should be consumed.
+It specifies the cores of CPU to hog for the target container instances. You can tune it using the ` CPU_CORE` environment variable. 0 core means all the available CPU resources should be consumed.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/cpu-core.yaml yaml)
 ```yaml
@@ -279,11 +229,11 @@ spec:
           VALUE: '60'
 ```
 
-### CPU Load
+### CPU load
 
-It contains the percentage of CPU to be consumed for the target container instances. It can be tuned via ` CPU_LOAD` ENV. CPU Load `100` means 100% per cpu core provided.
+It specifies the percentage of CPU to be consumed for the target container instances. You can tune it using the ` CPU_LOAD` environment variable. CPU load `100` means 100% CPU core is provided.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/ecs-stress-chaos/cpu-load.yaml yaml)
 ```yaml

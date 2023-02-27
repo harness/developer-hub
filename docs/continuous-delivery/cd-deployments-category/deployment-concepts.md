@@ -1,5 +1,5 @@
 ---
-title: Deployment Concepts and Strategies
+title: Deployment concepts and strategies
 description: This topic describes common deployment strategies.
 sidebar_position: 1
 helpdocs_topic_id: 0zsf97lo3c
@@ -12,13 +12,35 @@ You have likely heard terms like *blue/green* and *canary* when it comes to depl
 
 This topic will explain these strategies to give you an idea of how to approach deployments in Harness, and to help you decide what strategy is best for you.
 
-## Rolling Deployment
+### Deploy with or without gates
+
+CD deployments are typically preformed using manual approvals before deploying changes to production. These approvals are often called approval gates or release gates. 
+
+Gates are checkpoints in the deployment process that can provide several benefits, including increased control, improved quality, compliance and security, stakeholder involvement, and better risk management.
+
+However, gates can also slow down the deployment process, requiring manual intervention and increasing the time it takes to get changes to production.
+
+CD deployments without gates, also known as "no-gate CD," refers to a CD process that does not require manual approval before deploying changes to production.
+
+This approach has several advantages, including faster time to market and increased collaboration.
+
+Of course, no-gate CD is not appropriate for all organizations and situations, and it may require significant investment in automation and testing to ensure that changes are deployed safely and reliably. 
+
+Harness supports gated and no-gate CD by default. You can use several approval stages or steps in your pipelines, or simply deploy without gates.
+
+For information on approval stages and steps, go to:
+
+- [Using manual harness approval stages](https://developer.harness.io/docs/platform/Approvals/adding-harness-approval-stages)
+- [Adding Jira approval stages and steps](https://developer.harness.io/docs/platform/Approvals/adding-jira-approval-stages)
+- [Adding ServiceNow approval steps and stages](https://developer.harness.io/docs/platform/Approvals/service-now-approvals)
+
+## Rolling deployment
 
 With a Rolling Deployment, all nodes within a single environment are incrementally added one-by-one or in N batches (as defined by a window size) with a new service/artifact version.
 
 ![](./static/deployment-concepts-00.png)
 
-### When to use Rolling Deployments
+### When to use rolling deployments
 
 * When you need to support both new and old deployments.
 * Load balancing scenarios that require reduced downtime.
@@ -40,7 +62,7 @@ One use of Rolling deployments is as the stage following a Canary deployment in 
 
 See [Create a Kubernetes Rolling Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md).
 
-## Blue/Green Deployment
+## Blue/Green deployment
 
 With Blue/Green Deployment, two identical environments for staging and production traffic run simultaneously with different versions of the service.
 
@@ -52,7 +74,7 @@ Some vendors call this a red/black deployment.
 
 ![](./static/deployment-concepts-01.png)
 
-### When to use Blue/Green Deployments
+### When to use Blue/Green deployments
 
 * When you want to perform verification in a full production environment.
 * When you want zero downtime.
@@ -77,13 +99,13 @@ See:
 
 * [Create a Kubernetes Blue Green Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
 
-## Canary Deployment
+## Canary deployment
 
 With Canary Deployment, all nodes in a single environment are incrementally updated in small phases, with each phase requiring a verification/gate to proceed to the next phase.
 
 ![](./static/deployment-concepts-02.png)
 
-### When to use Canary Deployments
+### When to use Canary deployments
 
 When you want to verify whether the new version of the application is working correctly in your production environment.
 
@@ -119,7 +141,7 @@ See:
 
 * [Create a Kubernetes Canary Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
 
-## Which Deployment Strategy Should I Use?
+## Which deployment strategy should I use?
 
 It depends entirely on the type of application/service and environment. Most Harness customers are currently using blue/green or canary deployments for mission-critical applications.
 
@@ -127,7 +149,7 @@ In many cases, customers are migrating from blue/green to canary so they can tes
 
 You can also combine many of the above deployment strategies into a single strategy.
 
-## Next Steps
+## Next steps
 
-* Harness [Quickstarts](../../getting-started/quickstarts.md).
+* Harness [tutorials](../../getting-started/quickstarts.md).
 

@@ -1,41 +1,39 @@
 ---
 id: pod-cpu-hog
-title: Pod CPU Hog
+title: Pod CPU hog
 ---
 
-## Introduction
-- This fault consumes the CPU resources of the application container.
-- It simulates conditions where app pods experience CPU spikes either due to expected/undesired processes thereby testing how the overall application stack behaves when this occurs.
-- It can test the application's resilience to potential slowness/unavailability of some replicas due to high CPU load.
+Pod CPU hog is a Kubernetes pod-level chaos fault that excessively consumes CPU resources, resulting in a significant increase in the CPU resource usage of a pod.
+- Simulates a situation where an application's CPU resource usage unexpectedly spikes.
 
-:::tip Fault execution flow chart
-![Pod CPU Hog](./static/images/pod-stress.png)
-:::
+![Pod CPU Hog](./static/images/pod-cpu-hog.png)
 
-## Uses
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Disk Pressure or CPU hogs is another very common and frequent scenario we find in kubernetes applications that can result in the eviction of the application replica and impact its delivery. Such scenarios that can still occur despite whatever availability aids K8s provides. These problems are generally referred to as "Noisy Neighbour" problems.
-    
-Injecting a rogue process into a target container, we starve the main microservice process (typically pid 1) of the resources allocated to it (where limits are defined) causing slowness in application traffic or in other cases unrestrained use can cause node to exhaust resources leading to eviction of all pods. So this category of chaos fault helps to build the immunity on the application undergoing any such stress scenario.
+Disk pressure or CPU hog affects Kubernetes applications which result in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
+The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
+Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
+It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -51,11 +49,6 @@ The application pods should be in running state before and after chaos injection
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The time duration for chaos insertion (seconds) </td>
         <td> Default to 60s </td>
-      </tr>
-      <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos. Available libs are <code>litmus</code> and <code>pumba</code> </td>
-        <td> Default to <code>litmus</code> </td>
       </tr>
       <tr>
         <td> LIB_IMAGE </td>
@@ -85,17 +78,17 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/var/run/docker.sock</code> </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
       </tr> 
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -105,16 +98,16 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
  
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### CPU Cores
 
-It stresses the `CPU_CORE` of the targeted pod for the `TOTAL_CHAOS_DURATION` duration.
+It specifies the number of CPU cores to target for a duration specified by `TOTAL_CHAOS_DURATION` environment variable. You can tune it using the `CPU_CORE` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune tithis:
 
 [embedmd]:# (./static/manifests/pod-cpu-hog/cpu-cores.yaml yaml)
 ```yaml
@@ -143,12 +136,14 @@ spec:
           value: '60'
 ```
 
-### CPU Load
-It contains percentage of pod CPU to be consumed. It can be tuned via `CPU_LOAD` ENV.
+### CPU load
 
-Use the following example to tune this:
+It contains percentage of pod CPU to be consumed. You can tune it using the `CPU_LOAD` ENV.
 
-[embedmd]:# (./static/manifests/pod-cpu-hog/cpu-load.yaml yaml)
+Use the following example to tune it:
+
+[embedmd]: # "./static/manifests/pod-cpu-hog/cpu-load.yaml yaml"
+
 ```yaml
 # CPU load for the stress
 apiVersion: litmuschaos.io/v1alpha1
@@ -164,31 +159,32 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-cpu-hog
-    spec:
-      components:
-        env:
-        # CPU load in percentage for the stress
-        - name: CPU_LOAD
-          value: '100'
-        # CPU core should be provided as 0 for CPU load
-        # to work, otherwise it will take CPU core as priority
-        - name: CPU_CORES
-          value: '0'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-cpu-hog
+      spec:
+        components:
+          env:
+            # CPU load in percentage for the stress
+            - name: CPU_LOAD
+              value: "100"
+            # CPU core should be provided as 0 for CPU load
+            # to work, otherwise it will take CPU core as priority
+            - name: CPU_CORES
+              value: "0"
+            - name: TOTAL_CHAOS_DURATION
+              value: "60"
 ```
 
-### Container Runtime Socket Path
+### Container runtime and socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
+- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
+- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
-[embedmd]:# (./static/manifests/pod-cpu-hog/container-runtime-and-socket-path.yaml yaml)
+[embedmd]: # "./static/manifests/pod-cpu-hog/container-runtime-and-socket-path.yaml yaml"
+
 ```yaml
 ## provide the container runtime and socket file path
 apiVersion: litmuschaos.io/v1alpha1
@@ -204,55 +200,17 @@ spec:
     appkind: "deployment"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: pod-cpu-hog
-    spec:
-      components:
-        env:
-        # runtime for the container
-        # supports docker, containerd, crio
-        - name: CONTAINER_RUNTIME
-          value: 'docker'
-        # path of the socket file
-        - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
-### Pumba Chaos Library
-
-It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
-Provide the stress image via `STRESS_IMAGE` ENV for the pumba library.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/pod-cpu-hog/pumba-lib.yaml yaml)
-```yaml
-# use pumba chaoslib for the stress
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-cpu-hog
-    spec:
-      components:
-        env:
-        # name of chaos lib
-        # supports litmus and pumba
-        - name: LIB
-          value: 'pumba'
-        # stress image - applicable for pumba only
-        - name: STRESS_IMAGE
-          value: 'alexeiled/stress-ng:latest-ubuntu'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
+    - name: pod-cpu-hog
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: "containerd"
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: "/run/containerd/containerd.sock"
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: "60"
 ```

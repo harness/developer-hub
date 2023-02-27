@@ -1,37 +1,37 @@
 ---
 id: pod-network-loss
-title: Pod Network Loss
+title: Pod network loss
 ---
-## Introduction
-- It injects packet loss on the specified container by starting a traffic control (tc) process with netem rules to add egress/ingress loss.
-- It can test the application's resilience to lossy/flaky network.
+Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress (or ingress) loss.
+- It tests the application's resilience to lossy (or flaky) network.
 
-:::tip Fault execution flow chart
-![Pod Network Loss](./static/images/network-chaos.png)
-:::
 
-## Uses
+![Pod Network Loss](./static/images/pod-network-loss.png)
+
+
+## Usage
 <details>
-<summary>View the uses of the fault</summary>
+<summary>View fault usage</summary>
 <div>
-Coming soon.
+It tests the application's resilience to lossy (or flaky) network. It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
+
 </div>
 </details>
 
 ## Prerequisites
-:::info
-- Ensure that Kubernetes Version > 1.16.
-:::
 
-## Default Validations
-:::note
+- Kubernetes> 1.16.
+
+
+## Default validations
+
 The application pods should be in running state before and after chaos injection.
-:::
 
-## Fault Tunables
+
+## Fault tunables
 <details>
-    <summary>Check the Fault Tunables</summary>
-    <h2>Optional Fields</h2>
+    <summary>Fault tunables</summary>
+    <h2>Optional fields</h2>
     <table>
       <tr>
         <th> Variables </th>
@@ -58,12 +58,12 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to `/var/run/docker.sock` </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -90,11 +90,6 @@ The application pods should be in running state before and after chaos injection
         <td> The Percentage of total pods to target </td>
         <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
       </tr> 
-    <tr>
-        <td> LIB </td>
-        <td> The chaos lib used to inject the chaos </td>
-        <td> Default value: litmus, supported values: pumba and litmus </td>
-      </tr>
       <tr>
         <td> TC_IMAGE </td>
         <td> Image used for traffic control in linux </td>
@@ -108,7 +103,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> Eg. 30 </td>
+        <td> For example, 30 </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -118,16 +113,16 @@ The application pods should be in running state before and after chaos injection
     </table>
 </details>
 
-## Fault Examples
+## Fault examples
 
-### Common and Pod specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Pod specific tunable](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### Common and pod-specific tunables
+Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Network Packet Loss
 
-It defines the network packet loss percentage to be injected in the targeted application. It can be tuned via `NETWORK_PACKET_LOSS_PERCENTAGE` ENV. 
+It defines the network packet loss percentage to be injected in the targeted application. You can tune it using the `NETWORK_PACKET_LOSS_PERCENTAGE` ENV. 
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-network-loss/network-loss.yaml yaml)
 ```yaml
@@ -162,7 +157,7 @@ The network faults interrupt traffic for all the IPs/hosts by default. The inter
 - `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted.
 - `DESTINATION_HOSTS`: It contains the DNS Names/FQDN names of the services, the accessibility to which, is impacted.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-network-loss/destination-ips-and-hosts.yaml yaml)
 ```yaml
@@ -196,9 +191,9 @@ spec:
 
 ### Network Interface
 
-The defined name of the ethernet interface, which is considered for shaping traffic. It can be tuned via `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
+The defined name of the ethernet interface, which is considered for shaping traffic. You can tune it using the `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-network-loss/network-interface.yaml yaml)
 ```yaml
@@ -227,14 +222,14 @@ spec:
           value: '60'
 ```
 
-### Container Runtime Socket Path
+### Container runtime and socket path
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For other runtimes provide the appropriate path.
+- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
+- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/pod-network-loss/container-runtime-and-socket-path.yaml yaml)
 ```yaml
@@ -259,49 +254,10 @@ spec:
         # runtime for the container
         # supports docker, containerd, crio
         - name: CONTAINER_RUNTIME
-          value: 'docker'
+          value: 'containerd'
         # path of the socket file
         - name: SOCKET_PATH
-          value: '/var/run/docker.sock'
+          value: '/run/containerd/containerd.sock'
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'
-```
-
-### Pumba Chaos Library
-
-It specifies the Pumba chaos library for the chaos injection. It can be tuned via `LIB` ENV. The defaults chaos library is `litmus`.
-Provide the traffic control image via `TC_IMAGE` ENV for the Pumba library.
-
-Use the following example to tune this:
-
-[embedmd]:# (./static/manifests/pod-network-loss/pumba-lib.yaml yaml)
-```yaml
-# use pumba chaoslib for the network chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-network-loss
-    spec:
-      components:
-        env:
-        # name of the chaoslib
-        # supports litmus and pumba lib
-        - name: LIB
-          value: 'pumba'
-        # image used for the traffic control in linux
-        # applicable for pumba lib only
-        - name: TC_IMAGE
-          value: 'gaiadocker/iproute2'
-        - name: TOTAL_CHAOS_DURATION
-          value: '60'
 ```
