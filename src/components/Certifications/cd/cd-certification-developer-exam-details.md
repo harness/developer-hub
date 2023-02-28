@@ -13,7 +13,7 @@ Question Type: Multiple choice
 | Covered Domain                                | Coverage         |
 | ----------------------------------- | --------------- |
 | **Application Architectures and Services for Deployment** | 25% |
-| **Product Swimlanes** | 15% |
+| **Swimlanes** | 15% |
 | **Continuous Delivery**   | 30% |
 | **Continuous Verification**  | 8% |
 | **GitOps**  | 10% |
