@@ -82,7 +82,6 @@ One Delegate size does not fit all use cases, so Harness let's you pick from sev
 | 4 | 8 GB / 2 CPU | 100 |
 | 8 | 16 GB / 4 CPU | 200 |
 Number of parallel deployments/builds that can be run across all replicas
-1
 2 GB / 0.5 CPU
 25
 2
