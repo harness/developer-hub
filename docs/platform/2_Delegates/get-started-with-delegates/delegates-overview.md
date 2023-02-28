@@ -92,7 +92,6 @@ Number of parallel deployments/builds that can be run across all replicas
 100
 8
 16 GB / 4 CPU
-200
 
 Remember that the memory and CPU requirements are for the Delegate only. Your Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
 
