@@ -20,7 +20,7 @@ This topic illustrates a simple build-and-push workflow using Docker-in-Docker i
 
 ## Before You Begin
 
-Docker-in-Docker must run in privileged mode to work properly. Use caution because this provides full access to the host environment. For more information, go to the Docker documentation for [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities). You can't use Docker-in-Docker not supported on platforms that don't support Privileged mode, such as those running Windows containers.
+Docker-in-Docker must run in privileged mode to work properly. Use caution because this provides full access to the host environment. For more information, go to the Docker documentation for [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities). You can't use Docker-in-Docker on platforms that don't support Privileged mode, such as those running Windows containers.
 
 These steps assume you are familiar with the following concepts:
 
