@@ -1,5 +1,5 @@
 ---
-title: Create a Monitored Service
+title: Create a monitored service
 description: Create a monitored servie to correlate change events.
 sidebar_position: 10
 helpdocs_topic_id: lwi37ku94x
