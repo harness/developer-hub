@@ -19,7 +19,7 @@ The length of the grace period is configurable.
 | **Delegate type** | **Grace period** | **Default interval** |
 | :-- | :--: | :--: |
 | Immutable | Yes | 10 minutes |
-| Legacy | No | 30 seconds |
+| Legacy image | No | 30 seconds |
 
 The event that initiates the graceful shutdown depends on delegate type.
 
