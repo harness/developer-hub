@@ -71,8 +71,8 @@ Use the following commands to discard the `redis` cache for the NG license
 
 If this does not refresh the license:
 
-   - Repeat the process a second time
-   - Wait five minutes before you reload the UI
+   - Repeat the process a second time.
+   - Wait 5 minutes before you reload the UI.
 
 If the license does not refresh, use the following process to temporarily disable caching in `ng-manager`.
 
