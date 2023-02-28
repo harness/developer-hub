@@ -1,6 +1,6 @@
 ---
-title: Define a Docker Build Infrastructure
-description: You can define a CI build infrastructure on any Linux or macOS host. This is the simplest build infrastructure to set up and is well suited to developers who want to build on their laptops.
+title: Use local runner build infrastructure
+description: You can define a CI build infrastructure on any Linux or macOS host.
 sidebar_position: 15
 helpdocs_topic_id: xd8u17be5h
 helpdocs_category_id: rg8mrhqm95
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can define a CI build infrastructure on any Linux or macOS host. This is the simplest build infrastructure to set up, and is well-suited for developers who want to run builds on a local host such as a laptop.
+You can define a CI build infrastructure on any Linux or macOS host. This is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
 ### Important Notes
 
