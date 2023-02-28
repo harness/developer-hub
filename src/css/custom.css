@@ -337,6 +337,18 @@ details summary::before {
 }
 .tabs__item--active {
   border-bottom-color: var(--primary);
+  background-color: var(--primary-1);
+}
+.tabs__item,
+.tabs__item > * {
+  display: flex;
+  align-items: center;
+}
+.tabs__item img,
+.tabs__item i {
+  width: 1em;
+  height: auto;
+  margin-right: 4px;
 }
 
 .color-ci {
