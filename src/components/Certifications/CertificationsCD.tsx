@@ -37,14 +37,14 @@ export default function CertificationsCD() {
             src={`${baseUrl}img/cert_dev_cd_badge.svg`}
             alt="Harness Certified Expert - CD & GitOps Developer"
           />
-          <img
+          {/* <img
             src={`${baseUrl}img/cert_adm_cd_badge.svg`}
             alt="Harness Certified Expert - CD & GitOps Administrator"
           />
           <img
             src={`${baseUrl}img/cert_arc_cd_badge.svg`}
             alt="Harness Certified Expert - CD & GitOps Architect"
-          />
+          /> */}
         </div>
       </div>
 
@@ -165,17 +165,14 @@ export default function CertificationsCD() {
                   />
                   <span className={styles.productVersion}>
                     <strong>Product version: </strong> Harness CD & GitOps
-                    Free/Team Plans
+                    Enterprise Plan
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (Coming soon...)</h3>
+                  <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                    Eliminate scripting and manual deployments with Argo
-                    CD-as-a-Service and powerful, easy-to-use pipelines. Empower
-                    your teams to deliver new features, faster – with AI/ML for
-                    automated canary and blue/green deployments, advanced
-                    verification, and intelligent rollback
+                    Assesses the fundamental skills to deploy and maintain CD
+                    projects and the overall Harness Platform.
                   </div>
                   {/*
                   <AdministratorCertificationReviewGuide />
@@ -220,17 +217,14 @@ export default function CertificationsCD() {
                   />
                   <span className={styles.productVersion}>
                     <strong>Product version: </strong> Harness CD & GitOps
-                    Free/Team Plans
+                    Enterprise Plan
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide (Coming soon...)</h3>
+                  <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                    Eliminate scripting and manual deployments with Argo
-                    CD-as-a-Service and powerful, easy-to-use pipelines. Empower
-                    your teams to deliver new features, faster – with AI/ML for
-                    automated canary and blue/green deployments, advanced
-                    verification, and intelligent rollback
+                    Assess key technical job functions and advanced skills in
+                    design, implementation and management of CD.
                   </div>
                   {/*
                   <ArchitectCertificationReviewGuide />

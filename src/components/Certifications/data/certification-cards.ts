@@ -3,75 +3,30 @@ import { certType, CardItem } from "../CertCard";
 
 export const certifications: CardItem[] = [
     {
-      title: "Continuous Delivery & GitOps Certifications",
+      title: "Continuous Delivery & GitOps - Developer (BETA COMING SOON)",
       module: "cd",
       type: certType.Developer,
       description:
-        "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
-      version: "CI Drone 1.0",
-      link: "/certifications/continuous-delivery",
-    },
-    {
-      title: "Continuous Integration Certifications",
-      module: "ci",
-      type: certType.Developer,
-      description:
-        "The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases.",
+        "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production.",
       version: "Harness CD & GitOps Free/Team Plans",
       link: "/certifications/continuous-delivery",
     },
     {
-      title: "Feature Flag Certifications",
-      module: "ff",
-      type: certType.Developer,
-      description:
-        "The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases.",
-      version: "CI Drone 1.0",
-      link: "/certifications/continuous-delivery",
-    },
-    {
-      title: "Cloud Cost Management Certifications",
-      module: "ccm",
-      type: certType.Developer,
-      description:
-        "The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases.",
-      version: "CI Drone 1.0",
-      link: "/certifications/continuous-delivery",
-    },
-    {
-      title: "Continuous Delivery & GitOps Certifications",
+      title: "Continuous Delivery & GitOps - Administrator (BETA COMING SOON)",
       module: "cd",
       type: certType.Administrator,
       description:
-        "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
-      version: "CI Drone 1.0",
+        "Administrator focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production.",
+      version: "Harness CD & GitOps Enterprise Plan",
       link: "/certifications/continuous-delivery",
     },
     {
-      title: "Continuous Integration Certifications",
-      module: "ci",
-      type: certType.Administrator,
-      description:
-        "The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases.",
-      version: "CI Drone 1.0",
-      link: "/certifications/continuous-delivery",
-    },
-    {
-      title: "Continuous Delivery & GitOps Certifications",
+      title: "Continuous Delivery & GitOps - Architect (BETA COMING SOON)",
       module: "cd",
       type: certType.Architect,
       description:
-        "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
-      version: "CI Drone 1.0",
-      link: "/certifications/continuous-delivery",
-    },
-    {
-      title: "Continuous Integration Certifications",
-      module: "ci",
-      type: certType.Architect,
-      description:
-        "The CI Overview provides a bird's-eye view of all your Builds — successful, failed, aborted, and expired — and the percentage of successful builds for individual codebases.",
-      version: "CI Drone 1.0",
+        "Architect focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production.",
+      version: "Harness CD & GitOps Enterprise Plan",
       link: "/certifications/continuous-delivery",
     },
   ];
