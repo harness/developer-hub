@@ -84,17 +84,11 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 ### Remote Cache Repository
 
-Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo.
-
-This is different from other CI vendors that are limited to local caching and persistent volumes.
-
-In addition, you can specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache.
-
-Remote Docker layer caching can dramatically improve build time by sharing layers across pipelines, stages, and steps.
-
-In the step's **Remote Cache Repository** field, enter the name of the remote cache repo where the cached image layers will be stored.
+Enter the name of the remote cache repo where the cached image layers will be stored.
 
 The remote cache repository needs to be created in the same host and project as the build image. The repository will be automatically created if it doesn't exist. For caching to work, the entered image name must exist.
+
+Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
 ### Run as User
 

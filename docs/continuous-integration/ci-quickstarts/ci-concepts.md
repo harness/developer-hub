@@ -146,13 +146,7 @@ Caching ensures faster job execution by reusing data from previous jobs' expensi
 
 #### Remote Docker Layer Caching
 
-Harness enables remote Docker Layer Caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo.
-
-This is different from other CI vendors that are limited to local caching and persistent volumes.
-
-You can also specify the same Docker repo for multiple Build and Push steps, which enables them to share the same remote cache.
-
-Remote Docker Layer Caching can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+Harness enables remote Docker Layer Caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple Build and Push steps, which enables them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
 #### Artifact Repos
 

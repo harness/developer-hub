@@ -42,7 +42,7 @@ Add each tag separately.
 
 :::tip
 
-Harness expression are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `Build ID: 9`. You can use the same tag in another stage to reference the same build by its tag.
+Harness expression are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
 
 :::
 
@@ -76,17 +76,11 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 ### Remote Cache Image
 
-Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo.
-
-This is different from other CI vendors that are limited to local caching and persistent volumes.
-
-You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache.
-
-Remote Docker layer caching can dramatically improve build time by sharing layers across pipelines, stages, and steps.
-
 Enter the name of the remote cache image, such as `<container-registry-name>.azurecr.io/<image-name>`.
 
 The Remote Cache Repository must be in the same account and organization as the build image. For caching to work, the entered image name must exist.
+
+Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
 ### Run as User
 
