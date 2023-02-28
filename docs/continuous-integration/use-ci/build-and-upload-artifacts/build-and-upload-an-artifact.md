@@ -99,7 +99,7 @@ The build is also listed in your Harness project's **Builds**.
 
 ## Useful techniques
 
-Here are some interesting ways you can use **Build and Push** steps.
+Here are some interesting ways you can use or enhance **Build and Push** steps.
 
 <details>
 <summary>Use Harness expressions for tags</summary>
@@ -142,6 +142,151 @@ You can use your CI pipeline to test a Dockerfile used in your codebase and veri
 	2. Type: **String**
 	3. Value: **true**
 4. Save and run the pipeline.
+
+</details>
+
+<details>
+<summary>Build multi-architecture images</summary>
+
+To use a CI pipeline to build multi-architecture images, create a stage for each architecture. Here is a YAML example of a mulit-architecture pipeline:
+
+```yaml
+pipeline:
+  allowStageExecutions: true
+  projectIdentifier: my-project
+  orgIdentifier: default
+  tags:
+    CI: ""
+  properties:
+    ci:
+      codebase:
+        connectorRef: CI_GitHub
+        repoName: Automation.git
+        build: <+input>
+  stages:
+    - stage:
+        name: K8
+        identifier: upload
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: K8Linux
+              namespace: <+input>
+              runAsUser: ""
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              containerSecurityContext:
+                runAsUser: ""
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: CreateDockerFile
+                  identifier: CreateDockerFile
+                  spec:
+                    connectorRef: CI_DockerHub
+                    image: alpine:latest
+                    command: |-
+                      touch harnessDockerfileui
+                      cat > harnessDockerfileui <<- EOM
+                      FROM alpine:latest AS dev-env
+                      ARG foo
+                      RUN echo "$foo bar"
+                      ENTRYPOINT ["pwd"]
+
+                      FROM alpine:latest AS release-env
+                      ARG hello
+                      RUN echo "$hello world"
+                      ENTRYPOINT ["ls"]
+                      EOM
+                      cat harnessDockerfileui
+                    resources:
+                      limits:
+                        memory: 100M
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: DockerPushStep
+                  identifier: DockerPushStep
+                  spec:
+                    connectorRef: my-dockerhub
+                    repo: my-repo/ciquickstart
+                    tags:
+                      - "1.0"
+                    dockerfile: harnessDockerfileui
+                    target: dev-env
+                    resources:
+                      limits:
+                        memory: 100M
+        variables: []
+    - stage:
+        name: K8s Linux arm
+        identifier: CI_Golden_ARM
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8sarm
+              namespace: ci-gold-arm-delegate
+              automountServiceAccountToken: true
+              tolerations:
+                - effect: NoSchedule
+                  key: kubernetes.io/arch
+                  operator: Equal
+                  value: arm64
+              nodeSelector:
+                kubernetes.io/arch: arm64
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: CreateDockerFile
+                  identifier: CreateDockerFile
+                  spec:
+                    connectorRef: CI_DockerHub
+                    image: alpine:latest
+                    command: |-
+                      touch harnessDockerfileui
+                      cat > harnessDockerfileui <<- EOM
+                      FROM alpine:latest AS dev-env
+                      ARG foo
+                      RUN echo "$foo bar"
+                      ENTRYPOINT ["pwd"]
+
+                      FROM alpine:latest AS release-env
+                      ARG hello
+                      RUN echo "$hello world"
+                      ENTRYPOINT ["ls"]
+                      EOM
+                      cat harnessDockerfileui
+                    resources:
+                      limits:
+                        memory: 100M
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: DockerPushStep
+                  identifier: DockerPushStep
+                  spec:
+                    connectorRef: my-dockerhub
+                    repo: my-repo/ciquickstart
+                    tags:
+                      - "1.0"
+                    dockerfile: harnessDockerfileui
+                    target: dev-env
+                    resources:
+                      limits:
+                        memory: 100M
+        variables: []
+  variables: []
+  identifier: CI_MultiArch
+  name: CI_MultiArch
+```
 
 </details>
 
