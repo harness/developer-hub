@@ -17,7 +17,7 @@ The permissions and ports listed in this topic are for all of the integrations H
 
 In general, if you are already connecting to your artifact servers, cloud, verification, and security providers from within your network or VPC, and you install the Harness Delegate inside that network or VPC, there is little network or VPC configuration needed. You simply need to specify accounts and ports when configuring Harness to use the providers.
 
-
+| | | | |
 | --- | --- | --- | --- |
 | **Connections** | **Permissions and Harness Docs** | **Ports for Delegate Connections to Services** | **Provider References** |
 | Active Directory LDAP | User account in the Active Directory. | HTTPS: 443.LDAP without SSL: 389.Secure LDAP (LDAPS): 636. |  [Users and Groups](https://docs.microsoft.com/en-us/windows/desktop/secauthz/users-and-groups) |
