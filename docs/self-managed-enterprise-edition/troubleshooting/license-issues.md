@@ -46,15 +46,15 @@ Use the following strategies to refresh a NextGen license.
 
 ### Discard the redis cache for the NextGen license
 
-Use the following commands to discard the redis cache for the NG license
+Use the following commands to discard the `redis` cache for the NG license
 
-1. Retrieve the redis master host:
+1. Retrieve the `redis` master host:
 
    ```
    kubectl exec -it redis-sentinel-harness-server-0 -n <namespace> -- redis-cli info | grep master_host | cut -c 13-
    ```
 
-2. Find the redis master service:
+2. Find the `redis` master service:
 
    ```
    kubectl get svc -n <namespace> | grep <IP-From-Previous-Command>
