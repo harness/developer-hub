@@ -14,7 +14,7 @@ Harness Delegate is implemented to shut down gracefully. The process of graceful
 - Delegates that have not quit are force-terminated.
 - Incomplete tasks are discarded.
 
-The length of the grace period is configurable and depends on whether the delegate is immutable or legacy. 
+The length of the grace period is configurable. 
 
 | **Delegate type** | **Grace period** | **Default interval** |
 | :-- | :--: | :--: |
