@@ -81,7 +81,6 @@ One Delegate size does not fit all use cases, so Harness let's you pick from sev
 | 2 | 4 GB / 1 CPU | 50 |
 | 4 | 8 GB / 2 CPU | 100 |
 | 8 | 16 GB / 4 CPU | 200 |
-Number of parallel deployments/builds that can be run across all replicas
 
 Remember that the memory and CPU requirements are for the Delegate only. Your Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
 
