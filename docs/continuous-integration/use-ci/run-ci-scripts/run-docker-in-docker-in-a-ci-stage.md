@@ -8,23 +8,27 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can run Docker-in-Docker (**DinD**) in a CI stage. This is useful whenever you need to run Docker commands as part of your build process. For example, you can build images from two separate codebases in the same pipeline: one using a step such as [Build and Push an Image to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md), and another using Docker commands in a Run step.
+CI pipelines that use Kubernetes build infrastructure can run Docker-in-Docker (**DinD**) in CI stages. This is useful whenever you need to run Docker commands as part of your build process. For example, you can build images from two separate codebases in the same pipeline: one using a step such as [Build and Push an Image to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md), and another using Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
 
-This topic illustrates a simple build-and-push workflow using Docker-in-Docker.
+:::tip
 
-Docker-in-Docker must run in privileged mode to work properly. You need to be careful because this provides full access to the host environment. See [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) in the Docker docs. Docker-in-Docker is not supported in Harness-hosted build infrastructures or on platforms (such as those running Windows containers) that don't support Privileged mode.
+This Docker-in-Docker configuration only applies to Kubernetes build infrastructure. You don't need this Docker-in-Docker setup for Harness Cloud, local runner, or VM build infrastructures. With Harness Cloud and other build infrastructures, you can run Docker commands directly in your pipeline stages.
 
-### Before You Begin
+:::
 
-To go through this workflow, you need the following:
+This topic illustrates a simple build-and-push workflow using Docker-in-Docker in a pipeline that uses Kubernetes build infrastructure.
 
-* A familiarity with basic Harness CI concepts:
-	+ [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
-* A familiarity with Build Stage settings:
-	+ [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+## Before You Begin
 
-### Step 1: Set Up the CI Stage
+Docker-in-Docker must run in privileged mode to work properly. Use caution because this provides full access to the host environment. For more information, go to the Docker documentation for [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities). You can't use Docker-in-Docker not supported on platforms that don't support Privileged mode, such as those running Windows containers.
+
+These steps assume you are familiar with the following concepts:
+
+* Pipeline configuration, such as the [CI Pipeline quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+
+## Step 1: Set Up the CI Stage
 
 In your Harness Pipeline, click **Add Stage**. Then click **Build**.
 
@@ -36,11 +40,11 @@ In the Overview tab for the new Build Stage, configure the Stage as follows:
 	+ `/var/lib/docker`
 * Under Advanced, add Stage Variables for your Docker Hub Personal Access Token and any other fields you want to parameterize. For passwords and Personal Access Tokens, select Secret as the variable type.
 
-### Step 2: Define the Build Farm Infrastructure
+## Step 2: Define the Build Farm Infrastructure
 
 In the CI Build stage > **Infrastructure** tab, define the build infrastructure for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
-### Step 3: Add a DinD Background step
+## Step 3: Add a DinD Background step
 
 In the Execution tab, add a [Background step](../../ci-technical-reference/background-step-settings.md) and configure it as follows:
 
@@ -49,7 +53,7 @@ In the Execution tab, add a [Background step](../../ci-technical-reference/backg
 * **Image:** The image you want to use, such as [docker:dind](https://hub.docker.com/_/docker).
 * **Optional Configuration:** Select **Privileged**. This is required for Docker-in-Docker.
 
-### Step 4: Configure the Run Step
+## Step 4: Configure the Run Step
 
 In the Execution tab, add a [Run Step](../../ci-technical-reference/run-step-settings.md) and configure it as follows:
 
@@ -85,7 +89,7 @@ docker build -t $DOCKER_IMAGE_LABEL .
 docker tag $DOCKER_IMAGE_LABEL $DOCKERHUB_USERNAME/$DOCKER_IMAGE_LABEL:<+pipeline.sequenceId>  
 docker push $DOCKERHUB_USERNAME/$DOCKER_IMAGE_LABEL:<+pipeline.sequenceId>
 ```
-### Step 5: Run the Pipeline
+## Step 5: Run the Pipeline
 
 Now you can run your Pipeline. You simply need to select the codebase.
 
@@ -94,10 +98,9 @@ Now you can run your Pipeline. You simply need to select the codebase.
 3. If prompted, specify a Git branch, tag, or PR number.
 4. Click **Run Pipeline** and check the console output to verify that the Pipeline runs as intended.
 
-### Configure As Code: YAML
+## Configure As Code: YAML
 
-To configure your pipeline as YAML in CI, go to Harness **Pipeline Studio**, click **YAML**. Here’s is a working example of the workflow described in this topic. Modify the YAML attributes such as name, identifiers, codebase, connector refs, and variables as needed.
-
+To configure your pipeline as YAML in CI, go to Harness **Pipeline Studio** and select **YAML**. Here is an example of a pipeline that uses the workflow described in this topic. Modify the YAML attributes, such as `name`, `identifiers`, `codebase`, connector refs, and variables, as needed.
 
 ```
 pipeline:
@@ -188,8 +191,7 @@ pipeline:
             value: dind-w-bg-step
 
 ```
-### See Also
+
+## See also
 
 * [Run a Drone Plugin in CI](../use-drone-plugins/run-a-drone-plugin-in-ci.md)
-* [CI Run Step Settings](../../ci-technical-reference/run-step-settings.md)
-
