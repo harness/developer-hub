@@ -1,10 +1,10 @@
 ---
 title: Graceful delegate shutdown
-description: Read about the delegate process of graceful shutdown.
+description: Read about the process of graceful delegate shutdown.
 # sidebar_position: 2
 ---
 
-Harness Delegate is implemented to shut down gracefully. The process of graceful shutdown is applied as follows:
+Harness Delegate is designed to shut down gracefully. The process of graceful shutdown proceeds as follows:
 
 - The delegate receives an instruction to quit.
 - A grace period begins during which the delegate:
