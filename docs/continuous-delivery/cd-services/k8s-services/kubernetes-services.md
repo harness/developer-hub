@@ -807,37 +807,187 @@ If you run `kubectl api-resources` you should see a list of resources, and `k
 
 ## Artifacts
 
-The **Artifacts** settings in the **Service Definition** allow you to select the artifacts for deployment instead of hardcoding them in your manifest and values YAML files.
+You have two options when referencing the artifacts you want to deploy:
 
-Artifacts OverviewIf a Docker image location is hardcoded in your Kubernetes manifest (for example, `image: nginx:1.14.2`), then you can simply add the manifest to Harness in **Manifests** and Kubernetes will pull the image during deployment.
+- Add an artifact source to the Harness service and reference it in the values YAML, Helm chart, etc., using the Harness expression `<+artifacts.primary.image>`.
+- Hardcode the artifact into the manifests, values YAML, etc.
 
-Alternatively, you can add the image location to Harness as an artifact in the **Artifacts**.
+```mdx-code-block
+import Tabs4 from '@theme/Tabs';
+import TabItem4 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs4>
+  <TabItem4 value="Expression" label="Expression" default>
+```
+
+Add the image location to Harness as an artifact in the **Artifacts** section of the service.
 
 ![](./static/kubernetes-services-07.png)
 
-This allows you to reference the image in your manifests and Values files using the Harness expression `<+artifact.image>`.
-
+This allows you to reference the image in your values YAML files using the Harness expression `<+artifacts.primary.image>`.
 
 ```yaml
 ...  
-image: <+artifact.image>  
+image: <+artifacts.primary.image>  
 ...
 ```
-You cannot use Harness variables expressions in your Kubernetes object manifest files. You can only use Harness variables expressions in Values YAML files.When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use. You can select a specific tag/version, use a [Runtime Input](../../../platform/20_References/runtime-inputs.md) so that you are prompted for the tag/version when you run the Pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
 
-Here's an example where a Runtime Input is used and you select which image version/tag to deploy.
+<details>
+<summary>Using the artifact expression</summary>
+
+You cannot use Harness variables expressions in your Kubernetes object manifest files. You can only use Harness variables expressions in values YAML files, or Kustomize Patch file.
+
+When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use. 
+
+You can select a specific tag/version, use a [runtime input](https://developer.harness.io/docs/platform/references/runtime-inputs/) so that you are prompted for the tag/version when you run the pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
+
+Here's an example where a runtime input is used and you select which image version/tag to deploy.
 
 ![](./static/kubernetes-services-08.png)
 
 With a Harness artifact, you can template your manifests, detaching them from a hardcoded location. This makes your manifests reusable and dynamic.
 
-In **Artifacts**, you add connections to the images in their repos.
+</details>
 
-In **Artifacts**, click **Add Primary** **Artifact.**
+```mdx-code-block
+  </TabItem4>
+  <TabItem4 value="Hardcode" label="Hardcode">
+```
+If a Docker image location is hardcoded in your Kubernetes manifest (for example, `image: nginx:1.14.2`), then you can simply add the manifest to Harness in **Manifests** and Kubernetes will pull the image during deployment.
 
-Select the **Artifact Repository Type**.
+```mdx-code-block
+  </TabItem4>
+</Tabs4>
+```
 
 ### Docker
+
+```mdx-code-block
+import Tabs5 from '@theme/Tabs';
+import TabItem5 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs5>
+  <TabItem5 value="YAML" label="YAML" default>
+```
+
+To use a Docker artifact, you create or use a Harness connector to connect to your Docker repo and then use that connector in your Harness service and reference the artifact to use.
+
+<details>
+<summary>Docker connector YAML</summary>
+
+```yaml
+connector:
+  name: Docker Hub with Pwd
+  identifier: Docker_Hub_with_Pwd
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  type: DockerRegistry
+  spec:
+    dockerRegistryUrl: https://index.docker.io/v2/
+    providerType: DockerHub
+    auth:
+      type: UsernamePassword
+      spec:
+        username: johndoe
+        passwordRef: Docker_Hub_Pwd
+    executeOnDelegate: false
+```
+
+</details>
+
+<details>
+<summary>Service using Docker artifact YAML</summary>
+
+```yaml
+service:
+  name: Kubernetes
+  identifier: Kubernetes
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: Docker_Hub_with_Pwd
+                imagePath: library/nginx
+                tag: stable-perl
+              identifier: nginx
+              type: DockerRegistry
+      manifests:
+        - manifest:
+            identifier: nginx
+            type: K8sManifest
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: harnessdocs2
+                  gitFetchType: Branch
+                  paths:
+                    - default-k8s-manifests/Manifests/Files/templates
+                  branch: main
+              valuesPaths:
+                - default-k8s-manifests/Manifests/Files/ng-values.yaml
+              skipResourceVersioning: false
+  gitOpsEnabled: false
+```
+</details>
+
+
+
+```mdx-code-block
+  </TabItem5>
+  <TabItem5 value="API" label="API">
+```
+
+Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+Note that the `type` is `DockerRegistry` and the `connectorType` depends on the Docker registry you are using (`DockerConnector`, `ArtifactoryConnector`, etc.).
+
+<details>
+<summary>Docker connector example</summary>
+
+```yaml
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345678' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: pat.123456789' \
+--data-raw 'connector:  
+  name: dockerhub  
+  identifier: dockerhub
+  description: ""  
+  tags: {}  
+  orgIdentifier: default  
+  projectIdentifier: APISample  
+  type: DockerRegistry  
+  spec:  
+    dockerRegistryUrl: https://index.docker.io/v2/  
+    providerType: DockerHub  
+    auth:  
+      type: Anonymous'
+```
+
+</details>
+
+
+Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+
+```mdx-code-block
+  </TabItem5>
+  <TabItem5 value="Terraform Provider" label="Terraform Provider">
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem5>
+  <TabItem5 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 For details on all the Docker Connector settings, see [Docker Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
 
@@ -861,7 +1011,44 @@ Click **Submit**.
 
 The Artifact is added to the Service Definition.
 
+```mdx-code-block
+  </TabItem5>
+</Tabs5>
+```
+
 ### Google Container Registry (GCR)
+
+```mdx-code-block
+import Tabs6 from '@theme/Tabs';
+import TabItem6 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs6>
+  <TabItem6 value="YAML" label="YAML" default>
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem6>
+  <TabItem6 value="API" label="API">
+```
+
+1. In **Pipeline Studio**, select **YAML**
+2. Paste the following YAML example and select **Save**:
+
+
+```mdx-code-block
+  </TabItem6>
+  <TabItem6 value="Terraform Provider" label="Terraform Provider">
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem6>
+  <TabItem6 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
@@ -891,7 +1078,44 @@ Click **Submit**.
 
 The Artifact is added to the Service Definition.
 
+```mdx-code-block
+  </TabItem6>
+</Tabs6>
+```
+
 ### Google Artifact Registry
+
+```mdx-code-block
+import Tabs7 from '@theme/Tabs';
+import TabItem7 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs7>
+  <TabItem7 value="YAML" label="YAML" default>
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem7>
+  <TabItem7 value="API" label="API">
+```
+
+1. In **Pipeline Studio**, select **YAML**
+2. Paste the following YAML example and select **Save**:
+
+
+```mdx-code-block
+  </TabItem7>
+  <TabItem7 value="Terraform Provider" label="Terraform Provider">
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem7>
+  <TabItem7 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
@@ -939,7 +1163,45 @@ Click **Submit**.
 
 The Artifact is added to the Service Definition.
 
+
+```mdx-code-block
+  </TabItem7>
+</Tabs7>
+```
+
 ### Amazon Elastic Container Registry (ECR)
+
+```mdx-code-block
+import Tabs8 from '@theme/Tabs';
+import TabItem8 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs8>
+  <TabItem8 value="YAML" label="YAML" default>
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem8>
+  <TabItem8 value="API" label="API">
+```
+
+1. In **Pipeline Studio**, select **YAML**
+2. Paste the following YAML example and select **Save**:
+
+
+```mdx-code-block
+  </TabItem8>
+  <TabItem8 value="Terraform Provider" label="Terraform Provider">
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem8>
+  <TabItem8 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
@@ -967,7 +1229,45 @@ Click **Submit**.
 
 The Artifact is added to the Service Definition.
 
+
+```mdx-code-block
+  </TabItem8>
+</Tabs8>
+```
+
 ### Azure Container Registry (ACR)
+
+```mdx-code-block
+import Tabs9 from '@theme/Tabs';
+import TabItem9 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs9>
+  <TabItem9 value="YAML" label="YAML" default>
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem9>
+  <TabItem9 value="API" label="API">
+```
+
+1. In **Pipeline Studio**, select **YAML**
+2. Paste the following YAML example and select **Save**:
+
+
+```mdx-code-block
+  </TabItem9>
+  <TabItem9 value="Terraform Provider" label="Terraform Provider">
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem9>
+  <TabItem9 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
 
@@ -997,7 +1297,45 @@ Click **Submit**.
 
 The Artifact is added to the Service Definition.
 
+
+```mdx-code-block
+  </TabItem9>
+</Tabs9>
+```
+
 ### Nexus
+
+```mdx-code-block
+import Tabs10 from '@theme/Tabs';
+import TabItem10 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs10>
+  <TabItem10 value="YAML" label="YAML" default>
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem10>
+  <TabItem10 value="API" label="API">
+```
+
+1. In **Pipeline Studio**, select **YAML**
+2. Paste the following YAML example and select **Save**:
+
+
+```mdx-code-block
+  </TabItem10>
+  <TabItem10 value="Terraform Provider" label="Terraform Provider">
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem10>
+  <TabItem10 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](../../../platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
 
@@ -1030,7 +1368,45 @@ Click **Submit**.
 
 The Artifact is added to the Service Definition.
 
+
+```mdx-code-block
+  </TabItem10>
+</Tabs10>
+```
+
 ### Artifactory
+
+```mdx-code-block
+import Tabs11 from '@theme/Tabs';
+import TabItem11 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs11>
+  <TabItem11 value="YAML" label="YAML" default>
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem11>
+  <TabItem11 value="API" label="API">
+```
+
+1. In **Pipeline Studio**, select **YAML**
+2. Paste the following YAML example and select **Save**:
+
+
+```mdx-code-block
+  </TabItem11>
+  <TabItem11 value="Terraform Provider" label="Terraform Provider">
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem11>
+  <TabItem11 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
@@ -1062,7 +1438,49 @@ Click **Submit**.
 
 The Artifact is added to the Service Definition.
 
+
+```mdx-code-block
+  </TabItem11>
+</Tabs11>
+```
+
 ### Github Packages
+
+```mdx-code-block
+import Tabs12 from '@theme/Tabs';
+import TabItem12 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs12>
+  <TabItem12 value="YAML" label="YAML" default>
+```
+
+<details>
+<summary>YAML for </summary>
+markdown
+</details>
+
+
+```mdx-code-block
+  </TabItem12>
+  <TabItem12 value="API" label="API">
+```
+
+1. In **Pipeline Studio**, select **YAML**
+2. Paste the following YAML example and select **Save**:
+
+
+```mdx-code-block
+  </TabItem12>
+  <TabItem12 value="Terraform Provider" label="Terraform Provider">
+```
+1. .
+2. .
+
+```mdx-code-block
+  </TabItem12>
+  <TabItem12 value="Pipeline Studio" label="Pipeline Studio">
+```
 
 You can use Github Packages as artifacts for deployments.
 
@@ -1100,6 +1518,12 @@ To use this artifact source, you provide a script to query your artifact server 
 The output must be a JSON array, with a mandatory key for a Build Number/Version. You then map a key from your JSON output to the Build Number/Version variable.
 
 For steps on adding a Custom Artifact source, go to [Add a Custom Artifact Source for CD](../cd-services-general/add-a-custom-artifact-source-for-cd.md).
+
+```mdx-code-block
+  </TabItem12>
+</Tabs12>
+```
+
 
 ### Reference Artifacts in Manifests
 
