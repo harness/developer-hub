@@ -57,8 +57,8 @@ If you want to add tools to the image, Harness recommends the creation of a cust
 ### Install Harness Delegate
 
 <!-- Video:
-https://harness-1.wistia.com/medias/rpv5vwzpxz-->
-<docvideo src="https://harness-1.wistia.com/medias/f9nqiluelc" /> 
+https://harness-1.wistia.com/medias/frzea22qdc-->
+<docvideo src="https://harness-1.wistia.com/medias/frzea22qdc" /> 
 
 
 For basic information on installing Harness Delegate, see the following topics:
@@ -75,7 +75,12 @@ For advanced installation topics, see the following:
 
 One Delegate size does not fit all use cases, so Harness let's you pick from several options:
 
-![](./static/delegates-overview-01.png)
+| Replicas | Required memory / CPU | Maximum parallel deployments and builds across replicas |
+| :--: |  :--: | :--: |
+| 1 | 2 GB / 0.5 CPU | 10 |
+| 2 | 4 GB / 1 CPU | 20 |
+| 4 | 8 GB / 2 CPU | 40 |
+| 8 | 16 GB / 4 CPU | 80 |
 
 Remember that the memory and CPU requirements are for the Delegate only. Your Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
 
