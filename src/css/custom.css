@@ -487,6 +487,18 @@ aside nav.menu > ul > li > ul > li ul > li > a {
   background-size: 1.25rem 1.25rem;
 }
 
+a.card .text--truncate {
+  white-space: unset;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+}
+a.card p.text--truncate {
+  min-height: 3em;
+}
+
 @media screen and (min-width: 1200px) {
   /* style for the search bar in higher resolution */
   .searchBar {
