@@ -59,6 +59,7 @@ Use the following commands to discard the `redis` cache for the NG license
    ```
    kubectl get svc -n <namespace> | grep <IP-From-Previous-Command>
    ```
+   
    Copy the service name.
    
 3. Delete the license keys:
@@ -80,16 +81,16 @@ If the license does not refresh, use the following process to temporarily disabl
 
 If discarding the `redis` cache does not refresh the NextGen license, use the following process to temporarily disable caching in `ng-manager`.
 
-1. Use the `kubectl edit configmap` command to open the `ng-manager` **ConfigMap** for editing. Replace the <namespace> placeholder with your Harness installation namespace.
+1. Use the `kubectl edit configmap` command to open the `ng-manager` **ConfigMap** for editing. Replace the `<namespace>` placeholder with your Harness installation namespace.
 
    ```
    kubectl edit configmap ng-manager -n <namespace>
    ```
 
-2. Change the value of `CACHE_BACKEND` to `NOOP`
+2. Change the value of `CACHE_BACKEND` to `NOOP`.
 
-3.  Restart your `ng-manager` pods:
+3. Restart your `ng-manager` pods:
 
-    ```
-    kubectl rollout restart deploy ng-manager -n <namespace>
-    ```
+   ```
+   kubectl rollout restart deploy ng-manager -n <namespace>
+   ```
