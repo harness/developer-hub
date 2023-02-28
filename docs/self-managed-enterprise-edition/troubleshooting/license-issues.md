@@ -78,7 +78,7 @@ If the license does not refresh, use the following process to temporarily disabl
 
 ### Disable NG cache
 
-When discarding the `redis` cache does not refresh the NextGen license, use the following process to temporarily disable caching in `ng-manager`.
+If discarding the `redis` cache does not refresh the NextGen license, use the following process to temporarily disable caching in `ng-manager`.
 
 1. Use the `kubectl edit configmap` command to open the `ng-manager` **ConfigMap** for editing. Replace the <namespace> placeholder with your Harness installation namespace.
 
