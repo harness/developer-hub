@@ -162,6 +162,9 @@ To set up a Black Duck Hub scan, add a Build (CI) or a SecurityTests stage to yo
 #### Access Token 
 <StoSettingImageAccessToken />
 
+#### Region
+<StoSettingImageRegion />
+
 
 </details>
 

@@ -1,1 +1,1 @@
-The predefined configuration to use for the scan. All scanners have at least one configuration.
+The predefined configuration to use for the scan. All scan steps have at least one configuration.

@@ -4,6 +4,6 @@ The registry type where the image is stored:
 
 * **[Amazon Container Registry](https://aws.amazon.com/ecr/)**
 
-* **[JFrog Docker Registry](https://aws.amazon.com/ecr/)**
+* **[JFrog Docker Registry](https://jfrog.com/container-registry/)**
 
 * **Local Image**

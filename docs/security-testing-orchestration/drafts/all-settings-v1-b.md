@@ -322,84 +322,112 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 
 <a name="tool-project-name"></a>
+
 #### Project Name
 <StoSettingToolProjectName />
+
 [TOC &uarr;](#toc)
 
 <a name="tool-project-version"></a>
+
 #### Project Version
 <StoSettingToolProjectVersion />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-include"></a>	
+
 #### Include 
 <StoSettingToolInclude />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-exclude"></a>	
+
 #### Exclude
 <StoSettingToolExclude />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-context"></a>	
+
 #### Context Name
 <StoSettingToolContext />
+
 [TOC &uarr;](#toc)
 
 <a name="tool-context-image"></a>
+
 #### Context Name (images) 
 <StoSettingToolImageName />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-team-name"></a>
+
 #### Team Name
 <StoSettingToolProductTeamName  />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-port"></a>
+
 #### Port  
 <StoSettingToolPort  />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-java-libraries"></a>
+
 #### Java Libraries
 <StoSettingTooJavaLibraries  />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-java-binaries"></a>
+
 #### Java Binaries
 <StoSettingToolJavaBinaries  />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-product-token"></a>
+
 #### Product Token  
 <StoSettingToolProductToken  />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-product-name"></a>
+
 #### Name 
 <StoSettingToolProductAccessID  />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-project-token"></a>
+
 #### Project Token
 <StoSettingToolProductToken  />
+
 [TOC &uarr;](#toc)
 
 
 <a name="tool-product-lookup-type"></a>
+
 #### Lookup Type
 <StoSettingToolLookupType  />
+
 [TOC &uarr;](#toc)
 
 
@@ -408,26 +436,34 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 
 
 <a name="instance-domain"></a>
+
 #### Domain
 <StoSettingInstanceDomain />
+
 [TOC &uarr;](#toc)
 
 
 <a name="instance-protocol"></a>
+
 #### Protocol
 <StoSettingInstanceProtocol />
+
 [TOC &uarr;](#toc)
 
 
 <a name="instance-port"></a>
+
 #### Port
 <StoSettingInstancePort />
+
 [TOC &uarr;](#toc)
 
 
 <a name="instance-path"></a>
+
 #### Path
 <StoSettingInstancePath />
+
 [TOC &uarr;](#toc)
 
 
@@ -435,19 +471,25 @@ To set up a $PRODUCT scan, add a Build (CI) or a SecurityTests stage to your pip
 ### Log Level, CLI flags, and Fail on Severity 
 
 <a name="log-level"></a>
+
 #### Log Level
 <StoSettingLogLevel />
+
 [TOC &uarr;](#toc)
 
 
 <a name="cli-flags"></a>
+
 #### Additional CLI flags
 <StoSettingCliFlags />
+
 [TOC &uarr;](#toc)
 
 <a name="fail-on-severity"></a>
+
 ####  Fail on severity
 <StoSettingFailOnSeverity />
+
 [TOC &uarr;](#toc)
 
 ## Legacy configuration
