@@ -12,7 +12,7 @@ Harness Change Impact Analysis allows you to get a clear understanding of what h
 
 These changes might include deployments, infrastructure changes, incidents, and feature flags. Harness Change Impact Analysis helps you: 
 
-- Correlate recent changes in your service and their broader impact on your service.
+- Correlate recent changes in your service and their broader impact on the health of your service.
 - Triage the changes quickly and reduce downtime.
 
 This topic describes how to create a monitored service to correlate change events.

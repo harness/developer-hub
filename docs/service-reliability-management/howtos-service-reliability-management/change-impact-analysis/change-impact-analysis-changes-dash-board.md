@@ -5,9 +5,9 @@ sidebar_position: 30
 ---
 
 
-The Changes dashboard provides a quick overview of change events from multiple change sources. A change source is a combination of a Harness Service and associated environment that monitors changes such as deployments, infrastructure changes, and incidents. Change events are grouped in one location, enabling you to see how a certain change affects the rest of the system.
+The Changes dashboard provides a quick overview of change events from multiple change sources. A change source is a system that generates change events whenever a change is recorded. Change events are grouped in one location, enabling you to see how a certain change affects the rest of the system.
 
-The Changes dashboard helps you understand when the change occurred, why it took place, and what kind of effect it had.
+The Changes dashboard helps you understand when the change occurred, why it took place, and what impact it had on the service of the monitored service.
 
 Perform the following steps to go to the Changes dashboard:
 
