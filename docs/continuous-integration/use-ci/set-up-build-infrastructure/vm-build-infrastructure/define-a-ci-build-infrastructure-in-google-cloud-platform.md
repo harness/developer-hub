@@ -15,8 +15,6 @@ Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Conta
 
 This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
 
-By running builds in your GCP infrastructure, you can build software and run tests, repeatedly and automatically, on a scalable platform with no outages or backlogs.
-
 For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 The following diagram illustrates a build farm. The [​Harness Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.

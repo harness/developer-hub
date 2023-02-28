@@ -11,7 +11,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how you can use Kubernetes cluster build infrastructure for a Harness CI pipeline stage. With Kubernetes build infrastructure, you can build software and run tests, repeatedly and automatically, on a scalable platform with no outages or backlogs.
+This topic describes how you can use Kubernetes cluster build infrastructure for a Harness CI pipeline stage.
 
 Once you set up the Kubernetes cluster to use as your build infrastructure, you connect Harness to it with a Harness [Kubernetes cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate.
 
@@ -34,14 +34,14 @@ Consider the following CI stage:
 
 Assume that you configure your stage resources as follows:
 
-* redis (service dependency in Background step): 5GB, 2 cpu
-* s1 step: 2GB, 2 cpu
-* s2 step: 3GB, 1 cpu
-* s3 step: 4GB, 1 cpu
-* s4 step: 2GB, 1 cpu
-* s5 step: 2GB, 1 cpu
+* Redis (service dependency in Background step): 5GB, 2 CPU
+* s1 step: 2GB, 2 CPU
+* s2 step: 3GB, 1 CPU
+* s3 step: 4GB, 1 CPU
+* s4 step: 2GB, 1 CPU
+* s5 step: 2GB, 1 CPU
 
-Kubernetes would allocate the pod based on the maximum requirements for the overall stage. In this example, the peak requirement is when the s3, s4, and s5 steps run in parallel. The pod also needs to run the Redis service at the same time. The total maximum requirements are the sum of Redis + s3 + s4 + s5:
+Kubernetes would allocate a pod based on the maximum requirements for the overall stage. In this example, the peak requirement is when the s3, s4, and s5 steps run in parallel. The pod also needs to run the Redis service at the same time. The total maximum requirements are the sum of Redis + s3 + s4 + s5:
 
 * 5 + 4 + 2 + 2 = **13GB Memory**
 * 2 + 1 + 1 + 1 = **5 CPUs**

@@ -8,13 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-CI pipelines that use Kubernetes build infrastructure can run Docker-in-Docker (**DinD**) in CI stages. This is useful whenever you need to run Docker commands as part of your build process. For example, you can build images from two separate codebases in the same pipeline: one using a step such as [Build and Push an Image to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md), and another using Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
-
 :::tip
 
-This Docker-in-Docker configuration only applies to Kubernetes build infrastructure. You don't need this Docker-in-Docker setup for Harness Cloud, local runner, or VM build infrastructures. With Harness Cloud and other build infrastructures, you can run Docker commands directly in your pipeline stages.
+Docker-in-Docker (DinD) with Privileged mode is necessary only when using Kubernetes build infrastructure. For other infrastructure types, you can run Docker commands directly on the host.
 
 :::
+
+CI pipelines that use Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
 
 This topic illustrates a simple build-and-push workflow using Docker-in-Docker in a pipeline that uses Kubernetes build infrastructure.
 
