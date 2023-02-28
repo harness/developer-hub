@@ -10,17 +10,17 @@ helpdocs_is_published: true
 
 :::tip
 
-Docker-in-Docker (DinD) with Privileged mode is necessary only when using Kubernetes build infrastructure. For other infrastructure types, you can run Docker commands directly on the host.
+Docker-in-Docker (DinD) with privileged mode is necessary only when using a Kubernetes build infrastructure. For other infrastructure types, you can run Docker commands directly on the host.
 
 :::
 
-CI pipelines that use Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
+CI pipelines that use a Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
 
-This topic illustrates a simple build-and-push workflow using Docker-in-Docker in a pipeline that uses Kubernetes build infrastructure.
+This topic illustrates a simple build-and-push workflow using Docker-in-Docker for a pipeline that uses a Kubernetes build infrastructure.
 
 ## Before You Begin
 
-Docker-in-Docker must run in privileged mode to work properly. Use caution because this provides full access to the host environment. For more information, go to the Docker documentation for [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities). You can't use Docker-in-Docker on platforms that don't support Privileged mode, such as those running Windows containers.
+Docker-in-Docker must run in privileged mode to work properly. Use caution because this provides full access to the host environment. For more information, go to the Docker documentation for [Runtime Privilege and Linux Capabilities](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities). You can't use Docker-in-Docker on platforms that don't support privileged mode, such as those that run containers on Windows.
 
 These steps assume you are familiar with the following concepts:
 
