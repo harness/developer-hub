@@ -200,11 +200,13 @@ Select **Expand graph** to view the Test Intelligence Visualization, which shows
 
 ## Enable parallelism for Test Intelligence
 
-Similar to how you [Speed up CI pipelines using parallelism](../../../platform/8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md), you can enable parallelism in your Run Tests steps to reduce the time required by the Run Tests step.
+Similar to how you [Speed up CI pipelines using parallelism](../../../platform/8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md), you can enable parallelism in your Run Tests steps to further reduce the time required for you tests to run.
 
-Parallelism in the Run Tests step is different than parallelism elsewhere in your pipelines. When you enable parallelism in any step or stage, you specify only how you want Harness to divide up the workload, such as into a number of buckets. Whereas, when you enable parallelism for Test Intelligence, you tell Harness the maximum number of workloads to create, and, after Test Intelligence selects the tests to run, Harness divides the selected tests according to your parallelism strategy. This means that your Run Tests step is expedited by both Test Selection and parallelism.
+With parallelism alone, you specify how you want Harness to divide the work for a step or stage. When you use parallelism with Test Intelligence, Harness divides the work after test selection. This means that your Run Tests step is expedited by both test selection and parallelism.
 
-To enable parallelism for Test Intelligence, you must set a parallelism `strategy` on either the Run Tests step or stage where you have the Run Tests step, and you must add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`.
+For example, if you use `split_tests` to [Define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting), you have to include arguments and commands to handle test splitting and selection. You also do not get the benefit of test selection from Test Intelligence, so the Run step runs every test every time. If you use parallelism with a Run Tests step, you get the benefit of test selection reducing the total volume of work to perform, in addition to parallelism splitting the work into concurrent workloads.
+
+To enable parallelism for Test Intelligence, you must set a parallelism `strategy` on either the Run Tests step or the stage where you have the Run Tests step, and you must add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`.
 
 1. Go to the pipeline where you want to enable parallelism for Test Intelligence.
 2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy` and `paralleism`. Other options, such as `maxConcurrency` are optional. For example:

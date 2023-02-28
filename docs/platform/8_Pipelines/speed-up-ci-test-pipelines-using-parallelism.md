@@ -169,7 +169,7 @@ The `split_tests` command creates a new set of test files that is ordered based 
 
 #### Test splitting strategies
 
-The `split_tests` command allows you to define the criteria for splitting tests. The pipeline uses [Test Intelligence](../../continuous-integration/ci-quickstarts/test-intelligence-concepts.md) to eliminate tests that don’t need to be rerun; then it splits the remaining tests based on the splitting strategy.
+The `split_tests` command allows you to define the criteria for splitting tests.
 
 Harness supports the following strategies:
 
