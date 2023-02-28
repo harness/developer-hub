@@ -17,9 +17,10 @@ The permissions and ports listed in this topic are for all of the integrations H
 
 In general, if you are already connecting to your artifact servers, cloud, verification, and security providers from within your network or VPC, and you install the Harness Delegate inside that network or VPC, there is little network or VPC configuration needed. You simply need to specify accounts and ports when configuring Harness to use the providers.
 
-| | | | |
-| --- | --- | --- | --- |
+
+
 | **Connections** | **Permissions and Harness Docs** | **Ports for Delegate Connections to Services** | **Provider References** |
+| --- | --- | --- | --- |
 | Active Directory LDAP | User account in the Active Directory. | HTTPS: 443.LDAP without SSL: 389.Secure LDAP (LDAPS): 636. |  [Users and Groups](https://docs.microsoft.com/en-us/windows/desktop/secauthz/users-and-groups) |
 | AppDynamics | General permission: View, Edit and Delete permissions for new applications can be set as part of the default permissions for a custom role. | HTTP: 80 |  [General Permissions](https://docs.appdynamics.com/21.3/en/appdynamics-essentials/account-management/tenant-user-management/create-and-manage-custom-roles/application-permissions) |
 | AWS Cloud | IAM user to be able to make API requests to AWS.DescribeRegions required. | Depends on the firewall settings of your VPC, but typically, HTTP: 443. | [Creating an IAM User in Your AWS Account](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html) |
