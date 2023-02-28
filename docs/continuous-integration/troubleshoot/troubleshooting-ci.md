@@ -12,6 +12,39 @@ This topic contains general troubleshooting information for error messages and o
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
 
+## Git connector fails to connect to the SCM service
+
+If you have configured your build infrastructure to use self-signed certificates, your builds may fail when the Git connector attempts to connect to the SCM service. Build logs may contain the following error messages:
+
+```
+Connectivity Error while communicating with the scm service
+Unable to connect to Git Provider, error while connecting to scm service
+```
+
+To resolve this issue, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML.
+
+For example, here is the `environment` section of a `docker-compose.yml` file with the `SCM_SKIP_SSL` variable:
+
+```yaml
+environment:
+      - ACCOUNT_ID=XXXX
+      - DELEGATE_TOKEN=XXXX
+      - MANAGER_HOST_AND_PORT=https://app.harness.io
+      - LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/
+      - DEPLOY_MODE=KUBERNETES
+      - DELEGATE_NAME=test
+      - NEXT_GEN=true
+      - DELEGATE_TYPE=DOCKER
+      - SCM_SKIP_SSL=true
+```
+
+For more information about self-signed certificates, delegates, and delegate environment variables, go to:
+
+* [Delegate environment variables](../../platform/2_Delegates/delegate-reference/delegate-environment-variables.md)
+* [Docker delegate environment variables](../../platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
+* [Define a Docker build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
+* [Install delegates](https://developer.harness.io/docs/category/install-delegates)
+* [Configure a Kubernetes build farm to use self-signed certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ## Use debug mode to troubleshoot remote builds
 

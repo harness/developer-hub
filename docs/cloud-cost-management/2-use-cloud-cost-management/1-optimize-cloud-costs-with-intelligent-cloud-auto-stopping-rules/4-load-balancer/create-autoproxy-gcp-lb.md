@@ -6,9 +6,16 @@ description: This topic describes how to create a custom load balancer for GCP.
 
 
 
-An AutoStopping proxy load balancer automatically distributes user traffic across multiple instances of your applications coupled with the capabilities of the CCM AutoStopping feature that makes sure that your non-production resources run only when used. Load balancing reduces the chances of performance issues in your applications by spreading the load.
+AutoStopping is a solution that is well-suited for use with native load-balancing options like AWS ALB. However, there are certain use cases, such as SSH/RDP/RDS connections, that cannot be addressed by native load balancer integrations for AutoStopping.
 
-You can create a custom load balancer using the AutoStopping proxy option. This feature allows you to launch a VM with the load balancer. 
+To address these use cases, AutoStopping offers a reverse proxy called the AutoStopping proxy. This proxy sits in front of the virtual machines (VMs) and manages the start and stop of the VMs based on network traffic. The proxy is capable of supporting both HTTP(S) and TCP connections.
+
+For HTTP(S) traffic, the AutoStopping proxy provides Layer-7 load balancing and request routing capabilities, as well as SSL support. For all other TCP traffic, the proxy provides a dynamically generated ephemeral port-based configuration.
+
+The AutoStopping proxy runs in a VM and uses the Envoy proxy, an open-source solution that has been thoroughly tested. One proxy VM can handle traffic to multiple AutoStopping-controlled VMs.
+
+![](./static/autostopping-proxy-architecture-diagram.png)
+
 
 Perform the following steps to create an AutoStopping proxy for your resources in GCP:  
 

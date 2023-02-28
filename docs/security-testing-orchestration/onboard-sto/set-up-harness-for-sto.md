@@ -289,7 +289,7 @@ In the **Execution** tab, do the following:
 5. Under Optional Configuration, select the **Privileged** checkbox.
    
     ```mdx-code-block
-     <img src={set_up_harness_25} alt="Configure the service dependency" height="75%" width="75%" />
+     <img src={set_up_harness_25} alt="Configure the background step" height="75%" width="75%" />
     ```
 
 #### Add a Security Step

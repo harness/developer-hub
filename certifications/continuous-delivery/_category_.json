@@ -1,9 +1,0 @@
-{
-  "label": "Continuous Delivery",
-  "collapsible": "true",
-  "collapsed": "true",
-  "link": {
-    "type": "doc",
-    "id": "continuous-delivery"
-  }
-}

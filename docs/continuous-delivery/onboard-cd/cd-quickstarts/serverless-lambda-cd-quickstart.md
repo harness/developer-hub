@@ -147,8 +147,10 @@ Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key
 	The `s3:GetBucketLocation` action is required for a custom S3 bucket only.
 	- View and copy the API Key and Secret to a temporary place. You'll need them when setting up the Harness AWS Connector later in this quickstart.
 
-## Limitations
+## Serverless framework support
 
+* Harness supports Serverless framework 1.82 and later.
+* Harness supports Serverless framework CLI versions 2.x.x and 3.x.x.
 * Harness supports all language runtimes that Serverless supports.
 * Harness supports ZIP files and Docker image artifacts only.
 	+ ZIP files are supported with JFrog Artifactory.
