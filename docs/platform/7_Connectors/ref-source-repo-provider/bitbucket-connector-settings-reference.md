@@ -92,7 +92,7 @@ Here is an example of the **Details** for a Bitbucket Data Center repository URL
 
 :::tip
 
-Bitbucket Data Center (On-Prem) accounts may use a `<domain-name>:<port>` format for the authority portion of SSH URLs, for example `bitbucket.your-company.com:8080`. This depends on your server and firewall configuration.
+There are several different formats possible for Bitbucket Data Center (On-Prem) accounts, such as `bitbucket.myorg.com`, `bitbucket.my.org.com`, and so on. You may also need to use a `<domain-name>:<port>` format for the authority portion of SSH URLs, for example `bitbucket.myorg.com:8080`. This depends on your server and firewall configuration. If the connection test fails, make sure you've used the appropriate URL format.
 
 ![Bitbucket connector Details settings configured to connect to an On-Prep account using an SSH URL with a port number.](./static/bitbucket-connector-settings-reference-ssh-with-port.png)
 
@@ -134,19 +134,13 @@ In the **Username** field, enter the Bitbucket account username as specified in 
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
-In the **Password** field, provide a Bitbucket [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness Encrypted Text secrets](../../6_Security/2-add-use-text-secrets.md).
+In the **Password** field, provide a Bitbucket account-level [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness Encrypted Text secrets](../../6_Security/2-add-use-text-secrets.md).
 
-App passwords need the following permissions:
-* Issues: Read
-* Webhooks: Read and write
-* Repositories: Read, Write
-* Pull requests: Read, Write
+You must provide an account-level app password or token. Repo-level tokens are not supported.
 
 If you use a Google account to log in to Bitbucket, you must use an App password.
 
 Bitbucket accounts with two-factor authentication must use access tokens.
-
-![](./static/bitbucket-connector-settings-reference-05.png)
 
 ```mdx-code-block
   </TabItem2>
@@ -182,15 +176,9 @@ In the **Username** field, enter the Bitbucket account username as specified in 
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
-In the **Personal Access Token** field, provide a Bitbucket [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/), [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), or [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). Passwords are stored as [Harness Encrypted Text secrets](../../6_Security/2-add-use-text-secrets.md).
+In the **Personal Access Token** field, provide a Bitbucket account-level [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/), [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), or [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). Passwords are stored as [Harness Encrypted Text secrets](../../6_Security/2-add-use-text-secrets.md).
 
-App passwords need the following permissions:
-* Issues: Read
-* Webhooks: Read and write
-* Repositories: Read, Write
-* Pull requests: Read, Write
-
-![](./static/bitbucket-connector-settings-reference-05.png)
+You must provide an account-level app password or token. Repo-level tokens are not supported.
 
 :::caution
 
@@ -207,3 +195,7 @@ Select whether you want Harness to connect directly to your Bitbucket account/re
 If the connection test returns a `not authorized` error, make sure you used the **Username** shown in the Bitbucket **Account settings**.
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
+
+The connection test may also fail if the token doesn't have sufficient privileges.
+
+![](./static/bitbucket-connector-settings-reference-05.png)
