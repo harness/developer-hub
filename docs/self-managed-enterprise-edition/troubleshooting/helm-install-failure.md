@@ -6,23 +6,22 @@ description: Troubleshoot install failure in Self-Management Enterprise Edition
 
 ## Helm install failure
 
+This topic provides solutions for installation problems related to Helm.
 
 ### Ingress-controller port already allocated
 
-Ingress-controller port already allocated:
+This error occurs when there is an attempt to deploy multiple `helm-charts` in the same cluster or when the `ingress-controller` service is already mapped to port 32500. For example:
 
 ```
 # helm install harness-release ./ -n harness -f override.yaml
 Error: INSTALLATION FAILED: Service "harness-ingress-controller" is invalid: spec.ports[0].nodePort: Invalid value: 32500: provided port is already allocated
 ```
 
-- Cause: Trying to deploy multiple helm-charts in the same cluster, ingress-controller service is mapped to port 32500 already.
+The fix for this issue is included in `helm-charts` and is as follows:
 
-- Fix already present in helm-charts.
+- Set `.Values.global.ingress.nginx.httpNodePort` to 32501, or to any unused port.
 
-  `.Values.global.ingress.nginx.httpNodePort`: Set it to 32501 or any random unused port
-
-  `.Values.global.ingress.nginx.httpsNodePort`: Set it to 32506 or any random unused port.
+- Set `.Values.global.ingress.nginx.httpsNodePort` to 32506, or to any unused port.
 
 #### Example
 
