@@ -33,7 +33,7 @@ The following error types can be selected in a failure strategy.
 | **Delegate Provisioning Errors** | No available delegate can accomplish the task, or the task is invalid. For example, if an HTTP step attempts to connect to a URL but there is no available delegate to perform the task. |
 | **Timeout Errors** | A Harness delegate fails to complete a task within the timeout setting in the stage or step. For example, if the Kubernetes workload you are deploying fails to reach steady state within the step timeout. |
 | **Unknown Errors** | Errors that don't fall into any other category. This includes Harness application errors. |
-| **Verification Failures** | A Harness continuous verification step fails. |
+| **Verification Failures** | A Harness Continuous Verification step fails. |
 | **Policy Evaluation Failures** | An Open Policy Evaluation (OPA) applied on a step fails. |
 | **Execution-time Inputs Timeout Errors**| A step times out when running a pipeline due to the unavailability of a runtime input. |
 | **Approval Rejection** | An approval step is rejected. You can select specific failure strategies for approval rejection across steps and stages. |
