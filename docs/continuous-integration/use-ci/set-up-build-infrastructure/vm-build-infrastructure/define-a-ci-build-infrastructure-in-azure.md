@@ -218,7 +218,7 @@ For more information on Harness Docker Delegate environment variables, go to the
    $ docker-compose -f docker-compose.yml up -d
    ```
 
-4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start before you can do this. For example:
+4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start. For example:
 
    ```
    $ docker ps  
