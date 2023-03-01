@@ -29,6 +29,10 @@ import install_37 from './static/install-a-delegate-37.png'
 import install_40 from './static/install-a-delegate-40.png'
 ```
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 This document introduces the delegate installer and installation of Harness delegates in NextGen environments running Kubernetes or Docker. Like the installer, this document includes the workflow for delegate installation by Helm chart, Terraform Plan, and Kubernetes manifest or Docker.
 
@@ -81,6 +85,10 @@ Select your target environment: **Kubernetes** or **Docker**.
 <img src={install_eight} width="350" />
 ```
 
+```mdx-code-block
+<Tabs>
+<TabItem value="Kubernetes">
+
 ### Kubernetes environment
 
 In **Install your Delegate**, select [**Helm Chart**](#helm-based-install-on-kubernetes), [**Terraform**](#terraform-based-install-on-kubernetes), or [**Kubernetes Manifest**](#kubernetes-based-install-on-kubernetes).
@@ -89,6 +97,10 @@ In **Install your Delegate**, select [**Helm Chart**](#helm-based-install-on-kub
 <img src={install_eleven} width="350" />
 ```
 
+```mdx-code-block
+<Tabs>
+<TabItem value="Helm Chart">
+```
 #### Helm-based install on Kubernetes
 
 Use the following steps to install a delegate on Kubernetes using a Helm chart.
@@ -151,6 +163,12 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 | `upgrader.enabled` | Whether the delegate is automatically updated. Automatic update is not compatible with customizations of the delegate image. For more information, see [Delegate auto-upgrade](/docs/platform/delegates/configure-delegates/delegate-auto-update/). |
 
 
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Terraform Helm provider">
+```
+
 #### Terraform-based install on Kubernetes
 
 Use the following steps to install a delegate on Kubernetes using a Terraform Plan.
@@ -192,7 +210,13 @@ Delegates are identified by their names. Delegate names must conform to the foll
    ```
    terraform apply
    ```
-   
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Kubernetes manifest">
+```
+
 #### Kubernetes-based install on Kubernetes 
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
@@ -252,6 +276,14 @@ Use the `kubectl apply` command to apply the harness-delegate.yaml file:
 $ kubectl apply -f harness-delegate.yaml
 ```
 
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Docker">
 
 ### Docker environment
 
@@ -314,6 +346,11 @@ Your Harness Manager endpoint depends on your Harness cluster location. Use the 
 | [CDCE Docker](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | `https://<HARNESS_HOST>` if the Docker delegate is remoted from CDCE or http://host.docker.internal if the Docker delegate is located on the same host as CDCE |
 | [CDCE Helm](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | `http://<HARNESS_HOST>:7143` where `HARNESS_HOST` is the public IP address of the Kubernetes node that runs CDCE Helm. |
 
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ### Verify the delegate connection
 
