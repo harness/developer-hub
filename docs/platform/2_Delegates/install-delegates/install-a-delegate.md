@@ -383,7 +383,10 @@ Harness asks for feedback after the troubleshooting steps. You are asked, **Did 
 
 If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
 
-
+```mdx-code-block
+</TabItem>
+<TabItem value="Troubleshoot Helm">
+```
 #### Troubleshoot Helm
 
 Use the following steps to troubleshoot your installation of the delegate using Helm.
@@ -430,7 +433,10 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl describe <pod_name> -n <namespace>
    ```
 
-
+```mdx-code-block
+</TabItem>
+<TabItem value="Troubleshoot Terraform">
+```
 #### Troubleshoot Terraform
 
 Use the following steps to troubleshoot your installation of the delegate using Terraform.
@@ -468,6 +474,10 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl describe <pod_name> -n <namespace>
    ```
 
+```mdx-code-block
+</TabItem>
+<TabItem value="Troubleshoot Kubernetes">
+```
 #### Troubleshoot Kubernetes
 
 Use the following steps to troubleshoot your installation of the delegate using Kubernetes.
@@ -496,7 +506,10 @@ Use the following steps to troubleshoot your installation of the delegate using 
    kubectl describe <pod_name> -n <namespace>
    ```
 
-
+```mdx-code-block
+</TabItem>
+<TabItem value="Troubleshoot Docker">
+```
 #### Troubleshoot Docker
 
 Use the following steps to troubleshoot your installation of the delegate using Docker:
