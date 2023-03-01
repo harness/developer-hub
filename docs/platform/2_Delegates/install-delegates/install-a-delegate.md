@@ -73,10 +73,6 @@ The delegate installation process has changed. The installation process is entir
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
 
-```mdx-code-block
-<img src={install_seven} width="350" />
-```
-
 Otherwise, continue with the following steps.
 
 ## Select an environment
