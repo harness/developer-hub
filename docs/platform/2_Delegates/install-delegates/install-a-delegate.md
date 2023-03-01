@@ -89,8 +89,6 @@ Select your target environment: **Kubernetes** or **Docker**.
 <Tabs>
 <TabItem value="Kubernetes">
 
-### Kubernetes environment
-
 In **Install your Delegate**, select [**Helm Chart**](#helm-based-install-on-kubernetes), [**Terraform**](#terraform-based-install-on-kubernetes), or [**Kubernetes Manifest**](#kubernetes-based-install-on-kubernetes).
 
 ```mdx-code-block
@@ -99,9 +97,8 @@ In **Install your Delegate**, select [**Helm Chart**](#helm-based-install-on-kub
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Helm Chart">
+<TabItem value="Helm chart">
 ```
-#### Helm-based install on Kubernetes
 
 Use the following steps to install a delegate on Kubernetes using a Helm chart.
 
@@ -166,10 +163,8 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Terraform Helm provider">
+<TabItem value="Terraform">
 ```
-
-#### Terraform-based install on Kubernetes
 
 Use the following steps to install a delegate on Kubernetes using a Terraform Plan.
 
@@ -216,8 +211,6 @@ Delegates are identified by their names. Delegate names must conform to the foll
 </TabItem>
 <TabItem value="Kubernetes manifest">
 ```
-
-#### Kubernetes-based install on Kubernetes 
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
 
@@ -284,8 +277,6 @@ $ kubectl apply -f harness-delegate.yaml
 ```mdx-code-block
 </TabItem>
 <TabItem value="Docker">
-
-### Docker environment
 
 Use the following process to install a delegate on Docker.
 
@@ -372,22 +363,13 @@ Click **Done** to close the installer.
 
 ### Troubleshooting
 
-The delegate installer provides troubleshooting information for each installation process. If the delegate cannot be verified, click **Troubleshoot** for steps you can use to resolve the problem. This section includes the same information.
-
-Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
-
-```mdx-code-block
-<img src={install_forty} width="600" />
-```
-
-If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
+The delegate installer provides troubleshooting information for each installation process. This section includes the same information.
 
 
 ```mdx-code-block
 <Tabs>
 <TabItem value="Troubleshoot Helm">
 ```
-#### Troubleshoot Helm
 
 Use the following steps to troubleshoot your installation of the delegate using Helm.
 
@@ -437,7 +419,6 @@ Use the following steps to troubleshoot your installation of the delegate using 
 </TabItem>
 <TabItem value="Troubleshoot Terraform">
 ```
-#### Troubleshoot Terraform
 
 Use the following steps to troubleshoot your installation of the delegate using Terraform.
 
@@ -478,7 +459,6 @@ Use the following steps to troubleshoot your installation of the delegate using 
 </TabItem>
 <TabItem value="Troubleshoot Kubernetes">
 ```
-#### Troubleshoot Kubernetes
 
 Use the following steps to troubleshoot your installation of the delegate using Kubernetes.
 
@@ -510,7 +490,6 @@ Use the following steps to troubleshoot your installation of the delegate using 
 </TabItem>
 <TabItem value="Troubleshoot Docker">
 ```
-#### Troubleshoot Docker
 
 Use the following steps to troubleshoot your installation of the delegate using Docker:
 
@@ -552,5 +531,13 @@ Use the following steps to troubleshoot your installation of the delegate using 
 </TabItem>
 </Tabs>
 ```
+### Get support
 
+Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
+
+```mdx-code-block
+<img src={install_forty} width="600" />
+```
+
+If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
 
