@@ -13,6 +13,39 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 2, 2023
+
+### New features
+
+This release does not include new features.
+
+### Early access features
+
+- Improved UI for configuring scan steps (CI-????)
+  
+  This release includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. 
+
+  Note the following:
+
+  - This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.  
+  - These steps require a Background step running Docker-in-Docker only when scanning container images.    
+  - These steps are currently available in Security stages only. 
+  - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
+  - For descriptions of all available step-palette settings, go to XREF.
+  
+
+<details><summary>Step palette UI </summary>
+
+![STO step palette](static/sto-step-palette.png)
+  
+</details>
+
+  -  
+
+- Jira integration
+
+
  			
 ## February 24, 2023
 

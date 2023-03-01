@@ -1,0 +1,1 @@
+The version of the scan project, as defined in the  scanner.
