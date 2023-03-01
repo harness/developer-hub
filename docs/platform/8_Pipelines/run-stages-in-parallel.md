@@ -4,16 +4,16 @@ description: Run stages in parallel if you want to deploy multiple, independent 
 sidebar_position: 3
 ---
 
-Run stages in parallel when you want to deploy multiple, independent services to the same environment. 
+Run stages in parallel when you want to deploy multiple services to the same environment. 
 
-### Before you begin
+### Requirements
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Add a Stage](add-a-stage.md)
 
 ### Running stages in parallel
 
-Run stages in parallel by dragging them together or by clicking the `+` button under a stage in the UI. 
+Run stages in parallel by dragging them together or by selecting the `+` button under a stage in the UI. 
 
 ![](./static/add-a-stage-57.png)
 
@@ -24,8 +24,6 @@ stages:
     - parallel:
         - stage: 
 ```
-
-
 
 Navigate between the stages by hovering over them and selecting the stage.
 
