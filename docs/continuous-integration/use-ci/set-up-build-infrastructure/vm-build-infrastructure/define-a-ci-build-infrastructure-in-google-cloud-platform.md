@@ -1,6 +1,6 @@
 ---
 title: Define a CI Build Infrastructure in Google Cloud Platform
-description: This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
+description: This topic describes how to set up a CI build infrastructure in Google Cloud Platform.
 
 sidebar_position: 30
 helpdocs_topic_id: k5rvvhw49i
@@ -13,11 +13,11 @@ helpdocs_is_published: true
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
+This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and then install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
 
 For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [​Harness Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a build farm. The [Harness Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ##### CI build infrastructure in Google Cloud Platform
 ![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-29.png)
@@ -25,7 +25,7 @@ The following diagram illustrates a build farm. The [​Harness Delegate](/docs/
 ### Important Notes
 
 * Google Cloud VM configuration:
-	+ For the Delegate VM, use a machine type with 4 vCPU and 16 GB memory or more.
+	+ For the delegate VM, use a machine type with 4 vCPU and 16 GB memory or more.
 	+ Harness recommends the [Ubuntu 18.04 LTS (Bionic)](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-bionic?project=docs-play) machine image.
 	+ The VM must allow ingress access on ports 22 and 9079.
 
