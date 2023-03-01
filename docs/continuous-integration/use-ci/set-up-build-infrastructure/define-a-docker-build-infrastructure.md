@@ -51,9 +51,10 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
    ```
 
 3. Start the runner binary according to the OS:
-	1. On macOS, run `./drone-docker-runner-darwin-amd64 server`. You might have modify **Security and Privacy** settings to allow this app to run.
-	2. On Linux, run as `sudo`: `sudo ./drone-docker-runner-darwin-amd64 server`
-  3. On Windows, run `drone-docker-runner-windows-amd64.exe server`. You must run the Drone Runner `.exe` from a separate machine than the one that your Delegate is running on. Make sure to run this command on the appropriate machine.
+
+   * On macOS, run `./drone-docker-runner-darwin-amd64 server`. You might have modify **Security and Privacy** settings to allow this app to run.
+   * On Linux, run as `sudo`: `sudo ./drone-docker-runner-darwin-amd64 server`
+   * On Windows, run `drone-docker-runner-windows-amd64.exe server`. You must run the Drone Runner `.exe` from a separate machine than the one that your Delegate is running on. Make sure to run this command on the appropriate machine.
 
 ## Set the pipeline's build infrastructure
 

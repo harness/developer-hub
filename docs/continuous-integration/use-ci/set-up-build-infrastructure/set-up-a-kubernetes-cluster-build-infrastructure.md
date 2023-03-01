@@ -75,13 +75,11 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## Step 1: Create a Kubernetes Cluster
 
-### Prerequisites
+Make sure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements) and Harness-specific [permissions required for CI](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required).
 
-* Ensure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
-* For Harness-specific permission requirements, see [permission required](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required) for CI.
-* Install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI Pipeline.
+You need to install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI Pipeline.
 
-To create a new Kubernetes cluster, see:
+For instructions on creating clusters, go to:
 
 * [Creating a cluster in Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
 * [Creating a cluster in GKE (Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster))
@@ -116,7 +114,7 @@ To create a new Kubernetes cluster, see:
 13. Select your new Kubernetes delegate, and then select **Save and Continue**. Select the new delegate in your Kubernetes.
 14. Wait while Harness tests the connection, and then select **Finish**.
 
-### Step 3: Define the Build Farm Infrastructure in Harness
+## Step 3: Define the Build Farm Infrastructure in Harness
 
 In this step, you set up your build infrastructure using the Connector and Delegate you added previously. 
 
