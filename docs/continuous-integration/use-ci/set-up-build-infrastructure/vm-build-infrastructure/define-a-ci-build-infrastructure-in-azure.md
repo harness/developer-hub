@@ -18,7 +18,7 @@ This topic describes how to set up a CI build infrastructure in Microsoft Azure.
 
 For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [​Harness Delegate](../../../../platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a build farm. The [Harness Delegate](../../../../platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ![](../static/define-a-ci-build-infrastructure-in-azure-16.png)
 
@@ -115,40 +115,44 @@ instances:
 ```
 Later in this workflow, you'll reference the pool identifier in the Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.
 
-### Step 3: Create the Docker-Compose YAML
+### Step 3: Configure the docker-compose.yaml file
 
-1. Navigate to the Delegates page for your Harness account, organization, or project.
-2. Click **New Delegate** and select **Docker**.
-3. Follow the steps in [Install a Delegate](../../../../platform/2_Delegates/install-delegates/install-a-delegate.md) and download the **docker-compose.yaml** file to your local machine.
+1. In your Harness account, organization, or project, select **Delegates** under **Project Setup**.
+2. Click **New Delegate** and select **Switch back to old delegate install experience**.
+3. Select **Docker** and then select **Continue**.
+4. Enter a **Delegate Name**. Optionally, you can add **Tags** or **Delegate Tokens**. Then, select **Continue**.
+5. Select **Download YAML file** to download the `docker-compose.yaml` file to your local machine.
 
-### Step 4: Configure the Docker Compose File
+The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM. Next, you'll 'add the Runner spec to the new Delegate definition.
 
-The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on localhost and port 3000 of your VM. 
+6. Copy your local **docker-compose.yaml** file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `.drone_pool.yml`.
+7. Open `docker-compose.yaml` in a text editor.
+8. Append the following to the end of the `docker-compose.yaml` file:
 
-In this step, you will add the Runner spec to the new Delegate definition. 
+   ```yaml
+   drone-runner-aws:  
+       restart: unless-stopped  
+       image: drone/drone-runner-aws:latest  
+       volumes:  
+         - /runner:/runner  
+       entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
+       working_dir: /runner  
+       ports:  
+         - "3000:3000"
+   ```
 
-1. Copy your local **docker-compose.yaml** to the `/runner` folder on the VM. This folder should now have **docker-compose.yaml** and **.drone\_pool.yml**.
-2. Append the following to **docker-compose.yaml**.
-```
-drone-runner-aws:  
-    restart: unless-stopped  
-    image: drone/drone-runner-aws:latest  
-    volumes:  
-      - /runner:/runner  
-    entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
-    working_dir: /runner  
-    ports:  
-      - "3000:3000"
-```
-3. In the **docker-compose.yaml** file, add the following under `services: harness-ng-delegate: restart: unless-stopped`:
-```
-network_mode: "host"
-```
+9. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
 
-Your Docker Compose file now looks something like this:
+   ```yaml
+   network_mode: "host"
+   ```
 
-Updated docker-compose.yml
-```
+10. Save `docker-compose.yaml`.
+
+<details>
+<summary>Example: docker-compose.yaml with Runner spec</summary>
+
+```yaml
 version: "3.7"  
 services:  
   harness-ng-delegate:  
@@ -193,42 +197,51 @@ services:
     ports:  
       - "3000:3000"
 ```
-### Step 5: Install the Delegate and Runner
 
-1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the Delegate VM and **`cd`** to `/runner`.
-2. Confirm that the folder has both setup files:
-```
-$ ls -a  
-.  ..  docker-compose.yml  .drone_pool.yml 
-```
-3. Install the Delegate and Runner:
-```
-$ docker-compose -f docker-compose.yml up -d
-```
-4. Verify that both containers are running correctly. (you might need to wait a few minutes for both processes to start.)
-```
-$ docker ps  
-$ docker logs <delegate-container-id>  
-$ docker logs <runner-container-id>
-```
-5. In the Harness UI, verify that the Delegate appears in the Delegates list. This might take two or three minutes. You should see Connected next to the Delegate listing.
+</details>
+
+For more information on Harness Docker Delegate environment variables, go to the [Harness Docker Delegate environment variables reference](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
+
+### Step 4: Install the Delegate and Runner
+
+1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the Delegate VM and `cd` to `/runner`.
+2. Confirm that the folder has both setup files, for example:
+
+   ```
+   $ ls -a
+   . .. docker-compose.yml .drone_pool.yml
+   ```
+
+3. Run the following command to install the Delegate and Runner:
+
+   ```
+   $ docker-compose -f docker-compose.yml up -d
+   ```
+
+4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start before you can do this. For example:
+
+   ```
+   $ docker ps  
+   $ docker logs <delegate-container-id>  
+   $ docker logs <runner-container-id>
+   ```
+
+5. In the Harness UI, verify that the Delegate appears in the Delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
 
    ![](../static/define-a-ci-build-infrastructure-in-azure-17.png)
 
-6. If you see **Not Connected**, make sure the Docker host can connect to **https://app.harness.io**.
+The Delegate and Runner are now installed, registered, and connected.
 
-The Delegate and Runner have now been successfully installed, registered, and connected.
+### Step 5: Select pipeline build infrastructure
 
-For details on the environment variables of the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](../../../../platform/2_Delegates/delegate-reference/delegate-environment-variables.md).
+1. In your CI pipeline's **Build** stage, select the **Infrastructure** tab, and then select **VMs**.
+2. In the **Pool ID**, enter the pool `name` from your [.drone\_pool.yml](#step-2-configure-the-drone-pool).
 
-### Step 6: Run a CI Build
+   ![](../static/define-a-ci-build-infrastructure-in-azure-18.png)
 
-1. In the Harness CI Stage, in **Infrastructure**, select **VMs**.
-2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in Step 2.
+3. Save your pipeline.
 
-![](../static/define-a-ci-build-infrastructure-in-azure-18.png)
-
-You can now run Build Stages in your GCP build infrastructure.
+This pipeline's **Build** stage now uses your GCP VMs for its build infrastructure.
 
 ### Pool Settings Reference
 
