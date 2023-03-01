@@ -100,7 +100,7 @@ Use the following steps to install a delegate on Kubernetes using a Helm chart.
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Helm Chart**.
 
-##### Name the delegate
+### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
@@ -114,7 +114,7 @@ Delegates are identified by their names. Delegate names must conform to the foll
 - A valid name includes only lowercase letters and does not start or end with a number. 
 - The dash character (“-”) can be used as a separator between letters.
 
-##### Add the repository
+### Add the repository
 
 Add the Harness Helm chart repository to your local Helm registry. Use the following command:
 
@@ -122,7 +122,7 @@ Add the Harness Helm chart repository to your local Helm registry. Use the follo
 helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
 ```
 
-##### Update the repository
+### Update the repository
 
 Use the following command to ensure you retrieve the latest version of the Harness Helm chart:
 
@@ -130,7 +130,7 @@ Use the following command to ensure you retrieve the latest version of the Harne
 helm repo update harness-delegate
 ```
 
-##### Install the delegate
+### Install the delegate
 
 Copy and paste the following instructions into your CLI. These instructions are modified based on your account settings and the configuration options selected above. For descriptions of the values, see the table that follows.
 
@@ -170,7 +170,7 @@ On the **New Delegate** page, select **Kubernetes**, and then click **Terraform*
 <img src={install_onefive} width="350" />
 ```
 
-##### Name the delegate
+### Name the delegate
 
 Before you install the delegate, accept or modify the default delegate name.
 
@@ -184,7 +184,7 @@ Delegates are identified by their names. Delegate names must conform to the foll
 - A valid name includes only lowercase letters and does not start or end with a number. 
 - The dash character (“-”) can be used as a separator between letters.
 
-##### Create and apply the Terraform Plan
+### Create and apply the Terraform Plan
 
 1. Copy the Terraform module definition code from the Create the main.tf file section.
 
@@ -214,7 +214,7 @@ On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes
 <img src={install_onenine} width="350" />
 ```
 
-##### Name the delegate
+### Name the delegate
 
 Before you install the delegate, you must give it a name.
 
@@ -228,7 +228,7 @@ Delegates are identified by their names. Delegate names must conform to the foll
 - A valid name includes only lowercase letters and does not start or end with a number. 
 - The dash character (“-”) can be used as a separator between letters.
 
-##### Download the delegate YAML
+### Download the delegate YAML
 
 Use the following cURL instruction to download the Kubernetes YAML file to the target directory for installation:
 
@@ -236,7 +236,7 @@ Use the following cURL instruction to download the Kubernetes YAML file to the t
 curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml
 ```
 
-##### Modify the delegate YAML
+### Modify the delegate YAML
 
 Open the harness-delegate.yaml file. Find and specify the following placeholder values as described.
 
@@ -257,7 +257,7 @@ Your Harness Manager endpoint depends on your Harness cluster location. Use the 
 | [CDCE Docker](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | `https://<HARNESS_HOST>` if the Docker delegate is remoted from CDCE or http://host.docker.internal if the Docker delegate is located on the same host as CDCE |
 | [CDCE Helm](https://developer.harness.io/tutorials/deploy-services/cdce-helm-k8s) | `http://<HARNESS_HOST>:7143` where `HARNESS_HOST` is the public IP address of the Kubernetes node that runs CDCE Helm. |
 
-##### Install the delegate
+### Install the delegate
 
 Use the `kubectl apply` command to apply the harness-delegate.yaml file:
 
@@ -282,7 +282,7 @@ On the **New Delegate** page, select **Docker**.
 <img src={install_twofive} width="350" />
 ```
 
-#### Name the delegate
+### Name the delegate
 
 Accept or change the default delegate name of `docker-delegate`.
 
@@ -296,7 +296,7 @@ Delegates are identified by their names. Delegate names must conform to the foll
 - A valid name includes only lowercase letters and does not start or end with a number. 
 - The dash character (“-”) can be used as a separator between letters.
 
-#### Install the delegate
+### Install the delegate
 
 Use the `docker run` command to install the delegate with the specified parameters:
 
@@ -339,7 +339,7 @@ Your Harness Manager endpoint depends on your Harness cluster location. Use the 
 </Tabs>
 ```
 
-### Verify the delegate connection
+## Verify the delegate connection
 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
@@ -357,7 +357,7 @@ After the delegate is registered and initialized, a success message is shown.
 
 Click **Done** to close the installer. 
 
-### Troubleshooting
+## Troubleshooting
 
 The delegate installer provides troubleshooting information for each installation process. This section includes the same information.
 
