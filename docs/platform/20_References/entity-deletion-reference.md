@@ -24,7 +24,6 @@ If you try to delete the following entity types, Harness will warn you if the en
 * Connectors
 * Secrets
 * Templates
-* Infrastructures
 * Services
 
 If the entity is used, Harness will show you where.
