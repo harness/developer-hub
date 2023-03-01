@@ -30,7 +30,7 @@ Make sure you have:
    
 ## Create a custom trigger
 
-1. In your pipeline, select **Triggers** at the top right portion of the dialog.
+1. In your pipeline, select **Triggers** at the top right portion of the page.
 
     ![](./static/pipeline-trigger.png)
    
@@ -43,13 +43,13 @@ Make sure you have:
    
     ![](./static/custom-webhook-trigger-configuration.png)
 
-5. (Optional) Specify the **Conditions** for running the pipeline and select **Continue**. 
+5. **(Optional)** Specify the **Conditions** for running the pipeline and select **Continue**. 
    
     For example, execute the pipeline if the source or target branch name matches a pattern.
 
     ![](./static/custom-webhook-trigger-conditions.png)
 
-6. In **Pipeline Input**, define payload fields so that Harness can map them to the **Image Path** and **Tag** fields.
+6. In the **Pipeline Input** tab, define payloads for the **Image Path** and **Tag** fields so that Harness can map them later when running the trigger.
 
     ![](./static/custom-webhook-trigger-piepline-input.png)
 
@@ -61,7 +61,8 @@ Make sure you have:
 
     ![](./static/webhook-trigger-copy-curl-command.png)
     
-2. Paste the cURL command in an editor and edit the body fields to provide the payload information. 
+2. Paste the cURL command in an editor and edit the body fields to provide the payload information.
+
    To avoid format issues, we recommend that you use VS Code or Sublime Text to edit the payload information before running the command in a Terminal.
 
    Below is a sample cURL command with image and tag fields.
