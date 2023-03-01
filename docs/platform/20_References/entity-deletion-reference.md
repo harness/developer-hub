@@ -102,6 +102,7 @@ Make sure you enable the feature flags `CDS_FORCE_DELETE_ENTITIES` and `NG_SETTI
 - Infrastructure
 - Environments
 - Environment Groups
+- Templates
 
   
 The Harness account admin can enable or disable the force delete option in the account's default settings.
