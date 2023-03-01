@@ -3,27 +3,23 @@ id: alb-az-down
 title: ALB AZ down
 ---
 
-ALB AZ down takes down the AZ (availability zones) on a target application load balancer for a specific duration. 
-- It restricts access to certain availability zones for a specific duration.
-- It tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
+ALB AZ down takes down the AZ (availability zones) on a target application load balancer for a specific duration. This fault:
+- Restricts access to certain availability zones for a specific duration.
+- Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 ![ALB AZ Down](./static/images/alb-az-down.png)
 
-## Uses
+## Use cases
 
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-This fault breaks the connectivity of an ALB with the given zones and impacts their delivery. Detaching the AZ from the application load balancer disrupts an application's performance. 
-</div>
-</details>
+- ALB AZ down breaks the connectivity of an ALB with the given zones and impacts their delivery. 
+- Detaching the AZ from the application load balancer disrupts the application's performance. 
 
-## Prerequisites
-
-- Kubernetes > 1.17
-- AWS access to attach or detach subnet from from target ALB.
-- Minimum two AZs should be attached to the target ALB even after the chaos injection, else the fault will fail to detach the given AZ.
-- Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+:::note
+- Kubernetes > 1.17 is required to execute this fault.
+- Appropriate AWS access to attach or detach subnet from the target ALB.
+- There needs to be a minimum of two AZs attached to the target ALB after injecting chaos; otherwise, the fault will fail to detach the given AZ.
+- The ALB should be attached to the given availability zones.
+- Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file.
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -37,16 +33,11 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you may be unable to use the default health check probes. 
+- Refer to [AWS named profile for chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+:::
 
-- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -67,19 +58,12 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The alb is attached to the given availability zones.
+Refer to the [superset permission or policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -88,21 +72,21 @@ The alb is attached to the given availability zones.
       </tr>
       <tr>
         <td> LOAD_BALANCER_ARN </td>
-        <td> Provide the target load balancer ARN whose AZ has to be detached</td>
-        <td> For example, <code>arn:aws:elasticloadbalancing:us-east-2:100054111296:loadbalancer/app/test-alb/09121290906ffab7</code> </td>
+        <td> Target load balancer ARN whose AZ have to be detached. </td>
+        <td> For example, <code>arn:aws:elasticloadbalancing:us-east-2:100054111296:loadbalancer/app/test-alb/09121290906ffab7</code>. </td>
       </tr>
       <tr>
         <td> ZONES </td>
-        <td> Provide the target zones that have to be detached from ALB</td>
-        <td> For example, <code>us-east-1a</code> </td>
+        <td> Target zones that have to be detached from ALB. </td>
+        <td> For example, <code>us-east-1a</code>. </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The region name for the target volumes</td>
-        <td> For example, <code>us-east-1</code> </td>
+        <td> Region name for the target volumes. </td>
+        <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -111,38 +95,31 @@ The alb is attached to the given availability zones.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (in seconds) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration to insert chaos (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> The time duration between the attachment and detachment of the volumes (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Duration between the attachment and detachment of the volumes (in seconds). </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple volumes</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple volumes. </td>
+        <td> Default value is parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target zones
 
-It contains comma-separated list of target zones. You can tune it using the `ZONES` environment variable.
+It contains the comma-separated list of target zones. Tune it by using the `ZONES` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune target zones:
 
 [embedmd]:# (./static/manifests/alb-az-down/target-zones.yaml yaml)
 ```yaml
