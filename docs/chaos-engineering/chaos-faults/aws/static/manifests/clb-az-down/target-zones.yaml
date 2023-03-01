@@ -1,4 +1,4 @@
-# contains elb az down for given zones
+# contains clb az down for given zones
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: elb-az-down
+  - name: clb-az-down
     spec:
       components:
         env:

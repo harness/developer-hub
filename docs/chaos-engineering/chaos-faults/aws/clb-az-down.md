@@ -3,7 +3,7 @@ id: clb-az-down
 title: CLB AZ down
 ---
 
-CLB AZ down takes down the AZ (availability zones) on a target CLB for a specific duration. This fault:
+CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specific duration. This fault:
 - Restricts access to certain availability zones for a specific duration.
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
@@ -11,7 +11,7 @@ CLB AZ down takes down the AZ (availability zones) on a target CLB for a specifi
 
 ## Use cases
 
-- CLB AZ down breaks the connectivity of a CLB with the given zones and impacts their delivery. 
+- CLB AZ down fault breaks the connectivity of a CLB with the given zones and impacts their delivery. 
 - Detaching the AZ from the classic load balancer disrupts the dependent application's performance. 
 
 :::note
@@ -118,7 +118,7 @@ Refer to the [superset permission or policy](./security/policy-for-all-aws-fault
 
 It contains the comma-separated list of target zones. Tune it by using the `ZONES` environment variable.
 
-Use the following example to tune target zones:
+Use the following example to tune the target zones:
 
 [embedmd]:# (./static/manifests/clb-az-down/target-zones.yaml yaml)
 ```yaml

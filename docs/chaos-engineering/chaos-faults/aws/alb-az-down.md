@@ -3,7 +3,7 @@ id: alb-az-down
 title: ALB AZ down
 ---
 
-ALB AZ down takes down the AZ (availability zones) on a target application load balancer for a specific duration. This fault:
+ALB AZ down takes down the AZ (Availability Zones) on a target application load balancer for a specific duration. This fault:
 - Restricts access to certain availability zones for a specific duration.
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
@@ -11,7 +11,7 @@ ALB AZ down takes down the AZ (availability zones) on a target application load 
 
 ## Use cases
 
-- ALB AZ down breaks the connectivity of an ALB with the given zones and impacts their delivery. 
+- ALB AZ down fault breaks the connectivity of an ALB with the given zones and impacts their delivery. 
 - Detaching the AZ from the application load balancer disrupts the application's performance. 
 
 :::note
@@ -72,12 +72,12 @@ Refer to the [superset permission or policy](./security/policy-for-all-aws-fault
       </tr>
       <tr>
         <td> LOAD_BALANCER_ARN </td>
-        <td> Target load balancer ARN whose AZ have to be detached. </td>
+        <td> Target load balancer ARN whose AZ should be detached. </td>
         <td> For example, <code>arn:aws:elasticloadbalancing:us-east-2:100054111296:loadbalancer/app/test-alb/09121290906ffab7</code>. </td>
       </tr>
       <tr>
         <td> ZONES </td>
-        <td> Target zones that have to be detached from ALB. </td>
+        <td> Target zones that should be detached from ALB. </td>
         <td> For example, <code>us-east-1a</code>. </td>
       </tr>
       <tr>
@@ -110,7 +110,7 @@ Refer to the [superset permission or policy](./security/policy-for-all-aws-fault
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> Duration to wait before and after injecting chaos (in seconds). </td>
         <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
@@ -119,7 +119,7 @@ Refer to the [superset permission or policy](./security/policy-for-all-aws-fault
 
 It contains the comma-separated list of target zones. Tune it by using the `ZONES` environment variable.
 
-Use the following example to tune target zones:
+Use the following example to tune the target zones:
 
 [embedmd]:# (./static/manifests/alb-az-down/target-zones.yaml yaml)
 ```yaml
