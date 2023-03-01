@@ -5,7 +5,7 @@ sidebar_position: 200
 ---
 
 :::note
-* UI configuration of scan steps is behind the feature flag `NG_DASHBOARDS`. Contact Harness Customer Success to enable this feature. 
+* UI configuration of scan steps is behind the feature flag `NG_DASHBOARDS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 * UI configuration support is currently limited to the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP. 
 * These steps are currently available in Security stages only. 
 * Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
@@ -14,7 +14,7 @@ sidebar_position: 200
 Some Security steps include step palette UI for setting up a scan. This topic describes the settings available in the UI. Each step palette shows only the options that apply to a specific scan. If you're setting up a repository scan, for example, the UI won't show Container Image settings. 
 
 ## Configuring a Security step  
-To set up a $PRODUCT scan, add a SecurityTests stage to your pipeline. Then add a Security step to the stage and configure it using the available options. 
+To set up a scan using the step palette, add a SecurityTests stage to your pipeline. Then add a Security step for the scanner of interest and configure the step using the available options. 
 
 <details>
     <summary>Step Palette</summary>
@@ -219,7 +219,9 @@ import StoSettingImageType from './shared/_sto-ref-ui-image-type.md';
 
 <StoSettingImageType />
 
-!-- ============================================================================= -->
+<!-- ============================================================================= -->
+
+
 <a name="container-domain"></a>
 
 #### Domain (_extraction_)
@@ -242,8 +244,9 @@ import StoSettingImageName from './shared/_sto-ref-ui-image-name.md';
 
 <StoSettingImageName />
 
-<
 <!-- ============================================================================= -->
+
+
 <a name="container-tag"></a>
 
 #### Tag

@@ -22,7 +22,7 @@ This release does not include new features.
 
 ### Early access features
 
-- Improved UI for configuring scan steps (CI-????)
+- Improved UI for configuring scan steps (STO-4867)
   
   This release includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. 
 
@@ -32,8 +32,8 @@ This release does not include new features.
   - These steps require a Background step running Docker-in-Docker only when scanning container images.    
   - These steps are currently available in Security stages only. 
   - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
-  - For descriptions of all available step-palette settings, go to XREF.
-  
+  - For descriptions of all available step-palette settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
+ 
 
 <details><summary>Step palette UI </summary>
 
@@ -41,9 +41,8 @@ This release does not include new features.
   
 </details>
 
-  -  
 
-- Jira integration
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/jira-integrations). (STO-5467)
 
 
  			
