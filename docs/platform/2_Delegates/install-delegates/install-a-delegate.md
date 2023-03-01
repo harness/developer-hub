@@ -335,13 +335,13 @@ Your Harness Manager endpoint depends on your Harness cluster location. Use the 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ```mdx-code-block
-<img src={install_28-5} width="500" />
+<img src={install_28} width="500" />
 ```
 
 To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
 
 ```mdx-code-block
-<img src={install_29-1} width="600" />
+<img src={install_29_1} width="600" />
 ```
 
 After the delegate is registered and initialized, a success message is shown.
