@@ -57,7 +57,7 @@ In addition to providing basic information about installed delegates, the **Dele
 To install a delegate, click **+ New Delegate**.
 
 ```mdx-code-block
-<img src={install_five} width="200" />
+<img src={install_5} width="200" />
 ```
 
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
