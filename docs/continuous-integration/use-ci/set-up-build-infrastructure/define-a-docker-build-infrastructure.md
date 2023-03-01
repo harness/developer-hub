@@ -8,97 +8,108 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can define a CI build infrastructure on any Linux or macOS host. This is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
+You can define a CI build infrastructure on any Linux or macOS host by installing a Harness Delegate and local runner. This is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
-### Important Notes
+The Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Docker Delegate has the following system requirements:
 
-* To set up a local build environment, you must run a Docker Compose file that installs a Harness Delegate and the Local runner.
-* The Docker Delegate has the following system requirements:
-	+ Default 0.5 CPU.
-	+ Default 1.5GB. Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system.
-* The Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds.
+* Default 0.5 CPU.
+* Default 1.5GB. Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system.
 
-### Install the Delegate
+## Install the Delegate
 
-1. In the Harness UI, go to the screen that corresponds to the scope of your delegate: **Account Settings > Account Resources > Delegates **, or **Project Setup > Delegates**.
-2. Select **New Delegate** or **Create a Delegate**, select **Docker** for the delegate type, and then select **Continue**.
-3. Enter a delegate name and click **Continue**.
-4. Download the **docker-compose.yml** file that appears.
-5. Click **Continue**.   
-The UI shows the delegate as not connected. This is expected behavior. You need to complete this workflow to establish connectivity between the delegate and your instance.
-6. Update the **docker-compose.yml** file you just downloaded as follows:
-	1. For `DELEGATE TAGS=`, specify one of the following: `macos-amd64` | `macos-arm64` |`windows-amd64` | `linux-amd64` | `linux-arm64`
-	2. *macOS only —* Add this setting to the `environment` list:  
-	`- RUNNER_URL=`[`http://host.docker.internal:3000`](http://host.docker.internal:3000/)
-	3. *Linux only —* Add the following line immediately after `restart: unless-stopped"`:  
-	`network_mode: "host"`
-7. To start the delegate, cd to the folder where you downloaded the docker-compose file and then enter:  
- `docker-compose -f <`*`updated-docker-compose.yml`*`> up -d`
-8. Download a Drone Runner executable from <https://github.com/harness/drone-docker-runner/releases> .
-9. Enable execution permissions for the Runner. For example, on macOS you can run the command `sudo` `chmod +x` `drone-docker-runner-darwin-amd64`.
-10. Start the runner binary:
-	1. On macOS, run `./drone-docker-runner-darwin-amd64 server` Note: You might have to allow this app to be run from the**Security and Privacy** settings.
-	2. On Linux, run as sudo: `sudo ./drone-docker-runner-darwin-amd64 server`
-11. Go back to the Delegates page where you created the new delegate. The delegate should appear as connected. This might take a few minutes.
+Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
 
-### Update the Pipeline
+* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `macos-amd64`, `macos-arm64`, `windows-amd64`, `linux-amd64`, `linux-arm64`.
+* For macOS, add `-e RUNNER_URL=http://host.docker.internal:3000`.
+* For Linux, add `--net=host` to the first line.
+* For Windows, add `-e RUNNER_URL=http://<windows-machine-hostname-or-ip>:3000`. For Windows, the Drone Runner must run on a separate machine than the one that your Delegate will run on. This variable must point to the machine where you will run the Drone Runner.
 
-Update the pipeline where you want to use the Docker delegate, either from YAML or the Visual pipeline editor.
-
-#### From the YAML view
-
-  Replace the `stages : stage : spec : infrastructure` section for the stage to use `platform` and `runtime` as follows.
-  
-    1. For the `os:` field, specify `Linux` | `MacOS` | `Windows`
-    2. For the `arch:` field, specify `Amd64` | `Arm64`
-
-##### `infrastructure` Field (*before*)
+Here's an example of an install script for Linux:
 
 ```
-- stage:  
-        ...  
-        spec:  
-          ...  
-          infrastructure:  
-            ...  
-
-```
-##### `platform` and `runtime` Fields (*after, Linux example*)
-
-```
-- stage:  
-        ...  
-        spec:  
-          ...  
-          platform:  
-            os: Linux  
-            arch: Amd64  
-          runtime:  
-            type: Docker  
-            spec: {}  
-           ...  
-
+docker run --cpus=1 --memory=2g --net=host \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
+  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306 \
+  -e DELEGATE_TAGS="linux-amd64"
 ```
 
-#### From the Visual Editor
+Make sure to create the delegate at the appropriate scope, such as the project level or account level.
 
-Update the **Infrastructure** tab to use:
+## Install the Drone Runner
 
-1. Docker infrastructure
-2. Platform: Operating System and Architecture (Linux, AMD64 example below)
+The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
 
-### Troubleshooting
+1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+2. Enable execution permissions for the Runner. For example, on macOS you can run the following command:
 
-The delegate should connect to your instance after you finish the installation workflow above. 
+   ```
+   sudo chmod +x drone-docker-runner-darwin-amd64
+   ```
 
-If the delegate does not connect after a few minutes, run the following commands to check the status:
+3. Start the runner binary according to the OS:
+	1. On macOS, run `./drone-docker-runner-darwin-amd64 server`. You might have modify **Security and Privacy** settings to allow this app to run.
+	2. On Linux, run as `sudo`: `sudo ./drone-docker-runner-darwin-amd64 server`
+  3. On Windows, run `drone-docker-runner-windows-amd64.exe server`. You must run the Drone Runner `.exe` from a separate machine than the one that your Delegate is running on. Make sure to run this command on the appropriate machine.
 
-* `docker ps`
-* `docker logs --follow <`*`docker-delegate-container-id`*`>`
+## Set the pipeline's build infrastructure
 
-The container id should be the one with image name `harness/delegate:latest`. 
+Update the pipeline where you want to use the Docker delegate. You can use either the Visual or YAML pipeline editor.
 
-If you see a message like the following, the setup should be successful:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+```
 
-* `Finished downloading delegate jar version 1.0.77221-000 in 168 seconds`
+1. In the pipeline's **Build** stage, select the **Infrastructure** tab.
+2. Select **Local** for the **Infrastructure**.
+3. Select the relevant **Operating System** and **Architecture**.
+4. Save your pipeline.
 
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+In the pipeline's `Build` (`type: CI`) stage, replace the `infrastructure` line with specifications for `platform` and `runtime`, for example:
+
+```yaml
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+```
+
+* `platform`:
+  * `os`: Specify `Linux`, `MacOS`, or `Windows`
+  * `arch`: Specify `Amd64` or `Arm64`
+* `runtime`:
+  * `type`: `Docker`
+  * `spec`: `{}`
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Troubleshooting
+
+The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
+
+```
+docker ps
+docker logs --follow <docker-delegate-container-id>
+```
+
+The container ID should be the container with image name `harness/delegate:latest`.
+
+Successful setup is indicated by a message such as `Finished downloading delegate jar version 1.0.77221-000 in 168 seconds`.
