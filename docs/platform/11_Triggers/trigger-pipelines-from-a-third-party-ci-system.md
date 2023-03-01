@@ -70,11 +70,10 @@ Make sure you have:
     curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=<your_account_identifier>&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Container&triggerIdentifier=Trigger_to_CI' -d '{"image": "library/nginx", "tag":"stable"}'
     ```
 
-    :::note
     The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with this parameter. For more information, go to [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
-    :::
+    
 
-2. Run the updated cURL command in a Terminal. 
+3. Run the updated cURL command in a Terminal. 
 
     Sample success message:
  
@@ -92,4 +91,4 @@ Make sure you have:
     }
     ```
    
-3. Go to **Deployments** to see the pipeline triggered by your custom webhook trigger.
+4. Go to **Deployments** to see the pipeline triggered by your custom webhook trigger.
