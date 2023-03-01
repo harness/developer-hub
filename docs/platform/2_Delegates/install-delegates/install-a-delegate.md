@@ -8,27 +8,27 @@ import install_2 from './static/install-a-delegate-02.png'
 import install_4 from './static/install-a-delegate-04.png'
 import install_5 from './static/install-a-delegate-05.png'
 import install_27 from './static/install-a-delegate-27.png'
-import install_seven from './static/install-a-delegate-07.png'
-import install_eight from './static/install-a-delegate-08.png'
-import install_eleven from './static/install-a-delegate-11.png'
-import install_twelve from './static/install-a-delegate-12.png'
-import install_onethree from './static/install-a-delegate-13.png'
-import install_onefive from './static/install-a-delegate-15.png'
-import install_onesix from './static/install-a-delegate-16.png'
-import install_onenine from './static/install-a-delegate-19.png'
-import install_twenty from './static/install-a-delegate-20.png'
-import install_twofive from './static/install-a-delegate-25.png'
-import install_twothree from './static/install-a-delegate-23.png'
-import install_twonine from './static/install-a-delegate-29.png'
-import install_twonineone from './static/install-a-delegate-29-1.png'
-import install_twoeightfive from './static/install-a-delegate-28-5.png'
+import install_7 from './static/install-a-delegate-07.png'
+import install_8 from './static/install-a-delegate-08.png'
+import install_11 from './static/install-a-delegate-11.png'
+import install_12 from './static/install-a-delegate-12.png'
+import install_13 from './static/install-a-delegate-13.png'
+import install_15 from './static/install-a-delegate-15.png'
+import install_16 from './static/install-a-delegate-16.png'
+import install_19 from './static/install-a-delegate-19.png'
+import install_20 from './static/install-a-delegate-20.png'
+import install_25 from './static/install-a-delegate-25.png'
+import install_23 from './static/install-a-delegate-23.png'
+import install_29 from './static/install-a-delegate-29.png'
+import install_29_1 from './static/install-a-delegate-29-1.png'
+import install_29_5 from './static/install-a-delegate-28-5.png'
 import install_30 from './static/install-a-delegate-30.png'
 import install_39 from './static/install-a-delegate-39.png'
 import install_31 from './static/install-a-delegate-31.png'
 import install_33 from './static/install-a-delegate-33.png'
 import install_35 from './static/install-a-delegate-35.png'
 import install_37 from './static/install-a-delegate-37.png'
-import install_forty from './static/install-a-delegate-40.png'
+import install_40 from './static/install-a-delegate-40.png'
 ```
 
 ```mdx-code-block
@@ -63,7 +63,7 @@ To install a delegate, click **+ New Delegate**.
 The delegate installation process has changed. The installation process is entirely done from the **New Delegate** page.
 
 ```mdx-code-block
-<img src={install_twoseven} width="800" />
+<img src={install_27} width="800" />
 ```
 
 If you prefer a more familiar installation process, click **Switch back to the old delegate install experience**.
@@ -96,7 +96,7 @@ On the **New Delegate** page, select **Kubernetes**, and then click **Helm Chart
 Before you install the delegate, accept or modify the default delegate name.
 
 ```mdx-code-block
-<img src={install_twelve} width="300" />
+<img src={install_12} width="300" />
 ```
 
 Delegates are identified by their names. Delegate names must conform to the following guidelines:
@@ -158,7 +158,7 @@ Use the following steps to install a delegate on Kubernetes using a Terraform Pl
 On the **New Delegate** page, select **Kubernetes**, and then click **Terraform**.
 
 ```mdx-code-block
-<img src={install_onefive} width="350" />
+<img src={install_15} width="350" />
 ```
 
 ### Name the delegate
@@ -166,7 +166,7 @@ On the **New Delegate** page, select **Kubernetes**, and then click **Terraform*
 Before you install the delegate, accept or modify the default delegate name.
 
 ```mdx-code-block
-<img src={install_onesix} width="300" />
+<img src={install_16} width="300" />
 ```
 
 Delegates are identified by their names. Delegate names must conform to the following guidelines:
@@ -202,7 +202,7 @@ Delegates are identified by their names. Delegate names must conform to the foll
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
 
 ```mdx-code-block
-<img src={install_onenine} width="350" />
+<img src={install_19} width="350" />
 ```
 
 ### Name the delegate
@@ -210,7 +210,7 @@ On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes
 Before you install the delegate, you must give it a name.
 
 ```mdx-code-block
-<img src={install_twenty} width="300" />
+<img src={install_20} width="300" />
 ```
 
 Delegates are identified by their names. Delegate names must conform to the following guidelines:
@@ -270,7 +270,7 @@ Use the following process to install a delegate on Docker.
 On the **New Delegate** page, select **Docker**.
 
 ```mdx-code-block
-<img src={install_twofive} width="350" />
+<img src={install_25} width="350" />
 ```
 
 ### Name the delegate
@@ -278,7 +278,7 @@ On the **New Delegate** page, select **Docker**.
 Accept or change the default delegate name of `docker-delegate`.
 
 ```mdx-code-block
-<img src={install_twothree} width="300" />
+<img src={install_23} width="300" />
 ```
 
 Delegates are identified by their names. Delegate names must conform to the following guidelines:
@@ -335,13 +335,13 @@ Your Harness Manager endpoint depends on your Harness cluster location. Use the 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ```mdx-code-block
-<img src={install_twoeightfive} width="500" />
+<img src={install_28-5} width="500" />
 ```
 
 To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
 
 ```mdx-code-block
-<img src={install_twonineone} width="600" />
+<img src={install_29-1} width="600" />
 ```
 
 After the delegate is registered and initialized, a success message is shown.
@@ -523,7 +523,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
 
 ```mdx-code-block
-<img src={install_forty} width="600" />
+<img src={install_40} width="600" />
 ```
 
 If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
