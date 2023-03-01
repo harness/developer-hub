@@ -26,7 +26,7 @@ import install_31 from './static/install-a-delegate-31.png'
 import install_33 from './static/install-a-delegate-33.png'
 import install_35 from './static/install-a-delegate-35.png'
 import install_37 from './static/install-a-delegate-37.png'
-import install_40 from './static/install-a-delegate-40.png'
+import install_forty from './static/install-a-delegate-40.png'
 ```
 
 ```mdx-code-block
@@ -376,15 +376,15 @@ The delegate installer provides troubleshooting information for each installatio
 
 Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
 
-
 ```mdx-code-block
-<img src={install_40} width="600" />
+<img src={install_forty} width="600" />
 ```
 
 If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
 
+
 ```mdx-code-block
-</TabItem>
+<Tabs>
 <TabItem value="Troubleshoot Helm">
 ```
 #### Troubleshoot Helm
