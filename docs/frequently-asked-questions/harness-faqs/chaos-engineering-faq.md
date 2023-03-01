@@ -50,11 +50,11 @@ Total Resilience for one single experiment = (Weight Given to that experiment * 
 
 Yes, you can generate a YAML file by choosing the normal flow of creating an experiment (blank canvas or through a template), in the YAML/Visual toggle you can see a generated YAML based on the inputs provided by you. A generated YAML can also be downloaded after navigating to `Chaos Experiments` and clicking on `Download Experiments`.
 
-Additionally you can also leverage Harness [Go SDK repository] (https://github.com/harness/harness-go-sdk) and generate a template.
+Additionally you can also leverage Harness [Go SDK repository](https://github.com/harness/harness-go-sdk) and generate a template.
 
 #### My issue is not mentioned here, how can I report it?
 
-To report an issue which is not mentioned here, head over to **Help** in Harness SaaS and click on **Submit a ticket** and provide your feedback.
+To report an issue which is not mentioned here, head over to **Help** in Harness SaaS and click **Submit a ticket** and provide your feedback.
 
 ## Security
 
@@ -87,7 +87,8 @@ Harness Chaos experiment pods consume Kubernetes secrets that contain access cre
 
 #### Can cloud service accounts be used instead of user credentials to access cloud resources? 
 
-When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details.
+When the chaos infrastructure is deployed on EKS clusters, the experiments can leverage the IAM service account (IRSA) instead of consuming secrets with user account access details. Go to [IAM integration for AWS authentication](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/#introduction
+) to learn more.
 
 #### How does Harness Chaos access APM platforms to perform hypothesis validation? 
 
