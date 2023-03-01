@@ -46,18 +46,13 @@ The process of installing a delegate includes the following steps:
 
 ## Go to the New Delegate page
 
-You can install a delegate from the **New Delegate** installation page.
+You can install a delegate from the **New Delegate** installation page. To find it, go to the **Delegates** page.
 
 | 1 <p>Go to **Account Settings**</p> | 2 <p>Select **Account Resources**</p> | 3 <p>Choose **Delegates**</p> |
 | :-: | :-: | :-: |
 | ![](./static/install-a-delegate-01.png) | ![](./static/install-a-delegate-02.png) | ![](./static/install-a-delegate-03.png) |
 
-
 In addition to providing basic information about installed delegates, the **Delegates** page gives you access to the delegate installer.
-
-```mdx-code-block
-<img src={install_four} width="1000" />
-```
 
 To install a delegate, click **+ New Delegate**.
 
