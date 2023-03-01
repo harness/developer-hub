@@ -87,7 +87,7 @@ Select your target environment: **Kubernetes** or **Docker**.
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Kubernetes">
+<TabItem value="on-kubernetes" label="Kubernetes" default>
 
 In **Install your Delegate**, select [**Helm Chart**](#helm-based-install-on-kubernetes), [**Terraform**](#terraform-based-install-on-kubernetes), or [**Kubernetes Manifest**](#kubernetes-based-install-on-kubernetes).
 
@@ -97,7 +97,7 @@ In **Install your Delegate**, select [**Helm Chart**](#helm-based-install-on-kub
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Helm chart">
+<TabItem value="with-helm" default="Helm chart">
 ```
 
 Use the following steps to install a delegate on Kubernetes using a Helm chart.
@@ -163,7 +163,7 @@ helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Terraform">
+<TabItem value="with-terraform" label="Terraform">
 ```
 
 Use the following steps to install a delegate on Kubernetes using a Terraform Plan.
@@ -209,7 +209,7 @@ Delegates are identified by their names. Delegate names must conform to the foll
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Kubernetes manifest">
+<TabItem value="with-kubernetes" label="Kubernetes manifest">
 ```
 
 On the **New Delegate** page, select **Kubernetes**, and then click **Kubernetes Manifest**.
@@ -276,7 +276,7 @@ $ kubectl apply -f harness-delegate.yaml
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Docker">
+<TabItem value="on-docker" label="Docker">
 
 Use the following process to install a delegate on Docker.
 
@@ -368,7 +368,7 @@ The delegate installer provides troubleshooting information for each installatio
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Troubleshoot Helm">
+<TabItem value="troubleshoot-helm" label="Helm" default>
 ```
 
 Use the following steps to troubleshoot your installation of the delegate using Helm.
@@ -417,7 +417,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Troubleshoot Terraform">
+<TabItem value="troubleshoot-terraform" label="Terraform">
 ```
 
 Use the following steps to troubleshoot your installation of the delegate using Terraform.
@@ -457,7 +457,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Troubleshoot Kubernetes">
+<TabItem value="troubleshoot-kubernetes" label="Kubernetes">
 ```
 
 Use the following steps to troubleshoot your installation of the delegate using Kubernetes.
@@ -488,7 +488,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Troubleshoot Docker">
+<TabItem value="troubleshoot-docker" label="Docker">
 ```
 
 Use the following steps to troubleshoot your installation of the delegate using Docker:
