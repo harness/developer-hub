@@ -28,7 +28,7 @@ This release does not include early access features.
 #### Feature Flag SDKs
 
 The Node Server SDK has been updated to version 1.2.10 and includes the following updates:
-- The Node-Server SDK uses the eventstream library. When it receives a 500 response from the remote system, it seems to close the connection and stop retrying, but if it receives an unspecified error, for example if the endpoint doesn’t exist, or goes down suddenly, or if the remote system closes the connection, then the SDK tries to connect to the /stream endpoint every second, forever. This issue was resolved with the following updates:
+- The Node-Server SDK uses the eventsource library. When it receives a 500 response from the remote system, it seems to close the connection and stop retrying, but if it receives an unspecified error, for example if the endpoint doesn’t exist, or goes down suddenly, or if the remote system closes the connection, then the SDK tries to connect to the /stream endpoint every second, forever. This issue was resolved with the following updates:
   - It now falls back to polling if the stream disconnects.
   - It attempts to reconnect on retryable errors using an exponential backoff and retry strategy provided by the Harness fork of eventsource.
   - A new retry event is emitted so the SDK can log the current retry attempt.
