@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Change Impact Analysis allows you to get a clear understanding of what has changed, when it changed, why it changed, and the effect it had on your monitored service.  Identifying recent change events in your service around the time when there is deterioration of performance helps in quickly and accurately identifying the root cause of the issue that led to the SLO violations.
+Harness Change Impact Analysis allows you to get a clear understanding of what has changed, when it changed, why it changed, and the effect it had on your monitored service. It helps you in identifying recent change events in your service around the time when there is deterioration of performance. This real time change event tracking aids in faster root cause analysis allowing teams to make confident decisions.
 
 These changes might include deployments, infrastructure changes, incidents, and feature flags. Harness Change Impact Analysis helps you: 
 
@@ -41,9 +41,9 @@ To create a project, perform the following steps:
 
 ## Create a monitored service
 
-A Harness Monitored Service is a combination of service and environment.
+A Harness Monitored Service is a combination of a Harness service and environment. Service represents a microservice or other workloads, which means it is a logical entity that can be monitored. Environments represent your deployment targets such as QA, prod, and so on.
 
-The following steps explain how to create a monitored service, and define service, environments, change source, and health source.
+The following steps explain how to create a monitored service in Harness.
 
 
 ### Navigate to the "Create new monitored service" page
@@ -61,7 +61,7 @@ The Create new monitored service settings page appears.
 
 1. In the **Overview** section, enter the following information:
     * **Type**: Select **Application**.
-    * **Create or select a Service**: Select a Harness service that you want to monitor. A Harness service is a logical representation of your microservices and other workloads that you want to monitor.
+    * **Create or select a Service**: Select a Harness service that you want to monitor.
 
       To create a new service, perform the following steps:
         
@@ -73,7 +73,7 @@ The Create new monitored service settings page appears.
           *  **Description (Optional)**
           *  **Tag (Optional)** 
 
-    * **Create or Select an Environment**: Choose an appropriate environment. Environments represent your deployment targets such as QA, Prod, and so on.
+    * **Create or Select an Environment**: Choose an appropriate environment.  
   
         To create a new environment, perform the following steps:
     
@@ -87,61 +87,65 @@ The Create new monitored service settings page appears.
             * **Tag (Optional)**
             * **Environment Type**: Select an environment type. The available options are **Production** and **Non-Production**.
 
-    Harness autopopulates the **Monitored Service Name** field by combining the **Service** and **Environment** names.
+    Harness autopopulates the **Monitored Service Name** field by combining the **Service** and **Environment** names. This field is not editable.
 
 
 ### Add change source
 
 A Change Source monitors change events related to deployments, infrastructure changes, and incidents.  
 
-To select an existing change source, do the following:
-
-1. In the **Change Sources** section, select the environment for which you want to monitor the changes. You can either choose an existing change source or create a new change source.  
+In the **Change Sources** section, you can either edit the existing change source or create a new one.
  
 To create a new change source, do the following:
 
 1. Select **+ Add New Change Source**.  
-   The Add New Change Source dialog appears.  
+   The Add New Change Source dialog appears.
 
-2. In the **Provider Type** field, select the change source for which you want to monitor the changes. Following are the available options:  
+   ![Add new change source](./static/change-impact-moniterdservice-add-changesource.png)  
 
-    - **Deployments**: You can choose either **Harness CD NextGen** or **Harness CD**. If you choose **Harness CD**, then in the **Connect Change Source** section, select the **Application** for which you want to monitor the changes.  
+2. In the **Provider Type** dropdown, select the change source. Following are the available options:  
+
+    - **Deployments**: You can choose **Harness CD NextGen** or **Harness CD**. 
     - **Incident**: Select the incident management tool which monitors your application.
 
-3. In the **Source Name** field, enter a name for the change source that you are configuring.  
+3. In the **Source Name** field, enter a name for the change source.
+4. In the **Application** dropdown, select an application ID. This field is available only if you have selected **Harness CD** as the deployment option.
+
 The new change source appears in the **Change Sources** list.
 
 
-### Select a health source
+### Add a health source
 
-A health source is an APM or log provider using which the Harness Monitored Service collects the metrics and logs of your service. 
+A Health Source monitors the health trends of the Monitored Service using logs or metrics collected from an APM or logging tool.
 
-Select the health source which monitors the health of your service.
-
-To create a new health source, do the following:  
+To add a new health source, do the following:  
 
 1. Select **+ Add New Health Source**.  
    The Add New Health Source dialog appears.
 
-2. In the **Define Health Source** tab, select the health source that monitors your service.
+   ![Add new health source](./static/change-impact-moniterdservice-add-healthsource.png)
+
+2. In the **Select health source type** section, select the health source that monitors your service.
    
 3. In the **Health Source Name** field, enter a name for the health source.
    
 4. In the **Connect Health Source** section, do the following:
-    1. **Select Connector**: Select an existing connector. Connectors contain the information necessary to integrate and work with your health source.
-    2. **Select Feature**: Select the feature associated with the health source.
-   
-5. Click **Next**.
-   
-6. In the **Customize Health Source** tab, the settings are displayed based on the health source you have selected in the **Define Health Source** tab.  
-   
-   For example, if you have selected AppDynamics as the **Health Source Type**, then the following settings are displayed:
+   1. **Select Connector**: Select an existing connector. Connectors contain the information necessary to integrate and work with your health source.
+   2. **Select Feature**: Select the feature associated with the health source. The available features depend on the health source that you select. For example, if you select **SumoLogic** as the health source, then the **SumoLogic Cloud Metrics** and **SumoLogic Cloud Logs** features are available. 
 
-   1. **Find an AppDynamics application**: Displays the list of applications associated with AppDynamics. Select the appropriated application.
+5. Select **Next**.
    
-   2. **Find an AppDynamics tier**: Displays a list of tiers associated with the selected application. Select the appropriate tier.
+6. In the **Customize Health Source** tab, the settings are displayed based on the health source you have selected in the **Define Health Source** tab.
    
-   3. In the **Metrics Packs** section, select the metrics that you want to use for the health source. The options available are **Errors** and **Performance**.
+   For example, if you select AppDynamics as the **Health Source Type**, then the following settings are displayed:
+
+   - **Find an AppDynamics application**: Displays the list of applications associated with AppDynamics. Select the appropriated application.
+   
+   - **Find an AppDynamics tier**: Displays a list of tiers associated with the selected application. Select the appropriate tier.
+   
+   - In the **Metrics Packs** section, select the metrics that you want to use for the health source. The options available are **Errors** and **Performance**.
+
+    ![Health source metric settings](./static/change-impact-view-healthsource-config-metric.png)
    
 7. Select **Submit**.  
    The new health source appears in the **Health Sources** list.
@@ -153,4 +157,4 @@ To create a new health source, do the following:
 
 ## Next steps
 
-Use the Service [Health dashboard](change-impact-analysis-service-health-dashboard.md) and [Changes dashboard](change-impact-analysis-changes-dash-board.md) to correlate change events, and understand their impact on the monitored service.
+Use the [Service Health dashboard](change-impact-analysis-service-health-dashboard.md) and [Changes dashboard](change-impact-analysis-changes-dash-board.md) to correlate change events and understand their impact on the monitored service.

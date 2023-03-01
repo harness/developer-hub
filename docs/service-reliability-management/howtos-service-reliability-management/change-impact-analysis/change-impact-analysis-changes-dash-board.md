@@ -7,12 +7,12 @@ sidebar_position: 30
 
 The Changes dashboard provides a quick overview of change events from multiple change sources. A change source is a system that generates change events whenever a change is recorded. Change events are grouped in one location, enabling you to see how a certain change affects the rest of the system.
 
-The Changes dashboard helps you understand when the change occurred, why it took place, and what impact it had on the service of the monitored service.
+The Changes dashboard helps you understand when the change occurred, why it took place, and what impact it had on the health of the monitored service.
 
-Perform the following steps to go to the Changes dashboard:
+Perform the following step to go to the Changes dashboard:
 
 1. In your Harness project, navigate to the **Service Reliability** module, and then select **Changes**.  
-   The Changes dashboard is displayed.
+   The Changes dashboard appears.
 
 The Changes dashboard is divided into the following sections:
 
@@ -30,7 +30,7 @@ You can customize the Changes dashboard using the following filters:
 - **Services**: Select the monitored service for which you want to see the changes. You can select multiple monitored services.
 - **Environments**: Select the environment for which you want to see the changes. You can select multiple environments.
 - **Change Types**: Select the type of change source for which you want to see the changes. The available filters are **Deployment**, **Infrastructure**, **Incidents**, and **Feature Flags**.
-- **Sources**: Select the source for you which you want to see the changes. For example, Harness CD NextGen, Harness CD, Kubernetes, PagerDuty, Feature Flags, and so on. You can select multiple change sources.
+- **Sources**: Select the source for which you want to see the changes. For example, Harness CD NextGen, Harness CD, Kubernetes, PagerDuty, Feature Flags, and so on. You can select multiple change sources.
 
 
 #### Changes Timeline
@@ -68,8 +68,8 @@ The change event details screen appears. It has the following details:
 - Time and date at which the event was triggered.
 - YAML file for the event.
 - Service Health score timeline displaying the health of the service.
+- Current and previous YAML files for the event.
 
 You can hover over the timeline to view the change event details.
 
-#### View changes in YAML file
-You can compare the current and previous YAML files for the event. To do this, select **Show YAML Change**.
+![Change event details](./static/change-impact-change-event-details.png)

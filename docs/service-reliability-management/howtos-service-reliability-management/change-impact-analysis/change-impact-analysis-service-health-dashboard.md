@@ -63,24 +63,22 @@ The Overall Health Score timeline has a **Time Window** which displays granular 
 
 ### Changes list
 
-The **Changes** list provides a detailed breakdown of all the changes occurred in deployment, infrastructure, and feature flags during the selected time period. It also displays the incidents from PagerDuty during the selected time period. The Changes list displays the following:
+The **Changes** list provides a detailed breakdown of all the changes occurred in deployment, infrastructure, and feature flags during the selected time period. It also displays the incidents from the incident management tool during the selected time period. You can see the following information in the **Chages** list:
 
 - Deployments such as ECS, Kubernetes, and Helm from the Harness Deployment module.
 - Infrastructure changes such as Kubernetes events, Terraform audit logs, MongoDB audit events, AWS CloudTrail, GCP audit logs, and Azure audit logs.
-- Incidents from PagerDuty.
-
-You can customize the Changes list using the following filters:
-
-- **Time**: Date and time of the event
-- **Name**: Name of the event 
-- **Impact**: Name of the impacted monitored service
-- **Source**: Name of the source where the change originated
-- **Type**: Change event type
+- Incidents from incident management tool such as PagerDuty.
 
 
 ### Service dependencies
 
 The **Service Dependency** section displays a graphical representation of the dependencies between applications, infrastructure, and data.
+
+![Service dependency](./static/change-impact-service-dependency.png)
+
+You can get a quick overview of the service health by selecting a service.
+
+![Service dependency details](./static/change-impact-service-dependency-details.png)
 
 
 ### Metrics, logs, and errors
@@ -99,8 +97,14 @@ You can customize the metrics list using the following filters:
 
 
 #### Logs tab
+
 You can drill down log data using the following filters:
 
 - **Known**
 - **Unknown**
 - **Unexpected Frequency**
+
+#### Errors tab
+
+The **Errors** tab displays a list of all the events, exceptions, log events, HTTP errors, and custom errors.
+

@@ -28,7 +28,7 @@ You can connect Harness Feature Flag to a monitored service. This helps you moni
    
 The monitored service that you selected appears in the **Services** section.
 
-Whenever the feature flag is turned off or on, a change event is recorded in the Health Source page of the monitored service.
+Whenever the feature flag is turned off or on, a change event is recorded in the Service Health page of the monitored service.
 
 The following figure shows an event getting recorded in the Service Health page of the monitored service when the feature flag is turned on.
 
