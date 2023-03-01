@@ -3,7 +3,7 @@ import { certType, CardItem } from "../CertCard";
 
 export const certifications: CardItem[] = [
     {
-      title: "Continuous Delivery & GitOps - Developer (BETA COMING SOON)",
+      title: "Continuous Delivery & GitOps - Developer (BETA)",
       module: "cd",
       type: certType.Developer,
       description:

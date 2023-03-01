@@ -7,9 +7,9 @@ import "rc-tooltip/assets/bootstrap.css";
 import styles from "./CertCard.module.scss";
 
 export enum certType {
-  Developer = "Developer",
-  Administrator = "Administrator",
-  Architect = "Architect",
+  Developer = "Developers",
+  Administrator = "Administrators",
+  Architect = "Architects",
 }
 const stars = {
   [certType.Developer]: 1,

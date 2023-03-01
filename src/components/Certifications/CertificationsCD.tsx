@@ -80,7 +80,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Developer (BETA COMING SOON)
+                    Continuous Delivery & GitOps - Developer (BETA)
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_dev_cd_badge.svg`}
@@ -103,6 +103,11 @@ export default function CertificationsCD() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
+                      <Link href="https://university.harness.io/page/continuous-delivery-developer">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
                     <Link href="/tutorials/deploy-services">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
