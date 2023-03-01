@@ -81,23 +81,17 @@ Otherwise, continue with the following steps.
 
 Select your target environment: **Kubernetes** or **Docker**.
 
-```mdx-code-block
-<img src={install_eight} width="350" />
-```
 
 ```mdx-code-block
 <Tabs>
 <TabItem value="on-kubernetes" label="Kubernetes" default>
 
-In **Install your Delegate**, select [**Helm Chart**](#helm-based-install-on-kubernetes), [**Terraform**](#terraform-based-install-on-kubernetes), or [**Kubernetes Manifest**](#kubernetes-based-install-on-kubernetes).
+Then select the mode of installation: **Helm chart**, **Terraform**, or **Kubernetes manifest**.
 
-```mdx-code-block
-<img src={install_eleven} width="350" />
-```
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="with-helm" default="Helm chart">
+<TabItem value="with-helm" label="Helm chart" default>
 ```
 
 Use the following steps to install a delegate on Kubernetes using a Helm chart.
