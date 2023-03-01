@@ -74,7 +74,6 @@ To use username and password for authentication, do the following:
   1. Select an existing secret or create one that has the resource id of ServiceNow as its value for the **Resource ID** field.
   2. Select an existing secret or create one that has the application (client) id assigned to your application by AD FS for the **Client ID** field.
    
-
 ```mdx-code-block
 <img src={adfs_clientid} alt="adfs-clientid" height="150" width="400"/>
 ```
