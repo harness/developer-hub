@@ -101,7 +101,7 @@ env:
 - name: ACCOUNT_ID
   value: <account id>
 - name: MANAGER_HOST_AND_PORT
-  value: <manager url>
+  value: <manager-url>
 - name: DEPLOY_MODE
   value: KUBERNETES
 - name: DELEGATE_NAME
@@ -127,7 +127,7 @@ env:
 - name: CLIENT_TOOLS_DOWNLOAD_DISABLED
   value: "true"
 - name: LOG_STREAMING_SERVICE_URL  
-  value: "<manager url>/log-service/"
+  value: "<manager-url>/log-service/"
 
 ---
 
