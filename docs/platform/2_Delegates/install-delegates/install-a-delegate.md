@@ -550,6 +550,7 @@ Use the following steps to troubleshoot your installation of the delegate using 
 
 ```mdx-code-block
 </TabItem>
+</Tabs>
 ```
 
 
