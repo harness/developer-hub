@@ -79,6 +79,9 @@ Deployment freeze access control is configured using the **Deployment Freeze** r
 - **Override**: When a deployment is required during a freeze duration, users with this role can still perform deployments.
 - **Global**: enable/disable freeze across all deployments at account, org, and project levels.
 
+### Important notes
+
+Deployment freeze does not apply to [GitOps Pipelines](../..continuous-delivery/cd-gitops/../../cd-gitops/harness-git-ops-application-set-tutorial.md).
 
 ## Create a freeze window
 
