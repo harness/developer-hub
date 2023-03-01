@@ -548,6 +548,8 @@ Use the following steps to troubleshoot your installation of the delegate using 
    docker container rm [container id]
    ```
 
-
+```mdx-code-block
+</TabItem>
+```
 
 
