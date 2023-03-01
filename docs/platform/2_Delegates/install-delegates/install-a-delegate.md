@@ -20,6 +20,8 @@ import install_twenty from './static/install-a-delegate-20.png'
 import install_twofive from './static/install-a-delegate-25.png'
 import install_twothree from './static/install-a-delegate-23.png'
 import install_twonine from './static/install-a-delegate-29.png'
+import install_twonineone from './static/install-a-delegate-29-1.png'
+import install_twoeightfive from './static/install-a-delegate-28-5.png'
 import install_30 from './static/install-a-delegate-30.png'
 import install_39 from './static/install-a-delegate-39.png'
 import install_31 from './static/install-a-delegate-31.png'
@@ -342,13 +344,13 @@ Your Harness Manager endpoint depends on your Harness cluster location. Use the 
 The delegate installation process ends with delegate registration with Harness Manager. The verification process confirms that the delegate is registered and that the delegate is sending “heartbeats” to Harness Manager. 
 
 ```mdx-code-block
-<img src={install_onethree} width="500" />
+<img src={install_twoeightfive} width="500" />
 ```
 
 To verify the delegate, click **Verify**. Harness Manager listens for the delegate heartbeat.
 
 ```mdx-code-block
-<img src={install_twonine} width="600" />
+<img src={install_twonineone} width="600" />
 ```
 
 After the delegate is registered and initialized, a success message is shown.
