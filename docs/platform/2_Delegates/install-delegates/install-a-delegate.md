@@ -4,10 +4,10 @@ description: How to install Harness delegates using Helm, Terraform, Kubernetes,
 # sidebar_position: 2
 ---
 ```mdx-code-block
-import install_two from './static/install-a-delegate-02.png'
-import install_four from './static/install-a-delegate-04.png'
-import install_five from './static/install-a-delegate-05.png'
-import install_twoseven from './static/install-a-delegate-27.png'
+import install_2 from './static/install-a-delegate-02.png'
+import install_4 from './static/install-a-delegate-04.png'
+import install_5 from './static/install-a-delegate-05.png'
+import install_27 from './static/install-a-delegate-27.png'
 import install_seven from './static/install-a-delegate-07.png'
 import install_eight from './static/install-a-delegate-08.png'
 import install_eleven from './static/install-a-delegate-11.png'
