@@ -86,81 +86,35 @@ To create a new Kubernetes cluster, see:
 * [Creating a cluster in Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
 * [Creating a cluster in GKE (Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster))
 
-## Step 2: Add Kubernetes Cluster Connector and Delegate in Harness
+## Step 2: Add the Kubernetes Cluster connector and install the Delegate
 
-* In your **Project**, click **Project Setup**.
-* Click **Connectors**.
-* Click **New Connector** and then click **Kubernetes Cluster**.
+1. In your Harness **Project**, select **Connectors** under **Project Setup**.
+2. Select **New Connector**, and then select **Kubernetes cluster**.
+3. Enter a name for the connector and select **Continue**.
+4. Harness can connect to your Kubernetes cluster through a master URL and credentials or through a Harness Delegate. Select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
+5. Select **Install new Delegate**.
 
-Set up the Connector as follows.
+   ![](./static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
 
-### Connector Overview
+6. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. Select **Kubernetes Manifest**. For information about the other options, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
+7. Usually it makes sense to install and run the Delegate on a pod in your Kubernetes build infrastructure. In a terminal, login to your Kubernetes cluster, and use the `curl` command provided in the **New Delegate** setup to copy the Kubernetes YAML file to the pod where you want to install the Delegate.
+8. Update the Kubernetes YAML file as instructed in the **New Delegate** setup. For details about these settings, refer to the **Kubernetes environment** section of [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
+9. If necessary, specify the **Delegate Size** and **Delegate Permissions**. As a default, you can give the Delegate cluster-wide read/write access. In the future, you can add configurations to run scripts on your Delegates and scope them to different environments.
+10. In your Kubernetes cluster, run the `kubectl apply` command to install the delegate, as provided in the **New Delegate** setup. You should get output similar to the following:
 
-* Enter a unique name for the Connector.
+   ```
+   % kubectl apply -f harness-delegate.yaml  
+   namespace/harness-delegate-ng created  
+   clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created  
+   secret/ci-quickstart created  
+   statefulset.apps/ci-quickstart created  
+   service/delegate-service created
+   ```
 
-### Connector Details
-
-You can select Master URL and Credentials or Use the credentials of a specific Harness Delegate. 
-
-In this example, click Use the credentials of a specific Harness Delegate and click **Continue**.
-
-### Delegate Setup
-
-You should now be in the Delegates Setup screen of the GitHub Connector wizard. Click **Install new Delegate**.
-
-![](./static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
-
-### Delegate Location
-
-You can install the Delegate in different locations. Usually it makes sense to install and run the Delegate on a pod in your Kubernetes build infrastructure. You'll do this in the next steps.
-
-* Select **Kubernetes**.
-
-![](./static/set-up-a-kubernetes-cluster-build-infrastructure-02.png)
-
-### Delegate Details
-
-Now you specify the Delegate name, size, and permissions.
-
-* Specify the following:
-	+ **Delegate name**
-	+ **Delegate size**
-	+ **Delegate Permissions:** Install Delegate with cluster-wide read/write access  
-	This is simply a default. In the future, you can add configurations to run scripts on your Delegates and scope them to different environments.
-
-![](./static/set-up-a-kubernetes-cluster-build-infrastructure-03.png)
-
-### Delegate Install
-
-Harness now generates and displays a workspace-definition YAML file that you can install in your build infrastructure.
-
-![](./static/set-up-a-kubernetes-cluster-build-infrastructure-04.png)
-
-* Click **Download Script**. This downloads the YAML file for the Kubernetes Delegate.
-* Open a terminal and navigate to where the Delegate file is located. You'll connect to your cluster using the terminal so you can simply run the YAML file on the cluster.
-* In the same terminal, log into your Kubernetes cluster. In most platforms, you select the cluster, click **Connect**, and copy the access command.
-* Install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. Click **Next** in the Harness UI, then run the command shown. For example:
-```
-kubectl apply -f harness-delegate.yaml
-```
-You should see output similar to this:
-```
-% kubectl apply -f harness-delegate.yaml  
-namespace/harness-delegate-ng created  
-clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created  
-secret/ci-quickstart created  
-statefulset.apps/ci-quickstart created  
-service/delegate-service created
-```
-
-### Connect to the Delegate
-
-* Return to the Harness UI. It might take a few minutes to verify the Delegate. Once it is verified, close the wizard.
-* Back in **Delegates Setup**, you can select the new Delegate:
-	+ In the list of Delegates, you can see your new Delegate and its tags.
-	+ Select the **Connect using Delegates with the following Tags** option.
-	+ Enter the tag of the new Delegate and click **Save and Continue**.
-	+ Wait for the connection test to complete and then click **Finish**.
+11. Return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
+12. In your Kubernetes Cluster connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.
+13. Select your new Kubernetes delegate, and then select **Save and Continue**. Select the new delegate in your Kubernetes.
+14. Wait while Harness tests the connection, and then select **Finish**.
 
 ### Step 3: Define the Build Farm Infrastructure in Harness
 
@@ -213,12 +167,12 @@ Harness adds the following labels automatically:
 
 `https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline`
 
-## Configure As Code
+## Configure As Code: YAML
 
 When configuring your Pipeline in YAML, you add the Kubernetes Cluster CI infrastructure using the infrastructure of type KubernetesDirect:
 
 
-```
+```yaml
 pipeline:  
 ...  
   stages:  
@@ -233,4 +187,5 @@ pipeline:
               namespace: default  
           ...
 ```
+
 Once the build infrastructure is set up, you can now add CI stages to execute your Run steps to build, deploy your code.
