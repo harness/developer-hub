@@ -138,17 +138,17 @@ For example, if a new product is added to the Manufacturing department, you can 
 
 You can include cost categories while creating visualizations in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](/docs/platform/18_Dashboards/create-dashboards.md).
 
-* **Cost Categories** is available in the Unified explore on the Dashboards page. 
+**Cost Categories** is available in the Unified explore on the Dashboards page. 
   
   <img src={dashboards_cc} alt="A screenshot to show the unified explore." height="400" width="500" />
 
 
 * When you create a new cost category or make changes to an existing one, it may take up to 24 hours for the changes to be reflected in the dashboard data.
-* If you are using AWS or Azure, you can view the cost category applied to the current month's data. However, if you are using GCP, the cost category is applied to the last three days' data.
-* If you delete a cost category, you will still be able to see the deleted category in the dashboard until the end of the month. For example, if you delete a cost category on January 24th, the category is still visible in the dashboard until the end of January 31st.
-
+* If you are using AWS or Azure, cost categories are applied to data fetched from the current month onwards through CUR and Billing Exports. It is not applied to historical data. On the other hand, if you are using GCP, the cost category is applied to data that is equal to or more recent than the last three days' data.
+* When you delete a cost category, the deleted category remains visible in the dashboard until the end of the month, as it is applied to data for the ongoing month. For instance, if you delete a cost category on January 24th, the category will remain visible in the dashboard until the end of January 31st.
+  
 :::note
-In AWS, you cannot apply cost categories if you have selected the following fields in the explore:
+In AWS, you cannot apply cost categories if you have selected any of the following fields in the explore:
 
 - Resource ID 
 - Line Item Type 
