@@ -12,7 +12,7 @@ Delegates are packaged with third-party SDKs that support Kubernetes, Helm, and 
 
 Harness provides a "minimal" delgate image that does not include third-party SDKs. You can use YAML to configure the minimal delegate image for the installation of the tools and versions you select. You can install software on the delegate using the `INIT_SCRIPT` environment variable.
 
-For a list of the SDK versions that are certified for different types of deployments, see [Delegate-required SDKs](/docs/platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
+For a list of the SDK versions that are certified for different types of deployments, go to [Delegate-required SDKs](/docs/platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
 
 ## Use cases
