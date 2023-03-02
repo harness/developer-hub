@@ -125,7 +125,7 @@ The subsequent build job fails when exit 0 is present along with output variable
 To reference output variables between steps in the same stage, use the following syntax:
 
 ```
-<+[stepID].output.outputVariables.[varName]>
+<+steps.[stepID].output.outputVariables.[varName]>
 ```
 
 To reference output variables across stages, there are several syntax options, as follows:
