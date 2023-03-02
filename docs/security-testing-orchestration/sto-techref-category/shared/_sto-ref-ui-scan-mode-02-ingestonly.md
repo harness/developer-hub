@@ -1,1 +1,1 @@
-* **Ingestion** (`ingestionOnly`) scans are not orchestrated. The Security step ingest results from a previous scan (for for a scan run in an previous step) and then normallizes and compresses the results. 
+* **Ingestion** scans are not orchestrated. The Security step ingest results from a previous scan (for for a scan run in an previous step) and then normallizes and compresses the results. 

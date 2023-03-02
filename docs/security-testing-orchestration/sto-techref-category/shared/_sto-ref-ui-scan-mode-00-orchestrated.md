@@ -1,1 +1,1 @@
-* **Orchestrated** (`orchestratedScan`) scans are fully orchestrated. A Security step in the Harness pipeline orchestrates a scan and then normalizes and compresses the results.
+* **Orchestrated** scans are fully orchestrated. A Security step in the Harness pipeline orchestrates a scan and then normalizes and compresses the results.
