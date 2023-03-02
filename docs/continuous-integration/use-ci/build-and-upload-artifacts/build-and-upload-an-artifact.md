@@ -110,7 +110,7 @@ There are several ways to tag images, but Harness expressions can be useful.
 
 ![](./static/build-and-upload-an-artifact-10.png)
 
-For example, `<+pipeline.sequenceId>` is a built-in Harness expression that represents the **Build Id** number, for example `Build Id: 9`.
+For example, `<+pipeline.sequenceId>` is a built-in Harness expression that represents the **Build Id** number, for example `9`.
 
 After the pipeline runs, you can see the `Build Id` in the output.
 

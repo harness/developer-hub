@@ -12,13 +12,13 @@ This topic provides settings for the Upload Artifacts to JFrog Artifactory step.
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
+Depending on the stage's build infrastructure, some settings may be unavailable.
 
 :::
 
 ## Name
 
-The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
@@ -42,7 +42,7 @@ Path to the artifact file/folder you want to upload. You can use glob expression
 
 ## Optional Configuration
 
-Use the following settings to add additional configuration to the step.
+Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ### Run as User
 

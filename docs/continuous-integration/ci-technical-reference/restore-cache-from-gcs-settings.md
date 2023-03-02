@@ -12,13 +12,13 @@ This topic provides settings for the Restore Cache from GCS step, which restores
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
+Depending on the stage's build infrastructure, some settings may be unavailable.
 
 :::
 
 ## Name
 
-The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## GCP Connector
 
@@ -41,7 +41,7 @@ The backslash character isn't allowed as part of the checksum value here. This i
 
 ## Optional Configuration
 
-Use the following settings to add additional configuration to the step.
+Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ### Archive Format
 

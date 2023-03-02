@@ -12,7 +12,7 @@ This topic describes the Harness CI Run Tests step settings. The Run Tests step 
 
 ## Name
 
-The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
 ## Description
 
@@ -58,7 +58,7 @@ Specify one or more paths to test report files. You can specify multiple paths, 
 
 ## Additional Configuration
 
-Use these optional settings to specify additional configurations.
+Use these optional settings to specify additional configurations. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ### Pre-Command
 

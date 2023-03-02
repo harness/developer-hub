@@ -21,17 +21,17 @@ Background steps are useful for running services that need to run for the entire
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
+Depending on the stage's build infrastructure, some settings may be unavailable.
 
 :::
 
 ## Name
 
-The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Container Registry
 
-A Harness container registry connector. This is the container registry for the image that you want Harness to run build commands on, such as DockerHub.
+A Harness container registry connector that connects to the container registry from which you want Harness to pull an image, such as DockerHub.
 
 ## Image
 

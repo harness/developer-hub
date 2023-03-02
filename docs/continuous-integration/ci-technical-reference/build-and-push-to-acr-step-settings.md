@@ -16,7 +16,7 @@ For other build infrastructures, you can use the [Build and Push an image to Doc
 
 ## Name
 
-The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Azure Connector
 
@@ -42,13 +42,13 @@ Add each tag separately.
 
 :::tip
 
-Harness expression are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
+Harness expressions are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
 
 :::
 
 ## Optional Configuration
 
-Use the following settings to add additional configuration to the step.
+Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ### Optimize
 
@@ -60,7 +60,7 @@ The name of the Dockerfile. If you don't provide a name, Harness assumes that th
 
 ### Context
 
-Context represents a directory containing a Dockerfile which kaniko will use to build your image. For example, a `COPY` command in your Dockerfile should refer to a file in the build context.
+Enter a path to a directory containing files that makeup the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
 
 ### Labels
 
@@ -78,7 +78,7 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 Enter the name of the remote cache image, such as `<container-registry-name>.azurecr.io/<image-name>`.
 
-The Remote Cache Repository must be in the same account and organization as the build image. For caching to work, the entered image name must exist.
+The remote cache repository must be in the same account and organization as the build image. For caching to work, the entered image name must exist.
 
 Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 

@@ -14,13 +14,13 @@ For more information, go to the AWS documentation for [Pushing a Docker image](h
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
+Depending on the stage's build infrastructure, some settings may be unavailable.
 
 :::
 
 ## Name
 
-The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## AWS Connector
 
@@ -59,7 +59,7 @@ Add each tag separately.
 
 ## Optional Configuration
 
-Use the following settings to add additional configuration to the step.
+Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ### Base Image Connector
 
@@ -75,7 +75,7 @@ The name of the Dockerfile. If you don't provide a name, Harness assumes the Doc
 
 ### Context
 
-Context represents a directory containing a Dockerfile that kaniko uses to build your image. For example, a `COPY` command in your Dockerfile should refer to a file in the build context.
+Enter a path to a directory containing files that makeup the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
 
 ### Labels
 

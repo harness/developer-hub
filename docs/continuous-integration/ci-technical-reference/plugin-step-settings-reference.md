@@ -12,13 +12,13 @@ This topic provides settings for the CI Plugin step. Plugins are Docker containe
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable. Not all settings are available for all build infrastructure options.
+Depending on the stage's build infrastructure, some settings may be unavailable.
 
 :::
 
 ## Name
 
-The unique name for this step. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
