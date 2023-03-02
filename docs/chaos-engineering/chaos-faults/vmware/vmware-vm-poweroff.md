@@ -14,9 +14,9 @@ VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.
 - VMware VM poweroff determines the resilience of an application to random power failures. 
 - It determines how efficiently an application recovers and restarts the services.
 
-**Note**
+:::note
 - Kubernetes >= 1.17 is required to execute this fault.
-- Adequate vCenter permissions should be provided to start and stop the VMs.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
@@ -32,6 +32,7 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
+:::
 
 ## Fault tunables
 
