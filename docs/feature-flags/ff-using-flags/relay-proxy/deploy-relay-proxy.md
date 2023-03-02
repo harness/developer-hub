@@ -198,7 +198,7 @@ baseURL:   https://config.ff.harness.io/api/1.0
 ```
 eventsURL: https://events.ff.harness.io/api/1.0
 ```
-But if you have a proxy running locally on localhost:7000 and it’s connected to Harness, then pass the following URLs to the SDK:
+But if you have the proxy running locally on localhost:7000 and it’s connected to Harness, then pass the following URLs to the SDK:
 
 
 ```
