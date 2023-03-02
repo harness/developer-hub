@@ -73,7 +73,7 @@ bypass-auth
 ```
 client-service string
 ```
- The URL of the ff client service (default `https://config.ff.harness.io/`).
+ The URL of the ff client service (default `https://config.ff.harness.io/api/1.0`).
 
 
 ```
@@ -121,13 +121,13 @@ redis-password string
 ```
 sdk-base-url string
 ```
- URL for the SDK to connect to (default `https://config.ff.harness.io/`).
+ URL for the SDK to connect to (default `https://config.ff.harness.io/api/1.0`).
 
 
 ```
 sdk-events-url string
 ```
- URL for the SDK to send metrics to (default `https://events.ff.harness.io/`).
+ URL for the SDK to send metrics to (default `https://events.ff.harness.io/api/1.0`).
 
 
 ```
@@ -192,11 +192,11 @@ For example, if you wanted your SDK to work without the proxy, you'd give it the
 
 
 ```
-baseURL:   http://config.ff.harness.io/
+baseURL:   https://config.ff.harness.io/api/1.0
 ```
 
 ```
-eventsURL: http://event.ff.harness.io/
+eventsURL: https://events.ff.harness.io/api/1.0
 ```
 But if you have a proxy running locally on localhost:7000 and it’s connected to Harness, then pass the following URLs to the SDK:
 
