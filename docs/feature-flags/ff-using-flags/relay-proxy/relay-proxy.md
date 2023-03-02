@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes what is Relay Proxy and how to use it with Harness Feature Flags (FF).
+This topic describes Relay Proxy and how to use it with Harness Feature Flags (FF).
 
 The Relay Proxy enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.
 
@@ -41,11 +41,11 @@ The configuration variables used in the proxy are listed in the following table:
 | **Environment Variable** | **Type** | **Flag** | **Example** | **Usage** |
 | ACCOUNT\_IDENTIFIER | string | -account-identifier | zAbbD-FLS425IEO7OLzXYz | The Account that you want the Proxy to pull down and load config for |
 | ORG\_IDENTIFIER | string | -org-identifier | featureflagsqa | The Organization that you want the Proxy to pull down and load config for |
-| ADMIN\_SERVICE | string | -admin-service | https://qa/harness.io/gateway/cf | Used for creating the Client that interacts with the FeatureFlags Admin Service to retrieve Target and AuthConfig |
+| ADMIN\_SERVICE | string | -admin-service | https://harness.io/gateway/cf | Used for creating the Client that interacts with the FeatureFlags Admin Service to retrieve Target and AuthConfig |
 | SERVICE\_TOKEN | string | -service-token | ZHNvdWZoNjczMjR0aGZiLWk1NC0tMGRzZg== | Token that the Proxy can use to authenticate with the Admin service |
 | AUTH\_SECRET | string | -auth-secret | somethingSecret | To authenticate the connection between your SDK and the Proxy, the Proxy generates an authentication token (JWT) that is signed with the AUTH\_SECRET you set in your configuration. When the Proxy receives the authentication token, it verifies that it is signed using the AUTH\_SECRET. If it isn’t, the token is rejected as invalid. |
-| SDK\_BASE\_URL | string | -sdkBaseUrl | https://config.feature-flags-qa.harness.io/api/1.0 | The Base URL that the internal Go SDK connects to |
-| SDK\_EVENTS\_URL | string | -sdkEventsUrl | https://event.feature-flags.qa.harness.io/api/1.0 | The Event URL that the internal Go SDK connects to |
+| SDK\_BASE\_URL | string | -sdkBaseUrl | https://config.feature-flags.harness.io/api/1.0 | The Base URL that the internal Go SDK connects to (the default is https://config.ff.harness.io/) |
+| SDK\_EVENTS\_URL | string | -sdkEventsUrl | https://events.feature-flags.harness.io/api/1.0 | The Event URL that the internal Go SDK connects to (the default is https://events.ff.harness.io/) |
 | API\_KEYS | string | -apiKey | 5ecb5049-e071-4beb-ae43-381aa8f0d3a2, a7cb7fc6-c4fa-4ecb-b01f-068456f3e500 | The API Keys of the environments you want to configure the Proxy to work with.For example, create an SDK key called Proxy Key in your Environment and pass it in via the `API_KEYS` env. Then all the other applications in that Environment would be able to use the Proxy. |
 | TARGET\_POLL\_DURATION | int | target-poll-duration | 30 | Time in seconds that determines how frequently the Proxy polls Feature Flags to get the latest Targets |
 | REDIS\_ADDRESS | string | redis-address | localhost:6379 | Configures the Proxy to use Redis rather than an in-memory cache.Configuring the Proxy with Redis also enables streaming |

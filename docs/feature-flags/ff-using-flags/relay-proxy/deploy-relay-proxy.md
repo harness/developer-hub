@@ -186,19 +186,19 @@ The following are the required configuration variables to connect to the Feature
 
 ## Configure SDKs to Work With the Relay Proxy
 
-The SDKs do not require any additional configuration to work with the proxy. The only difference is that instead of supplying the Feature Flags URL when starting up an SDK, you should pass the proxy URL.
+The SDKs do not require any additional configuration to work with the proxy. The only difference is that instead of supplying the Feature Flags URL when starting up an SDK, you supply the proxy URL.
 
-For example, if you wanted your SDK to go via QA without the Proxy, you'd give it the following URLs:
+For example, if you wanted your SDK to work without the proxy, you'd give it the following URLs (if using the default URLs):
 
-
-```
-baseURL:   http://config.feature-flags.qa.harness.io/api/1.0
-```
 
 ```
-eventsURL: http://event.feature-flags.qa.harness.io/api/1.0
+baseURL:   http://config.ff.harness.io/
 ```
-But if you have a Proxy running locally on localhost:7000 and it’s connected to QA then pass the following URLs to the SDK:
+
+```
+eventsURL: http://event.ff.harness.io/
+```
+But if you have a proxy running locally on localhost:7000 and it’s connected to Harness, then pass the following URLs to the SDK:
 
 
 ```
