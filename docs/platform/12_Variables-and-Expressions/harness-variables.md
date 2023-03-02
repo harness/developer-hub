@@ -615,11 +615,11 @@ Here is an example with a Shell script step.
 
 For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md).
 
-#### <+stage.executionurl>
+#### <+stage.executionUrl>
 
 The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
-You can also the following expression to get the execution URL for a specific stage in a pipeline: 
+Use the following fully qualified expression to get the execution URL for a specific stage in any pipeline: 
 
 ```
 <+pipeline.stages.stageId.executionUrl>
@@ -1040,9 +1040,15 @@ The step name.
 
 The step [identifier](https://developer.harness.io/docs/platform/references/entity-identifier-reference/).
 
-#### <+step.executionurl>
+#### <+step.executionUrl>
 
 The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution.
+
+Use the following fully qualified expression to get the execution URL for a specific stage in any pipeline: 
+
+```
+<+pipeline.stages.[stageId].spec.execution.steps.[stepid].executionUrl>
+```
 
 
 ### Instances
