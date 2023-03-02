@@ -1,7 +1,7 @@
 ---
 title: GitHub Connector Settings Reference
-description: This topic provides settings and permissions for the GitHub Connector. You can also use a GitHub App for authentication in a Harness GitHub Connector. See Use a GitHub App in a GitHub Connector. Name…
-# sidebar_position: 2
+description: This topic provides settings and permissions for the GitHub Connector.
+sidebar_position: 30
 helpdocs_topic_id: v9sigwjlgo
 helpdocs_category_id: xyexvcc206
 helpdocs_is_private: false

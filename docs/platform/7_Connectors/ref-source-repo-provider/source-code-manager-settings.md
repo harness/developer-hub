@@ -1,7 +1,7 @@
 ---
 title: Source Code Manager Settings
-description: Currently, this feature is in Beta and behind a Feature Flag. Contact Harness Support to enable the feature. Feature Flags can only be removed for Harness Professional and Essentials editions. Once t…
-# sidebar_position: 2
+description: Currently, this feature is in Beta and behind a Feature Flag.
+sidebar_position: 60
 helpdocs_topic_id: kqik8km5eb
 helpdocs_category_id: xyexvcc206
 helpdocs_is_private: false
