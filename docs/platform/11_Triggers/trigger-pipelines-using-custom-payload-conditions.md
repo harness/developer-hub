@@ -67,7 +67,7 @@ Conditions support Harness built-in expressions for accessing Trigger settings, 
 
 You can configure Triggers based on the source branches, target branches, and changed files in a Git merge.
 
-If you want to specify multiple paths, use the Regex operator.
+If you want to specify multiple paths, use the Regex operator. You can also use a regex to specify all files in a parent folder, as shown in the **Changed Files** field below.
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-30.png)
 
