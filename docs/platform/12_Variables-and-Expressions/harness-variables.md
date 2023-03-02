@@ -1044,7 +1044,7 @@ The step [identifier](https://developer.harness.io/docs/platform/references/enti
 
 The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
-Use the following fully qualified expression to get the execution URL for a specific stage in any pipeline: 
+Use the following fully qualified expression to get the execution URL for a specific step in any pipeline: 
 
 ```
 <+pipeline.stages.[stageId].spec.execution.steps.[stepid].executionUrl>
