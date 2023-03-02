@@ -1,6 +1,6 @@
 ---
 title: Install a delegate with third-party tool custom binaries
-description: Use a delegate image that includes no binaries and use the delegate YAML environment variables to install the binaries you want.
+description: Use environment variables to install a custom toolset on the delegate minimal image.
 # sidebar_position: 2
 helpdocs_topic_id: ql86a0iqta
 helpdocs_category_id: m9iau0y3hv
@@ -8,54 +8,47 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness delegates include binaries for the third-party SDKs that are required for Harness-supported integrations including Kubernetes, Helm, and so on. 
+Delegates are packaged with third-party SDKs that support Kubernetes, Helm, and other Harness-integrated tools. The SDKs are included on the delegate image as binary files; depending on the tool, multiple versions are included. 
 
-Harness includes multiple binary versions to support customers using code that requires versions other than the latest.
+Harness provides a "minimal" delgate image that does not include third-party SDKs. You can use YAML to configure the minimal delegate image for the installation of the tools and versions you select. You can install software on the delegate using the `INIT_SCRIPT` environment variable.
 
-For a list of the SDK versions that are certified for different types of deployments, see Delegate-required SDKs.
+For a list of the SDK versions that are certified for different types of deployments, go to [Delegate-required SDKs](/docs/platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
 
-##### Problem
+## Use cases
 
-Older binary versions might include minor vulnerabilities that are detected in vulnerability scans. You might want to avoid vulnerabilities by selecting the binary versions you install.
+The primary use cases for customization of the delegate image include:
 
-You might also want to install tools that Harness does not include.
+- Vulnerability scans detect unresolved vulnerabilities in older binary versions. You want to use binaries that reduce your attack surface.
 
-##### Solution
+- You're interested in using tools that Harness does not include on the delegate image. 
 
-To support this customization, Harness provides a delegate image that does not include any third-party SDK binaries. We call this image the minimal image.
+The remainder of this topic explains the process.
 
-Using the minimal image and delegate YAML, you can install the specific SDK versions you want. You can install software on the delegate using the `INIT_SCRIPT` environment variable in the delegate YAML.
+:::note
+The toolset you install on the delegate minimal image must include the SDKs that Harness requires to perform tasks. 
+:::
 
-This topic explains how to use the No Tools delegate image and install specific SDK versions.
-
-##### Required SDKs for Harness
-
-If you use the No Tools Image, you must install certain SDKs so that Harness can perform its tasks. 
-
-### Step 1: Edit delegate YAML
+## Edit the delegate YAML
 
 To install a delegate, you download its YAML file and run it in your environment.
 
-Before you run the delegate, you edit the YAML file to change the following:
+Before you run the delegate, edit the YAML file to change the following:
 
 * Delegate environment variables
 * Delegate image
 
-These steps are below.
+## Add Harness-required SDKs
 
-### Step 2: Add Harness-required SDKs
+In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to download the certified SDK versions that Harness requires.
 
-In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to download the certified SDK versions required by Harness.
+The SDKs you need to add depend on the type of deployment. For a list of the SDK versions that are certified for different types of deployments, go to [Delegate-required SDKs](/docs/platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
-The SDKs you need to add depend on what type of deployment you are doing with Harness. For a list of the SDK versions that are certified for different types of deployments, see Delegate-required SDKs.
+For more information on how to use the `INIT_SCRIPT` environment variable, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
-For more information on how to use the `INIT_SCRIPT` environment variable, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+## Example Kubernetes manifest with required SDK downloads
 
-
-#### Example of Kubernetes delegate manifest with required SDK downloads
-
-The following delegate YAML contains examples of downloads for all Harness SDKs.
+The following delegate YAML contains examples of downloads for all Harness-required SDKs.
 
 You can edit the YAML to include only the SDKs and versions Harness requires for your deployment type.
 
@@ -108,12 +101,12 @@ You can edit the YAML to include only the SDKs and versions Harness requires for
 ...
 ```
 
-### Step 3: Add your custom tools
+## Add your custom tools
 
 In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to download any additional tools you want to add.
 
 
-### See also
+## See also
 
-* [Common Delegate Initialization Scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md)
+* [Common delegate initialization scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md)
 
