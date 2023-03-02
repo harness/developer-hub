@@ -619,10 +619,10 @@ For examples, see the looping strategies used in the [Secure Shell (SSH) deploym
 
 The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
-Use the following fully qualified expression to get the execution URL for a specific stage in any pipeline: 
+Use the following fully qualified expression to get the execution URL for a specific stage in the pipeline: 
 
 ```
-<+pipeline.stages.stageId.executionUrl>
+<+pipeline.stages.[stageId].executionUrl>
 
 ```
 
@@ -1044,7 +1044,7 @@ The step [identifier](https://developer.harness.io/docs/platform/references/enti
 
 The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
-Use the following fully qualified expression to get the execution URL for a specific step in any pipeline: 
+Use the following fully qualified expression to get the execution URL for a specific step in the pipeline: 
 
 ```
 <+pipeline.stages.[stageId].spec.execution.steps.[stepid].executionUrl>
