@@ -114,7 +114,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="#image-scanning---amazon-ecr">Amazon ECR</a> Extraction </li>
+          		<li><a href="#image-scanning---amazon-ecr">Amazon Image Scanning</a> Extraction </li>
           		<li><a href="#black-duck-open-hub">Black Duck Open Hub</a> Orchestration, Ingestion</li>
           		<li><a href="#docker-content-trust-dct">Docker Content Trust (DCT</a> Orchestration, Ingestion</li>
           		<li><a href="#docker-content-trust-clair">Docker Content Trust (clair)</a> Orchestration, Ingestion </li>
