@@ -56,7 +56,7 @@ Use the following settings to add additional configuration to the step. Settings
 
 ### Optimize
 
-Select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can improve snapshot times. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
+Select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
 
 ### Dockerfile
 
@@ -64,7 +64,7 @@ The name of the Dockerfile. If you don't provide a name, Harness assumes that th
 
 ### Context
 
-Enter a path to a directory containing files that makeup the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
+Enter a path to a directory containing files that make up the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
 
 ### Labels
 

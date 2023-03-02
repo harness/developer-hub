@@ -31,7 +31,7 @@ The AWS IAM roles and policies associated with the account connected to the Harn
 * [Add an AWS connector](../../platform/7_Connectors/add-aws-connector.md)
 * [AWS connector settings reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
-This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross account access).
+This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross-account access).
 
 ## Region
 
@@ -67,7 +67,7 @@ Select an authenticated connector to download base images from a DockerHub conta
 
 ### Optimize
 
-Select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can improve snapshot times. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
+Select this option to enable `--snapshotMode=redo`. This setting causes file metadata to be considered when creating snapshots, and it can reduce the time it takes to create snapshots. For more information, go to the kaniko documentation for the [snapshotMode flag](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md#flag---snapshotmode).
 
 ### Dockerfile
 
@@ -75,7 +75,7 @@ The name of the Dockerfile. If you don't provide a name, Harness assumes the Doc
 
 ### Context
 
-Enter a path to a directory containing files that makeup the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
+Enter a path to a directory containing files that make up the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
 
 ### Labels
 
