@@ -17,10 +17,9 @@ VMware HTTP reset peer injects HTTP reset chaos that stops the outgoing HTTP req
 - It simulates premature connection loss, such as firewall issues, between microservices by verifying connection timeouts.
 - It simulates connection resets due to resource limitations on the server side, such as running out of memory, killing processes, or overloading the server due to high amounts of traffic.
 
-
-**Note**
+:::note
 - Kubernetes >= 1.17 is required to execute this fault.
-- Adequate vCenter permissions should be provided to start and stop the VMs.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
@@ -36,6 +35,7 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
+:::
 
 ## Fault tunables
 

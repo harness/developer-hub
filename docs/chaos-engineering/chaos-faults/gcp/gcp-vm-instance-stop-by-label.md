@@ -10,7 +10,7 @@ GCP VM instance stop by label powers off from the GCP VM instances (filtered by 
 
 - GCP VM instance stop by label fault determines the resilience of an application that runs on a VM instance when a VM instance unexpectedly stops (or fails).
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Adequate GCP permissions to stop and start the GCP VM instances.
 - The VM instances with the target label should be in a healthy state.
@@ -33,6 +33,7 @@ stringData:
   auth_provider_x509_cert_url:
   client_x509_cert_url:
 ```
+:::
 
 ## Fault tunables
   <h3>Mandatory fields</h3>

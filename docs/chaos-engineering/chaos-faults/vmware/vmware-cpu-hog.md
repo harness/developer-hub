@@ -16,7 +16,7 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. 
 - It verifies the autopilot functionality of cloud managed clusters. 
 - It verifies multi-tenant load issues, that is, when the load on one container increases, it should not cause downtime in other containers.
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
@@ -35,6 +35,7 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
+:::
 
 ## Fault tunables
 

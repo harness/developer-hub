@@ -16,12 +16,12 @@ VMware memory hog fault consumes excessive memory resources on Linux OS based VM
 - It verifies pod priority and QoS setting for eviction purposes. 
 - It also verifies application restarts on OOM (out of memory) kills. 
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - Execution plane should be connected to vCenter and host vCenter on port 443.
 - The VM should be in a healthy state before and after injecting chaos.
 - VMware tool should be installed on the target VM with remote execution enabled.
-- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Appropriate vCenter permissions should be provided to access the hosts and the VMs.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
@@ -36,6 +36,7 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
+:::
 
 ## Fault tunables
 
