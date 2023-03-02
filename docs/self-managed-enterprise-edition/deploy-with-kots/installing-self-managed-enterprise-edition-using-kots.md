@@ -8,6 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info
+
+This is an End of Life (EOL) notice for the KOTS install method.
+
+:::
+
+
 The following topics provide information about using KOTS Admin Console to install Harness Self-Managed Enterprise Edition into a Kubernetes cluster:
 
 * [Infrastructure](kubernetes-cluster-on-prem-infrastructure-requirements.md)

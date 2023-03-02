@@ -9,6 +9,10 @@ module.exports = {
       from: "/docs",
       to: "/docs/category/documentation",
     },
+    {
+      from: "/tutorials/get-started",
+      to: "/tutorials",
+    },
 
     
     //===================================================================================
@@ -27,8 +31,15 @@ module.exports = {
     //  },    
     //===================================================================================
     
+    // Platform Tutorial
+
+    // Created by schoudhury on Feb 21, 2023
+       {
+         from: "/tutorials/platform/provision-azure-infrastructure",
+         to: "/tutorials/platform/install-delegate",
+       },
     
-    // DELEGATE NODE
+    // Delegate Docs
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
@@ -81,38 +92,24 @@ module.exports = {
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/install-delegates-with-third-party-tools",
-         to: "/docs/platform/Delegates/customize-delegates/install-delegates-with-third-party-tools",
+         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
-       {
-         from: "/docs/platform/Delegates/delegate-guide/support-for-delegate-docker-images",
-         to: "/docs/platform/Delegates/configure-delegates/support-for-delegate-docker-images",
-       },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
-       {
-         from: "/docs/platform/Delegates/delegate-guide/install-a-kubernetes-delegate",
-         to: "/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate",
-       },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
+    // Created by kat-enos for PR-738 on Feb 21, 2023
        {
-         from: "/docs/platform/Delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes",
-         to: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes",
-       },
+          from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes",
+          to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
+        },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
-       {
-         from: "/docs/platform/Delegates/delegate-install-kubernetes/install-harness-delegate-using-helm",
-         to: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm",
-       },
+
+    // Created by kat-enos for PR-738 on Feb 21, 2023
+    {
+      from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm",
+      to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
+    },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
-       {
-         from: "/docs/platform/Delegates/delegate-install-docker/install-a-docker-delegate",
-         to: "/docs/platform/Delegates/install-delegates/docker-delegates/install-a-docker-delegate",
-       },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
@@ -129,13 +126,13 @@ module.exports = {
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/non-root-delegate-installation",
-         to: "/docs/platform/Delegates/advanced-installation/non-root-delegate-installation",
+         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/custom-delegate",
-         to: "/docs/platform/Delegates/customize-delegates/custom-delegate",
+         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
        },   
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
@@ -147,7 +144,7 @@ module.exports = {
      // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/run-scripts-on-delegates",
-         to: "/docs/platform/Delegates/configure-delegates/run-scripts-on-delegates",
+         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
@@ -198,6 +195,30 @@ module.exports = {
       from: "/docs/platform/Delegates/delegate-reference/sample-create-a-permanent-volume-nfs-server",
       to: "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
      },
+
+    //  Created by aimurphy for PR-783 on Feb 23, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/set-up-an-aws-vm-build-infrastructure",
+    },
+
+    //  Created by aimurphy for PR-783 on Feb 23, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-ci-build-infrastructure-in-azure",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-azure",
+    },
+
+    //  Created by aimurphy for PR-783 on Feb 23, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-a-ci-build-infrastructure-in-google-cloud-platform",
+    },
+
+    //  Created by aimurphy for PR-783 on Feb 23, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-macos-build-infra-with-anka-registry",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry",
+    },
   ],
 };
 

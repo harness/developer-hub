@@ -11,80 +11,58 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to set up a Kubernetes cluster build infrastructure for a Harness CI stage.
+This topic describes how you can use Kubernetes cluster build infrastructure for a Harness CI pipeline stage.
 
-The codebase and tests you add to a Harness CI Stage are built and run using a build infrastructure in your environment.
-
-Some CI providers use in-house orchestration systems for build farms like Docker Machine ([deprecated since 2019](https://docs.docker.com/machine/)). With these systems, outages and backlogs can occur in their infrastructure. Often, the backlogs occur because they do not have enough capacity to cover the backlog that accrued during the outage.
-
-Harness build farms run on your infrastructure using battle-tested platforms for large container workloads (Kubernetes, AWS VMs). This enables you to build software and run tests, repeatedly and automatically, on a scalable platform with no outages.
-
-Once you set up the Kubernetes cluster to use as your build infrastructure, you connect Harness to it using a Harness Kubernetes Cluster Connector and Harness Delegate.
+Once you set up the Kubernetes cluster to use as your build infrastructure, you connect Harness to it with a Harness [Kubernetes cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate.
 
 You can also set up build infrastructures using VMs. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
-### Limitations
+## GKE Autopilot is not recommended
 
-#### GKE Autopilot is Not Supported
+We don't recommend using Harness CI with GKE Autopilot due to Docker-in-Docker limitations and potential cloud cost increases.
 
+Autopilot clusters do not allow Privileged pods. This means you can't use [Docker-in-Docker](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require Privileged mode.
 
-Harness CI doesn't support GKE Autopilot for the following reasons.
+Additionally, GKE Autopilot sets resource limits equal to resource requests for each container. This can cause your builds to allocate more resources than they need, resulting in higher cloud costs with no added benefit.
 
-##### Cannot use Docker-in-Docker
+<details>
+<summary>GKE Autopilot cloud cost demonstration</summary>
 
-
-Autopilot clusters do not allow Privileged pods. Thus you cannot use [Docker-in-Docker](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require Privileged mode.
-
-
-##### GKE Autopilot Can Result in Higher Cloud Costs
-
-
-GKE Autopilot sets resource limits = resource requests for each container. This can cause your Builds to allocate more resources than they need. The result is higher cloud costs with no added benefit. 
-
-
-Consider the following CI Stage:
-
+Consider the following CI stage:
 
 ![](./static/set-up-a-kubernetes-build-infrastructure-530.png)
 
+Assume that you configure your stage resources as follows:
 
-  Assume that you configure your Stage resources as follows:
+* Redis (service dependency in Background step): 5GB, 2 CPU
+* s1 step: 2GB, 2 CPU
+* s2 step: 3GB, 1 CPU
+* s3 step: 4GB, 1 CPU
+* s4 step: 2GB, 1 CPU
+* s5 step: 2GB, 1 CPU
 
-
-* redis (service dependency): 5GB, 2 cpu
-* s1 step: 2GB, 2 cpu
-* s2 step: 3GB, 1 cpu
-* s3 step: 4GB, 1 cpu
-* s4 step: 2GB, 1 cpu
-* s5 step: 2GB, 1 cpu
-
-
-Kubernetes will allocate the pod based on the maximum requirements for the overall Stage — in this case, when the s3, s4, and s5 steps run in parallel. The pod also needs to run the Redis service at the same time. The requirements are the sum of Redis + s3 + s4 + s5: 
-
+Kubernetes would allocate a pod based on the maximum requirements for the overall stage. In this example, the peak requirement is when the s3, s4, and s5 steps run in parallel. The pod also needs to run the Redis service at the same time. The total maximum requirements are the sum of Redis + s3 + s4 + s5:
 
 * 5 + 4 + 2 + 2 = **13GB Memory**
 * 2 + 1 + 1 + 1 = **5 CPUs**
 
-
-GKE Autopilot calculates resource requirements differently. For containers, it sets resource limits to the same as resource requests. For pods, it sums all Step requirements in the Stage, whether they’re running in parallel or not. In this case, the requirements are the sum of Redis + s1 + s2 + s3 + s4 + s5:
-
+GKE Autopilot calculates resource requirements differently. For containers, it sets resource limits equivalent to resource requests. For pods, it sums all step requirements in the stage, whether they're running in parallel or not. In this example, the total maximum requirements are the sum of Redis + s1 + s2 + s3 + s4 + s5:
 
 * 5 + 2 + 2+ 4 + 4 + 4 = **17GB Memory**
 * 2 + 1 + 1+ 1 + 1 + 1 = **7 CPUs**
 
+Autopilot might be cheaper than standard Kubernetes if you only run builds occasionally. This can result in cost savings because some worker nodes are always running in a standard Kubernetes cluster. If you're running builds more often, Autopilot can increase costs unnecessarily.
 
-Autopilot might be cheaper than standard Kubernetes if you only run builds occasionally. This can result in cost savings because some worker nodes are always running in a standard Kubernetes cluster. 
+</details>
 
-
-
-### Before You Begin
+## Before You Begin
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
-### Visual Summary
+## Visual Summary
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster, then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster.
 
@@ -95,9 +73,9 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/wUC23lmqfnY/hqdefault.jpg"><iframe width=" 200" height="150" src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
 
 
-### Step 1: Create a Kubernetes Cluster
+## Step 1: Create a Kubernetes Cluster
 
-#### Prerequisites
+### Prerequisites
 
 * Ensure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
 * For Harness-specific permission requirements, see [permission required](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required) for CI.
@@ -108,7 +86,7 @@ To create a new Kubernetes cluster, see:
 * [Creating a cluster in Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
 * [Creating a cluster in GKE (Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster))
 
-### Step 2: Add Kubernetes Cluster Connector and Delegate in Harness
+## Step 2: Add Kubernetes Cluster Connector and Delegate in Harness
 
 * In your **Project**, click **Project Setup**.
 * Click **Connectors**.
@@ -116,23 +94,23 @@ To create a new Kubernetes cluster, see:
 
 Set up the Connector as follows.
 
-#### Connector Overview
+### Connector Overview
 
 * Enter a unique name for the Connector.
 
-#### Connector Details
+### Connector Details
 
 You can select Master URL and Credentials or Use the credentials of a specific Harness Delegate. 
 
 In this example, click Use the credentials of a specific Harness Delegate and click **Continue**.
 
-#### Delegate Setup
+### Delegate Setup
 
 You should now be in the Delegates Setup screen of the GitHub Connector wizard. Click **Install new Delegate**.
 
 ![](./static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
 
-#### Delegate Location
+### Delegate Location
 
 You can install the Delegate in different locations. Usually it makes sense to install and run the Delegate on a pod in your Kubernetes build infrastructure. You'll do this in the next steps.
 
@@ -140,7 +118,7 @@ You can install the Delegate in different locations. Usually it makes sense to i
 
 ![](./static/set-up-a-kubernetes-cluster-build-infrastructure-02.png)
 
-#### Delegate Details
+### Delegate Details
 
 Now you specify the Delegate name, size, and permissions.
 
@@ -152,7 +130,7 @@ Now you specify the Delegate name, size, and permissions.
 
 ![](./static/set-up-a-kubernetes-cluster-build-infrastructure-03.png)
 
-#### Delegate Install
+### Delegate Install
 
 Harness now generates and displays a workspace-definition YAML file that you can install in your build infrastructure.
 
@@ -175,7 +153,7 @@ statefulset.apps/ci-quickstart created
 service/delegate-service created
 ```
 
-#### Connect to the Delegate
+### Connect to the Delegate
 
 * Return to the Harness UI. It might take a few minutes to verify the Delegate. Once it is verified, close the wizard.
 * Back in **Delegates Setup**, you can select the new Delegate:
@@ -194,26 +172,26 @@ In Namespace, enter the Kubernetes namespace to use.
 
 You can use a Runtime Input (`<+input>`) or expression also. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
-### Option: Service Account Name
+## Option: Service Account Name
 
 The Kubernetes service account name. You must set this field in the following cases:
 
 * Your build infrastructure runs on EKS, you have an IAM role associated with the service account, and a CI step uses an AWS Connector with IRSA. See [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) in the AWS docs.
 * You have a CI Build stage with Steps that communicate with any external services using a service account other than default. See [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) in the Kubernetes docs.
 
-### Option: Run as User
+## Option: Run as User
 
 You can override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions. See [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs. 
 
-### Option: Init Timeout
+## Option: Init Timeout
 
 If you use large images in your Build Steps, you might find that the initialization step times out and the build fails when the Pipeline runs. In this case, you can increase the default init time window (10 minutes). 
 
-### Option: Add Annotations
+## Option: Add Annotations
 
 You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. See [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs. 
 
-### Option: Add Labels
+## Option: Add Labels
 
 You can add Kubernetes labels (key-value pairs) to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the Kubernetes docs. 
 
@@ -235,7 +213,7 @@ Harness adds the following labels automatically:
 
 `https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline`
 
-### Configure As Code
+## Configure As Code
 
 When configuring your Pipeline in YAML, you add the Kubernetes Cluster CI infrastructure using the infrastructure of type KubernetesDirect:
 
@@ -256,9 +234,3 @@ pipeline:
           ...
 ```
 Once the build infrastructure is set up, you can now add CI stages to execute your Run steps to build, deploy your code.
-
-### See Also
-
-* [Add a Kubernetes Cluster Connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md)
-* [Kubernetes Cluster Connector Settings](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md)
-

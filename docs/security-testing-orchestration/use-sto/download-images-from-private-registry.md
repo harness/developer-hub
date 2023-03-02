@@ -1,5 +1,5 @@
 ---
-title: Configure STO to Downlad Images from a Private Registry
+title: Configure STO to Download Images from a Private Registry
 description: You can set up STO to download your scanner images from a private registry instead of Docker Hub.
 sidebar_position: 90
 ---

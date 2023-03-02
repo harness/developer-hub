@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 This topic provides settings and permissions for the Docker Connector.
 
+### Docker registry rate limits
+
+For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Dockerhub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
+
 ### Docker Registries in Cloud Platforms
 
 The Docker Connector is platform-agnostic and can be used to connect to any Docker container registry, but Harness provides first class support for registries in AWS and GCR.

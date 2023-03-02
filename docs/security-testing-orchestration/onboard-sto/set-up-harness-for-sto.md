@@ -31,7 +31,7 @@ Before you start setting up Harness, make sure you have the following:
 
 * Git account and Personal Access Token — If you are scanning a repo, you need an account and access token with the Git provider.
 * Docker Hub account — STO uses Docker-in-Docker to run scans. The Pipeline needs to pull the **docker:dind** image from Docker Hub.
-* [Kubernetes cluster](#install-the-harness-delegate) — Running builds in your infrastructure, rather than in a vendor's cloud, has significant benefits. Vendor clouds often experience outages that can result in backlogs and delayed builds. You can build software and run tests, repeatedly and automatically, on a scalable platform with no outages or backlogs.
+* [Kubernetes cluster](#install-the-harness-delegate) — Infrastructure for running builds.
 
 ### Harness User Requirements
 
@@ -289,7 +289,7 @@ In the **Execution** tab, do the following:
 5. Under Optional Configuration, select the **Privileged** checkbox.
    
     ```mdx-code-block
-     <img src={set_up_harness_25} alt="Configure the service dependency" height="75%" width="75%" />
+     <img src={set_up_harness_25} alt="Configure the background step" height="75%" width="75%" />
     ```
 
 #### Add a Security Step

@@ -44,6 +44,12 @@ Select the Code Repo Connector that connects to your Git provider account.
 
 See [Code Repo Connectors Tech Ref](/docs/category/code-repo-connectors).
 
+:::note
+
+Git webhook triggers do not support generic Git connectors. You must create provider-specific connectors for each provider (Github, GitLab, Bitbucket, etc) to use them with webhook triggers. For information on each Git provider connector, go to [Connect to a Git Repo](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo).
+
+:::
+
 ### Repository Name
 
 Enter the name of the repo in the account.

@@ -1,5 +1,5 @@
 ---
-title: Add and Override Values YAML Files
+title: Add and override values YAML files
 description: This topic describes how to use values files for Kubernetes and Helm deployments in Harness.
 sidebar_position: 4
 helpdocs_topic_id: q002wjjl4d

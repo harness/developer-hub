@@ -3,38 +3,25 @@ id: docker-service-kill
 title: Docker service kill
 ---
 
-Docker service kill makes the application unreachable on the account of the node turning unschedulable (NotReady).
-- Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration defined by the `TOTAL_CHAOS_DURATION` environment variable. 
-- The application node goes back to normal state and services are resumed after the chaos duration. 
+Docker service kill makes the application unreachable on the account of the node turning unschedulable (in **NotReady** status).
+- Docker service is stopped (or killed) on a node to make it unschedulable for a specific duration.
+- The application node goes back to normal state and services are resumed after a specific duration. 
 
-![Docker Service Kill](./static/images/svc-kill.png)
+![Docker Service Kill](./static/images/docker-service-kill.png)
 
+## Use cases
+Docker service kill fault determines the resilience of an application when a node becomes unschedulable, that is, NotReady state.
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault determines the resilience of an application when a node becomes unschedulable, i.e. NotReady state.
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes > 1.16
-- Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it (or subject to eviction). This is achieved by the following steps:
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- Node specified in the <code>TARGET_NODE</code> environment variable (the node for which Docker service would be killed) should be cordoned before executing the chaos fault. This ensures that the fault resources are not scheduled on it or subject to eviction. This is achieved using the following steps:
   - Get node names against the applications pods using command <code>kubectl get pods -o wide</code>.
   - Cordon the node using command <code>kubectl cordon &lt;nodename&gt;</code>.
-
-
-## Default validations
-
-The target nodes should be in the ready state before and after injecting chaos.
-
+- The target nodes should be in the ready state before and after injecting chaos.
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+   <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -44,15 +31,15 @@ The target nodes should be in the ready state before and after injecting chaos.
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node. </td>
-        <td> For example, <code>node-1</code>. </td>
+        <td> For example, <code>node-1</code>. For For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node.</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
-        <td> It contains node label, which will be used to filter the target node if TARGET_NODE ENV is not set </td>
-        <td> It is mutually exclusive with the TARGET_NODE ENV. If both are provided then it will use the <code>TARGET_NODE</code>. </td>
+        <td> Node label used to filter the target node if <code>TARGET_NODE</code> environment variable is not set. </td>
+        <td> It is mutually exclusive with the <code>TARGET_NODE</code> environment variable. If both are provided, the fault uses <code>TARGET_NODE</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -62,24 +49,18 @@ The target nodes should be in the ready state before and after injecting chaos.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 60s. </td>
+        <td> Defaults to 60s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
-        <td> For example, 30s. </td>
+        <td> Period to wait before injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and node-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [node-specific tunables](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.  
 
 ### Kill docker service
 
-It contains the name of the target node subject to the chaos. You can tune it using the `TARGET_NODE` environment variable.
+It contains the name of the target node subject to the chaos. Tune it by using the `TARGET_NODE` environment variable.
 
 Use the following example to tune it:
 

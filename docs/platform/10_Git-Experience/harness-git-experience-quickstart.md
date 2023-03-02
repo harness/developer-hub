@@ -15,7 +15,9 @@ To learn more about the latest version of Git Experience, see [Harness Git Exper
 
 Harness Git Experience integrates your Harness Projects, Pipelines, and resources with your Git repos. You can manage and run your Harness Pipelines and resources entirely from Git or use a hybrid method. With Harness Git Experience, your Git repos are always the single source of truth.
 
-See also: [Git Experience How-tos](git-experience-overview.md), [Harness Git Experience Overview](harness-git-experience-overview.md).### Objectives
+See also: [Git Experience How-tos](git-experience-overview.md), [Harness Git Experience Overview](harness-git-experience-overview.md).
+
+### Objectives
 
 You'll learn how to:
 
@@ -27,7 +29,9 @@ You'll learn how to:
 
 You'll need a Git repo with at least one branch and a Personal Access Token (PAT) for your account. Harness needs the PAT to use the Git platform APIs. The PAT is encrypted using a [Harness Secret Manager](../6_Security/1-harness-secret-manager-overview.md). Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
 
-Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo and the branch in created.### Step 1: Add a Source Code Manager
+Make sure your repo has at least one branch, such as main or master. For most Git providers, you simply add a README file to the repo and the branch in created.
+
+### Step 1: Add a Source Code Manager
 
 A Harness Source Code Manager (SCM) contains your personal account for a Git provider such as GitHub or AWS CodeCommit. You can add one SCM to your account for each provider.
 
@@ -60,7 +64,7 @@ You can use multiple repos in the Harness Git Experience for a Project. For exam
 Here's a new GitHub repo named **GitExpDocExample**.
 
 ![](./static/harness-git-experience-quickstart-53.png)
-You do not need all of the resources used by your Pipelines to be synched to your repo. For example, you could use account-level resources such as Delegate or Docker Registry Connectors. These will work fine.In Harness, create a new Project. See [Create Organizations and Projects](../1_Organizations-and-Projects/2-create-an-organization.md).
+You do not need all of the resources used by your Pipelines to be synched to your repo. For example, you could use account-level resources such as Delegate or Docker Registry Connectors. These will work fine.In Harness, create a new Project. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 Here's a new Project named **GitExp Doc Example**.
 

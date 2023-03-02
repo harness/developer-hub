@@ -1,7 +1,7 @@
 ---
 title: Git Connector Settings Reference
 description: This topic provides settings and permissions for the Git Connector.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: tbm2hw6pr6
 helpdocs_category_id: xyexvcc206
 helpdocs_is_private: false

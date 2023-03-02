@@ -1,6 +1,6 @@
 ---
-title: Define a Docker Build Infrastructure
-description: You can define a CI build infrastructure on any Linux or macOS host. This is the simplest build infrastructure to set up and is well suited to developers who want to build on their laptops.
+title: Use local runner build infrastructure
+description: You can define a CI build infrastructure on any Linux or macOS host.
 sidebar_position: 15
 helpdocs_topic_id: xd8u17be5h
 helpdocs_category_id: rg8mrhqm95
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can define a CI build infrastructure on any Linux or macOS host. This is the simplest build infrastructure to set up, and is well-suited for developers who want to run builds on a local host such as a laptop.
+You can define a CI build infrastructure on any Linux or macOS host. This is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
 ### Important Notes
 
@@ -27,7 +27,7 @@ You can define a CI build infrastructure on any Linux or macOS host. This is the
 5. Click **Continue**.   
 The UI shows the delegate as not connected. This is expected behavior. You need to complete this workflow to establish connectivity between the delegate and your instance.
 6. Update the **docker-compose.yml** file you just downloaded as follows:
-	1. For `DELEGATE TAGS=`, specify one of the following: `macos-amd64` | `windows-amd64` | `linux-amd64`
+	1. For `DELEGATE TAGS=`, specify one of the following: `macos-amd64` | `macos-arm64` |`windows-amd64` | `linux-amd64` | `linux-arm64`
 	2. *macOS only —* Add this setting to the `environment` list:  
 	`- RUNNER_URL=`[`http://host.docker.internal:3000`](http://host.docker.internal:3000/)
 	3. *Linux only —* Add the following line immediately after `restart: unless-stopped"`:  
@@ -50,7 +50,7 @@ Update the pipeline where you want to use the Docker delegate, either from YAML 
   Replace the `stages : stage : spec : infrastructure` section for the stage to use `platform` and `runtime` as follows.
   
     1. For the `os:` field, specify `Linux` | `MacOS` | `Windows`
-    2. For the `arch:` field, specify `Amd64`
+    2. For the `arch:` field, specify `Amd64` | `Arm64`
 
 ##### `infrastructure` Field (*before*)
 

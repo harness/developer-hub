@@ -128,7 +128,6 @@ Harness pre-populates the **YAML Path**. You can change this path and the file n
 
 :::note
 Make sure that your YAML path starts with `.harness/` and is unique.
-
 :::
 
 Click **Start**.

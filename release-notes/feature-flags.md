@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2023-01-26T10:00
+date: 2023-02-06T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -11,6 +11,78 @@ Harness Feature Flags is updated regularly in Harness SaaS. Review the notes bel
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
+:::
+
+## February 24, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Node Server SDK has been updated to version 1.2.10 and includes the following updates:
+- The Node-Server SDK uses the eventsource library. When a 500 response is received from the remote system, the connection seems to close and stop retrying. However, if it receives an unspecified error, for example if the endpoint doesn’t exist or goes down suddenly, or if the remote system closes the connection, then the SDK tries to connect to the /stream endpoint every second, forever. This issue was resolved with the following updates:
+  - The SDK now falls back to polling if the stream disconnects.
+  - The SDK attempts to reconnect on retryable errors using an exponential backoff and retry strategy provided by the Harness fork of eventsource.
+  - A new retry event is emitted so the SDK can log the current retry attempt.
+
+## February 9, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+- The Flutter Client SDK has been updated to version 1.0.10 and includes the following updates:
+  - This SDK now uses Android SDK 1.0.20. (FFM-6822)
+  - This update fixes excessive network calls when calling flag evaluation functions. (FFM-6822)
+
+- The Python Server SDK has been updated to version 1.1.8 and includes the following updates:
+  - Added `wait_for_initialization` to the client API, which can be called to block the thread until all groups and flags have been retrieved and loaded into the cache. (FFM-6549)
+  - Added `is_initialized` to the client API, which can be called at any time to check if the initial retrieval and caching of groups and flags has been completed. (FFM-6549)
+
+:::note
+For an example usage of `wait_for_initialization` go to [the SDK's repository](https://github.com/harness/ff-python-server-sdk/blob/main/examples/wait_for_initialization_example/wait_for_initialization.py).
+:::
+
+
+## February 6, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+#### Feature Flags on the Harness Platform
+
+The **Complete** button at the end of the onboarding flow was always enabled. Now, it is disabled until the user receives a successful evaluation. (FFM-5987)
+
+#### Feature Flag SDKs
+
+The Python SDK has been updated to version 1.1.7 and includes the following new feature:
+
+When adding targets to a group based on conditions, the `in` operator is now case-sensitive in the SDK. (FFM-5991)
+
+:::note
+If you are targeting any groups using the `in` operator, ensure that your target condition takes into account the case sensitivity of the operator.
 :::
 
 ## January 26, 2023

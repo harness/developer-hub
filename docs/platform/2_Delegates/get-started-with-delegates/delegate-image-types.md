@@ -14,8 +14,6 @@ Harness packages and distributes delegates on different types of images. Delegat
 | --- | --- | --- |
 | DELEGATE | *`yy.mm.xxxx`* | The release year, month, and version in dot-separated format. |
 | DELEGATE-MINIMAL | *`yy.mm.xxxx.minimal`* | The minimal tag is appended to the release year, month, and version in dot-separated format. |
-| LEGACY DELEGATE | `ubi` `latest` | The legacy delegate image is identified by the latest tag. The last segment of the dot-separated identifier indicates the release. |
-| LEGACY-MINIMAL | `ubi-minimal` | The legacy minimal image. |
 
 ### Image security
 
@@ -33,8 +31,6 @@ For those images distributed with auto-upgrade enabled, Harness recommends accep
 | --- | :-: | :-: | :-: | :-: | --- |
 | DELEGATE <br /><br />**Base image**: RedHat Universal Base Image (redhat/ubi8)<br />Recommended use: Quick deployment of a pipeline | &#x2713; | x | &#x2713;| &#x2713; | Installed as a Kubernetes Deployment resource.<br /><br />Renamed from "immutable delegate." |
 | DELEGATE-MINIMAL<br /><br />**Recommended use**: To minimize attack vectors, in the enterprise, or when you want to select and install different tools at build time or runtime | x | &#x2713; | x | &#x2713; | |
-| LEGACY DELEGATE<br /><br />**Recommended use**: Quick deployment of a CD pipeline<br /><br />**Base image**:  `ubuntu` | &#x2713; | x |&#x2713; | x |Installed as a Kubernetes **StatefulSet** resource.<br /><br />Updated at runtime each time a new delegate version is released. |
-| LEGACY DELEGATE-MINIMAL<br /><br />**Recommended use**: To minimize attack vectors, in the enterprise, or when you want to select and install different tools at build time or runtime |x | &#x2713;| &#x2713; | x | |
 
 ### docker pull
 
@@ -44,8 +40,7 @@ The following table provides instructions for retrieval of delegate images.
 | --- | --- |
 | DELEGATE | `docker pull harness/delegate:` *`<yy.mm.xxxxx>`* |
 | DELEGATE-MINIMAL | `docker pull harness/delegate:` *`<yy.mm.xxxxx> .minimal`* |
-| LEGACY DELEGATE | `docker pull harness/delegate: latest`<br />`docker pull harness/delegate:ubi` |
-| LEGACY DELEGATE-MINIMAL | `docker pull harness/delegate:ubi.minimal` |
+
 
 ### Example harness-delegate.yaml file
 
@@ -79,7 +74,7 @@ metadata:
   namespace: harness-delegate-ng
 type: Opaque
 data:
-  DELEGATE_TOKEN: "ZjQ0MzZkNTRmZmQ0MGQxYjYxNGY0OGY5YTUzZGIxZmY="
+  DELEGATE_TOKEN: "XXXXXXXXXXXXXXXXXXXX"
 
 ---
 
@@ -147,7 +142,7 @@ spec:
         - name: JAVA_OPTS
           value: "-Xms64M"
         - name: ACCOUNT_ID
-          value: gVcEoNyqQNKbigC_hA3JqA
+          value: XXXXXXXXXXXXXXXXXXXX
         - name: MANAGER_HOST_AND_PORT
           value: https://app.harness.io/gratis
         - name: DEPLOY_MODE
@@ -235,7 +230,7 @@ metadata:
   namespace: harness-delegate-ng
 type: Opaque
 data:
-  UPGRADER_TOKEN: "ZjQ0MzZkNTRmZmQ0MGQxYjYxNGY0OGY5YTUzZGIxZmY="
+  UPGRADER_TOKEN: "XXXXXXXXXXXXXXXXXXXX"
 
 ---
 
@@ -252,7 +247,7 @@ data:
     namespace: harness-delegate-ng
     containerName: delegate
     delegateConfig:
-      accountId: gVcEoNyqQNKbigC_hA3JqA
+      accountId: XXXXXXXXXXXXXXXXXXXX
       managerHost: https://app.harness.io/gratis
 
 ---
@@ -289,193 +284,9 @@ spec:
               configMap:
                 name: delegate-del-upgrader-config
 
-
-
-Sample Legacy Delegate yaml file
-
-apiVersion: v1
-kind: Namespace
-metadata:
-  name: harness-delegate-ng
-
----
-
-apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRoleBinding
-metadata:
-  name: harness-delegate-ng-cluster-admin
-subjects:
-  - kind: ServiceAccount
-    name: default
-    namespace: harness-delegate-ng
-roleRef:
-  kind: ClusterRole
-  name: cluster-admin
-  apiGroup: rbac.authorization.k8s.io
-
----
-
-apiVersion: v1
-kind: Secret
-metadata:
-  name: del-minikube-proxy
-  namespace: harness-delegate-ng
-type: Opaque
-data:
-  # Enter base64 encoded username and password, if needed
-  PROXY_USER: ""
-  PROXY_PASSWORD: ""
-
----
-
-apiVersion: apps/v1
-kind: StatefulSet
-metadata:
-  labels:
-    harness.io/name: del-minikube
-  name: del-minikube
-  namespace: harness-delegate-ng
-spec:
-  replicas: 1
-  podManagementPolicy: Parallel
-  selector:
-    matchLabels:
-      harness.io/name: del-minikube
-  serviceName: ""
-  template:
-    metadata:
-      labels:
-        harness.io/name: del-minikube
-    spec:
-      containers:
-      - image: harness/delegate:latest
-        imagePullPolicy: Always
-        name: harness-delegate-instance
-        ports:
-          - containerPort: 8080
-        resources:
-          limits:
-            cpu: "0.5"
-            memory: "2048Mi"
-          requests:
-            cpu: "0.5"
-            memory: "2048Mi"
-        readinessProbe:
-          exec:
-            command:
-              - test
-              - -s
-              - delegate.log
-          initialDelaySeconds: 20
-          periodSeconds: 10
-        livenessProbe:
-          exec:
-            command:
-              - bash
-              - -c
-              - '[[ -e /opt/harness-delegate/msg/data/watcher-data && $(($(date +%s000) - $(grep heartbeat /opt/harness-delegate/msg/data/watcher-data | cut -d ":" -f 2 | cut -d "," -f 1))) -lt 300000 ]]'
-          initialDelaySeconds: 240
-          periodSeconds: 10
-          failureThreshold: 2
-        env:
-        - name: JAVA_OPTS
-          value: "-Xms64M"
-        - name: ACCOUNT_ID
-          value: gVcEoNyqQNKbigC_hA3JqA
-        - name: MANAGER_HOST_AND_PORT
-          value: https://app.harness.io/gratis
-        - name: DEPLOY_MODE
-          value: KUBERNETES
-        - name: DELEGATE_NAME
-          value: del-minikube
-        - name: DELEGATE_TYPE
-          value: "KUBERNETES"
-        - name: DELEGATE_NAMESPACE
-          valueFrom:
-            fieldRef:
-              fieldPath: metadata.namespace
-        - name: INIT_SCRIPT
-          value: ""
-        - name: DELEGATE_DESCRIPTION
-          value: ""
-        - name: DELEGATE_TAGS
-          value: ""
-        - name: NEXT_GEN
-          value: "true"
-        - name: DELEGATE_TOKEN
-          value: 95150ec7fbb4c3fd103666e54c803f7d
-        - name: WATCHER_STORAGE_URL
-          value: https://app.harness.io/public/free/freemium/watchers
-        - name: WATCHER_CHECK_LOCATION
-          value: current.version
-        - name: DELEGATE_STORAGE_URL
-          value: https://app.harness.io
-        - name: DELEGATE_CHECK_LOCATION
-          value: delegatefree.txt
-        - name: HELM_DESIRED_VERSION
-          value: ""
-        - name: CDN_URL
-          value: "https://app.harness.io"
-        - name: REMOTE_WATCHER_URL_CDN
-          value: "https://app.harness.io/public/shared/watchers/builds"
-        - name: JRE_VERSION
-          value: 11.0.14
-        - name: HELM3_PATH
-          value: ""
-        - name: HELM_PATH
-          value: ""
-        - name: KUSTOMIZE_PATH
-          value: ""
-        - name: KUBECTL_PATH
-          value: ""
-        - name: POLL_FOR_TASKS
-          value: "false"
-        - name: ENABLE_CE
-          value: "false"
-        - name: PROXY_HOST
-          value: ""
-        - name: PROXY_PORT
-          value: ""
-        - name: PROXY_SCHEME
-          value: ""
-        - name: NO_PROXY
-          value: ""
-        - name: PROXY_MANAGER
-          value: "true"
-        - name: PROXY_USER
-          valueFrom:
-            secretKeyRef:
-              name: del-minikube-proxy
-              key: PROXY_USER
-        - name: PROXY_PASSWORD
-          valueFrom:
-            secretKeyRef:
-              name: del-minikube-proxy
-              key: PROXY_PASSWORD
-        - name: GRPC_SERVICE_ENABLED
-          value: "true"
-        - name: GRPC_SERVICE_CONNECTOR_PORT
-          value: "8080"
-      restartPolicy: Always
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: delegate-service
-  namespace: harness-delegate-ng
-spec:
-  type: ClusterIP
-  selector:
-    harness.io/name: del-minikube
-  ports:
-    - port: 8080
-
 ```
 
 ### For more information
 
-* To add a custom toolset to a delegate image at runtime, see [Install delegates with third-party tools](/docs/platform/2_Delegates/customize-delegates/install-delegates-with-third-party-tools.md).
 * To build delegate images with a custom toolset, see [Build custom images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 * To find out about versions of the tools that are included on delegate images and how you can customize them, see [Install a delegate with third-party tool custom binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).

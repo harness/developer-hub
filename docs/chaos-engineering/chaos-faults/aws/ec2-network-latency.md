@@ -5,7 +5,7 @@ title: EC2 network latency
 EC2 network latency causes flaky access to the application (or services) by injecting network packet latency to EC2 instance(s).
 - It determines the performance of the application (or process) running on the EC2 instances.
 
-![EC2 Network Latency](./static/images/ec2-network-chaos.png)
+![EC2 Network Latency](./static/images/ec2-network-latency.png)
 
 ## Usage
 <details>
@@ -37,10 +37,9 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- If you change the secret name, update the `experiment.yml` environment variable to derive the respective data from the secret. Account for the path where this secret is mounted as a file manifest in the `AWS_SHARED_CREDENTIALS_FILE` environment variable.
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
 ## Permissions required
 
@@ -97,7 +96,7 @@ Here is an example AWS policy to execute the fault.
 ```
 </details>
 
-Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 ## Default validations
 The EC2 instance should be in healthy state.

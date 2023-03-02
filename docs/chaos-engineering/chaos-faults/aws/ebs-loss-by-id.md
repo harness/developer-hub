@@ -6,7 +6,7 @@ EBS loss by ID disrupts the state of EBS volume by detaching it from the node (o
 - In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
 - It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
-![EBS Loss By ID](./static/images/ebs-loss.png)
+![EBS Loss By ID](./static/images/ebs-loss-by-id.png)
 
 ## Usage
 
@@ -35,7 +35,9 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- If you change the secret key name (from `cloud_config.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the chaos experiment with the new name.
+- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes.
+
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
 ## Permissions required
 
@@ -74,7 +76,7 @@ Here is an example AWS policy to execute the fault.
 ```
 </details>
 
-Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
+Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 
 ## Default validations

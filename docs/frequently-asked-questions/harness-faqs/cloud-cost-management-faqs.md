@@ -338,14 +338,13 @@ We continuously update the list of services that work with AutoStopping. Here i
 | Azure | Virtual Machines (On-demand)Kubernetes Clusters (AKS) |
 | GCP | Google Compute Engine (GCE) VMsKubernetes Clusters (GKE) |
 
-#### How does AutoStopping add value to the Autoscaling that we already have in place?
+#### How does AutoStopping add value over Autoscaling?
 
-* AutoStopping operates on real-time traffic rather than just CPU/memory, which is not a good indicator of activity/usage. Certain applications, such as those written in Java, consume CPU and memory even when no user requests are being served.
-* AutoStopping can scale down the entire task count to zero and start them when new requests come in. While auto-scaling can only scale down the entire active tasks to a minimum task count for that service (min count cannot be zero).
-	+ At scale, the cost of leaving even a single task running per service adds up.
-	+ In the case of the EKS/Kubernetes Cluster, for example, if AutoStopping reduces the number of pods running to zero, auto-scaling will remove that specific node from the cluster. Both can co-exist.
-* AutoStopping allows you to define dependencies between services.
-	+ Dependant services or resources that do not directly receive traffic can also be completely scaled down to zero or shut down based on traffic received at any endpoint, significantly increasing overall cost savings; this is not possible with only native autoscaling. For example, ECS service with an RDS database in the same or different cluster.
+AutoStopping provides several advantages, and it can work alongside Autoscaling to improve efficiency:
+
+* AutoStopping uses real-time traffic as a signal for activity and usage, whereas Autoscaling relies on CPU/memory usage, which may not be an accurate representation of actual usage. 
+* AutoStopping has the ability to scale down the entire task count all the way to zero and back up again when new requests come in, while Autoscaling can only scale down to the minimum task replica count for that service. This means that leaving even a single task running per service can add up at scale, and AutoStopping can help reduce unnecessary costs.
+* Dependent services or resources that do not directly receive traffic can also be entirely scaled down to zero or shut down based on traffic received at any endpoint, which can significantly increase overall cost savings. For example, an ECS service with an RDS database located in the same or different cluster can be scaled down or shut down entirely based on traffic received, which is not possible with just native Autoscaling.
 
 #### How does AutoStopping work with on-demand load tests and off-shift/late-shift developers? How can they trigger load tests on a stopped resource?
 
@@ -440,13 +439,13 @@ Together, this helps customers achieve savings that are 2-3x that of any static 
 
 No. Currently, an Application Gateway is required for Azure AS to work. See [Create an Application Gateway for Azure](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-an-application-gateway-for-azure.md).
 
-### GCP AutoStopping rules
+### AutoStopping Proxy load balancers
 
-#### Can I use a native GCP HTTP(s) load balancer for AutoStopping in GCP?
+#### What is an Autostopping Proxy load balancer?
 
-No. Currently, only a custom load balancer is supported as the GCP load balancer is in Beta. It is also cost-effective to use a custom load balancer as it is not limited by the number of rules that can be configured.
+It is a custom VM launched in the customer's cloud account which comes pre-installed with the necessary proxy and load balancing services. Go to [Add Load Balancer for AutoStopping Rules](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) for more information.
 
-#### Which custom load balancer is used in GCP?
+#### How to provision/size the proxy VM?
 
-Envoy is the custom load balancer that is preferred. See [Create a Custom Load Balancer for GCP](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-custom-load-balancer-for-gcp.md).
+You can choose an instance type of your preference as the proxy from the different types of instances offered by each of the cloud provider based on the expected traffic. 
 

@@ -7,7 +7,7 @@ Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP respons
 - It injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
 - It evaluates the application's resilience to lossy (or flaky) HTTP responses.
 
-![Pod HTTP Latency](./static/images/pod-http.png)
+![Pod HTTP Latency](./static/images/pod-http-latency.png)
 
 
 ## Usage
@@ -75,12 +75,12 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> container runtime interface for the cluster</td>
-        <td> Defaults to docker, supported values: docker, containerd and crio for litmus and only docker for pumba LIB </td>
+        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to `/var/run/docker.sock` </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -299,8 +299,8 @@ spec:
 
 It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains path of docker socket file by default(`/var/run/docker.sock`). For `containerd`, specify path as `/var/containerd/containerd.sock`. For `crio`, speecify path as `/var/run/crio/crio.sock`.
+- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
+- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
 Use the following example to tune it:
 
@@ -328,10 +328,10 @@ spec:
             # runtime for the container
             # supports docker, containerd, crio
             - name: CONTAINER_RUNTIME
-              value: "docker"
+              value: "containerd"
             # path of the socket file
             - name: SOCKET_PATH
-              value: "/var/run/docker.sock"
+              value: "/run/containerd/containerd.sock"
             # provide the port of the targeted service
             - name: TARGET_SERVICE_PORT
               value: "80"

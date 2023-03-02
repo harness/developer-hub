@@ -6,7 +6,7 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Go,Ko,Cosig
 
 # Build and sign application containers
 
-At the end of this tutorial you will learn how to sign a container image without using a [cosign](https://sigstore.dev).
+At the end of this tutorial you will learn how to sign a container image using [cosign](https://sigstore.dev).
 
 ## Prerequisites
 

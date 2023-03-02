@@ -6,6 +6,7 @@ import { experiments as GcpExperiments } from "./gcp/experiments";
 import { experiments as KubeResilienceExperiments } from "./kube-resilience/experiments";
 import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
+import { experiments as LoadExperiments } from "./load/experiments";
 
 export const categories: FaultCardItem[] = [
   {
@@ -43,5 +44,11 @@ export const categories: FaultCardItem[] = [
     description: <>Ensure application and infrastructure resilience. </>,
     faults: KubeResilienceExperiments.length,
     category: "kube-resilience",
+  },
+  {
+    title: "Load",
+    description: <>Simulate load to determine application resilience. </>,
+    faults: LoadExperiments.length,
+    category: "load",
   },
 ];

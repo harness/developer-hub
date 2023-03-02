@@ -4,7 +4,7 @@ hide_title: true
 title: Administer Harness Platform
 ---
 
-## Administer Harness Platform
+<!-- ## Administer Harness Platform -->
 
 <!-- Custom component -->
 

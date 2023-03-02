@@ -101,7 +101,7 @@ Perform the following steps to create a Perspective:
 :::
 
 4. In **Perspective Builder**, in **Rules for Perspective**, click **+** **Add rule**.
-5. Select one of the follwing:
+5. Select one of the following:
    * Common
    * Cost Categories
    * Cluster
@@ -111,7 +111,7 @@ Perform the following steps to create a Perspective:
    * Region
    * Product
       
-   As you add your resources in the Perspective Builder, a preview of your Perspective is displayed .
+   As you add your resources in the Perspective Builder, a preview of your Perspective is displayed.
 6. Select the operator. See the **Rule-based Engine** section for more information.
 7. Select the value for your filter. You can select multiple values. You can also filter and customize your result using the search option.
    
@@ -120,7 +120,12 @@ Perform the following steps to create a Perspective:
 
 
 :::note
-If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data and you want to view the cluster data as well, then, you have to add a cloud provider filter.
+When you create a new Perspective, data across all cloud service providers and clusters are displayed. If you want to restrict the data to a particular cloud service provider, you must apply a filter in the Cloud Provider field.
+:::
+
+
+:::note
+If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then, you have to add a Cloud Provider filter.
 :::
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:

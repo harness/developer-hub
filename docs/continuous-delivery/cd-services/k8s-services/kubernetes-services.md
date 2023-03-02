@@ -1,6 +1,6 @@
 ---
-title: Harness Kubernetes Services
-description: This topic show you how to define a Kubernetes Service in a CD Pipeline, including its manifests and artifacts.
+title: Harness Kubernetes services
+description: Define a Kubernetes service.
 sidebar_position: 1
 helpdocs_topic_id: 2nx0de3w99
 helpdocs_category_id: wfnd8y0ifs
@@ -379,12 +379,6 @@ The Artifact is added to the Service Definition.
 
 ### Google Artifact Registry
 
-:::note
-
-Currently, this feature is behind the feature flag `NG_GOOGLE_ARTIFACT_REGISTRY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
 For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
@@ -555,12 +549,6 @@ Click **Submit**.
 The Artifact is added to the Service Definition.
 
 ### Github Packages
-
-:::note
-
-Currently, this feature is behind the feature flag `GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You can use Github Packages as artifacts for deployments.
 
@@ -839,9 +827,15 @@ You can use Pipeline, Stage, Service, and Built-in variables in your values YAML
 
 See [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
 
-### Propagate and Override Artifacts, Manifests, and Service Variables
+### Propagate and override artifacts, manifests, and service variables
 
-See [Add and Override Values YAML Files](../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md).
+You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**. 
+
+For more information, go to:
+
+- [Propagating CD services](../cd-services-general/propagate-and-override-cd-services.md)
+- [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
+
 
 ## Next Steps
 

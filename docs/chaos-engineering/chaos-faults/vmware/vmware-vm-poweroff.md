@@ -7,23 +7,18 @@ VMware VM poweroff stops (or powers off) the VMware VMs for a specific duration.
 - After the duration, the VMs are back to original state.
 - It checks the performance of the application running on the VMware VMs.
 
+![VMware VM Poweroff](./static/images/vmware-vm-poweroff.png)
 
-![VMware VM Poweroff](./static/images/vm-poweroff.png)
+## Use cases
 
+- VMware VM poweroff determines the resilience of an application to random power failures. 
+- It determines how efficiently an application recovers and restarts the services.
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault helps determine how resilient an application is to random power failures. It determines how efficiently an application recovers and restarts the services.
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes >= 1.17
-- Vcenter access to stop and start the VM.
-- Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+:::note
+- Kubernetes >= 1.17 is required to execute this fault.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
+- The VM should be in a healthy state before and after injecting chaos.
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -37,18 +32,11 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-
-## Default validations
-The VM should be in a healthy state.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -58,10 +46,10 @@ The VM should be in a healthy state.
       <tr>
         <td> APP_VM_MOIDS </td>
         <td> MOIDs of the VMware instance. After you open the VM in VCenter WebClient, you can find the MOID in the address field (VirtualMachine:vm-5365). Alternatively you can use the CLI to fetch the MOID. </td>
-        <td> For example, <code>vm-5365</code>. </td>
+        <td> For example, <code>vm-5365</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/VMware-vm-power-off#stoppoweroff-the-vm-by-moid"> stop VM based on MOID. </a></td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -71,34 +59,29 @@ The VM should be in a healthy state.
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Defaults to 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
        <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time. </a></td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Stop/Poweroff the VM by MOID
 
-It contains the MOID of the VM instance. You can tune it using the `APP_VM_MOIDS` environment variable.
+It contains the MOID of the VM instance. Tune it by using the `APP_VM_MOIDS` environment variable.
 
 Use the following example to tune it:
 

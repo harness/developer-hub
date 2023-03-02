@@ -10,53 +10,47 @@ Node restart disrupts the state of the node by restarting it.
 ![Node Restart](./static/images/node-restart.png)
 
 
-## Usage
-<details>
-<summary>View the uses of the fault</summary>
-<div>
-This fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod in the event of an unexpected node restart. It simulates loss of critical services (or node-crash). It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes), and whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity(or anti-affinity) policies) or not.
-</div>
-</details>
+## Use cases
+- Node restart fault determines the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod in the event of an unexpected node restart. 
+- It simulates loss of critical services (or node-crash). 
+- It verifies resource budgeting on cluster nodes (whether request(or limit) settings honored on available nodes).
+- It verifies whether topology constraints are adhered to (node selectors, tolerations, zone distribution, affinity or anti-affinity policies) or not.
 
-## Prerequisites
+**Note**
+- Kubernetes > 1.16 is required to execute this fault.
+- Create a Kubernetes secret named `id-rsa` where the fault will be executed. The contents of the secret will be the private SSH key for `SSH_USER` that will be used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. 
+  - Below is a sample secret file:
 
-- Kubernetes > 1.16
-- Create a Kubernetes secret named `id-rsa` where the fault will be executed. The contents of the secret will be the private SSH key for `SSH_USER` that will be used to connect to the node that hosts the target pod in the secret field `ssh-privatekey`. Below is a sample secret file:
+    ```yaml
+    apiVersion: v1
+            kind: Secret
+            metadata:
+              name: id-rsa
+            type: kubernetes.io/ssh-auth
+            stringData:
+              ssh-privatekey: |-
+                # SSH private key for ssh contained here
+    ```
 
-```yaml
-apiVersion: v1
-        kind: Secret
-        metadata:
-          name: id-rsa
-        type: kubernetes.io/ssh-auth
-        stringData:
-          ssh-privatekey: |-
-            # SSH private key for ssh contained here
-```
+    Creating the RSA key pair for remote SSH access for those who are already familiar with an SSH client, has been summarized below.
+            
+    1. Create a new key pair and store the keys in a file named `my-id-rsa-key` and `my-id-rsa-key.pub` for the private and public keys respectively: 
+    ```
+    ssh-keygen -f ~/my-id-rsa-key -t rsa -b 4096
+    ```
+    2. For each available node, run the below command that copies the public key of `my-id-rsa-key`:
+    ```
+    ssh-copy-id -i my-id-rsa-key user@node
+    ```
+            
+    For further details, refer to [this](https://www.ssh.com/ssh/keygen/) documentation. After copying the public key to all nodes and creating the secret, you are all set to execute the fault.
 
-Creating the RSA key pair for remote SSH access for those who are already familiar with an SSH client, has been summarized below.
-        
-1. Create a new key pair and store the keys in a file named `my-id-rsa-key` and `my-id-rsa-key.pub` for the private and public keys respectively: 
-```
-ssh-keygen -f ~/my-id-rsa-key -t rsa -b 4096
-```
-2. For each available node, run the below command that copies the public key of `my-id-rsa-key`:
-```
-ssh-copy-id -i my-id-rsa-key user@node
-```
-        
-For further details, refer to [this](https://www.ssh.com/ssh/keygen/) documentation. After copying the public key to all nodes and creating the secret, you are all set to execute the fault.
-
-
-## Default validations
-
-The target nodes should be in the ready state before and after injecting chaos.
+- The target nodes should be in the ready state before and after injecting chaos.
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -66,15 +60,15 @@ The target nodes should be in the ready state before and after injecting chaos.
       <tr>
         <td> TARGET_NODE </td>
         <td> Name of the target node subject to chaos. If this is not provided, a random node is selected. </td>
-        <td> </td>
+        <td> For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-single-node">target node.</a></td>
       </tr>
       <tr>
         <td> NODE_LABEL </td>
        <td> It contains the node label that is used to filter the target nodes.</td>
-        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence.</td>
+        <td>It is mutually exclusive with the <code>TARGET_NODES</code> environment variable. If both are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">tagret node with labels.</a></td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -84,46 +78,40 @@ The target nodes should be in the ready state before and after injecting chaos.
        <tr>    
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. </td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> SSH_USER </td>
         <td> Name of the SSH user. </td>
-        <td> Defaults to <code>root</code>. </td>
+        <td> Defaults to <code>root</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#ssh-user"> SSH user.</a></td>
       </tr>
       <tr>
         <td> TARGET_NODE_IP </td>
         <td> Internal IP of the target node subject to chaos. If not provided, the fault uses the node IP of the <code>TARGET_NODE</code>. </td>
-        <td> Defaults to empty. </td>
+        <td> Defaults to empty. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#target-node-internal-ip"> target node internal IP.</a></td>
       </tr>
       <tr>
         <td> REBOOT_COMMAND </td>
         <td> Command used to reboot. </td>
-        <td> Defaults to <code>sudo systemctl reboot</code>. </td>
+        <td> Defaults to <code>sudo systemctl reboot</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart/#reboot-command"> reboot command.</a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default to 120s. </td>
+        <td> Default to 120s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
     </table>
-</details>
 
-## Fault examples
+### Reboot command
 
-### Common and Node specific tunables
-Refer the [common attributes](../../common-tunables-for-all-faults) and [Node specific tunable](./common-tunables-for-node-faults) to tune the common tunables for all faults and node specific tunables.
+It specifies the command to restart the target node. Tune it by using the `REBOOT_COMMAND` environment variable.
 
-### Reboot Command
-
-It defines the command used to restart the targeted node. It can be tuned via `REBOOT_COMMAND` ENV.
-
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/node-restart/reboot-command.yaml yaml)
 ```yaml
@@ -151,11 +139,11 @@ spec:
           VALUE: '60'
 ```
 
-### SSH User 
+### SSH user 
 
-It defines the name of the SSH user for the targeted node. It can be tuned via `SSH_USER` ENV.
+It specifies the name of the SSH user for the target node. Tune it by using the `SSH_USER` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/node-restart/ssh-user.yaml yaml)
 ```yaml
@@ -183,11 +171,11 @@ spec:
           VALUE: '60'
 ```
 
-### Target Node Internal IP
+### Target node internal IP
 
-It defines the internal IP of the targeted node. It is an optional field, if internal IP is not provided then it will derive the internal IP of the targeted node. It can be tuned via `TARGET_NODE_IP` ENV.
+It is an optional field that defines the internal IP of the target node. If the internal IP is not provided, the fault derives the internal IP of the target node. Tune it by using the `TARGET_NODE_IP` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/node-restart/target-node-ip.yaml yaml)
 ```yaml
