@@ -274,18 +274,12 @@ The following settings apply to all scanners where the `scan_type` is `configura
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
-### Aqua Trivy
-
-See [Aqua Trivy Scanner Reference](aqua-trivy-scanner-reference.md)
-
-[↑ Scanners](#scanners-target-types-and-scan-approach)
-
-### Image scanning - Amazon ECR
+### Amazon Image Scanning
 
 When `product_name` is set to `aws-ecr`:
 
 * `scan_type` =`container`
-* `policy_type`= `dataLoad`
+* `policy_type`= `dataLoad`, `ingestionOnly`
 * `product_config_name` =`default`
 * `container_project` = The name of the scanned ECR container with the results you want to ingest.
 * `container_tag` = The container tag for the given container project.
@@ -295,6 +289,13 @@ When `product_name` is set to `aws-ecr`:
 * `container_domain` = URI of the ECR container with the scan results you want to load.
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
+
+### Aqua Trivy
+
+See [Aqua Trivy Scanner Reference](aqua-trivy-scanner-reference.md)
+
+[↑ Scanners](#scanners-target-types-and-scan-approach)
+
 
 ### AWS Security Hub
 
