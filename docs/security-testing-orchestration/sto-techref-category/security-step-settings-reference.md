@@ -44,7 +44,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
          	<ul>
         		<li><a href="#bandit">Bandit</a>  Orchestration, Ingestion </li>
          		<li><a href="#brakeman">Brakeman</a> Orchestration, Ingestion </li>
-         		<li><a href="#shiftleft">ShiftLeft</a> Orchestration, Extraction, Ingestion</li>
+         		<li><a href="#qwiet-ai-formerly-shiftleft">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
         	</ul>
         </td>
         <td valign="top">
@@ -659,6 +659,25 @@ When `product_name` is set to `owasp`
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
+### Qwiet AI (formerly ShiftLeft)
+
+When `product_name` is set to `shiftleft`
+
+* `scan_type`
+	+ accepted value(s): `repository`
+* `policy_type`
+	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan` or `dataLoad`
+	+ `product_access_id`
+	+ `product_access_token`
+	+ `product_app_name`
+	+ `product_target_language`
+* `product_config_name`
+	+ Accepted values(s):
+		- `default`
+
+[↑ Scanners](#scanners-target-types-and-scan-approach)
+
 ### Prisma Cloud (formerly Twistlock)
 
 When `product_name` is set to `twistlock`
@@ -734,24 +753,6 @@ When `product_name` is set to `scoutsuite` (aws only)
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
-### ShiftLeft
-
-When `product_name` is set to `shiftleft`
-
-* `scan_type`
-	+ accepted value(s): `repository`
-* `policy_type`
-	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan` or `dataLoad`
-	+ `product_access_id`
-	+ `product_access_token`
-	+ `product_app_name`
-	+ `product_target_language`
-* `product_config_name`
-	+ Accepted values(s):
-		- `default`
-
-[↑ Scanners](#scanners-target-types-and-scan-approach)
 
 ### Sniper
 
