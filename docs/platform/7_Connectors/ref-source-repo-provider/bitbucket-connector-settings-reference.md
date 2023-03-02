@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes settings and permissions for the Bitbucket connector. Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to both versions.
+This topic describes the settings and permissions for the Bitbucket connector. Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to both versions.
 
 <!--Before Harness syncs with your Git repo, it verifies all the connection settings in Harness. If Harness cannot establish a connection, it won't sync with your Git repo.-->
 
@@ -24,7 +24,7 @@ The **Details** settings specify which BitBucket account or repository you want 
 
 ### URL Type
 
-Select **Account** to connect an entire Bitbucket account. This option lets you use one connector to connect to all repos in the specified Bitbucket account. Make sure you have at least one repo in the account; you need a repo to test the connection and save the connector.
+Select **Account** to connect an entire Bitbucket account. This option lets you use one connector to connect to all repositories in the specified Bitbucket account. Make sure you have at least one repo in the account; you need a repo to test the connection and save the connector.
 
 Select **Repository** to connect to a single, specific repo in a Bitbucket account.
 
@@ -34,7 +34,7 @@ Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication.
 
 ### Bitbucket Account/Repository URL
 
-Enter the URL for the Bitbucket account or repository that you want to connect to. The required value is determined by the **URL Type**, **Connection Type**, and your Bitbucket account type (Cloud or Data Center)
+Enter the URL for the Bitbucket account or repository that you want to connect to. The required value is determined by the **URL Type**, **Connection Type**, and your Bitbucket account type (Cloud or Data Center).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="account" label="URL Type: Account" default>
 ```
 
-In the **Bitbucket Account URL** field, provide only the account-identifying portion of the Bitbucket URL, such as `https://bitbucket.org/my-bitbucket`. Do not include a repo name or project name.
+In the **Bitbucket Account URL** field, provide only the account-identifying portion of the Bitbucket URL, such as `https://bitbucket.org/my-bitbucket`. Do not include any repo name or project name.
 
 The URL format depends on the **Connection Type** and your Bitbucket account type (Cloud or Data Center). The following table provides format examples for each combination.
 
@@ -55,11 +55,11 @@ The URL format depends on the **Connection Type** and your Bitbucket account typ
 | HTTP | `https://bitbucket.org/<username>` | `https://bitbucket.<your-org-hostname>/scm` |
 | SSH | `git@bitbucket.org:<username>` | `git@bitbucket.<your-org-hostname>` |
 
-Here is an example of the **Details** for a Bitbucket Cloud account URL in HTTP and SSH format:
+Here is an example of the **Details** settings for a Bitbucket Cloud account URL in HTTP and SSH formats:
 
 ![Bitbucket Account URL field with a Bitbucket Cloud account HTTPS URL](./static/bitbucket-account-http-cloud-url.png)
 
-Here is an example of the **Details** for a Bitbucket Data Center URL in HTTP and SSH format:
+Here is an example of the **Details** settings for a Bitbucket Data Center URL in HTTP and SSH formats:
 
 ![Bitbucket Account URL field with a Bitbucket Data Center HTTPS URL](./static/bitbucket-account-http-onprem-url.png)
 
@@ -92,7 +92,7 @@ Here is an example of the **Details** for a Bitbucket Data Center repository URL
 
 :::tip
 
-There are several different formats possible for Bitbucket Data Center (On-Prem) accounts, such as `bitbucket.myorg.com`, `bitbucket.my.org.com`, and so on. You may also need to use a `<domain-name>:<port>` format for the authority portion of SSH URLs, for example `bitbucket.myorg.com:8080`. This depends on your server and firewall configuration. If the connection test fails, make sure you've used the appropriate URL format.
+There are several different formats possible for Bitbucket Data Center (On-Prem) accounts, such as `bitbucket.myorg.com`, `bitbucket.my.org.com`, and so on. You may also need to use a `<domain-name>:<port>` format for the authority portion of SSH URLs, such as `bitbucket.myorg.com:8080`. This depends on your server and firewall configuration. If the connection test fails, make sure you've used the appropriate URL format.
 
 ![Bitbucket connector Details settings configured to connect to an On-Prep account using an SSH URL with a port number.](./static/bitbucket-connector-settings-reference-ssh-with-port.png)
 
@@ -116,7 +116,7 @@ Provide authentication credentials for the connector.
 
 ### Authentication
 
-The **Authentication** method is determined by the **Connection Type** you chose in the [Details settings](#details-settings).
+The **Connection Type** you chose in the [Details settings](#details-settings) determines the **Authentication** method.
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
@@ -134,7 +134,7 @@ In the **Username** field, enter the Bitbucket account username as specified in 
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
-In the **Password** field, provide a Bitbucket account-level [Access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [App password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness Encrypted Text secrets](../../6_Security/2-add-use-text-secrets.md).
+In the **Password** field, provide a Bitbucket account-level [access token](https://support.atlassian.com/bitbucket-cloud/docs/access-tokens/), [HTTP access token](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html), or [app password](https://support.atlassian.com/bitbucket-cloud/docs/create-an-app-password/). Passwords are stored as [Harness encrypted text secrets](../../6_Security/2-add-use-text-secrets.md).
 
 You must provide an account-level app password or token. Repo-level tokens are not supported.
 
@@ -149,11 +149,11 @@ Bitbucket accounts with two-factor authentication must use access tokens.
 
 The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../6_Security/3-add-file-secrets.md).
 
-For details on creating SSH keys and adding them to your Bitbucket account, go to the Bitbucket documentation to [Configure SSH and two-step verification](https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/).
+For details on creating SSH keys and adding them to your Bitbucket account, go to the Bitbucket documentation about [Configuring SSH and two-step verification](https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/).
 
 :::tip
 
-You use arguments such as `rsa` and `-m PEM` in your `keygen` commands to ensure your key is properly formatted and uses the RSA algorithm, for example this command creates an SSHv2 key:
+Use arguments such as `rsa` and `-m PEM` in your `keygen` commands to ensure your key is properly formatted and uses the RSA algorithm. For example, this command creates an SSHv2 key:
 
 ```
 ssh-keygen -t rsa -m PEM
@@ -182,17 +182,17 @@ You must provide an account-level app password or token. Repo-level tokens are n
 
 :::caution
 
-For **HTTP** Connection Types, use the same password you used earlier, and make sure the **Username** fields are both plaintext or encrypted. You can't use a plain-text username for one field and a secret for the other.
+For **HTTP** Connection Types, use the same password you used earlier, and make sure the **Username** fields are both plain-text or both encrypted. Don't use a plain-text username for one field and a secret for the other.
 
 :::
 
 ## Connectivity Mode settings
 
-Select whether you want Harness to connect directly to your Bitbucket account/repo, or if you want Harness to communicate with your Bitbucket account/repo through a delegate.
+Select whether you want Harness to connect directly to your Bitbucket account or repo, or if you want Harness to communicate with your Bitbucket account or repo through a delegate.
 
 ## Troubleshooting
 
-If the connection test returns a `not authorized` error, make sure you used the **Username** shown in the Bitbucket **Account settings**.
+If the connection test returns a `not authorized` error, make sure you used the **Username** specified in the Bitbucket **Account settings**.
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
