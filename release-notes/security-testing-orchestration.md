@@ -32,10 +32,10 @@ This release does not include new features.
   - Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.    
   - These steps are currently available in Security stages only. 
   - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
-  - For descriptions of all available step-palette settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
+  - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
  
 
-<details><summary>Step palette UI </summary>
+<details><summary>Security step configuration UI </summary>
 
 ![STO step palette](static/sto-step-palette.png)
   
