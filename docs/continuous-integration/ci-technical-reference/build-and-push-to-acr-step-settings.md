@@ -1,18 +1,16 @@
 ---
-title: Build and Push to GCR step settings
-description: This topic provides settings for the Build and Push to GCR step.
-sidebar_position: 40
-helpdocs_topic_id: 66ykcm0sf0
-helpdocs_category_id: 4xo13zdnfx
-helpdocs_is_private: false
-helpdocs_is_published: true
+title: Build and Push to ACR step settings
+description: This topic describes settings for the Build and Push to ACR step.
+sidebar_position: 20
 ---
 
-This topic provides settings for the Build and Push to GCR Step, which builds an image and pushes it to GCR. This step assumes that the target GCR registry meets the GCR requirements for pushing images. For more information, go to the Google documentation on [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling).
+This topic provides settings for the **Build and Push to ACR** step, which builds an image and pushes it to [Azure Container Registry](https://azure.microsoft.com/en-us/free/container-registry/) (ACR).
 
-:::info
+:::note
 
-Depending on the stage's build infrastructure, some settings may be unavailable.
+The **Build and Push to ACR** step is supported on Kubernetes build infrastructures only.
+
+For other build infrastructures, you can use the [Build and Push an image to Docker Registry step](./build-and-push-to-docker-hub-step-settings.md) to push to ACR.
 
 :::
 
@@ -20,23 +18,21 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-## GCP Connector
+## Azure Connector
 
-The Harness GCP connector to use to connect to GCR. The GCP account associated with the GCP connector needs specific roles. For more information, go to [Google Cloud Platform (GCP) connector settings reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
+The Harness Azure Cloud connector to use to connect to your ACR. This step supports Azure Cloud connectors that use access key authentication. This step doesn't support Azure Cloud connectors that inherit delegate credentials.
 
-This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+For more information about Azure connectors, including details about required permissions, go to [Add a Microsoft Azure Cloud Provider connector](../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
 
-## Host
+## Repository
 
-The Google Container Registry hostname. For example, `us.gcr.io` hosts images in data centers in the United States in a separate storage bucket from images hosted by `gcr.io`. For a list of Container Registries, go to the Google documentation on [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling).
+The URL for the target ACR repository where you want to push your artifact. You must use this format: `<container-registry-name>.azurecr.io/<image-name>`.
 
-## Project ID
+## Subscription Id
 
-The [GCP resource manager project ID](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
+Name or ID of an ACR subscription. This field is required for artifacts to appear in the build's **Artifacts** tab.
 
-## Image Name
-
-The name of the image you want to build and push to the target container registry.
+For more information about, go to the Microsoft documentation about [How to manage Azure subscriptions with the Azure CLI](https://learn.microsoft.com/en-us/cli/azure/manage-azure-subscriptions-azure-cli).
 
 ## Tags
 
@@ -46,7 +42,7 @@ Add each tag separately.
 
 :::tip
 
-s are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
+Harness expressions are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
 
 :::
 
@@ -74,17 +70,15 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](./static/build-and-push-to-gcr-step-settings-23.png)
-
 ### Target
 
 The [Docker target build stage](https://docs.docker.com/engine/reference/commandline/build/#target), equivalent to the `--target` flag, such as `build-env`.
 
 ### Remote Cache Image
 
-Enter the name of the remote cache image, such as `gcr.io/project-id/<image>`.
+Enter the name of the remote cache image, such as `<container-registry-name>.azurecr.io/<image-name>`.
 
-The remote cache repository must be in the same account and organization as the build image. For caching to work, the specified image name must exist.
+The remote cache repository must be in the same account and organization as the build image. For caching to work, the entered image name must exist.
 
 Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
@@ -92,7 +86,7 @@ Harness enables remote Docker layer caching where each Docker layer is uploaded 
 
 Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-### Set container resources
+### Set Container Resources
 
 Set maximum resource limits for the resources used by the container at runtime:
 
@@ -112,3 +106,4 @@ You can find the following settings on the **Advanced** tab in the step settings
 
 * [Conditional Execution](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
 * [Failure Strategy](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.
+* [Looping Strategies Overview -- Matrix, Repeat, and Parallelism](../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md): Define a looping strategy for an individual step.

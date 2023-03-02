@@ -33,7 +33,7 @@ Test Intelligence is available for the following codebases:
 
 Make sure you have a CI pipeline with a **Build** stage that is connected to your codebase.
 
-If you haven't created a pipeline before, [Get started with the fasted CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
+If you haven't created a pipeline before, [Get started with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
 
 To add a **Build** stage to an existing pipeline:
 1. Go to the pipeline you want to edit.
