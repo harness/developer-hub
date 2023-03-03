@@ -539,7 +539,7 @@ import StoSettingCliFlags from './shared/_sto-ref-ui-cli-flags.md';
 <!-- ============================================================================= -->
 <a name="fail-on-severity"></a>
 
-#### Fail on severity
+#### Fail on Severity
 
 
 ```mdx-code-block
