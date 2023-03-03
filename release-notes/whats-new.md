@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-02-23T10:00
+date: 2023-03-03T10:00
 sidebar_position: 1
 ---
 
@@ -15,6 +15,17 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 2, 2023
+
+### Security Testing Orchestration
+
+- The Twistlock integration has been upgraded to use version 22.12.582. (STO-5575)
+- The Brakeman, Nikto, and Nmap scanner integrations now enable you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5465)
+- The Bandit scanner integration now enables you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5415)
+- The Mend integration now supports SCA scans. (STO-5242)
+- Bandit scan results have been enhanced. When you open the Details pane for a detected issue, the Raw Details JSON now includes links to further information under `_rawIssueCwe : link` and `_rawMoreInfo`. (STO-5422)
+- 
 
 ## February 23, 2023, version 78507
 
