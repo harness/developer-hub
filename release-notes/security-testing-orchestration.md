@@ -23,7 +23,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - The Bandit scanner integration now enables you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5415)
 - The Mend integration now supports SCA scans. (STO-5242)
 - Bandit scan results have been enhanced. When you open the Details pane for a detected issue, the Raw Details JSON now includes links to further information under `_rawIssueCwe : link` and `_rawMoreInfo`. (STO-5422)
-- 
+
 
 ### Early access features
 

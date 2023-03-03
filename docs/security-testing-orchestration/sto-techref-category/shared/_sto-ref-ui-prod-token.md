@@ -1,3 +1,2 @@
-#### Access Token (`product_access_Token`) 
-
-The access token used to log in to a specific product in the  scanner. This is required for some product suites such as Prisma Cloud. In most cases this is a password or an API key. You should [create a secret](/docs/platform/security/add-file-secrets) with your encrypted ID and reference the secret using the format `<+secrets.getValue(project.access-id>`.  
+The access token used to log in to a specific product in the  scanner. This is required for some product suites such as Prisma Cloud. In most cases this is a password or an API key. 
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue(project.container-access-id>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/security/add-use-text-secrets).
