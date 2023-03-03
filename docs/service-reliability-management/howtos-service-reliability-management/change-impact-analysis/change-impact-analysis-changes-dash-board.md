@@ -1,9 +1,8 @@
 ---
 title: Changes dashboard
-description: Get a quick overview of all the change events.
+description: Get an overview of all change events.
 sidebar_position: 30
 ---
-
 
 The Changes dashboard provides a quick overview of change events from multiple change sources. A change source is a system that generates change events whenever a change is recorded. Change events are grouped in one location, enabling you to see how a certain change affects the rest of the system.
 
@@ -24,24 +23,24 @@ The Changes dashboard is divided into the following sections:
 
 #### Filters
 
-You can customize the Changes dashboard using the following filters:
+You can customize the Changes dashboard by using the following filters:
 
-- **Time Range**: Select the time period for which you want to see the change events. The available filters are **Last 4 hours**, **Last 24 hours**, **Last 3 days**, **Last 7 days**, and **Last month**.
-- **Services**: Select the monitored service for which you want to see the changes. You can select multiple monitored services.
-- **Environments**: Select the environment for which you want to see the changes. You can select multiple environments.
-- **Change Types**: Select the type of change source for which you want to see the changes. The available filters are **Deployment**, **Infrastructure**, **Incidents**, and **Feature Flags**.
-- **Sources**: Select the source for which you want to see the changes. For example, Harness CD NextGen, Harness CD, Kubernetes, PagerDuty, Feature Flags, and so on. You can select multiple change sources.
+- **Time Range**: Select the time period for which you want to see change events. The available filters are **Last 4 hours**, **Last 24 hours**, **Last 3 days**, **Last 7 days**, and **Last month**.
+- **Services**: Select the monitored service for which you want to see changes. You can select multiple monitored services.
+- **Environments**: Select the environment for which you want to see changes. You can select multiple environments.
+- **Change Types**: Select the type of change source for which you want to see changes. The available filters are **Deployment**, **Infrastructure**, **Incidents**, and **Feature Flags**.
+- **Sources**: Select the source for which you want to see changes. For example, Harness CD NextGen, Harness CD, Kubernetes, PagerDuty, and Feature Flags. You can select multiple change sources.
 
 
-#### Changes Timeline
+#### Changes timeline
 
-The Changes Timeline is a graphical representation of all the changes that occurred. The graph displays the information based on the filter settings.  
+The **Changes Timeline** section shows a graphical representation of all the changes that occurred. The graph displays the information based on the filter settings.   
 
 You can hover over a change event icon to see the details.
 
 ![Change event details](./static/change-impact-hover-change-events.png)
 
-To view the change details for a specific time slot, select the time slot on the Changes Timeline. A time window appears with the details of all the changes that occurred in that specific time slot. You can increase or decrease the time slot using the handles.
+To view the change details for a specific time slot, select the time slot on the Changes timeline. A time window appears with the details of all the changes that occurred in that specific time slot. You can change the time slot by using the handles.
 
 ![change event time window](./static/change-impact-change-event-timewindow.png)
 
@@ -62,7 +61,7 @@ The Changes list displays all the change events along with the following details
 ### View change event details
 
 Select a change event to see its details.  
-The change event details screen appears. It has the following details:
+The change event details screen appears. It displays the following details:
 
 - Name of the service, environment, source, and event type.
 - Time and date at which the event was triggered.
