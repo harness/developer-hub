@@ -18,7 +18,12 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### New features
 
-This release does not include new features.
+- The Twistlock integration has been upgraded to use version 22.12.582. (STO-5575)
+- The Brakeman, Nikto, and Nmap scanner integrations now enable you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5465)
+- The Bandit scanner integration now enables you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5415)
+- The Mend integration now supports SCA scans. (STO-5242)
+- Bandit scan results have been enhanced. When you open the Details pane for a detected issue, the Raw Details JSON now includes links to further information under `_rawIssueCwe : link` and `_rawMoreInfo`. (STO-5422)
+- 
 
 ### Early access features
 
@@ -43,6 +48,10 @@ This release does not include new features.
 
 
 - This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/jira-integrations). (STO-5467)
+
+### Fixed issues
+
+- The ShiftLeft integration now uses the latest CLI, which fixes an issue where orchestrated ShiftLeft scans would fail with an error. (STO-4994)
 
 
  			
