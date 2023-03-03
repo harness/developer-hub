@@ -19,6 +19,10 @@ You can connect Harness to ServiceNow using a Harness ServiceNow connector. This
 * Your ServiceNow account should ideally have the `admin` role. If this is not possible, it should have at least the `itil_admin` or `itil` role to create and modify tickets.
 * Your account should also have the `import_admin` or `import_transformer` role to manage import set transform maps. For details, see ServiceNow's [Base System Roles](https://docs.servicenow.com/bundle/newyork-platform-administration/page/administer/roles/reference/r_BaseSystemRoles.html) documentation.
 * Your ServiceNow REST API account must have permission to view tickets.
+* For information on client credentials with certificates, go to the [AD FS OpenID Connect/OAuth flows and Application Scenarios](https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios#second-case-access-token-request-with-a-certificate-1).
+* Harness supports private keys encoded in RSA (in PKCS8 format).
+* Harness supports certificates in X509 format.
+* Permissions granted to this connector in ServiceNow depend on the configuration of the client application group.
 
 ### Add a ServiceNow connector
 
@@ -71,7 +75,7 @@ To use username and password for authentication, do the following:
 ```
   To use AD FS credentials for authentication, do the following:
   
-  1. Select an existing secret or create one that has the resource id of ServiceNow as its value for the **Resource ID** field.
+  1. Select an existing secret or create one that has the resource identifier of ServiceNow configured in ADFS as its value for the **Resource ID** field.
   2. Select an existing secret or create one that has the application (client) id assigned to your application by AD FS for the **Client ID** field.
    
 ```mdx-code-block
@@ -79,9 +83,9 @@ To use username and password for authentication, do the following:
 ```
 
 
-  3. Select an existing encrypted file or create one that has the certificate for the **Certificate** field. Certificates are digital documents that contain a public key and other information about the certificate holder.
-  4. In **Private Key**, create a new secret or choose an existing one that has the AD FS private key as the value.
-  5. In **ADFS URL**, enter the AD FS URL.
+  3. Select an existing encrypted file or create one that has the certificate for the **Certificate** field. This is a `X509` format certificate used for signing JWT tokens by your application.
+  4. In **Private Key**, create a new secret or choose an existing one that has the AD FS private key as the value. This key is the private RSA key corresponding to certificate uploaded in the **Certificate **field.
+  5. In **ADFS URL**, enter the base AD FS URL.
   
 ```mdx-code-block
 <img src={adfs_settings} alt="adfs-settings" height="350" width="600"/>
