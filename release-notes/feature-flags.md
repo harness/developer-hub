@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2023-02-06T10:00
+date: 2023-03-03T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -12,6 +12,27 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 02, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Node.js server SDK has been updated to version 1.2.11 and includes the following updates:
+
+- All three retry strategies no longer fire off their initial retry at the same time. (FFM-7002)
+- The eventsource library now closes correctly if `eventsource.close` is called while it's in a RETRYING state. (FFM-7002)
+- The SDK no longer retries on 40x errors. It now only retries on 50x and I/O errors. (FFM-7002)
+
 
 ## February 24, 2023
 
@@ -27,11 +48,12 @@ This release does not include early access features.
 
 #### Feature Flag SDKs
 
-The Node Server SDK has been updated to version 1.2.10 and includes the following updates:
-- The Node-Server SDK uses the eventsource library. When a 500 response is received from the remote system, the connection seems to close and stop retrying. However, if it receives an unspecified error, for example if the endpoint doesn’t exist or goes down suddenly, or if the remote system closes the connection, then the SDK tries to connect to the /stream endpoint every second, forever. This issue was resolved with the following updates:
-  - The SDK now falls back to polling if the stream disconnects.
-  - The SDK attempts to reconnect on retryable errors using an exponential backoff and retry strategy provided by the Harness fork of eventsource.
-  - A new retry event is emitted so the SDK can log the current retry attempt.
+The Node.js SDK has been updated to version 1.2.10 and includes the following updates:
+- The Node.js SDK uses the eventsource library. **In rare cases**, an issue occurred when a 500 response was received from the remote system, the connection seemed to close and stop retrying. However, if it received an unspecified error, for example if the endpoint doesn’t exist or goes down suddenly, or if the remote system closed the connection, then the SDK tried to connect to the /stream endpoint every second, forever. This issue was resolved with the following updates:
+
+  - The SDK now falls back to polling if the stream disconnects. (FFM-4204)
+  - The SDK attempts to reconnect on retryable errors using an exponential backoff and retry strategy provided by the Harness fork of eventsource. (FFM-4204)
+  - A new retry event is emitted so the SDK can log the current retry attempt. (FFM-4204)
 
 ## February 9, 2023
 
