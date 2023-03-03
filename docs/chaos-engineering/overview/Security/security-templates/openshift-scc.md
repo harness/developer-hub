@@ -39,53 +39,53 @@ By default, applications would run under the <code>restricted</code> SCC. You ca
 [embedmd]:# (https://raw.githubusercontent.com/harness/developer-hub/ed4773f7428e593c93a0cf7aa5a31e6e9c8128f8/docs/chaos-engineering/static/overview/manifest/openshift-scc-policies/litmus-scc.yaml yaml)
 ```yaml
 apiVersion: security.openshift.io/v1
-  kind: SecurityContextConstraints
-  # To mount the socket path directory in helper pod
-  allowHostDirVolumePlugin: true
-  allowHostIPC: false
-  allowHostNetwork: false
-  # To run fault injection on a target container using pid namespace.
-  # It is used in stress, network, dns and http experiments. 
-  allowHostPID: true
-  allowHostPorts: false
-  allowPrivilegeEscalation: true
-  # To run some privileged modules in dns, stress and network chaos
-  allowPrivilegedContainer: true
-  # NET_ADMIN & SYS_ADMIN: used in network chaos experiments to perform
-  # network operations (running tc command in network ns of target container). 
-  # SYS_ADMIN: used in stress chaos experiment to perform cgroup operations.
-  allowedCapabilities:
-  - 'NET_ADMIN'
-  - 'SYS_ADMIN'
-  defaultAddCapabilities: null
-  fsGroup:
-    type: MustRunAs
-  groups: []
-  metadata:
-    name: litmus-scc
-  priority: null
-  readOnlyRootFilesystem: false
-  requiredDropCapabilities: null
-  runAsUser:
-    type: RunAsAny
-  seLinuxContext:
-    type: MustRunAs
-  supplementalGroups:
-    type: RunAsAny
-  users:
-  - system:serviceaccount:litmus:argo
-  volumes:
-  # To allow configmaps mounts on upload scripts or envs.
-  - configMap
-  # To derive the experiment pod name in the experimemnt.
-  - downwardAPI
-  # used for chaos injection like io chaos.
-  - emptyDir
-  - hostPath
-  - persistentVolumeClaim
-  - projected
-  # To authenticate with different cloud providers
-  - secret
+kind: SecurityContextConstraints
+# To mount the socket path directory in helper pod
+allowHostDirVolumePlugin: true
+allowHostIPC: false
+allowHostNetwork: false
+# To run fault injection on a target container using pid namespace.
+# It is used in stress, network, dns and http experiments. 
+allowHostPID: true
+allowHostPorts: false
+allowPrivilegeEscalation: true
+# To run some privileged modules in dns, stress and network chaos
+allowPrivilegedContainer: true
+# NET_ADMIN & SYS_ADMIN: used in network chaos experiments to perform
+# network operations (running tc command in network ns of target container). 
+# SYS_ADMIN: used in stress chaos experiment to perform cgroup operations.
+allowedCapabilities:
+- 'NET_ADMIN'
+- 'SYS_ADMIN'
+defaultAddCapabilities: null
+fsGroup:
+  type: MustRunAs
+groups: []
+metadata:
+  name: litmus-scc
+priority: null
+readOnlyRootFilesystem: false
+requiredDropCapabilities: null
+runAsUser:
+  type: RunAsAny
+seLinuxContext:
+  type: MustRunAs
+supplementalGroups:
+  type: RunAsAny
+users:
+- system:serviceaccount:litmus:argo
+volumes:
+# To allow configmaps mounts on upload scripts or envs.
+- configMap
+# To derive the experiment pod name in the experimemnt.
+- downwardAPI
+# used for chaos injection like io chaos.
+- emptyDir
+- hostPath
+- persistentVolumeClaim
+- projected
+# To authenticate with different cloud providers
+- secret
 ```
 
 Install the SCC:

@@ -151,10 +151,10 @@ You use the `split_tests` CLI command to define the set of tests you want to run
 
 ```
 # Generate a new set of grouped test files and output the file list to a string...  
-/addon/bin/split_tests --glob "**/test_*.py" \  
+FILES=`/addon/bin/split_tests --glob "**/test_*.py" \  
           --split-by file_time \  
           --split-index ${HARNESS_NODE_INDEX} \  
-          --split-total=${HARNESS_NODE_TOTAL}  
+          --split-total=${HARNESS_NODE_TOTAL}` 
 echo $FILES  
 # example output: test_api_2.py test_api_4.py test_api_6.py  
   

@@ -73,7 +73,7 @@ bypass-auth
 ```
 client-service string
 ```
- The URL of the ff client service (default `https://config.ff.harness.io/`).
+ The URL of the ff client service (default `https://config.ff.harness.io/api/1.0`).
 
 
 ```
@@ -121,13 +121,13 @@ redis-password string
 ```
 sdk-base-url string
 ```
- URL for the SDK to connect to (default `https://config.ff.harness.io/`).
+ URL for the SDK to connect to (default `https://config.ff.harness.io/api/1.0`).
 
 
 ```
 sdk-events-url string
 ```
- URL for the SDK to send metrics to (default `https://events.ff.harness.io/`).
+ URL for the SDK to send metrics to (default `https://events.ff.harness.io/api/1.0`).
 
 
 ```
@@ -186,19 +186,19 @@ The following are the required configuration variables to connect to the Feature
 
 ## Configure SDKs to Work With the Relay Proxy
 
-The SDKs do not require any additional configuration to work with the proxy. The only difference is that instead of supplying the Feature Flags URL when starting up an SDK, you should pass the proxy URL.
+The SDKs do not require any additional configuration to work with the proxy. The only difference is that instead of supplying the Feature Flags URL when starting up an SDK, you supply the proxy URL.
 
-For example, if you wanted your SDK to go via QA without the Proxy, you'd give it the following URLs:
+For example, if you wanted your SDK to work without the proxy, you'd give it the following URLs (if using the default URLs):
 
-
-```
-baseURL:   http://config.feature-flags.qa.harness.io/api/1.0
-```
 
 ```
-eventsURL: http://event.feature-flags.qa.harness.io/api/1.0
+baseURL:   https://config.ff.harness.io/api/1.0
 ```
-But if you have a Proxy running locally on localhost:7000 and it’s connected to QA then pass the following URLs to the SDK:
+
+```
+eventsURL: https://events.ff.harness.io/api/1.0
+```
+But if you have the proxy running locally on localhost:7000 and it’s connected to Harness, then pass the following URLs to the SDK:
 
 
 ```

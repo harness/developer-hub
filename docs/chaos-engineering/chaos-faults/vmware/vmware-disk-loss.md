@@ -11,13 +11,13 @@ VMware disk loss detaches the disks that are attached to a Linux OS based VMware
 
 - VMware disk loss determines the resilience of an application to the unplanned scaling of K8s pods.
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - The VM should be in a healthy state before and after injecting chaos.
 - The target disks should be attached to the VM.
 - Execution plane should be connected to vCenter and host vCenter on port 443. 
 - VMware tool should be installed on the target VM with remote execution enabled.
-- Adequate vCenter permissions should be provided to access the hosts and the VMs.
+- Appropriate vCenter permissions should be provided to access the hosts and the VMs.
 - Create a Kubernetes secret that has the Vcenter credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
 ```yaml
@@ -32,6 +32,7 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
+:::
 
 ## Fault tunables
 

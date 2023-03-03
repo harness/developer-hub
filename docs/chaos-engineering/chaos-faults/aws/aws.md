@@ -133,6 +133,40 @@ Here are AWS faults that you can execute and validate.
 
 <FaultDetailsCard category="aws">
 
+### ALB AZ down
+
+ALB AZ down takes down the AZ (Availability Zones) on a target application load balancer for a specific duration. This fault:
+- Restricts access to certain availability zones for a specific duration.
+- Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+
+- ALB AZ down fault breaks the connectivity of an ALB with the given zones and impacts their delivery. 
+- Detaching the AZ from the application load balancer disrupts the application's performance. 
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### CLB AZ down
+
+CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specific duration. This fault:
+- Restricts access to certain availability zones for a specific duration.
+- Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+
+- CLB AZ down fault breaks the connectivity of a CLB with the given zones and impacts their delivery. 
+- Detaching the AZ from the classic load balancer disrupts the dependent application's performance. 
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
 ### EBS loss by ID
 
 EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.
@@ -504,21 +538,6 @@ ECS task stop is an AWS fault that injects chaos to stop the ECS tasks based on 
 <accordion color="green">
     <summary>View fault usage</summary>
 This fault determines the resilience of an application when ECS tasks unexpectedly stop due to task being unavailable.
-</accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
-### ELB AZ down
-
-ELB AZ down takes down the availability zones on a target ELB for a specific duration.
-
-- It restricts access to certain availability zones for a specific duration.
-- It tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
-
-<accordion color="green">
-    <summary>View fault usage</summary>
-This fault breaks the connectivity of an ELB with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
 </accordion>
 </FaultDetailsCard>
 
