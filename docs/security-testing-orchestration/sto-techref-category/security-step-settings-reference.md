@@ -673,8 +673,7 @@ When `product_name` is set to `shiftleft`:
 	+ `product_app_name`
 	+ `product_target_language`
 * `product_config_name`
-	+ Accepted values(s):
-		- `default`
+	+ Accepted values(s): `default`
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
