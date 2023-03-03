@@ -49,7 +49,7 @@ This release does not include early access features.
 #### Feature Flag SDKs
 
 The Node.js SDK has been updated to version 1.2.10 and includes the following updates:
-- The Node.js SDK uses the eventsource library. An issue occurred when a 500 response was received from the remote system, the connection seemed to close and stop retrying. However, if it received an unspecified error, for example if the endpoint doesn’t exist or goes down suddenly, or if the remote system closed the connection, then the SDK tried to connect to the /stream endpoint every second, forever. This issue was resolved with the following updates:
+- The Node.js SDK uses the eventsource library. **In rare cases**, an issue occurred when a 500 response was received from the remote system, the connection seemed to close and stop retrying. However, if it received an unspecified error, for example if the endpoint doesn’t exist or goes down suddenly, or if the remote system closed the connection, then the SDK tried to connect to the /stream endpoint every second, forever. This issue was resolved with the following updates:
 
   - The SDK now falls back to polling if the stream disconnects.
   - The SDK attempts to reconnect on retryable errors using an exponential backoff and retry strategy provided by the Harness fork of eventsource.
