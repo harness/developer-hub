@@ -9,31 +9,23 @@ Pod memory hog is a Kubernetes pod-level chaos fault that consumes memory resour
 ![Pod Memory Hog](./static/images/pod-memory-hog.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 Memory usage within containers is subject to various constraints in Kubernetes. If the limits are specified in their spec, exceeding them results in termination of the container (due to OOMKill of the primary process, often pid 1).
 This restarts container dependng on policy specified. For containers with no limits on memory, node can be killed based on their oom_score. This results in a bigger blast radius. 
 It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills. 
 This fault causes stress within the target container, which may result in the primary process in the container to be constrained or eat up the available system memory on the node.
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes> 1.16.
 
 
-## Default validations
-
-The application pods should be in running state before and after chaos injection.
+:::note
+- Kubernetes> 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -101,12 +93,9 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
 
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+
 
 ### Memory consumption
 

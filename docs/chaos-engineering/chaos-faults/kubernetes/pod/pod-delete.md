@@ -26,10 +26,10 @@ Pod delete is a Kubernetes pod-level chaos fault that causes specific (or random
   - Resource budgeting on cluster nodes (whether request or limit settings are honored on available nodes for successful schedule)
 
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - The application pods are in the running state before and after chaos injection.
-
+:::
 
 ## Fault tunables
 <h3>Optional fields</h3>

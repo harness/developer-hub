@@ -9,31 +9,22 @@ Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU 
 ![Pod CPU Hog Exec](./static/images/pod-cpu-hog-exec.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 Disk pressure or CPU hog affects Kubernetes applications which result in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
 The fault causes CPU stress on the target pod(s). It simulates the situation of lack of CPU for processes running on the application, which degrades their performance. It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, i.e. demand based CPU addition. It helps scalability of nodes based on growth beyond budgeted pods. It verifies the autopilot functionality of (cloud) managed clusters. 
 Injecting a rogue process into a target container starves the main microservice (typically pid 1) of the resources allocated to it (where limits are defined). This slows down the application traffic or exhausts the resources leading to eviction of all pods. These faults helps build immunity to such stress cases.
 It benefits include verifying multi-tenant load issues (when the load increases on one container, it does not cause downtime in other containers). 
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes> 1.16.
 
 
-## Default validations
-
-The application pods should be in running state before and after chaos injection.
-
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -43,7 +34,7 @@ The application pods should be in running state before and after chaos injection
       <tr>
         <td> CPU_CORES </td>
         <td> Number of the CPU cores subjected to CPU stress </td>
-        <td> Default to 1 </td>
+        <td> Defaults to 1 </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
@@ -86,12 +77,9 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
 
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+
 
 ### CPU cores
 
@@ -129,7 +117,7 @@ spec:
 
 ### Chaos inject and kill commands
 
-It defines the `CHAOS_INJECT_COMMAND` and `CHAOS_KILL_COMMAND` environment variables to set the chaos inject and chaos kill commands, respectively.
+It specifies the `CHAOS_INJECT_COMMAND` and `CHAOS_KILL_COMMAND` environment variables to set the chaos inject and chaos kill commands, respectively.
 Default values of commands:
 
 - `CHAOS_INJECT_COMMAND`: "md5sum /dev/zero"

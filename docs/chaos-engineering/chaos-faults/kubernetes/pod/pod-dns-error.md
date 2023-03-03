@@ -9,29 +9,22 @@ Pod DNS error is a Kubernetes pod-level chaos fault that injects chaos to disrup
 ![Pod DNS Error](./static/images/dns-chaos.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 This fault determines the resilience of an application to DNS errors. It determines how quickly an application can resolve the host names and recover from the failure. It simulates unavailability of DNS server (loss of access to any external domain from a given microservice) and malfunctioning of DNS server (loss of access to specific domains from a given microservice, access to cloud provider dependencies, and access to specific third party services).
 
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes> 1.16.
 
 
-## Default validations
 
-The application pods should be in running state before and after chaos injection.
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -89,12 +82,7 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target Host Names
 

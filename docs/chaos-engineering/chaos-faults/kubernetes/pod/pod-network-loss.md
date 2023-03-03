@@ -9,29 +9,21 @@ Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss i
 ![Pod Network Loss](./static/images/pod-network-loss.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 It tests the application's resilience to lossy (or flaky) network. It simulates degraded network with varied percentages of dropped packets between microservices, loss of access to specific third party (or dependent) services (or components), blackhole against traffic to a given AZ (failure simulation of availability zones), and network partitions (split-brain) between peer replicas for a stateful application. 
 
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes> 1.16.
 
 
-## Default validations
 
-The application pods should be in running state before and after chaos injection.
-
+:::note
+- Kubernetes> 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -111,14 +103,8 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
-
-### Network Packet Loss
+### Network packet loss
 
 It defines the network packet loss percentage to be injected in the targeted application. You can tune it using the `NETWORK_PACKET_LOSS_PERCENTAGE` ENV. 
 
@@ -150,7 +136,7 @@ spec:
         - name: TOTAL_CHAOS_DURATION
           value: '60'
 ```
-### Destination IPs And Destination Hosts
+### Destination IPs and destination hosts
 
 The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
 
@@ -189,7 +175,7 @@ spec:
           value: '60'
 ```
 
-### Network Interface
+### Network interface
 
 The defined name of the ethernet interface, which is considered for shaping traffic. You can tune it using the `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
 

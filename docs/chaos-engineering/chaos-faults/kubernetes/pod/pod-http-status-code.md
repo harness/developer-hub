@@ -11,28 +11,20 @@ tip Fault execution flow chart
 ![Pod HTTP Status Code](./static/images/pod-http-status-code.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 It tests the application's resilience to error code HTTP responses from the provided application server. It simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404), unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x). 
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes> 1.16.
 
 
-## Default validations
 
-The application pods should be in running state before and after chaos injection.
-
+:::note
+- Kubernetes> 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -58,7 +50,7 @@ The application pods should be in running state before and after chaos injection
         <td> If true, then the body is replaced by a default template for the status code. Defaults to true </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -136,12 +128,7 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target service port
 

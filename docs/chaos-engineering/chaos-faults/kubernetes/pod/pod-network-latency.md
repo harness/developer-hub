@@ -9,10 +9,8 @@ Pod network latency is a Kubernetes pod-level chaos fault that introduces latenc
 ![Pod Network Latency](./static/images/pod-network-latency.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 The fault degrades the network without the pod being marked as unhealthy (or unworthy) of traffic by kube-proxy (unless there is a liveness probe that measures thw latency and restarts (or crashes) the container). This fault simulates issues within the pod network (or microservice communication) across services in different availability zones(or regions). 
 
 This can be resolved by using middleware that switches traffic based on certain SLOs or performance parameters. 
@@ -21,23 +19,17 @@ Another way is to set up alerts and notifications to highlight a degradation, so
 The applications may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test by specifying the IP addresses. This fault will help to improve the resilience of your services over time.
 
 It simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network). It also simulates jittery connection with transient latency spikes between microservices, slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.  
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes> 1.16.
 
 
-## Default validations
 
-The application pods should be in running state before and after chaos injection.
-
+:::note
+- Kubernetes> 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -120,12 +112,6 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Network latency
 

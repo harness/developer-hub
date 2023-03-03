@@ -3,34 +3,24 @@ id: pod-autoscaler
 title: Pod autoscaler
 ---
 
-Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod.
-- It examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
+Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod. This fault:
+- Examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
 
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault determines how an application accomodates multiple replicas of a given application pod at unexpected point in time.
-</div>
-</details>
+## Use cases
 
-## Prerequisites
+- Pod autoscaler determines how an application accomodates multiple replicas of a given application pod at unexpected times.
 
-- Kubernetes > 1.16.
-
-
-## Default validations
-
-The application pods should be in running state before and after chaos injection.
-
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -43,7 +33,7 @@ The application pods should be in running state before and after chaos injection
         <td> <code>nil</code> </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -52,7 +42,7 @@ The application pods should be in running state before and after chaos injection
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Duration to insert chaos (in seconds).</td>
         <td> Defaults to 60s. </td>
       </tr>
       <tr>
@@ -61,18 +51,12 @@ The application pods should be in running state before and after chaos injection
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Replica counts
 
-It defines the number of replicas that are required to be present in the target application during chaos. You can tune it using the `REPLICA_COUNT` environment variable.
+It specifies the number of replicas that need to be present in the target application during chaos. Tune it by using the `REPLICA_COUNT` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune replica counts:
 
 [embedmd]: # "./static/manifests/pod-autoscaler/replica-count.yaml yaml"
 

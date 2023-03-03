@@ -10,29 +10,20 @@ Pod HTTP latency is a Kubernetes pod-level chaos fault that injects HTTP respons
 ![Pod HTTP Latency](./static/images/pod-http-latency.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 This fault evaluates the application's resilience to lossy (or flaky) HTTP responses. It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
 
-</div>
-</details>
 
-## Prerequisites
-
-- Kubernetes> 1.16.
-
-
-## Default validations
-
-The application pods should be in running state before and after chaos injection.
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+
+  <h3>Mandatory Fields</h3>
     <table>
     <tr>
         <th> Variables </th>
@@ -50,7 +41,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 2000 </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -113,12 +104,6 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target service port
 

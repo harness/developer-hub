@@ -10,28 +10,18 @@ Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos 
 ![Pod HTTP Modify Header](./static/images/pod-http-modify-header.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 This can be used to test service resilience towards incorrect or incomplete headers.
-</div>
-</details>
 
-## Prerequisites
-
-- Kubernetes> 1.16.
-
-
-## Default validations
-
-The application pods should be in running state before and after chaos injection.
-
+:::note
+- Kubernetes> 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -54,7 +44,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to response </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -117,12 +107,7 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target service port
 

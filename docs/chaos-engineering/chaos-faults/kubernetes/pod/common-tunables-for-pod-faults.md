@@ -5,7 +5,7 @@ Fault tunables which are common to all pod-level faults are listed here. These t
 
 ### Target specific pods
 
-It defines the comma-separated name of the target pods subject to chaos. You can tune it using the `TARGET_PODS` environment variable.
+It specifies the comma-separated name of the target pods subject to chaos. Tune it by using the `TARGET_PODS` environment variable.
 
 Use the following example to tune it:
 
@@ -36,7 +36,7 @@ spec:
 
 ### Pod affected percentage
 
-It defines the percentage of pods subject to chaos with matching the labels provided at `.spec.appinfo.applabel` inside the chaosengine. You can tune it using the `PODS_AFFECTED_PERC` environment variable. If `PODS_AFFECTED_PERC` is set to `empty` or `0`, it targets a minimum of one pod.
+It specifies the percentage of pods subject to chaos with matching the labels provided at `.spec.appinfo.applabel` inside the chaosengine. Tune it by using the `PODS_AFFECTED_PERC` environment variable. If `PODS_AFFECTED_PERC` is set to `empty` or `0`, it targets a minimum of one pod.
 
 Use the following example to tune it:
 
@@ -68,7 +68,7 @@ spec:
 
 ### Target specific container
 
-It defines the name of the target container subject to chaos. You can tune it using the `TARGET_CONTAINER` environment variable. If `TARGET_CONTAINER` is set to `empty`, it uses the first container of the target pod.
+It specifies the name of the target container subject to chaos. Tune it by using the `TARGET_CONTAINER` environment variable. If `TARGET_CONTAINER` is set to `empty`, it uses the first container of the target pod.
 
 Use the following example to tune it:
 
@@ -100,7 +100,7 @@ spec:
 
 ### Default application health check
 
-It defines the default application status checks as a tunable. It is helpful in cases where you do not wish to validate the application status as a mandatory check before and after chaos. You can tune it using the `DEFAULT_APP_HEALTH_CHECK` environment variable. If `DEFAULT_APP_HEALTH_CHECK` is not provided, it is set to `true`.
+It specifies the default application status checks. It is helpful in cases where you do not wish to validate the application status as a mandatory check before and after chaos. Tune it by using the `DEFAULT_APP_HEALTH_CHECK` environment variable. If `DEFAULT_APP_HEALTH_CHECK` is not provided, it is set to `true`.
 
 Use the following example to tune it:
 
@@ -130,9 +130,9 @@ spec:
 
 ### Node label filter for selecting the target pods
 
-It defines the target application pod selection from a specific node. It is helpful in cases where you do not wish to select the pods scheduled on specific nodes as chaos candidates considering the pod affected percentage. You can tune it using the `NODE_LABEL` environment variable.
+It specifies the target application pod selection from a specific node. It is helpful in cases where you do not wish to select the pods scheduled on specific nodes as chaos candidates considering the pod affected percentage. Tune it by using the `NODE_LABEL` environment variable.
 
-<b>This feature requires node-level permission or cluster role service account to filter pods on a specific node.</b>
+**Note:** This feature requires node-level permission or cluster role service account to filter pods on a specific node.
 
 <table>
   <tr>
@@ -174,6 +174,7 @@ It defines the target application pod selection from a specific node. It is help
 </table>
 
 Use the following example to tune it:
+
 [embedmd]:# (./static/manifests/common/node-label-filter.yaml yaml)
 ```yaml
 ## node label to filter target pods

@@ -11,29 +11,21 @@ Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on 
 ![Pod HTTP Reset Peer](./static/images/pod-http-reset-peer.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 It can test the application's resilience to lossy/flaky HTTP connection. It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes > 1.16.
 
 
-## Default validations
 
-The application pods should be in running state before and after chaos injection.
-
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -51,7 +43,7 @@ The application pods should be in running state before and after chaos injection
         <td> Defaults to 0 </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -114,16 +106,10 @@ The application pods should be in running state before and after chaos injection
         <td> Default value: parallel. Supported: serial, parallel </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Target service port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
+It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` environment variable.
 
 Use the following example to tune this:
 

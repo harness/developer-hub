@@ -3,27 +3,25 @@ id: disk-fill
 title: Disk fill
 ---
 
-Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by filling the pod's ephemeral storage on a node.
-- It evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
-- It tests the ephemeral storage limits and ensures that the parameters are sufficient.
-- It evaluates the application's resilience to disk stress (or replica) evictions.
+Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by filling the pod's ephemeral storage on a node. This fault:
+- Evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
+- Tests the ephemeral storage limits and ensures that the parameters are sufficient.
+- Evaluates the application's resilience to disk stress (or replica) evictions.
 
 ![Disk Fill](./static/images/disk-fill.png)
 
+## Use cases
+Disk fill:
+- Tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions. 
+- Simulates the filled data mount points.
+- Verifies file system performance, and thin-provisioning support.
+- Verifies space reclamation (UNMAP) capabilities on storage. 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions. It simulates the filled (data) mount points, verifies file system performance, thin-provisioning support, and space reclamation (UNMAP) capabilities on storage. 
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes > 1.16.
-- Adequate Ephemeral storage requests and limits should be set for the application before running the fault. An example specification is shown below:
-    ```yaml
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- The application pods should be in the running before and after injecting chaos.
+- Appropriate Ephemeral storage requests and limits should be set for the application before running the fault. An example specification is shown below:
+```yaml
     apiVersion: v1
     kind: Pod
     metadata:
@@ -47,18 +45,12 @@ This fault tests the ephemeral storage limits and determines the resilience of t
             ephemeral-storage: "2Gi"
           limits:
             ephemeral-storage: "4Gi"
-    ```
-
-
-## Default validations
-
-The application pods should be running before and after injecting chaos.
-
+```
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -68,15 +60,15 @@ The application pods should be running before and after injecting chaos.
       <tr> 
         <td> FILL_PERCENTAGE </td>
         <td> Percentage to fill the ephemeral storage limit. This limit is set in the target pod. </td>
-        <td> It can be set to more than 100, that will force evict the pod.</td>
+        <td> It can be set to more than 100, that will force evict the pod. For more information, go to <a href="">. </a></td>
       </tr>
       <tr>
         <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
         <td> Ephemeral storage required to be filled (in mebibytes). It is mutually exclusive with <code>FILL_PERCENTAGE</code> environment variable. If both are provided, <code>FILL_PERCENTAGE</code> takes precedence.</td>
-        <td> </td>
+        <td> For more information, go to <a href="">. </a></td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -86,59 +78,54 @@ The application pods should be running before and after injecting chaos.
       <tr> 
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to disk fill. </td>
-        <td> If it is not provided, the first container in the target pod will be subject to chaos. </td>
+        <td> If it is not provided, the first container in the target pod will be subject to chaos. For more information, go to <a href="">. </a></td>
       </tr>
       <tr> 
         <td> CONTAINER_PATH </td>
-        <td> Storage location of containers</td>
-        <td> Defaults to '/var/lib/docker/containers' </td>
+        <td> Storage location of containers. </td>
+        <td> Defaults to '/var/lib/docker/containers'. For more information, go to <a href="">. </a></td>
       </tr>
       <tr> 
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (sec) </td>
-        <td> Defaults to 60s </td>
+        <td> Duration to insert chaos (in seconds). </td>
+        <td> Defaults to 60s. For more information, go to <a href="">. </a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to disk fill chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        <td> Comma-separated list of application pod names subject to disk fill chaos. </td>
+        <td> If not provided, the fault selects the target pods randomly based on provided appLabels. For more information, go to <a href="">. </a></td>
       </tr> 
       <tr>
         <td> DATA_BLOCK_SIZE </td>
-        <td> It contains data block size used to fill the disk(in KB)</td>
-        <td> Defaults to 256, it supports unit as KB only</td>
+        <td> Data block size used to fill the disk (in KB). </td>
+        <td> Defaults to 256 KB. For more information, go to <a href="">. </a></td>
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+        <td> Percentage of total pods to target. It takes numeric values. </td>
+        <td> Defaults to 0 (corresponds to 1 replica). For more information, go to <a href="">. </a></td>
       </tr> 
       <tr>
         <td> LIB_IMAGE </td>
-        <td> The image used to fill the disk </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code> </td>
+        <td> Image used to fill the disk. </td>
+        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. For more information, go to <a href="">. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="">. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods. </td>
+        <td> Default value: parallel. Supports serial and parallel. For more information, go to <a href="">. </a></td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables. 
 
 ### Disk fill percentage
 
-It fills the `FILL_PERCENTAGE` parameter of the ephemeral storage limit specified at `resource.limits.ephemeral-storage` within the target application.
+It specifies the percentage of ephemeral storage limit to be filled at `resource.limits.ephemeral-storage` within the target application. Tune it by using the `FILL_PERCENTAGE` environment variable.
 
 Use the following example to tune it:
 
@@ -172,8 +159,8 @@ spec:
 
 ### Disk fill mebibytes
 
-It fills the `EPHEMERAL_STORAGE_MEBIBYTES` parameter of ephemeral storage in the target pod.
-It is mutually exclusive with the `FILL_PERCENTAGE` environment variable. If `FILL_PERCENTAGE` environment variable is set, it uses the percentage for the fill. Otherwise, it fills the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
+It specifies the ephemeral storage required to be filled in the target pod. Tune it by using the `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
+`EPHEMERAL_STORAGE_MEBIBYTES` is mutually exclusive with the `FILL_PERCENTAGE` environment variable. If `FILL_PERCENTAGE` environment variable is set, the fault uses `FILL_PERCENTAGE` for the fill. Otherwise, the dault fills the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
 
 Use the following example to tune it:
 
@@ -208,8 +195,7 @@ spec:
 
 ### Data block size
 
-It defines the size of the data block required to fill the ephemeral storage of the target pod. You can tune it using the `DATA_BLOCK_SIZE` environment variable. It is in terms of `KB`.
-The default value of `DATA_BLOCK_SIZE` is `256`.
+It specifies the size of the data block required to fill the ephemeral storage of the target pod. It is in terms of `KB`. The default value of `DATA_BLOCK_SIZE` is `256` KB. Tune it by using the `DATA_BLOCK_SIZE` environment variable.
 
 Use the following example to tune it:
 
@@ -243,7 +229,7 @@ spec:
 
 ### Container path
 
-It defines the storage location of the containers inside the host (node or VM). You can tune it using the `CONTAINER_PATH` environment variable.
+It specifies the storage location of the containers inside the host (node or VM). Tune it by using the `CONTAINER_PATH` environment variable.
 
 Use the following example to tune it:
 
