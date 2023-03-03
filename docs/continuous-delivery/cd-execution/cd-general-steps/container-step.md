@@ -251,6 +251,13 @@ You can just enter what you would write in `...`.
 
 1. Select or create a Harness connector to connect to the cluster and namespace where you want to run the step.
 
+:::note
+Currently, Harness only support Kubernetes connectors with inherited permissions from a delegate.
+
+A Container step cannot run on a Kubernetes cluster inheriting permissions from a delegate if the cluster itself is a delegate.
+:::
+
+
 ### Namespace
 
 1. Enter the namespace in the cluster where you want to run the step.
