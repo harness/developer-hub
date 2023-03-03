@@ -73,9 +73,12 @@ To use username and password for authentication, do the following:
 </TabItem>
 <TabItem value="adfs" label="ADFS Client Credentials with Certificate">
 ```
-  :::note
+  
+
+:::note
   Currently, this feature is behind the feature flag `CDS_SERVICENOW_ADFS_AUTH`. Contact Harness Support to enable the feature.
-  :::
+
+:::
 
   To use AD FS credentials for authentication, do the following:
   
