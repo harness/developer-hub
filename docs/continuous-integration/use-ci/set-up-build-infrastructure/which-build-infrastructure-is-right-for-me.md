@@ -62,6 +62,6 @@ The following table shows which operating systems and architectures that each bu
 | -  | - | - | - | - |
 | Linux | amd64 | ✅ Supported | ✅ Supported | ✅ Supported |
 | Linux | arm64 | ✅ Supported | ✅ Supported | ✅ Supported |
-| macOS | arm64 | ✅ Supported | ✅ Supported | ❌ Not supported |
+| macOS | arm64 (M1) | ✅ Supported | ✅ Supported | ❌ Not supported |
 | Windows | amd64 | ✅ Supported | ✅ Supported | ✅ Supported |
 | Windows | arm64 | ❌ Not supported | ❌ Not supported | ❌ Not supported |
