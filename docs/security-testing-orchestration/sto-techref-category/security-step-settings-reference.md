@@ -44,7 +44,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
          	<ul>
         		<li><a href="#bandit">Bandit</a>  Orchestration, Ingestion </li>
          		<li><a href="#brakeman">Brakeman</a> Orchestration, Ingestion </li>
-         		<li><a href="#shiftleft">ShiftLeft</a> Orchestration, Extraction, Ingestion</li>
+         		<li><a href="#qwiet-ai-formerly-shiftleft">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
         	</ul>
         </td>
         <td valign="top">
@@ -114,7 +114,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="#image-scanning---amazon-ecr">Amazon ECR</a> Extraction </li>
+          		<li><a href="#image-scanning---amazon-ecr">Amazon Image Scanning</a> Extraction </li>
           		<li><a href="#black-duck-open-hub">Black Duck Open Hub</a> Orchestration, Ingestion</li>
           		<li><a href="#docker-content-trust-dct">Docker Content Trust (DCT</a> Orchestration, Ingestion</li>
           		<li><a href="#docker-content-trust-clair">Docker Content Trust (clair)</a> Orchestration, Ingestion </li>
@@ -274,18 +274,12 @@ The following settings apply to all scanners where the `scan_type` is `configura
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
-### Aqua Trivy
-
-See [Aqua Trivy Scanner Reference](aqua-trivy-scanner-reference.md)
-
-[↑ Scanners](#scanners-target-types-and-scan-approach)
-
-### Image scanning - Amazon ECR
+### Amazon Image Scanning
 
 When `product_name` is set to `aws-ecr`:
 
 * `scan_type` =`container`
-* `policy_type`= `dataLoad`
+* `policy_type`= `dataLoad`, `ingestionOnly`
 * `product_config_name` =`default`
 * `container_project` = The name of the scanned ECR container with the results you want to ingest.
 * `container_tag` = The container tag for the given container project.
@@ -295,6 +289,13 @@ When `product_name` is set to `aws-ecr`:
 * `container_domain` = URI of the ECR container with the scan results you want to load.
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
+
+### Aqua Trivy
+
+See [Aqua Trivy Scanner Reference](aqua-trivy-scanner-reference.md)
+
+[↑ Scanners](#scanners-target-types-and-scan-approach)
+
 
 ### AWS Security Hub
 
@@ -658,6 +659,24 @@ When `product_name` is set to `owasp`
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
+### Qwiet AI (formerly ShiftLeft)
+
+When `product_name` is set to `shiftleft`:
+
+* `scan_type`
+	+ accepted value(s): `repository`
+* `policy_type`
+	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan` or `dataLoad`:
+	+ `product_access_id`
+	+ `product_access_token`
+	+ `product_app_name`
+	+ `product_target_language`
+* `product_config_name`
+	+ Accepted values(s): `default`
+
+[↑ Scanners](#scanners-target-types-and-scan-approach)
+
 ### Prisma Cloud (formerly Twistlock)
 
 When `product_name` is set to `twistlock`
@@ -733,24 +752,6 @@ When `product_name` is set to `scoutsuite` (aws only)
 
 [↑ Scanners](#scanners-target-types-and-scan-approach)
 
-### ShiftLeft
-
-When `product_name` is set to `shiftleft`
-
-* `scan_type`
-	+ accepted value(s): `repository`
-* `policy_type`
-	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan` or `dataLoad`
-	+ `product_access_id`
-	+ `product_access_token`
-	+ `product_app_name`
-	+ `product_target_language`
-* `product_config_name`
-	+ Accepted values(s):
-		- `default`
-
-[↑ Scanners](#scanners-target-types-and-scan-approach)
 
 ### Sniper
 
