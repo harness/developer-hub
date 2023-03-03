@@ -74,19 +74,22 @@ This topic shows you how to add a Custome Secret Manager in the Project scope.
 The Custom Secret Manager settings appear.
 4. Enter a **Name** for your Custom Secret Manager. Click **Continue**.
 5. Click **Select Template**. The Template Library appears with all the [Secret Manager Templates](../13_Templates/create-a-secret-manager-template.md) listed.
-6. Select the desired scope and select a Secret Manager Template from the Template Library.![](./static/custom-secret-manager-35.png)
-You can also search for a specific Secret Manager Template by entering its name in **Search**.
-7. Once you select the Secret Manager Template, the details are displayed in the Template Studio.  
-Click **Use Template**.
-	1. Enter values for the required Input Variables.  
-	Harness allows you to use [Fixed Values and Runtime Inputs](../20_References/runtime-inputs.md).
+6. Select the desired scope and select a Secret Manager Template from the Template Library.
+   
+   ![](./static/custom-secret-manager-35.png)
+
+  You can also search for a specific Secret Manager Template by entering its name in **Search**.
+  Once you select the Secret Manager Template, the details are displayed in the Template Studio.  
+7. Click **Use Template**.
+8. Enter values for the required Input Variables.  
+   Harness allows you to use [Fixed Values and Runtime Inputs](../20_References/runtime-inputs.md).
 	
 	![](./static/custom-secret-manager-36.png)
 
-	Click **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
-8. Click **Continue**.
-9. In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
-10. In **Connection** **Test**, click **Finish** after your connection is successful**.**
+9. Click **Fixed** to make the variable values fixed. Harness won't ask you these values when you create Secrets.
+10. Click **Continue**.
+11. In **Delegates** **Setup**, enter [**Selectors**](../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Save and Continue**.
+12. In **Connection** **Test**, click **Finish** after your connection is successful**.**
 
 ### Step 3: Use the Custom Secret Manager
 

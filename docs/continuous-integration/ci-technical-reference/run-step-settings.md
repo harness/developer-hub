@@ -1,6 +1,6 @@
 ---
-title: CI Run Step Settings
-description: This topic provides settings and permissions for the Harness CI Run step. The Build stage Run step can be used to run scripts in your CI stages. The Run step pulls in a Docker image, such as a Docker…
+title: CI Run step settings
+description: This topic provides settings and permissions for the Harness CI Run step.
 sidebar_position: 50
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
@@ -8,158 +8,170 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Harness CI Run step.
+This topic provides settings and permissions for the Harness CI Run step. In a **Build** stage, the **Run** step can be used to run scripts in your CI pipeline. The **Run** step pulls in a Docker image, such as a Docker image for Maven, and then runs a script with the tool, such as `mvn clean install`. You can use any Docker image from any public or private Docker registry.
 
-The Build stage **Run** step can be used to run scripts in your CI stages.
+:::info
 
-The **Run** step pulls in a Docker image, such as a Docker image for Maven, and then runs a script with the tool, like `mvn clean install`. Note that you may use any Docker image from any public or private Docker registry.
+Depending on the stage's build infrastructure, some settings may be unavailable.
 
-### Name
+:::
 
-The unique name for this step.
+## Name
 
-### ID
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
+## Description
 
-### Description
+Optional text string describing the step's purpose.
 
-Text string.
+## Container Registry
 
-### Container Registry
+A Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
 
-The Harness Connector for a container registry. This is the container registry for the image Harness will use to run build commands on, such as DockerHub.
+## Image
 
-### Image
+The FQN (fully-qualified name) of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`.
 
-The FQN (fully-qualified name) of the Docker image to use when running build commands. For example: `us.gcr.io/playground-123/quickstart-image`.
+The image name should include the tag. If you don't include a tag, Harness uses the latest tag.
 
-The image name should include the tag and will default to the latest tag if unspecified. You can use any Docker image from any D registry, including Docker images from private registries.
+You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
-Different container registries require different name formats:
+* **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported.
+* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `us.gcr.io/playground-123/quickstart-image:latest`.
 
-* **Docker Registry:** enter the name of the artifact you want to deploy, such as **library/tomcat**. Wildcards are not supported.
-* **GCR:** enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos need to reference a path, for example: **us.gcr.io/playground-123/quickstart-image:latest**.
+   ![](./static/run-step-settings-03.png)
 
-![](./static/run-step-settings-03.png)
+* **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
 
-* **ECR:** enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos need to reference a path, for example: **40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2**.
+## Shell
 
-### Commands
+Select the shell script type. If a Run step includes commands that aren't supported for the selected shell type, the build fails.
 
-[POSIX](https://www.grymoire.com/Unix/Sh.html) shell script executed inside the container. In the Shell setting, you can select **Bash** or **Shell**.
+You can run PowerShell Core (`pwsh`) commands in pods or containers that have `pwsh` installed. You can run PowerShell commands on Windows VMs running in AWS build farms.
 
-The script is invoked as if it were the container’s entry point.
+## Command
 
-### Optional Configuration
+[POSIX](https://www.grymoire.com/Unix/Sh.html) shell script executed inside the container.
 
-Configure the following options to add additional configuration for the step.
+The script is invoked as if it were the container's entry point.
 
-#### Privileged
+:::tip
 
-Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
+You can reference services started in [Background steps](./background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
-#### Report Paths
+![The Background step ID, pythonscript, is used in a curl command in a Run step.](./static/background-step-settings-call-id-in-other-step.png)
 
-The path to the file(s) that store test results in the JUnit XML format. You can enter multiple paths. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+:::
 
-This variable must be set for the Run step to publish test results.
+## Optional Configuration
 
-#### Environment Variables
+Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
-Environment variables may be injected into the container and used in the script in **Command**. When using these environment variables, make sure to enter a **Name** and **Value** for each variable.
+### Privileged
 
-You may also reference environment variables in the script by their name. For example, in Bash, this would be ( `$var_name` or `${var_name}`). In Windows PowerShell, the reference would be (`$Env:varName`).
+Enable this option to run the container with escalated privileges. This is equivalent to running a container with the Docker `--privileged` flag.
 
-For **Value**, you may enter [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md). For example, you can set **Value** as an expression and reference the value of some other setting in the stage or pipeline.
+### Report Paths
+
+The path to the file(s) that store test results in the JUnit XML format. You can add multiple paths. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+
+This setting is required for the Run step to be able to publish test results.
+
+### Environment Variables
+
+You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
+
+You can reference environment variables in the **Command** script by their name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
+
+Variable values can be [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
 
 ![](./static/run-step-settings-04.png)
 
-See [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
+For more information, go to [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
 
-#### Output Variables
+### Output Variables
 
-Output variables expose environment variables for use by other steps/stages of the pipeline. You may reference the output variable of a step using the step ID and the name of the variable in output variables.
+Output variables expose environment variables for use by other steps/stages in a pipeline. You can reference the output variable of a step using the step ID and the name of the variable in output variables.
 
-Let's look at a simple example.
+<details>
+<summary>Output variables example</summary>
+This example exports an output variable as a step's environment variable. It is then called in a later step.
 
-In the **Command** in a step, export a new variable using the following syntax:
+1. In the **Command** field, include the following syntax to export a new variable:
 
+   ```
+   export myVar=varValue
+   ```
 
-```
-export myVar=varValue
-```
-In the **Output Variables**, list the exported variable name:
+2. In the **Output Variables**, list the exported variable name:
 
-![](./static/run-step-settings-05.png)
+   ![](./static/run-step-settings-05.png)
 
-In a later **Run** step, in **Command**, reference the output variable:
+3. In a later **Run** step in the same stage of the same pipeline, reference the output variable in that step's **Command** field:
 
-```
-echo <+steps.S1.output.outputVariables.myVar>
-```
+   ```
+   echo <+steps.S1.output.outputVariables.myVar>
+   ```
+
 Here is how the S1 step's output variable is referenced:
 
 ![](./static/run-step-settings-06.png)
 
-The syntax for referencing output variables between steps in the same stage looks similar to the example below.
-
-`<+[stepID].output.outputVariables.[varName]>`
-
-The syntax for referencing output variables between steps in different stages looks similar to the example below.
-
-`<+stages.[stageID].execution.steps.[stepID].output.outputVariables.[varName]>`
-
 The subsequent build job fails when exit 0 is present along with output variables.
+</details>
 
-##### Accessing Environment Variables Between Stages
+<details>
+<summary>Output variable syntax</summary>
+To reference output variables between steps in the same stage, use the following syntax:
 
-If you would like to access environment variables between stages, use an expression similar to the example listed below.
+```
+<+steps.[stepID].output.outputVariables.[varName]>
+```
 
-`<+pipeline.stages.<stage name>.spec.execution.steps.<step name>.output.outputVariables.variablename>`
+To reference output variables across stages, there are several syntax options, as follows:
 
-You may also output the step variable to the stage/pipeline variable as they are available through the pipeline. For example, output the variable to `BUILD_NUM` and reference it later like the example shown below.
+```
+<+stages.[stageID].execution.steps.[stepID].output.outputVariables.[varName]>
 
-`<+pipeline.stages.[stage Id].variables.BUILD_NUM>`
+<+pipeline.stages.[stage name].spec.execution.steps.[step name].output.outputVariables.[varName]>
+```
 
-Environment variables may also be accessed when selecting the auto-suggest/ auto-complete feature in the Harness UI.
+You can also access environment variables through the auto-suggest/ auto-complete feature in the Harness UI.
+</details>
 
-#### Image Pull Policy
+<details>
+<summary>Export output variables to stage or pipeline variables</summary>
+You can also export step output variables to stage/pipeline environment variables, because they are available through the pipeline.
+
+For example, if a step exported an output variable called `BUILD_NUM`, you could use the following syntax to reference this variable later in the pipeline:
+
+```
+<+pipeline.stages.[stage Id].variables.BUILD_NUM>
+```
+</details>
+
+### Image Pull Policy
 
 Select an option to set the pull policy for the image.
 
-* **Always**: the kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
-* **If Not Present**: the image is pulled only if it is not already present locally.
-* **Never**: the image is assumed to exist locally. No attempt is made to pull the image.
+* **Always**: The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
+* **If Not Present**: The image is pulled only if it is not already present locally.
+* **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
-#### Shell
+### Run as User
 
-Select the shell script. If a Run Step includes commands that aren’t supported for the selected shell type, the build will fail.
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-You can run PowerShell Core (`pwsh`) commands in pods or containers that have `pwsh` installed. You can run PowerShell commands on Windows VMs running in AWS build farms.
+### Set Container Resources
 
-#### Run as User
+Maximum resources limits for the resources used by the container at runtime:
 
-Set the value to specify the user ID for all processes in the pod, running in containers. For more information about how to set the value, see [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+* **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-#### Set container resources
+### Timeout
 
-The maximum resources limit values for the resources used by the container at runtime.
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-##### Limit Memory
-
-The maximum memory that the container can use. You may express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You may also use the power-of-two equivalents `Gi` and `Mi`.
-
-##### Limit CPU
-
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed; you can specify one hundred millicpu as `0.1` or `100m`. For more information, see [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
-
-##### Timeout
-
-The timeout for the step. Once the timeout is reached, the step fails, and the pipeline execution continues.
-
-### See Also
-
-* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
+* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

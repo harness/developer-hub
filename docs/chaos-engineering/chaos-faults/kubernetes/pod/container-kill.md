@@ -75,7 +75,7 @@ Container kill is a Kubernetes pod-level chaos fault that causes container failu
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path to the <code>containerd/crio/docker</code> socket file. </td>
-        <td> Defaults to <code>/var/run/docker.sock</code>. For more information, go to <a href="">. </a></td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code>. </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
@@ -121,8 +121,8 @@ spec:
 
 It specifies the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variable that help set the container runtime and socket file path, respectively.
 
-- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `docker`.
-- `SOCKET_PATH`: It contains the path of the docker socket file by default(`/var/run/docker.sock`). For `containerd`, specify path as `/var/containerd/containerd.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
+- `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
+- `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
 [embedmd]: # "./static/manifests/container-kill/container-runtime-and-socket-path.yaml yaml"
 
@@ -148,10 +148,10 @@ spec:
             # runtime for the container
             # supports docker, containerd, crio
             - name: CONTAINER_RUNTIME
-              value: "docker"
+              value: "containerd"
             # path of the socket file
             - name: SOCKET_PATH
-              value: "/var/run/docker.sock"
+              value: "/run/containerd/containerd.sock"
             - name: TOTAL_CHAOS_DURATION
               VALUE: "60"
 ```

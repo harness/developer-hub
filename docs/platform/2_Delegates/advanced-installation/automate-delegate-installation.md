@@ -41,35 +41,39 @@ spec:
       harness.io/app: harness-delegate  
 ...
 ```
+
 In this example, the `spec` section of the harness-kubernetes.yaml file was changed to provide two replica pods. High availability is provided without automation.
 
-For the Kubernetes delegate, you only need one delegate in the cluster. Simply increase the number of replicas, and nothing else. Do not add another delegate to the cluster in an attempt to achieve HA.If you want to install Kubernetes delegates in separate clusters, do not use the same harness-kubernetes.yaml and name for both delegates. Download a new Kubernetes YAML `spec` from Harness for each delegate you want to install. This avoids name conflicts.In every case, the delegates must be identical in terms of permissions, keys, connectivity, and so on.With two or more delegates running in the same target environment, high availability is provided by default. The failure of a single delegate does not stop Harness from performing deployments. You can also increase availability further by running three delegates in case you lose two, and so on.
+A Kubernetes cluster requires only one delegate. To create high availability in the cluster, you can increase the number of delegate replica pods. Do not add another delegate to the cluster. 
+
+If you want to install Kubernetes delegates in separate clusters, do not use the same harness-kubernetes.yaml and name for both delegates. Download a new Kubernetes YAML `spec` from Harness for each delegate you want to install. This prevents name conflicts. 
+
+In every case, the delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, high availability is provided by default. The failure of a single delegate does not stop Harness from performing deployments. For greater availability, increase the number of replica pods to run three delegates in case you lose two, and so on.
+
 
 ### Limitations
 
-* Two delegates in different locations with different connectivity do not support high availability. For example, if you have a delegate in a development environment and another in a production environment, the development delegate does not communicate with the production delegate. The reverse is also true. If the sole delegate in an environment stops running, Harness ceases operation.
+* Two delegates in different locations do not support high availability. For example, if you have one delegate in a development environment and another in a production environment, the development delegate does not communicate with the production delegate. The reverse is also true. If the one delegate deployed to an environment stops running, Harness ceases operation in that environment.
 
-### Step 1: Duplicate the delegate config file
+### Step 1: Duplicate the delegate configuration file
 
-These steps assume you have already installed and registered a Delegate. Duplicate the configuration file for a delegate you have installed and registered with your Harness account.
+Duplicate the configuration file for a delegate that is installed and registered with your Harness account.
 
 Ensure that the delegate environment variables are set correctly.
 
-The delegate configuration file contains environment variables for account, Organization, and Project. The account variable is always set with your Harness account Id.
+The delegate configuration file contains environment variables for account, organization, and project. The account variable is set to your Harness account ID.
 
 If your delegate is registered at the account level, the Organization and Project variables will be empty. If your delegate is registered at the Organization level, the Project variable will be empty.
 
-If your delegate configuration file uses other environment variables, review them to make certain that you want them duplicated.
+Before you duplicate the file, review the list of environment variables in the delegate `spec` to ensure they are appropriate for the second delegate. For further information, see [Delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/).
 
-The Delegate Environment Variables are described in the relevant Delegate installation topics.
+### Step 2: Rename the new delegate
 
-### Step 2: Rename the New Delegate
+The process that is used to rename a delegate depends on its type. 
 
-The process you use to rename a delegate depends on its type. For a Docker delegate,  you can change the name on the command line. For a Kubernetes delegate, you must change multiple instances of the name.
+#### Rename the Kubernetes delegate 
 
-#### Kubernetes delegate renaming
-
-In the Kubernetes delegate config file, several labels must be updated:
+To change the name of a Kubernetes delegate, modify the following fields:
 
 * `Secret.metadata.name`
 * `Deployment.metadata.labels.harness.io/name`
@@ -82,8 +86,7 @@ In the Kubernetes delegate config file, several labels must be updated:
 * `CronJob.metadata.labels.harness.io/name`
 * `CronJob.metadata.name`
 
-The `DELEGATE_NAME` environment variable looks like this:
-
+The `DELEGATE_NAME` environment variable is specified as a YAML list item:
 
 ```
 ...  
@@ -91,16 +94,17 @@ The `DELEGATE_NAME` environment variable looks like this:
           value: string  
 ...
 ```
-#### Docker delegate renaming
 
-To rename the Docker delegate, simply rename the value for the `DELEGATE_NAME` environment variable.
+#### Rename the Docker delegate 
 
+To change the name of a Docker delegate, set the `DELEGATE_NAME` environment variable to the new name:
 
 ```
 ...  
-    - DELEGATE_NAME=my-new-delegate  
+    - DELEGATE_NAME = my-new-delegate  
 ...
 ```
+
 ### Step 3: Install the new delegate
 
 After you update the delegate names, you can apply the configuration file. The delegate installs and registers with Harness.

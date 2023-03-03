@@ -381,6 +381,8 @@ Harness uses **Metadata only** when downloading artifact sources.
 
 For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Dockerhub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
 
+The maximum number of artifact images tags fetched by Harness that is 10000.
+
 The following table lists Harness integrations and their artifact source support:
 
 |                    |                |         |         |         |                 |             |            |                              |                              |             |            |

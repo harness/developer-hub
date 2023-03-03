@@ -16,6 +16,43 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### February 23, 2023, version 78507
+
+#### What's new
+
+- Upgrades have been made to the following libraries:
+
+  - The Spring Data MongoDB package has been upgraded to version 3.4.7.
+  - Spring Data Commons has been upgraded to version 2.77.
+  - The MongoDB Java Driver has been upgraded to version 4.6.1. (PL-30730)
+
+#### Early access
+
+This release does not include any early access feature.
+
+#### Fixed issues
+
+This release does not include any fixed issue.
+
+
+### February 15, 2023, version 78421
+
+#### What's new
+
+- LDAP throws a null pointer exception if more than one user is returned for a given base DN and search query. (PL-31106)
+
+  A code enhancement has fixed this and an appropriate error message is displayed.
+
+#### Early access
+
+No early access features are available in this release.
+
+#### Fixed issues
+
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+
 ### February 6, 2023, version 78321
 
 #### What's new
@@ -65,8 +102,8 @@ Delegate version: 78101
 
   **What is the impact on customers?**
     - Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
-    - The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/).
-
+    - The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. 
+	
 #### Early access
 
 - Support for AWS S3 as a Terraform script file source for the Terraform Provision and Apply steps. (CDS-2970)
@@ -487,9 +524,9 @@ See [Exclude Applications](../firstgen-platform/security/access-management-howto
 
 ### August 31, 2022, version 76518
 
-#### Enhancements
+#### New features and enhancements
 
-N/A
+This release does not include new features.
 
 #### Fixed Issues for CD
 

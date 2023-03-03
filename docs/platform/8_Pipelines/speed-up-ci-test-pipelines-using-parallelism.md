@@ -86,7 +86,7 @@ The following steps describe the high-level workflow for setting up parallelism 
 1. Enable parallelism and specify the number of jobs you want to in parallel. Go to [Define the parallelism strategy](#define-parallelism-strategy).
 2. Define the following environment variables in the stage where you run your parallelism strategy:
 	* `HARNESS_NODE_TOTAL` = `<+strategy.iterations>` — The total number of iterations in the current Stage or Step.
-	* `HARNESS_NODE_INDEX` = `<+strategy.iterations>` — The index of the current test run. This index is in the range of `0` to `parallelism``- 1`.. This snippet shows how you can define and use these variables in the YAML editor:
+	* `HARNESS_NODE_INDEX` = `<+strategy.iteration>` — The index of the current test run. This index is in the range of `0` to `parallelism``- 1`.. This snippet shows how you can define and use these variables in the YAML editor:
 ```
 - step:     
      ....  
@@ -151,10 +151,10 @@ You use the `split_tests` CLI command to define the set of tests you want to run
 
 ```
 # Generate a new set of grouped test files and output the file list to a string...  
-/addon/bin/split_tests --glob "**/test_*.py" \  
+FILES=`/addon/bin/split_tests --glob "**/test_*.py" \  
           --split-by file_time \  
           --split-index ${HARNESS_NODE_INDEX} \  
-          --split-total=${HARNESS_NODE_TOTAL}  
+          --split-total=${HARNESS_NODE_TOTAL}` 
 echo $FILES  
 # example output: test_api_2.py test_api_4.py test_api_6.py  
   

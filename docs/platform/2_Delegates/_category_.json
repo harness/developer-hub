@@ -1,6 +1,5 @@
 {
     "label": "Delegates",
-    "position": 20,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
@@ -10,6 +9,7 @@
     },
     "customProps": {
         "helpdocs_category_id": "seizygxv7b",
-        "helpdocs_parent_category_id": "9i5thr0ot2"
+        "helpdocs_parent_category_id": "9i5thr0ot2",
+        "position": "To position the category, enter a number and move this to the root level."
     }
 }

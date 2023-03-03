@@ -2,6 +2,20 @@ import { ExperimentDetails } from "@site/src/components/ChaosEngineering/Experim
 
 export const experiments: ExperimentDetails[] = [
   {
+    name: "ALB AZ down",
+    description:
+      "ALB AZ down takes down the AZ (Availability Zones) on a target application load balancer for a specific duration.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "CLB AZ down",
+    description:
+      "CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specific duration.",
+    tags: [],
+    category: "aws",
+  },
+  {
     name: "EBS loss by ID",
     description:
       "EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.",
@@ -166,13 +180,6 @@ export const experiments: ExperimentDetails[] = [
     name: "ECS task stop",
     description:
       "ECS task stop injects chaos to stop the ECS tasks based on the services or task replica ID and checks the task availability.",
-    tags: [],
-    category: "aws",
-  },
-  {
-    name: "ELB AZ down",
-    description:
-      "ELB AZ down takes down the availability zones on a target ELB for a specific duration. ",
     tags: [],
     category: "aws",
   },
