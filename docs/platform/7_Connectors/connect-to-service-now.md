@@ -21,7 +21,7 @@ You can connect Harness to ServiceNow using a Harness ServiceNow connector. This
 * Your ServiceNow REST API account must have permission to view tickets.
 * For information on client credentials with certificates, go to the [AD FS OpenID Connect/OAuth flows and Application Scenarios](https://learn.microsoft.com/en-us/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios#second-case-access-token-request-with-a-certificate-1).
 * Harness supports private keys encoded in RSA (in PKCS8 format).
-* Harness supports certificates in X509 format.
+* Harness supports certificates in `X509` format.
 * Permissions granted to this connector in ServiceNow depend on the configuration of the client application group.
 
 ### Add a ServiceNow connector
