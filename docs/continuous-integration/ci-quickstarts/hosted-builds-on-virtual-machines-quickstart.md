@@ -82,11 +82,11 @@ Here are some important notes about this YAML example:
 
 ## Platforms and image specifications
 
-Harness Cloud offers the following operating systems and architectures. For more information about image configuration and pre-installed software, download the image specifications README files:
+Harness Cloud offers the following operating systems and architectures. Refer to the image specifications for more information about image components and preinstalled software:
 
-* Linux amd64 and arm64 ([Linux image specifications README.md](static/Ubuntu2204-Readme.md))
-* macOS arm64 (M1) ([macOS image specifications README.md](static/macos-12-Readme.md))
-* Windows amd64 ([Windows image specifications README.md](static/Windows2022-Readme.md))
+* Linux amd64 and arm64 ([Linux image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Ubuntu2204-Readme.md))
+* macOS arm64 (M1) ([macOS image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md))
+* Windows amd64 ([Windows image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md))
 
 :::note
 
