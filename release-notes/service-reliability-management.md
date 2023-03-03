@@ -1,6 +1,6 @@
 ---
 title: Service Reliability Management
-date: 2023-02-06T10:00
+date: 2023-02-23T10:00
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -12,6 +12,10 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## February 23, 2023, version 78507
+
+This release does not include new features, early access features, and fixed issues.
 
 ## February 15, 2023, version 78421
 

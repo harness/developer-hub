@@ -1,9 +1,0 @@
-{
-    "position": "10",
-    "label": "Kubernetes delegates", 
-    "collapsible": "true", 
-    "collapsed": "true", 
-    "className": "red", 
-    "link": {"type": "generated-index", "title": "Kubernetes delegates"}, 
-    "customProps": {"helpdocs_category_id": "uimq4rlif9", "helpdocs_parent_category_id":"seizygxv7b"}
-}

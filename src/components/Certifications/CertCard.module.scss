@@ -1,0 +1,108 @@
+
+.certCard{
+    border-radius: 8px;
+    // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+    box-shadow: 0px 1px 3px rgb(40 41 61 / 16%), 0px 0px 2px rgb(40 41 61 / 16%);
+    padding: 32px 32px 56px 32px;
+    // margin: 0 2.75% 30px 0;
+    width: 31.5%;
+    // width: 440px;
+    font-family: 'Inter';
+    border: 3px solid transparent;
+    position: relative;
+    &:hover {
+        text-decoration: none;
+    }
+    .moduleLine{
+        display: flex;
+        justify-content: space-between;
+        span {
+            color: var(--gray-700);
+        }
+        h6{
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 13px;
+            /* identical to box height, or 108% */
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: #6B6D85;
+            display: flex;
+            align-items: center;
+            img{
+                width: 24px;
+                margin-right: 8px;
+            }
+        }
+    }
+    h4{
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 32px;
+        color: #0B0B0D;
+        &:hover {
+            color: var(--primary);
+        }
+    }
+    p{
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 28px;
+        /* or 175% */
+        /* Light/Text/Primary */
+        color: #0B0B0D;
+    }
+    .productVersion {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 13px;
+        /* identical to box height, or 108% */
+        /* Light/Text/Tertiary */
+        color: #6B6D85;
+        position: absolute;
+        bottom: 32px;
+    }
+}
+.ci:hover, .cd:hover, .ff:hover, .ccm:hover, .srm:hover, .sto:hover, .ce:hover, .platform:hover {
+    border: 3px solid;
+    border-image-slice: 1;
+    border-width: 3px;
+}
+.cd:hover{
+    border-image-source: linear-gradient(to left, rgba(98, 249, 31, 1), rgba(69, 189, 53, 1));
+}
+.ci:hover{
+    border-image-source: linear-gradient(to left, rgba(115, 223, 231, 1), rgba(0, 149, 247, 1));
+}
+.ff:hover{
+    border-image-source: linear-gradient(to left, rgba(255, 193, 0, 1), rgba(230, 107, 53, 1));
+}
+.ccm:hover{
+    border-image-source: linear-gradient(to left, rgba(0, 207, 222, 1), rgba(5, 166, 96, 1));
+}
+.srm:hover{
+    border-image-source: linear-gradient(to left, rgba(190, 161, 255, 1), rgba(138, 54, 255, 1));
+}
+.sto:hover{
+    border-image-source: linear-gradient(to left, rgba(71, 145, 255, 1), rgba(46, 28, 243, 1));
+}
+.ce:hover{
+    border-image-source: linear-gradient(to left, rgba(255, 111, 171, 1), rgba(206, 0, 86, 1));
+}
+.platform:hover{
+    border-image-source: linear-gradient(to left, var(--primary-5), var(--primary-7));
+}
+
+@media screen and (max-width: 1130px) {
+// @media screen and (max-width: 768px) {
+    .certCard{
+        width: 48.5%;
+    }
+}
+
+@media screen and (max-width: 512px) {
+    /* for mobile */
+    .certCard{
+        width: unset;
+    }
+}

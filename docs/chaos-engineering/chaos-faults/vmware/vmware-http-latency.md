@@ -14,9 +14,9 @@ VMware HTTP latency injects HTTP response latency into the service of a specific
 - It determines how the system recovers or fetches the responses when there is a delay in accessing the service. - It simulates latency to specific API services for (or from) a given microservice. 
 - It also simulates a slow response on specific third party (or dependent) components (or services). 
 
-**Note**
+:::note
 - Kubernetes >= 1.17 is required to execute this fault.
-- Adequate vCenter permissions should be provided to start and stop the VMs.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 
@@ -32,6 +32,7 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
+:::
 
 ## Fault tunables
 

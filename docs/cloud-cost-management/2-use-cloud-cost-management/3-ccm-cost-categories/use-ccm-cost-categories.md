@@ -21,6 +21,8 @@ Apart from viewing costs based purely on different data sources (AWS, GCP, Clust
 
 If there are items that don't belong to any of these cost categories, the cost associated is displayed as unallocated costs.
 
+You can include Cost Categories while creating visualizations in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](/docs/platform/18_Dashboards/create-dashboards.md).
+
 ### Prerequisites and Permissions
 
 To use Cost Categories, your Harness User account must belong to a User Group with the following Role permissions:

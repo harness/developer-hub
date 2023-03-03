@@ -48,7 +48,7 @@ In a Kubernetes build infrastructure, all steps run in containers. In an AWS bui
 
 ### Name
 
-The unique name for this step.
+Enter a name summarizing the step's purpose.
 
 ### Id
 
