@@ -667,7 +667,7 @@ When `product_name` is set to `shiftleft`:
 	+ accepted value(s): `repository`
 * `policy_type`
 	+ accepted value(s): `orchestratedScan`, `dataLoad`, `ingestionOnly`
-* When `policy_type` is set to `orchestratedScan` or `dataLoad`
+* When `policy_type` is set to `orchestratedScan` or `dataLoad`:
 	+ `product_access_id`
 	+ `product_access_token`
 	+ `product_app_name`
