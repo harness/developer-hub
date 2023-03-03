@@ -661,7 +661,7 @@ When `product_name` is set to `owasp`
 
 ### Qwiet AI (formerly ShiftLeft)
 
-When `product_name` is set to `shiftleft`
+When `product_name` is set to `shiftleft`:
 
 * `scan_type`
 	+ accepted value(s): `repository`
