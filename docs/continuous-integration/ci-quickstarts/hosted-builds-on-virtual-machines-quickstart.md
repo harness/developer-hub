@@ -35,7 +35,7 @@ The steps in each stage execute on the stage's dedicated VM. This allows the sta
 
 The following YAML shows a pipeline with one CI stage that contains a __Run__ step executing an `echo` command. The `platform` property defines the target machine where the stage is executed:
 
-```
+```yaml
  pipeline:
   projectIdentifier: Docs
   orgIdentifier: default
@@ -79,3 +79,17 @@ Here are some important notes about this YAML example:
 * `type: Cloud`: Found in the stage's `runtime` specification, `Cloud` indicates that this stage runs on Harness-hosted infrastructure.
 * `connectorRef: my_dockerhub`: In a step's `spec` section, this optional connector reference identifies a Docker connector that contains Docker credentials and is used to pull the image from Docker for a specific step.
 * `image: alpine`: In a step's `spec` section, you have the option to specify an image to use for that step. If unspecified, the step runs on the stage's host machine.
+
+## Platforms and image specifications
+
+Harness Cloud offers the following operating systems and architectures. For more information about image configuration and pre-installed software, download the image specifications README files:
+
+* Linux amd64 and arm64 (Linux image specifications README.md)
+* macOS arm64 (M1) (macOS image specifications README.md)
+* Windows amd64 (Windows image specifications README.md)
+
+:::note
+
+Currently, Windows and macOS options for Harness Cloud are behind feature flags. If these options are not available when configuring your pipeline's build infrastructure, contact [Harness Support](mailto:support@harness.io) to enable the feature flags.
+
+:::
