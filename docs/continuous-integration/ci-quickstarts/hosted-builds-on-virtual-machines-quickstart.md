@@ -18,10 +18,11 @@ Harness Cloud provides the following advantages:
 * Starter pipelines for different programming languages.
 * Blazing fast builds.
 * Hosted runners to run builds on Linux, macOS, or Windows.
+* Get new features first. New features are enabled for Harness Cloud build infrastructure before rolling out to other build infrastructure options.
 
 [Sign up now](https://harness.io/products/continuous-integration) to get started.
 
-For a comparison of build infrastructure options, go to [Which build infrastructure is right for me?](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md)
+You can also use your own Kubernetes, VM, or local runner build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me?](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md)
 
 ## What happens when pipelines run on Harness Cloud?
 
@@ -152,7 +153,7 @@ If there are multiple versions of a tool installed, you can specify the version 
 
 ## Build private repos with Harness Cloud
 
-You can use Harness Cloud build infrastructure with private repositories. If your codebase is behind a firewall, you must whitelist the following IPs in your firewall:
+You can use Harness Cloud build infrastructure with private repositories. If your codebase or Docker registry are not publicly accessible, you must whitelist the following IPs in your firewall:
 
 ```
 35.247.122.103
