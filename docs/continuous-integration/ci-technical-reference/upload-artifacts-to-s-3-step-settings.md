@@ -66,9 +66,7 @@ The name of the S3 bucket name where you want to upload the artifact.
 
 ## Source Path
 
-Path to the artifact files that you want to upload.
-
-You can use standard [glob expressions](https://en.wikipedia.org/wiki/Glob_(programming)) to upload multiple files. For example, `src/js/**/*.js` uploads all Javascript files in matching directories, such as `src/js/subfolder-1/`, `src/js/subfolder-2`, and so on.
+Path to the artifact file/folter that you want to upload. Harness creates the compressed file automatically.
 
 ## Optional Configuration
 

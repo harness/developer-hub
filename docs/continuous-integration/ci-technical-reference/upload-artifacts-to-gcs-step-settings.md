@@ -30,7 +30,7 @@ The GCS destination bucket name.
 
 ## Source Path
 
-Path to the artifact file/folder you want to upload. You can use glob expressions to upload multiple files. For example, `src/js/**/*.js` uploads all Javascript files in `src/js/subfolder-1/`, `src/js/subfolder-2`, and so on. Harness creates the compressed file automatically.
+Path to the artifact file/folder you want to upload. Harness creates the compressed file automatically.
 
 ## Optional Configuration
 
