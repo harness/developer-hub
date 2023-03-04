@@ -60,6 +60,12 @@ The entry point takes precedence over any commands in the **Command** field.
 
 [POSIX](https://www.grymoire.com/Unix/Sh.html) shell script commands (beyond the entry point) executed inside the container.
 
+:::tip
+
+You can use `docker-compose up` to start multiple services in one Background step.
+
+:::
+
 ## Additional Configuration
 
 Use these optional settings to add additional configuration to the step. Settings considered optional depend on the stage's **Infrastructure** settings. Not all options are available for all build infrastructure types.
