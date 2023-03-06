@@ -982,7 +982,7 @@ The description of the environment.
 
 #### <+env.type>
 
-The environment type, such as production or non-production.
+The environment type, such as `Production` or `PreProduction`.
 
 The available values are:
 - `PreProduction`
