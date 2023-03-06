@@ -115,5 +115,5 @@ Harness tests the connection.
 
 Click **Finish**.
 
-The ServiceNow Connector is listed in Connectors.
+The ServiceNow connector is listed in Connectors.
 
