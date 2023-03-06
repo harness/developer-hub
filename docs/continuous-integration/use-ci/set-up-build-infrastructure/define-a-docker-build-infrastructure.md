@@ -33,8 +33,8 @@ docker run --cpus=1 --memory=2g --net=host \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
   -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306 \
-  -e DELEGATE_TAGS="linux-amd64"
+  -e DELEGATE_TAGS="linux-amd64" \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
 ```
 
 Make sure to create the delegate at the appropriate scope, such as the project level or account level.
