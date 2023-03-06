@@ -76,7 +76,7 @@ To use a username and password for authentication, do the following:
   
 
 :::note
-  Currently, this feature is behind the feature flag `CDS_SERVICENOW_ADFS_AUTH`. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flag `CDS_SERVICENOW_ADFS_AUTH`. Contact Harness Support to enable the feature.
 
 :::
 
