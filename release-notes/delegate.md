@@ -26,7 +26,7 @@ This move further enhances security because the secrets manager configuration no
  
 ### Early access
 
-This release does not include any early access feature.
+This release does not include any early access features.
 
 ### Fixed issues
 
