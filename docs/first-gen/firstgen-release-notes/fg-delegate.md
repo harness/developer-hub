@@ -10,8 +10,31 @@ To identify the cluster that hosts your account, open Harness FirstGen and go to
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
-## February 23, 2023, version 78507
-### Delegate version 78500
+## March 7, 2023, Harness version 786xx, Harness Delegate version 78500
+
+Harness FirstGen release 786xx includes the following feature changes and fixes for the Harness Delegate.
+
+### What's new
+
+- The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
+
+  This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
+  
+- Harness Delegate task collections were migrated to a new database. (DEL-5831) 
+
+  This migration is controlled through a configuration flag. For a period of time after the migration, any newly created tasks will have an ID with a **- DEL** suffix.
+
+### Early access 
+
+This release does not include any new early access features. 
+
+### Fixed issues
+
+API output includes a new field called **Disconnected**, which determines if a delegate is connected. (DEL-5995)
+
+The **Disconnected** field is set to **true** if no heartbeat communications occur between the delegate and the Harness Manager for five minutes. 
+
+## February 23, 2023, Harness version 78507, Harness Delegate version 78500
 
 Harness FirstGen release 78507 includes the following feature changes and fixes for Harness Delegate.
 
@@ -23,8 +46,7 @@ Harness FirstGen release 78507 includes the following feature changes and fixes 
 
 This release does not include fixed issues for Harness Delegate.
 
-## February 15, 2023, version 78421
-### Delegate version 78306
+## February 15, 2023, Harness version 78421, Harness Delegate version 78306
 
 Harness FirstGen release 78421 includes the following feature changes and fixes for Harness Delegate.
 
@@ -32,8 +54,7 @@ Harness FirstGen release 78421 includes the following feature changes and fixes 
 
 - The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a data transfer object (DTO) that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
 
-## February 6, 2023, version 78321
-### Delegate version 78306
+## February 6, 2023, Harness version 78321, Harness Delegate version 78306
 
 Harness FirstGen release 78321 includes the following feature changes and fixes for Harness Delegate.
 
@@ -77,8 +98,7 @@ This release includes the following fixes.
 - Changed delegate behavior to ensure that the tasks assigned to a delegate fail if the delegate does not send heartbeats for a period of three minutes. (DEL-5821)
 
 
-## January 17, 2023, version 78215
-### Delegate version 78101
+## January 17, 2023, Harness version 78215, Harness Delegate version 78101
 
 Harness FirstGen release 78215 includes no changed features or fixes for Harness Delegate.
 
