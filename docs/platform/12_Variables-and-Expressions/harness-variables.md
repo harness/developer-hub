@@ -988,7 +988,7 @@ The available values are:
 - `PreProduction`
 - `Production`
 
-You can evaluate it with JEXL expressions in the **Conditional Execution** Settings:
+You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
 
 ```
 <+env.type> != "Production"
