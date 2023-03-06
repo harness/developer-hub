@@ -13,6 +13,101 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 7, 2023, version 786xx
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+- The Jira connector now supports Personal Access Token (PAT) authentication. (CDS-53849)
+
+  This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
+
+  As an alternative to username and password authentication, you can now use [Jira PAT authentication](https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html) in a Harness Jira Connector.
+
+### Fixed issues
+
+- The **Default Settings** category is selected when a user selects the **GitOps** category. (CDS-53975)
+
+  The **Default Settings** and **Gitops** categories should not both be selected when the **Gitops** category is selected.
+  
+  The UI is now fixed so that only the **GitOps** category is selected.
+- Users are unable to fetch Google Artifact Registry (GAR) artifacts with package names that use `/`.	(CDS-53908)
+  
+  We now support GAR artifact sources that use package names containing `/`.
+- The [HTTP step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines/) isn't sending the request body.	(CDS-53792, ZD-40378)
+  
+  When the HTTP request body contained unresolved expressions (both invalid expressions and runtime inputs), the HTTP step was not sending the request body.
+  The HTTP step now supports sending unresolved Harness expressions in the request body.
+- Empty Kubernetes [values YAML](https://developer.harness.io/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files/) file paths are displayed. (CDS-53623)
+  
+  When you add a Kubernetes manifest you have the option to add a values YAML file. In cases where users did not add a values YAML file, the Harness UI was showing an empty path. 
+  
+  Now, if there are empty values for values YAML **File Path**, these values YAML settings are omitted from the service UI.
+- The **Manual Intervention** tab was not displayed for the ServiceNow Create or Update steps. (CDS-53467, ZD-38687)
+  
+  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/create-service-now-tickets-in-cd-stages/) or [Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-service-now-tickets-in-cd-stages) step is not met. 
+  
+  The **Manual Intervention** tab was not visible, but this has been fixed and the tab now displays during pipeline execution.
+
+  ![Manual Intervention tab](static/aaff20d556d48292426c819a4e8542f31f202204a10fbf6c1b6b9fe4f8447831.png)  
+- The error message for unsupported connector types in the Kubernetes **Infrastructure Definition** was not clear. (CDS-53458)
+
+  The **Infrastructure Definition** in Kubernetes deployments must use a connector that supports Kubernetes. 
+  
+  When a user selected an incorrect Harness connector type, the error message was not clear why.
+
+  Now the error message has been improved.
+
+  ![incorrect Harness connector type message](static/f1c6d8873ddc32da338ba1f86ea630338a8567cfc41b37eda9a519945313cc84.png)  
+ 
+- The environment's **Service Overrides** were not operating additively. (CDS-53373)
+  
+  You can override specific service settings using the [Service Overrides settings](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
+
+  ![Service Overrides settings](static/88805f0c3a1feca13b5437edbd6c7574e8f540a6e9ffe07f760a450546c93c41.png)
+
+  For values YAML files, the override operation is additive. If the **Service Overrides** settings contain values YAML settings that are not in the service, then they are added to the service values YAML file.
+  
+  The override was not operating additively. It was completely overriding the service settings. This has been fixed. The override operation is now performing additively.
+
+  :::note
+  
+  Config files are a black box that can contain multiple formats and content, such as YAML, JSON, plain text, etc. Consequently, they cannot be overridden like Values YAML files. Variables cannot be partially overridden either. They are completely replaced.
+  
+  :::
+- The HTTP response codes and body details were not being displayed in the [HTTP step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines/) execution. (CDS-53363)
+  
+  When an HTTP step was executed with authentication or authorization errors, the HTTP response codes (401, 403) were not displayed in the execution details.
+  
+  Now the HTTP response codes for authentication or authorization errors are displayed.
+- The [deployment freeze](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-freeze/) time range validation was throwing a 500 error. (CDS-53359)
+
+  Time range validation was performed only when the status of freeze window was enabled. This was causing an error because disabled freeze windows were allowed invalid duration settings.
+  
+  Now Harness validates for both enabled and disabled freeze windows.
+- A reused [webhook trigger](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/) identifier results in a reused last activation time. (CDS-53107)
+  
+  When a webhook trigger is deleted and then a new trigger is created with same identifier, the last activation time displayed for the new trigger is incorrect.
+  
+  The trigger event history for the first trigger was not deleted. This resulted in showing the stale information when a new trigger with the same identifier was used.
+  
+  Now, once a trigger delete succeeds, the event history for the trigger is deleted as well. This cleans up all the information related to the deleted trigger.
+- Empty string inputs in triggers were treated as objects.(CDS-53078)
+  
+  Empty string inputs caused errors when a runtime input was expecting an object.
+  
+  Now Harness allows empty strings in this case. This applies to inputs in services, environments, service overrides, and infrastructures.
+- Kubernetes API calls were ignoring the proxy username and password. (CDS-48646)
+  
+  You can access Kubernetes in proxy mode by providing the location and credentials directly to the HTTP client.
+  
+  Harness was not handling the proxy use case.
+  
+  Now Harness handles the use case by adding the username and password to the HTTP client.
+
 ## February 23, 2023, version 78507
 
 ### What's new
