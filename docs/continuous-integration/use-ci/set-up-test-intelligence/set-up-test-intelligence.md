@@ -200,11 +200,22 @@ Select **Expand graph** to view the Test Intelligence Visualization, which shows
 
 ## Enable parallelism for Test Intelligence
 
-Similar to how you [Speed up CI pipelines using parallelism](../../../platform/8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md), you can enable parallelism in your Run Tests steps to further reduce the time required for you tests to run.
+Similar to how you [speed up CI pipelines using parallelism](../../../platform/8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md), you can enable parallelism in your Run Tests steps to further reduce the time required for you tests to run.
 
 With parallelism alone, you specify how you want Harness to divide the work for a step or stage. When you use parallelism with Test Intelligence, Harness divides the work after test selection. This means that your Run Tests step is expedited by both test selection and parallelism.
 
-For example, if you use `split_tests` to [Define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting), you have to include arguments and commands to handle test splitting and selection. You also do not get the benefit of test selection from Test Intelligence, so the Run step runs every test every time. If you use parallelism with a Run Tests step, you get the benefit of test selection reducing the total volume of work to perform, in addition to parallelism splitting the work into concurrent workloads.
+By comparison, if you use `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting), you have to include arguments and commands to handle test splitting and selection. You also do not get the benefit of test selection from Test Intelligence, so the Run step runs every test every time. If you use parallelism with a Run Tests step, you get the benefit of test selection reducing the total volume of work to perform, in addition to parallelism splitting the work implicitly into concurrent workloads.
+
+<details>
+<summary>Example: Parallelism comparison</summary>
+
+Suppose you have a pipeline that runs 100 tests, and each test takes about one second to run. Here's how TI and parallelism can reduce your test times:
+
+* By default, without TI or parallelism, all 100 tests run in sequence, taking 100 seconds.
+* With TI, test selection reduces the number of tests based on the detected changes. Supposing only 20 out of the 100 tests are required, the build with TI runs 20 tests in sequence, taking 20 seconds. This reduces test run time by 80%.
+* With TI and parallelism, the selected tests are divided into a number of workloads. Supposing a maximum of four workloads and 20 selected tests, the 20 tests are split into four concurrently-running groups. It takes only five seconds to run the tests, reducing test run time by 95% compared to the default.
+
+</details>
 
 To enable parallelism for Test Intelligence, you must set a parallelism `strategy` on either the Run Tests step or the stage where you have the Run Tests step, and you must add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`.
 
