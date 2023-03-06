@@ -51,8 +51,8 @@ The following steps illustrate how to restrict access to a Resource Group:
       ![](./static/manage-role-bindings.png)
 
 
-In Harness, the **Perspectives** page shows only the folders that the user has been granted access to. This means that the user will not be able to see or interact with any folders that they do not have permission to access.
+In Harness, the **Perspectives** page shows only the folders that the user has been granted access to. This means that the user cannot see or interact with any folders that they do not have permission to access.
 
 When it comes to creating Budgets for Perspectives, a user can only do so within the folders that they have been granted access to.
 
-A user with restrictions to folders does not have permission to create new folders. This means that the user will only be able to work within the existing folder structure that has been set up for them by an administrator.
+A user with restrictions to folders does not have permission to create new folders. This means that the user can work only within the existing folder structure that has been set up for them by an administrator.
