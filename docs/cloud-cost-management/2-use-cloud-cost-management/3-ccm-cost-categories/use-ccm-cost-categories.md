@@ -106,11 +106,11 @@ Unallocated Costs are costs that do not match the Cost Categories in the Perspec
 In **Manage Unallocated Costs**, you can choose to show or ignore unallocated costs, and choose a name for how those costs are displayed.
 
 ## Use Cost Categories
-You can use Cost categories in both Perspectives and Dashboards. When you create or modify a cost category, the changes are immediately reflected in Perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
+You can use cost categories in both Perspectives and Dashboards. When you create or modify a cost category, the changes are immediately reflected in Perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
 
 ### Use Cost Categories in Perspectives
 
-Cost Categories can be used in Perspectives in the following ways.
+Cost categories can be used in Perspectives in the following ways.
 
 #### Group By
 
