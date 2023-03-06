@@ -32,7 +32,7 @@ With the local runner, which is also known as the Docker runner, you can run bui
 
 This option is recommended for small, limited-scale builds, such as one-off builds on your local machine.
 
-Self-hosted local build infrastructure is available with all CI plans. To learn more, go to [Use local runner build infrastructure](./define-a-docker-build-infrastructure.md).
+Self-hosted local build infrastructure is available with all CI plans. To learn more, go to [Set up a local runner build infrastructure](./define-a-docker-build-infrastructure.md).
 
 ```mdx-code-block
   </TabItem>
@@ -49,7 +49,7 @@ Executing builds in a Kubernetes cluster is useful when you want to run ephemera
 
 When running builds in a Kubernetes cluster, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
-To learn more about using a Kubernetes cluster as build infrastructure, go to [Define a Kubernetes cluster build infrastructure](./set-up-a-kubernetes-cluster-build-infrastructure.md).
+To learn more about using a Kubernetes cluster as build infrastructure, go to [Set up a Kubernetes cluster build infrastructure](./set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 ```mdx-code-block
   </TabItem>

@@ -1,5 +1,5 @@
 ---
-title: Define a macOS Build Infrastructure and Anka Registry
+title: Set up a macOS VM build infrastructure with Anka Registry
 description: Set up a Harness macOS build farm that uses an Anka registry and controller.
 sidebar_position: 40
 ---

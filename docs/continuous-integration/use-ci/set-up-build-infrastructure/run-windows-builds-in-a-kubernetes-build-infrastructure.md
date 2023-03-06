@@ -1,5 +1,5 @@
 ---
-title: Run Windows Builds in a Kubernetes Build Infrastructure
+title: Run Windows builds in a Kubernetes build infrastructure
 description: You can run Windows builds in your Kubernetes build infrastructure.
 
 sidebar_position: 80
