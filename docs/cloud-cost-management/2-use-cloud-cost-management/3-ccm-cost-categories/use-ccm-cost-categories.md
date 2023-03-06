@@ -148,7 +148,7 @@ You can include cost categories while creating visualizations in your custom das
 
 * When you create a new cost category or make changes to an existing one, it may take up to 24 hours for the changes to be reflected in the dashboard data.
 * If you are using AWS or Azure, cost categories are applied to data fetched from the current month onwards through CUR and Billing Exports. It is not applied to historical data. On the other hand, if you are using GCP, the cost category is applied to data that is equal to or more recent than the last three days' data.
-* When you delete a cost category, the deleted category remains visible in the dashboard until the end of the month, as it is applied to data for the ongoing month. For instance, if you delete a cost category on January 24th, the category will remain visible in the dashboard until the end of January 31st.
+* When you delete a cost category, the deleted category remains visible in the dashboard until the end of the month, as it is applied to data for the ongoing month. For instance, if you delete a cost category on January 24th, the category is visible in the dashboard until the end of January 31st.
 
 :::note
 In AWS, you cannot apply cost categories if you have selected any of the following fields in the explore:
