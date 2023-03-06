@@ -23,6 +23,15 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - The Bandit scanner integration now enables you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5415)
 - The Mend integration now supports SCA scans. (STO-5242)
 - Bandit scan results have been enhanced. When you open the Details pane for a detected issue, the Raw Details JSON now includes links to further information under `_rawIssueCwe : link` and `_rawMoreInfo`. (STO-5422)
+- The Security Testing Dashboard includes a new set of filters for drilling down into specific issues by project, creation date, scanner, target, pipeline, severity, and so on. You can drill down to a set of relevant issues and then click on a pie slice, chart element, or other UI element to view details on the relevant issues. (STO-5329)
+  
+  Note the following:
+
+  - The Security Testing Dashboard requires an Enterprise account.
+  - You must click the **Refresh** button (top right) to apply the filter after you configure it.
+  - The **Created Date** menu has several non-working options: `is null`, `is not null`, and `matches a user attribute`. This is a known issue that Harness is working to address.
+
+![Security Testing Dashboard -- filters and Refresh button](static/sto-dashboard-with-new-filters.png)
 
 
 ### Early access features
