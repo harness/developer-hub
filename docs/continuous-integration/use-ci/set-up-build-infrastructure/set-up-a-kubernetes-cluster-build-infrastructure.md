@@ -1,9 +1,7 @@
 ---
-title: Define a Kubernetes Cluster Build Infrastructure
-description: This topic describes how to set up a Kubernetes cluster build infrastructure for a Harness CI stage. The codebase and tests you add to a Harness CI Stage are built and run using a build infrastructur…
+title: Use Kubernetes cluster build I=infrastructure
+description: This topic describes how to set up a Kubernetes cluster build infrastructure for a Harness CI stage.
 
-tags: 
-   - helpDocs
 sidebar_position: 20
 helpdocs_topic_id: ia5dwx5ya8
 helpdocs_category_id: rg8mrhqm95
@@ -11,17 +9,21 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how you can use Kubernetes cluster build infrastructure for a Harness CI pipeline stage.
+This topic describes how you can use a Kubernetes cluster build infrastructure for the **Build** stage in a Harness CI pipeline.
 
-Once you set up the Kubernetes cluster to use as your build infrastructure, you connect Harness to it with a Harness [Kubernetes cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate.
+:::tip
 
-You can also set up build infrastructures using VMs. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
+If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure. For [other infrastructure types](./which-build-infrastructure-is-right-for-me.md), you can run Docker commands directly on the host.
+
+If your Kubernetes cluster doesn't allow privileged mode, which is required for DinD, you might need to use another build infrastructure. For example, you could use [Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) or [set up a VM build infrastructure](/docs/category/set-up-vm-build-infrastructures).
+
+:::
 
 ## GKE Autopilot is not recommended
 
 We don't recommend using Harness CI with GKE Autopilot due to Docker-in-Docker limitations and potential cloud cost increases.
 
-Autopilot clusters do not allow Privileged pods. This means you can't use [Docker-in-Docker](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require Privileged mode.
+Autopilot clusters do not allow privileged pods, which means you can't use [Docker-in-Docker](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require privileged mode.
 
 Additionally, GKE Autopilot sets resource limits equal to resource requests for each container. This can cause your builds to allocate more resources than they need, resulting in higher cloud costs with no added benefit.
 
@@ -62,16 +64,17 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
-## Visual Summary
+## Process overview
 
-Here's a short video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster, then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster.
+After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate to create a connection between Harness and your cluster.
+
+Here's a short video that walks you through adding a Harness Kubernetes cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes cluster connector uses the delegate to connect to the cluster.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" />
 
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/wUC23lmqfnY/hqdefault.jpg"><iframe width=" 200" height="150" src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
-
 
 ## Step 1: Create a Kubernetes Cluster
 

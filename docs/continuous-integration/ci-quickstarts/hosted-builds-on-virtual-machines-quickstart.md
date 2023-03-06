@@ -184,3 +184,4 @@ Keep in mind the following when running builds on Harness Cloud infrastructure:
 * GCP and Azure connectors cannot inherit credentials from the delegate.
 * Remote caching is not supported for **Build and Push** steps.
 * Steps running in containers cannot communicate with Background steps running on the Harness Cloud build infrastructure
+* You can use Bitrise plugins with the macOS platform on Harness Cloud.
