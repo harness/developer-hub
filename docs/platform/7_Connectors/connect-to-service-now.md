@@ -80,19 +80,18 @@ Currently, this feature is behind the feature flag `CDS_SERVICENOW_ADFS_AUTH`. 
 
 :::
 
-  To use AD FS credentials for authentication, do the following:
+To use AD FS credentials for authentication, do the following:
   
-  1. Select an existing secret or create one that has the resource identifier of ServiceNow configured in ADFS as its value for the **Resource ID** field.
-  2. Select an existing secret or create one that has the application (client) id assigned to your application by AD FS for the **Client ID** field.
+1. Select an existing secret or create one that has the resource identifier of ServiceNow configured in ADFS as its value for the **Resource ID** field.
+2. Select an existing secret or create one that has the application (client) id assigned to your application by AD FS for the **Client ID** field.
    
 ```mdx-code-block
 <img src={adfs_clientid} alt="adfs-clientid" height="150" width="400"/>
 ```
 
-
-  3. Select an existing encrypted file or create one that has the certificate for the **Certificate** field. This is a `X509` format certificate used for signing JWT tokens by your application.
-  4. In **Private Key**, create a new secret or choose an existing one that has the AD FS private key as the value. This key is the private RSA key corresponding to certificate uploaded in the **Certificate **field.
-  5. In **ADFS URL**, enter the base AD FS URL.
+3. Select an existing encrypted file or create one that has the certificate for the **Certificate** field. This is a `X509` format certificate used for signing JWT tokens by your application.
+4. In **Private Key**, create a new secret or choose an existing one that has the AD FS private key as the value. This key is the private RSA key corresponding to certificate uploaded in the **Certificate **field.
+5. In **ADFS URL**, enter the base AD FS URL.
   
 ```mdx-code-block
 <img src={adfs_settings} alt="adfs-settings" height="350" width="600"/>
