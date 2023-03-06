@@ -4,25 +4,30 @@ description: Trigger pipelines from a non-Harness CI system.
 sidebar_position: 6
 ---
 
-Run pipleines from any third-party CI system using a custom webhook trigger cURL command. 
+Harness includes a [native CI system](https://developer.harness.io/docs/category/onboard-with-ci) that can build and test code and push your artifact to any repository. You can set [triggers](https://developer.harness.io/docs/category/triggers) on Harness pipelines that execute a pipeline when a change is made in the code or artifact repository.
+
+In some cases, you might be using a third-party CI system. You can still execute Harness pipelines when changes are made to the code or artifact repositories used by that system.
+
+This topic describes how to set up and use a custom webhook trigger and run it as a cURL command for your third-party CI system.
 
 ## Requirements
 
 Make sure you have: 
-* A pipeline with a CD stage.
-* An artifact in an artifact repository.
+* A Harness pipeline with a [CD stage](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics).
+* A [Harness service with an artifact source](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 
-## Configure runtime input for your artifact tag and image path for a stage
+## Configure the artifact image path and tag as runtime inputs
 
-1. Select the pipeline you want to trigger and select the appropriate stage.
-2. On the **Service** tab, select the pencil icon next to the service name.
-3. On the **Edit Service** dialog, scroll down to the **Artifacts** section and select the pencil icon.
+1. Select the pipeline you want to trigger. 
+2. Select the CD stage that deploys the service with the artifact you want to execute the trigger.
+3. In **Service**, select the pencil icon next to the service name.
+4. In **Edit Service**, in **Artifacts**, select the pencil icon to edit the artifact source.
   
    ![](./static/edit-artifacts.png)
    
 4. Verify if the appropriate artifact repository type is selected, then select **Continue**.
 5. Verify if the appropriate artifact connector is selected, then select **Continue**. 
-6. In **Artifact Location** > **Artifact Details**, select **Runtime input** for the **Image Path** and **Tag** fields.
+6. In **Artifact Details**, select **Runtime input** for **Image Path** and **Tag**.
    
    ![](./ctatic/../static/edit-artifact-details.png)
 
@@ -30,7 +35,7 @@ Make sure you have:
    
 ## Create a custom trigger
 
-1. In your pipeline, select **Triggers** at the top right portion of the page.
+1. In your pipeline, select **Triggers** at the top of the page.
 
     ![](./static/pipeline-trigger.png)
    
@@ -43,13 +48,13 @@ Make sure you have:
    
     ![](./static/custom-webhook-trigger-configuration.png)
 
-5. **(Optional)** Specify the **Conditions** for running the pipeline and select **Continue**. 
+5. In **Conditions**, specify any [conditions](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/) you want met before running the pipeline, and select **Continue**. 
    
     For example, execute the pipeline if the source or target branch name matches a pattern.
 
     ![](./static/custom-webhook-trigger-conditions.png)
 
-6. In the **Pipeline Input** tab, define payloads for the **Image Path** and **Tag** fields so that Harness can map them later when running the trigger.
+6. In **Pipeline Input**, define payloads for **Image Path** and **Tag** so that Harness can map them later when running the trigger.
 
     ![](./static/custom-webhook-trigger-piepline-input.png)
 
@@ -57,7 +62,7 @@ Make sure you have:
    
 ## Trigger the pipeline from a thrid-party CI system
 
-1. Locate the trigger you created, select the link in the **Webhook** column and select **Copy as cURL Command**.
+1. In your pipeline **Triggers**, locate the trigger you created, select the link in the **Webhook** column, and select **Copy as cURL Command**.
 
     ![](./static/webhook-trigger-copy-curl-command.png)
     
@@ -92,4 +97,4 @@ Make sure you have:
     }
     ```
    
-4. Go to **Deployments** to see the pipeline triggered by your custom webhook trigger.
+4. In Harness, go to **Deployments** or the pipeline's **Execution History** to see the pipeline triggered by your custom webhook trigger.
