@@ -108,7 +108,7 @@ Depending on the Build stage's **Infrastructure**, some steps might run on VMs w
 Assume you create a Background step with the **Name** and **Id** `myloginservice`.
 
 - A containerized step talks to this service using `myloginservice:container_port`.
-- A Run or Run Test step that runs directly on a VM or in a Kubernetes cluster talks to the service using `localhost:host_port`.
+- A step, such as a Run or Run Test step, that runs directly on the VM or in a Kubernetes cluster talks to the service using `localhost:host_port`.
 
 </details>
 
