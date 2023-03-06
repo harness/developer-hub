@@ -26,9 +26,7 @@ Apart from viewing costs based purely on different data sources (AWS, GCP, Clust
 
 If there are items that don't belong to any of these cost categories, the cost associated is displayed as unallocated costs.
 
-You can include Cost Categories while creating visualizations in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](/docs/platform/18_Dashboards/create-dashboards.md).
-
-## Prerequisites and Permissions
+## Prerequisites and permissions
 
 To use Cost Categories, your Harness User account must belong to a User Group with the following Role permissions:
 
@@ -36,7 +34,7 @@ To use Cost Categories, your Harness User account must belong to a User Group wi
 
 For more details, go to [CCM Roles and Permissions](../../4-cloud-cost-technical-reference/ccm-ref/ccm-roles-and-permissions.md).
 
-## Visual Summary
+## Visual summary
 
 How to create a Cost Category:
 <!-- Video:
@@ -48,7 +46,7 @@ How to use a Cost Category:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/watch?v=2gqvz47efuQ" />
 
-## Create Cost Categories
+## Create cost categories
 
 You can create a Cost Category
 
@@ -67,7 +65,7 @@ The new Cost Category appears.
 
 3. In the new Cost Category, enter a name. For example, if this Cost Category is for departments, you could name it **Departments**.
 
-### Create Cost Buckets
+### Create cost buckets
 
 1. Click **New Cost Bucket**.
 2. Enter a name for the cost bucket, such as the name of a department.
@@ -97,7 +95,7 @@ For example, consider two cost targets named team A and team B. These two teams 
 
   ![](./static/use-ccm-cost-categories-05.png)
 
-### Manage Unallocated Costs
+### Manage unallocated costs
 
 When used in a Perspective as a filter or **Group By**, the Cost Category shows data that matches its filters.
 
@@ -105,10 +103,10 @@ Unallocated Costs are costs that do not match the Cost Categories in the Perspec
 
 In **Manage Unallocated Costs**, you can choose to show or ignore unallocated costs, and choose a name for how those costs are displayed.
 
-## Use Cost Categories
+## Use cost categories
 You can use cost categories in both Perspectives and Dashboards. When you create or modify a cost category, the changes are immediately reflected in Perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
 
-### Use Cost Categories in Perspectives
+### Use cost categories in Perspectives
 
 Cost categories can be used in Perspectives in the following ways.
 
@@ -134,13 +132,13 @@ When creating a Perspective, you can define a rule using Cost Categories.
 
 ![](./static/use-ccm-cost-categories-09.png)
 
-The benefit of using a Cost Category as a rule in a Perspective is that the Cost Category definition is separated from all the Perspectives that use it.
+The benefit of using a cost category as a rule in a Perspective is that the cost category definition is separated from all the Perspectives that use it.
 
-When you change the definition of the Cost Category, it automatically changes what is displayed by all the Perspectives that use that Cost Category.
+When you change the definition of the Cost Category, it automatically changes what is displayed by all the Perspectives that use that cost category.
 
 For example, if a new product is added to the Manufacturing department, you can simply update the Manufacturing bucket in the Departments Cost Category, and that change is automatically reflected in all the Perspectives that use that Cost Category.
 
-### Use Cost Categories in Dashboards
+### Use cost categories in Dashboards
 
 You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](/docs/platform/18_Dashboards/create-dashboards.md).
 
