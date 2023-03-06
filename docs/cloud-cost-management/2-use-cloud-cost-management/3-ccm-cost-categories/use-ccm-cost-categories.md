@@ -105,17 +105,20 @@ Unallocated Costs are costs that do not match the Cost Categories in the Perspec
 
 In **Manage Unallocated Costs**, you can choose to show or ignore unallocated costs, and choose a name for how those costs are displayed.
 
-## Use Cost Categories in Perspectives
+## Use Cost Categories
+You can use Cost categories in both Perspectives and Dashboards. When you create or modify a cost category, the changes are immediately reflected in Perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
+
+### Use Cost Categories in Perspectives
 
 Cost Categories can be used in Perspectives in the following ways.
 
-### Group By
+#### Group By
 
 Select a Cost Category in **Group By**:
 
 ![](./static/use-ccm-cost-categories-06.png)
 
-### Filter
+#### Filter
 
 Select one or more Cost Categories as a filter.
 
@@ -125,7 +128,7 @@ You can use Group By and filters together. For example, your filter could select
 
 ![](./static/use-ccm-cost-categories-08.png)
 
-### Perspectives
+#### Perspectives
 
 When creating a Perspective, you can define a rule using Cost Categories.
 
@@ -137,9 +140,9 @@ When you change the definition of the Cost Category, it automatically changes wh
 
 For example, if a new product is added to the Manufacturing department, you can simply update the Manufacturing bucket in the Departments Cost Category, and that change is automatically reflected in all the Perspectives that use that Cost Category.
 
-## Use Cost Categories in Dashboards
+### Use Cost Categories in Dashboards
 
-You can include cost categories while creating visualizations in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](/docs/platform/18_Dashboards/create-dashboards.md).
+You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](/docs/platform/18_Dashboards/create-dashboards.md).
 
 **Cost Categories** is available in the Unified explore on the Dashboards page. 
 
@@ -147,11 +150,11 @@ You can include cost categories while creating visualizations in your custom das
 
 
 * When you create a new cost category or make changes to an existing one, it may take up to 24 hours for the changes to be reflected in the dashboard data.
-* If you are using AWS or Azure, cost categories are applied to data fetched from the current month onwards through CUR and Billing Exports. It is not applied to historical data. On the other hand, if you are using GCP, the cost category is applied to data that is equal to or more recent than the last three days' data.
+* If you are using AWS or Azure, cost categories update the data fetched from the current month onwards through CUR and Billing Exports. It is not applied to historical data. On the other hand, if you are using GCP, cost categories update the data that is equal to or more recent than the last three days' data.
 * When you delete a cost category, the deleted category remains visible in the dashboard until the end of the month, as it is applied to data for the ongoing month. For instance, if you delete a cost category on January 24th, the category is visible in the dashboard until the end of January 31st.
 
 :::note
-In AWS, you cannot apply cost categories if you have selected any of the following fields in the explore:
+In AWS, you cannot use cost categories as a dimension in custom dashboards if you have selected any of the following fields in the explore:
 
 - Resource ID 
 - Line Item Type 
