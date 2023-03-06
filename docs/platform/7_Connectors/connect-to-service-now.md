@@ -42,7 +42,7 @@ This topic shows you how to add a ServiceNow connector to your project.
 
    You can choose to update the **Id** or let it be the same as your ServiceNow Connector's name. For more information, see [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
 
-4. Enter **Description** and **Tags** for your connector.
+4. Enter a **Description** and **Tags** for your connector.
 
 5. Click **Continue**.
    
