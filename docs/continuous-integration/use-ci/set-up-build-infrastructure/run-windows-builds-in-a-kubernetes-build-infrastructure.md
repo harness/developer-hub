@@ -1,8 +1,7 @@
 ---
 title: Run Windows Builds in a Kubernetes Build Infrastructure
-description: You can run Windows builds in your Kubernetes build infrastructure. Windows Server 2019 images are available for running CI Builds and for out-of-the-box Ci Steps.
-tags: 
-   - helpDocs
+description: You can run Windows builds in your Kubernetes build infrastructure.
+
 sidebar_position: 80
 helpdocs_topic_id: ud5rjfcp8h
 helpdocs_category_id: rg8mrhqm95
@@ -12,15 +11,16 @@ helpdocs_is_published: true
 
 You can run Windows builds in your Kubernetes build infrastructure. Windows Server 2019 images are available for running CI Builds and for out-of-the-box Ci Steps such as Run, Run Step, Save, and Restore.
 
-### Important Notes
+## Important Notes
 
 * You can't run Steps that build and push to Docker registries, because Kaniko is not supported on Windows.
-* You can’t run Docker-in-Docker using a Windows image, because privileged mode is not supported on Windows.
+* You can't run Docker-in-Docker using a Windows image, because privileged mode is not supported on Windows.
 * Only Windows Server 2019 images are supported. If you are using Google Kubernetes Engine, make sure you use the recommended image type for Windows Server 2019.
 
   ![](./static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
 
-* If you use a custom Windows image in a Run Step, the container must be based on [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore) version 1809 and must include `netapi32.dll`. To include this in your image, add the following command to the Dockerfile:
+* If you use a custom Windows image in a Run step, the container must be based on [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore) version 1809 and must include `netapi32.dll`. To include this in your image, add the following command to the Dockerfile:
+
 ```
 COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
 ```
@@ -37,12 +37,11 @@ COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
 
 3. Run the CI build.
 
-### YAML Example
+## YAML Example
 
 The following Pipeline definition provides a simple example for setting up a Pipeline to run Windows builds.
 
-#### Details
-```
+```yaml
 pipeline:  
   name: WindowsK8  
   identifier: WindowsK8  

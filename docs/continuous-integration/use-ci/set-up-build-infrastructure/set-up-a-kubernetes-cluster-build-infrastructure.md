@@ -1,6 +1,6 @@
 ---
-title: Use Kubernetes cluster build I=infrastructure
-description: This topic describes how to set up a Kubernetes cluster build infrastructure for a Harness CI stage.
+title: Use Kubernetes cluster build infrastructure
+description: You can use a Kubernetes cluster build infrastructure for a Harness CI pipeline.
 
 sidebar_position: 20
 helpdocs_topic_id: ia5dwx5ya8
@@ -11,15 +11,19 @@ helpdocs_is_published: true
 
 This topic describes how you can use a Kubernetes cluster build infrastructure for the **Build** stage in a Harness CI pipeline.
 
-:::tip
+This topic assumes you have a basic understanding of [Harness' key concepts](../../../getting-started/learn-harness-key-concepts.md).
 
-If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure. For [other infrastructure types](./which-build-infrastructure-is-right-for-me.md), you can run Docker commands directly on the host.
+## Important notes
 
-If your Kubernetes cluster doesn't allow privileged mode, which is required for DinD, you might need to use another build infrastructure. For example, you could use [Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) or [set up a VM build infrastructure](/docs/category/set-up-vm-build-infrastructures).
+Review the following important information about using Kubernetes cluster build infrastructures for your Harness CI builds.
 
-:::
+### Privileged mode is required for Docker-in-Docker
 
-## GKE Autopilot is not recommended
+If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure.
+
+If your Kubernetes cluster doesn't support privileged mode, you'll need to use another build infrastructure, such as [Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). Other infrastructure types allow you to run Docker commands directly on the host.
+
+### GKE Autopilot is not recommended
 
 We don't recommend using Harness CI with GKE Autopilot due to Docker-in-Docker limitations and potential cloud cost increases.
 
@@ -57,12 +61,13 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 
 </details>
 
-## Before You Begin
+### Windows builds
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
-* [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+Go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
+
+### Self-signed certificates
+
+Go to [Configure a Kuberneted build farm to use self-signed certificates](./configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md).
 
 ## Process overview
 
@@ -103,7 +108,7 @@ Set up the Connector as follows.
 
 ### Connector Details
 
-You can select Master URL and Credentials or Use the credentials of a specific Harness Delegate. 
+You can select Master URL and Credentials or Use the credentials of a specific Harness Delegate.
 
 In this example, click Use the credentials of a specific Harness Delegate and click **Continue**.
 
@@ -132,6 +137,12 @@ Now you specify the Delegate name, size, and permissions.
 	This is simply a default. In the future, you can add configurations to run scripts on your Delegates and scope them to different environments.
 
 ![](./static/set-up-a-kubernetes-cluster-build-infrastructure-03.png)
+
+:::info
+
+For more information about delegates, go to [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
+
+:::
 
 ### Delegate Install
 
@@ -167,13 +178,21 @@ service/delegate-service created
 
 ### Step 3: Define the Build Farm Infrastructure in Harness
 
-In this step, you set up your build infrastructure using the Connector and Delegate you added previously. 
+In this step, you set up your build infrastructure using the Connector and Delegate you added previously.
 
-In the CI stage Infrastructure, select the Kubernetes Cluster Connector you created in the previous step.
+In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster connector you created in the previous step.
 
 In Namespace, enter the Kubernetes namespace to use.
 
 You can use a Runtime Input (`<+input>`) or expression also. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
+
+:::tip
+
+The [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md) uses a Kubernetes cluster build infrastructure.
+
+For details about stage settings, go to [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md).
+
+:::
 
 ## Option: Service Account Name
 
