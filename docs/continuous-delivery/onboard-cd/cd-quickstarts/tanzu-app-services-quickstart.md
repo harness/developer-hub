@@ -347,10 +347,6 @@ In your project's **Deployment**s**, you can see the deployment listed:
 
 If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](#before_you_begin) or the cluster's network setting does not allow the delegate to connect to your selected repository.
 
-## Clean Up
-
-For steps on deleting the delegate, go to [Delete a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
-
 ## Next Steps
 
 See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
