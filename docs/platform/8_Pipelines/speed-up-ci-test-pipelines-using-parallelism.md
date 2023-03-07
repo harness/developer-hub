@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. The more tests you run, the longer it takes for them to complete if run sequentially. To reduce test cycle time, you can split your tests and run them across multiple groups at the same time.
+:::note
+
+Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+The more tests you run, the longer it takes for them to complete if run sequentially. To reduce test cycle time, you can split your tests and run them across multiple groups at the same time.
 
 *Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Parallelism is useful whenever you can split a step or stage into multiple groups and run them at the same time. Parallelism is also one of the [available methods](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md) you can use to speed up your CI builds.
 
