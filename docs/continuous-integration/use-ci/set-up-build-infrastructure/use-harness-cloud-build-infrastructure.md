@@ -168,15 +168,20 @@ The following YAML example illustrates the YAML specification for Harness Cloud 
 
 ## Build private repos with Harness Cloud
 
-You can use Harness Cloud build infrastructure with private repositories. If your codebase or Docker registry are not publicly accessible, you must whitelist the following IPs in your firewall:
+:::caution
 
-```
-35.247.122.103
-34.127.37.47
-35.233.166.205
-34.94.180.31
-34.102.88.236
-34.94.194.4
+Whitelisting is only required if your code repo, Docker registry, or Artifactory registry are private.
+
+:::
+
+You can use Harness Cloud build infrastructure with private repositories. If your codebase or Docker/Artifacatory registry are not publicly accessible, you must whitelist the following IPs in your firewall:
+
+```text
+34.133.164.105
+35.184.10.123
+34.127.65.210
+35.233.172.173
+34.102.16.205
 34.82.155.149
 34.83.51.28
 35.230.70.231
@@ -187,4 +192,11 @@ You can use Harness Cloud build infrastructure with private repositories. If you
 34.168.179.66
 34.145.10.183
 35.197.78.109
+35.247.11.84
+34.168.91.26
+35.230.82.250
+35.247.57.139
+34.83.191.187
+34.127.8.91
+35.247.40.237
 ```
