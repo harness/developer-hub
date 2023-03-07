@@ -2,7 +2,7 @@
 title: Architecture
 sidebar_position: 1
 ---
-This section describes the Harness Chaos Engineering (HCE) architecture along with the components. 
+This section describes the Harness Chaos Engineering (HCE) architecture along with the components.
 
 Below is an overview of the HCE architecture.
 
@@ -18,11 +18,11 @@ The diagram below gives a peek into the HCE architecture.
 
 ## Harness control plane
 
-**Harness control plane** is the single source to collaboratively create, schedule, and monitor chaos experiments. It comes with a set of chaos faults that are defined in a sequence, which helps achieve the desired chaos impact on the target resources. You can log in to the Harness platform and leverage the interactive chaos center to define your chaos experiments and target the infrastructure. You can also monitor the experiments during their execution.
+**Harness control plane** is the single source to collaboratively create, schedule, and monitor chaos experiments. It comes with a set of chaos faults that are defined in a sequence, which helps achieve the desired chaos impact on the target resources. You can log in to the Harness platform and leverage the interactive chaos access to define your chaos experiments and target the infrastructure. You can also monitor the experiments during their execution.
 
 ### Control plane components
 
-The control plane in HCE contains many components, which are described below. 
+The control plane in HCE contains many components, which are described below.
 
 #### Chaos infrastructure
 
@@ -39,11 +39,11 @@ Enterprise ChaosHub comes out of the box with HCE and provides many faults and e
 
 #### Authentication server
 
-The authentication server is a Golang microservice responsible for authorizing and authenticating the requests received from Chaos Center. It also helps manage users and their projects. It helps in user and project creation, user login, password resets, updating of user information, and managing project-related operations.
+The authentication server is a Golang microservice responsible for authorizing and authenticating the requests received from chaos access. It also helps manage users and their projects. It helps in user and project creation, user login, password resets, updating of user information, and managing project-related operations.
 
 #### Backend server
 
-The backend server is a GraphQL-based Golang microservice that serves the requests received from the Chaos Center by either querying the database for the relevant information or fetching information from the execution plane.
+The backend server is a GraphQL-based Golang microservice that serves the requests received from the chaos access either by querying the database for relevant information or fetching information from the execution plane.
 
 #### Database
 
@@ -51,16 +51,16 @@ This is a NoSQL MongoDB database microservice accountable for storing users' inf
 
 ## Harness execution plane
 
-**Harness Execution Plane** contains the components responsible for orchestrating the chaos injection in the target resources. They get installed in the Chaos Infrastructure containing the control plane. It consists of Chaos Delegate Infrastructure components like Workflow controller, subscriber, event tracker, etc and Litmus Backend Execution Infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
+**Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. These components are installed through the chaos infrastructure. The Kubernetes execution plane consists of chaos delegate infrastructure components like workflow controllers, subscribers, event trackers, etc., and backend execution infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
 
 ## Chaos access
 
-Chaos access components help facilitate the chaos injection, and enable chaos automation for target resources. Some of the important components in chaos access listed below.
+Chaos access components help facilitate the chaos injection, and enable chaos automation for target resources. Some of the important components of chaos access are listed below.
 
-- **Workflow controller**: The Argo Workflow Controller responsible for the creation of chaos experiment.
+- **Workflow controller**: The Argo Workflow Controller responsible for the creation of the chaos experiment.
 
-- **Subscriber**: Serves as the link between the Chaos Execution Plane and the Control Plane. It has a few distinct responsibilities such as performing health check of all the components in Chaos Execution Plane, creation of a chaos experiment CR from a chaos experiment template, watching for chaos experiment events during its execution, and sending the chaos experiment result to the Control Plane.
+- **Subscriber**: Serves as the link between the **chaos execution plane** and the **control plane**. Its responsibilities include performing a health check on all the components in the chaos execution plane, creating a chaos experiment CR from a chaos experiment template, watching for chaos experiment events during its execution, and sending the chaos experiment result to the control plane.
 
-- **Event tracker**: An optional component that is capable of triggering automated chaos experiment runs based on a set of defined conditions for any given resources in the cluster. It is a controller that manages EventTrackerPolicy CR, which is basically the set of defined conditions that is validated by Event Tracker. If the current state of the tracked resources match with the state defined in the EventTrackerPolicy CR, the chaos Experiment run run gets triggered. This feature can only be used if GitOps is enabled.
+- **Event tracker**: An optional component capable of triggering an automated chaos experiment based on a set of conditions defined for any given resource in the cluster. It manages EventTrackerPolicy CR, which is a set of conditions validated by the event tracker. If the current state of the tracked resources matches the state defined in the EventTrackerPolicy CR, the chaos experiment is triggered. This feature can only be used if GitOps is enabled.
 
-- **Chaos exporter**: An optional component that facilitates external observability in Litmus by exporting the chaos metrics generated during the chaos injection as time-series data to the Prometheus DB for its processing and analysis.
+- **Chaos exporter**: An optional component that facilitates external observability in HCE. This is achieved by exporting the chaos metrics generated during the chaos injection as time-series data to the Prometheus database for processing and analysis.
