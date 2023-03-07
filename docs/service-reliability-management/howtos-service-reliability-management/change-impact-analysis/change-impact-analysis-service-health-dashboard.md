@@ -107,5 +107,5 @@ You can drill down log data using the following filters:
 
 #### Errors tab
 
-The **Errors** tab displays a list of all the events, exceptions, log events, HTTP errors, and custom errors.
+The **Errors** tab displays a list of all the events, exceptions, log events, HTTP errors, and custom errors. 
 
