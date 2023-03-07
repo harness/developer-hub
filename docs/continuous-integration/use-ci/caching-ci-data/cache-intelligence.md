@@ -22,7 +22,7 @@ If you are using a different build tool or a non-default cache location, you can
 
 ## Cache storage
 
-Harness Cloud allows up to 2GB of cache storage per account. All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime. This is similar to how you would specify the `cache-key` in **Save Cache** and **Restore Cache** steps.
+Harness Cloud allows up to 2GB of cache storage per account. All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
 
 The cache retention window is 15 days, which resets whenever the cache is updated.
 
@@ -41,7 +41,6 @@ For example:
     - stage:
         name: Build Jhttp
         identifier: Build_Jhttp
-        description: ""
         type: CI
         spec:
           caching:
@@ -52,7 +51,12 @@ For example:
 
 ### Customize cache paths
 
-Cache Intelligence stores cache data in the `/harness` directory by default. You can specify cache locations within this directory or add cache locations outside this directory. To do this, add a list of `paths` to your pipeline's YAML, for example:
+Cache Intelligence stores the data to be cached in the `/harness` directory by default. You can use `paths` to specify a list of locations to be cached. This is useful if:
+
+* Cache Intelligence is not supported for your build tool.
+* You have customized cache locations, such as with `yarn config set cache-folder`.
+
+Add the `paths` list to your pipeline's YAML, for example:
 
 ```yaml
     - stage:
@@ -64,12 +68,12 @@ Cache Intelligence stores cache data in the `/harness` directory by default. You
             enabled: true
             paths:
               - /harness/node-modules
-              - /my-cache-directory/module-cache-1
+              - /my_cache_directory/module_cache1
           cloneCodebase: true
 ...
 ```
 
-If your cache path is outside the `/harness` directory, you must specify also specify this as a shared path. In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
+If a path you want to cache is outside the `/harness` directory, you must also specify this as a shared path. In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
 
 ```yaml
     - stage:
@@ -80,8 +84,8 @@ If your cache path is outside the `/harness` directory, you must specify also sp
           caching:
             enabled: true
             paths:
-              - /harness/node-modules
-              - /my-cache-directory/module-cache-1
+              - /harness/node_modules
+              - /my_cache_directory/module_cache1
           cloneCodebase: true
           execution:
             steps:
@@ -93,7 +97,7 @@ If your cache path is outside the `/harness` directory, you must specify also sp
             type: Cloud
             spec: {}
           sharedPaths:
-            - /my-cache-directory/module-cache-1
+            - /my_cache_directory/module_cache1
 ```
 
 ## Cache Intelligence API
