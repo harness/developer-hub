@@ -2,7 +2,7 @@
 title: Run Windows builds in a Kubernetes build infrastructure
 description: You can run Windows builds in your Kubernetes build infrastructure.
 
-sidebar_position: 80
+sidebar_position: 50
 helpdocs_topic_id: ud5rjfcp8h
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

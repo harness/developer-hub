@@ -3,7 +3,7 @@ title: Configure a Kubernetes build farm to use self-signed certificates
 description: CI build pods can interact with servers using self-signed certificates.
 tags: 
    - helpDocs
-sidebar_position: 90
+sidebar_position: 40
 helpdocs_topic_id: e5qkn9atiw
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false

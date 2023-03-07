@@ -1,7 +1,7 @@
 ---
 title: Set up a local runner build infrastructure
 description: You can define a CI build infrastructure on any Linux or macOS host.
-sidebar_position: 15
+sidebar_position: 70
 helpdocs_topic_id: xd8u17be5h
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
