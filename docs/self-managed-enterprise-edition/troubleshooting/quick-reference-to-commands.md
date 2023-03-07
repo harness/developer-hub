@@ -1,9 +1,9 @@
 ---
 title: Quick command reference
-description: Commands that come in useful for troubleshooting
+description: Helpful commands for troubleshooting.
 ---
 
-This topic provides a short list of commands that come in useful for troubleshooting Harness Self-Managed Platform Edition.
+This topic provides a short list of commands that are useful for troubleshooting Harness Self-Managed Platform Edition.
 
 :::note
 Variables are enclosed in angle brackets (< >).
@@ -19,7 +19,7 @@ kubectl get secret -n <namespace> mongodb-replicaset-chart -o jsonpath={.data.mo
 
 ## Shell into MongoDB 
 
-Use the `kubectl exec` command to start a shell session in the container that is running MongoDB. Modify the command for your MongoDB configuration:
+Use the `kubectl exec` command to start a shell session in the container that runs MongoDB. Modify the command for your MongoDB configuration:
 
    ```
    kubectl exec -it mongodb-replicaset-chart-0 -n <namespace> -- /bin/sh
