@@ -4,28 +4,39 @@ description: Set up your pipeline to cache build dependencies automatically.
 sidebar_position: 20
 ---
 
-### Automatic caching
+Caching dependencies is an effective way to speed up your build.
 
-Caching dependencies is an effective way to speed up your build. 
-Modern continuous integration systems execute pipelines inside ephemeral environments, such as a container or virtual machine, that is provisioned solely for pipeline execution and is not reused from a prior execution. As builds often require downloading and installing many dependencies, such as libraries and other software components, caching these dependencies can save a significant amount of time. 
+Modern continuous integration systems execute pipelines inside ephemeral environments, such as a container or virtual machine, that is provisioned solely for pipeline execution and is not reused from a prior execution. As builds often require downloading and installing many dependencies, such as libraries and other software components, caching these dependencies can save a significant amount of time.
 
 There are several ways to configure caching, such as save/restore cache steps and mounting volumes, which require users to enable caching and manage the cache itself.
 
 With Cache Intelligence, Harness can automatically cache and restore common dependencies, making it easy to start using caching in your pipelines. You don't need to bring your own storage, because we store the cache in Harness Cloud, our hosted environment.
 
+## Supported build infrastructure and tools
 
-Note the following:  
+Currently, Cache Intelligence is available only when using [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), the Harness-hosted build environment.
 
-* Currently, Cache Intelligence is available only when using [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), the Harness-hosted build environment.
-* Currently, Cache Intelligence supports Bazel, Maven, Gradle, Yarn, and Node build tools, if the dependencies are stored in the default location for the tool used. If you are using a different build tool or a non-default cache location, you can still leverage our cache storage by specifying the location(s) to cache.
-* Harness Cloud can cache up to 2GB of data per account. All pipelines in the account use the same cache. 
-* Cache retention window is 15 days, which resets whenever the cache gets updated.
+Currently, Cache Intelligence supports Bazel, Maven, Gradle, Yarn, and Node build tools, if the dependencies are stored in the default location for the tool used.
 
-* Cache Intelligence stores cache data in the `/harness` directory by default. 
+If you are using a different build tool or a non-default cache location, you can still leverage our cache storage by [specifying the location(s) to cache](#customize-cache-paths).
 
-To enable Cache Intelligence on a CI Build stage, add the following lines to the stage YAML definition: 
+## Cache storage
 
-<!-- change this -->
+Harness Cloud allows up to 2GB of cache storage per account. All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime. This is similar to how you would specify the `cache-key` in **Save Cache** and **Restore Cache** steps.
+
+The cache retention window is 15 days, which resets whenever the cache is updated.
+
+## Enable Cache Intelligence
+
+To enable Cache Intelligence on a CI Build stage, add the following lines to the `stage: spec:` in your pipeline's YAML:
+
+```yaml
+caching:
+  enabled: true
+```
+
+For example:
+
 ```yaml
     - stage:
         name: Build Jhttp
@@ -33,11 +44,59 @@ To enable Cache Intelligence on a CI Build stage, add the following lines to the
         description: ""
         type: CI
         spec:
-          caching:            # --------------- ADD LINE
-            enabled: true     # ----------------ADD LINE
+          caching:
+            enabled: true
           cloneCodebase: true
+...
 ```
-### Cache Intelligence API
+
+### Customize cache paths
+
+Cache Intelligence stores cache data in the `/harness` directory by default. You can specify cache locations within this directory or add cache locations outside this directory.
+
+To add cache paths within the `/harness` directory, add a list of `paths` to your pipeline's YAML, for example:
+
+```yaml
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          caching:
+            enabled: true
+            paths:
+              - /harness/node-modules
+          cloneCodebase: true
+...
+```
+
+To add cache paths outside the `/harness` directory, you must specify them as shared paths. In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
+
+```yaml
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          caching:
+            enabled: true
+            paths:
+              - /my-cache-directory/node-modules
+          cloneCodebase: true
+          execution:
+            steps:
+...
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          sharedPaths:
+            - /my-cache-directory/node-modules
+```
+
+## Cache Intelligence API
 
 Use the Cache Intelligence API to get information about the cache or delete the cache.
 
@@ -49,7 +108,7 @@ For information about API keys, go to [Add and Manage API Keys](/docs/platform/r
 
 :::
 
-#### Get cache metadata
+### Get cache metadata
 
 Get metadata about the cache, such as the size and path. 
 
@@ -59,7 +118,7 @@ curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?acco
 --header 'Authorization: Bearer $AUTH_TOKEN'
 ```
 
-#### Delete cache
+### Delete cache
 
 Delete the cache. You can include an optional `path` parameter to delete a specific sub-directory in the cache.
 
