@@ -75,10 +75,25 @@ To learn more about VM build infrastructures, go to [Set up VM build infrastruct
 
 The following table shows which operating systems and architectures that each build infrastructure option supports.
 
-| Operating system | Architecture | Harness Cloud | Self-hosted local | Self-hosted Kubernetes cluster | Self-hosted PaaS VMs |
+| Operating system | Architecture | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted PaaS VMs |
 | -  | - | - | - | - | - |
 | Linux | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Linux | arm64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | macOS | arm64 (M1) | ✅ Supported | ✅ Supported | ❌ Not supported | ✅ Supported |
 | Windows | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Windows | arm64 | ❌ Not supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+
+## Feature compatibility matrix
+
+Some Harness CI features are not compatible with all build infrastructures or platforms. New features are rolled out for Harness Cloud first before being enabled for other build infrastructures.
+
+| Feature | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted PaaS VMs |
+| - | - | - | - | - |
+| Test Intelligence | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| Test Parallelism | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| Cache Intelligence | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Remote Caching in **Build and Push** steps | ❌ Not supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
+| Harness Secret Manager | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| Custom Secret Manager | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
+| Github App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
+| STO step in Build stage | ✅ Supported for Linux platform| ❌ Not supported | ✅ Supported | <ul><li>✅ Supported for Linux platform</li><li> ❌ Not supported for Windows</li></ul>|
