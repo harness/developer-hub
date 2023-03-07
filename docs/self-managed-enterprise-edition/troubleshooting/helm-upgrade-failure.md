@@ -1,16 +1,13 @@
 ---
 title: Helm upgrade failure
-description: Troubleshoot a Helm upgrade failure in Self-Management Enterprise Edition
+description: Troubleshoot a Helm upgrade failure in Harness Self-Management Enterprise Edition.
 ---
-
-
-## Helm upgrade failure
 
 This topic provides solutions for upgrade problems related to Helm.
 
+## MinIO password failure
 
-## Minio password failure
-It happens when the current credentials are not used to authenticate. To avoid this problem, make sure you keep your old credentials after installation; they may be required to access data in persistent volume claims. You may encounter the following error.
+Password failure happens when the current credentials are not used to authenticate. To avoid this problem, make sure you keep your old credentials after installation; they may be required to access data in persistent volume claims. You may encounter the following error.
 
 Note: This error should not surface in charts 0.2.93 or newer.
    ```
@@ -20,9 +17,9 @@ Note: This error should not surface in charts 0.2.93 or newer.
                     Further information can be obtained at https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues/#credential-errors-while-upgrading-chart-releases
    ```
 
-### Solution
+### Solutions
 
-### Set the root password
+#### Set the root password
 
 Specify the `auth.rootPassword` value. This field must not be empty. 
 
@@ -44,7 +41,7 @@ Specify the `auth.rootPassword` value. This field must not be empty.
    helm upgrade <chartname> <chartsource> -n <namespace> -f override.yaml --set harness.platform.minio.auth.rootPassword=$ROOT_PASSWORD
    ```
    
-### Update the oldvalues.yaml file
+#### Update the oldvalues.yaml file
 
 If you've already set the `auth.rootPassword` value one time, you can update and remove the oldvalues.yaml file.
 
@@ -54,7 +51,7 @@ If you've already set the `auth.rootPassword` value one time, you can update and
    helm get values <chartname> -n <namespace> > oldvalues.yaml
    ```
 
-2. Edit the oldvalues.yaml file to include the new values. The file should include the encrypted minio password.
+2. Edit the oldvalues.yaml file to include the new values. The file should include the encrypted MinIO password.
 
 3. Upgrade the file:
 
