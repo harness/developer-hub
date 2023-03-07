@@ -36,7 +36,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
  Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
 
-* Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables of different billing account IDs in the same dataset. (CCM-11244)
+* Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
 * Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
 
 ## February 23, 2023, version 78507

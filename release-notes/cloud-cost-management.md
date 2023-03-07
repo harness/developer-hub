@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-02-22T10:00
+date: 2023-03-07T10:00
 sidebar_position: 5
 ---
 
@@ -16,17 +16,17 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 ## March 6, 2023
 
 ### What's new
-This release does not include new features.
+This release does not include any new features.
 
 
 ### Early access
-This release does not include early access features.
+This release does not include any early access features.
 
 
 ### Fixed issues
 * The ECS service billing data was missing in the Perspectives. (CCM-11464)
 
-   This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any error.
+   This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any errors.
 
 
 * The `ANOMALY_DETECTION_CLOUD` job responsible for displaying Cloud Anomalies was not being executed in accounts without a cluster connector.  (CCM-11228)
@@ -41,19 +41,19 @@ This release does not include early access features.
 
 ### What's new
 
-* Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables of different billing account IDs in the same dataset. (CCM-11244)
+* Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
 * Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
 
 
 ### Early access
 
-This release does not include early access features.
+This release does not include any early access features.
 
 
 ### Fixed issues
-* Previously, the **Start Date** selected when creating a budget was not being saved and instead the date of budget creation was being displayed as the Start Date. (CCM-10952)
+* Previously, the **Start Date** selected when creating a budget was not being saved and instead the date of budget creation was being displayed as the **Start Date**. (CCM-10952)
   
-  This issue is fixed now, and the Start Date selected during budget creation is now being saved correctly.
+  This issue is fixed now, and the **Start Date** selected during budget creation is now being saved correctly.
 * Previously, even when the **Cascading** option was turned off, the budget amount was being equally divided among all the budgets in the group.  (CCM-10950)
 
   This issue is fixed now. The budget amount is no longer being distributed among individual budgets, ensuring that the budget amount of each budget remains unchanged.
@@ -69,7 +69,7 @@ This release does not include early access features.
 
 ### Early access
 
-This release does not include early access features.
+This release does not include any early access features.
 
 
 ### Fixed issues
@@ -94,11 +94,11 @@ This release does not include early access features.
 
 ### What's new
 
-  This release does not include new features.
+  This release does not include any new features.
 
 ### Early access
 
-  This release does not include early access features.
+  This release does not includeany early access features.
 
 ### Fixed issues
 
@@ -118,11 +118,11 @@ This release does not include early access features.
 
 ### What's new
 
-  This release does not include new features.
+  This release does not include any new features.
 
 ### Early access
 
-  This release does not include early access features.
+  This release does not include any early access features.
 
 ### Fixed issues
 
@@ -135,7 +135,7 @@ This release does not include early access features.
 ## January 4, 2023
 
 ### What's new
-This release does not include new features.
+This release does not include any new features.
 
 
 ### Early access
@@ -149,7 +149,7 @@ This release does not include new features.
 
 
 ### Fixed issues
-This release does not include fixed issues.
+This release does not include any fixed issues.
 
 
 
@@ -164,7 +164,7 @@ This release does not include fixed issues.
   
 ### Early access
 
-
+  This release does not include any early access features.
   
 
 ### Fixed issues
