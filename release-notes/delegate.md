@@ -30,7 +30,7 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-The new delegate installation wizard is now available in all delegate installation worfklows (DEL-5989)
+The new delegate installation wizard is now available in all delegate installation worfklows. (DEL-5989)
 
 
 ## February 23, 2023, Harness version 78507, Harness Delegate version 78500
