@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2023-02-23T10:00
+date: 2023-03-07T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -31,7 +31,7 @@ This release does not include new features.
 
 - The **Default Settings** category is selected when a user selects the **GitOps** category. (CDS-53975)
 
-  The **Default Settings** and **Gitops** categories should not both be selected when the **Gitops** category is selected.
+  The **Default Settings** and **GitOps** categories should not both be selected when the **GitOps** category is selected.
   
   The UI is now fixed so that only the **GitOps** category is selected.
 - Users are unable to fetch Google Artifact Registry (GAR) artifacts with package names that use `/`.	(CDS-53908)
@@ -65,7 +65,7 @@ This release does not include new features.
  
 - The environment's **Service Overrides** were not operating additively. (CDS-53373)
   
-  You can override specific service settings using the [Service Overrides settings](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
+  You can override specific service options using the [Service Overrides settings](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
 
   ![Service Overrides settings](static/88805f0c3a1feca13b5437edbd6c7574e8f540a6e9ffe07f760a450546c93c41.png)
 
@@ -95,9 +95,7 @@ This release does not include new features.
   The trigger event history for the first trigger was not deleted. This resulted in showing the stale information when a new trigger with the same identifier was used.
   
   Now, once a trigger delete succeeds, the event history for the trigger is deleted as well. This cleans up all the information related to the deleted trigger.
-- Empty string inputs in triggers were treated as objects.(CDS-53078)
-  
-  Empty string inputs caused errors when a runtime input was expecting an object.
+- Empty string inputs caused errors when a runtime input was expecting an object. (CDS-53078)
   
   Now Harness allows empty strings in this case. This applies to inputs in services, environments, service overrides, and infrastructures.
 - Kubernetes API calls were ignoring the proxy username and password. (CDS-48646)
