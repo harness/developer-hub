@@ -6,11 +6,13 @@ description: Troubleshoot a Helm upgrade failure in Self-Management Enterprise E
 
 ## Helm upgrade failure
 
-Helm upgrade failures commonly occur when the current credentials are not used to authenticate. To avoid this problem, make sure you keep your old credentials after reinstallation; they may be required for persistent volume claims.
+This topic provides solutions for upgrade problems related to Helm.
 
 
-## Error
+## Minio password failure
+It happens when the current credentials are not used to authenticate. To avoid this problem, make sure you keep your old credentials after installation; they may be required to access data in persistent volume claims. You may encounter the following error.
 
+Note: This error should not surface in charts 0.2.93 or newer.
    ```
    UPGRADE FAILED: execution error at (harness-demo/charts/harness/charts/platform/charts/minio/templates/NOTES.txt:91:4): 
    PASSWORDS ERROR: You must provide your current passwords when upgrading the release.
@@ -18,7 +20,7 @@ Helm upgrade failures commonly occur when the current credentials are not used t
                     Further information can be obtained at https://docs.bitnami.com/general/how-to/troubleshoot-helm-chart-issues/#credential-errors-while-upgrading-chart-releases
    ```
 
-## Solution
+### Solution
 
 ### Set the root password
 

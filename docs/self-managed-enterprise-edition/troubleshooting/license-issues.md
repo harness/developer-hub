@@ -3,7 +3,7 @@ title: License issues
 description: Troubleshoot license issues in Self-Managed Enterprise Edition
 ---
 
-Use the following processes to identify and troubleshoot license issues.
+License issues can happen even after you have applied the license via helm values file. Use the following processes to identify and troubleshoot license issues.
 
 
 ## Check for a NextGen license
@@ -39,7 +39,7 @@ Use the following steps to confirm that your Harness installation includes a Nex
    ```
    use ng-harness
    db.moduleLicenses.find({})
-
+6. If the licenses are present in database, then proceed with `Refresh a NextGen license`
 ## Refresh a NextGen license
 
 Use the following strategies to refresh a NextGen license.

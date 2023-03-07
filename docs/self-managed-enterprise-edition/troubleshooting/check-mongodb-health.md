@@ -10,7 +10,7 @@ Use these instructions to check the health of MongoDB before using Helm to insta
 In the following command sequence, replace `harness-smp1` with your namespace. 
 
 ```
-ns=<harness-smp1>
+ns=<namespace>
 MONGODB_USERNAME=admin;
 MONGODB_PASSWORD=$(echo `kubectl -n $ns get secret mongodb-replicaset-chart -o yaml |grep mongodb-root-password |cut -d : -f2 | head -1 |base64 -d`)
 MONGO_URI="mongodb://$MONGODB_USERNAME:$MONGODB_PASSWORD@mongodb-replicaset-chart-0.mongodb-replicaset-chart.$ns.svc,mongodb-replicaset-chart-1.mongodb-replicaset-chart.$ns.svc,mongodb-replicaset-chart-2.mongodb-replicaset-chart.$ns.svc:27017/harness?replicaSet=rs0&authSource=admin"
