@@ -51,7 +51,11 @@ The change summary displays the number of changes in deployments, infrastructure
 
 The overall health score timeline is a graphical overview of the health of a service over a specified time period. The graph is divided into time slots of equal length. The span of each division depends on the time period setting. The graph displays change in deployments, infrastructures, and feature flags. It also displays incidents. The graph helps you correlate data over a time period and analyze the impact of change on the reliability of the service.
 
-The total health score is calculated based on deployment and infrastructure modification change events, as well as incidents. The health score ranges from 0 and 100.
+Health scores range from 0 to 100. The total health score calculation is based on the following:
+
+- Incidents
+- Events associated with deployments
+- Events associated with infrastructure changes
 
 
 #### Time Window
