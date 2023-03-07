@@ -1,9 +1,8 @@
 ---
 title: Run a Drone Plugin in CI
 description: A plugin is a Docker container that performs a predefined task. Plugins are essentially templated scripts that can be written in any programming language. The Drone community maintains an extensive l…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+
+sidebar_position: 10
 helpdocs_topic_id: fjagoj8mez
 helpdocs_category_id: ei5fgqxb0j
 helpdocs_is_private: false

@@ -1,11 +1,14 @@
 ---
-sidebar_position: 100
-description: Use an Action plugin to run GitHub Actions
-slug: /build-code/ci-github-action-step
+title: Github Action plugin step settings
+description: Run Github Actions in your Harness CI pipelines.
+sidebar_position: 1
 ---
 
+:::info
 
-# Github action step
+Only Harness Cloud.
+
+:::
 
 GitHub Actions let you create custom actions that can perform predefined tasks. These predefined tasks range from cloning a codebase to building a Docker image and security scanning images. Previously-created actions are present on the [GitHub marketplace](https://github.com/marketplace?type=actions), with a rich support of over 10k actions.
 
