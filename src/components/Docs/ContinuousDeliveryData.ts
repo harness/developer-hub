@@ -32,7 +32,7 @@ export const featuredTutorials: CardItem[] = [
   // Docs
   export const docsCards: CardSections = [
     {
-      name: "Continuous Delivery & GitOps Docs",
+      name: "Continuous Delivery & GitOps",
       description:
         "These are prudent topics to Continuous Delivery.",
       list: [
