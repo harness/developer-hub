@@ -8,11 +8,11 @@ You can run builds on Harness-hosted machines or your own infrastructure.
 
 ## Harness Cloud
 
-With Harness Cloud you can run builds in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
+With Harness Cloud your builds run in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on developing software instead of maintaining build farms.
 
-Harness Cloud is available with all CI plans, and you can start using Harness Cloud in minutes. Just select the **Harness Cloud** option and the desired **Platform** in your **Build** stage's infrastructure. For more information, including machine specifications, go to [Get started with Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md).
+Harness Cloud is available with all CI plans. For more information, go to [Use Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
 
 ## Self-hosted options
 
