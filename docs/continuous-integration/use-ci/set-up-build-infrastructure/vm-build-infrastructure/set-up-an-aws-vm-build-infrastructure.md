@@ -180,7 +180,7 @@ services:
     environment:  
       - ACCOUNT_ID=XXXXXXXXXXXXXXXX  
       - DELEGATE_TOKEN=XXXXXXXXXXXXXXXX  
-      - MANAGER_HOST_AND_PORT=https://qa.harness.io  
+      - MANAGER_HOST_AND_PORT=https://app.harness.io  
       - WATCHER_STORAGE_URL=https://app.harness.io/public/qa/premium/watchers  
       - WATCHER_CHECK_LOCATION=current.version  
       - REMOTE_WATCHER_URL_CDN=https://app.harness.io/public/shared/watchers/builds  
@@ -381,7 +381,7 @@ services:
           memory: 2048M  
     image: harness/delegate:latest  
     environment:  
-      - MANAGER_HOST_AND_PORT=https://qa.harness.io  
+      - MANAGER_HOST_AND_PORT=https://app.harness.io  
       - WATCHER_STORAGE_URL=https://app.harness.io/public/qa/premium/watchers  
       - WATCHER_CHECK_LOCATION=current.version  
       - REMOTE_WATCHER_URL_CDN=https://app.harness.io/public/shared/watchers/builds  
