@@ -60,6 +60,12 @@ The entry point takes precedence over any commands in the **Command** field.
 
 [POSIX](https://www.grymoire.com/Unix/Sh.html) shell script commands (beyond the entry point) executed inside the container.
 
+:::tip
+
+You can use `docker-compose up` to start multiple services in one Background step.
+
+:::
+
 ## Additional Configuration
 
 Use these optional settings to add additional configuration to the step. Settings considered optional depend on the stage's **Infrastructure** settings. Not all options are available for all build infrastructure types.
@@ -94,14 +100,15 @@ If the service is running in a container, you can select an option to set the pu
 
 ### Port Bindings
 
-Depending on the Build stage's **Infrastructure**, some steps might run on a bare-metal VM while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: bare-metal steps use the **Host Port** and containerized steps use the **Container Port**.
+Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: VMs use the **Host Port** and containerized steps use the **Container Port**.
 
 <details>
 <summary>Port Bindings example</summary>
 
 Assume you create a Background step with the **Name** and **Id** `myloginservice`.
-- A containerized step talks to this service using `myloginservice:*****container\_port*`.
-- A Run or Run Test step that runs directly on a VM or in a Kubernetes cluster talks to the service using `localhost:*****host\_port*`.
+
+- A containerized step talks to this service using `myloginservice:container_port`.
+- A step, such as a Run or Run Test step, that runs directly on the VM or in a Kubernetes cluster talks to the service using `localhost:host_port`.
 
 </details>
 
