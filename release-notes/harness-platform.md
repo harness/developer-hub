@@ -42,7 +42,7 @@ This release does not include any early access feature.
 
 - The execution of a chained pipeline with triggers fails with the error "User is not authorized". (PL-31594,ZD-39808,39954,40294,40337,40662)
   A code enhancement has fixed this issue.
-- During search, an incorrect message is displayed in the pipeline chaining selection window if no pipeline is found. (PIE-8526)
+- During search, an incorrect message is displayed in the pipeline chaining selection window if no pipeline matches the selection criteria. (PIE-8526)
   The message now includes information about the scope and repository.
 - On the **Input Sets** page, the **Clone** option is disabled. (PIE-8373)
   The option has been removed.  
