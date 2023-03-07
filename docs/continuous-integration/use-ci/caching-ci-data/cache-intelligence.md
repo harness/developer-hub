@@ -52,9 +52,7 @@ For example:
 
 ### Customize cache paths
 
-Cache Intelligence stores cache data in the `/harness` directory by default. You can specify cache locations within this directory or add cache locations outside this directory.
-
-To add cache paths within the `/harness` directory, add a list of `paths` to your pipeline's YAML, for example:
+Cache Intelligence stores cache data in the `/harness` directory by default. You can specify cache locations within this directory or add cache locations outside this directory. To do this, add a list of `paths` to your pipeline's YAML, for example:
 
 ```yaml
     - stage:
@@ -66,11 +64,12 @@ To add cache paths within the `/harness` directory, add a list of `paths` to you
             enabled: true
             paths:
               - /harness/node-modules
+              - /my-cache-directory/module-cache-1
           cloneCodebase: true
 ...
 ```
 
-To add cache paths outside the `/harness` directory, you must specify them as shared paths. In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
+If your cache path is outside the `/harness` directory, you must specify also specify this as a shared path. In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
 
 ```yaml
     - stage:
@@ -81,7 +80,8 @@ To add cache paths outside the `/harness` directory, you must specify them as sh
           caching:
             enabled: true
             paths:
-              - /my-cache-directory/node-modules
+              - /harness/node-modules
+              - /my-cache-directory/module-cache-1
           cloneCodebase: true
           execution:
             steps:
@@ -93,7 +93,7 @@ To add cache paths outside the `/harness` directory, you must specify them as sh
             type: Cloud
             spec: {}
           sharedPaths:
-            - /my-cache-directory/node-modules
+            - /my-cache-directory/module-cache-1
 ```
 
 ## Cache Intelligence API
