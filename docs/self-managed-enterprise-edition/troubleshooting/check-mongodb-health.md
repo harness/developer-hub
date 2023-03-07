@@ -1,11 +1,9 @@
 ---
 title: Check MongoDB health 
-description: How to check for MongoDB health before Helm-based installation
+description: How to check for MongoDB health before a Helm-based installation.
 ---
 
-## Check MongoDB health
-
-Use these instructions to check the health of MongoDB before using Helm to install Self-Managed Enterprise Edition.
+Use these instructions to check the health of MongoDB before using Helm to install Harness Self-Managed Enterprise Edition.
 
 In the following command sequence, replace `harness-smp1` with your namespace. 
 
@@ -28,9 +26,9 @@ source: mongodb-replicaset-chart-2.mongodb-replicaset-chart.harness-smp1.svc.clu
 	1 secs (0 hrs) behind the primary 
 ```
 
-In this example, the first source is 2 seconds behind the primary; the second source is 1 second behind the primary. If the `syncedTo` value is excessive, consider troubleshooting your installation of MongoDB.
+In this example, the first source is two seconds behind the primary; the second source is one second behind the primary. If the `syncedTo` value is excessive, consider troubleshooting your installation of MongoDB.
 
-## Create primary replica of database as admin
+## Create a primary replica of the database as admin
 
 Use the following script to create a primary replica of your database:
 
