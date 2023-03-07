@@ -22,6 +22,8 @@ Pipelines are comprised of stages and steps.
 
 A CI stage is a subset of a pipeline that contains one major segment of the CI workflow. A **Build** stage includes steps for building, pushing, and testing your code. The codebase included in the first stage in a pipeline can be shared with later stages. This reduces redundancy and simplifies pipeline creation. For more information, go to [CI stage settings](../ci-technical-reference/ci-stage-settings.md).
 
+All stages have a designated build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me?](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md)
+
 ### Steps
 
 A stage contains one or more steps. Each step is a series of commands that perform a task. For example, A **Build and Push** step builds an image and pushes it to a cloud repo, a **Run** step runs a series of shell commands, and so on.
