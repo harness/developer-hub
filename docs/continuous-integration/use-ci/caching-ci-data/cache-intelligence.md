@@ -12,7 +12,7 @@ There are several ways to configure caching, such as save/restore cache steps an
 
 With Cache Intelligence, Harness can automatically cache and restore common dependencies, making it easy to start using caching in your pipelines. You don't need to bring your own storage, because we store the cache in Harness Cloud, our hosted environment.
 
-## Supported build infrastructure and tools
+## Supported build infrastructures and tools
 
 Currently, Cache Intelligence is available only when using [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), the Harness-hosted build environment.
 
