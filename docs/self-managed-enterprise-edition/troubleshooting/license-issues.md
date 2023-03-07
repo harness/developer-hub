@@ -1,10 +1,9 @@
 ---
 title: License issues
-description: Troubleshoot license issues in Self-Managed Enterprise Edition
+description: Troubleshoot license issues in Harness Self-Managed Enterprise Edition.
 ---
 
-License issues can happen even after you have applied the license via helm values file. Use the following processes to identify and troubleshoot license issues.
-
+License issues can happen even after you have applied the license via a Helm values file. Use the following processes to identify and troubleshoot license issues.
 
 ## Check for a NextGen license
 
@@ -39,14 +38,16 @@ Use the following steps to confirm that your Harness installation includes a Nex
    ```
    use ng-harness
    db.moduleLicenses.find({})
-6. If the licenses are present in database, then proceed with `Refresh a NextGen license`
+   
+6. If the licenses are present in the database, then proceed with `Refresh a NextGen license`
+
 ## Refresh a NextGen license
 
 Use the following strategies to refresh a NextGen license.
 
 ### Discard the redis cache for the NextGen license
 
-Use the following commands to discard the `redis` cache for the NG license
+Use the following commands to discard the `redis` cache for the NG license.
 
 1. Retrieve the `redis` master host:
 
@@ -68,7 +69,7 @@ Use the following commands to discard the `redis` cache for the NG license
    kubectl exec -it <Service-From-Previous-Step> -n <namespace> -- redis-cli del "hCache/NGLicense" "jcache_timeout_set:{hCache/NGLicense}"
    ```
 
-   Reload the UI.
+4. Reload the UI.
 
 If this does not refresh the license:
 
