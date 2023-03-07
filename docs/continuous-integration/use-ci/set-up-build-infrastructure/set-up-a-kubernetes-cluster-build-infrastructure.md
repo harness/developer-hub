@@ -73,28 +73,28 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/wUC23lmqfnY/hqdefault.jpg"><iframe width=" 200" height="150" src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
 
 
-## Step 1: Create a Kubernetes Cluster
+## Step 1: Create a Kubernetes cluster
 
-Make sure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements) and Harness-specific [permissions required for CI](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required).
+Make sure your Kubernetes cluster meets the build infrastructure requirements in the [CI cluster requirements](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements) and the Harness-specific [permissions required for CI](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required).
 
-You need to install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI Pipeline.
+You need to install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI pipeline.
 
 For instructions on creating clusters, go to:
 
 * [Creating a cluster in Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
 * [Creating a cluster in GKE (Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster))
 
-## Step 2: Add the Kubernetes Cluster connector and install the Delegate
+## Step 2: Add the Kubernetes cluster connector and install the Delegate
 
 1. In your Harness **Project**, select **Connectors** under **Project Setup**.
 2. Select **New Connector**, and then select **Kubernetes cluster**.
 3. Enter a name for the connector and select **Continue**.
-4. Harness can connect to your Kubernetes cluster through a master URL and credentials or through a Harness Delegate. Select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
+4. Select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
 5. Select **Install new Delegate**.
 
    ![](./static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
 
-6. Usually it makes sense to install and run the Delegate on a pod in your Kubernetes build infrastructure. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
+6. Install the Delegate on a pod in your Kubernetes build infrastructure. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
 7. After installing the delegate, return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
 8. In your Kubernetes Cluster connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.
 9. Select your new Kubernetes delegate, and then select **Save and Continue**.
@@ -102,7 +102,7 @@ For instructions on creating clusters, go to:
 
 ## Step 3: Define the Build Farm Infrastructure in Harness
 
-In this step, you set up your build infrastructure using the Connector and Delegate you added previously. 
+In this step, you set up your build infrastructure using the Connector and Delegate you added previously.
 
 In the CI stage Infrastructure, select the Kubernetes Cluster Connector you created in the previous step.
 

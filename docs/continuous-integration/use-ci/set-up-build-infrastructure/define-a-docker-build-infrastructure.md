@@ -22,7 +22,7 @@ Use the following modifications along with the **Docker environment** instructio
 * Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `macos-amd64`, `macos-arm64`, `windows-amd64`, `linux-amd64`, `linux-arm64`.
 * For macOS, add `-e RUNNER_URL=http://host.docker.internal:3000`.
 * For Linux, add `--net=host` to the first line.
-* For Windows, add `-e RUNNER_URL=http://<windows-machine-hostname-or-ip>:3000`. For Windows, the Drone Runner must run on a separate machine than the one that your Delegate will run on. This variable must point to the machine where you will run the Drone Runner.
+* For Windows, add `-e RUNNER_URL=http://<windows-machine-hostname-or-ip>:3000`. For Windows, the Drone Runner must run on a separate machine than the one that your Delegate runs on. This variable must point to the Drone Runner's machine.
 
 Here's an example of an install script for Linux:
 

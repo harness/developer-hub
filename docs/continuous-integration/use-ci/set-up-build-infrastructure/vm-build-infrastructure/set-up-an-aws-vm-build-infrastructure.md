@@ -136,7 +136,7 @@ Later in this workflow, you'll reference the pool identifier in the Harness Mana
 4. Enter a **Delegate Name**. Optionally, you can add **Tags** or **Delegate Tokens**. Then, select **Continue**.
 5. Select **Download YAML file** to download the `docker-compose.yaml` file to your local machine.
 
-The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM. Next, you'll add the Runner spec to the Delegate definition.
+Next, you'll add the Runner spec to the Delegate definition. The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
 
 6. Copy your local **docker-compose.yaml** file to the `/runner` folder on the AWS VM. This folder should now have both `docker-compose.yaml` and `.drone_pool.yml`.
 7. Open `docker-compose.yaml` in a text editor.
@@ -231,11 +231,11 @@ For more information on Harness Docker Delegate environment variables, go to the
    $ docker-compose -f docker-compose.yml up -d
    ```
 
-4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start. For example:
+4. Verify that both containers are running correctly. For example, wait a few minutes for both processes to start, and then run the following commands:
 
    ```
-   $ docker ps  
-   $ docker logs <delegate-container-id>  
+   $ docker ps
+   $ docker logs <delegate-container-id>
    $ docker logs <runner-container-id>
    ```
 
