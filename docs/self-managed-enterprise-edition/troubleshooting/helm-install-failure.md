@@ -1,14 +1,12 @@
 
 ---
-title: Helm install failure
-description: Troubleshoot install failure in Self-Management Enterprise Edition
+title: Helm installation failures
+description: Troubleshoot installation failures in Harness Self-Management Enterprise Edition.
 ---
-
-## Helm install failure
 
 This topic provides solutions for installation problems related to Helm.
 
-### Ingress-controller port already allocated
+## Ingress-controller port already allocated
 
 This error occurs when there is an attempt to deploy multiple `helm-charts` in the same cluster or when the `ingress-controller` service is already mapped to port 32500. For example:
 
@@ -23,7 +21,7 @@ The fix for this issue is included in `helm-charts` and is as follows:
 
 - Set `.Values.global.ingress.nginx.httpsNodePort` to 32506, or to any unused port.
 
-#### Example
+### Example
 
 ```
 nginx:
