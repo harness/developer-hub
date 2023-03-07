@@ -13,6 +13,21 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March XX, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags UI
+
+- Fixed an issue where the flag name was displayed in onboarding examples instead of the required flag identifier. (FFM-6921)
 
 ## March 02, 2023
 
@@ -94,7 +109,7 @@ This release does not include new features.
 This release does not include early access features.
 
 ### Fixed issues
-#### Feature Flags on the Harness Platform
+#### Feature Flags UI
 
 The **Complete** button at the end of the onboarding flow was always enabled. Now, it is disabled until the user receives a successful evaluation. (FFM-5987)
 
@@ -195,7 +210,7 @@ This release does not include new features.
 This release does not include early access features.
 
 ### Fixed issues
-#### Feature Flags on the Harness Platform
+#### Feature Flags UI
 If you changed the environment, and then opened the **Pipeline** tab or **Environment** tab on a second screen, the environment you set defaulted to the original one. This has been fixed and the environment you select is consistent through all tabs. 
 
 
@@ -210,7 +225,7 @@ This release does not include new features.
 This release does not include early access features.
 
 ### Fixed issues
-#### Feature Flags on the Harness Platform
+#### Feature Flags UI
 
 - Fixed a bug that prevented a completion tick from appearing in the UI after an evaluation had successfully passed. (FFM-6127)
 
@@ -234,7 +249,7 @@ This release does not include new features.
 This release does not include early access features.
 
 ### Fixed issues
-#### Feature Flags on the Harness Platform
+#### Feature Flags UI
 
 Resolved an issue that caused the edit section of a pipeline not to load on the Feature Flag module. (FFM-5948)
 
@@ -250,7 +265,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-**Feature Flags on the Harness Platform**
+**Feature Flags UI**
 
 Fixed a bug where target names were labelled "UNDEFINED" on the Harness UI if the name contained spaces. (FFM-5866)
 
@@ -274,7 +289,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-**Feature Flags on the Harness Platform**
+**Feature Flags UI**
 
 - Fixed a UI bug where the dialog box during the flag creation was shorter in length than it should be. (FFM-5509)
 
@@ -327,7 +342,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-**Feature Flags on the Harness Platform**
+**Feature Flags UI**
 
 - Minor UI bug resolved in which buttons for creating Flags were sometimes pushed out of the browser view. (FFM-5336)
 
@@ -372,7 +387,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-**Feature Flags on the Harness Platform**
+**Feature Flags UI**
 
 When submitting an invalid YAML file for Feature Flag steps in a Pipeline, you now receive an error describing why the YAML is invalid. Previously the incorrect YAML was accepted and only showed a general error during pipeline execution. (FFM-4557)
 
@@ -404,7 +419,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-**Feature Flags on the Harness Platform**
+**Feature Flags UI**
 
 - Added validation messages to Flag pipelines to ensure you know which fields must be completed for your pipeline to run successfully. (FFM-3176)
 
@@ -661,7 +676,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-**Feature Flags on the Harness Platform**
+**Feature Flags UI**
 
 - When creating a stage on pipeline template, Name and Description fields were displayed . (FFM-4098)
 
@@ -695,7 +710,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-**Feature Flags on the Harness Platform**
+**Feature Flags UI**
 
 - On the Harness Platform, when no Environment had been added to a project, the tooltip for a Flag toggle was displaying HTML. (FFM-4094)
 
@@ -730,7 +745,7 @@ This release does not include early access features.
 
   This has been fixed and the extra symbols have been removed.
 
-- On the Harness Platform, when adding a Flag to a Target, some text boxes did not adjust to fit the full width of the table. (FFM-4055)
+- On the Feature Flags UI, when adding a Flag to a Target, some text boxes did not adjust to fit the full width of the table. (FFM-4055)
 
   This has now been fixed and the text boxes adjust as necessary.
 
