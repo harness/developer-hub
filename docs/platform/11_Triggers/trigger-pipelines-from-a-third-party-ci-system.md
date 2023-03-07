@@ -48,7 +48,7 @@ Make sure you have:
    
     ![](./static/custom-webhook-trigger-configuration.png)
 
-5. In **Conditions**, specify any [conditions](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/) you want met before running the pipeline, and select **Continue**. 
+5. In **Conditions**, specify any [conditions](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/) to be met before running the pipeline, and select **Continue**. 
    
     For example, execute the pipeline if the source or target branch name matches a pattern.
 
