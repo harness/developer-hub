@@ -15,7 +15,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_cd.svg`} />
-            <h1>Continuous Delivery</h1>
+            <h1>Continuous Delivery & GitOps Docs</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/deploy-services">
