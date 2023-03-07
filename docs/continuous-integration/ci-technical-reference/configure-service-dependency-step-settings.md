@@ -108,7 +108,7 @@ For a useful summary of ENTRYPOINT and CMD, see [Demystifying ENTRYPOINT and CMD
 
 #### Port Bindings
 
-When a Pipeline runs in an AWS build infrastructure, some Steps might run on a VM and others run in a container. The port used to communicate with the Service Dependency depends on where the Step is running: VM steps use the Host Port and containerized steps use the Container Port.
+Depending on a pipeline's build infrastructure, some steps might run on a VM and others run in a container. The port used to communicate with the Service Dependency depends on where the step is running: VM steps use the Host Port and containerized steps use the Container Port.
 
 Suppose you create a Service Dependency with the Name and Id `myloginservice`.
 

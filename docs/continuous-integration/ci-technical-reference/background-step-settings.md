@@ -100,7 +100,7 @@ If the service is running in a container, you can select an option to set the pu
 
 ### Port Bindings
 
-Depending on the Build stage's **Infrastructure**, some steps might run on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: VMs use the **Host Port** and containerized steps use the **Container Port**.
+Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: VMs use the **Host Port** and containerized steps use the **Container Port**.
 
 <details>
 <summary>Port Bindings example</summary>
