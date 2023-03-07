@@ -16,6 +16,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+
 ## March 2, 2023
 
 ### Security Testing Orchestration
@@ -26,6 +27,17 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - The Mend integration now supports SCA scans. (STO-5242)
 - Bandit scan results have been enhanced. When you open the Details pane for a detected issue, the Raw Details JSON now includes links to further information under `_rawIssueCwe : link` and `_rawMoreInfo`. (STO-5422)
 - 
+
+## March 1, 2023
+
+### Cloud Cost Management
+
+* AutoStopping Proxy for HTTPS and TCP connections.
+
+ Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
+
+* Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables of different billing account IDs in the same dataset. (CCM-11244)
+* Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
 
 ## February 23, 2023, version 78507
 

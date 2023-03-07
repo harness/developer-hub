@@ -13,6 +13,52 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 6, 2023
+
+### What's new
+This release does not include new features.
+
+
+### Early access
+This release does not include early access features.
+
+
+### Fixed issues
+* The ECS service billing data was missing in the Perspectives. (CCM-11464)
+
+   This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any error.
+
+
+* The `ANOMALY_DETECTION_CLOUD` job responsible for displaying Cloud Anomalies was not being executed in accounts without a cluster connector.  (CCM-11228)
+  
+   This issue has been fixed, and anomalies are now computed even in the absence of a cluster connector.
+* Previously, when attempting to delete a Recommendation filter, an error message would appear.(CCM-11300)
+
+   This issue has been fixed now, and you can successfully delete a Recommendation filter without any error messages. 
+
+
+## March 1, 2023
+
+### What's new
+
+* Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables of different billing account IDs in the same dataset. (CCM-11244)
+* Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
+
+
+### Early access
+
+This release does not include early access features.
+
+
+### Fixed issues
+* Previously, the **Start Date** selected when creating a budget was not being saved and instead the date of budget creation was being displayed as the Start Date. (CCM-10952)
+  
+  This issue is fixed now, and the Start Date selected during budget creation is now being saved correctly.
+* Previously, even when the **Cascading** option was turned off, the budget amount was being equally divided among all the budgets in the group.  (CCM-10950)
+
+  This issue is fixed now. The budget amount is no longer being distributed among individual budgets, ensuring that the budget amount of each budget remains unchanged.
+* If a health check status code is not entered for the AutoStopping proxy, Harness falls back to using the default range of 200-299. (CCM-11007)
+
 ## February 20, 2023
 
 ### What's new
@@ -182,7 +228,7 @@ NA
 
 ### What's new
 
-NA
+This release adds validation to ensure that the load balancer domain name specified in the YAML file to create an AutoStopping rule is valid and exists in your Harness account. (CCM-9101)
 
 ### Early access
 
