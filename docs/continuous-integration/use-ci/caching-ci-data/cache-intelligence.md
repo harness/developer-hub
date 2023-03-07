@@ -25,6 +25,7 @@ Note the following:
 
 To enable Cache Intelligence on a CI Build stage, add the following lines to the stage YAML definition: 
 
+<!-- change this -->
 ```yaml
     - stage:
         name: Build Jhttp
