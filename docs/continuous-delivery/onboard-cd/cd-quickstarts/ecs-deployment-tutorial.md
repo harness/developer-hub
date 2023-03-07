@@ -335,6 +335,12 @@ The Task Definition is added to the Service.
 
 ## Add the Service Definition
 
+:::note
+
+Ensure that the Service Definition `services` array (`{"services": []}`) is removed from the Service Definition you use in Harness. When you copy a Service Definition from ECS the `services` array is typically included.
+
+:::
+
 Harness has full support for ECS Service definitions. You simply provide Harness with a service definition and it will implement it.
 
 If you are new to ECS, please review the AWS documentation on [ECS Service Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_parameters.html).
