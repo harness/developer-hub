@@ -10,9 +10,10 @@ helpdocs_is_published: true
 
 Access management for resources is a critical function for your accounts, organizations, and projects.
 
-Role-based access control is a security model that restricts access to your resources based on the roles assigned to a principal.
+Role-based access control(RBAC) refers to the idea of assigning permissions to a principal based on its role within an account, organization, or project. It offers a simple, manageable approach to access management that is less prone to error than assigning permissions to users individually.
 
-It is an authorization system that provides fine-grained access management of Harness resources.
+RBAC is an authorization system that provides fine-grained access management of your Harness resources. When using RBAC for access management, you analyze the needs of your users and group them into roles based on common responsibilities. You then assign role(s) to each principal with associated permission(s) that can be performed on resource(s). With principal, role, and resource group relationships, it is easier to manage access control since you don't have to manage users individually.
+
 
 ### RBAC scope
 
