@@ -64,7 +64,7 @@ This option is available only with paid CI plans.
 
 Your build infrastructure can use VMs from a PaaS provider, including AWS, Microsoft Azure, GCP, and Anka (for macOS build farms).
 
-To learn more about VM build infrastructures, go to [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures)
+To learn more about VM build infrastructures, go to [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
 ```mdx-code-block
   </TabItem>
