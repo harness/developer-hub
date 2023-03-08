@@ -640,6 +640,8 @@ This release does not include early access features.
 
 ### Fixed issues
 
+#### Feature Flag SDKs
+
 The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
 - The package name for the SDK has changed from ff-netF48-server-sdk to ff-dotnet-server-sdk. To use this version, make sure you remove the old package name and use the new one.
@@ -663,6 +665,12 @@ The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
 - When evaluating Target Groups that used an IN operator, the SDK was only evaluating the first Target. (FFM-4358)
   The logic has now been fixed so that the SDK will check all values when an IN operator is used for a Target Group.
+
+#### Relay proxy
+
+* The proxy had a dependency on a JWT package that is no longer maintained. This fix updated the JWT dependency to a package that is maintained. (FFM-3867)
+* The proxy had a dependency on ff-server, which is in a private repository. This fix removed the dependency on ff-server. (FFM-3965)
+* Harness provided a tool to generate offline config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
 
 ## August 18, 2022
 
