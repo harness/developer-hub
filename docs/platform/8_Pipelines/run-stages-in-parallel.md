@@ -34,7 +34,7 @@ Navigate between the stages by hovering over them and selecting the stage.
 
 ![](./static/run-stages-in-parallel.png)
 
-A [Resource Constraint](../../continuous-delivery/cd-deployments-category/deployment-resource-constraints.md) step is added to every stage automatically to make sure that two infrastructures are not being deployed concurrently. Hence, one of the two parallel stages will deploy first. Once the deployment of the winning stage finishes, the other stages will start.
+A [resource constraint](../../continuous-delivery/cd-deployments-category/deployment-resource-constraints.md) step is added to every stage automatically to make sure that you are not using two infrastructures simultaneously. Hence, one parallel stage executes first. Once the execution of the first stage finishes, the other stage(s) will start.
 
 You can deploy multiple services to multiple environments in a single stage (for more information, go to [Use multiple services and environments in a deployment](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/multiserv-multienv/)). However, running multi-service stages in parallel will deploy each service to each environment in parallel. This can become very complicated. For such use cases, we recommend using multiple stages.
 
