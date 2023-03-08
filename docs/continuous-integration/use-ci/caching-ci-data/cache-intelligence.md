@@ -1,16 +1,12 @@
 ---
 title: Cache Intelligence
-description: Set up your pipeline to cache build dependencies automatically.
+description: Caching dependencies can improve build times.
 sidebar_position: 20
 ---
 
-Caching dependencies is an effective way to speed up your build.
+Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
-Modern continuous integration systems execute pipelines inside ephemeral environments, such as a container or virtual machine, that is provisioned solely for pipeline execution and is not reused from a prior execution. As builds often require downloading and installing many dependencies, such as libraries and other software components, caching these dependencies can save a significant amount of time.
-
-There are several ways to configure caching, such as save/restore cache steps and mounting volumes, which require users to enable caching and manage the cache itself.
-
-With Cache Intelligence, Harness can automatically cache and restore common dependencies, making it easy to start using caching in your pipelines. You don't need to bring your own storage, because we store the cache in Harness Cloud, our hosted environment.
+There are several ways to configure caching in Harness CI: save and restore cache steps, mounting volumes, and Cache Intelligence. Mounting volumes or using save and restore cache steps requires you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Also, you don't need to bring your own storage with Cache Intellgience, because we store the cache in our hosted environment, Harness Cloud.
 
 ## Supported build infrastructures and tools
 
@@ -73,7 +69,7 @@ Add the `paths` list to your pipeline's YAML, for example:
 ...
 ```
 
-If a path you want to cache is outside the `/harness` directory, you must also specify this as a shared path. In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
+If a path you want to cache is outside the `/harness` directory, you must also specify this as a shared path. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
 
 ```yaml
     - stage:
@@ -100,21 +96,23 @@ If a path you want to cache is outside the `/harness` directory, you must also s
             - /my_cache_directory/module_cache1
 ```
 
+In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. However, you must use the YAML editor to enable caching and specify `paths`.
+
 ## Cache Intelligence API
 
-Use the Cache Intelligence API to get information about the cache or delete the cache.
+You can use the Cache Intelligence API to get information about the cache or delete the cache.
 
 :::note
 
-You must have an API Key with [core_account_edit](/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference#harness-api-permissions) permissions to invoke these APIs.
+You must have an API key with [core_account_edit](/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference#harness-api-permissions) permissions to invoke these APIs.
 
-For information about API keys, go to [Add and Manage API Keys](/docs/platform/role-based-access-control/add-and-manage-api-keys). 
+For information about API keys, go to [Add and manage API keys](/docs/platform/role-based-access-control/add-and-manage-api-keys).
 
 :::
 
 ### Get cache metadata
 
-Get metadata about the cache, such as the size and path. 
+Get metadata about the cache, such as the size and path.
 
 ```
 curl --location --request GET 'https://app.harness.io/gateway/ci/cache/info?accountIdentifier=$HARNESS_ACCOUNT_ID' \
