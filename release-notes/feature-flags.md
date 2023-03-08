@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2023-03-03T10:00
+date: 2023-03-08T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -13,6 +13,21 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 08, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags UI
+
+- Onboarding examples displayed a flag name instead of the required flag identifier. This issue is now fixed. (FFM-6921)
 
 ## March 02, 2023
 
