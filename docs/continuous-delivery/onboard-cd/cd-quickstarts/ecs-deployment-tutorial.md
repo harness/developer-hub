@@ -79,6 +79,7 @@ The custom managed policy should have the following permissions:
                 "ecs:ListServices",  
                 "ecs:DescribeServices",  
                 "ecr:ListImages",  
+		"ecr:DescribeImages",
                 "ecs:RegisterTaskDefinition",  
                 "ecs:CreateService",  
                 "ecs:ListTasks",  

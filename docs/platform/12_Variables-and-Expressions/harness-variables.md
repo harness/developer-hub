@@ -982,7 +982,18 @@ The description of the environment.
 
 #### <+env.type>
 
-The environment type, such as production or non-production.
+The environment type, such as `Production` or `PreProduction`.
+
+The available values are:
+- `PreProduction`
+- `Production`
+
+You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
+
+```
+<+env.type> != "Production"
+```
+
 
 ### Infrastructure
 
