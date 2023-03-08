@@ -33,7 +33,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - You can now access your account immediately after resetting your password. (PL-30878)
 
-- You can configure the HashiCorp Vault connector to use AWS Auth authentication without providing a `X-Vault-AWS-IAM-Server-ID`. (PL-30628, ZD-36826,39745)
+- You can configure the HashiCorp Vault connector to use AWS Auth authentication without providing `X-Vault-AWS-IAM-Server-ID`. (PL-30628, ZD-36826,39745)
   
   It is now an optional field.
 
