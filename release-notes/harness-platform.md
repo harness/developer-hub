@@ -49,7 +49,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 This release does not include any early access feature.
 
 ### Fixed issues
-- When setting up Terraform plan steps, the encryption type in GCP Secrets Manager is incorrect. (PL-31684,ZD-40381)
+- The encryption type for GCP Secrets Manager in the Terraform plan step is incorrect. (PL-31684,ZD-40381)
   
   The encryption type is correct now.
 
