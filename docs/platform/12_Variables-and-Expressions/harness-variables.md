@@ -1217,293 +1217,200 @@ For example, here are several different references:
 
 When migrating Harness FirstGen expressions to Harness NextGen, review the following table.
 
-<table>
-    <tr><td width="200px">Current Gen</td><td width="200px">Next Gen</td><td width="200px">Notes</td></tr>
-     <tr><td>Approvals</td><td> </td><td> </td></tr>
-     <tr><td>approvedBy.name</td><td>pipeline.stages.testA.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.name</td><td> </td></tr>
-     <tr><td>approvedBy.email</td><td>pipeline.stages.testA.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.email</td><td> </td></tr>
-     <tr><td>HTTP Step</td><td> </td><td> </td></tr>
-     <tr><td>httpResponseCode</td><td>httpResponseCode</td><td> </td></tr>
-     <tr><td>httpResponseBody</td><td>httpResponseBody</td><td> </td></tr>
-     <tr><td>httpMethod</td><td>httpMethod</td><td> </td></tr>
-     <tr><td>httpUrl</td><td>httpUrl</td><td> </td></tr>
-     <tr><td>Others</td><td>".output.errorMsg</td></tr>
-     <tr><td>.output.status</td></tr>
-     <tr><td>.output.outputVariables</td><td> </td></tr>
-     <tr><td>httpResponseMethod</td><td>pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpMethod</td><td> </td></tr>
-     <tr><td>httpResponseCode</td><td>pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseCode</td><td> </td></tr>
-     <tr><td>httpResponseBody</td><td>pipeline.stages.HTTP.spec.execution.steps.HTTP.output.httpResponseBody</td><td> </td></tr>
-     <tr><td>Artifacts</td><td> </td><td> </td></tr>
-     <tr><td>artifact.metadata.image</td><td>artifact.image</td><td> </td></tr>
-     <tr><td>artifact.source.dockerconfig</td><td>artifact.imagePullSecret</td><td> </td></tr>
-     <tr><td>artifact.serviceIds</td><td>NA</td><td> </td></tr>
-     <tr><td>artifact.metadata.tag</td><td>artifact.tag</td><td> </td></tr>
-     <tr><td>artifact.url</td><td>artifact.metadata.url</td><td> </td></tr>
-     <tr><td>artifact.buildNo</td><td>artifact.tag</td><td> </td></tr>
-     <tr><td>artifact.metadata.image</td><td>"artifact.image</td></tr>
-     <tr><td>artifact.imagePath</td></tr>
-     <tr><td>For SidecarArtifact - </td></tr>
-     <tr><td>artifacts.sidecars.sidecarId.[property]</td><td> </td></tr>
-     <tr><td>artifact.metadata.[KEY]</td><td>artifact.metadata.[KEY]</td><td> </td></tr>
-     <tr><td>artifact.displayName</td><td> </td><td> </td></tr>
-     <tr><td>artifact.description</td><td>NA</td><td> </td></tr>
-     <tr><td>artifact.source.username</td><td>NA</td><td> </td></tr>
-     <tr><td>artifact.source.registryUrl</td><td>"Dependent on artifact source type:</td></tr>
-     <tr><td>artifact.docker.repositoryUrl</td></tr>
-     <tr><td>artifact.gcr.repositoryUrl</td><td> </td></tr>
-     <tr><td>artifact.source.repositoryName</td><td>"Dependent on artifact source type:</td></tr>
-     <tr><td>artifact.docker.repositoryName</td><td> </td></tr>
-     <tr><td>artifact.label.[label-key]</td><td> </td><td> </td></tr>
-     <tr><td>artifact.revision</td><td>artifact.tag</td><td> </td></tr>
-     <tr><td>artifact.metadata.artifactId</td><td>artifact.metadata.artifactId</td><td> </td></tr>
-     <tr><td>artifact.bucketName</td><td>artifact.metadata.bucketName</td><td> </td></tr>
-     <tr><td>artifact.key</td><td>artifact.metadata.key</td><td> </td></tr>
-     <tr><td>artifact.buildFullDisplayName</td><td> </td><td> </td></tr>
-     <tr><td>artifact.artifactPath</td><td>artifact.metadata.artifactPath</td><td> </td></tr>
-     <tr><td>artifact.metadata.repositoryName</td><td>artifact.metadata.repositoryName</td><td> </td></tr>
-     <tr><td>artifact.metadata.harness</td><td>artifact.metadata.harness</td><td> </td></tr>
-     <tr><td>artifact.metadata.groupId</td><td>artifact.metadata.groupId</td><td> </td></tr>
-     <tr><td>artifact.fileName</td><td>artifact.metadata.fileName</td><td> </td></tr>
-     <tr><td>artifact.label.get("label-key")</td><td> </td><td> </td></tr>
-     <tr><td>artifact.metadata.getSHA()</td><td>artifact.metadata.SHA</td><td> </td></tr>
-     <tr><td>Application</td><td> </td><td> </td></tr>
-     <tr><td>app.name</td><td>"account.name</td></tr>
-     <tr><td>account.companyName</td></tr>
-     <tr><td>org.name</td></tr>
-     <tr><td>project.name</td></tr>
-     <tr><td>project.identifier</td><td> </td></tr>
-     <tr><td>app.description</td><td>"project.description</td></tr>
-     <tr><td>org.description</td><td> </td></tr>
-     <tr><td>app.accountId</td><td>account.identifier</td><td> </td></tr>
-     <tr><td>app.defaults.variable_name</td><td>"variable.variable_name</td></tr>
-     <tr><td>Please note variable_name here in NG will be the identifier & not the name.</td><td> </td></tr>
-     <tr><td>Service</td><td> </td><td> </td></tr>
-     <tr><td>service.name</td><td>"service.name - Alias can be used after service step</td></tr>
-     <tr><td>serviceConfig.service.name - Yaml expression</td></tr>
-     <tr><td>serviceConfig.service.description - Yaml</td></tr>
-     <tr><td>serviceConfig.service.tags.tagKey</td></tr>
-     <tr><td>serviceConfig.service.identifier</td></tr>
-     <tr><td> </td></tr>
-     <tr><td>Fqn - </td></tr>
-     <tr><td>stage.spec.serviceConfig.service.identifier</td><td> </td></tr>
-     <tr><td>service.description</td><td>service.description</td><td> </td></tr>
-     <tr><td>serviceVariable.your_var_name</td><td>"serviceVariables.your_var_name</td></tr>
-     <tr><td>this is available anywhere after the service step</td></tr>
-     <tr><td> </td></tr>
-     <tr><td>serviceConfig.serviceDefinition.spec.variables.your_var_name</td></tr>
-     <tr><td>this is available throughout</td><td> </td></tr>
-     <tr><td>service.manifest</td><td>manifest.name</td><td> </td></tr>
-     <tr><td>service.manifest.repoRoot</td><td>manifest.repoName</td><td> </td></tr>
-     <tr><td>Environment</td><td> </td><td> </td></tr>
-     <tr><td>env.description</td><td>"FQN: stages.stageIdentifier.spec.infrastructure.environment.name</td></tr>
-     <tr><td>Alias:env.description</td></tr>
-     <tr><td>FQN: stages.stageIdentifier.spec.infrastructure.environment.description</td><td> </td></tr>
-     <tr><td>env.environmentType</td><td>env.type</td><td> </td></tr>
-     <tr><td>env.name</td><td>env.name</td><td> </td></tr>
-     <tr><td>env.accountId</td><td>account.identifier</td><td> </td></tr>
-     <tr><td>"env.keywords</td></tr>
-     <tr><td>environmentVariable.[variable_name]</td><td>env.variables.var_name</td><td> </td></tr>
-     <tr><td>Infrastructure</td><td> </td><td> </td></tr>
-     <tr><td>infra.kubernetes.namespace</td><td>infra.namespace</td></tr>
-     <tr><td>infra.releaseName</td></tr>
-     <tr><td>FQN: stages.stageIdentifier.spec.infrastructure.infrastructureDefinition.spec.namespace</td><td> </td></tr>
-     <tr><td>infra.route</td><td> </td><td> </td></tr>
-     <tr><td>infra.tempRoute</td><td> </td><td> </td></tr>
-     <tr><td>infra.name</td><td>infra.name</td><td> </td></tr>
-     <tr><td>infra.cloudProvider.name</td><td>infra.connectorRef</td><td> </td></tr>
-     <tr><td>Workflow</td><td> </td><td> </td></tr>
-     <tr><td>workflow.releaseNo</td><td>"Stage level expressions</td></tr>
-     <tr><td>stage.tags.tagKey</td></tr>
-     <tr><td>stage.identifier</td></tr>
-     <tr><td>Pipeline level expressions</td></tr>
-     <tr><td>pipeline.identifier</td></tr>
-     <tr><td>pipeline.startTs</td><td> </td></tr>
-     <tr><td>workflow.lastGoodReleaseNo</td><td>N/A</td><td>No Workflows in NG</td></tr>
-     <tr><td>workflow.lastGoodDeploymentDisplayName</td><td>N/A</td><td>No Workflows in NG</td></tr>
-     <tr><td>workflow.displayName</td><td>"stage.name</td></tr>
-     <tr><td>pipeline.name</td><td> </td></tr>
-     <tr><td>workflow.description</td><td>"stage.description</td></tr>
-     <tr><td>pipeline.description</td><td> </td></tr>
-     <tr><td>workflow.pipelineResumeUuid</td><td>NA</td><td> </td></tr>
-     <tr><td>workflow.pipelineDeploymentUuid</td><td>"pipeline.executionId</td></tr>
-     <tr><td>pipeline.sequenceId</td><td> </td></tr>
-     <tr><td>workflow.startTs</td><td>pipeline.startTs</td><td> </td></tr>
-     <tr><td>workflow.variables.var_name</td><td>"pipeline.variables.var_name</td></tr>
-     <tr><td>stage.variables.var_name</td><td> </td></tr>
-     <tr><td>timestampId</td><td> </td><td> </td></tr>
-     <tr><td>deploymentUrl</td><td>pipeline.execution.url​</td><td> </td></tr>
-     <tr><td>context.published_name.var_name</td><td> </td><td> </td></tr>
-     <tr><td>deploymentTriggeredBy</td><td>"pipeline.triggeredBy.name​</td></tr>
-     <tr><td>pipeline.triggeredBy.email​</td><td> </td></tr>
-     <tr><td>currentStep.name</td><td>step.name</td><td> </td></tr>
-     <tr><td>regex.extract("v[0-9]+.[0-9]+", artifact.fileName)</td><td>N/A</td><td> </td></tr>
-     <tr><td>currentStep.type</td><td>N/A</td><td> </td></tr>
-     <tr><td>Pipeline Variables</td><td> </td><td> </td></tr>
-     <tr><td>pipeline.name</td><td>pipeline.name</td><td> </td></tr>
-     <tr><td>deploymentUrl</td><td>pipeline.execution.url​</td><td> </td></tr>
-     <tr><td>deploymentTriggeredBy</td><td>"pipeline.triggeredBy.name​</td></tr>
-     <tr><td>pipeline.triggeredBy.email​</td><td> </td></tr>
-     <tr><td>Rollback Artifact Variables</td><td> </td><td> </td></tr>
-     <tr><td>rollbackArtifact.url</td><td>NA</td><td> </td></tr>
-     <tr><td>rollbackArtifact.buildNo</td><td>"artifact.tag</td></tr>
-     <tr><td>rollbackArtifact.image</td></tr>
-     <tr><td>rollbackArtifact.imagePath</td></tr>
-     <tr><td>rollbackArtifact.type</td></tr>
-     <tr><td>rollbackArtifact.connectorRef</td></tr>
-     <tr><td>For SidecarArtifact - </td></tr>
-     <tr><td>rollbackArtifact.sidecars.sidecarId.[property]</td><td>Note: All properties which are available for Artifacts should be also visible for Rollback Artifacts.</td></tr>
-     <tr><td>rollbackArtifact.buildFullDisplayName</td><td> </td><td> </td></tr>
-     <tr><td>rollbackArtifact.ArtifactPath</td><td> </td><td> </td></tr>
-     <tr><td>rollbackArtifact.description</td><td> </td><td> </td></tr>
-     <tr><td>rollbackArtifact.displayName</td><td> </td><td> </td></tr>
-     <tr><td>rollbackArtifact.fileName</td><td> </td><td> </td></tr>
-     <tr><td>rollbackArtifact.key</td><td> </td><td> </td></tr>
-     <tr><td>rollbackArtifact.metadata.image</td><td>rollbackArtifact.image</td><td> </td></tr>
-     <tr><td>rollbackArtifact.metadata.tag</td><td>rollbackArtifact.tag</td><td> </td></tr>
-     <tr><td>rollbackArtifact.source.registryUrl</td><td> </td><td> </td></tr>
-     <tr><td>Instance</td><td> </td><td> </td></tr>
-     <tr><td>instance.name</td><td>instance.name</td><td> </td></tr>
-     <tr><td>instance.hostName</td><td>instance.hostName</td><td> </td></tr>
-     <tr><td>instance.host.hostName</td><td>instance.host.hostName</td><td> </td></tr>
-     <tr><td>instance.host.ip</td><td>instance.host.privateIpinstance.host.publicIp</td></tr>
-     <tr><td>The above host privateIp and publicIp are supported for Azure and AWS SSH/WinRm deployments</td><td> </td></tr>
-     <tr><td>instance.dockerId</td><td>TBD</td><td> </td></tr>
-     <tr><td>instance.host.publicDns</td><td>NA</td><td> </td></tr>
-     <tr><td>instance.EcsContainerDetails.completeDockerId</td><td>pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId</td><td> </td></tr>
-     <tr><td>instance.ecsContainerDetails.taskId</td><td>pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].taskArn</td><td> </td></tr>
-     <tr><td>instance.ecsContainerDetails.taskArn</td><td>pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].taskArn</td><td> </td></tr>
-     <tr><td>[step__name].serviceName</td><td>N/A</td><td> </td></tr>
-     <tr><td>ECS__Service__Setup.serviceName</td><td>"service.name</td></tr>
-     <tr><td>This expression only works if customer chooses to use this in service definition manifest as well </td></tr>
-     <tr><td>or</td></tr>
-     <tr><td>pipeline.stages.ecs.spec.execution.steps.[Step ID].output.serviceName</td><td>While we support it in NG as a part of instances</td></tr>
-     <tr><td>We can enhance this add directly in </td></tr>
-     <tr><td>deploymentInfoOutcome</td></tr>
-     <tr><td></td></tr>
-     <tr><td> </td></tr>
-     <tr><td>Done</td></tr>
-     <tr><td></td></tr>
-     <tr><td>ECS__Service__Setup.clusterName</td><td>infra.cluster</td><td> </td></tr>
-     <tr><td>instance.EcsContainerDetails.dockerId</td><td>pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId</td><td> </td></tr>
-     <tr><td>Host (Deprecated) All host properties are available using Instance</td><td> </td><td> </td></tr>
-     <tr><td>host.name</td><td> </td><td> </td></tr>
-     <tr><td>host.ip</td><td> </td><td> </td></tr>
-     <tr><td>host.publicDns</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.instanceId</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.instanceType</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.imageId</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.architecture</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.kernelId</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.keyName</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.privateDnsName</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.privateIpAddress</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.publicDnsName</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.publicIpAddress</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.subnetId</td><td> </td><td> </td></tr>
-     <tr><td>host.ec2Instance.vpcId</td><td> </td><td> </td></tr>
-     <tr><td>host.hostName</td><td> </td><td> </td></tr>
-     <tr><td>"published_name.approvedBy.name</td></tr>
-     <tr><td>published_name.approvedBy.email</td></tr>
-     <tr><td>published_name.approvedOn</td></tr>
-     <tr><td>published_name.comments</td></tr>
-     <tr><td>published_name.timeoutMillis</td></tr>
-     <tr><td>published_name.approvalStateType</td></tr>
-     <tr><td>published_name.approvalStatus</td></tr>
-     <tr><td>published_name.userGroups[index].name</td></tr>
-     <tr><td>published_name.variables.var_name</td><td>"pipeline.stages.testA.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.name</td></tr>
-     <tr><td>pipeline.stages.testA.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.email</td><td> </td></tr>
-     <tr><td>Terraform</td><td> </td><td> </td></tr>
-     <tr><td>terraform.clusterName</td><td>[step FQN].output.[output name] </td></tr>
-     <tr><td>ex: pipeline.stages.stage1.spec.execution.steps.TerraformApply.output.clusterName</td><td> </td></tr>
-     <tr><td>terraformApply.tfplan</td><td> </td><td>doesn't exit in NG (In GC we hit some issues with it,, plan size limit)</td></tr>
-     <tr><td>terraformDestroy.tfplan</td><td> </td><td>doesn't exit in NG (In GC we hit some issues with it,, plan size limit)</td></tr>
-     <tr><td>terraformPlan.jsonFilePath()</td><td>"execution.steps.[Terraform Plan step Id].plan.jsonFilePath</td></tr>
-     <tr><td>ex: execution.steps.terraformPlan.plan.jsonFilePath</td><td> </td></tr>
-     <tr><td>terraformPlan.destroy.jsonFilePath()</td><td>"execution.steps.[Terraform Plan step Id].plan.jsonFilePath</td></tr>
-     <tr><td>ex: execution.steps.terraformPlan.plan.jsonFilePath</td><td> </td></tr>
-     <tr><td>terraformApply.add</td><td>?</td><td> </td></tr>
-     <tr><td>terraformApply.change</td><td>?</td><td> </td></tr>
-     <tr><td>terraformApply.destroy</td><td>?</td><td> </td></tr>
-     <tr><td>terraformDestroy.add</td><td>?</td><td> </td></tr>
-     <tr><td>terraformDestroy.change</td><td>?</td><td> </td></tr>
-     <tr><td>terraformDestroy.destroy</td><td>?</td><td> </td></tr>
-     <tr><td>terraformApply.tfplanHumanReadable</td><td>"execution.steps.[Terraform Plan step Id].plan.humanReadableFilePath</td></tr>
-     <tr><td>ex: execution.steps.terraformPlan.plan.humanReadableFilePath</td><td> </td></tr>
-     <tr><td>terraformDestroy.tfplanHumanReadable</td><td>execution.steps.[Terraform Plan step Id].plan.humanReadableFilePath</td></tr>
-     <tr><td>ex: execution.steps.terraformPlan.plan.humanReadableFilePath</td><td> </td></tr>
-     <tr><td>terraform.[output_name]</td><td>pipeline.stages.stage1.spec.execution.steps.TerraformApply.output.[output_name]</td><td> </td></tr>
-     <tr><td>Cloud Formation</td><td> </td><td> </td></tr>
-     <tr><td>cloudformation.[output_name]</td><td>pipeline.stages.stage1.spec.execution.steps.CreateStack.output.[output_name]</td><td> </td></tr>
-     <tr><td>cloudformation.region</td><td>pipeline.stages.stage1.spec.execution.steps.CreateStack.output.region</td><td> </td></tr>
-     <tr><td> </td><td> </td><td> </td></tr>
-     <tr><td>"HARNESS_KUBE_CONFIG_PATH</td></tr>
-     <tr><td>infra.kubernetes.infraId</td><td>"HARNESS_KUBE_CONFIG_PATH</td></tr>
-     <tr><td>TBD</td><td> </td></tr>
-     <tr><td>infra.kubernetes.infraId</td><td>N/A</td><td> </td></tr>
-     <tr><td>HELM</td><td> </td><td> </td></tr>
-     <tr><td>"infra.helm.releaseName</td></tr>
-     <tr><td>service.name-env.name-infra.helm.shortId</td><td>pipeline.stages.[stage_name].spec.infrastructure.infrastructureDefinition.spec.output.releaseName</td></tr>
-     <tr><td> </td></tr>
-     <tr><td>pipeline.stages.[Stage_name].spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[2].releaseName</td><td> </td></tr>
-     <tr><td>infra.helm.shortId</td><td>N/A</td><td> </td></tr>
-     <tr><td>helmChart.description</td><td>service.description</td><td> </td></tr>
-     <tr><td>helmChart.displayName</td><td>pipeline.stages.[stage_Id].spec.serviceConfig.output.manifestResults.[service].chartName</td><td> </td></tr>
-     <tr><td>helmChart.metadata.basePath</td><td>N/A</td><td> </td></tr>
-     <tr><td>helmChart.metadata.bucketName</td><td>N/A</td><td> </td></tr>
-     <tr><td>helmChart.metadata.repositoryName</td><td>N/A</td><td> </td></tr>
-     <tr><td>helmChart.metadata.url</td><td>N/A</td><td> </td></tr>
-     <tr><td>helmChart.name</td><td>pipeline.stages.[stage Id].spec.execution.steps.rolloutDeployment.output.releaseName</td><td> </td></tr>
-     <tr><td>helmChart.version</td><td>pipeline.stages.Redis.spec.serviceConfig.output.manifestResults.[service_Id].helmVersion</td><td> </td></tr>
-     <tr><td>"Nested Expression -</td></tr>
-     <tr><td>secrets.getValue("terraform-aws-env_name-id")</td><td>secrets.getValue("test_secret_" + pipeline.variables.envVar)</td></tr>
-     <tr><td>OR</td></tr>
-     <tr><td>secrets.getValue("test_secret_".concat(pipeline.variables.envVar))</td><td> </td></tr>
-     <tr><td>Email Step</td><td> </td><td> </td></tr>
-     <tr><td>toAddress</td><td>pipeline.stages.CD.spec.execution.steps.Email_1.spec.to</td><td> </td></tr>
-     <tr><td>ccAddress</td><td>pipeline.stages.CD.spec.execution.steps.Email_1.spec.cc`</td><td> </td></tr>
-     <tr><td>subject</td><td>pipeline.stages.CD.spec.execution.steps.Email_1.spec.subject</td><td> </td></tr>
-     <tr><td>body</td><td>pipeline.stages.CD.spec.execution.steps.Email_1.spec.body</td><td> </td></tr>
-     <tr><td>AMI</td><td> </td><td> </td></tr>
-     <tr><td>ami.newAsgName</td><td>"Rolling:</td></tr>
-     <tr><td>pipeline.stages.[STAGE_NAME].spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName </td></tr>
-     <tr><td>BG:</td></tr>
-     <tr><td>pipeline.stages.[STAGE_NAME].spec.execution.steps.AsgRollingDeployStep.output.prodAsg.autoScalingGroupName</td><td> </td></tr>
-     <tr><td>ami.oldAsgName</td><td>"Rolling:</td></tr>
-     <tr><td>pipeline.stages.[STAGE_NAME].spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName</td></tr>
-     <tr><td>BG:</td></tr>
-     <tr><td>pipeline.stages.[STAGE_NAME].spec.execution.steps.AsgRollingDeployStep.output.stageAsg.autoScalingGroupName</td><td> </td></tr>
-     <tr><td>PCF</td><td> </td><td> </td></tr>
-     <tr><td>pcf.finalRoutes</td><td>pcf.finalRoutes</td><td>Supported only for BG</td></tr>
-     <tr><td>pcf.oldAppRoutes</td><td>pcf.oldAppRoutes</td><td> </td></tr>
-     <tr><td>pcf.tempRoutes</td><td>pcf.tempRoutes</td><td>Supported only for BG</td></tr>
-     <tr><td>pcf.newAppRoutes</td><td>pcf.newAppRoutes</td><td>Supported for Basic and Canary</td></tr>
-     <tr><td>For BG, use pcf.tempRoutes to access routes for new application after BG App Setup and pcf.finalRoutes to access routes for new application after Swap Routes</td></tr>
-     <tr><td>pcf.newAppRoutes[0]</td><td>pcf.newAppRoutes[0]</td><td> </td></tr>
-     <tr><td>pcf.newAppName</td><td>pcf.newAppName</td><td>Supported for Basic and Canary. For BG use pcf.activeAppName,pcf.inActiveAppName</td></tr>
-     <tr><td>pcf.newAppGuid</td><td>pcf.newAppGuid</td><td> </td></tr>
-     <tr><td>pcf.oldAppName</td><td>pcf.oldAppName</td><td>Supported for Basic and Canary. For BG use pcf.activeAppName,pcf.inActiveAppName</td></tr>
-     <tr><td>pcf.activeAppName</td><td>pcf.activeAppName</td><td>Applicable only for BG</td></tr>
-     <tr><td>pcf.inActiveAppName</td><td>pcf.inActiveAppName</td><td>Applicable only for BG</td></tr>
-     <tr><td>pcf.oldAppGuid</td><td>pcf.oldAppGuid</td><td> </td></tr>
-     <tr><td>pcf.oldAppRoutes[0]</td><td>pcf.oldAppRoutes[0]</td><td> </td></tr>
-     <tr><td>infra.pcf.cloudProvider.name</td><td>infra.connector.name</td><td> </td></tr>
-     <tr><td>infra.pcf.organization</td><td>infra.organization</td><td> </td></tr>
-     <tr><td>infra.pcf.space</td><td>infra.space</td><td> </td></tr>
-     <tr><td>host.pcfElement.applicationId</td><td>pcf.newAppGuid</td><td> </td></tr>
-     <tr><td>host.pcfElement.displayName</td><td>pcf.newAppName for Basic/Canary</td></tr>
-     <tr><td>pcf.inActiveAppName for Blue Green</td><td> </td></tr>
-     <tr><td>host.pcfElement.instanceIndex</td><td> </td><td>Deprecated, as there is no actual use of this variable</td></tr>
-     <tr><td> </td><td>CONFIG File</td><td> </td></tr>
-     <tr><td> </td><td>configFile.getAsString("cf_file")</td><td> </td></tr>
-     <tr><td> </td><td>configFile.getAsBase64("cf_file")</td><td> </td></tr>
-     <tr><td> </td><td>configFile.getAsString("cf_secret")</td><td> </td></tr>
-     <tr><td> </td><td>configFile.getAsBase64("cf_secret")</td><td> </td></tr>
-     <tr><td> </td><td>fileStore.getAsString("/folder1/configFileProject")</td><td> </td></tr>
-     <tr><td> </td><td>fileStore.getAsBase64("account:/folder1/folder2/ConfigFile")</td><td> </td></tr>
-     <tr><td> </td><td>MISC</td><td> </td></tr>
-     <tr><td>WINGS_RUNTIME_PATH</td><td> </td><td></td></tr>
-    </table>
-
+| FirstGen                                                              | Next Gen                                                                                                                                                                                                                                                                             |
+| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Approvals**                                                             | **Approvals**                                                                                                                                                                                                                                                                            |
+| approvedBy.name                                                       | pipeline.stages.[stage_Id].spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.name                                                                                                                                                                                    |
+| approvedBy.email                                                      | pipeline.stages.[stage_Id].spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.email                                                                                                                                                                                   |
+| **HTTP Step**                                                             | **HTTP Step**                                                                                                                                                                                                                                                                            |
+| httpResponseCode                                                      | httpResponseCode                                                                                                                                                                                                                                                                     |
+| httpResponseBody                                                      | httpResponseBody                                                                                                                                                                                                                                                                     |
+| httpMethod                                                            | httpMethod                                                                                                                                                                                                                                                                           |
+| httpUrl                                                               | httpUrl                                                                                                                                                                                                                                                                              |
+| httpResponseMethod                                                    | pipeline.stages.HTTP.spec.execution.steps.[step_Id].output.httpMethod                                                                                                                                                                                                                     |
+| httpResponseCode                                                      | pipeline.stages.HTTP.spec.execution.steps.[step_Id].output.httpResponseCode                                                                                                                                                                                                               |
+| httpResponseBody                                                      | pipeline.stages.HTTP.spec.execution.steps.[step_Id].output.httpResponseBody                                                                                                                                                                                                               |
+| **Artifacts**                                                             | **Artifacts**                                                                                                                                                                                                                                                                            |
+| artifact.metadata.image                                               | artifact.image                                                                                                                                                                                                                                                                       |
+| artifact.source.dockerconfig                                          | artifact.imagePullSecret                                                                                                                                                                                                                                                             |
+| artifact.serviceIds                                                   | NA                                                                                                                                                                                                                                                                                   |
+| artifact.metadata.tag                                                 | artifact.tag                                                                                                                                                                                                                                                                         |
+| artifact.url                                                          | artifact.metadata.url                                                                                                                                                                                                                                                                |
+| artifact.buildNo                                                      | artifact.tag                                                                                                                                                                                                                                                                         |
+| artifact.metadata.image                                               | artifact.imageartifact.image. Path for sidecar artifact: artifacts.sidecars.sidecarId.[property]                                                                                                                                                                             |
+| artifact.metadata.[KEY]                                               | artifact.metadata.[KEY]                                                                                                                                                                                                                                                              |
+| artifact.displayName                                                  |                                                                                                                                                                                                                                                                                      |
+| artifact.description                                                  | NA                                                                                                                                                                                                                                                                                   |
+| artifact.source.username                                              | NA                                                                                                                                                                                                                                                                                   |
+| artifact.source.registryUrl                                           | Dependent on artifact source type: artifact.docker.repositoryUrlartifact.gcr.repositoryUrl                                                                                                                                                                                    |
+| artifact.source.repositoryName                                        | Dependent on artifact source type: artifact.docker.repositoryName                                                                                                                                                                                                                 |
+| artifact.label.label-key                                              |                                                                                                                                                                                                                                                                                      |
+| artifact.revision                                                     | artifact.tag                                                                                                                                                                                                                                                                         |
+| artifact.metadata.artifactId                                          | artifact.metadata.artifactId                                                                                                                                                                                                                                                         |
+| artifact.bucketName                                                   | artifact.metadata.bucketName                                                                                                                                                                                                                                                         |
+| artifact.key                                                          | artifact.metadata.key                                                                                                                                                                                                                                                                |
+| artifact.buildFullDisplayName                                         |                                                                                                                                                                                                                                                                                      |
+| artifact.artifactPath                                                 | artifact.metadata.artifactPath                                                                                                                                                                                                                                                       |
+| artifact.metadata.repositoryName                                      | artifact.metadata.repositoryName                                                                                                                                                                                                                                                     |
+| artifact.metadata.harness                                             | artifact.metadata.harness                                                                                                                                                                                                                                                            |
+| artifact.metadata.groupId                                             | artifact.metadata.groupId                                                                                                                                                                                                                                                            |
+| artifact.fileName                                                     | artifact.metadata.fileName                                                                                                                                                                                                                                                           |
+| artifact.label.get("[label-key]")                                     |                                                                                                                                                                                                                                                                                      |
+| artifact.metadata.getSHA()                                            | artifact.metadata.SHA                                                                                                                                                                                                                                                                |
+| Application                                                           | Application (account, org, project)                                                                                                                                                                                                                                                  |
+| app.name                                                              | account.nameaccount.companyNameorg.nameproject.nameproject.identifier                                                                                                                                                                                                |
+| app.description                                                       | project.descriptionorg.description                                                                                                                                                                                                                                               |
+| app.accountId                                                         | account.identifier                                                                                                                                                                                                                                                                   |
+| app.defaults.[variable_name]                                            | variable.[variable_Id]                                                                                                                                                               |
+| **Service**                                                               | **Service**                                                                                                                                                                                                                                                                              |
+| service.name                                                          | service.name  |
+| service.description                                                   | service.description                                                                                                                                                                                                                                                                  |
+| serviceVariable.[var_name]                                         | serviceVariables.[var_name]                                                                                              |
+| service.manifest                                                      | manifest.name                                                                                                                                                                                                                                                                        |
+| service.manifest.repoRoot                                             | manifest.repoName                                                                                                                                                                                                                                                                    |
+| **Environment**                                                           | **Environment**                                                                                                                                                                                                                                                                          |
+| env.description                                                       | FQN: stages.[stage_Id].spec.infrastructure.environment.name. Alias: env.description. FQN: stages.[stage_Id].spec.infrastructure.environment.description                                                                                                                          |
+| env.environmentType                                                   | env.type                                                                                                                                                                                                                                                                             |
+| env.name                                                              | env.name                                                                                                                                                                                                                                                                             |
+| env.accountId                                                         | account.identifier                                                                                                                                                                                                                                                                   |
+| env.keywordsenvironmentVariable.variable_name                     | env.variables.var_name                                                                                                                                                                                                                                                               |
+| **Infrastructure**                                                        | **Infrastructure**                                                                                                                                                                                                                                                                       |
+| infra.kubernetes.namespace                                            | infra.namespace or infra.releaseName. FQN: stages.[stage_Id].spec.infrastructure.infrastructureDefinition.spec.namespace                                                                                                                                                      |
+| infra.route                                                           |                                                                                                                                                                                                                                                                                      |
+| infra.tempRoute                                                       |                                                                                                                                                                                                                                                                                      |
+| infra.name                                                            | infra.name                                                                                                                                                                                                                                                                           |
+| infra.cloudProvider.name                                              | infra.connectorRef                                                                                                                                                                                                                                                                   |
+| **Workflow**                                                              | **Workflow (Stage level expressions)**                                                                                                                                                                                                                                                   |
+| workflow.releaseNo                                                    | stage.identifier                                                                                                                                                                       |
+| workflow.lastGoodReleaseNo                                            | N/A                                                                                                                                                                                                                                                                                  |
+| workflow.lastGoodDeploymentDisplayName                                | N/A                                                                                                                                                                                                                                                                                  |
+| workflow.displayName                                                  | stage.namepipeline.name                                                                                                                                                                                                                                                          |
+| workflow.description                                                  | stage.descriptionpipeline.description                                                                                                                                                                                                                                            |
+| workflow.pipelineResumeUuid                                           | NA                                                                                                                                                                                                                                                                                   |
+| workflow.pipelineDeploymentUuid                                       | pipeline.executionIdpipeline.sequenceId                                                                                                                                                                                                                                          |
+| workflow.startTs                                                      | pipeline.startTs                                                                                                                                                                                                                                                                     |
+| workflow.variables.[var_name]                                           | pipeline.variables.[var_name] or stage.variables.[var_name]                                                                                                                                                                                                                              |
+| timestampId                                                           |                                                                                                                                                                                                                                                                                      |
+| deploymentUrl                                                         | pipeline.execution.url​                                                                                                                                                                                                                                                              |
+| context.published_name.var_name                                       |                                                                                                                                                                                                                                                                                      |
+| deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
+| currentStep.name                                                      | step.name                                                                                                                                                                                                                                                                            |
+| regex.extract("v[0-9]+.[0-9]+", artifact.fileName)                    | N/A                                                                                                                                                                                                                                                                                  |
+| currentStep.type                                                      | N/A                                                                                                                                                                                                                                                                                  |
+| **Pipeline Variables**                                                    | **Pipeline Variables**                                                                                                                                                                                                                                                                   |
+| pipeline.name                                                         | pipeline.name                                                                                                                                                                                                                                                                        |
+| deploymentUrl                                                         | pipeline.execution.url​                                                                                                                                                                                                                                                              |
+| deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
+| **Rollback Artifact Variables**                                           | **Rollback Artifact Variables**                                                                                                                                                                                                                                                          |
+| rollbackArtifact.url                                                  | NA                                                                                                                                                                                                                                                                                   |
+| rollbackArtifact.buildNo                                              | artifact.tagrollback, artifact.imagerollback, artifact.imagePathrollback, artifact.typerollback, artifact.connectorRef, for sidecar artifact: rollbackArtifact.sidecars.sidecar_Id.[property]                                                                            |
+| rollbackArtifact.buildFullDisplayName                                 |                                                                                                                                                                                                                                                                                      |
+| rollbackArtifact.ArtifactPath                                         |                                                                                                                                                                                                                                                                                      |
+| rollbackArtifact.description                                          |                                                                                                                                                                                                                                                                                      |
+| rollbackArtifact.displayName                                          |                                                                                                                                                                                                                                                                                      |
+| rollbackArtifact.fileName                                             |                                                                                                                                                                                                                                                                                      |
+| rollbackArtifact.key                                                  |                                                                                                                                                                                                                                                                                      |
+| rollbackArtifact.metadata.image                                       | rollbackArtifact.image                                                                                                                                                                                                                                                               |
+| rollbackArtifact.metadata.tag                                         | rollbackArtifact.tag                                                                                                                                                                                                                                                                 |
+| rollbackArtifact.source.registryUrl                                   |                                                                                                                                                                                                                                                                                      |
+| **Instance**                                                              | **Instance**                                                                                                                                                                                                                                                                             |
+| instance.name                                                         | instance.name                                                                                                                                                                                                                                                                        |
+| instance.hostName                                                     | instance.hostName                                                                                                                                                                                                                                                                    |
+| instance.host.hostName                                                | instance.host.hostName                                                                                                                                                                                                                                                               |
+| instance.host.ip                                                      | instance.host.privateIpinstance.host.publicIp. The privateIp and publicIp are supported for Azure, AWS, SSH/WinRM deployments.                                                                                                                                         |
+| instance.dockerId                                                     | TBD                                                                                                                                                                                                                                                                                  |
+| instance.host.publicDns                                               | NA                                                                                                                                                                                                                                                                                   |
+| instance.EcsContainerDetails.completeDockerId                         | pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId                                                                                                            |
+| instance.ecsContainerDetails.taskId                                   | pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].taskArn                                                                                                                            |
+| instance.ecsContainerDetails.taskArn                                  | pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].taskArn                                                                                                                            |
+| [step__name].serviceName                                              | N/A                                                                                                                                                                                                                                                                                  |
+| ECS__Service__Setup.serviceName                                       | service.nameThis expression only works if customer chooses to use this in service definition manifest as wellorpipeline.stages.ecs.spec.execution.steps.[Step ID].output.serviceName                                                                                     |
+| ECS__Service__Setup.clusterName                                       | infra.cluster                                                                                                                                                                                                                                                                        |
+| instance.EcsContainerDetails.dockerId                                 | pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId                                                                                                            |
+| **Host** (Deprecated) All host properties are available using Instance    | **Host** (Deprecated) All host properties are available using Instance                                                                                                                                                                                                                   |
+| host.name                                                             |                                                                                                                                                                                                                                                                                      |
+| host.ip                                                               |                                                                                                                                                                                                                                                                                      |
+| host.publicDns                                                        |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.instanceId                                           |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.instanceType                                         |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.imageId                                              |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.architecture                                         |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.kernelId                                             |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.keyName                                              |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.privateDnsName                                       |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.privateIpAddress                                     |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.publicDnsName                                        |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.publicIpAddress                                      |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.subnetId                                             |                                                                                                                                                                                                                                                                                      |
+| host.ec2Instance.vpcId                                                |                                                                                                                                                                                                                                                                                      |
+| host.hostName                                                         |                                                                                                                                                                                                                                                                                      |
+| **Terraform**                                                             | **Terraform**                                                                                                                                                                                                                                                                            |
+| terraform.clusterName                                                 | [step_Id].output.[output_name]. For example: pipeline.stages.stage1.spec.execution.steps.TerraformApply.output.clusterName                                                                                                                                                                  |
+| terraformApply.tfplan                                                 |                                                                                                                                                                                                                                                                                      |
+| terraformDestroy.tfplan                                               |                                                                                                                                                                                                                                                                                      |
+| terraformPlan.jsonFilePath()                                          | execution.steps.[Terraform Plan step Id].plan.jsonFilePath. For example: execution.steps.terraformPlan.plan.jsonFilePath                                                                                                                                                                    |
+| terraformPlan.destroy.jsonFilePath()                                  | execution.steps.[Terraform Plan step Id].plan.jsonFilePath For example: execution.steps.terraformPlan.plan.jsonFilePath                                                                                                                                                                    |
+| terraformApply.add                                                    |                                                                                                                                                                                                                                                                                      |
+| terraformApply.change                                                 |                                                                                                                                                                                                                                                                                      |
+| terraformApply.destroy                                                |                                                                                                                                                                                                                                                                                      |
+| terraformDestroy.add                                                  |                                                                                                                                                                                                                                                                                      |
+| terraformDestroy.change                                               |                                                                                                                                                                                                                                                                                      |
+| terraformDestroy.destroy                                              |                                                                                                                                                                                                                                                                                      |
+| terraformApply.tfplanHumanReadable                                    | execution.steps.[Terraform Plan step Id].plan.humanReadableFilePath. For example: execution.steps.terraformPlan.plan.humanReadableFilePath                                                                                                                                                  |
+| terraformDestroy.tfplanHumanReadable                                  | execution.steps.[Terraform Plan step Id].plan.humanReadableFilePath. For example: execution.steps.terraformPlan.plan.humanReadableFilePath                                                                                                                                                  |
+| terraform.[output_name]                                               | pipeline.stages.[stage-Id].spec.execution.steps.TerraformApply.output.[output_name]                                                                                                                                                                                                  |
+| **CloudFormation**                                                        | **CloudFormation**                                                                                                                                                                                                                                                                       |
+| cloudformation.[output_name]                                          | pipeline.stages.stage1.spec.execution.steps.CreateStack.output.[output_name]                                                                                                                                                                                                         |
+| cloudformation.region                                                 | pipeline.stages.stage1.spec.execution.steps.CreateStack.output.region                                                                                                                                                                                                                |
+|                                                                       |                                                                                                                                                                                                                                                                                      |
+| **HARNESS_KUBE_CONFIG_PATH**                                              | **HARNESS_KUBE_CONFIG_PATH**                                                                                                                                                                                                                                                             |
+| infra.kubernetes.infraId                                              | N/A                                                                                                                                                                                                                                                                                  |
+| **Helm**                                                                  | **Helm**                                                                                                                                                                                                                                                                                 |
+| infra.helm.releaseNameservice.name-env.name-infra.helm.shortId    | pipeline.stages.[stage_Id].spec.infrastructure.infrastructureDefinition.spec.output.releaseName, pipeline.stages.[stage_Id].spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[2].releaseName                                                 |
+| infra.helm.shortId                                                    | N/A                                                                                                                                                                                                                                                                                  |
+| helmChart.description                                                 | service.description                                                                                                                                                                                                                                                                  |
+| helmChart.displayName                                                 | pipeline.stages.[stage_Id].spec.serviceConfig.output.manifestResults.[service_Id].chartName                                                                                                                                                                                          |
+| helmChart.metadata.basePath                                           | N/A                                                                                                                                                                                                                                                                                  |
+| helmChart.metadata.bucketName                                         | N/A                                                                                                                                                                                                                                                                                  |
+| helmChart.metadata.repositoryName                                     | N/A                                                                                                                                                                                                                                                                                  |
+| helmChart.metadata.url                                                | N/A                                                                                                                                                                                                                                                                                  |
+| helmChart.name                                                        | pipeline.stages.[stage_Id].spec.execution.steps.rolloutDeployment.output.releaseName                                                                                                                                                                                                 |
+| helmChart.version                                                     | pipeline.stages.[stage_Id].spec.serviceConfig.output.manifestResults.[service_Id].helmVersion                                                                                                                                                                                             |
+| Nested Expression: secrets.getValue("terraform-aws-env_name-id") | secrets.getValue("test_secret" + pipeline.variables.envVar), or secrets.getValue("test_secret".concat(pipeline.variables.envVar))                                                                                                                                             |
+| **Email Step**                                                            | **Email Step**                                                                                                                                                                                                                                                                           |
+| toAddress                                                             | pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].spec.to                                                                                                                                                            |
+| ccAddress                                                             | pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].spec.cc                                                                                                                                                                                                                            |
+| subject                                                               | pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].spec.subject                                                                                                                                                                                                                         |
+| body                                                                  | pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].spec.body                                                                                                                                                                                                                            |
+| **AMI**                                                                   | **AMI**                                                                                                                                                                                                                                                                                  |
+| ami.newAsgName                                                        | Rolling: pipeline.stages.[stage_Id].spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName. Blue Green: pipeline.stages.[stage_Id].spec.execution.steps.AsgRollingDeployStep.output.prodAsg.autoScalingGroupName                                                  |
+| ami.oldAsgName                                                        | Rolling: pipeline.stages.[stage_Id].spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName. Blue Green: pipeline.stages.[stage_Id].spec.execution.steps.AsgRollingDeployStep.output.stageAsg.autoScalingGroupName                                                 |
+| **Tanzu Application Services**                                            | **Tanzu Application Services**                                                                                                                                                                                                                                                           |
+| pcf.finalRoutes                                                       | pcf.finalRoutes                                                                                                                                                                                                                                                                      |
+| pcf.oldAppRoutes                                                      | pcf.oldAppRoutes                                                                                                                                                                                                                                                                     |
+| pcf.tempRoutes                                                        | pcf.tempRoutes                                                                                                                                                                                                                                                                       |
+| pcf.newAppRoutes                                                      | pcf.newAppRoutes                                                                                                                                                                                                                                                                     |
+| pcf.newAppRoutes[0]                                                   | pcf.newAppRoutes[0]                                                                                                                                                                                                                                                                  |
+| pcf.newAppName                                                        | pcf.newAppName                                                                                                                                                                                                                                                                       |
+| pcf.newAppGuid                                                        | pcf.newAppGuid                                                                                                                                                                                                                                                                       |
+| pcf.oldAppName                                                        | pcf.oldAppName                                                                                                                                                                                                                                                                       |
+| pcf.activeAppName                                                     | pcf.activeAppName                                                                                                                                                                                                                                                                    |
+| pcf.inActiveAppName                                                   | pcf.inActiveAppName                                                                                                                                                                                                                                                                  |
+| pcf.oldAppGuid                                                        | pcf.oldAppGuid                                                                                                                                                                                                                                                                       |
+| pcf.oldAppRoutes[0]                                                   | pcf.oldAppRoutes[0]                                                                                                                                                                                                                                                                  |
+| infra.pcf.cloudProvider.name                                          | infra.connector.name                                                                                                                                                                                                                                                                 |
+| infra.pcf.organization                                                | infra.organization                                                                                                                                                                                                                                                                   |
+| infra.pcf.space                                                       | infra.space                                                                                                                                                                                                                                                                          |
+| host.pcfElement.applicationId                                         | pcf.newAppGuid                                                                                                                                                                                                                                                                       |
+| host.pcfElement.displayName                                           | Basic or Canary deployment: pcf.newAppName. Blue Green deployment: pcf.inActiveAppName                                                                                                                                                                                                                |
+| host.pcfElement.instanceIndex                                         |                                                                                                                                                                                                                                                                                      |
+| **CONFIG File**                                                           | **CONFIG File**                                                                                                                                                                                                                                                                          |
+|                                                                       | configFile.getAsString("cf_file")                                                                                                                                                                                                                                                    |
+|                                                                       | configFile.getAsBase64("cf_file")                                                                                                                                                                                                                                                    |
+|                                                                       | configFile.getAsString("cf_secret")                                                                                                                                                                                                                                                  |
+|                                                                       | configFile.getAsBase64("cf_secret")                                                                                                                                                                                                                                                  |
+|                                                                       | fileStore.getAsString("/folder1/configFileProject")                                                                                                                                                                                                                                  |
+|                                                                       | fileStore.getAsBase64("account:/folder1/folder2/ConfigFile")                                                                                                                                                                                                                         |
 
 For more information migrating to NextGen, go to the following:
 
