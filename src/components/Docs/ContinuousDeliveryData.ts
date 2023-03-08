@@ -40,63 +40,63 @@ export const featuredTutorials: CardItem[] = [
           title: "Onboard with Continuous Delivery",
           module: "cd",
           description:
-            "This topic covers onboarding with Continuous Delivery.",
+            "Learn the basics of Harness Continuous Delivery.",
           link: "/docs/category/onboard-with-continuous-delivery",
         },
         {
           title: "Services",
           module: "cd",
           description:
-            "This topic covers Services.",
+            "Use Harness services to define your microservices and other workloads.",
           link: "/docs/category/services",
         },
         {
           title: "Infrastructure",
           module: "cd",
           description:
-            "This topic covers Infrastructure.",
+            "Define the target infrastructures for your deployments.",
           link: "/docs/category/infrastructure",
         },
         {
           title: "Execution",
           module: "cd",
           description:
-            "This topic covers Execution.",
+            "Use built-in steps to model your release process.",
           link: "/docs/category/execution",
         },
         {
           title: "Deployments",
           module: "cd",
           description:
-            "This topic covers Deployments.",
+            "Manage how deployments impact your resources.",
           link: "/docs/category/deployments",
         },
         {
           title: "GitOps",
           module: "cd",
           description:
-            "This topic covers GitOps.",
+            "Use Harness GitOps to perform Ops tasks.",
           link: "/docs/category/gitops",
         },
         {
           title: "Advanced CD",
           module: "cd",
           description:
-            "This topic covers Advanced CD.",
+            "In depth topics to take your CD to the next level.",
           link: "/docs/category/advanced-cd",
         },
         {
           title: "CD Dashboards",
           module: "cd",
           description:
-            "This topic covers CD Dashboards.",
+            "Use DORA and other advanced metrics for deployments.",
           link: "/docs/category/cd-dashboards",
         },
         {
           title: "CD Tech Reference",
           module: "cd",
           description:
-            "This topic covers CD Tech References.",
+            "Quickly reference settings, permissions, etc.",
           link: "/docs/category/cd-tech-reference",
         },
       ],
