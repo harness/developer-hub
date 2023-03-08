@@ -3,27 +3,23 @@ id: windows-ec2-cpu-hog
 title: Windows EC2 CPU hog
 ---
 
-EC2 windows CPU hog induces CPU stress on the AWS windows EC2 instances using Amazon SSM Run command, which is carried out using SSM docs that is in-built into the fault.
-- It causes CPU chaos on the target windows ec2 instances using the given `EC2_INSTANCE_ID` environment variable for a specific duration.
+EC2 windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault:
+- Causes CPU chaos on the target AWS Windows EC2 instances using the given `EC2_INSTANCE_ID` environment variable for a specific duration.
 
 ![Windows EC2 CPU hog](./static/images/windows-ec2-cpu-hog.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View fault usage</summary>
-<div>
-The fault causes CPU stress on the target AWS Windows EC2 instance(s). It simulates the situation of lack of CPU for processes running on the instance, which degrades their performance. Injecting a rogue process into the target EC2 instance starves the main processes (or applications of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience against such stress cases.
-</div>
-</details>
+EC2 windows CPU hog:
+- Simulates the situation of a lack of CPU for processes running on the instance, which degrades their performance. 
+- Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
 
-## Prerequisites
-
-- Kubernetes >= 1.17
-- SSM agent is installed and running on the target EC2 Windows instance.
+:::note
+- Kubernetes >= 1.17 is required to execute this fault.
+- The EC2 instance should be in a healthy state.
+- SSM agent should be installed and running on the target EC2 instance.
 - SSM IAM role should be attached to the target EC2 instance(s).
-- Create a Kubernetes secret that has the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
-
+- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -40,12 +36,9 @@ stringData:
 
 - If you change the secret key name (from `experiment.yml`), ensure that you update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the chaos experiment with the new name.
 
-## Permissions required
+:::
 
 Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -93,19 +86,12 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./policy-for-all-aws-faults) to execute all AWS faults.
-
-## Default validations
-The EC2 instance should be in a healthy state.
-
+- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+<h3>Mandatory fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -114,16 +100,16 @@ The EC2 instance should be in a healthy state.
         </tr>
         <tr>
             <td> EC2_INSTANCE_ID </td>
-            <td> ID(s) of the target EC2 instances</td>
-            <td> For example: <code>i-044d3cb4b03b8af1f</code> </td>
+            <td> ID(s) of the target EC2 instances. </td>
+            <td> For example: <code>i-044d3cb4b03b8af1f</code>. </td>
         </tr>
         <tr>
             <td> REGION </td>
-            <td> The AWS region ID where the EC2 instance has been created </td>
-            <td> For example: <code>us-east-1</code> </td>
+            <td> AWS region ID where the EC2 instance has been created. </td>
+            <td> For example: <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -132,23 +118,23 @@ The EC2 instance should be in a healthy state.
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> The total time duration for chaos injection (sec) </td>
-            <td> Defaults to 30s </td>
+            <td> Duration to insert chaos (in seconds). </td>
+            <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for aws secret credentials</td>
-            <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
+            <td> Path to the AWS secret credentials. </td>
+            <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
         </tr>
         <tr>
             <td> CPU_CORE </td>
-            <td> Provide the number of CPU cores to consume</td>
-            <td> Defaults to 0 which means all available cpu cores </td>
+            <td> Number of CPU cores to consume.</td>
+            <td> Defaults to 0 which means all available CPU cores would be consumed. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance</td>
-            <td> Default value: parallel. Supported: serial, parallel </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+            <td> Default value is parallel. Supports serial and parallel. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
@@ -156,19 +142,12 @@ The EC2 instance should be in a healthy state.
             <td> For example, 30s. </td>
         </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Fault tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### CPU core
 
-It defines the CPU core value to be utilised on the EC2 instance. You can tune it using the `CPU_CORE` environment variable, `0` means all the available cpu cores should be consumed.
+It specifies the number of CPU cores to be utilised on the EC2 instance. Tune it by using the `CPU_CORE` environment variable. All available CPU cores can be consumed by setting this variable to `0`.
 
-Use the following example to tune it:
+Use the following example to tune the CPU core:
 
 [embedmd]:# (./static/manifests/windows-ec2-cpu-hog/cpu-core.yaml yaml)
 ```yaml
@@ -197,9 +176,9 @@ spec:
 
 ### Multiple EC2 instances
 
-Multiple EC2 instances can be targeted in one chaos run. You can tune it using the `EC2_INSTANCE_ID` environment variable.
+It specifies multiple EC2 instances as comma-separated IDs that are target in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune multiple EC2 instances:
 
 [embedmd]:# (./static/manifests/windows-ec2-cpu-hog/multiple-instances.yaml yaml)
 ```yaml

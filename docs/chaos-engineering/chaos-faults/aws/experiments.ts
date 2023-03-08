@@ -232,4 +232,25 @@ export const experiments: ExperimentDetails[] = [
     tags: [],
     category: "aws",
   },
+  {
+    name: "Windows EC2 blackhole chaos",
+    description:
+      "Windows EC2 blackhole chaos results in access loss to the given target hosts or IPs by injecting firewall rules.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "Windows EC2 CPU hog",
+    description:
+      "EC2 windows CPU hog induces CPU stress on the AWS Windows EC2 instances using Amazon SSM Run command.",
+    tags: [],
+    category: "aws",
+  },
+  {
+    name: "Windows EC2 memory hog",
+    description:
+      "Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command.",
+    tags: [],
+    category: "aws",
+  },
 ];

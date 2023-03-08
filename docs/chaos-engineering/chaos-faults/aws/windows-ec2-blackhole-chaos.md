@@ -2,28 +2,22 @@
 id: windows-ec2-blackhole-chaos
 title: Windows EC2 blackhole chaos
 ---
-Windows EC2 blackhole chaos causes access loss to the given target hosts/ips by injecting firefall rules.
-- It checks the performance of the application (or process) running on the EC2 instances.
+Windows EC2 blackhole chaos results in access loss to the given target hosts or IPs by injecting firewall rules. This fault:
+- Checks the performance of the application (or process) running on the EC2 instances.
 
 ![Windows EC2 Blackhole Chaos](./static/images/windows-ec2-blackhole-chaos.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches traffic based on some SLOs (performance parameters). This fault limits the impact (blast radius) to only the traffic that you wish to test, by specifying the destination hosts or IP addresses. 
+## Use cases
 
-This fault helps improve the resilience of your services over time.
-</div>
-</details>
+Windows EC2 blackhole chaos:
+- Degrades the network without the EC2 instance being marked as unhealthy (or unworthy) of traffic. This can be resolved by using a middleware that switches the traffic based on certain SLOs (performance parameters). 
+- Limits the impact, that is, blast radius to only the traffic that you wish to test, by specifying the destination hosts or IP addresses. 
 
-## Prerequisites
-
-- Kubernetes > 1.16
-- SSM agent is installed and running on the target EC2 Windows instance.
-- SSM IAM role should be attached to the target EC2 instance(s).
-- Ensure to create a Kubernetes secret having the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
-
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- The EC2 instance should be in a healthy state.
+- SSM agent should be installed and running on the target EC2 instance.
+- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -38,16 +32,10 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+:::
 
 Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -95,17 +83,13 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
-## Default validations
-The EC2 instance should be in healthy state.
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+
+  <h3>Mandatory fields</h3>
     <table>
       <tr>
         <th> Variables </th>
@@ -119,16 +103,16 @@ The EC2 instance should be in healthy state.
       </tr>
       <tr>
         <td> EC2_INSTANCE_TAGS </td>
-        <td> Tag of the target EC2 instances. </td>
-        <td> For example, <code>type:chaos</code>. Provide any one value either instance id or tag.</td>
+        <td> Tag of the target EC2 instances. Provide any one value, either the instance Id or the tag.</td>
+        <td> For example, <code>type:chaos</code>. </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> The AWS region ID where the EC2 instance has been created. </td>
+        <td> AWS region ID where the EC2 instance has been created. </td>
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional fields</h3>
     <table>
         <tr>
             <th> Variables </th>
@@ -137,49 +121,44 @@ The EC2 instance should be in healthy state.
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
-            <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+            <td> Duration to insert chaos (in seconds). </td>
             <td> Defaults to 30s. </td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for aws secret credentials.</td>
+            <td> Path to the AWS secret credentials.</td>
             <td> Defaults to <code>/tmp/cloud_config.yml</code>.</td>
         </tr>
         <tr>
             <td> IP_ADDRESSES </td>
-            <td> IP addresses of the services, the accessibility to which is impacted. </td>
-            <td> comma-separated IP(S) can be provided. </td>
+            <td> IP addresses of the services whose accessibility is impacted. </td>
+            <td> Comma-separated IP(s) can be provided. </td>
         </tr>
         <tr>
             <td> DESTINATION_HOSTS </td>
-            <td> DNS Names of the services, the accessibility to which, is impacted. </td>
-            <td> if not provided, it will induce network chaos for all ips/destinations or IP_ADDRESSES if already defined. </td>
+            <td> DNS Names of the services whose accessibility is impacted. </td>
+            <td> If this value is not provided, the fault induces network chaos for all IPs or destinations or IP_ADDRESSES if already defined. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
-            <td> It defines sequence of chaos execution for multiple instance. </td>
-            <td> Defaults to parallel. Supports serial sequence as well. </td>
+            <td> Sequence of chaos execution for multiple instances. </td>
+            <td> Defaults to parallel. Supports serial and parallel. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds).  </td>
-            <td> For example, 30s </td>
+            <td> For example, 30s. </td>
         </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Run with destination IPs
 
-The network faults interrupt traffic for all the given IPs. You can be tuned via `IP_ADDRESSES` environment variable.
+It specifies the IPs that interrupt the traffic. Tune it by using the `IP_ADDRESSES` environment variable.
 
-`IP_ADDRESSES`: It contains the IP addresses of the services which is impacted.
+`IP_ADDRESSES`: It contains the IP addresses of the services that are impacted.
 
-You can tune it using the following example:
+Use the following example to tune the IPs:
 
 [embedmd]:# (./static/manifests/windows-ec2-blackhole-chaos/destination-ip.yaml yaml)
 ```yaml
@@ -207,11 +186,11 @@ spec:
 
 ### Run with destination hosts
 
-The network faults interrupt traffic for all the hosts by default. The interruption of specific Hosts can be tuned via `DESTINATION_HOSTS` environment variable.
+It specifies the hosts that interrupt the traffic by default. Tune it by using the `DESTINATION_HOSTS` environment variable.
 
-`DESTINATION_HOSTS`: It contains the DNS Names of the services, the accessibility to which, is impacted
+`DESTINATION_HOSTS`: It contains the DNS names of the services whose accessibility is impacted.
 
-You can tune it using the following example:
+Use the following example to tune the hosts:
 
 [embedmd]:# (./static/manifests/windows-ec2-blackhole-chaos/destination-host.yaml yaml)
 ```yaml
