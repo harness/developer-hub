@@ -106,8 +106,9 @@ To add a Bitrise plugin step to your pipeline YAML, add an `Bitrise` step, for e
                   name: setup golang
                   identifier: setup_go
                   spec:
-                    uses:
+                    uses: github.com/<repo>/test-step.git
                     with:
+                      is_debug: yes
                     env:
 ```
 
@@ -129,6 +130,7 @@ You can use variable expressions in the `with` and `env` settings. For example, 
 <summary>YAML Example: Pipeline with an Bitrise step</summary>
 
 This pipeline uses a Bitrise plugin step to ... It then ...
+<!-- inserted the bitrise step but otherwise didnt modify the pipeline -->
 
 ```yaml
 pipeline:
@@ -159,13 +161,13 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Action
-                  name: setup golang
-                  identifier: setup_go
+                  identifier: bitrise
+                  name: bitrise
+                  type: Bitrise
                   spec:
-                    uses: actions/setup-go@v3
-                    with:
-                      go-version: 1.19.5
+                    uses: github.com/<repo>/test-step.git
+                  with:
+                    is_debug: yes
               - step:
                   type: Run
                   name: Build and test
