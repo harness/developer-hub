@@ -24,7 +24,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### Early access
 
-This release does not include any early access feature.
+This release does not include any early access features.
 
 
 ### February 23, 2023, version 78507
