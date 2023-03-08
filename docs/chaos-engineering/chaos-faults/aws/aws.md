@@ -543,21 +543,6 @@ This fault determines the resilience of an application when ECS tasks unexpected
 
 <FaultDetailsCard category="aws">
 
-### ELB AZ down
-
-ELB AZ down takes down the availability zones on a target ELB for a specific duration.
-
-- It restricts access to certain availability zones for a specific duration.
-- It tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
-
-<accordion color="green">
-    <summary>Use cases</summary>
-This fault breaks the connectivity of an ELB with the given zones and impacts their delivery. Detaching the AZ from the load balancer disrupts an application's performance. 
-</accordion>
-</FaultDetailsCard>
-
-<FaultDetailsCard category="aws">
-
 ### Lambda delete event source mapping
 
 Lambda delete event source mapping removes the event source mapping from an AWS Lambda function for a specific duration.
