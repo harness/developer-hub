@@ -11,9 +11,9 @@ helpdocs_is_published: true
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts.
 
-Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin step**.
+Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
 
-This topic describes how to use the **Plugin** step to run GitHub Actions available in the [GitHub Marketplace](https://github.com/marketplace?category=&query=&type=actions&verification=). For information about the specialized **GitHub Action plugin step**, go to [GitHub Action plugin step settings](../../ci-technical-reference/ci-github-action-step.md).
+This topic describes how to use the **Plugin** step to run GitHub Actions available in the [GitHub Marketplace](https://github.com/marketplace?category=&query=&type=actions&verification=). For information about the specialized **GitHub Action plugin** step, go to [GitHub Action plugin step settings](../../ci-technical-reference/ci-github-action-step.md).
 
 With the **Plugin** step, you use the GitHub Actions Drone Plugin, [plugins/github-actions](https://github.com/drone-plugins/github-actions), and then replicate the GitHub Action settings. When your pipeline runs, the Github Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
@@ -68,7 +68,7 @@ For more information about Plugin step settings, go to the [Plugin step settings
 
 :::
 
-## Define parameters
+## Define variables and attributes
 
 Use **Settings** to specify the Github Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. At minimum, you must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
 
@@ -129,7 +129,7 @@ You can observe the GitHub Action in the build's logs.
 
 ![](./static/run-a-github-action-in-cie-532.png)
 
-## Configuration-as-code: YAML example
+## Pipeline YAML example
 
 The following YAML example includes a Plugin step that uses the Google `upload-cloud-storage` GitHub Action. The comments indicate values you must modify to use this code in your own Harness account.
 
