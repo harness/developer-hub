@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2023-03-07T10:00
+date: 2023-03-08T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -13,7 +13,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## March 7, 2023, version 78507
+## March 8, 2023, version 78507
 
 ### What's new
 
