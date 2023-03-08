@@ -465,16 +465,21 @@ For example, in the following execution URL, the UUID follows `executions` and i
 ```
 https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quickstart/pipelines/Helm_Quickstart/executions/kNHtmOaLTu66f_QNU-wdDw/pipeline
 ```
-#### <+pipeline.execution.url>
+#### <+pipeline.executionUrl>
 
 The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
 
 For example:
 
+```
+https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Docs/pipelines/Triggers/executions/EpE_zuNVQn2FXjhIkyFQ_w/pipeline
+```
 
-```
-https://app.harness.io/ng/#/account/H5W8iol5TNWc4G9h5A2MXg/cd/orgs/default/projects/CD_Docs/pipelines/Triggers/executions/EpE_zuNVQn2FXjhIkyFQ_w/pipeline
-```
+:::important
+The expression <+pipeline.execution.Url> has been deprecated.
+:::
+
+
 #### <+pipeline.name>
 
 The name of the current pipeline.
@@ -609,6 +614,17 @@ Here is an example with a Shell script step.
 ![](./static/harness-variables-31.png)
 
 For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md).
+
+#### <+stage.executionUrl>
+
+The execution URL of the stage. This is the same URL you see in your browser when you are viewing the pipeline execution.
+
+Use the following fully qualified expression to get the execution URL for a specific stage in the pipeline: 
+
+```
+<+pipeline.stages.[stageId].executionUrl>
+
+```
 
 ### Service
 
@@ -966,7 +982,18 @@ The description of the environment.
 
 #### <+env.type>
 
-The environment type, such as production or non-production.
+The environment type, such as `Production` or `PreProduction`.
+
+The available values are:
+- `PreProduction`
+- `Production`
+
+You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
+
+```
+<+env.type> != "Production"
+```
+
 
 ### Infrastructure
 
@@ -1022,7 +1049,18 @@ The step name.
 
 #### <+step.identifier>
 
-The the step [identifier](https://developer.harness.io/docs/platform/references/entity-identifier-reference/).
+The step [identifier](https://developer.harness.io/docs/platform/references/entity-identifier-reference/).
+
+#### <+step.executionUrl>
+
+The execution URL of the step. This is the same URL you see in your browser when you are viewing the pipeline execution.
+
+Use the following fully qualified expression to get the execution URL for a specific step in the pipeline: 
+
+```
+<+pipeline.stages.[stageId].spec.execution.steps.[stepid].executionUrl>
+```
+
 
 ### Instances
 

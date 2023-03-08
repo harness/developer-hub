@@ -1,0 +1,1 @@
+The step and the scanner communicate over SSL by default. Set this to **false** to disable SSL (not safe). 

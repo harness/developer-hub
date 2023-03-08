@@ -1,6 +1,6 @@
 ---
 title: Early Access
-date: 2023-02-15T10:00
+date: 2023-03-02T10:00
 sidebar_position: 2
 ---
 
@@ -11,6 +11,32 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 2, 2023
+
+### Security Testing Orchestration
+
+- Improved UI for configuring scan steps (STO-4867)
+  
+  This release includes a set of Security steps with an improved UI for configuring scans. Each step shows only the settings that apply to the specific scan. 
+
+  Note the following:
+
+  - This release includes new steps for the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP.  
+  - Docker-in-Docker is no longer required for these steps *unless* you're scanning a container image. If you're scanning a repository or running instance, you don't need to set up a Background step running DinD.    
+  - These steps are currently available in Security stages only. 
+  - Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
+  - For descriptions of all available UI settings, go to [Security step UI settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-ui-settings-reference).
+ 
+
+<details><summary>Security step configuration UI </summary>
+
+![STO step palette](static/sto-step-palette.png)
+  
+</details>
+
+
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/jira-integrations). (STO-5467)
 
 ## February 15, 2023
 

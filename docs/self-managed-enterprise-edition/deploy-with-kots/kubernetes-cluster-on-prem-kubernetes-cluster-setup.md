@@ -8,6 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info
+
+This is an End of Life (EOL) notice for the KOTS install method.
+
+:::
+
+
 This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** in an existing Kubernetes cluster. Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen** uses the [KOTS kubectl plugin](https://kots.io/kots-cli/getting-started/) for installation.
 
 To install Harness Self-Managed Enterprise Edition - Kubernetes Cluster **NextGen**, first you install Harness Self-Managed Enterprise Edition - Kubernetes Cluster **FirstGen**, and then you install NextGen as an application.

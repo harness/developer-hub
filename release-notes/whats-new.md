@@ -1,8 +1,12 @@
 ---
 title: What's New
-date: 2023-02-15T10:00
+date: 2023-03-03T10:00
 sidebar_position: 1
 ---
+
+```mdx-code-block
+import delete_project from './static/delete-project.png'
+```
 
 Learn about the new features that are Generally Available (GA) in Harness SaaS across all Harness modules and the Harness Platform.
 
@@ -11,6 +15,76 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+
+## March 2, 2023
+
+### Security Testing Orchestration
+
+- The Twistlock integration has been upgraded to use version 22.12.582. (STO-5575)
+- The Brakeman, Nikto, and Nmap scanner integrations now enable you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5465)
+- The Bandit scanner integration now enables you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5415)
+- The Mend integration now supports SCA scans. (STO-5242)
+- Bandit scan results have been enhanced. When you open the Details pane for a detected issue, the Raw Details JSON now includes links to further information under `_rawIssueCwe : link` and `_rawMoreInfo`. (STO-5422)
+- The Security Testing Dashboard includes a new set of filters for drilling down into specific issues by project, creation date, scanner, target, pipeline, severity, and so on. You can drill down to a set of relevant issues and then click on a pie slice, chart element, or other UI element to view details on the relevant issues. (STO-5329)
+  
+  Note the following:
+
+  - The Security Testing Dashboard requires an Enterprise account.
+  - You must click the **Refresh** button (top right) to apply the filter after you configure it.
+  - The **Created Date** menu has several non-working options: `is null`, `is not null`, and `matches a user attribute`. This is a known issue that Harness is working to address.
+
+![Security Testing Dashboard -- filters and Refresh button](static/sto-dashboard-with-new-filters.png)
+
+
+## March 1, 2023
+
+### Cloud Cost Management
+
+* AutoStopping Proxy for HTTPS and TCP connections.
+
+ Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
+
+* Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
+* Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
+
+## February 23, 2023, version 78507
+
+### Harness Platform
+
+- The new delegate installation wizard is now generally available. (PL-31305)
+  
+  You also have the option to revert to the previous installation method if desired.
+
+
+-  A warning message now appears in the UI when you delete a project or organization. Deletions require confirmation from the user. (PL-31292)
+  
+  ```mdx-code-block
+  <img src={delete_project} alt="delete-project" height="150" width="400"></img>
+  ```
+
+  This enhancement prevents the accidental deletion of important projects or organizations and provides an extra layer of caution for users.
+
+- The reference page for entities is improved to provide detailed information about each reference. (PL-31247)
+
+  The following details are added to the existing reference pages:
+
+  - Date or timestamp 
+  - Name and type of entity
+  - Scope of reference
+
+  These enhancements provide comprehensive information about each reference.
+
+- Sorting functionality is available on the project listing page and the project selector dropdown. (PL-27493)
+  With this enhancement, you can easily sort and find projects you need and organize them according to your preferences.
+
+- You can now change stages without losing the values you enter in the **Run Pipeline** form. (PIE-4663)
+
+### Continuous Integration
+
+In addition to fixed values and runtime inputs, you can now use [expressions](https://developer.harness.io/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+
+![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
 
 ## February 15, 2023, version 78421
 

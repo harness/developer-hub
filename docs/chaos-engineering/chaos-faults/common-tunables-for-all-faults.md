@@ -5,7 +5,7 @@ Fault tunables common to all the faults are provided at `.spec.experiment[*].spe
 
 ### Duration of the chaos
 
-It defines the total duration of the chaos injection (in seconds). You can tune it using the `TOTAL_CHAOS_DURATION` environment variable.
+It defines the total duration of the chaos injection (in seconds). Tune it by using the `TOTAL_CHAOS_DURATION` environment variable.
 
 Use the following example to tune it:
 
@@ -34,43 +34,9 @@ spec:
           VALUE: '60'
 ```
 
-### Multiple iterations of chaos
-
-Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. This variable defines the delay between each chaos iteration.
-
-Use the following example to tune it:
-
-[embedmd]:# (./static/manifest/common/chaos-interval.yaml yaml)
-```yaml
-# defines delay between each successive iteration of the chaos
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  annotationCheck: "false"
-  appinfo:
-    appns: "default"
-    applabel: "app=nginx"
-    appkind: "deployment"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: pod-delete
-    spec:
-      components:
-        env:
-        # delay between each iteration of chaos
-        - name: CHAOS_INTERVAL
-          value: '15'
-        # time duration for the chaos execution
-        - name: TOTAL_CHAOS_DURATION
-          VALUE: '60'
-```
-
 ### Chaos interval
 
-Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. This variable defines the delay between each chaos iteration.
+It specifies the delay between each chaos iteration. Multiple iterations of chaos can be tuned by setting the `CHAOS_INTERVAL` environment variable. 
 
 Use the following example to tune it:
 
@@ -104,7 +70,7 @@ spec:
 
 ### Ramp time
 
-It defines the period to wait before and after injecting chaos. You can tune it using the `RAMP_TIME` environment variable. It is in unit of seconds.
+It specifies the period to wait before and after injecting chaos. It is in units of seconds. Tune it by using the `RAMP_TIME` environment variable.
 
 Use the following example to tune it:
 
@@ -135,11 +101,10 @@ spec:
 
 ### Sequence of chaos execution
 
-It defines the sequence of the chaos execution in case of multiple targets. You can tune it using the `SEQUENCE` environment variable. It supports the following modes:
+It specifies the sequence of the chaos execution for multiple targets. Its default value is **parallel**. Tune it by using the `SEQUENCE` environment variable. It supports the following modes:
 
 - `parallel`: The chaos is injected in all the targets at once.
 - `serial`: The chaos is injected in all the targets one by one.
-The default value of `SEQUENCE` is `parallel`.
 
 Use the following example to tune it:
 
@@ -171,7 +136,7 @@ spec:
 
 ### Instance ID
 
-It defines a user-defined string that holds metadata/info about the current run/instance of chaos. For example: `04-05-2020-9-00`. This string is appended as a suffix in the chaosresult CR name. It can be tuned using the `INSTANCE_ID` environment variable.
+It specifies a user-defined string that holds metadata or information about the current run or instance of chaos. For example, `04-05-2020-9-00`. This string is appended as a suffix in the chaosresult CR name. Tune it by using the `INSTANCE_ID` environment variable.
 
 Use the following example to tune it:
 
@@ -202,7 +167,7 @@ spec:
 
 ### Image used by the helper pod
 
-It defines the image which is used to launch the helper pod, if applicable. It can be tuned using the `LIB_IMAGE` environment variable.
+It specifies the image used to launch the helper pod, if applicable. Tune it by using the `LIB_IMAGE` environment variable.
 It is supported by **container-kill**, **network-faults**, **stress-faults**, **dns-faults**, **disk-fill**, **kubelet-service-kill**, **docker-service-kill**, and **node-restart** faults.
 
 Use the following example to tune it:

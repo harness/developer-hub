@@ -1,4 +1,4 @@
-# defines total time duration of the chaos
+# defines total duration of the chaos
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -16,6 +16,6 @@ spec:
     spec:
       components:
         env:
-        # time duration for the chaos execution
+        # duration for the chaos execution
         - name: TOTAL_CHAOS_DURATION
           VALUE: '60'

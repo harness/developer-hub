@@ -24,7 +24,7 @@ Note the following important information about delegates:
 
 * The delegate is installed in your network and connects to the Harness Manager.
 
-  ![](./static/delegate-requirements-and-limitations-00
+  ![](./static/delegate-requirements-and-limitations-00.png)
   
   The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services such as Docker or Kubernetes.
 
@@ -67,12 +67,12 @@ All network connections from your local network to Harness SaaS are outbound-onl
 If you do not enable gRPC connections, the following limitations apply:
 
 
-* [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) does not collect events.
+* [Cloud Cost Management (CCM)](/docs/category/cloud-cost-management) does not collect events. 
 
 
 ## Add certificates and other software to the delegate
 
-For steps on adding certificates or other software to the delegate, go to [Common Delegate Initialization Scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
+For steps on adding certificates or other software to the delegate, go to [Common delegate initialization scripts](/docs/platform/2_Delegates/delegate-reference/common-delegate-profile-scripts.md).
 
 ## Delegate access requirements
 

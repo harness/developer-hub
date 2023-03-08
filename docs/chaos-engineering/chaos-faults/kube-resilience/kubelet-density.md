@@ -19,9 +19,10 @@ Kubelet density determines the resilience of the kubelet by creating pods on a s
 - It also verifies pod creation and scheduling SLIs on the cluster nodes.
 - It also helps determine the performance of the kubelet for a specific node.
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
 - The target nodes should be in the healthy state before and after injecting chaos.
+:::
 
 ## Fault tunables
 

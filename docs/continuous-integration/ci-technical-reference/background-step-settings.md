@@ -19,9 +19,19 @@ Background steps are useful for running services that need to run for the entire
   ![The Background step ID, pythonscript, is used in a curl command in a Run step.](./static/background-step-settings-call-id-in-other-step.png)
 * If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
 
+:::info
+
+Depending on the stage's build infrastructure, some settings may be unavailable.
+
+:::
+
+## Name
+
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+
 ## Container Registry
 
-The Harness Connector for a container registry. This is the container registry for the image that you want Harness to run build commands on, such as DockerHub.
+A Harness container registry connector that connects to the container registry from which you want Harness to pull an image, such as DockerHub.
 
 ## Image
 
@@ -32,7 +42,7 @@ Different container registries require different name formats:
 * **Docker Registry:** Input the name of the artifact you want to deploy, for example: `library/tomcat`. Wildcards aren't supported.
 * **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `us.gcr.io/playground-123/quickstart-image:latest`.
 
-![](./static/background-step-settings-08.png)
+   ![](./static/background-step-settings-08.png)
 
 * **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
 
@@ -50,13 +60,19 @@ The entry point takes precedence over any commands in the **Command** field.
 
 [POSIX](https://www.grymoire.com/Unix/Sh.html) shell script commands (beyond the entry point) executed inside the container.
 
+:::tip
+
+You can use `docker-compose up` to start multiple services in one Background step.
+
+:::
+
 ## Additional Configuration
 
 Use these optional settings to add additional configuration to the step. Settings considered optional depend on the stage's **Infrastructure** settings. Not all options are available for all build infrastructure types.
 
 ### Privileged
 
-Enable this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
+Select this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
 
 ### Report Paths
 
@@ -84,14 +100,15 @@ If the service is running in a container, you can select an option to set the pu
 
 ### Port Bindings
 
-Depending on the Build stage's **Infrastructure**, some steps might run on a bare-metal VM while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: bare-metal steps use the **Host Port** and containerized steps use the **Container Port**.
+Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: VMs use the **Host Port** and containerized steps use the **Container Port**.
 
 <details>
 <summary>Port Bindings example</summary>
 
 Assume you create a Background step with the **Name** and **Id** `myloginservice`.
-- A containerized step talks to this service using `myloginservice:*****container\_port*`.
-- A Run or Run Test step that runs directly on a VM or in a Kubernetes cluster talks to the service using `localhost:*****host\_port*`.
+
+- A containerized step talks to this service using `myloginservice:container_port`.
+- A step, such as a Run or Run Test step, that runs directly on the VM or in a Kubernetes cluster talks to the service using `localhost:host_port`.
 
 </details>
 
@@ -105,18 +122,11 @@ If your build stage uses Harness Cloud build infrastructure and you are running 
 
 ### Run as User
 
-If the service is running in a container, you can set the value to specify the user Id for all processes in the pod. For more information about how to set the value, see [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+If the service is running in a container, you can specify the user ID to use for all processes in the pod. For more information about how to set the value, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 ### Set Container Resources
 
 The maximum memory and cores that the container can use.
 
-### Limit Memory
-
-The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You may also use the power-of-two equivalents `Gi` and `Mi`.
-
-Do not include spaces when entering a fixed value. The default value, if unspecified, is `500Mi`.
-
-#### Limit CPU
-
-The maximum number of cores that the container can use. CPU limits are measured in cpu units. Fractional requests are allowed; you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. Do not include spaces when entering a fixed value. The default value is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).

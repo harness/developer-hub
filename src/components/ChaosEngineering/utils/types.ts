@@ -7,4 +7,5 @@ export enum FaultCategory {
   KubeResilience = "kube-resilience",
   Boutique = "boutique",
   Linux = "linux",
+  Load = "load",
 }

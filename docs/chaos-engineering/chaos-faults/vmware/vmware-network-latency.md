@@ -19,9 +19,9 @@ VMware network latency injects network packet latency from the VMware VM(s) into
 - It simulates slow response on specific third party (or dependent) components (or services).
 - It simulates degraded data-plane of service-mesh infrastructure.
 
-**Note**
+:::note
 - Kubernetes > 1.16 is required to execute this fault.
-- Adequate vCenter permissions should be provided to start and stop the VMs.
+- Appropriate vCenter permissions should be provided to start and stop the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
 - Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a `ChaosEngine` environment variable. Below is a sample secret file:
 ```yaml
@@ -36,6 +36,7 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
+:::
 
 ## Fault tunables
 

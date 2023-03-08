@@ -1,6 +1,6 @@
 ---
-title: Error Tracking Quickstart
-description: This quickstart walks you through the steps to set up Error Tracking.
+title: Continuous Error Tracking
+description: This topic walks you through the steps to set up Error Tracking.
 sidebar_position: 10
 helpdocs_topic_id: cbj5uuzpbu
 helpdocs_category_id: c40ko6e87n
@@ -10,13 +10,12 @@ helpdocs_is_published: true
 
 # **Error Tracking**
 
-
 :::note
 Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 
-Error Tracking is a continuous reliability solution in the Harness [Service Reliability Management (SRM)](https://developer.harness.io/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics#sort=relevancy&f:@commonsource=%5BNextGen%20Docs%5D) module that enables developers to identify, triage, and resolve errors in applications. This helps in implementing rapid code changes by ensuring that the code is always in a deployable state.
+Error Tracking is a developer first observability solution in the Harness [Service Reliability Management (SRM)](https://developer.harness.io/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics#sort=relevancy&f:@commonsource=%5BNextGen%20Docs%5D) module that enables developers to identify, triage, and resolve errors in applications. This helps in implementing rapid code changes by ensuring that the code is always in a deployable state.
 
 
 ## Overview

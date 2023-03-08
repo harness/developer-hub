@@ -125,7 +125,7 @@ For examples, see:
 
 * [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md)
 * [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/docker-delegates/install-a-docker-delegate.md)
+* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md)
 
 #### Credentials and Permissions
 
