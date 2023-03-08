@@ -262,6 +262,8 @@ harness/delegate:22.11.77436
 | [CDCE Docker](/tutorials/deploy-services/cdce-helm-k8s)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
 | [CDCE Helm](/tutorials/deploy-services/cdce-helm-k8s)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
 
+[To use local runner build infrastructure, modify the delegate command using the instructions here](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
+
 ```mdx-code-block
 </TabItem>
 </Tabs>
