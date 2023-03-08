@@ -39,12 +39,12 @@ Modifying a step template's **Step Parameters** no longer removes failure strate
 * [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](/docs/platform/Connectors/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
   * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
   * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
-* Use [Background steps](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)
+* Use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)
   * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
   * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
   * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option.
-* Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
-* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](https://developer.harness.io/docs/platform/Triggers/triggering-pipelines). (CI-5720)
+* [Pipeline execution status links](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
+* Improved handling of Azure repo URLs in [Git webhook pipeline triggers](/docs/platform/Triggers/triggering-pipelines). (CI-5720)
 
 ### Early access
 
@@ -52,7 +52,7 @@ This release does not include early access features.
 
 ### Deprecations
 
-The Configure Service Dependency step is deprecated in favor of the [Background step](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/background-step-settings), which allows for better control and configuration of services. Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines. Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration options. (CI-5580)
+The Configure Service Dependency step is deprecated in favor of the [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings), which allows for better control and configuration of services. Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines. Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration options. (CI-5580)
 
 ### Fixed issues
 
@@ -67,7 +67,7 @@ The Configure Service Dependency step is deprecated in favor of the [Background 
 
 ### What's new
 
-* Linux ARM is now supported in [Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructures. (CI-5787)
+* Linux ARM is now supported in [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructures. (CI-5787)
 * The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
 
 ### Early access features
