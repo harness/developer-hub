@@ -1217,6 +1217,12 @@ For example, here are several different references:
 
 When migrating Harness FirstGen expressions to Harness NextGen, review the following table.
 
+:::note
+
+All FirstGen expressions use the `${...}` format. For example, `${approvedBy.name}`. In NextGen, this has been replaced by `<+...>`. For example, `<+approvedBy.name>`.
+
+:::
+
 | FirstGen                                                              | Next Gen                                                                                                                                                                                                                                                                             |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Approvals**                                                             | **Approvals**                                                                                                                                                                                                                                                                            |
