@@ -18,7 +18,7 @@ The diagram below gives a peek into the HCE architecture.
 
 ## Harness control plane
 
-**Harness control plane** is the single source to collaboratively create, schedule, and monitor chaos experiments. It comes with a set of chaos faults that are defined in a sequence, which helps achieve the desired chaos impact on the target resources. You can log in to the Harness platform and leverage the interactive chaos access to define your chaos experiments and target the infrastructure. You can also monitor the experiments during their execution.
+**Harness control plane** is the single source to collaboratively create, schedule, and monitor chaos experiments. It comes with a set of chaos faults that are defined in a sequence, which helps achieve the desired chaos impact on the target resources. You can sign in to the Harness platform and leverage the interactive chaos access to define your chaos experiments and target the infrastructure. You can also monitor the experiments during their execution.
 
 ### Control plane components
 
@@ -26,7 +26,7 @@ The control plane in HCE contains many components, which are described below.
 
 #### Chaos infrastructure
 
-**Chaos infrastructure** is a service that runs within your target environment to help HCE access the target resources and inject chaos at cloud-native scale. It can be setup with cluster-wide access or with a single namespace scope.
+**Chaos infrastructure** is a service that runs within your target environment to help HCE access the target resources and inject chaos at cloud-native scale. It can be set up with cluster-wide access or with a single namespace scope.
 
 - There are different types of chaos infrastructures for different environments, such as Kubernetes, Linux VMs, AWS cloud, VMware, etc.
 - Based on the target environments, chaos infrastructures can be installed as a Kubernetes service, a Linux daemon, and so on.
