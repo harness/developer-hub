@@ -16,6 +16,17 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### March 08, 2023, version 78619
+
+#### What's new
+
+- You can now access your account immediately after resetting your password. (PL-30878)
+
+#### Early access
+
+This release does not include any early access features.
+
+
 ### February 23, 2023, version 78507
 
 #### What's new
