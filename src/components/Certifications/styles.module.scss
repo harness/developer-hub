@@ -46,16 +46,21 @@
             margin-bottom: 32px;
             li {
                 list-style: none;
-                padding: 8px 12px;
+                padding: 8px 16px;
                 margin: 0;
                 color: var(--gray-700);
                 font-weight: 600;
                 cursor: pointer;
+                border-radius: 8px 8px 0 0;
+                &:hover {
+                    background-color: var(--gray-50);
+                }
                 &.active {
                     font-weight: 700;
                     color: var(--primary);
                     border-bottom: 2px solid var(--primary);
                     cursor: default;
+                    background-color: var(--primary-1);
                 }
             }
         }
