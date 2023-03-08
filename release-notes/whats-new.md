@@ -21,13 +21,25 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 ### Harness Platform
 
 - Sorting functionality is available on the triggers listing page. (PL-31530)
+
   You can sort triggers according to the following: 
   - Name
   - Creation date
-- The [List User Groups API](https://apidocs.harness.io/tag/User-Group/#operation/getUserGroupList) now supports `INCLUDE_CHILD_SCOPE_GROUPS` as an additional filter type value. This filter allows API responses to include child-scoped user groups. (PL-31353)
+  
+- The [List User Groups API](https://apidocs.harness.io/tag/User-Group/#operation/getUserGroupList) now supports `INCLUDE_CHILD_SCOPE_GROUPS` as an additional filter type value. (PL-31353)
+  
+  This filter allows API responses to include child-scoped user groups. 
+  
 - You can now access your account immediately after resetting your password. (PL-30878)
-- You can configure the HashiCorp Vault connector to use AWS Auth authentication without providing a `X-Vault-AWS-IAM-Server-ID`. It is now an optional field. (PL-30628, ZD-36826,39745)
-- In the execution view, failed stages are now sorted before success stages when parallel stages are used. This makes it easier to choose failed stages. (PIE-2518)
+
+- You can configure the HashiCorp Vault connector to use AWS Auth authentication without providing a `X-Vault-AWS-IAM-Server-ID`. (PL-30628, ZD-36826,39745)
+  
+  It is now an optional field. 
+  
+- In the execution view, failed stages are now sorted before success stages when parallel stages are used. (PIE-2518)
+  
+  This makes it easier to choose failed stages.
+  
 - The feature flag `FF_ALLOW_OPTIONAL_VARIABLE` now lets you make runtime variables optional in pipelines and stages. (PIE-8209)
 
 ### Harness Delegate
