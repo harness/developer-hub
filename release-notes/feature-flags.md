@@ -668,9 +668,9 @@ The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
 #### Relay proxy
 
-* The proxy had a dependancy on a jwt package that is no longer maintained. This fix updated the jwt dependency to a package that is maintained. (FFM-3867)
-* The proxy had a dependency on ff-server, which is in a private repo. This fix removed the dependency on ff-server. (FFM-3965)
-* We provided a tool to generate off-line config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
+* The proxy had a dependancy on a JWT package that is no longer maintained. This fix updated the JWT dependency to a package that is maintained. (FFM-3867)
+* The proxy had a dependency on ff-server, which is in a private repository. This fix removed the dependency on ff-server. (FFM-3965)
+* Harness provided a tool to generate off-line config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
 
 ## August 18, 2022
 
