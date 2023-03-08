@@ -62,6 +62,8 @@ Set up the Harness delegate and runner.
 
 In addition to macOS, you can run your delegate and runner on [Docker](../define-a-docker-build-infrastructure.md), [Azure](define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
+For information about installing delegates, go to [Install a delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md).
+
 ## Set up the Harness runner to communicate with the Anka controller
 
 On the Harness runner host, update up the `pool.env` file as shown in the following Drone Runner config example:

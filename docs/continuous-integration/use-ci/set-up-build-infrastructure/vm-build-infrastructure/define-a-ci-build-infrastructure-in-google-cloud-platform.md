@@ -1,6 +1,6 @@
 ---
 title: Set up a GCP VM build infrastructure
-description: This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
+description: This topic describes how to set up a CI build infrastructure in Google Cloud Platform.
 
 sidebar_position: 30
 helpdocs_topic_id: k5rvvhw49i
@@ -9,23 +9,22 @@ helpdocs_is_private: true
 helpdocs_is_published: true
 ---
 
-:::note 
-Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::note
+Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
+This topic describes how to set up a CI build infrastructure in Google Cloud Platform. You will create an Ubuntu VM and then install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
 
 For information on using Kubernetes as a build farm, see [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [​Harness Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a build farm. The [Harness Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
-##### CI build infrastructure in Google Cloud Platform
-![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-29.png)
+![CI build infrastructure in Google Cloud Platform](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-29.png)
 
-### Important Notes
+## Important Notes
 
 * Google Cloud VM configuration:
-	+ For the Delegate VM, use a machine type with 4 vCPU and 16 GB memory or more.
+	+ For the delegate VM, use a machine type with 4 vCPU and 16 GB memory or more.
 	+ Harness recommends the [Ubuntu 18.04 LTS (Bionic)](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-bionic?project=docs-play) machine image.
 	+ The VM must allow ingress access on ports 22 and 9079.
 
@@ -35,11 +34,11 @@ To find images to use on google compute engine, use the following command:
 gcloud compute images list
 ```
 
-A valid image reference looks like this: `projects/{PROJECT}/global/images/{IMAGE}` 
+A valid image reference looks like this: `projects/{PROJECT}/global/images/{IMAGE}`
 
-For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`
+For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`
 
-### Step 1: Set up the delegate VM
+## Step 1: Set up the delegate VM
 
 1. Log into the [Google Cloud Console](https://console.cloud.google.com/) and launch the VM that will host your Harness delegate.
 2. [Install Docker](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/docker-basics.html#install_docker) on the VM.
@@ -49,18 +48,18 @@ For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131
    ```
    gcloud auth application-default login
    ```
-   This creates the following credentials file:  
+   This creates the following credentials file:
 
    `/home/$(whoami)/.config/gcloud/application_default_credentials.json`
 
 5. Create a `/runner` folder on your VM and `cd` into it:
 
    ```
-   mkdir /runner  
+   mkdir /runner
    cd /runner
    ```
 
-### Step 2: Configure the Drone pool on the Google VM
+## Step 2: Configure the Drone pool on the Google VM
 
 The **.drone\_pool.yml** file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VMs that are immediately available to build CI Pipelines.
 
@@ -70,9 +69,9 @@ The **.drone\_pool.yml** file defines the VM spec and pool size for the VM insta
 	2. Set up `spec: account:` with your Google project ID and your JSON credentials file.
 	3. See [pool.yml Settings Reference](set-up-an-aws-vm-build-infrastructure.md#pool-yml-settings-references) below for details on specific settings. See also [Drone Pool](set-up-an-aws-vm-build-infrastructure.md#runner-settings-reference-advanced)) and [Google](https://docs.drone.io/runner/vm/drivers/google/) in the Drone docs.
 
-##### Example pool.yaml
+### Example pool.yaml
 
-```
+```yaml
 version: "1"  
 instances:  
   - name: ubuntu-gcp  
@@ -95,23 +94,21 @@ instances:
 
 Later in this workflow, you'll reference the pool identifier in Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.
 
-### Step 3: Create the Docker-Compose YAML
+## Step 3: Configure the docker-compose.yaml file
 
-1. Navigate to the Delegates page for your Harness account, organization, or project.
-2. Click **New Delegate** and select **Docker**.
-3. Follow the steps in [Install a Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) and download the **docker-compose.yaml** file to your local machine.
+1. In your Harness account, organization, or project, select **Delegates** under **Project Setup**.
+2. Click **New Delegate** and select **Switch back to old delegate install experience**.
+3. Select **Docker** and then select **Continue**.
+4. Enter a **Delegate Name**. Optionally, you can add **Tags** or **Delegate Tokens**. Then, select **Continue**.
+5. Select **Download YAML file** to download the `docker-compose.yaml` file to your local machine.
 
-### Step 4: Configure the 'docker-compose.yml' file
+Next, you'll add the Runner spec to the new Delegate definition. The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
 
-The runner and delegate are both hosted on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port 3000 of your VM. 
+6. Copy your local `docker-compose.yaml` file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `.drone_pool.yml`.
+7. Open `docker-compose.yaml` in a text editor.
+8. Append the following to the end of the `docker-compose.yaml` file:
 
-In this step, you'll add the Runner spec to the new Delegate definition. 
-
-1. Copy your local **docker-compose.yaml** to the `/runner` folder on the VM. This folder should now have **docker-compose.yaml** and **.drone\_pool.yml**.
-
-2. Append the following to **docker-compose.yaml**.  
-
-   ```
+   ```yaml
    drone-runner-aws:  
        restart: unless-stopped  
        image: drone/drone-runner-aws:latest  
@@ -125,17 +122,18 @@ In this step, you'll add the Runner spec to the new Delegate definition. 
          - "3000:3000"
    ```
 
-3. In the **docker-compose.yaml** file, add the following under `services: harness-ng-delegate: restart: unless-stopped`:
+9. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
 
-   ```
+   ```yaml
    network_mode: "host"
    ```
 
-Your Docker Compose file now looks something like this:
+10. Save `docker-compose.yaml`.
 
-##### Updated docker-compose.yml
+<details>
+<summary>Example: docker-compose.yaml with Runner spec</summary>
 
-```
+```yaml
 version: "3.7"  
 services:  
   harness-ng-delegate:  
@@ -150,7 +148,7 @@ services:
     environment:  
       - ACCOUNT_ID=XXXXXXXXXXXXXXXX  
       - ACCOUNT_SECRET=XXXXXXXXXXXXXXXX  
-      - MANAGER_HOST_AND_PORT=https://qa.harness.io  
+      - MANAGER_HOST_AND_PORT=https://app.harness.io  
       - WATCHER_STORAGE_URL=https://app.harness.io/public/qa/premium/watchers  
       - WATCHER_CHECK_LOCATION=current.version  
       - REMOTE_WATCHER_URL_CDN=https://app.harness.io/public/shared/watchers/builds  
@@ -182,43 +180,50 @@ services:
       - "3000:3000"
 ```
 
-### Step 5: Install the Delegate and Runner
+</details>
 
-1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the Delegate VM and **`cd`** to `/runner`.
+For more information on Harness Docker Delegate environment variables, go to the [Harness Docker Delegate environment variables reference](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
 
-2. Confirm that the folder has both setup files:
+## Step 4: Install the Delegate and Runner
+
+1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the Delegate VM and `cd` to `/runner`.
+2. Confirm that the folder has both setup files, for example:
+
 	 ```
-	 $ ls -a  
-	 .  ..  docker-compose.yml  .drone_pool.yml 
+	 $ ls -a
+	 . .. docker-compose.yml .drone_pool.yml
 	 ```
-3. Install the Delegate and Runner:
+
+3. Run the following command to install the Delegate and Runner:
+
 	 ```
 	 $ docker-compose -f docker-compose.yml up -d
 	 ```
-4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start.
+
+4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start. For example:
+
 	 ```
 	 $ docker ps  
 	 $ docker logs <delegate-container-id>  
 	 $ docker logs <runner-container-id>
 	 ```
-5. In the Harness UI, verify that the delegate appears in the delegates list. This might take two or three minutes. You should see **Connected** next to the Delegate listing.![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-30.png)
 
-6. If you see **Not Connected**, make sure the Docker host can connect to **https://app.harness.io**.
+5. In the Harness UI, verify that the Delegate appears in the Delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
 
-	 The Delegate and Runner have now been successfully installed, registered, and connected.
+   ![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-30.png)
 
-	 To configure the Harness Docker Delegate, see [Harness Docker Delegate Environment Variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md).
+The Delegate and Runner are now installed, registered, and connected.
 
-### Step 6: Run a CI build
+## Step 5: Select pipeline build infrastructure
 
-1. In the Harness CI Stage, in **Infrastructure**, select **VMs**.
-2. In the **Pool ID**, enter the pool name `<pool_id>` that you added in [Step 2: Configure the Drone Pool on the Google VM](set-up-an-aws-vm-build-infrastructure.md#step-2-configure-the-drone-pool-on-the-google-vm).
+1. In your CI pipeline's **Build** stage, select the **Infrastructure** tab, and then select **VMs**.
+2. In the **Pool ID**, enter the pool `name` from your [.drone\_pool.yml](#step-2-configure-the-drone-pool-on-the-google-vm).
 
    ![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-31.png)
 
-You can now run builds in your GCP build infrastructure.
+This pipeline's **Build** stage now uses your GCP VMs for its build infrastructure.
 
-### Pool Settings Reference
+## Pool Settings Reference
 
 You can configure the following settings in your pool.yml file.
 
@@ -228,17 +233,17 @@ You can configure the following settings in your pool.yml file.
 | `name` (String) | NA | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI Stage Infrastructure. |
 | `pool` (Integer) | NA | `pool: 1` | Minimum pool size number. Denotes the minimum number of cached VMs in ready state to be used by the Runner. |
 | `limit` (Integer) | NA | `limit: 3` | Maximum pool size number. Denotes the maximum number of cached VMs in ready state to be used by the Runner. |
-| `platform` | os (String) | `platform: os: windows`arch (String) |`platform: arch:`  variant (String) |`platform: variant:` version (String) |`platform: version:`  | Configure the details of your VM platform.  |
+| `platform` | os (String) | `platform: os: windows`arch (String) |`platform: arch:` variant (String) |`platform: variant:` version (String) |`platform: version:` | Configure the details of your VM platform.  |
 | `spec` |  | Configure the settings of your build VMs as described in [Build VM Settings](#build-vm-settings). |
 
-#### Build VM Settings
+### Build VM Settings
 
-* `account`  — Specify your GCP project Id and the full path and filename of your local Google credentials file.
-* `image`  — The image type to use for the build VM.
-* `machine_type`  — The google machine type. See [About Machine Families](https://cloud.google.com/compute/docs/machine-types) in the Google Cloud docs.
-* `zone`  —  To minimize latency, specify the zone where the Delegate is running.
+* `account`: Specify your GCP project Id and the full path and filename of your local Google credentials file.
+* `image`: The image type to use for the build VM.
+* `machine_type`: The google machine type. See [About Machine Families](https://cloud.google.com/compute/docs/machine-types) in the Google Cloud docs.
+* `zone`: To minimize latency, specify the zone where the Delegate is running.
 
-### Troubleshooting (Advanced)
+## Troubleshooting (Advanced)
 
 If you have problems running the delegate, runner, or VMs, you can collect debug and trace information in your container logs.
 
@@ -263,7 +268,7 @@ If you have problems running the delegate, runner, or VMs, you can collect debug
    ```
 4. Restart the delegate and runner: `docker-compose up`
 
-### See Also
+## See Also
 
 * [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md)
 * For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.

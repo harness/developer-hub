@@ -81,102 +81,34 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/wUC23lmqfnY/hqdefault.jpg"><iframe width=" 200" height="150" src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
 
-## Step 1: Create a Kubernetes Cluster
+## Step 1: Create a Kubernetes cluster
 
-### Prerequisites
+Make sure your Kubernetes cluster meets the build infrastructure requirements in the [CI cluster requirements](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements) and the Harness-specific [permissions required for CI](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required).
 
-* Ensure your Kubernetes cluster meets the build infrastructure requirements in [CI Cluster Requirement](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements).
-* For Harness-specific permission requirements, see [permission required](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required) for CI.
-* Install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI Pipeline.
+You need to install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI pipeline.
 
-To create a new Kubernetes cluster, see:
+For instructions on creating clusters, go to:
 
 * [Creating a cluster in Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
-* [Creating a cluster in GKE (Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster))
+* [Creating a cluster in GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster)
 
-## Step 2: Add Kubernetes Cluster Connector and Delegate in Harness
+## Step 2: Add the Kubernetes cluster connector and install the Delegate
 
-* In your **Project**, click **Project Setup**.
-* Click **Connectors**.
-* Click **New Connector** and then click **Kubernetes Cluster**.
+1. In your Harness **Project**, select **Connectors** under **Project Setup**.
+2. Select **New Connector**, and then select **Kubernetes cluster**.
+3. Enter a name for the connector and select **Continue**.
+4. Select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
+5. Select **Install new Delegate**.
 
-Set up the Connector as follows.
+   ![](./static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
 
-### Connector Overview
+6. Install the Delegate on a pod in your Kubernetes build infrastructure. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
+7. After installing the delegate, return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
+8. In your Kubernetes Cluster connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.
+9. Select your new Kubernetes delegate, and then select **Save and Continue**.
+10. Wait while Harness tests the connection, and then select **Finish**.
 
-* Enter a unique name for the Connector.
-
-### Connector Details
-
-You can select Master URL and Credentials or Use the credentials of a specific Harness Delegate.
-
-In this example, click Use the credentials of a specific Harness Delegate and click **Continue**.
-
-### Delegate Setup
-
-You should now be in the Delegates Setup screen of the GitHub Connector wizard. Click **Install new Delegate**.
-
-![](./static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
-
-### Delegate Location
-
-You can install the Delegate in different locations. Usually it makes sense to install and run the Delegate on a pod in your Kubernetes build infrastructure. You'll do this in the next steps.
-
-* Select **Kubernetes**.
-
-![](./static/set-up-a-kubernetes-cluster-build-infrastructure-02.png)
-
-### Delegate Details
-
-Now you specify the Delegate name, size, and permissions.
-
-* Specify the following:
-	+ **Delegate name**
-	+ **Delegate size**
-	+ **Delegate Permissions:** Install Delegate with cluster-wide read/write access  
-	This is simply a default. In the future, you can add configurations to run scripts on your Delegates and scope them to different environments.
-
-![](./static/set-up-a-kubernetes-cluster-build-infrastructure-03.png)
-
-:::info
-
-For more information about delegates, go to [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
-
-:::
-
-### Delegate Install
-
-Harness now generates and displays a workspace-definition YAML file that you can install in your build infrastructure.
-
-![](./static/set-up-a-kubernetes-cluster-build-infrastructure-04.png)
-
-* Click **Download Script**. This downloads the YAML file for the Kubernetes Delegate.
-* Open a terminal and navigate to where the Delegate file is located. You'll connect to your cluster using the terminal so you can simply run the YAML file on the cluster.
-* In the same terminal, log into your Kubernetes cluster. In most platforms, you select the cluster, click **Connect**, and copy the access command.
-* Install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. Click **Next** in the Harness UI, then run the command shown. For example:
-```
-kubectl apply -f harness-delegate.yaml
-```
-You should see output similar to this:
-```
-% kubectl apply -f harness-delegate.yaml  
-namespace/harness-delegate-ng created  
-clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created  
-secret/ci-quickstart created  
-statefulset.apps/ci-quickstart created  
-service/delegate-service created
-```
-
-### Connect to the Delegate
-
-* Return to the Harness UI. It might take a few minutes to verify the Delegate. Once it is verified, close the wizard.
-* Back in **Delegates Setup**, you can select the new Delegate:
-	+ In the list of Delegates, you can see your new Delegate and its tags.
-	+ Select the **Connect using Delegates with the following Tags** option.
-	+ Enter the tag of the new Delegate and click **Save and Continue**.
-	+ Wait for the connection test to complete and then click **Finish**.
-
-### Step 3: Define the Build Farm Infrastructure in Harness
+## Step 3: Define the Build Farm Infrastructure in Harness
 
 In this step, you set up your build infrastructure using the Connector and Delegate you added previously.
 
@@ -203,44 +135,43 @@ The Kubernetes service account name. You must set this field in the following ca
 
 ## Option: Run as User
 
-You can override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions. See [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs. 
+You can override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions. See [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs.
 
 ## Option: Init Timeout
 
-If you use large images in your Build Steps, you might find that the initialization step times out and the build fails when the Pipeline runs. In this case, you can increase the default init time window (10 minutes). 
+If you use large images in your Build Steps, you might find that the initialization step times out and the build fails when the Pipeline runs. In this case, you can increase the default init time window (10 minutes).
 
 ## Option: Add Annotations
 
-You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. See [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs. 
+You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. See [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs.
 
 ## Option: Add Labels
 
-You can add Kubernetes labels (key-value pairs) to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the Kubernetes docs. 
+You can add Kubernetes labels (key-value pairs) to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the Kubernetes docs.
 
-If a custom label value does not match the following regex, the label won't get generated:  
-`^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$`Labels make it easy to find pods associated with specific Stages, Organizations, Projects, Pipelines, Builds, and any custom labels you want to add: 
-
+If a custom label value does not match the following regex, the label won't get generated:
+`^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$`Labels make it easy to find pods associated with specific Stages, Organizations, Projects, Pipelines, Builds, and any custom labels you want to add:
 
 ```
 kubectl get pods -l stageID=mycibuildstage
 ```
 Harness adds the following labels automatically:
 
-* `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
+* `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
 * `stageName`: See `pipeline.stages.stage.name` in the Pipeline YAML.
 * `orgID`: See `pipeline.orgIdentifier` in the Pipeline YAML.
 * `projectID`: See `pipeline.projectIdentifier` in the Pipeline YAML.
 * `pipelineID`: See `pipeline.identifier` in the Pipeline YAML.
-* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`: 
+* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`:
 
 `https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline`
 
-## Configure As Code
+## Configure As Code: YAML
 
 When configuring your Pipeline in YAML, you add the Kubernetes Cluster CI infrastructure using the infrastructure of type KubernetesDirect:
 
 
-```
+```yaml
 pipeline:  
 ...  
   stages:  
@@ -255,4 +186,5 @@ pipeline:
               namespace: default  
           ...
 ```
+
 Once the build infrastructure is set up, you can now add CI stages to execute your Run steps to build, deploy your code.

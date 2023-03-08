@@ -153,6 +153,15 @@ import harness_atl from './static/atlanta_light.png'
 <img src={harness_atl} alt="Harness Atlanta" height = "300" width = "600" />
 ```
 
+### Lightbox / Image Expand
+Can use the `docimage` plugin for this. 
+
+```
+<docimage path={require('./static/atlanta_light.png')} />
+```
+
+<docimage path={require('./static/atlanta_light.png')} />
+
 ## Videos	
 
 Videos are great tools to embed. You can embed a video in your Markdown.
