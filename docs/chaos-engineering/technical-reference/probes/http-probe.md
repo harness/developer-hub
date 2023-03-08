@@ -306,7 +306,7 @@ Probe run properties for HTTP Probe.
   <tr>
    <td>probePollingInterval
    </td>
-   <td>Flag to hold the polling interval for the probes(applicable for <code>Continuous</code> mode only)
+   <td>Flag to hold the polling interval for the probes (applicable for all modes)
    </td>
    <td>Optional
    </td>
