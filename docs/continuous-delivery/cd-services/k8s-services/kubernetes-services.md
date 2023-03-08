@@ -29,6 +29,9 @@ import TabItem from '@theme/TabItem';
 
 ### Kubernetes
 
+<details>
+<summary>Use Kubernetes manifests</summary>
+
 You can use:
 
 - Standard Kubernetes manifests hosted in any repo or in Harness.
@@ -281,21 +284,30 @@ If you have Values files in both the K8s Manifest **File/Folder Path** and the V
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Notes" label="Notes">
-```
-
-If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
-
-For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
-
-You can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests. See [Reference Artifacts in Manifests](kubernetes-services.md#reference-artifacts-in-manifests).
-
-```mdx-code-block
-  </TabItem>  
 </Tabs>
 ```
 
-### Helm Chart
+#### Ignore a manifest file during deployment
+
+You might have manifest files for resources that you do not want to deploy as part of the main deployment.
+
+Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) step. Or you can simply ignore them and deploy them later.
+
+See [Ignore a manifest file during deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and [Kubernetes Apply Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md).
+
+#### Notes
+
+- If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+- For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
+- You can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests. See [Reference Artifacts in Manifests](kubernetes-services.md#reference-artifacts-in-manifests).
+
+</details>
+
+
+### Helm Charts
+
+<details>
+<summary>Use Helm Charts</summary>
 
 You can use Helm charts stored in an HTTP Helm Repository, OCI Registry, a Git repo provider, a cloud storage service (Google Cloud Storage, AWS S3, Azure Repo), a custom repo, or the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
 
@@ -447,27 +459,24 @@ To add a Helm chart to your service, do the following:
 
 ```mdx-code-block
   </TabItem1>
-  <TabItem1 value="Notes" label="Notes">
-```
-
-If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
-
-For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](../../cd-advanced/cd-helm-category/deploy-helm-charts.md).
-
-Important notes:
-
-* Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
-* Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
-* Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
-
-```mdx-code-block
-  </TabItem1>
 </Tabs1>
 ```
 
+#### Important notes
 
+- If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+- For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](../../cd-advanced/cd-helm-category/deploy-helm-charts.md).
+- Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
+- Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
+- Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
+  
+
+</details>
 
 ### Kustomize
+
+<details>
+<summary>Use Kustomize</summary>
 
 Harness supports Kustomize deployments. You can use overlays, multibase, plugins, sealed secrets, patches, etc, just as you would in any native kustomization.
 
@@ -662,14 +671,14 @@ To use Kustomize Patches, do the following:
 
 ```mdx-code-block
   </TabItem2>  
-  <TabItem2 value="Notes" label="Notes">
+</Tabs2>
 ```
 
 If this is your first time using Harness for a Kustomize deployment, see the [Kustomize Quickstart](../../onboard-cd/cd-quickstarts/kustomize-quickstart.md).
 
 For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
-Important notes:
+#### Important notes
 
 * Harness supports Kustomize and Kustomize Patches for [Rolling](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md), [Canary](../../cd-technical-reference/cd-k8s-ref/canary-deployment-step.md), [Blue Green](../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) strategies, and the Kubernetes [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md) steps.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
@@ -679,12 +688,13 @@ Important notes:
   * To use 4.0.0, you must enable the feature flag `NEW_KUSTOMIZE_BINARY` in your account. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 * Harness will not follow symlinks in the Kustomize and Kustomize Patches files it pulls.
 
-```mdx-code-block
-  </TabItem2>
-</Tabs2>
-```
+</details>
 
-### OpenShift Template
+
+### OpenShift templates
+
+<details>
+<summary>Use OpenShift templates</summary>
 
 Harness supports OpenShift for Kubernetes deployments.
 
@@ -854,7 +864,7 @@ You can now see the params file in the OpenShift Template **Manifest Details**.
 
 ```mdx-code-block
   </TabItem3>
-  <TabItem3 value="Notes" label="Notes">
+</Tabs3>
 ```
 
 #### Deployment strategy support
@@ -886,19 +896,15 @@ If you run `kubectl api-resources` you should see a list of resources, and `k
 * The Kubernetes containers must be OpenShift-compatible containers. If you are already using OpenShift, then this is already configured. But be aware that OpenShift cannot simply deploy any Kubernetes container. You can get OpenShift images from the following public repos: <https://hub.docker.com/u/openshift> and <https://access.redhat.com/containers>.
 * Useful articles for setting up a local OpenShift cluster for testing: [How To Setup Local OpenShift Origin (OKD) Cluster on CentOS 7](https://computingforgeeks.com/setup-openshift-origin-local-cluster-on-centos/), [OpenShift Console redirects to 127.0.0.1](https://chrisphillips-cminion.github.io/kubernetes/2019/07/08/OpenShift-Redirect.html).
 
-```mdx-code-block
-  </TabItem3>
-</Tabs3>
-```
 
-
+</details>
 
 ## Artifacts
 
 You have two options when referencing the artifacts you want to deploy:
 
 - Add an artifact source to the Harness service and reference it using the Harness expression `<+artifacts.primary.image>` in the values YAML file.
-- Hardcode the artifact into the manifests, values YAML, etc.
+- Hardcode the artifact into the manifests or values YAML file.
 
 <details>
 <summary>Use the artifact expression</summary>
@@ -939,6 +945,9 @@ When you hardcode the artifact in your manifests, any artifacts added to your Ha
 
 
 ### Docker
+
+<details>
+<summary>Use artifacts in any Docker registry</summary>
 
 ```mdx-code-block
 import Tabs5 from '@theme/Tabs';
@@ -1173,19 +1182,23 @@ To add an artifact from a Docker registry, do the following:
 
 ```mdx-code-block
   </TabItem5>
-  <TabItem value="Notes" label="Notes">
-```
-
-For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
-
-The maximum number of artifact image tags fetched by Harness that is 10000.
-
-```mdx-code-block
-  </TabItem>  
 </Tabs5>
 ```
 
+#### Important notes
+
+- For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
+- The maximum number of artifact image tags fetched by Harness that is 10000.
+
+</details>
+
+
+
+
 ### Google Container Registry (GCR)
+
+<details>
+<summary>Use GCR artifacts</summary>
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
@@ -1366,8 +1379,10 @@ To add an artifact from GCR, do the following:
 
 ```mdx-code-block
   </TabItem6>
-  <TabItem6 value="Permissions" label="Permissions">
+</Tabs6>
 ```
+
+#### Permissions
 
 For Google Container Registry (GCR), the following roles are required:
 
@@ -1378,12 +1393,14 @@ For more information, go to the GCP documentation about [Cloud IAM roles for Clo
 
 Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. 
 
-```mdx-code-block
-  </TabItem6>
-</Tabs6>
-```
+</details>
+
+
 
 ### Google Artifact Registry
+
+<details>
+<summary>Use Google Artifact Registry artifacts</summary>
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
@@ -1585,8 +1602,10 @@ To add an artifact from Google Artifact Registry, do the following:
 
 ```mdx-code-block
   </TabItem7>
-  <TabItem7 value="Permissions" label="Permissions">
+</Tabs7>
 ```
+
+#### Permissions
 
 For Google Artifact Registry, the following roles are required:
 
@@ -1597,12 +1616,14 @@ For more information, go to the GCP documentation [Configure roles and permissio
 
 Ensure the Harness delegate you have installed can reach your Google Artifact Registry region, for example `us-central1`. 
 
-```mdx-code-block
-  </TabItem7>
-</Tabs7>
-```
+</details>
+
+
 
 ### Amazon Elastic Container Registry (ECR)
+
+<details>
+<summary>Use ECR artifacts</summary>
 
 You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
@@ -1789,8 +1810,10 @@ To add an artifact from ECR, do the following:
 
 ```mdx-code-block
   </TabItem8>
-  <TabItem8 value="Permissions" label="Permissions">
+</Tabs8>
 ```
+
+#### Permissions
 
 Ensure that the AWS IAM user account you use in the AWS Connector has the following policy.
 
@@ -1826,12 +1849,14 @@ Ensure that the AWS IAM user account you use in the AWS Connector has the follow
 
 </details>
 
-```mdx-code-block
-  </TabItem8>
-</Tabs8>
-```
+</details>
+
+
 
 ### Azure Container Registry (ACR)
+
+<details>
+<summary>Use ACR artifacts</summary>
 
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure cloud connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
 
@@ -2182,19 +2207,22 @@ The following JSON sample creates a custom role with the required permissions. T
 
 ```mdx-code-block
   </TabItem9>
-  <TabItem9 value="Notes" label="Notes">
-```
-
-Harness supports 500 images from an ACR repo. If you don't see some of your images, then you might have exceeded this limit. This is the result of an Azure API limitation.
-
-If you connect to an ACR repo via the platform-agnostic Docker Connector, the limit is 100.
-
-```mdx-code-block
-  </TabItem9>
 </Tabs9>
 ```
 
+#### Important notes
+
+- Harness supports 500 images from an ACR repo. If you don't see some of your images, then you might have exceeded this limit. This is the result of an Azure API limitation.
+- If you connect to an ACR repo via the platform-agnostic Docker Connector, the limit is 100.
+
+</details>
+
+
+
 ### Nexus
+
+<details>
+<summary>Use Nexus artifacts</summary>
 
 You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](../../../platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
 
@@ -2389,8 +2417,10 @@ To add an artifact from Nexus, do the following:
 
 ```mdx-code-block
   </TabItem10>
-  <TabItem10 value="Permissions" label="Permissions">
+</Tabs10>
 ```
+
+#### Permissions
 
 Ensure the connected user account has the following permissions in the Nexus Server.
 
@@ -2405,12 +2435,12 @@ For Nexus 3, when used as a **Docker** repo, the user needs:
 
 - A role with the `nx-repository-view-*_*_*` privilege.
 
-```mdx-code-block
-  </TabItem10>
-</Tabs10>
-```
+</details>
 
 ### Artifactory
+
+<details>
+<summary>Use Artifactory artifacts</summary>
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
@@ -2592,8 +2622,10 @@ To add an artifact from Artifactory, do the following:
 
 ```mdx-code-block
   </TabItem11>
-  <TabItem11 value="Permissions" label="Permissions">
+</Tabs11>
 ```
+
+#### Permissions
 
 Make sure the following permissions are granted to the user:
 
@@ -2607,12 +2639,13 @@ If used as a Docker Repo, user needs:
 
 See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
 
-```mdx-code-block
-  </TabItem11>
-</Tabs11>
-```
+</details>
 
-### Github Packages
+
+### Github packages
+
+<details>
+<summary>Use Github packages as artifacts</summary>
 
 You can use Github Packages as artifacts for deployments.
 
@@ -2861,8 +2894,10 @@ To add an artifact from Github Packages, do the following:
 
 ```mdx-code-block
   </TabItem12>
-  <TabItem12 value="Permissions" label="Permissions">
+</Tabs12>
 ```
+
+#### Permissions
 
 The Github Personal Access Token (PAT) must have the `write:packages` and `read:packages` permissions.
 
@@ -2901,12 +2936,14 @@ connector:
 
 You can use the same Harness secret that you used for user authentication.
 
-```mdx-code-block
-  </TabItem12>
-</Tabs12>
-```
+</details>
 
-### Custom Artifact Source
+
+
+### Custom artifact source
+
+<details>
+<summary>Use artifacts from a custom artifact source</summary>
 
 For enterprises that use a custom repository, Harness provides the Custom Artifact Source.
 
@@ -2916,10 +2953,17 @@ The output must be a JSON array, with a mandatory key for a Build Number/Version
 
 For steps on adding a Custom Artifact source, go to [Add a custom artifact source for CD](../cd-services-general/add-a-custom-artifact-source-for-cd.md).
 
+</details>
+
+
+
 
 ## Go templating
 
 Harness supports [Go templating](https://godoc.org/text/template) for Kubernetes manifests and values YAML files. 
+
+<details>
+<summary>Use Go templating</summary>
 
 You can add one or more values YAML files containing values for different scenarios, and then use Go templating in the manifest files to reference the values in the values YAML files.
 
@@ -3028,19 +3072,19 @@ spec:
 
 </details>
 
+</details>
 
 
+## Pull an image from a private registry
 
-### Pull an image from a private registry
+<details>
+<summary>Using dockercfg in values YAML</summary>
 
 Typically, if the Docker image you are deploying is in a private registry, Harness has access to that registry using the credentials set up in the Harness connector you use with your service **Artifacts**.
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. 
 
 For these cases, the values YAML file in Service Definition **Manifests** section must use the `dockercfg` parameter.
-
-<details>
-<summary>Using dockercfg in values YAML</summary>
 
 If the Docker image is added in the Service Definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifact.imagePullSecret>`.
 
@@ -3114,6 +3158,9 @@ With these requirements met, the cluster imports the credentials from the Docker
 
 You can use Harness to deploy both primary and sidecar Kubernetes workloads.
 
+<details>
+<summary>Define sidecar workloads</summary>
+
 Kubernetes sidecar workloads are a powerful way to modularize and encapsulate application functionality while keeping the overall architecture simple and easy to manage.
 
 Sidecars are commonly used to implement cross-cutting concerns like logging, monitoring, and security. By separating these concerns into separate containers, it's possible to add or modify them without affecting the primary container or the application running inside it.
@@ -3124,7 +3171,14 @@ Sidecars can also be used to implement advanced features like load balancing, se
 
 For more information, go to [Add a Kubernetes sidecar container](../../cd-advanced/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
 
+</details>
+
+
+
 ## Variables
+
+<details>
+<summary>Use service variables</summary>
 
 In the **Variables** section of the service you can add variables are use them in values YAML and params files, or in other settings in your stage that support expressions.
 
@@ -3178,25 +3232,11 @@ For more information, go to:
 - [Propagating CD services](../cd-services-general/propagate-and-override-cd-services.md)
 - [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
 
-
-## Ignore a manifest file during deployment
-
-You might have manifest files for resources that you do not want to deploy as part of the main deployment.
-
-Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) step. Or you can simply ignore them and deploy them later.
-
-See [Ignore a manifest file during deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and [Kubernetes Apply Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md).
-
+</details>
 
 ## Next steps
 
 Once you've configured your service, you can move onto the stage's **Environment** settings and define the target Kubernetes cluster and namespace for your deployment.
 
 See [Define your Kubernetes target infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
-
-## See also
-
-* [Create a Kubernetes Rolling Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
-* [Create a Kubernetes Canary Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
-* [Create a Kubernetes Blue Green Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
 
