@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-03T10:00
+date: 2023-03-08T10:00
 sidebar_position: 1
 ---
 
@@ -15,6 +15,40 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+
+## March 8, 2023
+
+### Harness Platform
+
+- Sorting functionality is available on the triggers listing page. (PL-31530)
+
+  You can sort triggers according to the following: 
+  - Name
+  - Creation date
+  
+- The [List User Groups API](https://apidocs.harness.io/tag/User-Group/#operation/getUserGroupList) now supports `INCLUDE_CHILD_SCOPE_GROUPS` as an additional filter type value. (PL-31353)
+  
+  This filter allows API responses to include child-scoped user groups. 
+  
+- You can now access your account immediately after resetting your password. (PL-30878)
+
+- You can configure the HashiCorp Vault connector to use AWS Auth authentication without providing `X-Vault-AWS-IAM-Server-ID`. (PL-30628, ZD-36826,39745)
+  
+  It is now an optional field. 
+  
+- In the execution view, failed stages are now sorted before success stages when parallel stages are used. (PIE-2518)
+  
+  This makes it easier to choose failed stages.
+  
+- The feature flag `FF_ALLOW_OPTIONAL_VARIABLE` now lets you make runtime variables optional in pipelines and stages. (PIE-8209)
+
+### Harness Delegate
+
+The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
+
+This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
+
 
 ## March 2, 2023
 
@@ -35,6 +69,17 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ![Security Testing Dashboard -- filters and Refresh button](static/sto-dashboard-with-new-filters.png)
 
+
+## March 1, 2023
+
+### Cloud Cost Management
+
+* AutoStopping Proxy for HTTPS and TCP connections.
+
+ Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
+
+* Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
+* Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
 
 ## February 23, 2023, version 78507
 

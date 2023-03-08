@@ -14,15 +14,31 @@ export enum docType {
 
 export type CardItem = {
   title: string;
-  module: string;
+  module:
+    | "platform"
+    | "ci"
+    | "cd"
+    | "ce"
+    | "ccm"
+    | "ff"
+    | "sto"
+    | "srm"
+    | "idp"
+    | "sei";
   description: JSX.Element | string;
-  icon: string;
+  icon?: string;
   type?: docType[];
   time?: string;
   newDoc?: boolean;
   link?: string;
   featuredCard?: boolean;
 };
+
+export type CardSections = {
+  name: string;
+  description?: string;
+  list: CardItem[];
+}[];
 
 function Card({
   title,
@@ -44,10 +60,12 @@ function Card({
       } ${styles[module]}`}
     >
       <div>
-        <h6>
-          {icon && <img src={baseUrl + icon} />}
-          {time}
-        </h6>
+        {time && (
+          <h6>
+            {icon && <img src={baseUrl + icon} />}
+            {time}
+          </h6>
+        )}
         {newDoc && (
           <div className={styles.newDoc}>
             <img src={`${baseUrl}img/new.svg`} />
@@ -55,20 +73,22 @@ function Card({
         )}
         <h4>{title}</h4>
         <p>{description}</p>
-        <div>
-          <ul className={styles.docTypes}>
-            {type.map((props, idx) => (
-              <li>
-                <Tooltip placement="top" overlay={props}>
-                  <img
-                    src={`${baseUrl}img/icon_doctype_${props}.svg`}
-                    alt={props}
-                  />
-                </Tooltip>
-              </li>
-            ))}
-          </ul>
-        </div>
+        {type && (
+          <div>
+            <ul className={styles.docTypes}>
+              {type.map((props, idx) => (
+                <li>
+                  <Tooltip placement="top" overlay={props}>
+                    <img
+                      src={`${baseUrl}img/icon_doctype_${props}.svg`}
+                      alt={props}
+                    />
+                  </Tooltip>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
     </Link>
   );
@@ -86,4 +106,14 @@ export default function TutorialCard(props): JSX.Element {
           ))}
     </div>
   );
+}
+
+export function TutorialCards({ sectionClass, data }): JSX.Element {
+  return data.map((section) => (
+    <div className={sectionClass}>
+      <h3 id={section.name}>{section.name}</h3>
+      {section.description && <p>{section.description}</p>}
+      <TutorialCard FeatureList={section.list} />
+    </div>
+  ));
 }

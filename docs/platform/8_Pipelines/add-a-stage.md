@@ -86,11 +86,6 @@ In **Advanced**, you can use the following options:
 * [Stage Conditional Execution Settings](w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-### Option: Running Stages in Parallel
-
-You can drag stages on top of each other to run them in parallel:
-
-![](./static/add-a-stage-57.png)
 ### See also
 
 * [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
