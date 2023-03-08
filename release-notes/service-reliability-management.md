@@ -35,7 +35,7 @@ This release does not include any fixed issues.
 
 - Standalone Error Tracking experience. (SRM-12696)  
 
-  This release introduces the standalone Error Tracking experience. With this, you can quickly start using Harness Error Tracking (ET) by installing the ET Agent on your Java Virtual Machine (JVM) and configuring it with Harness SRM.  
+  This release introduces the standalone Harness Error Tracking (ET) experience. With this, you can quickly start using ET by installing the ET Agent on your Java Virtual Machine (JVM) and configuring it with Harness SRM.  
 This feature is behind the feature flag `SRM_ET_EXPERIMENTAL`.
 
 
