@@ -151,7 +151,7 @@ Moving on to the Execution, add a Security Step from the Step Library.
 
 ![Step Library](static/node-first-scan/step_lib.png)
 
-Harness STO can orchestrate multiple security scanning tools. Setup of each scan step requires a few details such as the scanner name and information about the target to scan. You specify this information as a set of key-value pairs like this:
+Harness STO orchestrates multiple security scanning tools using scan steps. Setting up each scan step requires details such as the scanner name and the target to scan. You specify these requirements using key-value pairs like this:
 
 - policy_type: orchestratedScan
 - scan_type: repository
