@@ -25,7 +25,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-#### Feature Flags on the Harness Platform
+#### Feature Flags UI
 
 - Fixed an issue where the flag name was displayed in onboarding examples instead of the required flag identifier. (FFM-6921)
 
