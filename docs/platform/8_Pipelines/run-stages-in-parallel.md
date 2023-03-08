@@ -1,17 +1,22 @@
 ---
-title: Run Stages in Parallel
-description: Run stages in parallel if you want to deploy multiple, independent services to the same environment. 
+title: Run CD stages in parallel
+description: Perform parallel stage executions.
 sidebar_position: 3
 ---
 
-Run stages in parallel when you want to deploy multiple services to the same environment. 
+You can run stages in parallel when you want to perform parallel operations. For example:
 
-### Requirements
+- CI: Parallel execution of builds and tests can speed up the integration process and provide faster feedback to developers.
+- CD: Parallel execution of deployment stages can help reduce deployment times and increase the efficiency of the process.
+- Infrastructure as Code (IaC): Parallel execution of IaC scripts can speed up the creation of resources and improve the scalability of infrastructure.
+- Testing: Parallel execution of tests can reduce the overall testing time and provide faster feedback to developers.
+
+## Requirements
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Add a Stage](add-a-stage.md)
 
-### Running stages in parallel
+## Running stages in parallel
 
 Run stages in parallel by dragging them together or by selecting the `+` button under a stage in the UI. 
 
@@ -31,5 +36,5 @@ Navigate between the stages by hovering over them and selecting the stage.
 
 A [Resource Constraint](../../continuous-delivery/cd-deployments-category/deployment-resource-constraints.md) step is added to every stage automatically to make sure that two infrastructures are not being deployed concurrently. Hence, one of the two parallel stages will deploy first. Once the deployment of the winning stage finishes, the other stages will start.
 
-You can deploy multiple services and multiple environments in a single stage. However, using multi-service will deploy each selected service to a selected environment. For such use cases, we recommend using multiple stages.
+You can deploy multiple services to multiple environments in a single stage (for more information, go to [Use multiple services and environments in a deployment](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/multiserv-multienv/)). However, running multi-service stages in parallel will deploy each service to each environment in parallel. This can become very complicated. For such use cases, we recommend using multiple stages.
 
