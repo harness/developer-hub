@@ -18,7 +18,7 @@ For other build infrastructures, you can use the generic **Plugin** step with th
 
 ## Usage examples
 
-In the following YAML examples, GitHub Action plugin steps are used to configure Go, Java, and Ruby environments.
+In the following YAML examples, **GitHub Action plugin** steps are used to configure Go, Java, and Ruby environments.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -108,10 +108,10 @@ To add a GitHub Action plugin step to your pipeline YAML, add an `Action` step, 
                       go-version: '1.17'
 ```
 
-The `spec` parameters define which Action to use as well as settings and environment variables required by the Action. These are configure according to the GitHub Action's usage specifications.
+The `spec` parameters define which Action to use, the Action settings, and environment variables that you need to pass to the Action. These are configure according to the GitHub Action's usage specifications.
 
 * `uses:` Specify the Action's repo, along with a branch or tag, such as `actions/stepup-go@v3`.
-* `with:` If required by the Action, provide a mapping of key-value pairs representing settings required by the GitHub Action, such as `go-version: '1.17'`.
+* `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
 * `env:` If required by the Action, provide a mapping of environment variables to pass to the Action, such as `GITHUB_TOKEN: <+secrets.getValue("github_pat")>`. <!-- required for private Action repos? -->
 
 :::tip
@@ -125,7 +125,7 @@ You can use variable expressions in the `with` and `env` settings. For example, 
 <details>
 <summary>YAML Example: Pipeline with an Action step</summary>
 
-This pipeline uses a GitHub Action plugin step to install golang version 1.19.5. It then compiles the golang application and runs tests.
+This pipeline uses a **GitHub Action plugin** step to install golang version 1.19.5. It then compiles the golang application and runs tests.
 
 ```yaml
 pipeline:
@@ -193,13 +193,13 @@ Optional text string describing the step's purpose.
 
 ### Uses
 
-Specify the repo and branch or tag of the GitHub Action that you want to use, for example `actions/setup-go@v3`. Refer to the GitHub Action's usage specifications for information about branches and tags.
+Specify the repo and branch or tag of the GitHub Action that you want to use, for example `actions/setup-go@v3`. Refer to the GitHub Action's repo for information about branches and tags.
 
 ### Settings
 
-Found under **Optional Configuration**. If required by the Action, add key-value pairs representing settings required by the GitHub Action. For example, you would specify `go-version: '>=1.17.0'` by entering `go-version` in the key field and `>=1.17.0` in the value field.
+Found under **Optional Configuration**. If required by the Action, add key-value pairs representing GitHub Action settings. For example, you would specify `go-version: '>=1.17.0'` by entering `go-version` in the key field and `>=1.17.0` in the value field.
 
-Refer to the GitHub Action's `with` usage specifications for details about specific settings available for the Action you want to use.
+Refer to the GitHub Action's `with` usage specifications for details about specific settings available for the Action that you want to use.
 
 :::tip
 
@@ -209,9 +209,9 @@ Settings as a whole can be supplied as fixed values or runtime input, and indivi
 
 ### Environment Variables
 
-Found under **Optional Configuration**. If required by the Action, add key-value pairs representing environment variables required by the GitHub Action. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
+Found under **Optional Configuration**. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
 
-Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action you want to use.
+Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use.
 
 :::tip
 
