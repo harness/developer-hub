@@ -19,15 +19,15 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - Specify metric thresholds in the monitored service template. (SRM-13972)  
 
-  Now, you can specify metric thresholds for the health source when creating a monitored service template. This helps you predefine the metric thresholds and removes the hassle of specifying thresholds every time you create a new monitored service.
+  Now, you can specify metric thresholds for the health source when creating a monitored service template. This helps you predefine the metric thresholds and removes the hassle of specifying them every time you create a new monitored service.
 
 ### Early access
 
-This release does not include early access features.
+This release does not include any early access features.
 
 ### Fixed issues
 
-This release does not include early access features.
+This release does not include any fixed issues.
 
 ## February 28, 2023
 
