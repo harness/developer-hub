@@ -127,5 +127,5 @@ You can create alerts to receive notifications when an anomaly is detected. To c
 For example, when you click the GCP perspective, it displays the data for the entire GCP ecosystem. There are multiple anomalies in the given example. Hovering over the graph displays two links:
 
 * **View anomalies**: Clicking this option takes you to the **Anomalies** page filtered to that day.
-* **Apply anomaly filters**: Clicking this option applies the set of filters and takes you to the resource that caused the anomaly. This is useful in identifying the root cause for further analysis.The **Apply anomaly filters** link is disabled if there are multiple anomalies on a given day.
+* **Apply anomaly filters**: Clicking this option applies the set of filters and takes you to the resource that caused the anomaly. This is useful in identifying the root cause for further analysis. The **Apply anomaly filters** link is disabled if there are multiple anomalies on a given day.
 

@@ -1,5 +1,5 @@
 ---
-title: Manage access control for CCM Perspectives and Budgets
+title: Manage access control for CCM Perspectives 
 description: This topic describes how to add and manage access control for CCM Perspectives folder.
 # sidebar_position: 2
 ---
@@ -51,8 +51,13 @@ The following steps illustrate how to restrict access to a Resource Group:
       ![](./static/manage-role-bindings.png)
 
 
-In Harness, the **Perspectives** page shows only the folders that the user has been granted access to. This means that the user cannot see or interact with any folders that they do not have permission to access.
 
-A user can create Budgets for Perspectives only within the folders that they have been granted access to.
+In Harness, the **Perspectives** page shows only the folders that the user has been granted access to. This means that the user cannot see or interact with any folder that they do not have permission to access.
+
+A user can create **Budgets** for Perspectives only within the folders that they have been granted access to. For more information about Budgets, go to [Create a Budget](/docs/cloud-cost-management/2-use-cloud-cost-management/6-ccm-budgets/create-a-budget.md).
+
+Similarly, on the **Anomalies** page, only the anomalies associated with the perspectives located within specific folders that users have access to are displayed. The anomalies displayed also depend on the Perspective rule that restricts the user to a particular cloud provider account or a cost category, or a region. The out-of-the-box perspectives provided by Harness, as well as any other perspectives outside these folders, are not displayed. For more information about Anomalies, go to [Anomalies](/docs//cloud-cost-management/2-use-cloud-cost-management/5-ccm-cost-anomaly-detection/detect-cloud-cost-anomalies-with-ccm.md).
 
 A user with folder restrictions does not have permission to create new folders. This means that the user can only work within the existing folder structure that has been set up for them by an administrator.
+
+
