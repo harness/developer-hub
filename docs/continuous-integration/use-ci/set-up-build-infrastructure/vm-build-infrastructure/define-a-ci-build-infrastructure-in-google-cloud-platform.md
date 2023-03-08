@@ -61,15 +61,15 @@ For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`
 
 ## Step 2: Configure the Drone pool on the Google VM
 
-The **.drone\_pool.yml** file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VMs that are immediately available to build CI Pipelines.
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VMs that are immediately available to build CI Pipelines.
 
-1. In the `/runner` folder, create a new **.drone\_pool.yml** file.
+1. In the `/runner` folder, create a new `pool.yml` file.
 2. Set up the file as described in the following example. Note the following:
-	1. To avoid latency issues between delegate and build VMs, specify the same zone where your delegate is running in the `spec: zone:` field.
-	2. Set up `spec: account:` with your Google project ID and your JSON credentials file.
-	3. See [pool.yml Settings Reference](set-up-an-aws-vm-build-infrastructure.md#pool-yml-settings-references) below for details on specific settings. See also [Drone Pool](set-up-an-aws-vm-build-infrastructure.md#runner-settings-reference-advanced)) and [Google](https://docs.drone.io/runner/vm/drivers/google/) in the Drone docs.
+   * To avoid latency issues between delegate and build VMs, specify the same zone where your delegate is running in the `spec: zone:` field.
+   * Set up `spec: account:` with your Google project ID and your JSON credentials file.
+   * For information about specific settings, go to the [Pool Settings Reference](#pool-settings-reference). You can also learn more in the Drone documentation for [Drone Pool](set-up-an-aws-vm-build-infrastructure.md#runner-settings-reference-advanced) and [Google](https://docs.drone.io/runner/vm/drivers/google/).
 
-### Example pool.yaml
+### Example pool.yml
 
 ```yaml
 version: "1"  
@@ -104,7 +104,7 @@ Later in this workflow, you'll reference the pool identifier in Harness Manager 
 
 Next, you'll add the Runner spec to the new Delegate definition. The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
 
-6. Copy your local `docker-compose.yaml` file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `.drone_pool.yml`.
+6. Copy your local `docker-compose.yaml` file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `pool.yml`.
 7. Open `docker-compose.yaml` in a text editor.
 8. Append the following to the end of the `docker-compose.yaml` file:
 
@@ -191,7 +191,10 @@ For more information on Harness Docker Delegate environment variables, go to the
 
 	 ```
 	 $ ls -a
-	 . .. docker-compose.yml .drone_pool.yml
+	 ...
+   docker-compose.yml
+   pool.yml
+   ...
 	 ```
 
 3. Run the following command to install the Delegate and Runner:
@@ -217,7 +220,7 @@ The Delegate and Runner are now installed, registered, and connected.
 ## Step 5: Select pipeline build infrastructure
 
 1. In your CI pipeline's **Build** stage, select the **Infrastructure** tab, and then select **VMs**.
-2. In the **Pool ID**, enter the pool `name` from your [.drone\_pool.yml](#step-2-configure-the-drone-pool-on-the-google-vm).
+2. In the **Pool ID**, enter the pool `name` from your [pool.yml](#step-2-configure-the-drone-pool-on-the-google-vm).
 
    ![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-31.png)
 

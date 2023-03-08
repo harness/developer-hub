@@ -65,22 +65,20 @@ cd /runner
 
 ### Step 2: Configure the Drone Pool on the AWS VM
 
-The **.drone\_pool.yml** file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VM that are immediately available to build CI Pipelines. To avoid unnecessary costs, you can configure AWS Linux and Windows VMs to hibernate when not in use.
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VM that are immediately available to build CI Pipelines. To avoid unnecessary costs, you can configure AWS Linux and Windows VMs to hibernate when not in use.
 
-1. In the `/runner` folder, create a new **.drone\_pool.yml** file.
+1. In the `/runner` folder, create a new `pool.yml` file.
 2. Set up the file as described in the following example. Note the following:
-	1. To avoid latency issues, set up your build pool in the same Availability Zone as the Delegate VM.
-	2. Search for AMIs in your Availability Zone for supported models (Unbuntu, AWS Linux, Windows 2019+). AMI Ids differ depending on the Availability Zone.
-	3. See the Pool Settings Reference below for details on specific settings. See also [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [Amazon Runner](https://docs.drone.io/runner/vm/drivers/amazon/) in the Drone docs.
-
-The following **.drone\_pool.yml** example defines an Ubuntu and a Windows pool.
+   * To avoid latency issues, set up your build pool in the same Availability Zone as the Delegate VM.
+   * Search for AMIs in your Availability Zone for supported models (Ubuntu, AWS Linux, Windows 2019+). AMI Ids differ depending on the Availability Zone.
+   * For more information about specific settings, go to the [Pool Settings Reference](#pool-settings-reference). You can also learn more in the Drone documentation for [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [Amazon Runner](https://docs.drone.io/runner/vm/drivers/amazon/).
 
 <details>
-   <summary>Example pool.yaml</summary>
-   <div>
-      <pre class="hljs yaml">
+<summary>Example: pool.yml</summary>
 
-```
+The following `pool.yml` example defines an Ubuntu pool and a Windows pool.
+
+```yaml
 version: "1"  
 instances:  
   - name: ubuntu-test-pool-july-five  
@@ -122,8 +120,7 @@ instances:
         security_groups:  
         - sg-XXXXXXXXXXXXXX  
 ```
-</pre>
-</div>
+
 </details>
 
 Later in this workflow, you'll reference the pool identifier in the Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.
@@ -138,7 +135,7 @@ Later in this workflow, you'll reference the pool identifier in the Harness Mana
 
 Next, you'll add the Runner spec to the Delegate definition. The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
 
-6. Copy your local **docker-compose.yaml** file to the `/runner` folder on the AWS VM. This folder should now have both `docker-compose.yaml` and `.drone_pool.yml`.
+6. Copy your local **docker-compose.yaml** file to the `/runner` folder on the AWS VM. This folder should now have both `docker-compose.yaml` and `pool.yml`.
 7. Open `docker-compose.yaml` in a text editor.
 8. Append the following to the end of the `docker-compose.yaml` file:
 
@@ -222,7 +219,10 @@ For more information on Harness Docker Delegate environment variables, go to the
 
    ```
    $ ls -a
-   . .. docker-compose.yml .drone_pool.yml
+   ...
+   docker-compose.yml
+   pool.yml
+   ...
    ```
 
 3. Run the following command to install the Delegate and Runner:
@@ -251,7 +251,7 @@ The Delegate and Runner are now installed, registered, and connected.
 
    ![](../static/set-up-an-aws-vm-build-infrastructure-14.png)
 
-2. In **Pool ID**, enter the pool `name` from your [.drone\_pool.yml](#step-2-configure-the-drone-pool-on-the-aws-vm).
+2. In **Pool ID**, enter the pool `name` from your [pool.yml](#step-2-configure-the-drone-pool-on-the-aws-vm).
 
    ![](../static/set-up-an-aws-vm-build-infrastructure-15.png)
 
