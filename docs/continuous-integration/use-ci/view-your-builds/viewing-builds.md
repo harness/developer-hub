@@ -1,7 +1,7 @@
 ---
 title: View tests
 description: Your pipelines can run tests in Run and Run Tests steps.
-sidebar_position: 20
+sidebar_position: 10
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false
