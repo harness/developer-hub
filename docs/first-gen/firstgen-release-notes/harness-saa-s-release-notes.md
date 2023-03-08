@@ -16,16 +16,25 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### March 08, 2023, version 78619
-
-#### What's new
-
-- You can now access your account immediately after resetting your password. (PL-30878)
+### March 8, 2023, version 78619
 
 #### Early access
 
 This release does not include any early access features.
 
+#### What's new
+
+- You can now access your account immediately after resetting your password. (PL-30878)
+
+#### Fixed issues
+
+- Kubernetes API calls were ignoring the proxy username and password. (CDS-48646)
+  
+  You can access Kubernetes in proxy mode by providing the location and credentials directly to the HTTP client.
+  
+  Harness was not handling the proxy use case.
+  
+  Now Harness handles the use case by adding the username and password to the HTTP client.
 
 ### February 23, 2023, version 78507
 

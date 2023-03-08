@@ -1,6 +1,6 @@
 ---
 title: Early Access
-date: 2023-03-02T10:00
+date: 2023-03-08T10:00
 sidebar_position: 2
 ---
 
@@ -11,6 +11,16 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 8, 2023
+
+### Continuous Delivery
+
+- The Jira connector now supports Personal Access Token (PAT) authentication. (CDS-53849)
+
+  This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
+
+  As an alternative to username and password authentication, you can now use [Jira PAT authentication](https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html) in a Harness Jira Connector.
 
 ## March 2, 2023
 
