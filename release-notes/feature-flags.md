@@ -71,6 +71,23 @@ The Node.js SDK has been updated to version 1.2.10 and includes the following up
   - The SDK attempts to reconnect on retryable errors using an exponential backoff and retry strategy provided by the Harness fork of eventsource. (FFM-4204)
   - A new retry event is emitted so the SDK can log the current retry attempt. (FFM-4204)
 
+## February 21, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Python server SDK has been updated to version 1.1.9 and includes the following update:
+* There was an issue where SSE updates were stopping due to a dropped connection. The SSE connection is now reestablished if it drops. (FFM-6932) 
+
 ## February 9, 2023
 
 ### What's new
