@@ -2962,9 +2962,6 @@ For steps on adding a Custom Artifact source, go to [Add a custom artifact sourc
 
 Harness supports [Go templating](https://godoc.org/text/template) for Kubernetes manifests and values YAML files. 
 
-<details>
-<summary>Use Go templating</summary>
-
 You can add one or more values YAML files containing values for different scenarios, and then use Go templating in the manifest files to reference the values in the values YAML files.
 
 Built-in Go templating support enables you to use Kubernetes without the need for Helm.
@@ -2982,8 +2979,8 @@ Here's the values YAML file:
 name: <+stage.name>  
 replicas: 2  
   
-image: <+artifact.image>  
-# dockercfg: <+artifact.imagePullSecret>  
+image: <+artifacts.primary.image>  
+# dockercfg: <+artifacts.primary.imagePullSecret>  
   
 createNamespace: true  
 namespace: <+infra.namespace>  
@@ -3072,13 +3069,8 @@ spec:
 
 </details>
 
-</details>
-
 
 ## Pull an image from a private registry
-
-<details>
-<summary>Using dockercfg in values YAML</summary>
 
 Typically, if the Docker image you are deploying is in a private registry, Harness has access to that registry using the credentials set up in the Harness connector you use with your service **Artifacts**.
 
@@ -3086,31 +3078,32 @@ If some cases, your Kubernetes cluster might not have the permissions needed to 
 
 For these cases, the values YAML file in Service Definition **Manifests** section must use the `dockercfg` parameter.
 
-If the Docker image is added in the Service Definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifact.imagePullSecret>`.
+If the Docker image is added in the Service Definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifacts.primary.imagePullSecret>`.
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
 Open the values.yaml file you are using for deployment.
 
-Verify that `dockercfg` key exists, and uses the `<+artifact.imagePullSecret>` expression to obtain the credentials:
+Verify that `dockercfg` key exists, and uses the `<+artifacts.primary.imagePullSecret>` expression to obtain the credentials:
 
 ```yaml
 name: <+stage.variables.name>  
 replicas: 2  
   
-image: <+artifact.image>  
-dockercfg: <+artifact.imagePullSecret>  
+image: <+artifacts.primary.image>  
+dockercfg: <+artifacts.primary.imagePullSecret>  
   
 createNamespace: true  
 namespace: <+infra.namespace>  
 ...
 ```
-</details>
+
+### Reference dockercfg in Kubernetes objects
+
+Next, verify that the Deployment and Secret objects reference `dockercfg: {{.Values.dockercfg}}`.
 
 <details>
 <summary>Reference dockercfg in Kubernetes objects</summary>
-
-Next, verify that the Deployment and Secret objects reference `dockercfg: {{.Values.dockercfg}}`.
 
 ```yaml
 ...  
@@ -3158,9 +3151,6 @@ With these requirements met, the cluster imports the credentials from the Docker
 
 You can use Harness to deploy both primary and sidecar Kubernetes workloads.
 
-<details>
-<summary>Define sidecar workloads</summary>
-
 Kubernetes sidecar workloads are a powerful way to modularize and encapsulate application functionality while keeping the overall architecture simple and easy to manage.
 
 Sidecars are commonly used to implement cross-cutting concerns like logging, monitoring, and security. By separating these concerns into separate containers, it's possible to add or modify them without affecting the primary container or the application running inside it.
@@ -3171,14 +3161,8 @@ Sidecars can also be used to implement advanced features like load balancing, se
 
 For more information, go to [Add a Kubernetes sidecar container](../../cd-advanced/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
 
-</details>
-
-
 
 ## Variables
-
-<details>
-<summary>Use service variables</summary>
 
 In the **Variables** section of the service you can add variables are use them in values YAML and params files, or in other settings in your stage that support expressions.
 
@@ -3193,8 +3177,8 @@ You can use the variable in your values YAML files. For example, here's a servic
 name: <+serviceVariables.appname>  
 replicas: 2  
   
-image: <+artifact.image>  
-# dockercfg: <+artifact.imagePullSecret>  
+image: <+artifacts.primary.image>  
+# dockercfg: <+artifacts.primary.imagePullSecret>  
   
 createNamespace: true  
 namespace: <+infra.namespace>  
@@ -3231,8 +3215,6 @@ For more information, go to:
 
 - [Propagating CD services](../cd-services-general/propagate-and-override-cd-services.md)
 - [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
-
-</details>
 
 ## Next steps
 
