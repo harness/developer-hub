@@ -218,10 +218,7 @@ For more information on Harness Docker Delegate environment variables, go to the
 
    ```
    $ ls -a
-   ...
-   docker-compose.yml
-   pool.yml
-   ...
+   . .. docker-compose.yml pool.yml
    ```
 
 3. Run the following command to install the Delegate and Runner:
