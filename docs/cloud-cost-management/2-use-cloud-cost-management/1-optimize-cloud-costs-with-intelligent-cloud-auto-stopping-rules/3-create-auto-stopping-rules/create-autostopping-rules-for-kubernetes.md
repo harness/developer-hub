@@ -144,7 +144,7 @@ The specification in the YAML file is the same as a Kubernetes Ingress with addi
 
 Update the following parameters with the correct HTTP/HTTPS service details:
 
-* **(Optional) host**: Enter the domain name. If a host is provided (for example, `qa.harness.com`), the rule applies to that host. If you do not specify the domain name, the ingress created will match requests to all the domains.
+* **(Optional) host**: Enter the domain name. If a host is provided (for example, `app.harness.com`), the rule applies to that host. If you do not specify the domain name, the ingress created will match requests to all the domains.
 * **name**: Enter the name of your Kubernetes service. For example, `test`.
 * **port**: Enter the port number. For example, `80`.
 * For more information, see [The Ingress Resource](https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource).  
