@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-08T10:00
+date: 2023-03-15T10:00
 sidebar_position: 1
 ---
 
@@ -16,7 +16,19 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## March 8, 2023. version 78619
+## March 15, 2023 version 787XX
+
+### Harness Delegate
+
+- Integrated **Logs** API in the **Executed Details** page where the delegate task ID is available. (DEL-6035)
+
+  You can now view logs for delegate tasks for pipeline steps that are running or finished. This can help with debugging issues. 
+
+- Set an expiry for delegate tokens. (DEL-5652)
+
+  When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`, which is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
+
+## March 8, 2023 version 78619
 
 ### Continuous Delivery
 

@@ -1,7 +1,7 @@
 ---
 title: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-03-08T10:00
+date: 2023-03-15T10:00
 sidebar_position: 12
 ---
 
@@ -13,6 +13,33 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). For Self-Managed Enterprise Edition, see [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+
+## March 15, 2023, Harness version 787xx, Harness Delegate version 78700
+
+Harness NextGen release 787xx includes the following changes for the Harness Delegate.
+
+### What's new
+
+- Integrated **Logs** API in the **Executed Details** page where the delegate task ID is available. (DEL-6035)
+
+  You can now view logs for delegate tasks for pipeline steps that are running or finished. This can help with debugging issues. 
+
+- Set an expiry for delegate tokens. (DEL-5652)
+
+  When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`, which is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
+ 
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+A pipeline stalled with only one ServiceNow task running. (DEL-6042)
+
+This issue was fixed with the following updates:
+
+- Explicitly fail tasks that were never assigned to a delegate after 4 successful broadcast attempts per delegate to all eligible delegates in the account. 
+- Fail one minute after the last rebroadcast attempt. 
 
 ## March 8, 2023, Harness version 78619, Harness Delegate version 78500
 
