@@ -74,6 +74,11 @@ If you are using Infrastructure Definitions, the dialog will look like this:![](
 	1. **ECS Service Name** - By default, the ECS service will be named using a concatenation of the Harness Application, Service, and Environment names. You can change the name here using text or a variable. Enter **${** in the field to see a list of all of the variables available.![](./static/ecs-workflows-19.png)
 	2. **Same as already running instances** - This field displays the number of desired *ECS service instances* for this stage. By default, the ECS service will be set up using 2 ECS service instances even if the field contains **0**.During deployment, only one old version of the application will be kept. If there are more than one, Harness will reduce their instances to 0.
 	3. **Fixed** - Click this option to fix the specific number of ECS service instances to use for this stage. The **Fixed Instances Count** field will appear, where you can enter the value.
+	:::note
+
+	When the `FIXED_INSTANCE_ZERO_ALLOW` feature flag is enabled, and the **Fixed Instances Count** is set to `0`, Harness does not bring up any instances of the new service version and it scales down all the instances of the old service. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+	:::
 	4. **Resize Strategy** - Specify how you want the new ECS service instances added and downsized.
 	5. **Service Steady State Wait Timeout** - Specify how many minutes Harness should wait for the ECS service instances to reach Steady State before failing the set up. The default is 10 minutes. If you use an expression for this setting and it fails or evaluates to null, 10 minutes is used.This setting supports Harness variable expressions in Basic and Canary Workflows. They are not supported in Blue/Green Workflows or the ECS Run Task and ECS Daemon Service Setup steps. See [What is a Harness Variable Expression?](../../../firstgen-platform/techref-category/variables/variables.md) and [Set Workflow Variables](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).
 	6. **AWS Auto Scaler Configuration** - See [AWS Auto Scaling with ECS](#aws_auto_scaling_with_ecs).

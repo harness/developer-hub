@@ -1,0 +1,248 @@
+---
+id: windows-ec2-memory-hog
+title: Windows EC2 memory hog
+---
+
+Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault:
+- Causes memory exhaustion on the target Windows EC2 instance for a specific duration.
+
+![Windows EC2 Memory Hog](./static/images/windows-ec2-memory-hog.png)
+
+
+## Use cases
+
+Windows EC2 memory hog:
+- Causes memory stress on the target AWS EC2 instance(s).
+- Simulates the situation of memory leaks in the deployment of microservices.
+- Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
+
+:::note
+- Kubernetes >= 1.17 is required to execute this fault.
+- The EC2 instance should be in a healthy state.
+- SSM agent should be installed and running on the target EC2 Windows instance in the admin mode.
+- SSM IAM role should be attached to the target EC2 instance(s).
+- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: cloud-secret
+type: Opaque
+stringData:
+  cloud_config.yml: |-
+    # Add the cloud AWS credentials respectively
+    [default]
+    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+```
+
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+:::
+
+Here is an example AWS policy to execute the fault.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ssm:GetDocument",
+                "ssm:DescribeDocument",
+                "ssm:GetParameter",
+                "ssm:GetParameters",
+                "ssm:SendCommand",
+                "ssm:CancelCommand",
+                "ssm:CreateDocument",
+                "ssm:DeleteDocument",
+                "ssm:GetCommandInvocation",          
+                "ssm:UpdateInstanceInformation",
+                "ssm:DescribeInstanceInformation"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2messages:AcknowledgeMessage",
+                "ec2messages:DeleteMessage",
+                "ec2messages:FailMessage",
+                "ec2messages:GetEndpoint",
+                "ec2messages:GetMessages",
+                "ec2messages:SendReply"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ec2:DescribeInstanceStatus",
+                "ec2:DescribeInstances"
+            ],
+            "Resource": [
+                "*"
+            ]
+        }
+    ]
+}
+```
+
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults.
+
+## Fault tunables
+
+<h3>Mandatory fields</h3>
+<table>
+    <tr>
+        <th> Variables </th>
+        <th> Description </th>
+        <th> Notes </th>
+    </tr>
+    <tr>
+        <td> EC2_INSTANCE_ID </td>
+        <td> ID of the target EC2 instance. </td>
+        <td> For example, <code>i-044d3cb4b03b8af1f</code>. </td>
+    </tr>
+    <tr>
+        <td> REGION </td>
+        <td> AWS region ID where the EC2 instance has been created. </td>
+        <td> For example, <code>us-east-1</code>. </td>
+    </tr>
+</table>
+<h3>Optional fields</h3>
+<table>
+    <tr>
+        <th> Variables </th>
+        <th> Description </th>
+        <th> Notes </th>
+    </tr>
+    <tr>
+        <td> TOTAL_CHAOS_DURATION </td>
+        <td> Duration to insert chaos (in seconds). </td>
+        <td> Defaults to 30s. </td>
+    </tr>
+    <tr>
+        <td> AWS_SHARED_CREDENTIALS_FILE </td>
+        <td> Path to the AWS secret credentials.</td>
+        <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
+    </tr>
+    <tr>
+        <td> INSTALL_DEPENDENCIES </td>
+        <td> Install dependencies to run the network chaos. It can be 'True' or 'False'. </td>
+        <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
+    </tr>
+    <tr>
+        <td> MEMORY_CONSUMPTION </td>
+        <td> Amount of memory to be consumed by the EC2 instance (in megabytes). </td>
+        <td> Defaults to 0MB. </td>
+    </tr>
+    <tr>
+        <td> MEMORY_PERCENTAGE </td>
+        <td> Amount of memory to be consumed by the EC2 instance (in percentage).</td>
+        <td> Defaults to 50. </td>
+    </tr>
+    <tr>
+        <td> SEQUENCE </td>
+        <td> Sequence of chaos execution for multiple instances.</td>
+        <td> Defaults to parallel. Supports serial and parallel. </td>
+    </tr>
+    <tr>
+        <td> RAMP_TIME </td>
+        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> For example, 30s. </td>
+    </tr>
+</table>
+
+### Memory consumption in megabytes
+
+It specifies the amount of memory to be utilized (in megabytes) on the EC2 instance. Tune it by using the `MEMORY_CONSUMPTION` environment variable.
+
+Use the following example to tune memory consumption in MB:
+
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-bytes.yaml yaml)
+```yaml
+# memory in mb to utilize
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: windows-ec2-memory-hog
+    spec:
+      components:
+        env:
+        - name: MEMORY_CONSUMPTION
+          VALUE: '1024'
+        # ID of the EC2 instance
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1'
+        # region for the EC2 instance
+        - name: REGION
+          value: 'us-east-1'
+```
+
+### Memory consumption by percentage
+
+It specifies the amount of memory (in percentage) to be utilized on the EC2 instance. Tune it by using the `MEMORY_PERCENTAGE` environment variable.
+
+Use the following example to tune memory consumption in percentage:
+
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-percentage.yaml yaml)
+```yaml
+# memory percentage to utilize
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: windows-ec2-memory-hog
+    spec:
+      components:
+        env:
+        - name: MEMORY_PERCENTAGE
+          value: '50'
+        - name: MEMORY_CONSUMPTION
+          value: '0'
+        # ID of the EC2 instance
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1'
+        # region for the EC2 instance
+        - name: REGION
+          value: 'us-east-1'
+```
+
+### Multiple EC2 instances
+
+It specifies multiple EC2 instances as comma-separated IDs that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+
+Use the following example to tune multiple EC2 instances:
+
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/multiple-instances.yaml yaml)
+```yaml
+# multiple instance targets
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: windows-ec2-memory-hog
+    spec:
+      components:
+        env:
+        # ids of the EC2 instances
+        - name: EC2_INSTANCE_ID
+          value: 'instance-1,instance-2,instance-3'
+        # region for the EC2 instance
+        - name: REGION
+          value: 'us-east-1'
+```

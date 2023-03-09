@@ -197,3 +197,62 @@ Select **Expand graph** to view the Test Intelligence Visualization, which shows
 ![](./static/set-up-set-up-test-intelligence-531.png)
 
 </details>
+
+## Enable parallelism for Test Intelligence
+
+Similar to how you can [speed up CI pipelines using parallelism](../../../platform/8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md), you can enable parallelism in your Run Tests steps to further reduce the time required for your tests to run.
+
+With parallelism alone, such as when using `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting), you specify how you want Harness to divide the work for a step or stage. When you use parallelism with Test Intelligence, Harness divides the work after test selection. This means that your Run Tests execution time is reduced by both test selection and parallelism.
+
+<details>
+<summary>Example: Parallelism comparison</summary>
+
+Suppose you have a pipeline that runs 100 tests, and each test takes about one second to run. Here's how TI and parallelism can reduce your test times:
+
+* By default, without TI or parallelism, all 100 tests run in sequence, taking 100 seconds.
+* With TI, test selection reduces the number of tests based on the detected changes. Supposing only 20 out of the 100 tests are required, the build with TI runs 20 tests in sequence, taking 20 seconds. This reduces test run time by 80%.
+* With TI and parallelism, the selected tests are divided into a number of workloads. Supposing a maximum of four workloads and 20 selected tests, the 20 tests are split into four concurrently-running groups. It takes only five seconds to run the tests, reducing test run time by 95% compared to the default.
+
+</details>
+
+To enable parallelism for Test Intelligence, you must set a parallelism `strategy` on either the Run Tests step or the stage where you have the Run Tests step, and you must add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`.
+
+1. Go to the pipeline where you want to enable parallelism for Test Intelligence.
+2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy` and `parallelism`. Other options, such as `maxConcurrency` are optional. For example:
+
+   ```yaml
+        strategy:
+          parallelism: 5
+   ```
+
+   You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
+
+   :::caution
+
+   If you use step-level parallelism, you must ensure that your test runners won't interfere with each other, because all parallel steps work on the same directory.
+
+   :::
+
+3. Switch to the YAML editor, if you were not already using it.
+4. Find the `RunTests` step, and then find the `spec` section.
+5. Add the `enableTestSplitting` parameter and the optional `testSplitStrategy` parameter. You must set `enableTestSplitting` to `true`.
+
+   The `testSplitStrategy` parameter is optional. If you include it, you can choose either `TestCount` or `ClassTiming`. Class timing uses test times from previous runs to determine how to split the test workload for the current build. Test count uses simple division to split the tests into workloads. The default is `ClassTiming` if you omit this parameter.
+
+   The maximum number of workloads is determined by the parallelism `strategy` you specified on the step or stage. For example, if you set `parallelism: 5`, tests are split into a maximum of five workloads.
+
+   Here is a truncated YAML example of a Run Tests step with `enableTestSplitting` and `testSplitStrategy`:
+
+   ```yaml
+   - step:
+       type: RunTests
+       name: Run Test With Intelligence
+       identifier: run-tests-with-intelligence
+       spec:
+         enableTestSplitting: true
+         testSplitStrategy: ClassTiming
+   ```
+
+6. Save and run your pipeline.
+
+Note that while parallelism for Test Intelligence can improve the total time it takes to run all tests, some tests may still take a long time to run if, by their nature, they are intensive, long-running tests.
