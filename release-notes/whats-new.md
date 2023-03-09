@@ -16,8 +16,54 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 8, 2023. version 78619
 
-## March 8, 2023
+### Continuous Delivery
+
+- The YAML schema for the Jira connector has been migrated to a new version that encapsulates the authentication details in a new `auth` object with type `UsernamePassword`. This migration enables Harness to support different authentication types in the Jira connector. 
+
+The first of the following two YAML snippets shows the new `auth` object and the new `username` and `passwordRef` fields nested within it. The second YAML snippet shows you the previous YAML specification for purposes of comparison.
+```
+connector:
+  name: jira
+  identifier: jira
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: <pid>
+  type: Jira
+  spec:
+    serviceNowUrl: https://jiraUrl.atlassian.net/
+    username: harnessqa
+    passwordRef: HarnessQA
+    auth:
+      type: UsernamePassword
+      spec:
+        username: harnessqa
+        passwordRef: HarnessQA
+    delegateSelectors:
+      - harnessci-platform-ng-prod
+```
+```
+connector:
+  name: jira
+  identifier: jira
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: <pid>
+  type: Jira
+  spec:
+    serviceNowUrl: https://jiraUrl.atlassian.net/
+    username: harnessqa
+    passwordRef: HarnessQA
+    delegateSelectors:
+      - harnessci-platform-ng-prod
+```
+
+Any new Jira connectors that you create must include the new `auth` object, and you must use its nested `username` and `passwordRef` fields for authentication. 
+
+The new fields override the previously used `username` and `passwordRef` authentication fields. The older fields are now deprecated.
+ 
+These changes are backward incompatible. Therefore, you must also update the Terraform provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
 
 ### Harness Platform
 
@@ -48,7 +94,6 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
 
 This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
-
 
 ## March 2, 2023
 
