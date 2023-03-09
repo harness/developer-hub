@@ -1,18 +1,12 @@
 ---
 title: Secure Shell (SSH) deployment tutorial
-description: This topic walks you through a traditional deployment using Secure Shell (SSH) to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+description: Deploy to any platform using SSH.
 sidebar_position: 8
 helpdocs_topic_id: mpx2y48ovx
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
-:::note
-
-Currently, this feature is behind the feature flags `SSH_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You can use Secure Shell (SSH) to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 
