@@ -59,7 +59,7 @@ The `spec` parameters define which Bitrise Integration to use, Bitrise Integrati
 
 * `uses:` Specify the Bitrise Integration's source repo, such as `github.com/bitrise-steplib/bitrise-step-android-build.git`.
 * `with:` If required by the Integration, provide a mapping of key-value pairs representing Integration inputs, such as `build_type: 'apk'`.
-* `env:` If required by the Integration, provide a mapping of environment variables to pass to the Integration, such as `GITHUB_TOKEN: <+secrets.getValue("github_pat")>`. <!-- does this work with private repos?  -->
+* `env:` If required by the Integration, provide a mapping of environment variables to pass to the Integration.  <!-- CI-7300 private repos -->
 
 :::tip
 
@@ -68,49 +68,6 @@ If you already configured Bitrise Integrations elsewhere, you can [transfer Bitr
 You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
 
 :::
-
-<details>
-<summary>YAML Example: Pipeline with a Bitrise step</summary>
-
-<!-- only step -->
-
-```yaml
-  stages:
-    - stage:
-        name: Build golang application
-        identifier: Build_golang_application
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  identifier: bitrise
-                  name: bitrise
-                  type: Bitrise
-                  spec:
-                    uses: github.com/<repo>/test-step.git
-                  with:
-                    is_debug: yes
-              - step:
-                  type: Run
-                  name: Build and test
-                  identifier: Build_and_test
-                  spec:
-                    shell: Bash
-                    command: |-
-                      go build .
-                      go test -v ./...
-```
-
-</details>
 
 ```mdx-code-block
   </TabItem>
@@ -147,7 +104,7 @@ Settings as a whole can be supplied as fixed values or runtime input, and indivi
 
 Found under **Optional Configuration**. If required by the Integration, add key-value pairs representing environment variables that you want to pass to the Integration. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
 
-Refer to the Integration's usage specifications for details about specific environment variables relevant to the plugin you want to use. <!-- do env variables come from the Integration spec? -->
+Refer to the Integration's usage specifications for details about specific environment variables relevant to the plugin you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that are output by the Integration.
 
 :::tip
 
@@ -155,7 +112,7 @@ You can use fixed values, runtime input, or variable expressions for environment
 
 :::
 
-<!-- Does the token requirement for private action repos also apply to the Bitrise plugin step? -->
+<!-- CI-7300 private repos -->
 
 ### Timeout
 

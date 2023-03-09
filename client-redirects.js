@@ -225,12 +225,5 @@ module.exports = {
       from: "/tutorials/build-code/ci-github-action-step",
       to: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
     },
-
-    //  Created by aimurphy for DOC-2484 on Mar 9, 2023
-    {
-      from: "/docs/category/use-drone-plugins",
-      to: "/docs/category/use-plugins",
-    },
   ],
 };
-

@@ -12,15 +12,14 @@ You can use the **GitHub Action plugin** step to run GitHub Actions in your Harn
 
 Currently, the **GitHub Action plugin** step is supported for the Harness Cloud build infrastructure only.
 
-For other build infrastructures, you can use the generic **Plugin** step with the GitHub Actions Drone Plugin, as explained in [Run GitHub Actions in CI pipelines](../use-ci/use-plugins/run-a-git-hub-action-in-cie.md).
+For other build infrastructures, you can use the generic **Plugin** step with the GitHub Actions Drone Plugin, as explained in [Run GitHub Actions in CI pipelines](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
 
 :::
 
 ## Usage examples
 
-In the following YAML examples, **GitHub Action plugin** steps are used to configure Go, Java, and Ruby environments.
+In the following YAML examples, **GitHub Action plugin** steps are used to setup Node.js, Go, Java, and Ruby environments.
 
-<!-- add javascript example -->
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -29,8 +28,27 @@ import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Go" label="Setup Golang" default>
+<TabItem value="js" label="Setup Node.js" default>
 ```
+
+This Action step uses the `actions/setup-node` GitHub Action to setup a Node.js environment that the subsequent steps in the stage can use.
+
+```yaml
+              - step:
+                  type: Action
+                  name: setup nodejs
+                  identifier: setup_nodejs
+                  spec:
+                    uses: actions/setup-node@v3
+                    with:
+                      node-version: '16'
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Go" label="Setup Golang">
+```
+
 This Action step uses the `actions/setup-go` GitHub Action to setup a Go environment that the subsequent steps in the stage can use. It specifies Go 1.17.
 
 ```yaml
@@ -110,7 +128,7 @@ To add a GitHub Action plugin step to your pipeline YAML, add an `Action` step, 
                       go-version: '1.17'
 ```
 
-The `spec` parameters define which Action to use, the Action settings, and environment variables that you need to pass to the Action. These are configure according to the GitHub Action's usage specifications.
+The `spec` parameters define which Action to use, the Action settings, and environment variables that you need to pass to the Action. These are configured according to the GitHub Action's usage specifications.
 
 * `uses:` Specify the Action's repo, along with a branch or tag, such as `actions/stepup-go@v3`.
 * `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
@@ -205,7 +223,7 @@ Refer to the GitHub Action's `with` usage specifications for details about speci
 
 :::tip
 
-Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions.
+Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
 
 :::
 
@@ -213,11 +231,11 @@ Settings as a whole can be supplied as fixed values or runtime input, and indivi
 
 Found under **Optional Configuration**. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
 
-Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use.
+Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
 
 :::tip
 
-You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
 
 :::
 

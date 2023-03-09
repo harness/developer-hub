@@ -2,7 +2,7 @@
 title: Run GitHub Actions in CI pipelines
 description: Run GitHub Actions in your Harness CI pipelines.
 
-sidebar_position: 20
+sidebar_position: 30
 helpdocs_topic_id: 7kb90dkxw0
 helpdocs_category_id: ei5fgqxb0j
 helpdocs_is_private: false
