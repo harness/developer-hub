@@ -21,9 +21,9 @@ New to Serverless.com Framework? See [Tutorial: Your First Serverless Framework 
 ## Before you begin
 
 Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.* **GitHub account:** this quickstart uses a publicly available serverless.yaml file, but GitHub requires that you use a GitHub account for fetching files.
-* **Kubernetes** **Delegate cluster with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. For this quickstart, we'll install a Kubernetes Delegate running in a Kubernetes cluster.
+* **Harness Delegate with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. For this quickstart, we'll install a Kubernetes delegate in your own cluster.
 	+ You can use a cluster hosted on a cloud platform or run one in minikube using Docker Desktop locally. The installation steps are the same.
-	+ The Delegate host must have Serverless installed. We'll add the Serverless installation script to the Delegate YAML file later in this quickstart.
+	+ The Delegate pod(s) must have Serverless installed. We'll add the Serverless installation script using the delegate environment variable `INIT_SCRIPT` to the delegate YAML file later in this quickstart.
 * **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in [AWS Credentials](https://www.serverless.com/framework/docs/providers/aws/guide/credentials) from Serverless.com. To create the AWS User, do the following:
 	+ Log into your AWS account and go to the Identity & Access Management (IAM) page.
 	+ Click **Users**, and then **Add user**. Enter a name. Enable **Programmatic access** by clicking the checkbox. Click **Next** to go to the **Permissions** page. Do one of the following:
