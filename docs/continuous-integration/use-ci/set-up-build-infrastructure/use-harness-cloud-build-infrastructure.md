@@ -15,6 +15,14 @@ This topic describes how to use Harness-hosted build infrastructure for your Har
 
 For more information about the Harness Cloud architecture, go to [Get started with Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md). For a comparison of build infrastructure options, go to [Which build infrastructure is right for me?](./which-build-infrastructure-is-right-for-me.md)
 
+## Requirements
+
+* You must use Harness Secret Manager to store connector credentials and other secrets.
+* All connectors must connect through the Harness Platform, not the delegate.
+* AWS connectors can't use IRSA or AssumeRole.
+* GCP and Azure connectors can't inherit credentials from the delegate.
+* **Build and Push** steps can't use remote caching.
+
 ## Platforms and image specifications
 
 Harness Cloud offers the following operating systems and architectures:
@@ -24,8 +32,6 @@ Harness Cloud offers the following operating systems and architectures:
 * Windows, amd6
 
 :::tip
-
-You can use Bitrise plugins with the macOS platform on Harness Cloud build infrastructure.
 
 Currently, Windows and macOS for Harness Cloud are behind feature flags. If these options are not available when configuring your pipeline's build infrastructure, contact [Harness Support](mailto:support@harness.io) to enable the feature flags.
 
@@ -41,19 +47,36 @@ Refer to the following image specification README files for more information abo
 <details>
 <summary>Specify versions</summary>
 
-If there are multiple versions of a tool installed, you can specify the version to use, as demonstrated in the following YAML example where a Java version is specified.
+If there are multiple versions of a tool installed, you can specify the version to use in a step's **Command**.
+
+For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a **Run** step to select an Xcode version:
+
+```
+sudo xcode-select -switch /Applications/Xcode_14.1.0.app
+```
+
+</details>
+
+<details>
+<summary>Install additional tools</summary>
+
+If your build requires a tool that isn't already available on the VM, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you an use to do this, such as:
+
+* [Run step](../../ci-technical-reference/run-step-settings.md)
+* [Background step](../../ci-technical-reference/background-step-settings.md)
+* GitHub Action plugin step
+* Bitrise plugin step
+* [Plugin step](../../ci-technical-reference/plugin-step-settings-reference.md)
+
+:::tip
+
+Use the **Bitrise plugin** step to run Bitrise Integrations in your CI pipelines.
+
+:::
+
+In the following YAML example, a **GitHub Action plugin** step (`type: Action`) runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
 
 ```yaml
- pipeline:
-  identifier: ci_pipeline
-  name: "pipeline with multi tool java success"
-  stages:
-    - stage:
-        identifier: multi_tool_java_success
-        name: multi tool java success
-        type: CI
-        spec:
-          execution:
             steps:
               - step:
                   identifier: install_java
@@ -77,69 +100,11 @@ If there are multiple versions of a tool installed, you can specify the version 
                       else
                         exit 1
                       fi
-          infrastructure:
-            type: VM
-            spec:
-              type: Pool
-              spec:
-                identifier: test
-          cloneCodebase: false
 ```
 
-</details>
-
-<details>
-<summary>Install additional tools</summary>
-
-If your build requires a tool that isn't already available on the VM, you can use a step, such as a **Run** step or **Background** step, to install it directly or run it in a Docker image. An additional Docker image is used in the [configuration-as-code YAML example](#configuration-as-code-yaml-example).
-
-However, note that steps running in containers can't communicate with [Background steps](../../ci-technical-reference/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
-
-</details>
-
-## Use Harness Cloud
-
-You can start using Harness Cloud in minutes:
-
-1. Go to the pipeline where you want to use Harness Cloud build infrastructure.
-2. Select the **Build** stage, and then select the **Infrastructure** tab.
-3. Select **Harness Cloud** and the desired **Platform**.
-4. Save and run your pipeline.
-
-### Requirements
-
-* You must use Harness Secret Manager to store connector credentials and other secrets.
-* All connectors must connect through the Harness Platform, not the delegate.
-* AWS connectors can't use IRSA or AssumeRole.
-* GCP and Azure connectors can't inherit credentials from the delegate.
-* **Build and Push** steps can't use remote caching.
-* Steps running in containers can't communicate with **Background** steps running on the Harness Cloud build infrastructure.
-
-### Configuration-as-code: YAML example
-
-The following YAML example illustrates the YAML specification for Harness Cloud build infrastructure. This pipeline contains a Build (`type: CI`) stage that contains a __Run__ step executing an `echo` command. Here are some important notes about this YAML example and the YAML specification for Harness Cloud build infrastructure:
-
-* `platform`: Found in `stage: spec:`, the `platform` properties define the target machine that the stage runs on. In this example, the pipeline uses a Linux amd64 machine.
-* `type: Cloud`: Found in `stage: spec: runtime:`, the value `Cloud` indicates that this stage runs on Harness-hosted infrastructure.
-* `connectorRef: my_dockerhub`: In `step: spec:`, this optional connector reference identifies a Docker connector that contains Docker credentials and is used to pull an image from Docker for a specific step. This is useful
-* `image: alpine`: In `step: spec:`, you have the option to specify an image to use for that step. If unspecified, the step runs on the stage's host machine.
-
-<details>
-<summary>Example: CI pipeline using Harness Cloud build infrastructure</summary>
+The following YAML example demonstrates how a **Run** step can use a Docker image (specified in `conectorRef` and `image`) to leverage tools available on that image that aren't available on the host image:
 
 ```yaml
- pipeline:
-  projectIdentifier: Docs
-  orgIdentifier: default
-  identifier: Hello_World
-  name: Hello World
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.Github
-        repoName: keen-software/jhttp
-        build: <+input>
-  stages:
     - stage:
         name: Print welcome message
         identifier: welcome_message
@@ -159,17 +124,115 @@ The following YAML example illustrates the YAML specification for Harness Cloud 
                   name: Welcome
                   identifier: Welcome
                   spec:
-                    connectorRef: my_dockerhub // (Optional) The Docker connectors hold your Docker credentials to pull the image from Docker.
-                    image: alpine // (Optional) If no image is specified, the step runs on the host machine,
+                    connectorRef: my_dockerhub // Specify a Docker connector to pull an image from Docker.
+                    image: alpine // If no image is specified, the step runs on the host machine.
                     shell: Sh
                     command: Echo "Welcome to Harness CI"
 ```
 
+:::caution
+
+Steps running in containers can't communicate with [Background steps](../../ci-technical-reference/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
+
+:::
+
 </details>
+
+## Use Harness Cloud
+
+You can start using Harness Cloud in minutes.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual editor" default>
+```
+
+1. Go to the pipeline where you want to use Harness Cloud build infrastructure.
+2. Select the **Build** stage, and then select the **Infrastructure** tab.
+3. Select **Harness Cloud** and the desired **Platform**.
+4. Save and run your pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML editor">
+```
+
+To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage: spec:`. For example:
+
+```yaml
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+```
+
+* In `runtime`, you must include `type: Cloud`.
+* In `platform`, specify the `os` and `arch`. For a list of supported operating systems and architectures, go to [Platforms and image specifications](#platforms-and-image-specifications).
+
+<details>
+<summary>Pipeline YAML example</summary>
+
+The following YAML example illustrates a basic CI pipeline that uses Harness Cloud build infrastructure:
+
+```yaml
+pipeline:
+  name: Build sample-app
+  identifier: Build_sample_app_1677210779657
+  projectIdentifier: my-app-project
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.GitHub_example
+        repoName: my-gh-account/example-repo
+        build: <+input>
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Echo Welcome Message
+                  identifier: Echo_Welcome_Message
+                  spec:
+                    shell: Sh
+                    command: echo "Welcome to Harness CI"
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+```
+
+</details>
+
+:::tip
+
+If the host image doesn't have the tools you need for your pipeline, you can run load additional tools or run individual steps in their own Docker image. For more information about specifying and loading tools, go to [Platforms and image specifications](#platforms-and-image-specifications).
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Build private repos with Harness Cloud
 
-:::caution
+:::danger
 
 Whitelisting is only required if your code repo, Docker registry, or Artifactory registry are private.
 
