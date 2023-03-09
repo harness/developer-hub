@@ -7,6 +7,12 @@ If you are an account administrator, you can enforce limits on the usage of pipe
 
 This article provides a detailed description of the pipeline settings in various categories.
 
+:::info
+
+For certain settings, the values in the Free plan also apply to the trial period of the Team and Enterprise plans. In such cases, the Free plan and trial period share a column in the settings table.
+
+:::
+
 ## Pipeline Execution Concurrency
 
 ### Concurrent Active Pipeline Executions
@@ -19,9 +25,9 @@ The following table describes how this setting applies to each plan.
   <thead>
     <tr>
       <th></th>
-      <th>Free Plan</th>
-      <th>Team Plan</th>
-      <th>Enterprise Plan</th>
+      <th>Free plan/Trial</th>
+      <th>Team plan</th>
+      <th>Enterprise plan</th>
     </tr>
   </thead>
   <tbody>
@@ -97,9 +103,9 @@ The following table shows the value of this setting on each plan.
 <table>
   <thead>
     <tr>
-      <th>Free Plan</th>
-      <th>Team Plan</th>
-      <th>Enterprise Plan</th>
+      <th>Free plan/Trial</th>
+      <th>Team plan</th>
+      <th>Enterprise plan</th>
     </tr>
   </thead>
   <tbody>
