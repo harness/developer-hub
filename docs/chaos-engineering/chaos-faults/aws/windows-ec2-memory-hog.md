@@ -1,18 +1,17 @@
 ---
-id: ec2-memory-hog
-title: EC2 memory hog
+id: windows-ec2-memory-hog
+title: Windows EC2 memory hog
 ---
 
-EC2 memory hog disrupts the state of infrastructure resources. This fault:
-- Induces stress on AWS EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
-- Causes memory exhaustion on the EC2 instance for a specific duration.
+Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault:
+- Causes memory exhaustion on the target Windows EC2 instance for a specific duration.
 
-
-![EC2 Memory Hog](./static/images/ec2-memory-hog.png)
+![Windows EC2 Memory Hog](./static/images/windows-ec2-memory-hog.png)
 
 
 ## Use cases
-EC2 memory hog:
+
+Windows EC2 memory hog:
 - Causes memory stress on the target AWS EC2 instance(s).
 - Simulates the situation of memory leaks in the deployment of microservices.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
@@ -20,7 +19,8 @@ EC2 memory hog:
 :::note
 - Kubernetes >= 1.17 is required to execute this fault.
 - The EC2 instance should be in a healthy state.
-- SSM agent should be installed and running on the target EC2 instance.
+- SSM agent should be installed and running on the target EC2 Windows instance in the admin mode.
+- SSM IAM role should be attached to the target EC2 instance(s).
 - Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
@@ -88,7 +88,7 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults.
 
 ## Fault tunables
 
@@ -123,38 +123,28 @@ Here is an example AWS policy to execute the fault.
         <td> Defaults to 30s. </td>
     </tr>
     <tr>
-        <td> CHAOS_INTERVAL </td>
-        <td> Time interval between two successive instance terminations (in seconds).</td>
-        <td> Defaults to 60s. </td>
-    </tr>
-    <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials.</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
     </tr>
     <tr>
         <td> INSTALL_DEPENDENCIES </td>
-        <td> Install dependencies to run network chaos. It can be 'True' or 'False'. </td>
+        <td> Install dependencies to run the network chaos. It can be 'True' or 'False'. </td>
         <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
     </tr>
     <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of memory to be consumed by the EC2 instance (in megabytes). </td>
-        <td> Defaults to 500MB. </td>
+        <td> Defaults to 0MB. </td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
         <td> Amount of memory to be consumed by the EC2 instance (in percentage).</td>
-        <td> Defaults to 0. </td>
-    </tr>
-    <tr>
-        <td> NUMBER_OF_WORKERS </td>
-        <td> Number of workers used to run the stress process. </td>
-        <td> Defaults to 1. </td>
+        <td> Defaults to 50. </td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Sequence of chaos execution for multiple instances.</td>
         <td> Defaults to parallel. Supports serial and parallel. </td>
     </tr>
     <tr>
@@ -164,14 +154,13 @@ Here is an example AWS policy to execute the fault.
     </tr>
 </table>
 
-
 ### Memory consumption in megabytes
 
 It specifies the amount of memory to be utilized (in megabytes) on the EC2 instance. Tune it by using the `MEMORY_CONSUMPTION` environment variable.
 
 Use the following example to tune memory consumption in MB:
 
-[embedmd]:# (./static/manifests/ec2-memory-hog/memory-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-bytes.yaml yaml)
 ```yaml
 # memory in mb to utilize
 apiVersion: litmuschaos.io/v1alpha1
@@ -182,7 +171,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-memory-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:
@@ -202,7 +191,7 @@ It specifies the amount of memory (in percentage) to be utilized on the EC2 inst
 
 Use the following example to tune memory consumption in percentage:
 
-[embedmd]:# (./static/manifests/ec2-memory-hog/memory-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-percentage.yaml yaml)
 ```yaml
 # memory percentage to utilize
 apiVersion: litmuschaos.io/v1alpha1
@@ -213,12 +202,14 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-memory-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:
         - name: MEMORY_PERCENTAGE
           value: '50'
+        - name: MEMORY_CONSUMPTION
+          value: '0'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
@@ -233,7 +224,7 @@ It specifies multiple EC2 instances as comma-separated IDs that are targeted in 
 
 Use the following example to tune multiple EC2 instances:
 
-[embedmd]:# (./static/manifests/ec2-memory-hog/multiple-instances.yaml yaml)
+[embedmd]:# (./static/manifests/windows-ec2-memory-hog/multiple-instances.yaml yaml)
 ```yaml
 # multiple instance targets
 apiVersion: litmuschaos.io/v1alpha1
@@ -244,44 +235,13 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-memory-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:
         # ids of the EC2 instances
         - name: EC2_INSTANCE_ID
           value: 'instance-1,instance-2,instance-3'
-        # region for the EC2 instance
-        - name: REGION
-          value: 'us-east-1'
-```
-
-### Multiple workers
-
-It specifies the CPU threads that need to be run to increase the file system utilization. This increases the amount of file system consumed. Tune it using the `NUMBER_OF_WORKERS` environment variable.
-
-Use the following example to tune multiple workers:
-
-[embedmd]:# (./static/manifests/ec2-memory-hog/multiple-workers.yaml yaml)
-```yaml
-# multiple workers to utilize resources
-apiVersion: litmuschaos.io/v1alpha1
-kind: ChaosEngine
-metadata:
-  name: engine-nginx
-spec:
-  engineState: "active"
-  chaosServiceAccount: litmus-admin
-  experiments:
-  - name: ec2-memory-hog
-    spec:
-      components:
-        env:
-        - name: NUMBER_OF_WORKERS
-          value: '3'
-        # ID of the EC2 instance
-        - name: EC2_INSTANCE_ID
-          value: 'instance-1'
         # region for the EC2 instance
         - name: REGION
           value: 'us-east-1'

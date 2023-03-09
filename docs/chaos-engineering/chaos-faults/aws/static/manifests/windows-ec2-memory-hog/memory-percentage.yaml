@@ -7,7 +7,7 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-memory-hog
+  - name: windows-ec2-memory-hog
     spec:
       components:
         env:

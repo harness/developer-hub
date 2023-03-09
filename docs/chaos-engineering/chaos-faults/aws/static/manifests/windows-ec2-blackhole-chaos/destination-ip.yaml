@@ -1,4 +1,4 @@
-# memory percentage to utilize
+# it injects the chaos into the egress traffic for specific IPs/hosts
 apiVersion: litmuschaos.io/v1alpha1
 kind: ChaosEngine
 metadata:
@@ -7,15 +7,14 @@ spec:
   engineState: "active"
   chaosServiceAccount: litmus-admin
   experiments:
-  - name: ec2-memory-hog
+  - name: windows-ec2-blackhole-chaos
     spec:
       components:
         env:
-        - name: MEMORY_PERCENTAGE
-          value: '50'
-        # ID of the EC2 instance
+        # supports comma-separated destination ips
+        - name: IP_ADDRESSES
+          value: '8.8.8.8,192.168.5.6'
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
-        # region for the EC2 instance
         - name: REGION
-          value: 'us-east-1'
+          value: 'us-west-2'
