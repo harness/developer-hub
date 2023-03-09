@@ -86,7 +86,7 @@ This release does not include early access features.
 #### Feature Flag SDKs
 
 The Python server SDK has been updated to version 1.1.9 and includes the following update:
-* There was an issue where SSE updates were stopping due to a dropped connection. The SSE connection is now reestablished if it drops. (FFM-6932) 
+* SSE updates were stopping due to a lost connection. Now, the SSE connection is reestablished if it drops. (FFM-6932) 
 
 ## February 9, 2023
 
