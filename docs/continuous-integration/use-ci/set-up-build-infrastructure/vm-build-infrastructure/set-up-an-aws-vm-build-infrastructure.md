@@ -96,7 +96,8 @@ instances:
         region: us-east-2  
         availability_zone: us-east-2c  
         access_key_id: XXXXXXXXXXXXXXXXX  
-        access_key_secret: XXXXXXXXXXXXXXXXXXX   
+        access_key_secret: XXXXXXXXXXXXXXXXXXX
+        key_pair_name: XXXXX
       ami: ami-051197ce9cbb023ea  
       size: t2.nano  
       iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXXXX
@@ -116,6 +117,7 @@ instances:
         availability_zone: us-east-2c  
         access_key_id: XXXXXXXXXXXXXXXXXXXXXX  
         access_key_secret: XXXXXXXXXXXXXXXXXXXXXX  
+        key_pair_name: XXXXX
       ami: ami-088d5094c0da312c0  
       size: t3.large  
       hibernate: true  
@@ -329,7 +331,7 @@ You can configure the following settings in your pool.yml file.
         disk:
           type:
 
-* ops (String)
+* iops (String)
 
         disk:
           iops:
@@ -356,8 +358,7 @@ You can configure the following settings in your pool.yml file.
 * Subnet_id (String)
   
         network:
-          subnet_id:
-          subnet-0ab15xxxx07b53
+          subnet_id: subnet-0ab15xxxx07b53
 
 * private_ip (boolean)
   
@@ -420,14 +421,10 @@ services:
     ports:  
       - "3000:3000"
     environment:
-      - DRONE_SETTINGS_AWS_ACCESS_KEY_ID="<access_key>"  
-      - DRONE_SETTINGS_AWS_ACCESS_KEY_SECRET="<secret_key>"  
-      - DRONE_SETTINGS_AWS_REGION="us-east-2"  
       - DRONE_SETTINGS_REUSE_POOL=false  
-      - DRONE_SETTINGS_LITE_ENGINE_PATH=https://github.com/harness/lite-engine/releases/download/v0.5.2
+      - DRONE_LITE_ENGINE_PATH=https://github.com/harness/lite-engine/releases/download/v0.5.2
       - DRONE_DEBUG=true  
       - DRONE_TRACE=true  
-      - DRONE_SETTINGS_KEY_PAIR_NAME="<name_of_key_pair>"  
 ```
 </pre>
 </div>
@@ -437,17 +434,13 @@ Configure the following fields in the **.env** file to allow Runner to access an
 
 
 
-|                                           |                                                                                                                                                                                                                                                                                                                                                                                                                             |                                                                   |
-| ----------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
-| **Fields**                                | **Description**                                                                                                                                                                                                                                                                                                                                                                                                             | **Value**                                                         |
-| DRONE\_SETTINGS\_AWS\_ACCESS\_KEY\_ID     | Enter your AWS Access Key ID.                                                                                                                                                                                                                                                                                                                                                                                               |                                                                   |
-| DRONE\_SETTINGS\_AWS\_ACCESS\_KEY\_SECRET | Enter your AWS access key secret.                                                                                                                                                                                                                                                                                                                                                                                           |                                                                   |
-| DRONE\_SETTINGS\_AWS\_REGION              | Enter your AWS region.                                                                                                                                                                                                                                                                                                                                                                                                      |                                                                   |
-| DRONE\_SETTINGS\_REUSE\_POOL              | Reuse existing EC2 instances on restart of the Runner.                                                                                                                                                                                                                                                                                                                                                                      | `false`                                                           |
-| DRONE\_SETTINGS\_LITE\_ENGINE\_PATH       | This variable contains the release information for the Lite Engine. The Lite Engine is a binary that is injected into the VMs with which the Runner interacts. It is responsible for coordinating the execution of the steps.                                                                                                                                                                                               | `https://github.com/harness/lite-engine/releases/download/v0.5.2` |
-| DRONE\_TRACE                              | Optional boolean value. Enables trace-level logging.                                                                                                                                                                                                                                                                                                                                                                        | `true`                                                            |
-| DRONE\_DEBUG                              | Optional boolean value. Enables debug-level logging.                                                                                                                                                                                                                                                                                                                                                                        | `true`                                                            |
-| DRONE\_SETTINGS\_AWS\_KEY\_PAIR\_NAME     | Enter the name of the key pair.The Runner allows you to specify a key pair to use in case you want to connect to your Windows VM via RDP.This is highly recommended for troubleshooting.SSH is installed via a cloud-init script, so in case something goes wrong, connecting via RDP will always be possible.For details, see [AWS EC2 Key pairs](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html). |                                                                   |
+|                           |                                                                                                                                                                                                                               |                                                                   |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------- |
+| **Fields**                | **Description**                                                                                                                                                                                                               | **Value**                                                         |
+| DRONE\_REUSE\_POOL        | Reuse existing EC2 instances on restart of the Runner.                                                                                                                                                                        | `false`                                                           |
+| DRONE\_LITE\_ENGINE\_PATH | This variable contains the release information for the Lite Engine. The Lite Engine is a binary that is injected into the VMs with which the Runner interacts. It is responsible for coordinating the execution of the steps. | `https://github.com/harness/lite-engine/releases/download/v0.5.2` |
+| DRONE\_TRACE              | Optional boolean value. Enables trace-level logging.                                                                                                                                                                          | `true`                                                            |
+| DRONE\_DEBUG              | Optional boolean value. Enables debug-level logging.                                                                                                                                                                          | `true`                                                            |
 
 ### See Also
 
