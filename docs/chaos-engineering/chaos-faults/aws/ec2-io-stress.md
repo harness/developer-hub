@@ -90,7 +90,7 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 
 ## Fault tunables

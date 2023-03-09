@@ -12,7 +12,7 @@ EC2 CPU hog induces stress on the AWS EC2 instances using the Amazon SSM Run com
 
 EC2 CPU hog:
 - Induces CPU stress on the target AWS EC2 instance(s). 
-- Simulates the situation of a lack of CPU for processes running on the application, which degrades their performance. 
+- Simulates a lack of CPU for processes running on the application, which degrades their performance. 
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
 
 :::note
@@ -88,7 +88,7 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 
 ## Fault tunables
@@ -163,7 +163,7 @@ Here is an example AWS policy to execute the fault.
 
 ### CPU core
 
-It specifies the CPU core value that will be utilised on the EC2 instance. Tune it by using the `CPU_CORE` environment variable.
+It specifies the CPU core value that will be utilized on the EC2 instance. Tune it by using the `CPU_CORE` environment variable.
 
 Use the following example to tune CPU core:
 
@@ -194,7 +194,7 @@ spec:
 
 ### CPU percentage
 
-It specifies the CPU percentage value that will be utilised on the EC2 instance. Tune it by using the `CPU_LOAD` environment variable.
+It specifies the CPU percentage value that will be utilized on the EC2 instance. Tune it by using the `CPU_LOAD` environment variable.
 
 Use the following example to tune CPU percentage:
 
@@ -225,7 +225,7 @@ spec:
 
 ### Multiple EC2 instances
 
-It specifies multiple EC2 instances that are target in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+It specifies multiple EC2 instances that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
 Use the following example to tune multiple EC2 instances:
 
@@ -254,7 +254,7 @@ spec:
 
 ### CPU core with percentage consumption
 
-It specifies the number of CPU cores that will be utilised (in terms of percentage) on the EC2 instance. Tune it by using the `CPU_CORE` and `CPU_LOAD` environment variables, respectively.
+It specifies the number of CPU cores that will be utilized (in terms of percentage) on the EC2 instance. Tune it by using the `CPU_CORE` and `CPU_LOAD` environment variables, respectively.
 
 Use the following example to tune CPU core with percentage consumption:
 

@@ -87,7 +87,7 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 ## Fault tunables
 
@@ -145,7 +145,7 @@ Here is an example AWS policy to execute the fault.
 
 ### CPU core
 
-It specifies the number of CPU cores to be utilised on the EC2 instance. Tune it by using the `CPU_CORE` environment variable. All available CPU cores can be consumed by setting this variable to `0`.
+It specifies the number of CPU cores to be utilized on the EC2 instance. Tune it by using the `CPU_CORE` environment variable. All available CPU cores can be consumed by setting this variable to `0`.
 
 Use the following example to tune the CPU core:
 
@@ -176,7 +176,7 @@ spec:
 
 ### Multiple EC2 instances
 
-It specifies multiple EC2 instances as comma-separated IDs that are target in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+It specifies multiple EC2 instances as comma-separated IDs that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
 Use the following example to tune multiple EC2 instances:
 

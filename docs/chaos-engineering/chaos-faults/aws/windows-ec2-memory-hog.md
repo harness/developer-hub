@@ -88,7 +88,7 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults.
 
 ## Fault tunables
 
@@ -220,7 +220,7 @@ spec:
 
 ### Multiple EC2 instances
 
-It specifies multiple EC2 instances as comma-separated IDs that are target in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+It specifies multiple EC2 instances as comma-separated IDs that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
 Use the following example to tune multiple EC2 instances:
 
