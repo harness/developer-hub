@@ -17,15 +17,50 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-This release does not include new features.
+- The YAML schema for the Jira connector has been migrated to a new version that encapsulates the authentication details in a new `auth` object with type `UsernamePassword`. This migration enables Harness to support different authentication types in the Jira connector. 
 
-### Early access
+The first of the following two YAML snippets shows the new `auth` object and the new `username` and `passwordRef` fields nested within it. The second YAML snippet shows you the previous YAML specification for purposes of comparison.
+```
+connector:
+  name: jira
+  identifier: jira
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: <pid>
+  type: Jira
+  spec:
+    serviceNowUrl: https://jiraUrl.atlassian.net/
+    username: harnessqa
+    passwordRef: HarnessQA
+    auth:
+      type: UsernamePassword
+      spec:
+        username: harnessqa
+        passwordRef: HarnessQA
+    delegateSelectors:
+      - harnessci-platform-ng-prod
+```
+```
+connector:
+  name: jira
+  identifier: jira
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: <pid>
+  type: Jira
+  spec:
+    serviceNowUrl: https://jiraUrl.atlassian.net/
+    username: harnessqa
+    passwordRef: HarnessQA
+    delegateSelectors:
+      - harnessci-platform-ng-prod
+```
 
-- The Jira connector now supports Personal Access Token (PAT) authentication. (CDS-53849)
+Any new Jira connectors that you create must include the new `auth` object, and you must use its nested `username` and `passwordRef` fields for authentication. 
 
-  This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
-
-  As an alternative to username and password authentication, you can now use [Jira PAT authentication](https://confluence.atlassian.com/enterprise/using-personal-access-tokens-1026032365.html) in a Harness Jira Connector.
+The new fields override the previously used `username` and `passwordRef` authentication fields. The older fields are now deprecated.
+ 
+These changes are backward incompatible. Therefore, you must also update the Terraform provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields when creating Jira connectors through API.
 
 ### Fixed issues
 
