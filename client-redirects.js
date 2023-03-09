@@ -223,7 +223,7 @@ module.exports = {
     //  Created by aimurphy for DOC-2484 on Mar 7, 2023
     {
       from: "/tutorials/build-code/ci-github-action-step",
-      to: "/docs/continuous-integration/NEED-URL",
+      to: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
     },
   ],
 };

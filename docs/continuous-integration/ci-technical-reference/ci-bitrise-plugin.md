@@ -9,13 +9,13 @@ With the **Bitrise plugin** step, you can use [Bitrise Integrations](https://bit
 
 :::info
 
-Currently, the **Bitrise plugin** step is supported for the Harness Cloud build infrastructure only. <!-- any way to do this with other build infras? -->
+Currently, the **Bitrise plugin** step is supported for the Harness Cloud build infrastructure only.
 
 :::
 
 ## Usage example
 
-In the following YAML example, a **Bitrise plugin** step uses the [Bitrise Android Build step](https://bitrise.io/integrations/steps/android-build). It calls the source repo ([]`bitrise-steplib/bitrise-step-android-build](https://github.com/bitrise-steplib/bitrise-step-android-build)) and provides configuration parameters as described in the [Android Build README](https://github.com/bitrise-steplib/bitrise-step-android-build#android-build).
+In the following YAML example, a **Bitrise plugin** step uses the [Bitrise Android Build step](https://bitrise.io/integrations/steps/android-build). It calls the source repo ([bitrise-steplib/bitrise-step-android-build](https://github.com/bitrise-steplib/bitrise-step-android-build)) and provides configuration parameters as described in the [Android Build README](https://github.com/bitrise-steplib/bitrise-step-android-build#android-build).
 
 ```yaml
               - step:
@@ -59,7 +59,7 @@ The `spec` parameters define which Bitrise Integration to use, Bitrise Integrati
 
 * `uses:` Specify the Bitrise Integration's source repo, such as `github.com/bitrise-steplib/bitrise-step-android-build.git`.
 * `with:` If required by the Integration, provide a mapping of key-value pairs representing Integration inputs, such as `build_type: 'apk'`.
-* `env:` If required by the Integration, provide a mapping of environment variables to pass to the Integration, such as `GITHUB_TOKEN: <+secrets.getValue("github_pat")>`. <!-- are private Bitrise Integration repos a thing? If so, is a GITHUB_TOKEN env variable required? Also.. In the Integration specs, environment variables are listed as Outputs. Is that related to `env`? -->
+* `env:` If required by the Integration, provide a mapping of environment variables to pass to the Integration, such as `GITHUB_TOKEN: <+secrets.getValue("github_pat")>`. <!-- does this work with private repos?  -->
 
 :::tip
 
@@ -70,23 +70,11 @@ You can use variable expressions in the `with` and `env` settings. For example, 
 :::
 
 <details>
-<summary>YAML Example: Pipeline with an Bitrise step</summary>
+<summary>YAML Example: Pipeline with a Bitrise step</summary>
 
-<!-- This pipeline uses a Bitrise plugin step to ... It then ... -->
-<!-- inserted the bitrise step but otherwise didnt modify the pipeline -->
+<!-- only step -->
 
 ```yaml
-pipeline:
-  name: Build and test golang application
-  identifier: Build_test_golang
-  projectIdentifier: default
-  orgIdentifier: default
-  tags: {}
-  properties:
-    ci:
-      codebase:
-        connectorRef: Github_connector
-        build: <+input>
   stages:
     - stage:
         name: Build golang application

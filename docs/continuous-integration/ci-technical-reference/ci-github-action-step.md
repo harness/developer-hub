@@ -20,6 +20,8 @@ For other build infrastructures, you can use the generic **Plugin** step with th
 
 In the following YAML examples, **GitHub Action plugin** steps are used to configure Go, Java, and Ruby environments.
 
+<!-- add javascript example -->
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -112,7 +114,7 @@ The `spec` parameters define which Action to use, the Action settings, and envir
 
 * `uses:` Specify the Action's repo, along with a branch or tag, such as `actions/stepup-go@v3`.
 * `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
-* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action, such as `GITHUB_TOKEN: <+secrets.getValue("github_pat")>`. <!-- required for private Action repos? -->
+* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action. <!-- Not working for private repos, CI-7300 -->
 
 :::tip
 
@@ -203,7 +205,7 @@ Refer to the GitHub Action's `with` usage specifications for details about speci
 
 :::tip
 
-Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
+Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions.
 
 :::
 
@@ -215,11 +217,11 @@ Refer to the GitHub Action's `env` usage specifications for details about specif
 
 :::tip
 
-You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
+You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
 
 :::
 
-<!-- Assuming that the token requirement for private action repos also applies to this step? -->
+<!-- CI-7300 private repos info needed on this tab when fixed -->
 
 ### Timeout
 

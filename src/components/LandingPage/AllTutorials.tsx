@@ -205,20 +205,6 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-tutorial-container-signing",
   },
   {
-    title: "Github Action steps",
-    module: "ci",
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This guide shows how to run GitHub Actions natively with harness CI.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/build-code/ci-github-action-step",
-  },
-  {
     title: "Build, test, and publish a Docker image for a sample React application",
 
     module: "ci",
