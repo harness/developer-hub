@@ -60,7 +60,7 @@ sudo xcode-select -switch /Applications/Xcode_14.1.0.app
 <details>
 <summary>Install additional tools</summary>
 
-If your build requires a tool that isn't already available on the VM, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you an use to do this, such as:
+If your build requires a tool that isn't already available on the VM, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as:
 
 * [Run step](../../ci-technical-reference/run-step-settings.md)
 * [Background step](../../ci-technical-reference/background-step-settings.md)
