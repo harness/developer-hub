@@ -33,9 +33,10 @@ Currently, Windows and macOS for Harness Cloud are behind feature flags. If thes
 
 Refer to the following image specification README files for more information about image components and preinstalled software.
 
-* [Linux image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Ubuntu2204-Readme.md)
+* [Linux amd64 image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
+* [Linux arm64 image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
 * [macOS image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
-* [Windows image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2022-Readme.md)
+* [Windows Server 2019 image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
 
 <details>
 <summary>Specify versions</summary>
