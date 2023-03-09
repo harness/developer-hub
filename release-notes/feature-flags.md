@@ -13,6 +13,26 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 09, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version 1.2.0 and includes the following updates:
+
+* SDK users can now provide a custom TLS CA via the HarnessConnector API. (FFM-7004)
+* A new HTTP header called Harness-SDK-Info was added, which helps the ff server identify connected client SDKs apart from server SDKs. (FFM-7038)
+* Error handling for invalid SDK keys has been improved. (FFM-6964)
+
 ## March 08, 2023
 
 ### What's new
