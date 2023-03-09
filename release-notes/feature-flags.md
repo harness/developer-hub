@@ -124,7 +124,7 @@ This release does not include early access features.
 
 The .NET server SDK has been updated to version 1.1.7 and includes the following updates:
 
-* The default poll interval was changed from 20 seconds to 60 seconds, consistent with the other SDKs. (FFM-3691)
+* The default poll interval was corrected from 20 seconds to 60 seconds, consistent with the other SDKs. (FFM-3691)
 * The SSE EventSource was not detecting that a connection may have dropped. The SDK will now reconnect correctly if it loses its connection to the stream endpoint. (FFM-6877)
 
 ## February 9, 2023
