@@ -30,7 +30,7 @@ This release does not include early access features.
 The Java server SDK has been updated to version 1.2.0 and includes the following updates:
 
 * Improved support for TLS allows custom CA certificates to be provided. (FFM-7004)
-* A new HTTP header called Harness-SDK-Info was added, which helps the Feature Flag service identify connected client SDKs apart from server SDKs. (FFM-7038)
+* A new HTTP header, `Harness-SDK-Info`, was added. This header helps the Feature Flag service identify connected client SDKs apart from server SDKs. (FFM-7038)
 * Error handling for invalid SDK keys has been improved. (FFM-6964)
 
 ## March 08, 2023
