@@ -163,3 +163,11 @@ For more details on the settings to create this connector, see [GitLab Connector
 14. Click **Save and Continue**.
 15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
+### Azure Repo
+
+Azure Repos is a set of version control tools that you can use to manage your code. Azure Repos provide the following kinds of version control:
+
+- Git: distributed version control
+- Team Foundation Version Control (TFVC): centralized version control
+
+For steps on connecting Harness to Azure Repo, go to [Connect to Azure Repos](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/).

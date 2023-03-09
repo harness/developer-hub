@@ -6,12 +6,33 @@ import CertCard, { certType } from "./CertCard";
 import { certifications } from "./data/certification-cards";
 import styles from "./styles.module.scss";
 
+const getCertBadges = (url: string) => [
+  {
+    img: `${url}img/cert_dev_cd_badge.svg`,
+    alt: "Harness Certified Expert - Developer",
+    type: certType.Developer,
+  },
+  {
+    img: `${url}img/cert_adm_cd_badge.svg`,
+    alt: "Harness Certified Expert - Administrator",
+    type: certType.Administrator,
+  },
+  {
+    img: `${url}img/cert_arc_cd_badge.svg`,
+    alt: "Harness Certified Expert - Architect",
+    type: certType.Architect,
+  },
+];
+
 export default function Certifications() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const [tab, setTab] = useState(certType.Developer);
   const handleSwitchTab = (tabVal) => {
     setTab(tabVal);
   };
+
+  const certBadges = getCertBadges(baseUrl);
+
   return (
     <div className={styles.certifications}>
       <div className={styles.hero}>
@@ -23,18 +44,13 @@ export default function Certifications() {
           </div>
         </div>
         <div className={styles.right}>
-          <img
-            src={`${baseUrl}img/cert_dev_cd_badge.svg`}
-            alt="Harness Certified Expert - Developer"
-          />
-          <img
-            src={`${baseUrl}img/cert_adm_cd_badge.svg`}
-            alt="Harness Certified Expert - Administrator"
-          />
-          <img
-            src={`${baseUrl}img/cert_arc_cd_badge.svg`}
-            alt="Harness Certified Expert - Architect"
-          />
+          {certBadges.map((badge) => (
+            <img
+              src={badge.img}
+              alt={badge.alt}
+              className={badge.type === tab ? styles.active : ""}
+            />
+          ))}
         </div>
       </div>
 

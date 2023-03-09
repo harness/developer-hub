@@ -14,7 +14,7 @@
     margin: 0 2.75% 30px 0;
     width: 30.5%;
     font-family: 'Inter';
-    border: 3px solid transparent;
+    border: 2px solid transparent;
     position: relative;
     // &:last-child {
     //     margin-right: 0;
@@ -71,34 +71,32 @@
         }
       }
 }
-.ci:hover, .cd:hover, .ff:hover, .ccm:hover, .srm:hover, .sto:hover, .ce:hover, .platform:hover {
-    border: 3px solid;
-    border-image-slice: 1;
-    border-width: 3px;
+.tutorialCard:hover {
+    border: 2px solid var(--primary);
 }
 .cd:hover{
-    border-image-source: linear-gradient(to left, rgba(98, 249, 31, 1), rgba(69, 189, 53, 1));
+    border-color: var(--mod-cd-200);
 }
 .ci:hover{
-    border-image-source: linear-gradient(to left, rgba(115, 223, 231, 1), rgba(0, 149, 247, 1));
+    border-color: var(--mod-ci-200);
 }
 .ff:hover{
-    border-image-source: linear-gradient(to left, rgba(255, 193, 0, 1), rgba(230, 107, 53, 1));
+    border-color: var(--mod-ff-200);
 }
 .ccm:hover{
-    border-image-source: linear-gradient(to left, rgba(0, 207, 222, 1), rgba(5, 166, 96, 1));
+    border-color: var(--mod-ccm-200);
 }
 .srm:hover{
-    border-image-source: linear-gradient(to left, rgba(190, 161, 255, 1), rgba(138, 54, 255, 1));
+    border-color: var(--mod-srm-200);
 }
 .sto:hover{
-    border-image-source: linear-gradient(to left, rgba(71, 145, 255, 1), rgba(46, 28, 243, 1));
+    border-color: var(--mod-sto-200);
 }
 .ce:hover{
-    border-image-source: linear-gradient(to left, rgba(255, 111, 171, 1), rgba(206, 0, 86, 1));
+    border-color: var(--mod-ce-200);
 }
 .platform:hover{
-    border-image-source: linear-gradient(to left, var(--primary-5), var(--primary-7));
+    border-color: var(--primary);
 }
 .allTutorials{
     .tutorialCard{

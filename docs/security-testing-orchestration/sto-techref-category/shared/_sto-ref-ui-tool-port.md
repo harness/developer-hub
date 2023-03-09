@@ -1,1 +1,1 @@
-The version of the scan project, as defined in the scanner.
+The TCP port to communicate with the scanner. You can specify this to override the default port for that scanner.

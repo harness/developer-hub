@@ -7,12 +7,33 @@ import DeveloperCertificationReviewGuide from "./data/cd-certification-developer
 import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
+const getCertBadges = (url: string) => [
+  {
+    img: `${url}img/cert_dev_cd_badge.svg`,
+    alt: "Harness Certified Expert - Developer",
+    type: certType.Developer,
+  },
+  {
+    img: `${url}img/cert_adm_cd_badge.svg`,
+    alt: "Harness Certified Expert - Administrator",
+    type: certType.Administrator,
+  },
+  {
+    img: `${url}img/cert_arc_cd_badge.svg`,
+    alt: "Harness Certified Expert - Architect",
+    type: certType.Architect,
+  },
+];
+
 export default function CertificationsCD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const [tab, setTab] = useState(certType.Developer);
   const handleSwitchTab = (tabVal) => {
     setTab(tabVal);
   };
+
+  const certBadges = getCertBadges(baseUrl);
+
   return (
     <div className={styles.certificationsCD}>
       <div className={styles.hero}>
@@ -33,18 +54,13 @@ export default function CertificationsCD() {
           </div>
         </div>
         <div className={styles.right}>
-          <img
-            src={`${baseUrl}img/cert_dev_cd_badge.svg`}
-            alt="Harness Certified Expert - CD & GitOps Developer"
-          />
-          {/* <img
-            src={`${baseUrl}img/cert_adm_cd_badge.svg`}
-            alt="Harness Certified Expert - CD & GitOps Administrator"
-          />
-          <img
-            src={`${baseUrl}img/cert_arc_cd_badge.svg`}
-            alt="Harness Certified Expert - CD & GitOps Architect"
-          /> */}
+          {certBadges.map((badge) => (
+            <img
+              src={badge.img}
+              alt={badge.alt}
+              className={badge.type === tab ? styles.active : ""}
+            />
+          ))}
         </div>
       </div>
 
@@ -79,9 +95,7 @@ export default function CertificationsCD() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>
-                    Continuous Delivery & GitOps - Developer (BETA)
-                  </h2>
+                  <h2>Continuous Delivery & GitOps - Developer (BETA)</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_cd_badge.svg`}
                     alt="Harness Certified Expert - CD & GitOps Developer"
@@ -103,11 +117,11 @@ export default function CertificationsCD() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                      <Link href="https://university.harness.io/page/continuous-delivery-developer">
-                  <button className={styles.moreDetails}>
-                    Register for Exam
-                  </button>
-                </Link>
+                    <Link href="https://university.harness.io/page/continuous-delivery-developer">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
                     <Link href="/tutorials/deploy-services">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>

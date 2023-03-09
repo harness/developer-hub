@@ -3,33 +3,25 @@ id: ec2-memory-hog
 title: EC2 memory hog
 ---
 
-EC2 memory hog disrupts the state of infrastructure resources. 
-- The fault induces stress on AWS EC2 instance using Amazon SSM Run command that is carried out using the SSM docs that comes in-built in the fault.
-- It causes memory exhaustion on the EC2 instance for a specific duration.
+EC2 memory hog disrupts the state of infrastructure resources. This fault:
+- Induces stress on AWS EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
+- Causes memory exhaustion on the EC2 instance for a specific duration.
 
 
 ![EC2 Memory Hog](./static/images/ec2-memory-hog.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-The fault causes memory stress on the target AWS EC2 instance(s). It simulates the situation of memory leaks in the deployment of microservices, application slowness due to memory starvation, and noisy neighbour problems due to hogging. It verifies pod priority and QoS setting for eviction purposes. It also verifies application restarts on OOM kills. 
-Injecting a rogue process into the target EC2 instance starves the main processes (or applications) (typically pid 1) of the resources allocated to it. This slows down the application traffic or exhausts the resources leading to degradation in performance of processes on the instance. These faults build resilience to such stress cases. 
+## Use cases
+EC2 memory hog:
+- Causes memory stress on the target AWS EC2 instance(s).
+- Simulates the situation of memory leaks in the deployment of microservices.
+- Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
 
-
-</div>
-</details>
-
-
-## Prerequisites
-
-- Kubernetes >= 1.17
-
-- Ensure that the SSM agent is installed and running on the target EC2 instance.
-- Ensure to create a Kubernetes secret has the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
-
+:::note
+- Kubernetes >= 1.17 is required to execute this fault.
+- The EC2 instance should be in a healthy state.
+- SSM agent should be installed and running on the target EC2 instance.
+- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -44,16 +36,10 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+:::
 
 Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -101,20 +87,12 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The EC2 instance should be in a healthy state.
-
+- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 ## Fault tunables
 
-<details>
-<summary>Check the Fault Tunables</summary>
-<h2>Mandatory Fields</h2>
+<h3>Mandatory fields</h3>
 <table>
     <tr>
         <th> Variables </th>
@@ -128,11 +106,11 @@ The EC2 instance should be in a healthy state.
     </tr>
     <tr>
         <td> REGION </td>
-        <td> The AWS region ID where the EC2 instance has been created. </td>
+        <td> AWS region ID where the EC2 instance has been created. </td>
         <td> For example, <code>us-east-1</code>. </td>
     </tr>
 </table>
-<h2>Optional Fields</h2>
+<h3>Optional fields</h3>
 <table>
     <tr>
         <th> Variables </th>
@@ -141,7 +119,7 @@ The EC2 instance should be in a healthy state.
     </tr>
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Duration to insert chaos (in seconds). </td>
         <td> Defaults to 30s. </td>
     </tr>
     <tr>
@@ -151,54 +129,47 @@ The EC2 instance should be in a healthy state.
     </tr>
     <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
-        <td> Provide the path for aws secret credentials.</td>
+        <td> Path to the AWS secret credentials.</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
     </tr>
     <tr>
         <td> INSTALL_DEPENDENCIES </td>
-        <td> Select to install dependencies used to run the network chaos. It can be either True or False. </td>
+        <td> Install dependencies to run network chaos. It can be 'True' or 'False'. </td>
         <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
     </tr>
     <tr>
         <td> MEMORY_CONSUMPTION </td>
-        <td> The amount of memory to be hogged in the EC2 instance in terms of megabytes. </td>
+        <td> Amount of memory to be consumed by the EC2 instance (in megabytes). </td>
         <td> Defaults to 500MB. </td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
-        <td> The amount of memory to be hogged in the EC2 instance in terms of percentage.</td>
+        <td> Amount of memory to be consumed by the EC2 instance (in percentage).</td>
         <td> Defaults to 0. </td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> The number of workers used to run the stress process. </td>
+        <td> Number of workers used to run the stress process. </td>
         <td> Defaults to 1. </td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Sequence of chaos execution for multiple instances. </td>
+        <td> Defaults to parallel. Supports serial and parallel. </td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s </td>
+        <td> For example, 30s. </td>
     </tr>
 </table>
 
-</details>
-
-## Fault examples
-
-### Common fault tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Memory consumption in megabytes
 
-It defines the memory value to be utilized in megabytes on the EC2 instance. You can tune it using the `MEMORY_CONSUMPTION` environment variable.
+It specifies the amount of memory to be utilized (in megabytes) on the EC2 instance. Tune it by using the `MEMORY_CONSUMPTION` environment variable.
 
-You can tune it using the following example:
+Use the following example to tune memory consumption in MB:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/memory-bytes.yaml yaml)
 ```yaml
@@ -227,9 +198,9 @@ spec:
 
 ### Memory consumption by percentage
 
-It defines the memory percentage value to be utilized on the EC2 instance. You can tune it using the `MEMORY_PERCENTAGE` environment variable.
+It specifies the amount of memory (in percentage) to be utilized on the EC2 instance. Tune it by using the `MEMORY_PERCENTAGE` environment variable.
 
-You can tune it using the following example:
+Use the following example to tune memory consumption in percentage:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/memory-percentage.yaml yaml)
 ```yaml
@@ -247,7 +218,7 @@ spec:
       components:
         env:
         - name: MEMORY_PERCENTAGE
-          VALUE: '50'
+          value: '50'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
@@ -258,9 +229,9 @@ spec:
 
 ### Multiple EC2 instances
 
-Multiple EC2 instances can be targeted in one chaos run by providing comma-separated instance IDs. You can tune it using the `EC2_INSTANCE_ID` environment variable.
+It specifies multiple EC2 instances as comma-separated IDs that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
-You can tune it using the following example:
+Use the following example to tune multiple EC2 instances:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/multiple-instances.yaml yaml)
 ```yaml
@@ -287,9 +258,9 @@ spec:
 
 ### Multiple workers
 
-It defines the CPU threads to be run to spike the memory utilization, this will increase the growth of memory consumption. You can tune it using the `NUMBER_OF_WORKERS` environment variable.
+It specifies the CPU threads that need to be run to increase the file system utilization. This increases the amount of file system consumed. Tune it using the `NUMBER_OF_WORKERS` environment variable.
 
-You can tune it using the following example:
+Use the following example to tune multiple workers:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/multiple-workers.yaml yaml)
 ```yaml
@@ -307,7 +278,7 @@ spec:
       components:
         env:
         - name: NUMBER_OF_WORKERS
-          VALUE: '3'
+          value: '3'
         # ID of the EC2 instance
         - name: EC2_INSTANCE_ID
           value: 'instance-1'
