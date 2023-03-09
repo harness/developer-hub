@@ -257,7 +257,7 @@ terraform {
 }  
 provider "harness-ccm" {  
   token = ""  
-  api_url = "https://uat.harness.io/gateway/lw/api"  
+  api_url = "https://app.harness.io/gateway/lw/api"  
   account_identifier = ""  
 }  
 provider "aws" {  
@@ -387,7 +387,7 @@ terraform {
 }  
 provider "harness-ccm" {  
   token = ""  
-  api_url = "https://ce-dev.harness.io/gateway/lw/api"  
+  api_url = "https://app.harness.io/gateway/lw/api"  
   account_identifier = ""  
 }  
   

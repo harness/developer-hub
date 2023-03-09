@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-03T10:00
+date: 2023-03-08T10:00
 sidebar_position: 1
 ---
 
@@ -16,6 +16,84 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 8, 2023. version 78619
+
+### Continuous Delivery
+
+- The YAML schema for the Jira connector has been migrated to a new version that encapsulates the authentication details in a new `auth` object with type `UsernamePassword`. This migration enables Harness to support different authentication types in the Jira connector. 
+
+The first of the following two YAML snippets shows the new `auth` object and the new `username` and `passwordRef` fields nested within it. The second YAML snippet shows you the previous YAML specification for purposes of comparison.
+```
+connector:
+  name: jira
+  identifier: jira
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: <pid>
+  type: Jira
+  spec:
+    serviceNowUrl: https://jiraUrl.atlassian.net/
+    username: harnessqa
+    passwordRef: HarnessQA
+    auth:
+      type: UsernamePassword
+      spec:
+        username: harnessqa
+        passwordRef: HarnessQA
+    delegateSelectors:
+      - harnessci-platform-ng-prod
+```
+```
+connector:
+  name: jira
+  identifier: jira
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: <pid>
+  type: Jira
+  spec:
+    serviceNowUrl: https://jiraUrl.atlassian.net/
+    username: harnessqa
+    passwordRef: HarnessQA
+    delegateSelectors:
+      - harnessci-platform-ng-prod
+```
+
+Any new Jira connectors that you create must include the new `auth` object, and you must use its nested `username` and `passwordRef` fields for authentication. 
+
+The new fields override the previously used `username` and `passwordRef` authentication fields. The older fields are now deprecated.
+ 
+These changes are backward incompatible. Therefore, you must also update the Terraform provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
+
+### Harness Platform
+
+- Sorting functionality is available on the triggers listing page. (PL-31530)
+
+  You can sort triggers according to the following: 
+  - Name
+  - Creation date
+  
+- The [List User Groups API](https://apidocs.harness.io/tag/User-Group/#operation/getUserGroupList) now supports `INCLUDE_CHILD_SCOPE_GROUPS` as an additional filter type value. (PL-31353)
+  
+  This filter allows API responses to include child-scoped user groups. 
+  
+- You can now access your account immediately after resetting your password. (PL-30878)
+
+- You can configure the HashiCorp Vault connector to use AWS Auth authentication without providing `X-Vault-AWS-IAM-Server-ID`. (PL-30628, ZD-36826,39745)
+  
+  It is now an optional field. 
+  
+- In the execution view, failed stages are now sorted before success stages when parallel stages are used. (PIE-2518)
+  
+  This makes it easier to choose failed stages.
+  
+- The feature flag `FF_ALLOW_OPTIONAL_VARIABLE` now lets you make runtime variables optional in pipelines and stages. (PIE-8209)
+
+### Harness Delegate
+
+The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
+
+This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
 
 ## March 2, 2023
 
@@ -82,7 +160,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Continuous Integration
 
-In addition to fixed values and runtime inputs, you can now use [expressions](https://developer.harness.io/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+In addition to fixed values and runtime inputs, you can now use [expressions](/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
 
 ![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
 
@@ -99,7 +177,7 @@ In addition to fixed values and runtime inputs, you can now use [expressions](ht
   * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
   * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
   * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option.
-* Pipeline execution status links in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
+* [Pipeline execution status links](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
 * Improved handling of Azure repo URLs in [Git webhook pipeline triggers](/docs/platform/triggers/triggering-pipelines). (CI-5720)
 
 ### Delegate version 78306

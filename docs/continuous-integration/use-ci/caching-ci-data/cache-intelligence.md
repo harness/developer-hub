@@ -63,8 +63,7 @@ Add the `paths` list to your pipeline's YAML, for example:
           caching:
             enabled: true
             paths:
-              - /harness/node-modules
-              - /my_cache_directory/module_cache1
+              - /harness/node_modules
           cloneCodebase: true
 ...
 ```

@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2023-03-03T10:00
+date: 2023-03-08T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -13,6 +13,41 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 09, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version 1.2.0 and includes the following updates:
+
+* Improved support for TLS allows custom CA certificates to be provided. (FFM-7004)
+* A new HTTP header, `Harness-SDK-Info`, was added. This header helps the Feature Flag service identify connected client SDKs apart from server SDKs. (FFM-7038)
+* Error handling for invalid SDK keys has been improved. (FFM-6964)
+
+## March 08, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags UI
+
+- Onboarding examples displayed a flag name instead of the required flag identifier. This issue is now fixed. (FFM-6921)
 
 ## March 02, 2023
 
@@ -55,6 +90,42 @@ The Node.js SDK has been updated to version 1.2.10 and includes the following up
   - The SDK now falls back to polling if the stream disconnects. (FFM-4204)
   - The SDK attempts to reconnect on retryable errors using an exponential backoff and retry strategy provided by the Harness fork of eventsource. (FFM-4204)
   - A new retry event is emitted so the SDK can log the current retry attempt. (FFM-4204)
+
+## February 21, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Python server SDK has been updated to version 1.1.9 and includes the following update:
+* SSE updates were stopping due to a lost connection. Now, the SSE connection is reestablished if it drops. (FFM-6932) 
+
+## February 15, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The .NET server SDK has been updated to version 1.1.7 and includes the following updates:
+
+* The default poll interval was corrected from 20 seconds to 60 seconds, consistent with the other SDKs. (FFM-3691)
+* The SSE EventSource was not detecting that a connection may have dropped. The SDK will now reconnect correctly if it loses its connection to the stream endpoint. (FFM-6877)
 
 ## February 9, 2023
 
@@ -625,6 +696,8 @@ This release does not include early access features.
 
 ### Fixed issues
 
+#### Feature Flag SDKs
+
 The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
 - The package name for the SDK has changed from ff-netF48-server-sdk to ff-dotnet-server-sdk. To use this version, make sure you remove the old package name and use the new one.
@@ -648,6 +721,12 @@ The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
 - When evaluating Target Groups that used an IN operator, the SDK was only evaluating the first Target. (FFM-4358)
   The logic has now been fixed so that the SDK will check all values when an IN operator is used for a Target Group.
+
+#### Relay proxy
+
+* The proxy had a dependency on a JWT package that is no longer maintained. This fix updated the JWT dependency to a package that is maintained. (FFM-3867)
+* The proxy had a dependency on ff-server, which is in a private repository. This fix removed the dependency on ff-server. (FFM-3965)
+* Harness provided a tool to generate offline config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
 
 ## August 18, 2022
 

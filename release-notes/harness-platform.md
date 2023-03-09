@@ -1,7 +1,7 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-02-23T10:00
+date: 2023-03-08T10:00
 sidebar_position: 10
 ---
 
@@ -16,6 +16,54 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 08, 2023, version 78619
+
+### What's new
+
+- Sorting functionality is available on the triggers listing page. (PL-31530)
+  
+  You can sort triggers according to the following: 
+  - Name
+  - Creation date
+  
+- The [List User Groups API](https://apidocs.harness.io/tag/User-Group/#operation/getUserGroupList) now supports `INCLUDE_CHILD_SCOPE_GROUPS` as an additional filter type value. (PL-31353)
+  
+  This filter allows API responses to include child-scoped user groups.
+
+- You can now access your account immediately after resetting your password. (PL-30878)
+
+- You can configure the HashiCorp Vault connector to use AWS Auth authentication without providing `X-Vault-AWS-IAM-Server-ID`. (PL-30628, ZD-36826,39745)
+  
+  It is now an optional field.
+
+- In the execution view, failed stages are now sorted before success stages when parallel stages are used. (PIE-2518)
+  
+  This makes it easier to choose failed stages.
+
+- The feature flag `FF_ALLOW_OPTIONAL_VARIABLE` now lets you make runtime variables optional in pipelines and stages. (PIE-8209)
+
+
+### Early access
+
+This release does not include any early access feature.
+
+### Fixed issues
+- The encryption type for GCP Secrets Manager in the Terraform plan step is incorrect. (PL-31684,ZD-40381)
+  
+  The encryption type is correct now.
+
+- The execution of a chained pipeline with triggers fails with the error "User is not authorized". (PL-31594,ZD-39808,39954,40294,40337,40662)
+  
+  A code enhancement has fixed this issue.
+  
+- During search, an incorrect message is displayed in the pipeline chaining selection window if no pipeline matches the selection criteria. (PIE-8526)
+  
+  The message now includes information about the scope and repository.
+  
+- On the **Input Sets** page, the **Clone** option is disabled. (PIE-8373)
+  
+  The option has been removed.  
 
 ## February 23, 2023, version 78507
 

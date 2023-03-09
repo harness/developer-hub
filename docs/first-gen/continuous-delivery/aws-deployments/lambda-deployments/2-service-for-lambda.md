@@ -10,16 +10,6 @@ helpdocs_is_published: true
 
 This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).This topic describes how to create a Harness Application and adds a Service that uses a function file, runtime, and handler information to define the Lambda function to deploy.
 
-In this topic:
-
-* [Before You Begin](#before_you_begin)
-* [Review: Artifact Source Support](#review_artifact_source_support)
-* [Step 1: Create a Harness Lambda Service](#step_1_create_a_harness_lambda_service)
-* [Step 2: Add Lambda Functions](#step_2_add_lambda_functions)
-* [Step 3: Lambda Function Specification](#step_3_lambda_function_specification)
-* [Option: Lambda Environment Variables using Service Config Variables](#option_lambda_environment_variables_using_service_config_variables)
-* [Next Steps](#next_steps)
-
 ### Before You Begin
 
 * [Connect to AWS for Lambda Deployments](1-delegate-and-connectors-for-lambda.md)
@@ -33,6 +23,37 @@ Harness supports the following artifact sources with Lambda:
 * [AWS S3](1-delegate-and-connectors-for-lambda.md)
 * [Nexus](../../../firstgen-platform/techref-category/cd-ref/artifacts-ref/nexus-artifact-sources.md)
 * [Custom Artifact Source](../../model-cd-pipeline/setup-services/custom-artifact-source.md)
+
+### Supported runtimes
+
+Harness supports the following runtimes:
+
+- nodejs4.3
+- nodejs4.3-edge
+- nodejs6.10
+- nodejs8.10
+- nodejs10.x
+- nodejs12.x
+- nodejs14.x
+- nodejs16.x
+- nodejs18.x
+- java8.al2
+- java11
+- python2.7
+- python3.6
+- python3.7
+- python3.8
+- python3.9  
+- dotnetcore1.0
+- dotnetcore2.0
+- dotnetcore2.1
+- dotnetcore3.1
+- dotnet6
+- go1.x
+- ruby2.5
+- ruby2.7
+- provided
+- provided.al2
 
 ### Step 1: Create a Harness Lambda Service
 
