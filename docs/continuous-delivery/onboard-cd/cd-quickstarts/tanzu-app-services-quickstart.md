@@ -1,6 +1,6 @@
 ---
 title: Tanzu Application Services deployment tutorial
-description: This tutorial shows you how to deploy a publicly available application to your Tanzu Application Services (TAS) in Harness.
+description: This tutorial shows you how to deploy a publicly available application to your Tanzu Application Service (TAS) in Harness.
 sidebar_position: 13
 ---
 
@@ -23,11 +23,11 @@ You'll learn how to:
 ## Important notes
 
 * For TAS deployments, Harness supports the following artifact sources: Artifactory, Nexus, Amazon S3, GCR, ECR, ACR, Google Artifact Registry, GitHub Package Registry, Custom registry, and any Docker Registry such as DockerHub. You connect Harness to these registries using your registry account credentials.
-* To create a TAS pipeline in Harness, ensure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [Create Organizations and Projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
+* To create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [Create Organizations and Projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
 
 ## Connect to a TAS provider
 
-You can connect Harness to a TAS cloud platform by adding a TAS connector.
+You can connect Harness to a TAS space by adding a TAS connector.
 1. Open a Harness project and select the **Deployments** module.
 2. In **Project Setup**, select **Connectors**, then select **New Connector**.
 3. In **Cloud Providers**, select **Tanzu Application Service**. The TAS connector settings appear. 
@@ -39,50 +39,218 @@ You can connect Harness to a TAS cloud platform by adding a TAS connector.
 7. Select **Continue**.
 8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then click **Continue**.
    We don't recommend using the **Connect through Harness Platform** option here simply because you'll need a delegate later for the connection to your TAS environment. Typically, the **Connect through Harness Platform** option is a very quick way to make connections without having to use delegates.
-9. In **Delegates Setup**, click **Install new Delegate**. The Delegate wizard appears.
+9. In **Delegates Setup**, click **Install new Delegate**. The delegate wizard appears.
+    
+      ![](./static/delegate-wizard.png)
+      
+10. In the **New Delegate** dialog, select **Kubernetes** in **Select where you want to install your Delegate**, then select **Kubernetes Manifest** in **Install your Delegate**.
+11. Enter a delegate name.
+    - Delegate names must be unique within a namespace and should be unique in your cluster. 
+    - A valid name includes only lowercase letters and does not start or end with a number. 
+    - The dash character (“-”) can be used as a separator between letters.
+12. In a Terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
 
-   [![](./static/kubernetes-cd-quickstart-83.png)](./static/kubernetes-cd-quickstart-83.png)
+    `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
 
-10. Select **Kubernetes**, then select **Continue**.
+13. Open the harness-delegate.yaml file. Find and specify the following placeholder values as described.
 
-   ![](./static/kubernetes-cd-quickstart-85.png)
+| **Value** | **Description** |
+| :-- | :-- |
+| `PUT_YOUR_DELEGATE_NAME` | The name of the delegate. |
+| `PUT_YOUR_ACCOUNT_ID` | Your Harness account ID. |
+| `PUT_YOUR_MANAGER_ENDPOINT` | The URL of your cluster. See the following table of Harness clusters and endpoints. |
+| `PUT_YOUR_DELEGATE_TOKEN` | Your delegate token. To find it, go to **Account Settings > Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
 
-11. Enter a name for the delegate, like **quickstart**, click the **Small** size.
-12. Click **Continue**.
-13. Click **Download YAML file**. The YAML file for the Kubernetes delegate will download to your computer.
-14. Open a terminal and navigate to where the delegate file is located.  
-    You will connect to your cluster using the terminal so you can simply run the YAML file on the cluster.
-15. In the same terminal, log into your Kubernetes cluster. In most platforms, you select the cluster, click **Connect**, and copy the access command.
-    Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded.
-16. In the terminal connected to your cluster, run this command:
+Your Harness Manager endpoint depends on your Harness cluster location. Use the following table to find your Harness Manager endpoint on your Harness cluster.
+
+| **Harness cluster location** | **Harness Manager endpoint** |
+| :-- | :-- |
+| SaaS prod-1 | https://app.harness.io |
+| SaaS prod-2 | https://app.harness.io/gratis |
+| SaaS prod-3 | https://app3.harness.io |
+
+14.  Install the delegate by running the following command.
+
+    `kubectl apply -f harness-delegate.yaml`
+
+    The successful output looks something like this.
+    
+    ```
+    namespace/harness-delegate-ng unchanged
+    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
+    secret/cd-doc-delegate-account-token created
+    deployment.apps/cd-doc-delegate created
+    service/delegate-service configured
+    role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
+    rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
+    serviceaccount/upgrader-cronjob-sa unchanged
+    secret/cd-doc-delegate-upgrader-token created
+    configmap/cd-doc-delegate-upgrader-config created
+    cronjob.batch/cd-doc-delegate-upgrader-job created
+    ```
+    
+    
+
+15. Select **Verify** to make sure the delegate is installed properly.
+
+16. Back in **Set Up Delegates**, you can select the new delegate.  
+   In the list of delegates, you can see your new delegate and its tags.  
+17. Select the **Connect using Delegates with the following Tags** option.
+18. Enter the tag of the new delegate and select **Save and Continue**.
+19. Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
+
+## Install CF CLI v6 or v7 on your Harness delegate
+
+Harness supports CF CLI v6 and v7. Currently v7 support is behind feature flag, `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable CF CLI v7 support. 
+
+You can install CF CLI v6 or v7 on your Harness delegate using a package manager or compressed binary.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Package manager" label="Package manager" default>
+```
+
+1. Copy the following script install CF CLI, `autoscaler` and `Create-Service-Push` plugins on your delegate profile.
+   
    ```
-   kubectl apply -f harness-delegate.yaml
-   ```
-   You can find this command in the Delegate wizard:
+   apt-get install wget
+   wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
+   echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+   apt-get update
+   apt-get install cf-cli
+   
+    # autoscaler plugin
+    # download and install pivnet
+    wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
+    pivnet login --api-token=<replace with api token>
 
-   ![](./static/kubernetes-cd-quickstart-86.png)
+    # download and install autoscaler plugin by pivnet
+    pivnet download-product-files --product-slug='pcf-app-autoscaler' --release-version='2.0.295' --product-file-id=912441
+    cf install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295
 
-   The successful output is something like this:
+    # install Create-Service-Push plugin from community
+    cf install-plugin -r CF-Community "Create-Service-Push"
 
+    # verify cf version
+    cf --version
+
+    # verify plugins
+    cf plugins
    ```
-   % kubectl apply -f harness-delegate.yaml  
-   namespace/harness-delegate unchanged  
-   clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged  
-   secret/k8s-quickstart-proxy unchanged  
-   statefulset.apps/k8s-quickstart-sngxpn created  
-   service/delegate-service unchanged
+   
+   To install CF CLI v7, replace `apt-get install cf-cli` with `apt-get install cf7-cli` in the above script.
+   
+2. Apply the profile to the delegate profile and check logs.
+   
+   ![](.static/../static/delegate-logs-cf-cli.png)
+
+   The output for `cf --version` for v6 looks like this.
+
+   `cf version 6.53.0+8e2b70a4a.2020-10-01`
+
+   The output for `cf --version` for v7 looks like this.
+
+   `cf version 7.2.0+be4a5ce2b.2020-12-10`
+
+   The output for `cf plugins` looks like this for v6 and v7.
+   
    ```
-17. In Harness, click **Verify**. It will take a few minutes to verify the Delegate. Once it is verified, close the wizard.
-18. Back in **Set Up Delegates**, you can select the new Delegate.
-   In the list of Delegates, you can see your new Delegate and its tags.
-19. Select the **Connect using Delegates with the following Tags** option.
-20. Enter the tag of the new Delegate and click **Save and Continue**.
-21. Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
+   App Autoscaler        2.0.295   autoscaling-apps              Displays apps bound to the autoscaler
+   App Autoscaler        2.0.295   autoscaling-events            Displays previous autoscaling events for the app
+   App Autoscaler        2.0.295   autoscaling-rules             Displays rules for an autoscaled app
+   App Autoscaler        2.0.295   autoscaling-slcs              Displays scheduled limit changes for the app
+   App Autoscaler        2.0.295   configure-autoscaling         Configures autoscaling using a manifest file
+   App Autoscaler        2.0.295   create-autoscaling-rule       Create rule for an autoscaled app
+   App Autoscaler        2.0.295   create-autoscaling-slc        Create scheduled instance limit change for an autoscaled app
+   App Autoscaler        2.0.295   delete-autoscaling-rule       Delete rule for an autoscaled app
+   App Autoscaler        2.0.295   delete-autoscaling-rules      Delete all rules for an autoscaled app
+   App Autoscaler        2.0.295   delete-autoscaling-slc        Delete scheduled limit change for an autoscaled app
+   App Autoscaler        2.0.295   disable-autoscaling           Disables autoscaling for the app
+   App Autoscaler        2.0.295   enable-autoscaling            Enables autoscaling for the app
+   App Autoscaler        2.0.295   update-autoscaling-limits     Updates autoscaling instance limits for the app
+   Create-Service-Push   1.3.2     create-service-push, cspush   Works in the same manner as cf push, except that it will create services defined in a services-manifest.yml file first before performing a cf push.
+   ```  
+
+:::note
+Two different CF CLI versions can't be installed on the same delegate using package manager. It can be done using a custom compresse binary.
+:::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Compressed binary" label="Compressed binary">
+```
+
+You can install CF CLI using custom compressed binary when you want to:
+* Install both versions of CF CLI custom Compressed Binary on the same delegate.
+* Install one version of CF CLI using package manager and another using a custom compressed binary on the same delegate. 
+* Install a custom binary when a security scan is done and included in a security fix.
+  
+1. Copy the following script install CF CLI, `autoscaler` and `Create-Service-Push` plugins on your delegate profile.
+   
+   ```
+    # download compresed binary, provide url to compressed binary
+    curl -L "<url-to-custom-commpressed-cli6-binary>" | tar -zx
+
+    # ...move it to path on your file system
+    mv cf /<path-to-cli6-binary>
+
+    # autoscaler plugin
+    # download and install pivnet
+    apt-get install wget
+    wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
+    pivnet login --api-token=<replace with api token>
+
+    # download and install autoscaler plugin by pivnet
+    pivnet download-product-files --product-slug='pcf-app-autoscaler' --release-version='2.0.295' --product-file-id=912441
+    <path-to-cli6-binary> install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295
+
+    # install Create-Service-Push plugin from community
+    <path-to-cli6-binary> install-plugin -r CF-Community "Create-Service-Push"
+
+    # verify cf version
+    <path-to-cli6-binary> --version
+
+    # verify plugins
+    <path-to-cli6-binary> plugins
+   ```
+
+   To install CF CLI v7, replace `mv cf /<path-to-cli6-binary>` with the following in the above script.
+   
+   ```
+   mv cf7 /<path-to-cli7-binary>
+   mv cf /<path-to-cli7-binary>
+   ```
+
+   :::note
+   The `<path-to-cli6-binary>` must include the full path to the CF location. For example, if you install CF on the location `/home/cflibs/v6/`, replace `<path-to-cli6-binary>` with path, `/home/cflibs/v6/cf`. This applied to CF CLI v7 as well. For example, `home/cflibs/v7/cf`.
+   :::
+   
+2. Apply the profile to the delegate profile and check logs.
+   
+   ![](.static/../static/delegate-logs-cf-cli.png)
+
+3. Update the `CF_CLI_PATH` environment variable in the delegate config file, the start or restart the delegate. 
+   
+   The `CF_CLI_PATH` value must be the `<path-to-cli6-binary>` for v6 and `<path-to-cli7-binary>` for v7. For example, `CF_CLI6_PATH=/home/cflibs/v6/cf`, `CF_CLI7_PATH=/home/cflibs/v7/cf` respectively.
+
+## Important notes
+* Plugun are compatible with CF CLI v6 and v7. If you install plugins using one CF CLI version, you need not install another version. 
+* When a compressed CF CLI v7 binary is downloaded on a delegate, a `cf` symlink is also downloaded with it. Move both to `<path-to-cli7-binary>` folder. `cf` will be referenced in the CF command step. The CF command step always reference `cf` regardless of the CF CLI version.
+* The v6 and v7 versions must be kept in different locations because if you keep them in the same folder the CF command will always reference the v6 `cf` regardless of the version.
+* When you install same CF CLI version on a single delegate, one using package manager and other using cutsom compressed binary, the `cf` installed by the package manager takes precedence during the delegate capabilty check.
+
+```mdx-code-block
+  </TabItem>    
+</Tabs>
+```
 
 ## Create the deploy stage
 
 Pipelines are collections of stages. For this tutorial, we'll create a new pipeline and add a single stage.
-
 
 1. In your Harness project, select **Pipelines**, select **Deployments**, then select **Create a Pipeline**.
 2. Enter the name **TAS Quickstart** and click **Start**.
@@ -123,48 +291,82 @@ Once you have created a service, it is persistent and can be used throughout the
 4. In **Manifest Details**, enter a manifest name. For example, `nginx`.
 5. Select **File/Folder Path**. 
 6. In **Create or Select an Existing Config file**, select **Project**. This is where we will create the manifest.
+    1. Select **New**, then select **New Folder** and enter a folder name, then select **Create**.
+    2. Select the new folder, select **New**, then select **New File** and enter a file name. For example, `manifest`.
+    3. Enter the following in the `manifest` file, then click **Save**.
+       
+       ```
+       applications:
+       - name: ((NAME))
+       health-check-type: process
+       timeout: 5
+       instances: ((INSTANCE))
+       memory: 750M
+       routes:
+         - route: ((ROUTE))
+       ```
+7. Select **Apply Selected**.
    
-   ![](static/manifest-yaml.png)
-
    You can add only one `manifest.yaml` file.  
-5. Select **Apply Selected**.
-6. Select **Vars.yaml path** and repeat step 6 to create or select an existing `vars.yaml` file, then select **Apply Selected**.  
-   You can add any number of `vars.yaml` files.  
-7.  Select **AutoScaler.yaml** and repeat step 6 to create or select an existing `autoscaler.yaml` file, then select **Apply Selected**.  
-   You can add only one `autoscaler.yaml` file.  
 
-8. Select **Submit**.
+8. Select **Vars.yaml path** and repeat Steps 6.1 to 6.2 to create a `vars` file and enter follwoing information.
+   
+   ```
+   NAME: harness_<+service.name>
+   INSTANCE: 1
+   ROUTE: harness_<+service.name>_<+infra.name>.apps.tas-harness.com
+   ```
+9.  Select **Apply Selected**.
+    
+   You can add any number of `vars.yaml` files.  
+
+11. Select **AutoScaler.yaml** and repeat step 6.1 to 6.2 to create an `autoscaler` file and enter the following information.
+    
+    ```
+    instance_limits:
+      min: 1
+      max: 2
+    rules:
+    - rule_type: "http_latency"
+      rule_sub_type: "avg_99th"
+      threshold:
+        min: 100
+        max: 200
+    scheduled_limit_changes:
+    - recurrence: 10
+      executes_at: "2032-01-01T00:00:00Z"
+      instance_limits:
+        min: 1
+        max: 2
+    ```
+12. Select **Apply Selected**.
+    
+    You can add only one `autoscaler.yaml` file. 
+
+13. Select **Submit**.
 
 ### Add the artifact for deployment
 
 1. In **Artifacts**, select **Add Artifact Source**.
-2. In **Specify Artifact Repository Type**, select the artifact registry type.
-3. Select or create a connector to this registry.
-
-  For details on setting up each registry, go to [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md).
-
-  Once you have an artifact connector set up and selected, you can fill out the **Artifact Details** settings.
-
-  Here are some common examples.
-
-  | **ACR** | **Artifactory** | **Docker Registry** |
-  | --- | --- | --- |
-  | ![](static/acr.png) | ![](static/artifactory.png) | ![](static/docker.png) |
-
-5. When done, select **Submit**.
-
-### Step 5: Add config files
-
-1. In **Config Files**, select **Add Config File**.
-2. In **Config File Source**, select **Harness** and select **Continue**.
-3. Enter a config file identifier.
-4. Select **File/Folder Path** then select **Project**, **Organization**, or **Account** to create or select an existing config file.
+2. In **Specify Artifact Repository Type**, select **Artifactory**, and select **Continue**.
+3. In **Artifactory Repository**, click **New Artifactory Connector**.
+4. Enter a name for the connector, such as **JFrog Serverless**, then select **Continue**.
+5. In **Details**, in **Artifactory Repository URL**, enter `https://harness.jfrog.io/artifactory/`.
+6. In **Authentication**, select **Anonymous**, and select **Continue**.
    
-   ![](static/config-file.png)
+   ![](.static/../artifactory-repo-connector.png)
 
-5. Select **Apply Selected**.
-6. Select **Add** and repeat steps 4 and 5 to add more config files.
-7. Click **Submit**.
+7. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created in [connect to a TAS provider (steps 8 to 16)](#connect-to-a-tas-provider).
+8. Select **Save and Continue**
+9.  Once the test connection succeeds, select **Continue**.
+10. In **Artifact Details** enter the following details.
+    1.  Enter an **Artifact Source Name**
+    2.  Select **Generic** or **Docker** repository format.
+    3.  Select a **Repository** where the artifact is located.
+    4.  Enter the name of the folder or repository where the artifact is located.
+    5.  Select **Value** to enter a specific artifact name. You can also select **Regex** and enter a tag regex to filter the artifact.
+    6.  Enter the image tag artifact name.
+11. Select **Submit**.
 
 ## Define your target space
 
@@ -188,12 +390,13 @@ The target space is your TAS space. This is where you will deploy your applicati
 Now you can select the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) for this stage of the pipeline.
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 ```
 ```mdx-code-block
-<Tabs>
-  <TabItem value="Rolling" label="Rolling" default>
+<Tabs2>
+  <TabItem2 value="Rolling" label="Rolling" default>
+```
 
 1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
 2. The **Rollout Deployment** step is added. 
@@ -207,8 +410,8 @@ You can see that the **TAS Rolling Deploy** step is added automatically. You can
 Now the pipeline stage is complete and you can deploy.
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="Blue Green" label="Blue Green">
+  </TabItem2>
+  <TabItem2 value="Blue Green" label="Blue Green">
 ```
 1. In Execution Strategies, select **Blue Green**, and then click **Use Strategy**.
 2. The blue green execution steps are added. 
@@ -243,8 +446,8 @@ Now the pipeline stage is complete and you can deploy.
 Now the pipeline stage is complete and you can deploy.
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="Canary" label="Canary">
+  </TabItem2>
+  <TabItem2 value="Canary" label="Canary">
 ```
 1. In Execution Strategies, select **Canary**, and then click **Use Strategy**.
 2. The canary execution steps are added. 
@@ -273,8 +476,8 @@ Now the pipeline stage is complete and you can deploy.
 Now the pipeline stage is complete and you can deploy.
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="Basic" label="Basic">
+  </TabItem2>
+  <TabItem2 value="Basic" label="Basic">
 ```
 1. In Execution Strategies, select **Basic**, and then click **Use Strategy**.
 2. The basic execution steps are added. 
@@ -302,8 +505,8 @@ Now the pipeline stage is complete and you can deploy.
 Now the pipeline stage is complete and you can deploy.
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="Black Canvas" label="Black Canvas">
+  </TabItem2>
+  <TabItem2 value="Black Canvas" label="Black Canvas">
 ```
 1. In Execution Strategies, select **Black Canvas**, and then click **Use Strategy**.
 2. Select **Add Step** to add steps from the **Steps Library**. 
@@ -312,22 +515,24 @@ Now the pipeline stage is complete and you can deploy.
 5. Select **Save**.
    
 ```mdx-code-block
-  </TabItem>    
-</Tabs>
+  </TabItem2>    
+</Tabs2>
 ```
 
 ## Deploy and review
 
-1. Click **Save** **> Save Pipeline** and then **Run**.
+1. Click **Save** **> Save Pipeline**, then select **Run**.
    Now you can select the specific artifact to deploy.
 2. Select a **Primary Artifact**.
 3. Select a **Tag**.
-4. Select the follwoing **Infrastructure** parameters.
+4. Select the following **Infrastructure** parameters.
     1. **Connector**
     2. **Organization**
     3. **Space**
-5. Click **Run Pipeline**. Harness will verify the Pipeline and then run it.
-   You can see the status of the deployment, and pause or abort it.
+5. Click **Run Pipeline**. Harness will verify the pipeline and then run it.
+   You can see the status of the deployment, pause or abort it.
+
+   ![](static/successful-bg-deployment.png)
 
 6. Toggle **Console View** to watch the deployment with more detailed logging.  
 
