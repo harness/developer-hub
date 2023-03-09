@@ -12,7 +12,7 @@ You can use the **GitHub Action plugin** step to run GitHub Actions in your Harn
 
 Currently, the **GitHub Action plugin** step is supported for the Harness Cloud build infrastructure only.
 
-For other build infrastructures, you can use the generic **Plugin** step with the GitHub Actions Drone Plugin, as explained in [Run GitHub Actions in CI pipelines](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
+For other build infrastructures, you can use the generic **Plugin** step with the GitHub Actions Drone Plugin, as explained in [Run GitHub Actions in CI pipelines](../use-ci/use-plugins/run-a-git-hub-action-in-cie.md).
 
 :::
 

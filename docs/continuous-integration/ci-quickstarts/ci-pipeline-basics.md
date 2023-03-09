@@ -44,11 +44,13 @@ If you decide to split your pipeline into multiple stages, you need to make sure
 
 ### Plugins
 
-Plugins are Docker containers that perform predefined tasks and are configured as Steps in your Stage. You can use Plugins to deploy code, publish artifacts, send notifications, and more.
+Docker Plugins are Docker containers that perform predefined tasks and are configured as Steps in your Stage. You can use Plugins to deploy code, publish artifacts, send notifications, and more.
 
 The Drone community maintains an [extensive library](https://plugins.drone.io/) of plugins for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/).
 
 See [Plugin Step Settings](../ci-technical-reference/plugin-step-settings-reference.md) and [Run a Drone Plugin in CI](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
+
+If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action plugin step](../ci-technical-reference/ci-github-action-step.md) and [Bitrise plugin step](../ci-technical-reference/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ### Caching
 

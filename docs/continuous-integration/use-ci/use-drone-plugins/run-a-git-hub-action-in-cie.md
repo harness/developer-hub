@@ -47,7 +47,7 @@ For more information about stage configuration, go to [CI stage settings](../../
 
 :::tip
 
-You can use expressions or [Runtime Inputs](../../../platform/20_References/runtime-inputs.md) for **Platform** settings. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value input type.
+You can use expressions or [Runtime Inputs](../../../platform/20_References/runtime-inputs.md) for **Platform** settings.
 
 :::
 
@@ -57,10 +57,10 @@ You can use expressions or [Runtime Inputs](../../../platform/20_References/runt
 
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Execution** tab.
 2. Select **Add Step**, select **Add Step** again, and then select **Plugins** from the **Step Library**.
-1. Enter a **Name** and optional **Description**.
-1. Select the **Container Registry** where the [GitHub Actions Drone Plugin](https://github.com/drone-plugins/github-actions) is located.
-1. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
-1. Expand the **Optional Configuration**, and select **Privileged**. The GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI. It requires DinD (Docker-in-Docker) to run your images. Hence, the **Privileged** attribute needs to be enabled to run with escalated permissions. <!--If you're using local runner or VM build infra, do you need privileged? Docker commands run directly on host machine except w/ K8s. -->
+3. Enter a **Name** and optional **Description**.
+4. Select the **Container Registry** where the [GitHub Actions Drone Plugin](https://github.com/drone-plugins/github-actions) is located.
+5. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
+6. Expand the **Optional Configuration**, and select **Privileged**. The GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI. It requires DinD (Docker-in-Docker) to run your images. Hence, the **Privileged** attribute needs to be enabled to run with escalated permissions. <!--If you're using local runner or VM build infra, do you need privileged? -->
 
 :::tip
 
@@ -101,7 +101,7 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 
 :::
 
-Here's an example of the YAML for a Plugin step using a private Action repo:
+Here's an example of the YAML for a `Plugin` step using a private Action repo:
 
 ```yaml
 - step:
@@ -131,7 +131,7 @@ You can observe the GitHub Action in the build's logs.
 
 ## Pipeline YAML example
 
-The following YAML example includes a Plugin step that uses the Google `upload-cloud-storage` GitHub Action. The comments indicate values you must modify to use this code in your own Harness account.
+The following YAML example includes a `Plugin` step that uses the Google `upload-cloud-storage` GitHub Action. The comments indicate values you must modify to use this code in your own Harness account.
 
 ```yaml
 pipeline:  
