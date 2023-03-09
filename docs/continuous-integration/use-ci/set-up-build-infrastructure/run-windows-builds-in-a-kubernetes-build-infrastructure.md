@@ -13,8 +13,8 @@ You can run Windows builds in your Kubernetes build infrastructure. Windows Serv
 
 ## Important Notes
 
-* **Build and Push an image to Docker Registry**, **Build and Push to ECR**, and **Build and Push to GCR** steps are not supported with Windows builds on Kubernetes build infrastructure because Kaniko is not supported on Windows.
-* You can't run Docker-in-Docker using a Windows image, because privileged mode is not supported on Windows.
+* **Build and Push an image to Docker Registry**, **Build and Push to ECR**, and **Build and Push to GCR** steps are not supported with Windows builds on Kubernetes build infrastructure.
+* **Privileged mode is required for Docker-in-Docker.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you'll need to use another build infrastructure, such as [Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
 * Only Windows Server 2019 images are supported. If you are using Google Kubernetes Engine, make sure you use the recommended image type for Windows Server 2019.
 
   ![](./static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
@@ -31,7 +31,7 @@ You can run Windows builds in your Kubernetes build infrastructure. Windows Serv
 
 4. Save and run your pipeline.
 
-:::tip
+:::info
 
 If you use a custom Windows image in a Run step, the container must be based on [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore) version 1809 and must include `netapi32.dll`. To include this in your image, add the following command to the Dockerfile:
 

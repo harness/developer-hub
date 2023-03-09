@@ -65,7 +65,7 @@ cd /runner
 
 ## Step 2: Configure the Drone pool on the AWS VM
 
-The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VM that are immediately available to build CI Pipelines. To avoid unnecessary costs, you can configure AWS Linux and Windows VMs to hibernate when not in use.
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VM that are immediately available to run CI pipelines. To avoid unnecessary costs, you can configure AWS Linux and Windows VMs to hibernate when not in use.
 
 1. In the `/runner` folder, create a new `pool.yml` file.
 2. Set up the file as described in the following example. Note the following:

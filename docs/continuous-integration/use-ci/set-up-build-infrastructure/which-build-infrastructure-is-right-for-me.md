@@ -16,7 +16,7 @@ Harness Cloud is available with all CI plans. For more information, go to [Use H
 
 ## Self-hosted options
 
-Self-hosted build infrastructure options include local machines, Kubernetes clusters, and VMs from PaaS providers, such as AWS.
+Self-hosted build infrastructure options include local machines, Kubernetes clusters, and VMs from Cloud providers, such as AWS.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -62,7 +62,7 @@ This option is available only with paid CI plans.
 
 :::
 
-Your build infrastructure can use VMs from a PaaS provider, including AWS, Microsoft Azure, GCP, and Anka (for macOS build farms).
+Your build infrastructure can use VMs from a Cloud provider, including AWS, Microsoft Azure, GCP, and Anka (for macOS build farms).
 
 To learn more about VM build infrastructures, go to [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
@@ -95,5 +95,5 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | Remote Caching in **Build and Push** steps | ❌ Not supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
 | Harness Secret Manager | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Custom Secret Manager | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
-| Github App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
+| GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | STO step in Build stage | ✅ Supported for Linux platform| ❌ Not supported | ✅ Supported | <ul><li>✅ Supported for Linux platform</li><li> ❌ Not supported for Windows</li></ul>|

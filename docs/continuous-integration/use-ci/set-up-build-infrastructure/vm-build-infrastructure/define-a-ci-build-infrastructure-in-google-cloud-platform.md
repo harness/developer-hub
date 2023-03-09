@@ -61,7 +61,7 @@ For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`
 
 ## Step 2: Configure the Drone pool on the Google VM
 
-The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VMs that are immediately available to build CI Pipelines.
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VMs that are immediately available to run CI pipelines.
 
 1. In the `/runner` folder, create a new `pool.yml` file.
 2. Set up the file as described in the following example. Note the following:

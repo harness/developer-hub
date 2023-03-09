@@ -21,28 +21,27 @@ For more information about the Harness Cloud architecture, go to [Get started wi
 * All connectors must connect through the Harness Platform, not the delegate.
 * AWS connectors can't use IRSA or AssumeRole.
 * GCP and Azure connectors can't inherit credentials from the delegate.
-* **Build and Push** steps can't use remote caching.
 
 ## Platforms and image specifications
 
 Harness Cloud offers the following operating systems and architectures:
 
-* Linux, amd64 and arm64
-* macOS, arm64 (M1)
-* Windows, amd6
+* Linux: amd64 and arm64
+* macOS: arm64 (M1)
+* Windows: amd6
 
 :::tip
 
-Currently, Windows and macOS for Harness Cloud are behind feature flags. If these options are not available when configuring your pipeline's build infrastructure, contact [Harness Support](mailto:support@harness.io) to enable the feature flags.
+To enable Windows and macOS for Harness Cloud, contact [Harness Support](mailto:support@harness.io).
 
 :::
 
 Refer to the following image specification README files for more information about image components and preinstalled software.
 
-* [Linux amd64 image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
-* [Linux arm64 image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
-* [macOS image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
-* [Windows Server 2019 image specifications README.md](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
+* [Linux amd64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
+* [Linux arm64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
+* [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
+* [Windows Server 2019 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
 
 <details>
 <summary>Specify versions</summary>
@@ -74,7 +73,7 @@ Use the **Bitrise plugin** step to run Bitrise Integrations in your CI pipelines
 
 :::
 
-In the following YAML example, a **GitHub Action plugin** step (`type: Action`) runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
+In the following YAML example, an `Action` step runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
 
 ```yaml
             steps:
@@ -221,7 +220,7 @@ pipeline:
 
 :::tip
 
-If the host image doesn't have the tools you need for your pipeline, you can run load additional tools or run individual steps in their own Docker image. For more information about specifying and loading tools, go to [Platforms and image specifications](#platforms-and-image-specifications).
+If the host image doesn't have the tools you need for your pipeline, you can install additional tools or run individual steps in their own Docker image. For more information about specifying and installing tools, go to [Platforms and image specifications](#platforms-and-image-specifications).
 
 :::
 
@@ -234,33 +233,55 @@ If the host image doesn't have the tools you need for your pipeline, you can run
 
 :::danger
 
-Whitelisting is only required if your code repo, Docker registry, or Artifactory registry are private.
+Whitelisting is only required if your code repository, Docker registry, or Artifactory registry isn't accessible by direct connection over the internet, such as those that are behind firewalls.
 
 :::
 
 You can use Harness Cloud build infrastructure with private repositories. If your codebase or Docker/Artifacatory registry are not publicly accessible, you must whitelist the following IPs in your firewall:
 
+<!-- keep space between because users copy 1x1 -->
 ```text
 34.133.164.105
+
 35.184.10.123
+
 34.127.65.210
+
 35.233.172.173
+
 34.102.16.205
+
 34.82.155.149
+
 34.83.51.28
+
 35.230.70.231
+
 34.105.92.100
+
 35.233.187.42
+
 35.247.6.7
+
 34.83.106.43
+
 34.168.179.66
+
 34.145.10.183
+
 35.197.78.109
+
 35.247.11.84
+
 34.168.91.26
+
 35.230.82.250
+
 35.247.57.139
+
 34.83.191.187
+
 34.127.8.91
+
 35.247.40.237
 ```
