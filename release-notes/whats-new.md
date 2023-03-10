@@ -26,7 +26,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - Set an expiry for delegate tokens. (DEL-5652)
 
-  When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`, which is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
+  When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`. This is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
 
 ## March 9, 2023
 
