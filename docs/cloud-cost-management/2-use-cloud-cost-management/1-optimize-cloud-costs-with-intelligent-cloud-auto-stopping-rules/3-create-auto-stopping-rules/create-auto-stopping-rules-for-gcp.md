@@ -82,7 +82,7 @@ In this step, you can configure the following settings:
 
 ### Hide progress page
 
-Toggle the button to enable or disable the instances warming up progress status. If you turn this on, the progress status will not be displayed.
+Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
 
 ![](./static/create-autostopping-rules-for-kubernetes-83.png)
 
