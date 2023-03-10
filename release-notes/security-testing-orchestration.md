@@ -22,6 +22,8 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Early access features
 
+This release does not include early access features.
+
 ### Fixed Issues
 
 * Fixed an issue in the Jira integration to ensure that **Create Ticket** now appears **Issue Details**, even if an issue has an Exemption associated with it. (STO-5526)
