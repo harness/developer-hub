@@ -336,17 +336,42 @@ Whether the number in a variable is treated as a double or string depends on the
 
 If you enter 123 in a string filed, such as a name, it is treated as a string. If you enter 123 in a count field, such as instance count, it is treated as a double.
 
+### Contains
+
+When using `contains`, make sure the expression is wrapped within `<+ >` and the specific string is within `"`.
+
+For example, `<+stage.name.contains(“s1”)>`.
+
+### Split
+
+When using `split`, make sure the expression is wrapped within `<+ >`.
+
+For example, `<+pipeline.variables.abc.split(':')[1]>`.
+
+### Complex expression
+
+When using a complex expression, make sure the expression is wrapped within `<+ >`.
+
+For example, `<+ <+trigger.payload.pull_request.diff_url.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software">`.
+
+
 ### Ternary operators
 
-When using ternary conditional `?:` operators, do not use spaces between the operators and values.
+When using ternary conditional `?:` operators, do not use spaces between the operators and values. Make sure the expression is wrapped within `<+ >`.
 
-For example, `condition ? <value_if_true> : <value_if_false>` will not work. Use `condition?<value_if_true>:<value_if_false>` instead.
+For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work. Use `<+condition?<value_if_true>:<value_if_false>>` instead.
+
+### Equals
+
+When using `==` condition, make sure the expression is wrapped within `<+ >`.
+
+For example, `<+<+pipeline.name> == “pipeline1“>`.
 
 ### Variable concatenation
 
-Harness recommends that you use Java string method for concatenating pipeline variables.
+Harness recommends that you use Java string method for concatenating pipeline variables. Make sure the expression is wrapped within `<+ >`.
 
-For example, use syntax `<+pipeline.variables.var1>.concat("_suffix")` or `<+pipeline.variables.var1>.+("_suffix")` instead of `<+pipeline.variable.var1>_suffix`. 
+For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+pipeline.variables.var1>.concat("_suffix")>` or `<+<+pipeline.variables.var1> + "_suffix">` instead of `<+pipeline.variable.var1>_suffix`. 
 
 ## Built-in CIE codebase variables reference
 
