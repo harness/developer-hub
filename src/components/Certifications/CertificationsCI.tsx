@@ -35,7 +35,7 @@ export default function CertificationsCI() {
   const certBadges = getCertBadges(baseUrl);
 
   return (
-    <div className={styles.certificationsCD}>
+    <div className={styles.certificationsCI}>
       <div className={styles.hero}>
         <div className={styles.left}>
           <div className={styles.linkBack}>
@@ -108,14 +108,13 @@ export default function CertificationsCI() {
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                  Assesses the fundamental skills to deploy and maintain CI
-                    projects.
+                  Assesses the fundamental skills to deploy CI projects.
                   </div>
                    {/* Developer Study Guide */}
                   {/*
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/page/continuous-delivery-developer">
+                    <Link href="https://university.harness.io/page/continuous-integration-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -139,9 +138,8 @@ export default function CertificationsCI() {
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
-
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/page/continuous-delivery-developer">
+                <Link href="https://university.harness.io/page/continuous-integration-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
