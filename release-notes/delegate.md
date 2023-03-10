@@ -26,7 +26,7 @@ Harness NextGen release 787xx includes the following changes for the Harness Del
 
 - Set an expiry for delegate tokens. (DEL-5652)
 
-  When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`, which is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
+  When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`. This is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
  
 ### Early access
 
@@ -38,7 +38,7 @@ A pipeline stalled with only one ServiceNow task running. (DEL-6042)
 
 This issue was fixed with the following updates:
 
-- Explicitly fail tasks that were never assigned to a delegate after 4 successful broadcast attempts per delegate to all eligible delegates in the account. 
+- Tasks that were never assigned to a delegate explicitly fail after 4 successful broadcast attempts per delegate, to all eligible delegates in the account. 
 - Fail one minute after the last rebroadcast attempt. 
 
 ## March 8, 2023, Harness version 78619, Harness Delegate version 78500
