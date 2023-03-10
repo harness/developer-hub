@@ -94,26 +94,25 @@ export default function CertificationsCI() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Continuous Delivery & GitOps - Developer (BETA)</h2>
+                  <h2>Continuous Integration - Developer (BETA COMING SOON)</h2>
                   <img
-                    src={`${baseUrl}img/cert_dev_cd_badge.svg`}
-                    alt="Harness Certified Expert - CD & GitOps Developer"
+                    src={`${baseUrl}img/cert_dev_cI_badge.svg`}
+                    alt="Harness Certified Expert - CI Developer"
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CD & GitOps
+                    <strong>Product version: </strong> Harness CI
                     Free/Team Plans
                   </span>
                 </div>
                 <div className={styles.right}>
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
-                    Eliminate scripting and manual deployments with Argo
-                    CD-as-a-Service and powerful, easy-to-use pipelines. Empower
-                    your teams to deliver new features, faster – with AI/ML for
-                    automated canary and blue/green deployments, advanced
-                    verification, and intelligent rollback
+                  Assesses the fundamental skills to deploy and maintain CI
+                    projects.
                   </div>
+                   {/* Developer Study Guide */}
+                  {/*
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
                     <Link href="https://university.harness.io/page/continuous-delivery-developer">
@@ -128,12 +127,14 @@ export default function CertificationsCI() {
                       </button>
                     </Link>
                   </div>
+                  */}
                 </div>
               </div>
             </div>
           </div>
 
           {/* Developer Exam Details */}
+          {/*
           <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
@@ -154,6 +155,7 @@ export default function CertificationsCI() {
               </div>
             </div>
           </div>
+          */}
         </div>
 
         {/* Administrator Tab Content */}
@@ -173,23 +175,23 @@ export default function CertificationsCI() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Administrator (BETA COMING
+                    Continuous Integration - Administrator (BETA COMING
                     SOON)
                   </h2>
                   <img
-                    src={`${baseUrl}img/cert_adm_cd_badge.svg`}
-                    alt="Harness Certified Expert - CD & GitOps Administrator"
+                    src={`${baseUrl}img/cert_adm_ci_badge.svg`}
+                    alt="Harness Certified Expert - CIs Administrator"
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CD & GitOps
+                    <strong>Product version: </strong> Harness CI
                     Enterprise Plan
                   </span>
                 </div>
                 <div className={styles.right}>
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                    Assesses the fundamental skills to deploy and maintain CD
+                    Assesses the fundamental skills to deploy and maintain CI
                     projects and the overall Harness Platform.
                   </div>
                   {/*
@@ -226,15 +228,15 @@ export default function CertificationsCI() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Architect (BETA COMING SOON)
+                    Continuous Integration - Architect (BETA COMING SOON)
                   </h2>
                   <img
-                    src={`${baseUrl}img/cert_arc_cd_badge.svg`}
-                    alt="Harness Certified Expert - CD & GitOps Architect"
+                    src={`${baseUrl}img/cert_arc_ci_badge.svg`}
+                    alt="Harness Certified Expert - CI Architect"
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CD & GitOps
+                    <strong>Product version: </strong> Harness CI
                     Enterprise Plan
                   </span>
                 </div>
@@ -242,7 +244,7 @@ export default function CertificationsCI() {
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
                     Assess key technical job functions and advanced skills in
-                    design, implementation and management of CD.
+                    design, implementation and management of CI.
                   </div>
                   {/*
                   <ArchitectCertificationReviewGuide />
