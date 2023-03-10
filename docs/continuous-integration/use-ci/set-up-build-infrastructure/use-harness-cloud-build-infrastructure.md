@@ -237,19 +237,29 @@ Whitelisting is only required if your code repository, Docker registry, or Artif
 
 :::
 
-You can use Harness Cloud build infrastructure with private repositories. If your codebase or Docker/Artifacatory registry are not publicly accessible, you must whitelist the following IPs in your firewall:
+You can use Harness Cloud build infrastructure with private repositories. However, if your codebase repository or Docker/Artifactory registry is not publicly accessible, you must whitelist the following IPs in your firewall:
 
 <!-- keep space between because users copy 1x1 -->
 ```text
-34.133.164.105
+34.171.8.178
 
-35.184.10.123
+34.172.44.211
 
-34.127.65.210
+34.28.94.170
 
-35.233.172.173
+34.82.176.50
 
-34.102.16.205
+35.199.170.16
+
+35.247.53.82
+
+34.94.207.230
+
+34.94.194.45
+
+34.102.51.149
+
+34.94.56.103
 
 34.82.155.149
 
