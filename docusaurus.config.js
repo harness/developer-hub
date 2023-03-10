@@ -224,6 +224,10 @@ const config = {
                 to: "certifications/continuous-delivery",
               },
               {
+                label: "Continuous Integration",
+                to: "certifications/continuous-integration",
+              },
+              {
                 label: "Software Delivery Foundations",
                 href: "https://university.harness.io/page/job-role-certifications",
               },
