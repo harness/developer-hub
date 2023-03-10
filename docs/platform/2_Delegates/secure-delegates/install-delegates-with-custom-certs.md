@@ -69,7 +69,7 @@ This concludes adding the certificates to the delegate process.
 
 ## Add custom certificates to the delegate pod
 
-In this section we will cover how to add certificates to the delegate pod so any command running on it has certificates installed. Let's take an example where you have `cert1.crt` and `cert2.crt` files that have custom certificates.
+In this section we will cover how to add certificates to the delegate pod so any command running on it has certificates installed. Let's take an example where you have `cert1.crt` and `cert2.crt` files that have custom certificates. Please note that it's not a neccessary step if you do not intend to run commands directly on the pod that needs certificates to connect to external systems. 
 
 1. Mount these certificates to the delegate pod at `/etc/pki/ca-trust/source/anchors/`:
 
