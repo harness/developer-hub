@@ -3,8 +3,8 @@ import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { certType } from "./CertCard";
-import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
-import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
+import DeveloperCertificationReviewGuide from "./data/ci-certification-developer-review-guide.md";
+import DeveloperCertificationExamDetails from "./data/ci-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
