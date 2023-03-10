@@ -1,4 +1,4 @@
-.certifications, .certificationsCD {
+.certifications, .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
     background: url(/img/cert_harness_bg.svg) no-repeat;
     background-position: right;
     background-position-y: 0;
@@ -217,8 +217,7 @@
     }
 }
 
-.certificationsCD {
-    background-image: url(/img/cert_cd_bg.svg);
+.certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
     .certDesc {
         margin-top: 80px;
         .certCard {
@@ -383,7 +382,32 @@
         }
     }
 }
-
+.certificationsCI {
+    background-image: url(/img/cert_ci_bg.svg);
+}
+.certificationsCD {
+    background-image: url(/img/cert_cd_bg.svg);
+}
+/*
+.certificationsFF {
+    background-image: url(/img/cert_ff_bg.svg);
+}
+.certificationsCCM {
+    background-image: url(/img/cert_ccm_bg.svg);
+}
+.certificationsSRM {
+    background-image: url(/img/cert_srm_bg.svg);
+}
+.certificationsSTO {
+    background-image: url(/img/cert_sto_bg.svg);
+}
+.certificationsCE {
+    background-image: url(/img/cert_ce_bg.svg);
+}
+.certificationsPlatfrom {
+    background-image: url(/img/cert_platform_bg.svg);
+}
+*/
 
 .examDetails {
     margin-top: 50px;
