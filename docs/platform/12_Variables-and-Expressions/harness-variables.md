@@ -340,7 +340,7 @@ If you enter 123 in a string filed, such as a name, it is treated as a string. I
 
 When using `contains`, make sure the expression is wrapped within `<+ >` and the specific string is within `"`.
 
-For example, `<+stage.name.contains(“s1”)>`.
+For example, `<+stage.name.contains("s1")>`.
 
 ### Split
 
@@ -365,7 +365,7 @@ For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work. 
 
 When using `==` condition, make sure the expression is wrapped within `<+ >`.
 
-For example, `<+<+pipeline.name> == “pipeline1“>`.
+For example, `<+<+pipeline.name> == "pipeline1">`.
 
 ### Variable concatenation
 
