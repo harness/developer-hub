@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `CLOUDFORMATION_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 :::info
 
 Dynamic provisioning is only supported in [Service and Environments v1](../../onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
