@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-08T10:00
+date: 2023-03-15T10:00
 sidebar_position: 1
 ---
 
@@ -15,6 +15,15 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 15, 2023
+
+### Continuous Integration
+
+* The **Base Image Connector** setting for the [Build and Push to ECR step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings#base-image-connector) now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
+* When configuring [SCM connectors](/docs/category/code-repo-connectors):
+  * Failed connection tests now return more detailed error messages. (CI-7089)
+  * The placeholder text in the **Repository URL** field shows a complete repo URL example. (CI-5750)
 
 ## March 9, 2023
 
