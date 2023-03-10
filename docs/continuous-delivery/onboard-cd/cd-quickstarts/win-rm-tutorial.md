@@ -1,6 +1,6 @@
 ---
 title: WinRM deployment tutorial
-description: This topic walks you through a traditional deployment using Windows Remote Management (WinRM) to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+description: Deploy to any platform using WinRM.
 sidebar_position: 9
 helpdocs_topic_id: l8795ji7u3
 helpdocs_category_id: c9j6jejsws
@@ -8,11 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flags `SSH_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You can use Windows Remote Management (WinRM) to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC). Harness connects to your target Windows instances using the WinRM protocol and executes PowerShell commands to deploy your artifact.
 

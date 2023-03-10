@@ -72,7 +72,14 @@ Enter the name of the repo in the account.
 |   |   | Unassigned |
 |   |   | UnLabeled |
 |   | Push | n/a |
-|   | Issue CommentOnly comments on a pull request are supported. | Created |
+|   | Release | Create |
+|   |   | Edit |
+|   |   | Delete |
+|   |   | Prereleae |
+|   |   | Publish |
+|   |   | Release |
+|   |   | Unpublish |
+|   | Issue Comment. Only comments on a pull request are supported. | Created |
 |   |   | Deleted |
 |   |   | Edited |
 | **GitLab** | Push | N/A |

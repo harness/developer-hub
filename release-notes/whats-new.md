@@ -28,6 +28,12 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`, which is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
 
+## March 9, 2023
+
+### Security Testing Orchestration
+
+* The new [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, the Issue Details pane now shows the ticket status along with the number. (STO-5491)
+
 ## March 8, 2023 version 78619
 
 ### Continuous Delivery

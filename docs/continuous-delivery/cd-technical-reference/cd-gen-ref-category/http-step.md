@@ -125,6 +125,10 @@ In **Advanced**, you can use the following options:
 * [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 * [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
+## Delegate proxy
+
+HTTP step supports delegate proxy settings by default. For more information, go to [Delegate Proxy Settings](../../../platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md).
+
 ## Header capability check
 
 When Harness runs an HTTP step and connects to a service, it checks to make sure that an HTTP connection can be established.
