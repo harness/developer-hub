@@ -365,7 +365,7 @@ For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work. 
 
 When using `==` condition, make sure the expression is wrapped within `<+ >`.
 
-For example, `<+<+pipeline.name> == "pipeline1">`.
+For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
 
 ### Variable concatenation
 
