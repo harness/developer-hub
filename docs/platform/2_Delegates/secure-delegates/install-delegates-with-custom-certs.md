@@ -3,17 +3,22 @@ title: Install delegates with custom certificates
 description: How to install delegates with custom certificates.
 ---
 
-This document explains how to install delegates with custom certificates. This process applies to delegates that deploy from immutable images:
+This topic explains how to install delegates with custom certificates. There are two aspects of custom certificates:
+1. A certificate for the delegate JAVA process, which makes connections to external systems.
+2. A certificate for the OS itself so if another process, for example, a shell script, is spawned then it has access to custom certificates.
+
+In this topic we will do the following:
 
 - Create a custom truststore.
 - Create a secret.
-- Add a volume mount to the harness-delegate.yaml file.
+- Add a volume mount to the harness-delegate.yaml file and provide it to the delegate JAVA process.
+- Add a volume mount to the harness-delegate.yaml file and configure the delegate container OS to have the certificates.
 
-For information on best practices for truststore creation, see [Java Keystore Best Practices](https://myarch.com/cert-book/keystore_best_practices.html).
+For information on best practices for truststore creation, go to [Java Keystore Best Practices](https://myarch.com/cert-book/keystore_best_practices.html).
 
 ## Create a custom truststore
 
-For instructions on how to create a custom truststore, see [Truststore Override for Delegates](/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates/).
+For instructions on how to create a custom truststore, go to [Truststore Override for Delegates](/docs/platform/delegates/secure-delegates/trust-store-override-for-delegates/).
 
 ## Create a secret from a truststore file
 
@@ -60,7 +65,35 @@ kubectl create secret -n harness-delegate-ng generic mysecret --from-file harnes
           secretName: mysecret
           defaultMode: 400
    ```
-   
+This concludes adding the certificates to the delegate process. 
+
+## Add custom certificates to the delegate pod
+
+In this section we will cover how to add certificates to the delegate pod so any command running on it has certificates installed. Let's take an example where you have `cert1.crt` and `cert2.crt` files that have custom certificates.
+
+1. Mount these certificates to the delegate pod at `/etc/pki/ca-trust/source/anchors/`:
+
+   ```
+        volumeMounts:
+        - name: certs
+          mountPath : "/usr/local/share/ca-certificates/cert1.crt"
+          subPath: cert1.crt
+        - name: certs
+          mountPath : "/usr/local/share/ca-certificates/cert2.crt"
+          subPath: cert2.crt
+   ```
+2. Run `update-ca-trust` using `INIT_SCRIPTS`:
+   ```
+        - name: INIT_SCRIPT
+          value: |-
+            update-ca-trust
+   ```
+   Note that for this to work the delegate has to be brought as the root user.
+   ```
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsUser: 0
+   ```
 ## Example harness-delegate.yaml
 
 The following example harness-delegate.yaml includes the changes required to install an immutable delegate with a custom certificate.
@@ -95,12 +128,11 @@ metadata:
   namespace: harness-delegate-ng
 type: Opaque
 data:
-  ACCOUNT_SECRET: "XXXXXXXXXXXXxxxxxxxxxxx="
+  ACCOUNT_SECRET: "XXXXXXXXXXXXXXXXXXXXXXXX"
 
 ---
 
-# To learn how to proxy a delegate, see the instructions on Harness Developer Hub:
-# https://developer.harness.io/docs/platform/delegates/configure-delegates/configure-delegate-proxy-settings/
+# To learn how to proxy a delegate, go to [Configure delegate proxy settings](https://developer.harness.io/docs/platform/delegates/configure-delegates/configure-delegate-proxy-settings/)
 
 apiVersion: apps/v1
 kind: Deployment
@@ -126,13 +158,14 @@ spec:
       terminationGracePeriodSeconds: 600
       restartPolicy: Always
       securityContext:
-        fsGroup: 1001
+        allowPrivilegeEscalation: false
+        runAsUser: 0
       containers:
       - image: harness/delegate-immutable:22.07.75836.minimal
         imagePullPolicy: Always
         name: delegate
         ports:
-          - containerPort: 8080
+          - containerPort: 8080   
         resources:
           limits:
             cpu: "0.5"
@@ -177,7 +210,8 @@ spec:
             fieldRef:
               fieldPath: metadata.namespace
         - name: INIT_SCRIPT
-          value: ""
+          value: |-
+            update-ca-trust
         - name: DELEGATE_DESCRIPTION
           value: ""
         - name: DELEGATE_TAGS
@@ -192,6 +226,12 @@ spec:
         - mountPath: /cacerts
           name: custom-keystore
           readOnly: true
+        - name: certs
+          mountPath : "/usr/local/share/ca-certificates/cert1.crt"
+          subPath: cert1.crt
+        - name: certs
+          mountPath : "/usr/local/share/ca-certificates/cert2.crt"
+          subPath: cert2.crt             
       volumes:
       - name: custom-keystore
         secret:
@@ -260,7 +300,7 @@ metadata:
   namespace: harness-delegate-ng
 type: Opaque
 data:
-  UPGRADER_TOKEN: "XXXXXXXXXXXXxxxxxxxxxxx"
+  UPGRADER_TOKEN: "XXXXXXXXXXXXXXXXXXXXXXXX"
 
 ---
 
@@ -277,7 +317,7 @@ data:
     namespace: harness-delegate-ng
     containerName: delegate
     delegateConfig:
-      accountId: XXXXXXXXxxxxxxxx
+      accountId: XXXXXXXXXXXXXXXXXXXXXXXX
       managerHost: https://qa.harness.io/gratis
 
 ---
