@@ -184,6 +184,16 @@ Add the RDS instance to be managed by this Autostopping Rule.
 
 In this step, you can configure the following settings:
 
+### Hide progress page
+
+Toggle the button to enable or disable the instances warming up progress status. If you turn this on, the progress status will not be displayed.
+
+![](./static/create-autostopping-rules-for-kubernetes-83.png)
+
+### Dry Run
+
+Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dry-run-mode.md).
+
 ### Add Dependency
 
 Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.

@@ -115,6 +115,15 @@ In **Desired Task Count**, specify the desired task count for the selected ECS s
 
 In this step, you can configure the following settings:
 
+### Hide progress page
+
+Toggle the button to enable or disable the instances warming up progress status. If you turn this on, the progress status will not be displayed.
+
+![](./static/create-autostopping-rules-for-kubernetes-83.png)
+
+### Dry Run
+Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dry-run-mode.md).
+
 * **Add Dependency**: Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. See [Add Dependency](create-autostopping-rules-aws.md).
 * **Fixed Schedules**: Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. See [Fixed Schedules](create-autostopping-rules-aws.md).
 

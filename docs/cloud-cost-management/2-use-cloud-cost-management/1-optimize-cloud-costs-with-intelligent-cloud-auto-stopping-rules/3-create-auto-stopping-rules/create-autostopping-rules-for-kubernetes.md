@@ -86,9 +86,14 @@ In this step, you can configure the following settings:
 
 #### Hide Progress Page
 
-Toggle the button to enable or disable the instances warming up progress status. If you turn this ON, the progress status will not be displayed.
+Toggle the button to enable or disable the instances warming up progress status. If you turn this on, the progress status will not be displayed.
 
 ![](./static/create-autostopping-rules-for-kubernetes-83.png)
+
+
+### Dry Run
+
+Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dry-run-mode.md).
 
 #### Add Dependency
 
