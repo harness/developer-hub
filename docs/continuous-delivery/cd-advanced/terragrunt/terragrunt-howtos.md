@@ -4,11 +4,6 @@ description: Harness has first-class support for Terragrunt as an infrastructure
 sidebar_position: 1
 ---
 
-:::note
-
-Currently, Terragrunt support is behind the feature flag `TERRAGRUNT_PROVISION_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 Harness has first-class support for [Terragrunt](https://terragrunt.gruntwork.io/docs/) as an infrastructure provisioner.
 
