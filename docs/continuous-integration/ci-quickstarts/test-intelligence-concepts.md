@@ -46,6 +46,12 @@ Running all unit tests every time the code changes is expensive and time-consumi
 * Identifies negative trends and provides actionable insights to improve quality.
 * Uses the call graph of hte instrumented source code to ensure full accuracy.
 
+:::tip
+
+You can use [parallelism (test splitting) with Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-parallelism-for-test-intelligence) to further optimize your test times.
+
+:::
+
 ## Test Intelligence components
 
 Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **Run Tests** step.
@@ -82,7 +88,6 @@ When you perform a pull request, TI determines which tests should be run based o
 After each test cycle, you have full visibility into which tests were selected by TI and why. You can find the Test results and the Test Intelligence call graph visualization on the **Build details** page.
 
 The visualization shows the changed classes and methods that caused each test to be selected.
-
 
 For details about the test report contents and the call graph visualization, go to [View test reports](/docs/continuous-integration/use-ci/set-up-test-intelligence/#view-test-reports).
 
