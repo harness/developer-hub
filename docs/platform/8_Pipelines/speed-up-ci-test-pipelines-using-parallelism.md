@@ -20,16 +20,16 @@ The more tests you run in a **Run** step, the longer it takes for them to comple
 
 ## Key concepts: parallelism and test splitting
 
-Many pipelines are set up to run a set of tests with every new commit. When you [set up parallelism](#set-up-parallelism-in-a-pipeline) in your pipeline, you specify the following:
+Many pipelines are set up to run a set of tests with every new commit. When you [set up parallelism in a pipeline](#set-up-parallelism-in-a-pipeline), you must specify the following:
 
-1. How many copies of the stage or step to run ([`parallelism`](#define-the-parallelism-strategy) field).
+1. How many copies of the stage or step to run, also known as the [parallelism strategy](#define-the-parallelism-strategy).
 2. The logic to use to split your tests into groups. How you do this depends on which step you're using to run tests:
-   * If you're using Test Intelligence, the **Run Tests** step, you set a [`testSplitStrategy`](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-parallelism-test-splitting-for-test-intelligence).
-   * If you're using a **Run** step, you use the [`split_tests`](#define-test-splitting) command along with test split strategies, such as `--split-by file_size`.
+   * If you're using the **Run Tests** step, you specify the `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-parallelism-test-splitting-for-test-intelligence).
+   * If you're using a **Run** step, you use the `split_tests` command along with test split strategies, such as `--split-by file_size` to [](#define-test-splitting).
 
 :::info
 
-For more information about Test Intelligence and test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
 :::
 

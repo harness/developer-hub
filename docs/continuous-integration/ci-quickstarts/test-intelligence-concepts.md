@@ -22,13 +22,7 @@ Test Intelligence is available for the following codebases:
 * .NET Core: Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 * Scala
 
-:::info
-
-You can also [use a script in a Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md) to run tests in a CI pipeline.
-
-:::
-
-## Visual Summary
+## Visual summary
 
 The following video walks you through setting up Test Intelligence in the Harness CIE stage. The TI section starts after the 11 minute mark in the video.
 
@@ -38,7 +32,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/eAtIO4bJ3No" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
 
-## How Does Test Intelligence Work?
+## How does Test Intelligence work?
 
 Running all unit tests every time the code changes is expensive and time-consuming. Test Intelligence builds software faster than a full build-and-test run by doing the following:
 
@@ -69,7 +63,7 @@ The Test Runner Agent runs on the build infrastructure. It's responsible for com
 
 ### Run Tests step
 
-The [Run Tests step](../ci-technical-reference/configure-run-tests-step-settings.md) is similar to the **Run** step. However, the **Run Tests** step accepts additional test-specific information, such as the programming language of the source code being tested, build tools, and other parameters.
+While you can [use a script in a Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md) to run tests in a CI pipeline, to enable Test Intelligence, you must use the [Run Tests step](../ci-technical-reference/configure-run-tests-step-settings.md). The **Run Tests** step is similar to the **Run** step, and it accepts additional test-specific information, such as the programming language of the source code being tested, build tools, and other parameters.
 
 TI identifies the programming language and uses the **Run Tests** step to run the selected tests in the **Run Tests**  step container. The **Run Tests** step then parses test results and returns the results to the TI service.
 
