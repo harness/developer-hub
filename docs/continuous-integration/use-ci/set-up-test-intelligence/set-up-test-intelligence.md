@@ -12,6 +12,8 @@ Test Intelligence (TI) improves test time by running only the tests required to 
 
 The **Run Tests** step executes one or more test on a container image. Adding the **Run Tests** step to a pipeline's **Build** stage enables Test Intelligence on that pipeline. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
 
+You can also [enable test splitting for Test Intelligence](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your tests.
+
 ## Requirements
 
 To enable Test Intelligence, you need a supported codebase and a CI pipeline with a **Build** stage that is connected to the codebase and build infrastructure.
@@ -143,7 +145,7 @@ pipeline:
 
 ## View test reports
 
-To view the test report, go to the build details page and select **Tests**. The test report content is based on the tests you configured for the **Run Tests** step. In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format. Harness parses test reports that are in JUnit XML format only.
+To view the test report, go to the [Build details page](../view-your-builds/viewing-builds.md) and select **Tests**. The test report content is based on the tests you configured for the **Run Tests** step. In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format. Harness parses test reports that are in JUnit XML format only.
 
 ![](./static/set-up-test-intelligence-03.png)
 
@@ -198,14 +200,14 @@ Select **Expand graph** to view the Test Intelligence Visualization, which shows
 
 </details>
 
-## Enable parallelism for Test Intelligence
+## Enable parallelism (test splitting) for Test Intelligence
 
 Similar to how you can [speed up CI pipelines using parallelism](../../../platform/8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md), you can enable parallelism in your Run Tests steps to further reduce the time required for your tests to run.
 
 With parallelism alone, such as when using `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting), you specify how you want Harness to divide the work for a step or stage. When you use parallelism with Test Intelligence, Harness divides the work after test selection. This means that your Run Tests execution time is reduced by both test selection and parallelism.
 
 <details>
-<summary>Example: Parallelism comparison</summary>
+<summary>Test Intelligence with test splitting demonstration</summary>
 
 Suppose you have a pipeline that runs 100 tests, and each test takes about one second to run. Here's how TI and parallelism can reduce your test times:
 
