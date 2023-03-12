@@ -3,19 +3,16 @@ id: pod-http-status-code
 title: Pod HTTP status code
 ---
 
-Pod HTTP status code is a Kubernetes pod-level fault injects chaos inside the pod by modifying the status code of the response from the application server to the desired status code provided by the user.
-- The port for the service is specified using the `TARGET_SERVICE_PORT` environment variable by starting the proxy server and redirecting the traffic through the proxy server.
-- It tests the application's resilience to error code HTTP responses from the provided application server.
+Pod HTTP status code is a Kubernetes pod-level fault that injects chaos inside the pod by modifying the status code of the response from the application server to the desired status code provided by the user. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
-tip Fault execution flow chart
 ![Pod HTTP Status Code](./static/images/pod-http-status-code.png)
 
-
 ## Use cases
-
-It tests the application's resilience to error code HTTP responses from the provided application server. It simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404), unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x). 
-
-
+Pod HTTP status code:
+- Tests the application's resilience to error code HTTP responses from the provided application server.
+- Simulates unavailability of specific API services (503, 404).
+- Simulates unavailability of specific APIs for (or from) a given microservice.
+- Simulates unauthorized requests for third party services (401 or 403), and API malfunction, that is internal server error (50x). 
 
 :::note
 - Kubernetes> 1.16 is required to execute this fault.
@@ -29,25 +26,23 @@ It tests the application's resilience to error code HTTP responses from the prov
       <tr>
         <th> Variables </th>
         <th> Description </th>
-        <th> s </th>
+        <th> Notes </th>
       </tr>
       <tr>
         <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the service to target</td>
-        <td>This should be the port on which the application container runs at the pod level, not at the service level. Defaults to port 80 </td>
+        <td> Port of the service to target, which refers to container that runs at pod-level. </td>
+        <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#target-service-port">target service port. </a> </td>
       </tr>
       <tr>
         <td> STATUS_CODE </td>
-        <td> Modified status code for the HTTP response</td>
-        <td> If no value is provided, then a random value is selected from the list of supported values.
-        Multiple values can be provided as comma separated, a random value from the provided list will be selected
-        Supported values: [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].
-        Defaults to random status code </td>
+        <td> Modified status code for the HTTP response. Multiple values can be provided as a comma-separated list. A random value from the provided list will be selected. Supported values include [200, 201, 202, 204, 300, 301, 302, 304, 307, 400, 401, 403, 404, 500, 501, 502, 503, 504].</td>
+        <td> If no value is provided, a random value is selected from the list of supported values.
+         Defaults to random status code. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#status-code">status code. </a> </td>
       </tr>
       <tr>
         <td> MODIFY_RESPONSE_BODY </td>
-        <td> Whether to modify the body as per the status code provided.</td>
-        <td> If true, then the body is replaced by a default template for the status code. Defaults to true </td>
+        <td> Specifies whether to modify the body according to the status code provided.</td>
+        <td> If true, the body is replaced by a default template for the status code. Defaults to true. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#modify-response-body">modify response body. </a> </td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -55,87 +50,82 @@ It tests the application's resilience to error code HTTP responses from the prov
       <tr>
         <th> Variables </th>
         <th> Description </th>
-        <th> s </th>
+        <th> Notes </th>
       </tr>
       <tr>
         <td> RESPONSE_BODY </td>
-        <td> Body string to overwrite the http response body</td>
-        <td> This will be used only if MODIFY_RESPONSE_BODY is set to true. If no value is provided, response will be an empty body. Defaults to empty body </td>
+        <td> String body to overwrite the HTTP response body. This is used only if <code>MODIFY_RESPONSE_BODY</code> is set to true. If no value is provided, response will be an empty body. </td>
+        <td> Defaults to empty body. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#response-body"> response body.</a></td>
       </tr>
       <tr>
         <td> CONTENT_ENCODING </td>
-        <td> Encoding type to compress/encodde the response body </td>
-        <td> Accepted values are: gzip, deflate, br, identity. Defaults to none (no encoding) </td>
+        <td> Encoding type to compress/encode the response body </td>
+        <td> Accepted values are: gzip, deflate, br, identity. Defaults to none (no encoding). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#content-encoding-and-content-type">content encoding. </a> </td>
       </tr>
       <tr>
         <td> CONTENT_TYPE </td>
         <td> Content type of the response body </td>
-        <td> Defaults to text/plain </td>
+        <td> Defaults to text/plain. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#content-encoding-and-content-type">content type. </a> </td>
       </tr>
       <tr>
         <td> PROXY_PORT </td>
         <td> Port where the proxy will be listening for requests</td>
-        <td> Defaults to 20000 </td>
+        <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#proxy-port">proxy port. </a> </td>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
         <td> Network interface to be used for the proxy</td>
-        <td> Defaults to `eth0` </td>
+        <td> Defaults to `eth0`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#network-interface">network interface. </a> </td>
       </tr>
       <tr>
         <td> TOXICITY </td>
-        <td> Percentage of HTTP requests to be affected </td>
-        <td> Defaults to 100 </td>
+        <td> Percentage of HTTP requests to be affected. </td>
+        <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#toxicity">toxicity. </a> </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
+        <td> Container runtime interface for the cluster. </td>
+        <td> Defaults to containerd, supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime. </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code#container-runtime-and-socket-path">socket path. </a> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration of chaos injection (seconds) </td>
-        <td> Default (60s) </td>
+        <td> Duration to insert chaos (in seconds). </td>
+        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod http status code chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        <td> Comma-separated list of application pod names subject to pod HTTP status code. </td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods.</a></td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to `litmuschaos/go-runner:latest` </td>
+        <td> Percentage of total pods to target. Provide numeric values. </td>
+        <td> Defaults to 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods. </td>
+        <td> Default value is parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
       </tr>
     </table>
 
 
 ### Target service port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
-This should be the port where the application runs at the pod level, not at the service level. This means if the application pod is running the service at port 8080 and we create a service exposing that at port 80, then the target service port should be 8080 and not 80, which is the port at pod-level.
+It specifies the port of the target service. This is the port where the application runs at the pod-level. For example, if the application pod is running the service at port 8080 and you create a service exposing this service at port 80, the target service port should be 8080. 
+Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the target service port:
 
 [embedmd]: # "./static/manifests/pod-http-status-code/target-service-port.yaml yaml"
 
@@ -168,9 +158,9 @@ spec:
 
 ### Proxy port
 
-It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
+It specifies the port on which the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the proxy port:
 
 [embedmd]: # "./static/manifests/pod-http-status-code/proxy-port.yaml yaml"
 
@@ -206,9 +196,9 @@ spec:
 
 ### Status code
 
-It defines the status code value for the http response. It can be tuned via `STATUS_CODE` ENV.
+It specifies the status code that needs to be modified for the HTTP response. Tune it by using the `STATUS_CODE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the status code:
 
 [embedmd]: # "./static/manifests/pod-http-status-code/status-code.yaml yaml"
 
@@ -245,9 +235,9 @@ spec:
 
 ### Modify response body
 
-It defines whether to modify the respone body with a pre-defined template to match with the status code value of the http response. It can be tuned via `MODIFY_RESPONSE_BODY` ENV.
+It specifies whether or not to modify the respone body with a pre-defined template to match the status code value of the HTTP response. Tune it by using the `MODIFY_RESPONSE_BODY` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the modifiable response body:
 
 [embedmd]: # "./static/manifests/pod-http-status-code/modify-body-with-response-pre-defined.yaml yaml"
 
@@ -283,10 +273,9 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` ENV.
-Toxicity value defines the percentage of the total number of http requests to be affected.
+It specifies the percentage of the total number of HTTP requests that need to be affected. Tune it by using the `TOXICITY` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the toxicity:
 
 [embedmd]: # "./static/manifests/pod-http-status-code/toxicity.yaml yaml"
 
@@ -321,10 +310,13 @@ spec:
 
 ### Response body
 
-It defines the body string that will overwrite the http response body. It can be tuned via `RESPONSE_BODY` and `MODIFY_RESPONSE_BODY` ENV.
-The `MODIFY_RESPONSE_BODY` ENV should be set to `true` to enable this feature.
+It specifies the string body that is used to overwrite the HTTP response body. Tune it by using the `RESPONSE_BODY` environment variable.
 
-Use the following example to tune this:
+:::note
+The `MODIFY_RESPONSE_BODY` environment variable should be set to `true` to enable this feature.
+:::
+
+Use the following example to tune the response body:
 
 [embedmd]: # "./static/manifests/pod-http-status-code/modify-body-with-response.yaml yaml"
 
@@ -363,9 +355,10 @@ spec:
 
 ### Content encoding and content type
 
-It defines the content encoding and content type of the response body. It can be tuned via `CONTENT_ENCODING` and `CONTENT_TYPE` ENV.
+It specifies the content encoding and content type of the response body. Tune it by using the `CONTENT_ENCODING` and `CONTENT_TYPE` environment variables, respectively.
 
-Use the following example to tune this:
+Use the following example to tune the content encoding and content type:
+
 [embedmd]:# (./static/manifests/pod-http-status-code/modify-body-with-encoding-type.yaml yaml)
 
 ```yaml
@@ -408,9 +401,9 @@ spec:
 
 ### Network interface
 
-It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
+It specifies the network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the network interface:
 
 [embedmd]: # "./static/manifests/pod-http-status-code/network-interface.yaml yaml"
 
@@ -446,12 +439,12 @@ spec:
 
 ### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+It specifies the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
 - `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune this:
+Use the following example to tune the container runtime and socket path:
 
 [embedmd]: # "./static/manifests/pod-http-status-code/container-runtime-and-socket-path.yaml yaml"
 

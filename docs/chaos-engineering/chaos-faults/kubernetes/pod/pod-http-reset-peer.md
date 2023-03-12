@@ -3,19 +3,19 @@ id: pod-http-reset-peer
 title: Pod HTTP reset peer
 ---
 
-Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. 
-- This stops the outgoing HTTP requests by resetting the TCP connection by starting the proxy server and redirecting the traffic through the proxy server.
-- It can test the application's resilience to lossy/flaky HTTP connection.
+Pod HTTP reset peer is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This fault:
+- Stops the outgoing HTTP requests by resetting the TCP connection. 
+- This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
 
 ![Pod HTTP Reset Peer](./static/images/pod-http-reset-peer.png)
 
 
 ## Use cases
-
-It can test the application's resilience to lossy/flaky HTTP connection. It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
-
-
+Pod HTTP reset peer:
+- Tests the application's resilience to lossy or flaky HTTP connection.
+- Simulates premature connection loss that may occur due to firewall issues or other issues between microservices thereby verifying connection timeout.
+- Simulates connection resets due to resource limitations on the server side such as out of memory error, process kills, overload on the server due to high amounts of traffic. 
 
 
 :::note
@@ -34,13 +34,13 @@ It can test the application's resilience to lossy/flaky HTTP connection. It simu
       </tr>
       <tr>
         <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the service to target</td>
-        <td>Defaults to port 80 </td>
+        <td> Port of the service to target. </td>
+        <td> Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer#target-service-port">target service port. </a></td>
       </tr>
       <tr>
         <td> RESET_TIMEOUT </td>
-        <td> Reset Timeout specifies after how much duration to reset the connection</td>
-        <td> Defaults to 0 </td>
+        <td> Specifies the duration after which connection needs to be reset. </td>
+        <td> Defaults to 0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer#reset-timeout">reset timeout. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -52,66 +52,61 @@ It can test the application's resilience to lossy/flaky HTTP connection. It simu
       </tr>
       <tr>
         <td> PROXY_PORT </td>
-        <td> Port where the proxy will be listening for requests</td>
-        <td> Defaults to 20000 </td>
+        <td> Port where the proxy listens for requests. </td>
+        <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer#proxy-port">proxy port. </a> </td>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
-        <td> Network interface to be used for the proxy</td>
-        <td> Defaults to `eth0` </td>
+        <td> Network interface used for the proxy. </td>
+        <td> Defaults to `eth0`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer#network-interface">network interface.</a> </td>
       </tr>
       <tr>
         <td> TOXICITY </td>
-        <td> Percentage of HTTP requests to be affected </td>
-        <td> Defaults to 100 </td>
+        <td> Percentage of HTTP requests to be affected. </td>
+        <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer#toxicity">toxicity. </a> </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
+        <td> Container runtime interface for the cluster</td>
+        <td> Defaults to containerd, supported values: docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime. </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
+        <td> Path of the containerd or crio or docker socket file. </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">socket path. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration of chaos injection (seconds) </td>
-        <td> Default (60s) </td>
+        <td> Duration to insert chaos (in seconds). </td>
+        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos. </a> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod http reset peer chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        <td> Comma-separated list of application pod names subject to pod HTTP reset peer.</td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods.</a></td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to `litmuschaos/go-runner:latest` </td>
+        <td> Percentage of total pods to target. Provide numeric values. </td>
+        <td> Defaults to 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage. </a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods. </td>
+        <td> Default value is parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
       </tr>
     </table>
 
 ### Target service port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` environment variable.
+It specifies the port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the target service port:
 
 [embedmd]: # "./static/manifests/pod-http-reset-peer/target-service-port.yaml yaml"
 
@@ -141,8 +136,8 @@ spec:
 
 ### Proxy port
 
-It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT` ENV.
-Use the following example to tune this:
+It specifies the port on which the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
+Use the following example to tune the proxy port:
 
 [embedmd]: # "./static/manifests/pod-http-reset-peer/proxy-port.yaml yaml"
 
@@ -175,9 +170,9 @@ spec:
 
 ### Reset timeout
 
-It defines the reset timeout value to be added to the http request. It can be tuned via `RESET_TIMEOUT` ENV.
+It specifies the duration after which connection needs to be reset. Tune it by using the `RESET_TIMEOUT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the reset timeout:
 
 [embedmd]: # "./static/manifests/pod-http-reset-peer/reset-timeout.yaml yaml"
 
@@ -210,10 +205,9 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` ENV.
-Toxicity value defines the percentage of the total number of http requests to be affected.
+It specifies the percentage of the total number of HTTP requests that need to be affected. Tune it by using the `TOXICITY` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the toxicity:
 
 [embedmd]: # "./static/manifests/pod-http-reset-peer/toxicity.yaml yaml"
 
@@ -248,9 +242,9 @@ spec:
 
 ### Network interface
 
-It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` ENV.
+It specifies the network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the network interface:
 
 [embedmd]: # "./static/manifests/pod-http-reset-peer/network-interface.yaml yaml"
 
@@ -283,12 +277,12 @@ spec:
 
 ### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+It specifies the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variable to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
 - `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune this:
+Use the following example to tune the container runtime and socket path:
 
 [embedmd]: # "./static/manifests/pod-http-reset-peer/container-runtime-and-socket-path.yaml yaml"
 

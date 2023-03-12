@@ -3,23 +3,26 @@ id: pod-network-latency
 title: Pod network latency
 ---
 
-Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container by initiating a traffic control (tc) process with netem rules to add egress delays.
-- It tests the application's resilience to lossy (or flaky) networks.
+Pod network latency is a Kubernetes pod-level chaos fault that introduces latency (delay) to a specific container. This fault:
+- Initiates a traffic control (tc) process with netem rules to add egress delays.
+- Degrades the nwtwork without marking the pod as unhealthy or unworthy of traffic by kube-proxy (unless there is a liveness probe that measures thw latency and restarts (or crashes) the container).
+- Issues with microservice communication across the services can be resolved by using middleware that switches the traffic based on certain SLOs or performance parameters. 
+  - Such issues can also be resolved by setting up alerts and notifications to highlight a degradation, so that they can be addressed, and rectified. A
+  - Issues can also be resolved by understanding the impact of the failure and determining the last point before degradation in the application stack. 
+
 
 ![Pod Network Latency](./static/images/pod-network-latency.png)
 
 
 ## Use cases
-
-The fault degrades the network without the pod being marked as unhealthy (or unworthy) of traffic by kube-proxy (unless there is a liveness probe that measures thw latency and restarts (or crashes) the container). This fault simulates issues within the pod network (or microservice communication) across services in different availability zones(or regions). 
-
-This can be resolved by using middleware that switches traffic based on certain SLOs or performance parameters. 
-Another way is to set up alerts and notifications to highlight a degradation, so that it can be addressed, and fixed. Another way is to understand the impact of the failure and determine the last point in the application stack before degradation. 
-
-The applications may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test by specifying the IP addresses. This fault will help to improve the resilience of your services over time.
-
-It simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across services or poor cni-performance in the inter-pod-communication network). It also simulates jittery connection with transient latency spikes between microservices, slow response on specific third party (or dependent) components (or services), and degraded data-plane of service-mesh infrastructure.  
-
+Pod network latency:
+- Tests the application's resilience to lossy or flaky networks.
+- Simulates issues within the pod network or microservice communication across the services in different availability zones or regions. 
+- Applications may stall or become corrupt while waiting endlessly for a data packet. This fault can reduce the blast radius to the traffic that you wish to test by specifying the IP addresses. 
+- Simulates a consistently slow network connection between microservices (for example, cross-region connectivity between active-active peers of a given service or across the services or poor cni-performance in the inter-pod-communication network). 
+- Simulates a jittery connection with transient latency spikes between microservices.
+- Simulates a slow response on specific third-party or dependent components or services.
+- Simulates a degraded data-plane of service-mesh infrastructure.  
 
 
 :::note
@@ -34,90 +37,80 @@ It simulates a consistently slow network connection between microservices (for e
       <tr>
         <th> Variables </th>
         <th> Description </th>
-        <th> s </th>
+        <th> Notes </th>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
-        <td> Name of ethernet interface considered for shaping traffic </td>
-        <td> </td>
+        <td> Name of ethernet interface considered for shaping traffic. </td>
+        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency#network-interface">network interface. </a></td>
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
-        <td> Name of container which is subjected to network latency </td>
-        <td> Applicable for containerd & CRI-O runtime only. Even with these runtimes, if the value is not provided, it injects chaos on the first container of the pod </td>
+        <td> Name of the container subject to the network latency. Applicable for containerd and crio runtimes.</td>
+        <td> With these runtimes, if the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container. </a></td>
       </tr>
       <tr>
         <td> NETWORK_LATENCY </td>
-        <td> The latency/delay in milliseconds </td>
-        <td> Default 2000, provide numeric value only </td>
+        <td> Delay (in milliseconds). Provide numeric values. </td>
+        <td> Defaults to 2000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency#network-latency">network latency. </a></td>
       </tr>
       <tr>
         <td> JITTER </td>
-        <td> The network jitter value in ms </td>
-        <td> Default 0, provide numeric value only </td>
+        <td> Network jitter (in milliseconds). Provide numeric values. </td>
+        <td> Defaults to 0. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency#jitter">jitter. </a></td>
       </tr> 
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
+        <td> Container runtime interface for the cluster. </td>
+        <td> Defaults to containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime. </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
+        <td> Path of the containerd or crio or docker socket file. </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">socket path. </a></td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos insertion (seconds) </td>
-        <td> Default (60s) </td>
+        <td> Duration to insert chaos (in seconds). </td>
+        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod network corruption chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        <td> Comma-separated list of application pod names subject to pod network latency. </td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods.</a></td>
       </tr> 
       <tr>
         <td> DESTINATION_IPS </td>
-        <td> IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted </td>
-        <td> comma separated IP(S) or CIDR(S) can be provided. if not provided, it will induce network chaos for all ips/destinations</td>
+        <td> IP addresses of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted. Comma separated IP(S) or CIDR(S) can be provided.</td>
+        <td> If these values are not provided, the fault induces network chaos for all IPs or destinations. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency#destination-ips-and-destination-hosts">destination IPs. </a></td>
       </tr>  
       <tr>
         <td> DESTINATION_HOSTS </td>
-        <td> DNS Names/FQDN names of the services, the accessibility to which, is impacted </td>
-        <td> if not provided, it will induce network chaos for all ips/destinations or DESTINATION_IPS if already defined</td>
+        <td> DNS names or FQDN names of the services whose accessibility is impacted. </td>
+        <td> If these values are not provided, the fault induces network chaos for all IPs or destinations or DESTINATION_IPS if already defined. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency#destination-ips-and-destination-hosts">destination hosts. </a></td>
       </tr>      
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr> 
-      <tr>
-        <td> TC_IMAGE </td>
-        <td> Image used for traffic control in linux </td>
-        <td> default value is `gaiadocker/iproute2` </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to `litmuschaos/go-runner:latest` </td>
+        <td> Percentage of total pods to target. Provie numeric values. </td>
+        <td> Defaults to 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods. </td>
+        <td> Default value is parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
       </tr>
     </table>
 
 ### Network latency
 
-It defines the network latency(in ms) to be injected in the targeted application. It can be tuned via `NETWORK_LATENCY` ENV.
+It specifies the network delay (in ms) that is injected into the target application. Tune it by using the `NETWORK_LATENCY` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the network latency:
 
 [embedmd]: # "./static/manifests/pod-network-latency/network-latency.yaml yaml"
 
@@ -149,12 +142,12 @@ spec:
 
 ### Destination IPs and destination hosts
 
-The network faults interrupt traffic for all the IPs/hosts by default. The interruption of specific IPs/Hosts can be tuned via `DESTINATION_IPS` and `DESTINATION_HOSTS` ENV.
+It specifies the default IPs and hosts whose traffic is interrupted because of the network faults. Tune it by using the `DESTINATION_IPS` and `DESTINATION_HOSTS` environment variabes, respectively.
 
-- `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs), the accessibility to which is impacted.
-- `DESTINATION_HOSTS`: It contains the DNS Names/FQDN names of the services, the accessibility to which, is impacted.
+- `DESTINATION_IPS`: It contains the IP addresses of the services or pods or the CIDR blocks(range of IPs) whose accessibility is impacted.
+- `DESTINATION_HOSTS`: It contains the DNS names or FQDN names of the services whose accessibility is impacted.
 
-Use the following example to tune this:
+Use the following example to tune the destination IPs and destination hosts:
 
 [embedmd]: # "./static/manifests/pod-network-latency/destination-ips-and-hosts.yaml yaml"
 
@@ -189,9 +182,9 @@ spec:
 
 ### Network interface
 
-The defined name of the ethernet interface, which is considered for shaping traffic. It can be tuned via `NETWORK_INTERFACE` ENV. Its default value is `eth0`.
+It specifies the name of the ethernet interface considered for shaping traffic. Its default value is `eth0`. Tune it by using the `NETWORK_INTERFACE` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune the network interface:
 
 [embedmd]: # "./static/manifests/pod-network-latency/network-interface.yaml yaml"
 
@@ -223,9 +216,9 @@ spec:
 
 ### Jitter
 
-It defines the jitter (in ms), a parameter that allows introducing a network delay variation. It can be tuned via `JITTER` ENV. Its default value is `0`.
+It specifies the jitter (in ms). Jitter specifies allowing introduction of a network delay variation. Its default value is `0`. Tune it by using the `JITTER` environment variable. 
 
-Use the following example to tune this:
+Use the following example to tune the jitter:
 
 [embedmd]: # "./static/manifests/pod-network-latency/network-latency-jitter.yaml yaml"
 
@@ -255,12 +248,12 @@ spec:
 
 ### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+It specifies the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
 - `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune this:
+Use the following example to tune the container runtime and socket path:
 
 [embedmd]: # "./static/manifests/pod-network-latency/container-runtime-and-socket-path.yaml yaml"
 

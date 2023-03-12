@@ -11,7 +11,8 @@ Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nod
 
 ## Use cases
 
-- Pod autoscaler determines how an application accomodates multiple replicas of a given application pod at unexpected times.
+Pod autoscaler:
+- Determines how an application accomodates multiple replicas of a given application pod at unexpected times.
 
 :::note
 - Kubernetes > 1.16 is required to execute this fault.
@@ -29,8 +30,8 @@ Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nod
       </tr>
       <tr>
         <td> REPLICA_COUNT </td>
-        <td> Number of replicas to which you wish to scale. </td>
-        <td> <code>nil</code> </td>
+        <td> Number of replicas you wish to scale to. </td>
+        <td> <code>nil</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler#replica-counts">replica counts. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -43,12 +44,12 @@ Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nod
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to insert chaos (in seconds).</td>
-        <td> Defaults to 60s. </td>
+        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time. </a></td>
       </tr>
     </table>
 

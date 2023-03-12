@@ -7,7 +7,7 @@ Fault tunables which are common to all pod-level faults are listed here. These t
 
 It specifies the comma-separated name of the target pods subject to chaos. Tune it by using the `TARGET_PODS` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the target pods:
 
 [embedmd]:# (./static/manifests/common/target-pods.yaml yaml)
 ```yaml
@@ -38,7 +38,7 @@ spec:
 
 It specifies the percentage of pods subject to chaos with matching the labels provided at `.spec.appinfo.applabel` inside the chaosengine. Tune it by using the `PODS_AFFECTED_PERC` environment variable. If `PODS_AFFECTED_PERC` is set to `empty` or `0`, it targets a minimum of one pod.
 
-Use the following example to tune it:
+Use the following example to tune the pod affected percentage:
 
 [embedmd]:# (./static/manifests/common/pod-affected-percentage.yaml yaml)
 ```yaml
@@ -70,7 +70,7 @@ spec:
 
 It specifies the name of the target container subject to chaos. Tune it by using the `TARGET_CONTAINER` environment variable. If `TARGET_CONTAINER` is set to `empty`, it uses the first container of the target pod.
 
-Use the following example to tune it:
+Use the following example to tune the target containers:
 
 [embedmd]:# (./static/manifests/common/target-container.yaml yaml)
 ```yaml
@@ -102,7 +102,7 @@ spec:
 
 It specifies the default application status checks. It is helpful in cases where you do not wish to validate the application status as a mandatory check before and after chaos. Tune it by using the `DEFAULT_APP_HEALTH_CHECK` environment variable. If `DEFAULT_APP_HEALTH_CHECK` is not provided, it is set to `true`.
 
-Use the following example to tune it:
+Use the following example to tune the default application health check:
 
 [embedmd]:# (./static/manifests/common/default-app-health-check.yaml yaml)
 ```yaml
@@ -128,11 +128,13 @@ spec:
           value: 'false'
 ```
 
-### Node label filter for selecting the target pods
+### Node label filter to select the target pods
 
 It specifies the target application pod selection from a specific node. It is helpful in cases where you do not wish to select the pods scheduled on specific nodes as chaos candidates considering the pod affected percentage. Tune it by using the `NODE_LABEL` environment variable.
 
-**Note:** This feature requires node-level permission or cluster role service account to filter pods on a specific node.
+:::note
+This feature requires node-level permission or cluster role service account to filter pods on a specific node.
+:::
 
 <table>
   <tr>

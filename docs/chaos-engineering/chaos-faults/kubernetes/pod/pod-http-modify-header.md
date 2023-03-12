@@ -3,16 +3,15 @@ id: pod-http-modify-header
 title: Pod HTTP modify header
 ---
 
-Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is provided using the `TARGET_SERVICE_PORT` environment variable.
-- This is done by starting the proxy server and redirecting the traffic through the proxy server.
-- It can cause modification of headers of requests and responses of the service. This can be used to test service resilience towards incorrect or incomplete headers.
+Pod HTTP modify header is a Kubernetes pod-level chaos fault that injects chaos on the service whose port is provided using the `TARGET_SERVICE_PORT` environment variable. This is done by starting the proxy server and redirecting the traffic through the proxy server. This fault:
+- Modifies headers of the requests and responses of the service. 
 
 ![Pod HTTP Modify Header](./static/images/pod-http-modify-header.png)
 
 
 ## Use cases
 
-This can be used to test service resilience towards incorrect or incomplete headers.
+Pod HTTP modify header can be used to test resilience towards incorrect or incomplete headers in application services.
 
 :::note
 - Kubernetes> 1.16 is required to execute this fault.
@@ -30,18 +29,18 @@ This can be used to test service resilience towards incorrect or incomplete head
       </tr>
       <tr>
         <td> TARGET_SERVICE_PORT </td>
-        <td> Port of the service to target</td>
-        <td>Defaults to port 80 </td>
+        <td> Port of the service to target. </td>
+        <td>Defaults to port 80. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#target-service-port">target service port. </a> </td>
       </tr>
       <tr>
         <td> HEADERS_MAP </td>
-        <td> Map of headers to modify/add </td>
-        <td> For example, &#123;"X-Litmus-Test-Header": "X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example, &#123;"X-Litmus-Test-Header": ""&#125; </td>
+        <td> Map of the headers to modify or add. </td>
+        <td> For example, &#123;"X-Litmus-Test-Header": "X-Litmus-Test-Value"&#125;. To remove a header, just set the value to ""; For example, &#123;"X-Litmus-Test-Header": ""&#125;.For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#headers-map"> headers map.</a> </td>
       </tr>
       <tr>
         <td> HEADER_MODE </td>
-        <td> Whether to modify response headers or request headers. Accepted values: request, response</td>
-        <td> Defaults to response </td>
+        <td> Specifies whether to modify the response headers or request headers. Accepted values are 'request' and 'response'. </td>
+        <td> Defaults to response. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#header-mode">header mode. </a> </td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -53,67 +52,62 @@ This can be used to test service resilience towards incorrect or incomplete head
       </tr>
       <tr>
         <td> PROXY_PORT </td>
-        <td> Port where the proxy will be listening for requests</td>
-        <td> Defaults to 20000 </td>
+        <td> Port where the proxy listen for requests. </td>
+        <td> Defaults to 20000. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#proxy-port">proxy port. </a> </td>
       </tr>
       <tr>
         <td> NETWORK_INTERFACE </td>
-        <td> Network interface to be used for the proxy</td>
-        <td> Defaults to `eth0` </td>
+        <td> Network interface used for the proxy. </td>
+        <td> Defaults to `eth0`. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#network-interface">network interface. </a> </td>
       </tr>
       <tr>
         <td> TOXICITY </td>
-        <td> Percentage of HTTP requests to be affected </td>
-        <td> Defaults to 100 </td>
+        <td> Percentage of HTTP requests to be affected. </td>
+        <td> Defaults to 100. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#toxicity">toxicity. </a> </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
+        <td> Container runtime interface for the cluster. </td>
+        <td> Defaults to containerd, supported values: docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime. </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
+        <td> Path of the containerd or crio or docker socket file. </td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header#container-runtime-and-socket-path">socket path. </a> </td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The duration of chaos injection (seconds) </td>
-        <td> Default (60s) </td>
+        <td> Duration to inject chaos (in seconds). </td>
+        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos. </a> </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod http modify header chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        <td> Comma-separated list of the application pod names subject to pod HTTP modify header.</td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods.</a></td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the netem command </td>
-        <td> Defaults to `litmuschaos/go-runner:latest` </td>
+        <td> Percentage of total pods to target. Provide numeric values. </td>
+        <td> Defaults to 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage. </a> </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a> </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods. </td>
+        <td> Default value is parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
       </tr>
     </table>
 
 
 ### Target service port
 
-It defines the port of the targeted service that is being targeted. It can be tuned via `TARGET_SERVICE_PORT` ENV.
+It specifies the port of the targeted service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the target service port:
 
 [embedmd]: # "./static/manifests/pod-http-modify-header/target-service-port.yaml yaml"
 
@@ -146,9 +140,9 @@ spec:
 
 ### Proxy port
 
-It defines the port on which the proxy server will listen for requests. It can be tuned via `PROXY_PORT`
+It specifies the port on which the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the proxy port:
 
 [embedmd]: # "./static/manifests/pod-http-modify-header/proxy-port.yaml yaml"
 
@@ -184,9 +178,9 @@ spec:
 
 ### Headers map
 
-It is the map of headers that are to be modified or added to the Http request/response. It can be tuned via `HEADERS_MAP` ENV.
+It specifies the map of the headers that need to be modified or added to the HTTP request or response. Tune it by using the `HEADERS_MAP` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the headers map:
 
 [embedmd]: # "./static/manifests/pod-http-modify-header/headers-map.yaml yaml"
 
@@ -220,9 +214,10 @@ spec:
 
 ### Header mode
 
-It defined whether the request or the response header has to be modified. It can be tuned via `HEADER_MODE` ENV.
+It specifies whether or not the request or the response header has to be modified. Tune it by using the `HEADER_MODE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the header mode:
+
 [embedmd]:# (./static/manifests/pod-http-modify-header/header-mode.yaml yaml)
 
 ```yaml
@@ -257,10 +252,9 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. It can be tuned via `TOXICITY` environment variable.
-Toxicity value defines the percentage of the total number of http requests to be affected.
+It specifies the percentage of the total number of HTTP requests to be affected. Tune it by using the `TOXICITY` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the toxicity:
 
 [embedmd]: # "./static/manifests/pod-http-modify-header/toxicity.yaml yaml"
 
@@ -295,9 +289,9 @@ spec:
 
 ### Network interface
 
-It defines the network interface to be used for the proxy. It can be tuned via `NETWORK_INTERFACE` environment variable.
+It specifies the network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
-Use the following example to tune this:
+Use the following example to tune the network interface:
 
 [embedmd]: # "./static/manifests/pod-http-modify-header/network-interface.yaml yaml"
 
@@ -333,12 +327,12 @@ spec:
 
 ### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
+It specifies the `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
 - `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune it:
+Use the following example to tune the container runtime and socket path:
 
 [embedmd]: # "./static/manifests/pod-http-modify-header/container-runtime-and-socket-path.yaml yaml"
 

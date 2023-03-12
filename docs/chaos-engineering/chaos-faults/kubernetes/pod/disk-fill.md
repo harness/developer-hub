@@ -5,14 +5,14 @@ title: Disk fill
 
 Disk fill is a Kubernetes pod-level chaos fault that applies disk stress by filling the pod's ephemeral storage on a node. This fault:
 - Evicts the application pod if its capacity exceeds the pod's ephemeral storage limit.
-- Tests the ephemeral storage limits and ensures that the parameters are sufficient.
-- Evaluates the application's resilience to disk stress (or replica) evictions.
 
 ![Disk Fill](./static/images/disk-fill.png)
 
 ## Use cases
 Disk fill:
-- Tests the ephemeral storage limits and determines the resilience of the application to unexpected storage exhaustions. 
+- Tests the ephemeral storage limits and ensures that the parameters are sufficient.
+- Determines the resilience of the application to unexpected storage exhaustions. 
+- Evaluates the application's resilience to disk stress or replica evictions.
 - Simulates the filled data mount points.
 - Verifies file system performance, and thin-provisioning support.
 - Verifies space reclamation (UNMAP) capabilities on storage. 
@@ -60,12 +60,12 @@ Disk fill:
       <tr> 
         <td> FILL_PERCENTAGE </td>
         <td> Percentage to fill the ephemeral storage limit. This limit is set in the target pod. </td>
-        <td> It can be set to more than 100, that will force evict the pod. For more information, go to <a href="">. </a></td>
+        <td> It can be set to more than 100 which force evicts the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#disk-fill-percentage">disk fill percentage. </a></td>
       </tr>
       <tr>
         <td> EPHEMERAL_STORAGE_MEBIBYTES </td>
         <td> Ephemeral storage required to be filled (in mebibytes). It is mutually exclusive with <code>FILL_PERCENTAGE</code> environment variable. If both are provided, <code>FILL_PERCENTAGE</code> takes precedence.</td>
-        <td> For more information, go to <a href="">. </a></td>
+        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#disk-fill-mebibytes">disk fill mebibytes. </a></td>
       </tr>
     </table>
     <h3>Optional fields</h3>
@@ -78,47 +78,42 @@ Disk fill:
       <tr> 
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to disk fill. </td>
-        <td> If it is not provided, the first container in the target pod will be subject to chaos. For more information, go to <a href="">. </a></td>
+        <td> If it is not provided, the first container in the target pod will be subject to chaos. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/container-kill/#kill-specific-container">kill specific container. </a></td>
       </tr>
       <tr> 
         <td> CONTAINER_PATH </td>
         <td> Storage location of containers. </td>
-        <td> Defaults to '/var/lib/docker/containers'. For more information, go to <a href="">. </a></td>
+        <td> Defaults to <code>/var/lib/docker/containers</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#container-path">container path. </a></td>
       </tr>
       <tr> 
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to insert chaos (in seconds). </td>
-        <td> Defaults to 60s. For more information, go to <a href="">. </a></td>
+        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to disk fill chaos. </td>
-        <td> If not provided, the fault selects the target pods randomly based on provided appLabels. For more information, go to <a href="">. </a></td>
+        <td> If not provided, the fault selects the target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods">target specific pods. </a></td>
       </tr> 
       <tr>
         <td> DATA_BLOCK_SIZE </td>
         <td> Data block size used to fill the disk (in KB). </td>
-        <td> Defaults to 256 KB. For more information, go to <a href="">. </a></td>
+        <td> Defaults to 256 KB. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill#data-block-size">data block size. </a></td>
       </tr> 
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> Percentage of total pods to target. It takes numeric values. </td>
-        <td> Defaults to 0 (corresponds to 1 replica). For more information, go to <a href="">. </a></td>
+        <td> Percentage of total pods to target. Provide numeric values. </td>
+        <td> Defaults to 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage. </a></td>
       </tr> 
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to fill the disk. </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. For more information, go to <a href="">. </a></td>
-      </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href="">. </a></td>
+        <td> For example, 30s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time. </a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods. </td>
-        <td> Default value: parallel. Supports serial and parallel. For more information, go to <a href="">. </a></td>
+        <td> Default value: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution.</a></td>
       </tr>
     </table>
 
@@ -127,7 +122,7 @@ Disk fill:
 
 It specifies the percentage of ephemeral storage limit to be filled at `resource.limits.ephemeral-storage` within the target application. Tune it by using the `FILL_PERCENTAGE` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the disk fill percentage:
 
 [embedmd]: # "./static/manifests/disk-fill/fill-percentage.yaml yaml"
 
@@ -160,9 +155,10 @@ spec:
 ### Disk fill mebibytes
 
 It specifies the ephemeral storage required to be filled in the target pod. Tune it by using the `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
+
 `EPHEMERAL_STORAGE_MEBIBYTES` is mutually exclusive with the `FILL_PERCENTAGE` environment variable. If `FILL_PERCENTAGE` environment variable is set, the fault uses `FILL_PERCENTAGE` for the fill. Otherwise, the dault fills the ephemeral storage based on `EPHEMERAL_STORAGE_MEBIBYTES` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the disk fill:
 
 [embedmd]: # "./static/manifests/disk-fill/ephemeral-storage-mebibytes.yaml yaml"
 
@@ -197,7 +193,7 @@ spec:
 
 It specifies the size of the data block required to fill the ephemeral storage of the target pod. It is in terms of `KB`. The default value of `DATA_BLOCK_SIZE` is `256` KB. Tune it by using the `DATA_BLOCK_SIZE` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the data block size:
 
 [embedmd]: # "./static/manifests/disk-fill/data-block-size.yaml yaml"
 
@@ -231,7 +227,7 @@ spec:
 
 It specifies the storage location of the containers inside the host (node or VM). Tune it by using the `CONTAINER_PATH` environment variable.
 
-Use the following example to tune it:
+Use the following example to tune the container path:
 
 [embedmd]: # "./static/manifests/disk-fill/container-path.yaml yaml"
 
