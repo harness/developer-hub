@@ -1,38 +1,19 @@
 ---
-title: Continuous Error Tracking
-description: This topic walks you through the steps to set up Error Tracking.
-sidebar_position: 10
+title: Set up Continuous Error Tracking
+description: Add a monitored service and install an Error Tracking Agent to identify and troubleshoot faults and exceptions in your code.
+sidebar_position: 20
 helpdocs_topic_id: cbj5uuzpbu
 helpdocs_category_id: c40ko6e87n
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-# **Error Tracking**
-
 :::note
 Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 
-Error Tracking is a developer first observability solution in the Harness [Service Reliability Management (SRM)](https://developer.harness.io/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics#sort=relevancy&f:@commonsource=%5BNextGen%20Docs%5D) module that enables developers to identify, triage, and resolve errors in applications. This helps in implementing rapid code changes by ensuring that the code is always in a deployable state.
-
-
-## Overview
-
-With the increase in release velocity, the risk to code quality also increases. Using Harness Error Tracking, as a developer, you can:
-
-* Quickly identify and address any critical issues during each release with real-time notifications sent to email and Slack channels - ensuring that the right people can make the right decisions fast.
-* Deepen understanding of your Java applications in all environments, from production to development, testing, and staging, through code level visibility.
-* Automate issue root cause analysis at runtime, eliminating the need for manual log analysis to identify critical errors.
-* Quickly and accurately identify and fix detected issues with Automated Root Cause Analysis (ARC) screen, leveraging source code, variable values, environment state of the host/container, and DEBUG level logs to get the full context.
-* Integrate the ARC screen with existing tools including APMs, log analyzers, and issue tracking software.
-
-Harness Error Tracking consists of an Error Tracking Agent that runs on a Java Virtual Machine (JVM). It monitors the Java applications for run-time exceptions, log events, and the custom events that you set up. When an exception or an event occurs, the Agent sends the statistics and snapshots to a monitored service on Harness SRM. SRM analyzes the data using Machine Learning (ML) and provides deep insights via comprehensive dashboards such as the Event List and ARC.
-
-![Harness Error Tracking](./static/et-quickstart-overview-diagram.png)
-
-This quickstart describes how to set up a monitored service in Harness and install an Error Tracking Agent on a JVM to identify and troubleshoot errors and exceptions in your code.
+This topic describes how to add a monitored service in Harness and install an Error Tracking Agent on a JVM to identify and troubleshoot faults and exceptions in your code.
 
 
 ## Add a monitored service
@@ -129,9 +110,173 @@ You can copy the token anytime by selecting the clipboard icon.
 
 ## Install an Error Tracking Agent
 
-The Harness Error Tracking Agent should be installed on a Java application to capture program code and variables. This native agent library is attached to the Java Virtual Machine (JVM)/Common Language Runtime (CLR) during runtime. It can be deployed into any Kubernetes container without altering the image. The Agent fingerprints the program code loaded into the JVM/CLR and captures the complete state of the code and the host/container in order to identify anomalies.
+The Harness Error Tracking Agent must be installed on a Java application to capture application code and variables. This native agent library is attached to the Java Virtual Machine (JVM)/Common Language Runtime (CLR) during runtime. It can be deployed into any Kubernetes container without altering the image. The Agent fingerprints the program code loaded into the JVM/CLR and captures the complete state of the code and the host/container in order to identify anomalies.
 
-For more information on installing the error tracking agent, go to [Install an Error Tracking Agent](https://developer.harness.io/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent).
+This topic provides details about:
+
+* Compatibility and requirements to install an Error Tracking Agent.
+* Steps to install an Error Tracking Agent on a Java Application.
+
+### Compatibility and Requirements
+
+This table lists the supported operating system, Java Virtual Machine (JVM) versions, and JVM containers.
+
+Future releases will include support for more operating systems.
+
+| **Operating System** | **Supported JVM Versions** | **Supported JVM Containers** |
+| --- | --- | --- |
+| Linux Operating System: <ul><li>Ubuntu: 14+</li><li>jDebian</li><li>CentOS: 6.5+</li><li>RedHat: 5.0 +</li><li>Suse: SLES12</li></ul>| <ul><li>Oracle/HotSpot:6u20 - 6u457 - 7u808 - 8u2218 - 8u2329 - all updates10/11/16/17 - all updates </li><li>OpenJDK:6u20 - 6u457 - 7u808 - 8u2228 - 8u2329 - all updates10/11/16/17 - all updates</li></ul> | <ul><li>Jetty</li><li>Scala</li><li>Eclipse</li><li>NetBeans</li><li>IntelliJ</li><li>JBoss/Wildfly</li><li>CloudFoundry</li><li>Weblogic</li><li>Play Framework</li><li>Glassfish</li><li>Mule</li><li>WebSphere</li><li>Tomcat</li></ul> |
+
+##### JVM Requirements
+
+When you attach the Harness Error Tracking Agent to a JVM that runs Java 10, 11, 16, 17, or any IBM Java version, ensure that the following requirements are met:
+
+* Turn off class sharing using the following flags:
+
+  |  |  |
+| --- | --- |
+| IBM Java | `‑Xshareclasses:none` |
+| HotSpot | `-Xshare:off -XX:-UseTypeSpeculation` |
+
+
+* Increase `ReservedCodeCache` to at least 512mb by adding the following flag:  
+`-XX:ReservedCodeCacheSize=512m`
+
+### Install an Error Tracking Agent
+
+Depending on your setup and needs, there are multiple ways to install and deploy an Error Tracking Agent on a Java application. You can install the Agent to monitor your application in the following ways:
+
+* As a standalone installation outside Harness.
+* By modifying your Docker image.
+* Using an init container.
+
+If you have additional agents running on your application, the Error Tracking Agent should appear at the end of the VM arguments list before specifying the main class or jar.
+
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs>
+  <TabItem value="Standalone" label="Standalone" default>
+
+This option lets you install the Error Tracking Agent as a standalone. Perform the following steps to install the Agent:
+
+1. [Download](https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz) the latest version of the Agent for Linux.
+
+2. Extract this version to a folder of your choice. For example`/home/user`. The contents of the archive will be inside a folder named Harness. You'll require the path to the Agent when starting your application. An example for the Agent path would be , `/home/user/harness/lib/libETAgent.so`.
+
+3. Add JVM arguments which instruct the JVM to load the Agent.
+
+  This is done by adding `-agentpath:/home/user/harness/lib/libETAgent.so` to the application startup. For example:
+
+    `java -agentpath:/home/user/harness/lib/libETAgent.so -jar yourapp.jar`.
+
+  This parameter can also be specified using `JAVA_TOOL_OPTIONS`. For example:
+
+    `exportJAVA_TOOL_OPTIONS=-agentpath:/home/user/harness/lib/libETAgent.so`.
+
+4. Set the Agent environment variables so that your application can map to a Harness Service.
+
+  | **Required Environment Variable** | **Description** | **Example** |
+| --- | --- | --- |
+| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://collector.et.harness.io/prod1|
+| `ET_APPLICATION_NAME` | Name of your application or Service. | myapp |
+| `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | 1 |
+| `ET_ENV_ID` | ID of your Harness Environment. | production |
+| `ET_TOKEN` | ET Agent Token created on Harness. | b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a |
+
+  For example:
+
+```
+ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/
+ENV ET_APPLICATION_NAME=yourapp  
+ENV ET_DEPLOYMENT_NAME=1  
+ENV ET_ENV_ID=env1
+ENV ET_TOKEN= agenttoken
+```
+
+5. Restart your application after installing the Error Tracking Agent.
+
+
+</TabItem>
+<TabItem value="Docker image" label="Docker image">
+
+This option uses a Dockerfile to copy an Error Tracking Agent to the Docker image at build time. When your Java application is running using Docker, perform the following steps to install the Agent:
+
+1. Download and extract the Agent in your Dockerfile. For example:
+```
+RUN wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz | tar -xz
+```
+2. Set the Agent environment variables in the Dockerfile.
+
+  | **Required Environment Variable** | **Description** | **Example** |
+| --- | --- | --- |
+| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://collector.et.harness.io/prod1 |
+| `ET_APPLICATION_NAME` | Name of your application or Service. | myapp |
+| `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | 1 |
+| `ET_ENV_ID` | ID of your Harness Environment. | production |
+| `ET_TOKEN` | ET Agent Token created on Harness. | b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a |
+
+  For example:
+```
+ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1
+ENV ET_APPLICATION_NAME=yourapp  
+ENV ET_DEPLOYMENT_NAME=1  
+ENV ET_ENV_ID=env1 
+ENV ET_TOKEN= agenttoken
+```
+1. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding`agentpath:/harness/lib/libETAgent.so`to the application`ENTRYPOINT`. For example,`ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using`JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
+2. Once the Dockerfile is updated, rebuild the Docker image and restart any containers running on it to start monitoring using Error Tracking.
+
+```
+ FROM openjdk:8-jre  
+ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"  
+ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/  
+ENV ET_APPLICATION_NAME=yourapp  
+ENV ET_DEPLOYMENT_NAME=1  
+ENV ET_ENV_ID=env1  
+ENV ET_TOKEN= agenttoken 
+RUN wget -qO- <https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz> | tar -xz  
+ENTRYPOINT java -jar yourapp.jar
+```
+
+</TabItem>
+<TabItem value="Init container" label="Init container">
+
+When your Java application is running on Kubernetes, use an init container to automatically install the Agent at runtime without changing the existing images. The image is publicly hosted in [Docker Hub](https://hub.docker.com/r/harness/et-agent-sidecar).
+
+Consider the following Kubernetes deployment example for a Java application:
+
+```
+spec:
+containers:
+- name: my-javaapp-container
+image: my-javaapp-image
+..
+initContainers:
+- name: init-et-agent
+image: harness/et-agent-sidecar
+imagePullPolicy: Always
+volumeMounts:
+- name: et-agent
+mountPath: /opt/harness-et-agent
+..
+env:
+- name: JAVA_TOOL_OPTIONS
+value: "-agentpath=/opt/harness-et-agent/lib/libETAgent.so"
+- name: ET_COLLECTOR_URL
+value: "https://collector.et.harness.io/prod1/"
+- name: ET_APPLICATION_NAME
+value: yourapp
+- name: ET_DEPLOYMENT_NAME
+value: 1
+- name: ET_ENV_ID
+value: production
+- name: ET_TOKEN
+value: b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a
+```
+  </TabItem>
+</Tabs>
 
 
 ## Verify Agent connection
@@ -147,187 +292,6 @@ After installing Error Tracking Agent, you should verify that it is connected to
    ![Verify agent connection](./static/et-quickstart-agent-connection-status.png)
 
 
-## View Error Tracking dashboard
+## Next steps
 
-The Error Tracking dashboard displays a comprehensive list of all the monitored services. To go to the Error Tracking dashboard, in Harness, go to **Service Reliability Management**, and then select **Code Errors**.
-
-![Error Tracking dashboard](./static/et-quickstart-errortracking-dashboard.png)
-
-By default, the dashboard displays the data for the last 24 hours time period. You can customize the dashboard using the following filters:
-
-* **Time period**: Choose a period for which you want to see the data. The default option is **Last 24 hours**.
-* **Services**: Choose a service to see its data. You can select multiple services. The default option is **All**.
-* **Environment**: Choose an environment to see its data. You can select multiple environments. The default option is **All**.
-* **Deployment version**: Choose a deployment version in order to view the data associated with the monitored services of that specific version. You can select multiple deployment versions. The default option is **All**.
-
-Based on the filter settings, the dashboard displays the total number of services being monitored by Error Tracking and the number of services that have generated new events. An event is considered as new if it is observed for the first time in a monitored service.
-
-
-## View Event List
-
-The Event List screen displays a summary of the total events, exceptions, log events, HTTP errors, and custom errors. It also displays a list of all the events. Each row provides deep contextual information about the event type, its location in the code, and impact in terms of volume and spread across the service. You can customize the Event List screen using the following filters:
-
-* **Time period**: Choose a period for which you want to see the events. The default option is **Last 24 hours**.
-* **Deployment version**: Choose a deployment version in order to view the events associated with that specific version.
-
-To view the Event List, do the following:
-
-1. On the Error Tracking dashboard, select a monitored service. The list of events captured by that monitored service is displayed.
-
-![Event List](./static/et-quickstart-view-event-list.png)
-
-The Event List displays the following information:
-
-* **Type**: Displays the event type. The event type can be one of the following:
-  * Caught Exception - Exceptions captured and handled by the user’s service.
-  * Uncaught Exception - Exceptions that were not captured by the user’s service.
-  * Swallowed Exception - Exceptions that were captured but ignored by the user’s service.
-  * Log Error	- Events logged as errors in the user’s service.
-  * Log Warning - Events logged as warnings in the user’s service.
-  * HTTP Error - HTTP communication errors.
-  * Custom Errors - Events that occur in the custom SDK. 
-
-* **Description:** Name of the event. In case of an exception, this is the exception class name. For example, AmazonException, NullPointerException, and so on. You can see the complete exception message of an event by hovering over the **Description** field.
-
-* **Location**: Service class and method in which the event occurred. You can also view the actual line of code in which the error occurred even if the error was caused by a third party or core JDK framework. This can help you quickly identify the root cause of the error. Event location can also be filtered according to packages.
-
-* **Count**: Number of times the event has occurred in the selected time period. This value indicates the severity of the event.
-
-* **Error Rate**: Percentage of time the event occurs in comparison to all the calls made to the event's location. This is calculated by dividing the number of occurrences by the total number of calls to that location.
-
-* **First Seen**: Time when the event was first detected in the environment.
-
-* **Last Seen**: Last time this event was detected in the environment. This value indicates whether the event is still impacting your application.
-
-* **Impacted Services**: List of monitored services in which the event was detected. For example, Producer-Service, Consumer-Service, Web-frontend, and so on.
-
-
-## Automated Root Cause (ARC) screen
-
-The Automated Root Cause (ARC) screen provides a powerful mechanism to get to the root of events in production and staging environments. 
-
-To view the ARC screen, do the following:
-
-1. On the Events List, select an event. The ARC screen for that event appears.
-
-
-![View ARC screen](./static/et-quickstart-open-arc.png)
-
-The ARC screen is divided into following tabs to help you create a complete picture of the event.
-
-* Code
-* Log
-* Environment
-
-![The Automated Root Cause (ARC) screen](./static/et-quickstart-arc-screen.png)
-
-
-### Code tab
-
-Information displayed in the **Code** tab is divided into following categories:
-
-![ARC screen Code tab](./static/et-quickstart-arc-code-tab.png)
-
-
-#### Event description
-
-ARC displays the following information related to an event:
-
-* Origin of the error and the error message it throws.
-* Date on which the error was first identified and the number of times it appeared.
-* Type of event.
-* Number of times the event occurred. 
-* Source code, which is a decompiled Java version of the bytecode, being executed in the JVM when the event occurred.
-
-
-#### Snapshot
-
-Error Tracking captures snapshots when events, application errors (exceptions), and logs (warnings and errors) occur according to a defined algorithm.
-
-An Error Tracking snapshot contains valuable information about events in the monitored application. This includes:
-
-* Date and time of the snapshot
-* The server and application where the event occurred
-* The deployment where the event was captured
-* The full call stack
-* The source code
-
-
-#### Forced snapshot
-
-You can use the **Force Snapshot** option to take a snapshot the next time the same event occurs.
-
-
-#### Call stack
-
-To understand and resolve errors, it is important to be able to trace their path through the code. The ARC screen provides a comprehensive call stack trace, covering the entry point to the method in which the event occurred, even if the source code spans across multiple machines.
-
-Error Tracking enables tracing of the code and variable state associated with the event all the way back to the initiation point, where the parameters were passed. If the event involves calls across multiple machines, ARC displays a unified call stack. 
-
-Select a method in the call stack to see its source code.
-
-The call stack displays the chain of methods within the environment leading up to the event. The first method in the line is the last method on a non-third party code within your application.
-
-When an exception is caught and re-thrown once or multiple times within the thread, the **Related Errors** dropdown displays the error analysis. This feature is available only when such exceptions exist.
-
-
-#### Third party utilities and methods
-
-At the bottom of the stack, the machine name and the environment thread name in which the error occurred are displayed. By default, the third party code is hidden. To display the third party code, turn on the **Show 3rd party/utility methods** option. To copy the full stack to the clipboard, select **Copy Stack**.
-
-![Stack and third party utilities](./static/et-quickstart-arc-copystack.png)
-
-
-#### Source code
-
-The source code pane displays a decompiled Java version of the bytecode being executed within the JVM when the event occurred. The row in which the event occurred is highlighted.
-
-
-#### Object and variable state
-
-The **Recorded Variables** section displays the variable values and objects accessible from the method. It displays all the local variables and parameters including `this` in the non-static methods. The first method also contains thread-local variables defined for this thread as well as SLF4J and Log4J Mapped Diagnostics Context (MDC) values. The MDC objects are often too large for the full set of data to be available in the log. However, the Error Tracking Agent is capable of capturing and recording the entire object.
-
-In some scenarios, such as asynchronous message passing, the MDC objects contain a key-value map of the recorded requests, initial servlet information, and much more. However, back tracing the source of a bad request in an asynchronous environment is a known challenge. Error Tracking helps you overcome this challenge by providing extended visibility into MDC.
-
-The choice of the collected variables most relevant within an allocated timeframe is determined by the Error Tracking Agent using an adaptive machine learning algorithm. The selection process is based on which and how many variables to collect, the number of items to collect, the length of string to capture, and so on.
-
-
-### Log tab
-
-The **Log** tab displays the last 250 log statements leading up to the event. The log statements are collected directly from the JVM/CLR memory. This ensures that the DEBUG, TRACE, and INFO statements are visible even when they are not logged to a file.  
-
-In the **Log** tab, the error or exception lines are displayed first, followed by the stack trace. It also displays the context of the event, by highlighting the beginning of the relevant transaction in which the event occurred.
-
-![ARC screen Log tab](./static/et-quickstart-arc-log-tab.png)
-
-
-#### Log level
-
-* Logback: TRACE level and up
-* Log4j/Log4j2: According to the user's config
-
-
-:::note
-Log4j2 allows you to create custom log levels and names. However, Error Tracking reports only on log levels that are less than or equal to 300.
-:::
-
-
-#### Missing log statements
-
-The table below describes the various missing log statements you may come across in the **Log** tab.
-
-| Message                                                                                                                                                                                | Cause                                    |
-| :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | :--------------------------------------- |
-| This snapshot was taken before log views were introduced. Please try viewing a more recent snapshot.                                                                                   | The snapshot is out-of-date.             |
-| No log messages have been recorded for this snapshot.                                                                                                                                  | No Log messages were detected.           |
-| Log view is not available due to Storage Server error at the time of this snapshot. Please check storage server connectivity and status                                                | Storage server error.                    |
-| No supported Logging framework was detected. Check out our documentation for supported frameworks list                                                                                 | Supported log provider was not detected. |
-| Ooops, something went wrong… An error has occurred while recording log messages for this snapshot. Please try viewing another snapshot.                                                | Cerebro exception or Unknown error.      |
-| No log messages were detected for current entry point. This might also occur during new event initialization - in this case log messages will be captured starting from next snapshot. | Context or transaction data is missing.  |
-
-
-### Environment tab
-
-The environment view displays the internal environment state when the event occurred. This includes memory usage (heap and non-heap), basic system information, CPU usage, and so on.
-
-![ARC screen Environment tab](./static/et-quickstart-environment-tab.png)
+Identify and prioritize critical errors using [Events dashboard](error-tracking-event-dashboard.md).
