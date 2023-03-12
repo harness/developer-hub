@@ -164,7 +164,7 @@ spec:
 
 ### Network interface
 
-It specifies the name of the ethernet interface which is considered for shaping traffic. Its default value is `eth0`. Tune it by using the `NETWORK_INTERFACE` environment variable. 
+It specifies the name of the ethernet interface which is considered for shaping traffic. Its default value is `eth0`. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
 Use the following example to tune the network interface:
 
