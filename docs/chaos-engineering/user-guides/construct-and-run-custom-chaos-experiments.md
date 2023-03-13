@@ -11,7 +11,7 @@ A chaos experiment is constituted out of chaos faults that are arranged in some 
 
 ![Chaos Experiments](./static/construct-and-run-custom-chaos-experiments/chaos-experiments.png)
 
-To construct a chaos experiment, select the **Chaos Experiments** sidebar option under the **Chaos** tab, and select **New Experiment**. This will take you to the Chaos Studio. 
+To construct a chaos experiment, select the **Chaos Experiments** sidebar option under the **Chaos** tab, and select **New Experiment**. This will take you to the Chaos Studio.
 
 The very first step is to add the experiment overview, including experiment name and optionally any description or tags. Then, select a **Chaos Infrastructure** to specify the infrastructure where the target resources lie. If you haven't added a chaos infrastructure yet, check out this doc. Then, click **Next**.
 
@@ -27,7 +27,7 @@ Under the Experiment Builder tab, first we need to specify the source of the exp
 ![Experiment Builder](./static/construct-and-run-custom-chaos-experiments/experiment-builder.png)
 
 ### Blank Canvas
-When starting from scratch, you can add individual faults from the available Chaos Hubs and tune them. This allows you to have access to not only the Enterprise Chaos Hub experiments provided by Harness but also any private Chaos Hub faults which you have access to. 
+When starting from scratch, you can add individual faults from the available Chaos Hubs and tune them. This allows you to have access to not only the Enterprise Chaos Hub experiments provided by Harness but also any private Chaos Hub faults which you have access to.
 
 ![Select Faults](./static/construct-and-run-custom-chaos-experiments/select-faults.png)
 
@@ -60,3 +60,26 @@ As a final step before running the experiment, switch to the tab **Set fault wei
 ![Adjusting Fault Weight](./static/construct-and-run-custom-chaos-experiments/adjusting-fault-weight.png)
 
 Now, we can choose to either run the experiment right away by selecting the **Run** button on the top, or we can create a recurring schedule for the experiment execution by selecting the arrow to the right of the Run button and selecting **Create recurring schedule** and then specifying the execution schedule. You can also save the experiment to simply save it but not run it just yet, as well as save the experiment as a template using the **Save** button.
+
+## Launch Experiment from ChaosHub
+Alternatively, you can directly launch a pre-curated experiment from the Chaos Hub.
+
+### 1. Access the Chaos Hub
+Select **Chaos Hubs** sidebar option and choose the hub where the experiment is present. You shall be able to browse the list of available experiments now. Upon locating the experiment you want to execute, select the **Launch Experiment** button corresponding to it.
+
+![Access Chaos Hub](./static/construct-and-run-custom-chaos-experiments/access-chaoshub.png)
+
+### 2. Customize and Execute the Experiment
+You'll be presented with the experiment overview page now, where you shall update the experiment name and select the Chaos Infrastructure to be used to run the experiment.
+
+Select **Next**. In the experiment builder page, select the fault(s) present in the experiment to configure them, as we did while building an experiment [from a blank canvas](#blank-canvas):
+
+- Provide the target application details (if applicable), such as the namespace, kind, and label.
+- Configure the fault tunables, if necessary.
+- Add custom chaos probe checks, if necessary.
+
+In addition, you can add more faults to the experiment in addition to the existing set of faults or update the sequence of execution of the faults.
+
+![Configure Fault](./static/construct-and-run-custom-chaos-experiments/configure-fault.png)
+
+Next, simply select the **Run** button to execute your chaos experiment. Alternatively, you can only save the experiment or add the experiment to a Chaos Hub via the **Save** button.
