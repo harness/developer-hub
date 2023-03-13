@@ -1,6 +1,6 @@
 ---
 title: Save and Restore Cache from S3
-description: Caching enables you to share data across stages. It also speeds up builds by reusing the expensive fetch operation from previous jobs.
+description: Caching enables sharing data across stages
 tags: 
    - helpDocs
 sidebar_position: 30
@@ -15,98 +15,48 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
-
-:::info
-
-If you are using Harness Cloud for your CI pipelines, [Cache Intelligence](cache-intelligence.md) can remove most of complexity of cache management.
-
-:::
-
-## Overview
-
-You can cache data to an AWS S3 bucket in one Stage using the **Save Cache to S3** step, and restore it in the same Stage, or a following Stage, using **Restore Cache From S3** step. 
+Caching enables sharing data across stages. Caching also speeds up builds by reusing the expensive fetch operation from previous jobs.
 
 Caching has two primary benefits:
 
-* Run pipelines faster by reusing the expensive fetch operation data from previous executions
+* Run pipelines faster by reusing the expensive fetch operation data from previous builds
 * Share data across Stages
+
+You can cache data to an AWS S3 bucket in one Stage using the **Save Cache to S3** step, and restore it in the same Stage, or a following Stage, using **Restore Cache From S3** step. 
+
+This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
 
 You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across Stages.
 
-## Before You Begin
-
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
-
 :::info
 
-You will need an [AWS connector](../../../../docs/platform/7_Connectors/add-aws-connector.md) with read/write access to your S3 bucket. Below is a minimal S3 bucket read/write policy. See the [AWS documentation](https://docs.aws.amazon.com/AmazonS3/latest/userguide/example-bucket-policies.html) for more S3 bucket policy examples.
-
-<details><summary>Sample S3 Cache Bucket Policy</summary>
-
-```json
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "AllowS3BucketAccess",
-            "Effect": "Allow",
-            "Action": [
-                "s3:PutObject",
-                "s3:GetObject",
-                "s3:ListBucket",
-                "s3:DeleteObject"
-            ],
-            "Resource": [
-                "arn:aws:s3:::your-s3-bucket/*",
-                "arn:aws:s3:::your-s3-bucket"
-            ]
-        },
-        {
-            "Sid": "AllowDescribeRegions",
-            "Effect": "Allow",
-            "Action": "ec2:DescribeRegions",
-            "Resource": "*"
-        }
-    ]
-}
-```
-
-</details>
-
-Consider creating an [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) for your S3 cache bucket to automatically delete old cache data.
+If you're using Harness Cloud build infrastructure, you can use [Cache Intelligence](cache-intelligence.md) to automate caching.
 
 :::
+
+## Requirements
+
+You need a dedicated S3 bucket for your Harness CI cache operations, and you need an AWS connector with read/write access to this S3 bucket.
+
+For information on configuring an S3 connector and S3 policies, go to [Add an AWS connector](../../../../docs/platform/7_Connectors/add-aws-connector.md) and the [AWS connector settings reference](../../../../docs/platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+
+Optionally, you can create a [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) to automatically delete old cache data from your S3 bucket.
 
 :::caution
 
-Use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Retrieve Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
+Use a dedicated bucket for your Harness CI cache operations. Do not save files to the bucket manually. The Restore Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
 
 :::
 
-## Steps
+## Add Save Cache to S3 step
 
-### Restore Cache From S3
+Here is a YAML example of a Save Cache to S3 step.
 
-```yaml title="Sample Step YAML"
-              - step:
-                  type: RestoreCacheS3
-                  name: Restore Cache From S3
-                  identifier: Restore_Cache_From_S3
-                  spec:
-                    connectorRef: AWS_Connector
-                    region: us-east-1
-                    bucket: your-s3-bucket
-                    key: myApp-{{ checksum filePath1 }}
-                    archiveFormat: Tar
-```
+Add this step after your pipeline's build/test steps, near the end of your pipeline.
 
-See [Restore Cache from S3 step settings](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md) for all available settings.
+For details about this step's settings, go to [Save Cache to S3 step settings](../../ci-technical-reference/save-cache-to-s-3-step-settings.md).
 
-### Save Cache to S3
-
-```yaml title="Sample Step YAML"
+```yaml
               - step:
                   type: SaveCacheS3
                   name: Save Cache to S3
@@ -122,9 +72,28 @@ See [Restore Cache from S3 step settings](../../ci-technical-reference/restore-c
                     archiveFormat: Tar
 ```
 
-See [Save Cache to S3 step settings](../../ci-technical-reference/save-cache-to-s-3-step-settings.md) for all available settings.
+## Add Restore Cache From S3 step
 
-## Examples
+Here is a YAML example of a Restore Cache From S3 step.
+
+Add this step before your pipeline's build/test steps, near the start of your pipeline.
+
+For details about this step's settings, go to [Restore Cache from S3 step settings](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md).
+
+```yaml
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache From S3
+                  identifier: Restore_Cache_From_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: myApp-{{ checksum filePath1 }}
+                    archiveFormat: Tar
+```
+
+## Pipeline examples
 
 ### Single Stage
 
@@ -143,16 +112,12 @@ graph TD
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Cloud">
+<TabItem value="Harness Cloud">
 ```
 
-:::info
+**Operating System:** Linux
 
-Harness Cloud features [Cache Intelligence](cache-intelligence.md), which can simplify caching within a single stage.
-
-:::
-
-#### Linux/AMD64
+**Architecture:** AMD64
 
 **Language:** Node.js
 
@@ -255,10 +220,12 @@ graph TD
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Cloud">
+<TabItem value="Harness Cloud">
 ```
 
-#### Linux/AMD64
+**Operating System:** Linux
+
+**Architecture:** AMD64
 
 **Language:** None
 
@@ -356,7 +323,3 @@ Kubernetes example goes here
 </TabItem>
 </Tabs>
 ```
-
-## See Also
-
-* [Save and Restore Cache from GCS](save-cache-in-gcs.md)
