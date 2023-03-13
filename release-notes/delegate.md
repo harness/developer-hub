@@ -20,7 +20,9 @@ Harness NextGen release 78619 includes the following changes for the Harness Del
 
 ### What's new
 
-- The delegate installation UI experience is now updated with a new installation method; the Terraform Helm Provider. In addition, it has been enhanced for existing methods; Helm Chart, Kubernetes Manifest and Docker. This new experience is more developer friendly, for example it enables cutting and pasting of relevant commands, and more automation friendly where the commands can be run in an automated manner using new values when necessary. Additionally, the following new features are available:
+- The delegate installation UI experience is now updated with a new installation method: the Terraform Helm provider. Also, the installation experience has been enhanced for the existing methods (Helm chart, Kubernetes manifest, and Docker). This new experience is more developer friendly. For example, it enables cutting and pasting of relevant commands. You can also automate the commands and use new values when necessary. 
+
+Additionally, the following new features are available:
   - The **Terraform Helm Provider** method is based on the open source [Terraform Harness Delegate module](https://registry.terraform.io/modules/harness/harness-delegate/kubernetes/latest) and the open source [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart). Auto upgrade is set to `OFF` with an option to enable it in the command.
   - The updated method for **Helm Chart** is also powered by the same open source [Harness Delegate Helm Chart](https://github.com/harness/delegate-helm-chart) as the Terraform Helm Provider above. The auto upgrade is set to OFF with an option to enable it in the command. You can also download the [default values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) for the Helm option and edit that to set your own long-lived configuration values.
   - The updated flow for **Kubernetes Manifest** has the following options for creating a manifest YAML file specific to your Harness account. 
