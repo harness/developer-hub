@@ -10,7 +10,7 @@ sidebar_position: 34
 The Harness [Service Reliability Management (SRM)](/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics) module provides tools to help meet Service Level Objectives (SLOs) and identify root causes of changes to service health. You can use Feature Flags with SRM to analyze how service health is impacted by a feature.
 
 For example, with a Harness SRM subscription you can access the **Service Health** and **Changes** dashboards to observe the health of your services and to correlate change events to service health.
-Then, if you want to see how a new feature impacts services, you can put the new feature behind a feature feature flag and connect that flag to one or more monitored services. You can then use SRM to see the impact of turning the flag on or off on the selected service(s).
+Then, if you want to see how a new feature impacts services, you can put the new feature behind a feature feature flag and connect that flag to one or more monitored services. You can then use SRM to see the impact on the selected service(s) when you turn the flag on or off .
 
 Follow the instructions in these topics to:
 
