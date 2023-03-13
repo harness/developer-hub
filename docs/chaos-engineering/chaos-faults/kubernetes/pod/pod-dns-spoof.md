@@ -43,8 +43,7 @@ Pod DNS spoof:
       <tr>
         <td> SPOOF_MAP </td>
         <td> Map of the target host names. For example, '&#123;"abc.com":"spoofabc.com"&#125;' where key is the host name to be spoofed and value is the host name to which the key is spoofed or redirected to.</td>
-        <td> If not provided, no host names or domains are spoofed. For more information, go to <a href="        https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-spoof#spoof-map
-">spoof map. </a></td>
+        <td> If not provided, no host names or domains are spoofed. </td>
       </tr>
       <tr>
         <td> PODS_AFFECTED_PERC </td>
