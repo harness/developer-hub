@@ -24,7 +24,7 @@ Note the following important information about delegates:
 
 * The delegate is installed in your network and connects to the Harness Manager.
 
-  ![](./static/delegate-requirements-and-limitations-00
+  ![](./static/delegate-requirements-and-limitations-00.png)
   
   The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services such as Docker or Kubernetes.
 
@@ -42,7 +42,7 @@ Note the following important information about delegates:
 
 Harness SaaS delegates only need outbound access to the Harness domain name, most commonly, **app.harness.io**, and optionally, to **logging.googleapis.com**. The URL **logging.googleapis.com** is used to provide logs to Harness Support.
 
-Go to [Allowlist Harness Domains and IPs](/docs/platform/20_References/whitelist-harness-domains-and-ips.md).
+Go to [Allowlist Harness Domains and IPs](/docs/platform/20_References/allowlist-harness-domains-and-ips.md).
 
 ## Network requirements
 
