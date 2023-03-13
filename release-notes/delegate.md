@@ -27,7 +27,7 @@ Harness NextGen release 78619 includes the following changes for the Harness Del
     - **Basic** - Provides a “Download YAML” option where the downloaded YAML has all the configuration variables pre-populated with values specific to your Harness account. 
     - **Custom** - Create your own YAML from a [Kubernetes Manifest template](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml) by replacing the placeholders with the values provided in the method.
   Given the need to have a fully qualified YAML, the auto upgrade configuration is set to ON in both the above options. The result is that the delegate version installed will always remain in sync with the version available on the Harness Manager.
-  - The **Docker** delegate installation method has now been enhanced to a simple copy and paste of the Docker run command, with the option to modify the pre-populated properties. The auto upgrade is set to OFF for this method with an option to enable it in the command. (DEL-6037)
+  - The **Docker** delegate installation method has now been simplified to a copy-and-paste action on the `docker run` command, with the option to modify the preset values. The auto upgrade is set to OFF for this method, with an option to enable it in the command. (DEL-6037)
 
 - The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
 
