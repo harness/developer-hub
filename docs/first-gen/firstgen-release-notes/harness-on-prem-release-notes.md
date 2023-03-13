@@ -14,6 +14,78 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
+### March 10, 2023, version TBD
+
+Delegate: TBD
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | TBD |
+| Delegate | TBD |
+| Watcher | TBD |
+| Verification Service | TBD |
+| UI | TBD |
+| Learning Engine | TBD | 
+| Gateway | TBD |
+
+#### New features and enhancements
+
+- This release includes upgrades to the following libraries. (DEL-5632)
+  - io.netty:netty-all:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-buffer:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-handler-proxy:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-common:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-handler:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-resolver-dns:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-resolver:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-transport-native-epoll:linux-x86_64:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-transport-native-kqueue:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-transport-native-unix-common:4.1.77.Final -> 4.1.86.Final
+  - io.netty:netty-transport:4.1.77.Final -> 4.1.86.Final		
+
+- This release includes upgrades to the following libraries to fix vulnerabilities. This release also moves the base image of delegates from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7`. (DEL-5591, ZD-37058)
+  - "org.apache.cxf:cxf-core:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-bindings-soap:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-bindings-xml:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-databinding-jaxb:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-frontend-jaxws:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-frontend-simple:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-transports-http-hc:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-transports-http:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-ws-addr:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-ws-policy:3.5.4" -> 3.5.5
+  - "org.apache.cxf:cxf-rt-wsdl:3.5.4" -> 3.5.5
+
+- PRNS-TBD DEL-5507	
+
+- Delegate containers now check on startup if a user has sufficient file permissions to run the delegate. If user doesn't have permissions, it fails quickly and prints an explicit error message. (DEL-5440)	
+- Added internal metrics to track the pattern of automatic delegate upgrades. (DEL-5383)
+- Decreasing the overall all perpetual task count. (CDS-46240)
+  Now we create a perpetual task on the basis of the cloud provider. This decreases the all perpetual task counts overall.The Harness Manager is not changed and no user action is required.	
+
+#### Fixed issues
+
+- Users are not added to the user groups through SCIM when the authentication mechanism is username and password. (PL-30124)
+  A notification email is sent to the users instead of an email invite and the system throws an exception.	
+- Hide NextGen option was enabled by default for the Account Admin user group in new trial accounts. 
+  The Harness NextGen option is no longer enabled by default for Account Admin user groups.(PL-30070)
+- Functionality was added to send an alert within 30 minutes of delegate shutdown. If delegate groups are in use, the alert is sent only when all the delegate members shut down. To use this functionality, enable the INSTANT_DELEGATE_DOWN_ALERT feature flag. (PL-30005, ZD-34766)	
+- Fixed a shell delegate issue that occurred on restart. The delegate name was not visible. (DEL-5443)		
+- Avoid calling closeChannel more than one time during watcher shutdown. Invoking the method two times can cause the logsAvoid method to unnecessarily wait during executor shutdown. (DEL-4924)	
+- DelegateGroup is not removed from the database or the UI after the associated delegate is deleted. (DEL-3913) The code was changed to ensure that an inactive delegate is deleted from the UI after seven days.	
+- Rollback artifact number (`${rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
+  Fixed a problem where incorrect metadata was being populated into executions after updating the environment's infra definitions.  
+  For more information, go to [Artifact Rollback Variables](../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact-rollback-variables).
+- Slow running Looker queries in Deployments (FirstGen) dashboard (CDS-45074)  
+  When the customer uses fields for Deployments Tags, the queries became extremely slow.  
+  Removed a few unused indexes and added a few indexes to improve the speed of queries.
+- **Rollback Deployment** button incorrectly showing Not Authorized (CDS-17420)  
+  When the `FREEZE_DURING_MIGRATION` feature flag was enabled in an account, the **Rollback Deployment** button was marked User Not Authorized.   
+  Now, when the `FREEZE_DURING_MIGRATION` feature flag is enabled in an account, the **Rollback Deployment** button is available if the user has the correct permissions).	
+
+
 ### February 9, 2023, version 78109
 
 Delegate: 78106
