@@ -69,7 +69,7 @@ You can also edit it in the Connector.
 
 
 :::important
-Secrets cannot point to secret managers in different scopes.
+Harness does not support the creation of a secret pointing to a secret manager in a different scope.
 :::
 
 
