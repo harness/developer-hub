@@ -38,7 +38,7 @@ Pod network partition:
       <tr>
         <td> POD_SELECTOR </td>
         <td> Contains the labels of the destination pods. </td>
-        <td> For example, </code>app=cart</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#target-specific-pods">target specific pods.</a></td>
+        <td> For example, <code>app=cart</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition#target-specific-pods">target specific pods.</a></td>
       </tr>
       <tr>
         <td> NAMESPACE_SELECTOR </td>
