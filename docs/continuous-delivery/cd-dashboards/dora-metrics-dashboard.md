@@ -4,51 +4,109 @@ description: DevOps Research and Assessment (DORA) metrics is a standard measure
 sidebar_position: 2
 ---
 
-You can view DevOps Research and Assessment (DORA) metrics using **Dashboards** **> DORA Metrics** on the Harness platform. DORA metrics are key for understanding the performance of software development teams. By understanding these metrics, you’re empowered to iterate and make improvements for your business. 
+DevOps Research and Assessment (DORA) metrics are key for understanding the performance of software development teams. By understanding these metrics, you’re empowered to iterate and make improvements for your business. 
 
-## Available DORA metrics
+## Use tags to revert a failed pipeline execution
+
+When you create a new pipeline stage, add the follwing tags with runtime input, `<+input>` to the pipeline YAML.
+
+```
+tags:
+  revertExecutionId: <+input>
+  revertPipeline: <+input>
+```
+:::note
+Harness UI doesn't support runtime inputs for tags, `<+input>`. Select the YAML view to add runtime inputs to tags. 
+:::
+
+Currently, Harness does not measure regressions or failures that occur after a production deployment is complete. 
+ 
+During the pipeline deployment, if there is a downtime, the `revertPipeline` execution restores the service. This allows you to mark a pipeline execution as a restored pipeline and link it to the pipeline execution that introduced the issue.
+
+Below is an example `Inputs.yaml` of a pipeline execution. The `revertExecutionID` tag represents the execution ID of the pipeline that caused the issue.
+
+```
+pipeline:
+  identifier: "DOra_pipeline"
+  tags:
+    revertExecutionID: "Q0bizp0QTM6xtB1FZsR0zQ"
+  stages:
+  - stage:
+      identifier: "stage1"
+      type: "Deployment"
+      spec:
+        service:
+          serviceRef: "Ser2"
+        environment:
+          environmentRef: "Env2"
+          infrastructureDefinitions:
+          - identifier: "Infra_2"
+```
+
+## Create queries to pull data in to your DORA dashboard
+
+After you [create a DORA metrics dashboard](../../platform/18_Dashboards/create-dashboards.md), you can [add tiles](https://developer.harness.io/docs/platform/dashboards/create-dashboards/#step-2-add-tiles-to-a-dashboard) to the dashboard. 
+
+You can edit, delete, resize, move postions, or download data of the tiles. 
 
 Using the DORA metrics dashboard, you can view these metrics: 
 
-* Deployments Frequency
-* Mean Time to Restore (MTTR)
-* Change Failure Rate
+* **Deployments Frequency** tells you how many deployments happened in a particular duration. This metric helps measure the consistency of software delivery and delivery performance. 
+* **Mean Time to Restore (MTTR)** tells you the time taken to restore an issue found in the production environment.  
+* **Change Failure Rate** is the percentage of failure rate across all services in a given time period. 
 
-For each of these metrics you can choose to visualize the data by:
+![](.static/../static/dora-dashboard.png)
 
-* Today
-* Yesterday
-* Last 7 days
-* Last 14 days
-* Last 28 days
-* Last 30 days
-* Last 90 days
-* Last 180 days
-* Last 365 days
-* Year to date
-* This week
-* This month
-* This quarter
-* This year
-* Previous week
-* Previous month
-* Previous quarter
-* Previous Year
-* Custom
+You can build queries to captures data in the dashboard to gain deeper insights. Here, we will capture the metrics for each service-environment combination in a pipeline. For a multi-service pipeline, metrics for each serive-environment combination is captured and reported seperately. 
 
-You can filter these metrics by: 
+### Deployment frequency
 
-* Date
-* Projeect ID
-* Service name
+1. Name your query **Deployment Frequency**. 
+2. Select the following filters.
+    1. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
+    2. In **Deployments**, select **Total Deployments**.
+3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
+4. Select **Run**.
+5. Select **Save** to save the query as a tile on your dashboard.
 
-## How to view DORA metrics
+![](.static/../static/deployment-frequency.png)
 
-To view the DORA metrics dashborad:
+### Mean time to restore
 
-1. Go to the Harness platform.
-2. On the left navigation, select **Dashboard**, then select the **Harness** and **Deployments** filters.
-3. Select the **DORA Metrics** tile.
+1. Name your query **Mean Time to Restore**. 
+2. Select the following filters.
+    1. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
+    2. In **Reverted Deployments**, select **Mean Time to Restore**.
+3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
+4. Select **Run**.
+5. Select **Save** to save the query as a tile on your dashboard.
 
-   ![](./static/dora-metrics-dashboard.png)
+![](.static/../static/mean-time-to-restore.png)
+
+### Change failure rate
+
+1. Name your query **Change Failure Rate**. 
+2. Select the following filters.
+    1. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
+    2. In **Deployments**, select **Change Failure Rate**.
+3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
+4. Select **Run**.
+5. Select **Save** to save the query as a tile on your dashboard.
+
+![](.static/../static/change-failure-rate.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
