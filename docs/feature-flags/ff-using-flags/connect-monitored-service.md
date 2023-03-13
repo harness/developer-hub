@@ -5,10 +5,6 @@ tags:
    - feature flag
    - monitored services
 sidebar_position: 34
-helpdocs_topic_id: iijdahygdm
-helpdocs_category_id: jqfkw27d3u
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 The Harness [Service Reliability Management (SRM)](/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics) module provides tools to help meet Service Level Objectives (SLOs) and identify root causes of changes to service health. You can use Feature Flags with SRM to analyze how service health is impacted by a feature.
