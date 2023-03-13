@@ -1,5 +1,5 @@
 ---
-title: Define a CI Build Infrastructure in Microsoft Azure
+title: Set up a Microsoft Azure VM build infrastructure
 description: This topic describes how to set up a CI build infrastructure in Microsoft Azure. You will create a VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
 tags: 
    - helpDocs
@@ -11,12 +11,12 @@ helpdocs_is_published: true
 ---
 
 :::note
-Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 This topic describes how to set up a CI build infrastructure in Microsoft Azure. You will create a VM and install a CI Delegate and Drone Runner on it. The Delegate creates VMs dynamically in response to CI build requests.
 
-For information on using Kubernetes as a build farm, see [Define Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
+For information on using Kubernetes as a build farm, see [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 The following diagram illustrates a build farm. The [Harness Delegate](../../../../platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
@@ -50,14 +50,15 @@ cd /runner
 
 ### Step 2: Configure the Drone Pool
 
-The **drone\_pool.yml** file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VM that are immediately available to build CI Pipelines.
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VM that are immediately available to run CI Pipelines.
 
-1. In the `/runner` folder, create a new **drone\_pool.yml** file.
-2. Set up the file as described in the following example. Note the following:  
-See the Pool Settings Reference below for details on specific settings. See also [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [Azure](https://docs.drone.io/runner/vm/drivers/azure/) in the Drone docs.
+1. In the `/runner` folder, create a new `pool.yml` file.
+2. Set up the file as shown in the following examples. For information about specific settings, go to the [Pool Settings Reference](#pool-settings-reference). You can also learn more in the Drone documentation about [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [Azure](https://docs.drone.io/runner/vm/drivers/azure/).
 
-Example pool.yaml for Ubuntu 18.04
-```
+<details>
+<summary>Example: pool.yml for Ubuntu 18.04</summary>
+
+```yaml
 version: "1"  
 instances:  
   - name: ubuntu-azure-pool  
@@ -86,8 +87,13 @@ instances:
         sku: 18.04-LTS  
         version: latest
 ```
-Example pool.yaml for Windows Server 2019
-```
+
+</details>
+
+<details>
+<summary>Example: pool.yml for Windows Server 2019</summary>
+
+```yaml
 version: "1"  
 instances:  
 - name: ubuntu-azure  
@@ -113,6 +119,9 @@ instances:
       sku: 2019-Datacenter-with-Containers  
       version: latest
 ```
+
+</details>
+
 Later in this workflow, you'll reference the pool identifier in the Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.
 
 ### Step 3: Configure the docker-compose.yaml file
@@ -125,9 +134,9 @@ Later in this workflow, you'll reference the pool identifier in the Harness Mana
 
 Next, you'll add the Runner spec to the new Delegate definition. The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
 
-6. Copy your local **docker-compose.yaml** file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `.drone_pool.yml`.
-7. Open `docker-compose.yaml` in a text editor.
-8. Append the following to the end of the `docker-compose.yaml` file:
+1. Copy your local **docker-compose.yaml** file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `pool.yml`.
+2. Open `docker-compose.yaml` in a text editor.
+3. Append the following to the end of the `docker-compose.yaml` file:
 
    ```yaml
    drone-runner-aws:  
@@ -141,13 +150,13 @@ Next, you'll add the Runner spec to the new Delegate definition. The Harness Del
          - "3000:3000"
    ```
 
-9. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
+4. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
 
    ```yaml
    network_mode: "host"
    ```
 
-10. Save `docker-compose.yaml`.
+5. Save `docker-compose.yaml`.
 
 <details>
 <summary>Example: docker-compose.yaml with Runner spec</summary>
@@ -209,7 +218,7 @@ For more information on Harness Docker Delegate environment variables, go to the
 
    ```
    $ ls -a
-   . .. docker-compose.yml .drone_pool.yml
+   . .. docker-compose.yml pool.yml
    ```
 
 3. Run the following command to install the Delegate and Runner:
@@ -218,7 +227,7 @@ For more information on Harness Docker Delegate environment variables, go to the
    $ docker-compose -f docker-compose.yml up -d
    ```
 
-4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start. For example:
+4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
    ```
    $ docker ps  
@@ -235,7 +244,7 @@ The Delegate and Runner are now installed, registered, and connected.
 ### Step 5: Select pipeline build infrastructure
 
 1. In your CI pipeline's **Build** stage, select the **Infrastructure** tab, and then select **VMs**.
-2. In the **Pool ID**, enter the pool `name` from your [.drone\_pool.yml](#step-2-configure-the-drone-pool).
+2. In the **Pool ID**, enter the pool `name` from your [pool.yml](#step-2-configure-the-drone-pool).
 
    ![](../static/define-a-ci-build-infrastructure-in-azure-18.png)
 
@@ -291,6 +300,6 @@ DRONE_TRACE=true
 
 ### See Also
 
-* [Set Up a Kubernetes Cluster Build Infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md)
+* [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md)
 * For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
 

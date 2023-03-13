@@ -1,27 +1,33 @@
 ---
-title: Define a Kubernetes Cluster Build Infrastructure
-description: This topic describes how to set up a Kubernetes cluster build infrastructure for a Harness CI stage. The codebase and tests you add to a Harness CI Stage are built and run using a build infrastructur…
+title: Set up a Kubernetes cluster build infrastructure
+description: You can use a Kubernetes cluster build infrastructure for a Harness CI pipeline.
 
-tags: 
-   - helpDocs
-sidebar_position: 20
+sidebar_position: 30
 helpdocs_topic_id: ia5dwx5ya8
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how you can use Kubernetes cluster build infrastructure for a Harness CI pipeline stage.
+This topic describes how you can use a Kubernetes cluster build infrastructure for the **Build** stage in a Harness CI pipeline.
 
-Once you set up the Kubernetes cluster to use as your build infrastructure, you connect Harness to it with a Harness [Kubernetes cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate.
+This topic assumes you have a basic understanding of [Harness' key concepts](../../../getting-started/learn-harness-key-concepts.md).
 
-You can also set up build infrastructures using VMs. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
+## Important notes
 
-## GKE Autopilot is not recommended
+Review the following important information about using Kubernetes cluster build infrastructures for your Harness CI builds.
+
+### Privileged mode is required for Docker-in-Docker
+
+If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure.
+
+If your Kubernetes cluster doesn't support privileged mode, you'll need to use another build infrastructure, such as [Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures). Other infrastructure types allow you to run Docker commands directly on the host.
+
+### GKE Autopilot is not recommended
 
 We don't recommend using Harness CI with GKE Autopilot due to Docker-in-Docker limitations and potential cloud cost increases.
 
-Autopilot clusters do not allow Privileged pods. This means you can't use [Docker-in-Docker](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require Privileged mode.
+Autopilot clusters do not allow privileged pods, which means you can't use [Docker-in-Docker](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to run Docker commands, since these require privileged mode.
 
 Additionally, GKE Autopilot sets resource limits equal to resource requests for each container. This can cause your builds to allocate more resources than they need, resulting in higher cloud costs with no added benefit.
 
@@ -55,23 +61,25 @@ Autopilot might be cheaper than standard Kubernetes if you only run builds occas
 
 </details>
 
-## Before You Begin
+### Windows builds
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
-* [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+Go to [Run Windows builds in a Kubernetes cluster build infrastructure](./run-windows-builds-in-a-kubernetes-build-infrastructure.md).
 
-## Visual Summary
+### Self-signed certificates
 
-Here's a short video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster, then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster.
+Go to [Configure a Kuberneted build farm to use self-signed certificates](./configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md).
+
+## Process overview
+
+After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes Cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate to create a connection between Harness and your cluster.
+
+Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" />
 
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/wUC23lmqfnY/hqdefault.jpg"><iframe width=" 200" height="150" src="https://www.youtube.com/embed/wUC23lmqfnY?feature=oembed" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
-
 
 ## Step 1: Create a Kubernetes cluster
 
@@ -82,9 +90,9 @@ You need to install the Harness Kubernetes Delegate on the same cluster you use 
 For instructions on creating clusters, go to:
 
 * [Creating a cluster in Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
-* [Creating a cluster in GKE (Google Kubernetes Engine](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster))
+* [Creating a cluster in GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster)
 
-## Step 2: Add the Kubernetes cluster connector and install the Delegate
+## Step 2: Add the Kubernetes Cluster connector and install the Delegate
 
 1. In your Harness **Project**, select **Connectors** under **Project Setup**.
 2. Select **New Connector**, and then select **Kubernetes cluster**.
@@ -102,13 +110,21 @@ For instructions on creating clusters, go to:
 
 ## Step 3: Define the Build Farm Infrastructure in Harness
 
-In this step, you set up your build infrastructure using the Connector and Delegate you added previously.
+In this step, you set up your build infrastructure using the connector and delegate you added previously.
 
-In the CI stage Infrastructure, select the Kubernetes Cluster Connector you created in the previous step.
+In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster connector you created in the previous step.
 
 In Namespace, enter the Kubernetes namespace to use.
 
 You can use a Runtime Input (`<+input>`) or expression also. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
+
+:::tip
+
+The [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md) uses a Kubernetes cluster build infrastructure.
+
+For details about stage settings, go to [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md).
+
+:::
 
 ## Option: Service Account Name
 
@@ -119,35 +135,34 @@ The Kubernetes service account name. You must set this field in the following ca
 
 ## Option: Run as User
 
-You can override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions. See [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs. 
+You can override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions. For more information, go to [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs.
 
 ## Option: Init Timeout
 
-If you use large images in your Build Steps, you might find that the initialization step times out and the build fails when the Pipeline runs. In this case, you can increase the default init time window (10 minutes). 
+If you use large images in your Build Steps, you might find that the initialization step times out and the build fails when the Pipeline runs. In this case, you can increase the default init time window (10 minutes).
 
 ## Option: Add Annotations
 
-You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. See [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs. 
+You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. For more information, go to [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs.
 
 ## Option: Add Labels
 
-You can add Kubernetes labels (key-value pairs) to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the Kubernetes docs. 
+You can add Kubernetes labels (key-value pairs) to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the Kubernetes docs.
 
-If a custom label value does not match the following regex, the label won't get generated:  
-`^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$`Labels make it easy to find pods associated with specific Stages, Organizations, Projects, Pipelines, Builds, and any custom labels you want to add: 
-
+If a custom label value does not match the following regex, the label won't get generated:
+`^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$`Labels make it easy to find pods associated with specific Stages, Organizations, Projects, Pipelines, Builds, and any custom labels you want to add:
 
 ```
 kubectl get pods -l stageID=mycibuildstage
 ```
 Harness adds the following labels automatically:
 
-* `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
+* `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
 * `stageName`: See `pipeline.stages.stage.name` in the Pipeline YAML.
 * `orgID`: See `pipeline.orgIdentifier` in the Pipeline YAML.
 * `projectID`: See `pipeline.projectIdentifier` in the Pipeline YAML.
 * `pipelineID`: See `pipeline.identifier` in the Pipeline YAML.
-* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`: 
+* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`:
 
 `https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline`
 
