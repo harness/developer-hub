@@ -53,7 +53,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
           		<li><a href="#data-theorem">Data Theorem</a> Extraction, Ingestion</li>
           		<li><a href="#fortify-on-demand">Fortify on Demand</a> Ingestion</li>
           		<li><a href="#fortify">Fortify Static Code Analyzer</a> Ingestion</li>
-          		<li><a href="#mend">Mend</a> Orchestration, Ingestion</li>
+          		<li><a href="#mend-formerly-whitesource">Mend (formerly WhiteSource)</a> Orchestration, Ingestion</li>
                 <li><a href="#owasp">OWASP</a> Orchestration, Ingestion</li>
           		<li><a href="#reapsaw">Reapsaw</a> Ingestion</li>
           		<li><a href="#snyk">Snyk Code</a>  Ingestion</li>

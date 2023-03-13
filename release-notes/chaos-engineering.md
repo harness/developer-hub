@@ -51,7 +51,7 @@ From this release onward, chaos infrastructures will communicate with the contro
 * Support for the GitLab connector (CHAOS-35)
     * This release introduces a new connector, namely the GitLab connector, when you wish to connect to a ChaosHub.
 
-### Early access features
+### Early access
 
 * This release does not include any early access features.
 
@@ -78,7 +78,7 @@ From this release onward, chaos infrastructures will communicate with the contro
 
 * This release does not include any new features.
 
-### Early access features
+### Early access
 
 * This release does not include any early access features.
 
@@ -129,7 +129,8 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * Every run of an experiment is clickable to view detailed execution (CHAOS-1032)
     * On the **Chaos Experiments** tab, you could see the detailed execution of an experiment's runs by clicking the three vertical dots corresponding to a run, and then clicking **View run**. In this release, you can also directly click the experiment run to view its detailed execution.
 
-### Early access features
+### Early access
+
 * This release does not include any early access features.
 
 ### Fixed issues
@@ -164,7 +165,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * Edit chaos experiment is separated into two action components (CHAOS-685)
     * This release divides the **Edit experiment** action into two actions: **Edit Experiment** and **Clone Experiment**. The **Edit Experiment** action helps you make changes to the current (or selected) experiment. The **Clone Experiment** action helps you create a new experiment from an already existing experiment. The cloned experiment retains the same configuration as the original experiment with the ability to tune the configurations if required.
 
-### Early access features
+### Early access
 * This release does not include any early access features.
 
 ### Fixed issues
@@ -208,11 +209,12 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * Configurable response timeout for HTTP probes
     * This release adds a new response timeout parameter for HTTP probes in the user interface. The response timeout is in units of seconds. You can use this parameter to specify timeouts during HTTP probe health checks during chaos fault execution.
 
-### Early access features
+### Early access
 
 * This release does not include any early access features.
 
 ### Fixed issues
+
 * Enterprise ChaosHub appeared in the search results irrespective of the terms searched. Now it has been fixed.
 * Details of a previously connected chaos infrastructure were prefilled when connecting to a new chaos infrastructure. Now it has been fixed. (CHAOS-777)
 * The **Run** button was activated even when the chaos experiment was running. Now, the button is reactivated only after the chaos experiment is complete.(CHAOS-807)
@@ -224,7 +226,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 
 ## November 14, 2022
 
-### Early access features
+### Early access
 
 The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](https://developer.harness.io/tutorials/run-chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering).
 
