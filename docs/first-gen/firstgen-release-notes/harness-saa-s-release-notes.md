@@ -16,6 +16,16 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### March 15, 2023, version 787xx
+
+#### Early access
+
+- Large repos are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/).
+
+  Harness performs a `git clone` to fetch files. If the fetch is timing out, it can be because the repo is too large for the network connection to fetch it before timing out. To fetch very large repos from Azure Repo, enable the feature flag `OPTIMIZED_GIT_FETCH_FILES`. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
+
+  This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
+
 ### March 8, 2023, version 78619
 
 #### Early access
