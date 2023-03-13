@@ -311,7 +311,7 @@ You must enter the **Harness SAML Endpoint URL** from Harness in your Azure app 
    ![](./static/single-sign-on-saml-81.png)
 
 2. In **Basic SAML Configuration**, click the edit icon (pencil).
-3. Enter **app.harness.io** in the **Identifier (Entity ID)** field.
+3. Enter a unique identifier in the **Identifier (Entity ID)** field. This can be **app.harness.io** when there is only one SAML application present for your tenant. In case of multiple SAML applications under the same tenant, this should be a unique identifier. The same identifier should be configured in the **Entity ID** field while setting up SAML on Harness side.
 
    ![](./static/single-sign-on-saml-82.png)
 
