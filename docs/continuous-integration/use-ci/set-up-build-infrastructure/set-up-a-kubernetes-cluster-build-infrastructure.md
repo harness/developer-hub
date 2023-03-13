@@ -110,7 +110,7 @@ For instructions on creating clusters, go to:
 
 ## Step 3: Define the Build Farm Infrastructure in Harness
 
-In this step, you set up your build infrastructure using the Connector and Delegate you added previously.
+In this step, you set up your build infrastructure using the connector and delegate you added previously.
 
 In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster connector you created in the previous step.
 
@@ -135,7 +135,7 @@ The Kubernetes service account name. You must set this field in the following ca
 
 ## Option: Run as User
 
-You can override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions. See [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs.
+You can override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions. For more information, go to [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs.
 
 ## Option: Init Timeout
 
@@ -143,7 +143,7 @@ If you use large images in your Build Steps, you might find that the initializat
 
 ## Option: Add Annotations
 
-You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. See [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs.
+You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. For more information, go to [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs.
 
 ## Option: Add Labels
 

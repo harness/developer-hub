@@ -387,7 +387,7 @@ You can configure the following settings in your `pool.yml` file.
 
 ## Runner settings reference
 
-You can set the following Runner options your `docker-compose.yml` file. These can be useful for advanced use cases such as troubleshooting the Runner.
+You can set the following Runner options in your `docker-compose.yml` file. These can be useful for advanced use cases such as troubleshooting the Runner.
 
 <details>
 <summary>Example: docker-compose.yml with Drone Environment Settings</summary>

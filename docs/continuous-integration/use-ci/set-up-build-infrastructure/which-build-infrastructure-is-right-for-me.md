@@ -8,7 +8,7 @@ You can run builds on Harness-hosted machines or your own infrastructure.
 
 ## Harness Cloud
 
-With Harness Cloud your builds run in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
+With Harness Cloud, your builds run in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
 Harness hosts, maintains, and upgrades these machines so that you can focus on developing software instead of maintaining build farms.
 
@@ -73,7 +73,7 @@ To learn more about VM build infrastructures, go to [Set up VM build infrastruct
 
 ## Supported operating systems and architectures
 
-The following table shows which operating systems and architectures that each build infrastructure option supports.
+The following table shows the supported operating systems and architectures for each build infrastructure option.
 
 | Operating system | Architecture | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted PaaS VMs |
 | -  | - | - | - | - | - |
