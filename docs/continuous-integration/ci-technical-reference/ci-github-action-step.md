@@ -4,7 +4,7 @@ description: Run Github Actions in your Harness CI pipelines.
 sidebar_position: 1
 ---
 
-[GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) are a GitHub feature that enable you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
+[GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
 
 You can use the **GitHub Action plugin** step to run GitHub Actions in your Harness CI pipelines.
 
@@ -18,7 +18,7 @@ For other build infrastructures, you can use the generic **Plugin** step with th
 
 ## Usage examples
 
-In the following YAML examples, **GitHub Action plugin** steps are used to setup Node.js, Go, Java, and Ruby environments.
+In the following YAML examples, **GitHub Action plugin** steps are used to set up Node.js, Go, Java, and Ruby environments.
 
 
 ```mdx-code-block
@@ -31,7 +31,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="js" label="Setup Node.js" default>
 ```
 
-This Action step uses the `actions/setup-node` GitHub Action to setup a Node.js environment that the subsequent steps in the stage can use.
+This Action step uses the `actions/setup-node` GitHub Action to set up a Node.js environment that the subsequent steps in the stage can use.
 
 ```yaml
               - step:
@@ -49,7 +49,7 @@ This Action step uses the `actions/setup-node` GitHub Action to setup a Node.js 
 <TabItem value="Go" label="Setup Golang">
 ```
 
-This Action step uses the `actions/setup-go` GitHub Action to setup a Go environment that the subsequent steps in the stage can use. It specifies Go 1.17.
+This Action step uses the `actions/setup-go` GitHub Action to set up a Go environment that the subsequent steps in the stage can use. It specifies Go 1.17.
 
 ```yaml
               - step:
@@ -67,7 +67,7 @@ This Action step uses the `actions/setup-go` GitHub Action to setup a Go environ
 <TabItem value="Java" label="Setup Java">
 ```
 
-This Action step uses the `actions/setup-java` GitHub Action to setup a Java environment that the subsequent steps in the stage can use. It specifies Java 17.
+This Action step uses the `actions/setup-java` GitHub Action to set up a Java environment that the subsequent steps in the stage can use. It specifies Java 17.
 
 ```yaml
               - step:
@@ -85,7 +85,7 @@ This Action step uses the `actions/setup-java` GitHub Action to setup a Java env
 <TabItem value="Ruby" label="Setup Ruby">
 ```
 
-This Action step uses the `ruby/setup-ruby` GitHub Action to setup a Ruby environment that the subsequent steps in the stage can use. It specifies Ruby 2.7.2.
+This Action step uses the `ruby/setup-ruby` GitHub Action to set up a Ruby environment that the subsequent steps in the stage can use. It specifies Ruby 2.7.2.
 
 ```yaml
               - step:

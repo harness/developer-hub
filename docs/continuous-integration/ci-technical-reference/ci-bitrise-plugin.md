@@ -41,7 +41,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="YAML" label="YAML editor" default>
 ```
 
-To add a **Bitrise plugin** step to your pipeline YAML, add an `Bitrise` step, for example:
+To add a **Bitrise plugin** step to your pipeline YAML, add a `Bitrise` step, for example:
 
 ```yaml
               - step:
