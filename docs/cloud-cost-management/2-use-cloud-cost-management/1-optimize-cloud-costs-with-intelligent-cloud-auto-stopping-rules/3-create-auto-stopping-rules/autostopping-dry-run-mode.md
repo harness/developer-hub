@@ -6,7 +6,7 @@ description: AutoStopping Rules make sure that your non-production resources run
 
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
-The dry-run mode is a feature that enables you to try out AutoStopping without actually terminating your cloud resources. This option allows you to evaluate the impact of AutoStopping and estimate the costs saved before enabling the feature.
+The dry-run mode is a feature that enables you to try out AutoStopping without actually stopping your cloud resources. This option allows you to evaluate the impact of AutoStopping and estimate the costs saved before enabling the feature.
 
 To create an AutoStopping rule, go to one of the following topics depending on the cloud service provider:
 * [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
@@ -26,7 +26,12 @@ After creating the AutoStopping rule in the dry-run mode, you can view the rules
 ![](./static/dry-run-rules-summary-page.png)
 
 
-To evaluate the cost savings of a rule, click on the rule to navigate to the rule's summary page. To activate the rule and begin optimizing costs, toggle off the **Dry Run** switch located on the page. Once the switch is turned off, the rule takes effect, allowing the cloud resource to be automatically shut down after the set idle period and brought back up when traffic resumes. This enables you to optimize resource utilization and minimize costs without compromising performance.
+
+A dry run rule is similar to a regular AutoStopping rule, but it does not involve the actual shutdown of cloud resources. This approach allows you to simulate the effects of the rule without any actual impact on the resources.
+
+Generating the estimated savings data may take up to 24 hours. You can view the savings data either in the rules summary page or in the rule details page, where you can verify if the savings data is satisfactory.
+
+If the data is satisfactory, you can turn off the **Dry Run** mode to start saving costs.
 
 ![](./static/summary-page-dry-run.png)
 
