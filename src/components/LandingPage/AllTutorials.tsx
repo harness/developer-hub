@@ -545,6 +545,20 @@ const PlatformList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
   },
+  {
+    title: "GKE Delegate With Workload Identity",
+    module: "platform",
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Deploy a Harness Delegate that uses Workload Identity to access Google Cloud Services.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/platform/gcp-workload-identity-delegate",
+  },
 ];
 
 export default function AllTutorials() {
