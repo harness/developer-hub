@@ -62,7 +62,6 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 ```
 
-
 Scopes are structured in a parent-child relationship. You can assign roles at any of these levels of scope.
 
 To know more about organizations and projects, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
