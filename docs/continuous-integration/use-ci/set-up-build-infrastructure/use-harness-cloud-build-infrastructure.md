@@ -63,13 +63,13 @@ If your build requires a tool that isn't already available on the VM, you can us
 
 * [Run step](../../ci-technical-reference/run-step-settings.md)
 * [Background step](../../ci-technical-reference/background-step-settings.md)
-* GitHub Action plugin step
-* Bitrise plugin step
+* [GitHub Action plugin step](../../ci-technical-reference/ci-github-action-step.md)
+* [Bitrise plugin step](../../ci-technical-reference/ci-bitrise-plugin.md)
 * [Plugin step](../../ci-technical-reference/plugin-step-settings-reference.md)
 
 :::tip
 
-Use the **Bitrise plugin** step to run Bitrise Integrations in your CI pipelines.
+Use the [Bitrise plugin step](../../ci-technical-reference/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
 
 :::
 
