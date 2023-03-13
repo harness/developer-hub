@@ -67,9 +67,16 @@ You can also edit it in the Connector.
 
 ### Step 3: Reference the Encrypted Text by Identifier
 
+
+:::important
+Harness does not support the creation of a secret that point to a secret manager in a different scope.
+:::
+
+
 For an Encrypted Text secret that's been scoped to a Project, you reference the secret in using the secret identifier in the expression: `<+secrets.getValue("your_secret_Id")>`.
 
 ![](./static/add-use-text-secrets-50.png)
+
 Always reference a secret in an expression using its identifier. Names will not work.For example, if you have a text secret with the identifier `doc-secret`, you can reference it in a Shell Script step like this:
 
 
