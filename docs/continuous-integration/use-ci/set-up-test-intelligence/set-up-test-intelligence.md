@@ -202,9 +202,9 @@ Select **Expand graph** to view the Test Intelligence Visualization, which shows
 
 ## Enable parallelism (test splitting) for Test Intelligence
 
-Similar to how you can [speed up CI pipelines using parallelism](../../../platform/8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md), you can enable parallelism in your Run Tests steps to further reduce the time required for your tests to run.
+Similar to how you can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting), you can enable parallelism and test splitting in your Run Tests steps to further reduce the time required for your tests to run.
 
-With parallelism alone, such as when using `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting), you specify how you want Harness to divide the work for a step or stage. When you use parallelism with Test Intelligence, Harness divides the work after test selection. This means that your Run Tests execution time is reduced by both test selection and parallelism.
+With parallelism alone, you specify how you want Harness to divide the work for a step or stage. When you use parallelism and test splitting with Test Intelligence, Harness divides the work after test selection. This means that your Run Tests execution time is reduced by both test selection and parallelism.
 
 <details>
 <summary>Test Intelligence with test splitting demonstration</summary>
@@ -258,3 +258,53 @@ To enable parallelism for Test Intelligence, you must set a parallelism `strateg
 6. Save and run your pipeline.
 
 Note that while parallelism for Test Intelligence can improve the total time it takes to run all tests, some tests may still take a long time to run if, by their nature, they are intensive, long-running tests.
+
+<details>
+<summary>YAML example: Build stage with Test Intelligence and test splitting</summary>
+
+```yaml
+        - stage:
+              name: unit-test
+              identifier: unitteststi
+              type: CI
+              spec:
+                  cloneCodebase: true
+                  execution:
+                      steps:
+                          - step:
+                                type: RunTests
+                                name: runTestsWithIntelligence
+                                identifier: runTestsWithIntelligence
+                                spec:
+                                    enableTestSplitting: true
+                                    testSplitStrategy: ClassTiming
+                                    connectorRef: account.GCR
+                                    image: maven:3-openjdk-8
+                                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                                    buildTool: Maven
+                                    language: Java
+                                    packages: org.apache.dubbo,com.alibaba.dubbo
+                                    runOnlySelectedTests: true
+                                    reports:
+                                        type: JUnit
+                                        spec:
+                                            paths:
+                                                - "**/*.xml"
+                                    resources:
+                                        limits:
+                                            memory: 2Gi
+                                            cpu: 2000m
+                                timeout: 60m
+                  serviceDependencies: []
+                  infrastructure:
+                      type: KubernetesDirect
+                      spec:
+                        connectorRef: Kubernetes_Quickstart
+                        namespace: harness-delegate
+              variables: []
+              strategy:
+                parallelism: 3
+```
+
+</details>
+

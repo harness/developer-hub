@@ -17,7 +17,7 @@ Caching has two primary benefits:
 
 In a Harness CI Pipeline, you can save the cache to Google Cloud Storage (GCS) bucket in one stage using the Save Cache to GCS step and then restore it in the same or another stage using Restore Cache from GCS step. 
 
-The topic explains how to configure the Save Cache to GCS and Restore Cache from GCS steps in CIE using a two-Stage Pipeline.
+The topic explains how to configure the Save Cache to GCS and Restore Cache from GCS steps in CI using a two-stage Pipeline.
 
 You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across Stages.
 

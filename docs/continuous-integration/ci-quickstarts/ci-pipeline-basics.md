@@ -60,7 +60,7 @@ Harness enables remote Docker Layer Caching where each Docker layer is uploaded 
 
 ### Artifact Repos
 
-Harness CIE offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can push your artifacts. Object storage repos are set up as Pipeline Steps by using the Upload Artifacts step from the Step library.
+Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can push your artifacts. Object storage repos are set up as Pipeline Steps by using the Upload Artifacts step from the Step library.
 
 ### Services
 

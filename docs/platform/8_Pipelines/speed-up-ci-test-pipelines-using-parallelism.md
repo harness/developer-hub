@@ -1,6 +1,6 @@
 ---
 title: Speed Up CI Test Pipelines Using Parallelism
-description: Use parallelism to to run tests in parallel.
+description: Use parallelism to run tests in parallel.
 # sidebar_position: 2
 helpdocs_topic_id: kce8mgionj
 helpdocs_category_id: kncngmy17o

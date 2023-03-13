@@ -1,11 +1,7 @@
 ---
 title: Harness CI Concepts
-description: Harness CI simplifies the development and testing of code. In Harness Pipelines, you visually model your build and test processes as CIE stages. Each stage includes steps for building, testing, and pushing your code.
-tags:
-  - helpDocs
-  - CIE
-  - Continuous integration
-  - CI
+description: Harness CI simplifies the development and testing of code.
+
 sidebar_position: 30
 helpdocs_topic_id: rch2t8j1ay
 helpdocs_category_id: pjovrkldfq

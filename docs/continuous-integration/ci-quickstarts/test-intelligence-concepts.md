@@ -11,9 +11,9 @@ helpdocs_is_published: true
 
 Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build.
 
-Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI dramatically improves test times by running only the tests required to confirm the quality of the code changes that triggered the pipeline. Instead of running all your tests, TI selects a subset of tests and skips the rest.
+Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI dramatically improves test times by running only the tests required to confirm the quality of the code changes that triggered the pipeline. Instead of running all your tests, TI selects a subset of tests and skips the rest. Harness TI can also automatically split selected tests to run them in parallel.
 
-You have full visibility into which tests were selected and why. Enabling TI doesn't require you to update your source code or build and test process.
+You have full visibility into which tests were selected and why. Enabling TI doesn't require you to change build and test processes.
 
 Test Intelligence is available for the following codebases:
 
@@ -24,7 +24,7 @@ Test Intelligence is available for the following codebases:
 
 ## Visual summary
 
-The following video walks you through setting up Test Intelligence in the Harness CIE stage. The TI section starts after the 11 minute mark in the video.
+The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11 minute mark in the video.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -38,7 +38,7 @@ Running all unit tests every time the code changes is expensive and time-consumi
 
 * Uses *test selection* to prioritize and run only those tests that are relevant to code changes. This includes changes to your software's code as well as changes to your tests (new or modified tests).
 * Identifies negative trends and provides actionable insights to improve quality.
-* Uses the call graph of hte instrumented source code to ensure full accuracy.
+* Uses the call graph of the instrumented source code to ensure full accuracy.
 
 :::tip
 

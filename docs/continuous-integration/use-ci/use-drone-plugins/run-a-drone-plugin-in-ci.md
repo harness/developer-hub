@@ -132,7 +132,7 @@ The settings appear in the UI like this:
 ### See also
 
 * [Drone Community Plugins](https://plugins.drone.io/)
-* [Run a GitHub Action in CIE](run-a-git-hub-action-in-cie.md)
+* [Run a GitHub Action in CI](run-a-git-hub-action-in-cie.md)
 * [Plugin Step Settings](../../ci-technical-reference/plugin-step-settings-reference.md)
 * [Add and Use Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
 
