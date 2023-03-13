@@ -71,9 +71,9 @@ Go to [Configure a Kuberneted build farm to use self-signed certificates](./conf
 
 ## Process overview
 
-After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate to create a connection between Harness and your cluster.
+After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes Cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate to create a connection between Harness and your cluster.
 
-Here's a short video that walks you through adding a Harness Kubernetes cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes cluster connector uses the delegate to connect to the cluster.
+Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -92,7 +92,7 @@ For instructions on creating clusters, go to:
 * [Creating a cluster in Kubernetes](https://kubernetes.io/docs/tutorials/kubernetes-basics/create-cluster/)
 * [Creating a cluster in GKE (Google Kubernetes Engine)](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-zonal-cluster)
 
-## Step 2: Add the Kubernetes cluster connector and install the Delegate
+## Step 2: Add the Kubernetes Cluster connector and install the Delegate
 
 1. In your Harness **Project**, select **Connectors** under **Project Setup**.
 2. Select **New Connector**, and then select **Kubernetes cluster**.

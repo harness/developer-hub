@@ -134,9 +134,9 @@ Later in this workflow, you'll reference the pool identifier in the Harness Mana
 
 Next, you'll add the Runner spec to the new Delegate definition. The Harness Delegate and Runner run on the same VM. The Runner communicates with the Harness Delegate on `localhost` and port `3000` of your VM.
 
-6. Copy your local **docker-compose.yaml** file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `pool.yml`.
-7. Open `docker-compose.yaml` in a text editor.
-8. Append the following to the end of the `docker-compose.yaml` file:
+1. Copy your local **docker-compose.yaml** file to the `/runner` folder on the VM. This folder should now have both `docker-compose.yaml` and `pool.yml`.
+2. Open `docker-compose.yaml` in a text editor.
+3. Append the following to the end of the `docker-compose.yaml` file:
 
    ```yaml
    drone-runner-aws:  
@@ -150,13 +150,13 @@ Next, you'll add the Runner spec to the new Delegate definition. The Harness Del
          - "3000:3000"
    ```
 
-9. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
+4. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
 
    ```yaml
    network_mode: "host"
    ```
 
-10. Save `docker-compose.yaml`.
+5. Save `docker-compose.yaml`.
 
 <details>
 <summary>Example: docker-compose.yaml with Runner spec</summary>
@@ -227,7 +227,7 @@ For more information on Harness Docker Delegate environment variables, go to the
    $ docker-compose -f docker-compose.yml up -d
    ```
 
-4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start. For example:
+4. Verify that both containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
    ```
    $ docker ps  
