@@ -8,12 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Access management for resources is a critical function for your accounts, organizations, and projects.
+Role-based access control (RBAC) is a security mechanism that is commonly used to manage access to your resources. RBAC is an authorization system that provides fine-grained access management of your Harness resources. 
 
-Role-based access control(RBAC) refers to the idea of assigning permissions to a principal based on its role within an account, organization, or project. It offers a simple, manageable approach to access management that is less prone to error than assigning permissions to users individually.
+When using RBAC for access management, you analyze the needs of your users and group them into roles based on common responsibilities. You then assign a role to each principal with associated permission(s) that can be performed on the resource(s). With principal, role, and resource group relationships, it is easier to manage access control since you don't have to manage users individually. This allows for more efficient and streamlined access management, as you can grant access based on the job responsibilities and level of authority, rather than individual characteristics.
 
-RBAC is an authorization system that provides fine-grained access management of your Harness resources. When using RBAC for access management, you analyze the needs of your users and group them into roles based on common responsibilities. You then assign role(s) to each principal with associated permission(s) that can be performed on resource(s). With principal, role, and resource group relationships, it is easier to manage access control since you don't have to manage users individually.
+RBAC is beneficial in large organizations with complex access requirements, as it simplifies the process of managing access and reduces the risk of errors and inconsistencies. It also allows for better tracking and auditing of access. By implementing RBAC, you can achieve a balance between security and usability, while also ensuring that sensitive resources are protected from unauthorized access.
 
+Harness lets you implement RBAC at different levels or scope within your account.
 
 ### RBAC scope
 
