@@ -301,7 +301,7 @@ A variable name is the name in the variable expression, such as `foo` in `<+stag
 
 Variable names may only contain `a-z, A-Z, 0-9, _`. They cannot contain hyphens or dots.
 
-Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Make sure that whatever expressions you use resolve to the allowed values of your target platforms.
+Certain platforms and orchestration tools, like Kubernetes, have their own naming restrictions. For example, Kubernetes doesn't allow underscores. Ensure that whatever expressions you use resolve to the allowed values of your target platforms.
 
 ### Reserved words
 
