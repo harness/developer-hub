@@ -214,8 +214,13 @@ This release does not include early access features.
   - You can now listen for errors that are caused by network issues. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578)
   - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578) 
 
-- The Javascript SDK has been updated to version 1.8.0 and includes the following change:
-  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489) 
+- The Javascript client SDK has been updated to version 1.8.0 and includes the following change:
+  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489)
+
+- The Android client SDK has been updated to version 1.0.19 and includes the following changes:
+  - A new event was added, `SSE_RESUME`, which fires if the application loses and regains internet. When the event fires: 
+    - The SDK internally reloads all applications into cache.
+    - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime. For example, an application can call a variation function to get the latest evaluation result.
 
 ## January 24, 2023
 
