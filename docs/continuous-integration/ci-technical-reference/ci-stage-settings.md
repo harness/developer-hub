@@ -138,6 +138,8 @@ Mount a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persiste
 
 The Service Account for Step containers to use when communicating with the Kubernetes API server. Leave blank to use the default service account for the namespace.
 
+If your cluster connector inherits authentication credentials from the Delegate, then you must supply a Service Account Name.
+
 #### Init Timeout
 
 Timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
