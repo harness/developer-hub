@@ -32,7 +32,7 @@ This release includes the following module and component versions.
 
 #### New features and enhancements
 
-- To fix vulnerability associated with current [elastic search client version 7.7.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.7.0), we are upgrading it to [version 7.17.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.17.7) (PL-30666)
+- To fix a vulnerability associated with current [elastic search client version 7.7.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.7.0), we are upgrading it to [version 7.17.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.17.7). (PL-30666)
   	
 - The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a data transfer object (DTO) that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
   
@@ -40,9 +40,9 @@ Removed the following libraries from the delegate to fix a high-severity vulnera
    - org_mongodb_mongodb_driver_sync
    - org_mongodb_mongodb_driver_legacy
   
-- Added support for auto-generating and updating build files with test-only java_library targets  to support package-level test build files with build cleaner. (PL-5713)
+- Added support for auto-generating and updating build files with test-only java_library targets to support package-level test build files with build cleaner. (PL-5713)
 
-- Customers can now leverage a new method to selectively escape given characters. (CDS-54875)  
+- You can now leverage a new method to selectively escape given characters. (CDS-54875)  
 
   The syntax is as follows:
 
@@ -52,22 +52,22 @@ Removed the following libraries from the delegate to fix a high-severity vulnera
 
 #### Fixed issues
 
-- Fixed an issue that resulted in exceptions due to missing kryo exception classes.	(PL-31162)	
+- Fixed an issue that resulted in exceptions due to missing kryo exception classes. (PL-31162)
 - On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
   
   The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
 
-- When the scheduling of background jobs is skipped during startup, background jobs like the deletion of old records do not work. A code enhancement has fixed this issue. (PL-31009)
+- When background job scheduling is skipped during startup, background jobs, like the deletion of old records, do not work. A code enhancement has fixed this issue. (PL-31009)
 
 - Selecting a specific audit filter for an API key causes the UI to become unresponsive. An added check ensures that only essential data is sent for display. This has fixed the issue. (PL-30715, ZD-38400)
  
 - SAML users removed from the LDAP group are displayed in the linked user group in Harness. A code enhancement has fixed this issue. (PL-30291, ZD-37758)
   
-- Clicking on the **Forgot password** button after disabling SSO authentication is redirecting to the Harness FirstGen authentication UI. This is now fixed and users are redirected to the NextGen authentication UI. (PL-24649)
+- Selecting **Forgot password** after disabling SSO authentication redirects users to the Harness FirstGen authentication UI. This is now fixed and users are redirected to the NextGen authentication UI. (PL-24649)
 
 - Changed delegate behavior to ensure that the tasks assigned to a delegate fail if the delegate does not send heartbeats for a period of three minutes. (DEL-5821)
 - Added validation to ensure that delegates using the YAML of the Legacy Delegate fail on start with the correct error message. (DEL-5715)
-- Added functionality to explicitly release a lock on the profile (`profile.lock` file). This resolves a rare case in which there is no running profile but a profile.lock file or profile in a locked state exists. (DEL-5659, ZD-38469)
+- Added functionality to explicitly release a lock on the profile (`profile.lock` file). This resolves a rare case in which there is no running profile but a `profile.lock` file or profile in a locked state exists. (DEL-5659, ZD-38469)
 
 
 ### February 9, 2023, version 78109

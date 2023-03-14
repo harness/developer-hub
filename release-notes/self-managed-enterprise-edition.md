@@ -30,8 +30,8 @@ This release includes the following Harness module and component versions.
 ### New features and enhancements
 
 - The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. This update will not affect any business operations. (PL-31136)
-- The [Role Assignment](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now includes the principal's name and email address in the response.(PL-31064, ZD-36050)
-- Harness now supports the integration of GCP Secrets Manager for all users. For more information, see [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/Security/add-a-google-cloud-secret-manager). (PL-31051)
+- The [Role Assignment](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now includes the principal's name and email address in the response. (PL-31064, ZD-36050)
+- Harness now supports the integration of GCP Secrets Manager for all users. For more information, go to [Add a Google Cloud Secret Manager](https://developer.harness.io/docs/platform/Security/add-a-google-cloud-secret-manager). (PL-31051)
 - The following role-assignments are removed for all the existing users across all the accounts:
   - Account Viewer - All Account Level Resources: This was a role-assignment within the account scope and has been removed for all the users. This does not apply in the following scenarios:
   - If an account has enabled the feature flag ACCOUNT_BASIC_ROLE_ONLY.
@@ -39,7 +39,7 @@ This release includes the following Harness module and component versions.
   - Organization Viewer - All Organization Level Resources: This was a role-assignment within the organization scope and has been removed for all the users.
   - Project Viewer - All Project Level Resources: This was a role-assignment within the project scope and has been removed for all the users.
   
-  For more information, go to [Default User Group](/docs/platform/role-based-access-control/harness-default-user-groups/).	(PL-30916)	
+  For more information, go to [Default User Group](/docs/platform/role-based-access-control/harness-default-user-groups/). (PL-30916)
 
 - In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details as per the schema. (PL-30862)
 
@@ -49,7 +49,7 @@ This release includes the following Harness module and component versions.
 
   In this way, you can validate step outputs generated during pipeline execution without explicitly requesting a payload. Policy sets receive the steps and their outputs as payloads, with a pre-defined schema for every step.
 
-- Users can now move Inline pipelines to Git.	(PIE-7392)	
+- Users can now move Inline pipelines to Git. (PIE-7392)
 
 - Updated the delegate-token and documentation URLs shown in the UI when setting up a new delegate. (DEL-5905)
   
@@ -64,7 +64,7 @@ This release includes the following Harness module and component versions.
 - [Pipeline execution status links](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
 
 
-* This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only.
+- This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only.
    - An Actions step to run GitHub Actions.
    - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
   
@@ -112,7 +112,7 @@ This release includes the following Harness module and component versions.
 
 ### Fixed issues
 
-- Fixed a back-end issue that could result in timeouts when a user tries to sign up for the Harness Community.	(PLG-1860)	
+- Fixed a back-end issue that could result in timeouts when a user tries to sign up for the Harness Community. (PLG-1860)
   
 - Implemented a fix to ensure correct handling of horizontal scrolling in the side navigation. (PG-31140)
 
@@ -120,27 +120,27 @@ This release includes the following Harness module and component versions.
 
 - SCIM-managed users can now be removed from organisations and projects.	(PL-31104, ZD-39109, ZD-39110)	
 
-- Fixed an issue with SCIM where user email was added in uppercase causing issues with SAML authentication.	(PL-31038)	
+- Fixed an issue with SCIM where user email was added in uppercase causing issues with SAML authentication. (PL-31038)
 
 - Fixed an issue where a new user, on receiving an email invite and clicking on it, gets an INVALID_REQUEST error. Users should be able to complete their sign-ups with no errors.	(PL-30993, ZD-38937, ZD-39340, ZD-39510, ZD-39716)
 
-- Fixed an issue where User Group details pages in Project and Organization scope weren't opening properly when opened using "Open In New Tab". This was due to loss of "parentScope" query Param. Adding the "parentScope" queryParam fixed the issue.	(PL-30911)	
+- Fixed an issue where User Group details pages in Project and Organization scope weren't opening properly when opened using "Open In New Tab". This was due to loss of "parentScope" query Param. Adding the "parentScope" queryParam fixed the issue. (PL-30911)
 
 - Fixed a UI issue in CCM that caused the message "We cannot perform your request at the moment. Please try again" to appear in the UI. (PL-30816)	
 
-- Added missing audit entries for CRUD operations on the EnvironmentGroup resources	(PL-30779)
+- Added missing audit entries for CRUD operations on the EnvironmentGroup resources. (PL-30779)
 
-- The Harness APIs return a status code of HTTP 400 instead of HTTP 401 for an invalid or expired token. An enhancement to the code has fixed this issue.(PL-30757, ZD-38494, ZD-38547)
+- The Harness APIs return a status code of HTTP 400 instead of HTTP 401 for an invalid or expired token. An enhancement to the code has fixed this issue. (PL-30757, ZD-38494, ZD-38547)
 
-- Fixed a UI issue where the resource-group name and summary were collapsing in the Resource Group page.	(PL-30691)	
+- Fixed a UI issue where the resource-group name and summary were collapsing in the Resource Group page. (PL-30691)
 
-- The project selector component selects multiple projects with the same project name across different organization IDs. The project selection code has been enhanced to select projects corresponding to specific organization IDs.	Updated error message in case there is a delete/update of externally managed user group from Harness. (PL-30663)
+- The project selector component selects multiple projects with the same project name across different organization IDs. The project selection code has been enhanced to select projects corresponding to specific organization IDs. Updated error message in case there is a delete/update of externally managed user group from Harness. (PL-30663)
 
 - When trying to delete or update an externally managed user group in Harness, the error message is unclear. It has been enhanced to "User is externally managed by your Identity Provider and cannot be deleted via UI / API. To delete the user from Harness, delete it from your Identity Provider." (PL-30641)
   
-- OAuth can now be enabled when the account has SAML/LDAP settings present but not enabled.	(PL-30617)	
+- OAuth can now be enabled when the account has SAML/LDAP settings present but not enabled. (PL-30617)
 
-- Fixed a UI issue to ensure that, when you create two projects with the same name in separate organizations, the Resource Group selector shows only the project for that organization.	(PL-30556)	
+- Fixed a UI issue to ensure that, when you create two projects with the same name in separate organizations, the Resource Group selector shows only the project for that organization. (PL-30556)
 
 - The email update for SCIM users does not work. A code enhancement to support user metadata updates has fixed this issue. (PL-30439)
   
@@ -148,7 +148,7 @@ This release includes the following Harness module and component versions.
 
   This has been fixed by displaying the appropriate error message.
 
-- The project selector component selects multiple projects with the same project name across different organization IDs.(PL-30663)
+- The project selector component selects multiple projects with the same project name across different organization IDs. (PL-30663)
   
   The project selection code has been enhanced to select projects corresponding to specific organization IDs.
 
@@ -160,11 +160,11 @@ This release includes the following Harness module and component versions.
   
 - Deletion of vault connectors does not delete the corresponding perpetual tasks. A code enhancement has fixed this issue.  (PL-27621)
   
- - In pipeline execution, the YAML builder does not support read-only operations and throws an error.   A code enhancement has fixed this issue. (PIE-8040)
+ - In pipeline execution, the YAML builder does not support read-only operations and throws an error. A code enhancement has fixed this issue. (PIE-8040)
   
  - The pipeline execution details page does not have a **View Compiled YAML** option. This option is now available on the execution page. (PIE-7967)
   
- - Creating an input set results in an error. A code enhancement has fixed this issue.  (PIE-7849, ZD-39180, ZD-39240, ZD-39250)
+ - Creating an input set results in an error. A code enhancement has fixed this issue. (PIE-7849, ZD-39180, ZD-39240, ZD-39250)
   
   ![](./static/inputset-create-error.png)
 
@@ -176,11 +176,11 @@ This release includes the following Harness module and component versions.
  
 - Fixed an issue where uploading a CSV with a large number of targets could cause the dialog box to overflow. (FFM-6627)		
 
-- Fixed an issue to ensure that the Feature Flags SDK metrics endpoint is configured.	(FFM-6240)	
+- Fixed an issue to ensure that the Feature Flags SDK metrics endpoint is configured. (FFM-6240)
 
 - Persisted currently selected Feature Flags environment when navigating away from Feature Flags module.	(FFM-6221)
 
-- The complete button at the end of the feature flags onboarding flow was always enabled. Now it will be disabled until the user receives a successful evaluation. This issue has been resolved.	(FFM-5987)	
+- The **Complete** button at the end of the feature flags onboarding flow was always enabled. Now it is disabled until the user receives a successful evaluation. (FFM-5987)
   
 - Resolved a problem that caused SCM log information to be displayed in the Watcher. The information was redirected to the delegate `slf4j` stream for display in the delegate logs. (DEL-5744, ZD-36125)
 
@@ -190,7 +190,7 @@ This release includes the following Harness module and component versions.
 
 - The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
 	
-- Improved error message for git test connection.	(CI-6689)
+- Improved error message for git test connection. (CI-6689)
 
 - Expressions used in pipeline codebase properties unexpectedly resolved to `null`, which caused builds to fail due to missing variable input. These expressions now resolve to their expected values. (CI-6679, ZD-38122, ZD-38241, ZD-38698, ZD-39088)
 
@@ -212,7 +212,7 @@ This release includes the following Harness module and component versions.
 
 - There is a [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts/) discrepancy when adding multiple steps. The template case was missing for calculating the step count using of the default step name. Now a template case for calculating correct step count of the default name is added. (CDS-52120)
   
-- When special characters are used for a trigger **Name** field, the info message looks different than the actual name entered. This issue was happening because users were allowed to use restricted special characters for the trigger **Name** field. We have updated the validation for the **Name** field so now users will not be able to use restricted special characters.   (CDS-52105)
+- When special characters are used for a trigger **Name** field, the info message looks different than the actual name entered. This issue was happening because users were allowed to use restricted special characters for the trigger **Name** field. We have updated the validation for the **Name** field so now users will not be able to use restricted special characters. (CDS-52105)
 
 - No pagination on the trigger listing page. Added pagination support on the trigger listing page. (CDS-52024)
   
@@ -252,7 +252,7 @@ This release includes the following Harness module and component versions.
 
   In the **Email** step, when there is an invalid address in the **to** setting and a valid email in the **cc** setting, mail is sent to the cc address, but the step is marked as failed. This has been fixed. The Email step is marked as success if emails are sent to the cc address.
 
-- The **Clear All** option in the filter on the **Deployments** page is not working for the **Deployment Type** option.	(CDS-50924)
+- The **Clear All** option in the filter on the **Deployments** page is not working for the **Deployment Type** option. (CDS-50924)
   
   Now the **Deployment Type** filter is cleared when selecting the **Clear All** button.
 
@@ -304,7 +304,7 @@ This release includes the following Harness module and component versions.
   
   The OCI Helm Registry connector supported anonymous credentials but there was no UI option. This issue has been resolved. The OCI Helm Registry now has an **Anonymous** option. This enables you to connect to public OCI registries from Azure, AWS, JFrog, etc., and deploy Helm charts from these registries.
 
-- Unable to see the Harness file store at the projects level.	(CDS-50139)
+- Unable to see the Harness file store at the projects level. (CDS-50139)
 
   The [Harness file store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
 
@@ -312,7 +312,7 @@ This release includes the following Harness module and component versions.
 
   ![file store](static/e6e71ed5ce6113726c8385b19408341220d153944a0683dbc76614e7a6aeed9d.png)
 
-- Runtime **Tag** setting discrepancy when switching between YAML and Visual views.	(CDS-50033, ZD-39719)
+- Runtime **Tag** setting discrepancy when switching between YAML and Visual views. (CDS-50033, ZD-39719)
   
   When a user set the **Tag** setting in the Visual view and then switched to the YAML view, made an edit, and switched back, the value was not preserved. Now users can select tags or enter values from YAML without any discrepancies.
 
@@ -330,7 +330,8 @@ This release includes the following Harness module and component versions.
   
   Harness was letting users set a recurrence time in the past. We have added a check to prevent users from creating a freeze window with a recurrence time that is before than the current time.
 
-- Fixing a service referencing a template causes a save error.	(CDS-49817)
+- Fixing a service referencing a template causes a save error. (CDS-49817)
+
   When making the service a runtime input within the template and providing this as a fixed value when using the template, it fails to save.
 
   The sources were being added as an empty string when no runtime inputs were present.
@@ -461,7 +462,7 @@ This release includes the following Harness module and component versions.
   
   The **Run Pipeline** settings were getting reset when a user selected a new environment in another stage. We were updating all the settings with older values for services or environments. This caused the completed settings values to be cleared. This has been fixed.
 
-- Implemented fix to ensure correct regex validation when specifying multiple artifacts in a CD pipeline.	(CDS-47263)	
+- Implemented fix to ensure correct regex validation when specifying multiple artifacts in a CD pipeline. (CDS-47263)
 
 - Connector settings do not display in the **Run** pipeline form. (CDS-46632)
   
@@ -496,15 +497,15 @@ This release includes the following Harness module and component versions.
 
   ![picture 34](static/1bcafae790e255b341562a3e60ea2d937bfaac72605bf0eb41b789563540762e.png)
 
-* Hourly data on the **Perspectives** page showed an incorrect billing amount for multiple accounts. CloudFunction was unable to delete the existing records but continued ingesting a new entry in clusterDataHourly in BigQuery. (CCM-10711)
+- Hourly data on the **Perspectives** page showed an incorrect billing amount for multiple accounts. CloudFunction was unable to delete the existing records but continued ingesting a new entry in clusterDataHourly in BigQuery. (CCM-10711)
 
   This issue is fixed. Now, the Instance_Billing_Hourly job execution is limited to 5 times per minute to avoid CloudFunction failure.
 
-* The total costs displayed on the **Overview** page and the **license-util** page (or API) were incorrect in accounts with at least one Azure connector. (CCM-10678, ZD-38694)
+- The total costs displayed on the **Overview** page and the **license-util** page (or API) were incorrect in accounts with at least one Azure connector. (CCM-10678, ZD-38694)
 
   A bug fix in the ingestion of aggregated costs for Azure resolved this issue. 	
 
-* The cost details API was returning only the AWS account ID without the account name. Now, the API returns both account name and ID. (CCM-10573, ZD-38510)
+- The cost details API was returning only the AWS account ID without the account name. Now, the API returns both account name and ID. (CCM-10573, ZD-38510)
 
 
 ## February 9, 2023, version 78109
