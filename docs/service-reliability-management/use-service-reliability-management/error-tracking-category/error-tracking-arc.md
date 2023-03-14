@@ -1,6 +1,6 @@
 ---
 title: Automated Root Cause (ARC)
-description: Get to the root of events in production and staging environments.
+description: Get to the root of events in production and staging environments. 
 sidebar_position: 40
 helpdocs_topic_id: cbj5uuzpbu
 helpdocs_category_id: c40ko6e87n
