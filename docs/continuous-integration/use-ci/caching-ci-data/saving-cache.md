@@ -19,8 +19,8 @@ Caching enables sharing data across stages. Caching also speeds up builds by reu
 
 Caching has two primary benefits:
 
-* Run pipelines faster by reusing the expensive fetch operation data from previous builds
-* Share data across Stages
+1. Run pipelines faster by reusing the expensive fetch operation data from previous builds
+2. Share data across stages
 
 You can cache data to an AWS S3 bucket in one Stage using the **Save Cache to S3** step, and restore it in the same Stage, or a following Stage, using **Restore Cache From S3** step. 
 
@@ -30,7 +30,7 @@ You cannot share access credentials or other [Text Secrets](../../../platform/6_
 
 :::info
 
-If you're using Harness Cloud build infrastructure, you can use [Cache Intelligence](cache-intelligence.md) to automate caching.
+If you are using Harness Cloud build infrastructure, you can use [Cache Intelligence](cache-intelligence.md) to automate caching.
 
 :::
 
@@ -114,6 +114,8 @@ graph TD
 <Tabs>
 <TabItem value="Harness Cloud">
 ```
+
+If you are using Harness Cloud build infrastructure, you can use [Cache Intelligence](cache-intelligence.md) to automatically manage caching steps within a single stage.
 
 **Operating System:** Linux
 
