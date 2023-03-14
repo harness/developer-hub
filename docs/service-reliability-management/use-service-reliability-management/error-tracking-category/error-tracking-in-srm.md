@@ -295,3 +295,4 @@ After installing Error Tracking Agent, you should verify that it is connected to
 ## Next steps
 
 Identify and prioritize critical errors using [Events dashboard](error-tracking-event-dashboard.md).
+
