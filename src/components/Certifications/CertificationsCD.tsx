@@ -95,7 +95,7 @@ export default function CertificationsCD() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Continuous Delivery & GitOps - Developer (BETA)</h2>
+                  <h2>Continuous Delivery & GitOps - Developer </h2>
                   <img
                     src={`${baseUrl}img/cert_dev_cd_badge.svg`}
                     alt="Harness Certified Expert - CD & GitOps Developer"
