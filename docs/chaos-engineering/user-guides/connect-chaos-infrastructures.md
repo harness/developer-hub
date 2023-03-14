@@ -22,6 +22,7 @@ Now we can add a chaos infrastructure to our environment. Select **New Chaos Inf
 
 You can either setup a chaos infrastructure on existing infrastructures that uses a Harness cluster connector i.e. Harness Kubernetes connector or install the chaos infrastructure in a new infrastructure.
 
+### On Existing Infrastructures
 To use an existing Harness Kubernetes connector to install your chaos infrastructure, select **On Existing Infrastructures** in the modal. You can use any connector under the Project, Organization, and Account scope.
 
 ![Chaos Infrastructure in Existing Infra](./static/connect-chaos-infrastructures/chaos-infrastructure-in-existing-infra.png)
@@ -32,10 +33,18 @@ To use an existing Harness Kubernetes connector to install your chaos infrastruc
 3. A Harness Kubernetes connector with specific namespace access can only be used to setup a namespace-scoped chaos infrastructure in that specific Kubernetes namespace.
 :::
 
+### On a New Infrastructure
 To install chaos infrastructure on a new infrastructure, select **On New Infrastructures**. Then, select **Continue**.
-Provide a name for the infrastructure. Optionally, you can also provide a description and tags. Then, select **Next**. 
+Provide a name for the infrastructure. Optionally, you can also provide a description and tags. Then, select **Next**.
 
-Under the installation mode, choose either **Cluster Wide** or **Namespace Mode** for installing the chaos infrastructure. By default the installation will take place in the `litmus` namespace and uses `litmus` service account, which can be configured under the K8s Cluster Details. Optionally, you can also specify node selectors and K8s tolerations for chaos infrastructure deployment.
+Under the installation mode, choose either **Cluster Wide** or **Namespace Mode** for installing the chaos infrastructure.
+:::info
+**Cluster Wide:** Cluster Wide infrastructure installation allows targeting resources across the entire cluster, i.e. all the namespaces, as part of an experiment.
+
+**Namespace Mode:** Namespace Mode infrastructure installation allows targeting resources in only the namespace where the chaos infrastructure itself is deployed.
+:::
+
+By default the installation will take place in the `hce` namespace and uses `hce` service account, which can be configured. Optionally, you can also specify node selectors and K8s tolerations for chaos infrastructure deployment.
 
 - There can only be one cluster-wide chaos infrastructure per cluster.
 - There may be multiple namespace-scoped chaos infrastructures per cluster.
@@ -44,7 +53,16 @@ Under the installation mode, choose either **Cluster Wide** or **Namespace Mode*
 
 Then, select **Next**. In the final step, if you're deploying to an existing infrastructure with Harness Kubernetes Delegate, then Harness will install the chaos infrastructure on your behalf. Otherwise, if you're setting up the chaos infrastructure on a new infrastructure, then you will need to execute the given commands and/or download and apply the installation manifest.
 
-![k8s Setup Infrastructure](./static/connect-chaos-infrastructures/k8s-setup-infrastructure.png)
+For the cluster wide setup, you'll be presented with a single command which you need to apply.
+
+![Cluster Wide Setup Infrastructure](./static/connect-chaos-infrastructures/cluster-wide-setup-infrastructure.png)
+
+On the other hand, for the namespace mode setup, you'll be presented with three distinct command which you need to apply, which undertakes:
+1. Creating the target namespace
+2. Applying the Chaos CRDs
+3. Installing the Chaos Infrastructure
+
+![Namespace Mode Setup Infrastructure](./static/connect-chaos-infrastructures/ns-mode-setup-infrastructure.png)
 
 Finally, select **Done**.
 
