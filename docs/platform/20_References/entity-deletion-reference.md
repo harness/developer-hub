@@ -106,7 +106,7 @@ Make sure you enable the feature flags `CDS_FORCE_DELETE_ENTITIES` to be able to
   
 The Harness account admin can enable or disable the force delete option in the account's default settings.
 
-![](../20_References/static/forcedelete1.png)
+![](../20_References/static/force-delete-new.png)
 
 This topic explains the steps to force delete a connector.
 

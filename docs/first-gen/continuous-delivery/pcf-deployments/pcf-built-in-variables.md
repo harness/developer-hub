@@ -271,9 +271,8 @@ Let's look at variable resolution during successful and failed deployments.
 
 #### Variable Resolution during Successful Deployments
 
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After App Setup step** | **After App Resize step** | **After Swap Route step** |
+| --- | --- | --- | --- |
 | `${pcf.oldAppName}` | OrderApp\_2(UUID = 2) | OrderApp\_2(UUID = 2) | OrderApp\_INACTIVE(UUID = 2) |
 | `${pcf.newAppName}` | OrderApp\_INACTIVE(UUID = 3) | OrderApp\_INACTIVE(UUID = 3) | OrderApp(UUID = 3) |
 | `${pcf.activeAppName}` | OrderApp\_2(UUID = 2) | OrderApp\_2(UUID = 2) | OrderApp(UUID = 3) |
@@ -291,10 +290,6 @@ For the previous inactive application (**OrderApp\_1**), the temp routes and env
 
 #### Variable Resolution during App Resize Step Failure
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After App Resize step** | **After Swap Rollback step** | **After App Rollback step** |
 | `${pcf.oldAppName}` | OrderApp\_2(UUID = 2) | OrderApp\_2(UUID = 2) | OrderApp\_2(UUID = 2) |
 | `${pcf.newAppName}` | OrderApp\_INACTIVE(UUID = 3) | OrderApp\_interim(UUID = 3) | NULL |
@@ -315,11 +310,8 @@ For the previous inactive application (**OrderApp\_1**), the temp routes and env
 
 #### Variables Resolution during Swap Route Step Failure
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After Swap Route step** | **After Swap Rollback step** | **After App Rollback step** |
+| --- | --- | --- | --- |
 | `${pcf.oldAppName}` | OrderApp\_INACTIVE(UUID = 2) | OrderApp\_2(UUID = 2) | OrderApp\_2(UUID = 2) |
 | `${pcf.newAppName}` | OrderApp(UUID = 3) | OrderApp\_interim(UUID = 3) | NULL |
 | `${pcf.activeAppName}` | OrderApp(UUID = 3) | OrderApp\_2(UUID = 2) | OrderApp\_2(UUID = 2) |
@@ -349,11 +341,8 @@ During the Swap Route step the following actions are taken:
 
 #### Variables Resolution during Successful Deployments
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After App Setup step** | **After App Resize step** | **After Swap Route step** |
+| --- | --- | --- | --- |
 | `${pcf.oldAppName}` | OrderApp(UUID = 3) | OrderApp(UUID = 3) | OrderApp\_INACTIVE(UUID = 3) |
 | `${pcf.newAppName}` | OrderApp\_INACTIVE(UUID = 4) | OrderApp\_INACTIVE(UUID = 4) | OrderApp(UUID = 4) |
 | `${pcf.activeAppName}` | OrderApp(UUID = 3) | OrderApp(UUID = 3) | OrderApp(UUID = 4) |
@@ -371,11 +360,8 @@ For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), th
 
 #### Variables Resolution during App Setup or App Resize Failure
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After App Resize step** | **After Swap Rollback step** | **After App Rollback step** |
+| --- | --- | --- | --- |
 | `${pcf.oldAppName}` | OrderApp(UUID = 3) | OrderApp(UUID = 3) | OrderApp(UUID = 3) |
 | `${pcf.newAppName}` | OrderApp\_INACTIVE(UUID = 4) | OrderApp\_interim(UUID = 4) | NULL |
 | `${pcf.activeAppName}` | OrderApp(UUID = 3) | OrderApp(UUID = 3) | OrderApp(UUID = 3) |
@@ -396,11 +382,8 @@ For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), th
 
 #### Variables Resolution during Swap Route Failure
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After Swap Route step** | **After Swap Rollback step** | **After App Rollback step** |
+| --- | --- | --- | --- |
 | `${pcf.oldAppName}` | OrderApp\_INACTIVE(UUID = 3) | OrderApp(UUID = 3) | OrderApp(UUID = 3) |
 | `${pcf.newAppName}` | OrderApp(UUID = 4) | OrderApp\_interim(UUID = 4) | NULL |
 | `${pcf.activeAppName}` | OrderApp(UUID = 4) | OrderApp(UUID = 3) | OrderApp(UUID = 3) |
@@ -431,11 +414,8 @@ If you change from non-version to version, in the next deployment the new app is
 
 #### Variables Resolution during a Successful Deployment
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After App Setup step** | **After App Resize step** | **After Swap Route step** |
+| --- | --- | --- | --- |
 | `${pcf.oldAppName}` | OrderApp(UUID = 3) | OrderApp(UUID = 3) | OrderApp\_3(UUID = 3) |
 | `${pcf.newAppName}` | OrderApp\_INACTIVE(UUID = 4) | OrderApp\_INACTIVE(UUID = 4) | OrderApp\_4(UUID = 4) |
 | `${pcf.activeAppName}` | OrderApp(UUID = 3) | OrderApp(UUID = 3) | OrderApp\_4(UUID = 4) |
@@ -453,11 +433,8 @@ For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), th
 
 #### Variables Resolution during App Setup or App Resize Failure
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After App Resize step** | **After Swap Rollback step** | **After App Rollback step** |
+| --- | --- | --- | --- |
 | `${pcf.oldAppName}` | OrderApp(UUID = 3) | OrderApp(UUID = 3) | OrderApp(UUID = 3) |
 | `${pcf.newAppName}` | OrderApp\_INACTIVE(UUID = 4) | OrderApp\_interim(UUID = 4) | NULL |
 | `${pcf.activeAppName}` | OrderApp(UUID = 3) | OrderApp(UUID = 3) | OrderApp(UUID = 3) |
@@ -478,11 +455,8 @@ For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), th
 
 #### Variables Resolution during the Swap Route Step Failure
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Variables** | **After Swap Route step** | **After Swap Rollback step** | **After App Rollback step** |
+| --- | --- | --- | --- |
 | `${pcf.oldAppName}` | OrderApp\_3(UUID = 3) | OrderApp(UUID = 3) | OrderApp(UUID = 3) |
 | `${pcf.newAppName}` | OrderApp\_4(UUID = 4) | OrderApp\_interim(UUID = 4) | NULL |
 | `${pcf.activeAppName}` | OrderApp\_4(UUID = 4) | OrderApp(UUID = 3) | OrderApp(UUID = 3) |
@@ -495,6 +469,6 @@ For the previous inactive application (**OrderApp\_INACTIVE**, **UUID = 2**), th
 * If deployment fails during the Swap Routes step, then the variables `${pcf.activeAppName}` and `${pcf.inActiveAppName}` might be in inconsistent state.
 	+ These variables will hold the right value after the Swap Routes rollback and hence must be used after Swap Routes rollback step.
 * If the [Upsize inactive Service Option](create-a-blue-green-pcf-deployment.md#upsize-inactive-service-option) in not enabled then the environment variable **HARNESS\_\_STAGE\_\_IDENTIFIER = STAGE** will not be set to the inactive app during rollback.
-	+ In next deployment, the `${pcf.inActiveApp}` variable may not resolve to the correct name as **STAGE** is used to identify inactive app.
+	+ In next deployment, the `${pcf.inActiveAppName}` variable may not resolve to the correct name as **STAGE** is used to identify inactive app.
 * During rollback, the new app name will be changed to `<AppName>__interim` and later deleted. Consequently, `${pcf.newAppName}` will be updated and resolve accordingly.
 

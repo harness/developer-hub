@@ -137,7 +137,7 @@ In the Infrastructure tab, define the build farm for the codebase.
 
 The following step uses a Kubernetes cluster build farm.
 
-See [Define Kubernetes Cluster Build Infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+See [Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 ### Step 3: Save Cache to GCS
 

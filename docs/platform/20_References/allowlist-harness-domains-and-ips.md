@@ -8,9 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, **app.harness.io)** and, optionally, to **logging.googleapis.com**.
+Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, **app.harness.io**) and, optionally, to **logging.googleapis.com** (used to provide logs to Harness support).
 
-The URL logging.googleapis.com is used to provide logs to Harness support.
+The URL `logging.googleapis.com` is used to send log files to Harness support. Use the environment variable `STACK_DRIVER_LOGGING_ENABLED` to disable this functionality. 
+
+For more information, go to [Delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
 
 ### Harness Manager
 
