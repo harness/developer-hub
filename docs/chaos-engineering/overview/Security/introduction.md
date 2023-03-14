@@ -35,7 +35,7 @@ Harness can leverage the same cluster (or namespace) to inject chaos into infras
 
 ### Kubernetes roles for chaos infrastructure 
 
-The deployments that make up the chaos infrastructure can be installed with cluster-wide scope or namespace-only scope. These deployments are mapped to a dedicated service account that can execute all supported chaos experiments for that scope. To learn more about connecting to a chaos infrastructure in cluster or namespace mode, go [here](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures). Mapping deployments to dedicated service accounts is considered as the first level of blast radius control.
+The deployments that make up the chaos infrastructure can be installed with cluster-wide scope or namespace-only scope. These deployments are mapped to a dedicated service account that can execute all supported chaos experiments for that scope. To learn more about connecting to a chaos infrastructure in cluster or namespace mode, go to [connect chaos infrastructures](../../user-guides/connect-chaos-infrastructures). Mapping deployments to dedicated service accounts is considered as the first level of blast radius control.
 
 The permissions are listed below for reference. 
 
