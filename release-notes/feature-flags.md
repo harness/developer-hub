@@ -220,7 +220,7 @@ This release does not include early access features.
 - The Android client SDK has been updated to version 1.0.19 and includes the following changes:
   - A new event was added, `SSE_RESUME`, which fires if the application loses and regains internet. When the event fires: 
     - The SDK internally reloads all applications into cache.
-    - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime. For example, an application can call a variation function to get the latest evaluation result.
+    - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime.
 
 ## January 24, 2023
 
