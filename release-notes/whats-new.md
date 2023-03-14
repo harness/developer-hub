@@ -22,13 +22,13 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)
   
-- You can now restrict migration of FirstGen admin users to NextGen by enabling the feature flag `PL_DO_NOT_MIGRATE_NON_ADMIN_CG_USERS_TO_NG`. Previously, all FirstGen admins were migrated as admins and all FirstGen users were migrated with view permissions to NextGen. (PL-31648)
+- You can now migrate only the admin users of FirstGen to NextGen by enabling the feature flag `PL_DO_NOT_MIGRATE_NON_ADMIN_CG_USERS_TO_NG`. Previously, all FirstGen users were migrated to NextGen along with the admins. (PL-31648)
   
 - The [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now supports the following filters:
 
   - Principal Type Filter: Filters role assignments based on principal type.
 
-  - Harness Managed Filter: Filters role assignments managed by Harness. 
+  - Harness Managed Filter: Filters role assignments based on roles managed by Harness. For example, an Account Administrator. 
 
   - Disabled Filter: Filters disabled role assignments. (PL-31352)
 
