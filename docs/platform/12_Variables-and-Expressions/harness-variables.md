@@ -805,9 +805,9 @@ Resolves to where the manifest is stored. For example, this manifest is stored i
 ```
 #### <+manifest.identifier.commitID>
 
-The commitID of the manifests used in a service. This is captured in the [output section](#input-and-output-variable-expressions-in-executions) of a deployment step.
+The commit ID of the manifests used in a service. This is captured in the [output section](#input-and-output-variable-expressions-in-executions) of a deployment step.
 
-You can copy the expressions for the name and value of commitID.
+You can copy the expressions for the name and value of `commitID`.
 
 For example:
 
