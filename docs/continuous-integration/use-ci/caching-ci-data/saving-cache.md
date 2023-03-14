@@ -194,7 +194,132 @@ If you are using Harness Cloud build infrastructure, you can use [Cache Intellig
 <TabItem value="Kubernetes">
 ```
 
-Kubernetes example goes here
+<Tabs>
+  <TabItem value="node" label="Node" default>
+    hello world
+
+    execution:
+      steps:
+        - step:
+            type: RestoreCacheS3
+            name: Restore Cache From S3
+            identifier: RestoreCacheFromS3
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              bucket: <+input>
+              key: cache-{{checksum "package.json"}}
+              archiveFormat: Tar
+        - step:
+            type: Run
+            name: Run tests
+            identifier: Run
+            spec:
+              connectorRef: <+input>
+              image: node:16.19.1
+              shell: Sh
+              command: |
+                npm install
+                npm run build --if-present
+                npm test
+        - step:
+            type: SaveCacheS3
+            name: Save Cache to S3
+            identifier: SaveCachetoS3
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              bucket: <+input>
+              key: cache-{{checksum "package.json"}}
+              sourcePaths:
+                - node_modules
+              archiveFormat: Tar
+  
+
+
+foo bar
+  </TabItem>
+  <TabItem value="maven" label="Java maven">
+
+    execution:
+      steps:
+        - step:
+            type: RestoreCacheS3
+            name: Restore Cache From S3
+            identifier: RestoreCacheFromS3
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              bucket: <+input>
+              key: cache-{{checksum "pom.xml"}}
+              archiveFormat: Tar
+        - step:
+            type: Run
+            name: Compile
+            identifier: Run
+            spec:
+              connectorRef: <+input>
+              image: maven:3.6.3-jdk-11
+              shell: Sh
+              command: mvn -B package --file pom.xml
+        - step:
+            type: SaveCacheS3
+            name: Save Cache to S3
+            identifier: SaveCachetoS3
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              bucket: <+input>
+              key: cache-{{checksum "pom.xml"}}
+              sourcePaths:
+                - /root/.m2
+              archiveFormat: Tar
+    sharedPaths:
+      - /root/.m2
+  </TabItem>
+  <TabItem value="go" label="Go">
+
+    execution:
+      steps:
+        - step:
+            type: RestoreCacheS3
+            name: Restore Cache From S3
+            identifier: RestoreCacheFromS3
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              bucket: <+input>
+              key: cache-{{checksum "go.sum"}}
+              archiveFormat: Tar
+        - step:
+            type: Run
+            name: Run tests
+            identifier: RunTests
+            spec:
+              connectorRef: <+input>
+              image: golang:1.20.2
+              shell: Sh
+              command: |-
+                go build .
+                go test -v ./...
+        - step:
+            type: SaveCacheS3
+            name: Save Cache to S3
+            identifier: SaveCachetoS3
+            spec:
+              connectorRef: <+input>
+              region: <+input>
+              bucket: <+input>
+              key: cache-{{checksum "go.sum"}}
+              sourcePaths:
+                - /go/pkg/mod
+                - /root/.cache/go-build
+              archiveFormat: Tar
+    sharedPaths:
+      - /go/pkg/mod
+      - /root/.cache/go-build
+  </TabItem>
+</Tabs>
 
 ```mdx-code-block
 </TabItem>
