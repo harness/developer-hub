@@ -205,13 +205,12 @@ If we render it using `<+json.format(<+pipeline.stages.Functors.spec.execution.s
 ```
 NOTE:
 
-1. JSON accepts the control sequence `\n` in strings. Use a prettifier like jq to format the JSON.
+1. JSON accepts the control sequence `\n` as strings. To format JSON, use `jq` to prettify the JSON.
 
-2. If you are passing the condition "<+json.object(httpResponseBody).fields.parent>" in double quotes which is considered to be a string.
+2. Conditional expressions within double quotes are considered strings.
    So, "<+json.select("fields.status.name", httpResponseBody)>"=="In Progress" is treated as string comparison and will not work.
-   Rather use -> <+json.select("fields.status.name", httpResponseBody)>=="In Progress"
-   Same goes for null comparison.
-   Correct way is -> <+json.object(httpResponseBody).fields.parent>!=null
+   Use `<+json.select("fields.status.name", httpResponseBody)>=="In Progress"` instead.
+   Similarly, use `<+json.object(httpResponseBody).fields.parent>!=null` for null comparison.
 ```
 
 ## XML Functor
