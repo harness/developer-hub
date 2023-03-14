@@ -43,7 +43,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   This is behind the feature flag `PL_NEW_SCIM_STANDARDS`.
 
-- The response of a CRUD operation on a user or user group now contains the meta fields as per the SCIM 2.0 standards:
+- The response of a CRUD operation on a user or user group now contains the following meta fields as per the SCIM 2.0 standards:
 
   - createdAt
 
