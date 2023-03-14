@@ -417,7 +417,7 @@ That example is for the platform agnostic Kubernetes infrastructure. For a diffe
 See also:
 
 * [Define Your Kubernetes Target Infrastructure](../../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
-* [Define Kubernetes Cluster Build Infrastructure](../../../continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
+* [Set up a Kubernetes cluster build infrastructure](../../../continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 
 ### Execution
 

@@ -90,7 +90,7 @@ This functionality is limited temporarily to the platforms and settings you can 
 
 #### Kubernetes Cluster
 
-A Kubernetes cluster can be used as a build farm. See [Setting up a Kubernetes Cluster Build Infrastructure](../use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+A Kubernetes cluster can be used as a build farm. See [Set up a Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 #### Namespace
 
