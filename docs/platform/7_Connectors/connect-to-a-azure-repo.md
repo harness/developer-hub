@@ -22,7 +22,9 @@ This topic explains how to connect your Harness Accounts, Organizations or Proje
 
 :::note
 
-  Harness performs a `git clone` to fetch files. If the fetch is timing out, it can be because the repo is too large for the network connection to fetch it before timing out. To fetch very large repos from Azure Repo, enable the feature flag `OPTIMIZED_GIT_FETCH_FILES`. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
+This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
+
+Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
   This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
 

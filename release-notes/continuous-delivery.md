@@ -21,7 +21,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   When you update a Jira issue using the Jira Update step, you can now update the issue type. For example, if the issue you are updating is a Story, you can update it to a Task.
 
-  To update an issue type, you add a new field named `Issue Type` and give it the new type in its **Value**.
+  To update an issue type, add a new field named `Issue Type` and mention the new type in its **Value**.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -67,9 +67,9 @@ import TabItem from '@theme/TabItem';
 
   A Jira connector connects Harness with your Jira account for creating and updating issues during a pipeline execution.
 
-  The Jira connector has supported username and password for authentication and now supports a PAT.
+ Along with the username and password for authentication, the Jira connector now supports a PAT.
 
-  The PAT is added to Harness as a Harness secret and then selected in the Jira connector.
+ The PAT is added to Harness as a Harness secret, and selected in the Jira connector.
 
 ```mdx-code-block
 import Tabs1 from '@theme/Tabs';
@@ -114,24 +114,24 @@ connector:
 
 ### Early access
 
-- Large repos are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/).
+- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
 
-  Harness performs a `git clone` to fetch files. If the fetch is timing out, it can be because the repo is too large for the network connection to fetch it before timing out. To fetch very large repos from Azure Repo, enable the feature flag `OPTIMIZED_GIT_FETCH_FILES`. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
+Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
   This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
 
 ### Fixed issues
 
 - The [Harness GitOps](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-basics) execution summary was stopping the page from loading correctly when the environment Id and name were different. (CDS-54950)
-  Now the environment Id is managed and resolved to the name and the page does not crash.
+  Now the environment Id is managed and resolved to the name, and the page does not crash.
 - When saving a template in template studio, unsaved changes were displayed even though the template had been saved. (CDS-54842)
-  A force reload of the page was not happening when a template was updated. This issue has been fixed and now a force reload occurs and only the saved changes are displayed.
+  A force page reload did not occur during the template update. This issue is fixed. Now a force reload occurs, and only the saved changes appear in the page.
 - Harness was unable to resolve any settings using expressions in the Jenkins artifact resource. (CDS-54670)
-  [Harness integrates with Jenkins](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines/), enabling you to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. 
+  [Harness integrates with Jenkins](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines/) to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. 
 
-  In cases where an expression was used in the Jenkins connector, Harness was unable to resolve the expression because the frontend was not sending the pipeline Id to the runtime API call to the backend correctly.
+  When an expression was used in the Jenkins connector, Harness was unable to resolve the expression because the frontend was not sending the pipeline Id to the runtime API call in the backend correctly.
 
-  This has now been fixed and expression can be resolve correctly.
+  This issue is fixed and expression can be resolve correctly.
 - The default **Timeout** value for certain steps is too long and can lead to failure identification taking too long. (CDS-54607)
 
   The default **Timeout** value was 1 day (`1D`) for certain steps. It has now been changed to 10 minutes (`10m`).
@@ -146,35 +146,35 @@ connector:
   - Email
 - Variables of type Number were not supporting expressions when set as runtime inputs.	(CDS-54554)
   
-  Harness was not accepting expression in Number type variables when they were used as runtime inputs. 
+  Harness was not accepting expressions in Number type variables when they were used as runtime inputs. 
   
   You can now use expressions for Number variables without any issue.
 - Expressions used in runtime inputs for the Jenkins connector were not getting resolved. (CDS-54523)
   
   Jenkins artifacts were not working with the Jenkins connector when the connector name was set as a runtime input.
   
-  Now the connector Identifier is resolved correctly for runtime inputs and the correct settings, such as artifact path, can be fetched.
+  Now the connector Identifier is resolved correctly for runtime inputs, and the correct settings such as artifact path, can be fetched.
 - Expressions used in runtime inputs for the AWS connector with ECR artifacts were not getting resolved. (CDS-54520)
   
   ECR artifacts were not working with the AWS connector when the connector name was set as a runtime input.
   
-  Now the connector Identifier is resolved correctly for runtime inputs and the correct settings, such as artifact path, can be fetched.
+  Now the connector Identifier is resolved correctly for runtime inputs, and the correct settings such as artifact path, can be fetched.
 - The **File Path** setting in the AWS S3 artifact source were showing artifacts in reverse historical order (oldest to latest). (CDS-54267)
   
   The file paths were being sorted in ascending order of last modified.
 
-  The file paths are being sorted in descending order of last modified. The **File Path** setting in the AWS S3 artifact source now displays artifacts from latest to oldest.
-- The Artifactory **Artifact Details** settings were not updated when a new repo was selected.	(CDS-54087)
+  The file paths are now sorted in descending order of last modified. The **File Path** setting in the AWS S3 artifact source now displays artifacts from latest to oldest.
+- The artifactory **Artifact Details** settings were not updated when a new repository was selected.	(CDS-54087)
   
-  Now when you select a new repo, the settings are cleared and you can select new values for the new repo.
+  When you select a new repository, the settings are now cleared, and you can select new values for the new repository.
 - The Artifactory **Artifact Details** settings had the **Repository** URL as mandatory, but it was optional in the pipeline **Service** tab. (CDS-54025)
 
   Now the **Repository** URL can be set as a fixed value or runtime input in the **Service** tab and it is treated as mandatory when you run the pipeline.
-- When selecting a **Custom Remote** source for a Helm Chart, the Helm command **Pull**, **Fetch**, **Add**, and **Update** flags were shown. (CDS-53927)
+- When selecting a **Custom Remote** source for a Helm chart, the Helm command **Pull**, **Fetch**, **Add**, and **Update** flags were shown. (CDS-53927)
   
   Harness does not support these flags when Custom Remote Store is used. 
 
-  They have been removed from the **Custom Remote** source for a Helm Chart (Kubernetes and Native Helm).
+  They are removed from the **Custom Remote** source for a Helm chart (Kubernetes and Native Helm).
 
   | Before  | Now   |
     |-------------- | -------------- |
@@ -184,20 +184,20 @@ connector:
   We now support GAR artifact sources that use package names containing `/`.
 - When updating a trigger that uses Nexus 3 artifact types NuGet and Maven, the older YAML were retained. (CDS-53893)
   
-  Now when switching from NuGet and Maven the updated values are used.
+  Now when switching from NuGet and Maven, the updated values are used.
 - Helm steady state check for Kubernetes version 1.16+ was not working properly with manifests fetched using a Custom Remote store. (CDS-53867)
   
   Harness uses Helm steady state check (`helm status`) to verify that a deployment is successful. This check was not working with Kubernetes version 1.16+ for manifests fetched via the Custom Remote store because we were not supporting the Custom Remote store.
 
   We have now added the Custom Remote and Harness File Store stores to the Helm supported store types list.
-- The tooltip for Nexus 2 and Nexus 3 artifact **Tag** setting wasn't clear. (CDS-53865)
+- The tooltip for the Nexus 2 and Nexus 3 artifact **Tag** setting wasn't clear. (CDS-53865)
   
   It wasn't clear that the **Tag** setting referred to the tag for the package selected in **Package**. The tooltip has been updated to clarify.
 - The inline and remote options for the Create Template modal were not visible because of page length. (CDS-53779)
   
   The page length was obscuring the remote and inline options and users had to scroll to view the two options.
   
-  The height of the modal has been so the options are now visible without scrolling.
+  The height of the modal is adjusted, and the options are now visible without scrolling.
 - The Harness Approval step was not splitting expression values when commas were used.	(CDS-53778)
   
   For example, in the Harness Approval step, the **User Groups** setting can be defined as a expression of two pipeline variables:
@@ -215,12 +215,12 @@ connector:
   
   :::note
   
-  Please ensure no spaces are given in variable values.
+  Ensure that no spaces are used in the variable values.
   
   :::
 - Error messages for Kubernetes dry run failures needed improvement. (CDS-53379)
   
-  By default, Harness Kubernetes deployment steps perform a dry run. The error messages for related failures has been improved to detect what resource failed and what binary version was used.
+  By default, Harness Kubernetes deployment steps perform a dry run. The error messages for related failures are improved to detect what resource failed and what binary version was used.
 
   ![error message](static/3b844b27de9cd72be3fd0502931c388b2993c7e4089dc7376a3b34eddc8467f2.png)  
 
@@ -230,14 +230,14 @@ connector:
   A **Back** button has been added so users can go back and make any changes.
 - The HTTP step error message needed improvement. (CDS-52537)
   
-  Previously only assertion logs were present. Now all logs have been added on Harness delegate.
+  Previously only assertion logs were present. Now all logs are added on the Harness delegate.
   
-  The error message for the step has been improved with these more comprehensive logs.
+  The error message for the step is now improved with more comprehensive logs.
 - The **Update All** button on the pipeline YAML reconcile screen was adding unnecessary changes to the YAML of each field.	(CDS-46496, ZD-38974)
   
   The Git diff in the YAML reconcile screen was performing unnecessary changes like adding quotes to each string value, shifting YAML indentation, converting multiline strings to single line using the newline character, etc.
   
-  Now users will see the correct Git diff in the Harness YAML. The diff will consist only of the necessary changes, such as the addition and removal of fields.
+  Now you can see the correct Git diff in the Harness YAML. The diff consist of necessary changes only, such as the addition and removal of fields.
 
 
 ## March 8, 2023, version 78619
