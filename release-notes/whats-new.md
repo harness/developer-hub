@@ -16,6 +16,57 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 15, 2023, version 787xx
+
+### Continuous Delivery
+
+- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports updating the issue type. (CDS-53876)
+
+  When you update a Jira issue using the Jira Update step, you can now update the issue type. For example, if the issue you are updating is a Story, you can update it to a Task.
+
+  To update an issue type, add a new field named `Issue Type` and mention the new type in its **Value**.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+```yaml
+              - step:
+                type: JiraUpdate
+                name: Jira Update_1
+                identifier: JiraUpdate_1
+                spec:
+                  connectorRef: fcdx
+                  issueKey: <+execution.steps.JiraCreate_1.issue.key>
+                  transitionTo:
+                    transitionName: ""
+                    status: Done
+                  fields:
+                    - name: Description
+                      value: Improve feature X.
+                    - name: Issue Type
+                      value: Task
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+```
+
+  ![update issue type](static/e7593d80236125833f145babe470114b8fa5edb75633c507c20e176dd3c40ed2.png)
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 ## March 9, 2023
 
 ### Security Testing Orchestration
