@@ -67,9 +67,9 @@ import TabItem from '@theme/TabItem';
 
   A Jira connector connects Harness with your Jira account for creating and updating issues during a pipeline execution.
 
- Along with the username and password for authentication, the Jira connector now supports a PAT.
+  Along with the username and password for authentication, the Jira connector now supports a PAT.
 
- The PAT is added to Harness as a Harness secret, and selected in the Jira connector.
+  The PAT is added to Harness as a Harness secret, and selected in the Jira connector.
 
 ```mdx-code-block
 import Tabs1 from '@theme/Tabs';
@@ -116,17 +116,18 @@ connector:
 
 - Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
 
-Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
-
-  This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
+  Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
 ### Fixed issues
 
 - The [Harness GitOps](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-basics) execution summary was stopping the page from loading correctly when the environment Id and name were different. (CDS-54950)
+  
   Now the environment Id is managed and resolved to the name, and the page does not crash.
 - When saving a template in template studio, unsaved changes were displayed even though the template had been saved. (CDS-54842)
+  
   A force page reload did not occur during the template update. This issue is fixed. Now a force reload occurs, and only the saved changes appear in the page.
 - Harness was unable to resolve any settings using expressions in the Jenkins artifact resource. (CDS-54670)
+  
   [Harness integrates with Jenkins](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines/) to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. 
 
   When an expression was used in the Jenkins connector, Harness was unable to resolve the expression because the frontend was not sending the pipeline Id to the runtime API call in the backend correctly.
@@ -224,7 +225,6 @@ Harness performs a `git clone` to fetch files. When fetching very large reposito
 
   ![error message](static/3b844b27de9cd72be3fd0502931c388b2993c7e4089dc7376a3b34eddc8467f2.png)  
 
-- Trigger Status & tags are not properly aligned .. it looks overlapping between these two columns.	CDS-53106		The Trigger list had overlapping columns ( TriggerName & status ), Under this JIRA [ CDS-53106 ] - fixed the overlapping issues.	Yes
 - The Azure connector **Test** page was missing a **Back** button. (CDS-53014)
 
   A **Back** button has been added so users can go back and make any changes.
