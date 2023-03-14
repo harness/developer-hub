@@ -97,19 +97,16 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
 ### Harness Delegate
 
-- The delegate installation UI experience is now updated with a new installation method; the Terraform Helm Provider. In addition, it has been enhanced for existing methods; Helm Chart, Kubernetes Manifest and Docker. This new experience is more developer friendly, for example it enables cutting and pasting of relevant commands, and more automation friendly where the commands can be run in an automated manner using new values when necessary. Additionally, the following new features are available:
+- The delegate installation UI experience is now updated with a new installation method: the Terraform Helm provider. Also, the installation experience has been enhanced for the existing methods (Helm chart, Kubernetes manifest, and Docker). This new experience is more developer friendly. For example, it enables cutting and pasting of relevant commands. You can also automate the commands and use new values when necessary. 
 
- - The **Terraform Helm Provider** method is powered by the open source [Terraform Harness Delegate module](https://registry.terraform.io/modules/harness/harness-delegate/kubernetes/latest) and the open source [Harness Delegate Helm Chart](https://github.com/harness/delegate-helm-chart). The auto upgrade is set to OFF with an option to enable it in the command.
- 
- - The updated method for **Helm Chart** is also powered by the same open source [Harness Delegate Helm Chart](https://github.com/harness/delegate-helm-chart) as the Terraform Helm Provider above. The auto upgrade is set to OFF with an option to enable it in the command. You can also download the [default values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) for the Helm option and edit that to set your own long-lived configuration values.
- 
- - The updated flow for **Kubernetes Manifest** has two options for creating a manifest YAML file specific to your Harness account. 
-  - Basic - Provides a “Download YAML” option where the downloaded YAML has all the configuration variables pre-populated with values specific to your Harness account. 
-  - Custom - Create your own YAML from a [Kubernetes Manifest template](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml) by replacing the placeholders with the values provided in the method.
-  
- Given the need to have a fully qualified YAML, the auto upgrade configuration is set to ON in both the above options. The result is that the delegate version installed will always remain in sync with the version available on the Harness Manager.
- 
- - The **Docker** delegate installation method has now been enhanced to a simple copy and paste of the Docker run command, with the option to modify the pre-populated properties. The auto upgrade is set to OFF for this method with an option to enable it in the command. (DEL-6037)
+  Additionally, the following new features are available:
+    - The **Terraform Helm Provider** method is based on the open source [Terraform Harness Delegate module](https://registry.terraform.io/modules/harness/harness-delegate/kubernetes/latest) and the open source [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart). Auto upgrade is set to `OFF` with an option to enable it in the command.
+    - The updated method for **Helm Chart** is also based on the same open source [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart) as the Terraform Helm provider. Auto upgrade is set to OFF with an option to enable it in the command. You can also download the [default values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) for the Helm option and edit that to set your own long-lived configuration values.
+    - The updated flow for **Kubernetes Manifest** has the following options for creating a manifest YAML file specific to your Harness account.          
+      - **Basic**: Provides a **Download YAML** option. The downloaded YAML has all the configuration variables set to values that are specific to your Harness account. 
+      - **Custom** - Create your own YAML from a [Kubernetes manifest template](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml) by replacing the placeholders with the values provided in the method.
+      Given the need to have a fully qualified YAML, the auto upgrade configuration is set to ON in both the above options. Consequently, the delegate version that is installed always remains in sync with the version available on Harness Manager.
+    - The **Docker** delegate installation method has now been simplified to a copy-and-paste action on the `docker run` command, with the option to modify the preset values. The auto upgrade is set to OFF for this method, with an option to enable it in the command. (DEL-6037)
 
 - The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
 
@@ -342,7 +339,7 @@ infrastructure:
 
 - A [failure strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) is now mandatory for all Deploy stages. (CDS-48951)  
   
-  ![failure strategy](../static/3c690f9ba44e7cac1e6ccb605068b676ddd02f247f37c2d9b2524f30437c97ff.png)  
+  ![failure strategy](static/3c690f9ba44e7cac1e6ccb605068b676ddd02f247f37c2d9b2524f30437c97ff.png)
 
   A failure strategy is now a mandatory setting in the **Deploy** stage. Previously, a failure strategy was mandatory, but the check happened when the pipeline ran. 
   
@@ -358,7 +355,7 @@ infrastructure:
   
   Previously, Harness CD looked for a path relative to the Harness working directory, which is a temporary directory that Harness creates. Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
 
-  ![Custom Remote Manifest](../static/b401a79386824c0b00a74ad4d9ec4576db712982f9371c8e80e0913d5e4aa14a.png)
+  ![Custom Remote Manifest](static/b401a79386824c0b00a74ad4d9ec4576db712982f9371c8e80e0913d5e4aa14a.png)
 
   No action required by users.
 

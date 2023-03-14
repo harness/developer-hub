@@ -106,7 +106,7 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide</h3>
+                  <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
                   Assesses the fundamental skills to deploy CI projects.
                   </div>

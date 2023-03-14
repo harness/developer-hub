@@ -5,7 +5,7 @@ title: Windows EC2 blackhole chaos
 Windows EC2 blackhole chaos results in access loss to the given target hosts or IPs by injecting firewall rules. This fault:
 - Checks the performance of the application (or process) running on the EC2 instances.
 
-![Windows EC2 Blackhole Chaos](./static/images/windows-ec2-blackhole-chaos.png)
+![Windows EC2 Blackhole Chaos](./static/images/windows-ec2-blackhole.png)
 
 ## Use cases
 
