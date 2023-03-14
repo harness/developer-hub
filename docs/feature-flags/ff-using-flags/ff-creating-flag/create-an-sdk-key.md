@@ -18,9 +18,6 @@ After you’ve [created your Environment](create-an-environment.md), you need to
 
 1. In the Environment you created, in **Settings**, click **Create SDK Key**.
 2. In **Create SDK Key**, in **Name**, enter a name for your SDK key.
-
-    For details and restrictions, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
-
 3. In **Key Type**, select either **Client** or **Server** depending on the type of SDK you want to use. For more information about the SDK types Harness supports, go to [Chose a Client-side or Server-side SDK](../../ff-sdks/sdk-overview/client-side-and-server-side-sdks.md). If your organization needs to rotate the keys, you can choose to add more than one key for the same Environment.
 4. Click **Create**.
 5. Copy and store your Secret.

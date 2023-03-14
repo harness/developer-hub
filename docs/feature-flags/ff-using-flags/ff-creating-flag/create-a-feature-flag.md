@@ -53,9 +53,6 @@ When you create a Feature Flag, you also create different options to label the l
 5. Click **Next**.
 6. In **Variation settings**, in **Flag Type**, select **Boolean**.
 7. In the **Name** fields, enter the name for the true and false variations, for example, **True** and **False**.
-
-    Harness generates a unique identifier for each name. For details and restrictions, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
-
 8. In **Default rules for the flag**, select which variation of the flag to serve when the flag is ON or OFF, for example, True when the flag is ON and False when the flag is OFF.
 
     ```mdx-code-block
@@ -98,7 +95,6 @@ To create a multivariate Flag:
 5. In **Variation settings**, in **Flag Type**, select **Multivariate** and then select the **Data Type**. You can select, **String**, **JSON**, or **Number**.
 6. Enter a **Name** and **Value** for each Variation you want to use.
 
-    Harness generates a unique identifier for each name. For details and restrictions, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
 7. In **Default rules for the flag**, define which Variation you will see by default when the Flag is ON or OFF.
 
     ```mdx-code-block
