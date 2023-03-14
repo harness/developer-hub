@@ -14,76 +14,60 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
-### March 10, 2023, version TBD
+### March 10, 2023, version 78426
 
-Delegate: TBD
+Delegate: 78310
 
 This release includes the following module and component versions.
 
 | **Name** | **Version** |
 | :-- | :-- |
-| Manager | TBD |
-| Delegate | TBD |
-| Watcher | TBD |
-| Verification Service | TBD |
-| UI | TBD |
-| Learning Engine | TBD | 
-| Gateway | TBD |
+| Manager | 78426 |
+| Delegate | 78310 |
+| Watcher | 77431 |
+| Verification Service | 78426 |
+| UI | 78400 |
+| Learning Engine | 66700 | 
+| Gateway | 2000149 |
 
 #### New features and enhancements
 
-- This release includes upgrades to the following libraries. (DEL-5632)
-  - io.netty:netty-all:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-buffer:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-handler-proxy:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-common:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-handler:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-resolver-dns:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-resolver:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-transport-native-epoll:linux-x86_64:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-transport-native-kqueue:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-transport-native-unix-common:4.1.77.Final -> 4.1.86.Final
-  - io.netty:netty-transport:4.1.77.Final -> 4.1.86.Final		
+- To fix vulnerability associated with current [elastic search client version 7.7.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.7.0), we are upgrading it to [version 7.17.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.17.7) (PL-30666)
+  	
+- The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a data transfer object (DTO) that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
+  
+Removed the following libraries from the delegate to fix a high-severity vulnerability. (DEL-5721)
+   - org_mongodb_mongodb_driver_sync
+   - org_mongodb_mongodb_driver_legacy
+  
+- Added support for auto-generating and updating build files with test-only java_library targets  to support package-level test build files with build cleaner. (PL-5713)
 
-- This release includes upgrades to the following libraries to fix vulnerabilities. This release also moves the base image of delegates from `redhat/ubi8-minimal:8.4` to `redhat/ubi8-minimal:8.7`. (DEL-5591, ZD-37058)
-  - "org.apache.cxf:cxf-core:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-bindings-soap:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-bindings-xml:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-databinding-jaxb:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-frontend-jaxws:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-frontend-simple:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-transports-http-hc:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-transports-http:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-ws-addr:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-ws-policy:3.5.4" -> 3.5.5
-  - "org.apache.cxf:cxf-rt-wsdl:3.5.4" -> 3.5.5
+- Customers can now leverage a new method to selectively escape given characters. (CDS-54875)  
 
-- PRNS-TBD DEL-5507	
+  The syntax is as follows:
 
-- Delegate containers now check on startup if a user has sufficient file permissions to run the delegate. If user doesn't have permissions, it fails quickly and prints an explicit error message. (DEL-5440)	
-- Added internal metrics to track the pattern of automatic delegate upgrades. (DEL-5383)
-- Decreasing the overall all perpetual task count. (CDS-46240)
-  Now we create a perpetual task on the basis of the cloud provider. This decreases the all perpetual task counts overall.The Harness Manager is not changed and no user action is required.	
+  `shell.escapeChars(<input string>, <string of characters to be escaped>)`
+
+  For example, `shell.escapeChars("hello", "ho")` returns `\hell\o`
 
 #### Fixed issues
 
-- Users are not added to the user groups through SCIM when the authentication mechanism is username and password. (PL-30124)
-  A notification email is sent to the users instead of an email invite and the system throws an exception.	
-- Hide NextGen option was enabled by default for the Account Admin user group in new trial accounts. 
-  The Harness NextGen option is no longer enabled by default for Account Admin user groups.(PL-30070)
-- Functionality was added to send an alert within 30 minutes of delegate shutdown. If delegate groups are in use, the alert is sent only when all the delegate members shut down. To use this functionality, enable the INSTANT_DELEGATE_DOWN_ALERT feature flag. (PL-30005, ZD-34766)	
-- Fixed a shell delegate issue that occurred on restart. The delegate name was not visible. (DEL-5443)		
-- Avoid calling closeChannel more than one time during watcher shutdown. Invoking the method two times can cause the logsAvoid method to unnecessarily wait during executor shutdown. (DEL-4924)	
-- DelegateGroup is not removed from the database or the UI after the associated delegate is deleted. (DEL-3913) The code was changed to ensure that an inactive delegate is deleted from the UI after seven days.	
-- Rollback artifact number (`${rollbackArtifact.buildNo}`) is coming as null (CDS-47328, ZD-37309)  
-  Fixed a problem where incorrect metadata was being populated into executions after updating the environment's infra definitions.  
-  For more information, go to [Artifact Rollback Variables](../firstgen-platform/techref-category/variables/built-in-variables-list.md#artifact-rollback-variables).
-- Slow running Looker queries in Deployments (FirstGen) dashboard (CDS-45074)  
-  When the customer uses fields for Deployments Tags, the queries became extremely slow.  
-  Removed a few unused indexes and added a few indexes to improve the speed of queries.
-- **Rollback Deployment** button incorrectly showing Not Authorized (CDS-17420)  
-  When the `FREEZE_DURING_MIGRATION` feature flag was enabled in an account, the **Rollback Deployment** button was marked User Not Authorized.   
-  Now, when the `FREEZE_DURING_MIGRATION` feature flag is enabled in an account, the **Rollback Deployment** button is available if the user has the correct permissions).	
+- Fixed an issue that resulted in exceptions due to missing kryo exception classes.	(PL-31162)	
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+  
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+
+- When the scheduling of background jobs is skipped during startup, background jobs like the deletion of old records do not work. A code enhancement has fixed this issue. (PL-31009)
+
+- Selecting a specific audit filter for an API key causes the UI to become unresponsive. An added check ensures that only essential data is sent for display. This has fixed the issue. (PL-30715, ZD-38400)
+ 
+- SAML users removed from the LDAP group are displayed in the linked user group in Harness. A code enhancement has fixed this issue. (PL-30291, ZD-37758)
+  
+- Clicking on the **Forgot password** button after disabling SSO authentication is redirecting to the Harness FirstGen authentication UI. This is now fixed and users are redirected to the NextGen authentication UI. (PL-24649)
+
+- Changed delegate behavior to ensure that the tasks assigned to a delegate fail if the delegate does not send heartbeats for a period of three minutes. (DEL-5821)
+- Added validation to ensure that delegates using the YAML of the Legacy Delegate fail on start with the correct error message. (DEL-5715)
+- Added functionality to explicitly release a lock on the profile (`profile.lock` file). This resolves a rare case in which there is no running profile but a profile.lock file or profile in a locked state exists. (DEL-5659, ZD-38469)
 
 
 ### February 9, 2023, version 78109
