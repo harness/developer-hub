@@ -234,18 +234,6 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-react-quickstart",
   },
   {
-    title: "Github Action steps",
-    module: "ci",
-    icon: "img/icon_ci.svg",
-    description: (
-      <>This guide shows how to run GitHub Actions natively with harness CI.</>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/build-code/ci-github-action-step",
-  },
-  {
     title: "Push application containers to Google Artifact Registry",
     module: "ci",
     icon: "img/icon_ci.svg",

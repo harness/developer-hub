@@ -14,6 +14,62 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
+### March 10, 2023, version 78426
+
+Delegate: 78310
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 78426 |
+| Delegate | 78310 |
+| Watcher | 77431 |
+| Verification Service | 78426 |
+| UI | 78400 |
+| Learning Engine | 66700 | 
+| Gateway | 2000149 |
+
+#### New features and enhancements
+
+- To fix a vulnerability associated with current [elastic search client version 7.7.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.7.0), we are upgrading it to [version 7.17.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.17.7). (PL-30666)
+  	
+- The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a data transfer object (DTO) that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
+  
+Removed the following libraries from the delegate to fix a high-severity vulnerability. (DEL-5721)
+   - org_mongodb_mongodb_driver_sync
+   - org_mongodb_mongodb_driver_legacy
+  
+- Added support for auto-generating and updating build files with test-only java_library targets to support package-level test build files with build cleaner. (PL-5713)
+
+- You can now leverage a new method to selectively escape given characters. (CDS-54875)  
+
+  The syntax is as follows:
+
+  `shell.escapeChars(<input string>, <string of characters to be escaped>)`
+
+  For example, `shell.escapeChars("hello", "ho")` returns `\hell\o`
+
+#### Fixed issues
+
+- Fixed an issue that resulted in exceptions due to missing kryo exception classes. (PL-31162)
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+  
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+
+- When background job scheduling is skipped during startup, background jobs, like the deletion of old records, do not work. A code enhancement has fixed this issue. (PL-31009)
+
+- Selecting a specific audit filter for an API key causes the UI to become unresponsive. An added check ensures that only essential data is sent for display. This has fixed the issue. (PL-30715, ZD-38400)
+ 
+- SAML users removed from the LDAP group are displayed in the linked user group in Harness. A code enhancement has fixed this issue. (PL-30291, ZD-37758)
+  
+- Selecting **Forgot password** after disabling SSO authentication redirects users to the Harness FirstGen authentication UI. This is now fixed and users are redirected to the NextGen authentication UI. (PL-24649)
+
+- Changed delegate behavior to ensure that the tasks assigned to a delegate fail if the delegate does not send heartbeats for a period of three minutes. (DEL-5821)
+- Added validation to ensure that delegates using the YAML of the Legacy Delegate fail on start with the correct error message. (DEL-5715)
+- Added functionality to explicitly release a lock on the profile (`profile.lock` file). This resolves a rare case in which there is no running profile but a `profile.lock` file or profile in a locked state exists. (DEL-5659, ZD-38469)
+
+
 ### February 9, 2023, version 78109
 
 Delegate: 78106

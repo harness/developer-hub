@@ -45,24 +45,25 @@ When you create a Feature Flag, you also create different options to label the l
 1. In **Feature Flags**, click **+ New Flag**.
 2. Select **Boolean**.
 3. In **About the Flag**, in **Name**, enter a name for your Flag and click **Next**.
-:::note
- When you name a Flag, Harness automatically generates its identifier. You can edit the Identifier when you are creating the Flag, but not after it is saved. If you rename the Flag, the Identifier remains the same. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
-:::
+
+    :::info
+     When you name a Flag, Harness automatically generates its identifier. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the Flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
+    :::
 4. To make the Feature Flag permanent, select the **This is a permanent flag** checkbox. Permanent Flags are flags you intend to stay in your system indefinitely, so we will never mark them as potentially stale.
 5. Click **Next**.
-6. In **Variation** **settings**, in **Flag Type**, select **Boolean**.
+6. In **Variation settings**, in **Flag Type**, select **Boolean**.
 7. In the **Name** fields, enter the name for the true and false variations, for example, **True** and **False**.
 8. In **Default rules for the flag**, select which variation of the flag to serve when the flag is ON or OFF, for example, True when the flag is ON and False when the flag is OFF.
 
-```mdx-code-block
-<img src={var_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
-```
+    ```mdx-code-block
+    <img src={var_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
+    ```
 
-*Figure 3: Variation settings*
+    *Figure 3: Variation settings*
 
 9. Click **Save and Close**. The Feature Flag is created and is set to **OFF** by default.
 
-![A screenshot of the Feature Flags page with the new Flag added.](./static/4-create-a-feature-flag-08.png)*Figure 4: A boolean Flag*
+    ![A screenshot of the Feature Flags page with the new Flag added.](./static/4-create-a-feature-flag-08.png)*Figure 4: A boolean Flag*
 
 After you have created your Boolean Flag, you can then:
 
@@ -85,16 +86,22 @@ To create a multivariate Flag:
 1. In **Feature Flags**, click **+ New Flag**.
 2. Select **Multivariate**.
 3. In **About the Flag**, in **Name**, enter a name for your Flag and click **Next**.
+
+    :::info
+     When you name a Flag, Harness automatically generates its identifier. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the Flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
+    :::
+
 4. To make the Feature Flag permanent, select the **This is a permanent flag** checkbox. Permanent Flags are flags you intend to stay in your system indefinitely, so we will never mark them as potentially stale. For example, if you are offering a premium feature to some of your customers but not others, you can use a permanent flag to manage who sees this feature indefinitely.
 5. In **Variation settings**, in **Flag Type**, select **Multivariate** and then select the **Data Type**. You can select, **String**, **JSON**, or **Number**.
 6. Enter a **Name** and **Value** for each Variation you want to use.
+
 7. In **Default rules for the flag**, define which Variation you will see by default when the Flag is ON or OFF.
 
-```mdx-code-block
-<img src={multivar_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
-```
+    ```mdx-code-block
+    <img src={multivar_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
+    ```
 
-*Figure 5: Variation settings of a multivariate Flag*
+    *Figure 5: Variation settings of a multivariate Flag*
 
 After you have created your multivariate Flag, you can then:
 
