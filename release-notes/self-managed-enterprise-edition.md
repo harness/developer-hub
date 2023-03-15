@@ -11,7 +11,7 @@ Harness Self-Managed Enterprise Edition is updated regularly in Harness SaaS. Re
 The release notes below are only for Self-Managed Enterprise Edition. NextGen SaaS release notes are available [here](/release-notes/whats-new) and FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 :::
 
-## March 10, 2023, version 78426
+## March 14, 2023, version 78426
 
 This release includes the following Harness module and component versions.
 
@@ -28,6 +28,80 @@ This release includes the following Harness module and component versions.
 | LE NG | 67500 |
 
 ### New features and enhancements
+
+- The **kotsadmin minor version** is upgraded from 1.88.0 to 1.95.0. (SMP-835)
+
+   To upgrade kots to 1.95.0, run:  
+
+       curl https://kots.io/install/1.95.0 | bash
+
+    If you get a `/usr/local/bin is not writable` error, run:
+
+       sudo chown -R `whoami`:admin /usr/local/bin
+
+    then proceed with the installation.
+
+    To update the kots admin console, run:
+
+       kubectl kots admin-console upgrade -n NAMESPACE --wait-duration 10m
+
+    To check the version, run:  
+       
+       kubectl kots version
+
+- The **mongoDB minor version** is upgraded from 4.2 to 4.4. (SMP-837)
+
+  To upgrade to 4.4, do the following.
+
+  1. Get the current featureCompatibiltyVersion. It should be 4.2 if it is using mongo 4.2:
+
+          db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
+
+  2. If the current version isn't 4.2, execute into Primary and run:
+
+          db.adminCommand( { setFeatureCompatibilityVersion: "4.2" } )
+
+  3. Determine if the pods are in sync. Make sure they're in sync before you upgrade (the maximum time lag is ~2sec). 
+
+          rs.printsecondaryreplicationinfo()
+
+   4. Proceed to upgrade mongo to 4.4. 
+
+      After the update, continue to monitor the pods to ensure that they're in sync.
+
+   5. Once you're upgraded, update the Feature Compatibility version so that it's used for future upgrades.
+
+           db.adminCommand( { setFeatureCompatibilityVersion: "4.4" } )
+
+  For more information, go to [Upgrade a Replica Set to 4.4](https://www.mongodb.com/docs/manual/release-notes/4.4-upgrade-replica-set/) in the MongoDB docs.
+
+- The **TimescaleDb minor version** is upgraded from pg13-ts2.6 to pg13-ts2.9. There is no change in postgres version and no major changes for TimescaleDB. (SMP-838)
+
+    1. Before the minor version upgrade, check the timescaledb extension version by executing into the pod and running:
+
+         \dx timescaledb
+
+     The version should be 2.6.1.
+
+    2. Proceed to upgrade timescaleDB using the installation methods (KOTS/Helm).
+
+    3. After the timescale pods are in steady state, run:
+
+            ALTER EXTENSION timescaledb UPDATE;
+
+    4. Validate the change by running:
+
+          \dx timescaledb
+
+    The version now should be 2.9.3.
+
+  For more information, go to [Upgrading the TimescaleDB extension](https://docs.timescale.com/timescaledb/latest/how-to-guides/upgrades/minor-upgrade/#upgrading-the-timescaledb-extension) in the Timescale docs.
+
+- From Self-Managed Enterprise Helm Chart version 0.4.xx and above, you will see a warning if any Self-Managed Enterprise release is skipped after upgrade. (SMP-811)
+ 
+  You will see this warning:  
+
+  `"# Info: Your current chart is xxx and app yyy. You seem to have skipped intermediate public releases. Starting chart 0.4.0 and app 784xx, upgrade policies are being formulated. Please upgrade the charts in consecutive minor versions for backward compatibility."`
 
 - The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. This update will not affect any business operations. (PL-31136)
 - The [Role Assignment](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now includes the principal's name and email address in the response. (PL-31064, ZD-36050)
@@ -111,6 +185,8 @@ This release includes the following Harness module and component versions.
    ![](static/cds-45347.png)
 
 ### Fixed issues
+
+- Fixed an issue where users were unable to fetch Google Artifact Registry (GAR) artifacts with package names that use /. (CDS-53908)
 
 - Fixed a back-end issue that could result in timeouts when a user tries to sign up for the Harness Community. (PLG-1860)
   
