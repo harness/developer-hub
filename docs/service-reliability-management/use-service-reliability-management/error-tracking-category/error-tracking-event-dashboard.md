@@ -70,4 +70,4 @@ The Event List displays the following information:
 
 ## Next steps
 
-Get to the root of events in production and staging environments using [Automated Root Cause (ARC)](error-tracking-arc.md).
+Get to the root cause of events in production and lower environments using [Automated Root Cause (ARC)](error-tracking-arc.md).
