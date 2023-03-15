@@ -18,7 +18,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-- Metrics graphs have been added to the **Create SLO** screen. (SRM-14025)  
+- Metrics graphs are now added to the **Create SLO** screen. (SRM-14025)  
     
   When configuring Service Level Indicators (SLIs) in the **Create SLO** screen, you will now see a metric graph based on the last 24 hours of data received from your health monitoring tool. Additionally, the recommended minimum, maximum, and average values specific to the SLI parameter that you are configuring will be displayed.  
   
@@ -32,17 +32,17 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- Continuous Verification (CV) is failing due to timestamp format difference. (SRM-14167)  
+- Continuous Verification (CV) is fails due to timestamp format difference. (SRM-14167)  
   
-  This issue has been fixed by updating the timestamp format in the API request.
+  This issue is fixed by updating the timestamp format in the API request.
 
-- Long Prometheus metric links would overflow outside the **METRIC NAME** column and obstruct adjacent column values in the console view during pipeline runs. (SRM-14107)  
+- Long Prometheus metric links overflow outside the **METRIC NAME** column and obstruct adjacent column values in the console view during pipeline runs. (SRM-14107)  
   
-  This issue has been fixed and the long Prometheus metric links are now contained within the **METRIC NAME** column, preventing them from obstructing values in the adjacent column.
+  This issue is fixed and the long Prometheus metric links are now contained within the **METRIC NAME** column, preventing them from obstructing values in the adjacent column.
 
-- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes were made. (SRM-14107)  
+- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes are made. (SRM-14107)  
   
-  This issue has been fixed, and the **Save** button will be enabled only if changes are made to the monitored service template. In addition, an unsaved changes alert will appear next to the **Save** button when changes are made to the template values.
+  This issue is fixed, and the **Save** button is now enabled only if changes are made to the monitored service template. Additionally, an unsaved changes alert now appears next to the **Save** button when changes are made to the template values.
 
 
 ## March 8, 2023, version 78619
