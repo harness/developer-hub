@@ -210,7 +210,8 @@ NOTE:
 2. Conditional expressions within double quotes are considered strings.
    So, "<+json.select("fields.status.name", httpResponseBody)>"=="In Progress" is treated as string comparison and will not work.
    Use `<+json.select("fields.status.name", httpResponseBody)>=="In Progress"` instead.
-   Similarly, use `<+json.object(httpResponseBody).fields.parent>!=null` for null comparison.
+   The keyword null, too, shouldn't be enclosed in quotes during comparison. Here's an example of a null comparison:
+   <+json.object(httpResponseBody).fields.parent>!=null
 ```
 
 ## XML Functor
