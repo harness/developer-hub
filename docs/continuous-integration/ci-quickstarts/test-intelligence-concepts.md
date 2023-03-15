@@ -93,7 +93,7 @@ For details about the test report contents and the call graph visualization, go 
 
 ## What can you achieve with Test Intelligence?
 
-We ran Test Intelligenc eon your biggest repositry, Harness-Core. Here's what we achieved:
+We ran Test Intelligence on our biggest repository, Harness-Core. Here's what we achieved:
 
 ![](./static/test-intelligence-concepts-5012.png)
 

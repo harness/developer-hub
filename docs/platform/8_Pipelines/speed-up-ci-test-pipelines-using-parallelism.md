@@ -205,7 +205,7 @@ The pipeline needs timing data from the previous run to split tests by time. If 
 * `--split-by testcase_timing` — Split tests into groups based on the timing data for individual test cases.
 * `--split-by testsuite_timing` — Split tests into groups based on the timing data for individual test suites.
 
-### Specifying the Tests to Split
+### Specifying the tests to split
 
 To split tests by time, you need to provide a list of the classes, test cases, or test suites to include.In the following example code, included in a Run Tests step, the `split_tests` command parses all matching test files (`--glob` option) and splits them into separate lists based on `--split-by file_timing`. The number of lists is based on the parallelism setting. If `parallelism` = 2, for example, the the command creates creates two separate lists of files, evenly divided by testing time. The pipeline then creates two parallel steps that run tests for the files in each list.
 
