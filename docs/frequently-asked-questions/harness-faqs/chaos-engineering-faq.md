@@ -12,13 +12,13 @@ helpdocs_is_published: true
 
 For an overview of Harness support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies).
 
-#### How to add and manage a custom ChaosHub?
+#### How to add and manage a custom chaos hub?
 
-You can navigate to ChaosHubs in the chaos module and click `+ New ChaosHub` and fill in the details regarding your public or private hub. Ensure you have ChaosHub Read/Write permission enabled and a GitHub connector configured for the repository you are about to connect.
+You can navigate to chaos hubs in the chaos module and click `+ New ChaosHub` and fill in the details regarding your public or private hub. Ensure you have chaos hub read/write permission enabled and a GitHub connector configured for the repository you are about to connect.
 
-#### How do I connect a private chaoshub?
+#### How do I connect a private chaos hub?
 
-To connect a private chaoshub repository you would need to first connect a Harness GitHub Connector by providing it your GitHub SSH key or Personal Access Token and mode of connecting either through a Harness Delegate or Git directly. Once done, you can choose that connector when selecting your connector while adding a ChaosHub.
+To connect a private chaos hub repository you would need to first connect a Harness GitHub Connector by providing it your GitHub SSH key or Personal Access Token and mode of connecting either through a Harness Delegate or Git directly. Once done, you can choose that connector when selecting your connector while adding a chaos hub.
 
 #### How are faults different from experiments?
 

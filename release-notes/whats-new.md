@@ -524,7 +524,7 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 
 ### Chaos Engineering
 
-- Update feature for ChaosHub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected ChaosHub.
+- Update feature for chaos hub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected chaos hub.
 
 - Adds CDN Support for Chaos module static artifacts thereby loading the UI with reduced latency on client devices.
 
