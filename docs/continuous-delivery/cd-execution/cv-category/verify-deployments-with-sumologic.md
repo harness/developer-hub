@@ -1,6 +1,6 @@
 ---
 title: Verify Deployments with Sumo Logic
-description: This topic shows you how to verify deployments with Sumo Logic.
+description: This topic shows you how to verify deployments with Sumo Logic. 
 sidebar_position: 12
 helpdocs_is_private: false
 helpdocs_is_published: true
