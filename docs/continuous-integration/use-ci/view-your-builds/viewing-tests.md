@@ -12,8 +12,8 @@ Your pipelines can run tests in **Run** and **Run Tests** steps.
 
 To publish test results, set the **Report Paths** setting in the relevant [Run](../../ci-technical-reference/run-step-settings.md) or [Run Tests](../../ci-technical-reference/configure-run-tests-step-settings.md) step.
 
-To view test reports for builds that include tests, go to the **Tests** tab on the **Build details** page. In order for the **Tests** tab to show results, your test reports must be in JUnit XML format. Harness parses test reports that are in JUnit XML format only.
+If the test reports are in JUnit XML format, you can review test reports on the **Tests** tab on the [Build details page](./viewing-builds.md). Test reports must be in JUnit XML format to appear on the **Tests** tab. Harness parses test reports that are in JUnit XML format only.
 
 ![](./static/viewing-tests-533.png)
 
-For details about the contents of this dashboard with Test Intelligence enabled, go to [Enable Test Intelligence](../set-up-test-intelligence/set-up-test-intelligence.md).
+If you use Test Intelligence for your unit tests, the **Tests** tab contains information unique to Test Intelligence. To learn more about the contents of this dashboard with Test Intelligence enabled, go to [Enable Test Intelligence](../set-up-test-intelligence/set-up-test-intelligence.md).

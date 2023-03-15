@@ -1,6 +1,6 @@
 ---
 title: Test Intelligence
-description: Reduce test time by running only relevant tests.
+description: Reduce unit test time by running only relevant unit tests.
 
 # sidebar_position: 2
 helpdocs_topic_id: vtu9k1dsfa
@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build.
 
-Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI dramatically improves test times by running only the tests required to confirm the quality of the code changes that triggered the pipeline. Instead of running all your tests, TI selects a subset of tests and skips the rest. Harness TI can also automatically split selected tests to run them in parallel.
+Harness Test Intelligence (TI) helps your test cycle move faster without compromising quality. TI dramatically improves test times by running only the unit tests required to confirm the quality of the code changes that triggered the pipeline. Instead of always running all unit tests, TI selects a subset of unit tests and skips the rest. Harness TI can also automatically split selected tests to run them in parallel.
 
 You have full visibility into which tests were selected and why. Enabling TI doesn't require you to change build and test processes.
 
@@ -21,6 +21,12 @@ Test Intelligence is available for the following codebases:
 * Kotlin
 * .NET Core: Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 * Scala
+
+:::info
+
+Test Intelligence is for unit tests only.
+
+:::
 
 ## Visual summary
 

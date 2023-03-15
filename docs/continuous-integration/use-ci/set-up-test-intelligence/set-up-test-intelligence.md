@@ -1,6 +1,6 @@
 ---
 title: Enable Test Intelligence
-description: Reduce test time by running only relevant tests.
+description: Reduce unit test time by running only relevant unit tests.
 sidebar_position: 10
 helpdocs_topic_id: 428cs02e6u
 helpdocs_category_id: 29nai2tbs6
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Test Intelligence (TI) improves test time by running only the tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works, go to [Test Intelligence Overview](../../ci-quickstarts/test-intelligence-concepts.md).
+Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works, go to [Test Intelligence Overview](../../ci-quickstarts/test-intelligence-concepts.md).
 
 The **Run Tests** step executes one or more test on a container image. Adding the **Run Tests** step to a pipeline's **Build** stage enables Test Intelligence on that pipeline. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
 
@@ -73,7 +73,7 @@ Use these steps to configure the **Run Tests** step and generate an initial call
    * **Test Annotations:** Leave blank or provide a comma-separated list of test annotations to use in unit testing. If you do not provide a list of test annotations, the default is `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
    * **Namespaces:** For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.
 
-   For more information about these settings, go to [Run Tests step settings](../../ci-technical-reference/configure-run-tests-step-settings.md).
+   For more information about these settings, and other **Run Tests** step settings, go to [Run Tests step settings](../../ci-technical-reference/configure-run-tests-step-settings.md).
 
 <details>
 <summary>YAML example</summary>

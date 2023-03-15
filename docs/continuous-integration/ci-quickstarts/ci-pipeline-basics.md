@@ -12,7 +12,7 @@ This topic covers basic terminology and concepts related to CI pipelines. For ge
 
 ## Pipelines
 
-A CI pipeline is an end-to-end integration workflow that pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as Docker Hub, Google Cloud Registry, JFrog Artifactory, and many others.
+A CI pipeline is an end-to-end integration workflow that, in its simplest form, pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as DockerHub, Google Cloud Registry, JFrog Artifactory, and many others.
 
 You can run a pipeline manually or set up triggers to automatically run it on a schedule or when an event occurs, such as a Git merge in your codebase.
 
@@ -58,7 +58,7 @@ If you're using Harness Cloud build infrastructure, you can also use the [GitHub
 
 Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Cache CI Data](/docs/category/share-and-cache-ci-data).
 
-## Remote Docker layer caching
+### Remote Docker layer caching
 
 Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
@@ -98,9 +98,13 @@ You can add and reference custom variables in pipelines and stages. They're avai
 
 You can run your pipelines manually or use triggers to initiate their execution. You can trigger a pipeline based on Git commits and pull requests, schedules, and so on.
 
-## Test Intelligence
+## Tests
 
-Test Intelligence speeds up your test cycles by running only the tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in the test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Test Intelligence overview](test-intelligence-concepts.md).
+In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests.
+
+### Test Intelligence
+
+Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Test Intelligence overview](test-intelligence-concepts.md).
 
 ## CI Overview
 
