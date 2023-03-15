@@ -13,6 +13,38 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+
+## March 15, 2023, version 787xx
+
+### What's new
+
+- Metrics graphs have been added to the **Create SLO** screen. (SRM-14025)  
+    
+  When configuring Service Level Indicators (SLIs) in the **Create SLO** screen, you will now see a metric graph based on the last 24 hours of data received from your health monitoring tool. Additionally, the recommended minimum, maximum, and average values specific to the SLI parameter that you are configuring will be displayed.  
+  
+  This feature eliminates the need for switching between the Harness **Create SLO** screen and your health monitoring tool dashboard to determine the most appropriate value for the SLI parameter you are configuring. For instance, if you opt for the ratio-based evaluation method while configuring your SLI, you can refer to the metric graphs and accompanying suggested values to determine the ideal percentage of valid requests to be considered for your SLI.  
+  
+  ![Metrics graph in Create SLO screen](./static/srm-rn-787-metricgraph.png)
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- Continuous Verification (CV) is failing due to timestamp format difference. (SRM-14167)  
+  
+  This issue has been fixed by updating the timestamp format in the API request.
+
+- Long Prometheus metric links would overflow outside the **METRIC NAME** column and obstruct adjacent column values in the console view during pipeline runs. (SRM-14107)  
+  
+  This issue has been fixed and the long Prometheus metric links are now contained within the **METRIC NAME** column, preventing them from obstructing values in the adjacent column.
+
+- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes were made. (SRM-14107)  
+  
+  This issue has been fixed, and the **Save** button will be enabled only if changes are made to the monitored service template. In addition, an unsaved changes alert will appear next to the **Save** button when changes are made to the template values.
+
+
 ## March 8, 2023, version 78619
 
 ### What's new
