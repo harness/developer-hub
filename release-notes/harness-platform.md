@@ -92,7 +92,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - A pipeline becomes unresponsive when invalid YAML is pasted in the run pipeline form. (PIE-8668)
   
-  The issue is fixed by adding a check for invalid pipeline YAML when pipeline is added via the YAML pipeline studio. 
+  The issue has been fixed by adding a check for invalid pipeline YAML when pipeline is added via the YAML pipeline studio. 
 
 - The table view on the pipelines list page is reset to page 1 when a pipeline is deleted. (PIE-8572)
   
@@ -106,7 +106,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   A code enhancement has fixed this issue.
 
-- The backend API to retrieve filtered pipeline executions does not return executions that are marked successful in the UI, but not in the backend. (PIE-8042)
+- The API to retrieve filtered pipeline executions does not return executions that are successful in the UI, but failed in the backend. (PIE-8042)
 
   A code enhancement has fixed this issue.
 
