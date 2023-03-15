@@ -29,7 +29,7 @@ This release does not include any early access features.
    This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any errors.
 
 
-* The `ANOMALY_DETECTION_CLOUD` job responsible for displaying Cloud Anomalies was not being executed in accounts without a cluster connector.  (CCM-11228)
+* The `ANOMALY_DETECTION_CLOUD` job responsible for displaying cloud anomalies was not being executed in accounts without a cluster connector.  (CCM-11228)
   
    This issue has been fixed, and anomalies are now computed even in the absence of a cluster connector.
 * Previously, when attempting to delete a Recommendation filter, an error message would appear.(CCM-11300)
