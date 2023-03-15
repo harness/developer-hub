@@ -82,12 +82,12 @@ To create an Environment from outside of a pipeline, you use **Environments** in
 Next you can define all of its settings:
 
 * **Infrastructure Definitions:** represent one or more environment infrastructures.
-  * Infrastructure Definitions are the actual clusters, hosts, etc., where Harness deploys a Service.
-  * For example, you might have a QA Environment with separate Kubernetes clusters (Infrastructure Definitions) for each Service you want to test.
-  * You can add multiple Infrastructure Definitions to a single Environment and select one when you add the Environment to a stage.
-* **Configuration:** the default Environment configuration, including variables, manifests, specifications, and config files that will be used every time the Environment is used in a stage.
-* **Service Overrides:** override specific Services. You select a Service and define what will be overridden whenever that Service is deployed to this Environment.
-* **GitOps Clusters:** adding Harness GitOps Clusters to an Environment lets you select them as the deployment target in stages. For more information on Harness GitOps, see [Harness GitOps Basics](../../cd-gitops/harness-git-ops-basics.md).
+  * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service.
+  * For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
+  * You can add multiple infrastructure definitions to a single environment and select one when you add the environment to a stage.
+* **Configuration:** the default environment configuration, including variables, manifests, specifications, and config files that will be used every time the environment is used in a stage.
+* **Service Overrides:** override specific services. You select a service and define what will be overridden whenever that Service is deployed to this environment.
+* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](../../cd-gitops/harness-git-ops-basics.md).
 
 ### Infrastructure definitions
 
@@ -107,7 +107,7 @@ In the environment **Configuration**, you can manage the **Name**, **Description
 
 ![](./static/services-and-environments-overview-15.png)
 
-You can also set default manifests, specifications, config files, and variables to use whenever Harness deploys a service to this Environment.
+You can also set default manifests, specifications, config files, and variables to use whenever Harness deploys a service to this environment.
 
 For example, a stage has a Kubernetes service with a manifest but whenever that service is deployed to the **QA** environment, the manifest in that environment's **Configuration** overwrites the namespace of with the manifest in the service with `QA`.
 
@@ -115,20 +115,19 @@ For example, a stage has a Kubernetes service with a manifest but whenever that 
 
 Service overrides are different from **Environment Configuration** in the following ways:
 
-* Environment **Configuration**: applies to every Service that is used with the Environment.
+* Environment **Configuration**: applies to every service that is used with the environment.
 * Environment **Service Overrides**: applies to specific services you select. Whenever that service is used with that environment, the **Service Override** is applied.
 
 
 ### Override priority
 
-When you are using Environment Configuration and Service Override to override Service settings, it's important to understand the priority of the overrides.
+When you are using environment configuration and service override to override service settings, it's important to understand the priority of the overrides.
 
 The priority from top to bottom is:
 
-1. Environment Service Overrides
-2. Environment Configuration
-3. Service Settings
-
+1. Environment service overrides
+2. Environment configuration
+3. Service settings
 
 ![](./static/services-and-environments-overview-16.png)
 
@@ -180,23 +179,23 @@ When you have **Variables** with the same name at two or more of the environment
 
 ### GitOps Clusters
 
-When you use Harness GitOps you can add GitOps Clusters to an Environment. 
+When you use Harness GitOps you can add GitOps clusters to an environment. 
 
 To learn more about Harness GitOps, go to [Harness GitOps Basics](../../cd-gitops/harness-git-ops-basics.md). 
 
-Next, when you create a Pipeline, you can select the Environment and the GitOps Cluster(s) to use.
+Next, when you create a pipeline, you can select the environment and the GitOps cluster(s) to use.
 
 ![](./static/services-and-environments-overview-20.png)
 
-GitOps Clusters are used in a PR Pipeline. A PR Pipeline creates and merges a Git PR on the config.json for a destination cluster as part of an ApplicationSet. The PR Pipeline runs, merges a change to the config.json, and a GitOps Sync on the ApplicationSet is initiated.
+GitOps clusters are used in a PR pipeline. A PR pipeline creates and merges a Git PR on the `config.json` for a destination cluster as part of an ApplicationSet. The PR Pipeline runs, merges a change to the config.json, and a GitOps sync on the ApplicationSet is initiated.
 
-GitOps Clusters are not used in standard CD Pipelines. Only when using GitOps.
+GitOps Clusters are not used in standard CD pipelines. They're used when using GitOps only.
 
-### Runtime Inputs and Expressions in Services and Environments
+### Runtime inputs and expressions in services and environments
 
-If you use Runtime Inputs in your Services and Environments, users will need to provide values for these when they run Pipeline using these Services and Environments.
+If you use runtime inputs in your services and environments, users will need to provide values for these when they run pipeline using these services and environments.
 
-If you use Expressions in your Services and Environments, Harness must be able to resolve these expressions when users run Pipeline using these Services and Environments.
+If you use expressions in your services and environments, Harness must be able to resolve these expressions when users run pipeline using these services and environments.
 
 Select **Runtime input** for the service and environment.
 
@@ -206,11 +205,11 @@ When you run the pipeline, you can select the service and environment for their 
 
 ![](./static/services-and-environments-runtime-input-02.png)
 
-For more information on Runtime Inputs and Expressions, go to [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md).
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md).
 
-### Services and Environments RBAC
+### Services and environments RBAC
 
-Please review these key RBAC uses cases for Services and Environments.
+Please review these key RBAC uses cases for services and environments.
 
 For extensive information on Harness RBAC, go to [Harness Role-Based Access Control Overview](../../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md) and [Harness Role-Based Access Control Quickstart](../../../platform/4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md).
 
