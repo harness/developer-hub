@@ -50,7 +50,7 @@ The Key Management Service only stores the key. Harness uses [envelope encrypti
    * List of Secret Managers populated while creating new secrets.
    * Any new Organization or Project that you create.
 
-You can, however, continue to access the secrets created using this Secret Manager before it is disabled.
+   You can, however, continue to access the secrets created using this Secret Manager before it was disabled.
 
 If you create a new Organization or Project after disabling Harness Built-In Secret Manager, you'll need to either create a new Secret Manager or refer to the Secrets generated in the Account before disabling built-in Secret Manager. This also means that if you try to set up a new Secret Manager in any scope, the credentials for it must already be stored in the Account scope as secrets.
 
