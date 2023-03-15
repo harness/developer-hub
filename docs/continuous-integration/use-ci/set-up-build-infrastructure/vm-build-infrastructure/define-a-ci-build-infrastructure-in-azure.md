@@ -267,6 +267,8 @@ See also [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [
 
 ## Troubleshooting
 
+If you have problems running the delegate, runner, or VMs, you can collect debug and trace information in your container logs.
+
 1. Create a `.env` file with the following options in your `/runner` folder:
 
    ```
