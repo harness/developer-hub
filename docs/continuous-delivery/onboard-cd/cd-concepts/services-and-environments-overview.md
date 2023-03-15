@@ -28,9 +28,28 @@ Let's look at how you can create and manage services and environments.
 
 ### Creating services
 
-Services can be created from inside or outside of a Pipeline.
+Services can be created at account and organization levels or from inside or outside of a pipeline.
 
-To create a Service from outside of a pipeline, you use **Services** in the navigation pane.
+To create a service at an account and organization level, select **Services** in **Organization Resources**.
+
+Creating an account level service enables you to manage the service globally across the organizations and projects within the account. 
+
+An account level service can only reference connectors for the manifests and artifacts within the account. These services are global and cannot have dependencies at a lower hierarchy level.
+
+Shared services can also be created and managed at account or organization levels.
+
+![](./static/create-services-from-account-level.png)
+
+:::note
+When using an account level deployment stage template, you can referencing an account level service only. Similarly, for organization level stage templates, you can reference organization level services only. 
+
+However, when using a deployment stage in a pipeline that has service configured as a runtime input, you can pick services from project, organization, or account levels to pass them as runtime inputs based on your RBAC. 
+
+Go to [add a stage template](../../../platform/13_Templates/add-a-stage-template.md) for more information.
+:::
+
+
+To create a service from outside of a pipeline, you use **Services** in the navigation pane.
 
 ![](./static/services-and-environments-overview-09.png)
 
@@ -46,7 +65,11 @@ When you select the service in a pipeline, you can select **Edit Service** to ed
 
 ### Creating and using environments
 
-Environments can be created from inside or outside of a pipeline.
+Environments can be created at account and organization levels or from inside or outside of a pipeline.
+
+To create an environment at an account and organization level, select **Environments** in **Organization Resources**. 
+
+![](./static/create-environments-from-account-level.png)
 
 To create an environment from inside of a pipeline, select **New Environment** in the **Infrastructure** tab of a new CD stage.
 
