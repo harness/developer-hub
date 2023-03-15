@@ -45,12 +45,17 @@ Use the following procedure to add a load balancer.
 
 Harness Helm chart includes Harness Platform components. You can add modules by editing the override.yaml file.
 
-The following components are enabled by default:
+The Platform component and below module is enabled by default:
 
-* Harness CD - Next Generation
-* Harness CI
+* Harness Continuous Deployment (CD) - Next Generation
+
+The below Harness modules can be enabled or disabled conditionally 
+* Harness Continuous Integration (CI)
 * Harness Security Testing Orchestration (STO)
+* Harness Service Reliability Management (SRM)
+* Harness Feature Flags (FF)
 
+ 
 You can conditionally disable or enable the CI and STO modules by specifying a boolean value in the `enabled` field of the YAML:
 
 #### CI module
@@ -66,6 +71,22 @@ enabled: true
 ```
 sto:
 # -- Enable to deploy STO to your cluster
+enabled: true
+```
+
+#### SRM module
+
+```
+srm:
+# -- Enable to deploy SRM to your cluster
+enabled: true
+```
+
+#### FF module
+
+```
+ff:
+# -- Enable to deploy FF to your cluster
 enabled: true
 ```
 
