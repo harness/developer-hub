@@ -14,7 +14,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 :::
 
 
-## March 15, 2023, version 787xx
+## March 15, 2023, version 78712
 
 ### What's new
 
