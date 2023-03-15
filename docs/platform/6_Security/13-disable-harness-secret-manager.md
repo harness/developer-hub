@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the Feature Flag `DISABLE_HARNESS_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Accounts, Organizations, or Projects.
+Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness Accounts, Organizations, or Projects.
 
 You can choose to disable the Harness built-in Secret Manager at any point and use any other [Secret Manager](./5-add-secrets-manager.md) to store secrets.
 
@@ -26,7 +26,7 @@ For more information, see [API Permissions Reference](../4_Role-Based-Access-Co
 * When you disable the built-in Secret Manager, Harness does not move your existing secrets to another secret manager.
 * Before you disable Harness built-in secret manager, you must have at least one Secret Manager in the Account scope.
 
-### Review: Harness Built-In Secret Manager
+### Harness built-in secret manager
 
 Harness always stores secrets in encrypted form and decrypts them when they are needed. Harness never makes secrets accessible publicly.
 
@@ -34,23 +34,23 @@ By default, Harness provides a built-in Secret Manager that you can use to store
 
 The Key Management Service only stores the key. Harness uses [envelope encryption](https://cloud.google.com/kms/docs/envelope-encryption) to encrypt and decrypt secrets. The encrypted secret and the encrypted Data Encryption Key (used for envelope encryption) are stored in the Harness database. 
 
-### Step: Disable Built-In Secret Manager
+### Disable built-in secret manager
 
-In your Harness Account, go to **Account Settings**.
+1. In your Harness Account, go to **Account Settings**.
+2. Select **Account Resources** and then select **Default Settings**.
+3. Select **Connectors**.
 
-Click **Connectors**.
+   ![](./static/disable-secretmanager-option.png)
 
-![](./static/disable-harness-secret-manager-37.png)
-Select **Disable default Harness Secret Manager** and then click **Apply.**
+4. Select **Disable default Harness Secret Manager** and then select **Save.**
 
-![](./static/disable-harness-secret-manager-38.png)
-The built-in Secret Manager is no longer available in any of the following:
+   The built-in Secret Manager is no longer available in any of the following:
 
-* List of Connectors inside Account/Org/Project Resources.
-* List of Secret Managers populated while creating new secrets.
-* Any new Organization or Project that you create.
+   * List of Connectors inside Account/Org/Project Resources.
+   * List of Secret Managers populated while creating new secrets.
+   * Any new Organization or Project that you create.
 
- You can, however, continue to access the secrets created using this Secret Manager before it is disabled.
+You can, however, continue to access the secrets created using this Secret Manager before it is disabled.
 
 If you create a new Organization or Project after disabling Harness Built-In Secret Manager, you'll need to either create a new Secret Manager or refer to the Secrets generated in the Account before disabling built-in Secret Manager. This also means that if you try to set up a new Secret Manager in any scope, the credentials for it must already be stored in the Account scope as secrets.
 
