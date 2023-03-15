@@ -803,7 +803,7 @@ Resolves to where the manifest is stored. For example, this manifest is stored i
                     - account:/Templates  
 ...
 ```
-#### <+manifest.identifier.commitID>
+### <+manifest.identifier.commitID>
 
 The commit ID of the manifests used in a service. This is captured in the [output section](#input-and-output-variable-expressions-in-executions) of a deployment step.
 
@@ -815,7 +815,7 @@ Name: `<+pipeline.stages.satr.spec.execution.steps.rolloutDeployment.output.mani
 
 Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
 
-### Artifact
+## Artifact
 
 If an artifact expression is in a manifest or step and you have not selected an artifact in a service definition, or set the artifact is set as a runtime Input, you will be prompted to select an artifact at runtime. This is true even if the stage does not deploy an artifact (such as a custom stage or a stage performing a [Kustomize](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md) deployment). 
 
