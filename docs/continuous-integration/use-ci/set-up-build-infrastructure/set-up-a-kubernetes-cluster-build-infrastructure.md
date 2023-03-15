@@ -110,42 +110,45 @@ For instructions on creating clusters, go to:
 
 ## Step 3: Define the Build Farm Infrastructure in Harness
 
-In this step, you set up your build infrastructure using the connector and delegate you added previously.
+In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster connector you created previously.
 
-In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster connector you created in the previous step.
+In **Namespace**, enter the Kubernetes namespace to use. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
-In Namespace, enter the Kubernetes namespace to use.
+You may need to configure the following settings. Review the details of each setting to understand whether it is required for your configuration.
 
-You can use a Runtime Input (`<+input>`) or expression also. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
+<details>
+<summary>Service Account Name</summary>
 
-:::tip
+Specify the Kubernetes service account name. You must set this field in the following cases:
 
-The [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md) uses a Kubernetes cluster build infrastructure.
+* Your build infrastructure runs on EKS, you have an IAM role associated with the service account, and the stage has a step that uses an AWS Connector with IRSA. For more information, go to the AWS documentation on [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
+* Your Build stage has steps that communicate with any external services using a service account other than the default. For more information, go to the Kubernetes documentation on [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
 
-For details about stage settings, go to [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md).
+</details>
 
-:::
-
-## Option: Service Account Name
-
-The Kubernetes service account name. You must set this field in the following cases:
-
-* Your build infrastructure runs on EKS, you have an IAM role associated with the service account, and a CI step uses an AWS Connector with IRSA. See [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) in the AWS docs.
-* You have a CI Build stage with Steps that communicate with any external services using a service account other than default. See [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/) in the Kubernetes docs.
-
-## Option: Run as User
+<details>
+<summary>Run as User</summary>
 
 You can override the default Linux user ID for containers running in the build infrastructure. This is useful if your organization requires containers to run as a specific user with a specific set of permissions. For more information, go to [Configure a security context for a Pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod) in the Kubernetes docs.
 
-## Option: Init Timeout
+</details>
 
-If you use large images in your Build Steps, you might find that the initialization step times out and the build fails when the Pipeline runs. In this case, you can increase the default init time window (10 minutes).
+<details>
+<summary>Init Timeout</summary>
 
-## Option: Add Annotations
+If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the default init time window (10 minutes).
+
+</details>
+
+<details>
+<summary>Add Annotations</summary>
 
 You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. For more information, go to [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs.
 
-## Option: Add Labels
+</details>
+
+<details>
+<summary>Add Labels</summary>
 
 You can add Kubernetes labels (key-value pairs) to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the Kubernetes docs.
 
@@ -166,25 +169,33 @@ Harness adds the following labels automatically:
 
 `https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline`
 
+</details>
+
+:::tip
+
+The [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md) uses a Kubernetes cluster build infrastructure.
+
+For details about stage settings, go to [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md).
+
+:::
+
 ## Configure As Code: YAML
 
-When configuring your Pipeline in YAML, you add the Kubernetes Cluster CI infrastructure using the infrastructure of type KubernetesDirect:
+If you're using the YAML editor, specify `type: KubernetesDirect` in `stage: spec: infrastructure:`, as well as the `connectorRef` and `namespace`, for example:
 
 
 ```yaml
-pipeline:  
-...  
-  stages:  
-    - stage:  
-        ...  
-        spec:  
-          ...  
-          infrastructure:  
-            type: KubernetesDirect  
-            spec:  
-              connectorRef: account.mydelegate  
-              namespace: default  
+  stages:
+    - stage:
+        ...
+        spec:
+          ...
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: account.mydelegate
+              namespace: default
           ...
 ```
 
-Once the build infrastructure is set up, you can now add CI stages to execute your Run steps to build, deploy your code.
+Once the build infrastructure is set up, you can now add steps to build and push your artifacts.
