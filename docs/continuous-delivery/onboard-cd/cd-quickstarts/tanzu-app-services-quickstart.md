@@ -24,6 +24,7 @@ You'll learn how to:
 
 * For TAS deployments, Harness supports these artifact sources: Artifactory, Nexus, Amazon S3, GCR, ECR, ACR, Google Artifact Registry, GitHub Package Registry, Custom registry, and any Docker Registry such as DockerHub. You connect Harness to these registries using your registry account credentials.
 * To create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
+* Your Harness delegate profile must have [CF CLI v7, `autoscaler` and `Create-Service-Push` plugins](#install-cf-cli-on-your-harness-delegate) added to it. 
 
 ## Connect to a TAS provider
 
@@ -102,50 +103,49 @@ You can connect Harness to a TAS space by adding a TAS connector.
 
 ## Install CF CLI on your Harness delegate
 
-You can install CF CLI v7 on your Harness delegate using a package manager or compressed binary.
+You must edit your Harness delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins when the delegate pods are created.
 
 :::note
 Currently CF CLI v7 support is behind feature flag, `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable CF CLI v7 support. 
 :::
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs>
-  <TabItem value="Package manager" label="Package manager" default>
-```
-
-1. Copy and paste the following script on your delegate profile to install CF CLI, `autoscaler` and `Create-Service-Push` plugins.
+1. Open the `delegate.yaml` in a text editor.
+2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
+   ```
+   - name: INIT_SCRIPT  
+   value: ""  
+   ```
+3. Replace the value with the following script to install CF CLI, `autoscaler` and `Create-Service-Push` plugins.
    
    ```
-   apt-get install wget
-   wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
-   echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-   apt-get update
-   apt-get install cf7-cli
+   - name: INIT_SCRIPT  
+   value: |
+       apt-get install wget
+       wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
+       echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+       apt-get update
+       apt-get install cf7-cli
    
-    # autoscaler plugin
-    # download and install pivnet
-    wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
-    pivnet login --api-token=<replace with api token>
+       # autoscaler plugin
+       # download and install pivnet
+       wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
+       pivnet login --api-token=<replace with api token>
 
-    # download and install autoscaler plugin by pivnet
-    pivnet download-product-files --product-slug='pcf-app-autoscaler' --release-version='2.0.295' --product-file-id=912441
-    cf install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295
+       # download and install autoscaler plugin by pivnet
+       pivnet download-product-files --product-slug='pcf-app-autoscaler' --release-version='2.0.295' --product-file-id=912441
+       cf install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295
 
-    # install Create-Service-Push plugin from community
-    cf install-plugin -r CF-Community "Create-Service-Push"
+       # install Create-Service-Push plugin from community
+       cf install-plugin -r CF-Community "Create-Service-Push"
 
-    # verify cf version
-    cf --version
+       # verify cf version
+       cf --version
 
-    # verify plugins
-    cf plugins
+       # verify plugins
+       cf plugins
    ```
    
-2. Apply the profile to the delegate profile and check logs.
+4. Apply the profile to the delegate profile and check logs.
    
    ![](.static/../static/delegate-logs-cf-cli.png)
 
@@ -169,64 +169,6 @@ import TabItem from '@theme/TabItem';
    App Autoscaler        2.0.295   update-autoscaling-limits     Updates autoscaling instance limits for the app
    Create-Service-Push   1.3.2     create-service-push, cspush   Works in the same manner as cf push, except that it will create services defined in a services-manifest.yml file first before performing a cf push.
    ```  
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Compressed binary" label="Compressed binary">
-```
-
-You can install CF CLI using custom compressed binary when a security scan is done and included in a security fix.
-  
-1. Copy and paste the following script on your delegate profile to install CF CLI, `autoscaler` and `Create-Service-Push` plugins.
-   
-   ```
-    # download compresed binary, provide url to compressed binary
-    curl -L "<url-to-custom-commpressed-cli6-binary>" | tar -zx
-
-    # ...move it to path on your file system
-    mv cf7 /<path-to-cli7-binary>
-    mv cf /<path-to-cli7-binary>
-
-    # autoscaler plugin
-    # download and install pivnet
-    apt-get install wget
-    wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
-    pivnet login --api-token=<replace with api token>
-
-    # download and install autoscaler plugin by pivnet
-    pivnet download-product-files --product-slug='pcf-app-autoscaler' --release-version='2.0.295' --product-file-id=912441
-    <path-to-cli6-binary> install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295
-
-    # install Create-Service-Push plugin from community
-    <path-to-cli6-binary> install-plugin -r CF-Community "Create-Service-Push"
-
-    # verify cf version
-    <path-to-cli6-binary> --version
-
-    # verify plugins
-    <path-to-cli6-binary> plugins
-   ```
-
-   :::note
-   The `<path-to-cli7-binary>` must include the full path to the CF location. For example, if you install CF on the location `/home/cflibs/v7/`, replace `<path-to-cli7-binary>` with path, `home/cflibs/v7/cf`.
-   :::
-   
-2. Apply the profile to the delegate profile and check logs.
-   
-   ![](.static/../static/delegate-logs-cf-cli.png)
-
-3. Update the `CF_CLI_PATH` environment variable in the delegate config file, the start or restart the delegate. 
-   
-   The `CF_CLI_PATH` value must be the `<path-to-cli7-binary>` for v7. For example, `CF_CLI7_PATH=/home/cflibs/v7/cf`.
-
-## Important notes
-* When a compressed CF CLI v7 binary is downloaded on a delegate, the CF CLI v6 binary, `cf` symlink is also downloaded with it. Move both binaries to the `<path-to-cli7-binary>` folder. The `cf` binary will be referenced in the CF command step. The CF command step always reference `cf` regardless of the CF CLI version.
-* When you install two same CF CLI versions on a single delegate, one using package manager and other using cutsom compressed binary, the `cf` binary installed by the package manager takes precedence during the delegate capabilty check.
-
-```mdx-code-block
-  </TabItem>    
-</Tabs>
-```
 
 ## Create the deploy stage
 
@@ -370,12 +312,12 @@ The target space is your TAS space. This is where you will deploy your applicati
 Now you can select the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) for this stage of the pipeline.
 
 ```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
-<Tabs2>
-  <TabItem2 value="Basic" label="Basic">
+<Tabs>
+  <TabItem value="Basic" label="Basic">
 ```
 
 The TAS workflow performing a basic deployment takes your Harness TAS service and deploys it on your TAS infrastructure definition. 
@@ -403,61 +345,28 @@ The TAS workflow performing a basic deployment takes your Harness TAS service an
     3. **Total Instances** - Set the number or percentage of running instances you want to keep.
     4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. By default, the application will downsize to the same number as the number of new application instances.
     5. Select **Apply Changes**.
+
+5. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
+    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Script** - Select or enter a script you want to execute in this step.
+        1. **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        2. **Inline** - Select this option to enter a script inline.
+    3. Select **Apply Changes**.
    
-5. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
-6. Select **Save**.
+6. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
+7. Select **Save**.
 
 Now the pipeline stage is complete and you can deploy.
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="Canary" label="Canary">
+  </TabItem>
+  <TabItem value="Canary" label="Canary">
 ```
-The TAS canary deployment contains two or more phases that deploy application instances gradually, ensuring the stability of a small percentage of instances before rolling out to your desired instance count.
+The TAS canary deployment is a phased approach to deploy application instances gradually, ensuring the stability of a small percentage of instances before rolling out to your desired instance count. With Canary Deployment, all nodes in a single environment are incrementally updated in small phases, with each phase requiring verification to proceed to the next phase.
 
-## App resizing in canary deployments
+Use this deployment method when you want to verify whether the new version of the application is working correctly in your production environment.
 
-To understand how app resizing works in a canary deployment, let's look at an example of a 3 phase deployment.
-
-### First deployment
-
-Let's look at the very first deployment. There are no running instances before deployment, and so there is nothing to downsize.
-
-1. Phase 1 is set to 25% for new instances.
-2. Phase 2 is set to 50% for new instances.
-3. Phase 3 is set to 100% for new instances.
-
-Now, let's imagine the TAS manifest specified in the Harness service requests **4 instances** and there is no autoscaler plugin configured.
-
-Here's what will happen each time you deploy:
-
-First deployment:
-
-1. Phase 1 deploys 1 new instance.
-2. Phase 2 deploys 2 new instances.
-3. Phase 3 deploys all 4 desired instances.
-
-### Second deployment
-
-Now, let's look at what happens with the second deployment.
-
-1. There were 4 running deployed by the first deployment. All downsize percentages refer to this number.
-2. Phase 1 deploys new app version to 1 instance and downsizes old app version to 3 instance. Downsize is 25%. It results in 25% of 4 which is 1 instance.  
-Current state: 1 new versioned instance and 3 old versioned instances running.
-3. Phase 2 deploys new version to 2 instances and downsizes to 2 instances. Downsize is 50% of the number of old versioned instances (4). So 2 instances are downsized.  
-Current state: 2 new versioned instances and 2 old versioned instance running.
-4. Phase 2 deploys to new version to 4 instances and downsizes to 0 old instances.  
-Final state: 4 new instances and 0 old instances.
-
-If you do not enter a value for the number of instances for the old version, Harness uses the number of new instances as its guide. For example, if you deployed 4 new instances and then select 50% in **Desired Instances - Old Version**, Harness downsizes the old app version to 50% of 4 instances.
-
-### What about autoscaler?
-
-If you were using an autoscaler manifest, it would be applied at the end of the deployment. For example, if autoscaler is set to min 8 and max 10, Harness will set the desired number of instances to the minimum value. So the total number of new instances is 8.
-
-## Canary deployment phases
-
-The canary deployment contains two phases. Phase 1 has **Canary App Setup** and **App Resize** steps. Phase 2 has **App Resize 2** step. The canary deployment deploys 50% of the instances in phase 1. If phase 1 is successful, it deploys 100% of the instances.
+The canary deployment contains **Canary App Setup** and **App Resize** steps. You can add more **App Resize** steps to perform gradual deployment. 
 
 1. In Execution Strategies, select **Canary**, and then click **Use Strategy**.
 2. The canary execution steps are added. 
@@ -479,31 +388,34 @@ The canary deployment contains two phases. Phase 1 has **Canary App Setup** and 
     3. **Total Instances** - Set the number or percentage of running instances you want to keep.
     4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. By default, the application will downsize to the same number as the number of new application instances.
     5. Select **Apply Changes**.
-5. Select the **App Resize** step to define **Step Parameters**.
-    1. **Name** - Edit the deployment step name.
-    2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    3. **Total Instances** - Set the number or percentage of running instances you want to keep.
-    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. By default, the application will downsize to the same number as the number of new application instances.
-    5. Select **Apply Changes**.
-5. Add an **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
-6. Select **Save**.
+5. Add more **App Resize** steps to perform gradual deployment.
+6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
+    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Script** - Select or enter a script you want to execute in this step.
+        1. **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        2. **Inline** - Select this option to enter a script inline.
+    3. Select **Apply Changes**.
+7. Add an **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
+8. Select **Save**.
 
-Now the pipeline stage is complete, and you can see that the application was deployed to 100% of the instances set in the manifest.
+Now the pipeline stage is complete and you can deploy.
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="Blue/Green" label="Blue/Green">
+  </TabItem>
+  <TabItem value="Blue/Green" label="Blue/Green">
 ```
 Harness TAS blue/green deployments use the route(s) in the TAS manifest and a temporary route you specify in the deployment configuration.
 
-The BG deployment deploys the applications using the temporary route first using the **App Setup** configuration. Next, in the **App Resize** configuration, Harness maintains the number of instances at 100% of the `instances` specified in the TAS manifest.
+The blue/green deployment deploys the applications using the temporary route first using the **App Setup** configuration. Next, in the **App Resize** configuration, Harness maintains the number of instances at 100% of the `instances` specified in the TAS manifest.
 
-For BG deployments, the **App Resize** step is always 100% because it does not change the number of instances as it did in the canary deployment. In BG, you are deploying the new application to the number of instances set in the **App Setup** step and keeping the old application at the same number of instances (100% count).
+Use this deployment method when you want to perform verification in a full production environment, or when you want zero downtime.
+
+For blue/green deployments, the **App Resize** step is always 100% because it does not change the number of instances as it did in the canary deployment. In blue/green, you are deploying the new application to the number of instances set in the **App Setup** step and keeping the old application at the same number of instances (100% count).
 
 Once the deployment is successful, the **Swap Routes** configuration switches the networking routing, directing production traffic (green) to the new application and stage traffic (blue) to the old application.
 
 1. In Execution Strategies, select **Blue/Green**, and then click **Use Strategy**.
-2. The blue green execution steps are added. 
+2. The blue/green execution steps are added. 
    
    ![](./static/bg-deployment.png)
 
@@ -534,21 +446,54 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Downsize Old Application** - Select this option to down size older applications.
     4. Select **Apply Changes**.
-   
-6. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
+6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
+    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Script** - Select or enter a script you want to execute in this step.
+        1. **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        2. **Inline** - Select this option to enter a script inline.
+    3. Select **Apply Changes**.   
+7. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
    
    The rollback step in the blue/green deployment contains two default steps, **Swap Routes** and **App Rollback**.
 
    When **Swap Routes** is used in a deployment's **Rollback Steps**, the application that was active before the deployment is restored to its original state with the same instances and routes it had before the deployment.
 
    The failed application  is deleted.
-7. Select **Save**.
+8. Select **Save**.
 
 Now the pipeline stage is complete and you can deploy.
-   
+
 ```mdx-code-block
-  </TabItem2>    
-</Tabs2>
+  </TabItem>
+  <TabItem value="Rolling" label="Rolling">
+```
+The TAS rolling deployment deploys all pods or instances in a single environment incrementally added one-by-one or in N branches (as defined by a window size) with a new service or artifact version.
+
+Use this deployment method when you want to support both new and old deployments. You can also use with load balancing scenarios that require reduced downtime. 
+
+1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
+2. The rolling deploy step is added. 
+   
+   ![](./static/rolling-deployment.png)
+
+3. Select the **Rolling Deploy** step to define **Step Parameters**.
+    1. **Name** - Edit the deployment step name.
+    2.  **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    3.  **Additional Routes** - Add additional routes in addition to the routes added in the TAS manifest.
+4. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
+    1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    2. **Script** - Select or enter a script you want to execute in this step.
+        1. **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        2. **Inline** - Select this option to enter a script inline.
+    3. Select **Apply Changes**.   
+5. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
+6. Select **Save**.
+
+Now the pipeline stage is complete and you can deploy.
+
+```mdx-code-block
+  </TabItem>    
+</Tabs>
 ```
 
 ## Deploy and review
