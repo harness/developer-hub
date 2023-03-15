@@ -4,7 +4,7 @@ description: A guide to writing onboarding automation using terraform
 sidebar_position: 3
 ---
 
-The Harness Solution Architecture team has curated a [collection of terraform modules]((https://github.com/orgs/harness-community/teams/solution-architects/repositories)) that aim to help onboard new teams and applications to the Harness platform.
+The Harness Solution Architecture team has curated a collection of terraform modules that aim to help onboard new teams and applications to the Harness platform.
 
 The target audience for this article are Harness admins, memebers of a Harness center of exellance, or any developer who wants to provision resources into Harness using terraform.
 
