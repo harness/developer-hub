@@ -1,5 +1,5 @@
 ---
-title: Set up Continuous Error Tracking
+title: Set up
 description: Add a monitored service and install an Error Tracking Agent to identify and troubleshoot faults and exceptions in your code.
 sidebar_position: 20
 helpdocs_topic_id: cbj5uuzpbu
