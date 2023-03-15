@@ -265,9 +265,7 @@ See also [Drone Pool](https://docs.drone.io/runner/vm/configuration/pool/) and [
 | `platform` | Configure the details of your VM platform. |
 | `spec` | Configure the settings of your build VMs: <ul><li>`account`: The azure account settings that the runner needs to create new VMs.</li><li>`client_id`: To find the client ID, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li><li>`tenant_id`: To find the tenant ID, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li><li>`client_secret`: To create a client secret, go to your app and click **Certificates and Secrets**.</li><li>`subscription_id`: To find the subscription ID, go to the [Virtual Machines page](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and select your delegate VM.</li><li>`image`: The Azure region for the build VMs.</li><li>`location`: The Azure region for the build VMs. To reduce latency, Harness recommends you use the same region as the Delegate.</li><li>`size`: The Azure VM size.</li><li>`tag`: An optional tag to identify build VMs.</li></ul> |
 
-## Troubleshooting (Advanced)
-
-If you have problems running the delegate, runner, or VMs, you can collect debug and trace information in your container logs.
+## Troubleshooting
 
 1. Create a `.env` file with the following options in your `/runner` folder:
 
@@ -294,8 +292,9 @@ If you have problems running the delegate, runner, or VMs, you can collect debug
 
 4. Restart the delegate and runner: `docker-compose up`
 
-### See Also
+## See also
 
 * [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md)
 * For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
+* [Troubleshoot Continuous Integration](../../../troubleshoot/troubleshooting-ci.md)
 
