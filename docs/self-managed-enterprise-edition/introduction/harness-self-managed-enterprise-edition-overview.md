@@ -64,8 +64,3 @@ Harness Self-Managed Enterprise Edition is installed on virtual machines (VMs) i
 | :-: | :-: |
 | ![](./static/gcp_architecture_smpOverview.png) | ![](./static/aws_architecture_smpOverview.png) |
 
-To install Harness Self-Managed Enterprise Edition on a virtual machine, see the following topics:
-
-- [Self-Managed Enterprise Edition > Virtual Machine > Infrastructure](../vm-self-managed-category/virtual-machine-on-prem-infrastructure-requirements.md)
-- [Self-Managed Enterprise Edition > Virtual Machine > Installation](../vm-self-managed-category/virtual-machine-on-prem-installation-guide.md)
-
