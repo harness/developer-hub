@@ -1,6 +1,6 @@
 ---
 title: Evaluate AutoStopping rules in dry-run mode
-description:This topic describes how to create AutoStopping rules in dry-run mode.
+description: This topic describes how to create AutoStopping rules in dry-run mode.
 # sidebar_position: 2
 ---
 
