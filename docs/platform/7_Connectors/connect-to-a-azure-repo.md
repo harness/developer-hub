@@ -15,10 +15,20 @@ Azure Repos is a set of version control tools that you can use to manage your co
 
 This topic explains how to connect your Harness Accounts, Organizations or Projects with one of the Azure Repos. You can do this by adding an Azure Repos connector to Harness.
 
-### Before you begin
+### Important notes
 
 * Make sure you have set up your Azure Project and Repo.
 * Make sure you have **Create/Edit** permissions to add an Azure Repos connector in Harness.
+
+:::note
+
+This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
+
+Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
+
+  This functionality is behind a feature flag: `OPTIMIZED_GIT_FETCH_FILES`.
+
+:::
 
 ### Step 1: Add an Azure Repos Connector
 

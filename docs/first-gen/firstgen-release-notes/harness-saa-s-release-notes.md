@@ -20,7 +20,9 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### Early access
 
-This release does not include any early access features.
+- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
+
+	Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
 #### What's new
 

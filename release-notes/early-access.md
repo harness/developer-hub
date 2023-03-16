@@ -12,7 +12,14 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+
 ## March 15, 2023, version 78712
+
+### Continuous Delivery
+
+- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
+
+  Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
 ### Harness Platform
 
@@ -31,6 +38,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   - resourceType (PL-31497)
   
     This is behind the feature flag `PL_NEW_SCIM_STANDARDS`.
+
 
 ## March 2, 2023
 
