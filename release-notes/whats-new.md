@@ -16,8 +16,8 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## March 15, 2023
 
+## March 15, 2023, version 78712
 ### Continuous Integration
 
 * The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
@@ -25,6 +25,34 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * When configuring [SCM connectors](/docs/category/code-repo-connectors):
   * Failed connection tests now return more detailed error messages. (CI-7089)
   * The placeholder text in the **Repository URL** field shows a complete repo URL example. (CI-5750)
+
+### Harness Platform
+
+- The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)
+  
+- You can now migrate only the admin users of FirstGen to NextGen by enabling the feature flag `PL_DO_NOT_MIGRATE_NON_ADMIN_CG_USERS_TO_NG`. Previously, all FirstGen users were migrated to NextGen along with the admins. (PL-31648)
+  
+- The [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now supports the following filters:
+
+  - Principal Type Filter: Filters role assignments based on principal type.
+
+  - Harness Managed Filter: Filters role assignments based on roles managed by Harness. For example, an Account Administrator. 
+
+  - Disabled Filter: Filters disabled role assignments. (PL-31352)
+
+- Filters for audit trails are now listed alphabetically. (PL-31204)
+
+- Template expressions now support `when` conditions. (PIE-8762)
+
+### Service Reliability Management
+
+- Metrics graphs are now added to the **Create SLO** screen. (SRM-14025)  
+    
+  When configuring Service Level Indicators (SLIs) in the **Create SLO** screen, you will now see a metric graph based on the last 24 hours of data received from your health monitoring tool. Additionally, the recommended minimum, maximum, and average values specific to the SLI parameter that you are configuring will be displayed.  
+  
+  This feature eliminates the need for switching between the Harness **Create SLO** screen and your health monitoring tool dashboard to determine the most appropriate value for the SLI parameter you are configuring. For instance, if you opt for the ratio-based evaluation method while configuring your SLI, you can refer to the metric graphs and accompanying suggested values to determine the ideal percentage of valid requests to be considered for your SLI.  
+  
+  ![Metrics graph in Create SLO screen](./static/srm-rn-787-metricgraph.png)
 
 ## March 9, 2023
 
@@ -107,10 +135,21 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
 ### Harness Delegate
 
-The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
+- The delegate installation UI experience is now updated with a new installation method: the Terraform Helm provider. Also, the installation experience has been enhanced for the existing methods (Helm chart, Kubernetes manifest, and Docker). This new experience is more developer friendly. For example, it enables cutting and pasting of relevant commands. You can also automate the commands and use new values when necessary. 
 
-This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
+  Additionally, the following new features are available:
+    - The **Terraform Helm Provider** method is based on the open source [Terraform Harness Delegate module](https://registry.terraform.io/modules/harness/harness-delegate/kubernetes/latest) and the open source [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart). Auto upgrade is set to `OFF` with an option to enable it in the command.
+    - The updated method for **Helm Chart** is also based on the same open source [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart) as the Terraform Helm provider. Auto upgrade is set to OFF with an option to enable it in the command. You can also download the [default values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) for the Helm option and edit that to set your own long-lived configuration values.
+    - The updated flow for **Kubernetes Manifest** has the following options for creating a manifest YAML file specific to your Harness account.          
+      - **Basic**: Provides a **Download YAML** option. The downloaded YAML has all the configuration variables set to values that are specific to your Harness account. 
+      - **Custom** - Create your own YAML from a [Kubernetes manifest template](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml) by replacing the placeholders with the values provided in the method.
+      Given the need to have a fully qualified YAML, the auto upgrade configuration is set to ON in both the above options. Consequently, the delegate version that is installed always remains in sync with the version available on Harness Manager.
+    - The **Docker** delegate installation method has now been simplified to a copy-and-paste action on the `docker run` command, with the option to modify the preset values. The auto upgrade is set to OFF for this method, with an option to enable it in the command. (DEL-6037)
 
+- The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
+
+ This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
+ 
 ## March 2, 2023
 
 ### Security Testing Orchestration
@@ -338,7 +377,7 @@ infrastructure:
 
 - A [failure strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) is now mandatory for all Deploy stages. (CDS-48951)  
   
-  ![failure strategy](../static/3c690f9ba44e7cac1e6ccb605068b676ddd02f247f37c2d9b2524f30437c97ff.png)  
+  ![failure strategy](static/3c690f9ba44e7cac1e6ccb605068b676ddd02f247f37c2d9b2524f30437c97ff.png)
 
   A failure strategy is now a mandatory setting in the **Deploy** stage. Previously, a failure strategy was mandatory, but the check happened when the pipeline ran. 
   
@@ -354,7 +393,7 @@ infrastructure:
   
   Previously, Harness CD looked for a path relative to the Harness working directory, which is a temporary directory that Harness creates. Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
 
-  ![Custom Remote Manifest](../static/b401a79386824c0b00a74ad4d9ec4576db712982f9371c8e80e0913d5e4aa14a.png)
+  ![Custom Remote Manifest](static/b401a79386824c0b00a74ad4d9ec4576db712982f9371c8e80e0913d5e4aa14a.png)
 
   No action required by users.
 
@@ -523,7 +562,7 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 
 ### Chaos Engineering
 
-- Update feature for ChaosHub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected ChaosHub.
+- Update feature for chaos hub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected chaos hub.
 
 - Adds CDN Support for Chaos module static artifacts thereby loading the UI with reduced latency on client devices.
 

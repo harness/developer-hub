@@ -41,6 +41,10 @@ Having an opportunity to test with real, live users in the production environmen
 
 In a percentage-based rollout, small numbers of users are selected to test the new feature. You can gradually increase or decrease that percentage over time. This method provides the opportunity to observe the behavior of the system under new changes. You can push the changes to all your user bases only when the changes are stable and user feedback is positive.
 
+### Analyze the impact of a feature on monitored services
+
+The Harness Service Reliability Management (SRM) module provides tools to help meet Service Level Objectives (SLOs) and identify root causes of changes to service health. By connecting a Feature Flag to an SRM-monitored service, you can analyze how that service's health is impacted when you turn the flag on or off.
+
 ### User feedback
 
 The ability to release changes to a limited set of users makes it much easier to gather feedback about the product. You can create a group of users and target feature flags specifically to that group. Testing new features with a subset of users allows developers to find and address the bugs before the major release.

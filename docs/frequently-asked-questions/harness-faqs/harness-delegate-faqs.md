@@ -81,7 +81,7 @@ The delegate and Harness Manager (through SaaS) establish a Secure WebSocket cha
 
 #### Can I add IP addresses for Harness delegate to an allowlist?
 
-Yes. See [Whitelist Harness domains and IPs](../../platform/20_References/whitelist-harness-domains-and-ips.md).
+Yes. See [Whitelist Harness domains and IPs](../../platform/20_References/allowlist-harness-domains-and-ips.md).
 
 #### Do I need separate delegates for different isolated environments?
 

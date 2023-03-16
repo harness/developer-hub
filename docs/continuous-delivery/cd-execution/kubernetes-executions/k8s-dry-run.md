@@ -4,11 +4,6 @@ description: Test your manifests before deployment.
 sidebar_position: 9
 ---
 
-:::note
-
-Currently, the Dry Run step is behind the feature flag `K8S_DRY_RUN_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This topic discusses how to set up the Dry Run step for a Kubernetes deployment.
 

@@ -35,7 +35,7 @@ All the chaos infrastructure services adhere to the principle of least privilege
 
 #### Enterprise hub
 
-Enterprise ChaosHub comes out of the box with HCE and provides many faults and experiment templates. Enterprise Hub is a prebuilt Chaos Hub; it is a collection of manifests and charts that represent existing experiments and faults as part of the hub. You can use faults from multiple categories to create chaos experiments in the Enterprise ChaosHub.
+Enterprise chaos hub comes out of the box with HCE and provides many faults and experiment templates. Enterprise hub is a prebuilt chaos hub, a collection of manifests and charts that represent the existing experiments and faults. You can use faults from multiple categories to create chaos experiments in the Enterprise chaos hub.
 
 #### Authentication server
 
@@ -47,7 +47,7 @@ The backend server is a GraphQL-based Golang microservice that serves the reques
 
 #### Database
 
-This is a NoSQL MongoDB database microservice accountable for storing users' information, past chaos experiments, saved chaos experiment templates, user projects, ChaosHubs, and GitOps details, among other information.
+This is a NoSQL MongoDB database microservice accountable for storing users' information, past chaos experiments, saved chaos experiment templates, user projects, chaos hubs, and GitOps details, among other information.
 
 ## Harness execution plane
 

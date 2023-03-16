@@ -5,7 +5,7 @@ title: Introduction
 
 Harness provides several controls to ensure safe execution of chaos experiments on your infrastructure. This page explains security considerations and associated features across administrative and runtime environments, including: 
 
-- Connectivity from target Clusters and request authentication 
+- Connectivity from target clusters and request authentication 
 - Kubernetes roles for the chaos infrastructure 
 - User authentication to the Harness Chaos Engineering module 
 - Access control and permissions for chaos actions 
@@ -35,7 +35,7 @@ Harness can leverage the same cluster (or namespace) to inject chaos into infras
 
 ### Kubernetes roles for chaos infrastructure 
 
-The deployments that make up the chaos infrastructure can be installed with cluster-wide scope or namespace-only scope. These deployments are mapped to a dedicated service account that can execute all supported chaos experiments for that scope. To learn more about connecting to a chaos infrastructure in cluster or namespace mode, go [here](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures). Mapping deployments to dedicated service accounts is considered as the first level of blast radius control.
+The deployments that make up the chaos infrastructure can be installed with cluster-wide scope or namespace-only scope. These deployments are mapped to a dedicated service account that can execute all supported chaos experiments for that scope. To learn more about connecting to a chaos infrastructure in cluster or namespace mode, go to [connect chaos infrastructures](../../user-guides/connect-chaos-infrastructures). Mapping deployments to dedicated service accounts is considered as the first level of blast radius control.
 
 The permissions are listed below for reference. 
 
@@ -66,7 +66,7 @@ Refer to the [authentication overview](https://developer.harness.io/docs/platfor
 
 The chaos module leverages the [access control](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness) capabilities of Harness to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.  
 
-The foundational elements of the chaos engineering process, chaos infrastructure, ChaosHubs, chaos experiments, and chaos gamedays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
+The foundational elements of the chaos engineering process, chaos infrastructure, chaos hubs, chaos experiments, and chaos gamedays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
 
 Users with administrative privileges on the project can create predefined role(s) pertaining to chaos resource access, that is, Create (Execute) and Edit (Update), View and Delete, and map them to the other invited users or user-groups. 
 
@@ -78,7 +78,7 @@ Harness Chaos Engineering leverages secrets for administrative or management pur
 
 ### Secrets to access chaos artifact (Git) repositories  
 
-HCE allows you to add one or more [ChaosHubs](https://developer.harness.io/docs/chaos-engineering/overview/glossary/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a ChaosHub involves connecting to the respective canonical source—the Git repository—by using personal access tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
+HCE allows you to add one or more [chaos hubs](https://developer.harness.io/docs/chaos-engineering/overview/glossary/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
 
 The chaos module leverages the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leverages the Harness Secret Manager to store the PAT or SSH keys 
 
@@ -96,7 +96,7 @@ Additionally, HCE supports custom validation tasks such as retrieving metrics fr
 Both of the aforementioned actions require specific access to the infrastructure or service in question. This information is expected to be fed as Kubernetes secrets to the transient chaos pod resources that are launched during experiment execution. To learn more about how experiments are executed, go to [chaos architecture](https://developer.harness.io/docs/chaos-engineering/technical-reference/architecture).
 
 :::note
-The experiment artifact that is stored in a ChaosHub or supplied when you create an experiment only references the names of secrets. The life cycle of the secrets themselves is fully managed by the users within their clusters.  
+The experiment artifact that is stored in a chaos hub or supplied when you create an experiment only references the names of secrets. The life cycle of the secrets themselves is fully managed by the users within their clusters.  
 ::: 
 
 [Here](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/ec2-cpu-hog#prerequisites) is an example of AWS access information being fed to the experiment pods through a Kubernetes secret.
@@ -106,9 +106,8 @@ The experiment artifact that is stored in a ChaosHub or supplied when you create
 You can fine-tune permissions to suit specific infrastructures and experiments if you want to reduce the blast radius and impact from a security perspective. This applies to both Kubernetes-based and non-Kubernetes chaos. 
 
 In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](namespace-considerations) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.  
- 
-Every fault in the Enterprise ChaosHub publishes the permissions that users need to execute the fault. Users can tune their roles. Also available are common permission templates that work as subsets or supersets for a specific category of experiments. For example, for information about recommended roles for AWS resource faults, go [here](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults). 
 
+Every fault in the Enterprise chaos hub publishes the permissions that users need to execute the fault. Users can tune their roles. Common permission templates that work as subsets or supersets for a specific category of experiments are also available. For example, [AWS resource faults](https://developer.harness.io/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults).
 
 ### Privileged execution of chaos faults
 
