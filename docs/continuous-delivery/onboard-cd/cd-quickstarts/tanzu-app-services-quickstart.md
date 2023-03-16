@@ -177,13 +177,13 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
 1. In your Harness project, select **Pipelines**, select **Deployments**, then select **Create a Pipeline**.
 2. Enter the name **TAS Quickstart** and click **Start**.
    
-   ![](static/create-tas-pipeline.png)
+   ![](./static/create-tas-pipeline.png)
 
    Your pipeline appears.
 3. Click **Add Stage** and select **Deploy**.
 4. Enter the stage name **Deploy TAS Service**, select the **Tanzu Application Services** deployment type, and select **Set Up Stage**.
    
-   ![](static/deploy-tas-service.png)
+   ![](./static/deploy-tas-service.png)
 
    The new stage settings appear. 
 
@@ -206,7 +206,7 @@ Once you have created a service, it is persistent and can be used throughout the
    Harness uses **TAS Manifest**, **Vars**, and **AutoScaler** manifest types for defining TAS applications, instances, and routes.  
    You can use one TAS manifest and one autoscaler manifest only. You can use unlimited vars file manifests. 
 
-   ![](static/tas-manifest-type.png)
+   ![](./static/tas-manifest-type.png)
  
 2. Select **TAS Manifest** and select **Continue**.
 3. In **Specify TAS Manifest Store**, select **Harness** and select **Continue**.
@@ -276,7 +276,7 @@ Once you have created a service, it is persistent and can be used throughout the
 5. In **Details**, in **Artifactory Repository URL**, enter `https://harness.jfrog.io/artifactory/`.
 6. In **Authentication**, select **Anonymous**, and select **Continue**.
    
-   ![](.static/../artifactory-repo-connector.png)
+   ![](./static/artifactory-repo-connector.png)
 
 7. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created in [connect to a TAS provider (step 8)](#connect-to-a-tas-provider).
 8. Select **Save and Continue**
@@ -303,7 +303,7 @@ The target space is your TAS space. This is where you will deploy your applicati
 8. In **Organization**, select the TAS org where you want to deploy.
 9. In **Space**, select the TAS space where you want to deploy.
     
-    ![](static/tas-infra-details.png)
+    ![](./static/tas-infra-details.png)
 
 11. Select **Save**.
 
