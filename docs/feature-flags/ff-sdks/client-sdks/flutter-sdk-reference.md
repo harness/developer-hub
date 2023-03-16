@@ -23,7 +23,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.0.8.**
+The current version of this SDK is **1.0.10.**
 
 ## Requirements
 
