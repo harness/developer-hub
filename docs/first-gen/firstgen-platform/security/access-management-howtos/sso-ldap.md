@@ -241,7 +241,7 @@ Now you can add a new Harness user group for your LDAP users and sync it with yo
 
 ### Add a Harness User Group with LDAP Users
 
-Once you have configured an LDAP SSO Provider for Harness, you can create a Harness User Group and sync it to your LDAP directory. Later, when LDAP SSO is enabled in Harness, and users in this group log into Harness, Harness will verify their email addresses and passwords using its connection to the LDAP provider.
+Once you have configured an LDAP SSO Provider for Harness, you can create a Harness User Group and sync it to your LDAP directory. Do not configure SSO with Harness default User Group **Account Administrator**. Later, when LDAP SSO is enabled in Harness, and users in this group log into Harness, Harness will verify their email addresses and passwords using its connection to the LDAP provider.
 
 Harness treats LDAP group names as case-sensitive. QA, Qa, qA, will all create new groups.
 
