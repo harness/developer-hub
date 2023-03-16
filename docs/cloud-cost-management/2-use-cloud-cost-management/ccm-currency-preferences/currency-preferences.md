@@ -53,12 +53,12 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 
     
 :::note
-* After configuring the currency settings, the currency symbol changes to the preferred one immediately. However, the cost data does not change and remains in the original currency. It may take up to 24 hours for the converted value to be displayed.
+* After configuring the currency settings, the currency symbol immediately changes to the preferred one. However, the cost data does not change and remains in the original currency. It may take up to 24 hours for the converted value to be displayed.
 * It may take up to 48 hours for the data on the **Recommendations** page to be updated.
-* You can configure these settings only for your cloud accounts. However, if you want to view your Kubernetes cluster data as well in your preferred currency, contact Harness Support.
+* You can configure these settings only for your cloud accounts. Contact Harness Support to view your Kubernetes cluster data in your preferred currency.
 * The currency format defaults to the _us-en_ locale. If you wish to change this, contact Harness Support.
 :::
 
 :::important
-For existing budgets and new budgets, you must update the **Specify Amount** field with the converted value in the selected currency. This is because a **Perspective** may be associated with multiple cloud accounts and therefore cannot be updated automatically.
+For existing budgets and new budgets, you must manually update the **Specify Amount** field with the converted value in the selected currency. This is because a **Perspective** may be associated with multiple cloud accounts and therefore cannot be updated automatically.
 :::
