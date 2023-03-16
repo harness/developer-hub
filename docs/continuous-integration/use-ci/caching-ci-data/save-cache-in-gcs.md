@@ -1,8 +1,7 @@
 ---
 title: Save and Restore Cache from GCS
-description: Caching enables you to share data across stages. It also speed up builds by reusing the expensive fetch operation from previous jobs.
-tags: 
-   - helpDocs
+description: Caching improves build times and enables you to share data across stages.
+
 sidebar_position: 40
 helpdocs_topic_id: v0agy0hlyj
 helpdocs_category_id: 01tyeraya4
@@ -10,30 +9,44 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Caching has two primary benefits:
+Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
-* It can make your jobs run faster by reusing the expensive fetch operation data from previous jobs.
-* It enables you to share data across Stages.
+In addition to loading dependencies faster, you can also use caching to share data across stages in your Harness CI pipelines. You need to use caching to share data across stages because each stage in a Harness CI pipeline has its own build infrastructure.
 
-In a Harness CI Pipeline, you can save the cache to Google Cloud Storage (GCS) bucket in one stage using the Save Cache to GCS step and then restore it in the same or another stage using Restore Cache from GCS step. 
+This topic explains how you can use the **Save Cache to GCS** and **Restore Cache from GCS** steps in your CI pipelines to save and retrieve cached data from Google Cloud Storage (GCS) buckets. For more information about caching in GCS, go to the Google Cloud documentation on [caching](https://cloud.google.com/storage/docs/caching). In your pipelines, you can also [save and restore cached data from S3](saving-cache.md) and use Harness [Cache Intelligence](./cache-intelligence.md).
 
-The topic explains how to configure the Save Cache to GCS and Restore Cache from GCS steps in CIE using a two-Stage Pipeline.
+This topic assumes you are familiar with the following:
 
-You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across Stages.
+* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [CI pipeline basics](../../ci-quickstarts/ci-pipeline-basics.md)
+* [CI stage settings](../../ci-technical-reference/ci-stage-settings.md)
+* [Build infrastructure](/docs/category/set-up-build-infrastructure)
 
-### Before You Begin
+:::caution
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+You can't share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages.
+<!-- should this just say "You cant store access credentials or other [text secrets] in caches"? -->
 
-### Limitations
+:::
 
-* You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across Stages.
-* Use a dedicated bucket for your Harness cache operations. Do not save files to the bucket manually. The Retrieve Cache operation will fail if the bucket includes any files that do not have a Harness cache key.
+## Prepare GCS for Harness cache operations
 
-### Review: YAML Example
+* Create a dedicated GCS bucket for your Harness cache operations.
+* Don't save files to the bucket manually. The Retrieve Cache operation fails if the bucket includes any files that don't have a Harness cache key.
+
+<!-- Is it necessary to know this: https://cloud.google.com/cdn/docs/caching -->
+
+
+
+
+
+(tabs)
+
+
+
+
+
+## Review: YAML Example
 
 If you want to configure your Pipeline in YAML, in **Pipeline Studio,** click **YAML**. 
 
@@ -127,11 +140,12 @@ pipeline:
                   cloneCodebase: false  
  
 ```
-### Step 1: Open the Build Stage
+
+## Step 1: Open the Build Stage
 
 In your Harness Pipeline, open the Stage where you want to save the cache.
 
-### Step 2: Define the Build Farm Infrastructure
+## Step 2: Define the Build Farm Infrastructure
 
 In the Infrastructure tab, define the build farm for the codebase.
 
@@ -139,7 +153,7 @@ The following step uses a Kubernetes cluster build farm.
 
 See [Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-### Step 3: Save Cache to GCS
+## Step 3: Save Cache to GCS
 
 In the Execution tab, click **Add Step** and then select **Save Cache to GCS**. Here you configure the GCS bucket, keys, and source paths to enable Harness to save the cache to GCS.
 
@@ -147,7 +161,7 @@ For step settings, see [Save Cache to GCS Step Settings](../../ci-technical-ref
 
 ![](./static/save-cache-in-gcs-00.png)
 
-### Step 4: Restore Cache from GCS Stage
+## Step 4: Restore Cache from GCS Stage
 
 In your Pipeline, click **Add Stage** where you want to restore the saved cache from GCS. 
 
@@ -159,15 +173,15 @@ For step settings, see [Restore Cache Step Settings](../../ci-technical-referenc
 
 When you are done, click **Apply Changes**.
 
-### Step 5: Run Pipeline
+## Step 5: Run Pipeline
 
 Click **Save** to save the changes, then click **Run Pipeline**. 
 
-### Step 6: View the Results
+## Step 6: View the Results
 
 You can see the logs for the Pipeline as it runs.
 
-#### Save Cache Stage Output
+### Save Cache Stage Output
 
 In the Save Cache stage, you can see the logs for **Save Cache to GCS** step in the Pipeline as it runs.
 
@@ -175,7 +189,7 @@ In the Save Cache stage, you can see the logs for **Save Cache to GCS** step in 
 ```
 level=info name=drone-cache ts=2021-11-11T09:06:48.834761074Z caller=rebuilder.go:93 component=plugin component=rebuilder msg="cache built" took=253.210746ms
 ```
-#### Restore Cache Stage Output
+### Restore Cache Stage Output
 
 In the Restore Cache stage, you can see the logs for **Restore Cache from GCS** step in the Pipeline as it runs.
 
@@ -184,8 +198,3 @@ In the Restore Cache stage, you can see the logs for **Restore Cache from GCS** 
 ```
 level=info name=drone-cache ts=2021-11-11T09:07:00.803158076Z caller=restorer.go:94 component=plugin component=restorer msg="cache restored" took=239.769663ms
 ```
-
-### See Also
-
-* [Save and Restore Cache from S3](saving-cache.md)
-
