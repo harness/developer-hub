@@ -62,7 +62,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 * The new [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, the Issue Details pane now shows the ticket status along with the number. (STO-5491)
 
-## March 8, 2023 version 78619
+## March 8, 2023, version 78619
 
 ### Continuous Delivery
 
