@@ -11,12 +11,12 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Harness Continuous Verification integrates with Sumo Logic to:
+Harness Continuous Verification (CV) integrates with Sumo Logic to:
 
 * Verify that the deployed service is running safely and performing automatic rollbacks.
 * Apply machine learning to every deployment for the purpose of identifying and flagging anomalies in future deployments.
 
-This topic describes how to set up a Sumo Logic health source when adding a Continuous Verification step to your Continuous Deployment.
+This topic describes how to set up a Sumo Logic health source when adding a CV step to your Continuous Deployment (CD).
 
 ## Prerequisite
 
@@ -25,7 +25,7 @@ Sumo Logic is added as a verification provider in Harness.
 
 ## Set up continuous verification
 
-To set up Continuous Verification, you need to configure a Service Reliability Management (SRM)-monitored service. A monitored service is a mapping of a Harness service to a service that is being monitored by your Application Performance Monitoring (APM) or logging tool.
+To set up CV, you need to configure a Service Reliability Management (SRM)-monitored service. A monitored service is a mapping of a Harness service to a service that is being monitored by your Application Performance Monitoring (APM) or logging tool.
 
 
 ## Add Verify Step
@@ -96,9 +96,9 @@ If a monitored service already exists with the same name and environment, the **
 
 :::note
 
-If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with that name already exists, it will be assigned to the pipeline. If not, Harness skips the verification step.
+If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with that name already exists, it will be assigned to the pipeline. If not, Harness skips the Verification step.
 
-For instance, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the verification step.
+For instance, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the Verification step.
 
 :::
 
@@ -151,15 +151,17 @@ To add a health source, perform the following steps:
    A sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
    <details>
-   <summary><b>Query for memory usage</b></summary>
+   <summary><b>Sample query for memory usage</b></summary>
 
    Query: `metric=memory`
 
-   ![Query - memory usage](./static/cv-sumologic-select-metric-query-memory.png)
+   ![Query - disk usage](./static/cv-sumologic-select-metric-query-memory.png)
 
-   Records and charts for the displayed for the query
+   Disk usage records and chart being displayed for the query
 
-   ![Memory usage recores and charts](./static/cv-sumologic-select-metric-query-memory-chart.png)
+   ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
+
+
    </details>
 
 #### Assign services
@@ -213,9 +215,9 @@ The **Advanced (Optional)** section is only visible if you have selected **Conti
 
 ##### Ignore Thresholds
 
-You can select the type of events for which you want to set thresholds in Continuous Verification. Metrics that match the selected rules will not be flagged as anomalous, regardless of the analysis. 
+You can select the type of events for which you want to set thresholds in CV. Metrics that match the selected rules will not be flagged as anomalous, regardless of the analysis. 
 
-To set the **Ignore Thresholds** for Continuous Verification, follow these steps:
+To set the **Ignore Thresholds** for CV, follow these steps:
 
 1. Go to the **Ignore Thresholds** tab and select the **+ Add Threshold** button.
 2. From the **Metric** dropdown, select the desired metric for which you want to set the rule.
@@ -225,13 +227,13 @@ To set the **Ignore Thresholds** for Continuous Verification, follow these steps
 
 
 ##### Fail-Fast Thresholds 
-You can select the type of events for which you want to set thresholds in Continuous Verification. Any metric that matches the selected rules will be marked as anomalous and cause the Workflow state to fail.
+You can select the type of events for which you want to set thresholds in CV. Any metric that matches the selected rules will be marked as anomalous and cause the Workflow state to fail.
 
-To set fail-fast thresholds for Continuous Verification, follow these steps:
+To set fail-fast thresholds for CV, follow these steps:
 
 1. Go to the **Fail-Fast Thresholds** tab and select the **+ Add Threshold** button.
 2. From the **Metric** dropdown, select the desired metric for which you want to set the rule.
-3. In the **Action** field, select what the Continuous Verification should do when applying the rule:
+3. In the **Action** field, select what the CV should do when applying the rule:
 - **Fail Immediately**
 - **Fail after multiple occurrences**
 - **Fail after consecutive occurrences**
@@ -250,8 +252,22 @@ To set fail-fast thresholds for Continuous Verification, follow these steps:
    The Add Query dialog appears.
 2. Enter a name for the query and then select **Submit**.  
    The Custom Queries settings are displayed. These settings assist in retrieving the desired logs from the Sumo Logic platform and mapping them to the Harness service. To learn about Sumo Logic logs, go to [https://help.sumologic.com/docs/search/](https://help.sumologic.com/docs/search/).
-3. In the **Query** field, enter the log query, and then select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed.
-4. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed, helping you verify if the query you built is correct.
+
+#### Define a query
+
+1. In the **Query** field, enter the log query, and then select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed.
+2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed, helping you verify if the query you built is correct.
+
+<details>
+   <summary><b>Sample log query</b></summary>
+
+   Query: `_sourcename = "Http Input"`
+
+   ![Query - Logs](./static/cv-sumologic-select-log-query-chart-records.png)
+
+
+   </details>
+
 
 </TabItem>
 </Tabs>
@@ -260,7 +276,7 @@ To set fail-fast thresholds for Continuous Verification, follow these steps:
 ### Save the health source settings
 
 1. After configuring all the settings, select **Submit** to add the health source to the Verify step.
-2. Select Apply Changes to save the changes made to the Verify step.
+2. Select **Apply Changes** to save the changes made to the Verify step.
 
 ## Run the pipeline
 
@@ -269,7 +285,7 @@ To run the pipeline, follow these steps:
 1. In the upper-right corner, select **Run**.  
    The Run Pipeline dialog box appears.
 2. In the dialog box, do the following:
-   - **Tag**: If you did not add a tag in the Artifact Details settings, select it now.
+   - **Tag**: If you did not add a tag in the** Artifact Details** settings, select it now.
    - **Skip preflight check**: Select this option if you want to skip the preflight check.
    - **Notify only me about execution status**: Select this option if you want Harness to alert only you about the execution status.
 3. Select **Run Pipeline**.  
@@ -277,22 +293,34 @@ To run the pipeline, follow these steps:
 
 ## View results
 
-After the Verify step starts, the **Summary** section displays the following information:
+The Summary section displays the following details when the Verify step begins:
 
 - Metrics in violation
 - Log Clusters in violation
 - Error Clusters in violation
 
+Note that it may take some time for the analysis to begin. The screenshot below shows a Verification step running in a deployment:
+
 ![Verification summary](./static/cv-sumologic-verify-summary-view.png)
 
 ## Console view
 
-The console view displays detailed logs of the pipeline, including verification logs. To view the detailed verification logs during the verification step, select either **View Details** or **Console View**.
+The console view displays detailed logs of the pipeline, including verification logs. To view the console, select **View Details** in the **Summary** section or turn on the **Console View** toggle switch in the upper-right corner.
 
 ![Verification step console view](./static/cv-sumologic-verify-console-view.png)
 
 By default, the console displays logs of only the anomalous metrics and affected nodes. To see all logs, clear the **Display only anomalous metrics and affected nodes** check box.
 
-![Verification step console view all data](./static/cv-sumologic-verify-view-anamalous-data-.png)
+![Verification step console view all data](./static/cv-sumologic-verify-view-anamalous-data.png)
+
+The following screenshots show successful and failed verifications in a deployment run:
+
+**Successful verification**
+
+![Passed verification step](./static/cv-sumologic-pipeline-pass.png)
+
+**Failed verification**
+
+![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
 
