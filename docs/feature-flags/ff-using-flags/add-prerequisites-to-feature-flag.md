@@ -24,7 +24,7 @@ Harness recommends that you **do not** add nested Prerequities, as this function
 ### Add a Prerequisite
 
 1. Go to the Feature Flag you want to add the Prerequisite to.
-1. Click **+ New Prerequisite**.
+1. Select **+ New Prerequisite**.
 
    ```mdx-code-block
    <img src={pre_req_1} alt="A screenshot of the Write_Java Flag with the Prerequisites button highlighted." height="500" width="400" />
