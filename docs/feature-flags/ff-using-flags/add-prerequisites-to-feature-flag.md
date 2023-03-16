@@ -37,7 +37,7 @@ Harness recommends that you **do not** add nested Prerequities, as this function
 1. In the second drop-down, select which Variation of the Prerequisite flag must be served before the Feature Flag can be turned on. 
 
    For the example below, the `Read_Java` flag must be set to `True` before this flag can be enabled.
-1. Click **Save**. The Prerequisite flag is listed on the Feature Flag page and must be met before you can turn on the Feature Flag.
+1. Select **Save**. The Prerequisite flag is listed on the Feature Flag page and must be met before you can turn on the Feature Flag.
 
    ```mdx-code-block
    <img src={pre_req_2} alt="A screenshot of the Prerequisite flag added to the Write_Java flag." height="500" width="400" />
