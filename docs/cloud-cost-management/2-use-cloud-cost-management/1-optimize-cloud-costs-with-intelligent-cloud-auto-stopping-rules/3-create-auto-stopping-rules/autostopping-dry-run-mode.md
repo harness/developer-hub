@@ -31,7 +31,7 @@ A dry run rule is similar to a regular AutoStopping rule, but it does not involv
 
 Generating the estimated savings data may take up to 24 hours. You can view the savings data either in the rules summary page or in the rule details page, where you can verify if the savings data is satisfactory.
 
-If the data is satisfactory, you can turn off the **Dry Run** mode to apply the AutoStopping rule on your cloud resource and start saving costs.
+If the data is satisfactory, you can turn off the **Dry Run** mode to apply the AutoStopping rule to your cloud resources and start saving costs.
 
 ![](./static/summary-page-dry-run.png)
 
