@@ -268,7 +268,7 @@ Next you can define all of its settings:
 
 ### Creating environments at an account or organization level
 
-You can create an environment and provide infrastructure definitions at an account or organization level from the Harness UI, using APIs or Terraform. This include creating environments and defining infrastructure definitions only.
+You can create an environment and provide infrastructure definitions at an account or organization level from the Harness UI, using APIs or Terraform.
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
@@ -518,20 +518,7 @@ To create an Environment from outside of a pipeline, you use **Environments** in
 
 ![](./static/services-and-environments-overview-12.png)
 
-
-## Infrastructure definitions
-
-Infrastructure definitions represent an environment's infrastructures physically. They are the actual clusters, hosts, namespaces, etc, where you are deploying a service.
-
-An environment can have multiple **Infrastructure Definitions**. 
-
-![](./static/services-and-environments-overview-13.png)
-
-When you select an environment in a stage, you can select the **Infrastructure Definition** to use for that stage.
-
-![](./static/services-and-environments-overview-14.png)
-
-## Configuration
+### Configuration
 
 In the environment **Configuration**, you can manage the **Name**, **Description**, **Tags**, and **Environment Type** of the environment.
 
@@ -541,7 +528,7 @@ You can also set default manifests, specifications, config files, and variables 
 
 For example, a stage has a Kubernetes service with a manifest but whenever that service is deployed to the **QA** environment, the manifest in that environment's **Configuration** overwrites the namespace of with the manifest in the service with `QA`.
 
-## Service overrides
+### Service overrides
 
 Service overrides are different from **Environment Configuration** in the following ways:
 
@@ -549,7 +536,7 @@ Service overrides are different from **Environment Configuration** in the follow
 * Environment **Service Overrides**: applies to specific services you select. Whenever that service is used with that environment, the **Service Override** is applied.
 
 
-## Override priority
+#### Override priority
 
 When you are using environment configuration and service override to override service settings, it's important to understand the priority of the overrides.
 
@@ -560,6 +547,18 @@ The priority from top to bottom is:
 3. Service settings
 
 ![](./static/services-and-environments-overview-16.png)
+
+### Infrastructure definitions
+
+Infrastructure definitions represent an environment's infrastructures physically. They are the actual clusters, hosts, namespaces, etc, where you are deploying a service.
+
+An environment can have multiple **Infrastructure Definitions**. 
+
+![](./static/services-and-environments-overview-13.png)
+
+When you select an environment in a stage, you can select the **Infrastructure Definition** to use for that stage.
+
+![](./static/services-and-environments-overview-14.png)
 
 ## Values YAML overrides and merges
 
