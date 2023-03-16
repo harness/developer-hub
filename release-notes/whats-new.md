@@ -66,6 +66,33 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 ```
+### Harness Platform
+
+- The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)
+  
+- You can now migrate only the admin users of FirstGen to NextGen by enabling the feature flag `PL_DO_NOT_MIGRATE_NON_ADMIN_CG_USERS_TO_NG`. Previously, all FirstGen users were migrated to NextGen along with the admins. (PL-31648)
+  
+- The [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now supports the following filters:
+
+  - Principal Type Filter: Filters role assignments based on principal type.
+
+  - Harness Managed Filter: Filters role assignments based on roles managed by Harness. For example, an Account Administrator. 
+
+  - Disabled Filter: Filters disabled role assignments. (PL-31352)
+
+- Filters for audit trails are now listed alphabetically. (PL-31204)
+
+- Template expressions now support `when` conditions. (PIE-8762)
+
+### Service Reliability Management
+
+- Metrics graphs are now added to the **Create SLO** screen. (SRM-14025)  
+    
+  When configuring Service Level Indicators (SLIs) in the **Create SLO** screen, you will now see a metric graph based on the last 24 hours of data received from your health monitoring tool. Additionally, the recommended minimum, maximum, and average values specific to the SLI parameter that you are configuring will be displayed.  
+  
+  This feature eliminates the need for switching between the Harness **Create SLO** screen and your health monitoring tool dashboard to determine the most appropriate value for the SLI parameter you are configuring. For instance, if you opt for the ratio-based evaluation method while configuring your SLI, you can refer to the metric graphs and accompanying suggested values to determine the ideal percentage of valid requests to be considered for your SLI.  
+  
+  ![Metrics graph in Create SLO screen](./static/srm-rn-787-metricgraph.png)
 
 ## March 9, 2023
 
@@ -575,7 +602,7 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 
 ### Chaos Engineering
 
-- Update feature for ChaosHub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected ChaosHub.
+- Update feature for chaos hub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected chaos hub.
 
 - Adds CDN Support for Chaos module static artifacts thereby loading the UI with reduced latency on client devices.
 

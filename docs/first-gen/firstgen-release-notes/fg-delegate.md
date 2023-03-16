@@ -101,4 +101,3 @@ This release includes the following fixes.
 ## January 17, 2023, Harness version 78215, Harness Delegate version 78101
 
 Harness FirstGen release 78215 includes no changed features or fixes for Harness Delegate.
-

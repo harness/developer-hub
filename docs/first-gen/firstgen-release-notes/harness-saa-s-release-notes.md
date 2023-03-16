@@ -24,6 +24,16 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 	Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
+#### What's new
+
+- The API keys will now be encrypted with Harness Global Secrets Manager. (PL-30970)
+
+#### Fixed issues
+
+- When a secret is used to create a Prometheus connector, the setup usage is not displayed. (PL-30755)
+  
+  A code enhancement has fixed this issue.
+
 ### March 8, 2023, version 78619
 
 #### Early access
