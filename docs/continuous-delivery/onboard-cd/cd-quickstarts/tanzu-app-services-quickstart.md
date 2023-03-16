@@ -1,5 +1,5 @@
 ---
-title: Tanzu Application Services deployment tutorial
+title: Tanzu Application Services deployment tutorial 
 description: This tutorial shows you how to deploy a publicly available application to your Tanzu Application Service (TAS) in Harness.
 sidebar_position: 13
 ---
