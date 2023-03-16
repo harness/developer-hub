@@ -38,7 +38,39 @@ If you are using Harness Cloud build infrastructure, you can use [Cache Intellig
 
 You need a dedicated S3 bucket for your Harness CI cache operations, and you need an AWS connector with read/write access to this S3 bucket.
 
-For information on configuring an S3 connector and S3 policies, go to [Add an AWS connector](../../../../docs/platform/7_Connectors/add-aws-connector.md) and the [AWS connector settings reference](../../../../docs/platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+<details><summary>Sample S3 Cache Bucket Policy</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowS3BucketAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::your-s3-bucket/*",
+                "arn:aws:s3:::your-s3-bucket"
+            ]
+        },
+        {
+            "Sid": "AllowDescribeRegions",
+            "Effect": "Allow",
+            "Action": "ec2:DescribeRegions",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+</details>
+
+For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](../../../../docs/platform/7_Connectors/add-aws-connector.md) and the [AWS connector settings reference](../../../../docs/platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
 Optionally, you can create a [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) to automatically delete old cache data from your S3 bucket.
 
@@ -50,11 +82,7 @@ Use a dedicated bucket for your Harness CI cache operations. Do not save files t
 
 ## Add Save Cache to S3 step
 
-Here is a YAML example of a Save Cache to S3 step.
-
-Add this step after your pipeline's build/test steps, near the end of your pipeline.
-
-For details about this step's settings, go to [Save Cache to S3 step settings](../../ci-technical-reference/save-cache-to-s-3-step-settings.md).
+Here is a YAML example of a **Save Cache to S3** step.
 
 ```yaml
               - step:
@@ -65,20 +93,42 @@ For details about this step's settings, go to [Save Cache to S3 step settings](.
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum filePath1 }}
+                    key: cache-{{ checksum filePath1 }} # example cache key based on file checksum
                     sourcePaths:
-                      - directory1
-                      - directory2
+                      - directory1 # example first directory to cache
+                      - directory2 # example second directory to cache
                     archiveFormat: Tar
+...
+```
+
+For details about this step's settings, go to [Save Cache to S3 step settings](../../ci-technical-reference/save-cache-to-s-3-step-settings.md).
+
+Pipeline steps within a stage share the same [workspace](../../ci-technical-reference/ci-stage-settings.md#workspace).
+
+You can optionally [share paths](../../ci-technical-reference/ci-stage-settings.md#share-paths) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
+
+```yaml
+  stages:
+    - stage:
+        spec:
+          sharedPaths:
+            - /example/path # directory outside workspace to share between steps
+```
+
+Add **Save Cache to S3** step to your stage after steps that build and test your code, as shown in this diagram:
+
+```mermaid
+graph TD
+  accTitle: Save Cache to S3
+  accDescr: Diagram showing Save Cache to S3 step usage in a single stage
+
+  A(Restore Cache From S3)-- Build and Test Your Code --> B
+  B(<strong>Save Cache to S3</strong>)
 ```
 
 ## Add Restore Cache From S3 step
 
-Here is a YAML example of a Restore Cache From S3 step.
-
-Add this step before your pipeline's build/test steps, near the start of your pipeline.
-
-For details about this step's settings, go to [Restore Cache from S3 step settings](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md).
+Here is a YAML example of a **Restore Cache From S3** step.
 
 ```yaml
               - step:
@@ -89,239 +139,121 @@ For details about this step's settings, go to [Restore Cache from S3 step settin
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: myApp-{{ checksum filePath1 }}
+                    key: cache-{{ checksum filePath1 }} # example cache key based on file checksum
                     archiveFormat: Tar
+...
 ```
 
-## Pipeline examples
+The `spec.key` value in this step must match the `spec.key` value in your **Save Cache to S3** step.
 
-### Single Stage
+For details about this step's settings, go to [Restore Cache from S3 step settings](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md).
 
-This example pipeline demonstrates cache usage in a single stage.
+Add **Restore Cache From S3** step to your stage before steps that build and test your code, as shown in this diagram:
 
 ```mermaid
 graph TD
-  accTitle: Single Stage Cloud Flow Chart
-  accDescr: Flow chart showing S3 cache usage in a single stage
-  subgraph S3 Cache Example
-    A(Restore Cache From S3) --> B
-    B(Build) --> C
-    C(Save Cache to S3)
-  end
+  accTitle: Restore Cache From S3
+  accDescr: Diagram showing Restore Cache From S3 step usage in a single stage
+  A(<strong>Restore Cache From S3</strong>)-- Build and Test Your Code --> B
+  B(Save Cache to S3)
 ```
+
+## Languages
+
+Your cache key and paths will differ depending on your language.
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Harness Cloud">
+<TabItem value="Go">
 ```
 
-If you are using Harness Cloud build infrastructure, you can use [Cache Intelligence](cache-intelligence.md) to automatically manage caching steps within a single stage.
-
-**Operating System:** Linux
-
-**Architecture:** AMD64
-
-**Language:** Node.js
-
-<details><summary>Sample YAML</summary>
-
-:::note
-
-`<+input>` represents [runtime inputs](../../../platform/20_References/runtime-inputs.md#runtime-inputs) that you must specify when you run the pipeline. If you do not want to provide these values at runtime, replace `<+input>` with fixed values or expressions.
-
-:::
+[Go](https://go.dev/) pipelines should reference `go.sum` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps.
 
 ```yaml
-# copy/paste this block into your pipelines's 'stages' section
-  stages:
-    - stage:
-        name: S3 Cache Example
-        identifier: S3_Cache_Example
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  type: RestoreCacheS3
-                  name: Restore Cache From S3
-                  identifier: Restore_Cache_From_S3
                   spec:
-                    connectorRef: <+input>
-                    region: <+input>
-                    bucket: <+input>
-                    key: cache-{{ checksum "package.json" }}
-                    archiveFormat: Tar
-              - step:
-                  type: Run
-                  name: Build
-                  identifier: Build
-                  spec:
-                    shell: Sh
-                    command: npm install
-              - step:
-                  type: SaveCacheS3
-                  name: Save Cache to S3
-                  identifier: Save_Cache_to_S3
-                  spec:
-                    connectorRef: <+input>
-                    region: <+input>
-                    bucket: <+input>
-                    key: cache-{{ checksum "package.json" }}
-                    sourcePaths:
-                      - node_modules
-                    archiveFormat: Tar
-
-# copy/paste this block into your pipelines's 'properties' section
-  properties:
-    ci:
-      codebase:
-        connectorRef: <+input>
-        repoName: <+input>
-        build: <+input> 
+                    key: cache-{{ checksum "go.sum" }}
 ```
 
-</details>
+`spec.sourcePaths` should include `/go/pkg/mod` and `/root/.cache/go-build` in the **Save Cache to S3** step.
+
+```yaml
+                  spec:
+                    sourcePaths:
+                    - /go/pkg/mod
+                    - /root/.cache/go-build
+```
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="Kubernetes">
+
+<TabItem value="Node.js">
 ```
 
-Kubernetes example goes here
+[Npm](https://www.npmjs.com/) pipelines should reference `package-lock.json` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps.
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "package-lock.json" }}
+```
+
+[Yarn](https://yarnpkg.com/) pipelines should reference should reference `yarn.lock` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps.
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "yarn.lock" }}
+```
+
+`spec.sourcePaths` should include `node_modues` in the **Save Cache to S3** step.
+
+```yaml
+                  spec:
+                    sourcePaths:
+                    - node_modules
+```
+
+```mdx-code-block
+</TabItem>
+
+<TabItem value="Maven">
+```
+
+[Maven](https://maven.apache.org/) pipelines should reference `pom.xml` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps.
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "pom.xml" }}
+```
+
+`spec.sourcePaths` should include `/root/.m2` in the **Save Cache to S3** step.
+
+```yaml
+                  spec:
+                    sourcePaths:
+                    - /root/.m2
+```
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
 
-### Multi-Stage
+## Multi-Stage Pipelines
 
-This example pipeline demonstrates cache usage across two stages.
+Each stage runs in an isolated environment, caching can be used to pass data from one stage to the next.
+
+This diagram illustrates cache usage across two stages.
 
 ```mermaid
 graph TD
-  accTitle: Multi-Stage Cloud Flow Chart
-  accDescr: Flow chart showing S3 cache usage across two stages
-  subgraph stage1[S3 Save Cache]
+  accTitle: Multi-Stage
+  accDescr: Diagram showing S3 cache usage across two stages
+  subgraph stage1[First Stage]
     A1(Write to Cache) --> B1
     B1(Save Cache to S3)
   end
   stage1 --> stage2
-  subgraph stage2[S3 Restore Cache]
+  subgraph stage2[Second Stage]
     A2(Restore Cache from S3) --> B2
     B2(Read from Cache)
   end
-```
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Harness Cloud">
-```
-
-**Operating System:** Linux
-
-**Architecture:** AMD64
-
-**Language:** None
-
-<details><summary>Sample YAML</summary>
-
-:::note
-
-`<+input>` represents [runtime inputs](../../../platform/20_References/runtime-inputs.md#runtime-inputs) that you must specify when you run the pipeline. If you do not want to provide these values at runtime, replace `<+input>` with fixed values or expressions.
-
-:::
-
-```yaml
-# copy/paste this block into your pipelines's stages section
-  stages:
-    - stage:
-        name: S3 Save Cache
-        identifier: S3_Save_Cache
-        type: CI
-        spec:
-          sharedPaths:
-            - /shared
-          cloneCodebase: false
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-          execution:
-            steps:
-              - step:
-                  identifier: Write_to_Cache
-                  name: Write to Cache
-                  type: Run
-                  spec:
-                    command: |
-                      echo "this is sequence <+pipeline.sequenceId>" > /shared/cache
-                    connectorRef: <+input>
-                    image: alpine
-              - step:
-                  type: SaveCacheS3
-                  name: Save Cache to S3
-                  identifier: Save_Cache_to_S3
-                  spec:
-                    connectorRef: <+input>
-                    region: <+input>
-                    bucket: <+input>
-                    key: cache-tar
-                    sourcePaths:
-                      - /shared/cache
-                    archiveFormat: Tar
-    - stage:
-        identifier: S3_Restore_Cache
-        name: S3 Restore Cache
-        type: CI
-        spec:
-          sharedPaths:
-            - /shared
-          execution:
-            steps:
-              - step:
-                  type: RestoreCacheS3
-                  name: Restore Cache from S3
-                  identifier: Restore_Cache_From_S3
-                  spec:
-                    connectorRef: <+input>
-                    region: <+input>
-                    bucket: <+input>
-                    key: cache-tar
-                    archiveFormat: Tar
-              - step:
-                  identifier: Read_From_Cache
-                  name: Read from Cache
-                  type: Run
-                  spec:
-                    command: |
-                      cat /shared/cache  
-                    connectorRef: <+input>
-                    image: alpine
-          infrastructure:
-            useFromStage: S3_Save_Cache
-          cloneCodebase: false
-```
-
-</details>
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Kubernetes">
-```
-
-Kubernetes example goes here
-
-```mdx-code-block
-</TabItem>
-</Tabs>
 ```
