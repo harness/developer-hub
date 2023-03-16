@@ -2114,8 +2114,10 @@ To add an artifact from ACR, do the following:
 
 ```mdx-code-block
   </TabItem9>
-  <TabItem9 value="Permissions" label="Permissions">
+</Tabs9>
 ```
+
+#### Permissions
 
 The Harness Azure connectors that you'll use to connect Harness to ACR must have the **Reader** role, at minimum. You can also use a custom role that includes the permissions of the Reader role.
 
@@ -2204,11 +2206,6 @@ The following JSON sample creates a custom role with the required permissions. T
 }
 ```
 </details>
-
-```mdx-code-block
-  </TabItem9>
-</Tabs9>
-```
 
 #### Important notes
 

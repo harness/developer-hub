@@ -42,7 +42,7 @@ For more information about self-signed certificates, delegates, and delegate env
 
 * [Delegate environment variables](../../platform/2_Delegates/delegate-reference/delegate-environment-variables.md)
 * [Docker delegate environment variables](../../platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
-* [Use local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
+* [Set up a local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
 * [Install delegates](https://developer.harness.io/docs/category/install-delegates)
 * [Configure a Kubernetes build farm to use self-signed certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
@@ -55,3 +55,11 @@ The parsed test report in the **Tests** tab comes strictly from the provided tes
 ## Truncated execution logs
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
+
+## AKS builds timeout
+
+Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
+
+If you have a custom network security group, it must allow inbound traffic on port 8080, which the Delegate service uses.
+
+For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic)

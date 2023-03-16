@@ -179,6 +179,25 @@ When adding targets to a group based on conditions, the `in` operator is now cas
 If you are targeting any groups using the `in` operator, ensure that your target condition takes into account the case sensitivity of the operator.
 :::
 
+## January 27, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Java server SDK has been updated to version 1.1.11 and includes the following changes:
+
+- Timeout errors were logged due to the code calling `awaitTermination()` before `shutDown()` when stopping the update processor. There was also a misleading warning about the poller not being restarted. These issues have been fixed. (FFM-6581)
+
+
 ## January 26, 2023
 
 ### What's new
@@ -191,12 +210,17 @@ This release does not include early access features.
 
 ### Fixed issues
 #### Feature Flag SDKs
-- The React Client SDK has been updated to version 1.1.0 and includes the following changes:
+- The React client SDK has been updated to version 1.1.0 and includes the following changes:
   - You can now listen for errors that are caused by network issues. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578)
   - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578) 
 
-- The Javascript SDK has been updated to version 1.8.0 and includes the following change:
-  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489) 
+- The Javascript client SDK has been updated to version 1.8.0 and includes the following change:
+  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489)
+
+- The Android client SDK has been updated to version 1.0.19 and includes the following changes:
+  - A new event was added, `SSE_RESUME`, which fires if the application loses and regains internet.  When the event fires: 
+    - The SDK internally reloads all feature config into cache. (FFM-6574)
+    - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime.
 
 ## January 24, 2023
 

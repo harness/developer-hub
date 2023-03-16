@@ -36,6 +36,9 @@ Before you create a Feature Flag, you must have:
 
 1. In your Project, in **Environments**, click **Create an Environment**.
 2. Enter a **Name** for your Environment.
+
+    Harness generates a unique identifier for names. For details and restrictions, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
+
 3. Select the **Environment type** and click **Create**.
 
 ```mdx-code-block

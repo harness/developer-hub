@@ -8,17 +8,17 @@ import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
   {
-    img: `${url}img/cert_dev_cd_badge.svg`,
+    img: `${url}img/cert_dev_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.Developer,
   },
   {
-    img: `${url}img/cert_adm_cd_badge.svg`,
+    img: `${url}img/cert_adm_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.Administrator,
   },
   {
-    img: `${url}img/cert_arc_cd_badge.svg`,
+    img: `${url}img/cert_arc_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.Architect,
   },
