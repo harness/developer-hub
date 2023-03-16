@@ -6,7 +6,7 @@ sidebar_position: 3
 
 
 :::note
-Currently, this feature is behind the feature flag `PL_AUDIT_LOG_STREAMING_ENABLED`. Contact Harness Support to enable the feature.
+Currently, this feature is in Beta and behind the feature flag `PL_AUDIT_LOG_STREAMING_ENABLED`. Contact Harness Support to enable the feature.
 :::
 
 You can configure a streaming destination in Harness to send audit log data to another location for processing. Integrating audit data with other Security Incident and Event Management (SIEM) tools lets you do the following:
