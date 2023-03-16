@@ -192,7 +192,7 @@ X-GitHub-Hook-Installation-Target-Type: repository
 The header expression format is `<+trigger.header['key-name']>`. For example. `<+trigger.header['X-GitHub-Event']>`.
 
 ![](./static/triggers-reference-13.png)
-If the header key doesn't contain a dash (`–`), then the format `<+trigger.header.['key name']>` will work also.
+If the header key doesn't contain a dash (`–`), then the format `<+trigger.header['key name']>` will work also.
 
 When Harness evaluates the header key you enter, the comparison is case insensitive.
 
