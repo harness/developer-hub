@@ -276,7 +276,7 @@ Once you have created a service, it is persistent and can be used throughout the
 5. In **Details**, in **Artifactory Repository URL**, enter `https://harness.jfrog.io/artifactory/`.
 6. In **Authentication**, select **Anonymous**, and select **Continue**.
    
-   ![](.static/../artifactory-repo-connector.png)
+   ![](.static/artifactory-repo-connector.png)
 
 7. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created in [connect to a TAS provider (step 8)](#connect-to-a-tas-provider).
 8. Select **Save and Continue**
