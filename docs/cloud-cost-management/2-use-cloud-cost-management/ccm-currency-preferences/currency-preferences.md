@@ -5,7 +5,7 @@ description: Currency Preference allows you to view your entire CCM application 
 
 
 :::note
-Currently, this feature is behind the feature flag **CCM_CURRENCY_PREFERENCES**. Contact Harness Support to enable the feature.uh
+Currently, this feature is behind the feature flag **CCM_CURRENCY_PREFERENCES**. Contact Harness Support to enable the feature.
 :::
 
 Harness CCM allows you to view your cloud spend data in the currency of your choice. It is easier to view reports and dashboards in your preferred currency rather than having it in different currencies and then converting them to your preferred currency. It provides more consistent, easy-to-consume, and meaningful cloud analytics across the entire business. 
@@ -56,7 +56,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 * After configuring the currency settings, the currency symbol immediately changes to the preferred one. However, the cost data does not change and remains in the original currency. It may take up to 24 hours for the converted value to be displayed.
 * It may take up to 48 hours for the data on the **Recommendations** page to be updated.
 * You can configure these settings only for your cloud accounts. Contact Harness Support to view your Kubernetes cluster data in your preferred currency.
-* The currency format defaults to the _us-en_ locale. If you wish to change this, contact Harness Support.
+* The currency format defaults to the _en-us_ locale. If you wish to change this, contact Harness Support.
 :::
 
 :::important
