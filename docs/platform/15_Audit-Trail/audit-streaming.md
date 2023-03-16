@@ -68,6 +68,11 @@ You can configure the audit stream from the **Audit Log Streaming** option in **
 5. Select Save and Continue.
 
 6. After the connection test is successful, select **Finish**.
+   
+   :::note
+   AWS buckets are not taken into account during the test connection. Also, it tests the connector used without testing the bucket.
+   :::
+   
 
 ## Activate or deactivate streaming
 
@@ -82,6 +87,8 @@ You can configure the audit stream from the **Audit Log Streaming** option in **
    Post that every 30 mins audit logs are streamed.
 
 3. You can pause audit streaming, preventing any new audit events from being streamed to the configured endpoint by setting the status to **Inactive**. 
+   
+   Harness streams audit logs from where it was paused later when you reactivate such a streaming destination.
 
 ## Update audit stream
 
@@ -89,7 +96,7 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - Edit: You can select a different streaming destination or make changes to the configured destination.
 
-- Delete: You can delete the audit stream destination, which will clear any data relating to the audit stream and prevent any new audit events from being streamed.
+- Delete: You can delete the audit stream destination.
 
 ![](./static/edit-delete.png)
 
