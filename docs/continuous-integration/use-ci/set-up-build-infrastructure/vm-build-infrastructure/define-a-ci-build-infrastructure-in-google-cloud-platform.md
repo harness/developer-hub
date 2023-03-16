@@ -72,24 +72,29 @@ The `pool.yml` file defines the VM spec and pool size for the VM instances used 
 ### Example pool.yml
 
 ```yaml
-version: "1"  
-instances:  
-  - name: ubuntu-gcp  
-    default: true  
-    type: google  
-    pool: 1  
-    limit:  
-    platform:  
-      os: linux  
-      arch: amd64  
-    spec:  
-      account:  
-        project_id: docs-play  
-        key: /path/to/application_default_credentials.json  
-      image: projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20220510  
-      machine_type: e2-small  
-      zone:  
-        - us-west1-a
+version: "1"
+instances:
+  - name: ubuntu-gcp
+    default: true
+    type: google
+    pool: 1
+    limit: 1
+    platform:
+      os: linux
+      arch: amd64
+    spec:
+      account:
+        project_id: ci-play
+        json_path: /path/to/key.json
+      image: projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20220510
+      machine_type: e2-small
+      zone:
+        - us-centra1-a
+        - us-central1-b
+        - us-central1-c
+      disk:
+        size: 100
+        type: "pd-balanced"
 ```
 
 Later in this workflow, you'll reference the pool identifier in Harness Manager to map the pool with a Stage Infrastructure in a CI Pipeline. This is described later in this topic.
