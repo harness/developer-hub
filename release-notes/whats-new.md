@@ -18,6 +18,24 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ## March 15, 2023, version 78712
 
+### Harness Platform
+
+- The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)
+  
+- You can now migrate only the admin users of FirstGen to NextGen by enabling the feature flag `PL_DO_NOT_MIGRATE_NON_ADMIN_CG_USERS_TO_NG`. Previously, all FirstGen users were migrated to NextGen along with the admins. (PL-31648)
+  
+- The [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now supports the following filters:
+
+  - Principal Type Filter: Filters role assignments based on principal type.
+
+  - Harness Managed Filter: Filters role assignments based on roles managed by Harness. For example, an Account Administrator. 
+
+  - Disabled Filter: Filters disabled role assignments. (PL-31352)
+
+- Filters for audit trails are now listed alphabetically. (PL-31204)
+
+- Template expressions now support `when` conditions. (PIE-8762)
+
 ### Service Reliability Management
 
 - Metrics graphs are now added to the **Create SLO** screen. (SRM-14025)  

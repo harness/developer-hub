@@ -1,6 +1,6 @@
 ---
 title: Early Access
-date: 2023-03-08T10:00
+date: 2023-03-15T10:00
 sidebar_position: 2
 ---
 
@@ -11,6 +11,26 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 15, 2023, version 78712
+
+### Harness Platform
+
+- Harness now populates `givenName` and `familyName` for users via SCIM and returns the same when a GET, CREATE, or UPDATE request is made. (PL-31498)
+
+  This is behind the feature flag `PL_NEW_SCIM_STANDARDS`.
+
+- The response of a CRUD operation on a user or user group now contains the following meta fields as per the SCIM 2.0 standards:
+
+  - createdAt
+
+  - lastUpdated
+
+  - version
+
+  - resourceType (PL-31497)
+  
+    This is behind the feature flag `PL_NEW_SCIM_STANDARDS`.
 
 ## March 2, 2023
 

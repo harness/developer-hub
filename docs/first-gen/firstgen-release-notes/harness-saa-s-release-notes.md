@@ -16,6 +16,22 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### March 15, 2023, version 78712
+
+#### Early access
+
+This release does not include any early access features.
+
+#### What's new
+
+- The API keys will now be encrypted with Harness Global Secrets Manager. (PL-30970)
+
+#### Fixed issues
+
+- When a secret is used to create a Prometheus connector, the setup usage is not displayed. (PL-30755)
+  
+  A code enhancement has fixed this issue.
+
 ### March 8, 2023, version 78619
 
 #### Early access
