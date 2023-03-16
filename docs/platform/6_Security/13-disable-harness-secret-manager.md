@@ -26,7 +26,7 @@ For more information, see [API Permissions Reference](../4_Role-Based-Access-Co
 * When you disable the built-in Secret Manager, Harness does not move your existing secrets to another secret manager.
 * Before you disable Harness built-in secret manager, you must have at least one Secret Manager in the Account scope.
 
-### Harness built-in secret manager
+### Harness Built-in Secret Manager
 
 Harness always stores secrets in encrypted form and decrypts them when they are needed. Harness never makes secrets accessible publicly.
 
@@ -34,7 +34,7 @@ By default, Harness provides a built-in Secret Manager that you can use to store
 
 The Key Management Service only stores the key. Harness uses [envelope encryption](https://cloud.google.com/kms/docs/envelope-encryption) to encrypt and decrypt secrets. The encrypted secret and the encrypted Data Encryption Key (used for envelope encryption) are stored in the Harness database. 
 
-### Disable built-in secret manager
+### Disable Harness Built-in Secret Manager
 
 1. In your Harness Account, go to **Account Settings**.
 2. Select **Account Resources** and then select **Default Settings**.
