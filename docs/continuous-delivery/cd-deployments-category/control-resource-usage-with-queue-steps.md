@@ -8,11 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `PIPELINE_QUEUE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This topic describes how to use the **Queue** step to control the access order to the resources Harness requests during a deployment and prevent multiple pipelines from requesting the same resources at the same time.
 
