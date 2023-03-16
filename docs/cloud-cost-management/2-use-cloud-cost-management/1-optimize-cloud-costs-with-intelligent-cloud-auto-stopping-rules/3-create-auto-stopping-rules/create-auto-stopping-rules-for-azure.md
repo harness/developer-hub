@@ -129,7 +129,7 @@ Toggle the button if you wish to evaluate this feature without terminating your 
 
 ### Add Dependency
 
-Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
+Establish dependencies between two or more AutoStopping Rules when you want one Rule to activate one or more Rules based on the traffic it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
 
 1. Click **add dependency** to add a dependency on any existing rule.
 2. Select the rule from the **RULES** drop-down list.
