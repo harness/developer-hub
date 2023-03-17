@@ -53,6 +53,56 @@ Harness recommends that you determine the `maxConcurrency` for a specific Stage 
 2. Run the Pipeline and monitor the resource consumption for the overall Pipeline.
 3. Gradually increase the `maxConcurrency` based on each successive run until you reach a "happy medium" between your run times and resource consumption.
 
+### How to use variables representing lists/arrays to loop and repeat for each item
+
+You can use all Java String class built-in methods on Harness variable expressions.
+
+With that in mind, you can define a Harness string variable containing a comma-separated list of items represented by other strings. You can even get this values list from inputs at runtime.  
+
+For example, this Pipeline variable that contains a list of Jira Tickets:
+
+```
+# Variable: <+pipeline.variables.jiraTickets>
+HD-29193,HD-29194,HD-29195
+
+# YAML representation
+pipeline:
+  identifier: RepeatJiraTickets
+  variables:
+    - name: jiraTickets
+      type: String
+      value: HD-29193,HD-29194,HD-29195 // We have added the list of tickets to be comma separated
+```
+
+By using the `split()` method, you can split that variable string into an array of substrings:
+
+```
+<+pipeline.variables.jiraTickets>.split(',')
+```
+
+You can use this expression in your **repeat** Looping Strategy. For example:
+
+```
+repeat:
+  items: <+stage.variables.jiraTickets.split(',')>
+  maxConcurrency: 1
+```
+
+Finally, you refer to each item in the loop with the `<+repeat.item>` expression.
+
+![Repeat with split()](./static/best-practices-for-looping-strategies-08.png)
+
+
+**Extra:** You can also dynamically create an axis for your Matrix.
+
+```
+matrix:
+  jira: <+stage.variables.jiraTickets.split(',')>
+```
+
+And use the `<+matrix.jira>` expression instead.
+
+
 ### See also
 
 * [Optimizing CI Build Times](https://harness.helpdocs.io/article/g3m7pjq79y)
