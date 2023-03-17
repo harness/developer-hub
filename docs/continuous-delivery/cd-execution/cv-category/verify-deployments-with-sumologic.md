@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 Harness Continuous Verification (CV) integrates with Sumo Logic to:
 
 * Verify that the deployed service is running safely and performing automatic rollbacks.
-* Apply machine learning to every deployment for the purpose of identifying and flagging anomalies in future deployments.
+* Apply machine learning to every deployment to identify and flag anomalies in future deployments.
 
 This topic describes how to set up a Sumo Logic health source when adding a CV step to your Continuous Deployment (CD).
 
@@ -72,31 +72,31 @@ You can add a step at various points in the pipeline such as the beginning, end,
 
 ## Select a continuous verification type, sensitivity, and duration
 
-1. In **Continuous Verification Type**, select a type that matches your deployment strategy. The following are the available options:
+1. In **Continuous Verification Type**, select a type that matches your deployment strategy. The following options are available:
    
-   - Auto: Harness automatically selects the best continuous verification type based on the deployment strategy.
-   - Rolling Update: A rolling deployment is a deployment technique that gradually replaces old versions of a service with new a version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
-   - Canary: Canary deployment involves a two-phased deployment. A canary deployment involves a two-phased deployment process. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. This method helps to detect issues with the new deployment before fully deploying it.
-   - Blue Green: Blue-green deployment is a methodology for deploying services in a production environment where user traffic is gradually shifted from an existing version of the service to a new version. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
-   - Load Test: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
+   - **Auto**: Harness automatically selects the best continuous verification type based on the deployment strategy.
+   - **Rolling Update**: A rolling deployment is a deployment technique that gradually replaces old versions of a service with a new version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
+   - **Canary**: Canary deployment involves a two-phased deployment. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. Canary deployment helps to detect issues with the new deployment before fully deploying it.
+   - **Blue Green**: Blue-green deployment is a technique used to deploy services to a production environment by gradually shifting user traffic from an old version to a new one. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
+   - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
 
-1. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
-2. In **Duration** field choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It's recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps ensure that your deployment is thoroughly analyzed, and any issues are detected before releasing to production.
-3. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to make a reference to this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
-4. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
+2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
+3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
+5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
 
 ## Create a monitored service
 
 In **Monitored Service**, select **Click to autocreate a monitored service**.
 
-Harness automatically generates a monitored service name by combining the service and environment names. The generated name appears in the **Monitored Service Name** field. Note that you cannot edit the monitored service name
+Harness automatically generates a monitored service name by combining the service and environment names. The generated name appears in the **Monitored Service Name** field. Note that you cannot edit the monitored service name.
 
-If a monitored service already exists with the same name and environment, the **Click to autocreate a monitored service** option is hidden and the existing monitored service is assigned to the Verify step by Harness.
+If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden and the existing monitored service is assigned to the Verify step by Harness.
 
 :::note
 
-If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with that name already exists, it will be assigned to the pipeline. If not, Harness skips the Verification step.
+If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with the same name already exists, it will be assigned to the pipeline. If not, Harness skips the Verification step.
 
 For instance, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the Verification step.
 
@@ -111,7 +111,7 @@ A health source is an APM or logging tool that monitors and aggregates data in y
 
 ### Define health source
 
-To add a health source, perform the following steps:
+To add a health source:
 
 1. In the **Health Sources** section, select **+ Add**.
    The Add New Health Source dialog appears.
@@ -120,10 +120,10 @@ To add a health source, perform the following steps:
       2. In the **Health Source Name** field, enter a name for the health source.
       3. In the **Connect Health Source** section, select the **Select Connector**.  
      The Create or Select an Existing Connector dialog appears.
-      4. Select a connector for the Sumo Logic health source and then select **Apply Selected**.  
+      1. Select a connector for the Sumo Logic health source and then select **Apply Selected**.  
      The selected connector appears in the **Select Connector** dropdown field.
-      5. In the **Select Feature**, you can either select **SumoLogic Cloud Metrics** or **SumoLogic Cloud Logs**.
-      6. Select **Next**.  
+      1. In the **Select Feature**, you can either select **SumoLogic Cloud Metrics** or **SumoLogic Cloud Logs**.
+      2. Select **Next**.  
      The **Configuration** tab appears.
 
 
@@ -147,8 +147,8 @@ To add a health source, perform the following steps:
 
 #### Define a query
 
-   In the **Query** box enter your metric query and then select **Run Query**.  
-   A sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
+   In the **Query** box, enter your metric query and then select **Run Query**.  
+   Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
    <details>
    <summary><b>Sample query for memory usage</b></summary>
@@ -215,9 +215,9 @@ The **Advanced (Optional)** section is only visible if you have selected **Conti
 
 ##### Ignore Thresholds
 
-You can select the type of events for which you want to set thresholds in CV. Metrics that match the selected rules will not be flagged as anomalous, regardless of the analysis. 
+You can select the types of events for which you want to set thresholds in CV. Metrics that match the selected rules will not be flagged as anomalous, regardless of the analysis. 
 
-To set the **Ignore Thresholds** for CV, follow these steps:
+To set the **Ignore Thresholds** for CV:
 
 1. Go to the **Ignore Thresholds** tab and select the **+ Add Threshold** button.
 2. From the **Metric** dropdown, select the desired metric for which you want to set the rule.
@@ -255,8 +255,8 @@ To set fail-fast thresholds for CV, follow these steps:
 
 #### Define a query
 
-1. In the **Query** field, enter the log query, and then select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed.
-2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed, helping you verify if the query you built is correct.
+1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed.
+2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed that help you verify if the query you built is correct.
 
 <details>
    <summary><b>Sample log query</b></summary>
@@ -280,7 +280,7 @@ To set fail-fast thresholds for CV, follow these steps:
 
 ## Run the pipeline
 
-To run the pipeline, follow these steps:
+To run the pipeline:
 
 1. In the upper-right corner, select **Run**.  
    The Run Pipeline dialog box appears.
