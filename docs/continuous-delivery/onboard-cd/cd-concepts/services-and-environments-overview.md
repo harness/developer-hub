@@ -17,14 +17,14 @@ If you are new to Harness, please review [Harness key concepts](../../../getting
 Services represent your microservices and other workloads. Each service contains a **Service Definition** that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.
 
 You can create services from: 
-* Account level
-* Organization level
+* An account
+* An Organization
 * Within a pipeline
 * Outside a pipeline 
 
 ### Creating services at an account or organization level
 
-You can create a service at an account or organization level from the Harness UI, using APIs or Terraform.
+You can create a service at an account or organization level from the Harness UI using APIs or Terraform.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -34,7 +34,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
   <TabItem value="Harness UI" label="Harness UI">
 ```
-To create a service at an account and organization level, select **Services** in **Organization Resources**.
+To create a service at an account or organization level, go to **Organization Resources** **>Services**.
 
 Creating an account level service enables you to manage the service globally across the organizations and projects within the account. 
 
@@ -150,7 +150,7 @@ service:
 ```
 For information about creating a service API, go to [create a service](https://apidocs.harness.io/tag/Services#operation/createServiceV2).
 
-The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the service. For example, if you create a service at an account level, you will not need org or project identifiers in the post api call payload.
+The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the service. For example, if you create a service at an account level, you will not need org or project identifiers in the post API call payload.
 
 ```mdx-code-block
   </TabItem>
@@ -235,7 +235,7 @@ To create a service from outside of a pipeline, you use **Services** in the navi
 
 ### Creating services inside a pipeline
 
-To create a service from inside of a pipeline, select **New Service** in the **Services** tab of a new CD stage.
+To create a service from inside of a pipeline, select the **Services** tab of a new CD stage, then select **New Service**.
 
 ![](./static/services-and-environments-overview-10.png)
 
@@ -243,24 +243,23 @@ Once the service and its service definition are saved, you can select it in any 
 
 When you select the service in a pipeline, you can select **Edit Service** to edit its **Service Definition**.
 
-When you create the new service you define its **Service Definition**. For example, Kubernetes **Service Definition** with a Kubernetes manifest and Docker artifact.
+When you create the new service you define its **Service Definition**. For example, a Kubernetes **Service Definition** with a Kubernetes manifest and Docker artifact.
 
 ## Environments
 
 Environments represent your deployment targets (QA, Prod, etc). Each environment contains one or more **Infrastructure Definitions** that list your target clusters, hosts, namespaces, etc.
 
 You can create environments from: 
-* Account level
-* Organization level
+* An Account
+* An Organization
 * Within a pipeline
 * Outside a pipeline 
 
 Next you can define all of its settings:
 
 * **Infrastructure Definitions:** represent one or more environment infrastructures.
-  * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service.
-  * For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
-  * You can add multiple infrastructure definitions to a single environment and select one when you add the environment to a stage.
+  * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
+  * You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
 * **Configuration:** the default environment configuration, including variables, manifests, specifications, and config files that will be used every time the environment is used in a stage.
 * **Service Overrides:** override specific services. You select a service and define what will be overridden whenever that Service is deployed to this environment.
 * **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](../../cd-gitops/harness-git-ops-basics.md).
@@ -279,7 +278,7 @@ import TabItem2 from '@theme/TabItem';
   <TabItem2 value="Harness UI" label="Harness UI">
 ```
 
-To create an environment at an account and organization level, select **Environments** in **Organization Resources**. 
+To create an environment at an account or organization level, go to **Organization Resources** **>Environments**. 
 
 ![](./static/create-environments-from-account-level.png)
 
@@ -387,7 +386,7 @@ For information about creating an environment API, go to [create an environment]
 
 For information about creating infrastructure definiton API, go to [create an infrastructure in an environment](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
 
-The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the environment. For example, if you create an environment at an account level, you will not need org or project identifiers in the post api call payload.
+The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the environment. For example, if you create an environment at an account level, you will not need org or project identifiers in the post API call payload.
 
 ```mdx-code-block
   </TabItem2>
