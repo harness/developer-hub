@@ -117,7 +117,7 @@ Now all Github webhooks for this project must be authenticated. All Github trigg
 
 
 :::note
-Currently, this feature is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.By default, Harness Git-based triggers listen to Git events using webhooks. 
+Currently, this feature is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. By default, Harness Git-based triggers listen to Git events using webhooks. 
 
 :::
 
