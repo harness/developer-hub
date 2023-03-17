@@ -447,6 +447,25 @@ This release does not include early access features.
   - Added a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5263)
   - Fixed a bug where requests continuously repeated themselves when using the SDK's streaming mode. (FFM-5352)
 
+## November 30, 2022
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The .NET server SDK has been updated to version 1.1.6 with the following update:
+
+* When a flag depended on a prerequisite flag being true, the evaluation failed if the prerequisite flag's variation `value` and `identifier` were identical. This issue has been fixed and the evaluation now works correctly in that case. (FFM-5307)
+
+
 ## November 29, 2022
 
 ### What's new
