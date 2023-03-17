@@ -10,8 +10,23 @@ Currently, this feature is behind the feature flag **CCM_CURRENCY_PREFERENCES**.
 
 Harness CCM allows you to view your cloud spend data in the currency of your choice. It is easier to view reports and dashboards in your preferred currency rather than having it in different currencies and then converting them to your preferred currency. It provides more consistent, easy-to-consume, and meaningful cloud analytics across the entire business. 
 
-CCM allows you to choose from 18 different currencies and displays the cost data in the specified currency. 
+CCM allows you to choose from the following list of currencies and displays the cost data in the specified currency:
 
+  - ARS
+  - AUD
+  - BRL
+  - CAD
+  - CNY
+  - EUR
+  - GBP
+  - INR
+  - JPY
+  - MXN
+  - NOK
+  - NZD
+  - RUB
+  - SGD
+  - USD
 
 ## Before you begin
 
@@ -23,7 +38,7 @@ You must sign up for your cloud accounts and connect the accounts to Harness CCM
 * [Set up cost visibility for Kubernetes](https://developer.harness.io/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes)
 
 
-## Setting up your preferred currency 
+## Set up your preferred currency 
 
 To standardize the currency in which your cloud cost data is displayed, perform the following steps:
 
@@ -54,7 +69,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
     
 :::note
 * After configuring the currency settings, the currency symbol immediately changes to the preferred one. However, the cost data does not change and remains in the original currency. It may take up to 24 hours for the converted value to be displayed.
-* It may take up to 48 hours for the data on the **Recommendations** page to be updated.
+* It may take up to 48 hours for data on the **Recommendations** page to be updated.
 * You can configure these settings only for your cloud accounts. Contact Harness Support to view your Kubernetes cluster data in your preferred currency.
 * The currency format defaults to the _en-us_ locale. If you wish to change this, contact Harness Support.
 :::
