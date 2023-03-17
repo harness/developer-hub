@@ -37,3 +37,8 @@ Whenever the feature flag is turned off or on, a change event is recorded in the
 The following figure shows an event getting recorded on the Service Health page of the monitored service when the feature flag is turned on.
 
 ![FF event generated](./static/change-impact-view-ff-event-generated.png)
+
+
+## Next steps
+
+Use the [Service Health dashboard](change-impact-analysis-service-health-dashboard.md) and [Changes dashboard](change-impact-analysis-changes-dash-board.md) to correlate change events and understand their impact on the monitored service.
