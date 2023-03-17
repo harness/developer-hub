@@ -25,7 +25,7 @@ You can set conditions on the Triggers, such as matching a Docker tag or label o
 This Trigger is a simple way to automate deployments for new builds.
 
 :::note
-we don’t need an artifact source to be defined in service definition for the trigger to work.The only possible scenario of failure is during the initial collection of the artifact within one minute of creating the trigger. For instance, suppose the docker registry contains ten tags for a specific image and a trigger is created. In that case, the delegate's polling job retrieves all ten tags and sends them to the manager, which does not initiate any pipelines. This is because running the pipeline for all ten tags pushed before trigger creation could leave the system in an undesired state. However, when an eleventh or any subsequent tag is pushed, the trigger executes and initiates the pipeline.
+An artifact source does not need to be defined in the service definition for the trigger to work. The only possible scenario of failure is during the initial collection of the artifact within one minute of creating the trigger. For instance, suppose the Docker registry contains 10 tags for a specific image and a trigger is created. In that case, the delegate's polling job retrieves all 10 tags and sends them to the manager, which does not initiate any pipelines. This is because running the pipeline for all 10 tags that were pushed before creation of the trigger could leave the system in an undesirable state. However, when an 11th or any subsequent tag is pushed, the trigger executes and initiates the pipeline.
 
 ### Before you begin
 
