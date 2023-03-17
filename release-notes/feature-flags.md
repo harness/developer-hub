@@ -259,6 +259,23 @@ This release does not include early access features.
     - The SDK internally reloads all feature config into cache. (FFM-6574)
     - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime.
 
+## January 25, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Go server SDK has been updated to version 0.1.6 and includes the following update:
+* Some target segment include rules were not working for numeric values. This issue has been fixed. (FFM-6384)
+
 ## January 24, 2023
 
 ### What's new
@@ -369,6 +386,24 @@ This release does not include early access features.
 #### Feature Flags UI
 
 Resolved an issue that caused the edit section of a pipeline not to load on the Feature Flag module. (FFM-5948)
+
+## December 15, 2022
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version 1.1.9 and includes the following update:
+
+* A NullPointerException was thrown when a null target was given. This update fixes the MetricsProcessor to handle nulls correctly. (FFM-6125)
 
 ## December 13, 2022
 
