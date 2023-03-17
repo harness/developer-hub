@@ -4,7 +4,7 @@ description: DevOps Research and Assessment (DORA) metrics is a standard measure
 sidebar_position: 2
 ---
 
-DevOps Research and Assessment (DORA) metrics are key for understanding the performance of software development teams. By understanding these metrics, you’re empowered to iterate and make improvements for your business. 
+DevOps Research and Assessment (DORA) metrics is a standard measure of DevOps performance. You can set baseline for team performance and measure improvements by tracking these metrics. By understanding these metrics, you’re empowered to iterate and make improvements for your business. 
 
 ## Use tags to revert a failed pipeline execution
 
@@ -15,7 +15,7 @@ tags:
   revert_execution_id: <+input>
 ```
 :::note
-Harness UI doesn't support runtime inputs for tags, `<+input>`. Select the YAML view to add runtime inputs to tags. 
+Harness UI doesn't support runtime inputs, `<+input>` for tags. Select the YAML view to add runtime inputs to tags. 
 :::
 
 Currently, Harness does not measure regressions or failures that occur after a production deployment is complete. 
@@ -42,13 +42,13 @@ pipeline:
           - identifier: "Infra_2"
 ```
 
-## Create queries to pull data in to your DORA dashboard
+## Create queries to pull data into your DORA dashboard
 
 After you [create a DORA metrics dashboard](../../platform/18_Dashboards/create-dashboards.md), you can [add tiles](https://developer.harness.io/docs/platform/dashboards/create-dashboards/#step-2-add-tiles-to-a-dashboard) to the dashboard. 
 
 You can edit, delete, resize, move postions, or download data of the tiles. 
 
-Using the DORA metrics dashboard, you can view these metrics: 
+Using the DORA metrics dashboard, you can view these metrics.
 
 * **Deployments Frequency** tells you how many deployments happened in a particular duration. This metric helps measure the consistency of software delivery and delivery performance. 
 * **Mean Time to Restore (MTTR)** tells you the time taken to restore an issue found in the production environment.  
