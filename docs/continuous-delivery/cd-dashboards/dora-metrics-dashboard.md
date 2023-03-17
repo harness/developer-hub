@@ -1,10 +1,10 @@
 ---
 title: DORA metrics dashboard
-description: DevOps Research and Assessment (DORA) metrics is a standard measure of DevOps performance. Set baseline for team performance and measure improvements by tracking these metrics.
+description: Set baseline for team performance and measure improvements by tracking DORA metrics.
 sidebar_position: 2
 ---
 
-DevOps Research and Assessment (DORA) metrics is a standard measure of DevOps performance. You can set baseline for team performance and measure improvements by tracking these metrics. By understanding these metrics, you’re empowered to iterate and make improvements for your business. 
+DevOps Research and Assessment (DORA) metrics is a standard measure of DevOps performance. By understanding these metrics, you can make informed decisions and implement improvements that can help your business grow.
 
 ## Use tags to revert a failed pipeline execution
 
@@ -48,7 +48,7 @@ After you [create a DORA metrics dashboard](../../platform/18_Dashboards/create-
 
 You can edit, delete, resize, move postions, or download data of the tiles. 
 
-Using the DORA metrics dashboard, you can view these metrics.
+Using the DORA metrics dashboard, you can view the following metrics.
 
 * **Deployments Frequency** tells you how many deployments happened in a particular duration. This metric helps measure the consistency of software delivery and delivery performance. 
 * **Mean Time to Restore (MTTR)** tells you the time taken to restore an issue found in the production environment.  
@@ -56,14 +56,14 @@ Using the DORA metrics dashboard, you can view these metrics.
 
 ![](.static/../static/dora-dashboard.png)
 
-You can build queries to captures data in the dashboard to gain deeper insights. Here, we will capture the metrics for each service-environment combination in a pipeline. For a multi-service pipeline, metrics for each serive-environment combination is captured and reported seperately. 
+To gain deeper insights, you can create queries in the dashboard to capture data. Harness captures metrics for each service-environment combination within a pipeline. If you have a multi-service pipeline, metrics for each service-environment combination will be captured and reported separately.
 
 ### Deployment frequency
 
-1. Name your query **Deployment Frequency**. 
+1. Enter a name your query. For example, Deployment Frequency. 
 2. Select the following filters.
-    1. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
-    2. In **Deployments**, select **Total Deployments**.
+    * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
+    * In **Deployments**, select **Total Deployments**.
 3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
@@ -72,10 +72,10 @@ You can build queries to captures data in the dashboard to gain deeper insights.
 
 ### Mean time to restore
 
-1. Name your query **Mean Time to Restore**. 
+1. Enter a name your query. For example, Mean Time to Restore. 
 2. Select the following filters.
-    1. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
-    2. In **Reverted Deployments**, select **Mean Time to Restore**.
+    * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
+    * In **Reverted Deployments**, select **Mean Time to Restore**.
 3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
@@ -84,10 +84,10 @@ You can build queries to captures data in the dashboard to gain deeper insights.
 
 ### Change failure rate
 
-1. Name your query **Change Failure Rate**. 
+1. Enter a name your query. For example, Change Failure Rate. 
 2. Select the following filters.
-    1. In **Deployments**, select **Custom Aggregation Period**, then select the time period.
-    2. In **Deployments**, select **Change Failure Rate**.
+    * In **Deployments**, select **Custom Aggregation Period**, then select the time period.
+    * In **Deployments**, select **Change Failure Rate**.
 3. Configure your visualisation options. For more information, go to [create visualisation and graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs).
 4. Select **Run**.
 5. Select **Save** to save the query as a tile on your dashboard.
