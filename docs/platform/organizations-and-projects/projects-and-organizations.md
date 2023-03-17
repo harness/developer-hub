@@ -58,14 +58,11 @@ Your Project can add Harness products as modules, such as Continuous Integration
 
 The following table lists the resources that are available at various scopes in Harness:
 
-
-
-|  |  |  |  |
-| --- | --- | --- | --- |
 | **Resources** | **Account** | **Org** | **Project** |
+| --- | --- | --- | --- |
 | **Pipeline** | No | No | Yes |
-| **Services** | No | No | Yes |
-| **Environments** | No | No | Yes |
+| **Services** | Yes | Yes | Yes |
+| **Environments** | Yes | Yes | Yes |
 | **Git Management** | No | No | Yes |
 | **Connectors** | Yes | Yes | Yes |
 | **Secrets** | Yes | Yes | Yes |
