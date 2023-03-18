@@ -1,1 +1,1 @@
-`domain` &nbsp;&nbsp; The fully-qualified URL to the scanner. 
+The fully-qualified URL to the scanner. 

@@ -1,7 +1,7 @@
 ---
-title: Grype Scanner Reference
-description: You can set up a Security step with Grype to detect vulnerabilities and misconfigurations in your container images.
-sidebar_position: 2000
+title: Grype scanner reference
+description: Image scans with Grype
+sidebar_position: 156
 ---
 
  You can set up a Security step with [Grype](https://github.com/anchore/grype) to detect vulnerabilities and misconfigurations in your container images.

@@ -1,13 +1,13 @@
 ---
 title: Amazon Image scanner reference
-description: Image scans with AWS Image scanner.
+description: Image scans with AWS Image scanner
 sidebar_position: 20
 ---
 
 
 ### Security step settings
 
-You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up an Amazon Image scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -33,7 +33,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 
 ### Container scan settings
 
-<!-- CONTAINERS --------------------------------------------------------------------------- 
+<!-- CONTAINERS --------------------------------------------------------------------------- -->
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';

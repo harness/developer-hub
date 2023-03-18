@@ -1,0 +1,51 @@
+---
+title: Tenable scanner reference
+description: Instance scans with Tenable
+sidebar_position: 310
+---
+
+
+### Security step settings
+
+STO supports the following scan approaches for the following Snyk products:
+* Snyk Open Source (`orchestratedScan` or `ingestionOnly`)
+* Snyk Code (`ingestionOnly`)
+* Snyk Container (`ingestionOnly`)
+
+For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
+
+You can set up Tenable scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+
+<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
+
+```mdx-code-block
+import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
+```
+
+<StoSecurityStepConfig />
+
+
+* `product_name` = `tenableio`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
+* When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
+	+ `product_domain`
+	+ `product_access_id`
+	+ `product_access_token`
+	+ `product_policy_id`
+	+ `product_scanner_id`
+	+ `product_template_uuid`
+* `product_config_name`
+	+ Accepted values(s):
+		- `legacy-web-application-scan` (Use legacy nessus scan inside tenableIO)
+
+
+
+### Instance settings 
+
+```mdx-code-block
+import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+```
+
+<StoLegacyInstance />
+

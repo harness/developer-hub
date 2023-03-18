@@ -1,1 +1,1 @@
-`path` &nbsp;&nbsp;  Path to append to the application instance domain, if you're splitting the full path between the **Domain** and **Path** settings. For example, you might specify the domain as `https://myapp.io` and the path as `/portal/us`.
+Path to append to the application instance domain, if you're splitting the full path between the **Domain** and **Path** settings. For example, you might specify the domain as `https://myapp.io` and the path as `/portal/us`.

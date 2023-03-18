@@ -1,7 +1,7 @@
 ---
 title: Security step UI settings reference
 description: All the available UI settings to configure individual scans.
-sidebar_position: 200
+sidebar_position: 3000
 ---
 
 

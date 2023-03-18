@@ -1,1 +1,1 @@
-`file` &nbsp;&nbsp;  The results data file to use when running an Ingestion scan. Generally an Ingestion scan consists of a scan step (to generate the data file) and an ingestion step (to ingest the data file).
+The results data file to use when running an Ingestion scan. Generally an Ingestion scan consists of a scan step (to generate the data file) and an ingestion step (to ingest the data file).

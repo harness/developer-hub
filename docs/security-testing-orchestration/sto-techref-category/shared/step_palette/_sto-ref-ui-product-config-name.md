@@ -1,1 +1,1 @@
-`config` &nbsp;&nbsp;  The predefined configuration to use for the scan. All scan steps have at least one configuration.
+The predefined configuration to use for the scan. All scan steps have at least one configuration.

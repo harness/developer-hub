@@ -1,6 +1,6 @@
 <details><summary>Container scan settings</summary>
 
-The following settings apply to all scanners where the `scan_type` is `container`.
+The following settings apply to all scanners where the `scan_type` is `containerImage`.
 
 * `container_project` (required)
 * `container_tag` (required)

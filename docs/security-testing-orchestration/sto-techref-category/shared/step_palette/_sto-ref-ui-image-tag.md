@@ -1,1 +1,1 @@
-`tag` The image tag. Examples: `latest`, `1.2.3`
+The image tag. Examples: `latest`, `1.2.3`

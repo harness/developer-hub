@@ -1,1 +1,1 @@
-* **Repository**  &nbsp;&nbsp;  (`repository`)  &nbsp;&nbsp;  Scan a codebase repo. 
+* **Repository** Scan a codebase repo. 

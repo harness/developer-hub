@@ -1,1 +1,1 @@
-`access_id` Username to log in to the scanner.
+Username to log in to the scanner.

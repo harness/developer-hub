@@ -1,13 +1,13 @@
 ---
-title: AWS Security Hub scanner reference
-description: Image scans with AWS Image scanner
-sidebar_position: 40
+title: Prowler scanner reference
+description: Configuration scans with Prowler
+sidebar_position: 220
 ---
 
 
 ### Security step settings
 
-You can set up a AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -17,15 +17,16 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 
 <StoSecurityStepConfig />
 
-* `product_name` = `aws-security-hub`
+
+* `product_name` = `prowler`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `configuration`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `dataLoad` or `ingestionOnly`
-* `product_config_name` =  `default`
-  
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
+* `product_config_name`
+	+ Accepted values(s):
+		- `default`, `hipaa`, `gdpr`, `exclude_extras`
 
-### Configuration scan settings
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
+<!-- CONTAINERS ---------------------------------------------------------------------------
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -36,6 +37,7 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <!-- REPOS --------------------------------------------------------------------------- 
 
+### Repository scan settings
 
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
@@ -43,8 +45,9 @@ import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 
 <StoLegacyRepo />
 
-<!-- LEGACY INSTANCE  --------------------------------------------------------------------------- 
+<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  
 
+### Instance settings 
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
@@ -52,7 +55,7 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 
 <StoLegacyInstance />
 
-<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- 
+<!-- LEGACY CONFIGS  ---------------------------------------------------------------------------  -->
 
 
 ```mdx-code-block

@@ -35,8 +35,6 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <!-- REPOS --------------------------------------------------------------------------- -->
 
-### Repository scan settings
-
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```

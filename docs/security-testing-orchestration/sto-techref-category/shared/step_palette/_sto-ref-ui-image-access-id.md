@@ -1,1 +1,1 @@
-`access_id` Username to log in to the container registry.
+Username to log in to the container registry.

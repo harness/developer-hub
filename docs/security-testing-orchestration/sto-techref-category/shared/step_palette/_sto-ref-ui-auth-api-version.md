@@ -1,1 +1,1 @@
-`version` The scanner API version. Some scanners require this. 
+The scanner API version. Some scanners require this. 
