@@ -1,1 +1,0 @@
-The predefined configuration to use for the scan. All scan steps have at least one configuration.

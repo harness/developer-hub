@@ -4,16 +4,19 @@ description: All the available UI settings to configure individual scans.
 sidebar_position: 200
 ---
 
-:::note
-* UI configuration of scan steps is behind the feature flag `STO_STEP_PALETTE_V1`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. You might need to wait up to 60 minutes after enabling the feature flag before the new scan steps appear in the Step Library UI.
-* UI configuration support is currently limited to the following scanners: Aqua Trivy, Bandit, Black Duck, Checkmarx, Grype, Mend, Prisma Cloud, Snyk, SonarQube, and ZAP. 
-* Each step palette shows only the options that apply to a specific scan. If you're setting up a repository scan, for example, the UI won't show Container Image settings. 
-* Docker-in-Docker is not required for these steps *unless* you're scanning a container image. If you're scanning a repository using Bandit, for example, you don't need to set up a Background step running DinD.
-* These steps are currently available in Security stages only. 
-* Support is currently limited to Kubernetes and Harness Cloud AMD64 build infrastructures only.
-:::
 
-Some Security steps include step palette UI for setting up a scan. This topic describes the settings available in the UI. 
+Some Security steps include a step palette UI for setting up a scan. This topic describes the settings available in the UI. 
+
+<!-- ============================================================================= -->
+
+
+```mdx-code-block
+import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
+```
+
+<StoScannerStepNotes />
+
+<!-- ============================================================================= -->
 
 ## Configuring a Security step  
 To set up a scan using the step palette, add a SecurityTests stage to your pipeline. Then add a Security step for the scanner of interest and configure the step using the available options. 
@@ -32,10 +35,10 @@ To set up a scan using the step palette, add a SecurityTests stage to your pipel
 #### Scan Mode
 
 ```mdx-code-block
-import StoSettingScanMode from './shared/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/_sto-ref-ui-scan-mode-01-dataload.md';
-import StoSettingScanModeIngest from './shared/_sto-ref-ui-scan-mode-02-ingestonly.md';
+import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
+import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
@@ -49,15 +52,12 @@ import StoSettingScanModeIngest from './shared/_sto-ref-ui-scan-mode-02-ingeston
 #### Scan Configuration
 
 ```mdx-code-block
-import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-name.md';
+import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
 ```
 
 <StoSettingProductConfigName />
 
 </details>
-
-
-
 
 <details><summary>Target Settings</summary>
 
@@ -67,11 +67,11 @@ import StoSettingProductConfigName from './shared/_sto-ref-ui-product-config-nam
 #### Type
 
 ```mdx-code-block
-import StoSettingScanType from './shared/_sto-ref-ui-scan-type.md';
-import StoSettingScanTypeRepo     from './shared/_sto-ref-ui-scan-type-00-repo.md';
-import StoSettingScanTypeCont     from './shared/_sto-ref-ui-scan-type-01-container.md';
-import StoSettingScanTypeInst     from './shared/_sto-ref-ui-scan-type-02-instance.md';
-import StoSettingScanTypeConfig  from './shared/_sto-ref-ui-scan-type-03-config.md';
+import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
+import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
+import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
+import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
+import StoSettingScanTypeConfig  from './shared/step_palette/_sto-ref-ui-scan-type-03-config.md';
 ```
 <a name="scan-type"></a>
 <StoSettingScanType />
@@ -85,7 +85,7 @@ import StoSettingScanTypeConfig  from './shared/_sto-ref-ui-scan-type-03-config.
 #### Name 
 
 ```mdx-code-block
-import StoSettingProductID from './shared/_sto-ref-ui-prod-id.md';
+import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 ```
 
 <StoSettingProductID />
@@ -96,7 +96,7 @@ import StoSettingProductID from './shared/_sto-ref-ui-prod-id.md';
 #### Variant
 
 ```mdx-code-block
-import StoSettingTargetVariant from './shared/_sto-ref-ui-target-variant.md';
+import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
 ```
 
 <StoSettingTargetVariant  />
@@ -107,7 +107,7 @@ import StoSettingTargetVariant from './shared/_sto-ref-ui-target-variant.md';
 #### Workspace (_repository_)
 
 ```mdx-code-block
-import StoSettingTargetWorkspace from './shared/_sto-ref-ui-target-workspace.md';
+import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
 ```
 
 <StoSettingTargetWorkspace  />
@@ -117,7 +117,7 @@ import StoSettingTargetWorkspace from './shared/_sto-ref-ui-target-workspace.md'
 #### Ingestion File (_ingestion_)
 
 ```mdx-code-block
-import StoSettingIngestionFile from './shared/_sto-ref-ui-ingestion-file.md';
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
 ```
 
 <StoSettingIngestionFile  />
@@ -142,7 +142,7 @@ import StoSettingIngestionFile from './shared/_sto-ref-ui-ingestion-file.md';
 
 
 ```mdx-code-block
-import StoSettingAuthDomain from './shared/_sto-ref-ui-auth-domain.md';
+import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
 ```
 
 <StoSettingAuthDomain />
@@ -153,7 +153,7 @@ import StoSettingAuthDomain from './shared/_sto-ref-ui-auth-domain.md';
 #### Enforce SSL
 
 ```mdx-code-block
-import StoSettingProductSSL from './shared/_sto-ref-ui-auth-ssl.md';
+import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
 ```
 
 <StoSettingProductSSL />
@@ -164,7 +164,7 @@ import StoSettingProductSSL from './shared/_sto-ref-ui-auth-ssl.md';
 #### API Version
 
 ```mdx-code-block
-import StoSettingApiVersion from './shared/_sto-ref-ui-auth-api-version.md';
+import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
 ```
 
 <StoSettingApiVersion />
@@ -175,7 +175,7 @@ import StoSettingApiVersion from './shared/_sto-ref-ui-auth-api-version.md';
 #### Type
 
 ```mdx-code-block
-import StoSettingAuthType from './shared/_sto-ref-ui-auth-type.md';
+import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 ```
 
 <StoSettingAuthType />
@@ -187,7 +187,7 @@ import StoSettingAuthType from './shared/_sto-ref-ui-auth-type.md';
 #### Access ID (_orchestration_)
 
 ```mdx-code-block
-import StoSettingAuthAccessID from './shared/_sto-ref-ui-auth-access-id.md';
+import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
 ```
 
 <StoSettingAuthAccessID />
@@ -198,7 +198,7 @@ import StoSettingAuthAccessID from './shared/_sto-ref-ui-auth-access-id.md';
 #### Access Token
 
 ```mdx-code-block
-import StoSettingAuthAccessToken from './shared/_sto-ref-ui-auth-access-token.md';
+import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
 ```
 
 
@@ -216,7 +216,7 @@ import StoSettingAuthAccessToken from './shared/_sto-ref-ui-auth-access-token.md
 #### Type  (_orchestration_)
 
 ```mdx-code-block
-import StoSettingImageType from './shared/_sto-ref-ui-image-type.md';
+import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md';
 ```
 
 <StoSettingImageType />
@@ -230,7 +230,7 @@ import StoSettingImageType from './shared/_sto-ref-ui-image-type.md';
 
 
 ```mdx-code-block
-import StoSettingImageDomain from './shared/_sto-ref-ui-image-domain.md';
+import StoSettingImageDomain from './shared/step_palette/_sto-ref-ui-image-domain.md';
 ```
 
 <StoSettingImageDomain />
@@ -241,7 +241,7 @@ import StoSettingImageDomain from './shared/_sto-ref-ui-image-domain.md';
 #### Name
 
 ```mdx-code-block
-import StoSettingImageName from './shared/_sto-ref-ui-image-name.md';
+import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md';
 ```
 
 <StoSettingImageName />
@@ -254,7 +254,7 @@ import StoSettingImageName from './shared/_sto-ref-ui-image-name.md';
 #### Tag
 
 ```mdx-code-block
-import StoSettingImageTag from './shared/_sto-ref-ui-image-tag.md';
+import StoSettingImageTag from './shared/step_palette/_sto-ref-ui-image-tag.md';
 ```
 
 <StoSettingImageTag />
@@ -265,7 +265,7 @@ import StoSettingImageTag from './shared/_sto-ref-ui-image-tag.md';
 #### Access Id
 
 ```mdx-code-block
-import StoSettingImageAccessID from './shared/_sto-ref-ui-image-access-id.md';
+import StoSettingImageAccessID from './shared/step_palette/_sto-ref-ui-image-access-id.md';
 ```
 
 <StoSettingImageAccessID />
@@ -276,7 +276,7 @@ import StoSettingImageAccessID from './shared/_sto-ref-ui-image-access-id.md';
 #### Access Token 
 
 ```mdx-code-block
-import StoSettingImageAccessToken from './shared/_sto-ref-ui-image-access-token.md';
+import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-access-token.md';
 ```
 
 <StoSettingImageAccessToken />
@@ -287,7 +287,7 @@ import StoSettingImageAccessToken from './shared/_sto-ref-ui-image-access-token.
 #### Region  
 
 ```mdx-code-block
-import StoSettingImageRegion from './shared/_sto-ref-ui-image-region.md';
+import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-region.md';
 ```
 
 <StoSettingImageRegion />
@@ -305,7 +305,7 @@ import StoSettingImageRegion from './shared/_sto-ref-ui-image-region.md';
 #### Project Name
 
 ```mdx-code-block
-import StoSettingToolProjectName from './shared/_sto-ref-ui-tool-project-name.md';
+import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
 ```
 
 <StoSettingToolProjectName />
@@ -316,7 +316,7 @@ import StoSettingToolProjectName from './shared/_sto-ref-ui-tool-project-name.md
 #### Project Version
 
 ```mdx-code-block
-import StoSettingToolProjectVersion from './shared/_sto-ref-ui-tool-project-version.md';
+import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool-project-version.md';
 ```
 
 <a name="product-project-version"></a>
@@ -329,7 +329,7 @@ import StoSettingToolProjectVersion from './shared/_sto-ref-ui-tool-project-vers
 #### Include 
 
 ```mdx-code-block
-import StoSettingToolInclude from './shared/_sto-ref-ui-tool-include.md';
+import StoSettingToolInclude from './shared/step_palette/_sto-ref-ui-tool-include.md';
 ```
 
 <StoSettingToolInclude />
@@ -340,7 +340,7 @@ import StoSettingToolInclude from './shared/_sto-ref-ui-tool-include.md';
 #### Exclude
 
 ```mdx-code-block
-import StoSettingToolExclude from './shared/_sto-ref-ui-tool-exclude.md';
+import StoSettingToolExclude from './shared/step_palette/_sto-ref-ui-tool-exclude.md';
 ```
 
 <StoSettingToolExclude />
@@ -351,7 +351,7 @@ import StoSettingToolExclude from './shared/_sto-ref-ui-tool-exclude.md';
 #### Context Name
 
 ```mdx-code-block
-import StoSettingToolContext from './shared/_sto-ref-ui-tool-context.md';
+import StoSettingToolContext from './shared/step_palette/_sto-ref-ui-tool-context.md';
 ```
 
 <StoSettingToolContext />
@@ -362,7 +362,7 @@ import StoSettingToolContext from './shared/_sto-ref-ui-tool-context.md';
 #### Context Name (images) 
 
 ```mdx-code-block
-import StoSettingToolImageName from './shared/_sto-ref-ui-tool-context-image.md';
+import StoSettingToolImageName from './shared/step_palette/_sto-ref-ui-tool-context-image.md';
 ```
 
 <StoSettingToolImageName />
@@ -374,7 +374,7 @@ import StoSettingToolImageName from './shared/_sto-ref-ui-tool-context-image.md'
 #### Team Name
 
 ```mdx-code-block
-import StoSettingToolProductTeamName from './shared/_sto-ref-ui-tool-project-team.md';
+import StoSettingToolProductTeamName from './shared/step_palette/_sto-ref-ui-tool-project-team.md';
 ```
 
 <StoSettingToolProductTeamName  />
@@ -386,7 +386,7 @@ import StoSettingToolProductTeamName from './shared/_sto-ref-ui-tool-project-tea
 
 
 ```mdx-code-block
-import StoSettingToolPort from './shared/_sto-ref-ui-tool-port.md';
+import StoSettingToolPort from './shared/step_palette/_sto-ref-ui-tool-port.md';
 ```
 
 <StoSettingToolPort  />
@@ -397,7 +397,7 @@ import StoSettingToolPort from './shared/_sto-ref-ui-tool-port.md';
 #### Java Libraries
 
 ```mdx-code-block
-import StoSettingTooJavaLibraries from './shared/_sto-ref-ui-tool-java-libraries.md';
+import StoSettingTooJavaLibraries from './shared/step_palette/_sto-ref-ui-tool-java-libraries.md';
 ```
 
 <StoSettingTooJavaLibraries  />
@@ -409,7 +409,7 @@ import StoSettingTooJavaLibraries from './shared/_sto-ref-ui-tool-java-libraries
 
 
 ```mdx-code-block
-import StoSettingToolJavaBinaries from './shared/_sto-ref-ui-tool-java-binaries.md';
+import StoSettingToolJavaBinaries from './shared/step_palette/_sto-ref-ui-tool-java-binaries.md';
 ```
 <StoSettingToolJavaBinaries  />
 
@@ -420,7 +420,7 @@ import StoSettingToolJavaBinaries from './shared/_sto-ref-ui-tool-java-binaries.
 
 
 ```mdx-code-block
-import StoSettingToolProductToken from './shared/_sto-ref-ui-tool-prod-token.md';
+import StoSettingToolProductToken from './shared/step_palette/_sto-ref-ui-tool-prod-token.md';
 ```
 
 <StoSettingToolProductToken  />
@@ -431,7 +431,7 @@ import StoSettingToolProductToken from './shared/_sto-ref-ui-tool-prod-token.md'
 #### Name 
 
 ```mdx-code-block
-import StoSettingToolProductAccessID from './shared/_sto-ref-ui-tool-prod-name.md';
+import StoSettingToolProductAccessID from './shared/step_palette/_sto-ref-ui-tool-prod-name.md';
 ```
 <StoSettingToolProductAccessID  />
 
@@ -441,7 +441,7 @@ import StoSettingToolProductAccessID from './shared/_sto-ref-ui-tool-prod-name.m
 #### Project Token
 
 ```mdx-code-block
-import toSettingToolProductToken from './shared/_sto-ref-ui-tool-prod-token.md';
+import toSettingToolProductToken from './shared/step_palette/_sto-ref-ui-tool-prod-token.md';
 ```
 
 <StoSettingToolProductToken  />
@@ -452,7 +452,7 @@ import toSettingToolProductToken from './shared/_sto-ref-ui-tool-prod-token.md';
 #### Lookup Type
 
 ```mdx-code-block
-import StoSettingToolLookupType from './shared/_sto-ref-ui-tool-prod-lookup-type.md';
+import StoSettingToolLookupType from './shared/step_palette/_sto-ref-ui-tool-prod-lookup-type.md';
 ```
 <StoSettingToolLookupType  />
 
@@ -467,7 +467,7 @@ import StoSettingToolLookupType from './shared/_sto-ref-ui-tool-prod-lookup-type
 #### Domain
 
 ```mdx-code-block
-import StoSettingInstanceDomain from './shared/_sto-ref-ui-instance-domain.md';
+import StoSettingInstanceDomain from './shared/step_palette/_sto-ref-ui-instance-domain.md';
 ```
 <StoSettingInstanceDomain />
 
@@ -477,7 +477,7 @@ import StoSettingInstanceDomain from './shared/_sto-ref-ui-instance-domain.md';
 #### Protocol
 
 ```mdx-code-block
-import StoSettingInstanceProtocol from './shared/_sto-ref-ui-instance-protocol.md';
+import StoSettingInstanceProtocol from './shared/step_palette/_sto-ref-ui-instance-protocol.md';
 ```
 
 <StoSettingInstanceProtocol />
@@ -488,7 +488,7 @@ import StoSettingInstanceProtocol from './shared/_sto-ref-ui-instance-protocol.m
 #### Port
 
 ```mdx-code-block
-import StoSettingInstancePort from './shared/_sto-ref-ui-instance-port.md';
+import StoSettingInstancePort from './shared/step_palette/_sto-ref-ui-instance-port.md';
 ```
 
 <StoSettingInstancePort />
@@ -499,7 +499,7 @@ import StoSettingInstancePort from './shared/_sto-ref-ui-instance-port.md';
 #### Path
 
 ```mdx-code-block
-import StoSettingInstancePath from './shared/_sto-ref-ui-instance-path.md';
+import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-path.md';
 ```
 
 <StoSettingInstancePath />
@@ -519,7 +519,7 @@ import StoSettingInstancePath from './shared/_sto-ref-ui-instance-path.md';
 #### Log Level
 
 ```mdx-code-block
-import StoSettingLogLevel from './shared/_sto-ref-ui-log-level.md';
+import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 ```
 
 <StoSettingLogLevel />
@@ -531,7 +531,7 @@ import StoSettingLogLevel from './shared/_sto-ref-ui-log-level.md';
 #### Additional CLI flags
 
 ```mdx-code-block
-import StoSettingCliFlags from './shared/_sto-ref-ui-cli-flags.md';
+import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 ```
 
 <StoSettingCliFlags />
@@ -543,7 +543,7 @@ import StoSettingCliFlags from './shared/_sto-ref-ui-cli-flags.md';
 
 
 ```mdx-code-block
-import StoSettingFailOnSeverity from './shared/_sto-ref-ui-fail-on-severity.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
 <StoSettingFailOnSeverity />
 

@@ -1,0 +1,1 @@
+`protocol` &nbsp;&nbsp;  HTTPS (default) or HTTP.

@@ -1,1 +1,0 @@
-The scanner API version. Some scanners require this. 

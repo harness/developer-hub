@@ -1,1 +1,0 @@
-HTTPS (default) or HTTP.
