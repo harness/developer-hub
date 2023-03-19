@@ -5,7 +5,7 @@ sidebar_position: 60
 ---
 
 
-### Security step settings
+## Security step settings
 
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 
@@ -20,7 +20,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_name` = `blackduckhub`
 * `product_config_name` = `default`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository` or `container`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) =  `orchestratedScan` or `ingestionOnly` or `dataLoad`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) =  `orchestratedScan` , `ingestionOnly`, or `dataLoad`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
 	+ `product_domain`
 	+ `product_auth_type` = `usernamePassword` | `apiKey`

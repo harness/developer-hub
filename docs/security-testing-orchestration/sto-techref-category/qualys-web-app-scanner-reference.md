@@ -4,7 +4,7 @@ description: Instance scans with Qualys WAS
 sidebar_position: 240
 ---
 
-### Security step settings
+## Security step settings
 
 You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 
@@ -43,9 +43,8 @@ import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 
 <StoLegacyRepo />
 
-<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  
+<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  -->
 
-### Instance settings 
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
@@ -53,7 +52,7 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 
 <StoLegacyInstance />
 
-<!-- LEGACY CONFIGS  ---------------------------------------------------------------------------  -->
+<!-- LEGACY CONFIGS  ---------------------------------------------------------------------------  
 
 
 ```mdx-code-block

@@ -5,9 +5,9 @@ sidebar_position: 40
 ---
 
 
-### Security step settings
+## Security step settings
 
-You can set up a AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up a AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -23,9 +23,9 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_config_name` =  `default`
   
 
-### Configuration scan settings
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
+
+<!-- CONTAINERS --------------------------------------------------------------------------- 
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -52,7 +52,7 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 
 <StoLegacyInstance />
 
-<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- 
+<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- -->
 
 
 ```mdx-code-block

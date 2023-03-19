@@ -5,7 +5,7 @@ sidebar_position: 190
 ---
 
 
-### Security step settings
+## Security step settings
 
 You can set up Nexus scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 
@@ -50,8 +50,6 @@ import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 <StoLegacyRepo />
 
 <!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  -->
-
-### Instance settings 
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';

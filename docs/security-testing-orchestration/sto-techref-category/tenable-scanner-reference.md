@@ -5,14 +5,7 @@ sidebar_position: 310
 ---
 
 
-### Security step settings
-
-STO supports the following scan approaches for the following Snyk products:
-* Snyk Open Source (`orchestratedScan` or `ingestionOnly`)
-* Snyk Code (`ingestionOnly`)
-* Snyk Container (`ingestionOnly`)
-
-For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
+## Security step settings
 
 You can set up Tenable scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 

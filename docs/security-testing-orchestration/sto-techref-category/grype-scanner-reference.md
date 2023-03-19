@@ -14,7 +14,8 @@ sidebar_position: 156
 ### Required Settings
 
 * `product_name` = `grype`
-* `scan_type` = `orchestratedScan`
+* `policy_type` = `orchestratedScan`
+* `scan_type` = `repository` or `container`
 * `product_config_name` = `default`
 * `container_domain` — The image registry domain, for example `docker.io`
 * `container_project` — The image owner and project, for example `harness/delegate`
@@ -33,3 +34,46 @@ The following settings are also required, depending on the container type:
 	- `container_access_id`: Username
 	- `container_access_token`: Password/token
 
+
+<!-- CONTAINERS --------------------------------------------------------------------------- -->
+
+## Container Image scan settings
+
+```mdx-code-block
+import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+```
+
+<StoLegacyContainer />
+
+
+<!-- REPOS --------------------------------------------------------------------------- -->
+
+### Repository scan settings
+
+```mdx-code-block
+import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
+```
+
+<StoLegacyRepo />
+
+<!-- LEGACY INSTANCE  --------------------------------------------------------------------------- 
+
+### Instance settings 
+
+```mdx-code-block
+import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+```
+
+<StoLegacyInstance />
+
+<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- 
+
+
+```mdx-code-block
+import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
+```
+
+<StoLegacyConfig  />
+
+
+<!-- INSTANCES  --------------------------------------------------------------------------- -->

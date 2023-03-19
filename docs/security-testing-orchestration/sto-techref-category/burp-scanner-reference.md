@@ -5,7 +5,7 @@ sidebar_position: 80
 ---
 
 
-### Security step settings
+## Security step settings
 
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 
@@ -48,7 +48,6 @@ import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 
 <!-- LEGACY INSTANCE  --------------------------------------------------------------------------- -->
 
-### Instance settings 
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';

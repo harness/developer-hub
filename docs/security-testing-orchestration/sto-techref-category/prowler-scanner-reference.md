@@ -5,7 +5,7 @@ sidebar_position: 220
 ---
 
 
-### Security step settings
+## Security step settings
 
 You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 

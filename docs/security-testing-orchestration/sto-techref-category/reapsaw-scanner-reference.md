@@ -5,7 +5,7 @@ sidebar_position: 260
 ---
 
 
-### Security step settings
+## Security step settings
 
 You can set up Reapsaw scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 
@@ -34,8 +34,6 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 
 <!-- REPOS ---------------------------------------------------------------------------  -->
-
-### Repository scan settings
 
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';

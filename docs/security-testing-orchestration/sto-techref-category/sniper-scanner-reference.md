@@ -5,7 +5,7 @@ sidebar_position: 280
 ---
 
 
-### Security step settings
+## Security step settings
 
 You can set up ScoutSuite scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
 
@@ -27,8 +27,6 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
   - `stealth` (Run the web based scan)
 
 
-
-### Instance settings 
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
