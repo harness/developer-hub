@@ -12,6 +12,20 @@ This topic describes Harness Continuous Delivery (CD) services and environments.
 
 If you are new to Harness, please review [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](cd-pipeline-modeling-overview.md).
 
+## Product Demo - Services
+
+<!-- Video:
+https://harness-1.wistia.com/medias/xtmi0c0z95-->
+<docvideo src="https://harness-1.wistia.com/medias/xtmi0c0z95" />
+
+
+### Product Demo - Service and Environments at the Account and Org Level
+
+<!-- Video:
+https://harness-1.wistia.com/medias/s89yka6hal-->
+<docvideo src="https://harness-1.wistia.com/medias/s89yka6hal" />
+
+
 ## Services
 
 Services represent your microservices and other workloads. Each service contains a **Service Definition** that defines your deployment artifacts, manifests or specifications, configuration files, and service-specific variables.

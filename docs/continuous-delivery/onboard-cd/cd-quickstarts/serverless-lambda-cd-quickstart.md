@@ -18,6 +18,12 @@ New to Serverless.com Framework? See [Tutorial: Your First Serverless Framework 
 2. Define your AWS Lambda service as the deployment target.
 3. Deploy the Serverless application to Lambda.
 
+## Product Demo
+<!-- Video:
+https://harness-1.wistia.com/medias/tnjairdt6m-->
+<docvideo src="https://harness-1.wistia.com/medias/tnjairdt6m" />
+
+
 ## Before you begin
 
 Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.* **GitHub account:** this quickstart uses a publicly available serverless.yaml file, but GitHub requires that you use a GitHub account for fetching files.
