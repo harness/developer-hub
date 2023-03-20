@@ -1,1 +1,0 @@
-* **Instance** Scan a running application. 

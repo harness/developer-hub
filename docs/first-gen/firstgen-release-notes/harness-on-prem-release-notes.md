@@ -32,6 +32,26 @@ This release includes the following module and component versions.
 
 #### New features and enhancements
 
+- The **kotsadmin minor version** is upgraded from 1.88.0 to 1.95.0. (SMP-835)
+
+   To upgrade kots to 1.95.0, run:  
+
+       curl https://kots.io/install/1.95.0 | bash
+
+    If you get a `/usr/local/bin is not writable` error, run:
+
+       sudo chown -R `whoami`:admin /usr/local/bin
+
+    then proceed with the installation.
+
+    To update the kots admin console, run:
+
+       kubectl kots admin-console upgrade -n NAMESPACE --wait-duration 10m
+
+    To check the version, run:  
+       
+       kubectl kots version
+
 - The **mongoDB minor version** is upgraded from 4.2 to 4.4. (SMP-837)
 
   To upgrade to 4.4, do the following.

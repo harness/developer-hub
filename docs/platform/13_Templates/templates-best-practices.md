@@ -74,6 +74,13 @@ You can create versions of your templates in Harness and Git.
 When tracking template changes, Harness versioning should not be combined with GitHub versioning.
 :::
 
+### Product Demo - Templates at the Org and Account level with Git Experience
+
+<!-- Video:
+https://harness-1.wistia.com/medias/bv9c2a8exg-->
+<docvideo src="https://harness-1.wistia.com/medias/bv9c2a8exg" />
+
+
 ## Template referencing guidelines
 
 To reference a template at the account scope, use the following expression: 

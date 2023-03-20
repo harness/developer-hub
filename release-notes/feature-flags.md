@@ -259,6 +259,23 @@ This release does not include early access features.
     - The SDK internally reloads all feature config into cache. (FFM-6574)
     - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime.
 
+## January 25, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Go server SDK has been updated to version 0.1.6 and includes the following update:
+* Some target segment include rules were not working for numeric values. This issue has been fixed. (FFM-6384)
+
 ## January 24, 2023
 
 ### What's new
@@ -370,6 +387,24 @@ This release does not include early access features.
 
 Resolved an issue that caused the edit section of a pipeline not to load on the Feature Flag module. (FFM-5948)
 
+## December 15, 2022
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version 1.1.9 and includes the following update:
+
+* A NullPointerException was thrown when a null target was given. This update fixes the MetricsProcessor to handle nulls correctly. (FFM-6125)
+
 ## December 13, 2022
 
 ### What's new
@@ -446,6 +481,25 @@ This release does not include early access features.
 
   - Added a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5263)
   - Fixed a bug where requests continuously repeated themselves when using the SDK's streaming mode. (FFM-5352)
+
+## November 30, 2022
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The .NET server SDK has been updated to version 1.1.6 with the following update:
+
+* When a flag depended on a prerequisite flag being true, the evaluation failed if the prerequisite flag's variation `value` and `identifier` were identical. This issue has been fixed and the evaluation now works correctly in that case. (FFM-5307)
+
 
 ## November 29, 2022
 

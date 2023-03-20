@@ -26,7 +26,7 @@ export default function HarnessU(): JSX.Element {
             <li>
               <div className={styles.titleAndDesc}>
                 <h4>Continuous Delivery & GitOps Certifications</h4>
-                <p>BETA Coming Soon</p>
+                <p>Assesses the fundamental skills to deploy CD projects</p>
               </div>
             </li>
           </a>
@@ -35,6 +35,7 @@ export default function HarnessU(): JSX.Element {
             <li>
               <div className={styles.titleAndDesc}>
                 <h4>Software Delivery Foundations</h4>
+                <p>Demonstrate your software delivery knowledge</p>
               </div>
             </li>
           </a>    

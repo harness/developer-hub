@@ -16,6 +16,14 @@ An artifact source template helps you define the repositories, paths, and tags f
 
 This topic describes how to create an artifact source template and use it in a stage template and a Harness service.
 
+
+## Product Video
+
+<!-- Video:
+https://harness-1.wistia.com/medias/yzbue8fg96-->
+<docvideo src="https://harness-1.wistia.com/medias/yzbue8fg96" />
+
+
 ## Important notes
 
 - Artifact source templates are not supported in pipeline triggers at this time. Support for using artifact source templates in pipeline triggers will be added soon.
