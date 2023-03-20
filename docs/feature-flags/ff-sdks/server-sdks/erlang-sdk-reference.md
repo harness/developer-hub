@@ -122,11 +122,11 @@ For more information about Targets, go to [Target Users With Flags](/docs/featur
 
 To create a Target, create a map and add the following keys:
 
-| Parameter | Description | Required? | Example |
-|-----------|-------------|-----------|---------|
-| **Identifier** | Unique ID for the Target<br /><br />**Key:** atom<br />**Value:** bitstring | Required | `identifier => <<"HT_1">>` |
-| **Name** | Name for this Target. This does not have to be unique. **Note:** If you don’t provide a value, Harness uses the ID as the name. | Optional | `name => <<"Harness_Target_1">>` |
-| **Attributes** | Additional data you can store for a Target, such as email addresses or location.<br /><br />**Key:** atom<br />**Value:** bitstring/atom. If using a list then each element must be a bitstring/atom. Go to the Harness [Erlang SDK github repository](https://github.com/harness/ff-erlang-server-sdk#targets-with-custom-attributes) for more information. | Optional | `%% Bitstring`<br />`attributes => #{beta => <<"beta_group_1">>}`<br /><br />`%% Atom`<br />`attributes => #{alpha => 'alpha_group_1'}`<br /><br />`%% List`<br />`attributes => #{beta => [<<"beta_group_1">>, 'beta_group_2'}]}` |
+| Parameter      | Description                                                                                                                                                                                                                                                                                                                                               | Required? | Example                                                                                                                                                                                                                                                                                                      |
+|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Identifier** | Unique ID for the Target<br /><br />**Key:** atom<br />**Value:** bitstring / atom / string                                                                                                                                                                                                                                                               | Required  | `identifier => <<"HT_1">>`                                                                                                                                                                                                                                                                                   |
+| **Name**       | Name for this Target. This does not have to be unique. **Note:** If you don’t provide a value, Harness uses the ID as the name. <br/> Value: bitstring / atom / string                                                                                                                                                                                    | Optional  | `name => <<"Harness_Target_1">>`                                                                                                                                                                                                                                                                             |
+| **Attributes** | Additional data you can store for a Target, such as email addresses or location.<br /><br />**Key:** atom<br />**Value:** bitstring / atom / list of bitstrings or atom * lists of strings not supported * <br/> See [Erlang SDK GitHub Repository](https://github.com/harness/ff-erlang-server-sdk#targets-with-custom-attributes) for more information. | Optional  | `%% Bitstring`<br />`attributes => #{beta => <<"beta_group_1">>}`<br /><br />`%% Atom `<br />`attributes => #{alpha => alpha_group_1}`<br/><br/>`%% Atom in Elixir` <br/>`attributes => #{alpha => :alpha_group_1}`<br /><br />`%% List`<br />`attributes => #{beta => [<<"beta_group_1">>, beta_group_2}]}` |
 
 ### Configure the SDK
 
@@ -173,8 +173,8 @@ You can configure the following base features of the SDK:
 
 ### Complete the initialization 
 
-To complete the initialization, provide the `api_key` and any optional configuration options. The SDK will then boot as 
-part of your a
+To complete the initialization, provide the `api_key` and any optional configuration options. The SDK will then boot along
+with your application at run time.
 
 ## Evaluate a Flag
 
