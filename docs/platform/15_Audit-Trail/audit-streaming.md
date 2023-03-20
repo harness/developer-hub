@@ -94,7 +94,7 @@ You can configure the audit stream from the **Audit Log Streaming** option in **
 
 You can change the audit stream configuration by clicking three dots beside the stream destination. This will open a pop-up menu with the following options:
 
-- Edit: You can select a different streaming destination or make changes to the configured destination.
+- **Edit**: Select a different streaming destination or make changes to the existing destination.
 
 - Delete: You can delete the audit stream destination.
 
