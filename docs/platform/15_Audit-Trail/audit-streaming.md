@@ -17,7 +17,7 @@ You can configure a streaming destination in Harness to send audit log data to a
 
 - Perform anomaly detection. 
 
-- Store more than 2 years worth of auditing data, which is the maximum amount of data that Harness keeps for your accounts.
+- Store more than 2 years audit data, which is the maximum amount of data that Harness keeps for your accounts.
 
 - Keep your resources and data protected, and ensure compliance with regulations.
 
