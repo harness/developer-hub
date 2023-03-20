@@ -114,13 +114,40 @@ The cost categories can be used in Perspectives in the following ways.
 
 Consider the following scenario where the Perspective rule has a cost category:
 
- | **Cost category** | **Cost bucket** | **Shared Cost buckets** |
- | --- | --- | --- |
- | CC1 | <ul><li>B1 - AWS</li><li>B2- GCP</li></ul> | <ul><li>SB1 - AWS</li><li>SB2 - GCP</li> </ul>|
+| **Cost category** | **Cost bucket** | **Shared Cost buckets** |
+| --- | --- | --- |
+| CC1 | <ul><li>B1 - AWS</li><li>B2- GCP</li></ul> | <ul><li>SB1 - AWS</li><li>SB2 - GCP</li> </ul>|
 
- In this setup, if you group the Perspective by AWS, the cost of B1 and SB1 are displayed against the respective AWS accounts. However, the total cost of the cost bucket B2, and the shared cost bucket SB2 in GCP are displayed under **No Account**. 
+In this setup, if you group the Perspective by `AWS > Account`, the cost of B1 and SB1 are displayed against the respective AWS accounts. However, the total cost of the cost bucket B2, and the shared cost bucket SB2 in GCP are displayed under **No Account**. 
 
    ![](./static/cost-category-group-by-csp.png)
+
+Consider the following scenario with two cost categories:
+
+ **Cost category** | **Cost bucket** | **Shared cost buckets** |
+| --- | --- | --- |
+| CC1 | <ul><li>CB1 - AWS1 - 10, AWS7 - 20</li><li>CB2- AWS2 - 20</li></ul> | <ul><li>SB1 - AWS3 - 30</li><li>SB2 - AWS4 - 40</li> </ul>|
+| CC2 | <ul><li>CB3 - AWS1 - 10</li><li>CB4- AWS2 - 20</li></ul>| <ul><li>SB3 - AWS5 - 30</li><li>SB4 - AWS6 - 40</li> </ul>|
+
+If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the same cost category, then the Perspective displays the following costs:
+
+|Name | Total Cost|
+| --- | --- |
+| CB1 | 10 + shared cost (SB1 and SB2) |
+| C2B | 20 + shared cost (SB1 and SB2) |
+| Unattributed | The sum of all the other cost |
+
+If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the cost category CC2, then the Perspective displays the following costs:
+
+| Name|Total Cost |
+| --- | --- |
+| CB3 | 10 + shared cost (SB3 and SB4) |
+| CB4 | 20 + shared cost (SB3 and SB4) |
+| No CC2 | 20 + shared cost (SB1 and SB2) |
+| Unattributed | The sum of all the other cost |
+
+
+Here, the _No CC2_ cost includes the costs that are not in CC2 but in CC1. 
 
 #### Filter
 
@@ -134,7 +161,7 @@ You can use Group By and filters together. For example, your filter could select
 ![](./static/use-ccm-cost-categories-08.png)
 
 :::caution
-When including multiple cost categories in your filter, it is important to check for any shared cost buckets between them. If you have shared cost buckets with similar rules in both cost categories, the cost of these buckets is counted twice, resulting in duplication of costs. Therefore, it is recommended not to have multiple cost category filter in a Perspective. However, if you must add a multiple cost category filter, avoid overlapping shared cost buckets between cost categories to prevent any potential errors.
+When including multiple cost categories in your filter, it is important to check for any shared cost buckets between them. If you have shared cost buckets with overlapping rules in both cost categories, the cost of these buckets is counted twice, resulting in duplication of costs. Therefore, it is recommended not to have multiple cost category filter in a Perspective. However, if you must add a multiple cost category filter, avoid overlapping shared cost buckets between cost categories to prevent any potential errors.
 :::
 
 #### Perspective rule
@@ -156,7 +183,7 @@ Consider the following scenario where the Perspective rule has two cost categori
 | CC1  | <ul><li>B1 - AWS1</li><li>B2- GCP1</li></ul> | <ul><li>SB1 - AWS2</li><li>SB2 - GCP2</li> </ul>|
 | CC2  | <ul><li>C1 - AWS1</li><li>C2- GCP1</li></ul> | <ul><li>SB1 - AWS2</li><li>SB2 - GCP2</li> </ul>| 
 
- In this scenario, if you choose to include both cost categories in your Perspective rule, the total cost of the cost buckets in both categories is counted only once. However, the cost of the shared buckets between the two categories is duplicated and may lead to conflicting or overlapping rules. Therefore, it is recommended to avoid using multiple cost categories with overlapping shared cost buckets in your perspective rule to prevent any potential errors.
+ In this scenario, if you choose to include both cost categories in your Perspective rule, the total cost of the cost buckets in both categories is counted only once. However, the cost of the shared buckets between the two categories is duplicated because of overlapping rules. Therefore, it is recommended to avoid using multiple cost categories with overlapping shared cost buckets in your perspective rule to prevent any potential errors.
 
 ### Use cost categories in Dashboards
 
