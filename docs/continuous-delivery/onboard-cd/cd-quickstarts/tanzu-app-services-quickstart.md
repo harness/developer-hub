@@ -16,7 +16,7 @@ You'll learn how to:
 
 * Install and launch a Harness delegate in your target cluster.
 * Connect Harness with your TAS account.
-* Connect Harness with a public image hosted on artifactory.
+* Connect Harness with a public image hosted on Artifactory.
 * Specify the manifest to use for the app.
 * Set up a TAS pipeline in Harness to deploy the app.
 
@@ -28,15 +28,16 @@ You'll learn how to:
 
 ## Connect to a TAS provider
 
-You can connect Harness to a TAS space by adding a TAS connector.
+You can connect Harness to a TAS space by adding a TAS connector. Perform the following steps to add a TAS connector.
+
 1. Open a Harness project and select the **Deployments** module.
 2. In **Project Setup**, select **Connectors**, then select **New Connector**.
 3. In **Cloud Providers**, select **Tanzu Application Service**. The TAS connector settings appear. 
 4. Enter a connector name and select **Continue**.
 5. Enter the TAS **Endpoint URL**. For example, `https://api.system.tas-mycompany.com`.
-6. In **Authentication**, select:
-    1. **Plaintext** and enter the username and password. For password, you can either create a new secret or use an existing one.
-    2. **Encrypted** and enter the username and password. You can create a new secret for your username and password or use exiting ones.
+6. In **Authentication**, select one of the following options.
+    1. **Plaintext** - Enter the user name and password. For password, you can either create a new secret or use an existing one.
+    2. **Encrypted** - Enter the user name and password. You can create a new secret for your username and password or use exiting ones.
 7. Select **Continue**.
 8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
    We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your TAS environment. Typically, the **Connect through Harness Platform** option is a very quick way to make connections without having to use delegates.
@@ -47,16 +48,17 @@ You can connect Harness to a TAS space by adding a TAS connector.
    <summary>Install a new delegate</summary>
 
     1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
-    2. In the **New Delegate** dialog, select **Kubernetes** in **Select where you want to install your Delegate**, then select **Kubernetes Manifest** in **Install your Delegate**.
-    3. Enter a delegate name.
+    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
+    3. In **Install your Delegate**, select **Kubernetes Manifest**.
+    4. Enter a delegate name.
         - Delegate names must be unique within a namespace and should be unique in your cluster. 
         - A valid name includes only lowercase letters and does not start or end with a number. 
         - The dash character (“-”) can be used as a separator between letters.
-    4. In a Terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
 
     `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
 
-    5. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
+    6. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
 
     | **Value** | **Description** |
     | :-- | :-- |
@@ -73,7 +75,7 @@ You can connect Harness to a TAS space by adding a TAS connector.
     | SaaS prod-2 | https://app.harness.io/gratis |
     | SaaS prod-3 | https://app3.harness.io |
 
-    6. Install the delegate by running the following command:
+    7. Install the delegate by running the following command:
 
     `kubectl apply -f harness-delegate.yaml`
 
@@ -93,7 +95,7 @@ You can connect Harness to a TAS space by adding a TAS connector.
     cronjob.batch/cd-doc-delegate-upgrader-job created
     ```
 
-   7. Select **Verify** to make sure that the delegate is installed properly.
+   8. Select **Verify** to make sure that the delegate is installed properly.
    
    </details>
 
@@ -115,7 +117,7 @@ Currently, CF CLI v7 support is behind the feature flag `CF_CLI7`. Contact [Harn
    - name: INIT_SCRIPT  
    value: ""  
    ```
-3. Replace the value with the following script to install CF CLI, `autoscaler` and `Create-Service-Push` plugins.
+3. Replace `value: ""` with the following script to install CF CLI, `autoscaler`, and `Create-Service-Push` plugins.
    
    ```
    - name: INIT_SCRIPT  
@@ -287,7 +289,6 @@ Services are persistent and can be used throughout the stages of this pipeline o
     3.  Select a **Repository** where the artifact is located.
     4.  Enter the name of the folder or repository where the artifact is located.
     5.  Select **Value** to enter a specific artifact name. You can also select **Regex** and enter a tag regex to filter the artifact.
-    6.  Enter the image tag artifact name.
 11. Select **Submit**.
 
 ## Define your target environment
@@ -300,8 +301,8 @@ The target space is your TAS space. This is where you will deploy your applicati
 5. In **Specify Infrastructure**, select **New Infrastructure**.
 6. Enter a name, and then verify that the selected deployment type is **Tanzu Application Type**.
 7. Select the [TAS connector](#connect-to-a-tas-provider) you created earlier.
-8. In **Organization**, select the TAS org where you want to deploy.
-9. In **Space**, select the TAS space where you want to deploy.
+8. In **Organization**, select the TAS org in which want to deploy.
+9. In **Space**, select the TAS space in which you want to deploy.
     
     ![](./static/tas-infra-details.png)
 
@@ -349,8 +350,8 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
 5. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select or enter a script you want to execute in this step.
-        1. **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
-        2. **Inline** - Select this option to enter a script inline.
+        - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.
    
 6. Add an **App Rollback** step to your stage if you want to roll back to an older version of the application in case of deployment failure.
@@ -362,7 +363,7 @@ Now the pipeline stage is complete and you can deploy.
   </TabItem>
   <TabItem value="Canary" label="Canary">
 ```
-The TAS canary deployment is a phased approach to deploy application instances gradually, ensuring the stability of a small percentage of instances before rolling out to your desired instance count. With Canary Deployment, all nodes in a single environment are incrementally updated in small phases, with each phase requiring verification to proceed to the next phase.
+The TAS canary deployment is a phased approach to deploy application instances gradually, ensuring the stability of a small percentage of instances before rolling out to your desired instance count. With Canary Deployment, all nodes in a single environment are incrementally updated in small phases. You can add verification steps as needed to proceed to the next phase.
 
 Use this deployment method when you want to verify whether the new version of the application is working correctly in your production environment.
 
@@ -392,8 +393,8 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select or enter a script you want to execute in this step.
-        1. **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
-        2. **Inline** - Select this option to enter a script inline.
+        - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.
 7. Add an **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 8. Select **Save**.
@@ -449,8 +450,8 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select or enter a script you want to execute in this step.
-        1. **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
-        2. **Inline** - Select this option to enter a script inline.
+        - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.   
 7. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
    
@@ -467,7 +468,7 @@ Now the pipeline stage is complete and you can deploy.
   </TabItem>
   <TabItem value="Rolling" label="Rolling">
 ```
-The TAS rolling deployment deploys all pods or instances in a single environment incrementally added one-by-one or in N branches (as defined by a window size) with a new service or artifact version.
+The TAS rolling deployment deploys all pods or instances in a single environment incrementally added one-by-one with a new service or artifact version.
 
 Use this deployment method when you want to support both new and old deployments. You can also use with load balancing scenarios that require reduced downtime. 
 
@@ -483,8 +484,8 @@ Use this deployment method when you want to support both new and old deployments
 4. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     2. **Script** - Select or enter a script you want to execute in this step.
-        1. **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
-        2. **Inline** - Select this option to enter a script inline.
+        - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
+        - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.   
 5. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 6. Select **Save**.
