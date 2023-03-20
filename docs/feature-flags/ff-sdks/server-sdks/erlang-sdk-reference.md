@@ -223,6 +223,134 @@ To help prevent memory leaks, we recommend closing the SDK when it’s not in us
 cfclient:close().
 ```
 
+## Additional Options
+
+### Run multiple instances of the SDK
+Normally there is a single [project](https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/) per application. If different parts of your
+application need to use specific projects, you can start up additional client instances using a `project_config` for each unique project.
+
+#### Erlang Project Config
+ 
+1. Create project configurations for each new instance you would like to start in your `sys.config` file:
+
+    ```erlang
+    [
+      %% Project config name: This is an arbitrary identifier, but it must be unique per project config you define.
+      {harness_project_1_config, [
+        {cfclient, [
+          {config, [
+            %% Instance name: This must be unique across all of the project configs. E.g. it cannot be the same as an instance name
+            %% in another project config.
+            %% It will be the name you use when calling SDK API functions like `bool_variation/4`, 
+            {name, instance_name_1}
+          ]},
+          %% The API key for the Harness project you want to use with this SDK instance.
+          {api_key, {environment_variable, "PROJECT_1_API_KEY"}}]
+        }
+      ]
+    },
+      {harness_project_2_config, [
+        {cfclient, [
+          {config, [
+            {name, instance_name_2}
+          ]},
+          {api_key, {environment_variable, "PROJECT_2_API_KEY"}}]
+        }
+      ]].
+    ```
+
+2. In your application supervisor, e.g. `src/myapp_sup.erl`, start up a `cfclient_instance`
+   for each of the project configurations you provided above:
+
+    ```erlang
+    init(Args) ->
+      HarnessProject1Args = application:get_env(harness_project_1_config, cfclient, []),
+      HarnessProject2Args = application:get_env(harness_project_2_config, cfclient, []),
+      
+      ChildSpec1 = #{id => project1_cfclient_instance, start => {cfclient_instance, start_link, [HarnessProject1Args]}},
+      ChildSpec2 = #{id => project2_cfclient_instance, start => {cfclient_instance, start_link, [HarnessProject2Args]}},
+    
+      MaxRestarts = 1000,
+      MaxSecondsBetweenRestarts = 3600,
+      SupFlags = #{strategy => one_for_one,
+        intensity => MaxRestarts,
+        period => MaxSecondsBetweenRestarts},
+    
+      {ok, {SupFlags, [ChildSpec1, ChildSpec2]}}.
+    ```
+#### Using a specific instance of the SDK
+
+To use a specific SDK instance, you provide the instance name to the public function you are calling. For example `bool_variation/4`.
+
+The following is an example of referencing the instances we have created above:
+
+```erlang
+-module(multi_instance_example).
+
+-export([multi_instance_evaluations/0]).
+
+multi_instance_evaluations() ->
+  Target = #{
+    identifier => "Harness_Target_1",
+    name => "HT_1",
+    attributes => #{email => <<"demo@harness.io">>}
+  },
+
+  %% Instance 1
+  Project1Flag = <<"harnessappdemodarkmodeproject1">>,
+  Project1Result = cfclient:bool_variation(instance_name_1, Project1Flag, Target, false),
+  logger:info("Instance Name 1 : Variation for Flag ~p with Target ~p is: ~p~n",
+    [Project1Flag, maps:get(identifier, Target), Project1Result]),
+
+  %% Instance 2
+  Project2Flag = <<"harnessappdemodarkmodeproject2">>,
+  Project2Result = cfclient:bool_variation(instance_name_2, Project2Flag, Target, false),
+  logger:info("Instance name 2 Variation for Flag ~p with Target ~p is: ~p~n",
+  [Project2Flag, maps:get(identifier, Target), Project2Result]).
+```
+This example demonstrates multiple instances of the SDK within the same application, but the same can be achieved if you have an application heirarchy where multiple applications need to use one or many instances of the Erlang SDK.
+
+#### Elixir project config
+
+1. Create project configurations for each new instance you would like to start in your `config/config.exs` file:
+
+    ```elixir
+    # Config for "project 1"
+    config :elixirsample,  project1:
+           [
+            api_key: System.get_env("FF_API_KEY_1"),
+            config: [name: :project1]
+           ]
+    
+    # Config for "project 2"
+    config :elixirsample,  project2:
+      [
+      api_key: System.get_env("FF_API_KEY_2"),
+      config: [name: :project2]
+    ]
+    ```
+
+2. In your application supervisor, e.g. `lib/myapp/supervisor.ex`, start up `cfclient_instance` for each of the project configurations you provided above:
+
+    ```elixir
+      def init(_opts) do
+        project_1_config = Application.get_env(:elixirsample, :project1, [])
+        project_2_config = Application.get_env(:elixirsample, :project2, [])
+        children = [
+          %{
+            id: :project1_cfclient_instance,
+            start: {:cfclient_instance, :start_link, [project_1_config]},
+            type: :supervisor
+          },
+          %{
+            id: :project2_cfclient_instance,
+            start: {:cfclient_instance, :start_link, [project_2_config]},
+            type: :supervisor
+          },
+        ]
+        Supervisor.init(children, strategy: :one_for_one)
+      end
+    ```
 
 ### Use the Relay Proxy
 
