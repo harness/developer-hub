@@ -201,7 +201,13 @@ pipeline:
   <TabItem2 value="visual" label="Visual editor">
 ```
 
-In the Visual editor, add the **GitHub Action plugin** step to your pipeline's **Build** stage, and then populate the settings. The **Name** and **Uses** fields are required.
+In the Visual editor, add the **GitHub Action plugin** step to your pipeline's **Build** stage, and then populate the step settings fields. All GitHub Actions plugin steps require **Name** and **Uses**, most Actions require **Settings**, and Actions in private repositories require **Environment Variables**.
+
+:::tip
+
+You can use fixed values, runtime input, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables), and `<+input>` will prompt you for input at runtime.
+
+:::
 
 ### Name
 
@@ -221,12 +227,6 @@ Found under **Optional Configuration**. If required by the Action, add key-value
 
 Refer to the GitHub Action's `with` usage specifications for details about specific settings available for the Action that you want to use.
 
-:::tip
-
-Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
-
-:::
-
 ### Environment Variables
 
 Found under **Optional Configuration**. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
@@ -234,12 +234,6 @@ Found under **Optional Configuration**. If required by the Action, add key-value
 For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable. The token must have pull permissions to the target repository. You can use a variable expression such as `<+secrets.getValue("[SECRET_NAME]")>` to call a token stored as a Harness secret.
 
 Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
-
-:::tip
-
-You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
-
-:::
 
 ### Timeout
 
@@ -319,7 +313,7 @@ In the YAML editor, add `GITHUB_TOKEN` to the `env` mapping, for example:
     name: hello world
     identifier: hello_world
     spec:
-      uses: actions/hello-world-javascript-action@main
+      uses: my-actions-repo/hello-world-javascript-action@main
       with:
         who-to-greet: 'Mona the Octocat'
       env:
