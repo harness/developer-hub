@@ -1,13 +1,13 @@
 ---
 title: Tanzu Application Services deployment tutorial 
-description: This tutorial shows you how to deploy a publicly available application to your Tanzu Application Service (TAS) in Harness.
+description: This tutorial shows you how to deploy a publicly available application to your Tanzu Application Service (TAS) by using Harness.
 sidebar_position: 13
 ---
 
-This tutorial shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space using any [deployment strategy](../../cd-deployments-category/deployment-concepts.md) in Harness.
+This tutorial shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](../../cd-deployments-category/deployment-concepts.md) in Harness.
 
 :::note
-Currently, this feature is behind feature flags `NG_SVC_ENV_REDESIGN`, `CDS_TAS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+Currently, this feature is behind feature flags `NG_SVC_ENV_REDESIGN` and `CDS_TAS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 :::
 
 ## Objectives
@@ -22,9 +22,9 @@ You'll learn how to:
 
 ## Important notes
 
-* For TAS deployments, Harness supports these artifact sources: Artifactory, Nexus, Amazon S3, GCR, ECR, ACR, Google Artifact Registry, GitHub Package Registry, Custom registry, and any Docker Registry such as DockerHub. You connect Harness to these registries using your registry account credentials.
-* To create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
-* Your Harness delegate profile must have [CF CLI v7, `autoscaler` and `Create-Service-Push` plugins](#install-cf-cli-on-your-harness-delegate) added to it. 
+* For TAS deployments, Harness supports these artifact sources: Artifactory, Nexus, Amazon S3, GCR, ECR, ACR, Google Artifact Registry, GitHub Package Registry, Custom registry, and any Docker Registry such as DockerHub. You connect Harness to these registries by using your registry account credentials.
+* Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
+* Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cf-cli-on-your-harness-delegate) added to it. 
 
 ## Connect to a TAS provider
 
@@ -60,12 +60,12 @@ You can connect Harness to a TAS space by adding a TAS connector.
 
     | **Value** | **Description** |
     | :-- | :-- |
-    | `PUT_YOUR_DELEGATE_NAME` | The name of the delegate. |
-    | `PUT_YOUR_ACCOUNT_ID` | Your Harness account ID. |
-    | `PUT_YOUR_MANAGER_ENDPOINT` | The URL of your cluster. See the following table of Harness clusters and endpoints. |
-    | `PUT_YOUR_DELEGATE_TOKEN` | Your delegate token. To find it, go to **Account Settings > Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+    | `PUT_YOUR_DELEGATE_NAME` | Name of the delegate. |
+    | `PUT_YOUR_ACCOUNT_ID` | Harness account ID. |
+    | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints. |
+    | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
 
-    Your Harness manager endpoint depends on your Harness cluster location. Use the following table to find your Harness manager endpoint on your Harness cluster.
+    Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
 
     | **Harness cluster location** | **Harness Manager endpoint** |
     | :-- | :-- |
@@ -73,7 +73,7 @@ You can connect Harness to a TAS space by adding a TAS connector.
     | SaaS prod-2 | https://app.harness.io/gratis |
     | SaaS prod-3 | https://app3.harness.io |
 
-    6. Install the delegate by running the following command.
+    6. Install the delegate by running the following command:
 
     `kubectl apply -f harness-delegate.yaml`
 
@@ -103,10 +103,10 @@ You can connect Harness to a TAS space by adding a TAS connector.
 
 ## Install CF CLI on your Harness delegate
 
-You must edit your Harness delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins when the delegate pods are created.
+After the delegate pods are created, you must edit your Harness delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins.
 
 :::note
-Currently CF CLI v7 support is behind feature flag, `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable CF CLI v7 support. 
+Currently, CF CLI v7 support is behind the feature flag `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable CF CLI v7 support. 
 :::
 
 1. Open the `delegate.yaml` in a text editor.
@@ -145,7 +145,7 @@ Currently CF CLI v7 support is behind feature flag, `CF_CLI7`. Contact [Harness 
        cf plugins
    ```
    
-4. Apply the profile to the delegate profile and check logs.
+4. Apply the profile to the delegate profile and check the logs.
    
    ![](.static/../static/delegate-logs-cf-cli.png)
 
@@ -195,7 +195,7 @@ Harness services represent your microservices or applications. You can add the s
 
 1. Select the **Service** tab, then select **Add Service**.  
 2. Give the service the name **TAS**.  
-Once you have created a service, it is persistent and can be used throughout the stages of this or any other pipeline in the project.
+Services are persistent and can be used throughout the stages of this pipeline or any other pipeline in the project.
 
 
 1. In **Service Definition**, in **Deployment Type**, verify if **Tanzu Application Services** is selected.
@@ -213,9 +213,9 @@ Once you have created a service, it is persistent and can be used throughout the
 4. In **Manifest Details**, enter a manifest name. For example, `nginx`.
 5. Select **File/Folder Path**. 
 6. In **Create or Select an Existing Config file**, select **Project**. This is where we will create the manifest.
-    1. Select **New**, then select **New Folder** and enter a folder name, then select **Create**.
-    2. Select the new folder, select **New**, then select **New File** and enter a file name. For example, `manifest`.
-    3. Enter the following in the `manifest` file, then click **Save**.
+    1. Select **New**, select **New Folder**, enter a folder name, and then select **Create**.
+    2. Select the new folder, select **New**, select **New File**, and then enter a file name. For example, enter `manifest`.
+    3. Enter the following in the `manifest` file, and then click **Save**.
        
        ```
        applications:
@@ -231,7 +231,7 @@ Once you have created a service, it is persistent and can be used throughout the
    
    You can add only one `manifest.yaml` file.  
 
-8. Select **Vars.yaml path** and repeat Steps 6.1 to 6.2 to create a `vars` file and enter follwoing information.
+8. Select **Vars.yaml path** and repeat steps 6.1 and 6.2 to create a `vars` file. Then, enter the following information:
    
    ```
    NAME: harness_<+service.name>
@@ -242,7 +242,7 @@ Once you have created a service, it is persistent and can be used throughout the
     
    You can add any number of `vars.yaml` files.  
 
-11. Select **AutoScaler.yaml** and repeat step 6.1 to 6.2 to create an `autoscaler` file and enter the following information.
+11. Select **AutoScaler.yaml** and repeat steps 6.1 and 6.2 to create an `autoscaler` file. Then, enter the following information:
     
     ```
     instance_limits:
@@ -280,9 +280,9 @@ Once you have created a service, it is persistent and can be used throughout the
 
 7. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created in [connect to a TAS provider (step 8)](#connect-to-a-tas-provider).
 8. Select **Save and Continue**
-9.  Once the test connection succeeds, select **Continue**.
-10. In **Artifact Details** enter the following details.
-    1.  Enter an **Artifact Source Name**
+9.  After the test connection succeeds, select **Continue**.
+10. In **Artifact Details**, enter the following details:
+    1.  Enter an **Artifact Source Name**.
     2.  Select **Generic** or **Docker** repository format.
     3.  Select a **Repository** where the artifact is located.
     4.  Enter the name of the folder or repository where the artifact is located.
@@ -295,10 +295,10 @@ Once you have created a service, it is persistent and can be used throughout the
 The target space is your TAS space. This is where you will deploy your application.
 
 1. In **Specify Environment**, select **New Environment**.  
-2. Enter the environment name **TAS tutorial** and select **Pre-Production**.
+2. Enter the name **TAS tutorial** and select **Pre-Production**.
 4. Select **Save**.
 5. In **Specify Infrastructure**, select **New Infrastructure**.
-6. Enter a name, and verify if **Tanzu Application Type** deployment type is selected.
+6. Enter a name, and then verify that the selected deployment type is **Tanzu Application Type**.
 7. Select the [TAS connector](#connect-to-a-tas-provider) you created earlier.
 8. In **Organization**, select the TAS org where you want to deploy.
 9. In **Space**, select the TAS space where you want to deploy.
@@ -320,7 +320,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="Basic" label="Basic">
 ```
 
-The TAS workflow performing a basic deployment takes your Harness TAS service and deploys it on your TAS infrastructure definition. 
+The TAS workflow for performing a basic deployment takes your Harness TAS service and deploys it on your TAS infrastructure definition. 
 
 1. In Execution Strategies, select **Basic**, then select **Use Strategy**.
 2. The basic execution steps are added. 
@@ -353,7 +353,7 @@ The TAS workflow performing a basic deployment takes your Harness TAS service an
         2. **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.
    
-6. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
+6. Add an **App Rollback** step to your stage if you want to roll back to an older version of the application in case of deployment failure.
 7. Select **Save**.
 
 Now the pipeline stage is complete and you can deploy.
