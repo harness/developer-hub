@@ -59,9 +59,9 @@ RUN curl -LO  https://releases.hashicorp.com/terraform/1.3.1/terraform_1.3.1_lin
 USER 1001
 ```
 
-### Init Script
+### Init script
 
-Alternativly you can install terraform when a delegate pod is launched by specifying an initilization script in the delegates environment.
+Alternatively, you can install Terraform when a delegate pod is launched by specifying an initialization script in the delegate YAML `INIT_SCRIPT` [environment variable](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/).
 
 ```bash
 # Install TF  
