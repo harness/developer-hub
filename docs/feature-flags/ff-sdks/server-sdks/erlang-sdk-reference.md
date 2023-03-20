@@ -211,81 +211,53 @@ Here are examples of evaluating different types of Variations:
   cfclient:json_variation(FlagIdentifier, Target, #{dark_mode => <<”false”>>}).
   ```
 
-## Listen for events
-
-This method provides a way to listen to the different events that might be triggered by the SDK, indicating a specific change in the SDK.
-
-*TBA -- Is this specific to the type of SDK?*
-
 ## Test your app is connected Harness
 
-When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
+When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. The SDK will poll for changes by default every 60 seconds, check your app after this time to verify if the Flag Variation displayed is updated with the Variation you toggled. 
 
 ## Close the SDK
 
 To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
 
 ```
-cfclient:stop().
+cfclient:close().
 ```
-
-## Additional options
-
-*Are there any other options specific to Erlang?*
-
-### Develop on your local environment
-
-By default, you are connected to the Harness environment but you can use a local connector to develop in your local environment, for example:
-
-*Add example*
-
-### Configure your logger
-
-*Add example*
 
 
 ### Use the Relay Proxy
 
 When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/ff-using-flags/relay-proxy/) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. To do this:
 
-1. Import the URL helper functions, for example:
+Pass the new URLs in when initializing the SDK.
 
-  ```
-  from featureflags.config import with_base_url  
-  from featureflags.config import with_events_url
-  ```
-1. Pass the new URLs in when initializing the SDK, for example:
+Erlang exmaple:
+```erlang
+[{cfclient, [
+    {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+    {config, [
+        {config_url, "http://localhost:7000"},
+        {events_url, "http://localhost:7000"},
+    ]},
+    ]}]
+```
 
-  ```
-  client = CfClient(api_key,  
-                    with_base_url("https://config.feature-flags.uat.harness.io/api/1.0"),  
-                    with_events_url("https://event.feature-flags.uat.harness.io/api/1.0"))
-  ```
+Elixir exmaple:
+```elixir
+config :cfclient,
+       [api_key: System.get_env("FF_API_KEY_0"),
+       # For additional config you can pass in, see Erlang SDK docs: https://github.com/harness/ff-erlang-server-sdk/blob/main/docs/further_reading.md#further-reading
+       # we are just using the main config url here as an example.
+        config: [
+          config_url: "http://localhost:7000",
+          events_url: "http://localhost:7000",
+        ]]
+```
 
-## Sample code for an Erlang application
+## Sample Code (Erlang)
+Ensure you have configured your application following the steps in [Initialize the SDK](#Initialize the SDK)
 
 ```
 -module(getting_started).
-%% API
--export([start/0]).
-
-
-start(SDKKey) ->
-  logger:set_primary_config(level, info),
-  case cfclient:start("sdkkey", #{
-      config_url => "https://config.ff.harness.io/api/1.0",
-      events_url => "https://events.ff.harness.io/api/1.0",
-      polling_interval => 60000,
-      analytics_enabled => true})
- of
-    ok ->
-      logger:info("Erlang SDK Successfully Started"),
-      get_flag_loop();
-    {not_ok, Error} ->
-      logger:error("Error when starting Erlang SDK: ~p~n", [Error]),
-      not_ok
-  end.
-
 
 get_flag_loop() ->
   Target = #{identifier => "Harness_Target_1",
@@ -302,6 +274,9 @@ get_flag_loop() ->
 
 ```
 
+## Sample Appliction (Elixir)
+
+A sample Elixir appliction which uses the Erlang SDK can be found at: https://github.com/harness/ff-elixir-server-sample
 
 
 
