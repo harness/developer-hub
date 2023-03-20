@@ -254,7 +254,7 @@ config :cfclient,
 ```
 
 ## Sample Code (Erlang)
-Ensure you have configured your application following the steps in [Initialize the SDK](#Initialize the SDK)
+Ensure you have configured your application by following the steps in [Initialize the SDK](#Initialize the SDK)
 
 ```
 -module(getting_started).
