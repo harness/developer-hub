@@ -28,7 +28,7 @@ Harness Cloud offers the following operating systems and architectures:
 
 * Linux: amd64 and arm64
 * macOS: arm64 (M1)
-* Windows: amd6
+* Windows: amd64
 
 :::tip
 
