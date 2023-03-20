@@ -1,5 +1,5 @@
 ---
-title: ECS deployment tutorial
+title: ECS deployments
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
 sidebar_position: 11
 helpdocs_topic_id: vytf6s0kwc
@@ -9,11 +9,9 @@ helpdocs_is_published: true
 ---
 
 
-:::
+This topic shows you how to deploy images to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy in Harness.
 
-This tutorial shows you how to deploy a publicly available Docker image to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy in Harness.
-
-See [Notes](#notes) below for details on ECS deployment settings and behavior outside of this quick tutorial.
+See [Notes](#notes) below for details on other ECS deployment settings and behavior.
 
 ## Product Demo
 
@@ -1111,7 +1109,7 @@ If you do not select this option, Harness will not check to see if the task was 
 
 If you do select this option, Harness will poll the ECS task to see if it triggered successfully.
 
-## Support for ECS Deployments with AWS Service Mesh Configuration
+### Support for ECS Deployments with AWS Service Mesh Configuration
 
 Harness ECS Deployments supports deploying of ECS Services with AWS Service Discovery Configuration
 
@@ -1145,7 +1143,7 @@ deploymentConfiguration:
 
 With the above Service Registry ARN specified in ECS Service Definition ,deployed services are marked with Service Discovery capability
 
-## Support for circuit breaker configurations
+### Support for circuit breaker configurations
 
 :::note
 
