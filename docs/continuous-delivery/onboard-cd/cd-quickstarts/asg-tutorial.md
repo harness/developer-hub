@@ -1061,7 +1061,7 @@ Harness stores configurations of the ASG you are deploying twice:
 The ASG canary deployment uses two step groups:
 
 1. Canary Deployment:
-   1. **ASG Canary Deploy step:** deploys a new ASG versin with the name of your ASG and the extension `__Canary`. The canary ASG version can use the `desiredCapacity` in your ASG configuration file or you can set it in the **Instances** setting in the ASG Canary Deploy step.
+   1. **ASG Canary Deploy step:** deploys a new ASG version with the name of your ASG and the extension `__Canary`. The canary ASG version can use the `desiredCapacity` in your ASG configuration file or you can set it in the **Instances** setting in the ASG Canary Deploy step.
    2. **ASG Canary Delete step:** deletes the canary ASG.
 2. Primary Deployment:
    1. **ASG Rolling Deploy step:**
