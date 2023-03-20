@@ -108,12 +108,6 @@ You can use cost categories in both Perspectives and Dashboards. When you create
 
 ### Use cost categories in Perspectives
 
-The benefit of using a cost category as a rule in a Perspective is that the cost category definition is separated from all the Perspectives that use it.
-
-If you modify the definition of a cost category, any Perspective that uses the cost category automatically displays the changes.
-
-For example, if a new product is added to the Manufacturing department, you can simply update the Manufacturing bucket in the Departments Cost Category, and that change is automatically reflected in all the Perspectives that use that Cost Category.
-
 The cost categories can be used in Perspectives in the following ways.
 
 #### Group By
@@ -149,6 +143,11 @@ When creating a Perspective, you can define a rule using cost categories.
 
 ![](./static/use-ccm-cost-categories-09.png)
 
+The benefit of using a cost category as a rule in a Perspective is that the cost category definition is separated from all the Perspectives that use it.
+
+If you modify the definition of a cost category, any Perspective that uses the cost category automatically displays the changes.
+
+For example, if a new product is added to the Manufacturing department, you can simply update the Manufacturing bucket in the Departments Cost Category, and that change is automatically reflected in all the Perspectives that use that Cost Category.
 
 Consider the following scenario where the Perspective rule has two cost categories:
 
