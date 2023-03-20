@@ -110,7 +110,7 @@ Erlang applications should be configued using the `sys.config` file, for example
     ]}]
 ```
 
-Elixir applications should be configured using the `config/config.exs`, for example:
+Elixir applications should be configured using the `config/config.exs` file, for example:
 
 ```elixir
 import Config
