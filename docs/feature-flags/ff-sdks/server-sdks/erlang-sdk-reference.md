@@ -103,7 +103,9 @@ Erlang applications should be configued using the `sys.config` file, for example
     {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
     {config, [
         {config_url, "https://config.ff.harness.io/api/1.0"},
-        {events_url, "https://config.ff.harness.io/api/1.0"}
+        {events_url, "https://config.ff.harness.io/api/1.0"},
+        {poll_interval, 60},
+        {analytics_enabled, true},
     ]},
     ]}]
 ```
@@ -116,7 +118,12 @@ config :cfclient,
        [api_key: System.get_env("FF_API_KEY_0"),
        # For additional config you can pass in, see Erlang SDK docs: https://github.com/harness/ff-erlang-server-sdk/blob/main/docs/further_reading.md#further-reading
        # we are just using the main config url here as an example.
-        config: [config_url: "https://config.ff.harness.io/api/1.0"]]
+        config: [
+          config_url: "https://config.ff.harness.io/api/1.0",
+          events_url: "https://events.ff.harness.io/api/1.0",
+          poll_interval: 60000,
+          analytics_enabled: true
+        ]]
 ```
 
 You can configure the following base features of the SDK:
@@ -127,18 +134,6 @@ You can configure the following base features of the SDK:
 | **EventUrl**         | `{events_url, "https://events.ff.harness.io/api/1.0"}` | `events_url: "https://events.ff.harness.io/api/1.0"` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: <br />`http://localhost:7000`      | `https://events.ff.harness.io/api/1.0` |
 | **PollingInterval**  | `{poll_interval, 60000}`                               | `poll_interval: 60000`                               | The interval in seconds that we poll for changes when you are using stream mode.                                                             | `60` (seconds)                         |
 | **AnalyticsEnabled** | `{analytics_enabled, true}`                            | `analytics_enabled: true`                            | Set to true to enable analytics. Set to false to disable analytics. <br />**Note:** When enabled, analytics data is posted every 60 seconds. | `true`                                 |
-
-For example:
-``` 
-cfclient:start("sdkkey", 
-  #{
-    config_url => "https://config.ff.harness.io/api/1.0",
-    events_url => "https://events.ff.harness.io/api/1.0",
-    polling_interval => 60000,
-    analytics_enabled => true
-    }
-)
-```
 
 ### Complete the initialization 
 
