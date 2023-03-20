@@ -65,7 +65,7 @@ You can configure the audit stream from the **Audit Log Streaming** option in **
 
    ![](./static/streaming-connector.png)
 
-5. Select Save and Continue.
+5. Select **Save** and **Continue**.
 
 6. After the connection test is successful, select **Finish**.
    
