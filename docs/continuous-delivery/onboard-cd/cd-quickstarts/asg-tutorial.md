@@ -4,6 +4,12 @@ description: Deploy an ASG using Harness.
 sidebar_position: 13
 ---
 
+:::note
+
+Currently, ASG deployments are behind the feature flag `CDS_ASG_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 This topic explains how to deploy new AWS Auto Scale Groups (ASGs) and instances to Amazon Elastic Compute Cloud (EC2) using Harness.
 
 ## Deployment summary
@@ -36,11 +42,11 @@ Here's a summary of how you set up ASG deployments in Harness:
 Here's a summary of how Harness deploys new ASG versions:
 
 1. First deployment:
-   1. Harness takes the launch template and ASG configuration files you provides and creates a new ASG and its instances in your AWS account and region.
+   1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region.
 2. Subsequent deployments:
    1. Harness creates a new version of the launch template.
-   2. Harness uses the new version to update the ASG. For example, if you increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will update the ASG.
-   3. Instance refresh is triggered.
+   2. Harness uses the new version to update the ASG. For example, if you increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity.
+   3. Instance refresh is triggered (a rolling replacement of all or some instances in the new Auto Scaling groups version).
 
 </details>
 
@@ -116,7 +122,7 @@ Create a [Customer Managed Policy](https://docs.aws.amazon.com/IAM/latest/UserGu
 </details>
 
 
-## Create the ASG service
+## Harness ASG services
 
 The Harness ASG service contains the following:
 
@@ -364,9 +370,9 @@ To configure a Harness ASG service in the Harness Manager, do the following:
 
 ### ASG configuration files
 
-AWS does not have a dedicated public resource for ASG configuration file formatting because ASG creation is typically done using AWS CLI, SDKs, or Management Console, which have their own syntax and methods for specifying the parameters.
+AWS does not have a dedicated public resource for ASG configuration file formatting because ASG creation is typically done using the AWS CLI, SDKs, or Management Console, which have their own syntax and methods for specifying the parameters.
 
-However, the AWS CLI [create-auto-scaling-group command reference documentation](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/create-auto-scaling-group.html) provides a detailed description of the parameters that can be used when creating an Auto Scaling group. 
+However, the AWS CLI [create-auto-scaling-group](https://docs.aws.amazon.com/cli/latest/reference/autoscaling/create-auto-scaling-group.html) command reference documentation provides a detailed description of the parameters that can be used when creating an ASG. 
 
 <details>
 <summary>ASG configuration file example</summary>
@@ -423,7 +429,7 @@ For example, you could create a variable named **desiredCapacity** and set its v
 
 ![service variable](static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 
-Next, in your ASG configuration file, you could reference the variable like this:
+Next, in your ASG configuration file, you could reference the variable like this (see `<+serviceVariables.desiredCapacity>`):
 
 ```json
 {
@@ -438,7 +444,7 @@ Next, in your ASG configuration file, you could reference the variable like this
 
 Now, when you add that service to a pipeline, you will be prompted to enter a value for this variable in the pipeline **Services** tab. The value you provide is then used as the `desiredCapacity` in your ASG configuration.
 
-## Create the ASG environment
+## Harness ASG environments
 
 The Harness ASG environment is where you specify production and non-production environment settings. 
 
@@ -559,9 +565,7 @@ Pipelines require that an environment have an infrastructure definition. We'll c
 
 ### Infrastructure definition
 
-A Harness pipeline uses an infrastructure definition to as the deployment target. For ASG deployments, the infrastructure definition is the AWS region with you want your new ASG.
-
-To define the target region, you add an infrastructure definition to a Harness environment. The infrastructure definition uses a Harness AWS connector and a region setting to define the deployment target.
+To define the target ASG region, you add an infrastructure definition to a Harness environment. The infrastructure definition uses a Harness AWS connector and a region setting to define the deployment target.
 
 You can use the same AWS connector you used when adding the AMI artifact in the Harness service. Ensure the AWS IAM user in the AWS connector credentials meets the [AWS policy requirements](#aws-policy-requirements).
 
@@ -685,7 +689,7 @@ The infrastructure definition is added.
 ```
 
 
-## Create the ASG pipeline
+## Harness ASG pipelines
 
 Once you have a the service and environment created, you can create the pipeline.
 
@@ -696,8 +700,6 @@ You can create a service and environment when you are building the pipeline or s
 :::
 
 The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-modeling-overview).
-
-Here we will create a pipeline with a service and environment but without any execution steps. We describe the different execution strategies and steps in [Define the ASG pipeline execution](#define-the-asg-pipeline-execution).
 
 
 ```mdx-code-block
@@ -910,8 +912,6 @@ To create an ASG pipeline, do the following:
 9. In **Specify Infrastructure**, select the infrastructure definition you created earlier, and then select **Continue**.
 10. In **Execution Strategies**, select the execution strategy for your deployment, and then select **Use Strategy**.
     
-    The steps for the different execution strategies are described in [Define the ASG pipeline execution](#define-the-asg-pipeline-execution).
-    
     The steps for the deployment are generated automatically by Harness. You can add any additional steps you want by selecting **Add Step**.
 
     In **Rollback**, you can see the rollback steps.
@@ -922,7 +922,7 @@ To create an ASG pipeline, do the following:
 </Tabs2>
 ```
 
-## Define the ASG pipeline execution
+## ASG pipeline execution strategies
 
 Harness ASG deployments support the following [deployment strategies](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-concepts/):
 
@@ -958,13 +958,13 @@ import TabItem4 from '@theme/TabItem';
 The Rolling Deploy step has the following options:
 
 - **Same as already running Instances**
-  - Enable this setting to use the scaling settings on the last ASG deployed.
+  - Enable this setting to use the scaling settings on the last ASG version deployed.
 - **Minimum Healthy Percentage (optional)**
-  - The percentage of the desired capacity of the Auto Scaling group that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS.
+  - The percentage of the desired capacity of the ASG that must pass the group's health checks before the refresh can continue. For more information about these health checks, go to [Health checks for Auto Scaling instances](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-health-checks.html) from AWS.
 - **Instance Warmup (optional)**
   - Go to [Set the default instance warmup for an Auto Scaling group](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-default-instance-warmup.html?icmpid=docs_ec2as_help_panel) from AWS.
 - **Skip Matching**
-  - Choose whether Amazon EC2 Auto Scaling skips replacing instances that match the desired configuration. If no desired configuration is specified, then it skips replacing instances that have the same launch template and instance types that the Auto Scaling group was using before the instance refresh started. For more information, go to [Use an instance refresh with skip matching](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh-skip-matching.html) from AWS.
+  - Choose whether AWS Auto Scaling skips replacing instances that match the desired configuration. If no desired configuration is specified, then it skips replacing instances that have the same launch template and instance types that the ASG was using before the instance refresh started. For more information, go to [Use an instance refresh with skip matching](https://docs.aws.amazon.com/autoscaling/ec2/userguide/asg-instance-refresh-skip-matching.html) from AWS.
  
 
 <details>
@@ -1047,6 +1047,10 @@ If deployment failure occurs, the stage or step [failure strategy](../../../plat
 
 During rollback, Harness deletes the new state and returns state to the previous ASG version.
 
+Harness stores configurations of the ASG you are deploying twice: 
+- First storage: Harness stores the ASG configuration at the start of deployment for rollback *during deployment*.
+- Second storage: Harness stores the ASG configuration at the end of deployment for rollbacks *post deployment*.
+
 ```mdx-code-block
   </TabItem4>
 </Tabs4>
@@ -1057,12 +1061,12 @@ During rollback, Harness deletes the new state and returns state to the previous
 The ASG canary deployment uses two step groups:
 
 1. Canary Deployment:
-   1. ASG Canary Deploy step: deploys a new ASG with the name of your ASG and the extension `__Canary`. The canary ASG can use the `desiredCapacity` in your ASG configuration file or you can set it to use a number of instances in the `desiredCapacity`.
-   2. ASG Canary Delete step: deletes the canary ASG.
+   1. **ASG Canary Deploy step:** deploys a new ASG versin with the name of your ASG and the extension `__Canary`. The canary ASG version can use the `desiredCapacity` in your ASG configuration file or you can set it in the **Instances** setting in the ASG Canary Deploy step.
+   2. **ASG Canary Delete step:** deletes the canary ASG.
 2. Primary Deployment:
-   1. ASG Rolling Deploy step:
+   1. **ASG Rolling Deploy step:**
       1. The first deployment will deploy a new ASG with the number of desired instances you have defined in your ASG configuration file in the Harness service used in the pipeline. Any other configuration files in the service are also applied.
-      2. Subsequent deployments will deploy a new version of the same ASG with any changes you have made in the Harness service configuration files (launch template, ASG configuration, etc.). This is the same as using the **Edit** buttons in the AWS console and creating a new version of the ASG.
+      2. Subsequent deployments will deploy a new *version* of the same ASG with any changes you have made in the Harness service configuration files (launch template, ASG configuration, etc.). This is the same as using the **Edit** buttons in the AWS console and creating a new version of the ASG.
 
 Here's what the two step groups look like:
 
@@ -1082,7 +1086,7 @@ The ASG Canary Deploy step deploys a new ASG with the name of your ASG and the e
 
 In the ASG Canary Deploy step, in **Instances**, you can specify how many instances to use in this temporary ASG. 
 
-The **Instances** value uses the `desiredCapacity` in your ASG configuration file.
+The **Instances** replaces the `desiredCapacity` in your ASG configuration file.
 
 <details>
 <summary>ASG Canary Deploy step log example</summary>
@@ -1154,8 +1158,8 @@ If deployment failure occurs, the stage or step [failure strategy](../../../plat
 
 For ASG canary deployments there are two rollback steps:
 
-- ASG Canary Delete: deletes the canary ASG (`[app_name]__canary`). 
-- ASG Rolling Rollback: deletes the new state and returns state to the previous ASG version.
+- **ASG Canary Delete:** deletes the canary ASG (`[app_name]__canary`). 
+- **ASG Rolling Rollback:** deletes the new state and returns state to the previous ASG version.
 
 ```mdx-code-block
   </TabItem5>
@@ -1167,14 +1171,16 @@ For ASG canary deployments there are two rollback steps:
 
 An ASG Blue Green deployment uses two steps:
 
-1. ASG Blue Green Deploy step:
-   1. You specify production and stage listener ports and rules to use.
-2. ASG Blue Green Swap Services step:
-   1. Harness modifies the ELB prod listener to forward requests to target groups associated with each new autoscaling group. 
+1. **ASG Blue Green Deploy step:**
+   1. You specify the production and stage listener ports and rules to use.
+2. **ASG Blue Green Swap Services step:**
+   1. Harness modifies the ELB prod listener to forward requests to target groups associated with each new ASG version. 
    2. Harness swaps all traffic from stage to production listeners and ports. 
-   3. Harness modifies the ELB stage listener to forward requests to target groups associated with old autoscaling group. 
+   3. Harness modifies the ELB stage listener to forward requests to target groups associated with old ASG version. 
 
-The first ASG deployed is given a suffix using the format `[app_name]__1`, like `asgdemo__1`. The second ASG deployed is given the suffix `[app_name]__2`. Every subsequent deployment will simply create new versions of these ASGs instead of creating new ASGs. So the third deployment will create a new **version** of ASG `[app_name]__1`, route prod traffic to it, and route stage traffic to ASG `[app_name]__2`.
+The first ASG deployed is given a suffix using the format `[app_name]__1`, like `asgdemo__1`. The second ASG deployed is given the suffix `[app_name]__2`. 
+
+Every subsequent deployment will simply create new versions of these ASGs instead of creating new ASGs. So the third deployment will create a new *version* of ASG `[app_name]__1`, route prod traffic to it, and route stage traffic to ASG `[app_name]__2`.
 
 <details>
 <summary>Blue/Green with Traffic Shift Summary</summary>
@@ -1216,7 +1222,7 @@ In addition to the requirements of the Harness ASG service and environment, an A
 
 The first three Blue Green deployments are different because the stage and prod ASGs are not both created until the second deployment. All subsequent deployments have both ASGs and proceed the same.
 
-Let's take a look at the first three deployments.
+Let's take a look at the first two deployments.
 
 <details>
 <summary>First Blue Green deployment</summary>
@@ -1224,12 +1230,12 @@ Let's take a look at the first three deployments.
 The first Blue Green deployment follows these steps:
 
 1. ASG Blue Green Deploy step:
-   1. Checks listener ARN and listener rule ARN for Prod are valid.
-   2. Fetches target group ARNs for Prod.
-   3. Checks listener ARN and listener rule ARN for Stage are valid.
-   4. Fetches target group ARNs for Stage.
+   1. Checks that listener ARN and listener rule ARN for prod are valid.
+   2. Fetches target group ARNs for prod.
+   3. Checks that listener ARN and listener rule ARN for stage are valid.
+   4. Fetches target group ARNs for stage.
    5. Creates launch template and ASG using the format `[app_name]__1`, like `asgdemo__1`.
-   6. Sets the tag `BG_VERSION=BLUE` on new ASG, for example, `asgdemo__1`.
+   6. Sets the tag `BG_VERSION=BLUE` on new ASG.
 2. ASG Blue Green Swap step:
    1. Not used as there is only one ASG at this point.
 
@@ -1246,10 +1252,10 @@ Harness will create a new ASG with the suffix `__2` and swap prod traffic to it.
 The second Blue Green deployment follows these steps:
 
 1. ASG Blue Green Deploy step:
-   1. Checks listener ARN and listener rule ARN for Prod are valid.
-   2. Fetches target group ARNs for Prod.
-   3. Checks listener ARN and listener rule ARN for Stage are valid.
-   4. Fetches target group ARNs for Stage.
+   1. Checks that listener ARN and listener rule ARN for prod are valid.
+   2. Fetches target group ARNs for prod.
+   3. Checks that listener ARN and listener rule ARN for stage are valid.
+   4. Fetches target group ARNs for stage.
    5. Creates launch template and new ASG using the format `[app_name]__2`, like `asgdemo__2`.
    6. Sets the tag `BG_VERSION=GREEN` on new ASG, for example, `asgdemo__2`.
 2. ASG Blue Green Swap step swaps target groups and updates tags:
@@ -1257,7 +1263,7 @@ The second Blue Green deployment follows these steps:
    2. Modifies the ELB stage listener to forward requests to target groups associated with the old autoscaling group.
    3. Updates tags of the autoscaling groups.
 
-Now there are two ASGs being used: a prod and a stage ASG. Subsequent deployments will create a new versions of these ASG and swap prod traffic to the new ASG version from the previous ASG.
+Now there are two ASGs being used: a prod and a stage ASG. Subsequent deployments will create a new *versions* of these ASGs and swap prod traffic to the new ASG version from the previous ASG.
 </details>
 
 Blue Green deployment steps:
@@ -1288,13 +1294,20 @@ Harness fetches these AWS settings using the Harness AWS connector you have set 
 
 The ASG Blue Green Swap Services step has the following settings:
 
+- **Downsize old ASG:** select this option to downsize the ASG that Harness swapped the traffic *from*. 
+  
+  For example, if there was an existing ASG named `asgdemo__1` and you deployed a new version of the ASG named `asgdemo__2` and swapped traffic to it, selecting **Downsize old ASG** will downsize `asgdemo__1`.
 
 ```mdx-code-block
   </TabItem6>
   <TabItem6 value="ASG Blue Green Rollback step" label="ASG Blue Green Rollback step">
 ```
 
-The ASG Blue Green Rollback....
+The ASG Blue Green Rollback rolls back the routes and ASG created/updated in the Blue Green deployment.
+
+Harness stores configurations of the ASG you are deploying twice: 
+- First storage: Harness stores the ASG configuration at the start of deployment for rollback *during deployment*.
+- Second storage: Harness stores the ASG configuration at the end of deployment for rollbacks *post deployment*.
 
 
 ```mdx-code-block
@@ -1316,6 +1329,6 @@ In the **Advanced** settings of all step, you can use the following options:
 
 AWS has the following limitations to keep in mind:
 
-- You are limited to creating 5k launch templates per region and 10k versions per launch template. For more information, go to [Launch an instance from a launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) from AWS. 
-- Auto Scaling groups per region: 500.
+- You are limited to creating 5000 launch templates per region and 10000 versions per launch template. For more information, go to [Launch an instance from a launch template](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html) from AWS. 
+- ASGs per region: 500.
 - Launch configurations per region: 200.
