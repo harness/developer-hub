@@ -31,7 +31,7 @@ Harness streams the audit events to your chosen SIEM tool as structured JSON.
 
 ## Add a streaming destination
 
-You can configure the audit stream from the **Audit Log Streaming** option in **Audit Trail**.
+To add a streaming destination in Harness:
 
 1. In your Harness account, select **Account Settings**.
 
@@ -41,7 +41,7 @@ You can configure the audit stream from the **Audit Log Streaming** option in **
 
 4. Enter a name for the streaming destination.
 
-5. Harness automatically populates the Id for the destination. You can choose to retain the Id or modify it.
+5. Harness populates the destination's Id automatically. You can retain or change the Id.
 
 6. Enter a description and tag(s) for the streaming destination.
 
@@ -61,7 +61,7 @@ You can configure the audit stream from the **Audit Log Streaming** option in **
 
 4. In **Amazon S3 Bucket**, enter the bucket name.
    
-   This is where Harness will write all the streaming records.
+   Harness writes all the streaming records to this destination.
 
    ![](./static/streaming-connector.png)
 
@@ -70,29 +70,26 @@ You can configure the audit stream from the **Audit Log Streaming** option in **
 6. After the connection test is successful, select **Finish**.
    
    :::note
-   AWS buckets are not taken into account during the test connection. Also, it tests the connector used without testing the bucket.
+   Harness does not consider AWS buckets while testing the connection. Also, it tests the connector used without testing the bucket.
    :::
    
-
+   The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default setting of this destination is inactive.
+   
 ## Activate or deactivate streaming
 
-1. After you configure the streaming destination, it appears in the list of destinations in **Audit Log Streaming**.
+1. To activate streaming to this destination, toggle the status to **Active** besides the streaming destination.
+
+   Harness starts writing audit logs after the destination is activated.
+
+   Harness streams audit logs to the destination every 30 minutes.
+
+2. You can pause audit streaming, preventing any new audit events from being streamed to the configured endpoint by setting the status to **Inactive**. 
    
-   By default, this destination is inactive.
-
-2. To activate streaming to this destination, toggle the status to **Active** besides the streaming destination.
-
-   After you activate the destination, Harness starts writing audit logs in the destination.
-
-   Post that every 30 mins audit logs are streamed.
-
-3. You can pause audit streaming, preventing any new audit events from being streamed to the configured endpoint by setting the status to **Inactive**. 
-   
-   Harness streams audit logs from where it was paused later when you reactivate such a streaming destination.
+   When you reactivate the streaming destination, Harness starts streaming the audit logs from the point where it was paused.
 
 ## Update audit stream
 
-You can change the audit stream configuration by clicking three dots beside the stream destination. This will open a pop-up menu with the following options:
+You can change the audit stream configuration by clicking three dots beside the stream destination. This opens a pop-up menu with the following options:
 
 - **Edit**: Select a different streaming destination or make changes to the existing destination.
 
