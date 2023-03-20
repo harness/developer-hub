@@ -442,7 +442,7 @@ get_flag_loop() ->
 
 ```
 
-## Sample Appliction (Elixir)
+## Sample Code (Elixir)
 
 A sample Elixir appliction which uses the Erlang SDK can be found at: https://github.com/harness/ff-elixir-server-sample
 
