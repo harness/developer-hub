@@ -39,7 +39,7 @@ To use this SDK, make sure you:
 Add the SDK as a dependency to your `rebar.config` file:
 
 ```
-{deps, [{cfclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "0.4.0-beta.2"}}}]}.
+{deps, [{cfclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "0.1.0"}}}]}.
 ```
 
 ### Install using mix
@@ -49,7 +49,7 @@ Add the SDK to your `mix.exs` file:
 ```
   defp deps do
     [
-      {:ffcfclient, git: "https://github.com/harness/ff-erlang-server-sdk", tag: "0.4.0-beta.2"}
+        {:cfclient, github: "harness/ff-erlang-server-sdk", tag: "0.5.0-beta.1"}
     ]
 ```
 
@@ -137,7 +137,8 @@ You can configure the following base features of the SDK:
 
 ### Complete the initialization 
 
-To complete the initialization, create an instance of the Erlang SDK Client and pass in the sdkKey and any optional configuration options.
+To complete the initialization, provide the `api_key` and any optional configuration options. The SDK will then boot as 
+part of your a
 
 ## Evaluate a Flag
 
@@ -235,7 +236,7 @@ When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-fl
 
 start(SDKKey) ->
   logger:set_primary_config(level, info),
-  case ffcfclient:start("sdkkey", #{
+  case cfclient:start("sdkkey", #{
       config_url => "https://config.ff.harness.io/api/1.0",
       events_url => "https://events.ff.harness.io/api/1.0",
       polling_interval => 60000,
@@ -258,7 +259,7 @@ get_flag_loop() ->
     attributes => #{email => <<"demo@harness.io">>}
   },
   FlagIdentifier = "harnessappdemodarkmode",
-  Result = ffcfclient:bool_variation(FlagIdentifier, Target, false),
+  Result = cfclient:bool_variation(FlagIdentifier, Target, false),
   logger:info("Varaion for Flag ~p witih Target ~p is: ~p~n", [FlagIdentifier, maps:get(identifier, Target), Result]),
   timer:sleep(10000),
   get_flag_loop().
