@@ -66,6 +66,7 @@ Harness provides out-of-the-box Canary, Blue Green, and Rolling Deployment capab
 For examples of how these deployment types work with different platforms and services, go to [CD tutorials](/docs/category/cd-tutorials).
 
 ### Revamped template library experience
+
 - We now support pipelines as templates that you can share across various projects.
 - We now allow for your stages to be templated as well!
 - Templates can now be managed in Git.
@@ -106,9 +107,15 @@ For details, go to [Policy as Code](/docs/category/policy-as-code).
 
 ## Upgrading to NextGen CD
 
-Please reach out to your Customer Success Manager (CSM), Account Executive, or your Customer Success Engineer (CSE) for help upgrade to Harness NextGen CD. 
+You can switch between CD FirstGen and NextGen with the switch of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.  
 
-For any further questions or comments, please contact your assigned CSE or CSM. We appreciate your business and look forward to continuing to serve your business needs in the future.
+To upgrade to NextGen, select the **Launch Harness Next Generation** button in the Harness FirstGen UI. 
+
+![](./static/launch-harness-next-gen.png)
+
+To go back to FirstGen, select the **Launch First Generation** button in the Harness NextGen UI.
+
+Reach out to your assigned Customer Success Manager (CSM), Account Executive, or your Customer Success Engineer (CSE) for help upgrade to Harness NextGen, or for any further queries or comments. 
 
 
 
