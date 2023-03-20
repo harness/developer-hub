@@ -26,7 +26,7 @@ Terraform must be installed on the Delegate to use a Harness Terraform Provision
 
 See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
-### Target OS and Architecture
+### Target OS and architecture
 
 You will need to change the following scripts based on the operating system and architecture of the machine that is running the delegate.
 
