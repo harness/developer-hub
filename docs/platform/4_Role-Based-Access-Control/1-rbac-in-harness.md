@@ -8,67 +8,83 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Role-based access control (RBAC) is a security mechanism that is commonly used to manage access to your resources. RBAC is an authorization system that provides fine-grained access management of your Harness resources. 
+Role-based access control (RBAC) lets you control who can access your resources and what actions they can perform on the resources. To do this, the administrator of your Harness account assigns required permissions for a set of resources to the members within your account.
 
-When using RBAC for access management, you analyze the needs of your users and group them into roles based on common responsibilities. You then assign a role to each principal with associated permission(s) that can be performed on the resource(s). With principal, role, and resource group relationships, it is easier to manage access control since you don't have to manage users individually. This allows for more efficient and streamlined access management, as you can grant access based on the job responsibilities and level of authority, rather than individual characteristics.
+This topic explains the concepts and components that apply to RBAC in Harness.
 
-RBAC is beneficial in large organizations with complex access requirements, as it simplifies the process of managing access and reduces the risk of errors and inconsistencies. It also allows for better tracking and auditing of access. By implementing RBAC, you can achieve a balance between security and usability, while also ensuring that sensitive resources are protected from unauthorized access.
+## Benefits of using RBAC
 
-Harness lets you implement RBAC at different levels or scope within your account.
+Using RBAC helps you:
 
-### RBAC scope
+- Ensure that users have access to only the information and resources necessary to perform their tasks. This reduces the risk of security breaches and unauthorized access to sensitive data.
 
-Managing access to resources within Harness is determined by the following scopes: 
+- Create a systematic, repeatable assignment of permissions. RBAC saves time and increases efficiency for administrators who would otherwise need to manage access to individual user accounts. You can quickly add and change roles, as well as implement them across APIs.
+
+- Increase accountability by clearly defining who has access to specific resources and information. This makes it easier to track and audit user activities, helping to identify and prevent misuse or abuse of access privileges. 
+
+- More effectively comply with regulatory and statutory requirements for confidentiality and privacy. It lets you enforce policies related to privacy and data protection.
+
+## Overview of the hierarchical setup in Harness
+
+The Harness platform has a hierarchical structure consisting of the following three levels or scopes: 
+
 - Account
-- Organization 
+- Organization (Org)
 - Project
 
-This hierarchical structure allows administrators to apply permissions at different levels, making it easy to delegate responsibilities to different teams. Using this structure, Harness provides a granular approach to access control that is flexible, scalable, and easy to manage.
+This structure helps you organize and manage your resources efficiently by giving you a fine-grained control over your resources.
+The administrators can apply permissions at different levels, making it easy to delegate responsibilities to different teams. Using this structure, Harness provides a granular approach to access control that is flexible, scalable, and easy to manage.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+Here is a visual summary of the hierarchy: 
 
-<Tabs>
-  <TabItem value="account" label="Account" default>
-    The scope of an account is at the highest level, encompassing all the resources within the Harness subscription. It provides a way to manage billing, user authentication, and global settings for all the organizations and projects within the account. Users with the appropriate permissions can manage the account-level settings, including billing, subscription, and SSO configuration.
-    <p/>
-    <h3>When to add users in this scope?</h3>
-    To manage administrative functions or have total access and authority over the whole hierarchy, add them to the account scope.
-    <p/>
-    <h3>When to add resources in this scope?</h3>
-    Add resources to the account scope to allow sharing across the entire hierarchy.
-  </TabItem>
+![](./static/account-hierarchy.png)
 
-  <TabItem value="org" label="Organization">
-  The scope of an organization is used to group related projects, resources, and users within a specific domain or business unit. It provides a way to manage resources and permissions specific to a particular organization. Users with the appropriate permissions can manage organization-level settings, including the creation of projects and user groups, and assigning access policies to those user groups.
-   <p/>
-   <h3>When to add users in this scope?</h3>
-   To have visibility and control over all the projects within this org, add users to the org scope.
-   <p/>
-   <h3>When to add resources in this scope?</h3>
-   Add resources to the org scope to allow sharing across projects within this org while isolating from other organizations.
-  </TabItem>
+<details>
+<summary>Account</summary>
+The scope of an account is at the highest level, encompassing all the resources within the Harness subscription. It provides a way to manage billing, user authentication, and global settings for all the organizations and projects within the account. Users with the appropriate permissions can manage the account-level settings, including billing, subscription, and SSO configuration.
+</details>
 
-  <TabItem value="project" label="Project">
-  The scope of a project is used to group related resources, such as applications, pipelines, and environments. It provides a way to manage resources and permissions specific to a particular project. Users with the appropriate permissions can manage project-level settings, including the creation of pipelines, environments, and infrastructure definitions.
-  <p/>
-   <h3>When to add users in this scope?</h3>
-   Add resources to the org scope to allow sharing across projects within this org while isolating from other organizations.
-   <p/>
-   <h3>When to add resources in this scope?</h3>
-   Add resources to the project scope to provide total control to the project teams.
-  </TabItem>
-</Tabs>
-```
+<details>
+<summary>Organization</summary>
+The scope of an organization is used to group related projects, resources, and users within a specific domain or business unit. It provides a way to manage resources and permissions specific to a particular organization. Users with the appropriate permissions can manage organization-level settings, including the creation of projects and user groups, and assigning access policies to those user groups.
+</details>
 
-Scopes are structured in a parent-child relationship. You can assign roles at any of these levels of scope.
+<details>
+<summary>Project</summary>
+The scope of a project is used to group related resources, such as applications, pipelines, and environments. It provides a way to manage resources and permissions specific to a particular project. Users with the appropriate permissions can manage project-level settings, including the creation of pipelines, environments, and infrastructure definitions.
+</details>
 
 To know more about organizations and projects, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
-### RBAC components
+## Overview of the resources and entities in Harness
 
-#### Principal
+The Harness platform has many entities like delegates, secrets, connectors, and pipelines.
+
+For more information on delegates, go to [Harness Delegate](../../getting-started/harness-platform-architecture.md#harness-platform-components).
+
+For more information on these entities, go to [Key concepts](../../getting-started/learn-harness-key-concepts.md).
+
+You can create resources in Harness in the following scopes: 
+- Account: These resources are created in the account scope and are available for use in all the organizations and projects within that account.
+- Organization: These resources are created within the scope of a specific organization and are available for use in all the projects within that organization.
+- Project: These resources are created within the scope of a specific project and are only available in that project.
+
+### Scope of the resources
+
+The scope at which you create resources depends on the level of control and visibility you require.
+
+For example, if you create a connector in the account scope, it is visible and can be used by all organizations and projects within that account. 
+
+However, if you create a connector in the organization or project scope, it is only visible and can be used within that organization or project. 
+
+This lets you control access to your resources more effectively and prevent unauthorized access.
+
+## RBAC components
+
+Harness provides access control by combining Principals, Roles, and Resource Groups.
+
+
+### Principal
 
   A principal is an entity that can be assigned to a role and subsequently granted permissions to access certain resources or perform specific actions within a system. A principal can be one of the following: 
   * **Users:** These are individual users within the Harness system. A user can belong to many user groups.  
@@ -80,11 +96,9 @@ To know more about organizations and projects, see [Create Organizations and Pro
     
     ![](./static/principal.png)
 
-    [Role assignments](#role-assignment) are done on any of these principals.
+### Resource Groups
 
-#### Resource Groups
-
-A resource-group is a set of Harness resources that a principal can access. You can create resource groups at account/org/project scope.  
+A resource group is a set of Harness resources that a principal can access. You can create resource groups at account, org, or project scope.  
 For more information on creating a new resource group, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
 
   Resource Groups can be of two types:
@@ -109,11 +123,12 @@ For more information on creating a new resource group, see [Add and Manage Resou
 
   For more information, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
 
-#### Roles
+### Roles
 
-A role is a set of permissions that allow or deny specific operations on a specific set of resources. A Role defines access to resources within a single scope — project/org/account. You can create roles at account/org/project scope.  
-  For more information on creating a new role, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
+A role is a set of permissions that allow or deny specific operations on a specific set of resources. A Role defines access to resources within a single scope — project/org/account. 
 
+Harness has the following types of roles: 
+- Out of the box roles (OOTB): These are built-in roles that you can use for access control. 
   Harness provides the following default roles at the account, org, and project scope:
 
    |  |  |
@@ -130,7 +145,9 @@ A role is a set of permissions that allow or deny specific operations on a speci
    | **Project** | Pipeline Executor |
    | **Project** | Feature Flag Manage Role |
 
-  For more information, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
+- Custom roles: These are the custom roles that you can create for a fine-grained access control.
+  You can create roles at account, org, or project scope.
+  For more information on creating a new role, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
 
 ## Role assignment
 
@@ -140,6 +157,8 @@ A role assignment consists of the following elements:
 * Role
 * Resource Group
 * Scope
+  
+![](./static/rbac-components.png)
 
 Following are a few key points for role assignment in Harness:
 
@@ -150,9 +169,11 @@ Following are a few key points for role assignment in Harness:
 
 ![](./static/rbac-in-harness-04.png)
 
+
+* An account administrator assigns a role and resource group to a principal - user or user group or service account. This assignment is called [Role Assignment](#role-assignment).
+* Role assignment grants the principal the permissions from the role on the set of resources in the resource group.
+
 The following list explains the different role assignments with the default roles and resource groups:
-
-
 
 |  |  |
 | --- | --- |
@@ -214,6 +235,7 @@ The following blog post walks you through user and role management in Harness:
 
 [User and Role Management in the Harness Software Delivery Platform](https://harness.io/blog/continuous-delivery/user-role-management/)
 
+## Video
 
 <details>
 <summary>
@@ -221,50 +243,6 @@ RBAC setup video
 </summary>
 <docvideo src="https://www.youtube.com/embed/vIQfpRrES44?feature=oembed"/>
 </details>
-
-
-## Benefits of using RBAC
-
-Using RBAC helps you:
-
-- Ensure that users have access to only the information and resources necessary to perform their tasks. This reduces the risk of security breaches and unauthorized access to sensitive data.
-
-- Create a systematic, repeatable assignment of permissions. RBAC saves time and increases efficiency for administrators who would otherwise need to manage access to individual user accounts. You can quickly add and change roles, as well as implement them across APIs.
-
-- Increase accountability by clearly defining who has access to specific resources and information. This makes it easier to track and audit user activities, helping to identify and prevent misuse or abuse of access privileges. 
-
-- More effectively comply with regulatory and statutory requirements for confidentiality and privacy. It lets you enforce policies related to privacy and data protection.
-
-## RBAC model
-
-Here is a quick overview of Harness RBAC:
-
-* The account administrator invites users to the account.
-* The account administrator creates user groups.
-* The account administrator creates service accounts.
-* Role assignments happen on individual users, user groups, or service accounts.
-* Each user can be a member of multiple user groups and hence can have multiple role assignments.
-* Each user group and service account can have multiple role assignments.
-* You can assign roles at any [scope](#rbac-scope).
-  
-  ![](./static/rbac-in-harness-00.png)
-
-## What can you do with RBAC?
-
-Here are a few examples of what RBAC can be used for:
-
-* Allow users, user groups, or service accounts to manage and access the resources through the account/org/project admin role.
-* Allow users, user groups, or service accounts to view the resources through the account/org/project viewer role.
-* Allow users, user groups, or service accounts to manage and access specific resources through custom roles.
-
-## How does RBAC work?
-
-To control access to resources using RBAC, you assign permissions to users and groups.
-
-* Permissions that you want to assign to a user or user group or a service account are grouped together in a Role.
-* Resources that you want to control access to are grouped together in a resource group.
-* An account administrator assigns a role and resource group to a principal - user or user group or service account. This assignment is called [Role Assignment](#role-assignment).
-* Role assignment grants the principal the permissions from the role on the set of resources in the resource group.
 
 ## Next steps
 
