@@ -94,17 +94,39 @@ To create a Target, create a map and add the following keys:
 
 ### Configure the SDK
 
-When initializing the SDK, you also have the option of providing alternative configuration by using the Client map. Note: keys should be atoms and values should be strings.
+When initializing the SDK, you also have the option of providing alternative configuration. 
+
+Erlang applications should be configued using the `sys.config` file, for example:
+
+```erlang
+[{cfclient, [
+    {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+    {config, [
+        {config_url, "https://config.ff.harness.io/api/1.0"},
+        {events_url, "https://config.ff.harness.io/api/1.0"}
+    ]},
+    ]}]
+```
+
+Elixir applications should be configured using the `config/config.exs`, for example:
+
+```elixir
+import Config
+config :cfclient,
+       [api_key: System.get_env("FF_API_KEY_0"),
+       # For additional config you can pass in, see Erlang SDK docs: https://github.com/harness/ff-erlang-server-sdk/blob/main/docs/further_reading.md#further-reading
+       # we are just using the main config url here as an example.
+        config: [config_url: "https://config.ff.harness.io/api/1.0"]]
+```
 
 You can configure the following base features of the SDK:
 
-| Name | Example | Description | Default value |
-|------|---------|-------------|---------------|
-| **ConfigURL** | `config_url =>` <br />`"https://config.ff.harness.io/api/1.0"` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: <br />`http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| **EventUrl** | `events_url =>` <br />`"https://events.ff.harness.io/api/1.0"` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: <br />`http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| **PollingInterval** | `poll_interval => 60000` | The interval in seconds that we poll for changes when you are using stream mode. | `60` (seconds) |
-| **StreamEnabled** | Not available in Beta | Set to true to enable streaming mode. Set to false to disable streaming mode. | `true` |
-| **AnalyticsEnabled** | `analytics_enabled => true` | Set to true to enable analytics. Set to false to disable analytics. <br />**Note:** When enabled, analytics data is posted every 60 seconds. | `true` |
+| Name                 | Erlang Example                                         | Elixir Example                                       | Description                                                                                                                                  | Default value                          |
+|----------------------|--------------------------------------------------------|:-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| **ConfigURL**        | `{config_url, "https://config.ff.harness.io/api/1.0"}` | `config_url: "https://config.ff.harness.io/api/1.0"` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: <br />`http://localhost:7000`                    | `https://config.ff.harness.io/api/1.0` |
+| **EventUrl**         | `{events_url, "https://events.ff.harness.io/api/1.0"}` | `events_url: "https://events.ff.harness.io/api/1.0"` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: <br />`http://localhost:7000`      | `https://events.ff.harness.io/api/1.0` |
+| **PollingInterval**  | `{poll_interval, 60000}`                               | `poll_interval: 60000`                               | The interval in seconds that we poll for changes when you are using stream mode.                                                             | `60` (seconds)                         |
+| **AnalyticsEnabled** | `{analytics_enabled, true}`                            | `analytics_enabled: true`                            | Set to true to enable analytics. Set to false to disable analytics. <br />**Note:** When enabled, analytics data is posted every 60 seconds. | `true`                                 |
 
 For example:
 ``` 
