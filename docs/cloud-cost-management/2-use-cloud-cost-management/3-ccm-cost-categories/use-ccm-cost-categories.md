@@ -110,11 +110,11 @@ You can use cost categories in both Perspectives and Dashboards. When you create
 
 The benefit of using a cost category as a rule in a Perspective is that the cost category definition is separated from all the Perspectives that use it.
 
-When you change the definition of the Cost Category, it automatically changes what is displayed by all the Perspectives that use that cost category.
+If you modify the definition of a cost category, any Perspective that uses the cost category automatically displays the changes.
 
 For example, if a new product is added to the Manufacturing department, you can simply update the Manufacturing bucket in the Departments Cost Category, and that change is automatically reflected in all the Perspectives that use that Cost Category.
 
-Cost categories can be used in Perspectives in the following ways.
+The cost categories can be used in Perspectives in the following ways.
 
 #### Group By
 
@@ -130,7 +130,7 @@ Consider the following scenario where the Perspective rule has a cost category:
 
 #### Filter
 
-Select one or more Cost Categories as a filter.
+Select one or more cost categories as a filter.
 
 ![](./static/use-ccm-cost-categories-07.png)
 
@@ -140,12 +140,12 @@ You can use Group By and filters together. For example, your filter could select
 ![](./static/use-ccm-cost-categories-08.png)
 
 :::caution
-When including multiple Cost Categories in your filter, it is important to check for any shared cost buckets between them. If you have shared cost buckets with similar rules in both cost categories, the cost of these buckets is counted twice, resulting in duplication of costs. Therefore, it is recommended not to have multiple Cost Category filter in a Perspective. However, if you must add a multiple Cost Category filter, avoid overlapping shared cost buckets between Cost Categories to prevent any potential errors.
+When including multiple cost categories in your filter, it is important to check for any shared cost buckets between them. If you have shared cost buckets with similar rules in both cost categories, the cost of these buckets is counted twice, resulting in duplication of costs. Therefore, it is recommended not to have multiple cost category filter in a Perspective. However, if you must add a multiple cost category filter, avoid overlapping shared cost buckets between cost categories to prevent any potential errors.
 :::
 
 #### Perspective rule
 
-When creating a Perspective, you can define a rule using Cost Categories.
+When creating a Perspective, you can define a rule using cost categories.
 
 ![](./static/use-ccm-cost-categories-09.png)
 
@@ -157,7 +157,7 @@ Consider the following scenario where the Perspective rule has two cost categori
 | CC1  | <ul><li>B1 - AWS1</li><li>B2- GCP1</li></ul> | <ul><li>SB1 - AWS2</li><li>SB2 - GCP2</li> </ul>|
 | CC2  | <ul><li>C1 - AWS1</li><li>C2- GCP1</li></ul> | <ul><li>SB1 - AWS2</li><li>SB2 - GCP2</li> </ul>| 
 
- In this scenario, if you choose to include both Cost Categories in your Perspective rule, the total cost of the cost buckets in both categories is counted only once. However, the cost of the shared buckets between the two categories is duplicated and may lead to conflicting or overlapping rules. Therefore, it is recommended to avoid using multiple Cost Categories with overlapping shared cost buckets in your perspective rule to prevent any potential errors.
+ In this scenario, if you choose to include both cost categories in your Perspective rule, the total cost of the cost buckets in both categories is counted only once. However, the cost of the shared buckets between the two categories is duplicated and may lead to conflicting or overlapping rules. Therefore, it is recommended to avoid using multiple cost categories with overlapping shared cost buckets in your perspective rule to prevent any potential errors.
 
 ### Use cost categories in Dashboards
 
