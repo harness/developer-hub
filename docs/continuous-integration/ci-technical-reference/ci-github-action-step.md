@@ -132,7 +132,7 @@ The `spec` parameters define which Action to use, the Action settings, and envir
 
 * `uses:` Specify the Action's repo, along with a branch or tag, such as `actions/stepup-go@v3`.
 * `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
-* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action. <!-- Not working for private repos, CI-7300 -->
+* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action. For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`.
 
 :::tip
 
@@ -231,6 +231,8 @@ Settings as a whole can be supplied as fixed values or runtime input, and indivi
 
 Found under **Optional Configuration**. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
 
+For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable. The token must have pull permissions to the target repository. You can use a variable expression such as `<+secrets.getValue("[SECRET_NAME]")>` to call a token stored as a Harness secret.
+
 Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
 
 :::tip
@@ -238,8 +240,6 @@ Refer to the GitHub Action's `env` usage specifications for details about specif
 You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
 
 :::
-
-<!-- CI-7300 private repos info needed on this tab when fixed -->
 
 ### Timeout
 
@@ -296,3 +296,63 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 </td>
 </tr>
 </table>
+
+## Private Action repositories
+
+If you want to use an Action that is in a private repository, you must provide the `GITHUB_TOKEN` environment variable. The token must have pull permissions to the target repository.
+
+```mdx-code-block
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
+```
+
+```mdx-code-block
+<Tabs2>
+  <TabItem2 value="YAML" label="YAML editor" default>
+```
+
+In the YAML editor, add `GITHUB_TOKEN` to the `env` mapping, for example:
+
+```yaml
+- step:
+    type: Action
+    name: hello world
+    identifier: hello_world
+    spec:
+      uses: actions/hello-world-javascript-action@main
+      with:
+        who-to-greet: 'Mona the Octocat'
+      env:
+        GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>
+```
+
+:::tip
+
+You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")>`, to call a token stored as a Harness Secret.
+
+:::
+
+For more information about configuring the Action step's settings, go to the [Settings and specifications](#settings-and-specifications) section, above.
+
+```mdx-code-block
+  </TabItem2>
+  <TabItem2 value="Visual" label="Visual editor">
+```
+
+In the Visual editor, specify `GITHUB_TOKEN` in the **Environment Variables**. Enter `GITHUB_TOKEN` in the key field and the token or variable expression in the value field, for example:
+
+* Key: `GITHUB_TOKEN`
+* Value: `<+secrets.getValue("[SECRET_NAME]")>`
+
+:::tip
+
+You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")>`, to call a token stored as a Harness Secret.
+
+:::
+
+For more information about configuring the GitHub Action plugin step's settings, go to the [Settings and specifications](#settings-and-specifications) section, above.
+
+```mdx-code-block
+  </TabItem2>
+</Tabs2>
+```
