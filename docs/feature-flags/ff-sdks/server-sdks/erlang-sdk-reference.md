@@ -278,37 +278,33 @@ application need to use specific projects, you can start up additional client in
     
       {ok, {SupFlags, [ChildSpec1, ChildSpec2]}}.
     ```
-#### Using a specific instance of the SDK
 
-To use a specific SDK instance, you provide the instance name to the public function you are calling. For example `bool_variation/4`.
+3. To use a specific SDK instance, you provide the instance name to the public function you are calling. For example use `bool_variation/4` instead of `bool_variation/3` - see the following code sample:
 
-The following is an example of referencing the instances we have created above:
-
-```erlang
--module(multi_instance_example).
-
--export([multi_instance_evaluations/0]).
-
-multi_instance_evaluations() ->
-  Target = #{
-    identifier => "Harness_Target_1",
-    name => "HT_1",
-    attributes => #{email => <<"demo@harness.io">>}
-  },
-
-  %% Instance 1
-  Project1Flag = <<"harnessappdemodarkmodeproject1">>,
-  Project1Result = cfclient:bool_variation(instance_name_1, Project1Flag, Target, false),
-  logger:info("Instance Name 1 : Variation for Flag ~p with Target ~p is: ~p~n",
-    [Project1Flag, maps:get(identifier, Target), Project1Result]),
-
-  %% Instance 2
-  Project2Flag = <<"harnessappdemodarkmodeproject2">>,
-  Project2Result = cfclient:bool_variation(instance_name_2, Project2Flag, Target, false),
-  logger:info("Instance name 2 Variation for Flag ~p with Target ~p is: ~p~n",
-  [Project2Flag, maps:get(identifier, Target), Project2Result]).
-```
-This example demonstrates multiple instances of the SDK within the same application, but the same can be achieved if you have an application heirarchy where multiple applications need to use one or many instances of the Erlang SDK.
+    ```erlang
+    -module(multi_instance_example).
+    
+    -export([multi_instance_evaluations/0]).
+    
+    multi_instance_evaluations() ->
+      Target = #{
+        identifier => "Harness_Target_1",
+        name => "HT_1",
+        attributes => #{email => <<"demo@harness.io">>}
+      },
+    
+      %% Instance 1
+      Project1Flag = <<"harnessappdemodarkmodeproject1">>,
+      Project1Result = cfclient:bool_variation(instance_name_1, Project1Flag, Target, false),
+      logger:info("Instance Name 1 : Variation for Flag ~p with Target ~p is: ~p~n",
+        [Project1Flag, maps:get(identifier, Target), Project1Result]),
+    
+      %% Instance 2
+      Project2Flag = <<"harnessappdemodarkmodeproject2">>,
+      Project2Result = cfclient:bool_variation(instance_name_2, Project2Flag, Target, false),
+      logger:info("Instance name 2 Variation for Flag ~p with Target ~p is: ~p~n",
+      [Project2Flag, maps:get(identifier, Target), Project2Result]).
+    ```
 
 #### Elixir project config
 
@@ -350,6 +346,50 @@ This example demonstrates multiple instances of the SDK within the same applicat
         ]
         Supervisor.init(children, strategy: :one_for_one)
       end
+    ```
+
+3. To use a specific SDK instance, you provide the instance name to the public function you are calling. For example use `bool_variation/4` instead of `bool_variation/3` - see the following code sample:
+
+    ```elixir
+    defmodule ElixirSample.EvaluationSample do
+      require Logger
+    
+      def getFlagLoop() do
+        target = %{
+          identifier: "harness",
+          name: "Harness",
+          anonymous: false,
+          attributes: %{}
+        }
+    
+        # Default instance
+        flag = "projectflag"
+        result = :cfclient.bool_variation(flag, target, false)
+    
+        Logger.info(
+          "SVariation for Flag #{flag} with Target #{inspect(target)} is: #{result}"
+        )
+    
+        # Instance 1
+        project_1_flag = "project1flag"
+        project_1_result = :cfclient.number_variation(:project1, project_1_flag, target, 3)
+    
+        Logger.info(
+          "SDK instance 1: Variation for Flag #{project_1_flag} with Target #{inspect(target)} is: #{project_1_result}"
+        )
+    
+        # Instance 2
+        project_2_flag = "project2flag"
+        project_2_result = :cfclient.bool_variation(:project2, project_2_flag, target, false)
+    
+        Logger.info(
+          "SDK instance 2: Variation for Flag #{project_2_flag} with Target #{inspect(target)} is: #{project_2_result}"
+        )
+    
+        Process.sleep(10000)
+        getFlagLoop()
+      end
+    end
     ```
 
 ### Use the Relay Proxy
