@@ -55,3 +55,11 @@ The parsed test report in the **Tests** tab comes strictly from the provided tes
 ## Truncated execution logs
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
+
+## AKS builds timeout
+
+Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
+
+If you have a custom network security group, it must allow inbound traffic on port 8080, which the Delegate service uses.
+
+For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic)

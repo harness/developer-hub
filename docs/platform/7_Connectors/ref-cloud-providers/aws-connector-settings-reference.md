@@ -19,7 +19,7 @@ The AWS role policy requirements depend on what AWS services you are using for y
 Consider the following user and access type requirements:
 
 * **User:** Harness requires that the IAM user can make API requests to AWS. For more information, go to [Creating an IAM User in Your AWS Account](http://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html).
-* **User Access Type:* Programmatic access:** This enables an access key ID and secret access key for the AWS API, CLI, SDK, and other development tools.
+* **User Access Type: Programmatic access:** This enables an access key ID and secret access key for the AWS API, CLI, SDK, and other development tools.
 * **DescribeRegions:** Required for all AWS Cloud Provider connections.
 
 :::caution

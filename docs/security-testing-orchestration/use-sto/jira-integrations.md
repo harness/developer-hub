@@ -21,6 +21,10 @@ You can easily create Jira tickets for issues detected during an STO build. This
 * This feature is behind the Feature Flag `STO_JIRA_INTEGRATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
+:::caution
+This integration has a separate setup path that is unrelated to other Jira-related integrations in Harness pipelines. To open Jira tickets for security findings in STO, you must set up the integration as documented below. You cannot use other Jira workflows to create Jira tickets in STO. For example, you cannot integrate Jira with STO using Custom steps with Jira Create or other related steps.
+:::
+
 ## Set up the Jira integration
 
 1. Create an API key for your Jira account. For more information, go to [Manage API tokens for your Atlassian account](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) in the Atlassian documentation.

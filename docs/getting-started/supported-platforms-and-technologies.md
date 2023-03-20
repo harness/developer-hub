@@ -779,7 +779,6 @@ The following table lists the major support features for Harness Self-Managed En
 | Solution                                                          | Supported Platform           | Connected\* | HA Supported\*\* | Monitoring          | Disaster Recovery | Auto Restart | Features Under Controlled Release |
 | ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | ------------ | --------------------------------- |
 | [Kubernetes Cluster](/docs/category/kubernetes)                   | Kubernetes - GKE - AKS - EKS | Yes         | Yes              | Prometheus, Grafana | Supported         | Supported    |                                   |
-| [Virtual Machine (VM)](/docs/category/install-on-virtual-machine) | Linux VM (3 VM minimum)      | Yes         | Yes              | Prometheus, Grafana | Supported         | Supported    |                                   |
 
 ### SDKs installed with the Delegate
 

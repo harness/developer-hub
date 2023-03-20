@@ -13,6 +13,43 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 16, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version 1.2.1 and includes the following update:
+
+* When an SDK key was not supplied, the SDK continually retried. This issue was fixed and now, if authentication fails, the SDK no longer retries constantly, and instead generates a MissingSdkKeyException. (FFM-7214)
+
+
+## March 15, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Node.js server SDK has been updated to version 1.2.12 and includes the following update:
+
+* The event source was updated to version 2.1.2. This adds eligible errors to the `retrying` event payload. (FFM-7198)
+
 ## March 09, 2023
 
 ### What's new
@@ -214,8 +251,13 @@ This release does not include early access features.
   - You can now listen for errors that are caused by network issues. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578)
   - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578) 
 
-- The Javascript SDK has been updated to version 1.8.0 and includes the following change:
-  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489) 
+- The Javascript client SDK has been updated to version 1.8.0 and includes the following change:
+  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489)
+
+- The Android client SDK has been updated to version 1.0.19 and includes the following changes:
+  - A new event was added, `SSE_RESUME`, which fires if the application loses and regains internet.  When the event fires: 
+    - The SDK internally reloads all feature config into cache. (FFM-6574)
+    - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime.
 
 ## January 24, 2023
 
