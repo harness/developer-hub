@@ -32,14 +32,12 @@ To use this SDK, make sure you:
 * Create a Feature Flag on the Harness Platform. If you are following along with the SDK README sample code, make sure your flag is called harnessappdemodarkmode.
 * Create an SDK key and make a copy of it
 
-## Install the SDK
-
-### Install using rebar3
+### Install the SDK (Erlang)
 
 Add the SDK as a dependency to your `rebar.config` file:
 
 ```
-{deps, [{cfclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "0.1.0"}}}]}.
+{deps, [{cfclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "1.0.0"}}}]}.
 ```
 
 ### Install using mix
@@ -49,7 +47,7 @@ Add the SDK to your `mix.exs` file:
 ```
   defp deps do
     [
-        {:cfclient, github: "harness/ff-erlang-server-sdk", tag: "0.5.0-beta.1"}
+        {:cfclient, github: "harness/ff-erlang-server-sdk", tag: "1.0.0"}
     ]
 ```
 
