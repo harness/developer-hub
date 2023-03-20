@@ -10,11 +10,12 @@ Helm charts can have dependencies called subcharts. You can define subcharts in 
 This feature is currently behind the feature flag, `NG_CDS_HELM_SUB_CHARTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 :::
 
-## Supported deployment types
+## Limitations
 
-Helm subcharts are supported for the following deployment types only.
-- Kubernetes deployments using canary, blue/green, and rolling deployment strategies
-- Native Helm deployments using basic strategy
+* Helm subcharts are supported for the following deployment types only.
+    - Kubernetes deployments using canary, blue/green, and rolling deployment strategies
+    - Native Helm deployments using basic strategy
+* Harness Continuous Delivery (CD) captures the parent chart as the deployed instance. Harness Continuous Verification (CV) detects and verifies the parent chart as the deployed instance. CV cannot simultaneously verify all subcharts as deployed instances. 
 
 ## Service configuration
 
