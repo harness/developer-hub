@@ -107,7 +107,7 @@ For details, go to [Policy as Code](/docs/category/policy-as-code).
 
 ## Upgrading to NextGen CD
 
-You can switch between CD FirstGen and NextGen with the switch of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.  
+You can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.  
 
 To upgrade to NextGen, select the **Launch Harness Next Generation** button in the Harness FirstGen UI. 
 
