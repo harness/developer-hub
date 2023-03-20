@@ -96,7 +96,7 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - **Edit**: Select a different streaming destination or make changes to the existing destination.
 
-- Delete: You can delete the audit stream destination.
+- Delete: Delete the audit stream destination.
 
 ![](./static/edit-delete.png)
 
