@@ -67,20 +67,51 @@ To initialize the Erlang SDK:
 1. (Optional) Configure the SDK.
 1. Complete the initialization with the SDK using the Server SDK Key, Target, and Configuration parameters you set.
 
-### Add the Server SDK Key
+### Add the Server SDK Key (Erlang)
 
-To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment. Input the Server SDK Key into the `sdkKey` parameter, for example:
+To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment. 
+Input the Server SDK Key into the `api_key` tuple, for example:
 
+Provide your API key in `sys.config` using an environment variable:
+
+```erlang
+[
+  {cfclient, [
+    {api_key, {environment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+  ]}
+].
 ```
-  case cfclient:start(“sdkkey”) of
-    ok ->
-      ok
-    {not_ok, Error} ->
-      {Not_ok, Error}
-  end.
+
+Or you may provide the API key directly if required:
+
+```erlang
+[
+  {cfclient, [
+      {api_key, "YOUR_API_KEY"},
+  ]}
+].
 ```
 
-### Add a Target
+### Add the Server SDK Key (Elixir)
+
+To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment.
+Input the Server SDK Key into the `api_key` key, for example:
+
+Provide your API key in `config/config.exs` using an environment variable: :
+
+```elixir
+config :cfclient,
+  api_key: System.get_env("YOUR_API_KEY_ENVIRONMENT_VARIABLE")
+```
+
+Or you may provide the API key directly if required:
+
+```elixir
+config :cfclient,
+  api_key: "YOUR_API_KEY"
+```
+
+### Add a Target (Erlang and Elixir)
 
 <details>
 <summary>What is a Target?</summary> 
