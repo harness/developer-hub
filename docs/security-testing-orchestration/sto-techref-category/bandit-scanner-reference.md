@@ -1,7 +1,7 @@
 ---
 title: Bandit Scanner Reference
-description: You can set up a Security step with Bandit to find common security issues in your Python code.
-sidebar_position: 30
+description: Repository scans with Bandit
+sidebar_position: 50
 helpdocs_topic_id: n3dcx6wzb3
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
