@@ -22,7 +22,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
 * `product_config_name`
    - `metasploit-weak-ssh` &nbsp; &nbsp;  Brute-force test a host for SSH weak ssh/pass
-   - `metasploit-openssl-heartbleed`  &nbsp; &nbsp; Checkhttps (443) for Heartbleed vulnerability
+   - `metasploit-openssl-heartbleed`  &nbsp; &nbsp; Check HTTPS (443) for Heartbleed vulnerability
    - `dynamic-by-cve`  &nbsp; &nbsp; Finds and applies Metaspoit module by CVE 
 
 

@@ -4,13 +4,10 @@ description: Image or Repository scans with Snyk
 sidebar_position: 290
 ---
 
-
-
-
-STO supports the following scan approaches for the following Snyk products:
-* Snyk Open Source (`orchestratedScan` or `ingestionOnly`)
-* Snyk Code (`ingestionOnly`)
-* Snyk Container (`ingestionOnly`)
+STO supports the following scan types for the following Snyk products:
+* Snyk Open Source — `orchestratedScan` and `ingestionOnly` 
+* Snyk Code  —  `ingestionOnly` 
+* Snyk Container  — `ingestionOnly` 
 
 For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
 
@@ -37,7 +34,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `snyk_api` = URL to the Snyk instance, if you're using an on-prem installation.
 
 
-## Container Image scan settings
+### Container Image scan settings
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
