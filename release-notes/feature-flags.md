@@ -13,6 +13,43 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 16, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version 1.2.1 and includes the following update:
+
+* When an SDK key was not supplied, the SDK continually retried. This issue was fixed and now, if authentication fails, the SDK no longer retries constantly, and instead generates a MissingSdkKeyException. (FFM-7214)
+
+
+## March 15, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Node.js server SDK has been updated to version 1.2.12 and includes the following update:
+
+* The event source was updated to version 2.1.2. This adds eligible errors to the `retrying` event payload. (FFM-7198)
+
 ## March 09, 2023
 
 ### What's new
@@ -179,6 +216,25 @@ When adding targets to a group based on conditions, the `in` operator is now cas
 If you are targeting any groups using the `in` operator, ensure that your target condition takes into account the case sensitivity of the operator.
 :::
 
+## January 27, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Java server SDK has been updated to version 1.1.11 and includes the following changes:
+
+- Timeout errors were logged due to the code calling `awaitTermination()` before `shutDown()` when stopping the update processor. There was also a misleading warning about the poller not being restarted. These issues have been fixed. (FFM-6581)
+
+
 ## January 26, 2023
 
 ### What's new
@@ -191,12 +247,34 @@ This release does not include early access features.
 
 ### Fixed issues
 #### Feature Flag SDKs
-- The React Client SDK has been updated to version 1.1.0 and includes the following changes:
+- The React client SDK has been updated to version 1.1.0 and includes the following changes:
   - You can now listen for errors that are caused by network issues. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578)
   - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578) 
 
-- The Javascript SDK has been updated to version 1.8.0 and includes the following change:
-  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489) 
+- The Javascript client SDK has been updated to version 1.8.0 and includes the following change:
+  - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489)
+
+- The Android client SDK has been updated to version 1.0.19 and includes the following changes:
+  - A new event was added, `SSE_RESUME`, which fires if the application loses and regains internet.  When the event fires: 
+    - The SDK internally reloads all feature config into cache. (FFM-6574)
+    - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime.
+
+## January 25, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flag SDKs
+
+The Go server SDK has been updated to version 0.1.6 and includes the following update:
+* Some target segment include rules were not working for numeric values. This issue has been fixed. (FFM-6384)
 
 ## January 24, 2023
 
@@ -309,6 +387,24 @@ This release does not include early access features.
 
 Resolved an issue that caused the edit section of a pipeline not to load on the Feature Flag module. (FFM-5948)
 
+## December 15, 2022
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version 1.1.9 and includes the following update:
+
+* A NullPointerException was thrown when a null target was given. This update fixes the MetricsProcessor to handle nulls correctly. (FFM-6125)
+
 ## December 13, 2022
 
 ### What's new
@@ -385,6 +481,25 @@ This release does not include early access features.
 
   - Added a check to ensure the correct variations are served when a flag has nested prerequisite flags. (FFM-5263)
   - Fixed a bug where requests continuously repeated themselves when using the SDK's streaming mode. (FFM-5352)
+
+## November 30, 2022
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The .NET server SDK has been updated to version 1.1.6 with the following update:
+
+* When a flag depended on a prerequisite flag being true, the evaluation failed if the prerequisite flag's variation `value` and `identifier` were identical. This issue has been fixed and the evaluation now works correctly in that case. (FFM-5307)
+
 
 ## November 29, 2022
 

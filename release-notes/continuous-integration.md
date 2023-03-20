@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-02-23T10:00
+date: 2023-03-15T10:00
 sidebar_position: 3
 ---
 
@@ -13,11 +13,39 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 15, 2023, version 78712
+
+### What's new
+
+* The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
+* You can now call pipeline-level variables in steps as environment variables. This is an extension of existing functionality that allows you to call stage-level variables in steps as environment variables. (CI-6709, ZD-39203)
+* When configuring [SCM connectors](/docs/category/code-repo-connectors):
+  * Failed connection tests now return more detailed error messages. (CI-7089)
+  * The placeholder text in the **Repository URL** field shows a complete repo URL example. (CI-5750)
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+* When configuring [local build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), it was not possible to select the Windows operating system. This issue has been resolved and the Windows OS is available again. (CI-7111, ZD-40311)
+* Builds no longer fail if steps in different step groups have the same `identifier`. Additionally, to prevent steps in step groups from producing artifacts with identical artifact IDs, when steps in step groups produce artifacts, the resulting artifact IDs now use a unique identifier that reflects the step's presence in a step group. (CI-7115)
+* If a pipeline's [codebase clone depth](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase#edit-codebase-configuration) was set to `0`, manually triggered builds would override this setting and clone at a depth of 50 instead. This issue did not occur for depth settings other than `0`, and it did not occur for non-manual triggers. Now, manually triggered builds won't override the depth setting when it is set to `0`. (CI-7083, ZD-40306)
+* When manually triggering a build, the default repository is populated for on-prem Git connectors. (CI-6814)
+* If you change a stage's build infrastructure after adding steps to the stage, field validations for step settings are now triggered as expected when building and saving pipelines. This is important for settings that are unavailable or optional with some build infrastructures but required for others. (CI-6209)
+* Fixed an issue where builds triggered by issue comments had the incorrect PR status or link for some SCM providers. (CI-6978)
+* Fixed several issues related to error messages on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds#build-details):
+  * If the Docker runner was down for a build using local build infrastructure, the error message now contains the correct wording corresponding with the local build infrastructure, rather than wording relevant to a Kubernetes build infrastructure. (CI-6854)
+  * An `unsupported image` warning banner incorrectly appeared for builds that did not use Kubernetes build infrastructure. (CI-7098, ZD-40428)
+  * The `unsupported image` warning banner no longer pushes the bottom of the log region outside the scrollable area. (CI-7098, ZD-40428)
+* Unresolved stage-level and pipeline-level environment variables generated exception errors in cases where those variables were expected to receive a value at a later point in the pipeline. These variables now supplement a default (`null`) value if no initial value is available. (CI-7125)
+
 ## February 23, 2023, version 78507
 
 ### What's new
 
-In addition to fixed values and runtime inputs, you can now use [expressions](https://developer.harness.io/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+In addition to fixed values and runtime inputs, you can now use [expressions](/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
 
 ![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
 

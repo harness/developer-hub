@@ -6,7 +6,7 @@
       connectorRef: account.harnessImage
       privileged: true
       settings:
-        policy_type: orchestratedScan
+        policy_type: orchestration  
         scan_type: repository
         repository_project: nodegoat
         repository_branch: <+codebase.branch>

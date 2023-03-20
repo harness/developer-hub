@@ -219,6 +219,11 @@ module.exports = {
       from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-macos-build-infra-with-anka-registry",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry",
     },
+
+    //  Created by aimurphy for DOC-2484 on Mar 7, 2023
+    {
+      from: "/tutorials/build-code/ci-github-action-step",
+      to: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
+    },
   ],
 };
-

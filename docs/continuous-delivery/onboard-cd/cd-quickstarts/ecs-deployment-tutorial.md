@@ -15,6 +15,12 @@ This tutorial shows you how to deploy a publicly available Docker image to your 
 
 See [Notes](#notes) below for details on ECS deployment settings and behavior outside of this quick tutorial.
 
+## Product Demo
+
+<!-- Video:
+https://harness-1.wistia.com/medias/vtlwxnczyh-->
+<docvideo src="https://harness-1.wistia.com/medias/vtlwxnczyh" />
+
 ## Objectives
 
 You'll learn how to:
@@ -27,6 +33,7 @@ You'll learn how to:
 * Create and deploy an ECS Rolling deployment.
 
 Once you have the prerequisites set up, the tutorial should only take about 10 minutes.
+
 
 ## Set up AWS IAM
 

@@ -1,7 +1,7 @@
 ---
 title: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-03-08T10:00
+date: 2023-03-15T10:00
 sidebar_position: 12
 ---
 
@@ -14,21 +14,49 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). For Self-Managed Enterprise Edition, see [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
+## March 15, 2023, Harness version 78712, Harness Delegate version 78700
+
+Harness NextGen release 78712 includes the following changes for the Harness Delegate.
+
+### What's new
+
+- Integrated **Logs** API in the **Executed Details** page where the delegate task ID is available. (DEL-6035)
+
+  You can now view logs for delegate tasks for pipeline steps that are running or finished. This can help with debugging issues. 
+
+- Set an expiry for delegate tokens. (DEL-5652)
+
+  When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`. This is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
+ 
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+A pipeline stalled with only one ServiceNow task running. (DEL-6042)
+
+This issue was fixed with the following updates:
+
+- Tasks that were never assigned to a delegate explicitly fail after 4 successful broadcast attempts per delegate, to all eligible delegates in the account. 
+- Fail one minute after the last rebroadcast attempt. 
+
 ## March 8, 2023, Harness version 78619, Harness Delegate version 78500
 
 Harness NextGen release 78619 includes the following changes for the Harness Delegate.
 
 ### What's new
 
-- The delegate installation UI experience is now updated with a new installation method; the Terraform Helm Provider. In addition, it has been enhanced for existing methods; Helm Chart, Kubernetes Manifest and Docker. This new experience is more developer friendly, for example it enables cutting and pasting of relevant commands, and more automation friendly where the commands can be run in an automated manner using new values when necessary. Additionally, the following new features are available:
- - The **Terraform Helm Provider** method is powered by the open source [Terraform Harness Delegate module](https://registry.terraform.io/modules/harness/harness-delegate/kubernetes/latest) and the open source [Harness Delegate Helm Chart](https://github.com/harness/delegate-helm-chart). The auto upgrade is set to OFF with an option to enable it in the command.
- - The updated method for **Helm Chart** is also powered by the same open source [Harness Delegate Helm Chart](https://github.com/harness/delegate-helm-chart) as the Terraform Helm Provider above. The auto upgrade is set to OFF with an option to enable it in the command. You can also download the [default values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) for the Helm option and edit that to set your own long-lived configuration values.
- - The updated flow for **Kubernetes Manifest** has two options for creating a manifest YAML file specific to your Harness account. 
-  - Basic - Provides a “Download YAML” option where the downloaded YAML has all the configuration variables pre-populated with values specific to your Harness account. 
-  - Custom - Create your own YAML from a [Kubernetes Manifest template](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml) by replacing the placeholders with the values provided in the method.
-  
- Given the need to have a fully qualified YAML, the auto upgrade configuration is set to ON in both the above options. The result is that the delegate version installed will always remain in sync with the version available on the Harness Manager.
- - The **Docker** delegate installation method has now been enhanced to a simple copy and paste of the Docker run command, with the option to modify the pre-populated properties. The auto upgrade is set to OFF for this method with an option to enable it in the command. (DEL-6037)
+- The delegate installation UI experience is now updated with a new installation method: the Terraform Helm provider. Also, the installation experience has been enhanced for the existing methods (Helm chart, Kubernetes manifest, and Docker). This new experience is more developer friendly. For example, it enables cutting and pasting of relevant commands. You can also automate the commands and use new values when necessary. 
+
+  Additionally, the following new features are available:
+    - The **Terraform Helm Provider** method is based on the open source [Terraform Harness Delegate module](https://registry.terraform.io/modules/harness/harness-delegate/kubernetes/latest) and the open source [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart). Auto upgrade is set to `OFF` with an option to enable it in the command.
+    - The updated method for **Helm Chart** is also based on the same open source [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart) as the Terraform Helm provider. Auto upgrade is set to OFF with an option to enable it in the command. You can also download the [default values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) for the Helm option and edit that to set your own long-lived configuration values.
+    - The updated flow for **Kubernetes Manifest** has the following options for creating a manifest YAML file specific to your Harness account.          
+      - **Basic**: Provides a **Download YAML** option. The downloaded YAML has all the configuration variables set to values that are specific to your Harness account. 
+      - **Custom** - Create your own YAML from a [Kubernetes manifest template](https://github.com/harness/delegate-kubernetes-manifest/blob/main/harness-delegate.yaml) by replacing the placeholders with the values provided in the method.
+      Given the need to have a fully qualified YAML, the auto upgrade configuration is set to ON in both the above options. Consequently, the delegate version that is installed always remains in sync with the version available on Harness Manager.
+    - The **Docker** delegate installation method has now been simplified to a copy-and-paste action on the `docker run` command, with the option to modify the preset values. The auto upgrade is set to OFF for this method, with an option to enable it in the command. (DEL-6037)
 
 - The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
 
@@ -50,7 +78,7 @@ Harness NextGen release 78507 includes the following changes for the Harness Del
 :::note
 The repository location of the Helm chart for the NextGen delegate is changing. (DEL-5576)
 
-The repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/ is being deprecated. The Helm chart will no longer be available from the repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
+The repository at https://app.harness.io/storage/harness-download/harness-helm-charts/ is being deprecated. The Helm chart will no longer be available from the repository at https://app.harness.io/storage/harness-download/harness-helm-charts/. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/delegate-helm-chart/.
 :::
 
 ### What's new

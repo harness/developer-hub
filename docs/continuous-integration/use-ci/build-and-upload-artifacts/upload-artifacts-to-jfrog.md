@@ -28,7 +28,7 @@ In your Harness Pipeline, click **Add Stage**, and then click CI.
 
 ### Step 2: Define the Build Farm Infrastructure
 
-In the CI stage Infrastructure, define the build farm for the codebase. See [Define Kubernetes Cluster Build Infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+In the CI stage Infrastructure, define the build farm for the codebase. See [Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 ### Step 3: Configure the Run Step
 

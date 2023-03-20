@@ -1,7 +1,7 @@
 ---
-title: SonarQube SonarScanner Reference
-description: This topic describes how to configure a step to scan a repository using SonarQube. STO supports all languages supported by SonarScanner.
-sidebar_position: 60
+title: SonarQube SonarScanner reference
+description: Repository scans with SonarQube SonarScanner
+sidebar_position: 300
 helpdocs_topic_id: 4qe4h3cl28
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
