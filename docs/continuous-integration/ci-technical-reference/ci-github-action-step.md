@@ -302,13 +302,13 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 If you want to use an Action that is in a private repository, you must provide the `GITHUB_TOKEN` environment variable. The token must have pull permissions to the target repository.
 
 ```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
+import Tabs3 from '@theme/Tabs';
+import TabItem3 from '@theme/TabItem';
 ```
 
 ```mdx-code-block
-<Tabs2>
-  <TabItem2 value="YAML" label="YAML editor" default>
+<Tabs3>
+  <TabItem3 value="YAML" label="YAML editor" default>
 ```
 
 In the YAML editor, add `GITHUB_TOKEN` to the `env` mapping, for example:
@@ -335,8 +335,8 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 For more information about configuring the Action step's settings, go to the [Settings and specifications](#settings-and-specifications) section, above.
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="Visual" label="Visual editor">
+  </TabItem3>
+  <TabItem3 value="Visual" label="Visual editor">
 ```
 
 In the Visual editor, specify `GITHUB_TOKEN` in the **Environment Variables**. Enter `GITHUB_TOKEN` in the key field and the token or variable expression in the value field, for example:
@@ -353,6 +353,6 @@ You can use a variable expressions, such as `<+secrets.getValue("[SECRET_NAME]")
 For more information about configuring the GitHub Action plugin step's settings, go to the [Settings and specifications](#settings-and-specifications) section, above.
 
 ```mdx-code-block
-  </TabItem2>
-</Tabs2>
+  </TabItem3>
+</Tabs3>
 ```
