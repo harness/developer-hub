@@ -1,7 +1,7 @@
 ---
-title: Aqua Trivy Scanner Reference
-description: You can set up a Security step with Aqua Trivy to detect vulnerabilities and misconfigurations in your container images.
-sidebar_position: 20
+title: Aqua Trivy scanner reference
+description: Image scans with Aqua Trivy
+sidebar_position: 30
 helpdocs_topic_id: 079248uzcu
 helpdocs_category_id: m01pu2ubai
 helpdocs_is_private: false
