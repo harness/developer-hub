@@ -42,9 +42,10 @@ serviceaccount/litmus-cluster-scope created
 
 Now we need to create the litmus scc. Please follow the below mentioned steps:
 
-To get the litmus scc manifest and know more about litmus-scc [Click Here](https://developer.harness.io/docs/chaos-engineering/overview/Security/security-templates/openshift-scc).
+- To get the litmus scc manifest [Click Here](./static/openshift-installation/litmus-scc.yaml).
+- To know more about litmus-scc checkout the [litmus-scc docs](https://developer.harness.io/docs/chaos-engineering/overview/Security/security-templates/openshift-scc).
 
-Copy the litmus-scc manifest on `litmus-scc.yaml` file.
+Copy the litmus-scc manifest to `litmus-scc.yaml` file.
 
 ```bash
 kubectl apply -f litmus-scc.yaml
