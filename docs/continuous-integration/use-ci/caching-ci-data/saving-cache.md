@@ -15,14 +15,14 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Caching enables sharing data across stages. Caching also speeds up builds by reusing the expensive fetch operation from previous jobs.
+Caching enables sharing data across stages. Caching also speeds up builds by reusing data from expensive fetch operations in previous jobs.
 
 Caching has two primary benefits:
 
-1. Run pipelines faster by reusing the expensive fetch operation data from previous builds
-2. Share data across stages
+* Run pipelines faster by reusing the expensive fetch operation data from previous builds
+* Share data across stages
 
-You can cache data to an AWS S3 bucket in one Stage using the **Save Cache to S3** step, and restore it in the same Stage, or a following Stage, using **Restore Cache From S3** step. 
+You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. 
 
 This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
 
@@ -103,9 +103,7 @@ Here is a YAML example of a **Save Cache to S3** step.
 
 For details about this step's settings, go to [Save Cache to S3 step settings](../../ci-technical-reference/save-cache-to-s-3-step-settings.md).
 
-Pipeline steps within a stage share the same [workspace](../../ci-technical-reference/ci-stage-settings.md#workspace).
-
-You can optionally [share paths](../../ci-technical-reference/ci-stage-settings.md#share-paths) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
+Pipeline steps within a stage share the same [workspace](../../ci-technical-reference/ci-stage-settings.md#workspace). You can optionally [share paths](../../ci-technical-reference/ci-stage-settings.md#share-paths) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
 
 ```yaml
   stages:
@@ -148,7 +146,7 @@ The `spec.key` value in this step must match the `spec.key` value in your **Save
 
 For details about this step's settings, go to [Restore Cache from S3 step settings](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md).
 
-Add **Restore Cache From S3** step to your stage before steps that build and test your code, as shown in this diagram:
+Add **Restore Cache From S3** step to your stage before steps that build and test your code, as shown in the following diagram:
 
 ```mermaid
 graph TD
@@ -167,14 +165,14 @@ Your cache key and paths will differ depending on your language.
 <TabItem value="Go">
 ```
 
-[Go](https://go.dev/) pipelines should reference `go.sum` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps.
+[Go](https://go.dev/) pipelines must reference `go.sum` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps, for example:
 
 ```yaml
                   spec:
                     key: cache-{{ checksum "go.sum" }}
 ```
 
-`spec.sourcePaths` should include `/go/pkg/mod` and `/root/.cache/go-build` in the **Save Cache to S3** step.
+`spec.sourcePaths` must include `/go/pkg/mod` and `/root/.cache/go-build` in the **Save Cache to S3** step, for example:
 
 ```yaml
                   spec:
@@ -189,21 +187,21 @@ Your cache key and paths will differ depending on your language.
 <TabItem value="Node.js">
 ```
 
-[Npm](https://www.npmjs.com/) pipelines should reference `package-lock.json` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps.
+[Npm](https://www.npmjs.com/) pipelines must reference `package-lock.json` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps, for example:
 
 ```yaml
                   spec:
                     key: cache-{{ checksum "package-lock.json" }}
 ```
 
-[Yarn](https://yarnpkg.com/) pipelines should reference should reference `yarn.lock` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps.
+[Yarn](https://yarnpkg.com/) pipelines must reference `yarn.lock` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps, for example:
 
 ```yaml
                   spec:
                     key: cache-{{ checksum "yarn.lock" }}
 ```
 
-`spec.sourcePaths` should include `node_modues` in the **Save Cache to S3** step.
+`spec.sourcePaths` must include `node_modues` in the **Save Cache to S3** step, for example:
 
 ```yaml
                   spec:
@@ -217,14 +215,14 @@ Your cache key and paths will differ depending on your language.
 <TabItem value="Maven">
 ```
 
-[Maven](https://maven.apache.org/) pipelines should reference `pom.xml` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps.
+[Maven](https://maven.apache.org/) pipelines must reference `pom.xml` for `spec.key` in **Save Cache to S3** and **Restore Cache From S3** steps, for example:
 
 ```yaml
                   spec:
                     key: cache-{{ checksum "pom.xml" }}
 ```
 
-`spec.sourcePaths` should include `/root/.m2` in the **Save Cache to S3** step.
+`spec.sourcePaths` must include `/root/.m2` in the **Save Cache to S3** step, for example:
 
 ```yaml
                   spec:
@@ -237,11 +235,11 @@ Your cache key and paths will differ depending on your language.
 </Tabs>
 ```
 
-## Multi-Stage Pipelines
+## Multi-stage pipelines
 
-Each stage runs in an isolated environment, caching can be used to pass data from one stage to the next.
+Because each stage runs in an isolated environment, you can use caching to pass data from one stage to the next.
 
-This diagram illustrates cache usage across two stages.
+The following diagram illustrates cache usage across two stages.
 
 ```mermaid
 graph TD
