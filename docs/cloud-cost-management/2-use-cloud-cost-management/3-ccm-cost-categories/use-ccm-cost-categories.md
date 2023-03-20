@@ -108,13 +108,25 @@ You can use cost categories in both Perspectives and Dashboards. When you create
 
 ### Use cost categories in Perspectives
 
+The benefit of using a cost category as a rule in a Perspective is that the cost category definition is separated from all the Perspectives that use it.
+
+When you change the definition of the Cost Category, it automatically changes what is displayed by all the Perspectives that use that cost category.
+
+For example, if a new product is added to the Manufacturing department, you can simply update the Manufacturing bucket in the Departments Cost Category, and that change is automatically reflected in all the Perspectives that use that Cost Category.
+
 Cost categories can be used in Perspectives in the following ways.
 
 #### Group By
 
-Select a Cost Category in **Group By**:
+Consider the following scenario where the Perspective rule has a cost category:
 
-![](./static/use-ccm-cost-categories-06.png)
+ | **Cost category** | **Cost bucket** | **Shared Cost buckets** |
+ | --- | --- | --- |
+ | CC1 | <ul><li>B1 - AWS</li><li>B2- GCP</li></ul> | <ul><li>SB1 - AWS</li><li>SB2 - GCP</li> </ul>|
+
+ In this setup, if you group the Perspective by AWS, the cost of B1 and SB1 are displayed against the respective AWS accounts. However, the total cost of the cost bucket B2, and the shared cost bucket SB2 in GCP are displayed under **No Account**. 
+
+   ![](./static/cost-category-group-by-csp.png)
 
 #### Filter
 
@@ -124,19 +136,28 @@ Select one or more Cost Categories as a filter.
 
 You can use Group By and filters together. For example, your filter could select **Manufacturing** from the Department Cost Category, and then you can select **GCP: SKUs** in **Group By**.
 
+
 ![](./static/use-ccm-cost-categories-08.png)
 
-#### Perspectives
+:::caution
+When including multiple Cost Categories in your filter, it is important to check for any shared cost buckets between them. If you have shared cost buckets with similar rules in both cost categories, the cost of these buckets is counted twice, resulting in duplication of costs. Therefore, it is recommended not to have multiple Cost Category filter in a Perspective. However, if you must add a multiple Cost Category filter, avoid overlapping shared cost buckets between Cost Categories to prevent any potential errors.
+:::
+
+#### Perspective rule
 
 When creating a Perspective, you can define a rule using Cost Categories.
 
 ![](./static/use-ccm-cost-categories-09.png)
 
-The benefit of using a cost category as a rule in a Perspective is that the cost category definition is separated from all the Perspectives that use it.
 
-When you change the definition of the Cost Category, it automatically changes what is displayed by all the Perspectives that use that cost category.
+Consider the following scenario where the Perspective rule has two cost categories:
 
-For example, if a new product is added to the Manufacturing department, you can simply update the Manufacturing bucket in the Departments Cost Category, and that change is automatically reflected in all the Perspectives that use that Cost Category.
+ **Cost category** | **Cost bucket** | **Shared buckets** |
+| --- | --- | --- |
+| CC1  | <ul><li>B1 - AWS1</li><li>B2- GCP1</li></ul> | <ul><li>SB1 - AWS2</li><li>SB2 - GCP2</li> </ul>|
+| CC2  | <ul><li>C1 - AWS1</li><li>C2- GCP1</li></ul> | <ul><li>SB1 - AWS2</li><li>SB2 - GCP2</li> </ul>| 
+
+ In this scenario, if you choose to include both Cost Categories in your Perspective rule, the total cost of the cost buckets in both categories is counted only once. However, the cost of the shared buckets between the two categories is duplicated and may lead to conflicting or overlapping rules. Therefore, it is recommended to avoid using multiple Cost Categories with overlapping shared cost buckets in your perspective rule to prevent any potential errors.
 
 ### Use cost categories in Dashboards
 
@@ -150,6 +171,7 @@ You can visualize cost categories in your custom dashboard. To learn how to crea
 * When you create a new cost category or make changes to an existing one, it may take up to 24 hours for the changes to be reflected in the dashboard data.
 * If you are using AWS or Azure, cost categories update the data fetched from the current month onwards through CUR and Billing Exports. It is not applied to historical data. On the other hand, if you are using GCP, cost categories update the data that is equal to or more recent than the last three days' data.
 * When you delete a cost category, the deleted category remains visible in the dashboard until the end of the month, as it is applied to data for the ongoing month. For instance, if you delete a cost category on January 24th, the category is visible in the dashboard until the end of January 31st.
+* Shared cost buckets are ignored when you add cost category context.
 
 :::note
 In AWS, you cannot use cost categories as a dimension in custom dashboards if you have selected any of the following fields in the explore:
