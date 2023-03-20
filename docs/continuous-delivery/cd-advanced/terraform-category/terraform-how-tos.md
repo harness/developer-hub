@@ -72,13 +72,6 @@ mv ./terraform /usr/bin/
 terraform --version
 ```
 
-You will need to change the script based on the architecture of the machine that is running the delegate.
-
-Linux on x86(Intel or AMD): linux_amd64
-Linux on Arm: linux_arm64
-MacOs on x86(Intel): darwin_amd64
-MacOs on ARM(Apple): darwin_arm64
-
 ## References
 
 [Download Terraform](https://www.terraform.io/downloads) from Hashicorp.
