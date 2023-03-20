@@ -39,7 +39,7 @@ To use this SDK, make sure you:
 Add the SDK as a dependency to your `rebar.config` file:
 
 ```
-{deps, [{ffclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "0.4.0-beta.2"}}}]}.
+{deps, [{cfclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "0.4.0-beta.2"}}}]}.
 ```
 
 ### Install using mix
@@ -67,7 +67,7 @@ To initialize the Erlang SDK:
 To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment. Input the Server SDK Key into the `sdkKey` parameter, for example:
 
 ```
-  case ffclient:start(“sdkkey”) of
+  case cfclient:start(“sdkkey”) of
     ok ->
       ok
     {not_ok, Error} ->
@@ -108,7 +108,7 @@ You can configure the following base features of the SDK:
 
 For example:
 ``` 
-ffclient:start("sdkkey", 
+cfclient:start("sdkkey", 
   #{
     config_url => "https://config.ff.harness.io/api/1.0",
     events_url => "https://events.ff.harness.io/api/1.0",
@@ -136,25 +136,25 @@ Here are examples of evaluating different types of Variations:
 * **Boolean Variation**
 
   ```
-  ffclient:bool_variation(FlagIdentifier, Target, false)
+  cfclient:bool_variation(FlagIdentifier, Target, false)
   ```
 
 * **Number Variation:** 
 
   ```
-  ffclient:number_variation(FlagIdentifier, Target, -1).
+  cfclient:number_variation(FlagIdentifier, Target, -1).
   ```
 
 * **String Variation:**
 
   ```
-  ffclient:string_variation(FlagIdentifier, Target, "default_string").
+  cfclient:string_variation(FlagIdentifier, Target, "default_string").
   ```
 
 * **JSON Variation:**
 
   ```
-  ffclient:json_variation(FlagIdentifier, Target, #{dark_mode => <<”false”>>}).
+  cfclient:json_variation(FlagIdentifier, Target, #{dark_mode => <<”false”>>}).
   ```
 
 ## Listen for events
@@ -172,7 +172,7 @@ When you receive a response showing the current status of your Feature Flag, go 
 To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
 
 ```
-ffclient:stop().
+cfclient:stop().
 ```
 
 ## Additional options
