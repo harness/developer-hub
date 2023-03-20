@@ -14,6 +14,23 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+
+## March 20, 2023
+
+### New features
+
+* This release does not include new features
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed Issues
+
+* The search pull-down widget has been removed from the Security Tests > Overview page. To search and drill down into specific issues, go to the Security Testing Dashboard. (STO-5592)
+* Fixed an issue in the the Security Tests > Overview page where the "Issue distribution over time" graph on was empty for some projects. (STO-5318)
+
+
 ## March 9, 2023
 
 ### New features
@@ -45,6 +62,10 @@ This release does not include early access features.
 
   - The Security Testing Dashboard requires an Enterprise account.
   - You must click the **Refresh** button (top right) to apply the filter after you configure it.
+  - To view details for an issue from the search results, click the pipeline name or ID and choose **View in Harness Platform**. 
+
+    ![](./static/sto-dashboard-view-issue-in-harness-platform.png)
+
   - The **Created Date** menu has several non-working options: `is null`, `is not null`, and `matches a user attribute`. This is a known issue that Harness is working to address.
 
 ![Security Testing Dashboard -- filters and Refresh button](static/sto-dashboard-with-new-filters.png)
