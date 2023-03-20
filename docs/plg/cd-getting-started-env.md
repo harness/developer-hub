@@ -1,6 +1,12 @@
 ---
 title: How do I connect Harness to my environment?
+hide_table_of_contents: false
+hide_title: true
+editCurrentVersion: false
+custom_edit_url: null
 ---
+
+# How do I connect Harness to my environment?
 
 Harness performs deployments using a service named the Harness Delegate. You install the Delegate in your environment and it makes a secure, outbound connection to Harness.
 
