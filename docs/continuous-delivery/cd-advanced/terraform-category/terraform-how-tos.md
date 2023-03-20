@@ -26,15 +26,17 @@ Terraform must be installed on the Delegate to use a Harness Terraform Provision
 
 See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
-
 ```bash
 # Install TF  
 microdnf install unzip
-curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
-unzip terraform_1.3.5_darwin_amd64.zip
+curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_linux_amd64.zip
+unzip terraform_1.3.5_linux_amd64.zip
 mv ./terraform /usr/bin/
 # Check TF install
 terraform --version
 ```
+
+You may need to change the script based on your target os and architecture.
+
 See also: [Download Terraform](https://www.terraform.io/downloads) from Hashicorp.
 
