@@ -40,9 +40,16 @@ Add the SDK as a dependency to your `rebar.config` file:
 {deps, [{cfclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "1.0.0"}}}]}.
 ```
 
-### Install using mix
+Add the dependency to your project's `app.src`.
+```erlang
+{applications,
+  [kernel, stdlib, cfclient]
+},
+```
 
-Add the SDK to your `mix.exs` file:
+### Install the SDK (Elixir)
+
+Add the SDK as a dependency to `mix.exs` `deps()`:
 
 ```
   defp deps do
