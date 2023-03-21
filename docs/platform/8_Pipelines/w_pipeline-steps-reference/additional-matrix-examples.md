@@ -171,7 +171,7 @@ pipeline:
 ```
 
 :::note
-The sample YAML does not have Tags since they are fixed input.
+The sample YAML does not have Tags because they are fixed input.
 :::
 
 
