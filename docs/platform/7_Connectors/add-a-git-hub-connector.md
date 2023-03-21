@@ -54,11 +54,10 @@ For SSH, ensure that the key is not OpenSSH, but rather PEM format. To generate 
 
 ### Step 3: Credentials
 
-In **Credentials,** enter your **Username**.
-
-You can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
+In **Credentials,** enter your **Username**. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
 
 ![](./static/add-a-git-hub-connector-36.png)
+
 In **Personal Access Token**, either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one that has your Git token. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret.
 
 To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. See [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.* The GitHub user account used to create the Personal Access Token must have admin permissions on the repo.

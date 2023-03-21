@@ -150,16 +150,24 @@ In **API Authentication**, select **GitHub App**.
 
 Enter the following settings:
 
-* **GitHub Installation ID:** enter the Installation ID located in the URL of the installed GitHub App.![](./static/git-hub-app-support-58.png)
-* **GitHub Application ID:** enter the GitHub **App ID** from the GitHub App **General** tab.![](./static/git-hub-app-support-59.png)
+* **GitHub Installation ID:** enter the Installation ID located in the URL of the installed GitHub App. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
+
+   ![](./static/git-hub-app-support-58.png)
+
+* **GitHub Application ID:** enter the GitHub **App ID** from the GitHub App **General** tab. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
+
+   ![](./static/git-hub-app-support-59.png)
+
 * **GitHub Private Key:** select the Harness secret you created for the PEM file key.
 
 When you're done, the settings will look something like this:
 
 ![](./static/git-hub-app-support-60.png)
+
 Click **Save and Continue**. The connection and authentication is verified.
 
 ![](./static/git-hub-app-support-61.png)
+
 Click **Finish**.
 
 Now you can run a Pipeline and verify that the GitHub app credentials are working.
