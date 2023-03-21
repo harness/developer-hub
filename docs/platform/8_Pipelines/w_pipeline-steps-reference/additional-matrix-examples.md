@@ -183,7 +183,7 @@ The sample YAML does not have Tags because they are fixed input.
   <+pipeline.variables.example>.split(',')
   ```
 
-For example, when you approve Jira tickets in parallel that are dynamic and come from either triggers or external systems. In that case, you can mark the variable as `input` and in the input YAML and provide the list of Jira tickets as a comma separated string.
+For example, you approve Jira tickets in parallel that are dynamic and come from either triggers or external systems. In this scenario, mark the variable as 'input' and supply the list of Jira tickets as a comma-separated string in the input YAML.
 
 Here is the sample YAML: 
 
