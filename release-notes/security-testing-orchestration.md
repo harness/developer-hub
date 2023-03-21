@@ -28,7 +28,7 @@ This release does not include early access features.
 ### Fixed Issues
 
 * The search pull-down widget has been removed from the Security Tests > Overview page. To search and drill down into specific issues, go to the Security Testing Dashboard. (STO-5592)
-* Fixed an issue in the the Security Tests > Overview page where the "Issue distribution over time" graph on was empty for some projects. (STO-5318)
+* Fixed an issue in the the Security Tests > Overview page where the **Issue distribution over time** graph on was empty for some projects. (STO-5318)
 
 
 ## March 9, 2023
