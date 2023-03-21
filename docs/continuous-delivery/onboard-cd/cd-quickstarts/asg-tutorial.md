@@ -52,6 +52,7 @@ Notes:
 - ASG creation differs for rolling and blue green deployments:
   - For rolling, Harness updates the *existing* ASG with the new configuration.
   - For blue green, Harness creates a *new* ASG with a new revision suffix, like `asg-demo__2`. Once there are two ASGs (`asg-demo__1` and `asg-demo__2`) Harness alternately updates these *existing* ASGs with the new configuration on each successive deployment. 
+  
 </details>
 
 ## AWS policy requirements
