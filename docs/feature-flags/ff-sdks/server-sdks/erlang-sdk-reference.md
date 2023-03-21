@@ -32,24 +32,29 @@ To use this SDK, make sure you:
 * Create a Feature Flag on the Harness Platform. If you are following along with the SDK README sample code, make sure your flag is called harnessappdemodarkmode.
 * Create an SDK key and make a copy of it
 
-## Install the SDK
-
-### Install using rebar3
+### Install the SDK (Erlang)
 
 Add the SDK as a dependency to your `rebar.config` file:
 
 ```
-{deps, [{ffclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "0.4.0-beta.2"}}}]}.
+{deps, [{cfclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "1.0.0"}}}]}.
 ```
 
-### Install using mix
+Add the dependency to your project's `app.src`.
+```erlang
+{applications,
+  [kernel, stdlib, cfclient]
+},
+```
 
-Add the SDK to your `mix.exs` file:
+### Install the SDK (Elixir)
+
+Add the SDK as a dependency to `mix.exs` `deps()`:
 
 ```
   defp deps do
     [
-      {:ffcfclient, git: "https://github.com/harness/ff-erlang-server-sdk", tag: "0.4.0-beta.2"}
+        {:cfclient, github: "harness/ff-erlang-server-sdk", tag: "1.0.0"}
     ]
 ```
 
@@ -62,20 +67,51 @@ To initialize the Erlang SDK:
 1. (Optional) Configure the SDK.
 1. Complete the initialization with the SDK using the Server SDK Key, Target, and Configuration parameters you set.
 
-### Add the Server SDK Key
+### Add the Server SDK Key (Erlang)
 
-To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment. Input the Server SDK Key into the `sdkKey` parameter, for example:
+To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment. 
+Input the Server SDK Key into the `api_key` tuple, for example:
 
+Provide your API key in `sys.config` using an environment variable:
+
+```erlang
+[
+  {cfclient, [
+    {api_key, {environment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+  ]}
+].
 ```
-  case ffclient:start(“sdkkey”) of
-    ok ->
-      ok
-    {not_ok, Error} ->
-      {Not_ok, Error}
-  end.
+
+Or you may provide the API key directly if required:
+
+```erlang
+[
+  {cfclient, [
+      {api_key, "YOUR_API_KEY"},
+  ]}
+].
 ```
 
-### Add a Target
+### Add the Server SDK Key (Elixir)
+
+To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment.
+Input the Server SDK Key into the `api_key` key, for example:
+
+Provide your API key in `config/config.exs` using an environment variable: :
+
+```elixir
+config :cfclient,
+  api_key: System.get_env("YOUR_API_KEY_ENVIRONMENT_VARIABLE")
+```
+
+Or you may provide the API key directly if required:
+
+```elixir
+config :cfclient,
+  api_key: "YOUR_API_KEY"
+```
+
+### Add a Target (Erlang and Elixir)
 
 <details>
 <summary>What is a Target?</summary> 
@@ -86,41 +122,59 @@ For more information about Targets, go to [Target Users With Flags](/docs/featur
 
 To create a Target, create a map and add the following keys:
 
-| Parameter | Description | Required? | Example |
-|-----------|-------------|-----------|---------|
-| **Identifier** | Unique ID for the Target<br /><br />**Key:** atom<br />**Value:** bitstring | Required | `identifier => <<"HT_1">>` |
-| **Name** | Name for this Target. This does not have to be unique. **Note:** If you don’t provide a value, Harness uses the ID as the name. | Optional | `name => <<"Harness_Target_1">>` |
-| **Attributes** | Additional data you can store for a Target, such as email addresses or location.<br /><br />**Key:** atom<br />**Value:** bitstring/atom. If using a list then each element must be a bitstring/atom. Go to the Harness [Erlang SDK github repository](https://github.com/harness/ff-erlang-server-sdk#targets-with-custom-attributes) for more information. | Optional | `%% Bitstring`<br />`attributes => #{beta => <<"beta_group_1">>}`<br /><br />`%% Atom`<br />`attributes => #{alpha => 'alpha_group_1'}`<br /><br />`%% List`<br />`attributes => #{beta => [<<"beta_group_1">>, 'beta_group_2'}]}` |
+| Parameter      | Description                                                                                                                                                                                                                                                                                                                                               | Required? | Example                                                                                                                                                                                                                                                                                                      |
+|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Identifier** | Unique ID for the Target<br /><br />**Key:** atom<br />**Value:** bitstring / atom / string                                                                                                                                                                                                                                                               | Required  | `identifier => <<"HT_1">>`                                                                                                                                                                                                                                                                                   |
+| **Name**       | Name for this Target. This does not have to be unique. **Note:** If you don’t provide a value, Harness uses the ID as the name. <br/> Value: bitstring / atom / string                                                                                                                                                                                    | Optional  | `name => <<"Harness_Target_1">>`                                                                                                                                                                                                                                                                             |
+| **Attributes** | Additional data you can store for a Target, such as email addresses or location.<br /><br />**Key:** atom<br />**Value:** bitstring / atom / list of bitstrings or atom * lists of strings not supported * <br/> See [Erlang SDK GitHub Repository](https://github.com/harness/ff-erlang-server-sdk#targets-with-custom-attributes) for more information. | Optional  | `%% Bitstring`<br />`attributes => #{beta => <<"beta_group_1">>}`<br /><br />`%% Atom `<br />`attributes => #{alpha => alpha_group_1}`<br/><br/>`%% Atom in Elixir` <br/>`attributes => #{alpha => :alpha_group_1}`<br /><br />`%% List`<br />`attributes => #{beta => [<<"beta_group_1">>, beta_group_2}]}` |
 
 ### Configure the SDK
 
-When initializing the SDK, you also have the option of providing alternative configuration by using the Client map. Note: keys should be atoms and values should be strings.
+When initializing the SDK, you also have the option of providing alternative configuration. 
+
+Erlang applications should be configued using the `sys.config` file, for example:
+
+```erlang
+[{cfclient, [
+    {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+    {config, [
+        {config_url, "https://config.ff.harness.io/api/1.0"},
+        {events_url, "https://config.ff.harness.io/api/1.0"},
+        {poll_interval, 60},
+        {analytics_enabled, true},
+    ]},
+    ]}]
+```
+
+Elixir applications should be configured using the `config/config.exs` file, for example:
+
+```elixir
+import Config
+config :cfclient,
+       [api_key: System.get_env("FF_API_KEY_0"),
+       # For additional config you can pass in, see Erlang SDK docs: https://github.com/harness/ff-erlang-server-sdk/blob/main/docs/further_reading.md#further-reading
+       # we are just using the main config url here as an example.
+        config: [
+          config_url: "https://config.ff.harness.io/api/1.0",
+          events_url: "https://events.ff.harness.io/api/1.0",
+          poll_interval: 60000,
+          analytics_enabled: true
+        ]]
+```
 
 You can configure the following base features of the SDK:
 
-| Name | Example | Description | Default value |
-|------|---------|-------------|---------------|
-| **ConfigURL** | `config_url =>` <br />`"https://config.ff.harness.io/api/1.0"` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: <br />`http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| **EventUrl** | `events_url =>` <br />`"https://events.ff.harness.io/api/1.0"` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: <br />`http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| **PollingInterval** | `poll_interval => 60000` | The interval in seconds that we poll for changes when you are using stream mode. | `60` (seconds) |
-| **StreamEnabled** | Not available in Beta | Set to true to enable streaming mode. Set to false to disable streaming mode. | `true` |
-| **AnalyticsEnabled** | `analytics_enabled => true` | Set to true to enable analytics. Set to false to disable analytics. <br />**Note:** When enabled, analytics data is posted every 60 seconds. | `true` |
-
-For example:
-``` 
-ffclient:start("sdkkey", 
-  #{
-    config_url => "https://config.ff.harness.io/api/1.0",
-    events_url => "https://events.ff.harness.io/api/1.0",
-    polling_interval => 60000,
-    analytics_enabled => true
-    }
-)
-```
+| Name                 | Erlang Example                                         | Elixir Example                                       | Description                                                                                                                                  | Default value                          |
+|----------------------|--------------------------------------------------------|:-----------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| **ConfigURL**        | `{config_url, "https://config.ff.harness.io/api/1.0"}` | `config_url: "https://config.ff.harness.io/api/1.0"` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: <br />`http://localhost:7000`                    | `https://config.ff.harness.io/api/1.0` |
+| **EventUrl**         | `{events_url, "https://events.ff.harness.io/api/1.0"}` | `events_url: "https://events.ff.harness.io/api/1.0"` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: <br />`http://localhost:7000`      | `https://events.ff.harness.io/api/1.0` |
+| **PollingInterval**  | `{poll_interval, 60000}`                               | `poll_interval: 60000`                               | The interval in seconds that we poll for changes when you are using stream mode.                                                             | `60` (seconds)                         |
+| **AnalyticsEnabled** | `{analytics_enabled, true}`                            | `analytics_enabled: true`                            | Set to true to enable analytics. Set to false to disable analytics. <br />**Note:** When enabled, analytics data is posted every 60 seconds. | `true`                                 |
 
 ### Complete the initialization 
 
-To complete the initialization, create an instance of the Erlang SDK Client and pass in the sdkKey and any optional configuration options.
+To complete the initialization, provide the `api_key` and any optional configuration options. The SDK will then boot along
+with your application at run time.
 
 ## Evaluate a Flag
 
@@ -136,102 +190,242 @@ Here are examples of evaluating different types of Variations:
 * **Boolean Variation**
 
   ```
-  ffclient:bool_variation(FlagIdentifier, Target, false)
+  cfclient:bool_variation(FlagIdentifier, Target, false)
   ```
 
 * **Number Variation:** 
 
   ```
-  ffclient:number_variation(FlagIdentifier, Target, -1).
+  cfclient:number_variation(FlagIdentifier, Target, -1).
   ```
 
 * **String Variation:**
 
   ```
-  ffclient:string_variation(FlagIdentifier, Target, "default_string").
+  cfclient:string_variation(FlagIdentifier, Target, "default_string").
   ```
 
 * **JSON Variation:**
 
   ```
-  ffclient:json_variation(FlagIdentifier, Target, #{dark_mode => <<”false”>>}).
+  cfclient:json_variation(FlagIdentifier, Target, #{dark_mode => <<”false”>>}).
   ```
-
-## Listen for events
-
-This method provides a way to listen to the different events that might be triggered by the SDK, indicating a specific change in the SDK.
-
-*TBA -- Is this specific to the type of SDK?*
 
 ## Test your app is connected Harness
 
-When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
+When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. The SDK will poll for changes by default every 60 seconds, check your app after this time to verify if the Flag Variation displayed is updated with the Variation you toggled. 
 
 ## Close the SDK
 
 To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
 
 ```
-ffclient:stop().
+cfclient:close().
 ```
 
-## Additional options
+## Additional Options
 
-*Are there any other options specific to Erlang?*
+### Run multiple instances of the SDK
+Normally there is a single [project](https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/) per application. If different parts of your
+application need to use specific projects, you can start up additional client instances using a `project_config` for each unique project.
 
-### Develop on your local environment
+#### Erlang Project Config
+ 
+1. Create project configurations for each new instance you would like to start in your `sys.config` file:
 
-By default, you are connected to the Harness environment but you can use a local connector to develop in your local environment, for example:
+    ```erlang
+    [
+      %% Project config name: This is an arbitrary identifier, but it must be unique per project config you define.
+      {harness_project_1_config, [
+        {cfclient, [
+          {config, [
+            %% Instance name: This must be unique across all of the project configs. E.g. it cannot be the same as an instance name
+            %% in another project config.
+            %% It will be the name you use when calling SDK API functions like `bool_variation/4`, 
+            {name, instance_name_1}
+          ]},
+          %% The API key for the Harness project you want to use with this SDK instance.
+          {api_key, {environment_variable, "PROJECT_1_API_KEY"}}]
+        }
+      ]
+    },
+      {harness_project_2_config, [
+        {cfclient, [
+          {config, [
+            {name, instance_name_2}
+          ]},
+          {api_key, {environment_variable, "PROJECT_2_API_KEY"}}]
+        }
+      ]].
+    ```
 
-*Add example*
+2. In your application supervisor, e.g. `src/myapp_sup.erl`, start up a `cfclient_instance`
+   for each of the project configurations you provided above:
 
-### Configure your logger
+    ```erlang
+    init(Args) ->
+      HarnessProject1Args = application:get_env(harness_project_1_config, cfclient, []),
+      HarnessProject2Args = application:get_env(harness_project_2_config, cfclient, []),
+      
+      ChildSpec1 = #{id => project1_cfclient_instance, start => {cfclient_instance, start_link, [HarnessProject1Args]}},
+      ChildSpec2 = #{id => project2_cfclient_instance, start => {cfclient_instance, start_link, [HarnessProject2Args]}},
+    
+      MaxRestarts = 1000,
+      MaxSecondsBetweenRestarts = 3600,
+      SupFlags = #{strategy => one_for_one,
+        intensity => MaxRestarts,
+        period => MaxSecondsBetweenRestarts},
+    
+      {ok, {SupFlags, [ChildSpec1, ChildSpec2]}}.
+    ```
 
-*Add example*
+3. To use a specific SDK instance, you provide the instance name to the public function you are calling. For example use `bool_variation/4` instead of `bool_variation/3` - see the following code sample:
 
+    ```erlang
+    -module(multi_instance_example).
+    
+    -export([multi_instance_evaluations/0]).
+    
+    multi_instance_evaluations() ->
+      Target = #{
+        identifier => "Harness_Target_1",
+        name => "HT_1",
+        attributes => #{email => <<"demo@harness.io">>}
+      },
+    
+      %% Instance 1
+      Project1Flag = <<"harnessappdemodarkmodeproject1">>,
+      Project1Result = cfclient:bool_variation(instance_name_1, Project1Flag, Target, false),
+      logger:info("Instance Name 1 : Variation for Flag ~p with Target ~p is: ~p~n",
+        [Project1Flag, maps:get(identifier, Target), Project1Result]),
+    
+      %% Instance 2
+      Project2Flag = <<"harnessappdemodarkmodeproject2">>,
+      Project2Result = cfclient:bool_variation(instance_name_2, Project2Flag, Target, false),
+      logger:info("Instance name 2 Variation for Flag ~p with Target ~p is: ~p~n",
+      [Project2Flag, maps:get(identifier, Target), Project2Result]).
+    ```
+
+#### Elixir project config
+
+1. Create project configurations for each new instance you would like to start in your `config/config.exs` file:
+
+    ```elixir
+    # Config for "project 1"
+    config :elixirsample,  project1:
+           [
+            api_key: System.get_env("FF_API_KEY_1"),
+            config: [name: :project1]
+           ]
+    
+    # Config for "project 2"
+    config :elixirsample,  project2:
+      [
+      api_key: System.get_env("FF_API_KEY_2"),
+      config: [name: :project2]
+    ]
+    ```
+
+2. In your application supervisor, e.g. `lib/myapp/supervisor.ex`, start up `cfclient_instance` for each of the project configurations you provided above:
+
+    ```elixir
+      def init(_opts) do
+        project_1_config = Application.get_env(:elixirsample, :project1, [])
+        project_2_config = Application.get_env(:elixirsample, :project2, [])
+        children = [
+          %{
+            id: :project1_cfclient_instance,
+            start: {:cfclient_instance, :start_link, [project_1_config]},
+            type: :supervisor
+          },
+          %{
+            id: :project2_cfclient_instance,
+            start: {:cfclient_instance, :start_link, [project_2_config]},
+            type: :supervisor
+          },
+        ]
+        Supervisor.init(children, strategy: :one_for_one)
+      end
+    ```
+
+3. To use a specific SDK instance, you provide the instance name to the public function you are calling. For example use `bool_variation/4` instead of `bool_variation/3` - see the following code sample:
+
+    ```elixir
+    defmodule ElixirSample.EvaluationSample do
+      require Logger
+    
+      def getFlagLoop() do
+        target = %{
+          identifier: "harness",
+          name: "Harness",
+          anonymous: false,
+          attributes: %{}
+        }
+    
+        # Default instance
+        flag = "projectflag"
+        result = :cfclient.bool_variation(flag, target, false)
+    
+        Logger.info(
+          "SVariation for Flag #{flag} with Target #{inspect(target)} is: #{result}"
+        )
+    
+        # Instance 1
+        project_1_flag = "project1flag"
+        project_1_result = :cfclient.number_variation(:project1, project_1_flag, target, 3)
+    
+        Logger.info(
+          "SDK instance 1: Variation for Flag #{project_1_flag} with Target #{inspect(target)} is: #{project_1_result}"
+        )
+    
+        # Instance 2
+        project_2_flag = "project2flag"
+        project_2_result = :cfclient.bool_variation(:project2, project_2_flag, target, false)
+    
+        Logger.info(
+          "SDK instance 2: Variation for Flag #{project_2_flag} with Target #{inspect(target)} is: #{project_2_result}"
+        )
+    
+        Process.sleep(10000)
+        getFlagLoop()
+      end
+    end
+    ```
 
 ### Use the Relay Proxy
 
 When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/ff-using-flags/relay-proxy/) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. To do this:
 
-1. Import the URL helper functions, for example:
+Pass the new URLs in when initializing the SDK.
 
-  ```
-  from featureflags.config import with_base_url  
-  from featureflags.config import with_events_url
-  ```
-1. Pass the new URLs in when initializing the SDK, for example:
+Erlang exmaple:
+```erlang
+[{cfclient, [
+    {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+    {config, [
+        {config_url, "http://localhost:7000"},
+        {events_url, "http://localhost:7000"},
+    ]},
+    ]}]
+```
 
-  ```
-  client = CfClient(api_key,  
-                    with_base_url("https://config.feature-flags.uat.harness.io/api/1.0"),  
-                    with_events_url("https://event.feature-flags.uat.harness.io/api/1.0"))
-  ```
+Elixir exmaple:
+```elixir
+config :cfclient,
+       [api_key: System.get_env("FF_API_KEY_0"),
+       # For additional config you can pass in, see Erlang SDK docs: https://github.com/harness/ff-erlang-server-sdk/blob/main/docs/further_reading.md#further-reading
+       # we are just using the main config url here as an example.
+        config: [
+          config_url: "http://localhost:7000",
+          events_url: "http://localhost:7000",
+        ]]
+```
 
-## Sample code for an Erlang application
+## Sample Code (Erlang)
+Ensure you have configured your application by following the steps in [Initialize the SDK](#Initialize the SDK)
 
 ```
 -module(getting_started).
-%% API
--export([start/0]).
-
-
-start(SDKKey) ->
-  logger:set_primary_config(level, info),
-  case ffcfclient:start("sdkkey", #{
-      config_url => "https://config.ff.harness.io/api/1.0",
-      events_url => "https://events.ff.harness.io/api/1.0",
-      polling_interval => 60000,
-      analytics_enabled => true})
- of
-    ok ->
-      logger:info("Erlang SDK Successfully Started"),
-      get_flag_loop();
-    {not_ok, Error} ->
-      logger:error("Error when starting Erlang SDK: ~p~n", [Error]),
-      not_ok
-  end.
-
 
 get_flag_loop() ->
   Target = #{identifier => "Harness_Target_1",
@@ -241,13 +435,16 @@ get_flag_loop() ->
     attributes => #{email => <<"demo@harness.io">>}
   },
   FlagIdentifier = "harnessappdemodarkmode",
-  Result = ffcfclient:bool_variation(FlagIdentifier, Target, false),
+  Result = cfclient:bool_variation(FlagIdentifier, Target, false),
   logger:info("Varaion for Flag ~p witih Target ~p is: ~p~n", [FlagIdentifier, maps:get(identifier, Target), Result]),
   timer:sleep(10000),
   get_flag_loop().
 
 ```
 
+## Sample Code (Elixir)
+
+A sample Elixir appliction which uses the Erlang SDK can be found at: https://github.com/harness/ff-elixir-server-sample
 
 
 
