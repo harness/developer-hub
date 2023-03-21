@@ -256,13 +256,13 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 To help prevent memory leaks, we recommend closing the SDK when it’s not in use. 
 
-Erlang applications should run the following command:
+Erlang based applications should run the following command:
 
 ```
 cfclient:close().
 ```
 
-Elixir applications should run the following command:
+Elixir based applications should run the following command:
 
 ```
 :cfclient:close()
