@@ -164,7 +164,10 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
    App Autoscaler        2.0.295   enable-autoscaling            Enables autoscaling for the app
    App Autoscaler        2.0.295   update-autoscaling-limits     Updates autoscaling instance limits for the app
    Create-Service-Push   1.3.2     create-service-push, cspush   Works in the same manner as cf push, except that it will create services defined in a services-manifest.yml file first before performing a cf push.
-   ```  
+   ``` 
+:::note
+The CF Command script does not require `cf login`. Harness logs in using the credentials in the TAS Cloud Provider set up in the infrastructure definition for the workflow executing the CF Command.
+:::
 
 ## Create the deploy stage
 
@@ -449,7 +452,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
     3. Select **Apply Changes**.   
 7. Add a **Swap Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 
-   When **Swap Routes** is used in a deployment's **Swap Rollback**, the application that was active before the deployment is restored to its original state with the same instances and routes it had before the deployment.
+   When **Swap Routes** is used in a deployment's **Rollback Steps**, the application that was active before the deployment is restored to its original state with the same instances and routes it had before the deployment.
 
    The failed application  is deleted.
 8. Select **Save**.
@@ -512,6 +515,4 @@ In your project's **Deployments**, you can see the deployment listed.
 ## Next Steps
 
 See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
-
-
 
