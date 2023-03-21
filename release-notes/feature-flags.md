@@ -27,6 +27,8 @@ This release does not include early access features.
 
 #### Feature Flags Server
 
+The FF server has been upated to version 1.968.0 and includes the following updates:
+
 * When searching for a flag, the search filter sometimes failed if the flag description was null rather than empty. This issue has been fixed. (FFM-7213)
 * When using GitSync to save a flag with a floating point value, the feature flag service generated an error.
 The service now correctly handles floating point numbers saved from git. (FFM-7118)
