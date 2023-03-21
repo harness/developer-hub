@@ -89,7 +89,7 @@ You can use variable expressions in your values, such as `credentials: <+stage.v
 
 ### Private Action repos
 
-If you want to use an Action composite that is located in a private repository, you must add a `GITHUB_TOKEN` environment variable to the `env` **Settings**. The token must have pull permissions to the target repository.
+If you want to use an Action composite that is located in a private repository, you must add a `GITHUB_TOKEN` environment variable to the `env` **Settings**. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
 * Key: `env`
 * Value: `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`

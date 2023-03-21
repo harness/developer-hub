@@ -132,7 +132,9 @@ The `spec` parameters define which Action to use, the Action settings, and envir
 
 * `uses:` Specify the Action's repo, along with a branch or tag, such as `actions/stepup-go@v3`.
 * `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
-* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action. For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`.
+* `env:` If required by the Action, provide a mapping of environment variables to pass to the Action.
+
+For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
 :::tip
 
@@ -231,7 +233,7 @@ Refer to the GitHub Action's `with` usage specifications for details about speci
 
 Found under **Optional Configuration**. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
 
-For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable. The token must have pull permissions to the target repository. You can use a variable expression such as `<+secrets.getValue("[SECRET_NAME]")>` to call a token stored as a Harness secret.
+For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. You can use a variable expression such as `<+secrets.getValue("[SECRET_NAME]")>` to call a token stored as a Harness secret.
 
 Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
 
@@ -293,7 +295,7 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 
 ## Private Action repositories
 
-If you want to use an Action that is in a private repository, you must provide the `GITHUB_TOKEN` environment variable. The token must have pull permissions to the target repository.
+If you want to use an Action that is in a private repository, you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
 ```mdx-code-block
 import Tabs3 from '@theme/Tabs';
