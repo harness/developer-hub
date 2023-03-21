@@ -1,6 +1,6 @@
 ---
 title: Service Reliability Management
-date: 2023-03-15T10:00
+date: 2023-03-21T10:00
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -12,6 +12,15 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+
+## March 21, 2023
+
+### Fixed issues
+
+- The **Source Code** tab on the Automated Root Cause (ARC) screen shows blank during decompilation of source code instrumented with JaCoCo. This issue has been fixed. (CET-1175)
+  
+- The impacted services values were shown as "0 Service(s)" in the Event list. This issue has been fixed. (CET-1136)
 
 
 ## March 15, 2023, version 78712
@@ -32,7 +41,7 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-- Continuous Verification (CV) is fails due to timestamp format difference. (SRM-14167)  
+- Continuous Verification (CV) fails due to timestamp format difference. (SRM-14167)  
   
   This issue is fixed by updating the timestamp format in the API request.
 
