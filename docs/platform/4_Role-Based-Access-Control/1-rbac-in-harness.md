@@ -229,20 +229,63 @@ You can provide more control by using rules to restrict access based on a combin
 
 For more information, see [Attribute-Based Access Control](../4_Role-Based-Access-Control/2-attribute-based-access-control.md).
 
+## Set up access control for pipeline execution
+
+Let us look at an example to set up access control for pipeline execution.
+
+Pipelines are composite entities that can contain multiple stages like CI, CD, and STO. There can be many steps in each stage, such as build, test, push, and deploy. 
+
+A pipeline can reference other resources in it like:
+
+- GitHub connector: Check out the code for the build.
+
+- Artifact repository connector: Fetch the image for deployment.
+
+- Cloud Provider connector: Get access to the infrastructure where deployment will happen.
+
+- Secrets: Connect to various services.
+
+To execute a pipeline, the principals need the following permissions:
+
+- Execute permissions on the pipeline.
+
+- Access permissions for the resources used in the pipeline.
+
+### Create a principal, roles and resource groups
+
+For this example, let us create a user group as the principal.
+1. Create a [user group](../4_Role-Based-Access-Control/4-add-user-groups.md) named `SampleUG` in the account scope.
+2. Create a [custom role](../4_Role-Based-Access-Control/9-add-manage-roles.md) named `SampleRole` in the project scope.
+   Add the `Execute` permission for pipeline and `Access` permission for connectors in this role.
+3. Create a [custom resource group](../4_Role-Based-Access-Control/8-add-resource-groups.md) named `SampleResourceGroup` in the project scope.
+   Include pipelines and all the connectors your pipeline needs in this resource group.
+
+   The following table explains the ways in which you can grant execute permission for a pipeline:
+
+   |  Resource scope     |  Description     |
+   |  ---  |  ---  |
+   |  Grant execute permission on specific pipelines.    | Select specific pipelines in the resource group at the project level.<br/>**Note:** You cannot select specific pipelines when resource groups are created at the org or account scope. |
+   |  Grant execute permissions on all the pipelines in a specific project.    |   Select all the pipelines in the resource group created at the project level.    |
+   |  Grant execute permissions on all the pipelines in all the projects within an org.    |   Select scope of the resource group created at org level as `All` and select all the pipelines.    |
+   |  Grant execute permissions on all the pipelines in the entire account.    |  Select scope of the resource group created at account level as `All` and selecting all the pipelines.     |
+
+   The following table explains the ways in which you can grant access permission for the required resources: 
+
+   |  Resource scope     |   Description    |
+   |  ---  |  ---  |
+   |   Grant access permissions on specific resources.    |  Select specific resources in the resource group at the project, org or account scope.      |
+   |   Grant access permissions on all the resources in pipelines for a specific project.    |  Select all the resources used in the pipeline in the corresponding resource group created at the project scope.    |
+   |   Grant access permissions on all the resources used in the pipeline in the entire org.   |   Select scope of the resource group created at org scope as `All` and select all the resources used in the pipeline.   |
+   |   Grant access permissions on all the resources used in all the pipelines in the entire account.  |   Select scope of the resource group created at account level as `All` and select all the resources used in all the pipeline.    |
+
+4. Assign `SampleRole` and `SampleResourceGroup` to `SampleUG`.
+
+The members of `SampleUG` can now execute pipelines and access the connectors referenced in the pipeline.
 ## Blog post
 
 The following blog post walks you through user and role management in Harness:
 
 [User and Role Management in the Harness Software Delivery Platform](https://harness.io/blog/continuous-delivery/user-role-management/)
-
-## Video
-
-<details>
-<summary>
-RBAC setup video
-</summary>
-<docvideo src="https://www.youtube.com/embed/vIQfpRrES44?feature=oembed"/>
-</details>
 
 ## Next steps
 
