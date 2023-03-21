@@ -452,7 +452,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
     3. Select **Apply Changes**.   
 7. Add a **Swap Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 
-   When **Swap Routes** is used in a deployment's **Rollback Steps**, the application that was active before the deployment is restored to its original state with the same instances and routes it had before the deployment.
+   When **Swap Rollback** is used in a deployment's **Rollback Steps**, the application that was active before the deployment is restored to its original state with the same instances and routes it had before the deployment.
 
    The failed application  is deleted.
 8. Select **Save**.
