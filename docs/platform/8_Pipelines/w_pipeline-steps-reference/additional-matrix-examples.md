@@ -250,14 +250,14 @@ pipeline:
 ```
 ## Provide the axis value of matrix from triggers
 
-To provide the axis value from a trigger, define the axis values which has a comma separated list of string. 
+To provide the axis value from a trigger, define the axis values which has a comma separated list of strings. 
 
 
 ### Support matrix as runtime input
 
 To mark the full matrix as a runtime input, mark the matrix field as `<+input>`. You can then provide the axis and its values at runtime.
 
-For example, when you need to provide the combinations during runtime, mark the matrix as `<+input>` and then during execution, provide the corresponding values. This way, the executor can provide the values as needed.
+For example, if you need to input the combinations during runtime, mark the matrix as '+input>' and then provide the corresponding values during execution. The executor can then deliver the values as needed.
 
 Here is an example of the sample pipeline: 
 
@@ -320,7 +320,7 @@ pipeline:
 
 ## Support complex JSON as an axis in matrix
 
-If you're not sure what value an object should have in a pipeline, you can store it as a JSON string instead. This way, you can use the JSON functor to get a list from the object, in case it is the output from a previous step.
+If you are not sure about the value of an item in a pipeline, you can store it as a JSON string instead. This way, if an object is an output of the previous step, you can use the JSON functor to get a list from that object.
 The following example shows how to provide the custom object using JSON functor: 
 
 ```yaml
