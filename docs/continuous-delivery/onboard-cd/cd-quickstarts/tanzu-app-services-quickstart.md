@@ -22,7 +22,7 @@ You'll learn how to:
 
 ## Important notes
 
-* For TAS deployments, Harness supports these artifact sources: Artifactory, Nexus, Amazon S3, GCR, ECR, ACR, Google Artifact Registry, GitHub Package Registry, Custom registry, and any Docker Registry such as DockerHub. You connect Harness to these registries by using your registry account credentials.
+* For TAS deployments, Harness supports these artifact sources: Artifactory, Nexus, Amazon S3, Google Container Registry (GCR), Amazon Elastic Container Registry (ECR), Azure Container Registry (ACR), Google Artifact Registry, GitHub Package Registry, Custom registry, and any Docker Registry such as DockerHub. You connect Harness to these registries by using your registry account credentials.
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
 * Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cf-cli-on-your-harness-delegate) added to it. 
 
@@ -148,8 +148,6 @@ Currently, CF CLI v7 support is behind the feature flag `CF_CLI7`. Contact [Harn
    ```
    
 4. Apply the profile to the delegate profile and check the logs.
-   
-   ![](.static/../static/delegate-logs-cf-cli.png)
 
    The output for `cf --version` is `cf version 7.2.0+be4a5ce2b.2020-12-10`.
 
@@ -349,7 +347,7 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
 
 5. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    2. **Script** - Select or enter a script you want to execute in this step.
+    2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.
@@ -392,7 +390,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
 5. Add more **App Resize** steps to perform gradual deployment.
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    2. **Script** - Select or enter a script you want to execute in this step.
+    2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.
@@ -449,7 +447,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
     4. Select **Apply Changes**.
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    2. **Script** - Select or enter a script you want to execute in this step.
+    2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.   
@@ -483,7 +481,7 @@ Use this deployment method when you want to support both new and old deployments
     3.  **Additional Routes** - Add additional routes in addition to the routes added in the TAS manifest.
 4. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    2. **Script** - Select or enter a script you want to execute in this step.
+    2. **Script** - Select one of the following options.
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.   
