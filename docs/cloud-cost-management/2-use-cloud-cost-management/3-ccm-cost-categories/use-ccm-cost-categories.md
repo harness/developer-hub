@@ -134,7 +134,7 @@ If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and gr
 |Name | Total Cost|
 | --- | --- |
 | CB1 | 10 + shared cost (SB1 and SB2) |
-| C2B | 20 + shared cost (SB1 and SB2) |
+| CB2 | 20 + shared cost (SB1 and SB2) |
 | Unattributed | The sum of all the other cost |
 
 If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the cost category CC2, then the Perspective displays the following costs:
