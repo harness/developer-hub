@@ -14,19 +14,19 @@ For detailed information on using matrix in your pipeline, go to [Run a Stage or
 
 To define an axis as runtime input, mark it as `<+input>`.
 
-When you execute the pipeline, you are prompted to enter its value, which you can add as an array.
+When you run the pipeline, you are prompted to enter the axis value. You can add it as an array.
 
 #### Define matrix with one axis as a runtime input
 
 Let us look at an example.
 
-If you wish to run your test on different versions of Go, the list of different versions will be available at runtime. You can set the axis of the matrix as an input at runtime in this case as : 
+If you want to run your test on different versions of Go, the list of different versions will be available at runtime. You can set the axis of the matrix as an input at runtime in this case as : 
 
 ```
 GoVersion: <+input>
 ```
 
-Here is the YAML of a sample pipeline where the versions of Go are defined as runtime input: 
+The following YAML file shows a sample pipeline in which different versions of Go are defined as runtime inputs:
 
 ```yaml
 pipeline:
@@ -87,7 +87,7 @@ pipeline:
 
 #### Support a few axes of matrix as runtime inputs
 
-When you have a matrix with more than one axis, you can set a few of the axes as runtime inputs.
+If your matrix has more than one axis, you can set some of them as runtime input.
 
 For example, you want to deploy a matrix of different versions of different images, and for each combination of image and version, you need one deployment tagged `Harness`, and another tagged `Core`. 
 
