@@ -107,10 +107,6 @@ You can connect Harness to a TAS space by adding a TAS connector. Perform the fo
 
 After the delegate pods are created, you must edit your Harness delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins.
 
-:::note
-Currently, CF CLI v7 support is behind the feature flag `CF_CLI7`. Contact [Harness Support](mailto:support@harness.io) to enable CF CLI v7 support. 
-:::
-
 1. Open the `delegate.yaml` in a text editor.
 2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
    ```
@@ -342,7 +338,7 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Total Instances** - Set the number or percentage of running instances you want to keep.
-    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. By default, the application will downsize to the same number as the number of new application instances.
+    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     5. Select **Apply Changes**.
 
 5. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
@@ -385,7 +381,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Total Instances** - Set the number or percentage of running instances you want to keep.
-    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. By default, the application will downsize to the same number as the number of new application instances.
+    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     5. Select **Apply Changes**.
 5. Add more **App Resize** steps to perform gradual deployment.
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
@@ -409,7 +405,7 @@ The blue/green deployment deploys the applications using the temporary route fir
 
 Use this deployment method when you want to perform verification in a full production environment, or when you want zero downtime.
 
-For blue/green deployments, the **App Resize** step is always 100% because it does not change the number of instances as it did in the canary deployment. In blue/green, you are deploying the new application to the number of instances set in the **App Setup** step and keeping the old application at the same number of instances (100% count).
+For blue/green deployments, by default, the **App Resize** step is 100% because it does not change the number of instances as it did in the canary deployment. However, you can define the percentage in the **App Resize** step. In blue/green, you are deploying the new application to the number of instances set in the **App Setup** step and keeping the old application at the same number of instances. You 
 
 Once the deployment is successful, the **Swap Routes** configuration switches the networking routing, directing production traffic (green) to the new application and stage traffic (blue) to the old application.
 
@@ -438,7 +434,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Total Instances** - Set the number or percentage of running instances you want to keep.
-    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. By default, the application will downsize to the same number as the number of new application instances.
+    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     5. Select **Apply Changes**.
 5. Select the **Swap Routes** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
@@ -451,11 +447,9 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.   
-7. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
-   
-   The rollback step in the blue/green deployment contains two default steps, **Swap Routes** and **App Rollback**.
+7. Add a **Swap Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 
-   When **Swap Routes** is used in a deployment's **Rollback Steps**, the application that was active before the deployment is restored to its original state with the same instances and routes it had before the deployment.
+   When **Swap Routes** is used in a deployment's **Swap Rollback**, the application that was active before the deployment is restored to its original state with the same instances and routes it had before the deployment.
 
    The failed application  is deleted.
 8. Select **Save**.
@@ -485,7 +479,7 @@ Use this deployment method when you want to support both new and old deployments
         - **File Store** - Select this option to choose a script from **Project**, **Organization**, or **Account**.
         - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.   
-5. Add a **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
+5. Add a **Rolling Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 6. Select **Save**.
 
 Now the pipeline stage is complete and you can deploy.
