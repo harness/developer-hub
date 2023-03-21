@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-03-15T10:00
+date: 2023-03-23T10:00
 sidebar_position: 3
 ---
 
@@ -12,6 +12,22 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 23, 2023, version 788xx
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+* You can now use variable expressions for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused an error due to the field validation expecting one of the fixed value options. (CI-7071, ZD-40277)
+* When a CI pipeline fails due to an unsupported [Azure Repos connector](/docs/platform/connectors/connect-to-a-azure-repo/) configuration, the error message for this failure is more clear as to the cause of the failure. One reason this error can occur is because CI doesn't support Azure DevOps Server Repositories (also known as _on-premises Azure Repos_). CI pipelines fail at the **Initialize** step if the codebase connector is an Azure Repos connector that uses an on-premises Azure Repos project URL. (CI-6322)
+* When configuring a [code repo connector](/docs/category/code-repo-connectors), if the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL actually used to test the connection, rather than only the account URL. (CI-4398)
 
 ## March 15, 2023, version 78712
 
