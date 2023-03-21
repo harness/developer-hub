@@ -25,8 +25,8 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* You can now use variable expressions for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused an error due to the field validation expecting one of the fixed value options. (CI-7071, ZD-40277)
-* When a CI pipeline fails due to an unsupported [Azure Repos connector](/docs/platform/connectors/connect-to-a-azure-repo/) configuration, the error message for this failure is more clear as to the cause of the failure. One reason this error can occur is because CI doesn't support Azure DevOps Server Repositories (also known as _on-premises Azure Repos_). CI pipelines fail at the **Initialize** step if the codebase connector is an Azure Repos connector that uses an on-premises Azure Repos project URL. (CI-6322)
+* You can now use [variable expressions](/docs/platform/references/runtime-inputs/#expressions) for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused a field validation error. (CI-7071, ZD-40277)
+* If a CI pipeline fails at the **Initialize** step due to an [Azure Repos connector](/docs/platform/connectors/connect-to-a-azure-repo/) having an on-premises **Azure Repos Project URL**, the error message for this failure is more clear as to the cause of the failure. This failure occurs because CI doesn't support Azure DevOps Server Repositories (also known as _on-premises Azure Repos_). (CI-6322)
 * When configuring a [code repo connector](/docs/category/code-repo-connectors), if the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL actually used to test the connection, rather than only the account URL. (CI-4398)
 
 ## March 15, 2023, version 78712
