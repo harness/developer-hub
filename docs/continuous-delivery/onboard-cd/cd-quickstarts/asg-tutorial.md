@@ -45,9 +45,13 @@ Here's a summary of how Harness deploys new ASG versions:
    1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region.
 2. Subsequent deployments:
    1. Harness creates a new version of the launch template.
-   2. Harness uses the new version to update the ASG. For example, if you increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity.
-   3. Instance refresh is triggered (a rolling replacement of all or some instances in the new Auto Scaling groups version).
+   2. Harness uses the new version of the launch template to update the ASG. For example, if you increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity.
+   3. Instance refresh is triggered (a rolling replacement of all or some instances in the ASG).
 
+Notes:
+- ASG creation differs for rolling and blue green deployments:
+  - For rolling, Harness updates the *existing* ASG with the new configuration.
+  - For blue green, Harness creates a *new* ASG with a new revision suffix, like `asg-demo__2`. Once there are two ASGs (`asg-demo__1` and `asg-demo__2`) Harness alternately updates these *existing* ASGs with the new configuration on each successive deployment. 
 </details>
 
 ## AWS policy requirements
@@ -132,7 +136,7 @@ The Harness ASG service contains the following:
 - Scheduled update group action (optional).
 - The AMI image to use for the ASG.
 
-Harness supports standard ASG JSON and YAML formatted files. For more information, go to [Get started with Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/get-started-with-ec2-auto-scaling.html) from AWS.
+Harness supports standard ASG JSON formatted files. For more information, go to [Get started with Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/get-started-with-ec2-auto-scaling.html) from AWS.
 
 You can use remote files stored in a Git repo or the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
 
@@ -1045,7 +1049,9 @@ Rolling Deployment Finished Successfully
 
 If deployment failure occurs, the stage or step [failure strategy](../../../platform/Pipelines/8_Pipelines/../../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
 
-During rollback, Harness deletes the new state and returns state to the previous ASG version.
+During rollback of the first deployment, Harness deletes the ASG.
+
+During rollback of subsequent deployments, Harness reverts the ASG to the previous state of ASG before deployment.
 
 Harness stores configurations of the ASG you are deploying twice: 
 - First storage: Harness stores the ASG configuration at the start of deployment for rollback *during deployment*.
@@ -1173,6 +1179,7 @@ An ASG Blue Green deployment uses two steps:
 
 1. **ASG Blue Green Deploy step:**
    1. You specify the production and stage listener ports and rules to use.
+   2. The new ASG is deployed to the stage target group.
 2. **ASG Blue Green Swap Services step:**
    1. Harness modifies the ELB prod listener to forward requests to target groups associated with each new ASG version. 
    2. Harness swaps all traffic from stage to production listeners and ports. 
@@ -1219,8 +1226,6 @@ In addition to the requirements of the Harness ASG service and environment, an A
 - An Application Load Balancer (ALB), with listeners for both your target groups' ports.
 
 </details>
-
-The first three Blue Green deployments are different because the stage and prod ASGs are not both created until the second deployment. All subsequent deployments have both ASGs and proceed the same.
 
 Let's take a look at the first two deployments.
 
