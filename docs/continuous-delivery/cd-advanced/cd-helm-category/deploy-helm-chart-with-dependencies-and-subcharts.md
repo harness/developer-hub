@@ -71,7 +71,7 @@ service:
 ```
 ## Pipeline execution of a Helm chart with subcharts
 
-During pipeline execution, Harness fetches the subcharts and fetch the dependencies for the deployment based on the values in the service YAML. 
+During pipeline execution, Harness fetches the subcharts and dependencies for the deployment based on the values in the service YAML. 
 
 You can see the subchart and the list of files fetched in the fetch section of the pipeline execution log.
 
