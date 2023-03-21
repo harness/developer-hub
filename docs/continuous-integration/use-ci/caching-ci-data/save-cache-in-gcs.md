@@ -90,7 +90,7 @@ To configure the **Save Cache to GCS** step in the YAML editor, you must specify
                   spec:
                     connectorRef: account.gcp
                     bucket: ci_cache
-                    key: gcp-{ { checksum package.json} }
+                    key: gcp-{{ checksum "package.json" }}
                     sourcePaths:
                       - /harness/node_modules
                     archiveFormat: Tar
@@ -111,7 +111,7 @@ To configure the **Restore Cache from GCS** step in the YAML editor, you must sp
                   spec:
                     connectorRef: account.gcp
                     bucket: ci_cache
-                    key: gcp-{ { checksum package.json } }
+                    key: gcp-{{ checksum "package.json" }}
                     archiveFormat: Tar
 ```
 
@@ -139,7 +139,7 @@ This YAML example includes one stage. At the beginning of the stage, the cache i
                   spec:
                     connectorRef: account.gcp
                     bucket: ci_cache
-                    key: gcp-{ { checksum package.json } }
+                    key: gcp-{{ checksum "package.json" }}
                     archiveFormat: Tar
  ...
               - step:
@@ -149,7 +149,7 @@ This YAML example includes one stage. At the beginning of the stage, the cache i
                   spec:
                     connectorRef: account.gcp
                     bucket: ci_cache
-                    key: gcp-{ { checksum package.json} }
+                    key: gcp-{{ checksum "package.json" }}
                     sourcePaths:
                       - /harness/node_modules
                     archiveFormat: Tar
