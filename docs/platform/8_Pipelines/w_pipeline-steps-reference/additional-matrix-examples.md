@@ -176,7 +176,7 @@ The sample YAML does not have Tags because they are fixed input.
 
 
 #### Support axis in matrix as an expression
-  To support axis as an expression, define a string variable `example` which has a comma separated list of string. 
+  To support axis as an expression, define a string variable `example` which has a comma-separated list of strings. 
   You can then use the following expression in the axis for matrix: 
   
   ```
