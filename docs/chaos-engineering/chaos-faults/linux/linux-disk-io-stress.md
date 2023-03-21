@@ -16,46 +16,44 @@ Linux Disk IO Stress fault stresses the disk of the target Linux machines over I
 :::
 
 ## Fault tunables
-  <h3>Mandatory fields</h3>
-    <h3>Optional fields</h3>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-      <tr>
-        <td> fileSystemUtilisationBytes </td>
-        <td> File size to be consumed for the disk IO operations (in bytes). </td>
-        <td> Mutually exclusive to <code>fileSystemUtilisationPercentage</code>. </td>
-      </tr>
-       <tr>
-        <td> fileSystemUtilisationPercentage </td>
-        <td> File size to be consumed for the disk IO operations (in percentage of the total available disk size) </td>
-        <td> Mutually exclusive to <code>fileSystemUtilisationBytes</code>. Defaults to 10%. </td>
-      </tr>
-      <tr>
-        <td> workers </td>
-        <td> Number of worker processes to start. </td>
-        <td> Defaults to 1. </td>
-      </tr>
-      <tr>
-        <td> volumeMountPath </td>
-        <td> Volume mount path to be used for the disk IO operations. </td>
-        <td> Defaults to the user HOME directory. </td>
-      </tr>
-      <tr>
-        <td> duration </td>
-        <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30. </td>
-      </tr>
-      <tr>
-        <td> rampTime </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Defaults to 0. </td>
-      </tr>
-    </table>
-
+<h3>Optional fields</h3>
+<table>
+  <tr>
+    <th> Variables </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> fileSystemUtilisationBytes </td>
+    <td> File size to be consumed for the disk IO operations (in bytes). </td>
+    <td> Mutually exclusive to <code>fileSystemUtilisationPercentage</code>. </td>
+  </tr>
+   <tr>
+    <td> fileSystemUtilisationPercentage </td>
+    <td> File size to be consumed for the disk IO operations (in percentage of the total available disk size). </td>
+    <td> Mutually exclusive to <code>fileSystemUtilisationBytes</code>. Defaults to 10%. </td>
+  </tr>
+  <tr>
+    <td> workers </td>
+    <td> Number of worker processes to start. </td>
+    <td> Defaults to 1. </td>
+  </tr>
+  <tr>
+    <td> volumeMountPath </td>
+    <td> Volume mount path to be used for the disk IO operations. </td>
+    <td> Defaults to the user HOME directory. </td>
+  </tr>
+  <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
+    <td> Defaults to 30. </td>
+  </tr>
+  <tr>
+    <td> rampTime </td>
+    <td> Period to wait before and after injecting chaos (in seconds). </td>
+    <td> Defaults to 0. </td>
+  </tr>
+</table>
 
 ### Workers
 

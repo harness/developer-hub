@@ -15,35 +15,34 @@ Linux CPU Stress fault stresses the CPU of the target Linux machines for a certa
 :::
 
 ## Fault tunables
-  <h3>Mandatory fields</h3>
-    <h3>Optional fields</h3>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-       <tr>
-        <td> load </td>
-        <td> Percentage load to be exerted on a single CPU core. </td>
-        <td> Defaults to 100. </td>
-      </tr>
-      <tr>
-        <td> workers </td>
-        <td> Number of worker processes to start. Corresponds to the number of CPU cores to consume. </td>
-        <td> Defaults to 1. </td>
-      </tr>
-      <tr>
-        <td> duration </td>
-        <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30. </td>
-      </tr>
-      <tr>
-        <td> rampTime </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Defaults to 0. </td>
-      </tr>
-    </table>
+<h3>Optional fields</h3>
+<table>
+  <tr>
+    <th> Variables </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> load </td>
+    <td> Percentage load to be exerted on a single CPU core. </td>
+    <td> Defaults to 100. </td>
+  </tr>
+  <tr>
+    <td> workers </td>
+    <td> Number of worker processes to start. Corresponds to the number of CPU cores to consume. </td>
+    <td> Defaults to 1. </td>
+  </tr>
+  <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
+    <td> Defaults to 30. </td>
+  </tr>
+  <tr>
+    <td> rampTime </td>
+    <td> Period to wait before and after injecting chaos (in seconds). </td>
+    <td> Defaults to 0. </td>
+  </tr>
+</table>
 
 
 ### Workers
