@@ -4,7 +4,7 @@ description: This topic describes how to use the Harness Feature Flags Erlang SD
 sidebar_position: 15
 ---
 
-This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir application. 
+This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir based application. 
 
 For getting started quickly:
 
