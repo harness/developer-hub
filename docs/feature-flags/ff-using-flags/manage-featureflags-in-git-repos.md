@@ -29,7 +29,7 @@ import git_8 from './static/8-git-off.png'
 Using Harness Git Experience with Feature Flags allows you to manage your Flags from a .yaml file in your Git repository. When you enable Git Experience, changes you make to Flags on the Harness Platform are committed on Git, and commits you make on Git are reflected in the Harness Platform. This means you can work on Flags entirely from Git, the Harness Platform, or both, and your changes will be synchronized in both places. 
 
 :::note
- In the unlikely circumstance that Harness and Git are connected but out of sync, your Git file is the source of truth. Changes in the Harness Platform don’t take effect until you commit them to Git. 
+ In the unlikely circumstance that Harness and Git are connected but out of sync, your Git file is the source of truth. Changes in the Harness Platform don’t take effect until chnages will not be synced from remote file.
 :::
 
 ## Before you begin
@@ -37,13 +37,13 @@ Using Harness Git Experience with Feature Flags allows you to manage your Flags 
 You must set up Git Experience in your Project before you can use it with Feature Flags.To do this:
 
 <!-- TBD DOC-2410 * [ Add a Source Code Manager to your account. ](https://docs.harness.io/article/p92awqts2x-add-source-code-managers) -->
-* Follow the steps in [Configure GitSync in Harness](../../platform/10_Git-Experience/git-experience-overview.md) to enable Git Experience and create a Git repository that contains a folder called `.harness`. Harness will automatically create a `flags.yaml` file within this folder and this is where you manage your Feature Flags.
+* Follow the steps in [Configure GitSync in Harness](../../platform/10_Git-Experience/git-experience-overview.md)  create a Git repository that contains at least one branch. Then pick up the connector, repository and destination destinaton file where you manage your Feature Flags. Note that currently branch setup cannot be reconfigured after initial setup.
 
 Also ensure you read [How Git Experience works with Feature Flags](#how-git-experience-works-with-feature-flags). 
 
 ## How Git Experience works with Feature Flags
 
-When you set up Git Experience and enable it in your Feature Flag Project, Harness automatically creates a `flags.yaml` file in the `.harness` folder you created during the set up. All your Flag, Environment, and Target information is stored in this file. 
+When you set up Git Experience and enable it in your Feature Flag Project, Harness automatically creates file specified by the user during the setup phase. All your Flag, Environment, and Target information is stored in this file. 
 
 For example, the following sample shows:
 
@@ -91,16 +91,24 @@ orgIdentifier: Docs
 </details> 
 The synchronization between the Harness Platform and the flags.yaml file works in both directions:
 
-* When you update the Harness Platform, the changes are committed to Git.
-* When you commit changes to Git, the Harness Platform is updated.
+* When you update the Harness Platform, the changes are committed to Git. Changes should be should be synced to repote repo with immediate effect.
+* When you commit changes to Git, the Harness Platform is periodically updated. The chances will be synced up to 5 min after commit is made.
 
-In the unlikely circumstance that Harness and Git are connected but out of sync, your Git file is the source of truth. Changes in the Harness Platform don’t take effect until you commit them to Git. 
 
-If you don’t see the changes you made in Git reflected on the Harness Platform, refresh the page.
+If you don’t see the changes you made in Git reflected on the Harness Platformafter approxymately 5 min, refresh the page.
+
+:::caution
+ Syncing changes between remote file and Harness Platform can take up to 5 mins. During this window the changes are already commited to the remote file but not yet pulled and synced by Harness Platform. Any changes made to the to the Harness Platform within that window will trigger remote file update which will overwrite the content of the remote file.
+:::
 
 ## Turn syncing with Git on or off
 
 The Git Experience icons are displayed on many pages, you can turn it on or off from any page where it is displayed.
+
+:::caution
+ Turing sync on will trigger immediate attempt to sync Harness platform content to the remote file.
+ All the changes made to the remote file while sync was disbled will be overwritten which will result in losing content or configuration not yet synced to the Platform.
+:::
 
 After you have enabled Git Experience and understand how it works with Harness Feature Flags, you can turn the synchronization between the Harness Platform and Git on or off by completing the following: 
 
