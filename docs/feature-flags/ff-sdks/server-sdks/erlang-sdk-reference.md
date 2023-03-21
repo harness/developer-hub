@@ -4,9 +4,12 @@ description: This topic describes how to use the Harness Feature Flags Erlang SD
 sidebar_position: 15
 ---
 
-This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang application.
+This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir application. 
 
-For getting started quickly, you can use our sample code from the Erlang SDK [README](https://github.com/harness/ff-erlang-server-sdk#readme).
+For getting started quickly:
+
+1. If your application is Erlang based you can use the provided [sample code](#Sample Code for Erlang Applications).
+2. If your application is ELixir based you can clone our sample Elixir application from the following GitHub repository: https://github.com/harness/ff-elixir-server-sample
 
 ## Before you begin
 
@@ -23,16 +26,22 @@ The current version of this SDK is **1.0.0**.
 
 ## Requirements
 
-To use this SDK, make sure you:
+To use this SDK for Erlang applications, make sure you've:
 
-* Install Erlang/OTP 24 or later
-* Install Rebar3
-* Download the SDK from our GitHub repository
-* Create an Erlang application, or clone our sample application.
-* Create a Feature Flag on the Harness Platform. If you are following along with the SDK README sample code, make sure your flag is called harnessappdemodarkmode.
-* Create an SDK key and make a copy of it
+* Installed Erlang/OTP 24 or later
+* Installed Rebar3
 
-### Install the SDK (Erlang)
+To use this SDK for Elixir applications, make sure you've:
+
+* Installed Elixir version 1.11.4 or later
+
+To follow along with our test code sample, make sure you’ve:
+
+* Created a Feature Flag on the Harness Platform called harnessappdemodarkmode
+* Created a server SDK key and made a copy of it
+
+
+### Install the SDK for Erlang based applications
 
 Add the SDK as a dependency to your `rebar.config` file:
 
@@ -47,7 +56,7 @@ Add the dependency to your project's `app.src`.
 },
 ```
 
-### Install the SDK (Elixir)
+### Install the SDK for Elixir based applications
 
 Add the SDK as a dependency to `mix.exs` `deps()`:
 
@@ -67,12 +76,12 @@ To initialize the Erlang SDK:
 1. (Optional) Configure the SDK.
 1. Complete the initialization with the SDK using the Server SDK Key, Target, and Configuration parameters you set.
 
-### Add the Server SDK Key (Erlang)
+### Add the Server SDK Key for Erlang based applications
 
 To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment. 
 Input the Server SDK Key into the `api_key` tuple, for example:
 
-Provide your API key in `sys.config` using an environment variable:
+Provide your API key in `config/sys.config` using an environment variable:
 
 ```erlang
 [
@@ -92,12 +101,12 @@ Or you may provide the API key directly if required:
 ].
 ```
 
-### Add the Server SDK Key (Elixir)
+### Add the Server SDK Key for Elixir based applications
 
 To connect to the correct Environment that you set up on the Harness Platform, add the Server SDK Key from that Environment.
 Input the Server SDK Key into the `api_key` key, for example:
 
-Provide your API key in `config/config.exs` using an environment variable: :
+Provide your API key in `config/config.exs` using an environment variable:
 
 ```elixir
 config :cfclient,
@@ -111,7 +120,7 @@ config :cfclient,
   api_key: "YOUR_API_KEY"
 ```
 
-### Add a Target (Erlang and Elixir)
+### Add a Target for Erlang and Elixir based applications
 
 <details>
 <summary>What is a Target?</summary> 
@@ -122,17 +131,17 @@ For more information about Targets, go to [Target Users With Flags](/docs/featur
 
 To create a Target, create a map and add the following keys:
 
-| Parameter      | Description                                                                                                                                                                                                                                                                                                                                               | Required? | Example                                                                                                                                                                                                                                                                                                      |
-|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Identifier** | Unique ID for the Target<br /><br />**Key:** atom<br />**Value:** bitstring / atom / string                                                                                                                                                                                                                                                               | Required  | `identifier => <<"HT_1">>`                                                                                                                                                                                                                                                                                   |
-| **Name**       | Name for this Target. This does not have to be unique. **Note:** If you don’t provide a value, Harness uses the ID as the name. <br/> Value: bitstring / atom / string                                                                                                                                                                                    | Optional  | `name => <<"Harness_Target_1">>`                                                                                                                                                                                                                                                                             |
-| **Attributes** | Additional data you can store for a Target, such as email addresses or location.<br /><br />**Key:** atom<br />**Value:** bitstring / atom / list of bitstrings or atom * lists of strings not supported * <br/> See [Erlang SDK GitHub Repository](https://github.com/harness/ff-erlang-server-sdk#targets-with-custom-attributes) for more information. | Optional  | `%% Bitstring`<br />`attributes => #{beta => <<"beta_group_1">>}`<br /><br />`%% Atom `<br />`attributes => #{alpha => alpha_group_1}`<br/><br/>`%% Atom in Elixir` <br/>`attributes => #{alpha => :alpha_group_1}`<br /><br />`%% List`<br />`attributes => #{beta => [<<"beta_group_1">>, beta_group_2}]}` |
+| Parameter      | Description                                                                                                                                                                                                                                                                                                                                               | Required? | Example                                                                                                                                                                                                                                                                                                             |
+|----------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Identifier** | Unique ID for the Target<br /><br />**Key:** atom<br />**Value:** bitstring / atom / string                                                                                                                                                                                                                                                               | Required  | `identifier => <<"HT_1">>`                                                                                                                                                                                                                                                                                          |
+| **Name**       | Name for this Target. This does not have to be unique. **Note:** If you don’t provide a value, Harness uses the ID as the name. <br/> Value: bitstring / atom / string                                                                                                                                                                                    | Optional  | `name => <<"Harness_Target_1">>`                                                                                                                                                                                                                                                                                    |
+| **Attributes** | Additional data you can store for a Target, such as email addresses or location.<br /><br />**Key:** atom<br />**Value:** bitstring / atom / list of bitstrings or atom * lists of strings not supported * <br/> See [Erlang SDK GitHub Repository](https://github.com/harness/ff-erlang-server-sdk#targets-with-custom-attributes) for more information. | Optional  | `%% Bitstring`<br />`attributes => #{beta => <<"beta_group_1">>}`<br /><br />`%% Atom `<br />`attributes => #{alpha => alpha_group_1}`<br/><br/>`%% Atom in Elixir syntax` <br/>`attributes => #{alpha => :alpha_group_1}`<br /><br />`%% List`<br />`attributes => #{beta => [<<"beta_group_1">>, beta_group_2}]}` |
 
-### Configure the SDK
+### Configure the SDK for Erlang and Elixir based applications
 
 When initializing the SDK, you also have the option of providing alternative configuration. 
 
-Erlang applications should be configued using the `sys.config` file, for example:
+Erlang applications should be configued using the `config/sys.config` file, for example:
 
 ```erlang
 [{cfclient, [
@@ -185,12 +194,14 @@ There are different methods for the different Variation types and for each metho
 * The Target object you want to evaluate against
 * The default Variation
 
-Here are examples of evaluating different types of Variations:
+Here are examples of evaluating different types of Variations for Erlang and Elixir based applications:
+
+### Examples for Erlang based applications
 
 * **Boolean Variation**
 
   ```
-  cfclient:bool_variation(FlagIdentifier, Target, false)
+  cfclient:bool_variation(FlagIdentifier, Target, false).
   ```
 
 * **Number Variation:** 
@@ -211,16 +222,50 @@ Here are examples of evaluating different types of Variations:
   cfclient:json_variation(FlagIdentifier, Target, #{dark_mode => <<”false”>>}).
   ```
 
+### Examples for Elixir based applications
+
+* **Boolean Variation**
+
+  ```
+  :cfclient:bool_variation(FlagIdentifier, Target, false)
+  ```
+
+* **Number Variation:**
+
+  ```
+  :cfclient:number_variation(FlagIdentifier, Target, -1)
+  ```
+
+* **String Variation:**
+
+  ```
+  :cfclient:string_variation(FlagIdentifier, Target, "default_string")
+  ```
+
+* **JSON Variation:**
+
+  ```
+  :cfclient:json_variation(FlagIdentifier, Target, #{dark_mode => <<”false”>>})
+  ```
+
 ## Test your app is connected Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. The SDK will poll for changes by default every 60 seconds, check your app after this time to verify if the Flag Variation displayed is updated with the Variation you toggled. 
 
 ## Close the SDK
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
+To help prevent memory leaks, we recommend closing the SDK when it’s not in use. 
+
+Erlang applications should run the following command:
 
 ```
 cfclient:close().
+```
+
+Elixir applications should run the following command:
+
+```
+:cfclient:close()
 ```
 
 ## Additional Options
@@ -231,7 +276,7 @@ application need to use specific projects, you can start up additional client in
 
 #### Erlang Project Config
  
-1. Create project configurations for each new instance you would like to start in your `sys.config` file:
+1. Create project configurations for each new instance you would like to start in your `config/sys.config` file:
 
     ```erlang
     [
@@ -421,7 +466,7 @@ config :cfclient,
         ]]
 ```
 
-## Sample Code (Erlang)
+## Sample Code for Erlang Applications
 Ensure you have configured your application by following the steps in [Initialize the SDK](#Initialize the SDK)
 
 ```
@@ -442,7 +487,7 @@ get_flag_loop() ->
 
 ```
 
-## Sample Code (Elixir)
+## Sample Code for Elixir Applications
 
 A sample Elixir appliction which uses the Erlang SDK can be found at: https://github.com/harness/ff-elixir-server-sample
 
