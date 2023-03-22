@@ -18,7 +18,6 @@ This topic explains how you can use the **Save Cache to GCS** and **Restore Cach
 :::caution
 
 You can't share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages.
-<!-- should this just say "You cant store access credentials or other [text secrets] in caches"? -->
 
 :::
 
@@ -74,12 +73,12 @@ import TabItem from '@theme/TabItem';
   <TabItem value="YAML" label="YAML editor">
 ```
 
-To configure the **Save Cache to GCS** step in the YAML editor, you must specify `type: SaveCacheGCS`. In `step: spec:`, specify the following:
+To configure the **Save Cache to GCS** step in YAML, you must specify `type: SaveCacheGCS`. In `step: spec:`, specify the following:
 
-* `connectorRef` The GCP connector.
-* `bucket`: The GCS cache bucket.
+* `connectorRef` The GCP connector ID.
+* `bucket`: The GCS cache bucket name.
 * `key`: The GCS cache key to identify the cache.
-* `sourcePaths`: Files and folders to cache. specify each file or folder separately.
+* `sourcePaths`: Files and folders to cache. Specify each file or folder separately.
 * `archiveFormat`: The archive format. The default format is `Tar`.
 
 ```yaml
@@ -98,8 +97,8 @@ To configure the **Save Cache to GCS** step in the YAML editor, you must specify
 
 To configure the **Restore Cache from GCS** step in the YAML editor, you must specify `type: RestoreCacheGCS`. In `step: spec:`, specify the following:
 
-* `connectorRef` The GCP connector.
-* `bucket`: The GCS cache bucket. This must correspond with the Save Cache to GCS `bucket`.
+* `connectorRef` The GCP connector ID.
+* `bucket`: The GCS cache bucket name. This must correspond with the Save Cache to GCS `bucket`.
 * `key`: The GCS cache key to identify the cache. This must correspond with the Save Cache to GCS `key`.
 * `archiveFormat`: The archive format, corresponding with the Save Cache to GCS `archiveFormat`.
 
