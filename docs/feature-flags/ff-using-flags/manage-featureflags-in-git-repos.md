@@ -19,7 +19,8 @@ import git_4 from './static/5-manage-featureflags-in-git-repos-07.png'
 import git_5 from './static/5-manage-featureflags-in-git-repos-08.png' 
 import git_6 from './static/4-git-blue-circle.png'  
 import git_7 from './static/5-manage-featureflags-in-git-repos-09.png' 
-import git_8 from './static/8-git-off.png' 
+import git_8 from './static/8-git-off.png'
+import git_ex1 from './static/gitex-setup-featureflags-01.png 
 ```
 
 :::caution
@@ -37,7 +38,14 @@ Using Harness Git Experience with Feature Flags allows you to manage your Flags 
 You must set up Git Experience in your Project before you can use it with Feature Flags.To do this:
 
 <!-- TBD DOC-2410 * [ Add a Source Code Manager to your account. ](https://docs.harness.io/article/p92awqts2x-add-source-code-managers) -->
-* Follow the steps in [Configure GitSync in Harness](../../platform/10_Git-Experience/git-experience-overview.md)  create a Git repository that contains at least one branch. Then pick up the connector, repository and destination destinaton file where you manage your Feature Flags. Note that currently branch setup cannot be reconfigured after initial setup.
+* Follow the steps in [Configure GitSync in Harness](../../platform/10_Git-Experience/git-experience-overview.md)  create a Git repository that contains at least one branch. Then pick up or create new conector the connector. Note that currently branch setup cannot be reconfigured after initial setup.
+
+* To set up gitEx for feature flag navigate to the top of the flag page and click `Setup up` 
+```mdx-code-block
+<img src={git_ex1} alt="Setup button for gitEx on featureflag page." height="500" width="300" />
+```
+* 
+
 
 Also ensure you read [How Git Experience works with Feature Flags](#how-git-experience-works-with-feature-flags). 
 
