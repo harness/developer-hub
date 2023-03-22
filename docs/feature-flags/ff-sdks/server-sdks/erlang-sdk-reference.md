@@ -310,8 +310,8 @@ specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-fla
           %% The API key for the Harness project you want to use with this SDK instance.
           {api_key, {environment_variable, "PROJECT_1_API_KEY"}}]
         }
-      ]
-    },
+      ]},
+      
       {harness_project_2_config, [
         {cfclient, [
           {config, [
@@ -319,26 +319,36 @@ specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-fla
           ]},
           {api_key, {environment_variable, "PROJECT_2_API_KEY"}}]
         }
-      ]].
+      ]},
+    
+      {cfclient, [
+        {api_key, {environment_variable, "FF_API_KEY"}},
+        {config, [
+          {config_url, "https://config.ff.harness.io/api/1.0"},
+          {events_url, "https://config.ff.harness.io/api/1.0"}
+        ]},
+        {analytics_push_interval, 60000}
+      ]
+    }].
     ```
    If you don't require the default instance to be started up, you can do:
 
-```erlang
-  
-  % ... additional project config
-  
-  {cfclient, [
-    {start_default_instance, false},
-    %% The remaining tuples will be ignored, so you can choose to include or omit them.
-    {api_key, {environment_variable, "FF_API_KEY"}},
-    {config, [
-      {config_url, "https://config.ff.harness.io/api/1.0"},
-      {events_url, "https://config.ff.harness.io/api/1.0"}
-    ]},
-    {analytics_push_interval, 60000}
-  ]
-},
-```
+    ```erlang
+      
+      % ... additional project config
+      
+      {cfclient, [
+        {start_default_instance, false},
+        %% The remaining tuples will be ignored, so you can choose to include or omit them.
+        {api_key, {environment_variable, "FF_API_KEY"}},
+        {config, [
+          {config_url, "https://config.ff.harness.io/api/1.0"},
+          {events_url, "https://config.ff.harness.io/api/1.0"}
+        ]},
+        {analytics_push_interval, 60000}
+      ]
+    },
+    ```
 
 2. In your application supervisor, e.g. `src/myapp_sup.erl`, start up a `cfclient_instance`
    for each of the project configurations you provided above:
@@ -465,6 +475,17 @@ specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-fla
     
         Logger.info(
           "SDK instance 2: Variation for Flag #{project_2_flag} with Target #{inspect(target)} is: #{project_2_result}"
+        )
+    
+        Process.sleep(10000)
+        getFlagLoop()
+   
+        # Default instance
+        default_project_flag = "defaultflag"
+        default_project_result = :cfclient.bool_variation(default_project_flag, target, false)
+    
+        Logger.info(
+          "Default instance: Variation for Flag #{default_project_flag} with Target #{inspect(target)} is: #{default_project_result}"
         )
     
         Process.sleep(10000)
