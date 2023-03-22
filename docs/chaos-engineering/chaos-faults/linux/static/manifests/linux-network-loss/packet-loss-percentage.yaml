@@ -1,0 +1,10 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-network-loss
+  labels:
+    name: network-loss
+spec:
+  networkChaos/inputs:
+    packetLossPercentage: '50'
+    networkInterface: "eth0"
