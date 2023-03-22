@@ -116,31 +116,31 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
 3. Replace `value: ""` with the following script to install CF CLI, `autoscaler`, and `Create-Service-Push` plugins.
    
    ```
-   - name: INIT_SCRIPT  
-   value: |
-       apt-get install wget
-       wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
-       echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
-       apt-get update
-       apt-get install cf7-cli
-   
-       # autoscaler plugin
-       # download and install pivnet
-       wget -O pivnet github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
-       pivnet login --api-token=<replace with api token>
+- name: INIT_SCRIPT  
+  value: |
+    dnf install -y wget
+    wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | rpm --import -
+    echo -e "[cloudfoundry-cli]\nname=cloudfoundry-cli\nbaseurl=https://packages.cloudfoundry.org/rpm/centos/7/\$basearch\nenabled=1\ngpgcheck=1" | tee /etc/yum.repos.d/cloudfoundry-cli.repo
+    dnf makecache
+    dnf install -y cf-cli
 
-       # download and install autoscaler plugin by pivnet
-       pivnet download-product-files --product-slug='pcf-app-autoscaler' --release-version='2.0.295' --product-file-id=912441
-       cf install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295
+    # autoscaler plugin
+    # download and install pivnet
+    wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
+    pivnet login --api-token=<replace with api token>
 
-       # install Create-Service-Push plugin from community
-       cf install-plugin -r CF-Community "Create-Service-Push"
+    # download and install autoscaler plugin by pivnet
+    pivnet download-product-files --product-slug='pcf-app-autoscaler' --release-version='2.0.295' --product-file-id=912441
+    cf install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295
 
-       # verify cf version
-       cf --version
+    # install Create-Service-Push plugin from community
+    cf install-plugin -r CF-Community "Create-Service-Push"
 
-       # verify plugins
-       cf plugins
+    # verify cf version
+    cf --version
+
+    # verify plugins
+    cf plugins
    ```
    
 4. Apply the profile to the delegate profile and check the logs.
@@ -187,7 +187,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
    
    ![](./static/deploy-tas-service.png) 
 
-## Create a Harness service
+## Create the Harness TAS service
 
 Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 
@@ -289,7 +289,7 @@ Harness services represent your microservices or applications. You can add the s
     5.  Select **Value** to enter a specific artifact name. You can also select **Regex** and enter a tag regex to filter the artifact.
 11. Select **Submit**.
 
-## Define your target environment
+## Define the TAS target environment
 
 The target space is your TAS space. This is where you will deploy your application.
 
@@ -306,7 +306,7 @@ The target space is your TAS space. This is where you will deploy your applicati
 
 11. Select **Save**.
 
-## Add a deployment step
+## TAS execution strategies
 
 Now you can select the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) for this stage of the pipeline.
 
@@ -403,7 +403,7 @@ Now the pipeline stage is complete and can be deployed.
   </TabItem>
   <TabItem value="Blue/Green" label="Blue/Green">
 ```
-Harness TAS blue/green deployments use the route(s) in the TAS manifest and a temporary route you specify in the deployment configuration.
+Harness TAS blue green deployments use the route(s) in the TAS manifest and a temporary route you specify in the deployment configuration.
 
 The blue/green deployment deploys the applications using the temporary route first using the **App Setup** configuration. Next, in the **App Resize** configuration, Harness maintains the number of instances at 100% of the `instances` specified in the TAS manifest.
 
