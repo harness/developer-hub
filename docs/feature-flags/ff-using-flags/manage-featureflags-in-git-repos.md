@@ -19,8 +19,7 @@ import git_4 from './static/5-manage-featureflags-in-git-repos-07.png'
 import git_5 from './static/5-manage-featureflags-in-git-repos-08.png' 
 import git_6 from './static/4-git-blue-circle.png'  
 import git_7 from './static/5-manage-featureflags-in-git-repos-09.png' 
-import git_8 from './static/8-git-off.png'
-import git_ex1 from './static/gitex-setup-featureflags-01.png 
+import git_8 from './static/8-git-off.png' 
 ```
 
 :::caution
@@ -38,16 +37,14 @@ Using Harness Git Experience with Feature Flags allows you to manage your Flags 
 You must set up Git Experience in your Project before you can use it with Feature Flags.To do this:
 
 <!-- TBD DOC-2410 * [ Add a Source Code Manager to your account. ](https://docs.harness.io/article/p92awqts2x-add-source-code-managers) -->
-* Follow the steps in [Configure GitSync in Harness](../../platform/10_Git-Experience/git-experience-overview.md)  create a Git repository that contains at least one branch. Then pick up or create new conector the connector. Note that currently branch setup cannot be reconfigured after initial setup.
 
-* To set up gitEx for feature flag navigate to the top of the flag page and click `Setup up` 
-```mdx-code-block
-<img src={git_ex1} alt="Setup button for gitEx on featureflag page." height="500" width="300" />
-```
-* 
+* Follow the steps in [Harness Git Experience Quickstart](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities) to create a Git repository that contains at least one branch. Then select or create the connector. Note that, currently, branch setup cannot be reconfigured after initial setup.
 
+* To set up gitEx for feature flag navigate to the top of the flag page and click `Setup up`.
 
-Also ensure you read [How Git Experience works with Feature Flags](#how-git-experience-works-with-feature-flags). 
+  ![Setup button for gitEx on Feature Flag page](./static/gitex-setup-featureflags-01.png)
+
+* Also ensure you read [How Git Experience works with Feature Flags](#how-git-experience-works-with-feature-flags) below.
 
 ## How Git Experience works with Feature Flags
 
@@ -111,29 +108,28 @@ If you don’t see the changes you made in Git reflected on the Harness Platform
 
 ## Turn syncing with Git on or off
 
-The Git Experience icons are displayed on many pages, you can turn it on or off from any page where it is displayed.
+You can turn the synchronization between the Harness Platform and Git on or off. The Git Experience icon is displayed on many pages, and you can toggle it on or off from any page where it appears.
 
 :::caution
- Turing sync on will trigger immediate attempt to sync Harness platform content to the remote file.
- All the changes made to the remote file while sync was disbled will be overwritten which will result in losing content or configuration not yet synced to the Platform.
+ Turning sync on triggers an immediate attempt to sync Harness Platform content to the remote file.
+ All the changes made to the remote file while sync was disabled are overwritten, which results in losing content or configuration not yet synced to the Platform.
 :::
 
-After you have enabled Git Experience and understand how it works with Harness Feature Flags, you can turn the synchronization between the Harness Platform and Git on or off by completing the following: 
+To turn the synchronization between the Harness Platform and Git on or off: 
 
-1. Go to the Project you enabled Git Experience for.
-2. Click **Feature Flags**.
+1. In Harness, go to the project you enabled Git Experience for.
+2. Select **Feature Flags**.
 3. In the top bar navigation, next to the New Flag button, the Git repository you connected is displayed.
 4. Next to the Git repository, the branch you connected is displayed.
-5. Click the branch and toggle the sync on or off. You have the following options:
+5. Select the branch and toggle the sync on or off. You have the following options:
 
 ### Sync with Git
 
-```mdx-code-block
-<img src={git_1} alt="The Sync with Git toggle highlighted." height="500" width="300" />
-```
-*Figure 1: Sync with Git turned on, auto-commit turned off*
+This turns on syncing with Git.
 
-This turns on syncing with Git. When you toggle only this button, each time you make a change on the Harness Platform, you will be prompted to confirm which branch you want to commit to in Git and to add a commit message. For example: 
+![The Sync with Git toggle highlighted](./static/5-manage-featureflags-in-git-repos-04.png)
+
+When you toggle this button only, each time you make a change on the Harness Platform, you will be prompted to confirm which branch you want to commit to in Git and to add a commit message. For example:
 
 ```mdx-code-block
 <img src={git_2} alt="An example commit message." height="500" width="400" />
