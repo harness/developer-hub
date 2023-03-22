@@ -14,40 +14,47 @@ Linux Dns Spoof injects chaos to mimic DNS resolution in linux machine.
 :::
 
 ## Fault tunables
-  <h3>Mandatory fields</h3>
-    <h3>Optional fields</h3>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-       <tr>
-        <td> spoofMap </td>
-        <td> Map of the target hostnames For example, '&#123;"abc.com":"spoofabc.com"&#125;' where key is the hostname that needs to be spoofed and value is the hostname where it will be spoofed/redirected </td>
-        <td> If not provided, no hostnames/domains will be spoofed </td>
-      </tr>
-      <tr>
-      <td> upstreamServer </td>
-      <td> Name of the DNS upstream server</td>
-      <td>  </td>
-      </tr>
-      <tr>
-      <td> dnsPort </td>
-      <td> Port of the DNS Server </td>
-      <td>  </td>
-      </tr>
-      <tr>
-        <td> duration </td>
-        <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30. </td>
-      </tr>
-      <tr>
-        <td> rampTime </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Defaults to 0. </td>
-      </tr>
-    </table>
+<h3>Mandatory fields</h3>
+<table>
+  <tr>
+    <th> Variables </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> spoofMap </td>
+    <td> Map of the target hostnames. </td>
+    <td> For example, '&#123;"abc.com":"spoofabc.com"&#125;' where key is the hostname that needs to be spoofed and value is the hostname where it will be spoofed. </td>
+  </tr>
+</table>
+<h3>Optional fields</h3>
+<table>
+  <tr>
+    <th> Variables </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> upstreamServer </td>
+    <td> Upstream server for the custom DNS interceptor server. </td>
+    <td> To be provided if there is no upstream server present with the local DNS resolver. </td>
+  </tr>
+  <tr>
+    <td> dnsPort </td>
+    <td> UDP port for the DNS interceptor server. </td>
+    <td> Defaults to <code>53</code>. </td>
+  </tr>
+  <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
+    <td> Defaults to 30. </td>
+  </tr>
+  <tr>
+    <td> rampTime </td>
+    <td> Period to wait before and after injecting chaos (in seconds). </td>
+    <td> Defaults to 0. </td>
+  </tr>
+</table>
 
 
 ### SpoofMap

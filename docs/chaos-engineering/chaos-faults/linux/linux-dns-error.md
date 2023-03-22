@@ -6,7 +6,7 @@ Linux Dns Error injects chaos to disrupt dns resolution in linux machine
 
 ## Use cases
 - Induces DNS error on the target Linux machines.
-- Simulates loss of access to host by blocking dns resolution of hostnames/domains
+- Simulates loss of access to host by blocking DNS resolution of hostnames
 
 :::note
 - This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
@@ -25,7 +25,7 @@ Linux Dns Error injects chaos to disrupt dns resolution in linux machine
        <tr>
         <td> hostNames </td>
         <td> List of the target hostnames or keywords eg. '["google.com","litmuschaos.io"]' </td>
-        <td> If not provided, all hostnames/domains will be targeted </td>
+        <td> If not provided, all hostnames will be targeted </td>
       </tr>
       <tr>
         <td> matchScheme </td>

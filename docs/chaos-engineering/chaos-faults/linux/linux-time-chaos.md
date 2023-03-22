@@ -14,36 +14,34 @@ Linux Time Chaos injects chaos to change the time of the linux machine
 :::
 
 ## Fault tunables
-  <h3>Mandatory fields</h3>
-    <h3>Optional fields</h3>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-       <tr>
-        <td> offset </td>
-        <td> Time offset to increment or decrement the system time. Should be provided in <code>(+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format.</td>
-        <td> For example: <code>+24h</code>, <code>-13h12m</code>, <code>-3h12m16s</code> </td>
-      </tr>
-      <tr>
-      <td> disableNTP </td>
-      <td> Set it to disable the ntp server </td>
-      <td> It supports boolean values </td>
-      </tr>
-      <tr>
-        <td> duration </td>
-        <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30 </td>
-      </tr>
-      <tr>
-        <td> rampTime </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Defaults to 0. </td>
-      </tr>
-    </table>
-
+<h3>Optional fields</h3>
+<table>
+  <tr>
+    <th> Variables </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> offset </td>
+    <td> Time offset to increment or decrement the system time. Should be provided in <code>(+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format.</td>
+    <td> For example: <code>+24h</code>, <code>-13h12m</code>, <code>-3h12m16s</code> </td>
+  </tr>
+  <tr>
+    <td> disableNTP </td>
+    <td> Set it to disable the NTP server. </td>
+    <td> Defaults to <code>true</code> </td>
+  </tr>
+  <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
+    <td> Defaults to 30 </td>
+  </tr>
+  <tr>
+    <td> rampTime </td>
+    <td> Period to wait before and after injecting chaos (in seconds). </td>
+    <td> Defaults to 0. </td>
+  </tr>
+</table>
 
 ### Offset
 
