@@ -285,12 +285,16 @@ To close the SDK, run one of the following commands.
 
 ### Run multiple instances of the SDK
 
-Normally, there is a single Harness [project](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/) per application. If different parts of your
-application need to use specific projects, you can start up additional client instances using a `project_config` for each unique project.
+The SDK by default starts up a single instance called `default` which is configured with your project API key.
+If different parts of your application need to use 
+specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
 
 #### Erlang Project Config
  
-1. Create project configurations for each new instance you would like to start in your `config/sys.config` file:
+1. Create project configurations for each new instance you would like to start in your `config/sys.config` file.
+   The additional project config is defined in `sys.config`
+
+    The following `sys.config` snippet starts up two additional instances along with the default instance:
 
     ```erlang
     [
@@ -317,6 +321,24 @@ application need to use specific projects, you can start up additional client in
         }
       ]].
     ```
+   If you don't require the default instance to be started up, you can do:
+
+```erlang
+  
+  % ... additional project config
+  
+  {cfclient, [
+    {start_default_instance, false},
+    %% The remaining tuples will be ignored, so you can choose to include or omit them.
+    {api_key, {environment_variable, "FF_API_KEY"}},
+    {config, [
+      {config_url, "https://config.ff.harness.io/api/1.0"},
+      {events_url, "https://config.ff.harness.io/api/1.0"}
+    ]},
+    {analytics_push_interval, 60000}
+  ]
+},
+```
 
 2. In your application supervisor, e.g. `src/myapp_sup.erl`, start up a `cfclient_instance`
    for each of the project configurations you provided above:
