@@ -482,7 +482,7 @@ To do this, pass the new URLs in when initializing the SDK, as shown below.
           ]]
   ```
 
-## Sample Code 
+## Sample code 
 
 * **Sample code for Erlang applications**
 
