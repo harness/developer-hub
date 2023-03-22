@@ -223,7 +223,13 @@ module.exports = {
     //  Created by aimurphy for DOC-2484 on Mar 7, 2023
     {
       from: "/tutorials/build-code/ci-github-action-step",
-      to: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
+      to: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
+    },
+
+    //  Created by aimurphy for CI-6241 on Mar 22, 2023
+    {
+      from: "/docs/category/onboard-with-ci",
+      to: "/docs/category/get-started-with-ci",
     },
   ],
 };

@@ -33,7 +33,7 @@ You'll learn how to:
 ### Before you begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-* The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio. See ​[CD Quickstarts](/docs/category/cd-tutorials) and [CI Quickstarts](/docs/category/onboard-with-ci).
+* The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio. See ​[CD Quickstarts](/docs/category/cd-tutorials) and [Get started with CI](/docs/category/get-started-with-ci).
 
 ### Visual Summary
 
