@@ -1,9 +1,7 @@
 ---
 title: Set up an AWS VM build infrastructure
-description: Set up a CI Build Infrastructure using AWS VMs
+description: Set up a CI build infrastructure using AWS VMs
 
-tags: 
-   - helpDocs
 sidebar_position: 10
 helpdocs_topic_id: z56wmnris8
 helpdocs_category_id: rg8mrhqm95
@@ -27,11 +25,13 @@ The following diagram illustrates an AWS build farm. The [Harness Delegate](/doc
 
 This topic assumes you're familiar with the following:
 
-* [CI Pipeline Quickstart](../../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
-* [CI Stage Settings](../../../ci-technical-reference/ci-stage-settings.md)
-* [Learn Harness' Key Concepts](../../../../getting-started/learn-harness-key-concepts.md)
-* [VM Runner](https://docs.drone.io/runner/vm/overview/)
+* [CI pipeline tutorial](../../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [Delegates overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
+* [CI stage settings](../../../ci-technical-reference/ci-stage-settings.md)
+* [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
+* Drone VM Runner
+  * [Drone documentation - VM Runner overview](https://docs.drone.io/runner/vm/overview/)
+  * [GitHub repository - Drone Runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
 ## Alternate workflow: Use Terraform
 
@@ -263,15 +263,15 @@ This pipeline's **Build** stage now uses your AWS VMS for its build infrastructu
 
 You can configure the following settings in your `pool.yml` file.
 
-| **Subfield**      | **Type**                   | **Example**                                               | **Description**                                                                                                                                                                                                                                                                                                                                                                                |
-| ----------------- | -------------------------- | --------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `name`            | String                     | `name: windows_pool`                                      | Unique identifier of the pool. You'll reference this pool name in the Harness Manager later when setting up the CI build infrastructure.                                                                                                                                                                                                                                                       |
-| `pool`            | Integer                    | `pool: 1`                                                 | Pool size number. Denotes the number of cached VMs in ready state to be used by the Runner.                                                                                                                                                                                                                                                                                                    |
-| `limit`           | Integer                    | `limit: 3`                                                | Maximum pool size number. Denotes the maximum number of VMs that can be present at any instance to be used by the Runner.                                                                                                                                                                                                                                                                      |
-| `hibernate`       | Boolean                    | `hibernate: true`                                         | When set to `true` (the default), VMs hibernate after startup. When `false`, VMs are always in a running state.This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information go to the AWS documentation: [Hibernate your On-Demand Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html). |
-| `iam_profile_arn` | String                     | `iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXX` | Instance profile ARN of the IAM role to apply to the build instances.                                                                                                                                                                                                                                                                                                                          |
-| `platform`        | Mapping, string            | Go to [Platform example](#platform-example)               | Configure the details of your VM platform. By default, the platform is set to Linux OS and AMD64 architecture.                                                                                                                                                                                                                                                                                 |
-| `instance`        | Mapping, string or integer | Go to [Instance example](#instance-example)               | Configure the settings of your AWS instance. `disk` contains AWS block information, and `network` contains AWS network information. For more information on these attributes, go to the AWS documentation: [Create a security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-base-security-group).                                         |
+| **Subfield** | **Type** | **Example** | **Description** |
+| - | - | - | - |
+| `name` | String | `name: windows_pool` | Unique identifier of the pool. You'll reference this pool name in the Harness Manager later when setting up the CI build infrastructure. |
+| `pool` | Integer | `pool: 1` | Pool size number. Denotes the number of cached VMs in ready state to be used by the Runner. |
+| `limit` | Integer | `limit: 3` | Maximum pool size number. Denotes the maximum number of VMs that can be present at any instance to be used by the Runner. |
+| `hibernate` | Boolean | `hibernate: true` | When set to `true` (the default), VMs hibernate after startup. When `false`, VMs are always in a running state.This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information go to the AWS documentation: [Hibernate your On-Demand Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html). |
+| `iam_profile_arn` | String | `iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXX` | Instance profile ARN of the IAM role to apply to the build instances. |
+| `platform` | Mapping, string | Go to [Platform example](#platform-example) | Configure the details of your VM platform. By default, the platform is set to Linux OS and AMD64 architecture. |
+| `instance` | Mapping, string or integer | Go to [Instance example](#instance-example) | Configure the settings of your AWS instance. `disk` contains AWS block information, and `network` contains AWS network information. For more information on these attributes, go to the AWS documentation: [Create a security group](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-base-security-group). |
 
 ### Platform example
 
@@ -382,7 +382,6 @@ You can configure the following settings in your `pool.yml` file.
           private_ip:
 ```
 
-
 ## Runner settings reference
 
 You can set the following Runner options in your `docker-compose.yml` file. These can be useful for advanced use cases such as troubleshooting the Runner.
@@ -442,19 +441,13 @@ services:
 
 Configure the following fields in the **.env** file to allow Runner to access and launch your AWS VM.
 
-|                          |          |                                                                                                                                                                                                                               |
-| ------------------------ | -------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Field**                | **Type** | **Description**                                                                                                                                                                                                               | **Example**                                                          |
-| `DRONE_REUSE_POOL`       | Boolean  | Reuse existing EC2 instances on restart of the Runner.                                                                                                                                                                        | `false`                                                              |
-| `DRONE_LITE_ENGINE_PATH` | String   | This variable contains the release information for the Lite Engine. The Lite Engine is a binary that is injected into the VMs with which the Runner interacts. It is responsible for coordinating the execution of the steps. | `https://github.com/harness/lite-engine/releases/download/v0.0.1.12` |
-| `DRONE_DEBUG`            | Boolean  | Optional. Enables debug-level logging.                                                                                                                                                                                        | `true`                                                               |
-| `DRONE_TRACE`            | Boolean  | Optional. Enables trace-level logging.                                                                                                                                                                                        | `true`                                                               |
+| **Field** | **Type** | **Description** | **Example** |
+| - | - | - | - |
+| `DRONE_REUSE_POOL` | Boolean | Reuse existing EC2 instances on restart of the Runner. | `false` |
+| `DRONE_LITE_ENGINE_PATH` | String | This variable contains the release information for the Lite Engine. The Lite Engine is a binary that is injected into the VMs with which the Runner interacts. It is responsible for coordinating the execution of the steps. | `https://github.com/harness/lite-engine/releases/download/v0.0.1.12` |
+| `DRONE_DEBUG` | Boolean | Optional. Enables debug-level logging. | `true` |
+| `DRONE_TRACE` | Boolean | Optional. Enables trace-level logging. | `true` |
 
-### Troubleshooting
+## Troubleshooting
 
-* If vm creation in runner fails with error "no default VPC", then set *subnet_id* in pool.yml
-
-## See also
-
-* [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md)
-* For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
+If VM creation in the Runner fails with the error `no default VPC`, then set `subnet_id` in `pool.yml`.
