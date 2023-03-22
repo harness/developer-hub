@@ -122,11 +122,17 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
    ```
    - name: INIT_SCRIPT  
    value: |
-    dnf install -y wget
+    # update package manager
+    microdnf update
+    
+    # install necessary packages
+    microdnf install -y wget
+    
+    #install CF CLI v7
     wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | rpm --import -
     echo -e "[cloudfoundry-cli]\nname=cloudfoundry-cli\nbaseurl=https://packages.cloudfoundry.org/rpm/centos/7/\$basearch\nenabled=1\ngpgcheck=1" | tee /etc/yum.repos.d/cloudfoundry-cli.repo
     dnf makecache
-    dnf install -y cf-cli
+    dnf install -y cf7-cli
 
     # autoscaler plugin
     # download and install pivnet
