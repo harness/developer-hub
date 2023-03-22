@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic lists Harness support for platforms, methodologies, and related technologies for NextGen modules.
 
-### Continuous Delivery (CD)
+## Continuous Delivery (CD)
 
 The following table lists Harness support for deployment platforms, artifacts, strategies, and related technologies.
 
@@ -338,15 +338,15 @@ The following table lists Harness support for deployment platforms, artifacts, s
 </tbody>
 </table>
 
-#### Deployment notes
+### Deployment notes
 
 The following notes clarify support of some platform features.
 
-##### Kubernetes
+#### Kubernetes
 
 See [What Can I Deploy in Kubernetes?](../continuous-delivery/cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
-##### Kubernetes version support
+#### Kubernetes version support
 
 The following versions are tested and supported for Kubernetes Canary, Rolling, and Blue/Green deployments:
 
@@ -371,11 +371,11 @@ Guidelines:
 - Harness supports any other versions of Kubernetes you are using on a best effort basis.
 - Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.24.3 occurs on August 15th, we will support it for compatibility by November 15th.
 
-##### Helm
+#### Helm
 
 Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](/docs/category/code-repo-connectors)). Helm chart dependencies are supported in Helm Chart Repositories.
 
-##### Artifact servers, repos, and artifacts
+#### Artifact servers, repos, and artifacts
 
 Harness uses **Metadata only** when downloading artifact sources.
 
@@ -396,7 +396,7 @@ The following table lists Harness integrations and their artifact source support
 | **WinRM**          |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
 | **Serverless.com Framework**     |                | ✅      |         |         | ✅              |             |            |                              |                              |             | ✅         |
 
-##### Manifest and Config file Store Support
+#### Manifest and Config file Store Support
 
 The following table lists where you can store your manifests or config files for each integration.
 
@@ -416,7 +416,7 @@ The following table lists where you can store your manifests or config files for
 | **WinRM**                     |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **Azure Web Apps**            |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 
-##### Terraform version support
+#### Terraform version support
 
 Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md).
 
@@ -443,15 +443,15 @@ terraform --version
 
 Some Harness features might require specific Terraform versions.
 
-##### Azure AKS clusters
+#### Azure AKS clusters
 
 To use an AKS cluster for deployment, the AKS cluster must have local accounts enabled (AKS property `disableLocalAccounts=false`).
 
-##### AWS and Azure GovCloud
+#### AWS and Azure GovCloud
 
 Harness is now certified in Azure GovCloud and AWS GovCloud.
 
-### GitOps
+## GitOps
 
 Harness GitOps lets you perform GitOps deployments in Harness. You define the desired state of the service you want to deploy in your Git manifest, and then use Harness GitOps to sync state with your live Kubernetes cluster.
 
@@ -475,9 +475,9 @@ GitOps supports the following:
 - GnuPG Keys:
   - GnuPG Public Key Data (ASCII-armored).
 
-See [Harness GitOps Basics](../continuous-delivery/cd-gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md)
+See [Harness GitOps Basics](../continuous-delivery/cd-gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md)
 
-### Continuous Integration (CI)
+## Continuous Integration (CI)
 
 The following table lists Harness support for CI platforms, repos, registries, and related technologies.
 
@@ -485,10 +485,10 @@ The following table lists Harness support for CI platforms, repos, registries, a
   <thead>
     <tr>
       <th>Source Code Management (SCM)</th>
-      <th>Artifact Repos</th>
-      <th>Container Registries</th>
-      <th>Build Farm Platforms</th>
-      <th>Testing Frameworks Supported</th>
+      <th>Artifact repositories</th>
+      <th>Container registries</th>
+      <th>Build farm platforms</th>
+      <th>Testing frameworks</th>
     </tr>
   </thead>
   <tbody>
@@ -498,6 +498,8 @@ The following table lists Harness support for CI platforms, repos, registries, a
           <li>GitLab</li>
           <li>Bitbucket</li>
           <li>GitHub</li>
+          <li>AWS CodeCommit</li>
+          <li>Other</li>
         </ul>
       </td>
       <td>
@@ -505,10 +507,12 @@ The following table lists Harness support for CI platforms, repos, registries, a
           <li>Artifactory</li>
           <li>AWS S3</li>
           <li>GCP GCS</li>
+          <li>JFrog</li>
         </ul>
       </td>
       <td>
         <ul>
+          <li>Azure Container Registry (ACR)</li>
           <li>Amazon Elastic Container Registry (ECR)</li>
           <li>Google Container Registry (GCR)</li>
           <li>Docker registries (e.g. Docker Hub)</li>
@@ -525,25 +529,23 @@ The following table lists Harness support for CI platforms, repos, registries, a
         </ul>
       </td>
       <td>
-        <p>Currently, Harness supports:</p>
         <ul>
           <li>Bazel</li>
           <li>Maven</li>
           <li>Gradle</li>
+          <li>NET CLI</li>
+          <li>Nunit</li>
         </ul>
-        <p> More frameworks will be supported soon.</p>
       </td>
     </tr>
   </tbody>
 </table>
 
-More frameworks will be supported soon.
-
-### Continuous Verification
+## Continuous Verification
 
 Harness supports the following metrics and logging platforms.
 
-#### Metrics providers
+### Metrics providers
 
 The following table lists Harness support for metrics platforms (APMs).
 
@@ -559,7 +561,7 @@ The following table lists Harness support for metrics platforms (APMs).
 | [Datadog](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
 | [Dynatrace](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
 
-#### Log providers
+### Log providers
 
 Most logging platforms are also supported.
 
@@ -569,15 +571,15 @@ Most logging platforms are also supported.
 | [Splunk](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk.md)                                         | Yes                         |
 | [Google Cloud Operations (GCP)](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations.md) | Yes                         |
 
-#### Custom health sources
+### Custom health sources
 
 Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
 
 See [Verify Deployments with Custom Health Source](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics.md).
 
-### Cloud Cost Management
+## Cloud Cost Management
 
-#### Supported Kubernetes Management Platform
+### Supported Kubernetes Management Platform
 
 The following section lists the support for the Kubernetes management platform for CCM:
 
@@ -596,7 +598,7 @@ The following section lists the support for the Kubernetes management platform f
 
 \*\*\*Cost is computed using a custom rate. This can be modified by Harness on request.
 
-#### Supported ingress controllers for Kubernetes AutoStopping
+### Supported ingress controllers for Kubernetes AutoStopping
 
 The following table lists the ingress controllers supported for Kubernetes AutoStopping:
 
@@ -609,11 +611,11 @@ The following table lists the ingress controllers supported for Kubernetes AutoS
 | Istio as API gateway       | Fully supported                                                    |
 | Ambassador as API gateway  | Supported by manually editing the mapping                          |
 
-#### Feature Support Matrix
+### Feature Support Matrix
 
 This section lists the feature support matrix for the supported cloud platforms:
 
-##### AWS Service
+#### AWS Service
 
 |                     |                         |                     |                               |
 | ------------------- | ----------------------- | ------------------- | ----------------------------- |
@@ -627,7 +629,7 @@ This section lists the feature support matrix for the supported cloud platforms:
 | **Elastic** **IPs** | Yes                     | No                  | NA                            |
 | **ASGs**            | No                      | No                  | Yes (With Spot Orchestration) |
 
-##### GCP Product
+#### GCP Product
 
 |             |                         |                     |                  |
 | ----------- | ----------------------- | ------------------- | ---------------- |
@@ -635,7 +637,7 @@ This section lists the feature support matrix for the supported cloud platforms:
 | **GCE VMs** | Yes                     | Coming soon         | Yes     |
 | **GKE**     | Yes                     | Yes                 | Yes              |
 
-##### Azure Product
+#### Azure Product
 
 |                     |                         |                     |                               |
 | ------------------- | ----------------------- | ------------------- | ----------------------------- |
@@ -643,17 +645,17 @@ This section lists the feature support matrix for the supported cloud platforms:
 | **Virtual Machine** | Yes             | Coming soon         | Yes (With Spot Orchestration) |
 | **AKS**             | Yes                     | Yes                 | Yes                           |
 
-### Service Reliability Management
+## Service Reliability Management
 
 Harness supports the following Health Sources and Change Sources.
 
-#### Health sources
+### Health sources
 
 A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
 
 Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
-##### Metrics providers and logging tools
+#### Metrics providers and logging tools
 
 Currently, Harness supports the following APMs and logging tools:
 
@@ -668,7 +670,7 @@ Currently, Harness supports the following APMs and logging tools:
 
 More tools will be added soon.
 
-#### Change sources
+### Change sources
 
 A Change Source monitors change events related to deployments, infrastructure changes, and incidents. The following Change Sources are supported:
 
@@ -676,15 +678,15 @@ A Change Source monitors change events related to deployments, infrastructure ch
 - Harness CD
 - PagerDuty
 
-### Security Testing Orchestration
+## Security Testing Orchestration
 
 See [Security Step Settings Reference](../security-testing-orchestration/sto-techref-category/security-step-settings-reference.md).
 
-### Feature Flags
+## Feature Flags
 
 Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
-#### Client-side SDKs
+### Client-side SDKs
 
 The following table lists the Client-side Feature Flag SDKs Harness supports.
 
@@ -697,7 +699,7 @@ The following table lists the Client-side Feature Flag SDKs Harness supports.
 | [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](../feature-flags/ff-sdks/client-sdks/react-native-sdk-reference.md) |
 | [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](../feature-flags/ff-sdks/client-sdks/xamarin-sdk-reference.md)           |
 
-#### Server-side SDKs
+### Server-side SDKs
 
 The following table lists the Server-side Feature Flag SDKs Harness supports.
 
@@ -711,13 +713,13 @@ The following table lists the Server-side Feature Flag SDKs Harness supports.
 | [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](../feature-flags/ff-sdks/server-sdks/ruby-sdk-reference.md)                   |
 | [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](../feature-flags/ff-sdks/server-sdks/php-sdk-reference.md)                     |
 
-### Harness Chaos Engineering
+## Harness Chaos Engineering
 
 Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom, Workflow templates.
 
 See [Introduction to Chaos Module](../chaos-engineering/overview/introduction-to-chaos-module.md).
 
-### Collaboration
+## Collaboration
 
 The following table lists Harness support for collaboration tools.
 
@@ -736,7 +738,7 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 | [ServiceNow](../platform/9_Approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
 | [PagerDuty](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) | Yes          | N/A                        |
 
-### Access control
+## Access control
 
 The following table lists Harness support for SSO protocols and tools.
 
@@ -758,7 +760,7 @@ See [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-c
 |                                                                              | Open LDAP              | Coming soon              | Coming soon                             | N/A               |
 |                                                                              | Oracle LDAP            | Coming soon              | Coming soon                             | N/A               |
 
-### Secret management
+## Secret management
 
 The following table lists Harness support for cloud platform secrets management services.
 
@@ -772,7 +774,7 @@ See [Harness Secrets Management Overview](../platform/6_Security/1-harness-secre
 | [Azure Key Vault](../platform/6_Security/8-azure-key-vault.md)              | Yes                    | No                                   | Yes                                      |
 | [Google KMS](../platform/6_Security/10-add-google-kms-secrets-manager.md)   | Yes                    | Yes                                  | No                                       |
 
-### Harness Self-Managed Enterprise Edition
+## Harness Self-Managed Enterprise Edition
 
 The following table lists the major support features for Harness Self-Managed Enterprise Edition offerings.
 
@@ -780,11 +782,11 @@ The following table lists the major support features for Harness Self-Managed En
 | ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | ------------ | --------------------------------- |
 | [Kubernetes Cluster](/docs/category/kubernetes)                   | Kubernetes - GKE - AKS - EKS | Yes         | Yes              | Prometheus, Grafana | Supported         | Supported    |                                   |
 
-### SDKs installed with the Delegate
+## SDKs installed with the Delegate
 
 Harness Delegate includes binaries for the SDKs that are required for deployments with Harness-supported integrations. These include binaries for Helm, ChartMuseum, `kubectl`, Kustomize, and so on.
 
-##### Kubernetes Deployments
+### Kubernetes Deployments
 
 For Kubernetes deployments, the following SDKs/tools are included in the Delegate.
 
@@ -814,7 +816,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 | OpenShift                           | kubectl               | v1.24.3               |
 |                                     | oc                    | v4                    |
 
-##### Native Helm deployments
+### Native Helm deployments
 
 For [Native Helm deployments](../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), the following SDKs/tools are certified.
 
@@ -824,7 +826,7 @@ For [Native Helm deployments](../continuous-delivery/onboard-cd/cd-quickstarts/n
 | Helm Chart        | helm                                            | v3.9.2                |
 |                   | kubectlRequired if Kubernetes version is 1.16+. | v1.24.3               |
 
-##### Install a Delegate with custom SDK and 3rd-party tool binaries
+### Install a Delegate with custom SDK and 3rd-party tool binaries
 
 To support customization, Harness provides a Harness Delegate image that does not include any third-party SDK binaries. We call this image the No Tools Image.
 
@@ -832,9 +834,9 @@ Using the No Tools Image and Delegate YAML, you can install the specific SDK ver
 
 For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
-### The Update Framework (TUF)
+## The Update Framework (TUF)
 
-The Update Framework (TUF) is an open source specification for that provides instructions on how to organize, sign, and interact with metadata to secure package managers. 
+The Update Framework (TUF) is an open source specification for that provides instructions on how to organize, sign, and interact with metadata to secure package managers.
 
 Harness includes native TUF support via the following:
 
@@ -854,7 +856,7 @@ The following document lists the open source libraries and third-party software 
 
 ## Supported browsers
 
-The following browsers are supported:
+The following desktop browsers are supported:
 
 - **Chrome**: latest version
 - **Firefox**: latest version
@@ -866,4 +868,3 @@ Mobile browsers are not supported.
 ## Supported screen resolution
 
 Minimum supported screen resolution is 1440x900.
-
