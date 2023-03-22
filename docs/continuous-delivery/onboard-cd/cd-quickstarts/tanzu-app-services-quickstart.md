@@ -17,8 +17,8 @@ You'll learn how to:
 * Install and launch a Harness delegate in your target cluster.
 * Connect Harness with your TAS account.
 * Connect Harness with a public image hosted on Artifactory.
-* Specify the manifest to use for the app.
-* Set up a TAS pipeline in Harness to deploy the app.
+* Specify the manifest to use for the application.
+* Set up a TAS pipeline in Harness to deploy the application.
 
 ## Important notes
 
@@ -36,11 +36,11 @@ You can connect Harness to a TAS space by adding a TAS connector. Perform the fo
 4. Enter a connector name and select **Continue**.
 5. Enter the TAS **Endpoint URL**. For example, `https://api.system.tas-mycompany.com`.
 6. In **Authentication**, select one of the following options.
-    1. **Plaintext** - Enter the user name and password. For password, you can either create a new secret or use an existing one.
-    2. **Encrypted** - Enter the user name and password. You can create a new secret for your username and password or use exiting ones.
+    1. **Plaintext** - Enter the username and password. For password, you can either create a new secret or use an existing one.
+    2. **Encrypted** - Enter the username and password. You can create a new secret for your username and password or use exiting ones.
 7. Select **Continue**.
 8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
-   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your TAS environment. Typically, the **Connect through Harness Platform** option is a very quick way to make connections without having to use delegates.
+   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your TAS environment. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
 
    Expand the section below to learn more about installing delegates.
 
@@ -103,7 +103,7 @@ You can connect Harness to a TAS space by adding a TAS connector. Perform the fo
 10. Select **Save and Continue**.
 11. Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
 
-## Install CF CLI on your Harness delegate
+## Install Cloud Foundry Command Line Interface (CF CLI) on your Harness delegate
 
 After the delegate pods are created, you must edit your Harness delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins.
 
@@ -166,7 +166,7 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
    Create-Service-Push   1.3.2     create-service-push, cspush   Works in the same manner as cf push, except that it will create services defined in a services-manifest.yml file first before performing a cf push.
    ``` 
 :::note
-The CF Command script does not require `cf login`. Harness logs in using the credentials in the TAS Cloud Provider set up in the infrastructure definition for the workflow executing the CF Command.
+The CF Command script does not require `cf login`. Harness logs in using the credentials in the TAS cloud provider set up in the infrastructure definition for the workflow executing the CF Command.
 :::
 
 ## Create the deploy stage
@@ -174,17 +174,18 @@ The CF Command script does not require `cf login`. Harness logs in using the cre
 Pipelines are collections of stages. For this tutorial, we'll create a new pipeline and add a single stage.
 
 1. In your Harness project, select **Pipelines**, select **Deployments**, then select **Create a Pipeline**.
+
+   Your pipeline appears.
 2. Enter the name **TAS Quickstart** and click **Start**.
    
    ![](./static/create-tas-pipeline.png)
 
-   Your pipeline appears.
 3. Click **Add Stage** and select **Deploy**.
 4. Enter the stage name **Deploy TAS Service**, select the **Tanzu Application Services** deployment type, and select **Set Up Stage**.
    
-   ![](./static/deploy-tas-service.png)
-
    The new stage settings appear. 
+   
+   ![](./static/deploy-tas-service.png) 
 
 ## Create a Harness service
 
@@ -193,11 +194,11 @@ Harness services represent your microservices or applications. You can add the s
 ### Create a new service
 
 1. Select the **Service** tab, then select **Add Service**.  
-2. Give the service the name **TAS**.  
-Services are persistent and can be used throughout the stages of this pipeline or any other pipeline in the project.
+2. Enter a service name. For example, TAS.
+  
+   Services are persistent and can be used throughout the stages of this pipeline or any other pipeline in the project.
 
-
-1. In **Service Definition**, in **Deployment Type**, verify if **Tanzu Application Services** is selected.
+3. In **Service Definition**, in **Deployment Type**, verify if **Tanzu Application Services** is selected.
 
 ### Add the manifest
 
@@ -360,7 +361,7 @@ Now the pipeline stage is complete and you can deploy.
   </TabItem>
   <TabItem value="Canary" label="Canary">
 ```
-The TAS canary deployment is a phased approach to deploy application instances gradually, ensuring the stability of a small percentage of instances before rolling out to your desired instance count. With Canary Deployment, all nodes in a single environment are incrementally updated in small phases. You can add verification steps as needed to proceed to the next phase.
+The TAS canary deployment is a phased approach to deploy application instances gradually, ensuring the stability of a small percentage of instances before rolling out to your desired instance count. With canary deployment, all nodes in a single environment are incrementally updated in small phases. You can add verification steps as needed to proceed to the next phase.
 
 Use this deployment method when you want to verify whether the new version of the application is working correctly in your production environment.
 
@@ -396,7 +397,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
 7. Add an **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 8. Select **Save**.
 
-Now the pipeline stage is complete and you can deploy.
+Now the pipeline stage is complete and can be deployed.
 
 ```mdx-code-block
   </TabItem>
@@ -428,7 +429,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
        Additional routes has two uses in blue/green deployments.
        * Select the routes that you want to map to the application in addition to the routes already mapped in the application in the manifest in your Harness service.
        * You can also omit routes in the manifest in your Harness service, and select them in **Additional Routes**. The routes selected in **Additional Routes** will be used as the final (green) routes for the application.
-    6. **Temporarty Routes** - Add temporary routes in addition to additional routes.
+    6. **Temporary Routes** - Add temporary routes in addition to additional routes.
    
        Later, in the **Swap Route** step, Harness will replace these routes with the routes in the TAS manifest in your service.  
        If you do not select a route in Temporary Routes, Harness will create one automatically.
@@ -457,7 +458,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
    The failed application  is deleted.
 8. Select **Save**.
 
-Now the pipeline stage is complete and you can deploy.
+Now the pipeline stage is complete and can be deployed.
 
 ```mdx-code-block
   </TabItem>
@@ -485,7 +486,7 @@ Use this deployment method when you want to support both new and old deployments
 5. Add a **Rolling Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 6. Select **Save**.
 
-Now the pipeline stage is complete and you can deploy.
+Now the pipeline stage is complete and can be deployed.
 
 ```mdx-code-block
   </TabItem>    
@@ -512,7 +513,7 @@ The deployment was successful.
 In your project's **Deployments**, you can see the deployment listed.
 
 
-## Next Steps
+## Next steps
 
 See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
 
