@@ -736,8 +736,6 @@ You can also route traffic incrementally using multiple Cloud Function Traffic S
 </details>
 
 
-
-
 ### Rollbacks
 
 If deployment failure occurs, the stage or step [failure strategy](../../../platform/Pipelines/8_Pipelines/../../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically. 
