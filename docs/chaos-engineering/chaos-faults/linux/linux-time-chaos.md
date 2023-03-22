@@ -24,8 +24,8 @@ Linux Time Chaos injects chaos to change the time of the linux machine
       </tr>
        <tr>
         <td> offset </td>
-        <td> Time offset to increment and decrement the system time</td>
-        <td> Offset should be provided in (+/-)[<numeric-offset><unit>]+ format. It supports m,s,h units </td>
+        <td> Time offset to increment or decrement the system time. Should be provided in <code>(+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format.</td>
+        <td> For example: <code>+24h</code>, <code>-13h12m</code>, <code>-3h12m16s</code> </td>
       </tr>
       <tr>
       <td> disableNTP </td>
@@ -47,7 +47,7 @@ Linux Time Chaos injects chaos to change the time of the linux machine
 
 ### Offset
 
-It contains the time offset to increment and decrement the system time. It should be provided in (+/-)[<numeric-offset><unit>]+ format. Tune it by using the `offset` input.
+It contains the time offset to increment and decrement the system time. It should be provided in (+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s format. Tune it by using the `offset` input.
 
 Use the following example to tune the offset:
 
