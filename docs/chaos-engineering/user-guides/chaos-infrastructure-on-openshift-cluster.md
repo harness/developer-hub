@@ -2,26 +2,24 @@
 title: Chaos Infrastructure On OCP Cluster
 sidebar_position: 1
 ---
+You can install [chaos infrastructure](./connect-chaos-infrastructures) in your target environment as a Kubernetes service, Linux daemon, and so on. This section walks you through steps to install chaos infrastructure on Openshift cluster.
 
-### 1. Create or Identify the target namespace and install the Service Accounts
+### 1. Create or identify the target namespace and install the service accounts
 
-Create or Identify the target chaos namespace in which you will deploy the chaos infrastructure.
-
-Here we will be using hce namespace for this purpose.
+Create or identify the target chaos namespace in which you will deploy the chaos infrastructure.
+You will use the `hce` namespace in this case.
 
 ```bash
 kubectl create ns hce
 ```
 
-#### Cluster Mode:
+You can create the service account in the cluster mode or the namespace mode.   
 
-Now create the service accounts using the [cluster-mode-sa.yaml](./static/openshift-installation/cluster-sa.yaml) file. You can download the file and apply it.
+To install in the **cluster mode**, create the service accounts using the [cluster-mode-sa.yaml](./static/openshift-installation/cluster-sa.yaml) file. You can download the file and apply it.
 
-#### Namespace Mode:
+To install in the **namespace mode**, create the service accounts using the [ns-mode-sa.yaml](./static/openshift-installation/namespace-sa.yaml) file. You can download the file and apply it.
 
-Create the service accounts using the [ns-mode-sa.yaml](./static/openshift-installation/namespace-sa.yaml) file. You can download the file and apply it.
-
-If you have a different namespace than hce replace namespace: hce with namespace: `<your-namespace>` in the manifest.
+If you have a different namespace, replace the namespace with `<your-namespace>` in the manifest.
 
 ```bash
 kubectl create cluster-mode-sa.yaml -n  hce
@@ -38,14 +36,11 @@ serviceaccount/argo created
 serviceaccount/litmus-cluster-scope created
 ```
 
-### 2. Create Litmus SCC And authenticate it with Service Account
+### 2. Create Litmus Security Context Constraint (SCC) and authenticate it with the service account
 
-Now we need to create the litmus scc. Please follow the below mentioned steps:
-
-- To get the litmus scc manifest [Click Here](./static/openshift-installation/litmus-scc.yaml).
-- To know more about litmus-scc checkout the [litmus-scc docs](https://developer.harness.io/docs/chaos-engineering/overview/Security/security-templates/openshift-scc).
-
-Copy the litmus-scc manifest to `litmus-scc.yaml` file.
+To create the litmus SCC,
+- Copy the contents of [litmus SCC manifest](./static/openshift-installation/litmus-scc.yaml) to `litmus-scc.yaml` file.
+- Apply this manifest to your chaos infrastructure. 
 
 ```bash
 kubectl apply -f litmus-scc.yaml
@@ -57,19 +52,19 @@ __Output__
 $> kubectl apply -f litmus-scc.yaml
 securitycontextconstraints.security.openshift.io/litmus-scc created
 ```
-Now authenticate all litmus sa with litmus-scc:
-
-Command Format:
+- Authenticate all `hce` service accounts with `litmus-scc`:
 
 ```bash
 oc adm policy add-scc-to-user litmus-scc -z <SERVICE-ACCOUNT-NAME> --as system:admin -n <CHAOS-NAMESPACE>
 ```
 
+:::note
 - Replace `<CHAOS-NAMESPACE>` with the namespace where litmus is installed. (Here litmus)
-- Replace `<SERVICE-ACCOUNT-NAME>` with the name of litmus service accounts.
+- Replace `<SERVICE-ACCOUNT-NAME>` with the name of hce service accounts.
+:::
 
-__Command to do the above operation__
 
+In this case, the exact command is:
 ```bash
 oc adm policy add-scc-to-user litmus-scc -z litmus-admin,argo-chaos,argo,litmus-cluster-scope,default,hce --as system:admin -n hce
 ```
@@ -77,26 +72,27 @@ oc adm policy add-scc-to-user litmus-scc -z litmus-admin,argo-chaos,argo,litmus-
 __Output__
 
 ```bash
-​​clusterrole.rbac.authorization.k8s.io/system:openshift:scc:litmus-scc added: ["litmus-admin" "argo-chaos" "argo" "litmus-cluster-scope" "default" "hce"]
+clusterrole.rbac.authorization.k8s.io/system:openshift:scc:litmus-scc added: ["litmus-admin" "argo-chaos" "argo" "litmus-cluster-scope" "default" "hce"]
 ```
+
+:::tip
+To learn more about SCC, go to [SCC documentation](../overview/Security/security-templates/openshift-scc).
+:::
+
 ### 3. Get the manifest to install chaos infrastructure
 
-Follow the installation steps for HCE [connect chaos infrastructure](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures).
-
-From the HCE platform select the installation mode either cluster scope or namespace scope.
+After [connecting to a chaos infrastructure](./connect-chaos-infrastructures), select the installation mode (cluster scope or namespace scope).
 
 ![configure-chaos-infra](https://user-images.githubusercontent.com/35391335/226420643-6490d8bc-90fc-438e-92cc-f90a736ab374.png)
 
 
-<table>
-  <tr>
-    <td>NOTE: Provide the namespace and service account name. If you're choosing some other name for the Service Account than <b>hce</b> then you need to create it and authenticate with litmus-scc first (step 1&2) before moving forward. </td>
-  </tr>
-</table>
+:::note
+Provide the namespace and the service account name. To use a service account other than `hce`, create a new service account and authenticate it with litmus-scc by following steps 1 and 2.
+:::
 
-### 4. Verify the Installation
+### 4. Verify the installation
 
-Verify if all the pods are in Running State (optional)
+Verify if all the pods are in `Running` state (optional).
 
 ```bash
 $> kubectl get pods -n hce
@@ -109,13 +105,13 @@ subscriber-57798b696b-69vtr            1/1     Running   0          14s
 workflow-controller-67b87685fb-h6k5b   1/1     Running   0          29s
 ```
 
-Check if the chaos infrastructure sate is turned to connected as shown below:
+Ensure that the state of the chaos infrastructure is `CONNECTED`.
 
 ![verify-chaos-infra-state](https://user-images.githubusercontent.com/35391335/226423314-b00555de-c999-42f5-97cb-deea51a81e95.png)
 
-### 5. Run Chaos Experiments
+### 5. Run chaos experiments
 
-If you’re running Kubernetes experiments. You may need to update or add these ENVs while tuning your fault.
+To run Kubernetes experiments, you need to tune the parameters associated with the fault. You can update or add the below mentioned environment variables while tuning the faults.
 
 ```yaml
 - name: CONTAINER_RUNTIME
