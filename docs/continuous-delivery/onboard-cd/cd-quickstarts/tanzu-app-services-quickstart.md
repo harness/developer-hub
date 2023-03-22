@@ -114,10 +114,14 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
    value: ""  
    ```
 3. Replace `value: ""` with the following script to install CF CLI, `autoscaler`, and `Create-Service-Push` plugins.
+
+   :::info
+   Make sure to use your API token for pivnet login in the following script.
+   :::
    
    ```
-- name: INIT_SCRIPT  
-  value: |
+   - name: INIT_SCRIPT  
+   value: |
     dnf install -y wget
     wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | rpm --import -
     echo -e "[cloudfoundry-cli]\nname=cloudfoundry-cli\nbaseurl=https://packages.cloudfoundry.org/rpm/centos/7/\$basearch\nenabled=1\ngpgcheck=1" | tee /etc/yum.repos.d/cloudfoundry-cli.repo
@@ -189,7 +193,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
 
 ## Create the Harness TAS service
 
-Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
+Harness services represent your microservices or applications. You can add the same service to as many stages as you need. Services contain your artifacts, manifests, config files, and variables. For more information, go to [services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 
 ### Create a new service
 
@@ -401,20 +405,20 @@ Now the pipeline stage is complete and can be deployed.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Blue/Green" label="Blue/Green">
+  <TabItem value="Blue Green" label="Blue Green">
 ```
 Harness TAS blue green deployments use the route(s) in the TAS manifest and a temporary route you specify in the deployment configuration.
 
-The blue/green deployment deploys the applications using the temporary route first using the **App Setup** configuration. Next, in the **App Resize** configuration, Harness maintains the number of instances at 100% of the `instances` specified in the TAS manifest.
+The blue green deployment deploys the applications using the temporary route first using the **App Setup** configuration. Next, in the **App Resize** configuration, Harness maintains the number of instances at 100% of the `instances` specified in the TAS manifest.
 
 Use this deployment method when you want to perform verification in a full production environment, or when you want zero downtime.
 
-For blue/green deployments, by default, the **App Resize** step is 100% because it does not change the number of instances as it did in the canary deployment. However, you can define the percentage in the **App Resize** step. In blue/green, you are deploying the new application to the number of instances set in the **App Setup** step and keeping the old application at the same number of instances. You 
+For blue green deployments, by default, the **App Resize** step is 100% because it does not change the number of instances as it did in the canary deployment. However, you can define the percentage in the **App Resize** step. In blue green, you are deploying the new application to the number of instances set in the **App Setup** step and keeping the old application at the same number of instances. You 
 
 Once the deployment is successful, the **Swap Routes** configuration switches the networking routing, directing production traffic (green) to the new application and stage traffic (blue) to the old application.
 
-1. In Execution Strategies, select **Blue/Green**, and then click **Use Strategy**.
-2. The blue/green execution steps are added. 
+1. In Execution Strategies, select **Blue Green**, and then click **Use Strategy**.
+2. The blue green execution steps are added. 
    
    ![](./static/bg-deployment.png)
 
@@ -426,7 +430,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
     4. **Existing Versions to Keep** - Enter the number of existing versions you want to keep. This is to roll back to a stable version if the deployment fails.
     5. **Additional Routes** - Add additional routes in addition to the routes added in the TAS manifest.
    
-       Additional routes has two uses in blue/green deployments.
+       Additional routes has two uses in blue green deployments.
        * Select the routes that you want to map to the application in addition to the routes already mapped in the application in the manifest in your Harness service.
        * You can also omit routes in the manifest in your Harness service, and select them in **Additional Routes**. The routes selected in **Additional Routes** will be used as the final (green) routes for the application.
     6. **Temporary Routes** - Add temporary routes in addition to additional routes.
