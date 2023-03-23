@@ -9,7 +9,8 @@ STO assigns a *severity score* to each detected vulnerability. Each score is bas
 
 Each detected issue in STO has a severity score (from 0 to 10) and severity level (Info, Low, Medium, High, or Critical). STO classifies severities as follows.
 
-Severity scores
+### Severity scores
+
 Severity scores are based on the [Common Vulnerability Scoring System v3.1 specification](https://www.first.org/cvss/examples). CVSS is a common framework for classifying the severity and characteristics of known software vulnerabilities. CVSS calculates each score using an extensive set of metrics that considers factors such as:
 
 * How easy it is to exploit the vulnerability.
@@ -79,6 +80,6 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
     <tr>
         <td>INFO</td>
         <td>0 - 2</td>
-        <td>A software or other issue that has no security impact: bugs, incorrect API calls, code smells, etc. </td>
+        <td>A software or other issue that has no security impact. For example: bugs, incorrect API calls, code smells, and so on. </td>
     </tr>
 </tbody></table>
