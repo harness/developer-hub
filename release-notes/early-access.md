@@ -1,6 +1,6 @@
 ---
 title: Early Access
-date: 2023-03-15T10:00
+date: 2023-03-23T10:00
 sidebar_position: 2
 ---
 
@@ -12,6 +12,13 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 23, 2023, version 788xx
+
+### Harness Platform
+
+- By enabling the feature flag `PL_NEW_SCIM_STANDARDS`, any CRUD operation on a user now returns user group details. (PL-31496)
+
+  You can use this to verify what groups a given user belongs to.
 
 ## March 15, 2023, version 78712
 

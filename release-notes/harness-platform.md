@@ -1,7 +1,7 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-03-15T10:00
+date: 2023-03-23T10:00
 sidebar_position: 10
 ---
 
@@ -16,6 +16,54 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 23, 2023, version 788xx
+
+### What's new
+
+- You can now add service accounts to your resource group. (PL-31867)
+  
+  By doing this, you can prevent accidental or deliberate misuse of API keys by restricting who can generate them from what service accounts.
+
+- You can now enter usernames as a comma separated string while adding users in **Users(name or email)**. (PL-29630)
+  
+### Early access
+
+- By enabling the feature flag `PL_NEW_SCIM_STANDARDS`, any CRUD operation on a user now returns user group details. (PL-31496)
+
+  You can use this to verify what groups a given user belongs to.
+
+### Fixed issues
+
+- A failed decryption of secrets managed by the Harness Secret Manager causes the secret value inside values.yaml to be resolved as null. (PL-32043)
+  
+  The pipeline execution now fails with an exception if there is a failure in decrypting secrets.
+
+- Despite having an active license, the CD module is not visible. (PLG-2047)
+  
+  A code enhancement has fixed this issue.
+
+- SMTP configurations with special characters in the SMTP configuration name throw an `Invalid request` error. The SMTP configuration name is also used as the SMTP secret and secrets should not have any special characters. (PL-31774, ZD-40679)
+
+  This issue has been fixed by replacing special characters in SMTP configuration names with `-` before creating secret.
+
+- User invites throw an `Invalid request` error when 2FA is enabled in the Account scope. (PL-31276)
+ 
+    A code enhancement has fixed this issue.
+
+- A Harness account link that doesn't contain `#` but includes an account Id without any routing Id details, crashes the gateway with a `HTTPHeader too long exception`. This results in an `HTTP 413` response code. (PL-31154)
+ 
+  Addition of a cluster URL for remote entry files has fixed this issue.
+
+- Connectors are not sorted alphabetically on the **Connectors** page. (PL-27510)
+
+  A code enhancement has fixed this issue.
+  
+- Clicking **Retry** does not display the list of pipelines in the **Pipelines** page.  (PIE-8874)
+
+  A code enhancement has fixed this issue.
+
+
 
 ## March 15, 2023, version 78712
 
