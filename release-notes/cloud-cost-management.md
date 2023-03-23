@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-03-07T10:00
+date: 2023-03-23T10:00
 sidebar_position: 5
 ---
 
@@ -13,7 +13,34 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## March 6, 2023
+## March 13, 2023
+
+### What's new
+* Cost Category enhancements (CCM-10280)
+
+  - When calculating the cost for `Unattributed`, the rules present in the shared cost bucket are not considered to eliminate duplicate costs.
+  - If **Cost Category** is `NOT NULL` in a perspective, it means all cost buckets are considered. `Unattributed` is not taken into account.
+  - If the **Cost Category** is `NULL`, it indicates that the cost buckets are not considered in the perspective. `Unattributed` is taken into account.
+  - Previously, all shared cost buckets were displayed as `No Groupby`. Now, when you apply a GroupBy option other than the cost category, the cost of the rules present in the shared cost bucket are displayed in a separate entity based on the GroupBy selection you have made. However, it is important to note that this change will be effective only if you have incorporated cost category with shared buckets in perspective rules.
+
+
+### Early access
+This release does not include any early access features.
+
+
+### Fixed issues
+
+* Previously, deleting a cost category caused the perspectives that utilized the cost category in their rule or GroupBy to crash. (CCM-9902)
+
+  This issue has been fixed. Now, before the cost category is deleted, you will receive a prompt to perform one of the following actions:
+   - Delete any perspectives that depend on the cost category.
+   - Remove the cost category from the perspective's rule or GroupBy.
+
+* When you edit an AutoStopping rule in which the **Health Check** option is disabled, it is enabled when the client-side data is fetched. (CCM-11472)
+ 
+  This issue has been fixed. Now, the Health Check option remains disabled when you edit the AutoStopping rule.
+
+## March 06, 2023
 
 ### What's new
 This release does not include any new features.
@@ -37,7 +64,7 @@ This release does not include any early access features.
    This issue has been fixed now, and you can successfully delete a Recommendation filter without any error messages. 
 
 
-## March 1, 2023
+## March 01, 2023
 
 ### What's new
 
@@ -132,7 +159,7 @@ This release does not include any early access features.
 
 
 
-## January 4, 2023
+## January 04, 2023
 
 ### What's new
 This release does not include any new features.
@@ -172,7 +199,7 @@ This release does not include any fixed issues.
 - The messages in budget alert notification emails were misleading. Now, the emails convey more meaningful and dynamic messages. They provide the cost type and the period for which the alert is created. (CCM-9291)
 
 
-## December 7, 2022, version 77716
+## December 07, 2022, version 77716
 
 ### What's new
 
@@ -224,7 +251,7 @@ NA
 
   Now, this issue is fixed.
 
-## November 6, 2022, version 77317
+## November 06, 2022, version 77317
 
 ### What's new
 
@@ -260,7 +287,7 @@ The AWS cost shown in the Perspective section and the dashboard mismatched. Dupl
 
 This issue is resolved.
 
-## October 7, 2022, version 77025
+## October 07, 2022, version 77025
 
 Delegate version: 77021
 
