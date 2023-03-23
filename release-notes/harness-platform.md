@@ -45,11 +45,11 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - SMTP configurations with special characters in the SMTP configuration name throw an `Invalid request` error. This happens because the SMTP configuration name is used to construct the secret name, and secret names should not have any special characters. (PL-31774, ZD-40679)
 
-  This issue has been fixed by replacing special characters in SMTP configuration names with `-` before creating secret.
+  This issue has been fixed by replacing special characters in SMTP configuration names with `-` before creating secrets.
 
 - User invites throw an `Invalid request` error when 2FA is enabled in the Account scope. (PL-31276)
  
-    A code enhancement has fixed this issue.
+  A code enhancement has fixed this issue.
 
 - A Harness account link that doesn't contain `#` but includes an account Id without any routing Id details crashes the gateway with `HTTPHeader too long exception`. This results in an `HTTP 413` response code. (PL-31154)
  
