@@ -43,7 +43,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   A code enhancement has fixed this issue.
 
-- SMTP configurations with special characters in the SMTP configuration name throw an `Invalid request` error. This happens because the SMTP configuration name is used to construct the secret name and secret names should not have any special characters. (PL-31774, ZD-40679)
+- SMTP configurations with special characters in the SMTP configuration name throw an `Invalid request` error. This happens because the SMTP configuration name is used to construct the secret name, and secret names should not have any special characters. (PL-31774, ZD-40679)
 
   This issue has been fixed by replacing special characters in SMTP configuration names with `-` before creating secret.
 
