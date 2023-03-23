@@ -20,9 +20,9 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Harness Platform
 
-- You can now add service accounts to your resource group. (PL-31867)
+- You can now add specific service accounts to your resource group. (PL-31867)
   
-  By doing this, you can prevent accidental or deliberate misuse of API keys by restricting who can generate them from what service accounts.
+  By doing this, you can prevent accidental or deliberate misuse of API keys by restricting who can generate them from which service accounts.
 
 - You can now enter usernames as a comma separated string while adding users in **Users(name or email)**. (PL-29630)
   
