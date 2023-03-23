@@ -13,6 +13,27 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 21, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags Server
+
+The FF server has been upated to version 1.968.0 and includes the following updates:
+
+* When searching for a flag, the search filter sometimes failed if the flag description was null rather than empty. This issue has been fixed. (FFM-7213)
+* When using GitSync to save a flag with a floating point value, the feature flag service generated an error.
+The service now correctly handles floating point numbers saved from Git. (FFM-7118)
+
+
 ## March 16, 2023
 
 ### What's new

@@ -58,7 +58,7 @@ In the Execution tab, add a [Background step](../../ci-technical-reference/backg
 In the Execution tab, add a [Run Step](../../ci-technical-reference/run-step-settings.md) and configure it as follows:
 
 * **Container Registry:** A Connector to your Docker registry.
-* **Image:** The Docker image that you want to run the **Run** step in.
+* **Image:** The Docker image, with the Docker binary, that you want to run the **Run** step in.
 * **Command:** Enter the shell commands you want to run in the dind container.
 
 Once the container is started, the software inside the container takes time to initialize and start accepting connections. Give the service adequate time to initialize before trying to connect. You can use a `while` loop, as shown here:
