@@ -75,17 +75,17 @@ You can add multiple keys for the same environment if your organization needs to
 
 ## Create a boolean Flag
 
-Harness Feature Flags support boolean and multivariate flagtypes. This quickstart uses a boolean Flag, which has only two variations, `true` or `false`.
+Harness Feature Flags support boolean and multivariate flag types. This quickstart uses a boolean Flag, which has only two variations, `true` or `false`.
 
 To create a boolean Flag:
 
 1. In **Feature Flags**, click **Flag**.
 2. Select the **Boolean** type.
-3. In **About the Flag**, in **Name**, enter a name for your boolean flagand click **Next**.  
+3. In **About the Flag**, in **Name**, enter a name for your boolean flag and click **Next**.  
 When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
 
 :::note
-If you need to make the flaga permanent Flag, select the checkbox **This is a permanent flag**.
+If you need to make the flag a permanent Flag, select the checkbox **This is a permanent flag**.
 :::
 
 4. In **Variation settings**, complete the following:
@@ -93,14 +93,14 @@ If you need to make the flaga permanent Flag, select the checkbox **This is a p
 	1. **Select the flag type**: In **Flag Type**, select **Boolean**.
 	2. **Define the variation**: In boolean, you can have only two variations `true` or `false`.
 		1. Enter a name for your variations. For example, `Enable_Feature` and `Disable_Feature`.
-	3. **Define rules for the flag**: Defines which variation you will go to by default when the flagis ON or OFF. Once you save the variations, a flagis created for the environment with these variations set as ON and OFF.  
+	3. **Define rules for the flag**: Defines which variation you will go to by default when the flag is ON or OFF. Once you save the variations, a flag is created for the environment with these variations set as ON and OFF.  
 	For example:  
 	- If the flag is `ON`, serve the variation `Enable_Feature`.  
 	- If the flag is `OFF`, serve the variation `Disable_Feature`.
-5. Click **Save and Close**. The Feature Flag is created. By default, the flagis set to OFF.
+5. Click **Save and Close**. The Feature Flag is created. By default, the flag is set to OFF.
 
 :::note
-Once you have created your flagtype, optionally you can [manage targets](../../ff-using-flags/ff-target-management/add-targets.md) and modify the [variations](../../ff-using-flags/update-feature-flags/manage-variations.md), [rules](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md), and [add prerequisites](../../ff-using-flags/add-prerequisites-to-feature-flag.md) of your flag.
+Once you have created your flag type, optionally you can [manage targets](../../ff-using-flags/ff-target-management/add-targets.md) and modify the [variations](../../ff-using-flags/update-feature-flags/manage-variations.md), [rules](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md), and [add prerequisites](../../ff-using-flags/add-prerequisites-to-feature-flag.md) of your flag.
 :::
 
 ## Use Harness Feature Flags SDKs with Java applications
@@ -111,15 +111,15 @@ In a nutshell, here is how the server-side SDK works:
 2. The configuration is fetched and cached in the memory.
 	* One call to fetch all Feature Flag configurations for the environment.
 	* One call to fetch all Target Group configurations for the environment.
-3. The SDK maintains all the Feature Flag details locally in its cache and evaluates Flags based on it. The SDKs use streaming and polling strategy to keep the local cache in sync with the flagconfigurations.
+3. The SDK maintains all the Feature Flag details locally in its cache and evaluates Flags based on it. The SDKs use streaming and polling strategy to keep the local cache in sync with the flag configurations.
 
 
 
 | **Streaming Mode** | **Polling Mode** |
 | ------------------ | ---------------- |
 | In the case of streaming mode, a connection is open to the stream endpoint. | Config is polled periodically (default 60 seconds), and the cache is updated. |
-| Anytime the flagconfiguration updates, a stream event (indicating which Flag/Target Group changed) is pushed to the application on this connection. | |
-|SDK fetches the latest flagconfiguration for the Flag/Target group specified in the event and updates the cache.| | 
+| Anytime the flag configuration updates, a stream event (indicating which Flag/Target Group changed) is pushed to the application on this connection. | |
+|SDK fetches the latest flag configuration for the Flag/Target group specified in the event and updates the cache.| | 
 
 4. All the Evaluations are run against the cached data.
 
@@ -192,6 +192,6 @@ boolean result = cfClient.boolVariation("toggle", target, false);
 ```
 ### Test your Flag
 
-Verify flagconfiguration updates in your code. SDK maintains all the Feature Flag details locally in its cache and evaluates Flags based on it. The SDKs use streaming and a polling strategy to keep the local cache in sync with the flagconfigurations.
+Verify flag configuration updates in your code. SDK maintains all the Feature Flag details locally in its cache and evaluates Flags based on it. The SDKs use streaming and a polling strategy to keep the local cache in sync with the flag configurations.
 
 
