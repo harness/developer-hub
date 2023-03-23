@@ -1,5 +1,5 @@
 ---
-title: Github Action plugin step settings
+title: GitHub Action plugin step settings
 description: Run Github Actions in your Harness CI pipelines.
 sidebar_position: 1
 ---
