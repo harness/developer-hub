@@ -13,7 +13,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## March 21, 2023
+## March 23, 2023
 
 ### What's new
 
@@ -35,7 +35,7 @@ The **Node.js server SDK** has been updated to version **1.2.14** with the follo
 * The SDK now logs each retry, ensuring the most up-to-date error is logged in case errors change during retries. (FFM-7198)
 
 
-## March 21, 2023
+## March 23, 2023
 
 ### What's new
 
