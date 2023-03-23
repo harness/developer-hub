@@ -14,6 +14,22 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 24, 2023
+
+### New features
+
+* This release does not include new features
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed Issues
+
+* Fixed an issue that caused OWASP scans of Go apps to fail with the message `[ERROR] Unexpected exception occurred initializing Golang Mod Analyzer`. (STO-5602)
+* Fixed a UI issue in the Issue Details panel that caused some redundant fields such as `CWE` to appear. (CI-5365)
+
+
 
 ## March 20, 2023
 
