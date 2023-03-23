@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Security Chaos",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Security Chaos faults documentation"
+  }
+}
