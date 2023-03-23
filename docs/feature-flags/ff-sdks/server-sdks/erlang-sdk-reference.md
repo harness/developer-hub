@@ -285,12 +285,20 @@ To close the SDK, run one of the following commands.
 
 ### Run multiple instances of the SDK
 
-Normally, there is a single Harness [project](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/) per application. If different parts of your
-application need to use specific projects, you can start up additional client instances using a `project_config` for each unique project.
+The SDK by default starts up a single instance called `default` which is configured with your project API key.
+If different parts of your application need to use 
+specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
+
+*Note: if the default instance fails to start, for example due to an authentication error with the API key, then the SDK
+will fail to boot and any additional instances won't start. You can disable the default instance from starting, 
+see [Erlang Project Config](#erlang-project-config) and [Elixir Project Config](#elixir-project-config) 
 
 #### Erlang Project Config
  
-1. Create project configurations for each new instance you would like to start in your `config/sys.config` file:
+1. Create project configurations for each new instance you would like to start in your `config/sys.config` file.
+   The additional project config is defined in `sys.config`
+
+    The following `sys.config` snippet starts up two additional instances along with the default instance:
 
     ```erlang
     [
@@ -306,8 +314,8 @@ application need to use specific projects, you can start up additional client in
           %% The API key for the Harness project you want to use with this SDK instance.
           {api_key, {environment_variable, "PROJECT_1_API_KEY"}}]
         }
-      ]
-    },
+      ]},
+      
       {harness_project_2_config, [
         {cfclient, [
           {config, [
@@ -315,7 +323,36 @@ application need to use specific projects, you can start up additional client in
           ]},
           {api_key, {environment_variable, "PROJECT_2_API_KEY"}}]
         }
-      ]].
+      ]},
+    
+      {cfclient, [
+        {api_key, {environment_variable, "FF_API_KEY"}},
+        {config, [
+          {config_url, "https://config.ff.harness.io/api/1.0"},
+          {events_url, "https://config.ff.harness.io/api/1.0"}
+        ]},
+        {analytics_push_interval, 60000}
+      ]
+    }].
+    ```
+    
+   If you don't require the default instance to be started up, you can do:
+
+    ```erlang
+      
+      % ... additional project config
+      
+      {cfclient, [
+        {start_default_instance, false},
+        %% The remaining tuples will be ignored, so you can choose to include or omit them.
+        {api_key, {environment_variable, "FF_API_KEY"}},
+        {config, [
+          {config_url, "https://config.ff.harness.io/api/1.0"},
+          {events_url, "https://config.ff.harness.io/api/1.0"}
+        ]},
+        {analytics_push_interval, 60000}
+      ]
+    },
     ```
 
 2. In your application supervisor, e.g. `src/myapp_sup.erl`, start up a `cfclient_instance`
@@ -443,6 +480,17 @@ application need to use specific projects, you can start up additional client in
     
         Logger.info(
           "SDK instance 2: Variation for Flag #{project_2_flag} with Target #{inspect(target)} is: #{project_2_result}"
+        )
+    
+        Process.sleep(10000)
+        getFlagLoop()
+   
+        # Default instance
+        default_project_flag = "defaultflag"
+        default_project_result = :cfclient.bool_variation(default_project_flag, target, false)
+    
+        Logger.info(
+          "Default instance: Variation for Flag #{default_project_flag} with Target #{inspect(target)} is: #{default_project_result}"
         )
     
         Process.sleep(10000)
