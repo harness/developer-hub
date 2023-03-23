@@ -7,6 +7,6 @@ id: kb
 slug: /
 ---
 
-# Knowledge Base Coming Soon
+# Knowledge Base 
 
-Knowledge Base is coming soon to the Harness Developer Hub. You can find the [existing KB on Harness Community](https://community.harness.io/c/harness-experts/10).
+The [Knowledge Base](https://community.harness.io/c/harness-experts/10) is migrating to the Harness Developer Hub.
