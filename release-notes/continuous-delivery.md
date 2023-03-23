@@ -45,7 +45,7 @@ This release does not include any early access features.
 
 - The API call to create a global freeze window succeds but the UI doesn't refelct the same. (CDS-55092)
 
-  If a freeze window was inactive during the API call, it was updated and marked as disabled.
+  If a global freeze window was inactive during the API call, it was updated and marked as disabled.
   
   This issue is fixed. Changes are made to check the current or upcoming window to mark them as disabled during the API call.
 - The commit Ids are not displayed properly when the feature flag, `OPTIMIZED_FETCH_FILE` is disabled. (CDS-55062)
@@ -92,19 +92,16 @@ This release does not include any early access features.
 - The **Version** drop-down list for a service displays an invalid error message when the parent **Version** field in the **Artifact Details** page is left empty. (CDS-54202)
   
   This issues is now fixed. Error message for the **Version** drop-down list is now improved to convey the error properly.
-- Harness is unable to fetch the Helm chart version if connector is set as an expression. (CDS-54147)
-  
-  This issue is fixed by adding runtime support for fetching Helm chart versions when connector is configured as an expression. 
 - Harness is unable to fetch Docker images even if the service account has proper permissions. (CDS-54085)
   
   The tag list is limited to 1000 tags causing tag fetch failure if the tag provided was unavailable in the list. This issue is fixed now by using manifest APIs. These APIs help fetch Docker tags. 
-- The **Apply** step for a Kubernetes manifest type returns an error if the file path starts with a forward slash. (CDS-54073)
+- The **Apply** step for a Helm manifest type returns an error if the file path starts with a forward slash. (CDS-54073)
 
   This issue is now fixed by supporting file path with or without forward slash as a leading character.
 - The error message displayed for a failed OpenShift CLI (OC) process is unclear. (CDS-54052)
 
   This issue is fixed. The error messages for OpenShift deployments now displays proper error summary. 
-- The pipeline execution for a Helm subchart fails and displays an unclear error message if a bad value (for example, whitespace) is added for the subchart during Helm chart manifest setup. (CDS-54040)
+- The pipeline execution for a Helm subchart fails and displays an unclear error message if the subchart in a Helm chart manifest has a bad value (for example, whitespace) in its name. (CDS-54040)
   
   The error message displayed during pipeline execution failure now conveys proper error summary.
 - Unable to deploy workloads when using Harness local store for native Helm deployments. (CDS-53937)
@@ -112,13 +109,13 @@ This release does not include any early access features.
   This issue is fixed by adding support for using Harness local store with native Helm deployments.
 - Unable to delete a Kustomize patch entry once it is added when configuring a Kubernetes manifest type. (CDS-53749)
   
-  A delete button is now added to allow users to delete values YAML, OpenShift params, and Kustomize patches that are no longer needed. File path validation is also done to check of file path is not blank.
+  A delete button is now added to allow users to delete values YAML, OpenShift params, and Kustomize patches that are no longer needed. File path validation is also done to ensure that file paths with empty strings are not saved.
 - Unable to filter environments by using the search bar in the **Create or Select Existing Environment** dialog. (CDS-53713)
 
   This issue is now fixed.
 - The **Environments** section under the **Template Inputs** tab of a selected template appears empty if infrastructure inputs are not required when deploying to all infrastructures under an environment. (CDS-53712)
 
-  If infrastructure inputs are not required when deploying to all infrastructure in an environment, the message is displayed under the **Environments** section under each environment.
+  If infrastructure inputs are not required when deploying to all infrastructure in an environment, the message is displayed under the **Environments** section.
 - YAML validation succeeds even when whitespaces are added in the command flags of a Helm chart. (CDS-53708)
 
   This issue is fixed. Command flag cannot be empty anymore.
@@ -227,6 +224,15 @@ connector:
   </TabItem1>
 </Tabs1>
 ```
+- The **App Resize** parameter support for Tanzu Application Services (TAS, formerly PCF) canary deployment strategy. (CDS-53201)
+
+  The TAS canary deployment strategy now supports adding **App Resize** steps. It is supported as a runtime parameter. 
+
+  The parameters of the **App Resize** step are: 
+    * **Name** - Deployment step name.
+    * **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    * **Total Instances** - Number or percentage of running instances you want to keep.
+    * **Desired Instances - Old Version** - Number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
 
 ### Early access
 
