@@ -15,10 +15,10 @@ import { experiments } from "./experiments"
 
 Linux faults disrupt the resources running on a Linux machine.
 
-### Fault compatibility matrix
+## Fault compatibility matrix
 The faults have been tested for compatibility in the following Linux OS distributions:
 
-|                                                 | stress faults (cpu, memory, disk IO) | network faults (loss, latency, corruption, duplication) | DNS faults (error, spoof) | process faults (process kill, service restart) | time chaos |
+|                                                 | stress faults (CPU, memory, disk IO) | network faults (loss, latency, corruption, duplication) | DNS faults (error, spoof) | process faults (process kill, service restart) | time chaos |
 |-------------------------------------------------|--------------------------------------|---------------------------------------------------------|---------------------------|------------------------------------------------|------------|
 | Ubuntu 16+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          |
 | Debian 10+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          |
@@ -77,6 +77,54 @@ Linux Disk IO Stress fault stresses the disk of the target Linux machines over I
 <accordion color="green">
 <summary>View fault usage</summary>
 Checks how the application functions under high disk latency conditions, when IO traffic is high and includes large I/O blocks, and when other services monopolize the IO disks.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux network loss
+Linux Network Loss injects chaos to disrupt network connectivity in linux machine by blocking the network requests.
+
+<accordion color="green">
+<summary>View fault usage</summary>
+Simulates loss of connectivity access by blocking the network requests of the Linux machine.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux network latency
+Linux Network Latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
+
+<accordion color="green">
+<summary>View fault usage</summary>
+Simulates latency in connectivity access by delaying the network requests of the machine.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux network duplication
+Linux Network Duplication injects chaos to disrupt network connectivity in Linux machine by duplicating network packets.
+
+<accordion color="green">
+<summary>View fault usage</summary>
+Simulates packet duplication in connectivity access of the machine.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux network corruption
+Linux Network Corruption injects chaos to disrupt network connectivity in Linux machine by corrupting the network requests.
+
+<accordion color="green">
+<summary>View fault usage</summary>
+Simulates corruption in network by corrupting the network requests of the machine.
 </accordion>
 
 </FaultDetailsCard>

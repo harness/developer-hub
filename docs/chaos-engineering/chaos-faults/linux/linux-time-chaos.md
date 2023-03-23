@@ -9,7 +9,6 @@ Linux Time Chaos injects chaos to change the time of the Linux machine.
 - Determines the resiliency of the underlying application components when subjected to a change in the system time.
 
 :::note
-
 - This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::

@@ -23,6 +23,34 @@ export const experiments: ExperimentDetails[] = [
     category: "linux",
   },
   {
+    name: "Linux network loss",
+    description:
+      "Linux Network Loss injects chaos to disrupt network connectivity in Linux machine by blocking the network requests.",
+    tags: ["linux","network","loss"],
+    category: "linux",
+  },
+  {
+    name: "Linux network latency",
+    description:
+      "Linux Network Latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.",
+    tags: ["linux","network","latency"],
+    category: "linux",
+  },
+  {
+    name: "Linux network corruption",
+    description:
+      "Linux Network Corruption injects chaos to disrupt network connectivity in linux machine by corrupting the network requests.",
+    tags: ["linux","network","corruption"],
+    category: "linux",
+  },
+  {
+    name: "Linux network duplication",
+    description:
+      "Linux Network Duplication injects chaos to disrupt network connectivity in linux machine by duplicating network packets.",
+    tags: ["linux","network","duplication"],
+    category: "linux",
+  },
+  {
     name: "Linux process kill",
     description:
       "Linux Process Kill fault kills the target processes running on Linux machines.",
