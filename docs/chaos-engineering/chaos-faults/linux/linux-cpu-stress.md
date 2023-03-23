@@ -1,8 +1,8 @@
 ---
 id: linux-cpu-stress
-title: Linux CPU Stress
+title: Linux CPU stress
 ---
-Linux CPU Stress fault stresses the CPU of the target Linux machines for a certain duration.
+Linux CPU stress fault applies stress on the CPU of the target Linux machines for a specific duration.
 
 ## Use cases
 - Induces CPU stress on the target Linux machines.
@@ -10,45 +10,43 @@ Linux CPU Stress fault stresses the CPU of the target Linux machines for a certa
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the machine.
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
+- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
-  <h3>Mandatory fields</h3>
-    <h3>Optional fields</h3>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-       <tr>
-        <td> load </td>
-        <td> Percentage load to be exerted on a single CPU core. </td>
-        <td> Defaults to 100. </td>
-      </tr>
-      <tr>
-        <td> workers </td>
-        <td> Number of worker processes to start. Corresponds to the number of CPU cores to consume. </td>
-        <td> Defaults to 1. </td>
-      </tr>
-      <tr>
-        <td> duration </td>
-        <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30. </td>
-      </tr>
-      <tr>
-        <td> rampTime </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Defaults to 0. </td>
-      </tr>
-    </table>
-
+<h3>Optional fields</h3>
+<table>
+  <tr>
+    <th> Variables </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> load </td>
+    <td> Percentage load to be exerted on a single CPU core. </td>
+    <td> Default: 100%. </td>
+  </tr>
+  <tr>
+    <td> workers </td>
+    <td> Number of worker processes to start. Corresponds to the number of CPU cores to consume. </td>
+    <td> Default: 1. </td>
+  </tr>
+  <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
+    <td> Default: 30s. </td>
+  </tr>
+  <tr>
+    <td> rampTime </td>
+    <td> Period to wait before and after injecting chaos (in seconds). </td>
+    <td> Default: 0s. </td>
+  </tr>
+</table>
 
 ### Workers
 
-It specifies the workers value that will be utilized for the CPU stress fault. Tune it by using the `workers` input.
+The `workers` input variable utilizes a specific number of workers for the CPU stress fault.
 
 Use the following example to tune the number of workers:
 
@@ -67,11 +65,11 @@ spec:
     load: 100
 ```
 
-### Load Percentage
+### Load percentage
 
-It specifies the CPU load percentage exerted per core. Tune it by using the `load` input.
+The `load` input variable exerts the CPU load (in percentage) per core.
 
-Use the following example to tune load percentage:
+Use the following example to tune the load percentage:
 
 [embedmd]:# (./static/manifests/linux-cpu-stress/load.yaml yaml)
 ```yaml

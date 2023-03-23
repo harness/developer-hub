@@ -1,59 +1,57 @@
 ---
 id: linux-time-chaos
-title: Linux Time Chaos
+title: Linux time chaos
 ---
-Linux Time Chaos injects chaos to change the time of the linux machine
+Linux time chaos injects chaos to change the time of the Linux machine.
 
 ## Use cases
-- Induces Time chaos on the target Linux machines.
-- It changes the time of the linux machine
+- Induces time chaos to change the system time on the target Linux machines.
+- Determines the resiliency of the underlying application components when subjected to a change in the system time.
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
+- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
-  <h3>Mandatory fields</h3>
-    <h3>Optional fields</h3>
-    <table>
-      <tr>
-        <th> Variables </th>
-        <th> Description </th>
-        <th> Notes </th>
-      </tr>
-       <tr>
-        <td> offset </td>
-        <td> Time offset to increment and decrement the system time</td>
-        <td> Offset should be provided in (+/-)[<numeric-offset><unit>]+ format. It supports m,s,h units </td>
-      </tr>
-      <tr>
-      <td> disableNTP </td>
-      <td> Set it to disable the ntp server </td>
-      <td> It supports boolean values </td>
-      </tr>
-      <tr>
-        <td> duration </td>
-        <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30 </td>
-      </tr>
-      <tr>
-        <td> rampTime </td>
-        <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> Defaults to 0. </td>
-      </tr>
-    </table>
-
+<h3>Optional fields</h3>
+<table>
+  <tr>
+    <th> Variables </th>
+    <th> Description </th>
+    <th> Notes </th>
+  </tr>
+  <tr>
+    <td> offset </td>
+    <td> Time offset to increment or decrement the system time. Should be provided in <code>(+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s</code> format.</td>
+    <td> For example: <code>+24h</code>, <code>-13h12m</code>, <code>-3h12m16s</code> </td>
+  </tr>
+  <tr>
+    <td> disableNTP </td>
+    <td> Set it to disable the NTP server. </td>
+    <td> Defaults to <code>true</code> </td>
+  </tr>
+  <tr>
+    <td> duration </td>
+    <td> Duration through which chaos is injected into the target resource (in seconds). </td>
+    <td> Default: 30s </td>
+  </tr>
+  <tr>
+    <td> rampTime </td>
+    <td> Period to wait before and after injecting chaos (in seconds). </td>
+    <td> Default: 0s </td>
+  </tr>
+</table>
 
 ### Offset
 
-It contains the time offset to increment and decrement the system time. It should be provided in (+/-)[<numeric-offset><unit>]+ format. Tune it by using the `offset` input.
+The `offset` input variable increments and decrements the system time using time offset. It is specified in (+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s format. 
 
 Use the following example to tune the offset:
 
-[embedmd]:# (./static/manifests/linux-dns-spoof/offset.yaml yaml)
+[embedmd]:# (./static/manifests/linux-time-chaos/offset.yaml yaml)
 ```yaml
-# time offset 
+# time offset
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -67,13 +65,13 @@ spec:
 
 ### DisableNTP
 
-It prevents the fault to disable the ntp server. Tune it by using the `disableNTP` input.
+The `disableNTP` input variable prevents the fault from disabling the NTP server.
 
-Use the following example to tune the offset:
+Use the following example to tune the disableNTP:
 
-[embedmd]:# (./static/manifests/linux-dns-spoof/offset.yaml yaml)
+[embedmd]:# (./static/manifests/linux-time-chaos/disable-ntp.yaml yaml)
 ```yaml
-# disable the ntp server 
+# disable the ntp server
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
