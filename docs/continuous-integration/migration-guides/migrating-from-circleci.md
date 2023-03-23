@@ -17,7 +17,7 @@ CircleCI and Harness CI share some similarities:
 - Harness CI Pipeline Studio allows you to create pipelines visually or using code, and switch back and forth as needed. CircleCI only allows pipeline configuration as code.
 - Harness CI uses stages to run a collection of steps, while CircleCI uses jobs to group one or more steps or individual commands.
 
-For more information, see [Harness CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts).
+For more information, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts).
 
 ## Key differences
 
@@ -31,13 +31,13 @@ For more information, see [Harness CI Concepts](/docs/continuous-integration/ci-
 - Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness resources according to the user's role. By using RBAC, users can increase security and improve efficiency.
 - Harness Policy as Code is a centralized policy management and rules service that leverages the Open Policy Agent (OPA) to meet compliance requirements across software delivery and enforce governance policies.
 
-### CircleCI orbs and the Harness plugin
+### CircleCI orbs and Harness plugins
 
 - **HarnessCI**
     - Harness has a [Plugin step](/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference), which is a Docker container to perform a predefined task.
-    - Harness also enables you to standardize and create step templates that can be reused across pipelines and teams that use Harness. Read more about step templates [here](/docs/platform/Templates/run-step-template-quickstart).
+    - Harness also enables you to standardize and [create step templates](/docs/platform/Templates/run-step-template-quickstart) that can be reused across pipelines and teams that use Harness.
 - **CircleCI**
-    - CircleCI orbs are reusable shareable configuration packages that combine jobs, commands, and executors.
+    - _CircleCI orbs_ are reusable shareable configuration packages that combine jobs, commands, and executors.
 
 ### Specify a Docker image to use for a job
 
@@ -45,9 +45,8 @@ For more information, see [Harness CI Concepts](/docs/continuous-integration/ci-
     - Each Harness CI pipeline has a codebase that specifies the code repo (input) that the pipeline uses to build the artifact (output). You specify the codebase when you add the first build stage to the pipeline. This becomes the default input for all other stages in the pipeline. By default, a build stage clones the repo from your Git provider into your build infrastructure when the pipeline runs.
     - A codebase has two components, both of which you can edit:
         - The codebase connector, which specifies the codebase URL and required credentials.
-        - A set of advanced options to configure how the Pppeline clones and builds the repo.
-    - CircleCI checkout is a step used to check out source code to the configured path.
-
+        - A set of advanced options to configure how the pipeline clones and builds the repo.
+    - _CircleCI checkout_ is a step used to check out source code to the configured path.
 - **Connectors**
     - Harness integrates with many different types of repositories and providers. A connection to other platforms is called a [Connector](/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference). In the Harness YAML examples in [Define a multi-stage build pipeline](#define-a-multi-stage-build-pipeline) and other sections below, the `connectorRef` is a reference to a Docker connector. Docker connectors are platform-agnostic and can be used to connect to any Docker container registry.
 
@@ -93,11 +92,10 @@ stages:
 
 ### Define a multi-stage build pipeline
 
-Stage1 and Stage2 run concurrently. Once they are done, stage 3 is executed. Once stage 3 is done, stage 4 runs.
+In this example, `Stage1` and `Stage2` run concurrently. Once they are done, `Stage3` runs. Once `Stage3` is done, `Stage4` runs.
+
 - CircleCI uses workflows to execute jobs in parallel, sequential, or mixed fashion.
 - In Harness CI, stages are executed in order of occurrence in the YAML config. Stages defined under the `- parallel` tag execute in a parallel fashion.
-
-
 
 ```mdx-code-block
 
@@ -251,17 +249,12 @@ workflows:
 ### Environment variables
 
 - Project-level environment variables in CircleCI are set using the web app and then referenced in the pipeline. To use environment variables across multiple projects CircleCI uses Context.
+- Harness allows users to add variables on project, organization, and account levels. You can reference those variables using the following expression syntax: `<+variable.[scope].[variable_id]>`. Here's the syntax for variables declared at different levels:
+  - Account-level reference: `<+variable.account.[var_id]>`
+  - Org-level reference: `<+variable.org.[var_id]>`
+  - Project-level reference: `<+variable.[var_id]>`
 
-- Harness allows users to add variables on project, organization, and account levels, and those can be referenced using the following expression:
-`<+variable.[scope].[variable_id]>`
-
-    - `* Account-level reference: <+variable.account.[var Id]>`
-    - `* Org-level reference: <+variable.org.[var Id]>`
-    - `* Project-level reference: <+variable.[var Id]>`
-
-Read more about account, project, and organization-level variables [here](https://developer.harness.io/docs/platform/Variables-and-Expressions/add-a-variable)
-
-
+To learn more about account, project, and organization-level variables go to [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/).
 
 ```mdx-code-block
 
@@ -310,17 +303,11 @@ jobs:
 
 ### Matrix
 
-Matrix jobs in CircleCI are achieved using parameters and then referencing them in the pipeline using the following expression:
+Matrix jobs in CircleCI are achieved using parameters and then referencing them in the pipeline using the following expression syntax: `<< parameters.param >>`
 
-`<< parameters.param >>`
+Matrices are one looping execution strategy provided by Harness. Matrices gives the ability to execute the same set of tasks multiple times for a bunch of different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
 
-Matrix is 1 of 2 looping executing strategies provided by Harness. Matrix gives the ability to execute the same set of tasks multiple times for a bunch of different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression:
-
-`<+matrix.usertag>`
-
-To learn more about Matrix click [here](https://developer.harness.io/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism#matrix)
-
-
+To learn about matrices and other looping strategies, go to [Looping Strategies Overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism)
 
 ```mdx-code-block
 
@@ -397,8 +384,7 @@ workflows:
 ### Triggers
 
 - **HarnessCI**
-   - Harness supports webhook triggers and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on a cron expression. To learn more about creating a trigger, go to [Harness Triggers](/docs/category/triggers).
-
+   - Harness supports webhook triggers and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on a cron expression. To learn more about creating a trigger, go to [Triggers](/docs/category/triggers).
 - **CircleCI**
     - CircleCI supports triggering a pipeline on push and PR to the code repository and scheduled triggers.
 
@@ -603,8 +589,8 @@ pipeline:
 </Tabs>
 ```
 
+We recommend reviewing the following information before proceeding with migration:
 
-We recommend going through the following list to make you more comfortable before going ahead with complex configuration and migration:
 - [Caching](/docs/category/share-and-cache-ci-data)
 - [Parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
-- [Platform Concepts](/docs/platform)
+- [Platform concepts](/docs/platform)
