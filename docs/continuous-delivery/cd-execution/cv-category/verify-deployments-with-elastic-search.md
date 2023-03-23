@@ -1,174 +1,214 @@
 ---
 title: Verify Deployments with Elasticsearch
-description: This topic shows you how to verify deployments with ELK Elasticsearch.
+description: This topic shows you how to verify deployments with Elasticsearch. 
 sidebar_position: 8
-helpdocs_topic_id: gasf0m2f2c
-helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-Currently, this feature is behind the feature flag `ELK_HEALTH_SOURCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-:::
-
-Harness CV integrates with Elasticsearch to:
+Harness Continuous Verification (CV) integrates with Elasticsearch to:
 
 * Verify that the deployed service is running safely and performing automatic rollbacks.
 * Apply machine learning to every deployment to identify and flag anomalies in future deployments.
 
- This topic covers how to add and configure Elasticsearch as a Health Source for the Verify step.
+This topic describes how to set up an Elasticsearch health source when adding a CV step to your Continuous Deployment (CD).
 
-## **Review: CV Setup Options**
+## Prerequisite
 
-To use the Verify step, you will need a Harness Service Reliability Management Monitored Service. In the simplest terms, a Monitored Service is basically a mapping of a Harness Service to a service monitored by your APM or logging tool.
-
-You can set up a Monitored Service in the Service Reliability Management module or in the Verify step in a CD stage. The process is the same.
-
-No matter where you set up the Monitored Service, once it's set up, it's available to both Service Reliability Management and CD modules.
-
-In this topic we'll set up the Monitored Service as part of the **Verify** step.
-
-## Step 1: Add Verify Step
-
-There are two ways to add the Verify step:
-
-* **When selecting the stage deployment strategy:**  
-The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
-Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](./static/verify-deployments-with-elastic-search-97.png)](./static/verify-deployments-with-elastic-search-97.png)
-* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](./static/verify-deployments-with-elastic-search-99.png)](./static/verify-deployments-with-elastic-search-99.png)
+Elasticsearch is added as a verification provider in Harness.
 
 
-## Step 2: Enter a Name and Timeout
+## Set up continuous verification
 
-1. In **Name**, enter a name for the step.
-2. In **Timeout**, enter a timeout value for the step.
+To set up CV, you need to configure a Service Reliability Management (SRM)-monitored service. A monitored service is a mapping of a Harness service to a service that is being monitored by your Application Performance Monitoring (APM) or logging tool.
 
-You can use:
 
-* `w` for weeks
-* `d` for days
-* `h` for hours
-* `m` for minutes
-* `s` for seconds
-* `ms` for milliseconds
+## Add Verify Step
 
-The maximum is `53w`.Timeouts can be set at the Pipeline level also.
+To add a Verify step to your pipeline, use one of the following methods:
 
-## Step 3: Select a Continuous Verification Type
 
-In **Continuous Verification Type**, select a type that matches your [deployment strategy](verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
+### While building a deployment stage
 
-![](./static/verify-deployments-with-elastic-search-101.png)
+If you're building a deployment stage and currently on the **Execution Strategies** page:
 
-## Step 4: Create a Monitored Service
+1. Select the **Enable Verification** option.  
+   The Verify step gets added to the pipeline.
+2. Select the **Verify** step.  
+   The Verify settings page appears.
 
-In **Monitored Service**, click **Click to autocreate a monitored service**.
+
+### To an existing deployment stage
+
+If you already have a deployment stage:
+
+1. Select the stage where you want to add the Verify step.
+2. On the stage settings pane, select the **Execution** tab.
+3. On the pipeline, hover over where you want the Verify step, select the + icon, and then choose **Add Step**.  
+The Step Library page appears.
+You can add a step at various points in the pipeline such as the beginning, end, in between existing steps, or below an existing step. Simply choose the location where you want to add the step and follow the prompts to add it.
+
+4. In the **Continuous Verification** section, select **Verify**.  
+   The Verify settings page appears.
+
+## Define name and time out information
+
+1. In **Name**, enter a name for the Verification step.
+2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to define timeout:
+   - **w** for weeks. For example, to define one week, enter 1w.
+   - **d** for days. For example, to define 7 days, enter 7d.
+   - **h** for hours. For example, to define 24 hours, enter 24h.
+   - **m** for minutes, For example, to define 100 minutes, enter 100m.
+   - **s** for seconds. For example, to define 500 seconds, enter 500s.
+   - **ms** for milliseconds. For example, to define 1000 milliseconds, enter 1000ms.
+
+3. The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+ 
+
+## Select a continuous verification type, sensitivity, and duration
+
+1. In **Continuous Verification Type**, select a type that matches your deployment strategy. The following options are available:
+   
+   - **Auto**: Harness automatically selects the best continuous verification type based on the deployment strategy.
+   - **Rolling Update**: A rolling deployment is a deployment technique that gradually replaces old versions of a service with a new version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
+   - **Canary**: Canary deployment involves a two-phased deployment. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. Canary deployment helps to detect issues with the new deployment before fully deploying it.
+   - **Blue Green**: Blue-green deployment is a technique used to deploy services to a production environment by gradually shifting user traffic from an old version to a new one. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
+   - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
+
+2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
+3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
+5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
+
+
+## Create a monitored service
+
+In **Monitored Service**, select **Click to autocreate a monitored service**.
+
+Harness automatically generates a monitored service name by combining the service and environment names. The generated name appears in the **Monitored Service Name** field. Note that you cannot edit the monitored service name.
+
+If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden and the existing monitored service is assigned to the Verify step by Harness.
 
 :::note
 
-The option to auto-create a monitored service is not available if you have configured either a service, an environment, or both as runtime values. When you run the pipeline, Harness concatenates the service and environment values you enter in the runtime inputs screen and generates a monitored service name. If a monitored service with the same name exists, Harness assigns it to the pipeline. If no monitored service that matches the generated monitored service name exists, Harness skips the verification step. 
+If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with the same name already exists, it will be assigned to the pipeline. If not, Harness skips the Verification step.
 
-For example, suppose you enter the service as `todolist` and the environment as `dev`. In that case, Harness generates the monitored service name `todolist_dev`, checks whether a monitored service with the name `todolist_dev` is available, and assigns it to the pipeline. If no monitored service is available with the name `todolist_dev`, Harness skips the verification step.
+For instance, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the Verification step.
 
 :::
 
-You can also create a monitored service using a monitored service template. To use a template to create a monitored service:
 
-1. In Monitored Service, click **Use Template**.  
-The Monitored Service templates slider appears on the right. It displays all the available monitored service templates.
-2. Select the appropriate monitored service template.  
-The template details appear on the right. The fields that are configured as **Runtime Input** while creating the template are displayed here.
+![Autocreate monitored service](./static/cv-sumologic-autocreate-monitoredservice.png)
 
-![](./static/verify-deployments-with-elastic-search-102.png)
+## Add a health source
 
-3. Click **Use Template** to close the Monitored Service Templates slider.  
-The fields that are configured as Runtime Input while creating the template are displayed under **Template Inputs**.You can modify the template by clicking the Open in Template Studio button on the top. This opens the template in a separate tab where you can make changes. After making the changes, you can save the changes to the current template, save as a new version, or save as a new template.
-4. Enter appropriate values.  
-For example, if the health source has been configured as a runtime input while creating the template, the health source related fields are displayed.
+A health source is an APM or logging tool that monitors and aggregates data in your deployment environment.
 
-## Step 5: Add Health Sources
+### Define health source
 
-This option is available only if you have configured the service and environment as fixed values.
+To add a health source:
 
-A Health Source is basically a mapping of a Harness Service to the service in a deployment environment monitored by an APM or logging tool.
+1. In the **Health Sources** section, select **+ Add New Health Source**.
+   The Add New Health Source dialog appears.
+2. On the **Define Health Source** tab, do the following:
+      1. In the **Define Health Source** section, select **ElasticSearch** as health source type.
+      2. In the **Health Source Name** field, enter a name for the health source.
+      3. In the **Connect Health Source** section, select the **Select Connector**.  
+     The Create or Select an Existing Connector dialog appears.
+      4. Select a connector for the Elasticsearch health source and then select **Apply Selected**.  
+     The selected connector appears in the **Select Connector** dropdown.
+      5. Select **Next**.  
+     The **Configuration** tab appears.
 
-1. In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
+
+:::info note
+Currently, Harness supports only Elasticsearch logs. The **ElasticSearch Logs** option is selected by default in the **Select Feature**.
+:::
+
    
-   ![](./static/verify-deployments-with-elastic-search-103.png)
 
-2. In **Select health source type**, select Elasticsearch.
-3. In **Health Source Name**, enter a name for the Health Source.
-4. Under **Connect Health Source**, click **Select Connector**.
-5. In **Connector** settings, you can either choose an existing connector or click **New Connector.**![](./static/verify-deployments-with-elastic-search-104.png)
-6. Click **Apply Selected**. The Connector is added to the Health Source.
-7. In **Select Feature**, select the Elasticsearch feature to be used.
-8. Click **Next**.  
-The **Customize Health Source** settings appear.  
-You can customize the metrics to map the Harness Service to the monitored environment in **Query Specifications and Mapping** settings.Enter a name for the query in **Name your Query**.The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. Click **Map Queries to Harness Services** drop down
-1. Click **Add Metric**.
-2.  Enter a name for the query in **Name your Query**.
-3.  Click **Fetch Records** to retrieve the details. The results are displayed under **Records.**![](./static/verify-deployments-with-elastic-search-105.png)
-4.  Once the records are fetched, click the plus icon in **Identify Service Instance** to select the path for service instance.
-5.  Click **Submit**. The Health Source is displayed in the Verify step.![](./static/verify-deployments-with-elastic-search-106.png)
+### Define log configuration settings
 
-You can add one or more Health Sources for each APM or logging provider.
+1. On the Configuration tab, select **+ Add Query**.  
+   The Add Query dialog appears.
+2. Enter a name for the query and then select **Submit**.  
+   The query that you added gets listed under the Logs Group. The Custom Queries settings are displayed.
+   These settings help you retrieve the desired logs from the Elasticsearch platform and map them to the Harness service. 
 
-## Step 6: Select Sensitivity
+#### Define a query
 
-In **Sensitivity**, select **High**, **Medium**, or **Low** based on the risk level used as failure criteria during the deployment.
+1. In the **Query Specifications and Mapping** section, select a log index from the **Log Indexes** list.
+2. In the **Query** field, enter a log query and select **Run Query** to execute it. This displays a sample record in the **Records** field. This helps you confirm the accuracy of the query you've constructed.
+3. In the **Field Mapping** section, map the following identifiers to select the data that you want to be displayed from the logs.
+   - **Timestamp Identifier**
+   - **Service Instance Identifier**
+   - **Message Identifier**
+   - **Timestamp Format**
 
-## Step 7: Select Duration
+   To define mapping, in each identifier field, do the following:
+   1. Select **+**.  
+   The Select path for Service Instance Identifier page appears.
+   1. Go to the identifier value that you want to map and choose **Select**.  
+   The selected value gets mapped to the corresponding identifier field. 
 
-Select how long you want Harness to analyze and monitor the logs/APM data points. Harness waits for 2-3 minutes to allow enough time for the data to be sent to the APM/logging tool before it analyzes the data. This wait time is a standard with monitoring tools.
+4. Select **Get sample log messages**.  
+   Sample logs are displayed that help you verify if the query you built is correct.
 
-The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.
 
-## Step 8: Specify Artifact Tag
+### Save the health source settings
 
-In **Artifact Tag**, use a [Harness expression](../../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+1. After configuring all the settings, select **Submit** to add the health source to the Verify step.
+2. Select **Apply Changes** to save the changes made to the Verify step.
 
-The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
+## Run the pipeline
 
-## Option: Advanced Settings
+To run the pipeline:
 
-In **Advanced**, you can select the following options:
+1. In the upper-right corner, select **Run**.  
+   The Run Pipeline dialog box appears.
+2. In the dialog box, do the following:
+   - **Tag**: If you did not add a tag in the** Artifact Details** settings, select it now.
+   - **Skip preflight check**: Select this option if you want to skip the preflight check.
+   - **Notify only me about execution status**: Select this option if you want Harness to alert only you about the execution status.
+3. Select **Run Pipeline**.  
+   The pipeline starts running.
 
-* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+## View results
 
-See [Advanced Settings](verify-deployments-with-the-verify-step.md#option-advanced-settings).
+The Summary section displays the following details when the Verify step begins:
 
-## Step 9: Deploy and Review Results
+- Metrics in violation
+- Log Clusters in violation
+- Error Clusters in violation
 
-After setting up the **Verify** step, click **Apply Changes**.
+Note that it may take some time for the analysis to begin. The screenshot below shows a Verification step running in a deployment:
 
-Click **Run** to run the pipeline.
+![Verification summary](./static/cv-sumologic-verify-summary-view.png)
 
-In **Run Pipeline**, select the tag for the artifact if a tag was not added in the **Artifact Details** settings.
+## Console view
 
-Click **Run Pipeline**.
+The console view displays detailed logs of the pipeline, including verification logs. To view the console, select **View Details** in the **Summary** section or turn on the **Console View** toggle switch in the upper-right corner.
 
-When the Pipeline is running, click the **Verify** step.
+![Verification step console view](./static/cv-sumologic-verify-console-view.png)
 
-You can see that the verification takes a few minutes.
+By default, the console displays logs of only the anomalous metrics and affected nodes. To see all logs, clear the **Display only anomalous metrics and affected nodes** check box.
 
-Once verification is complete, the Verify step shows the following:
+![Verification step console view all data](./static/cv-sumologic-verify-view-anamalous-data.png)
 
-![](./static/verify-deployments-with-elastic-search-107.png)
+The following screenshots show successful and failed verifications in a deployment run:
 
-The risk level might initially display a number of violations, but the red and orange colored host often change to green over the duration.
+**Successful verification**
 
-### Summary
+![Passed verification step](./static/cv-sumologic-pipeline-pass.png)
 
-The **Summary** section shows the number of logs that are in violation.
+**Failed verification**
 
-### Console View
+![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
-Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
-
-You can use the search option to search for any specific metric or transaction you want.
 
