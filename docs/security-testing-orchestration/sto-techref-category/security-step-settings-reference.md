@@ -43,7 +43,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         <td valign="top">
          	<ul>
         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Bandit</a>  Orchestration, Ingestion </li>
-         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>
+         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
         	</ul>
         </td>
@@ -53,7 +53,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-scanner-reference">Fortify Static Code Analyzer</a> Ingestion</li>
-          		<li><a href="docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Ingestion</li>
                 <li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference">Reapsaw</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference">Snyk Code</a>  Ingestion</li>
@@ -66,7 +66,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         <td valign="top">SCA</td>
         <td valign="top">
          	<ul>
-        		<li><a href="#clair">Clair</a> Orchestration, Ingestion   </li>
+        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Clair</a> Orchestration, Ingestion   </li>
         	</ul>
         </td>
         <td valign="top">
@@ -75,7 +75,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Extraction, Ingestion </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference">JFrog Xray</a>Ingestion </li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference">JFrog Xray</a> Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP</a>  Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference">Snyk Open Source</a>  Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Orchestration, Extraction, Ingestion </li>
@@ -124,5 +124,80 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         	</ul>
      </td>
    </tr>
-
    </table>
+
+   ### Scanner support
+
+   Harness maintains and updates a container image for every scanner supported by STO. The following table lists the binaries and current versions for the most popular scanners.
+
+<table>
+<thead>
+  <tr>
+    <th>Scanner</th>
+    <th>Binary</th>
+    <th>Current version</th>
+  </tr>
+</thead>
+<tbody>
+  <tr>
+    <td>Aqua Trivy</td>
+    <td><code>trivy image</code></td>
+    <td>Latest stable build</td>
+  </tr>
+  <tr>
+    <td>Bandit</td>
+    <td><code>bandit</code></td>
+    <td>1.7.4</td>
+  </tr>
+  <tr>
+    <td>Black Duck Hub</td>
+    <td><code>synopsis detect</code></td>
+    <td>7.9.0</td>
+  </tr>
+  <tr>
+    <td>Brakeman</td>
+    <td><code>brakeman</code></td>
+    <td>4.4.0</td>
+  </tr>
+  <tr>
+    <td>Checkmarx</td>
+    <td><code>runCxConsole.sh</code></td>
+    <td>1.1.18</td>
+  </tr>
+  <tr>
+    <td>Grype</td>
+    <td><code>grype</code></td>
+    <td>Latest stable build</td>
+  </tr>
+  <tr>
+    <td>Nikto</td>
+    <td><code>Nikto</code></td>
+    <td>2.1.6</td>
+  </tr>
+  <tr>
+    <td>Nmap</td>
+    <td><code>nmap</code></td>
+    <td>7.92</td>
+  </tr>
+  <tr>
+    <td>Prowler</td>
+    <td><code>prowler</code></td>
+    <td>Latest stable build</td>
+  </tr>
+  <tr>
+    <td>SonarQube</td>
+    <td><code>sonar-scanner</code></td>
+    <td>4.7.0.2747</td>
+  </tr>
+  <tr>
+    <td>Twistlock</td>
+    <td><code>twistcli</code></td>
+    <td>22.12.582</td>
+  </tr>
+  <tr>
+    <td>Whitesource</td>
+    <td><code>java -jar /opt/whitesource/wss-unified-agent.jar</code></td>
+    <td>22.10.1</td>
+  </tr>
+</tbody>
+</table>
