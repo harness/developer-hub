@@ -9,8 +9,8 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
 - Simulates packet duplication in the network.
 
 :::note
-- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
+- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables

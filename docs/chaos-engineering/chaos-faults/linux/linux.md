@@ -69,14 +69,14 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 
 ### Linux disk IO stress
 
-Linux disk IO stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
+Linux disk I/O stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
 
 <accordion color="green">
 <summary>Use cases</summary>
 
 - Simulates slower disk operations for the applications.
 - Simulates noisy neighbour problems by exhausting the disk bandwidth.
-- Verifies the disk performance on increasing IO threads and varying IO block sizes.
+- Verifies the disk performance on increasing I/O threads and varying I/O block sizes.
 
 </accordion>
 
@@ -100,7 +100,7 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
 <FaultDetailsCard category="linux">
 
 ### Linux network latency
-Linux network latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
+Linux network latency injects chaos to disrupt network connectivity on a Linux machine by adding delay to the network requests.
 
 <accordion color="green">
 <summary>Use cases</summary>
@@ -178,7 +178,7 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 ### Linux process kill
 
 Linux process kill fault kills the target processes running on the Linux machines.
-- It checks the performance of the application/ or rocess running on the Linux machine.
+- It checks the performance of the application or process running on the Linux machine.
 
 <accordion color="green">
 <summary>Use cases</summary>

@@ -11,8 +11,8 @@ Linux disk IO stress applies stress on the disk of the target Linux machines ove
 - Checks how the application functions under high disk latency conditions, when I/O traffic is high and includes large I/O blocks, and when other services monopolize the I/O disks.
 
 :::note
-- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
+- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
@@ -78,7 +78,7 @@ spec:
 
 ### File system utilization in bytes
 
-The `fileSystemUtilisationBytes` input variable utilizes a specific amount of file system as a part of the disk I/O operations in bytes.
+The `fileSystemUtilisationBytes` input variable utilizes a specific amount of file system memory as a part of the disk I/O operations in bytes.
 
 Use the following example to tune the file system utilization in bytes:
 
@@ -99,7 +99,7 @@ spec:
 
 ### File system utilization in percentage
 
-The `fileSystemUtilisationPercentage` input variable utilizes a specific amount of file system as a part of the disk I/O operations in terms of percentage of the total available disk space.
+The `fileSystemUtilisationPercentage` input variable utilizes a specific amount of file system memory as a part of the disk I/O operations in terms of percentage of the total available disk space.
 
 Use the following example to tune the file system utilization in percentage:
 

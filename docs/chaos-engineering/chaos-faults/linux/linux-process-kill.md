@@ -11,8 +11,8 @@ Linux process kill fault kills the target processes running on the Linux machine
 - Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
 
 :::note
-- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
+- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
