@@ -29,7 +29,7 @@ This release does not include early access features.
 
 The **Node.js server SDK** has been updated to version **1.2.14** with the following updates:
 
-* The event source was updated to version 2.1.3. (FFM-7198)
+* The EventSource library was updated to version 2.1.3. (FFM-7198)
 * On streaming errors, the error was not included in the `retrying` event payload. This fix adds the error to the payload. (FFM-7198)
 * Checks were added to see if errors are retryable, and if not, the SDK stops retrying. (FFM-7198)
 * The SDK now logs each retry, ensuring the most up-to-date error is logged in case errors change during retries. (FFM-7198)
