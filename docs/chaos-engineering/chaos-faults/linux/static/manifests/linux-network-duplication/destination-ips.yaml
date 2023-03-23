@@ -1,0 +1,10 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-network-duplication
+  labels:
+    name: network-duplication
+spec:
+  networkChaos/inputs:
+    destinationIPs: '["1.1.1.1"]'
+    networkInterface: "eth0"

@@ -9,6 +9,7 @@ Linux Time Chaos injects chaos to change the time of the Linux machine.
 - Determines the resiliency of the underlying application components when subjected to a change in the system time.
 
 :::note
+
 - This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::
@@ -50,7 +51,7 @@ It contains the time offset to increment and decrement the system time. It shoul
 
 Use the following example to tune the offset:
 
-[embedmd]:# (./static/manifests/linux-dns-spoof/offset.yaml yaml)
+[embedmd]:# (./static/manifests/linux-time-chaos/offset.yaml yaml)
 ```yaml
 # time offset
 apiVersion: litmuchaos.io/v1alpha1
@@ -70,7 +71,7 @@ It prevents the fault to disable the ntp server. Tune it by using the `disableNT
 
 Use the following example to tune the offset:
 
-[embedmd]:# (./static/manifests/linux-dns-spoof/offset.yaml yaml)
+[embedmd]:# (./static/manifests/linux-time-chaos/disable-ntp.yaml yaml)
 ```yaml
 # disable the ntp server
 apiVersion: litmuchaos.io/v1alpha1

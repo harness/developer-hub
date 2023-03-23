@@ -1,0 +1,10 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-network-corruption
+  labels:
+    name: network-corruption
+spec:
+  networkChaos/inputs:
+    packetCorruptionPercentage: '50'
+    networkInterface: "eth0"

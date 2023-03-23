@@ -5,6 +5,7 @@ title: Linux DNS spoof
 Linux DNS Spoof injects chaos to mimic DNS resolution in linux machine.
 
 ## Use cases
+
 - Induces DNS spoof on the target Linux machines.
 - It resolves DNS target host names (or domains) to other IPs provided as user input.
 
