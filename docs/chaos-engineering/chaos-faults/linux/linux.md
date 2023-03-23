@@ -13,7 +13,7 @@ import { experiments } from "./experiments"
 
 ## Introduction
 
-Linux faults disrupt the resources running on a Linux machine.
+Linux faults disrupt the resources running on a Linux machine. This deteriorates the performance of the application.
 
 ## Fault compatibility matrix
 The faults have been tested for compatibility in the following Linux OS distributions:
@@ -36,13 +36,13 @@ The faults have been tested for compatibility in the following Linux OS distribu
 
 ### Linux CPU stress
 
-Linux CPU Stress fault stresses the CPU of the target Linux machines for a certain duration.
+Linux CPU stress applies stress on the CPU of the target Linux machines for a certain duration.
 
 - Induces CPU stress on the target Linux machines.
 - Simulates a lack of CPU for processes running on the application, which degrades their performance.
 
 <accordion color="green">
-<summary>View fault usage</summary>
+<summary>Use cases</summary>
 Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the machine.
 </accordion>
 
@@ -52,14 +52,15 @@ Simulates slow application traffic or exhaustion of the resources, leading to de
 
 ### Linux memory stress
 
-Linux Memory Stress fault causes memory consumption of the target Linux machines for a certain duration.
+Linux memory stress causes memory consumption of the target Linux machines for a specific duration.
+
+<accordion color="green">
+<summary>Use cases</summary>
 
 - Induces memory consumption and exhaustion on the target Linux machines.
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
+- Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
 
-<accordion color="green">
-<summary>View fault usage</summary>
-Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
 </accordion>
 
 </FaultDetailsCard>
@@ -68,15 +69,15 @@ Simulates application slowness due to memory starvation, and noisy neighbour pro
 
 ### Linux disk IO stress
 
-Linux Disk IO Stress fault stresses the disk of the target Linux machines over IO operations for a certain duration.
+Linux disk IO stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
+
+<accordion color="green">
+<summary>Use cases</summary>
 
 - Simulates slower disk operations for the applications.
 - Simulates noisy neighbour problems by exhausting the disk bandwidth.
 - Verifies the disk performance on increasing IO threads and varying IO block sizes.
 
-<accordion color="green">
-<summary>View fault usage</summary>
-Checks how the application functions under high disk latency conditions, when IO traffic is high and includes large I/O blocks, and when other services monopolize the IO disks.
 </accordion>
 
 </FaultDetailsCard>
@@ -84,11 +85,14 @@ Checks how the application functions under high disk latency conditions, when IO
 <FaultDetailsCard category="linux">
 
 ### Linux network loss
-Linux Network Loss injects chaos to disrupt network connectivity in linux machine by blocking the network requests.
+Linux network loss injects chaos to disrupt network connectivity on the Linux machine by blocking the network requests.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-Simulates loss of connectivity access by blocking the network requests of the Linux machine.
+<summary>Use cases</summary>
+
+- Induces network loss on the target Linux machines.
+- Simulates loss of connectivity access by blocking the network requests on the machine.
+
 </accordion>
 
 </FaultDetailsCard>
@@ -96,11 +100,14 @@ Simulates loss of connectivity access by blocking the network requests of the Li
 <FaultDetailsCard category="linux">
 
 ### Linux network latency
-Linux Network Latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
+Linux network latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-Simulates latency in connectivity access by delaying the network requests of the machine.
+<summary>Use cases</summary>
+
+- Induces network latency on the target Linux machines.
+- Simulates latency in connectivity access by delaying the network requests of the machine.
+
 </accordion>
 
 </FaultDetailsCard>
@@ -108,11 +115,13 @@ Simulates latency in connectivity access by delaying the network requests of the
 <FaultDetailsCard category="linux">
 
 ### Linux network duplication
-Linux Network Duplication injects chaos to disrupt network connectivity in Linux machine by duplicating network packets.
+Linux network duplication injects chaos to disrupt network connectivity on a Linux machine by duplicating network packets.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-Simulates packet duplication in connectivity access of the machine.
+<summary>Use cases</summary>
+
+- Induces network duplication on the target Linux machines.
+- Simulates packet duplication in the network.
 </accordion>
 
 </FaultDetailsCard>
@@ -120,11 +129,14 @@ Simulates packet duplication in connectivity access of the machine.
 <FaultDetailsCard category="linux">
 
 ### Linux network corruption
-Linux Network Corruption injects chaos to disrupt network connectivity in Linux machine by corrupting the network requests.
+Linux network corruption injects chaos to disrupt network connectivity on a Linux machine by corrupting the network requests.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-Simulates corruption in network by corrupting the network requests of the machine.
+<summary>Use cases</summary>
+
+- Induces network corruption on the target Linux machines.
+- Simulates network corruption by corrupting requests of the machine.
+
 </accordion>
 
 </FaultDetailsCard>
@@ -133,11 +145,14 @@ Simulates corruption in network by corrupting the network requests of the machin
 
 ### Linux DNS error
 
-Linux DNS Error injects chaos to disrupt DNS resolution in Linux machine.
+Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-Simulates loss of access to host by blocking DNS resolution of hostnames.
+<summary>Use cases</summary>
+
+- Induces DNS error on the target Linux machines.
+- Simulates loss of access to host by blocking the DNS resolution of host names.
+
 </accordion>
 
 </FaultDetailsCard>
@@ -146,11 +161,14 @@ Simulates loss of access to host by blocking DNS resolution of hostnames.
 
 ### Linux DNS spoof
 
-Linux DNS Spoof injects chaos to mimic DNS resolution in linux machine.
+Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-It resolves DNS target host names (or domains) to other IPs provided as user input.
+<summary>Use cases</summary>
+
+- Induces DNS spoof on the target Linux machines.
+- Resolves DNS target host names (or domains) to other IPs provided as user input.
+
 </accordion>
 
 </FaultDetailsCard>
@@ -159,13 +177,15 @@ It resolves DNS target host names (or domains) to other IPs provided as user inp
 
 ### Linux process kill
 
-Linux Process Kill fault kills the target processes running on Linux machines.
-- It checks the performance of the application/process running on Linux.
-- Disrupts the application critical processes such as databases or message queues by killing their underlying processes or threads.
+Linux process kill fault kills the target processes running on the Linux machines.
+- It checks the performance of the application/ or rocess running on the Linux machine.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
+<summary>Use cases</summary>
+
+- Induces process kill on the target Linux machines.
+- Disrupts the application critical processes such as databases or message queues by killing their underlying processes or threads.
+- Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
 </accordion>
 
 </FaultDetailsCard>
@@ -174,13 +194,15 @@ Determines the resilience of applications when processes on a Linux machine are 
 
 ### Linux service restart
 
-Linux Service Restart stops the target system services running in a Linux machine.
-- Determines the performance and resilience of the application (or services) running on Linux machines.
-- Determines the resilience of an application upon random halts.
+Linux service restart stops the target system services running in a Linux machine.
+- It determines the performance and resilience of the application (or services) running on Linux machines.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-Determines how efficiently an application recovers and restarts the services.
+<summary>Use cases</summary>
+
+- Service restart determines the resilience of an application upon random halts.
+- Determines how efficiently an application recovers and restarts the services.
+
 </accordion>
 
 </FaultDetailsCard>
@@ -189,11 +211,14 @@ Determines how efficiently an application recovers and restarts the services.
 
 ### Linux time chaos
 
-Linux Time Chaos injects chaos to change the time of the Linux machine.
+Linux time chaos injects chaos to change the time of the Linux machine.
 
 <accordion color="green">
-<summary>View fault usage</summary>
-Determines the resiliency of the underlying application components when subjected to a change in the system time.
+<summary>Use cases</summary>
+
+- Induces time chaos to change the system time on the target Linux machines.
+- Determines the resiliency of the underlying application components when subjected to a change in the system time.
+
 </accordion>
 
 </FaultDetailsCard>

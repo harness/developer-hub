@@ -2,14 +2,14 @@
 id: linux-network-latency
 title: Linux network latency
 ---
-Linux Network Latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
+Linux network latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
 
 ## Use cases
 - Induces Network Latency on the target Linux machines.
 - Simulates latency in connectivity access by delaying the network requests of the machine.
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::
 
@@ -71,12 +71,11 @@ Linux Network Latency injects chaos to disrupt network connectivity in linux mac
   </tr>
 </table>
 
-## Fault examples
-### Destination Hosts
+### Destination hosts
 
-It specifies the comma-separated name of the target hosts subjected to chaos. Tune it by using the `destinationHosts` input.
+The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
 
-Use the following example to tune the host names:
+Use the following example to tune the destination hosts:
 
 [embedmd]:# (./static/manifests/linux-network-latency/destination-hosts.yaml yaml)
 ```yaml
@@ -94,9 +93,9 @@ spec:
 
 ### Destination IPs
 
-It specifies the comma-separated name of the target IPs subjected to chaos. Tune it by using the `destinationIPs` input.
+The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos.
 
-Use the following example to tune match scheme:
+Use the following example to tune the destination IPs:
 
 [embedmd]:# (./static/manifests/linux-network-latency/destination-ips.yaml yaml)
 ```yaml
@@ -112,11 +111,11 @@ spec:
     networkInterface: "eth0"
 ```
 
-### Latency and Jitter
+### Latency and jitter
 
-It specifies the Latency and Jiiter to be added to the connection. Tune it by using the `latency` and `jitter` input.
+The `latency` and `jitter` input variables add delay and a slight deviation to the delay, respectively, to the connection. 
 
-Use the following example to tune match scheme:
+Use the following example to tune the latency and jitter:
 
 [embedmd]:# (./static/manifests/linux-network-latency/latency-jitter.yaml yaml)
 ```yaml

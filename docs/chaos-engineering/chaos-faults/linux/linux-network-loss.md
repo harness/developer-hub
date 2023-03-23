@@ -2,14 +2,14 @@
 id: linux-network-loss
 title: Linux network loss
 ---
-Linux Network Loss injects chaos to disrupt network connectivity in linux machine by blocking the network requests.
+Linux network loss injects chaos to disrupt network connectivity on the Linux machine by blocking the network requests.
 
 ## Use cases
-- Induces Network Loss on the target Linux machines.
-- Simulates loss of connectivity access by blocking the network requests of the machine
+- Induces network loss on the target Linux machines.
+- Simulates loss of connectivity access by blocking the network requests on the machine.
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::
 
@@ -36,18 +36,18 @@ Linux Network Loss injects chaos to disrupt network connectivity in linux machin
   </tr>
   <tr>
     <td> destinationHosts </td>
-    <td> List of the target hostnames or keywords For example: <code>["google.com","litmuschaos.io"]</code></td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted </td>
+    <td> List of the target host names or keywords. For example: <code>["google.com","litmuschaos.io"]</code></td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
     <td> List of the target IPs. For example: <code>["1.1.1.1","8.8.8.8"]</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted</td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
   </tr>
   <tr>
     <td> packetLossPercentage </td>
     <td> Percentage of packet loss. For example: <code> 100 </code> </td>
-    <td> Defaults to 100% </td>
+    <td> Default: 100% </td>
   </tr>
   <tr>
     <td> networkInterface </td>
@@ -57,21 +57,20 @@ Linux Network Loss injects chaos to disrupt network connectivity in linux machin
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30s </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0s </td>
   </tr>
 </table>
 
-## Fault examples
-### Destination Hosts
+### Destination hosts
 
-It specifies the comma-separated name of the target hosts subjected to chaos. Tune it by using the `destinationHosts` input.
+The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
 
-Use the following example to tune the host names:
+Use the following example to tune the destination hosts:
 
 [embedmd]:# (./static/manifests/linux-network-loss/destination-hosts.yaml yaml)
 ```yaml
@@ -89,9 +88,9 @@ spec:
 
 ### Destination IPs
 
-It specifies the comma-separated name of the target IPs subjected to chaos. Tune it by using the `destinationIPs` input.
+The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos.
 
-Use the following example to tune match scheme:
+Use the following example to tune the destination IPs:
 
 [embedmd]:# (./static/manifests/linux-network-loss/destination-ips.yaml yaml)
 ```yaml
@@ -107,11 +106,11 @@ spec:
     networkInterface: "eth0"
 ```
 
-### Packet Loss Percentage
+### Packet loss percentage
 
-It specifies the percentage of packet loss. Tune it by using the `packetLossPercentage` input.
+The `packetLossPercentage` input variable loses a specific percentage of the data packets.
 
-Use the following example to tune match scheme:
+Use the following example to tune the packet loss percentage:
 
 [embedmd]:# (./static/manifests/linux-network-loss/packet-loss-percentage.yaml yaml)
 ```yaml

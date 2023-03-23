@@ -2,15 +2,15 @@
 id: linux-service-restart
 title: Linux service restart
 ---
-Linux Service Restart stops the target system services running in a Linux machine.
+Linux service restart stops the target system services running in a Linux machine.
 - It determines the performance and resilience of the application (or services) running on Linux machines.
 
 ## Use cases
 - Service restart determines the resilience of an application upon random halts.
-- It determines how efficiently an application recovers and restarts the services.
+- Determines how efficiently an application recovers and restarts the services.
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::
 
@@ -62,10 +62,9 @@ Linux Service Restart stops the target system services running in a Linux machin
   </tr>
 </table>
 
-## Fault examples
 ### Services
 
-It specifies the target services to be stopped. Tune it by using the `services` input.
+The `services` input variable targets services to be stopped.
 
 Use the following example to tune the target services:
 
@@ -84,11 +83,11 @@ spec:
     duration: 30
 ```
 
-### Self Healing Services
+### Self-healing services
 
-It specifies whether the services should restart own their own upon being stopped. Tune it by using the `selfHealingServices` input.
+The `selfHealingServices` input variable restarts the services on their own after the service was stopped. 
 
-Use the following example to tune the self healing services:
+Use the following example to tune the self-healing services:
 
 [embedmd]:# (./static/manifests/linux-service-restart/self-healing-services.yaml yaml)
 ```yaml
@@ -108,7 +107,7 @@ spec:
 
 ### Sequence
 
-It specifies the sequence in which the services will be stopped. Services can be stopped parallely i.e. all at once per iteration of chaos or serially i.e. one after the other per iteration of chaos. Tune it by using the `sequence` input.
+The `sequence` input variable stops the services. Services can be stopped in parallel, that is, all services can be stopped at once for every iteration of chaos or serially, that is, one after the other for every iteration of chaos.
 
 Use the following example to tune the chaos sequence:
 
@@ -130,9 +129,10 @@ spec:
 
 ### Interval
 
-It specifies the duration of a single iteration of chaos, which should be less than or equal to `duration`, which denotes the entire duration of the fault execution. It can be tuned to create multiple iterations of chaos injection. Tune it by using the `interval` input.
+The `interval` input variable specifies the duration of a single iteration of chaos, which is less than or equal to `duration`, and denotes the entire duration of the fault execution. You can tune multiple iterations of the chaos injection.
 
 Use the following example to tune the interval:
+
 [embedmd]:# (./static/manifests/linux-service-restart/interval.yaml yaml)
 ```yaml
 # three iterations of chaos

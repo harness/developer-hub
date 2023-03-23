@@ -2,14 +2,14 @@
 id: linux-network-duplication
 title: Linux network duplication
 ---
-Linux Network Duplication injects chaos to disrupt network connectivity in Linux machine by duplicating network packets.
+Linux network duplication injects chaos to disrupt network connectivity on a Linux machine by duplicating network packets.
 
 ## Use cases
-- Induces Network Duplication on the target Linux machines.
-- Simulates packet duplication in the network machine.
+- Induces network duplication on the target Linux machines.
+- Simulates packet duplication in the network.
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::
 
@@ -23,7 +23,7 @@ Linux Network Duplication injects chaos to disrupt network connectivity in Linux
   </tr>
   <tr>
     <td> networkInterface </td>
-    <td> The network interface to target. </td>
+    <td> Network interface to target. </td>
     <td> For example: <code>eth0</code> </td>
   </tr>
 </table>
@@ -37,37 +37,36 @@ Linux Network Duplication injects chaos to disrupt network connectivity in Linux
   </tr>
     <tr>
     <td> destinationHosts </td>
-    <td> List of the target hostnames or keywords eg. <code>["google.com","litmuschaos.io"]</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted </td>
+    <td> List of the target host names or keywords. For example, <code>["google.com","litmuschaos.io"]</code> </td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
-    <td> List of the target IPs. eg: <code>["1.1.1.1","8.8.8.8"]</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted</td>
+    <td> List of the target IPs. For example, <code>["1.1.1.1","8.8.8.8"]</code> </td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
   </tr>
   <tr>
     <td> packetDuplicationPercentage </td>
-    <td> Percentage of packet to be duplicated. eg: <code> 50 </code> </td>
-    <td> Defaults to 100% </td>
+    <td> Percentage of packet to duplicate. For example <code>50</code>. </td>
+    <td> Default: 100% </td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30s </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0s </td>
   </tr>
 </table>
 
-## Fault examples
-### Destination Hosts
+### Destination hosts
 
-It specifies the comma-separated name of the target hosts subjected to chaos. Tune it by using the `destinationHosts` input.
+The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
 
-Use the following example to tune the host names:
+Use the following example to tune the destination hosts:
 
 [embedmd]:# (./static/manifests/linux-network-duplication/destination-hosts.yaml yaml)
 ```yaml
@@ -83,12 +82,11 @@ spec:
     networkInterface: "eth0"
 ```
 
-
 ### Destination IPs
 
-It specifies the comma-separated name of the target IPs subjected to chaos. Tune it by using the `destinationIPs` input.
+The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos.
 
-Use the following example to tune match scheme:
+Use the following example to tune the destination IPs:
 
 [embedmd]:# (./static/manifests/linux-network-duplication/destination-ips.yaml yaml)
 ```yaml
@@ -104,11 +102,11 @@ spec:
     networkInterface: "eth0"
 ```
 
-### Packet Duplication Percentage
+### Packet duplication percentage
 
-It specifies the percentage of packet duplication. Tune it by using the `packetDuplicationPercentage` input.
+The `packetDuplicationPercentage` input variable duplicates a specific percentage of the data packets.
 
-Use the following example to tune match scheme:
+Use the following example to tune the packet duplication percentage:
 
 [embedmd]:# (./static/manifests/linux-network-duplication/packet-duplication-percentage.yaml yaml)
 ```yaml

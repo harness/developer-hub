@@ -2,14 +2,14 @@
 id: linux-network-corruption
 title: Linux network corruption
 ---
-Linux Network Corruption injects chaos to disrupt network connectivity in Linux machine by corrupting the network requests.
+Linux network corruption injects chaos to disrupt network connectivity on a Linux machine by corrupting the network requests.
 
 ## Use cases
-- Induces Network Corruption on the target Linux machines.
-- Simulates corruption in network by corrupting requests of the machine.
+- Induces network corruption on the target Linux machines.
+- Simulates network corruption by corrupting requests of the machine.
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::
 
@@ -36,37 +36,36 @@ Linux Network Corruption injects chaos to disrupt network connectivity in Linux 
   </tr>
   <tr>
     <td> destinationHosts </td>
-    <td> List of the target hostnames or keywords For example. <code>["google.com","litmuschaos.io"]</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted </td>
+    <td> List of the target host names or keywords. For example. <code>["google.com","litmuschaos.io"]</code> </td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted </td>
   </tr>
   <tr>
     <td> destinationIPs </td>
     <td> List of the target IPs. For example: <code>["1.1.1.1","8.8.8.8"]</code> </td>
-    <td> If neither <code>destinationHosts</code> and <code> destinationIPs</code> is provided, all hostnames/domains will be targeted</td>
+    <td> If neither <code>destinationHosts</code> nor <code> destinationIPs</code> is provided, all host names/domains are targeted</td>
   </tr>
   <tr>
     <td> packetCorruptionPercentage </td>
-    <td> Percentage of packets to be corrupted. For example: <code> 50 </code> </td>
-    <td> Defaults to 100% </td>
+    <td> Percentage of packets to corrupt. For example: <code> 50 </code> </td>
+    <td> Default: 100% </td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30s </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0s </td>
   </tr>
 </table>
 
-## Fault examples
-### Destination Hosts
+### Destination hosts
 
-It specifies the comma-separated name of the target hosts subjected to chaos. Tune it by using the `destinationHosts` input.
+The `destinationHosts` input variable subjects the comma-separated target host names to chaos.
 
-Use the following example to tune the host names:
+Use the following example to tune the destination hosts:
 
 [embedmd]:# (./static/manifests/linux-network-corruption/destination-hosts.yaml yaml)
 ```yaml
@@ -82,12 +81,11 @@ spec:
     networkInterface: "eth0"
 ```
 
-
 ### Destination IPs
 
-It specifies the comma-separated name of the target IPs subjected to chaos. Tune it by using the `destinationIPs` input.
+The `destinationIPs` input variable subjects the comma-separated names of target IPs to chaos.
 
-Use the following example to tune match scheme:
+Use the following example to tune the destination IPs:
 
 [embedmd]:# (./static/manifests/linux-network-corruption/destination-ips.yaml yaml)
 ```yaml
@@ -103,12 +101,11 @@ spec:
     networkInterface: "eth0"
 ```
 
+### Packet corruption percentage
 
-### Packet Corruption Percentage
+The `packetCorruptionPercentage` input variable corrupts a specific percentage of data packets. 
 
-It specifies the percentage of packet corruption. Tune it by using the `packetCorruptionPercentage` input.
-
-Use the following example to tune match scheme:
+Use the following example to tune the the packet corruption percentage:
 
 [embedmd]:# (./static/manifests/linux-network-corruption/packet-corruption-percentage.yaml yaml)
 ```yaml

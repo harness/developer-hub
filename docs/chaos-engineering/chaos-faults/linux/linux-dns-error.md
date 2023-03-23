@@ -2,14 +2,14 @@
 id: linux-dns-error
 title: Linux DNS error
 ---
-Linux DNS Error injects chaos to disrupt DNS resolution in Linux machine.
+Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 
 ## Use cases
 - Induces DNS error on the target Linux machines.
-- Simulates loss of access to host by blocking DNS resolution of hostnames.
+- Simulates loss of access to host by blocking the DNS resolution of host names.
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::
 
@@ -23,40 +23,39 @@ Linux DNS Error injects chaos to disrupt DNS resolution in Linux machine.
   </tr>
   <tr>
     <td> hostNames </td>
-    <td> List of the target hostnames or keywords eg. '["google.com","litmuschaos.io"]' </td>
-    <td> If not provided, all hostnames will be targeted </td>
+    <td> List of the target host names or keywords. For example, '["google.com","litmuschaos.io"]'. </td>
+    <td> If not provided, all host names are targeted. </td>
   </tr>
   <tr>
     <td> matchScheme </td>
-    <td> Determines whether the dns query has to match exactly with one of the targets or it can have any of the targets as substring. It should be either <code>exact</code> or <code>substring</code> </td>
-    <td> if not provided, it will be set as <code> exact </code> </td>
+    <td> Determines whether the DNS query has to exactly match one of the targets or can have any of the targets as substring. It can be <code>exact</code> or <code>substring</code>. </td>
+    <td> If not provided, it is set to <code> exact </code> </td>
   </tr>
   <tr>
     <td> upstreamServer </td>
-    <td> URL of the DNS upstream server </td>
+    <td> URL of the DNS upstream server. </td>
     <td>  </td>
   </tr>
   <tr>
     <td> dnsPort </td>
-    <td> Port of the DNS Server </td>
+    <td> Port of the DNS server. </td>
     <td>  </td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30s </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0s </td>
   </tr>
 </table>
 
-## Fault examples
-### HostNames
+### Host names
 
-It specifies the comma-separated name of the target hosts subjected to chaos. Tune it by using the `hostNames` input.
+The `hostNames` input variable subjects the comma-separated host names to chaos. 
 
 Use the following example to tune the host names:
 
@@ -74,11 +73,11 @@ spec:
     hostNames: '["litmuschaos.io","google.com"]'
 ```
 
-### Match Scheme
+### Match scheme
 
-It specifies whether the DNS query has to match exactly with one of the targets or can have any of the targets as a substring. Tune it by using the `matchScheme` input.
+The `matchScheme` input variable either exactly matches one of the targets to the DNS query or has any of the targets as a substring of the DNS query.
 
-Use the following example to tune match scheme:
+Use the following example to tune the match scheme:
 
 [embedmd]:# (./static/manifests/linux-dns-error/matchscheme.yaml yaml)
 ```yaml

@@ -2,8 +2,8 @@
 id: linux-process-kill
 title: Linux process kill
 ---
-Linux Process Kill fault kills the target processes running on Linux machines.
-- It checks the performance of the application/process running on Linux.
+Linux process kill fault kills the target processes running on the Linux machines.
+- It checks the performance of the application/ or rocess running on the Linux machine.
 
 ## Use cases
 - Induces process kill on the target Linux machines.
@@ -11,7 +11,7 @@ Linux Process Kill fault kills the target processes running on Linux machines.
 - Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
 
 :::note
-- This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault has been tested for compatibility on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state and the infrastructure should be in a `CONNECTED` state.
 :::
 
@@ -39,19 +39,18 @@ Linux Process Kill fault kills the target processes running on Linux machines.
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Defaults to 30. </td>
+    <td> Default: 30s </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Defaults to 0. </td>
+    <td> Default: 0s </td>
   </tr>
 </table>
 
-## Fault examples
 ### Process IDs
 
-It specifies the IDs of the target processes which will be killed. Tune it by using the `processIDs` input.
+The `processIDs` input variable targets process IDs to kill.
 
 Use the following example to tune the process IDs:
 
