@@ -44,7 +44,7 @@ This release does not include any new early access features.
 
 This release does not include any fixed issues. 
 
-## March 15, 2023, Harness version 78712, Harness Delegate version 78700
+## March 15, 2023, Harness version 78712, Harness Delegate version 78705
 
 Harness FirstGen release 78712 includes the following feature changes and fixes for the Harness Delegate.
 
