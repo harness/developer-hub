@@ -211,7 +211,7 @@ Click **Run Pipeline**.
 
 ### Branch selection logic for referencing remote entities in pipelines
 
-During Pipeline execution, the configurations of the required resources and any referenced entities like Input Sets, are fetched from Git.
+The configurations of the required resources and any referenced entities like Input Sets, are fetched from Git during pipeline fetch, creation, or execution.
 
 - If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for Pipeline execution.​
 
