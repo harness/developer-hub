@@ -43,7 +43,11 @@ Linux CPU stress applies stress on the CPU of the target Linux machines for a ce
 
 <accordion color="green">
 <summary>Use cases</summary>
-Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the machine.
+
+- Induces CPU stress on the target Linux machines.
+- Simulates a lack of CPU for processes running on the application, which degrades their performance.
+- Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the machine.
+
 </accordion>
 
 </FaultDetailsCard>
@@ -122,6 +126,7 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
 
 - Induces network duplication on the target Linux machines.
 - Simulates packet duplication in the network.
+
 </accordion>
 
 </FaultDetailsCard>
@@ -186,6 +191,7 @@ Linux process kill fault kills the target processes running on the Linux machine
 - Induces process kill on the target Linux machines.
 - Disrupts the application critical processes such as databases or message queues by killing their underlying processes or threads.
 - Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
+
 </accordion>
 
 </FaultDetailsCard>
