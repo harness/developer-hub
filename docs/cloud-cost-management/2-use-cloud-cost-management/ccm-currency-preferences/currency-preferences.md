@@ -44,7 +44,10 @@ To standardize the currency in which your cloud cost data is displayed, perform 
 
 1. In the Harness application, go to **Cloud Costs**. 
 2. Under **Setup**, click **Currency Preferences**.
-3. Select the currency from the **Currency followed on Cloud Cost Management** drop-down list. 
+3. Select the currency from the **Currency followed on Cloud Cost Management** drop-down list.
+
+ ![](./static/currency-preference-settings.png)
+
 
 
 :::caution
@@ -64,16 +67,33 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
   
     The currency standardization process begins. On the **Perspectives** page, a banner displays the time and date by which the costs will be available in the selected currency. 
 
+    ![](./static/currency-preference-banner.png)
+
+
     The selected currency is applied to the last two years of data. The conversion factor used for the ongoing month is applied to the current month's data, while the conversion factor used for the previous month is applied to the historical data from the past two years.
 
-    
-:::note
+## Points to remember
+
 * After configuring the currency settings, the currency symbol immediately changes to the preferred one. However, the cost data does not change and remains in the original currency. It may take up to 24 hours for the converted value to be displayed.
 * It may take up to 48 hours for data on the **Recommendations** page to be updated.
+
+  ![](./static/currency-preference-recommendations.png)
+
 * You can configure these settings only for your cloud accounts. Contact Harness Support to view your Kubernetes cluster data in your preferred currency.
 * The currency format defaults to the _en-us_ locale. If you wish to change this, contact Harness Support.
-:::
+  In the following example, the locale is changed from _en-us_ to _fr-be_ which has changed the currency representation (currency symbol appears after the digits).
+  The format differs based on the locale.
 
-:::important
-For existing budgets and new budgets, you must manually update the **Specify Amount** field with the converted value in the selected currency. This is because a **Perspective** may be associated with multiple cloud accounts and therefore cannot be updated automatically.
-:::
+    ![](./static/currency-preference-locale.png)
+
+
+* If you choose to have currency code instead of currency symbol, contact Harness support.
+
+* For existing budgets and new budgets, you must manually update the **Specify Amount** field with the converted value in the selected currency. This is because a **Perspective** may be associated with multiple cloud accounts and therefore cannot be updated automatically.
+
+  ![](./static/budget-currency-preference-2.png)
+
+  ![](./static/budget-screen-alert-currency-preference.png)
+
+
+
