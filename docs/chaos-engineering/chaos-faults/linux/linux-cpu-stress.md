@@ -1,6 +1,6 @@
 ---
 id: linux-cpu-stress
-title: Linux CPU Stress
+title: Linux CPU stress
 ---
 Linux CPU Stress fault stresses the CPU of the target Linux machines for a certain duration.
 
@@ -44,7 +44,7 @@ Linux CPU Stress fault stresses the CPU of the target Linux machines for a certa
   </tr>
 </table>
 
-
+## Fault examples
 ### Workers
 
 It specifies the workers value that will be utilized for the CPU stress fault. Tune it by using the `workers` input.

@@ -1,6 +1,6 @@
 ---
 id: linux-memory-stress
-title: Linux Memory Stress
+title: Linux memory stress
 ---
 Linux Memory Stress fault causes memory consumption of the target Linux machines for a certain duration.
 
@@ -49,6 +49,7 @@ Linux Memory Stress fault causes memory consumption of the target Linux machines
   </tr>
 </table>
 
+## Fault examples
 ### Workers
 
 It specifies the workers value that will be utilized for the memory stress fault. Tune it by using the `workers` input.

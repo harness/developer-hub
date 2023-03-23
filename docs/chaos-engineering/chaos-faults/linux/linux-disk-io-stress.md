@@ -1,6 +1,6 @@
 ---
 id: linux-disk-io-stress
-title: Linux Disk IO Stress
+title: Linux disk IO stress
 ---
 Linux Disk IO Stress fault stresses the disk of the target Linux machines over IO operations for a certain duration.
 
@@ -55,6 +55,7 @@ Linux Disk IO Stress fault stresses the disk of the target Linux machines over I
   </tr>
 </table>
 
+## Fault examples
 ### Workers
 
 It specifies the workers value that will be utilized for the disk IO stress fault. Tune it by using the `workers` input.

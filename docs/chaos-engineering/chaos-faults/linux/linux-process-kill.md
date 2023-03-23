@@ -1,6 +1,6 @@
 ---
 id: linux-process-kill
-title: Linux Process Kill
+title: Linux process kill
 ---
 Linux Process Kill fault kills the target processes running on Linux machines.
 - It checks the performance of the application/process running on Linux.
@@ -48,6 +48,7 @@ Linux Process Kill fault kills the target processes running on Linux machines.
   </tr>
 </table>
 
+## Fault examples
 ### Process IDs
 
 It specifies the IDs of the target processes which will be killed. Tune it by using the `processIDs` input.

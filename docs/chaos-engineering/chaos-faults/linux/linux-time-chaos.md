@@ -1,12 +1,12 @@
 ---
 id: linux-time-chaos
-title: Linux Time Chaos
+title: Linux time chaos
 ---
-Linux Time Chaos injects chaos to change the time of the linux machine
+Linux Time Chaos injects chaos to change the time of the Linux machine.
 
 ## Use cases
-- Induces Time chaos on the target Linux machines.
-- It changes the time of the linux machine
+- Induces time chaos to change the system time on the target Linux machines.
+- Determines the resiliency of the underlying application components when subjected to a change in the system time.
 
 :::note
 - This fault has been tested for compatibility in Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
@@ -43,6 +43,7 @@ Linux Time Chaos injects chaos to change the time of the linux machine
   </tr>
 </table>
 
+## Fault examples
 ### Offset
 
 It contains the time offset to increment and decrement the system time. It should be provided in (+/-)[numeric-hours]h[numeric-minutes]m[numeric-seconds]s format. Tune it by using the `offset` input.
@@ -51,7 +52,7 @@ Use the following example to tune the offset:
 
 [embedmd]:# (./static/manifests/linux-dns-spoof/offset.yaml yaml)
 ```yaml
-# time offset 
+# time offset
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -71,7 +72,7 @@ Use the following example to tune the offset:
 
 [embedmd]:# (./static/manifests/linux-dns-spoof/offset.yaml yaml)
 ```yaml
-# disable the ntp server 
+# disable the ntp server
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:

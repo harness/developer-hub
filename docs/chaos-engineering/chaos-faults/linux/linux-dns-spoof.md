@@ -1,8 +1,8 @@
 ---
 id: linux-dns-spoof
-title: Linux DNS Spoof
+title: Linux DNS spoof
 ---
-Linux Dns Spoof injects chaos to mimic DNS resolution in linux machine.
+Linux DNS Spoof injects chaos to mimic DNS resolution in linux machine.
 
 ## Use cases
 - Induces DNS spoof on the target Linux machines.
@@ -56,7 +56,7 @@ Linux Dns Spoof injects chaos to mimic DNS resolution in linux machine.
   </tr>
 </table>
 
-
+## Fault examples
 ### SpoofMap
 
 It defines the map of the target host names. For example, '{"abc.com":"spoofabc.com"}' where the key is the host name that needs to be spoofed and the value is the host name to which the key is spoofed (or redirected). Tune it by using the `spoofMap` input.

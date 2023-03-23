@@ -1,6 +1,6 @@
 ---
 id: linux-service-restart
-title: Linux Service Restart
+title: Linux service restart
 ---
 Linux Service Restart stops the target system services running in a Linux machine.
 - It determines the performance and resilience of the application (or services) running on Linux machines.
@@ -62,6 +62,7 @@ Linux Service Restart stops the target system services running in a Linux machin
   </tr>
 </table>
 
+## Fault examples
 ### Services
 
 It specifies the target services to be stopped. Tune it by using the `services` input.
