@@ -30,7 +30,7 @@ Harness Security Testing Orchestration integrates with multiple scanners and tar
 
 The scanner, targets, and scan approach combinations are covered in the next section.
 
-## Harness STO scanner support
+### Harness STO scanner support
 
 <table>
     <tr>
@@ -126,9 +126,9 @@ The scanner, targets, and scan approach combinations are covered in the next sec
    </tr>
    </table>
 
-   ### Scanner support
+### Scanner binaries used in STO container images
 
-   Harness maintains and updates a container image for every scanner supported by STO. The following table lists the binaries and current versions for the most popular scanners.
+Harness maintains and updates a container image for every scanner supported by STO. The following table lists the binaries and versions used for the most popular scanners.
 
 <table>
 <thead>
