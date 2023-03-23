@@ -22,22 +22,22 @@ This topic describes how to use the HTTP step. For comprehensive details on each
 
 Looking for the Harness REST API? See [API Quickstart](../../../platform/16_APIs/api-quickstart.md).
 
-## Before You Begin
+## Before you begin
 
 * [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 * [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md): You can run an HTTP step in a CD stage without specifying specs or artifacts, but you do need to set up the Infrastructure Definition.
 
-## Step 1: Add the HTTP step
+## Add the HTTP step
 
 You can add the HTTP step to any CD Pipeline stage independent of deployment strategy.
 
 In your Harness Pipeline stage, in **Execution**, click **Add Step**.
 
-Click **HTTP**. The HTTP step appears.
+1. Click **HTTP**. The HTTP step appears.
 
 ![](./static/using-http-requests-in-cd-pipelines-32.png)
 
-## Step 2: Name and Timeout
+## Name and Timeout
 
 Enter a name for the step. Harness automatically creates an **Id**. You'll use this Id to reference this step's settings in other steps.
 
@@ -45,7 +45,7 @@ For example, if the stage name is **dev** and the step Id is **HTTP** and you wa
 
 `<+pipeline.stages.dev.spec.execution.steps.HTTP.spec.url>`
 
-In Timeout, enter a timeout for this step.You can use:
+In **Timeout**, enter a timeout for this step.You can use:
 
 * `w` for weeks
 * `d` for days
@@ -56,11 +56,11 @@ In Timeout, enter a timeout for this step.You can use:
 
 The maximum is `53w`.Timeouts are set at the Pipeline level also.
 
-## Step 3: URL for HTTP Call
+## URL for HTTP call
 
-In **URL**, enter a URL for the call. It must include the `http://` scheme.
+1. In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
-You can use a Fixed Value, Runtime Input, or Expression.
+For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/)..
 
 You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
@@ -77,7 +77,7 @@ Harness does not use the actual secret value, but rather it uses the secret Id. 
 
 If you use a Harness text secret for the entire URL, the capability check will fail. -->
 
-## Step 4: HTTP Method
+## HTTP method
 
 In HTTP Method, select the method for the call.
 
@@ -90,7 +90,7 @@ Harness supports the following [HTTP methods](https://restfulapi.net/http-method
 * HEAD
 * OPTIONS
 
-## Option: Request Body
+## Request Body
 
 In Request **Body**, you can enter the body of the HTTP payload to send to the URL.
 
@@ -98,7 +98,7 @@ You can use a Fixed Value, Runtime Input, or Expression.
 
 You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too.
 
-## Option: Assertion
+## Assertion
 
 The assertion is used to validate the incoming response. For example, if you wanted to check the health of an HTTP connection, you could use the assertion `<+httpResponseCode> == 200`.
 
@@ -115,7 +115,7 @@ You can use a Fixed Value, Runtime Input, or Expression.
 
 You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too.
 
-## Option: Headers
+## Headers
 
 Headers are `key:value` pairs. For example:
 
@@ -132,7 +132,7 @@ For example, in **Key**, enter `Token` .
 
 In **Value**, enter `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
 
-## Option: Output Variables
+## Output variables
 
 You can create output variables and reference them in other steps in the stage. The **Value** setting can contain any HTTP step input, output, or response information.
 
@@ -144,9 +144,8 @@ For example, here's a variable `example` with the value `1234`. The step name is
 
 Save the step and then click **Variables**.
 
-In the **Variables** drawer, copy the **example** variable.
-
-In another step, like a **Shell Script** step, paste the FQN.
+1. In the **Variables** drawer, copy the **example** variable.
+2. In another step, like a **Shell Script** step, paste the FQN.
 
 The FQN will resolve to the variable value at execution runtime.
 
@@ -154,7 +153,7 @@ You can also use ​JSON and XML functors in the values for the output variable.
 
 See [JSON and XML Functors](../../cd-technical-reference/cd-gen-ref-category/json-and-xml-functors.md).
 
-## Review: Simulate Load by Running Steps in Parallel
+## Simulate load by running steps in parallel
 
 You can use multiple HTTP steps in parallel to simulate load.
 
@@ -208,7 +207,6 @@ You can add multiple steps to the group quickly using YAML. Just paste additiona
   spec: {}  
 ...
 ```
-## See Also
 
-* [Using Shell Scripts in CD Stages](using-shell-scripts.md)
+
 
