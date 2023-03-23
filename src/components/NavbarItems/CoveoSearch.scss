@@ -37,6 +37,9 @@
         box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.14), 0px 2px 4px rgba(96, 97, 112, 0.26);
 		margin-right: 12px;
 		border-radius: 5px;
+		right: 0;
+		width: 70%;
+		min-width: 800px;
     }
 	.coveo-facet-column {
 		// display: none;
@@ -665,12 +668,12 @@
 		display: none;
     }
 	.navbar .navbar-sidebar #searchBoxCoveo {
-        width: 100%;
+        width: 96%;
 		display: block;
     }
 
 	#searchResultsCoveo .coveo-search-results {
-		top: 50px;
+		top: 195px; // 50px;
 		margin-right: 0;
 		z-index: 1;
 	}
