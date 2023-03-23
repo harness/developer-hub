@@ -19,8 +19,8 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * Cost Category enhancements (CCM-10280)
 
   - When calculating the cost for `Unattributed`, the rules present in the shared cost bucket are not considered to eliminate duplicate costs.
-  - If **Cost Category** is `NOT NULL` in a Perspective, it means all cost buckets are considered. `Unattributed` is not taken into account.
-  - If the **Cost Category** is `NULL`, it indicates that the cost buckets are not considered in the Perspective. `Unattributed` is taken into account.
+  - If **Cost Category** is `NOT NULL` in a perspective, it means all cost buckets are considered. `Unattributed` is not taken into account.
+  - If the **Cost Category** is `NULL`, it indicates that the cost buckets are not considered in the perspective. `Unattributed` is taken into account.
   - Previously, all shared cost buckets were displayed as `No Groupby`. Now, when you apply a GroupBy option other than the cost category, the cost of the rules present in the shared cost bucket are displayed in a separate entity based on the GroupBy selection you have made. However, it is important to note that this change will be effective only if you have incorporated cost category with shared buckets in perspective rules.
 
 
@@ -30,13 +30,15 @@ This release does not include any early access features.
 
 ### Fixed issues
 
-* Previously, deleting a cost category caused the Perspectives that utilized the cost category in their rule or GroupBy to crash. (CCM-9902)
+* Previously, deleting a cost category caused the perspectives that utilized the cost category in their rule or GroupBy to crash. (CCM-9902)
 
-  This issue has been fixed. Now, you will be prompted to delete any Perspective that depend on the cost category or remove the cost category from its rule or GroupBys before deleting the cost category itself.
+  This issue has been fixed. Now, before the cost category is deleted, you will receive a prompt to perform one of the following actions:
+   - Delete any perspectives that depend on the cost category.
+   - Remove the cost category from the perspective's rule or GroupBy.
 
-* When you edit an AutoStopping rule where the **Health Check** option is disabled, the client fetched the health check data and enabled it. (CCM-11472)
+* When you edit an AutoStopping rule in which the **Health Check** option is disabled, it is enabled when the client-side data is fetched. (CCM-11472)
  
-  This issue has been fixed now. Now, the Health check option remains disabled when you edit the AutoStopping rule.
+  This issue has been fixed. Now, the Health Check option remains disabled when you edit the AutoStopping rule.
 
 ## March 06, 2023
 
