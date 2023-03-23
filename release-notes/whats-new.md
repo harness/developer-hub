@@ -20,9 +20,10 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 ## March 15, 2023, version 788xx
 
 ### Service Reliability Management
+
 - When you try editing an existing SLO, you will see the **Tags (optional)** field autopopulated even if no value was entered while creating the SLO. Harness uses the selected SLI type as value to autopopulate the **Tags (optional)** field. (SRM-14121)
   
-- A new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
+- There is a new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
 
 ## March 15, 2023, version 78712
 
