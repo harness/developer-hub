@@ -51,7 +51,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
  
     A code enhancement has fixed this issue.
 
-- A Harness account link that doesn't contain `#` but includes an account Id without any routing Id details, crashes the gateway with a `HTTPHeader too long exception`. This results in an `HTTP 413` response code. (PL-31154)
+- A Harness account link that doesn't contain `#` but includes an account Id without any routing Id details crashes the gateway with `HTTPHeader too long exception`. This results in an `HTTP 413` response code. (PL-31154)
  
   Addition of a cluster URL for remote entry files has fixed this issue.
 
