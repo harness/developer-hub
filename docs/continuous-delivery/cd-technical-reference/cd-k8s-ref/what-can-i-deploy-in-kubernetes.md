@@ -18,9 +18,9 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
 
 An unmanaged workload is a workload deployed separate from your primary workload, such as [Kubernetes Jobs](../../cd-execution/kubernetes-executions/run-kubernetes-jobs.md). Harness does not track these workload versions or perform rollback on them.
 
-## Canary and Blue/Green Strategies
+## Canary and Blue Green Strategies
 
-Harness Canary and Blue/Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity. You cannot deploy 0 or more than 1 **Deployment** or **StatefulSet** workload.
+Harness Canary and Blue Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity. You cannot deploy 0 or more than 1 **Deployment** or **StatefulSet** workload.
 
 ## Rolling (Rollout) Strategy
 
@@ -32,13 +32,13 @@ The [Apply Step](../../cd-execution/kubernetes-executions/deploy-manifests-using
 
 ## OpenShift
 
-Harness supports OpenShift [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html) in OpenShift clusters as a managed workload across Canary, Blue Green, and Rolling deployment strategies. Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
+Harness supports OpenShift [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html) in OpenShift clusters as a managed workload across Canary, Blue Green, and Rolling deployment strategies. Use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
 
 ## Deploy Unmanaged Workloads using Annotation
 
 To deploy an object outside of the managed workloads in any strategy, you use the Harness [annotation](kubernetes-annotations-and-labels.md) to make it unmanaged: `harness.io/direct-apply: "true"|"false"`. Set to `true` to make a manifest an unmanaged workload.
 
-For example, Harness Canary and Blue/Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity, but you can deploy additional workloads as unmanaged using the `harness.io/direct-apply` annotation.
+For example, Harness Canary and Blue Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity, but you can deploy additional workloads as unmanaged using the `harness.io/direct-apply` annotation.
 
 The following tables list the differences between the managed and unmanaged workloads for the different Kubernetes steps.
 

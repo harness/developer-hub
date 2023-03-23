@@ -26,6 +26,13 @@ Make sure you have the following set up before you begin this quickstart:
 
 * **GitHub account:** this quickstart uses a publicly available kustomization and Docker image. DockerHub allows anonymous connections, but GitHub requires that you log into your account to access their repos.
 
+### Product Demo
+
+<!-- Video:
+https://harness-1.wistia.com/medias/j920372crr -->
+<docvideo src="https://harness-1.wistia.com/medias/j920372crr" />
+
+
 ### Set up your Kubernetes Cluster
 
 You'll need a target Kubernetes cluster for the Harness Delegate and deployment. Ensure your cluster meets the following requirements:

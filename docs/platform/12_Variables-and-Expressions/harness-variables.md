@@ -1030,6 +1030,8 @@ You can evaluate the expression using JEXL in the **Conditional Execution** sett
 
 ## Infrastructure
 
+The following expressions provide information about the pipeline infrastructure settings. The infrastructure in a pipeline is the **Infrastructure Definition** in the Harness environment used in the CD stage's **Environment** section.
+
 ### <+infra.name>
 
 The name of the infrastructure definition used in the pipeline stage.
@@ -1037,6 +1039,10 @@ The name of the infrastructure definition used in the pipeline stage.
 ![](./static/harness-variables-46.png)
 
 ### <+infra.connectorRef>
+
+The Id of the connector used in the infrastructure definition.
+
+### <+infra.connector.name>
 
 The name of the connector used in the infrastructure definition.
 

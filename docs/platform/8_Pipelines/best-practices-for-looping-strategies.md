@@ -105,8 +105,8 @@ And use the `<+matrix.jira>` expression instead.
 
 ### See also
 
-* [Optimizing CI Build Times](https://harness.helpdocs.io/article/g3m7pjq79y)
+* [Optimizing CI Build Times](/docs/continuous-integration/troubleshoot/optimizing-ci-build-times/)
 * [How to Run a Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 * [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md)
-* [Speed Up CI Test Pipelines Using Parallelism](https://harness.helpdocs.io/article/kce8mgionj)
+* [Speed Up CI Test Pipelines Using Parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
 

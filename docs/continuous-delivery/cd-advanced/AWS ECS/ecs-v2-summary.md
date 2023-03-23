@@ -293,7 +293,7 @@ Here is a JSON example highlighting the changes. Harness supports standard AWS E
 
 Supported schema details can be found in [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) from AWS.
 
-### infrastructure definitions
+### Infrastructure definitions
 
 The following changes were made to infrastructure definitions in NextGen:
 

@@ -1,5 +1,5 @@
 ---
-title: ECS deployment tutorial
+title: ECS deployments
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
 sidebar_position: 11
 helpdocs_topic_id: vytf6s0kwc
@@ -9,11 +9,15 @@ helpdocs_is_published: true
 ---
 
 
-:::
+This topic shows you how to deploy images to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy in Harness.
 
-This tutorial shows you how to deploy a publicly available Docker image to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy in Harness.
+See [Notes](#notes) below for details on other ECS deployment settings and behavior.
 
-See [Notes](#notes) below for details on ECS deployment settings and behavior outside of this quick tutorial.
+## Product Demo
+
+<!-- Video:
+https://harness-1.wistia.com/medias/vtlwxnczyh-->
+<docvideo src="https://harness-1.wistia.com/medias/vtlwxnczyh" />
 
 ## Objectives
 
@@ -27,6 +31,7 @@ You'll learn how to:
 * Create and deploy an ECS Rolling deployment.
 
 Once you have the prerequisites set up, the tutorial should only take about 10 minutes.
+
 
 ## Set up AWS IAM
 
@@ -182,7 +187,17 @@ For this tutorial, we'll set up the Task Definition, Service Definition, and Art
 
 Harness has full support for ECS task definitions. You simply provide Harness with a task definition and it will implement it.
 
-If you are new to ECS, please review the AWS documentation on [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html).
+There are two ways to add the ECS task definition to the Harness service:
+
+- **Task Definition**: Add a connection to the task definition file in a remote Git repository, local [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/), or object storage (AWS S3).
+- **Task Definition ARN**: Add the task definition ARN. 
+  - The task definition ARN points to an existing task created and available in the AWS cluster with the required definition.
+  - The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
+  - During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
+
+If you are new to ECS, review the AWS documentation on [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html).
+
+Let's look at an example using a task definition file in the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
 
 1. In **Task Definition**, click **Add Task Definition**.  
   You specify what Task Definition to use in the **ECS Task Definition Store**.
@@ -190,14 +205,16 @@ If you are new to ECS, please review the AWS documentation on [ECS Task Definiti
   ![](./static/ecs-deployment-tutorial-40.png)
 
   You can use a remote repo, but for this tutorial we'll use the built-in Harness file manager, [Harness File Store](../../cd-services/cd-services-general/add-inline-manifests-using-file-store.md).
-2. Click **Harness**, and then click **Continue**.
-3. In **Manifest Details**, in **Manifest Name**, enter **Task Definition**.
-4. In **File/Folder Path**, click **Select**. The Harness File Store appears.
-5. Create a new folder named **ECS Tutorial**.
-6. In the new folder, create a new file named **RegisterTaskDefinitionRequest.yaml**.
-7. Paste the following Task Definition into the file, click **Save**, and then click **Apply Selected**.
+2. Select **Harness**, and then select **Continue**.
+3. In **Task Definition**, select **Add Task Definition**.
+4. In **Specify ECS Task Definition Store**, select **Harness**, and select **Continue**.
+5. In **Manifest Details**, enter a name for the task definition.
+6. In **File/Folder Path**, select **Select**. The Harness File Store appears.
+7. Create a new folder named **ECS Tutorial**.
+8. In the new folder, create a new file named **RegisterTaskDefinitionRequest.yaml**.
+9. Paste the following Task Definition into the file, select **Save**, and then select **Apply Selected**.
    1. Replace the two `<ecsInstanceRole Role ARN>` with the ARN for the **ecsInstanceRole** used for your cluster. See [Amazon ECS Instance Role](https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html) from AWS. 
-   2. When you are done, in **Manifest Details**, click **Submit**. 
+   2. When you are done, in **Manifest Details**, select **Submit**. 
 
 JSON Example:
 ```json
@@ -1137,3 +1154,68 @@ deploymentConfiguration:
 ```
 
 With the above Service Registry ARN specified in ECS Service Definition ,deployed services are marked with Service Discovery capability
+
+### Support for circuit breaker configurations
+
+:::note
+
+Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only.
+
+:::
+
+
+Harness ECS rolling and canary deployments support AWS [ECS circuit breaker configurations](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/deployment-circuit-breaker.html).
+
+AWS ECS circuit breaker logic determines whether the deployment will fail if the service can't reach steady state. During deployment, the failure state is identified based on a threshold. Circuit breaker creates the threshold configuration with the desired instance count configuration internally.
+
+Circuit breaker configuration is implemented in the Harness ECS service **Service Definition**. 
+
+<details>
+<summary>Circuit breaker configuration example</summary>
+
+See the `deployment-configuration` setting in the following example:
+
+```json
+"service": {
+        "serviceArn": "arn:aws:ecs:us-east-1:1234567890:service/servicediscoverytest/ecs-service-discovery",
+        "serviceName": "ecs-service-discovery",
+        "clusterArn": "arn:aws:ecs:us-east-1:1234567890:cluster/servicediscoverytest",
+        "loadBalancers": [],
+        "serviceRegistries": [
+            {
+                "registryArn": "arn:aws:servicediscovery:us-east-1:1234567890:service/srv-xbnxncsqdovyuztm"
+            }
+        ],
+        "status": "ACTIVE",
+        "desiredCount": 1,
+        "runningCount": 0,
+        "pendingCount": 0,
+        "launchType": "FARGATE",
+        "platformVersion": "LATEST",
+        "platformFamily": "Linux",
+        "taskDefinition": "arn:aws:ecs:us-east-1:1234567890:task-definition/tutorial-task-def:1",
+        "deploymentConfiguration": {
+            "deploymentCircuitBreaker": {
+                "enable": false,
+                "rollback": false
+            },
+            "maximumPercent": 200,
+            "minimumHealthyPercent": 100
+        },
+        "deployments": [
+            {
+                "id": "ecs-svc/0410909316449095426",
+                "status": "PRIMARY",
+                "taskDefinition": "arn:aws:ecs:us-east-1:1234567890:task-definition/tutorial-task-def:1",
+                "desiredCount": 1,
+                "deployment-configuration": "deploymentCircuitBreaker={enable=true,rollback=true}" ,
+                "pendingCount": 0,
+                "runningCount": 0,
+...
+```
+</details>
+
+Harness deploys the tasks in the above ECS service definition containing the circuit breaker configuration. Once deployed, the circuit breaker is activated. 
+
+During failure scenarios, ECS circuit breaker performs a rollback automatically based on the threshold configuration.
+

@@ -19,6 +19,12 @@ This topic uses a [sample repository](https://github.com/thisrohangupta/harness)
 - To avoid configuration mismatches, any changes you make in the UI must be reconciled and updated in the YAML.
 - To prevent the editing and creation of resources in the Harness UI, use [RBAC](../4_Role-Based-Access-Control/1-rbac-in-harness.md).
 
+## Product Demo
+
+<!-- Video:
+https://harness-1.wistia.com/medias/a7nilatjff-->
+<docvideo src="https://harness-1.wistia.com/medias/a7nilatjff" />
+
 ## Install a delegate
 
 1. Install a Kubernetes delegate. For steps to install a Kubernetes delegate, go to [Delegate YAML Quickstart](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/).
