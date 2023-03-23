@@ -114,11 +114,24 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
    value: ""  
    ```
 3. Replace `value: ""` with the following script to install CF CLI, `autoscaler`, and `Create-Service-Push` plugins.
+   
+   :::info
+   Harness delegate uses Red Hat based distributions like Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in a Debian based distributions like Ubuntu, we recommend that you use `apt-get` commands to install CF CLI on your delegate.
+   :::
 
    :::info
    Make sure to use your API token for pivnet login in the following script.
    :::
-   
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';   
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+    <TabItem value="microdnf" label="microdnf" default>
+```
+
    ```
    - name: INIT_SCRIPT  
    value: |
@@ -149,6 +162,45 @@ After the delegate pods are created, you must edit your Harness delegate YAML to
     # verify plugins
     cf plugins
    ```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="apt-get" label="apt-get">
+```
+   
+   ```
+   - name: INIT_SCRIPT  
+   value: |
+    # update package manager, install necessary packages, and install CF CLI v7
+    apt-get install wget
+    wget -q -O - https://packages.cloudfoundry.org/debian/cli.cloudfoundry.org.key | apt-key add -
+    echo "deb https://packages.cloudfoundry.org/debian stable main" | tee /etc/apt/sources.list.d/cloudfoundry-cli.list
+    apt-get update
+    apt-get install cf7-cli
+
+    # autoscaler plugin
+    # download and install pivnet
+    wget -O pivnet https://github.com/pivotal-cf/pivnet-cli/releases/download/v0.0.55/pivnet-linux-amd64-0.0.55 && chmod +x pivnet && mv pivnet /usr/local/bin;
+    pivnet login --api-token=<replace with api token>
+
+    # download and install autoscaler plugin by pivnet
+    pivnet download-product-files --product-slug='pcf-app-autoscaler' --release-version='2.0.295' --product-file-id=912441
+    cf install-plugin -f autoscaler-for-pcf-cliplugin-linux64-binary-2.0.295
+
+    # install Create-Service-Push plugin from community
+    cf install-plugin -r CF-Community "Create-Service-Push"
+
+    # verify cf version
+    cf --version
+
+    # verify plugins
+    cf plugins
+   ```
+  
+```mdx-code-block
+</TabItem>    
+</Tabs>
+```
    
 4. Apply the profile to the delegate profile and check the logs.
 
@@ -318,12 +370,12 @@ The target space is your TAS space. This is where you will deploy your applicati
 Now you can select the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) for this stage of the pipeline.
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 ```
 ```mdx-code-block
-<Tabs>
-  <TabItem value="Basic" label="Basic">
+<Tabs2>
+  <TabItem2 value="Basic" label="Basic">
 ```
 
 The TAS workflow for performing a basic deployment takes your Harness TAS service and deploys it on your TAS infrastructure definition. 
@@ -365,8 +417,8 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
 Now the pipeline stage is complete and you can deploy.
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="Canary" label="Canary">
+  </TabItem2>
+  <TabItem2 value="Canary" label="Canary">
 ```
 The TAS canary deployment is a phased approach to deploy application instances gradually, ensuring the stability of a small percentage of instances before rolling out to your desired instance count. With canary deployment, all nodes in a single environment are incrementally updated in small phases. You can add verification steps as needed to proceed to the next phase.
 
@@ -407,8 +459,8 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
 Now the pipeline stage is complete and can be deployed.
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="Blue Green" label="Blue Green">
+  </TabItem2>
+  <TabItem2 value="Blue Green" label="Blue Green">
 ```
 Harness TAS blue green deployments use the route(s) in the TAS manifest and a temporary route you specify in the deployment configuration.
 
@@ -468,8 +520,8 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
 Now the pipeline stage is complete and can be deployed.
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="Rolling" label="Rolling">
+  </TabItem2>
+  <TabItem2 value="Rolling" label="Rolling">
 ```
 The TAS rolling deployment deploys all pods or instances in a single environment incrementally added one-by-one with a new service or artifact version.
 
@@ -496,8 +548,8 @@ Use this deployment method when you want to support both new and old deployments
 Now the pipeline stage is complete and can be deployed.
 
 ```mdx-code-block
-  </TabItem>    
-</Tabs>
+  </TabItem2>    
+</Tabs2>
 ```
 
 ## Deploy and review
