@@ -31,7 +31,7 @@ The **Node.js server SDK** has been updated to version **1.2.14** with the follo
 
 * The EventSource library was updated to version 2.1.3. (FFM-7198)
 * On streaming errors, the error was not included in the `retrying` event payload. This fix adds the error to the payload. (FFM-7198)
-* Checks were added to see if errors are retryable, and if not, the SDK stops retrying. (FFM-7198)
+* Checks were added to see if errors are eligible for retries, and if not, the SDK stops retrying. (FFM-7198)
 * The SDK now logs each retry. This ensures the most recent error is logged if errors change during retries. (FFM-7198)
 
 
