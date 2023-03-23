@@ -118,6 +118,6 @@ Here's how Harness Test Intelligence performed with some popular open-source rep
 
 ## Try it yourself
 
-Interested in trying Test Intelligence for yourself? Wait no more! It's available as part of the Harness CI free trial — [Sign up](https://harness.io/pricing/) and give it a spin!
-
 For instructions, go to [Enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+
+Test Intelligence is also available as part of the [Harness CI free trial](https://www.harness.io/pricing?module=ci#).
