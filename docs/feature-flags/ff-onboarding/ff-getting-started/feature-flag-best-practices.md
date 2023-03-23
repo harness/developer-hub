@@ -18,15 +18,15 @@ Before you even create a Feature Flag, it’s best practice to create a plan for
 
 ### Flag use cases
 
-Decide on what the flagwill be used for and how it will be used by your team, remember to think about the following:
+Decide on what the flag will be used for and how it will be used by your team, remember to think about the following:
 
 * The purpose of the flag, for example, if it will be used for a feature release, experiment, or to give particular users certain permissions.
-* Who the flagwill be toggled on and off for.
-* When the flagwill be toggled on and off.
-* Which environments you’ll use the flagin.
-* Whether the flagwill be temporary or permanent. For example, if you’re testing a new feature, you might create a temporary flagthat you can later delete after the feature has been successfully released. A permanent flagcould be used for daily operations such as ensuring only users with certain roles have access to features.
-* If the flagwill impact any other flags you have already created, or if any other flags will impact the new flagyou’re creating.
-* Whether you need a simple Boolean flag, or a Multivariate flag. If there is a chance your flagwill need to have more than two variations in the future, it’s best to create a Multivariate flagto give yourself the flexibility to add more variations later.
+* Who the flag will be toggled on and off for.
+* When the flag will be toggled on and off.
+* Which environments you’ll use the flag in.
+* Whether the flag will be temporary or permanent. For example, if you’re testing a new feature, you might create a temporary flag that you can later delete after the feature has been successfully released. A permanent flag could be used for daily operations such as ensuring only users with certain roles have access to features.
+* If the flag will impact any other flags you have already created, or if any other flags will impact the new flag you’re creating.
+* Whether you need a simple Boolean flag, or a Multivariate flag. If there is a chance your flag will need to have more than two variations in the future, it’s best to create a Multivariate flag to give yourself the flexibility to add more variations later.
 
 ### Default flag variation
 
