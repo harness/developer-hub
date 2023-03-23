@@ -16,7 +16,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Harness Platform
 
-- By enabling the feature flag `PL_NEW_SCIM_STANDARDS`, any CRUD operation on a user now returns user group details. (PL-31496)
+- By enabling the feature flag `PL_NEW_SCIM_STANDARDS`, any CRUD operation on a user now returns the details of the user groups that user is part of. (PL-31496)
 
   You can use this to verify what groups a given user belongs to.
 
