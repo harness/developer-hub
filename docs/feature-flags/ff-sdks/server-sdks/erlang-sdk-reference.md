@@ -49,7 +49,7 @@ To install the SDK for Erlang based applications:
 1. Add the SDK as a dependency to your `rebar.config` file:
 
   ```
-  {deps, [{cfclient, {git, "https://github.com/harness/ff-erlang-server-sdk", {tag, "1.0.0"}}}]}.
+  {deps, [{cfclient, "1.0.0", {pkg, harness_ff_erlang_server_sdk}}]}.
   ```
 
 2. Add the dependency to your project's `app.src`.
@@ -69,7 +69,7 @@ To install the SDK for Elixir based applications:
   ```
     defp deps do
       [
-          {:cfclient, github: "harness/ff-erlang-server-sdk", tag: "1.0.0"}
+          {:cfclient, "~> 1.0.0", hex: :harness_ff_erlang_server_sdk}
       ]
   ```
 
