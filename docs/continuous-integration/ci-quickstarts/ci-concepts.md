@@ -2,7 +2,7 @@
 title: Harness CI concepts
 description: Harness CI simplifies the code development and testing process.
 
-sidebar_position: 30
+sidebar_position: 10
 helpdocs_topic_id: rch2t8j1ay
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
@@ -59,7 +59,7 @@ Here are some key features of Harness CI.
 
 ### Test Intelligence
 
-Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. For more information, go to [Test Intelligence overview](test-intelligence-concepts.md).
+Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. For more information, go to [Get started with Test Intelligence](test-intelligence-concepts.md).
 
 <!-- ![](./static/ci-concepts-600.png) -->
 
@@ -99,7 +99,7 @@ Harness Git Experience provides seamless integration between your Harness projec
 
 ## Harness CI components
 
-For information about CI pipeline components, go to [CI pipeline basics](./ci-pipeline-basics.md).
+For information about CI pipeline components, go to [CI pipeline concepts](./ci-pipeline-basics.md).
 
 ## Try Harness CI
 

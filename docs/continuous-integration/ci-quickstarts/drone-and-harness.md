@@ -1,9 +1,8 @@
 ---
 title: Drone and Harness
 description: Over the past decade, Drone has flourished through its vibrant open source community with over 100m pulls on DockerHub, 50,000+ active users, and 250+ contributors. Drone was acquired by Harness in 2…
-tags: 
-   - helpDocs
-sidebar_position: 40
+
+sidebar_position: 50
 helpdocs_topic_id: j4nnt8jhby
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false

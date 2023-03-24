@@ -1,9 +1,8 @@
 ---
-title: Test Intelligence
+title: Get started with Test Intelligence
 description: Harness Test Intelligence dramatically improves test time by running only those tests required to confirm the quality of the code changes which triggered the build
-tags: 
-   - helpDocs
-# sidebar_position: 2
+
+sidebar_position: 40
 helpdocs_topic_id: vtu9k1dsfa
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false

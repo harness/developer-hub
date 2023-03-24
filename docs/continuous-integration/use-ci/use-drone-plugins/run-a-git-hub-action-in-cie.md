@@ -21,7 +21,7 @@ With the **Plugin** step, you use the GitHub Actions Drone Plugin, [plugins/gith
 
 These steps assume you have a CI pipeline with a **Build** stage that is connected to your codebase and has defined build infrastructure.
 
-If you've never created a CI pipeline before, [get started with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci) or try the [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md). If you're new to Harness CI, you might want to review [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and [CI pipeline basics](../../ci-quickstarts/ci-pipeline-basics.md).
+If you've never created a CI pipeline before, [get started with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci) or try the [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md). If you're new to Harness CI, you might want to review [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md).
 
 <details>
 <summary>Add Build stage and connect codebase</summary>

@@ -1,5 +1,5 @@
 ---
-title: CI pipeline basics
+title: CI pipeline concepts
 description: Basic terminology and concepts related to CI pipelines
 sidebar_position: 20
 helpdocs_topic_id: 3amcd8hn53
@@ -100,7 +100,7 @@ You can run your pipelines manually or use triggers to initiate their execution.
 
 ## Test Intelligence
 
-Test Intelligence speeds up your test cycles by running only the tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in the test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Test Intelligence overview](test-intelligence-concepts.md).
+Test Intelligence speeds up your test cycles by running only the tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in the test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Get started with Test Intelligence](test-intelligence-concepts.md).
 
 ## CI Overview
 
