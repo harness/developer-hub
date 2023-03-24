@@ -15,16 +15,22 @@ The Docker Delegate is limited by the total amount of memory and CPU on the loca
 * Default 0.5 CPU.
 * Default 1.5GB. Ensure that you provide the minimum memory for the Delegate and enough memory for the host/node system.
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Linux" label="Linux" default>
+```
 ## Install the Delegate
 
 Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
 
-* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `macos-amd64`, `macos-arm64`, `windows-amd64`, `linux-amd64`, `linux-arm64`.
-* For macOS, add `-e RUNNER_URL=http://host.docker.internal:3000`.
-* For Linux, add `--net=host` to the first line.
-* For Windows, add `-e RUNNER_URL=http://<windows-machine-hostname-or-ip>:3000`. For Windows, the Drone Runner must run on a separate machine than the one that your Delegate runs on. This variable must point to the Drone Runner's machine.
+* Add `--net=host` to the first line.
+* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `linux-amd64` or `linux-arm64`.
 
-Here's an example of an install script for Linux:
+Here's an example of an install script for Linux amd64:
 
 ```
 docker run --cpus=1 --memory=2g --net=host \
@@ -44,29 +50,174 @@ Make sure to create the delegate at the appropriate scope, such as the project l
 The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
 
 1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
-2. Enable execution permissions for the Runner. For example, on macOS you can run the following command:
+2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `source_path:destination_path`, for example:
+
+   ```
+   export CI_MOUNT_VOLUMES=[path_to_cert_on_local]:/etc/ssl/certs/ca-certificats.crt, [source_path_2]:[destination_path_2]
+   ```
+
+3. Enable execution permissions for the Runner. For example:
+
+   ```
+   sudo chmod +x drone-docker-runner-linux-arm64
+   ```
+
+4. Start the runner binary. For example:
+
+   ```
+   sudo ./drone-docker-runner-linux-arm64 server
+   ```
+
+Here is an example of all three commands to install the Drone Runner with self-signed certificates:
+
+```
+export CI_MOUNT_VOLUMES=<path-to-cert-on-local>:/etc/ssl/certs/ca-certificates.crt
+sudo chmod +x drone-docker-runner-linux-arm64
+./drone-docker-runner-linux-arm64 server
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="macOS" label="macOS">
+```
+## Install the Delegate
+
+Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
+
+* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `macos-amd64` or `macos-arm64`.
+* Add `-e RUNNER_URL=http://host.docker.internal:3000`.
+
+Here's an example of an install script for macOS amd64:
+
+```
+docker run --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
+  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
+  -e DELEGATE_TAGS="macos-amd64" \
+  -e RUNNER_URL=http://host.docker.internal:3000 \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
+```
+
+Make sure to create the delegate at the appropriate scope, such as the project level or account level.
+
+## Install the Drone Runner
+
+The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
+
+1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `source_path:destination_path`, for example:
+
+   ```
+   export CI_MOUNT_VOLUMES=[path_to_cert_on_local]:/etc/ssl/certs/ca-certificats.crt, [source_path_2]:[destination_path_2]
+   ```
+
+3. Enable execution permissions for the Runner. For example:
 
    ```
    sudo chmod +x drone-docker-runner-darwin-amd64
    ```
 
-3. Start the runner binary according to the OS:
+4. To start the runner binary. For example:
 
-   * On macOS, run `./drone-docker-runner-darwin-amd64 server`. You might have modify **Security and Privacy** settings to allow this app to run.
-   * On Linux, run as `sudo`: `sudo ./drone-docker-runner-darwin-amd64 server`
-   * On Windows, run `drone-docker-runner-windows-amd64.exe server`. You must run the Drone Runner `.exe` from a separate machine than the one that your Delegate is running on. Make sure to run this command on the appropriate machine.
+   ```
+   ./drone-docker-runner-darwin-amd64 server
+   ```
+
+   You might have modify **Security and Privacy** settings to allow this app to run.
+
+Here is an example of all three commands to install the Drone Runner with self-signed certificates:
+
+```
+export CI_MOUNT_VOLUMES=<path-to-cert-on-local>:/etc/ssl/certs/ca-certificates.crt
+sudo chmod +x drone-docker-runner-darwin-arm64
+./drone-docker-runner-darwin-arm64 server
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="windows" label="Windows">
+```
+## Install the Delegate
+
+Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
+
+* Add `-e DELEGATE_TAGS="windows-amd64"`.
+* Add `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000`. The Drone Runner must run on a separate machine than the one that your Delegate runs on. The `RUNNER_URL` must point to the Drone Runner's machine.
+
+Here's an example of an install script for Windows:
+
+```
+docker run --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
+  -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
+  -e DELEGATE_TAGS="windows-amd64" \
+  `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000` \
+  -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
+```
+
+Make sure to create the delegate at the appropriate scope, such as the project level or account level.
+
+## Install the Drone Runner
+
+The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
+
+:::caution
+
+You must run the Drone Runner executable from a separate machine than the one that your Delegate is running on. Make sure to run these commands on the appropriate machine.
+
+:::
+
+1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+2. Open a terminal with Administrator privileges.
+2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `source_path:destination_path`, for example:
+
+   ```
+   export CI_MOUNT_VOLUMES=[path_to_cert_on_local]:/etc/ssl/certs/ca-certificats.crt, [source_path_2]:[destination_path_2]
+   ```
+
+3. Run the following command to enable execution permissions for the Runner:
+
+   ```
+   chmod +x drone-docker-runner-windows-amd64
+   ```
+
+4. Run the following command to start the runner binary:
+
+   ```
+   drone-docker-runner-windows-amd64.exe server
+   ```
+   You must run the Drone Runner `.exe` from a separate machine than the one that your Delegate is running on. Make sure to run this command on the appropriate machine.
+
+Here is an example of all three commands to install the Drone Runner with self-signed certificates:
+
+```
+export CI_MOUNT_VOLUMES=<path-to-cert-on-local>:/etc/ssl/certs/ca-certificates.crt
+chmod +x drone-docker-runner-windows-amd64
+./drone-docker-runner-windows-amd64 server
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Set the pipeline's build infrastructure
 
 Update the pipeline where you want to use the Docker delegate. You can use either the Visual or YAML pipeline editor.
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 ```
 ```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<Tabs2>
+  <TabItem2 value="Visual" label="Visual" default>
 ```
 
 1. In the pipeline's **Build** stage, select the **Infrastructure** tab.
@@ -75,8 +226,8 @@ import TabItem from '@theme/TabItem';
 4. Save your pipeline.
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML">
+  </TabItem2>
+  <TabItem2 value="YAML" label="YAML">
 ```
 
 In the pipeline's `Build` (`type: CI`) stage, replace the `infrastructure` line with specifications for `platform` and `runtime`, for example:
@@ -98,8 +249,8 @@ In the pipeline's `Build` (`type: CI`) stage, replace the `infrastructure` line 
   * `spec`: `{}`
 
 ```mdx-code-block
-  </TabItem>
-</Tabs>
+  </TabItem2>
+</Tabs2>
 ```
 
 ## Troubleshooting
