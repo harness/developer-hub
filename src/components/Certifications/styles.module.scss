@@ -299,8 +299,12 @@
     .studyGuide {
         margin-top: 24px; //50px;
         .studyGuideCard {
-            background-color: #BC8532;
+            background-color: var(--primary-8);
             border-radius: 8px;
+            &.Developers {background-color: #BC8532;}
+            &.Administrators {background-color: #88939A;}
+            &.Architects {background-color: #C8A320;
+                ;}
             .info {
                 // font-weight: 600;
                 font-size: 12px;
