@@ -25,6 +25,14 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
 - There is a new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
 
+### Harness Platform
+
+- You can now add specific service accounts to your resource group. (PL-31867)
+  
+  By doing this, you can prevent accidental or deliberate misuse of API keys by restricting who can generate them from which service accounts.
+
+- You can now enter usernames as a comma separated string while adding users in **Users(name or email)**. (PL-29630)
+  
 ## March 15, 2023, version 78712
 
 ### Harness Delegate
@@ -120,6 +128,17 @@ import TabItem from '@theme/TabItem';
   This feature eliminates the need for switching between the Harness **Create SLO** screen and your health monitoring tool dashboard to determine the most appropriate value for the SLI parameter you are configuring. For instance, if you opt for the ratio-based evaluation method while configuring your SLI, you can refer to the metric graphs and accompanying suggested values to determine the ideal percentage of valid requests to be considered for your SLI.  
   
   ![Metrics graph in Create SLO screen](./static/srm-rn-787-metricgraph.png)
+
+## March 13, 2023
+
+### Cloud Cost Management
+
+  Cost Category enhancements (CCM-10280)
+  
+  - When calculating the cost for `Unattributed`, the rules present in the shared cost bucket are not considered to eliminate duplicate costs.
+  - If **Cost Category** is `NOT NULL` in a perspective, it means all cost buckets are considered. `Unattributed` is not taken into account.
+  - If the **Cost Category** is `NULL`, it indicates that the cost buckets are not considered in the perspective. `Unattributed` is taken into account.
+  - Previously, all shared cost buckets were displayed as `No Groupby`. Now, when you apply a GroupBy option other than the cost category, the cost of the rules present in the shared cost bucket are displayed in a separate entity based on the GroupBy selection you have made. However, it is important to note that this change will be effective only if you have incorporated cost category with shared buckets in perspective rules.
 
 ## March 9, 2023
 

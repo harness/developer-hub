@@ -37,7 +37,7 @@ To view filter your Flags:
 3. Click on the filter you want to use.
 4. A list of the relevant Flags are displayed.
 
-![A screenshot of the Permanent Flags tile selected to filter for permanent flags.](./static/9-filtering-flags-by-state-01.png)*Figure 2: A filtered list of Flags*
+    ![A screenshot of the Permanent Flags tile selected to filter for permanent flags.](./static/9-filtering-flags-by-state-01.png)*Figure 2: A filtered list of Flags*
 
  
 

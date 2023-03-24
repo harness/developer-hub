@@ -81,7 +81,7 @@ The delegate and Harness Manager (through SaaS) establish a Secure WebSocket cha
 
 #### Can I add IP addresses for Harness delegate to an allowlist?
 
-Yes. See [Whitelist Harness domains and IPs](../../platform/20_References/allowlist-harness-domains-and-ips.md).
+Yes. See [Allowlist Harness domains and IPs](../../platform/20_References/allowlist-harness-domains-and-ips.md).
 
 #### Do I need separate delegates for different isolated environments?
 
@@ -101,7 +101,7 @@ Harness provides different types of delegates to give you flexibility in how you
 
 You are not limited to using a delegate of the same type as your deployment platform, although that is more complicated to set up initially.
 
-For delegates types, see [Delegate how-tos](/docs/category/delegates).
+For delegates types, see [Delegate image types](/docs/platform/delegates/get-started-with-delegates/delegate-image-types).
 
 #### Where do I install the Harness delegate?
 
@@ -139,7 +139,7 @@ It depends on the size of the delegate you are installing. For example, for the 
 
 #### What are the delegate network requirements?
 
-See [Delegate requirements and limitations](../../platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md) and [Permissions and ports for Harness connections](../../platform/20_References/permissions-and-ports-for-harness-connections.md).
+See [Delegate requirements](../../platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md) and [Permissions and ports for Harness connections](../../platform/20_References/permissions-and-ports-for-harness-connections.md).
 
 #### What are the delegate access requirements?
 
@@ -176,7 +176,7 @@ The following information describes how Harness Manager validates and assigns ta
 
 ![](./static/harness-delegate-faqs-10.png)
 
-Delegate selectors use the tags you add to delegates. For more information, see [Select delegates with tags](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+Delegate selectors use the tags you add to delegates. For more information, see [Select delegates with selectors and tags](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 * **Allowlist** - After a delegate is validated for a task, it is added to an allowlist for that task and will likely be used again for that task. The criteria is the URL associated with the task, such as a connection to a cloud platform, repository, or API. A delegate is allowed to perform all tasks using that URL. The time-to-live (TTL) for the allow list is six hours; the TTL is reset with each successful task validation.
 * **Deny list** - If a delegate fails to perform a task, that delegate is added to a deny list for that task and will not be tried again. The TTL for denial is 5 minutes. This is true if there is only one delegate and even if the delegate is selected for that task with a selector, such as with a shell script command in a workflow.
 
@@ -186,7 +186,7 @@ Yes, for all pipeline steps you can use delegate selectors to select specific de
 
 ![](./static/harness-delegate-faqs-11.png)
 
-Delegate selectors use the tags you add to delegates. For more information, see [Select delegates with tags](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+Delegate selectors use the tags you add to delegates. For more information, see [Select delegates with selectors and tags](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ### Running scripts and installations on delegates
 
@@ -305,7 +305,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Most delegate issues are:
 
-* Delegate does not meet system, network, or access requirements. See [Delegate requirements and limitations](../../platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md) and [Permissions and ports for Harness connections](../../platform/20_References/permissions-and-ports-for-harness-connections.md).
+* Delegate does not meet system, network, or access requirements. See [Delegate requirements](../../platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md) and [Permissions and ports for Harness connections](../../platform/20_References/permissions-and-ports-for-harness-connections.md).
 	+ Keep in mind that the delegate host or node needs resources to host the delegate and other software. The delegate resource requirements should be factored in, but they are not the minimum requirements for the infrastructure.
 * Delegate is not running.
 * Delegate does not have required permissions. The delegate uses the credentials you enter in Harness connectors to connect to cloud providers, artifact servers, etc.  

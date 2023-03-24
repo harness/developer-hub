@@ -202,7 +202,6 @@ const config = {
             ],
           },
           {
-            // to: "release-notes",
             label: "Certifications",
             position: "right",
             type: "dropdown",
@@ -224,6 +223,11 @@ const config = {
                 href: "https://university.harness.io/page/job-role-certifications",
               },
             ],
+          },
+          {
+            position: "right",
+            to: "kb",
+            label: "Knowledge Base",
           },
           {
             position: "right",
@@ -327,6 +331,10 @@ const config = {
               {
                 label: "Developer Hub GitHub",
                 href: "https://github.com/harness/developer-hub",
+              },
+              {
+                label: "Release Notes",
+                href: "/release-notes/whats-new",
               },
             ],
           },

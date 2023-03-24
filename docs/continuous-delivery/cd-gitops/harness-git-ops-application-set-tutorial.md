@@ -98,7 +98,7 @@ We'll add Harness GitOps Clusters for the two target clusters where we want to a
    ![](./static/harness-git-ops-application-set-tutorial-30.png)
 
 4. In **Details**, select **Specify Kubernetes Cluster URL and credentials**.
-5. In **Master URL**, enter the Endpoint URL for the target cluster (you can use `kubectl cluster-info` or your cloud console).Ensure that you use the `https://` scheme.Here's an example:
+5. In **Master URL**, enter the Endpoint URL for the target cluster (you can use `kubectl cluster-info` or your cloud console). Ensure that you use the `https://` scheme.Here's an example:
    
    ![](./static/harness-git-ops-application-set-tutorial-31.png)
 
@@ -123,7 +123,7 @@ The repo and example we will use is located in the Argo Project's public [Applic
 
 `https://github.com/argoproj/applicationset/tree/master/examples/git-generator-files-discovery`
 
-For a summary of this example, go to [Argo CD docs](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Git/#git-generator-files).You will need to clone this repo into your GitHub account and then update 3 files.
+For a summary of this example, go to [Argo CD docs](https://argocd-applicationset.readthedocs.io/en/stable/Generators-Git/#git-generator-files). You will need to clone this repo into your GitHub account and then update 3 files.
 
 1. Clone the repo `https://github.com/argoproj/applicationset`.
 2. Navigate to `applicationset/examples/git-generator-files-discovery/git-generator-files.yaml`.
@@ -306,10 +306,10 @@ Next, we'll add a Variable for the JSON key:value we will be updating.
 
 Next, we'll link the GitOps Clusters for dev with the dev Environment. Once you link GitOps Clusters to an Environment, you can then select from an Environment's linked GitOps Clusters when you select the Environment in a Pipeline.
 
-1. Click GitOps Clusters.
-2. Click Select Cluster(s).
-3. Select engineering-dev.
-4. Click Add.
+1. Click **GitOps Clusters**.
+2. Click **Select Cluster(s)**.
+3. Select **engineering-dev**.
+4. Click **Add**.
 
 ![](./static/harness-git-ops-application-set-tutorial-47.png)
 
@@ -360,17 +360,18 @@ Now we'll add a Github Connector to tell Harness where to pull the config.json f
 
 1. In **Github Connector**, click **New Github Connector**.
 2. Enter the following Github Connector settings:
-	1. **Name:** enter **gitops-github**.
-	2. **URL Type:** select **Repository**.
-	3. **Connection Type:** select **HTTP**.
-	4. **GitHub Repository URL:** enter the HTTP URL for repo you used for your ApplicationSet, such as `https://github.com/johnsmith/applicationset.git`.
-	5. **Authentication:** select **Username and Token**. For the Token, you'll need to use a Personal Access Token (PAT) from Github. If you are logged into Github, just go to <https://github.com/settings/tokens>.
-	6. Ensure the PAT has the **repo** scope selected.
+    1. **Name:** enter **gitops-github**.
+    2. **URL Type:** select **Repository**.
+    3. **Connection Type:** select **HTTP**.
+    4. **GitHub Repository URL:** enter the HTTP URL for repo you used for your ApplicationSet, such as `https://github.com/johnsmith/applicationset.git`.
+    5. **Authentication:** select **Username and Token**. For the Token, you'll need to use a Personal Access Token (PAT) from Github. If you are logged into Github, just go to <https://github.com/settings/tokens>.
+    6. Ensure the PAT has the **repo** scope selected.
    
    ![](./static/harness-git-ops-application-set-tutorial-52.png)
    
    You will store the PAT in a [Harness Text Secret](../../platform/6_Security/2-add-use-text-secrets.md). For details on Secrets Management, go to [Harness Secrets Management Overview](../../platform/6_Security/1-harness-secret-manager-overview.md).
-	7. Select **Enable API access** and use the same Harness Secret.
+    
+    7. Select **Enable API access** and use the same Harness Secret.
 3. Click **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**., and then click **Save and Continue**.
 5. When the **Connection Test** in complete, click **Continue**.
@@ -498,7 +499,7 @@ To solve this use case, Harness supports ApplicationSets.
 
 An ApplicationSet uses an ApplicationSet controller to automatically and dynamically generate applications in multiple target environments. A GitOps ApplicationSet is similar to a GitOps Application but uses a template to achieve application automation using multiple target environments.
 
-ApplicationSet is supported in your cluster using a [Kubernetes controller](https://kubernetes.io/docs/concepts/architecture/controller/) for the `ApplicationSet` [CustomResourceDefinition](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) (CRD).You add an ApplicationSet manifest to a Harness GitOps Application just like you would add a typical Deployment manifest. At runtime, Harness uses the ApplicationSet to deploy the application to all the target environments' clusters.
+ApplicationSet is supported in your cluster using a [Kubernetes controller](https://kubernetes.io/docs/concepts/architecture/controller/) for the `ApplicationSet` [CustomResourceDefinition](https://kubernetes.io/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definitions/) (CRD). You add an ApplicationSet manifest to a Harness GitOps Application just like you would add a typical Deployment manifest. At runtime, Harness uses the ApplicationSet to deploy the application to all the target environments' clusters.
 
 ![](./static/harness-git-ops-application-set-tutorial-61.png)
 
