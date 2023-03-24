@@ -65,6 +65,8 @@ You can run builds on Harness-hosted build infrastructure. For more information,
 
 [Test Intelligence (TI)](test-intelligence-concepts.md) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection.
 
+While Test Intelligence is specific to unit testing, you can run a variety of tests in your CI pipelines.
+
 ### Integrated Platform
 
 Harness CI is seamlessly integrated with other Harness modules such as [Continuous Delivery](/docs/continuous-delivery), [Cloud Cost Management](/docs/cloud-cost-management), [Feature Flags](/docs/feature-flags), and [Security Testing Orchestration](/docs/security-testing-orchestration). The Harness Platform offers unified CI/CD pipelines with visual controls and approval gates. You no longer have to navigate between applications to follow the steps of the pipeline.

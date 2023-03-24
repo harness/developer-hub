@@ -165,7 +165,7 @@ sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEV
 </details>
 
 
-## Step 1: Add Your Script
+## Add your script
 
 When the script in the Shell Script step is run, Harness executes the script on the target host's or Delegate's operating system. Consequently, the behavior of the script depends on their system settings.
 
@@ -173,18 +173,16 @@ For this reason, you might wish to begin your script with a shebang line that id
 
 To capture the shell script output in a variable, do the following:
 
-In the stage, in **Execution**, click **Add Step**.
+1. In the stage, in **Execution**, click **Add Step**.
+2. Select **Shell Script**.
+3. Enter a name for the step. An Id is generated. This Id identifies the step and is used in variable expressions. For example, if the Id is **Shell Script**, the expression might be `<+execution.steps.Shell_Script.output.outputVariables.myvar>`.
+4. In **Script**, enter a bash script. For example, the variable names `BUILD_NO`and `LANG`:
+  
+  ```bash
+  BUILD_NO="345"  
+  LANG="en-us" 
+  ```
 
-Select **Shell Script**.
-
-Enter a name for the step. An Id is generated. This Id identifies the step and is used in variable expressions. For example, if the Id is **Shell Script**, the expression might be `<+execution.steps.Shell_Script.output.outputVariables.myvar>`.
-
-In **Script**, enter a bash script. For example, the variable names `BUILD_NO`and `LANG`:
-
-```
-BUILD_NO="345"  
-LANG="en-us" 
-```
 You don't need to use `export` for the variables to use them with **Script Output Variables**. You can simply declare them, like `BUILD_NO="345"`. Export is for using the variables in child processes within the script.You must use quotes around the value because environment variables are Strings.
 
 ### Using Harness expressions in your scripts
@@ -195,7 +193,7 @@ If you need quotes around the [Harness variable expressions](../../../platform/1
 
 If you use [Harness variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
 
-## Option: Specify Input Variables
+## Specify input variables
 
 While you can simply declare a variable in your script using a Harness expression or string for its value, using Input Variables provides some additional benefits:
 
@@ -206,30 +204,30 @@ You can declare the variable using **Name** and **Value** in **Script Input Vari
 
 You can also use expressions in **Value**. For example, if you have an Output Variable from a previous Shell Script step, you can copy it from the executed step **Outputs**.
 
-In **Script Input Variables**, you simply select **Expression** and paste the expression in **Value**:
-
-![](./static/using-shell-scripts-18.png)
-
-In the Script, you declare the variable using the **Name** value (in this example, `foo`).
-
-![picture 3](static/3efd3f47e73c3ca4804bd0e728d8815194ae80c9284ddfe0c11fb07c520b3b0c.png)
+1. In **Script Input Variables**, you simply select **Expression** and paste the expression in **Value**:
+   
+   ![](./static/using-shell-scripts-18.png)
+2. In the Script, you declare the variable using the **Name** value (in this example, `foo`).
+   
+   ![picture 3](static/3efd3f47e73c3ca4804bd0e728d8815194ae80c9284ddfe0c11fb07c520b3b0c.png)
 
 At deployment runtime, Harness evaluates the expression and the variable contains its output.
 
-## Option: Specify Output Variables
+## Specify output variables
 
 Shell Script step Output Variables have a maximum size of 512KB.To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
 
 Let's look at a simple example of a script with the variable **name**:
 
-```
+```bash
 name=123
 ```
+
 The `name` variable cannot be used outside the script unless you use **Script Output Variables**.
 
 You do not need to use `export` for the variables to use them with **Script Output Variables**. You can simply declare them, like `name="123"`. Export is for using the variables in child processes within the script.In **Script Output Variables**, in **Value**, you enter the name of the script variable you want to output (`name`).
 
-In **Name**, enter a name to use in other steps that will reference this variable. This is the output variable name that will be used in a Harness expression for referencing the output variable.
+1. In **Name**, enter a name to use in other steps that will reference this variable. This is the output variable name that will be used in a Harness expression for referencing the output variable.
 
 ![](./static/using-shell-scripts-20.png)
 
@@ -249,7 +247,9 @@ echo "anywhere in the stage: " <+execution.steps.ShellScript_1.output.outputVari
 
 Here's an example showing how the **Script Output Variables** references the exported variable, and how you reference the output variable name to get that value:
 
-![picture 1](static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png)  
+<!-- ![](./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png) -->
+
+<docimage path={require('./static/61423f07740b1d9d685c23b8b119ab9f01514473adc50e043c16f699aee3c010.png')} />
 
 
 So now the result of `<+execution.steps.ShellScript_1.output.outputVariables.newname>` is `123`.
@@ -280,7 +280,7 @@ When you run the Pipeline, the resolved output variable expression is sanitized:
 
 ![](./static/using-shell-scripts-25.png)
 
-## Option: Harness Expressions in Variables
+## Harness expressions in variables
 
 You can use Harness variable expressions in your scripts and in the **Script Input Variables** and **Script Output Variables**.
 
@@ -288,11 +288,11 @@ For **Script Input Variables** and **Script Output Variables**, you simply selec
 
 ![](./static/using-shell-scripts-26.png)
 
-## Step 2: Specify Where to Run the Script
+## Specify where to run the script
 
-In **Execution Target**, select **Specify on** **Target Host** or **On Delegate**.
+1. In **Execution Target**, select **Specify on** **Target Host** or **On Delegate**.
 
-In you select On Delegate, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
+In you select **On Delegate**, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 
 See [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
@@ -301,13 +301,13 @@ If you select **Target Host**, enter the following:
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
 * **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, see [Add SSH Keys](../../../platform/6_Security/4-add-use-ssh-secrets.md).
 
-## Option: Advanced Settings
+## Advanced settings
 
 See [Shell Script Step Reference](../../cd-technical-reference/cd-gen-ref-category/shell-script-step.md).
 
 ## Notes
 
-### Stopping Scripts After Failures
+### Stopping scripts after failures
 
 The Shell Script command will continue to process through the script even if a script step fails. To prevent this, you can simply include instructions to stop on failure in your script. For example:
 
@@ -317,13 +317,13 @@ The Shell Script command will continue to process through the script even if a s
 
 For more information, see this article: [Writing Robust Bash Shell Scripts](https://www.davidpashley.com/articles/writing-robust-shell-scripts/).
 
-### Published Variables Not Available
+### Published variables not available
 
 This error happens when you are publishing output via the **Script Output Variables** setting and your Shell Script step exits early from its script.
 
 There are many errors that can result from this situation. For example, you might see an error such as:
 
-```
+```bash
 FileNotFoundException inside shell script execution task
 ```
 
@@ -331,7 +331,7 @@ If you exit from the script (`exit 0`), values for the context cannot be read.
 
 Instead, if you publish output variables in your Shell Script command, structure your script with `if...else` blocks to ensure it always runs to the end of the script.
 
-### Using Secrets in Scripts
+### Using secrets in scripts
 
 You can use Harness secrets in your Shell Script steps.
 
@@ -339,7 +339,7 @@ See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
 Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret.
 
-### Shell Scripts and Security
+### Shell scripts and security
 
 Harness assumes that you trust your Harness users to add safe scripts to your Shell Script steps.
 
