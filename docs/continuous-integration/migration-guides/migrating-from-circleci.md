@@ -1,23 +1,25 @@
 ---
-title: Migrating from CircleCI to Harness CI
+title: Migrate from CircleCI to Harness CI
 description: Learn how to migrate your existing CircleCI workflows to Harness CI.
-sidebar_position: 4
+sidebar_position: 10
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-## Introduction
+Harness CI and CircleCI are both cloud-native CI products that help developers build and test code.
 
-Harness CI and CircleCI are both cloud-native CI products that allow developers to build and test code.
+With both Harness CI and CircleCI use pipelines to organize workflows, there are some differences in terminology and usage:
 
-CircleCI and Harness CI share some similarities:
+* Pipeline configuration:
+  * In the Harness CI Pipeline Studio, you can configure pipelines visually or with code, and you can switch back and forth as needed.
+  * CircleCI only supports pipeline configuration as code.
+* Pipeline organization:
+  * Harness CI organizes steps into stages, each each pipeline has one or more stages. A step can contain one or more commands.
+  * CircleCI organizes steps and commands into jobs, and each pipeline has one or more jobs.
 
-- Harness CI Pipeline Studio allows you to create pipelines visually or using code, and switch back and forth as needed. CircleCI only allows pipeline configuration as code.
-- Harness CI uses stages to run a collection of steps, while CircleCI uses jobs to group one or more steps or individual commands.
-
-For more information, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts).
+For more information, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline concepts](../ci-quickstarts/ci-pipeline-basics.md).
 
 ## Key differences
 

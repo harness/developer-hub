@@ -231,5 +231,11 @@ module.exports = {
       from: "/docs/category/onboard-with-ci",
       to: "/docs/category/get-started-with-ci",
     },
+
+    //  Created by aimurphy for CI-6241 on Mar 24, 2023
+    {
+      from: "/docs/category/migrating-to-harness-ci",
+      to: "/docs/category/migrate-to-harness-ci",
+    },
   ],
 };
