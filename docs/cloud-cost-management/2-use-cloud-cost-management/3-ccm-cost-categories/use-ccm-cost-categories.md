@@ -41,6 +41,8 @@ How to create a Cost Category:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 <docvideo src="https://www.youtube.com/watch?v=zbmWB0yUN4s" />
 
+
+
 How to use a Cost Category:
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -50,10 +52,10 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 You can create a Cost Category
 
-1. In your Harness account, click **Cloud Costs**, click **Setup**, and then click **Cost Categories**.
-2. Click **New Cost Category**.
+1. In your Harness application, go to **Cloud Costs**.
+2. Go to **Setup**, and then click **Cost Categories**.
+3. Click **New Cost Category**.
 
-![](./static/use-ccm-cost-categories-00.png)
 
 You can also create a new Cost Category when you create a Perspective.
 
@@ -61,15 +63,17 @@ You can also create a new Cost Category when you create a Perspective.
 
 The new Cost Category appears.
 
-![](./static/use-ccm-cost-categories-02.png)
 
-3. In the new Cost Category, enter a name. For example, if this Cost Category is for departments, you could name it **Departments**.
+1. In the new Cost Category, enter a name. For example, if this Cost Category is for departments, you could name it **Departments**.
+
+  ![](./static/cost-category-builder-1.png)
+
 
 ### Create cost buckets
 
-1. Click **New Cost Bucket**.
-2. Enter a name for the cost bucket, such as the name of a department.
-3. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
+4. Click **New Cost Bucket**.
+5. Enter a name for the cost bucket, such as the name of a department.
+6. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
 Add a new row for each rule until the cost bucket correctly includes all the costs incurred for this bucket. These rules are defined using the OR operator.  
 Typically, you want to create multiple cost buckets in the cost category. For example, if the Cost Category is for departments, you would create a cost bucket for each department such as finance, operations, facilities, and so on.
 
@@ -92,8 +96,9 @@ The AND and OR operators are used to filter data based on more than one conditio
 For example, consider two cost targets named team A and team B. These two teams use the same database. To enable sharing of cost between these two teams, you need to create a shared cost bucket named sharedDB (enter a name that relates to the shared bucket).
   * **Equally**: This option enables sharing of the DB cost equally (50%) between both teams A and B. You can view it in the grid and chart.
   * **Proportionally**: This option enables sharing of the DB cost proportionally between both teams. If the cost for team A is $60 and that of team B is $40. Then, 60% of DB cost is borne by team A and 40% by team B.
+  *  **Fixed percentage**: This option allows the distribution of the cost of the database by a fixed percentage between cost buckets. For example, 30% to team A and 70% to team B.
 
-  ![](./static/use-ccm-cost-categories-05.png)
+  ![](./static/cost-category-builder-2.png)
 
 ### Manage unallocated costs
 
@@ -102,6 +107,12 @@ When used in a Perspective as a filter or **Group By**, the Cost Category shows 
 Unallocated Costs are costs that do not match the Cost Categories in the Perspective graph and rows.
 
 In **Manage Unallocated Costs**, you can choose to show or ignore unallocated costs, and choose a name for how those costs are displayed.
+
+  ![](./static/cost-category-builder-3.png)
+
+Save the cost category. Now, you can view the cost bucket details in a cost category on the **Cost Categories** page.
+
+  ![](./static/cost-bucket-details.png)
 
 ## Use cost categories
 You can use cost categories in both Perspectives and Dashboards. When you create or modify a cost category, the changes are immediately reflected in Perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
@@ -126,24 +137,24 @@ Consider the following scenario with two cost categories:
 
  **Cost category** | **Cost bucket** | **Shared cost buckets** |
 | --- | --- | --- |
-| CC1 | <ul><li>CB1 - AWS1 - 10, AWS7 - 20</li><li>CB2- AWS2 - 20</li></ul> | <ul><li>SB1 - AWS3 - 30</li><li>SB2 - AWS4 - 40</li> </ul>|
-| CC2 | <ul><li>CB3 - AWS1 - 10</li><li>CB4- AWS2 - 20</li></ul>| <ul><li>SB3 - AWS5 - 30</li><li>SB4 - AWS6 - 40</li> </ul>|
+| CC1 | <ul><li>CB1 - AWS1 - $10, AWS7 - $20</li><li>CB2- AWS2 - $20</li></ul> | <ul><li>SB1 - AWS3 - $30</li><li>SB2 - AWS4 - $40</li> </ul>|
+| CC2 | <ul><li>CB3 - AWS1 - $10</li><li>CB4- AWS2 - $20</li></ul>| <ul><li>SB3 - AWS5 - $30</li><li>SB4 - AWS6 - $40</li> </ul>|
 
 If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the same cost category, then the Perspective displays the following costs:
 
 |Name | Total Cost|
 | --- | --- |
-| CB1 | 30 + shared cost (SB1 and SB2) |
-| CB2 | 20 + shared cost (SB1 and SB2) |
+| CB1 | $30 + shared cost (SB1 and SB2) |
+| CB2 | $20 + shared cost (SB1 and SB2) |
 | Unattributed | The sum of all the other cost |
 
 If you have added CC1 (C1, C2, and Unattributed) in your Perspective rule and grouped by the cost category CC2, then the Perspective displays the following costs:
 
 | Name|Total Cost |
 | --- | --- |
-| CB3 | 10 + shared cost (SB3 and SB4) |
-| CB4 | 20 + shared cost (SB3 and SB4) |
-| No CC2 | 20 + shared cost (SB1 and SB2) |
+| CB3 | $10 + shared cost (SB3 and SB4) |
+| CB4 | $20 + shared cost (SB3 and SB4) |
+| No CC2 | $20 + shared cost (SB1 and SB2) |
 | Unattributed | The sum of all the other cost |
 
 
