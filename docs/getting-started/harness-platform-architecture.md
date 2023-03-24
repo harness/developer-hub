@@ -43,7 +43,7 @@ Harness is available in the following editions to meet different users' needs:
 * **Team:** Designed for growing teams, this version provides most Harness Enterprise features at lower per-usage pricing. It limits or excludes some integrations and enterprise security features, and limits real-time support to standard business hours.
 * **Free**: This is a free-forever edition with almost all Harness Enterprise features (excluding unlimited Services and license-based service Instances scaling).
 * **Community**: This version is a free-forever, open, on-premises edition. It does not have RBAC, audit trails, governance, or advanced security. See [Harness CD Community Edition Overview](../continuous-delivery/cd-advanced/cd-kubernetes-category/harness-community-edition-overview.md).  
-If you move from the full-featured Enterprise trial to the free Community Edition, you might need to remove or adjust any premium features you've configured. For these migrations, please [contact Harness](https://harness.io/company/contact-sales).Support for Harness Community is available through the [Harness Community Forum](https://community.harness.io/).
+If you move from the full-featured Enterprise trial to the free Community Edition, you might need to remove or adjust any premium features you've configured. For these migrations, please [contact Harness](https://harness.io/company/contact-sales). Support for Harness Community is available through the [Harness Community Forum](https://community.harness.io/).
 
 For a detailed comparison of the Harness editions, see the [Harness Pricing](https://harness.io/pricing/?module=cd) page.
 
