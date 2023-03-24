@@ -3,9 +3,9 @@ title: HTTP Probe
 sidebar_position: 3
 ---
 
-The HTTP Probe allows developers to specify a URL which the experiment uses to gauge health/service availability (or other custom conditions) as part of the entry/exit criteria. The received status code is mapped against an expected status. It supports HTTP [Get](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [Post](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
+The HTTP Probe allows you to specify a URL that the experiment uses to gauge the health or service availability (or other custom conditions) as a part of the entry or exit criteria. The status code received is mapped against an expected status. It supports HTTP [Get](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [Post](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
 
-In HTTP Get method it sends a http `GET` request to the provided url and matches the response code based on the given criteria(`==`, `!=`, `oneOf`).
+The HTTP Get method sends a HTTP `GET` request to the provided URL. The response code received is matched  and matches the response code based on the given criteria(`==`, `!=`, `oneOf`).
 
 In HTTP Post method it sends a http `POST` request to the provided url.
 

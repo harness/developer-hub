@@ -22,32 +22,22 @@ The diagram below gives a peek into the HCE architecture.
 
 ### Control plane components
 
-The control plane in HCE contains many components, which are described below.
+The control plane in HCE consists of many components, which are described below.
 
-#### Chaos infrastructure
-
-**Chaos infrastructure** is a service that runs within your target environment to help HCE access the target resources and inject chaos at cloud-native scale. It can be set up with cluster-wide access or with a single namespace scope.
-
-- There are different types of chaos infrastructures for different environments, such as Kubernetes, Linux VMs, AWS cloud, VMware, etc.
-- Based on the target environments, chaos infrastructures can be installed as a Kubernetes service, a Linux daemon, and so on.
-
+- **Chaos infrastructure**: A service that runs within your target environment to help HCE access the target resources and inject chaos at cloud-native scale. You can set it up with cluster-wide access or with a single namespace scope.
 All the chaos infrastructure services adhere to the principle of least privilege, where the services execute with the minimum number of permissions. You can add multiple chaos infrastructures to a single environment and subject it to a chaos experiment as an entity.
 
-#### Enterprise hub
+:::note
+There are different types of chaos infrastructures for different environments, such as Kubernetes, Linux VMs, AWS cloud, VMware, etc. Based on the target environments, chaos infrastructures can be installed as a Kubernetes service, a Linux daemon, and so on.
+:::
 
-Enterprise chaos hub comes out of the box with HCE and provides many faults and experiment templates. Enterprise hub is a prebuilt chaos hub, a collection of manifests and charts that represent the existing experiments and faults. You can use faults from multiple categories to create chaos experiments in the Enterprise chaos hub.
+- **Enterprise chaos hub**: Comes out of the box with HCE and provides many faults and experiment templates. Enterprise hub is a prebuilt chaos hub, a collection of manifests and charts that represent the existing experiments and faults. You can use faults from multiple categories to create chaos experiments in the Enterprise chaos hub. 
 
-#### Authentication server
+- **Authentication server**: A Golang microservice responsible for authorizing and authenticating the requests received from chaos access. It also helps manage users and their projects. It helps in user and project creation, user login, password resets, updating of user information, and managing project-related operations. 
 
-The authentication server is a Golang microservice responsible for authorizing and authenticating the requests received from chaos access. It also helps manage users and their projects. It helps in user and project creation, user login, password resets, updating of user information, and managing project-related operations.
+- **Backend server**: A GraphQL-based Golang microservice that serves the requests it receives from the chaos access either by querying the database for relevant information or fetching information from the execution plane. 
 
-#### Backend server
-
-The backend server is a GraphQL-based Golang microservice that serves the requests received from the chaos access either by querying the database for relevant information or fetching information from the execution plane.
-
-#### Database
-
-This is a NoSQL MongoDB database microservice accountable for storing users' information, past chaos experiments, saved chaos experiment templates, user projects, chaos hubs, and GitOps details, among other information.
+- **Database**: A NoSQL MongoDB database microservice responsible for storing users' information, past chaos experiments, saved chaos experiment templates, user projects, chaos hubs, and GitOps details, among other details.
 
 ## Harness execution plane
 
