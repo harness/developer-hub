@@ -13,7 +13,7 @@ For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security
 
 ## Security step settings
 
-You can set up Snyk scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up Snyk scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 

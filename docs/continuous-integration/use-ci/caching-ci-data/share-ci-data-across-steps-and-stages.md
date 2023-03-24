@@ -27,7 +27,7 @@ You can share data across Stages using AWS or GCS buckets:
 1. Save your cache using [Save Cache to S3](../../ci-technical-reference/save-cache-to-s-3-step-settings.md) or [Save Cache to GCS](../../ci-technical-reference/save-cache-to-gcs-step-settings.md).
 2. Retrieve your cache using [Restore Cache from S3](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md) or [Restore Cache from GCS](../../ci-technical-reference/restore-cache-from-gcs-settings.md).
 
-You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across Stages.For complete end-to-end examples, see the following how-tos:
+You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages. For complete end-to-end examples, go to the following:
 
 * [Save and Restore Cache from S3](saving-cache.md)
 * [Save and Restore Cache from GCS](save-cache-in-gcs.md)

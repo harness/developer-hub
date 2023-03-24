@@ -91,7 +91,7 @@ For example, if you wanted to give full access to create and manage EKS clusters
  }
 ```
 
-Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) from AWS.
+Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md). See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) from AWS.
 
 ### Region
 
@@ -229,7 +229,9 @@ Enter the tags in JSON or YAML (lowercase is required):
 
 In **Continue Based on Stack Statuses**, you can add the stack states that allow provisioning.
 
-Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deployment. If present, Harness deletes the stack and then triggers the deployment.#### Option: Advanced Settings
+Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deployment. If present, Harness deletes the stack and then triggers the deployment.
+
+### Option: Advanced Settings
 
 In **Advanced**, you can use the following options:
 

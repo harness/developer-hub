@@ -1,118 +1,229 @@
 .harnessU {
-  padding: 4rem 0 4rem 0;
-  // display: flex;
   align-items: center;
-  background: linear-gradient( 180deg, #000000 1.86%, rgba(0, 0, 0, 0.85) 20.59%, rgba(4, 49, 89, 0.586971) 56.83%, rgba(4, 89, 167, 0.28) 72.71%, rgba(7, 67, 122, 0.05) 98.76% ), url(/img/bg-harness-u.png);
+  background: radial-gradient(91.12% 180.99% at 5% 16.08%, #000000 0%, rgba(7, 50, 89, 0.58) 27.01%, #031525 93.15%);
   background-position-y: bottom;
   background-size: 100%;
+  background-color: #000000;
   margin: 0;
   max-width: unset;
-  // color: #cdf4fe;
-  // font-size: 20px;
-  // line-height: 28px;
-  h2 {
-    margin-bottom: 50px;
-    // width: 600px;
-    font-weight: 600;
-    font-size: 32px;
-    line-height: 40px;
-    color: #fff;
-  }
-
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 32px;
-}
-.heroButton {
-  background-color: #0278D5;
-  font-weight: 600;
-  font-size: 16px;
-  line-height: 24px;
-  color: #fff;
-}
-
-  .platform {
-    .platformIllustration {
-      width: 100%;
-      height: auto;
-    }
-  }
-  ul.platformList {
-    display: flex;
-    flex-flow: row wrap;
-    margin-top: 32px;
-    justify-content: center;
-    align-items: center;
-    gap: 32px;
-    padding-left: 0;
-    a:hover {
-      color: unset;
-    }
-    li {
-      box-sizing: border-box;
-
-      /* Auto layout */
-      
+  .inner {
+    background: url(/img/home_cert_bg.svg) no-repeat top right;
+    background-size: contain;
+    padding: 80px 0 40px 0;
+    .dualColumn {
       display: flex;
-      flex-direction: column;
-      // justify-content: center;
-      // align-items: center;
-      text-align: left;
-      padding: 50px 24px;
-      
-      width: 270px;
-      height: 322px;
-      
-      /* Gray Scale / Gray Scale 0 */
-      
-      background: #FFFFFF;
-      /* Primary/Primary 3 - Lighter */
-      
-      border: 2px solid #A3E9FF;
-      border-radius: 8px;
-      &:hover {
-        background: #A3E9FF;
-        /* Primary / Primary 1 */
-
-        // border: 2px solid #EFFBFF;
-        /* Light/Large */
-
-        box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04), 0px 4px 8px rgba(96, 97, 112, 0.16);
+      .left {
+        flex-basis: 48%;
       }
-      .titleAndDesc {
-        height: 190px;
-      }
-      .harnessUPath {
-        display: flex;
-        align-items: center;
-        span {
-          font-weight: 500;
-          font-size: 18px;
-          line-height: 28px;
+      .right {
+        flex-basis: 52%;
+        .cards{
+          display: flex;
+          gap: 2.5%;
+        }
+        .links {
+          padding: 28px 12px 0;
+          color: var(--white);
+          display: flex;
+          font-weight: 600;
+          font-size: 16px;
+          line-height: 24px;
+          justify-content: end;
+          a {
+            color: var(--white);
+            &:hover {
+              color: var(--primary-6);
+            }
+          }
         }
       }
-      img.harnssUIcon {
-        height: 32px;
-        width: 32px;
+    }
+    h2 {
+      width: 98%;
+      margin-bottom: 18px;
+      // width: 600px;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 40px;
+      color: #fff;
+    }
+    .desc {
+      color: var(--white);
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 28px;
+      min-height: 168px;
+      width: 88%;
+    }
+    .badges {
+      display: flex;
+      gap: 18px;
+    }
+    /*
+    .certCard{
+      border-radius: 8px;
+      // box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+      box-shadow: 0px 1px 3px rgb(40 41 61 / 16%), 0px 0px 2px rgb(40 41 61 / 16%);
+      padding: 32px 32px 56px 32px;
+      // margin: 0 2.75% 30px 0;
+      width: 31.5%;
+      // width: 440px;
+      font-family: 'Inter';
+      border: 2px solid transparent;
+      position: relative;
+      &:hover {
+          text-decoration: none;
       }
-      a {
-        // color: #000000;
+      .moduleLine{
+          display: flex;
+          justify-content: space-between;
+          span {
+              color: var(--gray-700);
+          }
+          h6{
+              font-weight: 500;
+              font-size: 12px;
+              line-height: 13px;
+              letter-spacing: 4px;
+              text-transform: uppercase;
+              color: #6B6D85;
+              display: flex;
+              align-items: center;
+              img{
+                  width: 24px;
+                  margin-right: 8px;
+              }
+          }
       }
-      h4 {
-        font-weight: 600;
-        font-size: 20px;
-        line-height: 28px;
-        margin: 0 0 16px 0;
+      h4{
+          font-weight: 500;
+          font-size: 24px;
+          line-height: 32px;
+          color: #0B0B0D;
+          &:hover {
+              color: var(--primary);
+          }
       }
-      p {
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 24px;
-        /* or 150% */
-        /* Gray Scale/Gray Scale 600 */
-        color: #4F5162;
+      p{
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 28px;
+          color: #0B0B0D;
+      }
+      .productVersion {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 13px;
+          color: #6B6D85;
+          position: absolute;
+          bottom: 32px;
+      }
+    }
+
+    .certCard:hover {
+        border: 2px solid var(--primary);
+    }
+    .cd:hover{
+        border-color: var(--mod-cd-200);
+    }
+    .ci:hover{
+        border-color: var(--mod-ci-200);
+    }
+    .ff:hover{
+        border-color: var(--mod-ff-200);
+    }
+    .ccm:hover{
+        border-color: var(--mod-ccm-200);
+    }
+    .srm:hover{
+        border-color: var(--mod-srm-200);
+    }
+    .sto:hover{
+        border-color: var(--mod-sto-200);
+    }
+    .ce:hover{
+        border-color: var(--mod-ce-200);
+    }
+    .platform:hover{
+        border-color: var(--primary);
+    }
+    */
+
+    ul.platformList {
+      display: flex;
+      flex-flow: row wrap;
+      margin-top: 32px;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+      padding-left: 0;
+      a:hover {
+        color: unset;
+      }
+      li {
+        box-sizing: border-box;
+
+        /* Auto layout */
+        
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+        // align-items: center;
+        text-align: left;
+        padding: 50px 24px;
+        
+        width: 270px;
+        height: 322px;
+        
+        /* Gray Scale / Gray Scale 0 */
+        
+        background: #FFFFFF;
+        /* Primary/Primary 3 - Lighter */
+        
+        border: 2px solid #A3E9FF;
+        border-radius: 8px;
+        &:hover {
+          background: #A3E9FF;
+          /* Primary / Primary 1 */
+
+          // border: 2px solid #EFFBFF;
+          /* Light/Large */
+
+          box-shadow: 0px 0px 2px rgba(40, 41, 61, 0.04), 0px 4px 8px rgba(96, 97, 112, 0.16);
+        }
+        .titleAndDesc {
+          height: 190px;
+        }
+        .harnessUPath {
+          display: flex;
+          align-items: center;
+          span {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 28px;
+          }
+        }
+        img.harnssUIcon {
+          height: 32px;
+          width: 32px;
+        }
+        a {
+          // color: #000000;
+        }
+        h4 {
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 28px;
+          margin: 0 0 16px 0;
+        }
+        p {
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 24px;
+          /* or 150% */
+          /* Gray Scale/Gray Scale 600 */
+          color: #4F5162;
+        }
       }
     }
   }

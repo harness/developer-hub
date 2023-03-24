@@ -37,18 +37,16 @@ To edit a Flag:
 3. Next to the Flag you want to edit, click **more options︙**.
 4. Click **Edit**. The Flag details page appears, then click **more options︙**.
 
-
-![A screenshot of the Flag details page, with the more options icon highlighted.](./static/2-edit-and-delete-a-feature-flag-05.png)
-*Figure 1: More options for editing a Flag*
-
+   ![A screenshot of the Flag details page, with the more options icon highlighted.](./static/2-edit-and-delete-a-feature-flag-05.png)
+   *Figure 1: More options for editing a Flag*
 
 5. Edit the relevant details.
 
-```mdx-code-block
-<img src={edit_flag} alt="The Edit Flags Details page." height="300" width="200" />
-```
+   ```mdx-code-block
+   <img src={edit_flag} alt="The Edit Flags Details page." height="300" width="200" />
+   ```
 
-*Figure 2: Details you can edit for a Flag*
+   *Figure 2: Details you can edit for a Flag*
 
 
 6. Click **Save**.
