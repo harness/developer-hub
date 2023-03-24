@@ -46,10 +46,11 @@ export default function CertificationsCI() {
           </div>
           <h1>Continuous Integration Certifications</h1>
           <div>
-          Optimizing performance through hosted builds, caching, and proprietary Test Intelligence™. 
-          Designed to be blazing fast, simple, and open to help make developers' lives easier. Plus, 
-          all the scalable features needed to meet enterprise demands – with developer autonomy alongside software efficiency
-          , reliability, and security.
+            Optimizing performance through hosted builds, caching, and
+            proprietary Test Intelligence™. Designed to be blazing fast, simple,
+            and open to help make developers' lives easier. Plus, all the
+            scalable features needed to meet enterprise demands – with developer
+            autonomy alongside software efficiency , reliability, and security.
           </div>
         </div>
         <div className={styles.right}>
@@ -87,7 +88,12 @@ export default function CertificationsCI() {
           {/* Developer Study Guide */}
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.Developer]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert
@@ -101,16 +107,16 @@ export default function CertificationsCI() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CI
-                    Free/Team Plans
+                    <strong>Product version: </strong> Harness CI Free/Team
+                    Plans
                   </span>
                 </div>
                 <div className={styles.right}>
                   <h3>Coming Soon...</h3>
                   <div className={styles.desc}>
-                  Assesses the fundamental skills to deploy CI projects.
+                    Assesses the fundamental skills to deploy CI projects.
                   </div>
-                   {/* Developer Study Guide */}
+                  {/* Developer Study Guide */}
                   {/*
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
@@ -165,7 +171,12 @@ export default function CertificationsCI() {
         >
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.Administrator]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert
@@ -173,8 +184,7 @@ export default function CertificationsCI() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Integration - Administrator (BETA COMING
-                    SOON)
+                    Continuous Integration - Administrator (BETA COMING SOON)
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
@@ -182,8 +192,8 @@ export default function CertificationsCI() {
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CI
-                    Enterprise Plan
+                    <strong>Product version: </strong> Harness CI Enterprise
+                    Plan
                   </span>
                 </div>
                 <div className={styles.right}>
@@ -218,24 +228,27 @@ export default function CertificationsCI() {
         >
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.Architect]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>
-                    Continuous Integration - Architect (BETA COMING SOON)
-                  </h2>
+                  <h2>Continuous Integration - Architect (BETA COMING SOON)</h2>
                   <img
                     src={`${baseUrl}img/cert_arc_ci_badge.svg`}
                     alt="Harness Certified Expert - CI Architect"
                     className={styles.badge}
                   />
                   <span className={styles.productVersion}>
-                    <strong>Product version: </strong> Harness CI
-                    Enterprise Plan
+                    <strong>Product version: </strong> Harness CI Enterprise
+                    Plan
                   </span>
                 </div>
                 <div className={styles.right}>
