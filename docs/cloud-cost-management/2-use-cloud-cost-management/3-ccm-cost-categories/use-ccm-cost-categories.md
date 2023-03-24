@@ -64,16 +64,15 @@ You can also create a new Cost Category when you create a Perspective.
 The new Cost Category appears.
 
 
-1. In the new Cost Category, enter a name. For example, if this Cost Category is for departments, you could name it **Departments**.
+4. In the new Cost Category, enter a name. For example, if this Cost Category is for departments, you could name it **Departments**.
 
   ![](./static/cost-category-builder-1.png)
 
 
 ### Create cost buckets
-
-4. Click **New Cost Bucket**.
-5. Enter a name for the cost bucket, such as the name of a department.
-6. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
+1. Click **New Cost Bucket**.
+2. Enter a name for the cost bucket, such as the name of a department.
+3. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
 Add a new row for each rule until the cost bucket correctly includes all the costs incurred for this bucket. These rules are defined using the OR operator.  
 Typically, you want to create multiple cost buckets in the cost category. For example, if the Cost Category is for departments, you would create a cost bucket for each department such as finance, operations, facilities, and so on.
 
