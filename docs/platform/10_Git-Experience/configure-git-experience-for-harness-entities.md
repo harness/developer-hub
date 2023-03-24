@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This quickstart shows you how to enable and use Git Experience for your Harness resources, such as Pipelines.
+This quickstart shows you how to enable and use Git Experience for your Harness resources, such as pipelines.
 
 Harness Git Experience lets you store your resources and configurations in Git and pick Git repos as the source of truth.
 
@@ -16,9 +16,9 @@ Harness Git Experience lets you store your resources and configurations in Git a
 
 You'll learn how to:
 
-1. Enable Git Experience for a Pipeline.
-2. Create and sync a Pipeline with your Git repo.
-3. Execute a Pipeline
+1. Enable Git Experience for a pipeline.
+2. Create and sync a pipeline with your Git repo.
+3. Execute a pipeline
 
 ### Before you begin
 
@@ -51,36 +51,39 @@ The following section lists the support for Git providers for Harness Git Sync:�
 
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 
-### Review: Git experience requirements
+### Git experience requirements
 
 You can store your resources and configurations in Git by selecting the **Remote** option while creating the resources.
 
 For this, you must specify a Harness Git Connector, a repo, branch details, and a file path.
 
-This topic explains how to create a remote Pipeline and execute it using Harness Git Experience.
+This topic explains how to create a remote pipeline and execute it using Harness Git Experience.
 
-You can also store your configurations in Harness, by selecting the **Inline** option while creating resources. For more information on creating an inline Pipeline, see [Pipelines and Stages](/docs/category/pipelines).
+You can also store your configurations in Harness, by selecting the **Inline** option while creating resources. For more information on creating an inline pipeline, see [Pipelines and Stages](https://developer.harness.io/docs/category/pipelines).
 
 ![](./static/configure-git-experience-for-harness-entities-37.png)
+
 You can store configurations of the following resources in Git:
 
 * Pipelines
-* Input Sets
+* Input sets
 
 Harness tracks where your configuration is kept and manages the whole lifespan of resources by maintaining metadata for each resource.
 
-### Step 1: Add a remote pipeline
+### Add a remote pipeline
 
-This quickstart explains how to add a Pipeline and sync it with your Git repo. This is called the Remote option. To add an inline Pipeline, see **Remote** option. To add an inline Pipeline, see [Create a Pipeline](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline).
+This quickstart explains how to add a pipeline and sync it with your Git repo. This is called the Remote option. To add an inline pipeline, see **Remote** option. To add an inline pipeline, see [Create a Pipeline](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline).
 
 In your Project, click **Pipelines** and then click **Create a Pipeline**. The **Create New Pipeline** settings appear.
 
 ![](./static/configure-git-experience-for-harness-entities-38.png)
-Enter a **Name** for your Pipeline.
+
+Enter a **Name** for your pipeline.
 
 Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
+
 In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
 
 ![](./static/configure-git-experience-for-harness-entities-40.png)
@@ -132,10 +135,11 @@ Make sure that your YAML path starts with `.harness/` and is unique.
 
 Click **Start**.
 
-The Pipeline Studio is displayed with your repo and branch name.
+The pipeline Studio is displayed with your repo and branch name.
 
 ![](./static/configure-git-experience-for-harness-entities-46.png)
-### Step 2: Add a stage
+
+### Add a stage
 
 Click **Add Stage**. The stage options appear.
 
@@ -160,17 +164,17 @@ Click **Save**.
 
 
 :::note
-If you are using Bitbucket on-prem and `feature.file.editor` is set to `false` in the `bitbucket.properties`, make sure you enable **Use Git client for commits** in the [default settings](../17_Settings/default-settings.md) at the account scope. Harness will checkout the code on the delegate and use the Git client to make the commits to your Git repository.
+If you are using Bitbucket on-prem and `feature.file.editor` is set to `false` in the `bitbucket.properties`, make sure you enable **Use Git client for commits** in the [default settings](../17_Settings/default-settings.md) at the account scope. Harness will check out the code on the delegate and use the Git client to make the commits to your Git repository.
 :::
 
 
-Your Pipeline is saved to the repo branch.
+Your pipeline is saved to the repo branch.
 
 ![](./static/configure-git-experience-for-harness-entities-48.png)
 
-Click the YAML file to see the YAML for the Pipeline.
+Click the YAML file to see the YAML for the pipeline.
 
-Edit the Pipeline YAML. For example, change the name of a step.
+Edit the pipeline YAML. For example, change the name of a step.
 
 Commit your changes to Git.
 
@@ -182,11 +186,11 @@ Click **Update**.
 
 The changes you made in Git are now applied to Harness.​
 
-### Step 3: Execute pipeline
+### Execute pipeline
 
 In your Project, click **Pipelines**.
 
-Click on your Pipeline.
+Click on your pipeline.
 
 Harness loads your pipeline depending on where you saved your remote pipeline.
 
@@ -209,13 +213,13 @@ Click **Run**.
 
 Click **Run Pipeline**.
 
-During Pipeline execution, the configurations of the required resources and any referenced entities like Input Sets, are fetched from Git.
+During pipeline execution, the configurations of the required resources and any referenced entities like Input Sets, are fetched from Git.
 
-If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for Pipeline execution.​
+If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.​
 
 If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.​
 
-Harness resolves all the dependencies and then proceeds with Pipeline execution.​
+Harness resolves all the dependencies and then proceeds with pipeline execution.​
 
 ### Next steps
 

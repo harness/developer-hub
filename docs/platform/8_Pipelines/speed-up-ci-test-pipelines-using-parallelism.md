@@ -86,7 +86,7 @@ For more information, go to [Publish test reports](#define-the-test-reports).
 
 The following steps describe the high-level workflow for setting up parallelism in a pipeline.
 
-1. Enable parallelism and specify the number of jobs you want to in parallel. Go to [Define the parallelism strategy](#define-parallelism-strategy).
+1. Enable parallelism and specify the number of jobs you want to in parallel. Go to [Define the parallelism strategy](#define-the-parallelism-strategy).
 2. Define the following environment variables in the stage where you run your parallelism strategy:
 	* `HARNESS_NODE_TOTAL` = `<+strategy.iterations>` — The total number of iterations in the current Stage or Step.
 	* `HARNESS_NODE_INDEX` = `<+strategy.iteration>` — The index of the current test run. This index is in the range of `0` to `parallelism``- 1`. This snippet shows how you can define and use these variables in the YAML editor:
@@ -325,7 +325,7 @@ pipeline:
 
 ## See also
 
-* [Optimizing CI Build Times](https://harness.helpdocs.io/article/g3m7pjq79y)
-* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](https://harness.helpdocs.io/article/eh4azj73m4)
+* [Optimizing CI Build Times](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md)
+* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 * [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
