@@ -28,7 +28,7 @@ Harness UI uses the following cache life cycle to render a remote entity:
 
    ![](../10_Git-Experience/static/stale-cache.png)
 
-   Refresh the cache and reload the entities from Git by selecting the refresh option. 
+   Refresh the cache and reload the entities from Git by selecting the **Reload from Git** option. 
    
    ![](./static/reload-from-git.png)
 
@@ -38,17 +38,15 @@ Harness UI uses the following cache life cycle to render a remote entity:
   
   The cache status you see in the UI is only indicative of the cache status of the entity being fetched. Entities referenced within the fetched entity may have different cache statuses.
   For example, the cache status in the pipeline studio corresponds to the cache status of the pipeline. It is possible for referenced remote templates within this pipeline to have a different cache status.
-  If you select refresh cache, the caches of all the referenced entities are also retrieved and reloaded from Git.
+  If you select **Reload from Git**, the caches of all the referenced entities are also retrieved and reloaded from Git.
 
-3. Harness clears the cache for any entity that hasn't been referred to or loaded on the Harness UI in the previous 72 hours. Any subsequent access (whether through API or UI) will fetch the entity from GIT, update the cache, and return the response.
+3. Harness clears the cache for any entity that hasn't been fetched from GIT in the previous 30 days. Any subsequent access (whether through API or UI) will fetch the entity from GIT, update the cache, and return the response.
 
 4. If the UI utilizes caching, the backend uses cached data and never pulls the latest from Git by default. 
 
-5. In some cases, the backend needs to fetch the latest version from Git in order to perform UI actions. In this case, the cache is automatically updated.
+5. When the cache is unavailable, Harness fetches the latest data from GIT, updates the cache, and returns the response.
 
    For example, if you open a remote pipeline whose cache has expired, the backend updates its cache based on the latest Git version.
-
-6. The cache gets stale after 2 hours and expires after 30 days. 
    
 ## Caching entities saved on multiple branches
 
