@@ -258,7 +258,7 @@ To add a Values YAML file, do the following:
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
    
-   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm CD tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 9.  Once you've selected a Connector, click **Continue**.
 10. In **Manifest Details**, you tell Harness where the values.yaml is located.
 11. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
@@ -297,7 +297,7 @@ See [Ignore a manifest file during deployment](../../cd-advanced/cd-kubernetes-c
 
 #### Notes
 
-- If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+- If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 - For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
 - You can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests. See [Reference Artifacts in Manifests](kubernetes-services.md#reference-artifacts-in-manifests).
 
@@ -464,7 +464,7 @@ To add a Helm chart to your service, do the following:
 
 #### Important notes
 
-- If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+- If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
 - For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](../../cd-advanced/cd-helm-category/deploy-helm-charts.md).
 - Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
 - Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).

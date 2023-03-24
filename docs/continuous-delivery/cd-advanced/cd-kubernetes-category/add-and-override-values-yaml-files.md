@@ -22,8 +22,8 @@ This topic describes how to add values files, how to override them at the Servic
 
 ## Before You Begin
 
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md)
+* [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
+* [Helm CD Quickstart](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md)
 
 ## Limitations
 
@@ -123,7 +123,7 @@ We'll cover this option below.
 
 1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
 5. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
-    This process is described in [Kubernetes deployment tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+    This process is described in [Kubernetes deployment tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm Chart deployment tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 1. Once you've selected a Connector, click **Continue**.
 6. In **Manifest Details**, you tell Harness where the values.yaml is located.
 7. In **Manifest Identifier**, enter a name that identifies the file, like **values**.

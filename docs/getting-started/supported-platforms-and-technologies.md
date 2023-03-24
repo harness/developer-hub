@@ -418,7 +418,7 @@ The following table lists where you can store your manifests or config files for
 
 ##### Terraform version support
 
-Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md).
+Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](../continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos).
 
 Harness supports the following Terraform versions:
 

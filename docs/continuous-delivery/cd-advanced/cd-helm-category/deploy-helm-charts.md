@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 This topic describes how to deploy Helm charts in standard Helm syntax in YAML from a remote Git repo, HTTP Helm Repository, or cloud storage service (Google Cloud Storage, AWS S3).
 
-This process is also covered in the [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+This process is also covered in the [Helm Chart deployment tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
 
 ## Before you begin
 
-* [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md)
+* [Helm CD Quickstart](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md)
 * [The Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) from Helm.
 * The [Helm charts repo on GitHub](https://github.com/helm/charts) has many useful examples.
 
@@ -144,7 +144,7 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 

@@ -29,7 +29,7 @@ An artifact source does not need to be defined in the service definition for the
 
 ### Before you begin
 
-* You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+* You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 
 ### Important notes
 

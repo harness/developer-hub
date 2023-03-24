@@ -1,7 +1,7 @@
 ---
 title: Provision Target Deployment Infra Dynamically with Terraform
 description: This topic show you how to dynamically provision the target deployment infrastructure at runtime using the Terraform Plan and Apply steps.
-sidebar_position: 1
+sidebar_position: 3
 helpdocs_topic_id: uznls2lvod
 helpdocs_category_id: y5cc950ks3
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info
 
-Dynamic provisioning is only supported in [Service and Environments v1](../../onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+Dynamic provisioning is only supported in [Service and Environments v1](../../get-started/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
 
 :::
 
@@ -26,14 +26,14 @@ To provision non-target infrastructure, add the Terraform Plan and Apply steps t
 
 ## Before you begin
 
-* [Terraform Provisioning with Harness](../../cd-advanced/terraform-category/terraform-provisioning-with-harness.md)
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Terraform Provisioning with Harness](../../cd-advanced/terraform-category/terraform-provisioning-with-harness)
+* [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
 ## Important: install Terraform on delegates
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -56,7 +56,7 @@ microdnf install -y terraform
 
 ## Enable dynamic provisioning
 
-These steps assume you've created a Harness CD stage before. If Harness CD is new to you, see [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+These steps assume you've created a Harness CD stage before. If Harness CD is new to you, see [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 We'll start in the stage's **Infrastructure** section because the **Service** settings of the stage don't have specific settings for Terraform provisioning. The Service manifests and artifacts will be deployed to the infrastructure provisioned by Harness and Terraform.
 
@@ -69,7 +69,7 @@ The default Terraform provisioning steps appear:
 
 ![](./static/provision-infra-dynamically-with-terraform-00.png)
 
-Harness automatically adds the Terraform Plan, [Harness Approval](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), and Terraform Apply steps. You can change these steps, but plan, approve, and apply is the most common process. We use that process in our Terraform documentation.
+Harness automatically adds the Terraform Plan, [Harness Approval](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages), and Terraform Apply steps. You can change these steps, but plan, approve, and apply is the most common process. We use that process in our Terraform documentation.
 
 ## Terraform Plan step
 
@@ -79,7 +79,7 @@ The Terraform Plan step is where you connect Harness to your repo and add your T
 
 1. In **Name**, enter a name for the step, for example, **plan**.
 
-Harness will create an [Entity Id](../../../platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. It's used to refer to settings in this step.
+Harness will create an [Entity Id](../../../platform/20_References/entity-identifier-reference) using the name. The Id is very important. It's used to refer to settings in this step.
 
 For example, if the Id of the stage is **terraform** and the Id of the step is **plan**, and you want to echo its timeout setting, you would use:
 
@@ -113,7 +113,7 @@ For this reason, it's important that all your Project members know the Provision
 
 1. Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Harness Secrets Manager Overview](../../../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness Secrets Manager Overview](../../../platform/6_Security/1-harness-secret-manager-overview).
 
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
@@ -137,7 +137,7 @@ Here, you'll add a connection to the Terraform script repo.
 2. Click the provider where your files are hosted.
    
    ![](./static/provision-infra-dynamically-with-terraform-02.png)
-3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 If you're simply experimenting, you can use [HashiCorp's Kubernetes repo](https://github.com/hashicorp/terraform-provider-kubernetes/tree/main/_examples/gke).
 
@@ -161,7 +161,7 @@ You can jump ahead to the Terraform Apply step below. The following sections cov
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ### Source Module
 
@@ -210,7 +210,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](../../../platform/12_Variables-and-Expressions/harness-variables.md) in **Workspace**.
+You can also use a [stage variable](../../../platform/12_Variables-and-Expressions/harness-variables) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -234,7 +234,7 @@ You can add inline variables just like you would in a tfvar file.
 2. The **Add Inline Terraform Var File** settings appear.
 3. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
 
-This Identifier is a [Harness Identifier](../../../platform/20_References/entity-identifier-reference.md), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
+This Identifier is a [Harness Identifier](../../../platform/20_References/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
 
 `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
 
@@ -265,7 +265,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
 
-See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
 
 ### Remote variables
 
@@ -288,7 +288,7 @@ You can connect Harness to remote variable files.
 
 #### Artifactory
 
-See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ## Backend Configuration
 
@@ -309,7 +309,7 @@ terraform {
 
 In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
-You can use Harness secrets for credentials. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+You can use Harness secrets for credentials. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
 
 ## Targets
 
@@ -329,7 +329,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
 
 ## Advanced settings
 
@@ -343,9 +343,9 @@ In **Advanced**, you can use the following options:
 
 ## Approval step
 
-By default, Harness adds an Approval step between the Terraform Plan and Terraform Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) to configure the step.
+By default, Harness adds an Approval step between the Terraform Plan and Terraform Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages) to configure the step.
 
-You can also use a Jira Approval step. See [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md).
+You can also use a Jira Approval step. See [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages).
 
 ## Terraform Apply Step
 
@@ -438,5 +438,5 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 ## See also
 
-* [Apply a Terraform Plan with the Terraform Apply Step](../../cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md)
+* [Apply a Terraform Plan with the Terraform Apply Step](../../cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step)
 

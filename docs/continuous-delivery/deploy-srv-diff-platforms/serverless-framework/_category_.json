@@ -1,0 +1,11 @@
+{
+  "label": "Serverless Framework",
+  "position": "1000",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Serverless Framework"
+  }
+}

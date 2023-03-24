@@ -40,7 +40,7 @@ Model your process visually using a guided sequence:
 | --- | --- | --- |
 | ![](static/service.png) | ![](static/Infrastructure.png) | ![](static/execution.png) |
 
-For more details, go to [Kubernetes deployment tutorial](../cd-quickstarts/kubernetes-cd-quickstart.md).
+For more details, go to [Kubernetes deployment tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 
 #### YAML Builder
 
@@ -106,7 +106,7 @@ This topic provided a high level overview of how you can model your software del
 For more details and example, go to:
 
 * [CD tutorials](/docs/category/cd-tutorials)
-* [CD overview and key concepts](cd-pipeline-basics.md)
+* [CD overview and key concepts](../../get-started/cd-pipeline-basics.md)
 * [Service-based licensing and usage for CD](service-licensing-for-cd.md)
 * [Deployment concepts and strategies](../../cd-deployments-category/deployment-concepts.md)
 

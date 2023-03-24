@@ -1,0 +1,11 @@
+{
+  "label": "Traditional",
+  "position": "1200",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Traditional"
+  }
+}

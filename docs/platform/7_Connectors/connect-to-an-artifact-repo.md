@@ -30,7 +30,7 @@ You can add an Artifact Repository Connector at the Account/Org/Project scope.
 
 This topic will explain how to add it at the Project scope. The process is same for Org and Account.
 
-Steps on adding the Artifact Repository Connector inline when developing a Pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) and [Docker Connector Settings Reference](ref-cloud-providers/docker-registry-connector-settings-reference.md).
+Steps on adding the Artifact Repository Connector inline when developing a Pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) and [Docker Connector Settings Reference](ref-cloud-providers/docker-registry-connector-settings-reference.md).
 
 ### Step: Add an Artifactory Repository
 

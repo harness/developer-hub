@@ -413,7 +413,7 @@ You can confirm the successful deployment and registration of the delegate in Ha
 
 You can use your registered delegate to run Kubernetes and Terraform pipelines.
 
-For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-09.png)
 

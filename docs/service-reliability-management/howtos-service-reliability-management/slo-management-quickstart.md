@@ -29,7 +29,7 @@ You'll learn how to:
 
 Harness Monitored Services, Change Sources, and Health Sources can be set up without any Harness deployments having been performed. If you already have Harness deployments in this Project, then you can use the Services and Environments from any of those deployments. 
 
-If there are no deployments in your Harness account, we recommend that you first follow the steps in a CD Quickstart to perform a deployment: [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md), or [Kustomize Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+If there are no deployments in your Harness account, we recommend that you first follow the steps in a CD Quickstart to perform a deployment: [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md), or [Kustomize Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
 
 ### Prerequisites
 

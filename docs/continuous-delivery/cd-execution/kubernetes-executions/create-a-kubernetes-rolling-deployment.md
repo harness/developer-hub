@@ -16,7 +16,7 @@ This method is similar to a standard Canary strategy, but different from the Har
 
 For a detailed explanation of Kubernetes rolling updates, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes.### Before you begin
 
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md)
 * [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
 

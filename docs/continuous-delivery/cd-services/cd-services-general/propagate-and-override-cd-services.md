@@ -80,7 +80,7 @@ For information on multiple service deployments, go to [Use multiple services an
 
  You can override a service's setting by using **Environment Overrides** and by overlaying values YAML files.
  
-For details on **Environment Overrides**, see [Services and environments overview](../../onboard-cd/cd-concepts/services-and-environments-overview.md).The following information covers overriding Services in Services and Environments v1 only.
+For details on **Environment Overrides**, see [Services and environments overview](../../onboard-cd/services-and-environments-overview.md).The following information covers overriding Services in Services and Environments v1 only.
 
 A common method for overriding values YAML files is to use the `<+env.name>` Harness expression in the **File Path** of the values YAML file and then name your Harness environments with the same names as your values YAML files.
 

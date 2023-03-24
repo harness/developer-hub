@@ -634,7 +634,7 @@ Here is an example with a Shell script step.
 
 ![](./static/harness-variables-31.png)
 
-For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md).
+For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng.md).
 
 ### <+stage.executionUrl>
 
@@ -653,7 +653,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/services-and-environments-overview.md).
 
 ### Service-level variables for service v2
 
@@ -989,7 +989,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/services-and-environments-overview.md).
 
 To reference an environment-level variable, use the expression `<+env.variables.[variable name]>`.
 
@@ -1105,7 +1105,7 @@ Use the following fully qualified expression to get the execution URL for a spec
 
 The following instance expressions are supported in SSH, WinRM, and custom deployments using deployment templates. These deployments can be done on physical data centers, AWS, and Azure.
 
-For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md), [WinRM deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial.md), and [Custom deployments using Deployment Templates tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md).
+For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng.md), [WinRM deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial.md), and [Custom deployments using Deployment Templates tutorial](../../continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial.md).
 
 To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
@@ -1131,7 +1131,7 @@ For Microsoft Azure or AWS:
 
 ### Deployment templates
 
-For [Deployment Templates](../../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md), you can use `<+instance...>` expressions to reference host(s) properties.
+For [Deployment Templates](../../continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial.md), you can use `<+instance...>` expressions to reference host(s) properties.
 
 The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
 
-For a quick tutorial, see the [Kubernetes deployment tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+For a quick tutorial, see the [Kubernetes deployment tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 
 ## Before You Begin
 
@@ -81,6 +81,6 @@ The following list describes the major steps of a Harness Kubernetes deployment.
 
 Read the following topics to build on what you've learned:
 
-* [Kubernetes deployment tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Kubernetes deployment tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Kubernetes How-tos](/docs/category/kubernetes)
 

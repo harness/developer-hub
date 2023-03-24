@@ -42,7 +42,7 @@ Simply add this step where you want to initiate a rollback. Note that this step 
 
 ## See Also
 
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Kubernetes How-tos](/docs/category/kubernetes)
 * [Kubernetes Deployments Overview](../../cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md)
 

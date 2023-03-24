@@ -16,7 +16,7 @@ Harness will check for the existence of the Helm chart on the local Delegate dis
 
 Using a local Helm chart eliminates identical downloads and their related performance issues.
 
-New to Helm deployments in Harness? See [Helm Chart Deployment Tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Native Helm Deployment Tutorial](../../onboard-cd/cd-quickstarts/native-helm-quickstart.md). For extensive details, see [Deploy Helm Charts](deploy-helm-charts.md).
+New to Helm deployments in Harness? See [Helm Chart Deployment Tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Native Helm Deployment Tutorial](../../onboard-cd/cd-quickstarts/native-helm-quickstart.md). For extensive details, see [Deploy Helm Charts](deploy-helm-charts.md).
 
 ### Add installation script to the Delegate YAML
 

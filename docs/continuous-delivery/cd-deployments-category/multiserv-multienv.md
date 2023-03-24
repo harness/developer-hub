@@ -32,7 +32,7 @@ With multiple Harness Services and Environments in the same CD stage, you can:
 
 You can create Services, Environments, and Environment Groups inline when creating your CD stage, or you can create them separately and select them in the stage.
 
-For more information on Services and Environments, go to [Services and Environments Overview](../onboard-cd/cd-concepts/services-and-environments-overview.md).
+For more information on Services and Environments, go to [Services and Environments Overview](../onboard-cd/services-and-environments-overview.md).
 
 ## Deploy one Service to multiple Environments or Infrastructures
 

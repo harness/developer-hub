@@ -169,7 +169,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
 
-See the [Kubernetes deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md).
+See the [Kubernetes deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md).
 
 For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](/docs/category/kubernetes).
 
@@ -226,7 +226,7 @@ Harness Kubernetes deployments also support all deployment strategies (canary, b
 
 Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Here's the difference:
 
-* Harness [Kubernetes deployments](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
+* Harness [Kubernetes deployments](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
 * For Harness [Native Helm deployments](../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
 	+ **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and secrets. Native Helm does not.
@@ -291,7 +291,7 @@ See [Pull an image from a private registry for Kubernetes](../../continuous-del
 You can use your Git repo for the configuration files in **Manifests** and Harness uses them at runtime. You have the following options for remote files:
 
 * **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](../../continuous-delivery/cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
-* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
 * **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
 * **OpenShift Template** — OpenShift params file from a Git repo.
 

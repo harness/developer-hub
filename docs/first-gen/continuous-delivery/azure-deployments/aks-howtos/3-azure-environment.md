@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md).Once you've added a Service to your Application, you can define Environments where your Service can be deployed.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md).Once you've added a Service to your Application, you can define Environments where your Service can be deployed.
 
 * [Create a New Harness Environment](3-azure-environment.md#create-a-new-harness-environment)
 * [Add an Infrastructure Definition](3-azure-environment.md#add-an-infrastructure-definition)

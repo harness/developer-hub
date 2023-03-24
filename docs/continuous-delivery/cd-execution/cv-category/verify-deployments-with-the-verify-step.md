@@ -20,7 +20,7 @@ This topic covers how to add and configure the Verify step.
 ## Before You Begin
 
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 
 ## Supported Platforms and Technologies
 

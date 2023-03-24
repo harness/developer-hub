@@ -1,11 +1,12 @@
 {
-    "label": "CloudFormation Infrastructure Provisioning",
+    "label": "CloudFormation",
+    "position": "200",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "CloudFormation Infrastructure Provisioning"
+        "title": "CloudFormation"
     },
     "customProps": {
         "position": "300",

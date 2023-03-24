@@ -34,8 +34,8 @@ You can edit or add any automatically-added Command step.
 
 For more information, go to:
 
-* [Secure Shell (SSH) deployment tutorial](../../onboard-cd/cd-quickstarts/ssh-ng.md)
-* [WinRM deployment tutorial](../../onboard-cd/cd-quickstarts/win-rm-tutorial.md)
+* [Secure Shell (SSH) deployment tutorial](../../deploy-srv-diff-platforms/traditional/ssh-ng.md)
+* [WinRM deployment tutorial](../../deploy-srv-diff-platforms/traditional/win-rm-tutorial.md)
 
 ### Deployment Templates
 

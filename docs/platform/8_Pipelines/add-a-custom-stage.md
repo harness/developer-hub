@@ -84,7 +84,7 @@ For details on the different steps, see:
 * [Approvals](/docs/category/approvals)
 * [Synchronize Deployments using Barriers](../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
 * [Add a Policy Engine Step to a Pipeline](../14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
-* [Terraform How-tos](../../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md)
+* [Terraform How-tos](../../continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
 
 CI and CD-specific steps, like a Rolling Deployment, are not available in the Custom stage.
 

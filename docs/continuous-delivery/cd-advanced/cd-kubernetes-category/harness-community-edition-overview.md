@@ -16,7 +16,7 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 
 :::note
 
-**Want to get started right away?** See [Harness CD Community Edition Quickstart](../../onboard-cd/cd-quickstarts/harness-community-edition-quickstart.md).
+**Want to get started right away?** See [Harness CD Community Edition Quickstart](../../deploy-srv-diff-platforms/community-ed/harness-community-edition-quickstart.md).
 
 :::
 

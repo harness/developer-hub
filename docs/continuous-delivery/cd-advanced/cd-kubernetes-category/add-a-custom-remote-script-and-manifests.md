@@ -28,7 +28,7 @@ Looking for other methods? See [Add Kubernetes Manifests](define-kubernetes-mani
 
 ## Before you begin
 
-* [Kubernetes Deployment Tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Kubernetes Deployment Tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Kubernetes Deployment Basics](kubernetes-deployments-overview.md)
 
 ## Supported platforms and technologies

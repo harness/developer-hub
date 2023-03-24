@@ -390,7 +390,7 @@ There are three authentication options for the AWS connector when used for AWS E
 
 You can also use STS roles with Serverless Lambda deployments. For details about this, go to [Serverless cross-account access (STS Role)](#serverless-cross-account-access-sts-role).
 
-For instructions for Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).
+For instructions for Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](../../../continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart.md).
 
 ### Permissions
 

@@ -1,0 +1,11 @@
+{
+  "label": "Deploy services on different platforms",
+  "position": "400",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Deploy services on different platforms"
+  }
+}

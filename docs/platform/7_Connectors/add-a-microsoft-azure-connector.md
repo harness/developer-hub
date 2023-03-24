@@ -558,7 +558,7 @@ For Azure deployments, note the following:
 
 ## See also
 
-* [Azure ACR to AKS CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md)
-* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Azure ACR to AKS CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md)
+* [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [CD Pipeline Basics](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md)
+* [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md)

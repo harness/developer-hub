@@ -16,7 +16,7 @@ With the **Scale** step, you can scale this number of running pods up or down by
 
 ## Before You Begin
 
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
+* [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 
 ## Step 1: Add Scale Step
 

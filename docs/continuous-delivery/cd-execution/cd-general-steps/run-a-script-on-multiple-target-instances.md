@@ -26,9 +26,9 @@ Here's an example with a Shell Script step:
 
 You can use the repeat looping strategy with `<+stage.output.hosts>` to target multiple hosts in the following deployment types:
 
-* [SSH (Traditional)](../../onboard-cd/cd-quickstarts/ssh-ng.md)
-* [WinRM](../../onboard-cd/cd-quickstarts/win-rm-tutorial.md)
-* [Custom deployments using Deployment Templates](../../onboard-cd/cd-quickstarts/custom-deployment-tutorial.md)
+* [SSH (Traditional)](../../deploy-srv-diff-platforms/traditional/ssh-ng.md)
+* [WinRM](../../deploy-srv-diff-platforms/traditional/win-rm-tutorial.md)
+* [Custom deployments using Deployment Templates](../../deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial.md)
 
 All three types can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 
