@@ -106,7 +106,7 @@ Now let's apply these features to common use cases:
 
 ### Scanner Coverage
 
-For a list of supported scanners, see [Scanners, Target Types, and Scan Approach](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
+For a list of supported scanners, see [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
 
 ### STO support by CI build infrastructure type
 

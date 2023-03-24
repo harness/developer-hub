@@ -7,7 +7,7 @@ sidebar_position: 170
 
 ## Security step settings
 
-You can set up Nessus scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up Nessus scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -52,7 +52,7 @@ import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 
 <!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  -->
 
-### Instance settingd
+### Instance settings
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';

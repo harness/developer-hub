@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-15T10:00
+date: 2023-03-24T10:00
 sidebar_position: 1
 ---
 
@@ -16,6 +16,23 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+
+## March 24, 2023, version 78817
+
+### Service Reliability Management
+
+- When you try editing an existing SLO, you will see the **Tags (optional)** field autopopulated even if no value was entered while creating the SLO. Harness uses the selected SLI type as value to autopopulate the **Tags (optional)** field. (SRM-14121)
+  
+- There is a new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
+
+### Harness Platform
+
+- You can now add specific service accounts to your resource group. (PL-31867)
+  
+  By doing this, you can prevent accidental or deliberate misuse of API keys by restricting who can generate them from which service accounts.
+
+- You can now enter usernames as a comma separated string while adding users in **Users(name or email)**. (PL-29630)
+  
 ## March 15, 2023, version 78712
 
 ### Harness Delegate
@@ -111,6 +128,17 @@ import TabItem from '@theme/TabItem';
   This feature eliminates the need for switching between the Harness **Create SLO** screen and your health monitoring tool dashboard to determine the most appropriate value for the SLI parameter you are configuring. For instance, if you opt for the ratio-based evaluation method while configuring your SLI, you can refer to the metric graphs and accompanying suggested values to determine the ideal percentage of valid requests to be considered for your SLI.  
   
   ![Metrics graph in Create SLO screen](./static/srm-rn-787-metricgraph.png)
+
+## March 13, 2023
+
+### Cloud Cost Management
+
+  Cost Category enhancements (CCM-10280)
+  
+  - When calculating the cost for `Unattributed`, the rules present in the shared cost bucket are not considered to eliminate duplicate costs.
+  - If **Cost Category** is `NOT NULL` in a perspective, it means all cost buckets are considered. `Unattributed` is not taken into account.
+  - If the **Cost Category** is `NULL`, it indicates that the cost buckets are not considered in the perspective. `Unattributed` is taken into account.
+  - Previously, all shared cost buckets were displayed as `No Groupby`. Now, when you apply a GroupBy option other than the cost category, the cost of the rules present in the shared cost bucket are displayed in a separate entity based on the GroupBy selection you have made. However, it is important to note that this change will be effective only if you have incorporated cost category with shared buckets in perspective rules.
 
 ## March 9, 2023
 

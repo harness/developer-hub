@@ -33,7 +33,7 @@ To add a **Build** stage to an existing pipeline:
 2. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
 
-To check codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
+To check codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md).
 
 </details>
 
@@ -43,7 +43,7 @@ To check codebase configuration for existing pipelines, select **Codebase** whil
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Infrastructure** tab.
 2. Define the build farm for the codebase. For more information, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
-For more information about stage configuration, go to [CI stage settings](../../ci-technical-reference/ci-stage-settings.md).
+For more information about stage configuration, go to [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md).
 
 :::tip
 

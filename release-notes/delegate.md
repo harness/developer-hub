@@ -33,7 +33,7 @@ Minor fixes to the delegate installation wizard. (DEL-6073)
 Previously, Helm was not pre-selected when you switched from Docker to Kubernetes. This has been fixed. Additionally, values that need to be copied in the Kubernetes manifest were moved into a copy block. 
 
 
-## March 15, 2023, Harness version 78712, Harness Delegate version 78700
+## March 15, 2023, Harness version 78712, Harness Delegate version 78705
 
 Harness NextGen release 78712 includes the following changes for the Harness Delegate.
 
