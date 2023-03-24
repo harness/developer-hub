@@ -109,4 +109,4 @@ Harness provides an audit log to the account admin where user actions on the cha
 
 #### Can Harness perform security chaos tests in the users’ environments?
 
-Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that render the system slow (if the right rate limits are in place) or non-functional (if rate limiting is not implemented). To learn more, go to [generic locust fault](../../chaos-engineering/chaos-faults/load/locust-loadgen/).
+Harness Chaos supports experiments that simulate DoS attacks on services. You can achieve this by simulating very high loads that render the system slow (if the correct rate limits are in place) or non-functional (if rate limiting is not implemented). To learn more, go to [generic locust fault](../../chaos-engineering/chaos-faults/load/locust-loadgen/).
