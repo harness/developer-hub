@@ -74,6 +74,36 @@ This section explains steps to move an [inline pipeline](../8_Pipelines/add-a-st
 
 
 
-:::warning
+:::caution
 When you move an inline pipeline to Git, the pipeline's associated entities aren't automatically moved to a Git repository. You must also move the corresponding input sets to the remote repository.
+
+If your pipeline has a trigger, you must modify the YAML of the trigger to add a new field `pipelineBranchName`. This will ensure that your trigger works seamlessly with your pipeline.
+
+Following is an example of a sample YAML for a trigger: 
+
+```yaml
+trigger:
+  name: sample trigger
+  identifier: sample_trigger
+  enabled: true
+  orgIdentifier: sampleOrg
+  projectIdentifier: sampleProject
+  pipelineIdentifier: samplePipeline
+  source:
+    type: Webhook
+    pollInterval: "0"
+    spec:
+      type: Github
+      spec:
+        type: PullRequest
+        spec:
+          connectorRef: sample_connector
+          autoAbortPreviousExecutions: false
+          repoName: sampleRepo
+          actions:
+            - Close
+  pipelineBranchName: <+trigger.branch>
+  inputSetRefs:
+    - sampleinputset
+```
 :::
