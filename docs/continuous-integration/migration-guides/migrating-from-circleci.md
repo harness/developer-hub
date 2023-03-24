@@ -305,7 +305,7 @@ jobs:
 
 Matrix jobs in CircleCI are achieved using parameters and then referencing them in the pipeline using the following expression syntax: `<< parameters.param >>`
 
-Matrices are one looping execution strategy provided by Harness. Matrices gives the ability to execute the same set of tasks multiple times for a bunch of different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
+Matrix looping strategies are one of several looping execution strategies provided by Harness. With matrix looping strategies, your pipelines can execute the same set of tasks multiple times for several different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression syntax: `<+matrix.usertag>`
 
 To learn about matrices and other looping strategies, go to [Looping Strategies Overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism)
 

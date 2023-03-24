@@ -35,15 +35,13 @@ Make sure you have the following set up before you begin this tutorial:
 		- **Memory:** 16GB RAM. The build farm and Delegate requirements are low but the remaining memory is for Kubernetes, the Docker container, and other default services.
 		- **Networking:** Outbound HTTPS for the Harness connection, and to connect to Docker Hub. Allow TCP port 22 for SSH.
 		- **Namespace:** When you install the Harness Delegate, it will create the `harness-delegate` namespace. You'll use the same namespace for the build farm.
+* A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.
 
+For more information, go to the Kubernetes documentation on [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
 
 :::caution
 Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not recommended. For more information, go to [Set up a Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 :::
-
-A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.
-
-For more information, go to the Kubernetes documentation on [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
 
 ## Visual Summary
 
@@ -96,7 +94,7 @@ To run a build, a Build Stage needs to connect to the codebase, the build infras
 
 In this tutorial you'll create a Connector to a GitHub repo. You'll also create a *Delegate* service that handles communications between Harness and your build infrastructure. Later in this tutorial, you'll create a Connector to a Docker Hub repo so the Build Stage can post the resulting artifact.
 
-### Create the Build Stage
+### Create the Build stage
 
 * In Pipeline Studio, click **Add Stage** and select **Build**. The About your Stage screen appears.
 * In Stage Name, enter **Build Test and Push**.

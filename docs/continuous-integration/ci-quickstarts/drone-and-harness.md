@@ -1,6 +1,6 @@
 ---
 title: Drone and Harness
-description: Drone is part of Harness CI.
+description: Harness CI leverages the Drone open-source platform to power the fastest CI builds on the planet.
 
 sidebar_position: 40
 helpdocs_topic_id: j4nnt8jhby
