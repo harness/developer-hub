@@ -44,7 +44,7 @@ To standardize the currency in which your cloud cost data is displayed, perform 
 
 1. In the Harness application, go to **Cloud Costs**. 
 2. Under **Setup**, click **Currency Preferences**.
-3. Select the currency from the **Currency followed on Cloud Cost Management** drop-down list.
+3. Select the currency from the **Currency followed on Cloud Cost Management** dropdown list.
 
  ![](./static/currency-preference-settings.png)
 
@@ -58,19 +58,19 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 
   
     :::note
-    If you have selected **Default**, the conversion factor is taken from the CUR or Billing Export. If the conversion factor is not available in these reports, a publicly available conversion factor for the selected currency is used. It's important to note that the conversion factor may vary slightly between different cloud accounts.
+    If you have selected **Default**, the conversion factor is taken from the CUR or the Billing Export reports. If the conversion factor is not available in these reports, a publicly available conversion factor for the selected currency is used. It's important to note that the conversion factor may vary slightly between different cloud accounts.
 
     For example, let’s say you have a GCP account and an Azure account. If the Billing Export for GCP provides the currency conversion factor, that factor will be used for GCP. However, if the report for Azure does not have the conversion factor, a public API is called to retrieve it. Consequently, the conversion factor used for Azure may differ from that used for GCP.
     :::
 
 5. Click **Save**. 
   
-    The currency standardization process begins. On the **Perspectives** page, a banner displays the time and date by which the costs will be available in the selected currency. 
+    The currency standardization process begins. A banner is displayed on the Overview page. The selected currency is applied to the last two years of data. The conversion factor used for the ongoing month is applied to the current month's data, while the conversion factor used for the previous month is applied to the historical data from the past two years.
 
     ![](./static/currency-preference-banner.png)
 
 
-    The selected currency is applied to the last two years of data. The conversion factor used for the ongoing month is applied to the current month's data, while the conversion factor used for the previous month is applied to the historical data from the past two years.
+  
 
 ## Points to remember
 
@@ -79,7 +79,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 
   ![](./static/currency-preference-recommendations.png)
 
-* You can configure these settings only for your cloud accounts. Contact Harness Support to view your Kubernetes cluster data in your preferred currency.
+* You can configure these settings only for your cloud accounts. Contact Harness Support to view the Kubernetes cluster data in your preferred currency.
 * The currency format defaults to the _en-us_ locale. If you wish to change this, contact Harness Support.
   In the following example, the locale is changed from _en-us_ to _fr-be_ which has changed the currency representation (currency symbol appears after the digits).
   The format differs based on the locale.
@@ -87,7 +87,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
     ![](./static/currency-preference-locale.png)
 
 
-* If you choose to have currency code instead of currency symbol, contact Harness support.
+* If your preferred currency is not supported for the _en-us_ locale, the currency code will be displayed instead of the currency symbol. If you wish to view the currency symbol instead, contact Harness support.
 
 * For existing budgets and new budgets, you must manually update the **Specify Amount** field with the converted value in the selected currency. This is because a **Perspective** may be associated with multiple cloud accounts and therefore cannot be updated automatically.
 
