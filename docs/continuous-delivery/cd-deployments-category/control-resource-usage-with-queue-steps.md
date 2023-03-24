@@ -8,11 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind the feature flag `PIPELINE_QUEUE_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 This topic describes how to use the **Queue** step to control the access order to the resources Harness requests during a deployment and prevent multiple pipelines from requesting the same resources at the same time.
 
@@ -26,34 +21,30 @@ In this topic, you will learn how to use the Queue step to control the order in 
 
 Harness provide multiple options for controlling resource usage and protecting capacity limits. See [Controlling Resource Usage with Barriers, Resource Constraints, and Queue Steps](controlling-deployments-with-barriers-resource-constraints-and-queue-steps.md).
 
-## Step 1: Add Queue Steps
+## Add Queue Steps
 
-In the stage **Execution**, determine where you want to queue deployments and click **Add Step**.
-
-In **Flow Control**, click **Queue**.
-
-Enter a name and timeout for the Queue step.
-
-In **Resource Key**, enter a unique key. This is the same key you will add to the Queue steps in other Pipelines.
-
-The **Resource Key** supports Fixed Values, Runtime Inputs, and Expressions. See [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md).
-
-In **Run next queued execution after completion of**, select one of the following:
-
-* **Pipeline:** the entire Pipeline must complete before the queued Pipelines can deploy.
-* **Stage:** the current Stage must complete before the queued Pipelines can deploy.
+1. In the stage **Execution**, determine where you want to queue deployments and click **Add Step**.
+2. In **Flow Control**, click **Queue**.
+3. Enter a name and timeout for the Queue step.
+4. In **Resource Key**, enter a unique key. This is the same key you will add to the Queue steps in other Pipelines.
+5. The **Resource Key** supports Fixed Values, Runtime Inputs, and Expressions. See [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md).
+6. In **Run next queued execution after completion of**, select one of the following:
+   + **Pipeline:** the entire Pipeline must complete before the queued Pipelines can deploy.
+   + **Stage:** the current Stage must complete before the queued Pipelines can deploy.
 
 Queue steps can be used on different Pipelines or even multiple executions of the same Pipeline.
 
-## Option: Advanced Settings
+## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
 
-### Step 2: Test
+### Test
 
 Let's look at a simple example to show how Queue steps work.
 
@@ -134,17 +125,17 @@ Here's another Pipeline, **queue 2**, with the same Queue step Resource Key. You
 
 ![](./static/control-resource-usage-with-queue-steps-07.png)
 
-## Review: Queue Step Scope
+## Queue Step Scope
 
 Queue steps are account-wide. This ensures that if a Queue step is placed in one Pipeline, it will restrict any other Pipeline in the account from using resources until it is safe to use.
 
-## Review: Barriers, Resource Constraints, and Queue Steps
+## Barriers, Resource Constraints, and Queue Steps
 
 Harness has a number of ways to control deployments and resource usage. It's important to understand their differences.
 
 See [Controlling Resource Usage with Barriers, Resource Constraints, and Queue Steps](controlling-deployments-with-barriers-resource-constraints-and-queue-steps.md).
 
-## Review: When to Queue
+## When to Queue
 
 Queue steps can be added anywhere in your Stage, so it's important to add them whenever the resource you want to protect is being used.
 

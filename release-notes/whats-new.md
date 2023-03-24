@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-08T10:00
+date: 2023-03-15T10:00
 sidebar_position: 1
 ---
 
@@ -16,13 +16,120 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 15, 2023, version 78712
+
+### Harness Delegate
+
+- Integrated **Logs** API in the **Executed Details** page where the delegate task ID is available. (DEL-6035)
+
+  You can now view logs for delegate tasks for pipeline steps that are running or finished. This can help with debugging issues. 
+
+- Set an expiry for delegate tokens. (DEL-5652)
+
+  When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`. This is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
+
+### Continuous Integration
+
+* The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
+* You can now call pipeline-level variables in steps as environment variables. This is an extension of existing functionality that allows you to call stage-level variables in steps as environment variables. (CI-6709, ZD-39203)
+* When configuring [SCM connectors](/docs/category/code-repo-connectors):
+  * Failed connection tests now return more detailed error messages. (CI-7089)
+  * The placeholder text in the **Repository URL** field shows a complete repo URL example. (CI-5750)
+
+### Continuous Delivery
+
+- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports updating the issue type. (CDS-53876)
+
+  When you update a Jira issue using the Jira Update step, you can now update the issue type. For example, if the issue you are updating is a Story, you can update it to a Task.
+
+  To update an issue type, add a new field named `Issue Type` and mention the new type in its **Value**.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+```yaml
+              - step:
+                type: JiraUpdate
+                name: Jira Update_1
+                identifier: JiraUpdate_1
+                spec:
+                  connectorRef: fcdx
+                  issueKey: <+execution.steps.JiraCreate_1.issue.key>
+                  transitionTo:
+                    transitionName: ""
+                    status: Done
+                  fields:
+                    - name: Description
+                      value: Improve feature X.
+                    - name: Issue Type
+                      value: Task
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Pipeline Studio" label="Pipeline Studio">
+```
+
+  ![update issue type](static/e7593d80236125833f145babe470114b8fa5edb75633c507c20e176dd3c40ed2.png)
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+### Harness Platform
+
+- The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)
+  
+- You can now migrate only the admin users of FirstGen to NextGen by enabling the feature flag `PL_DO_NOT_MIGRATE_NON_ADMIN_CG_USERS_TO_NG`. Previously, all FirstGen users were migrated to NextGen along with the admins. (PL-31648)
+  
+- The [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now supports the following filters:
+
+  - Principal Type Filter: Filters role assignments based on principal type.
+
+  - Harness Managed Filter: Filters role assignments based on roles managed by Harness. For example, an Account Administrator. 
+
+  - Disabled Filter: Filters disabled role assignments. (PL-31352)
+
+- Filters for audit trails are now listed alphabetically. (PL-31204)
+
+- Template expressions now support `when` conditions. (PIE-8762)
+
+### Service Reliability Management
+
+- Metrics graphs are now added to the **Create SLO** screen. (SRM-14025)  
+    
+  When configuring Service Level Indicators (SLIs) in the **Create SLO** screen, you will now see a metric graph based on the last 24 hours of data received from your health monitoring tool. Additionally, the recommended minimum, maximum, and average values specific to the SLI parameter that you are configuring will be displayed.  
+  
+  This feature eliminates the need for switching between the Harness **Create SLO** screen and your health monitoring tool dashboard to determine the most appropriate value for the SLI parameter you are configuring. For instance, if you opt for the ratio-based evaluation method while configuring your SLI, you can refer to the metric graphs and accompanying suggested values to determine the ideal percentage of valid requests to be considered for your SLI.  
+  
+  ![Metrics graph in Create SLO screen](./static/srm-rn-787-metricgraph.png)
+
+## March 13, 2023
+
+### Cloud Cost Management
+
+  Cost Category enhancements (CCM-10280)
+  
+  - When calculating the cost for `Unattributed`, the rules present in the shared cost bucket are not considered to eliminate duplicate costs.
+  - If **Cost Category** is `NOT NULL` in a perspective, it means all cost buckets are considered. `Unattributed` is not taken into account.
+  - If the **Cost Category** is `NULL`, it indicates that the cost buckets are not considered in the perspective. `Unattributed` is taken into account.
+  - Previously, all shared cost buckets were displayed as `No Groupby`. Now, when you apply a GroupBy option other than the cost category, the cost of the rules present in the shared cost bucket are displayed in a separate entity based on the GroupBy selection you have made. However, it is important to note that this change will be effective only if you have incorporated cost category with shared buckets in perspective rules.
+
 ## March 9, 2023
 
 ### Security Testing Orchestration
 
 * The new [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, the Issue Details pane now shows the ticket status along with the number. (STO-5491)
 
-## March 8, 2023. version 78619
+## March 8, 2023, version 78619
 
 ### Continuous Delivery
 
@@ -524,7 +631,7 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 
 ### Chaos Engineering
 
-- Update feature for ChaosHub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected ChaosHub.
+- Update feature for chaos hub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected chaos hub.
 
 - Adds CDN Support for Chaos module static artifacts thereby loading the UI with reduced latency on client devices.
 

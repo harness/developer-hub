@@ -172,7 +172,7 @@ Two delegates in different locations with different connectivity do not support 
 
 ### Delegate scope
 
-Delegates are scoped in two ways:
+Delegates are scoped as follows:
 
 #### Project/Org/Accounts
 

@@ -77,7 +77,9 @@ In **Issue Key**, select **Expression**.
 
 Now this Jira Update step will update the issue created by the Jira Create step.
 
-Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira Update, you are updating a new issue every run.### Option: Status and Transition
+Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira Update, you are updating a new issue every run.
+
+### Option: Status and Transition
 
 In **Status**, enter the status type (Issue Action) to update the issue with (In Progress, Done, etc). Harness will automatically update the issue with this status.
 

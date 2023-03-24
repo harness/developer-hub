@@ -1,7 +1,7 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-03-08T10:00
+date: 2023-03-15T10:00
 sidebar_position: 10
 ---
 
@@ -16,6 +16,118 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 15, 2023, version 78712
+
+### What's new
+
+- The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)
+  
+- You can now migrate only the admin users of FirstGen to NextGen by enabling the feature flag `PL_DO_NOT_MIGRATE_NON_ADMIN_CG_USERS_TO_NG`. Previously, all FirstGen users were migrated to NextGen along with the admins. (PL-31648)
+  
+- The [List Role Assignments by scope filter](https://apidocs.harness.io/tag/Role-Assignments/#operation/getFilteredRoleAssignmentByScopeList) API now supports the following filters:
+
+  - Principal Type Filter: Filters role assignments based on principal type.
+
+  - Harness Managed Filter: Filters role assignments based on roles managed by Harness. For example, an Account Administrator. 
+
+  - Disabled Filter: Filters disabled role assignments. (PL-31352)
+
+- Filters for audit trails are now listed alphabetically. (PL-31204)
+
+- Template expressions now support `when` conditions. (PIE-8762)
+
+### Early access
+
+- Harness now populates `givenName` and `familyName` for users via SCIM and returns the same when a GET, CREATE, or UPDATE request is made. (PL-31498)
+
+  This is behind the feature flag `PL_NEW_SCIM_STANDARDS`.
+
+- The response of a CRUD operation on a user or user group now contains the following meta fields as per the SCIM 2.0 standards:
+
+  - createdAt
+
+  - lastUpdated
+
+  - version
+
+  - resourceType (PL-31497)
+  
+    This is behind the feature flag `PL_NEW_SCIM_STANDARDS`.
+
+
+### Fixed issues
+
+- The template service APIs do not have trace filters. (PL-31829)
+
+  Template service now includes an open telemetry trace filter and the responses have `X-Harness-Trace-ID` in the header.
+
+- The sorting of updated projects fails since the **CreatedAt** field is null when updates are saved. (PL-31794, ZD-40783)
+  
+  A code enhancement has fixed this issue. You can fix this issue in older projects by making a dummy update like adding a comment.
+
+- Harness UI allows creation of inline secrets in a read-only vault secret manager. (PL-31646, ZD-40401)
+
+  A code enhancement has fixed this issue.
+
+- The enterprise HashiCorp vault's namespace feature does not delete secrets. (PL-31456, ZD-39470)
+  
+  A code enhancement has fixed this issue.
+
+- User alerts are enabled even when notification preferences are disabled. (PL-31144)
+  
+  A code enhancement has fixed this issue.
+
+- Recently added roles are not displayed in the manage role assignment settings. (PL-30560)
+  
+  A code enhancement has fixed this issue.
+
+- Secrets and connectors have different YAML views. (PL-27721)
+
+  UI enhancements have fixed this issue.
+
+- A chained pipeline fails to run because the user cannot enter the codebase branch. (PIE-8720, ZD-40821)
+  
+  A code enhancement has fixed this issue.
+
+- A pipeline becomes unresponsive when invalid YAML is pasted in the run pipeline form. (PIE-8668)
+  
+  The issue has been fixed by adding a check for invalid pipeline YAML when pipeline is added via the YAML pipeline studio. 
+
+- The table view on the pipelines list page is reset to page 1 when a pipeline is deleted. (PIE-8572)
+  
+  A code enhancement has fixed this issue.
+
+- Pre-flight check does not work with selective stage execution and pipeline YAML validation fails. (PIE-8476)
+
+  Users can now skip or select pre-flight checks and the pipeline runs successfully.
+
+- After pipeline failure, the console view does not show error details. (PIE-8229)
+  
+  A code enhancement has fixed this issue.
+
+- The API to retrieve filtered pipeline executions does not return executions that are successful in the UI, but failed in the backend. (PIE-8042)
+
+  A code enhancement has fixed this issue.
+
+
+### Important announcement
+
+- The following API endpoints have been deprecated:
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/createResourceGroup
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/deleteResourceGroup
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/getResourceGroup
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/getResourceGroupList
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/getFilterResourceGroupList
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/updateResourceGroup
+
+  The following API endpoints must be used: 
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/createResourceGroupV2
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/deleteResourceGroupV2
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/getResourceGroupV2
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/getResourceGroupListV2
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/getFilterResourceGroupListV2
+  - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/updateResourceGroupV2 (PL-31211, ZD-37398)
 
 ## March 08, 2023, version 78619
 

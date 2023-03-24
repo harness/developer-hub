@@ -75,7 +75,7 @@ To learn more about VM build infrastructures, go to [Set up VM build infrastruct
 
 The following table shows the supported operating systems and architectures for each build infrastructure option.
 
-| Operating system | Architecture | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted PaaS VMs |
+| Operating system | Architecture | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted Cloud provider VMs |
 | -  | - | - | - | - | - |
 | Linux | amd64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Linux | arm64 | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
@@ -87,7 +87,7 @@ The following table shows the supported operating systems and architectures for 
 
 Some Harness CI features are not compatible with all build infrastructures or platforms. New features are rolled out for Harness Cloud first before being enabled for other build infrastructures.
 
-| Feature | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted PaaS VMs |
+| Feature | Harness Cloud | Self-hosted local runner | Self-hosted Kubernetes cluster | Self-hosted Cloud provider VMs |
 | - | - | - | - | - |
 | Test Intelligence | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Test Parallelism | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
@@ -97,3 +97,9 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | Custom Secret Manager | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | STO step in Build stage | ✅ Supported for Linux platform| ❌ Not supported | ✅ Supported | <ul><li>✅ Supported for Linux platform</li><li> ❌ Not supported for Windows</li></ul>|
+| Plugins (Containers) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| Plugins (Host VM) | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+|GitHub Actions | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
+| Bitrise Integrations | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Plugin output variables | ✅ Supported | <!-- unknown --> | ❌ Not supported | ✅ Supported |
+| Build details - Artifacts tab | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |

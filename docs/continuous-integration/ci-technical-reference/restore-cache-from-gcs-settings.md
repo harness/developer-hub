@@ -32,11 +32,13 @@ GCS bucket name where you saved the cache.
 
 ## Key
 
-The key to identify the cache.
+The key identifying the cache to restore.
 
-The backslash character isn't allowed as part of the checksum value here. This is a limitation of the Go language (golang) template. You must use a forward slash instead:
+You can use the checksum macro to restore a key based on a file's checksum, for example `myApp-{{ checksum "path/to/file" }}` or `gcp-{{ checksum "package.json" }}`. The result of the checksum macro is concatenated to the leading string.
 
-* Incorrect format: `cache-{{ checksum ".\src\common\myproj.csproj" }`
+The backslash character isn't allowed as part of the checksum value here. This is a limitation of the Go language (golang) template. You must use a forward slash instead, for example:
+
+* Incorrect format: `cache-{{ checksum ".\src\common\myproj.csproj" }}`
 * Correct format: `cache-{{ checksum "./src/common/myproj.csproj" }}`
 
 ## Optional Configuration

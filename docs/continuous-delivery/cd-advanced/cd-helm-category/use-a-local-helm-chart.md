@@ -16,7 +16,9 @@ Harness will check for the existence of the Helm chart on the local Delegate dis
 
 Using a local Helm chart eliminates identical downloads and their related performance issues.
 
-New to Helm deployments in Harness? See [Helm Chart Deployment Tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Native Helm Deployment Tutorial](../../onboard-cd/cd-quickstarts/native-helm-quickstart.md). For extensive details, see [Deploy Helm Charts](deploy-helm-charts.md).### Add installation script to the Delegate YAML
+New to Helm deployments in Harness? See [Helm Chart Deployment Tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Native Helm Deployment Tutorial](../../onboard-cd/cd-quickstarts/native-helm-quickstart.md). For extensive details, see [Deploy Helm Charts](deploy-helm-charts.md).
+
+### Add installation script to the Delegate YAML
 
 1. Install the chart on the Delegate host.  
 The Delegate host must have Helm installed on it. Harness installs Helm with the Delegate automatically, so you don't need to do anything unless you have removed Helm for the Delegate host.  
@@ -55,7 +57,7 @@ For information on Delegate types, go to [Install a Kubernetes Delegate](../../.
 
 ### Important notes
 
-Please review the following important notes.
+Review the following important notes.
 
 #### Use the same Delegate for fetching chart and deployment steps
 
