@@ -59,11 +59,13 @@ Here are some key features of Harness CI.
 
 ### Test Intelligence
 
-Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. For more information, go to [Test Intelligence overview](test-intelligence-concepts.md).
+Test Intelligence (TI) reduces unit test time significantly by running only the unit tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. For more information, go to [Test Intelligence overview](test-intelligence-concepts.md).
 
 <!-- ![](./static/ci-concepts-600.png) -->
 
 <docimage path={require('./static/ci-concepts-600.png')} />
+
+While Test Intelligence is specific to unit testing, you can run a variety of tests in your CI pipelines.
 
 ### Integrated Platform
 
