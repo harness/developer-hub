@@ -10,7 +10,41 @@ To identify the cluster that hosts your account, open Harness FirstGen and go to
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
-## March 15, 2023, Harness version 78712, Harness Delegate version 78700
+## March 23, 2023, Harness version 78817, Harness Delegate version 78705
+
+Harness FirstGen release 78817 includes the following feature changes and fixes for the Harness Delegate.
+
+### What's new
+
+Users can override the delegate image for their account using an endpoint. (DEL-6024)
+
+Use the following endpoint: 
+
+/version-override/delegate-tag
+
+Pass the arguments in query param:
+
+1- accountIdentifier : String
+
+2- delegate image tag : String
+
+Optional arguments:
+
+1- validTillNextRelease : Boolean
+
+2- validForDays : int
+
+Use an api-key with account edit permission in the API header.
+
+### Early access 
+
+This release does not include any new early access features. 
+
+### Fixed issues
+
+This release does not include any fixed issues. 
+
+## March 15, 2023, Harness version 78712, Harness Delegate version 78705
 
 Harness FirstGen release 78712 includes the following feature changes and fixes for the Harness Delegate.
 
