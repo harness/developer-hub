@@ -46,7 +46,7 @@ With this option selected (the default), a Build clones the default codebase int
 
 In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
-### Step 4: Add Run Steps to Clone Additional Repos
+### Step 3: Add Run Steps to Clone Additional Repos
 
 You can create one or more Run Steps to clone additional repos into the build workspace. Note the following:
 
@@ -61,7 +61,7 @@ apk add git
 git --version  
 git clone https://github.com/$GITHUB_USERNAME/$DOCKER_REPO
 ```
-### Step 5: Move Files and Folders as Needed
+### Step 4: Move Files and Folders as Needed
 
 You now have your default Codebase and additional codebases cloned into the same workspace. Note that the default Codebase files are in the root folder, while other codebase files are in subfolders. If you run a `find` or a recursive `ls` in the Run step after you clone your codebases, you see something like this:
 
@@ -100,7 +100,7 @@ Now that the files from your repos are in one common workspace, you can add a Bu
 
 ![](./static/clone-and-process-multiple-codebases-in-the-same-pipeline-03.png)
 
-### Step 5: Run the Pipeline
+### Step 6: Run the Pipeline
 
 Now you can run your Pipeline.
 

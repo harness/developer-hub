@@ -12,7 +12,7 @@ This topic provides settings and permissions for the Kubernetes Rollout Deployme
 
 ## Rollout Deployments
 
-The Rollout Deployment step performs a Kubernetes [rolling update strategy](../../cd-deployments-category/deployment-concepts.md). All nodes within a single environment are incrementally added one-by-one with a new service/artifact version.
+The Rollout Deployment step performs a Kubernetes [rolling update strategy](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-concepts#rolling-deployment). All nodes within a single environment are incrementally added one-by-one with a new service/artifact version.
 
 The new pods are scheduled on nodes with available resources. The rolling update Deployment uses the number of pods you specified in the Service Definition **Manifests** (number of replicas).
 

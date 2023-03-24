@@ -78,5 +78,5 @@ Once the Pipeline is executed in CI, Click **Tests**. The Tests show the test re
 
 ### See Also
 
-* [View Test Report](../view-your-builds/viewing-tests.md)
+* [View Tests](../view-your-builds/viewing-tests.md)
 

@@ -592,11 +592,11 @@ The following section lists the support for the Kubernetes management platform f
 | Kops (Kubernetes Operations)                    | AWS                    | AWS               |
 | Tanzu Kubernetes Grid Integrated Edition (TKGI) | On-Prem                | Custom-rate\*\*\* |
 
-\*Cost data is supported for On-Prem OpenShift 4.3. This uses a custom rate.
+\* Cost data is supported for On-Prem OpenShift 4.3. This uses a custom rate.
 
-\*\*Cost data is supported for K8s workloads on AWS managed by Rancher, but the cost falls back to the custom rate.
+\*\* Cost data is supported for K8s workloads on AWS managed by Rancher, but the cost falls back to the custom rate.
 
-\*\*\*Cost is computed using a custom rate. This can be modified by Harness on request.
+\*\*\* Cost is computed using a custom rate. This can be modified by Harness on request.
 
 ### Supported ingress controllers for Kubernetes AutoStopping
 

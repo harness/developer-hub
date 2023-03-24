@@ -12,7 +12,7 @@ This topic covers basic terminology and concepts related to CI pipelines. For ge
 
 ## Pipelines
 
-A CI pipeline is an end-to-end integration workflow that pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as Docker Hub, Google Cloud Registry, JFrog Artifactory, and many others.
+A CI pipeline is an end-to-end integration workflow that, in its simplest form, pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as DockerHub, Google Cloud Registry, JFrog Artifactory, and many others.
 
 You can run a pipeline manually or set up triggers to automatically run it on a schedule or when an event occurs, such as a Git merge in your codebase.
 
@@ -36,9 +36,9 @@ Harness CI includes an extensive Step Library for common CI tasks: building arti
 
 ## Shared Path
 
-You can use Shared Paths in a stage to share data across steps. By default, all steps in a stage use the same workspace to share data. By default, `/harness` is the shared working directory for a stage. For example, by default the Maven `m2` repo is stored in `/root/.m2`, and you can specify this same path when using the Maven intall in a later stage in the same pipeline.
+You can use shared paths (`sharedPaths`) in a stage to share data across steps. By default, all steps in a stage use the same workspace to share data. The default shared working directory for a stage is `/harness`. For example, the Maven `m2` repo is stored in `/root/.m2` by default, and you can specify this same path when using the Maven install in a later stage in the same pipeline.
 
-If you need to share additional volumes, you can add Shared Paths.
+If you need to share additional volumes, you can add shared paths.
 
 ## Dependent and background services
 
@@ -46,25 +46,25 @@ If you decide to split your pipeline into multiple stages, you need to make sure
 
 ## Plugins
 
-Docker Plugins are Docker containers that perform predefined tasks and are configured as Steps in your Stage. You can use Plugins to deploy code, publish artifacts, send notifications, and more.
+Plugins perform predefined tasks, such as deploying code, publishing artifacts, sending notifications, and more. They are configured as steps in your CI pipelines.
 
-The Drone community maintains an [extensive library](https://plugins.drone.io/) of plugins for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/).
+Docker Plugins are Docker containers that perform predefined tasks and run in **Plugin** steps. The Drone community maintains an [extensive plugin library](https://plugins.drone.io/) for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own plugins](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/).
 
-For more information, go to [Plugin step settings](../ci-technical-reference/plugin-step-settings-reference.md) and [Run a Drone plugin in CI](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
+For more information, go to [Use Plugins](/docs/category/use-plugins/), [Plugin step settings](../ci-technical-reference/plugin-step-settings-reference.md), and [Run a Drone plugin in CI](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
 If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action plugin step](../ci-technical-reference/ci-github-action-step.md) and [Bitrise plugin step](../ci-technical-reference/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ## Caching
 
-Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Cache CI Data](/docs/category/share-and-cache-ci-data).
+Caching expedites job execution by reusing data from expensive fetch operations that ran in previous jobs. You can also use caching to share data across stages. For example, you can use **Save Cache** and **Restore Cache** steps to save a cache to a cloud storage bucket and restore it later. For more information, go to [Share and cache CI data](/docs/category/share-and-cache-ci-data).
 
-## Remote Docker layer caching
+### Remote Docker layer caching
 
 Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling them to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
 ## Artifact repos
 
-Harness CIE offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can push your artifacts. Object storage repos are set up as steps in your pipelines by using the **Upload Artifacts** steps in the Step library.
+Harness CI offers popular object storage options such as JFrog, Amazon S3, and Google GCS where you can push your artifacts. Object storage repos are configured as **Upload Artifacts** steps in your pipelines.
 
 ## Services
 
@@ -86,7 +86,7 @@ Connectors require different permissions depending on your build environment and
 
 ## Delegates
 
-The Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, and so on.
+The Harness Delegate is a software service you install in an environment, such as a Kubernetes cluster, that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, and so on.
 
 The Delegate uses the credentials set up in the connectors used by the pipeline to perform deployment tasks. Additionally, the Delegate needs permissions in the target environment to execute build tasks. These permissions are granted in the Delegate config file or the environment account you use when installing the Delegate.
 
@@ -98,9 +98,13 @@ You can add and reference custom variables in pipelines and stages. They're avai
 
 You can run your pipelines manually or use triggers to initiate their execution. You can trigger a pipeline based on Git commits and pull requests, schedules, and so on.
 
-## Test Intelligence
+## Tests
 
-Test Intelligence speeds up your test cycles by running only the tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in the test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Get started with Test Intelligence](test-intelligence-concepts.md).
+In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests.
+
+### Test Intelligence
+
+Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You can easily see the code changes and gaps in your unit test plan. Test Intelligence also identifies negative trends and provides actionable insights to improve quality. For more information, go to [Get started with Test Intelligence](test-intelligence-concepts.md).
 
 ## CI Overview
 
@@ -112,18 +116,22 @@ Pipelines, stages, and steps have advanced settings to control the flow of opera
 
 ### Inputs and Overlays
 
-Harness Input Sets are collections of runtime inputs for a pipeline run. Overlays are groups of Input Sets. Overlays enable you to provide several Input Sets when you run a pipeline. With Input Sets and Overlays, you can make one pipeline template and use it for multiple scenarios. Each scenario can be defined in an Input Set or Overlay and simply selected at runtime.
+Harness Input Sets are collections of runtime inputs for a pipeline run. Overlays are groups of Input Sets. Use Overlays to provide multiple Input Sets when you run a pipeline.
+
+With Input Sets and Overlays, you can use the same pipeline for multiple scenarios. You can define each scenario in an Input Set or Overlay, and then select the appropriate scenario at runtime.
 
 ### Conditional Executions
 
-You can set conditions on when you run stages and steps. For example, `Execute This Stage Only if Prior Pipeline or Stage Failed`.
+Use conditional execution settings to specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
 
-A stage's Conditional Execution applies to all steps in that stage that don't have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
+You can specify conditional execution settings for an entire stage and for individual steps. A stage's conditional execution settings apply to all steps in that stage that don't have their own step-level conditional execution settings. A step's conditional execution settings overrides the stage's conditional execution settings.
 
 ### Failure Strategies
 
-A failure strategy defines how your stages and steps handle different failure conditions.
+Failure strategies define how your stages and steps handle different failure conditions.
 
-The failure strategy contains error conditions that must occur for the strategy to apply, and actions to take when the conditions occur.
+Each failure strategy is comprised of the following:
+* Error conditions that trigger the failure strategy.
+* Actions to take when the specified error conditions occur.
 
-Failure strategies are a critical pipeline design component that determine what fails a step or stage and what to do when the failure occurs.
+Failure strategies are a critical pipeline design component that determine what causes a stage or step to fail and what to do when a failure occurs.

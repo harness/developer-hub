@@ -23,7 +23,7 @@ const config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ["@docusaurus/theme-mermaid"],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -79,14 +79,6 @@ const config = {
             html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
           },*/
-          {
-            // type: "search",
-            // position: "right",
-            // className: "searchBar",
-            // use customized coveo search on sidebar
-            type: "custom-coveo-search",
-            position: "right",
-          },
           {
             position: "right",
             type: "dropdown",
@@ -210,7 +202,6 @@ const config = {
             ],
           },
           {
-            // to: "release-notes",
             label: "Certifications",
             position: "right",
             type: "dropdown",
@@ -235,8 +226,21 @@ const config = {
           },
           {
             position: "right",
+            to: "kb",
+            label: "Knowledge Base",
+          },
+          {
+            position: "right",
             href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
             label: "Join Slack",
+          },
+          {
+            // type: "search",
+            // position: "right",
+            // className: "searchBar",
+            // use customized coveo search on sidebar
+            type: "custom-coveo-search",
+            position: "right",
           },
           {
             position: "right",
@@ -327,6 +331,10 @@ const config = {
               {
                 label: "Developer Hub GitHub",
                 href: "https://github.com/harness/developer-hub",
+              },
+              {
+                label: "Release Notes",
+                href: "/release-notes/whats-new",
               },
             ],
           },

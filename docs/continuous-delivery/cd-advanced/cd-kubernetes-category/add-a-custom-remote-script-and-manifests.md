@@ -98,10 +98,10 @@ If you are adding the image location to Harness as an Artifact in the Service De
     ![](./static/add-a-custom-remote-script-and-manifests-39.png)
 
 1. Enter the name in **Manifest Name**.
-1. In the **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
+1. In **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
 2. In **Extracted Manifest File Location**, enter the folder path for the manifests.
 3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
-4. In the **Values.yaml**, the field is populated with the folder path for the values.yaml.
+4. In **Values.yaml**, the field is populated with the folder path for the values.yaml.
 5. Click **Submit**. The new manifest is created and added to **Manifests** in Harness.
 
 ![](./static/add-a-custom-remote-script-and-manifests-40.png)
@@ -110,7 +110,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
 
 The custom script runs on the Harness Delegate selected for deployment. If you selected a Delegate in the Kubernetes Cluster Cloud Provider used by the Workflow's Infrastructure Definition, then the script is run on that Delegate.
 
-Harness creates a temporary working directory on the Delegate host for the downloaded package. You can reference the working directory in your script with `WORKING_DIRECTORY=$(pwd)` or `cd $(pwd)/some/other/directory`
+Harness creates a temporary working directory on the Delegate host for the downloaded package. You can reference the working directory in your script with `WORKING_DIRECTORY=$(pwd)` or `cd $(pwd)/some/other/directory`.
 
 After deploying your Workflow, you can view the Delegate that was selected for the deployment.
 

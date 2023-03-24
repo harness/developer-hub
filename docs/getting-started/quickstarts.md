@@ -20,12 +20,12 @@ If you're also new to the Harness Platform, learn about [Harness' key concepts](
 
 Select the tutorial for the platform you want to use to deploy.
 
-* [Kubernetes Deployment Tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) shows you how to create a CD Pipeline that deploys a publicly available Docker image and manifest to your target cluster.
-* [Helm Chart Deployment Tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md) shows you how to create a CD Pipeline that uses a Helm chart to deploy a publicly available Docker image to your target cluster.
-* [Kustomize Deployment Tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md) shows you how to create a CD Pipeline that uses a kustomization to deploy multiple variants of a simple public Hello World server.
-* [Azure ACR to AKS Deployment Tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md) shows you how to create a CD Pipeline that deploys your ACR image to your target AKS cluster.
+* [Kubernetes deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) shows you how to create a CD Pipeline that deploys a publicly available Docker image and manifest to your target cluster.
+* [Helm Chart deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md) shows you how to create a CD Pipeline that uses a Helm chart to deploy a publicly available Docker image to your target cluster.
+* [Kustomize deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md) shows you how to create a CD Pipeline that uses a kustomization to deploy multiple variants of a simple public Hello World server.
+* [Azure ACR to AKS deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md) shows you how to create a CD Pipeline that deploys your ACR image to your target AKS cluster.
 * [Azure Web Apps Tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial.md) deploy a Docker image or non-containerized artifact for your Azure Web App. You can deploy to source and target deployment slots, and perform traffic shifting.
-* [Serverless Lambda Deployment Tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md) shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness.
+* [Serverless Lambda deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md) shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness.
 * [ECS deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md) shows you how to deploy a publicly available Docker image to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy.
 * [Custom deployments using Deployment Templates tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md) shows you how to use Deployment Templates for non-native deployments (integrations other than those Harness supports out of the box). Deployment Templates use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
 
@@ -39,8 +39,8 @@ Select the tutorial for the platform you want to use to deploy.
 
 The following quickstart guides are available for Feature Flags:
 
-* [Getting Started with Feature Flags](../feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md) provides a high-level summary of Feature Flag (FF), with video and Quick Guide walkthroughs.
-* [Java Quickstart](../feature-flags/ff-onboarding/ff-getting-started/java-quickstart.md) helps you to create a feature flag and use the feature flag SDK in your Java application.
+* [Getting started with Feature Flags](../feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md) provides a high-level summary of Feature Flag (FF), with video and Quick Guide walkthroughs.
+* [Java quickstart](../feature-flags/ff-onboarding/ff-getting-started/java-quickstart.md) helps you to create a feature flag and use the feature flag SDK in your Java application.
 
 ## Cloud Cost Management (CCM)
 

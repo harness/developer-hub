@@ -9,13 +9,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness CI extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies the code development and testing process. In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits.
+Harness is a leading provider of the Continuous Delivery-as-a-Service platform. Harness CI extends this functionality with Continuous Integration-as-a-Service. Harness CI simplifies the code development and testing process. In Harness CI pipelines, you model your build and test processes as CI stages. Each stage includes steps for building, testing, and pushing your code. Pipelines can be triggered manually or automatically by triggers, such as Git commits and pull requests.
 
-CI executes steps as containers, packaging code, and dependencies in isolation from other steps. You simply specify a container to use, and Harness locates and launches the container in which the job will run. There is no longer a dependency chain to manage when steps and plugins run in their own containers.
+CI executes pipeline steps in containers, isolating code and dependencies from other steps. When you create a pipeline, you specify a container to use, and then Harness locates and launches the container in which the step runs. You don't need to manage a dependency chain when steps and plugins run in their own containers.
 
 This topic describes CI concepts and provides a summary of the benefits of CI.
 
-For information about general Harness Platform concepts, go to [Harness Key Concepts](../../getting-started/learn-harness-key-concepts.md). For information about how Drone and Harness CI work together, go to [Drone and Harness](drone-and-harness.md).
+For information about general Harness Platform concepts, go to [Harness key concepts](../../getting-started/learn-harness-key-concepts.md). For information about how Drone and Harness CI work together, go to [Drone and Harness](drone-and-harness.md).
 
 ## Visual summary
 
@@ -45,7 +45,7 @@ The Delegate manages your build infrastructure to run build jobs and tests as ne
 
 When a CI pipeline build finishes successfully, the build infrastructure then sends the artifacts to the registry of your choice.
 
-Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the [CI tutorial](ci-pipeline-quickstart.md) or [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
+Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the [CI pipeline tutorial](ci-pipeline-quickstart.md) or [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -57,17 +57,19 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 Here are some key features of Harness CI.
 
+### Harness Cloud
+
+You can run builds on Harness-hosted build infrastructure. For more information, go to [Get started with Harness Cloud](./hosted-builds-on-virtual-machines-quickstart.md).
+
 ### Test Intelligence
 
-Test Intelligence (TI) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection. For more information, go to [Get started with Test Intelligence](test-intelligence-concepts.md).
+[Test Intelligence (TI)](test-intelligence-concepts.md) reduces test time significantly by running only the tests required to confirm the quality of the code changes that triggered the build. TI selects tests that are needed to confirm the quality of the code changes that triggered the build and ranks them in the best possible order to increase the rate of fault detection.
 
-<!-- ![](./static/ci-concepts-600.png) -->
-
-<docimage path={require('./static/ci-concepts-600.png')} />
+While Test Intelligence is specific to unit testing, you can run a variety of tests in your CI pipelines.
 
 ### Integrated Platform
 
-Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](../../continuous-delivery/cd-deployments-category/deployment-concepts.md), [Cloud Cost Management](/docs/category/set-up-cloud-cost-management), and [Feature Flags](../../feature-flags/ff-onboarding/cf-feature-flag-overview.md). You no longer have to navigate from application to application to follow the steps of the pipeline. Harness platform offers unified CI/CD pipelines with visual controls and approval gates.
+Harness CI is seamlessly integrated with other Harness modules such as [Continuous Delivery](/docs/continuous-delivery), [Cloud Cost Management](/docs/cloud-cost-management), [Feature Flags](/docs/feature-flags), and [Security Testing Orchestration](/docs/security-testing-orchestration). The Harness Platform offers unified CI/CD pipelines with visual controls and approval gates. You no longer have to navigate between applications to follow the steps of the pipeline.
 
 <!-- ![](./static/ci-concepts-501.png) -->
 
@@ -91,7 +93,7 @@ Scripting pipelines can be time-consuming and tedious. It may be difficult to en
 
 ### Harness Git Experience
 
-Harness Git Experience provides seamless integration between your Harness projects, pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools, including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This triggers a build within Harness CI once a commit is detected. For more information, go to [Git Experience](../../platform/10_Git-Experience/harness-git-experience-overview.md).
+The [Harness Git Experience](/docs/category/git-experience) provides seamless integration between your Harness projects, pipelines, and resources and your Git repos. You can work entirely from Git or use a hybrid method of Git and the Harness Manager. Harness CI integrates with all the popular source control management tools, including GitHub, GitLab, and Bitbucket. To get started, you need to activate the repository and include a `.harness` folder for the configuration files. This triggers a build within Harness CI once a commit is detected.
 
 <!-- ![](./static/ci-concepts-506.png) -->
 
@@ -103,4 +105,4 @@ For information about CI pipeline components, go to [CI pipeline concepts](./ci-
 
 ## Try Harness CI
 
-Interested in trying CI for yourself? No need to wait any longer! Book your [Demo](https://harness.io/demo) and [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
+Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
