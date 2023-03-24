@@ -124,7 +124,7 @@ You can specify conditional execution settings for an entire stage and for indiv
 
 ### Failure Strategies
 
-Failure strategies defines how your stages and steps handle different failure conditions.
+Failure strategies define how your stages and steps handle different failure conditions.
 
 Each failure strategy is comprised of the following:
 * Error conditions that trigger the failure strategy.

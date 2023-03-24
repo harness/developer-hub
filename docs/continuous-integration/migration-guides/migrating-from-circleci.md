@@ -254,7 +254,7 @@ workflows:
   - Org-level reference: `<+variable.org.[var_id]>`
   - Project-level reference: `<+variable.[var_id]>`
 
-To learn more about account, project, and organization-level variables go to [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/).
+To learn more about variables for accounts, projects, and organizations, go to [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/).
 
 ```mdx-code-block
 

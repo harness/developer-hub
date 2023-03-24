@@ -67,7 +67,7 @@ You can run builds on Harness-hosted build infrastructure. For more information,
 
 ### Integrated Platform
 
-Harness is seamlessly integrated with other Harness modules such as [Continuous Delivery](/docs/continuous-delivery), [Cloud Cost Management](/docs/cloud-cost-management), and [Feature Flags](/docs/feature-flags). The Harness Platform offers unified CI/CD pipelines with visual controls and approval gates. You no longer have to navigate between applications to follow the steps of the pipeline.
+Harness CI is seamlessly integrated with other Harness modules such as [Continuous Delivery](/docs/continuous-delivery), [Cloud Cost Management](/docs/cloud-cost-management), [Feature Flags](/docs/feature-flags), and [Security Testing Orchestration](/docs/security-testing-orchestration). The Harness Platform offers unified CI/CD pipelines with visual controls and approval gates. You no longer have to navigate between applications to follow the steps of the pipeline.
 
 <!-- ![](./static/ci-concepts-501.png) -->
 
