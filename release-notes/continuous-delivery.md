@@ -21,7 +21,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   When creating Amazon ECS or Serverless.com Framework Lambda deployment pipelines, you can now use Azure Repo as a manifest repo in the service definition.
   
-- Harness now supports template input APIs (CDS-55694)
+- Harness now supports template input APIs. (CDS-55694)
   
   You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](https://developer.harness.io/docs/platform/Templates/create-pipeline-template).
   
@@ -105,9 +105,9 @@ This release does not include any early access features.
 - When creating triggers, automatic suggestions did not appear for the expressions field in the **Pipeline Input** tab. (CDS-54500)
 
   This issue is fixed.
-- The CD Container step was not working because Harness was adding an invalid character in the default step name. (CDS-54733, CDS-54386, ZD-40724, ZD-40938, ZD-41170)
+- The CD Container step was not working because Harness added an invalid character in the default step name. (CDS-54733, CDS-54386, ZD-40724, ZD-40938, ZD-41170)
   The [Container step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/container-step/) lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage. Harness orchestrates the container in your cluster as part of your Harness deployment.
-  When creating a Container step, Harness was appending the step name with an `_` character. This led to an invalid container name because the step name is used to name the container.
+  When creating a Container step, Harness appended the step name with an `_` character. This led to an invalid container name because the step name is used to name the container.
   Now, the `_` is no longer added to the container name.
 - Dragging and dropping the steps of one stage to another stage generated a service propagation modal. (CDS-54340)
   
@@ -115,7 +115,7 @@ This release does not include any early access features.
 - Service inputs were retained when the service was set as an expression. (CDS-54336)
   
   When a setting is set as an expression, any fixed value inputs should be replaced with `<+input>`. This replacement was not happening. This issue is now fixed.
-- Automatic suggestions did not appear for the expressions during infra provisioning in pipeline studio. (CDS-54266)
+- Automatic suggestions did not appear for the expressions during infra provisioning in Pipeline Studio. (CDS-54266)
   
   ![](static/auto-suggestion.png)
 
@@ -140,7 +140,7 @@ This release does not include any early access features.
   This issue is fixed by adding support for using Harness local store with native Helm deployments.
 - Unable to delete a Kustomize patch entry once it was added. (CDS-53749)
   
-  A delete button is now added to allow users to delete values YAML, OpenShift params, and Kustomize patches that are no longer needed. File path validation is also done to ensure that file paths with empty strings are not saved.
+  A delete button is now added to allow users to delete values YAML, OpenShift parameters, and Kustomize patches that are no longer needed. File paths are validated to ensure that paths with empty strings are not saved.
 - Unable to filter environments by using the search bar in the **Create or Select Existing Environment** dialog. (CDS-53713)
 
   This issue is now fixed.
@@ -158,9 +158,9 @@ This release does not include any early access features.
   This issue is fixed.
 - (**Customer impact**) The decalarative rollback feature in Kubernetes deployments with canary or blue green deployment strategies could share the same ConfigMap or Secret. (CDS-54023)
   
-  If the declarative rollback feature was enabled, Harness did not do resource versioning for ConfigMap and Secret because the main purpose of the versioning in Harness was to be able to do `kubectl` rollout for a managed workload to a previous version that would point to a different version of resource. Harness was re-applying the full manifest of the previous version. Hence, all resource including ConfigMap and Secret were reverted to a previous version. With canary and blue green deployment strategies, each canary workload or workload of different colors must point to a different version of ConfigMap or Secret. Without versioning, it will point to the same resource revision.
+  If the declarative rollback feature was enabled, Harness did not do resource versioning for the ConfigMap and Secret because the main purpose of the versioning in Harness was to be able to do `kubectl` rollout for a managed workload to a previous version that would point to a different version of the resource. Harness was re-applying the full manifest of the previous version. Hence, all resource including the ConfigMap and Secret were reverted to a previous version. With canary and blue green deployment strategies, each canary workload or workload of different colors must point to a different version of the ConfigMap or Secret. Without versioning, it will point to the same resource revision.
 
-  This issue is fixed now. The declarative rollback feature now creates a copy of ConfigMap and Secret resources for canary deployment, and a copy of these resources for each color for blue green deployments.
+  This issue is fixed now. The declarative rollback feature now creates a copy of the ConfigMap and Secret resources for canary deployment, and a copy of these resources for each color for blue green deployments.
 - 
 
 ## March 15, 2023, version 78712
