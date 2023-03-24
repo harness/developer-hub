@@ -43,7 +43,7 @@ Refer to the following image specification README files for more information abo
 * [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
 * [Windows Server 2019 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
 
-You can include steps in your pipeline to specify a version of a tool installed on an image, lock the pipeline to a required version, or install additional tools and versions that aren't available on the image. These steps run on the host machine or run a separate Docker images.
+You can include steps in your pipeline to specify a version of a tool installed on an image, lock the stage to a required version, or install additional tools and versions that aren't available on the image. These steps run on the host machine or run a separate Docker images.
 
 :::caution
 
