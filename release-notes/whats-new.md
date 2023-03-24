@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-23T10:00
+date: 2023-03-24T10:00
 sidebar_position: 1
 ---
 
@@ -17,7 +17,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 :::
 
 
-## March 15, 2023, version 788xx
+## March 24, 2023, version 78817
 
 ### Service Reliability Management
 
