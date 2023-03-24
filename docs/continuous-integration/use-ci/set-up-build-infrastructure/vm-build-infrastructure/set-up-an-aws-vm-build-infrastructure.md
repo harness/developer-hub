@@ -450,4 +450,4 @@ Configure the following fields in the **.env** file to allow Runner to access an
 
 ## Troubleshooting
 
-If VM creation in the Runner fails with the error `no default VPC`, then set `subnet_id` in `pool.yml`.
+When you run the pipeline, if VM creation in the Runner fails with the error `no default VPC`, then set `subnet_id` in `pool.yml`.
