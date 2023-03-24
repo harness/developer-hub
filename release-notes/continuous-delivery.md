@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2023-03-15T10:00
+date: 2023-03-24T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -13,7 +13,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## March 23, 2023, version 788xx
+## March 24, 2023, version 788xx
 
 ### What's new
 
@@ -25,7 +25,8 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](https://developer.harness.io/docs/platform/Templates/create-pipeline-template).
   
-  For example, here's a template:
+  Here is a sample template: 
+  
   ```yaml
   template:
   name: my_template
@@ -50,6 +51,8 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   You can now filter Docker artifact tags based on regex when using runtime inputs during pipeline execution. 
 
+  ![](static/tag-regex.png)
+
 - You can now provide an already created task definition ARN during ECS service configuration in Harness. (CDS-50112)
   
   The task definition ARN points to an existing task created and available in the AWS cluster with the required definition. The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
@@ -58,95 +61,107 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   Go to [ECS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
 
+- You can now view the ServiceNow Active Directory Federation Services (ADFS) and Jira Personal Access Token (PAT) in the **Credentials** section of the **Connectors** page. (CDS-55670)
+  
+  ![](static/connector-credentials.png)
+
 ### Early access  
 
 This release does not include any early access features.
 
 ### Fixed issues
 
-- The API call to create a global freeze window succeeds but the UI doesn't reflect the change. (CDS-55092)
+- The API call to create a global freeze window succeeded but the UI did not reflect the change. (CDS-55092)
 
   If a global freeze window was inactive during the API call, it was updated and marked as disabled.
   
   This issue is fixed. Changes are made to check the current or upcoming window to mark them as disabled during the API call.
-- The commit Ids are not displayed properly when the feature flag, `OPTIMIZED_FETCH_FILE` is disabled. (CDS-55062)
+- The commit Ids were not displayed properly when the feature flag, `OPTIMIZED_FETCH_FILE` was disabled. (CDS-55062)
 
   Now you can see the commit Ids properly.
-- Docker triggers are not working properly when regex support for tags are enabled. (CDS-54993)
+- Docker triggers were not working properly when regex support for tags were enabled. (CDS-54993)
   
-  The support for filtering Docker artifact tags based on regex caused a problem for Docker triggers when the regex is set to `\*`. The Docker triggers are not firing because `\*` is a wrong regex value and will not filter any builds. 
+  The support for filtering Docker artifact tags based on regex caused a problem for Docker triggers when the regex was set to `\*`. The Docker triggers were not firing because `\*` is a wrong regex value and will not filter any builds. 
 
   This issue is now fixed by ignoring the regex value, `\*` in triggers.
-- Helm deployment fails if there is no Helm chart values.yaml file in the root `charts/` directory. (CDS-54930)
+- Helm deployment failed if there was no Helm chart values.yaml file in the root `charts/` directory. (CDS-54930, ZD-39802)
 
-  Harness fails to fetch files with a no file found error when deploying Helm charts without any default values.yaml file. This issue is fixed. 
-- The Google Container Registry (GCR) fetch API fails with with a `404` or `400` error. (CDS-54925)
+  Harness failed to fetch files with a no file found error when deploying Helm charts without any default values.yaml file. This issue is fixed. 
+- The Google Container Registry (GCR) fetch API failed with with a `404` or `400` error. (CDS-54925)
   
   Running a cURL command for the API returned an error due to the presence of an OCI image header. This issue is fixed. The fetch APIs for Docker labels and manifest APIs on GCR now support OCI headers.
-- The **Job/Folder Name** selection field in the Jenkins connector dispalys an additional drop-down list along with the first drop-down list if the jobs have child jobs associated with them. (CDS-54882)
+- The **Job/Folder Name** selection field in the Jenkins connector dispalyed an additional drop-down list along with the first drop-down list if the jobs had child jobs associated with them. (CDS-54882, ZD-41097)
 
   This issues is fixed. Now, when you select a job that has child jobs, the child job options with input fields appear below the parent job. 
-- Trying to save a project-level Git template using a project-level Git connector at an account or organization-level returns the wrong error message: `OrgIdentifier cannot be empty for ORG scope`. (CDS-54668)
+- Trying to save a project-level Git template using a project-level Git connector at an account or organization-level returned the wrong error message: `OrgIdentifier cannot be empty for ORG scope`. (CDS-54668, ZD-40660)
   
   The error message is now updated to convey the error properly. 
-- Harness verifies if an image exists in Artifactory when fetching tags or versions of the image. (CDS-54644)
+- Harness verified if an image existed in Artifactory when fetching tags or versions of the image. (CDS-54644, ZD-40769)
   
   This verification is no longer needed because image verification is done automatically when fetching tags.
 - Unable to resolve pipeline variables for Jenkins artifacts when used as runtime expressions. (CDS-54523)
   
   This issue is fixed by resolving the connector Id during runtime to fetch the correct artifact path. 
-- When creating triggers, automatic suggestions don't appear for the expressions field in the **Pipeline Input** tab. (CDS-54500)
+- When creating triggers, automatic suggestions did not appear for the expressions field in the **Pipeline Input** tab. (CDS-54500)
 
   This issue is fixed.
-- The CD Container step was not working because Harness was adding an invalid character in the default step name. (CDS-54733, ZD-40938, ZD-41170)
+- The CD Container step was not working because Harness was adding an invalid character in the default step name. (CDS-54733, CDS-54386, ZD-40724, ZD-40938, ZD-41170)
   The [Container step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/container-step/) lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage. Harness orchestrates the container in your cluster as part of your Harness deployment.
   When creating a Container step, Harness was appending the step name with an `_` character. This led to an invalid container name because the step name is used to name the container.
   Now, the `_` is no longer added to the container name.
-- Dragging and dropping the steps of one stage to another stage generates a service propagation modal. (CDS-54340)
+- Dragging and dropping the steps of one stage to another stage generated a service propagation modal. (CDS-54340)
   
-  This issues is now fixed.
-- Service inputs are retained when the service is set as an expression. (CDS-54336)
+  This issues is fixed.
+- Service inputs were retained when the service was set as an expression. (CDS-54336)
   
-  When a setting is set as an expression any fixed value inputs should be replaced with `<+input>`. This replacement was not happening. This issue is now fixed.
-- Automatic suggestions don't appear for the expressions during infra provisioning in pipeline studio. (CDS-54266)
+  When a setting is set as an expression, any fixed value inputs should be replaced with `<+input>`. This replacement was not happening. This issue is now fixed.
+- Automatic suggestions did not appear for the expressions during infra provisioning in pipeline studio. (CDS-54266)
+  
+  ![](static/auto-suggestion.png)
 
   This issue is fixed. Automatic suggestions now appear and you can use them when creating pipelines and templates. 
-- The **Version** drop-down list for a service displays an invalid error message when the parent **Version** field in the **Artifact Details** page is left empty. (CDS-54202)
+- The **Version** drop-down list for a service displayed an invalid error message when the parent **Version** field in the **Artifact Details** page was left empty. (CDS-54202)
   
-  This issues is now fixed. The error message for the **Version** drop-down list is now conveys the error properly.
-- Harness is unable to fetch Docker images even if the service account has proper permissions. (CDS-54085)
+  This issues is now fixed. The error message for the **Version** drop-down list now conveys the error properly.
+- Harness was unable to fetch Docker images even if the service account had proper permissions. (CDS-54085, ZD-39980, ZD-40582)
   
   The tag list is limited to 1000 tags causing tag fetch failure if the tag provided was unavailable in the list. This issue is fixed now by using manifest APIs. These APIs help fetch Docker tags. 
-- The **Apply** step for a Helm manifest type returns an error if the file path starts with a forward slash. (CDS-54073)
+- The **Apply** step for a Helm manifest type returned an error if the file path started with a forward slash. (CDS-54073)
 
   This issue is now fixed by supporting file paths with or without forward slashes as a leading character.
-- The error message displayed for a failed OpenShift CLI (OC) process is unclear. (CDS-54052)
+- The error message displayed for a failed OpenShift CLI (OC) process was unclear. (CDS-54052)
 
   This issue is fixed. The error messages for OpenShift deployments now displays proper error summary. 
-- The pipeline execution for a Helm subchart fails and displays an unclear error message if the subchart in a Helm chart manifest has an invalid value (for example, a whitespace) in its name. (CDS-54040)
+- The pipeline execution for a Helm subchart failed and displayed an unclear error message if the subchart in a Helm chart manifest had an invalid value (for example, a whitespace) in its name. (CDS-54040)
   
   The error message displayed during pipeline execution failure now conveys a proper error summary.
 - Unable to deploy workloads when using Harness local store for native Helm deployments. (CDS-53937)
   
   This issue is fixed by adding support for using Harness local store with native Helm deployments.
-- Unable to delete a Kustomize patch entry once it is added. (CDS-53749)
+- Unable to delete a Kustomize patch entry once it was added. (CDS-53749)
   
   A delete button is now added to allow users to delete values YAML, OpenShift params, and Kustomize patches that are no longer needed. File path validation is also done to ensure that file paths with empty strings are not saved.
 - Unable to filter environments by using the search bar in the **Create or Select Existing Environment** dialog. (CDS-53713)
 
   This issue is now fixed.
-- The **Environments** section under the **Template Inputs** tab appears empty if infrastructure inputs are not required when deploying to all infrastructures. (CDS-53712)
+- The **Environments** section under the **Template Inputs** tab appeared empty if infrastructure inputs were not required when deploying to all infrastructures. (CDS-53712)
 
-  If infrastructure inputs are not required when deploying to all infrastructure in an environment, the message is displayed under the **Environments** section.
-- YAML validation succeeds even when whitespaces are added in the command flags of a Helm chart. (CDS-53708)
+  If infrastructure inputs are not required when deploying to all infrastructure in an environment, the message is now displayed under the **Environments** section.
+- YAML validation succeeded even when whitespaces were added in the command flags of a Helm chart. (CDS-53708)
 
   This issue is fixed. Command flags no longer accept empty values.
-- The service information of a stage disappears when swapping two stages if the stage is propogated from the other stage. (CDS-53331)
+- The service information of a stage disappeared when swapping two stages if the stage was propogated from the other stage. (CDS-53331)
 
   The service details of stages appear properly now when you swap service propogated stages. 
 - Unable to view the Continuous Delivery (CD) module even if the account has an active CD license. (PLG-2047)
 
   This issue is fixed.
+- (**Customer impact**) The decalarative rollback feature in Kubernetes deployments with canary or blue green deployment strategies could share the same ConfigMap or Secret. (CDS-54023)
+  
+  If the declarative rollback feature was enabled, Harness did not do resource versioning for ConfigMap and Secret because the main purpose of the versioning in Harness was to be able to do `kubectl` rollout for a managed workload to a previous version that would point to a different version of resource. Harness was re-applying the full manifest of the previous version. Hence, all resource including ConfigMap and Secret were reverted to a previous version. With canary and blue green deployment strategies, each canary workload or workload of different colors must point to a different version of ConfigMap or Secret. Without versioning, it will point to the same resource revision.
+
+  This issue is fixed now. The declarative rollback feature now creates a copy of ConfigMap and Secret resources for canary deployment, and a copy of these resources for each color for blue green deployments.
+- 
 
 ## March 15, 2023, version 78712
 
@@ -255,6 +270,8 @@ connector:
     * **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     * **Total Instances** - Number or percentage of running instances you want to keep.
     * **Desired Instances - Old Version** - Number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
+
+  Go to [TAS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart/#install-cf-cli-on-your-harness-delegate) for more information.
 
 ### Early access
 
