@@ -272,13 +272,21 @@ To close the SDK, run one of the following commands.
 * **For Erlang applications:**
 
   ```
+  %% Close the default instance
   cfclient:close().
+  
+  %% Close a named instance
+  cfclient:close(instance_name_1).
   ```
 
 * **For Elixir applications:**
 
   ```
+  # Close the default instance
   :cfclient:close()
+  
+  # Close a named instance
+  :cfclient:close(:instance_name_1)
   ```
 
 ## Additional Options
