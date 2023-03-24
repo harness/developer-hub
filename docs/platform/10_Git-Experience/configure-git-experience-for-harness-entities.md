@@ -232,7 +232,7 @@ When you execute this pipeline, Harness fetches these entities from the branch t
   
   There is a pipeline `remoteDocrepoPipeline` that references a remote pipeline template named `remotepipelinetemplate_docrepo`. This remote pipeline template references a remote stage template named `RemoteStageTemplate`. These 3 entities are in different Git repos.
 
-  When you execute this pipeline, Harness fetches these entities from the default branch of the respective repositories.
+  When you execute this pipeline, Harness fetches these nested entities from the default branch of the respective repositories.
 
   ![](./static/entities-in-diff-repo.png)
   
