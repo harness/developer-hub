@@ -12,7 +12,7 @@ This topic includes the Security step settings for each of the scanner providers
 
 ### Scanner categories
 
-The following table shows the scanner categories that STO supports for each scanner:
+The following list shows the scan types that STO supports:
 
 * **SAST (_Static Application Security Testing_)** scans a code repository and identifies known vulnerabilities in the proprietary code.
 * **SCA (Software Composition Analysis)** scans a code repository and identifies known vulnerabilities in open-source libraries and packages used by the code. 
