@@ -1,25 +1,21 @@
 ---
-title: Security step UI settings reference
-description: All the available UI settings to configure individual scans.
-sidebar_position: 15
+title: v1 Scanner Setup Template 1c (plain)
+description: Scan your $TARGET_TYPE using $PRODUCT
+sidebar_position: 2
 ---
 
 
-Some Security steps include a step palette UI for setting up a scan. This topic describes the settings available in the UI. 
+You can scan your $TARGET_TYPE using [Aqua Trivy](https://github.com/aquasecurity/trivy), a comprehensive and versatile open-source scanner. 
 
-<!-- ============================================================================= -->
+The recommanded workflow is add a $PRODUCT step to a Security Tests or CI Build stage and then configure it as described below. You can also configure $PRODUCT scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
+You can also set up a $PRODUCT scan in a [Security step](#security-step-configuration-deprecated) but this workflow is deprecated. 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
-
-<!-- ============================================================================= -->
-
-## Configuring a Security step  
-To set up a scan using the step palette, add a SecurityTests stage to your pipeline. Then add a Security step for the scanner of interest and configure the step using the available options. 
 
 <details>
     <summary>Step Palette</summary>
@@ -29,16 +25,17 @@ To set up a scan using the step palette, add a SecurityTests stage to your pipel
 </details>
 
 
-<details><summary>Scan settings</summary>
-
 <!-- ============================================================================= -->
 
+### Step Parameters 
+
+<a name="scan-mode"></a>
 
 #### Scan Mode
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
@@ -48,8 +45,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
-<!-- ---------------------------------------------------------------------------- -->
-
+<!-- ============================================================================= -->
 <a name="scan-config"></a>
 
 #### Scan Configuration
@@ -60,15 +56,10 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 <StoSettingProductConfigName />
 
-</details>
+### Target
 
-<details><summary>Target Settings</summary>
 
 <!-- ============================================================================= -->
-
-
-<!-- ---------------------------------------------------------------------------- -->
-
 <a name="target-type"></a>
 
 #### Type
@@ -87,8 +78,7 @@ import StoSettingScanTypeConfig  from './shared/step_palette/_sto-ref-ui-scan-ty
 <StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
 
-<!-- ---------------------------------------------------------------------------- -->
-
+<!-- ============================================================================= -->
 <a name="target-name"></a>
 
 #### Name 
@@ -99,9 +89,7 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 <StoSettingProductID />
 
-
-<!-- ---------------------------------------------------------------------------- -->
-
+<!-- ============================================================================= -->
 <a name="target-variant"></a>
 
 #### Variant
@@ -112,9 +100,7 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 <StoSettingTargetVariant  />
 
-
-<!-- ---------------------------------------------------------------------------- -->
-
+<!-- ============================================================================= -->
 <a name="target-workspace"></a>
 
 #### Workspace (_repository_)
@@ -125,17 +111,12 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 <StoSettingTargetWorkspace  />
 
-<!-- ============================================================================= -->
 
-</details>
+<!-- ============================================================================= 
 
-
-
-<details><summary>Ingestion Settings</summary>
+### Ingestion (_ingestion_)
 
 <!-- ============================================================================= -->
-
-<!-- ---------------------------------------------------------------------------- -->
 <a name="ingestion-file"></a>
 
 #### Ingestion File (_ingestion_)
@@ -146,18 +127,9 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 <StoSettingIngestionFile  />
 
-<!-- ============================================================================= -->
-
-</details>
-
-
-
-<details><summary>Authentication Settings</summary>
+### Authentication
 
 <!-- ============================================================================= -->
-
-
-<!-- ---------------------------------------------------------------------------- -->
 <a name="auth-domain"></a>
 
 #### Domain (_extraction_)
@@ -169,8 +141,7 @@ import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.
 
 <StoSettingAuthDomain />
 
-
-<!-- ---------------------------------------------------------------------------- -->
+<!-- ============================================================================= -->
 <a name="auth-enforce-ssl"></a>
 
 #### Enforce SSL
@@ -181,8 +152,7 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 
 <StoSettingProductSSL />
 
-
-<!-- ---------------------------------------------------------------------------- -->
+<!-- ============================================================================= -->
 <a name="auth-access-api-version"></a>
 
 #### API Version
@@ -193,8 +163,7 @@ import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-ver
 
 <StoSettingApiVersion />
 
-<!-- ---------------------------------------------------------------------------- -->
-
+<!-- ============================================================================= -->
 <a name="auth-type"></a>
 
 #### Type
@@ -205,8 +174,7 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 <StoSettingAuthType />
 
-
-<!-- ---------------------------------------------------------------------------- -->
+<!-- ============================================================================= -->
 
 <a name="auth-access-id"></a>
 
@@ -218,10 +186,7 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 <StoSettingAuthAccessID />
 
-
-
-<!-- ---------------------------------------------------------------------------- -->
-
+<!-- ============================================================================= -->
 <a name="auth-access-token"></a>
 
 #### Access Token
@@ -233,12 +198,10 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 <StoSettingAuthAccessToken />
 
-<!-- ============================================================================= -->
-
-</details>
 
 
-<details><summary>Container Image settings</summary>
+
+### Container Image 
 
 
 <!-- ============================================================================= -->
@@ -252,9 +215,7 @@ import StoSettingImageType from './shared/step_palette/_sto-ref-ui-image-type.md
 
 <StoSettingImageType />
 
-<!-- ============================================================================= -->
-
-
+!-- ============================================================================= -->
 <a name="container-domain"></a>
 
 #### Domain (_extraction_)
@@ -277,9 +238,8 @@ import StoSettingImageName from './shared/step_palette/_sto-ref-ui-image-name.md
 
 <StoSettingImageName />
 
+<
 <!-- ============================================================================= -->
-
-
 <a name="container-tag"></a>
 
 #### Tag
@@ -312,7 +272,7 @@ import StoSettingImageAccessToken from './shared/step_palette/_sto-ref-ui-image-
 
 <StoSettingImageAccessToken />
 
-<!-- ============================================================================= -->
+<!-- ============================================================================= 
 <a name="container-access-token"></a>
 
 #### Region  
@@ -326,9 +286,9 @@ import StoSettingImageRegion from './shared/step_palette/_sto-ref-ui-image-regio
 
 <!-- ============================================================================= -->
 
-</details>
 
-<details><summary>Scan Tool Settings</summary>
+
+### Scan Tool
 
 <!-- ============================================================================= -->
 <a name="tool-project-name"></a>
@@ -487,9 +447,7 @@ import StoSettingToolLookupType from './shared/step_palette/_sto-ref-ui-tool-pro
 ```
 <StoSettingToolLookupType  />
 
-</details>
-
-<details><summary>Instance settings</summary>
+### Instance Settings
 
 
 <!-- ============================================================================= -->
@@ -535,19 +493,13 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 
 <StoSettingInstancePath />
 
-</details>
-
 
 <!-- ============================================================================= -->
 
 <!-- ============================================================================= -->
-
-<details><summary>Log Level, CLI flags, and Fail on Severity</summary>
-
-
 <a name="log-level"></a>
 
-#### Log Level
+### Log Level
 
 ```mdx-code-block
 import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
@@ -559,7 +511,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 <!-- ============================================================================= -->
 <a name="cli-flags"></a>
 
-#### Additional CLI flags
+### Additional CLI flags
 
 ```mdx-code-block
 import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
@@ -570,12 +522,61 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 <!-- ============================================================================= -->
 <a name="fail-on-severity"></a>
 
-#### Fail on Severity
-
+### Fail on severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
 <StoSettingFailOnSeverity />
 
-</details>
+### Legacy configuration
+
+Optionally, you can set up a $PRODUCT scan manually in a Security step. Enter the keys and values in the **Settings** fields as shown in the following YAML example. 
+
+* `product_name` : `blackduckhub`
+* `scan_type`
+	+ accepted value(s): `repository`, `containerImage`
+* `policy_type`
+	+ accepted value(s): `orchestratedScan`, `ingestionOnly`
+* When `policy_type` is set to `orchestratedScan`
+	+ `product_domain`
+	+ `product_auth_type`
+		- accepted value(s): `usernamePassword`, `apiKey`
+	+ `product_access_id`: api username
+	+ `product_access_token` api password or api key
+	+ `product_api_version`
+	+ `product_project_name`
+	+ `product_project_version`
+* `product_config_name`
+	+ Accepted values(s): `default`
+
+### YAML example
+
+The following YAML example shows a Bandit scan step. If you want to configure Bandit steps programmatically, the recommended practice is to set up one Bandit scanner using the [Step Palette](#step-palette-configuration) in the Harness UI. Then switch over to the YAML view in the Pipeline Editor, and copy and edit the YAML specification as needed.
+
+```yaml
+
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

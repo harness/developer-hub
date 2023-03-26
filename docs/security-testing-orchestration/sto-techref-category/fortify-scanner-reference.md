@@ -22,18 +22,10 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `ingestionOnly`
 * `product_config_name` =`default`
 
-
-
-<!-- CONTAINERS --------------------------------------------------------------------------- 
-
 ```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
-
-<StoLegacyContainer />
-
-
-<!-- REPOS --------------------------------------------------------------------------- -->
+<StoSettingFailOnSeverity />
 
 ### Repository scan settings
 

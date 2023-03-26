@@ -1,14 +1,299 @@
 ---
 title: Mend (formerly Whitesource) scanner reference
-description: Container scans with Mend
+description: Container and repository scans with Mend
 sidebar_position: 160
 ---
 
-## Security step settings
+You can scan container images and repositories using [Mend](https://www.mend.io). 
+
+
+## Before you begin
+
+```mdx-code-block
+import StoCreateDinD from './shared/dind-bg-step.md';
+```
+
+<StoCreateDinD />
+
+## Mend step configuration
+
+The recommanded workflow is add a Mend step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+
+```mdx-code-block
+import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
+```
+
+<StoScannerStepNotes />
+
+<details>
+    <summary>Step Palette</summary>
+
+![](static/step-palette-00.png) 
+
+</details>
+
+### Scan
+
+
+<a name="scan-mode"></a>
+
+#### Scan Mode
+
+```mdx-code-block
+import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
+import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+```
+
+<StoSettingScanMode />
+<StoSettingScanModeOrch />
+<StoSettingScanModeData />
+<StoSettingScanModeIngest />
+
+#### Scan Configuration
+
+```mdx-code-block
+import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+```
+
+<StoSettingProductConfigName />
+
+
+### Target
+
+<a name="target-type"></a>
+
+#### Type
+
+```mdx-code-block
+import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
+import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
+import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
+
+```
+<a name="scan-type"></a>
+<StoSettingScanType />
+<StoSettingScanTypeRepo />
+<StoSettingScanTypeCont />
+
+
+#### Name 
+
+```mdx-code-block
+import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+```
+
+<StoSettingProductID />
+
+<a name="target-variant"></a>
+
+#### Variant
+
+```mdx-code-block
+import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+```
+
+<StoSettingTargetVariant  />
+
+#### Workspace (_repository_)
+
+```mdx-code-block
+import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
+```
+
+<StoSettingTargetWorkspace  />
+
+
+
+### Ingestion File
+
+```mdx-code-block
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+```
+
+<StoSettingIngestionFile  />
+
+### Authentication
+
+<!-- ============================================================================= -->
+<a name="auth-domain"></a>
+
+#### Domain
+
+
+```mdx-code-block
+import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
+```
+
+<StoSettingAuthDomain />
+
+<!-- ============================================================================= -->
+<a name="auth-enforce-ssl"></a>
+
+#### Enforce SSL
+
+```mdx-code-block
+import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
+```
+
+<StoSettingProductSSL />
+
+<!-- ============================================================================= -->
+<a name="auth-access-api-version"></a>
+
+#### API Version
+
+```mdx-code-block
+import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-version.md';
+```
+
+<StoSettingApiVersion />
+
+<!-- ============================================================================= -->
+<a name="auth-type"></a>
+
+#### Type
+
+```mdx-code-block
+import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
+```
+
+<StoSettingAuthType />
+
+<!-- ============================================================================= -->
+
+#### Access ID
+
+```mdx-code-block
+import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
+```
+
+<StoSettingAuthAccessID />
+
+
+<!-- ============================================================================= -->
+<a name="auth-access-token"></a>
+
+#### Access Token
+
+```mdx-code-block
+import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
+```
+
+
+<StoSettingAuthAccessToken />
+
+### Scan Tool
+
+<!-- ============================================================================= -->
+
+#### Lookup Type
+
+```mdx-code-block
+import StoSettingToolLookupType from './shared/step_palette/_sto-ref-ui-tool-prod-lookup-type.md';
+```
+<StoSettingToolLookupType  />
+
+#### Project Name
+
+```mdx-code-block
+import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-project-name.md';
+```
+
+<StoSettingToolProjectName />
+
+
+#### Include 
+
+```mdx-code-block
+import StoSettingToolInclude from './shared/step_palette/_sto-ref-ui-tool-include.md';
+```
+
+<StoSettingToolInclude />
+
+<!-- ============================================================================= -->
+<a name="tool-exclude"></a>	
+
+#### Exclude
+
+```mdx-code-block
+import StoSettingToolExclude from './shared/step_palette/_sto-ref-ui-tool-exclude.md';
+```
+
+<StoSettingToolExclude />
+
+<!-- ============================================================================= -->
+
+
+#### Project Version
+
+```mdx-code-block
+import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool-project-version.md';
+```
+
+<a name="product-project-version"></a>
+<StoSettingToolProjectVersion />
+
+
+
+<!--   Log Level, CLI flags, and Fail on Severity ------------------------------------------------------------------------------------------------- -->
+
+
+### Log Level, CLI flags, and Fail on Severity
+
+<a name="log-level"></a>
+
+#### Log Level
+
+```mdx-code-block
+import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+```
+
+<StoSettingLogLevel />
+
+
+
+#### Fail on Severity
+
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />
+
+### Settings
+
+You can add a `tool_args` setting to run the [Unified Agent binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can exclude certain files from the scan like this:  `tool_args` = `-excludes **/*javadoc.jar`
+
+
+### Additional Configuration
+
+In the **Additional Configuration** settings, you can use the following options:
+
+* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
+* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
+* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+
+
+### Advanced settings
+
+In the **Advanced** settings, you can use the following options:
+
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+
+
+
+
+## Security step configuration (_deprecated_)
+
+<details><summary>Set up a Mend scan in a Security step</summary>
 
 You can set up Mend scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
@@ -52,35 +337,12 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <StoLegacyContainer />
 
+</details>
 
-<!-- REPOS ---------------------------------------------------------------------------  
-
-
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
-
-<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  
-
-### Instance settings 
+## YAML configuration
 
 ```mdx-code-block
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
 ```
 
-<StoLegacyInstance />
-
-<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- 
-
-
-```mdx-code-block
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-```
-
-<StoLegacyConfig  />
-
-
-<!-- INSTANCES  --------------------------------------------------------------------------- -->
+<StoSettingYAMLexample />
