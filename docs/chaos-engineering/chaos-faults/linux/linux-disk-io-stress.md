@@ -78,7 +78,7 @@ spec:
 
 ### File system utilization in bytes
 
-The `fileSystemUtilisationBytes` input variable utilizes a specific amount of file system memory as a part of the disk I/O operations in bytes.
+The `fileSystemUtilisationBytes` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in bytes.
 
 Use the following example to tune the file system utilization in bytes:
 
@@ -99,7 +99,7 @@ spec:
 
 ### File system utilization in percentage
 
-The `fileSystemUtilisationPercentage` input variable utilizes a specific amount of file system memory as a part of the disk I/O operations in terms of percentage of the total available disk space.
+The `fileSystemUtilisationPercentage` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in terms of percentage of the total available disk space.
 
 Use the following example to tune the file system utilization in percentage:
 
