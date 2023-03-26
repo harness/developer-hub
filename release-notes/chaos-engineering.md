@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-02-07T10:00
+date: 2023-03-27T10:00
 sidebar_position: 9
 ---
 
@@ -12,6 +12,70 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 27, 2023, version 0.9.x
+
+### What’s new
+
+* New access control **Execute** to execute chaos experiments (CHAOS-1311)
+    * This release adds a new access control, **Execute**, in addition to **View**, **Create/Edit**, and **Delete**. **Execute** allows you to execute the chaos experiments, whereas **Create/Edit** will only allow you to create a chaos experiment or edit an existing chaos experiment. The newly added access control provides granularity while working with chaos experiments. 
+
+
+* Update button to see available updates for a chaos experiment (CHAOS-1069)
+    * This release displays an ‘Update’ button alongside the chaos experiment. When you click this button, it shows if an update is available for the experiment.
+
+
+* Clicking an experiment goes to the experiment builder page (CHAOS-995)
+    * This release takes you to the **Experiment Builder** page when you click the chaos experiment, instead of showing the **Overview** page. This way, you can directly edit the chaos experiment, save it, and run it.
+
+
+ 
+* Replica pods are deleted when a chaos infrastructure is disabled (CHAOS-1290)
+    * This release ensures that all replica pods, including the subscriber pod, are deleted when the chaos infrastructure is disabled. You can delete the pods from the user interface by clicking **Disable** which displays a set of commands you can execute on your terminal. The commands vary depending on the mode of deployment (cluster-mode or namespace-mode).
+
+
+* Deploying setup on new chaos infrastructures has ‘X’ and ‘Done’ buttons (CHAOS-1289)
+    * This release adds the **X** (Cancel) and **Done** buttons to the **Deploy the setup** page when enabling chaos on new infrastructure. The **X** button cancels the deployment of chaos on new infrastructure. The **Done** button deploys chaos on the new infrastructure. 
+
+
+* Message displayed when no matching infrastructure is found (CHAOS-1289)
+    * This release displays the message **"No Kubernetes chaos infrastructures found"** when you search for an infrastructure in the search bar on the Kubernetes infrastructure screen and that infrastructure doesn’t exist. Previously, when an infrastructure was not found, an empty screen used to be displayed.
+ 
+
+* Manifest has a yml extension when enabling chaos on new infrastructure (CHAOS-1289)
+    * This release downloads the manifest with the yml extension when you **Enable chaos** **On new infrastructures**, rather than with the yaml extension.
+ 
+
+* Description field in the chaos infrastructure doesn’t display if not populated (CHAOS-1289)
+    * This release doesn’t display the description of the chaos infrastructure on the screen if you do not enter a description while creating a chaos infrastructure. Previously, the chaos infrastructure would show the field **Description** with no contents on the screen. 
+ 
+
+* Upgrade manifest downloads the manifest with the yml extension (CHAOS-1190)
+    * This release downloads the upgraded manifest file with the yml extension when you click **re-download the manifest**. 
+ 
+
+* Limit of 1,000 experiments still allows scheduling chaos experiments and connecting to new (or existing) infrastructure (CHAOS-1261)
+    * This release displays a message stating that the resource limits have been reached once you exceed the 1,000 experiment creation limit. You will be able to schedule chaos experiments and connect to chaos infrastructures (new and existing ones) even after you hit the limit of 1000 experiments in chaos.
+ 
+
+* Reduced response time of the communication chaos module and other Harness services (CHAOS-1262)
+    * This release reduces the response time when the chaos module communicates with other Harness services. This is because the chaos module doesn’t use intermediate gateways for communication, but rather hits the Harness service directly. 
+ 
+
+* **All runs** screen changed to **Run history** (CHAOS-995)
+    * This release has changed the **All runs** screen name to **Run history**. The **Run history** screen displays all the runs of a chaos experiment. Clicking on a specific run of the chaos experiment displays the fault executed, the status of the experiment, the status of the probes, the fault weights, and the duration of the experiment.
+ 
+
+### Early access
+ 
+* This release does not include any early access features.
+ 
+### Fixed issues
+
+* When tuning the target application, the OpenShift cluster timed out before fetching the information from your cluster. This issue is fixed. The duration of timeout has been increased. (CHAOS-1299)
+ 
+* When the labels of a chaos experiment, such as ‘Run by’ included special characters, the workflow would not run because Kubernetes doesn’t allow special characters in the workflow. This issue is fixed. The labels (which are a part of the manifest file) are encoded before sending the workflow to the cluster and decoded while presenting on the user interface. (CHAOS-1281)
+
 
 ## February 22, 2023, version 0.8.4
 
@@ -43,7 +107,7 @@ From this release onward, chaos infrastructures will communicate with the contro
     * This release adds search functionality when selecting an experiment template from chaos hub. You can also filter the experiments you want to view or select from the chaos hub. This allows you to select and run your experiment without searching multiple experiments.
 
 * Chaos infrastructure manifest file extension changed to .yaml (CHAOS-1037)
-    * This release changes the downloadable chaos infrastructure manifest file extension from .yml to .yaml.
+    * This release changes the downloadable chaos infrastructure manifest file extension from yml to yaml.
 
 * **Set fault weights** tab moved inside **Tune fault** tab (CHAOS-1077)
     * This release moves the **Set fault weights** tab, which was previously a separate tab, into the **Tune fault** tab. This allows you to tune the fault parameters and set fault weights in a single step rather than navigating through multiple tabs.
