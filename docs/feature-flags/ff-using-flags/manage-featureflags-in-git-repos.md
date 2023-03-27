@@ -39,7 +39,6 @@ You must set up Git Experience before you can use it in your Feature Flags proje
 * To set up Git Sync for Feature Flags, navigate to the top of the flag page and select **Set Up Git Sync**.
 
   ![Setup button for gitEx on Feature Flag page](./static/gitex-setup-featureflags-01.png)
-  *Figure 1: Set up Git Sync*
 
 * Also ensure you read [How Git Experience works with Feature Flags](#how-git-experience-works-with-feature-flags) below.
 
@@ -111,8 +110,8 @@ If you don’t see the changes you made in Git reflected on the Harness Platform
 You can turn the synchronization between the Harness Platform and Git on or off. The Git Experience icon is displayed on many pages, and you can toggle it on or off from any page where it appears.
 
 :::caution
- Turning sync on triggers an immediate attempt to sync Harness Platform content to the remote file.
- All the changes made to the remote file while sync was disabled are overwritten, which results in losing content or configuration not yet synced to the Platform.
+ Turning sync on triggers an immediate attempt to sync Harness content to the remote file.
+ Any changes you made to the remote file before syncing are overwritten. This can result in losing content or configurations that are not yet synced to Harness.
 :::
 
 To turn on synchronization between the Harness Platform and Git: 
@@ -124,18 +123,18 @@ To turn on synchronization between the Harness Platform and Git:
   In the top bar navigation, the Git repository and the branch you connected are displayed.
 
   ![The Sync with Git toggle highlighted](./static/5-manage-featureflags-in-git-repos-04.png)
-  *Figure 2: Toggle to turn on syncing with Git*
 
 1. Select the branch, and then toggle **Sync with Git** on. 
 
-    If you turn on only this button, each time you make a change to a flag on Harness, you are prompted to confirm which branch you want to commit to, and to add a commit message. For example:
+    (See [Auto-commit to the selected branch](#auto-commit-to-the-selected-branch) for the second toggle.)
+
+    If you enable only **Sync with Git**, each time you make a change to a flag on Harness, you are prompted to confirm which branch you want to commit to, and to add a commit message. For example:
 
     ```mdx-code-block
     <img src={git_2} alt="An example commit message." height="500" width="400" />
     ```
-    *Figure 3: Example commit message*
 
-1. Optionally, you can select the checkbox **Always commit to this branch and do not prompt for commit message**. 
+1. Optionally, you can select **Always commit to this branch and do not prompt for commit message**. 
 
   This toggles on the [**Auto-commit to the selected branch**](#auto-commit-to-the-selected-branch) option, described below.
 
@@ -153,8 +152,6 @@ If you want to always commit to the same branch, and not be prompted for commit 
 
     ![Sync with Git turned on, auto-commit turned on](./static/5-manage-featureflags-in-git-repos-07.png)
 
-    *Figure 4: Sync with Git turned on, auto-commit turned on*
-
 1. Select the branch, and then turn on **Auto-commit to selected branch**. 
 
   Now, whenever you change a flag in Harness, an auto-commit is done automatically, and your flag changes are synced to the flag configuration file (for example, `flags.yaml`) in the Git repository. Auto-committed have the prefix `[AUTO-COMMIT]`, for example:
@@ -162,7 +159,6 @@ If you want to always commit to the same branch, and not be prompted for commit 
   ```mdx-code-block
   <img src={git_5} alt="A screenshot of an auto commit message on GitHub. " height="500" width="700" />
   ```  
-  *Figure 5: An auto-commit message in GitHub*
 
   <details>
   <summary>Possible Auto-commit messages</summary>
@@ -202,15 +198,12 @@ To turn off syncing with Git:
 1. In the top bar navigation, next to the Git repository, select the branch, and then toggle **Sync with Git** off. 
 
   ![Sync with Git turned off](./static/5-manage-featureflags-in-git-repos-09.png)
-  *Figure 6: Sync with Git turned off*
 
   When syncing is off, the branch icon is a red warning circle:
 
   ```mdx-code-block
   <img src={git_8} alt="A screenshot of the Git sync toggle turned off." height="500" width="300" />
   ``` 
-  *Figure 7: A screenshot of the Git Sync icon when Git Sync is toggled off.*
-
 
 ## See also
 
