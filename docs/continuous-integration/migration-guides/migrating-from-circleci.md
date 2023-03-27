@@ -457,7 +457,7 @@ workflows:
 
 </details>
 
-## Environment variables
+## Comparison: Environment variables
 
 In CircleCI, you use the web app to set project-level environment variables, and then reference them in the pipeline. You can use _Context_ to use environment variables across multiple projects.
 
@@ -510,7 +510,7 @@ jobs:
 </Tabs4>
 ```
 
-## Matrix jobs
+## Comparison: Matrix jobs
 
 In CircleCI, matrix jobs are achieved by using parameters and then referencing those parameters in the pipeline using the following expression syntax: `<< parameters.param >>`
 
@@ -587,7 +587,7 @@ workflows:
 </Tabs5>
 ```
 
-## Triggers
+## Comparison: Triggers
 
 CircleCI supports triggering a pipeline on push and PR to the code repository and scheduled triggers.
 
