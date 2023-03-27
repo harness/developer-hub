@@ -1,7 +1,7 @@
 ---
 title: Install a delegate
 description: How to install Harness delegates using Helm, Terraform, Kubernetes, or Docker.
-# sidebar_position: 2
+# sidebar_position: 10
 ---
 ```mdx-code-block
 import install_two from './static/install-a-delegate-02.png'

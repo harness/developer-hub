@@ -185,10 +185,15 @@ module.exports = {
 
     // Created by kat-enos on Jan 22, 2023
        {
-        from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
-        to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+        from: "/docs/platform/Delegates/configure-delegates/delegate-auto-update",
+        to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
        },
 
+    // Created by KimberlyFields for doc-2831 on March 27, 2023
+    {
+      from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
+      to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
+    },
 
     // Created by kat-enos on Jan 22, 2023
     {
