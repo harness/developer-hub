@@ -17,7 +17,8 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-content
+* When you [use a GitHub App in a GitHub connector](/docs/platform/connectors/git-hub-app-support/#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+* (CI-6969)
 
 ### Early access
 
@@ -25,7 +26,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-content
+This release does not include fixed issues.
 
 ## March 24, 2023, version 78817
 
