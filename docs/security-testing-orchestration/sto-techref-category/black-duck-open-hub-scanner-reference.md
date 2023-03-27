@@ -18,7 +18,7 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 ## BlackDuck step configuration
 
-The recommanded workflow is add a BlackDuck step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add a BlackDuck step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';

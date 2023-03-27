@@ -17,7 +17,7 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 ## PrismaCloud step configuration
 
-The recommanded workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add a PrismaCloud step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Prisma Cloud scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
 ```mdx-code-block
@@ -288,7 +288,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  tool_args = --publish FALSE
+You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  `tool_args` = `--publish FALSE`.
 
 ### Additional Configuration
 

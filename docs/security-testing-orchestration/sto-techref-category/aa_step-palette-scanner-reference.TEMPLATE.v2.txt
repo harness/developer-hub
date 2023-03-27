@@ -7,7 +7,7 @@ sidebar_position: 2
 
 You can scan your $TARGET_TYPE using [Aqua Trivy](https://github.com/aquasecurity/trivy), a comprehensive and versatile open-source scanner. 
 
-The recommanded workflow is add a $PRODUCT step to a Security Tests or CI Build stage and then configure it as described below. You can also configure $PRODUCT scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add a $PRODUCT step to a Security Tests or CI Build stage and then configure it as described below. You can also configure $PRODUCT scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 You can also set up a $PRODUCT scan in a [Security step](#security-step-configuration-deprecated) but this workflow is deprecated. 
 

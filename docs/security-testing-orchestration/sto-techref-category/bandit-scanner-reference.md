@@ -15,7 +15,7 @@ You can scan your container images using [Bandit](https://github.com/PyCQA/bandi
 
 ## Bandit step configuration
 
-The recommanded workflow is to add an Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Banditscans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add an Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Banditscans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';

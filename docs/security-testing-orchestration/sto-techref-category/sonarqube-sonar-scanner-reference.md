@@ -19,7 +19,7 @@ Go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analy
 
 ## SonarQube step configuration
 
-The recommanded workflow is add a SonarQube step to a Security Tests or CI Build stage and then configure it as described below. You can also configure SonarQube scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add a SonarQube step to a Security Tests or CI Build stage and then configure it as described below. You can also configure SonarQube scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 
 ```mdx-code-block
@@ -208,7 +208,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. You can increase the timeout window like this:  `tool_args` = `-sonar.ws.timeout 300`
+You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. You can increase the timeout window like this:  `tool_args` = `-sonar.ws.timeout 300`.
 
 ### Additional Configuration
 
