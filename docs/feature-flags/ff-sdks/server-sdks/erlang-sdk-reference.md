@@ -8,7 +8,7 @@ This topic describes how to use the Harness Feature Flags Erlang SDK for your Er
 
 For getting started quickly:
 
-1. For **Erlang** based applications, you can use the [sample code for Erlang](#sample-code-for-erlang-applications) below.
+1. For **Erlang** based applications, you can use the [sample code](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference#sample-code) below.
 2. For **Elixir** based applications, you can clone our sample Elixir application in [GitHub](https://github.com/harness/ff-elixir-server-sample).
 
 ## Before you begin
