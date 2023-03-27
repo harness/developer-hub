@@ -63,7 +63,8 @@ export default function STO() {
                   styles.btnLight
                 )}
               >
-                <i className="fa-regular fa-file"></i>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_documentation.svg`} />
                 Documentation
               </button>
             </Link>
@@ -76,7 +77,8 @@ export default function STO() {
                   styles.btnLight
                 )}
               >
-                <i className="fa-regular fa-file"></i>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
               </button>
             </Link>
