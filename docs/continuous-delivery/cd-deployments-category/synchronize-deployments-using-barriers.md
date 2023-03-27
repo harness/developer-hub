@@ -16,11 +16,7 @@ Harness provides multiple options for controlling resource usage and protecting 
 
 :::
 
-## Before You Begin
-
-* [Kubernetes deployment tutorial](../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-
-## Review: Barriers and Synchronization
+## Barriers and Synchronization
 
 When deploying interdependent services, such as microservices or a large and complicated application, there might be a need to coordinate the timing of the different components' deployments. A common example is the need to verify a group of services only after *all the services* are deployed successfully.
 
@@ -34,21 +30,19 @@ Here's a visualization of three stages run in parallel using Barriers. Stages A 
 
 ![](./static/synchronize-deployments-using-barriers-29.png)
 
-## Step 1: Add Barrier
+## Add Barrier
 
 A barrier is simply a name added in a Pipeline's **Flow Control** settings.
 
-In your Pipeline, click **Flow Control**.
-
-![](./static/synchronize-deployments-using-barriers-30.png)
-
-In **Flow Control**, click **Add Barrier**.
-
-![](./static/synchronize-deployments-using-barriers-31.png)
-
-In **Barrier Name**, enter a unique name, and then click outside of the settings. The barrier is created.
-
-![](./static/synchronize-deployments-using-barriers-32.png)
+1. In your Pipeline, click **Flow Control**.
+   
+   ![](./static/synchronize-deployments-using-barriers-30.png)
+2. In **Flow Control**, click **Add Barrier**.
+   
+   ![](./static/synchronize-deployments-using-barriers-31.png)
+3. In **Barrier Name**, enter a unique name, and then click outside of the settings. The barrier is created.
+   
+   ![](./static/synchronize-deployments-using-barriers-32.png)
 
 Next, the name is selected using the **Barrier** step in the stages where you want to synchronize.
 
@@ -56,19 +50,15 @@ Next, the name is selected using the **Barrier** step in the stages where you wa
 
 To apply a barrier, do the following:
 
-In your stage, in Execution, click **Add Step**, and then click **Barrier**.
-
-![](./static/synchronize-deployments-using-barriers-33.png)
-
-Enter a name for the step.
-
-In **Timeout**, enter the timeout period, in milliseconds. For example, 600000 milliseconds is 10 minutes. The timeout period determines how long each stage with a barrier must wait for the other stage to reach their barrier point. When the timeouts expire, it is considered a deployment failure.
-
-Barrier timeouts are not hard timeouts. A barrier can fail anytime between timeout + 1min.In **Barrier Reference**, select the name of an existing barrier.
-
-![](./static/synchronize-deployments-using-barriers-34.png)
-
-Click **Apply Changes**.
+1. In your stage, in **Execution**, click **Add Step**, and then click **Barrier**.
+   
+   ![](./static/synchronize-deployments-using-barriers-33.png)
+2. Enter a name for the step.
+3. In **Timeout**, enter the timeout period, in milliseconds. For example, 600000 milliseconds is 10 minutes. The timeout period determines how long each stage with a barrier must wait for the other stage to reach their barrier point. When the timeouts expire, it is considered a deployment failure.
+4. Barrier timeouts are not hard timeouts. A barrier can fail anytime between timeout + 1min.In **Barrier Reference**, select the name of an existing barrier.
+   
+   ![](./static/synchronize-deployments-using-barriers-34.png)
+5. Click **Apply Changes**.
 
 You cannot use a Harness variable expression in **Barrier Reference**.Now you can add another Barrier step using the same name to another stage at the point where you want to synchronize execution.
 

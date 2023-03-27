@@ -24,39 +24,46 @@ During deployment, Harness provisions the target deployment infrastructure and t
 
 To provision non-target infrastructure, add the Terraform Plan and Apply steps to the stage **Execution** section instead of the **Infrastructure** section.
 
-## Before You Begin
+## Before you begin
 
 * [Terraform Provisioning with Harness](../../cd-advanced/terraform-category/terraform-provisioning-with-harness.md)
 * [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 
-## Important: Install Terraform on Delegates
+## Important: install Terraform on delegates
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
 See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 
-```
-# Install TF  
-microdnf install unzip
-curl -O -L https://releases.hashicorp.com/terraform/1.3.5/terraform_1.3.5_darwin_amd64.zip
-unzip terraform_1.3.5_darwin_amd64.zip
-mv ./terraform /usr/bin/
-# Check TF install
-terraform --version
+```bash
+#!/bin/bash
+
+# Check if microdnf is installed
+if ! command -v microdnf &> /dev/null
+then
+    echo "microdnf could not be found. Installing..."
+    yum install -y microdnf
+fi
+
+# Update package cache
+microdnf update
+
+# Install Terraform
+microdnf install -y terraform
+
 ```
 
-## Step 1: Enable Dynamic Provisioning
+## Enable dynamic provisioning
 
 These steps assume you've created a Harness CD stage before. If Harness CD is new to you, see [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
 
 We'll start in the stage's **Infrastructure** section because the **Service** settings of the stage don't have specific settings for Terraform provisioning. The Service manifests and artifacts will be deployed to the infrastructure provisioned by Harness and Terraform.
 
-In the CD stage, click **Infrastructure**. If you haven't already specified your Environment, and selected the Infrastructure Definition, do so.
-
-The type of Infrastructure Definition you select determines what Terraform outputs you'll need to map later.
-
-In **Dynamic provisioning**, click **Provision your infrastructure dynamically during the execution of your pipeline**.
+1. In the CD stage, click **Infrastructure**. If you haven't already specified your Environment, and selected the Infrastructure Definition, do so.
+   
+   The type of Infrastructure Definition you select determines what Terraform outputs you'll need to map later.
+2. In **Dynamic provisioning**, click **Provision your infrastructure dynamically during the execution of your pipeline**.
 
 The default Terraform provisioning steps appear:
 
@@ -64,13 +71,13 @@ The default Terraform provisioning steps appear:
 
 Harness automatically adds the Terraform Plan, [Harness Approval](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), and Terraform Apply steps. You can change these steps, but plan, approve, and apply is the most common process. We use that process in our Terraform documentation.
 
-## Step 2: Terraform Plan Step
+## Terraform Plan step
 
 The Terraform Plan step is where you connect Harness to your repo and add your Terraform scripts.
 
 ### Name
 
-In **Name**, enter a name for the step, for example, **plan**.
+1. In **Name**, enter a name for the step, for example, **plan**.
 
 Harness will create an [Entity Id](../../../platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. It's used to refer to settings in this step.
 
@@ -80,15 +87,15 @@ For example, if the Id of the stage is **terraform** and the Id of the step is *
 
 ### Timeout
 
-In **Timeout**, enter how long Harness should wait to complete the Terraform Plan step before failing the step.
+1. In **Timeout**, enter how long Harness should wait to complete the Terraform Plan step before failing the step.
 
 ### Command
 
-In **Command**, select **Apply**. Even though you are only running a Terraform plan in this step, you identify that this step can be used with a Terraform Apply step later.
+1. In **Command**, select **Apply**. Even though you are only running a Terraform plan in this step, you identify that this step can be used with a Terraform Apply step later.
 
 ### Provisioner Identifier
 
-Enter a unique value in **Provisioner Identifier**.
+1. Enter a unique value in **Provisioner Identifier**.
 
 The Provisioner Identifier identifies the provisioning done in this step. You use the Provisioner Identifier in additional steps to refer to the provisioning done in this step.
 
@@ -104,7 +111,7 @@ For this reason, it's important that all your Project members know the Provision
 
 ### Secret Manager
 
-Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
+1. Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
 See [Harness Secrets Manager Overview](../../../platform/6_Security/1-harness-secret-manager-overview.md).
 
@@ -124,33 +131,29 @@ The Delegate decrypts the encrypted plan and applies it using the `terraform ap
 
 Here, you'll add a connection to the Terraform script repo.
 
-Click **Specify Config File** or edit icon.
-
-The **Terraform Config File Store** settings appear.
-
-Click the provider where your files are hosted.
-
-![](./static/provision-infra-dynamically-with-terraform-02.png)
-
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+1. Click **Specify Config File** or edit icon.
+   
+   The **Terraform Config File Store** settings appear.
+2. Click the provider where your files are hosted.
+   
+   ![](./static/provision-infra-dynamically-with-terraform-02.png)
+3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 If you're simply experimenting, you can use [HashiCorp's Kubernetes repo](https://github.com/hashicorp/terraform-provider-kubernetes/tree/main/_examples/gke).
 
-### Git Providers
+### Git providers
 
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
-
-**Specific Commit ID** also supports [Git tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging).If you think the script might change often, you might want to use **Specific Commit ID**. For example, if you are going to be fetching the script multiple times in your Pipeline, Harness will fetch the script each time. If you select **Latest from Branch** and the branch changes between fetches, different scripts are run.
-
-In **Branch**, enter the name of the branch to use.
-
-In **Folder Path**, enter the path from the root of the repo to the folder containing the script.
-
-For example, here's a Terraform script repo, the Harness Connector to the repo, and the **Config Files** settings for the branch and folder path:
-
-![](./static/provision-infra-dynamically-with-terraform-03.png)
-
-Click **Submit**.
+1. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
+2. **Specific Commit ID** also supports [Git tags](https://git-scm.com/book/en/v2/Git-Basics-Tagging).If you think the script might change often, you might want to use **Specific Commit ID**. For example, if you are going to be fetching the script multiple times in your Pipeline, Harness will fetch the script each time. If you select **Latest from Branch** and the branch changes between fetches, different scripts are run.
+3. In **Branch**, enter the name of the branch to use.
+4. In **Folder Path**, enter the path from the root of the repo to the folder containing the script.
+   
+   For example, here's a Terraform script repo, the Harness Connector to the repo, and the **Config Files** settings for the branch and folder path:
+   
+   <!-- ![](./static/provision-infra-dynamically-with-terraform-03.png) -->
+   
+   <docimage path={require('./static/provision-infra-dynamically-with-terraform-03.png')} />
+5. Click **Submit**.
 
 Your Terraform Plan step is now ready. You can now configure the Terraform Apply step that will inherit the Terraform script and settings from this Terraform Plan step.
 
@@ -172,7 +175,7 @@ If you do not select **Use Connector credentials**, Terraform will use the crede
 
 The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
 
-## Option: Workspace
+## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
 
@@ -215,7 +218,7 @@ This allows you to specify a different workspace name each time the Pipeline is 
 
 You can even set a Harness Trigger where you can set the workspace name used in **Workspace**.
 
-## Option: Terraform Var Files
+## Terraform Var Files
 
 The **Terraform Var Files** section is for entering and/or linking to Terraform script Input variables.
 
@@ -227,11 +230,9 @@ Harness supports all [Terraform input types and values](https://www.terraform.io
 
 You can add inline variables just like you would in a tfvar file.
 
-Click **Add Terraform Var File**, and then click **Add Inline**.
-
-The **Add Inline Terraform Var File** settings appear.
-
-In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
+1. Click **Add Terraform Var File**, and then click **Add Inline**.
+2. The **Add Inline Terraform Var File** settings appear.
+3. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
 
 This Identifier is a [Harness Identifier](../../../platform/20_References/entity-identifier-reference.md), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
 
@@ -255,7 +256,7 @@ In **Add Inline Terraform Var File**, you could enter:
 region = "asia-east1-a"
 ```
 
-#### Inline Variable Secrets
+#### Inline variable secrets
 
 If you are entering secrets (for credentials, etc.), use Harness secret references in the value of the variable:
 
@@ -266,37 +267,30 @@ secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 
 See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
-### Remote Variables
+### Remote variables
 
 You can connect Harness to remote variable files.
 
-Click **Add Terraform Var File**, and then click **Add Remote**.
-
-Select your Git provider (GitHub, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
-
-Click **Continue**. The **Var File Details** settings appear.
-
-![](./static/provision-infra-dynamically-with-terraform-04.png)
-
-In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
-
-For example, if the **Identifier** is **myremotevars** you could refer to its content like this:
-
-`<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths>`
-
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
-
-In **Branch**, enter the name of the branch.
-
-In **File Paths**, add one or more file paths from the root of the repo to the variable file.
-
-Click **Submit**. The remote file(s) are added.
+1. Click **Add Terraform Var File**, and then click **Add Remote**.
+2. Select your Git provider (GitHub, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
+3. Click **Continue**. The **Var File Details** settings appear.
+   
+   ![](./static/provision-infra-dynamically-with-terraform-04.png)
+4. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
+   
+   For example, if the **Identifier** is **myremotevars** you could refer to its content like this:
+   
+   `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths>`
+5. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
+6. In **Branch**, enter the name of the branch.
+7. In **File Paths**, add one or more file paths from the root of the repo to the variable file.
+8. Click **Submit**. The remote file(s) are added.
 
 #### Artifactory
 
 See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
-## Option: Backend Configuration
+## Backend Configuration
 
 The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values.
 
@@ -317,7 +311,7 @@ In **Backend Configuration**, you provide the required configuration variables f
 
 You can use Harness secrets for credentials. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
-## Option: Targets
+## Targets
 
 You can use the **Targets** setting to target one or more specific modules in your Terraform script, just like using the `terraform plan -target` command. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
 
@@ -325,33 +319,35 @@ You simply identify the module using the standard format `module.name`, like you
 
 If you have multiple modules in your script and you don't select one in **Targets**, all modules are used.
 
-## Option: Environment Variables
+## Environment Variables
 
 If your Terraform script uses [environment variables](https://www.terraform.io/docs/cli/config/environment-variables.html), you can provide values for those variables here.
 
 For example:
 
-```
+```bash
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
-## Option: Advanced Settings
+## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
 
-## Step 3: Approval Step
+## Approval step
 
 By default, Harness adds an Approval step between the Terraform Plan and Terraform Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) to configure the step.
 
 You can also use a Jira Approval step. See [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md).
 
-## Step 4: Terraform Apply Step
+## Terraform Apply Step
 
 The Terraform Apply step simply inherits its configuration from the Terraform Plan step you already configured.
 
@@ -359,25 +355,18 @@ As stated earlier, you use the same **Provisioner Identifier** in the Terraform 
 
 ![](./static/provision-infra-dynamically-with-terraform-05.png)
 
-In Terraform Apply, enter a name for the step. The name is very important, as you'll use it to select the outputs from the Terraform apply operation.
+1. In **Terraform Apply**, enter a name for the step. The name is very important, as you'll use it to select the outputs from the Terraform apply operation.
+   
+   You'll use the outputs when mapping the provisioned infrastructure to the target Infrastructure Definition.
+   For example, if you name the Terraform Apply step **apply123** and you want to reference the **region** output in your script, you'd use the expression:
+   `<+infrastructureDefinition.provisioner.steps.apply123.output.region>`
+   The mapping is explained in the next step.
+2. In **Timeout**, enter how long Harness should wait to complete the Terraform Apply step before failing the step.
+3. In **Configuration Type**, select **Inherit From Plan**. If you select **Inline**, then you aren't using the previous Terraform Plan step. You are entering separate Terraform files and settings.
+4. In **Provisioner Identifier**, enter the same Provisioner Identifier you entered in the Terraform Plan step.
+5. Click **Apply Changes**.
 
-You'll use the outputs when mapping the provisioned infrastructure to the target Infrastructure Definition.
-
-For example, if you name the Terraform Apply step **apply123** and you want to reference the **region** output in your script, you'd use the expression:
-
-`<+infrastructureDefinition.provisioner.steps.apply123.output.region>`
-
-The mapping is explained in the next step.
-
-In **Timeout**, enter how long Harness should wait to complete the Terraform Apply step before failing the step.
-
-In **Configuration Type**, select **Inherit From Plan**. If you select **Inline**, then you aren't using the previous Terraform Plan step. You are entering separate Terraform files and settings.
-
-In **Provisioner Identifier**, enter the same Provisioner Identifier you entered in the Terraform Plan step.
-
-Click **Apply Changes**.
-
-## Step 5: Map Outputs to Target Infra Settings
+## Map outputs to target infra settings
 
 Now that the Terraform Plan and Terraform Apply steps are set up in **Dynamic provisioning**, Harness is configured to provision the infrastructure defined in your Terraform script.
 
@@ -408,7 +397,9 @@ Here you can see how the expression is created from the Terraform Apply step nam
 
 Use the expressions to map the outputs in the required Infrastructure Definition settings, such as **namespace** in **Cluster Details**.
 
-![](./static/provision-infra-dynamically-with-terraform-06.png)
+<!-- ![](./static/provision-infra-dynamically-with-terraform-06.png) -->
+
+<docimage path={require('./static/provision-infra-dynamically-with-terraform-06.png')} />
 
 Now Harness has the provisioned target infrastructure set up.
 
@@ -416,21 +407,20 @@ You can complete your Pipeline and then run it.
 
 Harness will provision the target infrastructure and then deploy to it.
 
-## Step 6: Terraform Rollback
+## Terraform Rollback
 
 The **Terraform Rollback** step is automatically added to the **Rollback** section.
 
 ![](./static/provision-infra-dynamically-with-terraform-07.png)
 
-Open **Terraform Rollback**.
-
-Enter a name for the step.
-
-In **Provisioner Identifier**, enter the same Provisioner Identifier you used in the Terraform Plan and Apply steps.
-
-![](./static/provision-infra-dynamically-with-terraform-08.png)
-
-Click **Apply Changes**.
+1. Open **Terraform Rollback**.
+2. Enter a name for the step.
+3. In **Provisioner Identifier**, enter the same Provisioner Identifier you used in the Terraform Plan and Apply steps.
+   
+   <!-- ![](./static/provision-infra-dynamically-with-terraform-08.png) -->
+   
+   <docimage path={require('./static/provision-infra-dynamically-with-terraform-08.png')} />
+4. Click **Apply Changes**.
 
 When rollback happens, Harness rolls back the provisioned infrastructure to the previous successful version of the Terraform state.
 
@@ -440,13 +430,13 @@ Harness determines what to rollback using the **Provisioner Identifier**.
 
 If you've made these settings expressions, Harness uses the values it obtains at runtime when it evaluates the expression.
 
-### Rollback Limitations
+### Rollback limitations
 
 Let's say you deployed two modules successfully already: module1 and module2. Next, you try to deploy module3, but deployment failed. Harness will roll back to the successful state of module1 and module2.
 
 However, let's look at the situation where module3 succeeds and now you have module1, module2, and module3 deployed. If the next deployment fails, the rollback will only roll back to the Terraform state with module3 deployed. Module1 and module2 weren't in the previous Terraform state, so the rollback excludes them.
 
-## See Also
+## See also
 
 * [Apply a Terraform Plan with the Terraform Apply Step](../../cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md)
 

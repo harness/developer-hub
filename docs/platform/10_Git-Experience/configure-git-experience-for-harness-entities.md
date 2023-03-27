@@ -48,6 +48,7 @@ The following section lists the support for Git providers for Harness Git Sync:�
 * GitHub
 * Bitbucket Cloud
 * Bitbucket Server
+* Azure Repos
 
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 
@@ -213,13 +214,37 @@ Click **Run**.
 
 Click **Run Pipeline**.
 
-During pipeline execution, the configurations of the required resources and any referenced entities like Input Sets, are fetched from Git.
+### Branch selection logic for referencing remote entities in pipelines
+
+The configurations of the required resources and any referenced entities like Input Sets, are fetched from Git during pipeline fetch, creation, or execution.
+
+#### Referenced entities are in the same repository
 
 If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.​
 
-If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.​
+Let us look at an example: 
 
-Harness resolves all the dependencies and then proceeds with pipeline execution.​
+There is a pipeline `DocRemotePipeline` that references a remote pipeline template named `remotedocpipelinetemplate`. This remote pipeline template references a remote stage template named `RemoteStageTemplate`. These 3 entities are in the same Git repo.
+
+![](./static/entities-in-same-repo.png)
+
+When you execute this pipeline, Harness fetches these entities from the branch that you have selected.
+
+![](./static/entities-in-same-git-repo.png)
+
+#### Referenced entities are in different repositories
+
+If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.​
+  
+Let us look at an example: 
+  
+There is a pipeline `remoteDocrepoPipeline` that references a remote pipeline template named `remotepipelinetemplate_docrepo`. This remote pipeline template references a remote stage template named `RemoteStageTemplate`. These 3 entities are in different Git repos.
+
+When you execute this pipeline, Harness fetches these nested entities from the default branch of the respective repositories.
+
+![](./static/entities-in-diff-repo.png)
+  
+Harness resolves all the dependencies and then proceeds with Pipeline execution.​
 
 ### Next steps
 

@@ -292,18 +292,18 @@ Let's look at a simple example.
     ```
     echo <+steps.S1.output.outputVariables.myVar>
     ```
+    
+    The syntax for referencing output variables between steps in the same stage looks similar to the example below.
 
-The syntax for referencing output variables between steps in the same stage looks similar to the example below.
+    ```
+    <+[stepId].output.outputVariables.[varName]>
+    ```
 
-```
-<+[stepId].output.outputVariables.[varName]>
-```
+    The syntax for referencing output variables between steps in different stages looks similar to the example below.
 
-The syntax for referencing output variables between steps in different stages looks similar to the example below.
-
-```
-<+stages.[stageID].execution.steps.[stepId].output.outputVariables.[varName]>
-```
+    ```
+    <+stages.[stageID].execution.steps.[stepId].output.outputVariables.[varName]>
+    ```
 
 ### Environment variables
 
@@ -317,7 +317,7 @@ For **Value**, you may enter [fixed values, runtime inputs, and expressions](htt
 
 For example, if you created the environment variables `DB_HOST`, `DB_URL`, and `DB_PASSWORD`, your script could reference them like this:
 
-```
+```bash
 DB_URL=$DB_URL
 user=$DB_HOST
 password=$DB_PASSWORD
@@ -333,7 +333,7 @@ For example, you can set **Value** as an expression and reference the value of s
 1. In **Pipeline Studio**, select **YAML**
 2. Paste the following YAML example and select **Save**:
 
-```
+```yaml
               - step:
                   type: Container
                   name: Test
@@ -355,7 +355,6 @@ For example, you can set **Value** as an expression and reference the value of s
                     outputVariables: []
                     envVariables: {}
                   timeout: 1d
-
 ```
 
 ```mdx-code-block
@@ -371,3 +370,4 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
