@@ -6,22 +6,25 @@ slug: /build-code/ci-tutorial-kubernetes-cluster-build-infra
 
 # Build and test on a Kubernetes cluster build infrastructure
 
-This tutorial shows you how to build a simple, two-stage CI pipeline in Harness. The pipeline builds and runs a unit test on a codebase, uploads the artifact to Docker Hub, and then runs integration tests. Setting up and running the pipeline takes about 30 minutes. This tutorial uses publicly-available code, images, and your Github and Docker Hub accounts.
+This tutorial shows you how to create a two-stage Harness CI pipeline that uses a Kubernetes cluster build infrastructure. The pipeline builds and runs a unit test on a codebase, uploads the artifact to Docker Hub, and then runs integration tests. This tutorial uses publicly-available code, images, and your Github and Docker Hub accounts.
 
-## Objectives
+You'll learn how to create a CI pipeline that does the following:
 
-You'll learn how to create a CI Pipeline that does the following:
+1. Clones the code repo for an app.
+2. Uses a Kubernetes cluster build infrastructure.
+3. Builds the app code and runs unit tests.
+4. Packages the app as a Docker image, and uploads it to Docker Hub.
+5. Pulls the uploaded image into the build infrastructure as a service dependency.
+6. Runs an integration test against the app.
 
-1. Clone a code repo for an app.
-2. Use a Kubernetes cluster build farm.
-3. Build the code and run unit tests in the build farm.
-4. Package the app as a Docker image and upload it to Docker Hub.
-5. Pull the uploaded image to the build farm as a service dependency.
-6. Run an integration test against the app.
+## Prerequisites
 
-## Before You Begin
+<!-- entire topic: Steps are structured as ul or subsections instead of ol. Use of click v select. Capitalization issues. Some UI labels lacking bold style. We vs you. -->
+This tutorial assumes you have experience with Kubernetes, such as setting up service accounts and clusters.
 
-Make sure you have the following set up before you begin this tutorial:
+In addition to a Harness account, you need the following accounts and tools:
+
+<!-- revise these -->
 
 * **Github account:** This tutorial clones a codebase from a Github repo. You will need a Github account so Harness can connect to Github.
 * **Docker Hub account and repo:** You will need to push and pull the image you build to Docker Hub. You can use any repo you want, or create a new one for this tutorial.
@@ -39,6 +42,12 @@ For more information, go to the Kubernetes documentation on [User-Facing Roles](
 :::caution
 Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not recommended. For more information, go to [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
 :::
+
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+```
+
+<CISignupTip />
 
 ## Visual Summary
 
@@ -63,13 +72,15 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## Option: Use Your Own Code Repo
 
-For this tutorial, we use a codebase located at:
+For this tutorial, we use a codebase located at: <!-- make this a link -->
 
 `https://github.com/keen-software/goHelloWorldServer`
 
 All steps in this tutorial work with any git repo, so you can use your own code repo instead.
 
 ## Step 1: Start a New Pipeline
+
+<!-- Start a new pipeline: “Invite people to collaborate” is on a separate ui page from the other 2 options. After selecting the CI module, you need to select Go to Module. It then starts the pipeline wizard (“Get started” instead of pipelines > create a pipeline. Github connector and delegate steps are later in the tutorial than you need them. Maybe should be before you create the project?). The Flow is Create project > Set up GitHub connector > Config delegate > Then create pipeline (go to builds > get started > select your repo and select ”Next: Configure pipeline” > Select Starter pipeline and select “Create pipeline”. No option to name the pipeline ws given.) -->
 
 Pipelines are a collection of one or more stages. They manage and automate builds, testing, deployments, and other important build and release stages.
 
@@ -85,6 +96,8 @@ As you enter a name for the Pipeline, the ID for the Pipeline is created. A Pipe
 
 ## Step 2: Set Up the Build Stage
 
+<!-- Step 2 Set up the Build stage: By selecting the Starter Pipeline, you already have a Build stage. No need to add another one (but could use tabs to compare starter pipeline w regular pipeline). Click the Build stage to edit it. On Overview tab, change name. The repo was already connected in the wizard. -->
+
 The "work horse" of most CI Pipelines is the Build Stage. This is where you specify the end-to-end workflow for your build: the codebase to build, the infrastructure to build it, where to post the finished artifact, and any additional tasks (such as automated tests or validations) you want the build to run.
 
 To run a build, a Build Stage needs to connect to the codebase, the build infrastructure, and the artifact repository. A *Connector* is a configurable object that connects to an external resource automatically.
@@ -93,16 +106,18 @@ In this tutorial you'll create a Connector to a GitHub repo. You'll also create 
 
 ### Create the Build stage
 
-* In Pipeline Studio, click **Add Stage** and select **Build**. The About your Stage screen appears.
-* In Stage Name, enter **Build Test and Push**.
-* Under Configure Codebase, cick **Select Connector** (under Configure Codebase).
+1. In Pipeline Studio, select **Add Stage** and select **Build**. The **About your Stage** screen appears.
+2. In **Stage Name**, enter `Build Test and Push`.
+3. Under **Configure Codebase**, select **Connector**.
 
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-14.png)
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-14.png)
 
-* In the Create or Select an Existing Connector window, select **New Connector**.
-* For the Connector type, select **GitHub Connector**.
+4. In the **Create or Select an Existing Connector** window, select **New Connector**.
+5. For the **Connector type**, select **GitHub Connector**.
 
 ### Create a Connector to your Codebase
+
+<!-- link to GH connector instructions/step settings reference w/ specification for tutorial repo URL.  Field population instructions should be a series of steps as ol, instead of smaller headings. Under “connector credentials”, add a link to info about using your own secrets manager with Harness. OAuth is an option for github connectors now. -->
 
 You'll now create a new Connector to the GitHub codebase. Set up the Connector as follows.
 
@@ -142,6 +157,9 @@ The Harness Delegate is a local service that connects your infrastructure, colla
 
 #### Delegate Setup
 
+<!-- this has changed for the new delegate flow. -->
+<!--  Delegate setup: You must choose “connect only via delegates with specific tags” to show Install new delegate if there are already delegates available. On the page where you select delegate size and permissions, for K8s, you need to provide delegate tokens. Click +add to add token. On the YAML page, the button is “Download YAML file, not Download Script. The other button is Continue, not Next. I did not get the output described - some lines were present and some were not. -->
+
 You should now be in the Delegates Setup screen of the GitHub Connector wizard. Click **Install new Delegate**.
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-18.png)
@@ -172,6 +190,8 @@ You should now be in the Delegates Setup screen of the GitHub Connector wizard. 
 
 ## Step 3: Define the Build Farm Infrastructure
 
+<!-- Step 3 Define build farm infra: continue to Infrastructure tab. Select K8s. Select K8s Cluster. Select New Connector. Follow steps to connect delegate and stuff. Click Continue to go to Execution tab. -->
+
 Here you'll define the build farm infrastructure and the stage steps.
 
 * Under Select a Kubernetes Cluster, click **Select**.
@@ -188,6 +208,8 @@ Here you'll define the build farm infrastructure and the stage steps.
 Now that the build farm infrastructure is set up, you can run unit tests against your code.
 
 ## Step 4: Build and Run Unit Tests
+
+<!-- Step 4 build and run unit tests: Delete echo welcome message step. The instruction for the name field is given twice. Missing instruction to select “Connect thru a harness delegate >only use delegates w following tags” after setting up the secret. Report paths are under optional config (have to expand). -->
 
 Next, we'll add a Run step to the stage that will build the code and run a unit test.
 
@@ -237,6 +259,8 @@ This **Run** step will intentionally fail the test. This will be useful to see h
 
 ## Step 5: Build and Push Image to Docker Hub
 
+<!-- Step 5 build and push image to docker hub: use <docker_username> instead of <your_repo>. -->
+
 Next, you'll add a step to build your container and push it to your Docker Hub repo. You'll need a repo in your Docker Hub account to receive the artifact.
 
 * You should be in the Execution tab of the Built Test and Push Stage. Click **Add step**, then click **Build and Push an Image to Docker Registry**.
@@ -254,10 +278,16 @@ Next, you'll add a step to build your container and push it to your Docker Hub r
 
 ## Step 6: Create the Integration Test Stage
 
+<!-- Step 6 create the integration test stage: “click infrastructure” should be “select Infrastructure tab”. The button is “Continue” not “Next”. The “image” instruction is wrong - <your repo> is your username, not the docks hub repo name. Also, “Service Dependency” is deprecated, no longer available in the UI but backwards compatible in YAML. This tutorial needs to use “Background step” instead of “Service Dependency”. -->
+
 Now you have a Stage to clone, build, containerize, and then push your image to Docker Hub. In this step you'll add a Stage to pull that image, run it in a container, and run integration tests on it.
 
 * Click **Add Stage**, and select **Build**.
 * Enter the name **Run Integration Test**, disable **Clone Codebase**, and then click **Set Up Stage**.
+
+<!-- I think disabling clone codebase caused an error: -->
+<!-- Can’t find git repo error: Click “Codebase” pipeline editor page (far right). Input specific branch name so the full URL resolves. Save > Save. -->
+<!-- The tutorial has a problem that the unit test step fails because it cant find where to write the reports. The fix for this was that Clone Codebase should NOT be disabled. I also think it might be relevant for the GitHub connector to be a GitHub repo instead of a GitHub account. -->
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-26.png)
 
