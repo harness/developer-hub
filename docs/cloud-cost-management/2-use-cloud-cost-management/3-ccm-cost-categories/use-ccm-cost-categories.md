@@ -21,7 +21,7 @@ Apart from viewing costs based purely on different data sources (AWS, GCP, Clust
 
 1. **Create cost categories** — Allows you to categorize based on business requirements and get a contextual view of your expenses.
 2. **Create cost buckets** — A cost category is composed of one or more buckets. A bucket is one or more filters that collect data from a data source. For example, a Cost Category called Departments would have a separate cost bucket for each department. Each bucket collects the data sources that belong to each department.​
-3. **Create shared buckets** — You can create a shared bucket to share the cost across cost buckets in a given category. For example, let us consider the cost category Departments — the cost incurred in maintaining a database is attributed to multiple departments in an organization. So, you can create a shared bucket named Database Cost (enter a name that's relevant to your scenario) and define the rules and conditions to visualize cost data as per your requirement. You could choose to split this cost equally between all the cost buckets, or you could split the cost proportionally based on usage.​
+3. **Create shared buckets** — You can create a shared bucket to share the cost across cost buckets in a given category. For example, let us consider the cost category Departments — the cost incurred in maintaining a database is attributed to multiple departments in an organization. So, you can create a shared bucket named Database Cost (enter a name that's relevant to your scenario) and define the rules and conditions to visualize cost data as per your requirement. You could choose to split this cost equally between all the cost buckets, or you could split the cost proportionally based on usage, or you could allocate a fixed percentage of cost for each cost bucket.​
 4. **View your expense data** — After creating Cost Categories, you can use them in Perspective filters and Group By. You can even use Cost Categories to define Perspectives. The Cost Categories used in Perspectives are updated separately from the Perspectives. This allows you to update a single Cost Category and have the result automatically reflected in all the Perspectives that use that Cost Category.
 
 If there are items that don't belong to any of these cost categories, the cost associated is displayed as unallocated costs.
@@ -93,9 +93,9 @@ The AND and OR operators are used to filter data based on more than one conditio
 3. Define rules and conditions as per requirement.
 4. Select the sharing strategy.  
 For example, consider two cost targets named team A and team B. These two teams use the same database. To enable sharing of cost between these two teams, you need to create a shared cost bucket named sharedDB (enter a name that relates to the shared bucket).
-  * **Equally**: This option enables sharing of the DB cost equally (50%) between both teams A and B. You can view it in the grid and chart.
-  * **Proportionally**: This option enables sharing of the DB cost proportionally between both teams. If the cost for team A is $60 and that of team B is $40. Then, 60% of DB cost is borne by team A and 40% by team B.
-  *  **Fixed percentage**: This option allows the distribution of the cost of the database by a fixed percentage between cost buckets. For example, 30% to team A and 70% to team B.
+  * **Equally**: This option enables sharing of the shared bucket cost equally (50%) between both teams A and B. You can view it in the grid and chart.
+  * **Proportionally**: This option enables sharing of the shared bucket cost proportionally between both teams. If the cost for team A is $60 and that of team B is $40. Then, 60% of DB cost is borne by team A and 40% by team B.
+  *  **Fixed percentage**: This option allows the distribution of the cost of the shared bucket by a fixed percentage between cost buckets. For example, 30% to team A and 70% to team B.
 
   ![](./static/cost-category-builder-2.png)
 
