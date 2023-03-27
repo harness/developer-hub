@@ -62,10 +62,6 @@ The following steps illustrate how to restrict access to a Resource Group:
 
   Similar to budgets, on the **Anomalies** page, you can only view those anomalies associated with the perspectives located within specific folders that you have access to. The anomalies displayed also depend on the Perspective rule that restricts the user to a particular cloud provider account or a cost category, or a region. The out-of-the-box perspectives provided by Harness, as well as any other perspectives outside these folders, are not displayed. For more information about Anomalies, go to [Anomalies](/docs//cloud-cost-management/2-use-cloud-cost-management/5-ccm-cost-anomaly-detection/detect-cloud-cost-anomalies-with-ccm.md).
 
-### Access control for Recommendations
-
-  The **Recommendations** page displays recommendations for perpsectives you have access to. You will be able to manage these recommendations.
-
 A user with folder restrictions does not have permission to create new folders. This means that the user can only work within the existing folder structure that has been set up for them by an administrator.
 
 
