@@ -1,11 +1,11 @@
 ---
-title: Mend (formerly Whitesource) scanner reference
-description: Container and repository scans with Mend
-sidebar_position: 160
+title: Black Duck Hub scanner reference
+description: Image and repository scans with Black Duck Open Hub scanner
+sidebar_position: 60
 ---
 
-You can scan container images and repositories using [Mend](https://www.mend.io). 
 
+You can scan your container images using Black Duck Hub, a comprehensive and versatile open-source scanner. 
 
 ## Before you begin
 
@@ -15,9 +15,10 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 <StoCreateDinD />
 
-## Mend step configuration
 
-The recommended workflow is add a Mend step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+## BlackDuck step configuration
+
+The recommended workflow is add a BlackDuck step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
@@ -32,7 +33,8 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 </details>
 
-### Scan
+
+### Scan settings
 
 
 <a name="scan-mode"></a>
@@ -41,15 +43,15 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
-import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
-import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
 <StoSettingScanMode />
 <StoSettingScanModeOrch />
-<StoSettingScanModeData />
 <StoSettingScanModeIngest />
+
+<a name="scan-config"></a>
 
 #### Scan Configuration
 
@@ -60,7 +62,7 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 <StoSettingProductConfigName />
 
 
-### Target
+### Target Settings
 
 <a name="target-type"></a>
 
@@ -70,7 +72,6 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 import StoSettingScanType from './shared/step_palette/_sto-ref-ui-scan-type.md';
 import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
 import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-type-01-container.md';
-
 ```
 <a name="scan-type"></a>
 <StoSettingScanType />
@@ -106,7 +107,12 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 
 
-### Ingestion File
+### Ingestion settings
+
+
+<a name="ingestion-file"></a>
+
+#### Ingestion File
 
 ```mdx-code-block
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
@@ -163,7 +169,9 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 <!-- ============================================================================= -->
 
-#### Access ID
+<!-- 
+
+#### Access ID (_orchestration_)
 
 ```mdx-code-block
 import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
@@ -171,6 +179,7 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 <StoSettingAuthAccessID />
 
+-->
 
 <!-- ============================================================================= -->
 <a name="auth-access-token"></a>
@@ -188,12 +197,6 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 <!-- ============================================================================= -->
 
-#### Lookup Type
-
-```mdx-code-block
-import StoSettingToolLookupType from './shared/step_palette/_sto-ref-ui-tool-prod-lookup-type.md';
-```
-<StoSettingToolLookupType  />
 
 #### Project Name
 
@@ -202,26 +205,6 @@ import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-pr
 ```
 
 <StoSettingToolProjectName />
-
-
-#### Include 
-
-```mdx-code-block
-import StoSettingToolInclude from './shared/step_palette/_sto-ref-ui-tool-include.md';
-```
-
-<StoSettingToolInclude />
-
-<!-- ============================================================================= -->
-<a name="tool-exclude"></a>	
-
-#### Exclude
-
-```mdx-code-block
-import StoSettingToolExclude from './shared/step_palette/_sto-ref-ui-tool-exclude.md';
-```
-
-<StoSettingToolExclude />
 
 <!-- ============================================================================= -->
 
@@ -253,6 +236,20 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 <StoSettingLogLevel />
 
 
+<!-- 
+
+<a name="cli-flags"></a>
+
+#### Additional CLI flags
+
+```mdx-code-block
+import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+```
+
+<StoSettingCliFlags />
+
+-->
+
 
 #### Fail on Severity
 
@@ -263,7 +260,9 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can add a `tool_args` setting to run the [Unified Agent binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can exclude certain files from the scan like this:  `tool_args` = `-excludes **/*javadoc.jar`.
+You can add a `tool_args` setting to run the [synopsis detect scanner](https://blackducksoftware.github.io/synopsys-detect/6.3.0/30-running/) with specific command-line arguments. 
+
+For example, you can skip certain tools using  `--detect.tools.excluded` followed by a list of tools: `tool_args` = `-detect.tools.excluded {BAZEL, DOCKER}`
 
 
 ### Additional Configuration
@@ -286,14 +285,11 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
 
 
-
-
 ## Security step configuration (_deprecated_)
 
-<details><summary>Set up a Mend scan in a Security step</summary>
+<details><summary>Set up a Black Duck Hub scan in a Security step</summary>
 
-You can set up Mend scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
+You can set up a Black Duck Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
@@ -301,41 +297,40 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 
 <StoSecurityStepConfig />
 
-* `product_name` = `whitesource`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `ingestionOnly`, `dataLoad`, or `orchestratedScan`
-* `scan_type` = `container`
-* `product_domain` (*optional*) — The default is `https://saas.whitesourcesoftware.com/api`
-* `product_access_id`
-* `product_access_token`
-* `product_include`
+* `product_name` = `blackduckhub`
 * `product_config_name` = `default`
-* `product_lookup_type`(*optional*)
-- Accepted value(s) when `policy_type` is set to `dataLoad`: 
-  - `byName`
-	- `byTokens`
-- Accepted value(s) when `policy_type` is set to `orchestratedScan`: 
-	- `appendToProductByToken`
-	- `appendToProductByName`
-		
-:::note
-You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:
-:::
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository` or `container`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) =  `orchestratedScan` , `ingestionOnly`, or `dataLoad`
+* When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
+	+ `product_domain`
+	+ `product_auth_type` = `usernamePassword` | `apiKey`
+	+ `product_access_id`: API username
+	+ `product_access_token` API password or API key
+	+ `product_api_version`
+	+ `product_project_name`
+	+ `product_project_version`
 
-* `product_product_name`
-* `product_project_name`
-* `product_project_token`
-* `product_project_token`
 
+#### Container Image scan settings
 
 <!-- CONTAINERS --------------------------------------------------------------------------- -->
-
-## Container Image scan settings
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
+
+
+<!-- REPOS --------------------------------------------------------------------------- -->
+
+#### Repository scan settings
+
+```mdx-code-block
+import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
+```
+
+<StoLegacyRepo />
 
 </details>
 

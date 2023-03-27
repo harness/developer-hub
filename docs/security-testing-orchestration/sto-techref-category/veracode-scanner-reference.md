@@ -48,3 +48,8 @@ To determine the App Id, go to the home page for the Veracode app with the resul
 * `product_project_name`— The Veracode project with the scan results you want to ingest.  
 The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes how you can find your application Id's and project names.
 
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />
+
