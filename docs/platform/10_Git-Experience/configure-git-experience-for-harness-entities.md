@@ -213,7 +213,9 @@ Click **Run Pipeline**.
 
 The configurations of the required resources and any referenced entities like Input Sets, are fetched from Git during pipeline fetch, creation, or execution.
 
-- If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for Pipeline execution.​
+#### Referenced entities are in the same repository
+
+If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for Pipeline execution.​
 
 Let us look at an example: 
 
@@ -225,16 +227,17 @@ When you execute this pipeline, Harness fetches these entities from the branch t
 
 ![](./static/entities-in-same-git-repo.png)
 
+#### Referenced entities are in different repositories
 
-- If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.​
+If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.​
   
-  Let us look at an example: 
+Let us look at an example: 
   
-  There is a pipeline `remoteDocrepoPipeline` that references a remote pipeline template named `remotepipelinetemplate_docrepo`. This remote pipeline template references a remote stage template named `RemoteStageTemplate`. These 3 entities are in different Git repos.
+There is a pipeline `remoteDocrepoPipeline` that references a remote pipeline template named `remotepipelinetemplate_docrepo`. This remote pipeline template references a remote stage template named `RemoteStageTemplate`. These 3 entities are in different Git repos.
 
-  When you execute this pipeline, Harness fetches these nested entities from the default branch of the respective repositories.
+When you execute this pipeline, Harness fetches these nested entities from the default branch of the respective repositories.
 
-  ![](./static/entities-in-diff-repo.png)
+![](./static/entities-in-diff-repo.png)
   
 Harness resolves all the dependencies and then proceeds with Pipeline execution.​
 

@@ -28,7 +28,7 @@ Harness UI uses the following cache life cycle to render a remote entity:
 
    ![](../10_Git-Experience/static/stale-cache.png)
 
-   Refresh the cache and reload the entities from Git by selecting the **Reload from Git** option. 
+   You can refresh the cache and reload the entities from Git by selecting the **Reload from Git** option. 
    
    ![](./static/reload-from-git.png)
 
@@ -44,7 +44,7 @@ Harness UI uses the following cache life cycle to render a remote entity:
 
 4. If the UI utilizes caching, the backend uses cached data and never pulls the latest from Git by default. 
 
-5. When the cache is unavailable, Harness fetches the latest data from GIT, updates the cache, and returns the response.
+5. When the cache is unavailable, Harness fetches the latest data from Git, updates the cache, and returns the response.
 
    For example, if you open a remote pipeline whose cache has expired, the backend updates its cache based on the latest Git version.
    
