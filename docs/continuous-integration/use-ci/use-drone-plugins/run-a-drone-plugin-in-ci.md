@@ -18,7 +18,7 @@ This topic describes how to set up and run Drone Plugins in your CI pipelines. Y
 To install and run a plugin, you need the following:
 
 * A familiarity with basic Harness CI concepts:
-	+ [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
+	+ [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
 	+ [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A build infrastructure and Delegate to run builds:
 	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)

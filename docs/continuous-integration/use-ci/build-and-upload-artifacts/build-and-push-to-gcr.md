@@ -38,7 +38,7 @@ If the build succeeds, you can find your pushed image on GCR.
 ## See also
 
 * [Run step settings](../../ci-technical-reference/run-step-settings.md)
-* [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
 * [Delegate overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 * [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)

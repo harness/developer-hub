@@ -25,7 +25,7 @@ The following diagram illustrates an AWS build farm. The [Harness Delegate](/doc
 
 This topic assumes you're familiar with the following:
 
-* [CI pipeline tutorial](../../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [Building and testing on a Kubernetes cluster build infrastructure](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
 * [Delegates overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 * [CI stage settings](../../../ci-technical-reference/ci-stage-settings.md)
 * [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)

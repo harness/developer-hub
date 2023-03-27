@@ -20,7 +20,7 @@ This topic covers payload conditions in detail. For a general overview of creati
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
+* [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 * [Trigger Pipelines using Git Events](triggering-pipelines.md)
 
 ### Limitations

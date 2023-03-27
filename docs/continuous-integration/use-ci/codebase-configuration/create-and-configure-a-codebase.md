@@ -30,7 +30,7 @@ Editing the Codebase for a Pipeline:
 
 ### Before You Begin
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
 * [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)

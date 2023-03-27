@@ -45,7 +45,10 @@ The Delegate manages your build infrastructure to run build jobs and tests as ne
 
 When a CI pipeline build finishes successfully, the build infrastructure then sends the artifacts to the registry of your choice.
 
-Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the [CI pipeline tutorial](ci-pipeline-quickstart.md) or [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
+Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the following tutorials:
+
+* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
+* [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci)
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
