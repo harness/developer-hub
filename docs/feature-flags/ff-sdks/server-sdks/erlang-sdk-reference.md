@@ -132,7 +132,7 @@ To initialize the Erlang SDK:
 
 <details>
 <summary>What is a target?</summary> 
-Targets are used to control which users see which variation of a Feature Flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
+Targets are used to control which users see which variation of a Feature Flag. For example, if you want to do internal testing, you can enable the flag for some users but not others. When creating a target, you give it a name and a unique identifier. Targets are often users, but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
 For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags).
@@ -289,7 +289,7 @@ To close the SDK, run one of the following commands.
   :cfclient:close(:instance_name_1)
   ```
 
-## Additional Options
+## Additional options
 
 ### Run multiple instances of the SDK
 
@@ -299,7 +299,7 @@ specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-fla
 
 *Note: if the default instance fails to start, for example due to an authentication error with the API key, then the SDK
 will fail to boot and any additional instances won't start. You can disable the default instance from starting, 
-see [Erlang Project Config](#erlang-project-config) and [Elixir Project Config](#elixir-project-config) 
+see [Erlang project config](#erlang-project-config) and [Elixir project config](#elixir-project-config) 
 
 #### Erlang Project Config
  
@@ -363,7 +363,7 @@ see [Erlang Project Config](#erlang-project-config) and [Elixir Project Config](
     },
     ```
 
-2. In your application supervisor, e.g. `src/myapp_sup.erl`, start up a `cfclient_instance`
+2. In your application supervisor, for example, `src/myapp_sup.erl`, start up a `cfclient_instance`
    for each of the project configurations you provided above:
 
     ```erlang
@@ -413,24 +413,37 @@ see [Erlang Project Config](#erlang-project-config) and [Elixir Project Config](
 #### Elixir project config
 
 1. Create project configurations for each new instance you would like to start in your `config/config.exs` file:
-
-    ```elixir
-    # Config for "project 1"
-    config :elixirsample,  project1:
-           [
-            api_key: System.get_env("FF_API_KEY_1"),
-            config: [name: :project1]
-           ]
     
-    # Config for "project 2"
-    config :elixirsample,  project2:
-      [
-      api_key: System.get_env("FF_API_KEY_2"),
-      config: [name: :project2]
-    ]
-    ```
+  ```
+  # Config for "project 1"
+  config :elixirsample,  project1:
+         [
+          api_key: System.get_env("FF_API_KEY_1"),
+          config: [name: :project1]
+         ]
 
-2. In your application supervisor, e.g. `lib/myapp/supervisor.ex`, start up `cfclient_instance` for each of the project configurations you provided above:
+  # Config for "project 2"
+  config :elixirsample,  project2:
+    [
+    api_key: System.get_env("FF_API_KEY_2"),
+    config: [name: :project2]
+  ]
+  ```
+
+  If you don't require the default instance to be started up, you can do:
+
+  ```
+  # Config for "project 1"
+  config :elixirsample,  project1:
+         [
+          start_default_instance: false,
+          # The remaining tuples will be ignored, so you can choose to include or omit them.
+          api_key: System.get_env("FF_API_KEY_1"),
+          config: [name: :project1]
+         ]
+  ```
+
+2. In your application supervisor, for example, `lib/myapp/supervisor.ex`, start up `cfclient_instance` for each of the project configurations you provided above:
 
     ```elixir
       def init(_opts) do
@@ -452,7 +465,7 @@ see [Erlang Project Config](#erlang-project-config) and [Elixir Project Config](
       end
     ```
 
-3. To use a specific SDK instance, you provide the instance name to the public function you are calling. For example use `bool_variation/4` instead of `bool_variation/3` - see the following code sample:
+3. To use a specific SDK instance, you provide the instance name to the public function you are calling. For example, use `bool_variation/4` instead of `bool_variation/3` - see the following code sample:
 
     ```elixir
     defmodule ElixirSample.EvaluationSample do
