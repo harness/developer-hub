@@ -1,7 +1,7 @@
 ---
 title: Truststore override for delegates
 description: Replace or use a different default truststore with Harness Delegates.
-# sidebar_position: 2
+# sidebar_position: 30
 helpdocs_topic_id: nh6tdfse6g
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false
