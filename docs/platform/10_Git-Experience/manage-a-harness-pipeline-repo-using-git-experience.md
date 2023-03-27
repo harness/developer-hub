@@ -95,7 +95,9 @@ In the Pipeline Input tab, select the Input Set you just created and click **Cre
 
 You now have a Pipeline, Input Set, and Trigger that you can use in new branches that you create from the default branch.
 
-Unlike Pipelines and Input Sets, Trigger definitions are saved in the Harness database and not in your Git repo. Each Trigger is associated with a specific Pipeline, which is specified by the `pipelineIdentifier` element in the Trigger YAML.![](./static/manage-a-harness-pipeline-repo-using-git-experience-19.png)
+Unlike Pipelines and Input Sets, Trigger definitions are saved in the Harness database and not in your Git repo. Each Trigger is associated with a specific Pipeline, which is specified by the `pipelineIdentifier` element in the Trigger YAML.
+
+![](./static/manage-a-harness-pipeline-repo-using-git-experience-19.png)
 
 ### Next steps
 
@@ -123,7 +125,15 @@ You might find that you can use the default Pipeline, Input Set, and Trigger you
 Git Experience enables you to create branches in your Harness repo so you can create different versions of the same Pipeline for different use cases. For example, suppose you want your Pipeline to push to different registries depending on the updated branch. Updates to `main` push to a public registry; updates to all other branches push to a private registry. To implement this, do the following:
 
 1. Customize your default Pipeline and click Enter.
-2. Select **Commit to a new branch** and enter the branch name. In this case, we save the Pipeline in a new branch `push-to-private`:![](./static/manage-a-harness-pipeline-repo-using-git-experience-20.png)
-3. Customize the Input Sets and Triggers for the new Pipeline as needed. For this specific use case, you would add a condition to the Trigger so it uses the Pipeline in `push-to-private` when it receives a payload from any branch except `main`.![](./static/manage-a-harness-pipeline-repo-using-git-experience-21.png)
-4. In the Trigger editor > Pipeline Input field, make sure that the Pipeline Reference Branch field references the new branch:![](./static/manage-a-harness-pipeline-repo-using-git-experience-22.png)
+2. Select **Commit to a new branch** and enter the branch name. In this case, we save the Pipeline in a new branch `push-to-private`:
+
+   ![](./static/manage-a-harness-pipeline-repo-using-git-experience-20.png)
+
+3. Customize the Input Sets and Triggers for the new Pipeline as needed. For this specific use case, you would add a condition to the Trigger so it uses the Pipeline in `push-to-private` when it receives a payload from any branch except `main`.
+
+   ![](./static/manage-a-harness-pipeline-repo-using-git-experience-21.png)
+   
+4. In the Trigger editor > Pipeline Input field, make sure that the Pipeline Reference Branch field references the new branch:
+   
+   ![](./static/manage-a-harness-pipeline-repo-using-git-experience-22.png)
 
