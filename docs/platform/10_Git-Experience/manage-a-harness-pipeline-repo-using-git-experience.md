@@ -38,8 +38,6 @@ Enter a name that corresponds to the code repo for the Pipeline. In this case we
 
 Select the Git Connector and the Git repo where you want to save the Pipeline. In this case, we select **myHarnessConfigs**.
 
-For the YAML path, enter **.harness/{PIPELINE\_SUBFOLDER}/{PIPELINE\_NAME}.yml**. The root folder **.harness** is required. The **{*****PIPELINE\_SUBFOLDER*****}** is not required, but it is good practice if you want to store multiple Pipelines in the same repo. This makes it much easier to manage all of your Harness definitions.
-
 In this case, we save the Pipeline YAML as `./harness/myFrontEndService/myFrontEndService.yaml`.
 
 ![](./static/manage-a-harness-pipeline-repo-using-git-experience-15.png)
