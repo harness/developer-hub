@@ -343,7 +343,7 @@ This is just the start of your Continuous Integration journey. It might seem lik
 
 ## Continuing on Your Continuous Integration Journey
 
-You can now execute your builds whenever you want in a consistent fashion. Can modify the trigger to watch for SCM events so upon commit, for example, the Pipeline gets kicked off automatically. All of the objects you create are available for you to re-use. One part we did not touch upon in this example is executing your [test suites](https://docs.harness.io/article/x0d77ktjw8-ci-pipeline-quickstart#step_4_build_and_run_unit_tests) in a similar format. Lastly, you can even save your backing work / have it as part of your source code. Everything that you do in Harness is represented by YAML; feel free to store it as part of your project.
+You can now execute your builds whenever you want in a consistent fashion. Can modify the trigger to watch for SCM events so upon commit, for example, the Pipeline gets kicked off automatically. All of the objects you create are available for you to re-use. One part we did not touch upon in this example is executing your test suites, such as demonstrated in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra). Lastly, you can even save your backing work / have it as part of your source code. Everything that you do in Harness is represented by YAML; feel free to store it as part of your project.
 
 ![CI as Code](static/ci-tutorial-node-docker/ci_as_code.png)
 
