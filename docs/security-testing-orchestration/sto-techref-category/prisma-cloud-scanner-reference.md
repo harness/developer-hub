@@ -313,10 +313,11 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step configuration (_deprecated_)
  
+
+
+<details><summary>Set up a Prisma Cloud scan in a Security step</summary>
+
 You can set up Prisma Cloud scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
-<details><summary>Set up a Grype scan in a Security step</summary>
-
 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';

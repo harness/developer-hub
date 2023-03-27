@@ -71,7 +71,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-open-hub-scanner-reference">Black Duck Open Hub</a> Orchestration, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Extraction, Ingestion </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>

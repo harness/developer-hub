@@ -1,11 +1,11 @@
 ---
-title: Black Duck Open Hub scanner reference
+title: Black Duck Hub scanner reference
 description: Image and repository scans with Black Duck Open Hub scanner
 sidebar_position: 60
 ---
 
 
-You can scan your container images using [Black Duck Open Hub](https://github.com/aquasecurity/trivy), a comprehensive and versatile open-source scanner. 
+You can scan your container images using Black Duck Hub, a comprehensive and versatile open-source scanner. 
 
 ## Before you begin
 
@@ -287,7 +287,7 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step configuration (_deprecated_)
 
-<details><summary>Set up a Black Duck Open Hub scan in a Security step</summary>
+<details><summary>Set up a Black Duck Hub scan in a Security step</summary>
 
 You can set up a Black Duck Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
