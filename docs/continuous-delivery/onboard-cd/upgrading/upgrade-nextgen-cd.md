@@ -112,7 +112,9 @@ An account setting, `allowCrossGenerationAccess` is introduced to enable cross g
 If this setting is set to true, you can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.
 
 :::note
-The default `allowCrossGenerationAccess` value for FirstGen is `false`. For NextGen, the default value for this setting is `true`.
+The default `allowCrossGenerationAccess` value for FirstGen is `false`. For NextGen, the default value for this setting is `true`. However, this setting value is set to `false` for new NextGen user accounts.
+
+When you change the `allowCrossGenerationAccess` setting value in FirstGen or NextGen, a FirstGen or NextGen audit is generated respectively.
 :::
 
 | `allowCrossGenerationAccess` | FirstGen | NextGen |
@@ -127,9 +129,3 @@ To upgrade to NextGen, select the **Launch Harness Next Generation** button in t
 To go back to FirstGen, select the **Launch First Generation** button in the Harness NextGen UI.
 
 Reach out to your assigned Customer Success Manager (CSM), Account Executive, or your Customer Success Engineer (CSE) for help upgrade to Harness NextGen, or for any further queries or comments. 
-
-
-
-
-
-
