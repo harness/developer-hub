@@ -194,6 +194,11 @@ Here are the steps for adding a Group Attribute Name in Okta:
 6. Select **Add Entity ID** and enter your custom Entity ID. The default Entity ID is **app.harness.io**. The value you enter here will override the default Entity ID.
 7. Click **SUBMIT**. The SAML SSO Provider is now set up to use the Group Attribute Name for authorization.
 8. Link the SAML SSO Provider to the Harness User Group. We will create a new Harness User Group, but you can use an existing Group so long as your Harness User account is a member and that User account is registered using the same email address you used to register with your SAML provider.
+
+:::important
+SSO should not be linked to the default **Account Administrator** group because this puts the group at risk of deletion.
+:::
+
 	1. Click the **Access Management** breadcrumb.
 	2. Click **User Groups**.
 	3. Click **Add User Group**.

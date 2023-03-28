@@ -1,6 +1,6 @@
 ---
 title: Speed Up CI Test Pipelines Using Parallelism
-description: Use parallelism to to run your build tests in parallel.
+description: Use parallelism to run tests in parallel.
 # sidebar_position: 2
 helpdocs_topic_id: kce8mgionj
 helpdocs_category_id: kncngmy17o
@@ -14,16 +14,24 @@ Currently, this feature is behind a Feature Flag. Contact [Harness Support](mail
 
 :::
 
-The more tests you run, the longer it takes for them to complete if run sequentially. To reduce test cycle time, you can split your tests and run them across multiple groups at the same time.
+The more tests you run in a **Run** step, the longer it takes for them to complete if run sequentially. To reduce test cycle time, you can use parallelism to split your tests and run them in multiple groups at the same time.
 
-*Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Parallelism is useful whenever you can split a step or stage into multiple groups and run them at the same time. Parallelism is also one of the [available methods](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md) you can use to speed up your CI builds.
+*Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Parallelism is useful whenever you can split the work of a step or stage into multiple groups and run the workloads at the same time. Parallelism is also one of the [available methods](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md) you can use to speed up your CI builds.
 
 ## Key concepts: parallelism and test splitting
 
-Many pipelines are set up to run a set of tests with every new commit. When you [set up parallelism](#set-up-parallelism-in-a-pipeline) in your pipeline, you specify the following:
+Many pipelines are set up to run a set of tests with every new commit. When you [set up parallelism in a pipeline](#set-up-parallelism-in-a-pipeline), you must specify the following:
 
-1. How many copies of the stage or step to run ([`parallelism`](#define-the-parallelism-strategy) field).
-2. How to split your tests into groups ([`split_tests`](#define-test-splitting) command). This command splits the tests as evenly as possible to ensure the fastest overall test time. You can split by file size or by file timing.
+1. How many copies of the stage or step to run, also known as the [parallelism strategy](#define-the-parallelism-strategy).
+2. The logic to use to split your tests into groups. How you do this depends on which step you're using to run tests:
+   * If you're using the **Run Tests** step, you specify the `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-parallelism-test-splitting-for-test-intelligence).
+   * If you're using a **Run** step, you use the `split_tests` command along with test split strategies, such as `--split-by file_size` to [](#define-test-splitting).
+
+:::info
+
+For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+
+:::
 
 The following figure illustrates how parallelism can speed up your CI pipelines. The first time you run with parallelism, the pipeline splits the tests by file size and collects timing data for all tests. You can then split your tests by time and speed up your pipeline even further. Every build optimizes the splitting based on the most recent timing data.
 
@@ -86,7 +94,7 @@ For more information, go to [Publish test reports](#define-the-test-reports).
 
 The following steps describe the high-level workflow for setting up parallelism in a pipeline.
 
-1. Enable parallelism and specify the number of jobs you want to in parallel. Go to [Define the parallelism strategy](#define-parallelism-strategy).
+1. Enable parallelism and specify the number of jobs you want to in parallel. Go to [Define the parallelism strategy](#define-the-parallelism-strategy).
 2. Define the following environment variables in the stage where you run your parallelism strategy:
 	* `HARNESS_NODE_TOTAL` = `<+strategy.iterations>` — The total number of iterations in the current Stage or Step.
 	* `HARNESS_NODE_INDEX` = `<+strategy.iteration>` — The index of the current test run. This index is in the range of `0` to `parallelism``- 1`. This snippet shows how you can define and use these variables in the YAML editor:
@@ -145,7 +153,13 @@ You can configure parallelism in the Pipeline Studio as well:
 
 ## Define test splitting
 
-You use the `split_tests` CLI command to define the set of tests you want to run. In the **Command** field of the step where you run your tests, you need to do the following:
+:::info
+
+The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+
+:::
+
+You use the `split_tests` CLI command to define the set of tests you want to run. In the **Command** field of the **Run** step where you run your tests, you need to do the following:
 
 1. Configure the `split_tests` command to define how you want to split your tests. This command outputs a string of your test groups.
 2. Run the test command with your test-groups string as input.
@@ -191,7 +205,7 @@ The pipeline needs timing data from the previous run to split tests by time. If 
 * `--split-by testcase_timing` — Split tests into groups based on the timing data for individual test cases.
 * `--split-by testsuite_timing` — Split tests into groups based on the timing data for individual test suites.
 
-#### Specifying the Tests to Split
+### Specifying the tests to split
 
 To split tests by time, you need to provide a list of the classes, test cases, or test suites to include.In the following example code, included in a Run Tests step, the `split_tests` command parses all matching test files (`--glob` option) and splits them into separate lists based on `--split-by file_timing`. The number of lists is based on the parallelism setting. If `parallelism` = 2, for example, the the command creates creates two separate lists of files, evenly divided by testing time. The pipeline then creates two parallel steps that run tests for the files in each list.
 
@@ -325,7 +339,7 @@ pipeline:
 
 ## See also
 
-* [Optimizing CI Build Times](https://harness.helpdocs.io/article/g3m7pjq79y)
-* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](https://harness.helpdocs.io/article/eh4azj73m4)
+* [Optimizing CI Build Times](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md)
+* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 * [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)

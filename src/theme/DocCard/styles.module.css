@@ -16,6 +16,10 @@
   transition-property: border, box-shadow;
 
   height: 100%;
+  padding: 24px !important;
+}
+.cardContainer h2 {
+  font-size: var(--ifm-h4-font-size);
 }
 
 .cardContainer:hover {

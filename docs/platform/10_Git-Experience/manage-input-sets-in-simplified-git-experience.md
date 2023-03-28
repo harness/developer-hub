@@ -94,7 +94,7 @@ In this step, you will create a Trigger specifically for the new branch. Do the 
 
 * In the Configuration tab, include the branch in the trigger name. For example, **build-on-push-to-my-new-feature-branch**.
 * In the Conditions tab, set the Condition to trigger on the specified branch only. If you want to trigger on a Pull Request, for example, set the Target Branch field to `my-new-feature-branch`.  
-You might also want to set the Changed Files field to exclude the .harness folder. This will ensure that updates to your Harness configs don't trigger unwanted builds.
+You might also want to set the Changed Files field to exclude the `.harness` folder. This will ensure that updates to your Harness configs don't trigger unwanted builds.
 
   ![](./static/manage-input-sets-in-simplified-git-experience-12.png)
 

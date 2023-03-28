@@ -34,7 +34,7 @@ export const certifications: CardItem[] = [
       module: "ci",
       type: certType.Developer,
       description:
-        "Continuous Integation focuses on building and testing your code. Your Continuous Integration pipleine should provides a bird's-eye view of all your builds and drill down into specific builds to troubleshoot and analyze the root causes of issues.",
+        "Continuous Integration focuses on building and testing your code. Your Continuous Integration pipeline should provides a bird's-eye view of all your builds and drill down into specific builds to troubleshoot and analyze the root causes of issues.",
       version: "Harness CI Free/Team Plans",
       link: "/certifications/continuous-integration",
     },

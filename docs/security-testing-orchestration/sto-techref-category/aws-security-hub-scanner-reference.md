@@ -4,10 +4,20 @@ description: Image scans with AWS Image scanner
 sidebar_position: 40
 ---
 
+You can set up a AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+
+
+## Before you begin
+
+```mdx-code-block
+import StoCreateDinD from './shared/dind-bg-step.md';
+```
+
+<StoCreateDinD />
+
 
 ## Security step settings
 
-You can set up a AWS Security Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -23,36 +33,10 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_config_name` =  `default`
   
 
-
-
-<!-- CONTAINERS --------------------------------------------------------------------------- 
-
 ```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
-
-<StoLegacyContainer />
-
-
-<!-- REPOS --------------------------------------------------------------------------- 
-
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
-
-<!-- LEGACY INSTANCE  --------------------------------------------------------------------------- 
-
-
-```mdx-code-block
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-```
-
-<StoLegacyInstance />
-
-<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- -->
+<StoSettingFailOnSeverity />
 
 
 ```mdx-code-block

@@ -16,6 +16,22 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### March 24, 2023, version 78817
+
+#### Early access
+
+This release does not include any early access features.
+
+#### What's new
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- The `/usageRestrictions/apps` API was being called multiple times with the same parameters. (CDS-54646)
+
+  This issue is fixed. The API is now called only once. 
+
 ### March 15, 2023, version 78712
 
 #### Early access

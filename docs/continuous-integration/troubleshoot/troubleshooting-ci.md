@@ -62,4 +62,4 @@ Azure Kubernetes Service (AKS) security group restrictions can cause builds runn
 
 If you have a custom network security group, it must allow inbound traffic on port 8080, which the Delegate service uses.
 
-For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic)
+For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).

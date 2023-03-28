@@ -7,7 +7,7 @@ sidebar_position: 180
 
 ## Security step settings
 
-You can set up Nexus scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up Nexus scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -36,28 +36,11 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- Accepted values(s): `default`
 
 
-
-
-<!-- CONTAINERS ---------------------------------------------------------------------------
-
 ```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
+<StoSettingFailOnSeverity />
 
-<StoLegacyContainer />
-
-
-<!-- REPOS ---------------------------------------------------------------------------  
-
-### Repository scan settings
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
-
-<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  -->
 
 ### Instance settings 
 
