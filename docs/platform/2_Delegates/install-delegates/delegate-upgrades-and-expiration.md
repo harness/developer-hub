@@ -20,6 +20,8 @@ The Kubernest manifest has a component called `upgrader`. The `upgrader` is a cr
 
 To prevent the installation of the automatic upgrade feature, remove the `cronJob` section before you apply the manifest.
 
+You can also change the time when the the upgrade cron job runs by updating the `schedule`. 
+
 <details>
     <summary>Example Kubernetes manifest</summary>
 
@@ -88,15 +90,7 @@ If you disable automatic upgrade, then you have to manually upgrade the delegate
 
 Harness has an N-3 support policy for delegates. N-3 means that the current version and the three previous versions are supported. A new version is released approximately every two weeks. Each new version has more capabilities than the previous version and general fixes. 
 
-Example:
-
-N = 78705, released March 15th
-
-N-1 = 78500, released February 23rd
-
-N-2 = 78306, released February 6th
-
-N-3 = 78101, released January 17th
+For example, if you have version 23.03.XXXXX installed, all images from 23.01.XXXXX to 23.03.XXXXX are supported. 
 
 Delegate expiration does not mean the delegate stops working. It means that you may experience issues because the backend has moved too far ahead, making the delegate no longer backward compatible. If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. 
 
@@ -104,7 +98,7 @@ Delegate expiration does not mean the delegate stops working. It means that you 
 
 To determine when your delegate expires, you can check the **INSTANCE STATUS** column.
 
-1. Go to **Projects**, select a project, and then select **Delegates**.
+1. Select an account, a project, or an organization, and then select **Delegates**.
 
 2. Locate your delegate in the list, and then check the **INSTANCE STATUS** column.
 
@@ -114,8 +108,11 @@ Harness does not recommend the use of delegate images that are not current. Howe
 
 **To update the delegate YAML**
 
-1. Replace **delegate name** with the name you gave your delegate. The Harness Delegate image is the latest release image by default.
-2. Replace **account id** with your Harness account ID.
+1. Replace **PUT_YOUR_DELEGATE_NAME_HERE** with the name you gave your delegate. The Harness Delegate image is the latest release image by default.
+2. Replace **PUT_YOUR_HARNESS_ACCOUNTID_HERE** with your Harness account ID.
+3. Replace **PUT_YOUR_DELEGATE_TOKEN_HERE** with your token.
+4. Replace **PUT_YOUR_MANAGER_ENDPOINT_HERE** with `https://app.harness.io/gratis`
+5. Replace **PUT_YOUR_DELEGATE_IMAGE_HERE** with the version number for the delegate image. For example: `harness/delegate:23.03.78705`
 
 For an example of a complete Delegate YAML file, see [Example Kubernetes Manifest: Harness Delegate](/docs/platform/2_Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).
 
