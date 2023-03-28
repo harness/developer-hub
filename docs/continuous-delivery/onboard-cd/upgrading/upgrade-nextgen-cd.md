@@ -111,16 +111,21 @@ An account setting, `allowCrossGenerationAccess` is introduced to enable cross g
 
 If this setting is set to true, you can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.
 
-:::note
-The default `allowCrossGenerationAccess` value for FirstGen is `false`. For NextGen, the default value for this setting is `true`. However, this setting value is set to `false` for new NextGen user accounts.
+The default `allowCrossGenerationAccess` value for NextGen is `TRUE`. 
+
+The default `allowCrossGenerationAccess` value for FirstGen is:
+
+* `TRUE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is disabled.  
+* `FALSE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is enabled.
+
+For new FirstGen and NextGen user accounts, this value is set to `FLASE` by default.
 
 When you change the `allowCrossGenerationAccess` setting value in FirstGen or NextGen, a FirstGen or NextGen audit is generated respectively.
-:::
 
 | `allowCrossGenerationAccess` | FirstGen | NextGen |
 | :---| :--- | :--- |
-| True | The **Launch Harness Next Generation** button will be visible in the UI | The **Launch First Generation** button will be visible in the UI |
-| False | UI will not show the **Launch Harness Next Generation** button | UI will not show the **Launch First Generation** button |
+| `TRUE` | The **Launch Harness Next Generation** button will be visible in the UI | The **Launch First Generation** button will be visible in the UI |
+| `FALSE` | UI will not show the **Launch Harness Next Generation** button | UI will not show the **Launch First Generation** button |
 
 To upgrade to NextGen, select the **Launch Harness Next Generation** button in the Harness FirstGen UI. 
 
