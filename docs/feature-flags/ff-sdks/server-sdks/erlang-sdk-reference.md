@@ -297,9 +297,10 @@ The SDK by default starts up a single instance called `default` which is configu
 If different parts of your application need to use 
 specific [projects](https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project/), you can start up additional client instances using by defining additional configuration for each unique project.
 
-*Note: if the default instance fails to start, for example due to an authentication error with the API key, then the SDK
-will fail to boot and any additional instances won't start. You can disable the default instance from starting, 
-see [Erlang project config](#erlang-project-config) and [Elixir project config](#elixir-project-config) 
+:::info note
+If the default instance fails to start, for example, due to an authentication error with the API key, then the SDK fails to boot and any additional instances do not start. To prevent the default instance from starting, 
+go to [Erlang project config](#erlang-project-config) and [Elixir project config](#elixir-project-config).
+:::
 
 #### Erlang Project Config
  
@@ -574,7 +575,7 @@ To do this, pass the new URLs in when initializing the SDK, as shown below.
     get_flag_loop().
 
   ```
-  * You can also find a sample Erlang apllication that uses the Erlang SDK in [GitHub](https://github.com/harness-apps/ff-erlang-server-sample).
+You can also find a sample Erlang apllication that uses the Erlang SDK in [GitHub](https://github.com/harness-apps/ff-erlang-server-sample).
   
 * **Sample code for Elixir applications**
 
