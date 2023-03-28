@@ -331,7 +331,7 @@ You can set up a Harness trigger to listen on the chart repo and execute the pip
 
 ## Option: Fetch Helm Chart Dependencies
 
-Harness can fetch Helm chart dependencies within Github using the `--dependency-update` command flag. Harness fetches dependent Helm charts along with the main Helm chart being targeted for the deployment. These dependencies will be resolved before Harness performs the deployment of the primary Helm chart configured with the service explicitly. 
+Harness can fetch Helm chart dependencies within GitHub using the `--dependency-update` command flag. Harness fetches dependent Helm charts along with the main Helm chart being targeted for the deployment. These dependencies will be resolved before Harness performs the deployment of the primary Helm chart configured with the service explicitly. 
 
 For more information, go to [Helm Docs](https://helm.sh/docs/helm/helm_template/#helm).
 
