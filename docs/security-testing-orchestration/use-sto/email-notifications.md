@@ -6,12 +6,12 @@ sidebar_position: 210
 
 This topic describes two example workflows for setting up automatic notifications based on scan results. 
 
-When you run a scan, the step generates a set of of output variables that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. You can [include these variables in automated notifications](#send-notification-emails-with-scan-results) such as emails. You can also [create governance policies that evaluate these variables](#stop-builds-and-generate-notifications-using-governance-policies) and use the results to stop pipeline builds and send automated notifications.
+When you run a scan, the step generates a set of output variables that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. You can [include these variables in automated notifications](#send-notification-emails-with-scan-results) such as emails. You can also [create governance policies that evaluate these variables](#stop-builds-and-generate-notifications-using-governance-policies) and use the results to stop pipeline builds and send automated notifications.
 
 
 ## Send notifications with scan results
 
-In this workflow, you add an Email step that notifies recipients of the the scan results. The email lists the number of issues detected, grouped by severity level: critical, high, medium, and so on. The pipeline sends a notification whenever the previous scan step finishes successfully.
+In this workflow, you add an Email step that notifies recipients of the scan results. The email lists the number of issues detected, grouped by severity level: critical, high, medium, and so on. The pipeline sends a notification whenever the previous scan step finishes successfully.
 
 1. Add a **Custom** stage to your pipeline immediately after the Build or Security stage that runs the scan.
 
@@ -55,7 +55,7 @@ In this workflow, you create a simple OPA policy for the pipeline: If the scan d
 
 2. Click **Policies** (top right) and then **New Policiy**. 
 
-3. Given your new policy the name **Security no NEW_CRITICAL or NEW_HIGH issues**. 
+3. Give your new policy the name **Security no NEW_CRITICAL or NEW_HIGH issues**. 
 
 4. In the Edit Policy window, enter the following OPA code: 
 
@@ -242,7 +242,7 @@ pipeline:
                        New High: <+pipeline.stages.banditScanStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_HIGH> <br>
                        Medium: <+pipeline.stages.banditScanStage.spec.execution.steps.Bandit_1.output.outputVariables.MEDIUM> <br>
                        New Medium: <+pipeline.stages.banditScanStage.spec.execution.steps.Bandit_1.output.outputVariables.NEW_MEDIUM>  <br>
-                       See https://app.harness.io/ng/#/account/H5W8iol5TNWc4G9h5A2MXg/sto/orgs/default/"
+                       See https://app.harness.io/ng/#/account/MY_ACCOUNT_ID/sto/orgs/default/"
                   timeout: 1d
               - step:
                   type: Policy
