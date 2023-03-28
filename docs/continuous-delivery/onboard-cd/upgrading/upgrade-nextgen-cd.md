@@ -113,7 +113,7 @@ If this setting is set to true, you can switch between CD FirstGen and NextGen w
 
 The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` as NextGen is `TRUE`. 
 
-The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` asFirstGen is:
+The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` as FirstGen is:
 
 * `TRUE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is disabled.  
 * `FALSE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is enabled.
