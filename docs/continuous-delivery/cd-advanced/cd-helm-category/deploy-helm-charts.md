@@ -338,19 +338,16 @@ For more information, go to [Helm Docs](https://helm.sh/docs/helm/helm_template/
 To update Helm chart dependencies:
 
 * For Kubernetes deployments, configure the template with `--dependency-update` command flag.
+
+<img width="1359" alt="image" src="https://user-images.githubusercontent.com/52221549/228110120-ec5f4bf5-9073-46e7-954b-2005bc959fb8.png">
+
 * For Native Kubernetes deployments, add the command flag, `--depdency-update` to `Install` and `Upgrade` commands.
+
+<img width="1354" alt="image" src="https://user-images.githubusercontent.com/52221549/228110162-466054b4-cb9c-4b46-b1af-a27166bf0fdd.png">
 
 :::info
 All dependency repositories must be available and accessible from delegate.
 :::
-
-Here is an example:
-
-<img width="1359" alt="image" src="https://user-images.githubusercontent.com/52221549/228110120-ec5f4bf5-9073-46e7-954b-2005bc959fb8.png">
-
-<img width="1354" alt="image" src="https://user-images.githubusercontent.com/52221549/228110162-466054b4-cb9c-4b46-b1af-a27166bf0fdd.png">
-
-
 
 ## Notes
 
