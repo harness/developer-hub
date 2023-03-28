@@ -11,7 +11,7 @@ By creating a step group template, you can standardize and simplify your deploym
 
 You can create a step group template at the project, organization, and account levels.
 
-## Product Demo Vide
+## Product Demo Video
 
 <!-- Video:
 https://harness-1.wistia.com/medias/x5wsia9i08-->
