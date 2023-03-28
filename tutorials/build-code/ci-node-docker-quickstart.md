@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+sidebar_position: 30
 description: This build automation guide walks you through building a NodeJS and Docker application in a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 ---

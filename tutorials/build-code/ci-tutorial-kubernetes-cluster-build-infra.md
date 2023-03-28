@@ -1,5 +1,5 @@
 ---
-sidebar_position: 100
+sidebar_position: 20
 description: Create a pipeline that uses a Kubernetes cluster build infrastructure.
 slug: /build-code/ci-tutorial-kubernetes-cluster-build-infra
 ---
@@ -25,6 +25,7 @@ This tutorial assumes you have experience with Kubernetes, such as setting up se
 In addition to a Harness account, you need the following accounts and tools:
 
 <!-- revise these -->
+<!-- make sure to follow tutorial template on confluence -->
 
 * **Github account:** This tutorial clones a codebase from a Github repo. You will need a Github account so Harness can connect to Github.
 * **Docker Hub account and repo:** You will need to push and pull the image you build to Docker Hub. You can use any repo you want, or create a new one for this tutorial.
