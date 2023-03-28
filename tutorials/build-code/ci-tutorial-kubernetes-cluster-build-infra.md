@@ -17,50 +17,21 @@ You'll learn how to create a CI pipeline that does the following:
 5. Pulls the uploaded image into the build infrastructure as a service dependency.
 6. Runs an integration test against the app.
 
-## Prerequisites
+<details>
+<summary>Architecture diagram</summary>
 
-<!-- entire topic: Steps are structured as ul or subsections instead of ol. Use of click v select. Capitalization issues. Some UI labels lacking bold style. We vs you. -->
-This tutorial assumes you have experience with Kubernetes, such as setting up service accounts and clusters.
-
-In addition to a Harness account, you need the following accounts and tools:
-
-<!-- revise these -->
-<!-- make sure to follow tutorial template on confluence -->
-
-* **Github account:** This tutorial clones a codebase from a Github repo. You will need a Github account so Harness can connect to Github.
-* **Docker Hub account and repo:** You will need to push and pull the image you build to Docker Hub. You can use any repo you want, or create a new one for this tutorial.
-* **Kubernetes cluster for Harness Delegate and build farm:**
-	+ You'll need a Kubernetes cluster for Harness to use for the Harness Delegate and as a build farm. Ensure you have a cluster that meets the following requirements:
-		- **Number of pods:** 3 (two pods for the Harness Delegate, the remaining pod for the build farm).
-		- **Machine type:** 4vCPU
-		- **Memory:** 16GB RAM. The build farm and Delegate requirements are low but the remaining memory is for Kubernetes, the Docker container, and other default services.
-		- **Networking:** Outbound HTTPS for the Harness connection, and to connect to Docker Hub. Allow TCP port 22 for SSH.
-		- **Namespace:** When you install the Harness Delegate, it will create the `harness-delegate` namespace. You'll use the same namespace for the build farm.
-* A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.
-
-For more information, go to the Kubernetes documentation on [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
-
-:::caution
-Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not recommended. For more information, go to [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
-:::
-
-```mdx-code-block
-import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
-
-<CISignupTip />
-
-## Visual Summary
-
-Here's an architecture diagram of a basic setup for Harness CI:
+The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-13.png)
 
 You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
 
-### Video Overview
+</details>
 
-Here's a quick video that provides an overview of Harness CI:
+<details>
+<summary>Video summary</summary>
+
+This video describes a pipeline similar to the one built in this tutorial. Note that this video uses the **Service Dependency** step, which is deprecated in favor of the **Background** step.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -71,13 +42,41 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
    <iframe src="//fast.wistia.net/embed/iframe/fsc2b05uxz" allowtransparency="true" frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" allowfullscreen="" mozallowfullscreen="" webkitallowfullscreen="" oallowfullscreen="" msallowfullscreen="" width="620" height="349"></iframe><script src="//fast.wistia.net/assets/external/E-v1.js" async=""></script>
 </div -->
 
-## Option: Use Your Own Code Repo
+</details>
 
-For this tutorial, we use a codebase located at: <!-- make this a link -->
+## Prerequisites
 
-`https://github.com/keen-software/goHelloWorldServer`
+This tutorial assumes you have experience with Kubernetes, such as setting up service accounts and clusters.
 
-All steps in this tutorial work with any git repo, so you can use your own code repo instead.
+In addition to a Harness account, you need the following accounts and tools:
+
+* A **GitHub account** where you can fork the tutorial repo.
+* A **Docker Hub account and repo** where the pipeline can push and pull app images.
+* A **Kubernetes cluster** where you'll install the [Harness Delegate](/docs/platform/Delegates/get-started-with-delegates/delegates-overview) and run the build farm. The cluster needs the following minimum specifications:
+  * Pods: 3 (two for the Delegate and one for the build farm)
+  * Machine type: 4vCPU
+  * Memory: 16GB RAM
+  * Networking: Outbound HTTPS for the Harness and Docker Hub connections. Allow port 22 for SSH.
+  * Namespace: During the tutorial, when you install the Harness Delegate, the `harness-delegate` namespace is created. You'll use the same namespace for the build infrastructure.
+* A **Kubernetes service account** with permission to create entities in the target namespace. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. Usually, the `cluster-admin` permission or `namespace admin` permission is sufficient. For more information, go to the Kubernetes documentation on [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
+
+:::caution
+
+Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not recommended. For more information, go to [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
+
+:::
+
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+```
+
+<CISignupTip />
+
+## Fork tutorial repo
+
+This tutorial uses a sample repo. Fork the tutorial repo [keen-software/goHelloWorldServer](https://github.com/keen-software/goHelloWorldServer) to your GitHub account.
+
+Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
 
 ## Step 1: Start a New Pipeline
 
@@ -358,12 +357,11 @@ Click **Console View** to see more details.
 
 You can see the build number in the **Build and push image to Docker Hub** step used as an image tag. For example, 11:
 
-
 ```
 --destination=myrepo/ciquickstart:11
 ```
-In the Initialize step of the **Run Integration Test** stage, you can see the image with the same tag pulled from your Docker Hub repo:
 
+In the Initialize step of the **Run Integration Test** stage, you can see the image with the same tag pulled from your Docker Hub repo:
 
 ```
    8 Pulling image "myrepo/ciquickstart:11"  
@@ -381,18 +379,16 @@ Click **Builds**. Your build appears.
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-31.png)
 
+## Continue your Continuous Integration journey
+
 Congratulations! You have created a CI pipeline that builds and tests your code.
 
-## Using YAML
+With CI pipelines you can consistently execute your builds at any time. For example, you can try adding a commit trigger to the pipeline that listens for commits against the codebase and automatically kicks off the pipeline. All objects you create are available to reuse in your pipelines.
 
-The entire Pipeline is available as YAML, also.
+You can also save your build pipelines as part of your source code. Everything that you do in Harness is represented by YAML; you can store it all alongside your project files. For example, here is a YAML example of the pipeline created in this tutorial.
 
-* In **Builds**, click more options (︙) and select **Edit Pipeline**.
-* Click **YAML**.
-
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-32.png)
-
-You can see the entire Pipeline as YAML. You can edit anything in the Pipeline and run it again.
+<details>
+<summary>Pipeline YAML example</summary>
 
 ```yaml
 pipeline:  
@@ -476,3 +472,7 @@ pipeline:
                                         curl localhost:8080  
                                         curl localhost:8080?Hello!_I_am_a_nice_demo!  
 ```
+
+</details>
+
+After you build an artifact, you can use the Harness Continuous Delivery (CD) module to deploy your artifact. If you're ready to try CD, check out the [CD Tutorials](/tutorials/deploy-services#all-tutorials).
