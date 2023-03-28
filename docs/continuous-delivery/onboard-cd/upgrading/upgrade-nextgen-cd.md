@@ -107,7 +107,18 @@ For details, go to [Policy as Code](/docs/category/policy-as-code).
 
 ## Upgrading to NextGen CD
 
-You can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.  
+An account setting, `allowCrossGenerationAccess` is introduced to enable cross generational access between CD FirstGen and NextGen. This setting is visible to CD subscribed (free/paid account) users only. This setting can be changed by account admins only. 
+
+If this setting is set to true, you can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.
+
+:::note
+The default `allowCrossGenerationAccess` value for FirstGen is `false`. For NextGen, the default value for this setting is `true`.
+:::
+
+| `allowCrossGenerationAccess` | FirstGen | NextGen |
+| :---| :--- | :--- |
+| True | The **Launch Harness Next Generation** button will be visible in the UI | The **Launch First Generation** button will be visible in the UI |
+| False | UI will not show the **Launch Harness Next Generation** button | UI will not show the **Launch First Generation** button |
 
 To upgrade to NextGen, select the **Launch Harness Next Generation** button in the Harness FirstGen UI. 
 
@@ -116,6 +127,9 @@ To upgrade to NextGen, select the **Launch Harness Next Generation** button in t
 To go back to FirstGen, select the **Launch First Generation** button in the Harness NextGen UI.
 
 Reach out to your assigned Customer Success Manager (CSM), Account Executive, or your Customer Success Engineer (CSE) for help upgrade to Harness NextGen, or for any further queries or comments. 
+
+
+
 
 
 
