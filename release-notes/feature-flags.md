@@ -13,6 +13,34 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 28, 2023
+
+### What's new
+
+The [**Erlang server SDK**](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference), which was in Beta, has been released as GA with version **1.0.0**. This release includes the following updates.
+
+* **Breaking changes**
+
+  - Changes to mulit-instance behavior. Go to the [Readme](https://github.com/harness/ff-erlang-server-sdk#run-multiple-instances-of-the-sdk) for updated instructions and code samples for the following:
+    - If you define a multi-instance configuration, and one of the instances (including the default instance) fails to authenticate, then the other instances do not attempt to start, and the SDK does not boot.
+    - You can choose not to start the default instance.
+
+* **Enhancements**
+  - The SDK is now available on [hex.pm](https://hex.pm/).
+  - Improved logging for debugging purposes
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The **Erlang server SDK** was released as GA, version **1.0.0**, and includes the following bug fix:
+
+* There was an issue in multi-instance functionality that prevented users from starting up multiple instances. This issue has been fixed. (FFM-7187)
+
 ## March 23, 2023
 
 ### What's new

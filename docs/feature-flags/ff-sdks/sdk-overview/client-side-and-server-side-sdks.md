@@ -60,3 +60,6 @@ The following table lists the differences between the client-side and server-sid
 | [Xamarin](../client-sdks/xamarin-sdk-reference.md) | [Ruby](../server-sdks/ruby-sdk-reference.md) |
 | [React Client](../client-sdks/react-client.md) | [PHP](../server-sdks/php-sdk-reference.md) |
 |  | [Apex](../server-sdks/apex-sdk-reference.md)  |
+|  | [Erlang](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference)  |
+
+
