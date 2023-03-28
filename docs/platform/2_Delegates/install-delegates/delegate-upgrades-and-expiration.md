@@ -100,9 +100,9 @@ N-3 = 78101, released January 17th
 
 Delegate expiration does not mean the delegate stops working. It means that you may experience issues because the backend has moved too far ahead, making the delegate no longer backward compatible. If you do not have automatic upgrade enabled, Harness recommends upgrading the delegate at least once per quarter. 
 
-### Find the expiration date for your delegate
+### Determine when your delegate expires
 
-To determine when your delegate will expire, you can check the **INSTANCE STATUS** column.
+To determine when your delegate expires, you can check the **INSTANCE STATUS** column.
 
 1. Go to **Projects**, select a project, and then select **Delegates**.
 
