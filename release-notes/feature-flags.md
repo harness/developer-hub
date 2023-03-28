@@ -27,6 +27,8 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
+The Feature Flags UI has been updated to version 0.344.0 with the following update:
+
 * When a new target was created, and the user was on the first page of the target list, the list did not refresh. This issue has been fixed. (FFM-7266)
 
 ## March 23, 2023
