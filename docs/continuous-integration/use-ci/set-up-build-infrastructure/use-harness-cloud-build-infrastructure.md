@@ -43,7 +43,7 @@ Refer to the following image specification README files for more information abo
 * [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
 * [Windows Server 2019 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
 
-You can include steps in your pipeline to specify a version of a tool installed on an image, lock the stage to a required version, or install additional tools and versions that aren't available on the image. These steps run on the host machine or run a separate Docker images.
+You can include steps in your pipeline to specify a version of a tool installed on an image, lock the stage to a required version, or install additional tools and versions that aren't available on the image. These steps run on the host machine or run as separate Docker images.
 
 :::caution
 
@@ -239,7 +239,7 @@ pipeline:
 
 :::info
 
-Add steps to your pipeline to specify versions of tools that you want to use, set up environments, or install additional tools. For image specifications and instructions on specifying versions, locking versions, and installing additional tools, go to the [Platforms and image specifications](#platforms-and-image-specifications) section, above.
+Add steps to your pipeline to specify versions of tools, set up environments, or install additional tools. For image specifications and instructions on specifying versions, locking versions, and installing additional tools, go to the [Platforms and image specifications](#platforms-and-image-specifications) section, above.
 
 Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions to **Lock versions or install additional tools** in [Platforms and image specifications](#platforms-and-image-specifications) to prevent your pipeline from failing when the image changes.
 
