@@ -22,7 +22,7 @@ To install and run a plugin, you need the following:
 	+ [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A build infrastructure and Delegate to run builds:
 	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
-	+ [Install a Delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md)
+	+ [Install a Delegate](../../../platform/2_Delegates/install-delegates/overview.md)
 * A CI pipeline with a Build stage to run the plugin:
 	+ [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md)
 * You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.

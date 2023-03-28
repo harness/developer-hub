@@ -1,7 +1,7 @@
 ---
 title: Deploy a Docker delegate to Amazon ECS or AWS Fargate
 description: Provides information and YAML for the installation of a delegate into an Amazon ECS or AWS Fargate cluster.
-# sidebar_position: 2
+sidebar_position: 5
 ---
 
 # Deploy a Docker delegate to Amazon ECS or AWS Fargate

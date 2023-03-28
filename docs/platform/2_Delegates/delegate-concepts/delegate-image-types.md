@@ -1,7 +1,7 @@
 ---
 title: Delegate image types
 description: Provides information about delegate image types.
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: nb9zuo3mxd
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false
@@ -79,7 +79,7 @@ data:
 ---
 
 # For information about how to proxy the delegate, see the documentation: 
-# [Configure delegate proxy settings](/docs/platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md)
+# [Configure delegate proxy settings](/docs/platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings.md)
 
 apiVersion: apps/v1
 kind: Deployment
@@ -288,5 +288,5 @@ spec:
 
 ### For more information
 
-* To build delegate images with a custom toolset, see [Build custom images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
-* To find out about versions of the tools that are included on delegate images and how you can customize them, see [Install a delegate with third-party tool custom binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
+* To build delegate images with a custom toolset, see [Build custom images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+* To find out about versions of the tools that are included on delegate images and how you can customize them, see [Install a delegate with third-party tool custom binaries](/docs/platform/2_Delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).

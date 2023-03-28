@@ -1,7 +1,7 @@
 ---
-title: Delegate auto-upgrade
+title: Configure delegate auto-upgrade
 description: Describes automatic upgrades for the Harness Delegate and options to disable them. 
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: iusry91f4u
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false

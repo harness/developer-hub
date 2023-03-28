@@ -17,7 +17,7 @@ The Docker Delegate is limited by the total amount of memory and CPU on the loca
 
 ## Install the Delegate
 
-Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
+Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/overview):
 
 * Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `macos-amd64`, `macos-arm64`, `windows-amd64`, `linux-amd64`, `linux-arm64`.
 * For macOS, add `-e RUNNER_URL=http://host.docker.internal:3000`.

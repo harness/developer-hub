@@ -34,7 +34,7 @@ export const featuredTutorials: CardItem[] = [
     {
       name: "Documentation Topics",
       description:
-        "These are prudent topics to Continuous Delivery.",
+        "",
       list: [
         {
           title: "Onboard with Continuous Delivery",
