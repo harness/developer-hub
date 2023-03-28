@@ -180,17 +180,17 @@ Next, you need to define the build infrastructure. Harness offers several [build
    * **Connection Test:** Wait for the test to finish and then click **Finish**.
 
 5. In **Namespace**, enter `harness-delegate-ng`, and then select **Continue**.
+
 ## Add a build and test step
 
 Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase and run unit tests.
 
-You can use either a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) or a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) to run unit tests in a CI pipeline. With the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+You can use either a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) or a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) to run unit tests in a CI pipeline. This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on either the build infrastructure or a separate container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
-
+1. On the **Execution** tab for your Build stage, select **Add Step**, select **Add Step** again, and then select the **Run** step from the Step Library.
+1. 
 
 <!-- Step 4 build and run unit tests: Delete echo welcome message step. The instruction for the name field is given twice. Missing instruction to select “Connect thru a harness delegate >only use delegates w following tags” after setting up the secret. Report paths are under optional config (have to expand). -->
-
-You should now be in the Execution tab. Click **Add step** and then select **Run** (under Build).
 
 The Run step executes one or more commands on a container image. Configure the step as follows:
 
