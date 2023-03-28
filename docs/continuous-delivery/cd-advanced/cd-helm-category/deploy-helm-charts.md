@@ -328,6 +328,24 @@ For more information, go to [Kubernetes Rollback](../../cd-technical-reference/c
 
 You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md).
 
+
+## Option: Fetch Helm Chart Dependencies
+
+To update Helm Chart dependencies, customer can configure:
+
+1. If this is K8s Deployment then they can configure Template command with `--dependency-update`
+2. If this is Native K8s then they can add the same flag (`--depdency-update`) to `Install` and `Upgrade` commands
+
+**But in this case all the dependency repos should be available and accessible from delegate**
+
+Example below:
+
+<img width="1359" alt="image" src="https://user-images.githubusercontent.com/52221549/228110120-ec5f4bf5-9073-46e7-954b-2005bc959fb8.png">
+
+<img width="1354" alt="image" src="https://user-images.githubusercontent.com/52221549/228110162-466054b4-cb9c-4b46-b1af-a27166bf0fdd.png">
+
+
+
 ## Notes
 
 #### Uninstall command flag
