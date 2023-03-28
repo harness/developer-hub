@@ -331,7 +331,9 @@ You can set up a Harness trigger to listen on the chart repo and execute the pip
 
 ## Option: Fetch Helm Chart Dependencies
 
-To update Helm Chart dependencies, customer can configure:
+Harness can fetch Helm Chart Dependencies within Github using the `--dependency-update` command flag. Harness will be able to fetch dependent Helm Charts along with the main Helm Chart being targeted for deployment. The Dependencies will be resolved before Harness performs deployment of the primary Helm Chart that is configured with the service explicitly. 
+
+To update Helm Chart dependencies, user's can configure:
 
 1. If this is K8s Deployment then they can configure Template command with `--dependency-update`
 2. If this is Native K8s then they can add the same flag (`--depdency-update`) to `Install` and `Upgrade` commands
