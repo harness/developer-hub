@@ -4,6 +4,8 @@ title: Linux DNS spoof
 ---
 Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 
+![Linux DNS spoof](./static/images/linux-dns-spoof.png)
+
 ## Use cases
 
 - Induces DNS spoof on the target Linux machines.

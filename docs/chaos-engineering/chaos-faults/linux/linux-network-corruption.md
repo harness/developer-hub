@@ -4,6 +4,8 @@ title: Linux network corruption
 ---
 Linux network corruption injects chaos to disrupt network connectivity on a Linux machine by corrupting the network requests.
 
+![Linux network corruption](./static/images/linux-network-corruption.png)
+
 ## Use cases
 - Induces network corruption on the target Linux machines.
 - Simulates network corruption by corrupting requests of the machine.

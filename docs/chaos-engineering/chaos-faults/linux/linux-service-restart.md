@@ -5,6 +5,8 @@ title: Linux service restart
 Linux service restart stops the target system services running in a Linux machine.
 - It determines the performance and resilience of the application (or services) running on Linux machines.
 
+![Linux service restart](./static/images/linux-service-restart.png)
+
 ## Use cases
 - Service restart determines the resilience of an application upon random halts.
 - Determines how efficiently an application recovers and restarts the services.

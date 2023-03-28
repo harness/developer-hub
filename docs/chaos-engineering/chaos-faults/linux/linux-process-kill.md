@@ -5,6 +5,8 @@ title: Linux process kill
 Linux process kill fault kills the target processes running on the Linux machines.
 - It checks the performance of the application/ or rocess running on the Linux machine.
 
+![Linux process kill](./static/images/linux-process-kill.png)
+
 ## Use cases
 - Induces process kill on the target Linux machines.
 - Disrupts the application critical processes such as databases or message queues by killing their underlying processes or threads.

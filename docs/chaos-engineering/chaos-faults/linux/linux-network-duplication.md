@@ -4,6 +4,8 @@ title: Linux network duplication
 ---
 Linux network duplication injects chaos to disrupt network connectivity on a Linux machine by duplicating network packets.
 
+![Linux network duplication](./static/images/linux-network-duplication.png)
+
 ## Use cases
 - Induces network duplication on the target Linux machines.
 - Simulates packet duplication in the network.

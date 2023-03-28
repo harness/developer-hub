@@ -4,6 +4,8 @@ title: Linux time chaos
 ---
 Linux time chaos injects chaos to change the time of the Linux machine.
 
+![Linux time chaos](./static/images/linux-time-chaos.png)
+
 ## Use cases
 - Induces time chaos to change the system time on the target Linux machines.
 - Determines the resiliency of the underlying application components when subjected to a change in the system time.

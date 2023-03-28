@@ -4,6 +4,8 @@ title: Linux CPU stress
 ---
 Linux CPU stress fault applies stress on the CPU of the target Linux machines for a specific duration.
 
+![Linux CPU stress](./static/images/linux-cpu-stress.png)
+
 ## Use cases
 - Induces CPU stress on the target Linux machines.
 - Simulates a lack of CPU for processes running on the application, which degrades their performance.
