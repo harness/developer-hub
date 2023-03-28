@@ -43,10 +43,18 @@ Refer to the following image specification README files for more information abo
 * [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
 * [Windows Server 2019 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
 
+You can include steps in your pipeline to specify a version of a tool installed on an image, lock the stage to a required version, or install additional tools and versions that aren't available on the image. These steps run on the host machine or run as separate Docker images.
+
+:::caution
+
+Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in **Lock versions or install additional tools** to prevent your pipeline from failing when the image changes.
+
+:::
+
 <details>
 <summary>Specify versions</summary>
 
-If there are multiple versions of a tool installed, you can specify the version to use in a step's **Command**.
+If there are multiple versions of a tool installed on an image, you can specify the version to use in a step's **Command**.
 
 For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a **Run** step to select an Xcode version:
 
@@ -54,12 +62,18 @@ For example, with the Harness Cloud macOS build infrastructure, you could use th
 sudo xcode-select -switch /Applications/Xcode_14.1.0.app
 ```
 
+:::caution
+
+Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in **Lock versions or install additional tools** to prevent your pipeline from failing when the image changes.
+
+:::
+
 </details>
 
 <details>
-<summary>Install additional tools</summary>
+<summary>Lock versions or install additional tools</summary>
 
-If your build requires a tool that isn't already available on the VM, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as:
+If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as:
 
 * [Run step](../../ci-technical-reference/run-step-settings.md)
 * [Background step](../../ci-technical-reference/background-step-settings.md)
@@ -218,16 +232,18 @@ pipeline:
 
 </details>
 
-:::tip
-
-If the host image doesn't have the tools you need for your pipeline, you can install additional tools or run individual steps in their own Docker image. For more information about specifying and installing tools, go to [Platforms and image specifications](#platforms-and-image-specifications).
-
-:::
-
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
+
+:::info
+
+Add steps to your pipeline to specify versions of tools, set up environments, or install additional tools. For image specifications and instructions on specifying versions, locking versions, and installing additional tools, go to the [Platforms and image specifications](#platforms-and-image-specifications) section, above.
+
+Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions to **Lock versions or install additional tools** in [Platforms and image specifications](#platforms-and-image-specifications) to prevent your pipeline from failing when the image changes.
+
+:::
 
 ## Build private repos with Harness Cloud
 
