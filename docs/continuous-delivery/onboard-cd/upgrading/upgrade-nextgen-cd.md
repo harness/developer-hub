@@ -111,14 +111,14 @@ An account setting, `allowCrossGenerationAccess` is introduced to enable cross g
 
 If this setting is set to true, you can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.
 
-The default `allowCrossGenerationAccess` value for NextGen is `TRUE`. 
+The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` as NextGen is `TRUE`. 
 
-The default `allowCrossGenerationAccess` value for FirstGen is:
+The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` asFirstGen is:
 
 * `TRUE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is disabled.  
 * `FALSE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is enabled.
 
-For new FirstGen and NextGen user accounts, this value is set to `FLASE` by default.
+For new FirstGen and NextGen user accounts, this value is set to `FALSE` by default.
 
 When you change the `allowCrossGenerationAccess` setting value in FirstGen or NextGen, a FirstGen or NextGen audit is generated respectively.
 
