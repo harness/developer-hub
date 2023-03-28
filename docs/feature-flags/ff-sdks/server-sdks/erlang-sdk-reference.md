@@ -283,7 +283,7 @@ To close the SDK, run one of the following commands.
 
   ```
   # Close the default instance
-  :cfclient:close()
+  :cfclient.close()
   
   # Close a named instance
   :cfclient:close(:instance_name_1)
