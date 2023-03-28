@@ -112,45 +112,45 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide - Coming Soon.</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy CI projects.
                   </div>
                   {/* Developer Study Guide */}
-                  {/*
+                  
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/page/continuous-integration-developer">
+                    <Link href="#">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/deploy-services">
+                    <Link href="/tutorials/build-code">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>
                   </div>
-                  */}
+                  
                 </div>
               </div>
             </div>
           </div>
 
           {/* Developer Exam Details */}
-          {/*
+          
           <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/page/continuous-integration-developer">
+                <Link href="#">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/deploy-services">
+                <Link href="/tutorials/build-code">
                   <button className={styles.startLearning}>
                     <span>Start Learning</span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -159,7 +159,7 @@ export default function CertificationsCI() {
               </div>
             </div>
           </div>
-          */}
+          
         </div>
 
         {/* Administrator Tab Content */}

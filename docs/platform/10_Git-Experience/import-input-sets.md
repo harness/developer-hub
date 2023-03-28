@@ -22,7 +22,7 @@ This topic explains how to import an Input Set from your Git repo and apply it t
 
 * [Harness Git Experience Overview](git-experience-overview.md)
 * [Harness Git Experience Quickstart​](configure-git-experience-for-harness-entities.md)
-* [Input Sets and Overlays](https:/article/3fqwa8et3d-input-sets)
+* [Input Sets and Overlays](../8_Pipelines/input-sets.md)
 * [Manage a Harness Pipeline Repo Using Git Experience](manage-a-harness-pipeline-repo-using-git-experience.md)
 * [Manage Input Sets and Triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md)
 

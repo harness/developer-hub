@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 
 :::note
-Currently, this feature is behind the feature flag `NG_CUSTOM_STAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This topic describes how to set up a Custom stage.
+Currently, this feature is behind the feature flag `NG_CUSTOM_STAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. This topic describes how to set up a Custom stage.
 
 :::
 
@@ -78,10 +78,10 @@ These steps are also available in CI, CD, and Approval stages.
 
 For details on the different steps, see:
 
-* [General CD](/docs/category/general-cd-execution-steps)
+* [General CD](https://developer.harness.io/docs/category/general-cd-execution-steps)
 * [Using Shell Scripts in CD Stages](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
-* [Approvals](/docs/category/approvals)
+* [Approvals](https://developer.harness.io/docs/category/approvals)
 * [Synchronize Deployments using Barriers](../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
 * [Add a Policy Engine Step to a Pipeline](../14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
 * [Terraform How-tos](../../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md)

@@ -32,9 +32,14 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 	+ Accepted values(s):
 		- `legacy-web-application-scan`  — Use legacy nessus scan inside tenableIO
 
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />
 
 
-### Instance settings 
+
+### Instance scan settings 
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';

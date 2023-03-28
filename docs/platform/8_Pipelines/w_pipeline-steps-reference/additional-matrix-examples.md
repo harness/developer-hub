@@ -6,7 +6,7 @@ sidebar_position: 4
 
 This topic provides various examples of using matrix in your pipeline stages or steps.
 
-For detailed information on using matrix in your pipeline, go to [Run a Stage or Step Multiple Times using a Matrix](https://developer.harness.io/docs/platform/Pipelines/run-a-stage-or-step-multiple-times-using-a-matrix)
+For detailed information on using matrix in your pipeline, go to [Run a Stage or Step Multiple Times using a Matrix](../run-a-stage-or-step-multiple-times-using-a-matrix.md)
 
 ## Runtime input support in matrix
 

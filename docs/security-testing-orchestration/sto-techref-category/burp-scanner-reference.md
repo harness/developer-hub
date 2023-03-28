@@ -27,26 +27,11 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `burp-fast-mode` (Turns off automatic form fill)
 
 
-<!-- CONTAINERS --------------------------------------------------------------------------- 
-
 ```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
+<StoSettingFailOnSeverity />
 
-<StoLegacyContainer />
-
-
-<!-- REPOS --------------------------------------------------------------------------- 
-
-### Repository scan settings
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
-
-<!-- LEGACY INSTANCE  --------------------------------------------------------------------------- -->
 
 
 ```mdx-code-block
@@ -55,14 +40,3 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 
 <StoLegacyInstance />
 
-<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- 
-
-
-```mdx-code-block
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-```
-
-<StoLegacyConfig  />
-
-
-<!-- INSTANCES  --------------------------------------------------------------------------- -->
