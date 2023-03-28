@@ -43,17 +43,17 @@ docker run --cpus=1 --memory=2g --net=host \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
 ```
 
-Make sure to create the delegate at the appropriate scope, such as the project level or account level.
+Make sure to create the Delegate at the appropriate scope, such as the project level or account level.
 
 ## Install the Drone Runner
 
 The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
 
 1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
-2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `source_path:destination_path`, for example:
+2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   export CI_MOUNT_VOLUMES=[path_to_cert_on_local]:/etc/ssl/certs/ca-certificats.crt, [source_path_2]:[destination_path_2]
+   export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
    ```
 
 3. Enable execution permissions for the Runner. For example:
@@ -68,10 +68,10 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
    sudo ./drone-docker-runner-linux-arm64 server
    ```
 
-Here is an example of all three commands to install the Drone Runner with self-signed certificates:
+Here is an example of the three commands to install the Linux arm64 Drone Runner with self-signed certificates:
 
 ```
-export CI_MOUNT_VOLUMES=<path-to-cert-on-local>:/etc/ssl/certs/ca-certificates.crt
+export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
 sudo chmod +x drone-docker-runner-linux-arm64
 ./drone-docker-runner-linux-arm64 server
 ```
@@ -101,17 +101,17 @@ docker run --cpus=1 --memory=2g \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
 ```
 
-Make sure to create the delegate at the appropriate scope, such as the project level or account level.
+Make sure to create the Delegate at the appropriate scope, such as the project level or account level.
 
 ## Install the Drone Runner
 
 The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
 
 1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
-2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `source_path:destination_path`, for example:
+2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   export CI_MOUNT_VOLUMES=[path_to_cert_on_local]:/etc/ssl/certs/ca-certificats.crt, [source_path_2]:[destination_path_2]
+   export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
    ```
 
 3. Enable execution permissions for the Runner. For example:
@@ -128,10 +128,10 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 
    You might have modify **Security and Privacy** settings to allow this app to run.
 
-Here is an example of all three commands to install the Drone Runner with self-signed certificates:
+Here is an example of the three commands to install the Darwin amd64 Drone Runner with self-signed certificates:
 
 ```
-export CI_MOUNT_VOLUMES=<path-to-cert-on-local>:/etc/ssl/certs/ca-certificates.crt
+export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
 sudo chmod +x drone-docker-runner-darwin-arm64
 ./drone-docker-runner-darwin-arm64 server
 ```
@@ -140,14 +140,28 @@ sudo chmod +x drone-docker-runner-darwin-arm64
   </TabItem>
   <TabItem value="windows" label="Windows">
 ```
+
+## Prepare machines
+
+To configure a local runner build infrastructure for Windows, you need two machines:
+
+* A Windows machine where the Drone Runner will run.
+* A Linux machine where the Delegate will run.
+
 ## Install the Delegate
 
-Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
+On the Linux machine where you want to run the Delegate, use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
 
 * Add `-e DELEGATE_TAGS="windows-amd64"`.
-* Add `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000`. The Drone Runner must run on a separate machine than the one that your Delegate runs on. The `RUNNER_URL` must point to the Drone Runner's machine.
+* Add `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000`.
 
-Here's an example of an install script for Windows:
+:::caution
+
+The `RUNNER_URL` must point to the Windows machine where the Drone Runner will run.
+
+:::
+
+Here's an example of the Delegate install script for a local runner Windows build infrastructure:
 
 ```
 docker run --cpus=1 --memory=2g \
@@ -161,7 +175,7 @@ docker run --cpus=1 --memory=2g \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
 ```
 
-Make sure to create the delegate at the appropriate scope, such as the project level or account level.
+Make sure to create the Delegate at the appropriate scope, such as the project level or account level.
 
 ## Install the Drone Runner
 
@@ -169,22 +183,16 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 
 :::caution
 
-You must run the Drone Runner executable from a separate machine than the one that your Delegate is running on. Make sure to run these commands on the appropriate machine.
+Run the Drone Runner executable on the Windows machine that you specified in the Delegate's `RUNNER_URL`.
 
 :::
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+1. On the target Windows machine where you want to run the Drone Runner, download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
 2. Open a terminal with Administrator privileges.
-2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `source_path:destination_path`, for example:
+3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   export CI_MOUNT_VOLUMES=[path_to_cert_on_local]:/etc/ssl/certs/ca-certificats.crt, [source_path_2]:[destination_path_2]
-   ```
-
-3. Run the following command to enable execution permissions for the Runner:
-
-   ```
-   chmod +x drone-docker-runner-windows-amd64
+   SET CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
    ```
 
 4. Run the following command to start the runner binary:
@@ -192,13 +200,11 @@ You must run the Drone Runner executable from a separate machine than the one th
    ```
    drone-docker-runner-windows-amd64.exe server
    ```
-   You must run the Drone Runner `.exe` from a separate machine than the one that your Delegate is running on. Make sure to run this command on the appropriate machine.
 
-Here is an example of all three commands to install the Drone Runner with self-signed certificates:
+Here is an example of the two commands to install the Windows amd64 Drone Runner with self-signed certificates:
 
 ```
-export CI_MOUNT_VOLUMES=<path-to-cert-on-local>:/etc/ssl/certs/ca-certificates.crt
-chmod +x drone-docker-runner-windows-amd64
+SET CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
 ./drone-docker-runner-windows-amd64 server
 ```
 
@@ -209,7 +215,7 @@ chmod +x drone-docker-runner-windows-amd64
 
 ## Set the pipeline's build infrastructure
 
-Update the pipeline where you want to use the Docker delegate. You can use either the Visual or YAML pipeline editor.
+Update the pipeline where you want to use the Docker Delegate. You can use either the Visual or YAML pipeline editor.
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
@@ -255,7 +261,7 @@ In the pipeline's `Build` (`type: CI`) stage, replace the `infrastructure` line 
 
 ## Troubleshooting
 
-The delegate should connect to your instance after you finish the installation workflow above. If the delegate does not connect after a few minutes, run the following commands to check the status:
+The Delegate should connect to your instance after you finish the installation workflow above. If the Delegate does not connect after a few minutes, run the following commands to check the status:
 
 ```
 docker ps
