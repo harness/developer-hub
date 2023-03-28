@@ -8,7 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can define a CI build infrastructure on any Linux or macOS host by installing a Harness Delegate and local runner. This is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
+You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Delegate and local Drone Runner. When the pipeline runs, the Drone Runners runs the build actions in the environment where it is installed. The Delegate handles communication between Harness and the Drone Runner.
+
+Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
 
 The Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Docker Delegate has the following system requirements:
 
