@@ -72,29 +72,95 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CISignupTip />
 
-## Fork tutorial repo
+## Prepare the codebase
 
-This tutorial uses a sample repo. Fork the tutorial repo [keen-software/goHelloWorldServer](https://github.com/keen-software/goHelloWorldServer) to your GitHub account.
+1. Fork the tutorial repo [keen-software/goHelloWorldServer](https://github.com/keen-software/goHelloWorldServer) to your GitHub account. Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
+2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
+3. Make note of the token; you'll need it later in the tutorial.
+4. In Harness, switch to the **Project** you want to use for this tutorial, or create a project.
 
-Alternately, you can use your own code repo. This tutorial works for any Git repo that you can access.
+<details>
+<summary>Create a project</summary>
 
-## Step 1: Start a New Pipeline
+Use these steps to create a project in your Harness account.
 
-<!-- Start a new pipeline: “Invite people to collaborate” is on a separate ui page from the other 2 options. After selecting the CI module, you need to select Go to Module. It then starts the pipeline wizard (“Get started” instead of pipelines > create a pipeline. Github connector and delegate steps are later in the tutorial than you need them. Maybe should be before you create the project?). The Flow is Create project > Set up GitHub connector > Config delegate > Then create pipeline (go to builds > get started > select your repo and select ”Next: Configure pipeline” > Select Starter pipeline and select “Create pipeline”. No option to name the pipeline ws given.) -->
+1. Select **Projects**, select **All Projects**, and then select **New Project**.
+2. Enter a **Name**, such as `CI kubernetes tutorial`.
+3. Leave the **Organization** as **default**.
+4. Select **Save and Continue**.
+5. On **Invite Collaborators**, you can add others to your project, if desired. You don't need to add yourself.
+6. Select **Save and Continue**.
+7. On the Modules page, select **Continuous Integration**, and then select **Go to Module**.
 
-Pipelines are a collection of one or more stages. They manage and automate builds, testing, deployments, and other important build and release stages.
+If this is your first project with CI, the CI pipeline wizard starts after you select **Go to Module**. You'll need to exit the wizard to create the GitHub connector if you don't already have a GitHub connector for the account where you forked the tutorial repo.
 
-1. In Harness, select **Projects** and create a new project with the following settings:
-   * **Name:** CI Quickstart
-   * **Organization:** default
-   * **Invite People to Collaborate:** You don't need to add yourself.
-2. In the Modules page, select **Continuous Integration**.
-3. Select **Pipelines** and then **Create a Pipeline**.
-4. Enter the name **CI Pipeline** and click **Start**.
+</details>
 
-As you enter a name for the Pipeline, the ID for the Pipeline is created. A Pipeline name can change, but an ID is permanent. The ID is how you can reference subordinate elements of a Pipeline, such as the names of variables within the Pipeline.
+Next, you'll create a connector that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference).
 
-## Step 2: Set Up the Build Stage
+1. Under **Project Setup**, select **Connectors**.
+2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
+3. Enter a recognizable name, such as `CI kubernetes tutorial connector`, and select **Continue**.
+4. Configure the **Details** as follows, and then select **Continue**:
+
+   * **URL Type:** Select **Repository**.
+   * **Connection Type:** Select **HTTP**.
+   * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/keen-software/goHelloWorldServer.git`.
+
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-15.png)
+
+5. Configure the **Credentials** as follows, and then select **Continue**:
+
+   * **Username:** Enter the username for the GitHub account where you forked the tutorial repo.
+   * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/Security/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
+   * **Enable API access:** Select this option and select the same personal access token secret.
+
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-16.png)
+
+6. For **Select Connectivity Mode**, select **Connect through a Harness Delegate**, and then select **Continue**.
+
+   :::info
+
+   You can choose to establish connections directly from your Harness platform or through a Delegate service running within your corporate firewall. The Harness Delegate is a local service that connects your infrastructure, collaboration, verification, and other providers with your Harness platform. For this tutorial, you'll install a Delegate in your Kubernetes cluster.
+
+   :::
+
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-17.png)
+
+7. On **Delegates Setup**, select **Only use Delegates with all of the following tags**, and then select **Install new Delegate**.
+8. Select **Kubernetes Manifest** and follow the instructions given on the **New Delegate** page to install the Delegate on a pod in your Kubernetes cluster.
+
+   :::info
+
+   You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options and detailed instructions, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
+
+   If delegate installation succeeds, the `kubectl apply` command should produce output similar to the following:
+
+   ```
+   namespace/harness-delegate-ng created  
+   clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created  
+   secret/ci-quickstart created  
+   statefulset.apps/ci-quickstart created  
+   service/delegate-service created
+   ```
+
+   :::
+
+9. In Harness, select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
+10. Back in the connector's **Delegates Setup**, select your new delegate, and then select **Save and Continue**.
+11. Wait while Harness tests the connection, and then select **Finish**.
+
+## Create a pipeline
+
+Pipelines are comprised of one or more stages. Each stage has one or more steps that manage and automate builds, tests, deployments, and other important build and release tasks. To learn more about pipeline components, go to [CI pipeline components](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics).
+
+1. Select **Pipelines**, and then **Create a Pipeline**.
+2. Enter a **Name** for the pipeline. As you enter a name for the pipeline, the pipeline ID is created. You can change pipeline names, but the ID is permanent. you can use the ID to reference subordinate elements of a pipeline, such as the names of variables within the pipeline.
+3. Select **Start**.
+
+
+
+## Configure the Build stage
 
 <!-- Step 2 Set up the Build stage: By selecting the Starter Pipeline, you already have a Build stage. No need to add another one (but could use tabs to compare starter pipeline w regular pipeline). Click the Build stage to edit it. On Overview tab, change name. The repo was already connected in the wizard. -->
 
@@ -104,7 +170,7 @@ To run a build, a Build Stage needs to connect to the codebase, the build infras
 
 In this tutorial you'll create a Connector to a GitHub repo. You'll also create a *Delegate* service that handles communications between Harness and your build infrastructure. Later in this tutorial, you'll create a Connector to a Docker Hub repo so the Build Stage can post the resulting artifact.
 
-### Create the Build stage
+### Add build stage
 
 1. In Pipeline Studio, select **Add Stage** and select **Build**. The **About your Stage** screen appears.
 2. In **Stage Name**, enter `Build Test and Push`.
@@ -115,80 +181,13 @@ In this tutorial you'll create a Connector to a GitHub repo. You'll also create 
 4. In the **Create or Select an Existing Connector** window, select **New Connector**.
 5. For the **Connector type**, select **GitHub Connector**.
 
-### Create a Connector to your Codebase
-
-<!-- link to GH connector instructions/step settings reference w/ specification for tutorial repo URL.  Field population instructions should be a series of steps as ol, instead of smaller headings. Under “connector credentials”, add a link to info about using your own secrets manager with Harness. OAuth is an option for github connectors now. -->
-
-You'll now create a new Connector to the GitHub codebase. Set up the Connector as follows.
-
-#### Connector Overview
-
-* **Name:** CI QuickStart
-
-#### Connector Details
-
-You can create Connectors for GitHub accounts or specific repos. If you use an account Connector, you specify the repo when you run the build. In this case, we'll connect to a specific repo.
-
-* **URL Type:** Repository
-* **Connection Type:** HTTP
-* **GitHub Repository URL:** `https://github.com/keen-software/goHelloWorldServer.git`
-
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-15.png)
-
-#### Connector Credentials
-
-Now you need to specify the username and Personal Access Token for the Connector to use. Harness secrets are safe. They're stored in the [Harness Secret Manager](/docs/platform/Security/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
-
-* **Username:** The username for your GitHub account.
-* **Personal Access Token:** Create a Harness Secret for the Personal Access Token you use for your GitHub repo.
-* Select **Enable API Access**.
-
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-16.png)
-
-#### Connector Connectivity Mode
-
-You can choose to establish connections directly from your Harness platform or through a Delegate service running within your corporate firewall.
-
-The Harness Delegate is a local service that connects your infrastructure, collaboration, verification, and other providers with your Harness platform. For this tutorial, you'll install a Delegate in your Kubernetes cluster.
-
-* **Connect to the provider:** Connect through a Harness Delegate
-
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-17.png)
-
-#### Delegate Setup
-
-<!-- this has changed for the new delegate flow. -->
-<!--  Delegate setup: You must choose “connect only via delegates with specific tags” to show Install new delegate if there are already delegates available. On the page where you select delegate size and permissions, for K8s, you need to provide delegate tokens. Click +add to add token. On the YAML page, the button is “Download YAML file, not Download Script. The other button is Continue, not Next. I did not get the output described - some lines were present and some were not. -->
-
-You should now be in the Delegates Setup screen of the GitHub Connector wizard. Click **Install new Delegate**.
-
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-18.png)
-
-1. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
-2. Usually it makes sense to install and run the Delegate on a pod in your Kubernetes build infrastructure. In a terminal, login to your Kubernetes cluster, and use the `curl` command provided in the **New Delegate** setup to copy the Kubernetes YAML file to the pod where you want to install the Delegate.
-3. Update the Kubernetes YAML file as instructed in the **New Delegate** setup. For details about these settings, refer to the **Kubernetes environment** section of [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
-4. If necessary, specify the **Delegate Size** and **Delegate Permissions**. As a default, you can give the Delegate cluster-wide read/write access. In the future, you can add configurations to run scripts on your Delegates and scope them to different environments.
-5. In your Kubernetes cluster, run the `kubectl apply` command to install the delegate, as provided in the **New Delegate** setup. You should get output similar to the following:
-
-   ```
-   % kubectl apply -f harness-delegate.yaml  
-   namespace/harness-delegate-ng created  
-   clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-ng-cluster-admin created  
-   secret/ci-quickstart created  
-   statefulset.apps/ci-quickstart created  
-   service/delegate-service created
-   ```
-
-6. Return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
-7. In your codebase connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.
-8. Select your new Kubernetes delegate, and then select **Save and Continue**. Select the new delegate in your Kubernetes.
-9. Wait while Harness tests the connection, and then select **Finish**. Back in **About Your Stage**, the Connector and repo are displayed.
+[connector setup] Back in **About Your Stage**, the Connector and repo are displayed.
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-22.png)
 
 10. Click **Set Up Stage**. The new stage is added to the Pipeline.
 
-## Step 3: Define the Build Farm Infrastructure
+### Configure the build infrastructure
 
 <!-- Step 3 Define build farm infra: continue to Infrastructure tab. Select K8s. Select K8s Cluster. Select New Connector. Follow steps to connect delegate and stuff. Click Continue to go to Execution tab. -->
 
@@ -207,9 +206,10 @@ Here you'll define the build farm infrastructure and the stage steps.
 
 Now that the build farm infrastructure is set up, you can run unit tests against your code.
 
-## Step 4: Build and Run Unit Tests
+## Add the build and test step
 
 <!-- Step 4 build and run unit tests: Delete echo welcome message step. The instruction for the name field is given twice. Missing instruction to select “Connect thru a harness delegate >only use delegates w following tags” after setting up the secret. Report paths are under optional config (have to expand). -->
+<!-- this step could also use Run Tests step -->
 
 Next, we'll add a Run step to the stage that will build the code and run a unit test.
 
@@ -220,6 +220,9 @@ The Run step executes one or more commands on a container image. Configure the s
 * **Name:** Run Unit Tests
 * **Container Registry:** Click **Select** and then **+New Connector**.
 * **Select your Connector Type:** Docker Registry
+
+<details>
+<summary>Create a Docker connector</summary>
 
 You will now create a new Connector to your DockerHub account as follows.
 
@@ -240,6 +243,9 @@ You will now create a new Connector to your DockerHub account as follows.
 
 * **Delegates Setup:** Select the new Delegate you installed previously using its Tags.
 * Wait for the Connector test to complete and then click **Finish**.
+
+</details>
+
 * You should now be in the Configure Run Step pane, with the new Connector in the Container Registry setting. Configure the step as follows:
 	+ **Name:** Run Unit Tests
 	+ **Container Registry:** This should show the Docker Hub Connector you just created.
@@ -257,7 +263,7 @@ You will now create a new Connector to your DockerHub account as follows.
 
 This **Run** step will intentionally fail the test. This will be useful to see how a test failure is recorded in Harness.
 
-## Step 5: Build and Push Image to Docker Hub
+## Add the build and push step
 
 <!-- Step 5 build and push image to docker hub: use <docker_username> instead of <your_repo>. -->
 
@@ -276,7 +282,7 @@ Next, you'll add a step to build your container and push it to your Docker Hub r
 	+ Click **Apply Changes** to return to the Pipeline Studio.
 * Click **Save** to save the Pipeline. You can run the Pipeline now, or you can continue and add the Integration Test stage.
 
-## Step 6: Create the Integration Test Stage
+## Add an integration tests stage
 
 <!-- Step 6 create the integration test stage: “click infrastructure” should be “select Infrastructure tab”. The button is “Continue” not “Next”. The “image” instruction is wrong - <your repo> is your username, not the docks hub repo name. Also, “Service Dependency” is deprecated, no longer available in the UI but backwards compatible in YAML. This tutorial needs to use “Background step” instead of “Service Dependency”. -->
 
@@ -291,9 +297,9 @@ Now you have a Stage to clone, build, containerize, and then push your image to 
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-26.png)
 
-### Define Stage Infrastructure
+### Reuse build infra
 
-Here you configure the stage to use the same infrastructure as the previous stage.
+Here you configure the stage to use the same infrastructure as the previous stage:
 
 * Click **Infrastructure**.
 * Select **Propagate from an existing stage**.
@@ -333,51 +339,43 @@ Next, we can run an integration test. We'll simply test the connection to the se
 	curl localhost:8080  
 	curl localhost:8080?Hello!_I_am_a_nice_demo!
 	```
-	+ Click **Apply Changes**. You are now back the Pipeline Studio.
+	+ Select **Apply Changes** to save the step.
+	+ Select **Save** to save the pipeline.
 
-## Step 7: Run the Pipeline
+## Run the pipeline
 
-The Build Pipeline is complete. You can now run it.
+Now run the pipeline.
 
-* Click **Save**.
-* Click **Run**. The Pipeline Inputs settings appear.
-* Under CI Codebase, select **Git branch**.
-* In Git Branch, enter the name of the branch where the codebase is, such as **main**.
-* Click **Run Pipeline**.
+1. Select **Run**.
+2. For the **Pipeline Inputs**, select **Git branch** and enter the target branch in the code repo, such as `main`.
+3. Select **Run Pipeline**.
 
-## Step 8: View the Results
-
-Click each stage's steps to see the logs in real time.
+On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) you can observe the pipeline while it run. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/view-your-builds/viewing-tests).
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
 
-Click **Console View** to see more details.
+You can switch to **Console view** for a focused view of the logs.
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-28.png)
 
-You can see the build number in the **Build and push image to Docker Hub** step used as an image tag. For example, 11:
+For this pipeline, note the following log details:
 
-```
---destination=myrepo/ciquickstart:11
-```
+* In the logs for the **Build and push image to Docker Hub** step, you can see that the build number, such as `11`, is used as an image tag, for example:
 
-In the Initialize step of the **Run Integration Test** stage, you can see the image with the same tag pulled from your Docker Hub repo:
+   ```
+   --destination=myrepo/ciquickstart:11
+   ```
 
-```
-   8 Pulling image "myrepo/ciquickstart:11"  
-   9 Successfully pulled image "myrepo/ciquickstart:11" in 1.878887425s
-```
-Now look in your Docker Hub repo. You can see the image and tag:
+* In the **Initialize** step of the **Run Integration Test** stage, you can see the image with the same tag is pulled from your Docker Hub repo:
 
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-29.png)
+   ```
+      Pulling image "myrepo/ciquickstart:11"
+      Successfully pulled image "myrepo/ciquickstart:11" in 1.878887425s
+   ```
 
-Click **Tests**. You can see the failed test from stage 1.
+* You can find the pushed image and the associated tag in your Docker Hub repo.
 
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-30.png)
-
-Click **Builds**. Your build appears.
-
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-31.png)
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-29.png)
 
 ## Continue your Continuous Integration journey
 
