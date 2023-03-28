@@ -57,7 +57,7 @@ In addition to a Harness account, you need the following accounts and tools:
   * Machine type: 4vCPU
   * Memory: 16GB RAM
   * Networking: Outbound HTTPS for the Harness and Docker Hub connections. Allow port 22 for SSH.
-  * Namespace: During the tutorial, when you install the Harness Delegate, the `harness-delegate` namespace is created. You'll use the same namespace for the build infrastructure.
+  * Namespace: During the tutorial, when you install the Harness Delegate, the `harness-delegate-ng` namespace is created. You'll use the same namespace for the build infrastructure.
 * A **Kubernetes service account** with permission to create entities in the target namespace. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. Usually, the `cluster-admin` permission or `namespace admin` permission is sufficient. For more information, go to the Kubernetes documentation on [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
 
 :::caution
@@ -96,7 +96,7 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 </details>
 
-Next, you'll create a connector that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference).
+Next, you'll create a _connector_ that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 1. Under **Project Setup**, select **Connectors**.
 2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
@@ -150,68 +150,45 @@ Next, you'll create a connector that allows Harness to connect to your Git codeb
 10. Back in the connector's **Delegates Setup**, select your new delegate, and then select **Save and Continue**.
 11. Wait while Harness tests the connection, and then select **Finish**.
 
-## Create a pipeline
+## Create a pipeline and add a Build stage
 
 Pipelines are comprised of one or more stages. Each stage has one or more steps that manage and automate builds, tests, deployments, and other important build and release tasks. To learn more about pipeline components, go to [CI pipeline components](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics).
 
-1. Select **Pipelines**, and then **Create a Pipeline**.
-2. Enter a **Name** for the pipeline. As you enter a name for the pipeline, the pipeline ID is created. You can change pipeline names, but the ID is permanent. you can use the ID to reference subordinate elements of a pipeline, such as the names of variables within the pipeline.
-3. Select **Start**.
+For most CI pipelines, Build stages do most of the heavy lifting. Build stages are where you specify the end-to-end workflow for your pipeline: the codebase to build, the build infrastructure to use, where to push the finished artifact, and any additional tasks (such as automated tests or validations).
 
-
-
-## Configure the Build stage
-
-<!-- Step 2 Set up the Build stage: By selecting the Starter Pipeline, you already have a Build stage. No need to add another one (but could use tabs to compare starter pipeline w regular pipeline). Click the Build stage to edit it. On Overview tab, change name. The repo was already connected in the wizard. -->
-
-The "work horse" of most CI Pipelines is the Build Stage. This is where you specify the end-to-end workflow for your build: the codebase to build, the infrastructure to build it, where to post the finished artifact, and any additional tasks (such as automated tests or validations) you want the build to run.
-
-To run a build, a Build Stage needs to connect to the codebase, the build infrastructure, and the artifact repository. A *Connector* is a configurable object that connects to an external resource automatically.
-
-In this tutorial you'll create a Connector to a GitHub repo. You'll also create a *Delegate* service that handles communications between Harness and your build infrastructure. Later in this tutorial, you'll create a Connector to a Docker Hub repo so the Build Stage can post the resulting artifact.
-
-### Add build stage
-
-1. In Pipeline Studio, select **Add Stage** and select **Build**. The **About your Stage** screen appears.
-2. In **Stage Name**, enter `Build Test and Push`.
-3. Under **Configure Codebase**, select **Connector**.
-
-   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-14.png)
-
-4. In the **Create or Select an Existing Connector** window, select **New Connector**.
-5. For the **Connector type**, select **GitHub Connector**.
-
-[connector setup] Back in **About Your Stage**, the Connector and repo are displayed.
+1. Select **Pipelines**, and then select **Create a Pipeline**.
+2. Enter a **Name** for the pipeline. Harness automatically creates a pipeline ID based on the name. Once the pipeline is created, you can't change the ID. You can use the ID to reference subordinate elements of a pipeline, such as the names of variables within the pipeline.
+3. Select **Start**. You're taken to the Pipeline Studio where you can configure pipeline settings and add stages and steps to your pipeline.
+4. In the Pipeline Studio, select **Add Stage** and select **Build**.
+5. For the **Stage Name**, enter `Build Test and Push`.
+6. For **Connector**, select the GitHub connector you created earlier in [Prepare the codebase](#prepare-the-codebase).
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-22.png)
 
-10. Click **Set Up Stage**. The new stage is added to the Pipeline.
+7. Select **Set Up Stage**. The Build stage is added to the pipeline.
 
-### Configure the build infrastructure
+Next, you need to define the build infrastructure. Harness offers several [build infrastructure options](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me), and this tutorial uses a [Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
 
-<!-- Step 3 Define build farm infra: continue to Infrastructure tab. Select K8s. Select K8s Cluster. Select New Connector. Follow steps to connect delegate and stuff. Click Continue to go to Execution tab. -->
+1. Select the **Infrastructure** tab for your Build stage.
+2. Under **Infrastructure**, select **Kubernetes**.
+3. Under **Platform**, select the **Kubernetes Cluster** field to open the **Create or Select an Existing Connector** window.
+4. Select **New Connector**, and configure the connector as follows. For detailed instructions and information about these settings, go to [Add a Kubernetes cluster connector](/docs/platform/connectors/add-a-kubernetes-cluster-connector/).
 
-Here you'll define the build farm infrastructure and the stage steps.
+   * **Name:** Enter `ci-delegate`
+   * **Details:** Select **Use the credentials of a specific Harness Delegate**.
+   * **Delegates Setup:** Select the Kubernetes Delegate you installed earlier in [Prepare the codebase](#prepare-the-codebase).
+   * **Connection Test:** Wait for the test to finish and then click **Finish**.
 
-* Under Select a Kubernetes Cluster, click **Select**.
+5. In **Namespace**, enter `harness-delegate-ng`, and then select **Continue**.
+## Add a build and test step
 
-   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-23.png)
+Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase and run unit tests.
 
-* Click **New Connector** and set up the new Connector as follows:
-	+ **Name:** ci-delegate
-	+ **Details:** Select **Use the credentials of a specific Harness Delegate**. You'll add this Delegate next.
-	+ **Delegates Setup:** Select the Kubernetes Delegate you added earlier using its Tags.
-	+ **Connection Test:** Wait for the test to finish and then click **Finish**. The new Connector is added to the Kubernetes Cluster field.
-* In **Namespace**, enter the namespace `harness-delegate-ng`. Click **Next** to proceed to the Execution tab.
+You can use either a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) or a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) to run unit tests in a CI pipeline. With the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
-Now that the build farm infrastructure is set up, you can run unit tests against your code.
 
-## Add the build and test step
 
 <!-- Step 4 build and run unit tests: Delete echo welcome message step. The instruction for the name field is given twice. Missing instruction to select “Connect thru a harness delegate >only use delegates w following tags” after setting up the secret. Report paths are under optional config (have to expand). -->
-<!-- this step could also use Run Tests step -->
-
-Next, we'll add a Run step to the stage that will build the code and run a unit test.
 
 You should now be in the Execution tab. Click **Add step** and then select **Run** (under Build).
 
