@@ -1016,7 +1016,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* An issue where Flag Evaluations where always returning the default Variation in the Feature Flag Node.js SDK has been fixed. Previously, if the Target you sent to Evaluate against a Flag was part of a Target Group, the default Variation was always returned instead of the valid Variation for that Flag. This is now fixed and the correct Variation is returned for all Targets. (FFM-4175)
+* An issue where Flag Evaluations were always returning the default Variation in the Feature Flag Node.js SDK has been fixed. Previously, if the Target you sent to Evaluate against a Flag was part of a Target Group, the default Variation was always returned instead of the valid Variation for that Flag. This is now fixed and the correct Variation is returned for all Targets. (FFM-4175)
 
 * Due to this fix, the Feature Flag Node.js SDK has been updated to version 1.2.6.
 
