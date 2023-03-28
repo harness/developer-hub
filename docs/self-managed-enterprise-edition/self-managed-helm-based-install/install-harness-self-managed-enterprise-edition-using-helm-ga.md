@@ -95,6 +95,16 @@ sto:
 enabled: true
 ```
 
+### Add Harness License
+Self Managed Enterprise Edition need license to be provisioned for Harness NextGen platform. Please contact support to procure the license and add it in the override.yaml file.
+```
+  license:
+    # -- Insert CG License String to enable CG license
+    cg: ''
+    # -- Insert NG License String to enable NG license
+    ng: ''
+```
+
 ## Install the Helm chart
 
 To use the charts, you must install Helm. To get started with Helm, see the [Helm documentation](https://helm.sh/docs/). After you install Helm, follow the instructions below.
