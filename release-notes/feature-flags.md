@@ -26,7 +26,7 @@ The [**Erlang server SDK**](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-r
     - You can choose not to start the default instance.
 
 * **Enhancements**
-  - The SDK is now available on hex.pm
+  - The SDK is now available on [hex.pm](https://hex.pm/).
   - Improved logging for debugging purposes
 
 ### Early access
