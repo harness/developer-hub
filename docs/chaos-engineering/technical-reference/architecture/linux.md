@@ -14,6 +14,14 @@ Linux chaos infrastructure daemon service is a **Systemd** service responsible f
     3. Stream experiment logs
     4. Send experiment execution result
 
+## Compatibility
+The chaos infrastructure has been tested for compatibility in the following Linux OS distributions:
+1. Ubuntu 16+
+2. Debian 10+
+3. CentOS 7+
+4. RHEL 7+
+5. openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+
+
 ## Chaos rollback
 Chaos rollback causes all the target resources in an experiment to re-attain their steady state after the execution of the experiment, which ensures the safety of all the applications deployed on your Linux machine.
 - Chaos rollback is performed at the end of each experiment execution. On-the-fly experiments can be safely aborted and the chaos is reverted.
