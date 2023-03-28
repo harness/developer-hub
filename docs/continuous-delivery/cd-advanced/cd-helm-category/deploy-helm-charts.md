@@ -331,18 +331,20 @@ You can set up a Harness trigger to listen on the chart repo and execute the pip
 
 ## Option: Fetch Helm Chart Dependencies
 
-Harness can fetch Helm Chart Dependencies within Github using the `--dependency-update` command flag. Harness will be able to fetch dependent Helm Charts along with the main Helm Chart being targeted for deployment. The Dependencies will be resolved before Harness performs deployment of the primary Helm Chart that is configured with the service explicitly. 
+Harness can fetch Helm chart dependencies within Github using the `--dependency-update` command flag. Harness fetches dependent Helm charts along with the main Helm chart being targeted for the deployment. These dependencies will be resolved before Harness performs the deployment of the primary Helm chart configured with the service explicitly. 
 
-For More Details please review the [Helm Docs](https://helm.sh/docs/helm/helm_template/#helm)
+For more information, go to [Helm Docs](https://helm.sh/docs/helm/helm_template/#helm).
 
-To update Helm Chart dependencies, user's can configure:
+To update Helm chart dependencies:
 
-1. If this is K8s Deployment then they can configure Template command with `--dependency-update`
-2. If this is Native K8s then they can add the same flag (`--depdency-update`) to `Install` and `Upgrade` commands
+* For Kubernetes deployments, configure the template with `--dependency-update` command flag.
+* For Native Kubernetes deployments, add the command flag, `--depdency-update` to `Install` and `Upgrade` commands.
 
-**But in this case all the dependency repos should be available and accessible from delegate**
+:::info
+All dependency repositories must be available and accessible from delegate.
+:::
 
-Example below:
+Here is an example:
 
 <img width="1359" alt="image" src="https://user-images.githubusercontent.com/52221549/228110120-ec5f4bf5-9073-46e7-954b-2005bc959fb8.png">
 
