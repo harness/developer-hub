@@ -8,4 +8,4 @@ You can specify one of the following:
 * **`INFO`**
 * **`NONE`**  — Do not fail on severity
 
-The YAML definition looks like this: `fail_on_severity : medium  # critical | high | medium | low | none`
+The YAML definition looks like this: `fail_on_severity : medium  # critical | high | medium | low | info | none`
