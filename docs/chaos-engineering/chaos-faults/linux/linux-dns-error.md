@@ -4,6 +4,8 @@ title: Linux DNS error
 ---
 Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 
+![Linux DNS error](./static/images/linux-dns-error.png)
+
 ## Use cases
 - Induces DNS error on the target Linux machines.
 - Simulates loss of access to host by blocking the DNS resolution of host names.

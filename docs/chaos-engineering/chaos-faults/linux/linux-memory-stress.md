@@ -4,6 +4,8 @@ title: Linux memory stress
 ---
 Linux memory stress causes memory consumption of the target Linux machines for a specific duration.
 
+![Linux memory stress](./static/images/linux-memory-stress.png)
+
 ## Use cases
 - Induces memory consumption and exhaustion on the target Linux machines.
 - Simulates a lack of memory for processes running on the application, which degrades their performance.

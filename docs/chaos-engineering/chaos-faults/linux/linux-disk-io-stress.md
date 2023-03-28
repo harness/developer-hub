@@ -4,6 +4,8 @@ title: Linux disk IO stress
 ---
 Linux disk IO stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
 
+![Linux disk IO stress](./static/images/linux-disk-io-stress.png)
+
 ## Use cases
 - Simulates slower disk operations for the applications.
 - Simulates noisy neighbour problems by exhausting the disk bandwidth.

@@ -4,6 +4,8 @@ title: Linux network loss
 ---
 Linux network loss injects chaos to disrupt network connectivity on the Linux machine by blocking the network requests.
 
+![Linux network loss](./static/images/linux-network-loss.png)
+
 ## Use cases
 - Induces network loss on the target Linux machines.
 - Simulates loss of connectivity access by blocking the network requests on the machine.

@@ -4,6 +4,8 @@ title: Linux network latency
 ---
 Linux network latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
 
+![Linux network latency](./static/images/linux-network-latency.png)
+
 ## Use cases
 - Induces Network Latency on the target Linux machines.
 - Simulates latency in connectivity access by delaying the network requests of the machine.
