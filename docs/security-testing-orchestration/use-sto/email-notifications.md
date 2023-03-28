@@ -1,17 +1,18 @@
 ---
-title: Notification workflows — Automated emails for detected issues
+title: Notification workflows - Automated emails for detected issues
 description: Send emails and stop pipelines automatically based on severity levels
 sidebar_position: 210
 ---
 
 This topic describes two example workflows for setting up automatic notifications based on scan results. 
 
-When you run a scan, the step generates a set of output variables that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. You can [include these variables in automated notifications](#send-notification-emails-with-scan-results), such as emails. You can also [create governance policies that evaluate these variables](#stop-builds-and-generate-notifications-using-governance-policies) and use the results to stop pipeline builds and send automated notifications.
+When you run a scan, the step generates a set of output variables that capture the number of issues detected at each severity level: CRITICAL, HIGH, MEDIUM, and so on. You can [include these variables in automated notifications](#send-notification-emails-with-scan-results) such as emails. You can also [create governance policies that evaluate these variables](#stop-builds-and-generate-notifications-using-governance-policies) and use the results to stop pipeline builds and send automated notifications.
 
 
 ## Send notifications with scan results
 
-In this workflow, you add an Email step that notifies recipients of the scan results. The email lists the number of issues detected, grouped by severity level: critical, high, medium, and so on. The pipeline sends a notification whenever the previous scan step finishes successfully.
+In this workflow, you add an Email step that sends a notification whenever the previous scan step finishes successfully. E
+
 
 1. Add a **Custom** stage to your pipeline immediately after the Build or Security stage that runs the scan.
 
@@ -34,19 +35,33 @@ In this workflow, you add an Email step that notifies recipients of the scan res
              New High: <+pipeline.stages.SCAN_STAGE_ID.spec.execution.steps.SCAN_STEP_ID.output.outputVariables.NEW_HIGH> <br>
              Medium: <+pipeline.stages.SCAN_STAGE_ID.spec.execution.steps.SCAN_STEP_ID.output.outputVariables.MEDIUM> <br>
              New Medium: <+pipeline.stages.SCAN_STAGE_ID.spec.execution.steps.SCAN_STEP_ID.output.outputVariables.NEW_MEDIUM> <br> 
-             See https://app.harness.io/ng/#/account/ACCOUNT_ID/sto/orgs/default/"
+             See https://app.harness.io/ng/#/account/MY_ACCOUNT_ID/sto/orgs/default/"
       timeout: 1d
 ```
-For more information about pipeline variables and other variables, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
+
+Now, whenever the pipeline finishes, the pipeline sends an email with the number of issues detected by severity, like this:
+
+```
+"STO scan of sto-notify-test v3 found the following issues:
+Critical : 0
+New Critical : 1
+High: 0
+New High: 2
+Medium: 0
+New Medium: 1
+See https://app.harness.io/ng/#/account/MY_ACCOUNT_ID/sto/orgs/default/"
+```
+
+For more information about pipeline and other variables, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
 
 
 ## Stop builds and generate notifications using governance policies
 
 :::note
-This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/Policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
+This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/Policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/)
 :::
 
-In this workflow, you create a simple OPA policy for the pipeline: If the scan detected any NEW_CRITICAL or NEW_HIGH severities, exit the build with an error and send an email. _New-severity_ issues are issues that were found in the scanned target but not the baseline —  or, if the target has no baseline, the previous scan. 
+In this workflow, you create a simple OPA policy for the pipeline: If the scan detected any NEW_CRITICAL or NEW_HIGH severities, exit the build with an error and send an email. "New-severity" issues are issues that were found in the scanned target but not the baseline —  or, if the target has no baseline, the previous scan. 
 
 
 ### Create the OPA policy
@@ -55,7 +70,7 @@ In this workflow, you create a simple OPA policy for the pipeline: If the scan d
 
 2. Click **Policies** (top right) and then **New Policiy**. 
 
-3. Name the policy **Security no NEW_CRITICAL or NEW_HIGH issues**. 
+3. Give your new policy the name **Security no NEW_CRITICAL or NEW_HIGH issues**. 
 
 4. In the Edit Policy window, enter the following OPA code: 
 
@@ -75,9 +90,9 @@ In this workflow, you create a simple OPA policy for the pipeline: If the scan d
 
 ### Create a policy set
 
-A _policy set_ is a collection of one or more policies. You combine policies into a set and then include it in a Policy step. 
+A _policy set_ is simply a collection of one or more policies. You combine policies into a set and then include it in a Policy step. 
 
-1. In the Policies Overview page, click **Policy Sets** (top right) and then **New Policiy Set**. 
+1. In the Policies Overview page, click **Policy Sets** (top right).
 
 2. Click **New Policy Set**. The Policy Set wizard appears.
 
@@ -108,7 +123,7 @@ A _policy set_ is a collection of one or more policies. You combine policies int
 
 ### Add a step to evaluate your policy against the scan results
 
-Now you will create a Policy step that applies the policy set you just defined against the output variables from the scan. If the scan detected any NEW_CRITICAL or NEW_HIGH issues, the pipeline fails. 
+Now you will create a Policy step that applies the policy you just defined against the output variables from the scan. If the scan detected any NEW_CRITICAL or NEW_HIGH issues, the pipeline fails. 
 
 1. Add a **Custom** stage after the stage with the scan step, if you don't have one already. 
 
@@ -141,7 +156,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
      1. Overview page —  Enter a notifcation name such as **Pipeline failed -- NEW_CRITICAL or NEW_HIGH issues detected**.
 
-     2. Pipeline Events page  —  Select **Stage Failed**, for the event that triggers the notification, and the stage that has the Policy step you just created.
+     2. Pipeline Events page  —  Select **Stage Failed**, for the event that triggers the notification. Then select the stage that has the Policy step you just created.
 
      3. Notification Method page  — Specify **Email** for the method and specify the recipient emails. 
 
