@@ -69,7 +69,7 @@ The VM should be in a healthy state.
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores subject to CPU stress. </td>
-        <td> Default to 0 that means it consume all the avaialble CPU resources. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog#cpu_cores"> CPU cores.</a></td>
+        <td> Default to 0 that means it consume all the avaialble CPU resources. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-windows-cpu-hog#cpu_cores"> CPU cores.</a></td>
         </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
