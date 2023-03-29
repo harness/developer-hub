@@ -22,11 +22,16 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 * Display the AWS account ID and name on the **Recommendations** page. (CCM-11666)
 
-  The AWS Account ID has been added to ECS Service on the Recommendations list page.
+  The AWS Account ID has been added to the ECS Services on the Recommendations list page.
 
 * Cost category enhancement (CCM-10580)
 
-  Introduced support to allocate the cost of shared cost buckets by a fixed percentage among each cost bucket. For more information, go to [Use Cost Categories](/docs/cloud-cost-management/2-use-cloud-cost-management/3-ccm-cost-categories/use-ccm-cost-categories.md).
+  Introduced support to allocate the cost of shared cost buckets by a fixed percentage among each cost bucket. A new user interface has been developed. 
+  
+    ![](./static/cost-category-builder-2.png)
+
+  
+  For more information, go to [Use Cost Categories](/docs/cloud-cost-management/2-use-cloud-cost-management/3-ccm-cost-categories/use-ccm-cost-categories.md).
 
 ### Early access
 This release does not include any early access features.
