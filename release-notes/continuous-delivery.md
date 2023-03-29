@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2023-03-24T10:00
+date: 2023-03-30T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -13,6 +13,78 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 30, 2023, version 789xx
+
+### What's new
+
+- Harness supports adding service or environment inputs as an expression to the service or environment YAML manually. (CDS-54249)
+
+  You can now manually add service or environment input values as expressions to the YAML. The values added to the YAML will be reflected on the Harness UI.  
+- You can freeze services and environments at account or organization levels when creating a deployment freeze window. (CDS-54222, CDS-53783)
+
+  Harness now supports adding service and environment filters when creating a deployment freeze window. You can filter specific services or environments present at an account or organization level by adding a rule. 
+
+  * At the account level freeze window, you can access account level services and environments only.
+  * At the organization level freeze window, you can access account and organization level services and environments.
+  * At the project level freeze window, you can access account, organization, and project level services and environments.
+
+  For more information, go to [freeze deployments](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-freeze/).
+- When adding a [Jira update step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages/#step-1-add-a-jira-update-step), you can now modify the Issue Type. (CDS-54027)
+  
+  You can modify the Jira Issue Type when adding a Jira update step by selecting it from the list of optional fields. Additionally, when you enter an Issue Key in the Jira update step, any optional fields associated with that specific issue will be made available for modification.
+
+  ![](static/jira-update-step.png)
+- CDS-52513
+- A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
+- A new tab, **Referenced By** is added to the **Environments** page, infrastructure definition section in the Harness UI. (CDS-46777)
+  
+  ![](static/referenced-by-tab.png)
+
+### Early access  
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- The **Jira Create** step failed with an error when **Description** was added for unsupported fields. (CDS-57662)
+
+  This issue is fixed by removing the **Description** field for unsupported fields.
+- When creating a template with container steps, the template YAML placed the `connectorRef` at an incorrect path resulting in an error when running the pipeline. (CDS-56526)
+  
+  This issue is fixed. The template YAML now places the `connectorRef` at the correct path, and the pipeline runs successfully.
+- Harness was unable to propogate the output variables of parallel container steps. (CDS-56421)
+  
+  This issue is fixed now.
+- Pipeline execution failed when waiting for steady state with a forbidden error. (CDS-55096, ZD-40763)
+
+  This issue is fixed by updating the Kubernetes API. The API, `readNamespacedJob` used by `kubectl` to check read namespace jobs is now used to check the steady state job in the Kubernetes API. This provides consistency across permissions required to check the job status.
+- The Google Artifact Image **Version** drop-down options were not visible in the **Google Artifact Registry Repository** template dialog. (CDS-55094)
+
+  This issue is fixed. Google Artifact Image version options are now visible for Google Artifact Registry (GAR) artifact source template.
+- The OCI Helm connector connection test failed for the Helm repository URL with port number: `public.ecr.aws:443` with anonymous credentials. (CDS-54066)
+
+  This issue is fixed. We now support the following URL types for the OCI Helm connector.
+
+  * URL without the `oci://` prefix. For example, `public.ecr.aws`.
+  * URL with the `oci://` prefix. For example, `oci://public.ecr.aws`.
+  * URL with port number. For example, `public.ecr.aws:443`.
+  * URL with the `oci://` prefix and port number. For example, `oci://public.ecr.aws:443`. 
+- Users were able to save the [Kubernetes apply step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step/) template without file paths in the template library using YAML. (CDS-53961)
+
+  This issue is fixed. You can no longer configure empty file paths in the apply step template.
+- Unable to create and view default values when configuring services, environments, templates, and pipelines. (CDS-53919, ZD-39998, ZD-40031, ZD-41197, ZD-41889)
+
+  This issue is fixed. Harness now supports adding default values when configuring services, environments, templates, and pipelines.
+- The error message for webhook trigger registration failure was unclear. (CDS-53600)
+
+  This issue is fixed by improving the error handling for webhook trigger registration. The error message now conveys a proper error summary.
+- An `IllegalArgumentException` appeared when service variable expressions were used for environments. (CDS-53490)
+
+  You should not use service variables for environments, and environment variables for services. Harness has now improved the error handling mechanism for such scenarios so that users can fix the issue themselves. 
+- Selecting the edit button on the YAML section of the **Triggers** page took users back to the visual section of the page. (CDS-50426)
+  
+  The **Triggers** page was not maintaining the user preference for the view type (Visual/YAML). This issue is fixed.
+  
 ## March 24, 2023, version 78817
 
 ### What's new
@@ -161,7 +233,6 @@ This release does not include any early access features.
   If the declarative rollback feature was enabled, Harness did not do resource versioning for the ConfigMap and Secret because the main purpose of the versioning in Harness was to be able to do `kubectl` rollout for a managed workload to a previous version that would point to a different version of the resource. Harness was re-applying the full manifest of the previous version. Hence, all resource including the ConfigMap and Secret were reverted to a previous version. With canary and blue green deployment strategies, each canary workload or workload of different colors must point to a different version of the ConfigMap or Secret. Without versioning, it will point to the same resource revision.
 
   This issue is fixed now. The declarative rollback feature now creates a copy of the ConfigMap and Secret resources for canary deployment, and a copy of these resources for each color for blue green deployments.
-- 
 
 ## March 15, 2023, version 78712
 
