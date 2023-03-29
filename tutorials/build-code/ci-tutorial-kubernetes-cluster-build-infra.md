@@ -13,8 +13,8 @@ You'll learn how to create a CI pipeline that does the following:
 1. Clones the code repo for an app.
 2. Uses a Kubernetes cluster build infrastructure.
 3. Builds the app code and runs unit tests.
-4. Packages the app as a Docker image, and uploads it to Docker Hub.
-5. Pulls the uploaded image into the build infrastructure as a service dependency.
+4. Packages the app as a Docker image, and uploads it to a Docker Hub repo.
+5. Pulls the uploaded image into the build infrastructure as a dependency.
 6. Runs an integration test against the app.
 
 <details>
@@ -96,6 +96,8 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 </details>
 
+### Create a GitHub connector
+
 Next, you'll create a _connector_ that allows Harness to connect to your Git codebase, and you'll install a Harness Delegate in your Kubernetes cluster. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 1. Under **Project Setup**, select **Connectors**.
@@ -167,6 +169,8 @@ For most CI pipelines, Build stages do most of the heavy lifting. Build stages a
 
 7. Select **Set Up Stage**. The Build stage is added to the pipeline.
 
+### Define the build infrastructure
+
 Next, you need to define the build infrastructure. Harness offers several [build infrastructure options](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me), and this tutorial uses a [Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
 
 1. Select the **Infrastructure** tab for your Build stage.
@@ -181,153 +185,108 @@ Next, you need to define the build infrastructure. Harness offers several [build
 
 5. In **Namespace**, enter `harness-delegate-ng`, and then select **Continue**.
 
-## Add a build and test step
+## Build, test, and push an image
 
-Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase and run unit tests.
+Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase, run unit tests, and push an artifact to Docker Hub. The first step will run unit tests and compile the codebase. The second step builds a container image and pushes it to a Docker Hub repo.
 
-You can use either a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) or a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) to run unit tests in a CI pipeline. This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on either the build infrastructure or a separate container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) or a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
 1. On the **Execution** tab for your Build stage, select **Add Step**, select **Add Step** again, and then select the **Run** step from the Step Library.
-1. 
+2. For **Name**, enter `Run Unit Tests`.
+3. Select the **Container Registry** field, select **New Connector**, and then select **Docker Registry**.
+4. Create a Docker Registry connector to connect to your Docker Hub account.
 
-<!-- Step 4 build and run unit tests: Delete echo welcome message step. The instruction for the name field is given twice. Missing instruction to select “Connect thru a harness delegate >only use delegates w following tags” after setting up the secret. Report paths are under optional config (have to expand). -->
+   * **Name:** Enter a recognizable name for the connector.
+   * **Provider Type:** Select **DockerHub**.
+   * **Docker Registry URL:** Enter `https://index.docker.io/v1/`.
+   * **Username:** Enter the username for your Docker Hub account.
+   * **Password:** Create a secret for a Personal Access Token that Harness can use to access your Docker Hub account.
+   * **Select Connectivity Mode:** Select **Connect through a Harness Delegate**.
+   * **Delegates Setup:** Select **Only use Delegates with all of the following tags**, and then select the Delegate you installed in your Kubernetes cluster.
+   * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-The Run step executes one or more commands on a container image. Configure the step as follows:
+5. Back in the **Configure Run Step** pane, enter `golang:1.15` in the **Image** field.
+6. Enter the following code in the **Command** field:
 
-* **Name:** Run Unit Tests
-* **Container Registry:** Click **Select** and then **+New Connector**.
-* **Select your Connector Type:** Docker Registry
+   ```
+   go get gotest.tools/gotestsum
+   gotestsum --format=standard-verbose --junitfile unit-tests.xml || true
+   CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo
+   ```
 
-<details>
-<summary>Create a Docker connector</summary>
+   The last line contains the `go build` command that compiles the package along with its dependencies.
 
-You will now create a new Connector to your DockerHub account as follows.
+   This **Run** step intentionally fails the tests so that you can see how Harness records test failures.
 
-### Docker Connector Overview
+7. Under **Optional Configuration**, add a **Report Path** and enter `*.xml`.
+8. Select **Apply Changes** to save the step.
+9. Add a **Build and Push an Image to Docker Registry** step to your Build stage.
+10. Configure the [Build and Push and Image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings) as follows:
 
-* **Name:** Docker Quickstart
+   * **Name:** Enter a name, such as `Build and push image to Docker Registry`.
+   * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
+   * **Docker Repository:** Enter your Docker Hub username and the destination repo name formatted as `[docker_username]/[repo_name]`. For example: `mydockerhub/ci_tutorial_repo`.
+   * **Tags:** Add a tag and enter `<+pipeline.sequenceId>`.
 
-### Docker Connector Details
+11. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
-* **Docker Registry URL:** `https://index.docker.io/v1/`
-* **Provider Type:** Docker Hub
-* **Username:** The username for your Docker Hub account
-* **Password:** Create a Harness Secret for the Personal Access Token you use with your Docker Hub account. You can also use your own Secret Manager.
+:::info
 
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-24.png)
+The tag `<+pipeline.sequenceId>` is a built-in Harness variable that represents the Build ID number, for example `9`. The pipeline uses the Build ID to tag the image that it pushes in the first stage and pulls in the second stage of this tutorial pipeline. You will see the Build ID when you run the pipeline. You will also use this variable to identify the image location when you set up the dependency (as a **Background** step) in the next stage.
 
-### Delegates Setup
+![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-25.png)
 
-* **Delegates Setup:** Select the new Delegate you installed previously using its Tags.
-* Wait for the Connector test to complete and then click **Finish**.
+:::
 
-</details>
+You can run the Pipeline now if you like. Or continue the tutorial and add the Integration Test stage before running the pipeline.
 
-* You should now be in the Configure Run Step pane, with the new Connector in the Container Registry setting. Configure the step as follows:
-	+ **Name:** Run Unit Tests
-	+ **Container Registry:** This should show the Docker Hub Connector you just created.
-	+ **Image:** `golang:1.15`
-	+ **Command:**
-	```
-	go get gotest.tools/gotestsum  
-	gotestsum --format=standard-verbose --junitfile unit-tests.xml || true  
-	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo
-	```
-	The last line contains the `go build` command to compile the package, along with its dependencies.
-	+ **Report Paths (Optional Configuration):** `*.xml`
-	+ Click **Apply Changes**.
-	+ In the Pipeline Studio, click **Save**.
+## Pull the image and run integration tests
 
-This **Run** step will intentionally fail the test. This will be useful to see how a test failure is recorded in Harness.
+The first stage in this pipeline builds, tests, containerizes, and then pushes an image to Docker Hub. Now, you'll add a stage that pulls the image, runs it in a container (using a **Background** step), and then run integration tests on it (using a **Run** step).
 
-## Add the build and push step
+1. Select **Add Stage** (in the upper portion of the Pipeline Studio), and select **Build**.
+2. Enter `Run integration test` for the **Name**, disable **Clone Codebase**, and then select **Set Up Stage**.
 
-<!-- Step 5 build and push image to docker hub: use <docker_username> instead of <your_repo>. -->
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-26.png)
 
-Next, you'll add a step to build your container and push it to your Docker Hub repo. You'll need a repo in your Docker Hub account to receive the artifact.
+3. In the **Infrastructure** tab, select **Propagate from an existing stage**, and select the first **Build** stage in your pipeline. This configures the pipeline to use the same Kubernetes cluster and namespace for both stages.
+4. Select **Continue**.
+5. Add a **Background** step to this stage and configure it as follows. For more information, go to the [Background step settings reference](/docs/continuous-integration/ci-technical-reference/background-step-settings).
 
-* You should be in the Execution tab of the Built Test and Push Stage. Click **Add step**, then click **Build and Push an Image to Docker Registry**.
-* Configure the step as follows:
-	+ **Name:** Build and push an image to Docker Registry
-	+ **Docker Connector:** Select the Docker Hub Connector you set up previously.
-	+ **Docker Repository:**
-		- Create a `ciquickstart`repository in your Docker Hub account.
-		- Then enter`<your_repo>/ciquickstart`where *`<your_repo>`* is your Docker Hub username.
-	+ **Tags:** `<+pipeline.sequenceId>`  
-	This tag is a built-in Harness variable that represents the Build ID number, for example `Build ID: 9`. The pipeline uses the Build ID to tag the image that it pushes in stage 1 and pulls in stage 2. You will see the Build ID when you run the pipeline. You will also use this variable to identify the image location when you set up the [Configure Service Dependency](/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings) step in the next stage.
-    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-25.png)
-	+ Click **Apply Changes** to return to the Pipeline Studio.
-* Click **Save** to save the Pipeline. You can run the Pipeline now, or you can continue and add the Integration Test stage.
+   * **Name:** Enter a recognizable name.
+   * **Container Registry:** Select the Docker Hub connector you used for the steps in the previous stage.
+   * **Image:** Enter `[docker_username]/[repo_name]:<+pipeline.sequenceId>`. Make sure the Docker Hub username and repo name are the same as you used for the **Build and Push an Image to Docker Registry** step. For example: `mydockerhub/ci_tutorial_repo:<+pipeline.sequenceId>`.
+   * <!-- does it need a command?-->
 
-## Add an integration tests stage
+   :::info
 
-<!-- Step 6 create the integration test stage: “click infrastructure” should be “select Infrastructure tab”. The button is “Continue” not “Next”. The “image” instruction is wrong - <your repo> is your username, not the docks hub repo name. Also, “Service Dependency” is deprecated, no longer available in the UI but backwards compatible in YAML. This tutorial needs to use “Background step” instead of “Service Dependency”. -->
+   Notice that the **Image** field uses the same variable `<+pipeline.sequenceId>` that you used in the previous stage. This tells Harness to pull the image with the same tag as the image pushed previously in the pipeline.
 
-Now you have a Stage to clone, build, containerize, and then push your image to Docker Hub. In this step you'll add a Stage to pull that image, run it in a container, and run integration tests on it.
+   :::
 
-* Click **Add Stage**, and select **Build**.
-* Enter the name **Run Integration Test**, disable **Clone Codebase**, and then click **Set Up Stage**.
+6. Select **Apply Changes** to save the step.
+7. Add a **Run** step to your `Run integration test` stage and configure it as follows. This step will run a simple server connection test.
 
-<!-- I think disabling clone codebase caused an error: -->
-<!-- Can’t find git repo error: Click “Codebase” pipeline editor page (far right). Input specific branch name so the full URL resolves. Save > Save. -->
-<!-- The tutorial has a problem that the unit test step fails because it cant find where to write the reports. The fix for this was that Clone Codebase should NOT be disabled. I also think it might be relevant for the GitHub connector to be a GitHub repo instead of a GitHub account. -->
+   * **Name:** Enter a recognizable name, such as `Test server connection`.
+   * **Container Registry:** Select the same Docker Connector as you have for the other steps.
+   * **Image:** Enter `curlimages/curl:7.73.0`.
+   * **Command:** Enter the following code:
 
-![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-26.png)
+   ```
+   sleep 10
+   curl localhost:8080
+   curl localhost:8080?Hello!_I_am_a_nice_demo!
+   ```
 
-### Reuse build infra
-
-Here you configure the stage to use the same infrastructure as the previous stage:
-
-* Click **Infrastructure**.
-* Select **Propagate from an existing stage**.
-* Select the previous stage. This will use the same Kubernetes cluster and namespace as the first stage.
-* Click **Next**.
-
-### Add Built Image from Stage 1 as a Service Dependency
-
-In the Build Test and Push stage, you built your code and pushed your built image to Docker Hub. Now, in Run Integration Test, you will identify the image as a Service Dependency for your test stage. Harness will pull the image onto the container in your infrastructure. Next, it will start the Hello World Server in the image.
-
-* In the Run Integration Test stage > Execution tab, click **Add Service Dependency**.
-* Configure the dependency:
-	+ **Dependency Name:** Run Hello World Server
-	+ **Container Registry:** The same Docker Hub Connector you used in the Build Test and Push stage.
-	+ I**mage:** `<your_repo>/ciquickstart:<+pipeline.sequenceId>`  
-	Replace `<your_repo>` with the name of the Docker Hub repo you are using for this tutorial.
-* Click **Apply Changes**.
-
-Notice that the Image field uses the same variable `<+pipeline.sequenceId>` for the Image that you used in the previous stage. This tells Harness to pull the image with the same tag as the image pushed previously. Here's an example:
-
-| Build and Test and Push (stage 1) Build and Push to Docker Hub step | Run Integration Test (stage 2) Configure Service Dependency step |
-| - | - |
-| ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ciqs-pipeline-sequence-id-stage-1.png) | ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ciqs-pipeline-sequence-id-stage-2.png) |
-
-### Add Integration Test Step
-
-Next, we can run an integration test. We'll simply test the connection to the server.
-
-* Click **Add Step**, and then click **Run**.
-* Configure the step as follows:
-	+ **Name:** test connection to server
-	+ **Container Registry:** The Docker Hub Connector you've been using.
-	+ **Image:** `curlimages/curl:7.73.0`
-	+ **Command:**
-	```
-	sleep 10  
-	curl localhost:8080  
-	curl localhost:8080?Hello!_I_am_a_nice_demo!
-	```
-	+ Select **Apply Changes** to save the step.
-	+ Select **Save** to save the pipeline.
+12. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 ## Run the pipeline
-
-Now run the pipeline.
 
 1. Select **Run**.
 2. For the **Pipeline Inputs**, select **Git branch** and enter the target branch in the code repo, such as `main`.
 3. Select **Run Pipeline**.
 
-On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) you can observe the pipeline while it run. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/view-your-builds/viewing-tests).
+On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/view-your-builds/viewing-tests).
 
 ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
 
@@ -346,8 +305,8 @@ For this pipeline, note the following log details:
 * In the **Initialize** step of the **Run Integration Test** stage, you can see the image with the same tag is pulled from your Docker Hub repo:
 
    ```
-      Pulling image "myrepo/ciquickstart:11"
-      Successfully pulled image "myrepo/ciquickstart:11" in 1.878887425s
+   Pulling image "myrepo/ciquickstart:11"
+   Successfully pulled image "myrepo/ciquickstart:11" in 1.878887425s
    ```
 
 * You can find the pushed image and the associated tag in your Docker Hub repo.
@@ -364,6 +323,8 @@ You can also save your build pipelines as part of your source code. Everything t
 
 <details>
 <summary>Pipeline YAML example</summary>
+
+Note that this example uses the deprecated **Service Dependency** step.
 
 ```yaml
 pipeline:  
