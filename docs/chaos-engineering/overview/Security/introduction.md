@@ -29,7 +29,7 @@ The chaos infrastructure connects to the control plane by making outbound reques
 
 ![Overview](../../static/overview/overview.png)
 
-:::note
+:::info
 Harness can leverage the same cluster (or namespace) to inject chaos into infrastructure targets (such as VMs, cloud resources etc.) within the user environment, provided that the cluster can access them. For more information on Cloud Secrets, refer to the above diagram.
 :::
 
@@ -78,7 +78,7 @@ Harness Chaos Engineering leverages secrets for administrative or management pur
 
 ### Secrets to access chaos artifact (Git) repositories  
 
-HCE allows you to add one or more [chaos hubs](../../chaos-engineering/overview/glossary/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
+HCE allows you to add one or more [chaos hubs](../../overview/glossary/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
 
 The chaos module leverages the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leverages the Harness Secret Manager to store the PAT or SSH keys 
 
@@ -93,9 +93,9 @@ HCE supports fault injection into non-Kubernetes resources such as on-premises V
 
 Additionally, HCE supports custom validation tasks such as retrieving metrics from an APM, making API calls for health status, and running background processes for data integrity. 
 
-Both of the aforementioned actions require specific access to the infrastructure or service in question. This information is expected to be fed as Kubernetes secrets to the transient chaos pod resources that are launched during experiment execution. To learn more about how experiments are executed, go to [chaos architecture](../../chaos-engineering/technical-reference/architecture).
+Both of the aforementioned actions require specific access to the infrastructure or service in question. This information is expected to be fed as Kubernetes secrets to the transient chaos pod resources that are launched during experiment execution. To learn more about how experiments are executed, go to [chaos architecture](../../technical-reference/architecture).
 
-:::note
+:::info
 The experiment artifact that is stored in a chaos hub or supplied when you create an experiment only references the names of secrets. The life cycle of the secrets themselves is fully managed by the users within their clusters.  
 ::: 
 
