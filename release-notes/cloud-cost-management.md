@@ -39,7 +39,7 @@ This release does not include any early access features.
 ### Fixed issues
 * The error message displayed while creating a Jira ticket to apply recommendations was not meaningful. (CCM-10822)
 
-  A comprehensive Jira error message will be displayed in the user interface whenever it is feasible. However, there may be instances where only a generic message, such as "Error creating issue," will be displayed when the Jira error is not parsed.
+  A comprehensive Jira error message will be displayed in the user interface whenever it is feasible. However, there may be instances where only a generic message such as "Error creating issue" will be displayed when the Jira error is not parsed.
 
 
 
