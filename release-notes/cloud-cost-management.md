@@ -31,7 +31,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
     ![](./static/cost-category-builder-2.png)
 
   
-  For more information, go to [Use Cost Categories](/docs/cloud-cost-management/2-use-cloud-cost-management/3-ccm-cost-categories/use-ccm-cost-categories.md).
+  For more information, go to [Use Cost Categories](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-categories/use-ccm-cost-categories).
 
 ### Early access
 This release does not include any early access features.
