@@ -150,11 +150,11 @@ In **API Authentication**, select **GitHub App**.
 
 Enter the following settings:
 
-* **GitHub Installation ID:** enter the Installation ID located in the URL of the installed GitHub App. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
+* **GitHub Installation ID:** enter the Installation ID located in the URL of the installed GitHub App. You can use either plaintext or a [Harness encrypted text secret](../6_Security/2-add-use-text-secrets.md).
 
    ![](./static/git-hub-app-support-58.png)
 
-* **GitHub Application ID:** enter the GitHub **App ID** from the GitHub App **General** tab. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
+* **GitHub Application ID:** enter the GitHub **App ID** from the GitHub App **General** tab. You can use either plaintext or a [Harness encrypted text secret](../6_Security/2-add-use-text-secrets.md).
 
    ![](./static/git-hub-app-support-59.png)
 

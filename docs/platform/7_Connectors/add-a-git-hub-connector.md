@@ -54,7 +54,7 @@ For SSH, ensure that the key is not OpenSSH, but rather PEM format. To generate 
 
 ### Step 3: Credentials
 
-In **Credentials,** enter your **Username**. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
+In **Credentials,** enter your **Username**. You can use either plaintext or a [Harness encrypted text secret](../6_Security/2-add-use-text-secrets.md).
 
 ![](./static/add-a-git-hub-connector-36.png)
 
