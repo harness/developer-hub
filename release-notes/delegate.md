@@ -1,7 +1,7 @@
 ---
 title: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-03-24T10:00
+date: 2023-03-30T10:00
 sidebar_position: 12
 ---
 
@@ -13,6 +13,24 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). For Self-Managed Enterprise Edition, see [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+
+## March 30, 2023, Harness version 789xx, Harness Delegate version 78900
+
+Harness NextGen release 789xx includes the following changes for the Harness Delegate.
+
+### What's new
+
+Added support for the latest Git CLI in the delegate maximal image. (DEL-6121) 
+
+The latest Git CLI is now included by default. 
+ 
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+This release does not include any fixed issues.
 
 ## March 24, 2023, Harness version 78817, Harness Delegate version 78705
 
