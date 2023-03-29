@@ -206,11 +206,11 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 
 
-#### Settings
+### Settings
 
 You can add a `tool_args` setting to run the [grype scanner](https://github.com/anchore/grype) with specific command-line arguments. For example, you can report vulnerabilities with known fixes only using `--only-fixed`: `tool_args` = `--only-fixed`.
 
-#### Additional Configuration
+### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
 

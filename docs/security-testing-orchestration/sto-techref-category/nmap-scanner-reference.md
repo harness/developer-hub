@@ -28,6 +28,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- [`smb-security-mode`](https://nmap.org/nsedoc/scripts/smb-security-mode.html)
 		- [`vuln`](https://nmap.org/nsedoc/categories/vuln.html)
 		- [`exploit`](https://nmap.org/nsedoc/categories/exploit.html)
+* `tool_args` — You can use this field to run the [Nmap scanner](https://nmap.org/book/man-briefoptions.html) with specific command-line arguments. For example, you can include IPv6 tests as follows: `tool_args` = `-6`
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
