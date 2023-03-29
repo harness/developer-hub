@@ -283,6 +283,12 @@ module.exports = {
       to: "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
      },
 
+     // Created by KimberlyFields on March 29, 2023
+    {
+      from: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+      to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
+     },
+
     //  Created by aimurphy for PR-783 on Feb 23, 2023
     {
       from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure",
