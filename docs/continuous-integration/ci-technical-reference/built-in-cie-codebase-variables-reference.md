@@ -128,6 +128,7 @@ You can refer to manual branch builds in Harness with the expression `<+codebase
 
 To refer to specific Git attributes associated with a manual branch build, use the following expressions in your Harness stages:
 
+* `<+codebase.commitMessage>`: The latest commit message from a branch.
 * `<+codebase.branch>`: The name of the Git branch used for the build
 * `<+codebase.commitSha>`: The build's full Git commit id
 * `<+codebase.shortCommitSha>`: The short SHA (seven characters) version of the build's commit SHA
@@ -142,6 +143,7 @@ To refer to specific Git attributes associated with a manual pull request build,
 
 * `<+codebase.baseCommitSha>`: Git base commit id of the build
 * `<+codebase.branch>`: The name of the Git branch associated with the pull request used for the build
+* `<+codebase.commitMessage>`: The latest commit message from a PR.
 * `<+codebase.commitRef>`: Git commit id reference
 * `<+codebase.commitSha>`: The build's full Git commit id
 * `<+codebase.gitUser>`: User name of the Git account associated with the build
@@ -177,6 +179,7 @@ To refer to specific Git attributes associated with a webhook-triggered pull req
 
 * `<+codebase.baseCommitSha>`: Git base commit id of the build
 * `<+codebase.branch>`: The name of the Git branch associated with the pull request used for the build
+* `<+codebase.commitMessage>`: The latest commit message from a PR.
 * `<+codebase.commitRef>`: Git commit id reference
 * `<+codebase.commitSha>`: The build's full Git commit id
 * `<+codebase.gitUser>`: User name of the Git account associated with the build

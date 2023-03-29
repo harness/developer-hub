@@ -18,7 +18,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 ### What's new
 
 * When you [use a GitHub App in a GitHub connector](/docs/platform/connectors/git-hub-app-support/#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
-* (CI-6969)
+* Added a [codebase expression](/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md) for commit messages: `<+codebase.commitMessage>`. (CI-7222)
 
 ### Early access
 
@@ -26,7 +26,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-This release does not include fixed issues.
+Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/ci-github-action-step.md). (CI-6969, CI-7300)
 
 ## March 24, 2023, version 78817
 
