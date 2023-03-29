@@ -155,7 +155,9 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 
      1. Overview page —  Enter a notifcation name such as **Pipeline failed -- NEW_CRITICAL or NEW_HIGH issues detected**.
 
-     2. Pipeline Events page  —  Select **Stage Failed**, for the event that triggers the notification, and the stage that has the Policy step you just created.
+     2. Pipeline Events page  —  Select **Stage Failed** for the event that triggers the notification. Then select the stage that has the Policy step you just created.
+
+        ![](./static/notif-select-stage-failed-and-stage.png)
 
      3. Notification Method page  — Specify **Email** for the method and specify the recipient emails. 
 
