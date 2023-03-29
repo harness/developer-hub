@@ -149,7 +149,7 @@ module.exports = {
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-auto-update",
-         to: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+         to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 21, 2023
