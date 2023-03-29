@@ -1,7 +1,7 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-03-24T10:00
+date: 2023-03-31T10:00
 sidebar_position: 10
 ---
 
@@ -16,6 +16,36 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 31, 2023, version 789xx
+
+### What's new
+
+- The following APIs now return only the permitted service accounts: (PL-32080)
+  - [Get Service Accounts](https://apidocs.harness.io/tag/Service-Account#operation/listServiceAccount) 
+  - [List aggregated Service Accounts](https://apidocs.harness.io/tag/Service-Account#operation/listAggregatedServiceAccounts)
+
+- The favorite icon now dynamically changes based on pipeline execution status on the dashboard's execution view. (PL-31520)
+
+
+### Early access
+
+This release does not include any early access feature.
+
+### Fixed issues
+
+- JWT log sanitizer throws a null pointer exception when it receives null log messages. (PL-32136)
+
+  A code enhancement to add an empty check before sanitizing a log line for secret and JWT masking has fixed this issue.
+
+- When an author's GitLab profile does not include a public email, the email attribute in the webhook payload appears as `REDACTED`. (PL-31795)
+
+  A code enhancement has fixed this issue.
+
+- When creating Azure Key Vault and HashiCorp Vault connectors, selecting invalid delegate selectors displays an "UNKNOWN ERROR". (PL-30660)
+
+  A code enhancement to display appropriate error message has fixed this issue. 
+
 
 ## March 24, 2023, version 78817
 
