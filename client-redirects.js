@@ -136,7 +136,7 @@ module.exports = {
 
       {
         from: "/docs/platform/Delegates/configure-delegates/delegate-auto-update",
-        to: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+        to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
       },
 
 
