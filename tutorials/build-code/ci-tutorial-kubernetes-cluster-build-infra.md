@@ -152,22 +152,25 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 10. Back in the connector's **Delegates Setup**, select your new delegate, and then select **Save and Continue**.
 11. Wait while Harness tests the connection, and then select **Finish**.
 
-## Create a pipeline and add a Build stage
+## Create a pipeline
 
 Pipelines are comprised of one or more stages. Each stage has one or more steps that manage and automate builds, tests, deployments, and other important build and release tasks. To learn more about pipeline components, go to [CI pipeline components](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics).
-
-For most CI pipelines, Build stages do most of the heavy lifting. Build stages are where you specify the end-to-end workflow for your pipeline: the codebase to build, the build infrastructure to use, where to push the finished artifact, and any additional tasks (such as automated tests or validations).
 
 1. Select **Pipelines**, and then select **Create a Pipeline**.
 2. Enter a **Name** for the pipeline. Harness automatically creates a pipeline ID based on the name. Once the pipeline is created, you can't change the ID. You can use the ID to reference subordinate elements of a pipeline, such as the names of variables within the pipeline.
 3. Select **Start**. You're taken to the Pipeline Studio where you can configure pipeline settings and add stages and steps to your pipeline.
-4. In the Pipeline Studio, select **Add Stage** and select **Build**.
-5. For the **Stage Name**, enter `Build Test and Push`.
-6. For **Connector**, select the GitHub connector you created earlier in [Prepare the codebase](#prepare-the-codebase).
+
+### Add a Build stage
+
+For most CI pipelines, Build stages do most of the heavy lifting. Build stages are where you specify the end-to-end workflow for your pipeline: the codebase to build, the build infrastructure to use, where to push the finished artifact, and any additional tasks (such as automated tests or validations).
+
+1. In the Pipeline Studio, select **Add Stage** and select **Build**.
+2. For the **Stage Name**, enter `Build Test and Push`.
+3. For **Connector**, select the GitHub connector you created earlier in [Prepare the codebase](#prepare-the-codebase).
 
    ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-22.png)
 
-7. Select **Set Up Stage**. The Build stage is added to the pipeline.
+4. Select **Set Up Stage**. The Build stage is added to the pipeline.
 
 ### Define the build infrastructure
 
@@ -220,15 +223,14 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 7. Under **Optional Configuration**, add a **Report Path** and enter `*.xml`.
 8. Select **Apply Changes** to save the step.
-9. Add a **Build and Push an Image to Docker Registry** step to your Build stage.
-10. Configure the [Build and Push and Image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings) as follows:
+9. Add a [Build and Push and Image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
 
    * **Name:** Enter a name, such as `Build and push image to Docker Registry`.
    * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
    * **Docker Repository:** Enter your Docker Hub username and the destination repo name formatted as `[docker_username]/[repo_name]`. For example: `mydockerhub/ci_tutorial_repo`.
    * **Tags:** Add a tag and enter `<+pipeline.sequenceId>`.
 
-11. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
+10. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 :::info
 
@@ -238,7 +240,7 @@ The tag `<+pipeline.sequenceId>` is a built-in Harness variable that represents 
 
 :::
 
-You can run the Pipeline now if you like. Or continue the tutorial and add the Integration Test stage before running the pipeline.
+You can run the pipeline now if you like. Or continue the tutorial and add the integration tests before running the pipeline.
 
 ## Pull the image and run integration tests
 
@@ -256,7 +258,6 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
    * **Name:** Enter a recognizable name.
    * **Container Registry:** Select the Docker Hub connector you used for the steps in the previous stage.
    * **Image:** Enter `[docker_username]/[repo_name]:<+pipeline.sequenceId>`. Make sure the Docker Hub username and repo name are the same as you used for the **Build and Push an Image to Docker Registry** step. For example: `mydockerhub/ci_tutorial_repo:<+pipeline.sequenceId>`.
-   * <!-- does it need a command?-->
 
    :::info
 
@@ -265,12 +266,12 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
    :::
 
 6. Select **Apply Changes** to save the step.
-7. Add a **Run** step to your `Run integration test` stage and configure it as follows. This step will run a simple server connection test.
+7. Add a **Run** step to your `Run integration test` stage and configure it as follows:
 
    * **Name:** Enter a recognizable name, such as `Test server connection`.
    * **Container Registry:** Select the same Docker Connector as you have for the other steps.
    * **Image:** Enter `curlimages/curl:7.73.0`.
-   * **Command:** Enter the following code:
+   * **Command:** Enter the following code, which runs a simple server connection test:
 
    ```
    sleep 10
