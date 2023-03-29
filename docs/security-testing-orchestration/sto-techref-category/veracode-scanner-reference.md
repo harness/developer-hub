@@ -31,7 +31,8 @@ Harness recommends you create [text secrets](../../platform/6_Security/2-add-use
 * `repository_project` — The name of the repo that gets scanned as shown in the Veracode UI. You use the [Codebase Config object](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) in the Harness pipeline to determine the URL of the repo to scan.  
 In most cases, this should match the repo name used in your Git provider.
 * `repository_branch` — The branch that gets reported in STO for the ingested results. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md). This sets the branch based on the user input or trigger payload at runtime.  
-In most cases, this field should match the name of Git branch that is getting scanned.
+     In most cases, this field should match the name of Git branch that is getting scanned.
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 * `product_auth_type`
 	+ `apiKey` — Recommended.  
 	Go to the [Veracode docs](https://docs.veracode.com) and search for *Generate Veracode API Credentials*.
@@ -43,11 +44,12 @@ In most cases, this field should match the name of Git branch that is getting sc
 	+ For `usernamePassword` authentication, this is your password.
 	+ For `apiKey` authorization, this is your API Secret key.
 * `product_app_id`  — The Veracode GUID, separated with hyphens, for the target application.  
-To determine the App Id, go to the home page for the Veracode app with the results you want to scan. The App Id is the string immediately after the port number in the URL. Thus, for the following app, you would specify `1973759`.  
+     To determine the App Id, go to the home page for the Veracode app with the results you want to scan. The App Id is the string immediately after the port number in the URL. Thus, for the following app, you would specify `1973759`.  
 `https://analysiscenter.veracode.com/auth/index.jsp#HomeAppProfile:88881:1973759`
 * `product_project_name`— The Veracode project with the scan results you want to ingest.  
-The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes how you can find your application Id's and project names.
+     The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes how you can find your application Id's and project names.
 
+### Fail on Severity
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
