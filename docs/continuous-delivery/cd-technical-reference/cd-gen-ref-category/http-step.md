@@ -127,7 +127,7 @@ In **Advanced**, you can use the following options:
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [Delegate Proxy Settings](../../../platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md).
+HTTP step supports delegate proxy settings by default. For more information, go to [Delegate Proxy Settings](../../../platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings.md).
 
 ## Header capability check
 

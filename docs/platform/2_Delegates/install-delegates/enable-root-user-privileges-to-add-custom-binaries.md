@@ -1,11 +1,7 @@
 ---
 title: Enable root user privileges to add custom binaries
-description: You can install Harness Delegate with or without root user privileges. By default, the Harness Delegate container runs as root user. The Delegate installer provides the option to install the Delegate…
-# sidebar_position: 2
-helpdocs_topic_id: lbndemc7qi
-helpdocs_category_id: m9iau0y3hv
-helpdocs_is_private: false
-helpdocs_is_published: true
+description: You can install Harness Delegate with or without root user privileges. By default, the Harness Delegate container runs as root user. The Delegate installer provides the option to install the Delegate
+sidebar_position: 4
 ---
 
 You can install Harness Delegate with or without root user privileges. By default, the Harness Delegate container runs as root user. 
@@ -22,10 +18,10 @@ Harness provides the following Delegate images. Each image includes a set of too
 
 | **Delegate Image**  | **Description** |
 | --- | --- |
-| harness/delegate:*YY.MM.xxxxx* | Includes the Delegate and its dependencies.Includes client tools such as `kubectl`, Helm, and ChartMuseum. |
-| harness/delegate:*YY.MM.xxxxx*.minimal | Includes the Delegate and its dependencies. |
+| harness/delegate:*yy.mm.xxxxxx* | Includes the Delegate and its dependencies.Includes client tools such as `kubectl`, Helm, and ChartMuseum. |
+| harness/delegate:*yy.mm.xxxxxx*.minimal | Includes the Delegate and its dependencies. |
 
-For detailed information on Docker delegate installation, see [Install a Docker delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md).
+For detailed information on Docker delegate installation, see [Install a Docker delegate](/docs/platform/2_Delegates/install-delegates/overview.md).
 
 ### Select user privileges in the installer
 

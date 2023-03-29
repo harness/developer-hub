@@ -38,6 +38,6 @@ While the build runs, you can monitor the **Build and Push to ACR** step logs, a
 
 * [Run step settings](../../ci-technical-reference/run-step-settings.md)
 * [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegate overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
+* [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)

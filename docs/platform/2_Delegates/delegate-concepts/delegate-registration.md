@@ -1,7 +1,7 @@
 ---
 title: Delegate registration and verification
 description: To set up a Harness Delegate, you install the Delegate in your environment and the Delegate automatically registers with your Harness account. The Delegate config file (for example, Kubernetes Delega…
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: 39tx85rekj
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false
@@ -14,7 +14,7 @@ The Delegate config file (for example, Kubernetes Delegate YAML file) contains y
 
 ### Installing and registering delegates
 
-To install a Delegate, follow the steps in the relevant Delegate installation topic, such as [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md).
+To install a Delegate, follow the steps in the relevant Delegate installation topic, such as [Install a Kubernetes Delegate](/docs/platform/2_Delegates/install-delegates/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/overview.md).
 
 Once you have installed the Delegate in your environment, click **Verify** in the Delegate wizard and Harness will verify that it is receiving heartbeats from the Delegate.
 

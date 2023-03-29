@@ -1,7 +1,7 @@
 ---
 title: Configure delegate proxy settings
 description: All of the Delegates include proxy settings you can use to change how the Delegate connects to the Harness Manager. By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme settings.…
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: 5ww21ewdt8
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false

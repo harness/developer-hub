@@ -132,7 +132,7 @@ data:
 
 ---
 
-# To learn how to proxy a delegate, go to [Configure delegate proxy settings](https://developer.harness.io/docs/platform/delegates/configure-delegates/configure-delegate-proxy-settings/)
+# To learn how to proxy a delegate, go to [Configure delegate proxy settings](/docs/platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings/)
 
 apiVersion: apps/v1
 kind: Deployment

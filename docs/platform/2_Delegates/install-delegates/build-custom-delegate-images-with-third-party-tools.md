@@ -1,11 +1,7 @@
 ---
 title: Build custom delegate images with third-party tools
 description: This document explains how to build and host custom delegate images that include the tools you select.
-# sidebar_position: 2
-helpdocs_topic_id: c2hjcqvpq8
-helpdocs_category_id: m9iau0y3hv
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 3
 ---
 
 Harness Manager installs and configures delegates with the binaries that most CI/CD pipelines require. In some cases, however, a preconfigured image isn’t the right fit. For example, preconfigured images can:
@@ -29,7 +25,7 @@ You can build on either of the following Harness-provided images.
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
 | Harness Minimal Delegate Docker image | A minimal delegate image available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
 
-Use the  last published `YY.MM.XXXXX` version of the minimal image from the Docker repository.
+Use the  last published `yy.mm.xxxxx` version of the minimal image from the Docker repository.
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-07.png)
 ### Build the delegate image

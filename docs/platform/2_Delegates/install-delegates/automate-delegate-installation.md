@@ -1,7 +1,7 @@
 ---
 title: Automate delegate installation
 description: Automate delegate installation and registration.
-# sidebar_position: 2
+sidebar_position: 6
 helpdocs_topic_id: 9deaame3qz
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false
@@ -65,7 +65,7 @@ The delegate configuration file contains environment variables for account, orga
 
 If your delegate is registered at the account level, the Organization and Project variables will be empty. If your delegate is registered at the Organization level, the Project variable will be empty.
 
-Before you duplicate the file, review the list of environment variables in the delegate `spec` to ensure they are appropriate for the second delegate. For further information, see [Delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/).
+Before you duplicate the file, review the list of environment variables in the delegate `spec` to ensure they are appropriate for the second delegate. For further information, see [Delegate environment variables](../delegate-reference/delegate-environment-variables/).
 
 ### Step 2: Rename the new delegate
 
@@ -111,5 +111,5 @@ After you update the delegate names, you can apply the configuration file. The d
 
 ### See also
 
-* [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md)
+* [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md)
 
