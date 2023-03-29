@@ -30,7 +30,7 @@ This topic explains how to import a Template from your Git repo to Harness.
 
 * To import a Template, make sure you have the **Create/Edit** permissions for Templates.
 
-### Step: Import a template
+### Import a template
 
 You can import a Template in the Account, Org, or Project scope.
 
@@ -85,9 +85,14 @@ Create the branch in your repository before entering it in **Git Branch**. Harn
 :::
 
 
-1.  Enter the **YAML Path** from where you want to import the Template. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).![](./static/import-a-template-from-git-27.png)
-2.  Click **Import**.  
+10. Enter the **YAML Path** from where you want to import the Template. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
+
+   ![](./static/import-a-template-from-git-27.png)
+
+11. Click **Import**.  
 
     Click on your Template to proceed.  
-    By default, Harness fetches your Template details from the default branch. If you have imported Template from some other branch, select the branch from where you imported the Template and continue.![](./static/import-a-template-from-git-28.png)
+    By default, Harness fetches your Template details from the default branch. If you have imported Template from some other branch, select the branch from where you imported the Template and continue.
+    
+    ![](./static/import-a-template-from-git-28.png)
 

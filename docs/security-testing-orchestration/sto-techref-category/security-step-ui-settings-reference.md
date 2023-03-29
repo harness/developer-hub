@@ -28,9 +28,11 @@ To set up a scan using the step palette, add a SecurityTests stage to your pipel
 
 </details>
 
-<!-- ============================================================================= -->
 
 <details><summary>Scan settings</summary>
+
+<!-- ============================================================================= -->
+
 
 #### Scan Mode
 
@@ -46,7 +48,8 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 <StoSettingScanModeData />
 <StoSettingScanModeIngest />
 
-<!-- ============================================================================= -->
+<!-- ---------------------------------------------------------------------------- -->
+
 <a name="scan-config"></a>
 
 #### Scan Configuration
@@ -62,6 +65,10 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 <details><summary>Target Settings</summary>
 
 <!-- ============================================================================= -->
+
+
+<!-- ---------------------------------------------------------------------------- -->
+
 <a name="target-type"></a>
 
 #### Type
@@ -80,6 +87,8 @@ import StoSettingScanTypeConfig  from './shared/step_palette/_sto-ref-ui-scan-ty
 <StoSettingScanTypeInst />
 <StoSettingScanTypeConfig />
 
+<!-- ---------------------------------------------------------------------------- -->
+
 <a name="target-name"></a>
 
 #### Name 
@@ -90,6 +99,8 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 <StoSettingProductID />
 
+
+<!-- ---------------------------------------------------------------------------- -->
 
 <a name="target-variant"></a>
 
@@ -102,6 +113,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 <StoSettingTargetVariant  />
 
 
+<!-- ---------------------------------------------------------------------------- -->
+
 <a name="target-workspace"></a>
 
 #### Workspace (_repository_)
@@ -112,6 +125,17 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 <StoSettingTargetWorkspace  />
 
+<!-- ============================================================================= -->
+
+</details>
+
+
+
+<details><summary>Ingestion Settings</summary>
+
+<!-- ============================================================================= -->
+
+<!-- ---------------------------------------------------------------------------- -->
 <a name="ingestion-file"></a>
 
 #### Ingestion File (_ingestion_)
@@ -122,20 +146,18 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 
 <StoSettingIngestionFile  />
 
-</details>
-
-
-<!-- ============================================================================= 
-
-### Ingestion (_ingestion_)
-
 <!-- ============================================================================= -->
+
+</details>
 
 
 
 <details><summary>Authentication Settings</summary>
 
 <!-- ============================================================================= -->
+
+
+<!-- ---------------------------------------------------------------------------- -->
 <a name="auth-domain"></a>
 
 #### Domain (_extraction_)
@@ -147,7 +169,8 @@ import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.
 
 <StoSettingAuthDomain />
 
-<!-- ============================================================================= -->
+
+<!-- ---------------------------------------------------------------------------- -->
 <a name="auth-enforce-ssl"></a>
 
 #### Enforce SSL
@@ -158,7 +181,8 @@ import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md'
 
 <StoSettingProductSSL />
 
-<!-- ============================================================================= -->
+
+<!-- ---------------------------------------------------------------------------- -->
 <a name="auth-access-api-version"></a>
 
 #### API Version
@@ -169,7 +193,8 @@ import StoSettingApiVersion from './shared/step_palette/_sto-ref-ui-auth-api-ver
 
 <StoSettingApiVersion />
 
-<!-- ============================================================================= -->
+<!-- ---------------------------------------------------------------------------- -->
+
 <a name="auth-type"></a>
 
 #### Type
@@ -180,7 +205,8 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 <StoSettingAuthType />
 
-<!-- ============================================================================= -->
+
+<!-- ---------------------------------------------------------------------------- -->
 
 <a name="auth-access-id"></a>
 
@@ -192,7 +218,10 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 <StoSettingAuthAccessID />
 
-<!-- ============================================================================= -->
+
+
+<!-- ---------------------------------------------------------------------------- -->
+
 <a name="auth-access-token"></a>
 
 #### Access Token
@@ -203,6 +232,8 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 
 <StoSettingAuthAccessToken />
+
+<!-- ============================================================================= -->
 
 </details>
 

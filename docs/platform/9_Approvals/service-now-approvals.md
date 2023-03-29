@@ -55,11 +55,11 @@ In the pipeline, click **ServiceNow Approval.** The **ServiceNow Approval** sett
 
 In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
-You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
+You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
 ServiceNow communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m.In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](../7_Connectors/connect-to-service-now.md) you want to use.
+The maximum is 3w 3d 20h 30m. In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](../7_Connectors/connect-to-service-now.md) you want to use.
 
 Select the ServiceNow **Ticket Type**. Use the same type as the ticket you created in the Workflow.
 

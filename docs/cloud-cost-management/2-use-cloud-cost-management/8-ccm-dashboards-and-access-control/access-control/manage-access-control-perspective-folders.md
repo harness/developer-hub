@@ -51,12 +51,14 @@ The following steps illustrate how to restrict access to a Resource Group:
       ![](./static/manage-role-bindings.png)
 
 
-
 In Harness, the **Perspectives** page shows only the folders that the user has been granted access to. This means that the user cannot see or interact with any folder that they do not have permission to access.
 
 A user can create **Budgets** for Perspectives only within the folders that they have been granted access to. For more information about Budgets, go to [Create a Budget](/docs/cloud-cost-management/2-use-cloud-cost-management/6-ccm-budgets/create-a-budget.md).
 
-Similarly, on the **Anomalies** page, you can only view those anomalies associated with the perspectives located within specific folders that you have access to. The anomalies displayed also depend on the Perspective rule that restricts the user to a particular cloud provider account or a cost category, or a region. The out-of-the-box perspectives provided by Harness, as well as any other perspectives outside these folders, are not displayed. For more information about Anomalies, go to [Anomalies](/docs//cloud-cost-management/2-use-cloud-cost-management/5-ccm-cost-anomaly-detection/detect-cloud-cost-anomalies-with-ccm.md).
+Similarly, on the **Anomalies** page, users can only view those anomalies associated with the perspectives located within specific folders that they have access to. The anomalies displayed also depend on the Perspective rule that restricts the user to a particular cloud provider account or a cost category, or a region. The out-of-the-box perspectives provided by Harness, as well as any other perspectives outside these folders, are not displayed. For more information about Anomalies, go to [Detect Cloud Cost Anomalies](/docs//cloud-cost-management/2-use-cloud-cost-management/5-ccm-cost-anomaly-detection/detect-cloud-cost-anomalies-with-ccm.md).
+
+For users with restricted access, **Recommendations** are displayed only for the Perspectives located within specific folders that they have access to. The user will be able to view and apply these recommendations. For more information, go to [Recommendations](https://developer.harness.io/docs/category/cloud-cost-recommendations).
+
 
 A user with folder restrictions does not have permission to create new folders. This means that the user can only work within the existing folder structure that has been set up for them by an administrator.
 

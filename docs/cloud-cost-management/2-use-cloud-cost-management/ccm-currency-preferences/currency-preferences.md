@@ -79,6 +79,7 @@ Once configured, you cannot change the currency settings. It takes up to 24 hour
 
   ![](./static/currency-preference-recommendations.png)
 
+* Currency standardization is supported only within CCM. Note that the currency symbol in **Dashboards** is not changed, but the cost is displayed in the preferred currency.
 * You can configure these settings only for your cloud accounts. Contact Harness Support to view the Kubernetes cluster data in your preferred currency.
 * The currency format defaults to the _en-us_ locale. If you wish to change this, contact Harness Support.
   In the following example, the locale is changed from _en-us_ to _fr-be_ which has changed the currency representation (currency symbol appears after the digits).

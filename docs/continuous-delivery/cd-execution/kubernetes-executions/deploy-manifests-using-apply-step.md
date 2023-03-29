@@ -198,7 +198,7 @@ You cannot use `kubectl` subcommands in the **Command Flags** setting. For examp
 
 For more information on command flags, go to [Apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) in the Kubernetes documentation.
 
-For more information on installing custom binaries on the delegate, go to [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries/).
+For more information on installing custom binaries on the delegate, go to [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/).
 
 ## Advanced settings
 

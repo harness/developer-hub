@@ -22,21 +22,31 @@ Harness UI uses the following cache life cycle to render a remote entity:
 1. The first time you load a remote entity to the Harness UI, the Harness UI fetches the entity from Git, renders it in the UI, and then updates the cache. Subsequently, the Harness UI loads the entity from the cache.
 2. Harness displays a green tick if an entity's cache has been updated in the last two hours.
 
-    ![](../10_Git-Experience/static/activecache.png)
+   ![](../10_Git-Experience/static/latest-cache.png)
 
-Harness displays an orange tick against any entity whose cache was last updated more than two hours ago.
+   Harness displays an orange tick against any entity whose cache was last updated more than two hours ago.
 
-   ![](../10_Git-Experience/static/stalecache.png)
+   ![](../10_Git-Experience/static/stale-cache.png)
 
-   Refresh the cache and reload the entities from Git by selecting the refresh option. The following pop-up appears to confirm the reload of the entities from Git.
+   You can refresh the cache and reload the entities from Git by selecting the **Reload from Git** option. 
+   
+   ![](./static/reload-from-git.png)
+
+   The following pop-up appears to confirm reload of the entities from Git.
 
    ![](../10_Git-Experience/static/refreshcache.png)
   
   The cache status you see in the UI is only indicative of the cache status of the entity being fetched. Entities referenced within the fetched entity may have different cache statuses.
   For example, the cache status in the pipeline studio corresponds to the cache status of the pipeline. It is possible for referenced remote templates within this pipeline to have a different cache status.
-  If you select refresh cache, the caches of all the referenced entities are also retrieved and reloaded from Git.
+  If you select **Reload from Git**, the caches of all the referenced entities are also retrieved and reloaded from Git.
 
-3.  Harness clears the cache for any entity that hasn't been referred to or loaded on the Harness UI in the previous 72 hours. Any subsequent access (whether through API or UI) will fetch the entity from GIT, update the cache, and return the response.
+3. Harness clears the cache for any entity that hasn't been fetched from GIT in the previous 30 days. Any subsequent access (whether through API or UI) will fetch the entity from GIT, update the cache, and return the response.
+
+4. If the UI utilizes caching, the backend uses cached data and never pulls the latest from Git by default. 
+
+5. When the cache is unavailable, Harness fetches the latest data from Git, updates the cache, and returns the response.
+
+   For example, if you open a remote pipeline whose cache has expired, the backend updates its cache based on the latest Git version.
    
 ## Caching entities saved on multiple branches
 

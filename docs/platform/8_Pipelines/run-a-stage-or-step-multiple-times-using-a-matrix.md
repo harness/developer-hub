@@ -30,7 +30,7 @@ You can apply matrix strategies to both CI and CD workflows. This topic assumes 
 ### Add a Matrix Strategy to a Stage or Step
 
 1. In the Pipeline Studio, go to the **Advanced** tab of the Stage or Step where you want to apply the Looping strategy.
-2. Under Looping Strategies, select **Matrix**.You can also use a Loop strategy to iterate through a simple list. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md).
+2. Under Looping Strategies, select **Matrix**. You can also use a Loop strategy to iterate through a simple list. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md).
 3. Enter the YAML definition for your strategy as illustrated in the following examples.
 
 ### CI Example: Run an App in `[browser]` on `[os]`
@@ -75,9 +75,9 @@ matrix:
       - os: macos  
 maxConcurrency: 4 # test the app across 4 Stages running concurrently
 ```
-### CD Matrix Example: Deploy `[service]` to  `[environment]`
+### CD Matrix Example: Deploy `[service]` to `[environment]`
 
-You can easily set up a Deploy Stage to deploy multiple services to multiple environments by defining  a matrix like this:
+You can easily set up a Deploy Stage to deploy multiple services to multiple environments by defining a matrix like this:
 
 
 ```
@@ -93,7 +93,7 @@ maxConcurrency: 2
 
 ### Simple List Example: Build App `[items]`
 
-You can also use the `repeat` and `items` keywords to iterate through a simple list. Suppose you want to build a Java app for multiple JDKs. Under Looping Strategy, select **For Loop** and  enter the following:
+You can also use the `repeat` and `items` keywords to iterate through a simple list. Suppose you want to build a Java app for multiple JDKs. Under Looping Strategy, select **For Loop** and enter the following:
 
 
 ```
@@ -101,7 +101,7 @@ repeat:
   items: [ "18", "17", "16", "15", "14", "13", "12", "11", "10", "9" ]  
 maxConcurrency: 2
 ```
-Note that a this example is simply an alternative way of defining a one-dimensional matrix with the `items` keyword as the key. You can define the same basic strategy like this:
+Note that this example is simply an alternative way of defining a one-dimensional matrix with the `items` keyword as the key. You can define the same basic strategy like this:
 
 
 ```
@@ -132,7 +132,7 @@ echo "step values (local):"
 echo "Current browser for step: <+matrix.browser>"  
 echo "Current os for step: <+matrix.os>"
 ```
-Given the CD example above, you can go to the Service tab of the Deploy Stage and specify the service using  `<+matrix.service>`.
+Given the CD example above, you can go to the Service tab of the Deploy Stage and specify the service using `<+matrix.service>`.
 
 ![](./static/run-a-stage-or-step-multiple-times-using-a-matrix-40.png)
 The following variables are also supported:

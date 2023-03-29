@@ -83,23 +83,24 @@ const FeaturedList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-container-signing',
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-container-signing",
   },
   {
-    title: 'Build and Publish a Rust application',
+    title: "Build and Publish a Rust application",
 
-    module: 'ci',
+    module: "ci",
     icon: "img/icon_ci.svg",
     description: (
       <>
-       Use a CI pipeline to build, test, and publish a multi-architecture Rust application container image.
+        Use a CI pipeline to build, test, and publish a multi-architecture Rust
+        application container image.
       </>
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-rust-container',
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-rust-container",
   },
 ];
 
@@ -298,19 +299,20 @@ const CIList: CardItem[] = [
     link: "/tutorials/build-code/ci-publish-allure-report",
   },
   {
-    title: 'Build and Publish a Rust application',
+    title: "Build and Publish a Rust application",
 
-    module: 'ci',
+    module: "ci",
     icon: "img/icon_ci.svg",
     description: (
       <>
-       Learn how to build, test and publish multi architecture Rust application container image.
+        Learn how to build, test and publish multi architecture Rust application
+        container image.
       </>
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: '15 min',
-    link: '/tutorials/build-code/ci-tutorial-rust-container',
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-rust-container",
   },
 ];
 
@@ -341,7 +343,8 @@ export default function CI() {
                   styles.btnLight
                 )}
               >
-                <i className="fa-regular fa-file"></i>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_documentation.svg`} />
                 Documentation
               </button>
             </Link>
@@ -354,7 +357,8 @@ export default function CI() {
                   styles.btnLight
                 )}
               >
-                <i className="fa-regular fa-file"></i>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
               </button>
             </Link>
