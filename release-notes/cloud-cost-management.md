@@ -13,6 +13,32 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 21, 2023, version 78903
+
+### What's new
+* Enabled audit trail for budget groups. (CCM-11387)
+
+  With this enhancement, you can track all CRUD operations such as Create, Delete, and Update related to budget groups.
+
+* Display the AWS account ID and name on the **Recommendations** page. (CCM-11666)
+
+  The AWS Account ID has been added to ECS Service on the Recommendations list page.
+
+* Cost category enhancement (CCM-10580)
+
+  Introduced support to allocate the cost of shared cost buckets by a fixed percentage among each cost bucket. For more information, go to [Use Cost Categories](/docs/cloud-cost-management/2-use-cloud-cost-management/3-ccm-cost-categories/use-ccm-cost-categories.md).
+
+### Early access
+This release does not include any early access features.
+
+### Fixed issues
+* The error message displayed while creating a Jira ticket to apply recommendations was not meaningful. (CCM-10822)
+
+  A comprehensive Jira error message will be displayed in the user interface whenever it is feasible. However, there may be instances where only a generic message, such as "Error creating issue," will be displayed when the Jira error is not parsed.
+
+
+
+
 ## March 13, 2023
 
 ### What's new
