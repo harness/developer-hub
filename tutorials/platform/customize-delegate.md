@@ -5,7 +5,7 @@ description: Customize Delegate to Install Third-Party Tools
 
 # Customize Delegate to Install Third-Party Tools
 
-[Harness Delegate](/docs/platform/Delegates/get-started-with-delegates/delegates-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network. 
+[Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network. 
 
 Connecting to external systems usually requires a third-party client tool or library to be present locally. Some of the Harness CD and Platform tasks require such client tools to be present in the same container instance where the delegate runs. You can either create a custom delegate image (using the harness-provided delegate image as base image) or install these client tools along with the delegate. The former approach works best when you know all the client tools ahead of time while the latter approach works best when you are still building your CD pipelines and do not have the final list of client tools yet. This tutorials shows you to execute the latter approach using a delegate feature known as `INIT_SCRIPT`.
 
