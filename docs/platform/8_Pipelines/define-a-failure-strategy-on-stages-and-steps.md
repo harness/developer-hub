@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, only the **All Errors** Failure Type is supported.A failure strategy defines how your stages and steps handle different failure conditions.
+Currently, only **All Errors** Failure Type is supported. A failure strategy defines how your stages and steps handle different failure conditions.
 
 The failure strategy contains error conditions that must occur for the strategy to apply, and actions to take when the conditions occur.
 
@@ -45,6 +45,7 @@ You can select an option or, if the Manual Intervention exceeds its Timeout sett
 Harness Pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings:
 
 ![](./static/define-a-failure-strategy-on-stages-and-steps-12.png)
+
 Using these settings together in multiple stages requires some consideration.
 
 Let's say you have a Pipeline with two stages: **stage 1** followed by **stage 2**. 

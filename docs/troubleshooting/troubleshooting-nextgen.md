@@ -12,6 +12,72 @@ This topic contains general troubleshooting information for error messages and o
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or [Harness Community Forum](https://community.harness.io/).
 
+### Contents
+<!-- TOC start -->
+- [Contents](#contents)
+- [Login issues](#login-issues)
+  - [Logged out automatically](#logged-out-automatically)
+    - [Troubleshooting steps](#troubleshooting-steps)
+    - [Notes](#notes)
+- [Delegate issues](#delegate-issues)
+  - [Failure to assign a delegate to a perpetual task](#failure-to-assign-a-delegate-to-a-perpetual-task)
+  - [Duplicate output in deployment logs](#duplicate-output-in-deployment-logs)
+  - [Running multiple delegates on the same host](#running-multiple-delegates-on-the-same-host)
+  - [Delegate setup](#delegate-setup)
+  - [Delegate can't connect to Harness Manager](#delegate-cant-connect-to-harness-manager)
+  - [Delegate successes followed by failures](#delegate-successes-followed-by-failures)
+  - [No delegates could reach the resource](#no-delegates-could-reach-the-resource)
+  - [Google Cloud Platform: cluster has unschedulable pods](#google-cloud-platform-cluster-has-unschedulable-pods)
+    - [Cause](#cause)
+    - [Solution](#solution)
+  - [Deleting a Kubernetes delegate](#deleting-a-kubernetes-delegate)
+  - [Self-destruct sequence initiated](#self-destruct-sequence-initiated)
+    - [Cause](#cause-1)
+    - [Solution](#solution-1)
+  - [Need to use long polling for delegate connection to Harness Manager](#need-to-use-long-polling-for-delegate-connection-to-harness-manager)
+  - [KubernetesClientException: Operation: \[list\] for kind: \[Deployment\] with name: \[null\] in namespace: \[default\] failed](#kubernetesclientexception-operation-list-for-kind-deployment-with-name-null-in-namespace-default-failed)
+- [Artifact collection](#artifact-collection)
+  - [Stage hanging on artifact collection](#stage-hanging-on-artifact-collection)
+- [Common errors and alerts](#common-errors-and-alerts)
+  - [No delegates could reach the resource](#no-delegates-could-reach-the-resource-1)
+  - [Harness SecretStore is not able to encrypt/decrypt](#harness-secretstore-is-not-able-to-encryptdecrypt)
+  - [You are not authorized to perform this operation: AmazonEC2: Status code 403](#you-are-not-authorized-to-perform-this-operation-amazonec2-status-code-403)
+  - [Git-upload-pack not permitted](#git-upload-pack-not-permitted)
+- [Naming conventions](#naming-conventions)
+- [Secrets](#secrets)
+  - [Secrets values hidden In log output](#secrets-values-hidden-in-log-output)
+  - [AWS KMS 403](#aws-kms-403)
+- [Triggers](#triggers)
+  - [zsh: no matches found](#zsh-no-matches-found)
+  - [User does not have "Deployment: execute" permission](#user-does-not-have-deployment-execute-permission)
+- [Continuous delivery](#continuous-delivery)
+  - [Deployment rate limits](#deployment-rate-limits)
+  - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
+- [Continuous integration](#continuous-integration)
+  - [Test suites wrongly parsed](#test-suites-wrongly-parsed)
+  - [Test intelligence not working](#test-intelligence-not-working)
+- [Helm](#helm)
+  - [Unable to get an update from the chart repository](#unable-to-get-an-update-from-the-chart-repository)
+- [Kubernetes](#kubernetes)
+  - [The deployment is invalid...may not be specified when `value` is not empty](#the-deployment-is-invalidmay-not-be-specified-when-value-is-not-empty)
+  - [NullPointerException: release name is reserved for internal Harness ConfigMap](#nullpointerexception-release-name-is-reserved-for-internal-harness-configmap)
+  - [The server doesn't have a resource type "deployments"](#the-server-doesnt-have-a-resource-type-deployments)
+  - [Invalid value LabelSelector](#invalid-value-labelselector)
+  - [Cannot create property](#cannot-create-property)
+- [Terraform](#terraform)
+  - [Provisioned resources already exist (Terraform state file locked)](#provisioned-resources-already-exist-terraform-state-file-locked)
+  - [TerraformValidation - Terraform validation result: false](#terraformvalidation---terraform-validation-result-false)
+- [Harness secret managers](#harness-secret-managers)
+- [SAML SSO](#saml-sso)
+  - [Signed in user is not assigned to a role for the project (Harness)](#signed-in-user-is-not-assigned-to-a-role-for-the-project-harness)
+    - [Cause](#cause-2)
+    - [Solution](#solution-2)
+- [Shell scripts](#shell-scripts)
+  - [FileNotFoundExeption inside shell script execution task](#filenotfoundexeption-inside-shell-script-execution-task)
+- [Harness policy engine](#harness-policy-engine)
+  - [Policy evaluation failed](#policy-evaluation-failed)
+<!-- TOC end -->
+
 ### Login issues
 
 The following issues can occur when logging in to Harness.
@@ -90,15 +156,15 @@ Do not run multiple delegates on the same host, pod, or container. This will res
 
 #### Delegate setup
 
-Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
 Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](../platform/6_Security/1-harness-secret-manager-overview.md) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
 
 The delegate is monitored locally using its Watcher component. The Watcher component has a watcher.log file that can provide delegate version information for troubleshooting.
 
-#### Delegate connection failures to Harness Manager
+#### Delegate can't connect to Harness Manager
 
-If the delegate cannot connect to Harness Manager, try the following:
+If the delegate can't connect to Harness Manager, try the following:
 
 1. Use **ping** on the Delegate host to test if response times for **app.harness.io** or another URL are reasonable and consistent.
 2. Use **traceroute** on **app.harness.io** to check the network route.
@@ -123,7 +189,7 @@ For Kubernetes delegates, you can increase the number of replicas run using a si
 
 #### No delegates could reach the resource
 
-This error means that no delegate could meet the URL criteria for validation. For more information, see [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#how-does-harness-manager-pick-delegates).
+This error means that no delegate could meet the URL criteria for validation. For more information, see [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
 
 #### Google Cloud Platform: cluster has unschedulable pods
 
@@ -155,7 +221,7 @@ For example, if you have the delegate pod name `mydelegate-vutpmk-0`, you can de
 
 Note that the `-0` suffix in the pod name is removed for the StatefulSet name.
 
-#### Self destruct sequence initiated
+#### Self-destruct sequence initiated
 
 This rare error can be noticed in delegate logs:
 
@@ -228,7 +294,7 @@ This section lists common error and alert messages you might receive.
 
 #### No delegates could reach the resource
 
-This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. See [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#how-does-harness-manager-pick-delegates).
+This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. See [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
 
 #### Harness SecretStore is not able to encrypt/decrypt
 
@@ -374,7 +440,7 @@ If Harness does not show standard error, then many errors will not be captured, 
 
 ### Continuous integration
 
-The following issues can occur when using CI into Harness.
+The following issues can occur when using Harness CI.
 
 #### Test suites wrongly parsed
 

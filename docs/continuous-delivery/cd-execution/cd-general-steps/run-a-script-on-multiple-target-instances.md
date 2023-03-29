@@ -22,9 +22,9 @@ Here's an example with a Shell Script step:
 
 ![](./static/run-a-script-on-multiple-target-instances-00.png)
 
-## Create your Pipeline
+## Create your pipeline
 
-You can use the Repeat Looping Strategy with `<+stage.output.hosts>` to target multiple hosts in the following deployment types:
+You can use the repeat looping strategy with `<+stage.output.hosts>` to target multiple hosts in the following deployment types:
 
 * [SSH (Traditional)](../../onboard-cd/cd-quickstarts/ssh-ng.md)
 * [WinRM](../../onboard-cd/cd-quickstarts/win-rm-tutorial.md)
@@ -39,10 +39,10 @@ For **Deployment Templates**, any step using the Repeat Looping Strategy with `<
 ## Add your step
 
 1. In **Execution**, click **Add Step** and then select and configure the step you want to run on all hosts.
-
-Depending on the type of step you are adding, you might want to reference the host instances.
-
-For example, you might be running a Shell Script step on all hosts.
+   
+   Depending on the type of step you are adding, you might want to reference the host instances.
+   
+   For example, you might be running a Shell Script step on all hosts.
 
 ## Reference hosts in steps using expressions
 
@@ -59,14 +59,17 @@ For Microsoft Azure or AWS:
 * [<+instance.host.privateIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-private-ip)
 * [<+instance.host.publicIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-public-ip)
 
-`instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.### Set Looping Strategy
+`instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+
+## Set looping strategy
 
 The Repeat [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) allows you to repeat the step for all target hosts. The strategy will iterate through the list of hosts. The list of hosts is identified with the expression `<+stage.output.hosts>`.
 
 1. In your step, click **Advanced**.
 2. Click **Looping Strategy**.
 3. Click **Repeat** and enter the following:
-  ```
+  
+  ```yaml
   repeat:  
     items: <+stage.output.hosts>
   ```
@@ -100,7 +103,7 @@ You can also add a Shell Script step to echo `<+stage.output.hosts>` to see the 
 [ec2-54-201-142-249.us-west-2.compute.amazonaws.com, ec2-54-190-26-183.us-west-2.compute.amazonaws.com]
 ```
 
-## Supported Deployments
+## Supported deployment types
 
 The ​`<+instance...>` expression is only supported in SSH, WinRM, and Custom deployments using Deployment Templates.
 

@@ -31,9 +31,9 @@ The following use cases specify which codebase variables get resolved and when.
 
 When you start a build manually using **Input Sets**, the variables are based on the input set defined for the **Trigger** type:
 
-[Manual branch build](#manual-branch-build)
-[Manual tag build](#manual-tag-build-expressions)
-[Manual pull request build](#manual-pull-request-build)
+* [Manual branch build](#manual-branch-build)
+* [Manual tag build](#manual-tag-build-expressions)
+* [Manual pull request build](#manual-pull-request-build)
 
 </details>
 
@@ -42,16 +42,15 @@ When you start a build manually using **Input Sets**, the variables are based on
 
 The most common use case for triggering CI builds is in response to a Git event. When the pipeline receives a webhook payload that matches a **Trigger**, it starts a build. The build maps the trigger variables in the payload to the codebase variables in the build. The variables that get resolved are based on the event type and the payload:
 
-[Pull request webhook event](#pull-request-webhook-event)
-[Push webhook event](#push-webhook-event)
+* [Pull request webhook event](#pull-request-webhook-event)
+* [Push webhook event](#push-webhook-event)
 
 </details>
 
 <details>
 <summary>Builds that can't use webhook payloads to set codebase variables</summary>
 
-[Manual branch build](#manual-branch-build)
-
+* [Manual branch build](#manual-branch-build)
 * A cron Trigger starts a new build every night at midnight. In this case, the incoming payload has no information about a specific Git event.
 * A Run step clones a repo, and then builds and pushes an image using Docker-in-Docker commands. This repo is not specified in the codebase for the Build stage. In this case, the codebase variables don't apply to this repo. If a Git event arrives from this repo and triggers a build, then [Trigger variables](../../platform/8_Pipelines/w_pipeline-steps-reference/triggers-reference.md) will describe this build.
 

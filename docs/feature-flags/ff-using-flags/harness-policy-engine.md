@@ -12,7 +12,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
+:::info note
  Currently, this feature is behind the Feature Flags `OPA_PIPELINE_GOVERNANCE`, `CUSTOM_POLICY_STEP`, and `OPA_FF_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 :::
 
@@ -33,7 +33,7 @@ For example, you can use policies to ensure your Feature Flags: 
 
 This topic provides an overview of how Harness Policy Engine works with Feature Flags.
 
-:::note
+:::info note
  For steps to set up your policies on the Harness Platform, go to [Use Harness Policy Engine for Feature Flags.](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md)
 :::
 
@@ -64,17 +64,16 @@ Then, when a Feature Flag is saved, Harness reaches out to the Harness OPA serve
 1. Set your policy: The names of all Feature Flags created must match the regex you set. You set the regex as having to be in the format ABC, dash, and three numbers, for example, ABC-123.
 2. Insert the Rego code into the Policy Engine on the Harness Platform, for example, the Rego code for the policy above is:
 
-
-```
-package feature_flags  
-  
-# Deny flags whose names aren't a valid Jira ticket format for our projects  
-# e.g. "ABC-123" is allowed. "My cool flag" is not allowed  
-  
-deny[sprintf("feature flag name '%s' doesn't match regex", [input.flag.name])] {  
-   not regex.match("[ABC]+[-][1-9][0-9]?", input.flag.name)  
-}
-```
+   ```
+   package feature_flags  
+     
+   # Deny flags whose names aren't a valid Jira ticket format for our projects  
+   # e.g. "ABC-123" is allowed. "My cool flag" is not allowed  
+     
+   deny[sprintf("feature flag name '%s' doesn't match regex", [input.flag.name])] {  
+      not regex.match("[ABC]+[-][1-9][0-9]?", input.flag.name)  
+   }
+   ```
 3. Run the policy against your Feature Flags.
 
 When you create the policy you can choose whether a Feature Flag receives only a warning message, or receives an error and can’t be saved when the policy isn’t met. For more information about how to do this, go to [Creating a Policy](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md#step-1-creating-a-policy).
@@ -82,7 +81,7 @@ When you create the policy you can choose whether a Feature Flag receives only a
 * **Success**: You create a Feature Flag and name it `ABC-567`, which matches the naming regex you set. When you save the flag, the policy rule is evaluated, returns `Flag created`, and the flag is saved.
 * **Warning**: You create a Feature Flag and name it `Flag2`, which doesn’t match the naming regex you set. The flag is saved but you receive the following warning message:
 
-![Screenshot of the warning message "Flag saved with policy warnings". ](./static/8-harness-policy-engine-11.png)*Figure 2: A Flag with policy warnings*
+   ![Screenshot of the warning message "Flag saved with policy warnings". ](./static/8-harness-policy-engine-11.png)*Figure 2: A Flag with policy warnings*
 
 * **Failure**: You create a Feature Flag and name it `Flag2`, which doesn’t match the naming regex you set. The flag doesn’t save and you receive the following error message:
 
@@ -90,5 +89,5 @@ When you create the policy you can choose whether a Feature Flag receives only a
 
 ## Next step
 
-To understand how to add policies for Feature Flags, go to [Use Harness Policy Engine for Feature Flags](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md).
+To add policies for Feature Flags, go to [Use Harness Policy Engine for Feature Flags](../../platform/14_Policy-as-code/using-harness-policy-engine-for-feature-flags.md).
 

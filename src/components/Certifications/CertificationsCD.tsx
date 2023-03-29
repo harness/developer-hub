@@ -88,7 +88,12 @@ export default function CertificationsCD() {
           {/* Developer Study Guide */}
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.Developer]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert
@@ -166,7 +171,12 @@ export default function CertificationsCD() {
         >
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.Administrator]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert
@@ -219,7 +229,12 @@ export default function CertificationsCD() {
         >
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.Architect]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert

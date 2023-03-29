@@ -31,15 +31,15 @@ Editing the Codebase for a Pipeline:
 ### Before You Begin
 
 * [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
+* [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Create or Edit a Codebase Connector
 
-You can add a Codebase to your new CI Pipeline as well as an existing Pipeline that doesn’t have a Codebase yet. 
+You can add a codebase to your new CI pipeline as well as an existing pipeline that doesn't have a codebase yet.
 
-In this step, you'll create the Codebase for a new Pipeline in Harness CIE.
+In this step, you'll create the codebase for a new pipeline in Harness CI.
 
 1. Go to **Pipeline Studio**, click **Add Stage**, and then click **Build**.
 2. Enter a unique name for the Build Stage.The Build Stage includes a **Clone Codebase** option, which is enabled by default. This tells Harness to clone the codebase into the build environment before building an artifact. In most cases, you want to leave this option enabled. You can disable this if you don't need a codebase for the build operation.

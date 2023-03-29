@@ -32,7 +32,7 @@ The Harness SaaS manager URL. `https` indicates port 443.
 
 ### WATCHER_STORAGE_URL
 
-The URL location of the Watcher versions. See [Delegate installation overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+The URL location of the Watcher versions. See [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
 ```
 - WATCHER_STORAGE_URL = https://app.harness.io/public/prod/premium/watchers
@@ -89,7 +89,7 @@ The name of the delegate. This is the name that appears in Harness when the dele
 
 You can automate delegate creation by omitting the name and using a script to copy the delegate YAML file, giving a unique name to the `value` of the delegate name for each newly created delegate you want to register.
 
-See [Automate delegate installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md).
+See [Automate delegate installation](/docs/platform/2_Delegates/install-delegates/automate-delegate-installation.md).
 
 ```
 - name: DELEGATE_NAME  
@@ -183,7 +183,7 @@ You can use this environment variable to run scripts on the delegate. For exampl
 
 A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md). 
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). 
 
 ```
 - INIT_SCRIPT =  echo hello world!

@@ -63,7 +63,7 @@ See [Add Container Images as Artifacts for Kubernetes Deployments](add-artifacts
 
 ## Review: Harness Variables in Values YAML
 
-You cannot use Harness variables in Kubernetes manifests. You can only use Harness variables in Values YAML files.Let's look at an example. Here's a values.yaml file that uses Harness variables for name, image, dockercfg, and namespace:
+You cannot use Harness variables in Kubernetes manifests. You can only use Harness variables in Values YAML files. Let's look at an example. Here's a values.yaml file that uses Harness variables for name, image, dockercfg, and namespace:
 
 
 ```yaml
@@ -202,5 +202,5 @@ Your values YAML files can use [Harness variables](../../../platform/12_Variable
 
 Your manifests reference your values YAML file using [Go templating](https://godoc.org/text/template), as described above.
 
-You cannot use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md) in Kubernetes manifests. You can only use Harness variables in Values YAML files.See [Example Kubernetes Manifests using Go Templating](../../cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+You cannot use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md) in Kubernetes manifests. You can only use Harness variables in values YAML files. See [Example Kubernetes Manifests using Go Templating](../../cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 

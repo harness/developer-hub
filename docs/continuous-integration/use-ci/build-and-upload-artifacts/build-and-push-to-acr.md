@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic explains how to add a Build and Push to [Azure Container Registry](https://azure.microsoft.com/en-us/products/container-registry) (ACR) step to a CI pipeline.
 
-These steps assume you're familiar with creating CI pipelines. If you haven't created a pipeline before, try this tutorial to [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
+These steps assume you're familiar with creating CI pipelines. If you haven't created a pipeline before, try this tutorial to [get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
 
 ## Add the Build and Push to ACR step
 
@@ -37,7 +37,7 @@ While the build runs, you can monitor the **Build and Push to ACR** step logs, a
 ## See also
 
 * [Run step settings](../../ci-technical-reference/run-step-settings.md)
-* [CI pipeline quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
-* [CI stage settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
+* [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)

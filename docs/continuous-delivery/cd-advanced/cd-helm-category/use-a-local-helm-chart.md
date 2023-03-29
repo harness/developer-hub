@@ -16,15 +16,17 @@ Harness will check for the existence of the Helm chart on the local Delegate dis
 
 Using a local Helm chart eliminates identical downloads and their related performance issues.
 
-New to Helm deployments in Harness? See [Helm Chart Deployment Tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Native Helm Deployment Tutorial](../../onboard-cd/cd-quickstarts/native-helm-quickstart.md). For extensive details, see [Deploy Helm Charts](deploy-helm-charts.md).### Add installation script to the Delegate YAML
+New to Helm deployments in Harness? See [Helm Chart Deployment Tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Native Helm Deployment Tutorial](../../onboard-cd/cd-quickstarts/native-helm-quickstart.md). For extensive details, see [Deploy Helm Charts](deploy-helm-charts.md).
+
+### Add installation script to the Delegate YAML
 
 1. Install the chart on the Delegate host.  
 The Delegate host must have Helm installed on it. Harness installs Helm with the Delegate automatically, so you don't need to do anything unless you have removed Helm for the Delegate host.  
 For information on the Helm binaries installed by default, see [Supported platforms and technologies](../../../getting-started/supported-platforms-and-technologies.md).  
 You can install the chart manually on the host, but it is easier to install it using the `INIT_SCRIPT` environment variable in the Delegate YAML.
 2. Add the `INIT_SCRIPT` environment variable to the StatefulSet (Legacy Delegate) or Deployment (Immutable Delegate) object in the Delegate YAML, and add your Helm chart installation script.  
-For information on Delegate types, go to [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md).  
-For information on using `INIT_SCRIPT`, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).  
+For information on Kubernetes or Docker Delegate types, go to [Install a Delegate](../../../platform/2_Delegates/install-delegates/overview.md).  
+For information on using `INIT_SCRIPT`, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).  
 For information on installing Helm charts, go to Helm's documentation for [Helm Install](https://helm.sh/docs/helm/helm_install/).
 
 ### Add HELM\_LOCAL\_REPOSITORY environment variable to Delegate YAML
@@ -51,11 +53,11 @@ If the chart version is not included, Harness will fetch the `latest` version.
 
 The `HELM_LOCAL_REPOSITORY` environment variable is the same for both Delegate types.
 
-For information on Delegate types, go to [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md).
+For information on Delegate types, go to [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/install-a-kubernetes-delegate.md) or [Install a Docker Delegate](../../../platform/2_Delegates/install-delegates/overview.md).
 
 ### Important notes
 
-Please review the following important notes.
+Review the following important notes.
 
 #### Use the same Delegate for fetching chart and deployment steps
 

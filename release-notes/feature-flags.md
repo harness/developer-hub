@@ -7,11 +7,101 @@ sidebar_position: 6
 
 Harness Feature Flags is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
 
-:::note
+:::info note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 28, 2023
+
+### What's new
+
+The [**Erlang server SDK**](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference), which was in Beta, has been released as GA with version **1.0.0**. This release includes the following updates.
+
+* **Breaking changes**
+
+  - Changes to mulit-instance behavior. Go to the [Readme](https://github.com/harness/ff-erlang-server-sdk#run-multiple-instances-of-the-sdk) for updated instructions and code samples for the following:
+    - If you define a multi-instance configuration, and one of the instances (including the default instance) fails to authenticate, then the other instances do not attempt to start, and the SDK does not boot.
+    - You can choose not to start the default instance.
+
+* **Enhancements**
+  - The SDK is now available on [hex.pm](https://hex.pm/).
+  - Improved logging for debugging purposes
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The **Erlang server SDK** was released as GA, version **1.0.0**, and includes the following bug fix:
+
+* There was an issue in multi-instance functionality that prevented users from starting up multiple instances. This issue has been fixed. (FFM-7187)
+
+## March 23, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The **Node.js server SDK** has been updated to version **1.2.14** with the following updates:
+
+* The EventSource library was updated to version 2.1.3. (FFM-7198)
+* On streaming errors, the error was not included in the `retrying` event payload. This fix adds the error to the payload. (FFM-7198)
+* Checks were added to see if errors are eligible for retries, and if not, the SDK stops retrying. (FFM-7198)
+* The SDK now logs each retry. This ensures the most recent error is logged if errors change during retries. (FFM-7198)
+
+
+## March 23, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The **Node.js server SDK** has been updated to version **1.2.13** with the following update:
+
+* A race condition during initialization could cause some flag evaluation calls (when called immediately after calling waitForInitialization) to return the default value instead of the actual evaluated value. This issue has been fixed. (FFM-7289) 
+
+
+## March 21, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags Server
+
+The **FF server** has been upated to version **1.968.0** and includes the following updates:
+
+* When searching for a flag, the search filter sometimes failed if the flag description was null rather than empty. This issue has been fixed. (FFM-7213)
+* When using GitSync to save a flag with a floating point value, the feature flag service generated an error.
+The service now correctly handles floating point numbers saved from Git. (FFM-7118)
+
 
 ## March 16, 2023
 
@@ -27,7 +117,7 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The Java server SDK has been updated to version 1.2.1 and includes the following update:
+The **Java server SDK** has been updated to version **1.2.1** and includes the following update:
 
 * When an SDK key was not supplied, the SDK continually retried. This issue was fixed and now, if authentication fails, the SDK no longer retries constantly, and instead generates a MissingSdkKeyException. (FFM-7214)
 
@@ -46,7 +136,7 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The Node.js server SDK has been updated to version 1.2.12 and includes the following update:
+The **Node.js server SDK** has been updated to version **1.2.12** and includes the following update:
 
 * The event source was updated to version 2.1.2. This adds eligible errors to the `retrying` event payload. (FFM-7198)
 
@@ -64,7 +154,7 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The Java server SDK has been updated to version 1.2.0 and includes the following updates:
+The **Java server SDK** has been updated to version **1.2.0** and includes the following updates:
 
 * Improved support for TLS allows custom CA certificates to be provided. (FFM-7004)
 * A new HTTP header, `Harness-SDK-Info`, was added. This header helps the Feature Flag service identify connected client SDKs apart from server SDKs. (FFM-7038)
@@ -100,7 +190,7 @@ This release does not include early access features.
 
 #### Feature Flag SDKs
 
-The Node.js server SDK has been updated to version 1.2.11 and includes the following updates:
+The **Node.js server SDK** has been updated to version **1.2.11** and includes the following updates:
 
 - All three retry strategies no longer fire off their initial retry at the same time. (FFM-7002)
 - The eventsource library now closes correctly if `eventsource.close` is called while it's in a RETRYING state. (FFM-7002)
@@ -121,7 +211,7 @@ This release does not include early access features.
 
 #### Feature Flag SDKs
 
-The Node.js SDK has been updated to version 1.2.10 and includes the following updates:
+The **Node.js server SDK** has been updated to version **1.2.10** and includes the following updates:
 - The Node.js SDK uses the eventsource library. **In rare cases**, an issue occurred when a 500 response was received from the remote system, the connection seemed to close and stop retrying. However, if it received an unspecified error, for example if the endpoint doesn’t exist or goes down suddenly, or if the remote system closed the connection, then the SDK tried to connect to the /stream endpoint every second, forever. This issue was resolved with the following updates:
 
   - The SDK now falls back to polling if the stream disconnects. (FFM-4204)
@@ -142,7 +232,7 @@ This release does not include early access features.
 
 #### Feature Flag SDKs
 
-The Python server SDK has been updated to version 1.1.9 and includes the following update:
+The **Python server SDK** has been updated to version **1.1.9** and includes the following update:
 * SSE updates were stopping due to a lost connection. Now, the SSE connection is reestablished if it drops. (FFM-6932) 
 
 ## February 15, 2023
@@ -159,7 +249,7 @@ This release does not include early access features.
 
 #### Feature Flag SDKs
 
-The .NET server SDK has been updated to version 1.1.7 and includes the following updates:
+The **.NET server SDK** has been updated to version **1.1.7** and includes the following updates:
 
 * The default poll interval was corrected from 20 seconds to 60 seconds, consistent with the other SDKs. (FFM-3691)
 * The SSE EventSource was not detecting that a connection may have dropped. The SDK will now reconnect correctly if it loses its connection to the stream endpoint. (FFM-6877)
@@ -178,17 +268,17 @@ This release does not include early access features.
 
 #### Feature Flag SDKs
 
-- The Flutter Client SDK has been updated to version 1.0.10 and includes the following updates:
+- The **Flutter client SDK** has been updated to version **1.0.10** and includes the following updates:
   - This SDK now uses Android SDK 1.0.20. (FFM-6822)
   - This update fixes excessive network calls when calling flag evaluation functions. (FFM-6822)
 
-- The Python Server SDK has been updated to version 1.1.8 and includes the following updates:
+- The **Python server SDK** has been updated to version **1.1.8** and includes the following updates:
   - Added `wait_for_initialization` to the client API, which can be called to block the thread until all groups and flags have been retrieved and loaded into the cache. (FFM-6549)
   - Added `is_initialized` to the client API, which can be called at any time to check if the initial retrieval and caching of groups and flags has been completed. (FFM-6549)
 
-:::note
-For an example usage of `wait_for_initialization` go to [the SDK's repository](https://github.com/harness/ff-python-server-sdk/blob/main/examples/wait_for_initialization_example/wait_for_initialization.py).
-:::
+  :::info note
+  For an example usage of `wait_for_initialization` go to [the SDK's repository](https://github.com/harness/ff-python-server-sdk/blob/main/examples/wait_for_initialization_example/wait_for_initialization.py).
+  :::
 
 
 ## February 6, 2023
@@ -204,17 +294,17 @@ This release does not include early access features.
 ### Fixed issues
 #### Feature Flags UI
 
-The **Complete** button at the end of the onboarding flow was always enabled. Now, it is disabled until the user receives a successful evaluation. (FFM-5987)
+* The **Complete** button at the end of the onboarding flow was always enabled. Now, it is disabled until the user receives a successful evaluation. (FFM-5987)
 
 #### Feature Flag SDKs
 
-The Python SDK has been updated to version 1.1.7 and includes the following new feature:
+The **Python SDK** has been updated to version **1.1.7** and includes the following new feature:
 
-When adding targets to a group based on conditions, the `in` operator is now case-sensitive in the SDK. (FFM-5991)
+* When adding targets to a group based on conditions, the `in` operator is now case-sensitive in the SDK. (FFM-5991)
 
-:::note
-If you are targeting any groups using the `in` operator, ensure that your target condition takes into account the case sensitivity of the operator.
-:::
+  :::info note 
+  If you are targeting any groups using the `in` operator, ensure that your target condition takes into account the case sensitivity of the operator.
+  :::
 
 ## January 27, 2023
 
@@ -230,7 +320,7 @@ This release does not include early access features.
 
 #### Feature Flag SDKs
 
-The Java server SDK has been updated to version 1.1.11 and includes the following changes:
+The **Java server SDK** has been updated to version **1.1.11** and includes the following changes:
 
 - Timeout errors were logged due to the code calling `awaitTermination()` before `shutDown()` when stopping the update processor. There was also a misleading warning about the poller not being restarted. These issues have been fixed. (FFM-6581)
 
@@ -247,14 +337,14 @@ This release does not include early access features.
 
 ### Fixed issues
 #### Feature Flag SDKs
-- The React client SDK has been updated to version 1.1.0 and includes the following changes:
+- The **React client SDK** has been updated to version **1.1.0** and includes the following changes:
   - You can now listen for errors that are caused by network issues. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578)
   - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-react-client-sdk/blob/main/README.md) (FFM-6578) 
 
-- The Javascript client SDK has been updated to version 1.8.0 and includes the following change:
+- The **Javascript client SDK** has been updated to version **1.8.0** and includes the following change:
   - You can now provide the SDK with a set of evaluations that it can serve instantly upon initialization. For more information about this, go to [the SDK's readme file.](https://github.com/harness/ff-javascript-client-sdk/blob/main/README.md) (FFM-6489)
 
-- The Android client SDK has been updated to version 1.0.19 and includes the following changes:
+- The **Android client SDK** has been updated to version **1.0.19** and includes the following changes:
   - A new event was added, `SSE_RESUME`, which fires if the application loses and regains internet.  When the event fires: 
     - The SDK internally reloads all feature config into cache. (FFM-6574)
     - Applications can listen to this event to ensure event listeners don't miss any streamed events during periods of downtime.
@@ -273,7 +363,7 @@ This release does not include early access features.
 
 #### Feature Flag SDKs
 
-The Go server SDK has been updated to version 0.1.6 and includes the following update:
+The **Go server SDK** has been updated to version **0.1.6** and includes the following update:
 * Some target segment include rules were not working for numeric values. This issue has been fixed. (FFM-6384)
 
 ## January 24, 2023
@@ -288,8 +378,8 @@ This release does not include early access features.
 
 ### Fixed issues
 #### Feature Flag SDKs
-- The Android SDK has been updated to version 1.0.18. This fixes a bug that caused unhandled exception errors due to duplicate callbacks during the SDK initialization. (FFM-6395)
-- The Flutter SDK has been updated to version 1.0.8. This includes the following:
+- The **Android client SDK** has been updated to version **1.0.18**. This fixes a bug that caused unhandled exception errors due to duplicate callbacks during the SDK initialization. (FFM-6395)
+- The **Flutter client SDK** has been updated to version **1.0.8**. This includes the following:
   - Fixed a bug that caused applications to shut down in response to API errors caused by no internet connection. (FFM-6395)
   - Fixed a bug that caused streaming to stop working if internet connectivity was lost. (FFM-6395) 
 
@@ -305,11 +395,29 @@ This release does not include early access features.
 
 ### Fixed issues
 #### Feature Flag SDKs
-- The Javascript SDK has been updated to version 1.7.0. This fix adds the `Harness-AccountID` and `Harness-EnvironmentID` fields to the HTTP request header in all calls after the initial authorization request. These values are extracted from the JWT, so you don't need to add a value for them. (FFM-6507)
+- The **Javascript SDK** has been updated to version **1.7.0**. This fix adds the `Harness-AccountID` and `Harness-EnvironmentID` fields to the HTTP request header in all calls after the initial authorization request. These values are extracted from the JWT, so you don't need to add a value for them. (FFM-6507)
 
-- The Android SDK has been updated to version 1.0.17. This includes the following changes:
+- The **Android client SDK** has been updated to version **1.0.17**. This includes the following changes:
   - Fixed a bug that caused a 401 error when the SDK tried to send a request to the `stream` endpoint if the request was to a non-production environment. (FFM-4603)
   -   Fixed a bug that caused the SDK to stop working if an identifier isn't provided during the SDK initialization. The SDK will now use the name if you don't provide an identifier. You will receive an error if you don't provide either a name or identifier as at least one of these is required for all client-side SDKs. (FFM-6396)
+
+## January 21, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags authentication service
+
+The Feature Flags authentication service has been updated to version 1.0.6 with the following update:
+
+* The authentication service was logging warnings as it tried to authenticate with each cluster in turn. This could produce warnings even when authentication was eventually successful. Now, if authentication is successful, no warnings are logged. (FFM-6557)
 
 ## January 19, 2023
 
@@ -322,16 +430,16 @@ This release does not include new features.
 This release does not include early access features.
 
 ### Fixed issues
-#### Feature Flag SDKs
-- The Javascript SDK has been updated to version 1.6.0. This includes the following changes:
+#### Feature Flags SDKs
+- The **Javascript client SDK** has been updated to version **1.6.0**. This includes the following changes:
   - You can now customise the interval of how often metrics data is sent to the metrics endpoint. (FFM-6498)
   - If the metrics data is not successfully posted to the endpoint after two attempts, the data is cleared to ensure the metrics data doesn't get too large and cause performance issues. (FFM-6509)
 
-- The Java SDK has been updated to version 1.1.10. This includes the following changes:
+- The **Java server SDK** has been updated to version **1.1.10**. This includes the following changes:
   -  Improvements to how the metrics endpoint processes platform targets. (FFM-6392)
   -  Fixed a bug that caused an error due to incompatibility with an older version of OkHttp. (FFM-6442)
   
-- The Ruby SDK has been updated to version 1.0.6. This fixes dependency issues with OpenAPI that caused errors when trying to initialize the SDK. (FFM-6523)
+- The **Ruby server SDK** has been updated to version **1.0.6**. This fixes dependency issues with OpenAPI that caused errors when trying to initialize the SDK. (FFM-6523)
 
 ## January 17, 2023
 
@@ -345,7 +453,8 @@ This release does not include early access features.
 
 ### Fixed issues
 #### Feature Flags UI
-If you changed the environment, and then opened the **Pipeline** tab or **Environment** tab on a second screen, the environment you set defaulted to the original one. This has been fixed and the environment you select is consistent through all tabs. 
+
+* If you changed the environment, and then opened the **Pipeline** tab or **Environment** tab on a second screen, the environment you set defaulted to the original one. This has been fixed and the environment you select is consistent through all tabs. 
 
 
 ## January 10, 2023
@@ -370,7 +479,8 @@ This release does not include early access features.
 - Fixed a bug where scrollbars were unnecessarily displayed in the target groups section of the targets page during loading. (FFM-4053)
 
 #### Feature Flag SDKs
-The Ruby SDK has been updated to version 1.0.5. This fixes a bug that caused the SDK to not wait for initialization when using the `wait_for_initialization` method. (FFM-6393)
+
+* The **Ruby server SDK** has been updated to version **1.0.5**. This fixes a bug that caused the SDK to not wait for initialization when using the `wait_for_initialization` method. (FFM-6393)
 
 ## December 22, 2022
 
@@ -385,7 +495,7 @@ This release does not include early access features.
 ### Fixed issues
 #### Feature Flags UI
 
-Resolved an issue that caused the edit section of a pipeline not to load on the Feature Flag module. (FFM-5948)
+* Resolved an issue that caused the edit section of a pipeline not to load on the Feature Flag module. (FFM-5948)
 
 ## December 15, 2022
 
@@ -419,7 +529,7 @@ This release does not include early access features.
 
 **Feature Flags UI**
 
-Fixed a bug where target names were labelled "UNDEFINED" on the Harness UI if the name contained spaces. (FFM-5866)
+* Fixed a bug where target names were labelled "UNDEFINED" on the Harness UI if the name contained spaces. (FFM-5866)
 
 **FF SDKs**
 
@@ -560,7 +670,7 @@ This release does not include early access features.
 
 **Feature Flags UI**
 
-When submitting an invalid YAML file for Feature Flag steps in a Pipeline, you now receive an error describing why the YAML is invalid. Previously the incorrect YAML was accepted and only showed a general error during pipeline execution. (FFM-4557)
+* When submitting an invalid YAML file for Feature Flag steps in a Pipeline, you now receive an error describing why the YAML is invalid. Previously the incorrect YAML was accepted and only showed a general error during pipeline execution. (FFM-4557)
 
 **Feature Flag SDKs**
 
@@ -600,7 +710,7 @@ This release does not include early access features.
 
 The Android SDK has been updated to 1.0.13.
 
-This fixes a big where metric data was not showing in the UI.
+* This fixes a bug where metric data was not showing in the UI.
 
 ## October 31, 2022
 
@@ -646,9 +756,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-A potential race condition during initialization was detected in the Android SDK version 1.0.11.
-
-This issue has been resolved in version 1.0.12.
+* A potential race condition during initialization was detected in the Android SDK version 1.0.11. This issue has been resolved in version 1.0.12.
 
 ## October 21, 2022
 
@@ -681,9 +789,7 @@ For more information and to access this SDK, see the Apex SDK reference guide an
 
 The Python server SDK has been updated to version 1.1.3. (FFM-4744)
 
-This fixes a bug where OR conditions in Target Groups were incorrectly treated as AND conditions.
-
-If you use Target Group functionality, make sure to upgrade to this latest version as soon as possible.
+* This fixes a bug where OR conditions in Target Groups were incorrectly treated as AND conditions. If you use Target Group functionality, make sure to upgrade to this latest version as soon as possible.
 
 ## October 18, 2022
 
@@ -701,9 +807,7 @@ This release does not include early access features.
 
 The Java Server SDK has been updated to version 1.1.5.2. (FFM-4744)
 
-This fixes a notable bug where Target Group evaluations with multiple attributes were not evaluated beyond the first listed attribute.
-
-If you use Target Group functionality, make sure to upgrade to this latest version as soon as possible.
+* This fixes a notable bug where Target Group evaluations with multiple attributes were not evaluated beyond the first listed attribute. If you use Target Group functionality, make sure to upgrade to this latest version as soon as possible.
 
 ## October 5, 2022
 
@@ -717,7 +821,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-The Go SDK has been updated to version 0.1.3 to fix the SDK's internal dependencies. You do not need to take any action. (FFM-4678)
+* The Go SDK has been updated to version 0.1.3 to fix the SDK's internal dependencies. You do not need to take any action. (FFM-4678)
 
 ## September 29, 2022
 
@@ -731,7 +835,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-The audit log for a Feature Flag previously didn't show human-friendly messages and did not log all changes, making it difficult to understand what was updated. This has now been fixed and the audit log shows easy to understand messages for all events including adding or removing a clause, or adding an item to the exclusion list. (FFM-4481)
+* The audit log for a Feature Flag previously didn't show human-friendly messages and did not log all changes, making it difficult to understand what was updated. This has now been fixed and the audit log shows easy to understand messages for all events including adding or removing a clause, or adding an item to the exclusion list. (FFM-4481)
 
 ## September 26, 2022
 
@@ -767,7 +871,7 @@ This release does not include early access features.
 
 The Node.js SDK has been updated to version 1.2.8. (FFM-4494)
 
-This update fixed a bug that caused the SDK to unexpectedly shut down when a Target Group was deleted. This has been fixed and you can now deleted Target Groups without issue.
+* This update fixed a bug that caused the SDK to unexpectedly shut down when a Target Group was deleted. This has been fixed and you can now deleted Target Groups without issue.
 
 ## September 1, 2022
 
@@ -783,7 +887,7 @@ This release does not include early access features.
 
 The .NET SDK has been updated to version 1.1.4. (FFM-4463)
 
-This update fixed a bug that occurred when running the SDK with the Relay Proxy in offline mode. This has been fixed and the SDK can now run the Relay Proxy in offline mode.
+* This update fixed a bug that occurred when running the SDK with the Relay Proxy in offline mode. This has been fixed and the SDK can now run the Relay Proxy in offline mode.
 
 ## August 31, 2022
 
@@ -797,7 +901,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-The Python SDK has been updated to version 1.1.2 to update two of the dependencies in the SDK. For security purposes, please ensure to update the SDK to this version. (FFM-4425)
+* The Python SDK has been updated to version 1.1.2 to update two of the dependencies in the SDK. For security purposes, please ensure to update the SDK to this version. (FFM-4425)
 
 ## August 25, 2022
 
@@ -940,9 +1044,9 @@ This release does not include early access features.
 
 ### Fixed issues
 
-An issue where Flag Evaluations where always returning the default Variation in the Feature Flag Node.js SDK has been fixed. Previously, if the Target you sent to Evaluate against a Flag was part of a Target Group, the default Variation was always returned instead of the valid Variation for that Flag. This is now fixed and the correct Variation is returned for all Targets. (FFM-4175)
+* An issue where Flag Evaluations were always returning the default Variation in the Feature Flag Node.js SDK has been fixed. Previously, if the Target you sent to Evaluate against a Flag was part of a Target Group, the default Variation was always returned instead of the valid Variation for that Flag. This is now fixed and the correct Variation is returned for all Targets. (FFM-4175)
 
-Due to this fix, the Feature Flag Node.js SDK has been updated to version 1.2.6.
+* Due to this fix, the Feature Flag Node.js SDK has been updated to version 1.2.6.
 
 ## July 18, 2022
 
@@ -956,9 +1060,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-On the Harness UI, when you deleted the Environment you were currently active in, the identifier for that Environment should have been removed from the URL but wasn't. (FFM-3984)
-
-This issue has been fixed and the Environment identifier is now removed from the URL when you delete an active Environment.
+* On the Harness UI, when you deleted the Environment you were currently active in, the identifier for that Environment should have been removed from the URL but wasn't. (FFM-3984) This issue has been fixed and the Environment identifier is now removed from the URL when you delete an active Environment.
 
 ## July 11, 2022
 
