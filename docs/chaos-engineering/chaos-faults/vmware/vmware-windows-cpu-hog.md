@@ -3,15 +3,15 @@ id: vmware-windows-cpu-hog
 title: VMware Windows CPU hog
 ---
 
-VMware windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM.
-- It checks the performance of the application running on the VMware windows VMs.
+VMware Windows CPU hog applies stress on the CPU resources on Windows OS based VMware VM.
+- It checks the performance of the application running on the VMware Windows VMs.
 
 ![VMware Windows Cpu Hog](./static/images/vmware-windows-cpu-hog.png)
 
 ## Use cases
 
-- VMware windows CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware windows virtual machine.
-- VMware windows CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
+- VMware Windows CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware Windows virtual machine.
+- VMware Windows CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
 - It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
 - It verifies the autopilot functionality of cloud managed clusters.
 
@@ -21,7 +21,8 @@ VMware windows CPU hog applies stress on the CPU resources on Windows OS based V
 - VMware tool should be installed on the target VM with remote execution enabled.
 - Adequate vCenter permissions should be provided to access the hosts and the VMs.
 - The VM should be in a healthy state before and after injecting chaos.
-- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. VM credentials can be passed as secrets or as a 
+- Kubernetes secret has to be created that has the Vcenter credentials in the `CHAOS_NAMESPACE`. 
+- VM credentials can be passed as secrets or as a chaos enginer environment variable. 
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -34,14 +35,6 @@ stringData:
     VCENTERUSER: XXXXXXXXXXXXX
     VCENTERPASS: XXXXXXXXXXXXX
 ```
-
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-
-## Default validations
-The VM should be in a healthy state.
-
 :::
 
 ## Fault tunables
@@ -69,12 +62,12 @@ The VM should be in a healthy state.
       <tr>
         <td> CPU_CORES </td>
         <td> Number of CPU cores subject to CPU stress. </td>
-        <td> Default to 0 that means it consume all the avaialble CPU resources. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-windows-cpu-hog#cpu_cores"> CPU cores.</a></td>
+        <td> Default: 0. Indicates that all the avaialble CPU resources are consumed. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-windows-cpu-hog#cpu_cores"> CPU cores.</a></td>
         </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
+        <td> Default: 60s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos. </a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
@@ -84,15 +77,15 @@ The VM should be in a healthy state.
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances. </td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Default: parallel. Supports serial sequence as well. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 
 
-### CPU_CORES
-It stresses the `CPU_CORE` of the target windows VM for the duration defined by the `TOTAL_CHAOS_DURATION` environment variable. If 0 core is provided in input then will consume all the available CPU resources.
+### CPU cores
+The `CPU_CORE` environment variable applies stress on the target Windows VM for a specific duration. If the variable is set to `0`, the fault consumes all the available CPU resources.
 
-Use the following example to tune it:
+Use the following example to specify CPU cores:
 
 [embedmd]:# (./static/manifests/vmware-windows-cpu-hog/vm-cpu-hog-core.yaml yaml)
 ```yaml
