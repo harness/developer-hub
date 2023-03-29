@@ -201,14 +201,14 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
    * **Name:** Enter a recognizable name for the connector.
    * **Provider Type:** Select **DockerHub**.
-   * **Docker Registry URL:** Enter `https://index.docker.io/v1/`.
+   * **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
    * **Username:** Enter the username for your Docker Hub account.
    * **Password:** Create a secret for a Personal Access Token that Harness can use to access your Docker Hub account.
    * **Select Connectivity Mode:** Select **Connect through a Harness Delegate**.
    * **Delegates Setup:** Select **Only use Delegates with all of the following tags**, and then select the Delegate you installed in your Kubernetes cluster.
    * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-5. Back in the **Configure Run Step** pane, enter `golang:1.15` in the **Image** field.
+5. Back in the **Run** step settings, enter `golang:1.15` in the **Image** field.
 6. Enter the following code in the **Command** field:
 
    ```
@@ -325,89 +325,94 @@ You can also save your build pipelines as part of your source code. Everything t
 <details>
 <summary>Pipeline YAML example</summary>
 
-Note that this example uses the deprecated **Service Dependency** step.
-
 ```yaml
-pipeline:  
-    name: CI Pipeline  
-    identifier: CI_Pipeline  
-    allowStageExecutions: false  
-    projectIdentifier: CI_QuickStart_20220401  
-    orgIdentifier: default  
-    tags: {}  
-    properties:  
-        ci:  
-            codebase:  
-                connectorRef: CI_QuickStart  
-                build: <+input>  
-    stages:  
-        - stage:  
-              name: Build Test and Push  
-              identifier: Build_Test_and_Push  
-              type: CI  
-              spec:  
-                  cloneCodebase: true  
-                  infrastructure:  
-                      type: KubernetesDirect  
-                      spec:  
-                          connectorRef: cidelegate  
-                          namespace: harness-delegate-ng  
-                  execution:  
-                      steps:  
-                          - step:  
-                                type: Run  
-                                name: Run Unit Tests  
-                                identifier: Run_Unit_Tests  
-                                spec:  
-                                    connectorRef: Docker_Quickstart  
-                                    image: golang:1.15  
-                                    command: |-  
-                                        go get gotest.tools/gotestsum  
-                                        gotestsum --format=standard-verbose --junitfile unit-tests.xml || true  
-                                        CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo  
-                                    privileged: false  
-                                    reports:  
-                                        type: JUnit  
-                                        spec:  
-                                            paths:  
-                                                - "*.xml"  
-                          - step:  
-                                type: BuildAndPushDockerRegistry  
-                                name: Build and push image to Docker Hub  
-                                identifier: Build_and_push_image_to_Docker_Hub  
-                                spec:  
-                                    connectorRef: Docker_Quickstart  
-                                    repo: dockerhubuser/ciquickstart  
-                                    tags:  
-                                        - <+pipeline.sequenceId>  
-        - stage:  
-              name: Run Integration Test  
-              identifier: Run_Integration_Test  
-              type: CI  
-              spec:  
-                  cloneCodebase: false  
-                  infrastructure:  
-                      useFromStage: Build_Test_and_Push  
-                  serviceDependencies:  
-                      - identifier: Run_Hello_World_Server  
-                        name: Run Hello World Server  
-                        type: Service  
-                        spec:  
-                            connectorRef: Docker_Quickstart  
-                            image: dockerhubuser/ciquickstart:<+pipeline.sequenceId>  
-                  execution:  
-                      steps:  
-                          - step:  
-                                type: Run  
-                                name: test connection to server  
-                                identifier: test_connection_to_server  
-                                spec:  
-                                    connectorRef: Docker_Quickstart  
-                                    image: curlimages/curl:7.73.0  
-                                    command: |-  
-                                        sleep 10  
-                                        curl localhost:8080  
-                                        curl localhost:8080?Hello!_I_am_a_nice_demo!  
+pipeline:
+  name: k8s tutorial example
+  identifier: k8s_tutorial_example
+  projectIdentifier: k8s_tutorial_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: ghconnector
+        build: <+input>
+  stages:
+    - stage:
+        name: Build Test and Push
+        identifier: Build_Test_and_Push
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8stutorial
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run Unit Tests
+                  identifier: Run_Unit_Tests
+                  spec:
+                    connectorRef: dockerhubconnector
+                    image: golang:1.15
+                    shell: Sh
+                    command: |2-
+                         go get gotest.tools/gotestsum
+                         gotestsum --format=standard-verbose --junitfile unit-tests.xml || true
+                         CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -a -tags netgo
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "*.xml"
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: dockerhubconnector
+                    repo: mydockerhub/ci-tutorial-repo
+                    tags:
+                      - <+pipeline.sequenceId>
+    - stage:
+        name: n test
+        identifier: n_test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            useFromStage: Build_Test_and_Push
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: Pull and host image
+                  identifier: Pull_and_host_image
+                  spec:
+                    connectorRef: dockerhubconnector
+                    image: mydockerhub/ci-tutorial-repo:<+pipeline.sequenceId>
+                    shell: Sh
+              - step:
+                  type: Run
+                  name: Test server connection
+                  identifier: Test_server_connection
+                  spec:
+                    connectorRef: dockerhubconnector
+                    image: curlimages/curl:7.73.0
+                    shell: Sh
+                    command: |-
+                      sleep 10
+                      curl localhost:8080
+                      curl localhost:8080?Hello!_I_am_a_nice_demo!
+
 ```
 
 </details>
