@@ -27,7 +27,7 @@ title: Chaos Faults
 </div>
 ```
 
-The fault execution is triggered when the chaos engine resource (various examples are provided under the respective faults) is created. Typically, the chaosengine is embedded within the **steps** of a chaos fault. However, you can also create the chaosengine manually, and the chaos operator reconciles this resource and triggers the fault execution.
+The fault execution is triggered when the chaos engine resource is created. Typically, the chaos engine is embedded within the **steps** of a chaos fault. However, you can also create the chaos engine manually, and the chaos operator reconciles this resource and triggers the fault execution.
 
 Provided below are tables with links to the individual fault docs for easy navigation.
 
