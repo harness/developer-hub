@@ -4,7 +4,7 @@ description: Explains the auto-upgrade feature and the delegate expiration polic
 sidebar_position: 8
 ---
 
-The Harness Delegate for Kubernetes supports automatic upgrade. With automatic upgrades, you don't have to worry about having the most up-to-date functionality. You always have the most recent version of the delegate. 
+The Harness Delegate for Kubernetes supports automatic upgrades. With automatic upgrades, you don't need to worry about having the most up-to-date functionality. You always have the most recent version of the delegate. 
 
 Harness recommends that you enable automatic upgrades. 
 
