@@ -9,7 +9,7 @@ slug: /
 
 # Knowledge Base 
 
-Solutions, integrations, and general knowledge provided by experts in the Harness Community
+Solutions, integrations, and general knowledge provided by experts in the Harness Community.
 
 <!-- Custom component -->
 
