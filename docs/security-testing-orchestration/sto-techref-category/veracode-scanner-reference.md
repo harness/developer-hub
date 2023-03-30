@@ -44,7 +44,7 @@ In most cases, this should match the repo name used in your Git provider.
 	+ For `usernamePassword` authentication, this is your password.
 	+ For `apiKey` authorization, this is your API Secret key.
 * `product_app_id`  — The Veracode GUID, separated with hyphens, for the target application.  
-     To determine the App Id, go to the home page for the Veracode app with the results you want to scan. The App Id is the string immediately after the port number in the URL. Thus, for the following app, you would specify `1973759`.  
+     To determine the App ID, go to the home page for the Veracode app with the results you want to scan. The App ID is the string immediately after the port number in the URL. Thus, for the following app, you would specify `1973759`.  
 `https://analysiscenter.veracode.com/auth/index.jsp#HomeAppProfile:88881:1973759`
 * `product_project_name`— The Veracode project with the scan results you want to ingest.  
      The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes how you can find your application Id's and project names.
