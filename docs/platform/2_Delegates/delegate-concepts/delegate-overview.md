@@ -1,33 +1,20 @@
 ---
 title: Delegate overview
 description: Harness Delegate is a service you run in your local network or VPC to connect your artifact, infrastructure, collaboration, verification and other providers with Harness Manager.
-sidebar_position: 10
+sidebar_position: 1
 helpdocs_topic_id: 2k7lnc7lvl
 helpdocs_category_id: sy6sod35zi
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers, with Harness Manager.
+Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers, with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the Delegate is installed, you connect to third-party resources. The Delegate performs all operations, including deployment and integration.
 
-The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. 
+### System requirements
 
-After the Delegate is installed, you connect to third-party resources. The Delegate performs all operations, including deployment and integration.
+See [Delegate system requirements](./delegate-requirements.md).
 
-Harness Delegate is built for parallelism and performs tasks and deployments in parallel. The following table includes performance benchmarks for one NG Delegate executing perpetual tasks and parallel deployments in a Kubernetes environment.
-
-
-
-| **Compute resources** | **Task type** | **Running in parallel** |
-| --- | --- | --- |
-| 0.5 CPU, 2 GiB | Kubernetes deployment | 10 deployments |
-| 1.0 CPU, 4 GiB | Kubernetes deployment | 20 deployments |
-
-### Limitations and requirements
-
-See [Delegate Requirements and Limitations](/docs/platform/2_Delegates/get-started-with-delegates/delegate-requirements-and-limitations.md).
-
-### Data the delegate sends to Harness Manager
+### Communication with Harness Manager
 
 Harness Delegate connects to Harness Manager over an outbound HTTPS/WSS connection.
 
@@ -38,38 +25,35 @@ The Delegate connects to Harness Manager (via SaaS) over a Secure WebSockets cha
 * **Deployment data** - The Delegate sends information retrieved from API calls to Harness Manager for display on the **Deployments** page.
 * **Time series and log data for Continuous Verification** - The Delegate connects to the verification providers you configure and sends the data retrieved from those providers to Harness Manager for display in Harness Continuous Verification.
 
-### Where do I install the delegate?
+### Where to install?
 
 * **Evaluating Harness** - When evaluating Harness, you might want to install the Delegate locally. Ensure that it has access to the artifact sources, deployment environments, and verification providers you want to use with Harness.
 * **Development, QA, and Production** - The Delegate should be installed behind your firewall and in the same VPC as the micro-services you are deploying. The Delegate must have access to the artifact servers, deployment environments, and cloud providers it needs.
 
 ### Root vs non-root
 
-Harness Delegate does not have a root image. There are two non-root images that use the same tag. For example:
+Harness Delegate does not have a root image. There are two non-root images that use similar tags. For example:
 
 * `harness/delegate:22.03.74411`
 * `harness/delegate:22.03.74411.minimal`
 
-The first image includes client tools like `kubectl`, Helm, and ChartMuseum. The second image, for which the `minimal` tag is appended, does not include those client tools.
+The first image includes client tools like `kubectl`, Helm, and ChartMuseum. The second image, for which the `minimal` tag is appended, does not include those client tools. If you want to add tools to the image, Harness recommends the creation of a custom image.
 
-If you want to add tools to the image, Harness recommends the creation of a custom image.
-
-### Install Harness Delegate
+### Install a Delegate
 
 <!-- Video:
 https://harness-1.wistia.com/medias/frzea22qdc-->
 <docvideo src="https://harness-1.wistia.com/medias/frzea22qdc" /> 
 
-
 For basic information on installing Harness Delegate, see the following topics:
 
-* [Install a Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md)
-* [Install a Legacy Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
+* [Install a Delegate](../install-delegates/overview.md)
+* [Install a Legacy Kubernetes Delegate](../install-delegates/install-a-kubernetes-delegate.md)
 
 For advanced installation topics, see the following:
 
-* [Automate Delegate Installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md)
-* [Install a Delegate with Third-Party Custom Tool Binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
+* [Automate Delegate Installation](../install-delegates/automate-delegate-installation.md)
+* [Install a Delegate with Third-Party Custom Tool Binaries](../install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md)
 
 ### Delegate sizes
 
@@ -83,7 +67,6 @@ One Delegate size does not fit all use cases, so Harness let's you pick from sev
 | 8 | 16 GB / 4 CPU | 80 |
 
 Remember that the memory and CPU requirements are for the Delegate only. Your Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
-
 
 ### How does Harness Manager pick delegates?
 
@@ -127,7 +110,7 @@ Here you use Delegate Tags to select the Delegate(s) to use.
 
 The Delegates assigned to Connectors and steps are used during Pipeline execution.
 
-If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#task-assignment).
+If no Delegates are selected, then the Delegates are selected as described in [Task Assignment](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#task-assignment).
 
 If no Delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the Delegate used successfully for the Infrastructure Connector.
 
@@ -172,7 +155,7 @@ Two delegates in different locations with different connectivity do not support 
 
 ### Delegate scope
 
-Delegates are scoped as follows:
+Delegates are scoped in two ways:
 
 #### Project/Org/Accounts
 

@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 ```
 ## Install the Delegate
 
-Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
+Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/overview):
 
 * Add `--net=host` to the first line.
 * Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `linux-amd64` or `linux-arm64`.

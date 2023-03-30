@@ -1,7 +1,7 @@
 ---
 title: Delete a delegate
 description: This topic describes how to delete a Harness Delegate from a Kubernetes cluster and Harness.
-# sidebar_position: 2
+sidebar_position: 5
 helpdocs_topic_id: tl6ql57em6
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false

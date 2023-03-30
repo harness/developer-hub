@@ -47,6 +47,26 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - You can now enter usernames as a comma separated string while adding users in **Users(name or email)**. (PL-29630)
   
+## March 21, 2023, version 78903
+
+### Cloud Cost Management
+
+Enabled audit trail for budget groups. (CCM-11387)
+
+  With this enhancement, you can track all CRUD operations such as Create, Delete, and Update related to budget groups.
+
+* Display the AWS account ID and name on the **Recommendations** page. (CCM-11666)
+
+  The AWS Account ID has been added to the ECS Services on the Recommendations list page.
+
+* Cost category enhancement (CCM-10580)
+
+  Introduced support to allocate the cost of shared cost buckets by a fixed percentage among each cost bucket. A new user interface has been developed. 
+  
+    ![](./static/cost-category-builder-2.png)
+
+  
+  For more information, go to [Use Cost Categories](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-categories/use-ccm-cost-categories).
 
 ## March 15, 2023, version 78712
 

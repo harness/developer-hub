@@ -731,7 +731,7 @@ To manage the organization and project identifiers in code, we recommend user's 
 
 - We recommend for production grade delegate installation, to build your own delegate image and deploy it
 - When you build your own delegate image, you get to customize all the tooling you want installed on it.
-- [Harness offers Instructions to build your own delegate image](https://developer.harness.io/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools)
+- [Harness offers Instructions to build your own delegate image](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
 Tooling you should install:
 
@@ -739,7 +739,7 @@ Tooling you should install:
 - `helm`
 - `terraform`
 
-These options are all available in the [Harness Docs](https://developer.harness.io/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools)
+These options are all available in the [Harness Docs](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
 
 ### Create the connectors and secrets first
