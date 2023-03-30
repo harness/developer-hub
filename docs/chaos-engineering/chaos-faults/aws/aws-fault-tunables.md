@@ -1,5 +1,6 @@
 ---
 title: Common AWS fault tunables
+sidebar_position: 1
 ---
 AWS specific fault tunables.
 

@@ -47,7 +47,7 @@ stringData:
       <tr>
         <td> GCP_PROJECT_ID </td>
         <td> Id of the GCP project containing the disk volumes. </td>
-        <td> All the target disk volumes should belong to a single GCP project. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label#gcp-project-id#gcp-project-id"> GCP project ID.</a></td>
+        <td> All the target disk volumes should belong to a single GCP project. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label#gcp-project-id"> GCP project ID.</a></td>
       </tr>
       <tr>
         <td> DISK_VOLUME_LABEL </td>

@@ -2,44 +2,49 @@
 id: ec2-cpu-hog
 title: EC2 CPU hog
 ---
-
-EC2 CPU hog induces stress on the AWS EC2 instances using the Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault:
-- Causes CPU chaos on the target EC2 instances using the `EC2_INSTANCE_ID` environment variable for a specific duration.
+<table>
+<tr>
+<td><b>Description</b></td>
+<td>EC2 CPU hog induces stress on the AWS EC2 instances using the Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault causes CPU chaos on the target EC2 instances using the <code>EC2_INSTANCE_ID</code> environment variable for a specific duration. </td>
+</tr>
+<tr>
+<td><b>Use cases </b></td>
+<td>
+<ul><li>Induces CPU stress on the target AWS EC2 instance(s).</li>
+<li>Simulates a lack of CPU for processes running on the application, which degrades their performance.</li>
+<li>Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.</li>
+</ul>
+</td>
+</tr>
+</table>
 
 ![EC2 CPU Hog](./static/images/ec2-cpu-hog.png)
 
-## Use cases
 
-EC2 CPU hog:
-- Induces CPU stress on the target AWS EC2 instance(s). 
-- Simulates a lack of CPU for processes running on the application, which degrades their performance. 
-- Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
-
-:::note
+## Before you begin
 - Kubernetes >= 1.17 is required to execute this fault.
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
 - SSM IAM role should be attached to the target EC2 instance(s).
 - Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
 
 - It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
-:::
 
-Here is an example AWS policy to execute the fault.
+## Sample AWS policy to execute the fault
 
 ```json
 {
@@ -88,7 +93,7 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
+Refer to [AWS Named Profile for chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 
 ## Fault tunables
