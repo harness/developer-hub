@@ -41,6 +41,7 @@ docker run --cpus=1 --memory=2g --net=host \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
   -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
   -e DELEGATE_TAGS="linux-amd64" \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
 ```
@@ -173,6 +174,7 @@ docker run --cpus=1 --memory=2g \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
   -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
+  -e LOG_STREAMING_SERVICE_URL=https://app.harness.io harness/log-service/ \
   -e DELEGATE_TAGS="windows-amd64" \
   `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000` \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
