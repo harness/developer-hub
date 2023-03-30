@@ -70,9 +70,6 @@ import TabItem from '@theme/TabItem';
    echo "Done"
    ```
 
-7. Under **Optional Configuration** add one or more **Report Paths**, such as `**/*.xml`.
-8. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
-
 <details>
 <summary>Use a text secret for the CodeCov Upload Token</summary>
 
@@ -103,6 +100,9 @@ echo "Done"
 ```
 
 </details>
+
+7. Under **Optional Configuration** add one or more **Report Paths**, such as `**/*.xml`.
+8. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 <!-- ![](./static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png) -->
 
