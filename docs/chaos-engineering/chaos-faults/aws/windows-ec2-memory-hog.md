@@ -88,7 +88,7 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile For Chaos](./security/aws-switch-profile.md) to use a different profile for AWS faults.
+- Refer to [AWS Named Profile For Chaos](./security-Configurations/aws-switch-profile) to use a different profile for AWS faults.
 
 ## Fault tunables
 
