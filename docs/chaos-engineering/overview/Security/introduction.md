@@ -107,7 +107,7 @@ You can fine-tune permissions to suit specific infrastructures and experiments i
 
 In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](namespace-considerations) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.  
 
-Every fault in the Enterprise chaos hub publishes the permissions that users need to execute the fault. Users can tune their roles. Common permission templates that work as subsets or supersets for a specific category of experiments are also available. For example, [AWS resource faults](../../chaos-faults/aws/security/policy-for-all-aws-faults.md).
+Every fault in the Enterprise chaos hub publishes the permissions that users need to execute the fault. Users can tune their roles. Common permission templates that work as subsets or supersets for a specific category of experiments are also available. For example, [AWS resource faults](../../chaos-faults/aws/security-Configurations/policy-for-all-aws-faults.md).
 
 ### Privileged execution of chaos faults
 
