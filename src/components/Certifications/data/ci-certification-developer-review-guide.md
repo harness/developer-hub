@@ -95,20 +95,3 @@
 ||Credentials And Permissions - Configure Or Elaborate On User And Groups For Acc, Org, And Project Levels|[Role-based Access Control](https://developer.harness.io/docs/category/role-based-access-control)|
 ||Do a Basic Delegate Installation|[Install Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/)|
 ||Set Container Resources - Limit Memory and Limit CPU|[Run Step Settings](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/run-step-settings/#set-container-resources)|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
