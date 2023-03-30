@@ -30,9 +30,9 @@ import TabItem from '@theme/TabItem';
 Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/overview):
 
 * Add `--net=host` to the first line.
-* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `linux-amd64` or `linux-arm64`.
+* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use the tag for your Docker environment's architecture: `linux-amd64` or `linux-arm64`.
 
-Here's an example of an install script for Linux amd64:
+Here's an example of an install script for Linux arm64:
 
 ```
 docker run --cpus=1 --memory=2g --net=host \
@@ -41,7 +41,7 @@ docker run --cpus=1 --memory=2g --net=host \
   -e DELEGATE_TYPE="DOCKER" \
   -e ACCOUNT_ID=H5W8iol5TNWc4G9h5A2MXg \
   -e DELEGATE_TOKEN=ZWYzMjFmMzNlN2YxMTExNzNmNjk0NDAxOTBhZTUyYzU= \
-  -e DELEGATE_TAGS="linux-amd64" \
+  -e DELEGATE_TAGS="linux-arm64" \
   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.02.78306
 ```
 
@@ -51,7 +51,7 @@ Make sure to create the Delegate at the appropriate scope, such as the project l
 
 The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
@@ -86,7 +86,7 @@ sudo chmod +x drone-docker-runner-linux-arm64
 
 Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
 
-* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `macos-amd64` or `macos-arm64`.
+* Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use the tag for your Docker environment's architecture: `macos-amd64` or `macos-arm64`.
 * Add `-e RUNNER_URL=http://host.docker.internal:3000`.
 
 Here's an example of an install script for macOS amd64:
@@ -109,7 +109,7 @@ Make sure to create the Delegate at the appropriate scope, such as the project l
 
 The Drone Runner service performs the build work. The Delegate needs the Runner to run CI builds.
 
-1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
@@ -189,7 +189,7 @@ Run the Drone Runner executable on the Windows machine that you specified in the
 
 :::
 
-1. On the target Windows machine where you want to run the Drone Runner, download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
+1. On the target Windows machine where you want to run the Drone Runner, download the Windows [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases).
 2. Open a terminal with Administrator privileges.
 3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
