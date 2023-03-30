@@ -228,6 +228,7 @@ STO supports the following scan policy types for ZAP:
 * `instance_domain` — The app domain to scan, for example `public-firing-range.appspot.com/`
 * `instance_protocol` — The protocol of the site to scan. Generally this is `http` or `https`.
 * `instance_type` = `website`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 #### Optional Settings
 

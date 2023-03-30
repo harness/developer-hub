@@ -198,6 +198,7 @@ STO supports the following policy\_type settings for Bandit:
 * `product_config_name` = `default` — Run a Bandit scan with the default settings.
 * `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
 * `repository_branch` — This tells Bandit the Git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md#manual-branch-build). This sets the branch based on the user input or trigger payload at runtime.
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 </details>
 
