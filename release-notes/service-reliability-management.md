@@ -32,11 +32,11 @@ This release does not include any early access features.
 
 - On the Monitored Services list page, a help panel appears for every monitored service listed. This is resulting in an overwhelming number of help panels that need to be closed individually. (SRM-14266)
   
-  This issue has been resolved. Now, only one help panel will appear for all monitored services listed on the page.
+  This issue has been resolved. Now, only one help panel appears for all monitored services listed on the page.
 
 - SLO error budget notifications are being triggered even when the notification rule is disabled. (SRM-13997)
   
-  This issue has been resolved. Now, SLO error budget notifications will no longer be triggered if the notification rule is disabled.
+  This issue has been resolved. Now, SLO error budget notifications are not triggered if the notification rule is disabled.
 
 
 ## March 24, 2023, version 78817
