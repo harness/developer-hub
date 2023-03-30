@@ -29,7 +29,7 @@ This release does not include early access features.
 
 The **FF server** has been updated to version **1.979.0**, with the following update.
 
-* Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, see [When targets expire](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets).
+* Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [When targets expire](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets).
 
 
 ## March 28, 2023
