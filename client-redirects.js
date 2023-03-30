@@ -136,7 +136,7 @@ module.exports = {
 
       {
         from: "/docs/platform/Delegates/configure-delegates/delegate-auto-update",
-        to: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+        to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
       },
 
 
@@ -149,7 +149,7 @@ module.exports = {
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-auto-update",
-         to: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+         to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 21, 2023
@@ -281,6 +281,12 @@ module.exports = {
     {
       from: "/docs/platform/Delegates/delegate-reference/sample-create-a-permanent-volume-nfs-server",
       to: "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
+     },
+
+     // Created by KimberlyFields on March 29, 2023
+    {
+      from: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+      to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
      },
 
     //  Created by aimurphy for PR-783 on Feb 23, 2023
