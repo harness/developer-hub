@@ -73,13 +73,7 @@ Harness Cloud machine images can change. If your pipeline relies on a specific v
 <details>
 <summary>Lock versions or install additional tools</summary>
 
-If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as:
-
-* [Run step](../../ci-technical-reference/run-step-settings.md)
-* [Background step](../../ci-technical-reference/background-step-settings.md)
-* [GitHub Action plugin step](../../ci-technical-reference/ci-github-action-step.md)
-* [Bitrise plugin step](../../ci-technical-reference/ci-bitrise-plugin.md)
-* [Plugin step](../../ci-technical-reference/plugin-step-settings-reference.md)
+If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as a [Run step](../../ci-technical-reference/run-step-settings.md) or a [Plugin step](../use-drone-plugins/explore-ci-plugins.md).
 
 :::tip
 
@@ -87,7 +81,7 @@ Use the [Bitrise plugin step](../../ci-technical-reference/ci-bitrise-plugin.md)
 
 :::
 
-In the following YAML example, an `Action` step runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
+In the following YAML example, an [Action step](../../ci-technical-reference/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
 
 ```yaml
             steps:
