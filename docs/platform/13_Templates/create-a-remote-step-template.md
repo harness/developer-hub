@@ -27,8 +27,8 @@ You'll learn how to: 
 ### Before you begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md)
-* See [Templates Overview](template.md).
-* See [CIE Quickstarts](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
+* Go to [Templates Overview](template.md)
+* Go to [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
 ### Permissions
 

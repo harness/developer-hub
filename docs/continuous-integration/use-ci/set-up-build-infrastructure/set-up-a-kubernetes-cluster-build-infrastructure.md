@@ -173,7 +173,7 @@ Harness adds the following labels automatically:
 
 :::tip
 
-The [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md) uses a Kubernetes cluster build infrastructure.
+The [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra) uses a Kubernetes cluster build infrastructure.
 
 For details about stage settings, go to [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md).
 

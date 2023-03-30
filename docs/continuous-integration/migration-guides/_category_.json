@@ -1,12 +1,12 @@
 {
-   "label":"Migrating to Harness CI",
+   "label":"Migrate to Harness CI",
    "position": 10,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Migrating to Harness CI"
+      "title":"Migrate to Harness CI"
    },
    "customProps":{
       

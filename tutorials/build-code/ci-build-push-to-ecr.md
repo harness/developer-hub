@@ -1,5 +1,5 @@
 ---
-sidebar_position: 70
+sidebar_position: 50
 description: Build and push container images to Amazon ECR
 slug: /build-code/ci-build-push-to-ecr
 ---
