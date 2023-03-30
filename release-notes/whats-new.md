@@ -20,7 +20,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Harness Platform
 
-- The favorite icon now dynamically changes based on pipeline execution status on the dashboard's execution view. (PL-31520)
+- The favicon now dynamically changes based on pipeline execution status on the dashboard's execution view. (PL-31520)
 
 ## March 24, 2023, version 78817
 
