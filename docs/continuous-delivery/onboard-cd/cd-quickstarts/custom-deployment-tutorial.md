@@ -449,7 +449,7 @@ Here's the expressions referencing these variables:
 
 <+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef>
 
-<+secrets.getValue(<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.identifier>)>
+<+secrets.getValue(<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.scope> + "." +<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.identifier>)>
 
 <+stage.spec.infrastructure.output.variables.gitSecret>
 
@@ -460,12 +460,9 @@ Here's the expressions referencing these variables:
 <+infra.variables.test12>
 ```
 
-
 #### Overwriting variables
 
 When you define the Infrastructure Definition in your stage **Environment**, you can override any variable values.
-
-
 
 | **Deployment Template** | **Infrastructure Definition** |
 | --- | --- |
