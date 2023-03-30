@@ -104,7 +104,7 @@ To determine when your delegate expires, you can check the **INSTANCE STATUS** c
 
 ### Update the delegate YAML
 
-Harness does not recommend the use of delegate images that are not current. However, if you require an earlier image version, check the repository on [Docker Hub](https://hub.docker.com/).
+Harness does not recommend the use of delegate images that are not current. However, if you require an earlier image version, check the repository on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags).
 
 **To update the delegate YAML**
 
