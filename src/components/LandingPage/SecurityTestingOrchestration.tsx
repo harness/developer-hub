@@ -100,8 +100,7 @@ export default function STO() {
                 className={clsx("button button--lg", styles.btn, styles.btnSTO)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/security-testing-orchestration">
                 <button className={styles.link}>Learn more</button>
