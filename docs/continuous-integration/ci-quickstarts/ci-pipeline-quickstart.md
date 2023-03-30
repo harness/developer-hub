@@ -149,9 +149,9 @@ You should now be in the Delegates Setup screen of the GitHub Connector wizard. 
 
 ![](./static/ci-pipeline-quickstart-18.png)
 
-1. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options, go to [Install a delegate](/docs/platform/Delegates/install-delegates/overview).
+1. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 2. Usually it makes sense to install and run the Delegate on a pod in your Kubernetes build infrastructure. In a terminal, login to your Kubernetes cluster, and use the `curl` command provided in the **New Delegate** setup to copy the Kubernetes YAML file to the pod where you want to install the Delegate.
-3. Update the Kubernetes YAML file as instructed in the **New Delegate** setup. For details about these settings, refer to the **Kubernetes environment** section of [Install a delegate](/docs/platform/Delegates/install-delegates/overview).
+3. Update the Kubernetes YAML file as instructed in the **New Delegate** setup. For details about these settings, refer to the **Kubernetes** section of [Install the default delegate on Kubernetes or Docker](/docs/platform/Delegates/install-delegates/overview).
 4. If necessary, specify the **Delegate Size** and **Delegate Permissions**. As a default, you can give the Delegate cluster-wide read/write access. In the future, you can add configurations to run scripts on your Delegates and scope them to different environments.
 5. In your Kubernetes cluster, run the `kubectl apply` command to install the delegate, as provided in the **New Delegate** setup. You should get output similar to the following:
 

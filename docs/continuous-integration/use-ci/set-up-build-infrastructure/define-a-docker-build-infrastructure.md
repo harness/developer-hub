@@ -27,7 +27,7 @@ import TabItem from '@theme/TabItem';
 ```
 ## Install the Delegate
 
-Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/overview):
+Use the following modifications along with the **Docker** instructions in [Install the default Delegate on Kubernetes or Docker](/docs/platform/Delegates/install-delegates/overview):
 
 * Add `--net=host` to the first line.
 * Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `linux-amd64` or `linux-arm64`.
@@ -84,7 +84,7 @@ sudo chmod +x drone-docker-runner-linux-arm64
 ```
 ## Install the Delegate
 
-Use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
+Use the following modifications along with the **Docker** instructions in [Install the default Delegate on Kubernetes or Docker](/docs/platform/Delegates/install-delegates/overview):
 
 * Add `-e DELEGATE_TAGS="<delegate-tag>"`. Use one of the following tags: `macos-amd64` or `macos-arm64`.
 * Add `-e RUNNER_URL=http://host.docker.internal:3000`.
@@ -152,7 +152,7 @@ To configure a local runner build infrastructure for Windows, you need two machi
 
 ## Install the Delegate
 
-On the Linux machine where you want to run the Delegate, use the following modifications along with the **Docker environment** instructions in [Install a Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate):
+On the Linux machine where you want to run the Delegate, use the following modifications along with the **Docker** instructions in [Install the default Delegate on Kubernetes or Docker](/docs/platform/Delegates/install-delegates/overview):
 
 * Add `-e DELEGATE_TAGS="windows-amd64"`.
 * Add `-e RUNNER_URL=http://[windows_machine_hostname_or_ip]:3000`.

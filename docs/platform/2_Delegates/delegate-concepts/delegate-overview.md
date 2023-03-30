@@ -47,7 +47,7 @@ https://harness-1.wistia.com/medias/frzea22qdc-->
 
 For basic information on installing Harness Delegate, see the following topics:
 
-* [Install a Delegate](../install-delegates/overview.md)
+* [Delegate installation overview](../install-delegates/overview.md)
 * [Install a Legacy Kubernetes Delegate](../install-delegates/install-a-kubernetes-delegate.md)
 
 For advanced installation topics, see the following:
