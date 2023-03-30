@@ -362,17 +362,9 @@ connector:
   </TabItem1>
 </Tabs1>
 ```
-- The **App Resize** parameter support for Tanzu Application Services (TAS, formerly PCF) canary deployment strategy. (CDS-53201)
-
-  The TAS canary deployment strategy now supports adding **App Resize** steps. It is supported as a runtime parameter. 
-
-  The parameters of the **App Resize** step are: 
-    * **Name** - Deployment step name.
-    * **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    * **Total Instances** - Number or percentage of running instances you want to keep.
-    * **Desired Instances - Old Version** - Number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
-
-  Go to [TAS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart/#install-cf-cli-on-your-harness-delegate) for more information.
+- The **Resize Strategy** field in the **Canary App Setup** step of a [Tanzu Application Services (TAS, formerly PCF) deployment](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) can be added as runtime input when using the canary deployment strategy.
+  
+  ![](static/canary-app-set-up-resize.png)
 
 ### Early access
 
