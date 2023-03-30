@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2023-03-08T10:00
+date: 2023-03-30T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -36,6 +36,29 @@ The **FF server** has been updated to version **1.979.0**, with the following up
 The Java server SDK has been updated to version **1.2.2**, with the following updates.
 
 * Minor internal changes were made to make it easier for developers to use classes that were previously marked private.
+
+## March 29, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The **Go server SDK** has been updated to version **0.1.7**, with the following updates.
+
+* Previously if a custom logger was passed in to the SDK through the harness.WithLogger(logger) function, the custom logger was not used when logging HTTP requests. This could cause HTTP request logs to be in a different format, and appear to be logged at an `error` level instead of correctly logged as `debug`. This has been resolved, and all logs emitted by the SDK now go through the custom logger if it's passed in. (FFM-7327)
+
+* Added a flag code cleanup example and some information on how to run the example in the [Go SDK repository](https://github.com/harness/ff-golang-server-sdk). (FFM-6794)
+
+* Added documentation in the [Harness flag_cleanup repository](https://github.com/harness/flag_cleanup) on how to clean up flags automatically using Harness pipelines. (FFM-6796)
+
 
 ## March 28, 2023
 
