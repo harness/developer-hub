@@ -24,10 +24,12 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   When you update a Jira issue using the Jira Update step, you can now modify the Issue Type by selecting the desired issue type. For example, if the issue you are updating is a Story, you can update it to a Task. 
 
-  The Issue Key is used to automatically fetch additional (optional) fields in the Jira Update step.
-
   ![](static/jira-update-step.png)
 
+  The Issue Key is used to automatically fetch additional (optional) fields in the Jira Update step.
+  
+  ![](static/add-jira-fields.png)
+  
 - You can freeze services and environments at account or organization levels when creating a deployment freeze window. (CDS-54222, CDS-53783)
 
   Harness now supports adding service and environment filters when creating a deployment freeze window. You can filter specific services or environments present at an account or organization level by adding a rule. 
@@ -50,6 +52,20 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency
   * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency
 - A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
+
+  In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution starategy to configure route mapping or unmapping. 
+
+  ![](static/route-mapping-tas.png)
+
+  The parameters of the **Route Mapping** step are: 
+    * **Name** - Deployment step name. For example, Map Route or Unmap Route.
+    * **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    * **Mapping Type** - Select **Map Route** or **UnMap Route** to map or unmap routes respectively. 
+    * **App Name** - Enter the application name.
+    * **Routes** - Enter the routes you want to map or unmap to this deployment. 
+     
+  ![](static/route-mapping.png)
+
 - A new tab, **Referenced By** is added to the **Environments** page, infrastructure definition section in the Harness UI. (CDS-46777)
   
   ![](static/referenced-by-tab.png)
