@@ -21,10 +21,6 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-- The following APIs now return only the permitted service accounts: (PL-32080)
-  - [Get Service Accounts](https://apidocs.harness.io/tag/Service-Account#operation/listServiceAccount) 
-  - [List aggregated Service Accounts](https://apidocs.harness.io/tag/Service-Account#operation/listAggregatedServiceAccounts)
-
 - The favorite icon now dynamically changes based on pipeline execution status on the dashboard's execution view. (PL-31520)
 
 
