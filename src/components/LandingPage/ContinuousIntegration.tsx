@@ -118,6 +118,20 @@ const DroneList: CardItem[] = [
 
 const CIList: CardItem[] = [
   {
+    title: "Code coverage with CodeCov in Harness CI",
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Add CodeCov code coverage to a CI pipeline.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/build-code/ci-tutorial-codecov-test",
+  },
+  {
     title: "Node and Docker CI Pipeline",
     module: "ci",
     icon: "img/icon_ci.svg",

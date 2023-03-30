@@ -100,7 +100,7 @@ You can run your pipelines manually or use triggers to initiate their execution.
 
 ## Tests
 
-In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests.
+In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../ci-technical-reference/configure-run-tests-step-settings.md) or a [Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md). The **Run** step is used in the [Code coverage with CodeCov in Harness CI tutorial](/tutorials/build-code/ci-tutorial-codecov-test.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
 
 ### Test Intelligence
 
