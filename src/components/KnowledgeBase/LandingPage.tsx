@@ -16,65 +16,18 @@ export type CardItem = {
 
 const kbs: CardItem[] = [
   {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
+    title: "Why Am I Getting “Kaniko Container Runtime Error”",
+    module: "Harness CI",
+    date: "March 23, 2023",
     link: "/kb/continuous-integration/kaniko_container_runtime_error",
   },
   {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
+    title: "Build and Push to ECR Permission Troubleshooting",
+    module: "Harness CI",
+    date: "March 30, 2023",
+    link: "/kb/continuous-integration/delegate_eks_cluster",
   },
-  {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
-  },
-  {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
-  },
-  {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
-  },
-  {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
-  },
-  {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
-  },
-  {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
-  },
-  {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
-  },
-  {
-    title: "How to update Template version in a pipeline using an API Drone",
-    module: "Drone Support",
-    date: "Feb 23, 2023",
-    link: "/kb/continuous-integration/kaniko_container_runtime_error",
-  },
+ 
 ];
 
 export default function KnowledgeBase() {
