@@ -29,8 +29,13 @@ This release does not include early access features.
 
 The **FF server** has been updated to version **1.979.0**, with the following update.
 
-* Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [When targets expire](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets).
+* Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets#how-targets-expire).
 
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version **1.2.2**, with the following updates.
+
+* Minor internal changes were made to make it easier for developers to use classes that were previously marked private.
 
 ## March 28, 2023
 

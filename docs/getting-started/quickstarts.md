@@ -10,12 +10,13 @@ helpdocs_is_published: true
 
 **New to Harness?** The following tutorials and quickstart guides will take you from novice to advanced.
 
+## Continuous Integration
 
-### Continuous Integration
+If you're new to Harness Continuous Integration (CI), you can learn about the [CI pipeline concepts](../continuous-integration/ci-quickstarts/ci-pipeline-basics.md), [Harness CI concepts](../continuous-integration/ci-quickstarts/ci-concepts.md), and try some of the [CI tutorials](/tutorials/build-code), such as [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
 
-* [CI pipeline tutorial](../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md) helps you to create a CI Pipeline that builds and tests code and then pushes an artifact to a registry and performs integration tests. |
+If you're also new to the Harness Platform, you can learn about [Harness' key concepts](./learn-harness-key-concepts.md) and [Harness YAML](#harness-yaml).
 
-### Continuous Deployment
+## Continuous Deployment
 
 Select the tutorial for the platform you want to use to deploy.
 
@@ -29,40 +30,40 @@ Select the tutorial for the platform you want to use to deploy.
 * [Custom deployments using Deployment Templates tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md) shows you how to use Deployment Templates for non-native deployments (integrations other than those Harness supports out of the box). Deployment Templates use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
 
 
-### GitOps 
+## GitOps
 
 * [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md) shows you how to use Harness native GitOps to deploy services by syncing the Kubernetes manifests in your source repos with your target clusters.
 
 
-### Feature Flags 
+## Feature Flags
 
 The following quickstart guides are available for Feature Flags:
 
 * [Getting started with Feature Flags](../feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md) provides a high-level summary of Feature Flag (FF), with video and Quick Guide walkthroughs.
 * [Java quickstart](../feature-flags/ff-onboarding/ff-getting-started/java-quickstart.md) helps you to create a feature flag and use the feature flag SDK in your Java application.
 
-### Cloud Cost Management (CCM)
+## Cloud Cost Management (CCM)
 
 * [Kubernetes Autostopping Quickstart](../cloud-cost-management/2-use-cloud-cost-management/0-quick-start-guides/kubernetes-autostopping-quick-start-guide.md) shows you how to create and test an AutoStopping rule for your Kubernetes cluster.
 * [AutoStopping proxy as a downstream of ALB configuration tutorial](/docs/cloud-cost-management/2-use-cloud-cost-management/0-quick-start-guides/autostopping-proxy-alb-usecase.md) shows you how to configure an AutoStopping proxy as a downstream system of an Application Load Balancer in AWS.
 
-### Harness CD Community Edition 
+## Harness CD Community Edition
 
-* [Harness Community Edition deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/harness-community-edition-quickstart.md) shows you how to set up Harness CD Community Edition locally and create a CD Pipeline that deploys a public NGINX image to a local cluster. 
+* [Harness Community Edition deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/harness-community-edition-quickstart.md) shows you how to set up Harness CD Community Edition locally and create a CD Pipeline that deploys a public NGINX image to a local cluster.
 
-### Harness YAML 
+## Harness YAML
 
-* [Harness YAML Quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md) shows you how to build Pipelines using the Harness YAML builder. 
+* [Harness YAML Quickstart](../platform/8_Pipelines/harness-yaml-quickstart.md) shows you how to build Pipelines using the Harness YAML builder.
 
-### Service Reliability Management
+## Service Reliability Management
 
-The following quickstart guides are available for Service Reliability Management: 
+The following quickstart guides are available for Service Reliability Management:
 
-* [Change Impact Analysis Quickstart](../service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-quickstart.md) describes how you can correlate change events and understand their impact on a Monitored Service. 
+* [Change Impact Analysis Quickstart](../service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-quickstart.md) describes how you can correlate change events and understand their impact on a Monitored Service.
 
-* [SLO Management Quickstart](../service-reliability-management/howtos-service-reliability-management/slo-management-quickstart.md) walks you through the steps to create and manage an SLO. 
+* [SLO Management Quickstart](../service-reliability-management/howtos-service-reliability-management/slo-management-quickstart.md) walks you through the steps to create and manage an SLO.
 
-### Security Testing Orchestration 
+## Security Testing Orchestration
 
 The following quickstart guides are available for Security Testing Orchestration:
 

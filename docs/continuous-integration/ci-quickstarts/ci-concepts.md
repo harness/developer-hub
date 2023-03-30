@@ -2,7 +2,7 @@
 title: Harness CI concepts
 description: Harness CI simplifies the code development and testing process.
 
-sidebar_position: 30
+sidebar_position: 10
 helpdocs_topic_id: rch2t8j1ay
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
@@ -45,7 +45,10 @@ The Delegate manages your build infrastructure to run build jobs and tests as ne
 
 When a CI pipeline build finishes successfully, the build infrastructure then sends the artifacts to the registry of your choice.
 
-Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the [CI pipeline tutorial](ci-pipeline-quickstart.md) or [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
+Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the following tutorials:
+
+* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
+* [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci)
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -101,7 +104,7 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 ## Harness CI components
 
-For information about CI pipeline components, go to [CI pipeline basics](./ci-pipeline-basics.md).
+For information about CI pipeline components, go to [CI pipeline concepts](./ci-pipeline-basics.md).
 
 ## Try Harness CI
 
