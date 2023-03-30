@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 ## What is a Delegate?
 
-[Harness Delegate](/docs/platform/Delegates/get-started-with-delegates/delegates-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
+[Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate for executing the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
 
 You can install the Harness Delegate on either Docker or Kubernetes. 
 
@@ -283,3 +283,162 @@ Click Continue and in a few moments after the health checks pass, your Delegate 
 ![Delegate Available](static/install-delegate/docker_available.png)
 
 You can now route communication to external systems in Harness connectors and pipelines by simply selecting this delegate via a delegate selector. 
+
+## Troubleshooting
+
+The delegate installer provides troubleshooting information for each installation process. If the delegate cannot be verified, click **Troubleshoot** for steps you can use to resolve the problem. This section includes the same information.
+
+Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
+
+If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Helm Chart">
+```
+
+Use the following steps to troubleshoot your installation of the delegate using Helm.
+
+1. Verify that Helm is correctly installed:
+
+   Check for Helm:
+   
+   ```
+   helm
+   ```
+   
+   And then check for the installed version of Helm:
+
+   ```
+   helm version
+   ```
+
+   If you receive the message `Error: rendered manifests contain a resource that already exists...`, delete the existing namespace and retry the Helm upgrade command to deploy the delegate.
+   
+   For further instructions on troubleshooting your Helm installation, go to [Helm troubleshooting guide](https://helm.sh/docs/faq/troubleshooting/).
+
+2. Check the status of the delegate on your cluster:
+
+   ```
+   kubectl describe pods -n <namespace>
+   ```
+
+3. If the pod did not start, check the delegate logs:
+
+   ```
+   kubectl logs -f <harnessDelegateName> -n <namespace>
+   ```
+
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+
+4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
+
+   ```
+   kubectl describe <pod_name> -n <namespace>
+   ```
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Terraform Helm Provider">
+```
+
+Use the following steps to troubleshoot your installation of the delegate using Terraform.
+
+
+1. Verify that Terraform is correctly installed:
+
+   ```
+   terraform -version
+   ```
+   
+   For further instructions on troubleshooting your installation of Terraform, see the [Terraform troubleshooting guide](https://developer.hashicorp.com/terraform/enterprise/vcs/troubleshooting).
+
+2. Check the status of the delegate on your cluster:
+
+   ```
+   kubectl describe pods -n <namespace>
+   ```
+
+3. If the pod did not start, check the delegate logs:
+
+   ```
+   kubectl logs -f <harnessDelegateName> -n <namespace>
+   ```
+
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+
+4. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
+
+   ```
+   kubectl describe <pod_name> -n <namespace>
+   ```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Kubernetes Manifest">
+```
+
+Use the following steps to troubleshoot your installation of the delegate using Kubernetes.
+
+1. Check the status of the delegate on your cluster:
+
+   ```
+   kubectl describe pods -n <namespace>
+   ```
+
+2. If the pod did not start, check the delegate logs:
+
+   ```
+   kubectl logs -f <harnessDelegateName> -n <namespace>
+   ```
+
+   If the state of the delegate pod is `CrashLoopBackOff`, check your allocation of compute resources (CPU and memory) to the cluster. A state of `CrashLoopBackOff` indicates insufficent Kubernetes cluster resources.
+
+3. If the delegate pod is not healthy, use the `kubectl describe` command to get more information:
+
+   ```
+   kubectl describe <pod_name> -n <namespace>
+   ```
+
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Docker">
+```
+
+Use the following steps to troubleshoot your installation of the delegate using Docker:
+
+1. Check the status of the delegate on your cluster:
+
+   ```
+   docker container ls -a
+   ```
+   
+2. If the pod is not running, check the delegate logs:
+
+   ```
+   docker container logs <delegatename> -f
+   ```
+   
+3. Restart the delegate container. To stop the container:
+
+   ```
+   docker container stop <delegatename>
+   ```
+   
+   To start the container:
+   
+   ```
+   docker container start <delegatename>
+   ```
+   
+4. Make sure the container has sufficient CPU and memory resources. If not, remove the older containers:
+
+   ```
+   docker container rm [container id]
+   ```
+```mdx-code-block
+</TabItem>
+</Tabs>
+```

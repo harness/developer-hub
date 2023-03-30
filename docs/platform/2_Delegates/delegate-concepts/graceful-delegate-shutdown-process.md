@@ -1,7 +1,7 @@
 ---
 title: Graceful delegate shutdown
 description: Read about the process of graceful delegate shutdown.
-# sidebar_position: 2
+sidebar_position: 5
 ---
 
 Harness Delegate is designed to shut down gracefully. The process of graceful delegate shutdown is as follows:

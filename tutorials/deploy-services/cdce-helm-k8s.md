@@ -172,7 +172,7 @@ Now that Harness CDCE is up and running, we can create a CD pipeline that will d
 We now need to install a delegate named `firstk8sdel` on the Kubernetes cluster that is the deployment target. Note that if you installed the CDCE on a Kubernetes cluster then you can reuse the same cluster as this deployment cluster. However, the cluster should have enough underlying resources to run CDCE (in namespace `harness`), a delegate (in namespace `harness-delegate-ng`) and the helm chart you will be deploying (in the namespace of your choice) via CDCE.
 
 <details>
-<summary>Install Delegate for Harness CDCE</summary>
+<summary>Install Delegate on Kubernetes or Docker</summary>
 <DelegateInstall />
 </details>
 
