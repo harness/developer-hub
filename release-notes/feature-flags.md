@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2023-03-08T10:00
+date: 2023-03-30T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -33,9 +33,13 @@ The **FF server** has been updated to version **1.979.0**, with the following up
 
 #### Feature Flags SDKs
 
-The Java server SDK has been updated to version **1.2.2**, with the following updates.
+* The **Java server SDK** has been updated to version **1.2.2**, with the following updates.
 
-* Minor internal changes were made to make it easier for developers to use classes that were previously marked private.
+  * Minor internal changes were made to make it easier for developers to use classes that were previously marked private.
+
+* The **Go server SDK** has been updated to version **0.1.8** with the following update.
+
+  * Previously, a few logs on startup would use fmt.Println() instead of using the custom logger passed in via harness.WithLogger(logger). This could cause these startup logs to be in a different format, and appear to be logged at `error` level instead of logged correctly as `debug`. This has been resolved and all logs emitted by the SDK now go through the custom logger if it's passed in. (FFM-7347)
 
 ## March 28, 2023
 
