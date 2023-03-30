@@ -76,7 +76,7 @@ After the first hour, the delegate shows a status of **AUTO UPGRADE: ON** or **A
 
 ### Disable automatic upgrade on an installed delegate image
 
-If you disable automatic upgrade, then you have to manually upgrade the delegate regularly to prevent a loss of backward compatibility.
+If you disable automatic upgrades, then you have to manually upgrade the delegate regularly to prevent a loss of backward compatibility.
 
 **To disable auto-upgrade on an installed delegate image**
 
