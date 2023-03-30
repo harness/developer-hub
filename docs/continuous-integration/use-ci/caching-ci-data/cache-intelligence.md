@@ -14,7 +14,7 @@ Currently, Cache Intelligence is available only when using [Harness Cloud](/docs
 
 Currently, Cache Intelligence supports Bazel, Maven, Gradle, Yarn, Go, and Node build tools, if the dependencies are stored in the default location for the tool used.
 
-If you are using a different build tool or a non-default cache location, you can still leverage our cache storage by [specifying the location(s) to cache](#customize-cache-paths).
+If you are using a different build tool or a non-default cache location, you can still leverage Harness' cache storage by [specifying the location(s) to cache](#customize-cache-paths).
 
 ## Cache storage
 
@@ -96,6 +96,27 @@ If a path you want to cache is outside the `/harness` directory, you must also s
 ```
 
 In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. However, you must use the YAML editor to enable caching and specify `paths`.
+
+### Customize cache keys
+
+Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
+
+To customize the cache key, add `key: [custom-key]` to `stage: spec: caching:` in your pipeline's YAML, and specify the custom key value. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) to create the key value.
+
+The following YAML example uses `key: <+input>`, which prompts the user to supply a cache key value at runtime.
+
+```yaml
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          caching:
+            enabled: true
+            key: <+input>
+          cloneCodebase: true
+...
+```
 
 ## Cache Intelligence API
 
