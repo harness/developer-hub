@@ -43,7 +43,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 1. In Harness, go to the pipeline where you want to include CodeCov.
-2. Add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings.md).
+2. Add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings).
 3. Enter a **Name** for the step.
 4. For **Container Registry**, select your preferred Docker connector or use the Harness default Docker connector
 5. For **Image**, enter the Docker image needed to run your tests, such as `python:latest`.
@@ -108,14 +108,14 @@ echo "Done"
 
 <docimage path={require('./static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png')} />
 
-For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings.md) and [Run a script in a CI stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run a script in a CI stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML">
 ```
 
-In Harness, go to the pipeline where you want to include CodeCov, and add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings.md) configured as follows:
+In Harness, go to the pipeline where you want to include CodeCov, and add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) configured as follows:
 
 ```yaml
               - step:
@@ -275,7 +275,7 @@ Here is a YAML example of a step that calls a `CODECOV_TOKEN` that is stored as 
 
 </details>
 
-For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings.md) and [Run a script in a CI stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run a script in a CI stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
 
 ```mdx-code-block
   </TabItem>
@@ -286,7 +286,7 @@ For more information about **Run** step settings, go to the [Run step settings r
 
 After adding the **Run** step, run your pipeline.
 
-On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds.md), you can review CodeCov information in the **Run** step's logs. If the results were successfully uploaded to CodeCov, the logs include a `resultURL` that you can follow to view the code coverage output in your CodeCov account, such as:
+On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds), you can review CodeCov information in the **Run** step's logs. If the results were successfully uploaded to CodeCov, the logs include a `resultURL` that you can follow to view the code coverage output in your CodeCov account, such as:
 
 ```
 ...
