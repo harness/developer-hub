@@ -285,7 +285,8 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 	+ `product_project_name`
 * `product_config_name` = `default`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`
-	+ `tool_args`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
++ `tool_args`
 	   You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
 
 #### Running incremental scans with Checkmarx

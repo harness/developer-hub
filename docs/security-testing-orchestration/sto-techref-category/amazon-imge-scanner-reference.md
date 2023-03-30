@@ -35,6 +35,9 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `configuration_access_token` = Your AWS Access Token secret
 * `configuration_region` = The AWS region where the container is located. For example, `us-east-1`
 * `container_domain` = URI of the ECR container with the scan results you want to load.
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+
+# Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';

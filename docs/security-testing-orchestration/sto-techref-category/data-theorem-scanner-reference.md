@@ -24,7 +24,9 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `dataLoad`:
 	+ `product_app_id`
 	+ `product_access_token`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';

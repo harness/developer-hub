@@ -206,11 +206,11 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 
 
-#### Settings
+### Settings
 
 You can add a `tool_args` setting to run the [grype scanner](https://github.com/anchore/grype) with specific command-line arguments. For example, you can report vulnerabilities with known fixes only using `--only-fixed`: `tool_args` = `--only-fixed`.
 
-#### Additional Configuration
+### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
 
@@ -253,6 +253,7 @@ You can set up a Security step with [Grype](https://github.com/anchore/grype) to
 * `container_project` — The image owner and project, for example `harness/delegate`
 * `container_tag` — The tag of the image to scan, for example `latest`
 * `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
