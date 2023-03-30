@@ -15,7 +15,6 @@ description: Learn about Git experience in NextGen and Config as code in FirstGe
     - Pipelines
     - Templates
     - Input Sets
-    - Feature Flags
 
 In the Git Experience, Git acts as the primary source of truth. As a result, Harness does not keep a record of any resources other than the pipeline name, identifier, and configuration required to retrieve the pipeline from Git. Moreover, Harness does not perform reconciliation or cross-synchronization of resources. Instead, it leverages the native capabilities of Git such as branching, managing files in different repositories, and prioritizing the state of the file in Git above all other sources.
 
@@ -93,43 +92,46 @@ Configuration as Code is not the same as Git Experience.
 :::
 
 
-It's a fundamentally different mechanism. A majority of our base didn't get much value at out of the configuration as code experience, and couldn't operationalize it at scale due to the frequent sync errors and conflicts. What happened was the birth of the Terraform Provider which allowed users to configure and manage resources in code via Terraform.
+There were frequent conflicts and sync errors in Configuration as Code, which made it difficult to scale. Terraform Provider solves this problem by allowing you to configure and manage resources via code.
 
-Pipelines, Templates and Input Sets are powerful constructs to manage in Git Experience but how often are users tweaking their services, environments and infrastructure definitions after initial configuration. It's minimal these objects (service, environment, and infrastructure) are just metadata and pointers to a real service configuration.
+In the Git experience, pipelines, templates, and input sets are powerful constructs to manage.  However, modifications to services, environments, and infrastructure definitions after initial configuration are minimal. These entities are metadata and pointers to the service configuration. You can modify and audit changes to these entities through code using the Terraform provider.
 
-User's want their Services, Environments and Infrastructure Objects in Git but operationally not as a DB record, they want to actually make tweaks and audit those changes via code. The terraform provider does that in a more consistent fashion. User's can purely manage their service and environments as code.
-
-Service, Environment, Infrastructure Definitions are Harness constructs that carry lots of dependencies on one another. The Git Experience doesn't restrict one to be in the location of the others, this results in the risk of breaking changes  to occur files that are dependent on others aren't automatically reconciled, and it does not  ensure the pipeline has the latest working changes (addition of variables, updating of pipeline, impacts to templates and inputsets being used with pipeline).
+Entities like services, environments, and infrastructure definitions are highly interdependent. Git experience in NextGen supports entity storage in multiple branches and versions which can result in breaking changes in the interdependent files. Such files are not automatically reconciled and do not have the latest working changes.
 
 
-### What was the decision to only store Pipeline, Input Sets, and Templates are managed in Git?
+## Why does Harness support the storage of only a few entities in Git?
 
-Pipeline as code is an industry standard. Best practices for Continuous Integration and Continuous Deployment is to manage the pipeline state in Git.
+You can store the following configurations in Git using the Git experience: 
+- Pipelines
+- Templates
+- Input Sets
 
-The benefits are:
+Implementing pipelines as code is an industry standard. The most recommended practice for Continuous Integration and Continuous Deployment is to manage the pipeline state in Git. 
 
-1. Makes sharing pipeline configurations easy between different teams
-2. User's can manage these configuration in Git and use Git's user commit and auditing capabilities to track changes
-3. Being able to test different versions of the pipeline out before promoting to main or stable version
+Following are some benefits of implementing pipelines as code:
 
-The above benefits apply for both Continuous Integration and Continuous Deployment. We decided to extend these benfits to Harness constructs like Templates and Input Sets because they too are part of the pipeline and would benefit from similar pipeline as code capabilities.
+- Facilitates the sharing of pipeline configurations between different teams.
+- Ability to manage configurations in Git and track changes using Git's commit and audit capabilities.
+- Ability to test different versions of the pipeline before promoting to the main or stable version.
 
-Service and Environments are seperate objects that reside outside of the Pipeline in Harness. They are managed independently and that makes the misconfiguration risk even greater. If changes aren't properly resolved or propagated from core object to pipeline, it results in a failed pipeline. 
+The above benefits apply to both Continuous Integration and Continuous Deployment. Harness extends these benefits to entities like templates and input sets because they are part of the pipeline. They would benefit from similar capabilities as pipeline as code.
 
-The challenges with core Continuous Deployment Constructs being managed in Git:
+In Harness, services and environments reside outside the Pipeline. Managing them separately increases the risk of misconfiguration. Pipelines fail if changes are not resolved or propagated correctly from the core entity to the pipeline.
 
-1. Services have dependencies on the manifest configuration, variables, artifacts and config files that all need associated with the service. To ensure that they can be managed together and be leveraged together, user's would need to adhere to a nested construct in their Git repo that would break if those objects were moved or distributed across different locations in a single repo or via multiple repos. Services have their own lifecycle that resides outside of the pipeline.
+Following are some challenges of managing Continuous Deployment Constructs in Git:
 
-2. Environments would have the similar construct restraints, it has dependencies on the infrastructures that are associated with it, the environment variables and any service specific overrides would need to be enforced and grouped in a singular repo in a structured folder structure. Any moving or updating of this object can result in a breaking change. The configuration would no longer be usable by others who consume that environment as a target deployment location. Environments and Infrastructures have their own lifecylce that reside outside of the pipeline. 
+1. Services depend on the manifest configuration, variables, artifacts, and config files corresponding to the service. To manage and leverage them together, you need to use a nested structure in their Git repositories. When entities are moved or distributed between different repositories or locations, this would break. Services have their own life cycle outside the pipeline.
+
+2. Environments have similar constraints. They depend on their corresponding infrastructures. You need to use a specific folder structure for environment variables and service-specific overrides and group them in a single repository. Any modifications to such entities can result in breaking changes. Others who consume that environment as a target deployment location cannot use the configuration. Environments and infrastructures have their own cycles that reside outside the pipeline.
 
 
-### What is an alternative to manage these other objects in Git?
+## What is an alternative to manage other entities in Git?
 
-We recommend our user's leveraging the Harness Terraform Provider or our APIs to automate the management their Configuration in Harness like Services, Environments and Infrastructure Definitions. Terraform is an industry standard in how business manage and update their configuration as code. The Terraform Provider has been leveraged to manage these Harness resources as code via corresponding Terraform Configuration files. Users may have a module that just generates and updates services and they use a tfvars file to pass in the proper and configurable parameters. Using Harness pipelines, Harness can orchestrate the process to make the change reliably without any state conflict. Harness DB remains the source of truth for the UI while users can vet and publish changes via their automation.
+Harness recommends leveraging the Harness Terraform Provider or APIs to automate the management of your configurations like services, environments, and infrastructure definitions. Terraform is the industry standard for managing and updating configurations. You can manage your Harness resources as code via corresponding Terraform configuration files through the Terraform provider. Modules that generate and update services may use a `tfvars` file to pass in the proper and configurable parameters. Harness orchestrates the process to make the change reliably without conflict using pipelines. While the Harness database remains the source of truth, you can vet and publish changes through automation.
 
-For our APIs we have user's building their own custom automation that lets them manage our  Harness configuration YAML in Git and pass it to the API call for creation and updating the configuration. We have seen user's create Harness Pipelines that integrate with our APIs or even build their own onboarding and automation applications (via containerized application or a set of serverless functions) to update and manage Harness configuration.
+You can automate YAML configurations in Git and pass them to API calls for CRUD operations. Using Pipelines, you can integrate Harness APIs or build your own onboarding and automation applications (via a containerized application or serverless functions).
 
-Below are some key docs for our terraform provider:
+For more information on Harness Terraform provider, go to: 
 
 - [Terraform Provider Quickstart](https://developer.harness.io/docs/platform/terraform/harness-terraform-provider-overview/)
 - [Terraform Provider Automated Onboarding Guide](https://developer.harness.io/docs/platform/Terraform/automate-harness-onboarding)
@@ -137,14 +139,16 @@ Below are some key docs for our terraform provider:
 - [Terraform Registry for Harness Provider](https://registry.terraform.io/providers/harness/harness/latest/docs)
 
 
-Below are some doc:
+For more information on Harness APIs, go to:
 
 - [Harness API Quickstart](https://developer.harness.io/docs/platform/apis/api-quickstart/)
 - [API Docs](https://apidocs.harness.io/)
 
 
-### How can I use Git Experience with Terraform?
+## How can I use Git Experience with Terraform?
 
-We recommend leveraging the Harness Git Experience to manage the Pipelines, Input Sets and Templates. These are the core "Pipeline as Code" constructs that we offer with our platform. They can be updated and audited in Git and user's can make changes to them. Harness will reflect the changes in its User Interface. Often changes to one of these objects requires changes to the others because the pipeline needs state needs to have the proper contract between the template that its referencing and inputset. If something is added to the pipeline or template it needs to be updated in the inputset and the other objects location.
+Harness recommends Git Experience to manage pipelines, input sets, and templates. These are the core `Pipeline as Code` constructs Harness offers. You can update and track changes to these entities in Git and view them in the Harness UI. The state of the pipeline must have the proper contractual relationship between the template that it references and the input set when changes are made to one of these entities. Changes to the pipeline or template must be reflected in the input set and the location of other entities.
 
-For the external resources that are managed seperate of the Pipeline, we recommend using Harness Terraform Provider. Terraform can manage the state of Harness Continuous Deployment configurations and user's can audit the lifecycle of them. User's can also provide an automated process around via Harness Pipelines to manage the lifecyle of the Service, Environment and Infrastructure Definition. See [Terraform Provider Automated Onboarding Guide](https://developer.harness.io/docs/platform/Terraform/automate-harness-onboarding) for more details.
+Harness recommends Terraform Provider for external resources managed separately from the pipeline. Using Terraform, you can manage and audit Harness Continuous Deployment configurations. Additionally, you can automate the definition of service, environment, and infrastructure life cycles via Harness pipelines.
+ 
+For more information, go to [Terraform Provider Automated Onboarding Guide](https://developer.harness.io/docs/platform/Terraform/automate-harness-onboarding).
