@@ -14,7 +14,7 @@ Question Type: Multiple choice
 | ----------------------------------- | --------------- |
 | **CI Domain** | 65% |
 | **Hosted Builds** | 15% |
-| **Test Intelligencen** | 10% |
+| **Test Intelligence** | 10% |
 | **Code Configuration** | 10% |
 
 
