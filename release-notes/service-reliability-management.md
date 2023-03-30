@@ -1,6 +1,6 @@
 ---
 title: Service Reliability Management
-date: 2023-03-24T10:00
+date: 2023-03-30T10:00
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -12,6 +12,31 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+
+## March 30, 2023, version 789xx
+
+### What's new
+
+This release does not include any new features.
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- Monitored service creation fails when using a monitored service template that has Org or Account level service and environment. (SRM-14291)
+  
+  This restriction is removed. Now, you can create a monitored service using a monitored service template with Org or Account level service and environment.
+
+- On the Monitored Services list page, a help panel appears for every monitored service listed. This is resulting in an overwhelming number of help panels that need to be closed individually. (SRM-14266)
+  
+  This issue has been resolved. Now, only one help panel will appear for all monitored services listed on the page.
+
+- SLO error budget notifications are being triggered even when the notification rule is disabled. (SRM-13997)
+  
+  This issue has been resolved. Now, SLO error budget notifications will no longer be triggered if the notification rule is disabled.
 
 
 ## March 24, 2023, version 78817
