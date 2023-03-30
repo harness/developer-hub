@@ -34,9 +34,9 @@ This release does not include any early access features.
   * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
   * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency
   * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency
-- Harness Continuous Deployment (CD) UI now displays only your services and deployments in the **Main Dashboard** page. (CDS-50514)
+- Harness Continuous Deployment (CD) UI now displays only your services in the **Main Dashboard** page. (CDS-50514)
   
-  The main dashboard view automatically filters your services and deployments when you log in to CD.
+  The main dashboard view automatically filters your services when you log in to CD.
 
   ![](static/main-dashboard.png)
 
