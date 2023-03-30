@@ -16,6 +16,34 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### March 30, 2023, version 789xx
+
+#### Early access
+
+This release does not include any early access features.
+
+#### What's new
+
+- Harness recommendeds that you use the `kubelogin` auth plugin to authenticate Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed strating from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster login. Auth Provider is depricated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For AKS cloud provider with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The AKS cloud provider supports four authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate failing which Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency
+  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency
+- Harness Continuous Deployment (CD) UI now displays only your services and deployments in the **Main Dashboard** page. (CDS-50514)
+  
+  The main dashboard view automatically filters your services and deployments when you log in to CD.
+
+  ![](static/main-dashboard.png)
+
+#### Fixed issues
+
+This release does not include any fixed issues.
+
 ### March 24, 2023, version 78817
 
 #### Early access

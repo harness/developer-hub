@@ -20,6 +20,14 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - Harness supports adding service or environment inputs as an expression to the service or environment YAML manually. (CDS-54249)
 
   You can now manually add service or environment input values as expressions to the YAML. The values added to the YAML will be reflected on the Harness UI.  
+- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports modifying the issue type. (CDS-54027)
+
+  When you update a Jira issue using the Jira Update step, you can now modify the Issue Type by selecting the desired issue type. For example, if the issue you are updating is a Story, you can update it to a Task. 
+
+  The Issue Key is used to automatically fetch additional (optional) fields in the Jira Update step.
+
+  ![](static/jira-update-step.png)
+
 - You can freeze services and environments at account or organization levels when creating a deployment freeze window. (CDS-54222, CDS-53783)
 
   Harness now supports adding service and environment filters when creating a deployment freeze window. You can filter specific services or environments present at an account or organization level by adding a rule. 
@@ -27,14 +35,20 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   * At the account level freeze window, you can access account level services and environments only.
   * At the organization level freeze window, you can access account and organization level services and environments.
   * At the project level freeze window, you can access account, organization, and project level services and environments.
+  
+  ![](static/freeze-deployments-src-env.png)
 
   For more information, go to [freeze deployments](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-freeze/).
-- When adding a [Jira update step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages/#step-1-add-a-jira-update-step), you can now modify the Issue Type. (CDS-54027)
+- Harness recommendeds that you use the `kubelogin` auth plugin to authenticate Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
   
-  You can modify the Jira Issue Type when adding a Jira update step by selecting it from the list of optional fields. Additionally, when you enter an Issue Key in the Jira update step, any optional fields associated with that specific issue will be made available for modification.
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed strating from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster login. Auth Provider is depricated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For AKS cloud provider with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
 
-  ![](static/jira-update-step.png)
-- CDS-52513
+  The AKS cloud provider supports four authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate failing which Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency
+  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency
 - A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
 - A new tab, **Referenced By** is added to the **Environments** page, infrastructure definition section in the Harness UI. (CDS-46777)
   
@@ -55,9 +69,9 @@ This release does not include any early access features.
 - Harness was unable to propogate the output variables of parallel container steps. (CDS-56421)
   
   This issue is fixed now.
-- Pipeline execution failed when waiting for steady state with a forbidden error. (CDS-55096, ZD-40763)
+- Pipeline execution failed with a forbidden error when waiting for steady state. (CDS-55096, ZD-40763)
 
-  This issue is fixed by updating the Kubernetes API. The API, `readNamespacedJob` used by `kubectl` to check read namespace jobs is now used to check the steady state job in the Kubernetes API. This provides consistency across permissions required to check the job status.
+  This issue is fixed by updating the Kubernetes API. The API, `readNamespacedJob` used by `kubectl` to check the read namespace jobs is now used to check the steady state job in the Kubernetes API. This provides consistency across permissions that are required to check the job status.
 - The Google Artifact Image **Version** drop-down options were not visible in the **Google Artifact Registry Repository** template dialog. (CDS-55094)
 
   This issue is fixed. Google Artifact Image version options are now visible for Google Artifact Registry (GAR) artifact source template.
@@ -78,13 +92,13 @@ This release does not include any early access features.
 - The error message for webhook trigger registration failure was unclear. (CDS-53600)
 
   This issue is fixed by improving the error handling for webhook trigger registration. The error message now conveys a proper error summary.
-- An `IllegalArgumentException` appeared when service variable expressions were used for environments. (CDS-53490)
+- An `IllegalArgumentException` appeared when service variable expressions were used for environment reference. (CDS-53490)
 
-  You should not use service variables for environments, and environment variables for services. Harness has now improved the error handling mechanism for such scenarios so that users can fix the issue themselves. 
+  You should not use service variables for environment reference, and environment variables for service reference. Harness has now improved the error handling mechanism for such scenarios so that users can fix the issue themselves. 
 - Selecting the edit button on the YAML section of the **Triggers** page took users back to the visual section of the page. (CDS-50426)
   
   The **Triggers** page was not maintaining the user preference for the view type (Visual/YAML). This issue is fixed.
-  
+
 ## March 24, 2023, version 78817
 
 ### What's new
