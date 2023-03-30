@@ -24,7 +24,7 @@ Docker-in-Docker must run in privileged mode to work properly. Use caution becau
 
 These steps assume you are familiar with the following concepts:
 
-* Pipeline configuration, such as the [CI Pipeline quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 
@@ -58,7 +58,7 @@ In the Execution tab, add a [Background step](../../ci-technical-reference/backg
 In the Execution tab, add a [Run Step](../../ci-technical-reference/run-step-settings.md) and configure it as follows:
 
 * **Container Registry:** A Connector to your Docker registry.
-* **Image:** The Docker image that you want to run the **Run** step in.
+* **Image:** The Docker image, with the Docker binary, that you want to run the **Run** step in.
 * **Command:** Enter the shell commands you want to run in the dind container.
 
 Once the container is started, the software inside the container takes time to initialize and start accepting connections. Give the service adequate time to initialize before trying to connect. You can use a `while` loop, as shown here:

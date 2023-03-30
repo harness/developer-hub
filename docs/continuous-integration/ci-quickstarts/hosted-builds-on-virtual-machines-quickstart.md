@@ -1,7 +1,7 @@
 ---
 title: Get started with Harness Cloud
 description: You can run your builds on Harness-hosted VMs.
-sidebar_position: 10
+sidebar_position: 30
 helpdocs_topic_id: jkh1wsvajv
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false

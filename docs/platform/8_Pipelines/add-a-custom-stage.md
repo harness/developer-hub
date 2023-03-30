@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 
 :::note
-Currently, this feature is behind the feature flag `NG_CUSTOM_STAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.This topic describes how to set up a Custom stage.
+Currently, this feature is behind the feature flag `NG_CUSTOM_STAGE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. This topic describes how to set up a Custom stage.
 
 :::
 
@@ -34,7 +34,7 @@ The steps available in a Custom stage are also available in standard stages.
 * Licensing is applied to the steps in Custom stage. For example, CD Steps such as the HTTP step are available inside Custom stage only if you have CD license.
 * There is no Rollback functionality in a Custom stage.
 	+ Rollbacks can be achieved via conditional execution. For example, run a step only is something failed/succeeded previously.
-* You can select which Delegate to use for each step in a Custom stage using the step's **Delegate Selector** setting. If this setting is not used, then Harness will select a Delegate using its standard selection process. See [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
+* You can select which Delegate to use for each step in a Custom stage using the step's **Delegate Selector** setting. If this setting is not used, then Harness will select a Delegate using its standard selection process. See [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 * Custom stage can be used as a template like other stage types. Step templates can be used inside a Custom stage, and the Pipeline containing the Custom stage can also be used as a Template.
 
 ### Visual Summary
@@ -78,10 +78,10 @@ These steps are also available in CI, CD, and Approval stages.
 
 For details on the different steps, see:
 
-* [General CD](/docs/category/general-cd-execution-steps)
+* [General CD](https://developer.harness.io/docs/category/general-cd-execution-steps)
 * [Using Shell Scripts in CD Stages](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
-* [Approvals](/docs/category/approvals)
+* [Approvals](https://developer.harness.io/docs/category/approvals)
 * [Synchronize Deployments using Barriers](../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
 * [Add a Policy Engine Step to a Pipeline](../14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
 * [Terraform How-tos](../../continuous-delivery/cd-advanced/terraform-category/terraform-how-tos.md)

@@ -73,14 +73,8 @@ To use a username and password for authentication, do the following:
 </TabItem>
 <TabItem value="adfs" label="ADFS Client Credentials with Certificate">
 ```
-  
 
-:::note
-Currently, this feature is behind the feature flag `CDS_SERVICENOW_ADFS_AUTH`. Contact Harness Support to enable the feature.
-
-:::
-
-To use AD FS credentials for authentication, do the following:
+To use ADFS credentials for authentication:
   
 1. Select an existing secret or create one that has the resource identifier of ServiceNow configured in ADFS as its value for the **Resource ID** field.
 2. Select an existing secret or create one that has the application (client) id assigned to your application by AD FS for the **Client ID** field.

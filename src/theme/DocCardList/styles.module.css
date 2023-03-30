@@ -1,0 +1,25 @@
+.docCardList {
+}
+.docCardList article {
+  /* width: calc(4 / 12 * 100%); */
+  flex: 0 0 calc(4 / 12 * 100%);
+}
+
+/* @media (min-width: 997px) {
+  .docCardList article:nth-last-child(-n + 2) {
+    margin-bottom: 2rem !important;
+  }
+} */
+
+@media screen and (max-width: 1365px) {
+  .docCardList article {
+    /* width: calc(6 / 12 * 100%); */
+    flex: 0 0 calc(6 / 12 * 100%);
+  }
+}
+
+@media screen and (max-width: 667px) {
+  .docCardList article {
+    flex: 0 0 calc(12 / 12 * 100%);
+  }
+}

@@ -1,7 +1,7 @@
 ---
 title: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-03-15T10:00
+date: 2023-03-24T10:00
 sidebar_position: 12
 ---
 
@@ -14,7 +14,26 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). For Self-Managed Enterprise Edition, see [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
-## March 15, 2023, Harness version 78712, Harness Delegate version 78700
+## March 24, 2023, Harness version 78817, Harness Delegate version 78705
+
+Harness NextGen release 78817 includes the following changes for the Harness Delegate.
+
+### What's new
+
+This release does not include any new features. 
+ 
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+Minor fixes to the delegate installation wizard. (DEL-6073)
+
+Previously, Helm was not pre-selected when you switched from Docker to Kubernetes. This has been fixed. Additionally, values that need to be copied in the Kubernetes manifest were moved into a copy block. 
+
+
+## March 15, 2023, Harness version 78712, Harness Delegate version 78705
 
 Harness NextGen release 78712 includes the following changes for the Harness Delegate.
 
@@ -148,24 +167,16 @@ This release introduces the following security enhancements:
   
   | **Third-party tool** | **78101 and earlier** | **78306 and later** |
   | :-- | :-: | :-: |
-  | kubectl | 1.13.2 | 1.24.3 |
-  | | 1.19.2 | |
-  | go-template | 0.4 | 0.4.1 |
-  | | 0.4.1 | |
+  | kubectl | 1.13.2, 1.19.2 | 1.24.3 |
+  | go-template | 0.4, 0.4.1 | 0.4.1 |
   | harness-pywinrm | 0.4-dev | 0.4-dev |
-  | helm | 2.13.1 | 2.13.1 |
-  | | 3.1.2 | 3.1.2 |
-  | | 3.8.0 | 3.8.0 |
-  | chartmuseum | 0.12.0 | 0.15.0 |
-  | | 0.8.2 | |
-  | tf-config-inspect | 1.0 | 1.1 |
-  | | 1.1 | |
+  | helm | 2.13.1, 3.1.2, 3.8.0 | 2.13.1, 3.1.2, 3.8.0 |
+  | chartmuseum | 0.8.2, 0.12.0 | 0.15.0 |
+  | tf-config-inspect | 1.0, 1.1 | 1.1 |
   | oc | 4.2.16 | 4.2.16 |
-  | kustomize | 3.5.4 | 4.5.4 |
-  | | 4.0.0 | |
+  | kustomize | 3.5.4, 4.0.0  | 4.5.4 |
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
   
-
 
 ## January 17, 2023, Harness version 78214, Harness Delegate version 78101
 

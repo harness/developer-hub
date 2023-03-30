@@ -12,7 +12,7 @@ You can specify Harness User Group(s) to approve or reject a Pipeline at any poi
 
 Approvals are added in between Stages to prevent the Pipeline execution from proceeding without an approval.
 
-For example, in a [Build Pipeline](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
+For example, in a [CI Build pipeline](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
 
 Other approval methods are:
 
@@ -78,9 +78,9 @@ Click the **Approval** step.
 
 Set a default for the step timeout. Leave enough time for the Users in **Approvers** to see and respond to the waiting step.
 
-The default timeout for an Approval step is **1d** (24 hours). You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
+The default timeout for an Approval step is **1d** (24 hours). You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
-The maximum timeout duration is 24 days.The timeout countdown appears when the step in executed.
+The maximum timeout duration is 24 days. The timeout countdown appears when the step in executed.
 
 ![](./static/adding-harness-approval-stages-16.png)
 ### Option: Add Message
@@ -108,11 +108,11 @@ You can enter variables and when the approver views the step they can provide ne
 
 If there are multiple approvers, the first approver sees the variables as you entered them in the step. If the first approver enters new values, the next approver sees the values the first approver entered.
 
-A third approver will see all of the variables the first and second approver provided.
+A third approver will see all the variables the first and second approver provided.
 
 The variable values entered by the final approver populate the expressions created from the inputs.
 
-For example, if there were three approvers and you added a Shell Script step that referenced the input variables with an expression, the expression would render the variable values entered by the final, third approver.
+For example, if there were three approvers, and you added a Shell Script step that referenced the input variables with an expression, the expression would render the variable values entered by the final, third approver.
 
 You can reference input variables using the `approverInputs` expression:
 

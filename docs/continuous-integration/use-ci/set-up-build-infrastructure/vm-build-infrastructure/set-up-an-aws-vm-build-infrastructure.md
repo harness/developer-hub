@@ -1,9 +1,7 @@
 ---
 title: Set up an AWS VM build infrastructure
-description: Set up a CI Build Infrastructure using AWS VMs
+description: Set up a CI build infrastructure using AWS VMs
 
-tags: 
-   - helpDocs
 sidebar_position: 10
 helpdocs_topic_id: z56wmnris8
 helpdocs_category_id: rg8mrhqm95
@@ -19,7 +17,7 @@ This topic describes how to set up and use AWS VMs as build infrastructures for 
 
 For information on using Kubernetes as a build farm, go to [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/2_Delegates/install-delegates/overview.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ![](../static/set-up-an-aws-vm-build-infrastructure-12.png)
 
@@ -27,11 +25,13 @@ The following diagram illustrates an AWS build farm. The [Harness Delegate](/doc
 
 This topic assumes you're familiar with the following:
 
-* [CI Pipeline Quickstart](../../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
-* [CI Stage Settings](../../../ci-technical-reference/ci-stage-settings.md)
-* [Learn Harness' Key Concepts](../../../../getting-started/learn-harness-key-concepts.md)
-* [VM Runner](https://docs.drone.io/runner/vm/overview/)
+* [Building and testing on a Kubernetes cluster build infrastructure](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
+* [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
+* [CI stage settings](../../../ci-technical-reference/ci-stage-settings.md)
+* [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
+* Drone VM Runner
+  * [Drone documentation - VM Runner overview](https://docs.drone.io/runner/vm/overview/)
+  * [GitHub repository - Drone Runner AWS](https://github.com/drone-runners/drone-runner-aws)
 
 ## Alternate workflow: Use Terraform
 
@@ -146,14 +146,13 @@ Next, you'll add the Runner spec to the Delegate definition. The Harness Delegat
 
    ```yaml
    drone-runner-aws:  
-       restart: unless-stopped
+       restart: unless-stopped  
        image: drone/drone-runner-aws
-       volumes:
-         - .:/runner
+       network_mode: "host" 
+       volumes:  
+        - ./runner:/runner  
        entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
-       working_dir: /runner  
-       ports:  
-         - "3000:3000"
+       working_dir: /runner
    ```
 
 9. Under `services: harness-ng-delegate: restart: unless-stopped`, add the following line:
@@ -204,13 +203,12 @@ services:
       - INIT_SCRIPT=echo "Docker delegate init script executed."  
   drone-runner-aws:  
     restart: unless-stopped  
-    image: drone/drone-runner-aws:1.0.0-rc.35
+    image: drone/drone-runner-aws:1.0.0-rc.38
+    network_mode: "host"
     volumes:  
       - .:/runner  
     entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
-    working_dir: /runner  
-    ports:  
-      - "3000:3000"
+    working_dir: /runner
 ```
 
 </details>
@@ -266,8 +264,8 @@ This pipeline's **Build** stage now uses your AWS VMS for its build infrastructu
 You can configure the following settings in your `pool.yml` file.
 
 | **Subfield** | **Type** | **Example** | **Description** |
-| --- | --- | --- | -- |
-| `name` |  String | `name: windows_pool` | Unique identifier of the pool. You'll reference this pool name in the Harness Manager later when setting up the CI build infrastructure. |
+| - | - | - | - |
+| `name` | String | `name: windows_pool` | Unique identifier of the pool. You'll reference this pool name in the Harness Manager later when setting up the CI build infrastructure. |
 | `pool` | Integer | `pool: 1` | Pool size number. Denotes the number of cached VMs in ready state to be used by the Runner. |
 | `limit` | Integer | `limit: 3` | Maximum pool size number. Denotes the maximum number of VMs that can be present at any instance to be used by the Runner. |
 | `hibernate` | Boolean | `hibernate: true` | When set to `true` (the default), VMs hibernate after startup. When `false`, VMs are always in a running state.This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information go to the AWS documentation: [Hibernate your On-Demand Linux instance](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html). |
@@ -384,7 +382,6 @@ You can configure the following settings in your `pool.yml` file.
           private_ip:
 ```
 
-
 ## Runner settings reference
 
 You can set the following Runner options in your `docker-compose.yml` file. These can be useful for advanced use cases such as troubleshooting the Runner.
@@ -427,13 +424,12 @@ services:
       - INIT_SCRIPT=echo "Docker delegate init script executed."  
   drone-runner-aws:  
     restart: unless-stopped  
-    image: drone/drone-runner-aws:1.0.0-rc.35
+    image: drone/drone-runner-aws:1.0.0-rc.38
+    network_mode: "host" 
     volumes:  
       - .:/runner  
     entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
     working_dir: /runner  
-    ports:  
-      - "3000:3000"
     environment:
       - DRONE_REUSE_POOL=false  
       - DRONE_LITE_ENGINE_PATH=https://github.com/harness/lite-engine/releases/download/v0.5.2
@@ -445,15 +441,13 @@ services:
 
 Configure the following fields in the **.env** file to allow Runner to access and launch your AWS VM.
 
-|  |  |  |
-| --- | --- | --- | 
 | **Field** | **Type** | **Description** | **Example** |
+| - | - | - | - |
 | `DRONE_REUSE_POOL` | Boolean | Reuse existing EC2 instances on restart of the Runner. | `false` |
 | `DRONE_LITE_ENGINE_PATH` | String | This variable contains the release information for the Lite Engine. The Lite Engine is a binary that is injected into the VMs with which the Runner interacts. It is responsible for coordinating the execution of the steps. | `https://github.com/harness/lite-engine/releases/download/v0.0.1.12` |
 | `DRONE_DEBUG` | Boolean | Optional. Enables debug-level logging. | `true` |
 | `DRONE_TRACE` | Boolean | Optional. Enables trace-level logging. | `true` |
 
-## See also
+## Troubleshooting
 
-* [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md)
-* For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
+When you run the pipeline, if VM creation in the Runner fails with the error `no default VPC`, then set `subnet_id` in `pool.yml`.

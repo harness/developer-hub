@@ -1,6 +1,6 @@
 ---
 title: Service Reliability Management
-date: 2023-03-21T10:00
+date: 2023-03-24T10:00
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -12,6 +12,46 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+
+## March 24, 2023, version 78817
+
+### What's new
+
+- When you try editing an existing SLO, you will see the **Tags (optional)** field autopopulated even if no value was entered while creating the SLO. Harness uses the selected SLI type as value to autopopulate the **Tags (optional)** field. (SRM-14121)
+  
+- There is a new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
+
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- The Time Window in the Service Health tab does not display the information for an event by default when accessed using the link in the event notification. Users had to manually search for the information by moving the Time Window to the event's date and time. (SRM-14071)  
+   
+  This issue has been resolved. The Time Window now displays the event information automatically when accessed using the link in the notification. Users no longer need to manually search for the information by moving the Time Window to the event's date and time.
+
+- Error encountered when setting up monitored service in verify step with Org or Account level service and environment. (SRM-14191)  
+  
+  This restriction is removed. You can create a monitored service in the verify step even if the service and environments are at the Org or Account level.
+
+- Unable to set the duration in the Verify step as an expression or use a value from other fields or variables. (SRM-13981)  
+  
+  This restriction has been removed. You can now set the Verify step duration using an expression or a value from other fields or variables.
+
+- If a monitored service is updated in an SLO, the Monitored Service List page does not display the updated information in the SLO/ERROR BUDGET column. Instead, it shows that the SLO is still linked to the previous monitored service. (SRM-14078)  
+  
+  This issue has been resolved, and the SLO/ERROR BUDGET column will now display the updated information when a monitored service is updated in an SLO.
+  
+- The verify step fails when a monitored service is deleted and recreated within two hours with a different connector ID. (SRM-14021)  
+  
+  This issue has been resolved, and now the Verify step does not fail if the health source is deleted and recreated within 2 hours with a different connector ID.
+
+- If there is no data received from one of the metric packs while configuring AppDynamics as a health source, the validation fails.(SRM-13597)  
+  
+  This issue has been resolved. Now, the validation passes if there is incoming data from any one of the metric packs.
 
 
 ## March 21, 2023

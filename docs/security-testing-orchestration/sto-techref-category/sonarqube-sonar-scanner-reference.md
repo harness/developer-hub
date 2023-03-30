@@ -10,14 +10,233 @@ helpdocs_is_published: true
 
 You can set up a Security step with [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes.
 
-### Important Notes
-
+:::note
 * STO supports repository scanning only for SonarScanner.
 * STO supports all languages supported by SonarScanner.
 * Before you scan your repo, make sure that you perform any prerequisites for the language used in your repo. If you are scanning a Java repo with more than one Java file, for example, you must compile `.class` files before you run the scan.  
 Go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/) for details about specific language requirements.
+:::
 
-### Scan types
+## SonarQube step configuration
+
+The recommended workflow is add a SonarQube step to a Security Tests or CI Build stage and then configure it as described below. You can also configure SonarQube scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+
+
+```mdx-code-block
+import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
+```
+
+<StoScannerStepNotes />
+
+<details>
+    <summary>Step Palette</summary>
+
+![](static/step-palette-00.png) 
+
+</details>
+
+### Scan
+
+
+<a name="scan-mode"></a>
+
+#### Scan Mode
+
+```mdx-code-block
+import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from './shared/step_palette//_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
+import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+```
+
+<StoSettingScanMode />
+<StoSettingScanModeOrch />
+<StoSettingScanModeData />
+<StoSettingScanModeIngest />
+
+
+#### Scan Configuration
+
+```mdx-code-block
+import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
+```
+
+<StoSettingProductConfigName />
+
+
+### Target
+
+#### Type
+
+```mdx-code-block
+import StoSettingScanTypeRepo     from './shared/step_palette/_sto-ref-ui-scan-type-00-repo.md';
+```
+
+<StoSettingScanTypeRepo />
+
+#### Name 
+
+```mdx-code-block
+import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
+```
+
+<StoSettingProductID />
+
+<a name="target-variant"></a>
+
+#### Variant
+
+```mdx-code-block
+import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-variant.md';
+```
+
+<StoSettingTargetVariant  />
+
+#### Workspace
+
+```mdx-code-block
+import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
+```
+
+<StoSettingTargetWorkspace  />
+
+
+### Ingestion File
+
+```mdx-code-block
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
+```
+
+<StoSettingIngestionFile  />
+
+
+### Authentication
+
+<!-- ============================================================================= -->
+<a name="auth-domain"></a>
+
+#### Domain (_extraction_)
+
+
+```mdx-code-block
+import StoSettingAuthDomain from './shared/step_palette/_sto-ref-ui-auth-domain.md';
+```
+
+<StoSettingAuthDomain />
+
+<!-- ============================================================================= -->
+<a name="auth-enforce-ssl"></a>
+
+#### Enforce SSL
+
+```mdx-code-block
+import StoSettingProductSSL from './shared/step_palette/_sto-ref-ui-auth-ssl.md';
+```
+
+<StoSettingProductSSL />
+
+
+#### Access Token
+
+```mdx-code-block
+import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
+```
+
+<StoSettingAuthAccessToken />
+
+### Scan Tool
+
+#### Include 
+
+```mdx-code-block
+import StoSettingToolInclude from './shared/step_palette/_sto-ref-ui-tool-include.md';
+```
+
+<StoSettingToolInclude />
+
+#### Java Libraries
+
+```mdx-code-block
+import StoSettingTooJavaLibraries from './shared/step_palette/_sto-ref-ui-tool-java-libraries.md';
+```
+
+<StoSettingTooJavaLibraries  />
+
+
+
+
+#### Java Binaries
+
+```mdx-code-block
+import StoSettingToolJavaBinaries from './shared/step_palette/_sto-ref-ui-tool-java-binaries.md';
+```
+<StoSettingToolJavaBinaries  />
+
+
+### Log Level, CLI flags, and Fail on Severity
+
+<a name="log-level"></a>
+
+#### Log Level
+
+```mdx-code-block
+import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
+```
+
+<StoSettingLogLevel />
+
+<a name="cli-flags"></a>
+
+#### Additional CLI flags
+
+```mdx-code-block
+import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
+```
+
+<StoSettingCliFlags />
+
+<a name="fail-on-severity"></a>
+
+
+#### Fail on Severity
+
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />
+
+
+### Settings
+
+You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs.sonarqube.org/9.6/analyzing-source-code/analysis-parameters/) with specific command-line arguments. For example, suppose the scan is experiencing timeouts due to long response times from a web service. You can increase the timeout window like this:  `tool_args` = `-sonar.ws.timeout 300`.
+
+### Additional Configuration
+
+In the **Additional Configuration** settings, you can use the following options:
+
+* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
+* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
+* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+
+
+### Advanced settings
+
+In the **Advanced** settings, you can use the following options:
+
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+
+
+## Security step configuration (_deprecated_)
+
+<details><summary>Set up a SonarQube scan in a Security step</summary>
+
+You can set up a Security step with [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes.
+
+#### Scan types
 
 STO supports the following scan types for SonarQube:
 
@@ -25,7 +244,7 @@ STO supports the following scan types for SonarQube:
 * `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
 
-### Required settings
+#### Required settings
 
 * `product_name` = `sonarqube`
 * `scan_type` = `repository`
@@ -36,12 +255,13 @@ STO supports the following scan types for SonarQube:
 	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline).
 * `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
 * `repository_branch` — The git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md#manual-branch-build). This sets the branch based on the user input or trigger payload at runtime.
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### `ingestionOnly` settings
+#### `ingestionOnly` settings
 
 For information about setting up an ingestionOnly scan, go to [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
 
-###  `orchestratedScan` and `dataLoad` settings
+####  `orchestratedScan` and `dataLoad` settings
 
 * `product_domain` — The URL of the SonarQube server.
 * `product_access_token` — The access token to communicate with the SonarQube server. You must create a secret for the token and use the format `<+secrets.getValue("secret_name")>` to reference the secret. This example references a secret created at the project level. For additional details on referencing secrets, go to [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).  
@@ -52,3 +272,12 @@ Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-tok
 * `product_java_binaries` — When scanning Java, you need to set the `sonar.java.binaries` key in SonarQube. This is a list of comma-separated paths with the compiled bytecode that correspond to your source files. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
 * `product_java_libraries` — `sonar.java.binaries` is a comma-separated list of paths to files with third-party libraries (JAR or Zip files) used by your project. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
 
+</details>
+
+## YAML configuration
+
+```mdx-code-block
+import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
+```
+
+<StoSettingYAMLexample />

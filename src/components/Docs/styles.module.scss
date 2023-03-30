@@ -59,10 +59,16 @@
     line-height: 24px;
     color: var(--gray-600);
     white-space: nowrap;
+    display: flex;
     cursor: pointer;
     &:hover {
         // text-decoration: underline;
         color: var(--primary-8);
+    }
+    img {
+        margin-right: 4px;
+        height: 24px;
+        width: auto;
     }
 }
 .spaceBetween{

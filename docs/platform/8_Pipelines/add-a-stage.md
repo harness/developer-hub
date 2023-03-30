@@ -34,6 +34,7 @@ Click **Pipeline**. The new Pipeline settings appear.
 Enter **Name**, **Description**, **Tags**, **and Timeout** for your Pipeline.
 
 ![](./static/add-a-stage-55.png)
+
 Click **Start**. Now you're ready to add a stage.
 
 ### Step 2: Add a Stage
@@ -44,7 +45,7 @@ Select a stage type and follow its steps.
 
 The steps you see depend on the type of stage you selected.
 
-Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).Enter a name for the stage.
+Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md). Enter a name for the stage.
 
 You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
 

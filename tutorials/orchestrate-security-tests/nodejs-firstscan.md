@@ -23,7 +23,7 @@ In this example, we will be using [OWASP Dependency Check](https://owasp.org/www
 
 ### Install Delegate
 
-Harness will facilitate the running of the security scan against your codebase. A workload runner, e.g. a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview) will need to be installed into a Kubernetes cluster of your choice. The first step is to request a [Harness Security Test Orchestration Account](https://harness.io/demo/sto) and install a [Harness Delegate](../platform/install-delegate).
+Harness will facilitate the running of the security scan against your codebase. A workload runner, e.g. a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegate-overview) will need to be installed into a Kubernetes cluster of your choice. The first step is to request a [Harness Security Test Orchestration Account](https://harness.io/demo/sto) and install a [Harness Delegate](../platform/install-delegate).
 
 <details>
 <summary>Install Delegate</summary>

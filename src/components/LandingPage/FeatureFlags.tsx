@@ -69,7 +69,8 @@ export default function FF() {
                   styles.btnLight
                 )}
               >
-                <i className="fa-regular fa-file"></i>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_documentation.svg`} />
                 Documentation
               </button>
             </Link>
@@ -82,7 +83,8 @@ export default function FF() {
                   styles.btnLight
                 )}
               >
-                <i className="fa-regular fa-file"></i>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
               </button>
             </Link>
@@ -102,8 +104,7 @@ export default function FF() {
                 className={clsx("button button--lg", styles.btn, styles.btnFF)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/feature-flags">
                 <button className={styles.link}>Learn more</button>

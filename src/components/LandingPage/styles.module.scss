@@ -113,8 +113,13 @@
     font-weight: 600;
     font-size: 16px;
     line-height: 24px;
+    display: flex;
+    align-items: center;
     &>i, &>img {
         margin-right: 4px;
+        margin-left: 4px;
+        // height: 24px;
+        // width: auto;
     }
 }
 .btnLight{
@@ -123,9 +128,11 @@
     color: var(--gray-600);
     align-items: center;
     display: flex;
-    img{
-        padding-right: 8px;
-    }
+    // img{
+    //     padding-right: 4px;
+    //     height: 24px;
+    //     width: auto;
+    // }
     &:hover {
         // color: var(--black)
         color: var(--primary-7);
