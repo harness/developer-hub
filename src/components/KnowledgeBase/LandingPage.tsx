@@ -5,7 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 
 import styles from "./styles.module.scss";
 import { MODULE_DISPLAY_NAME } from "../../constants";
-import { knowledgeBaseList } from "./data/knowledgeBaseList";
+import { knowledgeBaseList } from "./data/knowledgeBaseData";
 
 export default function KnowledgeBase() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();

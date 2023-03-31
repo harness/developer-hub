@@ -3,38 +3,8 @@ import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
-import TutorialCard, { CardItem, docType } from "./TutorialCard";
-
-/* Define the cards here */
-const FeaturedList: CardItem[] = [
-  {
-    title: "Scanning a NodeJS Application",
-    module: "sto",
-    icon: "img/icon_sto.svg",
-    description: (
-      <>Scanning a NodeJS Application and prioritizing scan results.</>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
-  },
-];
-
-const STOList: CardItem[] = [
-  {
-    title: "Scanning a NodeJS Application",
-    module: "sto",
-    icon: "img/icon_sto.svg",
-    description: (
-      <>Scanning a NodeJS Application and prioritizing scan results.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
-  },
-];
+import TutorialCard from "./TutorialCard";
+import { FeaturedList, STOList } from "./data/securityTestingOrchestrationData";
 
 export default function STO() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
