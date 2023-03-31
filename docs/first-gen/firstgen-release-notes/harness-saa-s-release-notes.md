@@ -16,7 +16,7 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### March 30, 2023, version 789xx
+### March 31, 2023, version 78914
 
 #### Early access
 
@@ -24,7 +24,7 @@ This release does not include any early access features.
 
 #### What's new
 
-- Harness recommendeds that you use the `kubelogin` auth plugin to authenticate Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
+- Harness recommendeds that you use the `kubelogin` auth plugin to authenticate the Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
   
   The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate a Kubernetes cluster login. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For the Harness Azure cloud provider connecting to Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
 
