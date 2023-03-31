@@ -330,13 +330,6 @@ const CIList: CardItem[] = [
   },
 ];
 
-import TutorialCard from "./TutorialCard";
-import {
-  FeaturedList,
-  // DroneList,
-  CIList,
-} from "./data/continuousIntegrationData";
-
 export default function CI() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
