@@ -24,6 +24,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
    - `metasploit-weak-ssh` &nbsp; &nbsp;  Brute-force test a host for SSH weak ssh/pass
    - `metasploit-openssl-heartbleed`  &nbsp; &nbsp; Check HTTPS (443) for Heartbleed vulnerability
    - `dynamic-by-cve`  &nbsp; &nbsp; Finds and applies Metaspoit module by CVE 
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
 ```mdx-code-block

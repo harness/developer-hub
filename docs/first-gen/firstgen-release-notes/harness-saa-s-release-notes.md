@@ -24,6 +24,28 @@ Permissions-based filtering of service instances on the Main Dashboard (CDS-5051
 
 The Service Instances panel on the Overview screen and the Instances panel on the Services screen show only those service instances for which the user has `Read` permissions. This feature is behind the feature flag `SPG_SERVICES_OVERVIEW_RBAC`. To enable the feature flag, contact Harness Support.
 
+#### What's new
+
+- Harness recommendeds that you use the `kubelogin` auth plugin to authenticate the Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate a Kubernetes cluster login. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For the Harness Azure cloud provider connecting to Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Azure cloud provider supports four authentication types when used with AKS. For each authentication type, the following dependencies must be installed on your Harness delegate. If they are not installed, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency.
+  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency.
+- The Harness Continuous Delivery (CD) UI now displays only your services in the **Main Dashboard** page. (CDS-50514)
+  
+  The main dashboard view automatically filters your services when you log into CD.
+
+  ![](static/main-dashboard.png)
+
+#### Fixed issues
+
+This release does not include any fixed issues.
+
 ### March 24, 2023, version 78817
 
 #### Early access

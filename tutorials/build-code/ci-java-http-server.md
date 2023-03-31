@@ -1,5 +1,5 @@
 ---
-sidebar_position: 60
+sidebar_position: 40
 description: This build automation guide walks you through building and testing a Java HTTP server application in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 ---

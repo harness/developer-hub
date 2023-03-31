@@ -18,9 +18,98 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ## March 31, 2023, version 78914
 
+### Continuous Integration
+
+* When you [use a GitHub App in a GitHub connector](/docs/platform/connectors/git-hub-app-support/#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+* Added a [codebase expression](/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference) for commit messages: `<+codebase.commitMessage>`. (CI-7222)
+
 ### Harness Platform
 
 - The favicon now dynamically changes based on pipeline execution status on the dashboard's execution view. (PL-31520)
+
+### Continuous Delivery
+
+- Harness supports manually adding service or environment [runtime inputs](https://developer.harness.io/docs/platform/references/runtime-inputs/) in the pipeline YAML. (CDS-54249)
+
+  You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML are reflected on the Harness UI. 
+  
+  Here's an example of the YAML:
+
+  ```yaml
+  ...
+           service:
+            serviceRef: CDS54249
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  manifests:
+                    - manifest:
+                        identifier: foo
+                        type: K8sManifest
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              connectorRef: <+input>
+                              repoName: <+input>
+                              branch: <+input>
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+
+- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports modifying the issue type. (CDS-54027)
+
+  When you update a Jira issue using the Jira Update step, you can now modify the issue type by selecting the desired one from the drop-down list. For example, you can change a Story issue type to a Task. 
+
+  ![](static/jira-update-step.png)
+
+  The Issue Key is used to automatically fetch additional (optional) fields in the Jira Update step.
+  
+  ![](static/add-jira-fields.png)
+  
+- You can now select specific services and environments at an account or organization level when creating a deployment freeze window. (CDS-54222, CDS-53783)
+
+  When creating a deployment freeze window, select specific services and environments at an account or organization level using the **Add Rule** option in the **Coverage** tab. 
+
+  ![](static/freeze-deployments-src-env.png)
+
+  * At the account level freeze window, you can access account level services and environments only.
+  * At the organization level freeze window, you can access account and organization level services and environments.
+  * At the project level freeze window, you can access account, organization, and project level services and environments.
+  
+  For more information, go to [freeze deployments](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-freeze/).
+- Harness recommends that you use the `kubelogin` auth plugin to authenticate the Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Azure cloud provider (connecting to AKS) supports four authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency.
+  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency.
+- A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
+
+  In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping. 
+
+  ![](static/route-mapping-tas.png)
+
+  The parameters of the **Route Mapping** step are: 
+    * **Name** - Deployment step name. For example, Map Route or Unmap Route.
+    * **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timing out and initiating the failure strategy.
+    * **Mapping Type** - Select **Map Route** or **UnMap Route** to map or unmap routes respectively. 
+    * **App Name** - Enter the application name.
+    * **Routes** - Enter the routes you want to map or unmap to this deployment. 
+     
+  ![](static/route-mapping.png)
+
+- You can now see what pipelines are using an Infrastructure Definition. (CDS-46777)
+  
+  The **Referenced By** tab in the **Environments** page now includes the pipelines that are using the infrastructure definitions in the environment. **Referenced By** now shows all pipelines that use the environment and each infrastructure definition individually.
+  
+  ![](static/referenced-by-tab.png)
 
 ## March 24, 2023, version 78817
 
@@ -42,6 +131,56 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   By doing this, you can prevent accidental or deliberate misuse of API keys by restricting who can generate them from which service accounts.
 
 - You can now enter usernames as a comma separated string while adding users in **Users(name or email)**. (PL-29630)
+
+### Continuous Delivery
+
+- [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/) is now supported as a manifest repo for Amazon Elastic Container Service (ECS) and Serverless.com Framework Lambda deployments. (CDS-54961)
+
+  When creating Amazon ECS or Serverless.com Framework Lambda deployment pipelines, you can now use Azure Repo as a manifest repo in the service definition.
+  
+- Harness now supports template input APIs. (CDS-55694)
+  
+  You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](https://developer.harness.io/docs/platform/Templates/create-pipeline-template).
+  
+  Here is a sample template: 
+  
+  ```yaml
+  template:
+  name: my_template
+  identifier: eqweqw
+  versionLabel: v1
+  type: StepGroup
+  projectIdentifier: projtest
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stageType: Deployment
+    steps:
+      - step:
+          name: my_template
+          identifier: my_template
+          template:
+            templateRef: account.same_name
+            versionLabel: v1
+    delegateSelectors: <+input>
+
+- Harness supports filtering Docker artifact tags based on regex. (CDS-53644)
+  
+  You can now filter Docker artifact tags based on regex when using runtime inputs during pipeline execution. 
+
+  ![](static/tag-regex.png)
+
+- You can now provide an already created task definition ARN during ECS service configuration in Harness. (CDS-50112)
+  
+  The task definition ARN points to an existing task created and available in the AWS cluster with the required definition. The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
+  
+  During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
+
+  Go to [ECS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
+
+- You can now view the ServiceNow Active Directory Federation Services (ADFS) and Jira Personal Access Token (PAT) in the **Credentials** section of the **Connectors** page. (CDS-55670)
+  
+  ![](static/connector-credentials.png)
   
 ## March 21, 2023, version 78903
 
@@ -132,6 +271,11 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 ```
+
+- The **Resize Strategy** field in the **Canary App Setup** step of a [Tanzu Application Services (TAS, formerly PCF) deployment](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) can be added as runtime input when using the canary deployment strategy. (CDS-53201)
+  
+  ![](static/canary-app-set-up-resize.png)
+
 ### Harness Platform
 
 - The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)

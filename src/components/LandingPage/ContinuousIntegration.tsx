@@ -18,10 +18,26 @@ const FeaturedList: CardItem[] = [
         the features that make it four times faster than the leading competitor.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
+  },
+  {
+    title: "Build and test on a Kubernetes cluster build infrastructure",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Create a two-stage pipeline that builds a codebase and runs integration
+        tests on a Kubernetes cluster build infrastructure.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "30 min",
+    link: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
   },
   {
     title: "Node and Docker CI Pipeline",
@@ -49,7 +65,7 @@ const FeaturedList: CardItem[] = [
         CI Pipeline.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-go-containers",
@@ -65,7 +81,7 @@ const FeaturedList: CardItem[] = [
         using a CI pipeline.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-container-signing",
@@ -81,7 +97,7 @@ const FeaturedList: CardItem[] = [
         application container image.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-rust-container",
@@ -141,7 +157,7 @@ const CIList: CardItem[] = [
         Proxy as a Background step in a CI Pipeline
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-saucelabs-background-step",
@@ -183,10 +199,26 @@ const CIList: CardItem[] = [
         the features that make it four times faster than the leading competitor.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
+  },
+  {
+    title: "Build and test on a Kubernetes cluster build infrastructure",
+
+    module: "ci",
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+        Create a two-stage pipeline that builds a codebase and runs integration
+        tests on a Kubernetes cluster build infrastructure.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "30 min",
+    link: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
   },
   {
     title: "Build Go application containers",
@@ -199,7 +231,7 @@ const CIList: CardItem[] = [
         CI Pipeline.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-go-containers",
@@ -214,7 +246,7 @@ const CIList: CardItem[] = [
         using a CI pipeline.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-container-signing",
@@ -245,7 +277,7 @@ const CIList: CardItem[] = [
         pipeline.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-push-to-gar",
@@ -261,7 +293,7 @@ const CIList: CardItem[] = [
         Harness UI.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-publish-allure-report",
@@ -277,7 +309,7 @@ const CIList: CardItem[] = [
         container image.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/build-code/ci-tutorial-rust-container",
@@ -347,8 +379,7 @@ export default function CI() {
                 className={clsx("button button--lg", styles.btn, styles.btnCI)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/continuous-integration">
                 <button className={styles.link}>Learn more</button>

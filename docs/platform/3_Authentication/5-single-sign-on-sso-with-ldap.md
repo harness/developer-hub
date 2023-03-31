@@ -85,6 +85,13 @@ The specific permissions needed by Harness depend on the LDAP directory service 
 
 Adding your LDAP Provider to Harness initially involves establishing a connection from Harness (specifically, the Harness delegate) and querying your LDAP directory for the users and groups you want to sync with Harness for SSO.
 
+:::note
+If you experience frequent delegate time-out errors, try the following:
+1. In Harness, set the LDAP Response Timeout to 2 minutes.
+2. Set the sync interval to 1 hour. It is set to 15 minutes by default.
+:::
+
+
 #### Query your LDAP directory
 
 If you need to query your LDAP server before or during the Harness LDAP SSO setup, use the **ldapsearch** CLI tool (Linux/Mac), [LDAP Admin](http://www.ldapadmin.org/) (Windows), the **dsquery** CLI tool (Windows), **Active Directory Users and Computers** (Windows), or [Windows PowerShell](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/ee617195(v=technet.10)).

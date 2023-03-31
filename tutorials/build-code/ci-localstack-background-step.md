@@ -1,5 +1,5 @@
 ---
-sidebar_position: 50
+sidebar_position: 100
 description: Run LocalStack as a Background step in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 ---

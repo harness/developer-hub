@@ -103,7 +103,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         <td valign="top">DAST</td>
         <td valign="top">
          	<ul>
-        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/niktos-scanner-reference">Nikto</a>  Orchestration, Ingestion </li>
+        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference">Nikto</a>  Orchestration, Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
         	</ul>
         </td>

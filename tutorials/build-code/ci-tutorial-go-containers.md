@@ -1,5 +1,5 @@
 ---
-sidebar_position: 30
+sidebar_position: 60
 description: This build automation guide describes building a Go container in a a CI Pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Go,Ko]
 ---

@@ -10,8 +10,6 @@ helpdocs_is_published: true
 
 This topic describes the settings and permissions for the Bitbucket connector. Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket. The following settings are applicable to both versions.
 
-<!--Before Harness syncs with your Git repo, it verifies all the connection settings in Harness. If Harness cannot establish a connection, it won't sync with your Git repo.-->
-
 ## Overview settings
 
 * **Name:** The unique name for this connector. Harness generates an **Id** ([Entity Identifier](../../20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id** during initial connector creation. Once you save the connector, the **Id** is locked.
@@ -130,7 +128,7 @@ import TabItem2 from '@theme/TabItem';
 
 The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
 
-In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**.
+In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
@@ -172,7 +170,7 @@ Make sure to follow the prompts to finish creating the key. For more information
 
 You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires username and password authentication.
 
-In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**.
+In the **Username** field, enter the Bitbucket account username as specified in your Bitbucket **Account settings**. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
 
