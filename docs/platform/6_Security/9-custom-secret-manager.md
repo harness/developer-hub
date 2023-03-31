@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `CUSTOM_SECRET_MANAGER_NG`. Contact Harness Support to enable the feature.Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account.
+Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account.
 
 You can also access your encrypted secrets stored in third-party Secret Managers using the Harness Custom Secret Manager.
 
