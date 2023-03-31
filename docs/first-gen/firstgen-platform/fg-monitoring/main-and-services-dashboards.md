@@ -18,7 +18,7 @@ The following panels show only those service instances for which the user has `R
 
 The required authorization information is obtained from the application permissions assigned to the user through their user group.
 
-Permissions-based filtering of service instqnces is behind the feature flag `SPG_SERVICES_OVERVIEW_RBAC`. To enable the feature flag, contact Harness Support.
+Permissions-based filtering of service instances is behind the feature flag `SPG_SERVICES_OVERVIEW_RBAC`. To enable the feature flag, contact Harness Support.
 :::
 
 ### Main Dashboard
