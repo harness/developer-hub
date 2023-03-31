@@ -30,7 +30,7 @@ The following video shows you how to use the Jira Create, Jira Update, and Jira 
 ## Add a Jira Update step
 
 1. In a Harness CD or approval stage, in **Execution**, select **Add Step**.
-2. Select **Jira Update**. The Jira update step appears.
+2. Select **Jira Update**. The Jira Update step appears.
 
 ![](static/jira-update-step.png)
 
@@ -41,15 +41,15 @@ The following video shows you how to use the Jira Create, Jira Update, and Jira 
 
 ### Use an expression in issue key
 
-In **Issue Key**, you can use an expression to reference the key ID from another Jira create or Jira update step.
+In **Issue Key**, you can use an expression to reference the key ID from another Jira create or Jira Update step.
 
-The Jira create or Jira update step you want to reference must be before the Jira update step that references it in the stage.
+The Jira create or Jira Update step you want to reference must be before the Jira Update step that references it in the stage.
 
-First, identify the step where you want to get the ID from. In this example, we'll use a Jira create step.
+First, identify the step where you want to get the ID from. In this example, we'll use a Jira Create step.
 
-You'll have to close the Jira update step to get the the ID from the previous step. An ID is required, so you can just enter any number for now and select **Save**. In the pipeline, select **Execution History**.
+You'll have to close the Jira Update step to get the the ID from the previous step. An ID is required, so you can just enter any number for now and select **Save**. In the pipeline, select **Execution History**.
 
-Select a successful execution, and select the Jira create step in the execution.
+Select a successful execution, and select the Jira Create step in the execution.
 
 Select the **Output** tab, locate the **Key** setting, and select the copy button.
 
@@ -61,17 +61,17 @@ The expression will look something like this:
 
 Now you have the expression that references the key ID from this step.
 
-Go back to your Jira update step. You can select **Edit Pipeline**.
+Go back to your Jira Update step. You can select **Edit Pipeline**.
 
 In **Issue Key**, select **Expression**.
 
 ![](static/use-expression-in-issue-key.png)
 
-In **Issue Key**, paste the expression you copied from the previous Jira create step.
+In **Issue Key**, paste the expression you copied from the previous Jira Create step.
 
-Now this Jira update step will update the issue created by the Jira create step.
+Now this Jira Update step will update the issue created by the Jira Create step.
 
-Some users can forget that when you use a Jira create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira update, you are updating a new issue every run.
+Some users can forget that when you use a Jira Create step it creates a new, independent Jira issue every time it is run. If you are using the same issue ID in Jira update, you are updating a new issue every run.
 
 ### Optional configuration
 
@@ -122,7 +122,7 @@ The number 1 is used as an example. You can add whatever number you need.
 
 Harness supports updating the Jira Issue Type. 
 
-1. Enter an **Issue Key** in the Jira update step. 
+1. Enter an **Issue Key** in the Jira Update step. 
 2. In the **Add Jira Fields** dialog, select **Issue Type**, then select **Add**. The **Issue Type** field appears under **Optional Configuration**.
    
    ![](static/modify-issue-type.png)
@@ -131,7 +131,7 @@ Harness supports updating the Jira Issue Type.
 
   ![](static/update-issue-type.png)
 
-The issue type for the selected Jira issue is now updated with the issue type you selected.
+The issue type for the selected Jira Issue is now updated with the issue type you selected.
 
 ## Advanced settings
 
@@ -142,7 +142,7 @@ In **Advanced**, you can use the following options:
 
 ## Apply and test
 
-Click **Apply Changes**. The Jira update step is added to the stage.
+Click **Apply Changes**. The Jira Update step is added to the stage.
 
 Run the pipeline.
 
