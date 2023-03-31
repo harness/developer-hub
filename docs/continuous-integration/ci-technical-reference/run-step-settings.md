@@ -24,15 +24,11 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 Optional text string describing the step's purpose.
 
-## Container Registry
+## Container Registry and Image
 
-A Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
+The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
 
-## Image
-
-The FQN (fully-qualified name) of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`.
-
-The image name should include the tag. If you don't include a tag, Harness uses the latest tag.
+The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the latest tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
@@ -42,6 +38,13 @@ You can use any Docker image from any Docker registry, including Docker images f
    ![](./static/run-step-settings-03.png)
 
 * **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+
+The stage's build infrastructure determines whether these fields are required or optional:
+
+* [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-hosted VM build infrastructure.
+* [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
 
 ## Shell
 
