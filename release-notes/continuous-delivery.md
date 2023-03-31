@@ -17,9 +17,32 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-- Harness supports adding service or environment inputs as an expression to the service or environment YAML manually. (CDS-54249)
+- Harness supports manually adding service or environment [runtime inputs](https://developer.harness.io/docs/platform/references/runtime-inputs/) in the pipeline YAML. (CDS-54249)
 
-  You can now manually add service or environment input values as expressions to the YAML. The values added to the YAML will be reflected on the Harness UI.  
+  You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML will be reflected on the Harness UI. Here's an example of the YAML:
+  ```yaml
+  ...
+           service:
+            serviceRef: CDS54249
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  manifests:
+                    - manifest:
+                        identifier: foo
+                        type: K8sManifest
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              connectorRef: <+input>
+                              repoName: <+input>
+                              branch: <+input>
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
 - The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports modifying the issue type. (CDS-54027)
 
   When you update a Jira issue using the Jira Update step, you can now modify the Issue Type by selecting the desired issue type. For example, if the issue you are updating is a Story, you can update it to a Task. 
@@ -43,30 +66,32 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   For more information, go to [freeze deployments](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-freeze/).
 - Harness recommendeds that you use the `kubelogin` auth plugin to authenticate Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
   
-  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed strating from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster login. Auth Provider is depricated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For AKS cloud provider with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
 
-  The AKS cloud provider supports four authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate failing which Harness will follow the old auth provider format.
+  The Harness Azure cloud provider (connecting to AKS) supports four authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
 
-  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
   * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
-  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency
-  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency
+  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency.
+  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency.
 - A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
 
-  In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution starategy to configure route mapping or unmapping. 
+  In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping. 
 
   ![](static/route-mapping-tas.png)
 
   The parameters of the **Route Mapping** step are: 
     * **Name** - Deployment step name. For example, Map Route or Unmap Route.
-    * **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
+    * **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timing out and initiating the failure strategy.
     * **Mapping Type** - Select **Map Route** or **UnMap Route** to map or unmap routes respectively. 
     * **App Name** - Enter the application name.
     * **Routes** - Enter the routes you want to map or unmap to this deployment. 
      
   ![](static/route-mapping.png)
 
-- A new tab, **Referenced By** is added to the **Environments** page, infrastructure definition section in the Harness UI. (CDS-46777)
+- You can now see what pipelines are using an Infrastructure Definition. (CDS-46777)
+  
+  The **Referenced By** tab in the **Environments** page now includes the pipelines that are using the infrastructure definitions in the environment. **Referenced By** now shows all pipelines that use the environment and each infrastructure definition individually.
   
   ![](static/referenced-by-tab.png)
 
@@ -87,11 +112,11 @@ This release does not include any early access features.
   This issue is fixed now.
 - Pipeline execution failed with a forbidden error when waiting for steady state. (CDS-55096, ZD-40763)
 
-  This issue is fixed by updating the Kubernetes API. The API, `readNamespacedJob` used by `kubectl` to check the read namespace jobs is now used to check the steady state job in the Kubernetes API. This provides consistency across permissions that are required to check the job status.
+  This issue is fixed by updating the Kubernetes API usage. The `readNamespacedJob` API operation that is used by `kubectl` to read namespace Jobs is now used to check the steady state of jobs. The check determines if the Job has reached its desired state, meaning all the pods associated with the Job have completed successfully or have failed the maximum number of times specified in the Job's configuration. This provides consistency across the permissions that are required to check the job status.
 - The Google Artifact Image **Version** drop-down options were not visible in the **Google Artifact Registry Repository** template dialog. (CDS-55094)
 
   This issue is fixed. Google Artifact Image version options are now visible for Google Artifact Registry (GAR) artifact source template.
-- The OCI Helm connector connection test failed for the Helm repository URL with port number: `public.ecr.aws:443` with anonymous credentials. (CDS-54066)
+- The OCI Helm connector connection test failed for the Helm repository URL with port number `public.ecr.aws:443` and anonymous credentials. (CDS-54066)
 
   This issue is fixed. We now support the following URL types for the OCI Helm connector.
 
@@ -99,18 +124,18 @@ This release does not include any early access features.
   * URL with the `oci://` prefix. For example, `oci://public.ecr.aws`.
   * URL with port number. For example, `public.ecr.aws:443`.
   * URL with the `oci://` prefix and port number. For example, `oci://public.ecr.aws:443`. 
-- Users were able to save the [Kubernetes apply step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step/) template without file paths in the template library using YAML. (CDS-53961)
+- Users were able to save a [Kubernetes Apply step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step/) template with empty manifest file paths. (CDS-53961)
 
-  This issue is fixed. You can no longer configure empty file paths in the apply step template.
-- Unable to create and view default values when configuring services, environments, templates, and pipelines. (CDS-53919, ZD-39998, ZD-40031, ZD-41197, ZD-41889)
+  This issue is fixed. You can no longer configure empty file paths in the Apply step template.
+- Users were unable to create or edit the runtime input default values when configuring services, environments, templates, and pipelines. (CDS-53919, ZD-39998, ZD-40031, ZD-41197, ZD-41889)
 
-  This issue is fixed. Harness now supports adding default values when configuring services, environments, templates, and pipelines.
+  This issue is fixed. Harness now supports adding and editing runtime input default values when configuring services, environments, templates, and pipelines.
 - The error message for webhook trigger registration failure was unclear. (CDS-53600)
 
   This issue is fixed by improving the error handling for webhook trigger registration. The error message now conveys a proper error summary.
-- An `IllegalArgumentException` appeared when service variable expressions were used for environment reference. (CDS-53490)
+- An `IllegalArgumentException` appeared when service variable expressions were references in environments. (CDS-53490)
 
-  You should not use service variables for environment reference, and environment variables for service reference. Harness has now improved the error handling mechanism for such scenarios so that users can fix the issue themselves. 
+  You should not reference environment variables in service settings because the environment settings are resolved after the service settings during pipeline execution. Harness has now improved the error handling mechanism for such scenarios. 
 - Selecting the edit button on the YAML section of the **Triggers** page took users back to the visual section of the page. (CDS-50426)
   
   The **Triggers** page was not maintaining the user preference for the view type (Visual/YAML). This issue is fixed.

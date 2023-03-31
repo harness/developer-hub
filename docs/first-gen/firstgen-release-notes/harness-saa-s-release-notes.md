@@ -26,17 +26,17 @@ This release does not include any early access features.
 
 - Harness recommendeds that you use the `kubelogin` auth plugin to authenticate Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
   
-  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed strating from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster login. Auth Provider is depricated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For AKS cloud provider with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate a Kubernetes cluster login. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For the Harness Azure cloud provider connecting to Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
 
-  The AKS cloud provider supports four authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate failing which Harness will follow the old auth provider format.
+  The Harness Azure cloud provider supports four authentication types when used with AKS. For each authentication type, the following dependencies must be installed on your Harness delegate. If they are not installed, Harness will follow the old auth provider format.
 
-  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
   * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
-  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency
-  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency
-- Harness Continuous Deployment (CD) UI now displays only your services in the **Main Dashboard** page. (CDS-50514)
+  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency.
+  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency.
+- The Harness Continuous Delivery (CD) UI now displays only your services in the **Main Dashboard** page. (CDS-50514)
   
-  The main dashboard view automatically filters your services when you log in to CD.
+  The main dashboard view automatically filters your services when you log into CD.
 
   ![](static/main-dashboard.png)
 
