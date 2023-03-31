@@ -39,7 +39,7 @@ The **FF server** has been updated to version **1.979.0**, with the following up
 
 * The **Go server SDK** has been updated to version **0.1.8** with the following update.
 
-  * Previously, a few logs on startup would use fmt.Println() instead of using the custom logger passed in via harness.WithLogger(logger). This could cause these startup logs to be in a different format, and appear to be logged at `error` level instead of logged correctly as `debug`. This has been resolved and all logs emitted by the SDK now go through the custom logger if it's passed in. (FFM-7347)
+  * Previously, a few logs on startup would use fmt.Println() instead of using the custom logger passed in via harness.WithLogger(logger). This could cause these startup logs to be in a different format, and appear to be logged at an `error` level instead of logged correctly as `debug`. This has been resolved and all logs emitted by the SDK now go through the custom logger if it's passed in. (FFM-7347)
 
 ## March 28, 2023
 
