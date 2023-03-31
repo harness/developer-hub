@@ -16,6 +16,14 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### March 31, 2023, version 78914
+
+#### Early access
+
+Permissions-based filtering of service instances on the Main Dashboard (CDS-50514)
+
+The Service Instances panel on the Overview screen and the Instances panel on the Services screen show only those service instances for which the user has `Read` permissions. This feature is behind the feature flag `SPG_SERVICES_OVERVIEW_RBAC`. To enable the feature flag, contact Harness Support.
+
 ### March 24, 2023, version 78817
 
 #### Early access
