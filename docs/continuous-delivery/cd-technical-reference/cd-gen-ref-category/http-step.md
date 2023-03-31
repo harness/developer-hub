@@ -83,6 +83,7 @@ You can also use ​JSON and XML functors in the values for the output variable.
 You can use pipeline variables along with `httpResponseBody` and `httpResponseCode`. 
 
 Here are some examples:
+
 `<+json.object(httpResponseBody).title>`
 
 `<+json.select(<+pipeline.variables.title>, httpResponseBody)>`
@@ -92,7 +93,6 @@ To concatenate strings within the JSON functor:
 `<+json.select(<+ <+pipeline.variables.user> + <+pipeline.variables.id>>,httpResponseBody)>` or
 
 `<+json.select("user".concat(<+pipeline.variables.id>),httpResponseBody)>`
-
 
 For more information, go to [JSON and XML Functors](json-and-xml-functors.md).
 
