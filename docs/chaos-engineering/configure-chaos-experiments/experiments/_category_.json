@@ -1,0 +1,9 @@
+{
+  "position": 4,
+  "label": "Manage Chaos Experiments ",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Manage Chaos Experiments"
+  }
+}

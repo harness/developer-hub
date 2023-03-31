@@ -1,0 +1,9 @@
+{
+  "position": 2,
+  "label": "Chaos Infrastructure",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "Chaos Infrastructure documentation"
+  }
+}
