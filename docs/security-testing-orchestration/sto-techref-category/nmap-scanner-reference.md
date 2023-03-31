@@ -7,7 +7,7 @@ sidebar_position: 200
 
 ## Security step settings
 
-You can set up Nmap scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up Nmap scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -28,28 +28,17 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- [`smb-security-mode`](https://nmap.org/nsedoc/scripts/smb-security-mode.html)
 		- [`vuln`](https://nmap.org/nsedoc/categories/vuln.html)
 		- [`exploit`](https://nmap.org/nsedoc/categories/exploit.html)
+* `tool_args` — You can use this field to run the [Nmap scanner](https://nmap.org/book/man-briefoptions.html) with specific command-line arguments. For example, you can include IPv6 tests as follows: `tool_args` = `-6`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-
-<!-- CONTAINERS ---------------------------------------------------------------------------
-
-```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
-
-<StoLegacyContainer />
-
-
-<!-- REPOS ---------------------------------------------------------------------------  
-
-### Repository scan settings
+### Fail on Severity
 
 ```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
+<StoSettingFailOnSeverity />
 
-<StoLegacyRepo />
 
-<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  -->
 
 ### Instance settings 
 

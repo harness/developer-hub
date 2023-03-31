@@ -17,8 +17,8 @@ This guide describes the basic steps for getting started with Harness Feature Fl
 To create a Flag, you need to complete the following steps:
 
 1. [Create a Project](../../ff-using-flags/ff-creating-flag/create-a-project.md) to host your Flags in.
-2. [Create an Environment](../../ff-using-flags/ff-creating-flag/create-an-environment.md) within your Project. You can have multiple Environments in a single Project.
-3. [Create an SDK Key](../../ff-using-flags/ff-creating-flag/create-an-sdk-key.md) for your Environment. You use this to connect to a Feature Flag SDK.
+2. [Create an Environment](../../ff-using-flags/ff-creating-flag/create-an-environment.md) within your project. You can have multiple environments in a single project.
+3. [Create an SDK Key](../../ff-using-flags/ff-creating-flag/create-an-sdk-key.md) for your environment. You use this to connect to a Feature Flag SDK.
 4. [Create a Feature Flag](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md).
 5. [Connect your application using one of our SDKs](../../ff-sdks/sdk-overview/client-side-and-server-side-sdks.md).
 
@@ -28,7 +28,7 @@ You can also follow the Get Started tutorial for Feature Flags on the Harness Pl
 
 ## Next steps
 
-Once you have created your Flag, you can then:
+Once you have created your flag, you can then:
 
 * [Manage Targets](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md)
 * Modify [Variations](../../ff-using-flags/update-feature-flags/manage-variations.md) and [Rules](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md)

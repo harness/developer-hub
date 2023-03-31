@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides details about the settings for the Upload Artifacts to S3 step, which uploads artifacts to AWS or other S3 providers such as [MinIo](https://docs.min.io/docs/minio-gateway-for-s3.html).
+This topic provides details about the settings for the Upload Artifacts to S3 step, which uploads artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility).
 
 :::info
 
@@ -27,7 +27,7 @@ The Harness AWS connector to use when connecting to AWS S3.
 The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to S3. For more information about roles and permissions for AWS connectors, go to:
 
 * [Add an AWS connector](../../platform/7_Connectors/add-aws-connector.md)
-* [AWS Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+* [AWS connector settings reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
 
 <details>
 <summary>Stage variable required for non-default ACLs</summary>

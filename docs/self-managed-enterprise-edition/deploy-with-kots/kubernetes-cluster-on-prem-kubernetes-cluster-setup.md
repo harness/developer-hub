@@ -37,7 +37,7 @@ This simply means that you are using an existing Kubernetes cluster, as opposed 
 
 How you install Harness Self-Managed Enterprise Edition NextGen will follow one of the use cases below:
 
-### NextGen on existing FirstGen cluster
+### NextGen on an existing FirstGen cluster
 
 In this scenario, you have an existing Harness Self-Managed Enterprise Edition FirstGen cluster running and you want to add Harness Self-Managed Enterprise Edition NextGen to it.
 
@@ -48,9 +48,7 @@ You simply add Harness Self-Managed Enterprise Edition NextGen as a new applicat
 3. Upload the NextGen license file.
 4. Use the exact same FirstGen configuration values for the NextGen configuration.
 
-If you are using this option, skip to [Install NextGen on Existing FirstGen Cluster](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#install-next-gen-on-existing-first-gen-cluster).
-
-### NextGen on new FirstGen cluster
+### NextGen on a new FirstGen cluster 
 
 In this scenario, you want to install FirstGen and NextGen on a new cluster.
 
@@ -63,7 +61,7 @@ In this scenario, you want to install FirstGen and NextGen on a new cluster.
 If you are using this option, do the following:
 
 1. Follow all of the FirstGen installation instructions beginning with [Step 1: Set up Cluster Requirements](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#step-1-set-up-cluster-requirements).
-2. Follow the NextGen installation instructions in [Install NextGen on Existing FirstGen Cluster](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#install-next-gen-on-existing-first-gen-cluster).
+2. Follow the NextGen installation instructions in [Install NextGen on an Existing FirstGen Cluster](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#nextgen-on-an-existing-firstgen-cluster).
 
 ### Legacy FirstGen not using KOTS
 
@@ -82,7 +80,7 @@ If you are using this option, do the following:
 
 1. Follow all of the FirstGen installation instructions beginning with [Step 1: Set up Cluster Requirements](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#step-1-set-up-cluster-requirements).
 2. Migrate data to new FirstGen using a script from Harness Support.
-3. Follow the NextGen installation instructions in [Install NextGen on Existing FirstGen Cluster](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#install-next-gen-on-existing-first-gen-cluster).
+3. Follow the NextGen installation instructions in [Install NextGen on an Existing FirstGen Cluster](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#nextgen-on-an-existing-firstgen-cluster).
 
 ## Step 1: Set up cluster requirements
 
@@ -150,7 +148,7 @@ oc adm policy add-scc-to-user anyuid -z harness-default -n harness
 oc adm policy add-scc-to-user anyuid -z default -n harness
 ```
 
-Once you've installed Harness and you want to install a Harness Kubernetes Delegate, see [Delegates and OpenShift](#delegates-and-open-shift) below.
+Once you've installed Harness and you want to install a Harness Kubernetes Delegate, see [Delegates and OpenShift](#delegates-and-openshift) below.
 
 ## Option 1: Disconnected installation (air gap)
 
@@ -388,7 +386,9 @@ You can change the settings later in the KOTS admin console **Config** tab:
 
 In **Scheme**, if you select HTTPS, the GRPC settings appear.
 
-![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-19.png)**If your load balancer does support HTTP2 over port 443**, enter the following:
+![](./static/kubernetes-cluster-on-prem-kubernetes-cluster-setup-19.png)
+
+**If your load balancer does support HTTP2 over port 443**, enter the following:
 
 * **GRPC Target:** enter the load balancer hostname (hostname from the load balancer URL)
 * **GRPC Authority:** enter `manager-grpc-<hostname>`. For example: `manager-grpc-35.202.197.230`.
@@ -618,7 +618,7 @@ Harness Self-Managed Enterprise Edition installations do not currently support t
 
 ### Note: Remove previous kustomization for ingress controller
 
-**This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](#step-4-configure-harness).
+**This option is only needed if you have installed Harness Self-Managed Enterprise Edition previously.** If this is a fresh install, you can go directly to [Configure Harness](#step-3-configure-harness).
 
 If you have installed Harness Harness Self-Managed Enterprise Edition previously, you updated Harness manifests using kustomize for the ingress controller. This is no longer required.
 
@@ -684,7 +684,7 @@ Now you can add Harness Self-Managed Enterprise Edition NextGen as a new applica
 
 6. Depending on whether your Harness Self-Managed Enterprise Edition FirstGen installation is disconnected or connected, follow the installation steps described here:
 
-   * [Option 1: Disconnected Installation (Airgap)](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#option-1-disconnected-installation-airgap)
+   * [Option 1: Disconnected Installation (Airgap)](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#option-1-disconnected-installation-air-gap)
    * [Option 2: Connected Installation](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#option-2-connected-installation)
    
    When you are done, you'll be on the **Configure HarnessNG** page. This is the standard configuration page you followed when you set up Harness Self-Managed Enterprise Edition FirstGen in [Step 3: Configure Harness](kubernetes-cluster-on-prem-kubernetes-cluster-setup.md#step-3-configure-harness).
@@ -729,7 +729,7 @@ Now you can add Harness Self-Managed Enterprise Edition NextGen as a new applica
 
    If you are familiar with Harness, you can skip [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
 
-   Try the [Quickstarts](../../getting-started/quickstarts.md).
+   Try the [Tutorials and quickstarts](../../getting-started/quickstarts.md).
 
 ## Updating Harness NextGen
 

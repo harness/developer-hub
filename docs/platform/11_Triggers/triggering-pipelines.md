@@ -90,12 +90,6 @@ The updated branch will initiate a new Trigger execution.
 
 ## Configure secret
 
-:::note
-
-Currently, this feature is behind the feature flag `SPG_NG_GITHUB_WEBHOOK_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 In **Configure Secret**, you can select a secret for authenticating the webhook call.
 
 For the secret to work with your webhook, you need to configure the repository webhook with the same secret.

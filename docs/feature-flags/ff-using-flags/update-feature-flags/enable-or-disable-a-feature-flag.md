@@ -28,7 +28,7 @@ To enable or disable a Flag from the Feature Flag dashboard:
 2. Toggle the button next to the Flag name to turn the Flag on or off.
 3. Check the details are correct, then click **Confirm**.
 
-![A screenshot of a message asking the user to confirm they want to toggle a flag on. ](./static/1-enable-or-disable-a-feature-flag-07.png)*Figure 1: Confirm the Flag should be turned on*
+   ![A screenshot of a message asking the user to confirm they want to toggle a flag on. ](./static/1-enable-or-disable-a-feature-flag-07.png)*Figure 1: Confirm the Flag should be turned on*
 
 ## Enable or disable Feature Flags from the Targeting tab
 
@@ -39,5 +39,5 @@ To enable or disable a Flag from the Feature Flag from the Targeting tab:
 3. Depending on the action you want to take, toggle **Flag Enabled** or **Flag Disabled**.
 4. Click **Save.**
 
-![A screenshot of a message asking the user to confirm they want to toggle a flag on. ](./static/1-enable-or-disable-a-feature-flag-08.png)*Figure 2: The Targeting tab of a Flag*
+   ![A screenshot of a message asking the user to confirm they want to toggle a flag on. ](./static/1-enable-or-disable-a-feature-flag-08.png)*Figure 2: The Targeting tab of a Flag*
 

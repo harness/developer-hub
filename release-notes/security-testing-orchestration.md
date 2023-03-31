@@ -1,7 +1,7 @@
 ---
 title: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-03-03T10:00
+date: 2023-03-23T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 8
 ---
@@ -13,6 +13,22 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 23, 2023, version v1.38.3
+
+### New features
+
+This release does not include new features.
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed Issues
+
+* Fixed an issue that caused OWASP scans of Go apps to fail with the message `[ERROR] Unexpected exception occurred initializing Golang Mod Analyzer`. (STO-5602)
+* Fixed a UI issue in the Issue Details panel that caused some redundant fields such as `CWE` to appear. (CI-5365)
+
 
 
 ## March 20, 2023
@@ -30,6 +46,33 @@ This release does not include early access features.
 * The search pull-down widget has been removed from the Security Tests > Overview page. To search and drill down into specific issues, go to the Security Testing Dashboard. (STO-5592)
 * Fixed an issue in the the Security Tests > Overview page where the **Issue distribution over time** graph on was empty for some projects. (STO-5318)
 
+
+## March 14, 2023
+
+### New Features
+
+This release includes a set of new scanner-specific steps (step palettes) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps greatly simplify the process of setting up scans in your pipelines. Previously, the workflow for all scanners was to enter a set of hard-coded key and value strings in a Security step. These new steps have simplified user-friendly UIs that include only the options relevant to the specific scanner, mode, and target.
+
+The following security steps are now generally available:
+
+* [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) (STO-5393)
+* [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference) (STO-5050)
+* [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) (STO-5052)
+* [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) (STO-5073)
+* [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference) (STO-5394)
+* [Mend (formerly Whitesource)](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference) (STO-5392)
+* [Prisma Cloud (formerly Twistlock)](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference) (STO-5055)
+* [Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) (STO-5053)
+* [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) (STO-5051)
+* [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference) (STO-5058)
+
+### Early access features
+
+This release does not include early access features.
+
+### Fixed Issues
+
+This release does not include fixed issues.
 
 ## March 9, 2023
 

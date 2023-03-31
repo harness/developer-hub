@@ -40,59 +40,146 @@ module.exports = {
        },
     
     // Delegate Docs
+
+    // Created by schoudhury on Mar 27, 2023 - Delegate concepts
+      {
+        from: "/docs/category/get-started-with-delegates",
+        to: "/docs/category/delegate-concepts",
+      },
+
+      {
+        from: "/docs/platform/Delegates/get-started-with-delegates/delegates-overview",
+        to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
+      },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
-       {
-         from: "/docs/platform/platform-concepts/delegates-overview",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegates-overview",
-       },
+      {
+        from: "/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview",
+        to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
+      },
     
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
-       {
-         from: "/docs/platform/platform-concepts/delegate-installation-overview",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview",
-       },
+      {
+        from: "/docs/platform/Delegates/get-started-with-delegates/delegate-image-types",
+        to: "/docs/platform/Delegates/delegate-concepts/delegate-image-types",
+      },
+
+      {
+        from: "/docs/platform/Delegates/get-started-with-delegates/delegate-registration",
+        to: "/docs/platform/Delegates/delegate-concepts/delegate-registration",
+      },
     
+      {
+        from: "/docs/platform/Delegates/get-started-with-delegates/delegate-requirements-and-limitations",
+        to: "/docs/platform/Delegates/delegate-concepts/delegate-requirements",
+      },
+        
+      {
+        from: "/docs/platform/Delegates/get-started-with-delegates/graceful-delegate-shutdown-process",
+        to: "/docs/platform/Delegates/delegate-concepts/graceful-delegate-shutdown-process",
+      },
+
+      {
+        from: "/docs/platform/platform-concepts/delegate-overview",
+        to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
+      },
+
+    // Created by schoudhury on Mar 27, 2023 - Install delegates
+      {
+        from: "/docs/platform/Delegates/install-delegates/install-a-delegate",
+        to: "/docs/platform/Delegates/install-delegates/overview",
+      },
+    
+      {
+        from: "/docs/category/advanced-installation",
+        to: "/docs/category/install-delegates",
+      },
+
+      {
+        from: "/docs/platform/Delegates/advanced-installation/automate-delegate-installation",
+        to: "/docs/platform/Delegates/install-delegates/automate-delegate-installation",
+      },
+
+      {
+        from: "/docs/platform/Delegates/advanced-installation/docker-delegate-to-ecs-fargate",
+        to: "/docs/platform/Delegates/install-delegates/docker-delegate-to-ecs-fargate",
+      },
+    
+      {
+        from: "/docs/platform/Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries",
+        to: "/docs/platform/Delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries",
+      },
+
+      {
+        from: "/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate",
+        to: "/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate",
+      },
+
+      {
+        from: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
+        to: "/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools",
+      },
+
+      {
+        from: "/docs/platform/Delegates/customize-delegates/enable-root-user-privileges-to-add-custom-binaries",
+        to: "/docs/platform/Delegates/install-delegates/enable-root-user-privileges-to-add-custom-binaries",
+      },
+    
+    // Created by schoudhury on Mar 27, 2023 - Manage delegates
+      {
+        from: "/docs/category/configure-delegates",
+        to: "/docs/category/manage-delegates",
+      },
+
+      {
+        from: "/docs/platform/Delegates/configure-delegates/configure-delegate-proxy-settings",
+        to: "/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings",
+      },
+
+      {
+        from: "/docs/platform/Delegates/configure-delegates/delegate-auto-update",
+        to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
+      },
+
+
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/build-custom-delegate-images-with-third-party-tools",
-         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
+         to: "/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-auto-update",
-         to: "/docs/platform/Delegates/configure-delegates/delegate-auto-update",
+         to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 21, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-how-tos",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegates-overview",
+         to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-image-types",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-image-types",
+         to: "/docs/platform/Delegates/delegate-concepts/delegate-image-types",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-reference/delegate-requirements-and-limitations",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-requirements-and-limitations",
+         to: "/docs/platform/Delegates/delegate-concepts/delegate-requirements",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/enable-root-user-privileges-to-add-custom-binaries",
-         to: "/docs/platform/Delegates/customize-delegates/enable-root-user-privileges-to-add-custom-binaries",
+         to: "/docs/platform/Delegates/install-delegates/enable-root-user-privileges-to-add-custom-binaries",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/install-delegates-with-third-party-tools",
-         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
+         to: "/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
     
@@ -100,57 +187,57 @@ module.exports = {
     // Created by kat-enos for PR-738 on Feb 21, 2023
        {
           from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes",
-          to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
+          to: "/docs/platform/Delegates/install-delegates/overview",
         },
     
 
     // Created by kat-enos for PR-738 on Feb 21, 2023
     {
       from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm",
-      to: "/docs/platform/Delegates/install-delegates/install-a-delegate",
+      to: "/docs/platform/Delegates/install-delegates/overview",
     },
     
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/automate-delegate-installation",
-         to: "/docs/platform/Delegates/advanced-installation/automate-delegate-installation",
+         to: "/docs/platform/Delegates/install-delegates/automate-delegate-installation",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
-         from: "/docs/platform/Delegates/delegate-guide/install-a-delegate-with-3-rd-party-tool-custom-binaries",
-         to: "/docs/platform/Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries",
+         from: "/docs/platform/Delegates/delegate-guide/install-delegate-with-3-rd-party-tool-custom-binaries",
+         to: "/docs/platform/Delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/non-root-delegate-installation",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview",
+         to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/custom-delegate",
-         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
+         to: "/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools",
        },   
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/configure-delegate-proxy-settings",
-         to: "/docs/platform/Delegates/configure-delegates/configure-delegate-proxy-settings",
+         to: "/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/run-scripts-on-delegates",
-         to: "/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools",
+         to: "/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-registration",
-         to: "/docs/platform/Delegates/get-started-with-delegates/delegate-registration",
+         to: "/docs/platform/Delegates/delegate-concepts/delegate-registration",
        },
     
      // Created by kat-enos for PR-2421 on Jan 13, 2023
@@ -196,6 +283,12 @@ module.exports = {
       to: "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
      },
 
+     // Created by KimberlyFields on March 29, 2023
+    {
+      from: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+      to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
+     },
+
     //  Created by aimurphy for PR-783 on Feb 23, 2023
     {
       from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure",
@@ -223,7 +316,19 @@ module.exports = {
     //  Created by aimurphy for DOC-2484 on Mar 7, 2023
     {
       from: "/tutorials/build-code/ci-github-action-step",
-      to: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
+      to: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
+    },
+
+    //  Created by aimurphy for CI-6241 on Mar 22, 2023
+    {
+      from: "/docs/category/onboard-with-ci",
+      to: "/docs/category/get-started-with-ci",
+    },
+
+    //  Created by aimurphy for CI-6241 on Mar 24, 2023
+    {
+      from: "/docs/category/migrating-to-harness-ci",
+      to: "/docs/category/migrate-to-harness-ci",
     },
   ],
 };

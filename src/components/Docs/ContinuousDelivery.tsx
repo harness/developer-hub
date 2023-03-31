@@ -20,12 +20,16 @@ export default function CD() {
           <div className={styles.btnContainer}>
             <Link href="/tutorials/deploy-services">
               <button className={styles.btn}>
-                <i className="fa-regular fa-file"></i> Tutorials
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_tutorials.svg`} />
+                Tutorials
               </button>
             </Link>
             <Link href="/release-notes/continuous-delivery">
               <button className={styles.btn}>
-                <i className="fa-regular fa-file"></i> Release Notes
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
+                Release Notes
               </button>
             </Link>
           </div>

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 30
+sidebar_position: 80
 description: Use a CI pipeline to build and push a multi-arch application container image.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Rust]
 ---

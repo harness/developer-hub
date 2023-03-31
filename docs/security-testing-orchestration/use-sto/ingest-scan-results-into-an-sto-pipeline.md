@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can run scans in a separate Run step, or outside Harness entirely, and ingest the results into your pipelines. This enables you to create advanced workflows that aren't possible with orchestrated scans. You can run custom scans with advanced settings that address specific security requirements. You can ingest results from multiple scans into the same pipeline, aggregate and deduplicate the data, and view all your results in a single pane of glass.
 
-STO also supports a generic JSON format if you want to to ingest data from tools that do not currently have STO integrations. For more information, go to [Custom Scanners Reference](ingesting-issues-from-other-scanners.md).
+STO also supports a generic JSON format if you want to to ingest data from tools that do not currently have STO integrations. For more information, go to [Ingest Results from Custom or Unsupported Scanners](/docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners).
 
  To ingest scan results from outside a Security step, you set up your pipeline as follows:
 
@@ -73,8 +73,7 @@ For the Trivy scan, we need to specify additional information about the scanned 
 
 The following example is based on the example workflow described in this topic.
 
-trivy-ingestion-only-pipeline-example.yml
-```
+```yaml
   pipeline:  
   projectIdentifier: my-project-id  
   orgIdentifier: my-org-id  
@@ -84,7 +83,7 @@ trivy-ingestion-only-pipeline-example.yml
   properties:  
     ci:  
       codebase:  
-        connectorRef: $GIT_REPO_CONNECTOR  
+        connectorRef: GIT_REPO_CONNECTOR  
         build: <+input>  
   stages:  
     - stage:  
@@ -96,8 +95,8 @@ trivy-ingestion-only-pipeline-example.yml
           infrastructure:  
             type: KubernetesDirect  
             spec:  
-              connectorRef: $K8S_DELEGATE_CONNECTOR  
-              namespace: $K8S_DELEGATE_NAMESPACE  
+              connectorRef: K8S_DELEGATE_CONNECTOR  
+              namespace: K8S_DELEGATE_NAMESPACE  
               automountServiceAccountToken: true  
               nodeSelector: {}  
               os: Linux  
@@ -109,7 +108,7 @@ trivy-ingestion-only-pipeline-example.yml
               name: dind  
               type: Service  
               spec:  
-                connectorRef: $DOCKER_HUB_CONNECTOR  
+                connectorRef: DOCKER_HUB_CONNECTOR  
                 image: docker:dind  
                 privileged: true  
                 entrypoint:  
@@ -121,7 +120,7 @@ trivy-ingestion-only-pipeline-example.yml
                   name: runTrivyScan  
                   identifier: runTrivy  
                   spec:  
-                    connectorRef: $DOCKER_HUB_CONNECTOR  
+                    connectorRef: DOCKER_HUB_CONNECTOR  
                     image: ubuntu:20.04  
                     shell: Sh  
                     command: |-  

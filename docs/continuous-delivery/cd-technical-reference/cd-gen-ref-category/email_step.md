@@ -19,7 +19,7 @@ The Email step has the following features:
 - You can use this step as a [step template](https://developer.harness.io/docs/platform/templates/run-step-template-quickstart/) or as part of a [stage template](https://developer.harness.io/docs/platform/Templates/add-a-stage-template). 
 - You can manage this step's configuration via [Harness Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
 
-## Product Video
+## Visual summary
 
 <!-- Video:
 https://harness-1.wistia.com/medias/w5ztte829n-->

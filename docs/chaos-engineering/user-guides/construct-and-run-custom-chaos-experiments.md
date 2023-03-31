@@ -17,8 +17,8 @@ The first step is to add the experiment overview, that includes the experiment n
 
 ![Experiment Overview](./static/construct-and-run-custom-chaos-experiments/experiment-overview.png)
 
-:::note
-Go to [add a chaos infrastructure](https://developer.harness.io/docs/chaos-engineering/user-guides/connect-chaos-infrastructures) to connect to a chaos infrastructure.
+:::info
+Go to [add a chaos infrastructure](./connect-chaos-infrastructures) to connect to a chaos infrastructure.
 :::
 
 ## 2. Construct the experiment

@@ -7,7 +7,7 @@ sidebar_position: 250
 
 ## Security step settings
 
-You can set up Qwiet scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up Qwiet scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -27,18 +27,15 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
   + `product_app_name`
   + `product_target_language`
 * `product_config_name` = `default`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-
-<!-- CONTAINERS ---------------------------------------------------------------------------
+### Fail on Severity
 
 ```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
+<StoSettingFailOnSeverity />
 
-<StoLegacyContainer />
-
-
-<!-- REPOS ---------------------------------------------------------------------------  -->
 
 ### Repository scan settings
 

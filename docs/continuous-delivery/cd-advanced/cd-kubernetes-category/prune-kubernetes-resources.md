@@ -34,7 +34,7 @@ Harness also allows you to identify resources you do not want pruned using the a
 Pruning is supported for the following deployment strategies:
 
 * Rolling Deployments
-* Blue/Green Deployments
+* Blue Green Deployments
 
 See [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
 
@@ -65,11 +65,11 @@ When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Rolling de
 3. If a deployment fails, Harness recreates the pruned resources during its Rollback stage.
 4. During rollback, any new resources that were created in the failed deployment stage that were not in the last successful release are deleted also.
 
-### Blue/Green deployments
+### Blue Green deployments
 
-When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Blue/Green deployments manage pruning as follows:
+When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Blue Green deployments manage pruning as follows:
 
-1. In the first step of a Blue/Green deployment, the new version of the release is deployed to the stage environment (pod set).
+1. In the first step of a Blue Green deployment, the new version of the release is deployed to the stage environment (pod set).
 2. Harness prunes by comparing the new and previous releases in the stage pod set. Harness prunes the resources from the last successful release which are not in the current release.
 
 Let's look at an example.
@@ -124,7 +124,9 @@ When Harness identifies resources from the last successful release which are not
 
 You can deploy a resource using the annotation `harness.io/skipPruning: "true"`, and then if the manifest is removed and another deployment occurs, Harness will see the annotation `harness.io/skipPruning: "true"` on the resource previously deployed and skip pruning it.
 
-As mentioned in **Limitations** above, you cannot add a resource with the annotation outside of a Harness deployment and have Harness skip the pruning of that resource.### See also
+As mentioned in **Limitations** above, you cannot add a resource with the annotation outside of a Harness deployment and have Harness skip the pruning of that resource.
+
+### See also
 
 * [Delete Kubernetes Resources](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md)
 

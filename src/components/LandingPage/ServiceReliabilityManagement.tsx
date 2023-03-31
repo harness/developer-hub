@@ -79,7 +79,8 @@ export default function SRM() {
                   styles.btnLight
                 )}
               >
-                <i className="fa-regular fa-file"></i>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_documentation.svg`} />
                 Documentation
               </button>
             </Link>
@@ -92,7 +93,8 @@ export default function SRM() {
                   styles.btnLight
                 )}
               >
-                <i className="fa-regular fa-file"></i>
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
               </button>
             </Link>
@@ -111,8 +113,7 @@ export default function SRM() {
                 className={clsx("button button--lg", styles.btn, styles.btnSRM)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/service-reliability-management">
                 <button className={styles.link}>Learn more</button>

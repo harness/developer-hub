@@ -28,17 +28,17 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 
 ## Edit the default Flag Variations
 
-:::note
+:::info note
  When you change the default Variation of a Flag, the change is applied to **only** the current Environment you are in and any new Environments you create. To change the Variations in other pre-existing Environments, follow the steps in Option 1: Edit the Variations for a Specific Environment.
 :::
 
 1. Go to the Feature Flag you want to edit the Variations for.
 2. In **Variations**, click the edit icon.
 
-```mdx-code-block
-<img src={edit_vars} alt="The Edit Variations icon." height="500" width="300" />
-``` 
-*Figure 1: The edit Variations icon*
+   ```mdx-code-block
+   <img src={edit_vars} alt="The Edit Variations icon." height="500" width="300" />
+   ``` 
+   *Figure 1: The edit Variations icon*
 
 3. In **Edit Variations**, you can add or delete a Variation and also edit the following:
 * **Name**: The name of the Variation, for example `Enabled`. The identifier is not changed if you change the name.
@@ -46,11 +46,11 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 * **Description**: An optional description for the Variation.
 * **Default rules for the flag**: The rules that are served by default for this Flag, for example, when the Flag is enabled, serve the `Enabled` Variation.
 
-```mdx-code-block
-<img src={edit_var_form} alt="A screenshot of the Edit Variations page." height="500" width="400" />
-``` 
+   ```mdx-code-block
+   <img src={edit_var_form} alt="A screenshot of the Edit Variations page." height="500" width="400" />
+   ``` 
 
-*Figure 2: The Edit Variations form*
+   *Figure 2: The Edit Variations form*
 
 ## Edit the Variations served for your current Environment
 
@@ -61,7 +61,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
 <img src={manage_vars} alt="A screenshot of the Targeting tab of a Flag, which highlights where you can change which Flag Variation is served." height="500" width="400" />
 ``` 
 *Figure 3: Variations when the Flag is enabled and disabled*
-:::note
+:::info note
  For information about Specific Targeting, go to [Targeting Users with Flags](../ff-target-management/targeting-users-with-flags.md)
 :::
 3. Click **Save** to save your changes.
