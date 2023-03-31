@@ -30,13 +30,39 @@
                 font-size: 12px;
                 line-height: 18px;
                 color: #6B6D85;
+                display: flex;
+                align-items: center;
                 & > i {
                     color: #2BB1F2;
                     font-size: 8px;
                     margin-right: 4px;
                 }
-                &:hover {
-                    color: var(--primary-6);
+                // &:hover {
+                //     color: var(--primary-6);
+                // }
+                &.ci > i {
+                    color: var(--mod-ci-200);
+                }
+                &.cd > i {
+                    color: var(--mod-cd-200);
+                }
+                &.ff > i {
+                    color: var(--mod-ff-200);
+                }
+                &.ccm > i {
+                    color: var(--mod-ccm-200);
+                }
+                &.srm > i {
+                    color: var(--mod-srm-200);
+                }
+                &.sto > i {
+                    color: var(--mod-sto-200);
+                }
+                &.ce > i {
+                    color: var(--mod-ce-200);
+                }
+                &.platform > i {
+                    color: var(--primary);
                 }
             }
         }
