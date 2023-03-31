@@ -330,6 +330,13 @@ const CIList: CardItem[] = [
   },
 ];
 
+import TutorialCard from "./TutorialCard";
+import {
+  FeaturedList,
+  // DroneList,
+  CIList,
+} from "./data/continuousIntegrationData";
+
 export default function CI() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
@@ -410,10 +417,12 @@ export default function CI() {
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>
-        {/* <h3>
+        {/*
+        <h3>
           Drone Tutorials
         </h3>
-  <TutorialCard FeatureList={DroneList} /> */}
+        <TutorialCard FeatureList={DroneList} />
+        */}
         <h3 id="all-tutorials">All CI Tutorials</h3>
         <TutorialCard FeatureList={CIList} />
       </div>

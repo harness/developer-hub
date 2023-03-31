@@ -1,7 +1,18 @@
 import React from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import TutorialCard, { CardItem, docType } from "./TutorialCard";
+import TutorialCard from "./TutorialCard";
+import {
+  FeaturedList,
+  CIList,
+  CDList,
+  CCMList,
+  FFList,
+  SRMList,
+  STOList,
+  CEList,
+  PlatformList,
+} from "./data/allTutorialsData";
 import styles from "./styles.module.scss";
 import moduleStyles from "./TutorialCard.module.scss";
 

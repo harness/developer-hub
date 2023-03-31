@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import CertCard, { certType } from "./CertCard";
-import { certifications } from "./data/certification-cards";
+import { certifications } from "./data/certificationsData";
 import styles from "./styles.module.scss";
 
 export const getCertBadges = (url: string) => [
