@@ -19,7 +19,10 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - Harness supports manually adding service or environment [runtime inputs](https://developer.harness.io/docs/platform/references/runtime-inputs/) in the pipeline YAML. (CDS-54249)
 
-  You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML will be reflected on the Harness UI. Here's an example of the YAML:
+  You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML will be reflected on the Harness UI. 
+  
+  Here's an example of the YAML:
+
   ```yaml
   ...
            service:
@@ -43,6 +46,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
                     primary:
                       primaryArtifactRef: <+input>
                       sources: <+input>
+
 - The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports modifying the issue type. (CDS-54027)
 
   When you update a Jira issue using the Jira Update step, you can now modify the Issue Type by selecting the desired issue type. For example, if the issue you are updating is a Story, you can update it to a Task. 
@@ -53,18 +57,18 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   ![](static/add-jira-fields.png)
   
-- You can freeze services and environments at account or organization levels when creating a deployment freeze window. (CDS-54222, CDS-53783)
+- You can now select a service or an environment, or all services or all environments at a project, account, or organization level by adding a rule when creating a deployment freeze window. (CDS-54222, CDS-53783)
 
-  Harness now supports adding service and environment filters when creating a deployment freeze window. You can filter specific services or environments present at an account or organization level by adding a rule. 
+  When creating a deployment freeze window, you can now select the services and environments you want to freeze using the **Add Rule** option under the **Coverage** tab. You can select **All Services** or specific services under a project, account, or organization. Similarly, you can select **All Environments** or specific environments under a project, account, or organization when adding the rule. 
+
+  ![](static/freeze-deployments-src-env.png)
 
   * At the account level freeze window, you can access account level services and environments only.
   * At the organization level freeze window, you can access account and organization level services and environments.
   * At the project level freeze window, you can access account, organization, and project level services and environments.
   
-  ![](static/freeze-deployments-src-env.png)
-
   For more information, go to [freeze deployments](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-freeze/).
-- Harness recommendeds that you use the `kubelogin` auth plugin to authenticate Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
+- Harness recommends that you use the `kubelogin` auth plugin to authenticate Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
   
   The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
 
@@ -107,7 +111,7 @@ This release does not include any early access features.
 - When creating a template with container steps, the template YAML placed the `connectorRef` at an incorrect path resulting in an error when running the pipeline. (CDS-56526)
   
   This issue is fixed. The template YAML now places the `connectorRef` at the correct path, and the pipeline runs successfully.
-- Harness was unable to propogate the output variables of parallel container steps. (CDS-56421)
+- Harness was unable to propagate the output variables of parallel container steps. (CDS-56421)
   
   This issue is fixed now.
 - Pipeline execution failed with a forbidden error when waiting for steady state. (CDS-55096, ZD-40763)
@@ -217,7 +221,7 @@ This release does not include any early access features.
 - The Google Container Registry (GCR) fetch API failed with with a `404` or `400` error. (CDS-54925)
   
   Running a cURL command for the API returned an error due to the presence of an OCI image header. This issue is fixed. The fetch APIs for Docker labels and manifest APIs on GCR now support OCI headers.
-- The **Job/Folder Name** selection field in the Jenkins connector dispalyed an additional drop-down list along with the first drop-down list if the jobs had child jobs associated with them. (CDS-54882, ZD-41097)
+- The **Job/Folder Name** selection field in the Jenkins connector displayed an additional drop-down list along with the first drop-down list if the jobs had child jobs associated with them. (CDS-54882, ZD-41097)
 
   This issues is fixed. Now, when you select a job that has child jobs, the child job options with input fields appear below the parent job. 
 - Trying to save a project-level Git template using a project-level Git connector at an account or organization-level returned the wrong error message: `OrgIdentifier cannot be empty for ORG scope`. (CDS-54668, ZD-40660)
@@ -277,9 +281,9 @@ This release does not include any early access features.
 - YAML validation succeeded even when whitespaces were added in the command flags of a Helm chart. (CDS-53708)
 
   This issue is fixed. Command flags no longer accept empty values.
-- The service information of a stage disappeared when swapping two stages if the stage was propogated from the other stage. (CDS-53331)
+- The service information of a stage disappeared when swapping two stages if the stage was propagated from the other stage. (CDS-53331)
 
-  The service details of stages appear properly now when you swap service propogated stages. 
+  The service details of stages appear properly now when you swap service propagated stages. 
 - Unable to view the Continuous Delivery (CD) module even if the account has an active CD license. (PLG-2047)
 
   This issue is fixed.
