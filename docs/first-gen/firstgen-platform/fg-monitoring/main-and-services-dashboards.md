@@ -23,7 +23,7 @@ Permissions-based filtering of service instances is behind the feature flag `SPG
 
 ### Main Dashboard
 
-The Main Dashboard foregrounds deployment and instance activity.  It includes breakdowns by successful versus failed deployment, by Harness Service, and by other factors.
+The Main Dashboard foregrounds deployment and instance activity. It includes breakdowns by successful versus failed deployment, by Harness Service, and by other factors.
 
 ![](./static/main-and-services-dashboards-00.png)
 
