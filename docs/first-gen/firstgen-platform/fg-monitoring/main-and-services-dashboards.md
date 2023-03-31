@@ -13,8 +13,8 @@ Harness Manager's Main Dashboard and Services Dashboard offer predefined views
 
 :::info
 The following panels show only those service instances for which the user has `Read` permissions:
-* Service Instances panel on the Main Dashboard.
-* Instances panel on the Services dashboard.  
+* Service Instances panel on the Overview screen.
+* Instances panel on the Services screen.  
 
 The required authorization information is obtained from the application permissions assigned to the user through their user group.
 
