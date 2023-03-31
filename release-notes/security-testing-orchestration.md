@@ -69,7 +69,7 @@ This release does not include early access features.
 
 ### Fixed Issues
 
-* The search pull-down widget has been removed from the Security Tests &gt; Overview page. To search and drill down into specific issues, go to the Security Testing Dashboard. (STO-5592)
+* The search pull-down widget has been removed from the Security Tests &gt; Overview page. To search for and drill down into specific issues, go to the Security Testing Dashboard. (STO-5592)
 * Fixed an issue in **Security Tests** &gt; **Overview** where the **Issue distribution over time** graph was empty for some projects. (STO-5318)
 
 
