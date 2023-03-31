@@ -26,6 +26,10 @@ Harness queues deployments to ensure that two Service and Infrastructure Definit
 
 Once the first Stage in the queue is done deploying, the next Stage in the queue can deploy to that Service and Infrastructure Definition combination.
 
+You can also view the number of deployments that are queued and access links to their executions by hovering over the resource constraint step.
+
+![](./static/deployment-resource-constraints-10.png)
+
 ## Disabling Resource Constraints
 
 If you want to allow multiple Pipelines to deploy to the same Infrastructure simultaneously, enable the **Allow simultaneous deployments on the same infrastructure** option in the Stage's **Infrastructure** settings.
