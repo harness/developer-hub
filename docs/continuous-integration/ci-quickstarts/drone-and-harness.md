@@ -2,7 +2,7 @@
 title: Drone and Harness
 description: Harness CI leverages the Drone open-source platform to power the fastest CI builds on the planet.
 
-sidebar_position: 40
+sidebar_position: 50
 helpdocs_topic_id: j4nnt8jhby
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false

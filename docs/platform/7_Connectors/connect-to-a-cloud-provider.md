@@ -48,6 +48,6 @@ For steps on setting up a Microsoft Azure Cloud Connector, see [Add a Microsoft 
 
 ### See also
 
-* [Install a Kubernetes Delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
+* [Install a Kubernetes Delegate](../2_Delegates/install-delegates/overview.md)
 * [Select Delegates with Selectors](../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 

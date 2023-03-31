@@ -52,7 +52,7 @@ It takes time to learn how to create complex CI/CD pipelines. You can start with
 
 To get started with creating pipelines and Helm-based installs in Harness Self-Managed Enterprise Edition, see [Harness Docs](https://docs.harness.io/):
 
-* For Harness CI, see [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
+* For Harness CI, see [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
 * For Harness CD, see [CD Pipeline Basics](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md).
 * For Harness STO, see [Security Testing Orchestration Basics (Public Preview)](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
 

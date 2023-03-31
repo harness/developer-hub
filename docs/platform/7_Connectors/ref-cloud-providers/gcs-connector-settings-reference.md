@@ -105,8 +105,8 @@ To obtain the Google Cloud's service account key file, go to the Google document
 
 If connecting through a Harness delegate, select either:
 
-* **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](../../2_Delegates/get-started-with-delegates/delegates-overview.md).
-* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](../../2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+* **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](../../2_Delegates/delegate-concepts/delegate-overview.md).
+* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](../../2_Delegates/delegate-concepts/delegate-overview.md).
 
 </details>
 

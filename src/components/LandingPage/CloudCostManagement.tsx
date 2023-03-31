@@ -112,8 +112,7 @@ export default function CCM() {
                 className={clsx("button button--lg", styles.btn, styles.btnCCM)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/cloud-cost">
                 <button className={styles.link}>Learn more</button>

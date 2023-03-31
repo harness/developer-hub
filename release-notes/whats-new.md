@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-24T10:00
+date: 2023-03-29T10:00
 sidebar_position: 1
 ---
 
@@ -71,21 +71,26 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - Harness supports filtering Docker artifact tags based on regex. (CDS-53644)
   
-  You can now filter Docker artifact tags based on regex when using runtime inputs during pipeline execution. 
+## March 21, 2023, version 78903
 
-  ![](static/tag-regex.png)
+### Cloud Cost Management
 
-- You can now provide an already created task definition ARN during ECS service configuration in Harness. (CDS-50112)
+Enabled audit trail for budget groups. (CCM-11387)
+
+  With this enhancement, you can track all CRUD operations such as Create, Delete, and Update related to budget groups.
+
+* Display the AWS account ID and name on the **Recommendations** page. (CCM-11666)
+
+  The AWS Account ID has been added to the ECS Services on the Recommendations list page.
+
+* Cost category enhancement (CCM-10580)
+
+  Introduced support to allocate the cost of shared cost buckets by a fixed percentage among each cost bucket. A new user interface has been developed. 
   
-  The task definition ARN points to an existing task created and available in the AWS cluster with the required definition. The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
-  
-  During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
+    ![](./static/cost-category-builder-2.png)
 
-  Go to [ECS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
-
-- You can now view the ServiceNow Active Directory Federation Services (ADFS) and Jira Personal Access Token (PAT) in the **Credentials** section of the **Connectors** page. (CDS-55670)
   
-  ![](static/connector-credentials.png)
+  For more information, go to [Use Cost Categories](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-categories/use-ccm-cost-categories).
 
 ## March 15, 2023, version 78712
 

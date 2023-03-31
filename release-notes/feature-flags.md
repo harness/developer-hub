@@ -13,6 +13,30 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## March 30, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags server
+
+The **FF server** has been updated to version **1.979.0**, with the following update.
+
+* Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets#how-targets-expire).
+
+#### Feature Flags SDKs
+
+The Java server SDK has been updated to version **1.2.2**, with the following updates.
+
+* Minor internal changes were made to make it easier for developers to use classes that were previously marked private.
+
 ## March 28, 2023
 
 ### What's new
@@ -94,7 +118,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-#### Feature Flags Server
+#### Feature Flags server
 
 The **FF server** has been upated to version **1.968.0** and includes the following updates:
 

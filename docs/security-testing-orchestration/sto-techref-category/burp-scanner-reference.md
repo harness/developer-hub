@@ -25,7 +25,9 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `burp-default` (CLI interface uses a Cybric extension)
 		- `burp-fast-and-max-depth-of-1` (Form fill disabled and max\_link\_depth=1)
 		- `burp-fast-mode` (Turns off automatic form fill)
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
