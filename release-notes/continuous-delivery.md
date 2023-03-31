@@ -57,9 +57,9 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   ![](static/add-jira-fields.png)
   
-- You can now select a service or an environment, or all services or all environments at a project, account, or organization level by adding a rule when creating a deployment freeze window. (CDS-54222, CDS-53783)
+- You can now select specific services and environments at an account or organization level by adding a rule when creating a deployment freeze window. (CDS-54222, CDS-53783)
 
-  When creating a deployment freeze window, you can now select the services and environments you want to freeze using the **Add Rule** option under the **Coverage** tab. You can select **All Services** or specific services under a project, account, or organization. Similarly, you can select **All Environments** or specific environments under a project, account, or organization when adding the rule. 
+  When creating a deployment freeze window, you can now select specific services and environments at an account or organization level using the **Add Rule** option in the **Coverage** tab. 
 
   ![](static/freeze-deployments-src-env.png)
 
