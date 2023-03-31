@@ -18,7 +18,7 @@ The diagram below gives a peek into the HCE architecture.
 
 ## Harness control plane
 
-**Harness control plane** is the single source to collaboratively create, schedule, and monitor chaos experiments. It comes with a set of chaos faults that are defined in a sequence, which helps achieve the desired chaos impact on the target resources. You can sign in to the Harness platform and leverage the interactive chaos access to define your chaos experiments and target the infrastructure. You can also monitor the experiments during their execution.
+**Harness control plane** is the single source to collaboratively create, schedule, and monitor chaos experiments. It comes with a set of chaos faults that are defined in a sequence, which helps achieve the desired chaos impact on the target resources. You can sign in to the Harness platform and leverage the interactive UI dashboard to enable chaos in your infrastructure, define your chaos experiments and target the infrastructure. You can also monitor the experiments during their execution.
 
 ### Control plane components
 
@@ -37,13 +37,9 @@ All the chaos infrastructure services adhere to the principle of least privilege
 
 Enterprise chaos hub comes out of the box with HCE and provides many faults and experiment templates. Enterprise hub is a prebuilt chaos hub, a collection of manifests and charts that represent the existing experiments and faults. You can use faults from multiple categories to create chaos experiments in the Enterprise chaos hub.
 
-#### Authentication server
+#### Chaos manager
 
-The authentication server is a Golang microservice responsible for authorizing and authenticating the requests received from chaos access. It also helps manage users and their projects. It helps in user and project creation, user login, password resets, updating of user information, and managing project-related operations.
-
-#### Backend server
-
-The backend server is a GraphQL-based Golang microservice that serves the requests received from the chaos access either by querying the database for relevant information or fetching information from the execution plane.
+Chaos manager is a GraphQL-based Golang microservice that serves the requests received from the chaos infrastructure either by querying the database for relevant information or fetching information from the execution plane.
 
 #### Database
 
@@ -53,9 +49,9 @@ This is a NoSQL MongoDB database microservice accountable for storing users' inf
 
 **Harness Execution Plane** contains the components responsible for orchestrating the chaos injection into the target resources. These components are installed through the chaos infrastructure. The Kubernetes execution plane consists of chaos delegate infrastructure components like workflow controllers, subscribers, event trackers, etc., and backend execution infrastructure components like ChaosExperiment CR, ChaosEngine CR, etc.
 
-## Chaos access
+## Chaos infrastructure
 
-Chaos access components help facilitate the chaos injection, and enable chaos automation for target resources. Some of the important components of chaos access are listed below.
+Chaos infrastructure components help facilitate the chaos injection, and enable chaos automation for target resources. Some of the important components of chaos infrastructure are listed below.
 
 - **Workflow controller**: The Argo Workflow Controller responsible for the creation of the chaos experiment.
 
