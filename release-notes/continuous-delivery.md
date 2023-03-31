@@ -658,6 +658,8 @@ This release does not include new features.
   <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
   ```
   For more information, go to [Perform a Kubernetes dry run](https://developer.harness.io/docs/continuous-delivery/cd-execution/kubernetes-executions/k8s-dry-run/).
+  
+   <docvideo src="https://www.loom.com/embed/002508e86fde4232bb8de474eb5c65c4" width="100%" height="600" />
 
 ### Fixed issues
 
@@ -1665,6 +1667,9 @@ Environments v2 now support variable expressions you can use to reference the En
 For details on Services and Environments v2, go to Services and Environments Overview.
 
 For details on Environment and Infrastructure Definition expressions, go to Built-in and Custom Harness Variables Reference.
+
+ <docvideo src="https://www.loom.com/embed/a16ac5354fba461abe934e04583c65c5" width="100%" height="600" />
+
 
 ### Fixed issues
 
