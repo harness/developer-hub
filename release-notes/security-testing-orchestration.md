@@ -14,7 +14,35 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## March 23, 2023, version v1.38.3
+## March 30, 2023, version 1.40.2
+
+### New features
+
+* The Snyk integration has been updated. Orchestrated Snyk scans now upload results to the external Snyk portal by default. (STO-5607)
+
+### Early access features
+
+* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations):
+   * After you create a new ticket, **Issue Details** replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
+
+     Before:
+
+     ![](./static/sto-jira-ticket-create-BEFORE.png)
+
+     After:
+
+     ![](./static/sto-jira-ticket-create-AFTER.png)
+
+   **External Tickets** now automatically populates the **Default Project Name** and **Default Project Type** menus based on the selected ticket-provider connector. (STO-5492)
+
+### Fixed Issues
+
+* Fixed an issue with SonarQube scans: if a repository had a .gitignore with a specific pattern, all files were ignored during the scan. (STO-5711)
+* Fixed an issue with Snyk scans to ensure that **Issue Details** shows all remediation information from the scan results under Remediation. (STO-5663)
+* Fixed an issue where, if a scan detected no issues and a later scan detected one or more issues, **Issue Details** would include remediation information from the later scan. (STO-5463)
+
+
+## March 23, 2023, version 1.38.3
 
 ### New features
 
@@ -27,9 +55,7 @@ This release does not include early access features.
 ### Fixed Issues
 
 * Fixed an issue that caused OWASP scans of Go apps to fail with the message `[ERROR] Unexpected exception occurred initializing Golang Mod Analyzer`. (STO-5602)
-* Fixed a UI issue in the Issue Details panel that caused some redundant fields such as `CWE` to appear. (CI-5365)
-
-
+* Fixed a UI issue in **Issue Details** that caused some redundant fields such as `CWE` to appear. (CI-5365)
 
 ## March 20, 2023
 
@@ -43,8 +69,8 @@ This release does not include early access features.
 
 ### Fixed Issues
 
-* The search pull-down widget has been removed from the Security Tests > Overview page. To search and drill down into specific issues, go to the Security Testing Dashboard. (STO-5592)
-* Fixed an issue in the the Security Tests > Overview page where the **Issue distribution over time** graph on was empty for some projects. (STO-5318)
+* The search pull-down widget has been removed from the Security Tests &gt; Overview page. To search and drill down into specific issues, go to the Security Testing Dashboard. (STO-5592)
+* Fixed an issue in **Security Tests** &gt; **Overview** where the **Issue distribution over time** graph was empty for some projects. (STO-5318)
 
 
 ## March 14, 2023
@@ -78,15 +104,15 @@ This release does not include fixed issues.
 
 ### New features
 
-* The new [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, the Issue Details pane now shows the ticket status along with the number. (STO-5491)
+This release does not include new features.
 
 ### Early access features
 
-This release does not include early access features.
+* The new [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, **Issue Details** now shows the ticket status along with the number. (STO-5491)
 
 ### Fixed Issues
 
-* Fixed an issue in the Jira integration to ensure that **Create Ticket** now appears **Issue Details**, even if an issue has an Exemption associated with it. (STO-5526)
+* Fixed an issue in the Jira integration to ensure that **Create Ticket** now appears in **Issue Details**, even if an issue has an Exemption associated with it. (STO-5526)
 * Fixed an issue in the Jira integration that allowed users to try to create tickets against targets with no baseline specified, which is not supported and resulted in a 404 response. (STO-5477)
 * Fixed an issue in the Back Duck configuration UI where the in-tool help said that the Image Region setting was required when scanning AWS ECR container images. This field is optional. (STO-5450)
 
@@ -104,7 +130,7 @@ This release does not include early access features.
   Note the following:
 
   - The Security Testing Dashboard requires an Enterprise account.
-  - You must click the **Refresh** button (top right) to apply the filter after you configure it.
+  - You must click **Refresh** (top right) to apply the filter after you configure it.
   - To view details for an issue from the search results, click the pipeline name or ID and choose **View in Harness Platform**. 
 
     ![](./static/sto-dashboard-view-issue-in-harness-platform.png)
@@ -169,7 +195,7 @@ This release does not include new features.
 
 ### New features
 
-* The Issue Details pane now shows the message “No recommendations are available at this time” when the scan tool doesn't return remediation steps for a specific issue. (STO-5380)
+* **Issue Details** now shows the message “No recommendations are available at this time” when the scan tool doesn't return remediation steps for a specific issue. (STO-5380)
 
 ### Fixed issues
 
@@ -185,7 +211,7 @@ This release does not include fixed issues.
 
 * Grype scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To scan all layers in an image, for example, add this setting to the Grype scan step: `tool_args` = `--scope all-layers`. (STO-5400)
 
-* To make the Issue Details pane easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398)	
+* To make **Issue Details** easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398)	
 
 
 ### Fixed issues
