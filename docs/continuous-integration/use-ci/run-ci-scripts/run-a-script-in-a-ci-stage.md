@@ -1,9 +1,8 @@
 ---
-title: Run a Script in a CI Stage
-description: The Build stage Run step can be used to run scripts in your CI stages. The Run step pulls in a Docker image such as the Docker image for Maven. Then you run a script such as mvn package with the tool…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+title: Run a script in a Build stage
+description: You can use a Run step to run scripts in Build stages.
+
+sidebar_position: 10
 helpdocs_topic_id: ota4xj59le
 helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false
@@ -16,7 +15,7 @@ The **Run** step pulls in a Docker image such as the Docker image for Maven. The
 
 This topic describes how to run a simple script in a CI stage.
 
-### Before You Begin
+## Before You Begin
 
 To go through this workflow, you need the following:
 
@@ -28,22 +27,22 @@ To go through this workflow, you need the following:
 * A familiarity with how Pipelines use Codebases:
 	+ [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md)
 
-### Step 1: Create the CI Stage
+## Step 1: Create the CI Stage
 
 In your Harness Pipeline, click **Add Stage** and then click CI.
 
-### Step 2: Add the Codebase
+## Step 2: Add the Codebase
 
 Do one of the following:
 
 * If this is the first CI stage in the Pipeline, in the CI stage settings enable **Clone Codebase**.
 * If you have an existing Pipeline with a CI stage, click **Codebase**. See [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md#edit-codebase-configuration).
 
-### Step 3: Define the Build Farm Infrastructure
+## Step 3: Define the Build Farm Infrastructure
 
 In the CI stage Infrastructure, define the build farm for the codebase. See [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure).
 
-### Step 4: Configure the Run Step
+## Step 4: Configure the Run Step
 
 In the Execution tab, click **Add** **step** and then click **Run**.
 
@@ -57,7 +56,7 @@ In **Commands**, you enter the script you want to run on the container.
 
 See [Run Step Settings](../../ci-technical-reference/run-step-settings.md).
 
-### Step 5: Run the Pipeline
+## Step 5: Run the Pipeline
 
 Now you can run your Pipeline. You simply need to select the codebase.
 
@@ -70,13 +69,10 @@ Now you can run your Pipeline. You simply need to select the codebase.
 
 5. Click **Run Pipeline**.
 
-### Example: View a Test Report
-
-Once the Pipeline is executed in CI, Click **Tests**. The Tests show the test report of the unit test that you configured and ran. 
+After the pipeline runs, you can [view test reports](../view-your-builds/viewing-tests.md) on the **Tests** tab of the [Build details page](../view-your-builds/viewing-builds.md).
 
 ![](./static/run-a-script-in-a-ci-stage-529.png)
 
-### See Also
+## See also
 
-* [View Tests](../view-your-builds/viewing-tests.md)
-
+* [Tutorial: Code coverage with CodeCov in Harness CI](/tutorials/build-code/ci-tutorial-codecov-test)

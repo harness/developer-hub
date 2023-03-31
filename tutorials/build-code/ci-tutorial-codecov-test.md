@@ -108,7 +108,7 @@ echo "Done"
 
 <docimage path={require('./static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png')} />
 
-For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run a script in a CI stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
 
 ```mdx-code-block
   </TabItem>
@@ -275,7 +275,7 @@ Here is a YAML example of a step that calls a `CODECOV_TOKEN` that is stored as 
 
 </details>
 
-For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run a script in a CI stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
 
 ```mdx-code-block
   </TabItem>
