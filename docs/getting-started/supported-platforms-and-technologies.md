@@ -373,7 +373,7 @@ Guidelines:
 
 #### Helm
 
-Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](../platform/7_Connectors/). Helm chart dependencies are supported in Helm Chart Repositories.
+Helm chart dependencies are not supported in Git source repositories. Helm chart dependencies are supported in Helm Chart Repositories.
 
 #### Artifact servers, repos, and artifacts
 
