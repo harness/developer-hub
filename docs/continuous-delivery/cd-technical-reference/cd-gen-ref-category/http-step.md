@@ -80,7 +80,9 @@ Create output variables to be used by other steps in the stage. The **Value** se
 
 You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
-You can use pipeline variables along with httpResponseBody and httpResponseCode. Some examples are listed below: 
+You can use pipeline variables along with `httpResponseBody` and `httpResponseCode`. 
+
+Here are some examples:
 `<+json.object(httpResponseBody).title>`
 
 `<+json.select(<+pipeline.variables.title>, httpResponseBody)>`
