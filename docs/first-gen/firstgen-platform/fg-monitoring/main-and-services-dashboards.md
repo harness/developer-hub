@@ -10,6 +10,17 @@ helpdocs_is_published: true
 
 Harness Manager's Main Dashboard and Services Dashboard offer predefined views of your principal deployment data.
 
+
+:::info
+The following panels show only those service instances for which the user has `Read` permissions:
+* Service Instances panel on the Overview screen.
+* Instances panel on the Services screen.  
+
+The required authorization information is obtained from the application permissions assigned to the user through their user group.
+
+Permissions-based filtering of service instances is behind the feature flag `SPG_SERVICES_OVERVIEW_RBAC`. To enable the feature flag, contact Harness Support.
+:::
+
 ### Main Dashboard
 
 The Main Dashboard foregrounds deployment and instance activity. It includes breakdowns by successful versus failed deployment, by Harness Service, and by other factors.
