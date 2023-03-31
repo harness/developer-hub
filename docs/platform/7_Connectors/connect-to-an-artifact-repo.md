@@ -105,12 +105,18 @@ Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart
 4. In **Name**, enter a name for this connector.
 5. Click **Continue**.
 6. Enter the **Helm Repository URL**.  
-You don't need to include the `oci://` scheme in **Helm Repository URL**. Harness will preface the domain name you enter with `oci://`.
+   :::info
+   The following URL types are supported for the OCI Helm connector.
+	* URL without the `oci://` prefix. For example, `public.ecr.aws`.
+	* URL with the `oci://` prefix. For example, `oci://public.ecr.aws`.
+	* URL with port number. For example, `public.ecr.aws:443`.
+	* URL with the `oci://` prefix and port number. For example, `oci://public.ecr.aws:443`. 
+   :::
 7. In **Authentication**, in **Username and Password**, enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
 8. Click **Continue**.
 9. In **Delegates Setup**, use any Delegate or enter [Tags](../2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
-10. Click **Save and Continue**.
-11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
+10.  Click **Save and Continue**.
+11.  Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
 #### OCI Registry Notes
 
