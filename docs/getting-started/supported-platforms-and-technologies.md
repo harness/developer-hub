@@ -363,7 +363,7 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.23.0
 - 1.24.3
 
-For details on other tools and version included in Harness, see [SDKs installed with the Delegate](#sd_ks_installed_with_the_delegate).
+For details on other tools and versions included in Harness, see [Delegate-required SDKs](../platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
 Guidelines:
 
@@ -373,7 +373,7 @@ Guidelines:
 
 #### Helm
 
-Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](/docs/category/code-repo-connectors)). Helm chart dependencies are supported in Helm Chart Repositories.
+Helm chart dependencies are not supported in Git source repositories (Harness [Code Repo Connectors](../platform/7_Connectors/). Helm chart dependencies are supported in Helm Chart Repositories.
 
 #### Artifact servers, repos, and artifacts
 
@@ -780,7 +780,22 @@ The following table lists the major support features for Harness Self-Managed En
 
 | Solution                                                          | Supported Platform           | Connected\* | HA Supported\*\* | Monitoring          | Disaster Recovery | Auto Restart | Features Under Controlled Release |
 | ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | ------------ | --------------------------------- |
-| [Kubernetes Cluster](/docs/category/kubernetes)                   | Kubernetes - GKE - AKS - EKS | Yes         | Yes              | Prometheus, Grafana | Supported         | Supported    |                                   |
+| Kubernetes Cluster                   | Kubernetes - GKE - AKS - EKS | Yes         | Yes              | Prometheus, Grafana | Supported         | Supported    |                                   |
+
+### Supported Kubernetes versions for Harness Self-Managed Enterprise Edition
+
+* Self-Managed Enterprise Edition supports Kubernetes v.1.23. Self-Managed Enterprise Edition additionally supports Kubernetes versions 1.22, 1.21, and 1.20.
+* Effective October 7, 2022, with the release of version 76918, Self-Managed Enterprise Edition no longer supports Kubernetes open-source versions 1.18 and earlier.
+* Self-Managed Enterprise Edition supports the other versions of Kubernetes you use on a best-effort basis.
+* Harness commits to support new minor versions of Kubernetes within three months of the first stable release. For example, if the stable release of 1.24.0 occurs on August 31, Harness extends compatibility by November 30.
+
+### Terms of support for Harness Self-Managed Enterprise Edition
+
+Harness Self-Managed Enterprise Edition does not introduce changes that break compatibility with supported versions of Kubernetes. For example, Self-Managed Enterprise Edition does not use features from Kubernetes version n that do not work in Kubernetes version n-2.
+
+Installation and upgrade preflight checks provide warnings when you use Kubernetes versions that are not supported.
+
+In cases where you encounter a problem that is related to an incompatibility issue, you must upgrade your cluster. Harness will not issue a patch to accommodate the use of unsupported Kubernetes versions.
 
 ## SDKs installed with the Delegate
 

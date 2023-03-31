@@ -1,6 +1,6 @@
 ---
-title: Monitoring on-premise installations
-description: Monitor your Harness On-Prem installation.
+title: Options for monitoring
+description: Monitor CPU, memory, disk usage, and other metrics.
 # sidebar_position: 2
 helpdocs_topic_id: ho0c1at9nv
 helpdocs_category_id: 75ydek1suj
@@ -10,13 +10,11 @@ helpdocs_is_published: true
 
 You can monitor your Harness Self-Managed Enterprise Edition installation and receive alerts on metrics such as CPU, memory, and disk usage.
 
-### Monitoring overview
-
 The Harness Self-Managed Enterprise Edition monitoring options available depend on whether you are running Harness Self-Managed Enterprise Edition - Virtual Machine or Harness Self-Managed Enterprise Edition - Kubernetes Cluster.
 
 Harness Self-Managed Enterprise Edition - Virtual Machine comes with built in monitoring using Prometheus, Grafana, and Alertmanager, but Harness Self-Managed Enterprise Edition - Kubernetes Cluster requires that you set up monitoring on your own.
 
-### Monitoring Harness Self-Managed Enterprise Edition - virtual machine
+## Monitoring Harness Self-Managed Enterprise Edition - virtual machine
 
 Monitoring is included in Harness Self-Managed Enterprise Edition - Virtual Machine by default.
 
@@ -53,7 +51,7 @@ prometheus-k8s          NodePort    10.96.2.94    <none>        9090:30900/TCP  
 prometheus-operated     ClusterIP   None          <none>        9090/TCP                     282d  
 prometheus-operator     ClusterIP   None          <none>        8080/TCP                     282d
 ```
-#### Prometheus
+### Prometheus
 
 The Prometheus port number is taken from the `prometheus-k8s` service (in this example, `30900`).
 
@@ -67,7 +65,7 @@ In **Configure graphs**, enter the URL using the public IP address and the Prome
 
 Click **Save**. The graphs appear.
 
-#### Grafana
+### Grafana
 
 The Grafana port is listed by running `kubectl get svc -n monitoring`:
 
@@ -103,7 +101,7 @@ See [Grafana docs](https://grafana.com/docs/) for information on creating dashbo
 
 For information on querying Prometheus, see [Querying Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
-#### Alertmanager
+### Alertmanager
 
 The Alertmanager port is listed by running `kubectl get svc -n monitoring`:
 
@@ -115,7 +113,7 @@ Combine that port number with the public IP address for Harness Self-Managed Ent
 
 See [Alerting Rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) from Prometheus for details on setting up alerts.
 
-### Monitoring Harness Self-Managed Enterprise Edition - Kubernetes cluster
+## Monitoring Harness Self-Managed Enterprise Edition - Kubernetes cluster
 
 Harness does not provide default monitoring for Harness Self-Managed Enterprise Edition.
 
@@ -123,7 +121,7 @@ You can deploy a Prometheus server and Grafana to monitor Harness Self-Managed E
 
 If you have an existing Prometheus setup, in the KOTS admin tool, click **Configure Prometheus Address** and then enter the Prometheus URL endpoint.
 
-### Availability monitoring
+## Availability monitoring
 
 The following table shows the two available URL endpoints. These are microservices with external endpoints; ingress is configured by default.
 

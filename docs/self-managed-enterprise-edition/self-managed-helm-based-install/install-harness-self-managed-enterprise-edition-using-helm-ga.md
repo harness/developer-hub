@@ -1,7 +1,7 @@
 ---
-title: Install Harness Self-Managed Enterprise Edition using Helm
-description: This document explains how to use Helm to install, upgrade or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same in…
-# sidebar_position: 2
+title: Install using Helm
+description: Learn how to use Helm to install Harness Self-Managed Enterprise Edition. 
+# sidebar_position: 20
 helpdocs_topic_id: 6tblwmh830
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 This document explains how to use Helm to install, upgrade or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
 
-Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as “charts.” For more information, see the [Helm documentation](https://helm.sh/docs/).
+Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as “charts.” For more information, go to the [Helm documentation](https://helm.sh/docs/).
 
 ## Download the Harness Helm chart
 
-To download Harness Helm chart for the installation of Self-Managed Enterprise Edition, see <https://github.com/harness/helm-charts>.
+To download Harness Helm chart for the installation of Self-Managed Enterprise Edition, go to [the Harness Helm chart repo on GitHub](https://github.com/harness/helm-charts).
 
 Harness Helm chart is available for demonstration and production environments.
 
@@ -151,45 +151,8 @@ The services that appear depend on the modules that were installed.
 
    If the installation was successful, the Harness **Sign up** page appears.
 
-## Upgrade the Helm chart
-
-Use the following instructions to upgrade the chart to a new release. 
-
-**To upgrade the chart**
-
-1. Use the following command to obtain the release name for the earlier release. 
-
-   ``` 
-   $ helm ls -n <namespace>
-   ```
-
-2. Retrieve the values for the earlier release.  
-   ```
-   $ helm get values my-release > old_values.yaml
-   ```
-
-3. Change the values of the old\_values.yaml file as required.
-
-4. Use the `helm upgrade` command to update the chart. 
-
-   ```
-   $ helm upgrade my-release harness/harness-demo -n <namespace> -f old_values.yaml
-   ```
-
-## Uninstall the Helm chart
-
-To remove the Kubernetes components associated with the chart and delete the release, uninstall the chart.
-
-**To uninstall the chart**
-
-* Uninstall and delete the `my-release` deployment:
-
-  ```  
-  $ helm uninstall my-release -n <namespace>
-  ```
-
 <!-- PR-1000 -->
-## Images for disconnected networks
+## Required images for air-gapped environments
 
 If your cluster is in an air-gapped environment, your deployment requires the following images:
 
@@ -256,9 +219,19 @@ If your cluster is in an air-gapped environment, your deployment requires the fo
 - docker.io/harness/upgrader:latest
 - docker.io/curlimages/curl:latest
 
-## Chart values
+## Helm chart values
 
 For details about the chart values, explanations of the default values, and descriptions of the fields, go to [https://github.com/harness/helm-charts#values](https://github.com/harness/helm-charts#values).
 
 
 <!-- PR-1000 -->
+
+## Next steps
+
+After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md). 
+
+To get started with the modules, review the following topics:
+
+* For Harness Continuous Integration, go to [CI pipeline concepts](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
+* For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md).
+* For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
