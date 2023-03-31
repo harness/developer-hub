@@ -194,8 +194,7 @@ export default function CD() {
                 className={clsx("button button--lg", styles.btn, styles.btnCD)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/continuous-delivery">
                 <button className={styles.link}>Learn more</button>

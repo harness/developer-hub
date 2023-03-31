@@ -104,8 +104,7 @@ export default function FF() {
                 className={clsx("button button--lg", styles.btn, styles.btnFF)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/feature-flags">
                 <button className={styles.link}>Learn more</button>

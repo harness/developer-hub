@@ -309,6 +309,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 	+ `product_api_version`
 	+ `product_project_name`
 	+ `product_project_version`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
 #### Container Image scan settings

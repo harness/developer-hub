@@ -316,6 +316,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 - Accepted value(s) when `policy_type` is set to `orchestratedScan`: 
 	- `appendToProductByToken`
 	- `appendToProductByName`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 		
 :::note
 You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:

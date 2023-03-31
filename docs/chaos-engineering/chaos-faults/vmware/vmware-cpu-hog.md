@@ -12,7 +12,6 @@ VMware CPU hog applies stress on the CPU resources on Linux OS based VMware VM. 
 - VMware CPU hog determines the resilience of an application when stress is applied on the CPU resources of a VMware virtual machine.
 - VMware CPU hog simulates the situation of lack of CPU for processes running on the application, which degrades their performance. 
 - It also helps verify metrics-based horizontal pod autoscaling as well as vertical autoscale, that is, demand based CPU addition. 
-- It helps the scalability of nodes based on growth beyond budgeted pods. 
 - It verifies the autopilot functionality of cloud managed clusters. 
 - It verifies multi-tenant load issues, that is, when the load on one container increases, it should not cause downtime in other containers.
 
@@ -49,7 +48,7 @@ stringData:
       <tr>
         <td> VM_NAME </td>
         <td> Name of the target VM. </td>
-        <td> For example, <code>ubuntu-vm-1</code>.</td>
+        <td> For example, <code>ubuntu-vm-1</code> </td>
       </tr>
     </table>
     <h3>Optional fields</h3>

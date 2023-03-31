@@ -34,6 +34,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- product\_private\_id
 	+ `product_config_name`
 		- Accepted values(s): `default`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
 ```mdx-code-block

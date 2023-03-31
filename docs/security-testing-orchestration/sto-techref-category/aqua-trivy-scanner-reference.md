@@ -203,6 +203,7 @@ STO supports the following `policy_type` settings for Aqua-Trivy:
 * `container_project` — The image owner and project, for example `harness/delegate`
 * `container_tag` — The tag of the image to scan, for example `latest`
 * `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
