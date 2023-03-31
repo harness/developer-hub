@@ -77,7 +77,7 @@ If you selected **SSH** as the connection protocol, you must add the **SSH Ke
 
 ### Username
 
-Your personal GitHub account username.
+Your personal GitHub account username. You can use either plaintext or a [Harness encrypted text secret](../../6_Security/2-add-use-text-secrets.md).
 
 ### Personal Access Token
 
