@@ -118,7 +118,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * The Snyk integration has been updated. Orchestrated Snyk scans now upload results to the external Snyk portal by default. (STO-5607)
 
 * This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations):
-   * After you create a new ticket, the Issue Details pane replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
+   * After you create a new ticket, **Issue Details** replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
 
      Before:
 
@@ -128,7 +128,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
      ![](./static/sto-jira-ticket-create-AFTER.png)
 
-   * The External Tickets page now automatically populates the Default Project Name and Default Project Type menus based on the selected ticket-provider connector. (STO-5492)
+   * The External Tickets page now automatically populates the **Default Project Name** and **Default Project Type** menus based on the selected ticket-provider connector. (STO-5492)
 
 
 ## March 24, 2023, version 78817
