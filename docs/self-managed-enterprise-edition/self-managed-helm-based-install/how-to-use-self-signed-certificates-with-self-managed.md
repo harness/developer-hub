@@ -1,14 +1,16 @@
 ---
-title: How to use self-signed certificates with Self-Managed Enterprise Edition
-description: Self-Managed Enterprise Edition supports authorization by self-signed certificate. This document explains how to modify the delegate truststore to generate self-signed certificates.
-# sidebar_position: 2
+title: Use self-signed certificates with Helm-based installations
+description: Learn how to modify the delegate truststore to generate self-signed certificates.
+# sidebar_position: 50
 helpdocs_topic_id: h0yo0jwuo9
 helpdocs_category_id: 75ydek1suj
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Applies to Helm-based installation
+:::info
+Applies to Helm-based installation only.
+:::
 
 Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This document explains how to modify the delegate truststore for the use of self-signed certificates in the self-managed environment. 
 
@@ -19,7 +21,7 @@ Harness Delegate makes outbound connections to the resources you specify—for e
 * For Golang 1.15 and later, the self-signed certificate must include a Subject Alternative Name (SAN). For more information, see the JFrog [knowledge base](https://jfrog.com/knowledge-base/general-what-should-i-do-if-i-get-an-x509-certificate-relies-on-legacy-common-name-field-error/).
 * For truststores used with Istio, the size of the RSA key must not exceed 2048 bits.
 
-### Create the truststore
+## Create the truststore
 
 1. Generate a self-signed certificate.
 2. Save it to a file named DigiCertGlobalRootCA.pem:
@@ -36,7 +38,7 @@ Harness Delegate makes outbound connections to the resources you specify—for e
 
 Repeat this command for each certificate you want to include in the truststore.
 
-### Create the secret
+## Create the secret
 
 1. Copy the following YAML to your editor.
 
@@ -59,7 +61,7 @@ Repeat this command for each certificate you want to include in the truststore.
 
 2. Add your certificates to the `ca.bundle` field.  
 
-The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the certificate body. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
+  The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the certificate body. Enclose each certificate in `BEGIN CERTIFICATE` and `END CERTIFICATE` comments.
 
 3. Save the file as addcerts.yaml. Apply the manifest to your cluster.
 
@@ -67,7 +69,7 @@ The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the cer
    kubectl apply -f addcerts.yaml
    ```
 
-### Modify the delegate YAML
+## Modify the delegate YAML
 
 1. Open the harness-delegate.yml file in your editor.
 2. In the `template.spec` section, add the following security context:
@@ -125,7 +127,7 @@ The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the cer
 
    ```
 
-**Skip step 8 if your delegates do not run with Istio service mesh**
+  **Skip step 8 if your delegates do not run with Istio service mesh**
 
 8. In the `env` list of environment variables, locate and set the `POLL_FOR_TASKS` value to `true`.
 
@@ -134,7 +136,7 @@ The `XXXXXXXXXXXXXXXXXXXXXXXXXXX` placeholder indicates the position for the cer
      value: "true"
    ```
 
-This value enables polling for tasks.
+  This value enables polling for tasks.
 
 9. Save and apply the modified manifest:
 
