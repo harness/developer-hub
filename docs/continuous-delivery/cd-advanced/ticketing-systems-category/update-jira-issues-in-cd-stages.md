@@ -85,7 +85,7 @@ If the issue is not part of a Jira workflow and does not have transition options
 
 ### Add issue fields
 
-You can select specific fields to update within a Jira issue. For more information, go to [Jira Custom Fields](../../../first-gen/continuous-delivery/model-cd-pipeline/workflows/jira-integration.md#jira-custom-fields).
+You can select specific fields to update within a Jira issue. For more information, go to [Jira Custom Fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
 In **Optional Configuration**, select **+ Fields** to add Jira fields.
 
