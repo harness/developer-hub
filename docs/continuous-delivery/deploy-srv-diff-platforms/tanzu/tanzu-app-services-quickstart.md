@@ -4,7 +4,7 @@ description: This tutorial shows you how to deploy a publicly available applicat
 sidebar_position: 13
 ---
 
-This tutorial shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](../../cd-deployments-category/deployment-concepts.md) in Harness.
+This tutorial shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](../../manage-deployments/deployment-concepts.md) in Harness.
 
 :::note
 Currently, this feature is behind feature flags `NG_SVC_ENV_REDESIGN` and `CDS_TAS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
@@ -367,7 +367,7 @@ The target space is your TAS space. This is where you will deploy your applicati
 
 ## TAS execution strategies
 
-Now you can select the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) for this stage of the pipeline.
+Now you can select the [deployment strategy](../../manage-deployments/deployment-concepts.md) for this stage of the pipeline.
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';

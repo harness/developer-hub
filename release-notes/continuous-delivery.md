@@ -1060,7 +1060,7 @@ This release does not include new features.
 - [RBAC](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness) for environment was not enforced. (CDS-49732, RN-38326)
   
   In stage templates in pipelines, access checks for the environment were skipped. Harness now performs an RBAC check.
-- [Deployment freeze](/docs/continuous-delivery/cd-deployments-category/deployment-freeze) notification was not working for **Does not repeat** in **Recurrence**. (CDS-49667)
+- [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze) notification was not working for **Does not repeat** in **Recurrence**. (CDS-49667)
 
   ![Deployment freeze](static/e804489bad159e4b70346eee0151a0b16f6e9a87f0257c9b1d2faaf6d2924d8c.png)  
 
@@ -1130,7 +1130,7 @@ This release does not include new features.
   The width was set relative to the parent component. This caused the width to compress even further on smaller width sections like the template selection screen. This has been fixed by setting the width to a standard 400px.
 - Template always shows an unsaved changes message even after repeated save attempts. (CDS-48422)
   
-  Now you can save a [stage template](https://developer.harness.io/docs/platform/templates/add-a-stage-template/) with service and environments as runtime inputs and can eventually update them to [multi-services and multi-environments](/docs/continuous-delivery/cd-deployments-category/multiserv-multienv) as well.
+  Now you can save a [stage template](https://developer.harness.io/docs/platform/templates/add-a-stage-template/) with service and environments as runtime inputs and can eventually update them to [multi-services and multi-environments](/docs/continuous-delivery/manage-deployments/multiserv-multienv) as well.
 
   ![stage template](static/ab0ebd2fe7e4f06d25a19ad1e62969c9a7ff6fafcf2ab753e732b155a0b7b6ce.png)  
 
@@ -1167,13 +1167,13 @@ This release does not include new features.
 - [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests): error message needs to be improved when Chart.yaml is given instead of a directory. (CDS-48038)
   
   Error improvement is done around custom manifest Helm chart path using Helm deployment.
-- [Deployment freeze](/docs/continuous-delivery/cd-deployments-category/deployment-freeze): When the freeze window schedule time frame is prior to the current time, the API returns success but the UI is still disabled. (CDS-47760)
+- [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze): When the freeze window schedule time frame is prior to the current time, the API returns success but the UI is still disabled. (CDS-47760)
   
   When users created freeze window schedule time frames that are in the past, the freeze window was marked as expired right after creation, which is correct, but the global freeze (`Freeze disabled on all deployments for this [Account/Organization/Project]`) was getting enabled. Now we throw an exception when the new freeze window created is already expired.
 - The [Deployment Template](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial) **Details** screen goes blank when changing the template version in **Version Label**. (CDS-47641) 
 
   A blank template **Details** screen is shown when the version of a linked template is changed from **stable** to **Always use stable version**. This happens only for pipeline templates. This issue has been fixed. Now you can change the **Version Label** and there is no issue.
-- [multi-services and multi-environments](/docs/continuous-delivery/cd-deployments-category/multiserv-multienv): getting NPE when trying to run a pipeline with propagate services from previous stage (CDS-47626)
+- [multi-services and multi-environments](/docs/continuous-delivery/manage-deployments/multiserv-multienv): getting NPE when trying to run a pipeline with propagate services from previous stage (CDS-47626)
   
   We don't support [propagating a service](/docs/continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services) from previous stage in case of multi-service deployments. Now, the **Propagate from** option only appears in a stage if there are preceding single service stages to propagate from.
 - When adding a connector, the **Details** dialog is unclear. (CDS-47282)

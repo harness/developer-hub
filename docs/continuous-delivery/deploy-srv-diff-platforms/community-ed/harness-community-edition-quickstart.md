@@ -12,7 +12,7 @@ This quickstart shows you how to set up Harness CD Community Edition locally and
 
 Harness CD Community Edition is a lightweight version of Harness that you can download and run on your laptop or any VM with 3GB RAM and 2 CPUs. Harness CD Community Edition is intended to get devs started with Harness quickly without having to sign up for a Harness SaaS account.
 
-For an overview, see [Harness CD Community Edition Overview](../../cd-advanced/cd-kubernetes-category/harness-community-edition-overview.md).
+For an overview, see [Harness CD Community Edition Overview](./harness-community-edition-overview.md).
 
 ## Objectives
 
@@ -37,7 +37,7 @@ You'll learn how to:
   	  - Minikube needs 4GB and 4 CPUs: `minikube start --memory 4g --cpus 4`.
 	+ Kubernetes cluster.
   	+ This is the target cluster for the deployment you will set up in this quickstart. When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes.Don't have a cluster? See [Notes](#notes).
-	+ Review [Harness CD Community Edition Overview](../../cd-advanced/cd-kubernetes-category/harness-community-edition-overview.md) and [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
+	+ Review [Harness CD Community Edition Overview](./harness-community-edition-overview.md) and [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
 
 The Docker Compose installer is described below, but Harness also supports a [Helm installer](https://github.com/harness/harness-cd-community/blob/main/helm/README.md).
 

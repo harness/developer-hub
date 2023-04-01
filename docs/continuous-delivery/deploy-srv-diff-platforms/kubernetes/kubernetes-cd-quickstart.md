@@ -199,7 +199,7 @@ Let's look at the steps:
 
 ## Step 4: Add a Rollout Deployment Step
 
-Now you can select the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) for this stage of the Pipeline.
+Now you can select the [deployment strategy](../../manage-deployments/deployment-concepts.md) for this stage of the Pipeline.
 
 1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
 

@@ -202,7 +202,7 @@ When you're done, Infrastructure will look something like this:
 
 Now that you have the **Service** and **Infrastructure** defined, you can select a deployment strategy and configure its step in your stage **Execution**.
 
-1. Click **Continue** and select a [deployment strategy](../../cd-deployments-category/deployment-concepts.md). 
+1. Click **Continue** and select a [deployment strategy](../../manage-deployments/deployment-concepts.md). 
 
 The steps for the strategy are added automatically.
 

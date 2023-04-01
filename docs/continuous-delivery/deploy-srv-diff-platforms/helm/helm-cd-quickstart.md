@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using Helm charts and a Rolling [deployment strategy](../../cd-deployments-category/deployment-concepts.md) in Harness.
+This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using Helm charts and a Rolling [deployment strategy](../../manage-deployments/deployment-concepts.md) in Harness.
 
 All you'll need is a small target cluster to run the Harness Delegate and receive the deployed image.
 
@@ -172,7 +172,7 @@ Next, we can target your Kubernetes cluster for deployment.
 
 ## Step 4: Add a Rollout Deployment Step
 
-1. We're going to use a Rolling [deployment strategy](../../cd-deployments-category/deployment-concepts.md), so click **Rolling**, and click **Apply**.
+1. We're going to use a Rolling [deployment strategy](../../manage-deployments/deployment-concepts.md), so click **Rolling**, and click **Apply**.
 
 The **Rollout Deployment** step is added to **Execution**.
 

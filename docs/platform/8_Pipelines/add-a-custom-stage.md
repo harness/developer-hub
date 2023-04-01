@@ -82,7 +82,7 @@ For details on the different steps, see:
 * [Using Shell Scripts in CD Stages](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
 * [Approvals](/docs/category/approvals)
-* [Synchronize Deployments using Barriers](../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
+* [Synchronize Deployments using Barriers](../../continuous-delivery/manage-deployments/synchronize-deployments-using-barriers.md)
 * [Add a Policy Engine Step to a Pipeline](../14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md)
 * [Terraform How-tos](../../continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
 

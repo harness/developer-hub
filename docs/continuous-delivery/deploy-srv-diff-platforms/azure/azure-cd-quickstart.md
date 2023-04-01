@@ -262,7 +262,7 @@ The target cluster is your own AKS cluster, hosted in your Azure cloud. This is 
 6. In **Cluster**, select the cluster name.
 7. In **Namespace**, enter an existing namespace, such as **default**.
 
-Now that the Stage's Infrastructure is complete, you can select the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) for this stage of the Pipeline.
+Now that the Stage's Infrastructure is complete, you can select the [deployment strategy](../../manage-deployments/deployment-concepts.md) for this stage of the Pipeline.
 
 ## Step 5: Add a Rollout Deployment Step
 

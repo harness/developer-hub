@@ -23,7 +23,7 @@ You can also use Harness input sets and overlays to select from different collec
 ## Important notes
 
 * Service propagation is not supported when using multiple services in a single stage (multi service deployments).
-  * For details on using multiple services, go to [Use multiple services and multiple environments in a deployment](../cd-services-general/../../cd-deployments-category/multiserv-multienv.md).
+  * For details on using multiple services, go to [Use multiple services and multiple environments in a deployment](../../manage-deployments/multiserv-multienv.md).
 * Service propagation is progressive: you can only propagate services from stage to stage in a forward direction in your pipeline. For example, Stage 2 cannot propagate a service from a subsequent Stage 3.
 * In a pipeline's **Advanced Options**, in **Stage Execution Settings**, you can set up selective stage executions. This allows you to select which stages to deploy at runtime.
   * If you select a stage that uses a propagated service (a child service), that stage will not work.
@@ -74,7 +74,7 @@ A multiple service deployment is when you deploy multiple services in the same s
 
 If you select multiple services in a stage, you cannot propagate them to subsequent stages.
 
-For information on multiple service deployments, go to [Use multiple services and multiple environments in a deployment](../../cd-deployments-category/multiserv-multienv.md).
+For information on multiple service deployments, go to [Use multiple services and multiple environments in a deployment](../../manage-deployments/multiserv-multienv.md).
 
 ## Override service settings
 

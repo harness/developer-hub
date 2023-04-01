@@ -564,7 +564,7 @@ flowControl:
 ```
 See also:
 
-* [Synchronize Deployments using Barriers](../../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
+* [Synchronize Deployments using Barriers](../../../continuous-delivery/manage-deployments/synchronize-deployments-using-barriers.md)
 
 ### Notification Rules
 

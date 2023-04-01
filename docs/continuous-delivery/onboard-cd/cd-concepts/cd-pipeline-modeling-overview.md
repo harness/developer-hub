@@ -97,7 +97,7 @@ Harness CV integrates with your APMs and logging tools to:
 
 ![](./static/cd-pipeline-modeling-overview-08.png)
 
-For more details, see [Verify Deployments with the Verify Step](../../cd-execution/cv-category/verify-deployments-with-the-verify-step.md).
+For more details, see [Verify Deployments with the Verify Step](../../verify/verify-deployments-with-the-verify-step.md).
 
 ### Summary
 
@@ -108,5 +108,5 @@ For more details and example, go to:
 * [CD tutorials](/docs/category/cd-tutorials)
 * [CD overview and key concepts](../../get-started/cd-pipeline-basics.md)
 * [Service-based licensing and usage for CD](service-licensing-for-cd.md)
-* [Deployment concepts and strategies](../../cd-deployments-category/deployment-concepts.md)
+* [Deployment concepts and strategies](../../manage-deployments/deployment-concepts.md)
 

@@ -14,7 +14,7 @@ Individual steps and steps in step groups can be run serially or in parallel.
 
 Unlike individual steps, a step group can apply Conditional Execution (skip conditions), Failure Strategy, and Rollback steps to all steps in the group.
 
-You can also run Pipeline **stages** in parallel. Deploy multiple services simultaneously and perform flow control using Barriers. See [Synchronize Deployments using Barriers](../../cd-deployments-category/synchronize-deployments-using-barriers.md).This topic describes how to add a Step Group in a stage.
+You can also run Pipeline **stages** in parallel. Deploy multiple services simultaneously and perform flow control using Barriers. See [Synchronize Deployments using Barriers](../../manage-deployments/synchronize-deployments-using-barriers.md).This topic describes how to add a Step Group in a stage.
 
 ## Before You Begin
 
@@ -39,7 +39,7 @@ https://www.youtube.com/watch?v=J5eHYSbE8cg-->
 Running steps in parallel can be beneficial in many ways, such as:
 
 * Simulating load using multiple [HTTP steps](../../cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md).
-* Running multiple [Verify steps](../../cd-execution/cv-category/verify-deployments-with-the-verify-step.md) for different providers (AppDynamics, Splunk, Prometheus, etc).
+* Running multiple [Verify steps](../../verify/verify-deployments-with-the-verify-step.md) for different providers (AppDynamics, Splunk, Prometheus, etc).
 * Running independent steps that don't need to be run serially.
 * Running multiple Kubernetes [Apply](../cd-k8s-ref/kubernetes-apply-step.md) steps to deploy multiple Kubernetes resources at once.
 * [Deleting](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md) multiple resources at once.

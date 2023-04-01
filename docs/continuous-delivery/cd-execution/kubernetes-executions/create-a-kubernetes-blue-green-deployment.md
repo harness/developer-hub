@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic will walk you through creating a Blue Green deployment in Harness for a Kubernetes Deployment workload.
 
-For information on Blue/Green deployments, see [Deployment Concepts and Strategies](../../cd-deployments-category/deployment-concepts.md).
+For information on Blue/Green deployments, see [Deployment Concepts and Strategies](../../manage-deployments/deployment-concepts.md).
 
 Harness Canary and Blue/Green strategies only support Kubernetes Deployment workloads. The Rolling strategy supports all other workloads, except Jobs. The [Apply Step](deploy-manifests-using-apply-step.md) can deploy any workloads or objects.
 

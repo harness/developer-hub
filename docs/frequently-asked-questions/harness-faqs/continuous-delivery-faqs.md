@@ -129,7 +129,7 @@ Harness does not count an instance/pod if it no longer exists. For example, if t
 
 Harness supports all deployment strategies, such as blue/green, rolling, and canary.
 
-See [Deployment concepts and strategies](../../continuous-delivery/cd-deployments-category/deployment-concepts.md).
+See [Deployment concepts and strategies](../../continuous-delivery/manage-deployments/deployment-concepts.md).
 
 #### How do I filter deployments on the Deployments page?
 

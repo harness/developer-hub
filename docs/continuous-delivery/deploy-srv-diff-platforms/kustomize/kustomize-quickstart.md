@@ -214,7 +214,7 @@ Let's look at the steps:
 
 ## Step 4: Add a Rollout Deployment Step
 
-When you click **Next** the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) options are provided:
+When you click **Next** the [deployment strategy](../../manage-deployments/deployment-concepts.md) options are provided:
 
 ![](static/kustomize-quickstart-77.png)
 

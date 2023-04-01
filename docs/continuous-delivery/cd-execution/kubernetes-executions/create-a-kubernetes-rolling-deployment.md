@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to perform a Kubernetes rolling update deployment in Harness.
 
-A [rolling update strategy](../../cd-deployments-category/deployment-concepts.md) updates Kubernetes deployments with zero downtime by incrementally updating pod instances with your new app version. New pods are scheduled on nodes using the available resources.
+A [rolling update strategy](../../manage-deployments/deployment-concepts.md) updates Kubernetes deployments with zero downtime by incrementally updating pod instances with your new app version. New pods are scheduled on nodes using the available resources.
 
 This method is similar to a standard Canary strategy, but different from the Harness Kubernetes Canary strategy. The Harness Kubernetes Canary strategy uses a canary phase followed by a rolling update as its final phase. See [Create a Kubernetes Canary Deployment](create-a-kubernetes-canary-deployment.md) for more information.
 
