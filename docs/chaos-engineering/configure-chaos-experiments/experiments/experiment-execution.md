@@ -1,5 +1,5 @@
 ---
-title: Flow of control in a chaos experiment
+title: Flow of Control in a Chaos Experiment
 sidebar_position: 3
 ---
 

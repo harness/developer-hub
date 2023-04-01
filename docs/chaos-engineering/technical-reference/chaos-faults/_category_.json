@@ -3,6 +3,10 @@
   "label": "Chaos Faults",
   "collapsible": true,
   "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Chaos Faults"
+   },
   "customProps": {
     "description": "Chaos Faults documentation"
   }

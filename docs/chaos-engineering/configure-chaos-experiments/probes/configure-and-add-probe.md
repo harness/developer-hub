@@ -1,5 +1,5 @@
 ---
-title: Configure and add probe
+title: Configure and Add Probes
 sidebar_position: 2
 ---
 

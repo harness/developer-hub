@@ -1,5 +1,5 @@
 ---
-title: Connect chaos infrastructures
+title: Connect Chaos Infrastructures
 sidebar_position: 1
 ---
 

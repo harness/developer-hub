@@ -1,5 +1,5 @@
 ---
-title: Validate Hypothesis Using Probes
+title: Validate Hypotheses Using Probes
 sidebar_position: 3
 ---
 

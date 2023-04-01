@@ -3,6 +3,10 @@
   "label": "Manage Chaos Experiments ",
   "collapsible": true,
   "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Manage Chaos Experiments"
+   },
   "customProps": {
     "description": "Manage Chaos Experiments"
   }

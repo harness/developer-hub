@@ -3,6 +3,10 @@
   "label": "Chaos Hubs",
   "collapsible": true,
   "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Chaos Hubs"
+   },
   "customProps": {
     "description": "Chaos Hubs documentation"
   }

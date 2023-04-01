@@ -1,5 +1,5 @@
 ---
-title: Edit Chaos Experiment
+title: Edit Chaos Experiments
 sidebar_position: 4
 ---
 
