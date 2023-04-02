@@ -20,8 +20,8 @@ Harness SRM enables teams to:
 
 Key capabilities of Harness SRM are:
 
-* [SLO Management](slo-management-quickstart.md)
-* [Change Impact Analysis](./change-impact-analysis/change-impact-analysis-quickstart.md)
+* [SLO Management](../getting-started/create-first-slo.md)
+* [Change Impact Analysis](../change-impact-analysis/change-impact-analysis.md)
 * [Service Reliability Checks](../../continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step.md)
 * [SLO Driven Governance](../slo-driven-governance/slo-driven-deployment-governance.md)
 
