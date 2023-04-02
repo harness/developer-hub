@@ -1,0 +1,11 @@
+{
+   "label":"SLO Driven Governance",
+   "position": 80,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"SLO Driven Governance"
+   }
+   }

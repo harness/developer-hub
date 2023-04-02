@@ -1,0 +1,11 @@
+{
+   "label":"Service Level Objectives (SLOs)",
+   "position": 30,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Service Level Objectives (SLOs)"
+   }
+   }
