@@ -7,8 +7,8 @@ You can set notifications on Service Reliability Management (SRM) monitored serv
 
 ### Before You Begin
 
-* [SLO Management Quickstart](../../howtos-service-reliability-management/slo-management-quickstart.md)
-* [Service Reliability Management Basics](../../howtos-service-reliability-management/service-reliability-management-basics.md)
+* [Getting started](../getting-started/create-first-slo.md)
+* [Service Reliability Management Basics](../srm-concepts/srm-concepts.md)
 
 ### Limitations
 
@@ -25,7 +25,7 @@ You can create notifications for Monitored Services or SLOs.
 
 First, ensure that you have a Monitored Service or SLO set up. 
 
-See [SLO Management Quickstart](../../howtos-service-reliability-management/slo-management-quickstart.md).
+See [Getting started](../getting-started/create-first-slo.md)
 
 
 <!-- 

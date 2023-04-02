@@ -6,7 +6,7 @@ sidebar_position: 10
 
 You can use Harness Governance to ensure that Harness entities like Pipelines meet specific compliance requirements when specific events happen (On Save, On Run, etc). Harness Governance uses OPA as the central service to store and analyze policies for the different entities and processes across the Harness platform.
 
-[SLO-driven](slo-management-quickstart.md) governance policies ensure that Harness entities like SLOs (service level objectives) and Error Budgets meet specific compliance requirements when specific events happen (On Save, On Run, etc). These policies prevent Pipelines from deploying if:
+SLO-driven governance policies ensure that Harness entities like SLOs (service level objectives) and Error Budgets meet specific compliance requirements when specific events happen (On Save, On Run, etc). These policies prevent Pipelines from deploying if:
 
 * Configured SLO limit is breached for a given Harness Monitored Service
 * SLO isn't configured for a Monitored Service
@@ -251,7 +251,7 @@ The Policy Set is evaluated and the Pipeline execution fails.
 
 When the Policy Set is evaluated, the Pipeline fails as SLO wasn't configured for the Monitored Service.
 
-Now, [create an SLO](slo-management-quickstart.md#step-5-create-an-slo) for the Monitored Service.
+Now, [create an SLO](../getting-started/create-first-slo.md) for the Monitored Service.
 
 Once you have set an SLO, click **Run**, and then click **Run Pipeline**.
 

@@ -23,7 +23,7 @@ Key capabilities of Harness SRM are:
 * [SLO Management](slo-management-quickstart.md)
 * [Change Impact Analysis](./change-impact-analysis/change-impact-analysis-quickstart.md)
 * [Service Reliability Checks](../../continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step.md)
-* [SLO Driven Governance](slo-driven-deployment-governance.md)
+* [SLO Driven Governance](../slo-driven-governance/slo-driven-deployment-governance.md)
 
 This topic explains the basic concepts of Service Reliability Management (SRM).
 
@@ -90,9 +90,4 @@ The more often you deploy software, the more you need to validate the health of 
 * Aggregates data from multiple Health Sources into one dashboard
 * Use machine learning to identify normal behavior for your applications
 * Allows Harness to identify and flag anomalies in future deployments, and to perform automatic rollbacks
-
-### See Also
-
-* [SLO Management Quickstart](slo-management-quickstart.md)
-* [Change Impact Analysis Quickstart](./change-impact-analysis/change-impact-analysis-quickstart.md)
 
