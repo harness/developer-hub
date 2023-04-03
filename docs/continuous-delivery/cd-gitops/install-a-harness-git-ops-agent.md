@@ -179,6 +179,11 @@ serviceaccount/example-agent-upgrader created
 Warning: batch/v1beta1 CronJob is deprecated in v1.21+, unavailable in v1.25+; use batch/v1 CronJob  
 cronjob.batch/example-agent-upgrader created
 ```
+:::note
+
+If it happens Harness GitOps Agent is being deployed to cluster with Kubernetes v1.21 or less it is required to replace `apiVersion: apiextensions.k8s.io/v1` with `apiVersion: apiextensions.k8s.io/v1beta1` in deployment yaml file.
+
+:::
 
 Back in Harness, click **Continue**.
 
