@@ -1788,6 +1788,9 @@ For details on Services and Environments v2, go to Services and Environments Ove
 
 For details on Environment and Infrastructure Definition expressions, go to Built-in and Custom Harness Variables Reference.
 
+ <docvideo src="https://www.loom.com/embed/a16ac5354fba461abe934e04583c65c5" width="100%" height="600" />
+
+
 ### Fixed issues
 
 - Improve Azure Web App properties (CDS-44054)
