@@ -1,0 +1,9 @@
+{
+  "position": 6,
+  "label": "GameDay",
+  "collapsible": true,
+  "collapsed": true,
+  "customProps": {
+    "description": "GameDay documentation"
+  }
+}

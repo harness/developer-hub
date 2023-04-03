@@ -715,9 +715,9 @@ The following table lists the Server-side Feature Flag SDKs Harness supports.
 
 ## Harness Chaos Engineering
 
-Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom, Workflow templates.
+Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom workflow templates.
 
-See [Introduction to Chaos Module](../chaos-engineering/overview/introduction-to-chaos-module.md).
+See [Introduction to Chaos Module](../chaos-engineering/get-started/introduction-to-chaos-module).
 
 ## Collaboration
 
