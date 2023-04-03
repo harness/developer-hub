@@ -1,12 +1,12 @@
 {
-    "label":"Install with Helm",
+    "label":"Helm installation",
     "position": 20,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Install with Helm"
+       "title":"Helm installation"
     },
     "customProps":{
        "helpdocs_category_id":"66qbyn7ugu"

@@ -26,11 +26,11 @@ This topic uses the second use case to illustrate how to clone and combine multi
 To go through this workflow, you need the following:
 
 * A familiarity with basic Harness CI concepts:
-	+ [CI Pipeline Tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
+	+ [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
 	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A familiarity with Build Stage settings:
 	+ [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* A familiarity with how Pipelines use Codebases:
+* A familiarity with how Pipelines use codebases:
 	+ [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md)
 
 ### Step 1: Set Up the Build Stage

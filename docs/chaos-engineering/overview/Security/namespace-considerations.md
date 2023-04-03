@@ -182,7 +182,7 @@ subjects:
   namespace: litmus
 ```
 
-:::note
+:::info
 The rolebinding subjects point to the `litmus-admin` service account only (in HCE namespace). 
 :::
 

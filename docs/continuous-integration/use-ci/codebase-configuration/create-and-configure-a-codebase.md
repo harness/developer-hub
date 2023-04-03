@@ -30,8 +30,8 @@ Editing the Codebase for a Pipeline:
 
 ### Before You Begin
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
+* [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
@@ -56,7 +56,7 @@ In this step, you'll create the codebase for a new pipeline in Harness CI.
 
 The CodeCommit, Bitbucket, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git Connector can connect with any provider using Basic authentication over HTTPS.
 
-* [AWS CodeCommit Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
+* [AWS CodeCommit Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md) <!-- This link is wrong, and this list is missing Azure Repos connector. -->
 * [Bitbucket Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
 * [Git Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md)
 * [GitHub Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-hub-connector-settings-reference.md)

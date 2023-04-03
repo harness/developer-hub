@@ -461,7 +461,7 @@
 
 @media screen and (max-width: 1344px) {
     /* for small desktop */
-    .certificationsCD {
+    .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
         .certDesc {
             .certCard {
                 .certCardContainer {
@@ -489,7 +489,7 @@
             }
         }
     }
-    .certificationsCD {
+    .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
         .certDesc {
             .certCard {
                 display: block;
@@ -534,7 +534,7 @@
             }
         }
     }
-    .certificationsCD {
+    .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
         padding-top: 36px;
         .hero {
             flex-direction: column;
@@ -615,7 +615,7 @@
             }
         }
     }
-    .certificationsCD {
+    .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
         .certDesc {
             .certCard {
                 .certCardContainer {

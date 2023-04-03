@@ -3,44 +3,8 @@ import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
-import TutorialCard, { CardItem, docType } from "./TutorialCard";
-
-/* Define the cards here */
-const FeaturedList: CardItem[] = [
-  {
-    title: "Optimizing Kubernetes Cloud Costs 101",
-    module: "ccm",
-    icon: "img/icon_ccm.svg",
-    description: (
-      <>
-        This guide will walk through how start to optimize your Kubernetes Costs
-        on a public cloud provider.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
-  },
-];
-
-const CCMList: CardItem[] = [
-  {
-    title: "Optimizing Kubernetes Cloud Costs 101",
-    module: "ccm",
-    icon: "img/icon_ccm.svg",
-    description: (
-      <>
-        This guide will walk through how start to optimize your Kubernetes Costs
-        on a public cloud provider.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
-  },
-];
+import TutorialCard from "./TutorialCard";
+import { FeaturedList, CCMList } from "./data/cloudCostManagementData";
 
 export default function CCM() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -112,8 +76,7 @@ export default function CCM() {
                 className={clsx("button button--lg", styles.btn, styles.btnCCM)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/cloud-cost">
                 <button className={styles.link}>Learn more</button>
