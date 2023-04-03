@@ -18,7 +18,7 @@ Targets are used to control which users see which variation of a Feature Flag, f
 This topic describes how to add targets to an Environment in the Harness UI. After you’ve added the target, you can add it to a [Target Group](add-target-groups.md) or to a [Feature Flag](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags).
 
 :::info note
- While you can add targets using the Harness UI, you typically add them and define their attributes in your application's code using a Feature Flag SDK. The targets added in your code are discovered automatically and populated in the Harness UI. For an example, go to [Add a target](/docs/feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk#add-a-target) using the Java server SDK.
+ While you can add targets using the Harness UI, this method is not the main one for adding targets. You typically add targets and define their attributes in your application using a Feature Flag SDK. The targets added in your code are discovered automatically and populated in the Harness UI. For an example, go to [Add a target](/docs/feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk#add-a-target) using the Java server SDK.
 :::
 
 ## Add a target
