@@ -2948,7 +2948,7 @@ To use this artifact source, you provide a script to query your artifact server 
 
 The output must be a JSON array, with a mandatory key for a Build Number/Version. You then map a key from your JSON output to the Build Number/Version variable.
 
-For steps on adding a Custom Artifact source, go to [Add a custom artifact source for CD](../cd-services-general/add-a-custom-artifact-source-for-cd.md).
+For steps on adding a Custom Artifact source, go to [Add a custom artifact source for CD](../../x-platform-cd-features/services/add-a-custom-artifact-source-for-cd.mdource-for-cd.md).
 
 </details>
 
@@ -3210,7 +3210,7 @@ You can propagate services between stages and override service settings by using
 
 For more information, go to:
 
-- [Propagating CD services](../cd-services-general/propagate-and-override-cd-services.md)
+- [Propagating CD services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md-cd-services.md)
 - [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
 
 ## Next steps

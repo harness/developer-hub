@@ -374,7 +374,7 @@ In some cases you might want to deploy the standard kustomization.yaml in one st
 
 In **Manifests**, add the overlay kustomization.yaml and any patch files.
 
-See [Propagate and Override CD Services](../../cd-services/cd-services-general/propagate-and-override-cd-services.md).
+See [Propagate and Override CD Services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md).
 
 ## Option: Use Plugins in Deployments
 

@@ -49,7 +49,7 @@ The default CloudFormation provisioning steps appear:
 
 ![](./static/provision-target-deployment-infra-dynamically-with-cloud-formation-01.png)
 
-Harness automatically adds the **Create Stack**, [Harness Approval](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), and **Delete Stack** steps in **Execution**, and the **Rollback Stack** step in **Rollback**. You can change these steps, but **Create Stack** is required to run your CloudFormation template.
+Harness automatically adds the **Create Stack**, [Harness Approval](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.mdteps-in-cd-stages.md), and **Delete Stack** steps in **Execution**, and the **Rollback Stack** step in **Rollback**. You can change these steps, but **Create Stack** is required to run your CloudFormation template.
 
 ## CloudFormation Create Stack step
 
@@ -272,14 +272,14 @@ In **Advanced**, you can use the following options:
 
 ## Approval step
 
-By default, Harness adds an Approval step between the Create Stack and Delete Stack steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) to configure the step.
+By default, Harness adds an Approval step between the Create Stack and Delete Stack steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.mdteps-in-cd-stages.md) to configure the step.
 
 You can also use other Approval step types.
 
 See:
 
-* [Create Jira Issues in CD Stages](../../cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md)
-* [Create ServiceNow Tickets in CD Stages](../../cd-advanced/ticketing-systems-category/create-service-now-tickets-in-cd-stages.md)
+* [Create Jira Issues in CD Stages](../../x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md)
+* [Create ServiceNow Tickets in CD Stages](../../x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages.md)
 
 ## Delete Stack step
 

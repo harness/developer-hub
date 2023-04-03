@@ -365,7 +365,7 @@ spec:
 ```
 See also:
 
-* [Propagate and Override CD Services](../../../continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services.md)
+* [Propagate and Override CD Services](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md)
 
 ### Infrastructure
 

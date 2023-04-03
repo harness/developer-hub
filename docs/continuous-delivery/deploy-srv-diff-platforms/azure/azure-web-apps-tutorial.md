@@ -69,7 +69,7 @@ For details on Web App startup commands, go to [What are the expected values fo
 
 1. Click **Add Startup Command**.
 
-You can use remote Git repos that contain your start command file, or you can click **Harness** to use the [Harness File Store](../../cd-services/cd-services-general/add-inline-manifests-using-file-store.md) to add them to your Harness Project.
+You can use remote Git repos that contain your start command file, or you can click **Harness** to use the [Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) to add them to your Harness Project.
 
 Here's an example of the startup command to start your JAR app for a Java SE stack:
 
@@ -85,7 +85,7 @@ In Harness, you have the option of setting **Application settings** and **Connec
 
 1. Click **Add Application Settings** and **Add Connection Strings** to add your settings.
 
-You can use remote Git repos that contain your settings files, or you can click **Harness** to use the [Harness File Store](../../cd-services/cd-services-general/add-inline-manifests-using-file-store.md) to add them to your Harness Project. For example:
+You can use remote Git repos that contain your settings files, or you can click **Harness** to use the [Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) to add them to your Harness Project. For example:
 
 ![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-157.png)
 

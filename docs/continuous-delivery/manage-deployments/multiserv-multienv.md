@@ -176,7 +176,7 @@ Service propagation is not supported when using multiple services in a single st
 
 When you add subsequent CD stages to a pipeline you cannot propagate the multiple services like you would with one service.
 
-For details on propagating services in stages, go to [Propagate CD services](../cd-services/cd-services-general/propagate-and-override-cd-services.md).
+For details on propagating services in stages, go to [Propagate CD services](../x-platform-cd-features/services/propagate-and-override-cd-services.md).
 
 ## Rollback with multiple Services and Environments
 

@@ -34,7 +34,7 @@ This topic describes how to add values files, how to override them at the Servic
 
 This topic covers adding and overriding the values.yaml files you add to a Harness Service, but you can also propagate and override entire Services.
 
-See [Propagate and Override CD Services](../../cd-services/cd-services-general/propagate-and-override-cd-services.md).
+See [Propagate and Override CD Services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md).
 
 ## Review: Values Files with Kubernetes and Helm Charts
 
@@ -168,5 +168,5 @@ In **Manifest Details** for the values file, in **File Path**, select **Runtime 
 ## See Also
 
 * [Deploy Helm Charts](../cd-helm-category/deploy-helm-charts.md)
-* [Propagate and Override CD Services](../../cd-services/cd-services-general/propagate-and-override-cd-services.md)
+* [Propagate and Override CD Services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md)
 

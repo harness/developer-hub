@@ -163,7 +163,7 @@ Here's an example of the results of a Copy Config command:
 You can run a script on all of the target hosts. This is the same as the [Shell Script](using-shell-scripts.md) step.
 
 1. In **Working Directory**, enter the working directory on the target host(s) from which the Harness Delegate will run the script, such as **/tmp** on Linux and **%TEMP%** on Windows. By default, if **Working Directory** is left empty, the script is executed in the home directory.
-2. In **Select script location**, select [Harness File Store](../../cd-services/cd-services-general/add-inline-manifests-using-file-store.md) or **Inline**.
+2. In **Select script location**, select [Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) or **Inline**.
 3. In **Command**, enter your script. For example, this script echoes artifact information using Harness expressions:
 
 	```

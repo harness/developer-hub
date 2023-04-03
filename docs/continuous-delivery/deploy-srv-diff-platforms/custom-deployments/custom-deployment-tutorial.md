@@ -56,7 +56,7 @@ That's it. Your Pipeline will fetch the target instances as you requested and de
 
 Unlike the deployments for supported platforms, like Kubernetes and AWS, Deployment Templates have certain limitations:
 
-* All artifact providers and [Custom artifact](../../cd-services/cd-services-general/add-a-custom-artifact-source-for-cd.md) are supported:  
+* All artifact providers and [Custom artifact](../../x-platform-cd-features/services/add-a-custom-artifact-source-for-cd.md) are supported:  
 
 
 | **Type** | **Nexus3** | **Artifactory** | **Jenkins** | **Amazon S3** | **Docker Registry** | **AWS ECR** | **GCR** | **ACR** | **Google Artifact Registry** | **Custom** |
@@ -108,7 +108,7 @@ The Deployment Template is composed of two major sections:
   ![](../../onboard-cd/cd-quickstarts/static/dt-Infrastructure.png)
 
   - **Variables:** variables that can be used when the script is run.
-  - **Fetch Instances Script:** script needed to fetch a JSON array of the target instances. The script can be entered here or you can use the [Harness File Store](../../cd-services/cd-services-general/add-inline-manifests-using-file-store.md) to share scripts with others.
+  - **Fetch Instances Script:** script needed to fetch a JSON array of the target instances. The script can be entered here or you can use the [Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) to share scripts with others.
   - **Instance Object Array Path:** the JSON path to the label that lists the array of instances, such as `items`.
   - **Instance Attributes:** the JSON path to the instance name label for the target instances.Mapping the fieldname `instancename` to the JSON Path is mandatory.You can add more instance attributes for additional target instance values you want to use.
 - **Execution:**

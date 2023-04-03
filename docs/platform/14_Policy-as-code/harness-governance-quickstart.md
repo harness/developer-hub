@@ -365,7 +365,7 @@ Add a new line before the `- step:` for the **Shell Script** step.
 
 ![](./static/harness-governance-quickstart-75.png)
 
-On the new line, paste the YAML for a [Manual Approval](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) step:
+On the new line, paste the YAML for a [Manual Approval](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.mdteps-in-cd-stages.md) step:
 
 
 ```

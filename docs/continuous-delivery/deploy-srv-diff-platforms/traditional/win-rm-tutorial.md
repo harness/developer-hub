@@ -21,7 +21,7 @@ The **Execution Strategies** supported for WinRM include **Blank Canvas**, **Bas
 
 Supported security protocols for WinRM include Kerberos and Windows New Technology LAN Manager (NTLM).
 
-[Harness File Store](../../cd-services/cd-services-general/add-inline-manifests-using-file-store.md) should be enabled if you want to upload Config files from the file store.
+[Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) should be enabled if you want to upload Config files from the file store.
 
 ## Before You Begin
 

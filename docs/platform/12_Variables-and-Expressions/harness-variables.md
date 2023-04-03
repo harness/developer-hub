@@ -786,7 +786,7 @@ Resolves to the manifest type. For example, `K8sManifest`.
 ```
 ### <+manifests.[manifest name].store>
 
-Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](../../continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store.md).
+Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](../../continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store.md).
 
 
 ```

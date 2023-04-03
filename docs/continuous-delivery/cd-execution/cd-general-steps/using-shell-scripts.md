@@ -19,7 +19,7 @@ This topic provides a simple demonstration of how to create a script in a Shell 
 
 ## Important notes
 
-See [Shell Script Step Reference](../../cd-technical-reference/cd-gen-ref-category/shell-script-step.md).
+See [Shell Script Step Reference](../../x-platform-cd-features/cd-steps/utilities/shell-script-step.md.
 
 ## Use cases
 
@@ -303,7 +303,7 @@ If you select **Target Host**, enter the following:
 
 ## Advanced settings
 
-See [Shell Script Step Reference](../../cd-technical-reference/cd-gen-ref-category/shell-script-step.md).
+See [Shell Script Step Reference](../../x-platform-cd-features/cd-steps/utilities/shell-script-step.md.
 
 ## Notes
 

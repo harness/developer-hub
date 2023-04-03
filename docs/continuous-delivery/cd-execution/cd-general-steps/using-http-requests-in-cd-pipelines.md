@@ -18,7 +18,7 @@ Other common uses are:
 * Open Policy Agent (OPA) policy agent call.
 * General HTTP testing calls to the deployed application.
 
-This topic describes how to use the HTTP step. For comprehensive details on each setting, see [HTTP Step Reference](../../cd-technical-reference/cd-gen-ref-category/http-step.md).
+This topic describes how to use the HTTP step. For comprehensive details on each setting, see [HTTP Step Reference](../../x-platform-cd-features/cd-steps/utilities/http-step.md.
 
 Looking for the Harness REST API? See [API Quickstart](../../../platform/16_APIs/api-quickstart.md).
 
@@ -151,7 +151,7 @@ The FQN will resolve to the variable value at execution runtime.
 
 You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
-See [JSON and XML Functors](../../cd-technical-reference/cd-gen-ref-category/json-and-xml-functors.md).
+See [JSON and XML Functors](../../x-platform-cd-features/cd-steps/utilities/json-and-xml-functors.md.
 
 ## Simulate load by running steps in parallel
 
