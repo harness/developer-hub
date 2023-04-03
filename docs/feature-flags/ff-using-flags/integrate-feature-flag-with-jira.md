@@ -41,8 +41,6 @@ To get a token from Harness:
 
 1. Fill out the **New Token** form, and then select **Generate Token**.
 
-    ![Generate token](./static/jira-generate-token.png)
-
 1. Copy the value of the token and then select **Close**.
 
     You need this token to provide it in Jira in [Step 2](#step-2-add-the-feature-flags-app-in-jira) below.
