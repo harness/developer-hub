@@ -173,6 +173,44 @@ The process is the same for all methods:
 - Define a target environment.
 - Define the pipeline execution steps. If you use the Harness Manager, Harness automatically adds the steps you need for different [deployment strategies](../manage-deployments/deployment-concepts).
 
+First, let's add the manifest we'll be using to the Harness File Store in your project:
+
+1. In your Harness project, select **Project Setup**, and then select **File Store**.
+2. Select **New**, and then select **New File**.
+3. Name the file **nginx-deployment.yaml**, in **File Usage** select **Manifest**, and the select **Create**.
+4. Paste the following manifest into the new file and select **Save**.
+
+<details>
+<summary>nginx-deployment.yaml</summary>
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:1.14.2
+        ports:
+        - containerPort: 80
+```
+
+</details>
+
+
+Next, choose one of the following methods for building your pipeline.
 
 ```mdx-code-block
 import Tabs1 from '@theme/Tabs';
@@ -181,30 +219,221 @@ import TabItem1 from '@theme/TabItem';
 
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
+
+The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
+
+<details>
+<summary>Create the Harness connector</summary>
+
+We'll create a Harness Kubernetes Cluster connector to connect to your target cluster.
+
+Kubernetes Cluster connector:
+
+```yaml
+connector:
+  name: K8s Cluster
+  identifier: K8s_Cluster
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+      - [delegate tag]
 ```
 
-YAML
+Replace `[delegate tag]` with tag of the delegate you installed in your cluster. For example:
+
+![delete tag](static/095b88b33770e95a1b0dfcba3928c095a406af939bca367ba2fe8029d02fbb55.png)
+
+
+</details>
+
+
+<details>
+<summary>Create the Harness service</summary>
+
+The following service uses the manifest you added to the Harness File Store earier.
+
+```yaml
+service:
+  name: Nginx
+  identifier: Nginx
+  tags: {}
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: nginx
+            type: K8sManifest
+            spec:
+              store:
+                type: Harness
+                spec:
+                  files:
+                    - /nginx-deployment.yaml
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+      artifacts:
+        primary: {}
+    type: Kubernetes
+```
+
+</details>
+
+
+<details>
+<summary>Create the Harness environment and infrastructure definition</summary>
+
+First, create the Harness environment.
+
+```yaml
+environment:
+  name: myenv
+  identifier: myenv
+  tags: {}
+  type: PreProduction
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  variables: []
+```
+Next, create the infrastructure definition for that environment. This infrastructure definition uses the Kubernetes Cluster connector you created earlier and targets the `default` namespace. You can enter a different namespace.
+
+```yaml
+infrastructureDefinition:
+  name: myinfra
+  identifier: myinfra
+  description: ""
+  tags: {}
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  environmentRef: myenv
+  deploymentType: Kubernetes
+  type: KubernetesDirect
+  spec:
+    connectorRef: K8s_Cluster
+    namespace: default
+    releaseName: release-<+INFRA_KEY>
+  allowSimultaneousDeployments: false
+```
+</details>
+
+<details>
+<summary>Create the pipeline</summary>
+
+Now we can put everything together in a pipeline with a CD stage that deploys the Harness service to the infrastructure definition we added.
+
+The pipeline uses a Kubernetes rolling deployment.
+
+```yaml
+pipeline:
+  name: cd
+  identifier: cd
+  projectIdentifier: CD_Docs
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: nginx
+        identifier: nginx
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: Nginx
+          environment:
+            environmentRef: myenv
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: myinfra
+          execution:
+            steps:
+              - step:
+                  name: Rollout Deployment
+                  identifier: rolloutDeployment
+                  type: K8sRollingDeploy
+                  timeout: 10m
+                  spec:
+                    skipDryRun: false
+                    pruningEnabled: false
+            rollbackSteps:
+              - step:
+                  name: Rollback Rollout Deployment
+                  identifier: rollbackRolloutDeployment
+                  type: K8sRollingRollback
+                  timeout: 10m
+                  spec:
+                    pruningEnabled: false
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+```
+
+</details>
+
+
 
 ```mdx-code-block
   </TabItem1>
   <TabItem1 value="API" label="API">
 ```
 
-API
+<details>
+<summary>Create the Harness connector</summary>
+markdown
+</details>
+
+
+<details>
+<summary>Create the Harness service</summary>
+markdown
+</details>
+
+
+<details>
+<summary>Create the Harness environment and infrastructure definition</summary>
+markdown
+</details>
+
+
+<details>
+<summary>Create the pipeline</summary>
+markdown
+</details>
+
 
 ```mdx-code-block
   </TabItem1>
   <TabItem1 value="Terraform Provider" label="Terraform Provider">
 ```
 
-Terraform Provider
+Create the Harness connectors
+
+Create the Harness service
+
+Create the Harness environment and infrastructure definition
+
+Create the pipeline
 
 ```mdx-code-block
   </TabItem1>
   <TabItem1 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-Pipeline Studio
+Create the Harness connectors
+
+Create the Harness service
+
+Create the Harness environment and infrastructure definition
+
+Create the pipeline
 
 ```mdx-code-block
   </TabItem1>
