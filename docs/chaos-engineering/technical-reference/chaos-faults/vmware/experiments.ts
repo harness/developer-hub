@@ -99,4 +99,11 @@ export const experiments: ExperimentDetails[] = [
     tags: [],
     category: "vmware",
   },
+  {
+    name: "VMware disk fill",
+    description:
+      "VMware disk fill fault contains chaos to inject disk fill in a VM at a given filesystem path.",
+    tags: [],
+    category: "vmware",
+  },
 ];
