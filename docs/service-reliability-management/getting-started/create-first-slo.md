@@ -14,28 +14,32 @@ A Service Level Objective (SLO) is a target for the level of service you aim to 
 
 ## Prerequisites
 
-- Ensure that you have installed a Harness Delegate, and it can communicate with Harness, your health source, and change sources. For more information, go to [Get started with delegates](/docs/platform/2_Delegates/install-delegates/overview.md).
-- Create an organization if you have not already created one. For more information, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization.md).
-- Connect Harness to your health source. The health source can be a monitoring and logging system such as Prometheus. This enables Harness to collect health and performance metrics and monitor your SLO. For more information, go to [Connect to Monitoring and Logging Systems](/docs/platform/7_Connectors/connect-to-monitoring-and-logging-systems.md).
+- A Harness Delegate. Ensure that you have installed a Harness Delegate, and it can communicate with Harness, your health source, and change sources. For more information, go to [Get started with delegates](/docs/platform/2_Delegates/install-delegates/overview.md).
+  
+- An Organization in Harness. If you have not already created one, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization.md).
 
+- A project in Harness. If you have not already created one, follow these steps.
 
-## Create a project
-
-A Harness project is a group of Harness modules and resources. For example, a project might have a Harness SRM module to create a SLO.
-
-To create a project, do the following:
+<details>
+<summary><b> Steps to create a project in Harness.</b></summary>
 
 1. In Harness, select **Service Reliability** > **Create Project**.
    
 2. On the **About the Project** page, do the following, and then select **Save and Continue**: 
    - **Name**: Enter a name for the project.
    - **Color**: Select a color theme for the project.
-   - **Organization**: Select an organization for the project. If you don't yet have an organization in Harness, and want to learn how to create one, go to [Create a Harness Org](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization#step-1-create-a-harness-org).
+   - **Organization**: Select an organization for the project. If you don't yet have an organization in Harness, and want to learn how to create one, go to [Create a Harness Org](/docs/platform/organizations-and-projects/create-an-organization.md).
 3. On the **Invite Collaborators (Optional)** page, in the **Invite People to Collaborate** field, add team members to the project.
 4. In the **Role** field, assign a role to the collaborators.
 5. Select **Add**.
 6. Select **Save and Continue**.  
    Your project has been created.
+
+</details>
+
+
+- Health source connector. Ensure that your health source is connected to Harness. The health source can be a monitoring and logging system such as Prometheus. This enables Harness to collect health and performance metrics and monitor your SLO. For more information, go to [Connect to Monitoring and Logging Systems](/docs/platform/7_Connectors/connect-to-monitoring-and-logging-systems.md).
+
 
 
 ## Navigate to the "Create SLO" page
