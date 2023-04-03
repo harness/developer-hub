@@ -8,6 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
+
 :::caution 
 In Version 1.1.3 of the .NET SDK, the package name for installing the SDK changed from **ff-netF48-server-sdk** to **ff-dotnet-server-sdk**. To use this version, make sure you remove the old package name and use the new one. You can do this by using the following commands:  
 **Remove the old package**  
@@ -257,6 +260,8 @@ client.EvaluationChanged += (sender, identifier) =>
 ## Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
+
+<Sixty />
 
 ## Additional options
 

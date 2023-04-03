@@ -8,6 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
+
 This topic describes how to use the Harness Feature Flags Node.js SDK for your Node.js application.
 
 For getting started quickly, you can use our [sample code from the Node.js SDK README](https://github.com/harness/ff-nodejs-server-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Node.js SDK GitHub Repository.](https://github.com/harness/ff-nodejs-server-sdk)
@@ -288,6 +291,8 @@ If you call `off()` without parameters it will close the client.
 ### Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
+
+<Sixty />
 
 ## Close the SDK
 
