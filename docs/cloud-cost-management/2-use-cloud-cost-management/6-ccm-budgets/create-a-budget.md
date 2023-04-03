@@ -8,7 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness CCM Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget.
+Harness CCM Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget. You can create budgets for the entire fiscal year.
+
 
 This topic describes how to create a new budget.
 
@@ -91,10 +92,10 @@ Let's try to understand this using the following examples:
 ### Configure Alerts
 
 1. In **Configure Alerts**, set a threshold for the **Percentage of Budget** based on the **Actual Cost** or **Forecasted Cost**. Harness sends alerts when the Actual Cost or Forecasted Cost exceeds the threshold.  
-Harness will send an alert to the specified email addresses and Harness User Groups when the actual or forecasted cost exceeds a percentage of your monthly budget.
+Harness sends an alert to the specified email addresses and Harness User Groups when the actual or forecasted cost exceeds a percentage of your monthly budget.
 2. In **Send Alert To**, select one of the following options to receive budget notifications.
 	1. **Email**: Enter the email address (you can enter more than one email address or email groups).
-	2. **Slack Webhook URL**: Enter the webhook URL.!
+	2. **Slack Webhook URL**: Enter the webhook URL.
    
      [](./static/create-a-budget-06.png)
 3. Click **Save**. Your budget is listed.
