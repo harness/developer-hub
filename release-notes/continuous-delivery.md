@@ -658,8 +658,6 @@ This release does not include new features.
   <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
   ```
   For more information, go to [Perform a Kubernetes dry run](https://developer.harness.io/docs/continuous-delivery/cd-execution/kubernetes-executions/k8s-dry-run/).
-  
-   <docvideo src="https://www.loom.com/embed/002508e86fde4232bb8de474eb5c65c4" width="100%" height="600" />
 
 ### Fixed issues
 
