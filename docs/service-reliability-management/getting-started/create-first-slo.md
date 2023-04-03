@@ -1,6 +1,6 @@
 ---
 title: Create your first SLO
-description: Learn how to create an SLO.
+description: Learn how to create a SLO.
 sidebar_position: 20
 ---
 
@@ -9,21 +9,21 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-SLO stands for Service Level Objective, which is a target for the level of service that you aim to provide to your users or customers. It is typically defined as a measurable performance metric, such as availability or response time, and is used to set expectations for how your service should perform. SLO is like a target that you set for your service to meet. It's a way to measure how well your service is performing and meeting user expectations. SLOs help in figuring out the acceptable level of downtime for a Service. Each SLO is based on a performance metric called a Service Level Indicator (SLI).
+A Service Level Objective (SLO) is a target for the level of service you aim to provide to your users or customers. It is typically defined as a measurable performance metric, such as availability or response time, and is used to set target expectations for how your service should perform. SLOs help in figuring out the acceptable level of downtime for a service. Each SLO is based on a performance metric called a Service Level Indicator (SLI).
 
 
 ## Prerequisites
 
-- Ensure that you have installed a Harness Delegate, and it can communicate with Harness, your health source, and change sources. To learn more about delegates, go to [Get started with delegates](https://developer.harness.io/docs/category/delegate-concepts).
-- Create an organization if you have not already created one. To learn more about organizations in Harness, go to [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization).
-- Connect Harness to your health source. The health source can be a monitoring and logging system such as AppDynamics. This enables Harness to collect health and performance metrics and monitor your SLO. To learn more about connectors, go to [Connect to Monitoring and Logging Systems](https://developer.harness.io/docs/platform/Connectors/connect-to-monitoring-and-logging-systems).
+- Ensure that you have installed a Harness Delegate, and it can communicate with Harness, your health source, and change sources. For more information, go to [Get started with delegates](/docs/platform/2_Delegates/install-delegates/overview.md).
+- Create an organization if you have not already created one. For more information, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization.md).
+- Connect Harness to your health source. The health source can be a monitoring and logging system such as Prometheus. This enables Harness to collect health and performance metrics and monitor your SLO. For more information, go to [Connect to Monitoring and Logging Systems](/docs/platform/7_Connectors/connect-to-monitoring-and-logging-systems.md).
 
 
 ## Create a project
 
-A Harness project is a group of Harness modules and resources. For example, a project might have a Harness SRM module to create an SLO.
+A Harness project is a group of Harness modules and resources. For example, a project might have a Harness SRM module to create a SLO.
 
-To create a project, perform the following steps:
+To create a project, do the following:
 
 1. In Harness, select **Service Reliability** > **Create Project**.
    
@@ -46,7 +46,12 @@ In your Harness project, navigate to the **Service Reliability** module, and the
    ![Create SLO page](./static/create-slo-page.png)
 
 
-## Add a name for SLO
+## Define SLO Identification
+
+In the section, you add a name for the SLO, create a monitored service, and select a user journey.
+
+
+### Add a name for SLO
 
 To add a name for your SLO:
 
@@ -54,7 +59,7 @@ To add a name for your SLO:
 2. Optionally, you can add a description of the SLO in the **Description (Optional)** field. You can also attach a tag to the SLO. To attach a tag, select the pencil icon next to the **Tags (Optional)** field, type a tag name, and then press enter.
 
 
-## Create a monitored service
+### Create a monitored service
 
 A monitored service helps you track and monitor your workload and deployment target. By collecting metrics from APM and logging tools, a monitored service enables the monitoring of your workload and deployment target. This data is then used to define and measure the SLO.
 
@@ -81,7 +86,7 @@ Harness generates a monitored service name by combining the service and environm
 :::
 
 
-## Select a user journey
+### Select a user journey
 
 1. From the **User Journey** dropdown list, select **+ Add New**.  
     The User Journey dialog appears.
@@ -91,7 +96,11 @@ Harness generates a monitored service name by combining the service and environm
 4. Select **Next** to go to the **Configure Service Level Indicatiors (SLIs)** section.
 
 
-## Add a health source
+## Configure Service Level Indicatiors (SLIs)
+In this section, you add a health source to manage service level, select an SLI type, and configure the evaluation method.
+
+
+### Add a health source to manage service level
 
 Health source is your APM or logging tool that you have connected with Harness. If you have not yet connected your APM or logging tool with Harness, go to [Connect to Monitoring and Logging Systems](https://developer.harness.io/docs/platform/Connectors/connect-to-monitoring-and-logging-systems).
 
@@ -128,10 +137,10 @@ The configuration settings for health source metrics depend on the selected heal
 
 3. Expand **Build your Query** and do the following:
    
-- From the **Prometheus Metric** dropdown list, select a filter for metric.
-- From the **Filter on Environment** dropdown list, select a filter for environment.
-- (Optional) From the **Additional Filter (optional)** dropdown list, select additional filters to add to the service.
-- (Optional) From the **Aggregator (optional)** dropdown list, select an aggregator for the metric.
+   - From the **Prometheus Metric** dropdown list, select a filter for metric.
+   - From the **Filter on Environment** dropdown list, select a filter for environment.
+   - (Optional) From the **Additional Filter (optional)** dropdown list, select additional filters to add to the service.
+   - (Optional) From the **Aggregator (optional)** dropdown list, select an aggregator for the metric.
 
 Once you select the desired values, a query is automatically generated and a sample metric graph is displayed. This helps to verify that the query has been constructed accurately.
 
@@ -147,7 +156,7 @@ Once you select the desired values, a query is automatically generated and a sam
 6.  Select **Next**.
 
 
-## Configure SLIs
+### Select SLI type
 
 SLI is like a ruler or a tool that you use to measure your service's performance. It helps you determine how close or far you are from meeting your SLO so that you can take corrective action if necessary.
 
@@ -157,7 +166,7 @@ The initial step in configuring the SLIs is to select the metric type that will 
 - **Latency**: Measures the amount of time it takes for a service to respond to a request, typically measured as the time between when the request was made and when a response was received.
 
 
-### Select the evaluation method
+### Select evaluation method
 
 Choose the evaluation method for measuring the events. Select one of the following options:
 
@@ -220,9 +229,11 @@ Based on the evaluation method you select, configure the following SLI settings:
  </TabItem>
 </Tabs>
 
-## Set a compliance time period for SLO
+## Set your SLO
 
-To measure an SLO, you need to specify the time duration over which the target value for the SLI is evaluated. For example, if you want to measure the success rate of a web service for a week, you would set the compliance period to seven days. You would also set a target value for the success rate, such as 99%. This means that the service must have a success rate of 99% or higher over the specified period for the SLO to be considered met.
+In this section you configure the SLO.
+
+To measure a SLO, you need to specify the time duration over which the target value for the SLI is evaluated. For example, if you want to measure the success rate of a web service for a week, you would set the compliance period to seven days. You would also set a target value for the success rate, such as 99%. This means that the service must have a success rate of 99% or higher over the specified period for the SLO to be considered met.
 
 Configure the following settings to determine the compliance time period and target value for your SLO.
 
@@ -237,9 +248,11 @@ On the other hand, the "Calendar period" type sets fixed calendar periods for th
 :::
 
 
-## Set error budget policy for SLO
+## Error Budget Policy (Optional)
 
-Optionally, you can set an error budget policy for the SLO and alert your teams when the error budget violates the threshold. An error budget represents the maximum amount of time a system can experience downtime or other issues without negatively impacting the customer experience.
+In this section, you set an error budget policy for the SLO and alert your teams when the error budget violates the threshold. This setting is optional. 
+
+An error budget represents the maximum amount of time a system can experience downtime or other issues without negatively impacting the customer experience.
 
 To create an error budget policy:
 
@@ -271,7 +284,7 @@ The notification rule appears in the error budge policy list.
 8. Enable the notification rule to start sending the alerts.
 
 
-## Save SLO settings
+## Save
 Select **Save** to save the settings.
 The SLO appears on the Service Level Objectives (SLOs) page.
 

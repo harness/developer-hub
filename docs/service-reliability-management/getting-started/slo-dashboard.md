@@ -4,9 +4,9 @@ description: View, track, and monitor your SLOs.
 sidebar_position: 30
 ---
 
-The SLOs dashboard provides a centralized view to track, monitor, and manage all the SLOs set for your service, allowing you to easily gauge your service's overall health and performance.
+The SLO dashboard provides a centralized view to track, monitor, and manage all the SLOs set for your service, allowing you to easily gauge your service's overall health and performance.
 
-## Navigate to the SLO dashboard
+## View SLO dashboard
 
 To go to the SLO dashboard:
 
@@ -24,7 +24,7 @@ The SLO dashboard provides an at-a-glance summary of the health status of the SL
 
 ![SLO dashboard](./static/slo-dashboard.png)
 
-## SLO list
+### SLO list
 
 In addition to the health categorization, the dashboard displays a list of all SLOs, including the SLO name, service being monitored, status, remaining error budget, burn rate per day (that is, how quickly the error budget is being used up), alerts sent, and user journey selected.
 
@@ -34,26 +34,25 @@ Burn rate refers to the rate at which error budget is being used up.
 :::
 
 
-## Filter the SLO list
+### SLO list filters
 
 The dashboard shows a list of all SLOs by default, but you can filter the list based on their health status. To do this, simply select an SLO category tile. For example, to view SLOs that have exhausted their error budget, select the Exhausted tile. The list will update to show only the SLOs in that category.
 
 
-## View SLOs attached to a monitored service
+### View SLOs attached to a monitored service
 
 To view all the SLOs attached to a monitored service, simply select the monitored service name on the SLO list. This will open the Monitored Service dashboard, which lists all the SLOs associated with the selected monitored service.
 
-## View SLO details and performance
+### View SLO details and performance
 
 To view details of a specific SLO's performance, simply click on the name of the SLO in the list.  
 The SLO details page appears.
 
-
-### SLO details page
+## SLO details page
 
 The SLO details page displays configuration summary, performance trend chart, and error budget details for the selected SLO.
 
-#### SLO configuration summary
+### SLO configuration summary
 
 The SLO details page provides a summary of the selected SLO's configuration, which includes:
 
@@ -72,7 +71,7 @@ The SLO details page provides a summary of the selected SLO's configuration, whi
 - **Time Remaining**: The amount of time remaining in the current period for the SLO.
 
 
-#### SLO performance trend chart
+### SLO performance trend chart
 
 The SLO performance trend chart displays the percentage of SLO and SLI values, providing insight into how frequently the defined threshold has been exceeded. This enables you to assess whether the service met the expectations of most users in terms of reliability during a certain period.
 
@@ -88,7 +87,7 @@ To customize the SLO performance trend chart for a specific time window, simply 
 - Custom
 
 
-#### Error budget details
+### Error budget details
 
 To view the error budget details for the SLO, select the **Error Budget** toggle.  
 The error budget dashboard appears displaying the following information:

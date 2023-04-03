@@ -1,5 +1,5 @@
 ---
-title: Service Reliability Management Concepts
+title: Concepts
 description: Learn Service Reliability Management (SRM) concepts.
 sidebar_position: 10
 ---
