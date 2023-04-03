@@ -330,5 +330,23 @@ module.exports = {
       from: "/docs/category/migrating-to-harness-ci",
       to: "/docs/category/migrate-to-harness-ci",
     },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 3, 2023
+    {
+      from: "/docs/category/test-intelligence",
+      to: "/docs/category/run-tests",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 3, 2023
+    {
+      from: "/docs/category/run-ci-scripts",
+      to: "/docs/category/run-scripts",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 3, 2023
+    {
+      from: "/docs/category/view-your-build",
+      to: "/docs/category/view-builds",
+    },
   ],
 };

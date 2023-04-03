@@ -1,1 +1,14 @@
-{"label": "View Your Builds", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "View Your Builds"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "flam7377aq"}}
+{
+    "label": "View builds", 
+    "position": 80,
+    "collapsible": "true", 
+    "collapsed": "true", 
+    "className": "red", 
+    "link": {
+        "type": "generated-index", 
+        "title": "View builds"
+    }, 
+    "customProps": {
+        "helpdocs_category_id": "flam7377aq"
+    }
+}

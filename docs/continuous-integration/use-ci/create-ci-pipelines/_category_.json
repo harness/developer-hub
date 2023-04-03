@@ -1,0 +1,11 @@
+{
+   "label":"Create pipelines",
+   "position": 10,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Create pipelines"
+   }
+}
