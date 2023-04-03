@@ -181,7 +181,7 @@ cronjob.batch/example-agent-upgrader created
 ```
 :::note
 
-If the Harness GitOps Agent is being deployed to cluster with Kubernetes v1.21 or less, Harness requires you replace `apiVersion: apiextensions.k8s.io/v1` with `apiVersion: apiextensions.k8s.io/v1beta1` in deployment YAML file.
+If the Harness GitOps Agent is being deployed to a cluster running Kubernetes v1.21 or less, Harness requires you replace `apiVersion: apiextensions.k8s.io/v1` with `apiVersion: apiextensions.k8s.io/v1beta1` in the deployment YAML file.
 
 :::
 
