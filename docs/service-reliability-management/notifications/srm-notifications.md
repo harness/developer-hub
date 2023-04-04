@@ -7,12 +7,13 @@ You can set notifications on Service Reliability Management (SRM) monitored serv
 
 ### Before You Begin
 
+* [SRM concepts](../getting-started/service-reliability-management-basics.md)
 * [Getting started](../getting-started/create-first-slo.md)
-* [Service Reliability Management Basics](../srm-concepts/srm-concepts.md)
+  
 
 ### Limitations
 
-Currently, Service Reliability Management notifications support the following methods:
+Currently, SRM notifications support the following methods:
 
 * Slack
 * Email
