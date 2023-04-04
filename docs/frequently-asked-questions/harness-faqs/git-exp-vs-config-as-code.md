@@ -85,7 +85,7 @@ For more information, go to:
 
 ## Why doesn't the Git Experience support services, environments and infrastructure definitions?
 
-Applications no longer manage services, environments, and infrastructure definitions in a single repository. Git Experience gives you the flexibility to manage these resources in any repo and branch.
+Applications no longer manage services, environments, and infrastructure definitions in a single repository. The Git Experience gives you the flexibility to manage these resources in any repo and branch.
 
 :::important
 Configuration as Code is not the same as Git Experience.
