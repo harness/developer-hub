@@ -32,6 +32,10 @@ You cannot choose a non-default branch to test changes for any entity. Also, con
 
 For More details on the Harness First Gen Configuration as Code, go to [Configuration as Code](https://developer.harness.io/docs/category/configuration-as-code).
 
+:::important
+Configuration as Code is not the same as Git Experience.
+:::
+
 
 ## Does the Configuration as Code support matrix include entities supported by Git Experience?
 
@@ -86,11 +90,6 @@ For more information, go to:
 ## Why doesn't the Git Experience support services, environments and infrastructure definitions?
 
 Applications no longer manage services, environments, and infrastructure definitions in a single repository. The Git Experience gives you the flexibility to manage these resources in any repo and branch.
-
-:::important
-Configuration as Code is not the same as Git Experience.
-:::
-
 
 Frequent conflicts and sync errors in Configuration as Code made it difficult to scale. Terraform Provider solves this problem by allowing you to configure and manage resources via code.
 
