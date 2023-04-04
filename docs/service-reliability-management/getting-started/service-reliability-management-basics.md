@@ -1,8 +1,11 @@
 ---
 title: Concepts
 description: Learn Service Reliability Management (SRM) concepts.
-sidebar_position: 10
+sidebar_position: 20
 ---
+
+
+# SRM Concepts
 
 Harness Service Reliability Management (SRM) module helps engineering and DevOps teams to balance feature velocity and bug fixes along with the stability and reliability needs in a production environment.
 
@@ -91,3 +94,7 @@ The more often you deploy software, the more you need to validate the health of 
 * Use machine learning to identify normal behavior for your applications
 * Allows Harness to identify and flag anomalies in future deployments, and to perform automatic rollbacks
 
+
+## Next steps
+
+[Create your first SLO](/docs/service-reliability-management/getting-started/create-first-slo.md)

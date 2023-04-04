@@ -1,6 +1,6 @@
 ---
-title: SRM Notifications
-description: Notify your team of changes to a service's code, configuration, behavior, deployment, and infrastructure.
+title: Set notifications
+description: Notify team on service changes in code, configuration, behavior, deployment, and infrastructure.
 ---
 
 You can set notifications on Service Reliability Management (SRM) monitored services and Service Level Objectives (SLOs) and notify your team of changes to a Service's code, configuration, behavior, deployment, and infrastructure.

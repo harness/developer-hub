@@ -1,10 +1,10 @@
 ---
-title: SLO-Driven Governance
-description: Ensure that Harness entities, such as pipelines, meet stipulated compliance requirements when specific events occur.
+title: Set pipeline governance
+description: Enforce compliance for Harness entities such as pipelines during events.
 sidebar_position: 10
 ---
 
-You can use Harness Governance to ensure that Harness entities like Pipelines meet specific compliance requirements when specific events happen (On Save, On Run, etc). Harness Governance uses OPA as the central service to store and analyze policies for the different entities and processes across the Harness platform.
+You can use Harness governance to ensure that Harness entities like Pipelines meet specific compliance requirements when specific events happen (On Save, On Run, etc). Harness Governance uses OPA as the central service to store and analyze policies for the different entities and processes across the Harness platform.
 
 SLO-driven governance policies ensure that Harness entities like SLOs (service level objectives) and Error Budgets meet specific compliance requirements when specific events happen (On Save, On Run, etc). These policies prevent Pipelines from deploying if:
 

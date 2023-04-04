@@ -4,6 +4,5 @@ description: Catalog of health sources supported by Harness
 sidebar_position: 20
 ---
 
-
-## Next steps
+Coming soon
 

@@ -1,6 +1,6 @@
 ---
-title: Service Level Objective (SLO)
-description: Learn about SLO.
+title: Simple SLO
+description: Create a simple SLO.
 sidebar_position: 10
 ---
 

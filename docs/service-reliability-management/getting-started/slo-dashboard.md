@@ -1,7 +1,7 @@
 ---
 title: SLO dashboard
 description: View, track, and monitor your SLOs.
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 The SLO dashboard provides a centralized view to track, monitor, and manage all the SLOs set for your service, allowing you to easily gauge your service's overall health and performance.

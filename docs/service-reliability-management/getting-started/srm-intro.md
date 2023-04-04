@@ -38,5 +38,5 @@ The following table lists the main capabilities of SRM:
 
 ## Next steps
 
-- [Crete your first SLO](./create-first-slo.md)
+- [Understand SRM concepts](/docs/service-reliability-management/getting-started/service-reliability-management-basics.md)
 

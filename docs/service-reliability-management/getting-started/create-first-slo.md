@@ -1,7 +1,7 @@
 ---
 title: Create your first SLO
 description: Learn how to create a SLO.
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 ```mdx-code-block
@@ -40,30 +40,34 @@ A Service Level Objective (SLO) is a target for the level of service you aim to 
 
 - Health source connector. Ensure that your health source is connected to Harness. The health source can be a monitoring and logging system such as Prometheus. This enables Harness to collect health and performance metrics and monitor your SLO. For more information, go to [Connect to Monitoring and Logging Systems](/docs/platform/7_Connectors/connect-to-monitoring-and-logging-systems.md).
 
+## Create a SLO
+
+Here is the summary of steps involved creating a SLO:
+
+- Define SLO Identification
+- Configure Service Level Indicatiors (SLIs)
+- CreateError Budget Policy (Optional)
 
 
-## Navigate to the "Create SLO" page
+### Define SLO Identification
 
-In your Harness project, navigate to the **Service Reliability** module, and then select **SLOs** > **+ Create SLO**.  
+In this section, you add a name for the SLO, create a monitored service, and select a user journey.
+
+
+#### Add a name for SLO
+
+To add a name for your SLO:
+
+1. In your Harness project, navigate to the **Service Reliability** module, and then select **SLOs** > **+ Create SLO**.  
    The Create SLO page appears.
 
    ![Create SLO page](./static/create-slo-page.png)
 
-
-## Define SLO Identification
-
-In the section, you add a name for the SLO, create a monitored service, and select a user journey.
+2. In the **SLO Name** field, enter a name for the SLO. For example, the "errors_per_min".
+3. Optionally, you can add a description of the SLO in the **Description (Optional)** field. You can also attach a tag to the SLO. To attach a tag, select the pencil icon next to the **Tags (Optional)** field, type a tag name, and then press enter.
 
 
-### Add a name for SLO
-
-To add a name for your SLO:
-
-1. In the **SLO Name** field, enter a name for the SLO. For example, the "errors_per_min".
-2. Optionally, you can add a description of the SLO in the **Description (Optional)** field. You can also attach a tag to the SLO. To attach a tag, select the pencil icon next to the **Tags (Optional)** field, type a tag name, and then press enter.
-
-
-### Create a monitored service
+#### Create a monitored service
 
 A monitored service helps you track and monitor your workload and deployment target. By collecting metrics from APM and logging tools, a monitored service enables the monitoring of your workload and deployment target. This data is then used to define and measure the SLO.
 
@@ -85,12 +89,12 @@ To create a monitored service:
 11. In the **Create a Monitored Service** dialog, select **Save**.  
     The Monitored service appears in the **Monitored Service Name** field.
     
-:::info note
-Harness generates a monitored service name by combining the service and environment names. For example, if the service name is "checkout" and the environment name is "non-prod", the resulting name is "checkout_nonprod".
-:::
+   :::info note
+   Harness generates a monitored service name by combining the service and environment names. For example, if the service name is "checkout" and the environment name is "non-prod", the resulting name is "checkout_nonprod".
+   :::
 
 
-### Select a user journey
+#### Select a user journey
 
 1. From the **User Journey** dropdown list, select **+ Add New**.  
     The User Journey dialog appears.
@@ -100,11 +104,11 @@ Harness generates a monitored service name by combining the service and environm
 4. Select **Next** to go to the **Configure Service Level Indicatiors (SLIs)** section.
 
 
-## Configure Service Level Indicatiors (SLIs)
+### Configure Service Level Indicators (SLIs)
 In this section, you add a health source to manage service level, select an SLI type, and configure the evaluation method.
 
 
-### Add a health source to manage service level
+#### Add a health source to manage service level
 
 Health source is your APM or logging tool that you have connected with Harness. If you have not yet connected your APM or logging tool with Harness, go to [Connect to Monitoring and Logging Systems](https://developer.harness.io/docs/platform/Connectors/connect-to-monitoring-and-logging-systems).
 
@@ -127,12 +131,12 @@ To add a health source:
 8. Select **Next**.
 
 
-#### Configure metrics or logs
+##### Configure metrics or logs
 
 The configuration settings for health source metrics depend on the selected health source and feature. For instance, if you select **Prometheus** as your health source, you will need to configure following settings.
 
 
-#### Define a query
+##### Define a query
 
 1. In the **Query Specifications and Mapping** section, in the **Group Name** field, select **+ Add New**.  
    The New Prometheus Group Name dialog appears.
@@ -160,7 +164,7 @@ Once you select the desired values, a query is automatically generated and a sam
 6.  Select **Next**.
 
 
-### Select SLI type
+#### Select SLI type
 
 SLI is like a ruler or a tool that you use to measure your service's performance. It helps you determine how close or far you are from meeting your SLO so that you can take corrective action if necessary.
 
@@ -170,7 +174,7 @@ The initial step in configuring the SLIs is to select the metric type that will 
 - **Latency**: Measures the amount of time it takes for a service to respond to a request, typically measured as the time between when the request was made and when a response was received.
 
 
-### Select evaluation method
+#### Select evaluation method
 
 Choose the evaluation method for measuring the events. Select one of the following options:
 
@@ -233,7 +237,7 @@ Based on the evaluation method you select, configure the following SLI settings:
  </TabItem>
 </Tabs>
 
-## Set your SLO
+### Set your SLO
 
 In this section you configure the SLO.
 
@@ -252,7 +256,7 @@ On the other hand, the "Calendar period" type sets fixed calendar periods for th
 :::
 
 
-## Error Budget Policy (Optional)
+### Error Budget Policy (Optional)
 
 In this section, you set an error budget policy for the SLO and alert your teams when the error budget violates the threshold. This setting is optional. 
 
@@ -288,7 +292,7 @@ The notification rule appears in the error budge policy list.
 8. Enable the notification rule to start sending the alerts.
 
 
-## Save
+### Save
 Select **Save** to save the settings.
 The SLO appears on the Service Level Objectives (SLOs) page.
 
