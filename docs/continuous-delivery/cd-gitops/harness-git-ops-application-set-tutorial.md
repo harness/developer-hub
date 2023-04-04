@@ -413,7 +413,7 @@ For the stage Environment, we'll use a Runtime Input. When you run the Pipeline,
 In **Execution**, Harness automatically adds the following steps:
 
 * **Update Release Repo:** this step will fetch your JSON files, update them with your changes, Commit and Push, and then create the PR.  
-  There is an option to provide a custom PR title. If this is not provided, Harness creates the PR with title **Harness: Updating config overrides**.  
+  There is an option to provide a custom PR title. If this is not provided, Harness creates the PR with the title **Harness: Updating config overrides**.  
 
   This step supports hierarchical variables. If you specify a dot-separated variable in this step, then it creates or updates a nested variable.  
 
