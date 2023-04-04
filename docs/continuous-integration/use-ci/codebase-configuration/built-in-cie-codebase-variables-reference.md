@@ -1,7 +1,7 @@
 ---
 title: Built-in CI codebase variables reference
 description: Use Harness' built-in expressions to reference various Git codebase attributes in pipeline stages.
-sidebar_position: 190
+sidebar_position: 30
 helpdocs_topic_id: 576gjpak61
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -60,7 +60,7 @@ The most common use case for triggering CI builds is in response to a Git event.
 
 Here's a simple example of a shell script in a Run step that echoes some codebase variable expressions:
 
-```
+```sh
 echo <+codebase.commitSha>
 echo <+codebase.targetBranch>
 echo <+codebase.sourceBranch>
