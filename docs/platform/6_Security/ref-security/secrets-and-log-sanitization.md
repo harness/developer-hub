@@ -129,12 +129,4 @@ To avoid this issue, use Harness RBAC to control which users can access a secret
 
 ### Log Sanitizer Detects Exact Matches Only
 
-The log sanitizer detects only exact matches of the secret or any line of the secret if the secret is multiline.​
-
-
-
-```
-Executing command ...​  
-text secret is:  ab  
-Command completed with ExitCode (0)
-```
+The log sanitizer detects only exact matches of the secret or any line of the secret if the secret is multiline.
