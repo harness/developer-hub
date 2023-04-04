@@ -23,6 +23,12 @@ A Feature Flag is a decision point in your code that can change the behavior of 
 * Progressive rollouts of the feature
 * Turn on a feature on a specific date
 
+Watch this video for an introduction to Feature Flags:
+
+<!-- Video:
+https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695-->
+<docvideo src="https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695" /> 
+
 ## Reasons to use Feature Flags
 
 Feature Flag management provides the following opportunities to the developers:
