@@ -59,7 +59,7 @@ Harness variable expressions support all Java String class built-in methods.
 
 You can create a Harness string variable containing a comma-separated list of other strings that represent items. At runtime, you can even get this list from the input.   
 
-For example, this Pipeline variable that contains a list of Jira Tickets:
+The following example shows a pipeline variable that contains a list of Jira tickets:
 
 ```
 # Variable: <+pipeline.variables.jiraTickets>
