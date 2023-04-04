@@ -81,7 +81,7 @@ This lets you control access to your resources more effectively and prevent unau
 
 ## RBAC components
 
-Harness provides access control by combining Principals, Roles, and Resource Groups.
+Harness provides access control by combining Principals, Resource Groups, and Roles.
 
 
 ### Principal
@@ -231,7 +231,7 @@ For more information, see [Attribute-Based Access Control](../4_Role-Based-Acces
 
 ## Example access control setup for pipeline execution
 
-Let us look at an example to set up access control for pipeline execution.
+The following example shows you how to set up access control for pipeline execution.
 
 Pipelines are composite entities that can contain multiple stages like CI, CD, and STO. There can be many steps in each stage, such as build, test, push, and deploy. 
 
@@ -253,7 +253,7 @@ To execute a pipeline, the principals need the following permissions:
 
 ### Example workflow to create a principal, roles, and resource groups
 
-For this example, let us create a user group as the principal.
+The following example shows you how to create a user group as the principal.
 1. Create a [user group](../4_Role-Based-Access-Control/4-add-user-groups.md) named `SampleUG` in the account scope.
 2. Create a [custom role](../4_Role-Based-Access-Control/9-add-manage-roles.md) named `SampleRole` in the project scope.
    Add the `Execute` permission for pipeline and `Access` permission for connectors in this role.
