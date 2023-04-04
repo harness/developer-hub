@@ -360,5 +360,11 @@ module.exports = {
       from: "/docs/continuous-integration/use-ci/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline",
       to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
     },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 4, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-cluster-requirement",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-cluster-requirement",
+    },
   ],
 };

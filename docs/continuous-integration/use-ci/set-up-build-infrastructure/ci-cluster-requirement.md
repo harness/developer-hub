@@ -1,7 +1,7 @@
 ---
 title: CI cluster requirements
-description: Estimates of resources requires for Kubernetes clusters
-sidebar_position: 220
+description: Estimates of resources required for a Kubernetes cluster build infrastructure.
+sidebar_position: 40
 helpdocs_topic_id: gv6zctvy4c
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -17,4 +17,3 @@ The following table provides a rough estimation of the resources required, based
 | 100 | 19 - 26 | 11 - 15 |
 | 500 | 87 - 121 | 45 - 62 |
 | 1000 | 172 - 239 | 89 - 123 |
-
