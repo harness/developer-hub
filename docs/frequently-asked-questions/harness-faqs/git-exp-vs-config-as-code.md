@@ -122,7 +122,7 @@ Following are some challenges of managing Continuous Deployment Constructs in Gi
 
 * Services depend on the manifest configuration, variables, artifacts, and config files corresponding to the service. To manage and leverage them together, you need to use a nested structure in their Git repositories. When entities are moved or distributed between different repositories or locations, this would break. Services have their own life cycle outside the pipeline.
 
-2. Environments have similar constraints. They depend on their corresponding infrastructures. You need to use a specific folder structure for environment variables and service-specific overrides and group them in a single repository. Any modifications to such entities can result in breaking changes. Others who consume that environment as a target deployment location cannot use the configuration. Environments and infrastructures have their own cycles that reside outside the pipeline.
+* Environments have similar constraints. They depend on their corresponding infrastructures. You need to use a specific folder structure for environment variables and service-specific overrides and group them in a single repository. Any modifications to such entities can result in breaking changes. Others who consume that environment as a target deployment location cannot use the configuration. Environments and infrastructures have their own cycles that reside outside the pipeline.
 
 
 ## What is an alternative to manage other entities in Git?
