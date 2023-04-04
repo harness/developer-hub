@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flags `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
+Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
 
 You can enforce policies in two ways:
 
@@ -27,7 +27,7 @@ This topic describes how to add a Policy step to a Stage.
 ### Limitations
 
 * The policies that can be enforced are currently restricted by the Harness entities supported by the OPA service.
-* Currently, the Policy Step is available in Deploy / Custom / Approval Stages.
+* Currently, the Policy Step is available in Deploy, Custom, and Approval Stages.
 * Currently, only the **Custom** entity type is supported for the Policy step.
 	+ A Custom entity type allows flexibility to enforce policy evaluations during Pipeline execution with different input data. For example, Terraform plans and deployment Environment details. A Policy Set with a Custom type does not have an event configured.
 * [Runtime Inputs](../20_References/runtime-inputs.md) are expanded before evaluation. You cannot perform checks to ensure a setting is always a Runtime Input, Expression, or Fixed Value.
