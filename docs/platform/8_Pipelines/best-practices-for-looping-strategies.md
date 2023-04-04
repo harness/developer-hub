@@ -80,7 +80,7 @@ To split the variable into an array of substrings, use the `split()` method:
 <+pipeline.variables.jiraTickets.split(',')>
 ```
 
-You can use this expression in your **repeat** Looping Strategy. For example:
+The following example shows how to use the above expression in the `repeat` looping strategy:
 
 ```
 repeat:
