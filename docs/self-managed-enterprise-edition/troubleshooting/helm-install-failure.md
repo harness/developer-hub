@@ -24,7 +24,7 @@ The fix for this issue is included in `helm-charts` and is as follows:
 ### Example
 
 ```
-nginx:
+  nginx:
       controller:
         annotations: {}
       create: true
