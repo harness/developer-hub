@@ -16,7 +16,7 @@ description: Learn about Git experience in NextGen and Config as code in FirstGe
     - Templates
     - Input Sets
 
-In the Git Experience, Git acts as the primary source of truth. As a result, Harness does not keep a record of any resources other than the pipeline name, identifier, and configuration required to retrieve the pipeline from Git. Moreover, Harness does not perform reconciliation or cross-synchronization of resources. Instead, it leverages the native capabilities of Git such as branching, managing files in different repositories, and prioritizing the state of the file in Git above all other sources.
+In the Git Experience, Git acts as the primary source of truth. As a result, Harness does not keep a record of any resources other than the pipeline name, identifier, and configuration required to retrieve the pipeline from Git. Moreover, Harness does not perform reconciliation or cross-synchronization of resources. Instead, it leverages the native capabilities of Git, such as branching, managing files in different repositories, and prioritizing the state of the file in Git above all other sources.
 
 For more information, go to [Git Experience](https://developer.harness.io/docs/category/git-experience).
 
