@@ -31,6 +31,39 @@ module.exports = {
     //  },    
     //===================================================================================
     
+    // CD Tutorial
+
+    // Created by schoudhury on Apr 3, 2023
+    {
+      from: "/tutorials/deploy-services/microservice-manifest-k8s",
+      to: "/tutorials/deploy-services/kubernetes/manifest",
+    },
+    {
+      from: "/tutorials/deploy-services/helm-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/cdce-helm-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/docker-ecs",
+      to: "/tutorials/deploy-services/amazon-ecs",
+    },
+    {
+      from: "/tutorials/deploy-services/docker-ecr-k8s",
+      to: "/tutorials/deploy-services/kubernetes",
+    },
+    {
+      from: "/tutorials/deploy-services/harness-cicd-tutorial",
+      to: "/tutorials/deploy-services/unified-cicd",
+    },
+
+
     // Platform Tutorial
 
     // Created by schoudhury on Feb 21, 2023

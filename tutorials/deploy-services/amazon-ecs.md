@@ -1,5 +1,6 @@
 ---
-sidebar_position: 5
+sidebar_position: 2
+title: Amazon ECS
 description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
 ---
 
@@ -8,8 +9,6 @@ description: Deploy a Docker Image to Amazon ECS using a CD Pipeline
 ```mdx-code-block
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
-
-## Amazon ECS Deployment Pipeline Basics
 
 [Amazon Elastic Container Service](https://aws.amazon.com/ecs/) is an AWS offering for those looking to run containerized workloads. Define an ECS [Task Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html) describing your workload and a [Service Definition](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service_definition_parameters.html) where you want to run your workload and you are all set.  A Continuous Delivery Pipeline is an excellent spot to orchestrate a deployment to Amazon ECS. In this example, we will go through deploying an image with Amazon ECS inside a Harness Continuous Delivery Pipeline. 
 
@@ -81,14 +80,14 @@ With the Default Project selected, clicking on Overview will bring up a wizard t
 There are a few Harness entities that will need to be created in Harness. The needed objects are a Harness Delegate and an AWS Connector for your user credentials. 
 
 ### Install a Delegate
-If you do not have a Delegate installed, follow [these steps](../platform/install-delegate/) to get one installed either in Docker or Kubernetes. 
+If you do not have a Delegate installed, follow [these steps](../platform/install-delegate) to get one installed either in Docker or Kubernetes. 
 
 <details>
 <summary>Install Delegate</summary>
 <DelegateInstall />
 </details>
 
-## Wiring Your AWS Credentials and Docker Endpoint to Harness 
+## Configure Your AWS Credentials and Docker Endpoint in Harness 
 
 Especially with a private registry/repository, credentials for the repository are usually scattered around a few scripts or prompted by a system to enter before deployment. Harness has a concept of a Cloud Connector so this will manage the persistence of your cloud provider credentials and use them on your behalf. 
 
@@ -110,7 +109,7 @@ Click continue and select how you will like to connect. You can leverage the Har
 
 Click Save and Continue and your credentials will be tested. Once successful, you can modify one last item so you can pull images from public Docker Hub in the example.
 
-### Wiring Harness Docker Connector
+### Configure Harness Docker Connector
 
 By default, Harness is wired to the public Docker Hub. Though depending on the image, the API endpoint can be different.  The endpoint for us to hit in this example is “https://registry.hub.docker.com/v2/” 
 

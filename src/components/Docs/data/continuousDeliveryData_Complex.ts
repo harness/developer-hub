@@ -26,7 +26,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/deploy-services/cdce-helm-k8s",
+      link: "/tutorials/deploy-services/kubernetes/helm-chart",
     },
   ];
   

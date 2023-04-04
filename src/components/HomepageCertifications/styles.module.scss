@@ -1,4 +1,4 @@
-.harnessU {
+.homepageCertifications {
   align-items: center;
   background: radial-gradient(91.12% 180.99% at 5% 16.08%, #000000 0%, rgba(7, 50, 89, 0.58) 27.01%, #031525 93.15%);
   background-position-y: bottom;
@@ -194,7 +194,7 @@
         .titleAndDesc {
           height: 190px;
         }
-        .harnessUPath {
+        .homepageCertificationsPath {
           display: flex;
           align-items: center;
           span {
@@ -231,7 +231,7 @@
 
 @media screen and (max-width: 393px) {
   /* for mobile */
-  .harnessU h2 {
+  .homepageCertifications h2 {
     font-size: 22px;
     line-height: 150%;
   }

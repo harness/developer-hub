@@ -9,11 +9,11 @@ import CertCard from "../Certifications/CertCard";
 import { certifications } from "./data/certificationsData";
 
 // harness-platform.svg | secret-mgmt.svg
-export default function HarnessU(): JSX.Element {
+export default function HomepageCertifications(): JSX.Element {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const certBadges = getCertBadges(baseUrl);
   return (
-    <section className={styles.harnessU}>
+    <section className={styles.homepageCertifications}>
       <div className={styles.inner}>
         <div className="container">
           <div className={styles.dualColumn}>
