@@ -77,7 +77,7 @@ The Git experience in NextGen is designed to have one source of truth which is G
 
 There were Git sync issues with Configuration as Code while maintaining the correct and stable state of Harness entities like service, environment, infrastructure definitions, workflows, pipelines, and workflows. The Git state was overwritten by Harness' current state which was often not the correct state. Focusing on core platform entities like pipelines, templates, and input sets, the Git experience provides multi-branch, multi-version support to manage your resources.
 
-**For more information, go to:**
+For more information, go to:
 
 - [Pipelines](https://developer.harness.io/docs/platform/git-experience/manage-a-harness-pipeline-repo-using-git-experience/)
 - [Input Set](https://developer.harness.io/docs/platform/Git-Experience/manage-input-sets-in-simplified-git-experience)
