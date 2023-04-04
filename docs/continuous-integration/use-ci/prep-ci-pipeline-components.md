@@ -4,7 +4,7 @@ description: An overview of CI pipeline components and Build stage settings
 sidebar_position: 10
 ---
 
-This topic provides an overview of CI pipeline creation and configuration, including common components, such as **Build** stages and codebases, as well as advanced settings.
+This topic provides an overview of CI pipeline creation and configuration, including common components, such as **Build** stages, steps, and codebases, as well as advanced settings.
 
 For definitions of terms like stage, step, build infrastructure, delegate, connector, and so on, go to [CI pipeline components](../ci-quickstarts/ci-pipeline-basics.md).
 
@@ -66,9 +66,7 @@ To make pipelines more versatile, you can create [templates](/docs/category/temp
 
 ### Codebases
 
-CI pipelines build and test code that is pulled from a Git code repository. For each stage, you specify the account or repository from which to get the code.
-
-The codebase declared in the first stage in a pipeline becomes the pipeline's default codebase. You can use this codebase for later stages in the pipeline, or you can use multiple codebases in the same pipeline. For more information, go to [Codebase configuration](/docs/category/codebase-configuration/).
+CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you specify the Git account and repository where your code is stored. The codebase declared in the first stage in a pipeline becomes the pipeline's default codebase. You can use this codebase for later stages in the pipeline, or you can use multiple codebases in the same pipeline. For more information, go to [Codebase configuration](/docs/category/codebase-configuration/).
 
 Harness uses [code repo connectors](/docs/category/code-repo-connectors) to connect to Git repositories.
 
@@ -105,20 +103,27 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 
 Stages and steps have advanced settings to control the flow of operations.
 
-### Conditional Executions
+<details>
+<summary>Conditional Executions</summary>
 
 Use [conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) to specify when a stage or step should run. For example, you can specify that a particular stage should run only if the prior pipeline or stage failed.
 
 You can specify conditional execution settings for an entire stage and for individual steps. A stage's conditional execution settings apply to all steps in that stage that don't have their own step-level conditional execution settings. A step's conditional execution settings overrides the stage's conditional execution settings.
 
-### Looping Strategies
+</details>
+
+<details>
+<summary>Looping Strategies</summary>
 
 For information about looping strategies to go:
 
 * [Looping strategies - matrix, repeat, parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
 * <!--[Optimize and enhance CI pipelines](/docs/category/optimize-and-enhance)-->
 
-### Failure Strategies
+</details>
+
+<details>
+<summary>Failure Strategies</summary>
 
 [Failure strategies](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) define how your stages and steps handle different failure conditions.
 
@@ -132,3 +137,5 @@ Failure strategies are a critical pipeline design component that determine what 
 See also:
 
 * [Retry failed executions](/docs/platform/Pipelines/resume-pipeline-deployments)
+
+</details>
