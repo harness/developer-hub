@@ -116,7 +116,7 @@ Following are some benefits of implementing pipelines as code:
 
 The above benefits apply to both Continuous Integration and Continuous Deployment. Harness extends these benefits to entities like templates and input sets because they are part of the pipeline. They would benefit from similar capabilities as pipeline as code.
 
-In Harness, services and environments reside outside the Pipeline. Managing them separately increases the risk of misconfiguration. Pipelines fail if changes are not resolved or propagated correctly from the core entity to the pipeline.
+In Harness, services and environments reside outside the pipeline. Managing them separately increases the risk of misconfiguration. Pipelines fail if changes are not resolved or propagated correctly from the core entity to the pipeline.
 
 Following are some challenges of managing Continuous Deployment Constructs in Git:
 
