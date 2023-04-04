@@ -1,5 +1,5 @@
 ---
-title: Feature Flags Overview
+title: Overview of Feature Flags
 description: An overview of how Harness Feature Flags work
 sidebar_position: 10
 helpdocs_topic_id: 7n9433hkc0

@@ -18,7 +18,7 @@ For getting started quickly:
 Make sure you read and understand:
 
 * [Feature Flags Overview](/docs/feature-flags/ff-onboarding/cf-feature-flag-overview)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks)
 * [Communication Strategy Between SDKs and Harness Feature Flags](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags)
 

@@ -1,11 +1,11 @@
 ---
-title: Get Started With Java
+title: Get Started with an SDK
 description: This quickstart shows you how to create a Feature Flag in Harness and use Feature Flags (FF) SDK in your Java application.
 tags: 
    - feature flag
    - java SDK
    - Quickstart
-sidebar_position: 30
+sidebar_position: 40
 helpdocs_topic_id: qym3qtrexy
 helpdocs_category_id: iqgyied1c0
 helpdocs_is_private: false
@@ -32,10 +32,10 @@ As a first step, you need to create a project in Harness. To do this:
 2. In **Projects**, click **Project**.
 3. In **About the Project**, in **Name**, enter the name for your project. You will create your Feature Flag for this project.
 4. (Optional) Select color for your project.
-5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](../../../platform/organizations-and-projects/create-an-organization.md#step-1-create-a-harness-org) and [Projects and Organizations](../../../platform/organizations-and-projects/projects-and-organizations.md).
+5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization#step-1-create-a-harness-org) and [Projects and Organizations](/docs/platform/organizations-and-projects/projects-and-organizations).
 6. Click **Save and Continue**.
 7. (Optional) In **Invite Collaborators**, in **Invite People to Collaborate**, add members to collaborate with you on the project.
-8. (Optional) Assign a role to the collaborators and click **Add**. You can select **Project Admin**, **Project Member**, or **Project Viewer**. For more information on permissions, go to [Permissions Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
+8. (Optional) Assign a role to the collaborators and click **Add**. You can select **Project Admin**, **Project Member**, or **Project Viewer**. For more information on permissions, go to [Permissions Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
 9. Once you're done adding contributors and adding a role, click **Save and Continue**.
 10. Click **GO TO FEATURE FLAGS**.
 
@@ -57,8 +57,8 @@ Now you have an environment ready, you need to create an SDK Key for that enviro
 
 **Copy the SDK Key when you create it as it is available only after creation, once you leave the page, the key is redacted.**
 
-:::note 
-You must create an SDK Key that matches the type of SDK you want to use. That is, you must create a Client SDK Key if you're using a Client SDK or you must create a Server SDK Key if you're using a Server SDK. For more information about the types of SDKs available, go to [Choose a Client-side or Server-side SDK](../../ff-sdks/sdk-overview/client-side-and-server-side-sdks.md).
+:::info note 
+You must create an SDK Key that matches the type of SDK you want to use. That is, you must create a Client SDK Key if you're using a Client SDK or you must create a Server SDK Key if you're using a Server SDK. For more information about the types of SDKs available, go to [Choose a Client-side or Server-side SDK](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks).
 :::
 
 To create an SDK Key:
@@ -68,7 +68,7 @@ To create an SDK Key:
 3. In **Create SDK Key**, in **Name**, enter a name for your SDK key.
 4. In **Key Type**, select the Key Type. For this quickstart we'll use the Server Key type.
 
-:::note
+:::info note
 You can add multiple keys for the same environment if your organization needs to rotate them.
 :::
 5. The SDK Key is created. Copy it and store it securely.
@@ -82,9 +82,9 @@ To create a boolean Flag:
 1. In **Feature Flags**, click **Flag**.
 2. Select the **Boolean** type.
 3. In **About the Flag**, in **Name**, enter a name for your boolean flag and click **Next**.  
-When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
+When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/References/entity-identifier-reference).
 
-:::note
+:::info note
 If you need to make the flag a permanent Flag, select the checkbox **This is a permanent flag**.
 :::
 
@@ -99,8 +99,8 @@ If you need to make the flag a permanent Flag, select the checkbox **This is a 
 	- If the flag is `OFF`, serve the variation `Disable_Feature`.
 5. Click **Save and Close**. The Feature Flag is created. By default, the flag is set to OFF.
 
-:::note
-Once you have created your flag type, optionally you can [manage targets](../../ff-using-flags/ff-target-management/add-targets.md) and modify the [variations](../../ff-using-flags/update-feature-flags/manage-variations.md), [rules](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md), and [add prerequisites](../../ff-using-flags/add-prerequisites-to-feature-flag.md) of your flag.
+:::info note
+Once you have created your flag type, optionally you can [manage targets](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets) and modify the [variations](/docs/feature-flags/ff-using-flags/update-feature-flags/manage-variations), [rules](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags), and [add prerequisites](/docs/feature-flags/ff-using-flags/add-prerequisites-to-feature-flag) of your flag.
 :::
 
 ## Use Harness Feature Flags SDKs with Java applications
@@ -139,7 +139,7 @@ You need a Java application to test your Feature Flag. If you do not have your J
   <version>1.0.0</version>  
 </dependency>
 ```
-:::note
+:::info note
  If you are using the Harness Java sample application from the [Java SDK GitHub repository](https://github.com/drone/ff-java-server-sample), then do not add the Maven dependency in the `pom.xml` file. The Maven dependencies are added in the Harness Java sample application.
 :::
 
@@ -155,7 +155,7 @@ CfClient cfClient = new CfClient(apiKey, Config.builder().build());
 	+ Enter a name that will identify this target.
 	+ Enter a unique identifier for your target. For example, an application, systems, services, machines, resources uniquely identified by an IP address, email ID, user ID, etc.
 
-	+ For more information about Targets, go to [Target Management](https://docs.harness.io/category/xw2hz815l8-ff-target-management).
+	+ For more information about Targets, go to [Target Management](/docs/category/manage-feature-flag-targets/).
 
 
 #### Add a Target
@@ -182,7 +182,7 @@ Evaluate a Target for your Feature Flag. Once you have added the Target, evaluat
 ```
 boolean result = cfClient.boolVariation(<feature_identifier>, target, <default_result>);
 ```
-The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md) and [Create a flag type](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#create-a-boolean-flag).
+The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](/docs/platform/References/entity-identifier-reference) and [Create a flag type](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag#create-a-boolean-flag).
 
 **Sample code for a boolean Flag**
 
