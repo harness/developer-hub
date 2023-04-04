@@ -1,9 +1,8 @@
 ---
 title: Create and Configure a Codebase
-description: Each CI Pipeline has a Codebase that specifies the code repo (input) that the Pipeline uses to build the artifact (output). You specify the Codebase when you add the first Build Stage to the Pipeline…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+description: Each CI Pipeline has a codebase that specifies the code repo (input) that the pipeline uses to build the artifact (output).
+
+sidebar_position: 10
 helpdocs_topic_id: mozd8b49td
 helpdocs_category_id: ojaa8v6fwz
 helpdocs_is_private: false

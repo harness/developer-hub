@@ -34,7 +34,7 @@ This setting is required if the connector uses a Git account URL, such as `https
 
 Select **Git Branch** if you want the step to clone code from a specific branch with in the repo. Select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**. You can use fixed values, runtime input, and variable expressions for the branch and tag names.
 
-This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. Make sure to set the input type to **Expression**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](built-in-cie-codebase-variables-reference.md).
+This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. Make sure to set the input type to **Expression**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](../use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Clone Directory
 
@@ -81,4 +81,4 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 ## See also
 
 * [Create and Configure a Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md)
-* [Clone and Process Multiple Codebases in the Same Pipeline](../use-ci/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline.md)
+* [Clone and Process Multiple Codebases in the Same Pipeline](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md)

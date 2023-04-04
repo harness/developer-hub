@@ -348,5 +348,17 @@ module.exports = {
       from: "/docs/category/view-your-build",
       to: "/docs/category/view-builds",
     },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 4, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference",
+      to: "/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 4, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline",
+      to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
+    },
   ],
 };

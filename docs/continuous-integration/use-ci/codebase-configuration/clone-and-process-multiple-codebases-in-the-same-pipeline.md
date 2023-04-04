@@ -1,9 +1,8 @@
 ---
 title: Clone and Process Multiple Codebases in the Same Pipeline
-description: You can clone multiple codebases in the same Pipeline and then build artifacts from multiple repositories. This enables use cases such as &#8212;  You use Packer and Ansible to build artifacts automatically.…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+description: You can clone multiple codebases in the same Pipeline and then build artifacts from multiple repositories.
+
+sidebar_position: 20
 helpdocs_topic_id: k8tz6mtiut
 helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false
@@ -31,14 +30,14 @@ To go through this workflow, you need the following:
 * A familiarity with Build Stage settings:
 	+ [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * A familiarity with how Pipelines use codebases:
-	+ [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md)
+	+ [Create and Configure a Codebase](./create-and-configure-a-codebase.md)
 
 ### Step 1: Set Up the Build Stage
 
 In the first Build Stage of your Pipeline, do the following:
 
 1. Configure the default Codebase.  
-You set up the Codebase when you create the first Build Stage in your Pipeline. To edit a Codebase after you create it, click **Codebase** on the right side of the Pipeline Studio. See [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+You set up the Codebase when you create the first Build Stage in your Pipeline. To edit a Codebase after you create it, click **Codebase** on the right side of the Pipeline Studio. See [Create and Configure a Codebase](./create-and-configure-a-codebase.md).
 2. In the Overview tab, verify that **Clone Codebase** is selected.  
 With this option selected (the default), a Build clones the default codebase into its workspace as part of the setup process. You can clone additional codebases into the workspace, as described below.
 
@@ -196,7 +195,7 @@ pipeline:
 ```
 ### See Also
 
-* [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md)
+* [Create and Configure a Codebase](./create-and-configure-a-codebase.md)
 * [CI Run Step Settings](../../ci-technical-reference/run-step-settings.md)
 * [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Build and Upload Artifacts](/docs/category/build-and-upload-artifacts)
