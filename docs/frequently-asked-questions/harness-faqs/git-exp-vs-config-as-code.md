@@ -129,7 +129,7 @@ Following are some challenges of managing Continuous Deployment Constructs in Gi
 
 Harness recommends leveraging the Harness Terraform Provider or APIs to automate the management of your configurations like services, environments, and infrastructure definitions. Terraform is the industry standard for managing and updating configurations. You can manage your Harness resources as code via corresponding Terraform configuration files through the Terraform provider. Modules that generate and update services may use a `tfvars` file to pass in the proper and configurable parameters. Harness orchestrates the process to make the change reliably without conflict using pipelines. While the Harness database remains the source of truth, you can vet and publish changes through automation.
 
-You can automate YAML configurations in Git and pass them to API calls for CRUD operations. Using Pipelines, you can integrate Harness APIs or build your own onboarding and automation applications (via a containerized application or serverless functions).
+You can automate YAML configurations in Git and pass them to API calls for CRUD operations. Using pipelines, you can integrate Harness APIs or build your own onboarding and automation applications (via a containerized application or serverless functions).
 
 For more information on Harness Terraform provider, go to: 
 
