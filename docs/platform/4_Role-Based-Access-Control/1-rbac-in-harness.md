@@ -229,7 +229,7 @@ You can provide more control by using rules to restrict access based on a combin
 
 For more information, see [Attribute-Based Access Control](../4_Role-Based-Access-Control/2-attribute-based-access-control.md).
 
-## Set up access control for pipeline execution
+## Example access control setup for pipeline execution
 
 Let us look at an example to set up access control for pipeline execution.
 
