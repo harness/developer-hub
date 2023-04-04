@@ -146,7 +146,7 @@ For more information about **Plugin** step settings, go to the [Plugin step sett
 
 :::
 
-## Run your pipeline
+## Run your pipeline <!--Add webhook trigger and run pipeline-->
 
 After adding the **Plugin** step(s), save and run the pipeline. If you set `LOG_LEVEL: debug`, you can see the Jira response in the build logs.
 
