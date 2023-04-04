@@ -53,7 +53,7 @@ Harness recommends that you determine the `maxConcurrency` for a specific Stage 
 2. Run the Pipeline and monitor the resource consumption for the overall Pipeline.
 3. Gradually increase the `maxConcurrency` based on each successive run until you reach a "happy medium" between your run times and resource consumption.
 
-### How to use variables representing lists/arrays to loop and repeat for each item
+### What is the best way to loop over items in a list or array using variables?
 
 You can use all Java String class built-in methods on Harness variable expressions.
 
