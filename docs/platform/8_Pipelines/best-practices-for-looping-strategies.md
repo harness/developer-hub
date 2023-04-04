@@ -74,7 +74,7 @@ pipeline:
       value: HD-29193,HD-29194,HD-29195 // We have added the list of tickets to be comma separated
 ```
 
-By using the `split()` method, you can split that variable string into an array of substrings:
+To split the variable into an array of substrings, use the `split()` method:
 
 ```
 <+pipeline.variables.jiraTickets.split(',')>
