@@ -83,7 +83,7 @@ For more information, go to:
 - [Input Set](https://developer.harness.io/docs/platform/Git-Experience/manage-input-sets-in-simplified-git-experience)
 - [Templates](https://developer.harness.io/docs/platform/Templates/templates-best-practices#remote-template-versioning)
 
-## Why Git experience does not support services, environments and infrastructure definitions?
+## Why doesn't the Git Experience support services, environments and infrastructure definitions?
 
 Applications no longer manage services, environments, and infrastructure definitions in a single repository. Git Experience gives you the flexibility to manage these resources in any repo and branch.
 
