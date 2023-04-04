@@ -33,7 +33,7 @@ You cannot choose a branch and test changes for any entity. Also, configurations
 For More details on the Harness First Gen Configuration as Code, go to [Configuration as Code](https://developer.harness.io/docs/category/configuration-as-code).
 
 
-## Does the Configuration as Code support matrix include Git Experience entity?
+## Does the Configuration as Code support matrix include entities supported by Git Experience?
 
 Here is the comparison matrix for Harness FirstGen Continuous Deployment vs Harness NextGen Continuous Deployment:
 
