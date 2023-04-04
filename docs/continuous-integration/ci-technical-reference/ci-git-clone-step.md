@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the Git Clone step, which clones a repo to the pipeline workspace. This step is useful when you want to include multiple repositories in your build. For example, suppose you maintain your code files in one repo and your build files (such as Dockerfiles) in a separate repo. In this case, you can set up your pipeline's **Build** stage to [clone your code files](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) and then add a Git Clone step to clone your build files into your pipeline workspace.
+This topic provides settings for the Git Clone step, which clones a repo to the pipeline workspace. This step is useful when you want to [include multiple repositories in your build](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md). For example, suppose you maintain your code files in one repo and your build files (such as Dockerfiles) in a separate repo. In this case, you can [configure the **Build** stage's codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) to clone your code files and then add a Git Clone step to clone your build files into the stage's workspace.
 
 :::info
 
@@ -30,11 +30,11 @@ The name of the code repo you want to clone into the pipeline workspace, if this
 
 This setting is required if the connector uses a Git account URL, such as `https://github.com/my-account/`, rather than to a URL for a specific repo within that account.
 
-## Build Type
+## Build Type, Branch Name, and Tag Name
 
 Select **Git Branch** if you want the step to clone code from a specific branch with in the repo. Select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**. You can use fixed values, runtime input, and variable expressions for the branch and tag names.
 
-This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. Make sure to set the input type to **Expression**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](../use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
+This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](../use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Clone Directory
 
@@ -58,7 +58,7 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
 
-If you want to use self-signed certificates in your build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ### Run as User
 
@@ -77,8 +77,3 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
-## See also
-
-* [Create and Configure a Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md)
-* [Clone and Process Multiple Codebases in the Same Pipeline](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md)
