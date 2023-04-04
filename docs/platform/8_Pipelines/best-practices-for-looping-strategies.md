@@ -93,7 +93,7 @@ To refer to each item in the loop use the `<+repeat. Item>` expression:
 ![Repeat with split()](./static/best-practices-for-looping-strategies-08.png)
 
 
-**Extra:** You can also dynamically create an axis for your Matrix.
+You can also create an axis for your matrix dynamically using the following expression:
 
 ```
 matrix:
