@@ -88,7 +88,7 @@ repeat:
   maxConcurrency: 1
 ```
 
-Finally, you refer to each item in the loop with the `<+repeat.item>` expression.
+To refer to each item in the loop use the `<+repeat. Item>` expression:
 
 ![Repeat with split()](./static/best-practices-for-looping-strategies-08.png)
 
