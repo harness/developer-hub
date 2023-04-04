@@ -38,8 +38,9 @@ Use the following steps to confirm that your Harness installation includes a Nex
    ```
    use ng-harness
    db.moduleLicenses.find({})
+   ```
    
-6. If the licenses are present in the database, then proceed with `Refresh a NextGen license`
+6. If the licenses are present in the database, then proceed with `Refresh a NextGen license`.
 
 ## Refresh a NextGen license
 
