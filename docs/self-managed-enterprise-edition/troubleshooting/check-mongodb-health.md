@@ -30,7 +30,7 @@ In this example, the first source is two seconds behind the primary; the second 
 
 ## Create a primary replica of the database as admin
 
-Use the following script to create a primary replica of your database:
+The following script shows how to execute into MongoDB:
 
 ```
 #!/bin/bash
