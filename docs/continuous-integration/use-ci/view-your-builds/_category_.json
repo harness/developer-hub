@@ -1,6 +1,6 @@
 {
     "label": "View builds", 
-    "position": 80,
+    "position": 100,
     "collapsible": "true", 
     "collapsed": "true", 
     "className": "red", 

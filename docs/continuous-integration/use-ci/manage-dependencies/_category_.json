@@ -1,6 +1,6 @@
 {
    "label":"Manage dependencies",
-   "position": 40,
+   "position": 70,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
