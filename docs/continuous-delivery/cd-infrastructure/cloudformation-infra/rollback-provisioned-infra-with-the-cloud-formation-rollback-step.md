@@ -12,8 +12,8 @@ This topic describes how to use the CloudFormation **Rollback Stack** step to ro
 
 ## Before You Begin
 
-* [CloudFormation Provisioning with Harness](cloud-formation-provisioning-with-harness.md)
-* [Provision with the CloudFormation Create Stack Step](provision-with-the-cloud-formation-create-stack-step.md)
+* [CloudFormation Provisioning with Harness](./cloud-formation-provisioning-with-harness.md)
+* [Provision with the CloudFormation Create Stack Step](./provision-with-the-cloud-formation-create-stack-step.md)
 
 ## Limitations
 
@@ -23,7 +23,7 @@ This topic describes how to use the CloudFormation **Rollback Stack** step to ro
 
 In the **Rollback** section of your Deploy stage, click **Add Step**, and then select the **CloudFormation Rollback Stack** step.
 
-![](./static/rollback-provisioned-infra-with-the-cloud-formation-rollback-step-03.png)
+![](../../cd-advanced/cloudformation-howto/static/rollback-provisioned-infra-with-the-cloud-formation-rollback-step-03.png)
 
 When rollback happens, Harness runs the last successfully provisioned version of the stack.
 

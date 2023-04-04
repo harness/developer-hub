@@ -14,12 +14,12 @@ You use the CloudFormation **Create Stack** step in a CD stage's **Execution** s
 
 You can remove the stack you provisioned using the **Create Stack** step by using a subsequent **Delete Stack** step in the same stage, or in any Pipeline in the Harness Project. You simply need to ensure that the **Create Stack** and **Delete Stack** steps use the same **Provision Identifier**.
 
-You can also use **Create Stack** and **Delete Stack** in the **Infrastructure** section of a CD stage. You can even map the CloudFormation template outputs to the target infrastructure in **Infrastructure**. During deployment, Harness first provisions the target deployment infrastructure and then the stage's Execution steps deploy to the provisioned infrastructure. For steps on this process, see [Provision Target Deployment Infra Dynamically with CloudFormation](../../cd-infrastructure/cloudformation-infra/provision-target-deployment-infra-dynamically-with-cloud-formation.md).
+You can also use **Create Stack** and **Delete Stack** in the **Infrastructure** section of a CD stage. You can even map the CloudFormation template outputs to the target infrastructure in **Infrastructure**. During deployment, Harness first provisions the target deployment infrastructure and then the stage's Execution steps deploy to the provisioned infrastructure. For steps on this process, see [Provision Target Deployment Infra Dynamically with CloudFormation](./provision-target-deployment-infra-dynamically-with-cloud-formation.md).
 
 ## Before You Begin
 
-* [CloudFormation Provisioning with Harness](cloud-formation-provisioning-with-harness.md)
-* [Provision with the CloudFormation Create Stack Step](provision-with-the-cloud-formation-create-stack-step.md)
+* [CloudFormation Provisioning with Harness](./cloud-formation-provisioning-with-harness.md)
+* [Provision with the CloudFormation Create Stack Step](./provision-with-the-cloud-formation-create-stack-step.md)
 
 ## Step 1: Add the Delete Stack Step
 
@@ -38,7 +38,7 @@ There are two options:
 	+ **Stack Name:** enter the name of the stack to delete.
 * **Inherit from Create:** removes the resources defined in the Harness **Create Stack** step that you identify using the same **Provisioner Identifier**.
 
-![](./static/remove-provisioned-infra-with-the-cloud-formation-delete-step-06.png)
+![](../../cd-advanced/cloudformation-howto/static/remove-provisioned-infra-with-the-cloud-formation-delete-step-06.png)
 
 ### Provisioner Identifier Scope
 

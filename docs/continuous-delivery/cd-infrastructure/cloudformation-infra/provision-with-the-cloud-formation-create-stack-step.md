@@ -16,17 +16,17 @@ You can also use **Create Stack** in the **Infrastructure** section of a CD stag
 
 During deployment, Harness first provisions the target deployment infrastructure and then the stage's Execution steps deploy to the provisioned infrastructure. 
 
-For steps on this process, see [Provision Target Deployment Infra Dynamically with CloudFormation](../../cd-infrastructure/cloudformation-infra/provision-target-deployment-infra-dynamically-with-cloud-formation.md).
+For steps on this process, see [Provision Target Deployment Infra Dynamically with CloudFormation](./provision-target-deployment-infra-dynamically-with-cloud-formation.md).
 
 ## Before You Begin
 
-* [CloudFormation Provisioning with Harness](cloud-formation-provisioning-with-harness.md)
+* [CloudFormation Provisioning with Harness](./cloud-formation-provisioning-with-harness.md)
 
 ## Step 1: Add the CloudFormation Create Stack Step
 
 In the **Execution** section of your Deploy stage, click **Add Step**, and then select the **CloudFormation Create Stack** step.
 
-![](./static/provision-with-the-cloud-formation-create-stack-step-00.png)
+![](../../cd-advanced/cloudformation-howto/static/provision-with-the-cloud-formation-create-stack-step-00.png)
 
 The **Create Stack** step is where you connect Harness to your templates and provide additional settings.
 
@@ -52,7 +52,7 @@ Only one **Create Stack** step with a specific **Provisioner Identifier** can be
 
 For example, in the case of a **Create Stack** failure, the **Rollback Stack** step rolls back the provisioning from the **Create Stack** step using its **Provisioner Identifier**.
 
-![](./static/provision-with-the-cloud-formation-create-stack-step-01.png)
+![](../../cd-advanced/cloudformation-howto/static/provision-with-the-cloud-formation-create-stack-step-01.png)
 
 Ultimately, Harness determines what stack to roll back to using a combination of `Provisioner Identifier + Harness account id + Harness org id + Harness project id`.
 
@@ -168,7 +168,7 @@ In **Parameter File Details**, enter the following:
 
 Here's an example:
 
-![](./static/provision-with-the-cloud-formation-create-stack-step-02.png)
+![](../../cd-advanced/cloudformation-howto/static/provision-with-the-cloud-formation-create-stack-step-02.png)
 
 #### Encrypted Text Secrets and Expressions in Parameter Files and Settings
 

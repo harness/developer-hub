@@ -24,7 +24,7 @@ When you use **Create Stack** in **Infrastructure**, you also have the option to
 
 To provision non-target infrastructure resources, add the CloudFormation Create Stack step to the stage **Execution** section instead of the **Infrastructure** section.### Before You Begin
 
-* [CloudFormation Provisioning with Harness](../../cd-advanced/cloudformation-howto/cloud-formation-provisioning-with-harness.md)
+* [CloudFormation Provisioning with Harness](./cloud-formation-provisioning-with-harness.md)
 
 ## Important notes
 

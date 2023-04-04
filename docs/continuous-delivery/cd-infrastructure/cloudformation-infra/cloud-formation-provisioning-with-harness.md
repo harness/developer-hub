@@ -18,7 +18,7 @@ This topic provides an overview of how to use CloudFormation to provision infras
 
 Harness can provision any resource that is supported by CloudFormation.
 
-Looking for How-tos? See [CloudFormation How-tos](cloud-formation-how-tos.md).
+Looking for How-tos? See [CloudFormation How-tos](./cloud-formation-how-tos.md).
 
 ## CloudFormation Provisioning Options
 
@@ -35,11 +35,11 @@ You set up a CloudFormation target infrastructure provisioning in the following 
 
 1. Select Dynamic Provisioning. In the Pipeline stage **Infrastructure**, you select the **Dynamic Provisioning** option and select **CloudFormation**.
 
-   ![](./static/cloud-formation-provisioning-with-harness-04.png)
+   ![](../../cd-advanced/cloudformation-howto/static/cloud-formation-provisioning-with-harness-04.png)
    
    Harness automatically adds the CloudFormation **Create Stack**, **Harness Approval**, and **Delete Stack** steps.
    
-   ![](./static/cloud-formation-provisioning-with-harness-05.png)
+   ![](../../cd-advanced/cloudformation-howto/static/cloud-formation-provisioning-with-harness-05.png)
    
    You can change these steps, but these steps perform the most common CloudFormation target deployment infrastructure process. We use that process in our CloudFormation documentation.
 2. In the CloudFormation Create Stack step, you link Harness to the CloudFormation templates you want to use. You add the scripts by connecting to a Git repo where the scripts are kept and setting up and other common options.
@@ -56,7 +56,7 @@ For example, the cloud-agnostic Kubernetes infrastructure requires that you have
 
 You can use the Harness CloudFormation steps to provision any non-target resources also. You simply add the CloudFormation Create Stack step in the stage Execution.
 
-See [CloudFormation How-tos](cloud-formation-how-tos.md).
+See [CloudFormation How-tos](./cloud-formation-how-tos.md).
 
 ## CloudFormation Rollback
 
@@ -68,5 +68,5 @@ Harness determines what to rollback using the **Provision Identifier** entered i
 
 If you've made these settings using Harness expressions, Harness uses the values it obtains at runtime when it evaluates the expression.
 
-See [Rollback Provisioned Infra with the CloudFormation Rollback Step](rollback-provisioned-infra-with-the-cloud-formation-rollback-step.md).
+See [Rollback Provisioned Infra with the CloudFormation Rollback Step](./rollback-provisioned-infra-with-the-cloud-formation-rollback-step.md).
 

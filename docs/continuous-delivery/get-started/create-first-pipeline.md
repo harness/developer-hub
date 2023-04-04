@@ -232,7 +232,7 @@ Kubernetes Cluster connector:
 ```yaml
 connector:
   name: K8s Cluster
-  identifier: K8s_Cluster
+  identifier: K8s cluster
   description: ""
   orgIdentifier: default
   projectIdentifier: CD_Docs
@@ -255,7 +255,7 @@ Replace `[delegate tag]` with tag of the delegate you installed in your cluster.
 <details>
 <summary>Create the Harness service</summary>
 
-The following service uses the manifest you added to the Harness File Store earier.
+The following service uses the manifest you added to the Harness File Store earlier.
 
 ```yaml
 service:
@@ -376,6 +376,8 @@ pipeline:
                 type: StageRollback
 ```
 
+You can now run your pipeline.
+
 </details>
 
 
@@ -387,25 +389,130 @@ pipeline:
 
 <details>
 <summary>Create the Harness connector</summary>
-markdown
+
+Create the Kubernetes Cluster connector using the [Create a Connector API](https://apidocs.harness.io/tag/Connectors#operation/createConnector).
+
+The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests. For steps, go to [Add and Manage API Keys](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys).
+
+Replace the following request settings in `[]` with your account information.
+
+```yaml
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=[account Id]' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: [security token]' \
+--data-raw 'connector:
+  name: K8s Cluster
+  identifier: K8s_Cluster
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: [project Id]
+  type: K8sCluster
+  spec:
+    credential:
+      type: InheritFromDelegate
+    delegateSelectors:
+      - [delegate tag]'
+```
+
+Replace `[delegate tag]` with tag of the delegate you installed in your cluster. For example:
+
+![delete tag](static/095b88b33770e95a1b0dfcba3928c095a406af939bca367ba2fe8029d02fbb55.png)
+
 </details>
 
 
 <details>
 <summary>Create the Harness service</summary>
-markdown
+
+Create a service using the [Create Services API](https://apidocs.harness.io/tag/Services#operation/createServicesV2).
+
+```yaml
+curl -i -X POST \
+  'https://app.harness.io/gateway/ng/api/servicesV2/batch?accountIdentifier=[account Id]' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: [security token]' \
+  -d '[{
+    "identifier": "KubernetesTest",
+    "orgIdentifier": "default",
+    "projectIdentifier": "[project Id]",
+    "name": "KubernetesTest",
+    "description": "string",
+    "tags": {
+      "property1": "string",
+      "property2": "string"
+    },
+    "yaml": ""service:\n  name: Nginx\n  identifier: Nginx\n  tags: {}\n  serviceDefinition:\n    spec:\n      manifests:\n        - manifest:\n            identifier: nginx\n            type: K8sManifest\n            spec:\n              store:\n                type: Harness\n                spec:\n                  files:\n                    - /nginx-deployment.yaml\n              skipResourceVersioning: false\n              enableDeclarativeRollback: false\n      artifacts:\n        primary: {}\n    type: Kubernetes""
+  }]'
+```
+
 </details>
 
 
 <details>
 <summary>Create the Harness environment and infrastructure definition</summary>
-markdown
+
+Create the environment using the [Create an Environment API](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2).
+
+```yaml
+curl -i -X POST \
+  'https://app.harness.io/gateway/ng/api/environmentsV2?accountIdentifier=[account Id]' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: [security token]' \
+  -d '{
+    "orgIdentifier": "default",
+    "projectIdentifier": "[project Id]",
+    "identifier": "string",
+    "tags": {
+      "property1": "string",
+      "property2": "string"
+    },
+    "name": "myenv",
+    "description": "string",
+    "color": "string",
+    "type": "PreProduction",
+    "yaml": "environment:\n  name: myenv\n  identifier: myenv\n  tags: {}\n  type: PreProduction\n  orgIdentifier: default\n  projectIdentifier: [project Id]\n  variables: []"
+  }'
+```
+
+Create the infrastructure definition in that environment using the [Create an Infrastructure in an Environment](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure) API.
+
+```yaml
+curl -i -X POST \
+  'https://app.harness.io/gateway/ng/api/infrastructures?accountIdentifier=[account Id]' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: [security token]' \
+  -d '{
+    "name": "myinfra",
+    "identifier": "myinfra",
+    "description": "infrastructure description",
+    "tags": {},
+    "orgIdentifier": "default",
+    "projectIdentifier": "[project Id]",
+    "environmentRef": "myenv",
+    "deploymentType": "Kubernetes",
+    "type": "KubernetesDirect",
+    "yaml": "infrastructureDefinition:\n  name: myinfra1\n  identifier: myinfra1\n  description: \"\"\n  tags: {}\n  orgIdentifier: default\n  projectIdentifier: [project Id]\n  environmentRef: myenv\n  deploymentType: Kubernetes\n  type: KubernetesDirect\n  spec:\n    connectorRef: K8s_Cluster_1679347042448\n    namespace: default\n    releaseName: release-<+INFRA_KEY>\n  allowSimultaneousDeployments: false"
+  }'
+```
+
 </details>
 
 
 <details>
 <summary>Create the pipeline</summary>
-markdown
+
+Create the pipeline using the [Create a Pipeline API](https://apidocs.harness.io/tag/Pipeline#operation/postPipelineV2).
+
+```yaml
+curl -i -X POST \
+  'https://app.harness.io/gateway/pipeline/api/pipelines/v2?accountIdentifier=[account Id]&orgIdentifier=default&projectIdentifier=[project Id]' \
+  -H 'Content-Type: application/yaml' \
+  -H 'x-api-key: [security token]' \
+  -d '"pipeline:\n  name: cd\n  identifier: cd\n  projectIdentifier: [project Id]\n  orgIdentifier: default\n  tags: {}\n  stages:\n    - stage:\n        name: nginx\n        identifier: nginx\n        description: \"\"\n        type: Deployment\n        spec:\n          deploymentType: Kubernetes\n          service:\n            serviceRef: Nginx\n          environment:\n            environmentRef: myenv\n            deployToAll: false\n            infrastructureDefinitions:\n              - identifier: myinfra\n          execution:\n            steps:\n              - step:\n                  name: Rollout Deployment\n                  identifier: rolloutDeployment\n                  type: K8sRollingDeploy\n                  timeout: 10m\n                  spec:\n                    skipDryRun: false\n                    pruningEnabled: false\n            rollbackSteps:\n              - step:\n                  name: Rollback Rollout Deployment\n                  identifier: rollbackRolloutDeployment\n                  type: K8sRollingRollback\n                  timeout: 10m\n                  spec:\n                    pruningEnabled: false\n        tags: {}\n        failureStrategies:\n          - onFailure:\n              errors:\n                - AllErrors\n              action:\n                type: StageRollback"'
+```
+
+You can now run your pipeline.
+
 </details>
 
 
@@ -414,26 +521,284 @@ markdown
   <TabItem1 value="Terraform Provider" label="Terraform Provider">
 ```
 
-Create the Harness connectors
+For information on using the Harness Terraform Provider, go to [Onboard with Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider).
 
-Create the Harness service
+<details>
+<summary>Create the Harness connector</summary>
 
-Create the Harness environment and infrastructure definition
+For the Terraform Provider resource, go to [harness_platform_connector_kubernetes](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_kubernetes).
 
-Create the pipeline
+```json
+## Create the K8s cluster connector
+
+resource "harness_platform_connector_kubernetes" "inheritFromDelegate" {
+  identifier  = "K8s_Cluster"
+  name        = "K8s Cluster"
+  description = "description"
+  tags        = ["foo:bar"]
+
+  inherit_from_delegate {
+    delegate_selectors = ["[delegate tag]"]
+  }
+}
+```
+Replace `[delegate tag]` with tag of the delegate you installed in your cluster. For example:
+
+![delete tag](static/095b88b33770e95a1b0dfcba3928c095a406af939bca367ba2fe8029d02fbb55.png)
+
+</details>
+
+
+<details>
+<summary>Create the Harness service</summary>
+
+For the Terraform Provider resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
+
+```json
+## Configure the service
+
+resource "harness_platform_service" "example" {
+  identifier  = "Nginx"
+  name        = "Nginx"
+  description = ""
+  org_id      = "default"
+  project_id  = "[project_id]"
+  yaml = <<-EOT
+                service:
+                  name: Nginx
+                  identifier: Nginx
+                  tags: {}
+                  serviceDefinition:
+                    spec:
+                      manifests:
+                        - manifest:
+                            identifier: nginx
+                            type: K8sManifest
+                            spec:
+                              store:
+                                type: Harness
+                                spec:
+                                  files:
+                                    - /nginx-deployment.yaml
+                              skipResourceVersioning: false
+                              enableDeclarativeRollback: false
+                      artifacts:
+                        primary: {}
+                    type: Kubernetes
+              EOT
+}
+```
+
+</details>
+
+
+<details>
+<summary>Create the Harness environment and infrastructure definition</summary>
+
+For the Terraform Provider resources, go to [harness_platform_environment](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_environment) and [harness_platform_infrastructure](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure).
+
+```json
+## Configure the environment
+
+resource "harness_platform_environment" "example" {
+  identifier = "myenv"
+  name       = "myenv"
+  org_id     = "default"
+  project_id = "[product Id]"
+  tags       = ["foo:bar", "baz"]
+  type       = "PreProduction"
+
+  yaml = <<-EOT
+                environment:
+                  name: myenv
+                  identifier: myenv
+                  tags: {}
+                  type: PreProduction
+                  orgIdentifier: default
+                  projectIdentifier: [product Id]
+                  variables: []
+      EOT
+}
+
+## Configure the infrastructure definition
+
+resource "harness_platform_infrastructure" "example" {
+  identifier      = "myinfra"
+  name            = "myinfra"
+  org_id          = "default"
+  project_id      = "[project Id]"
+  env_id          = "myenv"
+  type            = "KubernetesDirect"
+  deployment_type = "Kubernetes"
+  yaml            = <<-EOT
+                infrastructureDefinition:
+                  name: myinfra
+                  identifier: myinfra
+                  description: ""
+                  tags: {}
+                  orgIdentifier: default
+                  projectIdentifier: [project Id]
+                  environmentRef: myenv
+                  deploymentType: Kubernetes
+                  type: KubernetesDirect
+                  spec:
+                    connectorRef: K8s_Cluster
+                    namespace: default
+                    releaseName: release-<+INFRA_KEY>
+                  allowSimultaneousDeployments: false
+      EOT
+}
+```
+
+</details>
+
+
+<details>
+<summary>Create the pipeline</summary>
+
+For the Terraform Provider resource, go to [harness_platform_pipeline](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_pipeline).
+
+```json
+## Configure the pipeline
+
+resource "harness_platform_pipeline" "example" {
+  identifier = "cd"
+  org_id     = "default"
+  project_id = "[project Id]"
+  name       = "cd"
+  yaml = <<-EOT
+      pipeline:
+        name: cd
+        identifier: cd
+        projectIdentifier: [project Id]
+        orgIdentifier: default
+        tags: {}
+        stages:
+          - stage:
+              name: nginx
+              identifier: nginx
+              description: ""
+              type: Deployment
+              spec:
+                deploymentType: Kubernetes
+                service:
+                  serviceRef: Nginx
+                environment:
+                  environmentRef: myenv
+                  deployToAll: false
+                  infrastructureDefinitions:
+                    - identifier: myinfra
+                execution:
+                  steps:
+                    - step:
+                        name: Rollout Deployment
+                        identifier: rolloutDeployment
+                        type: K8sRollingDeploy
+                        timeout: 10m
+                        spec:
+                          skipDryRun: false
+                          pruningEnabled: false
+                  rollbackSteps:
+                    - step:
+                        name: Rollback Rollout Deployment
+                        identifier: rollbackRolloutDeployment
+                        type: K8sRollingRollback
+                        timeout: 10m
+                        spec:
+                          pruningEnabled: false
+              tags: {}
+              failureStrategies:
+                - onFailure:
+                    errors:
+                      - AllErrors
+                    action:
+                      type: StageRollback
+  EOT
+}
+```
+
+You can now run your pipeline.
+
+</details>
+
 
 ```mdx-code-block
   </TabItem1>
   <TabItem1 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-Create the Harness connectors
+<details>
+<summary>Create the Harness connector</summary>
 
-Create the Harness service
+For steps on adding the Kubernetes Cluster connector, go to [Add a Kubernetes Cluster Connector](https://developer.harness.io/docs/platform/Connectors/add-a-kubernetes-cluster-connector).
 
-Create the Harness environment and infrastructure definition
+In **Delegates Setup**, ensure that you select the delegate you installed. For example:
 
-Create the pipeline
+![Harness connector](static/57b984e50734b1f2417d0ae323f310ad5a0378bd8401f9442a04633be59a153b.png)
+
+</details>
+
+
+<details>
+<summary>Create the Harness service</summary>
+
+To add Kubernetes manifests to your service, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes**.
+6. In **Manifests**, click **Add Manifest**.
+7. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Continue**.
+8. In **Specify K8s Manifest Store**, select **Harness**.
+9. In **Manifest Details**, in **Name**, enter a name for the manifest.
+10. Select **File/Folder Path**, and then, in **Create or Select an Existing Config file**, select the manifest we added earlier, and select **Apply Selected**.
+    
+  ![select manifest](static/50698bc8e20faa0ced4486d39d1ff96641304726d3c92d000602c86891b58d8d.png)  
+11. Select **Submit**.
+12. Save the service.
+
+
+</details>
+
+
+<details>
+<summary>Create the Harness environment and infrastructure definition</summary>
+
+To add the environment and infrastructure definition, do the following:
+
+1. In your project, in CD (Deployments), select **Environments**.
+2. Select **New Environment**.
+3. Enter a name for the environment, select the **Pre-Production** environment type, and select **Save**.
+4. In the new environment, select **Infrastructure Definitions**.
+5. Select **Infrastructure Definition** to create a new infrastructure definition.
+6. Enter a name and select the **Kubernetes** deployment type.
+7. In **Select Infrastructure Type**, select **Kubernetes**.
+8. In **Cluster Details**, select the Kubernetes Cluster connector you added earlier.
+9. In **Namespace**, enter the namespace where you want to deploy, such as `default`.
+10. Select **Save**.
+
+</details>
+
+
+<details>
+<summary>Create the pipeline</summary>
+
+To add the pipeline, do the following:
+
+1. In your project, in CD (Deployments), select **Pipelines**.
+2. Select **Create a Pipeline**.
+3. Enter a name for the pipeline, and select **Start**.
+4. Select **Add Stage**, select **Deploy**, select the **Kubernetes** deployment type, and select **Set Up Stage**.
+5. In **Service**, select the service you added earlier.
+6. In **Environment**, select the environment and infrastructure definition you added earlier.
+7. In **Execution**, select the rolling or canary strategy. Harness will automatically populate the steps you need for each strategy.
+
+You can now run your pipeline.
+
+</details>
+
 
 ```mdx-code-block
   </TabItem1>
@@ -443,5 +808,16 @@ Create the pipeline
 
 ## View and manage your pipelines
 
+You can view your pipeline executions in **Pipeline Executions**.
+
+![Pipeline Executions](static/ffc8ed445bcf7ca81298936cbf85e6ec1706afee4c23a8718b2f9bcb10b5abad.png)  
+
+Select any execution to view its steps and logs.
+
+![pipeline logs](static/1c881c1e516d0e00d816bfe0d06d1d5ad7b7174b6fe850ddb57f9069bdc024a1.png)  
+
+
 
 ## Next steps
+
+Now that you know the basics of CD pipeline modeling in Harness, go to [CD third-party integrations](../integrations/cd-integrations) to see how Harness supports your manifest and artifact repos and deployment environments. 
