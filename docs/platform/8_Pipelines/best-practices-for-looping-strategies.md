@@ -55,7 +55,7 @@ Harness recommends that you determine the `maxConcurrency` for a specific Stage 
 
 ### What is the best way to loop over items in a list or array using variables?
 
-You can use all Java String class built-in methods on Harness variable expressions.
+Harness variable expressions support all Java String class built-in methods.
 
 You can create a Harness string variable containing a comma-separated list of other strings that represent items. At runtime, you can even get this list from the input.   
 
