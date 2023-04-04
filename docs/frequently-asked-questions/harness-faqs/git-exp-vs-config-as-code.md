@@ -92,7 +92,7 @@ Configuration as Code is not the same as Git Experience.
 :::
 
 
-There were frequent conflicts and sync errors in Configuration as Code, which made it difficult to scale. Terraform Provider solves this problem by allowing you to configure and manage resources via code.
+Frequent conflicts and sync errors in Configuration as Code made it difficult to scale. Terraform Provider solves this problem by allowing you to configure and manage resources via code.
 
 In the Git experience, pipelines, templates, and input sets are powerful constructs to manage.  However, modifications to services, environments, and infrastructure definitions after initial configuration are minimal. These entities are metadata and pointers to the service configuration. You can modify and audit changes to these entities through code using the Terraform provider.
 
