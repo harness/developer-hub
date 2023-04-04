@@ -96,7 +96,7 @@ Frequent conflicts and sync errors in Configuration as Code made it difficult to
 
 In the Git experience, pipelines, templates, and input sets are powerful constructs to manage.  However, modifications to services, environments, and infrastructure definitions after initial configuration are minimal. These entities are metadata and pointers to the service configuration. You can modify and audit changes to these entities through code using the Terraform provider.
 
-Entities like services, environments, and infrastructure definitions are highly interdependent. Git experience in NextGen supports entity storage in multiple branches and versions which can result in breaking changes in the interdependent files. Such files are not automatically reconciled and do not have the latest working changes.
+Entities like services, environments, and infrastructure definitions are highly interdependent. The Git Experience in NextGen supports entity storage in multiple branches and versions, which can result in breaking changes in the interdependent files. Such files are not automatically reconciled and do not have the latest working changes.
 
 
 ## Why does Harness support the storage of only a few entities in Git?
