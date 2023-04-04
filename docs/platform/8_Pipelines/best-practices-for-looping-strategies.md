@@ -57,7 +57,7 @@ Harness recommends that you determine the `maxConcurrency` for a specific Stage 
 
 You can use all Java String class built-in methods on Harness variable expressions.
 
-With that in mind, you can define a Harness string variable containing a comma-separated list of items represented by other strings. You can even get this values list from inputs at runtime.  
+You can create a Harness string variable containing a comma-separated list of other strings that represent items. At runtime, you can even get this list from the input.   
 
 For example, this Pipeline variable that contains a list of Jira Tickets:
 
