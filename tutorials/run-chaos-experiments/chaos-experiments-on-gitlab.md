@@ -1,25 +1,27 @@
 ---
-sidebar_position: 5
-title: Running Chaos Experiments on GitLab pipelines
-description: Create experiments on Harness and run them in Gitlab pipelines
+sidebar_position: 4
+title: Running Chaos Experiments in GitLab pipelines
+description: Create experiments in Harness and run them in Gitlab pipelines
 ---
 
-![Harness Chaos experiments in GitLab pipelines](static/gitlab/gitlab-hce.png)
+This tutorial explains how you can create chaos experiments using Harness Chaos Engineering (HCE) and run them in GitLab pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from. 
 
-This tutorial explains how to create chaos experiments on Harness Chaos Engineering and the steps to run them on GitLab pipelines. Irrespective of where they are invoked from, Chaos experiments in Harness are created the same way in the chaos engineering module. See [this tutorial](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering) to get started with creating a new experiment. 
+## Before you begin
+Check out the [first chaos experiment](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering) that will guide you through creating a new experiment in HCE. This will provide a solid foundation for your understanding of creating experiments in HCE. 
 
-Following are the general steps to run chaos experiments in GitLab pipelines:
+Below are the steps to run chaos experiments in GitLab pipelines.
 
-## Create Chaos Experiment
+## Create a chaos experiment
 
-Create a chaos experiment in the Harness Chaos Module by following the tutorial [here](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering). Run this experiment from the module to verify that it is configured properly and the resilience probes are working as expected. The experiment ID and the resilience score resulting from this experiment run are going to be used while integrating this experiment with GitLab.
+Create a [chaos experiment](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering) in the Harness Chaos Module. Execute this experiment to verify the configuration and ensure that the resilience probes are working as expected. The experiment ID and resilience score determined from this experiment run will be used to integrate the experiment with GitLab.
 
 ![chaos experiment with ID and resilience score](static/gitlab/chaos-experiments-with-id.png)
 
-## Create launch script
-Harness Chaos Engineering APIs are used to invoke or launch a chaos experiment from the pipeline. To simplify the creation of the API call with the required secure parameters and data, a [CLI tool](https://storage.googleapis.com/hce-api/hce-api-linux-amd64) is provided. Use this tool to create an appropriate API command which you can include in the pipeline script.
+## Create a launch script
 
-A sample launch script looks as follows.
+HCE APIs are used to invoke or launch a chaos experiment from the pipeline. To simplify creating an API call with the required secure parameters and data, a [CLI tool](https://storage.googleapis.com/hce-api/hce-api-linux-amd64) is provided. Use this tool to create an appropriate API command to include in the pipeline script.
+
+Below is a sample launch script.
 ```
 #!/bin/bash
 
@@ -34,14 +36,13 @@ output=$(./hce-api-saas generate --api launch-experiment --account-id=${ACCOUNT_
 --api-key ${API_KEY} --file-name hce-api.sh | jq -r '.data.runChaosExperiment.notifyID')
 
 echo ${output}
-
 ```
 
 ## Insert chaos experiments into .gitlab-ci.yaml
-Include this launch script in GitLab pipeline as a stage or a step. In the `script:` section, include scripts for lauching, monotoring and for retrieving results. An example is shown below. The resilience score is the result of the experiment run, which may be used to decide if a rollback-job needs to be invoked.
+Include the above-mentioned launch script in the GitLab pipeline as a stage or a step. In the `script:` section, add the scripts for **launching**, **monitoring** and **retrieving** results. An example is shown below.
 
 ```
-#Insert a chaos stage where each chaos experiment is inserted as a launch script. 
+# Insert a chaos stage where each chaos experiment is inserted as a launch script. 
 
 chaos-job:      # This job runs in the deploy stage.
   stage: chaos  # It only runs when *both* jobs in the test stage complete successfully.
@@ -69,12 +70,14 @@ rollback-job:
     - echo "Attempting Rollback.."; sh scripts/rollback-deploy.sh  #write your own rollback logic here
   needs: ["chaos-job"]
   when: on_failure
-  
-
 ```
 
-## Retrive Resilience score
-Retrive the resilience score through the Harness chaos API and take appropriate action in the pipeline, an example usage of the Harness Chaos API is shown below.
+:::info
+The resilience score is the result of the experiment, which helps decide if a rollback job needs to be invoked.
+:::
+
+## Retrive the resilience score
+Retrive the resilience score using the Harness Chaos API and take appropriate action in the pipeline. An example of how to use the Harness Chaos API is shown below.
 
 ```
 #!/bin/bash
@@ -90,11 +93,10 @@ resiliencyScore=$(./hce-api-saas generate --api validate-resilience-score  --acc
 --api-key ${API_KEY} --file-name hce-api.sh)
 
 echo "${resiliencyScore}"
-
 ```
-
 
 ## Example end-to-end configuration
 
-You can find [here](https://gitlab.com/ksatchit/hce-gitlab-integration-demo) a sample configuration of the chaos launch script, it's inclusion in GitLab YAML file. This is a sample for including one single chaos experiment, the same can be repeated for including multiple chaos experiments. 
+Go to [GitLab demo](https://gitlab.com/ksatchit/hce-gitlab-integration-demo) for a sample configuration of the chaos launch script. This script can be included in the GitLab YAML file. 
+This is a sample to include one single chaos experiment, but the same can be repeated so as to be included in multiple chaos experiments. 
 
