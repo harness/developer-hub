@@ -28,23 +28,3 @@ source: mongodb-replicaset-chart-2.mongodb-replicaset-chart.harness-smp1.svc.clu
 
 In this example, the first source is two seconds behind the primary; the second source is one second behind the primary. If the `syncedTo` value is excessive, consider troubleshooting your installation of MongoDB.
 
-## Create a primary replica of the database as admin
-
-The following script shows how to execute into MongoDB:
-
-```
-#!/bin/bash
-
-# grab mongo URI and grab a mongo shell
-
-[[ -z $1 ]] && echo "No Namespace specified, defaulting to harness..."
-        [[ -z $1 ]] && ns="harness" || ns="$1"
-
-
-MONGO_URI=$(echo `kubectl -n $ns get secret harness-manager-config -o yaml |grep MONGO_URI |cut -d : -f2 | head -1 |base64 -d -i`)
-
-echo $MONGO_URI
-
-
-kubectl exec -it mongodb-replicaset-chart-0 -n $ns -- mongo "$MONGO_URI"
-```
