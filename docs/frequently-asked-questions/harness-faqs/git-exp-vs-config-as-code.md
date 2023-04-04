@@ -1,17 +1,17 @@
 ---
 title: Git Experience vs Configuration as Code FAQs
-description: Learn about Git experience in NextGen and Config as code in FirstGen.
+description: Learn about Git Experience in NextGen and Config as code in FirstGen.
 
 ---
 
-## What is Git experience in NextGen?
+## What is Git Experience in NextGen?
 
-- With the Git experience, you can store configurations for resources, like pipelines and templates, in one of the following: 
+- With the Git Experience, you can store configurations for resources, like pipelines and templates, in one of the following: 
   - Git repository
   - Harness database
 
 - You can edit any configuration saved in Git using the Harness UI.
-- You can store the following configurations in Git using the Git experience in NextGen: 
+- You can store the following configurations in Git using the Git Experience in NextGen: 
     - Pipelines
     - Templates
     - Input Sets
@@ -71,11 +71,11 @@ The nesting and relational constructs of Continuous Deployment entities make the
 
 In FirstGen, Harness retained a copy of all the changes in its database to read all configurations. This means the changes you made in the UI or Git would first apply to the database before showing up in their respective destinations (i.e. UI or Git). These frequent changes caused sync conflicts with the Harness database and Git. 
 
-The Git experience in NextGen is designed to have one source of truth which is Git. Harness only reads Git and pulls the latest or a specific branch. The Git experience gives more flexibility in branching strategies and testing pipelines, templates, and input sets than the Configuration as Code experience in FirstGen.
+The Git Experience in NextGen is designed to have one source of truth which is Git. Harness only reads Git and pulls the latest or a specific branch. The Git Experience gives more flexibility in branching strategies and testing pipelines, templates, and input sets than the Configuration as Code experience in FirstGen.
 
 ## Why did Harness reduce the number of supported entities backed by Git?
 
-There were Git sync issues with Configuration as Code while maintaining the correct and stable state of Harness entities like service, environment, infrastructure definitions, workflows, pipelines, and workflows. The Git state was overwritten by Harness' current state which was often not the correct state. Focusing on core platform entities like pipelines, templates, and input sets, the Git experience provides multi-branch, multi-version support to manage your resources.
+There were Git sync issues with Configuration as Code while maintaining the correct and stable state of Harness entities like service, environment, infrastructure definitions, workflows, pipelines, and workflows. The Git state was overwritten by Harness' current state which was often not the correct state. Focusing on core platform entities like pipelines, templates, and input sets, the Git Experience provides multi-branch, multi-version support to manage your resources.
 
 For more information, go to:
 
@@ -94,14 +94,14 @@ Configuration as Code is not the same as Git Experience.
 
 Frequent conflicts and sync errors in Configuration as Code made it difficult to scale. Terraform Provider solves this problem by allowing you to configure and manage resources via code.
 
-In the Git experience, pipelines, templates, and input sets are powerful constructs to manage.  However, modifications to services, environments, and infrastructure definitions after initial configuration are minimal. These entities are metadata and pointers to the service configuration. You can modify and audit changes to these entities through code using the Terraform provider.
+In the Git Experience, pipelines, templates, and input sets are powerful constructs to manage.  However, modifications to services, environments, and infrastructure definitions after initial configuration are minimal. These entities are metadata and pointers to the service configuration. You can modify and audit changes to these entities through code using the Terraform Provider.
 
 Entities like services, environments, and infrastructure definitions are highly interdependent. The Git Experience in NextGen supports entity storage in multiple branches and versions, which can result in breaking changes in the interdependent files. Such files are not automatically reconciled and do not have the latest working changes.
 
 
 ## Why does Harness support the storage of only a few entities in Git?
 
-You can store the following configurations in Git using the Git experience: 
+You can store the following configurations in Git using the Git Experience: 
 - Pipelines
 - Templates
 - Input Sets
@@ -127,11 +127,11 @@ Following are some challenges of managing Continuous Deployment Constructs in Gi
 
 ## What is an alternative to manage other entities in Git?
 
-Harness recommends leveraging the Harness Terraform Provider or APIs to automate the management of your configurations like services, environments, and infrastructure definitions. Terraform is the industry standard for managing and updating configurations. You can manage your Harness resources as code via corresponding Terraform configuration files through the Terraform provider. Modules that generate and update services may use a `tfvars` file to pass in the proper and configurable parameters. Harness orchestrates the process to make the change reliably without conflict using pipelines. While the Harness database remains the source of truth, you can vet and publish changes through automation.
+Harness recommends leveraging the Harness Terraform Provider or APIs to automate the management of your configurations like services, environments, and infrastructure definitions. Terraform is the industry standard for managing and updating configurations. You can manage your Harness resources as code via corresponding Terraform configuration files through the Terraform Provider. Modules that generate and update services may use a `tfvars` file to pass in the proper and configurable parameters. Harness orchestrates the process to make the change reliably without conflict using pipelines. While the Harness database remains the source of truth, you can vet and publish changes through automation.
 
 You can automate YAML configurations in Git and pass them to API calls for CRUD operations. Using pipelines, you can integrate Harness APIs or build your own onboarding and automation applications (via a containerized application or serverless functions).
 
-For more information on Harness Terraform provider, go to: 
+For more information on Harness Terraform Provider, go to: 
 
 - [Terraform Provider Quickstart](https://developer.harness.io/docs/platform/terraform/harness-terraform-provider-overview/)
 - [Terraform Provider Automated Onboarding Guide](https://developer.harness.io/docs/platform/Terraform/automate-harness-onboarding)
