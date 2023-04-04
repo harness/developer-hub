@@ -23,8 +23,8 @@ Using recommendations without proper assessment could result in unexpected chang
 
 ## Before You begin
 
-* [Set Up Cloud Cost Management for Kubernetes](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
-* [CCM Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/1-create-cost-perspectives.md)
+* [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 
 ## Prerequisites
 
@@ -162,5 +162,5 @@ Capturing your changes in the URL enables you to share your tuned recommendation
 
 ### Next steps
 
-* [Optimize Kubernetes Costs with Workload Recommendations](/docs/cloud-cost-management/2-use-cloud-cost-management/7-ccm-recommendations/workload-recommendations.md)
+* [Optimize Kubernetes Costs with Workload Recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/workload-recommendations.md)
 

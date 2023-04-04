@@ -57,7 +57,7 @@ The task definitions for AWS Fargate can only be set to predefined values. For m
 
 ### Why Histogram?
 
-A histogram is used to account for the seasonality of high resource utilization on certain days of the week. Assume your application receives a lot of traffic (and thus a lot of resource utilization) on weekends and we're using a decaying histogram. In that case:
+A histogram is used to account for the seasonality of high resource utilization on certain days of the week. Assume your application receives a lot of traffic (and thus a lot of resource utilization) on weekends, and we are using a decaying histogram. In that case:
 
 * If you view service recommendation on Friday and selected the last seven days of utilization data, then Saturday will be given the least weightage, followed by Sunday, hence the recommended resources will be low.
 * If you view the service recommendation on Monday, Sunday will be given the most weightage, hence your recommended resources may be high.
