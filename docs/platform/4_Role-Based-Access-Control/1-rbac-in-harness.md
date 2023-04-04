@@ -26,7 +26,7 @@ Using RBAC helps you:
 
 ## Overview of the hierarchical setup in Harness
 
-The Harness platform has a hierarchical structure consisting of the following three levels or scopes: 
+The Harness platform has a hierarchical structure consisting of the following three levels, which are called scopes in Harness RBAC: 
 
 - Account
 - Organization (Org)
