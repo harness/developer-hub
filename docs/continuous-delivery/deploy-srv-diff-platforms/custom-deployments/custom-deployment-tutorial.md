@@ -66,7 +66,7 @@ Unlike the deployments for supported platforms, like Kubernetes and AWS, Deploym
 * No steady state checks on deployed services.
 * Harness does not track releases.
 
-You can add your own scripts or tests to your Pipelines to describe deployments, check steady state, and track releases. For example, using the [Shell Script](../../../first-gen/continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) or [HTTP](../../cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md) steps.
+You can add your own scripts or tests to your Pipelines to describe deployments, check steady state, and track releases. For example, using the [Shell Script](../../../first-gen/continuous-delivery/model-cd-pipeline/workflows/capture-shell-script-step-output.md) or [HTTP](../../x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines.md) steps.
 
 ## Harness Delegate setup
 
@@ -523,7 +523,7 @@ Since a Deployment Template can be used on any host type, the Command step can o
 
 Consequently, there is no reason to use a Looping Strategy when using the Command step with Deployment Templates.
 
-For more information, go to [Use the Command step to download, copy, or run scripts](../../cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step.md).
+For more information, go to [Use the Command step to download, copy, or run scripts](../../x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step.md).
 
 ### Payloads without High-Level Objects
 

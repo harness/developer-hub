@@ -304,7 +304,7 @@ A great benefit of a Blue/Green deployment is rapid rollback: rolling back to th
 
 You do not need to redeploy previous versions of the app and the pods that comprised their environment.
 
-If you would like to scale down the old version, add a [Shell Script step](../cd-general-steps/using-shell-scripts.md) to the post-deployment steps of your stage.
+If you would like to scale down the old version, add a [Shell Script step](../../x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) to the post-deployment steps of your stage.
 
 Here's an example using `<+pipeline.stages.[stage_name].spec.execution.steps.stageDeployment.output.stageServiceName>` to reference the stage service name. The name of the stage is nginx so the reference is `<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName>`.
 

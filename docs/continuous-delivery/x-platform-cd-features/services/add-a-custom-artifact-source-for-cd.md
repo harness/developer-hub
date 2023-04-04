@@ -244,7 +244,7 @@ For details on using Values YAML in Harness, go to [Kubernetes Services](../../c
 
 ### Shell Script Step
 
-In the stage **Execution** section, add a [Shell Script](../../cd-execution/cd-general-steps/using-shell-scripts.md) step.
+In the stage **Execution** section, add a [Shell Script](../executions/cd-general-steps/using-shell-scripts.md) step.
 
 In **Script**, reference the artifact and any additional attributes you configured. Here's an example where the stage is named Kube:
 

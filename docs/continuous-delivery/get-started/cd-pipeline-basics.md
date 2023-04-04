@@ -94,8 +94,8 @@ For examples, see:
 * [Create a Kubernetes Rolling Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
 * [Create a Kubernetes Canary Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
 * [Create a Kubernetes Blue Green Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
-* [Using Shell Scripts in CD Stages](../cd-execution/cd-general-steps/using-shell-scripts.md)
-* [Using HTTP Requests in CD Pipelines](../cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md)
+* [Using Shell Scripts in CD Stages](../x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md)
+* [Using HTTP Requests in CD Pipelines](../x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines.md)
 
 ### Connectors
 

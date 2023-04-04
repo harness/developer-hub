@@ -201,7 +201,7 @@ pipeline:
 ```
 See also:
 
-* [Using Shell Scripts in CD Stages](../../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md)
+* [Using Shell Scripts in CD Stages](../../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md)
 
 ### Stage
 

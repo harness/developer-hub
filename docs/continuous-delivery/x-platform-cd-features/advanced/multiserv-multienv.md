@@ -1,7 +1,7 @@
 ---
 title: Use multiple services and environments in a deployment
 description: Deploy multiple services to multiple environments.
-sidebar_position: 7
+sidebar_position: 1
 helpdocs_topic_id: tabk4u2e9n
 helpdocs_category_id: etz0u5kujd
 helpdocs_is_private: false
@@ -32,7 +32,7 @@ With multiple Harness Services and Environments in the same CD stage, you can:
 
 You can create Services, Environments, and Environment Groups inline when creating your CD stage, or you can create them separately and select them in the stage.
 
-For more information on Services and Environments, go to [Services and Environments Overview](../onboard-cd/services-and-environments-overview.md).
+For more information on Services and Environments, go to [Services and Environments Overview](../../../onboard-cd/services-and-environments-overview.md).
 
 ## Deploy one Service to multiple Environments or Infrastructures
 
@@ -41,29 +41,29 @@ You can deploy one Service to multiple Environments.
 1. In your CD stage, click **Service**.
 2. In **Select Services**, select the Service you want to deploy. Here's an example using Nginx:
    
-   ![](../cd-deployments-category/static/multiserv-multienv-10.png)
+   ![](./static/multiserv-multienv-10.png)
 
 3. Click **Continue**.
 4. In **Environments**, enable **Deploy to multiple Environments or Infrastructures**.
    You can select one or more Environments, and then one or more Infrastructures in each Environment.
 5. In **Specify Environments**, select one or more **Environments**. Each Environment is now listed.
-1. For each Environment, in **Specify Infrastructures**, select one or more Infrastructures, or select **All**.
+6. For each Environment, in **Specify Infrastructures**, select one or more Infrastructures, or select **All**.
    Here's an example using one Environment and two of its Infrastructures.
 
-   ![](../cd-deployments-category/static/multiserv-multienv-11.png)
+   ![](./static/multiserv-multienv-11.png)
 
    For details on **Deploy to Environments or Infrastructures in parallel?**, go to [Deploying in parallel or serial](#deploying_in_parallel_or_serial) below.
 
-1. Click **Continue**, select an Execution strategy, and complete the Execution steps.
-2. Click **Save**.
-3. Click **Run**, and then **Run Pipeline**.
+7. Click **Continue**, select an Execution strategy, and complete the Execution steps.
+8. Click **Save**.
+9. Click **Run**, and then **Run Pipeline**.
    You can see both Infrastructures displayed in the target Environment:
    
-   ![](../cd-deployments-category/static/multiserv-multienv-12.png)
+   ![](./static/multiserv-multienv-12.png)
 
    You can click each Infrastructure to see the deployment to it or user the console view to jump between the Infrastructures:
 
-   ![](../cd-deployments-category/static/multiserv-multienv-13.png)
+   ![](./static/multiserv-multienv-13.png)
 
 ## Deploy multiple Services to one Environment
 
@@ -73,22 +73,22 @@ You can deploy multiple Services to the same Environment and single Infrastructu
 2. Enable the **Deploy multiple Services** setting.
 3. In **Select Services**, select the Services you want to deploy.
 
-![](../cd-deployments-category/static/multiserv-multienv-14.png)
+![](./static/multiserv-multienv-14.png)
 
 For information on **Deploy services in parallel**, go to [Deploying in parallel or serial](#deploying_in_parallel_or_serial) below.
 
 If one or more of the Services uses Runtime Inputs, you can view the settings or switch them to Fixed Value and add a value.
 
-![](../cd-deployments-category/static/multiserv-multienv-15.png)
+![](./static/multiserv-multienv-15.png)
 
 The Services displayed depend on the **Deployment Type** in **Overview**. For example, if the deployment type is Kubernetes, only Kubernetes Services are listed in the **Select Services** list.
 
-![](../cd-deployments-category/static/multiserv-multienv-16.png)
+![](./static/multiserv-multienv-16.png)
 
 1. Click **Continue**.
 2. In **Environment**, select a single Environment and Infrastructure. You don't need to enable **Deploy to multiple Environments or Infrastructures**.
 
-![](../cd-deployments-category/static/multiserv-multienv-17.png)
+![](./static/multiserv-multienv-17.png)
 
 1. Click **Continue**, select an Execution strategy, and complete the Execution steps.
 2. Click **Save**.
@@ -96,7 +96,7 @@ The Services displayed depend on the **Deployment Type** in **Overview**. For ex
 
 You can see the two Service deployments running in parallel on the same Infrastructure.
 
-![](../cd-deployments-category/static/multiserv-multienv-18.png)
+![](./static/multiserv-multienv-18.png)
 
 ## Deploy multiple Services to multiple Environments
 
@@ -105,28 +105,28 @@ You can deploy multiple Services to multiple Environments and Infrastructures. Y
 1. In your CD stage, click **Service**.
 2. Enable the **Deploy multiple Services** setting.
 3. In **Select Services**, select the Services you want to deploy.
-   ![](../cd-deployments-category/static/multiserv-multienv-19.png)
+   ![](./static/multiserv-multienv-19.png)
 
    For information on **Deploy services in parallel**, go to [Deploying in parallel or serial](#deploying_in_parallel_or_serial) below.If one or more of the Services uses Runtime Inputs, you can view the settings or switch them to Fixed Value and add a value.
 
-   ![](../cd-deployments-category/static/multiserv-multienv-20.png)
+   ![](./static/multiserv-multienv-20.png)
 
    The Services displayed depend on the **Deployment Type** in **Overview**.
 
-1. Click **Continue**.
-2. In **Environment**, enable **Deploy to multiple Environments or Infrastructures**.
-3. Select multiple Environments and Infrastructures.
+4. Click **Continue**.
+5. In **Environment**, enable **Deploy to multiple Environments or Infrastructures**.
+6. Select multiple Environments and Infrastructures.
    In the following example, we are deploying to a single Environment but multiple Infrastructures in the Environment.
    
-   ![](../cd-deployments-category/static/multiserv-multienv-21.png)
+   ![](./static/multiserv-multienv-21.png)
    
-4. Click **Continue**, select an Execution strategy, and complete the Execution steps.
-5. Click **Save**.
-6. Click **Run**, and then **Run Pipeline**.
+7. Click **Continue**, select an Execution strategy, and complete the Execution steps.
+8. Click **Save**.
+9. Click **Run**, and then **Run Pipeline**.
 
 You can see the two Service deployments running in parallel on both Infrastructures.
 
-![](../cd-deployments-category/static/multiserv-multienv-22.png)
+![](./static/multiserv-multienv-22.png)
 
 The Service deployments are grouped by Infrastructure. The first two Services are running in parallel on one Infrastructure and the second two Services are running on the other Infrastructure.
 
@@ -143,11 +143,11 @@ Parallel executions are shown vertically and serial executions are show horizont
 
 You can see two Service deployments running in parallel on the same Infrastructure.
 
-![](../cd-deployments-category/static/multiserv-multienv-23.png)
+![](./static/multiserv-multienv-23.png)
 
 Here you can see two Service deployments run serially on the same Infrastructure:
 
-![](../cd-deployments-category/static/multiserv-multienv-24.png)
+![](./static/multiserv-multienv-24.png)
 
 ## Using Environment Groups
 
@@ -160,15 +160,15 @@ You can select target Environments and Infrastructures using Environment Groups.
 
 Here's an example with an Environment Group containing two Environments. One Environment has two Infrastructures and the other has one Infrastructure.
 
-![](../cd-deployments-category/static/multiserv-multienv-25.png)
+![](./static/multiserv-multienv-25.png)
 
 Here's what the deployment looks like:
 
-![](../cd-deployments-category/static/multiserv-multienv-26.png)
+![](./static/multiserv-multienv-26.png)
 
 The console view can also help view multiple deployments clearly:
 
-![](../cd-deployments-category/static/multiserv-multienv-27.png)
+![](./static/multiserv-multienv-27.png)
 
 ## Propagating multiple Services in stages
 
@@ -176,7 +176,7 @@ Service propagation is not supported when using multiple services in a single st
 
 When you add subsequent CD stages to a pipeline you cannot propagate the multiple services like you would with one service.
 
-For details on propagating services in stages, go to [Propagate CD services](../x-platform-cd-features/services/propagate-and-override-cd-services.md).
+For details on propagating services in stages, go to [Propagate CD services](../../services/propagate-and-override-cd-services.md).
 
 ## Rollback with multiple Services and Environments
 
@@ -196,7 +196,7 @@ The Trigger runs the entire pipeline, not just the Service with the manifest or 
 
 When you view a multi Service or Environment deployment, you can see **Max Concurrency**:
 
-![](../cd-deployments-category/static/multiserv-multienv-28.png)
+![](./static/multiserv-multienv-28.png)
 
 Max Concurrency changes based on the following:
 

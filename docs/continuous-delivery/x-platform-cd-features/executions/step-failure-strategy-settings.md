@@ -1,7 +1,7 @@
 ---
 title: Step and Stage Failure Strategy References
 description: This topic provides settings and permissions for the [context]. In this topic --  [Name of Entity] [Setting label name]. [Setting label name]. [Setting label name].. Related Reference Material. [Name of…
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 This topic describes the failure strategy settings for pipeline steps and stages.
