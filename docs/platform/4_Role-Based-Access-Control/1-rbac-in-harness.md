@@ -251,7 +251,7 @@ To execute a pipeline, the principals need the following permissions:
 
 - Access permissions for the resources used in the pipeline.
 
-### Create a principal, roles and resource groups
+### Example workflow to create a principal, roles, and resource groups
 
 For this example, let us create a user group as the principal.
 1. Create a [user group](../4_Role-Based-Access-Control/4-add-user-groups.md) named `SampleUG` in the account scope.
