@@ -145,9 +145,9 @@ For more information on Harness APIs, go to:
 - [API Docs](https://apidocs.harness.io/)
 
 
-## How can I use Git Experience with Terraform?
+## How can I use the Git Experience with Terraform?
 
-Harness recommends Git Experience to manage pipelines, input sets, and templates. These are the core `Pipeline as Code` constructs Harness offers. You can update and track changes to these entities in Git and view them in the Harness UI. The state of the pipeline must have the proper contractual relationship between the template that it references and the input set when changes are made to one of these entities. Changes to the pipeline or template must be reflected in the input set and the location of other entities.
+Harness recommends using the Git Experience to manage pipelines, input sets, and templates. These are the core `Pipeline as Code` constructs Harness offers. You can update and track changes to these entities in Git and view them in the Harness UI. The state of the pipeline must have the proper contractual relationship between the template that it references and the input set when changes are made to one of these entities. Changes to the pipeline or template must be reflected in the input set and the location of other entities.
 
 Harness recommends Terraform Provider for external resources managed separately from the pipeline. Using Terraform, you can manage and audit Harness Continuous Deployment configurations. Additionally, you can automate the definition of service, environment, and infrastructure life cycles via Harness pipelines.
  
