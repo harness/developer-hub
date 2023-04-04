@@ -26,7 +26,7 @@ You can connect Harness to ServiceNow using a Harness ServiceNow connector. This
 
 ### Add a ServiceNow connector
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md).
 
 You can add a Connector from any module in your project in project setup, or in your organization, or account resources.
 

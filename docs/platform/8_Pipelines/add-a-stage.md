@@ -17,11 +17,11 @@ The module you select determines the stage settings.
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
+* [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md)
 
 ### Step 1: Create a Pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md).
 
 You can create a Pipeline from any module in your Project, and then add stages for any module.
 
@@ -45,7 +45,7 @@ Select a stage type and follow its steps.
 
 The steps you see depend on the type of stage you selected.
 
-Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md). Enter a name for the stage.
+Don't see the module you want? You can enable modules in your Project Overview. See [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md). Enter a name for the stage.
 
 You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
 
@@ -89,5 +89,5 @@ In **Advanced**, you can use the following options:
 
 ### See also
 
-* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
+* [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md)
 

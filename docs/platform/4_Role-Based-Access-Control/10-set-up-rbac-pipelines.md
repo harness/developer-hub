@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness Role-Based Access Control (RBAC) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access.
 
-[Role Assignments](./1-rbac-in-harness.md#role-assignment) to Users, User Groups, and Service Accounts at a specific scope, determine their permissions.
+[Role Assignments](../4_Role-Based-Access-Control//1-rbac-in-harness.md#role-assignment) to Users, User Groups, and Service Accounts at a specific scope, determine their permissions.
 
 This quickstart shows how to configure Role-Based Access Control (RBAC) for Pipeline Creation, Execution, and Connector Admin.
 
@@ -26,7 +26,7 @@ You will learn how to:
 ### Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
+* [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md)
 * For information on creating a Pipeline and adding a Stage, see [Add a Stage](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline).
 * Make sure you have **Admin** rights for the Account/Org/Project where you want to configure Access Management.
 
@@ -36,17 +36,17 @@ You will learn how to:
 * You must have **View** and **Manage** permissions for **User Groups**.
 * You must have **View**, **Create/Edit**, and **Delete** permissions for **Resource Groups**.
 * You must have **View**, **Create/Edit**, and **Delete** permissions for **Roles**.
-* You must have created your Organizations and Projects. See [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
+* You must have created your Organizations and Projects. See [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md).
 
 ### RBAC Components
 
 To manage access control in Harness, you must have the following components in place:
 
-* **Principal**: can be a [User](./3-add-users.md), [User Group](./4-add-user-groups.md), or [Service Account](./6-add-and-manage-service-account.md).
-* **Resource Group**: is a list of resources within a specific scope on which a Principal can perform actions. See [Add and Manage Resource Groups](./8-add-resource-groups.md).
-* **Roles**: is a set of permissions that is assigned to a Principal for specific Resource Groups. See [Add and Manage Roles](./9-add-manage-roles.md).
+* **Principal**: can be a [User](../User-Management/3-add-users.md), [User Group](../User-Management/4-add-user-groups.md), or [Service Account](../User-Management/6-add-and-manage-service-account.md).
+* **Resource Group**: is a list of resources within a specific scope on which a Principal can perform actions. See [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
+* **Roles**: is a set of permissions that is assigned to a Principal for specific Resource Groups. See [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
 
-Harness provides a set of built-in Resource Groups and Roles for you to easily manage access control. For more information, see [Role Assignments](./1-rbac-in-harness.md#role-assignment).
+Harness provides a set of built-in Resource Groups and Roles for you to easily manage access control. For more information, see [Role Assignments](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment).
 
 However, you can always create your own custom Resource Groups and Roles to manage access control as per your needs.
 
@@ -123,7 +123,7 @@ Your User Group is now listed under User Groups.
 
 #### Step 4: Assign Role Permission to the User Group
 
-Let us now complete the [Role Assignment](./1-rbac-in-harness.md#role-assignment) for the User Group to complete the RBAC set up for Pipeline Owner.
+Let us now complete the [Role Assignment](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment) for the User Group to complete the RBAC set up for Pipeline Owner.
 
 1. In your Harness Account, click **Account Settings**.
 2. Click **Access Control**.

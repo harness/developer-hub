@@ -25,7 +25,7 @@ This quickstart shows you how to write your configurations in Terraform and prov
 * You must have a Harness Account.
 * You must have an admin setup for your Harness Account.
 * You must have a Personal Access Token (PAT).  
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md#create-personal-access-token).
+For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../User-Management/7-add-and-manage-api-keys.md#create-personal-access-token).
 
 ### Important
 
@@ -37,7 +37,7 @@ For detailed steps on how to generate a PAT, see [Create a Personal Access Token
 	+ Secrets
 	+ Pipelines
 * You cannot provision users using Harness Terraform Provider.  
-You can provision users through SCIM using [Okta](../3_Authentication/6-provision-users-with-okta-scim.md), [OneLogin](../3_Authentication/7provision-users-and-groups-with-one-login-scim.md) or [Azure AD](../3_Authentication/8-provision-users-and-groups-using-azure-ad-scim.md).
+You can provision users through SCIM using [Okta](../User-Management/6-provision-users-with-okta-scim.md), [OneLogin](../User-Management/7provision-users-and-groups-with-one-login-scim.md) or [Azure AD](../User-Management/8-provision-users-and-groups-using-azure-ad-scim.md).
 * You cannot run or monitor your Pipelines using Harness Terraform Provider.
 
 ### Why use Harness Terraform Provider?
@@ -72,7 +72,7 @@ The account Id is in every URL when using Harness:
 
 Enter your Personal Access Token (PAT) in `platform_api_key`.
 
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md#create-personal-access-token).​
+For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../User-Management/7-add-and-manage-api-keys.md#create-personal-access-token).​
 
 
 ```

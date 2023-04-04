@@ -18,7 +18,7 @@ This topic will explain the steps to create and manage Users within Harness.
 
 ### Step: Add New User
 
-You must first invite Users to your Account/Org/Project to add them to User Groups and assign Role Bindings accordingly. For more information on User Groups and Role Bindings, see [Add and Manage User Groups](./4-add-user-groups.md) and [Role Assignment](./1-rbac-in-harness.md#role-assignment).
+You must first invite Users to your Account/Org/Project to add them to User Groups and assign Role Bindings accordingly. For more information on User Groups and Role Bindings, see [Add and Manage User Groups](./4-add-user-groups.md) and [Role Assignment](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment).
 
 Click **Account Settings**, and click **Access Control**.
 
@@ -27,7 +27,7 @@ Click **New User** in **Users**. The New User settings appear.
 ![](./static/add-users-11.png)
 Enter the email address(es) that the User will use to log into the Harness platform.
 
-If you have Roles and Resource Groups defined, select the Roles and Resource Groups for this user. To add Roles and Resource Groups, see [Add Roles](./9-add-manage-roles.md) and [Add Resource Groups](./8-add-resource-groups.md).
+If you have Roles and Resource Groups defined, select the Roles and Resource Groups for this user. To add Roles and Resource Groups, see [Add Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md) and [Add Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
 
 Click **Save**. The user will receive a verification email at the address(es) you provided. When the user logs into Harness, the user creates a password, the email address is verified, and the user name is updated.
 
@@ -100,7 +100,7 @@ To add a new role binding for a user, click **Role**.
 ### See also
 
 * [Add and Manage User Groups](./4-add-user-groups.md)
-* [Add and Manage Roles](./9-add-manage-roles.md)
-* [Add and Manage Resource Groups](./8-add-resource-groups.md)
-* [Permissions Reference](./ref-access-management/permissions-reference.md)
+* [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md)
+* [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md)
+* [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 

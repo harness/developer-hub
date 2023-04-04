@@ -228,7 +228,7 @@ For details about the chart values, explanations of the default values, and desc
 
 ## Next steps
 
-After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/organizations-and-projects/create-an-organization.md). 
+After installation is complete, you should create the initial Harness account, and then [create organizations and projects](../../platform/Account-Structure/organizations-and-projects/create-an-organization.md). 
 
 To get started with the modules, review the following topics:
 

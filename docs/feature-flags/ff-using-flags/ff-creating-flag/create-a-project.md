@@ -21,7 +21,7 @@ This topic describes how to create a project in the Harness Platform. For more 
 
 ## Before you begin
 
-Before you create a Feature Flag, you must have [created an Organization](/docs/platform/organizations-and-projects/create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](../../ff-onboarding/ff-security-compliance/manage-access-control.md).
+Before you create a Feature Flag, you must have [created an Organization](/docs/platform/Account-Structure/organizations-and-projects/create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](../../ff-onboarding/ff-security-compliance/manage-access-control.md).
 
 ## Create a project
 
@@ -34,7 +34,7 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 	*Figure 1: Create a Project in Feature Flags*
 
 1. In **About the Project**, in **Name**, enter the name for your project and select a color for it.
-2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](../../../platform/organizations-and-projects/create-an-organization.md#step-1-create-a-harness-org) and [Projects and Organizations](../../../platform/organizations-and-projects/projects-and-organizations.md).
+2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](../../../platform/Account-Structure/organizations-and-projects/create-an-organization.md#step-1-create-a-harness-org) and [Projects and Organizations](../../../platform/Account-Structure/organizations-and-projects/projects-and-organizations.md).
 3. Click **Save and Continue**.
 
 	```mdx-code-block

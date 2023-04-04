@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness User Groups help you manage user access. Each member of a User Group inherits the [role bindings](./1-rbac-in-harness.md#role-assignment) assigned to that group.
+Harness User Groups help you manage user access. Each member of a User Group inherits the [role bindings](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment) assigned to that group.
 
 This topic explains the steps to create and manage User Groups within Harness.
 
@@ -18,7 +18,7 @@ This topic explains the steps to create and manage User Groups within Harness.
 
 ### Step: Add New User Group
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md).
 
 You can add a User Group in Project/Organization/Account scope. To do this, go to Project SETUP, Organization, or Account Resources.
 
@@ -112,8 +112,8 @@ To add notification preferences to Harness User Groups, perform the following st
 ### See also
 
 * [Add and Manage Users](./3-add-users.md)
-* [Harness Default User Groups](./5-harness-default-user-groups.md)
-* [Add and Manage Roles](./9-add-manage-roles.md)
-* [Add and Manage Resource Groups](./8-add-resource-groups.md)
-* [Permissions Reference](./ref-access-management/permissions-reference.md)
+* [Harness Default User Groups](../User-Management/5-harness-default-user-groups.md)
+* [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md)
+* [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md)
+* [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 

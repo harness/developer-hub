@@ -41,7 +41,7 @@ The resources in the org are available to all of its projects.
    ![](static/create-an-organization-01.png)
 
 3. In **Name**, enter a name for your organization.
-4. Enter **Description**, and [Tags](../20_References/tags-reference.md) for your new org.
+4. Enter **Description**, and [Tags](../../20_References/tags-reference.md) for your new org.
 5. Click **Save and Continue**.
 
 ### Invite collaborators
@@ -89,6 +89,6 @@ Next, the Harness modules appear.
 
 ### See also
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Harness Role-Based Access Control Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness Role-Based Access Control Overview](../../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 

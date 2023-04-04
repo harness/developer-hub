@@ -415,7 +415,7 @@ Perform the following steps to create a stack set in AWS:
 
 1. In Harness, click **Home**.
 2. In **Account Setup**, click **Access Control**.
-3. Click **Service Accounts** and then click the service account to which you want to add a new API Key. For step-by-step instructions to add a new Service Account, see [Add and Manage Service Accounts](/docs/platform/Role-Based-Access-Control/add-and-manage-service-account).
+3. Click **Service Accounts** and then click the service account to which you want to add a new API Key. For step-by-step instructions to add a new Service Account, see [Add and Manage Service Accounts](../../../platform/User-Management/6-add-and-manage-service-account.md).
 4. In the Service Account's settings page, click **API Key**.
 5. In the **New API Key** settings, enter **Name, Description,** and **Tags**.
 6. Click **Save**. The new API Key is created.  

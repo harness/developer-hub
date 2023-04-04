@@ -16,7 +16,7 @@ This topic describes how to create a monitored service to correlate change event
 ## Prerequisites
 
 - Ensure that you have installed a Delegate and it can communicate with Harness, the health source, and the change source. To learn more about delegates, go to [Get started with delegates](https://developer.harness.io/docs/category/delegate-concepts).
-- Create an organization if you have not already created one. To learn more about organizations in Harness, go to [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization).
+- Create an organization if you have not already created one. To learn more about organizations in Harness, go to [Create organizations and projects](https://developer.harness.io/docs/platform/Account-Structure/organizations-and-projects/create-an-organization).
 
 ## Create a project
 To create a project, perform the following steps:
@@ -26,7 +26,7 @@ To create a project, perform the following steps:
 2. On the **About the Project** page, do the following, and then select **Save and Continue**: 
    - **Name**: Enter a name for the project.
    - **Color**: Select a color theme for the project.
-   - **Organization**: Select an organization for the project. If you don't yet have an organization in Harness, and want to learn how to create one, go to [Create a Harness Org](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization#step-1-create-a-harness-org).
+   - **Organization**: Select an organization for the project. If you don't yet have an organization in Harness, and want to learn how to create one, go to [Create a Harness Org](https://developer.harness.io/Account-Structure/docs/platform/Account-Structure/organizations-and-projects/create-an-organization#step-1-create-a-harness-org).
 3. On the **Invite Collaborators (Optional)** page, in the **Invite People to Collaborate** field, add team members to the project.
 4. In the **Role** field, assign a role to the collaborators.
 5. Select **Add**.

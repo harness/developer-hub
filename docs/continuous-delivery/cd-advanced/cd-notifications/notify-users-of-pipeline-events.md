@@ -16,12 +16,12 @@ Event notifications are set up using **Notification Rules** in your Pipeline. Yo
 
 This topic describes how to set up **Notification Rules** in your Pipeline.
 
-You can set notifications preferences on User Groups also. See [Add and Manage User Groups](../../../platform/4_Role-Based-Access-Control/4-add-user-groups.md).
+You can set notifications preferences on User Groups also. See [Add and Manage User Groups](../../../platform/User-Management/4-add-user-groups.md).
 
 ## Before You Begin
 
 * [Send Notifications Using Slack](../../../platform/5_Notifications/send-notifications-using-slack.md)
-* [Add and Manage Resource Groups](../../../platform/4_Role-Based-Access-Control/4-add-user-groups.md)
+* [Add and Manage Resource Groups](../../../platform/User-Management/4-add-user-groups.md)
 
 ## Limitations
 
@@ -209,5 +209,5 @@ Once you've created Notification Rules, you can enable and disable them in the *
 
 ## See Also
 
-* [Add and Manage User Groups](../../../platform/4_Role-Based-Access-Control/4-add-user-groups.md)
+* [Add and Manage User Groups](../../../platform/User-Management/4-add-user-groups.md)
 

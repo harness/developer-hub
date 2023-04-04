@@ -32,7 +32,7 @@ Harness performs a `git clone` to fetch files. When fetching very large reposito
 
 ### Step 1: Add an Azure Repos Connector
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).​
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../Account-Structure/organizations-and-projects/create-an-organization.md).​
 
 You can add a Connector from any module in your Project in Project setup.
 

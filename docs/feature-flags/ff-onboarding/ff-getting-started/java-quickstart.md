@@ -32,7 +32,7 @@ As a first step, you need to create a project in Harness. To do this:
 2. In **Projects**, click **Project**.
 3. In **About the Project**, in **Name**, enter the name for your project. You will create your Feature Flag for this project.
 4. (Optional) Select color for your project.
-5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](../../../platform/organizations-and-projects/create-an-organization.md#step-1-create-a-harness-org) and [Projects and Organizations](../../../platform/organizations-and-projects/projects-and-organizations.md).
+5. Select the Organization from the list. If you need to create a new Organization, go to [Create a Harness Organization](../../../platform/Account-Structure/organizations-and-projects/create-an-organization.md#create-a-harness-org) and [Projects and Organizations](../../../platform/Account-Structure/organizations-and-projects/projects-and-organizations.md).
 6. Click **Save and Continue**.
 7. (Optional) In **Invite Collaborators**, in **Invite People to Collaborate**, add members to collaborate with you on the project.
 8. (Optional) Assign a role to the collaborators and click **Add**. You can select **Project Admin**, **Project Member**, or **Project Viewer**. For more information on permissions, go to [Permissions Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).

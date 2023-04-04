@@ -699,7 +699,7 @@ We recommend starting out in the Harness User Interface to get familiar with all
 Please review these topics to get familiar with the Harness constructs:
 
 - [Harness Key Concepts](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)
-- [Projects, Orgs, Account](https://developer.harness.io/docs/platform/organizations-and-projects/projects-and-organizations/)
+- [Projects, Orgs, Account](https://developer.harness.io/docs/platform/Account-Structure/organizations-and-projects/projects-and-organizations/)
 - [Service, Environments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/)
 
 ### Create a project for resource automation

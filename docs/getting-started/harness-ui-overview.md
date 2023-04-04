@@ -34,7 +34,7 @@ The Harness UI is organized into several key areas. This topic explains how you 
 
 A Harness project is a group of Harness modules, their pipelines, and resources. For example, a project might have a Harness CI pipeline to build code and push an image and a Harness CD pipeline to deploy that image to a cloud platform.
 
-For more information, see [Create Organizations and Projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization).
+For more information, see [Create Organizations and Projects](https://developer.harness.io/docs/platform/Account-Structure/organizations-and-projects/create-an-organization).
 
 ## Deployments
 
@@ -161,7 +161,7 @@ For more information, go to [Audit Trail](https://developer.harness.io/docs/cate
 
 Harness Organizations (Orgs) allow you to group projects that share the same goal.​
 
-For more information, refer to [Projects and Organizations](https://developer.harness.io/docs/platform/organizations-and-projects/projects-and-organizations).
+For more information, refer to [Projects and Organizations](https://developer.harness.io/docs/platform/Account-Structure/organizations-and-projects/projects-and-organizations).
 
 ## My Profile
 

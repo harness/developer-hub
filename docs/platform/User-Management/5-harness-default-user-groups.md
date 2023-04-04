@@ -34,7 +34,7 @@ The users that you add in the Account scope will **not** be assigned the **Accou
 * When you add a new Organization or Project, the default role assignment for the default User Group is that of **Organization Viewer** and **Project Viewer** respectively.![](./static/harness-default-user-groups-57.png)
 * When you add a user to an existing Account, Organization, or Project, Harness adds the user to the default User Group in the scope where you added the user.  
 For example, if you add a user to your existing Organization `OrgExample`, Harness will add the user to the All Organization Users group within `OrgExample`.
-* Admin can do the required [role assignment](./1-rbac-in-harness.md#role-assignment) for the default User Groups.
+* Admin can do the required [role assignment](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment) for the default User Groups.
 * When you add a user to your Harness Account, the user's default role assignment is the same as the role assignment of the default User Group in the Account.  
 For example, the **All Account Users** group in your Account has the role assignment of **Account Viewer**. All the members of this group can view resources within the scope of this Account. Now, you add a new user to this Account.  
 Harness adds this user to the **All Account Users** group and the role assignment of this user is **Account Viewer** which is inherited from the default User Group of this Account.
@@ -58,9 +58,9 @@ Your Organization now appears in the list of Organizations.
 The **Add Role** settings appear.![](./static/harness-default-user-groups-60.png)
 11. Click **Add**.
 12. In **Roles**, select a Harness built-in Role or a custom Role that you have created for the desired permissions.  
-For more information on built-in roles and custom roles, see [Add and Manage Roles](./9-add-manage-roles.md).
+For more information on built-in roles and custom roles, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
 13. In **Resource Groups**, select a Harness built-in Resource Group or a custom Resource Group that you have created for the desired resources.  
-For more information on built-in roles and custom roles, see [Add and Manage Resource Groups](./8-add-resource-groups.md).
+For more information on built-in roles and custom roles, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
 14. Click **Apply**.
 
 All the existing members and any new members that you add to this Organization will have the role bindings that you just added.

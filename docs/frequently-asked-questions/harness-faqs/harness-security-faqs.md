@@ -53,8 +53,8 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 The set of security features that Harness provides includes the following features:
 
-* [User management](../../platform/4_Role-Based-Access-Control/3-add-users.md)
-* [User group management](../../platform/4_Role-Based-Access-Control/4-add-user-groups.md)
+* [User management](../../platform/User-Management/3-add-users.md)
+* [User group management](../../platform/User-Management/4-add-user-groups.md)
 * [Role management](../../platform/4_Role-Based-Access-Control/9-add-manage-roles.md)
 * [Resource group management](../../platform/4_Role-Based-Access-Control/8-add-resource-groups.md)
 * [Access management (for example, RBAC)](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md)
@@ -106,9 +106,9 @@ See:
 
 * [Single sign-on (SSO) with SAML](../../platform/3_Authentication/3-single-sign-on-saml.md)
 * [Single sign-on (SSO) with OAuth](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
-* [Provision users with Okta (SCIM)](../../platform/3_Authentication/6-provision-users-with-okta-scim.md)
-* [Provision users with OneLogin (SCIM)](../../platform/3_Authentication/7provision-users-and-groups-with-one-login-scim.md)
-* [Provision users with Azure AD (SCIM)](../../platform/3_Authentication/8-provision-users-and-groups-using-azure-ad-scim.md)
+* [Provision users with Okta (SCIM)](../../platform/User-Management/6-provision-users-with-okta-scim.md)
+* [Provision users with OneLogin (SCIM)](../../platform/User-Management/7provision-users-and-groups-with-one-login-scim.md)
+* [Provision users with Azure AD (SCIM)](../../platform/User-Management/8-provision-users-and-groups-using-azure-ad-scim.md)
 
 #### Are there best practices for setting up Harness users?
 
@@ -296,5 +296,5 @@ To integrate Harness with some third-party apps, you need to register Harness wi
 
 The API key is a simple encrypted string that other applications can use to access Harness without a private Harness account.
 
-See [API keys](../../platform/4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
+See [API keys](../../platform/User-Management/7-add-and-manage-api-keys.md).
 
