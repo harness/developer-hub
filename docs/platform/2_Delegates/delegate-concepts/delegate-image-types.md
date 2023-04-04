@@ -50,7 +50,7 @@ The following table provides instructions for retrieval of delegate images.
 
 | Delegate | Docker command |
 | --- | --- |
-| DELEGATE | `docker pull harness/delegate:` *`<yy.mm.xxxxxx>`* |
-| DELEGATE-MINIMAL | `docker pull harness/delegate:` *`<yy.mm.xxxxxx> .minimal`* |
+| DELEGATE | `docker pull harness/delegate:` *`<yy.mm.xxxxx>`* |
+| DELEGATE-MINIMAL | `docker pull harness/delegate:` *`<yy.mm.xxxxx>.minimal`* |
 
 
