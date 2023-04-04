@@ -1,5 +1,5 @@
 ---
-title: Git Experience Vs Configuration as Code FAQs
+title: Git Experience vs Configuration as Code FAQs
 description: Learn about Git experience in NextGen and Config as code in FirstGen.
 
 ---
