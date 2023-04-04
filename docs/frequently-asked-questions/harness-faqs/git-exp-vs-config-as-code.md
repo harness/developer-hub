@@ -6,7 +6,7 @@ description: Learn about Git experience in NextGen and Config as code in FirstGe
 
 ## What is Git experience in NextGen?
 
-- With the Git experience, you can store configurations for resources like pipelines, and templates in one of the following: 
+- With the Git experience, you can store configurations for resources, like pipelines and templates, in one of the following: 
   - Git repository
   - Harness database
 
