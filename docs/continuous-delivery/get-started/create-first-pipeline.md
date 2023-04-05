@@ -4,7 +4,7 @@ description: Learn how to model you release process in minutes.
 sidebar_position: 2
 ---
 
-This is a step-by-step tour of using Harness CD pipelines to deploy an application. We show you how to use our YAML, API, and console methods for building pipelines.
+This is a step-by-step tour of using Harness CD pipelines to deploy an application. We show you how to use our YAML, API, Terraform Provider, and console (Pipeline Studio) methods for building pipelines.
 
 <details>
 <summary>Want to try out Harness CD locally?</summary>
@@ -21,13 +21,13 @@ For more information, go to:
 
 ## Prerequisites
 
-All you need is a deployment environment and a Harness delegate installed where it can reach the environment and Harness. 
+All you need is a deployment environment and a Harness delegate installed where it can reach the environment and Harness.
 
 ### Deployment environment
 
 If you already have access to a cluster, you can skip this section. Simply install a Harness delegate in the cluster as described in the next section.
 
-Here are several options, including popular cloud platforms and local options.
+Here are several options for creating a cluster, including popular cloud platforms and local options.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -75,7 +75,7 @@ kubectl get nodes
   <TabItem value="Google GKE" label="Google GKE">
 ```
 
-Replace ZONE with your GCP region, for example us-central1-c:
+Replace `ZONE` with your GCP region, for example us-central1-c:
 
 ```
 gcloud container clusters create [CLUSTER-NAME] --num-nodes=2 --machine-type=[MACHINE-TYPE] --disk-size=10GB --zone=[ZONE]
@@ -98,7 +98,7 @@ kubectl get nodes
   <TabItem value="Azure AKS" label="Azure AKS">
 ```
 
-Replace myResourceGroup with your AKS resource group:
+Replace `myResourceGroup` with your AKS resource group:
 
 ```
 az aks create -g myResourceGroup -n myAKSCluster --enable-managed-identity --node-count 2 --enable-addons monitoring --enable-msi-auth-for-monitoring --generate-ssh-keys
@@ -169,11 +169,12 @@ Harness provides multiple methods for creating your pipelines.
 
 The process is the same for all methods: 
 
-- Define a Harness service that represents your app or microservice.
-- Define a target environment.
-- Define the pipeline execution steps. If you use the Harness Manager, Harness automatically adds the steps you need for different [deployment strategies](../manage-deployments/deployment-concepts).
+1. Add a Kubernetes Cluster connector to connect Harness with your cluster.
+2. Define a Harness service that represents your app or microservice. This includes your manifest and artifact but we'll only using a manifest with a hardcoded artifact in this topic.
+3. Define a target environment.
+4. Define the pipeline execution steps. If you use the Harness Manager, Harness automatically adds the steps you need for different [deployment strategies](../manage-deployments/deployment-concepts).
 
-First, let's add the manifest we'll be using to the Harness File Store in your project:
+First, let's add the manifest we'll be using to the Harness File Store in your project. You can add a manifest from any remote repo, but we'll use the File Store in this topic.
 
 1. In your Harness project, select **Project Setup**, and then select **File Store**.
 2. Select **New**, and then select **New File**.
@@ -221,6 +222,8 @@ import TabItem1 from '@theme/TabItem';
   <TabItem1 value="YAML" label="YAML" default>
 
 The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
+
+For information on using YAML in Harness, go to [Harness YAML Quickstart](https://developer.harness.io/docs/platform/pipelines/harness-yaml-quickstart/).
 
 <details>
 <summary>Create the Harness connector</summary>
@@ -386,6 +389,9 @@ You can now run your pipeline.
   </TabItem1>
   <TabItem1 value="API" label="API">
 ```
+The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
+
+For information on using the Harness API, go to [Harness API Quickstart](https://developer.harness.io/docs/platform/apis/api-quickstart/). For information on the security token, go to [Add and Manage API Keys](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys).
 
 <details>
 <summary>Create the Harness connector</summary>
@@ -521,6 +527,8 @@ You can now run your pipeline.
   <TabItem1 value="Terraform Provider" label="Terraform Provider">
 ```
 
+The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
+
 For information on using the Harness Terraform Provider, go to [Onboard with Terraform Provider](https://developer.harness.io/tutorials/platform/onboard-terraform-provider).
 
 <details>
@@ -529,7 +537,7 @@ For information on using the Harness Terraform Provider, go to [Onboard with Ter
 For the Terraform Provider resource, go to [harness_platform_connector_kubernetes](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_kubernetes).
 
 ```json
-## Create the K8s cluster connector
+## Create the Kubernetes cluster connector
 
 resource "harness_platform_connector_kubernetes" "inheritFromDelegate" {
   identifier  = "K8s_Cluster"
@@ -727,6 +735,8 @@ You can now run your pipeline.
   <TabItem1 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
+The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
+
 <details>
 <summary>Create the Harness connector</summary>
 
@@ -754,7 +764,7 @@ To add Kubernetes manifests to your service, do the following:
 8. In **Specify K8s Manifest Store**, select **Harness**.
 9. In **Manifest Details**, in **Name**, enter a name for the manifest.
 10. Select **File/Folder Path**, and then, in **Create or Select an Existing Config file**, select the manifest we added earlier, and select **Apply Selected**.
-    
+     
   ![select manifest](static/50698bc8e20faa0ced4486d39d1ff96641304726d3c92d000602c86891b58d8d.png)  
 11. Select **Submit**.
 12. Save the service.
