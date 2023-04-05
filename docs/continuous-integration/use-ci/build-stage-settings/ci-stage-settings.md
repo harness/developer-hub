@@ -8,11 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the CI Build stage.
+This topic describes CI Build stage settings. For more information about configuring stages in CI pipelines, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
-## Permissions
-
-Role(s) required to create, retrieve, update, and delete data in Pipeline stage. Project Admin, Project Member.
+To create, edit, and delete stages in CI pipelines, you need either Project Admin or Project Member permissions. For more information, go to the [Permission Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
 
 ## Stage Name
 
@@ -26,6 +24,10 @@ See [Entity Identifier Reference](../../../platform/20_References/entity-identif
 
 Text string.
 
+## Tags
+
+See [Tags Reference](../../../platform/20_References/tags-reference.md).
+
 ## Clone Codebase
 
 When you select this option, Harness automatically clones your codebase repository before executing the steps of this stage.
@@ -36,37 +38,40 @@ If you don't select the option here, you can select it in **Stage Details**.
 
 ## Configure Codebase
 
-These settings specify the codebase for the Stage. See [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+These settings specify the codebase for the Stage. See [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md). Available when you add the first stage to a pipeline. After adding the stage, these are managed under the pipeline's **Codebase** settings.
 
-## Connector
+### Connector
 
 A Harness codebase connector that connects to the repository where the codebase is located.
 
-## Repository URL
+### Repository URL
 
 The full URL for the codebase.
 
-## Stage Details
 
-The name of the stage and the **Clone Codebase** option.
 
-### Stage Name
 
-You can edit the stage name.
 
-### Description
 
-Text string.
+## Overview
 
-### Tags
+Settings found on the **Overview** tab after adding a stage to a pipeline.
 
-See [Tags Reference](../../../platform/20_References/tags-reference.md).
+### Stage Details
 
-### Clone Codebase
+Repeats Name, Description, Tags, and Clone Codebase.
 
-Same as Clone Codebase above.
+### Shared Paths
 
-## Workspace
+You can add Shared Paths to share data in folders outside the default workspace. For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Build Stage uses Maven, you can specify the shared path`/root/.m2` so that all Steps can access the repo.
+
+### Stage Variables
+
+Found under **Advanced** on the **Overview** tab.
+
+Environment variables are available to all steps in the stage. For an example use case, go to [Build a Docker image without pushing](../build-and-upload-artifacts/build-and-upload-an-artifact.md#useful-techniques).
+
+<!--### Workspace
 
 Harness automatically creates a temporary volume, known as your workspace, and clones your codebase repository into this volume. The workspace is the current working directory for each step in your Pipeline.
 
@@ -74,21 +79,22 @@ Enter a workspace volume, beginning with a forward slash, such as `/vol`. If you
 
 The workspace is ephemeral: the Build creates the workspace when the Stage starts and destroys it when the Stage ends.
 
-Individual Steps can communicate and share state using the workspace filesystem. The workspace is a volume, so filesystem changes persist across the entire Stage.
-
-### Shared Paths
-
-You can add Shared Paths to share data in folders outside the default workspace. For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Build Stage uses Maven, you can specify the shared path`/root/.m2` so that all Steps can access the repo.
-
-## Variables
-
-Environment variables are available to all steps in the stage. For an example use case, go to [Build a Docker image without pushing](../build-and-upload-artifacts/build-and-upload-an-artifact.md#useful-techniques).
+Individual Steps can communicate and share state using the workspace filesystem. The workspace is a volume, so filesystem changes persist across the entire Stage.-->
 
 ## Infrastructure
 
-This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature is coming soon.Infrastructure is where the build is run. It is a build farm. For example, a Kubernetes cluster. The cluster uses a container to execute Run steps in the stage. See [Run step settings](../../ci-technical-reference/run-step-settings.md).
+Settings found on the **Infrastructure** tab after adding a stage to a pipeline.
 
-### Kubernetes Cluster
+Infrastructure is where the build is run. It is a build farm, such as a Kubernetes cluster. Infrastructure settings vary by [build infrastructure type](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+
+<!-- either tabs or accordions -->
+<details>
+<summary>Cloud</summary>
+content in md format
+</details>
+
+<details>
+<summary>Kubernetes</summary>
 
 A Kubernetes cluster can be used as a build farm. See [Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
@@ -184,51 +190,22 @@ A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-evict
 
 A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), which allow (but do not require) the pods to schedule onto nodes with matching taints.
 
+</details>
+
+<details>
+<summary>Local</summary>
+content in md format
+</details>
+
+<details>
+<summary>VMs</summary>
+content in md format
+</details>
+
 ## Execution
 
-The Execution section is where you add the steps that are performed in this stage. For details about settings for each step, go to the [CI Technical Reference](/docs/category/ci-technical-reference).
+The **Execution** tab is where you add steps to the stage. For details about settings for each step, go to the [CI Technical Reference](/docs/category/ci-technical-reference).
 
-## Build Stage YAML Example
+## Advanced
 
-Here's an example of a Build stage definition taken from a Harness pipeline YAML:
-
-
-```yaml
-        - stage:  
-              name: plugin-download-drone  
-              identifier: plugindownloaddrone  
-              type: CI  
-              spec:  
-                  cloneCodebase: true  
-                  infrastructure:  
-                      type: KubernetesDirect  
-                      spec:  
-                          connectorRef: account.docexample  
-                          namespace: default  
-                          volumes:  
-                              - mountPath: /root/.m2  
-                                type: EmptyDir  
-                                spec:  
-                                    medium: ""  
-                                    size: 10Gi  
-                              - mountPath: /var/run  
-                                type: HostPath  
-                                spec:  
-                                    path: /var/run  
-                              - mountPath: /var/my-pv1  
-                                type: PersistentVolumeClaim  
-                                spec:  
-                                    claimName: my-pv1  
-                                    readOnly: true  
-                          serviceAccountName: myServiceAccountName  
-                          automountServiceAccountToken: true  
-                          nodeSelector:  
-                              kubernetes.io/os: windows  
-                          containerSecurityContext:  
-                              capabilities:  
-                                  drop:  
-                                      - ALL  
-                  execution:  
-                      steps:  
-
-```
+The **Advanced** tab contains settings for [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings), [looping strategies](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism), and [failure strategies](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
