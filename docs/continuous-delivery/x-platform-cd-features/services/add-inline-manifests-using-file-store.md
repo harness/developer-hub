@@ -22,9 +22,9 @@ Other configuration files for other integrations, such as Azure Web Apps, etc, a
 Before You Begin
 
 * [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Kubernetes Deployments Overview](../../cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md)
-* [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Add Container Images as Artifacts for Kubernetes Deployments](../../cd-advanced/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md)
+* [Kubernetes Deployments Overview](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/kubernetes-deployments-overview.md)
+* [Add Kubernetes Manifests](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
+* [Add Container Images as Artifacts for Kubernetes Deployments](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md)
 
 ## Review: File Store
 
@@ -120,7 +120,7 @@ You can select and apply the File Store folder with the Kubernetes manifests and
 
 ## Example Manifests
 
-Manifests can use hardcoded values or a Value YAML file and templating. Harness supports Go templating. See [Example Kubernetes Manifests using Go Templating](../../cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+Manifests can use hardcoded values or a Value YAML file and templating. Harness supports Go templating. See [Example Kubernetes Manifests using Go Templating](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
 Use the following manifests to copy into your blank manifest files in File Store and save them. Then, customize them for your environment, and apply them to your Pipelines.
 

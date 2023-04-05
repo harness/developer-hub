@@ -1,6 +1,6 @@
 {
   "label": "AWS",
-  "position": "100",
+  "position": "800",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",

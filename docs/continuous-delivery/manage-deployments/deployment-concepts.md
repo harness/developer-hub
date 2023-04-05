@@ -58,7 +58,7 @@ One use of Rolling deployments is as the stage following a Canary deployment in 
 * App/DB needs to support both new and old artifacts. Manual checks/verification at each increment could take a long time.
 * Lost transactions and logged-off users are also something to take into consideration.
 
-See [Create a Kubernetes Rolling Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md).
+See [Create a Kubernetes Rolling Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md).
 
 ## Blue/Green deployment
 
@@ -93,7 +93,7 @@ Some vendors call this a red/black deployment.
 
 See:
 
-* [Create a Kubernetes Blue Green Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
+* [Create a Kubernetes Blue Green Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
 
 ## Canary deployment
 
@@ -133,7 +133,7 @@ In Phase 2 we do a rolling deployment with the production version and scale down
 
 See:
 
-* [Create a Kubernetes Canary Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
+* [Create a Kubernetes Canary Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
 
 ## Which deployment strategy should I use?
 

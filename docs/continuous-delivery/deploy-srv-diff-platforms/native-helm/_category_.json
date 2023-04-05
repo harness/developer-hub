@@ -1,6 +1,6 @@
 {
   "label": "Native Helm",
-  "position": "900",
+  "position": "400",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",

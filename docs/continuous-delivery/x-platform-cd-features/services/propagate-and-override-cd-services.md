@@ -90,5 +90,5 @@ You can overlay values files in Harness by adding multiple files or you can repl
 
 ![overlay](./static/0bbc97758875d869b84bcf9ee6648103f217ecd0923076a0f2d86f3c821e0df7.png)
 
-See [add and override values YAML files](../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md).
+See [add and override values YAML files](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files.md).
 

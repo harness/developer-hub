@@ -1,11 +1,11 @@
 {
-    "label": "CD governance",
+    "label": "Kubernetes technical reference",
     "position": "200",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "CD governance"
+        "title": "Kubernetes technical reference"
     }
   }

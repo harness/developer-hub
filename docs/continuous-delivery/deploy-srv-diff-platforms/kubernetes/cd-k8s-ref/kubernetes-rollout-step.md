@@ -39,7 +39,7 @@ With the Rolling Deployment step, you can deploy multiple managed workloads.
 
 For Canary and Blue/Green steps, only one managed object may be deployed per step by default.
 
-You can deploy additional objects using the [Apply Step](../../cd-execution/kubernetes-executions/deploy-manifests-using-apply-step.md), but it is typically used for deploying Jobs controllers.
+You can deploy additional objects using the [Apply Step](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md), but it is typically used for deploying Jobs controllers.
 
 You can specify the multiple workload objects in a single manifest or in individual manifests, or any other arrangement.Here is the log from a deployment where you can see both Deployment objects deployed:
 

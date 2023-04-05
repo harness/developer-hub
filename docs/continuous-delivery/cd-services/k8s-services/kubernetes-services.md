@@ -291,9 +291,9 @@ If you have Values files in both the K8s Manifest **File/Folder Path** and the V
 
 You might have manifest files for resources that you do not want to deploy as part of the main deployment.
 
-Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) step. Or you can simply ignore them and deploy them later.
+Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md) step. Or you can simply ignore them and deploy them later.
 
-See [Ignore a manifest file during deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and [Kubernetes Apply Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md).
+See [Ignore a manifest file during deployment](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md/kubernetes-apply-step.md).
 
 #### Notes
 
@@ -465,7 +465,7 @@ To add a Helm chart to your service, do the following:
 #### Important notes
 
 - If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
-- For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](../../cd-advanced/cd-helm-category/deploy-helm-charts.md).
+- For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](../../deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
 - Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
 - Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
 - Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
@@ -638,7 +638,7 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 - Kustomize patches override values in the base manifest. Harness supports the `patchesStrategicMerge` patches type.
 - If the `patchesStrategicMerge` label is missing from the kustomization YAML file, but you have added Kustomize Patches to your Harness Service, Harness will add the Kustomize Patches you added in Harness to the `patchesStrategicMerge` in the kustomization file. If you have hardcoded patches in `patchesStrategicMerge`, but not add these patches to Harness as Kustomize Patches, Harness will ignore them.
 
-For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](../../deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
 To use Kustomize Patches, do the following:
 
@@ -676,11 +676,11 @@ To use Kustomize Patches, do the following:
 
 If this is your first time using Harness for a Kustomize deployment, see the [Kustomize Quickstart](../../onboard-cd/cd-quickstarts/kustomize-quickstart.md).
 
-For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](../../deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
 #### Important notes
 
-* Harness supports Kustomize and Kustomize Patches for [Rolling](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md), [Canary](../../cd-technical-reference/cd-k8s-ref/canary-deployment-step.md), [Blue Green](../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) strategies, and the Kubernetes [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md) steps.
+* Harness supports Kustomize and Kustomize Patches for [Rolling](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-d../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/canary-deployment-step.mdanary-deployment-step.md), [Blue Green](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deploy../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.mdal-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) steps.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
 * You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 * **Kustomize binary versions:**
@@ -698,7 +698,7 @@ For a detailed walkthrough of deploying Kustomize in Harness, including limitati
 
 Harness supports OpenShift for Kubernetes deployments.
 
-For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../cd-technical-reference/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
+For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
 
 ```mdx-code-block
 import Tabs3 from '@theme/Tabs';
@@ -846,7 +846,7 @@ OpenShift Param Files can be added in the following ways:
 
 ![Params](static/9e15cbd984b566f357edc930d15ff7ce9d186c4d843615f5299710605926f811.png)
 
-For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../cd-technical-reference/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
+For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
 
 Let's look at an example where the OpenShift Param is attached to a template already added:
 
@@ -2963,7 +2963,7 @@ You can add one or more values YAML files containing values for different scenar
 
 Built-in Go templating support enables you to use Kubernetes without the need for Helm.
 
-For more information, see [Example Kubernetes Manifests using Go Templating](../../cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+For more information, see [Example Kubernetes Manifests using Go Templating](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
 Let's look at a few Kubernetes templating examples.
 
@@ -3156,7 +3156,7 @@ For example, a logging sidecar can be used to capture and store application logs
 
 Sidecars can also be used to implement advanced features like load balancing, service discovery, and circuit breaking. By using a sidecar container for these features, it's possible to keep the primary container simple and focused on its core functionality, while still providing advanced capabilities to the application.
 
-For more information, go to [Add a Kubernetes sidecar container](../../cd-advanced/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
+For more information, go to [Add a Kubernetes sidecar container](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
 
 
 ## Variables
@@ -3211,7 +3211,7 @@ You can propagate services between stages and override service settings by using
 For more information, go to:
 
 - [Propagating CD services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md-cd-services.md)
-- [Add and override values YAML files](../cd-advanced/../../cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md)
+- [Add and override values YAML files](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files.md)
 
 ## Next steps
 

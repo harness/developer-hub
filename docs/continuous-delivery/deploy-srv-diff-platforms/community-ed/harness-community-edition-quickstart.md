@@ -156,7 +156,7 @@ Enter an email address and password and click **Sign up**.
 
 You'll see the CD page:
 
-![](../../onboard-cd/cd-quickstarts/static/harness-community-edition-quickstart-133.png)
+![](./static/harness-community-edition-quickstart-133.png)
 
 You're now using Harness!
 
@@ -239,12 +239,12 @@ We'll create a quick CD Pipeline that deploys a public manifest and image to a l
                               type: StageRollback
   ```
 1. In the Pipeline Studio, click **YAML**.
-  ![](../../onboard-cd/cd-quickstarts/static/harness-community-edition-quickstart-134.png)
+  ![](./static/harness-community-edition-quickstart-134.png)
 2. Click **Edit YAML**.
 3. Replace all of the YAML with the YAML you copied above.
 4. Click **Save**.
 5. Click **Visual**. The new Pipeline is created.
-  ![](../../onboard-cd/cd-quickstarts/static/harness-community-edition-quickstart-135.png)
+  ![](./static/harness-community-edition-quickstart-135.png)
 
   Let's quickly review some key Pipeline concepts:
 
@@ -261,7 +261,7 @@ We'll create a quick CD Pipeline that deploys a public manifest and image to a l
   You'll notice a Runtime Input expression `<+input>` for most of the settings. These are placeholders we'll replace when we run the Pipeline.
 10. Click **Run**. The **Run Pipeline** settings appear.
 
-![](../../onboard-cd/cd-quickstarts/static/harness-community-edition-quickstart-136.png)
+![](./static/harness-community-edition-quickstart-136.png)
 
 Now let's update the placeholders.
 
@@ -355,7 +355,7 @@ Now that the placeholders are configured, you can deploy the Pipeline.
 
 If you want to save these settings, you can click **Save as Input Set**. Then you can use them whenever you run this Pipeline.
 
-![](../../onboard-cd/cd-quickstarts/static/harness-community-edition-quickstart-137.png)
+![](./static/harness-community-edition-quickstart-137.png)
 
 ## Step 3: Deploy
 
@@ -363,7 +363,7 @@ If you want to save these settings, you can click **Save as Input Set**. Then yo
 
   You can see the Pipeline fetch the manifest and deploy the NGINX artifact to your local cluster.
 
-  ![](../../onboard-cd/cd-quickstarts/static/harness-community-edition-quickstart-138.png)
+  ![](./static/harness-community-edition-quickstart-138.png)
 
 2. Click **Console View** to see more of the logs and watch the deployment in realtime.
 
@@ -492,7 +492,7 @@ If you can't use a local or remote cluster for both the Harness Delegate and the
 
 Install the Delegate locally and then when you set up the Harness Kubernetes Cluster Connector, select **Specify master URL and credentials** and use the target cluster master URL and a Kubernetes service account token from the target cluster to connect.
 
-![](../../onboard-cd/cd-quickstarts/static/harness-community-edition-quickstart-139.png)
+![](./static/harness-community-edition-quickstart-139.png
 
 You can get the master URL by connecting to the cluster and running `kubectl cluster-info`.
 

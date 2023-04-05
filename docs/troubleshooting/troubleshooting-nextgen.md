@@ -488,7 +488,7 @@ The following problems can occur when developing and deploying to Kubernetes.
 
 Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback.
 
-See [Kubernetes releases and versioning](../continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+See [Kubernetes releases and versioning](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 If the ConfigMap is edited using kubectl or another tool between deployments future deployments often fail.
 

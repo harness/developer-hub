@@ -1,11 +1,11 @@
 {
-  "label": "Local",
-  "position": "300",
+  "label": "Community Edition",
+  "position": "100",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "Local"
+      "title": "Community Edition"
   }
 }

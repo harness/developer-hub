@@ -1,11 +1,11 @@
 {
-  "label": "Traditional",
+  "label": "Traditional deployments",
   "position": "1200",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "Traditional"
+      "title": "Traditional deployments"
   }
 }

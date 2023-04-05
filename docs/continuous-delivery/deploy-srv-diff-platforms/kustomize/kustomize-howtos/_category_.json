@@ -1,11 +1,11 @@
 {
-    "label": "CD governance",
+    "label": "Kustomize Executions",
     "position": "200",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "CD governance"
+        "title": "Kustomize Executions"
     }
-  }
+}

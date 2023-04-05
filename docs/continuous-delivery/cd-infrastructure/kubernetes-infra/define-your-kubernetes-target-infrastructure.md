@@ -21,8 +21,8 @@ For Amazon Elastic Kubernetes Service (Amazon EKS) and OpenShift, use [Specify a
 ## Before you begin
 
 * [Kubernetes deployment tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Kubernetes deployments overview](../../cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md)
-* [Add Container Images as Artifacts for Kubernetes Deployments](../../cd-advanced/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md)
+* [Kubernetes deployments overview](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/kubernetes-deployments-overview.md)
+* [Add Container Images as Artifacts for Kubernetes Deployments](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md)
 
 ## Add deploy stage and service
 
@@ -37,8 +37,8 @@ For steps on adding a stage, see [Add a Stage](../../../platform/8_Pipelines/ad
 5. In Service Definition **Deployment Type**, select **Kubernetes**.
 6. Add artifacts and manifests. See:
 
-   + [Add Container Images as Artifacts for Kubernetes Deployments](../../cd-advanced/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md)
-   + [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md)
+   + [Add Container Images as Artifacts for Kubernetes Deployments](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md)
+   + [Add Kubernetes Manifests](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
 7. Click **Next** or **Infrastructure**.
 
 ## Select or create an environment
@@ -112,7 +112,7 @@ metadata:
 
 Now your values.yaml and manifest is templated for use with any stage.
 
-For more information about manifests in Harness, see [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
+For more information about manifests in Harness, see [Add Kubernetes Manifests](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
 
 If you omit the `namespace` key and value from a manifest in your Service Definition, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.
 
@@ -134,7 +134,7 @@ The release name must be unique across the cluster. `release-<+INFRA_KEY>` ensur
 
 `release-` is used as a prefix because Kubernetes service and pod names must follow RFC-1035 and must consist of lowercase alphanumeric characters or '-', start with an alphabetic character, and end with an alphanumeric character.
 
-See [Kubernetes Releases and Versioning](../../cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+See [Kubernetes Releases and Versioning](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 ### Cloud Provider
 
@@ -189,7 +189,7 @@ metadata:
 
 Now your values.yaml and manifest is templated for use with any stage.
 
-For more information about manifests in Harness, see [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
+For more information about manifests in Harness, see [Add Kubernetes Manifests](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
 
 If you omit the `namespace` key and value from a manifest in your Service, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.
 
@@ -199,7 +199,7 @@ Harness requires a Kubernetes release name for tracking.
 
 The release name must be unique across the cluster.
 
-See [Kubernetes Releases and Versioning](../../cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+See [Kubernetes Releases and Versioning](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 The Harness-generated unique identifier `<+infrastructure.infrastructureKey>` can be used to ensure a unique release name.
 

@@ -14,7 +14,7 @@ Changes to the manifests used in Harness Kubernetes deployments can result in or
 
 For example, one deployment might deploy resources A and B but the next deployment deploys A and C. C is the new resource and B was removed from the manifest. Without pruning, resource B will remain in the cluster.
 
-You can manually delete Kubernetes resources using the [Delete](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md) step, but you can also set Harness to perform resource pruning during deployment using the **Enable Kubernetes Pruning** setting in the **Rolling Deployment** and **Stage Deployment** (used in Blue Green deployments) steps.
+You can manually delete Kubernetes resources using the [Delete](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) step, but you can also set Harness to perform resource pruning during deployment using the **Enable Kubernetes Pruning** setting in the **Rolling Deployment** and **Stage Deployment** (used in Blue Green deployments) steps.
 
 ![](./static/prune-kubernetes-resources-00.png)
 
@@ -25,9 +25,9 @@ Harness also allows you to identify resources you do not want pruned using the a
 ## Before you begin
 
 * [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Create a Kubernetes Rolling Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
-* [Create a Kubernetes Canary Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
-* [Delete Kubernetes Resources](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md)
+* [Create a Kubernetes Rolling Deployment](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
+* [Create a Kubernetes Canary Deployment](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
+* [Delete Kubernetes Resources](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md)
 
 ## Supported platforms and technologies
 
@@ -128,5 +128,5 @@ As mentioned in **Limitations** above, you cannot add a resource with the annota
 
 ### See also
 
-* [Delete Kubernetes Resources](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md)
+* [Delete Kubernetes Resources](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md)
 

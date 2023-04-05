@@ -36,13 +36,13 @@ You do not need to redeploy previous versions of the service/artifact and the in
 
 ## Rolling Rollback Step
 
-You can add a **Rolling Rollback** step to roll back the workloads deployed by the [Rolling Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) step.
+You can add a **Rolling Rollback** step to roll back the workloads deployed by the [Rolling Deployment](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) step.
 
-Simply add this step where you want to initiate a rollback. Note that this step applies to the deployments of the Rolling Deployment command, and not the [Apply Step](../../cd-execution/kubernetes-executions/deploy-manifests-using-apply-step.md).
+Simply add this step where you want to initiate a rollback. Note that this step applies to the deployments of the Rolling Deployment command, and not the [Apply Step](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
 
 ## See Also
 
 * [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Kubernetes How-tos](/docs/category/kubernetes)
-* [Kubernetes Deployments Overview](../../cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md)
+* [Kubernetes Deployments Overview](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/kubernetes-deployments-overview.md)
 

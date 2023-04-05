@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, etc, just as you would in any native kustomization.
 
-This Kustomize tutorial will deploy multiple variants of a simple public Hello World server using a [rolling update strategy](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) in Harness.
+This Kustomize tutorial will deploy multiple variants of a simple public Hello World server using a [rolling update strategy](../kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) in Harness.
 
 ## Objectives
 

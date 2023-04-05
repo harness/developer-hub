@@ -210,7 +210,7 @@ For this quickstart, we'll just use `service` and `serviceDefinition`. We're jus
 ```
 This stage simply adds a Service named `myservice` and a Service Definition using Kubernetes manifests.
 
-For details on adding manifests to a Service Definition, see [Add Kubernetes Manifests](../../continuous-delivery/cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
+For details on adding manifests to a Service Definition, see [Add Kubernetes Manifests](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
 
 The `connectorRef` setting is for the Harness Connector that connects to the Git repo where the manifests are located. In the Visual editor you can create/select Connectors inline, but in the YAML editor, you must use the name of an existing Connector. In this example, we simply use a Runtime Input (`connectorRef: <+input>`) and we can add the Connector later.
 

@@ -40,7 +40,7 @@ For the full list of the currently supported integrations, see **Continuous Deli
 
 Yes, you can upgrade from within Harness in **Account Settings** > **Subscriptions** or by contacting [Harness Sales](mailto:sales@harness.io).
 
-![](../../cd-advanced/cd-kubernetes-category/static/harness-community-edition-overview-21.png)
+![](./static/harness-community-edition-overview-21.png)
 
 ## Diagnostics and Usage Data
 

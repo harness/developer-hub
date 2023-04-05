@@ -240,5 +240,5 @@ If you have more than one Health Source, click the Health Source dropdown to sel
 
 ## See Also
 
-* [Canary Deployment Step](../cd-technical-reference/cd-k8s-ref/canary-deployment-step.md)
+* [Canary Deployment Step](../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/canary-deployment-step.md)
 

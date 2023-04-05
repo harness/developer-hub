@@ -1,11 +1,11 @@
 {
-    "label": "CD governance",
+    "label": "Builds",
     "position": "200",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "CD governance"
+        "title": "Builds"
     }
   }

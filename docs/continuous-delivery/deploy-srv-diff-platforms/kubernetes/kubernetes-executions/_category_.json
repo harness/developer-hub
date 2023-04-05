@@ -1,11 +1,11 @@
 {
-    "label": "CD governance",
-    "position": "200",
+    "label": "Kubernetes executions",
+    "position": "300",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "CD governance"
+        "title": "Kubernetes executions"
     }
-  }
+}
