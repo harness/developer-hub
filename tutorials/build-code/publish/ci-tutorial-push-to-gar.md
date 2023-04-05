@@ -1,7 +1,9 @@
 ---
-sidebar_position: 70
+title: Google GAR
+sidebar_position: 2
 description: Build and push an application container to Google Artifact Registry using a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, Go, GCP]
+slug: /build-code/publish/google-gar
 ---
 
 # Push application containers to Google Artifact Registry
@@ -145,7 +147,7 @@ You'll also refer to these variables later in this tutorial when building a Harn
 
 Next, you need to build and push the __go__ application. This uses a simple two-step __pipeline__. The first step uses [kaniko](https://github.com/GoogleContainerTools/kaniko) to build an image. The second step pushes the image to the Google Artifact Registry called `harness-tutorial/httpbin-get`.
 
-![Pipeline Steps](static/ci-tutorial-push-to-gar/pipeline_steps.png)
+![Pipeline Steps](../static/ci-tutorial-push-to-gar/pipeline_steps.png)
 
 Run the following to build and push the image to the Google Artifact Registry:
 
@@ -183,7 +185,7 @@ The rest of this tutorial shows how to create a Harness CI pipelines that mimics
 
 While the Harness platform has several modules, this tutorial focuses on the Continuous Integration (CI) module. If you don't already have a Harness account, [sign up for a Harness account](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
 
-![Harness Signup](static/ci-tutorial-node-docker/harness_signup.png)
+![Harness Signup](../static/ci-tutorial-node-docker/harness_signup.png)
 
 ### Build infrastructure hosting options
 
@@ -196,7 +198,7 @@ Pipelines require build infrastructure to run. When you create your own pipeline
 
 [Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart/) uses Harness-hosted machines to run builds. Harness maintains and upgrades these machines, which gives you more time to focus on development.
 
-![Harness CI Hosted Overview](static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
+![Harness CI Hosted Overview](../static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
 
 ```mdx-code-block
 </TabItem>
@@ -205,7 +207,7 @@ Pipelines require build infrastructure to run. When you create your own pipeline
 
 With self-hosted build hardware, your pipelines run on your local machines or your Kubernetes clusters. To learn about self-hosted options, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
-![Harness CI Bring Your Own Overview](static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
+![Harness CI Bring Your Own Overview](../static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
 
 ```mdx-code-block
 </TabItem>
@@ -220,7 +222,7 @@ The GitHub documentation explains how to [Create a personal access token](https:
 
 If you are using an existing personal access token, make sure it has the `admin:repo_hook` and `user` scopes.
 
-![GitHub PAT](static/ci-tutorial-go-containers/gh_pat_scopes.png)
+![GitHub PAT](../static/ci-tutorial-go-containers/gh_pat_scopes.png)
 
 :::important
 
@@ -234,15 +236,15 @@ In the Harness Platform, you declare and configure resources, such as pipelines,
 
 1. Log in to your Harness account that you created earlier and create a project.
 
-   ![New Project](static/ci-tutorial-go-containers/new_project.png)
+   ![New Project](../static/ci-tutorial-go-containers/new_project.png)
 
 2. Name the new project _Google Cloud Demos_, leave other options as their defaults, and then select __Save and Continue__.
 
-   ![Create Fruits API Project](static/ci-tutorial-push-to-gar/google_cloud_project.png)
+   ![Create Fruits API Project](../static/ci-tutorial-push-to-gar/google_cloud_project.png)
 
 3. Select the _Continuous Integration_ module.
 
-   ![Module CI](static/ci-tutorial-go-containers/modules_ci.png)
+   ![Module CI](../static/ci-tutorial-go-containers/modules_ci.png)
 
 ## Create a pipeline
 
@@ -250,23 +252,23 @@ The Harness CI pipeline wizard creates a basic pipeline for you.
 
 1. Select __Get Started__ to begin.
 
-   ![Get Started](static/ci-tutorial-node-docker/get_started.png)
+   ![Get Started](../static/ci-tutorial-node-docker/get_started.png)
 
 2. Select __GitHub__ as the repository to use, select __Access token__ as the authentication method, input your GitHub personal access token (`$GITHUB_PAT`) in the __Access Token__ field, and select __Test Connection__ to verify your credentials.
 
-   ![SCM Choice](static/ci-tutorial-go-containers/scm_choice.png)
+   ![SCM Choice](../static/ci-tutorial-go-containers/scm_choice.png)
 
 3. Select __Next: Select Repository__, choose your fork of the tutorial repo `httpbin-get`, and then select __Next: Configure Pipeline__.
 
-   ![Go Docker Repo](static/ci-tutorial-push-to-gar/go_docker_repo.png)
+   ![Go Docker Repo](../static/ci-tutorial-push-to-gar/go_docker_repo.png)
 
 4. Select __Starter Pipeline__ or one of the starter configurations. Since this tutorial uses a __go__ application, you could use the __Go__ starter configuration. Select __Create Pipeline__.
 
-   ![Configure Go](static/ci-tutorial-push-to-gar/go_starter_pipeline.png)
+   ![Configure Go](../static/ci-tutorial-push-to-gar/go_starter_pipeline.png)
 
 You can use either the visual or YAML editor to add pipeline steps. This tutorial uses the visual editor.
 
-![Pipeline Visual](static/ci-tutorial-push-to-gar/go_docker_pipeline_visual.png)
+![Pipeline Visual](../static/ci-tutorial-push-to-gar/go_docker_pipeline_visual.png)
 
 Initially, you will have a single stage, called _Build_, and single step, called _Echo Welcome Message_. You will modify this stage so that the pipeline builds and pushes an image to Google Artifact Registry. However, first you must configure additional resources that the steps require, namely secrets and connectors.
 
@@ -274,11 +276,11 @@ Initially, you will have a single stage, called _Build_, and single step, called
 
 1. Under __Project Setup__, select __Secrets__.
 
-   ![Project Secrets](static/ci-tutorial-push-to-gar/project_secrets.png)
+   ![Project Secrets](../static/ci-tutorial-push-to-gar/project_secrets.png)
 
 2. Select __New Secret__, and then select __File__.
 
-   ![New Text Secret](static/ci-tutorial-push-to-gar/new_file_secret.png)
+   ![New Text Secret](../static/ci-tutorial-push-to-gar/new_file_secret.png)
 
 3. On the __Add new Encrypted File__ window, populate the fields as described below, and then select __Save__.
 
@@ -287,11 +289,11 @@ Initially, you will have a single stage, called _Build_, and single step, called
    - __Select File__: Choose the `$TUTORIAL_HOME/.keys/harness-tutorial-sa-key.json` file
    - __Description__ and __Tags__: Optional
 
-   ![Google Cloud SA](static/ci-tutorial-push-to-gar/gcp_sa_key_secret_file.png)
+   ![Google Cloud SA](../static/ci-tutorial-push-to-gar/gcp_sa_key_secret_file.png)
 
 4. On the secrets list, make a note of the `id` for the __harness tutorial sa key__. You need this `id` later for your CI pipeline.
 
-   ![Project Secrets](static/ci-tutorial-push-to-gar/project_secrets_list_1.png)
+   ![Project Secrets](../static/ci-tutorial-push-to-gar/project_secrets_list_1.png)
 
 ### Create a Google Cloud Platform (GCP) connector
 
@@ -299,41 +301,41 @@ You must add a __connector__ that allows your build infrastructure to connect to
 
 1. Under __Project Setup__, select __Connectors__.
 
-   ![Project Connectors](static/ci-tutorial-push-to-gar/project_connectors.png)
+   ![Project Connectors](../static/ci-tutorial-push-to-gar/project_connectors.png)
 
 2. Select __New Connector__ and then select __GCP__,
 
-   ![GCP Connector](static/ci-tutorial-push-to-gar/gcp_connector.png)
+   ![GCP Connector](../static/ci-tutorial-push-to-gar/gcp_connector.png)
 
 3. Follow the prompts in the new connector wizard. On the __Overview__ page, input _google cloud_ as the connector __Name__. Then select __Continue__ to configure the credentials.
 
-   ![GCP Connector Overview](static/ci-tutorial-push-to-gar/gcp_connector_overview.png)
+   ![GCP Connector Overview](../static/ci-tutorial-push-to-gar/gcp_connector_overview.png)
 
 4. On the __Details__ page, select _Specify credentials here_, choose the __harness tutorial sa key__ secret that you created earlier, and select __Continue__.
 
-   ![GCP Connector Credentials](static/ci-tutorial-push-to-gar/gcp_connector_details.png)
+   ![GCP Connector Credentials](../static/ci-tutorial-push-to-gar/gcp_connector_details.png)
 
 5. Select __Connect through Harness Platform__.
 
-   ![GCP Connector Connectivity Mode](static/ci-tutorial-push-to-gar/gcp_connect_to_provider_harness_platform.png)
+   ![GCP Connector Connectivity Mode](../static/ci-tutorial-push-to-gar/gcp_connect_to_provider_harness_platform.png)
 
 6. Select __Save and Continue__ to run the connection test,
 
-   ![Docker Connector Success](static/ci-tutorial-push-to-gar/gcp_connector_test_successful.png)
+   ![Docker Connector Success](../static/ci-tutorial-push-to-gar/gcp_connector_test_successful.png)
 
 7. If the connection is successful, select __Finish__.
 
-   ![Connectors List](static/ci-tutorial-push-to-gar/project_connectors_list.png)
+   ![Connectors List](../static/ci-tutorial-push-to-gar/project_connectors_list.png)
 
 ### Configure pipeline steps
 
 1. Go back to __Pipelines__ and select the __Build httpbin-get__ pipeline that you created earlier.
 
-   ![Pipelines List](static/ci-tutorial-push-to-gar/project_pipelines.png)
+   ![Pipelines List](../static/ci-tutorial-push-to-gar/project_pipelines.png)
 
 2. Select the __Build__ stage.
 
-   ![Build httpbin-get Pipeline](static/ci-tutorial-push-to-gar/select_build_httpbin-get_pipeline.png)
+   ![Build httpbin-get Pipeline](../static/ci-tutorial-push-to-gar/select_build_httpbin-get_pipeline.png)
 
 3. Delete the __Echo Welcome Message__ step by selecting the `x` that appears when you hover over the step.
 
@@ -354,7 +356,7 @@ You must add a __connector__ that allows your build infrastructure to connect to
    - __Container Registry__: _google cloud_
    - __Image__: __cr.io/kaniko-project/executor:v1.9.0-debug_
 
-   ![Build and Push Step](static/ci-tutorial-push-to-gar/go_pipeline_step_build_and_push_1.png)
+   ![Build and Push Step](../static/ci-tutorial-push-to-gar/go_pipeline_step_build_and_push_1.png)
 
 6. To enable this step to push the container image to Google Artifact Registry, you must provide kaniko with `$GOOGLE_APPLICATION_CREDENTIALS`. Select __Add__ under __Environment Variables__ and add the following environment variables:
 
@@ -372,11 +374,11 @@ You must add a __connector__ that allows your build infrastructure to connect to
 
    :::
 
-   ![Build environment Variables](static/ci-tutorial-push-to-gar/go_pipeline_step_build_and_push_env_vars.png)
+   ![Build environment Variables](../static/ci-tutorial-push-to-gar/go_pipeline_step_build_and_push_env_vars.png)
 
 7. Select __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
 
-   ![Build and Push app](static/ci-tutorial-push-to-gar/build_and_push_app.png)
+   ![Build and Push app](../static/ci-tutorial-push-to-gar/build_and_push_app.png)
 
 ### Run the pipeline
 
@@ -384,11 +386,11 @@ Try running the pipeline to see if it can build and push the __go__ application.
 
 1. Select __Run__ on the pipeline editor page. On the __Run Pipeline__ screen, make sure __Git Branch__ is selected and the __Branch Name__ is set to _main_. Select __Run Pipeline__ to start the pipeline run.
 
-   ![Run Pipeline](static/ci-tutorial-push-to-gar/run_pipeline.png)
+   ![Run Pipeline](../static/ci-tutorial-push-to-gar/run_pipeline.png)
 
 2. Wait while the pipeline runs to make sure it succeeds.
 
-   ![Build Success](static/ci-tutorial-push-to-gar/go_pipeline_build_and_push_success.png)
+   ![Build Success](../static/ci-tutorial-push-to-gar/go_pipeline_build_and_push_success.png)
 
    :::tip
 

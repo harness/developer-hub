@@ -15,18 +15,18 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Deploy a Helm Chart",
-          module: MODULES.cd,
+          title: "Amazon ECR",
+          module: MODULES.ci,
           description:
-            "Deploy a Helm Chart onto your Kubernetes cluster",
-          link: "/tutorials/deploy-services/kubernetes/helm-chart",
+            "Publish an Image to an Amazon ECR Registry",
+          link: "/tutorials/build-code/publish/amazon-ecr",
         },
         {
-          title: "Deploy a Kubernetes Manifest",
-          module: MODULES.cd,
+          title: "Google GAR",
+          module: MODULES.ci,
           description:
-            "Deploy a Kubernetes Manifest onto your Kubernetes cluster",
-          link: "/tutorials/deploy-services/kubernetes/manifest",
+            "Publish an Image to a Google GAR Registry",
+          link: "tutorials/build-code/publish/google-gar",
         },
       ],
     },

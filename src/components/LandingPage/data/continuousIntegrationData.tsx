@@ -21,83 +21,48 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/build-code/fastest-ci",
   },
   {
-    title: "Build and test on a Kubernetes cluster build infrastructure",
+    title: "Build on a Kubernetes Cluster",
 
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: (
       <>
-        Create a two-stage pipeline that builds a codebase and runs integration
-        tests on a Kubernetes cluster build infrastructure.
+        Build a Docker Image on a Kubernetes Cluster Build Farm.
       </>
     ),
     newDoc: false,
     type: [docType.Documentation],
     time: "30 min",
-    link: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
+    link: "/tutorials/build-code/build/kubernetes-build-farm",
   },
   {
-    title: "Node and Docker CI Pipeline",
+    title: "NodeJS Application",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: (
       <>
-        This build automation guide walks you through building a NodeJS and
-        Docker Application in a CI Pipeline.
+        Build a Docker Image of a NodeJS Application.
       </>
     ),
     newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-node-docker-quickstart",
+    link: "/tutorials/build-code/build/nodejs",
   },
   {
-    title: "Build Go application containers using a CI Pipeline",
+    title: "Go Application",
 
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: (
       <>
-        This build automation guide describes building a Go container image in a
-        CI Pipeline.
+        Build a Docker Image of a Go Application.
       </>
     ),
     newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-go-containers",
-  },
-  {
-    title: "Sign application containers using a CI Pipeline",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide describes how to sign a container image
-        using a CI pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-container-signing",
-  },
-  {
-    title: "Build and Publish a Rust application",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Use a CI pipeline to build, test, and publish a multi-architecture Rust
-        application container image.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-rust-container",
+    link: "/tutorials/build-code/build/go",
   },
 ];
 
