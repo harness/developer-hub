@@ -1,9 +1,8 @@
 ---
-title: Severity scores and levels
+title: Severity scores and levels in STO
 description: How issue severity scores and levels are calculated
-sidebar_position: 100
+sidebar_position: 20
 ---
-
 
 STO assigns a *severity score* to each detected vulnerability. Each score is based on the [Common Vulnerability Scoring System (CVSS) version 3.1](https://www.first.org/cvss/examples). If a vulnerability doesn't have a universal CVSS score, STO uses the score assigned by the scanner that detected the vulnerability. 
 
