@@ -1,6 +1,6 @@
 ---
-title: Create Complex Chaos Experiments
-sidebar_position: 1
+title: Run Chaos Experiments with Serial and Parallel Faults
+sidebar_position: 3
 ---
 
 Complex chaos experiments can be used for validating the resiliency of the entire application stack as part of a single experiment only.

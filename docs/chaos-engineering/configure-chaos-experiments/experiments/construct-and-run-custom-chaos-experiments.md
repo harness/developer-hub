@@ -1,5 +1,5 @@
 ---
-title: Construct and Run Custom Chaos Experiments
+title: Run Chaos Experiments
 sidebar_position: 2
 ---
 
