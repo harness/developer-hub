@@ -6,7 +6,7 @@ Harness supports the deployment of AWS Lambda Functions. Below is a guide to get
 
 *Note: AWS native lambda feature is behind FF: `CDS_AWS_NATIVE_LAMBDA`*
 
-## Product Demo Video
+## Visual summary
 
 <docvideo src="https://www.loom.com/embed/12e4c1161e7e428ba6acf9ff168693c1" width="100%" height="600" />
  
