@@ -7,8 +7,8 @@ You can set notifications on Service Reliability Management (SRM) monitored serv
 
 ### Before You Begin
 
-* [SRM concepts](../getting-started/service-reliability-management-basics.md)
-* [Getting started](../getting-started/create-first-slo.md)
+* [SRM concepts](./getting-started/service-reliability-management-basics.md)
+* [Getting started](./getting-started/create-first-slo.md)
   
 
 ### Limitations

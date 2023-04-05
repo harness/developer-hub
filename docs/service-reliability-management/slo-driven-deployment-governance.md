@@ -15,12 +15,8 @@ This topic walks you through the steps to use SLO-based policies to enforce Pipe
 
 This topic is only meant to demonstrate how Pipeline governance works, so we use a simple Pipeline. OPA policies are written in the Rego policy language of the OPA. We'll provide the policy you'll need for this quickstart, but it's also a good idea to be familiar with Rego before writing or reading policies. See [OPA Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) and the [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) for more information.
 
-### Before You Begin
 
-* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-* Review [Harness Governance Overview](../../platform/14_Policy-as-code/harness-governance-overview.md)
-
-#### How does Harness use OPA?
+### How does Harness use OPA?
 
 The Harness OPA server is an OPA server managed by Harness.
 
@@ -250,7 +246,7 @@ The Policy Set is evaluated and the Pipeline execution fails.
 
 When the Policy Set is evaluated, the Pipeline fails as SLO wasn't configured for the Monitored Service.
 
-Now, [create an SLO](../getting-started/create-first-slo.md) for the Monitored Service.
+Now, [create an SLO](.,/../getting-started/create-first-slo.md) for the Monitored Service.
 
 Once you have set an SLO, click **Run**, and then click **Run Pipeline**.
 
@@ -293,8 +289,3 @@ In this tutorial, you:
 * Ran a Pipeline that failed a policy evaluation
 * Ran a Pipeline that passed a policy evaluation
 * Reviewed policy evaluations for a Pipeline
-
-### See Also
-
-* [Harness Governance Overview](../../platform/14_Policy-as-code/harness-governance-overview.md)
-* [Harness Governance Quickstart](../../platform/14_Policy-as-code/harness-governance-quickstart.md)
