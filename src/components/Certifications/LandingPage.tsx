@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
@@ -33,9 +33,9 @@ export default function Certifications() {
   // React router provides the current component's route, even in SSR
   const location = useLocation();
   const history = useHistory();
-  const { pathname, search } = location;
-  const searchKey = search.replace(/^.*=/, "");
-  const [tab, setTab] = useState(searchKey || "developer");
+  const { pathname = "/", search = "" } = location;
+  const searchKey = search.replace(/^\?.*=/, "");
+  const [tab, setTab] = useState("developer");
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
     if (pathname && tabKey) {
@@ -44,6 +44,12 @@ export default function Certifications() {
   };
 
   const certBadges = getCertBadges(baseUrl);
+
+  useEffect(() => {
+    if (searchKey) {
+      setTab(searchKey);
+    }
+  }, [searchKey]);
 
   return (
     <div className={styles.certifications}>
