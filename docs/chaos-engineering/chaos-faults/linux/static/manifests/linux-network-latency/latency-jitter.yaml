@@ -1,0 +1,11 @@
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-network-latency
+  labels:
+    name: network-latency
+spec:
+  networkChaos/inputs:
+    latency: "1000"
+    jitter: "200"
+    networkInterface: "eth0"

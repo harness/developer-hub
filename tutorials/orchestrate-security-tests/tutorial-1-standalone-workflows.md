@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Tutorial 1: Standalone STO pipeline
+
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness Pipeline. You'll set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
 
 This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In [Tutorial 2](./sto-tutorial-2-integrated-sto-ci-cd-workflows.md), you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
