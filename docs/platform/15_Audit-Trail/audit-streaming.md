@@ -80,6 +80,8 @@ To add a streaming destination in Harness:
 1. To activate streaming to this destination, toggle the status to **Active** besides the streaming destination.
 
    Harness starts writing audit logs after the destination is activated.
+   
+   Harness streams audit logs to the destination every 30 minutes.
 
 2. You can pause audit streaming, preventing any new audit events from being streamed to the configured endpoint by setting the status to **Inactive**. 
    
@@ -91,15 +93,13 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - **Edit**: Select a different streaming destination or make changes to the existing destination.
 
-- Delete: Delete the audit stream destination.
+- **Delete**: Delete the audit stream destination.
 
 ![](./static/edit-delete.png)
 
 ## Amazon S3 audit file details
 
-After you activate your audit stream destination, Harness streams audit logs to the destination every 30 minutes.
-
-Here is an example of an audit stream file in one of the Amazon S3 bucket.
+Here is an example of an audit stream file in one of the Amazon S3 buckets.
 
 ![](./static/s3-auditstream-file.png)
 
