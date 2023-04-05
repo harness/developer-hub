@@ -7,7 +7,6 @@ import { experiments as KubeResilienceExperiments } from "./kube-resilience/expe
 import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
 import { experiments as LoadExperiments } from "./load/experiments";
-import { experiments as LinuxExperiments } from "./linux/experiments";
 
 export const categories: FaultCardItem[] = [
   {
