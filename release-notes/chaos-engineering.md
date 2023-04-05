@@ -1,7 +1,7 @@
 ---
 title: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-03-27T10:00
+date: 2023-04-05T10:00
 sidebar_position: 9
 ---
 
@@ -13,16 +13,12 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## March 27, 2023, version 0.9.x
+## April 5, 2023, version 0.9.x
 
 ### What’s new
 
-* New access control **Execute** to execute chaos experiments (CHAOS-1311)
-    * This release adds a new access control, **Execute**, in addition to **View**, **Create/Edit**, and **Delete**. **Execute** allows you to execute the chaos experiments, whereas **Create/Edit** will only allow you to create a chaos experiment or edit an existing chaos experiment. The newly added access control provides granularity while working with chaos experiments. 
-
-
-* Update button to see available updates for a chaos experiment (CHAOS-1069)
-    * This release displays an ‘Update’ button alongside the chaos experiment. When you click this button, it shows if an update is available for the experiment.
+* **Update** button to see available updates for a chaos infrastructure (CHAOS-1069)
+    * This release displays an **Update** button alongside the chaos infrastructure. When you click this button, it shows if an update is available for the infrastructure.
 
 
 * Clicking an experiment goes to the experiment builder page (CHAOS-995)
@@ -31,15 +27,15 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
  
 * Replica pods are deleted when a chaos infrastructure is disabled (CHAOS-1290)
-    * This release ensures that all replica pods, including the subscriber pod, are deleted when the chaos infrastructure is disabled. You can delete the pods from the user interface by clicking **Disable** which displays a set of commands you can execute on your terminal. The commands vary depending on the mode of deployment (cluster-mode or namespace-mode).
+    * This release deletes all replica pods, including the subscriber pod, when the chaos infrastructure is disabled. You can delete the pods from the user interface by clicking **Disable** which displays a set of commands you can execute on your terminal. The commands vary depending on the mode of deployment (cluster-mode or namespace-mode).
 
 
-* Deploying setup on new chaos infrastructures has ‘X’ and ‘Done’ buttons (CHAOS-1289)
+* Deploying setup on new chaos infrastructures has **‘X’** and **‘Done’** buttons (CHAOS-1289)
     * This release adds the **X** (Cancel) and **Done** buttons to the **Deploy the setup** page when enabling chaos on new infrastructure. The **X** button cancels the deployment of chaos on new infrastructure. The **Done** button deploys chaos on the new infrastructure. 
 
 
 * Message displayed when no matching infrastructure is found (CHAOS-1289)
-    * This release displays the message **"No Kubernetes chaos infrastructures found"** when you search for an infrastructure in the search bar on the Kubernetes infrastructure screen and that infrastructure doesn’t exist. Previously, when an infrastructure was not found, an empty screen used to be displayed.
+    * This release displays an alert message that states **"No Kubernetes chaos infrastructures found"** when you search for an infrastructure in the search bar on the Kubernetes infrastructure screen and that infrastructure doesn’t exist. Previously, when an infrastructure was not found, an empty screen used to be displayed.
  
 
 * Manifest has a yml extension when enabling chaos on new infrastructure (CHAOS-1289)
@@ -54,7 +50,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
     * This release downloads the upgraded manifest file with the yml extension when you click **re-download the manifest**. 
  
 
-* Limit of 1,000 experiments still allows scheduling chaos experiments and connecting to new (or existing) infrastructure (CHAOS-1261)
+* Exceeding limit of 1,000 experiments allows scheduling chaos experiments and connecting to new (or existing) infrastructure (CHAOS-1261)
     * This release displays a message stating that the resource limits have been reached once you exceed the 1,000 experiment creation limit. You will be able to schedule chaos experiments and connect to chaos infrastructures (new and existing ones) even after you hit the limit of 1000 experiments in chaos.
  
 
@@ -74,7 +70,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 * When tuning the target application, the OpenShift cluster timed out before fetching the information from your cluster. This issue is fixed. The duration of timeout has been increased. (CHAOS-1299)
  
-* When the labels of a chaos experiment, such as ‘Run by’ included special characters, the workflow would not run because Kubernetes doesn’t allow special characters in the workflow. This issue is fixed. The labels (which are a part of the manifest file) are encoded before sending the workflow to the cluster and decoded while presenting on the user interface. (CHAOS-1281)
+* When the labels of a chaos experiment, such as **Run by** included special characters, the experiment would not run because Kubernetes doesn’t allow special characters in the labels. This issue is fixed. The labels (which are a part of the manifest file) are encoded before sending the experiment to the cluster and decoded while presenting on the user interface. (CHAOS-1281)
 
 
 ## February 22, 2023, version 0.8.4
