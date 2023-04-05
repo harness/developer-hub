@@ -4,7 +4,7 @@ description: Fail integrated pipelines based on the severity of detected issues
 sidebar_position: 40
 ---
 
-You can set up your pipelines to fail automatically if a scan step detects any issues with a specified [severity](./severities.md)) or higher. This is good practice for all integrated pipelines because it ensures that the pipeline doesn't build and publish updates with serious vulnerabilities. 
+You can set up your pipelines to fail automatically if a scan step detects any issues with a specified [severity](./severities.md) or higher. This is good practice for all integrated pipelines because it ensures that the pipeline doesn't build and publish updates with serious vulnerabilities. 
 
 ## Basic workflow: Fail on Severity
 
