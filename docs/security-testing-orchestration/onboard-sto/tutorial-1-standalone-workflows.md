@@ -1,5 +1,5 @@
 ---
-title: Standalone STO Pipeline tutorial
+title: Tutorial 1 -- Standalone STO pipeline
 description: How to set up a stand-alone pipeline, scan a target, view results, set baselines, and fix vulnerabilities. 
 sidebar_position: 30
 helpdocs_topic_id: yvy4pmt8bw
