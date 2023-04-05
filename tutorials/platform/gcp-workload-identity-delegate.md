@@ -154,15 +154,17 @@ The following section deploys a Harness Delegate onto the GKE cluster.
     - Use the **Harness Cluster Hosting Account** from the account details to find the matching endpoint URL. For example, for `prod-2` it is   <https://app.harness.io/gratis> and set that as the value for `harness_manager_endpoint`.
 
 :::tip
+
 You can find the endpoint corresponding to your **Harness Cluster Hosting Account** from <https://developer.harness.io/tutorials/platform/install-delegate/>
+
 :::
 
 2. Copy the default token from **Projects** --> **Project Setup** --> **Delegates**(**Tokens**) and set it as the value for `harness_delegate_token`.
 
-![copy default token](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r0y1vxdxunxal3li1xug.png)
+    ![copy default token](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r0y1vxdxunxal3li1xug.png)
 
-- `harness_delegate_name`: defaults to **harness-delegate**
-- `harness_delegate_namespace`: defaults to **harness-delegate-ng**
+    - `harness_delegate_name`: defaults to **harness-delegate**
+    - `harness_delegate_namespace`: defaults to **harness-delegate-ng**
 
 3. Run the following command to deploy the Harness Delegate:
 
@@ -171,7 +173,9 @@ task deploy_harness_delegate
 ```
 
 :::note
+
 It will take some time for the delegate to connect.
+
 :::
 
 Wait for the delegate to be connected before proceeding to the next steps. 
@@ -210,43 +214,45 @@ The sources already have a [build stage](https://github.com/harness-apps/workloa
 
 1. Navigate to your Harness Account, **Account Overview** --> **Organizations**, and then select **default** organization.
 
-![default org select](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j07f38navg5c3udfjwan.png)
+    ![default org select](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j07f38navg5c3udfjwan.png)
 
 2. From the Organization overview page select **Templates**,
 
-![templates select](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2nii2f5wqwsr8lkvo5l1.png)
+    ![templates select](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2nii2f5wqwsr8lkvo5l1.png)
 
 3. Select **New Template**, and then select the **Import From Git** option,
 
-![import from git](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/me4lm1hzsqhuygwoid4t.png)
+    ![import from git](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/me4lm1hzsqhuygwoid4t.png)
 
 4. Fill the wizard with values as shown:
 
-![import from git details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iff39t3r5tmaxr1fcrem.png)
+    ![import from git details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iff39t3r5tmaxr1fcrem.png)
 
 :::note
+
 If you want to use your fork of `harness-apps/workload-identity-gke-demo`, then update _Repository_ with your fork.
+
 :::
 
-![import template successful](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0grrjx3t1mq74xje7tg0.png)
+    ![import template successful](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/0grrjx3t1mq74xje7tg0.png)
 
 ### Create a pipeline
 
 1. Navigate to **Builds** --> **Pipelines**, and then select **Create Pipeline**.
 
-![create pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r5cyqbs2xb43l9uzyt2f.png)
+    ![create pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r5cyqbs2xb43l9uzyt2f.png)
 
 2. Select **Add Stage**, and then select **Use template**. Select the **ko_gar_build_push** template that we imported earlier, and then select **Use template** to complete the import.
 
 3. Enter details about the stage:
 
-![stage details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ma34ba7s3dqw0y8qqlm1.png)
+    ![stage details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ma34ba7s3dqw0y8qqlm1.png)
 
 4. Select **Setup Stage** to create the stage and fill other details, such as **Template Inputs**:
 
-![template inputs](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r6crm2c5ygs72juades6.png)
+    ![template inputs](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/r6crm2c5ygs72juades6.png)
 
-We use `default` namespace to run builder pods. The build pod runs with a Kubernetes Service Account(KSA) `harness-builder`.
+    We use `default` namespace to run builder pods. The build pod runs with a Kubernetes Service Account(KSA) `harness-builder`.
 
 :::note
 The `harness-builder` KSA is mapped to Google IAM Service Account (GSA) `harness-delegate` to inherit the GCP roles, using Workload Identity in this case to push the images to Google Artifact Registry (GAR).
@@ -254,7 +260,7 @@ The `harness-builder` KSA is mapped to Google IAM Service Account (GSA) `harness
 
 5. Select **Run** to run the pipeline to see the image being built and pushed to GAR:
 
-![Run Pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kbidxfctui4b3zmmoyuv.png)
+    ![Run Pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kbidxfctui4b3zmmoyuv.png)
 
 A successful run would have pushed the image into GAR. In this example it's `asia-south1-docker.pkg.dev/pratyakshika/demos/lingua-greeter:latest`
 
