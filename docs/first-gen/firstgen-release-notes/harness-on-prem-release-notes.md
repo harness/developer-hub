@@ -14,6 +14,132 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
+### March 14, 2023, version 78426
+
+Delegate: 78310
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 78426 |
+| Delegate | 78310 |
+| Watcher | 77431 |
+| Verification Service | 78426 |
+| UI | 78400 |
+| Learning Engine | 66700 | 
+| Gateway | 2000149 |
+
+#### New features and enhancements
+
+- The **kotsadmin minor version** is upgraded from 1.88.0 to 1.95.0. (SMP-835)
+
+   To upgrade kots to 1.95.0, run:  
+
+       curl https://kots.io/install/1.95.0 | bash
+
+    If you get a `/usr/local/bin is not writable` error, run:
+
+       sudo chown -R `whoami`:admin /usr/local/bin
+
+    then proceed with the installation.
+
+    To update the kots admin console, run:
+
+       kubectl kots admin-console upgrade -n NAMESPACE --wait-duration 10m
+
+    To check the version, run:  
+       
+       kubectl kots version
+
+- The **mongoDB minor version** is upgraded from 4.2 to 4.4. (SMP-837)
+
+  To upgrade to 4.4, do the following.
+
+  1. Get the current featureCompatibiltyVersion. It should be 4.2 if it is using mongo 4.2:
+
+          db.adminCommand( { getParameter: 1, featureCompatibilityVersion: 1 } )
+
+  2. If the current version isn't 4.2, execute into Primary and run:
+
+          db.adminCommand( { setFeatureCompatibilityVersion: "4.2" } )
+
+  3. Determine if the pods are in sync. Make sure they're in sync before you upgrade (the maximum time lag is ~2sec). 
+
+          rs.printsecondaryreplicationinfo()
+
+   4. Proceed to upgrade mongo to 4.4. 
+
+      After the update, continue to monitor the pods to ensure that they're in sync.
+
+   5. Once you're upgraded, update the Feature Compatibility version so that it's used for future upgrades.
+
+           db.adminCommand( { setFeatureCompatibilityVersion: "4.4" } )
+
+  For more information, go to [Upgrade a Replica Set to 4.4](https://www.mongodb.com/docs/manual/release-notes/4.4-upgrade-replica-set/) in the MongoDB docs.
+
+
+- The **TimescaleDb minor version** is upgraded from pg13-ts2.6 to pg13-ts2.9. There is no change in postgres version and no major changes for TimescaleDB. (SMP-838)
+
+    1. Before the minor version upgrade, check the timescaledb extension version by executing into the pod and running:
+
+         \dx timescaledb
+
+     The version should be 2.6.1.
+
+    2. Proceed to upgrade timescaleDB using the installation methods (KOTS/Helm).
+
+    3. After the timescale pods are in steady state, run:
+
+            ALTER EXTENSION timescaledb UPDATE;
+
+    4. Validate the change by running:
+
+          \dx timescaledb
+
+    The version now should be 2.9.3.
+
+  For more information, go to [Upgrading the TimescaleDB extension](https://docs.timescale.com/timescaledb/latest/how-to-guides/upgrades/minor-upgrade/#upgrading-the-timescaledb-extension) in the Timescale docs.
+
+
+- To fix a vulnerability associated with current [elastic search client version 7.7.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.7.0), we are upgrading it to [version 7.17.0](https://mvnrepository.com/artifact/org.elasticsearch/elasticsearch/7.17.7). (PL-30666)
+  	
+- The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a data transfer object (DTO) that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
+  
+Removed the following libraries from the delegate to fix a high-severity vulnerability. (DEL-5721)
+   - org_mongodb_mongodb_driver_sync
+   - org_mongodb_mongodb_driver_legacy
+  
+- Added support for auto-generating and updating build files with test-only java_library targets to support package-level test build files with build cleaner. (PL-5713)
+
+- You can now leverage a new method to selectively escape given characters. (CDS-54875)  
+
+  The syntax is as follows:
+
+  `shell.escapeChars(<input string>, <string of characters to be escaped>)`
+
+  For example, `shell.escapeChars("hello", "ho")` returns `\hell\o`
+
+#### Fixed issues
+
+- Fixed an issue that resulted in exceptions due to missing kryo exception classes. (PL-31162)
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+  
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+
+- When background job scheduling is skipped during startup, background jobs, like the deletion of old records, do not work. A code enhancement has fixed this issue. (PL-31009)
+
+- Selecting a specific audit filter for an API key causes the UI to become unresponsive. An added check ensures that only essential data is sent for display. This has fixed the issue. (PL-30715, ZD-38400)
+ 
+- SAML users removed from the LDAP group are displayed in the linked user group in Harness. A code enhancement has fixed this issue. (PL-30291, ZD-37758)
+  
+- Selecting **Forgot password** after disabling SSO authentication redirects users to the Harness FirstGen authentication UI. This is now fixed and users are redirected to the NextGen authentication UI. (PL-24649)
+
+- Changed delegate behavior to ensure that the tasks assigned to a delegate fail if the delegate does not send heartbeats for a period of three minutes. (DEL-5821)
+- Added validation to ensure that delegates using the YAML of the Legacy Delegate fail on start with the correct error message. (DEL-5715)
+- Added functionality to explicitly release a lock on the profile (`profile.lock` file). This resolves a rare case in which there is no running profile but a `profile.lock` file or profile in a locked state exists. (DEL-5659, ZD-38469)
+
+
 ### February 9, 2023, version 78109
 
 Delegate: 78106
@@ -129,7 +255,7 @@ This release introduces the following features and enhancements.
 | CDS-40179 | Added reconciliation for `looker` entities to ensure data synchronization between mongoDB and timescaleDB. |
 | CDS-45694 | Deployment recon task failing. Longer retention for deployment in custom dashboards was failing due to a missing null check which has been added. (CDS-45694) |
 | CDS-47016 | Changed how search functionality on the deployments page works. Instead of using regex, search operations now use mongo stemming algorithms. |
-| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegates-overview.md). |
+| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview.md). |
 | DEL-5073 | Updated the Core Protocol Buffers library `protobuf-java/protobuf-javalite` to version 3.21.7. This update fixes CVE-2022-3171, a vulnerability that affects some earlier versions. The vulnerability was linked with denial-of-service (DoS) attacks. |
 | DEL-5153 | Upgraded `org.apache.commons:commons-text` to version 1.10.0 to fix a critical vulnerability in the delegate. |
 | DEL-5308 | Removed the delegate dependency on Java driver component `mongo-java-driver`. This eliminates the CVE-2021-20328 vulnerability that affects client-side field-level encryption (CSFLE). |
@@ -234,7 +360,7 @@ This release includes the following fixes.
 | CDS-41544ZD-33364 | Workflow variables that uses secret variables and are referenced in pipelines are encrypted |
 | CDS-41832ZD-33449, ZD-34771 | Added support so that customer can find the artifacts from last deployed workflow or pipeline with the same service as the triggered workflow by enabling the added feature flag. |
 | CDS-41868 | Due to delegate side library upgrade, SFTP connector test was failing and its fixed. |
-| CDS-41896ZD-33547 | Triggered pipline was unable to fetch artifacts from parent pipeline earlier when FF RTIFACT\_COLLECTION\_CONFIGURABLE was enabled . Now it is able to. |
+| CDS-41896ZD-33547 | Triggered pipeline was unable to fetch artifacts from parent pipeline earlier when FF RTIFACT\_COLLECTION\_CONFIGURABLE was enabled . Now it is able to. |
 | CDS-41913 | Resolved a condition that led to the generation of an exception when an artifact URL value was empty.. |
 | CDS-41999ZD-33514 | Resolved a problem that prevented the population of the API access type used to connect to gitlab. |
 | CDS-42064ZD-33758 | Fixed a problem that prevented new lines from being escaped. The problem led to the Slack API rejecting payloads. |

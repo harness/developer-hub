@@ -17,11 +17,13 @@ One key use case for Step Groups is to speed up Pipelines that include a lot of 
 ### Important Notes
 
 * Steps running in parallel cannot reference output data from each other, since the data might not be available. A Step can reference outputs only from other Steps that have already finished running.
-![](./static/group-ci-steps-using-step-groups-17.png)
+
+   ![](./static/group-ci-steps-using-step-groups-17.png)
+
 * You cannot include a Step Group inside another Step Group, but you can arrange Steps within a Group to run serially or in parallel.
 * You can run multiple Step Groups in parallel.
 
-![](./static/group-ci-steps-using-step-groups-18.png)
+   ![](./static/group-ci-steps-using-step-groups-18.png)
 
 ### Parallel Steps, Step Groups, and Resource Consumption
 
@@ -35,16 +37,16 @@ Consider the following Pipeline. In this case, the maximum consumption takes pla
 
 * In your stage, in **Execution**, click **Add Step** and then click **Step Group**.
 
-![](./static/group-ci-steps-using-step-groups-20.png)
+   ![](./static/group-ci-steps-using-step-groups-20.png)
 
-* Enter a name for the step group.\
+* Enter a name for the step group.
 
 ### Step 2: Add Steps to the Step Group
 
 * Once the step group is added, in its **Execution** section, in the new step group, click **Add Step**.
 * Add any step and configure its **Advanced** settings.
 
-A step's **Advanced** settings override the **Advanced** settings of the step group.
+An individual step's **Advanced** settings override the **Advanced** settings of the step group.
 
 ### Option: Conditional Execution
 

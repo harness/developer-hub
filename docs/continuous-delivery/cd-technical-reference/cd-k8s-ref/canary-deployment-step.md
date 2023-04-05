@@ -12,7 +12,7 @@ This topic provides settings and permissions for the CD **Canary Deployment** st
 
 ## Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md).
+See [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md)
 
 ## Canary Deployment
 

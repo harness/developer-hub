@@ -8,31 +8,29 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Feature Flags versioning policy is based on the semantic versioning standard. This topic describes the versioning policy for SDKs.
+The Harness Feature Flags versioning policy is based on the semantic versioning standard (also referred to as [SemVer](https://semver.org/)). This topic describes the versioning policy for SDKs.
 
 ## What is Semantic Versioning?
 
-Semantic Versioning (also referred to as [SemVer](https://semver.org/)) is a mechanism to uniquely label each version of the released software product by an identifier. According to the semantic version policy, the identifier should have the following three components:
+Semantic Versioning is a mechanism to uniquely label each version of the released software product by an identifier. According to the semantic version policy, the identifier should have the following three components:
 
 * `Major` version number
 * `Minor` version number
 * `Patch` version number
 
-These components are separated by periods. For example, X.Y.Z, where:
+These components are separated by periods, for example, **X.Y.Z**, where:
 
+* **X** is the Major Version   
+* **Y** is the Minor Version  
+* **Z** is the Patch Version
 
-```
-X= Major Version   
-Y= Minor Version  
-Z= Patch Version
-```
 When a new version is released, one of the major, minor, or patch components is incremented. Differentiating between new versions is based on the kinds of changes introduced in the new version.
 
-According to the semantic version convention standard:
+### When versions are incremented
 
-* The major version component increments when the version contains breaking changes.
-* The minor version component increments when the version contains new functionality that is backward compatible.
-* The patch version component increments when the version contains backward compatible bug fixes.
+* **Major version:** incremented when the version contains breaking changes.
+* **Minor version:** incremented when the version contains new functionality that is backward compatible.
+* **Patch version:** incremented when the version contains bug fixes that are backward compatible.
 
 For more information, see [Semantic Versioning 2.0.0](http://semver.org/).
 

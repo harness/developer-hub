@@ -1,5 +1,6 @@
 {
    "label":"Set up VM build infrastructures",
+   "position": 60,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",

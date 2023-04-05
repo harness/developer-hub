@@ -23,7 +23,7 @@ const config = {
   markdown: {
     mermaid: true,
   },
-  themes: ['@docusaurus/theme-mermaid'],
+  themes: ["@docusaurus/theme-mermaid"],
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -79,14 +79,6 @@ const config = {
             html: `<img src='${BASE_URL}img/icon_beta.svg' alt='BETA' width='39' height='19' />`,
             href: "#",
           },*/
-          {
-            // type: "search",
-            // position: "right",
-            // className: "searchBar",
-            // use customized coveo search on sidebar
-            type: "custom-coveo-search",
-            position: "right",
-          },
           {
             position: "right",
             type: "dropdown",
@@ -205,12 +197,11 @@ const config = {
               },
               {
                 label: "API Reference",
-                href: "https://apidocs.harness.io/",
+                to: "https://apidocs.harness.io/",
               },
             ],
           },
           {
-            // to: "release-notes",
             label: "Certifications",
             position: "right",
             type: "dropdown",
@@ -227,16 +218,25 @@ const config = {
                 label: "Continuous Integration",
                 to: "certifications/continuous-integration",
               },
-              {
-                label: "Software Delivery Foundations",
-                href: "https://university.harness.io/page/job-role-certifications",
-              },
             ],
           },
           {
             position: "right",
-            href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+            to: "kb",
+            label: "Knowledge Base",
+          },
+          {
+            position: "right",
+            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
             label: "Join Slack",
+          },
+          {
+            // type: "search",
+            // position: "right",
+            // className: "searchBar",
+            // use customized coveo search on sidebar
+            type: "custom-coveo-search",
+            position: "right",
           },
           {
             position: "right",
@@ -261,35 +261,35 @@ const config = {
             items: [
               {
                 label: "Overview",
-                href: "https://harness.io/products/platform",
+                to: "https://harness.io/products/platform",
               },
               {
                 label: "Continuous Integration",
-                href: "https://harness.io/products/continuous-integration",
+                to: "https://harness.io/products/continuous-integration",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                href: "https://harness.io/products/continuous-delivery",
+                to: "https://harness.io/products/continuous-delivery",
               },
               {
                 label: "Feature Flags",
-                href: "https://harness.io/products/feature-flags",
+                to: "https://harness.io/products/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
-                href: "https://harness.io/products/cloud-cost",
+                to: "https://harness.io/products/cloud-cost",
               },
               {
                 label: "Service Reliability Management",
-                href: "https://harness.io/products/service-reliability-management",
+                to: "https://harness.io/products/service-reliability-management",
               },
               {
                 label: "Security Testing Orchestration",
-                href: "https://harness.io/products/security-testing-orchestration",
+                to: "https://harness.io/products/security-testing-orchestration",
               },
               {
                 label: "Chaos Engineering",
-                href: "https://harness.io/products/chaos-engineering",
+                to: "https://harness.io/products/chaos-engineering",
               },
             ],
           },
@@ -298,35 +298,39 @@ const config = {
             items: [
               {
                 label: "Sign up",
-                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
+                to: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
               },
               {
                 label: "Slack",
-                href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
               },
               {
                 label: "API Reference",
-                href: "https://apidocs.harness.io/",
+                to: "https://apidocs.harness.io/",
               },
               {
                 label: "Forum",
-                href: "https://community.harness.io",
+                to: "https://community.harness.io",
               },
               {
                 label: "University",
-                href: "https://university.harness.io",
+                to: "https://university.harness.io",
               },
               {
                 label: "Open Source",
-                href: "https://harness-community.github.io/",
+                to: "https://harness-community.github.io/",
               },
               {
                 label: "YouTube",
-                href: "https://www.youtube.com/c/Harnessio",
+                to: "https://www.youtube.com/c/Harnessio",
               },
               {
                 label: "Developer Hub GitHub",
-                href: "https://github.com/harness/developer-hub",
+                to: "https://github.com/harness/developer-hub",
+              },
+              {
+                label: "Release Notes",
+                href: "/release-notes/whats-new",
               },
             ],
           },
@@ -339,7 +343,7 @@ const config = {
               },
               {
                 label: "Privacy Policy",
-                href: "https://harness.io/legal/privacy",
+                to: "https://harness.io/legal/privacy",
               },
               {
                 label: "Accessibility",

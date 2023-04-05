@@ -118,9 +118,18 @@ You can convert the fulfillment type of your selected instances. Select **Spot*
 
 In this step, you can configure the following settings:
 
+### Hide progress page
+
+Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
+
+![](./static/create-autostopping-rules-for-kubernetes-83.png)
+
+### Dry Run
+Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dry-run-mode.md).
+
 ### Add Dependency
 
-Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
+Establish dependencies between two or more AutoStopping Rules when you want one Rule to activate one or more Rules based on the traffic it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
 
 1. Click **add dependency** to add a dependency on any existing rule.
 2. Select the rule from the **RULES** drop-down list.

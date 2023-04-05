@@ -162,7 +162,7 @@ Source details for Command Probe.
    </td>
    <td><code>true, false</code>
    </td>
-   <td>The <code>hostNetwork</code> provides a possibility to allow the pod executing the cmdProbe access to the network of the node he is running on. For more details refer to the <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/#host-namespaces">offical Kubernetes documentation</a>.
+   <td>The <code>hostNetwork</code> provides a possibility to allow the pod executing the cmdProbe access to the network of the node he is running on. For more details, go to the <a href="https://kubernetes.io/docs/concepts/policy/pod-security-policy/#host-namespaces">offical Kubernetes documentation</a>.
    </td>
   </tr>
 </table>

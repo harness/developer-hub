@@ -1,5 +1,5 @@
 ---
-title: Define a macOS Build Infrastructure and Anka Registry
+title: Set up a macOS VM build infrastructure with Anka Registry
 description: Set up a Harness macOS build farm that uses an Anka registry and controller.
 sidebar_position: 40
 ---
@@ -62,7 +62,7 @@ Set up the Harness delegate and runner.
 
 In addition to macOS, you can run your delegate and runner on [Docker](../define-a-docker-build-infrastructure.md), [Azure](define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
-For information about installing delegates, go to [Install a delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md).
+For information about installing delegates, go to [Install a delegate](/docs/platform/2_Delegates/install-delegates/overview.md).
 
 ## Set up the Harness runner to communicate with the Anka controller
 

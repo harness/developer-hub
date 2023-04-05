@@ -1,5 +1,5 @@
 ---
-title: Feature Flags Overview
+title: Overview of Feature Flags
 description: An overview of how Harness Feature Flags work
 sidebar_position: 10
 helpdocs_topic_id: 7n9433hkc0
@@ -23,6 +23,12 @@ A Feature Flag is a decision point in your code that can change the behavior of 
 * Progressive rollouts of the feature
 * Turn on a feature on a specific date
 
+Watch this video for an introduction to Feature Flags:
+
+<!-- Video:
+https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695-->
+<docvideo src="https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695" /> 
+
 ## Reasons to use Feature Flags
 
 Feature Flag management provides the following opportunities to the developers:
@@ -40,6 +46,10 @@ Having an opportunity to test with real, live users in the production environmen
 ### Percentage deployments
 
 In a percentage-based rollout, small numbers of users are selected to test the new feature. You can gradually increase or decrease that percentage over time. This method provides the opportunity to observe the behavior of the system under new changes. You can push the changes to all your user bases only when the changes are stable and user feedback is positive.
+
+### Analyze the impact of a feature on monitored services
+
+The Harness Service Reliability Management (SRM) module provides tools to help meet Service Level Objectives (SLOs) and identify root causes of changes to service health. By connecting a Feature Flag to an SRM-monitored service, you can analyze how that service's health is impacted when you turn the flag on or off.
 
 ### User feedback
 

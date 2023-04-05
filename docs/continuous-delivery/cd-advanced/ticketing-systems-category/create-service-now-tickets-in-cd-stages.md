@@ -36,7 +36,9 @@ The ServiceNow API only allows date time and time values in the UTC timezone. Co
 
 The timezone settings govern the display value of the settings not their actual value.
 
-The display values in the Harness UI depend on ServiceNow timezone settings.### Review: ServiceNow User Roles
+The display values in the Harness UI depend on ServiceNow timezone settings.
+
+### Review: ServiceNow User Roles
 
 You can install the Harness app in your ServiceNow instance from the ServiceNow [store](https://store.servicenow.com/sn_appstore_store.do#!/store/application/de154a1e1b75851044cbdb58b04bcb11/1.0.1?referer=%2Fstore%2Fsearch%3Flistingtype%3Dallintegrations%25253Bancillary_app%25253Bcertified_apps%25253Bcontent%25253Bindustry_solution%25253Boem%25253Butility%25253Btemplate%26q%3Dharness&sl=sh). For more information, see [Installation Guide](https://store.servicenow.com/appStoreAttachments.do?sys_id=1fc1632b872f4dd0970e2178cebb35ba).
 
@@ -118,10 +120,6 @@ In **Fields**, select **Type**.
 In **Type**, select **Normal** or **Emergency**.
 
 ![](./static/create-service-now-tickets-in-cd-stages-13.png)
-
-:::caution
-Create requests are retried when ServiceNow encounters connection errors. ServiceNow may respond with connection exceptions, but in edge cases, the tickets will still be created in ServiceNow. This results in the creation of duplicate tickets.
-:::
 
 ## See Also
 

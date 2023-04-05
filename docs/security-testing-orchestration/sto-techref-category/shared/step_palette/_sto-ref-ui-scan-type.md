@@ -1,0 +1,1 @@
+The target type to scan for vulnerabilities. 

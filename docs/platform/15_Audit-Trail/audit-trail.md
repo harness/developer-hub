@@ -1,7 +1,7 @@
 ---
 title: View Audit Trail
 description: Describes how to use the Audit Trail feature to track/debug/investigate changes to your resources in your Harness accounts.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: r5ytrnpcgr
 helpdocs_category_id: cgjcdl8vdn
 helpdocs_is_private: false

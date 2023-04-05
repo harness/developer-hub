@@ -112,9 +112,9 @@ You can enable or disable an AutoStopping rule from the Summary of Rules Page or
 #### From the Details page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to enable or disable.
-2. Click the Toggle button to disable or enable the rule.
+2. Toggle the button to disable or enable the rule.
    
-     ![](./static/autostopping-dashboard-44.png)
+     ![](./static/autostopping-rule-disable.png)
 
 ### Edit an AutoStopping Rule from the Dashboard
 
@@ -131,9 +131,9 @@ You can edit an AutoStopping rule from the Summary of Rules Page or from the det
 #### From the Details Page
 
 1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to edit.
-2. Click the Edit button. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](create-autostopping-rules-aws.md) and [Create AutoStopping Rules for Azure](create-auto-stopping-rules-for-azure.md).
+2. Click the **Edit** button. The AutoStopping Rules setting appears. Follow the steps in [Create AutoStopping Rules for AWS](create-autostopping-rules-aws.md) and [Create AutoStopping Rules for Azure](create-auto-stopping-rules-for-azure.md).
    
-     ![](./static/autostopping-dashboard-46.png)
+     ![](./static/rule-summary-page.png)
 
 ### Delete an AutoStopping Rule from the dashboard
 
@@ -152,7 +152,7 @@ You can delete an AutoStopping rule from the Summary of Rules Page or from the d
 1. In **AutoStopping Rules**, in **Summary of Rules**, click the instance that you want to delete.
 2. Click the **Delete** button.
    
-     ![](./static/autostopping-dashboard-48.png)
+     ![](./static/rule-summary-page.png)
 3. Click **Delete**.
    
      ![](./static/autostopping-dashboard-49.png)

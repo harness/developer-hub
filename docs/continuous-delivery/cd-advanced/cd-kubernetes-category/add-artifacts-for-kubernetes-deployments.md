@@ -22,7 +22,7 @@ With a Harness artifact, you can template your manifests, detaching them from a 
 
 Make sure you've reviewed and set up the following:
 
-* [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md). You must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
+* [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md). You must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
 * [Kubernetes Deployments Overview](kubernetes-deployments-overview.md)
 
 ## Visual Summary
@@ -52,7 +52,7 @@ In this example, `[sidecar_identifier]` is the sidecar identifier you specified 
 
 In some cases, your Kubernetes cluster might not have the permissions needed to access a private repo (GCR, etc). For these cases, you use the expression `<+artifact.imagePullSecret>` in the Values file and reference it in the Secret and Deployment objects in your manifest.  
 This key will import the credentials from the Docker credentials file in the artifact.  
-See [Example Manifests](#example_manifests).
+See [Example Manifests](#example-manifests).
 
 ### Service account of the Kubernetes Delegate can pull from the private repo
 
@@ -167,7 +167,7 @@ Based on your server and network configuration, choose one of the following and 
   
 *  In **Repository**, enter the name of the repository where the artifact is located.
   
-  Harness supports only the Docker repository format as the Artifact source for the Nexus 3 Artifact registry.In **Artifact Path**, enter the name of the artifact you want to deploy. For example `nginx`, `private/nginx`, `public/org/nginx`.
+  Harness supports only the Docker repository format as the Artifact source for the Nexus 3 Artifact registry. In **Artifact Path**, enter the name of the artifact you want to deploy. For example `nginx`, `private/nginx`, `public/org/nginx`.
   
 *  In **Tag**, select the tag for the image/artifact.
   
@@ -273,7 +273,7 @@ kind: Deployment
         image: {{.Values.image}}  
 ...
 ```
-See [Example Manifests](#example_manifests) for more details.
+See [Example Manifests](#example-manifests) for more details.
 
 ## Step 5: Add Your Manifests
 

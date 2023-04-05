@@ -1,12 +1,12 @@
 {
-    "label":"Install with KOTS",
+    "label":"KOTS installation",
     "position": 30,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Install with KOTS"
+       "title":"KOTS installation"
     },
     "customProps":{
        "helpdocs_category_id":"vu99714ib1"

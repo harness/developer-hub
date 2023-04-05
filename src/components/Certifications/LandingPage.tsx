@@ -3,24 +3,27 @@ import React, { useState } from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import CertCard, { certType } from "./CertCard";
-import { certifications } from "./data/certification-cards";
+import { certifications } from "./data/certificationsData";
 import styles from "./styles.module.scss";
 
-const getCertBadges = (url: string) => [
+export const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_badge.svg`,
     alt: "Harness Certified Expert - Developer",
     type: certType.Developer,
+    url: "/certifications",
   },
   {
     img: `${url}img/cert_adm_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
     type: certType.Administrator,
+    url: "/certifications",
   },
   {
     img: `${url}img/cert_arc_badge.svg`,
     alt: "Harness Certified Expert - Architect",
     type: certType.Architect,
+    url: "/certifications",
   },
 ];
 

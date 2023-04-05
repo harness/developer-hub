@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes the Harness CI Run Tests step settings. The Run Tests step runs tests on container images and can enable Test Intelligence in CI pipelines.
+This topic describes the Harness CI Run Tests step settings. The Run Tests step runs tests on container images and can [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md) in CI pipelines.
 
 ## Name
 
@@ -62,7 +62,7 @@ Use these optional settings to specify additional configurations. Settings speci
 
 ### Pre-Command
 
-Enter the commands for setting up the environment before running the tests. For example,`printenv` prints all or part of the environment.
+Enter the commands for setting up the environment before running the tests. For example, `printenv` prints all or part of the environment.
 
 If a script is supplied here, select the corresponding **Shell** option.
 

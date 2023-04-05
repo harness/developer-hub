@@ -1,12 +1,12 @@
 {
-   "label":"Error Tracking",
+   "label":"Continuous Error Tracking",
    "position": 10,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Error Tracking"
+      "title":"Continuous Error Tracking"
    },
    "customProps":{
       "helpdocs_category_id":"c40ko6e87n"

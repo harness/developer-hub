@@ -23,7 +23,7 @@ Please review the video [Kustomize: Deploy Your App with Template Free YAML](htt
 
 ## Limitations
 
-* Harness supports Kustomize and Kustomize Patches for [Rolling](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md), [Canary](../../cd-technical-reference/cd-k8s-ref/canary-deployment-step.md), [Blue Green](../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) strategies, and the Kubernetes [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md) steps.
+* Harness supports Kustomize and Kustomize Patches for [Rolling](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md), [Canary](../../cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md), [Blue Green](../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) strategies, and the Kubernetes [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md) steps.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
 * You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 * **Kustomize binary versions:**  
@@ -70,7 +70,7 @@ In **Service Definition**, in **Deployment Type**, click **Kubernetes**.
 
 In **Manifests**, click **Add Manifest**.
 
-**What about Artifacts?** In this example the kustomization uses a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the manifest. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in a Kustomize Patch file (`image: <+artifact.image>`). See [Option: Kustomize Patches](#option_kustomize_patches) below.
+**What about Artifacts?** In this example the kustomization uses a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the manifest. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in a Kustomize Patch file (`image: <+artifact.image>`). See [Option: Kustomize Patches](#option-kustomize-patches) below.
 
 In **Specify Manifest Type**, click **Kustomize**, and click **Continue**.
 
@@ -90,7 +90,7 @@ In **Manifest Details**, enter the following settings, test the connection, and 
   * **Branch:** enter **main**.
   * **Kustomize Folder Path:**`kustomize/helloWorld`. This is the path from the repo root.
 
-The **Kustomize Plugin Path** is described below in [Option: Use Plugins in Deployments](#option_use_plugins_in_deployments).The kustomization is now listed.
+The **Kustomize Plugin Path** is described below in [Option: Use Plugins in Deployments](#option-use-plugins-in-deployments). The kustomization is now listed.
 
 ![](./static/use-kustomize-for-kubernetes-deployments-02.png)
 
@@ -117,15 +117,15 @@ When you specify a folder path for your Git repo in **Kustomize Folder Path** wi
 Instead of fetching the entire Git repo, you can fetch a subset of the Kustomize manifests and configuration files. You can do this by specifying your Git repo folder path for **Kustomize Base Path** and the relative folder path for **Kustomize YAML Folder Path** in **Manifest Details**.
 
 In **Manifest Details**, enter the following required settings:
-  * **Manifest Name** enter the name for this manifest.
-  * **Git Fetch Type****:** select **Latest from Branch**.
+  * **Manifest Name:** enter the name for this manifest.
+  * **Git Fetch Type:** select **Latest from Branch**.
   * **Branch:** enter **main** or **master**.
   * **Kustomize Base Path:** When you select **Optimized Kustomize Manifest Collection**, this field changes from **Kustomize Folder Path** to **Kustomize Base Path**. Enter the folder path for your Git repo inside which all of the Kustomize dependencies and base manifests are present. Harness fetches and downloads this folder instead of the entire Git repo. The folder path shown in the dialog is an example.
-  * **Kustomize YAML Folder Path**: enter the relative folder path for your Git repo where the kustomize.yaml file is located. The folder path shown in the dialog is an example.
+  * **Kustomize YAML Folder Path:** enter the relative folder path for your Git repo where the kustomize.yaml file is located. The folder path shown in the dialog is an example.
     
     As an example, if kustomization.yaml is present in this path: **kustomize/multipleEnv/environments/production** and the **kustomize/multipleEnv** folder contains all of the kustomize dependencies, then the folder paths would be as follows:
 
-    * **Kustomize Base Path**: kustomize/multipleEnv/
+    * **Kustomize Base Path:** kustomize/multipleEnv/
     * **Kustomize YAML Folder Path:** environments/production/
 
 
@@ -135,7 +135,7 @@ In **Manifest Details**, enter the following required settings:
 You can list artifacts in two ways:
 
 * Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
-* You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Option: Kustomize Patches](#option_kustomize_patches) below, and [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
+* You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Option: Kustomize Patches](#option-kustomize-patches) below, and [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 ## Option: Kustomize Patches
 
@@ -388,9 +388,9 @@ When Harness deploys, it will apply the plugin you reference just like you would
 
 To add a plugin to the Delegate, you can install it manually or use the `INIT_SCRIPT` environment variable in the Delegate config file to install it.
 
-For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
-Once the plugin is installed, you add its path to the Harness Service you are using for the kustomization. See [Path to Plugin in Service Manifest](#path_to_plugin_in_service_manifest).
+Once the plugin is installed, you add its path to the Harness Service you are using for the kustomization. See [Path to Plugin in Service Manifest](#path-to-plugin-in-service-manifest).
 
 For example, here is a ConfigMap generator plugin script:
 
@@ -439,7 +439,7 @@ Plugins can only be applied to Harness Kubernetes Delegates.
 
 #### Path to Plugin in Service Manifest
 
-In the Harness Service that uses the Kustomization and plugin, in **Manifests**, select the existing Kustomize manifest or click **Add Manifest** and add a new as described in [Step 1: Add Manifests and Kustomization](#step_1_add_manifests_and_kustomization) above.
+In the Harness Service that uses the Kustomization and plugin, in **Manifests**, select the existing Kustomize manifest or click **Add Manifest** and add a new as described in [Step 1: Add Manifests and Kustomization](#step-1-add-manifests-and-kustomization) above.
 
 In **Manifest Details**, provide the path to the plugin on the Delegate host.
 
@@ -492,7 +492,7 @@ name: KUSTOMIZE_PATH
 value: "<path>"  
 ...
 ```
-See [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+See [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md).
 
 ### Docker Delegate
 
@@ -502,7 +502,7 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 ```yaml
 - KUSTOMIZE_PATH=<path>
 ```
-See [Install a delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md).
+See [Install a delegate](../../../platform/2_Delegates/install-delegates/overview.md).
 
 ## Next Steps
 

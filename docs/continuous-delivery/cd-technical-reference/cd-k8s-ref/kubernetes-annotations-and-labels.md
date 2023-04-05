@@ -12,7 +12,7 @@ This topic describes how to use annotations and labels to select objects you def
 
 ## Annotations
 
-To see annotations in action, see [Deploy Manifests Separately using Apply Step](../../cd-execution/kubernetes-executions/deploy-manifests-using-apply-step.md) and [Ignore a Manifest File During Deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md).Annotations are a way to pass additional metadata for resources to Harness. For a description of Annotations, see [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) from Kubernetes.
+To see annotations in action, see [Deploy Manifests Separately using Apply Step](../../cd-execution/kubernetes-executions/deploy-manifests-using-apply-step.md) and [Ignore a Manifest File During Deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md). Annotations are a way to pass additional metadata for resources to Harness. For a description of Annotations, see [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) from Kubernetes.
 
 The following Annotations can be put on resource specifications in the Harness Service **Manifests** section.
 

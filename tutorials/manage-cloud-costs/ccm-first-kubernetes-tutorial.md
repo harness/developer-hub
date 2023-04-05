@@ -27,7 +27,7 @@ To get actual costing data from your public cloud vendor, it is recommended to [
 
 ## Prepare Your Kubernetes Cluster for Optimization Recommendations
 
-If you have not already, make sure to sign up for a [Harness CCM Account](https://app.harness.io/auth/#/signup/?module=ce&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ccm-plg&utm_content=get-started). Once signed up, to start receiving optimizations for your cluster, you will need to install a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegates-overview), e.g the Harness worker node, into your cluster.
+If you have not already, make sure to sign up for a [Harness CCM Account](https://app.harness.io/auth/#/signup/?module=ce&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ccm-plg&utm_content=get-started). Once signed up, to start receiving optimizations for your cluster, you will need to install a [Harness Delegate](https://docs.harness.io/article/2k7lnc7lvl-delegate-overview), e.g the Harness worker node, into your cluster.
 
 ### Install Delegate
 

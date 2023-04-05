@@ -32,7 +32,7 @@ The Pipeline Studio includes visual and YAML editors.
 
 The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio.
 
-See ​[CD Quickstarts](/docs/category/cd-tutorials) and [CI Quickstarts](/docs/category/onboard-with-ci).
+See [CD Quickstarts](/docs/category/cd-tutorials) and [Get started with CI](/docs/category/get-started-with-ci).
 
 The YAML editor validates YAML before allowing you to save it.
 
@@ -417,7 +417,7 @@ That example is for the platform agnostic Kubernetes infrastructure. For a diffe
 See also:
 
 * [Define Your Kubernetes Target Infrastructure](../../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
-* [Define Kubernetes Cluster Build Infrastructure](../../../continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
+* [Set up a Kubernetes cluster build infrastructure](../../../continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 
 ### Execution
 

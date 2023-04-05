@@ -30,16 +30,16 @@ Editing the Codebase for a Pipeline:
 
 ### Before You Begin
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
+* [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Learn Harness Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Create or Edit a Codebase Connector
 
-You can add a Codebase to your new CI Pipeline as well as an existing Pipeline that doesn’t have a Codebase yet. 
+You can add a codebase to your new CI pipeline as well as an existing pipeline that doesn't have a codebase yet.
 
-In this step, you'll create the Codebase for a new Pipeline in Harness CIE.
+In this step, you'll create the codebase for a new pipeline in Harness CI.
 
 1. Go to **Pipeline Studio**, click **Add Stage**, and then click **Build**.
 2. Enter a unique name for the Build Stage.The Build Stage includes a **Clone Codebase** option, which is enabled by default. This tells Harness to clone the codebase into the build environment before building an artifact. In most cases, you want to leave this option enabled. You can disable this if you don't need a codebase for the build operation.
@@ -56,7 +56,7 @@ In this step, you'll create the Codebase for a new Pipeline in Harness CIE.
 
 The CodeCommit, Bitbucket, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git Connector can connect with any provider using Basic authentication over HTTPS.
 
-* [AWS CodeCommit Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
+* [AWS CodeCommit Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md) <!-- This link is wrong, and this list is missing Azure Repos connector. -->
 * [Bitbucket Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
 * [Git Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md)
 * [GitHub Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-hub-connector-settings-reference.md)

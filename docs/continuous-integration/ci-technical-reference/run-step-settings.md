@@ -87,7 +87,7 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](../../pla
 
 ![](./static/run-step-settings-04.png)
 
-For more information, go to [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
+For more information, go to the [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### Output Variables
 
@@ -95,6 +95,7 @@ Output variables expose environment variables for use by other steps/stages in a
 
 <details>
 <summary>Output variables example</summary>
+
 This example exports an output variable as a step's environment variable. It is then called in a later step.
 
 1. In the **Command** field, include the following syntax to export a new variable:
@@ -118,10 +119,12 @@ Here is how the S1 step's output variable is referenced:
 ![](./static/run-step-settings-06.png)
 
 The subsequent build job fails when exit 0 is present along with output variables.
+
 </details>
 
 <details>
 <summary>Output variable syntax</summary>
+
 To reference output variables between steps in the same stage, use the following syntax:
 
 ```
@@ -137,10 +140,12 @@ To reference output variables across stages, there are several syntax options, a
 ```
 
 You can also access environment variables through the auto-suggest/ auto-complete feature in the Harness UI.
+
 </details>
 
 <details>
 <summary>Export output variables to stage or pipeline variables</summary>
+
 You can also export step output variables to stage/pipeline environment variables, because they are available through the pipeline.
 
 For example, if a step exported an output variable called `BUILD_NUM`, you could use the following syntax to reference this variable later in the pipeline:
@@ -148,6 +153,7 @@ For example, if a step exported an output variable called `BUILD_NUM`, you could
 ```
 <+pipeline.stages.[stage Id].variables.BUILD_NUM>
 ```
+
 </details>
 
 ### Image Pull Policy

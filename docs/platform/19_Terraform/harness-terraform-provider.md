@@ -1,7 +1,7 @@
 ---
 title: Harness Terraform Provider Quickstart
 description: This topic shows how to get started with the Harness Terraform Provider.
-# sidebar_position: 2
+sidebar_position: 2
 helpdocs_topic_id: 7cude5tvzh
 helpdocs_category_id: w6r9f17pk3
 helpdocs_is_private: false

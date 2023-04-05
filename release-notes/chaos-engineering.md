@@ -39,8 +39,8 @@ From this release onward, chaos infrastructures will communicate with the contro
 * Chaos configuration step in **Pipelines** shows the name of the chaos experiment (CHAOS-986)
     * This release shows the name of the experiment instead of showing the experiment Id in the chaos configuration setup step in **Pipelines**. This helps you identify experiments with ease.
 
-* Search functionality when selecting experiments from ChaosHub (CHAOS-1050)
-    * This release adds search functionality when selecting an experiment template from ChaosHub. You can also filter the experiments you wish to view or select from the ChaosHub. This allows you to select and run your experiment without having to search through multiple experiments.
+* Search functionality when selecting experiments from chaos hub (CHAOS-1050)
+    * This release adds search functionality when selecting an experiment template from chaos hub. You can also filter the experiments you want to view or select from the chaos hub. This allows you to select and run your experiment without searching multiple experiments.
 
 * Chaos infrastructure manifest file extension changed to .yaml (CHAOS-1037)
     * This release changes the downloadable chaos infrastructure manifest file extension from .yml to .yaml.
@@ -49,7 +49,7 @@ From this release onward, chaos infrastructures will communicate with the contro
     * This release moves the **Set fault weights** tab, which was previously a separate tab, into the **Tune fault** tab. This allows you to tune the fault parameters and set fault weights in a single step rather than navigating through multiple tabs.
 
 * Support for the GitLab connector (CHAOS-35)
-    * This release introduces a new connector, namely the GitLab connector, when you wish to connect to a ChaosHub.
+    * This release introduces a new connector called the GitLab connector to connect to a chaos hub.
 
 ### Early access
 
@@ -69,7 +69,7 @@ From this release onward, chaos infrastructures will communicate with the contro
  
 * In **Pipeline**, when you tried to select an experiment in the chaos experiments page, the pagination section overflowed. This issue has been fixed so that the chaos experiments plage shows two buttons: **Prev** and **Next** to navigate through the pages. (CHAOS-1045)  
  
-* In ChaosHubs, the number of experiments in the category tab for the chaos experiments overflowed. This issue has been fixed. (CHAOS-1053)
+* In chaos hubs, the number of experiments in the category tab for the chaos experiments overflowed. This issue is fixed. (CHAOS-1053)
 
 
 ## February 7, 2023, version 0.7.3
@@ -105,11 +105,11 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * Support for deployment on existing chaos infrastructure (CHAOS-954)
     * This release adds support for deploying your chaos infrastructures on clusters that use the existing (deployed) Harness delegates (also known as the brownfield method of deployment). You can select the connector that points to the required delegate and other details like installation mode, service account name, and namespace, after which the YAML manifest is generated and sent over to the cluster instead of being downloaded on your system. Once the delegate receives the manifest, it deploys your chaos infrastructure on the selected cluster. Currently, you can deploy the chaos infrastructure by using only account-level delegates.
 
-* Details of an experiment are prefilled when adding it to a ChaosHub (CHAOS-989)
-    * Instead of forcing you to re-enter details, this release prefills the details of the experiment that you want to add to a ChaosHub. You can simply navigate to the experiment and click **Add to ChaosHub**. The resulting screen displays the name of the experiment, a description (optional), and tags (optional). You can add your experiment to the ChaosHub of your choice by clicking **Save**.
+* Details of an experiment are prefilled when adding it to a chaos hub (CHAOS-989)
+    * Instead of forcing you to re-enter details, this release prefills the details of the experiment that you want to add to a chaos hub. You can simply navigate to the experiment and select **Add to ChaosHub**. The resulting screen displays the name of the experiment, a description (optional), and tags (optional). You can add your experiment to the chaos hub of your choice by selecting **Save**.
 
-* One sync retry to connect to a disconnected ChaosHub (CHAOS-999)
-    * A ChaosHub that is disconnected does not list any faults or experiments. This release adds a feature such that when you click on a disconnected ChaosHub, HCE tries to synchronize and connect to the ChaosHub at least once. 
+* One sync retry to connect to a disconnected chaos hub (CHAOS-999)
+    * A chaos hub that is disconnected does not list any faults or experiments. This release adds a feature such that when you click on a disconnected chaos hub, HCE tries to synchronize and connect to the chaos hub at least once. 
 
 * Filter chaos experiment based on target infrastructure (CHAOS-959)
     * On the **Deployment** tab, when you click on **Pipeline** and select a chaos experiment, you can filter experiments on the basis of their names. This release adds another filter so that you can view experiments on the basis of their target chaos infrastructure.
@@ -136,11 +136,11 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 ### Fixed issues
 * Searching for chaos experiments by using the search bar showed only those experiments that had been run at least once. Now, when you search for an experiment, the search results include those experiments that were aborted and experiments that were saved but not run. (CHAOS-916)
 * When specifying the target application parameters through a YAML manifest, if you left some parameters empty, the user interface of the target application page would stop responding. This has been fixed so that, irrespective of the values that you enter in the YAML manifest, you can change the values of the target application on the user interface. (CHAOS-970)
-* In a chaos experiment, the fault library would incorrectly show fault categories and fault labels even when the hub had been disconnected. The fault library would persist data from the previously selected ChaosHub. This has now been fixed. A disconnected ChaosHub now displays the message “No faults found in the selected hub.” (CHAOS-971)
-* On the ChaosHub screen, you could not scroll through the list of hubs from any location on the screen. This issue has been fixed by moving the scroll bar to the extreme right of the screen. (CHAOS-964)
+* In a chaos experiment, the fault library incorrectly showed fault categories and fault labels even when the hub was disconnected. The fault library persisted data from the previously selected chaos hub. This is now fixed. A disconnected chaos hub now displays the message “No faults found in the selected hub.” (CHAOS-971)
+* On the chaos hub screen, you could not scroll through the list of hubs from any location on the screen. This issue is now fixed by moving the scroll bar to the extreme right of the screen. (CHAOS-964)
 * If you hovered over a probe, its details would overflow if they were too long. Now, it has been fixed. (CHAOS-990)
-* Any increase in the number of chaos faults that you wished to view on a single page in a ChaosHub would result in a blank page. Now, it has been fixed. (CHAOS-984)
-* When a chaos experiment was imported into the ChaosHub, it would not be logged as an audit event and would not be displayed on the user interface. It has been fixed. (CHAOS-779)
+* Any increase in the number of chaos faults that you wished to view on a single page in a chaos hub would result in a blank page. Now, it has been fixed. (CHAOS-984)
+* When a chaos experiment was imported into the chaos hub, it was not logged as an audit event and was not displayed on the user interface. It has been fixed. (CHAOS-779)
 * If no chaos infrastructure is connected with your project, a blank screen would be displayed. Now, the message "There are no chaos infrastructures in your project." is displayed. (CHAOS-1009) 
 * In CRON experiments, the scheduled run time would always be shown in GMT. Now, it has been fixed to show the run time in your browser’s time zone. (CHAOS-1035)
 * The parameters in the YAML manifest of different runs of the same chaos experiment were inconsistent with the changes made (if any) in their respective runs. Now, it has been fixed.
@@ -154,7 +154,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
     * This release optimizes the listWorkflow and listWorkflowRun queries in the chaos manager by only fetching those experiments that the user requests, instead of loading all the experiments at once.
 
 * Pagination on the faults and experiments screen (CHAOS-689)
-    * This release adds pagination on the faults and experiment screen in ChaosHub that allows you to scroll and navigate through the experiments by pages. 
+    * This release adds pagination on the faults and experiment screen in chaos hub that allows you to scroll and navigate through the experiments by pages. 
 
 * Enable **Save** and **Run** buttons on the experiment builder (CHAOS-913)
     * This release enables the **Save** and **Run** buttons after you tune the application by specifying the parameters on the user interface. As a consequence, the default weight is set to 10 since the user would not move to the next step of setting fault weights.
@@ -174,7 +174,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * When a chaos experiment contains characters such as ‘ ‘, ‘/’, and so on, logs are correctly parsed and displayed on the screen. The execution is encoded before being sent to the control plane and decoded after being received by the user interface. (CHAOS-854)
 * After deleting a chaos experiment from a particular page, the pagination is reset and only shows the available experiments. (CHAOS-923)
 * When a chaos infrastructure is deleted, details on the user interface wrongly showed the infrastructure ID instead of the infrastructure name. This is now fixed. (CHAOS-952)
-* When a chaos experiment was pushed to the ChaosHub, only a single fault associated with the experiment was being pushed, rather than all the faults. This is now fixed. (CHAOS-973)
+* When a chaos experiment was pushed to the chaos hub, only a single fault associated with the experiment was being pushed, rather than all the faults. This is now fixed. (CHAOS-973)
 * When a chaos experiment was deleted, only the most recent run was deleted, and the previous runs were retained in the cluster. Now it has been fixed such that when a chaos experiment is deleted, all the runs associated with it are deleted from the cluster. 
 * When a chaos experiment was deleted, the fault running within the experiment was not stopped. Now it has been fixed such that, when an experiment is deleted, the chaos fault running on the Kubernetes cluster is halted, the fault is deleted, and the experiment as a whole is deleted. (CHAOS-782)
 * When a chaos experiment was running, the user interface incorrectly showed probes that were still being executed as failed probes. Now it has been fixed so that the interface shows the correct status of the probes being executed. (CHAOS-911)
@@ -215,7 +215,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 
 ### Fixed issues
 
-* Enterprise ChaosHub appeared in the search results irrespective of the terms searched. Now it has been fixed.
+* Enterprise chaos hub appeared in the search results irrespective of the terms searched. Now it has been fixed.
 * Details of a previously connected chaos infrastructure were prefilled when connecting to a new chaos infrastructure. Now it has been fixed. (CHAOS-777)
 * The **Run** button was activated even when the chaos experiment was running. Now, the button is reactivated only after the chaos experiment is complete.(CHAOS-807)
 * The chaos access page shows all experiments and experiment runs instead of showing experiments that were performed within a specific time frame. (CHAOS-810, CHAOS-762) 
@@ -232,10 +232,10 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 
 ### Known issues
 
-#### ChaosHub
+#### Chaos hub
 
-1. Github is the only Git provider for chaoshubs.
-2. Details for an already connected chaoshub can’t be updated.
+1. Github is the only Git provider for chaos hubs.
+2. Details for an already connected chaos hub can’t be updated.
 
 #### Chaos infrastructure
 

@@ -1,6 +1,7 @@
 ---
 title: Install delegates with custom certificates
 description: How to install delegates with custom certificates.
+# sidebar_position: 10
 ---
 
 This topic explains how to install delegates with custom certificates. There are two aspects of custom certificates:
@@ -132,7 +133,7 @@ data:
 
 ---
 
-# To learn how to proxy a delegate, go to [Configure delegate proxy settings](https://developer.harness.io/docs/platform/delegates/configure-delegates/configure-delegate-proxy-settings/)
+# To learn how to proxy a delegate, go to [Configure delegate proxy settings](/docs/platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings/)
 
 apiVersion: apps/v1
 kind: Deployment

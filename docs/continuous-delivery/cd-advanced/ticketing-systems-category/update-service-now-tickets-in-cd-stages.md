@@ -24,7 +24,7 @@ You can add the Create ServiceNow step to a Harness CD stage or an Approval stag
 * Make sure you have the following roles:
 	+ `x_harne_harness_ap.integration_user_role​​`
 	+ `itil`​​
-* [Adding ServiceNow Approval Stages and Steps](../../../platform/9_Approvals/service-now-approvals.md)
+* [Add ServiceNow Approval Stages and Steps](../../../platform/9_Approvals/service-now-approvals.md).
 
 ## Review: ServiceNow User Roles
 
