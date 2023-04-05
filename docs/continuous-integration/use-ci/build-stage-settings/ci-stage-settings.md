@@ -48,11 +48,6 @@ A Harness codebase connector that connects to the repository where the codebase 
 
 The full URL for the codebase.
 
-
-
-
-
-
 ## Overview
 
 Settings found on the **Overview** tab after adding a stage to a pipeline.
@@ -90,87 +85,55 @@ Infrastructure is where the build is run. It is a build farm, such as a Kubernet
 <!-- either tabs or accordions -->
 <details>
 <summary>Cloud</summary>
-content in md format
+
+[Harness Cloud build infrastructure]()
+
+### Platform
+
+**Select the Operating System**
+**Select the Architecture**
+
 </details>
 
 <details>
 <summary>Kubernetes</summary>
 
-A Kubernetes cluster can be used as a build farm. See [Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+[Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 
-### Namespace
+### Platform
 
-The Kubernetes namespace in the target cluster to use.
+**Select the Operating System**
 
-### Override Image Connector
+**Kubernetes Cluster**: A [Kubernetes cluster connector]()
+**Namespace**: The Kubernetes namespace in the target cluster to use.
 
-By default, Harness pulls certain images from public Docker Hub repos that are needed to run a build. You can override this by using a Connector that downloads these images from the Harness Container Image Registry instead. This option is useful when your default Delegate cannot access the public registry (due to security policies in your organization, for example, or if your infrastructure is running in a private cloud).
-
-To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](../../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
-
-## Advanced
+### Advanced
 
 ![](./static/ci-stage-settings-12.png)
 
-### Volumes
+#### Volumes
 
 A list of the volumes you want to mount onto the pod running the Stage.
 
-#### Empty Directory
-
-Mount a new [`emptyDir`](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) volume that gets deleted when the Stage finishes execution.
-
-* **Mount Path:** The volume path for Step containers.
-* **Medium:** The storage medium for the volume. Leave blank to use the default medium for the host node, or enter `memory` to mount a tmpfs (RAM-backed filesystem) on the host node.
-* **Size:** Maximum memory that the volume can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. If not specified, the volume can use up to 50% of available memory on the host node.
-
-#### Host Path
-
-Mount a file or folder from the host node filesystem.
-
-It is good practice to avoid hostPath volumes in most cases. See [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) in the Kubernetes docs.
-
-* **Mount Path:** The volume path for step containers.
-* **Path:** The volume path on the host node.
-* **Path Type:** To apply a precheck on the specified path before mounting the volume, enter a supported value, such as `FileOrCreate`. Leave blank to skip any prechecks before mounting.
-
-#### Persistent Volume Claim
-
-Mount a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) using a predefined Persistent Volume Claim.
-
-* **Mount Path:** The volume path for Step containers.
-* **Claim Name:** Name of a PVC defined in your build infrastructure.
-* **Read Only:** Mount the volume in read-only mode.
-
-### Service Account Name
+#### Service Account Name
 
 The Service Account for Step containers to use when communicating with the Kubernetes API server. Leave blank to use the default service account for the namespace.
 
 If your cluster connector inherits authentication credentials from the Delegate, then you must supply a Service Account Name.
 
-### Init Timeout
-
-Timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
-
-### Annotations
-
-Kubernetes Annotation to the pod YAML used to create the host pod for the Stage. See [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
-
-### Labels
-
-Key/Value pair that will be added to the Kubernetes pod YAM used to create the host pod for the Stage. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
-
-### Automount Service Account Token
+#### Automount Service Account Token
 
 By default, Kubernetes mounts a token for the Service Account when it creates a pod, which enables the pod to communicate with the Kubernetes API server. When this option is disabled, the service account token will not get mounted.
 
-### Priority Class
+#### Labels
 
-The [`PriorityClass`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) of the Stage pod in case resources run out on the host node. Specify a PriorityClass from your build infrastructure. You can also specify the predefined classes `system-cluster-critical` or `system-node-critical`, which ensure that the stage is always scheduled first.
+Key/Value pair that will be added to the Kubernetes pod YAM used to create the host pod for the Stage. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 
-If you leave this field blank, the `PriorityClass` will be the `globalDefault`, if your infrastructure has one defined, or `0`, which is lowest priority.
+#### Annotations
 
-### Container Security Context
+Kubernetes Annotation to the pod YAML used to create the host pod for the Stage. See [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
+
+#### Container Security Context
 
 Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) for the stage (pod) and steps (containers):
 
@@ -182,24 +145,83 @@ Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-
 * **Read-Only Root Filesystem:** Run all Steps with a read-only root filesystem, with no writable layer.
 * **Run as User:** Run with this user Id for containers in the pod. A typical example of a Run as User value would be 1000. To override this default, set Run as User in individual Steps.
 
-### Node Selector
+#### Priority Class
+
+The [`PriorityClass`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) of the Stage pod in case resources run out on the host node. Specify a PriorityClass from your build infrastructure. You can also specify the predefined classes `system-cluster-critical` or `system-node-critical`, which ensure that the stage is always scheduled first.
+
+If you leave this field blank, the `PriorityClass` will be the `globalDefault`, if your infrastructure has one defined, or `0`, which is lowest priority.
+
+#### Node Selector
 
 A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), which whitelist the set of candidate nodes based on your Stage pod requirements.
 
-### Tolerations
+#### Tolerations
 
 A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), which allow (but do not require) the pods to schedule onto nodes with matching taints.
+
+#### Host Path <!-- hostnames? -->
+
+Mount a file or folder from the host node filesystem.
+
+It is good practice to avoid hostPath volumes in most cases. See [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) in the Kubernetes docs.
+
+* **Mount Path:** The volume path for step containers.
+* **Path:** The volume path on the host node.
+* **Path Type:** To apply a precheck on the specified path before mounting the volume, enter a supported value, such as `FileOrCreate`. Leave blank to skip any prechecks before mounting.
+
+#### Init Timeout
+
+Timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
+
+#### Override Image Connector
+
+By default, Harness pulls certain images from public Docker Hub repos that are needed to run a build. You can override this by using a Connector that downloads these images from the Harness Container Image Registry instead. This option is useful when your default Delegate cannot access the public registry (due to security policies in your organization, for example, or if your infrastructure is running in a private cloud).
+
+To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](../../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
+
+
+<!-- #### Empty Directory
+
+Mount a new [`emptyDir`](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) volume that gets deleted when the Stage finishes execution.
+
+* **Mount Path:** The volume path for Step containers.
+* **Medium:** The storage medium for the volume. Leave blank to use the default medium for the host node, or enter `memory` to mount a tmpfs (RAM-backed filesystem) on the host node.
+* **Size:** Maximum memory that the volume can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. If not specified, the volume can use up to 50% of available memory on the host node.-->
+
+<!-- #### Persistent Volume Claim
+
+Mount a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) using a predefined Persistent Volume Claim.
+
+* **Mount Path:** The volume path for Step containers.
+* **Claim Name:** Name of a PVC defined in your build infrastructure.
+* **Read Only:** Mount the volume in read-only mode.-->
 
 </details>
 
 <details>
 <summary>Local</summary>
-content in md format
+
+[Local runner build infrastructure]()
+
+### Platform
+
+**Select the Operating System**
+**Select the Architecture**
+
 </details>
 
 <details>
 <summary>VMs</summary>
-content in md format
+
+[Self-hosted cloud provider VM build infrastructures]()
+
+### Platform
+
+**Select the Operating System**
+
+**Pool Name**
+**Override Image Connector**
+
 </details>
 
 ## Execution
