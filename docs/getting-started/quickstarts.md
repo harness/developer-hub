@@ -67,6 +67,6 @@ The following quickstart guides are available for Service Reliability Management
 
 The following quickstart guides are available for Security Testing Orchestration:
 
-* [STO Tutorial 1: Stand-Alone Pipelines](/tutorials/orchestrate-security-tests/tutorial-1-standalone-workflows) shows you how to set up a Pipeline with a scanner, run scans, analyze the results, and learn the key features of STO.
+* [STO Tutorial 1: Stand-Alone Pipelines](/tutorials/orchestrate-security-tests/sto-standalone-workflows) shows you how to set up a Pipeline with a scanner, run scans, analyze the results, and learn the key features of STO.
 
-* [Tutorial 2: Integrated STO Pipelines](/tutorials/orchestrate-security-tests/sto-tutorial-2-integrated-sto-ci-cd-workflows) shows you how to integrate STO functionality into CI and CD Pipelines.
+* [Tutorial 2: Integrated STO Pipelines](/tutorials/orchestrate-security-tests/sto-integrated-workflows) shows you how to integrate STO functionality into CI and CD Pipelines.

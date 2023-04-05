@@ -1,5 +1,5 @@
 ---
-title: Getting started 2 - Integrated STO Pipelines with CI/CD
+title: Create an integrated STO/CI pipeline
 description: Learn how to include STO scans in CI and CD pipelines and stop builds when STO finds any "show-stopper" vulnerabilities.
 sidebar_position: 20
 helpdocs_topic_id: zy4h4ch6dh
@@ -8,11 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This tutorial builds on the [previous tutorial](/tutorials/orchestrate-security-tests/tutorial-1-standalone-workflows). You need to complete Tutorial 1 first.
+This tutorial builds on the [Create a standalone STO pipeline](/tutorials/orchestrate-security-tests/sto-standalone-workflows) tutorial. You need to complete the standalone STO pipeline first. This pipeline scans a test target and reports on the vulnerabilities, but doesn't do anything else.
 
-The Pipeline you created in Tutorial 1 is an example of a stand-alone STO workflow. It scans a test target and reports on the vulnerabilities, but doesn't do anything else.
-
-In this section, you'll learn how to integrate STO functionality into CI and CD Pipelines. The core benefit of STO in an integrated Pipeline is to fail the Pipeline if a scanner finds any "show-stopper" vulnerabilities. The following sections describe the different failure strategies you can implement.
+In this tutorial, you'll learn how to integrate STO functionality into CI and CD Pipelines. The core benefit of STO in an integrated Pipeline is to fail the Pipeline if a scanner finds any "show-stopper" vulnerabilities. The following sections describe the different failure strategies you can implement.
 
 For the list of supported scanners, see [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
 
@@ -33,7 +31,7 @@ Every Security Step supports a `fail_on_severity` setting. If any vulnerability 
 2. Under **Settings**, add the following: `fail_on_severity` = `CRITICAL`
 3. Click **Apply Changes**, save the updated pipeline, and run a new build with the **DEMO-001** branch.
 
-   ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-00.png)
+   ![](./static/sto-integrated-workflows-00.png)
 
 The pipeline now fails because the bandit step is now configured to fail on any vulnerability with a severity of low or higher. The last log message in the bandit step log is:
 ```
@@ -47,7 +45,7 @@ In some cases, developers might want to create "ignore rules" that override the 
 
 Harness provides two pre-defined roles for STO:
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](/tutorials/orchestrate-security-tests/tutorial-1-standalone-workflows). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
+* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](/tutorials/orchestrate-security-tests/sto-standalone-workflows). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
 * **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions. In addition, SecOps users can approve Ignore rules. These workflows are covered in this tutorial.
 
 In this section, you'll create an Ignore rule and approve it as SecOps user. In many real-world scenarios, two separate people will be performing the workflow: a developer creates an Ignore Rule, but the rule isn't active until a SecOps person approves it.
@@ -58,7 +56,7 @@ In this section, you'll create an Ignore rule and approve it as SecOps user. In 
 	3. Under Role Bindings, click **+Role**.
 	4. Make sure that you have the **Security Testing SecOps** role assigned to yourself.
   
-     ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-01.png)
+     ![](./static/sto-integrated-workflows-01.png)
      
 2. Go to the Security Tests page for the build you ran previously: In the Pipeline studio, click **Execution History** (top right) and then click the last successful build you ran before the failed build.  
 
@@ -68,7 +66,7 @@ In this section, you'll create an Ignore rule and approve it as SecOps user. In 
 	1. Click in the row to open the **Issue Details** pane.
 	2. Click the **Ignore** button.
   
-     ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-02.png)
+     ![](./static/sto-integrated-workflows-02.png)
      
 	3. In the **Request to Ignore an Issue** popup, configure the Ignore request as follows:
 		1. Where do you want this issue to be ignored? **This pipeline** (*if available*)
@@ -76,26 +74,26 @@ In this section, you'll create an Ignore rule and approve it as SecOps user. In 
 		3. Reason this issue should be exempted: **Temporary exemption for tutorial workflow**
 		4. Click **Create Request**.
     
-       ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-03.png)
+       ![](./static/sto-integrated-workflows-03.png)
        
 4. Click **Security Tests** (left menu) and then **Security Review** (second-from-left menu).
 5. In the Security Review page, click the "thumbs-up" buttons to approve both exemptions.
 
-   ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-04.png)
+   ![](./static/sto-integrated-workflows-04.png)
    
 6. Go back to your pipeline and run another build with the **DEMO-001** branch. When the build finishes, go to the **Security Tests** page.
 7. In the issues table (bottom), each section has a set of show/hide buttons for different issue types: Critical, High, Medium. Low, and Info. Note that each section now includes an **Ignored** button. Also note that the ignored issues are hidden by default.
 
-   ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-05.png)
+   ![](./static/sto-integrated-workflows-05.png)
 
 8. Click the **Ignored** buttons (right) and the expand/contract buttons (left) so that both ignored issues are visible.
 
-   ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-06.png)
+   ![](./static/sto-integrated-workflows-06.png)
 
 9. Go to **Security Tests** > **Security Review**. Then click **Approved** to show the Ignore rules you created and approved.
 10. Click the Delete (**X**) buttons on the right to delete both rules.
 
-    ![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-07.png)
+    ![](./static/sto-integrated-workflows-07.png)
 
 ### Next Steps
 
@@ -146,7 +144,7 @@ You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure
 
 The following Pipeline provides a simple example of how you can implement STO into a CI workflow. This is an expanded version of the standalone STO Stage we have been working with. The [YAML](#integrated-workflow-yaml) of this pipeline is provided below.
 
-![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-08.png)
+![](./static/sto-integrated-workflows-08.png)
 
 This Pipeline works as follows:
 
@@ -159,7 +157,7 @@ This Pipeline works as follows:
 
 You can view all issues from all scanners in the **Security Tests** tab, and also filter the issue list by scanner.
 
-![](./static/sto-tutorial-2-integrated-sto-ci-cd-workflows-09.png)
+![](./static/sto-integrated-workflows-09.png)
 
 ### Congratulations!
 

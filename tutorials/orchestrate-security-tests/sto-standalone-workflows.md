@@ -1,5 +1,5 @@
 ---
-title: Getting started 1 - Create a standalone STO pipeline
+title: Create a standalone STO pipeline
 description: Set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
 sidebar_position: 10
 helpdocs_topic_id: yvy4pmt8bw
@@ -8,11 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-# Tutorial 1: Standalone STO pipeline
-
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness Pipeline. You'll set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
 
-This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In [Tutorial 2](./sto-tutorial-2-integrated-sto-ci-cd-workflows.md), you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
+This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In the  [Create an integrated STO/CI pipeline](./sto-integrated-workflows.md) tutorial, you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
 
 ## Objectives
 
@@ -60,14 +58,14 @@ This Pipeline has only one scanner but you can easily add more later. For the li
 1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto/#create-an-sto-pipeline) project.
 2. Click the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
 
-   ![](./static/tutorial-1-standalone-workflows-10.png)
+   ![](./static/sto-standalone-workflows-10.png)
 
 ## Scan Step Configuration
 
 Let's look at the bandit step to see how it's configured.
 
 1. In your new pipeline, go to **securityTestStage** and open the banditScan step.
-   ![](./static/tutorial-1-standalone-workflows-11.png)
+   ![](./static/sto-standalone-workflows-11.png)
 2. Let's review the settings.
 
 
@@ -93,7 +91,7 @@ Every instance of a scanner has a specific *target*, which is the object it is s
 
 The **Security Tests** tab shows the issues that the scanner found in the test target, categorized by severity. The scanner found two issues, one critical and one medium, in the master branch.
 
-![](./static/tutorial-1-standalone-workflows-12.png)
+![](./static/sto-standalone-workflows-12.png)
 
 ## Setting Baselines
 
@@ -104,7 +102,7 @@ As a developer, you want to ensure that your merge or update doesn't introduce a
 
 1. Click **Security Tests** (left menu), then **Test Targets** (second-from-left menu).
 2. For the **dvpwa** target, click **Baseline for Comparison** and select **branch :** **master** in the pulldown menu.
-   ![](./static/tutorial-1-standalone-workflows-13.png)
+   ![](./static/sto-standalone-workflows-13.png)
 
 ## Fixing Vulnerabilities
 
@@ -118,14 +116,14 @@ Suppose you're developing a new feature. You create a new branch DEMO-001 from t
 
 Your branch has 5 new security issues: 2 critical, 2 medium, 1 low. Note that 3 of these issues are in the DEMO-001 branch only and 2 are in both DEMO-001 and master.
 
-![](./static/tutorial-1-standalone-workflows-14.png)
+![](./static/sto-standalone-workflows-14.png)
 
 **Key Concept: To troubleshoot an issue, go to Issue Details**  
 The Issue Details pane has the information you need to troubleshoot and fix your security vulnerabilities.
 
 * In the Issues table (bottom left), click the row for the critical issue **subprocess\_popen\_with\_shell\_equals\_true**. The Issue Details pane opens.
 
-  ![](./static/tutorial-1-standalone-workflows-15.png)
+  ![](./static/sto-standalone-workflows-15.png)
 
 	+ The **Severity Score** is based on the [NIST Common Vulnerability Scoring System](https://nvd.nist.gov/vuln-metrics/cvss) (CVSS) version 3.0:
 		- None 0.0
@@ -143,4 +141,4 @@ The Issue Details pane has the information you need to troubleshoot and fix your
 
 In this tutorial you've learned how to set up a scanner, create a baseline, analyze scan results, and use the data collected by STO to pinpoint and fix vulnerabilities *before* you merge your code updates.
 
-Proceed to [Tutorial 2](./sto-tutorial-2-integrated-sto-ci-cd-workflows.md) to learn how you can use STO to protect repos, images, and artifacts from vulnerabilities automatically.
+Proceed to [Tutorial 2](./sto-integrated-workflows.md) to learn how you can use STO to protect repos, images, and artifacts from vulnerabilities automatically.

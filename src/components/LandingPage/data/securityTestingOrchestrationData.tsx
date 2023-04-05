@@ -5,7 +5,7 @@ import { MODULES } from "../../../constants";
 /* Define the cards here */
 export const FeaturedList: CardItem[] = [
   {
-    title: "Getting started 1: Create a standalone STO pipeline",
+    title: "Create a standalone STO pipeline",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
@@ -14,10 +14,10 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/orchestrate-security-tests/tutorial-1-standalone-workflows",
+    link: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
   },
   {
-    title: "Getting started 2: Create an integrated STO/CI pipeline",
+    title: "Create an integrated STO/CI pipeline",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
@@ -26,13 +26,13 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/orchestrate-security-tests/sto-tutorial-2-integrated-sto-ci-cd-workflows",
+    link: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
   },
 ];
 
 export const STOList: CardItem[] = [
   {
-    title: "Getting started 1: Create a standalone STO pipeline",
+    title: "Create a standalone STO pipeline",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
@@ -41,10 +41,10 @@ export const STOList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/orchestrate-security-tests/tutorial-1-standalone-workflows",
+    link: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
   },
   {
-    title: "Getting started 2: Create an integrated STO/CI pipeline",
+    title: "Create an integrated STO/CI pipeline",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
@@ -53,7 +53,7 @@ export const STOList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/orchestrate-security-tests/sto-tutorial-2-integrated-sto-ci-cd-workflows",
+    link: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
   },
   {
     title: "Scanning a NodeJS Application",
