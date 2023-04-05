@@ -44,7 +44,7 @@ This integration has a separate setup path that is unrelated to other Jira-relat
 ## Create a Jira ticket from a detected issue
 
 :::note
-You can only create Jira tickets for [targets](/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows#viewing-security-test-results) that have [baselines](/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows#setting-baselines) specified.
+You can only create Jira tickets for targets that have baselines specified. <!-- TBD add link -- >
 :::
 
 1. Go to the **Pipeline Execution** &gt; **Security Tests** page with the detected issue. 

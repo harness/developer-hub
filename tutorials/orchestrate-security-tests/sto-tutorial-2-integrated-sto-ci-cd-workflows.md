@@ -1,27 +1,27 @@
 ---
-title: Tutorial 2 -- Integrated STO Pipelines with CI/CD
-description: This tutorial builds on the previous tutorial. You need to complete Tutorial 1 first. The Pipeline you created in Tutorial 1 is an example of a stand-alone STO workflow. It scans a test target and re…
-sidebar_position: 40
+title: Getting started 2 - Integrated STO Pipelines with CI/CD
+description: Learn how to include STO scans in CI and CD pipelines and stop builds when STO finds any "show-stopper" vulnerabilities.
+sidebar_position: 20
 helpdocs_topic_id: zy4h4ch6dh
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This tutorial builds on the [previous tutorial](tutorial-1-standalone-workflows.md). You need to complete Tutorial 1 first.
+This tutorial builds on the [previous tutorial](/tutorials/orchestrate-security-tests/tutorial-1-standalone-workflows). You need to complete Tutorial 1 first.
 
 The Pipeline you created in Tutorial 1 is an example of a stand-alone STO workflow. It scans a test target and reports on the vulnerabilities, but doesn't do anything else.
 
 In this section, you'll learn how to integrate STO functionality into CI and CD Pipelines. The core benefit of STO in an integrated Pipeline is to fail the Pipeline if a scanner finds any "show-stopper" vulnerabilities. The following sections describe the different failure strategies you can implement.
 
-For the list of supported scanners, see [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md).
+For the list of supported scanners, see [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
 
 ### Review: Ingestion Workflows
 
 STO supports three different workflows to ingest scan results into a pipeline:
 
-* [Orchestrated workflows](/docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto.md) — A Security step runs a scan with predefined settings and ingests the results.
-* [Ingestion-Only workflows](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.
+* [Orchestrated workflows](/docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto) — A Security step runs a scan with predefined settings and ingests the results.
+* [Ingestion-Only workflows](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.
 * Data-Load workflows — A Security step downloads and ingests results from an external scanner.
 
 ### Fail Pipelines on Severity
@@ -47,8 +47,8 @@ In some cases, developers might want to create "ignore rules" that override the 
 
 Harness provides two pre-defined roles for STO:
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](tutorial-1-standalone-workflows.md). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions. In addition, SecOps users can approve Ignore rules. These workflows are covered in [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
+* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](/tutorials/orchestrate-security-tests/tutorial-1-standalone-workflows). A Developer can set up security pipelines, run scans, and view results. A Developer can also request (but not approve) Ignore rules for specific issues.
+* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions. In addition, SecOps users can approve Ignore rules. These workflows are covered in this tutorial.
 
 In this section, you'll create an Ignore rule and approve it as SecOps user. In many real-world scenarios, two separate people will be performing the workflow: a developer creates an Ignore Rule, but the rule isn't active until a SecOps person approves it.
 
@@ -103,7 +103,7 @@ You've now learned the core STO features and workflows. Here are the next steps 
 
 #### Add More Scanner Steps
 
-STO supports an extensive set of external scanners for repos, images, and artifacts. See [Security Steps Reference](../sto-techref-category/security-step-settings-reference.md).
+STO supports an extensive set of external scanners for repos, images, and artifacts. See [Security Steps Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
 
 #### Add Steps or Stages for CI/CD Workflows
 
@@ -111,7 +111,7 @@ You know how to implement Pipelines when scanners detect security issues, and ho
 
 #### Add Governance Policies
 
-You can use the [Harness Policy Engine](../../platform/14_Policy-as-code/harness-governance-overview.md) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you could create a rule like the following to ensure that all Pipelines include a Security Stage.
+You can use the [Harness Policy Engine](/docs/platform/policy-as-code/harness-governance-overview) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you could create a rule like the following to ensure that all Pipelines include a Security Stage.
 
 
 ```
@@ -135,9 +135,9 @@ contains(arr, elem) {
 ```
 #### Add Failure Strategies to a CI/CD Stage
 
-You can implement [Failure Strategies](../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md) to bypass the failure policies in previous Security steps. One use case for this would be to enable manual interventions when a Security Step generates a failure. You could set up a workflow like this:
+You can implement [Failure Strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps) to bypass the failure policies in previous Security steps. One use case for this would be to enable manual interventions when a Security Step generates a failure. You could set up a workflow like this:
 
-1. A Build Step is downstream from the Security Step. It has a Failure Strategy that's set to run on [All Errors](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md#error-types).
+1. A Build Step is downstream from the Security Step. It has a Failure Strategy that's set to run on [All Errors](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#error-types).
 2. The scanner detects issues and the Security Step generates an error.
 3. The Failure Strategy in the Build Step initiates a 30-minute pause before proceeding.
 4. The developer and security team evaluate the issues and then abort the Pipeline or allow it to proceed.
@@ -285,12 +285,4 @@ pipeline:
 
 ```
 </details>
-
-
-### See Also
-
-* [STO Ingestion Workflows](../use-sto/sto-workflows-overview.md)
-* [Run an Orchestrated Scan in an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md)
-* [Ingest Scan Results into an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md)
-* [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
 

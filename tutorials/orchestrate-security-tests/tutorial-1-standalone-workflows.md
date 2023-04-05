@@ -1,7 +1,7 @@
 ---
-title: Tutorial 1 -- Standalone STO Pipeline
-description: This quickstart shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness Pipeline. You'll set up a Pipeline with one scanner, run sc…
-sidebar_position: 30
+title: Getting started 1 - Create a standalone STO pipeline
+description: Set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
+sidebar_position: 10
 helpdocs_topic_id: yvy4pmt8bw
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This tutorial shows you how to use the Harness Security Testing Orchestration (STO) module to perform code security scanning in a Harness Pipeline. You'll set up a Pipeline with one scanner, run scans, analyze the results, and learn the key features of STO.
 
-This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md), you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
+This tutorial covers standalone or "audit-only" workflows that don't require any other Harness components. In [Tutorial 2](./sto-tutorial-2-integrated-sto-ci-cd-workflows.md), you'll learn how to integrate STO into Harness CI and CD workflows and protect your repos, containers, and artifacts from vulnerabilities automatically.
 
 ## Objectives
 
@@ -22,7 +22,7 @@ You'll learn how to:
 
 ## Before You Begin
 
-You must perform all the required steps in [Set Up Harness for STO](set-up-harness-for-sto.md). This topic describes how to do the following:
+You must perform all the required steps in [Set Up Harness for STO](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto). This topic describes how to do the following:
 
 1. Install a delegate in a Kubernetes cluster.
 2. Create connectors to your Git and DockerHub repos
@@ -36,26 +36,26 @@ You will use a clone of this pipeline in these tutorials.
 
 STO supports three different workflows to ingest scan results into a pipeline:
 
-* [Orchestrated workflows](../use-sto/run-an-orchestrated-scan-in-sto.md) — A Security step runs a scan with predefined settings and ingests the results. This tutorial illustrates an orchestrated workflow.  
+* [Orchestrated workflows](/docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto) — A Security step runs a scan with predefined settings and ingests the results. This tutorial illustrates an orchestrated workflow.  
 This is the simplest method to implement. STO supports orchestrated scans for Trivy, Bandit, SonarQube, and other popular tools.
-* [Ingestion-Only workflows](../use-sto/ingesting-issues-from-other-scanners.md) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.  
+* [Ingestion-Only workflows](/docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.  
 This provides the most flexibility. You can ingest results from highly targeted scan that address specific use case. You can also ingest results from scanners that currently have no STO integration.
 * Data-Load workflows — A Security step downloads and ingests results from an external scanner.  
 This workflow is supported for scanners that provide methods for transferring data programmatically.
 
 ### Review: Scanner Coverage
 
-See **Security Testing Orchestration** in [Supported Platforms and Technologies](../../getting-started/supported-platforms-and-technologies.md).
+See **Security Testing Orchestration** in [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
 
 ### Stand-Alone STO Workflows
 
 You're a developer, working in various development branches and merging your code updates. You want to make sure you don't introduce any new vulnerabilities when you merge your code into a target branch. Using STO, you can scan your repo automatically and then use the results to pinpoint and fix your vulnerabilties before you do any merge.
 
-This Pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md).
+This Pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
 
 ## Clone your STO base pipeline
 
-1. Go to the project with the [base STO pipeline](set-up-harness-for-sto.md#create-an-sto-pipeline) project.
+1. Go to the project with the [base STO pipeline](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto/#create-an-sto-pipeline) project.
 2. Click the top-right menu, choose **Clone**, and save the new pipeline as **STO Tutorial 1**.
 
    ![](./static/tutorial-1-standalone-workflows-10.png)
@@ -141,12 +141,4 @@ The Issue Details pane has the information you need to troubleshoot and fix your
 
 In this tutorial you've learned how to set up a scanner, create a baseline, analyze scan results, and use the data collected by STO to pinpoint and fix vulnerabilities *before* you merge your code updates.
 
-Proceed to [Tutorial 2](sto-tutorial-2-integrated-sto-ci-cd-workflows.md) to learn how you can use STO to protect repos, images, and artifacts from vulnerabilities automatically.
-
-## See Also
-
-* [STO Ingestion Workflows](../use-sto/sto-workflows-overview.md)
-* [Run an Orchestrated Scan in an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md)
-* [Ingest Scan Results into an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md)
-* [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
-
+Proceed to [Tutorial 2](./sto-tutorial-2-integrated-sto-ci-cd-workflows.md) to learn how you can use STO to protect repos, images, and artifacts from vulnerabilities automatically.
