@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Continuous Error Tracking overview
+
 :::note
 Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::

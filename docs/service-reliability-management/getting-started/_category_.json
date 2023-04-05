@@ -1,11 +1,11 @@
 {
-   "label":"Get Started",
+   "label":"Get started",
    "position": 10,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Get Started with Service Reliability Management (SRM)"
+      "title":"Get started with Service Reliability Management (SRM)"
    }
    }

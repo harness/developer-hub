@@ -4,6 +4,9 @@ description: Get an overview of Harness Service Reliability Management (SRM).
 sidebar_position: 10
 ---
 
+# SRM overview
+
+
 Harness Service Reliability Management (SRM) helps you improve the reliability of applications and services by providing real-time insights into their performance, detecting anomalies, providing automated remediation, and enabling you to quickly identify and resolve issues.
 
 ![SRM overview](./static/srm-overview.png)

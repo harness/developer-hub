@@ -1,11 +1,11 @@
 {
-   "label":"Change Impact Analysis",
+   "label":"Change impact analysis",
    "position": 70,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Change Impact Analysis"
+      "title":"Change impact analysis"
    }
    } 
