@@ -12,7 +12,6 @@ The AWS native lambda feature is behind the feature flag, `CDS_AWS_NATIVE_LAMBDA
 
 <docvideo src="https://www.loom.com/embed/12e4c1161e7e428ba6acf9ff168693c1" width="100%" height="600" />
  
- 
 ## Lambda Service Configuration
 
 Harness lets users define a service that represents their AWS Lambda Function they wish to deploy. 
