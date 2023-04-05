@@ -20,7 +20,7 @@ The unique name for this Stage.
 
 ## ID
 
-See [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
+See [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
 
 ## Description
 
@@ -36,7 +36,7 @@ If you don't select the option here, you can select it in **Stage Details**.
 
 ## Configure Codebase
 
-These settings specify the codebase for the Stage. See [Create and configure a codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md).
+These settings specify the codebase for the Stage. See [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
 
 ## Connector
 
@@ -60,7 +60,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](../../platform/20_References/tags-reference.md).
+See [Tags Reference](../../../platform/20_References/tags-reference.md).
 
 ### Clone Codebase
 
@@ -82,15 +82,15 @@ You can add Shared Paths to share data in folders outside the default workspace.
 
 ## Variables
 
-Environment variables are available to all steps in the stage. For an example use case, go to [Build a Docker image without pushing](../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md#useful-techniques).
+Environment variables are available to all steps in the stage. For an example use case, go to [Build a Docker image without pushing](../build-and-upload-artifacts/build-and-upload-an-artifact.md#useful-techniques).
 
 ## Infrastructure
 
-This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature is coming soon.Infrastructure is where the build is run. It is a build farm. For example, a Kubernetes cluster. The cluster uses a container to execute Run steps in the stage. See [Run step settings](run-step-settings.md).
+This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature is coming soon.Infrastructure is where the build is run. It is a build farm. For example, a Kubernetes cluster. The cluster uses a container to execute Run steps in the stage. See [Run step settings](../../ci-technical-reference/run-step-settings.md).
 
 ### Kubernetes Cluster
 
-A Kubernetes cluster can be used as a build farm. See [Set up a Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+A Kubernetes cluster can be used as a build farm. See [Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 ### Namespace
 
@@ -100,7 +100,7 @@ The Kubernetes namespace in the target cluster to use.
 
 By default, Harness pulls certain images from public Docker Hub repos that are needed to run a build. You can override this by using a Connector that downloads these images from the Harness Container Image Registry instead. This option is useful when your default Delegate cannot access the public registry (due to security policies in your organization, for example, or if your infrastructure is running in a private cloud).
 
-To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
+To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](../../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
 
 ## Advanced
 

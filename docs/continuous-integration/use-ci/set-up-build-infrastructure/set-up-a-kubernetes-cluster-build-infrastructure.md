@@ -175,7 +175,7 @@ Harness adds the following labels automatically:
 
 The [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra) uses a Kubernetes cluster build infrastructure.
 
-For details about stage settings, go to [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md).
+For details about stage settings, go to [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
 
 :::
 

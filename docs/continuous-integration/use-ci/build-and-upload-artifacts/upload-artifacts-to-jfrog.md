@@ -16,7 +16,7 @@ The following steps run SSH commands and push the artifacts to JFrog Artifactory
 ### Before you Begin
 
 * [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
 * [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 

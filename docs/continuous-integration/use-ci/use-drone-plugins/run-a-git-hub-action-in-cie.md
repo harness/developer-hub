@@ -43,7 +43,7 @@ To check codebase configuration for existing pipelines, select **Codebase** whil
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Infrastructure** tab.
 2. Define the build farm for the codebase. For more information, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
-For more information about stage configuration, go to [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md).
+For more information about stage configuration, go to [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
 
 :::tip
 

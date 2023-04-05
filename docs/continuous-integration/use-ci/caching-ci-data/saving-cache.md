@@ -103,7 +103,7 @@ Here is a YAML example of a **Save Cache to S3** step.
 
 For details about this step's settings, go to [Save Cache to S3 step settings](../../ci-technical-reference/save-cache-to-s-3-step-settings.md).
 
-Pipeline steps within a stage share the same [workspace](../../ci-technical-reference/ci-stage-settings.md#workspace). You can optionally [share paths](../../ci-technical-reference/ci-stage-settings.md#share-paths) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
+Pipeline steps within a stage share the same [workspace](/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings#workspace). You can optionally [share paths](/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings#shared-paths) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
 
 ```yaml
   stages:

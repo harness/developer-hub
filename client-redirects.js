@@ -366,5 +366,17 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/ci-cluster-requirement",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-cluster-requirement",
     },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 5, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-stage-settings",
+      to: "/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 5, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
+    },
   ],
 };

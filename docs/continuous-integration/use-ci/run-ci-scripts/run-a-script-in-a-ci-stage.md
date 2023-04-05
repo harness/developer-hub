@@ -24,7 +24,7 @@ To go through this workflow, you need the following:
 	+ [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
 	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A familiarity with Build Stage settings:
-	+ [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+	+ [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
 * A familiarity with how Pipelines use Codebases:
 	+ [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md)
 
