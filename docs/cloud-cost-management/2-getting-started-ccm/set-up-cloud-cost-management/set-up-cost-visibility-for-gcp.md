@@ -22,7 +22,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your GCP product
 
 ## Before you begin
 
-* The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](set-up-cost-visibility-for-gcp.md).
+* The same connector cannot be used in NextGen and FirstGen. For information on creating a GCP connector in the FirstGen see [Set Up Cost Visibility for GCP](../../../first-gen/cloud-cost-management/setup-cost-visibility/enable-cloud-efficiency-for-google-cloud-platform-gcp.md).
 * Review [Required permissions and roles](https://cloud.google.com/iam/docs/understanding-custom-roles#required_permissions_and_roles) to create an IAM role at the organization level
 * Ensure that you have the following permissions to enable and configure the export of Google Cloud billing data to a BigQuery dataset:
 	+ **Billing Account Administrator** role for the target Cloud Billing account
@@ -100,7 +100,7 @@ CCM offers the following features:
 | --- | --- | 
 | **Cost Visibility** (Required)| This feature is available by default. Make sure you have set up the GCP Billing Export. Provides the following capabilities:<ul><li>Insights into GCP costs by projects, products, etc.</li><li>Root cost analysis using cost perspectives </li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul>|
 | **GCP Inventory Management** (Optional)| This feature provides visibility into your GCE VMs and unused disks and snapshots. The insights provided by inventory management can be used by Finance teams to understand resource utilization across the board.|
-| **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see [Create AutoStopping Rules for GCP](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-gcp).<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
+| **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see **Create AutoStopping Rules for GCP**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
 
 
 Make your selection and click **Continue**.
@@ -134,11 +134,11 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 
 
 :::note
-To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules).
+To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
 :::
   
    
-9. Click **Continue** in Harness.
+1. Click **Continue** in Harness.
 
 
 ### Connection Test

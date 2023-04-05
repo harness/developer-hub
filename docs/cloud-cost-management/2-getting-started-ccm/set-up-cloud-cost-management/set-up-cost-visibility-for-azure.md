@@ -221,8 +221,4 @@ Your connector is listed in the **Connectors**.
 
 If you get the `When using this permission, the backing application of the service principal being created must in the local tenant` error, check if you have the **Application Administrator** role assigned for your Azure AD. Users in this role can create and manage all aspects of enterprise applications, application registrations, and application proxy settings. For more information, see [Application Administrator](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference#application-administrator).
 
-### Next Steps
-
-* [Analyze Cost for Azure Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-azure.md)
-* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 

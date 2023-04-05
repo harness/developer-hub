@@ -1,5 +1,5 @@
 ---
-title: What is Cloud Cost Management?
+title: Introduction to Cloud Cost Management
 description: Provides an overview of Harness Cloud Cost Management.
 # sidebar_position: 2
 helpdocs_topic_id: rr85306lq8

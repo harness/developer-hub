@@ -191,7 +191,7 @@ The following details are displayed:
 	+ Cluster
 * **Cost details**: The following cost details are displayed:
 	+ **Total Cost**: For Kubernetes clusters, the total cost is the sum of all the node costs. For ECS clusters, the sum of all container instances.
-	+ **Idle Cost**: Idle cost is the cost of idle resources (CPU and memory) allocated to a Kubernetes pod or an Amazon ECS task but is not utilized. For more information, see [Idle Cost](../../1-cloud-cost-management-overview/harness-key-cloud-cost-concepts.md#idle-cost).
+	+ **Idle Cost**: Idle cost is the cost of idle resources (CPU and memory) allocated to a Kubernetes pod or an Amazon ECS task but is not utilized. For more information, see [Idle Cost](../../2-getting-started-ccm/harness-key-cloud-cost-concepts.md#idle-cost).
 	+ **Utilized Cost**: Utilized cost is the cost estimate for the utilized node or pod resources.
 * **Aggregation**: The aggregated CPU and memory utilization value of your workload. The values are displayed as the following:
 	+ **Time-weighted**: This considers the active duration of pods when calculating the CPU and memory utilization.

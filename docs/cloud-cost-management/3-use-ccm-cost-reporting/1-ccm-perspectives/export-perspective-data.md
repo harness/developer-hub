@@ -42,7 +42,6 @@ Click **Download**.
 Depending on your browser, you might be prompted to allow downloads.
 
  
-
 ![](./static/export-perspective-data-05.png)
 
 The file is downloaded to your local computer.
