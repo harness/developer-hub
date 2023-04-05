@@ -616,7 +616,7 @@ notificationRules:
 ```
 See also:
 
-* [Add a Pipeline Notification Strategy](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
+* [Add a Pipeline Notification Strategy](../../../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md)
 
 ### Triggers
 

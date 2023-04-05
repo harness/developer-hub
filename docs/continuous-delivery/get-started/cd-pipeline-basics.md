@@ -60,7 +60,7 @@ You can also propagate and override a Service in subsequent stages by selecting 
 
 For examples, see:
 
-* [Kubernetes Services](../cd-services/k8s-services/kubernetes-services.md)
+* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services.md)
 * [Propagate and Override CD Services](../x-platform-cd-features/services/propagate-and-override-cd-services.md)
 
 ### Service Instance
@@ -71,7 +71,7 @@ Harness periodically tracks the count of running Service Instances every 10 minu
 
 Harness uses a Service-based license model to charge Harness customers using its Continuous Delivery module.
 
-See [Service-based Licensing and Usage for CD](../onboard-cd/cd-concepts/service-licensing-for-cd.md).
+See [Service-based Licensing and Usage for CD](./service-licensing-for-cd.md).
 
 ### Environments and Infrastructure
 

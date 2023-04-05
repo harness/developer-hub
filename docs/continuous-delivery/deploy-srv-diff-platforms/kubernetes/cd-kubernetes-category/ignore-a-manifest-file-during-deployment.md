@@ -17,7 +17,7 @@ Instead, you can tell Harness to ignore these files and then apply them separate
 ## Before You Begin
 
 * [Add Kubernetes Manifests](define-kubernetes-manifests.md)
-* [Kubernetes Deployments Overview](kubernetes-deployments-overview.md)
+* [Kubernetes Deployments Overview](../kubernetes-deployments-overview.md)
 
 ## Visual Summary
 

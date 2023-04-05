@@ -24,7 +24,7 @@ This key will import the credentials from the Docker credentials file in the art
 Ensure you have reviewed and set up the following:
 
 * [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Kubernetes Deployments Overview](kubernetes-deployments-overview.md)
+* [Kubernetes Deployments Overview](../kubernetes-deployments-overview.md)
 * [Add Container Images as Artifacts for Kubernetes Deployments](add-artifacts-for-kubernetes-deployments.md)
 
 ## Review: Private Repo Authentication for Container Instances

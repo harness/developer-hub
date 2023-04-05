@@ -22,7 +22,7 @@ Other configuration files for other integrations, such as Azure Web Apps, etc, a
 Before You Begin
 
 * [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Kubernetes Deployments Overview](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/kubernetes-deployments-overview.md)
+* [Kubernetes Deployments Overview](../../deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md)
 * [Add Kubernetes Manifests](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
 * [Add Container Images as Artifacts for Kubernetes Deployments](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md)
 

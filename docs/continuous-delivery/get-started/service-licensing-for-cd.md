@@ -3,7 +3,7 @@ title: Service-based licensing and usage for CD
 description: This topic describes the Harness Service-based license model for its Continuous Delivery module.
 sidebar_position: 4
 helpdocs_topic_id: ihboxj8xlz
-helpdocs_category_id: dxej4ug0n5
+helpdocs_category_id: Dxej4ug0n5
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -16,7 +16,7 @@ The CD License calculation uses the Active Services count and the number of Serv
 
 Harness gets all Services that are part of any Pipeline execution (deployment) over the past **30 Days**. We call these a list of **Active Services**.
 
-![](./static/service-licensing-for-cd-00.png)
+![](../onboard-cd/cd-concepts/static/service-licensing-for-cd-00.png)
 
 When determining Active Services, the status of the deployments does not matter. A Service is considered Active even if it was part of any failed deployments.
 
@@ -34,7 +34,7 @@ Also, the number of instances deployed does not matter here. A Service is consid
 
 Active Service instances represents the active instances deployed using Harness strategies, whereas active Deployments contains all Service and Environment combinations.
 
-![](./static/service-licensing-for-cd-01.png)
+![](../onboard-cd/cd-concepts/static/service-licensing-for-cd-01.png)
 
 # How Service-based Licensing is Calculated
 

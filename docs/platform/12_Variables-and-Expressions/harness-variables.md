@@ -653,7 +653,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](../../continuous-delivery/get-started/services-and-environments-overview.md).
 
 ### Service-level variables for service v2
 
@@ -989,7 +989,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](../../continuous-delivery/get-started/services-and-environments-overview.md).
 
 To reference an environment-level variable, use the expression `<+env.variables.[variable name]>`.
 

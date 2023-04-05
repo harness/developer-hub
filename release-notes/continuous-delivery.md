@@ -1163,7 +1163,7 @@ This release does not include new features.
   The description field now uses a textarea component to provide a better user experience.
 - Unable to select a Primary Artifact in the pipeline input form. (CDS-48065)
   
-  Multiple Artifact Source is only available with [service V2](/docs/continuous-delivery/onboard-cd/services-and-environments-overview). With this fix, the UI only allows the multiple artifact option with service V2. As this UI check was not present earlier, some users had multiple artifact sources with service V1. Users with existing configurations must fix this.
+  Multiple Artifact Source is only available with [service V2](/docs/continuous-delivery/get-started/services-and-environments-overview). With this fix, the UI only allows the multiple artifact option with service V2. As this UI check was not present earlier, some users had multiple artifact sources with service V1. Users with existing configurations must fix this.
 - [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests): error message needs to be improved when Chart.yaml is given instead of a directory. (CDS-48038)
   
   Error improvement is done around custom manifest Helm chart path using Helm deployment.
@@ -1206,7 +1206,7 @@ Previously, we were only looking for a path relative to the Harness working dire
  
 Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
 
-- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/onboard-cd/services-and-environments-overview). (CDS-39989)
+- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/get-started/services-and-environments-overview). (CDS-39989)
 
 You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
 

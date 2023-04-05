@@ -723,18 +723,18 @@ The following table lists Harness support for collaboration tools.
 
 Most providers are used in both Pipeline Notification Strategies and User Group notifications:
 
-- [Add a Pipeline Notification Strategy](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
+- [Add a Pipeline Notification Strategy](../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md)
 - [Send Notifications Using Slack](../platform/5_Notifications/send-notifications-using-slack.md)
 - [Send Notifications to Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)
 
 | Provider Name                                                                                       | Notification | Approval/Change Management |
 | --------------------------------------------------------------------------------------------------- | ------------ | -------------------------- |
 | [Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)             | Yes          | N/A                        |
-| [Email](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)     | Yes          | N/A                        |
+| [Email](../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md)     | Yes          | N/A                        |
 | [Slack](../platform/5_Notifications/send-notifications-using-slack.md)                              | Yes          | N/A                        |
 | [Jira](../platform/9_Approvals/adding-jira-approval-stages.md)                                      | Yes          | Yes                        |
 | [ServiceNow](../platform/9_Approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
-| [PagerDuty](../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md) | Yes          | N/A                        |
+| [PagerDuty](../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md) | Yes          | N/A                        |
 
 ### Access control
 

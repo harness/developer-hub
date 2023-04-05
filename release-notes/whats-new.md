@@ -540,7 +540,7 @@ infrastructure:
   - Previously, we were only looking for a path relative to Harness working directory (a temporary directory created by Harness).
   - Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`.
   - Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
-- **Referenced By** tab added to [Environments](/docs/continuous-delivery/onboard-cd/services-and-environments-overview) (CDS-39989)
+- **Referenced By** tab added to [Environments](/docs/continuous-delivery/get-started/services-and-environments-overview) (CDS-39989)
   - You can see which pipeline use any Environment in the Environment's **Referenced By** tab.
 
 - The [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
@@ -553,7 +553,7 @@ infrastructure:
 
   Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
 
-- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/onboard-cd/services-and-environments-overview). (CDS-39989)
+- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/get-started/services-and-environments-overview). (CDS-39989)
 
   You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
 

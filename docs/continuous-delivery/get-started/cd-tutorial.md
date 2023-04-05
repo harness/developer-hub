@@ -1,5 +1,5 @@
 ---
-title: CD Tutorials
+title: CD tutorials
 description: Links to CD tutorials and onboarding topics.
 sidebar_position: 3
 ---

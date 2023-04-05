@@ -53,7 +53,7 @@ Notes:
 
 #### How does Harness calculate pricing for CD?
 
-See [Service-based licensing and usage for CD](../../continuous-delivery/onboard-cd/cd-concepts/service-licensing-for-cd.md).
+See [Service-based licensing and usage for CD](../../continuous-delivery/get-started/service-licensing-for-cd.md).
 
 #### My definition of a service differs from the above standard definition. How will pricing work in my case?
 
@@ -169,7 +169,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
 
-See the [Kubernetes deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/kubernetes-deployments-overview.md).
+See the [Kubernetes deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md).
 
 For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](/docs/category/kubernetes).
 

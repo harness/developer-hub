@@ -1,6 +1,6 @@
 ---
 title: Kubernetes deployment tutorial
-description: This topic walks you through deploying a publicly-available Docker image and manifest into your Kubernetes cluster using a rolling update strategy in Harness.
+description: Deploy a Docker image into your Kubernetes cluster.
 sidebar_position: 1
 helpdocs_topic_id: knunou9j30
 helpdocs_category_id: c9j6jejsws

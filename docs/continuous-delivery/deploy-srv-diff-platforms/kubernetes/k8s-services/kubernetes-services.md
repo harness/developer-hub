@@ -448,7 +448,7 @@ To add a Helm chart to your service, do the following:
 7. In **Specify Manifest Type**, select **Helm Chart**, and click **Continue**.
 8. In **Specify Helm Chart Store**, select the storage service you're using.
    
-   ![helm storage](static/a49287968d8e99d3368420384bab12d62206d48fa714cd0c61eed12ca14c641f.png)  
+   ![helm storage](./static/a49287968d8e99d3368420384bab12d62206d48fa714cd0c61eed12ca14c641f.png)  
 
 
    For the steps and settings of each option, go to [Connectors](https://developer.harness.io/docs/category/connectors) or [Connect to a Git repo](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo).
@@ -680,7 +680,7 @@ For a detailed walkthrough of deploying Kustomize in Harness, including limitati
 
 #### Important notes
 
-* Harness supports Kustomize and Kustomize Patches for [Rolling](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-d../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/canary-deployment-step.mdanary-deployment-step.md), [Blue Green](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deploy../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.mdal-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) steps.
+* Harness supports Kustomize and Kustomize Patches for [Rolling](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/canary-deployment-step.mdanary-deployment-step.md), [Blue Green](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.mdal-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) steps.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
 * You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 * **Kustomize binary versions:**
@@ -844,7 +844,7 @@ OpenShift Param Files can be added in the following ways:
 1. Attached to the OpenShift Template you added.
 2. Added as a separate manifest.
 
-![Params](static/9e15cbd984b566f357edc930d15ff7ce9d186c4d843615f5299710605926f811.png)
+![Params](./static/9e15cbd984b566f357edc930d15ff7ce9d186c4d843615f5299710605926f811.png)
 
 For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
 
@@ -859,7 +859,7 @@ Let's look at an example where the OpenShift Param is attached to a template alr
 
 You can now see the params file in the OpenShift Template **Manifest Details**.
 
-![Manifest Details](static/bbeb75857343eb531ec2025d898bceb40393fa5068529e4ae69970ca3eaa8f4d.png)
+![Manifest Details](./static/bbeb75857343eb531ec2025d898bceb40393fa5068529e4ae69970ca3eaa8f4d.png)
 
 
 ```mdx-code-block
@@ -1798,14 +1798,14 @@ To add an artifact from ECR, do the following:
 11. In **Image Path**, enter the name of the artifact you want to deploy.
 12. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
     
-    ![ECR artifact details](static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
+    ![ECR artifact details](./static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 13. Select **Submit**.
     
     The Artifact is added to the Service Definition.
 
-    ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
+    ![ECR artifact source in a service](./static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
 
 
 ```mdx-code-block
@@ -2125,7 +2125,7 @@ The Harness Azure connectors that you'll use to connect Harness to ACR must have
 <summary>Reader role information</summary>
 
 
-![ACR Reader role](static/73cff0ac7d500c94998634b3885856b4eb37760f005ba1a413d3bd809b9e4e89.png)
+![ACR Reader role](./static/73cff0ac7d500c94998634b3885856b4eb37760f005ba1a413d3bd809b9e4e89.png)
 
 The Reader role must be assigned at the Subscription or Resource Group level that is used by the Application (Client) Id that you'll use in the Azure connector's settings. The application must have permission to list all container registries.
 
@@ -2424,7 +2424,7 @@ Ensure the connected user account has the following permissions in the Nexus Ser
 * Repo: All repositories (Read)
 * Nexus UI: Repository Browser
 
-![Nexus repo perms for Harness](static/c98a49842e9d8bc5f3d2bef35aeff23c39932602a28d311eec5288cbf0fb22a9.png)
+![Nexus repo perms for Harness](./static/c98a49842e9d8bc5f3d2bef35aeff23c39932602a28d311eec5288cbf0fb22a9.png)
 
 See [Nexus Managing Security](https://help.sonatype.com/display/NXRM2/Managing+Security).
 
@@ -3163,7 +3163,7 @@ For more information, go to [Add a Kubernetes sidecar container](../../deploy-sr
 
 In the **Variables** section of the service you can add variables are use them in values YAML and params files, or in other settings in your stage that support expressions.
 
-![Harness service variables section](static/bfa1c1a5cd2c491e40250728317dee1918adfd779e29ef31c8baf9e4f32ad66f.png)
+![Harness service variables section](./static/bfa1c1a5cd2c491e40250728317dee1918adfd779e29ef31c8baf9e4f32ad66f.png)
 
 You can use the variable in your values YAML files. For example, here's a service variable used in the `name` key in the values YAML:
 

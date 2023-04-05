@@ -1,5 +1,5 @@
 ---
-title: Services and environments
+title: Services and environments basics
 description: Learn the basics of CD services and environments.
 sidebar_position: 3
 helpdocs_topic_id: 9ryi1ay01f
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes Harness Continuous Delivery (CD) services and environments.
 
-If you are new to Harness, please review [Harness key concepts](../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](../get-started/cd-pipeline-modeling-overview.md).
+If you are new to Harness, please review [Harness key concepts](../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
 
 ## Product demo: services
 
@@ -56,7 +56,7 @@ An account level service can only reference connectors for the manifests and art
 
 Shared services can also be created and managed at account or organization levels.
 
-![](../get-started/static/create-services-from-account-level.png)
+![](./static/create-services-from-account-level.png)
 
 :::note
 When using an account level deployment stage template, you can referencing an account level service only. Similarly, for organization level stage templates, you can reference organization level services only. 
@@ -245,13 +245,13 @@ resource "harness_platform_service" "example" {
 
 To create a service from outside of a pipeline, you use **Services** in the navigation pane.
 
-![](../get-started/static/services-and-environments-overview-09.png)
+![](./static/services-and-environments-overview-09.png)
 
 ### Creating services inside a pipeline
 
 To create a service from inside of a pipeline, select the **Services** tab of a new CD stage, then select **New Service**.
 
-![](../get-started/static/services-and-environments-overview-10.png)
+![](./static/services-and-environments-overview-10.png)
 
 Once the service and its service definition are saved, you can select it in any pipeline.
 
@@ -294,7 +294,7 @@ import TabItem2 from '@theme/TabItem';
 
 To create an environment at an account or organization level, go to **Organization Resources** **>Environments**. 
 
-![](../get-started/static/create-environments-from-account-level.png)
+![](./static/create-environments-from-account-level.png)
 
 Expand the section below to see a sample account level environment YAML.
 
@@ -523,19 +523,19 @@ The `org_id` and `project_id` field definitions are optional, and depend on wher
 
 To create an environment from inside of a pipeline, select **New Environment** in the **Infrastructure** tab of a new CD stage.
 
-![](../get-started/static/services-and-environments-overview-11.png)
+![](./static/services-and-environments-overview-11.png)
 
 ### Creating environments outside a pipeline
 
 To create an Environment from outside of a pipeline, you use **Environments** in the navigation pane.
 
-![](../get-started/static/services-and-environments-overview-12.png)
+![](./static/services-and-environments-overview-12.png)
 
 ### Configuration
 
 In the environment **Configuration**, you can manage the **Name**, **Description**, **Tags**, and **Environment Type** of the environment.
 
-![](../get-started/static/services-and-environments-overview-15.png)
+![](./static/services-and-environments-overview-15.png)
 
 You can also set default manifests, specifications, config files, and variables to use whenever Harness deploys a service to this environment.
 
@@ -559,7 +559,7 @@ The priority from top to bottom is:
 2. Environment configuration
 3. Service settings
 
-![](../get-started/static/services-and-environments-overview-16.png)
+![](./static/services-and-environments-overview-16.png)
 
 ### Infrastructure definitions
 
@@ -567,11 +567,11 @@ Infrastructure definitions represent an environment's infrastructures physically
 
 An environment can have multiple **Infrastructure Definitions**. 
 
-![](../get-started/static/services-and-environments-overview-13.png)
+![](./static/services-and-environments-overview-13.png)
 
 When you select an environment in a stage, you can select the **Infrastructure Definition** to use for that stage.
 
-![](../get-started/static/services-and-environments-overview-14.png)
+![](./static/services-and-environments-overview-14.png)
 
 ## Values YAML overrides and merges
 
@@ -579,7 +579,7 @@ You can specify values YAML files at the environment's **Service Overrides** and
 
 Here is an example of specifying it at the environment's **Configuration**:
 
-![](../get-started/static/services-and-environments-overview-17.png)
+![](./static/services-and-environments-overview-17.png)
 
 When you have a values yaml file at two or more of the environment **Service Overrides**, **Environment Configuration**, and the service itself, Harness merges the files into a single values YAML for deployment. This merging is performed at pipeline execution runtime.
 
@@ -597,7 +597,7 @@ At runtime, the two values YAML files are merged into one.
 
 The `servicePort: 80` from the environment **Service Overrides** values YAML is merged with the **Service Definition**'s `replicas: 2` in the values YAML:
 
-![](../get-started/static/services-and-environments-overview-18.png)
+![](./static/services-and-environments-overview-18.png)
 
 ### Fully overriding values YAML name:value pairs
 
@@ -607,7 +607,7 @@ A service's **Service Definition** has a values YAML with `replicas: 4` and `ser
 
 At runtime, the name:value pairs from the environment **Service Overrides** values YAML fully override the service values YAML. The `replicas: 2` and `servicePort: 80` from the environment **Service Overrides** are used.
 
-![](../get-started/static/services-and-environments-overview-19.png)
+![](./static/services-and-environments-overview-19.png)
 
 ## Config files and variables are completely overridden
 
@@ -627,7 +627,7 @@ To learn more about Harness GitOps, go to [Harness GitOps Basics](../cd-gitops/h
 
 Next, when you create a pipeline, you can select the environment and the GitOps cluster(s) to use.
 
-![](../get-started/static/services-and-environments-overview-20.png)
+![](./static/services-and-environments-overview-20.png)
 
 GitOps clusters are used in a PR pipeline. A PR pipeline creates and merges a Git PR on the `config.json` for a destination cluster as part of an ApplicationSet. The PR Pipeline runs, merges a change to the config.json, and a GitOps sync on the ApplicationSet is initiated.
 
@@ -641,11 +641,11 @@ If you use expressions in your services and environments, Harness must be able t
 
 Select **Runtime input** for the service and environment.
 
-![](../get-started/static/services-and-environments-runtime-input-01.png)
+![](./static/services-and-environments-runtime-input-01.png)
 
 When you run the pipeline, you can select the service and environment for their runtime inputs.
 
-![](../get-started/static/services-and-environments-runtime-input-02.png)
+![](./static/services-and-environments-runtime-input-02.png)
 
 For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md).
 
@@ -662,7 +662,7 @@ One of the most important advantages of services and environments is the ability
 
 In order for a role to allow deployments using services and/or environments, the role must have the access permission enabled for services and/or environments.
 
-![](../get-started/static/services-and-environments-overview-21.png)
+![](./static/services-and-environments-overview-21.png)
 
 The **View**, **Create**, **Edit**, **Delete**, and **Manage** permissions enable you to deploy a service and environment.
 
@@ -682,11 +682,11 @@ If you want to restrict a user or user group to deploy to a specific environment
 2. Create a Role and give the user or user group permissions. The **Access** permission is needed for deployments.
 3. Assign the role and resource group to the user or user group.
 
-![](../get-started/static/services-and-environments-overview-22.png)
+![](./static/services-and-environments-overview-22.png)
 
 ## Environment groups
 
 Environment groups are simple a way to group environments so you can assign permissions to multiple environments in a role.
 
-![](../get-started/static/services-and-environments-overview-23.png)
+![](./static/services-and-environments-overview-23.png)
 
