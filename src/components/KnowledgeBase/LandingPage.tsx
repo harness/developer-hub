@@ -9,7 +9,7 @@ import { knowledgeBaseList } from "./data/knowledgeBaseData";
 
 export default function KnowledgeBase() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
-  //   const [tab, setTab] = useState(certType.Developer);
+  //   const [tab, setTab] = useState(certType.developer);
   //   const handleSwitchTab = (tabVal) => {
   //     setTab(tabVal);
   //   };

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import DeveloperCertificationReviewGuide from "./data/ci-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/ci-certification-developer-exam-details.md";
@@ -11,25 +12,33 @@ const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_ci_badge.svg`,
     alt: "Harness Certified Expert - Developer",
-    type: certType.Developer,
+    type: certType.developer,
   },
   {
     img: `${url}img/cert_adm_ci_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
-    type: certType.Administrator,
+    type: certType.administrator,
   },
   {
     img: `${url}img/cert_arc_ci_badge.svg`,
     alt: "Harness Certified Expert - Architect",
-    type: certType.Architect,
+    type: certType.architect,
   },
 ];
 
 export default function CertificationsCI() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
-  const [tab, setTab] = useState(certType.Developer);
-  const handleSwitchTab = (tabVal) => {
-    setTab(tabVal);
+  // React router provides the current component's route, even in SSR
+  const location = useLocation();
+  const history = useHistory();
+  const { pathname, search } = location;
+  const searchKey = search.replace(/^.*=/, "");
+  const [tab, setTab] = useState(searchKey || "developer");
+  const handleSwitchTab = (tabKey) => {
+    setTab(tabKey);
+    if (pathname && tabKey) {
+      history.push(`${pathname}?lvl=${tabKey}`);
+    }
   };
 
   const certBadges = getCertBadges(baseUrl);
@@ -58,7 +67,7 @@ export default function CertificationsCI() {
             <img
               src={badge.img}
               alt={badge.alt}
-              className={badge.type === tab ? styles.active : ""}
+              className={badge.type === certType[tab] ? styles.active : ""}
             />
           ))}
         </div>
@@ -67,11 +76,11 @@ export default function CertificationsCI() {
       {/* Tab Content */}
       <div className={styles.tabs}>
         <ul className={styles.tabItems}>
-          {Object.values(certType).map((tabVal) => (
+          {Object.entries(certType).map(([tabKey, tabVal]) => (
             <li
-              key={tabVal}
-              className={tab === tabVal ? styles.active : ""}
-              onClick={() => handleSwitchTab(tabVal)}
+              key={tabKey}
+              className={tab === tabKey ? styles.active : ""}
+              onClick={() => handleSwitchTab(tabKey)}
             >
               For {tabVal}
             </li>
@@ -82,7 +91,7 @@ export default function CertificationsCI() {
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Developer && styles.active
+            certType[tab] === certType.developer && styles.active
           )}
         >
           {/* Developer Study Guide */}
@@ -91,7 +100,7 @@ export default function CertificationsCI() {
             <div
               className={clsx(
                 styles.studyGuideCard,
-                styles[certType.Developer]
+                styles[certType.developer]
               )}
             >
               <div className={styles.info}>
@@ -117,7 +126,7 @@ export default function CertificationsCI() {
                     Assesses the fundamental skills to deploy CI projects.
                   </div>
                   {/* Developer Study Guide */}
-                  
+
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
                     <Link href="#">
@@ -132,14 +141,13 @@ export default function CertificationsCI() {
                       </button>
                     </Link>
                   </div>
-                  
                 </div>
               </div>
             </div>
           </div>
 
           {/* Developer Exam Details */}
-          
+
           <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
@@ -159,14 +167,13 @@ export default function CertificationsCI() {
               </div>
             </div>
           </div>
-          
         </div>
 
         {/* Administrator Tab Content */}
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Administrator && styles.active
+            certType[tab] === certType.administrator && styles.active
           )}
         >
           <div className={styles.studyGuide}>
@@ -174,7 +181,7 @@ export default function CertificationsCI() {
             <div
               className={clsx(
                 styles.studyGuideCard,
-                styles[certType.Administrator]
+                styles[certType.administrator]
               )}
             >
               <div className={styles.info}>
@@ -223,7 +230,7 @@ export default function CertificationsCI() {
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Architect && styles.active
+            certType[tab] === certType.architect && styles.active
           )}
         >
           <div className={styles.studyGuide}>
@@ -231,7 +238,7 @@ export default function CertificationsCI() {
             <div
               className={clsx(
                 styles.studyGuideCard,
-                styles[certType.Architect]
+                styles[certType.architect]
               )}
             >
               <div className={styles.info}>
