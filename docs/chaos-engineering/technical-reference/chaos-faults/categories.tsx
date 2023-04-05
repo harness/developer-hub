@@ -51,10 +51,4 @@ export const categories: FaultCardItem[] = [
     faults: LoadExperiments.length,
     category: "load",
   },
-  {
-    title: "Linux",
-    description: <>Build production ready and resilient applications. </>,
-    faults: LinuxExperiments.length,
-    category: "linux",
-  },
 ];
