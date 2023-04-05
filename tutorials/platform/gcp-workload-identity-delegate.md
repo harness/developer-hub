@@ -62,7 +62,7 @@ At the end of this tutorial you will know how to:
       - (OR) simply you can add `Service Account Admin` and `Service Account User` roles
     - `Compute Network Admin` to create the VPC networks
 
-#### Tools
+#### Required tools
 
 Download and install the following tools locally onto your laptop:
 
@@ -260,7 +260,7 @@ A successful run would have pushed the image into GAR. In this example it's `asi
 
 ![Build Success](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hlo8z6klt1qtfidzgn8h.png)
 
-## Cleanup
+## Clean up resources
 
 To clean up all the Google Cloud resources that were created as part of this demo, do the following:
 
