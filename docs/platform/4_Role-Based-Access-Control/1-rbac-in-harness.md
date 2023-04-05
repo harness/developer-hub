@@ -42,34 +42,23 @@ Here is a visual summary of the hierarchy:
 <details>
 <summary>Account</summary>
 The scope of an account is at the highest level, encompassing all the resources within the Harness subscription. It provides a way to manage billing, user authentication, and global settings for all the organizations and projects within the account. Users with the appropriate permissions can manage the account-level settings, including billing, subscription, and SSO configuration.
+
+Resources created in the account scope are available for use in all the organizations and projects within that account.
 </details>
 
 <details>
 <summary>Organization</summary>
 The scope of an organization is used to group related projects, resources, and users within a specific domain or business unit. It provides a way to manage resources and permissions specific to a particular organization. Users with the appropriate permissions can manage organization-level settings, including the creation of projects and user groups, and assigning access policies to those user groups.
+
+Resources created in the organization scope are available for use in all the projects within that organization.
 </details>
 
 <details>
 <summary>Project</summary>
 The scope of a project is used to group related resources, such as applications, pipelines, and environments. It provides a way to manage resources and permissions specific to a particular project. Users with the appropriate permissions can manage project-level settings, including the creation of pipelines, environments, and infrastructure definitions.
+
+Resources created in the project scope are only available in that project.
 </details>
-
-To know more about organizations and projects, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
-
-## Overview of the resources and entities in Harness
-
-The Harness platform has many entities like delegates, secrets, connectors, and pipelines.
-
-For more information on delegates, go to [Harness Delegate](../../getting-started/harness-platform-architecture.md#harness-platform-components).
-
-For more information on these entities, go to [Key concepts](../../getting-started/learn-harness-key-concepts.md).
-
-You can create resources in Harness in the following scopes: 
-- Account: These resources are created in the account scope and are available for use in all the organizations and projects within that account.
-- Organization: These resources are created within the scope of a specific organization and are available for use in all the projects within that organization.
-- Project: These resources are created within the scope of a specific project and are only available in that project.
-
-### Scope of the resources
 
 The scope at which you create resources depends on the level of control and visibility you require.
 
@@ -78,6 +67,8 @@ For example, if you create a connector in the account scope, it is visible and c
 However, if you create a connector in the organization or project scope, it is only visible and can be used within that organization or project. 
 
 This lets you control access to your resources more effectively and prevent unauthorized access.
+
+To know more about organizations and projects, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
 ## RBAC components
 
@@ -134,16 +125,10 @@ Harness has the following types of roles:
    |  |  |
    | --- | --- |
    | **Scope** | **Role** |
-   | **Account** | Account Admin |
-   | **Account** | Account Viewer |
-   | **Account** | Feature Flag Manage Role |
-   | **Org** | Organization Admin |
-   | **Org** | Organization Viewer |
-   | **Org** | Feature Flag Manage Role |
-   | **Project** | Project Admin |
-   | **Project** | Project Viewer |
-   | **Project** | Pipeline Executor |
-   | **Project** | Feature Flag Manage Role |
+   | **Account** | <ul><li>Account Admin</li> <li>Account Viewer</li> <li>Feature Flag Manage Role</li></ul> |
+   | **Org** | <ul><li>Organization Admin</li> <li>Organization Viewer</li> <li>Feature Flag Manage Role</li></ul> |
+   | **Project** | <ul><li>Project Admin</li> <li>Project Viewer</li> <li>Pipeline Executor</li> <li>Feature Flag Manage Role</li></ul> |
+ 
 
 - Custom roles: These are the custom roles that you can create for a fine-grained access control.
   You can create roles at account, org, or project scope.
