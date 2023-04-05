@@ -1,13 +1,13 @@
 {
   "position": 2,
-  "label": "Technical Reference",
+  "label": "Configure Chaos Experiments",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Technical Reference"
+      "title":"Configure Chaos Experiments"
    },
   "customProps": {
-    "description": "Technical Reference to Harness Chaos Engineering"
+    "description": "Configuring chaos experiments"
   }
 }

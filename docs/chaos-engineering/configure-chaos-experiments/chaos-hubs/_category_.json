@@ -1,13 +1,13 @@
 {
-  "position": 2,
-  "label": "Probes",
+  "position": 5,
+  "label": "Chaos Hubs",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Probes"
+      "title":"Chaos Hubs"
    },
   "customProps": {
-    "description": "Chaos Probes reference"
+    "description": "Chaos Hubs documentation"
   }
 }

@@ -1,13 +1,13 @@
 {
-  "position": 2,
-  "label": "Probes",
+  "position": 1,
+  "label": "Prerequisites",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Probes"
+      "title":"Prerequisites"
    },
   "customProps": {
-    "description": "Chaos Probes reference"
+    "description": "HCE prerequisites"
   }
 }
