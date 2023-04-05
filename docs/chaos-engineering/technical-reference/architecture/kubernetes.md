@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Execution Plane
-sidebar_position: 1
+sidebar_position: 3
 ---
 Harness execution plane for Kubernetes includes the Kubernetes chaos infrastructure components. These components are described below.
 1. **Workflow controller**: The Argo Workflow Controller responsible for creating the chaos experiment.
