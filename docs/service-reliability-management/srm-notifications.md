@@ -26,7 +26,7 @@ You can create notifications for Monitored Services or SLOs.
 
 First, ensure that you have a Monitored Service or SLO set up. 
 
-See [Getting started](../getting-started/create-first-slo.md)
+See [Getting started](./getting-started/create-first-slo.md)
 
 
 <!-- 
