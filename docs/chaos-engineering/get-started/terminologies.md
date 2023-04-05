@@ -1,9 +1,9 @@
 ---
-title: Glossary
+title: Terminologies
 sidebar_position: 2
 ---
 
-![Component Relationship](./static/glossary/component-relationship.png)
+![Component Relationship](./static/terminologies/component-relationship.png)
 
 - **Chaos experiment:** A chaos experiment, simply referred as experiment, injects one or more chaos faults into a specified chaos infrastructure and summarizes the result of the chaos execution. The experiment can be defined using the Chaos Studio via the guided UI or by uploading the workflow CR manifest.
 - **Chaos fault:** A chaos fault, or simply fault, refers to the failures injected into the chaos infrastructure as part of a chaos experiment. Every fault is scoped to a particular target resource and can be customized using the fault tunables, which are defined as part of the ChaosExperiment CR and ChaosEngine CR. Optionally, one or more probes can be defined as part of a chaos fault.
