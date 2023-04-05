@@ -73,15 +73,13 @@ To add a streaming destination in Harness:
    Harness does not consider AWS buckets while testing the connection. Also, it tests the connector used without testing the bucket.
    :::
    
-   The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default setting of this destination is inactive.
+   The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default, the destination is inactive.
    
 ## Activate or deactivate streaming
 
 1. To activate streaming to this destination, toggle the status to **Active** besides the streaming destination.
 
    Harness starts writing audit logs after the destination is activated.
-
-   Harness streams audit logs to the destination every 30 minutes.
 
 2. You can pause audit streaming, preventing any new audit events from being streamed to the configured endpoint by setting the status to **Inactive**. 
    
@@ -97,7 +95,17 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 ![](./static/edit-delete.png)
 
-## Payload schema
+## Amazon S3 audit file details
+
+After you activate your audit stream destination, Harness streams audit logs to the destination every 30 minutes.
+
+Here is an example of an audit stream file in one of the Amazon S3 bucket.
+
+![](./static/s3-auditstream-file.png)
+
+This file has a list of audit events in JSON format.
+
+### Payload schema
 
 Streamed audit events have a predictable schema in the body of the response.
 
@@ -112,7 +120,6 @@ Streamed audit events have a predictable schema in the body of the response.
 |    auditEventTime   |  Date and time of the event.     | Required      |
 |   auditHttpRequestInfo    |  Details of the HTTP request.     |  Optional     |
 |   auditEventMetadata    |     Additional details required for streaming the audit log.  |  Optional     |
-
 
 
 ### JSON payload
@@ -232,3 +239,4 @@ Streamed audit events have a predictable schema in the body of the response.
   ]
 }
 ```
+
