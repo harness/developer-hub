@@ -60,9 +60,11 @@ export default function CertCard({
           </span>
         </div>
         <h4>{title}</h4>
-        <div className={styles.numberOfCerts}>
-          <img src="/img/icon_cert.svg" /> {numberOfCerts} Certifications
-        </div>
+        {numberOfCerts && (
+          <div className={styles.numberOfCerts}>
+            <img src="/img/icon_cert.svg" /> {numberOfCerts} Certifications
+          </div>
+        )}
         <p>{description}</p>
         {version && (
           <div className={styles.productVersion}>
