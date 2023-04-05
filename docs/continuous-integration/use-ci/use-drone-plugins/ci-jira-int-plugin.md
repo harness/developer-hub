@@ -62,26 +62,26 @@ This method requires that you have access to **Administration** in Jira.
 
 Add one or more **Plugin** steps to a CI **Build** stage to send updates to Jira. For example, your pipeline can have a step that updates Jira any time a build runs and another step that updates Jira when there is a deployment to production.
 
-<details>
-<summary>How does Harness determine which Jira issues and fields to update?</summary>
-
-The presence of the `ENVIRONMENT_NAME` setting in the **Plugin** step determines whether Harness updates the **Deployment** or **Build** field in Jira. If `ENVIRONMENT_NAME` is included, Harness updates the **Deployment** field. If `ENVIRONMENT_NAME` is excluded, Harness updates the **Build** field.
-
-When a pipeline runs, Harness scans for Jira issue numbers, such as `[JIRA-1234]`, in the title of the PR or the latest commit message associated with the build.
-
-</details>
-
 <!-- ![A CI Build stage with two Jira Plugin steps.](./static/ci-jira-int-two-plugin-steps.png) -->
 
 <docimage path={require('./static/ci-jira-int-two-plugin-steps.png')} />
 
+<details>
+<summary>How does Harness determine which Jira issue and field to update?</summary>
+
+The presence of the `ENVIRONMENT_NAME` setting in the **Plugin** step determines whether Harness updates the **Deployment** or **Build** field in Jira. If `ENVIRONMENT_NAME` is included, Harness updates the **Deployment** field. If `ENVIRONMENT_NAME` is excluded, Harness updates the **Build** field.
+
+When the pipeline runs, Harness scans for a Jira issue number, such as `[JIRA-1234]`, in the title of the PR or the latest commit message associated with the build.
+
+</details>
+
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 ```
 ```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<Tabs2>
+  <TabItem2 value="Visual" label="Visual" default>
 ```
 
 1. In your pipeline's **Build** stage, select **Add Step**, select **Add Step** again, and then select **Plugins** from the **Step Library**.
@@ -115,8 +115,8 @@ The following image shows a **Plugin** step that uses OAuth2 authentication. For
 <docimage path={require('./static/ci-jira-int-plugin-step-visual.png')} />
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML">
+  </TabItem2>
+  <TabItem2 value="YAML" label="YAML">
 ```
 
 Go to the pipeline where you want to add the Jira integration, and add a `Plugin` step configured as follows:
@@ -147,9 +147,6 @@ You can use [variable expressions](/docs/platform/variables-and-expressions/harn
 
 :::
 
-<details>
-<summary>YAML example</summary>
-
 The following YAML example describes a `Plugin` step that uses the Jira plugin to update the **Deployment** field in Jira when there is a successful deployment to the production environment.
 
 ```yaml
@@ -176,11 +173,9 @@ The previous example uses token authentication (`CONNECT_KEY`). With OAuth2 auth
                       CLIENT_SECRET: <+secrets.getValue("jiraClientSecret")>
 ```
 
-</details>
-
 ```mdx-code-block
-  </TabItem>
-</Tabs>
+  </TabItem2>
+</Tabs2>
 ```
 
 :::tip
@@ -191,19 +186,19 @@ For more information about **Plugin** step settings, go to the [Plugin step sett
 
 ## Run your pipeline
 
-After adding the **Plugin** step(s), save and run the pipeline. If you set `LOG_LEVEL: debug`, you can see the Jira response in the build logs.
+After adding the **Plugin** step, save and run the pipeline. If you set `LOG_LEVEL: debug`, you can see the Jira response in the build logs.
 
-After the build runs, you can see updates to **Build** and **Deployment** information on the Jira issue that triggered the build. If you drill down into these details, you can find links to the build in Harness.
+After the build runs, you can see updates to **Build** and **Deployment** fields on the Jira issue associated with the build. If you drill down into these fields, you can find links to the build in Harness.
 
 <!-- ![](./static/ci-jira-int-ticket-details.png) -->
 
 <docimage path={require('./static/ci-jira-int-ticket-details.png')} />
 
 <details>
-<summary>How does Harness determine which Jira issues and fields to update?</summary>
+<summary>How does Harness determine which Jira issue and field to update?</summary>
 
 The presence of the `ENVIRONMENT_NAME` setting in the **Plugin** step determines whether Harness updates the **Deployment** or **Build** field in Jira. If `ENVIRONMENT_NAME` is included, Harness updates the **Deployment** field. If `ENVIRONMENT_NAME` is excluded, Harness updates the **Build** field.
 
-When a pipeline runs, Harness scans for Jira issue numbers, such as `[JIRA-1234]`, in the title of the PR or the latest commit message associated with the build.
+When the pipeline runs, Harness scans for a Jira issue number, such as `[JIRA-1234]`, in the title of the PR or the latest commit message associated with the build.
 
 </details>
