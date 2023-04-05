@@ -1,5 +1,5 @@
 ---
-sidebar_position: 110
+sidebar_position: 70
 description: Build and push an application container to Google Artifact Registry using a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, Go, GCP]
 ---

@@ -24,7 +24,7 @@ Docker-in-Docker must run in privileged mode to work properly. Use caution becau
 
 These steps assume you are familiar with the following concepts:
 
-* Pipeline configuration, such as the [CI Pipeline quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
 

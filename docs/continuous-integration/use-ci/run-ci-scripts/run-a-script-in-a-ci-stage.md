@@ -21,7 +21,7 @@ This topic describes how to run a simple script in a CI stage.
 To go through this workflow, you need the following:
 
 * A familiarity with basic Harness CI concepts:
-	+ [CI Pipeline Tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
+	+ [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
 	+ [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 * A familiarity with Build Stage settings:
 	+ [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)

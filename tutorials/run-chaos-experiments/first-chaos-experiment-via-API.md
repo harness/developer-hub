@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 title: Your first chaos experiment execution using APIs
 description: Executing a chaos experiment on Kubernetes for the first time using APIs.
 ---

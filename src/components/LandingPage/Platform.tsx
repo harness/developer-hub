@@ -3,66 +3,8 @@ import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
-import TutorialCard, { CardItem, docType } from "./TutorialCard";
-
-/* Define the cards here */
-const FeaturedList: CardItem[] = [
-  {
-    title: "Install Delegate",
-    module: "platform",
-    icon: "img/logo.svg",
-    description: <>Install a Docker or Kubernetes Delegate.</>,
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "5 min",
-    link: "/tutorials/platform/install-delegate",
-  },
-];
-
-const PlatformList: CardItem[] = [
-  {
-    title: "Install Delegate",
-    module: "platform",
-    icon: "img/logo.svg",
-    description: (
-      <>Install a Kubernetes or Docker Delegate on your infrastructure.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "5 min",
-    link: "/tutorials/platform/install-delegate",
-  },
-  {
-    title: "Customize the Delegate to Run Your Favorite Third-Party Tools",
-    module: "platform",
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Customize the Delegate to run any of your favorite tools Such as Helm,
-        Terraform, AWS CLI, etc.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10 min",
-    link: "/tutorials/platform/customize-delegate",
-  },
-  {
-    title: "Onboard with Terraform",
-    module: "platform",
-    icon: "img/logo.svg",
-    description: (
-      <>
-        Automate lifecycle management of orgs, projects, services, environments,
-        connectors and pipelines using the Harness Terraform Provider.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "5 min",
-    link: "/tutorials/platform/onboard-terraform-provider",
-  },
-];
+import TutorialCard from "./TutorialCard";
+import { FeaturedList, PlatformList } from "./data/platformData";
 
 export default function Platform() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();

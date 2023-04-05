@@ -1,7 +1,7 @@
 ---
 title: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-03-24T10:00
+date: 2023-03-31T10:00
 sidebar_position: 3
 ---
 
@@ -12,6 +12,21 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## March 31, 2023, version 78914
+
+### What's new
+
+* When you [use a GitHub App in a GitHub connector](/docs/platform/connectors/git-hub-app-support/#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+* Added a [codebase expression](/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference) for commit messages: `<+codebase.commitMessage>`. (CI-7222)
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/ci-github-action-step). (CI-6969, CI-7300)
 
 ## March 24, 2023, version 78817
 

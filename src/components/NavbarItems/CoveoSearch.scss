@@ -631,20 +631,26 @@
     display: none !important;
 }
 
-
-@media screen and (max-width: 1399px) {
+/* TBD: needs a better design/solution for the responsiveness of the navbar */
+@media screen and (max-width: 1499px) {
     #searchBoxCoveo {
-		width: 280px;
+		width: 250px;
     }
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 1399px) {
     #searchBoxCoveo {
 		width: 200px;
     }
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1349px) {
+    #searchBoxCoveo {
+		width: 150px;
+    }
+}
+
+@media screen and (max-width: 1299px) {
     #searchBoxCoveo {
 		// width: calc(100vw - 1025px);
 		width: 120px;
@@ -655,12 +661,58 @@
             font-size: 14px;
         }
     }
+	.navbar__logo {
+		display: flex;
+		align-items: center;
+		& > img {
+			width: 70%;
+			height: auto;
+		}
+	}
 }
 
-@media screen and (max-width: 1060px) {
-    #searchBoxCoveo {
-		display: none
+@media screen and (max-width: 1179px) {
+    .navbar__items {
+		font-size: 14px;
+		.button--cta, .button--primary {
+			font-size: 14px;
+			padding-left: 1em;
+			padding-right: 1em;
+		}
     }
+}
+
+@media screen and (max-width: 1079px) {
+    #searchBoxCoveo {
+		width: 80px;
+		// display: none
+		.magic-box-input > input {
+            font-size: 12px;
+        }
+    }
+	.magic-box .magic-box-clear {
+		// height: 12px !important;
+		width: 14px !important;
+		// line-height: 12px !important;
+	}
+	.CoveoSearchbox .magic-box .magic-box-clear-svg {
+		width: 8px !important;
+		// height: 10px !important;
+	}
+	.magic-box .magic-box-input .magic-box-underlay, .magic-box .magic-box-input>input {
+		padding: 12px 14px 12px 6px !important;
+	}
+	.magic-box .magic-box-suggestions {
+		min-width: 200px;
+	}
+}
+
+@media screen and (max-width: 1039px) {
+	.navbar__logo {
+		& > img {
+			width: 57%;
+		}
+	}
 }
 
 @media screen and (max-width: 996px) {
@@ -680,6 +732,9 @@
 	#searchResultsCoveo #coveo-search {
 		min-width: unset;
 	}
-	
+	.navbar__logo {
+		& > img {
+			width: 100%;
+		}
+	}
 }
-

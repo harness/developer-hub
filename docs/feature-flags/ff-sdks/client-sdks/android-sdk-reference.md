@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
 This topic describes how to use the Harness Feature Flags Android SDK for your Android application. 
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-android-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Android SDK GitHub Repository.](https://github.com/harness/ff-android-client-sdk)
@@ -19,7 +21,7 @@ The SDK caches your Feature Flags. If the cache can't be accessed, the `default
 Make sure you read and understand:
 
 * [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -268,6 +270,8 @@ val success = CfClient.getInstance().unregisterEventsListener(eventsListener)
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
 ![](./static/1-android-sdk-reference-01.gif)
+
+<Sixty />
 
 ## Close the SDK
 

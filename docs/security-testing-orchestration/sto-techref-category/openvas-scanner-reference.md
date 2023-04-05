@@ -30,7 +30,9 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `full-and-very-deep`  — Do a full and very deep discovery scan
 		- `openvas-system-discovery`  — Do a system discovery scan on the network
 		- `default`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';

@@ -220,6 +220,7 @@ You can map any additional attributes containing information you want to referen
 4. In **Script**, enter the following:
   
   ```bash
+  curl -LJO https://raw.githubusercontent.com/wings-software/harness-docs/main/default-k8s-manifests/Manifests/deployment.yaml
   /opt/harness-delegate/client-tools/kubectl/v1.19.2/kubectl apply -f deployment.yaml
   ```
 1. Click **Save**.
@@ -428,7 +429,7 @@ These are variables that you can use in the following places:
 
 #### Referencing variables
 
-You reference variables using a Harness expression with the syntax `<+infra.variables.[variable Id]>`. You can reference any setting in the variable entity, such as a Connector's URL.
+You reference variables using a Harness expression with the syntax `<+infra.variables.[variable Id]>`. You can reference any setting in the variable entity, such as a connector's URL.
 
 Here are some examples.
 
@@ -449,7 +450,7 @@ Here's the expressions referencing these variables:
 
 <+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef>
 
-<+secrets.getValue(<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.identifier>)>
+<+secrets.getValue(<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.scope> + "." +<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.identifier>)>
 
 <+stage.spec.infrastructure.output.variables.gitSecret>
 
@@ -459,13 +460,15 @@ Here's the expressions referencing these variables:
 
 <+infra.variables.test12>
 ```
+:::note
 
+If the secret in the connector is project level, then use `<+secrets.getValue(<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.identifier>)>` instead of `<+secrets.getValue(<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.scope> + "." +<+infra.variables.git_connector.spec.authentication.spec.spec.tokenRef.identifier>)>` in the above expressions example. The latter expression is for a secret used in the connector at an account or organization level.
+
+:::
 
 #### Overwriting variables
 
 When you define the Infrastructure Definition in your stage **Environment**, you can override any variable values.
-
-
 
 | **Deployment Template** | **Infrastructure Definition** |
 | --- | --- |

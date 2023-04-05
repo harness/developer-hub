@@ -104,7 +104,7 @@ The SDK Key e.g. for this example is 6d467636-d27a-4000-904a-1fedde695133
 
 Now you’re ready to wire the application to leverage the Feature Flag.
 
-## Wiring Your Source Code for Feature Flags
+## Configure Your Source Code for Feature Flags
 
 There needs to be wiring at the source code level so the application can communicate with Harness Feature Flags.
 

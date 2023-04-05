@@ -28,6 +28,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
   - `product_scanner_id`
   - `product_template_uuid`
 * `product_config_name` = `nessus-web-application`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
 ```mdx-code-block

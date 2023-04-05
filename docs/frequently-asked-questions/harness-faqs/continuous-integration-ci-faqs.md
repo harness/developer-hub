@@ -28,11 +28,13 @@ In this topic:
 
 For information about calling services started by Background steps, go to **Important notes** and **Port Bindings** in [Background step settings](../continuous-integration/ci-technical-reference/../../../continuous-integration/ci-technical-reference/background-step-settings.md).
 
-## What is the maximum timeout for a CI step or stage?
+## What is the timeout limit for a CI pipeline?
 
-We have a maximum time limit of 24 hours for pod uptime. Hence, the CI stage can run for a maximum of 24 hours. After 24 hours, the pod dies.
+By default, a stage can run for a maximum of 24 hours on a Kubernetes cluster build infrastructure and a maximum of 30 minutes on Harness Cloud build infrastructure.
 
-The default timeout for a CI step is 10 hours.
+For pipelines, the default timeout limit is, generally, the product of the stage limit multiplied by the number of stages. For example, a pipeline with three stages that use a Kubernetes cluster build infrastructure could run for a maximum of 72 hours. However, you can also set an overall pipeline timeout limit in each pipeline's **Advanced Options**.
+
+For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.
 
 ## What are the default values for memory and CPU for CIE steps?
 

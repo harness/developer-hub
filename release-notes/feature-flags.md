@@ -1,6 +1,6 @@
 ---
 title: Feature Flags
-date: 2023-03-08T10:00
+date: 2023-03-31T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -12,6 +12,76 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## April 4, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The **Node.js** server SDK was updated to version **1.2.15** with the following update.
+
+* Occasionally, the retry strategy could open several event streams at once if the application disconnected intermittently. This issue has been fixed and the SDK opens only one stream when the EventSource library reconnects. (FFM-7412)
+* The EventSource library was updated to version 2.1.4. (FFM-7421)
+
+## March 30, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags server
+
+The **FF server** has been updated to version **1.979.0**, with the following update.
+
+* Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets#how-targets-expire).
+
+#### Feature Flags SDKs
+
+* The **Java server SDK** has been updated to version **1.2.2**, with the following updates.
+
+  * Minor internal changes were made to make it easier for developers to use classes that were previously marked private.
+
+* The **Go server SDK** has been updated to version **0.1.8** with the following update.
+
+  * Previously, a few logs on startup would use fmt.Println() instead of using the custom logger passed in via harness.WithLogger(logger). This could cause these startup logs to be in a different format, and appear to be logged at an `error` level instead of logged correctly as `debug`. This has been resolved and all logs emitted by the SDK now go through the custom logger if it's passed in. (FFM-7347)
+
+## March 29, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+The **Go server SDK** has been updated to version **0.1.7**, with the following updates.
+
+* Previously if a custom logger was passed in to the SDK through the harness.WithLogger(logger) function, the custom logger was not used when logging HTTP requests. This could cause HTTP request logs to be in a different format, and appear to be logged at an `error` level instead of correctly logged `debug`. This has been resolved, and all logs emitted by the SDK now go through the custom logger if it's passed in. (FFM-7327)
+
+* Added a flag code cleanup example and some information on how to run the example in the [Go SDK repository](https://github.com/harness/ff-golang-server-sdk). (FFM-6794)
+
+* Added documentation in the [Harness flag_cleanup repository](https://github.com/harness/flag_cleanup) on how to clean up flags automatically using Harness pipelines. (FFM-6796)
+
 
 ## March 28, 2023
 
@@ -94,7 +164,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-#### Feature Flags Server
+#### Feature Flags server
 
 The **FF server** has been upated to version **1.968.0** and includes the following updates:
 

@@ -31,6 +31,39 @@ module.exports = {
     //  },    
     //===================================================================================
     
+    // CD Tutorial
+
+    // Created by schoudhury on Apr 3, 2023
+    {
+      from: "/tutorials/deploy-services/microservice-manifest-k8s",
+      to: "/tutorials/deploy-services/kubernetes/manifest",
+    },
+    {
+      from: "/tutorials/deploy-services/helm-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/cdce-helm-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/docker-ecs",
+      to: "/tutorials/deploy-services/amazon-ecs",
+    },
+    {
+      from: "/tutorials/deploy-services/docker-ecr-k8s",
+      to: "/tutorials/deploy-services/kubernetes",
+    },
+    {
+      from: "/tutorials/deploy-services/harness-cicd-tutorial",
+      to: "/tutorials/deploy-services/unified-cicd",
+    },
+
+
     // Platform Tutorial
 
     // Created by schoudhury on Feb 21, 2023
@@ -136,7 +169,7 @@ module.exports = {
 
       {
         from: "/docs/platform/Delegates/configure-delegates/delegate-auto-update",
-        to: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+        to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
       },
 
 
@@ -149,7 +182,7 @@ module.exports = {
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-auto-update",
-         to: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+         to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified on Jan 21, 2023
@@ -283,6 +316,12 @@ module.exports = {
       to: "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
      },
 
+     // Created by KimberlyFields on March 29, 2023
+    {
+      from: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
+      to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
+     },
+
     //  Created by aimurphy for PR-783 on Feb 23, 2023
     {
       from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-an-aws-vm-build-infrastructure",
@@ -310,7 +349,19 @@ module.exports = {
     //  Created by aimurphy for DOC-2484 on Mar 7, 2023
     {
       from: "/tutorials/build-code/ci-github-action-step",
-      to: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
+      to: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
+    },
+
+    //  Created by aimurphy for CI-6241 on Mar 22, 2023
+    {
+      from: "/docs/category/onboard-with-ci",
+      to: "/docs/category/get-started-with-ci",
+    },
+
+    //  Created by aimurphy for CI-6241 on Mar 24, 2023
+    {
+      from: "/docs/category/migrating-to-harness-ci",
+      to: "/docs/category/migrate-to-harness-ci",
     },
   ],
 };
