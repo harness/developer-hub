@@ -46,7 +46,7 @@ When you add a **Build** stage to a CI pipeline, you select a [code repo connect
 
 The codebase declared in a pipeline's first stage becomes the pipeline's default codebase. If you need to change the connector or other codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration).
 
-When you add additional stages to the pipeline, you can disable **Clone Codebase**, but you can't change the connector or repo. Usually, you only disable **Clone Codebase** if the codebase is not needed for the stage's operations. However, you can [use a Git Clone step to clone multiple codebases in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
+When you add additional stages to the pipeline, you can disable **Clone Codebase**, but you can't change the connector or repo. Usually, you only disable **Clone Codebase** if the codebase is not needed for the stage's operations. However, you can [use a Git Clone step to clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
 ## Edit the default codebase configuration
 
