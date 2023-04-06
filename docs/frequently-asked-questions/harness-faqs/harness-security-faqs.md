@@ -88,7 +88,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness provides role-based access control (RBAC) that enables you to control user and group access to Harness resources according to their role assignment.
 
-Here is an overview of Harness RBAC. It shows user authentication via its User settings and authorization via its [User group](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md#defining-and-assigning-permissions) and [Role assignment](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment).
+Here is an overview of Harness RBAC. It shows user authentication via its User settings and authorization via its [User group](../platform/../../platform/User-Management/4-add-user-groups.md) and [Role assignment](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment).
 
 ![](./static/harness-security-faqs-15.png)
 

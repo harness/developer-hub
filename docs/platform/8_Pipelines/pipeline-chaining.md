@@ -55,7 +55,7 @@ To chain pipelines in Harness, perform the following steps:
 
 3. Select the pipeline from the list. You can select any pipeline across different orgs and projects corresponding to your access and permissions and chain it to your parent pipeline.
    
-   For more information on access, see [Role-based access control](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
+   For more information on access, see [Role-based access control](../../4_Role-Based-Access-Control/1-rbac-in-harness.md)
 
    ![](./static/pipeline-chain-list.png)
    

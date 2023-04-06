@@ -153,7 +153,7 @@ The input payload contains user metadata for the user that initiated the event. 
 ```
 This enables enforcing policies with advanced and attribute-based access control use cases.
 
-See [Harness Role-Based Access Control Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md).
+See [Harness Role-Based Access Control Overview](../../4_Role-Based-Access-Control/1-rbac-in-harness.md).
 
 ### Harness Policy Set
 
