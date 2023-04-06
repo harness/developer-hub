@@ -1,6 +1,6 @@
 ---
 title: Delete Chaos Experiments
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 Deleting an experiment removes it from the list of experiments in the **Chaos Experiments** sidebar option under Chaos tab.

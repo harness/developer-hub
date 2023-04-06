@@ -39,8 +39,8 @@ Select the tutorial for the platform you want to use to deploy.
 
 The following quickstart guides are available for Feature Flags:
 
-* [Getting started with Feature Flags](../feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md) provides a high-level summary of Feature Flag (FF), with video and Quick Guide walkthroughs.
-* [Java quickstart](../feature-flags/ff-onboarding/ff-getting-started/java-quickstart.md) helps you to create a feature flag and use the feature flag SDK in your Java application.
+* [Getting started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags) provides a high-level summary of Feature Flag (FF), with video and Quick Guide walkthroughs.
+* [Java quickstart](/docs/feature-flags/ff-onboarding/java-quickstart.md) helps you to create a feature flag and use the feature flag SDK in your Java application.
 
 ## Cloud Cost Management (CCM)
 
@@ -67,6 +67,6 @@ The following quickstart guides are available for Service Reliability Management
 
 The following quickstart guides are available for Security Testing Orchestration:
 
-* [STO Tutorial 1: Stand-Alone Pipelines](../security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows.md) shows you how to set up a Pipeline with a scanner, run scans, analyze the results, and learn the key features of STO.
+* [STO Tutorial 1: Stand-Alone Pipelines](/tutorials/orchestrate-security-tests/sto-standalone-workflows) shows you how to set up a Pipeline with a scanner, run scans, analyze the results, and learn the key features of STO.
 
-* [Tutorial 2: Integrated STO Pipelines](../security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows.md) shows you how to integrate STO functionality into CI and CD Pipelines.
+* [Tutorial 2: Integrated STO Pipelines](/tutorials/orchestrate-security-tests/sto-integrated-workflows) shows you how to integrate STO functionality into CI and CD Pipelines.
