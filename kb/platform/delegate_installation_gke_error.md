@@ -6,7 +6,7 @@ title: Delegate Installation Error in GKE
 
 ### Module
 
-- Harness CI
+- Harness Platform
 
 ### Environment
 
