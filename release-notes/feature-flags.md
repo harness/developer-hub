@@ -15,8 +15,6 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ## April 10, 2023
 
-## April 4, 2023
-
 ### What's new
 
 This release does not include new features.
