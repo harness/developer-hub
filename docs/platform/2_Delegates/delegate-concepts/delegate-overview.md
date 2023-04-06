@@ -187,6 +187,11 @@ If a log file grows beyond 50MB in a day, the log file is renamed with today's d
 
 Harness keeps log files for today and the previous 10 days (up to one 1GB).
 
+The Delegate logs are available on the Harness UI. When a pipeline is run and an error occured due to delegate, the logs are available on the Harness UI. This feature is in **preview** mode, please contact Harness support to enable it.
+
+<img width="1633" alt="Screen Shot 2023-04-06 at 9 49 20 AM" src="https://user-images.githubusercontent.com/109754660/230444961-82e8df07-e9fc-443b-b28f-c6ec9038b8ac.png">
+
+
 ### Delegate permissions
 
 You can set permissions on Delegates using [Harness RBAC](/docs/platform/4_Role-Based-Access-Control/1-rbac-in-harness.md).
