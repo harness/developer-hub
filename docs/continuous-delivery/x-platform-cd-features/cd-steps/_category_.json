@@ -1,11 +1,11 @@
 {
-  "label": "CD steps",
+  "label": "Steps",
   "position": "400",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "CD steps"
+      "title": "Steps"
   }
 }

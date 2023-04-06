@@ -1,25 +1,21 @@
 ---
 title: Propagate CD services
 description: Use the same service across multiple stages.
-sidebar_position: 3
+sidebar_position: 4
 ---
 
 This topic describes how to propagate CD services between stages.
 
-You can use the same CD stage services across your pipeline stages. Once you have added a stage with a service, you can select the same service in subsequent stages by using the **Propagate from** option.
+You can use the same CD stage services across your pipeline stages. Once you have [added a stage](../../../platform/8_Pipelines/add-a-stage.md) with a service, you can select the same service in subsequent stages by using the **Propagate from** option.
 
 ![Propagate from](./static/b7df1f589cdc64982a5458c3ad1b107132e1b7e3634dfcfeb716c075437e1d6c.png)  
 
 You can also use Harness input sets and overlays to select from different collections of settings at runtime. See [input sets and overlays](../../../platform/8_Pipelines/input-sets.md) and [run pipelines using input sets and overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md).
 
-## Before you begin
-
-* [Add a stage](../../../platform/8_Pipelines/add-a-stage.md)
-
 ## Important notes
 
 * Service propagation is not supported when using multiple services in a single stage (multi service deployments).
-  * For details on using multiple services, go to [use multiple services and multiple environments in a deployment](../advanced/multiserv-multienv.md).
+  * For details on using multiple services, go to [use multiple services and multiple environments in a deployment](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv).
 * Service propagation is progressive: you can only propagate services from stage to stage in a forward direction in your pipeline. For example, Stage 2 cannot propagate a service from a subsequent Stage 3.
 * In a pipeline's **Advanced Options**, in **Stage Execution Settings**, you can set up selective stage executions. This allows you to select which stages to deploy at runtime.
   * If you select a stage that uses a propagated service (a child service), that stage will not work.
@@ -29,14 +25,7 @@ You can also use Harness input sets and overlays to select from different collec
   
 ![](./static/propagate-and-override-cd-services-00.png)
 
-### Propagation and input sets
-
-If you propagate a service from one stage to another, the stages must use the same input set.
-
-For example, if you have Stage 1 using Input Set A, and you propagate its service to Stage 2, Stage 2 must use Input Set A.
-
-If Stage 2 uses a different input set, the service cannot propagate from Stage 1 to Stage 2.
-
+* When you propagate a service from one stage to another, the stages must use the same input set. For example, if you have Stage 1 using Input Set A, and you propagate its service to Stage 2, Stage 2 must use Input Set A. If Stage 2 uses a different input set, the service cannot propagate from Stage 1 to Stage 2.
 
 ## Propagate a service
 
@@ -70,25 +59,25 @@ A multiple service deployment is when you deploy multiple services in the same s
 
 If you select multiple services in a stage, you cannot propagate them to subsequent stages.
 
-For information on multiple service deployments, go to [use multiple services and multiple environments in a deployment](../advanced/multiserv-multienv.md).
+For information on multiple service deployments, go to [use multiple services and multiple environments in a deployment](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv).
 
 ## Override service settings
 
  You can override a service's setting by using **Environment Overrides** and by overlaying values YAML files.
  
-For details on **Environment Overrides**, see [services and environments overview](../../get-started/services-and-environments-overview.md).The following information covers overriding Services in Services and Environments v1 only.
+For details on **Environment Overrides**, go to [overriding service settings in environments](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides). The following information covers overriding services in services and environments v1 only.
 
-A common method for overriding values YAML files is to use the `<+env.name>` Harness expression in the **File Path** of the values YAML file and then name your Harness environments with the same names as your values YAML files.
+A common method for overriding values YAML files is to use the `<+env.name>` Harness expression in the **File Path** of the *values.yaml* file and then name your Harness environments with the same names as your values YAML files.
 
 <!-- ![](../../cd-services/cd-services-general/static/6cffc4e7fc1159c37eece2bb6cc2a7e76a115652155fe93c91a3f80a68328112.png) -->
 
 <docimage path={require('./static/6cffc4e7fc1159c37eece2bb6cc2a7e76a115652155fe93c91a3f80a68328112.png')} />
 
-There are other ways to override the values.yaml files without using environments.
+There are other ways to override the *values.yaml* files without using environments.
 
 You can overlay values files in Harness by adding multiple files or you can replace file paths dynamically at runtime.
 
 ![overlay](./static/0bbc97758875d869b84bcf9ee6648103f217ecd0923076a0f2d86f3c821e0df7.png)
 
-See [add and override values YAML files](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files.md).
+Go to [add and override values YAML files](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files) for more information.
 

@@ -1,10 +1,8 @@
 ---
 title: Adding infrastructure definitions to environments
 description: Learn how to select infrastructure definitions for environments.
-sidebar_position: 5
+sidebar_position: 6
 ---
-
-### Infrastructure definitions
 
 Infrastructure definitions represent an environment's infrastructures physically. They are the actual clusters, hosts, namespaces, etc, where you are deploying a service.
 

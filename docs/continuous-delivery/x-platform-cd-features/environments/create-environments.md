@@ -1,30 +1,43 @@
 ---
 title: Create environments
 description: Learn how to create CD environments.
-sidebar_position: 1
+sidebar_position: 2
 ---
-
-## Environments
 
 Environments represent your deployment targets (QA, Prod, etc). Each environment contains one or more **Infrastructure Definitions** that list your target clusters, hosts, namespaces, etc.
 
+## Creating environments
+
 You can create environments from: 
-* An Account
-* An Organization
 * Within a pipeline
 * Outside a pipeline 
+* An account
+* An Organization
 
-Next you can define all of its settings:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Within a pipeline" label="Within a pipeline">
+```
+To create an environment from inside of a pipeline, select **New Environment** in the **Infrastructure** tab of a new CD stage.
 
-* **Infrastructure Definitions:** represent one or more environment infrastructures.
-  * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
-  * You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
-* **Configuration:** the default environment configuration, including variables, manifests, specifications, and config files that will be used every time the environment is used in a stage.
-* **Service Overrides:** override specific services. You select a service and define what will be overridden whenever that Service is deployed to this environment.
-* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](../cd-gitops/harness-git-ops-basics.md).
+![](./static/services-and-environments-overview-11.png)
 
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Outside a pipeline" label="Outside a pipeline">
+```
+To create an Environment from outside of a pipeline, you use **Environments** in the navigation pane.
 
-### Creating environments at an account or organization level
+![](./static/services-and-environments-overview-12.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="From organization or account" label="From organization or account">
+```
 
 You can create an environment and provide infrastructure definitions at an account or organization level from the Harness UI, using APIs or Terraform.
 
@@ -264,16 +277,19 @@ The `org_id` and `project_id` field definitions are optional, and depend on wher
   </TabItem2>    
 </Tabs2>
 ```
-### Creating environments inside a pipeline
+```mdx-code-block
+  </TabItem>    
+</Tabs>
+```
 
-To create an environment from inside of a pipeline, select **New Environment** in the **Infrastructure** tab of a new CD stage.
+## Define environment settings
 
-![](./static/services-and-environments-overview-11.png)
+After creating an environment, you can define all its settings.
 
-### Creating environments outside a pipeline
-
-To create an Environment from outside of a pipeline, you use **Environments** in the navigation pane.
-
-![](./static/services-and-environments-overview-12.png)
-
-
+* **Configuration:** the default environment configuration, including variables, manifests, specifications, and config files that will be used every time the environment is used in a stage.
+* **Service Overrides:** override specific services. You select a service and define what will be overridden whenever that Service is deployed to this environment.
+* **Infrastructure Definitions:** represent one or more environment infrastructures.
+  * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
+  * You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
+* **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/harness-git-ops-basics).
+* **Referenced by:** displays the list of pipelines using the infrastructure definitions in the environment. 

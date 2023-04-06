@@ -678,7 +678,7 @@ Let's look at an example using environments.
 
 If you want to restrict a user or user group to deploy to a specific environment only, do the following:
 
-1. create a resource group and select the environment.
+1. Create a resource group and select the environment.
 2. Create a Role and give the user or user group permissions. The **Access** permission is needed for deployments.
 3. Assign the role and resource group to the user or user group.
 

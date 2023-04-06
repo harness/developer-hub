@@ -1,11 +1,11 @@
 {
-  "label": "CD templates",
+  "label": "Templates",
   "position": "400",
   "collapsible": "true",
   "collapsed": "true",
   "className": "red",
   "link": {
       "type": "generated-index",
-      "title": "CD templates"
+      "title": "Templates"
   }
 }

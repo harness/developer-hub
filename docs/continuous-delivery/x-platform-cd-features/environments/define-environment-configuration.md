@@ -1,10 +1,8 @@
 ---
 title: Define environment configuration
 description: Define the environment basic configuration.
-sidebar_position: 2
+sidebar_position: 3
 ---
-
-### Configuration
 
 In the environment **Configuration**, you can manage the **Name**, **Description**, **Tags**, and **Environment Type** of the environment.
 

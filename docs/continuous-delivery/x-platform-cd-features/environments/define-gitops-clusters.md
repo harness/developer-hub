@@ -1,14 +1,12 @@
 ---
 title: Defining GitOps clusters in an environment
 description: Learn how add GitOps clusters to an environment.
-sidebar_position: 6
+sidebar_position: 7
 ---
-
-## GitOps Clusters
 
 When you use Harness GitOps you can add GitOps clusters to an environment. 
 
-To learn more about Harness GitOps, go to [Harness GitOps Basics](../cd-gitops/harness-git-ops-basics.md). 
+To learn more about Harness GitOps, go to [Harness GitOps basics](/docs/continuous-delivery/gitops/harness-git-ops-basics). 
 
 Next, when you create a pipeline, you can select the environment and the GitOps cluster(s) to use.
 

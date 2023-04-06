@@ -1,11 +1,8 @@
 ---
 title: Overriding service settings in environments
 description: Learn how use specific services with environments.
-sidebar_position: 3
+sidebar_position: 4
 ---
-
-
-### Service overrides
 
 Service overrides are different from **Environment Configuration** in the following ways:
 
