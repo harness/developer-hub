@@ -17,7 +17,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-This release does not include new features.
+* The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
 
 ### Early access
 
@@ -25,9 +25,7 @@ This release does not include early access features.
 
 ### Fixed issues
 
-#### Feature Flags UI
-
-* Improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
+There are no fixed issues in this release.
 
 ## April 4, 2023
 
