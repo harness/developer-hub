@@ -1,7 +1,7 @@
 ---
 title: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-03-31T10:00
+date: 2023-04-10T10:00
 sidebar_position: 12
 ---
 
@@ -13,6 +13,48 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). For Self-Managed Enterprise Edition, see [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+
+## April 10, 2023, Harness version 790xx, Harness Delegate version 78904
+
+Harness NextGen release 790xx includes the following changes for the Harness Delegate.
+
+### What's new
+
+- Upgraded Spring Framework versions. (DEL-6198) 
+
+  The following libraries were upgraded:
+
+  - org.springframework:spring-aop from 5.3.23 to 5.3.26
+  - org.springframework:spring-beans from 5.3.25 to 5.3.26
+  - org.springframework:spring-context from 5.3.25 to 5.3.26
+  - org.springframework:spring-core from 5.3.25 to 5.3.26
+  - org.springframework:spring-expression from 5.3.25 to 5.3.26
+  - org.springframework:spring-jcl from 5.3.25 to 5.3.26
+  - org.springframework:spring-messaging from 5.3.25 to 5.3.26
+  - org.springframework:spring-test from 5.3.25 to 5.3.26
+  - org.springframework:spring-tx from 5.3.25 to 5.3.26
+  - org.springframework:spring-web from 5.3.25 to 5.3.26
+
+- Exposed an API to override the default delegate tag for new delegate installations. (DEL-6183)
+
+- Added Prometheus metrics to track the state of delegate connectivity. (DEL-5363)
+
+  The following metrics were added:
+
+    - io_harness_delegate_connected
+    - io_harness_delegate_disconnected
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+The pipeline service is unable to communicate with the delegate service. (DEL-5954)
+
+A timeout during delegate selection occurred in the Validate step. The message `Please check the timeout configuration on the step to extend the duration of the step` appeared. 
+
+To fix this issue, the delegate now recreates the websocket in case there is an issue with the two-way heartbeat handshake between the manager and the delegate. 
 
 ## March 31, 2023, Harness version 78914, Harness Delegate version 78904
 
