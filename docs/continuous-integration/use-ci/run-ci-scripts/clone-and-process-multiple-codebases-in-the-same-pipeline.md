@@ -1,9 +1,8 @@
 ---
 title: Clone and Process Multiple Codebases in the Same Pipeline
-description: You can clone multiple codebases in the same Pipeline and then build artifacts from multiple repositories. This enables use cases such as &#8212;  You use Packer and Ansible to build artifacts automatically.…
-tags: 
-   - helpDocs
-# sidebar_position: 2
+description: You can clone multiple codebases in the same Pipeline and then build artifacts from multiple repositories.
+
+sidebar_position: 30
 helpdocs_topic_id: k8tz6mtiut
 helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false

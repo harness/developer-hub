@@ -363,5 +363,15 @@ module.exports = {
       from: "/docs/category/migrating-to-harness-ci",
       to: "/docs/category/migrate-to-harness-ci",
     },
-  ],
+   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+   {
+    from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
+    to: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
+  },
+   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+   {
+    from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
+    to: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
+  },
+],
 };
