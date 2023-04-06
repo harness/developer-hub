@@ -62,7 +62,7 @@ Must consist of only alphabetical characters, numbers, and the following symbols
 
 The characters can be lowercase or uppercase but cannot include accented letters, for example `CF.789`.
 
-For more information, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
+For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference).
 </details>
 
 To add a target:

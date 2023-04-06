@@ -111,5 +111,5 @@ This does not apply if you want to run the Custom Secrets Manager on the Harness
 
 ### See also
 
-* [Add a Custom Secret Manager](../6_Security/9-custom-secret-manager.md)
+* [Add a Custom Secret Manager](../7_Connectors/Secret-Managers/9-custom-secret-manager.md)
 

@@ -68,7 +68,7 @@ GCP connector settings include:
 * **Name:** The unique name for the connector
 * **Id:** Go to [Entity Identifier Reference](../../20_References/entity-identifier-reference.md)
 * **Description:** Text string
-* **Tags:** Go to [Tags Reference](../../20_References/tags-reference.md)
+* **Tags:** Go to [Tags Reference](../../../20_References/tags-reference.md)
 * **Details:** Provide credentials that enable Harness to connect to your GCP account. There are two options:
   * Select **Specify credentials here** to use a GCP service account key.
   * Select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit its authentication credentials from the Harness delegate that is running in GCP.

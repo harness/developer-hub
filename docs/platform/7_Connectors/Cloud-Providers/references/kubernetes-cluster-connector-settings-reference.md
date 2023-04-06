@@ -150,7 +150,7 @@ The unique name for this Connector.
 
 ### ID
 
-See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
+See [Entity Identifier Reference](../../../20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -158,7 +158,7 @@ Text string.
 
 ### Tags
 
-See [Tags Reference](../../20_References/tags-reference.md).
+See [Tags Reference](../../../20_References/tags-reference.md).
 
 ### Cluster Details
 

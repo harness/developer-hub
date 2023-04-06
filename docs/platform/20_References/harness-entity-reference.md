@@ -34,7 +34,7 @@ Most Harness entities and resources include a unique Id (Identifier) that is imm
 
 Identifiers provide a permanent way to refer to an entity, and avoid issues that can arise when a name is changed.
 
-See [Entity Identifier Reference](entity-identifier-reference.md).
+See [Entity Identifier Reference](./entity-identifier-reference.md).
 
 ### Entity Id Scope
 
@@ -81,7 +81,7 @@ The Id should not be any of the following words:
 
 ### See also
 
-* [Entity Identifier Reference](entity-identifier-reference.md)
-* [Entity Retention Policy](entity-retention-policy.md)
-* [Entity Deletion Reference](entity-deletion-reference.md)
+* [Entity Identifier Reference](./entity-identifier-reference.md)
+* [Entity Retention Policy](./entity-retention-policy.md)
+* [Entity Deletion Reference](./entity-deletion-reference.md)
 

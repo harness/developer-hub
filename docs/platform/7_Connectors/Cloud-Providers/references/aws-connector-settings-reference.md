@@ -581,7 +581,7 @@ The AWS connector settings include:
 * **Name:** The unique name for the connector
 * **Id:** Go to [Entity Identifier reference](../../20_References/entity-identifier-reference.md)
 * **Description:** Text string
-* **Tags**: Go to [Tags reference](../../20_References/tags-reference.md)
+* **Tags**: Go to [Tags reference](../../../20_References/tags-reference.md)
 * **Credentials**: Credentials that enable Harness to connect your AWS account. There are three primary options:
   * **Assume IAM Role on Delegate:** This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
   * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../6_Secrets/2-add-use-text-secrets.md) for both.

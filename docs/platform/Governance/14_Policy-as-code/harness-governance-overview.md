@@ -18,7 +18,7 @@ This topic provides an overview of how Harness Policy As Code implemented govern
 
 
 :::note
-Looking for the quickstart? See [Harness Policy As Code Quickstart](harness-governance-quickstart.md).
+Looking for the quickstart? See [Harness Policy As Code Quickstart](./harness-governance-quickstart.md).
 
 :::
 
@@ -92,7 +92,7 @@ Harness policies are written and tested using the built-in policy editor.
 
 ![](./static/harness-governance-overview-07.png)
 
-For an example of how to use the policy editor, see [Harness Policy As Code Quickstart](harness-governance-quickstart.md).
+For an example of how to use the policy editor, see [Harness Policy As Code Quickstart](./harness-governance-quickstart.md).
 
 #### Policy Library
 
@@ -197,11 +197,11 @@ Severities:
 * **On error (Error and Exit):** a message is shown and the action does not complete.
 * **On warning (Warn and Continue):** a message is shown and the action is completed.
 
-The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md).
+The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. See [Add a Governance Policy Step to a Pipeline](./add-a-governance-policy-step-to-a-pipeline.md).
 
 #### Feature Flags
 
-Policies are evaluated against Harness [Feature Flags](../../feature-flags/ff-onboarding/cf-feature-flag-overview.md).  
+Policies are evaluated against Harness [Feature Flags](../../../feature-flags/ff-onboarding/cf-feature-flag-overview.md).  
 
 Policy Sets can be configured to evaluate policies on these Feature Flag events:
 
@@ -215,7 +215,7 @@ See [Use Harness Policy As Code for Feature Flags](using-harness-policy-engine-f
 
 You can define a policy with the entity type Custom.
 
-The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. See [Add a Governance Policy Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md).
+The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. See [Add a Governance Policy Step to a Pipeline](./add-a-governance-policy-step-to-a-pipeline.md).
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
 
@@ -231,7 +231,7 @@ Policies and Policy Sets are saved at the Harness Account, Organization, or Proj
 
 ### See also
 
-* [Harness Policy As Code Quickstart](harness-governance-quickstart.md)
-* [Add a Policy Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md)
+* [Harness Policy As Code Quickstart](./harness-governance-quickstart.md)
+* [Add a Policy Step to a Pipeline](./add-a-governance-policy-step-to-a-pipeline.md)
 * [Harness Policy As Code Overview for Feature Flags](../../../feature-flags/ff-using-flags/harness-policy-engine.md)
 

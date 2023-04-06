@@ -175,5 +175,5 @@ For details on settings and permissions, see [Nexus Connector Settings Reference
 ### See also
 
 * [Select Delegates with Selectors](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
-* [Add a Secrets Manager](../../6_Security/5-add-secrets-manager.md)
+* [Add a Secrets Manager](../../7_Connectors/Secret-Managers/5-add-secrets-manager.md)
 

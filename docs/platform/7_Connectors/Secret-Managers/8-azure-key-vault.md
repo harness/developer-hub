@@ -105,7 +105,7 @@ Scroll down to **Secret Managers** and click **Azure Key Vault**.
 ![](../static/azure-key-vault-09.png)
 Enter a **Name** for the secret manager.
 
-You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
+You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 Enter **Description** and **Tags** for your secret manager.
 
@@ -121,7 +121,7 @@ To provide these values:
 * Copy the **Directory (tenant) ID** of the Azure Active Directory (AAD) where you created your application, and paste it into the Harness dialog's **Tenant ID** field. (For details, see Microsoft Azure's [Get values for signing in](https://docs.microsoft.com/en-us/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) topic.)
 * In the **Subscription** field, you can optionally enter your Azure Subscription ID (GUID).
 
-To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](../6_Security/8-azure-key-vault.md#step-1-create-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
+To find this ID, navigate to Azure's **Subscriptions** page, as outlined above in [Step 1: Create Azure Reader Role](../Secret-Managers/8-azure-key-vault.md#step-1-create-azure-reader-role). From the resulting list of subscriptions, copy the **Subscription ID** beside the subscription that contains your vaults.
 
 ![](../static/azure-key-vault-11.png)
 

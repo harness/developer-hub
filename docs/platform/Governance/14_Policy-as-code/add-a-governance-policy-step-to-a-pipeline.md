@@ -12,7 +12,7 @@ Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Co
 
 You can enforce policies in two ways:
 
-* **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. See [Harness Governance Quickstart](harness-governance-quickstart.md).
+* **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. See [Harness Governance Quickstart](./harness-governance-quickstart.md).
 * **Stage-specific:** you can add a Policy step, add a new/existing Policy Set to it, and then provide a JSON payload to evaluate.
 	+ The policy is evaluated whenever the Pipeline reaches the Policy step.
 	+ Policy evaluation can be performed on data generated when the Pipeline is running, such as resolved expressions.
@@ -22,7 +22,7 @@ This topic describes how to add a Policy step to a Stage.
 
 ### Before you begin
 
-* If you are new to Harness Governance, see [Harness Governance Overview](harness-governance-overview.md) and [Harness Governance Quickstart](harness-governance-quickstart.md).
+* If you are new to Harness Governance, see [Harness Governance Overview](./harness-governance-overview.md) and [Harness Governance Quickstart](./harness-governance-quickstart.md).
 
 ### Limitations
 
@@ -30,7 +30,7 @@ This topic describes how to add a Policy step to a Stage.
 * Currently, the Policy Step is available in Deploy, Custom, and Approval Stages.
 * Currently, only the **Custom** entity type is supported for the Policy step.
 	+ A Custom entity type allows flexibility to enforce policy evaluations during Pipeline execution with different input data. For example, Terraform plans and deployment Environment details. A Policy Set with a Custom type does not have an event configured.
-* [Runtime Inputs](../20_References/runtime-inputs.md) are expanded before evaluation. You cannot perform checks to ensure a setting is always a Runtime Input, Expression, or Fixed Value.
+* [Runtime Inputs](../../20_References/runtime-inputs.md) are expanded before evaluation. You cannot perform checks to ensure a setting is always a Runtime Input, Expression, or Fixed Value.
 
 ### Visual Summary
 
@@ -73,7 +73,7 @@ A Policy Set at the account level can be used in any Policy Step in the Orgs and
 
 In **Policy Set**, click **Add/Modify Policy Set**.
 
-In this example, we'll use an existing policy set. For details on creating a policy set, see [Harness Governance Quickstart](harness-governance-quickstart.md).
+In this example, we'll use an existing policy set. For details on creating a policy set, see [Harness Governance Quickstart](./harness-governance-quickstart.md).
 
 ![](./static/add-a-governance-policy-step-to-a-pipeline-01.png)
 Navigate to a **Policy Set**, select it, and click **Apply**.
@@ -92,7 +92,7 @@ Currently, only the **Custom** entity type is supported. The JSON payload you ad
 
 The **Policy Set** and **Payload** settings allow for Fixed Values, Runtime Inputs, and Expressions.
 
-For details on how these work in Harness, See [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
+For details on how these work in Harness, See [Fixed Values, Runtime Inputs, and Expressions](../../20_References/runtime-inputs.md).
 
 #### Fixed Values
 
@@ -110,7 +110,7 @@ You can select Expressions for one or both settings and when the Pipeline is exe
 ![](./static/add-a-governance-policy-step-to-a-pipeline-05.png)
 ### Step 5: Test the Policy Step
 
-New to policies and Policy Sets? See [Harness Governance Quickstart](harness-governance-quickstart.md).Let's look at an example of the Policy step.
+New to policies and Policy Sets? See [Harness Governance Quickstart](./harness-governance-quickstart.md).Let's look at an example of the Policy step.
 
 We'll use an HTTP step to do a REST GET and get the Harness SaaS version number and then use the Policy step to evaluate the response to see if it match a version number check policy.
 
@@ -125,7 +125,7 @@ deny[sprintf("version must be greater than v0.200.0 but is currently '%s'", [inp
     semver.compare(version, "0.200.0") < 0  
 }
 ```
-Currently, only the **Custom** entity type is supported. The JSON payload you add is a free form payload that can be evaluated by your Policy Set at runtime. It does not need to be a Harness entity.Next, in our Pipeline we'll add an [HTTP step](../../continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md) to check the version at the HTTP endpoint `https://app.harness.io/prod1/pm/api/v1/system/version`, and a **Policy** step to that uses our policy to check the version returned from the HTTP step:
+Currently, only the **Custom** entity type is supported. The JSON payload you add is a free form payload that can be evaluated by your Policy Set at runtime. It does not need to be a Harness entity.Next, in our Pipeline we'll add an [HTTP step](../../../continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md) to check the version at the HTTP endpoint `https://app.harness.io/prod1/pm/api/v1/system/version`, and a **Policy** step to that uses our policy to check the version returned from the HTTP step:
 
 Here's the YAML for a Pipeline that uses the step:
 ```
@@ -200,7 +200,7 @@ You can use the following Harness expressions to output Policy Step status in a 
 * `<+execution.steps.[policy step Id].output.policySetDetails.Example.status>`
 
 ![](./static/add-a-governance-policy-step-to-a-pipeline-06.png)
-For example, if the Policy Step [Id](../20_References/entity-identifier-reference.md) is `Check`, you would reference it like this:
+For example, if the Policy Step [Id](../../20_References/entity-identifier-reference.md) is `Check`, you would reference it like this:
 
 
 ```

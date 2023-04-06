@@ -430,7 +430,7 @@ In this tutorial, you:
 
 ### See also
 
-* [Add a Policy Engine Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md)
-* [Harness Policy As Code Overview](harness-governance-overview.md)
+* [Add a Policy Engine Step to a Pipeline](./add-a-governance-policy-step-to-a-pipeline.md)
+* [Harness Policy As Code Overview](./harness-governance-overview.md)
 * [Harness Policy As Code Overview for Feature Flags](../../../feature-flags/ff-using-flags/harness-policy-engine.md)
 

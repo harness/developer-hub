@@ -37,7 +37,7 @@ Before you create a Feature Flag, you must have:
 1. In your project, in **Environments**, click **Create an Environment**.
 1. Enter a **Name** for your environment.
 
-    Harness generates a unique identifier for names. For details and restrictions, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
+    Harness generates a unique identifier for names. For details and restrictions, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference).
 
 1. Select the **Environment type** and click **Create**.
 

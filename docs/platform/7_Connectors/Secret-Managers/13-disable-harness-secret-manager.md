@@ -58,9 +58,9 @@ You must have another Secret Manager created at the Account scope with its crede
 
 ### See also
 
-* [Add Google KMS as a Harness Secret Manager](../6_Security/10-add-google-kms-secrets-manager.md)
-* [Add an AWS KMS Secret Manager](../6_Security/7-add-an-aws-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](../6_Security/6-add-an-aws-secret-manager.md)
-* [Add an Azure Key Vault Secret Manager](../6_Security/8-azure-key-vault.md)
-* [Add a HashiCorp Vault Secret Manager](../6_Security/12-add-hashicorp-vault.md)
+* [Add Google KMS as a Harness Secret Manager](../Secret-Managers/10-add-google-kms-secrets-manager.md)
+* [Add an AWS KMS Secret Manager](../Secret-Managers/7-add-an-aws-kms-secrets-manager.md)
+* [Add an AWS Secret Manager](../Secret-Managers/6-add-an-aws-secret-manager.md)
+* [Add an Azure Key Vault Secret Manager](../Secret-Managers/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secret Manager](../Secret-Managers/12-add-hashicorp-vault.md)
 

@@ -10,7 +10,9 @@ helpdocs_is_published: true
 
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
-Harness also supports [Google KMS as a secrets manager](../../6_Security/10-add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
+Harness also supports [Google KMS as a secrets manager](../../7_Connectors/Secret-Managers/10-add-google-kms-secrets-manager.md).
+
+This topic explains how to add a GCP Secrets Manager in Harness.
 
 ### Before you begin
 
@@ -59,7 +61,7 @@ The GCP Secrets Manager settings appear.![](../static/add-a-google-cloud-secret-
 ### Step 2: Add overview
 
 1. In **Name**, enter a name for your secret manager.
-2. You can choose to update the **Id** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
+2. You can choose to update the **Id** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 3. Enter the **Description** for your secret manager.
 4. Enter **Tags** for your secret manager.
 5. Click **Continue.**
@@ -137,9 +139,9 @@ The **Add new Encrypted File** settings appear.
 
 ### See also
 
-* [Add Google KMS as a Harness Secret Manager](../6_Security/10-add-google-kms-secrets-manager.md)
-* [Add an AWS KMS Secret Manager](../6_Security/7-add-an-aws-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](../6_Security/6-add-an-aws-secret-manager.md)
-* [Add an Azure Key Vault Secret Manager](../6_Security/8-azure-key-vault.md)
-* [Add a HashiCorp Vault Secret Manager](../6_Security/12-add-hashicorp-vault.md)
+* [Add Google KMS as a Harness Secret Manager](../Secret-Managers/10-add-google-kms-secrets-manager.md)
+* [Add an AWS KMS Secret Manager](../Secret-Managers/7-add-an-aws-kms-secrets-manager.md)
+* [Add an AWS Secret Manager](../Secret-Managers/6-add-an-aws-secret-manager.md)
+* [Add an Azure Key Vault Secret Manager](../Secret-Managers/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secret Manager](../Secret-Managers/12-add-hashicorp-vault.md)
 

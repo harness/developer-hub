@@ -18,8 +18,8 @@ You can contact your Harness account admin to resolve the issue or, if the Polic
 ![](./static/disable-a-policy-set-54.png)
 ### Before you begin
 
-* [Harness Policy As Code Overview](harness-governance-overview.md)
-* [Harness Policy As Code Quickstart](harness-governance-quickstart.md)
+* [Harness Policy As Code Overview](./harness-governance-overview.md)
+* [Harness Policy As Code Quickstart](./harness-governance-quickstart.md)
 
 ### Step 1: Locate the Policy Set
 
@@ -36,5 +36,5 @@ Toggle the **Enforced** setting to off.
 
 ### See also
 
-* [Add a Policy Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md)
+* [Add a Policy Step to a Pipeline](./add-a-governance-policy-step-to-a-pipeline.md)
 

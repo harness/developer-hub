@@ -9,8 +9,8 @@ You can use JWT to access Harness SCIM APIs. To do this, you must first configur
 ## Prerequisites
 
 - Make sure you have the **View** and **Edit** permissions for the **Default Settings** at the account scope.
-  For more information on assigning permissions, see [Create a Custom Resource Group](../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md#step-2-create-a-custom-resource-group), [Create a Custom Role](../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md#step-3-create-a-custom-role), and [Role-based access control quick start](../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md).
-- Make sure you have an active API key and a corresponding token. For more information, see [Create an API Key](../User-Management/7-add-and-manage-api-keys.md#create-personal-access-token).
+  For more information on assigning permissions, see [Create a Custom Resource Group](../../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md#step-2-create-a-custom-resource-group), [Create a Custom Role](../../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md#step-3-create-a-custom-role), and [Role-based access control quick start](../../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md).
+- Make sure you have an active API key and a corresponding token. For more information, see [Create an API Key](../../User-Management/7-add-and-manage-api-keys.md#create-personal-access-token).
   
 ## Create a service account in Harness
 
@@ -23,12 +23,12 @@ To create a new service account, perform the following steps:
 3. Select **Service Accounts** and then select **New Service Account**.
 4. Enter your name and email address for this account.
 5. Select **Save**.
-   For more information, see Create a [service account](../User-Management/6-add-and-manage-service-account.md).
+   For more information, see Create a [service account](../../User-Management/6-add-and-manage-service-account.md).
 6. Your service account now appears in the **Service Account** list. Select ** Manage Roles** next to the service account you just created to assign role bindings to the service account you just created.
 7. Assign the following permissions to the service account:
     - **View**, **Manage**, and **Invite** users.
     - **View** and **Manage** user groups.
-  For more information on assigning permissions, see [Create a Custom Resource Group](../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md#step-2-create-a-custom-resource-group), [Create a Custom Role](../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md#step-3-create-a-custom-role), and [Role-based access control quick start](../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md).
+  For more information on assigning permissions, see [Create a Custom Resource Group](../../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md#step-2-create-a-custom-resource-group), [Create a Custom Role](../../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md#step-3-create-a-custom-role), and [Role-based access control quick start](../../4_Role-Based-Access-Control/10-set-up-rbac-pipelines.md).
 
 ## Configure settings to enable JWT authentication
 

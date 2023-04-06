@@ -89,7 +89,7 @@ For information on restrictions on names and maximum quotas, see [Quotas for AWS
 
 Enter **Name** for your secret manager.
 
-You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../20_References/entity-identifier-reference.md).
+You can choose to update the **ID** or let it be the same as your secret manager's name. For more information, see [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
 
 Enter **Description** for your secret manager.
 

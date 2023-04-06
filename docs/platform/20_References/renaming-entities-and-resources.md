@@ -59,7 +59,7 @@ For example, in this Project there are four different types of entities with ide
 ### See also
 
 * [Organizations and Projects Overview](../Account-Structure/organizations-and-projects/projects-and-organizations.md)
-* [Entity Deletion Reference](entity-deletion-reference.md)
-* [Entity Retention Policy](entity-retention-policy.md)
-* [Entity Identifier Reference](entity-identifier-reference.md)
+* [Entity Deletion Reference](./entity-deletion-reference.md)
+* [Entity Retention Policy](./entity-retention-policy.md)
+* [Entity Identifier Reference](./entity-identifier-reference.md)
 
