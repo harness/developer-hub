@@ -5,14 +5,14 @@ import { MODULES } from "../../../constants";
 /* Define the cards here */
 export const FeaturedList: CardItem[] = [
   {
-    title: "Deploy a Helm Chart using Harness GitOps for Argo CD",
+    title: "Deploy a Kubernetes Helm Chart",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Get started with Harness GitOps for Argo CD.</>,
+    description: <>Deploy a Helm Chart onto your Kubernetes cluster.</>,
     newDoc: true,
     type: [docType.Documentation],
     time: "8min",
-    link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+    link: "/tutorials/deploy-services/kubernetes/helm-chart",
   },
   {
     title: "Get started with the fastest CI on the planet",
@@ -59,119 +59,145 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-container-signing",
-  },
-  {
-    title: "Build and Publish a Rust application",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Learn how to build, test and publish multi architecture Rust application
-        container image.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-rust-container",
+    link: "/tutorials/build-code/build/signed-image",
   },
 ];
 
 export const CIList: CardItem[] = [
   {
-    title: "Code coverage with CodeCov in Harness CI",
-    module: "ci",
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Add CodeCov code coverage to a CI pipeline.
-      </>
-    ),
-    newDoc: true,
+    title: "Build on a Kubernetes Cluster",
+    module: MODULES.ci,
+    description:
+      "Build a Docker Image on a Kubernetes Cluster Build Farm.",
+    link: "/tutorials/build-code/build/kubernetes-build-farm",
     type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-codecov-test",
+    time: "30 min",
+    icon: "img/icon_ci.svg",
   },
   {
-    title: "Node and Docker Pipeline",
+    title: "Go Application",
     module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide walks you through building a NodeJS and
-        Docker Application in a CI Pipeline.
-      </>
-    ),
-    newDoc: false,
+    description:
+      "Build a Docker Image of a Go Application.",
+    link: "/tutorials/build-code/build/go",
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-node-docker-quickstart",
+    icon: "img/icon_ci.svg",
   },
   {
-    title: "Run LocalStack as a Service",
+    title: "JAVA Application",
     module: MODULES.ci,
+    description:
+      "Build a Docker Image of JAVA HTTP Server Application.",
+    link: "/tutorials/build-code/build/java",
     icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide shows how to run LocalStack as a Background
-        step in a CI Pipeline
-      </>
-    ),
-    newDoc: false,
+    time: "15 min",
+    type: [docType.Documentation],
+  },
+  {
+    title: "NodeJS Application",
+    module: MODULES.ci,
+    description:
+      "Build a Docker Image of a NodeJS Application.",
+    link: "/tutorials/build-code/build/nodejs",
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-localstack-background-step",
-  },
-  {
-    title: "Build and Push a Container Image to Amazon ECR",
-    module: MODULES.ci,
     icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This guide shows how to build, test, and publish a container image to
-        AWS ECR
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-build-push-to-ecr",
   },
+
   {
-    title: "Run Sauce Connect Proxy as a Service",
+    title: "React Application",
     module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide walks you through running Sauce Connect
-        Proxy as a Background step in a CI Pipeline
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-saucelabs-background-step",
-  },
-  {
-    title: "Build and publish a Java HTTP Server",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Build, test, and publish a Docker image for a Java HTTP server
-        application
-      </>
-    ),
-    newDoc: false,
+    description:
+      "Build a Docker Image of a React Application.",
+    link: "/tutorials/build-code/build/react",
     type: [docType.Documentation],
     time: "20 min",
-    link: "/tutorials/build-code/ci-java-http-server",
+    icon: "img/icon_ci.svg",
+  },
+  {
+    title: "Rust Application",
+    module: MODULES.ci,
+    description:
+      "Build a Docker Image of a Rust Application.",
+    link: "/tutorials/build-code/build/rust",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+  },
+  {
+    title: "Signed Image",
+    module: MODULES.ci,
+    description:
+      "Build a Signed Docker Image of a Go Application.",
+    link: "/tutorials/build-code/build/signed-image",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+  },
+  {
+    title: "Amazon ECR",
+    module: MODULES.ci,
+    description:
+      "Publish an Image to an Amazon ECR Registry.",
+    link: "/tutorials/build-code/publish/amazon-ecr",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Google GAR",
+    module: MODULES.ci,
+    description:
+      "Publish an Image to a Google GAR Registry.",
+    link: "/tutorials/build-code/publish/google-gar",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Code coverage with CodeCov",
+    module: MODULES.ci,
+    description:
+      "Wse a Run step to include CodeCov code coverage.",
+    link: "/tutorials/build-code/test/codecov",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
+  {
+    title: "Publish Allure Report",
+    module: MODULES.ci,
+    description:
+      "Publish an Allure Report.",
+    link: "/tutorials/build-code/test/allure-report",
+    type: [docType.Documentation],
+    time: "5 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Run LocalStack",
+    module: MODULES.ci,
+    description:
+      "Run LocalStack as a Background Step.",
+    link: "/tutorials/build-code/test/localstack",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Run Sauce Connect Proxy",
+    module: MODULES.ci,
+    description:
+      "Run Sauce Connect Proxy as a Background Step.",
+    link: "/tutorials/build-code/test/saucelabs-proxy",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
   },
   {
     title: "Get started with the fastest CI on the planet",
-
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: (
@@ -185,147 +211,39 @@ export const CIList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
   },
-  {
-    title: "Build Go application containers",
-
-    module: MODULES.ci,
-    icon: "img/logo.svg",
-    description: (
-      <>
-        This build automation guide describes building a Go container image in a
-        CI Pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-go-containers",
-  },
-  {
-    title: "Sign Application Containers",
-    module: MODULES.ci,
-    icon: "img/logo.svg",
-    description: (
-      <>
-        This build automation guide describes how to sign a container image
-        using a CI pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-container-signing",
-  },
-  {
-    title:
-      "Build, test, and publish a Docker image for a sample React application",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Learn how to build and test a sample React application in a CI pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "20 min",
-    link: "/tutorials/build-code/ci-react-quickstart",
-  },
-  {
-    title: "Push application containers to Google Artifact Registry",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide describes how to build and push an
-        application container image to Google Artifact Registry using a CI
-        pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-push-to-gar",
-  },
-  {
-    title: "Build and Publish a Rust application",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Learn how to build, test and publish multi architecture Rust application
-        container image.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-rust-container",
-  },
-  {
-    title: "Build and test on a Kubernetes cluster build infrastructure",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Create a two-stage pipeline that builds a codebase and runs integration
-        tests on a Kubernetes cluster build infrastructure.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "30 min",
-    link: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
-  },
 ];
 
 export const CDList: CardItem[] = [
   {
-    title: "Deploy a Kubernetes Manifest",
+    title: "Deploy a Kubernetes Helm Chart",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: (
       <>
-        Deploying your first set of Kubernetes Services in a CD Pipline with
-        Kubernetes Manifests.
+        Deploy your first set of Kubernetes Resources in a CD Pipeline with
+        Helm, a popular Kubernetes Package Manager.
       </>
     ),
     newDoc: false,
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     time: "10 min",
-    link: "/tutorials/deploy-services/microservice-manifest-k8s",
+    link: "/tutorials/deploy-services/kubernetes/helm-chart",
   },
   {
-    title: "Deploy a Helm Chart",
+    title: "Deploy a Kubernetes Manifest",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: (
       <>
-        Deploying your first set of Kubernetes Resources in a CD Pipeline with
-        Helm, a popular Kubernetes Package Manager.
+        Deploy your first set of Kubernetes Services in a CD Pipeline with
+        Kubernetes Manifests.
       </>
     ),
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/deploy-services/helm-k8s",
-  },
-  {
-    title: "Deploy a Helm Chart using Harness GitOps for Argo CD",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: (
-      <>Learn about GitOps and how to leverage your own GitOps Pipeline.</>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+    link: "/tutorials/deploy-services/kubernetes/manifest",
   },
   {
     title: "Build and Deploy a NodeJS App to Kubernetes",
@@ -338,47 +256,17 @@ export const CDList: CardItem[] = [
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     time: "10 min",
-    link: "/tutorials/deploy-services/harness-cicd-tutorial",
-  },
-  {
-    title: "Deploy a Helm Chart using CD Community Edition",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: (
-      <>
-        Use the 100% free, source-available, self-managed Harness CD Community
-        Edition to automate Helm Chart deployments.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+    link: "/tutorials/deploy-services/unified-cicd",
   },
   {
     title: "Deploy a Docker Image to Amazon ECS ",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: <>Deploy a Docker image to Amazon ECS using a CD Pipeline.</>,
+    description: <>Deploy a Docker image to Amazon ECS.</>,
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/deploy-services/docker-ecs",
-  },
-  {
-    title: "Deploy a Private Image in Amazon ECR to Kubernetes ",
-    module: MODULES.cd,
-    icon: "img/icon_cd.svg",
-    description: (
-      <>
-        Deploy a Docker image from a private Amazon ECR Repository to
-        Kubernetes.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15min",
-    link: "/tutorials/deploy-services/docker-ecr-k8s",
+    link: "/tutorials/deploy-services/amazon-ecs",
   },
 ];
 

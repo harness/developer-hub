@@ -1,7 +1,9 @@
 ---
-sidebar_position: 60
+sidebar_position: 2
+title: Go Application
 description: This build automation guide describes building a Go container in a a CI Pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Go,Ko]
+slug: /build-code/build/go
 ---
 
 # Build Go Application Containers
@@ -49,7 +51,7 @@ Like any file you want to share with the world, storing them in an external spot
 
 For this tutorial we will be using [Docker Hub](https://hub.docker.com/). If you do not have a registry available to you, you can create a [Docker Hub account](https://hub.docker.com/signup) and then create a repository `fruits-api`, where we will push our `fruits-api` application container image.
 
-![Fruits API Docker Repository](static/ci-tutorial-go-containers/create-docker-repo.png)
+![Fruits API Docker Repository](../static/ci-tutorial-go-containers/create-docker-repo.png)
 
 With us having created the `fruits-api` repository, lets test our repository by building and pushing the image to the registry,
 
@@ -143,7 +145,7 @@ You can check the pushed image at <https://hub.docker.com/repository/docker/$DOC
 
 Simple enough locally to get your local build and packaging in. Our process to build and push the __go__ application looks like,
 
-![Pipeline Steps](static/ci-tutorial-go-containers/pipeline_steps.png)
+![Pipeline Steps](../static/ci-tutorial-go-containers/pipeline_steps.png)
 
 These sequence of steps is referred to as a __Pipeline__ in Continuous Integration(CI) world.
 
@@ -161,11 +163,11 @@ There are a few Harness resources to create along the way, which this guide will
 
 __Hosted Infrastructure__:
 
-![Harness CI Hosted Overview](static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
+![Harness CI Hosted Overview](../static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
 
 __Bring Your Own Infrastructure__:
 
-![Harness CI Bring Your Own Overview](static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
+![Harness CI Bring Your Own Overview](../static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
 
 For this tutorial we will be using the __Hosted Infrastructure__ as thats the only infrastructure available for _Free Tier_.
 
@@ -175,7 +177,7 @@ Harness is a Platform which has lot of modules, but for this tutorial we will fo
 
 First, sign up for a [Harness account to get started](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
 
-![Harness Signup](static/ci-tutorial-node-docker/harness_signup.png)
+![Harness Signup](../static/ci-tutorial-node-docker/harness_signup.png)
 
 ### GitHub Personal Access Token(PAT)
 
@@ -183,7 +185,7 @@ Assuming you are leveraging GitHub, Harness will need access to the repository. 
 
 If you have not created a PAT before, on your GitHub account navigate to __Settings__ -> __Developer Settings__ -> __Personal Access Tokens__.
 
-![GitHub PAT](static/ci-tutorial-go-containers/gh_pat_scopes.png)
+![GitHub PAT](../static/ci-tutorial-go-containers/gh_pat_scopes.png)
 
 :::important
 
@@ -199,15 +201,15 @@ Harness Platform organizes the resources like pipelines, secrets, connectors at 
 
 Login to your Harness Account that you created earlier and create a new project,
 
-![New Project](static/ci-tutorial-go-containers/new_project.png)
+![New Project](../static/ci-tutorial-go-containers/new_project.png)
 
 On the new project page, click __Create Project__ to create a new project named _Fruits API_.
 
-![Create Fruits API Project](static/ci-tutorial-go-containers/fruits_api_project.png)
+![Create Fruits API Project](../static/ci-tutorial-go-containers/fruits_api_project.png)
 
 Leave other options to defaults and click __Save and Continue__. On the modules select _Continuous Integration_,
 
-![Module CI](static/ci-tutorial-go-containers/modules_ci.png)
+![Module CI](../static/ci-tutorial-go-containers/modules_ci.png)
 
 Now you are ready to wire in the pieces to Harness Continuous Integration.
 
@@ -215,15 +217,15 @@ Now you are ready to wire in the pieces to Harness Continuous Integration.
 
 In the Build Module [Harness Continuous Integration], walking through the wizard is the fastest path to get your build running. Click Get Started. This will create a basic Pipeline for you.
 
-![Get Started](static/ci-tutorial-node-docker/get_started.png)
+![Get Started](../static/ci-tutorial-node-docker/get_started.png)
 
 Click __Get Started__, select GitHub as the repository to use, and enter your GitHub Access Token `$GITHUB_PAT` and finally click __Test Connection__ to verify your credentials work,
 
-![SCM Choice](static/ci-tutorial-go-containers/scm_choice.png)
+![SCM Choice](../static/ci-tutorial-go-containers/scm_choice.png)
 
 Click __Continue__, click __Select Repository__ to select the Git Hub Repository that you want to build [the sample is called _go-fruits-api_].
 
-![Go Docker Repo](static/ci-tutorial-go-containers/go_docker_repo.png)
+![Go Docker Repo](../static/ci-tutorial-go-containers/go_docker_repo.png)
 
 :::note
 Please ensure the repository you select here is your fork of <https://github.com/harness-apps/go-fruits-api>.
@@ -231,13 +233,13 @@ Please ensure the repository you select here is your fork of <https://github.com
 
 Can leverage one of the Starter Configs or create a Starter Pipeline. In this case if leveraging the example app which is Go based, leveraging the __Go__ Starter Configuration works fine.
 
-![Configure Go](static/ci-tutorial-go-containers/go_starter_pipeline.png)
+![Configure Go](../static/ci-tutorial-go-containers/go_starter_pipeline.png)
 
 Click __Create Pipeline__ to start adding the pipeline steps.
 
 There are two ways to add your pipeline steps, _visual_ or _YAML_. For rest of the tutorial we will use the _visual_ editor.
 
-![Pipeline Visual](static/ci-tutorial-go-containers/go_docker_pipeline_visual.png)
+![Pipeline Visual](../static/ci-tutorial-go-containers/go_docker_pipeline_visual.png)
 
 The scaffolding would have added a single step called _Build Go App_. In the upcoming sections we will add the other steps like _**lint**_, _**test**_ and _**push**_.
 
@@ -247,15 +249,15 @@ Before we get to adding other steps, we need some resources that the steps requi
 
 Navigate to __Project Setup__ --> __Secrets__,
 
-![Project Secrets](static/ci-tutorial-go-containers/project_secrets.png)
+![Project Secrets](../static/ci-tutorial-go-containers/project_secrets.png)
 
 Click __+ New Secret__ and select __Text__,
 
-![New Text Secret](static/ci-tutorial-go-containers/new_text_secret.png)
+![New Text Secret](../static/ci-tutorial-go-containers/new_text_secret.png)
 
 Fill your Docker Hub password on the  __Add new Encrypted Text__ window,
 
-![Docker Hub Password](static/ci-tutorial-go-containers/docker_hub_password_secret.png)
+![Docker Hub Password](../static/ci-tutorial-go-containers/docker_hub_password_secret.png)
 
 ### Create Docker Hub Registry Connector
 
@@ -263,19 +265,19 @@ Next let we need to add __Connector__ that allows us to connect and later push t
 
 Navigate to __Project Setup__ --> __Connectors__,
 
-![Project Connectors](static/ci-tutorial-go-containers/project_connectors.png)
+![Project Connectors](../static/ci-tutorial-go-containers/project_connectors.png)
 
 Click __+ New Connector__ and select __Docker registry__,
 
-![Docker Registry Connector](static/ci-tutorial-go-containers/docker_registry_connector.png)
+![Docker Registry Connector](../static/ci-tutorial-go-containers/docker_registry_connector.png)
 
 On the new connector wizard __Overview__ screen, enter the name of the connector as `docker hub`,
 
-![Docker Connector Overview](static/ci-tutorial-go-containers/docker_connector_overview.png)
+![Docker Connector Overview](../static/ci-tutorial-go-containers/docker_connector_overview.png)
 
 Click __Continue__ to configure the credentials,
 
-![Docker Connector Credentials](static/ci-tutorial-go-containers/docker_connector_details.png)
+![Docker Connector Credentials](../static/ci-tutorial-go-containers/docker_connector_details.png)
 
 :::note
 
@@ -286,15 +288,15 @@ Click __Continue__ to configure the credentials,
 
 Click __Continue__  and use the _Harness Platform_ as the connectivity mode option,
 
-![Docker Connector Connectivity Mode](static/ci-tutorial-go-containers/docker_connector_thru_harness_platform.png)
+![Docker Connector Connectivity Mode](../static/ci-tutorial-go-containers/docker_connector_thru_harness_platform.png)
 
 Click __Save and Continue__ to perform the connectivity test,
 
-![Docker Connector Success](static/ci-tutorial-go-containers/docker_connector_test_successful.png)
+![Docker Connector Success](../static/ci-tutorial-go-containers/docker_connector_test_successful.png)
 
 Click __Finish__ to complete the creation of Connector resource.
 
-![Connectors List](static/ci-tutorial-go-containers/project_connectors_list.png)
+![Connectors List](../static/ci-tutorial-go-containers/project_connectors_list.png)
 
 Now you are all set to add other steps to the __Build Go__ pipeline.
 
@@ -302,11 +304,11 @@ Now you are all set to add other steps to the __Build Go__ pipeline.
 
 Navigate to the __Projects__ --> __Pipelines__,
 
-![Pipelines List](static/ci-tutorial-go-containers/project_pipelines.png)
+![Pipelines List](../static/ci-tutorial-go-containers/project_pipelines.png)
 
 Click __Build Go__ pipeline,
 
-![Build Go Pipeline](static/ci-tutorial-go-containers/select_build_go_pipeline.png)
+![Build Go Pipeline](../static/ci-tutorial-go-containers/select_build_go_pipeline.png)
 
 Delete the existing __Build Go App__ step by clicking the `x` that appears when you hover over the step.
 
@@ -334,7 +336,7 @@ __Command__:
 golangci-lint run
 ```
 
-![Lint Step](static/ci-tutorial-go-containers/go_pipeline_step_lint.png)
+![Lint Step](../static/ci-tutorial-go-containers/go_pipeline_step_lint.png)
 
 Click __Apply Changes__ to save the step and click __Save__ to save the pipeline.
 
@@ -360,7 +362,7 @@ __Command__:
 go test -timeout 30s -v ./... 
 ```
 
-![Test Step](static/ci-tutorial-go-containers/go_pipeline_step_test.png)
+![Test Step](../static/ci-tutorial-go-containers/go_pipeline_step_test.png)
 
 While building the application locally we used _SQLite_ as our database. The go application can also run with PostgreSQL or MySQL or Mongodb. For this tutorial we will be using _MySQL_.
 
@@ -378,7 +380,7 @@ MYSQL_DATABASE: demodb
 
 The _environment_ variables could be added by clicking __+ Add__ under __Environment Variables__ section of the step configuration,
 
-![Test environment Variables](static/ci-tutorial-go-containers/go_pipeline_step_test_env_vars.png)
+![Test environment Variables](../static/ci-tutorial-go-containers/go_pipeline_step_test_env_vars.png)
 
 Click __Apply Changes__ to save the step.
 
@@ -402,7 +404,7 @@ In our tutorial we will use the _Integration testing_ workflow to make the __tes
 
 On the Pipeline editor click __Add Service Dependency__,
 
-![Add Service Dependency](static/ci-tutorial-go-containers/add_service_dependency.png)
+![Add Service Dependency](../static/ci-tutorial-go-containers/add_service_dependency.png)
 
 Configure the MySQL Dependency Service with details:
 
@@ -436,7 +438,7 @@ MYSQL_USER: demo
 MYSQL_DATABASE: demodb
 ```
 
-![Configure MySQL Dependency](static/ci-tutorial-go-containers/go_pipeline_mysql_service_dependency.png)
+![Configure MySQL Dependency](../static/ci-tutorial-go-containers/go_pipeline_mysql_service_dependency.png)
 
 Click __Apply Changes__ to save the step and then click __Save__ to save the pipeline.
 
@@ -446,11 +448,11 @@ Let us verify if were able to _**lint**_ and _**test**_ our go application.
 
 Click __Run__ from the pipeline editor page,
 
-![Run Pipeline](static/ci-tutorial-go-containers/run_pipeline.png)
+![Run Pipeline](../static/ci-tutorial-go-containers/run_pipeline.png)
 
 Leaving everything to defaults namely __Git Branch__ and __Branch Name__ to be _main_, click __Run Pipeline__ to start the pipeline run. If all ran well you should see a successful pipeline run as shown,
 
-![Lint and Test Success](static/ci-tutorial-go-containers/go_pipeline_lint_test_success.png)
+![Lint and Test Success](../static/ci-tutorial-go-containers/go_pipeline_lint_test_success.png)
 
 :::tip
 You can click on each step to view the logs of the respective step
@@ -462,11 +464,11 @@ Having tasted the success with our pipeline run, let us add the other step of bu
 
 As did earlier navigate to the __Projects__ --> __Pipelines__,
 
-![Pipelines List](static/ci-tutorial-go-containers/project_pipelines.png)
+![Pipelines List](../static/ci-tutorial-go-containers/project_pipelines.png)
 
 And click __Build Go__ pipeline to open the pipeline editor,
 
-![Build Go Pipeline](static/ci-tutorial-go-containers/select_build_go_pipeline_2.png)
+![Build Go Pipeline](../static/ci-tutorial-go-containers/select_build_go_pipeline_2.png)
 
 Click __Add Step__ to add a new step called __build and push__, from the _Step Library_ choose step type as __Run__ and configure the step with details,
 
@@ -491,7 +493,7 @@ echo -n "$DOCKER_HUB_PASSWORD" | ko auth login docker.io -u "$DOCKER_HUB_USERNAM
 ko build --bare --platform linux/amd64 --platform linux/arm64 .
 ```
 
-![Build and Push Step](static/ci-tutorial-go-containers/go_pipeline_step_build_push.png)
+![Build and Push Step](../static/ci-tutorial-go-containers/go_pipeline_step_build_push.png)
 
 We also need to configure few environment variables that are required by `ko` to build and push the image to `fruits-api` container repository.
 
@@ -503,7 +505,7 @@ DOCKER_HUB_PASSWORD: <+secrets.getValue("docker_hub_password")>
 KO_DOCKER_REPO: docker.io/$DOCKER_HUB_USERNAME/fruits-api
 ```
 
-![Build and Push Env](static/ci-tutorial-go-containers/go_pipeline_step_build_push_env_vars.png)
+![Build and Push Env](../static/ci-tutorial-go-containers/go_pipeline_step_build_push_env_vars.png)
 
 :::note
 
@@ -515,7 +517,7 @@ KO_DOCKER_REPO: docker.io/$DOCKER_HUB_USERNAME/fruits-api
 
 Click __Apply Changes__ to save the step and click __Save__ to save the pipeline.
 
-![Final Pipeline](static/ci-tutorial-go-containers/go_pipeline_final.png)
+![Final Pipeline](../static/ci-tutorial-go-containers/go_pipeline_final.png)
 
 With those changes saved, you are ready to lint, test, build and push your __go__ application to container registry(DockerHub).
 
@@ -523,7 +525,7 @@ With those changes saved, you are ready to lint, test, build and push your __go_
 
 As did earlier click __Run__ from the pipeline editor window,
 
-![Run Pipeline](static/ci-tutorial-go-containers/run_pipeline.png)
+![Run Pipeline](../static/ci-tutorial-go-containers/run_pipeline.png)
 
 Leaving everything to defaults namely __Git Branch__ and __Branch Name__ to be _main_, click __Run Pipeline__ to start the pipeline run.
 
@@ -531,7 +533,7 @@ Now you are ready to execute. Click "Run Pipeline".
 
 Once a successful run, head back to Docker Hub, and tag `latest` is there!
 
-![Success](static/ci-tutorial-go-containers/go_pipeline_success.png)
+![Success](../static/ci-tutorial-go-containers/go_pipeline_success.png)
 
 This is just the start of your Continuous Integration journey. It might seem like multiple steps to get your local build in the platform, but it unlocks the world of possibilities.
 

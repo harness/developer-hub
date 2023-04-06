@@ -1,7 +1,9 @@
 ---
-sidebar_position: 120
+title: Publish Allure Report
+sidebar_position: 2
 description: Create a CI pipeline that runs a Maven test and generates an Allure Report that you can view in the Harness UI.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, Allure]
+slug: /build-code/test/allure-report
 ---
 
 # Publish an Allure Report to the Artifacts tab 
