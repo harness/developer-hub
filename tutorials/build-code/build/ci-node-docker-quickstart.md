@@ -209,7 +209,7 @@ Now you are ready to run once saved.
 <TabItem value="Self-Managed Build Infrastructure">
 ```
 
-If you want to use your own self-managed build infrastructure, then you should install the [Kubernetes Delegate](../platform/install-delegate) in the Kubernetes cluster of your choice. 
+If you want to use your own self-managed build infrastructure, then you should install the [Kubernetes Delegate](/tutorials/platform/install-delegate) in the Kubernetes cluster of your choice. 
 
 <details>
 <summary>Install Delegate</summary>

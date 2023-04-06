@@ -80,79 +80,139 @@ export const DroneList: CardItem[] = [
 
 export const CIList: CardItem[] = [
   {
-    title: "Node and Docker CI Pipeline",
+    title: "Build on a Kubernetes Cluster",
     module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide walks you through building a NodeJS and
-        Docker Application in a CI Pipeline.
-      </>
-    ),
-    newDoc: false,
+    description:
+      "Build a Docker Image on a Kubernetes Cluster Build Farm.",
+    link: "/tutorials/build-code/build/kubernetes-build-farm",
     type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-node-docker-quickstart",
+    time: "30 min",
+    icon: "img/icon_ci.svg",
   },
   {
-    title: "Run LocalStack as a Service",
+    title: "Go Application",
     module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide shows how to run LocalStack as a Background
-        step in a CI Pipeline
-      </>
-    ),
-    newDoc: false,
+    description:
+      "Build a Docker Image of a Go Application.",
+    link: "/tutorials/build-code/build/go",
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-localstack-background-step",
+    icon: "img/icon_ci.svg",
   },
   {
-    title: "Run Sauce Connect Proxy as a Service",
+    title: "JAVA Application",
     module: MODULES.ci,
+    description:
+      "Build a Docker Image of JAVA HTTP Server Application.",
+    link: "/tutorials/build-code/build/java",
     icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide walks you through running Sauce Connect
-        Proxy as a Background step in a CI Pipeline
-      </>
-    ),
-    newDoc: false,
+    time: "15 min",
+    type: [docType.Documentation],
+  },
+  {
+    title: "NodeJS Application",
+    module: MODULES.ci,
+    description:
+      "Build a Docker Image of a NodeJS Application.",
+    link: "/tutorials/build-code/build/nodejs",
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-saucelabs-background-step",
-  },
-  {
-    title: "Build and publish a Java HTTP Server",
-    module: MODULES.ci,
     icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Build, test, and publish a Docker image for a Java HTTP server
-        application
-      </>
-    ),
-    newDoc: false,
+  },
+
+  {
+    title: "React Application",
+    module: MODULES.ci,
+    description:
+      "Build a Docker Image of a React Application.",
+    link: "/tutorials/build-code/build/react",
     type: [docType.Documentation],
     time: "20 min",
-    link: "/tutorials/build-code/ci-java-http-server",
+    icon: "img/icon_ci.svg",
   },
   {
-    title: "Build and push a container image to Amazon ECR",
-
+    title: "Rust Application",
     module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: <>Build, test, and publish a container image to AWS ECR.</>,
-    newDoc: false,
+    description:
+      "Build a Docker Image of a Rust Application.",
+    link: "/tutorials/build-code/build/rust",
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/ci-build-push-to-ecr",
+    icon: "img/icon_ci.svg",
+  },
+  {
+    title: "Signed Image",
+    module: MODULES.ci,
+    description:
+      "Build a Signed Docker Image of a Go Application.",
+    link: "/tutorials/build-code/build/signed-image",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+  },
+  {
+    title: "Amazon ECR",
+    module: MODULES.ci,
+    description:
+      "Publish an Image to an Amazon ECR Registry.",
+    link: "/tutorials/build-code/publish/amazon-ecr",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Google GAR",
+    module: MODULES.ci,
+    description:
+      "Publish an Image to a Google GAR Registry.",
+    link: "tutorials/build-code/publish/google-gar",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Code coverage with CodeCov",
+    module: MODULES.ci,
+    description:
+      "Wse a Run step to include CodeCov code coverage.",
+    link: "/tutorials/build-code/test/codecov",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
+  {
+    title: "Publish Allure Report",
+    module: MODULES.ci,
+    description:
+      "Publish an Allure Report.",
+    link: "/tutorials/build-code/test/allure-report",
+    type: [docType.Documentation],
+    time: "5 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Run LocalStack",
+    module: MODULES.ci,
+    description:
+      "Run LocalStack as a Background Step.",
+    link: "/tutorials/build-code/test/localstack",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Run Sauce Connect Proxy",
+    module: MODULES.ci,
+    description:
+      "Run Sauce Connect Proxy as a Background Step.",
+    link: "/tutorials/build-code/test/saucelabs-proxy",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
   },
   {
     title: "Get started with the fastest CI on the planet",
-
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: (
@@ -165,115 +225,5 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
-  },
-  {
-    title: "Build and test on a Kubernetes cluster build infrastructure",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Create a two-stage pipeline that builds a codebase and runs integration
-        tests on a Kubernetes cluster build infrastructure.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "30 min",
-    link: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
-  },
-  {
-    title: "Build Go application containers",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide describes building a Go container image in a
-        CI Pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-go-containers",
-  },
-  {
-    title: "Sign Application Containers",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide describes how to sign a container image
-        using a CI pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-container-signing",
-  },
-  {
-    title:
-      "Build, test, and publish a Docker image for a sample React application",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Learn how to build and test a sample React application in a CI pipeline.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "20 min",
-    link: "/tutorials/build-code/ci-react-quickstart",
-  },
-  {
-    title: "Push application containers to Google Artifact Registry",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This build automation guide describes how to build and push an
-        application container image to Google Artifact Registry using a CI
-        pipeline.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-push-to-gar",
-  },
-  {
-    title: "Publish an Allure report to the Artifacts tab",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This tutorial provides an example pipeline that builds a Java Maven
-        application and generates an Allure Report that you can view in the
-        Harness UI.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-publish-allure-report",
-  },
-  {
-    title: "Build and Publish a Rust application",
-
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        Learn how to build, test and publish multi architecture Rust application
-        container image.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/ci-tutorial-rust-container",
   },
 ];

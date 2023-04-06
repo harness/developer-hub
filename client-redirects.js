@@ -30,6 +30,60 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },    
     //===================================================================================
+
+     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
+     {
+      from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
+      to: "/tutorials/build-code/build/kubernetes-build-farm",
+    },
+    {
+      from: "/tutorials/build-code/ci-node-docker-quickstart",
+      to: "/tutorials/build-code/build/nodejs",
+    },
+    {
+      from: "/tutorials/build-code/ci-localstack-background-step",
+      to: "/tutorials/build-code/test/localstack",
+    },
+    {
+      from: "/tutorials/build-code/ci-saucelabs-background-step",
+      to: "/tutorials/build-code/test/saucelabs-proxy",
+    },
+    {
+      from: "/tutorials/build-code/ci-java-http-server",
+      to: "/tutorials/build-code/build/java",
+    },
+    {
+      from: "/tutorials/build-code/ci-build-push-to-ecr",
+      to: "/tutorials/build-code/publish/amazon-ecr",
+    },
+    {
+      from: "/tutorials/build-code/ci-tutorial-go-containers",
+      to: "/tutorials/build-code/build/go",
+    },
+    {
+      from: "/tutorials/build-code/ci-tutorial-container-signing",
+      to: "/tutorials/build-code/build/signed-image",
+    },
+    {
+      from: "/tutorials/build-code/ci-react-quickstart",
+      to: "/tutorials/build-code/build/react",
+    },
+    {
+      from: "/tutorials/build-code/ci-tutorial-push-to-gar",
+      to: "/tutorials/build-code/publish/google-gar",
+    },
+    {
+      from: "/tutorials/build-code/ci-publish-allure-report",
+      to: "/tutorials/build-code/test/allure-report",
+    },
+    {
+      from: "/tutorials/build-code/ci-tutorial-rust-container",
+      to: "/tutorials/build-code/build/rust",
+    },
+    {
+      from: "/tutorials/build-code/ci-tutorial-codecov-test",
+      to: "/tutorials/build-code/test/codecov",
+    },
     
     // CD Tutorial
 
@@ -363,5 +417,5 @@ module.exports = {
       from: "/docs/category/migrating-to-harness-ci",
       to: "/docs/category/migrate-to-harness-ci",
     },
-  ],
+],
 };
