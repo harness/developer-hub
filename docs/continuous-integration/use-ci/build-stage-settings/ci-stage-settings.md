@@ -14,213 +14,200 @@ To create, edit, and delete stages in CI pipelines, you need either Project Admi
 
 ## Stage Name
 
-The unique name for this Stage.
-
-## ID
-
-See [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
+Enter a name summarizing the stage's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
-Text string.
+Optional text string.
 
 ## Tags
 
-See [Tags Reference](../../../platform/20_References/tags-reference.md).
+For details, go to the [Tags Reference](../../../platform/20_References/tags-reference.md).
 
 ## Clone Codebase
 
-When you select this option, Harness automatically clones your codebase repository before executing the steps of this stage.
+When selected, Harness automatically clones the [codebase](../codebase-configuration/create-and-configure-a-codebase.md) before executing the steps in the stage.
 
-No special configuration is required.
-
-If you don't select the option here, you can select it in **Stage Details**.
+If not selected, Harness does not clone the codebase when initializing the stage.
 
 ## Configure Codebase
 
-These settings specify the codebase for the Stage. See [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md). Available when you add the first stage to a pipeline. After adding the stage, these are managed under the pipeline's **Codebase** settings.
+Specify the pipeline's default [codebase configuration](../codebase-configuration/create-and-configure-a-codebase.md). These settings are available when you add the first stage to a pipeline. After adding the first stage, these are managed under the pipeline's overall **Codebase** settings.
 
 ### Connector
 
-A Harness codebase connector that connects to the repository where the codebase is located.
+A Harness code repo connector that connects to the repository where the codebase is located. For information about code repo connectors, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
 
 ### Repository URL
 
-The full URL for the codebase.
+If not populated by default, enter the full URL to the code repository that you want the pipeline to use.
 
 ## Overview
 
-Settings found on the **Overview** tab after adding a stage to a pipeline.
+These settings are found on the **Overview** tab after adding a stage to a pipeline.
 
 ### Stage Details
 
-Repeats Name, Description, Tags, and Clone Codebase.
+You can edit the [Name](#stage-name), [Description](#description), and [Tags](#tags). You can also toggle the [Clone Codebase](#clone-codebase) setting for this stage.
 
 ### Shared Paths
 
-You can add Shared Paths to share data in folders outside the default workspace. For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Build Stage uses Maven, you can specify the shared path`/root/.m2` so that all Steps can access the repo.
+You can use **Shared Paths** to [share data across steps](../caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](../caching-ci-data/cache-intelligence.md) by specifying paths folders outside the default workspace.
 
-### Stage Variables
+When a pipeline runs, it creates a temporary volume called a *workspace*. During initialization, the stage clones your codebase to the root of the workspace and runs steps inside the root. The workspace persists for the lifetime of the stage and enables steps in that stage to communicate and share state information. The default shared working directory for a stage is `/harness`.
 
-Found under **Advanced** on the **Overview** tab.
+If you need to share additional volumes, you can add **Shared Paths**. For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Build stage uses Maven, you can specify `/root/.m2` as a **Shared Path** so that all steps in that stage can access that directory.
 
-Environment variables are available to all steps in the stage. For an example use case, go to [Build a Docker image without pushing](../build-and-upload-artifacts/build-and-upload-an-artifact.md#useful-techniques).
+### Advanced: Stage Variables
 
-<!--### Workspace
-
-Harness automatically creates a temporary volume, known as your workspace, and clones your codebase repository into this volume. The workspace is the current working directory for each step in your Pipeline.
-
-Enter a workspace volume, beginning with a forward slash, such as `/vol`. If you enter `/vol`, the workspace will be `/vol/harness`.
-
-The workspace is ephemeral: the Build creates the workspace when the Stage starts and destroys it when the Stage ends.
-
-Individual Steps can communicate and share state using the workspace filesystem. The workspace is a volume, so filesystem changes persist across the entire Stage.-->
+[Stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) are available to all steps in the stage. For an example use case, go to [Build a Docker image without pushing](../build-and-upload-artifacts/build-and-upload-an-artifact.md#useful-techniques).
 
 ## Infrastructure
 
-Settings found on the **Infrastructure** tab after adding a stage to a pipeline.
+These settings are found on the **Infrastructure** tab after adding a stage to a pipeline.
 
-Infrastructure is where the build is run. It is a build farm, such as a Kubernetes cluster. Infrastructure settings vary by [build infrastructure type](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+Infrastructure is where the build runs the steps in this stage. It is a build farm, such as a Kubernetes cluster. Infrastructure settings vary by [build infrastructure type](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
-<!-- either tabs or accordions -->
+The first stage requires you to configure a build infrastructure. In stages after the first, you can either **Propagate from an existing stage** or **Use a New Infrastructure**.
+
 <details>
 <summary>Cloud</summary>
 
-[Harness Cloud build infrastructure]()
+Use the **Cloud** infrastructure option for [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
-### Platform
+The following **Platform** settings are available:
 
-**Select the Operating System**
-**Select the Architecture**
+* **Select the Operating System:** Select the relevant OS.
+* **Select the Architecture:** Select the relevant architecture.
 
 </details>
 
 <details>
 <summary>Kubernetes</summary>
 
-[Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
+Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-### Platform
+The following **Platform** settings are available:
 
-**Select the Operating System**
+* **Select the Operating System:** Select the relevant OS.
+* **Kubernetes Cluster:** Select a [Kubernetes cluster connector]().
+* **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
-**Kubernetes Cluster**: A [Kubernetes cluster connector]()
-**Namespace**: The Kubernetes namespace in the target cluster to use.
+The following **Advanced** settings are available for the **Kubernetes** infrastructure:
 
-### Advanced
+### Volumes
 
-![](./static/ci-stage-settings-12.png)
+A list of the volumes you want to mount onto the pod running the stage.
 
-#### Volumes
+### Service Account Name
 
-A list of the volumes you want to mount onto the pod running the Stage.
+Specify a Kubernetes service account that you want step containers to use when communicating with the Kubernetes API server. Leave this field blank if you want to use the namespace's default service account. You must set this field in the following cases:
 
-#### Service Account Name
+* Your build infrastructure runs on EKS, you have an IAM role associated with the service account, *and* the stage has a step that uses a Harness AWS connector with IRSA. For more information, go to the AWS documentation on [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
+* Your Build stage has steps that communicate with any external services using a service account other than the default. For more information, go to the Kubernetes documentation on [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
+* Your Kubernetes cluster connector inherits authentication credentials from the Delegate.
 
-The Service Account for Step containers to use when communicating with the Kubernetes API server. Leave blank to use the default service account for the namespace.
+### Automount Service Account Token
 
-If your cluster connector inherits authentication credentials from the Delegate, then you must supply a Service Account Name.
+By default, this option is selected and Kubernetes mounts a token for the Service Account when it creates a pod, which enables the pod to communicate with the Kubernetes API server. When this option is not selected, the service account token is not mounted.
 
-#### Automount Service Account Token
+### Labels
 
-By default, Kubernetes mounts a token for the Service Account when it creates a pod, which enables the pod to communicate with the Kubernetes API server. When this option is disabled, the service account token will not get mounted.
+You can add Kubernetes labels, as key-value pairs, to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. You can find pods associated with specific stages, organizations, projects, pipelines, builds, or any custom labels you want to query, for example:
 
-#### Labels
+```
+kubectl get pods -l stageID=mycibuildstage
+```
 
-Key/Value pair that will be added to the Kubernetes pod YAM used to create the host pod for the Stage. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+For more information, go to the Kubernetes documentation on [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
 
-#### Annotations
+Custom label values must the following regex in order to be generated:
 
-Kubernetes Annotation to the pod YAML used to create the host pod for the Stage. See [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
+```
+^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$
+```
 
-#### Container Security Context
+Harness adds the following labels automatically:
+
+* `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
+* `stageName`: See `pipeline.stages.stage.name` in the Pipeline YAML.
+* `orgID`: See `pipeline.orgIdentifier` in the Pipeline YAML.
+* `projectID`: See `pipeline.projectIdentifier` in the Pipeline YAML.
+* `pipelineID`: See `pipeline.identifier` in the Pipeline YAML.
+* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`, for example:
+
+```
+https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline
+```
+
+### Annotations
+
+You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. For more information, go to the Kubernetes documentation on [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
+
+### Container Security Context
 
 Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) for the stage (pod) and steps (containers):
 
 * **Privileged:** Run all containers with the [`--privileged`](https://docs.docker.com/engine/reference/run/#runtime-privilege-and-linux-capabilities) flag enabled. This flag is disabled by default. You can override this setting in individual Run and Run Tests steps.
 * **Allow Privilege Escalation:** When enabled, a process can gain more privileges than its parent process. This setting determines whether the [`no_new_privs`](https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt) flag gets set on the container process.
-* **Add Capabilities:** The list of capabilities to add to each Step by default, in addition to the runtime defaults. This field corresponds to the [`capabilities: add`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
-* **Drop Capabilities:** The list of capabilities that must be dropped from each Step. This field corresponds to the [`capabilities: drop`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
-* **Run as Non-Root:** Run all Steps as a non-root User. To specify a default User Id for all containers, set the Run as User field.
-* **Read-Only Root Filesystem:** Run all Steps with a read-only root filesystem, with no writable layer.
-* **Run as User:** Run with this user Id for containers in the pod. A typical example of a Run as User value would be 1000. To override this default, set Run as User in individual Steps.
+* **Add Capabilities:** The list of capabilities to add to each step by default, in addition to the runtime defaults. This field corresponds to the [`capabilities: add`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
+* **Drop Capabilities:** The list of capabilities that must be dropped from each step. This field corresponds to the [`capabilities: drop`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
+* **Run as Non-Root:** Run all steps as a non-root user. To specify a default user ID for all containers, set the **Run as User** field.
+* **Read-Only Root Filesystem:** Run all steps with a read-only root filesystem that has no writable layer.
+* **Run as User:** Use the specified user ID, use as `1000`, for all containers in the pod. You can also set **Run as User** values in individual steps. If you set **Run as User** on a step, it overrides the stage's **Run as User** setting.
 
-#### Priority Class
+### Priority Class
 
-The [`PriorityClass`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) of the Stage pod in case resources run out on the host node. Specify a PriorityClass from your build infrastructure. You can also specify the predefined classes `system-cluster-critical` or `system-node-critical`, which ensure that the stage is always scheduled first.
+Set the stage pod's [`PriorityClass`](https://kubernetes.io/docs/concepts/scheduling-eviction/pod-priority-preemption/#priorityclass) in case resources run out on the host node. You can specify a `PriorityClass` from your build infrastructure or use the predefined classes `system-cluster-critical` or `system-node-critical`, which ensure that the stage is always scheduled first.
 
-If you leave this field blank, the `PriorityClass` will be the `globalDefault`, if your infrastructure has one defined, or `0`, which is lowest priority.
+If you leave this field blank, the `PriorityClass` is set to the `globalDefault`, if your infrastructure has one defined, or `0`, which is the lowest priority.
 
-#### Node Selector
+### Node Selector
 
-A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), which whitelist the set of candidate nodes based on your Stage pod requirements.
+A list of [`nodeSelectors`](https://kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector), which whitelist the set of candidate nodes based on your stage pod's requirements.
 
-#### Tolerations
+### Tolerations
 
 A list of [`tolerations`](https://kubernetes.io/docs/concepts/scheduling-eviction/taint-and-toleration/), which allow (but do not require) the pods to schedule onto nodes with matching taints.
 
-#### Host Path <!-- hostnames? -->
+### Host Names
 
-Mount a file or folder from the host node filesystem.
+A list of [HostAliases](https://kubernetes.io/docs/tasks/network/customize-hosts-file-for-pods/) to set pod-level override of hostname resolution.
 
-It is good practice to avoid hostPath volumes in most cases. See [hostPath](https://kubernetes.io/docs/concepts/storage/volumes/#hostpath) in the Kubernetes docs.
+### Init Timeout
 
-* **Mount Path:** The volume path for step containers.
-* **Path:** The volume path on the host node.
-* **Path Type:** To apply a precheck on the specified path before mounting the volume, enter a supported value, such as `FileOrCreate`. Leave blank to skip any prechecks before mounting.
+Set the timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
 
-#### Init Timeout
+If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 10 minutes.
 
-Timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
+### Override Image Connector
 
-#### Override Image Connector
-
-By default, Harness pulls certain images from public Docker Hub repos that are needed to run a build. You can override this by using a Connector that downloads these images from the Harness Container Image Registry instead. This option is useful when your default Delegate cannot access the public registry (due to security policies in your organization, for example, or if your infrastructure is running in a private cloud).
-
-To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](../../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
-
-
-<!-- #### Empty Directory
-
-Mount a new [`emptyDir`](https://kubernetes.io/docs/concepts/storage/volumes/#emptydir) volume that gets deleted when the Stage finishes execution.
-
-* **Mount Path:** The volume path for Step containers.
-* **Medium:** The storage medium for the volume. Leave blank to use the default medium for the host node, or enter `memory` to mount a tmpfs (RAM-backed filesystem) on the host node.
-* **Size:** Maximum memory that the volume can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. If not specified, the volume can use up to 50% of available memory on the host node.-->
-
-<!-- #### Persistent Volume Claim
-
-Mount a [Persistent Volume](https://kubernetes.io/docs/concepts/storage/persistent-volumes/) using a predefined Persistent Volume Claim.
-
-* **Mount Path:** The volume path for Step containers.
-* **Claim Name:** Name of a PVC defined in your build infrastructure.
-* **Read Only:** Mount the volume in read-only mode.-->
+By default, Harness pulls certain images from public DockerHub repos that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](../../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 </details>
 
 <details>
 <summary>Local</summary>
 
-[Local runner build infrastructure]()
+Use the **Local** infrastructure option for a [local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md).
 
-### Platform
+The following **Platform** settings are available:
 
-**Select the Operating System**
-**Select the Architecture**
+* **Select the Operating System:** Select the relevant OS.
+* **Select the Architecture:** Select the relevant architecture.
 
 </details>
 
 <details>
 <summary>VMs</summary>
 
-[Self-hosted cloud provider VM build infrastructures]()
+Use the **VMs** infrastructure option for [self-hosted cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
-### Platform
+The following **Platform** settings are available:
 
-**Select the Operating System**
-
-**Pool Name**
-**Override Image Connector**
+* **Select the Operating System:** Select the build infrastructure OS.
+* **Pool Name:** Enter the pool name as specified in the `pool.yml` setup file in your build infrastructure.
+* **Override Image Connector:** By default, Harness pulls certain images from public DockerHub repos that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](../../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 </details>
 

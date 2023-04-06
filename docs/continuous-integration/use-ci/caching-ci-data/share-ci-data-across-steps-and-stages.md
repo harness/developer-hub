@@ -20,12 +20,14 @@ To declare a Shared Path, open the Stage, go to the Overview tab, click **Shared
 
 ![](./static/share-ci-data-across-steps-and-stages-01.png)
 
+**Shared Paths** is also used for [Cache Intelligence](./cache-intelligence.md).
+
 ### Share Data Across Stages
 
-You can share data across Stages using AWS or GCS buckets:
+You can share data across Stages using [Cache Intelligence](./cache-intelligence.md) or AWS or GCS buckets:
 
-1. Save your cache using [Save Cache to S3](../../ci-technical-reference/save-cache-to-s-3-step-settings.md) or [Save Cache to GCS](../../ci-technical-reference/save-cache-to-gcs-step-settings.md).
-2. Retrieve your cache using [Restore Cache from S3](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md) or [Restore Cache from GCS](../../ci-technical-reference/restore-cache-from-gcs-settings.md).
+* Save your cache using [Save Cache to S3](../../ci-technical-reference/save-cache-to-s-3-step-settings.md) or [Save Cache to GCS](../../ci-technical-reference/save-cache-to-gcs-step-settings.md).
+* Retrieve your cache using [Restore Cache from S3](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md) or [Restore Cache from GCS](../../ci-technical-reference/restore-cache-from-gcs-settings.md).
 
 You cannot share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages. For complete end-to-end examples, go to the following:
 

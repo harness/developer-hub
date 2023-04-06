@@ -114,15 +114,16 @@ In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster c
 
 In **Namespace**, enter the Kubernetes namespace to use. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
-You may need to configure the following settings. Review the details of each setting to understand whether it is required for your configuration.
+You may need to configure the settings described below, as well as other advanced settings described in [CI Build stage settings](../build-stage-settings/ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 
 <details>
 <summary>Service Account Name</summary>
 
-Specify the Kubernetes service account name. You must set this field in the following cases:
+Specify a Kubernetes service account that you want step containers to use when communicating with the Kubernetes API server. Leave this field blank if you want to use the namespace's default service account. You must set this field in the following cases:
 
-* Your build infrastructure runs on EKS, you have an IAM role associated with the service account, and the stage has a step that uses an AWS Connector with IRSA. For more information, go to the AWS documentation on [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
+* Your build infrastructure runs on EKS, you have an IAM role associated with the service account, *and* the stage has a step that uses a Harness AWS connector with IRSA. For more information, go to the AWS documentation on [IAM Roles for Service Accounts](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html).
 * Your Build stage has steps that communicate with any external services using a service account other than the default. For more information, go to the Kubernetes documentation on [Configure Service Accounts for Pods](https://kubernetes.io/docs/tasks/configure-pod-container/configure-service-account/).
+* Your Kubernetes cluster connector inherits authentication credentials from the Delegate.
 
 </details>
 
@@ -136,28 +137,34 @@ You can override the default Linux user ID for containers running in the build i
 <details>
 <summary>Init Timeout</summary>
 
-If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the default init time window (10 minutes).
+If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 10 minutes.
 
 </details>
 
 <details>
-<summary>Add Annotations</summary>
+<summary>Annotations</summary>
 
-You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. For more information, go to [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/) in the Kubernetes docs.
+You can add Kubernetes annotations to the pods in your infrastructure. An annotation can be small or large, structured or unstructured, and can include characters not permitted by labels. For more information, go to the Kubernetes documentation on [Annotations](https://kubernetes.io/docs/concepts/overview/working-with-objects/annotations/).
 
 </details>
 
 <details>
-<summary>Add Labels</summary>
+<summary>Labels</summary>
 
-You can add Kubernetes labels (key-value pairs) to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. See [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/) in the Kubernetes docs.
-
-If a custom label value does not match the following regex, the label won't get generated:
-`^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$`Labels make it easy to find pods associated with specific Stages, Organizations, Projects, Pipelines, Builds, and any custom labels you want to add:
+You can add Kubernetes labels, as key-value pairs, to the pods in your infrastructure. Labels are useful for searching, organizing, and selecting objects with shared metadata. You can find pods associated with specific stages, organizations, projects, pipelines, builds, or any custom labels you want to query, for example:
 
 ```
 kubectl get pods -l stageID=mycibuildstage
 ```
+
+For more information, go to the Kubernetes documentation on [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/).
+
+Custom label values must the following regex in order to be generated:
+
+```
+^[a-z0-9A-Z][a-z0-9A-Z\\-_.]*[a-z0-9A-Z]$
+```
+
 Harness adds the following labels automatically:
 
 * `stageID`: See `pipeline.stages.stage.identifier` in the Pipeline YAML.
@@ -165,9 +172,11 @@ Harness adds the following labels automatically:
 * `orgID`: See `pipeline.orgIdentifier` in the Pipeline YAML.
 * `projectID`: See `pipeline.projectIdentifier` in the Pipeline YAML.
 * `pipelineID`: See `pipeline.identifier` in the Pipeline YAML.
-* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`:
+* `pipelineExecutionId`: To find this, go to a CI Build in the Harness UI. The `pipelineExecutionID` is near the end of the URL path, between `executions` and `/pipeline`, for example:
 
-`https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline`
+```
+https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproject/pipelines/mypipeline/executions/__PIPELINE_EXECUTION-ID__/pipeline
+```
 
 </details>
 
@@ -175,27 +184,28 @@ Harness adds the following labels automatically:
 
 The [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra) uses a Kubernetes cluster build infrastructure.
 
-For details about stage settings, go to [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
-
 :::
 
-## Configure As Code: YAML
+## YAML example
 
-If you're using the YAML editor, specify `type: KubernetesDirect` in `stage: spec: infrastructure:`, as well as the `connectorRef` and `namespace`, for example:
+Here's a YAML example of a stage configured to use a Kubernetes cluster build infrastructure.
 
 
 ```yaml
   stages:
     - stage:
-        ...
+        name: Build Test and Push
+        identifier: Build_Test_and_Push
+        description: ""
+        type: CI
         spec:
-          ...
+          cloneCodebase: true
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: account.mydelegate
-              namespace: default
-          ...
+              connectorRef: account.harnessk8s
+              namespace: harness-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
 ```
-
-Once the build infrastructure is set up, you can now add steps to build and push your artifacts.
