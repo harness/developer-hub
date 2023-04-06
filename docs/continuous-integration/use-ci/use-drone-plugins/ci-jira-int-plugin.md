@@ -8,25 +8,23 @@ Understanding how a feature is being released, when Jira issues have been deploy
 
 To integrate Harness CI and Jira, you need to:
 
-- [Install the app](#install-the-app)
+- [Install the Harness CI Jira app](#install-the-harness-ci-jira-app)
 - [Generate authentication credentials](#generate-authentication-credentials)
 - [Add the Plugin step](#add-the-plugin-step)
 - [Run your pipeline](#run-your-pipeline)
 
 This topic assumes you have a familiarity with [Harness CI concepts](../../ci-quickstarts/ci-concepts.md), [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md), and creating pipelines. If you haven't created a Harness CI pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
-## Install the app
+## Install the Harness CI Jira app
 
-You must have administrator privileges in your Jira instance to install the <!-- name --> app.
+You must have administrator privileges in your Jira instance to install the Harness CI Jira app. You need to do this only once per instance.
 
 1. In your Jira instance, select **Apps** and then select **Explore more apps**.
-2. Search for and add the <!-- name --> app.
+2. Search for and add the Harness CI Jira app.
 
 ## Generate authentication credentials
 
-You must generate authentication credentials to allow Harness to send information to Jira.
-
-Use one of the following methods to generate authentication credentials for the <!-- name --> app.
+Use one of the following methods to generate authentication credentials that your Harness CI pipeline will use to communicate with Jira.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -37,9 +35,9 @@ import TabItem from '@theme/TabItem';
   <TabItem value="connect_key" label="Token authentication" default>
 ```
 
-If permitted by your organization's Jira permissions configuration, users can generate their own authentication tokens for the <!--name --> app. Otherwise, an administrator must generate one or more tokens.
+If permitted by your organization's Jira permissions configuration, users can generate their own authentication tokens for the Harness CI Jira app. Otherwise, an administrator must generate one or more tokens.
 
-1. Go to the [app configuration page](https://confluence.atlassian.com/upm/configuring-apps-273875766.html) and select the <!-- name --> app.
+1. Go to the [app configuration page](https://confluence.atlassian.com/upm/configuring-apps-273875766.html) and select the Harness CI Jira app.
 2. Select **Configure** and generate an authentication token.
 3. Save the token as a [Harness text secret](/docs/platform/Security/add-use-text-secrets).
 
@@ -98,9 +96,7 @@ import TabItem2 from '@theme/TabItem';
 | `ENVIRONMENT_NAME` | Optional | Specify a deployment environment. Use this if you want Harness to update the **Deployment** field in Jira. If `ENVIRONMENT_NAME` is excluded, Harness updates the **Build** field in Jira. | `production` |
 | `STATE` | Optional | Specify a deployment or build state. This is useful if you only want an update to appear in Jira when, for example, builds are successful. | `success` |
 | `LOG_LEVEL` | Optional | Set the log level as either `debug` or `info`. Set to `debug` to print the response from Jira in the build logs. | `debug` |
-| `CLOUD_ID` | Optional | Atlassian Cloud ID. | <!-- Need purpose, required/optional, example -->  |
-| `PIPELINE` | Optional | The pipeline name. | <!-- Need purpose, required/optional, example -->  |
-| `LINK` | Optional | A link to the deployment. | <!-- Need purpose, required/optional, example -->  |
+| `CLOUD_ID` | Optional | Your site's Atlassian Cloud ID. | A Cloud ID is a 32-character UUID. |
 
 :::tip
 
@@ -136,10 +132,7 @@ Go to the pipeline where you want to add the Jira integration, and add a `Plugin
 | `ENVIRONMENT_NAME` | Optional | Specify a deployment environment. Use this if you want Harness to update the **Deployment** field in Jira. If `ENVIRONMENT_NAME` is excluded, Harness updates the **Build** field in Jira. | `production` |
 | `STATE` | Optional | Specify a deployment or build state. This is useful if you only want an update to appear in Jira when, for example, builds are successful. | `success` |
 | `LOG_LEVEL` | Optional | Set the log level as either `debug` or `info`. Set to `debug` to print the response from Jira in the build logs. | `debug` |
-| `CLOUD_ID` | Optional | Atlassian Cloud ID | <!-- Need purpose, required/optional, example -->  |
-| `PIPELINE` | Optional | The pipeline name. | <!-- Need purpose, required/optional, example -->  |
-| `LINK` | Optional | A link to the deployment. | <!-- Need purpose, required/optional, example -->  |
-
+| `CLOUD_ID` | Optional | Your site's Atlassian Cloud ID. | A Cloud ID is a 32-character UUID. |
 
 :::tip
 
