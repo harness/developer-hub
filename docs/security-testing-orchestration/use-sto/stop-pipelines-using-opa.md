@@ -1,6 +1,6 @@
 ---
-title: Use governance policies to stop pipelines automatically
-description: How to create and apply governance policies to stop pipelines automatically
+title: Use governance policies and security scan results to stop pipelines automatically 
+description: How to create and apply governance policies to stop pipelines automatically based on detected severities
 sidebar_position: 220
 ---
 
@@ -8,7 +8,7 @@ sidebar_position: 220
 This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/Policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
 :::
 
-Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues were found in the current scan but not in the baseline or the previous scan. For more information, go to:
+Whenever you run a scan, Harness collects output variables that capture the number of issues detected at each severity. These variables also track "new" issues were found in the current scan but not in the baseline or in the previous scan. For more information, go to:
 
 * [Output variables in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/output-variables)
 * [Severity scores and levels in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/severities)
@@ -68,7 +68,7 @@ A _policy set_ is a collection of one or more policies. You combine policies int
 
    3. Click **Apply** to add the policy to the set, then **Finish** to close the Policy Set wizard.
 
-   4. :exclamation: In the **Policy Sets** page, enable  **Enforced** for your new policy set.
+5. :exclamation: In the **Policy Sets** page, enable  **Enforced** for your new policy set.
 
       ![](./static/notif-opa-policy-set-enforced-yes.png)
 
