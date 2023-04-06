@@ -150,7 +150,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Publish an Image to a Google GAR Registry.",
-    link: "tutorials/build-code/publish/google-gar",
+    link: "/tutorials/build-code/publish/google-gar",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"

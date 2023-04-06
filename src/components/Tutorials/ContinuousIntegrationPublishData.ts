@@ -26,7 +26,7 @@ import { MODULES } from "../../constants";
           module: MODULES.ci,
           description:
             "Publish an Image to a Google GAR Registry.",
-          link: "tutorials/build-code/publish/google-gar",
+          link: "/tutorials/build-code/publish/google-gar",
         },
       ],
     },
