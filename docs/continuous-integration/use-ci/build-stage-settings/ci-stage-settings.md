@@ -70,8 +70,14 @@ Infrastructure is where the build runs the steps in this stage. It is a build fa
 
 The first stage requires you to configure a build infrastructure. In stages after the first, you can either **Propagate from an existing stage** or **Use a New Infrastructure**.
 
-<details>
-<summary>Cloud</summary>
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="cloud" label="Cloud" default>
+```
 
 Use the **Cloud** infrastructure option for [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
@@ -80,17 +86,17 @@ The following **Platform** settings are available:
 * **Select the Operating System:** Select the relevant OS.
 * **Select the Architecture:** Select the relevant architecture.
 
-</details>
-
-<details>
-<summary>Kubernetes</summary>
+```mdx-code-block
+  </TabItem>
+  <TabItem value="kubernetes" label="Kubernetes">
+```
 
 Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the relevant OS.
-* **Kubernetes Cluster:** Select a [Kubernetes cluster connector]().
+* **Kubernetes Cluster:** Select a [Kubernetes cluster connector](/docs/platform/Connectors/add-a-kubernetes-cluster-connector).
 * **Namespace:** Enter the Kubernetes namespace to use in the target cluster. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
 
 The following **Advanced** settings are available for the **Kubernetes** infrastructure:
@@ -184,10 +190,10 @@ If you use large images in your Build stage's steps, you might find that the ini
 
 By default, Harness pulls certain images from public DockerHub repos that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](../../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
-</details>
-
-<details>
-<summary>Local</summary>
+```mdx-code-block
+  </TabItem>
+  <TabItem value="local" label="Local">
+```
 
 Use the **Local** infrastructure option for a [local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md).
 
@@ -196,10 +202,10 @@ The following **Platform** settings are available:
 * **Select the Operating System:** Select the relevant OS.
 * **Select the Architecture:** Select the relevant architecture.
 
-</details>
-
-<details>
-<summary>VMs</summary>
+```mdx-code-block
+  </TabItem>
+  <TabItem value="vm" label="VMs">
+```
 
 Use the **VMs** infrastructure option for [self-hosted cloud provider VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
 
@@ -209,7 +215,10 @@ The following **Platform** settings are available:
 * **Pool Name:** Enter the pool name as specified in the `pool.yml` setup file in your build infrastructure.
 * **Override Image Connector:** By default, Harness pulls certain images from public DockerHub repos that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](../../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
-</details>
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Execution
 

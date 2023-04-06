@@ -83,7 +83,7 @@ All stages have an infrastructure definition, which represents the build infrast
 
 ### Shared Paths
 
-You can use **Shared Paths** in a stage to [share data across steps](./caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](../caching-ci-data/cache-intelligence.md).
+You can use **Shared Paths** in a stage to [share data across steps](./caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](./caching-ci-data/cache-intelligence.md).
 
 When a pipeline runs, it creates a temporary volume called a *workspace*. During initialization, the stage clones your codebase to the root of the workspace and runs steps inside the root. The workspace persists for the lifetime of the stage and enables steps in that stage to communicate and share state information. The default shared working directory for a stage is `/harness`.
 
