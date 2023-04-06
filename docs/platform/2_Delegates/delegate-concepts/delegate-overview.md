@@ -213,7 +213,7 @@ Access to a Delegate can also be restricted by downstream resource types:
 
 This means that if a role does not have these permissions the User with that role cannot use the related Delegates in these Pipelines, Secrets, or Connectors.
 
-### Third-party tools installed with the delegate
+### SDKs installed with the delegate
 
 See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
 
