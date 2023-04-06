@@ -80,7 +80,7 @@ In **Specify Kustomize Store**, select your Git provider, such as **GitHub**.
 
 If you already have a Git Connector that points to your Kustomization files, then select that. If not, click **New GitHub Connector**.
 
-The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](../../../platform/7_Connectors/Code-Repositories/connect-to-code-repo.md).
 
 Click **Continue**.
 
@@ -200,7 +200,7 @@ In **Specify Manifest Type**, select **Kustomize Patches**, and click **Continue
 
 ![](./static/use-kustomize-for-kubernetes-deployments-04.png)
 
-In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/Code-Repositories/connect-to-code-repo.md).
 
 The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 
@@ -351,7 +351,7 @@ spec:
 ```
 The secret output in the manifest will be asterisks (\*). The secret value is not displayed.
 
-See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+See [Add Text Secrets](../../../platform/6_Secrets/2-add-use-text-secrets.md).
 
 ## Option: Overlays and Multibases
 

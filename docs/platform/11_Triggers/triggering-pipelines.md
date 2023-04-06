@@ -57,7 +57,7 @@ You add triggers in the pipeline Studio, in **Triggers**.
 
 1. Enter a name for the Trigger.
 2. In **Payload Type**, select your Git provider. This setting is populated with the provider you selected automatically.
-3. Select or create a Connector to the Git account for the Trigger repo. See [Code Repo Connectors](/docs/category/code-repo-connectors).
+3. Select or create a Connector to the Git account for the Trigger repo. See [Code Repo Connectors](/docs/platform/7_Connectors/Code-Repositories/).
    
    * **If you set up an account-level Code Repo Connector:** in **Repository Name**, enter the name of the repo in the account in the Connector.
    * **If you set up a repo-level Code Repo Connector:** the repo name cannot be edited.

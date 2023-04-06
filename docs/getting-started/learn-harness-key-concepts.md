@@ -150,7 +150,7 @@ Harness includes built-in secrets management to store your encrypted secrets, su
 
 ![](./static/learn-harness-key-concepts-17.png)
 
-See [Harness Secrets Management Overview](../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness Secrets Management Overview](../platform/7_Connectors/Secret-Managers/1-harness-secret-manager-overview.md).
 
 ### YAML and Git
 
@@ -158,7 +158,7 @@ You can sync your Harness account, orgs, and projects with your Git repo to mana
 
 Harness can respond to Git events to trigger pipelines and pass in event data.
 
-See [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview/).
+See [Harness Git Experience Overview](https://developer.harness.io/docs/platform/Git-Experience/git-experience-overview).
 
 ### Recap
 

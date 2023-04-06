@@ -1,0 +1,13 @@
+{
+    "label": "Cloud Providers",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 2,
+    "link": {
+        "type": "generated-index",
+        "title": "Cloud Providers"
+    },
+    "customProps": {
+    }
+}

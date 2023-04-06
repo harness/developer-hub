@@ -121,7 +121,7 @@ We'll cover this option below.
    
    ![](./static/add-and-override-values-yaml-files-33.png)
 
-1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/Code-Repositories/connect-to-code-repo.md).
 5. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
     This process is described in [Kubernetes deployment tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md).
 1. Once you've selected a Connector, click **Continue**.

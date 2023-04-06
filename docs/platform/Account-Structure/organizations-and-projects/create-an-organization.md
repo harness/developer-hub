@@ -18,7 +18,7 @@ This topic describes how to create an org, invite Harness users to it as members
 
 ### Before you begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
+* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 
 ### Prerequisites
 
@@ -69,7 +69,7 @@ You can create Projects in the Org from the projects section of Harness, or from
 
 1. In Harness, go to **Home** and click **Projects**.
 2. Click **+Project**.
-3. Name the project, and select a color. The Id of the project is generated automatically. See [Harness Entity Reference](../20_References/harness-entity-reference.md).
+3. Name the project, and select a color. The Id of the project is generated automatically. See [Harness Entity Reference](../../20_References/harness-entity-reference.md).
 4. In **Organization**, select the org you created.
 5. Add a description and tags, and then click **Save and Continue**.
 6. In **Invite Collaborators**, type a member's name and select it.

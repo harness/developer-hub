@@ -104,7 +104,7 @@ The information is purged on a policy basis, with defaults set at "x" days.
 
 #### How can I track the actions of a user on the Harness platform? 
 
-Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](../../platform/audit-trail/audit-trail/). 
+Harness provides an audit log to the account admin where user actions on the chaos resources are logged with timestamps. To learn more, go to [audit trail](../../platform/Governance/15_Audit-Trail/audit-trail.md). 
 
 #### Can Harness perform security chaos tests in the users’ environments?
 

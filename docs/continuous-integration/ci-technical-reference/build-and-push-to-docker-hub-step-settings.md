@@ -24,7 +24,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ## Docker Connector
 
-The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
+The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](../../platform/7_Connectors/Cloud-Providers/references/docker-registry-connector-settings-reference.md).
 
 This step supports Docker connectors that use either anonymous or username and password authentication.
 

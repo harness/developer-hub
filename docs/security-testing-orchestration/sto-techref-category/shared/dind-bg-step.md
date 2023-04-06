@@ -7,7 +7,7 @@ In the **Execution** tab, do the following:
 1. Click **Add Step** and then choose **Background**.
 2. Configure the Background step as follows:
 2. Dependency Name = `dind`
-3. Container Registry = The Docker connector to download the DinD image. If you don't have one defined, go to [Docker connector settings reference](/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference).
+3. Container Registry = The Docker connector to download the DinD image. If you don't have one defined, go to [Docker connector settings reference](/docs/platform/7_Connectors/Cloud-Providers/references/docker-registry-connector-settings-reference).
 4. Image = `docker:dind`
 5. Under **Optional Configuration**, select the **Privileged** checkbox.
 

@@ -57,7 +57,7 @@ For more information about pipeline variables and other variables, go to [Built-
 ## Stop builds and generate notifications using governance policies
 
 :::note
-This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/Policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
+This workflow requires a basic knowledge of governance policies and how to implement them using [Harness Policy as Code](/docs/platform/Governance/14_Policy-as-code/harness-governance-overview) and [Open Policy Agent (OPA)](https://www.openpolicyagent.org/).
 :::
 
 In this workflow, you create a simple OPA policy for the pipeline: If the scan detected any NEW_CRITICAL or NEW_HIGH severities, exit the build with an error and send an email. _New-severity_ issues are issues that were found in the scanned target but not the baseline —  or, if the target has no baseline, the previous scan. 

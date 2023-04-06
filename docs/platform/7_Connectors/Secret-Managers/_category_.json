@@ -1,0 +1,13 @@
+{
+    "label": "Secret Managers ",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 8,
+    "link": {
+        "type": "generated-index",
+        "title": "Secret Managers "
+    },
+    "customProps": {
+    }
+}

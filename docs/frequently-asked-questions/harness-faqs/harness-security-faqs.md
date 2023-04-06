@@ -61,9 +61,9 @@ The set of security features that Harness provides includes the following featur
 * [Password policies](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-policies)
 * [Two-factor authentication](../../platform/3_Authentication/2-two-factor-authentication.md)
 * [Single sign-on (SSO)](../../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview)
-* [Text encryption](../../platform/6_Security/2-add-use-text-secrets.md)
-* [File encryption](../../platform/6_Security/3-add-file-secrets.md)
-* [Auditing](../../platform/15_Audit-Trail/audit-trail.md)
+* [Text encryption](../../platform/6_Secrets/2-add-use-text-secrets.md)
+* [File encryption](../../platform/6_Secrets/3-add-file-secrets.md)
+* [Auditing](../../platform/Governance/15_Audit-Trail/audit-trail.md)
 
 #### Are delegate communications secure?
 
@@ -164,17 +164,17 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 #### How are secrets managed in Harness?
 
-See [Harness secrets management overview](../../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness secrets management overview](../../platform/7_Connectors/Secret-Managers/1-harness-secret-manager-overview.md).
 
 Google Cloud Key Management Service is the default Secrets Manager in Harness.
 
 You can use your own secrets manager with Harness. Harness integrates with all of the common secret managers:
 
-* [Add Google KMS as a Harness secrets manager](../../platform/6_Security/10-add-google-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](../../platform/6_Security/6-add-an-aws-secret-manager.md)
-* [Add an AWS KMS Secrets Manager](../../platform/6_Security/7-add-an-aws-kms-secrets-manager.md)
-* [Add an Azure Key Vault Secrets Manager](../../platform/6_Security/8-azure-key-vault.md)
-* [Add a HashiCorp Vault Secrets Manager](../../platform/6_Security/12-add-hashicorp-vault.md)
+* [Add Google KMS as a Harness secrets manager](../../platform/7_Connectors/Secret-Managers/10-add-google-kms-secrets-manager.md)
+* [Add an AWS Secret Manager](../../platform/7_Connectors/Secret-Managers//6-add-an-aws-secret-manager.md)
+* [Add an AWS KMS Secrets Manager](../../platform/7_Connectors/Secret-Managers/7-add-an-aws-kms-secrets-manager.md)
+* [Add an Azure Key Vault Secrets Manager](../../platform/7_Connectors/Secret-Managers/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secrets Manager](../../platform/7_Connectors/Secret-Managers/12-add-hashicorp-vault.md)
 
 This diagram shows how Harness handles secrets:
 
@@ -184,9 +184,9 @@ This diagram shows how Harness handles secrets:
 
 Harness supports:
 
-* [Text encryption](../../platform/6_Security/2-add-use-text-secrets.md) (for strings such as passwords)
-* [File encryption](../../platform/6_Security/3-add-file-secrets.md) (for files such as configuration files)
-* [SSH connection credentials](../../platform/6_Security/4-add-use-ssh-secrets.md)
+* [Text encryption](../../platform/6_Secrets/2-add-use-text-secrets.md) (for strings such as passwords)
+* [File encryption](../../platform/6_Secrets/3-add-file-secrets.md) (for files such as configuration files)
+* [SSH connection credentials](../../platform/6_Secrets/4-add-use-ssh-secrets.md)
 
 #### Where can I use a secret?
 
@@ -202,8 +202,8 @@ In Harness Secrets Management, you pick a type of secret, and then enter the sec
 
 See:
 
-* [Use encrypted text secrets](../../platform/6_Security/2-add-use-text-secrets.md)
-* [Use encrypted file secrets](../../platform/6_Security/3-add-file-secrets.md)
+* [Use encrypted text secrets](../../platform/6_Secrets/2-add-use-text-secrets.md)
+* [Use encrypted file secrets](../../platform/6_Secrets/3-add-file-secrets.md)
 
 #### How do I use a secret?
 
@@ -221,8 +221,8 @@ If your secret is scoped at the Account level, you can refer it using the expres
 
 See:
 
-* [Use encrypted text secrets](../../platform/6_Security/2-add-use-text-secrets.md)
-* [Use encrypted file secrets](../../platform/6_Security/3-add-file-secrets.md)
+* [Use encrypted text secrets](../../platform/6_Secrets/2-add-use-text-secrets.md)
+* [Use encrypted file secrets](../../platform/6_Secrets/3-add-file-secrets.md)
 
 #### Are my secrets exposed in logs?
 
@@ -240,7 +240,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Yes. Harness provides auditing of events for Harness resources within your account. The Audit Trail enables you to track and review all events in one place.
 
-See [Audit trail](../../platform/15_Audit-Trail/audit-trail.md).
+See [Audit trail](../../platform/Governance/15_Audit-Trail/audit-trail.md).
 
 #### What can I see on the audit trail?
 
@@ -272,7 +272,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Yes. Harness Pipeline Governance feature enables you to measure how conformant your Pipelines are with your regulatory and operations standards.
 
-See [Pipeline governance](../../platform/14_Policy-as-code/harness-governance-overview.md).
+See [Pipeline governance](../../platform/Governance/14_Policy-as-code/harness-governance-overview.md).
 
 #### How do I set up governance?
 

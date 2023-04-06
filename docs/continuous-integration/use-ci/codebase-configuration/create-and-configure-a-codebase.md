@@ -56,11 +56,11 @@ In this step, you'll create the codebase for a new pipeline in Harness CI.
 
 The CodeCommit, Bitbucket, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git Connector can connect with any provider using Basic authentication over HTTPS.
 
-* [AWS CodeCommit Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md) <!-- This link is wrong, and this list is missing Azure Repos connector. -->
-* [Bitbucket Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
-* [Git Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md)
-* [GitHub Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-hub-connector-settings-reference.md)
-* [GitLab Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md)
+* [AWS CodeCommit Connector Settings Reference](../../../platform/7_Connectors/Cloud-Providers/references/aws-connector-settings-reference.md) <!-- This link is wrong, and this list is missing Azure Repos connector. -->
+* [Bitbucket Connector Settings Reference](../../../platform/7_Connectors/Code-Repositories/references/bitbucket-connector-settings-reference.md)
+* [Git Connector Settings Reference](../../../platform/7_Connectors/Code-Repositories/references/git-connector-settings-reference.md)
+* [GitHub Connector Settings Reference](../../../platform/7_Connectors/Code-Repositories/references/git-hub-connector-settings-reference.md)
+* [GitLab Connector Settings Reference](../../../platform/7_Connectors/Code-Repositories/references/git-lab-connector-settings-reference.md)
 
 After you set up and configure the Connector, Harness will use the configured repo to clone your source code so that the pipeline can perform actions upon it.
 

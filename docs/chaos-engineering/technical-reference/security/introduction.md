@@ -59,12 +59,12 @@ The permissions listed an be tuned for further minimization based on environment
 ### User authentication
 
 The Harness platform is fully integrated with several public OAuth providers with support for two-factor authentication and domain-whitelisting. 
-Refer to the [authentication overview](../../../platform/authentication/authentication-overview/) to learn more. 
+Refer to the [authentication overview](../../../platform/3_Authentication/1-authentication-overview) to learn more. 
 
 
 ### User authorization and role-based access control 
 
-The chaos module leverages the [access control](../../../platform/Role-Based-Access-Control/rbac-in-harness) capabilities of Harness to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.  
+The chaos module leverages the [access control](../../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md) capabilities of Harness to restrict user action on chaos resources, which adhere to the same account-organization-project identification as the rest of the platform resources.  
 
 The foundational elements of the chaos engineering process, chaos infrastructure, chaos hubs, chaos experiments, and chaos gamedays are registered as the module resources, with permissions exercised against them. These resources are scoped at the project level.
 

@@ -23,7 +23,7 @@ This topic is only meant to demonstrate how Pipeline governance works, so we use
 ### Before You Begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-* Review [Harness Governance Overview](../../platform/14_Policy-as-code/harness-governance-overview.md)
+* Review [Harness Governance Overview](../../platform/Governance/14_Policy-as-code/harness-governance-overview.md)
 
 #### How does Harness use OPA?
 
@@ -301,5 +301,5 @@ In this tutorial, you:
 
 ### See Also
 
-* [Harness Governance Overview](../../platform/14_Policy-as-code/harness-governance-overview.md)
-* [Harness Governance Quickstart](../../platform/14_Policy-as-code/harness-governance-quickstart.md)
+* [Harness Governance Overview](../../platform/Governance/14_Policy-as-code/harness-governance-overview.md)
+* [Harness Governance Quickstart](../../platform/Governance/14_Policy-as-code/harness-governance-quickstart.md)

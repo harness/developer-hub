@@ -22,7 +22,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ## Connector
 
-The connector to the source control provider for the code repo you want the step to clone. For more information, go to [Code repo connectors](https://developer.harness.io/docs/category/code-repo-connectors).
+The connector to the source control provider for the code repo you want the step to clone. For more information, go to [Code repo connectors](/docs/platform/7_Connectors/Code-Repositories/).
 
 ## Repository Name
 

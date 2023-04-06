@@ -52,7 +52,7 @@ Select **Docker Registry**, and click **Continue**.
 
 The **Docker Registry** settings appear.
 
-Select a [Docker Registry Connector](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md) or create a new one.
+Select a [Docker Registry Connector](../../../platform/7_Connectors/Cloud-Providers/references/docker-registry-connector-settings-reference.md) or create a new one.
 
 Click **Continue**.
 

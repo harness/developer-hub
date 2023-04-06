@@ -111,7 +111,7 @@ You know how to implement Pipelines when scanners detect security issues, and ho
 
 #### Add Governance Policies
 
-You can use the [Harness Policy Engine](../../platform/14_Policy-as-code/harness-governance-overview.md) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you could create a rule like the following to ensure that all Pipelines include a Security Stage.
+You can use the [Harness Policy Engine](../../platform/Governance/14_Policy-as-code/harness-governance-overview.md) to create policies based on the [Open Policy Agent (OPA)](https://www.openpolicyagent.org/) standard. For example, you could create a rule like the following to ensure that all Pipelines include a Security Stage.
 
 
 ```

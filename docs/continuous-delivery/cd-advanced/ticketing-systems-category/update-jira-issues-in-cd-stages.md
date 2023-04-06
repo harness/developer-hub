@@ -16,7 +16,7 @@ You can also [create Jira Issues](create-jira-issues-in-cd-stages.md) and add [J
 
 ## Before You Begin
 
-* [Connect to Jira](../../../platform/7_Connectors/connect-to-jira.md)
+* [Connect to Jira](../../../platform/7_Connectors/Ticketing-Systems/connect-to-jira.md)
 * [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md)
 
 ## Visual Summary
@@ -36,7 +36,7 @@ The following video shows you how to use the Jira Create, Jira Update, and Jira 
 
 3. In **Name**, enter a name that describes the step.
 4. In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [Failure Strategy](../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
-5. In **Jira Connector**, create or select the [Jira Connector](../../../platform/7_Connectors/connect-to-jira.md) to use.
+5. In **Jira Connector**, create or select the [Jira Connector](../../../platform/7_Connectors/Ticketing-Systems/connect-to-jira.md) to use.
 6. In **Issue Key**, enter the Jira issue key of the issue you want to update.
 
 ### Use an expression in issue key

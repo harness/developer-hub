@@ -20,8 +20,8 @@
 ||Configure a DockerHub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/Connectors/connect-to-harness-container-image-registry-using-docker-connector)|
 ||Understand Harness Delegate Role For The CI Capability|[CI pipeline basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics)|
 ||Describe Pipeline Studio Vs Yaml Structure|-|
-||Secrets Management - Describe Possible Usages For Harness CI|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/security/add-use-text-secrets/)|
-||Secrets Management - How To Retrieve And Render Secrets Using Harness Expressions|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/security/add-use-text-secrets/)|
+||Secrets Management - Describe Possible Usages For Harness CI|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/6_Secrets/2-add-use-text-secrets/)|
+||Secrets Management - How To Retrieve And Render Secrets Using Harness Expressions|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/../../../../../../../../docs/platform/6_Secrets/2-add-use-text-secrets/)|
 ||Describe Harness Variables And Expressions|[Built-in and Custom Harness Variables Reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)|
 ||Configure And Use Variables And Expressions|[Built-in CI codebase variables reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)|
 ||Describe Built-In Variables|[Built-in and Custom Harness Variables Reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)|

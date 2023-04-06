@@ -41,9 +41,9 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* You can now use [variable expressions](/docs/platform/references/runtime-inputs/#expressions) for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused a field validation error. (CI-7071, ZD-40277)
+* You can now use [variable expressions](/docs/platform/20_References/runtime-inputs.md#expressions) for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused a field validation error. (CI-7071, ZD-40277)
 * If a CI pipeline fails at the **Initialize** step due to an [Azure Repos connector](/docs/platform/connectors/connect-to-a-azure-repo/) having an on-premises **Azure Repos Project URL**, the error message clearly describes the root cause. This failure occurs because CI doesn't support Azure DevOps Server Repositories (also known as _on-premises Azure Repos_). (CI-6322)
-* If you configure a [code repo connector](/docs/category/code-repo-connectors) where the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL used to test the connection, rather than the account URL. (CI-4398)
+* If you configure a [code repo connector]((/docs/platform/7_Connectors/Code-Repositories/)) where the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL used to test the connection, rather than the account URL. (CI-4398)
 * Attempting to manually clone a PR through a Git connector that doesn't have API access enabled now returns an error message indicating that the connector doesn't have the required API access. (CI-7192)
 * The deprecated Harness images warning banner no longer appears when there are no deprecated images in use. (CI-7335)
 
@@ -53,7 +53,7 @@ This release does not include early access features.
 
 * The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
 * You can now call pipeline-level variables in steps as environment variables. This is an extension of existing functionality that allows you to call stage-level variables in steps as environment variables. (CI-6709, ZD-39203)
-* When configuring [SCM connectors](/docs/category/code-repo-connectors):
+* When configuring [SCM connectors]((/docs/platform/7_Connectors/Code-Repositories/)):
   * Failed connection tests now return more detailed error messages. (CI-7089)
   * The placeholder text in the **Repository URL** field shows a complete repo URL example. (CI-5750)
 

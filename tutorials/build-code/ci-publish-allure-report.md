@@ -43,19 +43,19 @@ To run this pipeline in your project, do the following.
 
   a. [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) as described in the Google Cloud documentation. 
 
-  b. Create a [Harness secret](/docs/platform/security/add-file-secrets) for your key. 
+  b. Create a [Harness secret](/docs/platform/6_Secrets/3-add-file-secrets) for your key. 
 
-1. Create the following connectors if you don't have them:
+2. Create the following connectors if you don't have them:
 
-   -  [GitHub Connector](/docs/platform/connectors/add-a-git-hub-connector)
-   - [GCP Connector](/docs/platform/connectors/connect-to-google-cloud-platform-gcp) 
+   -  [GitHub Connector](/docs/platform/7_Connectors/Code-Repositories/add-a-git-hub-connector)
+   - [GCP Connector](/docs/platform/7_Connectors/Cloud-Providers/connect-to-google-cloud-platform-gcp) 
       Use the file secret you just created for the GCP credentials.
-   - [Docker Hub Connector](/docs/platform/connectors/ref-cloud-providers/docker-registry-connector-settings-reference)  
-      You can choose to download Harness images from the [Harness Image Registry](/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector) instead of Docker Hub.
+   - [Docker Hub Connector](/docs/platform/7_Connectors/Cloud-Providers/references/docker-registry-connector-settings-reference)  
+      You can choose to download Harness images from the [Harness Image Registry](/docs/platform/7_Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead of Docker Hub.
 
-2.  Create a [publicly available bucket in GCS](https://cloud.google.com/storage/docs/access-control/making-data-public#objects) to store the report. 
+3.  Create a [publicly available bucket in GCS](https://cloud.google.com/storage/docs/access-control/making-data-public#objects) to store the report. 
 
-3.  Update the report URL with your GCS bucket name. See `YOUR_GCS_BUCKET_NAME` in steps 4 and 5 in the YAML pipeline below.
+4.  Update the report URL with your GCS bucket name. See `YOUR_GCS_BUCKET_NAME` in steps 4 and 5 in the YAML pipeline below.
 
 ### Pipeline template
 

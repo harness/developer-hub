@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/4-add-use-ssh-secrets.md).You can add SSH keys for use in connecting to remote servers, such as an AWS EC2 instance.
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Secrets/4-add-use-ssh-secrets.md).You can add SSH keys for use in connecting to remote servers, such as an AWS EC2 instance.
 
 In this topic:
 

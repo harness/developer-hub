@@ -68,7 +68,7 @@ You can create a Stage Template from your Account, Org or Project. This topic ex
 4. In **Name**, enter a name for the Template.
 5. In **Version Label**, enter a version for the Template.
 6. Click **Remote**.
-7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
+7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](/docs/platform/7_Connectors/Code-Repositories/).
 8. In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here. Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.
 9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here.Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.
 10. Harness auto-populates the **YAML Path**. You can change this path and the file name.

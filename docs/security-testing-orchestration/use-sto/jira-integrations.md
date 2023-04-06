@@ -31,7 +31,7 @@ This integration has a separate setup path that is unrelated to other Jira-relat
 
 2. Create a Jira connector as described in [Connect to Jira](/docs/platform/connectors/connect-to-jira/). Note the following:
     * Create your connector at the Account level.
-    * Create a [text secret](/docs/platform/security/add-use-text-secrets/) for your Atlassian API key. You must use the Harness Secret Manager to store this key. Don't use an external secret store, such as Vault.
+    * Create a [text secret](/docs/platform/6_Secrets/2-add-use-text-secrets) for your Atlassian API key. You must use the Harness Secret Manager to store this key. Don't use an external secret store, such as Vault.
 
 3. Go to the **Account Settings** &gt; **Tickets** page and select the following: 
    

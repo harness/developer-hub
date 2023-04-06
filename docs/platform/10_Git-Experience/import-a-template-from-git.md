@@ -85,7 +85,7 @@ Create the branch in your repository before entering it in **Git Branch**. Harn
 :::
 
 
-10. Enter the **YAML Path** from where you want to import the Template. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
+1.  Enter the **YAML Path** from where you want to import the Template.
 
    ![](./static/import-a-template-from-git-27.png)
 

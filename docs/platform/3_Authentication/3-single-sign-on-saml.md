@@ -501,7 +501,7 @@ To get this information, perform the following steps:
 3. In your Azure account, go to **App registrations**. Click **Certificates and Secrets**.
 4. Click New Client Secret.
 5. Add a description and click Add.
-6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, see [Use Encrypted text Secrets](../6_Security/2-add-use-text-secrets.md).
+6. Make sure to copy this secret and save it as an encrypted text secret. For detailed steps to create an encrypted text in Harness, see [Use Encrypted text Secrets](../6_Secrets/2-add-use-text-secrets.md).
 7. Select the above secret reference in the Client Secret field in your Harness account.
    
    ![](./static/single-sign-on-saml-100.png)

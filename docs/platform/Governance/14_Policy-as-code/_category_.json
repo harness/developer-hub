@@ -1,0 +1,15 @@
+{
+    "label": "Policy as Code",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 20,
+    "link": {
+        "type": "generated-index",
+        "title": "Policy as Code"
+    },
+    "customProps": {
+        
+        "helpdocs_category_id": "zoc8fpiifm"
+    }
+}

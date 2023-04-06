@@ -42,7 +42,7 @@ Whenever you regenerate a secure token, any preceding tokens become invalid. Upd
 
 Select the Code Repo Connector that connects to your Git provider account.
 
-See [Code Repo Connectors Tech Ref](/docs/category/code-repo-connectors).
+See [Code Repo Connectors Tech Ref](/docs/platform/7_Connectors/Code-Repositories/).
 
 :::note
 

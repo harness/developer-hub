@@ -1,0 +1,14 @@
+{
+    "label": "References",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 10,
+    "link": {
+        "type": "generated-index",
+        "title": "References"
+    },
+    "customProps": {
+        
+    }
+}

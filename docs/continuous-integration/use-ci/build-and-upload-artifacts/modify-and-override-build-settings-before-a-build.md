@@ -15,10 +15,10 @@ If you want to override your **Secrets** in `settings.xml` file at Pipeline exec
 
 ### Before You Begin
 
-* [Harness Secret Manager Overview](../../../platform/6_Security/1-harness-secret-manager-overview.md)
-* [Add Secrets Manager](../../../platform/6_Security/5-add-secrets-manager.md)
-* [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
-* [Add SSH Secrets](../../../platform/6_Security/4-add-use-ssh-secrets.md)
+* [Harness Secret Manager Overview](../../../platform/7_Connectors/Secret-Managers/1-harness-secret-manager-overview.md)
+* [Add Secrets Manager](../../../platform/7_Connectors/Secret-Managers/5-add-secrets-manager.md)
+* [Add Text Secrets](../../../platform/6_Secrets/2-add-use-text-secrets.md)
+* [Add SSH Secrets](../../../platform/6_Secrets/4-add-use-ssh-secrets.md)
 
 ### Step 1: Create a Secret at Account level
 

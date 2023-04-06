@@ -393,7 +393,7 @@ Now that you have configured the Service, we can define the target for our deplo
 7. Enter the following and click **Save and Continue**.
 	* **Name:** `AWS Serverless`.
 	* **Credentials:** `AWS Access Key`. Enter the AWS access key for the AWS User you created with the required policies in [Before You Begin](#before-you-begin).
-	* Enter the secret key as a [Harness Text Secret](../../../platform/6_Security/2-add-use-text-secrets.md). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
+	* Enter the secret key as a [Harness Text Secret](../../../platform/6_Secrets/2-add-use-text-secrets.md). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
 	* **Delegates Setup:** `Only use Delegates with all of the following tags`.
 	* Select the Delegate you added earlier in this quickstart.
 1. The **Connection Test** verifies the connection. Click **Finish**.
@@ -526,7 +526,7 @@ plugins:
 
 See:
 
-* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+* [Add and Reference Text Secrets](../../../platform/6_Secrets/2-add-use-text-secrets.md)
 * [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
 * [Run Pipelines using Input Sets and Overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
 
@@ -538,7 +538,7 @@ Harness can fetch your YAML files and packaged code from the following stores:
   - You can store the serverless.yml and the artifact code in AWS S3, including in the same bucket.
   - You can use the .Zip format to grab the serverless.yaml and the packaged code that has been bundled in .zip and published in S3.
   - Harness will extrapolate the serverless.yaml file and use that for deployment.
-  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](../../../platform/connectors/../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md#aws-s3).
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](../../../platform/7_Connectors/Cloud-Providers/references/aws-connector-settings-reference.md#aws-s3).
 - Git providers.
 
 ### Rollback timestamps

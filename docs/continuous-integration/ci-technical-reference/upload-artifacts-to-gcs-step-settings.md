@@ -22,7 +22,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ## GCP Connector
 
-The Harness connector for the GCP account where you want to upload the artifact. For more information, go to [Google Cloud Platform (GCP) connector settings reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md). This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+The Harness connector for the GCP account where you want to upload the artifact. For more information, go to [Google Cloud Platform (GCP) connector settings reference](../../platform/7_Connectors/Cloud-Providers/references/gcs-connector-settings-reference.md). This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
 ## Bucket
 

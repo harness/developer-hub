@@ -1,14 +1,14 @@
 ---
 title: Create a Connector using YAML
 description: To solve [problem], [general description of How-to solution]. In this topic --  Before you begin. Visual Summary. Step 1 --  Title. Step 2 --  Title. Next steps. Before you begin. Your target environment must…
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: m0awmzipdp
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness [Connectors](/docs/category/connectors) integrate Harness with your cloud platforms, codebase and artifact repos, and collaboration and monitoring tools.
+Harness [Connectors](https://developer.harness.io/docs/category/connectors) integrate Harness with your cloud platforms, codebase and artifact repos, and collaboration and monitoring tools.
 
 You can add Connectors using the Harness GUI or via YAML using the Harness YAML Builder.
 

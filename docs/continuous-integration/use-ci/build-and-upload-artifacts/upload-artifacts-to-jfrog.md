@@ -38,7 +38,7 @@ Add an **Upload Artifacts to JFrog Artifactory** step.
 
 To configure this step, select the Harness Artifactory connector, enter the source file/path, and the target path. For more information about these settings, go to the [Upload Artifacts to JFrog Artifactory step settings reference](../../ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md).
 
-The JFrog Account associated with the connector must have read/write permission. For more information, go to the [Artifactory connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+The JFrog Account associated with the connector must have read/write permission. For more information, go to the [Artifactory connector settings reference](../../../platform/7_Connectors/Artifact-Repositories/references/artifactory-connector-settings-reference.md).
 
 ![](./static/upload-artifacts-to-jfrog-519.png)
 

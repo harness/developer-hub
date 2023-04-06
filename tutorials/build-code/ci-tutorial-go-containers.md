@@ -508,7 +508,7 @@ KO_DOCKER_REPO: docker.io/$DOCKER_HUB_USERNAME/fruits-api
 :::note
 
 - As marked ensure the `DOCKER_HUB_PASSWORD` is of type __Expression__
-- `secrets.getValue` is an expression that allows to get the value from the secret `docker_hub_password`, that was created earlier in the tutorial. Check the [docs](https://developer.harness.io/docs/platform/security/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier) for more info
+- `secrets.getValue` is an expression that allows to get the value from the secret `docker_hub_password`, that was created earlier in the tutorial. Check the [docs](https://developer.harness.io/docs/platform/6_Secrets/2-add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier) for more info
 - All `$DOCKER_HUB_USERNAME` references should your Docker Hub Username
 
 :::

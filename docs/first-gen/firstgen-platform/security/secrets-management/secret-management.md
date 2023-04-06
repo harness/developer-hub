@@ -8,19 +8,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/6_Security/1-harness-secret-manager-overview.md).Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness applications. Some key points about Secrets Management:
+This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../platform/7_Connectors/Secret-Managers/1-harness-secret-manager-overview.md).Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness applications. Some key points about Secrets Management:
 
 * Secrets are always accessed/decrypted at the time when they are needed, and at no time they are stored unencrypted.
 * Harness Manager does not have access to your key management system, and only the Harness Delegate, which sits in your private network, has access to it. Harness never makes secrets management accessible publicly. This adds an important layer of security.
 
 In this topic:
 
-* [Secrets How-tos](#secrets_how_tos)
-* [Before You Begin](#before_you_begin)
-* [Visual Summary](#visual_summary)
-* [Harness Secrets Management Process Overview](#harness_secrets_management_process_overview)
-* [Scoping Secrets Usage](#scoping_secrets_usage)
-* [Secrets in Harness Community and On-Prem Accounts](#secrets_in_harness_community_and_on_prem_accounts)
+* [Secrets How-tos](#secrets-how-tos)
+* [Before You Begin](#before-you-begin)
+* [Visual Summary](#visual-summary)
+* [Harness Secrets Management Process Overview](#harness-secrets-management-process-overview)
+* [Scoping Secrets Usage](#scoping-secrets-usage)
+* [Secrets in Harness Community and On-Prem Accounts](#secrets-in-harness-community-and-on-prem-accounts)
 
 ### Secrets How-tos
 

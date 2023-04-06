@@ -1,1 +1,14 @@
-{"label": "Pipelines", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Pipelines"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "kncngmy17o"}}
+{
+    "label": "Pipelines",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 12,
+    "link": {
+        "type": "generated-index",
+        "title": "Pipelines"
+    },
+    "customProps": {
+        "helpdocs_category_id": "kncngmy17o"
+    }
+}
