@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This tutorial builds on the [Create a standalone STO pipeline](/tutorials/orchestrate-security-tests/sto-standalone-workflows) tutorial. You need to complete the standalone STO pipeline first. This pipeline scans a test target and reports on the vulnerabilities, but doesn't do anything else.
+This tutorial builds on the [Create a standalone STO pipeline](/tutorials/orchestrate-security-tests/sto-standalone-workflows) tutorial. You need to complete the standalone STO pipeline first. This pipeline scans a test target and reports on the vulnerabilities, but it doesn't do anything else.
 
 In this tutorial, you'll learn how to integrate STO functionality into CI and CD Pipelines. The core benefit of STO in an integrated Pipeline is to fail the Pipeline if a scanner finds any "show-stopper" vulnerabilities. The following sections describe the different failure strategies you can implement.
 
