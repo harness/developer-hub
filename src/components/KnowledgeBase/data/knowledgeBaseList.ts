@@ -26,7 +26,7 @@ export const knowledgeBaseList: CardItem[] = [
     link: "/kb/continuous-integration/delegate_eks_cluster",
   },
   {
-    title: "How Can I Fix The Delegate Installation Error with Readiness Probe Failure in GKE?",
+    title: "How Can I Troubleshoot The Delegate Installation Error with Readiness Probe Failure in GKE?",
     module: MODULES.platform,
     date: "April 06, 2023",
     link: "/kb/platform/delegate_installation_gke_error",
