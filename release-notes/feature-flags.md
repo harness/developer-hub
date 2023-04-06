@@ -29,7 +29,7 @@ This release does not include early access features.
 
 The **FF server** has been updated to version **1.1007.0** with the following updates.
 
-*  Previously, the number of flags returned in the **Target Management** page was capped at 100.  This change lets Harness show all flags even if the number is greater than 100. (FFM-7457)
+* Previously, the number of flags returned in the **Target Management** page was capped at 100.  This change lets Harness show all flags even if the number is greater than 100. (FFM-7457)
 * Feature Flag identifiers now follow the same guidelines as the Harness Platform entities. This means they can include a `$` in the name. (FFM-7436)
 * Previously, FF was only checking permissions at the account and project level. With this update, permissions and roles assigned at the organization level will also be honored. (FFM-7376)
 
