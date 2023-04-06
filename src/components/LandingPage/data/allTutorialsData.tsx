@@ -413,6 +413,18 @@ export const CEList: CardItem[] = [
 
 export const PlatformList: CardItem[] = [
   {
+    title: "Install CD Community Edition",
+    module: MODULES.platform,
+    icon: "img/logo.svg",
+    description: (
+      <>Install the free CD Community Edition.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/platform/install-cd-community-edition",
+  },
+  {
     title: "Install Delegate",
     module: MODULES.platform,
     icon: "img/logo.svg",
@@ -454,5 +466,19 @@ export const PlatformList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/platform/onboard-terraform-provider",
+  },
+  {
+    title: "Install Harness Delegate on GKE with Workload Identity",
+    module: MODULES.platform,
+    icon: "img/logo.svg",
+    description: (
+      <>
+        Deploy Harness Delegate onto Workload Identity-enabled GKE.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10 min",
+    link: "/tutorials/platform/gke-workload-identity",
   },
 ];
