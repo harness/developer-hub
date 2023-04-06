@@ -23,7 +23,7 @@ This Dashboard will not be available if you have not selected **AWS ECS and Reso
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](./../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md).
 * Ensure that you have set up Cloud Cost Management (CCM) for the [AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider.
 * Ensure that you have selected **AWS ECS and Resource Inventory Management** feature when creating the AWS connector. 
 

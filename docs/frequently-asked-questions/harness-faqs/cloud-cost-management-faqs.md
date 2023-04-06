@@ -16,7 +16,7 @@ This article addresses some frequently asked questions about Harness Cloud Cost 
 
 No. You can create an AWS connector in the master or linked account. CCM requires one connector per AWS account (master or linked).
 
-It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account. For more information, see [AWS connector requirements](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-aws-connector-requirements) and [Cost and Usage Reports (CUR) and CCM requirements](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-cost-and-usage-reports-cur-and-ccm-requirements).
+It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account. For more information, see [AWS connector requirements](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md) and [Cost and Usage Reports (CUR) and CCM requirements](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements).
 
 #### What kind of access does Harness CCM need to the cost and usage reports (CUR)?
 
@@ -30,7 +30,7 @@ Read [this](https://medium.com/harness-engineering/inner-workings-of-harnesss-cl
 
 #### Do I need to create a CloudFormation stack?
 
-Yes. You need to [create a CloudFormation stack](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#step-4-create-cross-account-role) to provision IAM Roles and corresponding policies to grant access for the required features.
+Yes. You need to [create a CloudFormation stack](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#step-4-create-cross-account-role) to provision IAM Roles and corresponding policies to grant access for the required features.
 
 #### Do you import the data into your account?
 
@@ -42,7 +42,7 @@ AWS ingests data at source (S3 bucket) four times a day. CCM takes about two hou
 
 #### What AWS access permissions/policies are required for CCM?
 
-See [AWS access permissions](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-aws-access-permissions) for the details.
+See [AWS access permissions](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-aws-access-permissions) for the details.
 
 #### To save on S3 storage costs, can I delete CUR files from the source S3 bucket after they've been ingested in CCM?
 
@@ -54,7 +54,7 @@ No. You need a delegate only when connecting to a Kubernetes cluster, such as on
 
 #### What types of access do you get to my accounts?
 
-CCM gets read-only access to the cost data along with a list of all the member (or linked) accounts. CCM does not get access to any other privileges. However, for AutoStopping, CCM requires additional privileged permissions to orchestrate the underlying infrastructure. See [AWS resource optimization using AutoStopping rules](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-auto-stopping-rules).
+CCM gets read-only access to the cost data along with a list of all the member (or linked) accounts. CCM does not get access to any other privileges. However, for AutoStopping, CCM requires additional privileged permissions to orchestrate the underlying infrastructure. See [AWS resource optimization using AutoStopping rules](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-auto-stopping-rules).
 
 #### Can CCM get historical data from the CUR?
 
@@ -68,7 +68,7 @@ Yes, you can create multiple Azure connectors for each Harness Account.
 
 * You can create multiple Azure connectors per Azure Tenant with unique subscription IDs.
 * If you have separate billing exports for each of your subscriptions in your Azure account, set up separate connectors in Harness to view the cloud cost of all the subscriptions in CCM.
-* See [Set up Cloud Cost Management for Azure](../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+* See [Set up Cloud Cost Management for Azure](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
 
 #### What types of access do you get to my accounts?
 
@@ -283,7 +283,7 @@ Workloads that had not been updated in the last 72 hours were stopped/killed. As
 
 #### How are recommendations calculated when the resource requests and limits are not configured?
 
-The [recommended resource](../../cloud-cost-management/2-use-cloud-cost-management/7-ccm-recommendations/workload-recommendations.md) is based purely on the utilization metrics pulled from the metrics server. Therefore, it doesn’t make a difference whether or not the resource requests and limits are configured.
+The [recommended resource](../../cloud-cost-management/4-use-ccm-cost-optimization/1-ccm-recommendations/workload-recommendations.md) is based purely on the utilization metrics pulled from the metrics server. Therefore, it doesn’t make a difference whether or not the resource requests and limits are configured.
 
 #### Do recommendations take burst of CPU into consideration?
 
@@ -297,7 +297,7 @@ We will get separate recommendations for these individual containers. The recomm
 
 #### What is the limit to the number of Perspectives that I can create in an account?
 
-You can create up to 250 Perspectives in an account. See [Create cost perspectives](../../cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/1-create-cost-perspectives.md).
+You can create up to 250 Perspectives in an account. See [Create cost perspectives](../../cloud-cost-management/3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md).
 
 #### Will I be able to see tags in Perspectives?
 
@@ -323,7 +323,7 @@ No limit as of now.
 
 ### General AutoStopping rules
 
-This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md).
+This section addresses some frequently asked questions about [Harness intelligent cloud AutoStopping rules](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md).
 
 #### What are the supported cloud services that AutoStopping works with?
 
@@ -350,9 +350,9 @@ AutoStopping provides several advantages, and it can work alongside Autoscaling 
 
 * AutoStopping will function with real-time requests for on-demand load tests as long as the traffic is HTTP-based; when new requests come, AutoStopping will warm up the necessary services in real-time.
 * There are two options for late-shift developers:
-	+ If you know the exact schedule ahead of time, you can use [Fixed schedules](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md#fixed-schedules) to keep the service running during that time.
+	+ If you know the exact schedule ahead of time, you can use [Fixed schedules](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md#fixed-schedules) to keep the service running during that time.
 	+ If the exact duration is unknown:
-		- You can use [ECG/heartbeat agent](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/2-configure-ecg/configure-ecg-for-auto-stopping-rules.md) to keep the services up as long as needed by detecting process liveliness or HTTP endpoints that can report the progress of the workers.
+		- You can use [ECG/heartbeat agent](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/2-configure-ecg/configure-ecg-for-auto-stopping-rules.md#configure-ecg) to keep the services up as long as needed by detecting process liveliness or HTTP endpoints that can report the progress of the workers.
 		- Alternatively, you can use our [API](https://harness.io/docs/api/tag/Cloud-Cost-AutoStopping-Fixed-Schedules) support to notify of service activity/idleness.
 
 #### Can I shut down entire clusters more easily than creating one rule per service?

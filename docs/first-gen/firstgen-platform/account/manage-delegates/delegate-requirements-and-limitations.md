@@ -75,7 +75,7 @@ For more information, see [Supported Platforms and Technologies](../../../starth
 
 If you do not enable gRPC connections, the following limitations apply:
 
-* [Cloud Cost Management](../../../../cloud-cost-management/1-onboard-with-cloud-cost-management/cloud-cost-management-overview/continuous-efficiency-overview.md) will not collect events.
+* [Cloud Cost Management](../../../../cloud-cost-management/2-getting-started-ccm/1-continuous-efficiency-overview.md) will not collect events.
 * If the `ARTIFACT_PERPETUAL_TASK` feature flag is enabled in your account, Harness performs perpetual artifact collection. If you do not enable gRPC connections, this will not work.
 
 :::note

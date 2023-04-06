@@ -64,7 +64,7 @@ The **AWS EC2 Inventory Cost Dashboard** is displayed.
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-*[Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards)
+* [Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards)
 * [Create Visualizations and Graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
