@@ -23,7 +23,11 @@ For instructions on installing Self-Managed Enterprise Edition using Helm, see [
 
 The following infrastructure is required to install Self-Managed Enterprise Edition using Helm.
 
-Support each node with 8 cores vCPU and a minimum of 12 GB memory.
+:::note
+
+Support each node with 8 cores vCPU and a minimum of 32 GB memory.
+
+:::
 
 ### Production environment
 

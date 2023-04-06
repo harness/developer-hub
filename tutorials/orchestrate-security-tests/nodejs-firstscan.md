@@ -1,6 +1,6 @@
 ---
-sidebar_position: 1
 description: Scanning a NodeJS Application and prioritizing scan results.
+sidebar_position: 30
 ---
 
 # Scan a NodeJS App for security vulnerabilities

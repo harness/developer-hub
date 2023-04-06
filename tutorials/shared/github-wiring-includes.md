@@ -1,6 +1,6 @@
 Harness will also need access to where to grab the Kubernetes manifests from GitHub.
 
-#### GitHub Wiring
+#### GitHub Integration
 
 GitHub as of 2021 [requires token authentication](https://github.blog/2020-12-15-token-authentication-requirements-for-git-operations/) e.g. no more passwords for git operations. 
 

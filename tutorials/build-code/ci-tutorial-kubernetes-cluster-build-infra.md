@@ -2,6 +2,7 @@
 sidebar_position: 20
 description: Create a pipeline that uses a Kubernetes cluster build infrastructure.
 slug: /build-code/ci-tutorial-kubernetes-cluster-build-infra
+keywords: [Kubernetes, Continuous Integration, CI Tutorial]
 ---
 
 # Build and test on a Kubernetes cluster build infrastructure

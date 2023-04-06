@@ -31,6 +31,39 @@ module.exports = {
     //  },    
     //===================================================================================
     
+    // CD Tutorial
+
+    // Created by schoudhury on Apr 3, 2023
+    {
+      from: "/tutorials/deploy-services/microservice-manifest-k8s",
+      to: "/tutorials/deploy-services/kubernetes/manifest",
+    },
+    {
+      from: "/tutorials/deploy-services/helm-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/cdce-helm-k8s",
+      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/docker-ecs",
+      to: "/tutorials/deploy-services/amazon-ecs",
+    },
+    {
+      from: "/tutorials/deploy-services/docker-ecr-k8s",
+      to: "/tutorials/deploy-services/kubernetes",
+    },
+    {
+      from: "/tutorials/deploy-services/harness-cicd-tutorial",
+      to: "/tutorials/deploy-services/unified-cicd",
+    },
+
+
     // Platform Tutorial
 
     // Created by schoudhury on Feb 21, 2023
@@ -330,5 +363,15 @@ module.exports = {
       from: "/docs/category/migrating-to-harness-ci",
       to: "/docs/category/migrate-to-harness-ci",
     },
-  ],
+   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+   {
+    from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
+    to: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
+  },
+   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+   {
+    from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
+    to: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
+  },
+],
 };

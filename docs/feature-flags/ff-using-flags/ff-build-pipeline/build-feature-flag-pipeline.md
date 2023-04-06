@@ -21,7 +21,11 @@ A Feature Flag Pipeline enables you to combine a Feature Flag with other actions
 * Create notification rules to send notifications about the events on your Feature Flag Pipeline
 * Schedule Pipeline executions using Cron-based Triggers, etc.
 
-This topic explains how to build a Feature Flag Pipeline.
+This topic explains how to build a Feature Flag Pipeline. Watch this video for an introduction:
+
+<!-- Video:
+https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
+<docvideo src="https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916" /> 
 
 ## Before you begin
 

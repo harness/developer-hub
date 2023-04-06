@@ -109,7 +109,7 @@ Each CI stage runs in it's own container. Steps in a stage can share data within
 
 ## Does CI support running Docker-in-Docker images?
 
-Yes. For details, go to [Run Docker-in-Docker in a CI stage](../../continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+Yes. For details, go to [Run Docker-in-Docker in a Build stage](../../continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
 
 ## How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?
 

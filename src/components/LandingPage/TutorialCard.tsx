@@ -11,6 +11,8 @@ export enum docType {
   Documentation = "doc",
   Interactive = "interactive",
   Video = "video",
+  SaaS = "saas",
+  SelfManaged = "selfmanaged",
 }
 
 export type CardItem = {

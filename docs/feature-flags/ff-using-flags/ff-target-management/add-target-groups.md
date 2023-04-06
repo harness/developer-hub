@@ -24,7 +24,13 @@ Target groups are a collection of [targets](add-targets.md) that allow you to se
 
 You can also do the opposite and exclude specific targets from a target group.  
 
-This topic describes how to add a target group to your Environment, add targets to the group, and apply the target group to a Feature Flag. 
+This topic describes how to add a target group to your Environment, add targets to the group, and apply the target group to a Feature Flag. 
+
+Watch this video for an introduction to target groups:
+
+<!-- Video:
+https://www.loom.com/share/99284d3b921045858b93f2e24c6a5335-->
+<docvideo src="https://www.loom.com/share/99284d3b921045858b93f2e24c6a5335" /> 
 
 ## Before you begin
 

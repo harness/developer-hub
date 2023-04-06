@@ -21,6 +21,12 @@ This topic describes how to add targets to an Environment in the Harness UI. Aft
  While you can add targets using the Harness UI, this method is not the main one for adding targets. You typically add targets and define their attributes in your application using a Feature Flag SDK. The targets added in your code are discovered automatically and populated in the Harness UI. For an example, go to [Add a target](/docs/feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk#add-a-target) using the Java server SDK.
 :::
 
+Watch this video for an introduction to targets:
+
+<!-- Video:
+https://www.loom.com/share/3bce77b43a844d6bb5b274c341855149-->
+<docvideo src="https://www.loom.com/share/3bce77b43a844d6bb5b274c341855149" /> 
+
 ## Add a target
 
 

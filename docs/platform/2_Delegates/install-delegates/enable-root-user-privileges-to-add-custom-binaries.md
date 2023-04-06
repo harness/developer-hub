@@ -14,12 +14,10 @@ This topic explains how to use the Delegate installer to install with or without
 
 Harness provides the following Delegate images. Each image includes a set of tools that target a particular scenario.
 
-
-
 | **Delegate Image**  | **Description** |
 | --- | --- |
-| harness/delegate:*yy.mm.xxxxxx* | Includes the Delegate and its dependencies.Includes client tools such as `kubectl`, Helm, and ChartMuseum. |
-| harness/delegate:*yy.mm.xxxxxx*.minimal | Includes the Delegate and its dependencies. |
+| harness/delegate:*yy.mm.xxxxx* | Includes the Delegate and its dependencies.Includes client tools such as `kubectl`, Helm, and ChartMuseum. |
+| harness/delegate:*yy.mm.xxxxx*.minimal | Includes the Delegate and its dependencies. |
 
 For detailed information on Docker delegate installation, see [Install a Docker delegate](/docs/platform/2_Delegates/install-delegates/overview.md).
 

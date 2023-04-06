@@ -129,17 +129,4 @@ To avoid this issue, use Harness RBAC to control which users can access a secret
 
 ### Log Sanitizer Detects Exact Matches Only
 
-The log sanitizer detects only exact matches of the secret or any line of the secret if the secret is multiline.​
-
-### Secrets 3 Characters Minimum
-
-The log sanitizer only works on secrets that are three characters or longer.​
-
-If the secret value is `ab`, then the log will show:​
-
-
-```
-Executing command ...​  
-text secret is:  ab  
-Command completed with ExitCode (0)
-```
+The log sanitizer detects only exact matches of the secret or any line of the secret if the secret is multiline.

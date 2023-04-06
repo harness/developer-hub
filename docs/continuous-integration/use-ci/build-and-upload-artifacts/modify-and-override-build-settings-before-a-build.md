@@ -63,5 +63,5 @@ For example: If you use `echo '<+secrets.getValue("account.settingsXML")>' >``~/
 
 ### See Also
 
-* [Run a Script in a CI Stage](../run-ci-scripts/run-a-script-in-a-ci-stage.md)
+* [Run a script in a Build stage](../run-ci-scripts/run-a-script-in-a-ci-stage.md)
 

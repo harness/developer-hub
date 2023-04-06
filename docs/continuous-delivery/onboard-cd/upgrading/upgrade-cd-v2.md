@@ -83,7 +83,7 @@ The following changes apply to services:
 
 - To use the service in a pipeline, service definitions must be configured via API/UI/YAML.
 - The service definition is a configuration mapped to the service irrespective of the pipelines where it is used.
-- For details on service v2, go to [Services and environments overview](../cd-concepts/services-and-environments-overview.md).
+- For details on service v2, go to [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 - The service entity is now moved from the pipeline to a standalone entity. The service contains the following components:
   - **Name**, **Description**, **Tag**, **Id**. These are the same as in the service v1 experience.
   - Manifests and artifacts. The service manifests and artifacts are now mapped in the service. They are moved out of the pipeline **Service** tab.
@@ -299,7 +299,7 @@ The following changes apply to v2 environments:
 - Environments are now standalone objects with global environment variables and manifest configurations.
 - V2 **Environment Service Overrides** and **Environment Variables** can override service variables when the service is deployed into a given environment. Based on the variable name, Harness can override the service variable with the environment variable value.
 - Harness has introduced service-specific environment overrides where users can define specific services and variables they want to override for a given environment.
-- For details on environments v2, go to [Services and environments overview](../cd-concepts/services-and-environments-overview).
+- For details on environments v2, go to [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 
 
 #### Environment groups
@@ -308,7 +308,7 @@ V2 introduces environment groups. You can now aggregate environments and manage 
 
 Environment groups are simply a list of environments. You can deploy to a subset of environments within the group or to all of them.
 
-For details on environments groups, go to [Services and environments overview](../cd-concepts/services-and-environments-overview).
+For details on environments groups, go to [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 
 #### Environment YAML updates
 
@@ -465,7 +465,7 @@ resource "harness_platform_environment" "example" {
 
 ### Infrastructure definition
 
-Harness has taken the infrastructure definition that was originally defined in the pipeline and moved it to the environment. For more information, go to [ Services and environments overview](../cd-concepts/services-and-environments-overview).
+Harness has taken the infrastructure definition that was originally defined in the pipeline and moved it to the environment. For more information, go to [ Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 
 Here are the changes to infrastructure definition:
  
