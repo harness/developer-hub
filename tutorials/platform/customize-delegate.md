@@ -19,7 +19,6 @@ You can have the Git client, Helm, Terraform, PowerShell, Docker, AWS CLI, and o
 
 ## Install Git Client
 
-
 Open the delegate YAML file and look for the location of the `INIT_SCRIPT'.
 
 ![init script location](./static/customizing-delegate/init_script_loc_new.png)

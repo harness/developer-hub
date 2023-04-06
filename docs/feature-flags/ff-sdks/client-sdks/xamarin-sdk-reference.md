@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
 This topic describes how to use the Harness Feature Flags SDK for your Xamarin application. You can use the Xamarin SDK for Android and iOS.
 
 For getting started quickly, you can [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the  [Xamarin Client Sample GitHub Repository](https://github.com/harness/ff-xamarin-client-sample).
@@ -17,7 +19,7 @@ For getting started quickly, you can [clone](https://docs.github.com/en/reposit
 Make sure you read and understand the following:
 
 * [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -161,6 +163,8 @@ public class CfListener : Java.Lang.Object, IAuthCallback, IEventsListener
 ### Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
+
+<Sixty />
 
 ## Xamarin for iOS
 

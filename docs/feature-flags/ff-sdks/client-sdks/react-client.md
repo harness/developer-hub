@@ -7,13 +7,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
+
 This topic describes how to use the Harness Feature Flags SDK for your React Client application. 
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-react-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [React Client SDK GitHub Repository](https://github.com/harness/ff-react-client-sdk).
 
 ## Before you begin
 
-* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
@@ -225,6 +228,8 @@ const myFlagValues = useFeatureFlags({
 ## Test your app is connected to Harness
 
 When you receive a response showing the current status of your feature flag, go to the Harness Platform and toggle the flag on and off. Then, check your app to verify if the flag variation displayed is updated with the variation you toggled.
+
+<Sixty />
 
 ## Additional options
 

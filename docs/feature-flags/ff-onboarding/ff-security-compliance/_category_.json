@@ -1,6 +1,6 @@
 {
-    "label": "Feature Flag Security",
-    "position": 30,
+    "label": "FF Security and Compliance",
+    "position": 50,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

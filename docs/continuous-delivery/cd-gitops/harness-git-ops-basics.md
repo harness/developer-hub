@@ -107,7 +107,7 @@ Installing an Agent involves setting up an Agent in Harness, downloading its YAM
 
 ### Can I use Harness GitOps images from a local registry?
 
-If you want Kubernetes to pull images from your private registry instead of the public registries, you can simply pull the public images, add then to your local registry, and then update the Agent YAML to use the local registry.
+Yes.  Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.
 
 ## Storage
 

@@ -1,7 +1,8 @@
 ---
-title: Run Docker-in-Docker in a CI Stage
-description: You can run Docker-in-Docker as a Background step in a CI Stage.
-# sidebar_position: 2
+title: Run Docker-in-Docker in a Build stage
+description: You can run Docker-in-Docker as a Background step in a Build stage.
+
+sidebar_position: 20
 helpdocs_topic_id: ajehk588p4
 helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false
