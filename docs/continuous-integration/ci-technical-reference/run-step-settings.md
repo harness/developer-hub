@@ -132,13 +132,13 @@ To reference an output variable in a different stage than the one where it origi
 <details>
 <summary>YAML example: Output variable</summary>
 
-In the following YAML example, step `a` exports an output variable called `myVar`, and then step `b` references that output variable.
+In the following YAML example, step `alpha` exports an output variable called `myVar`, and then step `beta` references that output variable.
 
 ```yaml
               - step:
                   type: Run
-                  name: a
-                  identifier: a
+                  name: alpha
+                  identifier: alpha
                   spec:
                     shell: Sh
                     command: export myVar=varValue
@@ -146,13 +146,13 @@ In the following YAML example, step `a` exports an output variable called `myVar
                       - name: myVar
               - step:
                   type: Run
-                  name: b
-                  identifier: b
+                  name: beta
+                  identifier: beta
                   spec:
                     shell: Sh
                     command: |-
-                      echo <+steps.a.output.outputVariables.myVar>
-                      echo <+execution.steps.a.output.outputVariables.myVar>
+                      echo <+steps.alpha.output.outputVariables.myVar>
+                      echo <+execution.steps.alpha.output.outputVariables.myVar>
 ```
 
 </details>

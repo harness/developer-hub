@@ -87,7 +87,9 @@ For all build infrastructures, you must specify `type`, `name`, `identifier`, `s
                       # Enter commands/script.
 ```
 
-Depending on your build infrastructure and the commands you are running, `connectorRef` and `image` may be required. These settings define a container registry connector and image containing the binaries that the step needs to run your script. For example, a cURL scripts may require a cURL image, such as `curlimages/curl:7.73.0`. For information about when these settings are required and how to specify images, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md). The following example shows a `Run` step with `connectorRef` and `image`:
+Depending on your build infrastructure and the commands you are running, `connectorRef` and `image` might be required. These settings define a container registry connector and image containing the binaries that the step needs to run your script. For example, a cURL script might require a cURL image, such as `curlimages/curl:7.73.0`. For information about when these settings are required and how to specify images, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md).
+
+The following example shows a `Run` step with `connectorRef` and `image`.
 
 ```yaml
               - step:
@@ -102,7 +104,9 @@ Depending on your build infrastructure and the commands you are running, `connec
                       # Enter a command or script.
 ```
 
-Define other settings as necessary. For example, if the `command` runs tests, you might specify report paths, and, if your script requires a token or secret, you might supply the token as `envVariables` For information about these settings, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md). The following example includes `reports` settings and commands that run tests.
+Define other settings as necessary. For example, if the `command` runs tests, you might specify report paths. If your script requires a token or secret, you might supply the token in `envVariables`. For information about these settings, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md).
+
+The following example includes `reports` settings and commands that run tests.
 
 ```yaml
               - step:
