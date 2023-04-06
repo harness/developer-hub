@@ -20,7 +20,8 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Continuous Integration
 
-Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
+* Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
+* Removed the feature flags `CI_LE_STATUS_REST_ENABLED` and `CI_DISABLE_GIT_SAFEDIR`. (CI-6537)
 
 ## March 31, 2023, version 78914
 
