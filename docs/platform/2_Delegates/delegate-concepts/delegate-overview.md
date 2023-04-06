@@ -68,7 +68,7 @@ One Delegate size does not fit all use cases, so Harness let's you pick from sev
 
 Remember that the memory and CPU requirements are for the Delegate only. Your Delegate host/pod/container will need more computing resources for its operations systems and other services such as Docker or Kubernetes.
 
-### How does Harness Manager pick delegates?
+### How Harness Manager picks delegates
 
 Delegates are used by Harness for all operations. For example:
 
@@ -171,7 +171,7 @@ Uri's Pipelines can use Delegates D1, D3, or D5.
 
 ### Delegate tags
 
-When Harness makes a connection via its Delegates, it will select the best Delegate according to [How Does Harness Manager Pick Delegates?](#how_does_harness_manager_pick_delegates).
+When Harness makes a connection via its Delegates, it will select the best Delegate according to [How  Harness Manager Picks Delegates](#how-harness-manager-picks-delegates).
 
 To ensure a specific Delegate is used by a Harness entity, you can add Tags to Delegates and then reference the Tags in commands and Connectors.
 
@@ -189,8 +189,7 @@ Harness keeps log files for today and the previous 10 days (up to one 1GB).
 
 The delegate logs are available in the Harness UI. When a pipeline runs and an error occurs due to the delegate, the **View Delegate Tasks Logs** option becomes available. This is an early access feature. Please contact Harness Support to enable it.
 
-<img width="1633" alt="Screen Shot 2023-04-06 at 9 49 20 AM" src="https://user-images.githubusercontent.com/109754660/230444961-82e8df07-e9fc-443b-b28f-c6ec9038b8ac.png">
-
+![](./static/view-delegate-task-logs.png)
 
 ### Delegate permissions
 
@@ -200,20 +199,17 @@ You create roles and then assign them to Harness Users.
 
 There are role permissions for Delegates:
 
-The permissions are:
+- **Delegate permissions** Create/Edit, Delete, View.
+- The Delegate **View** permission cannot be disabled. Every user has the permission to view the Delegate.
 
-* **Delegate permissions:** Create/Edit, Delete, View.
-* The Delegate **View** permission cannot be disabled. Every user has the permission to view the Delegate.
+Access to a delegate can also be restricted by downstream resource types:
 
-Access to a Delegate can also be restricted by downstream resource types:
+- **Pipelines:** Execute
+- **Secrets:** Access
+- **Connectors:** Access
 
-* **Pipelines:** Execute
-* **Secrets:** Access
-* **Connectors:** Access
+This means that if a role does not have these permissions the user with that role cannot use the related delegates in these pipelines, secrets, or connectors. 
 
-This means that if a role does not have these permissions the User with that role cannot use the related Delegates in these Pipelines, Secrets, or Connectors.
+### Third-party tools installed with the delegate
 
-### SDKs installed with the delegate
-
-See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
-
+For details about the SDKS and third-party toolw installed with the delegate, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
