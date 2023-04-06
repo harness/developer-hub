@@ -17,7 +17,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-This release does not include new features.
+Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
 
 ### Early access
 
