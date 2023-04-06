@@ -13,6 +13,30 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## April 5, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags SDKs
+
+* The **Python** server SDK has been updated to version **1.1.10** with the following update.
+  * The SDK now logs an error if an evaluation fails and the default variation is returned. (FFM-7360)
+
+* The **Ruby** server SDK has been updated to version **1.1.0** with the following updates.
+  * Metrics counters are now stored in a map, instead of a queue, for more efficient memory usage. The metric payload size should now also be smaller, resulting in more efficient network bandwidth usage. (FFM-7285)
+  * Improved the authentication retry logic to only retry on certain HTTP codes. Certain error codes will be treated as transient and others not. Ensured that while the SDK is authenticating, default values are served. (FFM-7325)
+  * Added a Ruby on Rails example in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk). (FFM-6926)
+  * Disabling the metrics processor didn't disable entries being written to the queue, causing an eventual memory leak. This fix corrects this behavior. (FFM-6965)
+  * Added TLS support to the SDK and updated the documentation in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk).
+
 ## April 4, 2023
 
 ### What's new
