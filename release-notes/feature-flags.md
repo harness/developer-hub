@@ -13,6 +13,26 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## April 10, 2023
+
+### What's new
+
+This release does not include new features.
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Feature Flags server
+
+The **FF server** has been updated to version **1.1007.0** with the following updates.
+
+*  Previously, the number of flags returned in the **Target Management** page was capped at 100.  This change lets Harness show all flags even if the number is greater than 100. (FFM-7457)
+* Feature Flag identifiers now follow the same guidelines as the Harness Platform entities. This means they can include a `$` in the name. (FFM-7436)
+* Previously, FF was only checking permissions at the account and project level. With this update, permissions and roles assigned at the organization level will also be honored. (FFM-7376)
+
 ## April 4, 2023
 
 ### What's new
