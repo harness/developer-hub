@@ -92,4 +92,4 @@ And then you only need `mvn test` to run the test.
 
 ## See also
 
-* [Run a script in a CI stage](../run-ci-scripts/run-a-script-in-a-ci-stage.md)
+* [Run a script in a Build stage](../run-ci-scripts/run-a-script-in-a-ci-stage.md)
