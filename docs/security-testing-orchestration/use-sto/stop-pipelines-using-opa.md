@@ -1,6 +1,6 @@
 ---
-title: Stop pipelines automatically using governance policies
-description: How to implement security fail-safe policies using governance policies.
+title: Use governance policies to stop pipelines automatically
+description: How to create and apply governance policies to stop pipelines automatically
 sidebar_position: 220
 ---
 
