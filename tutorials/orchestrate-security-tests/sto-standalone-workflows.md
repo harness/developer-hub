@@ -20,19 +20,19 @@ You'll learn how to:
 2. Create a baseline for your test targets and use the baseline to identify new issues in a development branch vs. inherited issues in the baseline.
 3. View issue details in the Harness UI and use these details to pinpoint and resolve issues in your code.
 
-## Before You Begin
+## Before you begin
 
 You must perform all the required steps in [Set Up Harness for STO](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto). This topic describes how to do the following:
 
 1. Install a delegate in a Kubernetes cluster.
 2. Create connectors to your Git and DockerHub repos
 3. Create a pipeline with a Docker-in-Docker service and a Security step that runs a Bandit scan on a repo.
-4. Add an STO Stage to a Pipeline.
-5. Add a scanner to your Stage, configure it, and define the target to scan.
+4. Add an STO stage to a Pipeline.
+5. Add a scanner to your stage, configure it, and define the target to scan.
 
 You will use a clone of this pipeline in these tutorials.
 
-### Review: Ingestion Workflows
+### Review: ingestion workflows
 
 STO supports three different workflows to ingest scan results into a pipeline:
 
@@ -43,15 +43,15 @@ This provides the most flexibility. You can ingest results from highly targeted 
 * Data-Load workflows — A Security step downloads and ingests results from an external scanner.  
 This workflow is supported for scanners that provide methods for transferring data programmatically.
 
-### Review: Scanner Coverage
+### Review: scanner coverage
 
 See **Security Testing Orchestration** in [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
 
-### Stand-Alone STO Workflows
+### Stand-alone STO workflows
 
 You're a developer, working in various development branches and merging your code updates. You want to make sure you don't introduce any new vulnerabilities when you merge your code into a target branch. Using STO, you can scan your repo automatically and then use the results to pinpoint and fix your vulnerabilties before you do any merge.
 
-This Pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
+This Pipeline has only one scanner but you can easily add more later. For the list of supported scanners, see [Security step settings reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference).
 
 ## Clone your STO base pipeline
 
@@ -60,7 +60,7 @@ This Pipeline has only one scanner but you can easily add more later. For the li
 
    ![](./static/sto-standalone-workflows-10.png)
 
-## Scan Step Configuration
+## Scan step configuration
 
 Let's look at the bandit step to see how it's configured.
 
@@ -80,7 +80,7 @@ Let's look at the bandit step to see how it's configured.
 | product\_name | bandit | The name of the scan tool. |
 | product\_config\_name | bandit-default | The config to use with the tool. |
 
-## Viewing Security Test Results
+## Viewing security test results
 
 **Key Concept: Test Targets**  
 Every instance of a scanner has a specific *target*, which is the object it is set up to scan. It might be a repo, a container, or an instance. This pipeline uses the [Bandit](https://bandit.readthedocs.io/en/latest/) scanner. In this pipeline, the scanner's target is the repo <https://github.com/williamwissemann/dvpwa> (specified in the Codebase for this pipeline).Now that you've set up the pipeline, you can run a scan and view the detected issues.
@@ -93,7 +93,7 @@ The **Security Tests** tab shows the issues that the scanner found in the test t
 
 ![](./static/sto-standalone-workflows-12.png)
 
-## Setting Baselines
+## Setting baselines
 
 **Key Concept: Baseline**  
 A *baseline* is a specific instance of a test target and the security issues in that instance. It is the object that you are looking to update, such as the target branch or an image with a specific tag.  
@@ -104,7 +104,7 @@ As a developer, you want to ensure that your merge or update doesn't introduce a
 2. For the **dvpwa** target, click **Baseline for Comparison** and select **branch :** **master** in the pulldown menu.
    ![](./static/sto-standalone-workflows-13.png)
 
-## Fixing Vulnerabilities
+## Fixing vulnerabilities
 
 **Key Concept: Deduplication**  
 When Harness processes the security issues identified in a scan, it deduplicates the results. *Deduplication* is the aggregation of multiple occurrences with the same root cause into one issue. This means that each security issue you see in the **Security Tests** page is unique and requires its own resolution.
@@ -118,7 +118,7 @@ Your branch has 5 new security issues: 2 critical, 2 medium, 1 low. Note that 3 
 
 ![](./static/sto-standalone-workflows-14.png)
 
-**Key Concept: To troubleshoot an issue, go to Issue Details**  
+**Key concept: To troubleshoot an issue, go to Issue Details**  
 The Issue Details pane has the information you need to troubleshoot and fix your security vulnerabilities.
 
 * In the Issues table (bottom left), click the row for the critical issue **subprocess\_popen\_with\_shell\_equals\_true**. The Issue Details pane opens.
