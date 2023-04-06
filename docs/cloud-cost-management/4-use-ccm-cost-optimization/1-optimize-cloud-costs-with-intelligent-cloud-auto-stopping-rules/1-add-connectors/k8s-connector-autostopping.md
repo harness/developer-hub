@@ -49,7 +49,7 @@ You need a target Kubernetes cluster for the Harness Delegate and deployment. Ma
 :::important
 These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 :::
-* Make sure you are a member of the Harness Administrator Group in the Harness FirstGen version. This is required to [create an API key](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/k8s-connector-autostopping.md).
+* Make sure you are a member of the Harness Administrator Group in the Harness FirstGen version. This is required to [create an API key](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/).
 * **Metrics Server**: Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
   
   
