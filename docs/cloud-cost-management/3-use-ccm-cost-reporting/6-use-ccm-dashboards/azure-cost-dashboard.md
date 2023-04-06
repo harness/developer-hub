@@ -28,7 +28,7 @@ This topic describes how to view **By Harness** **Azure Cost Dashboard** and g
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. Go to [Manage Access Control for CCM Dashboards](../access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have **Dashboard-All View** permissions assigned. Go to [Manage Access Control for CCM Dashboards](.../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md).
 * Ensure that you have set up Cloud Cost Management (CCM) for the Azure account.
 * Ensure that you have added all the required permissions for your cloud provider. The data available in the Dashboard depends on the permissions you provided to the Azure cloud provider when setting up CCM. 
 

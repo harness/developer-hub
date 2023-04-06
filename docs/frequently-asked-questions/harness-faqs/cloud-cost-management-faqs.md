@@ -30,7 +30,7 @@ Read [this](https://medium.com/harness-engineering/inner-workings-of-harnesss-cl
 
 #### Do I need to create a CloudFormation stack?
 
-Yes. You need to [create a CloudFormation stack](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#step-4-create-cross-account-role) to provision IAM Roles and corresponding policies to grant access for the required features.
+Yes. You need to [create a CloudFormation stack](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#create-cross-account-role) to provision IAM Roles and corresponding policies to grant access for the required features.
 
 #### Do you import the data into your account?
 
@@ -42,7 +42,7 @@ AWS ingests data at source (S3 bucket) four times a day. CCM takes about two hou
 
 #### What AWS access permissions/policies are required for CCM?
 
-See [AWS access permissions](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-aws-access-permissions) for the details.
+See [AWS access permissions](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions) for the details.
 
 #### To save on S3 storage costs, can I delete CUR files from the source S3 bucket after they've been ingested in CCM?
 
@@ -54,7 +54,7 @@ No. You need a delegate only when connecting to a Kubernetes cluster, such as on
 
 #### What types of access do you get to my accounts?
 
-CCM gets read-only access to the cost data along with a list of all the member (or linked) accounts. CCM does not get access to any other privileges. However, for AutoStopping, CCM requires additional privileged permissions to orchestrate the underlying infrastructure. See [AWS resource optimization using AutoStopping rules](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-auto-stopping-rules).
+CCM gets read-only access to the cost data along with a list of all the member (or linked) accounts. CCM does not get access to any other privileges. However, for AutoStopping, CCM requires additional privileged permissions to orchestrate the underlying infrastructure. See [AWS resource optimization using AutoStopping rules](../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-autostopping-rules).
 
 #### Can CCM get historical data from the CUR?
 
@@ -357,7 +357,7 @@ AutoStopping provides several advantages, and it can work alongside Autoscaling 
 
 #### Can I shut down entire clusters more easily than creating one rule per service?
 
-Yes, you can use schedules to shut down the entire ECS cluster in fixed windows of time. See [Fixed schedules](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md#fixed-schedules).
+Yes, you can use schedules to shut down the entire ECS cluster in fixed windows of time. See [Fixed schedules](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md#fixed-schedules).
 
 ### AWS AutoStopping rules
 
@@ -368,15 +368,15 @@ The VMs can be accessed using any of the following methods:
 * DNS Link
 * SSH/RDP
 
-For more information, see [Setup access using DNS link](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md#setup-access-using-dns-link) and [Setup Access Using SSH/RDP](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md#setup-access-using-ssh-rdp).
+For more information, see [Set up access for HTTP/HTTPS workload](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md#set-up-access-for-httphttps-workload) and [Setup Access Using SSH/RDP](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md#set-up-access-for-tcp-workload-or-sshrdp).
 
 #### Do AutoStopping Rules need a load balancer like Application Load Balancer (ALB) for non-prod workloads?
 
-Yes, you need to create an Application Load Balancer (ALB) for AWS. See [Create an Application Load Balancer for AWS](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md).
+Yes, you need to create an Application Load Balancer (ALB) for AWS. See [Create an Application Load Balancer for AWS](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-load-balancer-aws.md).
 
 #### Can I use Route 53 as my DNS provider?
 
-You can use Amazon Route 53 as the DNS service for your domain, such as example.com. When Route 53 is your DNS service, it routes internet traffic to your website by translating friendly domain names (such as `www.example.com`) into the numeric IP addresses (such as `192.0.2.1`) that computers use to connect to each other. See [Configure DNS using Route 53](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md#configure-dns-using-route-53).
+You can use Amazon Route 53 as the DNS service for your domain, such as example.com. When Route 53 is your DNS service, it routes internet traffic to your website by translating friendly domain names (such as `www.example.com`) into the numeric IP addresses (such as `192.0.2.1`) that computers use to connect to each other. See [Configure DNS using Route 53](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-load-balancer-aws.md#configure-dns-using-route-53).
 
 #### Can I use AutoStoping Rules to manage my resources hosted in the AWS GovCloud?
 
@@ -401,11 +401,11 @@ Using AutoStopping with either on-demand instances or spot instances will result
 
 In the event of spot interruption, an alternate spot instance is provisioned. In case there is no alternate spot available we fall back to on-demand and continue to poll for spot capacity. Once a spot capacity is available, we do a reverse fall-back from on-demand to spot.
 
-All this is automated, with no manual intervention. See [Review: how spot orchestration works](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md#review-how-spot-orchestration-works).
+All this is automated, with no manual intervention. See [Review: how spot orchestration works](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md#how-spot-orchestration-works).
 
 #### I do not use Application Load Balancer. Can I still create AutoStopping Rules?
 
-No. An Application Load Balancer is needed for AutoStopping to work on AWS. See [Create an Application Load Balancer for AWS](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-load-balancer-aws.md).
+No. An Application Load Balancer is needed for AutoStopping to work on AWS. See [Create an Application Load Balancer for AWS](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-load-balancer-aws.md).
 
 #### I have an application running on EC2 and it has a dependency on theRDS instance. Can AutoStopping work when such dependencies exist?
 
@@ -422,7 +422,7 @@ The VMs can be accessed using any of the following methods:
 
 #### Do AutoStopping Rules need an Application Gateway or Azure Web Application Firewall (WAF) for non-prod workloads?
 
-Yes, you need to create an Application Gateway for Azure. See [Create an Application Gateway for Azure](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-an-application-gateway-for-azure.md).
+Yes, you need to create an Application Gateway for Azure. See [Create an Application Gateway for Azure](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-an-application-gateway-for-azure.md).
 
 #### How AutoStopping Rules can help when I shut down my VMs during non-working hours?
 
@@ -437,15 +437,19 @@ Together, this helps customers achieve savings that are 2-3x that of any static 
 
 #### Can I use a front door designer with backend pools as a load balancer? Will AutoStopping Rules work?
 
-No. Currently, an Application Gateway is required for Azure AS to work. See [Create an Application Gateway for Azure](../../cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-load-balancer/create-an-application-gateway-for-azure.md).
+No. Currently, an Application Gateway is required for Azure AS to work. See [Create an Application Gateway for Azure](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-an-application-gateway-for-azure.md).
 
 ### AutoStopping Proxy load balancers
 
 #### What is an Autostopping Proxy load balancer?
 
-It is a custom VM launched in the customer's cloud account which comes pre-installed with the necessary proxy and load balancing services. Go to [Add Load Balancer for AutoStopping Rules](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) for more information.
+It is a custom VM launched in the customer's cloud account which comes pre-installed with the necessary proxy and load balancing services. For more information, visit the following topics: 
+* [AutoStopping Proxy for AWS](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-autoproxy-aws-lb.md) 
+* [AutoStopping Proxy for Azure](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-azure-autoproxy-lb.md)
+* [AutoStopping Proxy for GCP](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-load-balancer/create-autoproxy-gcp-lb.md)
 
-#### How to provision/size the proxy VM?
+
+#### How to provision or size the proxy VM?
 
 You can choose an instance type of your preference as the proxy from the different types of instances offered by each of the cloud provider based on the expected traffic. 
 

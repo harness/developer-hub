@@ -80,7 +80,7 @@ Perform the following steps to view AWS Reservation Efficiency Dashboard:
    
      ![](./static/aws-reservation-coverage-and-service-cost-46.png)
 4. Click **Back** to go back to the previous page in the Dashboard.
-5. Click **Download** to download the Dashboard. See [Download Dashboard Data](../../platform/18_Dashboards/download-dashboard-data.md).
+5. Click **Download** to download the Dashboard. See [Download Dashboard Data](https://developer.harness.io/docs/platform/Dashboards/download-dashboard-data).
 
 ### See Also
 

@@ -49,7 +49,7 @@ The following topics will guide you through the concepts and how-tos of Cloud Co
 
 #### Concepts
 
-* [Cloud Cost Management Overview](../../cloud-cost-management/1-onboard-with-cloud-cost-management/cloud-cost-management-overview/continuous-efficiency-overview.md)
+* [Cloud Cost Management Overview](../../cloud-cost-management/2-getting-started-ccm/1-continuous-efficiency-overview.md)
 * [Cost Explorer Walkthrough](../cloud-cost-management/concepts-ccm/a-cost-explorer-walkthrough.md)
 
 #### GraphQL APIs

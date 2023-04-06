@@ -23,7 +23,7 @@ This topic describes how to view the **By Harness Cluster Cost Dashboard** and
 
 ## Before You Begin
 
-* [Set Up Cloud Cost Management for Kubernetes](.../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
 * [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md)
 
 ## Prerequisites
@@ -106,15 +106,15 @@ Perform the following steps to view Cluster Cost Dashboard:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md)
-* [Create Visualizations and Graphs](../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
+* [Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards)
+* [Create Visualizations and Graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](../../../platform/18_Dashboards/use-dashboard-actions.md)
-* [Download Dashboard Data](../../../platform/18_Dashboards/download-dashboard-data.md)
-* [Create Conditional Alerts](../../../platform/18_Dashboards/create-conditional-alerts.md)
-* [Schedule and Share Dashboards](../../../platform/18_Dashboards/share-dashboards.md)
-* [View AWS Cost Dashboard](aws-dashboard.md)
+* [Use Dashboard Actions](https://developer.harness.io/docs/platform/Dashboards/use-dashboard-actions)
+* [Download Dashboard Data](https://developer.harness.io/docs/platform/Dashboards/download-dashboard-data)
+* [Create Conditional Alerts](https://developer.harness.io/docs/platform/Dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](https://developer.harness.io/docs/platform/Dashboards/share-dashboards)
+
 
 

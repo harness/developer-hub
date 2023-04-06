@@ -416,7 +416,7 @@ Click **Next**.
 
 In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.  
   
-Your AutoStopping rule is listed under the [AutoStopping Rules summary page](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md).
+Your AutoStopping rule is listed under the [AutoStopping Rules summary page](autostopping-dashboard.md).
 
 ## See also
 

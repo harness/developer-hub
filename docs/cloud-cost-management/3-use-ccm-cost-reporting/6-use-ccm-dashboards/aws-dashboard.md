@@ -28,7 +28,7 @@ This topic describes how to view the **By Harness AWS Cost Dashboard** and get m
 
 ## Data Ingestion for Dashboard
 
-After setting up cost visibility for the [AWS](../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider and the data is available in the Perspective, you can view **AWS Cost Dashboard**. The data in the Dashboard is updated dynamically.
+After setting up cost visibility for the [AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) cloud provider and the data is available in the Perspective, you can view **AWS Cost Dashboard**. The data in the Dashboard is updated dynamically.
 
 ## View AWS Cost Dashboard
 

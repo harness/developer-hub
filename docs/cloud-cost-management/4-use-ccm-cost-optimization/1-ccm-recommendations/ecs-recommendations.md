@@ -28,7 +28,7 @@ Using recommendations without proper assessment could result in unexpected chang
 To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory Management feature enabled.
 
 No Delegate setup is required. All utilization metrics are obtained using a cross account IAM role.
-See [Set Up Cloud Cost Management for AWS](../../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+See [Set Up Cloud Cost Management for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
 ## How are recommendations computed?
 

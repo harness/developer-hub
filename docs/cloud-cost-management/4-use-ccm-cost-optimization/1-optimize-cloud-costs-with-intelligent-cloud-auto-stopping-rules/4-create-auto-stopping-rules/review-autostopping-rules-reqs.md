@@ -61,7 +61,7 @@ Review the following prerequisites.
 #### Prerequisites
 
 The following prerequisites are needed:
-* See [Set up cost visibility for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) for the following topics:
+* See [Set up cost visibility for AWS](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md) for the following topics:
 	* Access to CUR. See Cost and Usage Reports (CUR) and CCM Requirements.
 	* Permissions to create a cross-account role. See AWS Access Permissions.
 	* Permissions for AWS ECS and Resource Inventory Management. See AWS ECS and Resource Inventory Management.

@@ -107,7 +107,7 @@ If you have not created a cloud provider connector already, click **New Connecto
 
 * AWS: [Create an AWS Connector for AutoStopping Rules](../1-add-connectors/connect-to-an-aws-connector.md)
 * Azure: [Create an Azure Connector for AutoStopping Rules](../1-add-connectors/add-azure-connector.md)
-* GCP: [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md)
+* GCP: [Create a GCP Connector for AutoStopping Rules](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-gcp.md)
   
     ![](./static/k8s-connector-autostopping-11.png)
 1. After creating your cloud account type Connector, select the Connector, and click **Apply Selected**.
