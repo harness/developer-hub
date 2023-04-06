@@ -25,7 +25,6 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* Fixed an issue where [GCP connectors](/docs/platform/connectors/connect-to-google-cloud-platform-gcp) that inherit credentials from a Delegate were erroneously reporting failed connection tests. (CI-7538)
 * In the Get Started wizard, selecting **Learn more about Harness CI** now only scrolls the body of the screen, rather than the entire UI. (CI-7522)
 * When creating a [stage template](/docs/platform/templates/add-a-stage-template), the UI no longer crashes if you select the [expression input type](/docs/platform/references/runtime-inputs/#expressions) for the **Shell** field in a **Run** step. (CI-7510)
 * Fixed a minor UI issue where selecting the **Commits** tab on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) caused the navigation menu to expand. (CI-6274)
