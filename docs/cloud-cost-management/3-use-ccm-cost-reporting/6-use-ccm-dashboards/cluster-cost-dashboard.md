@@ -23,12 +23,12 @@ This topic describes how to view the **By Harness Cluster Cost Dashboard** and
 
 ## Before You Begin
 
-* [Set Up Cloud Cost Management for Kubernetes](../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
-* [Manage Access Control for CCM Dashboards](../7-access-control/manage-access-control-for-ccm-dashboards.md)
+* [Set Up Cloud Cost Management for Kubernetes](.../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md)
 
 ## Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../7-access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md).
 * Ensure that you have set up Cloud Cost Management (CCM) for the Kubernetes clusters.
 * Ensure that you have added all the required permissions for your cluster. The data available in the Dashboard depends on the permissions you provided to the Kubernetes clusters when setting up CCM.
 
@@ -106,15 +106,15 @@ Perform the following steps to view Cluster Cost Dashboard:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](../../platform/18_Dashboards/create-dashboards.md)
-* [Create Visualizations and Graphs](../../platform/18_Dashboards/create-visualizations-and-graphs.md)
+* [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md)
+* [Create Visualizations and Graphs](../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
 
 ### Next Steps
 
-* [[Use Dashboard Actions](../../platform/18_Dashboards/use-dashboard-actions.md)
-* [Download Dashboard Data](../../platform/18_Dashboards/download-dashboard-data.md)
-* [Create Conditional Alerts](../../platform/18_Dashboards/create-conditional-alerts.md)
-* [Schedule and Share Dashboards](../../platform/18_Dashboards/share-dashboards.md)
+* [Use Dashboard Actions](../../../platform/18_Dashboards/use-dashboard-actions.md)
+* [Download Dashboard Data](../../../platform/18_Dashboards/download-dashboard-data.md)
+* [Create Conditional Alerts](../../../platform/18_Dashboards/create-conditional-alerts.md)
+* [Schedule and Share Dashboards](../../../platform/18_Dashboards/share-dashboards.md)
 * [View AWS Cost Dashboard](aws-dashboard.md)
 
 

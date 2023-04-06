@@ -13,7 +13,7 @@ Azure Application Gateway is a web traffic load balancer that enables you to man
 ### Before You Begin
 
 * [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md)
-* [Create AutoStopping Rules for Azure](../3-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
+* [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
 
 ### Create a New Application Gateway
 
@@ -29,8 +29,8 @@ Perform the following steps to create a new Application Gateway in Azure.
 4. If you have not added your cloud account, click **New Connector**. For the detailed steps, see [Connect to an Azure Connector](../1-add-connectors/add-azure-connector.md).  
 
   ![](./static/create-an-application-gateway-for-azure-04.png)
-5. Define an AutoStopping Rule. See [Step 2: Add a New AutoStopping Rule](../3-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md).
-6. Select the resources to be managed by the AutoStopping Rule. See Step: Select the Resources to be Managed by the AutoStopping Rule.
+5. Define an AutoStopping Rule. See [Step 2: Add a New AutoStopping Rule](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md).
+6. Select the resources to be managed by the AutoStopping Rule. See Step: [Select the Resources to be Managed by the AutoStopping Rule](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md#select-the-resources-to-be-managed-by-the-autostopping-rule)
 7. Select the instance fulfillment type. See Step 3: Select the Instance Fulfillment Type.
 8. (Optional) Set up advanced configuration. See Step: Set Up Advanced Configuration.
 9. In **Setup Access**, select **DNS Link**.

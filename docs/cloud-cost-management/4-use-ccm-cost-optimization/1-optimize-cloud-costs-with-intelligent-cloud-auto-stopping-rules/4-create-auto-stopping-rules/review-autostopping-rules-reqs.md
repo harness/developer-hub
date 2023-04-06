@@ -22,13 +22,10 @@ Review the following prerequisites and set up related questions.
 The following prerequisites are needed:
 
 * Ensure that you have AWS EC2 VMs or Auto Scaling Groups created
-* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-cost-and-usage-reports-cur-and-ccm-requirements)
-* Permissions to create a cross-account role. See [AWS Access Permissions](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-auto-stopping-rules)
+* Ensure that you have access to CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
+* Permissions to create a cross-account role. See [AWS Access Permissions](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions)
 
 #### Questionnaire
-
-
-
 
 
 * How are the VMs accessed?

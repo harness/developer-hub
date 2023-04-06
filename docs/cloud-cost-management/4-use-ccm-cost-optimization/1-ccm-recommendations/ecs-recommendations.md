@@ -21,8 +21,8 @@ Using recommendations without proper assessment could result in unexpected chang
 
 ## Before You begin
 
-* [CCM Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
-
+* [CCM Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+  
 ### Prerequisites
 
 To obtain ECS recommendations, configure an AWS CCM Connector with the Inventory Management feature enabled.

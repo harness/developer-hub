@@ -29,7 +29,7 @@ To use Cost Categories, your Harness User account must belong to a User Group wi
 
 * **Cloud Cost Management**: **Cost Categories**: **Create/Edit**
 
-For more details, go to [CCM Roles and Permissions](../../7-access-control/ccm-roles-and-permissions.md).
+For more details, go to [CCM Roles and Permissions](../../2-getting-started-ccm/5-access-control/ccm-roles-and-permissions.md).
 
 ## Visual summary
 

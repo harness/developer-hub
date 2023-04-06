@@ -14,11 +14,11 @@ This topic describes how to create a new budget.
 
 ## Before You Begin
 
-* [Set Up Cloud Cost Management for AWS](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
-* [Set Up Cloud Cost Management for GCP](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
-* [Set Up Cloud Cost Management for Azure](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
-* [Set Up Cloud Cost Management for Kubernetes](../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
-* [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md)
+* [Set Up Cloud Cost Management for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
+* [Set Up Cloud Cost Management for GCP](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
+* [Set Up Cloud Cost Management for Azure](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
+* [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 
 ## Create a New Budget
 
@@ -35,7 +35,7 @@ In **Define Target**, do the following:
 
 1. In **Select Perspective**, select the Perspective for which you want to set a budget.  
 Budgets are created on Perspectives. If you do not have a Perspective of the resources you would like to budget, first create a new Perspective and then proceed to set a budget. You can add multiple budgets for a single Perspective.
-   1. To create a new Perspective of the resources you would like to budget, click **Create a new Perspective**. Follow the steps in [Create Cost Perspectives](../2-ccm-perspectives/1-create-cost-perspectives.md) to create a Perspective.
+   1. To create a new Perspective of the resources you would like to budget, click **Create a new Perspective**. Follow the steps in [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) to create a Perspective.
    2. In **Budget Name**, enter a name for your budget that will appear in the budget dashboard to identify this budget.
    3. Click **Continue**.
    
@@ -116,7 +116,7 @@ The dashboard includes the following information:
 
 ### Read Your Budget
 
-The **Budgets** dashboard further shows you the details of your selected budget at a glance. You can also navigate to the [Perspective](../2-ccm-perspectives/1-create-cost-perspectives.md) on which the budget is created from the budget dashboard.
+The **Budgets** dashboard further shows you the details of your selected budget at a glance. You can also navigate to the [Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) on which the budget is created from the budget dashboard.
 
 ![](./static/create-a-budget-09.png)
 
@@ -164,9 +164,9 @@ To delete a budget:
 
 ## Next Steps
 
-* [Analyze Cost for Kubernetes Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
-* [Analyze Cost for AWS Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-aws.md)
-* [Analyze Cost for GCP ​Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
-* [Analyze Cost for Azure Using Perspectives](/docs/cloud-cost-management/2-use-cloud-cost-management/4-root-cost-analysis/analyze-cost-for-azure.md)
-* [Create a Budget for Your Perspective](/docs/cloud-cost-management/2-use-cloud-cost-management/2-ccm-perspectives/2-create-a-budget-perspective.md)
+* [Analyze Cost for Kubernetes Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
+* [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)
+* [Analyze Cost for GCP ​Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
+* [Analyze Cost for Azure Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-azure.md)
+* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
 

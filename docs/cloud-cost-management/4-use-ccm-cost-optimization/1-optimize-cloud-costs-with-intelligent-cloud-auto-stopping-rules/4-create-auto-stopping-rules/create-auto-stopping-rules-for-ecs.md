@@ -24,7 +24,7 @@ The current version of AutoStopping Rules orchestrates the ECS tasks. For the au
 * [Create an AWS Connector for AutoStopping Rules](create-autostopping-rules-aws.md)
 
 ## Prerequisites
-Read the following topics in [Set up Cloud Cost Management for AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md): 
+Read the following topics in [Set up Cloud Cost Management for AWS](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md): 
 
 * Access to CUR. See Cost and Usage Reports (CUR) and CCM Requirements.
 * Permissions to create a cross-account role. See AWS Access Permissions.
@@ -122,10 +122,10 @@ In this step, you can configure the following settings:
 ![](./static/create-autostopping-rules-for-kubernetes-83.png)
 
 ### Dry Run
-Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dry-run-mode.md).
+Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](../4-create-auto-stopping-rules/autostopping-dry-run-mode.md).
 
 * **Add Dependency**: Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. See [Add Dependency](create-autostopping-rules-aws.md).
-* **Fixed Schedules**: Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. See [Fixed Schedules](create-autostopping-rules-aws.md).
+* **Fixed Schedules**: Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. See [Fixed Schedules](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md#fixed-schedules).
 
 ### (Optional) Setup access using DNS Link
 
@@ -164,7 +164,7 @@ You can use either of the following methods:
 
 **Auto-generated URL**
 
-Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](../4-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
+Every AutoStopping rule will have an auto-generated URL. This URL will be a subdomain to the domain name specified for the [load balancer](../3-load-balancer/create-load-balancer-aws.md). Since the load balancer configures a wildcard domain such as `*.autostopping.yourcompany.com`, the auto-generated URL will work automatically and point to the correct load balancer.
 
 Select **Use the auto-generated URL to access the resources managed by this AutoStopping Rule**.
 
@@ -239,7 +239,7 @@ To use a Harness API key, do the following:
 
 #### (Optional) Step 4: Obtain Load Balancer Host Name
 
-Fetch the load balancer details from the [Setup Access Using DNS Link](create-auto-stopping-rules-for-ecs.md) section.
+Fetch the load balancer details from the [Setup Access Using DNS Link](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-ecs.md) section.
 
 #### Step 5: Run the Script
 

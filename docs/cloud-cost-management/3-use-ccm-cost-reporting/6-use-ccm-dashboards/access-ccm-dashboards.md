@@ -44,7 +44,7 @@ To access the dashboards outside the CCM module, perform the following steps:
 3. Click the required tile to view the corresponding dashboard.
 
 ## Next steps
-* [Use Dashboard Actions](../../platform/18_Dashboards/use-dashboard-actions.md)
+* [Use Dashboard Actions](../../../platform/18_Dashboards/use-dashboard-actions.md)
 * [View AWS Reservation Efficiency Dashboard](aws-reservation-coverage-and-service-cost.md)
 * [View Azure Cost Dashboard](azure-cost-dashboard.md)
 * [View Cluster Cost Dashboard](cluster-cost-dashboard.md)

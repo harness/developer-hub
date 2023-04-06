@@ -52,7 +52,7 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
 2. Enter the following details:
    * **Jira connector** — Select the connector if you have created one already. Otherwise, [create a new connector](1-home-recommendations.md#create-a-jira-connector). 
    * **Jira project** — Select the Jira project where you want to create a ticket. Go to [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md).
-   * **Issue type** — Select a Jira issue type from the list of types in the Jira project you selected. Go to [Create Jira Issues in CD Stages](./../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md).
+   * **Issue type** — Select a Jira issue type from the list of types in the Jira project you selected. Go to [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md).
    * **Ticket summary** — Add a summary of the issue.
    * **Description** — Add a description for the issue.
 3. Click **Create Ticket**. 

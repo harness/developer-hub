@@ -29,8 +29,8 @@ The following section lists the support for Kubernetes clusters for AutoStopping
 * Ingress controller installed. For more information, go to [Supported Ingress Controllers for Kubernetes AutoStopping](../../../../getting-started/supported-platforms-and-technologies.md#cloud-cost-management).
 * Ensure that you have Cluster Autoscaler enabled for EKS with managed node groups.
 * For EKS:
-	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#review-cost-and-usage-reports-cur-and-ccm-requirements)
-	+ Permissions to create a cross-account role. See [AWS Access Permissions](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-resource-optimization-using-auto-stopping-rules)
+	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
+	+ Permissions to create a cross-account role. See [AWS Access Permissions](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions)
 
 ## Step 1: Add a Cloud Provider
 
@@ -93,7 +93,7 @@ Toggle the button to disable the display of progress page during instances' warm
 
 ### Dry Run
 
-Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dry-run-mode.md).
+Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](../4-create-auto-stopping-rules/autostopping-dry-run-mode.md).
 
 #### Add Dependency
 
@@ -203,5 +203,5 @@ spec:
 
 ## Next Step
 
-* [Use AutoStopping Rules Dashboard](autostopping-dashboard.md)
+* [Use AutoStopping Rules Summary Page](autostopping-dashboard.md)
 

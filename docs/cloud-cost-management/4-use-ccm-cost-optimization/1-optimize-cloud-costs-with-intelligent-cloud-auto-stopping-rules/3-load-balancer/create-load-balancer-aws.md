@@ -18,8 +18,8 @@ This topic describes how to create a new application load balancer for creating 
 
 ## Before You Begin
 
-* [Connect to an AWS Connector](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md)
-* [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md)
+* [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md)
+* [Create AutoStopping Rules for AWS](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md)
 
 ## Why do You Need a Load Balancer?
 
@@ -49,11 +49,11 @@ Perform the following steps to create a new Application Load Balancer in AWS.
    
      ![](./static/create-load-balancer-aws-15.png)
 3. If you have already linked your AWS account and want to use that account, then select the AWS account from the **Connect to your AWS account** drop-down list.
-4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/connect-to-an-aws-connector.md).
+4. If you have not added your cloud account, click **Connect to your AWS account** drop-down list and then click **New Connector**. For the detailed steps, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
    
      ![](./static/create-load-balancer-aws-17.png)
-5. Define an AutoStopping Rule. See [Step: Define an AutoStopping Rule](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md).
-6. Select the resources to be managed by the AutoStopping Rule. See Step: Select the Resources to be Managed by the AutoStopping Rule in [Create AutoStopping Rules for AWS](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-autostopping-rules-aws.md).
+5. Define an AutoStopping Rule. See [Step: Define an AutoStopping Rule](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md#define-an-autostopping-rule).
+6. Select the resources to be managed by the AutoStopping Rule. See Step: Select the Resources to be Managed by the AutoStopping Rule in [Create AutoStopping Rules for AWS](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md#select-the-resources-to-be-managed-by-the-autostopping-rule).
 7. (Optional) Set up advanced configuration. See Step: Set Up Advanced Configuration.
 8. In **Setup Access**, select **DNS Link**.
 9.  In **Select a load balancer**, click **New Load Balancer** to add a load balancer.

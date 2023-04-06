@@ -16,7 +16,7 @@ You can add business context to your Harness Cloud Cost Management (CCM) data us
 * [Set Up Cloud Cost Management for Azure](../../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
 * [Set Up Cloud Cost Management for GCP](../../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
 * [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
-* [Use Cost Categories](../../3-use-ccm-cost-reporting/2-ccm-cost-categories/use-ccm-cost-categories.md)
+* [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md)
 
 ## Cloud Costs Perspective Concepts
 

@@ -52,4 +52,4 @@ All the URLs configured in the AutoStopping rules should point to the AutoStoppi
 ![](./static/create-autostopping-rule-with-custom-domain.png)
 
 ### See also
-[Create AutoStopping rules for AWS](/developer-hub/docs/cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md)
+[Create AutoStopping rules for AWS](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md)

@@ -12,7 +12,7 @@ Connectors allow Harness to connect to your deployment environments, such as Kub
 
 ### Before you begin
 
-* [AutoStopping Rules Overview](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
 
 ### Prerequisites
 
@@ -32,10 +32,10 @@ Perform the following steps to link your Azure cloud account to Harness.
    
      ![](./static/add-azure-connector-15.png)
 3. Click **Connect to your Azure account** drop-down list and then click **New Connector**.
-4. See [Set up Cloud Cost Management for Azure](/docs/cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md) for further instructions.
+4. See [Set up Cloud Cost Management for Azure](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md) for further instructions.
 
 ### Next Steps
 
-* [Create AutoStopping Rules for Azure](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
-* [Use AutoStopping Rules Dashboard](/docs/cloud-cost-management/2-use-cloud-cost-management/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/3-create-auto-stopping-rules/autostopping-dashboard.md)
+* [Create AutoStopping Rules for Azure](../4-create-auto-stopping-rules/create-auto-stopping-rules-for-azure.md)
+* [Use AutoStopping Rules Dashboard](../4-create-auto-stopping-rules/autostopping-dashboard.md)
 

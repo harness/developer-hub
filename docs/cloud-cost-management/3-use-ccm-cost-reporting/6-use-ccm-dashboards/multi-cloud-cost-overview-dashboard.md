@@ -25,8 +25,8 @@ This topic describes how to view the **By Harness** **Multi-cloud Cost Overview
 
 ### Prerequisites
 
-* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../access-control/manage-access-control-for-ccm-dashboards.md).
-* Ensure that you have set up Cloud Cost Management (CCM) for the [Kubernetes clusters](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md), [AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md), [GCP](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md), and [Azure](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md) cloud accounts.
+* Ensure that you have **Dashboard-All View** permissions assigned. See [Manage Access Control for CCM Dashboards](../../2-getting-started-ccm/5-access-control/manage-access-control-for-ccm-dashboards.md).
+* Ensure that you have set up Cloud Cost Management (CCM) for the [Kubernetes clusters](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md), [AWS](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md), [GCP](../../../1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md), and [Azure](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md) cloud accounts.
 * Ensure that you have added all the required permissions for your cloud account. The data available in the Dashboard depends on the permissions you provided to the cloud accounts or clusters when setting up CCM.
 
 ### Data Ingestion for Multi-cloud Cost Overview Dashboard
@@ -75,13 +75,14 @@ Perform the following steps to view the Multi-cloud Cost Overview Dashboard:
 
 Once you have set up cost visibility for your Kubernetes clusters, AWS, GCP, and Azure cloud providers, you can create your own Dashboards. Refer to the following topics to create your own Dashboard and chart data.
 
-* [Create Dashboards](../../../../platform/18_Dashboards/create-dashboards.md)
-* [Create Visualizations and Graphs](../../../../platform/18_Dashboards/create-visualizations-and-graphs.md)
+* [Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards)
+* [Create Visualizations and Graphs](https://developer.harness.io/docs/platform/Dashboards/create-visualizations-and-graphs)
 
 ### Next Steps
 
-* [Use Dashboard Actions](../../../../platform/18_Dashboards/use-dashboard-actions.md)
-* [Download Dashboard Data](../../../../platform/18_Dashboards/download-dashboard-data.md)
-* [Create Conditional Alerts](../../../../platform/18_Dashboards/create-conditional-alerts.md)
-* [Schedule and Share Dashboards](../../../../platform/18_Dashboards/share-dashboards.md)
+* [Use Dashboard Actions](https://developer.harness.io/docs/platform/Dashboards/use-dashboard-actions)
+* [Download Dashboard Data](https://developer.harness.io/docs/platform/Dashboards/download-dashboard-data)
+* [Create Conditional Alerts](https://developer.harness.io/docs/platform/Dashboards/create-conditional-alerts)
+* [Schedule and Share Dashboards](https://developer.harness.io/docs/platform/Dashboards/share-dashboards)
+
 

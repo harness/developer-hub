@@ -102,5 +102,6 @@ Perform the following steps to limit the access to specific Dashboards for diffe
 4. In **Resource Groups**, select the resource group for which you want to add or modiy the access control.
    
      ![](./static/manage-access-control-for-ccm-dashboards-08.png)
+     
 5. Click **Save**.
 

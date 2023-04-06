@@ -13,7 +13,7 @@ Cloud Integration allows you to seamlessly set up your Harness CCM with a single
 ## Prerequisites and Permissions
 
 * See [Roles and Policies for the Connector](../../../docs/platform/7_Connectors/add-a-kubernetes-cluster-connector.md#review-roles-and-policies-for-the-connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
-* See [Prerequisites in Set up CCM for Kubernetes](../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
+* See [Prerequisites in Set up CCM for Kubernetes](../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
 
 ## Creating the Kubernetes connector manually using the Advanced option
 
@@ -40,7 +40,7 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 2. Click **New Cluster/Cloud account.**
 3. Click **Quick Create**.
 4. In the **Kubernetes Connector** wizard, enter a **name** for the connector.
-5. If the cluster does not already have additional permissions, you need to apply them now. See Delegate Permissions in [Prerequisites](../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md#prerequisites) for additional details.
+5. If the cluster does not already have additional permissions, you need to apply them now. See Delegate Permissions in [Prerequisites](../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md#prerequisites) for additional details.
 	1. In **Provide Permissions**, click **Download YAML**.
 	2. Copy the downloaded YAML to a machine where you have `kubectl`installed and have access to your Kubernetes cluster.
 	3. Run the following command to create a Kubernetes Delegate with Cluster Admin Role and a connector referencing the delegate.
@@ -60,11 +60,11 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 The required permissions and components are verified. On successful verification, the cost management features are enabled on the cluster.
 
   ![](./static/use-cloud-integration-00.gif)
-3. (Optional) To enable the AutoStopping feature, click **Enable AutoStopping** before clicking **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, see [Create a secret and provide permissions for AutoStopping](../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
+1. (Optional) To enable the AutoStopping feature, click **Enable AutoStopping** before clicking **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, see [Create a secret and provide permissions for AutoStopping](../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
 
 ### Viewing Cloud Costs
 
-To view the cloud spend data for the Kubernetes cluster, click **View costs** for the cluster on the **Cloud Integration** page. The Perspective page displays your cloud costs data along with recommendations to reduce your spend. For more information, see [Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md).
+To view the cloud spend data for the Kubernetes cluster, click **View costs** for the cluster on the **Cloud Integration** page. The Perspective page displays your cloud costs data along with recommendations to reduce your spend. For more information, see [Cost Perspectives](../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md).
 
 ### Editing a Kubernetes connector
 
