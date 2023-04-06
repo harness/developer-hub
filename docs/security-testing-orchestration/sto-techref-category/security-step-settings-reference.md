@@ -12,7 +12,7 @@ This topic includes the Security step settings for each of the scanner providers
 
 ### What's new: Improved UIs and set-up workflows for popular scanners
 
-On March 14, 2023, Harness introduced a set of new scanner-specific steps (step palettes) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps greatly simplify the process of setting up scans in your pipelines. Previously, the workflow for all scanners was to enter a set of hard-coded key and value strings in a Security step. These new steps have simplified user-friendly UIs that include only the options relevant to the specific scanner, mode, and target.
+On March 14, 2023, Harness introduced a set of new UIs (step palettes) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps greatly simplify the process of setting up scans in your pipelines. Previously, the workflow for all scanners was to enter a set of hard-coded key and value strings in a Security step. These new steps have simplified user-friendly UIs that include only the options relevant to the specific scanner, mode, and target.
 
 The following security steps are now generally available:
 
@@ -168,7 +168,7 @@ Harness maintains and updates a container image for every scanner supported by S
   </tr>
   <tr>
     <td>Black Duck Hub</td>
-    <td><code>synopsis detect</code></td>
+    <td><code>synopsys detect</code></td>
     <td>7.9.0</td>
   </tr>
   <tr>

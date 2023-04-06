@@ -1,7 +1,7 @@
 ---
-title: Infrastructure requirements for KOTS
-description: This document lists the infrastructure requirements for installing Harness Self-Managed Enterprise Edition
-# sidebar_position: 2
+title: KOTS installation requirements
+description: Requirements for using KOTS installation for Harness Self-Managed Enterprise Edition.
+# sidebar_position: 10
 helpdocs_topic_id: d5lptkp5ow
 helpdocs_category_id: vu99714ib1
 helpdocs_is_private: false

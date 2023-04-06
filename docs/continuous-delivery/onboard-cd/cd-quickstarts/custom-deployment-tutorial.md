@@ -220,6 +220,7 @@ You can map any additional attributes containing information you want to referen
 4. In **Script**, enter the following:
   
   ```bash
+  curl -LJO https://raw.githubusercontent.com/wings-software/harness-docs/main/default-k8s-manifests/Manifests/deployment.yaml
   /opt/harness-delegate/client-tools/kubectl/v1.19.2/kubectl apply -f deployment.yaml
   ```
 1. Click **Save**.

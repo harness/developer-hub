@@ -4,6 +4,8 @@ description: This topic describes how to use the Harness Feature Flags Erlang SD
 sidebar_position: 15
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
 This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir based application. 
 
 For getting started quickly:
@@ -16,7 +18,7 @@ For getting started quickly:
 Make sure you read and understand:
 
 * [Feature Flags Overview](/docs/feature-flags/ff-onboarding/cf-feature-flag-overview)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks)
 * [Communication Strategy Between SDKs and Harness Feature Flags](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags)
 
@@ -262,6 +264,8 @@ Below are examples of evaluating different types of flag variations for Erlang a
 ## Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the flag on and off. The SDK polls for changes every 60 seconds by default. Check your app after this interval to verify if the flag variation displayed is updated with the variation you toggled. 
+
+<Sixty />
 
 ## Close the SDK
 

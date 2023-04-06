@@ -18,21 +18,28 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 Optional text string.
 
-## Container Registry
+## Container Registry and Image
 
-Select a container registry connector. This is the container registry, such as DockerHub, where Harness pulls the image on which it runs build commands. This is optional for stages that use Harness Cloud build infrastructure.
+The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
 
-## Image
+The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the latest tag.
 
-The name of the Docker image to use for running commands, such as `maven:3.6.3-jdk-8`. This is optional for stages that use Harness Cloud build infrastructure.
+You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
-The image name should include the tag and defaults to the latest tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. Provide a Fully Qualified Image Name (FQIN) when using a private container registry.
+* **Docker Registry:** Enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
+* **ECR:** Enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+* **GCR:** Enter the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
-Different container registries require different name formats:
+:::info
 
-* Docker Registry: enter the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards are not supported.
-* GCR: enter the name of the artifact you want to deploy. Images in repos need to reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
-* ECR: enter the name of the artifact you want to deploy. Images in repos need to reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+The stage's build infrastructure determines whether these fields are required or optional:
+
+* [Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run Tests** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-hosted VM build infrastructure.
+* [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run Tests** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
+
+:::
 
 ## Language
 
@@ -96,26 +103,63 @@ Variables passed to the container as environment variables and used in the step'
 
 ### Output Variables
 
-Output variables expose environment variables for use by other steps/stages in the pipeline. Use the step ID and variable name to reference a step's output variables in other steps.
+Output variables expose values for use by other steps or stages in the pipeline.
+
+To create an output variable, do the following in the step where the output variable originates:
+
+1. In the **Command** field, export the output variable. For example, the following command exports a variable called `myVar` with a value of `varValue`:
+
+   ```
+   export myVar=varValue
+   ```
+
+2. In the step's **Output Variables**, declare the variable name, such as `myVar`.
+
+To call a previously-exported output variable in a later step or stage in the same pipeline, use a variable expression that includes the originating step's ID and the variable name.
+
+<!-- ![](./static/run-step-output-variable-example.png) -->
+
+<docimage path={require('./static/run-step-output-variable-example.png')} />
+
+To reference an output variable in another step in the same stage, use either of the following expressions:
+
+```
+<+steps.[stepID].output.outputVariables.[varName]>
+<+execution.steps.[stepID].output.outputVariables.[varName]>
+```
+
+To reference an output variable in a different stage than the one where it originated, use the following expression:
+
+```
+<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
+<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
+```
 
 <details>
-<summary>Example: Output variables</summary>
+<summary>YAML example: Output variable</summary>
 
-Assume there is a pipeline that has a step called `Step1` with the **Id** `S1`.
+In the following YAML example, step `a` exports an output variable called `myVar`, and then step `b` references that output variable.
 
-The **Command** for `Step1` contains the following expression to export a variable: `export myVar=varValue`
-
-To use this exported variable in another step in the pipeline, the varible must be declared in `Step1`'s **Output Variables**.
-
-![](./static/configure-run-tests-step-settings-513.png)
-
-Later in the same pipeline, the **Command** for a Run step includes the following expression to reference the output variable from the `S1` step: `echo <+S1.output.outputVariables.myVar>`
-
-![Referencing the S1 output variable](./static/configure-run-tests-step-settings-514.png)
-
-Use the following syntax to reference output variables between steps in the same stage: `<+[stepID].output.outputVariables.[varName]>`
-
-Use the following syntax to reference output variables between steps in different stages: `<+stages.[stageID].execution.steps.[stepID].output.outputVariables.[varName]>`
+```yaml
+              - step:
+                  type: Run
+                  name: a
+                  identifier: a
+                  spec:
+                    shell: Sh
+                    command: export myVar=varValue
+                    outputVariables:
+                      - name: myVar
+              - step:
+                  type: Run
+                  name: b
+                  identifier: b
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo <+steps.a.output.outputVariables.myVar>
+                      echo <+execution.steps.a.output.outputVariables.myVar>
+```
 
 </details>
 

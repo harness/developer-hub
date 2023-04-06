@@ -19,7 +19,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - Harness supports manually adding service or environment [runtime inputs](https://developer.harness.io/docs/platform/references/runtime-inputs/) in the pipeline YAML. (CDS-54249)
 
-  You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML will be reflected on the Harness UI. 
+  You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML are reflected on the Harness UI. 
   
   Here's an example of the YAML:
 
@@ -49,7 +49,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 - The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports modifying the issue type. (CDS-54027)
 
-  When you update a Jira issue using the Jira Update step, you can now modify the Issue Type by selecting the desired issue type. For example, if the issue you are updating is a Story, you can update it to a Task. 
+  When you update a Jira issue using the Jira Update step, you can now modify the issue type by selecting the desired one from the drop-down list. For example, you can change a Story issue type to a Task. 
 
   ![](static/jira-update-step.png)
 
@@ -57,9 +57,9 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   
   ![](static/add-jira-fields.png)
   
-- You can now select specific services and environments at an account or organization level by adding a rule when creating a deployment freeze window. (CDS-54222, CDS-53783)
+- You can now select specific services and environments at an account or organization level when creating a deployment freeze window. (CDS-54222, CDS-53783)
 
-  When creating a deployment freeze window, you can now select specific services and environments at an account or organization level using the **Add Rule** option in the **Coverage** tab. 
+  When creating a deployment freeze window, select specific services and environments at an account or organization level using the **Add Rule** option in the **Coverage** tab. 
 
   ![](static/freeze-deployments-src-env.png)
 
@@ -1787,6 +1787,9 @@ Environments v2 now support variable expressions you can use to reference the En
 For details on Services and Environments v2, go to Services and Environments Overview.
 
 For details on Environment and Infrastructure Definition expressions, go to Built-in and Custom Harness Variables Reference.
+
+ <docvideo src="https://www.loom.com/embed/a16ac5354fba461abe934e04583c65c5" width="100%" height="600" />
+
 
 ### Fixed issues
 

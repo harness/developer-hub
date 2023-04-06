@@ -20,7 +20,9 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### Early access
 
-This release does not include any early access features.
+Permissions-based filtering of service instances on the Main Dashboard (CDS-50514)
+
+The Service Instances panel on the Overview screen and the Instances panel on the Services screen show only those service instances for which the user has `Read` permissions. This feature is behind the feature flag `SPG_SERVICES_OVERVIEW_RBAC`. To enable the feature flag, contact Harness Support.
 
 #### What's new
 

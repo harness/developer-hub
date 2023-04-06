@@ -1,0 +1,13 @@
+{
+  "position": 1,
+  "label": "Get Started",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Get Started"
+   },
+  "customProps": {
+    "description": "Overview of Harness Chaos Engineering"
+  }
+}
