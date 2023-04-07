@@ -1,6 +1,6 @@
 ---
 title: View builds
-description: You can inspect builds and monitor ongoing builds.
+description: You can inspect past builds and monitor ongoing builds.
 sidebar_position: 10
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
@@ -48,3 +48,7 @@ Builds triggered by webhooks can include a link to the PR or commit that started
 Similarly, if a pull request triggers a build, you can follow the **Details** link from the PR's Git status to the build details page in Harness.
 
 ![A PR's Git status with a link to a Harness CI build.](./static/ci-builds-gh-pr-link.png)
+
+## Dashboards
+
+For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/Dashboards/dashboards-overview).
