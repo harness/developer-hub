@@ -97,7 +97,7 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 
 * [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
 * [Run tests](/docs/category/run-tests)
-* <!--[Manage dependencies](/docs/category/manage-dependencies)-->
+* [Manage dependencies](/docs/category/manage-dependencies)
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
 * [Run scripts](/docs/category/run-scripts)
 * [Use plugins](/docs/category/use-plugins)
@@ -122,7 +122,7 @@ You can specify conditional execution settings for an entire stage and for indiv
 For information about looping strategies to go:
 
 * [Looping strategies - matrix, repeat, parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
-* <!--[Optimize and enhance CI pipelines](/docs/category/optimize-and-enhance)-->
+* [Optimize and enhance CI pipelines](/docs/category/optimize-and-enhance)
 
 </details>
 

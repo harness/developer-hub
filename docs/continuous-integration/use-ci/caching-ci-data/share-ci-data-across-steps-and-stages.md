@@ -1,6 +1,6 @@
 ---
 title: Share CI data across steps and stages
-description: This topic describes how you can share CI data across steps and stages
+description: This topic describes how you can share CI data across steps and stages.
 sidebar_position: 10
 helpdocs_topic_id: fbrgw2ixjr
 helpdocs_category_id: 01tyeraya4
