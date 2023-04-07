@@ -1,6 +1,6 @@
 ---
 title: Create your first SLO
-description: Learn how to create a SLO.
+description: Learn to create a SLO.
 sidebar_position: 30
 ---
 

@@ -1,11 +1,11 @@
 {
-   "label":"Change impact analysis",
-   "position": 80,
+   "label":"SRM notifications",
+   "position": 70,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Change impact analysis"
+      "title":"SRM notifications"
    }
-   } 
+   }

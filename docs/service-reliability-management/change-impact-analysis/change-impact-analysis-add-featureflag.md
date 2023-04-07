@@ -1,6 +1,6 @@
 ---
 title: Connect a feature flag to a monitored service
-description: Learn how to connect a feature flag to a monitored service.
+description: Learn to connect a feature flag to a monitored service.
 sidebar_position: 40
 ---
 

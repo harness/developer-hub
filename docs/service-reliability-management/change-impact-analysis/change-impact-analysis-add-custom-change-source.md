@@ -1,8 +1,10 @@
 ---
 title: Add a custom change source
-description: Learn how to add a custom change source to a monitored service.
+description: Learn to add a custom change source to a monitored service.
 sidebar_position: 50
 ---
+
+
 With Harness' custom change source feature, you can easily integrate a monitored service with any change monitoring tool that supports webhook URLs or cURL commands. 
 
 You just need to add a custom change source to the monitored service and configure the change monitoring tool using the webhook URL or cURL commands.

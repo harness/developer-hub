@@ -1,6 +1,6 @@
 ---
 title: Simple SLO
-description: Create a simple SLO.
+description: Learn to create a simple SLO.
 sidebar_position: 10
 ---
 

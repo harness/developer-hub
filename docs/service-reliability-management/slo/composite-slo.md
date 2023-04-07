@@ -1,6 +1,6 @@
 ---
 title: Composite SLO
-description: Learn how to a create composite SLO.
+description: Learn to create a composite SLO.
 sidebar_position: 20
 ---
 

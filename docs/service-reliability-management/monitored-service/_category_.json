@@ -1,6 +1,6 @@
 {
    "label":"Monitored service",
-   "position": 50,
+   "position": 30,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
