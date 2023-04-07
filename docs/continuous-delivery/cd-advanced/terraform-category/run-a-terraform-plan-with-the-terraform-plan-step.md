@@ -375,12 +375,17 @@ For example, if your config.tf file has the following backend:
 terraform {  
   backend "gcs" {  
     bucket  = "tf-state-prod"  
-    prefix  = "terraform/state"  
   }  
 }
 ```
 
 In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+
+For example:
+```
+ prefix  = "terraform/state"  
+ access_token = "accessToken....."
+```
 
 ## Targets
 
