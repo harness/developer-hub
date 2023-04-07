@@ -25,6 +25,12 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 
 You can now add [stages](#stages) and [steps](#steps) to the pipeline, as well as configure pipeline settings. For a guided experience, try one of the [CI tutorials](../ci-quickstarts/ci-pipeline-quickstart.md).
 
+:::tip
+
+You can also [import pipelines from Git](/docs/platform/git-experience/import-a-pipeline/).
+
+:::
+
 </details>
 
 <details>
@@ -37,7 +43,7 @@ In addition to a default [codebase](#codebases), the following settings are conf
 * [Variables](/docs/category/variables-and-expressions)
 * [Notifications](/docs/category/notifications-1)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers/)
-* [Policy Sets](/docs/platform/policy-as-code/disable-a-policy-set/)
+* [Policy Sets](/docs/platform/Policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
 
 :::tip
@@ -60,7 +66,7 @@ To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **
 
 :::tip
 
-To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables), and [modify build settings at runtime](./build-stage-settings/modify-and-override-build-settings-before-a-build.md), among other optimization techniques.
+To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables), [modify build settings at runtime](./build-stage-settings/modify-and-override-build-settings-before-a-build.md), and create [custom stages](/docs/platform/pipelines/add-a-custom-stage/), among other optimization techniques.
 
 :::
 
@@ -102,6 +108,7 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 * [Run scripts](/docs/category/run-scripts)
 * [Use plugins](/docs/category/use-plugins)
 * [View builds](/docs/category/view-builds)
+* [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
 ## Advanced stage and step settings
 
