@@ -145,7 +145,7 @@ Select **Run** to run the pipeline. Depending on your codebase configuration, yo
 
 While the build runs, you can observe the step logs on the [Build details page](../view-your-builds/viewing-builds.md).
 
-After the pipeline runs, you can [view test reports](../view-your-builds/viewing-tests.md) on the **Tests** tab of the Build details page.
+After the pipeline runs, you can [view test reports](../set-up-test-intelligence/viewing-tests.md) on the **Tests** tab of the Build details page.
 
 ![](./static/run-a-script-in-a-ci-stage-529.png)
 

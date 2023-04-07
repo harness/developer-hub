@@ -429,5 +429,11 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/group-ci-steps-using-step-groups",
       to: "/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups",
     },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/view-your-builds/viewing-tests",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests",
+    },
   ],
 };
