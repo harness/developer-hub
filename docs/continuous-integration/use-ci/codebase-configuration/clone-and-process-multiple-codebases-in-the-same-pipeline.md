@@ -53,7 +53,7 @@ Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
 
 ## Build an artifact from both code repos
 
-Now that the files from both repos will be cloned into a common workspace, you can add a step, such as a [Build and Push and image to DockerHub step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings), to the **Build** stage to build an artifact using code from both repos.
+Now that the files from both repos will be cloned into a common workspace, you can add a step, such as a [Build and Push an image to DockerHub step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings), to the **Build** stage to build an artifact using code from both repos.
 
 Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings#dockerfile) which assume files are located at the codebase's root directory if not otherwise specified. Depending on the default codebase, you might need to specify a non-root path for build files.
 

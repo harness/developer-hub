@@ -224,7 +224,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 7. Under **Optional Configuration**, add a **Report Path** and enter `*.xml`.
 8. Select **Apply Changes** to save the step.
-9. Add a [Build and Push and Image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
+9. Add a [Build and Push an Image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
 
    * **Name:** Enter a name, such as `Build and push image to Docker Registry`.
    * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
