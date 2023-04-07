@@ -411,5 +411,17 @@ module.exports = {
       from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
       to: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
     },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
+    {
+      from: "/docs/category/troubleshoot-and-optimize-ci",
+      to: "/docs/category/troubleshoot-ci",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
+    {
+      from: "/docs/continuous-integration/troubleshoot/optimizing-ci-build-times",
+      to: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
+    },
   ],
 };

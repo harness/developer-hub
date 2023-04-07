@@ -1,25 +1,24 @@
 ---
-title: Optimizing CI Build Times
-description: You can use these methods to speed up your CI builds.
-
-# sidebar_position: 2
+title: Optimize and enhance CI pipelines
+description: You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
+sidebar_position: 10
 helpdocs_topic_id: g3m7pjq79y
 helpdocs_category_id: 99m8m1s55y
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use these methods to speed up your CI builds.
+You can optimize your CI pipelines to make them faster, more efficient, and more versatile.
 
 ### Test Intelligence
 
 Testing is an important part of Continuous Integration. Testing safeguards the quality of your product before shipping. But testing can also take a lot of time because a test cycle involves multiple tests. Often, the tests run are irrelevant to the code changes that triggered the build.
 
-[Test Intelligence](../ci-quickstarts/test-intelligence-concepts.md) dramatically improves test times by running only the tests required to confirm the quality of the code changes that triggered the CI Pipeline. 
+[Test Intelligence](../../ci-quickstarts/test-intelligence-concepts.md) dramatically improves test times by running only the tests required to confirm the quality of the code changes that triggered the CI Pipeline. 
 
 ### Looping Strategies
 
-[Looping strategies](../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) enable you to run a Stage or Step multiple times with different inputs. This eliminates the need to copy the same Stage or Step for each variation you need. It also makes the Pipeline more readable, clean, and easy to maintain. Looping strategies enable use cases such as:
+[Looping strategies](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) enable you to run a Stage or Step multiple times with different inputs. This eliminates the need to copy the same Stage or Step for each variation you need. It also makes the Pipeline more readable, clean, and easy to maintain. Looping strategies enable use cases such as:
 
 * You want to test a UI feature in multiple browsers and platforms. You can define a matrix that specifies the browsers and platforms to test.
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
@@ -40,9 +39,9 @@ For more best practices, see [Best Practices for Writing Dockerfiles](https://do
 
 Remote Docker Layer Caching can dramatically improve build times by sharing layers across Pipelines, Stages, and Steps. You can set up Docker Layer Caching in the following Build Steps:
 
-* [Build and Push to Docker Registry](../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* [Build and Push to ECR](../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
-* [Build and Push to GCR](../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
+* [Build and Push to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
+* [Build and Push to ECR](../../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
+* [Build and Push to GCR](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
 
 ### Optimize your Build Tests
 
@@ -63,8 +62,8 @@ You can use Cache Intelligence to enable automated caching on a pipeline. This i
 You can use manual caching on pipelines that don't support Cache Intelligence. For end-to-end descriptions, go to the following:  
 
 * [Harness CI for UI Builds](https://harness.io/blog/continuous-integration/harness-cie-ui-builds/)
-* [Save and Restore Cache from S3](../use-ci/caching-ci-data/saving-cache.md)
-* [Save and Restore Cache from GCS](../use-ci/caching-ci-data/save-cache-in-gcs.md)
+* [Save and Restore Cache from S3](../caching-ci-data/saving-cache.md)
+* [Save and Restore Cache from GCS](../caching-ci-data/save-cache-in-gcs.md)
 
 ### Increase Step Resources
 
