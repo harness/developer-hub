@@ -16,7 +16,47 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### March 31, 2023, version 78914
+## April 6, 2023, version 79007
+
+### Continuous Delivery
+
+#### What's new
+
+- Harness recommends that you use the `kubelogin` auth plugin to authenticate the Google Kubernetes Engine cluster with Kubernetes version 1.22 or later. (CDS-52514)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Google Cloud cloud provider (connecting to GKE) supports two authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+- Users can only their services in the **Overview** page and deployments in the **Deployments** page (CDS-50514)
+	In the main dashboard's **Overview**, Harness now automatically filters the **Service Instances** panel to show only those services that the currently logged in user is authorized to view.
+	
+	In the main dashboard's **Deployments**, Harness now automatically filters the deployments to show only those deployments that the currently logged in user is authorized to view.
+	
+	This makes it easier for you to find your services.
+
+#### Early access
+
+- Pipelines in different projects are now independent. (CDS-55830, ZD-41377)
+
+	This change is behind the feature flag `PROJECT_SCOPED_RESOURCE_CONSTRAINT_QUEUE`.
+	
+	Pipelines were waiting on resource constraints although no other deployment was running with the same service and infrastructure definition combination. 
+	
+	Resource Constraints were scoped too broadly, so users' pipelines went into a wait state.
+	
+	This was because of other pipelines in other projects with the same infrastructure configuration. 
+	
+	This has now been changed by scoping resource constraints to the project.
+
+#### Fixed issues
+
+This release does not include any fixed issues.
+
+
+## March 31, 2023, version 78914
 
 #### Early access
 
