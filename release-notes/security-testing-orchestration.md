@@ -22,7 +22,7 @@ This release does not include new features.
 
 ### Early access features
 
-This release does not include early access features
+This release does not include early access features.
 
 ### Fixed Issues
 
