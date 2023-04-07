@@ -17,3 +17,7 @@ Harness CI includes features that you can use to improve test times.
 ### Parallelism
 
 You can use parallelism with either the **Run** or **Run Tests** steps to speed up test times. For more information, go to [Speed Up CI Test Pipelines Using Parallelism](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/).
+
+### Grouping
+
+You can use [step groups](../optimize-and-more/group-ci-steps-using-step-groups.md) to organize and condense pipelines that run a lot of tests.
