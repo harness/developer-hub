@@ -218,7 +218,8 @@ SET CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
 </Tabs>
 ```
 ### Install the Drone Runner on MacOS
-MacOS Gatekeeper will stop the installation if Apple cannot check it for malicious software. You may see error like below<img width="252" alt="image" src="https://user-images.githubusercontent.com/109999795/230515787-fa70642d-9a42-4468-935b-e51d258bd29a.png">
+MacOS Gatekeeper will stop the installation if Apple cannot check it for malicious software. You may see error like below
+![](./static/define-a-macos-build-infrastructure-10.png)
 
 The solution is to take the following steps
 1. Open the Apple menu > System Preferences.
@@ -226,7 +227,8 @@ The solution is to take the following steps
 3. In the General tab, click the yellow padlock and enter your password.
 4. Click "Allow" next to the message that says the app was blocked from loading.
 5. Tap on OK.
-6. Click "Open Anyway" next to the popup that reads the app was not from an identified developer.<img width="645" alt="image" src="https://user-images.githubusercontent.com/109999795/230515698-4fb3c5d1-b5ea-41e6-8d05-813eb62280f5.png">
+6. Click "Open Anyway" next to the popup that reads the app was not from an identified developer.
+![](./static/define-a-macos-build-infrastructure-11.png)
 7. Click Open when the error shows up.
 
 
