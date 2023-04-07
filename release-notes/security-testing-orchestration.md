@@ -14,6 +14,20 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## April 6, 2023, version 1.43.1
+
+### New features
+
+This release does not include new features
+
+### Early access features
+
+This release does not include early access features
+
+### Fixed Issues
+
+* Fixed a UI issue in the External Tickets Settings page for setting up Jira integrations: The Default Project and Default Issue Type menus always used the account-level Jira connector, even when a different connected was selected for the current project or organization. (STO-5756)
+
 ## March 30, 2023, version 1.40.2
 
 ### New features
@@ -40,6 +54,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 * Fixed an issue with SonarQube scans: if a repository had a .gitignore with a specific pattern, all files were ignored during the scan. (STO-5711)
 * Fixed an issue with Snyk scans to ensure that **Issue Details** shows all remediation information from the scan results under Remediation. (STO-5663)
 * Fixed an issue where, if a scan detected no issues and a later scan detected one or more issues, **Issue Details** would include remediation information from the later scan. (STO-5463)
+*  Fixed a UI issue where the Security Tests tab was showing issue counts and the Ignored status of some issues incorrectly. This was due to a DB query that caused exemptions scoped to an issue in one project to be applied to the same issue in all projects in the account. (STO-5718)
 
 
 ## March 23, 2023, version 1.38.3
