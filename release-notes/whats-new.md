@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-31T10:00
+date: 2023-04-06T10:00
 sidebar_position: 1
 ---
 
@@ -15,6 +15,59 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## April 6, 2023
+
+### Continuous Delivery
+
+- The **Manage Services** tab has been removed from the Services dashboard page. (CDS-57974)
+  
+  Harness has consolidated the Dashboard and Manage Services tabs into one Services page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+- The [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts) input and output variables are now optional. (CDS-57766, CDS-56448)
+  
+  Input and output variables were mandatory, but now you can choose whether to fill in values. This allows you more flexibility when modeling your pipeline.
+  Here's an example where the script declares two variables but one is set as a runtime input and one is empty.
+
+  ![picture 66](static/ecc637c511be5850e704bf1db61db5cbda37d8a10ad37eb3490a05570a0b5ece.png)
+- Tanzu deployments now support additional artifact sources: Azure Artifacts, Bamboo, and GCS. (CDS-57681)
+  
+  Tanzu Application Services (TAS) deployment now support Artifactory, Nexus, Bamboo, Amazon S3, Google Container Registry (GCR), Google Cloud Storage (GCS), Google Artifact Registry, AWS Elastic Container Registry (ECR), Azure Container Registry (ACR), Azure Artifacts, GitHub Package Registry, custom registries, and any Docker Registry such as DockerHub.
+
+  ![picture 67](static/162273825052b81df3a86e5b649c38bdcf12f9175bd60cb7db872d223c2635c5.png)
+- The **Retry** timeout failure strategy is now supported in [TAS steps](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
+  
+  If you set the [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) on these Tanzu Application Services (TAS) steps, you can now select **Retry** for **Timeout Failures**.
+
+  <docimage path={require('./static/e467e7de04d6d257e1871fad7181b65a39b7712b68826b84b7c79d849b411f04.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- View the freeze windows that impact a pipeline from the Pipeline Executions page. (CDS-53781)
+  
+  You can now select **Associated Freeze Window Details** from the more options setting (⋮) on the Pipeline Executions page. Selecting this option will take you to the related freeze windows that apply to the pipeline execution.
+- Helm Chart Version fetch is added to Manifest Details form. (CDS-53220)
+  
+  You can now select the Helm Chart name in the **Manifest Details** form of the service and get the list of chart versions.
+  
+  ![picture 72](static/f01d849d1372a8d1c67dcd7532d2a3d58562fb72453328008eb617ae5df0b127.png)
+
+  This only works for HTTP Helm or Git based Helm Charts.
+- Harness recommends that you use the `kubelogin` auth plugin to authenticate the Google Kubernetes Engine cluster with Kubernetes version 1.22 or later. (CDS-52514)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Google Cloud cloud provider (connecting to GKE) supports two authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+- You can now trigger a pipeline when there are changes to an artifact in Bamboo. (CDS-51742)
+  
+  [On new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/) triggers are simple way to automate deployments for new builds. On new artifact triggers simply listen to a Bamboo registry where one or more of the artifacts in your pipeline are hosted. Every time a new image is pushed to your Bamboo account, it triggers a CD pipeline that deploys it automatically.
+
+  <docimage path={require('./static/6a9869b8714c6ef7316fcdc98fd5bda65f0758f5ed84a4991c4d7f3007dc5372.png')} width="60%" height="60%" title="Click to view full size image" />
+- ACR in Azure GovCloud is supported in the Docker Registry connector. (CDS-57777)
+  
+  You can now use `.io` and `.us` domains.
+
+  ![picture 73](static/40962ce702cb34f682116d48237a0b3a99d68d840ef0f6e39e4b260b79fba3dc.png)
 
 ## March 31, 2023, version 78914
 
