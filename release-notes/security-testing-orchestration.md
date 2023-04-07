@@ -14,11 +14,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## April 6, 2023
-
-* `sto-core` version 1.43.1
-* `sto-manager` version 79200
-* `ticket-service` version 0.11.0
+## April 6, 2023 version 1.43.1
 
 ### New features
 
@@ -30,13 +26,10 @@ This release does not include early access features
 
 ### Fixed Issues
 
-* Fixed a UI issue in the External Tickets Settings page for setting up Jira integrations: The Default Project and Default Issue Type menus always used the account-level Jira connector, even when a different connected was selected for the current project or organization. (STO-5756)
-* Fixed a search issue in the Security Tests tab: If a search term included certain special characters, the UI would fail with a JavaScript exception. (STO-5745) 
+* Fixed a UI issue in **External Tickets Settings** for setting up Jira integrations:  **Default Project** and **Default Issue Type** always used the account-level Jira connector, even when a different connector was selected for the current project or organization. (STO-5756)
+* Fixed a search issue in **Security Tests**: If a search term included certain special characters, the UI would fail with a JavaScript exception. (STO-5745) 
 
-## March 30, 2023
-
-* `sto-core` version 1.40.2
-* `sto-manager` version 79200
+## March 30, 2023, version 1.40.2
 
 ### New features
 
@@ -65,7 +58,7 @@ This release does not include early access features
 *  Fixed a UI issue where the Security Tests tab was showing issue counts and the Ignored status of some issues incorrectly. This was due to a DB query that caused exemptions scoped to an issue in one project to be applied to the same issue in all projects in the account. (STO-5718)
 
 
-## March 23, 2023, version 1.38.3
+## March 23, 2023
 
 ### New features
 
@@ -139,7 +132,7 @@ This release does not include new features.
 * Fixed an issue in the Jira integration that allowed users to try to create tickets against targets with no baseline specified, which is not supported and resulted in a 404 response. (STO-5477)
 * Fixed an issue in the Back Duck configuration UI where the in-tool help said that the Image Region setting was required when scanning AWS ECR container images. This field is optional. (STO-5450)
 
-## March 2, 2023
+## March 2, 2023, version v1.32.1 
 
 ### New features
 
