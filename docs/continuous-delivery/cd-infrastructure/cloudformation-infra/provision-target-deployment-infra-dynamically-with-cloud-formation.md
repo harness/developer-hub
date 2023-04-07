@@ -135,7 +135,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 
 See:
 
-* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+* [Add and Reference Text Secrets](../../../platform/Secrets/2-add-use-text-secrets.md)
 * [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### Stack Name
@@ -179,7 +179,7 @@ Where the JSON file contains parameters such as these:
 1. In **Cloud Formation Parameter Files**, click **Add**.
 2. In **Parameter File Connector**, select your Git platform, and the select or add a Git Connector. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206) for steps on adding a Git Connector.
    
-   For AWS S3, see [Add an AWS Connector](../../../platform/7_Connectors/add-aws-connector.md).
+   For AWS S3, see [Add an AWS Connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-aws-connector.md).
 3. In **Parameter File Details**, enter the following:
 
    + **Identifier:** enter an Identifier for the file. This is just a name that indicates what the parameters are for.
@@ -197,7 +197,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 
 See:
 
-* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+* [Add and Reference Text Secrets](../../../platform/Secrets/2-add-use-text-secrets.md)
 * [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### CloudFormation Parameters Overrides
@@ -210,7 +210,7 @@ In **CloudFormation Parameters Overrides**, click **Retrieve Names from template
 
 For each parameter you want to override, enter a new values in **Value**.
 
-Harness text secrets are supported. See [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+Harness text secrets are supported. See [Add and Reference Text Secrets](../../../platform/Secrets/2-add-use-text-secrets.md).
 
 ### Role ARN
 

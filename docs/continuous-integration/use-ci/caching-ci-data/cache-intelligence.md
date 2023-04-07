@@ -124,9 +124,9 @@ You can use the Cache Intelligence API to get information about the cache or del
 
 :::note
 
-You must have an API key with [core_account_edit](/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference#harness-api-permissions) permissions to invoke these APIs.
+You must have an API key with [core_account_edit](../../../platform/4_Role-Based-Access-Control/ref-access-management/api-permissions-reference.md#harness-api-permissions) permissions to invoke these APIs.
 
-For information about API keys, go to [Add and manage API keys](/docs/platform/role-based-access-control/add-and-manage-api-keys).
+For information about API keys, go to [Add and manage API keys](../../../platform/3_User-Management/7-add-and-manage-api-keys.md).
 
 :::
 

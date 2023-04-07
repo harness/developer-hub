@@ -22,7 +22,7 @@ Alternately, you can use a service account that has only the **Storage Object Vi
 
 :::caution
 
-Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](../add-a-kubernetes-cluster-connector.md).
+Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](../../5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
 
 :::
 
@@ -77,7 +77,7 @@ GCP connector settings include:
 <details>
 <summary>Store service account keys as Harness secrets</summary>
 
-You can store a GCP service account key in a [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md).
+You can store a GCP service account key in a [Harness Encrypted Text secret](../../Secrets/2-add-use-text-secrets.md).
 
 To obtain the Google Cloud's service account key file, go to the Google documentation on [Creating and managing service account keys](https://cloud.google.com/iam/docs/creating-managing-service-account-keys). JSON format is required.
 
@@ -92,7 +92,7 @@ To obtain the Google Cloud's service account key file, go to the Google document
 * **GCP workload identity:** If you installed the Harness [Kubernetes delegate](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/) in a Kubernetes cluster in GKE that has [GCP Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity?hl=tr#enable_on_cluster) enabled and uses the same service account and node pool annotation, then the Google Cloud Platform (GCP) connector inherits these credentials if it uses that delegate.
 * **Role and policy changes:** If you find that the IAM role associated with your GCP connector don't have the policies required by the GCP service you want to access, you can modify or change the role assigned to the Harness delegate that your GCP connector is using. You may need to wait up to five minutes for the change to take effect.
 * **See also:**
-  * [Add a Google Cloud Platform (GCP) connector](../connect-to-google-cloud-platform-gcp.md)
+  * [Add a Google Cloud Platform (GCP) connector](../../5_Resources/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md)
   * [GCP Policy Simulator](https://cloud.google.com/iam/docs/simulating-access)
 
 </details>

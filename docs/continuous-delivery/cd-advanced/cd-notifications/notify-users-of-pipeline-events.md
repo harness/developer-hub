@@ -16,12 +16,12 @@ Event notifications are set up using **Notification Rules** in your Pipeline. Yo
 
 This topic describes how to set up **Notification Rules** in your Pipeline.
 
-You can set notifications preferences on User Groups also. See [Add and Manage User Groups](../../../platform/4_Role-Based-Access-Control/4-add-user-groups.md).
+You can set notifications preferences on User Groups also. See [Add and Manage User Groups](../../../platform/3_User-Management/4-add-user-groups.md).
 
 ## Before You Begin
 
 * [Send Notifications Using Slack](../../../platform/5_Notifications/send-notifications-using-slack.md)
-* [Add and Manage Resource Groups](../../../platform/4_Role-Based-Access-Control/4-add-user-groups.md)
+* [Add and Manage Resource Groups](../../../platform/3_User-Management/4-add-user-groups.md)
 
 ## Limitations
 
@@ -86,7 +86,7 @@ When you are done, you'll have a webhook that looks something like this:
 
 Copy the webhook.
 
-You either paste the Webhook into **Slack Webhook URL** or add it as an [Encrypted Text](../../../platform/6_Security/2-add-use-text-secrets.md) in Harness and reference it here.
+You either paste the Webhook into **Slack Webhook URL** or add it as an [Encrypted Text](../../../platform/Secrets/2-add-use-text-secrets.md) in Harness and reference it here.
 
 For example, if you have a text secret with the identifier `slackwebhookURL`, you can reference it like this:​
 
@@ -112,7 +112,7 @@ You can reference a secret within the Account scope using an expression with `ac
 
 ## Option: PagerDuty Notifications
 
-For PagerDuty notifications, enter the key for a PagerDuty Account/Service or add it as an [Encrypted Text](../../../platform/6_Security/2-add-use-text-secrets.md) in Harness and reference it in **PagerDuty Key**. Harness will send notifications using this key.
+For PagerDuty notifications, enter the key for a PagerDuty Account/Service or add it as an [Encrypted Text](../../../platform/Secrets/2-add-use-text-secrets.md) in Harness and reference it in **PagerDuty Key**. Harness will send notifications using this key.
 
 For example, if you have a text secret with the identifier `pagerdutykey`, you can reference it like this:​
 
@@ -174,7 +174,7 @@ The channel indicates that the Connector was set up.
 
 ![](./static/notify-users-of-pipeline-events-10.png)
 
-In Harness, in **Notification Method** settings, enter the Webhook URL for your Microsoft Teams Channel in **Microsoft Teams Webhook URL** or add it as an [Encrypted Text](../../../platform/6_Security/2-add-use-text-secrets.md) and reference it here.
+In Harness, in **Notification Method** settings, enter the Webhook URL for your Microsoft Teams Channel in **Microsoft Teams Webhook URL** or add it as an [Encrypted Text](../../../platform/Secrets/2-add-use-text-secrets.md) and reference it here.
 
 For example, if you have a text secret with the identifier `teamswebhookURL`, you can reference it like this:​
 
@@ -209,5 +209,5 @@ Once you've created Notification Rules, you can enable and disable them in the *
 
 ## See Also
 
-* [Add and Manage User Groups](../../../platform/4_Role-Based-Access-Control/4-add-user-groups.md)
+* [Add and Manage User Groups](../../../platform/3_User-Management/4-add-user-groups.md)
 

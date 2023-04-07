@@ -100,7 +100,7 @@ The Kubernetes namespace in the target cluster to use.
 
 By default, Harness pulls certain images from public Docker Hub repos that are needed to run a build. You can override this by using a Connector that downloads these images from the Harness Container Image Registry instead. This option is useful when your default Delegate cannot access the public registry (due to security policies in your organization, for example, or if your infrastructure is running in a private cloud).
 
-To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](../../platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md).
+To override how the Build Stage pulls these images, create a Connector as described in [Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/Resources/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 ## Advanced
 

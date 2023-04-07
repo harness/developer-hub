@@ -130,7 +130,7 @@ Click the provider where your files are hosted.
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-05.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/5_Resources/Connectors/Code-Repositories/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
 
@@ -256,7 +256,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 ```bash
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
-See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+See [Add Text Secrets](../../../platform/Secrets/2-add-use-text-secrets.md).
 
 ### Remote Variables
 
@@ -384,7 +384,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/Secrets/2-add-use-text-secrets.md).
 
 ## Option: Advanced Settings
 

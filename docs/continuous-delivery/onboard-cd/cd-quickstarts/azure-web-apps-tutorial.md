@@ -107,7 +107,7 @@ You will add the same Docker image or non-containerized artifact you use in your
 2. In **Specify Artifact Repository Type**, select the artifact registry type.
 3. Select or create a Connector to this registry.
 
-  For details on setting up each registry, go to [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md).
+  For details on setting up each registry, go to [Connect to an Artifact Repo](../../../platform/5_Resources/Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md).
 
   Once you have an artifact Connector set up and selected, you can fill out the **Artifact Details** settings.
 
@@ -151,7 +151,7 @@ You simply provide select or create an Azure Cloud Provider Connector and then s
 4. In **Web App Infrastructure Details**, you will select or create an Azure Cloud Provider Connector and then select the Web App's Subscription Id and Resource Group.
 5. In **Connector**, select or create an Azure Cloud Provider Connector that connects to your Application and Tenant Ids.
 
-  For steps on setting up a new Azure Cloud Provider Connector, go to [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
+  For steps on setting up a new Azure Cloud Provider Connector, go to [Add a Microsoft Azure Cloud Connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
 
   Azure Web App Roles and PermissionsIf you use Microsoft Azure Cloud Connector and Service Principal or Managed Identity credentials, you can use a custom role or the **Contributor** role. The **Contributor** role is the minimum requirement.
 
@@ -479,7 +479,7 @@ Harness is working with the Azure team for a resolution (see [issue 27221](https
 
 #### Using Secrets and Variables Settings
 
-You can use [Harness secrets](../../../platform/6_Security/2-add-use-text-secrets.md) and Service or Workflow variables in the **Application settings** and **Connection strings** in the Harness Service.
+You can use [Harness secrets](../../../platform/Secrets/2-add-use-text-secrets.md) and Service or Workflow variables in the **Application settings** and **Connection strings** in the Harness Service.
 
 These settings use JSON, so ensure that you use quotes around the variable or secret reference:
 

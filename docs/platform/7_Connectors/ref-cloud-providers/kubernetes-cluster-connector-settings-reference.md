@@ -14,7 +14,7 @@ The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernet
 
 For cloud platform-specific connections, see platform [Cloud Connectors](/docs/category/cloud-platform-connectors).
 
-Looking for the How-to? See [Add a Kubernetes Cluster Connector](../add-a-kubernetes-cluster-connector.md).
+Looking for the How-to? See [Add a Kubernetes Cluster Connector](../../5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
 
 ### Video Summary
 
@@ -30,7 +30,7 @@ The Kubernetes Cluster Connector is platform-agnostic. Use it to access a cluste
 
 It cannot also access platform-specific services and resources. For those, use a platform Connector like Google Cloud Platform or Amazon Web Services.
 
-See [Add a Google Cloud Platform (GCP) Connector](../connect-to-google-cloud-platform-gcp.md), [Add an AWS Connector](../add-aws-connector.md).
+See [Add a Google Cloud Platform (GCP) Connector](../../5_Resources/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md), [Add an AWS Connector](../../5_Resources/Connectors/Cloud-providers/add-aws-connector.md).
 
 For example, let's say you have a GKE Kubernetes cluster hosted in Google Cloud Platform (GCP). You can use the Kubernetes Cluster Connector to connect Harness to the cluster in GCP. The Kubernetes Cluster Connector cannot also access Google Container Registry (GCR).
 

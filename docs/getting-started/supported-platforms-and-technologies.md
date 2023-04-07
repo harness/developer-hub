@@ -764,15 +764,15 @@ See [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-c
 
 The following table lists Harness support for cloud platform secrets management services.
 
-See [Harness Secrets Management Overview](../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness Secrets Management Overview](../platform/Secrets/Secrets-Management/1-harness-secret-manager-overview.md).
 
 | Provider Name                                                               | Key Encryption Support | Encrypted Data Storaged with Harness | Support for Referencing Existing Secrets |
 | --------------------------------------------------------------------------- | ---------------------- | ------------------------------------ | ---------------------------------------- |
-| [AWS KMS](../platform/6_Security/7-add-an-aws-kms-secrets-manager.md)       | Yes                    | Yes                                  | No                                       |
-| [AWS Secret Manager](../platform/6_Security/6-add-an-aws-secret-manager.md) | Yes                    | No                                   | Yes                                      |
-| [Hashicorp Vault](../platform/6_Security/12-add-hashicorp-vault.md)         | Yes                    | No                                   | Yes                                      |
-| [Azure Key Vault](../platform/6_Security/8-azure-key-vault.md)              | Yes                    | No                                   | Yes                                      |
-| [Google KMS](../platform/6_Security/10-add-google-kms-secrets-manager.md)   | Yes                    | Yes                                  | No                                       |
+| [AWS KMS](../platform/Secrets/Secrets-Management/7-add-an-aws-kms-secrets-manager.md)       | Yes                    | Yes                                  | No                                       |
+| [AWS Secret Manager](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager) | Yes                    | No                                   | Yes                                      |
+| [Hashicorp Vault](../platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)         | Yes                    | No                                   | Yes                                      |
+| [Azure Key Vault](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/azure-key-vault)             | Yes                    | No                                   | Yes                                      |
+| [Google KMS](../platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)   | Yes                    | Yes                                  | No                                       |
 
 ## Harness Self-Managed Enterprise Edition
 

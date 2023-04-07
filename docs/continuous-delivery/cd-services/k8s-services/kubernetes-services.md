@@ -210,7 +210,7 @@ To add Kubernetes manifests to your service, do the following:
 7. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Continue**.
 8. In **Specify K8s Manifest Store**, select the Git provider.
    
-   The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+   The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/5_Resources/Connectors/Code-Repositories/connect-to-code-repo.md).
 9.  Click **Continue**. **Manifest Details** appears.
 10. In **Manifest Identifier**, enter an Id for the manifest.
 11. If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
@@ -256,7 +256,7 @@ To add a Values YAML file, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Manifests**, click **Add Manifest**.
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
-8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/5_Resources/Connectors/Code-Repositories/connect-to-code-repo.md).
    
    If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm CD tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes delegate](../../../platform/2_Delegates/install-delegates/overview.md).
 9.  Once you've selected a Connector, click **Continue**.
@@ -649,7 +649,7 @@ To use Kustomize Patches, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Manifests**, select **Add Manifest**.
 7. In **Specify Manifest Type**, select **Kustomize Patches**, and select**Continue**.
-8. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+8. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/5_Resources/Connectors/Code-Repositories/connect-to-code-repo.md).
    
    The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 9.  Select **Continue**.
@@ -827,7 +827,7 @@ To add an OpenShift Template to a service, do the following:
 8.  In **Specify OpenShift Template Store**, select where your template is located. 
   
   You can use a Git provider, the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/), a custom repo, or Azure Repos.
-1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/5_Resources/Connectors/Code-Repositories/connect-to-code-repo.md).
 2.  Select **Continue**. **Manifest Details** appears.
 3.  In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.
 4.  In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
@@ -1792,7 +1792,7 @@ To add an artifact from ECR, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
-8. In **ECR Repository**, select or create an [AWS connector](../../../platform/7_Connectors/add-aws-connector.md) that connects to the AWS account where the ECR registry is located.
+8. In **ECR Repository**, select or create an [AWS connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-aws-connector.md) that connects to the AWS account where the ECR registry is located.
 9. Select **Continue**.
 10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
 11. In **Image Path**, enter the name of the artifact you want to deploy.
@@ -1858,7 +1858,7 @@ Ensure that the AWS IAM user account you use in the AWS Connector has the follow
 <details>
 <summary>Use ACR artifacts</summary>
 
-You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure cloud connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
+You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure cloud connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
 
 
 ```mdx-code-block
@@ -2086,7 +2086,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem9 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
+You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
 
 To add an artifact from ACR, do the following:
 
@@ -2098,7 +2098,7 @@ To add an artifact from ACR, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, click **ACR**, and then select **Continue**.
-8. In **ACR Repository**, select or create an [Azure Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md) that connects to the Azure account where the ACR registry is located.
+8. In **ACR Repository**, select or create an [Azure Connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md) that connects to the Azure account where the ACR registry is located.
 9. Select **Continue**.
 10. In **Artifact Details**, in **Subscription Id**, select the Subscription Id where the artifact source is located.
 11. In **Registry**, select the ACR registry to use.

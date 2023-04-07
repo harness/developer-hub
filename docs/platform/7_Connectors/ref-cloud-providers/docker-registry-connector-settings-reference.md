@@ -20,8 +20,8 @@ The Docker Connector is platform-agnostic and can be used to connect to any Dock
 
 See:
 
-* [Add an AWS Connector](../add-aws-connector.md)
-* [Google Cloud Platform (GCP) Connector Settings Reference](../connect-to-google-cloud-platform-gcp.md)
+* [Add an AWS Connector](../../5_Resources/Connectors/Cloud-providers/add-aws-connector.md)
+* [Google Cloud Platform (GCP) Connector Settings Reference](../../5_Resources/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md)
 
 ### Docker Registry Permissions Required
 
@@ -78,5 +78,5 @@ You can authenticate using username and password, or select anonymous.
 
 The username and password for the Docker registry account.
 
-The password uses a [Harness Encrypted Text secret](../../6_Security/2-add-use-text-secrets.md).
+The password uses a [Harness Encrypted Text secret](../../Secrets/2-add-use-text-secrets.md).
 

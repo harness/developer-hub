@@ -55,7 +55,7 @@ To add a streaming destination in Harness:
 
 2. In **Select Connector**, select an existing AWS Cloud Provider connector or create a new one.
 
-   Go to [Add an AWS connector](../7_Connectors/add-aws-connector.md) for steps to create a new AWS Cloud Provider connector.
+   Go to [Add an AWS connector](../5_Resources/Connectors/Cloud-providers/add-aws-connector.md) for steps to create a new AWS Cloud Provider connector.
 
 3. Select **Apply Selected**.
 

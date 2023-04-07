@@ -34,14 +34,14 @@ To get a token from Harness:
 
 1. Go to Harness **Feature Flags**, and ensure you're in the project you want to integrate with Jira.
 1. In the left pane, select **Account Settings > Access Control > Service Accounts**.
-1. Select a service account, or [create one](/docs/platform/role-based-access-control/add-and-manage-service-account/) if needed. 
-1. In the service account page, under **API Keys**, select **+ Token** for the API key you want to use.
+2. Select a service account, or [create one](../../platform/3_User-Management/6-add-and-manage-service-account.md) if needed. 
+3. In the service account page, under **API Keys**, select **+ Token** for the API key you want to use.
 
     ![Add token from a service account](./static/jira-add-token-from-service-account.png) 
 
-1. Fill out the **New Token** form, and then select **Generate Token**.
+4. Fill out the **New Token** form, and then select **Generate Token**.
 
-1. Copy the value of the token and then select **Close**.
+5. Copy the value of the token and then select **Close**.
 
     You need this token to provide it in Jira in [Step 2](#step-2-add-the-feature-flags-app-in-jira) below.
 

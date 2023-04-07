@@ -126,7 +126,7 @@ In **Infrastructure Definition**, select the method for Harness to reach your Ku
 
 In **Cluster Details**, enter **Connector** and **Namespace** details. Harness Pipelines allow you to use [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md) also.
 
-In **Connector**, select a Connector from the drop-down list. To create a new Connector, see [Kubernetes Cluster Connector Settings Reference](../7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) and [Add a Kubernetes Cluster Connector](../7_Connectors/add-a-kubernetes-cluster-connector.md).
+In **Connector**, select a Connector from the drop-down list. To create a new Connector, see [Kubernetes Cluster Connector Settings Reference](../7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) and [Add a Kubernetes Cluster Connector](../5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
 
 In **Namespace**, enter the namespace. For example, default.
 

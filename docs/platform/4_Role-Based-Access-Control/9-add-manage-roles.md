@@ -77,8 +77,8 @@ Harness provides the following default roles at the Account, Org, and Project sc
 
 ### See also
 
-* [Add and Manage Users](./3-add-users.md)
-* [Add and Manage User Groups](./4-add-user-groups.md)
+* [Add and Manage Users](../3_User-Management/3-add-users.md)
+* [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md)
 * [Add and Manage Resource Groups](./8-add-resource-groups.md)
 * [Permissions Reference](./ref-access-management/permissions-reference.md)
 

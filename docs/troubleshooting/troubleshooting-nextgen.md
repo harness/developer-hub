@@ -158,7 +158,7 @@ Do not run multiple delegates on the same host, pod, or container. This will res
 
 Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
-Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](../platform/6_Security/1-harness-secret-manager-overview.md) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
+Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](../platform/Secrets/Secrets-Management/1-harness-secret-manager-overview.md) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
 
 The delegate is monitored locally using its Watcher component. The Watcher component has a watcher.log file that can provide delegate version information for troubleshooting.
 
@@ -314,7 +314,7 @@ This error occurs when you are testing a Harness AWS connector and the credentia
 
 The DescribeRegions action is required for all AWS connectors. Harness tests the connection using an API call for the DescribeRegions action.
 
-This is described in [Add an AWS connector](../platform/7_Connectors/add-aws-connector.md).
+This is described in [Add an AWS connector](../platform/5_Resources/Connectors/Cloud-providers/add-aws-connector.md).
 
 Ensure that one of the IAM roles assigned to the user account used for AWS connector credentials contains the DescribeRegions action.
 
@@ -508,8 +508,8 @@ When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernete
 
 You can handle cluster authentication in Google Kubernetes Engine by using Cloud IAM as the identity provider. However, legacy username-and-password-based authentication is enabled by default in Google Kubernetes Engine. For enhanced authentication security, you should ensure that you have disabled Basic Authentication by setting an empty username and password for the MasterAuth configuration. In the same configuration, you can also disable the client certificate which ensures that you have one less key to think about when locking down access to your cluster.
 
-* If Basic authentication is inadequate for your security requirements, use the [Kubernetes cluster connector](../platform/7_Connectors/add-a-kubernetes-cluster-connector.md).
-* While it can be easier to use the [Kubernetes cluster connector](../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) for Kubernetes cluster deployments, to use a Kubernetes cluster on Google GKE, Harness requires a combination of basic authentication and/or client certificate to be enabled on the cluster:
+* If Basic authentication is inadequate for your security requirements, use the [Kubernetes cluster connector](../platform/5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
+* While it can be easier to use the [Kubernetes cluster connector](../platform/5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md) for Kubernetes cluster deployments, to use a Kubernetes cluster on Google GKE, Harness requires a combination of basic authentication and/or client certificate to be enabled on the cluster:
 
 ![](./static/troubleshooting-nextgen-02.png)
 
@@ -633,7 +633,7 @@ If the Harness delegate(s) cannot authenticate with a secret manager, you might 
 Was not able to login Vault using the AppRole auth method.   
 Please check your credentials and try again
 ```
-For most authentication issues, try to connect to the [Harness Secrets Manager](../platform/6_Security/1-harness-secret-manager-overview.md) from the host running your Harness delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
+For most authentication issues, try to connect to the [Harness Secrets Manager](../platform/Secrets/Secrets-Management/1-harness-secret-manager-overview.md) from the host running your Harness delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
 
 For example, here is a cURL command for HashiCorp Vault:
 

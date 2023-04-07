@@ -206,7 +206,7 @@ Yes. See [Build custom delegate images with third-party tools](/docs/platform/2_
 
 #### Can I use Harness secret expressions in a delegate script?
 
-No. You can add your passwords, tokens, etc to your scripts, but you cannot use [Harness text secrets](../../platform/6_Security/2-add-use-text-secrets.md).
+No. You can add your passwords, tokens, etc to your scripts, but you cannot use [Harness text secrets](../../platform/Secrets/2-add-use-text-secrets.md).
 
 ### Installing certificates on the delegate
 

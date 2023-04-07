@@ -107,7 +107,7 @@ For example, a GitHub Connector authenticates with a GitHub account and repo and
 
 For example, see:
 
-* [Add a Kubernetes Cluster Connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md)
+* [Add a Kubernetes Cluster Connector](https://developer.harness.io/docs/platform/Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector)
 * [Docker Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md)
 * [Git Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md)
 

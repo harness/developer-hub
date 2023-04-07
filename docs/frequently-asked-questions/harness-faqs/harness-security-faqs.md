@@ -53,16 +53,16 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 The set of security features that Harness provides includes the following features:
 
-* [User management](../../platform/4_Role-Based-Access-Control/3-add-users.md)
-* [User group management](../../platform/4_Role-Based-Access-Control/4-add-user-groups.md)
+* [User management](../../platform/3_User-Management/3-add-users.md)
+* [User group management](../../platform/3_User-Management/4-add-user-groups.md)
 * [Role management](../../platform/4_Role-Based-Access-Control/9-add-manage-roles.md)
 * [Resource group management](../../platform/4_Role-Based-Access-Control/8-add-resource-groups.md)
 * [Access management (for example, RBAC)](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * [Password policies](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-policies)
 * [Two-factor authentication](../../platform/3_Authentication/2-two-factor-authentication.md)
 * [Single sign-on (SSO)](../../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview)
-* [Text encryption](../../platform/6_Security/2-add-use-text-secrets.md)
-* [File encryption](../../platform/6_Security/3-add-file-secrets.md)
+* [Text encryption](../../platform/Secrets/2-add-use-text-secrets.md)
+* [File encryption](../../platform/Secrets/3-add-file-secrets.md)
 * [Auditing](../../platform/15_Audit-Trail/audit-trail.md)
 
 #### Are delegate communications secure?
@@ -106,9 +106,9 @@ See:
 
 * [Single sign-on (SSO) with SAML](../../platform/3_Authentication/3-single-sign-on-saml.md)
 * [Single sign-on (SSO) with OAuth](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
-* [Provision users with Okta (SCIM)](../../platform/3_Authentication/6-provision-users-with-okta-scim.md)
-* [Provision users with OneLogin (SCIM)](../../platform/3_Authentication/7provision-users-and-groups-with-one-login-scim.md)
-* [Provision users with Azure AD (SCIM)](../../platform/3_Authentication/8-provision-users-and-groups-using-azure-ad-scim.md)
+* [Provision users with Okta (SCIM)](../../platform/3_User-Management/6-provision-users-with-okta-scim.md)
+* [Provision users with OneLogin (SCIM)](../../platform/3_User-Management/7provision-users-and-groups-with-one-login-scim.md)
+* [Provision users with Azure AD (SCIM)](../../platform/3_User-Management/8-provision-users-and-groups-using-azure-ad-scim.md)
 
 #### Are there best practices for setting up Harness users?
 
@@ -164,17 +164,17 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 #### How are secrets managed in Harness?
 
-See [Harness secrets management overview](../../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness secrets management overview](../../platform/Secrets/Secrets-Management/1-harness-secret-manager-overview.md).
 
 Google Cloud Key Management Service is the default Secrets Manager in Harness.
 
 You can use your own secrets manager with Harness. Harness integrates with all of the common secret managers:
 
-* [Add Google KMS as a Harness secrets manager](../../platform/6_Security/10-add-google-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](../../platform/6_Security/6-add-an-aws-secret-manager.md)
-* [Add an AWS KMS Secrets Manager](../../platform/6_Security/7-add-an-aws-kms-secrets-manager.md)
-* [Add an Azure Key Vault Secrets Manager](../../platform/6_Security/8-azure-key-vault.md)
-* [Add a HashiCorp Vault Secrets Manager](../../platform/6_Security/12-add-hashicorp-vault.md)
+* [Add Google KMS as a Harness secrets manager](../../platform/Secrets/Secrets-Management/10-add-google-kms-secrets-manager.md)
+* [Add an AWS Secret Manager](../../platform/Secrets/Secrets-Management/6-add-an-aws-secret-manager.md)
+* [Add an AWS KMS Secrets Manager](../../platform/Secrets/Secrets-Management/7-add-an-aws-kms-secrets-manager.md)
+* [Add an Azure Key Vault Secrets Manager](../../platform/Secrets/Secrets-Management/8-azure-key-vault.md)
+* [Add a HashiCorp Vault Secrets Manager](../../platform/Secrets/Secrets-Management/12-add-hashicorp-vault.md)
 
 This diagram shows how Harness handles secrets:
 
@@ -184,9 +184,9 @@ This diagram shows how Harness handles secrets:
 
 Harness supports:
 
-* [Text encryption](../../platform/6_Security/2-add-use-text-secrets.md) (for strings such as passwords)
-* [File encryption](../../platform/6_Security/3-add-file-secrets.md) (for files such as configuration files)
-* [SSH connection credentials](../../platform/6_Security/4-add-use-ssh-secrets.md)
+* [Text encryption](../../platform/Secrets/2-add-use-text-secrets.md) (for strings such as passwords)
+* [File encryption](../../platform/Secrets/3-add-file-secrets.md) (for files such as configuration files)
+* [SSH connection credentials](../../platform/Secrets/4-add-use-ssh-secrets.md)
 
 #### Where can I use a secret?
 
@@ -202,8 +202,8 @@ In Harness Secrets Management, you pick a type of secret, and then enter the sec
 
 See:
 
-* [Use encrypted text secrets](../../platform/6_Security/2-add-use-text-secrets.md)
-* [Use encrypted file secrets](../../platform/6_Security/3-add-file-secrets.md)
+* [Use encrypted text secrets](../../platform/Secrets/2-add-use-text-secrets.md)
+* [Use encrypted file secrets](../../platform/Secrets/3-add-file-secrets.md)
 
 #### How do I use a secret?
 
@@ -221,8 +221,8 @@ If your secret is scoped at the Account level, you can refer it using the expres
 
 See:
 
-* [Use encrypted text secrets](../../platform/6_Security/2-add-use-text-secrets.md)
-* [Use encrypted file secrets](../../platform/6_Security/3-add-file-secrets.md)
+* [Use encrypted text secrets](../../platform/Secrets/2-add-use-text-secrets.md)
+* [Use encrypted file secrets](../../platform/Secrets/3-add-file-secrets.md)
 
 #### Are my secrets exposed in logs?
 
@@ -296,5 +296,5 @@ To integrate Harness with some third-party apps, you need to register Harness wi
 
 The API key is a simple encrypted string that other applications can use to access Harness without a private Harness account.
 
-See [API keys](../../platform/4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
+See [API keys](../../platform/3_User-Management/7-add-and-manage-api-keys.md).
 

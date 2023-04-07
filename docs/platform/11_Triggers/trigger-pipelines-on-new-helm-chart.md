@@ -66,7 +66,7 @@ When you add the Helm Chart to Harness as a Manifest, you have different options
 ![](./static/trigger-pipelines-on-new-helm-chart-05.png)
 #### OCI Helm registries are not supported with Harness Triggers
 
-You cannot use [OCI Helm Registries](../7_Connectors/connect-to-an-artifact-repo.md) with Helm Chart Triggers.
+You cannot use [OCI Helm Registries](../5_Resources/Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md) with Helm Chart Triggers.
 
 ### Create a Helm Chart Trigger
 

@@ -71,7 +71,7 @@ Go to [Configure a Kuberneted build farm to use self-signed certificates](./conf
 
 ## Process overview
 
-After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes Cluster connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) and Harness Delegate to create a connection between Harness and your cluster.
+After you set up the Kubernetes cluster that you want to use as your build infrastructure, you use a Harness [Kubernetes Cluster connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md) and Harness Delegate to create a connection between Harness and your cluster.
 
 Here's a short video that walks you through adding a Harness Kubernetes Cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, then the Kubernetes Cluster connector uses the delegate to connect to the cluster.
 

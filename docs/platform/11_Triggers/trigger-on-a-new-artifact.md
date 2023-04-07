@@ -92,7 +92,7 @@ In your Docker Registry Connector, to connect to a public Docker registry like D
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
-3. Create or select the GCP Connector to connect Harness to GCR, and then click **Continue**. For steps on GCP Connectors, go to [Add a Google Cloud Platform (GCP) Connector](../7_Connectors/connect-to-google-cloud-platform-gcp.md).
+3. Create or select the GCP Connector to connect Harness to GCR, and then click **Continue**. For steps on GCP Connectors, go to [Add a Google Cloud Platform (GCP) Connector](../5_Resources/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md).
 4. In **Artifact Details**, in GCR Registry URL, select the location of the registry, listed as **Hostname** in GCR.
    
 5. ![](./static/trigger-on-a-new-artifact-26.png)
@@ -148,7 +148,7 @@ Jump to [Step 2: Set Conditions](#step_2_set_conditions).
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
-3. Create or select the Azure Connector to connect Harness to ACR, and then click **Continue**. For steps on Azure Connectors, go to [Add a Microsoft Azure Cloud Connector](../7_Connectors/add-a-microsoft-azure-connector.md).
+3. Create or select the Azure Connector to connect Harness to ACR, and then click **Continue**. For steps on Azure Connectors, go to [Add a Microsoft Azure Cloud Connector](../5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
 4. In **Artifact Details**, in **Subscription Id**, select the Subscription Id from the ACR registry.
 5. In **Registry**, select the registry you want to use.
 6. In **Repository**, select the repository to use.

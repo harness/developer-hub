@@ -24,19 +24,19 @@ You can add a Cloud Provider Connector at the Account, Org, or Project scope. Th
 
 ### Step: Add an AWS Connector
 
-For steps on setting up an AWS Connector, see [Add an AWS Connector](add-aws-connector.md).
+For steps on setting up an AWS Connector, see [Add an AWS Connector](../5_Resources/Connectors/Cloud-providers/add-aws-connector.md).
 
 For details on settings and permissions, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
 
 ### Step: Add a GCP Connector
 
-For steps on setting up a GCP Connector, see [Add a Google Cloud Platform (GCP) Connector](connect-to-google-cloud-platform-gcp.md).
+For steps on setting up a GCP Connector, see [Add a Google Cloud Platform (GCP) Connector](../5_Resources/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md).
 
 For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](ref-cloud-providers/gcs-connector-settings-reference.md).
 
 ### Step: Add a Kubernetes Cluster Connector
 
-For steps on setting up a Kubernetes Cluster Connector, see [Add a Kubernetes Cluster Connector](add-a-kubernetes-cluster-connector.md).
+For steps on setting up a Kubernetes Cluster Connector, see [Add a Kubernetes Cluster Connector](../5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
 
 For details on settings and permissions, see [Kubernetes Cluster Connector Settings Reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
@@ -44,7 +44,7 @@ Here's a quick video that shows you how to add a Kubernetes Cluster Connector an
 
 ### Step: Add a Microsoft Azure Cloud Connector
 
-For steps on setting up a Microsoft Azure Cloud Connector, see [Add a Microsoft Azure Cloud Connector](add-a-microsoft-azure-connector.md).
+For steps on setting up a Microsoft Azure Cloud Connector, see [Add a Microsoft Azure Cloud Connector](../5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
 
 ### See also
 

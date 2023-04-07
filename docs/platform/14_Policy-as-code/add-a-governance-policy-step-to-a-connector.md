@@ -85,7 +85,7 @@ Now your Policy Set is automatically set to Enforced, to make it unenforced, tog
 
 After you have created your Policy Set, and added your policies to it, apply the policy to a Connector. 
 
-Let us take the example of a [GitHub Connector](../7_Connectors/add-a-git-hub-connector.md).
+Let us take the example of a [GitHub Connector](../5_Resources/Connectors/Code-Repositories/add-a-git-hub-connector.md).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 

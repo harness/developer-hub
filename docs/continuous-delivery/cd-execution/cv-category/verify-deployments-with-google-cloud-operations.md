@@ -21,7 +21,7 @@ Google Cloud Operations Suite was formerly known as Stackdriver.
 
 ## Before You Begin
 
-[Add Google Cloud Operations as a verification provider](../../../platform/7_Connectors/connect-to-monitoring-and-logging-systems.md)
+[Add Google Cloud Operations as a verification provider](../../../platform/5_Resources/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems.md)
 
 ## Review: CV Setup Options
 
