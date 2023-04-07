@@ -1,7 +1,9 @@
 ---
-sidebar_position: 80
+sidebar_position: 7
+title: Rust Application
 description: Use a CI pipeline to build and push a multi-arch application container image.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Rust]
+slug: /build-code/build/rust
 ---
 
 # Build Rust application containers
@@ -44,7 +46,7 @@ This tutorial pushes a `fruits-api` application container image to a [DockerHub]
 
 1. Create a public repository named `fruits-api` in your container registry.
 
-![Fruits API Docker Repository](static/ci-tutorial-go-containers/create-docker-repo.png)
+![Fruits API Docker Repository](../static/ci-tutorial-go-containers/create-docker-repo.png)
 
 2. Test your `fruits-api` repository by manually building and pushing an application image to the registry. First, log in to the DockerHub account associated with the `fruits-api` repository:
 
@@ -109,7 +111,7 @@ Run a simple [Drone](https://drone.io) pipeline locally to build and push an app
 
 This command runs a simple **pipeline**. The pipeline's `push` step uses [drone-docker-buildx](https://drone-plugin-index.geekdocs.de/plugins/drone-docker-buildx/), which can build multi-architecture container images. The pipeline you'll create in this tutorial builds `linux/arm64` and `linux/amd64` images.
 
-![Pipeline Steps](static/ci-tutorial-go-containers/pipeline_steps.png)
+![Pipeline Steps](../static/ci-tutorial-go-containers/pipeline_steps.png)
 
 4. Wait while the pipeline runs. It can take some time to build and push, because Drone tries to pull container images if they don't already exist. A successful run produces output similar to the following:
 
@@ -137,7 +139,7 @@ The rest of this tutorial shows how to create a Harness CI pipelines that mimics
 
 While the Harness platform has several modules, this tutorial focuses on the Continuous Integration (CI) module. If you don't already have a Harness account, [sign up for a Harness account](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
 
-![Harness Signup](static/ci-tutorial-node-docker/harness_signup.png)
+![Harness Signup](../static/ci-tutorial-node-docker/harness_signup.png)
 
 ### Compare build infrastructure options
 
@@ -150,7 +152,7 @@ Pipelines require build infrastructure to run. When you create CI pipelines, you
 
 [Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart/) uses Harness-hosted machines to run builds. Harness maintains and upgrades these machines, which gives you more time to focus on development.
 
-![Harness CI Hosted Overview](static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
+![Harness CI Hosted Overview](../static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
 
 ```mdx-code-block
 </TabItem>
@@ -159,7 +161,7 @@ Pipelines require build infrastructure to run. When you create CI pipelines, you
 
 With self-hosted build infrastructure, your pipelines run on your local machines or your Kubernetes clusters. To learn about self-hosted options, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
-![Harness CI Bring Your Own Overview](static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
+![Harness CI Bring Your Own Overview](../static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
 
 ```mdx-code-block
 </TabItem>
@@ -174,7 +176,7 @@ The GitHub documentation explains how to [Create a personal access token](https:
 
 If you are using an existing personal access token, make sure it has the `admin:repo_hook` and `user` scopes.
 
-![GitHub PAT](static/ci-tutorial-go-containers/gh_pat_scopes.png)
+![GitHub PAT](../static/ci-tutorial-go-containers/gh_pat_scopes.png)
 
 :::important
 
@@ -188,15 +190,15 @@ In the Harness Platform, you declare and configure resources, such as pipelines,
 
 1. Log in to your Harness account that you created earlier and create a project. If you haven't created a project before, select **Create a project**. If you've already created a project, select the active project on the navigation menu, select **View All Projects**, and then select **New Project**.
 
-   ![New Project](static/ci-tutorial-go-containers/new_project.png)
+   ![New Project](../static/ci-tutorial-go-containers/new_project.png)
 
 2. Name the new project _Greeter API_, leave the other options as their defaults, and then select __Save and Continue__.
 
-   ![Create Fruits API Project](static/ci-tutorial-rust-container/rust_greeter_project_api.png)
+   ![Create Fruits API Project](../static/ci-tutorial-rust-container/rust_greeter_project_api.png)
 
 3. Select the **Continuous Integration** module, and then select **Go to Module**.
 
-   ![Module CI](static/ci-tutorial-go-containers/modules_ci.png)
+   ![Module CI](../static/ci-tutorial-go-containers/modules_ci.png)
 
 ### Create a pipeline
 
@@ -204,15 +206,15 @@ The Harness CI pipeline wizard creates a basic pipeline for you.
 
 1. Select __Get Started__ to launch the pipeline wizard.
 
-   ![Get Started](static/ci-tutorial-node-docker/get_started.png)
+   ![Get Started](../static/ci-tutorial-node-docker/get_started.png)
 
 2. If you do not have any Git repository connectors at either the account or organization level, select __GitHub__ as the repository type, select the __Access token__ authentication method, input your GitHub personal access token (`$GITHUB_PAT`) in the __Access Token__ field, and select __Test Connection__ to verify your credentials.
 
-   ![SCM Choice](static/ci-tutorial-go-containers/scm_choice.png)
+   ![SCM Choice](../static/ci-tutorial-go-containers/scm_choice.png)
 
 3. Select __Next: Select Repository__, choose your fork of the tutorial repo `rust-greeter`, and then select __Next: Configure Pipeline__.
 
-   ![Rust Source Repo](static/ci-tutorial-rust-container/rust_source_repo.png)
+   ![Rust Source Repo](../static/ci-tutorial-rust-container/rust_source_repo.png)
 
    :::info
 
@@ -226,11 +228,11 @@ The Harness CI pipeline wizard creates a basic pipeline for you.
 
 4. Select __Starter Pipeline__ and then select __Create Pipeline__.
 
-   ![Select starter pipeline.](static/ci-tutorial-rust-container/starter_pipeline.png)
+   ![Select starter pipeline.](../static/ci-tutorial-rust-container/starter_pipeline.png)
 
 You can use either the visual editor or the YAML editor to add pipeline steps. This tutorial uses the visual editor.
 
-![Pipeline Visual](static/ci-tutorial-rust-container/starter_pipeline_visual.png)
+![Pipeline Visual](../static/ci-tutorial-rust-container/starter_pipeline_visual.png)
 
 Initially, your starter pipeline has a single stage, called _Build_, and single step, called _Echo Welcome Message_. You'll modify this stage so that the pipeline builds and pushes a multi-architecture Rust application container image to DockerHub. However, first you must configure additional resources that the steps require, namely secrets and connectors.
 
@@ -238,11 +240,11 @@ Initially, your starter pipeline has a single stage, called _Build_, and single 
 
 1. Under __Project Setup__, select __Secrets__.
 
-   ![Project Secrets](static/ci-tutorial-rust-container/project_secrets.png)
+   ![Project Secrets](../static/ci-tutorial-rust-container/project_secrets.png)
 
 2. Select __New Secret__, and then select __Text__.
 
-   ![New Text Secret](static/ci-tutorial-rust-container/new_text_secret.png)
+   ![New Text Secret](../static/ci-tutorial-rust-container/new_text_secret.png)
 
 3. On the __Add new Encrypted Text__ window, populate the fields as follows, and then select __Save__.
 
@@ -251,7 +253,7 @@ Initially, your starter pipeline has a single stage, called _Build_, and single 
    - __Secret Value__: DockerHub password for the account associated with the `fruits-api` repo
    - __Description__ and __Tags__: Optional
 
-   ![Docker Hub Password](static/ci-tutorial-rust-container/docker_hub_password_secret.png)
+   ![Docker Hub Password](../static/ci-tutorial-rust-container/docker_hub_password_secret.png)
 
 4. On the secrets list, make a note of the `id` for the __dockerhub password__. You need this `id` later for your CI pipeline.
 
@@ -261,42 +263,42 @@ You must add a __connector__ that allows Harness to connect to your DockerHub co
 
 1. Under __Project Setup__, select __Connectors__.
 
-   ![Project Connectors](static/ci-tutorial-rust-container/project_connectors.png)
+   ![Project Connectors](../static/ci-tutorial-rust-container/project_connectors.png)
 
 2. Select __New Connector__ and then select __Docker Registry__,
 
-   ![Docker Registry Connector](static/ci-tutorial-rust-container/docker_registry_connector.png)
+   ![Docker Registry Connector](../static/ci-tutorial-rust-container/docker_registry_connector.png)
 
 3. Follow the prompts in the new connector wizard. On the __Overview__ page, enter _docker hub_ as the connector __Name__. Then select __Continue__ to configure the credentials.
 
-   ![Docker Connector Overview](static/ci-tutorial-rust-container/docker_connector_overview.png)
+   ![Docker Connector Overview](../static/ci-tutorial-rust-container/docker_connector_overview.png)
 
 4. On the __Details__ page, select **DockerHub** as the provider type, and then enter the URL for the Docker registry where you created the `fruits-api` repo.
 5. For **Authentication**, select **Username and Password**, enter the DockerHub username, select the __dockerhub password__ secret that you created earlier, and then select __Continue__.
 
-   ![Docker Connector Credentials](static/ci-tutorial-rust-container/docker_connector_details.png)
+   ![Docker Connector Credentials](../static/ci-tutorial-rust-container/docker_connector_details.png)
 
 6. Select __Connect through Harness Platform__.
 
-   ![Docker Connector Connectivity Mode](static/ci-tutorial-rust-container/docker_connector_thru_harness_platform.png)
+   ![Docker Connector Connectivity Mode](../static/ci-tutorial-rust-container/docker_connector_thru_harness_platform.png)
 
 7. Select __Save and Continue__ to run the connection test,
 
-   ![Docker Connector Success](static/ci-tutorial-go-containers/docker_connector_test_successful.png)
+   ![Docker Connector Success](../static/ci-tutorial-go-containers/docker_connector_test_successful.png)
 
 8. If the connection is successful, select __Finish__.
 
-   ![Connectors List](static/ci-tutorial-rust-container/project_connectors_list.png)
+   ![Connectors List](../static/ci-tutorial-rust-container/project_connectors_list.png)
 
 ### Add service dependency, wait, and test steps
 
 1. Go back to __Pipelines__ and select the __Build rust-greeter__ pipeline that you created earlier.
 
-   ![Pipelines List](static/ci-tutorial-rust-container/project_pipelines.png)
+   ![Pipelines List](../static/ci-tutorial-rust-container/project_pipelines.png)
 
 2. Select the __Build__ stage.
 
-   ![Build Pipeline](static/ci-tutorial-rust-container/select_rust-greeter.png)
+   ![Build Pipeline](../static/ci-tutorial-rust-container/select_rust-greeter.png)
 
 3. Delete the __Echo Welcome Message__ step by selecting the `x` that appears when you hover over the step.
 4. Select __Save__ to save the pipeline.
@@ -323,7 +325,7 @@ Later in this tutorial, you'll use the _Integration testing_ workflow to make a 
    * **Shell:** Bash
    * **Command:** `cargo run --target-dir=/tmp/build`
 
-   ![Background rgreeter Step](static/ci-tutorial-rust-container/rust_pipeline_bg_step.png)
+   ![Background rgreeter Step](../static/ci-tutorial-rust-container/rust_pipeline_bg_step.png)
 
 7. Expand **Additional Configuration**. Select your DockerHub connector for the **Container Registry**, and then specify the **Image** as `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`.
 8. Add the following two **Environment Variables**:
@@ -333,7 +335,7 @@ Later in this tutorial, you'll use the _Integration testing_ workflow to make a 
    |`PORT`|`8080`|
    |`RUST_LOG`|`info`|
 
-   ![Background rgreeter Step Env](static/ci-tutorial-rust-container/rust_pipeline_bg_step_env.png)
+   ![Background rgreeter Step Env](../static/ci-tutorial-rust-container/rust_pipeline_bg_step_env.png)
 
 9. Select __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
 
@@ -354,11 +356,11 @@ When the pipeline runs, the `rgreeter` service takes a few minutes to start up. 
 
 12. Expand **Additional Configuration**. Select your DockerHub connector for the **Container Registry**, and then specify the **Image** as `alpine`.
 
-   ![Configure Wait Service](static/ci-tutorial-rust-container/wait_service.png)
+   ![Configure Wait Service](../static/ci-tutorial-rust-container/wait_service.png)
 
 13. The wait step needs the URL of the `rgreeter` service from the **Background** step. This URL is usually formed from the service ID and port number. In your **Run** step's **Environment Variables**, add an environment variable called `SERVICE_URL` with the value `http://rgreeter:8080`.
 
-   ![Configure Wait Service Env](static/ci-tutorial-rust-container/wait_service_env.png)
+   ![Configure Wait Service Env](../static/ci-tutorial-rust-container/wait_service_env.png)
 
 14. Select  __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
 15. Add another **Run** step with the following settings:
@@ -370,20 +372,20 @@ When the pipeline runs, the `rgreeter` service takes a few minutes to start up. 
    * **Container Registry:** Your DockerHub connector
    * **Image:** `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`
 
-   ![Test Step](static/ci-tutorial-rust-container/rust_pipeline_step_test.png)
+   ![Test Step](../static/ci-tutorial-rust-container/rust_pipeline_step_test.png)
 
 16. For the `test` step to connect to the `rgreeter` service, add an environment variable called `SERVICE_URL` with the value `http://rgreeter:8080`
 
-   ![Test environment Variables](static/ci-tutorial-rust-container/rust_pipeline_step_test_env_vars.png)
+   ![Test environment Variables](../static/ci-tutorial-rust-container/rust_pipeline_step_test_env_vars.png)
 
 17. Select __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
 18. Click **Run** to verify that the pipeline is able to test the Rust application. On the __Run Pipeline__ screen, make sure __Git Branch__ is selected and the __Branch Name__ is set to _main_. Select __Run Pipeline__ to start the pipeline run.
 
-   ![Run Pipeline](static/ci-tutorial-rust-container/run_pipeline.png)
+   ![Run Pipeline](../static/ci-tutorial-rust-container/run_pipeline.png)
 
 19. Wait while the pipeline runs to make sure it succeeds.
 
-   ![Test Success](static/ci-tutorial-rust-container/test_success.png)
+   ![Test Success](../static/ci-tutorial-rust-container/test_success.png)
 
    :::tip
 
@@ -413,7 +415,7 @@ If your pipeline succeeded, add two more steps to build your Rust application im
 
    :::
 
-   ![Build Step](static/ci-tutorial-rust-container/rust_pipeline_step_build.png)
+   ![Build Step](../static/ci-tutorial-rust-container/rust_pipeline_step_build.png)
 
 3. Select __Apply Changes__ to save the step, and then add a final **Run** step with the following settings:
 
@@ -434,7 +436,7 @@ If your pipeline succeeded, add two more steps to build your Rust application im
       --file Dockerfile "$CONTEXT"
     ```
 
-   ![Step Push](static/ci-tutorial-rust-container/rust_pipeline_step_push.png)
+   ![Step Push](../static/ci-tutorial-rust-container/rust_pipeline_step_push.png)
 
 4. The `push` step's **Command** runs the `docker buildx build` that builds a multi-architecture image for the platforms `linux/amd64` and `linux/arm64`. This script uses several environment variables. You must add these variables to the step's **Environment Variables**:
 
@@ -447,7 +449,7 @@ If your pipeline succeeded, add two more steps to build your Rust application im
    |`IMAGE_REPO`| `YOUR_DOCKERHUB_USERNAME/rust-greeter`|
    |`IMAGE_TAG`| `<+codebase.shortCommitSha>`|
 
-   ![Step Push Env](static/ci-tutorial-rust-container/rust_pipeline_step_push_env_vars.png)
+   ![Step Push Env](../static/ci-tutorial-rust-container/rust_pipeline_step_push_env_vars.png)
 
    :::important
 
@@ -461,15 +463,15 @@ If your pipeline succeeded, add two more steps to build your Rust application im
 
 5. Select __Apply Changes__ to save the step, and then select __Save__ to save the pipeline.
 
-  ![Final Pipeline](static/ci-tutorial-rust-container/all_steps.png)
+  ![Final Pipeline](../static/ci-tutorial-rust-container/all_steps.png)
 
 6. Click **Run** to verify that the pipeline can test, build, and push your multi-architecture Rust application. On the __Run Pipeline__ screen, make sure __Git Branch__ is selected and the __Branch Name__ is set to _main_. Select __Run Pipeline__ to start the pipeline run.
 
-   ![Run Pipeline](static/ci-tutorial-rust-container/run_pipeline.png)
+   ![Run Pipeline](../static/ci-tutorial-rust-container/run_pipeline.png)
 
 7. If the pipeline succeeds, go to your DockerHub repo. Check that the tags `latest` and `last git commit sha` are present.
 
-   ![Success](static/ci-tutorial-rust-container/rust_pipeline_success.png)
+   ![Success](../static/ci-tutorial-rust-container/rust_pipeline_success.png)
 
 ## Use Docker Compose to test the application
 
