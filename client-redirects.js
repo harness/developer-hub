@@ -423,5 +423,11 @@ module.exports = {
       from: "/docs/continuous-integration/troubleshoot/optimizing-ci-build-times",
       to: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
     },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/group-ci-steps-using-step-groups",
+      to: "/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups",
+    },
   ],
 };

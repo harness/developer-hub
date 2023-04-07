@@ -1,7 +1,7 @@
 ---
 title: Group CI Steps Using Step Groups
 description: Add CI steps to Pipelines individually or as a step group. Steps in a step group can be run serially or in parallel.
-sidebar_position: 180
+sidebar_position: 30
 helpdocs_topic_id: 5w7wbq3vok
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 You can add Steps to Pipelines individually or as a Step Group. You can run Steps and Step Groups serially or in parallel. Unlike individual steps, a step group can apply Conditional Execution (skip conditions) and Failure Strategy to all steps in the group.
 
-One key use case for Step Groups is to speed up Pipelines that include a lot of tests. This is one of the [available methods](../use-ci/optimize-and-more/optimizing-ci-build-times.md) you can use to speed up your CI Pipelines.
+One key use case for Step Groups is to speed up Pipelines that include a lot of tests. This is one of the [available methods](./optimizing-ci-build-times.md) you can use to speed up your CI Pipelines.
 
 ![](./static/group-ci-steps-using-step-groups-16.png)
 
-### Important Notes
+## Important Notes
 
 * Steps running in parallel cannot reference output data from each other, since the data might not be available. A Step can reference outputs only from other Steps that have already finished running.
 
@@ -25,7 +25,7 @@ One key use case for Step Groups is to speed up Pipelines that include a lot of 
 
    ![](./static/group-ci-steps-using-step-groups-18.png)
 
-### Parallel Steps, Step Groups, and Resource Consumption
+## Parallel Steps, Step Groups, and Resource Consumption
 
 You should carefully consider how a Pipeline reserves resources for Steps that run in parallel. The Pipeline reserves memory and CPU resources in advance for each Stage. The amount of memory and CPU reserved is determined by the highest utilization at any point in the stage.
 
@@ -33,7 +33,7 @@ Consider the following Pipeline. In this case, the maximum consumption takes pla
 
 ![](./static/group-ci-steps-using-step-groups-19.png)
 
-### Step 1: Add and Name the Step Group
+## Step 1: Add and Name the Step Group
 
 * In your stage, in **Execution**, click **Add Step** and then click **Step Group**.
 
@@ -41,34 +41,34 @@ Consider the following Pipeline. In this case, the maximum consumption takes pla
 
 * Enter a name for the step group.
 
-### Step 2: Add Steps to the Step Group
+## Step 2: Add Steps to the Step Group
 
 * Once the step group is added, in its **Execution** section, in the new step group, click **Add Step**.
 * Add any step and configure its **Advanced** settings.
 
 An individual step's **Advanced** settings override the **Advanced** settings of the step group.
 
-### Option: Conditional Execution
+## Option: Conditional Execution
 
-A Step Group can have its own Conditional Execution settings separate from the Stage settings. The Conditional Execution settings of the step group apply to all of its steps. See [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+A Step Group can have its own Conditional Execution settings separate from the Stage settings. The Conditional Execution settings of the step group apply to all of its steps. See [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 The Conditional Execution settings of any step in a step group override the settings of the Step Group itself.
 
 If a Step Group has no Conditional Execution settings defined, the Pipeline uses the Stage settings.
 
-### Option: Step Group Failure Strategy
+## Option: Step Group Failure Strategy
 
 A Step Group can have its own Failure Strategy separate from the Stage strategy.
 
 ![](./static/group-ci-steps-using-step-groups-21.png)
 
-See [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+See [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 The Failure Strategy of any step in a step group overrides the Failure Strategy of the step group.
 
 If you do not use a step group Failure Strategy, then the Stage's Failure Strategy is used.
 
-### Referencing Step Group Steps and Fields
+## Referencing Step Group Steps and Fields
 
 You reference steps in step groups using the step group Id.
 
