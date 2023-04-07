@@ -152,7 +152,6 @@ sshpass -p $DEVICE_PASS ssh $DEVICE_USER@$DEVICE_IP "sudo flashrom -w /home/$DEV
 </details>
 
 
-
 ## Important notes
 
 Please review the following important notes.

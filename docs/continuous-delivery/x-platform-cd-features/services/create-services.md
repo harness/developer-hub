@@ -14,12 +14,6 @@ You can create services from:
 
 If you are new to Harness, review [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md) and [create your first CD pipeline](../../get-started/create-first-pipeline.md).
 
-## Visual summary
-
-<!-- Video:
-https://harness-1.wistia.com/medias/xtmi0c0z95-->
-<docvideo src="https://harness-1.wistia.com/medias/xtmi0c0z95" />
-
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -53,13 +47,7 @@ To create a service from outside of a pipeline, you use **Services** in the navi
   <TabItem value="From organization or account" label="From organization or account">
 ```
 
-You can create a service at an account or organization level from the Harness UI using APIs or Terraform.
-
-### Visual summary
-
-<!-- Video:
-https://harness-1.wistia.com/medias/s89yka6hal-->
-<docvideo src="https://harness-1.wistia.com/medias/s89yka6hal" />
+You can create a service at an account or organization level from the Pipeline Studio, APIs, or Terraform.
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
@@ -67,7 +55,7 @@ import TabItem2 from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs2>
-  <TabItem2 value="Harness UI" label="Harness UI">
+  <TabItem2 value="Pipeline Studio" label="Pipeline Studio">
 ```
 To create a service at an account or organization level, go to **Organization Resources** **>Services**.
 
@@ -265,3 +253,25 @@ resource "harness_platform_service" "example" {
   </TabItem>    
 </Tabs>
 ```
+
+## Runtime inputs and expressions in services
+
+If you use runtime inputs in your services, you will need to provide values for these when they run pipeline using these services.
+
+If you use expressions in your services, Harness must be able to resolve these expressions when users run pipeline using these services.
+
+Select **Runtime input** for the service.
+
+![](./static/services-and-environments-runtime-input-01.png)
+
+When you run the pipeline, you can select the service for their runtime inputs.
+
+![](./static/services-and-environments-runtime-input-02.png)
+
+For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md).
+
+## Next steps
+
+* [Add inline service files using file store](./add-inline-manifests-using-file-store.md)
+* [Add a custom artifact source for CD](./add-a-custom-artifact-source-for-cd.md)
+* [Propagate CD services](./propagate-and-override-cd-services.md)

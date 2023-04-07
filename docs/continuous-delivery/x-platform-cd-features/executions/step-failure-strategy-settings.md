@@ -1,13 +1,12 @@
 ---
-title: Step and Stage Failure Strategy References
-description: This topic provides settings and permissions for the [context]. In this topic --  [Name of Entity] [Setting label name]. [Setting label name]. [Setting label name].. Related Reference Material. [Name of…
+title: Step and stage failure strategy references
+description: This topic provides failure strategy settings and permissions for the pipeline steps and stages
 sidebar_position: 4
 ---
 
 This topic describes the failure strategy settings for pipeline steps and stages.
 
-
-### Where can I add failure strategies?
+## Where can I add failure strategies?
 
 You can apply a failure strategy to the following:
 
@@ -15,9 +14,9 @@ You can apply a failure strategy to the following:
 * **Step Group:** You can set up a failure strategy for all steps in the group. Individual steps in the group don't have a failure strategy.
 * **Stage:** The failure strategy for all steps and step groups in the stage. If step and step group failure strategies exist, they override this failure strategy.
 
-For more information, go to [Define a Failure Strategy on Stages and Steps](./define-a-failure-strategy-on-stages-and-steps.md).
+For more information, go to [define a failure strategy on stages and steps](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
 
-### Error types
+## Error types
 
 The following error types can be selected in a failure strategy.
 
@@ -36,17 +35,17 @@ The following error types can be selected in a failure strategy.
 | **Delegate Restart** | An error triggered when the delegate is unreachable when running a pipeline. |
 | **All Errors** | An error whether defined by the other error types or not. |
 
-### Error scope
+## Error scope
 
 The scope of a failure strategy is confined to where it is set.
 
 For example, a failure strategy set on a step doesn't impact the failure strategy set on a stage. Likewise, the failure strategy set at the stage doesn't override any failure strategies on its steps.
 
-### Rollback stage
+## Rollback stage
 
 Both step and stage failure strategies include the **Rollback Stage** action option. There is no rollback step option.
 
-### Failure strategy settings
+## Failure strategy settings
 
 The following table lists the failure strategy actions and how they work at the step, step group, and stage levels.
 
@@ -64,7 +63,7 @@ These actions can be applied to the failure strategy as primary action and timeo
 | **Rollback Step Group** | N/A | The step group rolls back to the state prior to step group execution. How the step group rolls back depends on the type of build or deployment it was preforming. | N/A |
 |**Mark As Failure**|Harness marks the step as **Failed**.|Harness marks the step group as **Failed**.|Harness marks the stage as **Failed**.|
 
-### Review: Failure strategy takes precedence over conditional execution
+## Failure strategy takes precedence over conditional execution
 
 Harness pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings.
 
@@ -82,7 +81,7 @@ To execute stage 2, you can set the stage 1 **Failure Strategy** to **Ignore Fai
 
 In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section.
 
-### Review: Stage and step priority
+## Stage and step priority
 
 The stage failure strategy applies to all steps that do not have their own failure strategy. A step's failure strategy overrides (or extends) its stage's failure strategy.
 
@@ -90,7 +89,7 @@ Step failure strategies are evaluated before their stage's failure strategy. The
 
 If the first step in the execution doesn't have a failure strategy, the stage's failure strategy is used. If the second step has its own failure strategy, it is used. And so on.
 
-### Review: Multiple failure strategies in a stage
+## Multiple failure strategies in a stage
 
 A stage can have multiple failure strategies.
 
@@ -101,11 +100,11 @@ When using multiple failure strategies in a stage, consider the following:
 * For failure strategies that don't overlap (different types of failures selected), they behave as expected.
 * Two failures cannot occur at the same time. Whichever error occurs first, that failure strategy is used.
 
-### Review: Failure strategy conflicts
+## Failure strategy conflicts
 
 Conflicts might arise between failure strategies on the same level or different levels. By level, we mean the step level or the stage level.
 
-#### Same level
+### Same level
 
 If there is a conflict between multiple failures in strategies on the same level, the first applicable strategy is used and the remaining strategies are ignored.
 
@@ -120,11 +119,11 @@ Here is what will happen:
 * On an authentication failure, the stage is aborted.
 * On a connectivity error, the error is ignored.
 
-#### Different levels
+### Different levels
 
 If there is a clash between selected errors in strategies on different levels, the step-level strategy is used and the stage-level strategy is ignored.
 
-### Reference material
+## Reference material
 
-* [Stage and Step Execution Condition Settings](./step-skip-condition-settings.md)
+* [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings)
 

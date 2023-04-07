@@ -1,6 +1,6 @@
 ---
-title: Define a Failure Strategy on Stages and Steps
-description: Currently, only the All Errors Failure Type is supported. A failure strategy defines how your stages and steps handle different failure conditions. The failure strategy contains error conditions that…
+title: Define a failure strategy on stages and steps
+description: A failure strategy defines how your stages and steps handle different failure conditions.
 sidebar_position: 5
 ---
 
@@ -16,13 +16,11 @@ You can apply a failure strategy to the following:
 * Step Group
 * Stage
 
-For details on strategy options and how strategies work, see [Step and Stage Failure Strategy Settings](./step-failure-strategy-settings.md).
+For details on strategy options and how strategies work, see [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
-### Before you begin
+[Add a stage](/docs/platform/Pipelines/add-a-stage) before you define a failure strategy for stages and steps.
 
-* [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md)
-
-### Visual Summary
+## Visual Summary
 
 Here's a quick video of how to set up failure strategies:
 
@@ -36,11 +34,12 @@ Here is what a Manual Intervention action looks like when a failure occurs:
 
 You can select an option or, if the Manual Intervention exceeds its Timeout setting, select the Post Timeout Action that will happen automatically.
 
-### Review: Failure Strategy takes Precedence over Conditional Execution
+## Failure strategy takes precedence over conditional execution
 
-Harness Pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings:
+Harness pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings:
 
 ![](./static/define-a-failure-strategy-on-stages-and-steps-12.png)
+
 Using these settings together in multiple stages requires some consideration.
 
 Let's say you have a Pipeline with two stages: **stage 1** followed by **stage 2**. 
@@ -53,7 +52,7 @@ In order to get stage 2 to execute, you can set the stage 1 **Failure Strategy**
 
 In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section.
 
-### Step: Add a Stage Failure Strategy
+## Add a stage failure strategy
 
 The stage failure strategy applies to all steps in the stage that do not have their own failure strategy configured.
 
@@ -69,13 +68,13 @@ To add an additional stage failure strategy, click **Add**.
 
 Select the following:
 
-* **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](./step-and-stage-failure-strategy.md).
+* **On failure of type:** select one or more of the error types. For more information, go to [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
-Currently, only **All Errors** is supported.* **Action:** select one of the available actions. See [Step and Stage Failure Strategy Settings](./step-and-stage-failure-strategy.md).
+Currently, only **All Errors** is supported. **Action:** select one of the available actions.
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
-### Step: Add a Step Failure Strategy
+## Add a step failure strategy
 
 By default, steps do not have a failure strategy. Steps follow the stage failure strategy.
 
@@ -87,14 +86,13 @@ Click **Failure Strategy** and click **Add**.
 
 Select the following:
 
-* **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](./step-and-stage-failure-strategy.md).
+* **On failure of type:** select one or more of the error types. For more information, go to [step and stage failure strategy settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings).
 
-Currently, only **All Errors** is supported.* **Action:** select one of the available actions. See [Step and Stage Failure Strategy Settings](./step-and-stage-failure-strategy.md).
+Currently, only **All Errors** is supported.* **Action:** select one of the available actions.
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
-### See also
+## Reference material
 
-* [Step and Stage Failure Strategy Settings](./step-and-stage-failure-strategy.md)
-* [Stage and Step Execution Condition Settings](./step-and-stage-conditional-execution-settings.md)
+* [Stage and step conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings)
 

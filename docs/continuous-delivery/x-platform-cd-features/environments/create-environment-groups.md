@@ -1,7 +1,7 @@
 ---
 title: Create environment groups
 description: Learn how to group environments.
-sidebar_position: 8
+sidebar_position: 3
 ---
 
 Environment groups are simple a way to group environments so you can assign permissions to multiple environments in a role.

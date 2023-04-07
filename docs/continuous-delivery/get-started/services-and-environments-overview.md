@@ -46,7 +46,7 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="Harness UI" label="Harness UI">
+  <TabItem value="Pipeline Studio" label="Pipeline Studio">
 ```
 To create a service at an account or organization level, go to **Organization Resources** **>Services**.
 
@@ -271,11 +271,11 @@ You can create environments from:
 
 Next you can define all of its settings:
 
+* **Configuration:** the default environment configuration, including variables, manifests, specifications, and config files that will be used every time the environment is used in a stage.
+* **Service Overrides:** override specific services. You select a service and define what will be overridden whenever that Service is deployed to this environment.
 * **Infrastructure Definitions:** represent one or more environment infrastructures.
   * Infrastructure definitions are the actual clusters, hosts, etc., where Harness deploys a service. For example, you might have a QA environment with separate Kubernetes clusters (infrastructure definitions) for each service you want to test.
   * You can add multiple infrastructure definitions to a single environment and select an infrastructure definition when you add the environment to a stage.
-* **Configuration:** the default environment configuration, including variables, manifests, specifications, and config files that will be used every time the environment is used in a stage.
-* **Service Overrides:** override specific services. You select a service and define what will be overridden whenever that Service is deployed to this environment.
 * **GitOps Clusters:** adding Harness GitOps clusters to an environment lets you select them as the deployment target in stages. For more information on Harness GitOps, go to [Harness GitOps Basics](../cd-gitops/harness-git-ops-basics.md).
 
 
@@ -289,7 +289,7 @@ import TabItem2 from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs2>
-  <TabItem2 value="Harness UI" label="Harness UI">
+  <TabItem2 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
 To create an environment at an account or organization level, go to **Organization Resources** **>Environments**. 
@@ -398,7 +398,7 @@ infrastructureDefinition:
 ```
 For information about creating an environment API, go to [create an environment](https://apidocs.harness.io/tag/Environments#operation/createEnvironmentV2).
 
-For information about creating infrastructure definiton API, go to [create an infrastructure in an environment](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
+For information about creating infrastructure definition API, go to [create an infrastructure in an environment](https://apidocs.harness.io/tag/Infrastructures#operation/createInfrastructure).
 
 The `orgIdentifier` and `projectIdentifier` field definitions are optional, and depend on where you want to create the environment. For example, if you create an environment at an account level, you will not need org or project identifiers in the post API call payload.
 
@@ -477,7 +477,7 @@ resource "harness_platform_environment" "example" {
 
 For information about creating a Harness platform infrastructure definition, go to [harness_platform_infrastructure (Resource)](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_infrastructure).
 
-Expand the section below to see a sample platform infrastructre definition in Terraform.
+Expand the section below to see a sample platform infrastructure definition in Terraform.
 
 <details>
    <summary>Harness platform infrastructure definition</summary>
