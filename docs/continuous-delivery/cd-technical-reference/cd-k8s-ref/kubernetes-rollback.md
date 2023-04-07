@@ -40,6 +40,68 @@ You can add a **Rolling Rollback** step to roll back the workloads deployed by t
 
 Simply add this step where you want to initiate a rollback. Note that this step applies to the deployments of the Rolling Deployment command, and not the [Apply Step](../../cd-execution/kubernetes-executions/deploy-manifests-using-apply-step.md).
 
+## Option: Declarative Rollback
+
+User's can now opt into an alternative rollback behavior for kubernetes deployments called declarative rollback. This is defined in the service because its tied to the service's manifests. The `enableDeclarativeRollback: true` will be configured as true, and the `skipResourceVersioning: false` will be false and disabled in the UI
+
+
+```YAML
+service:
+  name: nginx
+  identifier: K8s
+  tags:
+    harness: "app"
+    sample: "demo"
+  serviceDefinition:
+    spec:
+      artifacts:
+        primary: {}
+      manifests:
+        - manifest:
+            identifier: dev
+            type: K8sManifest
+            spec:
+              store:
+                type: Harness
+                spec:
+                  files:
+                    - /Sample Manifest Onboarding
+              valuesPaths:
+                - /values.yaml
+              skipResourceVersioning: false
+              enableDeclarativeRollback: true
+      variables:
+        - name: replica
+          type: String
+          description: ""
+          value: "1"
+        - name: cpu
+          type: String
+          description: "nginx cpu"
+          value: "0.25"
+        - name: memory
+          type: String
+          description: "nginx memory"
+          value: 1Gb
+    type: Kubernetes
+
+```
+
+Declarative rollback is about using `kubectl apply -f <prevision version of manifest>` instead of `kubectl rollout undo`. This reduces the risk of getting in the wrong state in the next subsequent deployment because the merge state is impacted by the rollout undo command.
+
+- We are storing the manifest in the release history, and we will go and fetch the last successful one for rollback
+- Now there will no more incremental versioning of the configmap and secret. We needed to use the incremental versioning with kubectl rollout undo.
+- We are now going to reapply the previous manifest (This is the declarative nature, it includes the config map and secrets of the last known good state)
+- We will have a config map for canary and one for blue-green when we do the declarative rollback.
+- Previously we stored release history in one big configmap, with declarative rollback we are now storing it in secrets and each release is a different secret. 1 Secret per release essentially.
+-  So on average you would have 2 secrets
+  - 1 would be the previous successful release
+  - 1 would be the current release
+
+
+
+
+
 ## See Also
 
 * [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
