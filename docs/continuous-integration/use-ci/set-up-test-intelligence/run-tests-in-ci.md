@@ -10,7 +10,7 @@ In a CI pipeline, you can run a variety of tests, such as integration tests, fun
 
 These Harness CI features can improve test times:
 
-* **Test Intelligence:** [Test Intelligence](test-intelligence-concepts.md) speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+* **Test Intelligence:** [Test Intelligence](../../ci-quickstarts/test-intelligence-concepts.md) speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You must use the **Run Tests** step to [enable Test Intelligence](./set-up-test-intelligence.md).
 * **Parallelism:** You can use parallelism with either the **Run** or **Run Tests** steps to speed up test times. For more information, go to [Speed Up CI Test Pipelines Using Parallelism](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/).
 * **Step groups:** You can use [step groups](../optimize-and-more/group-ci-steps-using-step-groups.md) to organize and condense pipelines that run a lot of tests.
 
