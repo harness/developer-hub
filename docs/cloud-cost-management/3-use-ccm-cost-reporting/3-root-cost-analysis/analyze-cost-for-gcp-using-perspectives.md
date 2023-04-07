@@ -21,7 +21,7 @@ Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for GCP](../../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
+* [Set Up Cloud Cost Management for GCP](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
 
 ### Step: Analyze GCP Cost
 

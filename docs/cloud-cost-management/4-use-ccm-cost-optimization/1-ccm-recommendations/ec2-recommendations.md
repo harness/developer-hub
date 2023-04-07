@@ -24,7 +24,7 @@ Using recommendations without proper assessment could result in unexpected chang
 ## Before you begin
 
 
-* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+* Connect your AWS cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 * To obtain EC2 recommendations, configure a Harness AWS CCM connector with the Inventory Management feature enabled.
 * Go to [Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md) to learn how to create perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 
@@ -101,7 +101,7 @@ Once you have the `ce:GetRightsizingRecommendation` permission added to the **Ha
 You need to perform the following steps in Harness:
 
 
-1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account](../../2-getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
+1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
  
 2. Add the required **Cost Explorer** permissions to the CCM template:
