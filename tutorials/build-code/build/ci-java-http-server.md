@@ -1,7 +1,9 @@
 ---
-sidebar_position: 40
+sidebar_position: 3
+title: JAVA Application
 description: This build automation guide walks you through building and testing a Java HTTP server application in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
+slug: /build-code/build/java
 ---
 
 # Build, test, and publish a Docker Image for a Java HTTP server application

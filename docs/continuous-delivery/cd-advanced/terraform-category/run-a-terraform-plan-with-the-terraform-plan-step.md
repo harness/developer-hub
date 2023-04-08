@@ -380,7 +380,19 @@ terraform {
 }
 ```
 
-In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+In **Backend Configuration**, you provide the required configuration variables for that backend type as key-value pairs. 
+
+For example:
+
+```
+access_key = "1234567890"  
+secret_key = "abcdefghij"  
+bucket = "terraform-backend-config-test"  
+key    = "remotedemo.tfstate"  
+region = "us-east-1"
+```
+
+See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 ## Targets
 

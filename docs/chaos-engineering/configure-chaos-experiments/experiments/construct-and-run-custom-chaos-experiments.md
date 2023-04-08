@@ -3,6 +3,8 @@ title: Run Chaos Experiments
 sidebar_position: 2
 ---
 
+import Analyze from '/docs/chaos-engineering/configure-chaos-experiments/experiments/shared/analyze-chaos-experiment.md'
+
 Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios for your applications that can be validated against. At the same time, the chaos experiments are declarative and can be constructed using the Chaos Studio user interface with no programmatic intervention.
 
 A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. The parameters associated with these faults can be tuned to impart the desired chaos behaviour.
@@ -65,10 +67,10 @@ As a final step before running the experiment, switch to the tab **Set fault wei
 
 Now, you can choose to either run the experiment right away by selecting the **Run** button on the top, or create a recurring schedule for the experiment execution by selecting the arrow to the right of the Run button, selecting **Create recurring schedule** and then specifying the execution schedule. You can also save the experiment to simply save it but not run it just yet, as well as save the experiment as a template using the **Save** button.
 
-## Launch an experiment from Chaos Hub
-Alternatively, you can directly launch a pre-curated experiment from the Chaos Hub.
+## Launch an experiment from the chaos hub
+Alternatively, you can directly launch a pre-curated experiment from the chaos hub.
 
-### 1. Access the Chaos Hub
+### 1. Access the chaos hub
 Select **Chaos Hubs** sidebar option and choose the hub where the experiment is present. You will be able to browse the list of available experiments now. After locating the experiment you wish to execute, select the **Launch Experiment** button corresponding to it.
 
 ![Access Chaos Hub](./static/construct-and-run-custom-chaos-experiments/access-chaoshub.png)
@@ -87,3 +89,5 @@ You can add other faults to the experiment in addition to the existing set of fa
 ![Configure Fault](./static/construct-and-run-custom-chaos-experiments/configure-fault.png)
 
 Next, select the **Run** button to execute your chaos experiment. Alternatively, you can only save the experiment or add the experiment to a Chaos Hub using the **Save** button.
+
+<Analyze />
