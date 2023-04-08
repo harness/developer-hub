@@ -9,7 +9,7 @@ Set up notifications for SLOs' error budget to keep your team informed about the
 
 To set up notifications for a SLO:
 
-1. In your Harness project, navigate to **Service Reliability Management** > **SLOs**, and then select the SLO for which you want to set up notifications.
+1. In your Harness project, navigate to **Service Reliability Management** > **SLOs**, and then select the SLO to set up notification.
 
 2. In the SLO page, go to the **Configuration** tab, and under **Error Budget Policy (Optional)**, select **+ New Notification Rule**.
 
@@ -36,7 +36,7 @@ To set up notifications for a SLO:
      | **PagerDuty**           |    Enter the PagerDuty account or service key to the notifications should be sent.   |
      | **Microsoft Teams**     |    Enter the **Microsoft Teams Webhook URL(s)** to which the notifications should be sent. You add multiple Micorsoft webhook URLs by selecting **+ Add**.     |
 
-      If you choose Slack, PagerDuty, or Microsoft Teams as your notification method, you can select a Harness user group that is part of a **Project**, **Organization**, or an **Account**. Notifications are sent to the Slack or Microsoft Teams channels that are associated with the selected user group.
+      If you choose Slack, PagerDuty, or Microsoft Teams as your notification method, you can select a Harness user group that is part of a Harness project, organization, or an account. Notifications are sent to the Slack or Microsoft Teams channels that are associated with the selected user group.
 
       To create a new user group, click on **Select User Group(s)** and then **+ User Group**. In the New User Group dialog, enter name for the group, an optional **description** and **tags**, and then **Add Users**. Select **Save**. The new user group appears in the user groups list.
 

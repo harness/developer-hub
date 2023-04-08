@@ -4,12 +4,12 @@ description: Notify your team about any changes to your monitored service.
 sidebar_position: 10
 ---
 
-You can set up notifications for monitored services. This means that your team can receive alerts when any changes occur to a service's code, configuration, behavior, deployment, or infrastructure. These notifications can help keep your team informed and ensure that any issues are addressed quickly.
+You can configure notifications for monitored services. Your team will receive alerts whenever there are modifications made to a service's code, configuration, behavior, deployment, or infrastructure. These notifications can help your team stay up to date and ensure that any problems are resolved promptly.
 
 
 To set up notifications for a monitored service:
 
-1. In your Harness project, navigate to **Service Reliability Management** > **Monitored Services**, and then select the monitored service for which you want to configure notification.
+1. In your Harness project, navigate to **Service Reliability Management** > **Monitored Services**, and then select the monitored service to set up notification.
 
 2. In the monitored service details page, go to the **Configuration** tab, and under **Notifications**, select **+New Notification Rule**.
 
@@ -37,12 +37,12 @@ To set up notifications for a monitored service:
      | **PagerDuty**           |    Enter the PagerDuty account or service key to the notifications should be sent.   |
      | **Microsoft Teams**     |    Enter the **Microsoft Teams Webhook URL(s)** to which the notifications should be sent. You add multiple Micorsoft webhook URLs by selecting **+ Add**.     |
 
-      If you choose Slack, PagerDuty, or Microsoft Teams as your notification method, you can select a Harness user group that is part of a **Project**, **Organization**, or an **Account**. Notifications are sent to the Slack or Microsoft Teams channels that are associated with the selected user group.
+      If you choose Slack, PagerDuty, or Microsoft Teams as your notification method, you can select a Harness user group that is part of a Harness project, organization, or an account. Notifications are sent to the Slack or Microsoft Teams channels that are associated with the selected user group.
 
       To create a new user group, click on **Select User Group(s)** and then **+ User Group**. In the New User Group dialog, enter name for the group, an optional **description** and **tags**, and then **Add Users**. Select **Save**. The new user group appears in the user groups list.
    
-   1. Select **Test** to verify that the alert is functioning correctly.
+   5. Select **Test** to verify that the alert is functioning correctly.
 
-   2. Select **Finish** to save the settings. You should now see the notification rule displayed in the **Notifications** section. 
+   6. Select **Finish** to save the settings. You should now see the notification rule displayed in the **Notifications** section. 
 
 4.  Enable the notification rule using toggle switch associated with it to start receiving alert notifications.
