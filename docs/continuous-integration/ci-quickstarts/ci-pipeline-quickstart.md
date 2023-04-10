@@ -12,7 +12,7 @@ helpdocs_is_published: true
 In addition to the reference documentation, there are a variety of CI tutorials available.
 
 * [Harness Cloud build infrastructure tutorial](/tutorials/build-code/fastest-ci)
-* [Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
+* [Kubernetes cluster build infrastructure tutorial](https://github.com/harness/developer-hub/blob/main/tutorials/build-code/build/ci-tutorial-kubernetes-cluster-build-infra.md)
 * [Multi-arch image tutorial](/tutorials/build-code/ci-tutorial-rust-container)
 * [Service dependency tutorial](/tutorials/build-code/ci-saucelabs-background-step)
 * [All CI tutorials](/tutorials/build-code)
