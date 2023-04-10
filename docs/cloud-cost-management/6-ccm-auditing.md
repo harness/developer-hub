@@ -1,5 +1,5 @@
 ---
-title: CCM Auditing
+title: CCM Audit Trail
 description: Currently, this feature is behind the feature flag AUDIT_TRAIL_WEB_INTERFACE. Contact Harness Support to enable the feature. Your Harness account Audit Trail includes events for CCM changes. CCM Even…
 # sidebar_position: 2
 helpdocs_topic_id: rhbnypj2rs

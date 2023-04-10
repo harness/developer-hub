@@ -1,5 +1,5 @@
 ---
-title: Create a budget for your perspective
+title: Create a budget for your Perspective
 description: Harness CCM Budgets allow you to set custom budgets and receive alerts when your costs exceed (or are forecasted to exceed) your budget.
 # sidebar_position: 2
 helpdocs_topic_id: fs4glxwq79

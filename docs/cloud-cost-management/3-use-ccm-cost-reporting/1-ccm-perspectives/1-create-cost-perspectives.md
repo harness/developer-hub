@@ -1,5 +1,5 @@
 ---
-title: Create Cost Perspectives
+title: Create Perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 # sidebar_position: 2
 helpdocs_topic_id: dvspc6ub0v

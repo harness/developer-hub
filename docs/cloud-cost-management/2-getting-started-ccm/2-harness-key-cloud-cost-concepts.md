@@ -1,5 +1,5 @@
 ---
-title: Cloud Cost Management Key Concepts
+title: CCM key concepts
 description: Defines different CCM cost concepts.
 # sidebar_position: 2
 helpdocs_topic_id: hs7cyi1nix

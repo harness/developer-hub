@@ -1,5 +1,5 @@
 ---
-title: Cost Categories Overview
+title: Cost Categories overview
 description: CCM Cost Categories provide an understanding of where and how your money is being spent. Cost categories allow you to take data across multiple sources and attribute it to business contexts, such as…
 # sidebar_position: 1
 helpdocs_topic_id: 6lle2diqeg
