@@ -352,7 +352,7 @@ AutoStopping provides several advantages, and it can work alongside Autoscaling 
 * There are two options for late-shift developers:
 	+ If you know the exact schedule ahead of time, you can use [Fixed schedules](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md#fixed-schedules) to keep the service running during that time.
 	+ If the exact duration is unknown:
-		- You can use [ECG/heartbeat agent](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/2-configure-ecg/configure-ecg-for-auto-stopping-rules.md#configure-ecg) to keep the services up as long as needed by detecting process liveliness or HTTP endpoints that can report the progress of the workers.
+		- You can use [ECG/heartbeat agent](../../cloud-cost-management/4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/2-configure-ecg-for-auto-stopping-rules.md#configure-ecg) to keep the services up as long as needed by detecting process liveliness or HTTP endpoints that can report the progress of the workers.
 		- Alternatively, you can use our [API](https://harness.io/docs/api/tag/Cloud-Cost-AutoStopping-Fixed-Schedules) support to notify of service activity/idleness.
 
 #### Can I shut down entire clusters more easily than creating one rule per service?
