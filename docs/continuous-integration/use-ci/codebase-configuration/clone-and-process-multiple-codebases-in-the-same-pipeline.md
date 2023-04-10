@@ -57,7 +57,7 @@ Now that the files from both repos will be cloned into a common workspace, you c
 
 Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings#dockerfile) which assume files are located at the codebase's root directory if not otherwise specified. Depending on the default codebase, you might need to specify a non-root path for build files.
 
-You can also use, for example, a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) to move cloned files around the workspace before building an artifact.
+You can also use, for example, a `cp` command in a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) to move cloned files around the workspace before building an artifact.
 
 ## YAML example
 
@@ -113,3 +113,138 @@ pipeline:
                       - <+pipeline.executionId>
                     dockerfile: /path/to/dockerfile
 ```
+
+## Option: Use a Run step
+
+As an alternative to the **Git Clone** step, you can use scripts in **Run** steps to clone multiple repos into a stage.
+
+You might want to define [stage variables](../build-stage-settings/ci-stage-settings.md#advanced-stage-variables) for the names and URLs of the codebases that you clone into the workspace. These variables are accessible across all steps in the stage.
+
+Depending on the image you use for the **Run** step, you might need to install Git before you clone any repos. For example, you could use this code in a **Run** step to install git, verify that it's working, and clone the repo with the Dockerfile needed to build an image. This example uses stage variables for the GitHub usenrame and Docker repo.
+
+```
+apk add git  
+git --version  
+git clone https://github.com/$GITHUB_USERNAME/$DOCKER_REPO
+```
+
+<details>
+<summary>Move files and folders after cloning</summary>
+
+Your pipeline's default codebase files are in the root folder, while other codebase files are in subfolders. If you run a `find` or a recursive `ls` in a **Run** step after cloning additional codebases, you see something like this:
+
+```
+# Files from default codebase:  
+87 info 4/26/2022 10:43:31 AM ./setup-be-service.sh  
+88 info 4/26/2022 10:43:31 AM ./default-be-template.json  
+89 info 4/26/2022 10:43:31 AM ./core/  
+90 info 4/26/2022 10:43:31 AM ./core/src/  
+...  
+# Files from $DOCKER_REPO codebase:  
+146 info 4/26/2022 10:43:31 AM ./myDockerRepo/myBackendService  
+147 info 4/26/2022 10:43:31 AM ./myDockerRepo/myBackendService/Dockerfile
+```
+
+In this example, you need to copy the DockerFile for the back-end service into the root workspace folder. For example, this `cp` command assumes the DockerFiles are arranged by app repo name in the Docker repo:
+
+```
+cp $DOCKER_REPO/$APP_REPO/Dockerfile .
+```
+
+Now the Dockerfile is in the correct location to build the image, for example:
+
+```
+./setup-backend-service.sh  
+./default-be-template.json  
+./Dockerfile  
+./core/  
+...
+```
+
+</details>
+
+<details>
+<summary>YAML example: Clone with Run step</summary>
+
+```yaml
+pipeline:  
+    name: build-from-multiple-repos-example  
+    identifier: buildfrommultiplereposexample  
+    allowStageExecutions: false  
+    projectIdentifier: docexampleproject  
+    orgIdentifier: wtd  
+    description: Git clone, copy Dockerfile from myDockerRepo to workspace root, build image  
+    tags: {}  
+    properties:  
+        ci:  
+            codebase:  
+                connectorRef: mygithubconnector  
+                repoName: myBackendService  
+                build: <+input>  
+    stages:  
+        - stage:  
+              name: Build myBackendService  
+              identifier: Build_Test_and_Push  
+              type: CI  
+              spec:  
+                  cloneCodebase: true  
+                  infrastructure:  
+                      type: KubernetesDirect  
+                      spec:  
+                          connectorRef: mydelegateconnector  
+                          namespace: harness-delegate-ng  
+                          automountServiceAccountToken: true  
+                  execution:  
+                      steps:  
+                          - step:  
+                                type: Run  
+                                name: git-clone-and-copy-dockerfile  
+                                identifier: echotriggervarscustom  
+                                spec:  
+                                    connectorRef: mydockerhubconnector  
+                                    image: alpine:latest  
+                                    shell: Sh  
+                                    command: |+  
+                                        # Clone Codebase is enabled, which copies all  
+                                        # files and folders to the current folder.  
+                                        # Before we can build an image, we need to clone the   
+                                        # Docker repo and copy the corresponding Dockerfile  
+                                        # to the current folder   
+  
+                                        apk add git  
+                                        git --version  
+                                        git clone https://github.com/$GITHUB_USERNAME/$DOCKER_REPO  
+  
+                                        # We now have Docker repo at the current folder:  
+                                        find .  
+  
+                                        # Copy Dockerfile to current folder, where the Docker Build  
+                                        # step can find it:  
+                                        cp $DOCKER_REPO/$APP_REPO/Dockerfile .  
+  
+                                    privileged: true  
+                          - step:  
+                                type: BuildAndPushDockerRegistry  
+                                name: build-my-backend-service  
+                                identifier: buildmybackendservice  
+                                spec:  
+                                    connectorRef: mydockerhubconnector  
+                                    repo: <+input>  
+                                    tags:  
+                                        - <+pipeline.sequenceId>  
+                                        - latest  
+                                    optimize: true  
+              variables:  
+                  - name: GITHUB_USERNAME  
+                    type: Secret  
+                    value: msharmadgithubuname  
+                  - name: APP_REPO  
+                    type: String  
+                    value: myBackendService  
+                  - name: DOCKER_REPO  
+                    type: String  
+                    value: myDockerRepo  
+              failureStrategies: []
+```
+
+</details>

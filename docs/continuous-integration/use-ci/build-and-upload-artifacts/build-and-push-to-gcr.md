@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic explains how to add a Build and Push to [Google Container Registry](https://cloud.google.com/container-registry) (GCR) step to a CI pipeline.
 
-These steps assume you're familiar with creating CI pipelines. If you haven't created a pipeline before, try this tutorial to [get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-cis).
+These steps assume you're familiar with creating CI pipelines. If you haven't created a pipeline before, try this tutorial to [get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
 
 ## Add the Build and Push to GCR step
 
