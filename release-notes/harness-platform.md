@@ -19,9 +19,9 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ## April 11, 2023, version 790xx
 ### What's new
-- You can now access an organization by clicking its name on a project details page. (PL-32182,41785)
+- You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182,41785)
 
-- Harness Git Experience now supports the GitLab connector. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
+- Harness Git Experience now supports GitLab as one of the code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
   * Github
   * Bitbucket
   * AzureRepo 
