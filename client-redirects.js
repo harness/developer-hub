@@ -502,5 +502,16 @@ module.exports = {
     to: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
     },
     
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
+      to: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
+    },
 ],
 };

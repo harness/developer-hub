@@ -113,9 +113,10 @@ Click **Finish**.
 
 This step is only applicable when you want to override the default Delegate and download build images using the Connector you just created.
 
-In the Build Stage, go to the Infrastructure tab and specify your build-image Connector in the **Override Image Connector** field. The Delegate will use this Connector to download images from the Harness repository.
+In the [Build stage settings](/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings.md), go to the Infrastructure tab and specify your build-image Connector in the **Override Image Connector** field. The Delegate will use this Connector to download images from the Harness repository.
 
 ![](./static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
+
 ### Step 6: Run the Pipeline
 
 You can now run your Pipeline. Harness will now pull images from the Harness Registry at Pipeline runtime using the configured Connector.
@@ -125,6 +126,6 @@ If a connector with`harnessImage` identifier already exists on your **Account**,
 ### See also
 
 * [Permission Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
-* [Harness CI Image List](../../continuous-integration/ci-technical-reference/harness-ci.md)
-* [CI Build Image Updates](../../continuous-integration/ci-technical-reference/ci-build-image-updates.md)
+* [Harness CI Image List](../../continuous-integration/use-ci/build-stage-settings/harness-ci.md)
+* [CI Build Image Updates](../../continuous-integration/use-ci/build-stage-settings/ci-build-image-updates.md)
 

@@ -1,7 +1,7 @@
 ---
 title: CI build image updates
-description: Your organization has a one-month window to run security scans or other tests on new CI build images before you deploy them.
-sidebar_position: 210
+description: Run security scans or other tests on new CI build images before you deploy them.
+sidebar_position: 40
 helpdocs_topic_id: 1h724b6txn
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Your organization has a one-month window to run security scans or other tests on new CI build images before you deploy them. Every two weeks, Harness publishes new versions of images required to run CI builds. Each image is backwards-compatible with the previous two releases.
 
-### Harness CI image updates
+## Harness CI image updates
 
 Harness updates `harness/ci-*` images such as `harness/ci-addon` and `harness/ci-lite-engine` as follows:
 
@@ -21,11 +21,11 @@ Harness updates `harness/ci-*` images such as `harness/ci-addon` and `harness/ci
 * If your builds use containers that are more than two releases old, the UI shows a warning that the image versions are no longer supported. The builds won't fail automatically.
 * If a hotfix or security fix is required for a specific image, Harness will create hotfixes for the latest three images and notify customers when these hotfixes are available.
 
-### Drone plugin image updates
+## Drone plugin image updates
 
 Drone images are updated as needed. All Drone image updates are backward-compatible. When you first deploy CI, Harness will scan all plugin images you plan to use and address any vulnerabilities. After your initial deployment, Harness will publish updates to address new vulnerabilities based on our Service Level Agreement with your organization.
 
-### Update the images used in your pipelines
+## Update the images used in your pipelines
 
 Harness CI includes an `execution-config` API that enables you to update the images used in your infrastructure. The following steps describe the high-level workflow.
 
