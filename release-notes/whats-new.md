@@ -1,6 +1,6 @@
 ---
 title: What's New
-date: 2023-03-31T10:00
+date: 2023-04-11T10:00
 sidebar_position: 1
 ---
 
@@ -15,6 +15,19 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## April 11, 2023, version 790xx
+
+### Harness Platform
+- You can now access an organization by clicking its name on a project details page. (PL-32182,41785)
+
+- Harness Git Experience now supports the GitLab connector. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
+  * Github
+  * Bitbucket
+  * AzureRepo 
+  * Gitlab 
+
+- You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
 
 ## March 31, 2023, version 78914
 

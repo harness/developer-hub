@@ -16,6 +16,17 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### April 11, 2023, version 790xx
+
+#### Early access
+
+#### What's new
+
+#### Fixed issues
+
+- The audit trail does not show users who have been added or removed from a group via SCIM. (PL-32106)
+  A code enhancement fixed this issue.
+
 ### March 31, 2023, version 78914
 
 #### Early access
