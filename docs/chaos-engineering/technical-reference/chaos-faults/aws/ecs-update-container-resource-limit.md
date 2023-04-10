@@ -3,15 +3,12 @@ id: ecs-update-container-resource-limit
 title: ECS Update Container Resource limit
 ---
 
-ECS Update Container Resource Limits is a fault that allows you to modify the CPU and memory resources of containers in an Amazon ECS (Elastic Container Service) task. This fault is useful for testing how your ECS tasks behave when their resource limits are changed, and verifying the scalability and resilience of your ECS tasks under different resource configurations.
+ECS update container resource limits allows you to modify the CPU and memory resources of containers in an Amazon ECS (Elastic Container Service) task. This fault determines the behavior of your ECS tasks when their resource limits are changed, and verifies the scalability and resilience of your ECS tasks under different resource configurations.
 
 ![ECS Update Container Resource Limit](./static/images/ecs-update-container-resource-limit.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View fault usage</summary>
-<div>
 This fault modifies the resource limits of a container by updating the task definition associated with the ECS service or task. It allows you to simulate scenarios where containers experience changes in their allocated resources, which may affect their performance or availability. For example, you can increase or decrease the CPU or memory limits of a container to test how your application adapts to changes in resource availability.
 
 The fault can be used to validate the behavior of your application and infrastructure during simulated resource limit changes, such as:
@@ -21,8 +18,7 @@ The fault can be used to validate the behavior of your application and infrastru
 - Evaluating the impact of changes in resource limits on the performance and availability of your application.
 
 It's important to note that modifying container resource limits using the ECS Update Container Resource Limit fault is an intentional disruption and should be used carefully in controlled environments, such as during testing or staging, to avoid any negative impact on production workloads.
-</div>
-</details>
+
 
 ## Prerequisites
 
@@ -118,8 +114,6 @@ The ECS containers should be in a healthy state.
       </tr>
     </table>
 </details>
-
-## Fault examples
 
 ### Common and AWS-specific tunables
 

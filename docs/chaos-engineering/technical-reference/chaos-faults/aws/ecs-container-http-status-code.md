@@ -2,18 +2,15 @@
 id: ecs-container-http-status-code
 title: ECS Container HTTP status code
 ---
-ECS Container HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server on the target ECS containers.
+ECS container HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server on the target ECS containers.
 - It tests the ECS task container resilience to erroneous code HTTP responses from the application server.
 
 ![ECS Container HTTP Modify Response](./static/images/ecs-container-http-status-code.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-It simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404), unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x) on ECS task container.
-</div>
-</details>
+## Use cases
+
+- It simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404).
+- It simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x) on ECS task container.
 
 
 ## Prerequisites
@@ -194,8 +191,6 @@ The ECS Container instance should be in a healthy state.
         </tr>
     </table>
 </details>
-
-## Fault examples
 
 ### Fault tunables
 

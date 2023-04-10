@@ -1,17 +1,14 @@
 ---
 id: ecs-network-restrict
-title: ECS Network restrict
+title: ECS network restrict
 ---
 
-ECS Network Restrict is a fault that allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. This fault is useful for testing the resilience and performance of your ECS tasks when network access is restricted, and validating the behavior of your application in a restricted networking environment.
+ECS network restrict is a fault that allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. This fault is useful for testing the resilience and performance of your ECS tasks when network access is restricted, and validating the behavior of your application in a restricted networking environment.
 
 ![ECS Network restrict](./static/images/ecs-network-restrict.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View fault usage</summary>
-<div>
 This fault restricts the network connectivity of containers by modifying the container security rules associated with the ECS task. It allows you to simulate scenarios where network access is restricted, which may impact the behavior of your application or infrastructure. For example, you can restrict outgoing internet access from containers to test how your application handles restricted networking environments or to validate the behavior of your application when certain network resources are not accessible.
 The fault can be used to validate the behavior of your application and infrastructure during simulated network restrictions, such as:
 
@@ -19,8 +16,6 @@ The fault can be used to validate the behavior of your application and infrastru
 
 - Validating the performance and availability of your application in a restricted networking environment, including checking if the application can continue to function properly with limited network access.
 
-</div>
-</details>
 
 ## Prerequisites
 
@@ -132,7 +127,6 @@ The ECS containers should be in a healthy state.
     </table>
 </details>
 
-## Fault examples
 
 ### Common and AWS-specific tunables
 
@@ -168,7 +162,7 @@ spec:
           VALUE: '60'
 ```
 
-### Rule Type
+### Rule type
 
 It specifies the rule type. You can tune it using the `RULE_TYPE` environment variable.
 
@@ -198,7 +192,7 @@ spec:
           VALUE: '60'
 ```
 
-### Rule Mode
+### Rule mode
 
 It specifies the rule outbound. You can tune it using the `RULE_MODE` environment variable.
 

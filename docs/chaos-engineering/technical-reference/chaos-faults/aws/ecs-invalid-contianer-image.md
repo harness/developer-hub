@@ -1,25 +1,19 @@
 ---
 id: ecs-invalid-container-image
-title: ECS Invalid Container image
+title: ECS invalid container image
 ---
 
-ECS Update Container Image is a fault that allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task. This fault is useful for testing how your ECS tasks behave when container images are updated, and validating the resilience and performance of your ECS tasks during image updates.
+ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task. This fault helps test the behavior of your ECS tasks when the container images are updated, and validates the resilience and performance of your ECS tasks during image updates.
 
 ![ECS Invalid Container Image](./static/images/ecs-invalid-container-image.png)
 
-## Usage
+## Use cases
 
-<details>
-<summary>View fault usage</summary>
-<div>
 This fault updates the Docker image of a container by modifying the task definition associated with the ECS service or task. It allows you to simulate scenarios where container images are updated, which may impact the behavior of your application or infrastructure. For example, you can update the Docker image of a container to a newer version or a different image to test how your application handles image updates.
 The fault can be used to validate the behavior of your application and infrastructure during simulated container image updates, such as:
 
 1. Testing the resilience of your system during image updates, including verifying if the updated image is pulled successfully and if the container starts with the new image.
 2. Validating the performance and availability of your application after container image updates, including checking if the updated image performs as expected and if there are any issues with the new image.
-
-</div>
-</details>
 
 ## Prerequisites
 
@@ -111,13 +105,12 @@ The ECS containers should be in a healthy state.
     </table>
 </details>
 
-## Fault examples
 
 ### Common and AWS-specific tunables
 
 Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Invalid ECS Conatiner image
+### Invalid ECS conatiner image
 
 It specifies the invalid image for the ECS task containers. You can tune it using the `IMAGE` environment variable.
 

@@ -3,19 +3,16 @@ id: ecs-update-container-timeout
 title: ECS Update Container timeout
 ---
 
-ECS Update Container Timeout is used to modify the start and stop timeout for ECS containers in Amazon ECS clusters. It allows you to specify the duration for which the containers should be allowed to start or stop before they are considered as failed. This fault is useful for testing the resilience of ECS tasks and their containers to timeouts during updates or deployments.
+ECS update container timeout is used to modify the start and stop timeout for ECS containers in Amazon ECS clusters. It allows you to specify the duration for which the containers should be allowed to start or stop before they are considered as failed. This fault is useful for testing the resilience of ECS tasks and their containers to timeouts during updates or deployments.
 
 
 ![ECS Update Container Timeout](./static/images/ecs-update-container-timeout.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 ECS Update Container Timeout is useful for verifying the behavior of ECS tasks and their containers when the start or stop timeout is exceeded during updates or deployments. It helps to test the recovery mechanisms of the ECS service and container instances in case of timeouts. This fault can be used to simulate scenarios where containers take longer than expected to start or stop, and to evaluate the impact of such scenarios on the overall application availability and performance.
-</div>
-</details>
+
 
 ## Prerequisites
 
@@ -112,13 +109,11 @@ The ECS containers should be in a healthy state.
     </table>
 </details>
 
-## Fault examples
-
 ### Common and AWS-specific tunables
 
 Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
-### Start And Stop Timeout
+### Start and stop timeout
 
 It specifies the start and stop timeout for the task containers. You can tune it using the `START_TIMEOUT` and `STOP_TIMEOUT` environment variable. Its default value is set to 3,600 seconds if not provided
 

@@ -1,21 +1,17 @@
 ---
 id: ecs-container-http-modify-body
-title: ECS Container HTTP modify body
+title: ECS container HTTP modify body
 ---
 
-ECS Container HTTP Modify Body injects HTTP chaos which affects the request/response by modifying the status code, body, or headers by starting a proxy server and redirecting the traffic through the proxy server.
-- It tests the application's resilience to erroneous (or incorrect) HTTP response body.
+ECS container HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code, body, or headers. This is achieved by starting a proxy server and redirecting the traffic through the proxy server.
 
 
 ![ECS Container HTTP Modify Response](./static/images/ecs-container-http-modify-body.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-It can test the ECS application container resilience to erroneous or incorrect HTTP response body.
-</div>
-</details>
+## Use cases
+- It tests the application's resilience to erroneous (or incorrect) HTTP response body.
+- It can test the ECS application container resilience to erroneous or incorrect HTTP response body.
+
 
 ## Prerequisites
 - Kubernetes >= 1.17
@@ -108,7 +104,6 @@ Refer to the [superset permission/policy](./security-configurations/policy-for-a
 ## Default validations
 The ECS container instance should be in a healthy state.
 
-
 ## Fault tunables
 
 <details>
@@ -185,8 +180,6 @@ The ECS container instance should be in a healthy state.
         </tr>
     </table>
 </details>
-
-## Fault examples
 
 ### Fault tunables
 

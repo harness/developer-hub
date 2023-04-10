@@ -1,21 +1,18 @@
 ---
 id: ecs-container-http-reset-peer
-title: ECS Container HTTP reset peer
+title: ECS container HTTP reset peer
 ---
 
-ECS Container HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+ECS container HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
 - It stops the outgoing HTTP requests by resetting the TCP connection for the requests.
 - It determines the application's resilience to a lossy (or flaky) HTTP connection.
 
 ![ECS Container HTTP Reset Peer](./static/images/ecs-container-http-reset-peer.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
-</div>
-</details>
+## Use cases
+
+- It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout).
+- It simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 
 
 ## Prerequisites
@@ -187,7 +184,6 @@ The ECS container should be in a healthy state.
     </table>
 </details>
 
-## Fault examples
 
 ### Fault tunables
 

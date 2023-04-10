@@ -1,16 +1,14 @@
 ---
 id: ecs-container-http-latency
-title: ECS Container HTTP latency
+title: ECS container HTTP latency
 ---
 
-ECS Container HTTP latency is a fault that induces HTTP chaos on containers running in an Amazon ECS (Elastic Container Service) task. This fault injects latency to the HTTP responses of containers in a specified service using a proxy server, simulating delays in network connectivity or slow responses from dependent services.
+ECS container HTTP latency induces HTTP chaos on containers running in an Amazon ECS (Elastic Container Service) task. This fault introduces latency in the HTTP responses of containers of a specific service using a proxy server, simulating delays in network connectivity or slow responses from the dependent services.
 
 ![ECS Container HTTP Latency](./static/images/ecs-container-http-latency.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
+## Use cases
+
 This fault modifies the HTTP responses of containers in a specified ECS service by starting a proxy server and redirecting traffic through the proxy server. It allows you to simulate scenarios where containers experience delays in network connectivity or slow responses from dependent services, which may impact the behavior of your application.
 The fault can be used to validate the behavior of your application and infrastructure during simulated HTTP latency, such as:
 
@@ -18,8 +16,6 @@ The fault can be used to validate the behavior of your application and infrastru
 - Verifying the resilience of your system when containers experience slow responses from dependent services.
 - Evaluating the impact of HTTP latency on the performance and availability of your application.
 
-</div>
-</details>
 
 ## Prerequisites
 - Kubernetes >= 1.17
@@ -189,7 +185,6 @@ The ECS task conatiner should be in a healthy state.
     </table>
 </details>
 
-## Fault examples
 
 ### Fault tunables
 
@@ -250,7 +245,7 @@ spec:
           value: "80"
 ```
 
-### Network Latency
+### Network latency
 
 It is the latency value that is added to the http request. You can tune it using the `LATENCY` environment variable.
 
