@@ -1,5 +1,5 @@
 ---
-title: Create an AWS Connector for AutoStopping Rules
+title: AWS Connector 
 description: Connectors allow Harness to connect to your deployment environments, such as Kubernetes Clusters, AWS, Google Cloud Platform, Azure, etc. This topic describes how to link your AWS cloud account to Harness.
 # sidebar_position: 2
 helpdocs_topic_id: hiyi6xvj36
@@ -12,7 +12,7 @@ Connectors allow Harness to connect to your deployment environments, such as Kub
 
 ### Before you begin
 
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-auto-stopping-rules.md
 
 ### Add an AWS Connector
 

@@ -1,5 +1,5 @@
 ---
-title: Set up CCM for Azure
+title: Azure
 description: This topic describes how to set up cost visibility for Azure.
 # sidebar_position: 2
 helpdocs_topic_id: v682mz6qfd

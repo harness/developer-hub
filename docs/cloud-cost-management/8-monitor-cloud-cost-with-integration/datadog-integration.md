@@ -1,6 +1,6 @@
 ---
-title: Monitor cloud costs with Datadog integration 
-description: This document talks about how you can include Harness Cloud Cost Management UI extension within Datadog.
+title: Datadog  
+description: This document talks about how you can include Harness Cloud Cost Management UI extension within Datadog to monitor cloud costs.
 # sidebar_position: 2
 helpdocs_topic_id: 0gxfb9qe6q
 helpdocs_category_id: 8a7gmuvz7e

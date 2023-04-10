@@ -101,6 +101,6 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 
 ## Integrate CCM with your cloud account
 To set up CCM for your cloud accounts, go to the following topics:
-* [Set up CCM for AWS](set-up-cost-visibility-for-aws.md)
-* [Set up CCM for Azure](set-up-cost-visibility-for-azure.md)
-* [Set up CCM for GCP](set-up-cost-visibility-for-gcp.md)
+* [AWS](set-up-cost-visibility-for-aws.md)
+* [Azure](set-up-cost-visibility-for-azure.md)
+* [GCP](set-up-cost-visibility-for-gcp.md)

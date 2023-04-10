@@ -1,5 +1,5 @@
 ---
-title: Set up CCM for AWS
+title: AWS
 description: This topic describes how to set up cost visibility for AWS.
 # sidebar_position: 2
 helpdocs_topic_id: 80vbt5jv0q

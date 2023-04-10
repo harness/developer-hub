@@ -1,5 +1,5 @@
 ---
-title: Set up CCM for Kubernetes
+title: Kubernetes
 description: This topic describes how to connect your Kubernetes cluster to CCM.
 # sidebar_position: 2
 helpdocs_topic_id: ltt65r6k39

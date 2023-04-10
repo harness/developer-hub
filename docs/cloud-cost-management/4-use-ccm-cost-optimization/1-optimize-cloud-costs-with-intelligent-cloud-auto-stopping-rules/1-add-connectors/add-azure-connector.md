@@ -1,5 +1,5 @@
 ---
-title: Create an Azure Connector for AutoStopping Rules
+title: Azure Connector 
 description: Connectors allow Harness to connect to your deployment environments, such as Kubernetes Clusters, AWS, Google Cloud Platform, Azure, etc. To create an AutoStopping Rule for your Azure instances, you…
 # sidebar_position: 2
 helpdocs_topic_id: e7yidxmtmj
@@ -12,7 +12,7 @@ Connectors allow Harness to connect to your deployment environments, such as Kub
 
 ### Before you begin
 
-* [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](1-auto-stopping-rules.md)
 
 ### Prerequisites
 

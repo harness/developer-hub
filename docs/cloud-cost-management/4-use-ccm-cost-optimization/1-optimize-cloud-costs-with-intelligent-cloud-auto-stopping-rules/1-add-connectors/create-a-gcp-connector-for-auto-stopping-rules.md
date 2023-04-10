@@ -1,5 +1,5 @@
 ---
-title: Create a GCP Connector for AutoStopping Rules
+title: GCP Connector 
 description: This topic describes how to add a GCP connector for creating AutoStopping Rules.
 # sidebar_position: 2
 helpdocs_topic_id: cfojlhnf8s
@@ -14,7 +14,7 @@ This topic describes how to connect your GCP cloud account to Harness.
 
 ### Before you begin
 
-* [AutoStopping Rules Overview](1-auto-stopping-rules.md)
+* [AutoStopping Rules Overview](../1-auto-stopping-rules.md.md)
 
 ### Add a GCP Connector
 
