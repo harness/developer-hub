@@ -1,6 +1,6 @@
 ---
-title: Create a Remote Pipeline Template
-description: This topic explains how to add a remote Pipeline Template in Harness.
+title: Create a remote pipeline template
+description: This topic explains how to add a remote pipeline template in Harness.
 sidebar_position: 2
 ---
 
@@ -31,7 +31,7 @@ Harness Pipeline Templates give you the ability to enforce consistency. You can 
 
 For example, if you have a core Pipeline that you want all of your teams to use, you can put the template in a core repo and then refer to it. Now you can reuse this Template.
 
-For information on inline Pipeline Templates, see [Create a Pipeline Template](create-pipeline-template.md).
+For information on inline pipeline templates, see [create a pipeline template](/docs/platform/templates/create-pipeline-template/).
 
 ## Use a remote pipeline template
 
@@ -64,7 +64,7 @@ You can create a Stage Template from your Account, Org or Project. This topic ex
 4. In **Name**, enter a name for the Template.
 5. In **Version Label**, enter a version for the Template.
 6. Click **Remote**.
-7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
+7. In **Git Connector**, select or create a Git Connector to the repo for your Project.​ For steps, go to [code repo connectors](/docs/category/code-repo-connectors).
 8. In **Repository**, select your repository. If your repository isn't listed, enter its name since only a select few repositories are filled here. Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.
 9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here.Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.
 10. Harness auto-populates the **YAML Path**. You can change this path and the file name.
@@ -98,30 +98,32 @@ Select the entity that this stage should deploy.
 
 ## Add service details
 
-1. In **Select Service**, select an existing Service that you want to deploy from the Specify Service drop-down list or create a new one. You can also use [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
-2. Click **Continue**.
+1. In **Select Service**, select an existing Service that you want to deploy from the Specify Service drop-down list or create a new one. You can also use [fixed values runtime inputs and expressions](/docs/platform/references/runtime-inputs/).
+2. Select **Continue**.
 3. In **Specify Environment**, select an existing environment or add a new one.
-4. In **Specify Infrastructure**, select an existing infrastructure or add a new one. Click **Continue.**  
+4. In **Specify Infrastructure**, select an existing infrastructure or add a new one. Select **Continue.**  
 The **Execution Strategies** settings appear.
 
 ## Define execution strategies
 
-1. In **Execution Strategies**, select the deployment strategy for your Pipeline Template.
+1. In **Execution Strategies**, select the deployment strategy for your pipeline template.
 This topic uses the example of Rolling deployment.
-For more information on different execution strategies, see [Deployment Concepts and Strategies.](../../continuous-delivery/manage-deployments/deployment-concepts.md)
-2. Click **Use Strategy**.
-3. Click **Save**. The **Save Template to Git** settings appear.![](./static/create-a-remote-pipeline-template-26.png)
+For more information on different execution strategies, go to [deployment concepts and strategies.](/docs/continuous-delivery/manage-deployments/deployment-concepts)
+2. Select **Use Strategy**.
+3. Select **Save**. The **Save Template to Git** settings appear.
+
+   ![](./static/create-a-remote-pipeline-template-26.png)
 
 ## Save a remote pipeline template to Git
 
 1. In **Select Branch to Commit**, You can select one of the following:
 	1. **Commit to an existing branch**: you can start a pull request if you like.
 	2. **Commit to a new branch:** enter the new branch name. You can start a pull request if you like.
-2. Click **Save**. Your Remote Pipeline Template is saved to the repo branch.
+2. Select **Save**. Your Remote Pipeline Template is saved to the repo branch.
    
    ![](./static/create-a-remote-pipeline-template-27.png)
-3. Click the YAML file to see the YAML for the Stage Template.
-4. Edit the YAML. For example, change the name of the Template.
+3. Click the YAML file to see the YAML for the stage template.
+4. Edit the YAML. For example, change the name of the template.
 5. Commit your changes to Git.
 6. Return to Harness and refresh the page.
 
@@ -131,5 +133,5 @@ A **Template Updated** message appears.
 
 ## Next steps
 
-* [Use a Template](use-a-template.md)
+* [Use a template](/docs/platform/templates/use-a-template/)
 

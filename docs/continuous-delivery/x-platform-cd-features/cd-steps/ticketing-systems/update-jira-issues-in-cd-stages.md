@@ -31,7 +31,7 @@ The following video shows you how to use the Jira Create, Jira Update, and Jira 
 ![](./static/update-jira-issues-in-cd-stages-14.png)
 
 3. In **Name**, enter a name that describes the step.
-4. In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps))..
+4. In **Timeout**, enter how long you want Harness to try to update the issue before failing (and initiating the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps)).
 5. In **Jira Connector**, create or select the [Jira connector](/docs/platform/Connectors/connect-to-jira) to use.
 6. In **Project**, select a Jira project from the list. A Jira project is used to create the issue key and ID when the issue is created. The unique issue number is created automatically by Jira.
 7. In **Issue Type**, select a Jira issue type from the list of types in the Jira project you selected.
@@ -78,11 +78,11 @@ In **Optional Configuration**:
 
 ![](static/status-and-transition.png)
 
-If the issue is not part of a Jira workflow and does not have transition options, then the step will fail. For more information, go to [Statuses and transitions](https://support.atlassian.com/jira-cloud-administration/docs/work-with-issue-workflows/#Workingwithworkflows-steps) from Atlasssian.
+If the issue is not part of a Jira workflow and does not have transition options, then the step will fail. For more information, go to [statuses and transitions](https://support.atlassian.com/jira-cloud-administration/docs/work-with-issue-workflows/#Workingwithworkflows-steps) from Atlasssian.
 
-### Add issue fields
+### Add Issue fields
 
-You can select specific fields to update within a Jira issue. For more information, go to [Jira Custom Fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
+You can select specific fields to update within a Jira issue. For more information, go to [Jira custom fields](https://support.atlassian.com/jira-cloud-administration/docs/custom-fields-types-in-company-managed-projects/).
 
 In **Optional Configuration**, select **+ Fields** to add Jira fields.
 
@@ -134,12 +134,12 @@ The issue type for the selected Jira Issue is now updated with the issue type yo
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step skip condition settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 
 ## Apply and test
 
-Click **Apply Changes**. The Jira Update step is added to the stage.
+Select **Apply Changes**. The Jira Update step is added to the stage.
 
 Run the pipeline.
 
@@ -154,10 +154,5 @@ Locate **URL** and copy its value.
 In a new browser tab, paste the URL and press enter.
 
 The updated issue appears in Jira.
-
-## See Also
-
-* [Create Jira Issues in CD Stages](create-jira-issues-in-cd-stages.md)
-* [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md)
 
 

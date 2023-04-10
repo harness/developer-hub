@@ -10,8 +10,8 @@ You can use the **ServiceNow Import Set** step in your CD, approval, or custom s
 
 You can also create and update tickets using the following Harness ServiceNow steps:
 
-- [Create ServiceNow Tickets in CD Stages](create-service-now-tickets-in-cd-stages.md)
-- [Update ServiceNow Tickets in CD Stages](update-service-now-tickets-in-cd-stages.md)
+- [Create ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages)
+- [Update ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-service-now-tickets-in-cd-stages)
 
 :::
 
@@ -23,7 +23,7 @@ Import Sets are a useful tool for migrating data into ServiceNow, or for regular
 
 :::note
 
-For more information on ServiceNow import sets, go to [Import Set - POST /now/import/{stagingTableName}](https://docs.servicenow.com/bundle/quebec-application-development/page/integrate/inbound-rest/concept/c_ImportSetAPI.html#import-POST) and [Import sets key concepts](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/concept/c_ImportSetsKeyConcepts.html) from ServiceNow.
+For more information on ServiceNow import sets, go to [Import Set - POST /now/import/{stagingTableName}](https://docs.servicenow.com/bundle/quebec-application-development/page/integrate/inbound-rest/concept/c_ImportSetAPI.html#import-POST) and [import sets key concepts](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/concept/c_ImportSetsKeyConcepts.html) from ServiceNow.
 
 :::
 
@@ -43,8 +43,8 @@ You can add a ServiceNow Import Set step anywhere in CD, approval, or custom sta
 
 1. In a Harness CD, approval, or custom stage, in **Execution**, click **Add Step**, and then select **ServiceNow Import Set**.
 2. Enter a name for the step.
-3. Enter a timeout period for the step. Once the timeout expires, Harness will initiate the step or stage [failure strategy](../../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
-4. In **ServiceNow Connector**, select or create the [Harness ServiceNow Connector](../../../../platform/7_Connectors/connect-to-service-now.md) to use.
+3. Enter a timeout period for the step. Once the timeout expires, Harness will initiate the step or stage [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
+4. In **ServiceNow Connector**, select or create the [Harness ServiceNow connector](/docs/platform/Connectors/connect-to-service-now) to use.
 
 ## Select the stage table
 
@@ -67,20 +67,18 @@ You can also use Harness runtime inputs, variable expressions, and Harness secre
 
 For example, you could create a stage variable named `importset` and then reference it in **JSON Body** as {"u_example":"<+stage.variables.importset>"}.
 
-For details on the table requirements and naming, go to [Import sets](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/reference/import-sets-landing-page.html) from ServiceNow.
+For details on the table requirements and naming, go to [import sets](https://docs.servicenow.com/en-US/bundle/tokyo-platform-administration/page/administer/import-sets/reference/import-sets-landing-page.html) from ServiceNow.
 
-For details on creating a transform map, go to [Create a transform map](https://docs.servicenow.com/bundle/tokyo-platform-administration/page/script/server-scripting/task/t_CreateATransformMap.html). 
+For details on creating a transform map, go to [create a transform map](https://docs.servicenow.com/bundle/tokyo-platform-administration/page/script/server-scripting/task/t_CreateATransformMap.html). 
 
 ## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
-* [Conditional Execution](../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Failure Strategy](../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Looping Strategy](../../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
-
-
+* [Delegate selector](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional execution](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure strategy](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
 
 ## Review transform map outcomes
 
@@ -108,6 +106,6 @@ To reference these results as expressions in other pipeline steps, click the cop
 
 You can echo them in a subsequent step, such as a [Shell Script step](../../executions/cd-general-steps/using-shell-scripts.md).
 
-## Notes
+## Important notes
 
 It is advised to use custom fields instead of out of the box fields in transform maps, especially when an import set staging table has more than 1 associated transform map.

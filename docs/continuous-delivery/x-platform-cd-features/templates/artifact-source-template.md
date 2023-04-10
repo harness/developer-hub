@@ -17,7 +17,7 @@ An artifact source template helps you define the repositories, paths, and tags f
 This topic describes how to create an artifact source template and use it in a stage template and a Harness service.
 
 
-## Product Video
+## Visual summary
 
 <!-- Video:
 https://harness-1.wistia.com/medias/yzbue8fg96-->
@@ -66,7 +66,7 @@ import TabItem from '@theme/TabItem';
 3. Enter a name for the artifact source template. Use a name that describes the artifact source so that team members understand what artifact is represents.
 4. In **Version Label**, enter a version for the template. You can update the version each time you change and save a template.
 5. In **Logo**, upload an icon image for the template.
-6. If you are creating this template at the Harness project level, in **Save To**, select where you want to save the template. For more information, go to [Saving templates to project, org, or account level](#saving-templates-to-project-org-or-account-level).
+6. If you are creating this template at the Harness project level, in **Save To**, select where you want to save the template. For more information, go to [saving templates to project, org, or account level](#saving-templates-to-project-org-or-account-level).
 7. Select **Start**.
 
 ### Artifact registry type
@@ -81,7 +81,7 @@ Harness includes a platform-agnostic artifact registry type named Docker Registr
 
 1. In the repository setting, select or create the Harness registry connector. For example, if you selected **Docker Registry** in **Artifact Repository Type**, the repository setting is named **Docker Registry Repository**.
 
-For information on registry connectors, go to [Connect to an artifact repo](https://developer.harness.io/docs/platform/Connectors/connect-to-an-artifact-repo).
+For information on registry connectors, go to [connect to an artifact repo](/docs/platform/Connectors/connect-to-an-artifact-repo).
 
 You can also select **Runtime input** or **Expression** for this setting.
 
@@ -93,7 +93,7 @@ You can also select **Runtime input** or **Expression** for this setting.
 
 Different repository types have different **Artifact Details** settings.
 
-For information on how to configure each repository's settings, see the examples in [Harness Kubernetes services](https://developer.harness.io/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services).
+For information on how to configure each repository's settings, see the examples in [Harness Kubernetes services](/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services).
 
 ### Tags
 
@@ -158,7 +158,7 @@ You will still be able to select the template in services in this project.
 
 **Artifact Repository Type** is the only setting in the template that must be a fixed value. The remaining settings can be runtime inputs and expressions also. 
 
-For information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+For information on runtime inputs and expressions, go to [fixed values runtime inputs and expressions](/docs/platform/references/runtime-inputs/).
 
 Runtime inputs can be useful in artifact source templates because they let your team members select the repository, path, and tags to use when they run pipelines using artifact source templates.
 
