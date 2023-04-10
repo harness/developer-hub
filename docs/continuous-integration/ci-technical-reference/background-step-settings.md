@@ -54,7 +54,36 @@ You can run PowerShell Core (`pwsh`) commands in pods or containers that have `p
 
 ## Entry Point
 
-The entry point takes precedence over any commands in the **Command** field.
+Supply a list of arguments. The entry point takes precedence over any commands in the **Command** field.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+```
+
+<!-- ![](./static/dind-background-step-entry-point.png) -->
+
+<docimage path={require('./static/dind-background-step-entry-point.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+```yaml
+entrypoint:
+  - dockerd-entrypoint.sh
+  - "--mtu=1450"
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Command
 
