@@ -3,15 +3,15 @@ title: Command Probe
 sidebar_position: 4
 ---
 
-The Command Probe allows developers to run Bash commands and match the resulting output as part of the entry/exit criteria. The intent behind this probe was to allow users to implement a non-standard & imperative way for expressing their hypothesis. For example, you can check for specific data within a database, parse the value out of a JSON blob being dumped into a certain path or check for the existence of a particular string in the service logs.
+Command probe allows you to run Bash commands and match the output as a part of the entry or exit criteria. The intent behind this probe is to implement a non-standard and imperative way to express the hypothesis. For example, you can check for specific data within a database, parse the value out of a JSON blob that is dumped into a certain path, or check for the existence of a particular string in the service logs.
 
-:::info YAML Only Feature
-By default, the probe can only be defined in inline mode from the UI where the command is run from within the experiment image. However, it can also be run in source mode where the command execution is carried out from within a new pod whose image can be specified. While inline is preferred for simple shell commands, source mode can be used when application-specific binaries are required. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#cmdprobe).
+:::info YAML only feature
+By default, this probe can be defined in inline mode from the user interface, where the command is run from within the experiment image. It can also be run in source mode, where the command execution is carried out from within a new pod whose image is specified. Inline mode is preferred for simple shell commands, and source mode is preferred when application-specific binaries are required. For more information, go to [probe schema](https://docs.litmuschaos.io/docs/concepts/probes#cmdprobe).
 :::
 
-## Where to define
+## Defining the probe
 
-The probes can be defined at **.spec.experiments[].spec.probe** path inside Chaos Engine.
+You can define the probe at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
 ```yaml
 kind: Workflow
@@ -35,7 +35,7 @@ spec:
 
 ## Schema
 
-Probe schema for CMD Probe with common properties shared across all probes and properties unique to CMD probe.
+Listed below is the probe schema for the command probe, with properties shared across all the probes and properties unique to the command probe.
 
 <table>
   <tr>
@@ -53,13 +53,13 @@ Probe schema for CMD Probe with common properties shared across all probes and p
   <tr>
    <td>name
    </td>
-   <td>Flag to hold the name of the probe
+   <td>Flag that holds the name of the probe
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>name</code> holds the name of the probe. It can be set based on the usecase
+   <td>The <code>name</code> holds the name of the probe. Set based on the use case.
    </td>
   </tr>
   <tr>
@@ -126,8 +126,6 @@ Probe schema for CMD Probe with common properties shared across all probes and p
 
 ### Source
 
-Source details for Command Probe.
-
 <table>
   <tr>
    <td><strong>Field</strong>
@@ -168,8 +166,6 @@ Source details for Command Probe.
 </table>
 
 ### Comparator
-
-Comparator details for Command Probe.
 
 <table>
   <tr>
@@ -222,9 +218,7 @@ Comparator details for Command Probe.
   </tr>
 </table>
 
-### Run Properties
-
-Probe run properties for CMD Probe.
+### Run properties
 
 <table>
   <tr>
