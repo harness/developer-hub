@@ -1,11 +1,7 @@
 ---
-title: Using Shell Scripts in CD Stages
+title: Using shell scripts in CD Stages
 description: This topic shows you how to run shell scripts in a CD stage using the Shell Script step.
 sidebar_position: 2
-helpdocs_topic_id: k5lu0u6i1i
-helpdocs_category_id: y6gyszr0kl
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 You can run shell scripts in a CD stage using the **Shell Script** step.
@@ -17,13 +13,11 @@ With the Shell Script step, you can execute scripts in the shell session of the 
 
 This topic provides a simple demonstration of how to create a script in a Shell Script step, publish its output in a variable, and use the published variable in a subsequent step.
 
-## Important notes
-
-See [Shell Script Step Reference](../../x-platform-cd-features/cd-steps/utilities/shell-script-step.md.
+Go to [Shell Script step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) for more information.
 
 ## Use cases
 
-Typically, the primary deployment operations are handled by the default Harness deployment steps, such as the [Kubernetes Rollout Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-rollout-step.md).
+Typically, the primary deployment operations are handled by the default Harness deployment steps, such as the [Kubernetes Rollout step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step).
 
 The Shell Script step can be used for secondary options. There are several secondary scripts that DevOps teams commonly run in a Kubernetes container as part of a CD pipeline. These scripts can be used to perform various tasks such as configuration, data migration, database schema updates, and more. 
 
@@ -187,11 +181,11 @@ You don't need to use `export` for the variables to use them with **Script Outpu
 
 ### Using Harness expressions in your scripts
 
-If you need quotes around the [Harness variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in your script, use single quotes, like this:
+If you need quotes around the [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in your script, use single quotes, like this:
 
 `export EVENT_PAYLOAD='<+trigger.eventPayload>'` 
 
-If you use [Harness variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
+If you use [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables) in comments in your script, Harness will still try to evaluate and render the variable expressions. Don't use variable expressions that Harness cannot evaluate.
 
 ## Specify input variables
 
@@ -258,7 +252,7 @@ To find the expression to reference your output variables, find the step in the 
 
 ![](./static/using-shell-scripts-22.png)
 
-### Output Variables as Secrets
+### Output variables as secrets
 
 You can select String or Secret for your output variable.
 
@@ -294,28 +288,28 @@ For **Script Input Variables** and **Script Output Variables**, you simply selec
 
 In you select **On Delegate**, the script is executed on whichever Delegate runs the step. You can use **Delegate Selector** in **Advanced** to pick the Delegate(s) if needed.
 
-See [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+See [select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors).
 
 If you select **Target Host**, enter the following:
 
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
-* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, see [Add SSH Keys](../../../platform/6_Security/4-add-use-ssh-secrets.md).
+* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/Security/add-use-ssh-secrets).
 
 ## Advanced settings
 
-See [Shell Script Step Reference](../../x-platform-cd-features/cd-steps/utilities/shell-script-step.md.
+Go to [Shell Script step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step) for more information.
 
-## Notes
+## Important notes
 
 ### Stopping scripts after failures
 
-The Shell Script command will continue to process through the script even if a script step fails. To prevent this, you can simply include instructions to stop on failure in your script. For example:
+The shell script command will continue to process through the script even if a script step fails. To prevent this, you can simply include instructions to stop on failure in your script. For example:
 
 * `set -e` - Exit immediately when a command fails.
 * `set -o pipefail` - Sets the exit code of a pipeline to that of the rightmost command to exit with a non-zero status, or to a zero status if all commands of the pipeline exit successfully.
 * `set -u` - Treat unset variables as an error and exit immediately.
 
-For more information, see this article: [Writing Robust Bash Shell Scripts](https://www.davidpashley.com/articles/writing-robust-shell-scripts/).
+For more information, go to [writing robust Bash shell scripts](https://www.davidpashley.com/articles/writing-robust-shell-scripts/).
 
 ### Published variables not available
 
@@ -329,13 +323,13 @@ FileNotFoundException inside shell script execution task
 
 If you exit from the script (`exit 0`), values for the context cannot be read.
 
-Instead, if you publish output variables in your Shell Script command, structure your script with `if...else` blocks to ensure it always runs to the end of the script.
+Instead, if you publish output variables in your shell script command, structure your script with `if...else` blocks to ensure it always runs to the end of the script.
 
 ### Using secrets in scripts
 
 You can use Harness secrets in your Shell Script steps.
 
-See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+For more information, go to [add text secrets](/docs/platform/Security/add-use-text-secrets).
 
 Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret.
 

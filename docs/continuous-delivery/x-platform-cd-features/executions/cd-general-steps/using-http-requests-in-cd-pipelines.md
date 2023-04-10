@@ -1,11 +1,7 @@
 ---
-title: Using HTTP Requests in CD Pipelines
+title: Using HTTP requests in CD pipelines
 description: This topic shows you how to use the HTTP step to run HTTP methods containing URLs, methods, headers, assertions, and variables.
 sidebar_position: 1
-helpdocs_topic_id: 0aiyvs61o5
-helpdocs_category_id: y6gyszr0kl
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 You can use the HTTP step to run HTTP methods containing URLs, methods, headers, assertions, and variables. It helps you avoid having script cURL commands for simple REST calls.
@@ -18,51 +14,52 @@ Other common uses are:
 * Open Policy Agent (OPA) policy agent call.
 * General HTTP testing calls to the deployed application.
 
-This topic describes how to use the HTTP step. For comprehensive details on each setting, see [HTTP Step Reference](../../x-platform-cd-features/cd-steps/utilities/http-step.md.
+This topic describes how to use the HTTP step. For comprehensive details on each setting, see [HTTP step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step).
 
-Looking for the Harness REST API? See [API Quickstart](../../../platform/16_APIs/api-quickstart.md).
+Go to [Harness REST API quickstart](/docs/platform/APIs/api-quickstart) for more information.
 
 ## Before you begin
 
-* [Kubernetes CD Quickstart](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md): You can run an HTTP step in a CD stage without specifying specs or artifacts, but you do need to set up the Infrastructure Definition.
+* [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure): You can run an HTTP step in a CD stage without specifying specs or artifacts, but you do need to set up the infrastructure definition.
 
 ## Add the HTTP step
 
 You can add the HTTP step to any CD Pipeline stage independent of deployment strategy.
 
-In your Harness Pipeline stage, in **Execution**, click **Add Step**.
-
-1. Click **HTTP**. The HTTP step appears.
+1. In your Harness pipeline stage, in **Execution**, select **Add Step**.
+2. Select **HTTP**. The HTTP step appears.
 
 ![](./static/using-http-requests-in-cd-pipelines-32.png)
 
 ## Name and Timeout
 
-Enter a name for the step. Harness automatically creates an **Id**. You'll use this Id to reference this step's settings in other steps.
+1. Enter a name for the step.  
+   
+   Harness automatically creates an **Id**. You'll use this Id to reference this step's settings in other steps.
 
-For example, if the stage name is **dev** and the step Id is **HTTP** and you want to reference the URL entered in its **URL** setting, you'd use:
+   For example, if the stage name is **dev** and the step Id is **HTTP** and you want to reference the URL entered in its **URL** setting, you'd use:
 
-`<+pipeline.stages.dev.spec.execution.steps.HTTP.spec.url>`
+   `<+pipeline.stages.dev.spec.execution.steps.HTTP.spec.url>`
 
-In **Timeout**, enter a timeout for this step.You can use:
+2. In **Timeout**, enter a timeout for this step.You can use:
 
-* `w` for weeks
-* `d` for days
-* `h` for hours
-* `m` for minutes
-* `s` for seconds
-* `ms` for milliseconds
+   * `w` for weeks
+   * `d` for days
+   * `h` for hours
+   * `m` for minutes
+   * `s` for seconds
+   * `ms` for milliseconds
 
-The maximum is `53w`.Timeouts are set at the Pipeline level also.
+   The maximum is `53w`.Timeouts are set at the Pipeline level also.
 
 ## URL for HTTP call
 
-1. In **URL**, enter a URL for the call. It must include the `http://` scheme.
+In **URL**, enter a URL for the call. It must include the `http://` scheme.
 
 For more information on runtime inputs and expressions, go to [Fixed values runtime inputs and expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/)..
 
-You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
+You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
@@ -92,11 +89,13 @@ Harness supports the following [HTTP methods](https://restfulapi.net/http-method
 
 ## Request Body
 
-In Request **Body**, you can enter the body of the HTTP payload to send to the URL.
+In Request **Body**, enter the body of the HTTP payload to send to the URL.
 
-You can use a Fixed Value, Runtime Input, or Expression.
+You can use a **Fixed Value**, **Runtime Input**, or **Expression**.
 
-You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too.
+You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too. For example, if the Service name matches the domain name of the HTTP address, you can use `http://<+service.name>/...`.
+
+Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
 ## Assertion
 
@@ -113,7 +112,7 @@ Expressions can use the following aliases to refer to the HTTP responses, URL, a
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too.
+You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
 
 ## Headers
 
@@ -124,11 +123,11 @@ Headers are `key:value` pairs. For example:
 
 You can use a Fixed Value, Runtime Input, or Expression.
 
-You can use [Harness variables](../../../platform/12_Variables-and-Expressions/harness-variables.md), too.
+You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
 
-You can reference [Harness secrets](../../../platform/6_Security/2-add-use-text-secrets.md) in the **Value** setting, too.
+You can reference [Harness secrets](/docs/platform/Security/add-use-text-secrets) in the **Value** setting too.
 
-For example, in **Key**, enter `Token` .
+For example, in **Key**, enter `Token`.
 
 In **Value**, enter `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
 
@@ -151,13 +150,13 @@ The FQN will resolve to the variable value at execution runtime.
 
 You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
-See [JSON and XML Functors](../../x-platform-cd-features/cd-steps/utilities/json-and-xml-functors.md.
+See [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
 ## Simulate load by running steps in parallel
 
 You can use multiple HTTP steps in parallel to simulate load.
 
-Simply create a Step Group and add multiple HTTP steps with the same URL pointing to your service.
+Create a step group and add multiple HTTP steps with the same URL pointing to your service.
 
 ![](./static/using-http-requests-in-cd-pipelines-34.png)
 

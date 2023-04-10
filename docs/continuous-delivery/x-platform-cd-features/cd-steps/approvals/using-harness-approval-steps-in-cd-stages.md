@@ -1,34 +1,30 @@
 ---
-title: Using Manual Harness Approval Steps in CD Stages
-description: This topic describes how to enable Harness User Group(s) to approve or reject a stage at any point in its execution.
+title: Using manual Harness approval steps in CD stages
+description: This topic describes how to enable Harness user group(s) to approve or reject a stage at any point in its execution.
 sidebar_position: 1
 ---
 
-This topic describes how to enable Harness User Group(s) to approve or reject a stage at any point in its execution.
+This topic describes how to enable Harness user group(s) to approve or reject a stage at any point in its execution.
 
-During deployment, the User Group members use the Harness Manager to approve or reject the deployment manually.
+During deployment, the user group members use the Harness Manager to approve or reject the deployment manually.
 
 Approvals are usually added in between stage steps to prevent the stage execution from proceeding without an approval.
 
-For example, in a [Kubernetes Blue Green Deployment](../../../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md.md), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
+For example, in a [Kubernetes blue green deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment), you might want to add an approval step between the stage deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
 
 Other approval methods are:
 
-* [Harness Approval Stages](../../../../platform/9_Approvals/adding-harness-approval-stages.md.md): add Approval stages for manual intervention.
-* [Adding Jira Approval Stages and Steps](../../../../platform/9_Approvals/adding-jira-approval-stages.md.md): add Jira Approval stages and steps.
-* [Adding ServiceNow Approval Steps and Stages](../../../../platform/9_Approvals/service-now-approvals.md.md) for ServiceNow Approval stages and steps.
-
-## Before You Begin
-
-* [Learn Harness' Key Concepts](../../../../getting-started/learn-harness-key-concepts.md.md)
+* [Harness Approval stages](/docs/platform/Approvals/adding-harness-approval-stages): Add Approval stages for manual intervention.
+* [Adding Jira Approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages): Add Jira Approval stages and steps.
+* [Adding ServiceNow Approval steps and stages](/docs/platform/Approvals/service-now-approvals): Add ServiceNow Approval stages and steps.
 
 ## Visual Summary
 
-Here's a manual approval step during the execution of a Pipeline:
+Here's a manual approval step during the execution of a pipeline:
 
 ![](./static/using-harness-approval-steps-in-cd-stages-00.png)
 
-An approver can approve/reject the step, stopping the Pipeline. The approver can also add comments and define variables for use by subsequent approvers and steps.
+An approver can approve or reject the step, stopping the pipeline. The approver can also add comments and define variables for use by subsequent approvers and steps.
 
 Here's a quick video that walks you through setting up and running the step:
 
@@ -57,12 +53,12 @@ Here's what a manual approval step looks like in YAML:
               - name: foo  
                 defaultValue: bar
 ```
-## Step 1: Add Approval Step
+## Add approval step
 
-1. In a CD stage, in **Execution**, click **Add Step**.
-2. Click **Harness Approval**. The **Harness Approval** settings appear.
+1. In a CD stage, in **Execution**, select **Add Step**.
+2. Select **Harness Approval**. The **Harness Approval** settings appear.
 
-## Step 2: Set Timeout
+## Set timeout
 
 Set a default for the step timeout. Leave enough time for the Users in **Approvers** to see and respond to the waiting step.
 
@@ -83,24 +79,24 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
 
 ![](./static/using-harness-approval-steps-in-cd-stages-01.png)
 
-## Option: Add Message
+## Add Message
 
-1. In **Approval Message**, add the message for the Users in **Approvers**.
+1. In **Approval Message**, add the message for the users in **Approvers**.
 
-* **Include Pipeline execution history in approval details:** enable this option to show approvers the Pipeline's execution history. This can help an approver compare the current execution info with historical data.
+2. Enable the **Include Pipeline execution history in approval details** option to show approvers the pipeline's execution history. This can help an approver compare the current execution info with historical data.
 
-## Step 3: Select Approvers
+## Select approvers
 
-1. In **User Groups**, select the Harness User Groups that will approve the step. See [Add and Manage User Groups](../../../../platform/4_Role-Based-Access-Control/4-add-user-groups.md.md).
-2. In **Number of approvers that are required at this step**, enter how many of the Users in the User Groups must approve the step.
+1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [add and manage user groups](/docs/platform/Role-Based-Access-Control/add-user-groups).
+2. In **Number of approvers that are required at this step**, enter how many of the users in the user groups must approve the step.
 
-## Option: Prevent Approval by Pipeline Executor
+## Prevent approval by pipeline executor
 
-If you don't want the User that initiated the Pipeline execution to approve this step, select the **Disallow the executor from approving the pipeline** option.
+If you don't want the User that initiated the pipeline execution to approve this step, select the **Disallow the executor from approving the pipeline** option.
 
-Even if the User is in the User Group selected in **User Group**, they won't be able to approve this step.
+Even if the User is in the user group selected in **User Group**, they won't be able to approve this step.
 
-## Option: Approver Inputs
+## Approver inputs
 
 In **Inputs to be provided by approver**, you can enter variables and when the approver views the step, they can provide new values for the variables.
 
@@ -116,21 +112,21 @@ You can reference input variables using the `approverInputs` expression:
 
 `<+pipeline.stages.[stage_name].spec.execution.steps.[step_name].output.approverInputs.[variable_name]>`
 
-These variables can serve as inputs to later stages of the same Pipeline, where they support conditional execution or user overrides. 
+These variables can serve as inputs to later stages of the same pipeline, where they support conditional execution or user overrides. 
 
 For example, in a subsequent step's **Conditional Execution** settings, you could use an expression that only runs the step if the expression evaluates to 1.
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
 
-## Option: Advanced Settings
+## Advanced settings
 
-See:
+In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md.md)
-* [Step Failure Strategy Settings](../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md.md)
-* [Select Delegates with Selectors](../../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md.md)
+* [Step skip condition settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
 
-## See Also
+## See also
 
-* [Update Jira Issues in CD Stages](../../../cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.mdes-in-cd-stages.md)
+* [Update Jira Issues in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 

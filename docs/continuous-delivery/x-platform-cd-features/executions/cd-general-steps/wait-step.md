@@ -1,16 +1,12 @@
 ---
 title: Pausing pipeline execution using the Wait step
 description: This topic shows you how to use the Wait step to pause a pipeline execution for any amount of time.
-sidebar_position: 6
-helpdocs_topic_id: ijdo3funo0
-helpdocs_category_id: y6gyszr0kl
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 5
 ---
 
 :::note
 
-Currently, this feature is behind the feature flag `WAIT_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag, `WAIT_STEP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -24,14 +20,14 @@ When the Wait step is running, it provides **Mark as Success** and **Mark as Fai
 
 ## Add the Wait step
 
-The Wait step is available in Approval, Custom, CD, and Feature Flag stages. You can add the Wait step anywhere in those stages.
+The Wait step is available in approval, custom, CD, and feature Flag stages. You can add the Wait step anywhere in those stages.
 
-1. In your stage **Execution** (or **Rollout Strategy** in Feature Flags), click **Add Step**, and then click **Wait**.
+1. In your stage **Execution** (or **Rollout Strategy** in Feature Flags), select **Add Step**, and then selct **Wait**.
 2. Enter a name for the step.
 3. In **Duration**, enter how long the Wait step should run. Once the timeout occurs, the pipeline execution proceeds.  
 When the Wait step runs, the duration is displayed in its **Details**.  
 ![](./static/wait-step-27.png)
-4. Click **Apply Changes**.
+4. Select **Apply Changes**.
 
 ### Duration
 
@@ -46,30 +42,30 @@ The allowed values for **Duration** are:
 
 The maximum is `53w`.
 
-You can use a Fixed Value, Runtime input, or Expression for **Duration**.
+You can use a fixed value, runtime input, or expression for **Duration**.
 
-If you use Runtime input, you can enter the wait time when you run the pipeline. You can also set it in a Trigger.
+If you use runtime input, you can enter the wait time when you run the pipeline. You can also set it in a trigger.
 
-If you use an Expression, ensure that the Expression resolves to one of the allowed time values. 
+If you use an expression, ensure that the expression resolves to one of the allowed time values. 
 
-For information on Fixed Value, Runtime input, and Expression, go to [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md). 
+For information, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/). 
 
-## Marking the Wait step as Success or Fail
+## Marking the Wait step as success or fail
 
-When the Wait step is running, it provides **Mark as Success** and **Mark as Failed** options. **Mark as Success** ends the wait period and proceeds with the execution. **Mark as Failed** initiates the Failure Strategy for the step or stage.
+When the Wait step is running, it provides **Mark as Success** and **Mark as Failed** options. **Mark as Success** ends the wait period and proceeds with the execution. **Mark as Failed** initiates the failure strategy for the step or stage.
 
 ![](./static/wait-step-28.png)
 
-For information on Failure Strategies, go to [Define a Failure Strategy on Stages and Steps](../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
+For information on failure strategies, go to [define a failure strategy on stages and steps](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/).
 
-For example, let's say a Wait step has the Failure Strategy **Manual Intervention**. When the user clicks **Mark as Failed**, they are prompted with the **Manual Intervention** options:
+For example, let's say a Wait step has the failure strategy **Manual Intervention**. When the user selects **Mark as Failed**, they are prompted with the **Manual Intervention** options:
 
 ![](./static/wait-step-29.png)
 
-If no Failure Strategy is set at the step or stage level, then clicking **Mark as Failed** simply fails the pipeline execution at the Wait step.
+If no failure strategy is set at the step or stage level, then selecting **Mark as Failed** simply fails the pipeline execution at the Wait step.
 
-## Notes
+## Important notes
 
-* The Wait step is available in Approval, Custom, CD, and Feature Flag stages.
-* The Wait step does not use a Harness Delegate. It is run by the Harness platform. There is no **Delegate Selector** in the Wait step's **Advanced** settings.
+* The Wait step is available in approval, custom, CD, and feature flag stages.
+* The Wait step does not use a Harness delegate. It is run by the Harness platform. There is no **Delegate Selector** in the Wait step's **Advanced** settings.
 

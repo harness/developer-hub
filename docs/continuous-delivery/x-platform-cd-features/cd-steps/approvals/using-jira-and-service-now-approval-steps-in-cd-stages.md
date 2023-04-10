@@ -1,15 +1,15 @@
 ---
-title: Using Jira and ServiceNow Approval Stages in CD Pipelines
+title: Using Jira and ServiceNow approval stages in CD pipelines
 description: This topic describes how to use Jira and ServiceNow for approvals and rejections in your pipeline.
 sidebar_position: 2
 ---
 
-This topic describes how to add Approval stages to your Pipeline and use Jira and ServiceNow steps in the stages as criteria for approvals and rejections.
+This topic describes how to add approval stages to your pipeline and use Jira and ServiceNow steps in the stages as criteria for approvals and rejections.
 
-Jira and ServiceNow Approval stages are described in the following topics:
+Jira and ServiceNow approval stages are described in the following topics:
 
-* [Adding Jira Approval Stages and Steps](../../../../platform/9_Approvals/adding-jira-approval-stages.md.md): add Jira Approval stages and steps.
-* [Adding ServiceNow Approval Steps and Stages](../../../../platform/9_Approvals/service-now-approvals.md.md) for ServiceNow Approval stages and steps.
+* [Adding Jira approval stages and steps](/docs/platform/Approvals/adding-jira-approval-stages): Add Jira approval stages and steps.
+* [Adding ServiceNow approval steps and stages](/docs/platform/Approvals/service-now-approvals): Add ServiceNow approval stages and steps.
 
 You can also use Jira and ServiceNow steps anywhere inside your CD stages.
 

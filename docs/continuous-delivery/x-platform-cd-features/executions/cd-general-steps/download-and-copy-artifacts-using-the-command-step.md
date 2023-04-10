@@ -1,18 +1,14 @@
 ---
-title: Use the Command step to download or copy artifacts and configs or run scripts
+title: Use the Command step to download or copy artifacts and configs, or run scripts
 description: This topic show you how to use the Command step in SSH and WinRM deployments to run commands on one or more target hosts.
-sidebar_position: 4
-helpdocs_topic_id: 4dot4qo5l4
-helpdocs_category_id: y6gyszr0kl
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 3
 ---
 
 The Command step can be used in SSH and WinRM deployments to run commands on all target hosts.
 
 You can run a script on all hosts, download the deployment artifact, or copy the artifact or config.
 
-You can also use the Command step on Deployment Template deployments. Since a Deployment Template can be used on any host type, the Command step can only be run on the Delegate.
+You can also use the Command step on deployment template deployments. Since a deployment template can be used on any host type, the Command step can only be run on the delegate.
 
 ## Command step summary
 
@@ -20,7 +16,7 @@ Let's review the details of the Command step.
 
 ### Deployment types
 
-The Command step can be added to SSH, WinRM, and Deployment Template deployment types.
+The Command step can be added to SSH, WinRM, and deployment template deployment types.
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-05.png)
 
@@ -28,22 +24,22 @@ The Command step can be added to SSH, WinRM, and Deployment Template deployment 
 
 For SSH and WinRM, the Command step(s) is added automatically when you select the deployment strategy.
 
-Also, the Looping Strategy needed to run the Command step on each target host is set automatically to **Repeat**.
+Also, the looping strategy needed to run the Command step on each target host is set automatically to **Repeat**.
 
 You can edit or add any automatically-added Command step.
 
 For more information, go to:
 
-* [Secure Shell (SSH) deployment tutorial](../../deploy-srv-diff-platforms/traditional/ssh-ng.md)
-* [WinRM deployment tutorial](../../deploy-srv-diff-platforms/traditional/win-rm-tutorial.md)
+* [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
+* [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
 
-### Deployment Templates
+### Deployment templates
 
-For Deployment Templates, you can add a Command step to the template itself or anywhere in the Execution.
+For deployment templates, you can add a Command step to the template itself or anywhere in the execution.
 
-Since a Deployment Template can be used on any host type, the Command step can only be run on the Delegate. You must use the **Run on Delegate** option in the step.
+Since a deployment template can be used on any host type, the Command step can only be run on the delegate. You must use the **Run on Delegate** option in the step.
 
-To run the Command step on all the fetched hosts, you must put the Command step after the **Fetch Instances** step and use the Repeat Looping Strategy and expression `<+stage.output.hosts>`:
+To run the Command step on all the fetched hosts, you must put the Command step after the **Fetch Instances** step and use the repeat looping strategy and expression `<+stage.output.hosts>`:
 
 ```yaml
 repeat:  
@@ -52,15 +48,15 @@ repeat:
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-06.png)
 
-For the download artifact and copy artifact/config commands, you do not need the Looping Strategy. These commands should be run once on the Delegate. These commands will download the artifact and copy the artifact/config to the Delegate only, not the target hosts.
+For the download artifact and copy the artifact/config commands, you do not need the looping strategy. These commands should be run once on the delegate. These commands will download the artifact and copy the artifact/config to the delegate only, not the target hosts.
 
-For a script command, you might want to run the script for each instance that was output from the Fetch instance step. In this case, using the Looping Strategy.
+For a script command, you might want to run the script for each instance that was output from the Fetch Instance step. In this case, using the looping strategy.
 
 ### Command types
 
 The following command types are supported:
 
-* Download Artifact
+* Download artifact
 * Copy artifact or config
 * Script
 
@@ -68,17 +64,17 @@ These are discussed in detail below.
 
 ### Artifact metadata only
 
-Harness Services allows you to identify artifacts using their metadata. At deployment runtime, Harness uses the metadata to copy or download the artifact to the target hosts/containers.
+Harness services allows you to identify artifacts using their metadata. At deployment runtime, Harness uses the metadata to copy or download the artifact to the target hosts/containers.
 
 ### Copy vs download
 
-Let's review the differences between the Copy Artifact/Config and Download commands.
+Let's review the differences between the copy artifact/config and download commands.
 
-- **Download:** At deployment runtime, the Harness Delegate executes commands on the target host(s) to download the artifact directly to the target host(s).
-  The Delegate must have access to the target host(s) and the target host(s) must have network connectivity to the artifact server.
-- **Copy:** During deployment runtime, Harness uses the metadata to download the artifact to the Harness Delegate. The Delegate then copies the artifact to the target host(s).
+- **Download:** At deployment runtime, the Harness delegate executes commands on the target host(s) to download the artifact directly to the target host(s).
+  The delegate must have access to the target host(s) and the target host(s) must have network connectivity to the artifact server.
+- **Copy:** During deployment runtime, Harness uses the metadata to download the artifact to the Harness delegate. The delegate then copies the artifact to the target host(s).
 
-The Delegate must have network connectivity to the artifact server and target hosts.
+The delegate must have network connectivity to the artifact server and target hosts.
 
 Here is the difference in how Harness performs a copy and download.
 
@@ -86,13 +82,13 @@ Here is the difference in how Harness performs a copy and download.
 
 ## Add the Command step
 
-The Command step can be added to SSH, WinRM, and Deployment Template deployment types.
+The Command step can be added to SSH, WinRM, and deployment template deployment types.
 
-1. In the stage **Execution**, click **Add Step**.
-2. Click **Command**.
+1. In the stage **Execution**, select **Add Step**.
+2. Select **Command**.
 3. In **Name**, enter a name for the command.
-4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [Failure Strategy](../../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
-5. In **Run the following commands**, click **Add Command**.
+4. In **Timeout**, enter how long Harness should wait before failing this step and initiating the [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
+5. In **Run the following commands**, select **Add Command**.
 
    ![](./static/download-and-copy-artifacts-using-the-command-step-08.png)
 
@@ -108,62 +104,62 @@ Using the **Download** command type, you can download the deployment artifact on
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-09.png)
 
-You simply set where you want to download the artifact in **Destination Path**.
+You can set where you want to download the artifact in **Destination Path**.
 
-For SSH/WinRM deployments, the path `$HOME/<+service.name>/<+env.name>` is added automatically when you select the Execution Strategy for the stage.
+For SSH or WinRM deployments, the path `$HOME/<+service.name>/<+env.name>` is added automatically when you select the execution strategy for the stage.
 
-For example, a destination path for a stage that deploys **todolist.war** using a Service named **tutorial-service-ssh2** to an Environment named **ssh-tutorial-env** will look like this:
+For example, a destination path for a stage that deploys **todolist.war** using a service named **tutorial-service-ssh2** to an environment named **ssh-tutorial-env** will look like this:
 
 `$HOME/tutorial-service-ssh2/ssh-tutorial-env/todolist.war`
 
 You can use any path on the target hosts you want. Harness will not create the path if it does not exist.
 
-Here's an example of the results of a Download command:
+Here's an example of the results of a download command:
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-10.png)
 
-**Deployment Templates:** to run the Download command on the target hosts, add the command after the **Fetch Instances** step. See [Looping Strategy and target hosts](download-and-copy-artifacts-using-the-command-step.md#looping-strategy-and-target-hosts) below.
+**Deployment Templates:** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information
 
 ## Copy an artifact or config
 
-The deployment artifact for the stage is set in the Service Definition **Artifacts** section.
+The deployment artifact for the stage is set in the service definition **Artifacts** section.
 
 Using the **Copy** command type, you can copy the deployment artifact onto the target hosts of the deployment.
 
-The deployment config file(s) for the stage is set in the Service Definition **Config Files** section.
+The deployment config file(s) for the stage is set in the service definition **Config Files** section.
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-11.png)
 
-1. In **Select file type to copy**, click **Artifact** or **Config**.
+1. In **Select file type to copy**, select **Artifact** or **Config**.
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-12.png)
 
-You simply set where you want to download the artifact in **Destination Path**.
+You can set where you want to download the artifact in **Destination Path**.
 
-For SSH/WinRM deployments, the path `$HOME/<+service.name>/<+env.name>` is added automatically when you select the Execution Strategy for the stage.
+For SSH or WinRM deployments, the path `$HOME/<+service.name>/<+env.name>` is added automatically when you select the execution strategy for the stage.
 
-For example, a destination path for a stage that deploys **todolist.war** using a Service named **tutorial-service-ssh2** to an Environment named **ssh-tutorial-env** will look like this:
+For example, a destination path for a stage that deploys **todolist.war** using a service named **tutorial-service-ssh2** to an environment named **ssh-tutorial-env** will look like this:
 
 `$HOME/tutorial-service-ssh2/ssh-tutorial-env/todolist.war`
 
 You can use any path on the target hosts you want. Harness will not create the path if it does not exist.
 
-Here's an example of the results of a Copy Artifact command:
+Here's an example of the results of a copy artifact command:
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-13.png)
 
-Here's an example of the results of a Copy Config command:
+Here's an example of the results of a copy config command:
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-14.png)
 
-**Deployment Templates:** to run the Copy command on the target hosts, add the command after the **Fetch Instances** step. See [Looping Strategy and target hosts](download-and-copy-artifacts-using-the-command-step.md#looping-strategy-and-target-hosts) below.
+**Deployment Templates:** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information.
 
-## Use a Script
+## Use a script
 
-You can run a script on all of the target hosts. This is the same as the [Shell Script](using-shell-scripts.md) step.
+You can run a script on all of the target hosts. This is the same as the [shell script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step.
 
 1. In **Working Directory**, enter the working directory on the target host(s) from which the Harness Delegate will run the script, such as **/tmp** on Linux and **%TEMP%** on Windows. By default, if **Working Directory** is left empty, the script is executed in the home directory.
-2. In **Select script location**, select [Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) or **Inline**.
+2. In **Select script location**, select [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) or **Inline**.
 3. In **Command**, enter your script. For example, this script echoes artifact information using Harness expressions:
 
 	```
@@ -182,23 +178,22 @@ You can run a script on all of the target hosts. This is the same as the [Shell 
 	Here's an example of an executed script command:
 
 	![](./static/download-and-copy-artifacts-using-the-command-step-15.png)
-1. Use **Files and Patterns** to tail files and use the results in your script. For example, check logs and see if a process started successfully and, if so, exit the script.  
+4. Use **Files and Patterns** to tail files and use the results in your script. For example, check logs and see if a process started successfully and, if so, exit the script.  
 You specify the file to tail, such as `auth.log`, and the pattern to search (grep filter), such as `198.51.100.1` and then in your script you perform an action when the tail output is matched.
-1. For **File to Tail**, enter the name of a file in the Working Directory to tail, such as a log file.
-2. For **Pattern to search**, enter the pattern to search for in the file. Harness uses grep on the pattern.
-
-**Deployment Templates:** to run the Script command on the target hosts, add the command after the Fetch Instances step. See [Looping Strategy and target hosts](download-and-copy-artifacts-using-the-command-step.md#looping-strategy-and-target-hosts) below.
+5. For **File to Tail**, enter the name of a file in the Working Directory to tail, such as a log file.
+6. For **Pattern to search**, enter the pattern to search for in the file. Harness uses grep on the pattern.
+7. Use **Deployment Templates** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information.
 
 ## Input variables
 
-While you can simply declare a variable in your command script using a Harness expression or string for its value, using Input Variables provides some additional benefits:
+While you can declare a variable in your command script using a Harness expression or string for its value, using input variables provides some additional benefits:
 
 * You can more easily identify and manage the Harness expressions used in your script.
 * You can template your script.
 
 You can declare the variable using **Name** and **Value** in **Script Input Variables** and then reference the variable in the script just as you would any other variable: `$var_name`.
 
-You can also use expressions in **Value**. For example, if you have an Output Variable from a previous Shell Script step, you can copy it from the executed step **Outputs**.
+You can also use expressions in **Value**. For example, if you have an output variable from a previous Shell Script step, you can copy it from the executed step **Outputs**.
 
 In **Script Input Variables**, you simply select **Expression** and paste the expression in **Value**.
 
@@ -208,9 +203,9 @@ At deployment runtime, Harness will evaluate the expression and the variable wil
 
 ## Output variables
 
-Output Variables have a maximum size of 512KB.To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
+Output Variables have a maximum size of 512KB. To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
 
-Let's look at a simple example of a script with the variable **name**:
+Let's look at an example of a script with the variable **name**:
 
 
 ```
@@ -230,28 +225,28 @@ The format to reference the output variable can be one of the following:
 		- `<+steps.[step_id].output.outputVariables.[output_variable_name]>`.
 	+ Referencing the step output execution:
 		- `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
-* Anywhere in the Pipeline:
+* Anywhere in the pipeline:
 	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
 
 For example, it could be `<+steps.Shell_Script.output.outputVariables.newname>`.
 
-## Run on Delegate
+## Run on delegate
 
-Use this option to run the command on the Delegate instead of the target hosts.
+Use this option to run the command on the delegate instead of the target hosts.
 
-Download and copy commands aren't typically run on the Delegate, but a script is not uncommon.
+Download and copy commands aren't typically run on the delegate, but a script is not uncommon.
 
-If you do run the step on the Delegate, ensure the **Destination Path** exists on the Delegate. 
+If you do run the step on the delegate, ensure the **Destination Path** exists on the delegate. 
 
-### Deployment Templates
+### Deployment templates
 
-For Deployment Templates, use **Run on Delegate**.
+For deployment templates, use **Run on Delegate**.
 
-Since a Deployment Template can be used on any host type, the Command step can only be run on the Delegate. You must use the **Run on Delegate** option in the step.
+Since a deployment template can be used on any host type, the Command step can only be run on the delegate. You must use the **Run on Delegate** option in the step.
 
-## Looping Strategy and target hosts
+## Looping strategy and target hosts
 
-To run the Command step on all the target hosts, you must use the Repeat [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and expression `<+stage.output.hosts>`:
+To run the Command step on all the target hosts, you must use the repeat [looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) and expression `<+stage.output.hosts>`:
 
 
 ```
@@ -261,21 +256,21 @@ repeat:
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-16.png)
 
-When you run the Pipeline, you will see the Command step run on each host. For example, here is an SSH deployment where download, copy artifact, and copy config Command steps are run using the Looping Strategy:
+When you run the pipeline, you will see the Command step run on each host. For example, here is an SSH deployment where download, copy artifact, and copy config Command steps are run using the looping strategy:
 
 ![](./static/download-and-copy-artifacts-using-the-command-step-17.png)
 
 The suffix \`_N` is used to identify each host.
 
-### Deployment Templates
+### Deployment templates
 
-Since a Deployment Template can be used on any host type, the Command step can only be run on the Delegate. You must use the **Run on Delegate** option in the step.
+Since a deployment template can be used on any host type, the Command step can only be run on the delegate. You must use the **Run on Delegate** option in the step.
 
-Consequently, there is no reason to use a Looping Strategy when using the Command step with Deployment Templates.
+Consequently, there is no reason to use a looping strategy when using the Command step with deployment templates.
 
-## Copy and Download Artifact Provider Support
+## Copy and download artifact provider support
 
-The following table lists the providers supported by the Copy and Download commands in a Command step.
+The following table lists the providers supported by the copy and download commands in a Command step.
 
 Legend:
 

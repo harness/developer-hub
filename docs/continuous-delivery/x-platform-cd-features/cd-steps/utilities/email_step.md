@@ -15,9 +15,9 @@ The Email step has the following features:
 
 - Send emails during pipeline executions.
 - You can use the Harness SMTP Server included with your Harness account.
-- Use your own SMTP server by adding it to Harness. For more information, go to [Add SMTP Configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
-- You can use this step as a [step template](https://developer.harness.io/docs/platform/templates/run-step-template-quickstart/) or as part of a [stage template](https://developer.harness.io/docs/platform/Templates/add-a-stage-template). 
-- You can manage this step's configuration via [Harness Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
+- Use your own SMTP server by adding it to Harness. For more information, go to [add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/).
+- You can use this step as a [step template](/docs/platform/templates/run-step-template-quickstart/) or as part of a [stage template](/docs/platform/Templates/add-a-stage-template). 
+- You can manage this step's configuration via [Harness Git Experience](/docs/platform/git-experience/git-experience-overview/).
 
 ## Visual summary
 
@@ -52,7 +52,7 @@ You can set **To** as a runtime input.
   
 You can pass in the email as a Harness expression, such as `<+pipeline.triggeredBy>`.
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
 
 ## CC
  
@@ -64,7 +64,7 @@ You can provide a subject for the email.
 
 This subject can be a fixed string (for example, `Prod Deployment Notification`), a string with expressions (for example, `<+env.name> Deployment Notification`), or a runtime input.
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
 
 ## Body
 
@@ -72,20 +72,20 @@ The **Body** is a string field. You can enter in text and Harness expressions. H
 
 You can use HTML formatting in **Body**.
 
-For more information on runtime inputs and expressions, go to [Fixed Values, Runtime Inputs, and Expressions](https://developer.harness.io/docs/platform/references/runtime-inputs/).
+For more information on runtime inputs and expressions, go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/).
 
 ## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
-* [Conditional Execution](../../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Failure Strategy](../../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Looping Strategy](../../../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
+* [Delegate selector](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Conditional execution](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Failure strategy](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
 
 ## Options
 
-You can send emails using your own SMTP Server. For more information, go to [Add SMTP Configuration](https://developer.harness.io/docs/platform/notifications/add-smtp-configuration/).
+You can send emails using your own SMTP Server. For more information, go to [add SMTP configuration](/docs/platform/notifications/add-smtp-configuration/).
 
 
 

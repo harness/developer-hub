@@ -1,27 +1,27 @@
 ---
-title: Group Steps using Step Groups
-description: This topic describes how to add steps to Pipelines individually or as a step group. Steps in a step group can be run serially or in parallel.
+title: Group steps using step groups
+description: This topic describes how to add steps to pipelines individually or as a step group. Steps in a step group can be run serially or in parallel.
 sidebar_position: 4
 ---
 
-Steps can be added to Pipelines individually or as a step group.
+Steps can be added to pipelines individually or as a step group.
 
 Individual steps and steps in step groups can be run serially or in parallel.
 
-Unlike individual steps, a step group can apply Conditional Execution (skip conditions), Failure Strategy, and Rollback steps to all steps in the group.
+Unlike individual steps, a step group can apply conditional execution (skip conditions), failure strategy, and Rollback steps to all steps in the group.
 
-You can also run Pipeline **stages** in parallel. Deploy multiple services simultaneously and perform flow control using Barriers. See [Synchronize Deployments using Barriers](../../../manage-deployments/synchronize-deployments-using-barriers.md.md).This topic describes how to add a Step Group in a stage.
+You can also run pipeline **stages** in parallel. Deploy multiple services simultaneously and perform flow control using Barriers. Go to [synchronize deployments using barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers) for more information. This topic describes how to add a step group in a stage.
 
-## Before You Begin
+Review the following topics before you add step groups.
 
-* [Kubernetes CD Quickstart](../../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md.md)
-* [Add a Stage](../../../../platform/8_Pipelines/add-a-stage.md.md)
+* [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Add a stage](/docs/platform/pipelines/add-a-stage/)
 
 ## Limitations
 
 * Currently, Harness supports step groups in CD stages only. CI stage support is coming soon.
 
-## Visual Summary
+## Visual summary
 
 This short video walks through step groups:
 
@@ -30,22 +30,22 @@ https://www.youtube.com/watch?v=J5eHYSbE8cg-->
 <docvideo src="https://www.youtube.com/watch?v=J5eHYSbE8cg" />
 
 
-## Review: Common Parallel Steps
+## Common parallel steps
 
 Running steps in parallel can be beneficial in many ways, such as:
 
-* Simulating load using multiple [HTTP steps](../../../cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md.md).
-* Running multiple [Verify steps](../../../verify/verify-deployments-with-the-verify-step.md.md) for different providers (AppDynamics, Splunk, Prometheus, etc).
+* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines).
+* Running multiple [Verify steps](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) for different providers (AppDynamics, Splunk, Prometheus, etc).
 * Running independent steps that don't need to be run serially.
-* Running multiple Kubernetes [Apply](../../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md-ref/kubernetes-apply-step.md) steps to deploy multiple Kubernetes resources at once.
-* [Deleting](../../../cd-execution/kubernetes-executions/delete-kubernetes-resources.md.md) multiple resources at once.
-* Creating or updating multiple Jira issues using [Jira Create](../../../cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md.md) and [Jira Updat../../../cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.mdges.md).
-* Provisioning multiple resources using Terraform. See [Provision with the Terraform Apply Step](../../../cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md).
+* Running multiple Kubernetes [Apply steps](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) to deploy multiple Kubernetes resources at once.
+* [Deleting](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) multiple resources at once.
+* Creating or updating multiple Jira issues using [Jira Create](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages) and [Jira Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) steps.
+* Provisioning multiple resources using Terraform. Go to [provision with the Terraform Apply step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) for more details.
 * Save time. You might have 5 steps but you can run steps 2 and 3 in parallel because they are independent. Step 4 is run once they have completed.
 
-## Step 1: Add and Name the Step Group
+## Add and name the step group
 
-In your stage, in **Execution**, click **Add Step** and then click **Step Group**.
+In your stage, in **Execution**, select **Add Step** and then select **Step Group**.
 
 ![](./static/step-groups-00.png)
 
@@ -53,55 +53,55 @@ The step group setting appear.
 
 Enter a name for the step group.
 
-## Option: Conditional Execution
+## Conditional execution
 
-A step group can have its own Conditional Execution settings separate from the Conditional Execution settings for the Stage. The Conditional Execution settings of the step group apply to all of its steps.
+A step group can have its own conditional execution settings separate from the conditional execution settings for the stage. The conditional execution settings of the step group apply to all of its steps.
 
-See [Step Skip Condition Settings](../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md.md).
+For more information, go to [step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
 
-The Conditional Execution settings of any step in a step group overrides the Conditional Execution settings of the step group.
+The conditional execution settings of any step in a step group overrides the conditional execution settings of the step group.
 
-If you do not use step group Conditional Execution settings, then the Stage's Conditional Execution settings are used.
+If you do not use step group conditional execution settings, then the stage's conditional execution settings are used.
 
-## Option: Step Group Failure Strategy
+## Step group failure strategy
 
-A step group can have its own Failure Strategy separate from the Failure Strategy for the Stage.
+A step group can have its own failure strategy separate from the failure strategy for the stage.
 
-The Failure Strategy can execute the Rollback steps for the step group.
+The failure strategy can execute the Rollback steps for the step group.
 
-The step group Rollback steps are only run if the Failure Strategy for the step group has **Rollback Step Group** selected.
+The step group Rollback steps are only run if the failure strategy for the step group has **Rollback Step Group** selected.
 
 ![](./static/step-groups-01.png)
 
-See [Step Failure Strategy Settings](../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md.md).
+Go to [step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) for more information.
 
-The Failure Strategy of any step in a step group overrides the Failure Strategy of the step group.
+The failure strategy of any step in a step group overrides the Failure Strategy of the step group.
 
-If you do not use a step group Failure Strategy, then the Stage's Failure Strategy is used.
+If you do not use a step group failure strategy, then the stage's failure strategy is used.
 
-## Step 2: Add Steps to the Step Group
+## Add steps to the step group
 
-Once the step group is added, in its **Execution** section, in the new step group, click **Add Step**.
+Once the step group is added, in its **Execution** section, in the new step group, select **Add Step**.
 
 Add any step and configure its **Advanced** settings.
 
 A step's **Advanced** settings override the **Advanced** settings of the step group.
 
-## Step 3: Add Rollback Steps
+## Add rollback steps
 
-A step group can have its own Rollback steps separate from the Rollback steps for the Stage.
+A step group can have its own rollback steps separate from the rollback steps for the stage.
 
-The step group Rollback steps are only run if the Failure Strategy for the step group has **Rollback Step Group** selected.
+The step group rollback steps are only run if the failure strategy for the step group has **Rollback Step Group** selected.
 
-In the step group, click the Execution/Rollback toggle:
+In the step group, click the **Execution/Rollback** toggle:
 
 ![](./static/step-groups-02.png)
 
 In the Rollback view, click **Add Step** to add a rollback step.
 
-For example, you can use the Rolling Rollback step for a [Kubernetes Rollback](../../../cd-technical-reference/cd-k8s-ref/kubernetes-rollback.md8s-ref/kubernetes-rollback.md).
+For example, you can use the Rolling Rollback step for a [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
-## Review: Reference Step Group Steps
+## Reference step group steps
 
 You reference steps in step groups using the step group Id.
 
@@ -115,11 +115,13 @@ For example, to reference the URL setting in an HTTP step in a step group with t
 
 `<+pipeline.stages.HTTP.spec.execution.steps.Group1.steps.OPTIONS.spec.url>`
 
-## Notes
+## Important notes
 
 * When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
-* Delegate Selectors can be configured for each step in the step group. You cannot configure a Delegate Selector at the group level.
-* Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:![](./static/step-groups-04.png)
+* Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
+* Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
+
+![](./static/step-groups-04.png)
 
 The steps **in** each group run in parallel but each group runs serially.
 

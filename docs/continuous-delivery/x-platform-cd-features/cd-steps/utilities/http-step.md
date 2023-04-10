@@ -1,5 +1,5 @@
 ---
-title: HTTP Step Reference
+title: HTTP step reference
 description: Run HTTP methods in your pipeline.
 sidebar_position: 1
 ---
@@ -68,7 +68,7 @@ Another method:
 * **Key**: `variable:`
 * **Value**: `var1,var2:var3`
 
-You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [Add and Manage API Keys](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/).
+You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [add and manage API keys](/docs/platform/role-based-access-control/add-and-manage-api-keys/).
 
 ## Output
 
@@ -76,7 +76,7 @@ Create output variables to be used by other steps in the stage. The **Value** se
 
 You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
-For more information, go to [JSON and XML Functors](json-and-xml-functors.md).
+For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
 ## Step execution inputs and outputs
 
@@ -117,13 +117,13 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md.md)
-* [Step Failure Strategy Settings](../../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md.md)
-* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [Delegate Proxy Settings](../../../../platform/2_Delegates/configure-delegates/configure-delegate-proxy-settings.md.md).
+HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/configure-delegates/configure-delegate-proxy-settings).
 
 ## Header capability check
 
@@ -157,11 +157,11 @@ Using `<<<and>>>` in HTTP requests might result in bad requests on the server si
 
 :::
 
-Capability checks are basic accessibilty checks and do not follow multiple redirects. Hence, Harness returns from the first `302 Found` response during capability checks. 
+Capability checks are basic accessibility checks and do not follow multiple redirects. Hence, Harness returns from the first `302 Found` response during capability checks. 
 
 
 ## See also
 
-* [Shell Script Step Reference](shell-script-step.md)
-* [JSON and XML Functors](json-and-xml-functors.md)
+* [Shell Script step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/shell-script-step)
+* [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors)
 

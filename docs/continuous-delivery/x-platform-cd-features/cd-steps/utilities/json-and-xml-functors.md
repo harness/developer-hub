@@ -1,5 +1,5 @@
 ---
-title: JSON and XML Functors
+title: JSON and XML functors
 description: Use functors to select info from JSON/XML sources.
 sidebar_position: 2
 ---
