@@ -417,5 +417,5 @@ For information about creating a Kubernetes pipeline, see [Kubernetes deployment
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-09.png)
 
-For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md).
+For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md).
 

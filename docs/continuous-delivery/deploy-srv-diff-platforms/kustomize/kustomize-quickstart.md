@@ -247,7 +247,7 @@ In your Project's Deployments, you can see the deployment listed:
 
 ![](static/kustomize-quickstart-80.png)
 
-If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md#before-you-begin) or the cluster's network setting does not allow the Delegate to connect to Docker Hub.
+If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md#before-you-begin) or the cluster's network setting does not allow the Delegate to connect to Docker Hub.
 
 In this tutorial, you learned how to:
 
@@ -260,8 +260,8 @@ In this tutorial, you learned how to:
 
 Next, try the following quickstarts:
 
-* [Kubernetes deployment tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Helm Chart deployment tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart)
+* [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
 
 ### Clean Up
 

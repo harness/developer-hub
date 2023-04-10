@@ -20,7 +20,7 @@ Typically, Jobs are not part of the main deployment. You can exclude them from t
 
 * **​Kubernetes Jobs:** We assume you are familiar with [Kubernetes Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/).
 * **Apply step:** The Harness Apply step allows you to deploy any resource you have set up in the Service **Manifests** section at any point in your stage. See [Deploy Manifests Separately using Apply Step](deploy-manifests-using-apply-step.md).
-* **Ignoring Manifests:** You can annotate a manifest to have Harness ignore it when performing its main deployment operations. Then you can use the Apply step to execute the manifest wherever you want to run it in the stage. See [Ignore a Manifest File During Deployment](../../cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md).
+* **Ignoring Manifests:** You can annotate a manifest to have Harness ignore it when performing its main deployment operations. Then you can use the Apply step to execute the manifest wherever you want to run it in the stage. See [Ignore a Manifest File During Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md).
 * **Delete Jobs before rerunning deployments:** Once you've deployed the Job, you must delete it before deploying a Job of the same name to the same namespace.
 
 ## Review: Apply Step
@@ -44,7 +44,7 @@ Any workload deployed with the **Apply** step is not rolled back by Harness.**De
 
 In a CD stage, click Service.
 
-In **Manifests**, add your manifests as described in [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
+In **Manifests**, add your manifests as described in [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
 
 Include your Job manifest in the folder you specify in **Manifests**.
 
@@ -60,7 +60,7 @@ In the templates folder, there is a folder named **jobs** and a **job.yaml** man
 
 Jobs do not require any changes to the way you specify the target cluster in Harness.
 
-For steps on setting up the target cluster, see [Define Your Kubernetes Target Infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+For steps on setting up the target cluster, see [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
 ## Step 3: Add the Job to the Execution using the Apply Step
 

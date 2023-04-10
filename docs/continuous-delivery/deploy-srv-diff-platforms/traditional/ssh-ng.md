@@ -353,7 +353,7 @@ Harness creates 2 Phases.
 
 ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-197.png)
 
-You can add any Approval steps inside the Phase Group. See [Adding ServiceNow Approval Steps and Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.mdteps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md), and [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md).
+You can add any Approval steps inside the Phase Group. See [Adding ServiceNow Approval Steps and Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md), and [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md).
 
 The Looping Strategy for the first Phase deploys to 50% of the hosts (partitions):
 
@@ -394,7 +394,7 @@ Harness creates 2 phases as step groups.
 
 ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-199.png)
 
-You can add any Approval steps between the Step Groups. See [Adding ServiceNow Approval Steps and Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.mdteps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md), and [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md).
+You can add any Approval steps between the Step Groups. See [Adding ServiceNow Approval Steps and Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md), and [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md).
 
 The Looping Strategy for the first Phase selects 50% of the target hosts:
 
@@ -422,13 +422,13 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
-* [<+instance.host.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-host-name)
-* [<+instance.name>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
+* [<+instance.hostName>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
+* [<+instance.host.hostName>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-host-host-name)
+* [<+instance.name>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-private-ip)
-* [<+instance.host.publicIp>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-public-ip)
+* [<+instance.host.privateIp>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-host-private-ip)
+* [<+instance.host.publicIp>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-host-public-ip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

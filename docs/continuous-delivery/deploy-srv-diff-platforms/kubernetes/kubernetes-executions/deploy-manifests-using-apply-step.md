@@ -96,7 +96,7 @@ Later, you can apply a skipped manifest using the **Apply** step. Here's an exam
 
 1. Add the commented manifest to the **Manifests** section of your CD stage.
 
-See [Add Kubernetes Manifests](../../cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
+See [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
 
 ## Add the Apply step
 

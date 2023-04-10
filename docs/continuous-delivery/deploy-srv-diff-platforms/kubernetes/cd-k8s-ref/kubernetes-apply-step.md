@@ -14,7 +14,7 @@ The Apply step is used to deploy workloads outside of the primary and sidecar wo
 
 For example, you might want to deploy an additional resource only after Harness has verified the deployment of the main resources in the **Manifests** section.
 
-For the topic on using the step, go to [Deploy Manifests Separately using Apply Step](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
+For the topic on using the step, go to [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
 
 ## Review: What Workloads Can I Deploy?
 
@@ -83,9 +83,9 @@ In some cases, you might not want to use Go templating because your manifests us
 
 Use the **Skip K8s Manifest(s) Rendering** option if you want Harness to skip rendering your manifest files using Go templating.
 
-For details, go to [Deploy Manifests Separately using Apply Step](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
+For details, go to [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
 
 ## See Also
 
-* [Add a Kubernetes Sidecar Container](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md)
+* [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md)
 

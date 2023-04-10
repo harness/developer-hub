@@ -301,8 +301,8 @@ For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial]
 
 To configure the stages for your pipeline, go to the following: 
 - [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-custom-stage/)
-- [Terraform Plan Step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step/)
-- [Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step)
+- [Terraform Plan Step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/)
+- [Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
    
 
 The **Terraform Plan** step fetches the terraform resource from Git. Harness then initiates a terraform plan on the files collected.

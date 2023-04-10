@@ -252,7 +252,7 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-You can see the [Harness expression](../../../platform/12_Variables-and-Expressions/harness-variables.md) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
+You can see the [Harness expression](/docs/platform/12_Variables-and-Expressions/harness-variables.md) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
 
 The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
@@ -527,7 +527,7 @@ plugins:
 See:
 
 * [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
-* [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
+* [Built-in Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 * [Run Pipelines using Input Sets and Overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
 
 ### Supported stores for Serverless Lambda YAML files

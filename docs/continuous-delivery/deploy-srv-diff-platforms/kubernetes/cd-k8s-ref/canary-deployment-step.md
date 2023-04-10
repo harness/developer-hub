@@ -18,7 +18,7 @@ See [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md)
 
 In this step, you will define how many pods are deployed for a Canary test of the configuration files in your Service Definition **Manifests** section.
 
-See [Create a Kubernetes Canary Deployment](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md).
+See [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md).
 
 ## YAML
 
@@ -69,9 +69,9 @@ If the **Skip Dry Run** option is selected, Harness will not use the `--dry-r
 
 See the following topics for these settings:
 
-* [Step Skip Condition Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](..//docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md.md)
+* [Step Failure Strategy Settings](..//docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](..//docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ## See Also
 

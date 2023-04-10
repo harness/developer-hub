@@ -309,7 +309,7 @@ See [Example Kubernetes manifests using Go templating](../../continuous-deliver
 
 Yes, you can use Terraform. You can provision the target Kubernetes infrastructure as part of a pre-deployment setup in your stage. When the Pipeline runs, it builds your Kubernetes infrastructure first, and then deploys to the new infrastructure.
 
-See [Terraform provisioning with Harness](../../continuous-delivery/cd-advanced/terraform-category/terraform-provisioning-with-harness.md).
+See [Terraform provisioning with Harness](../../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
 
 #### What deployment strategies can I use with Kubernetes?
 
@@ -380,15 +380,15 @@ You can use Harness with Terraform in two ways:
 
 You can do both in the same stage if you want.
 
-For an overview of the process see [Terraform provisioning with Harness](../../continuous-delivery/cd-advanced/terraform-category/terraform-provisioning-with-harness.md). 
+For an overview of the process see [Terraform provisioning with Harness](../../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md). 
 
 See the following Terraform how-tos:
 
 * [Provision target deployment infrastructure dynamically with Terraform](../../continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform.md)
-* [Plan Terraform provisioning with the Terraform Plan step](../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step.md)
-* [Provision with the Terraform Apply step](../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md)
-* [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-advanced/terraform-category/remove-provisioned-infra-with-terraform-destroy.md)
-* [Roll back provisioned infrastructure with the Terraform Rollback step](../../continuous-delivery/cd-advanced/terraform-category/rollback-provisioned-infra-with-the-terraform-rollback-step.md)
+* [Plan Terraform provisioning with the Terraform Plan step](../../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step.md)
+* [Provision with the Terraform Apply step](../../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md)
+* [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md)
+* [Roll back provisioned infrastructure with the Terraform Rollback step](../../continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step.md)
 
 #### Do I need to deploy an application to use Terraform?
 
@@ -397,8 +397,8 @@ You do not need to deploy artifacts through Harness services to use Terraform pr
 See the following Terraform how-tos:
 
 * [Provision target deployment infrastructure dynamically with Terraform](../../continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform.md)
-* [Plan Terraform provisioning with the Terraform Plan step](../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step.md)
-* [Provision with the Terraform Apply step](../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md)
+* [Plan Terraform provisioning with the Terraform Plan step](../../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step.md)
+* [Provision with the Terraform Apply step](../../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md)
 
 #### Are Harness service instances counted with Terraform provisioning?
 
@@ -422,7 +422,7 @@ Next, you add the Terraform Apply step, select **Inherit from Plan** in **Con
 
 Yes. You can add a **Terraform Destroy** step to remove any provisioned infrastructure, just like running the `terraform destroy` command. See [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform.
 
-See [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-advanced/terraform-category/remove-provisioned-infra-with-terraform-destroy.md).
+See [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
 
 ### Harness Configure as Code
 

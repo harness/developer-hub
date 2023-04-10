@@ -210,7 +210,7 @@ To add Kubernetes manifests to your service, do the following:
 7. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Continue**.
 8. In **Specify K8s Manifest Store**, select the Git provider.
    
-   The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+   The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
 9.  Click **Continue**. **Manifest Details** appears.
 10. In **Manifest Identifier**, enter an Id for the manifest.
 11. If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
@@ -236,7 +236,7 @@ To add Kubernetes manifests to your service, do the following:
   <TabItem value="Values YAML" label="Values YAML">
 ```
 
-Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) in the Values YAML files.
+Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/12_Variables-and-Expressions/harness-variables.md) in the Values YAML files.
 
 If you are using a Values YAML file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
 
@@ -256,9 +256,9 @@ To add a Values YAML file, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Manifests**, click **Add Manifest**.
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
-8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
    
-   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm CD tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 9.  Once you've selected a Connector, click **Continue**.
 10. In **Manifest Details**, you tell Harness where the values.yaml is located.
 11. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
@@ -291,13 +291,13 @@ If you have Values files in both the K8s Manifest **File/Folder Path** and the V
 
 You might have manifest files for resources that you do not want to deploy as part of the main deployment.
 
-Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md) step. Or you can simply ignore them and deploy them later.
+Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md) step. Or you can simply ignore them and deploy them later.
 
-See [Ignore a manifest file during deployment](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md/kubernetes-apply-step.md).
+See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md/kubernetes-apply-step.md).
 
 #### Notes
 
-- If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
+- If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 - For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
 - You can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests. See [Reference Artifacts in Manifests](kubernetes-services.md#reference-artifacts-in-manifests).
 
@@ -464,8 +464,8 @@ To add a Helm chart to your service, do the following:
 
 #### Important notes
 
-- If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](../../deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
-- For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](../../deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
+- If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
+- For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
 - Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
 - Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
 - Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
@@ -638,7 +638,7 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 - Kustomize patches override values in the base manifest. Harness supports the `patchesStrategicMerge` patches type.
 - If the `patchesStrategicMerge` label is missing from the kustomization YAML file, but you have added Kustomize Patches to your Harness Service, Harness will add the Kustomize Patches you added in Harness to the `patchesStrategicMerge` in the kustomization file. If you have hardcoded patches in `patchesStrategicMerge`, but not add these patches to Harness as Kustomize Patches, Harness will ignore them.
 
-For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](../../deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
 To use Kustomize Patches, do the following:
 
@@ -649,7 +649,7 @@ To use Kustomize Patches, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Manifests**, select **Add Manifest**.
 7. In **Specify Manifest Type**, select **Kustomize Patches**, and select**Continue**.
-8. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+8. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
    
    The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 9.  Select **Continue**.
@@ -676,11 +676,11 @@ To use Kustomize Patches, do the following:
 
 If this is your first time using Harness for a Kustomize deployment, see the [Kustomize Quickstart](../../onboard-cd/cd-quickstarts/kustomize-quickstart.md).
 
-For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](../../deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
 #### Important notes
 
-* Harness supports Kustomize and Kustomize Patches for [Rolling](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/canary-deployment-step.mdanary-deployment-step.md), [Blue Green](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.mdal-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) steps.
+* Harness supports Kustomize and Kustomize Patches for [Rolling](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/canary-deployment-step.mdanary-deployment-step.md), [Blue Green](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.mdal-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) steps.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
 * You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 * **Kustomize binary versions:**
@@ -698,7 +698,7 @@ For a detailed walkthrough of deploying Kustomize in Harness, including limitati
 
 Harness supports OpenShift for Kubernetes deployments.
 
-For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
+For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
 
 ```mdx-code-block
 import Tabs3 from '@theme/Tabs';
@@ -827,7 +827,7 @@ To add an OpenShift Template to a service, do the following:
 8.  In **Specify OpenShift Template Store**, select where your template is located. 
   
   You can use a Git provider, the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/), a custom repo, or Azure Repos.
-1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
 2.  Select **Continue**. **Manifest Details** appears.
 3.  In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.
 4.  In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
@@ -846,7 +846,7 @@ OpenShift Param Files can be added in the following ways:
 
 ![Params](./static/9e15cbd984b566f357edc930d15ff7ce9d186c4d843615f5299710605926f811.png)
 
-For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
+For an overview of OpenShift support, see [Using OpenShift with Harness Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes.md).
 
 Let's look at an example where the OpenShift Param is attached to a template already added:
 
@@ -2439,7 +2439,7 @@ For Nexus 3, when used as a **Docker** repo, the user needs:
 <details>
 <summary>Use Artifactory artifacts</summary>
 
-You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](/docs/platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
 ```mdx-code-block
 import Tabs11 from '@theme/Tabs';
@@ -2592,7 +2592,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem11 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](..//docs/platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
 To add an artifact from Artifactory, do the following:
 
@@ -2963,7 +2963,7 @@ You can add one or more values YAML files containing values for different scenar
 
 Built-in Go templating support enables you to use Kubernetes without the need for Helm.
 
-For more information, see [Example Kubernetes Manifests using Go Templating](../../deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+For more information, see [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
 Let's look at a few Kubernetes templating examples.
 
@@ -3156,7 +3156,7 @@ For example, a logging sidecar can be used to capture and store application logs
 
 Sidecars can also be used to implement advanced features like load balancing, service discovery, and circuit breaking. By using a sidecar container for these features, it's possible to keep the primary container simple and focused on its core functionality, while still providing advanced capabilities to the application.
 
-For more information, go to [Add a Kubernetes sidecar container](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
+For more information, go to [Add a Kubernetes sidecar container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
 
 
 ## Variables
@@ -3202,7 +3202,7 @@ For more information on runtime inputs and expressions, go to [Fixed values runt
 
 You can use pipeline, stage, service, environment, and Harness built-in variables in your values YAML files and service settings.
 
-See [Built-in Harness variables reference](../../../platform/12_Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
+See [Built-in Harness variables reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
 
 ### Propagate and override artifacts, manifests, and service variables
 
@@ -3211,11 +3211,11 @@ You can propagate services between stages and override service settings by using
 For more information, go to:
 
 - [Propagating CD services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md-cd-services.md)
-- [Add and override values YAML files](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files.md)
+- [Add and override values YAML files](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files.md)
 
 ## Next steps
 
 Once you've configured your service, you can move onto the stage's **Environment** settings and define the target Kubernetes cluster and namespace for your deployment.
 
-See [Define your Kubernetes target infrastructure](../../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 

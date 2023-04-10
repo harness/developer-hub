@@ -585,11 +585,11 @@ spec:
 ```
 ### Terraform
 
-The following are resolutions to common configuration problems when [Terraform provisioning with Harness](../continuous-delivery/cd-advanced/terraform-category/terraform-provisioning-with-harness.md).
+The following are resolutions to common configuration problems when [Terraform provisioning with Harness](../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
 
 #### Provisioned resources already exist (Terraform state file locked)
 
-When a [Terraform Apply](../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md) step fails because of a timeout, subsequent deployments might see following error message:
+When a [Terraform Apply](../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md) step fails because of a timeout, subsequent deployments might see following error message:
 
 
 ```

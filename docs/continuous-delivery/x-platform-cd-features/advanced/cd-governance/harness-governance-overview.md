@@ -171,7 +171,7 @@ A Policy Set at the account level applies to all entities in the Orgs and Projec
 
 When you create a policy, you identify the Harness entities were the policy is applied.
 
-For example, here's a policy that applies the [Harness Approval](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.mdteps-in-cd-stages.md) steps:
+For example, here's a policy that applies the [Harness Approval](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md) steps:
 
 ![](./static/harness-governance-overview-12.png)
 

@@ -16,7 +16,7 @@ This topic describes the differences between Harness managed and unmanaged workl
 
 In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed and managed to steady state. If steady state is not reached, the deployment is considered a failure and the Failure Strategy is executed (typically rollback).
 
-An unmanaged workload is a workload deployed separate from your primary workload, such as [Kubernetes Jobs](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/run-kubernetes-jobs.md). Harness does not track these workload versions or perform rollback on them.
+An unmanaged workload is a workload deployed separate from your primary workload, such as [Kubernetes Jobs](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/run-kubernetes-jobs.md). Harness does not track these workload versions or perform rollback on them.
 
 ## Canary and Blue Green Strategies
 
@@ -28,7 +28,7 @@ Rolling strategy steps support Deployment, StatefulSet, or DaemonSet as **manage
 
 ## Apply Step
 
-The [Apply Step](../../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md) can deploy any workloads or objects in any strategy as a managed workload. You can select whether or not to skip steady state check.
+The [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md) can deploy any workloads or objects in any strategy as a managed workload. You can select whether or not to skip steady state check.
 
 ## OpenShift
 

@@ -297,7 +297,7 @@ If you do not use `<+artifact.image>`, Harness will not attempt to download and 
 
 For non-containerized artifacts, use `<+artifact.path>`.
 
-To learn more, go to [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md#artifact).
+To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md#artifact).
 
 ## Create the Environment
 
@@ -481,9 +481,9 @@ The `<+instance...>` expressions refer to the **Instance Attributes** in the Dep
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
-* [<+instance.hostName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
-* [<+instance.host.instanceName>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-host-instance-name)
-* [<+instance.name>](../../../platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
+* [<+instance.hostName>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
+* [<+instance.host.instanceName>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-host-instance-name)
+* [<+instance.name>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
 
 The expression `<+instance.host.properties.[property name]>` can used to reference the other properties you added to **Instance Attributes**.
 

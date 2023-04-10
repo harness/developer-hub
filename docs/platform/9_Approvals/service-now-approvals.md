@@ -122,5 +122,5 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 ### See also
 
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
-* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.mdteps-in-cd-stages.md)
+* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)
 

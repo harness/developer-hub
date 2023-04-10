@@ -28,7 +28,7 @@ Looking for other methods? See [Add Kubernetes Manifests](define-kubernetes-mani
 
 ## Before you begin
 
-* [Kubernetes Deployment Tutorial](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
+* [Kubernetes Deployment Tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Kubernetes Deployment Basics](../kubernetes-deployments-overview.md)
 
 ## Supported platforms and technologies
@@ -100,7 +100,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
 1. Enter the name in **Manifest Name**.
 1. In **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
 2. In **Extracted Manifest File Location**, enter the folder path for the manifests.
-3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
+3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
 4. In **Values.yaml**, the field is populated with the folder path for the values.yaml.
 5. Click **Submit**. The new manifest is created and added to **Manifests** in Harness.
 
@@ -146,7 +146,7 @@ That's all the setup required. You can now deploy the Service and the script is 
 
 ## Notes
 
-You can use Go templating in your Kubernetes resource files, just as you would for files stored in Git or inline. See [Example Kubernetes Manifests Using Go Templating](../../cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md). For OpenShift, you must use OpenShift templating.
+You can use Go templating in your Kubernetes resource files, just as you would for files stored in Git or inline. See [Example Kubernetes Manifests Using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md). For OpenShift, you must use OpenShift templating.
 
 If the artifact you are deploying with your manifest is public (DockerHub) and does not require credentials, you can use the standard public image reference, such as `image: harness/todolist-sample:11`.
 

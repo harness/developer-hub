@@ -15,7 +15,7 @@ This topic describes how to make your Kubernetes manifests reusable and dynamic 
 
 This is a simple example using the Artifact reference `<+artifact.image>`. It can be used whenever the public image is not hardcoded in manifests.
 
-See [Add Container Images as Artifacts for Kubernetes Deployments](../../deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
 
 We use Go templates with a values.yaml file and manifests for deployment, namespace, and service. The manifests for deployment, namespace, and service are in a **templates** folder that's a peer of the values.yaml file.
 
@@ -306,7 +306,7 @@ Use the **Skip Rendering K8s manifest files** option in the [Kubernetes Apply]
 
 ## Notes
 
-* [Harness Variables and Expressions](../../../platform/12_Variables-and-Expressions/harness-variables.md) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
+* [Harness Variables and Expressions](/docs/platform/12_Variables-and-Expressions/harness-variables.md) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
 * The values.yaml file used in a stage Service doesn't support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Service.
 * Harness uses Go template version 0.4. If you're used to Helm templates, you can download Go template and try it out locally to find out if your manifests will work. This can help you avoid issues when adding your manifests to Harness.  
 - You can install Go template version 0.4 locally to test your manifests.

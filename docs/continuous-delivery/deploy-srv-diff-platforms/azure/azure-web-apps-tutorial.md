@@ -131,7 +131,7 @@ You will add the same Docker image or non-containerized artifact you use in your
 
 ### Harness Delegate
 
-As covered in [Harness Platform architecture](../../../getting-started/harness-platform-architecture.md), a Harness Delegate must be installed in your infrastructure for Harness to perform tasks.
+As covered in [Harness Platform architecture](../../../../getting-started/harness-platform-architecture.md), a Harness Delegate must be installed in your infrastructure for Harness to perform tasks.
 
 You will install a Harness Delegate in your infrastructure as part of adding the Connector for the **App Services Configuration** or **Artifacts**.
 
