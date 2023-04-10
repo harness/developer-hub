@@ -72,7 +72,4 @@ The following section lists where you can use AutoStopping rules:
 * Google Compute Engine (GCE) VMs
 * Kubernetes Clusters (GKE)
 
-### Next Steps
-
-* [Optimize Cloud Costs with AutoStopping Rules](/docs/category/optimize-cloud-costs-with-autostopping-rules)
 
