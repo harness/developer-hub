@@ -46,8 +46,8 @@ You should have an understanding of the following:
 * Harness' [key concepts](../../../getting-started/learn-harness-key-concepts.md).
 * How to [set up build infrastructure](/docs/category/set-up-build-infrastructure).
 * How to create pipelines. If you haven't created a pipeline before, try one of the following tutorials:
-  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra).
-  * [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
+  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm).
+  * [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
 * [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
 
 ## Add the Build and Push step

@@ -151,6 +151,6 @@ After the pipeline runs, you can [view test reports](../set-up-test-intelligence
 
 :::tip
 
-For an example of a **Run** step that runs tests and produces test reports, go to the [Code coverage with CodeCov in Harness CI tutorial](/tutorials/build-code/ci-tutorial-codecov-test).
+For an example of a **Run** step that runs tests and produces test reports, go to the [Code coverage with CodeCov in Harness CI tutorial](/tutorials/build-code/test/codecov).
 
 :::
