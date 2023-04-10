@@ -104,11 +104,11 @@ For more information on creating a new resource group, see [Add and Manage Resou
     |  |  |  |
     | --- | --- | --- | --- |
     | **Scope** | **Resource Group** | **Description** | **Visual summary** |
-    | **Account** | **All Resources Including Child Scopes** | Includes all resources within the account's scope, as well as those within the scope of the orgs and projects within the account. | ![](./static/entire-account.png) |
-    | **Account** | **All Account Level Resources** | Includes all resources within the account's scope. Excludes resources that are within the scope of an org or project. | ![](./static/account-only.png) |
-    | **Org** | **All Resources Including Child Scopes** | Includes all the resources within the org's scope, as well as those within the scope of all projects within the org. | ![](./static/entire-org.png) |
-    | **Org** | **All Organization Level Resources** | Include all resources within the org's scope. Excludes resources that are within the scope of a project. | ![](./static/org-only.png) |
-    | **Project** | **All Project Level Resources** | Includes all resources within the scope of a project. | ![](./static/project-only.png) |
+    | **Account** | **All Resources Including Child Scopes** | Includes all resources within the account's scope, as well as those within the scope of the orgs and projects within the account. | <docimage path={require('./static/entire-account.png')} />|
+    | **Account** | **All Account Level Resources** | Includes all resources within the account's scope. Excludes resources that are within the scope of an org or project. | <docimage path={require('./static/account-only.png')}/> |
+    | **Org** | **All Resources Including Child Scopes** | Includes all the resources within the org's scope, as well as those within the scope of all projects within the org. | <docimage path={require('./static/entire-org.png')}/> |
+    | **Org** | **All Organization Level Resources** | Include all resources within the org's scope. Excludes resources that are within the scope of a project. | <docimage path={require('./static/org-only.png')}/> |
+    | **Project** | **All Project Level Resources** | Includes all resources within the scope of a project. | <docimage path={require('./static/project-only.png')}/> |
 
   You can also create custom resource groups within any scope.
 
@@ -163,35 +163,35 @@ The following list explains the different role assignments with the default role
 |  |  |
 | --- | --- |
 | **Role Assignment (Default Role + Default Resource Group)** | **Description** |
-| **Account Admin +** **All Resources Including Child Scopes** | A principal with this role assignment has the following permissions:<li> All permissions on all the resources in the account scope as well as organizations and projects scopes within the entire account.</li>
+| **Account Admin +** **All Resources Including Child Scopes** | A principal with this role assignment has all permissions on all the resources in the account scope as well as organizations and projects scopes within the entire account.
  |
-| **Account Admin +** **All Account Level Resources** | A principal with this role assignment has the following permissions:<li> All permissions on all the resources in the account scope only.</li>
+| **Account Admin +** **All Account Level Resources** | A principal with this role assignment has all permissions on all the resources in the account scope only.
  |
-| **Account Viewer +** **All Resources Including Child Scopes** | A principal with this role assignment has the following permissions:<li> View permissions on all the resources in the account as well as organizations and projects scopes within the entire account.</li>
+| **Account Viewer +** **All Resources Including Child Scopes** | A principal with this role assignment has view permissions on all the resources in the account as well as organizations and projects scopes within the entire account.
  |
-| **Account Viewer +** **All Account Level Resources** | A principal with this role assignment has the following permissions:<li>View permissions on all the resources in the account scope only.</li>
+| **Account Viewer +** **All Account Level Resources** | A principal with this role assignment has view permissions on all the resources in the account scope only.
  |
-| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A principal with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the account as well as organizations and projects scopes within the entire account.</li>
+| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A principal with this role assignment has create and edit permissions on Feature Flags and Target Management in the account as well as organizations and projects scopes within the entire account.
  |
-| **Feature Flag Manage Role +** **All Account Level Resources** | A principal with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the account scope only.</li>
+| **Feature Flag Manage Role +** **All Account Level Resources** | A principal with this role assignment has create and edit permissions on Feature Flags and Target Management in the account scope only.
  |
-| **Organization Admin +** **All Resources Including Child Scopes** | A principal with this role assignment has the following permissions:<li> All permissions on all the resources in the organization as well as projects within the organization.</li>
+| **Organization Admin +** **All Resources Including Child Scopes** | A principal with this role assignment has all permissions on all the resources in the organization as well as projects within the organization.
  |
-| **Organization Admin + All Organization Level Resources** | A principal with this role assignment has the following permissions:<li> All permissions on all the resources in the organization scope only.</li>
+| **Organization Admin + All Organization Level Resources** | A principal with this role assignment has all permissions on all the resources in the organization scope only.
  |
-| **Organization Viewer +** **All Resources Including Child Scopes** | A principal with this role assignment has the following permissions:<li> View permissions on all the resources in the organization as well as projects within the organization.</li>
+| **Organization Viewer +** **All Resources Including Child Scopes** | A principal with this role assignment has view permissions on all the resources in the organization as well as projects within the organization.
  |
-| **Organization Viewer + All Organization Level Resources** | A principal with this role assignment has the following permissions:<li> View permissions on all the resources in the organization scope only.</li>
+| **Organization Viewer + All Organization Level Resources** | A principal with this role assignment has view permissions on all the resources in the organization scope only.
  |
-| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A principal with this role assignment has the following permissions:<li> Create/Edit permissions on Feature Flags and Target Management in the organizations, and projects within the entire organization.</li>
+| **Feature Flag Manage Role +** **All Resources Including Child Scopes** | A principal with this role assignment has create and edit permissions on Feature Flags and Target Management in the organizations, and projects within the entire organization.
  |
-| **Feature Flag Manage Role + All Organization Level Resources** | A principal with this role assignment has the following permissions:<li> Create/Edit permissions for Feature Flags and Target Management in the organization scope only.</li>
+| **Feature Flag Manage Role + All Organization Level Resources** | A principal with this role assignment has create and edit permissions for Feature Flags and Target Management in the organization scope only.
  |
-| **Project Admin + All Project Level Resources** | A principal with this role assignment has the following permissions:<li> All permissions on all the resources within the project scope.</li>
+| **Project Admin + All Project Level Resources** | A principal with this role assignment has all permissions on all the resources within the project scope.
  |
-| **Project Viewer + All Project Level Resources** | A principal with this role assignment has the following permissions:<li> View permissions on all the resources in the Project.</li>
+| **Project Viewer + All Project Level Resources** | A principal with this role assignment has view permissions on all the resources in the project.
  |
-| **Feature Flag Manage + All Project Level Resources** | A principal with this role assignment has the following permissions:<li>Create/Edit permissions for Feature Flags and Target Management within the project scope.</li>
+| **Feature Flag Manage + All Project Level Resources** | A principal with this role assignment has create and edit permissions for Feature Flags and Target Management within the project scope.
  |
 | **Pipeline Executor + All Project Level Resources** | A principal with this role assignment has the following permissions:<li> View permission on resource group, project, users, user groups, and roles</li><li> View and Access permissions on secrets, connectors, environments, services</li><li> View and Execute permissions on pipelines</li>|
 
