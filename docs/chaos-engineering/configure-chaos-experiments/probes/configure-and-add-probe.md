@@ -3,9 +3,9 @@ title: Configure and Add Probe(s)
 sidebar_position: 2
 ---
 
-A probe explores the behavior of a [system that is in a chaotic or unpredictable state](../../chaos-faults) and helps validate the [declarative hypothesis](./overview) set by the user. The goal of a chaos probe is to understand the underlying patterns and laws that govern the behavior of these systems, and use this understanding to predict or control their behavior.
+A probe explores the behavior of a [system that is in a chaotic or unpredictable state](../../technical-reference/chaos-faults) and helps validate the [declarative hypothesis](../../technical-reference/probes/overview.md) set by the user. The goal of a chaos probe is to understand the underlying patterns and laws that govern the behavior of these systems, and use this understanding to predict or control their behavior.
 
-A probe explores the behavior of a system in a chaotic or unpredictable manner and helps validate the declarative hypothesis set by the user. The goal of a chaos probe is to understand the underlying patterns and laws that govern the behavior of these systems, and to use that understanding to predict or control their behavior.
+This section walks you step-by-step through how to configure and add probes to a chaos experiment.
 
 ## Before you begin
 
@@ -43,17 +43,14 @@ Once you click on a fault, a **Tuning drawer** opens up. Navigate to the last ta
 
 ## Step 3: Add a probe
 
-Once the `Add Probe` modal opens up, provide a name, and specify the type of the probe (HTTP or Command or Kubernetes or Prometheus) followed by the mode in which you want to run the probe.
+Once the `Add Probe` screen opens up, provide a name, the type of the probe (HTTP or Command or Kubernetes or Prometheus) and the mode in which you want to run the probe.
 
 ![Step 3.1](./static/configure-and-add-probe/step3.1.png)
 
-Provide the necessary probe attributes. In this case, you have chosen HTTP probe, which shows attributes associated with it, such as `URL`, `Method`, `Criteria`, and so on.
-![Step 3.3](./static/configure-and-add-probe/step3.3.png)
-
-The screen also shows common probe properties, such as probe timeout, retry, polling interval, and so on.
+Now, the screen shows common probe properties, such as `Probe timeout`, `Retry`, `Interval`, and so on. Enter relevant values, and click `Continue`.
 ![Step 3.2](./static/configure-and-add-probe/step3.2.png)
 
-![Step 3.2](./static/configure-and-add-probe/step3.2.png)
+Provide the required probe attributes. In this case, you have chosen HTTP probe, which shows attributes associated with it, such as `URL`, `Method`, `Criteria`, and so on. Enter relevant values, and click `Setup the probe`.
 ![Step 3.3](./static/configure-and-add-probe/step3.3.png)
 
 ## Step 4: Save the probe
