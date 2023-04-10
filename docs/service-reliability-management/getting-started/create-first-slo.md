@@ -256,42 +256,6 @@ On the other hand, the "Calendar period" type sets fixed calendar periods for th
 :::
 
 
-### Error Budget Policy (Optional)
-
-In this section, you set an error budget policy for the SLO and alert your teams when the error budget violates the threshold. This setting is optional. 
-
-An error budget represents the maximum amount of time a system can experience downtime or other issues without negatively impacting the customer experience.
-
-To create an error budget policy:
-
-1. Under **Error Budget Policy (Optional)**, select **+ New Notification Rule**.  
-   The New Notification page appears.
-2. Enter a name for the notification rule and select **Continue**.
-3. In the **Condition** dropdown, select one of the following conditions:
-   - **Error Budget remaining percentage**: Triggers an alert if the remaining error budget reaches the specified value. For example, set the condition to trigger an alert if the error budget remaining percentage reaches 10%.
-   - **Error budget remaining minutes**: Triggers an alert if the error budget remaining minutes reaches the specified value. For example, set the condition to trigger an alert if the remaining error budget minutes deplete to 500 minutes.
-   - **Error budget burn rate is above**: Triggers an alert if the error budget burn rate reaches the value that you specify. You should also set the **Lookback Duration (min) value**.  For example, set the condition to trigger an alert if the error budget burn rate is above 10% in the last 800 minutes.
-  
-  
-   :::info note
-   You can add multiple conditions.
-   :::
-
-
-4. In the **Notification Method** dropdown, select an alert method and then select **Continue**.
-The following notification methods are available:
-
-   - **Slack**: Enter the Slack webhook URL.
-   - **Email**: Enter the email addresses for sending the alerts.
-   - **PagerDuty**: Enter the PagerDuty key.
-   - **Microsoft Teams**: Enter the Microsoft Teams webhook URL. You can add more than one webhook URL by selecting **+ Add**.
-
-6. Select **Test** to check if the alert is working correctly.
-7. Select **Finish**.
-The notification rule appears in the error budge policy list.
-8. Enable the notification rule to start sending the alerts.
-
-
 ### Save
 Select **Save** to save the settings.
 The SLO appears on the Service Level Objectives (SLOs) page.
