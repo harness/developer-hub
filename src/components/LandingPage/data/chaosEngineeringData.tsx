@@ -59,6 +59,36 @@ export const CEList: CardItem[] = [
     link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
   },
   {
+    title: "Running chaos experiments on GitLab pipelines",
+    module: MODULES.ce,
+    icon: "img/icon_ce.svg",
+    description: (
+      <>
+        Execute a chaos experiment as part of a GitLab pipeline for
+        continuous resilience.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/run-chaos-experiments/chaos-experiments-on-gitlab",
+  },
+  {
+    title: "Running chaos experiments on Jenkins pipelines",
+    module: MODULES.ce,
+    icon: "img/icon_ce.svg",
+    description: (
+      <>
+        Execute a chaos experiment as part of a Jenkins pipeline for
+        continuous resilience.
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/run-chaos-experiments/chaos-experiments-on-jenkins",
+  },
+  {
     title: "Your first chaos experiment execution using APIs",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
