@@ -13,6 +13,26 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## April xx, 2023, version 790xx
+
+### What's new
+
+Filters applied to the monitored services list on the Monitored Services page will get reset when you switch to a different project. (SRM-14383)
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
+  
+  This issue has been resolved. Now, when you switch to a different project while a template is open, you will be redirected to the templates listing page.
+
+- The SLO health summary cards displayed in a monitored service's health dashboard show summarized data for SLOs associated with all the monitored services in the project, even if the SLOs are not connected to the selected monitored service. (SRM-14462)  
+
+  This issue has been resolved. Now, the SLO health summary cards displayed in a monitored service's health dashboard will show summarized data only for the SLOs associated with the selected monitored service.
+
 
 ## March 31, 2023, version 78914
 
