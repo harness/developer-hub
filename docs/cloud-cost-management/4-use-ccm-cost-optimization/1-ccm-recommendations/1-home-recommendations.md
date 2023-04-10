@@ -1,6 +1,6 @@
 ---
 title: View and apply recommendations
-description: View the CCM recommendations
+description: Learn about the recommendations summary page and the various actions that you can perform on this page.
 # sidebar_position: 2
 ---
 

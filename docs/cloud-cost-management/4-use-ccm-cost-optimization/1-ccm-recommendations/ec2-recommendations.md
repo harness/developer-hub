@@ -1,6 +1,6 @@
 ---
 title: Optimize AWS EC2 costs with recommendations
-description: View the CCM recommendations
+description: Optimize the utilization of your EC2 instances using Harness CCM recommendations.
 # sidebar_position: 2
 ---
 
