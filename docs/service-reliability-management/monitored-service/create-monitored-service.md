@@ -1,10 +1,12 @@
 ---
 title: Create a monitored service
 description: Create a monitored servie to correlate change events.
-sidebar_position: 10
+sidebar_position: 1
 ---
 
-This topic describes how to create a monitored service to correlate change events.
+A monitored service in the context of the Harness platform is a combination of a Harness service and environment. This entity can be any type of workload that is able to be monitored, including microservices. Environments represent the deployment targets such as QA, production, or any other environment where the workload will be deployed. By connecting a monitored service to change sources and health sources, you can monitor the health of the service. 
+
+The following steps explain how to create a monitored service in Harness.
 
 
 ## Prerequisites
@@ -137,5 +139,7 @@ To add a new health source, do the following:
 
    ![Monitored service is created](./static/change-impact-moniterdservice-created.png)
 
-## Next steps
+   Next steps
 
+  To learn how to analyze the impact of changes on your monitored service, go to [Service health dashboard](../change-impact-analysis/change-impact-analysis-service-health-dashboard.md) and [Changes dashboard](../change-impact-analysis/change-impact-analysis-changes-dash-board.md).
+    
