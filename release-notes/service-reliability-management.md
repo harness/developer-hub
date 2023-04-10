@@ -17,7 +17,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-Filters applied to the monitored services list on the Monitored Services page will get reset when you switch to a different project. (SRM-14383)
+Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
 
 ### Early access
 

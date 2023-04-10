@@ -21,7 +21,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Service Reliability Management
 
-* Filters applied to the monitored services list on the Monitored Services page will get reset when you switch to a different project. (SRM-14383)
+* Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
 
 
 ## March 31, 2023, version 78914
