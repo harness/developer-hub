@@ -50,6 +50,13 @@ Perform the following steps to connect to your Azure account:
 3. Under **Cloud Costs**, click **Azure**.
    ```mdx-code-block
 <img src={select_azure} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
+
+ Or
+
+1. In your Harness account, click **Cloud Costs.** Under **Setup,** click **Cloud Integration**.  
+The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
+2. Click **New Cluster/Cloud account**.
+3. Select **Azure**.
 	 
 4. In the **Azure Connector** wizard, in the **Overview** section, enter the following details:
 	1. **Connector name**: Enter a name for the connector

@@ -45,6 +45,13 @@ Connect Harness to your GCP account to gain access your GCP services, Compute En
    ```mdx-code-block
 <img src={select_gcp} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
 
+ Or
+
+1. In your Harness account, click **Cloud Costs.** Under **Setup,** click **Cloud Integration**.  
+The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
+2. Click **New Cluster/Cloud account**.
+3. Select **GCP**.
+
 
 Perform the following tasks in the **GCP Connector** wizard:
 ### Overview

@@ -268,6 +268,13 @@ Perform the following steps to connect CCM to the AWS cloud provider.
    
      ![](./static/set-up-cost-visibility-for-aws-23.png)
 
+     Or
+
+1. In your Harness account, click **Cloud Costs.** Under **Setup,** click **Cloud Integration**.  
+The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
+2. Click **New Cluster/Cloud account**.
+3. Select **AWS**.
+
 4. In **AWS Connector**, in **Overview**, enter the **Connector** **Name**. The name will appear in CCM Perspectives to identify this cloud provider.
 5. In **Specify the AWS account ID**, enter your AWS account ID and click **Continue**. To find your AWS account ID, see [Finding your AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId).
    
