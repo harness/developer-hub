@@ -1,7 +1,9 @@
 ---
-sidebar_position: 40
+sidebar_position: 6
+title: React Application
 description: Build and test a sample React application in a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Developer Guide, CI Tutorial]
+slug: /build-code/build/react
 ---
 
 # Build, test, and publish a Docker image for a sample React application
@@ -63,11 +65,11 @@ For example, in my case, at the root of the project:
 docker build --tag harnesscommunity/test-react:latest .
 docker push harnesscommunity/test-react:latest
 ```
-![Docker Push](static/ci-react-quickstart/docker-log-two.png)
+![Docker Push](../static/ci-react-quickstart/docker-log-two.png)
 
 You can validate that this has been placed into the Docker Registry.
 
-![Docker Hub](static/ci-react-quickstart/dockerhub.png)
+![Docker Hub](../static/ci-react-quickstart/dockerhub.png)
 
 
 ## Create your pipeline

@@ -1,7 +1,9 @@
 ---
-sidebar_position: 140
+sidebar_position: 1
 description: Add CodeCov code coverage to a CI pipeline.
 keywords: [Continuous Integration, CI Tutorial, CodeCov, Testing, Run Tests]
+title: Code coverage with CodeCov
+slug: /build-code/test/codecov
 ---
 
 # Code coverage with CodeCov in Harness CI
@@ -74,9 +76,9 @@ import TabItem from '@theme/TabItem';
 8. Under **Optional Configuration**, add one or more **Report Paths**, such as `**/*.xml`.
 9. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
-<!-- ![](./static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png) -->
+<!-- ![](../static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png) -->
 
-<docimage path={require('./static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png')} />
+<docimage path={require('../static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png')} />
 
 For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
 
@@ -155,6 +157,6 @@ On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds
 ...
 ```
 
-<!-- ![](./static/ci-tutorial-codecov-test/build-logs-with-codecov.png) -->
+<!-- ![](../static/ci-tutorial-codecov-test/build-logs-with-codecov.png) -->
 
-<docimage path={require('./static/ci-tutorial-codecov-test/build-logs-with-codecov.png')} />
+<docimage path={require('../static/ci-tutorial-codecov-test/build-logs-with-codecov.png')} />

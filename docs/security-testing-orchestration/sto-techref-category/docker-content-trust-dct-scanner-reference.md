@@ -4,7 +4,7 @@ description: Image scans with Docker Content Trust
 sidebar_position: 120
 ---
 
-You can set up Fortify scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+You can set up  Docker Content Trust (DCT) scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Before you begin
 

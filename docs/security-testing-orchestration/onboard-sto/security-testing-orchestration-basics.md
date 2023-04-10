@@ -64,9 +64,9 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ### STO Features
 
-Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules. See [STO Tutorial 1: Standalone STO Workflows](tutorial-1-standalone-workflows.md).
+Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules. See [STO Tutorial 1: Standalone STO Workflows](/tutorials/orchestrate-security-tests/sto-standalone-workflows).
 
-You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. See [STO Quickstart 2: Integrated STO/CI/CD Workflows](sto-tutorial-2-integrated-sto-ci-cd-workflows.md).
+You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. See [STO Quickstart 2: Integrated STO/CI/CD Workflows](/tutorials/orchestrate-security-tests/sto-integrated-workflows).
 
 ![](./static/security-testing-orchestration-basics-31.png)
 

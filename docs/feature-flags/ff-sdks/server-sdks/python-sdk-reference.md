@@ -26,7 +26,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.1.9.**
+The current version of this SDK is **1.1.10.**
 
 ## Requirements
 
@@ -151,9 +151,9 @@ For example:
 ```
 ## Evaluate a Flag
 
-Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
+Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide.
 
-If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. 
+If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned, and an error is logged.
 
 There are different methods for the different Variation types and for each method you need to pass in:
 
