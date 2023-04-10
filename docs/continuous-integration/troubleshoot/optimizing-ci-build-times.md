@@ -1,8 +1,7 @@
 ---
 title: Optimizing CI Build Times
-description: You can use the following methods to speed up your CI builds. Test Intelligence. Testing is an important part of Continuous Integration. Testing safeguards the quality of your product before shipping…
-tags: 
-   - helpDocs
+description: You can use these methods to speed up your CI builds.
+
 # sidebar_position: 2
 helpdocs_topic_id: g3m7pjq79y
 helpdocs_category_id: 99m8m1s55y
@@ -10,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the following methods to speed up your CI builds.
+You can use these methods to speed up your CI builds.
 
 ### Test Intelligence
 

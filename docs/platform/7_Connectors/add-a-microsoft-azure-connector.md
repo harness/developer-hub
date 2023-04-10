@@ -256,10 +256,10 @@ The following JSON sample creates a custom role with the required permissions. T
 There are three options for connecting Harness to an AKS cluster:
 
 * Use the platform-agnostic [Kubernetes cluster connector](add-a-kubernetes-cluster-connector.md) with a Kubernetes or Helm delegate.
-    + You'll need to install a [Kubernetes delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster, and then use the delegate's credentials for the Kubernetes cluster connector's authentication method.
+    + You'll need to install a [Kubernetes delegate](../2_Delegates/install-delegates/overview.md) in the target AKS cluster, and then use the delegate's credentials for the Kubernetes cluster connector's authentication method.
 	+ You won't need to provide Microsoft Azure Service Principal or Managed Identity credentials.
 * Use a **Microsoft Azure Cloud Provider connector**, as described in this topic, with a Kubernetes delegate.
-    + You'll need to install a [Kubernetes delegate](../2_Delegates/advanced-installation/install-a-kubernetes-delegate.md) in the target AKS cluster, and then use the delegate's credentials for the Azure connector's authentication method.
+    + You'll need to install a [Kubernetes delegate](../2_Delegates/install-delegates/overview.md) in the target AKS cluster, and then use the delegate's credentials for the Azure connector's authentication method.
 	+ You'll need to provide the Microsoft Azure Environment.
 	+ If you use a User Assigned Managed Identity, you'll need to provide the Application (client) Id.
 	+ If you use a System Assigned Managed Identity, you won't need to provide any Ids.
@@ -499,7 +499,7 @@ If you select **Specify credentials here**, you must provide Microsoft Azure app
 <details>
 <summary>Inherit credentials from the delegate</summary>
 
-If you have [installed a Harness Delegate](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
+If you have [installed a Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) in your Azure subscription (preferably in your target AKS cluster), select **Use the credentials of a specific Harness Delegate** to allow the connector to inherit authentication credentials from the delegate.
 
 1. For **Environment**, select **Azure Global** or **US Government**.
 2. For **Authentication**, select **System Assigned Managed Identity** or **User Assigned Managed Identity**.

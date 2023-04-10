@@ -8,13 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
+
 This topic describes how to use the Harness Feature Flags SDK for your React Native application. 
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-react-native-client-sdk). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [React Native SDK GitHub Repository](https://github.com/harness/ff-react-native-client-sdk).
 
 ## Before You Begin
 
-* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
@@ -258,6 +261,8 @@ client.unregisterListener(eventsListener)
 ## Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
+
+<Sixty />
 
 ## Close the SDK
 

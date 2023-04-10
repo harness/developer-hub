@@ -52,13 +52,15 @@ Select the Jenkins server you added as a Harness Jenkins connector. For more inf
 
 Select the Jenkins job (also called a project) to execute. The list is automatically populated using the Jenkins server you set up in the Jenkins connector you selected.
 
+To filter a job, search for its name. If the job is nested, select the top-level folder first, then search for the job name within that path using a secondary field.
+
 ## Use runtime inputs and expressions
 
 You can use runtime inputs or expressions for the Jenkins connector and job name.
 
 Go to [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md) for more information.
 
-## Option: Job Parameters
+## Job parameters
 
 If you are using a [parameterized build](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build), when you select the job in **Job Name**, Harness will automatically populate any job parameters from the server.
 
@@ -81,9 +83,11 @@ If this setting is enabled then `Unstable` statuses will be considered as `Succe
 
 In **Advanced**, you can use the following options:
 
-* [Step skip condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step failure strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select delegates with selectors](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
 
 ## Captured environment variables from Jenkins builds
 

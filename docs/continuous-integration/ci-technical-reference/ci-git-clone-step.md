@@ -34,7 +34,7 @@ This setting is required if the connector uses a Git account URL, such as `https
 
 Select **Git Branch** if you want the step to clone code from a specific branch with in the repo. Select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**. You can use fixed values, runtime input, and variable expressions for the branch and tag names.
 
-This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. Make sure to set the input type to **Expression**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to [Built-in CI codebase variables reference](built-in-cie-codebase-variables-reference.md).
+This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. Make sure to set the input type to **Expression**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](built-in-cie-codebase-variables-reference.md).
 
 ## Clone Directory
 
@@ -52,7 +52,7 @@ The number of commits to fetch when the step clones the repo.
 
 For manually-triggered builds, the default depth is `50`. This means each `git clone` operation fetches the 50 most recent commits. For all other trigger types, the default depth is `0`, which fetches all commits from the relevant branch.
 
-For more information, go to [https://git-scm.com/docs/git-clone](https://git-scm.com/docs/git-clone).
+For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
 
 ### SSL Verify
 

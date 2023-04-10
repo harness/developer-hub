@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
 import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
@@ -11,28 +12,42 @@ const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_cd_badge.svg`,
     alt: "Harness Certified Expert - Developer",
-    type: certType.Developer,
+    type: certType.developer,
   },
   {
     img: `${url}img/cert_adm_cd_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
-    type: certType.Administrator,
+    type: certType.administrator,
   },
   {
     img: `${url}img/cert_arc_cd_badge.svg`,
     alt: "Harness Certified Expert - Architect",
-    type: certType.Architect,
+    type: certType.architect,
   },
 ];
 
 export default function CertificationsCD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
-  const [tab, setTab] = useState(certType.Developer);
-  const handleSwitchTab = (tabVal) => {
-    setTab(tabVal);
+  // React router provides the current component's route, even in SSR
+  const location = useLocation();
+  const history = useHistory();
+  const { pathname = "/", search = "" } = location;
+  const searchKey = search.replace(/^\?.*=/, "");
+  const [tab, setTab] = useState("developer");
+  const handleSwitchTab = (tabKey) => {
+    setTab(tabKey);
+    if (pathname && tabKey) {
+      history.push(`${pathname}?lvl=${tabKey}`);
+    }
   };
 
   const certBadges = getCertBadges(baseUrl);
+
+  useEffect(() => {
+    if (searchKey) {
+      setTab(searchKey);
+    }
+  }, [searchKey]);
 
   return (
     <div className={styles.certificationsCD}>
@@ -58,7 +73,7 @@ export default function CertificationsCD() {
             <img
               src={badge.img}
               alt={badge.alt}
-              className={badge.type === tab ? styles.active : ""}
+              className={badge.type === certType[tab] ? styles.active : ""}
             />
           ))}
         </div>
@@ -67,11 +82,11 @@ export default function CertificationsCD() {
       {/* Tab Content */}
       <div className={styles.tabs}>
         <ul className={styles.tabItems}>
-          {Object.values(certType).map((tabVal) => (
+          {Object.entries(certType).map(([tabKey, tabVal]) => (
             <li
-              key={tabVal}
-              className={tab === tabVal ? styles.active : ""}
-              onClick={() => handleSwitchTab(tabVal)}
+              key={tabKey}
+              className={tab === tabKey ? styles.active : ""}
+              onClick={() => handleSwitchTab(tabKey)}
             >
               For {tabVal}
             </li>
@@ -82,13 +97,18 @@ export default function CertificationsCD() {
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Developer && styles.active
+            certType[tab] === certType.developer && styles.active
           )}
         >
           {/* Developer Study Guide */}
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.developer]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert
@@ -161,12 +181,17 @@ export default function CertificationsCD() {
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Administrator && styles.active
+            certType[tab] === certType.administrator && styles.active
           )}
         >
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.administrator]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert
@@ -214,12 +239,17 @@ export default function CertificationsCD() {
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Architect && styles.active
+            certType[tab] === certType.architect && styles.active
           )}
         >
           <div className={styles.studyGuide}>
             <h2 id="prepare">Prepare for the Exam</h2>
-            <div className={styles.studyGuideCard}>
+            <div
+              className={clsx(
+                styles.studyGuideCard,
+                styles[certType.architect]
+              )}
+            >
               <div className={styles.info}>
                 <i className="fa-solid fa-circle-info"></i>
                 <strong>Get Certified</strong> | Harness Expert

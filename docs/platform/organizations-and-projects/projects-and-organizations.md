@@ -23,38 +23,44 @@ Harness enables you to manage access control at the following [scopes](../4_Role
 * Project
 
 ![](static/projects-and-organizations-04.png)
-### What is an Organization?
 
-Harness Organizations (Orgs) allow you to group Projects that are related and share the same goals. For example, all projects for a business unit or division.
+### What is an organization?
 
-You can create multiple Organizations within an Account. Any resource that you create within the Organization's scope is available for use in all the Projects created within this Organization.
+Harness organizations (orgs) allow you to group projects that are related and share the same goals. For example, all projects for a business unit or division.
+
+You can create multiple organizations within an account. Any resource that you create within the organization's scope is available for use in all the projects created within this organization.
 
 ![](static/projects-and-organizations-05.png)
-Within each Org you can add several Harness Projects.
+
+Within each org you can add several Harness projects.
 
 ![](static/projects-and-organizations-06.png)
-To create a new Organization, make sure you have the **Create** permissions for Organizations. For more information, see [Create a Harness Org](create-an-organization.md#step-1-create-a-harness-org).
 
-### What is a Project?
+To create a new organization, make sure you have the **Create** permissions for organizations. For more information, see [Create a Harness Org](create-an-organization.md#create-a-harness-org).
 
-A Harness Project is a group of Harness modules, their Pipelines and resources. For example, a Project might have a Harness CI Pipeline to build code and push an image and a Harness CD Pipeline to deploy that image to a cloud platform
+### What is a project?
 
-Think of projects as a common space for managing teams working on similar technologies. A space where the team can work independently and not need to bother Account admins or even Org admins when new entities like Connectors, Delegates, or secrets are needed.
+A Harness project is a group of Harness modules, their pipelines and resources. For example, a project might have a Harness CI Pipeline to build code and push an image and a Harness CD Pipeline to deploy that image to a cloud platform
 
-You can create multiple Projects within an Organization.
+Think of projects as a common space for managing teams working on similar technologies. A space where the team can work independently and not need to bother account admins or even org admins when new entities like connectors, delegates, or secrets are needed.
+
+You can create multiple projects within an organization.
 
 ![](static/projects-and-organizations-07.png)
-To create a new Project, make sure you have the **Create** permissions for Projects. For more information, see [Create a Project](create-an-organization.md#step-3-create-a-project).
 
-Much like Account-level roles, project members can be assigned Project Admin, Member, and Viewer roles.
+To create a new project, make sure you have the **Create** permissions for projects. For more information, go to [Create a Project](create-an-organization.md#create-a-project).
+
+Much like account-level roles, project members can be assigned Project Admin, Member, and Viewer roles.
 
 ![](static/projects-and-organizations-08.png)
-### What is a Product Module?
 
-Your Project can add Harness products as modules, such as Continuous Integration or Continuous Delivery.
+### What is a product module?
+
+Your project can add Harness products as modules, such as Continuous Integration or Continuous Delivery.
 
 ![](static/projects-and-organizations-09.png)
-### Resources Across Scopes
+
+### Resources across scopes
 
 The following table lists the resources that are available at various scopes in Harness:
 

@@ -22,8 +22,8 @@ By ingesting your custom Issues, you can benefit from STO's refinement, deduplic
 1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
    ![](./static/ingesting-issues-from-other-scanners-00.png)
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
-You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Set up ingestionOnly in an STO pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
-3. Add a Security step and configure the scanner to ingest the results of the scan. These settings are required:
+You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
+1. Add a Security step and configure the scanner to ingest the results of the scan. These settings are required:
 	1. `policy_type` = `ingestionOnly`
 	2. `scan_type` — The type the scanned object: `container`, `repository`, `instance`, or `configuration`
 	3. `product_name` = `external`
@@ -131,11 +131,8 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
 | `libraryName` | String | Derived from the tool output. |
 | `license` | String | Derived from the tool output. |
 | `linesOfCodeImpacted` | String | Recommended to assist in triaging errors (if present). |
-| `referenceIdentifiers` | Array | An array of Vulnerability identifiers, such as `cve`, `cwe`, etc. For example:
-```
-“referenceIdentifiers”: [     {“type” : “cve”,“id” : “79”},     {"type" : "cwe", "id" : "83"}]
-```
-The `type` value must be lowercase. |
+| `referenceIdentifiers` | Array | An array of Vulnerability identifiers, such as `cve`, `cwe`, etc. Here's an example. Note that the `type` value must be lowercase. &#13; `“referenceIdentifiers”: [     {“type” : “cve”,“id” : “79”},     {"type" : "cwe", "id" : "83"}]`  |
+
 
 ##### Custom fields
 

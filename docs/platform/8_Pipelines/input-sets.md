@@ -29,6 +29,7 @@ Looking for the How-to? See [Run Pipelines using Input Sets and Overlays](run-pi
 Nearly every setting in a Pipeline can be configured as a runtime input. You can then create an Input Set from those inputs.
 
 ![](./static/input-sets-05.png)
+
 Here are some Input Set examples:
 
 * Values of fields and variables
@@ -48,7 +49,7 @@ Input sets group the values of these entities and make it easy provide the corre
 You can add several Input Sets as an Overlay. Overlays are use when:
 
 * The Pipeline is used for multiple Services.
-* The Services have some configurations in common but some have differences. For example:
+* The Services have some configurations in common, but some have differences. For example:
 	+ Same configuration but using different runtime variables.
 	+ Same artifact stream.
 

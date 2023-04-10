@@ -1,6 +1,6 @@
 ---
 description: KB Sample Troubleshooting
-title: Trouble Shooting Guide
+title: Troubleshooting Guide
 ---
 
 # Troubleshooting Guide

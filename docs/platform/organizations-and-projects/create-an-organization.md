@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 Harness Organizations (Orgs) allow you to group projects that share the same goal. For example, all projects for a business unit or division.
 
-A Harness Project is a group of Harness modules and their Pipelines. For example, a Project might have a Harness CI Pipeline to build code and push an image to a repo and a Harness CD Pipeline to pull and deploy that image to a cloud platform.
+A Harness project is a group of Harness modules and their pipelines. For example, a project might have a Harness CI pipeline to build code and push an image to a repo and a Harness CD pipeline to pull and deploy that image to a cloud platform.
 
-You can add an unlimited number of Harness Projects to an Org. All Projects in the Org can use the Org's resources.
+You can add an unlimited number of Harness projects to an org. All projects in the org can use the org's resources.
 
-This topic describes how to create an Org, invite Harness Users to it as members, and create a Project within the Org.
+This topic describes how to create an org, invite Harness users to it as members, and create a project within the org.
 
 ### Before you begin
 
@@ -25,29 +25,35 @@ This topic describes how to create an Org, invite Harness Users to it as members
 * Make sure you have the **Create** permissions for Organizations to create an Org.
 * Make sure you have the **Create** permissions for Project to create a Project.
 
-### Visual Summary
+### Visual summary
 
-Within a Harness account, you have Orgs, and within Orgs you have Projects.
+Within a Harness account, you have organizations, and within organizations you have projects.
 
 ![](static/create-an-organization-00.png)
-The resources in the Org are available to all of its Projects.
 
-### Step 1: Create a Harness Org
+The resources in the org are available to all of its projects.
+
+### Create a Harness org
 
 1. In Harness, in **Account Settings** click **Organizations**.
-2. Click **+New Organization**. The new Organization settings appear.![](static/create-an-organization-01.png)
-3. In **Name**, enter a name for your Organization.
-4. Enter **Description**, and [Tags](../20_References/tags-reference.md) for your new Org.
+2. Click **+New Organization**. The new organization settings appear.
+   
+   ![](static/create-an-organization-01.png)
+
+3. In **Name**, enter a name for your organization.
+4. Enter **Description**, and [Tags](../20_References/tags-reference.md) for your new org.
 5. Click **Save and Continue**.
 
-### Step 2: Invite Collaborators
+### Invite collaborators
 
-The Org and any Projects added to it are used by their members only.
+The org and any projects added to it are used by their members only.
 
-You don't have to add the same members to an Org and its Projects. You can add Org-level members, and then add Project-level members later when you set up or edit a Project.
+You don't have to add the same members to an org and its projects. You can add org-level members, and then add project-level members later when you set up or edit a project.
 
 1. In **Invite People to Collaborate**, type a member's name and select it.
-2. In **Role**, select the role the member will have in this Org, such as Organization Admin or Organization Member.![](static/create-an-organization-02.png)
+2. In **Role**, select the role the member will have in this org, such as Organization Admin or Organization Member.
+
+   ![](static/create-an-organization-02.png)
 
 3. Click **Add**.
    
@@ -57,27 +63,28 @@ You don't have to add the same members to an Org and its Projects. You can add O
 
 4. Click **Finish**. The Org is added to the list in Account Settings Organizations.
 
-### Step 3: Create a Project
+### Create a project
 
-You can create Projects in the Org from the Projects section of Harness, or from within the Org. In this example, we'll create Projects in **Projects**.
+You can create Projects in the Org from the projects section of Harness, or from within the org. In this example, we'll create projects in **Projects**.
 
 1. In Harness, go to **Home** and click **Projects**.
 2. Click **+Project**.
-3. Name the Project, and select a color. The ID of the project is generated automatically. See [Harness Entity Reference](../20_References/harness-entity-reference.md).
-4. In **Organization**, select the Org you created.
+3. Name the project, and select a color. The Id of the project is generated automatically. See [Harness Entity Reference](../20_References/harness-entity-reference.md).
+4. In **Organization**, select the org you created.
 5. Add a description and tags, and then click **Save and Continue**.
-6. In Invite Collaborators, type a member's name and select it.
+6. In **Invite Collaborators**, type a member's name and select it.
 7. Select a role for the member, and click **Add**.
-8. Click **Save and Continue** to create the Project.
+8. Click **Save and Continue** to create the project.
 
-### Step 4: Add Modules
+### Add modules
 
 Next, the Harness modules appear.
 
 ![](static/create-an-organization-03.png)
-1. Select the modules you want to use in your Project. You can select more at any time.
-2. Close the modules and open your Project in Projects or in its Organization.
-3. When you open the Project, all of the modules are displayed.
+
+1. Select the modules you want to use in your project. You can select more at any time.
+2. Close the modules and open your Project in projects or in its organization.
+3. When you open the project, all the modules are displayed.
 4. Pick a module and click **Create New Pipeline** to get started!
 
 ### See also

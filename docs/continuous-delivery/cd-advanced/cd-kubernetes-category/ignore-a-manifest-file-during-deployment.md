@@ -47,7 +47,9 @@ For example, here is a ConfigMap file using the comment:
 
 Now, when this Pipeline is run, this ConfigMap resource will not be applied.
 
-The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.### Option 1: Apply Ignored Resource
+The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.
+
+### Option 1: Apply Ignored Resource
 
 The Apply step will apply any resource in a Service **Manifests** explicitly. You must provide the path and name of the file in **Apply**, and Harness will deploy the resource.
 

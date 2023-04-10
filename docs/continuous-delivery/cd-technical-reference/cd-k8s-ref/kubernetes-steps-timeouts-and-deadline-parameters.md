@@ -31,7 +31,7 @@ For example:
 Status : demoservice2-deploy-app1   error: deployment "demoservice2-deploy-app1" exceeded its progress deadline
 ```
 
-The Deployment controller will keep retrying the Deployment. This defaults to 600. 
+The Deployment controller will keep retrying the Deployment. This defaults to `600`. 
 
 If you are using the Kubernetes deadline parameter `.spec.progressDeadlineSeconds` option, ensure that you identify whether a timeout is the result of that parameter or the Harness step **Timeout** setting.
 

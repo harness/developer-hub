@@ -58,8 +58,6 @@ One use of Rolling deployments is as the stage following a Canary deployment in 
 * App/DB needs to support both new and old artifacts. Manual checks/verification at each increment could take a long time.
 * Lost transactions and logged-off users are also something to take into consideration.
 
-![](https://harnessio.wpengine.com/wp-content/uploads/2018/02/Rolling2.png)
-
 See [Create a Kubernetes Rolling Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md).
 
 ## Blue/Green deployment
@@ -93,8 +91,6 @@ Some vendors call this a red/black deployment.
 * Current transactions and sessions will be lost due to the physical switch from one machine serving the traffic to another one.
 * Database compatibility (schema changes, backward compatibility).
 
-![](https://harnessio.wpengine.com/wp-content/uploads/2018/02/BlueGreen2.png)
-
 See:
 
 * [Create a Kubernetes Blue Green Deployment](../cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
@@ -127,8 +123,6 @@ This is currently the most common way to deploy apps/services into production.
 * Required monitoring and instrumentation for testing in production (APM, Log, Infra, End User, etc).
 * Database compatibility (schema changes, backward compatibility).
 
-![](https://harnessio.wpengine.com/wp-content/uploads/2018/02/Canary2.png)
-
 For Kubernetes, Harness does this a little different.
 
 In Phase 1 we do a canary to the same group but we leave the production version alone. We just use other instances. Then we delete our canary version in Phase 1.
@@ -148,8 +142,4 @@ It depends entirely on the type of application/service and environment. Most Har
 In many cases, customers are migrating from blue/green to canary so they can test in production with minimal business impact.
 
 You can also combine many of the above deployment strategies into a single strategy.
-
-## Next steps
-
-* Harness [tutorials](../../getting-started/quickstarts.md).
 

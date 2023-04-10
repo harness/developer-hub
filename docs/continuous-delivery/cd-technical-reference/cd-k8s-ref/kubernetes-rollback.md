@@ -14,7 +14,7 @@ Harness follows standard Kubernetes behavior during rollback. See [kubectl rollo
 
 ## Workload Rollback Only
 
-**Rollback rolls back workloads only.** If there are other objects or operations executed in your stage, Harness does not roll those back.For details on Harness Kubernetes workloads, see [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md).
+Rollback rolls back workloads only. If there are other objects or operations executed in your stage, Harness does not roll those back.For details on Harness Kubernetes workloads, see [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md).
 
 ## Scaling and Rollback
 
@@ -28,15 +28,15 @@ When Harness performs rollback it identifies which revision number to use (`roll
 
 The artifact(s) used for the replicas that are scaled up as part of rollback are simply the artifact(s) from the time that version was deployed.
 
-## Blue/Green Rollbacks
+## Blue Green Rollbacks
 
-In the case of Blue/Green, the resources are not versioned because a Blue/Green deployment uses **rapid rollback**: network traffic is simply routed back to the original instances.
+In the case of Blue Green, the resources are not versioned because a Blue Green deployment uses **rapid rollback**. Network traffic is simply routed back to the original instances.
 
 You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
 
 ## Rolling Rollback Step
 
-You can add a **Rolling** **Rollback** step to roll back the workloads deployed by the [Rolling Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) step.
+You can add a **Rolling Rollback** step to roll back the workloads deployed by the [Rolling Deployment](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) step.
 
 Simply add this step where you want to initiate a rollback. Note that this step applies to the deployments of the Rolling Deployment command, and not the [Apply Step](../../cd-execution/kubernetes-executions/deploy-manifests-using-apply-step.md).
 

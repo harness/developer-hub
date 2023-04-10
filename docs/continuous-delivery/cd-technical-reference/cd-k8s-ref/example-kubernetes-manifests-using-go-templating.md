@@ -188,7 +188,7 @@ namespace: <+infra.namespace>
 ...
 ```
 
-You don't need to make changes to the deployment manifest from earlier. It uses Go templating to check for the `dockercfg` value in values.yaml and applies it to Secret and Deployment.
+You don't need to make changes to the deployment manifest from earlier. It uses [Go templating](https://godoc.org/text/template) to check for the `dockercfg` value in values.yaml and applies it to Secret and Deployment.
 
 If using the condition `{{- if .Values.dockercfg}}` to check for `dockercfg` in values.yaml.
 

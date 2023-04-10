@@ -44,7 +44,7 @@ A text description of the delegate. The description is added to the delegate bef
 
 The name of the delegate. This is the name that identifies a registered delegate in Harness. 
 
-This value is not specified when delegate creation is automated. Instead, a script is used to duplicate the delegate YAML file and add a unique name to the `DELEGATE_NAME` environment variable for each delegate to be registered. See [Automate Delegate Installation](/docs/platform/2_Delegates/advanced-installation/automate-delegate-installation.md). 
+This value is not specified when delegate creation is automated. Instead, a script is used to duplicate the delegate YAML file and add a unique name to the `DELEGATE_NAME` environment variable for each delegate to be registered. See [Automate Delegate Installation](/docs/platform/2_Delegates/install-delegates/automate-delegate-installation.md). 
 
 ```
 - name: DELEGATE_NAME

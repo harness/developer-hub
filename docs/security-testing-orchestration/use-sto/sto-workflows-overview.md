@@ -45,7 +45,7 @@ An Ingestion-only workflow requires at least two steps:
 * A **Run step** saves the scan data to a shared folder. The Run step might run a scan locally or download scan results from an external tool.
 * A **Security step** ingests the data from the shared folder.
 
-For an example of the setup workflow, go to [Ingest Scan Results into an STO Pipeline](https://harness.helpdocs.io/article/d24n34qdbk). This topic describes how to scan a container image using [Aqua Trivy](../sto-techref-category/aqua-trivy-scanner-reference.md). The pipeline works like this:
+For an example of the setup workflow, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md). This topic describes how to scan a container image using [Aqua Trivy](../sto-techref-category/aqua-trivy-scanner-reference.md). The pipeline works like this:
 
 * The Run step runs a Trivy scan on an image and outputs the results to a local shared folder.  
 Running the scanner outside of the Security step enables you to customize the scan settings rather than using a predefined settings profile.
