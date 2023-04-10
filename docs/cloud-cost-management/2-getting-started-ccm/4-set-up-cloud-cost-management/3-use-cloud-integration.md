@@ -13,7 +13,7 @@ Cloud Integration allows you to seamlessly set up your Harness CCM with a single
 ## Prerequisites and Permissions
 
 * See [Roles and Policies for the Connector](../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md#review-roles-and-policies-for-the-connector) to learn about the IAM roles and policies that you need to be assigned to be able to create a connector.
-* See [Prerequisites in Set up CCM for Kubernetes](set-up-cost-visibility-for-kubernetes.md#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
+* See [Prerequisites](set-up-cost-visibility-for-kubernetes.md#prerequisites) to learn about the tasks that you need to perform before setting up Cloud Costs Management for your Kubernetes cluster.
 
 ## Creating the Kubernetes connector manually using the Advanced option
 
