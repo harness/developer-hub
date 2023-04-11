@@ -76,7 +76,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/build-code/ci-tfc-notification-trigger",
+    link: "/tutorials/build-code/build/tfc-notification",
   },
 ];
 
@@ -252,6 +252,6 @@ export const CIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/build-code/ci-tfc-notification-trigger",
+    link: "/tutorials/build-code/build/tfc-notification",
   },
 ];
