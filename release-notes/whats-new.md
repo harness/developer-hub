@@ -25,6 +25,10 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   * `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
   * `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run Tests](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
 
+### Service Reliability Management
+
+* Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
+
 ## March 31, 2023, version 78914
 
 ### Continuous Integration
