@@ -126,9 +126,9 @@ pipeline:
                     command: |-
 
                       # scans the code repository with snyk
-                      snyk code test /harness --json-file-output=/shared/customer_artifacts/synk.json
+                      snyk code test /harness --json-file-output=/shared/customer_artifacts/snyk.json
 
-                      cat /shared/customer_artifacts/synk.json
+                      cat /shared/customer_artifacts/snyk.json
                     envVariables:
                       SNYK_TOKEN: <+secrets.getValue("snyk_api_token")>
                   when:
@@ -153,7 +153,7 @@ pipeline:
                       repository_project: SubSolution
                       repository_branch: <+codebase.branch>-<+codebase.tag>
                       customer_artifacts_path: /shared/customer_artifacts
-                      manual_upload_filename: synk.json
+                      manual_upload_filename: snyk.json
                     imagePullPolicy: Always
                     resources:
                       limits:
