@@ -57,11 +57,7 @@ The following quickstart guides are available for Feature Flags:
 
 ## Service Reliability Management
 
-The following quickstart guides are available for Service Reliability Management:
-
-* [Change Impact Analysis Quickstart](../service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-quickstart.md) describes how you can correlate change events and understand their impact on a Monitored Service.
-
-* [SLO Management Quickstart](../service-reliability-management/howtos-service-reliability-management/slo-management-quickstart.md) walks you through the steps to create and manage an SLO.
+- [Introduction to SLO Management with Prometheus](https://developer.harness.io/tutorials/manage-service-reliability/intro-to-srm) provides an introduction to Service Level Objectives (SLOs) and shows how to measure and manage your SLOs using Prometheus.
 
 ## Security Testing Orchestration
 
