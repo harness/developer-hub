@@ -115,7 +115,7 @@ export default function CertificationsCI() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Continuous Integration - Developer (BETA COMING SOON)</h2>
+                  <h2>Continuous Integration - Developer (BETA)</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_cI_badge.svg`}
                     alt="Harness Certified Expert - CI Developer"
@@ -127,7 +127,7 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide - Coming Soon.</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy CI projects.
                   </div>
@@ -135,7 +135,7 @@ export default function CertificationsCI() {
 
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/certified-continuous-integration-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -159,7 +159,7 @@ export default function CertificationsCI() {
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/certified-continuous-integration-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
