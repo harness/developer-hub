@@ -119,13 +119,13 @@ In Harness, these variables come from multiple places:
 
 ![](./static/define-kubernetes-manifests-29.png)
 
-At runtime, the Harness variables in the values.yaml file are replaced with the values you entered in the Stage as fixed values or as [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
+At runtime, the Harness variables in the values.yaml file are replaced with the values you entered in the Stage as fixed values or as [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md).
 
 See [Built-in Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md) and [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
 ## Step 1: Start a Pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
 
 You can create a Pipeline from any module in your Project, or in the **Project Overview**, and then add stages for any module.
 
@@ -133,7 +133,7 @@ Enter a name for the Pipeline and click **Start**. Now you're ready to add a sta
 
 ## Step 2: Add Deploy Stage
 
-For steps on adding a stage, see [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md).
+For steps on adding a stage, see [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md).
 
 1. When you add a stage, select **Deploy**.
 2. Name the stage, and select what you'd like to deploy. For example, select **Service**.

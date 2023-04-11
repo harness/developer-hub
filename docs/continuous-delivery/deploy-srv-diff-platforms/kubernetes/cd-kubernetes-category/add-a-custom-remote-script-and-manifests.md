@@ -33,7 +33,7 @@ Looking for other methods? See [Add Kubernetes Manifests](define-kubernetes-mani
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
 
 ## Limitations
 
@@ -54,12 +54,12 @@ You can use Harness secrets for the username and password in your script. For e
 ```bash
 curl -sSf -u "<+secrets.getValue("username")>:<+secrets.getValue("password")>" -O 'https://mycompany.jfrog.io/module/example/manifest.zip'
 ```
-For more information, see [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+For more information, see [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
 
 
 ## Start a pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
 
 You can create a Pipeline from any module in your Project, or in the **Project Overview**, and then add stages for any module.
 
@@ -67,7 +67,7 @@ Enter a name for the Pipeline and click **Start**. Now you're ready to add a sta
 
 ## Add a Deploy stage
 
-For steps on adding a stage, see [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md).
+For steps on adding a stage, see [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md).
 
 1. Name the stage, and select what you'd like to deploy. For example, select Service.
 2. Click **Set Up Stage**. The new stage's settings appear.

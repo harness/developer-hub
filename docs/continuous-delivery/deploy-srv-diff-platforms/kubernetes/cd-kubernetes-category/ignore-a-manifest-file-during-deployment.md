@@ -12,7 +12,7 @@ This topic describes how to ignore manifests for the primary deployment and appl
 
 You might have manifest files for resources that you do not want to deploy as part of the main deployment.
 
-Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply step](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md). Or you can simply ignore them and deploy them later.
+Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md). Or you can simply ignore them and deploy them later.
 
 ## Before You Begin
 
@@ -27,7 +27,7 @@ The following image shows how you can ignore a Jobs manifest and then apply it s
 
 ## Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
 ## Limitations
 

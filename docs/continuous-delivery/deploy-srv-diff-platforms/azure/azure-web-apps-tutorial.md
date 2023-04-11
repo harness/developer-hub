@@ -48,7 +48,7 @@ Azure deployments are done using an CD stage with the Deployment Type **Azure We
 
 ![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-156.png)
 
-For more info on stages, got to [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md) and [CD Pipeline modeling overview](../../get-started/cd-pipeline-modeling-overview.md).
+For more info on stages, got to [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md) and [CD Pipeline modeling overview](../../get-started/cd-pipeline-modeling-overview.md).
 
 ## Define the Service
 
@@ -107,7 +107,7 @@ You will add the same Docker image or non-containerized artifact you use in your
 2. In **Specify Artifact Repository Type**, select the artifact registry type.
 3. Select or create a Connector to this registry.
 
-  For details on setting up each registry, go to [Connect to an Artifact Repo](../../../platform/7_Connectors/connect-to-an-artifact-repo.md).
+  For details on setting up each registry, go to [Connect to an Artifact Repo](/docs/platform/7_Connectors/connect-to-an-artifact-repo.md).
 
   Once you have an artifact Connector set up and selected, you can fill out the **Artifact Details** settings.
 
@@ -131,7 +131,7 @@ You will add the same Docker image or non-containerized artifact you use in your
 
 ### Harness Delegate
 
-As covered in [Harness Platform architecture](../../../../getting-started/harness-platform-architecture.md), a Harness Delegate must be installed in your infrastructure for Harness to perform tasks.
+As covered in [Harness Platform architecture](/docs/getting-started/harness-platform-architecture.md), a Harness Delegate must be installed in your infrastructure for Harness to perform tasks.
 
 You will install a Harness Delegate in your infrastructure as part of adding the Connector for the **App Services Configuration** or **Artifacts**.
 
@@ -202,7 +202,7 @@ When you're done, Infrastructure will look something like this:
 
 Now that you have the **Service** and **Infrastructure** defined, you can select a deployment strategy and configure its step in your stage **Execution**.
 
-1. Click **Continue** and select a [deployment strategy](../../manage-deployments/deployment-concepts.md). 
+1. Click **Continue** and select a [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md). 
 
 The steps for the strategy are added automatically.
 
@@ -277,7 +277,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](../../x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Traffic Shift steps
 
@@ -354,7 +354,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](../../x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Swap Slot step
 
@@ -479,7 +479,7 @@ Harness is working with the Azure team for a resolution (see [issue 27221](https
 
 #### Using Secrets and Variables Settings
 
-You can use [Harness secrets](../../../platform/6_Security/2-add-use-text-secrets.md) and Service or Workflow variables in the **Application settings** and **Connection strings** in the Harness Service.
+You can use [Harness secrets](/docs/platform/6_Security/2-add-use-text-secrets.md) and Service or Workflow variables in the **Application settings** and **Connection strings** in the Harness Service.
 
 These settings use JSON, so ensure that you use quotes around the variable or secret reference:
 

@@ -139,6 +139,6 @@ ci:
 ```
 ### See Also
 
-* [Runtime Inputs](../../../platform/20_References/runtime-inputs.md)
+* [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md)
 * [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
 

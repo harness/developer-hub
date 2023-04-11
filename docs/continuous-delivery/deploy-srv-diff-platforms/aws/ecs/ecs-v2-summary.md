@@ -16,7 +16,7 @@ Harness FirstGen users who used the FirstGen ECS delegate can now use a Kubernet
 
 ## Get started with ECS in NextGen
 
-If you're new to Harness ECS deployments, the [ECS deployment tutorial](../../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md) shows you how to deploy a publicly available Docker image to your ECS cluster using a rolling deployment strategy.
+If you're new to Harness ECS deployments, the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md) shows you how to deploy a publicly available Docker image to your ECS cluster using a rolling deployment strategy.
 
 ## ECS basics
 
@@ -51,13 +51,13 @@ The following deployment type changes have been implemented for Harness ECS depl
 - Added support for rolling deployment.
 - Revamped the canary deployment behavior.
 
-For details about the new deployment types, go to the [ECS deployment tutorial](../../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md).
+For details about the new deployment types, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md).
 
 ### ECS Run Task updated in ECS NextGen
 
 A new  ECS Run Task Request Definition setting was introduced in the ECS Run Task Step.
 
-For details about this new step, go to the [ECS deployment tutorial](../../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md#ecs-run-task-step).  
+For details about this new step, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md#ecs-run-task-step).  
 
 ### Infrastructure definitions
 
@@ -340,7 +340,7 @@ If you want to use this feature when you create a new entity like a step, click 
 
 Although you can use the Harness [File Store](../../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) for local file storage in your account, for production we recommend storing ECS manifests in remote stores like Github, Bitbucket, AWS S3, etc. Remote stores support version control on files for tracking and reverting changes.
 
-Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](..//docs/platform/12_Variables-and-Expressions/harness-variables.md).
+Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### ECS environment configuration
 

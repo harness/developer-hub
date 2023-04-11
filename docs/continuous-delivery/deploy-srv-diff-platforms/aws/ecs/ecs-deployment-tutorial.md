@@ -136,11 +136,11 @@ You will select this cluster later when your define the target Infrastructure De
 
 The Harness Delegate is a software service you install in your environment. It connects to the Harness Manager and performs ECS tasks. You can install the Delegate anywhere that has connectivity to your AWS account, even locally on you computer.
 
-If you're new to Harness, read [Harness Platform architecture](../../../../getting-started/harness-platform-architecture.md) to learn about how Harness uses a Delegate to perform deployment tasks.
+If you're new to Harness, read [Harness Platform architecture](/docs/getting-started/harness-platform-architecture.md) to learn about how Harness uses a Delegate to perform deployment tasks.
 
 1. Follow the steps here to install a Harness Delegate:
-	1. [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md).
-	2. [Install Harness Delegate on Kubernetes](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md).
+	1. [Install a Docker Delegate](/docs/getting-started/supported-platforms-and-technologies.md).
+	2. [Install Harness Delegate on Kubernetes](/docs/getting-started/supported-platforms-and-technologies.md).
 
 When you are done setting up the Delegate and it has registered with Harness, you'll see the Delegate's tags on the Delegates list page:
 
@@ -168,7 +168,7 @@ The new stage is created. Next, we'll add a Harness Service to represent the app
 
 A Harness Service represents the app you are deploying. It contains any supporting files and the artifact image.
 
-For more information about Services, see [Services and Environments Overview](../services-and-environments-overview.md).
+For more information about Services, see [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 1. In **Service**, click **New Service**.
 2. In **Name**, enter **ECS Tutorial**.
@@ -631,7 +631,7 @@ Harness can fetch your task definitions, service definitions, scalable target an
 
 - Harness File Store.
 - AWS S3 buckets.
-  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](../../../platform/connectors/../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md#aws-s3).
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/connectors/../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 - Git providers.
 
 ### AWS Auto Scaling with ECS

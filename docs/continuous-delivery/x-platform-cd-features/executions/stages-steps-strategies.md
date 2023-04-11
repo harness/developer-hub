@@ -20,7 +20,7 @@ A stage is a subset of a pipeline that contains the logic to perform one major s
 
 When you add a CD stage, you select the deploy module.
 
-For more information about adding stages, go to [add a stage](../../../platform/8_Pipelines/add-a-stage.md).
+For more information about adding stages, go to [add a stage](/docs/platform/8_Pipelines/add-a-stage.md).
 
 You can also run pipeline stages in parallel. Deploy multiple services simultaneously and perform flow control using barriers. See [synchronize deployments using barriers](/docs/continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers/). This topic describes how to add a step group in a stage.
 

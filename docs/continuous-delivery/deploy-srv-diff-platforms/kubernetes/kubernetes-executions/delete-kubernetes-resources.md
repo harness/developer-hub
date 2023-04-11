@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes how to remove any deployed Kubernetes resources with the **K8s Delete** step.
 
-Looking for Canary Delete? See [Canary Delete Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-delegate-step.md).### Before You Begin
+Looking for Canary Delete? See [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step.md).### Before You Begin
 
 * [Define Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
 * [Create a Kubernetes Canary Deployment](create-a-kubernetes-canary-deployment.md)
@@ -113,5 +113,5 @@ Done.
 
 ## See Also
 
-* [Canary Delete Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-delegate-step.md)
+* [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step.md)
 

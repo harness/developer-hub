@@ -258,7 +258,7 @@ To add a Values YAML file, do the following:
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
    
-   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 9.  Once you've selected a Connector, click **Continue**.
 10. In **Manifest Details**, you tell Harness where the values.yaml is located.
 11. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
@@ -680,7 +680,7 @@ For a detailed walkthrough of deploying Kustomize in Harness, including limitati
 
 #### Important notes
 
-* Harness supports Kustomize and Kustomize Patches for [Rolling](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/canary-deployment-step.mdanary-deployment-step.md), [Blue Green](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.mdal-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) steps.
+* Harness supports Kustomize and Kustomize Patches for Rolling, Blue Green and Delete steps.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
 * You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 * **Kustomize binary versions:**
@@ -1350,7 +1350,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem6 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
+You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 To add an artifact from GCR, do the following:
 

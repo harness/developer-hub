@@ -27,7 +27,7 @@ Typically, Jobs are not part of the main deployment. You can exclude them from t
 
 CD stages include an **Apply** step that allows you to deploy *any resource* you have set up in the Service **Manifests** section.
 
-For details on what you can deploy in different Harness deployment types, see [What Can I Deploy in Kubernetes?](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+For details on what you can deploy in different Harness deployment types, see [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
 The Apply step can deploy *all workload types*, including Jobs in any deployment type.
 
@@ -163,7 +163,7 @@ job.batch/pi created
 Done.
 ```
 
-In **Wait for Steady State**, you can see Harness wait for the Job to reach steady state. In Harness, this is a [managed workload](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md) because Harness verifies it has reached steady state and fails the Pipeline if it does not.
+In **Wait for Steady State**, you can see Harness wait for the Job to reach steady state. In Harness, this is a [managed workload](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md) because Harness verifies it has reached steady state and fails the Pipeline if it does not.
 
 
 ```

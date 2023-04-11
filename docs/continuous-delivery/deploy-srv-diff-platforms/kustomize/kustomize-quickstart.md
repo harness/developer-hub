@@ -49,7 +49,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
 
 :::
 
@@ -190,7 +190,7 @@ Harness connects to all of the common cloud platforms and provides a platform-ag
 
    ![](static/kustomize-quickstart-74.png)
 
-The Kubernetes Cluster Connector is covered in detail [here](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md), but let's quickly walk through it.
+The Kubernetes Cluster Connector is covered in detail [here](/docs/platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md), but let's quickly walk through it.
 
 Let's look at the steps:
 
@@ -214,7 +214,7 @@ Let's look at the steps:
 
 ## Step 4: Add a Rollout Deployment Step
 
-When you click **Next** the [deployment strategy](../../manage-deployments/deployment-concepts.md) options are provided:
+When you click **Next** the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) options are provided:
 
 ![](static/kustomize-quickstart-77.png)
 

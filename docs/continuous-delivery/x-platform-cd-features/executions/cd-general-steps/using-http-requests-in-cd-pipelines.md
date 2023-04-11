@@ -66,7 +66,7 @@ Before handing the execution of the HTTP step to a Harness Delegate, Harness per
 
 <!-- ### Using secrets in the HTTP step URL
 
-In some cases, you might want to use a [Harness text secret](../../../platform/6_Security/2-add-use-text-secrets.md) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
+In some cases, you might want to use a [Harness text secret](/docs/platform/6_Security/2-add-use-text-secrets.md) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
 
 It's important to know how Harness uses the secret when evaluating the URL.
 

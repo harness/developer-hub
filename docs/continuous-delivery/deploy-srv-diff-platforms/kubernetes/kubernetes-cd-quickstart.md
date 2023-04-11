@@ -219,7 +219,7 @@ Let's look at the steps:
 
 ## Add a rollout deployment Step
 
-Now you can select the [deployment strategy](../../manage-deployments/deployment-concepts.md) for this stage of the pipeline.
+Now you can select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) for this stage of the pipeline.
 
 1. In **Execution Strategies**, select **Rolling**, and then select **Use Strategy**.
 

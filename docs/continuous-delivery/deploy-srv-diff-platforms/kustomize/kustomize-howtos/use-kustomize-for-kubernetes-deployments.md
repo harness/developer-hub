@@ -18,12 +18,12 @@ Please review the video [Kustomize: Deploy Your App with Template Free YAML](htt
 
 ### Before You Begin
 
-* [Kustomize Quickstart](../../onboard-cd/cd-quickstarts/kustomize-quickstart.md)
+* [Kustomize Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart.md)
 
 
 ## Limitations
 
-* Harness supports Kustomize and Kustomize Patches for [Rolling](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md), [Canary](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md), [Blue Green](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) strategies, and the Kubernetes [Apply](../../cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) steps.
+* Harness supports Kustomize and Kustomize Patches for [Rolling](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md), [Canary](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md), [Blue Green](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md) strategies, and the Kubernetes [Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md) and [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) steps.
 * Harness does not use Kustomize for rollback. Harness renders the templates using Kustomize and then passes them onto kubectl. A rollback works exactly as it does for native Kubernetes.
 * You cannot use Harness variables in the base manifest or kustomization.yaml. You can only use Harness variables in kustomize patches you add in **Kustomize Patches Manifest Details**.
 * **Kustomize binary versions:**  
@@ -53,10 +53,7 @@ Your Delegate hosts, typically a pod in the target cluster, require outbound HTT
 
 The Delegate you use for Kustomize deployments must have access to the Git repo containing your Kustomize and resource files.The remainder of this topic assumes you have a running Harness Delegate and Cloud Provider Connector.
 
-For details on setting those up, see:
-
-* [Delegate Installation Overview](../../../first-gen/firstgen-platform/account/manage-delegates/delegate-installation-overview.md)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
+For details on setting those up, see [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
 
 ## Step 1: Add Manifests and Kustomization
 
@@ -351,7 +348,7 @@ spec:
 ```
 The secret output in the manifest will be asterisks (\*). The secret value is not displayed.
 
-See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
 
 ## Option: Overlays and Multibases
 
@@ -374,7 +371,7 @@ In some cases you might want to deploy the standard kustomization.yaml in one st
 
 In **Manifests**, add the overlay kustomization.yaml and any patch files.
 
-See [Propagate and Override CD Services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md).
+See [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).
 
 ## Option: Use Plugins in Deployments
 
@@ -492,7 +489,7 @@ name: KUSTOMIZE_PATH
 value: "<path>"  
 ...
 ```
-See [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+See [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 
 ### Docker Delegate
 
@@ -502,7 +499,7 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 ```yaml
 - KUSTOMIZE_PATH=<path>
 ```
-See [Install a delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md).
+See [Install a delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md).
 
 ## Next Steps
 

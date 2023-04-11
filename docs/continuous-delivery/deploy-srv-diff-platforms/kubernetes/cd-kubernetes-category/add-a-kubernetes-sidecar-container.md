@@ -12,7 +12,7 @@ This topic describes how to deploy sidecar workloads using Harness.
 
 You can use Harness to deploy both primary and sidecar Kubernetes workloads. Sidecar containers are common where you have multiple colocated containers that share resources.
 
-For details on what workloads you can deploy, see [What Can I Deploy in Kubernetes?](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md) Harness treats primary and sidecar workloads the same. We simply provide ways of identifying the workloads as primary and sidecar.
+For details on what workloads you can deploy, see [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md) Harness treats primary and sidecar workloads the same. We simply provide ways of identifying the workloads as primary and sidecar.
 
 In the Harness Service, in addition to the manifest(s) for the primary artifact used by Harness, you simply add manifests for however many sidecar containers you need. Or you can add one manifest that includes the specs for both primary and sidecar workloads.
 
@@ -23,10 +23,10 @@ This topic provides an example of a simple sidecar deployment.
 ## Before You Begin
 
 * [Add Container Images as Artifacts for Kubernetes Deployments](add-artifacts-for-kubernetes-deployments.md): review how to add container images as Artifacts for Kubernetes Deployments. Sidecar artifact are described there also.
-* [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md): you must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
+* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md): you must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
 * [Kubernetes Deployments Overview](../kubernetes-deployments-overview.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [What Can I Deploy in Kubernetes?](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md)
+* [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md)
 
 ## Option: Use Harness Artifacts
 
@@ -52,13 +52,13 @@ Select **Docker Registry**, and click **Continue**.
 
 The **Docker Registry** settings appear.
 
-Select a [Docker Registry Connector](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md) or create a new one.
+Select a [Docker Registry Connector](/docs/platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md) or create a new one.
 
 Click **Continue**.
 
 In **Sidecar Identifier**, give a name to identify this artifact. As mentioned earlier, this is the name you will use to refer to this artifact in your manifest using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
 
-In **Image path**, the name of the artifact you want to deploy, such as **library/nginx**. You can also use a [runtime input](../../../platform/20_References/runtime-inputs.md) (`<+input>`) or Harness variable expression.
+In **Image path**, the name of the artifact you want to deploy, such as **library/nginx**. You can also use a [runtime input](/docs/platform/20_References/runtime-inputs.md) (`<+input>`) or Harness variable expression.
 
 In **Tag**, add the Docker tag of the image you want to deploy. If you leave this as `<+input>` you are prompted for the tag at runtime. Harness pulls the available tags, and you simply select one.
 

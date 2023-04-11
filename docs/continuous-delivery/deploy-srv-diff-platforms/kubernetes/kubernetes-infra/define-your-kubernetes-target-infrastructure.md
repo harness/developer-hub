@@ -21,12 +21,12 @@ For Amazon Elastic Kubernetes Service (Amazon EKS) and OpenShift, use [Specify a
 ## Before you begin
 
 * [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Kubernetes deployments overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/kubernetes-deployments-overview.md)
+* [Kubernetes deployments overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md)
 * [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md)
 
 ## Add deploy stage and service
 
-For steps on adding a stage, see [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md).
+For steps on adding a stage, see [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md).
 
 1. When you add a stage, select **Deploy**.
 2. Name the stage, and select what you'd like to deploy. For example, select **Service**.
@@ -65,7 +65,7 @@ The cluster details you enter will depend on the connection method you select.
 
 This is the recommend method for cluster connections because it avoids vendor-specific settings.A Direct Connection is a vendor agnostic connection to the Kubernetes cluster.
 
-It uses a [Harness Kubernetes Cluster Connector](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) to connect a cluster on any platform.
+It uses a [Harness Kubernetes Cluster Connector](/docs/platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) to connect a cluster on any platform.
 
 Currently, Harness connects to Amazon Elastic Kubernetes Service (Amazon EKS) and OpenShift using the Kubernetes Cluster Connector.If you are using a Harness Kubernetes Cluster Cloud Provider to connect to your target cluster, enter the following settings.
 
@@ -73,7 +73,7 @@ Currently, Harness connects to Amazon Elastic Kubernetes Service (Amazon EKS) an
 
 1. Select or create a Kubernetes Cluster Connector for your target cluster.
 
-For details on the Kubernetes Cluster Connector settings, see [Kubernetes Cluster Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+For details on the Kubernetes Cluster Connector settings, see [Kubernetes Cluster Connector Settings Reference](/docs/platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
 #### Namespace
 

@@ -41,14 +41,14 @@ Other configuration files for other integrations, such as Azure Web Apps, etc, a
 
 ## Start a pipeline
 
-This topic assumes that you have a Harness Project set up. Go to [create organizations and projects](../../../platform/organizations-and-projects/create-an-organization.md) for more information.
+This topic assumes that you have a Harness Project set up. Go to [create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization.md) for more information.
 
 1. In Harness Manager, select **Pipelines** and select **New Pipeline**.
 2. Enter a name in **Create new Pipeline** and select **Start**.
 
 ## Add a deploy stage
 
-For steps on adding a stage, go to [add a stage](../../../platform/8_Pipelines/add-a-stage.md).
+For steps on adding a stage, go to [add a stage](/docs/platform/8_Pipelines/add-a-stage.md).
 
 1. Click **Add Stage** and select **Deploy**.
 2. Name the stage, and select what you’d like to deploy. For example, select **Service**.

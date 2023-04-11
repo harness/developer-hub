@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md).This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
+This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md).This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
 
 For a quick tutorial, see the [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md) tutorial.
 
@@ -60,5 +60,5 @@ In Harness, a workload is a Deployment, StatefulSet, or DaemonSet object deploye
 Read the following topics to build on what you've learned:
 
 * [Kubernetes Quickstart](../../../first-gen-quickstarts/kubernetes-quickstart.md) tutorial
-* [Kubernetes How-tos](../../kubernetes-deployments/kubernetes-deployments-overview.md)
+* [Kubernetes How-tos](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md)
 

@@ -50,7 +50,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
 
 :::
 
@@ -176,7 +176,7 @@ Next, we can target your Kubernetes cluster for deployment.
 
 ## Step 4: Add a Helm Deployment Step
 
-1. We're going to use a Rolling [deployment strategy](../../manage-deployments/deployment-concepts.md), so click **Rolling**, and click **Apply**.
+1. We're going to use a Rolling [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md), so click **Rolling**, and click **Apply**.
 2. The **Helm Deployment** step is added to **Execution**.
 
 That's it. Now you're ready to deploy.

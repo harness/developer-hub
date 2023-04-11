@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic will walk you through creating a Blue Green deployment in Harness for a Kubernetes Deployment workload.
 
-For information on Blue/Green deployments, see [Deployment Concepts and Strategies](../../manage-deployments/deployment-concepts.md).
+For information on Blue/Green deployments, see [Deployment Concepts and Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts.md).
 
 Harness Canary and Blue/Green strategies only support Kubernetes Deployment workloads. The Rolling strategy supports all other workloads, except Jobs. The [Apply Step](deploy-manifests-using-apply-step.md) can deploy any workloads or objects.
 
@@ -22,7 +22,7 @@ Harness Canary and Blue/Green strategies only support Kubernetes Deployment work
 
 ## Review: What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
 ## Review: Harness Blue Green Deployments
 
@@ -304,7 +304,7 @@ A great benefit of a Blue/Green deployment is rapid rollback: rolling back to th
 
 You do not need to redeploy previous versions of the app and the pods that comprised their environment.
 
-If you would like to scale down the old version, add a [Shell Script step](../../x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) to the post-deployment steps of your stage.
+If you would like to scale down the old version, add a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) to the post-deployment steps of your stage.
 
 Here's an example using `<+pipeline.stages.[stage_name].spec.execution.steps.stageDeployment.output.stageServiceName>` to reference the stage service name. The name of the stage is nginx so the reference is `<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName>`.
 

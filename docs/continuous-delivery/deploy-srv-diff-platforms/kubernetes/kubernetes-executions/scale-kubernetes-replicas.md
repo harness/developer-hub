@@ -72,5 +72,5 @@ Enter that expression in **Workload** and Harness will scale that workload.
 ## Next Steps
 
 * [Delete Kubernetes Resources](delete-kubernetes-resources.md)
-* [Canary Delete Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-delegate-step.md)
+* [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step.md)
 

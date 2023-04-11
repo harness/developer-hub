@@ -47,7 +47,7 @@ For more information about stage configuration, go to [CI Build stage settings](
 
 :::tip
 
-You can use expressions or [Runtime Inputs](../../../platform/20_References/runtime-inputs.md) for **Platform** settings.
+You can use expressions or [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md) for **Platform** settings.
 
 :::
 

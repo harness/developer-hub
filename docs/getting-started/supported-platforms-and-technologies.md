@@ -475,7 +475,7 @@ GitOps supports the following:
 - GnuPG Keys:
   - GnuPG Public Key Data (ASCII-armored).
 
-See [Harness GitOps Basics](../continuous-delivery/cd-gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md)
+See [Harness GitOps Basics](/docs/continuous-delivery/gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart.md)
 
 ### Continuous Integration (CI)
 

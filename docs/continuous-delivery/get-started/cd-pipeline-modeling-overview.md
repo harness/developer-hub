@@ -76,7 +76,7 @@ Set when, if, and how a Stage executes and what to do if it fails:
 
 ![](../onboard-cd/cd-concepts/static/cd-pipeline-modeling-overview-06.png)
 
-For more details, go to [Stage and Step Conditional Execution Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more details, go to [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 #### Approvals
 

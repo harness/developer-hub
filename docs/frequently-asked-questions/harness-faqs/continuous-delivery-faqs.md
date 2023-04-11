@@ -153,7 +153,7 @@ See [Add and manage roles](../../platform/4_Role-Based-Access-Control/9-add-mana
 
 Each stage has a service and target Infrastructure. If your Pipeline has multiple stages, you can deploy the same service to multiple infrastructures.
 
-See [Define your Kubernetes target infrastructure](../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
 #### Can I re-run a failed deployment?
 
@@ -292,7 +292,7 @@ You can use your Git repo for the configuration files in **Manifests** and Har
 
 * **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
 * **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
-* **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+* **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart.md).
 * **OpenShift Template** — OpenShift params file from a Git repo.
 
 :::note 
@@ -327,7 +327,7 @@ Yes. You can select namespaces on the fly using Harness variables that are evalu
 
 Yes. Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, and so on, just as you would in any native kustomization.
 
-See [Kustomize deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart.md).
 
 #### Can I use Ingress traffic routing?
 
@@ -548,7 +548,7 @@ See [Built-in Harness variables reference](../../platform/12_Variables-and-Expre
 
 Most settings in Harness pipelines allow you to use fixed values, runtime inputs, and expressions.
 
-See [Fixed values, runtime inputs, and expressions](../../platform/20_References/runtime-inputs.md).
+See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
 
 #### Can I reference settings using expressions?
 
@@ -560,7 +560,7 @@ See [Built-in Harness variables reference](../../platform/12_Variables-and-Expre
 
 Yes. You can use runtime Inputs to set placeholders for values that will be provided when you start a pipeline execution.
 
-See [Fixed values, runtime inputs, and expressions](../../platform/20_References/runtime-inputs.md).
+See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
 
 #### Can I evaluate values at run time?
 
@@ -570,5 +570,5 @@ All of these variables represent settings and values in the pipeline before and 
 
 At run time, Harness will replace the variable with the runtime value.
 
-See [Fixed Values, runtime inputs, and expressions](../../platform/20_References/runtime-inputs.md).
+See [Fixed Values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
 

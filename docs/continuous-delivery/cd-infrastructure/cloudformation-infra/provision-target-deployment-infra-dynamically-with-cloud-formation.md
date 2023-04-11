@@ -135,7 +135,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 
 See:
 
-* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+* [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
 * [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### Stack Name
@@ -197,7 +197,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 
 See:
 
-* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+* [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
 * [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### CloudFormation Parameters Overrides
@@ -210,7 +210,7 @@ In **CloudFormation Parameters Overrides**, click **Retrieve Names from template
 
 For each parameter you want to override, enter a new values in **Value**.
 
-Harness text secrets are supported. See [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
 
 ### Role ARN
 

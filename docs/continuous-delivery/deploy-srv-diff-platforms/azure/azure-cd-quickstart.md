@@ -40,7 +40,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).In your Harness Project, click **Deployments**, and then click **Create a** **Pipeline**.
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).In your Harness Project, click **Deployments**, and then click **Create a** **Pipeline**.
 
 :::
 
@@ -262,7 +262,7 @@ The target cluster is your own AKS cluster, hosted in your Azure cloud. This is 
 6. In **Cluster**, select the cluster name.
 7. In **Namespace**, enter an existing namespace, such as **default**.
 
-Now that the Stage's Infrastructure is complete, you can select the [deployment strategy](../../manage-deployments/deployment-concepts.md) for this stage of the Pipeline.
+Now that the Stage's Infrastructure is complete, you can select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) for this stage of the Pipeline.
 
 ## Step 5: Add a Rollout Deployment Step
 

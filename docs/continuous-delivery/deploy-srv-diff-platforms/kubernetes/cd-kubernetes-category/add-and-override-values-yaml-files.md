@@ -12,7 +12,7 @@ You can use values YAML files for Kubernetes and Helm deployments in Harness.
 
 For Kubernetes manifests, the values file uses Go templating to template manifest files. See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
-For Helm charts, the values file defines the default values for parsing the Kubernetes templates (manifests) when deploying the Helm chart. See [Deploy Helm Charts](../cd-helm-category/deploy-helm-charts.md).
+For Helm charts, the values file defines the default values for parsing the Kubernetes templates (manifests) when deploying the Helm chart. See [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
 
 Harness supports Kubernetes and Helm charts without requiring Helm or Tiller and Kubernetes and Helm have equal support for all Harness deployment strategies.
 
@@ -34,7 +34,7 @@ This topic describes how to add values files, how to override them at the Servic
 
 This topic covers adding and overriding the values.yaml files you add to a Harness Service, but you can also propagate and override entire Services.
 
-See [Propagate and Override CD Services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md).
+See [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).
 
 ## Review: Values Files with Kubernetes and Helm Charts
 
@@ -123,7 +123,7 @@ We'll cover this option below.
 
 1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
 5. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
-    This process is described in [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+    This process is described in [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 1. Once you've selected a Connector, click **Continue**.
 6. In **Manifest Details**, you tell Harness where the values.yaml is located.
 7. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
@@ -155,11 +155,11 @@ Next, in the **Environment** setting, you add three Environments, one for each Y
 
 When you select an Environment, such as **qa**, the name of the Environment is used in **File Path** and resolves to **qa.yaml**. At runtime, the **qa.yaml** values file is used.
 
-Instead of selecting the Environment in the **Infrastructure** each time, you can set the Environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
+Instead of selecting the Environment in the **Infrastructure** each time, you can set the Environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime. See [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md).
 
 ## Option: Override Values at Runtime
 
-You can make the values file path a **Runtime Input** and simply enter the name of the values file when you run the Pipeline. See [Runtime Inputs](../../../platform/20_References/runtime-inputs.md).
+You can make the values file path a **Runtime Input** and simply enter the name of the values file when you run the Pipeline. See [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md).
 
 In **Manifest Details** for the values file, in **File Path**, select **Runtime Input**. At runtime, you simply enter the name of the values file to use.
 
@@ -167,6 +167,6 @@ In **Manifest Details** for the values file, in **File Path**, select **Runtime 
 
 ## See Also
 
-* [Deploy Helm Charts](../cd-helm-category/deploy-helm-charts.md)
-* [Propagate and Override CD Services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md)
+* [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md)
+* [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md)
 

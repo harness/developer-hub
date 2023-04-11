@@ -50,7 +50,7 @@ An individual step's **Advanced** settings override the **Advanced** settings of
 
 ### Option: Conditional Execution
 
-A Step Group can have its own Conditional Execution settings separate from the Stage settings. The Conditional Execution settings of the step group apply to all of its steps. See [Step Skip Condition Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+A Step Group can have its own Conditional Execution settings separate from the Stage settings. The Conditional Execution settings of the step group apply to all of its steps. See [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 The Conditional Execution settings of any step in a step group override the settings of the Step Group itself.
 

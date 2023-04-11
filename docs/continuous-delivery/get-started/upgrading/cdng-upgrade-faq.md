@@ -123,7 +123,7 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     
     NextGen now supports rolling, canary, and load balancer–based blue-green deployments. We have deprecated the FirstGen Service Setup and Wait for Steady State steps. Harness NextGen can still use your existing service and infrastructure configurations.
 
-  - For details on NextGen ECS integration, go to [ECS deployment tutorial](../../onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md).
+  - For details on NextGen ECS integration, go to [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md).
 - **Variable references in manifests and steps**. The Harness variable reference format has changed in NextGen.
     
     In FirstGen, variables use the `${...}` format. In NextGen, variables use the `<+...>` format. You must upgrade your references to the new format.

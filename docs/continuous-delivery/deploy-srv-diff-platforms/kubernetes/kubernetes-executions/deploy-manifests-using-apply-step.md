@@ -43,7 +43,7 @@ All workloads deployed by the Apply step are managed workloads. Managed workload
 
 The Apply Step is primarily used for deploying Jobs controllers, but it can be used for other resources. Typically, when you want to deploy multiple workloads (Deployment, StatefulSet, and DaemonSet) you will use separate stages for each.Other Kubernetes steps, such as Rolling, are limited to specific workload types.
 
-For a detailed list of what Kubernetes workloads you can deploy in Harness, see [What Can I Deploy in Kubernetes?](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+For a detailed list of what Kubernetes workloads you can deploy in Harness, see [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
 ### Rolling vs apply
 
@@ -141,16 +141,16 @@ You can enter multiple file paths in **File Path**. Simply click **Add File**.
 
 ### File path runtime inputs
 
-You can set [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md) for File Path settings.
+You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md) for File Path settings.
 
 Here are the options:
 
 * **File Path setting:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path or expression in the step.
-	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input Sets and Overlays](../../../platform/8_Pipelines/input-sets.md).
+	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input Sets and Overlays](/docs/platform/8_Pipelines/input-sets.md).
 * **File path field:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path in the step.
-	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](../../../platform/8_Pipelines/add-a-stage.md).
+	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](/docs/platform/8_Pipelines/add-a-stage.md).
 
 ## Skip dry run
 
@@ -215,8 +215,8 @@ You can override some or all of the values in the values.yaml file selected in t
 
 Values YAML files can be specified at several places in Harness:
 
-* Environment service overrides (if you are using [Services and Environments v2](../../onboard-cd/services-and-environments-overview.md))
-* Environment configuration (if you are using [Services and Environments v2](../../onboard-cd/services-and-environments-overview.md))
+* Environment service overrides (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview.md))
+* Environment configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview.md))
 * Service definition manifests
 
 You can also add a values YAML values and/or files in the Apply Step **Override Value**.
@@ -239,8 +239,8 @@ Harness merges all of the values YAML values/files into one file.
 If two or more sources have the same `name:value` pairs (for example, `replicas: 2`), that is a conflict that Harness resolves using the following priority order (from highest to lowest):
 
 1. Kubernetes Apply Step **Override Value**.
-2. Environment Service Overrides (if you are using [Services and Environments v2](../../onboard-cd/services-and-environments-overview.md)).
-3. Environment Configuration (if you are using [Services and Environments v2](../../onboard-cd/services-and-environments-overview.md)).
+2. Environment Service Overrides (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview.md)).
+3. Environment Configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview.md)).
 4. Service Definition Manifests.
 
 ![](./static/deploy-manifests-using-apply-step-26.png)
@@ -314,12 +314,12 @@ You can use the Apply step in your Kustomize deployments.
 
 When you use Kustomize, the **File Path** in the Apply Step should be set according to how you set up the Manifest Details in the Service.
 
-For details, see **Kustomize deployment with the Apply step** in [Use Kustomize for Kubernetes Deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+For details, see **Kustomize deployment with the Apply step** in [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
 ## Notes
 
-* The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: true`). See [Kubernetes Releases and Versioning](../../cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+* The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: true`). See [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 ## Next steps
 
-* [Kubernetes Annotations and Labels](../../cd-technical-reference/cd-k8s-ref/kubernetes-annotations-and-labels.md)
+* [Kubernetes Annotations and Labels](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels.md)

@@ -114,7 +114,7 @@ If you have `replicas: 3` in a manifest in Service, and you enter **50** for 
 
 **Skip Dry Run:** By default, Harness uses the `--dry-run` flag on the `kubectl apply` command during the **Initialize** step of this command, which prints the object that would be sent to the cluster without really sending it. If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.#### Canary Delete Step
 
-Since the **Canary Deployment** step was successful, it is no longer needed. The **Canary Delete** step is used to clean up the workload deployed by the **Canary Deployment** step. See [Canary Delete Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-delegate-step.md).
+Since the **Canary Deployment** step was successful, it is no longer needed. The **Canary Delete** step is used to clean up the workload deployed by the **Canary Deployment** step. See [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step.md).
 
 For step on deleting other Kubernetes resources, you can use the standard **Delete** step. See [Delete Kubernetes Resources](delete-kubernetes-resources.md).
 
@@ -122,7 +122,7 @@ For step on deleting other Kubernetes resources, you can use the standard **Dele
 
 The Primary Deployment group runs the actual deployment as a rolling update with the number of pods you specify in the Service Definition **Manifests** files (for example, `replicas: 3`).
 
-Click **Rolling Deployment**. For details on its settings, see [Kubernetes Rollout Step](../../cd-technical-reference/cd-k8s-ref/kubernetes-rollout-step.md).
+Click **Rolling Deployment**. For details on its settings, see [Kubernetes Rollout Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step.md).
 
 Similar to application-scaling, during a rolling update of a Deployment, the Kubernetes service will load-balance the traffic only to available pods (an instance that is available to the users of the application) during the update.
 
@@ -217,7 +217,7 @@ Now that Harness has ensured that manifests can be used, it will process the man
 
 #### Prepare
 
-In the **Prepare** section, you can see that Harness versions release (for more information, see [Kubernetes Releases and Versioning](../../cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md)).
+In the **Prepare** section, you can see that Harness versions release (for more information, see [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md)).
 
 ![](./static/create-a-kubernetes-canary-deployment-11.png)
 
@@ -253,7 +253,7 @@ As you look through the description in **Wrap Up** you can see label added:
 add label: harness.io/track=stable 
 ```
 
-You can use the `harness.io/track=stable` label with the values `canary` or `stable` as a selector for managing traffic to these pods, or for testing the pods. For more information, see  [Kubernetes Releases and Versioning](../../cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+You can use the `harness.io/track=stable` label with the values `canary` or `stable` as a selector for managing traffic to these pods, or for testing the pods. For more information, see  [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 The stage is deployed.
 
@@ -269,7 +269,7 @@ my-nginx-7df7559456-xdwg5                 1/1       Running   0          9h
 
 ## Rollback
 
-See [Kubernetes Rollback](../../cd-technical-reference/cd-k8s-ref/kubernetes-rollback.md).
+See [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback.md).
 
 ## Notes
 

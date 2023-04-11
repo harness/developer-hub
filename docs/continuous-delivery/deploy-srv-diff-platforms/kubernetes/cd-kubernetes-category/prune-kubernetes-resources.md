@@ -36,7 +36,7 @@ Pruning is supported for the following deployment strategies:
 * Rolling Deployments
 * Blue Green Deployments
 
-See [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
 
 ## Important notes
 

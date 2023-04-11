@@ -44,9 +44,9 @@ This table explains how Stages perform your CD operations:
 
 See the following:
 
-* [Add a Stage](../../platform/8_Pipelines/add-a-stage.md)
-* [Add a Stage Template Quickstart](../../platform/13_Templates/add-a-stage-template.md)
-* [Stage and Step Conditional Execution Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md)
+* [Add a Stage Template Quickstart](/docs/platform/13_Templates/add-a-stage-template.md)
+* [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 
 ### Services
 
@@ -79,7 +79,7 @@ Environments represent your deployment targets logically (QA, Prod, etc). You ca
 
 Infrastructure Definitions represent an Environment's infrastructure physically. They are the actual target clusters, hosts, etc.
 
-For an example, see [Kubernetes Infrastructure](../cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+For an example, see [Kubernetes Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
 ### Execution Steps
 
@@ -125,7 +125,7 @@ For examples, see:
 
 * [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md)
 * [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/install-a-delegate.md)
+* [Install a Docker Delegate](/docs/getting-started/supported-platforms-and-technologies.md)
 
 #### Credentials and permissions
 
@@ -171,7 +171,7 @@ You can set conditions on when you run Stages and steps. For example, `Execute T
 
 The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
 
-See [Stage and Step Conditional Execution Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+See [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 #### Failure strategies
 
@@ -181,6 +181,6 @@ The failure strategy contains error conditions that must occur for the strategy 
 
 Failure strategies are a critical pipeline design component that determine what fails a step or stage and what to do when the failure occurs.
 
-See [Step and Stage Failure Strategy References](../../platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
+See [Step and Stage Failure Strategy References](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
 
 

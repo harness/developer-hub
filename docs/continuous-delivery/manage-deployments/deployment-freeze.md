@@ -81,7 +81,7 @@ Deployment freeze access control is configured using the **Deployment Freeze** r
 
 ### Important notes
 
-Deployment freeze does not apply to [Harness GitOps PR pipelines](../cd-gitops/harness-git-ops-application-set-tutorial.md).
+Deployment freeze does not apply to [Harness GitOps PR pipelines](/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial.md).
 
 ## Create a freeze window
 
