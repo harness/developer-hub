@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2023-04-06T10:00
+date: 2023-04-10T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -13,7 +13,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## April 6th, 2023, version 79007
+## April 10, 2023, version 79015
 
 ### What's new
 
@@ -26,9 +26,9 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   Here's an example where the script declares two variables but one is set as a runtime input and one is empty.
 
   ![picture 66](static/ecc637c511be5850e704bf1db61db5cbda37d8a10ad37eb3490a05570a0b5ece.png)
-- Tanzu deployments now support additional artifact sources: Azure Artifacts, Bamboo, and GCS. (CDS-57681)
+- Tanzu Application Services (TAS) deployments now support additional artifact sources: Azure Artifacts, Bamboo, and GCS. (CDS-57681)
   
-  Tanzu Application Services (TAS) deployment now support Artifactory, Nexus, Bamboo, Amazon S3, Google Container Registry (GCR), Google Cloud Storage (GCS), Google Artifact Registry, AWS Elastic Container Registry (ECR), Azure Container Registry (ACR), Azure Artifacts, GitHub Package Registry, custom registries, and any Docker Registry such as DockerHub.
+  TAS deployments now support Artifactory, Nexus, Bamboo, Amazon S3, Google Container Registry (GCR), Google Cloud Storage (GCS), Google Artifact Registry, AWS Elastic Container Registry (ECR), Azure Container Registry (ACR), Azure Artifacts, GitHub Package Registry, custom registries, and any Docker Registry such as DockerHub.
 
   ![picture 67](static/162273825052b81df3a86e5b649c38bdcf12f9175bd60cb7db872d223c2635c5.png)
 - The **Retry** timeout failure strategy is now supported in [TAS steps](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
