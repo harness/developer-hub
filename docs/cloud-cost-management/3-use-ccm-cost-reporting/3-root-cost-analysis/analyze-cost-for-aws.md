@@ -1,5 +1,5 @@
 ---
-title: Analyze cost for AWS using perspectives
+title: Analyze cost for AWS 
 description: This topic describes how to analyze costs for AWS using Perspectives.
 # sidebar_position: 2
 helpdocs_topic_id: 1nf0qcz4o0

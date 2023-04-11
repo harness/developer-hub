@@ -22,6 +22,17 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 * The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
 
+### Harness Platform
+- You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
+
+- Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
+  * Github
+  * Bitbucket
+  * AzureRepo 
+  * Gitlab 
+
+- You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
+
 ### Continuous Integration
 
 * Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
@@ -32,6 +43,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 ### Service Reliability Management
 
 * Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
+
 
 ## March 31, 2023, version 78914
 

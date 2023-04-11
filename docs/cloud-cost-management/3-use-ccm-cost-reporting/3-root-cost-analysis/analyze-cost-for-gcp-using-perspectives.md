@@ -1,5 +1,5 @@
 ---
-title: Analyze cost for GCP ​using perspectives
+title: Analyze cost for GCP 
 description: This topic describes how to analyze costs for GCP using Perspectives.
 # sidebar_position: 2
 helpdocs_topic_id: ryhe4aut1y
