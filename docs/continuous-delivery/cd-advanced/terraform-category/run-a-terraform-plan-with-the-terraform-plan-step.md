@@ -375,7 +375,6 @@ For example, if your config.tf file has the following backend:
 terraform {  
   backend "gcs" {  
     bucket  = "tf-state-prod"  
-    prefix  = "terraform/state"  
   }  
 }
 ```
@@ -393,6 +392,12 @@ region = "us-east-1"
 ```
 
 See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+
+For example:
+```
+ prefix  = "terraform/state"  
+ access_token = "accessToken....."
+```
 
 ## Targets
 
