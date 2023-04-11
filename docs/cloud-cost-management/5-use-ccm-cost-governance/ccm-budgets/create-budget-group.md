@@ -30,7 +30,7 @@ Perform the following steps to create a budget group:
 
   
 :::note
-Note that when selecting budgets, you must ensure that they have the same start date, budget amount type, and period. If you are creating a group of budget groups, the cascading type must also be similar. After selecting the first budget or budget group, the remaining budgets or budget groups that have a different start date, budget amount type, period, or cascading type are disabled.
+When selecting budgets, you must ensure that they have the same start date, budget amount type, and period. If you are creating a group of budget groups, the cascading type must also be similar. After selecting the first budget or budget group, the remaining budgets or budget groups that have a different start date, budget amount type, period, or cascading type are disabled.
 :::
 
 5. Click **Continue**.
@@ -86,13 +86,13 @@ An example of how a cascading monthly budget is recalculated when the budget amo
 - Aug, Sep, Oct, Nov - $120
 - Dec - $110
 
-The overall budget is $1200. When this amount is increased to $1800, the difference in the amount, that is $600 is redistributed across months in the same ratio as their initial splits. That is, Jan's budget amount will increase by $40 (80/1200 * 600 = 40).
+The overall budget is $1200. When this amount is increased to $1800, the difference in the amount, that is $600 is redistributed across months in the same ratio as their initial splits. That is, the budget amount for January will increase by $40 (80/1200 * 600 = 40).
 
 6. Save the budget group.
 
 ## Delete a budget group
 
-1. In **All Budgets**, select the budget group that you want to edit.
+1. In **All Budgets**, select the budget group that you want to delete.
 2. Click **Delete** from the vertical ellipsis (⋮) icon.
 3. Click **Delete** in the confirmation dialog.
 
