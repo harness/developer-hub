@@ -172,7 +172,7 @@ The following diagram illustrates the three stages in the STO deduplication pipe
 
 STO maintains its own set of container images pre-installed with open-source scanners such as Bandit, OWASP, Zap, Prowler, and Aqua Trivy. This makes it easy to get started running scans and generating results. The STO UI uses one format to report all detected issues and includes in-depth information about each detected issue: location, severity, and links to in-depth information, and so on. 
 
-To get started, go to [Onboarding STO](/docs/category/onboard-with-sto). 
+To get started, go to [Get started with STO](/docs/category/get-started-with-sto). 
         
 ### Why don't I see results from specific scans in the Security Testing Dashboard? 
 
