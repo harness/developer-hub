@@ -101,6 +101,7 @@ Enter a unique value in **Provisioner Identifier**.
 The Provisioner Identifier identifies the provisioning done in this step. You use the Provisioner Identifier in additional steps to refer to the provisioning done in this step.
 
 The most common use of Provisioner Identifier is between the Terraform Plan and Terraform Apply steps. For the Terraform Apply step, to apply the provisioning from the Terraform Plan step, you use the same Provisioner Identifier.
+Terraform Apply step can inherit only form a Terraform Plan step within the same stage.
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-03.png)
 
