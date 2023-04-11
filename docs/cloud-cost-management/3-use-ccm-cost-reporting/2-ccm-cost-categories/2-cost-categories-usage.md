@@ -1,6 +1,6 @@
 ---
-title: Use Cost Categories 
-description: This topic explains the uses of Cost Categories in Perspectives and dashboards.
+title: Use cost categories 
+description: This topic explains the uses of cost categories in perspectives and dashboards.
 # sidebar_position: 2
 helpdocs_topic_id: 6lle2diqeg
 helpdocs_category_id: 3uqsijw1gg
@@ -13,11 +13,11 @@ helpdocs_is_published: true
 import dashboards_cc from './static/cost-categories-dashboards.png'
 ```
 
-You can use cost categories in both Perspectives and Dashboards. When you create or modify a cost category, the changes are immediately reflected in Perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
+You can use cost categories in both perspectives and dashboards. When you create or modify a cost category, the changes are immediately reflected in perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
 
-## Use cost categories in Perspectives
+## Use cost categories in perspectives
 
-The cost categories can be used in Perspectives in the following ways.
+The cost categories can be used in perspectives in the following ways.
 
 ### Group By
 
@@ -94,7 +94,7 @@ Consider the following scenario where the Perspective rule has two cost categori
 
  In this scenario, if you choose to include both cost categories in your Perspective rule, the total cost of the cost buckets in both categories is counted only once. However, the cost of the shared buckets between the two categories is duplicated because of overlapping rules. Therefore, it is recommended to avoid using multiple cost categories with overlapping shared cost buckets in your perspective rule to prevent any potential errors.
 
-## Use cost categories in Dashboards
+## Use cost categories in dashboards
 
 You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md).
 
