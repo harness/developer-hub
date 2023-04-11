@@ -1,239 +1,219 @@
 ---
 sidebar_position: 9
-title: Terraform notification triggers
+title: Terraform notifications
 description: Trigger CI pipeline using Terraform Cloud notifications using custom CI Webhooks.
 keywords: [Hosted Build, Continuous Integration, Terraform, GitOps]
 slug: /build-code/build/tfc-notification
 ---
 
-# Trigger CI using Terraform Cloud Notification
+# Use Terraform Cloud notifications to trigger CI
 
-Continuous Integration(CI) pipelines needs a **target** infrastructure to which the CI artifacts are deployed. The deployments are handled by CI or we can leverage Continuous Deployment pipelines. Modern day architecture uses automation tools like [terraform](https://terraform.io), [ansible](https://www.ansible.com/) to provision the target infrastructure, this type of provisioning is called [IaaC](https://en.wikipedia.org/wiki/Infrastructure_as_code).
+Continuous Integration (CI) pipelines deploy CI artifacts to a *target infrastructure*. Deployments handled by CI or Continuous Deployment (CD) pipelines. Modern day architecture uses automation tools, like [Terraform](https://terraform.io) or [Ansible](https://www.ansible.com/) to provision the target infrastructure. This type of provisioning is called [infrastructure-as-code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code).
 
-Usually CI/CD and IaaC don't run in tandem. Many times we want to trigger the CI pipeline only when the **target** infrastructure is ready to bootstrap with software components that are required by CI/CD pipelines.
+Usually CI/CD and IaC don't run in tandem. Often, the CI pipeline is triggered only when the target infrastructure is ready to bootstrap with software components that are required by CI/CD pipelines.
 
-As part of this DIY blog let us tackle the aforementioned problem with an use case.
+This tutorial addresses the aforementioned problem with the following use case:
 
-## Use Case
+As CI/CD user, I want to provision a Kubernetes cluster on Google Cloud Platform (GKE) using Terraform. When the cluster is successfully provisioned, trigger a CI pipeline to start bootstrapping [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) on to GKE.
 
-As CI/CD user I would like to provision a Kubernetes Cluster on Google Cloud Platform(GKE) using Terraform. The successful provision of the cluster should **notify** a CI pipeline to start bootstrapping [ArgoCD](https://argo-cd.readthedocs.io/en/stable/) on to GKE.
+<!-- ![Tutorial architecture diagram](../static/ci-tfc-notif-trigger/tfc-trigger-arch.png) -->
 
-![Architecture Overview](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a56swhyp5lzm9n5d9kpr.png)
+<docimage path={require('../static/ci-tfc-notif-trigger/tfc-trigger-arch.png')} />
 
-## What you need ?
+## Prerequisites
 
-- A [Terraform Cloud Account](https://app.terraform.io/public/signup/account). Create a workspace on the terraform cloud to be used for this exercise.
-- [Google Cloud Account](https://cloud.google.com) used to create the Google Kubernetes Engine(GKE) cluster.
-- Though we can use any CI platform, for this demo we will use [Harness CI](https://www.harness.io/products/continuous-integration)as our CI platform. You can do a **free tier** signup from [here](https://app.harness.io/auth/#/signup/?module=ci&utm_source=internal&utm_medium=social&utm_campaign=community&utm_content=kamesh-tfc-ci-demos&utm_term=tutorial).
+In addition to a Harness account, you need the following accounts for this tutorial:
 
-## Demo Sources
+* A **GitHub account** where you can fork the tutorial repos.
+* A [Terraform Cloud account](https://app.terraform.io/public/signup/account).
+* A [Google Cloud account](https://cloud.google.com) where you can create a Google Kubernetes Engine (GKE) cluster.
 
-The demo uses the following git repositories a sources,
-
-- IaaC [vanilla-gke](https://github.com/harness-apps/vanilla-gke): the terraform source repository that will be used with terraform cloud to provision GKE.
-- Kubernetes manifests [bootstrap-argocd](https://github.com/harness-apps/bootstrap-gke): the repository that holds kubernetes manifests to bootstrap argo CD on to the GKE cluster
-
-### Fork and Clone the Sources
-
-To make fork and clone easier we will use [gh CLI](https://cli.github.com/). Download the add `gh` to your `$PATH`.
-
-Let us create a directory where we want to place all our demo sources,
-
-```shell
-mkdir -p "$HOME/tfc-notification-demo"
-cd "$HOME/tfc-notification-demo"
-export DEMO_HOME="$PWD"
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
-#### IaaC
+<CISignupTip />
 
-Clone and fork `vanilla-gke` repo,
+## Clone code repositories
 
-```shell
-gh repo clone harness-apps/vanilla-gke
-cd vanilla-gke
-gh repo fork
-export TFC_GKE_REPO="$PWD"
-```
+This tutorial uses the following Git repositories:
 
-#### Bootstrap Argo CD Sources
+- IaC [vanilla-gke](https://github.com/harness-apps/vanilla-gke): The Terraform source repository that is used with Terraform Cloud to provision GKE.
+- Kubernetes manifests [bootstrap-argocd](https://github.com/harness-apps/bootstrap-argocd): This repository holds Kubernetes manifests to bootstrap ArgoCD on to the GKE cluster.
+- [tfc-notification-demo](https://github.com/harness-apps/tfc-notification-demo): Contains a sample pipeline for this tutorial.
 
-Clone and fork `bootstrap-argocd` repo,
+Fork these repos, and then clone them to your local machine.
 
-```shell
-cd ..
-gh repo clone harness-apps/bootstrap-argocd
-cd bootstrap-argocd
-gh repo fork
-export ARGOCD_BOOTSTRAP_REPO="$PWD"
-```
+<details>
+<summary>Fork and clone the tutorial repos</summary>
 
-For rest of the blog we will reference the repositories `vanilla-gke` and `bootstrap-argocd` as `$TFC_GKE_REPO` and `$ARGOCD_BOOTSTRAP_REPO`.
+1. If you don't already have a Git command line tool on your machine, download the [GitHub CLI tool](https://cli.github.com/), and then add `gh` to your `$PATH`.
+2. Create a directory for your tutorial repos, for example:
 
-## Harness CI
+   ```shell
+   mkdir -p "$HOME/tfc-notification-demo"
+   cd "$HOME/tfc-notification-demo"
+   export DEMO_HOME="$PWD"
+   ```
 
-In the following sections we will define and create the resources required to define a CI pipeline using Harness platform.
+3. Clone and fork the `vanilla-gke` repo, for example:
 
-### Create Harness Project
+   ```shell
+   gh repo clone harness-apps/vanilla-gke
+   cd vanilla-gke
+   gh repo fork
+   export TFC_GKE_REPO="$PWD"
+   ```
 
-Create new harness project named `terraform_integration_demos` using Harness Web Console,
+4. Clone and fork the `bootstrap-argocd` repo, for example:
 
-![New Harness Project](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x2xlbd9079oesmni06ut.png)
+   ```shell
+   cd ..
+   gh repo clone harness-apps/bootstrap-argocd
+   cd bootstrap-argocd
+   gh repo fork
+   export ARGOCD_BOOTSTRAP_REPO="$PWD"
+   ```
 
-Update its details as shown,
+5. Clone and fork the `tfc-notification-demo` repo, for example:
 
-![New Harness Project Details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/6hw2w4j51yosjj3in819.png)
+   ```shell
+   cd ..
+   gh repo clone harness-apps/tfc-notification-demo
+   cd tfc-notification-demo
+   gh repo fork
+   export TFC_NOTIFICATION_DEMO="$PWD"
+   ```
 
-Follow the wizard leaving rest to defaults and on the last screen choose **Continuous Integration**,
+</details>
 
-![Use CI](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/j2emzksrd7wplaapqjlj.png)
+Code samples in this tutorial will refer to these repos as follows:
 
-Click **Go to Module** to go to project home page.
+* `vanilla-gke`: `$TFC_GKE_REPO`
+* `bootstrap-argocd`: `$ARGOCD_BOOTSTRAP_REPO`
+* `tfc-notification-demo`: `$TFC_NOTIFICATION_DEMO`
 
-### Define New Pipeline
+## Create a Harness project
 
-Click **Pipelines** to define a new pipeline,
+In Harness, create a project named `terraform_integration_demos`, and then go to the **Continuous Integration** module.
 
-![Get Started with CI](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/kgads8qcwj6t8y7oeg4m.png)
+<details>
+<summary>Create a project</summary>
 
-For this demo will be doing manual clone, hence disable the clone,
+1. Select **Projects**, select **All Projects**, and then select **New Project**.
+2. For **Name**, enter `terraform_integration_demos`.
+3. Leave the **Organization** as **default**.
+4. Select **Save and Continue**.
+5. On **Invite Collaborators**, you can add others to your project, if desired. You don't need to add yourself.
+6. Select **Save and Continue**.
+7. On the Modules page, select **Continuous Integration**, and then select **Go to Module**.
 
-![Disable](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/af9r24aycvqp0noecy2o.png)
+If the CI pipeline wizard starts after you select **Go to Module**, you'll need to exit the wizard to complete the next step in this tutorial, creating the GitHub connector.
 
-Click on **Pipelines** and delete the default **Build pipeline**,
+</details>
 
-![Delete Pipeline](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tdmpydgk99elqufic570.png)
+## Create a GitHub connector
 
-### Add `harnessImage` Docker Registry Connector
+Harness uses a *connector* to connect to your Git repositories.
 
-As part of pipelines we will be pulling image from DockerHub. `harnesImage` [Docker Registry Connector](ttps://developer.harness.io/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector) helps pulling the public Docker Hub images as an anonymous user.
+1. In the GitHub account where you forked the tutorial repos, [create a GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) with the `repo`, `admin:repo_hook`, and `user` scopes.
 
-Let us configure an `harnesImage` connector as described in docker registry connectors. The pipelines we create as part of the later section will use this connector.
+   For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
 
-### Configure GitHub
+2. Save the token as a [Harness text secret](/docs/platform/security/add-use-text-secrets/) named `GITHUB_PAT`.
 
-#### GitHub Credentials
+3. In your Harness `terraform_integration_demos` project, under **Project Setup**, select **Connectors**, and create a new **GitHub** code repository connector.
+4. Enter a **Name** and select **Continue**.
+5. Configure the **Details** as follows, and then select **Continue**.
 
-Create a [GitHub PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) for the account where you have have forked the repositories `$TFC_GKE_REPO` and `$ARGOCD_BOOTSTRAP_REPO`. We will refer to the token as `$GITHUB_PAT`.
+   * **URL Type:** Select **Account**.
+   * **Connection Type:** Select **HTTP**.
+   * **GitHub Account URL:** Enter the URL for the GitHub account where you forked the tutorial repos, such as `https://github.com/my-account`.
+   * **Test Repository:** Enter the repo name for any repo in your GitHub account, such as `tfc-notification-demos`. This is only used to verify connectivity.
 
-From the **Project Setup** click **Secrets**,
+   <!-- ![GitHub Connector Details](../static/ci-tfc-notif-trigger/tfc-notif-trigger-1.png) -->
 
-![New Text Secret](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d21zbiyr2gdqjt4j0wrl.png)
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-1.png')} />
 
-Update the encrypted text secret details as shown,
+6. Configure the **Credentials** as follows, and then select **Continue**.
 
-![GitHub PAT Secret](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/7bijo1z8gv5s99txxceq.png)
+   * **Username:** Enter the username for the GitHub account where you forked the tutorial repos.
+   * **Personal Access Token:** Select your `GITHUB_PAT` text secret.
+   * **Enable API access:** Select this option and select the same personal access token secret.
 
-Click **Save** to save the secret,
+   <!-- ![GitHub Connector Credentials](../static/ci-tfc-notif-trigger/tfc-notif-trigger-2.png) -->
 
-![Project Secrets](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qb5cu0a0bg5fk51w1o7z.png)
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-2.png')} />
 
-#### Connector
+6. For **Select Connectivity Mode**, select **Connect through the Harness Platform**, and then select **Save and Continue**.
+7. Wait while Harness tests the connection, and then select **Finish**.
 
-As we need to clone the sources from GitHub, we need to define a **GitHub Connector**, from the **Project Setup** click **Connectors**,
+For more information about creating GitHub connectors go to [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector) and the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference).
 
-![New Connector](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/gra2qdl6a7x66btz5jqk.png)
+## Create a GSA key
 
-From connector list select **GitHub**,
+You need Google Service Account (GSA) credentials (as a JSON key) to query your GKE cluster's details and create resources on it.
 
-![New GitHub Connector](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ktjszxdgilu44rn36my0.png)
+1. Set the environment.
 
-Enter the name as **GitHub**,
+   ```shell
+   export GCP_PROJECT="the Google Cloud Project where Kubernetes Cluster is created"
+   export GSA_KEY_FILE="path where to store the key file"
+   ```
 
-![GitHub Connector Overview](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/cdlxl7h6wm4aa724bi8l.png)
+2. Create the service account.
 
-Click **Continue** to enter the connector details,
+   ```shell
+   gcloud iam service-accounts create gke-user \
+     --description "GKE User" \
+     --display-name "gke-user"
+   ```
 
-![GitHub Connector Details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/x13z7pzaslkj14uznd6g.png)
+3. Configure the IAM policy binding. The service account must be able to provision Kubernetes resources.
 
-Click **Continue** and update the GitHub Connector credentials,
+   ```shell
+   gcloud projects add-iam-policy-binding $GCP_PROJECT \
+     --member="serviceAccount:$GSA_NAME@$GCP_PROJECT.iam.gserviceaccount.com" \
+     --role="roles/container.admin"
+   ```
 
-![GitHub Connector Credentials](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nx9y4cezd1899j4dl1qm.png)
+4. Download and save the GSA key. The Google Cloud user you are using must have the **Security Admin** role to generate GSA keys.
 
-When selecting the **Personal Access Token** make sure you select the `GitHub PAT` that we defined in previous section,
+   ```shell
+   gcloud iam service-accounts keys create "${GSA_KEY_FILE}" \
+       --iam-account="gke-user@${GCP_PROJECT}.iam.gserviceaccount.com"
+   ```
 
-![GitHub PAT Secret](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/iyf7wqipnwk9dx7zafpy.png)
+5. In your Harness project, save the GSA key as a [Harness file secret](/docs/platform/security/add-file-secrets/).
 
-Click **Continue** and use select **Connect through Harness Platform**,
+## Create a Terraform workspace
 
-![Connect through Harness Platform](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/o99912vww36fbleygp9d.png)
+1. On your Terraform Cloud account create a workspace called `vanilla-gke`.
+2. Update the workspace settings to use Version Control and make it point to `$TFC_GKE_REPO`, which is the `vanilla-gke` [tutorial repo](#fork-and-clone-the-tutorial-repos).
 
-Click **Save and Continue** to run the connection test, if all went well the connection should successful,
+   <!-- ![TFC workspace VCS](../static/ci-tfc-notif-trigger/tfc-notif-trigger-3.png) -->
 
-![GH Connection Success](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2090ay6wtd98l1yb78kz.png)
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-3.png')} />
 
-## Google Cloud Service Account Secret
+3. Configure the workspace with the following variables:
 
-We need Google Service Account(GSA) credentials(JSON Key) to query the GKE cluster details and create resources on it.
+   | Key | Value | Category |
+   | --- | ----- | -------- |
+   | `gcp_project`| Sensitive - write only | terraform |
+   | `gcp_region` | Select a region | terraform |
+   | `GOOGLE_CREDENTIALS` | Sensitive - write only | env |
 
-### Set environment
+   <!-- ![TFC workspace variables](../static/ci-tfc-notif-trigger/tfc-notif-trigger-4.png) -->
 
-```shell
-export GCP_PROJECT="the Google Cloud Project where Kubernetes Cluster is created"
-export GSA_KEY_FILE="path where to store the key file"
-```
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-4.png')} />
 
-### Create SA
+   For more details on available variables, go to [Terraform Inputs](https://github.com/harness-apps/vanilla-gke#inputs) in the `vanilla-gke` tutorial repo documentation.
 
-```shell
-gcloud iam service-accounts create gke-user \
-  --description "GKE User" \
-  --display-name "gke-user"
-```
+:::info
 
-### IAM Binding
+`GOOGLE_CREDENTIALS` is a Google Service Account JSON key with permissions to create GKE clusters. Terraform uses this key to create the GKE cluster. For required roles and permissions, go to [Prerequisites](https://github.com/harness-apps/vanilla-gke#pre-requisites) in the `vanilla-gke` tutorial repo documentation.
 
-Add permissions to the user to be able to provision kubernetes resources,
-
-```shell
-gcloud projects add-iam-policy-binding $GCP_PROJECT \
-  --member="serviceAccount:$GSA_NAME@$GCP_PROJECT.iam.gserviceaccount.com" \
-  --role="roles/container.admin"
-```
-
-### Download And Save GSA Key
-
-:::note Important
-Only security admins can create the JSON keys. Ensure the Google Cloud user you are using has **Security Admin** role.
-:::
-
-```shell
-gcloud iam service-accounts keys create "${GSA_KEY_FILE}" \
-    --iam-account="gke-user@${GCP_PROJECT}.iam.gserviceaccount.com"
-```
-
-### GSA Secret
-
-Get back to the **Project Setup** click **Secrets**,
-
-![New File Secret](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/2jbw4oldn0x2729ypy9g.png)
-
-Add the GSA secret details as shown,
-
-![GSA Secret Details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ecn7fe4taun68wbzhhn2.png)
-
-:::note Important
-When you browse and select make sure you select the `$GSA_KEY_FILE` as the file for the secret.
-:::
-
-Click **Save** to save the secret,
-
-![Project Secrets](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/y69kufxvkhg8ia8qxs0q.png)
-
-## Terraform Workspace
-
-On your terraform cloud account create a new workspace called **vanilla-gke**. Update the workspace settings to use Version Control and make it point to [$TFC_GKE_REPO](#iaac).
-
-![TFC Workspace VCS](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tuifarjnq1vxpf1h9dhd.png)
-
-Configure the workspace with following variables,
-
-![TFC Workspace Variables](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/sxld08inhuftsu4r87l1.png)
-
-For more details on available variables, check [Terraform Inputs](https://github.com/harness-apps/vanilla-gke#inputs).
-
-:::note Important
-The `GOOGLE_CREDENTIALS` is Google Service Account JSON Key with permissions to create GKE cluster. Please check the <https://github.com/harness-apps/vanilla-gke#pre-requisites> for the required roles and permissions. This key will be used by Terraform to create the GKE cluster. When you add the key to terraform variables, you need to make it as base64 encoded e.g. the following command does base64 encoding of `YOUR_GOOGLE_CREDENTIALS_KEY_FILE`
+When you add the key to your Terraform variables, it must be base64 encoded. For example, the following command encodes `YOUR_GOOGLE_CREDENTIALS_KEY_FILE` in base64 format:
 
 ```shell
 cat YOUR_GOOGLE_CREDENTIALS_KEY_FILE | tr -d \\n
@@ -241,128 +221,142 @@ cat YOUR_GOOGLE_CREDENTIALS_KEY_FILE | tr -d \\n
 
 :::
 
-Lookup your terraform cloud organizations and save the value in to the variable `$TF_WORKSPACE`,
+4. Create a variable called `$TF_WORKSPACE` and set the value to the name of your Terraform Cloud organization.
 
-![TFC Cloud Organization](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d9txo4xjf5wukxi9pfp3.png)
+   <!-- ![TFC cloud organization](../static/ci-tfc-notif-trigger/tfc-notif-trigger-5.png) -->
 
-We need Terraform API Token to pull the outputs of a terraform run. From your terraform user settings **Create an API token**,
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-5.png')} />
 
-![Terraform API Token](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ob5t70rajo04jz5arjyd.png)
+5. In your Terraform Cloud user settings, **Create an API token**. This token is used to pull outputs from Terraform runs.
 
-Make sure to copy the value and save it to a variable named `$TF_TOKEN_app_terraform_io`. We will refer to this token as part of the Harness CI pipeline.
+   <!-- ![Terraform API token](../static/ci-tfc-notif-trigger/tfc-notif-trigger-6.png) -->
 
-## Harness CI Pipeline
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-6.png')} />
 
-Getting back to Harness web console, navigate to your project **terraform_integration_demos**, click **Pipelines** and **Create a Pipeline** --> **Import From Git**,
+6. Save the API token to a variable named `$TF_TOKEN_app_terraform_io`. You will refer to this token in your Harness CI pipeline later in this tutorial.
 
-![New CI Pipeline Import](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/hrnqdphbjmgjsn4jaaia.png)
+## Create the pipeline
 
-Update the pipeline details as shown,
+Create a pipeline by importing a premade pipeline from one of the tutorial repos.
 
-![Pipeline Details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/9cjbfq9n9akx1xcu21vl.png)
+1. In Harness `terraform_integration_demos` project, select **Pipelines**.
+2. Select **Create a Pipeline**, and then select **Import From Git**.
+3. Configure the **Import Pipeline From Git** fields as follows:
 
-:::note Important
-Make sure the **Name** of the pipeline is `bootstrap argocd pipeline` to make the import succeed with defaults.
-:::
+   * **Name:** `bootstrap argocd pipeline`
+   * **Git Connector:** Your GitHub connector
+   * **Repository:** `tfc-notificaiton-demo`
+   * **Git Branch:** `main`
+   * **YAML Path:** `.harness/bootstrap_argocd_pipeline.yaml`
 
-![Pipeline Import Successful](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/mrr4uqouwsuwrw6ascw9.png)
+   <!-- ![Import pipeline fields](../static/ci-tfc-notif-trigger/tfc-notif-trigger-7.png) -->
 
-Click the `bootstrap argocd pipeline` from the list to open the **Pipeline Studio** and click on the stage **Bootstrap Argo CD** to bring up the pipeline steps,
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-7.png')} />
 
-![Pipeline Steps](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/btazl7vzrl6n7r5y72ar.png)
-
-You can click on each step to see the details.
-
-The Pipeline uses the following secrets,
-
-- `google_application_credentials` - the GSA credentials to manipulate GKE
-- `terraform_cloud_api_token` - the value of `$TF_TOKEN_app_terraform_io`
-- `terraform_workspace` - the value `$TF_WORKSPACE`
-- `terraform_cloud_organization` - the value `$TF_CLOUD_ORGANIZATION`
-
-We already added `google_application_credentials` secret as part of the [earlier](#gsa-secret) section. Following the similar pattern let us add the `terraform_cloud_api_token`, `terraform_workspace` and `terraform_cloud_organization` as text secrets.
+4. Select **Import**.
 
 :::tip
-From the **Project Setup** click **Secrets**,
-![New Text Secret](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/d21zbiyr2gdqjt4j0wrl.png)
+
+This pipeline pulls public images from DockerHub. If you do not want to use the default `account.harnessImage` connector, you can use a different Docker connector, as described in [Connect to Harness Container Image Registry using Docker Connector](/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector/).
+
 :::
 
-Your project should now have the following list of secrets,
+### Add remaining secrets
 
-![all terraform secrets](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/slblnj5atbig84djnat8.png)
+1. On the list of pipelines, select **bootstrap argocd pipeline**, and then select the **Bootstrap Argo CD** stage.
+
+   <!-- ![Pipeline steps](../static/ci-tfc-notif-trigger/tfc-notif-trigger-8.png) -->
+
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-8.png')} />
+
+2. Select each step to examine its configuration. Notice that the pipeline uses the following secrets:
+
+   - `google_application_credentials` - The GSA credentials to manipulate GKE.
+   - `terraform_cloud_api_token` - The value of `$TF_TOKEN_app_terraform_io`.
+   - `terraform_workspace` - The value `$TF_WORKSPACE`.
+   - `terraform_cloud_organization` - The value `$TF_CLOUD_ORGANIZATION`.
+
+3. Add [Harness text secrets](/docs/platform/security/add-use-text-secrets/) for `terraform_cloud_api_token`, `terraform_workspace` and `terraform_cloud_organization`. You added the `google_application_credentials` secret earlier in the tutorial.
+
+   <!-- ![Secrets list](../static/ci-tfc-notif-trigger/tfc-notif-trigger-9.png) -->
+
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-9.png')} />
 
 :::tip
-You can also skip adding `terraform_workspace` and `terraform_cloud_organization` as we can extract the values from the webhook payload using the expressions `<+trigger.payload.workspace_name>` and `<+trigger.payload.organization_name>` respectively.
+
+Alternately, you can extract the values for `terraform_workspace` and `terraform_cloud_organization` from the webhook payload by replacing their `<+secret>` expressions with the expressions `<+trigger.payload.workspace_name>` and `<+trigger.payload.organization_name>` respectively.
+
 :::
 
-## Notification Trigger
+### Add the trigger
 
-For the Harness CI pipelines to listen to Terraform Cloud Events we need to define a **Trigger**, navigate back to pipelines and select the **bootstrap argocd pipeline** --> **Triggers**,
+For the Harness CI pipeline to listen for Terraform Cloud events, you must [add a custom webhook trigger](/docs/platform/Triggers/trigger-deployments-using-custom-triggers).
 
-![Pipeline Triggers](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wi19na36updy8iw0rbcx.png)
+1. In Harness, go to your **bootstrap argocd pipeline**, and then select **Triggers**.
+2. Select **Add New Trigger**, and select the **Custom** trigger under **Webhook**.
 
-Click **Add New Trigger** to add a new webhook trigger(Type: `Custom`),
+   <!-- ![Custom webhook trigger option](../static/ci-tfc-notif-trigger/tfc-notif-trigger-10.png) -->
 
-![Custom Webhook Trigger](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/51m5842vy49r8j6v09mg.png)
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-10.png')} />
 
-On the **Configuration** page enter the name of the trigger to be `tfc notification`,
+3. For **Name**, enter `tfc notification`, and select **Continue**.
 
-![TFC Notification Config](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/u7w3tjzgrnfjh7thfs7y.png)
+   <!-- ![TFC notification configuration](../static/ci-tfc-notif-trigger/tfc-notif-trigger-11.png) -->
 
-Leave rest of the fields to defaults and click **Continue**, leave the **Conditions** to defaults and click **Continue**.
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-11.png')} />
 
-On the **Pipeline Input** update the **Pipeline Reference Branch** to be set to **main**
+4. Do not change the **Conditions**. Select **Continue**.
+5. For **Pipeline Input**, enter `main` for the **Pipeline Reference Branch**. Note that you must set this field, but it doesn't have any relevance in this tutorial, since this pipeline manually clones code repos.
 
-![Pipeline Input](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/dqc6h0c3zolmsk1e958v.png)
+   <!-- ![Pipeline input configuration](../static/ci-tfc-notif-trigger/tfc-notif-trigger-12.png) -->
 
-:::note
-The **Pipeline Reference Branch** does not have any implication with this demo as we do manual clone of resources.
-:::
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-12.png')} />
 
-Click **Create Trigger** to create and save the trigger.
+6. Select **Create Trigger**.
+7. On the list of triggers, select the icon in the **Webhook** column, and then select **Copy as Webhook URL**. This value will be referred to as `$TRIGGER_WEBHOOK_URL` in the rest of this tutorial.
 
-![Trigger List](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/wb65schvss82ze38zeil.png)
+   <!-- ![Copy webhook URL](../static/ci-tfc-notif-trigger/tfc-notif-trigger-13.png) -->
 
-### Copy Webhook URL
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-13.png')} />
 
-![Webhook URL](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/awr2qr1rbvl3sp96ng6f.png)
+8. Go to the notification settings for your Terraform Cloud workspace.
 
-Let us refer to this value as `$TRIGGER_WEBHOOK_URL`.
+   <!-- ![TFC notifications](../static/ci-tfc-notif-trigger/tfc-notif-trigger-14.png) -->
 
-## Terraform Notification
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-14.png')} />
 
-On your terraform cloud console navigate to the workspace **Settings** --> **Notifications**,
+9. Select **Create Notification**, and select **Webhook** as the **Destination**.
 
-![TFC Notifications](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4dz8cfedh4l15eti8wyi.png)
+   <!-- ![Webhook destination](../static/ci-tfc-notif-trigger/tfc-notif-trigger-15.png) -->
 
-Click **Create Notification** and select **Webhook** as the **Destination**,
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-15.png')} />
 
-![Webhook](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vkuzrz1ooegbjhvan0ur.png)
+10. For **Name**, enter `ArgoCD Bootstrap Notifier`, and enter your pipeline trigger webhook URL in **Webhook URL**.
 
-Update the notification details as shown,
+   <!-- ![TFC webhook details](../static/ci-tfc-notif-trigger/tfc-notif-trigger-16.png) -->
 
-![TFC Webhook Details](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rthp02u6nqt1elqkya0x.png)
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-16.png')} />
 
-Since we need to bootstrap argo CD only on create events we set the triggers to happen only on **Completed**,
+11. For **Triggers**, select **Only certain events** and **Completed** to that the `bootstrap argo CD` pipeline only runs on create events.
 
-![Trigger Events](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/3ztmiebchh4ybecx6pid.png)
+   <!-- ![Terraform notification trigger events](../static/ci-tfc-notif-trigger/tfc-notif-trigger-17.png) -->
 
-Click **Create Notification** to finish the creation of notification.
+   <docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-17.png')} />
 
-![TFC Webhook Creation Success](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/5z8yl21d2uffup5u4ir5.png)
+12. Select **Create Notification**.
 
-:::note
-The creation would have fired a notification, if the cluster is not ready yet the pipeline would have failed.
-:::
+Creating the notification triggers a notification. If the cluster is not ready yet, the pipeline fails. You can select **Send a test** to reattempt the trigger.
 
-**Congratulations!!**. With this setup any new or updates that's done to the `$TFC_GKE_REPO` will trigger a plan and apply on Terraform Cloud. A **Completed** plan will trigger the `bootstrap argocd pipline` to run and apply the manifests from `$BOOTSTRAP_ARGOCD_REPO` on the GKE cluster.
+<!-- ![TFC Webhook creation success message](../static/ci-tfc-notif-trigger/tfc-notif-trigger-18.png) -->
 
-An example of successful pipeline run
-
-![Pipeline Success](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/1mxvq8tmtvi6hlhmzsd6.png)
+<docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-18.png')} />
 
 ## Summary
 
-By using the terraform notifications feature we were able to make the CI pipelines listen to IaaC events and run the CI pipelines as needed.
+Now, your pipeline listens for notifications of IaC events from Terraform, and the pipeline only runs when it's necessary. Specifically in this pipeline, any changes to the `$TFC_GKE_REPO` trigger a *plan and apply* on Terraform Cloud. A **Completed** plan triggers the `bootstrap argocd pipline` to run and apply the manifests from `$BOOTSTRAP_ARGOCD_REPO` on the GKE cluster.
 
-![Notification Pattern](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a56swhyp5lzm9n5d9kpr.png)
+Here is an example of the logs from a successful run:
+
+<!-- ![Successful build logs with Terraform webhook notification](../static/ci-tfc-notif-trigger/tfc-notif-trigger-19.png) -->
+
+<docimage path={require('../static/ci-tfc-notif-trigger/tfc-notif-trigger-19.png')} />
