@@ -61,6 +61,20 @@ export const FeaturedList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/build-code/build/signed-image",
   },
+  {
+    title: 'Trigger CI using Terraform Cloud Notification',
+    module: MODULES.ci,
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+       Trigger CI pipeline using Terraform Cloud notifications using custom CI Webhooks.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '9 min',
+    link: "/tutorials/build-code/terrform-ci-notification-trigger",
+  },
 ];
 
 export const CIList: CardItem[] = [
@@ -210,6 +224,20 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/build-code/fastest-ci",
+  },
+  {
+    title: 'Trigger CI using Terraform Cloud Notification',
+    module: MODULES.ci,
+    icon: "img/icon_ci.svg",
+    description: (
+      <>
+       Trigger CI pipeline using Terraform Cloud notifications using custom CI Webhooks.
+      </>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '9 min',
+    link: "/tutorials/build-code/terrform-ci-notification-trigger",
   },
 ];
 
