@@ -10,7 +10,6 @@ In this topic:
 
 <!-- TOC start -->
 - [What is a security scanner?](#what-is-a-security-scanner)
-  - [Proactive security testing](#proactive-security-testing)
 - [How many scanners does STO support?](#how-many-scanners-does-sto-support)
 - [Do similar category tools show identical issues?](#do-similar-category-tools-show-identical-issues)
 - [What is an STO Target?](#what-is-an-sto-target)
@@ -26,6 +25,7 @@ In this topic:
 - [What infrastructure does STO support for running scans?](#what-infrastructure-does-sto-support-for-running-scans)
 - [How does STO deduplicate detected issues?](#how-does-sto-deduplicate-detected-issues)
 - [I don't have any scanner licenses and I'm just getting started with security scanning. Where do I begin?](#i-dont-have-any-scanner-licenses-and-im-just-getting-started-with-security-scanning-where-do-i-begin)
+- [Why don't I see results from specific scans in the Security Testing Dashboard?](#why-dont-i-see-results-from-specific-scans-in-the-security-testing-dashboard)
 <!-- TOC end -->
 
 ### What is a security scanner?  
@@ -39,7 +39,7 @@ A _security scanner_ is a tool that scans a software target and detects security
 
 The following pictorial highlights a typical SDLC process.
 
-#### Proactive security testing
+**Proactive security testing**
 
 ![](./static/sto-faqs-00.png)
 
@@ -174,3 +174,6 @@ STO maintains its own set of container images pre-installed with open-source sca
 
 To get started, go to [Onboarding STO](/docs/category/onboard-with-sto). 
         
+### Why don't I see results from specific scans in the Security Testing Dashboard? 
+
+The most likely reason is that the scanned target does not have a baseline defined. The [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/security-testing-dashboard.md) is intended to show vulnerabilities that potentially affect production-ready artifacts. For this reason, the dashboard shows detected vulnerabilities for targets that have baselines defined. 
