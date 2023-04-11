@@ -12,7 +12,7 @@ description: Describes the use of the download-delegates REST resource.
 
 Use the operations of the **Delegate Download Resource** to obtain the delegate YAML file.
 
-To use this resource, you must have a Harness account and an API key. For information on configuring your Harness account with an API key, go to [Harness API Quickstart](/docs/platform/16_apis/api-quickstart.md).
+To use this resource, you must have a Harness account and an API key. For information on configuring your Harness account with an API key, go to [Harness API Quickstart](/docs/platform/16_APIs/api-quickstart.md).
 
 For detailed information on constructing requests, go to [Delegate Download Resource](https://apidocs.harness.io/tag/Delegate-Download-Resource).
 

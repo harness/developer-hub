@@ -12,7 +12,7 @@ description: Describes the use of the delegate-group-tags REST resource.
 
 Use the operations of the **Delegate Group Tags Resource** to add, list, or delete tags from the specified delegate, to replace a set of tags with another for the specified delegate, or to list the delegates that have the specified tags.
 
-To use this resource, you must have a Harness account and an API key. For information on configuring your Harness account with an API key, see [Harness API Quickstart](/docs/platform/16_apis/api-quickstart.md).
+To use this resource, you must have a Harness account and an API key. For information on configuring your Harness account with an API key, see [Harness API Quickstart](/docs/platform/16_APIs/api-quickstart.md).
 
 Several operations of this resource additionally require the specification of a `groupIdentifier` value. This is the delegate identifier. 
 
