@@ -69,11 +69,11 @@ If the **Skip Dry Run** option is selected, Harness will not use the `--dry-r
 
 See the following topics for these settings:
 
-* [Step Skip Condition Settings](..//docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md.md)
-* [Step Failure Strategy Settings](..//docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](..//docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ## See Also
 
-* [Canary Delete Step](kubernetes-delegate-step.md)
+* [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-delegate-step)
 

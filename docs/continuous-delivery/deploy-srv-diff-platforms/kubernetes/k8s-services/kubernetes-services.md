@@ -451,7 +451,7 @@ To add a Helm chart to your service, do the following:
    ![helm storage](./static/a49287968d8e99d3368420384bab12d62206d48fa714cd0c61eed12ca14c641f.png)  
 
 
-   For the steps and settings of each option, go to [Connectors](https://developer.harness.io/docs/category/connectors) or [Connect to a Git repo](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo).
+   For the steps and settings of each option, go to [Connectors](/docs/category/connectors) or [Connect to a Git repo](/docs/platform/Connectors/connect-to-code-repo).
    
    Once your Helm chart is added, it appears in the **Manifests** section. For example:
    
@@ -614,7 +614,7 @@ To add a kustomization, do the following:
 8. In **Service Definition**, select **Kubernetes**.
 9. In **Manifests**, click **Add Manifest**.
 10. In **Specify Manifest Type**, click **Kustomize**, and click **Continue**.
-11. In **Specify Manifest Type**, select a Git provider, [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/), or Azure Repo.
+11. In **Specify Manifest Type**, select a Git provider, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), or Azure Repo.
 12. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**.
 
     + **Manifest Identifier:** enter **kustomize**.
@@ -674,7 +674,7 @@ To use Kustomize Patches, do the following:
 </Tabs2>
 ```
 
-If this is your first time using Harness for a Kustomize deployment, see the [Kustomize Quickstart](../../onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+If this is your first time using Harness for a Kustomize deployment, see the [Kustomize Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart).
 
 For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
 
@@ -708,7 +708,7 @@ import TabItem3 from '@theme/TabItem';
 <Tabs3>
   <TabItem3 value="YAML" label="YAML" default>
 
-Here's a YAML example for a service using an OpenShift template that is stored in the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
+Here's a YAML example for a service using an OpenShift template that is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 <details>
 <summary>Example</summary>
@@ -826,7 +826,7 @@ To add an OpenShift Template to a service, do the following:
 7.  In **Specify Manifest Type**, select **OpenShift Template**, and then select **Continue.**
 8.  In **Specify OpenShift Template Store**, select where your template is located. 
   
-  You can use a Git provider, the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/), a custom repo, or Azure Repos.
+  You can use a Git provider, the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), a custom repo, or Azure Repos.
 1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
 2.  Select **Continue**. **Manifest Details** appears.
 3.  In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.
@@ -869,7 +869,7 @@ You can now see the params file in the OpenShift Template **Manifest Details**.
 
 #### Deployment strategy support
 
-In addition to standard workload type support in Harness (see [What can I deploy in Kubernetes?](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes)), Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies.
+In addition to standard workload type support in Harness (see [What can I deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes)), Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies.
 
 Please use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
 
@@ -925,7 +925,7 @@ You cannot use Harness variables expressions in your Kubernetes object manifest 
 
 When you select the artifact repo for the artifact, like a Docker Hub repo, you specify the artifact and tag/version to use. 
 
-You can select a specific tag/version, use a [runtime input](https://developer.harness.io/docs/platform/references/runtime-inputs/) so that you are prompted for the tag/version when you run the pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
+You can select a specific tag/version, use a [runtime input](/docs/platform/references/runtime-inputs/) so that you are prompted for the tag/version when you run the pipeline, or you can use an Harness variable expression to pass in the tag/version at execution.
 
 Here's an example where a runtime input is used and you select which image version/tag to deploy.
 
@@ -1166,7 +1166,7 @@ To add an artifact from a Docker registry, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Select Artifact Repository Type**, select the registry where your Docker artifact is hosted. For this example, we'll select **Docker Registry**, and then click **Continue**.
-8. Select or create a [Docker Registry Connector](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
+8. Select or create a [Docker Registry Connector](/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference).
 9.  Select **Continue**.
 10. In **Artifact Source Name**, enter a name that identifies your artifact.
 11. In **Image path**, enter the name of the artifact you want to deploy, such as `library/nginx` or `jsmtih/privateimage`.
@@ -1200,7 +1200,7 @@ To add an artifact from a Docker registry, do the following:
 <details>
 <summary>Use GCR artifacts</summary>
 
-You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
+You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/gcs-connector-settings-reference).
 
 ```mdx-code-block
 import Tabs6 from '@theme/Tabs';
@@ -1361,14 +1361,14 @@ To add an artifact from GCR, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Select Artifact Repository Type**, click **GCR**, and then click **Continue**.
-8. In **GCR Repository**, select or create a [Google Cloud Platform (GCP) Connector](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md) that connects to the GCP account where the GCR registry is located.
+8. In **GCR Repository**, select or create a [Google Cloud Platform (GCP) Connector](/docs/platform/Connectors/ref-cloud-providers/gcs-connector-settings-reference) that connects to the GCP account where the GCR registry is located.
 9. Click **Continue**.
 10. In **Artifact Source Name**, enter a name for the artifact.
 11. In **GCR Registry URL**, select the GCR registry host name, for example `gcr.io`.
 12. In **Image Path**, enter the name of the artifact you want to deploy.
 
     Images in repos need to reference a path starting with the project Id that the artifact is in, for example: `myproject-id/image-name`.
-13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](../../../platform/20_References/runtime-inputs.md).
+13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](/docs/platform/references/runtime-inputs/).
     
     ![](./static/kubernetes-services-10.png)
     
@@ -1404,7 +1404,7 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
-For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
+For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/gcs-connector-settings-reference).
 
 ```mdx-code-block
 import Tabs7 from '@theme/Tabs';
@@ -1560,7 +1560,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
-For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
+For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/gcs-connector-settings-reference).
 
 To add an artifact from Google Artifact Registry, do the following:
 
@@ -1572,7 +1572,7 @@ To add an artifact from Google Artifact Registry, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, select **Google Artifact Registry**, and then select **Continue**.
-8. In **GCP Connector**, select or create a [Google Cloud Platform (GCP) Connector](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md) that connects to the GCP account where the Google Artifact Registry is located. 
+8. In **GCP Connector**, select or create a [Google Cloud Platform (GCP) Connector](/docs/platform/Connectors/ref-cloud-providers/gcs-connector-settings-reference) that connects to the GCP account where the Google Artifact Registry is located. 
 9. Select **Continue**.
 10. In **Artifact Details**, you are basically creating the pull command. For example:
     
@@ -1586,7 +1586,7 @@ To add an artifact from Google Artifact Registry, do the following:
 16. In **Repository Name**, enter the name of the repo.
 17. In **Package**, enter the artifact name.
 18. In **Version Details**, select **Value** or **Regex**.
-19. In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [runtime input or expression](../../../platform/20_References/runtime-inputs.md).
+19. In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select [runtime input or expression](/docs/platform/references/runtime-inputs/).
     
     ![](./static/kubernetes-services-11.png)
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
@@ -1625,7 +1625,7 @@ Ensure the Harness delegate you have installed can reach your Google Artifact Re
 <details>
 <summary>Use ECR artifacts</summary>
 
-You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/aws-connector-settings-reference).
 
 ```mdx-code-block
 import Tabs8 from '@theme/Tabs';
@@ -1781,7 +1781,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem8 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/aws-connector-settings-reference).
 
 To add an artifact from ECR, do the following:
 
@@ -1792,7 +1792,7 @@ To add an artifact from ECR, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
-8. In **ECR Repository**, select or create an [AWS connector](../../../platform/7_Connectors/add-aws-connector.md) that connects to the AWS account where the ECR registry is located.
+8. In **ECR Repository**, select or create an [AWS connector](/docs/platform/Connectors/add-aws-connector) that connects to the AWS account where the ECR registry is located.
 9. Select **Continue**.
 10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
 11. In **Image Path**, enter the name of the artifact you want to deploy.
@@ -1858,7 +1858,7 @@ Ensure that the AWS IAM user account you use in the AWS Connector has the follow
 <details>
 <summary>Use ACR artifacts</summary>
 
-You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure cloud connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
+You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure cloud connector](/docs/platform/Connectors/add-a-microsoft-azure-connector).
 
 
 ```mdx-code-block
@@ -2086,7 +2086,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem9 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
+You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](/docs/platform/Connectors/add-a-microsoft-azure-connector).
 
 To add an artifact from ACR, do the following:
 
@@ -2098,7 +2098,7 @@ To add an artifact from ACR, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Artifacts**, select **Add Artifact Source**.
 7. In **Artifact Repository Type**, click **ACR**, and then select **Continue**.
-8. In **ACR Repository**, select or create an [Azure Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md) that connects to the Azure account where the ACR registry is located.
+8. In **ACR Repository**, select or create an [Azure Connector](/docs/platform/Connectors/add-a-microsoft-azure-connector) that connects to the Azure account where the ACR registry is located.
 9. Select **Continue**.
 10. In **Artifact Details**, in **Subscription Id**, select the Subscription Id where the artifact source is located.
 11. In **Registry**, select the ACR registry to use.
@@ -2221,7 +2221,7 @@ The following JSON sample creates a custom role with the required permissions. T
 <details>
 <summary>Use Nexus artifacts</summary>
 
-You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](../../../platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
+You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference).
 
 ```mdx-code-block
 import Tabs10 from '@theme/Tabs';
@@ -2383,7 +2383,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem10 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](../../../platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
+You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](/docs/platform/Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference).
 
 To add an artifact from Nexus, do the following:
 
@@ -2439,7 +2439,7 @@ For Nexus 3, when used as a **Docker** repo, the user needs:
 <details>
 <summary>Use Artifactory artifacts</summary>
 
-You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](/docs/platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference).
 
 ```mdx-code-block
 import Tabs11 from '@theme/Tabs';
@@ -2592,7 +2592,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem11 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](..//docs/platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference).
 
 To add an artifact from Artifactory, do the following:
 
@@ -2886,7 +2886,7 @@ To add an artifact from Github Packages, do the following:
 13. In **Package Name**, select the name of the package.
 14. In **Version**, select the version to use. 
   
-  If you use [runtime input](../../../platform/20_References/runtime-inputs.md), when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+  If you use [runtime input](/docs/platform/references/runtime-inputs/), when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 15. Select **Submit**. The Artifact is added to the Service Definition.
 
 ```mdx-code-block
@@ -2948,7 +2948,7 @@ To use this artifact source, you provide a script to query your artifact server 
 
 The output must be a JSON array, with a mandatory key for a Build Number/Version. You then map a key from your JSON output to the Build Number/Version variable.
 
-For steps on adding a Custom Artifact source, go to [Add a custom artifact source for CD](../../x-platform-cd-features/services/add-a-custom-artifact-source-for-cd.mdource-for-cd.md).
+For steps on adding a Custom Artifact source, go to [Add a custom artifact source for CD](/docs/continuous-delivery/x-platform-cd-features/services/add-a-custom-artifact-source-for-cd).
 
 </details>
 
@@ -3210,12 +3210,12 @@ You can propagate services between stages and override service settings by using
 
 For more information, go to:
 
-- [Propagating CD services](../../x-platform-cd-features/services/propagate-and-override-cd-services.md-cd-services.md)
-- [Add and override values YAML files](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files.md)
+- [Propagating CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services)
+- [Add and override values YAML files](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files)
 
 ## Next steps
 
 Once you've configured your service, you can move onto the stage's **Environment** settings and define the target Kubernetes cluster and namespace for your deployment.
 
-See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure).
 
