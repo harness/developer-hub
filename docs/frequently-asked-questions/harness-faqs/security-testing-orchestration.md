@@ -60,7 +60,7 @@ STO supports the following test targets and form factors:
 * Instance
 * Configuration 
 
-The following table specifies where the target to be tested is located
+The following table specifies where the target to be tested is located.
 
 <table>
   <tr>
