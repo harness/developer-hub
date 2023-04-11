@@ -2,23 +2,15 @@
 title: Kubernetes deployments basics
 description: High-level steps involved in a Harness Kubernetes deployment.
 sidebar_position: 1
-helpdocs_topic_id: u29v1uc1mh
-helpdocs_category_id: qfj6m1k2c4
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 This topic describes the concept of a Harness Kubernetes deployment by describing the high-level steps involved.
 
-For a quick tutorial, see the [Kubernetes deployment tutorial](../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
+For a quick tutorial, see the [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
-## Before You Begin
+Learn [Harness' Key Concepts](/docs/getting-started/learn-harness-key-concepts) before you review Kubernetes deployment basics.
 
-Before learning about, you should have an understanding of the following:
-
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-
-## What Does Harness Need Before You Start?
+## Before you begin
 
 A Harness Kubernetes deployment requires the following:
 
@@ -26,25 +18,23 @@ A Harness Kubernetes deployment requires the following:
 2. Artifact, if not hardcoded in manifests or values file. For example, a Docker image of NGINX from Docker Hub.
 3. Kubernetes cluster: You will need a target cluster for the Harness Delegate, your app, and your Kubernetes workloads. Your cluster should have enough RAM to host the Delegate and your apps and workloads.
 
-## What Does Harness Deploy?
+## What does Harness deploy?
 
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests. You can provide manifests using remote sources and Helm charts.
 
-## What is a Workload in Harness?
+## What is a workload in Harness?
 
 Harness deployments involve different strategies and steps. These strategies and steps support different Kubernetes objects as managed and unmanaged workloads.
 
-See [What Can I Deploy in Kubernetes?](../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md) for details on each strategy and workload support.
+Go to [what can I deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes) for details on each strategy and workload support.
 
 The following tables provide a useful summary.
 
-### Managed Workloads Table
+### Managed workloads table
 
 In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed and managed to steady state. If steady state is not reached, the deployment is considered a failure and the Failure Strategy is executed (typically rollback).
 
-
-
-|  | **Apply** | **Rolling** | **Rollback** | **Blue Green** | **Canary** | **Scale** |
+| **Apply** | **Rolling** | **Rollback** | **Blue Green** | **Canary** | **Scale** |
 | --- | --- | --- | --- | --- | --- | --- |
 | **Deployment** | Yes | Yes | Yes | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes |
 | **StatefulSet** | Yes | Yes | Yes | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes |
@@ -52,21 +42,21 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
 | **CRDs** | Yes | Yes | Yes | No | No | No |
 | **Any Object** | Yes | No | No | No | No | No |
 
-### Unmanaged Workloads Table
+### Unmanaged workloads table
 
 To deploy an object outside of the managed workloads in any strategy, you use the Harness [annotation](../cd-technical-reference/cd-k8s-ref/kubernetes-annotations-and-labels.md) to make it unmanaged: `harness.io/direct-apply: "true"|"false"`. Set to `true` to make a manifest an unmanaged workload.
 
 For example, Harness Canary and Blue/Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity, but you can deploy additional workloads as unmanaged using the `harness.io/direct-apply:true` annotation.
 
-|  | **Apply** | **Rolling** | **Rollback** | **Blue Green** | **Canary** | **Scale** |
+| **Apply** | **Rolling** | **Rollback** | **Blue Green** | **Canary** | **Scale** |
 | --- | --- | --- | --- | --- | --- | --- |
 | **Any Object** | Yes | Yes | No | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | No |
 
-## What Does a Harness Kubernetes Deployment Involve?
+## What does a Harness Kubernetes deployment involve?
 
-All the steps necessary can be performed inline with creating your CD Pipeline. You can also set up resources like Connectors in your Resources and then select them within your Pipeline.
+All the steps necessary can be performed inline with creating your CD pipeline. You can also set up resources like connectors in your resources and then select them within your pipeline.
 
-The following list describes the major steps of a Harness Kubernetes deployment. We assume you have a [Harness Project](../../platform/organizations-and-projects/projects-and-organizations.md) set up.
+The following list describes the major steps of a Harness Kubernetes deployment. We assume you have a [Harness project](/docs/platform/organizations-and-projects/projects-and-organizations) set up.
 
 | **Step** | **Name** | **Description and Links** |
 | --- | --- | --- |
