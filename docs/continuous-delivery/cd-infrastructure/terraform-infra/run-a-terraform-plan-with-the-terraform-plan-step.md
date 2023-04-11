@@ -266,7 +266,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 ```bash
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
-See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
 
 ### Remote Variables
 
@@ -401,7 +401,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
 
 ## Export JSON representation of Terraform Plan
 
@@ -411,7 +411,7 @@ In subsequent **Execution** steps, such as a [Shell Script](../../cd-execution/c
 
 `<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
 
-For example, if you had a Terraform Plan step with the [Id](../../../platform/20_References/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
+For example, if you had a Terraform Plan step with the [Id](/docs/platform/20_References/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
 
 
 ```bash

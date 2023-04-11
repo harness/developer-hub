@@ -256,7 +256,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 ```bash
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
-See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
 
 ### Remote Variables
 
@@ -384,7 +384,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
 
 ## Option: Advanced Settings
 

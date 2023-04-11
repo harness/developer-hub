@@ -79,7 +79,7 @@ The Terraform Plan step is where you connect Harness to your repo and add your T
 
 1. In **Name**, enter a name for the step, for example, **plan**.
 
-Harness will create an [Entity Id](../../../platform/20_References/entity-identifier-reference) using the name. The Id is very important. It's used to refer to settings in this step.
+Harness will create an [Entity Id](/docs/platform/20_References/entity-identifier-reference) using the name. The Id is very important. It's used to refer to settings in this step.
 
 For example, if the Id of the stage is **terraform** and the Id of the step is **plan**, and you want to echo its timeout setting, you would use:
 
@@ -234,7 +234,7 @@ You can add inline variables just like you would in a tfvar file.
 2. The **Add Inline Terraform Var File** settings appear.
 3. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
 
-This Identifier is a [Harness Identifier](../../../platform/20_References/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
+This Identifier is a [Harness Identifier](/docs/platform/20_References/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
 
 `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
 
@@ -265,7 +265,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
 
-See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
 
 ### Remote variables
 
@@ -309,7 +309,7 @@ terraform {
 
 In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
-You can use Harness secrets for credentials. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
+You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
 
 ## Targets
 
@@ -329,7 +329,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](../../../platform/6_Security/2-add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
 
 ## Advanced settings
 
@@ -345,7 +345,7 @@ In **Advanced**, you can use the following options:
 
 By default, Harness adds an Approval step between the Terraform Plan and Terraform Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) to configure the step.
 
-You can also use a Jira Approval step. See [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages).
+You can also use a Jira Approval step. See [Adding Jira Approval Stages and Steps](/docs/platform/9_Approvals/adding-jira-approval-stages).
 
 ## Terraform Apply Step
 

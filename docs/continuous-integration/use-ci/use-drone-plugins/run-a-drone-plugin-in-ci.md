@@ -26,7 +26,7 @@ To install and run a plugin, you need the following:
 * A CI pipeline with a Build stage to run the plugin:
 	+ [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md)
 * You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.
-	+ [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+	+ [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
 
 ### Workflow Description
 
@@ -60,7 +60,7 @@ This example describes how to run the Drone Downloads plugin, which downloads an
       + `source` = The artifact to download.
 	  + `destination` = Save the downloaded artifact to this file.
 	  + `username` = A valid username for the Git provider.
-	  + `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](../../../platform/6_Security/2-add-use-text-secrets.md#step-3-reference-the-encrypted-text-by-identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
+	  + `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](/docs/platform/6_Security/2-add-use-text-secrets.md#step-3-reference-the-encrypted-text-by-identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
 
    ![](./static/run-a-drone-plugin-in-ci-00.png)
 
@@ -75,7 +75,7 @@ You can use the examples in the [Drone Plugins Marketplace](https://plugins.dron
 
 #### Text Secrets in Drone vs. Harness CI
 
-The following snippets illustrate the different ways that Drone and Harness CI handle text secrets. See [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+The following snippets illustrate the different ways that Drone and Harness CI handle text secrets. See [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
 
 Note that the CI definition includes a few additional fields and that some fields use different formats.
 
@@ -134,5 +134,5 @@ The settings appear in the UI like this:
 * [Drone Plugins Marketplace](https://plugins.drone.io/)
 * [Run GitHub Actions in CI pipelines](run-a-git-hub-action-in-cie.md)
 * [Plugin step settings](../../ci-technical-reference/plugin-step-settings-reference.md)
-* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+* [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
 

@@ -816,7 +816,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 
 ##### Native Helm deployments
 
-For [Native Helm deployments](../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), the following SDKs/tools are certified.
+For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md), the following SDKs/tools are certified.
 
 |                   |                                                 |                       |
 | ----------------- | ----------------------------------------------- | --------------------- |
