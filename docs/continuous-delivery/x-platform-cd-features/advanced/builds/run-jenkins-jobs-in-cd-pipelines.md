@@ -2,15 +2,11 @@
 title: Run Jenkins jobs in CD pipelines
 description: This topic shows you how to run Jenkins jobs in CD stages.
 sidebar_position: 3
-helpdocs_topic_id: as4dtppasg
-helpdocs_category_id: y6gyszr0kl
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 This topic describes how to use the Jenkins step in a Harness CD pipeline.
 
-Continuous Integration (CI) can be performed in Harness using the module and [CI Pipelines](../../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
+Continuous Integration (CI) can be performed in Harness using the module and [CI pipelines](/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics/).
 
 If you are using Harness Continuous Delivery (CD) but not Harness Continuous Integration (CI), you can still perform CI using the Jenkins step in your CD stage.
 
@@ -18,7 +14,7 @@ Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jen
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](../../../first-gen/starthere-firstgen/supported-platforms.md).
+For more information, go to [supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies/).
 
 ## Limitations and requirements
 
@@ -34,19 +30,19 @@ When executing a job, you can also *dynamically capture* the output from the j
 
 ### What information is available to capture?
 
-Any Jenkins job information in the particular shell session of the pipeline can be captured and output using one or more Jenkins steps. In addition, you can capture information available using the built-in Harness variables. For more information, go to [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md).
+Any Jenkins job information in the particular shell session of the pipeline can be captured and output using one or more Jenkins steps. In addition, you can capture information available using the built-in Harness variables. For more information, go to [built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/).
 
 Capturing and exporting output in the Jenkins step can be very powerful. For example, a Jenkins step could capture Jenkins build information, and a Harness service could echo the build information and use it in a complex function, and then export the output down the pipeline for further evaluation.
 
 ## Add the Jenkins step
 
-This step assumes you have a created a pipeline and CD stage. If you are new to stages, go to [Add a Stage](../../../platform/8_Pipelines/add-a-stage.md).
+This step assumes you have a created a pipeline and CD stage. If you are new to stages, go to [add a stage](/docs/platform/pipelines/add-a-stage/).
 
 In your CD Stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
 ## Jenkins connector
 
-Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [Connect to Jenkins](../../../platform/7_Connectors/connect-to-jenkins.md).
+Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [connect to Jenkins](/docs/platform/connectors/connect-to-jenkins/).
 
 ## Job name
 
@@ -56,7 +52,7 @@ Select the Jenkins job (also called a project) to execute. The list is automatic
 
 You can use runtime inputs or expressions for the Jenkins connector and job name.
 
-Go to [Fixed Values, Runtime Inputs, and Expressions](../../../platform/20_References/runtime-inputs.md) for more information.
+Go to [fixed values, runtime inputs, and expressions](/docs/platform/references/runtime-inputs/) for more information.
 
 ## Job parameters
 
@@ -81,11 +77,11 @@ If this setting is enabled then `Unstable` statuses will be considered as `Succe
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Policy-as-code/harness-governance-overview)
 
 ## Captured environment variables from Jenkins builds
 

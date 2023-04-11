@@ -2,24 +2,20 @@
 title: Harness Community Edition deployment tutorial
 description: This topic walks you through deploying setting up Harness CD Community Edition locally and creating and deploying a CD pipeline.
 sidebar_position: 2
-helpdocs_topic_id: ltvkgcwpum
-helpdocs_category_id: c9j6jejsws
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
-This quickstart shows you how to set up Harness CD Community Edition locally and create a CD Pipeline that deploys a public NGINX image to a local cluster.
+This quickstart shows you how to set up Harness CD Community Edition locally and create a CD pipeline that deploys a public NGINX image to a local cluster.
 
 Harness CD Community Edition is a lightweight version of Harness that you can download and run on your laptop or any VM with 3GB RAM and 2 CPUs. Harness CD Community Edition is intended to get devs started with Harness quickly without having to sign up for a Harness SaaS account.
 
-For an overview, see [Harness CD Community Edition Overview](./harness-community-edition-overview.md).
+For an overview, see [Harness CD Community Edition overview](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview).
 
 ## Objectives
 
 You'll learn how to:
 
 1. Install and run Harness CD Community Edition locally.
-2. Create and deploy a CD Pipeline in Harness CD Community Edition using a public Docker image and a local Kubernetes cluster.
+2. Create and deploy a CD pipeline in Harness CD Community Edition using a public Docker image and a local Kubernetes cluster.
 
 ## Requirements
 
@@ -36,16 +32,16 @@ You'll learn how to:
 	  - If you want to use Minikube instead of Docker Desktop Kubernetes, use Minikube minimum version v1.22.0 or later installed locally.
   	  - Minikube needs 4GB and 4 CPUs: `minikube start --memory 4g --cpus 4`.
 	+ Kubernetes cluster.
-  	+ This is the target cluster for the deployment you will set up in this quickstart. When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes.Don't have a cluster? See [Notes](#notes).
-	+ Review [Harness CD Community Edition Overview](./harness-community-edition-overview.md) and [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
+  	+ This is the target cluster for the deployment you will set up in this quickstart. When Docker Compose Kubernetes is installed it comes with a cluster and the **default** namespace. You don't need to make any changes to Docker Compose Kubernetes. Don't have a cluster? Go to [Notes](#notes) below.
+	+ Review [Harness CD Community Edition overview](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview) and [Harness key concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
 
 The Docker Compose installer is described below, but Harness also supports a [Helm installer](https://github.com/harness/harness-cd-community/blob/main/helm/README.md).
 
-### Completely New to Continuous Delivery (CD)?
+### Completely new to Continuous Delivery (CD)?
 
 Simply put, CD is the automation of a software release process. In Harness, you model this process as a Pipeline.
 
-#### What do I need for a CD Pipeline?
+#### What do I need for a CD pipeline?
 
 1. An artifact to deploy: an artifact is the application or microservice you are deploying. It can be a Docker image, a zip file, etc.
 2. A deployment method: this is whatever specification or manifest is needed by the deployment platform you are using, such as a Kubernetes manifest.
@@ -53,7 +49,7 @@ Simply put, CD is the automation of a software release process. In Harness, you 
 
 Harness takes care of the rest.
 
-## Architecture Summary
+## Architecture summary
 
 Harness CD Community Edition has two main components:
 
@@ -63,13 +59,13 @@ Harness CD Community Edition has two main components:
 * **Harness Delegate:** the Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, etc. 
   * You can install a Delegate inline when setting up connections to your resources or separately as needed. This guide will walk you through setting up a Harness Delegate inline.
 
-## Step 1: Installation
+## Installation
 
 Installation and deployment should take about 10 minutes.
 
 The Docker Compose installer is described below, but Harness also supports a [Helm installer](https://github.com/harness/harness-cd-community/blob/main/helm/README.md).
 
-Make sure your system meets the **Requirements** above.
+Make sure your system meets the [requirements](#requirements) above.
 
 Ensure Docker Desktop is running and Docker Desktop Kubernetes is running with it.
 
@@ -152,7 +148,7 @@ In your browser, go to the URL `http://localhost/#/signup`.
 
 If you see a 403 error, that just means the Harness Manager service isn't up and running yet. Make sure you ran the wait-for-it.sh script earlier and wait a few minutes: `docker-compose run --rm proxy wait-for-it.sh ng-manager:7090 -t 180`.
 
-Enter an email address and password and click **Sign up**.
+Enter an email address and password and select **Sign up**.
 
 You'll see the CD page:
 
@@ -162,9 +158,9 @@ You're now using Harness!
 
 The next section walks you through setting up and running a simple CD Pipeline using a public manifest and Docker image.
 
-## Step 2: Create Pipeline
+## Create pipeline
 
-We'll create a quick CD Pipeline that deploys a public manifest and image to a local Kubernetes cluster. The following steps are similar to the [Kubernetes CD Quickstart](../kubernetes/kubernetes-cd-quickstart.md).
+We'll create a quick CD pipeline that deploys a public manifest and image to a local Kubernetes cluster. The following steps are similar to the [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 1. In Harness, click **Create Project**.
 2. In **About the Project**, in **Name**, enter **Quickstart**, and then click **Save and Continue**.

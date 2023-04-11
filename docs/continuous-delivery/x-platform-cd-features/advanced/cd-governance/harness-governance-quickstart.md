@@ -1,12 +1,12 @@
 ---
-title: Harness Policy As Code Quickstart
+title: Harness Policy As Code quickstart
 description: Learn how to use OPA policies in Harness to enforce governance across your DevOps processes.
 sidebar_position: 2
 ---
 
 
 :::note
-Currently, this feature is behind the Feature Flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag, `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -31,8 +31,8 @@ You'll learn how to:
 ### Before you begin
 
 * **What you don't need:** this quickstart is only intended to show you how Pipeline governance works and so we use a simple Pipeline that only contains an Approval stage. You do not need a Kubernetes cluster or other host as a CD deployment target or CI build farm. You do not need a running Harness Delegate.
-* Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-* The [Harness Policy As Code Overview](harness-governance-overview.md) provides a concise overview of Harness Policy As Code.
+* Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
+* The [Harness Policy As Code overview](/docs/platform/policy-as-code/harness-governance-overview/) provides a concise overview of Harness Policy As Code.
 * **New to OPA Policy Authoring?** OPA policies are written in OPA's Rego policy language. We'll provide the policy you need for this quickstart, but it's also helpful to have some familiarity with Rego before writing and reading policies.
 	+ **Highly recommend:** Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 	+ See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheatsheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.
@@ -53,9 +53,9 @@ In Harness, you add Rego policies to a Policy Set and select the Harness entitie
 
 When certain events happen (e.g. saving or running a Pipeline), Harness reaches out to the Harness OPA server to evaluate the action using the Policy Set.
 
-For more details, see [Harness Policy As Code Overview](harness-governance-overview.md).
+For more details, see [Harness Policy As Code overview](/docs/platform/policy-as-code/harness-governance-overview/).
 
-### Step 1: Create a Project
+### Create a Project
 
 In your Harness account, click **Home**.
 
@@ -73,9 +73,9 @@ Your new Project is created.
 
 Next we'll add a Pipeline that we'll evaluate later using OPA policies.
 
-### Step 2: Create a Pipeline
+### Create a Pipeline
 
-For this quickstart, we'll use a very simple Pipeline that only contains an [Approval stage](../9_Approvals/adding-harness-approval-stages.md).
+For this quickstart, we'll use a very simple Pipeline that only contains an [Approval stage](/docs/platform/approvals/adding-harness-approval-stages/).
 
 Open the new Harness Project you created and click **Deployments**.
 
@@ -137,7 +137,7 @@ We use the **Quickstart** `projectIdentifier` and the **default** `orgIdentifier
 
 Click **Save**. The Pipeline is now saved.
 
-Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](../9_Approvals/adding-harness-approval-stages.md) and one [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step that echoes `hello`.
+Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](/docs/platform/approvals/adding-harness-approval-stages/) and one [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step that echoes `hello`.
 
 ![](./static/harness-governance-quickstart-60.png)
 
@@ -269,7 +269,7 @@ Harness Pipelines can be created in YAML, but Rego evaluates JSON.In the JSON, y
 
 ![](./static/harness-governance-quickstart-66.png)
 
-The input payload contains user `metadata` for the user that initiated the event. Metadata includes roles, groups, etc, and is added to every evaluation automatically. This can be used for policies where you want to evaluate users.Click **Test**.
+The input payload contains user `metadata` for the user that initiated the event. Metadata includes roles, groups, etc, and is added to every evaluation automatically. This can be used for policies where you want to evaluate users. Click **Test**.
 
 In **Output**, you can see that the Pipeline failed the policy because it is missing an Approval step.
 
@@ -361,7 +361,7 @@ Add a new line before the `- step:` for the **Shell Script** step.
 
 ![](./static/harness-governance-quickstart-75.png)
 
-On the new line, paste the YAML for a [Manual Approval](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md) step:
+On the new line, paste the YAML for a [Manual Approval](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) step:
 
 
 ```
@@ -380,7 +380,7 @@ On the new line, paste the YAML for a [Manual Approval](../../continuous-deliver
                                     approverInputs: []  
                                 timeout: 1d
 ```
-Note the `userGroups` setting. This is the Harness User Group that is allowed to approve this step. You can edit this in the Visual editor if you want to add your User Group(s), but it's not necessary for this quickstart.Click **Save**.
+Note the `userGroups` setting. This is the Harness User Group that is allowed to approve this step. You can edit this in the Visual editor if you want to add your User Group(s), but it's not necessary for this quickstart. Click **Save**.
 
 Click **Run**, and then **Run Pipeline**.
 
@@ -426,7 +426,7 @@ In this tutorial, you:
 
 ### See also
 
-* [Add a Policy Engine Step to a Pipeline](add-a-governance-policy-step-to-a-pipeline.md)
-* [Harness Policy As Code Overview](harness-governance-overview.md)
-* [Harness Policy As Code Overview for Feature Flags](../../feature-flags/ff-using-flags/harness-policy-engine.md)
+* [Add a Policy Engine step to a pipeline](/docs/platform/policy-as-code/add-a-governance-policy-step-to-a-pipeline/)
+* [Harness Policy As Code overview](/docs/platform/policy-as-code/harness-governance-overview/)
+* [Harness Policy As Code overview for Feature Flags](/docs/feature-flags/ff-using-flags/harness-policy-engine/)
 

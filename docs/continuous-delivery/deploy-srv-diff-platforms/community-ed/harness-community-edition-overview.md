@@ -1,11 +1,7 @@
 ---
 title: Harness CD Community Edition Overview
 description: Try Harness CD Community Edition (CE) on your laptop or any VM.
-sidebar_position: 10
-helpdocs_topic_id: yhyyq0v0y4
-helpdocs_category_id: qfj6m1k2c4
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 1
 ---
 
 This topic describes Harness CD Community Edition (CE).
@@ -16,7 +12,7 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 
 :::note
 
-**Want to get started right away?** See [Harness CD Community Edition Quickstart](./harness-community-edition-quickstart.md).
+**Want to get started right away?** See [Harness CD Community Edition quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-quickstart).
 
 :::
 
@@ -25,28 +21,28 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 * Harness CD Community Edition is a free and open edition of Harness.
 * Harness CD Community Edition can be downloaded and run without any Harness signup. You simply sign up to the local account.
 * Run on any laptop or single VM with only 3GB RAM and 2 CPUs. You will also need additional resources for any local Kubernetes clusters used in deployments.
-* Has both Docker Compose and Helm Chart installers.
+* Has both Docker Compose and Helm chart installers.
 * The modules in Harness CD Community Edition are available as a PolyForm Shield license.
 
 ## What can I do with Harness CD Community Edition?
 
 * Today, Harness CD Community Edition can perform Kubernetes deployments only. This means pulling remote manifests and artifacts and deploying them to a local or remote Kubernetes cluster.
 * You can also use Harness CD features such as automated rolling, canary and blue green deployments, automated infrastructure provisioning, integrated approvals and notifications, full YAML-based development, and Harness Git Experience.
-* In the near future, AWS (ECS, ASG, CloudFormation, Lambda, etc), Azure (VMSS, WebApps, AKS, ACR, ARM, Blueprint), .NET, Google Cloud Build, VM, Tanzu, Serverless, and traditional (Tomcat, etc) deployments will be supported.  
+* In the near future, Amazon Web Services (AWS) (Elastic Container Service (ECS), Auto Scale Groups (ASG), CloudFormation, Lambda, etc), Microsoft Azure (Virtual Machine Scale Sets (VMSS), WebApps, Azure Kubernetes Service (AKS), Azure Container Registry (ACR), Azure Resource Manager (ARM), Blueprint), .NET, Google Cloud Build, VM, Tanzu Application Services (TAS), Serverless, and traditional (Tomcat, etc) deployments will be supported.  
 
-For the full list of the currently supported integrations, see **Continuous Delivery (CD)** in [Supported Platforms and Technologies](../../../getting-started/supported-platforms-and-technologies.md).
+For the full list of the currently supported integrations, see **Continuous Delivery (CD)** in [supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies).
 
-## Can I Upgrade to a paid plan from Harness CD Community Edition?
+## Can I upgrade to a paid plan from Harness CD Community Edition?
 
 Yes, you can upgrade from within Harness in **Account Settings** > **Subscriptions** or by contacting [Harness Sales](mailto:sales@harness.io).
 
 ![](./static/harness-community-edition-overview-21.png)
 
-## Diagnostics and Usage Data
+## Diagnostics and usage data
 
 By default, Harness CD Community Edition shares minor usage details with Harness. These details help us understand and improve how the system behaves in real-world scenarios.
 
-### Collection at Registration
+### Collection at registration
 
 When a user first installs and signs up in their first Harness CD Community Edition, the system sends a `NEW_SIGNUP` track event and identify event to Harness.
 
@@ -77,21 +73,21 @@ Here's an example of the JSON payload:
     "version": "VersionInfo(version=1.0.73225, buildNo=73225, gitCommit=f66ad1343fd5e068615b185caa05c125282826b6, gitBranch=release/on-prem/732xx, timestamp=220105-1908, patch=000)"  
 }
 ```
-### Collection Every Day
+### Collection every day
 
 Once you have a successful installation and set up, the system sends a daily ping to Harness with the following key details:
 
-* Total Pipelines
+* Total pipelines
 * Pipelines created per day
-* Total Pipeline executions
+* Total pipeline executions
 * Pipeline executions per day
-* Total Active Services per day
-* Total Active Services per month
-* Total Service Instances per day
-* Total Service Instances per month
-* IP Address
+* Total active services per day
+* Total active services per month
+* Total service instances per day
+* Total service instances per month
+* IP address
 
-### Disable Data Collection
+### Disable data collection
 
 Today, user tracking can be disabled manually. Soon, it will be an option in the Harness installation process.
 
@@ -105,7 +101,7 @@ Change the following environment variables in the following files:
 
 Save all files, and then restart Harness using `docker-compose up -d`.
 
-## Privacy Notice
+## Privacy notice
 
 When you install an instance of Harness CD Community Edition, Harness collects the email address used to sign up in Harness, the number of users added to your Harness CD Community Edition, and the number of builds, deployments, and pipelines, and the information described above.
 
