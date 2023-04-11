@@ -1,5 +1,5 @@
 ---
-title: Create Perspectives
+title: Create perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 # sidebar_position: 2
 helpdocs_topic_id: dvspc6ub0v
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can add business context to your Harness Cloud Cost Management (CCM) data using Perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
+You can add business context to your Harness Cloud Cost Management (CCM) data using perspectives. Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
 
 ### Before You Begin
 

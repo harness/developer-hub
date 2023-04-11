@@ -1,6 +1,6 @@
 ---
-title: Export Perspective data
-description: export your Perspectives reports as CSV files
+title: Export perspective data
+description: Export your perspectives' reports as CSV files
 # sidebar_position: 2
 helpdocs_topic_id: t07cnubtp1
 helpdocs_category_id: e7k0qds7tw
