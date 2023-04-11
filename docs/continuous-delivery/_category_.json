@@ -1,11 +1,11 @@
 {
-    "label": "Continuous Delivery",
+    "label": "Continuous Delivery & GitOps",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Continuous Delivery"
+        "title": "Continuous Delivery & GitOps"
     },
     "customProps": {
         "position": "To position the category, enter a number and move this to the root level.",

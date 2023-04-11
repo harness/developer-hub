@@ -14,14 +14,14 @@ In this topic:
 
 * [What is a target and target group?](harness-feature-flag-faqs.md#what-is-a-target-and-target-group)
 * [Do I need to add targets in Harness manually?](harness-feature-flag-faqs.md#do-i-need-to-add-targets-in-harness-manually)
-* [What is the difference between client-side and server-side SDKs?](harness-feature-flag-faqs.md#what-is-the-difference-between-client-side-and-server-side-sd-ks)
+* [What is the difference between client-side and server-side SDKs?](harness-feature-flag-faqs.md#what-is-the-difference-between-client-side-and-server-side-sdks)
 * [How does the streaming mode work?](harness-feature-flag-faqs.md#how-does-the-streaming-mode-work)
-* [How does the metric aggregate/batch the data before sending it to Harness?](harness-feature-flag-faqs.md#how-does-the-metric-aggregate-batch-the-data-before-sending-it-to-harness)
+* [How does the metric aggregate/batch the data before sending it to Harness?](harness-feature-flag-faqs.md#how-does-the-metric-aggregatebatch-the-data-before-sending-it-to-harness)
 * [What Happens if Harness Feature Flag goes down?](harness-feature-flag-faqs.md#what-happens-if-harness-feature-flag-goes-down)
-* [Where is Flag State evaluated?](harness-feature-flag-faqs.md#where-is-flag-state-evaluated)
-* [Is Harness Feature Flags GDPR compliant?](harness-feature-flag-faqs.md#is-feature-flags-gdpr-compliant)
-* [What happens when Harness Feature Flags is unavailable?](harness-feature-flag-faqs.md#what-happens-when-harness-feature-flag-is-unavailable)
-* [What data does Harness Feature Flags receive from the SDKs?](harness-feature-flag-faqs.md#what-data-does-harness-feature-flags-receive-from-the-sd-ks)
+* [Where is Flag State evaluated?](harness-feature-flag-faqs.md#where-is-the-flag-state-evaluated)
+* [Is Harness Feature Flags GDPR compliant?](harness-feature-flag-faqs.md#is-harness-feature-flags-gdpr-compliant)
+* [What happens when Harness Feature Flags is unavailable?](harness-feature-flag-faqs.md#what-happens-when-harness-feature-flags-is-unavailable)
+* [What data does Harness Feature Flags receive from the SDKs?](harness-feature-flag-faqs.md#what-data-does-harness-feature-flags-receive-from-the-sdks)
 
 #### What is a target and target group?
 

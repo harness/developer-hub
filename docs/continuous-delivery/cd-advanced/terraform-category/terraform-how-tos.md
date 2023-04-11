@@ -24,7 +24,7 @@ For a conceptual overview of Harness Terraform integration, see [Terraform Provi
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 ### Target OS and architecture
 
@@ -39,7 +39,7 @@ You will need to change the following scripts based on the operating system and 
 
 The recommended method for installing third party tools on your delegate is to create your own delegate image, push it to a container registry, and then to modify your delegate deployments to use your new custom image.
 
-For more information, go to [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools/).
+For more information, go to [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
 
 ```dockerfile
 ARG DELEGATE_TAG=23.03.78705

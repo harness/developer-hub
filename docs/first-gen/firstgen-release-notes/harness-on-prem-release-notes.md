@@ -255,7 +255,7 @@ This release introduces the following features and enhancements.
 | CDS-40179 | Added reconciliation for `looker` entities to ensure data synchronization between mongoDB and timescaleDB. |
 | CDS-45694 | Deployment recon task failing. Longer retention for deployment in custom dashboards was failing due to a missing null check which has been added. (CDS-45694) |
 | CDS-47016 | Changed how search functionality on the deployments page works. Instead of using regex, search operations now use mongo stemming algorithms. |
-| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegates-overview.md). |
+| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview.md). |
 | DEL-5073 | Updated the Core Protocol Buffers library `protobuf-java/protobuf-javalite` to version 3.21.7. This update fixes CVE-2022-3171, a vulnerability that affects some earlier versions. The vulnerability was linked with denial-of-service (DoS) attacks. |
 | DEL-5153 | Upgraded `org.apache.commons:commons-text` to version 1.10.0 to fix a critical vulnerability in the delegate. |
 | DEL-5308 | Removed the delegate dependency on Java driver component `mongo-java-driver`. This eliminates the CVE-2021-20328 vulnerability that affects client-side field-level encryption (CSFLE). |
@@ -360,7 +360,7 @@ This release includes the following fixes.
 | CDS-41544ZD-33364 | Workflow variables that uses secret variables and are referenced in pipelines are encrypted |
 | CDS-41832ZD-33449, ZD-34771 | Added support so that customer can find the artifacts from last deployed workflow or pipeline with the same service as the triggered workflow by enabling the added feature flag. |
 | CDS-41868 | Due to delegate side library upgrade, SFTP connector test was failing and its fixed. |
-| CDS-41896ZD-33547 | Triggered pipline was unable to fetch artifacts from parent pipeline earlier when FF RTIFACT\_COLLECTION\_CONFIGURABLE was enabled . Now it is able to. |
+| CDS-41896ZD-33547 | Triggered pipeline was unable to fetch artifacts from parent pipeline earlier when FF RTIFACT\_COLLECTION\_CONFIGURABLE was enabled . Now it is able to. |
 | CDS-41913 | Resolved a condition that led to the generation of an exception when an artifact URL value was empty.. |
 | CDS-41999ZD-33514 | Resolved a problem that prevented the population of the API access type used to connect to gitlab. |
 | CDS-42064ZD-33758 | Fixed a problem that prevented new lines from being escaped. The problem led to the Slack API rejecting payloads. |

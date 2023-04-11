@@ -267,7 +267,7 @@ The **IN** and **NOT IN** operators can take comma-separated values. You can als
 
 Runtime Inputs for the Trigger to use, such as Harness Service and artifact.
 
-You can use the [Built-in Git Payload Expressions](#built_in_git_trigger_and_payload_expressions) and JEXL expressions in this setting.
+You can use the [Built-in Git Payload Expressions](#built-in-git-trigger-and-payload-expressions) and JEXL expressions in this setting.
 
 See [Run Pipelines using Input Sets and Overlays](../run-pipelines-using-input-sets-and-overlays.md).
 
@@ -320,9 +320,11 @@ Although Webhooks are applied automatically by Harness, here's a quick summary o
 You obtain the Webhook to use in your repo by clicking the **Webhook** icon.
 
 ![](./static/triggers-reference-16.png)
+
 Log into your repo in the Git provider and navigate to its Webhook settings. For example, here's the **Webhooks** section of GitHub.
 
 ![](./static/triggers-reference-17.png)
+
 Add a Webhook.
 
 In the Webhook settings, paste the Webhook URL you copied from Harness into the payload URL setting in the repo.
@@ -333,7 +335,7 @@ Make sure that you select JSON for the content type. For example, in GitHub, you
 
 You enter the webhook in your custom Git provider.
 
-Make sure that the payload content type is JSON (application/json).The format for the custom Webhook is:
+Make sure that the payload content type is JSON (application/json). The format for the custom Webhook is:
 
 
 ```
@@ -406,7 +408,7 @@ trigger:
 ```
 ### Notes
 
-* For details on each providers events, see:
+* For details on each provider events, see:
 	+ [Events that trigger workflows](https://docs.github.com/en/actions/reference/events-that-trigger-workflows) from GitHub.
 	+ [Events](https://docs.gitlab.com/ee/api/events.html) from GitLab.
 	+ [Repository events](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/#Repository-events) from Bitbucket.

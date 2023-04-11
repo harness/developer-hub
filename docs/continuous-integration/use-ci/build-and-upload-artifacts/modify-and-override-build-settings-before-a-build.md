@@ -1,8 +1,7 @@
 ---
 title: Modify and Override Build Settings Before a Build
-description: This topic describes how to modify and override build settings before a build in Harness CIE. If you want to override your Secrets in settings.xml file at Pipeline execution, perform the following st…
-tags: 
-   - helpDocs
+description: This topic describes how to modify and override build settings before a build in Harness CI.
+
 sidebar_position: 10
 helpdocs_topic_id: 2hpamxaqf0
 helpdocs_category_id: mi8eo3qwxm
@@ -10,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to modify and override build settings before a build in Harness CIE.
+This topic describes how to modify and override build settings before a build in Harness CI.
 
 If you want to override your **Secrets** in `settings.xml` file at Pipeline execution, perform the following steps:
 
@@ -64,5 +63,5 @@ For example: If you use `echo '<+secrets.getValue("account.settingsXML")>' >``~/
 
 ### See Also
 
-* [Run a Script in a CI Stage](../run-ci-scripts/run-a-script-in-a-ci-stage.md)
+* [Run a script in a Build stage](../run-ci-scripts/run-a-script-in-a-ci-stage.md)
 

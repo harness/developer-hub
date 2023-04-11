@@ -83,7 +83,7 @@ Some common use-cases of probes include:
 7. Identifying bottlenecks: Identifying the bottlenecks in the system and making sure that the system can handle such scenarios.
 8. Testing disaster recovery: Testing the disaster recovery plan and making sure that the system can recover from an unexpected failure.
 9. Testing application scalability: Testing the scalability of the application and making sure that the system can handle more traffic.
-10. Testing Kubernetes components: Testing the behavior of Kubernetes components like apiserver, etcd, controller manager and kubelet. \
+10. Testing Kubernetes components: Testing the behavior of Kubernetes components like apiserver, etcd, controller manager and kubelet.
 
 These are some of the common use cases where chaos probes can be used but it can also be used in other scenarios as well depending on the requirements of the application and the system.
 

@@ -169,7 +169,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
 
-See the [Kubernetes CD quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md).
+See the [Kubernetes deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md).
 
 For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](/docs/category/kubernetes).
 
@@ -291,8 +291,8 @@ See [Pull an image from a private registry for Kubernetes](../../continuous-del
 You can use your Git repo for the configuration files in **Manifests** and Harness uses them at runtime. You have the following options for remote files:
 
 * **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](../../continuous-delivery/cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
-* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm CD quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
-* **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+* **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
 * **OpenShift Template** — OpenShift params file from a Git repo.
 
 :::note 
@@ -327,7 +327,7 @@ Yes. You can select namespaces on the fly using Harness variables that are evalu
 
 Yes. Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, and so on, just as you would in any native kustomization.
 
-See [Kustomize quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+See [Kustomize deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
 
 #### Can I use Ingress traffic routing?
 
@@ -444,13 +444,13 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Yes. You can sync your Harness project with a Git repo. The Harness project can be synced with one repo and the connectors used in the project can be synced in the same repo or separately with other repos or branches.
 
-See [Harness Git Experience overview](../../platform/10_Git-Experience/harness-git-experience-overview.md).
+See [Harness Git Experience Quickstart](../../platform/10_Git-Experience/configure-git-experience-for-harness-entities.md).
 
 ### Uncommon deployment platforms
 
 Harness provides deployment support for all of the major artifact, approval, provisioner, and cloud platforms.
 
-Harness also supports uncommon, custom platforms using platform agnostic connectors and [Custom triggers](../../platform/8_Pipelines/w_pipeline-steps-reference/triggers-reference.md#custom-payload-type).
+Harness also supports uncommon, custom platforms using platform agnostic connectors and [custom triggers](../../platform/11_Triggers/trigger-deployments-using-custom-triggers.md).
 
 For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 

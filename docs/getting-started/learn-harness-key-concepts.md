@@ -158,7 +158,7 @@ You can sync your Harness account, orgs, and projects with your Git repo to mana
 
 Harness can respond to Git events to trigger pipelines and pass in event data.
 
-See [Harness Git Experience Overview](../platform/10_Git-Experience/harness-git-experience-overview.md).
+See [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview/).
 
 ### Recap
 

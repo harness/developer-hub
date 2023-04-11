@@ -31,12 +31,12 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 You should have an understanding of the following:
 
-* Harness' [Key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* Harness' [key concepts](../../../getting-started/learn-harness-key-concepts.md).
 * How to [set up build infrastructure](/docs/category/set-up-build-infrastructure).
-* How to create pipelines. If you haven't created a pipeline before, try one of these tutorials:
-  * [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* How to create pipelines. If you haven't created a pipeline before, try one of the following tutorials:
+  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra).
   * [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
-* [CI stage settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI stage settings](../../ci-technical-reference/ci-stage-settings.md).
 
 ## Add the Build and Push step
 

@@ -1,1 +1,14 @@
-{"label": "Onboard with STO", "position": 10, "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Onboard with STO"}, "customProps": { "helpdocs_category_id": "8nywcs2sa7"}}
+{
+    "label": "Get started with STO",
+    "position": 10,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Get started with STO"
+    },
+    "customProps": {
+        "helpdocs_category_id": "8nywcs2sa7"
+    }
+}

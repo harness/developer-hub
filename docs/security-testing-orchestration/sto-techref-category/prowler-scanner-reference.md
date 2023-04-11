@@ -7,7 +7,7 @@ sidebar_position: 220
 
 ## Security step settings
 
-You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -24,45 +24,21 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`, `hipaa`, `gdpr`, `exclude_extras`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+* `tool_args` — You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, you can exclude specific check from a scan like this: tool_args = -excluded-checks s3_bucket_public_access
 
-
-<!-- CONTAINERS ---------------------------------------------------------------------------
-
-```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
-
-<StoLegacyContainer />
-
-
-<!-- REPOS --------------------------------------------------------------------------- 
-
-### Repository scan settings
+### Fail on Severity
 
 ```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
+<StoSettingFailOnSeverity />
 
-<StoLegacyRepo />
 
-<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  
-
-### Instance settings 
-
-```mdx-code-block
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-```
-
-<StoLegacyInstance />
-
-<!-- LEGACY CONFIGS  ---------------------------------------------------------------------------  -->
-
+### Configuration settings
 
 ```mdx-code-block
 import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
 ```
 
 <StoLegacyConfig  />
-
-
-<!-- INSTANCES  --------------------------------------------------------------------------- -->

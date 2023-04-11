@@ -144,7 +144,7 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
@@ -327,6 +327,27 @@ For more information, go to [Kubernetes Rollback](../../cd-technical-reference/c
 ## Option: Trigger the pipeline on a new chart version
 
 You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md).
+
+
+## Option: Fetch Helm chart dependencies
+
+Harness can fetch Helm chart dependencies within GitHub using the `--dependency-update` command flag. Harness fetches dependent Helm charts along with the main Helm chart being targeted for the deployment. These dependencies will be resolved before Harness performs the deployment of the primary Helm chart configured with the service explicitly. 
+
+For more information, go to [Helm Docs](https://helm.sh/docs/helm/helm_template/#helm).
+
+To update Helm chart dependencies:
+
+* For Kubernetes deployments, configure the template with `--dependency-update` command flag.
+
+![](./static/update-helm-dependency-k8s.png)
+
+* For Native Kubernetes deployments, add the command flag, `--depdency-update` to `Install` and `Upgrade` commands.
+
+![](./static/update-helm-dependencies-nativek8s.png)
+
+:::info
+All dependency repositories must be available and accessible from delegate.
+:::
 
 ## Notes
 

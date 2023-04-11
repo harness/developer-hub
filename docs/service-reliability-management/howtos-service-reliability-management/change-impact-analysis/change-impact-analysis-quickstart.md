@@ -15,7 +15,7 @@ This topic describes how to create a monitored service to correlate change event
 
 ## Prerequisites
 
-- Ensure that you have installed a Delegate and it can communicate with Harness, the health source, and the change source. To learn more about delegates, go to [Get started with delegates](https://developer.harness.io/docs/category/get-started-with-delegates).
+- Ensure that you have installed a Delegate and it can communicate with Harness, the health source, and the change source. To learn more about delegates, go to [Get started with delegates](https://developer.harness.io/docs/category/delegate-concepts).
 - Create an organization if you have not already created one. To learn more about organizations in Harness, go to [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization).
 
 ## Create a project

@@ -388,7 +388,7 @@ When Harness deploys, it will apply the plugin you reference just like you would
 
 To add a plugin to the Delegate, you can install it manually or use the `INIT_SCRIPT` environment variable in the Delegate config file to install it.
 
-For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 Once the plugin is installed, you add its path to the Harness Service you are using for the kustomization. See [Path to Plugin in Service Manifest](#path-to-plugin-in-service-manifest).
 
@@ -492,7 +492,7 @@ name: KUSTOMIZE_PATH
 value: "<path>"  
 ...
 ```
-See [Install a Kubernetes Delegate](../../../platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+See [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md).
 
 ### Docker Delegate
 
@@ -502,7 +502,7 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 ```yaml
 - KUSTOMIZE_PATH=<path>
 ```
-See [Install a delegate](../../../platform/2_Delegates/install-delegates/install-a-delegate.md).
+See [Install a delegate](../../../platform/2_Delegates/install-delegates/overview.md).
 
 ## Next Steps
 

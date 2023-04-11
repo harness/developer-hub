@@ -89,7 +89,7 @@ If you want to override the default certificate file, make sure the Kubernetes s
 
 ## Troubleshooting
 
-If your builds fail due to an problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshooting Continuous Integration](../../troubleshoot/troubleshooting-ci.md).
+If your builds fail due to an problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshoot Continuous Integration](../../troubleshoot/troubleshooting-ci.md).
 
 If the volumes are not getting mounted to the build containers, or you continue to see certificate errors in your pipeline, try the following:
 

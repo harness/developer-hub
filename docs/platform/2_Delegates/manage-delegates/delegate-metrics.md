@@ -1,7 +1,7 @@
 ---
 title: Configure delegate metrics
 description: This topic describes how to configure Prometheus and Grafana for delegate metrics collection.
-# sidebar_position: 2
+sidebar_position: 2
 ---
 
 Harness captures delegate agent metrics for delegates shipped on immutable image types. The delegate is instrumented for the collection of the following delegate agent metrics.

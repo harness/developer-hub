@@ -38,7 +38,7 @@ How you run and retry Stages is different depending on whether you are retrying 
 
 This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
-You can [create a Pipeline](add-a-stage.md#step-1-create-a-pipeline) from CI and CD module in your Project, and then [add Stages](add-a-stage.md#add-a-stage) for any module.
+You can [create a Pipeline](add-a-stage.md#step-1-create-a-pipeline) from CI and CD module in your Project, and then [add Stages](add-a-stage.md#step-2-add-a-stage) for any module.
 
 Click on the failed deployment that you want to retry and click **Retry** **Failed Pipeline**.
 

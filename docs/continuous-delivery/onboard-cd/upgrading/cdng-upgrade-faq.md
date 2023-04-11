@@ -81,7 +81,7 @@ Harness Policy as Code does the following for you:
 
 ### Delegate
 
-Harness NextGen supports an improved delegate. It uses a new type of [image](https://developer.harness.io/docs/platform/Delegates/get-started-with-delegates/delegate-image-types) and supports the following features:
+Harness NextGen supports an improved delegate. It uses a new type of [image](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-image-types) and supports the following features:
 
 - Deploy delegate images with or without third-party client tools. We recommend you use the delegate minimal image for added security.
 - By default,  the delegate is automatically updated. There is an option to disable automatic updates.
@@ -110,7 +110,7 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     
     You can run NextGen delegates alongside your FirstGen delegates as you are upgrading. There will be no impact to your existing workloads while running both sets of delegates.
   
-  - For details on NextGen delegates, go to [Delegate overview](https://developer.harness.io/docs/platform/Delegates/delegates-overview).
+  - For details on NextGen delegates, go to [Delegate overview](https://developer.harness.io/docs/platform/Delegates/delegate-overview).
 - **Triggers**. Harness won’t upgrade FirstGen triggers. You will need to reconfigure triggers for any upgraded pipelines.
   
   - For details on NextGen triggers, go to [Triggers](https://developer.harness.io/docs/category/triggers).

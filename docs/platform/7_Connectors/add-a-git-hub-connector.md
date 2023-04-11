@@ -54,11 +54,10 @@ For SSH, ensure that the key is not OpenSSH, but rather PEM format. To generate 
 
 ### Step 3: Credentials
 
-In **Credentials,** enter your **Username**.
-
-You can either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one.
+In **Credentials,** enter your **Username**. You can use either plaintext or a [Harness encrypted text secret](../6_Security/2-add-use-text-secrets.md).
 
 ![](./static/add-a-git-hub-connector-36.png)
+
 In **Personal Access Token**, either create a new [Encrypted Text](../6_Security/2-add-use-text-secrets.md) or use an existing one that has your Git token. Harness requires the token for API access. Generate the token in your account on the Git provider and add it to Harness as a Secret.
 
 To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. See [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.* The GitHub user account used to create the Personal Access Token must have admin permissions on the repo.
@@ -90,7 +89,7 @@ In **Select Connectivity Mode**, you have two options:
 
 **Secrets:** if you select **Connect Through Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.If you select **Connect Through** **Harness Platform**, click **Save and Continue**.
 
-If you select **Connect Through a Harness Delegate**, click **Continue** and then select/add the Delegate you want to use in **Delegates Setup**. See [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+If you select **Connect Through a Harness Delegate**, click **Continue** and then select/add the Delegate you want to use in **Delegates Setup**. See [Delegate Installation Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
 ![](./static/add-a-git-hub-connector-40.png)
 Click **Save and Continue**.

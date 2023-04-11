@@ -24,7 +24,7 @@ You can't share access credentials or other [Text Secrets](../../../platform/6_S
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [CI pipeline basics](../../ci-quickstarts/ci-pipeline-basics.md)
+* [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
 * [CI stage settings](../../ci-technical-reference/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)
 
