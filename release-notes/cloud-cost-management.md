@@ -1,7 +1,7 @@
 ---
 title: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-03-29T10:00
+date: 2023-04-11T10:00
 sidebar_position: 5
 ---
 
@@ -12,6 +12,30 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+
+## April 05, 2023, version 79001
+
+### What's new
+* Workload recommendations enhancement. (CCM-9161)(Zendesk Ticket ID 34658)
+
+  Introduced support for 100th percentile in workload recommendations.  Recommendations will be displayed for 100% usage of workloads.
+
+### Early access
+
+  This release does not include any early access features.
+
+
+### Fixed issues
+
+* Updated the default perspectives names from `Aws` to `AWS` and `Gcp` to `GCP` to prevent any discrepancies in cost data. (CCM-11770)
+* Discrepancy in the number of EC2 recommendations. (CCM-11730)
+ 
+   The Terminate-type recommendations were not being saved, and certain EC2 recommendations were disappearing after a specific interval of time. This issue has been resolved.
+
+* The link to the perspective on the **Anomalies** page was incorrect. (CCM-11403)
+
+  This issue has been fixed, and the link now directs to the correct perspective.
 
 ## March 21, 2023, version 78903
 
