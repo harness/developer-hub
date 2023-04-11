@@ -1,6 +1,6 @@
-<details><summary>Container Image scan settings</summary>
+<details><summary>Container Image settings for orchestrated scans</summary>
 
-The following settings apply to all scanners where the `scan_type` is `containerImage`.
+The following settings apply to all scanners where the `scan_type` is `containerImage` and the `policy_type` is `orchestratedScan`.
 
 * `container_project` (required)
 * `container_tag` (required)
