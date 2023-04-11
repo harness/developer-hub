@@ -18,6 +18,10 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ## April 10, 2023, version 79015
 
+### Feature Flags
+
+* The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
+
 ### Harness Platform
 - You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
 
