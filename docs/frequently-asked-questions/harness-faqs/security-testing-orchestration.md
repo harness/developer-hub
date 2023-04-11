@@ -60,7 +60,50 @@ STO supports the following test targets and form factors:
 * Instance
 * Configuration 
 
-![](./static/sto-faqs-01.png)
+The following table specifies where the target to be tested is located
+
+<table>
+  <tr>
+    <th>Target name</th>
+    <th>Target type</th>
+  </tr>
+   <tr>
+    <td>azure</td>
+    <td>repository</td>
+  </tr>
+  <tr>
+    <td>bitbucket</td>
+    <td>repository</td>
+  </tr>
+  <tr>
+    <td>github</td>
+    <td>repository</td>
+  </tr>
+  <tr>
+    <td>gitlab</td>
+    <td>repository</td>
+  </tr>
+  <tr>
+    <td>local_image</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td>docker_v2</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td>jfrog_artifactory</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td>aws_ecr</td>
+    <td>container</td>
+  </tr>
+  <tr>
+    <td>website</td>
+    <td>instance</td>
+  </tr>
+</table>
 
 ### Can I use STO with custom or unsupported scanners? 
 
