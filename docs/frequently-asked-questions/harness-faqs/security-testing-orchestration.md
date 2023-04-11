@@ -20,7 +20,7 @@ In this topic:
 - [How do I set up a  CheckMarx scan step in YAML?](#how-do-i-set-up-a--checkmarx-scan-step-in-yaml)
 - [What is the purpose of the “Security Review” tab in STO?](#what-is-the-purpose-of-the-security-review-tab-in-sto)
 - [What open-source scanner integrations does STO support?](#what-open-source-scanner-integrations-does-sto-support)
-- [What is the difference between an STO pipeline and a CD pipeline and a CI pipeline?](#what-is-the-difference-between-an-sto-pipeline-and-a-cd-pipeline-and-a-ci-pipeline)
+- [What is the difference between an STO pipeline, a CD pipeline, and a CI pipeline?](#what-is-the-difference-between-an-sto-pipeline-a-cd-pipeline-and-a-ci-pipeline)
 - [Does STO require Harness CI or Harness CD?](#does-sto-require-harness-ci-or-harness-cd)
 - [What infrastructure does STO support for running scans?](#what-infrastructure-does-sto-support-for-running-scans)
 - [How does STO deduplicate detected issues?](#how-does-sto-deduplicate-detected-issues)
@@ -123,22 +123,13 @@ Here's an example. See also the [Checkmarx scanner reference](/docs/security-tes
 ```
 
 ### What is the purpose of the “Security Review” tab in STO? 
-The page (or tab) exists to grant and manage security exemptions. See [Exemptions (Ignore Rules) for Specific Issues](docs/security-testing-orchestration/use-sto/exemption-workflows.md). 
+The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions (Ignore Rules) for Specific Issues](/docs/security-testing-orchestration/use-sto/exemption-workflows). 
 
 ### What open-source scanner integrations does STO support? 
 
-* **Static Application Security Testing (SAST):**  [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference.md),   [Brakeman](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#brakeman)
+For detailed information about supported scanners, both open-source and commercial, go to [Harness STO scanner support](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#harness-sto-scanner-support).
 
-* **Software composition analysis (SCA)**:  [OWASP (Dependency Check)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#owasp)
-
-* **Dynamic Application Security Testing (DAST):**  [Nikto](docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#nikto), [Nmap](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#nmap-network-mapper), [OpenVAS](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#openvas), [OWASP ZAP](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference.md), [SNIPER](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#sniper)
-
-* **AWS security:** [Prowler](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#prowler)
-
-* **Container Security:** [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference.md),  [Docker Content Trust (clair)
-](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#docker-content-trust-clair)
-
-### What is the difference between an STO pipeline and a CD pipeline and a CI pipeline?
+### What is the difference between an STO pipeline, a CD pipeline, and a CI pipeline?
 
 In Harness NextGen, there are no hard distinctions between CI, CD, and STO pipelines. You can create integrated pipelines that implement any mix of CI, CD, and STO use cases. Harness platform components are generic to all three modules: you can use and reuse delegates, connectors, secrets, and other components across across multiple stages and pipelines. 
 
