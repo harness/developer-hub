@@ -16,6 +16,30 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
+## April 10, 2023, version 79015
+
+### Harness Platform
+- You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
+
+- Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
+  * Github
+  * Bitbucket
+  * AzureRepo 
+  * Gitlab 
+
+- You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
+
+### Continuous Integration
+
+* Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
+* The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
+  * `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
+  * `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run Tests](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
+
+### Service Reliability Management
+
+* Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
+
 ## March 31, 2023, version 78914
 
 ### Continuous Integration
