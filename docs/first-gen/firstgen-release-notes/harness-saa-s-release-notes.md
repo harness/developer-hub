@@ -16,6 +16,21 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### April 10, 2023, version 79015
+
+#### Early access
+
+This release does not include early access features.
+
+#### What's new
+
+This release does not include new features.
+
+#### Fixed issues
+
+- The audit trail does not show users who have been added or removed from a group via SCIM. (PL-32106)
+  A code enhancement fixed this issue.
+
 ### March 31, 2023, version 78914
 
 #### Early access
@@ -44,17 +59,17 @@ The Service Instances panel on the Overview screen and the Instances panel on th
 
 #### Fixed issues
 
-This release does not include any fixed issues.
+This release does not include fixed issues.
 
 ### March 24, 2023, version 78817
 
 #### Early access
 
-This release does not include any early access features.
+This release does not include early access features.
 
 #### What's new
 
-This release does not include any early access features.
+This release does not include new features.
 
 #### Fixed issues
 
