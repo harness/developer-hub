@@ -127,7 +127,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
          	<ul>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference">Anchore Grype</a>  Orchestration, Ingestion </li>
             <li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy</a> Orchestration, Ingestion  </li>
-            <li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Docker Content Trust (clair)</a> Orchestration, Ingestion </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Clair</a> Orchestration, Ingestion </li>
         	</ul>
         </td>
         <td valign="top">
