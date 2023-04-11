@@ -199,3 +199,10 @@ If you're using the YAML editor, specify `type: KubernetesDirect` in `stage: spe
 ```
 
 Once the build infrastructure is set up, you can now add steps to build and push your artifacts.
+
+## Troubleshooting
+
+For Kubernetes cluster build infrastructure troubleshooting guidance go to:
+
+* [Troubleshoot CI](../../troubleshoot/troubleshooting-ci.md)
+* [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen)
