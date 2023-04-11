@@ -1,7 +1,7 @@
 ---
 sidebar_position: 8
-title: Signed Image
-description: This build automation guide describes building a Go application and publishing a signed container image of the application using a CI Pipeline.
+title: Signed images
+description: Use a CI pipeline to build and publish a signed container image of a Go application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Go,Ko,Cosign]
 slug: /build-code/build/signed-image
 ---

@@ -36,41 +36,26 @@ export const FeaturedList: CardItem[] = [
     link: "/tutorials/build-code/build/kubernetes-build-farm",
   },
   {
-    title: "NodeJS Application",
+    title: "Code coverage with CodeCov",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: (
       <>
-        Build a Docker Image of a NodeJS Application.
+        Use a Run step to include CodeCov code coverage.
       </>
     ),
-    newDoc: false,
+    newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/build/nodejs",
+    link: "/tutorials/build-code/test/codecov",
   },
   {
-    title: "Go Application",
-
+    title: "Terraform Cloud notification triggers",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
     description: (
       <>
-        Build a Docker Image of a Go Application.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15 min",
-    link: "/tutorials/build-code/build/go",
-  },
-  {
-    title: 'Trigger CI using Terraform Cloud Notification',
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-       Trigger CI pipeline using Terraform Cloud notifications using custom CI Webhooks.
+       Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.
       </>
     ),
     newDoc: true,
@@ -94,81 +79,102 @@ export const DroneList: CardItem[] = [
 
 export const CIList: CardItem[] = [
   {
-    title: "Build on a Kubernetes Cluster",
+    title: "Get started with the fastest CI on the planet",
+    module: MODULES.ci,
+    icon: "img/icon_ci.svg",
+    description:
+      "Get started with Harness CI and explore some of the features that make it four times faster than the leading competitor.",
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/build-code/fastest-ci",
+  },
+  {
+    title: "Build on a Kubernetes cluster",
     module: MODULES.ci,
     description:
-      "Build a Docker Image on a Kubernetes Cluster Build Farm.",
+      "Build a Docker Image on a Kubernetes cluster build farm.",
     link: "/tutorials/build-code/build/kubernetes-build-farm",
     type: [docType.Documentation],
     time: "30 min",
     icon: "img/icon_ci.svg",
   },
   {
-    title: "Go Application",
+    title: "Go application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of a Go Application.",
+      "Build a Docker Image of a Go application.",
     link: "/tutorials/build-code/build/go",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
   },
   {
-    title: "JAVA Application",
+    title: "Java application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of JAVA HTTP Server Application.",
+      "Build a Docker Image of Java HTTP Server application.",
     link: "/tutorials/build-code/build/java",
     icon: "img/icon_ci.svg",
     time: "15 min",
     type: [docType.Documentation],
   },
   {
-    title: "NodeJS Application",
+    title: "NodeJS application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of a NodeJS Application.",
+      "Build a Docker Image of a NodeJS application.",
     link: "/tutorials/build-code/build/nodejs",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
   },
-
   {
-    title: "React Application",
+    title: "React application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of a React Application.",
+      "Build a Docker Image of a React application.",
     link: "/tutorials/build-code/build/react",
     type: [docType.Documentation],
     time: "20 min",
     icon: "img/icon_ci.svg",
   },
   {
-    title: "Rust Application",
+    title: "Rust application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of a Rust Application.",
+      "Build a Docker Image of a multi-architecture Rust application.",
     link: "/tutorials/build-code/build/rust",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
   },
   {
-    title: "Signed Image",
+    title: "Signed images",
     module: MODULES.ci,
     description:
-      "Build a Signed Docker Image of a Go Application.",
+      "Build a signed Docker Image of a Go application.",
     link: "/tutorials/build-code/build/signed-image",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
   },
   {
+    title: "Terraform Cloud notification triggers",
+    module: MODULES.ci,
+    icon: "img/icon_ci.svg",
+    description:
+      "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
+    newDoc: true,
+    type: [docType.Documentation],
+    time: '9 min',
+    link: "/tutorials/build-code/build/tfc-notification",
+  },
+  {
     title: "Amazon ECR",
     module: MODULES.ci,
     description:
-      "Publish an Image to an Amazon ECR Registry.",
+      "Publish an Image to an Amazon Elastic Container Registry.",
     link: "/tutorials/build-code/publish/amazon-ecr",
     type: [docType.Documentation],
     time: "15 min",
@@ -178,7 +184,7 @@ export const CIList: CardItem[] = [
     title: "Google GAR",
     module: MODULES.ci,
     description:
-      "Publish an Image to a Google GAR Registry.",
+      "Publish an Image to a Google Artifact Registry.",
     link: "/tutorials/build-code/publish/google-gar",
     type: [docType.Documentation],
     time: "15 min",
@@ -188,7 +194,7 @@ export const CIList: CardItem[] = [
     title: "Code coverage with CodeCov",
     module: MODULES.ci,
     description:
-      "Wse a Run step to include CodeCov code coverage.",
+      "Use a Run step to include CodeCov code coverage.",
     link: "/tutorials/build-code/test/codecov",
     type: [docType.Documentation],
     time: "15 min",
@@ -209,7 +215,7 @@ export const CIList: CardItem[] = [
     title: "Run LocalStack",
     module: MODULES.ci,
     description:
-      "Run LocalStack as a Background Step.",
+      "Run LocalStack as a Background step.",
     link: "/tutorials/build-code/test/localstack",
     type: [docType.Documentation],
     time: "15 min",
@@ -219,39 +225,10 @@ export const CIList: CardItem[] = [
     title: "Run Sauce Connect Proxy",
     module: MODULES.ci,
     description:
-      "Run Sauce Connect Proxy as a Background Step.",
+      "Run Sauce Connect Proxy as a Background step.",
     link: "/tutorials/build-code/test/saucelabs-proxy",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Get started with the fastest CI on the planet",
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-        This tutorial helps you get started with Harness CI and explore some of
-        the features that make it four times faster than the leading competitor.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "5 min",
-    link: "/tutorials/build-code/fastest-ci",
-  },
-  {
-    title: 'Trigger CI using Terraform Cloud Notification',
-    module: MODULES.ci,
-    icon: "img/icon_ci.svg",
-    description: (
-      <>
-       Trigger CI pipeline using Terraform Cloud notifications using custom CI Webhooks.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: '9 min',
-    link: "/tutorials/build-code/build/tfc-notification",
   },
 ];
