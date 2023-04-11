@@ -1,11 +1,11 @@
 {
-   "label":"SLOs",
+   "label":"SLO types",
    "position": 20,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"SLOs"
+      "title":"SLO types"
    }
    }
