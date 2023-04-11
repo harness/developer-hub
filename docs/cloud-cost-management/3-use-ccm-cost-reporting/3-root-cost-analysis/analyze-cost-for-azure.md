@@ -1,5 +1,5 @@
 ---
-title: Analyze cost for Azure using perspectives
+title: Analyze cost for Azure 
 description: This topic describes how to analyze costs for Azure using Perspectives.
 # sidebar_position: 2
 helpdocs_topic_id: p17sq3pwbd
