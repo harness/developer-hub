@@ -57,7 +57,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
 - You can now trigger a pipeline when there are changes to an artifact in Bamboo. (CDS-51742)
   
-  [On new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/) triggers are simple way to automate deployments for new builds. On new artifact triggers simply listen to a Bamboo registry where one or more of the artifacts in your pipeline are hosted. Every time a new image is pushed to your Bamboo account, it triggers a CD pipeline that deploys it automatically.
+  [On new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/) triggers are a simple way to automate deployments for new builds. On new artifact triggers simply listen to a Bamboo registry where one or more artifacts in your pipeline are hosted. Every time a new image is pushed to your Bamboo account, a CD pipeline is triggered that deploys the image automatically.
 
   <docimage path={require('./static/6a9869b8714c6ef7316fcdc98fd5bda65f0758f5ed84a4991c4d7f3007dc5372.png')} width="60%" height="60%" title="Click to view full size image" />
 - ACR in Azure GovCloud is supported in the Docker Registry connector. (CDS-57777)
@@ -101,9 +101,9 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Fixed issues
 
-- RBAC enforced for [environment groups](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) based on environment group identifiers. (CDS-45758)
+- RBAC was enforced for [environment groups](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) based on environment group identifiers. (CDS-45758)
   
-  Users can view only those environment groups to which they have View access. Previously, if a user had access to view only certain environment groups, they would see an error. Now they should be able to see all the accessible environment groups.
+  Previously, you would see an error when trying to view environment groups if you had access to view only certain environment groups. Now, you can view those environment groups to which you have View access.
 - The Jenkins step was not exporting `GIT_SHA` variable as an output. (CDS-58256, ZD-42196)
   
   The Jenkins was only exporting the following five variables, which you could select in the step's **Output** tab:
@@ -119,14 +119,14 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   The JEXL condition was not being evaluated and when the expression evaluated to `false` the step would still execute. This is now fixed and the JEXL expression is used correctly.
 - The [Deployment Template](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
   
-  The **Referenced By** setting shows the pipelines that are using the template. The search filters in the template have been fixed and error is gone.
+  The search filters in the template is fixed now. The **Referenced By** setting now shows the pipelines that are using the template. 
 - The GitOps Clusters step was missing null checks. (CDS-58049)
   
   The Gitops Clusters step is added automatically during pipeline runtime when the stage **GitOps** option is selected. For example, in [PR pipeline](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial).
   
   <docimage path={require('./static/73cdc440ba09f067a25838780163b73f1afb34dc16e3fb4c625b6a84d0c295cf.png')} width="60%" height="60%" title="Click to view full size image" />
 
-  DeployToAll is a Boolean field in the step that can have true, false, or null values. The DeployToAll value not set correctly when re-running pipelines because null checks were not present in all of the places where DeployToAll was referred to. This is now fixed.
+  DeployToAll is a Boolean field in the step that can have true, false, or null values. The DeployToAll value was not set correctly when re-running pipelines because null checks were not present in all places where DeployToAll was referred to. This is now fixed.
 - The Services dashboard was displaying deleted instances for project-level agents. (CDS-58041)
   
   The instance deletion did not happen due to an incorrect condition. This condition now picks up the instances for deletion.
@@ -138,13 +138,13 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - Execution logs were not available once a step timed out. (CDS-56745)
   
   This issue was introduced at implementation and has been fixed.
-- Nexus 3 artifact **Tag** and **Repository** values were not updated when switching the repo type. (CDS-56640)
+- Nexus 3 artifact **Tag** and **Repository** values were not updated when switching the repository type. (CDS-56640)
   
-  When switching repository format from Raw to Docker or any other supported formats, the **Tag** and **Repository** input fields were not cleared. This is fixed and the fields are cleared.
-- Schema validation for step group templates not working.	(CDS-56492)
+  When switching the repository format from Raw to Docker or any other supported formats, the **Tag** and **Repository** input fields were not cleared. This is fixed and the fields are cleared.
+- Schema validation for step group templates was not working.	(CDS-56492)
   
   Validation is now working. The entityType in template schema needed to be passed.
-- Docker artifact label expressions were not resolved in SSH/WinRm Command step scripts. (CDS-54744)
+- Docker artifact label expressions were not resolved in SSH or WinRm Command step scripts. (CDS-54744)
   
   You can now copy custom artifact output labels which have a '.' or a '-' in the output label and use that in an expression without encountering any errors during expression evaluation.
 - Editing SSH credentials in the Infrastructure Definition was failing. (CDS-54519)
@@ -156,7 +156,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 - Pipeline name edits were lost when a template input was changed in a pipeline template. (CDS-54332)
   
   Pipeline template inputs such as pipeline name, if changed, are no longer getting reset when changing template inputs.
-- Data not cleared in ACR artifact source template. (CDS-54212)
+- Data was not cleared in ACR artifact source template. (CDS-54212)
   
   In the ACR artifact source template, the form details were not getting cleared when the connector was changed. This issue has been fixed now.
 - Users were unable to create or edit the runtime input default values when configuring services, environments, templates, and pipelines. (CDS-53919, ZD-39998, ZD-40031, ZD-41197, ZD-41889)
@@ -164,7 +164,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   This issue is fixed. Harness now supports adding and editing runtime input default values when configuring services, environments, templates, and pipelines.
 - Nexus connectors not filtered in artifact source for versions 2 and 3. (CDS-53879)
   
-  When you create a Nexus connector, you specify version 2.x or 3.x.  Later, when selecting a Nexus 3 connector in the Nexus artifact source, Harness was showing both version 2 and 3 connectors.
+  When selecting a Nexus 3 connector in the Nexus artifact source, Harness was showing both version 2 and 3 connectors even if you had specified the version during the connector creation.
 
   This is fixed and the connectors are now filtered by version.
 - Unclear error message in Triggers webhook registration. (CDS-53600)
@@ -174,10 +174,10 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   ![picture 75](static/e5e13558c63d546b0e9a597695b9320efe86c6306d8a08fdb052abb7e7e07b7d.png)
 - Incorrect error message when environment is set as an expression but no expression is provided. (CDS-53491)
   We have added schema validation for empty identifiers for envGroupRef, environmentRef, and infrastructure identifiers. Now the correct error messages will appear.
-- Implemented code changes to ensure correct behavior and fix the following issues:
-  - RepoName will now be rendered in Manifest Details section while adding manifest itself irrespective of whether connector is expression or runtime. (CDS-53309, ZD-39859)
-  - Configuring Bitbucket Connector as expression/runtime input should be an option to provide the repo name (CDS-51247, ZD-38985)
-- Trigger YAML **Edit** button was taking users back to the visual editor. (CDS-50426)
+- Implemented code changes to ensure correct behavior and fixed the following issues:
+  - RepoName will now be rendered in Manifest Details section while adding manifest itself irrespective of whether connector is an expression or runtime input. (CDS-53309, ZD-39859)
+  - Configuring Bitbucket connector as an expression or runtime input should be an option to provide the repository name. (CDS-51247, ZD-38985)
+- The trigger YAML **Edit** button was taking users back to the visual editor. (CDS-50426)
   
   The trigger page was not maintaining the user preference of view type (Visual/YAML). Now the user's trigger view type preference is stored in local storage so that user need not to chose the view type every time.
 

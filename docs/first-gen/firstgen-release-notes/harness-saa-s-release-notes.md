@@ -30,7 +30,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
   * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
   * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
-- Users can only their services in the **Overview** page and deployments in the **Deployments** page (CDS-50514)
+- Users can view only their services in the **Overview** page and deployments in the **Deployments** page (CDS-50514)
 	In the main dashboard's **Overview**, Harness now automatically filters the **Service Instances** panel to show only those services that the currently logged in user is authorized to view.
 	
 	In the main dashboard's **Deployments**, Harness now automatically filters the deployments to show only those deployments that the currently logged in user is authorized to view.
