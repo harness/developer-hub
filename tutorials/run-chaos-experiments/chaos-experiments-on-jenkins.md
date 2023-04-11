@@ -1,10 +1,10 @@
 ---
 sidebar_position: 5
-title: Running Chaos Experiments in Jenkins Pipelines
-description: Create experiments in Harness and run them in Jenkins pipelines
+title: Running Chaos Experiment as a Jenkins Pipeline
+description: Create chaos experiments in Harness and run them as a Jenkins pipeline
 ---
 
-This tutorial explains how you can create chaos experiments using Harness Chaos Engineering (HCE) and run them in Jenkins pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from. 
+This tutorial describes how to create chaos experiments using Harness Chaos Engineering (HCE) and run them in Jenkins pipelines. Chaos experiments in Harness are created the same way in the chaos engineering module, irrespective of where they are invoked from.
 
 ## Before you begin
 Check out the [first chaos experiment](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering) that will guide you through creating a new experiment in HCE. This will provide a solid foundation for your understanding of creating experiments in HCE. 
@@ -87,7 +87,7 @@ The resilience score is the result of the experiment, and helps decide if a roll
 :::
 
 ## Retrieve the resilience score
-Retrive the resilience score using the Harness Chaos API and take appropriate action in the pipeline. An example of how to use the Harness Chaos API is shown below.
+Retrieve the resilience score using the Harness Chaos API and take appropriate action in the pipeline. An example of how to use the Harness Chaos API is shown below.
 
 ```
 #!/bin/bash
@@ -107,6 +107,6 @@ echo "${resiliencyScore}"
 
 ## Example end-to-end configuration
 
-Go to [Jenkins demo](https://github.com/ksatchit/hce-jenkins-integration-demo) for a sample configuration of the chaos launch script. This script can be included in the Jenkins configuration file. 
+Go to [Jenkins demo](https://github.com/ksatchit/hce-jenkins-integration-demo) for a sample configuration of the chaos launch script. You can include this script in the Jenkins configuration file. 
 This is a sample to include one single chaos experiment, but the same can be repeated so as to be included in multiple chaos experiments. 
 

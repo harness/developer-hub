@@ -59,7 +59,7 @@ export const CEList: CardItem[] = [
     link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
   },
   {
-    title: "Running chaos experiments on GitLab pipelines",
+    title: "Running Chaos Experiments on GitLab pipeline",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: (
@@ -74,7 +74,7 @@ export const CEList: CardItem[] = [
     link: "/tutorials/run-chaos-experiments/chaos-experiments-on-gitlab",
   },
   {
-    title: "Running chaos experiments on Jenkins pipelines",
+    title: "Running Chaos Experiments on Jenkins pipeline",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: (
