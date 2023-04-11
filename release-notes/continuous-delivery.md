@@ -17,9 +17,9 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-- The **Manage Services** tab has been removed from the Services dashboard page. (CDS-57974)
+- The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
-  Harness has consolidated the Dashboard and Manage Services tabs into one Services page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
 - The [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts) input and output variables are now optional. (CDS-57766, CDS-56448)
   
   Input and output variables were mandatory, but now you can choose whether to fill in values. This allows you more flexibility when modeling your pipeline.
@@ -37,16 +37,16 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   <docimage path={require('./static/e467e7de04d6d257e1871fad7181b65a39b7712b68826b84b7c79d849b411f04.png')} width="60%" height="60%" title="Click to view full size image" />
 
-- View the freeze windows that impact a pipeline from the Pipeline Executions page. (CDS-53781)
+- View the freeze windows that impact a pipeline from the **Pipeline Executions** page. (CDS-53781)
   
-  You can now select **Associated Freeze Window Details** from the more options setting (⋮) on the Pipeline Executions page. Selecting this option will take you to the related freeze windows that apply to the pipeline execution.
-- Helm Chart Version fetch is added to Manifest Details form. (CDS-53220)
+  You can now select **Associated Freeze Window Details** from the more options setting (⋮) on the **Pipeline Executions** page. Selecting this option will take you to the related freeze windows that apply to the pipeline execution.
+- Helm Chart Version fetch is added to **Manifest Details** form. (CDS-53220)
   
   You can now select the Helm Chart name in the **Manifest Details** form of the service and get the list of chart versions.
   
   ![picture 72](static/f01d849d1372a8d1c67dcd7532d2a3d58562fb72453328008eb617ae5df0b127.png)
 
-  This only works for HTTP Helm or Git based Helm Charts.
+  This only works for HTTP Helm or Git-based Helm Charts.
 - Harness recommends that you use the `kubelogin` auth plugin to authenticate the Google Kubernetes Engine cluster with Kubernetes version 1.22 or later. (CDS-52514)
   
   The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
