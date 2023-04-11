@@ -20,7 +20,9 @@ By ingesting your custom Issues, you can benefit from STO's refinement, deduplic
 ### Required Steps
 
 1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
+ 
    ![](./static/ingesting-issues-from-other-scanners-00.png)
+
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
 You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
 1. Add a Security step and configure the scanner to ingest the results of the scan. These settings are required:
@@ -36,7 +38,7 @@ You might want to set up a Run step to generate your scans automatically wheneve
 The following example illustrates the required format for your data:
 
 
-```
+```yaml
 {  
    "meta":{  
       "key":[  
@@ -65,12 +67,13 @@ The following example illustrates the required format for your data:
    ]  
 }
 ```
+
 The basic schema includes a `“meta”` section, which requires a `“key”` — this is the name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
 
-The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields.The full JSON takes the form:
+The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. The full JSON takes the form:
 
 
-```
+```json
 "meta":   
      { ... },   
      "issues": [   
@@ -79,9 +82,9 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
         { "issue-3" : "data" }  
 }
 ```
+
+
 #### **Required fields**
-
-
 
 |  |  |  |
 | --- | --- | --- |
@@ -116,8 +119,6 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
 | `url` | String | Recommended to assist in triaging errors (if present). |
 
 #### **Optional fields**
-
-
 
 |  |  |  |
 | --- | --- | --- |
