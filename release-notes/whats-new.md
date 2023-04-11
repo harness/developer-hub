@@ -23,6 +23,13 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 * Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
 
+## April 05, 2023, version 79001
+
+### Cloud Cost Management
+
+* Workload recommendations enhancement. (CCM-9161)(Zendesk Ticket ID 34658)
+
+  Introduced support for 100th percentile in workload recommendations.  Recommendations will be displayed for 100% usage of workloads.
 
 ## March 31, 2023, version 78914
 
