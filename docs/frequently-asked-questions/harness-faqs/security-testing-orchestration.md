@@ -82,10 +82,12 @@ STO identifies an issue as "new" like this:
 
 ### Why do I need to use Docker-in-Docker? Why is root privilege required?
 
-When Harness acquired ZeroNorth in 2021, the STO development team used Docker-in-Docker to speed up the integration between the ZeroNorth and Harness platforms. Some scanners also explicitly require Docker-in-Docker. Docker-in-Docker requires Privileged mode. 
+When Harness acquired ZeroNorth in 2021, the STO development team used Docker-in-Docker to speed up the integration between the ZeroNorth and Harness platforms. Some scanners explicitly require Docker-in-Docker, which requires Privileged mode. 
 
-:::note 
-Harness is currently working to remove this requirement for scanners that don't need it and to provide other ways to orchestrate scans. 
+On March 14, 2023, Harness introduced a set of new UIs (step palettes) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps do not require Docker-in-Docker *unless* you are scanning a container image. For more information, go to [What's new: Improved UIs and set-up workflows for popular scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#whats-new-improved-uis-and-set-up-workflows-for-popular-scanners).
+
+:::info note 
+Harness is currently working to remove this requirement for other scanners that don't need it and to provide other ways to orchestrate scans. 
 :::
 
 ### What RBAC roles does STO support? 
