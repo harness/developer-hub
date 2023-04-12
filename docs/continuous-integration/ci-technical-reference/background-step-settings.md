@@ -58,7 +58,7 @@ Use these fields to define the commands that you need to run in the Background s
 
 For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
 
-**Entry Point** arguments take precedence over commands in the **Command** field.
+**Entry Point** arguments take precedence over commands in the **Command** field and override the image `ENTRYPOINT`. Enter each argument separately.
 
 In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands (beyond the entry point) for this step. If the step runs in a container, the commands are executed inside the container.
 
