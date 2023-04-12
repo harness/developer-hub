@@ -83,11 +83,7 @@ The following changes apply to services:
 
 - To use the service in a pipeline, service definitions must be configured via API/UI/YAML.
 - The service definition is a configuration mapped to the service irrespective of the pipelines where it is used.
-<<<<<<< HEAD:docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2.md
 - For details on service v2, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
-=======
-- For details on service v2, go to [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
->>>>>>> main:docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2.md
 - The service entity is now moved from the pipeline to a standalone entity. The service contains the following components:
   - **Name**, **Description**, **Tag**, **Id**. These are the same as in the service v1 experience.
   - Manifests and artifacts. The service manifests and artifacts are now mapped in the service. They are moved out of the pipeline **Service** tab.

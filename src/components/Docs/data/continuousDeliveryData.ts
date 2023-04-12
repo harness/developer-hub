@@ -2,7 +2,7 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../LandingPage/TutorialCard";
+} from "src/components/LandingPage/TutorialCard";
 
 /* Define the cards - start */
 // Featured Tutorials

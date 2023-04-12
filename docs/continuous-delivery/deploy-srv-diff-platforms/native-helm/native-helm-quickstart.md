@@ -107,11 +107,6 @@ You can add a Harness Delegate inline when you configure the first setting that 
 9. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
    We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your target cluster. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
 
-   Expand the section below to learn more about installing delegates.
-
-   <details>
-   <summary>Install a new delegate</summary>
-
     1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
     2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
     3. In **Install your Delegate**, select **Kubernetes Manifest**.
@@ -142,7 +137,6 @@ You can add a Harness Delegate inline when you configure the first setting that 
 
     7. Install the delegate by running the following command:
 
-<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md
     `kubectl apply -f harness-delegate.yaml`
 
     The successful output looks like this.
@@ -161,9 +155,7 @@ You can add a Harness Delegate inline when you configure the first setting that 
     cronjob.batch/cd-doc-delegate-upgrader-job created
     ```
 
-   8. Select **Verify** to make sure that the delegate is installed properly.
-   
-   </details>
+   1. Select **Verify** to make sure that the delegate is installed properly.
 
 10. Back in **Set Up Delegates**, you can select the new Delegate.
     In the list of Delegates, you can see your new Delegate and its tags.

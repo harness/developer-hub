@@ -111,9 +111,7 @@ Added an account setting, `allowCrossGenerationAccess`, that you can use to enab
 
 If this setting is set to true, you can switch between CD FirstGen and NextGen with the click of a button. This feature is currently behind the feature flag, `PLG_ENABLE_CROSS_GENERATION_ACCESS`.
 
-To upgrade to NextGen, select the **Launch Harness Next Generation** button in the Harness FirstGen UI. 
-
-![](./static/launch-harness-next-gen.png)
+To upgrade to NextGen, select the **Launch Harness Next Generation** button in the Harness FirstGen UI.
 
 To go back to FirstGen, select the **Launch First Generation** button in the Harness NextGen UI.
 
