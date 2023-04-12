@@ -28,7 +28,7 @@ Depending on the stage's build infrastructure, a **Run** step can use binaries t
 This topic assumes you are familiar with the following:
 
 * [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
-* [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI Build Stage Settings](../build-stage-settings/ci-stage-settings.md)
 * [Creating and configuring codebases for CI pipelines](../codebase-configuration/create-and-configure-a-codebase.md)
 
 You need a CI pipeline to which you can add the **Run** step.
@@ -145,12 +145,12 @@ Select **Run** to run the pipeline. Depending on your codebase configuration, yo
 
 While the build runs, you can observe the step logs on the [Build details page](../view-your-builds/viewing-builds.md).
 
-After the pipeline runs, you can [view test reports](../view-your-builds/viewing-tests.md) on the **Tests** tab of the Build details page.
+After the pipeline runs, you can [view test reports](../set-up-test-intelligence/viewing-tests.md) on the **Tests** tab of the Build details page.
 
 ![](./static/run-a-script-in-a-ci-stage-529.png)
 
 :::tip
 
-For an example of a **Run** step that runs tests and produces test reports, go to the [Code coverage with CodeCov in Harness CI tutorial](/tutorials/build-code/ci-tutorial-codecov-test).
+For an example of a **Run** step that runs tests and produces test reports, go to the [Code coverage with CodeCov in Harness CI tutorial](/tutorials/build-code/test/codecov).
 
 :::

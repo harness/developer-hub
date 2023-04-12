@@ -1,8 +1,7 @@
 ---
 title: Save and Restore Cache from S3
 description: Caching enables sharing data across stages
-tags: 
-   - helpDocs
+
 sidebar_position: 30
 helpdocs_topic_id: qibyllcmza
 helpdocs_category_id: 01tyeraya4
@@ -22,7 +21,7 @@ Caching has two primary benefits:
 * Run pipelines faster by reusing the expensive fetch operation data from previous builds
 * Share data across stages
 
-You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step. 
+You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3** step, and restore it in the same stage or a following stage using the **Restore Cache From S3** step.
 
 This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
 
@@ -103,7 +102,7 @@ Here is a YAML example of a **Save Cache to S3** step.
 
 For details about this step's settings, go to [Save Cache to S3 step settings](../../ci-technical-reference/save-cache-to-s-3-step-settings.md).
 
-Pipeline steps within a stage share the same [workspace](../../ci-technical-reference/ci-stage-settings.md#workspace). You can optionally [share paths](../../ci-technical-reference/ci-stage-settings.md#share-paths) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
+Pipeline steps within a stage share the same [workspace](/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings#workspace). You can optionally [share paths](/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings#shared-paths) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
 
 ```yaml
   stages:
@@ -255,3 +254,7 @@ graph TD
     B2(Read from Cache)
   end
 ```
+
+## See also
+
+* [Harness CI for UI Builds](https://harness.io/blog/continuous-integration/harness-cie-ui-builds/)

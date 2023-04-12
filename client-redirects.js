@@ -417,15 +417,101 @@ module.exports = {
       from: "/docs/category/migrating-to-harness-ci",
       to: "/docs/category/migrate-to-harness-ci",
     },
-   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
-   {
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 3, 2023
+    {
+      from: "/docs/category/test-intelligence",
+      to: "/docs/category/run-tests",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 3, 2023
+    {
+      from: "/docs/category/run-ci-scripts",
+      to: "/docs/category/run-scripts",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 3, 2023
+    {
+      from: "/docs/category/view-your-build",
+      to: "/docs/category/view-builds",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 4, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference",
+      to: "/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 4, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline",
+      to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 4, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-cluster-requirement",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-cluster-requirement",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 5, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-stage-settings",
+      to: "/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 5, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
+    {
+      from: "/docs/category/troubleshoot-and-optimize-ci",
+      to: "/docs/category/troubleshoot-ci",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
+    {
+      from: "/docs/continuous-integration/troubleshoot/optimizing-ci-build-times",
+      to: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/group-ci-steps-using-step-groups",
+      to: "/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
+    {
+      from: "/docs/continuous-integration/use-ci/view-your-builds/viewing-tests",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests",
+    },
+
+    //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+    {
     from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
     to: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
-  },
-   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
-   {
+    },
+
+    //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+    {
     from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
     to: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
-  },
+    },
+    
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
+    },
+
+    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
+      to: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
+    },
 ],
 };

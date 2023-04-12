@@ -1,7 +1,7 @@
 ---
 title: Queue Intelligence
-description: Queuing builds that CI can't run concurrently.
-sidebar_position: 30
+description: Queue builds that CI can't run concurrently.
+sidebar_position: 20
 ---
 
 :::note

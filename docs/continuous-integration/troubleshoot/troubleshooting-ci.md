@@ -66,7 +66,7 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 
 ## CI pods appear to be evicted by Kubernetes autoscaling
 
- Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](../use-ci/view-your-builds/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](../ci-technical-reference/ci-stage-settings.md):
+ Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](../use-ci/view-your-builds/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](../use-ci/build-stage-settings/ci-stage-settings.md#infrastructure):
 
 ```
 "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
