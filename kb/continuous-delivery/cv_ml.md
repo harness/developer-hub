@@ -69,9 +69,9 @@ So in nutshell, machine learning modal plays the important role in eliminating t
 	* Identifying the deviation in time series data.
 	* Early detection of the trend in time series data before it hits the status thresholds.
 * Log
-	* 	Identifying similar logs.
 	*  Detecting the new errors which got introduced.
 	*  Detecting the change in frequency of an error.
+	*  Identifying similar logs.
 
 If a service owner has made observability of its service robust, then CV can play a critical role in detecting problems in those observability parameters. In case, service owners do not have a robust mechanism to observe their service in production then they need to start first on observability before CV adds value for them.
 
