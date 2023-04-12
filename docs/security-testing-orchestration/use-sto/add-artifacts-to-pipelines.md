@@ -10,28 +10,28 @@ In some cases, a scanner might require additional files such as SSL certificates
 
 2) Go to the pipeline where you want to add the artifact.
 
-3) In the stage where that will use the artifact, go to **Overview** > **Shared Paths** and create a folder under **/shared** such as **shared/customer-artifacts**. 
+3) In the stage where that will use the artifact, go to **Overview** > **Shared Paths** and create a folder under **/shared** such as **/shared/customer_artifacts**. 
 
 :::note
-To add a PEM file or other SSL certificate, the shared folder should be **shared/customer-artifacts/certificates**. You can include any number of certificates in this folder.
+To add a PEM file or other SSL certificate, the shared folder should be **/shared/customer_artifacts/certificates**. You can include any number of certificates in this folder.
 :::
 
-4) Add a Run step to the stage that adds the artifacts to the shared folder. This step needs to run _before_ the scanner step that uses the artifact. 
+1) Add a Run step to the stage that adds the artifacts to the shared folder. This step needs to run _before_ the scanner step that uses the artifact. 
 
 ### Important Notes
 
-* If the scanner uses an SSL certificate such as a PEM file, save each certificate to **shared/customer-artifacts/certificates/`<certificate_name>`**. 
+* If the scanner uses an SSL certificate such as a PEM file, save each certificate to **/shared/customer_artifacts/`<certificate_name>`**. 
 
 * The following example workflow uses a PEM file stored as a [Harness file secret](/docs/platform/6_Security/3-add-file-secrets.md). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. See [Harness Secrets Manager Overview](/docs/platform/Security/harness-secret-manager-overview.md).
 
-* If the scanner requires a license file, save the file to **shared/customer-artifacts/license/`<license_file_name>`**.  
+* If the scanner requires a license file, save the file to **/shared/customer_artifacts/`<license_file_name>`**.  
 
 * If the pipeline runs a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders. 
 
-  * **/shared/customer-artifacts/authScript/`<artifact_file_name>`**
-  * **/shared/customer-artifacts/context/`<artifact_file_name>`**
-  * **/shared/customer-artifacts/urlFile/`<artifact_file_name>`**
-  * **/shared/customer-artifacts/hosts/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/authScript/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/context/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/urlFile/`<artifact_file_name>`**
+  * **/shared/customer_artifacts/hosts/`<artifact_file_name>`**
   
 ### Example workflow
   
@@ -123,7 +123,7 @@ pipeline:
                   name: addcerts
                   identifier: addcert
                   spec:
-                    connectorRef: dbothwelldocker
+                    connectorRef: jsmithdocker
                     image: alpine
                     shell: Sh
                     command: |-

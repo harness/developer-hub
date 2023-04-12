@@ -7,6 +7,10 @@ helpdocs_category_id: rv2jo2hoiy
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import import_from_git from './static/import-a-pipeline-29.png'
+import import_pipeline_from_git from './static/importPipelineFromGit.png'
+```
 
 Harness lets you create a Pipeline in the following ways:
 
@@ -26,7 +30,7 @@ This topic explains how to import a Pipeline from your Git repo to Harness.
 
 * Make sure you have **Create/Edit** permissions for Pipelines.
 
-### Step: Import pipeline
+### Import pipeline
 
 You can import a Pipeline from the CI or CD module in Harness.
 
@@ -36,11 +40,15 @@ This topic shows you how to import a Pipeline to the CD module.
 2. Select your Project and click on **Pipelines**.
 3. Select **Import From Git**.
    
-   ![](./static/import-a-pipeline-29.png)
+   ```mdx-code-block
+   <img src={import_from_git} alt="import_from_git" height="200" width="300"/>
+   ```
    
    The **Import Pipeline From Git** settings appear.
 
-   ![](./static/importPipelineFromGit.png)
+   ```mdx-code-block
+   <img src={import_pipeline_from_git} alt="import_pipeline_from_git" height="400" width="700"/>
+   ```
 
 4. Enter a **Name** for your Pipeline.
 5. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).

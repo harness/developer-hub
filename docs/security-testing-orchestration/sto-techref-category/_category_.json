@@ -1,1 +1,14 @@
-{"label": "STO Technical Reference", "position": 30, "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "STO Technical Reference"}, "customProps": { "helpdocs_category_id": "m01pu2ubai"}}
+{
+    "label": "STO technical reference",
+    "position": 30,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+       "type": "generated-index",
+       "title": "STO technical reference"
+    },
+    "customProps": {
+       "helpdocs_category_id": "m01pu2ubai"
+    }
+ }

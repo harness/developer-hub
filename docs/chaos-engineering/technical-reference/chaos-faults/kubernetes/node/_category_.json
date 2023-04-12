@@ -1,0 +1,13 @@
+{
+  "position": 4,
+  "label": "Node",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Node faults"
+   },
+  "customProps": {
+    "description": "Node faults documentation"
+  }
+}

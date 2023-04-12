@@ -1,12 +1,12 @@
 {
-   "label":"Build and Upload Artifacts",   
-   "position": 10,
+   "label":"Build and upload artifacts",   
+   "position": 50,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Build and Upload Artifacts"
+      "title":"Build and upload artifacts"
    },
    "customProps":{
       "helpdocs_category_id":"mi8eo3qwxm"

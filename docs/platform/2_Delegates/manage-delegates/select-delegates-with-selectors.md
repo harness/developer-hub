@@ -1,14 +1,14 @@
 ---
-title: Select delegates with delegate selectors and tags
+title: Use delegate selectors
 description: Use delegate tags to select specific delegates in connectors, steps, and more.
-# sidebar_position: 2
+sidebar_position: 4
 helpdocs_topic_id: nnuf8yv13o
 helpdocs_category_id: m9iau0y3hv
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. See [How Does Harness Manager Pick Delegates?](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md#how-does-harness-manager-pick-delegates)
+Harness runs tasks by using Harness Delegate to connect your environment to resources. Harness selects the best delegate based on previous use or round-robin selection. See [How Does Harness Manager Pick Delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates)
 
 In some cases, you might want Harness to select specific delegates. In these cases, you can use the **Delegate Selector** settings in Pipelines, Connectors, and so on, with corresponding delegate tags.
 
@@ -29,7 +29,7 @@ You can also add tags to the **Tags** field during the setup process:
 
 ![](./static/select-delegates-with-selectors-17.png)
 
-For detailed information on how delegates are selected during execution, see [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
+For detailed information on how delegates are selected during execution, see [Delegates Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
 You can select a delegate based on its tags in the **Delegate Selector** settings of Harness entities like pipelines and connectors.
 
@@ -113,5 +113,5 @@ See [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Grou
 
 ### See also
 
-* [Delegate overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md)
+* [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 

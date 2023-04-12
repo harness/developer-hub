@@ -1,7 +1,7 @@
 ---
 title: Build and push an artifact
 description: Add a Build and Push step to build and push an artifact to a repo.
-sidebar_position: 20
+sidebar_position: 10
 helpdocs_topic_id: 8l31vtr4hi
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
@@ -10,16 +10,26 @@ helpdocs_is_published: true
 
 Add a **Build and Push** step to your CI pipeline to build your codebase and then push the artifact to a repo. The following repos are supported:
 
-* Docker
-* Azure Container Registry (ACR)
-* Google Container Registry (GCR)
-* Amazon Elastic Container Registry (ECR)
+* [Docker](#add-the-build-and-push-step)
+* [Azure Container Registry (ACR)](./build-and-push-to-acr.md)
+* [Google Container Registry (GCR)](./build-and-push-to-gcr.md)
+* [Amazon Elastic Container Registry (ECR)](/tutorials/build-code/publish/amazon-ecr)
+* [Google Artifact Registry (GAR)](/tutorials/build-code/publish/google-gar#configure-pipeline-steps)
+
+:::info
+
+For language-specific tutorials, go to the [CI Build tutorials](/tutorials/build-code/build/).
+
+For information about **Upload Artifact** steps, go to [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md)
+
+:::
 
 This topic describes a simple one-step build workflow that does not include testing. It builds the code in a build farm, and then pushes it to a repo.
 
-For details about various **Build and Push** step settings, go to the [CI technical reference](/docs/category/ci-technical-reference).
+<details>
+<summary>Video summary</summary>
 
-For a visual overview of this process, watch the following video:
+For a visual summary of the process described in this topic, watch the following video:
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -27,16 +37,18 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 <!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/v3A4kF1Upqo/hqdefault.jpg"><iframe width="200" height="150" src="https://www.youtube.com/embed/v3A4kF1Upqo?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe></div -->
 
+</details>
+
 ## Before you begin
 
 You should have an understanding of the following:
 
-* Harness' [key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* Harness' [key concepts](../../../getting-started/learn-harness-key-concepts.md).
 * How to [set up build infrastructure](/docs/category/set-up-build-infrastructure).
-* How to create pipelines. If you haven't created a pipeline before, try one of these tutorials:
-  * [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md)
-  * [Get started for free with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
-* [CI stage settings](../../ci-technical-reference/ci-stage-settings.md)
+* How to create pipelines. If you haven't created a pipeline before, try one of the following tutorials:
+  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm).
+  * [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
+* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
 
 ## Add the Build and Push step
 
@@ -53,12 +65,13 @@ The codebase configuration specifies the repo to use for this pipeline. When you
 3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [Define a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 4. In the **Build** stage's **Execution** tab, select **Add Step**, select **Add Step** again, and then select a **Build and Push** step from the Step Library.
 
-For all Build and Push steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the reference topic that corresponds with your registry provider:
+For all **Build and Push** steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the reference topic that corresponds with your registry provider:
 
 * Docker: [Build and Push an image to Docker registry step settings](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
 * Azure Container Registry (ACR): [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-to-acr-step-settings.md) or [Build and Push an image to Docker registry step settings](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
 * Google Container Registry (GCR): [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
 * Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](../../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
+* Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/build-code/publish/google-gar#configure-pipeline-steps).
 
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
@@ -148,7 +161,9 @@ You can use your CI pipeline to test a Dockerfile used in your codebase and veri
 <details>
 <summary>Build multi-architecture images</summary>
 
-To use a CI pipeline to build multi-architecture images, create a stage for each architecture. Here is a YAML example of a mulit-architecture pipeline:
+To use a CI pipeline to build multi-architecture images, create a stage for each architecture.
+
+The following YAML example describes a mulit-architecture pipeline. For a guided experience, try the [Rust application CI tutorial](/tutorials/build-code/build/rust).
 
 ```yaml
 pipeline:
@@ -331,7 +346,3 @@ pipeline:
   projectIdentifier: CI_Quickstart
   orgIdentifier: default
 ```
-
-## See also
-
-* [Run step settings](../../ci-technical-reference/run-step-settings.md)

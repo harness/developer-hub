@@ -15,7 +15,11 @@ Harness includes both Kubernetes and Native Helm deployments, and you can use He
 * **Kubernetes with Helm:** Harness Kubernetes deployments allow you to use your own Helm values.yaml or Helm chart (remote or local), and Harness executes the Kubernetes kubectl calls to build everything without Helm and Tiller needing to be installed in the target cluster. You can perform all deployment strategies (Rolling, Canary, Blue Green).  
 See [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 * **Native Helm:**
+<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md
 	+ For Harness Native Helm V2 deployments, you must always have Helm and Tiller running on one pod in your target cluster and Tiller makes the API calls to Kubernetes. You can perform a Rolling deployment strategy only (no Canary or Blue Green).If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+=======
+	+ For Harness Native Helm V2 deployments, you must always have Helm and Tiller running on one pod in your target cluster and Tiller makes the API calls to Kubernetes. You can perform a Rolling deployment strategy only (no Canary or Blue Green).If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the delegate, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+>>>>>>> main:docs/continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md
 	+ For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
 		- **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and Secrets. Native Helm does not.
 		- **Rollback:** Harness Kubernetes deployments will roll back to the last successful version. Native Helm will not. If you did 2 bad Native Helm deployments, the 2nd one will just rollback to the 1st. Harness will roll back to the last successful version.
@@ -138,6 +142,7 @@ You can add a Harness Delegate inline when you configure the first setting that 
 
     7. Install the delegate by running the following command:
 
+<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md
     `kubectl apply -f harness-delegate.yaml`
 
     The successful output looks like this.
@@ -168,6 +173,17 @@ You can add a Harness Delegate inline when you configure the first setting that 
     If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
 13. Click **Continue**.
 14. In **Manifest Details**, enter the following settings can click **Submit**.
+=======
+1. In Harness, click **Verify**. It will take a few minutes to verify the Delegate. Once it is verified, close the wizard.
+2. Back in **Set Up Delegates**, you can select the new Delegate.
+   In the list of Delegates, you can see your new Delegate and its tags.
+3. Select the **Connect using Delegates with the following Tags** option.
+4. Enter the tag of the new Delegate and click **Save and Continue**.
+   When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.
+   If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+5. Click **Continue**.
+6. In **Manifest Details**, enter the following settings can click **Submit**.
+>>>>>>> main:docs/continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md
    * **Manifest Identifier**: enter **nginx**.
    * **Helm Chart Name**: enter **nginx**.
    * **Helm Chart Version**: enter **8.8.1**.

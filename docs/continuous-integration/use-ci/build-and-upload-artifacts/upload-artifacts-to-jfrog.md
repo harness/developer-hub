@@ -1,6 +1,6 @@
 ---
 title: Upload Artifacts to JFrog
-description: This topic provides settings to upload artifacts to JFrog Artifactory.
+description: Add a step to upload artifacts to JFrog.
 
 sidebar_position: 40
 helpdocs_topic_id: lh082yv36h
@@ -9,14 +9,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory).
-
-The following steps run SSH commands and push the artifacts to JFrog Artifactory.
+You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](../../ci-technical-reference/upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](../../ci-technical-reference/upload-artifacts-to-gcs-step-settings.md).
 
 ### Before you Begin
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
 * [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 

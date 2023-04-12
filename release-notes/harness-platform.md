@@ -1,7 +1,7 @@
 ---
 title: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-03-24T10:00
+date: 2023-04-10T10:00
 sidebar_position: 10
 ---
 
@@ -16,6 +16,60 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## April 10, 2023, version 79015
+
+### What's new
+- You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
+
+- Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
+  * Github
+  * Bitbucket
+  * AzureRepo 
+  * Gitlab 
+
+- You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
+
+### Early access
+
+This release does not include any early access feature.
+
+### Fixed issues
+
+- Role assignments by **Scope** filter do not populate usernames or email addresses for existing users. (PL-32206)
+  A code enhancement fixed this issue.
+
+- When polling, the stage selection flickers on the pipeline execution page. (PIE-9360, ZD-42361)
+  A code enhancement fixed this issue.
+
+- During pipeline execution, failure strategies are prompted even when not configured as inputs. (PIE-9277, ZD-41602)
+  The pipeline and template studio no longer display the failure strategy runtime panel when failure strategy is not marked as runtime. 
+
+## March 31, 2023, version 78914
+
+### What's new
+
+- The favicon now dynamically changes based on pipeline execution status on the dashboard's execution view. (PL-31520)
+
+
+### Early access
+
+This release does not include any early access feature.
+
+### Fixed issues
+
+- JWT log sanitizer throws a null pointer exception when it receives null log messages. (PL-32136)
+
+  A code enhancement to add an empty check before sanitizing a log line for secret and JWT masking has fixed this issue.
+
+- When an author's GitLab profile does not include a public email, the email attribute in the webhook payload appears as `REDACTED`. (PL-31795)
+
+  A code enhancement has fixed this issue.
+
+- When creating Azure Key Vault and HashiCorp Vault connectors, selecting invalid delegate selectors displays an "UNKNOWN ERROR". (PL-30660)
+
+  A code enhancement to display appropriate error message has fixed this issue. 
+
 
 ## March 24, 2023, version 78817
 

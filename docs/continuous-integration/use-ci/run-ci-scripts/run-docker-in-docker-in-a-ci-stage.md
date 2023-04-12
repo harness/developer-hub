@@ -1,7 +1,8 @@
 ---
-title: Run Docker-in-Docker in a CI Stage
-description: You can run Docker-in-Docker as a Background step in a CI Stage.
-# sidebar_position: 2
+title: Run Docker-in-Docker in a Build stage
+description: You can run Docker-in-Docker as a Background step in a Build stage.
+
+sidebar_position: 20
 helpdocs_topic_id: ajehk588p4
 helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false
@@ -24,9 +25,9 @@ Docker-in-Docker must run in privileged mode to work properly. Use caution becau
 
 These steps assume you are familiar with the following concepts:
 
-* Pipeline configuration, such as the [CI Pipeline quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
 
 ## Step 1: Set Up the CI Stage
 

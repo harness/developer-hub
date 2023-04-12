@@ -127,6 +127,7 @@ We'll cover this option below.
    
    ![](./static/add-and-override-values-yaml-files-33.png)
 
+<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files.md
 5. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo).
 6. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
     This process is described in [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate).
@@ -136,6 +137,17 @@ We'll cover this option below.
 10. In **Git Fetch Type**, select a branch or commit Id for the manifest, and then enter the Id or branch.
 11. For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
 12. In **File Path**, enter the path to the values.yaml file in the repo.
+=======
+1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](../../../platform/7_Connectors/connect-to-code-repo.md).
+5. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
+    This process is described in [Kubernetes deployment tutorial](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md), [Helm Chart deployment tutorial](../../onboard-cd/cd-quickstarts/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md).
+1. Once you've selected a Connector, click **Continue**.
+6. In **Manifest Details**, you tell Harness where the values.yaml is located.
+7. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
+8. In **Git Fetch Type**, select a branch or commit Id for the manifest, and then enter the Id or branch.
+9.  For **Specific Commit ID**, you can also use a [Git commit tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging).
+10. In **File Path**, enter the path to the values.yaml file in the repo.
+>>>>>>> main:docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files.md
     
     You can enter multiple values file paths by clicking **Add File**. At runtime, Harness will compile the files into one values file.
     

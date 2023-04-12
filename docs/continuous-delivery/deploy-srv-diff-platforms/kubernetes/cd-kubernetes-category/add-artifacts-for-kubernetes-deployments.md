@@ -22,8 +22,13 @@ With a Harness artifact, you can template your manifests, detaching them from a 
 
 Make sure you've reviewed and set up the following:
 
+<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md
 * [Install a Kubernetes Delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate): You must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
 * [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
+=======
+* [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md). You must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
+* [Kubernetes Deployments Overview](kubernetes-deployments-overview.md)
+>>>>>>> main:docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md
 
 ## Visual summary
 

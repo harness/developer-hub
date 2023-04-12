@@ -40,6 +40,7 @@ You can use Jira Approvals in two ways:
 * **Jira Approval stage:** the Jira Approval stage includes Jira Create, Jira Approval, and Jira Update steps:
 
 ![](./static/adding-jira-approval-stages-08.png)
+
 You do not need to use the Jira Create and Jira Update steps with the Jira Approval step, but they are included in the Jira Approval stage because many users want to create a Jira issue, approve/reject based on its settings, and then update the Jira issue all in one stage.
 
 You can also achieve this simply by using the Jira Create, Jira Approval, and Jira Update steps within a non-Approval stage.
@@ -61,11 +62,11 @@ In **Name**, enter a name that describes the step.
 
 In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
-You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
+You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
 Jira communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m.In **Jira Connector**, create or select the [Jira Connector](../7_Connectors/connect-to-jira.md) to use.
+The maximum is 3w 3d 20h 30m. In **Jira Connector**, create or select the [Jira Connector](../7_Connectors/connect-to-jira.md) to use.
 
 In **Project**, select the Jira project that contains the issue you want to evaluate.
 
@@ -79,7 +80,7 @@ The Jira Create or Jira Update step you want to reference must be before the Jir
 
 First, identify the step where you want to get the ID from.
 
-You'll have to close the Jira Approval step to get the the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**.In the Pipeline, click **Execution History**.
+You'll have to close the Jira Approval step to get the ID from the previous step. An ID is required, so you can just enter any number for now and click **Save**. In the Pipeline, click **Execution History**.
 
 Select a successful execution, and click the Jira Create/Update step in the execution.
 
@@ -108,7 +109,7 @@ Some users can forget that when you use a Jira Create step it creates a new, i
 The **Approval Criteria** in the step determines if the Pipeline or stage is approved or rejected.
 
 ![](./static/adding-jira-approval-stages-11.png)
-Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
+Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
 
 In **Conditions**, you simply use the Jira Field, Operator, and Value to define approval criteria.
 

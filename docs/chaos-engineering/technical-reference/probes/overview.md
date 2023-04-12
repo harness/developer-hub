@@ -3,7 +3,7 @@ title: Overview
 sidebar_position: 1
 ---
 
-## Declarative Hypothesis
+## Declarative hypothesis
 
 Declarative Hypothesis in a cloud-native chaos engineering environment is a way of specifying the expected outcome of a chaos experiment before it is run. It is a statement that defines the expected result of the experiment, and is used to guide the experiment's design and implementation. This can be done as a part of defining the fault specs in the respective Chaos Engine which can be validated by the Chaos Operator.
 
@@ -23,7 +23,7 @@ A probe, with its spec defined in the Chaos Engine, is triggered by the Chaos Ru
 
 ### Types
 
-Types of Probes available:
+HCE facilitates four types of probes.
 
 - **HTTP Probe**: To query health/downstream URIs
 - **Command Probe**: To execute any user-desired health-check function implemented as a shell command
@@ -44,7 +44,7 @@ The probe mode refers to the way in which a probe checks the system's health dur
 - **Continuous**: The probe is executed continuously, with a specified polling interval during the chaos injection.
 - **OnChaos**: The probe is executed continuously, with a specified polling interval strictly for chaos duration of chaos
 
-## Default Probe
+## Default probe
 
 By default, each fault imported in Chaos Studio would have a health check command probe configured in Edge mode. A Health check probes helps to ensure that the application remains available and responsive to user requests even in the event of unexpected failures. By regularly checking the health of the containers, Kubernetes can automatically take action if a container is not healthy, such as restarting or removing the container, to maintain the availability and responsiveness of the application.
 
@@ -58,9 +58,8 @@ By injecting known failures into the system, they can identify and fix issues be
 
 In general, anyone responsible for maintaining and deploying applications in a Kubernetes cluster, especially in a production environment, should consider using chaos probes to proactively identify and fix issues in their applications.
 
----
 
-## Why use Probes?
+## Why use probes?
 
 By injecting known failures into the system, chaos probes can identify and fix issues before they occur in production. This can help ensure that the application remains available and responsive to user requests even in the event of unexpected failures.
 
@@ -70,9 +69,9 @@ Additionally, Chaos probes also help in understanding the behavior of the applic
 
 In summary, chaos probes provide a way to proactively identify and fix issues in an application, and can help ensure that the application remains available and responsive to user requests even in the event of unexpected failures. Without using chaos probes, it would be difficult to fully test and understand the resiliency and fault-tolerance of an application.
 
-### Common Use Cases
+### Common use cases
 
-Some common use-cases of probes include:
+Some common use cases of probes include:
 
 1. Network partitioning: Testing how an application behaves when network connectivity is lost between different components.
 2. Pod failures: Testing how an application behaves when a pod in a Kubernetes cluster is terminated or becomes unavailable.
@@ -83,13 +82,13 @@ Some common use-cases of probes include:
 7. Identifying bottlenecks: Identifying the bottlenecks in the system and making sure that the system can handle such scenarios.
 8. Testing disaster recovery: Testing the disaster recovery plan and making sure that the system can recover from an unexpected failure.
 9. Testing application scalability: Testing the scalability of the application and making sure that the system can handle more traffic.
-10. Testing Kubernetes components: Testing the behavior of Kubernetes components like apiserver, etcd, controller manager and kubelet. \
+10. Testing Kubernetes components: Testing the behavior of Kubernetes components like apiserver, etcd, controller manager and kubelet.
 
 These are some of the common use cases where chaos probes can be used but it can also be used in other scenarios as well depending on the requirements of the application and the system.
 
-## How is Resilience Score affected
+## Effects on the resilience score
 
-In a Chaos Experiment, the probe success percentage refers to the percentage of successful probes out of the total number of probes run during a chaos experiment. The value depends on the successful outcome of the probe criteria based on the type and mode selected. There are two possible values of probe success percentage for each of the probe criterias, either `0`(if the criteria assertion fails) or `100`(if the criteria assertion passes).
+In a chaos experiment, the probe success percentage refers to the percentage of successful probes out of the total number of probes run during a chaos experiment. The value depends on the successful outcome of the probe criteria based on the type and mode selected. There are two possible values of probe success percentage for each of the probe criterias, either `0`(if the criteria assertion fails) or `100`(if the criteria assertion passes).
 
 The probe success percentage for each of the probes mentioned in the fault plays an important role in determining the final Resilience Score of the experiment. The Resilience Score of a Chaos Experiment is calculated by this formula:
 
@@ -99,19 +98,17 @@ The probe success percentage for each of the probes mentioned in the fault plays
 
 It is an important metric in evaluating the results of a chaos experiment and can be used to identify which parts of the system are most affected by the chaos injection and where improvements need to be made. It also helps to understand the behavior of the application during the chaos scenario and fine tune the application for better resiliency.
 
----
 
-## Probe Status & Deriving Inferences
+## Probe status and deriving inferences
 
 The litmus chaos experiments run the probes defined in the ChaosEngine and update their stage-wise success in the ChaosResult custom resource, with details including the overall **probeSuccessPercentage** (a ratio of successful checks v/s total probes) and failure step, where applicable. The success of a probe is dependent on whether the expected status/results are met and also on whether it is successful in all the experiment phases defined by the probe’s execution mode. For example, probes that are executed in “Edge” mode, need the checks to be successful both during the pre-chaos & post-chaos phases to be declared as successful.
 
 The pass criteria for an experiment is the logical conjunction of all probes defined in the ChaosEngine and an inbuilt entry/exit criteria. Failure of either indicates a failed hypothesis and is deemed experiment failure.
 
----
 
-## Probe Chaining
+## Probe chaining
 
-:::info YAML Only Feature
+:::info YAML only feature
 This feature can only be defined using the YAML manifest for now.
 :::
 

@@ -42,16 +42,15 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 	+ Accepted values(s):
 	+ `sast` ( if `product_lookup_type` = `Static`)
 	+ `dast` ( if `product_lookup_type` = `Dynamic`)
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-
-
-<!-- CONTAINERS ---------------------------------------------------------------------------
+### Fail on Severity
 
 ```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
+<StoSettingFailOnSeverity />
 
-<StoLegacyContainer />
 
 
 <!-- REPOS ---------------------------------------------------------------------------  -->

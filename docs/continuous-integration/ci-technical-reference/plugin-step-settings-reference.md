@@ -26,7 +26,7 @@ Optional text string describing the step's purpose.
 
 ## Container Registry
 
-Harness connector for the container registry where the plugin image is located.
+A Harness container registry connector that has access to DockerHub. If you have created your own plugin, the connector must have access to the container registry where your plugin image is located.
 
 ## Image
 
@@ -44,7 +44,7 @@ Select this option to run the container with escalated privileges. This is the e
 
 ### Settings
 
-Specify plugin-specific settings according to the plugin's documentation. For more information, go to the [Drone plugins documentation](http://plugins.drone.io/).
+Specify plugin-specific settings according to the plugin's documentation. For more information, go to [Use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and the [Drone plugins documentation](http://plugins.drone.io/).
 
 ### Image Pull Policy
 

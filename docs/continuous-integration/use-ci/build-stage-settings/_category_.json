@@ -1,0 +1,11 @@
+{
+    "label": "Build stage settings",
+    "position": 30,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Build stage settings"
+    }
+}

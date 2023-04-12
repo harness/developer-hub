@@ -8,22 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::note
-
-Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-The more tests you run in a **Run** step, the longer it takes for them to complete if run sequentially. To reduce test cycle time, you can use parallelism to split your tests and run them in multiple groups at the same time.
-
-*Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Parallelism is useful whenever you can split the work of a step or stage into multiple groups and run the workloads at the same time. Parallelism is also one of the [available methods](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md) you can use to speed up your CI builds.
+To decrease test cycle time, utilize parallelism by dividing tests into multiple sets and running them in parallel. *Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Whenever it's possible to divide the tasks of a particular step or stage into multiple sets and execute them concurrently, parallelism can be used to [speed things up](../../continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md).
 
 ## Key concepts: parallelism and test splitting
 
-Many pipelines are set up to run a set of tests with every new commit. When you [set up parallelism in a pipeline](#set-up-parallelism-in-a-pipeline), you must specify the following:
+Most CI pipelines are set up to run tests with every new commit. When you [set up parallelism in a pipeline](#set-up-parallelism-in-a-pipeline), you must specify the following:
 
-1. How many copies of the stage or step to run, also known as the [parallelism strategy](#define-the-parallelism-strategy).
-2. The logic to use to split your tests into groups. How you do this depends on which step you're using to run tests:
+1. The [parallelism strategy](#define-the-parallelism-strategy), which determines the number of instances of a stage or step to execute
+2. The strategy for splitting tests. How you do this depends on which step you're using to run tests:
    * If you're using the **Run Tests** step, you specify the `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-parallelism-test-splitting-for-test-intelligence).
    * If you're using a **Run** step, you use the `split_tests` command along with test split strategies, such as `--split-by file_size` to [](#define-test-splitting).
 
@@ -33,15 +25,15 @@ For more information about test splitting with Test Intelligence, go to [Enable 
 
 :::
 
-The following figure illustrates how parallelism can speed up your CI pipelines. The first time you run with parallelism, the pipeline splits the tests by file size and collects timing data for all tests. You can then split your tests by time and speed up your pipeline even further. Every build optimizes the splitting based on the most recent timing data.
+The diagram below demonstrates how parallelism can accelerate your CI pipelines. Upon implementing parallelism for the first time, the pipeline partitions tests based on file size and gathers timing statistics for all tests. Subsequently, tests are partitioned based on duration to further speed up the pipeline's execution. With every run, test partitioning is refined based on the most up-to-date timing data.
 
 ![Parallelism and test times.](./static/speed-up-ci-test-pipelines-using-parallelism-50.png)
 
 ## YAML stage with parallelism
 
-Parallelism can be set on both steps and stages.
+Parallelism can be set at either the step level or stage level.
 
-The following snippet shows a YAML definition of a Run step that uses [pytest](https://docs.pytest.org/) to split tests into four test groups running in parallel.
+The following code snippet shows a YAML definition of a **Run** step that uses [pytest](https://docs.pytest.org/) to split tests into four test groups to be executed in parallel.
 
 ```yaml
 # Use "run" step type  
@@ -49,7 +41,7 @@ The following snippet shows a YAML definition of a Run step that uses [pytest](h
       type: Run     
       name: Run Pytests  
       identifier: Run_Pytests  
-# Enable parallelism strategy   
+      # Enable parallelism strategy   
       strategy:             
           parallelism: 4   # Number of parallel runs  
           maxConcurrency: 2 # (optional) Limit the number of parallel runs   
@@ -57,21 +49,21 @@ The following snippet shows a YAML definition of a Run step that uses [pytest](h
           connectorRef: $dockerhub_connector  
           image: python:latest  
           shell: Sh  
-# Store the current index and total runs in environment variables  
+          # Store the current index and total runs in environment variables  
           envVariables:    
               HARNESS_NODE_INDEX: <+strategy.iteration>  # index of current run  
               HARNESS_NODE_TOTAL: <+strategy.iterations> # total runs  
           command: |-  
               pip install -r requirements.txt  
-# Define splitting strategy and generate a list of test groups  
+              # Define splitting strategy and generate a list of test groups  
               FILES=`/addon/bin/split_tests --glob "**/test_*.py" \  
                      --split-by file_timing \  
                      --split-index ${HARNESS_NODE_INDEX} \  
                      --split-total ${HARNESS_NODE_TOTAL}`  
               echo $FILES  
-# Run tests with the test-groups string as input  
+              # Run tests with the test-groups string as input  
               pytest -v --junitxml="result_<+strategy.iteration>.xml" $FILES  
-# Publish JUnit test reports to Harness   
+         # Publish JUnit test reports to Harness   
          reports:    
               type: JUnit   
               spec:  
@@ -82,22 +74,21 @@ The following snippet shows a YAML definition of a Run step that uses [pytest](h
 
 ## Important notes
 
-* Please consider any resource constraints in your build infrastructure when using parallelism. To learn more, go to [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md).
-* You can implement a parallelism strategy for an entire stage or for individual steps within a stage.
-* If you are implementing parallelism in a step rather than a stage, you need to make sure that each test-group step generates a report with a unique filename to avoid conflicts.  
-You can do this using the `<+strategy.iteration>` variable, which is the index of the current test group run. This index is in the range of `0` to `parallelism- 1`.
-* If you want to publish your test results, you must ensure that your output files are in [JUnit](https://junit.org/junit5/) XML format. How you publish your test results depends on the specific language, test runner, and formatter used in your repo.  
-For more information, go to [Publish test reports](#define-the-test-reports).
-* If your stage uses Harness Cloud build infrastructure, the Run step's `command` can call the `split_tests` binary directly. For example, you would use `./split_tests` instead of `/addon/bin/split_tests`.
+* When using parallelism, it's important to take into account any resource limitations that exist in your build infrastructure. For more information, go to [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md).
+* You can apply a parallelism strategy to an entire stage or to individual steps within a stage.
+* When implementing parallelism in a step rather than a stage, you must ensure that each test-group step generates a report with a unique filename to prevent conflicts. You can accomplish this by utilizing the `<+strategy.iteration>` variable, which represents the current test group run's index, ranging from `0` to `parallelism - 1`.
+* To publish your test results, your output files must be in [JUnit](https://junit.org/junit5/) XML format. How you publish your test results depends on the specific language, test runner, and formatter used in your repo. For more information, go to the [Publish test reports section](#define-the-test-reports).
+* If your stage utilizes Harness Cloud build infrastructure, you can directly call the `split_tests` binary from the **Run** step's `command`. For example, you would use `split_tests` instead of `/addon/bin/split_tests`.
+
 
 ## Set up parallelism in a pipeline
 
-The following steps describe the high-level workflow for setting up parallelism in a pipeline.
+The process to set up parallelism in a pipeline is as follows:
 
-1. Enable parallelism and specify the number of jobs you want to in parallel. Go to [Define the parallelism strategy](#define-parallelism-strategy).
-2. Define the following environment variables in the stage where you run your parallelism strategy:
-	* `HARNESS_NODE_TOTAL` = `<+strategy.iterations>` — The total number of iterations in the current Stage or Step.
-	* `HARNESS_NODE_INDEX` = `<+strategy.iteration>` — The index of the current test run. This index is in the range of `0` to `parallelism``- 1`. This snippet shows how you can define and use these variables in the YAML editor:
+1. Enable parallelism and specify the number of jobs to run in parallel. For more information, go to the [Define the parallelism strategy section](#define-the-parallelism-strategy).
+2. Define the following environment variables within the stage or step where you declared the parallelism strategy:
+	* `HARNESS_NODE_TOTAL = <+strategy.iterations>` — This specifies the total number of iterations in the current stage or step.
+	* `HARNESS_NODE_INDEX = <+strategy.iteration>` — This specifies the index of the current test run, which ranges from `0` to `parallelism-1`. You can define and use these variables in the YAML editor as shown in the following snippet:
 
 ```yaml
 - step:    
@@ -207,7 +198,7 @@ The pipeline needs timing data from the previous run to split tests by time. If 
 
 ### Specifying the tests to split
 
-To split tests by time, you need to provide a list of the classes, test cases, or test suites to include.In the following example code, included in a Run Tests step, the `split_tests` command parses all matching test files (`--glob` option) and splits them into separate lists based on `--split-by file_timing`. The number of lists is based on the parallelism setting. If `parallelism` = 2, for example, the the command creates creates two separate lists of files, evenly divided by testing time. The pipeline then creates two parallel steps that run tests for the files in each list.
+To split tests based on their run time, you must provide a list of file paths, classes, test cases, or test suites to include. For example, the following code snippet splits tests by time in a **Run** step. The `split_tests` command used in the code parses all matching test files based on the `--glob` option and splits them into separate lists based on `--split-by file_timing`. The number of lists created is determined by the `parallelism` setting. For example, if `parallelism` is set to 2, the command creates two separate lists of files that are evenly divided based on their testing time. The pipeline then creates two parallel steps that run tests for the files in each list.
 
 ```
 pip install -r requirements.txt  
@@ -239,7 +230,7 @@ CLASSES=`/addon/bin/split_tests --split-by class_timing --file-path classnames.t
 
 [Parallelism Workflow](#set-up-parallelism-in-a-pipeline)
 
-## Define the test reports
+## Publish test reports
 
 The `report` section in the pipeline YAML defines how to publish your test reports. Here's an example:
 
@@ -249,15 +240,13 @@ reports:
       spec:   
          paths: - "**/result_${HARNESS_NODE_INDEX}.xml"
 ```
-You need to do the following:
 
-* Set up your test runner and formatter to publish your test reports in [JUnit](https://junit.org/junit5/) XML format and to include filenames in the XML output. If you are using [pytest](https://docs.pytest.org/), for example, you can configure the report format by setting the `junit_family` in the pytest.ini file in your code repo:  
-`junit_family=xunit1`  
-Reporting setup and configurations depend on the specific test runner. Go to the external documentation for your specific runner to determine how to publish in the correct format.
-* If you are implementing parallelism in a step rather than a stage, you need to make sure that each test-group step generates a report with a unique filename.  
-You can do this using the `<+strategy.iteration>`variable, which is the index of the current test run. This index is in the range of `0` to `parallelism``- 1`.
+To ensure that your test reports are correctly published and time-based test splitting works, you must do the following:
 
-You can configure your test reporting options in the pipeline YAML, as shown above, or in the Pipeline Studio. Go to the Run or Run Tests Step and configure the **Report Paths** field under Optional Configuration.
+* Configure your test runner and formatter to publish your test reports in the [JUnit](https://junit.org/junit5/) XML format and include filenames in the XML output. For example, if you use `pytest`, you can set `junit_family=xunit1` in your code repo's `pytest.ini` file. Note that the exact setup and configuration requirements depend on the test runner that you use. Refer to your test runner's documentation to learn how to publish in the correct format.
+* If you're implementing `parallelism` in a step, rather than a stage, ensure that each `test-group` step generates a report with a unique filename. You can achieve this using the `<+strategy.iteration>` variable, which represents the index of the current test run, in the range of `0` to `parallelism-1`.
+
+You can configure test reporting options in the Pipeline Studio's YAML or Visual editors. In your pipeline, locate the **Run** or **Run Tests** step and specify the **Report Paths** field. In the Visual editor this field is located under **Optional Configuration**.
 
 ![Define Report Paths in a Run step](./static/speed-up-ci-test-pipelines-using-parallelism-54.png)
 
@@ -269,7 +258,7 @@ The following YAML example shows a full end-to-end pipeline with parallelism ena
 
 :::tip
 
-If your stage uses Harness Cloud build infrastructure, your Run step's `command` can call the `split_tests` binary directly. For example, you would use `./split_tests` instead of `/addon/bin/split_tests`.
+If your stage uses Harness Cloud build infrastructure, your Run step's `command` can use the `split_tests` binary directly. For example, you would use `split_tests` instead of `/addon/bin/split_tests`.
 
 :::
 
@@ -339,7 +328,7 @@ pipeline:
 
 ## See also
 
-* [Optimizing CI Build Times](https://harness.helpdocs.io/article/g3m7pjq79y)
-* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](https://harness.helpdocs.io/article/eh4azj73m4)
+* [Optimizing CI Build Times](../../continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
+* [Looping Strategies Overview: Matrix, For Loop, and Parallelism](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 * [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)

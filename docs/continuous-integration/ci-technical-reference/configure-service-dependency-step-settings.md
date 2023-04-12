@@ -149,5 +149,5 @@ Timeout for the step. Once the timeout is reached, the Step fails and the Pipeli
 ### See Also
 
 * [Share CI Data across Steps and Stages](../use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md)
-* [Run Docker-in-Docker in a CI Stage](../use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md)
+* [Run Docker-in-Docker in a Build stage](../use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md)
 

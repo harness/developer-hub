@@ -1,7 +1,7 @@
 ---
-title: Install Self-Managed Enterprise Edition with KOTS
-description: This topic covers installing Harness Self-Managed Enterprise Edition - Kubernetes Cluster NextGen.
-# sidebar_position: 2
+title: Install using KOTS
+description: Learn how to use KOTS to install Harness Self-Managed Enterprise Edition - Kubernetes Cluster NextGen.
+# sidebar_position: 20
 helpdocs_topic_id: 95mwydgm6w
 helpdocs_category_id: vu99714ib1
 helpdocs_is_private: false

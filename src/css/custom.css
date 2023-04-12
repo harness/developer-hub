@@ -324,6 +324,17 @@ a:hover {
   --ifm-tabs-color-active: var(--primary);
   --ifm-tabs-color-active-border: var(--primary);
 }
+/* #HDH-103 anchor style in alert section */
+.alert a {
+  color: var(--primary);
+  text-decoration: none;
+}
+.alert a:hover {
+  color: var(--primary-5);
+  text-decoration: underline;
+  text-decoration-color: var(--primary-5);
+}
+
 details summary {
   font-size: 20px;
   font-weight: 500;

@@ -22,29 +22,17 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-
-<!-- CONTAINERS ---------------------------------------------------------------------------
-
-```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
-
-<StoLegacyContainer />
-
-
-<!-- REPOS --------------------------------------------------------------------------- 
-
-### Repository scan settings
+### Fail on Severity
 
 ```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
+<StoSettingFailOnSeverity />
 
-<StoLegacyRepo />
 
-<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  -->
-
+### Instance settings
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';

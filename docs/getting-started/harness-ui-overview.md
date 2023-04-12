@@ -8,9 +8,9 @@ sidebar_position: 3
 ```mdx-code-block
 import new_left_nav from './static/new-nav-left.png'
 import select_modules from './static/select-modules-leftnav.png'
-import module_info from './static/module-info.png'
+import module_info from './static/module-info1.png'
 import customize_left_nav from './static/configure-leftnav.png'
-import reorder_modules from './static/drag-drop-modules.png'
+import reorder_modules from './static/drag-drop-modules1.png'
 
 ```
 
@@ -77,7 +77,7 @@ To navigate to your desired module, perform the following steps:
      - Continuous Integration
      - Chaos Engineering
      - Security Tests
-     - Infra as Code Management
+     
    - Deploy Changes
      - Continuous Delivery & GitOps
      - Feature Flags
@@ -171,7 +171,6 @@ The following profile information is displayed:
 
 - Basic information
 - Projects
-- Source code managers
 - API keys
 
 You can also do the following from the profile page:
