@@ -3,7 +3,7 @@ sidebar_position: 1
 description: Create a pipeline that uses a Kubernetes cluster build infrastructure.
 slug: /build-code/build/kubernetes-build-farm
 keywords: [Kubernetes, Continuous Integration, CI Tutorial]
-title: Build on a Kubernetes Cluster
+title: Build on a Kubernetes cluster
 ---
 
 # Build and test on a Kubernetes cluster build infrastructure

@@ -18,7 +18,7 @@ import { MODULES } from "../../constants";
           title: "Code coverage with CodeCov",
           module: MODULES.ci,
           description:
-            "Wse a Run step to include CodeCov code coverage.",
+            "Use a Run step to include CodeCov code coverage.",
           link: "/tutorials/build-code/test/codecov",
         },
         {
@@ -32,14 +32,14 @@ import { MODULES } from "../../constants";
           title: "Run LocalStack",
           module: MODULES.ci,
           description:
-            "Run LocalStack as a Background Step.",
+            "Run LocalStack as a Background step.",
           link: "/tutorials/build-code/test/localstack",
         },
         {
-          title: "Run Sauce Connect Proxy.",
+          title: "Run Sauce Connect Proxy",
           module: MODULES.ci,
           description:
-            "Run Sauce Connect Proxy as a Background Step",
+            "Run Sauce Connect Proxy as a Background step.",
           link: "/tutorials/build-code/test/saucelabs-proxy",
         },
       ],

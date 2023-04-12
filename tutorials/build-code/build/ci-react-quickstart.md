@@ -1,6 +1,6 @@
 ---
 sidebar_position: 6
-title: React Application
+title: React application
 description: Build and test a sample React application in a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Developer Guide, CI Tutorial]
 slug: /build-code/build/react

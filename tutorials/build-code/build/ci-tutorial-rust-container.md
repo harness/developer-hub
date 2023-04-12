@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Rust Application
+title: Rust application
 description: Use a CI pipeline to build and push a multi-arch application container image.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Rust]
 slug: /build-code/build/rust
