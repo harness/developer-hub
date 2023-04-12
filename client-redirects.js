@@ -575,5 +575,43 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
       to: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
     },
+
+    // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
+
+    {
+      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/cloud-cost-management-overview/continuous-efficiency-overview",
+      to: "/docs/cloud-cost-management/getting-started-ccm/continuous-efficiency-overview",
+    },
+    
+    {
+      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/cloud-cost-management-overview/harness-key-cloud-cost-concepts",
+      to: "/docs/cloud-cost-management/getting-started-ccm/harness-key-cloud-cost-concepts",
+    },
+    
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/cloud-integration/use-cloud-integration",
+      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/use-cloud-integration",
+    },
+    
+    {
+      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-aws",
+      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-aws",
+    },
+    
+    {
+      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure",
+      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-azure",
+    },
+    
+    {
+      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp",
+      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp",
+    },
+    
+    {
+      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
+      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
+    },
+    
 ],
 };
