@@ -31,6 +31,68 @@ module.exports = {
     //  },    
     //===================================================================================
 
+    // Created by SudheendraKatte for SRM Docs reorg, PR-1276, on Apr 12, 2023
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics",
+      to: "/docs/service-reliability-management/getting-started/service-reliability-management-basics",
+    }, 
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/slo-driven-deployment-governance",
+      to: "/docs/service-reliability-management/slo-driven-deployment-governance",
+    }, 
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-quickstart",
+      to: "/docs/service-reliability-management/change-impact-analysis/",
+    },
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-service-health-dashboard",
+      to: "/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-service-health-dashboard",
+    }, 
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board",
+      to: "/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board",
+    },
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-add-featureflag",
+      to: "/docs/service-reliability-management/monitored-service/change-source/feature-flag-change-source",
+    },
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-add-custom-change-source",
+      to: "/docs/service-reliability-management/monitored-service/change-source/custom-deployment-change-source",
+    },
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/slo-management-quickstart",
+      to: "/docs/service-reliability-management/getting-started/create-first-slo",
+    }, 
+    {
+      from: "/docs/service-reliability-management/howtos-service-reliability-management/composite-slo-quickstart",
+      to: "/docs/service-reliability-management/slo/composite-slo",
+    },  
+    {
+      from: "/docs/service-reliability-management/use-service-reliability-management/srm-notifications",
+      to: "/docs/service-reliability-management/notifications/monitoredservice-notifications",
+    }, 
+    {
+      from: "/docs/service-reliability-management/use-service-reliability-management/monitored-service-template/monitored-service-template-quickstart",
+      to: "/docs/service-reliability-management/monitored-service/monitored-service-template-quickstart",
+    },
+    {
+      from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+    }, 
+    {
+      from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+    }, 
+    {
+      from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+    },   
+    {
+      from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+    }, 
+    
      // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
      {
       from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
