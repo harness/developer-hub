@@ -1,5 +1,5 @@
 ---
-title: ECS deployments
+title: ECS deployment tutorial
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
 sidebar_position: 11
 helpdocs_topic_id: vytf6s0kwc
@@ -13,7 +13,7 @@ This topic shows you how to deploy images to your Amazon Elastic Container Servi
 
 See [Notes](#notes) below for details on other ECS deployment settings and behavior.
 
-## Product Demo
+## Visual summary
 
 <!-- Video:
 https://harness-1.wistia.com/medias/vtlwxnczyh-->
@@ -136,11 +136,11 @@ You will select this cluster later when your define the target Infrastructure De
 
 The Harness Delegate is a software service you install in your environment. It connects to the Harness Manager and performs ECS tasks. You can install the Delegate anywhere that has connectivity to your AWS account, even locally on you computer.
 
-If you're new to Harness, read [Harness Platform architecture](/docs/getting-started/harness-platform-architecture.md) to learn about how Harness uses a Delegate to perform deployment tasks.
+If you're new to Harness, read [Harness Platform architecture](/docs/getting-started/harness-platform-architecture) to learn about how Harness uses a Delegate to perform deployment tasks.
 
 1. Follow the steps here to install a Harness Delegate:
-	1. [Install a Docker Delegate](/docs/getting-started/supported-platforms-and-technologies.md).
-	2. [Install Harness Delegate on Kubernetes](/docs/getting-started/supported-platforms-and-technologies.md).
+	1. [Install a Docker Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate#docker-environment).
+	2. [Install Harness Delegate on Kubernetes](/docs/platform/Delegates/install-delegates/install-a-delegate#kubernetes-environment).
 
 When you are done setting up the Delegate and it has registered with Harness, you'll see the Delegate's tags on the Delegates list page:
 
@@ -164,7 +164,7 @@ Here's a quick summary:
 
 The new stage is created. Next, we'll add a Harness Service to represent the app you're deploying, and configure the Service with the ECS Task Definition, Service Definition, and artifact for deployment.
 
-## Add the Harness Service
+## Add the Harness service
 
 A Harness Service represents the app you are deploying. It contains any supporting files and the artifact image.
 
@@ -183,13 +183,13 @@ You can see that an ECS Service contains the following:
 
 For this tutorial, we'll set up the Task Definition, Service Definition, and Artifacts.
 
-## Add the Task Definition
+## Add the task definition
 
 Harness has full support for ECS task definitions. You simply provide Harness with a task definition and it will implement it.
 
 There are two ways to add the ECS task definition to the Harness service:
 
-- **Task Definition**: Add a connection to the task definition file in a remote Git repository, local [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/), or object storage (AWS S3).
+- **Task Definition**: Add a connection to the task definition file in a remote Git repository, local [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), or object storage (AWS S3).
 - **Task Definition ARN**: Add the task definition ARN. 
   - The task definition ARN points to an existing task created and available in the AWS cluster with the required definition.
   - The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
@@ -197,14 +197,14 @@ There are two ways to add the ECS task definition to the Harness service:
 
 If you are new to ECS, review the AWS documentation on [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html).
 
-Let's look at an example using a task definition file in the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
+Let's look at an example using a task definition file in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 1. In **Task Definition**, click **Add Task Definition**.  
   You specify what Task Definition to use in the **ECS Task Definition Store**.
 
   ![](./static/ecs-deployment-tutorial-40.png)
 
-  You can use a remote repo, but for this tutorial we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store.md).
+  You can use a remote repo, but for this tutorial we'll use the built-in Harness file manager, [Harness File Store](//docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 2. Select **Harness**, and then select **Continue**.
 3. In **Task Definition**, select **Add Task Definition**.
 4. In **Specify ECS Task Definition Store**, select **Harness**, and select **Continue**.
@@ -344,7 +344,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables.md) for the value that resolves to an image name at runtime. For this tutorial, we will use `image: <+artifact.image>` and an artifact.
+The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime. For this tutorial, we will use `image: <+artifact.image>` and an artifact.
 
 The Task Definition is added to the Service.
 
@@ -466,7 +466,7 @@ In the **Environment** section of the stage you define the target ECS cluster fo
 
 ### Connector
 
-We'll create a Harness AWS Connector to connect to your AWS account using the IAM User you configured earlier in [Set up AWS IAM](ecs-deployment-tutorial.md#set-up-aws-iam).
+We'll create a Harness AWS Connector to connect to your AWS account using the IAM User you configured earlier in [Set up AWS IAM](#set-up-aws-iam).
 
 1. In **Connector**, click **Select Connector**.
 2. In **Create or Select an Existing Connector**, click **New Connector**.
@@ -474,7 +474,7 @@ We'll create a Harness AWS Connector to connect to your AWS account using the IA
 4. In Credentials, enter the following and click **Continue**:
 	1. Select **AWS Access Key**.
 	2. **Access Key:** enter the IAM User access key.
-	3. **Secret Key:** add a new Harness Secret using the access key's secret key. Secrets are always stored in encrypted form and decrypted only when they are needed. To learn more about Harness secrets, go to [Harness Secrets Management Overview](/docs/platform/Security/harness-secret-manager-overview.md).
+	3. **Secret Key:** add a new Harness Secret using the access key's secret key. Secrets are always stored in encrypted form and decrypted only when they are needed. To learn more about Harness secrets, go to [Harness Secrets Management Overview](/docs/platform/Security/harness-secret-manager-overview).
 	4. **Test Region:** US East (Virginia).
 5. In **Connect to the provider**, click **Connect through a Harness Delegate**, and then click **Continue**.
 6. In **Delegates Setup**, click **Only use Delegates with all of the following tags**, and then enter the tag of the Delegate you set up earlier.
@@ -522,7 +522,7 @@ When a rollback occurs, Harness rolls back all steps in the reverse order they w
 1. Click **Save** and then click **Run**.
 2. In the deployment execution, click the **ECS Rolling Deploy** step and review the following:
 
-### Fetch Manifests
+### Fetch manifests
 
 The Delegate fetches the Task Definition and Service Definition you added to the Harness Service:
 
@@ -546,7 +546,7 @@ Successfully fetched following files:
 Fetched all manifests from Harness Store 
 ```
 
-### Prepare Rollback Data
+### Prepare rollback data
 
 Harness collects the current state so it can roll back if the deployment fails.
 
@@ -631,7 +631,7 @@ Harness can fetch your task definitions, service definitions, scalable target an
 
 - Harness File Store.
 - AWS S3 buckets.
-  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/connectors/../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/aws-connector-settings-reference).
 - Git providers.
 
 ### AWS Auto Scaling with ECS
@@ -672,7 +672,7 @@ targetTrackingScalingPolicyConfiguration:
   scaleInCooldown: 300
 ```
 
-#### Collecting Auto Scaling Resources
+#### Collecting Auto Scaling resources
 
 Before you set up Auto Scaling for the ECS service in Harness, you need to obtain the JSON for the Scalable Target and Scalable Policy resources from AWS.
 
@@ -898,7 +898,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables.md) for the value that resolves to an image name at runtime.ECS Service Definition:
+The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables) for the value that resolves to an image name at runtime.ECS Service Definition:
 
 Replace `<Security Group Id>` and `<Subnet Id>` with the Ids from the ECS instances for your target ECS cluster.
 

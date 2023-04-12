@@ -18,7 +18,7 @@ New to Serverless.com Framework? See [Tutorial: Your First Serverless Framework 
 2. Define your AWS Lambda service as the deployment target.
 3. Deploy the Serverless application to Lambda.
 
-## Product Demo
+## Visual summary
 <!-- Video:
 https://harness-1.wistia.com/medias/tnjairdt6m-->
 <docvideo src="https://harness-1.wistia.com/medias/tnjairdt6m" />
@@ -26,7 +26,8 @@ https://harness-1.wistia.com/medias/tnjairdt6m-->
 
 ## Before you begin
 
-Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.* **GitHub account:** this quickstart uses a publicly available serverless.yaml file, but GitHub requires that you use a GitHub account for fetching files.
+Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
+* **GitHub account:** this quickstart uses a publicly available serverless.yaml file, but GitHub requires that you use a GitHub account for fetching files.
 * **Harness Delegate with Serverless installed:** the Harness Delegate is a worker process that performs all deployment tasks. For this quickstart, we'll install a Kubernetes delegate in your own cluster.
 	+ You can use a cluster hosted on a cloud platform or run one in minikube using Docker Desktop locally. The installation steps are the same.
 	+ The Delegate pod(s) must have Serverless installed. We'll add the Serverless installation script using the delegate environment variable `INIT_SCRIPT` to the delegate YAML file later in this quickstart.
@@ -168,7 +169,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Make sure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Make sure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 :::
 
@@ -177,13 +178,13 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 3. Click **Add Stage** and select **Deploy**.
 4. Enter the name **Deploy Service**, make sure **Service** is selected, and then click **Set Up Stage**.
 
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-110.png)
+   ![](static/serverless-lambda-cd-quickstart-110.png)
    
    The new stage settings appear.
-1. In **About the** **Service**, click **New Service**.
-2. Give the Service the name **quickstart** and click **Save**.
+5. In **About the** **Service**, click **New Service**.
+6. Give the Service the name **quickstart** and click **Save**.
 
-![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-111.png)
+![](static/serverless-lambda-cd-quickstart-111.png)
 
 :::note
 
@@ -215,11 +216,11 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
      * In **Secret Value**, paste in a GitHub Personal access token.When you're logged into GitHub, these tokens are listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
      * Make sure your PAT has the **repo** scope selected:
 
-	![](../../onboard-cd/cd-quickstarts/static/repoScope.png)
-1. Select **Connect through Harness Platform**.
-1. Click **Finish**.
-2. Back in **Specify Serverless Lambda Manifest Store**, click **Continue**.
-3. In **Manifest Details**, enter the following.
+	![](static/repoScope.png)
+5. Select **Connect through Harness Platform**.
+6. Click **Finish**.
+7. Back in **Specify Serverless Lambda Manifest Store**, click **Continue**.
+8. In **Manifest Details**, enter the following.
    * **Manifest Identifier:** `serverless`.
    * **Git Fetch Type:** `Latest from Branch`.
    * **Branch:** `main`.
@@ -228,7 +229,7 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
   
 You can see the serverless.yaml manifest in Harness.
 
-![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-112.png)
+![](static/serverless-lambda-cd-quickstart-112.png)
 
 Here's what the serverless.yaml looks like:
 
@@ -252,7 +253,7 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-You can see the [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables.md) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
+You can see the [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
 
 The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
@@ -272,20 +273,77 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
 6. In **Details**, in **Artifactory Repository URL**, enter `https://harness.jfrog.io/artifactory/`.
 7. In **Authentication**, select **Anonymous**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-113.png)
+   ![](static/serverless-lambda-cd-quickstart-113.png)
 
-1. In **Delegates Setup**, click **Install new Delegate**. The Delegate wizard appears.
-8. Click **Kubernetes**, and then click **Continue**.
-   
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-114.png)
+8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
+   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your target environment. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
 
-1. Enter a name for the Delegate, like **serverlesslocal**, click the **Laptop** size.
+   Expand the section below to learn more about installing delegates.
+
+   <details>
+   <summary>Install a new delegate</summary>
+
+    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
+    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
+    3. In **Install your Delegate**, select **Kubernetes Manifest**.
+    4. Enter a delegate name.
+        - Delegate names must be unique within a namespace and should be unique in your cluster. 
+        - A valid name includes only lowercase letters and does not start or end with a number. 
+        - The dash character (“-”) can be used as a separator between letters.
+    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+
+    `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
+
+    6. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
+
+    | **Value** | **Description** |
+    | :-- | :-- |
+    | `PUT_YOUR_DELEGATE_NAME` | Name of the delegate. |
+    | `PUT_YOUR_ACCOUNT_ID` | Harness account ID. |
+    | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints. |
+    | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+
+    Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
+
+    | **Harness cluster location** | **Harness Manager endpoint** |
+    | :-- | :-- |
+    | SaaS prod-1 | https://app.harness.io |
+    | SaaS prod-2 | https://app.harness.io/gratis |
+    | SaaS prod-3 | https://app3.harness.io |
+
+    7. Install the delegate by running the following command:
+
+    `kubectl apply -f harness-delegate.yaml`
+
+    The successful output looks like this.
+    
+    ```
+    namespace/harness-delegate-ng unchanged
+    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
+    secret/cd-doc-delegate-account-token created
+    deployment.apps/cd-doc-delegate created
+    service/delegate-service configured
+    role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
+    rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
+    serviceaccount/upgrader-cronjob-sa unchanged
+    secret/cd-doc-delegate-upgrader-token created
+    configmap/cd-doc-delegate-upgrader-config created
+    cronjob.batch/cd-doc-delegate-upgrader-job created
+    ```
+
+   8. Select **Verify** to make sure that the delegate is installed properly.
    
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-115.png)
+   </details>
+
+9. Back in **Set Up Delegates**, in the list of Delegates, you can see your new Delegate and its tags.
+10. Select the **Connect using Delegates with the following Tags** option.
+11. Enter the tag of the new Delegate and click **Save and Continue**.
    
-   With the **Laptop** size, you can use a local minikube cluster or a small cluster hosted on a cloud platform. If you use minikube, start minikube with the following resources: `minikube start --memory 3g --cpus 2`.
-1. Click **Continue**.
-2. Click **Download YAML file**. The YAML file for the Kubernetes Delegate is downloaded to your computer.
+   ![](static/serverless-lambda-cd-quickstart-118.png)
+
+12. In **Connection Test**, you can see that the connection is successful. Click **Finish**.
+   
+   ![](static/serverless-lambda-cd-quickstart-119.png)
 
 ## Installing Serverless on the Delegate
 
@@ -336,31 +394,6 @@ Now we need to edit the YAML to install Serverless when the Delegate pods are cr
 	```
 
 In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edit this script to install `npm`. The rest of the code should remain the same. If you are using Harness Delegate, the base image is Red Hat UBI.Save the YAML file as **harness-delegate.yml**.
-
-### Install and register the Delegate
-
-1. Open a terminal and navigate to where the Delegate file is located. You'll connect to your cluster using the terminal so you can simply run the YAML file on the cluster.
-2. In the same terminal, log into your Kubernetes cluster. On most platforms, you select the cluster, click **Connect**, and copy the access command.
-3. Next, install Harness Delegate using the **harness-delegate.yml** file you just downloaded. In the terminal connected to your cluster, run this command:
-
-	```
-	kubectl apply -f harness-delegate.yml
-	```
-
-	You can find this command in the Delegate wizard:
-
-	![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-116.png)
-
-1. In Harness, click **Verify**. It'll take a few minutes to verify the Delegate. Once it is verified, close the wizard.
-2. Back in **Set Up Delegates**, in the list of Delegates, you can see your new Delegate and its tags.
-3. Select the **Connect using Delegates with the following Tags** option.
-4. Enter the tag of the new Delegate and click **Save and Continue**.
-   
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-118.png)
-
-5. In **Connection Test**, you can see that the connection is successful. Click **Finish**.
-   
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-119.png)
    
 
 ## Add the artifact
@@ -376,9 +409,9 @@ In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edi
 
 	The artifact is now in the Service.
 
-	![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-120.png)
+	![](static/serverless-lambda-cd-quickstart-120.png)
 
-1. Click **Continue** to view the **Infrastructure**.
+2. Click **Continue** to view the **Infrastructure**.
 
 Now that you have configured the Service, we can define the target for our deployment.​
 
@@ -393,17 +426,17 @@ Now that you have configured the Service, we can define the target for our deplo
 7. Enter the following and click **Save and Continue**.
 	* **Name:** `AWS Serverless`.
 	* **Credentials:** `AWS Access Key`. Enter the AWS access key for the AWS User you created with the required policies in [Before You Begin](#before-you-begin).
-	* Enter the secret key as a [Harness Text Secret](/docs/platform/Security/add-use-text-secrets.md). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
+	* Enter the secret key as a [Harness Text Secret](/docs/platform/Security/add-use-text-secrets). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
 	* **Delegates Setup:** `Only use Delegates with all of the following tags`.
 	* Select the Delegate you added earlier in this quickstart.
 1. The **Connection Test** verifies the connection. Click **Finish**.
 2. Back in **Amazon Web Services Details**, in **Region**, enter the region for your AWS Lambda service, such as **us-east-1**.
 3. In **Stage**, enter the name of the stage in your service that you want to deploy to, such as **dev**. This is the same as the `--stage` option in the `serverless deploy` command.
    
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-121.png)
+   ![](static/serverless-lambda-cd-quickstart-121.png)
    
    When you run your deployment, you'll see these settings used in the logs. For example: `serverless deploy list --stage dev --region us-east-1`.
-1. Click **Continue**. The **Execution** steps appear.
+4. Click **Continue**. The **Execution** steps appear.
 
 ## Add a Serverless AWS Lambda Deploy step
 
@@ -413,12 +446,12 @@ Harness automatically adds two Serverless Lambda steps to **Execution**:
 * **Serverless Lambda Deploy:** this step performs the deployment.
 * **Serverless Lambda Rollback:** this step performs a rollback in the event of a deployment failure. To see this step, toggle the Execution/Rollback setting.
  
-![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-122.png)
+![](static/serverless-lambda-cd-quickstart-122.png)
 
 1. In **Execution**, click **Serverless Lambda Deploy**.
 2. Click the **Advanced** tab and select the Delegate that you installed in **Delegate Selector**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-123.png)
+   ![](static/serverless-lambda-cd-quickstart-123.png)
    
    If you only have one Delegate installed in your Project, then this isn't necessary. But if you have multiple Delegates, you want to make sure the Serverless Lambda Deploy step uses the Delegate where you installed Serverless.
 3. Click **Apply Changes**.
@@ -442,11 +475,11 @@ serverless deploy --stage dev --region us-east-1 --conceal
 1. Save your Pipeline and then click **Run**, and then **Run Pipeline**. The Pipeline executes.
 2. In the **Serverless AWS Lambda Deploy** step, click **Input** to see the deployment inputs:
 
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-124.png)
+   ![](static/serverless-lambda-cd-quickstart-124.png)
 
 3. Click **Output** to see what's deployed:
    
-   ![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-125.png)
+   ![](static/serverless-lambda-cd-quickstart-125.png)
 4. Click **Details** or **Console View** to see the logs.
 
 In the logs you can see the successful deployment.
@@ -492,7 +525,7 @@ Congratulations! You have successfully deployed a function using Serverless Lamb
 
 ## Clean up
 
-For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
+For steps on deleting the Delgate, go to [Delegate a delegate](/docs/platform/Delegates/manage-delegates/delete-a-delegate).
 
 ## Notes
 
@@ -526,9 +559,9 @@ plugins:
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets.md)
-* [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables.md)
-* [Run Pipelines using Input Sets and Overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
+* [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets)
+* [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables)
+* [Run Pipelines using Input Sets and Overlays](/docs/platform/Pipelines/run-pipelines-using-input-sets-and-overlays)
 
 ### Supported stores for Serverless Lambda YAML files
 
@@ -538,7 +571,7 @@ Harness can fetch your YAML files and packaged code from the following stores:
   - You can store the serverless.yml and the artifact code in AWS S3, including in the same bucket.
   - You can use the .Zip format to grab the serverless.yaml and the packaged code that has been bundled in .zip and published in S3.
   - Harness will extrapolate the serverless.yaml file and use that for deployment.
-  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md#aws-s3).
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/aws-connector-settings-reference#aws-s3).
 - Git providers.
 
 ### Rollback timestamps
@@ -602,11 +635,11 @@ You reference sidecar artifacts with the format `<+artifacts.sidecars.[artifact_
 
 The artifact Id comes from the Artifact Details:
 
-![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-126.png)
+![](static/serverless-lambda-cd-quickstart-126.png)
 
 You can see it in the artifact list:
 
-![](../../onboard-cd/cd-quickstarts/static/serverless-lambda-cd-quickstart-127.png)
+![](static/serverless-lambda-cd-quickstart-127.png)
 
 #### Docker sidecars
 

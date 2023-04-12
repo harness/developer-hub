@@ -1,7 +1,7 @@
 ---
-title: Example Kubernetes Manifests using Go Templating
+title: Example Kubernetes manifests using Go templating
 description: Use Go templating and variables in Kubernetes manifests.
-sidebar_position: 4
+sidebar_position: 7
 helpdocs_topic_id: qvlmr4plcp
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
@@ -11,15 +11,16 @@ helpdocs_is_published: true
 This topic describes how to make your Kubernetes manifests reusable and dynamic using [Go templating](https://godoc.org/text/template) and Harness built-in variables.
 
 
-## Basic Values YAML and Manifests for Public Image
+## Basic values YAML and manifests for public image
 
 This is a simple example using the Artifact reference `<+artifact.image>`. It can be used whenever the public image is not hardcoded in manifests.
 
-See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
 
 We use Go templates with a values.yaml file and manifests for deployment, namespace, and service. The manifests for deployment, namespace, and service are in a **templates** folder that's a peer of the values.yaml file.
 
-### values.yaml
+<details>
+<summary>values.yaml</summary>
 
 This file uses the `image: <+artifact.image>` to identify the primary artifact added in the Harness Service Definition **Artifacts** section.
 
@@ -58,8 +59,10 @@ env:
   secrets:  
     key2: value2
 ```
+</details>
 
-### templates/deployment.yaml
+<details>
+<summary>templates/deployment.yaml</summary>
 
 The deployments manifest references the name and image values from values.yaml. The manifest also contains the ConfigMap and Secret objects.
 
@@ -131,7 +134,10 @@ spec:
         {{- end}}  
         {{- end}}
 ```
-### templates/namespace.yaml
+</details>
+
+<details>
+<summary>templates/namespace.yaml</summary>
 
 The namespace manifest references the namespace value from values.yaml.
 
@@ -145,7 +151,10 @@ metadata:
 {{- end}}
 ```
 
-### templates/service.yaml
+</details>
+
+<details>
+<summary>templates/service.yaml</summary>
 
 The service manifest references the hardcoded service type and ports from values.yaml.
 
@@ -165,7 +174,9 @@ spec:
     app: {{.Values.name}}
 ```
 
-## Private Artifact Example
+</details>
+
+## Private artifact example
 
 When the image is in a private repo, you use the expression `<+artifact.imagePullSecret>` in the Secret and Deployment objects in your manifest.
 
@@ -231,7 +242,7 @@ spec:
         image: {{.Values.image}}  
 ...
 ```
-## Quotation Marks
+## Quotation marks
 
 The following example puts quotations around whatever string is in the `something` value. This can handle values that could otherwise be interpreted as numbers, or empty values, which would cause an error.
 
@@ -249,7 +260,7 @@ Use `indent` and `toYaml` to put something from the values file into the manifes
 ```go
 {{.Values.env.config | toYaml | indent 2}}
 ```
-## Indexing Structures in Templates
+## Indexing structures in templates
 
 If the data passed to the template is a map, slice, or array it can be indexed from the template.
 
@@ -257,8 +268,10 @@ You can use `{{index x number}}` where `index` is the keyword, `x` is the data, 
 
 If we had `{{index names 2}}` it is equivalent to `names[2]`. We can add more integers to index deeper into data. `{{index names 2 3 4}}` is equivalent to `names[2][3][4]`.
 
-Let's look at an example:
+Expand below to see the YAML example.
 
+<details>
+<summary>YAML example</summary>
 
 ```yaml
 {{- if .Values.env.config}}  
@@ -297,16 +310,17 @@ stringData:
 ---  
 {{- end}}
 ```
+</details>
 
-## Option: Skip Rendering of Manifest Files
+## Skip rendering of manifest files
 
 In some cases, you might not want to use Go templating because your manifests use some other formatting.
 
 Use the **Skip Rendering K8s manifest files** option in the [Kubernetes Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) step if you want Harness to skip rendering your manifest files using Go templating.
 
-## Notes
+## Important notes
 
-* [Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables.md) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
+* [Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables) may be added to values.yaml, not the manifests themselves. This provides more flexibility.
 * The values.yaml file used in a stage Service doesn't support Helm templating, only Go templating. Helm templating is fully supported in the remote Helm charts you add to your Service.
 * Harness uses Go template version 0.4. If you're used to Helm templates, you can download Go template and try it out locally to find out if your manifests will work. This can help you avoid issues when adding your manifests to Harness.  
 - You can install Go template version 0.4 locally to test your manifests.

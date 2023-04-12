@@ -1,6 +1,6 @@
 ---
-title: Deploy Helm Charts
-description: This topic describes how to deploy Helm charts from a remote Git repo, HTTP Helm Repository, or cloud storage service.
+title: Deploy Helm charts
+description: This topic describes how to deploy Helm charts from a remote Git repository, HTTP Helm Repository, or cloud storage service.
 sidebar_position: 1
 helpdocs_topic_id: 7owpxsaqar
 helpdocs_category_id: xot6u3ge9d
@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 This topic describes how to deploy Helm charts in standard Helm syntax in YAML from a remote Git repo, HTTP Helm Repository, or cloud storage service (Google Cloud Storage, AWS S3).
 
-This process is also covered in the [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
+This process is also covered in the [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 
 ## Before you begin
 
-* [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md)
+* [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
 * [The Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) from Helm.
 * The [Helm charts repo on GitHub](https://github.com/helm/charts) has many useful examples.
 
@@ -26,7 +26,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
 
 ## ChartMuseum binaries
 
@@ -44,11 +44,12 @@ https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 <docvideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
 
 
-## Review: Artifacts and Helm charts
+## Artifacts and Helm charts
 
 Harness supports image artifacts with Helm charts in the following ways.
 
-### Helm chart with hardcoded artifact
+<details>
+<summary>Helm chart with hardcoded artifact</summary>
 
 The image artifact is identified in the Helm chart values.yaml file. For example:
 
@@ -63,7 +64,9 @@ containers:
 
 If the image is hardcoded then you do not use the **Artifacts** section of the service. Any artifacts added here are ignored.
 
-### Helm chart using artifact added to the stage
+</details>
+<details>
+<summary>Helm chart using artifact added to the stage</summary>
 
 You add an image artifact to the **Artifacts** section of the service and then reference it in the Helm chart values.yaml file.
 
@@ -78,9 +81,11 @@ dockercfg: <+artifact.imagePullSecret>
 ...
 ```
 
-This is the same method when using artifacts with standard Kubernetes deployments. See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+This is the same method when using artifacts with standard Kubernetes deployments. See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
 
-## Step 1: Add the Helm chart
+</details>
+
+## Add the Helm chart
 
 Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP Helm repo where your chart is located.
 
@@ -92,18 +97,18 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
    ![](./static/deploy-helm-charts-02.png)
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](/docs/platform/7_Connectors/connect-to-an-artifact-repo.md) How-tos.
+For the steps and settings of each option, see the [Connect to an Artifact Repo](/docs/platform/Connectors/connect-to-an-artifact-repo) How-tos.
 
 If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
-You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](use-a-local-helm-chart.md). For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
+You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/use-a-local-helm-chart). For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
 
 
 - **Manifest Identifier**: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. Ex: `helm_chart`.
 - **Chart name**: Enter the name of the Helm chart for Harness to pull. Don't include the chart version. You will add that in the **Chart Version** setting. Ex: `todolist`.
 - **Chart Version**: Enter the version of the chart you want to deploy. This is found in the Chart.yaml `version` label in your chart. You can list all available versions of a chart using the `search repo` command with the `--versions` option. See [helm search repo](https://helm.sh/docs/helm/helm_search_repo) from Helm.
   - If you leave **Chart Version** empty Harness gets the latest chart.
-  - If you are going to use a Harness trigger to run this pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](/docs/platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md). For example, `1.4.1`.
+  - If you are going to use a Harness trigger to run this pipeline when a new version is added to your chart repo, select the **Runtime Input** option. When you set up the trigger, you will select this chart and Harness will listen on the repo for new versions. See [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart). For example, `1.4.1`.
 - **Helm Version**: Select the version of Helm used in your chart. See [Helm Version Support Policy](https://helm.sh/docs/topics/version_skew/) from Helm. For example, `Version 2`.
 - **Values YAML**: Your chart will have a default values.yaml file in its root folder.
   - If you do not enter a values.yaml in **Values YAML**, Harness uses the default values.yaml file in the root of the chart.
@@ -132,7 +137,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
-  You can also select **Expression** and use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables.md) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
+  You can also select **Expression** and use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
 - **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
@@ -144,13 +149,13 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
 ![](./static/deploy-helm-charts-04.png)
 
-## Option: Reference the artifact
+## Reference the artifact
 
 If the image artifact is not hardcoded in the Helm chart, add the artifact in **Artifacts** and use the expression `<+artifact.image>` in your values.yaml. For example:
 
@@ -163,9 +168,9 @@ dockercfg: <+artifact.imagePullSecret>
 ...
 ```
 
-This is the same method when using artifacts with standard Kubernetes deployments. For more information, go to [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+This is the same method when using artifacts with standard Kubernetes deployments. For more information, go to [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
 
-## Option: Override chart values YAML in service
+## Override chart values YAML in service
 
 You can override the values YAML in the Helm chart by adding multiple values YAML files when you add the chart.
 
@@ -177,11 +182,11 @@ For example, let's say you have 3 files: the default values.yaml, values2.yaml a
 
 All files contain the same key:value pair. The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
-Your values.yaml file can use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/Variables-and-Expressions/harness-variables.md).
+Your values.yaml file can use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/Variables-and-Expressions/harness-variables).
 
-See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
-## Option: Override chart values YAML in environment
+## Override chart values YAML in environment
 
 You can override the values YAML file for a stage's environment by mapping the environment name to the values file or folder. Next, you use the `<+env.name>` Harness expression in the values YAML path.
 
@@ -197,15 +202,15 @@ When you select an environment, such as **qa**, the name of the environment is u
 
 Instead of selecting the environment in the **Infrastructure** each time, you can set the environment as a **Runtime Input** and then enter **dev**, **qa**, or **prod** at runtime.
 
-## Step 2: Define the infrastructure and execution
+## Define the infrastructure and execution
 
 There is nothing unique about defining the target cluster infrastructure definition for a Helm chart deployment. It is the same process as a typical Harness Kubernetes deployment.
 
-For more information, go to [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+For more information, go to [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure).
 
 Helm charts can be deployed using any of the execution steps and deployment strategies used in other Kubernetes deployments. For more information, go to [Kubernetes How-tos](/docs/category/kubernetes).
 
-## Step 3: Deploy
+## Deploy
 
 Each Helm chart deployment is treated as a release. During deployment, when Harness detects that there is a previous release for the chart, it upgrades the chart to the new release.
 
@@ -322,11 +327,11 @@ You deployment is successful.
 
 Helm chart deployments support versioning and rollback in the same way as standard Kubernetes deployments.
 
-For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback.md).
+For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
-## Option: Trigger the pipeline on a new chart version
+## Trigger the pipeline on a new chart version
 
-You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](/docs/platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md).
+You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart).
 
 ## Notes
 

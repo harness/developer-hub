@@ -15,7 +15,7 @@ Harness includes both Kubernetes and Native Helm deployments, and you can use He
 * **Kubernetes with Helm:** Harness Kubernetes deployments allow you to use your own Helm values.yaml or Helm chart (remote or local), and Harness executes the Kubernetes kubectl calls to build everything without Helm and Tiller needing to be installed in the target cluster. You can perform all deployment strategies (Rolling, Canary, Blue Green).  
 See [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 * **Native Helm:**
-	+ For Harness Native Helm V2 deployments, you must always have Helm and Tiller running on one pod in your target cluster and Tiller makes the API calls to Kubernetes. You can perform a Rolling deployment strategy only (no Canary or Blue Green).If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+	+ For Harness Native Helm V2 deployments, you must always have Helm and Tiller running on one pod in your target cluster and Tiller makes the API calls to Kubernetes. You can perform a Rolling deployment strategy only (no Canary or Blue Green).If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
 	+ For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
 		- **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and Secrets. Native Helm does not.
 		- **Rollback:** Harness Kubernetes deployments will roll back to the last successful version. Native Helm will not. If you did 2 bad Native Helm deployments, the 2nd one will just rollback to the 1st. Harness will roll back to the last successful version.
@@ -30,9 +30,9 @@ You'll learn how to:
 * Set up a Native Helm Pipeline.
 * Run the new Native Helm Pipeline and deploy a Docker image to your target cluster.
 
-## Before You Begin
+## Before you begin
 
-Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
+Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
 
 You will need a target Kubernetes cluster where you will deploy NGINX:
 
@@ -44,13 +44,13 @@ You will need a target Kubernetes cluster where you will deploy NGINX:
   * A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.  
   For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
-## Step 1: Create the Deploy Stage
+## Create the Deploy stage
 
 Pipelines are collections of stages. For this quickstart, we'll create a new Pipeline and add a single stage.
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 :::
 
@@ -82,7 +82,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 Next, we'll add the NGINX Helm chart for the deployment.
 
-## Step 2: Add the Helm Chart and Delegate
+## Add the Helm chart and delegate
 
 You can add a Harness Delegate inline when you configure the first setting that needs it. For example, when we add a Helm chart, we will add a Harness Connector to the HTTP server hosting the chart. This Connector uses a Delegate to verify credentials and pull charts, so we'll install the Delegate, too.
 
@@ -98,54 +98,76 @@ You can add a Harness Delegate inline when you configure the first setting that 
 3. Click **New HTTP Helm Repo Connector**.
 4. In the **HTTP Helm Repo Connector**, in **Name**, enter **helm-chart-repo**, and click **Continue**.
 5. In **Helm Repository URL**, enter `https://charts.bitnami.com/bitnami`.
-6.  In **Authentication**, select **Anonymous**.
-7.  Click **Continue**.
-    Now we'll install and register a new Harness Delegate in your target cluster.
-8.  In **Set Up Delegates**, click **Install new Delegate**.
-    The Delegate wizard appears.
+6. In **Authentication**, select **Anonymous**.
+7. Click **Continue**.
+9. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
+   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your target cluster. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
 
-   ![](./static/native-helm-quickstart-146.png)
+   Expand the section below to learn more about installing delegates.
 
-9.  Click **Kubernetes**, and then click **Continue**.
+   <details>
+   <summary>Install a new delegate</summary>
 
-    ![](./static/native-helm-quickstart-147.png)
+    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
+    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
+    3. In **Install your Delegate**, select **Kubernetes Manifest**.
+    4. Enter a delegate name.
+        - Delegate names must be unique within a namespace and should be unique in your cluster. 
+        - A valid name includes only lowercase letters and does not start or end with a number. 
+        - The dash character (“-”) can be used as a separator between letters.
+    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
 
-10. Enter a name for the Delegate, like **quickstart**, click the **Small** size.
-11. Click **Continue**.
-12. Click **Download YAML file**. The YAML file for the Kubernetes Delegate will download to your computer as an archive.
-13. Open a terminal and navigate to where the Delegate file is located.
-    You will connect to your cluster using the terminal so you can simply run the YAML file on the cluster.
-14. In the same terminal, log into your Kubernetes cluster. In most platforms, you select the cluster, click **Connect**, and copy the access command.
-15. Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. In the terminal connected to your cluster, run this command:
+    `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
 
-```
-kubectl apply -f harness-delegate.yaml
-```
+    6. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
 
-You can find this command in the Delegate wizard:
+    | **Value** | **Description** |
+    | :-- | :-- |
+    | `PUT_YOUR_DELEGATE_NAME` | Name of the delegate. |
+    | `PUT_YOUR_ACCOUNT_ID` | Harness account ID. |
+    | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints. |
+    | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
 
-![](./static/native-helm-quickstart-149.png)
+    Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
 
-The successful output is something like this:
+    | **Harness cluster location** | **Harness Manager endpoint** |
+    | :-- | :-- |
+    | SaaS prod-1 | https://app.harness.io |
+    | SaaS prod-2 | https://app.harness.io/gratis |
+    | SaaS prod-3 | https://app3.harness.io |
 
-```
-% kubectl apply -f harness-delegate.yaml  
-namespace/harness-delegate unchanged  
-clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged  
-secret/k8s-quickstart-proxy unchanged  
-statefulset.apps/k8s-quickstart-sngxpn created  
-service/delegate-service unchanged
-```
+    7. Install the delegate by running the following command:
 
-1. In Harness, click **Verify**. It will take a few minutes to verify the Delegate. Once it is verified, close the wizard.
-2. Back in **Set Up Delegates**, you can select the new Delegate.
-   In the list of Delegates, you can see your new Delegate and its tags.
-3. Select the **Connect using Delegates with the following Tags** option.
-4. Enter the tag of the new Delegate and click **Save and Continue**.
-   When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.
-   If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
-5. Click **Continue**.
-6. In **Manifest Details**, enter the following settings can click **Submit**.
+    `kubectl apply -f harness-delegate.yaml`
+
+    The successful output looks like this.
+    
+    ```
+    namespace/harness-delegate-ng unchanged
+    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
+    secret/cd-doc-delegate-account-token created
+    deployment.apps/cd-doc-delegate created
+    service/delegate-service configured
+    role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
+    rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
+    serviceaccount/upgrader-cronjob-sa unchanged
+    secret/cd-doc-delegate-upgrader-token created
+    configmap/cd-doc-delegate-upgrader-config created
+    cronjob.batch/cd-doc-delegate-upgrader-job created
+    ```
+
+   8. Select **Verify** to make sure that the delegate is installed properly.
+   
+   </details>
+
+10. Back in **Set Up Delegates**, you can select the new Delegate.
+    In the list of Delegates, you can see your new Delegate and its tags.
+11. Select the **Connect using Delegates with the following Tags** option.
+12. Enter the tag of the new Delegate and click **Save and Continue**.
+    When you are done, the Connector is tested. If it fails, your Delegate might not be able to connect to `https://charts.bitnami.com/bitnami`. Review its network connectivity and ensure it can connect.  
+    If you are using Helm V2, you will need to install Helm v2 and Tiller on the Delegate pod. For steps on installing software on the Delegate, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+13. Click **Continue**.
+14. In **Manifest Details**, enter the following settings can click **Submit**.
    * **Manifest Identifier**: enter **nginx**.
    * **Helm Chart Name**: enter **nginx**.
    * **Helm Chart Version**: enter **8.8.1**.
@@ -157,7 +179,7 @@ The Helm chart is added to the Service Definition.
 
 Next, we can target your Kubernetes cluster for deployment.
 
-## Step 3: Define Your Target Cluster
+## Define your target cluster
 
 1. In **Infrastructure**, in **Environment**, click **New Environment**.
 2. In **Name**, enter **quickstart**, select **Non-Production**, and click **Save**.
@@ -174,14 +196,14 @@ Next, we can target your Kubernetes cluster for deployment.
 12. In **Release Name**, enter **quickstart**.
 13. Click **Next**. The deployment strategy options appear.
 
-## Step 4: Add a Helm Deployment Step
+## Add a Helm Deployment step
 
-1. We're going to use a Rolling [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md), so click **Rolling**, and click **Apply**.
+1. We're going to use a Rolling [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts), so click **Rolling**, and click **Apply**.
 2. The **Helm Deployment** step is added to **Execution**.
 
 That's it. Now you're ready to deploy.
 
-## Step 5: Deploy and Review
+## Deploy and review
 
 1. Click **Save** to save your Pipeline.
 2. Click **Run**.
@@ -199,7 +221,7 @@ Congratulations! The deployment was successful.
 
 In your Project's Deployments, you can see the deployment listed.
 
-## Review: Spec Requirements for Steady State Check and Versioning
+## Spec requirements for steady state check and versioning
 
 Harness requires that the `release` label be used in **every** Kubernetes spec to ensure that Harness can identify a release, check its steady state, and perform verification and rollback on it.
 
@@ -282,7 +304,7 @@ The **Release name** setting in the stage **Infrastructure** is used as the Helm
 
 Please review the following notes.
 
-### Ignore Release History Failed Status
+### Ignore release history failed status
 
 By default, if the latest Helm release failed, Harness does not proceed with the install/upgrade and throws an error.
 

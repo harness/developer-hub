@@ -24,23 +24,23 @@ Custom Remote Manifests are supported for:
 * Helm Chart
 * OpenShift
 
-Looking for other methods? See [Add Kubernetes Manifests](define-kubernetes-manifests.md).
+Looking for other methods? See [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
 
 ## Before you begin
 
-* [Kubernetes Deployment Tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Kubernetes Deployment Basics](../kubernetes-deployments-overview.md)
+* [Kubernetes Deployment Tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Kubernetes Deployment Basics](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
 
 ## Supported platforms and technologies
 
-See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
 
 ## Limitations
 
 * Custom Remote Manifests scripts use Bash only.
 * The Delegate that runs the script must have all the software needed for the scripts to execute.If you select a Delegate in the Kubernetes Cluster Connector used by the stage Infrastructure Definition, then the script is run on that Delegate.
 
-## Option: add secrets for a script
+## Add secrets for a script
 
 Typically, your script to pull the remote package will use a user account. For example:
 
@@ -54,12 +54,12 @@ You can use Harness secrets for the username and password in your script. For e
 ```bash
 curl -sSf -u "<+secrets.getValue("username")>:<+secrets.getValue("password")>" -O 'https://mycompany.jfrog.io/module/example/manifest.zip'
 ```
-For more information, see [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets.md).
+For more information, see [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets).
 
 
 ## Start a pipeline
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 You can create a Pipeline from any module in your Project, or in the **Project Overview**, and then add stages for any module.
 
@@ -67,7 +67,7 @@ Enter a name for the Pipeline and click **Start**. Now you're ready to add a sta
 
 ## Add a Deploy stage
 
-For steps on adding a stage, see [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md).
+For steps on adding a stage, see [Add a Stage](/docs/platform/Pipelines/add-a-stage).
 
 1. Name the stage, and select what you'd like to deploy. For example, select Service.
 2. Click **Set Up Stage**. The new stage's settings appear.
@@ -85,7 +85,7 @@ To add your manifests, go to **Manifests** in the **Service Definition**.
 
 You can use your Git repo for the remote script and manifests in Manifests and Harness will use them at runtime.
 
-If you are adding the image location to Harness as an Artifact in the Service Definition, see [Add Container Images as Artifacts for Kubernetes Deployments](add-artifacts-for-kubernetes-deployments.md).
+If you are adding the image location to Harness as an Artifact in the Service Definition, see [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments).
 
 1. In your Harness Kubernetes Service, in **Manifests**, click **Add Manifest**.
 2. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Next**.
@@ -100,7 +100,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
 1. Enter the name in **Manifest Name**.
 1. In **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
 2. In **Extracted Manifest File Location**, enter the folder path for the manifests.
-3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
+3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
 4. In **Values.yaml**, the field is populated with the folder path for the values.yaml.
 5. Click **Submit**. The new manifest is created and added to **Manifests** in Harness.
 
@@ -146,7 +146,7 @@ That's all the setup required. You can now deploy the Service and the script is 
 
 ## Notes
 
-You can use Go templating in your Kubernetes resource files, just as you would for files stored in Git or inline. See [Example Kubernetes Manifests Using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md). For OpenShift, you must use OpenShift templating.
+You can use Go templating in your Kubernetes resource files, just as you would for files stored in Git or inline. See [Example Kubernetes Manifests Using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating). For OpenShift, you must use OpenShift templating.
 
 If the artifact you are deploying with your manifest is public (DockerHub) and does not require credentials, you can use the standard public image reference, such as `image: harness/todolist-sample:11`.
 

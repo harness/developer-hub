@@ -43,7 +43,7 @@ All workloads deployed by the Apply step are managed workloads. Managed workload
 
 The Apply Step is primarily used for deploying Jobs controllers, but it can be used for other resources. Typically, when you want to deploy multiple workloads (Deployment, StatefulSet, and DaemonSet) you will use separate stages for each.Other Kubernetes steps, such as Rolling, are limited to specific workload types.
 
-For a detailed list of what Kubernetes workloads you can deploy in Harness, see [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+For a detailed list of what Kubernetes workloads you can deploy in Harness, see [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
 
 ### Rolling vs apply
 
@@ -96,7 +96,7 @@ Later, you can apply a skipped manifest using the **Apply** step. Here's an exam
 
 1. Add the commented manifest to the **Manifests** section of your CD stage.
 
-See [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
+See [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
 
 ## Add the Apply step
 
@@ -141,16 +141,16 @@ You can enter multiple file paths in **File Path**. Simply click **Add File**.
 
 ### File path runtime inputs
 
-You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md) for File Path settings.
+You can set [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/References/runtime-inputs) for File Path settings.
 
 Here are the options:
 
 * **File Path setting:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path or expression in the step.
-	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input Sets and Overlays](/docs/platform/8_Pipelines/input-sets.md).
+	+ **Runtime Input:** select this option if you want to enter a value at runtime or using [Input Sets and Overlays](/docs/platform/Pipelines/input-sets).
 * **File path field:**
 	+ **Fixed Value:** this is the default. Selecting **Fixed Value** means that you will set a static file path in the step.
-	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](/docs/platform/8_Pipelines/add-a-stage.md).
+	+ **Expression:** Selecting **Expression** means that you will use a variable in the step, such as a [stage variable](/docs/platform/pipelines/add-a-stage/).
 
 ## Skip dry run
 
@@ -170,7 +170,7 @@ In some cases, you might not want to use Go templating because your manifests us
 
 Use the **Skip K8s Manifest(s) Rendering** option if you want Harness to skip rendering your manifest files using Go templating.
 
-For details, go to [Deploy Manifests Separately using Apply Step](deploy-manifests-using-apply-step.md).
+For details, go to [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
 
 ## Command flags
 
@@ -198,16 +198,16 @@ You cannot use `kubectl` subcommands in the **Command Flags** setting. For examp
 
 For more information on command flags, go to [Apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) in the Kubernetes documentation.
 
-For more information on installing custom binaries on the delegate, go to [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries/).
+For more information on installing custom binaries on the delegate, go to [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries/).
 
 ## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 
 ## Override value
 
@@ -215,8 +215,8 @@ You can override some or all of the values in the values.yaml file selected in t
 
 Values YAML files can be specified at several places in Harness:
 
-* Environment service overrides (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview.md))
-* Environment configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview.md))
+* Environment service overrides (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview))
+* Environment configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview))
 * Service definition manifests
 
 You can also add a values YAML values and/or files in the Apply Step **Override Value**.
@@ -239,8 +239,8 @@ Harness merges all of the values YAML values/files into one file.
 If two or more sources have the same `name:value` pairs (for example, `replicas: 2`), that is a conflict that Harness resolves using the following priority order (from highest to lowest):
 
 1. Kubernetes Apply Step **Override Value**.
-2. Environment Service Overrides (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview.md)).
-3. Environment Configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview.md)).
+2. Environment Service Overrides (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview)).
+3. Environment Configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview)).
 4. Service Definition Manifests.
 
 ![](./static/deploy-manifests-using-apply-step-26.png)
@@ -314,12 +314,12 @@ You can use the Apply step in your Kustomize deployments.
 
 When you use Kustomize, the **File Path** in the Apply Step should be set according to how you set up the Manifest Details in the Service.
 
-For details, see **Kustomize deployment with the Apply step** in [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+For details, see **Kustomize deployment with the Apply step** in [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments).
 
 ## Notes
 
-* The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: true`). See [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+* The Apply step does not version ConfigMap and Secret objects. ConfigMap and Secret objects are overwritten on each deployment. This is the same as when ConfigMap and Secret objects are marked as unversioned in typical rollouts (`harness.io/skip-versioning: true`). See [Kubernetes Releases and Versioning](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning).
 
 ## Next steps
 
-* [Kubernetes Annotations and Labels](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels.md)
+* [Kubernetes Annotations and Labels](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-annotations-and-labels)

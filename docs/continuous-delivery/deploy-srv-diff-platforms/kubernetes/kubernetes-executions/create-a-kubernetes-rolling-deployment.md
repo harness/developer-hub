@@ -14,13 +14,15 @@ A [rolling update strategy](/docs/continuous-delivery/manage-deployments/deploym
 
 This method is similar to a standard Canary strategy, but different from the Harness Kubernetes Canary strategy. The Harness Kubernetes Canary strategy uses a canary phase followed by a rolling update as its final phase. See [Create a Kubernetes Canary Deployment](create-a-kubernetes-canary-deployment.md) for more information.
 
-For a detailed explanation of Kubernetes rolling updates, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes.### Before you begin
+For a detailed explanation of Kubernetes rolling updates, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes.
+
+### Before you begin
 
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
 * [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
 
-## Review: what workloads can I deploy?
+## What workloads can I deploy?
 
 Stages using Harness Canary and Blue/Green steps only support [Kubernetes Deployment workloads](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 
@@ -47,7 +49,7 @@ With the Rolling Deployment step, you can deploy multiple managed workloads.
 
 For Canary and Blue/Green steps, only one managed object may be deployed per step by default.
 
-You can deploy additional objects using the [Apply Step](deploy-manifests-using-apply-step.md), but it is typically used for deploying Jobs controllers.
+You can deploy additional objects using the [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step), but it is typically used for deploying Jobs controllers.
 
 You can specify the multiple workload objects in a single manifest or in individual manifests, or any other arrangement.Here is the log from a deployment where you can see both Deployment objects deployed:
 
@@ -124,14 +126,14 @@ strategy:
 
 For details on the settings, see [RollingUpdateDeployment](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#rollingupdatedeployment-v1-apps) in the Kubernetes API.
 
-## Define the Service and Infrastructure
+## Define the service and infrastructure
 
 1. Create your CD Pipeline stage.
 
 To set up your Service and Infrastructure in the stage, follow the steps in these topics:
 
-* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
+* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure)
 
 ## Add the Rollout Step
 
@@ -141,7 +143,7 @@ That's it. Harness will perform the Kubernetes rollout using your manifests and 
 
 To change the default settings, click the **Rolling Deployment** step.
 
-See [Kubernetes Rollout Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step.md) for settings.
+See [Kubernetes Rollout Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step) for settings.
 
 ## Deploy
 
@@ -216,7 +218,7 @@ Events:
   
 Done.
 ```
-## Example: rolling update deployment
+## Rolling update deployment example
 
 Now that the setup is complete, you can click **Run Pipeline**.
 
@@ -239,17 +241,17 @@ deployment.apps/harness-example-deployment             2         2         2    
 NAME                                                   DESIRED   CURRENT   READY     AGE  
 replicaset.apps/harness-example-deployment-5674658766  2         2         2         34m
 ```
-## Notes
+## Important notes
 
 ### Enable Kubernetes Pruning option
 
-See [Prune Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources.md).
+See [Prune Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources).
 
 ### Rolling Rollback step
 
 You can add a **Rolling Rollback** step to your stage to roll back the workloads deployed by the **Rollout Deployment** step.
 
-Simply add this step where you want to initiate a rollback. Note that this command applies to the deployments of the Rollout Deployment command, and not the [Apply Step](deploy-manifests-using-apply-step.md) command.
+Simply add this step where you want to initiate a rollback. Note that this command applies to the deployments of the Rollout Deployment command, and not the [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) command.
 
 ## Next Steps
 

@@ -9,7 +9,7 @@ This topic discusses how to set up the Dry Run step for a Kubernetes deployment.
 
 The Dry Run step fetches the Kubernetes manifests or Helm charts in a stage and performs a dry run of those resources. This is the same as running a `kubectl apply --filename=manifests.yaml --dry-run`.
 
-You can use the Dry Run step to check your manifests before deployment. You can follow the step with an [Approval](https://developer.harness.io/docs/category/approvals/) step to ensure the manifests are valid before deployment.
+You can use the Dry Run step to check your manifests before deployment. You can follow the step with an [Approval](/docs/category/approvals/) step to ensure the manifests are valid before deployment.
 
 You can reference the resolved manifest from the Dry Run step in subsequent steps using a Harness variable expression.
 
@@ -32,7 +32,7 @@ The Dry Run step's resolved manifests are stored in the Harness cloud. There is 
 
 You add the Dry Run step before the deployment step(s) in your stage (such as the Apply, Rolling, Canary, Blue Green deployment steps). 
 
-You can add an [Approval](https://developer.harness.io/docs/category/approvals/) step after the Dry Run step to have a Harness user(s) validate the manifest output before deployment.
+You can add an [Approval](/docs/category/approvals/) step after the Dry Run step to have a Harness user(s) validate the manifest output before deployment.
 
 For example, here is a stage with a Dry Run step followed by an Approval step and subsequent Rolling Deployment step.
 
@@ -52,7 +52,7 @@ import TabItem from '@theme/TabItem';
 1. In the CD stage **Execution**, select **Add Step**.
 2. Select the **Dry Run** step.
 3. Enter a name for the step.
-4. In **Timeout**, enter how long this step should run before failing and initiating the step or stage [failure strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/).
+4. In **Timeout**, enter how long this step should run before failing and initiating the step or stage [failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/).
 
     You can use:
 
@@ -121,7 +121,7 @@ For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` th
 <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
 ```
 
-You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) or [Approval](https://developer.harness.io/docs/category/approvals/) steps.
+You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) or [Approval](/docs/category/approvals/) steps.
 
 
 ## Dry Run steps and Skip Dry Run settings

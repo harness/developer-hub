@@ -1,5 +1,5 @@
 ---
-title: Delete Kubernetes Resources with the Kubernetes Delete Step
+title: Delete Kubernetes resources with the Kubernetes Delete step
 description: This topic describes how to remove any deployed Kubernetes resources with the Delete step.
 sidebar_position: 7
 helpdocs_topic_id: eaj0xuegln
@@ -10,20 +10,22 @@ helpdocs_is_published: true
 
 This topic describes how to remove any deployed Kubernetes resources with the **K8s Delete** step.
 
-Looking for Canary Delete? See [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step.md).### Before You Begin
+Looking for Canary Delete? See [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step).
 
-* [Define Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Create a Kubernetes Canary Deployment](create-a-kubernetes-canary-deployment.md)
-* [Create a Kubernetes Blue/Green Deployment](create-a-kubernetes-blue-green-deployment.md)
-* [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
+### Before you begin
 
-## Where to add the Kubernetes Delete Step
+* [Define Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
+* [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
+* [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
+* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
+
+## Where to add the Kubernetes Delete step
 
 You can add a Kubernetes Delete step anywhere in your Pipeline, but the resource you want to delete must already exist by the time Pipeline execution reaches the Kubernetes Delete step.
 
 If you are using a Kubernetes Apply step, Canary Deployment, Rolling Deployment, or some provisioning step to create resources, ensure that you only add the Kubernetes Delete step after its target resource is created.
 
-## Step 1: Add Delete Step
+## Add Delete step
 
 In your Harness stage Execution, click **Add Step**, and select **K8s** **Delete**. The K8s Delete settings appear:
 
@@ -33,13 +35,13 @@ You can add a K8s Delete step anywhere in your stage.
 
 Enter a name for the step.
 
-## Step 2: Select Resources to Delete
+## Select resources to delete
 
 In **Delete resources by**, select how you want to select the resources to be deleted.
 
 There are a few ways to specify the resource to be removed.
 
-### Option: Resource Name
+### Resource name
 
 Identify a resource name in the format `[namespace]/Kind/Name`, with `namespace` being optional.
 
@@ -53,7 +55,7 @@ Enter multiple resources using **Add**.
 
 To delete all resources, use the **Release Name** option, explained below.
 
-### Option: Manifest Path
+### Manifest path
 
 Enter the path to the manifest for the resource you want to delete. The path is relative to the folder path entered in **File/Folder Path** in the **Manifest Details** settings:
 
@@ -63,7 +65,7 @@ Enter multiple resources using **Add File**.
 
 ![](./static/delete-kubernetes-resources-19.png)
 
-### Option: Release Name
+### Release name
 
 During deployment Harness creates a ConfigMap listing the resources of the release and uses the release name for tracking them. The release name is defined in the **Infrastructure** settings, in **Cluster Details**, in **Advanced**.
 
@@ -85,7 +87,7 @@ Resources to delete are:
 Done.
 ```
 
-## Example 2: Deleting All Resources and Namespaces
+## Deleting all resources and namespaces
 
 Here is an example deleting all resources in the release and the namespace:
 
@@ -111,7 +113,7 @@ Done.
 
 * **Delete and Traffic Management**: If you are splitting traffic using the **Apply step**, move the **K8s** **Delete** step after the traffic shifting. This will prevent any traffic from being routed to deleted pods before traffic is routed to stable pods.
 
-## See Also
+## See also
 
-* [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step.md)
+* [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step)
 

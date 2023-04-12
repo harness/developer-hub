@@ -1,7 +1,7 @@
 ---
-title: Add Container Images as Artifacts for Kubernetes Deployments
-description: Add container images for your Kubernetes deployments.
-sidebar_position: 3
+title: Add container images as artifacts for Kubernetes deployments
+description: This topic describes how to add container image locations as Harness during Kubernetes deployments.
+sidebar_position: 2
 helpdocs_topic_id: 4ifq51cp0i
 helpdocs_category_id: qfj6m1k2c4
 helpdocs_is_private: false
@@ -18,21 +18,21 @@ When you deploy, Harness connects to your repo and you select which image and ve
 
 With a Harness artifact, you can template your manifests, detaching them from a hardcoded location. This makes your manifests reusable and dynamic.
 
-## Before You Begin
+## Before you begin
 
 Make sure you've reviewed and set up the following:
 
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md). You must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
-* [Kubernetes Deployments Overview](../kubernetes-deployments-overview.md)
+* [Install a Kubernetes Delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate): You must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
+* [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
 
-## Visual Summary
+## Visual summary
 
 To add a container image to Harness as an Artifact, you add a Harness Connector for your repository and then add the container image as an artifact source. In your Values file (values.yaml), you simply add a Harness expression where you'd normally hardcode the location.
 
 ![](./static/add-artifacts-for-kubernetes-deployments-01.png)
 
 
-## Review: Artifacts and Manifests in Harness
+## Artifacts and manifests in Harness
 
 There are several scenarios to consider before you use artifacts and manifests in the Harness stage:
 
@@ -52,7 +52,7 @@ In this example, `[sidecar_identifier]` is the sidecar identifier you specified 
 
 In some cases, your Kubernetes cluster might not have the permissions needed to access a private repo (GCR, etc). For these cases, you use the expression `<+artifact.imagePullSecret>` in the Values file and reference it in the Secret and Deployment objects in your manifest.  
 This key will import the credentials from the Docker credentials file in the artifact.  
-See [Example Manifests](#example-manifests).
+[Example Manifests](#example-manifests)
 
 ### Service account of the Kubernetes Delegate can pull from the private repo
 
@@ -70,17 +70,17 @@ As explained above, in your Values file, you refer to the sidecar artifact you s
 
 In this example, `[sidecar_identifier]` is the sidecar identifier you specified when you added the sidecar artifact.
 
-## Review: Container Registry Support
+## Container registry support
 
 Harness supports all of the popular container registries. You can add your container registry account as a Harness Connector.
 
 The Connector can be added in line when you select your artifacts or separately in **Project Setup** (for Projects) or **Account Resources** (for accounts).
 
-For steps on setting up each artifact server as a Connector, see the following [Connect to an Artifact Repo](/docs/platform/7_Connectors/connect-to-an-artifact-repo.md).
+For steps on setting up each artifact server as a Connector, see the following [Connect to an Artifact Repo](/docs/platform/Connectors/connect-to-an-artifact-repo).
 
 If you are using Google Container Registry (GCR) or Amazon Elastic Container Registry (ECR), see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
-## Review: Primary and Sidecar Artifacts
+## Primary and sidecar artifacts
 
 You can add a primary artifact and multiple sidecar artifacts. The sidecars are treated the same as the primary artifact. Both are deployed to the target infrastructure in the **Infrastructure Definition**.
 
@@ -88,16 +88,16 @@ You don't need to create a separate Service for a sidecar artifact. Both are add
 
 You must select artifact versions at deployment runtime for all primary and sidecar artifacts.
 
-## Step 1: Add Deploy Stage
+## Add deploy stage
 
-For steps on adding a stage, see [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md).
+For steps on adding a stage, see [Add a Stage](/docs/platform/Pipelines/add-a-stage).
 
 1. When you add a stage, select **Deploy**.
 2. Name the stage, and select what you'd like to deploy. For example, select **Service**.
 3. Click **Set Up Stage**. The new stage's settings appear.
 4. Click **Next** or **Service**.
 
-## Step 2: Create the Harness Service
+## Create the Harness service
 
 In **Service**, you can define/select the Service and Service Definition.
 
@@ -109,7 +109,7 @@ By separating Services and Service Definitions, you can propagate the same Servi
 
 To add your container image, go to **Artifacts** in the Service Definition.
 
-## Step 3: Add the Artifact Source
+## Add the artifact source
 
 1. In **Artifacts**, you add connections to the images in their repos. To demonstrate how to add the Artifact Source, we use a Docker image from a Docker Registry Connector.
 2. In **Artifacts**, click **Add Primary** **Artifact.**
@@ -117,13 +117,18 @@ To add your container image, go to **Artifacts** in the Service Definition.
    
    ![](./static/add-artifacts-for-kubernetes-deployments-02.png)
 
-4. For Azure Container Registry, use the **Docker Registry** type.
-
-### Option: Docker Registry
+```mdx-code-block
+import Tabs from '@theme/Tabs';   
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+    <TabItem value="Docker Registry" label="Docker Registry" default>
+```
 
 1. Select **Docker Registry**, and click **Continue**.
 2. The **Docker Registry** settings appear.
-3. Select a [Docker Registry Connector](/docs/platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md) or create a new one.
+3. Select a [Docker Registry Connector](/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference) or create a new one.
 4. In your Docker Registry Connector, to connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`. To connect to a private Docker registry, use `https://index.docker.io/v2/`.Click **Continue**.
 5. In **Image path**, enter the name of the artifact you want to deploy, such as **library/nginx**.
 6. In **Tag**, enter the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
@@ -133,7 +138,10 @@ The Artifact is added to the Service Definition.
 
 ![](./static/add-artifacts-for-kubernetes-deployments-03.png)
 
-### Option: Nexus
+```mdx-code-block
+</TabItem>
+<TabItem value="Nexus" label="Nexus">
+```
 
 :::note
 
@@ -145,7 +153,7 @@ Currently, this feature is behind the Feature Flag `NG_NEXUS_ARTIFACTORY`. Cont
 
    ![](./static/add-artifacts-for-kubernetes-deployments-04.png)
 
-1. Select a [Nexus Connector](/docs/platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md) or create a new one.
+1. Select a [Nexus Connector](/docs/platform/Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference) or create a new one.
 
    ![](./static/add-artifacts-for-kubernetes-deployments-05.png)
 
@@ -155,65 +163,70 @@ Currently, this feature is behind the Feature Flag `NG_NEXUS_ARTIFACTORY`. Cont
 
 Based on your server and network configuration, choose one of the following and fill in the details:
 
-* **Repository URL** - You can choose this for custom infrastructure with a specific hostname and/or port.  
-  Enter the URL you would use in the Docker login to fetch the artifact. This is the same as the domain name and port you use for `docker login hostname:port`.
+   * **Repository URL** - You can choose this for custom infrastructure with a specific hostname and/or port.  
+     Enter the URL you would use in the Docker login to fetch the artifact. This is the same as the domain name and port you use for `docker login hostname:port`.
   
-  ![](./static/add-artifacts-for-kubernetes-deployments-07.png)
-* **Repository Port** - You can choose this for standard Nexus 3 installation without any additional infrastructure.  
-  Enter the port you use for `docker login hostname:port`.  
-  The port you enter will be used along with the domain, username, and password provided in the Nexus Connector.
+     ![](./static/add-artifacts-for-kubernetes-deployments-07.png)
+  * **Repository Port** - You can choose this for standard Nexus 3 installation without any additional infrastructure.  
+     Enter the port you use for `docker login hostname:port`.  
+     The port you enter will be used along with the domain, username, and password provided in the Nexus Connector.
   
-  ![](./static/add-artifacts-for-kubernetes-deployments-08.png)
+     ![](./static/add-artifacts-for-kubernetes-deployments-08.png)
   
-*  In **Repository**, enter the name of the repository where the artifact is located.
+   * In **Repository**, enter the name of the repository where the artifact is located.
   
-  Harness supports only the Docker repository format as the Artifact source for the Nexus 3 Artifact registry. In **Artifact Path**, enter the name of the artifact you want to deploy. For example `nginx`, `private/nginx`, `public/org/nginx`.
+      Harness supports only the Docker repository format as the Artifact source for the Nexus 3 Artifact registry. In **Artifact Path**, enter the name of the artifact you want to deploy. For example `nginx`, `private/nginx`, `public/org/nginx`.
   
-*  In **Tag**, select the tag for the image/artifact.
+    * In **Tag**, select the tag for the image/artifact.
   
-  ![](./static/add-artifacts-for-kubernetes-deployments-09.png)
+      ![](./static/add-artifacts-for-kubernetes-deployments-09.png)
   
-  For details on the settings, see [Nexus Connector Settings Reference](/docs/platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
+      For details on the settings, see [Nexus Connector Settings Reference](/docs/platform/Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference).
   
-  You can optionally add validations to Tags. To do this, click the settings icon and select the validation type.
+      You can optionally add validations to Tags. To do this, click the settings icon and select the validation type.
   
-  ![](./static/add-artifacts-for-kubernetes-deployments-10.png)
+      ![](./static/add-artifacts-for-kubernetes-deployments-10.png)
 
-Click **Submit**.
+3. Click **Submit**.
 
-The Artifact is added to the Service Definition.
+   The Artifact is added to the Service Definition.
 
-### Option: Artifactory
-
+```mdx-code-block
+</TabItem>
+<TabItem value="Artifactory" label="Artifactory">
+```
+1. Select an [Artifactory Connector](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) or create a new one.
+   
 ![](./static/add-artifacts-for-kubernetes-deployments-11.png)
-
-Select an [Artifactory Connector](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) or create a new one.
 
 ![](./static/add-artifacts-for-kubernetes-deployments-12.png)
 
-Click **Continue**. The **Artifact Details** settings appear.
+2. Click **Continue**. The **Artifact Details** settings appear.
 
-In **Repository URL**, enter the URL you would use in the Docker login to fetch the artifact. This is the same as the domain name and port you use for `docker login hostname:port`. For more information, see [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+3. In **Repository URL**, enter the URL you would use in the Docker login to fetch the artifact. This is the same as the domain name and port you use for `docker login hostname:port`. For more information, see [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference).
 
-In **Repository**, enter the name of the repository where the artifact is located.
+4. In **Repository**, enter the name of the repository where the artifact is located.
 
-In **Artifact Path**, enter the name of the artifact you want to deploy. For example `nginx`, `private/nginx`, `public/org/nginx`.
+5. In **Artifact Path**, enter the name of the artifact you want to deploy. For example `nginx`, `private/nginx`, `public/org/nginx`.
 
-In **Tag**, select the tag for the image/artifact. For more information, see [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+6. In **Tag**, select the tag for the image/artifact. For more information, see [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference).
 
-![](./static/add-artifacts-for-kubernetes-deployments-13.png)
+   ![](./static/add-artifacts-for-kubernetes-deployments-13.png)
 
-Click **Submit**.
+7. Click **Submit**.
 
-The Artifact is added to the Service Definition.
+   The Artifact is added to the Service Definition.
 
-You can add sidecar artifacts the same way.
+   You can add sidecar artifacts the same way.
 
-When you run the Pipeline, select the build of the artifact(s) to use.
+   When you run the Pipeline, select the build of the artifact(s) to use.
 
-![](./static/add-artifacts-for-kubernetes-deployments-14.png)
+   ![](./static/add-artifacts-for-kubernetes-deployments-14.png)
 
-### Option: Custom
+```mdx-code-block
+</TabItem>
+<TabItem value="Custom" label="Custom">
+```
 
 :::note
 
@@ -223,21 +236,26 @@ Currently, this feature is behind the Feature Flag `CUSTOM_ARTIFACT_NG`. Contac
 
 You can select a Custom Artifact Source to add your custom repository.
 
-Select **Custom** and click **Continue**.
+1. Select **Custom** and click **Continue**.
 
-![](./static/add-artifacts-for-kubernetes-deployments-15.png)
+   ![](./static/add-artifacts-for-kubernetes-deployments-15.png)
 
-The **Artifact Details** settings appear.
+   The **Artifact Details** settings appear.
 
-![](./static/add-artifacts-for-kubernetes-deployments-16.png)
+   ![](./static/add-artifacts-for-kubernetes-deployments-16.png)
 
-In **Version**, enter your artifact version.
+2. In **Version**, enter your artifact version.
 
-Click **Submit**.
+3. Click **Submit**.
 
-You can only set an Artifact version number when using a Custom Artifact Source. The version you select determines the Artifact context for the deploy stage. You may refer to it anywhere in the stage by using the expression `<+artifact.version>`.
+   You can only set an Artifact version number when using a Custom Artifact Source. The version you select determines the Artifact context for the deploy stage. You may refer to it anywhere in the stage by using the expression `<+artifact.version>`.
 
-## Step 4: Reference the Artifact in Your Values File
+```mdx-code-block
+</TabItem>    
+</Tabs>
+```
+
+## Reference the artifact in your values.yaml file
 
 In this example, the public artifact isn't hardcoded in the manifest and we reference the image in the Service Definition **Artifacts** section using the variable `<+artifact.image>`.
 
@@ -273,31 +291,32 @@ kind: Deployment
         image: {{.Values.image}}  
 ...
 ```
-See [Example Manifests](#example-manifests) for more details.
+[Example Manifests](#example-manifests)
 
-## Step 5: Add Your Manifests
+## Add your manifests
 
 Once your manifests and Values file are configured to use the artifact reference `<+artifact.image>`, you can add them to the Service.
 
 See [Define Kubernetes Manifests](define-kubernetes-manifests.md).
 
-## Step 6: Add Infrastructure and Execution
+## Add infrastructure and execution
 
 Next, you'll add the target infrastructure and execution steps to your stage.
 
 We won't cover those here, but see the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) for a summary.
 
-## Example Manifests
+## Example manifests
 
 Below are some examples of manifests using the Harness expression for the artifact you added in **Artifacts** (`<+artifact.image>`).
 
-### Basic Values YAML and Manifests for Public Image
+### Basic values YAML and manifests for public image
 
 This is a simple example using the Artifact reference `<+artifact.image>`. It can be used whenever the public image isn't hardcoded in manifests.
 
 We use Go templating with a values.yaml file and manifests for deployment, namespace, and service. The manifests for deployment, namespace, and service are in a **templates** folder that is a peer of the values.yaml file.
 
-#### values.yaml
+<details>
+<summary>values.yaml</summary>
 
 This file uses the `image: <+artifact.image>` to identify the primary artifact added in **Artifacts**.
 
@@ -336,7 +355,11 @@ env:
   secrets:  
     key2: value2
 ```
-#### templates/deployment.yaml
+
+</details>
+
+<details>
+<summary>templates/deployment.yaml</summary>
 
 The deployment manifest references the name and image values from values.yaml. The manifest also contains the ConfigMap and Secret objects.
 
@@ -408,7 +431,11 @@ spec:
         {{- end}}  
         {{- end}}
 ```
-#### templates/namespace.yaml
+
+</details>
+
+<details>
+<summary>templates/namespace.yaml</summary>
 
 The namespace manifest references the namespace value from values.yaml.
 
@@ -422,7 +449,10 @@ metadata:
 {{- end}}
 ```
 
-#### templates/service.yaml
+</details>
+
+<details>
+<summary>templates/service.yaml</summary>
 
 The service manifest references the hardcoded service type and ports from values.yaml.
 
@@ -442,7 +472,9 @@ spec:
     app: {{.Values.name}}
 ```
 
-### Private Artifact
+</details>
+
+### Private artifact
 
 When the image is in a private repo, you use the expression `<+artifact.imagePullSecret>` in the Secret and Deployment objects in your manifest.
 
@@ -510,8 +542,8 @@ spec:
 ```
 ## Notes
 
-* [Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables.md) may be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
-* The Values file used in a Harness Service Definition doesn't support Helm templating, **only Go templating**. Helm templating is fully supported in the remote Helm charts you add to your Harness Service Definition. See [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
+* [Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables) may be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
+* The Values file used in a Harness Service Definition doesn't support Helm templating, **only Go templating**. Helm templating is fully supported in the remote Helm charts you add to your Harness Service Definition. See [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 * Harness uses Go template version 0.4. If you are used to Helm templating, you can download Go template and try it out locally to find out if your manifests will work. This can help you avoid issues when adding your manifests to Harness.
   * You can install Go template version 0.4 locally to test your manifests.
     + Mac OS: `curl -O https://app.harness.io/public/shared/tools/go-template/release/v0.4/bin/darwin/amd64/go-template`

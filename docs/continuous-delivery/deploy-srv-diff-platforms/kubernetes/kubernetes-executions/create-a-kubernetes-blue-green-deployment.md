@@ -1,6 +1,6 @@
 ---
-title: Create a Kubernetes Blue Green Deployment
-description: This topic describes how to create a Kubernetes Blue/Green deployment in Harness.
+title: Create a Kubernetes Blue Green deployment
+description: This topic describes how to create a Kubernetes Blue Green deployment in Harness.
 sidebar_position: 3
 helpdocs_topic_id: mog5tnk5pi
 helpdocs_category_id: uj8bqz9j0q
@@ -10,21 +10,21 @@ helpdocs_is_published: true
 
 This topic will walk you through creating a Blue Green deployment in Harness for a Kubernetes Deployment workload.
 
-For information on Blue/Green deployments, see [Deployment Concepts and Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts.md).
+For information on Blue Green deployments, see [Deployment Concepts and Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts).
 
-Harness Canary and Blue/Green strategies only support Kubernetes Deployment workloads. The Rolling strategy supports all other workloads, except Jobs. The [Apply Step](deploy-manifests-using-apply-step.md) can deploy any workloads or objects.
+Harness Canary and Blue Green strategies only support Kubernetes Deployment workloads. The Rolling strategy supports all other workloads, except Jobs. The [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) can deploy any workloads or objects.
 
-## Before You Begin
+## Before you begin
 
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
+* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure)
 
-## Review: What Workloads Can I Deploy?
+## What workloads can I deploy?
 
-See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
 
-## Review: Harness Blue Green Deployments
+## Harness Blue Green deployments
 
 Here's a quick summary of how Harness performs Blue Green deployments.
 
@@ -118,7 +118,7 @@ Let's look at the deployment process using two Kubernetes services:
 	2. Harness points the stage service at new pod set (with new app version) and verifies that the set reached steady state.
 	3. Harness swaps the primary service to new pod set, stage service to old pod set.
 
-## Visual Summary
+## Visual summary
 
 Here's a video walking through a simple Canary deployment. It's 10 minutes long but it covers set up and two deployments.
 
@@ -126,18 +126,18 @@ Here's a video walking through a simple Canary deployment. It's 10 minutes long 
 https://www.youtube.com/watch?v=0x2eHfpNv_o-->
 <docvideo src="https://www.youtube.com/watch?v=0x2eHfpNv_o" />
 
-## Step 1: Define the Service and Infrastructure
+## Define the service and infrastructure
 
 Create your CD Pipeline stage.
 
 To set up your Service and Infrastructure in the stage, follow the steps in these topics:
 
-* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
+* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure)
 
 Once the Service and Infrastructure are set up, you can add the execution steps.
 
-## Step 2: Add the Execution Steps
+## Add the execution steps
 
 In the stage's **Execution**, click **Add Step**, and select the **Blue Green** strategy.
 
@@ -149,7 +149,7 @@ That's it. Harness will deploy the artifact using the stage service initially, a
 
 Let's look at the default settings for the Stage Deployment step.
 
-## Step 3: Stage Deployment Step
+## Stage deployment step
 
 The **Stage Deployment** step is added automatically when you apply the Blue Green strategy.
 
@@ -234,7 +234,7 @@ Next, the **Swap Primary with Stage** step will swap the primary and stage serv
 
 If this were the second deployment, Harness would also swap the stage service to the pod set for the old app version.
 
-## Step 4: Swap Primary with Stage Step
+## Swap primary with stage step
 
 Click the **Swap Primary with Stage** step.
 
@@ -298,13 +298,13 @@ harness.io/color: blue
 Done
 ```
 
-## Option: Scale Down Old Version
+## Scale down old version
 
-A great benefit of a Blue/Green deployment is rapid rollback: rolling back to the old version of an app is simple and reliable because network traffic is simply routed back to the previous pods.
+A great benefit of a Blue Green deployment is rapid rollback: rolling back to the old version of an app is simple and reliable because network traffic is simply routed back to the previous pods.
 
 You do not need to redeploy previous versions of the app and the pods that comprised their environment.
 
-If you would like to scale down the old version, add a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) to the post-deployment steps of your stage.
+If you would like to scale down the old version, add a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) to the post-deployment steps of your stage.
 
 Here's an example using `<+pipeline.stages.[stage_name].spec.execution.steps.stageDeployment.output.stageServiceName>` to reference the stage service name. The name of the stage is nginx so the reference is `<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName>`.
 
@@ -394,10 +394,10 @@ When using this with a traffic splitting strategy, your pods will scale automati
 
 ## Notes
 
-* **Blue/Green Rollback** — A great benefit of a Blue/Green deployment is rapid rollback: rolling back to the old version of a service/artifact is simple and reliable because network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
+* **Blue Green Rollback** — A great benefit of a Blue Green deployment is rapid rollback: rolling back to the old version of a service/artifact is simple and reliable because network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
 
 ## Next Steps
 
-* [Create a Kubernetes Rolling Deployment](create-a-kubernetes-rolling-deployment.md)
-* [Create a Kubernetes Canary Deployment](create-a-kubernetes-canary-deployment.md)
+* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
+* [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
 

@@ -1,7 +1,7 @@
 ---
-title: Canary Deployment Step
+title: Canary Deployment step
 description: Define pods count for a canary deployment.
-sidebar_position: 1
+sidebar_position: 4
 helpdocs_topic_id: 17wrdeuv0x
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
@@ -10,15 +10,15 @@ helpdocs_is_published: true
 
 This topic provides settings and permissions for the CD **Canary Deployment** step.
 
-## Review: What Workloads Can I Deploy?
+## What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md)
+See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes)
 
 ## Canary Deployment
 
 In this step, you will define how many pods are deployed for a Canary test of the configuration files in your Service Definition **Manifests** section.
 
-See [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md).
+See [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment).
 
 ## YAML
 
@@ -35,8 +35,6 @@ See [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv
                         count: 1
                   timeout: 10m
 ```
-
-
 
 
 ## Name
@@ -69,9 +67,9 @@ If the **Skip Dry Run** option is selected, Harness will not use the `--dry-r
 
 See the following topics for these settings:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
 
 ## See Also
 

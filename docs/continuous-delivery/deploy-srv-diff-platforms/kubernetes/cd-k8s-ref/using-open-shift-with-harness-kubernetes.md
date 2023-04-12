@@ -1,7 +1,7 @@
 ---
 title: Using OpenShift with Harness Kubernetes
 description: OpenShift support in Harness.
-sidebar_position: 8
+sidebar_position: 10
 helpdocs_topic_id: uajkpcmqjg
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
@@ -10,11 +10,11 @@ helpdocs_is_published: true
 
 Harness supports OpenShift for Kubernetes deployments. This topic reviews OpenShift support in the Harness Delegate and Pipelines.
 
-## Review: Kubernetes Delegate and OpenShift
+## Kubernetes delegate and OpenShift
 
 OpenShift has very locked down settings by default and so you can either customize the Harness Delegate YAML to make it adhere to a stricter security posture and/or use a non-root Delegate image. You also have the options to loosen restrictions when installing the Delegate.
 
-### Using a Delegate Outside the Cluster
+### Using a delegate outside the cluster
 
 Harness supports OpenShift using a Delegate running externally to the Kubernetes cluster.
 
@@ -37,7 +37,7 @@ echo $TOKEN
 
 Once configured, OpenShift is used by Harness as a typical Kubernetes cluster.
 
-### Using a Delegate Inside the Cluster
+### Using a delegate inside the cluster
 
 Harness supports running Delegates internally in the target cluster for OpenShift 3.11 or greater.
 
@@ -56,13 +56,13 @@ For example, you can set the securityContext appropriately in your pod spec of t
 ```
 In addition, you should use the **non-root-openshift** or **non-root-ubi** Delegate image, available on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags).
 
-## Review: Deployment Strategy Support
+## Deployment strategy support
 
-In addition to standard workload type support in Harness (see [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md)), Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies.
+In addition to standard workload type support in Harness (go to [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes)), Harness supports [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html), [Route](https://docs.openshift.com/enterprise/3.0/architecture/core_concepts/routes.html), and [ImageStream](https://docs.openshift.com/enterprise/3.2/architecture/core_concepts/builds_and_image_streams.html#image-streams) across Canary, Blue Green, and Rolling deployment strategies.
 
 Use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
 
-## Review: Harness Supports List Objects
+## Harness supports list objects
 
 You can leverage Kubernetes list objects as needed without modifying your YAML for Harness.
 
@@ -78,61 +78,41 @@ Harness supports:
 
 If you run `kubectl api-resources` you should see a list of resources, and `kubectl explain` will work with any of these.
 
-## Adding OpenShift Templates
+## Adding OpenShift templates
 
 OpenShift templates are added in the **Manifests** section of a Deploy Stage Service.
 
-Add an OpenShift TemplateIn your CD stage, click **Service**.
+1. Add an OpenShift TemplateIn your CD stage, click **Service**.
+2. In **Service Definition**, select **Kubernetes**.
+3. In **Manifests**, click **Add Manifest**.
+4. In **Specify Manifest Type**, select **OpenShift Template**, and then click **Continue.**
+5. In **Specify OpenShift Template Store**, select the Git provider where your template is located.  
+   For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/Connectors/connect-to-code-repo).
+6. Click **Continue**. **Manifest Details** appears.
+7. In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.  
+   For example, if the Pipeline is named **MyPipeline** and **Manifest Identifier** were **myapp**, you could reference the **Branch** setting using this expression:
 
-In **Service Definition**, select **Kubernetes**.
+   `<+pipeline.stages.MyPipeline.spec.serviceConfig.serviceDefinition.spec.manifests.myapp.spec.store.spec.branch>`
 
-In **Manifests**, click **Add Manifest**.
+8. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
+9. In **Template** **File Path**, enter the path to the template file. The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file.
+10. Click **Submit**. The template is added to **Manifests**.
 
-In **Specify Manifest Type**, select **OpenShift Template**, and then click **Continue.**
-
-In **Specify OpenShift Template Store**, select the Git provider where your template is located.
-
-For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/Connectors/connect-to-code-repo.md).
-
-Click **Continue**. **Manifest Details** appears.
-
-In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.
-
-For example, if the Pipeline is named **MyPipeline** and **Manifest Identifier** were **myapp**, you could reference the **Branch** setting using this expression:
-
-`<+pipeline.stages.MyPipeline.spec.serviceConfig.serviceDefinition.spec.manifests.myapp.spec.store.spec.branch>`
-
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
-
-In **Template** **File Path**, enter the path to the template file. The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file.
-
-Click **Submit**. The template is added to **Manifests**.
-
-## OpenShift Param Files
+## OpenShift Param files
 
 OpenShift Param Files are added in the **Manifests** section of a Deploy Stage Service.
 
-Add an OpenShift Param FileIn your CD stage, click **Service**.
-
-In **Service Definition**, select **Kubernetes**.
-
-In **Manifests**, click **Add Manifest**.
-
-In **Specify Manifest Type**, select **OpenShift Param**, and then click **Continue.**
-
-In **Specify OpenShift Param Store**, select the Git provider where your param file is located.
-
-For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/Connectors/connect-to-code-repo.md).
-
-Click **Continue**. **Manifest Details** appears.
-
-In **Manifest Identifier**, enter an Id for the param file. It must be unique. It can be used in Harness expressions to reference this param file's settings.
-
-In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
-
-In **Paths**, enter the path(s) to the param file(s). The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file.
-
-Click **Submit**. The template is added to **Manifests**.
+1. Add an OpenShift Param FileIn your CD stage, click **Service**.
+2. In **Service Definition**, select **Kubernetes**.
+3. In **Manifests**, click **Add Manifest**.
+4. In **Specify Manifest Type**, select **OpenShift Param**, and then click **Continue.**
+5. In **Specify OpenShift Param Store**, select the Git provider where your param file is located.  
+   For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/Connectors/connect-to-code-repo).
+6. Click **Continue**. **Manifest Details** appears.
+7. In **Manifest Identifier**, enter an Id for the param file. It must be unique. It can be used in Harness expressions to reference this param file's settings.
+8. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
+9. In **Paths**, enter the path(s) to the param file(s). The Connector you selected already has the repo name, so you simply need to add the path from the root of the repo to the file
+10. Click **Submit**. The template is added to **Manifests**.
 
 ## Notes
 

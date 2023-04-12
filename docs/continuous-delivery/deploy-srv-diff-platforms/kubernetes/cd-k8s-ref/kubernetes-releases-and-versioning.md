@@ -1,7 +1,7 @@
 ---
-title: Kubernetes Releases and Versioning
+title: Kubernetes releases and versioning
 description: How Harness tracks Kubernetes releases and versions.
-sidebar_position: 10
+sidebar_position: 9
 helpdocs_topic_id: zahb65jgmy
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false

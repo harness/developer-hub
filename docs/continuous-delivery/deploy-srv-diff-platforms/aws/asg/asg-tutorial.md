@@ -139,11 +139,11 @@ The Harness ASG service contains the following:
 
 Harness supports standard ASG JSON formatted files. For more information, go to [Get started with Amazon EC2 Auto Scaling](https://docs.aws.amazon.com/autoscaling/ec2/userguide/get-started-with-ec2-auto-scaling.html) from AWS.
 
-You can use remote files stored in a Git repo or the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
+You can use remote files stored in a Git repo or the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 :::note
 
-You can create a service when you are building the pipeline or separately in **Services**. In this topic, we walk through building the service separately. For more information, go to [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-modeling-overview).
+You can create a service when you are building the pipeline or separately in **Services**. In this topic, we walk through building the service separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 :::
 
@@ -156,7 +156,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="YAML" label="YAML" default>
 ```
 
-Here's an example where the configuration files are stored in the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
+Here's an example where the configuration files are stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 ```yaml
 service:
@@ -346,25 +346,25 @@ To configure a Harness ASG service in the Harness Manager, do the following:
    
    This is the same as the **Automatic scaling** option in the ASG console setup:
 
-   ![Automatic scaling option in the ASG console setup](../../../onboard-cd/cd-quickstarts/static/ae598a44899643397e7ee9502a8fc6698bd8703bff7209fe7a4c95c4b82c3704.png)  
+   ![Automatic scaling option in the ASG console setup](static/ae598a44899643397e7ee9502a8fc6698bd8703bff7209fe7a4c95c4b82c3704.png)  
 
-   4. [Scheduled update group action](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html). This is optional.
+   1. [Scheduled update group action](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html). This is optional.
    
    This is the same as the scheduled action in the ASG console setup:
    
-   ![Edit scheduled action](../../../onboard-cd/cd-quickstarts/static/5cfdb08c486ac86332089f793e1dbc0b011e1730c595d18e937370f6ca1587fc.png)  
+   ![Edit scheduled action](static/5cfdb08c486ac86332089f793e1dbc0b011e1730c595d18e937370f6ca1587fc.png)  
    
    Next, in **Artifacts**, you add the private AMI image to use for the ASG instances.
-1. In **Artifacts**, select **Add Artifact Source**.
-2. In **Specify Artifact Repository Type**, select **Amazon Machine Image**, and select **Continue**.
-3. In **Amazon Machine Image Repository**, in **AWS Connector**, select or create a Harness AWS connector, and then select **Continue**. Review [AWS policy requirements](#aws-policy-requirements) to ensure that the AWS credentials you provide are adequate.
-4. In **Artifact Details**, enter a name to identify this AMI artifact in Harness.
-5. In **Region**, select the region where the ASG is located.
-6.  In **AMI Tags**, add any AWS Tags that you are using to identify your AMI. For details on these key/value pairs, go to [Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) from AWS.
-7.  In **AMI Filters**, add AMI filters to locate the AMI resource. These are key/value pairs that identify the AMI Id. This must be a private AMI.
-8.  In **Version Details** and **Version**, specify the AMI version to use.
-9.  Select **Submit**.
-10. Select **Save** to save the service.
+7. In **Artifacts**, select **Add Artifact Source**.
+8. In **Specify Artifact Repository Type**, select **Amazon Machine Image**, and select **Continue**.
+9. In **Amazon Machine Image Repository**, in **AWS Connector**, select or create a Harness AWS connector, and then select **Continue**. Review [AWS policy requirements](#aws-policy-requirements) to ensure that the AWS credentials you provide are adequate.
+10. In **Artifact Details**, enter a name to identify this AMI artifact in Harness.
+11. In **Region**, select the region where the ASG is located.
+12. In **AMI Tags**, add any AWS Tags that you are using to identify your AMI. For details on these key/value pairs, go to [Tagging Your Amazon EC2 Resources](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html) from AWS.
+13. In **AMI Filters**, add AMI filters to locate the AMI resource. These are key/value pairs that identify the AMI Id. This must be a private AMI.
+14. In **Version Details** and **Version**, specify the AMI version to use.
+15. Select **Submit**.
+16. Select **Save** to save the service.
     
     The Harness ASG service is complete. You can now use it in your Harness ASG pipelines.
 
@@ -432,7 +432,7 @@ In the **Variables** section of the service, you can add service variables and t
 
 For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/).
 
-![service variable](../../../onboard-cd/cd-quickstarts/static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
+![service variable](static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 
 Next, in your ASG configuration file, you could reference the variable like this (see `<+serviceVariables.desiredCapacity>`):
 
@@ -457,7 +457,7 @@ You also add a infrastructure definition to define the region where you want to 
 
 :::note
 
-You can create an environment when you are building the pipeline or separately in **Environments**. In this topic, we walk through building the environment separately. For more information, go to [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-modeling-overview).
+You can create an environment when you are building the pipeline or separately in **Environments**. In this topic, we walk through building the environment separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 :::
 
@@ -558,7 +558,7 @@ To create an environment, do the following:
 2. Select **New Environment**.
 3. Enter a name for the new environment.
 4. In **Environment Type**, select **Production** or **Pre-Production**.
-   The **Production** or **Pre-Production** settings can be used in [Harness RBAC](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) to restrict who can deploy to these environments.
+   The **Production** or **Pre-Production** settings can be used in [Harness RBAC](/docs/platform/role-based-access-control/rbac-in-harness/) to restrict who can deploy to these environments.
 5. Select **Save**. The new environment is created.
 
 Pipelines require that an environment have an infrastructure definition. We'll cover that next.
@@ -700,11 +700,11 @@ Once you have a the service and environment created, you can create the pipeline
 
 :::note
 
-You can create a service and environment when you are building the pipeline or separately in **Services** and **Environments**. In this topic, we walk through building these separately. For more information, go to [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-modeling-overview).
+You can create a service and environment when you are building the pipeline or separately in **Services** and **Environments**. In this topic, we walk through building these separately. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 :::
 
-The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-modeling-overview).
+The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 
 ```mdx-code-block
@@ -929,7 +929,7 @@ To create an ASG pipeline, do the following:
 
 ## ASG pipeline execution strategies
 
-Harness ASG deployments support the following [deployment strategies](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-concepts/):
+Harness ASG deployments support the following [deployment strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts):
 
 - Rolling
 - Canary
@@ -946,7 +946,7 @@ Here's a flowchart that explains how Harness performs rolling deployments:
 <details>
 <summary>Rolling deployments flowchart</summary>
 
-![ASG rolling flowchart](../../../onboard-cd/cd-quickstarts/static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)  
+![ASG rolling flowchart](static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)  
 
 
 </details>
@@ -1048,7 +1048,7 @@ Rolling Deployment Finished Successfully
   <TabItem4 value="Rolling Rollback step" label="Rolling Rollback step">
 ```
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the Rolling Rollback step in the **Rollback** section of **Execution**.
 
 During rollback of the first deployment, Harness deletes the ASG.
 
@@ -1077,7 +1077,7 @@ The ASG canary deployment uses two step groups:
 
 Here's what the two step groups look like:
 
-![ASG canary step groups](../../../onboard-cd/cd-quickstarts/static/22f0a4be013dcf977b67e4f645941ce03ea5f63e6d9225a28f5efa383b5b5bdc.png)  
+![ASG canary step groups](static/22f0a4be013dcf977b67e4f645941ce03ea5f63e6d9225a28f5efa383b5b5bdc.png)  
 
 
 ```mdx-code-block
@@ -1161,7 +1161,7 @@ This is the standard Harness ASG Rolling Deploy step. For details, go to [Rollin
   <TabItem5 value="Rollback steps" label="Rollback steps">
 ```
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the rollback steps in the **Rollback** section of **Execution**.
 
 For ASG canary deployments there are two rollback steps:
 
@@ -1199,11 +1199,11 @@ A Blue/Green deployment reliably deploys your ASGs by maintaining new and old ve
 
 In the first stage of deployment, the new ASG is attached to the stage target group:
 
-![first stage](../../../onboard-cd/cd-quickstarts/static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
+![first stage](static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
 
 Blue/Green deployments are achieved by swapping routes between the target groups—always attaching the new ASG first to the stage target group, and then to the prod target group:
 
-![second stage](../../../onboard-cd/cd-quickstarts/static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)  
+![second stage](static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)  
 
 </details>
 
@@ -1212,7 +1212,7 @@ Here's a flowchart that explains how Harness performs Blue Green deployments:
 <details>
 <summary>Blue Green deployments flowchart</summary>
 
-![blue green flowchart map](../../../onboard-cd/cd-quickstarts/static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)  
+![blue green flowchart map](static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)  
 
 </details>
 
@@ -1325,11 +1325,11 @@ Harness stores configurations of the ASG you are deploying twice:
 
 In the **Advanced** settings of all step, you can use the following options:
 
-* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](/docs/platform/Policy-as-code/harness-governance-overview)
 
 ## Notes
 

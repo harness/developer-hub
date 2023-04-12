@@ -1,5 +1,5 @@
 ---
-title: Ignore a Manifest File During Deployment
+title: Ignore a manifest file during deployment
 description: Apply manifests separately using the Harness Apply step.
 sidebar_position: 5
 helpdocs_topic_id: jyv7jbr8pg
@@ -12,28 +12,28 @@ This topic describes how to ignore manifests for the primary deployment and appl
 
 You might have manifest files for resources that you do not want to deploy as part of the main deployment.
 
-Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md). Or you can simply ignore them and deploy them later.
+Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step). Or you can simply ignore them and deploy them later.
 
-## Before You Begin
+## Before you begin
 
-* [Add Kubernetes Manifests](define-kubernetes-manifests.md)
-* [Kubernetes Deployments Overview](../kubernetes-deployments-overview.md)
+* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
+* [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
 
-## Visual Summary
+## Visual summary
 
 The following image shows how you can ignore a Jobs manifest and then apply it separately using the Apply step.
 
 ![](./static/ignore-a-manifest-file-during-deployment-17.png)
 
-## Review: What Workloads Can I Deploy?
+## What workloads can I deploy?
 
-See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
 
 ## Limitations
 
 * Kubernetes objects and resources deployed by the Apply step are not versioned or rolled back automatically by Harness.
 
-## Step 1: Ignore a Manifest
+## Ignore a manifest
 
 You add your manifest files to the stage's **Service** section in **Manifests**. You can add manifests individually or by simply adding their parent folder:
 
@@ -49,11 +49,11 @@ Now, when this Pipeline is run, this ConfigMap resource will not be applied.
 
 The comment `# harness.io/skip-file-for-deploy` must be at the **top** of the file. If it is on the second line it will not work and the resource will be deployed as part of the main Workflow rollout.
 
-### Option 1: Apply Ignored Resource
+## Apply ignored resource
 
 The Apply step will apply any resource in a Service **Manifests** explicitly. You must provide the path and name of the file in **Apply**, and Harness will deploy the resource.
 
-For details on the Apply Step, see [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
+For details on the Apply Step, see [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
 
 For example, the following image shows a Jobs resource in a Service **Manifests** section that uses the ignore comment `# harness.io/skip-file-for-deploy` so that the stage does not apply it, and the **Apply** step that specifies the same Jobs resource:
 

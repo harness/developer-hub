@@ -355,7 +355,7 @@ To configure a Harness Cloud Function service in the Harness Manager, do the fol
 5. In **Service Definition**, select **Google Cloud Functions**.
 6. In **Function Definition**, enter the manifest YAML. You have two options.
    - You can add the manifest YAML inline.
-   - Select **Add Function Definition** and connect Harness with the Git repo where the manifest YAML is located. You can also use the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
+   - Select **Add Function Definition** and connect Harness with the Git repo where the manifest YAML is located. You can also use the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 7. In **Artifacts**, add the Google Cloud Storage location of the ZIP file that corresponds to the manifest YAML.
 8. Select **Save**.
 
@@ -624,7 +624,7 @@ The infrastructure definition is added.
 
 ## Cloud Functions execution strategies
 
-Harness ASG deployments support the following [deployment strategies](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-concepts/):
+Harness ASG deployments support the following [deployment strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts):
 
 - Basic
 - Canary
@@ -738,7 +738,7 @@ You can also route traffic incrementally using multiple Cloud Function Traffic S
 
 ### Rollbacks
 
-If deployment failure occurs, the stage or step [failure strategy](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically. 
+If deployment failure occurs, the stage or step [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) is initiated. Typically, this runs the **Rollback Cloud Function** step in the **Rollback** section of **Execution**. Harness adds the Rollback Cloud Function step automatically. 
 
 The Harness rollback capabilities are based on the Google Cloud Function [revisions](https://cloud.google.com/run/docs/managing/revisions) available in Google Cloud.
 

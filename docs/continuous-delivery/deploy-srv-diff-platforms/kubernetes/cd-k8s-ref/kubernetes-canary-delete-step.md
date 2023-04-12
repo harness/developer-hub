@@ -1,7 +1,7 @@
 ---
-title: Canary Delete Step
+title: Canary Delete step
 description: Clean up deployed Kubernetes workloads.
-sidebar_position: 3
+sidebar_position: 5
 helpdocs_topic_id: 922mtcvank
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes the **Canary Delete** step.
 
-The **Canary Delete** step is used to clean up the workload deployed by the [Canary Deployment](canary-deployment-step.md) step.
+The **Canary Delete** step is used to clean up the workload deployed by the [Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/canary-deployment-step) step.
 
 The Canary Delete step usually follows a Canary Deployment step.
 
@@ -18,7 +18,7 @@ If the **Canary Deployment** step is successful, the stage will move onto the 
 
 ## Canary Delete step vs Kubernetes Delete step
 
-The **Canary Delete** step is only used to delete resources created using the **Canary Deployment** step. To delete any Kubernetes resources, use the Kubernetes Delete step. For details, go to [Delete Kubernetes Resources with the Kubernetes Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md).
+The **Canary Delete** step is only used to delete resources created using the **Canary Deployment** step. To delete any Kubernetes resources, use the Kubernetes Delete step. For details, go to [Delete Kubernetes Resources with the Kubernetes Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources).
 
 ## Name
 
@@ -30,9 +30,9 @@ How long Harness should run this step before failing it. Enter a minimum of 10m 
 
 ## Advanced
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
 
 ## See Also
 

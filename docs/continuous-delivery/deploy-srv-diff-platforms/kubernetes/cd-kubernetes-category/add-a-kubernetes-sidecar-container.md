@@ -1,5 +1,5 @@
 ---
-title: Add a Kubernetes Sidecar Container
+title: Add a Kubernetes sidecar container
 description: This topic describes how to deploy sidecar workloads using Harness.
 sidebar_position: 7
 helpdocs_topic_id: fnzak5qp3y
@@ -20,15 +20,15 @@ The containers in the manifest can be hardcoded or you can add artifact streams 
 
 This topic provides an example of a simple sidecar deployment.
 
-## Before You Begin
+## Before you begin
 
-* [Add Container Images as Artifacts for Kubernetes Deployments](add-artifacts-for-kubernetes-deployments.md): review how to add container images as Artifacts for Kubernetes Deployments. Sidecar artifact are described there also.
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md): you must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
-* [Kubernetes Deployments Overview](../kubernetes-deployments-overview.md)
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md)
+* [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments): review how to add container images as Artifacts for Kubernetes Deployments. Sidecar artifact are described there also.
+* [Install a Kubernetes Delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate): you must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
+* [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
+* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes)
 
-## Option: Use Harness Artifacts
+## Use Harness artifacts
 
 You can hardcode the image location in your sidecar manifests or use the the **Artifacts** settings in the Harness Service Definition to connect Harness to an artifact stream (for example, a Docker registry).
 
@@ -42,31 +42,21 @@ Once your artifact is added, you can see the Id in **Artifacts**. For example, t
 
 ![](./static/add-a-kubernetes-sidecar-container-23.png)
 
-To add a sidecar artifact, open your Harness stage.
+1. To add a sidecar artifact, open your Harness stage.
+2. In **Service**, in **Artifacts**, click **Add Sidecar**.
+3. Select an artifact repository type. In this example, we'll use Docker Registry.
+4. Select **Docker Registry**, and click **Continue**.
+   The **Docker Registry** settings appear.
+5. Select a [Docker Registry Connector](/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference) or create a new one.
+6. Click **Continue**.
+7. In **Sidecar Identifier**, give a name to identify this artifact. As mentioned earlier, this is the name you will use to refer to this artifact in your manifest using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
+8. In **Image path**, the name of the artifact you want to deploy, such as **library/nginx**. You can also use a [runtime input](/docs/platform/References/runtime-inputs) (`<+input>`) or Harness variable expression.
+9. In **Tag**, add the Docker tag of the image you want to deploy. If you leave this as `<+input>` you are prompted for the tag at runtime. Harness pulls the available tags, and you simply select one.
+10. Click **Save**.
 
-In **Service**, in **Artifacts**, click **Add Sidecar**.
+    The artifact is added to **Artifacts**.
 
-Select an artifact repository type. In this example, we'll use Docker Registry.
-
-Select **Docker Registry**, and click **Continue**.
-
-The **Docker Registry** settings appear.
-
-Select a [Docker Registry Connector](/docs/platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md) or create a new one.
-
-Click **Continue**.
-
-In **Sidecar Identifier**, give a name to identify this artifact. As mentioned earlier, this is the name you will use to refer to this artifact in your manifest using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
-
-In **Image path**, the name of the artifact you want to deploy, such as **library/nginx**. You can also use a [runtime input](/docs/platform/20_References/runtime-inputs.md) (`<+input>`) or Harness variable expression.
-
-In **Tag**, add the Docker tag of the image you want to deploy. If you leave this as `<+input>` you are prompted for the tag at runtime. Harness pulls the available tags, and you simply select one.
-
-Click **Save**.
-
-The artifact is added to **Artifacts**.
-
-## Step 1: Prepare the Sidecar Manifest
+## Prepare the sidecar manifest
 
 If you are using Harness **Artifacts**, in the deployment manifest or values.yaml file for this deployment, you reference this artifact using the expression `<+artifacts.sidecars.[sidecar_identifier].imagePath>`.
 
@@ -95,7 +85,7 @@ Other sidecar expressions are:
 
 Now that you have your sidecar manifests set up, you can add them to Harness.
 
-## Review: Primary and Sidecar Manifest and Values Files
+## Primary and sidecar manifest, and values files
 
 If your stage deploys both primary and sidecar resources, you add one **K8s Manifest** in the **Manifests** section that points to the folder(s) containing the primary and sidecar manifests.
 
@@ -202,15 +192,15 @@ spec:
           {{- end}}  
           {{- end}}
 ```
-## Step 2: Add the Sidecar Manifest and Values YAML
+## Add the sidecar manifest and values YAML
 
-Whether you hardcoded the image location in your manifest files or used **Artifacts**, simply add the manifests and values.yaml to the **Manifests** section, as described in [Add Kubernetes Manifests](define-kubernetes-manifests.md).
+Whether you hardcoded the image location in your manifest files or used **Artifacts**, simply add the manifests and values.yaml to the **Manifests** section, as described in [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
 
 When you're done your values.yaml file is added and refers to the sidecar artifact:
 
 ![](./static/add-a-kubernetes-sidecar-container-25.png)
 
-## Step 3: Deploy the Sidecar
+## Deploy the sidecar
 
 Sidecars are deployed, rolled back, and have their releases versioned the same as primary containers.
 
@@ -220,7 +210,7 @@ If you are using **Artifacts**, when you deploy a Pipeline with a sidecar Artifa
 
 For examples of standard deployments, see:
 
-* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
-* [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
-* [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
+* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
+* [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
+* [Create a Kubernetes Blue Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
 

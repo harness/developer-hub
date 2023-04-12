@@ -36,7 +36,7 @@ Harness will deploy a new artifact version to your existing Azure Web App. You w
 
 * **An existing Azure Web App using a Docker image or non-containerized artifact:** you can create one in minutes in Azure.
 	+ Web App must have **Always on** setting set to **On**.
-	  ![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-155.png)
+	  ![](static/azure-web-apps-tutorial-155.png)
 	+ **One or more running slots:** the slots created for your existing Azure Web App. If you are doing a Blue Green deployment, you will need two slots.
 * **A Docker image or non-containerized artifact:** this is the same image or artifact you used when you created the Azure Web App.
 * **Azure account connection information:** The required permissions are described below.
@@ -46,9 +46,9 @@ Harness will deploy a new artifact version to your existing Azure Web App. You w
 
 Azure deployments are done using an CD stage with the Deployment Type **Azure Web App**.
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-156.png)
+![](static/azure-web-apps-tutorial-156.png)
 
-For more info on stages, got to [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md) and [CD Pipeline modeling overview](../../get-started/cd-pipeline-modeling-overview.md).
+For more info on stages, got to [Add a Stage](/docs/platform/Pipelines/add-a-stage) and [CD Pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
 ## Define the Service
 
@@ -69,7 +69,7 @@ For details on Web App startup commands, go to [What are the expected values fo
 
 1. Click **Add Startup Command**.
 
-You can use remote Git repos that contain your start command file, or you can click **Harness** to use the [Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) to add them to your Harness Project.
+You can use remote Git repos that contain your start command file, or you can click **Harness** to use the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) to add them to your Harness Project.
 
 Here's an example of the startup command to start your JAR app for a Java SE stack:
 
@@ -85,9 +85,9 @@ In Harness, you have the option of setting **Application settings** and **Connec
 
 1. Click **Add Application Settings** and **Add Connection Strings** to add your settings.
 
-You can use remote Git repos that contain your settings files, or you can click **Harness** to use the [Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) to add them to your Harness Project. For example:
+You can use remote Git repos that contain your settings files, or you can click **Harness** to use the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) to add them to your Harness Project. For example:
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-157.png)
+![](static/azure-web-apps-tutorial-157.png)
 
 See [Configure an App Service app in the Azure portal](https://docs.microsoft.com/en-us/azure/app-service/configure-common) from Azure.These are the same setting you would normally set for your App using the Azure CLI:
 
@@ -97,7 +97,7 @@ az webapp config appsettings set --resource-group <group-name> --name <app-name>
 
 Or via the portal:
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-158.png)
+![](static/azure-web-apps-tutorial-158.png)
 
 ### Add your Artifact
 
@@ -107,7 +107,7 @@ You will add the same Docker image or non-containerized artifact you use in your
 2. In **Specify Artifact Repository Type**, select the artifact registry type.
 3. Select or create a Connector to this registry.
 
-  For details on setting up each registry, go to [Connect to an Artifact Repo](/docs/platform/7_Connectors/connect-to-an-artifact-repo.md).
+  For details on setting up each registry, go to [Connect to an Artifact Repo](/docs/platform/Connectors/connect-to-an-artifact-repo).
 
   Once you have an artifact Connector set up and selected, you can fill out the **Artifact Details** settings.
 
@@ -115,23 +115,23 @@ You will add the same Docker image or non-containerized artifact you use in your
 
   | **ACR** | **Artifactory** | **Docker Registry** |
   | --- | --- | --- |
-  | ![](../../onboard-cd/cd-quickstarts/static/acr.png) | ![](../../onboard-cd/cd-quickstarts/static/artifactory.png) | ![](../../onboard-cd/cd-quickstarts/static/docker.png) |
+  | ![](static/acr.png) | ![](static/artifactory.png) | ![](static/docker.png) |
 
   The settings for the Harness Connector and Artifact Details are a combination of the container settings in your Azure Web App.
 
   For example, here are the Docker Hub settings in Harness and an Azure Web App:
 
-  ![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-159.png)
+  ![](static/azure-web-apps-tutorial-159.png)
 
   The above example uses a [publicly available Docker image from Harness](https://hub.docker.com/r/harness/todolist-sample/tags?page=1&ordering=last_updated). 
 
   You might want to use that the first time you set up an Azure Web App deployment.
 4. When are done, click **Submit**.
-1. Click **Continue** to move onto **Infrastructure**.
+5. Click **Continue** to move onto **Infrastructure**.
 
 ### Harness Delegate
 
-As covered in [Harness Platform architecture](/docs/getting-started/harness-platform-architecture.md), a Harness Delegate must be installed in your infrastructure for Harness to perform tasks.
+As covered in [Harness Platform architecture](/docs/getting-started/harness-platform-architecture), a Harness Delegate must be installed in your infrastructure for Harness to perform tasks.
 
 You will install a Harness Delegate in your infrastructure as part of adding the Connector for the **App Services Configuration** or **Artifacts**.
 
@@ -151,7 +151,7 @@ You simply provide select or create an Azure Cloud Provider Connector and then s
 4. In **Web App Infrastructure Details**, you will select or create an Azure Cloud Provider Connector and then select the Web App's Subscription Id and Resource Group.
 5. In **Connector**, select or create an Azure Cloud Provider Connector that connects to your Application and Tenant Ids.
 
-  For steps on setting up a new Azure Cloud Provider Connector, go to [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/add-a-microsoft-azure-connector.md).
+  For steps on setting up a new Azure Cloud Provider Connector, go to [Add a Microsoft Azure Cloud Connector](/docs/platform/Connectors/add-a-microsoft-azure-connector).
 
   Azure Web App Roles and PermissionsIf you use Microsoft Azure Cloud Connector and Service Principal or Managed Identity credentials, you can use a custom role or the **Contributor** role. The **Contributor** role is the minimum requirement.
 
@@ -186,23 +186,23 @@ You simply provide select or create an Azure Cloud Provider Connector and then s
   
   The subscription is located in the Web App **Overview** section of the Azure portal.
   
-  ![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-160.png)
+  ![](static/azure-web-apps-tutorial-160.png)
 
-1. In **Resource Group**, select the resource group used by your Web App.
+2. In **Resource Group**, select the resource group used by your Web App.
   
   The resource group is located in the Web App **Overview** section of the Azure portal.
   
-  ![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-161.png)
+  ![](static/azure-web-apps-tutorial-161.png)
 
 Within the same resource group, you can't mix Windows and Linux apps in the same region. See [Limitations](https://docs.microsoft.com/en-us/azure/app-service/overview#limitations) from Azure.
 
 When you're done, Infrastructure will look something like this:
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-162.png)
+![](static/azure-web-apps-tutorial-162.png)
 
 Now that you have the **Service** and **Infrastructure** defined, you can select a deployment strategy and configure its step in your stage **Execution**.
 
-1. Click **Continue** and select a [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md). 
+1. Click **Continue** and select a [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts). 
 
 The steps for the strategy are added automatically.
 
@@ -227,7 +227,7 @@ The Slot Deployment step is where you select the Web App and source deployment s
 
 Here's an example.
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-163.png)
+![](static/azure-web-apps-tutorial-163.png)
 
 ### Web App Rollback
 
@@ -248,7 +248,7 @@ First, you need to collect the existing Deployment slots from your Azure Web App
 1. In the Azure portal, click your Web App, and then click **Deployment slots**. You can see the Deployment slots for your Web App.
 2. Click **Swap**. You can see the Source and Target slots.
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-164.png)
+![](static/azure-web-apps-tutorial-164.png)
 
 You'll use these slot names in your Harness steps.
 
@@ -267,7 +267,7 @@ The Slot Deployment step is where you select the Web App and source deployment s
 
 Here's an example.
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-165.png)
+![](static/azure-web-apps-tutorial-165.png)
 
 ### Add a Health Check after Slot Deployment
 
@@ -277,7 +277,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Traffic Shift steps
 
@@ -329,7 +329,7 @@ First, you need to collect the existing Deployment slots from your Azure Web App
 1. In the Azure portal, click your Web App, and then click **Deployment slots**. You can see the Deployment slots for your Web App.
 2. Click **Swap**. You can see the Source and Target slots.
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-166.png)
+![](static/azure-web-apps-tutorial-166.png)
 
 You'll use these slot names in your Harness steps.
 
@@ -354,7 +354,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Swap Slot step
 
@@ -408,11 +408,11 @@ Here's an example of a rollback.
 
 **Update Slot Configuration Settings**:
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-167.png)
+![](static/azure-web-apps-tutorial-167.png)
 
 **Deploy to Slot**:
 
-![](../../onboard-cd/cd-quickstarts/static/azure-web-apps-tutorial-168.png)
+![](static/azure-web-apps-tutorial-168.png)
 
 #### Rollback Logs
 
@@ -470,7 +470,7 @@ Rollback for Non-Containerized artifact deployments is not supported for the fir
 
 You might face timeout issues as a result of limitations with streaming Web App slot deployment logs. For example, you might see `java.net.SocketTimeoutException: timeout` or some other socket errors as a result of the Azure SDK client.
 
-Harness is working with the Azure team for a resolution (see [issue 27221](https://github.com/Azure/azure-sdk-for-java/issues/27221)). At this time, you can use a Harness [HTTP step](../../../first-gen/continuous-delivery/model-cd-pipeline/workflows/using-the-http-command.md) to verify that the slot is up and ready.
+Harness is working with the Azure team for a resolution (see [issue 27221](https://github.com/Azure/azure-sdk-for-java/issues/27221)). At this time, you can use a Harness [HTTP step](../../../first-gen/continuous-delivery/model-cd-pipeline/workflows/using-the-http-command) to verify that the slot is up and ready.
 
 ### Application Settings and Connection Strings
 
@@ -479,7 +479,7 @@ Harness is working with the Azure team for a resolution (see [issue 27221](https
 
 #### Using Secrets and Variables Settings
 
-You can use [Harness secrets](/docs/platform/Security/add-use-text-secrets.md) and Service or Workflow variables in the **Application settings** and **Connection strings** in the Harness Service.
+You can use [Harness secrets](/docs/platform/Security/add-use-text-secrets) and Service or Workflow variables in the **Application settings** and **Connection strings** in the Harness Service.
 
 These settings use JSON, so ensure that you use quotes around the variable or secret reference:
 

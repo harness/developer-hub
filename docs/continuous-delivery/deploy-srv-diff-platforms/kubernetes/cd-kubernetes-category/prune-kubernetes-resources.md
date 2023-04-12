@@ -14,7 +14,7 @@ Changes to the manifests used in Harness Kubernetes deployments can result in or
 
 For example, one deployment might deploy resources A and B but the next deployment deploys A and C. C is the new resource and B was removed from the manifest. Without pruning, resource B will remain in the cluster.
 
-You can manually delete Kubernetes resources using the [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md) step, but you can also set Harness to perform resource pruning during deployment using the **Enable Kubernetes Pruning** setting in the **Rolling Deployment** and **Stage Deployment** (used in Blue Green deployments) steps.
+You can manually delete Kubernetes resources using the [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) step, but you can also set Harness to perform resource pruning during deployment using the **Enable Kubernetes Pruning** setting in the **Rolling Deployment** and **Stage Deployment** (used in Blue Green deployments) steps.
 
 ![](./static/prune-kubernetes-resources-00.png)
 
@@ -24,10 +24,10 @@ Harness also allows you to identify resources you do not want pruned using the a
 
 ## Before you begin
 
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
-* [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
-* [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md)
+* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
+* [Create a Kubernetes Canary Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment)
+* [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources)
 
 ## Supported platforms and technologies
 
@@ -36,7 +36,7 @@ Pruning is supported for the following deployment strategies:
 * Rolling Deployments
 * Blue Green Deployments
 
-See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+See [Supported Platforms and Technologies](/docs/getting-started/supported-platforms-and-technologies).
 
 ## Important notes
 
@@ -46,7 +46,7 @@ See [Supported Platforms and Technologies](/docs/getting-started/supported-platf
 * The maximum manifest/chart size is 0.5MB. When Harness prunes, it stores the full manifest in configMap to use it as part of release history. While deploying very large manifests/charts though Kubernetes, Harness is limited by configMap capacity.
 * While it is unlikely, if you are using the same entity in two Harness Services, Harness does not know this. So if you prune the resource in one deployment it might be unavailable in another deployment. Use the annotation `harness.io/skipPruning: "true"` to avoid issues.
 
-## Review: Harness Kubernetes pruning criteria
+## Harness Kubernetes pruning criteria
 
 Kubernetes pruning in Harness is similar to the `kubectl apply --prune` method provided by [Kubernetes](https://kubernetes.io/docs/tasks/manage-kubernetes-objects/declarative-config/#alternative-kubectl-apply-f-directory-prune-l-your-label).
 
@@ -56,7 +56,8 @@ Similarly, Harness compares the objects you are deploying with the objects it fi
 
 Harness also allows you to identify resources you do not want pruned using the annotation `harness.io/skipPruning`. This is described later in this topic.
 
-### Rolling deployments
+<details>
+<summary>Rolling deployments</summary>
 
 When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Rolling deployments manage pruning as follows:
 
@@ -65,7 +66,9 @@ When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Rolling de
 3. If a deployment fails, Harness recreates the pruned resources during its Rollback stage.
 4. During rollback, any new resources that were created in the failed deployment stage that were not in the last successful release are deleted also.
 
-### Blue Green deployments
+</details>
+<details>
+<summary>Blue Green deployments</summary>
 
 When the **Enable Kubernetes Pruning** setting is enabled, Kubernetes Blue Green deployments manage pruning as follows:
 
@@ -79,7 +82,9 @@ Let's look at an example.
 3. Before failure, resource d is created and resource b is pruned.
 4. During rollback, Harness recreates the previously pruned resource b and deletes resource d.
 
-## Review: pruning examples
+</details>
+
+## Pruning examples
 
 The first time you deploy a resource (Deployment, StatefulSet, ReplicaSet, etc) no pruning will take place.
 
@@ -128,5 +133,5 @@ As mentioned in **Limitations** above, you cannot add a resource with the annota
 
 ### See also
 
-* [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md)
+* [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources)
 

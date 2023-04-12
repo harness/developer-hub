@@ -1,5 +1,5 @@
 ---
-title: Pull an Image from a Private Registry for Kubernetes
+title: Pull an image from a private registry for Kubernetes
 description: This topic describes how to pull an image from a private registry and use the Docker credentials file.
 sidebar_position: 6
 helpdocs_topic_id: o1gf8jslsq
@@ -19,21 +19,21 @@ If the Docker image is added in the Service Definition **Artifacts** section, th
 This key will import the credentials from the Docker credentials file in the artifact.
 
 
-## Before You Begin
+## Before you begin
 
 Ensure you have reviewed and set up the following:
 
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [Kubernetes Deployments Overview](../kubernetes-deployments-overview.md)
-* [Add Container Images as Artifacts for Kubernetes Deployments](add-artifacts-for-kubernetes-deployments.md)
+* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
+* [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments)
 
-## Review: Private Repo Authentication for Container Instances
+## Private repository authentication for container instances
 
 When you are using private Docker images, you must authenticate with the repo to pull the image. The encrypted dockercfg file provides the credentials needed to authenticate.
 
 The dockercfg file is located in the Docker image artifact. You reference this file in your values.yaml or manifests. Harness imports the credentials from the file to access the private repo.
 
-## Step 1: Use dockercfg in values.yaml
+## Use `dockercfg` in values.yaml
 
 Open the values.yaml file you are using for deployment.
 
@@ -52,7 +52,7 @@ namespace: <+infra.namespace>
 ...
 ```
 
-## Step 2: Reference dockercfg in Kubernetes Objects
+## Reference `dockercfg` in Kubernetes objects
 
 For example, verify that the Deployment and Secret objects reference `dockercfg`: (`{{.Values.dockercfg}}`).
 
@@ -98,13 +98,14 @@ spec:
 
 With these requirements met, the cluster imports the credentials from the Docker credentials file in the artifact.
 
-## Example: Values YAML and Manifests
+## Values YAML and manifests
 
 This is a simple example using the Artifact `<+artifact.image>` and `dockercfg` references.
 
 We use Go templating with a values.yaml file and manifests for deployment, namespace, and service. The manifests for deployment, namespace, and service are in a **templates** folder that is a peer of the values.yaml file.
 
-### values.yaml
+<details>
+<summary>values.yaml</summary>
 
 In addition to `<+artifact.image>` and `dockercfg` , this file also uses `name: <+stage.variables.name>` to reference a Stage variable `name` and `namespace: <+infra.namespace>` to reference the namespace entered in the Stage's **Infrastructure Definition**. Service type and ports are hardcoded.
 
@@ -139,7 +140,10 @@ env:
   secrets:  
     key2: value2
 ```
-### deployment.yaml
+
+</details>
+<details>
+<summary>deployment.yaml</summary>
 
 
 ```yaml
@@ -209,7 +213,9 @@ spec:
         {{- end}}  
         {{- end}}
 ```
-### namespace.yaml and service.yaml
+</details>
+<details>
+<summary>namespace.yaml and service.yaml</summary>
 
 These files doe not use `dockercfg` but are included here because they are needed for the deployment.
 
@@ -241,12 +247,14 @@ spec:
   selector:  
     app: {{.Values.name}}
 ```
+</details>
+
 ## Notes
 
 * When you are using a public repo, the `dockercfg: <+artifact.imagePullSecret>` in values.yaml is ignored by Harness. You do not need to remove it.
 * If you want to use a private repo and no imagePullSecret, then set `dockercfg` to empty in values.yaml.
 
-## Next Steps
+## Next steps
 
-* [Add Kubernetes Manifests](define-kubernetes-manifests.md)
+* [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, etc, just as you would in any native kustomization.
 
-This Kustomize tutorial will deploy multiple variants of a simple public Hello World server using a [rolling update strategy](../kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) in Harness.
+This Kustomize tutorial will deploy multiple variants of a simple public Hello World server using a [rolling update strategy](../kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment) in Harness.
 
 ## Objectives
 
@@ -20,20 +20,20 @@ You'll learn how to:
 * Set up a Kustomize Pipeline.
 * Run the new Kustomize Pipeline and deploy an NGINX Docker image to your target cluster.
 
-## Before You Begin
+## Before you begin
 
 Make sure you have the following set up before you begin this quickstart:
 
 * **GitHub account:** this quickstart uses a publicly available kustomization and Docker image. DockerHub allows anonymous connections, but GitHub requires that you log into your account to access their repos.
 
-### Product Demo
+### Visual summary
 
 <!-- Video:
 https://harness-1.wistia.com/medias/j920372crr -->
 <docvideo src="https://harness-1.wistia.com/medias/j920372crr" />
 
 
-### Set up your Kubernetes Cluster
+### Set up your Kubernetes cluster
 
 You'll need a target Kubernetes cluster for the Harness Delegate and deployment. Ensure your cluster meets the following requirements:
 
@@ -43,13 +43,13 @@ You'll need a target Kubernetes cluster for the Harness Delegate and deployment.
 * A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.  
 For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
-## Step 1: Create the Deploy Stage
+## Create the Deploy stage
 
 Pipelines are collections of stages. For this quickstart, we'll create a new Pipeline and add a single stage.
 
 :::note
 
-**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization.md).
+**Create a Project for your new CD Pipeline:** if you don't already have a Harness Project, create a Project for your new CD Pipeline. Ensure that you add the **Continuous Delivery** module to the Project. See [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 :::
 
@@ -80,7 +80,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 Once you have created a Service, it is persistent and can be used throughout the stages of this or any other Pipeline in the Project.
 
-## Step 2: Add the Kustomization
+## Add the kustomization
 
 Now we can connect Harness to the repo containing the kustomization. We'll use a publicly available [hellword kustomization](https://github.com/wings-software/harness-docs/tree/main/kustomize/helloWorld) cloned from Kustomize.
 
@@ -115,46 +115,71 @@ All connections and operations are performed by Harness Delegates. So we'll also
 7. Click **Continue**.
 8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then click **Continue**.
    We don't use the **Connect through Harness Platform** option here simply because you'll need a Delegate later for the connection to your target Kubernetes cluster. Typically, the **Connect through Harness Platform** option is a very quick way to make connections without having to use Delegates.
-9. In **Delegates Setup**, click **Install new Delegate**.
-   The Delegate wizard appears.
+
+   Expand the section below to learn more about installing delegates.
+
+   <details>
+   <summary>Install a new delegate</summary>
+
+    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
+    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
+    3. In **Install your Delegate**, select **Kubernetes Manifest**.
+    4. Enter a delegate name.
+        - Delegate names must be unique within a namespace and should be unique in your cluster. 
+        - A valid name includes only lowercase letters and does not start or end with a number. 
+        - The dash character (“-”) can be used as a separator between letters.
+    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+
+    `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
+
+    1. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
+
+    | **Value** | **Description** |
+    | :-- | :-- |
+    | `PUT_YOUR_DELEGATE_NAME` | Name of the delegate. |
+    | `PUT_YOUR_ACCOUNT_ID` | Harness account ID. |
+    | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints. |
+    | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+
+    Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
+
+    | **Harness cluster location** | **Harness Manager endpoint** |
+    | :-- | :-- |
+    | SaaS prod-1 | https://app.harness.io |
+    | SaaS prod-2 | https://app.harness.io/gratis |
+    | SaaS prod-3 | https://app3.harness.io |
+
+    1. Install the delegate by running the following command:
+
+    `kubectl apply -f harness-delegate.yaml`
+
+    The successful output looks like this.
+    
+    ```
+    namespace/harness-delegate-ng unchanged
+    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
+    secret/cd-doc-delegate-account-token created
+    deployment.apps/cd-doc-delegate created
+    service/delegate-service configured
+    role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
+    rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
+    serviceaccount/upgrader-cronjob-sa unchanged
+    secret/cd-doc-delegate-upgrader-token created
+    configmap/cd-doc-delegate-upgrader-config created
+    cronjob.batch/cd-doc-delegate-upgrader-job created
+    ```
+
+   1. Select **Verify** to make sure that the delegate is installed properly.
    
-   ![](static/kustomize-quickstart-69.png)
+   </details>
 
-10. Click **Kubernetes**, and then click **Continue**.
-
-   ![](static/kustomize-quickstart-71.png)
-
-11. Enter a name for the Delegate, like **quickstart**, click the **Small** size.
-12. Click **Continue**.
-13. Click **Download Script**. The YAML file for the Kubernetes Delegate will download to your computer as an archive.
-14. Open a terminal and navigate to where the Delegate file is located.
-   You will connect to your cluster using the terminal so you can simply run the YAML file on the cluster.
-15. In the same terminal, log into your Kubernetes cluster. In most platforms, you select the cluster, click **Connect**, and copy the access command.
-16. Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. In the terminal connected to your cluster, run this command:
-    ```
-    kubectl apply -f harness-delegate.yaml
-    ```
-    You can find this command in the Delegate wizard:
-
-    ![](static/kustomize-quickstart-72.png)
-
-    The successful output is something like this:
-    ```
-    % kubectl apply -f harness-delegate.yaml  
-    namespace/harness-delegate unchanged  
-    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged  
-    secret/k8s-quickstart-proxy unchanged  
-    statefulset.apps/k8s-quickstart-sngxpn created  
-    service/delegate-service unchanged
-    ```
-17. In Harness, click **Verify**. It will take a few minutes to verify the Delegate. Once it is verified, close the wizard.
-18. Back in **Set Up Delegates**, you can select the new Delegate.
+9.  Back in **Set Up Delegates**, you can select the new Delegate.
     In the list of Delegates, you can see your new Delegate and its tags.
-19. Select the **Connect using Delegates with the following Tags** option.
-20. Enter the tag of the new Delegate and click **Save and Continue**.
+10. Select the **Connect using Delegates with the following Tags** option.
+11. Enter the tag of the new Delegate and click **Save and Continue**.
     When you are done, the Connector is tested.
-21. Click **Continue**.
-22. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**.
+12. Click **Continue**.
+13. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**.
     We are going to provide connection and path information for a kustomization located at `https://github.com/wings-software/harness-docs/blob/main/kustomize/helloWorld/kustomization.yaml`.
     * **Manifest Identifier:** enter **kustomize**.
     * **Git Fetch Type**: select **Latest from Branch**.
@@ -164,11 +189,11 @@ All connections and operations are performed by Harness Delegates. So we'll also
 
     ![](static/kustomize-quickstart-73.png)
 
-23. Click **Next** at the bottom of the **Service** tab.
+14. Click **Next** at the bottom of the **Service** tab.
 
 Now that the kustomization is defined, you can define the target cluster for your deployment.
 
-## Step 3: Define Your Target Cluster
+## Define your target cluster
 
 The target cluster is your own Kubernetes cluster, hosted in your cloud environment. This is where we will deploy the kustomization and its Docker image.
 
@@ -190,7 +215,7 @@ Harness connects to all of the common cloud platforms and provides a platform-ag
 
    ![](static/kustomize-quickstart-74.png)
 
-The Kubernetes Cluster Connector is covered in detail [here](/docs/platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md), but let's quickly walk through it.
+The Kubernetes Cluster Connector is covered in detail [here](/docs/platform/Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference), but let's quickly walk through it.
 
 Let's look at the steps:
 
@@ -212,9 +237,9 @@ Let's look at the steps:
    The target infrastructure is complete. Now we can add our stage steps.
 9.  Click **Next**.
 
-## Step 4: Add a Rollout Deployment Step
+## Add a Rollout Deployment step
 
-When you click **Next** the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) options are provided:
+When you click **Next** the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts) options are provided:
 
 ![](static/kustomize-quickstart-77.png)
 
@@ -222,7 +247,7 @@ When you click **Next** the [deployment strategy](/docs/continuous-delivery/mana
 
 The Rollout Deployment step is added. There's nothing to set up. Harness will perform a Kubernetes rolling update in your target cluster automatically.
 
-## Step 5: Deploy and Review
+## Deploy and review
 
 1. Click **Save** and then **Run**.
 2. Click **Run Pipeline**. Harness will verify the Pipeline and Connectors and then run the Pipeline.
@@ -237,7 +262,7 @@ The Rollout Deployment step is added. There's nothing to set up. Harness will pe
 
 4. Expand **Fetch Files** to see Harness fetch the repo, including the kustomization files.
 5. In **Initialize** you can see the manifest rendered using the kustomization and then validated with a `kubectl dry run`.
-6.  Expand **Wait for Steady State**. You will the pods reach steady state:
+6. Expand **Wait for Steady State**. You will the pods reach steady state:
 
    `Status : "the-deployment" successfully rolled out`
 
@@ -247,7 +272,7 @@ In your Project's Deployments, you can see the deployment listed:
 
 ![](static/kustomize-quickstart-80.png)
 
-If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md#before-you-begin) or the cluster's network setting does not allow the Delegate to connect to Docker Hub.
+If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart#before-you-begin) or the cluster's network setting does not allow the Delegate to connect to Docker Hub.
 
 In this tutorial, you learned how to:
 
@@ -265,7 +290,7 @@ Next, try the following quickstarts:
 
 ### Clean Up
 
-For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform/2_Delegates/manage-delegates/delete-a-delegate.md).
+For steps on deleting the Delgate, go to [Delegate a delegate](/docs/platform/Delegates/manage-delegates/delete-a-delegate).
 
 ### Next Steps
 

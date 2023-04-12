@@ -21,11 +21,11 @@ The **Execution Strategies** supported for WinRM include **Blank Canvas**, **Bas
 
 Supported security protocols for WinRM include Kerberos and Windows New Technology LAN Manager (NTLM).
 
-[Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) should be enabled if you want to upload Config files from the file store.
+[Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) should be enabled if you want to upload Config files from the file store.
 
 ## Before You Begin
 
-* Review Harness Key Concepts [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
+* Review Harness Key Concepts [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
 * Make sure that you have a Delegate available in your environment.
 	+ You can install a Kubernetes or Docker Delegate.
 	+ Ideally, you should install the Delegate in the same subnet as the target host(s)
@@ -81,12 +81,12 @@ Harness includes Connectors for all the major artifact repositories. In this tut
 5. In **Details**, enter the following URL path for **Artifactory Repository URL** or click the tooltip and copy the URL: **https://harness.jfrog.io/artifactory**. In this tutorial, we will use the artifacts stored in that repository.
 6. For **Authentication**, click the down-drop arrow for **Username and Password**. Then, select **Anonymous (no credentials required)**. Click **Continue**.
    	
-	![](../../onboard-cd/cd-quickstarts/static/win-rm-tutorial-129.png)
+	![](static/win-rm-tutorial-129.png)
 
-1. Click **Continue** to connect with Artifactory by using a Harness Delegate.
-7. In **Delegates Setup**, retain the default selection: **Use any available delegate**.
-8. Click **Save and Continue**.
-9.  In **Connection Test**, Harness validates the Artifactory Repository authentication and permissions for the repo. Click **Continue**. If the test fails, that means the Delegate can't connect to **https://harness.jfrog.io/artifactory/**. Make sure that the EC2 instance hosting the Delegate can make outbound connections to **https://harness.jfrog.io/artifactory**/.
+7. Click **Continue** to connect with Artifactory by using a Harness Delegate.
+8. In **Delegates Setup**, retain the default selection: **Use any available delegate**.
+9. Click **Save and Continue**.
+10. In **Connection Test**, Harness validates the Artifactory Repository authentication and permissions for the repo. Click **Continue**. If the test fails, that means the Delegate can't connect to **https://harness.jfrog.io/artifactory/**. Make sure that the EC2 instance hosting the Delegate can make outbound connections to **https://harness.jfrog.io/artifactory**/.
 
 ### Set up Artifact Location and Details
 
@@ -116,16 +116,16 @@ Create the **Infrastructure Definition** for the target host.
 2. In **Create or Select an Existing Connector**, select **New Connector**.
 3. For **Name**, enter **pdc-connector** and click **Continue**.
 
-   ![](../../onboard-cd/cd-quickstarts/static/win-rm-tutorial-130.png)
+   ![](static/win-rm-tutorial-130.png)
 
 4. In **Details**, keep the default selection for **Manually enter host names**. In **Hosts**, enter the host name for your EC2 instance and click **Continue**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/win-rm-tutorial-131.png)
+   ![](static/win-rm-tutorial-131.png)
 
 5. In **Delegates Setup**, keep the default for **Use any available Delegate**. Click **Save** and **Continue**.
 6. In **Test Connection**, Harness validates the connectivity for the PDC host. Click **Finish**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/win-rm-tutorial-132.png)
+   ![](static/win-rm-tutorial-132.png)
 
 ## Use WinRM Credentials with NTLM to Authenticate
 
@@ -175,13 +175,13 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-name)
-* [<+instance.host.hostName>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-host-name)
-* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-name)
+* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostname)
+* [<+instance.host.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostinstancename)
+* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables#instancename)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-private-ip)
-* [<+instance.host.publicIp>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-public-ip)
+* [<+instance.host.privateIp>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostprivateip)
+* [<+instance.host.publicIp>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostpublicip)
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

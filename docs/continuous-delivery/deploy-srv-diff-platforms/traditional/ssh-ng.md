@@ -20,7 +20,7 @@ The **Execution Strategies** supported for Secure Shell include **Blank Canvas**
 
 The supported artifact package types include JAR, TAR, WAR, RPM and ZIP.
 
-[Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) should be enabled if you want to upload Config files from the file store.
+[Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) should be enabled if you want to upload Config files from the file store.
 
 ## Objectives
 
@@ -35,18 +35,18 @@ You will learn how to:
 
 ### Limitations and Requirements
 
-* Secure Shell requires looping capability. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
+* Secure Shell requires looping capability. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
 
 ### Before You Begin
 
-* Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
+* Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
 * Make sure that you have a Delegate available in your environment.
 	+ You can install a Kubernetes or Docker Delegate. See Install Delegates.
 	+ Ideally, you should install the Delegate in the same subnet as the target host(s).
 * Target host: in this guide, we use an AWS EC2 instance as the target host with a minimum t2-medium.
-* SSH Keys for the target host(s): you will need [SSH Keys](../../../platform/6_Security/4-add-use-ssh-secrets.md#add-ssh-credential) for the target hosts. For example, in this tutorial, we connect to an AWS EC2 instance by providing the username and an existing secret file for that AWS EC2 instance. When a EC2 instance is created, a Key Pair is generated in AWS. From the Key Pair for the AWS EC2 instance, you can download a .PEM file to your machine and upload that file to Harness as a secret file.
+* SSH Keys for the target host(s): you will need [SSH Keys](/docs/platform/Security/4-add-use-ssh-secrets#add-ssh-credential) for the target hosts. For example, in this tutorial, we connect to an AWS EC2 instance by providing the username and an existing secret file for that AWS EC2 instance. When a EC2 instance is created, a Key Pair is generated in AWS. From the Key Pair for the AWS EC2 instance, you can download a .PEM file to your machine and upload that file to Harness as a secret file.
 
-You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness Delegate on your local computer (for example, using Docker Desktop), use a [Physical Data Center](../../../first-gen/firstgen-platform/account/manage-connectors/add-physical-data-center-cloud-provider.md) Connector instead of an AWS Connector, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
+You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness Delegate on your local computer (for example, using Docker Desktop), use a [Physical Data Center](/docs/first-gen/firstgen-platform/account/manage-connectors/add-physical-data-center-cloud-provider) Connector instead of an AWS Connector, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
 
 ## Create the Deploy Stage
 
@@ -60,7 +60,7 @@ Pipelines are collections of stages. In this tutorial, we will create a new Pipe
 6. For **Stage Name**, enter: **ssh-tutorial-stage-one**.
 7. Click Secure Shell and then click **Set Up Stage**.
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-169.png)
+![](static/ssh-ng-169.png)
 
 Next, you will create a Harness Service that represents your application. Once you have created a Service, it is persistent and can be used throughout the stages of this or any other Pipeline in the Project.
 
@@ -84,14 +84,14 @@ Harness includes Connectors for all the major artifact repositories. In this tut
 5. In **Details**, enter the the following URL path for **Artifactory Repository URL**: **https://harness/frog.io/artifactory**. In this tutorial, we will use the artifacts stored in that repository.
 6. For **Authentication**, click the down-drop arrow for **Username and Password**. Then, select **Anonymous (no credentials required)**. Click **Continue**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-170.png)
+   ![](static/ssh-ng-170.png)
 
 7. Click **Continue** to connect with Artifactory by using a Harness Delegate.
 8. In **Delegates Setup**, select **Connect through the Harness Platform**.
 9.  Click **Save and Continue**.
 10. In **Connection Test**, Harness validates Artifactory Repository authentication and permissions for the repo. Click **Continue**.
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-171.png)
+![](static/ssh-ng-171.png)
 
 ## Set up Artifact Location and Details
 
@@ -105,14 +105,14 @@ For this tutorial, we'll use a **ToDo List** app artifact, **todolist.war**, ava
 	5. In **Artifact Details**, keep the default **Value**.
 	6. In **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. Click **Submit.**
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-172.png)
+   ![](static/ssh-ng-172.png)
    
    The artifact is added to your Service.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-173.png)
+   ![](static/ssh-ng-173.png)
 
-7. Click **Save**. The Service is added to your stage.
-2. Click **Continue** to set up the target Environment.
+2. Click **Save**. The Service is added to your stage.
+3. Click **Continue** to set up the target Environment.
 
 ## Add the Target Infrastructure for the Physical Data Center
 
@@ -125,34 +125,34 @@ Create the Infrastructure Definition for the target hosts.
 5. For **Select Infrastructure Type**, select **Physical Data Center**.
 6. Keep the default selection: **Select preconfigured hosts from Physical Data Center**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-174.png)
+   ![](static/ssh-ng-174.png)
 
 ## Create the PDC Connector for the Host
 
 1. In **Infrastructure Definition**, for **Connector**, click **Select Connector** to create the Connector for PDC.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-175.png)
+   ![](static/ssh-ng-175.png)
 
-8. In **Create or Select an Existing Connector**, select **New Connector**.
-9.  In **Physical Data Center**, enter a name for this connector: **PDC-Connector**.
-10. Click **Continue**.
+2. In **Create or Select an Existing Connector**, select **New Connector**.
+3.  In **Physical Data Center**, enter a name for this connector: **PDC-Connector**.
+4.  Click **Continue**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-176.png)
+   ![](static/ssh-ng-176.png)
 
-11. In **Details**, keep the default for **Manually enter host names** and enter the hostname for the EC2 instance.
-12. Click **Continue**.
+5.  In **Details**, keep the default for **Manually enter host names** and enter the hostname for the EC2 instance.
+6.  Click **Continue**.
 
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-177.png)
+   ![](static/ssh-ng-177.png)
 
-13. In **Delegates Setup**, keep the default for **Use any available Delegate**. 
-14. Click **Save and Continue**. Harness validates connectivity for the PDC connector.
+7.  In **Delegates Setup**, keep the default for **Use any available Delegate**. 
+8.  Click **Save and Continue**. Harness validates connectivity for the PDC connector.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-178.png)
+   ![](static/ssh-ng-178.png)
    
-   For information on installing a delegate, see [Delegate installation overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
-15. Click **Finish**. The Infrastructure Definition is updated with the PDC Connector.
+   For information on installing a delegate, see [Delegate installation overview](/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview).
+9.  Click **Finish**. The Infrastructure Definition is updated with the PDC Connector.
   
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-179.png)
+![](static/ssh-ng-179.png)
 
 ## Use SSH Credential for Authenticating to the Target Host
 
@@ -162,45 +162,45 @@ You can use an SSH Key or Kerberos for authenticating to the target host. In thi
 2. In **Create or Select an Existing Secret**, click **New SSH Credential**.
 3. In **SSH Details**, for **Name**, enter **ssh-tutorial-key** for this SSH Credential and click **Continue**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-180.png)
+   ![](static/ssh-ng-180.png)
 
 4. In **Configuration and Authentication**, you have three authentication options: In this tutorial, we will use **Username/SSH Key**. Click the down-drop menu and select **Username/SSH Key**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-181.png)
+   ![](static/ssh-ng-181.png)
 
-1. For username, enter **ec2-user**. This is the user for the EC2 instance.
-5. For **Select or create a SSH Key**, click **Create or Select a Secret**.
-6. in **Create or Select an Existing Secret**, select **New Secret File**.
+5. For username, enter **ec2-user**. This is the user for the EC2 instance.
+6. For **Select or create a SSH Key**, click **Create or Select a Secret**.
+7. in **Create or Select an Existing Secret**, select **New Secret File**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-182.png)
+   ![](static/ssh-ng-182.png)
 
-7. in **Add new Encrypted File**, enter a name for **Secret Name**: **ssh-key-name**. This is the name you will use to reference this file.
-8. For **Select File**, click **Browse**. On your machine, browse for the .pem file that you downloaded from your EC2 instance. Select that file and Harness uploads it to the **Select File** field. Click **Save**.
+8. in **Add new Encrypted File**, enter a name for **Secret Name**: **ssh-key-name**. This is the name you will use to reference this file.
+9. For **Select File**, click **Browse**. On your machine, browse for the .pem file that you downloaded from your EC2 instance. Select that file and Harness uploads it to the **Select File** field. Click **Save**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-183.png)
+   ![](static/ssh-ng-183.png)
 
-9.  In **Configuration and Authentication**, keep the default values for **Passphrase** and **SSH port**. Click **Save and Continue**.
+10. In **Configuration and Authentication**, keep the default values for **Passphrase** and **SSH port**. Click **Save and Continue**.
     
-    ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-184.png)
+    ![](static/ssh-ng-184.png)
     
-10. In **Verify Connection**, enter the hostname for the EC2 instance in the **Add a Host Name to start verification** field and click **Connection Test**.
+11. In **Verify Connection**, enter the hostname for the EC2 instance in the **Add a Host Name to start verification** field and click **Connection Test**.
     
-    ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-185.png)
+    ![](static/ssh-ng-185.png)
     
-11. The Secure Shell connection to the EC2 instance is tested. Click **Finish**. Click **Continue**.
+12. The Secure Shell connection to the EC2 instance is tested. Click **Finish**. Click **Continue**.
     
-    ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-186.png)
+    ![](static/ssh-ng-186.png)
     
     You can use the **Preview Hosts** section to test the connection at any time.\
     
-    ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-187.png)
+    ![](static/ssh-ng-187.png)
 
-1. Click **Save**.
-1. Back in **Environment**, click **Continue**.
+13. Click **Save**.
+14. Back in **Environment**, click **Continue**.
 
 Next, you'll select the deployment strategy for this stage, the package type, and the number of instances to deploy on.
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-188.png)
+![](static/ssh-ng-188.png)
 
 ## Use a Basic strategy
 
@@ -211,12 +211,12 @@ You are now taken to **Execution Strategies** where you will use a deployment st
 3. Click **Use Strategy**. Harness adds the **Deploy** step for execution.
 4. Click the **Deploy** step. Here is where are add the scripts for your package. We'll use the defaults for this tutorial. So we'll simply be copying the artifact to the target host.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-189.png)
+   ![](static/ssh-ng-189.png)
 
 5. In **Command Scripts**, edit **Copy Config**.
 6. In **Edit Command**, for **Select file type to copy**, click **Artifact**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-190.png)
+   ![](static/ssh-ng-190.png)
 
 7. Click **Save**.
 8. Review Looping Strategy: the Looping Strategy is how the deployment will repeat deployments for multiple hosts and for different deployment strategies (Basic, Rolling, Canary).
@@ -224,7 +224,7 @@ You are now taken to **Execution Strategies** where you will use a deployment st
 	2. Click **Looping Strategy**. You can see that the step will be repeated for all hosts using the `<+stage.output.hosts>` expression.  
 	In this tutorial, we're just using one host, but if you had two hosts the step would be repeated for each host.
   
-  ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-191.png)
+  ![](static/ssh-ng-191.png)
 
 9.  Click **Apply Changes**.
 10. When you're done, click **Save** to publish the Pipeline.
@@ -236,7 +236,7 @@ You are now taken to **Execution Strategies** where you will use a deployment st
 3. In **Artifact Path**, click the down-drop arrow and Harness displays a list of available artifact packages.
 4. Select **todolist.war**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/ssh-ng-192.png)
+   ![](static/ssh-ng-192.png)
 
 5. Click **Run Pipeline**. Harness runs the pipeline and the **Console View** displays the tasks executed for each step.
 
@@ -312,19 +312,19 @@ In this tutorial you learned how to:
 
 You can add multiple hosts in the Physical Data Center Connector:
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-193.png)
+![](static/ssh-ng-193.png)
 
 During deployment, you'll see each host listed in the loop:
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-194.png)
+![](static/ssh-ng-194.png)
 
 ### Looping Strategies for each deployment strategy
 
-The Repeat [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) is used differently for the Basic, Rolling, and Canary deployment types.
+The Repeat [Looping Strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) is used differently for the Basic, Rolling, and Canary deployment types.
 
 The Looping Strategy is automatically added to the **Deploy** step and configured for the deployment type you selected:
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-195.png)
+![](static/ssh-ng-195.png)
 
 Let's look how it's used for different deployment types.
 
@@ -345,15 +345,15 @@ Let’s say you have 10 target hosts in the stage Infrastructure Definition and 
 
 This is an example of the Rolling strategy using 2 hosts with 50% Instances.
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-196.png)
+![](static/ssh-ng-196.png)
 
 This means, that Harness will roll out to 50% of target hosts first, and then the remaining 50% if the first 50% were successful.
 
 Harness creates 2 Phases.
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-197.png)
+![](static/ssh-ng-197.png)
 
-You can add any Approval steps inside the Phase Group. See [Adding ServiceNow Approval Steps and Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](/docs/platform/Approvals/adding-jira-approval-stages.md), and [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md).
+You can add any Approval steps inside the Phase Group. See [Adding ServiceNow Approval Steps and Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages), [Adding Jira Approval Stages and Steps](/docs/platform/Approvals/adding-jira-approval-stages), and [Adding ServiceNow Approval Steps and Stages](/docs/platform/Approvals/service-now-approvals).
 
 The Looping Strategy for the first Phase deploys to 50% of the hosts (partitions):
 
@@ -386,15 +386,15 @@ Let’s say you have 10 hosts and you add 2 phases with 50% and 100%. This means
 
 Here is an example of the Canary strategy using 2 hosts and 2 phases. The first phase deploys to 50% and the second phase deploys to 100%.
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-198.png)
+![](static/ssh-ng-198.png)
 
 This means, that Harness will roll out to 50% of target hosts first, and then the remaining 50% if the first 50% were successful.
 
 Harness creates 2 phases as step groups.
 
-![](../../onboard-cd/cd-quickstarts/static/ssh-ng-199.png)
+![](static/ssh-ng-199.png)
 
-You can add any Approval steps between the Step Groups. See [Adding ServiceNow Approval Steps and Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md), [Adding Jira Approval Stages and Steps](/docs/platform/Approvals/adding-jira-approval-stages.md), and [Adding ServiceNow Approval Steps and Stages](../../../platform/9_Approvals/service-now-approvals.md).
+You can add any Approval steps between the Step Groups. See [Adding ServiceNow Approval Steps and Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages), [Adding Jira Approval Stages and Steps](/docs/platform/Approvals/adding-jira-approval-stages), and [Adding ServiceNow Approval Steps and Stages](/docs/platform/Approvals/service-now-approvals).
 
 The Looping Strategy for the first Phase selects 50% of the target hosts:
 
@@ -422,13 +422,14 @@ You can use all of the `<+instance...>` expressions to reference your hosts.
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
-* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-name)
-* [<+instance.host.hostName>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-host-name)
-* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-name)
+* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostname)
+* [<+instance.host.hostName>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostinstancename)
+* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables#instancename)
 
 For Microsoft Azure or AWS:
 
-* [<+instance.host.privateIp>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-private-ip)
-* [<+instance.host.publicIp>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-public-ip)
+* [<+instance.host.privateIp>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostprivateip)
+* [<+instance.host.publicIp>](/docs/platform/Variables-and-Expressions/harness-variables#instancehostpublicip)
+
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.

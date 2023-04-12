@@ -1,7 +1,7 @@
 ---
-title: Kubernetes Apply Step
+title: Kubernetes Apply step
 description: How to deploy independent workloads.
-sidebar_position: 9
+sidebar_position: 2
 helpdocs_topic_id: xd6o61wp8u
 helpdocs_category_id: 85tr1q4hin
 helpdocs_is_private: false
@@ -14,16 +14,15 @@ The Apply step is used to deploy workloads outside of the primary and sidecar wo
 
 For example, you might want to deploy an additional resource only after Harness has verified the deployment of the main resources in the **Manifests** section.
 
-For the topic on using the step, go to [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
+For the topic on using the step, go to [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
 
-## Review: What Workloads Can I Deploy?
+## What workloads can I deploy?
 
-See [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md).
+Go to [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes) for more information.
 
 ## Rolling vs Apply
 
 The following table lists the differences between the Rolling Deployment step (default in a Rolling strategy) and the Apply step (which may be used with any strategy).
-
 
 |  | **Jobs** | **Rollback** |
 | --- | --- | --- |
@@ -44,7 +43,7 @@ For example, if the step Id is **Apply**, the FQN for the step settings are:
 * `<+execution.steps.Apply.spec.skipSteadyStateCheck>`
 * `<+execution.steps.Apply.timeout>`
 
-## File Path
+## File path
 
 Enter the path to a manifest file.
 
@@ -63,19 +62,19 @@ You can enter multiple file paths in File Path. Simply click **Add file**
 
 How long Harness should run this step before failing it. Enter a minimum of 10m to account for network activity in your target environment.
 
-## Skip Dry Run
+## Skip dry run
 
 By default, Harness uses the `--dry-run` flag on the `kubectl apply` command during the **Initialize** step of this command, which prints the object that would be sent to the cluster without really sending it.
 
 If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.
 
-## Skip Steady State Check
+## Skip steady state check
 
 By default, Harness checks to see if a deployed workload has reached steady state.
 
 If you select this option, Harness will not check that the workload has reached steady state.
 
-## Skip K8s Manifest(s) Rendering
+## Skip K8s manifest(s) rendering
 
 By default, Harness uses Go templating and a values.yaml for templating manifest files. 
 
@@ -83,9 +82,9 @@ In some cases, you might not want to use Go templating because your manifests us
 
 Use the **Skip K8s Manifest(s) Rendering** option if you want Harness to skip rendering your manifest files using Go templating.
 
-For details, go to [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
+For details, go to [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
 
-## See Also
+## See also
 
-* [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md)
+* [Add a Kubernetes Sidecar Container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container)
 

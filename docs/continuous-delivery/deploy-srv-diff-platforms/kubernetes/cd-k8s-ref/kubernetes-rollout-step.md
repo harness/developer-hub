@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Rollout Step
+title: Kubernetes Rollout step
 description: Define the Kubernetes Rollout step.
 sidebar_position: 2
 helpdocs_topic_id: 2bwlugh9gi
@@ -18,9 +18,9 @@ The new pods are scheduled on nodes with available resources. The rolling update
 
 Similar to application-scaling, during a rolling update of a Deployment, the Kubernetes service will load-balance the traffic only to available pods (an instance that is available to the users of the application) during the update.
 
-## Review: What Workloads Can I Deploy?
+## What Workloads Can I Deploy?
 
-See [What Can I Deploy in Kubernetes?](what-can-i-deploy-in-kubernetes.md).
+See [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
 
 ## Rolling vs Apply
 
@@ -39,7 +39,7 @@ With the Rolling Deployment step, you can deploy multiple managed workloads.
 
 For Canary and Blue/Green steps, only one managed object may be deployed per step by default.
 
-You can deploy additional objects using the [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md), but it is typically used for deploying Jobs controllers.
+You can deploy additional objects using the [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step), but it is typically used for deploying Jobs controllers.
 
 You can specify the multiple workload objects in a single manifest or in individual manifests, or any other arrangement.Here is the log from a deployment where you can see both Deployment objects deployed:
 
@@ -107,7 +107,7 @@ By default, Harness uses the `--dry-run` flag on the `kubectl apply` command
 
 See the following:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
 

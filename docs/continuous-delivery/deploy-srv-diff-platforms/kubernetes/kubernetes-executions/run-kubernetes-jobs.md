@@ -14,20 +14,20 @@ Kubernetes [Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs
 
 In a Harness Kubernetes CD stage, you define Jobs in the Service **Manifests**. Next you add the **Apply** step to your Harness Workflow to execute the Job.
 
-Typically, Jobs are not part of the main deployment. You can exclude them from the main deployment and simply call them at any point in the stage using the Apply step. For steps on ignoring the Job as part of the main deployment and executing it separately, see [Deploy Manifests Separately using Apply Step](deploy-manifests-using-apply-step.md).In this topic:
+Typically, Jobs are not part of the main deployment. You can exclude them from the main deployment and simply call them at any point in the stage using the Apply step. For steps on ignoring the Job as part of the main deployment and executing it separately, see [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
 
-## Before You Begin
+## Before you begin
 
 * **​Kubernetes Jobs:** We assume you are familiar with [Kubernetes Jobs](https://kubernetes.io/docs/concepts/workloads/controllers/jobs-run-to-completion/).
-* **Apply step:** The Harness Apply step allows you to deploy any resource you have set up in the Service **Manifests** section at any point in your stage. See [Deploy Manifests Separately using Apply Step](deploy-manifests-using-apply-step.md).
-* **Ignoring Manifests:** You can annotate a manifest to have Harness ignore it when performing its main deployment operations. Then you can use the Apply step to execute the manifest wherever you want to run it in the stage. See [Ignore a Manifest File During Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md).
+* **Apply step:** The Harness Apply step allows you to deploy any resource you have set up in the Service **Manifests** section at any point in your stage. See [Deploy Manifests Separately using Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step).
+* **Ignoring Manifests:** You can annotate a manifest to have Harness ignore it when performing its main deployment operations. Then you can use the Apply step to execute the manifest wherever you want to run it in the stage. See [Ignore a Manifest File During Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment).
 * **Delete Jobs before rerunning deployments:** Once you've deployed the Job, you must delete it before deploying a Job of the same name to the same namespace.
 
-## Review: Apply Step
+## Apply step
 
 CD stages include an **Apply** step that allows you to deploy *any resource* you have set up in the Service **Manifests** section.
 
-For details on what you can deploy in different Harness deployment types, see [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+For details on what you can deploy in different Harness deployment types, see [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes).
 
 The Apply step can deploy *all workload types*, including Jobs in any deployment type.
 
@@ -44,7 +44,7 @@ Any workload deployed with the **Apply** step is not rolled back by Harness.**De
 
 In a CD stage, click Service.
 
-In **Manifests**, add your manifests as described in [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
+In **Manifests**, add your manifests as described in [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
 
 Include your Job manifest in the folder you specify in **Manifests**.
 
@@ -56,13 +56,13 @@ In the templates folder, there is a folder named **jobs** and a **job.yaml** man
 
 ![](./static/run-kubernetes-jobs-14.png)
 
-## Step 2: Define Target Cluster
+## Define target cluster
 
 Jobs do not require any changes to the way you specify the target cluster in Harness.
 
-For steps on setting up the target cluster, see [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+For steps on setting up the target cluster, see [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure).
 
-## Step 3: Add the Job to the Execution using the Apply Step
+## Add the Job to the execution using the Apply step
 
 The Apply step can be used in any Kubernetes deployment strategy.
 
@@ -76,17 +76,17 @@ In the **Apply Step**, in **File Path**, enter `jobs/job.yaml`.
 
 ![](./static/run-kubernetes-jobs-15.png)
 
-## Option: Skip Dry Run
+## Skip dry run
 
 By default, Harness uses the `--dry-run` flag on the kubectl apply command, which prints the object that would be sent to the cluster without really sending it.
 
 If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.
 
-## Option: Skip Steady State Check
+## Skip steady state check
 
 If you select this option, Harness will not check that the workload (Job) has reached steady state.
 
-## Step 4: Deploy the Job
+## Deploy the Job
 
 In your Pipeline, click **Save**, **Run**, and then **Run Pipeline**.
 
@@ -163,7 +163,7 @@ job.batch/pi created
 Done.
 ```
 
-In **Wait for Steady State**, you can see Harness wait for the Job to reach steady state. In Harness, this is a [managed workload](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md) because Harness verifies it has reached steady state and fails the Pipeline if it does not.
+In **Wait for Steady State**, you can see Harness wait for the Job to reach steady state. In Harness, this is a [managed workload](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes) because Harness verifies it has reached steady state and fails the Pipeline if it does not.
 
 
 ```
@@ -192,7 +192,7 @@ Event  : pi   Job   pi    default   Job completed   Completed
 Status : pi   'map[conditions:[map[type:Complete status:True lastProbeTime:2021-09-30T22:52:04Z lastTransitionTime:2021-09-30T22:52:04Z]] startTime:2021-09-30T22:51:33Z completionTime:2021-09-30T22:52:04Z succeeded:1]'
 ```
 
-## Option: Showing Job Output
+## Showing Job output
 
 To view Job output after the Apply step, you can use a simple script in a Shell Script step:
 

@@ -4,7 +4,7 @@ description: Review ECS support changes from FirstGen to NextGen.
 sidebar_position: 1
 ---
 
-Harness NextGen has revamped its AWS ECS support from its [FirstGen implementation](../../../../first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-deployments-overview.md). This includes how you configure Harness and ECS services and perform rolling, canary, and blue green deployments.
+Harness NextGen has revamped its AWS ECS support from its [FirstGen implementation](/docs/first-gen/continuous-delivery/aws-deployments/ecs-deployment/ecs-deployments-overview). This includes how you configure Harness and ECS services and perform rolling, canary, and blue green deployments.
 
 For users coming from Harness FirstGen, this is a significant change and requires time to upgrade previous pipelines.
 
@@ -16,7 +16,7 @@ Harness FirstGen users who used the FirstGen ECS delegate can now use a Kubernet
 
 ## Get started with ECS in NextGen
 
-If you're new to Harness ECS deployments, the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md) shows you how to deploy a publicly available Docker image to your ECS cluster using a rolling deployment strategy.
+If you're new to Harness ECS deployments, the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial) shows you how to deploy a publicly available Docker image to your ECS cluster using a rolling deployment strategy.
 
 ## ECS basics
 
@@ -51,13 +51,13 @@ The following deployment type changes have been implemented for Harness ECS depl
 - Added support for rolling deployment.
 - Revamped the canary deployment behavior.
 
-For details about the new deployment types, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md).
+For details about the new deployment types, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial).
 
 ### ECS Run Task updated in ECS NextGen
 
 A new  ECS Run Task Request Definition setting was introduced in the ECS Run Task Step.
 
-For details about this new step, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md#ecs-run-task-step).  
+For details about this new step, go to the [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial#ecs-run-task-step).  
 
 ### Infrastructure definitions
 
@@ -87,11 +87,12 @@ The service definition requires more configuration:
 
 You can manipulate the deployment behavior via the new `deploymentConfiguration` properties `maximumPercent` and `minimumHealthyPercent`. See [DeploymentConfiguration](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_DeploymentConfiguration.html) from AWS.
 
-### ECS Task Definition support in NextGen
+### ECS task definition support in NextGen
 
 The following samples demonstrate the ECS Task Definition parameters supported in NextGen.
 
-#### Sample Task Definition and supported parameters
+<details>
+<summary>Sample task definition and supported parameters</summary>
 
 Here is a YAML example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -158,7 +159,10 @@ proxyConfiguration:
 volumes: []
 ```
 
-#### Sample Task Definition and supported parameters
+</details>
+
+<details>
+<summary>Sample task definition and supported parameters</summary>
 
 Here is a JSON example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -230,11 +234,14 @@ Here is a JSON example highlighting the changes. Harness supports standard AWS E
 }
 ```
 
+</details>
+
 ### ECS NextGen service definition support in NextGen
 
 The following samples demonstrate the ECS service definition parameters supported in NextGen.
 
-#### Sample service definition and supported parameters
+<details>
+<summary>Sample service definition and supported parameters</summary>
 
 Here is a YAML example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -262,7 +269,10 @@ loadBalancers:
   containerPort: 80    
 ```
 
-#### Sample service definition and supported parameters
+</details>
+
+<details>
+<summary>Sample service definition and supported parameters</summary>
 
 Here is a JSON example highlighting the changes. Harness supports standard AWS ECS YAML and JSON.
 
@@ -289,7 +299,9 @@ Here is a JSON example highlighting the changes. Harness supports standard AWS E
 }
 ```
 
-### ECS Run Task Request Definition support in NextGen
+</details>
+
+### ECS run task request definition support in NextGen
 
 Supported schema details can be found in [RunTask](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) from AWS.
 
@@ -334,13 +346,13 @@ Harness templates create reusable logic for Harness entities like steps, stages,
 
 You can link templates in your pipelines or share them with your teams for improved efficiency. 
 
-If you want to use this feature when you create a new entity like a step, click `Start with Template`. For more information, go to [Templates Overview](../../../../platform/13_Templates/template.md).
+If you want to use this feature when you create a new entity like a step, click `Start with Template`. For more information, go to [Templates Overview](/docs/platform/Templates/template).
 
 ### ECS service configuration
 
-Although you can use the Harness [File Store](../../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) for local file storage in your account, for production we recommend storing ECS manifests in remote stores like Github, Bitbucket, AWS S3, etc. Remote stores support version control on files for tracking and reverting changes.
+Although you can use the Harness [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) for local file storage in your account, for production we recommend storing ECS manifests in remote stores like Github, Bitbucket, AWS S3, etc. Remote stores support version control on files for tracking and reverting changes.
 
-Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables.md).
+Harness recommends using Harness service variables to template ECS service parameters. For example, you can refer to service variables in your manifests using variable expressions such as `<+serviceVariables.serviceName>`. For more information, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables).
 
 ### ECS environment configuration
 
@@ -348,7 +360,7 @@ If Harness service **Configuration Parameters** need to be overridden based on I
 
 For example, if the AWS Security Group in the ECS service definition needs to be overridden for a Harness environment, we recommend creating a service variable `securityGroup` in the Harness service and using it in the ECS service definition Manifest as `<+serviceVariables.securityGroup>`.
 
-The variable `securityGroup` value can be overridden at the environment level. For more information, go to [Services and environments overview](../../../get-started/services-and-environments-overview.md). 
+The variable `securityGroup` value can be overridden at the environment level. For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview). 
 
 ### Rolling deployments
 
