@@ -8,9 +8,9 @@ slug: /build-code/build/tfc-notification
 
 # Trigger CI using Terraform Cloud Notification
 
-Continuous Integration(CI) pipelines needs a **target** infrastructure to which the CI artifacts are deployed. The deployments are handled by CI or we can leverage Continuous Deployment pipelines. Modern day architecture uses automation tools like [terraform](https://terraform.io), [ansible](https://www.ansible.com/) to provision the target infrastructure, this type of provisioning is called [IaaC](https://en.wikipedia.org/wiki/Infrastructure_as_code).
+Continuous Integration(CI) pipelines needs a **target** infrastructure to which the CI artifacts are deployed. The deployments are handled by CI or we can leverage Continuous Deployment pipelines. Modern day architecture uses automation tools like [terraform](https://terraform.io), [ansible](https://www.ansible.com/) to provision the target infrastructure, this type of provisioning is called [Iac](https://en.wikipedia.org/wiki/Infrastructure_as_code).
 
-Usually CI/CD and IaaC don't run in tandem. Many times we want to trigger the CI pipeline only when the **target** infrastructure is ready to bootstrap with software components that are required by CI/CD pipelines.
+Usually CI/CD and IaC don't run in tandem. Many times we want to trigger the CI pipeline only when the **target** infrastructure is ready to bootstrap with software components that are required by CI/CD pipelines.
 
 As part of this DIY blog let us tackle the aforementioned problem with an use case.
 
@@ -30,8 +30,9 @@ As CI/CD user I would like to provision a Kubernetes Cluster on Google Cloud Pla
 
 The demo uses the following git repositories a sources,
 
-- IaaC [vanilla-gke](https://github.com/harness-apps/vanilla-gke): the terraform source repository that will be used with terraform cloud to provision GKE.
-- Kubernetes manifests [bootstrap-argocd](https://github.com/harness-apps/bootstrap-gke): the repository that holds kubernetes manifests to bootstrap argo CD on to the GKE cluster
+- IaC [vanilla-gke](https://github.com/harness-apps/vanilla-gke): the terraform source repository that will be used with terraform cloud to provision GKE.
+- Kubernetes manifests [bootstrap-argocd](https://github.com/harness-apps/bootstrap-argocd): the repository that holds kubernetes manifests to bootstrap argo CD on to the GKE cluster
+- Harness CI Pipeline [tfc-notification-demo](https://github.com/harness-apps/tfc-notification-demo)
 
 ### Fork and Clone the Sources
 
@@ -40,12 +41,12 @@ To make fork and clone easier we will use [gh CLI](https://cli.github.com/). Dow
 Let us create a directory where we want to place all our demo sources,
 
 ```shell
-mkdir -p "$HOME/tfc-notification-demo"
-cd "$HOME/tfc-notification-demo"
+mkdir -p "$HOME/git"
+cd "$HOME/git"
 export DEMO_HOME="$PWD"
 ```
 
-#### IaaC
+#### IaC
 
 Clone and fork `vanilla-gke` repo,
 
@@ -68,7 +69,19 @@ gh repo fork
 export ARGOCD_BOOTSTRAP_REPO="$PWD"
 ```
 
-For rest of the blog we will reference the repositories `vanilla-gke` and `bootstrap-argocd` as `$TFC_GKE_REPO` and `$ARGOCD_BOOTSTRAP_REPO`.
+#### Harness CI Pipeline
+
+Clone and fork `tfc-notification-demo` repo,
+
+```shell
+cd ..
+gh repo clone harness-apps/tfc-notification-demo
+cd tfc-notification-demo
+gh repo fork
+export TFC_DEMO_REPO="$PWD"
+```
+
+For rest of the blog we will reference the repositories `vanilla-gke` and `bootstrap-argocd` and `tfc-notification-demo` as `$TFC_GKE_REPO`, `$ARGOCD_BOOTSTRAP_REPO` and `$TFC_DEMO_REPO`.
 
 ## Harness CI
 
@@ -222,7 +235,7 @@ Click **Save** to save the secret,
 
 ## Terraform Workspace
 
-On your terraform cloud account create a new workspace called **vanilla-gke**. Update the workspace settings to use Version Control and make it point to [$TFC_GKE_REPO](#iaac).
+On your terraform cloud account create a new workspace called **vanilla-gke**. Update the workspace settings to use Version Control and make it point to [$TFC_GKE_REPO](#iac).
 
 ![TFC Workspace VCS](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/tuifarjnq1vxpf1h9dhd.png)
 
@@ -363,6 +376,6 @@ An example of successful pipeline run
 
 ## Summary
 
-By using the terraform notifications feature we were able to make the CI pipelines listen to IaaC events and run the CI pipelines as needed.
+By using the terraform notifications feature we were able to make the CI pipelines listen to IaC events and run the CI pipelines as needed.
 
 ![Notification Pattern](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/a56swhyp5lzm9n5d9kpr.png)
