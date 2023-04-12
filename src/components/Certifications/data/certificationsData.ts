@@ -34,7 +34,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Continuous Integration - Developer (BETA COMING SOON)",
+      title: "Continuous Integration - Developer (BETA)",
       module: MODULES.ci,
       type: certType.developer,
       description:

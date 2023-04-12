@@ -1,12 +1,13 @@
 ---
-title: Continuous Verification - Templates
+title: Continuous Verification - Templates and Templatization
+sidebar_position: 3
 description: Insights on how the machine learning of Continuous Verification works. 
 keywords: [Continuous Verification, Templatization]
 tags: [Continuous Verification, Templatization]
 slug: /continuous-delivery/continuous-verification-templates
 ---
 
-# Continuous Verification - Templates
+# Continuous Verification - Templates and Templatization
 
 Continuous Verification is achieved by adding a “Verify Step” in the deployment pipeline; while verify step uses the construct of “Monitored Service” to figure out what metric & log needs to be included in the verification.
 
