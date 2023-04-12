@@ -20,16 +20,16 @@ export const knowledgeBaseList: CardItem[] = [
     link: "/kb/continuous-delivery/continuous-verification-ml",
   },
   {
-    title: "Continuous Verification - Templates",
-    module: MODULES.cd,
-    date: "April 12, 2023",
-    link: "/kb/continuous-delivery/continuous-verification-templates",
-  },
-  {
     title: "Continuous Verification - Results",
     module: MODULES.cd,
     date: "April 12, 2023",
     link: "/kb/continuous-delivery/continuous-verification-results",
+  },
+  {
+    title: "Continuous Verification - Templates",
+    module: MODULES.cd,
+    date: "April 12, 2023",
+    link: "/kb/continuous-delivery/continuous-verification-templates",
   },
   {
     title: "How Can I Troubleshoot The Delegate Installation Error with Readiness Probe Failure in GKE?",
