@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: NodeJS Application
+title: NodeJS application
 description: This build automation guide walks you through building a NodeJS and Docker application in a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /build-code/build/nodejs

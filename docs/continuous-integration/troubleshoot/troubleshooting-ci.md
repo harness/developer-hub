@@ -63,3 +63,17 @@ Azure Kubernetes Service (AKS) security group restrictions can cause builds runn
 If you have a custom network security group, it must allow inbound traffic on port 8080, which the Delegate service uses.
 
 For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
+
+## CI pods appear to be evicted by Kubernetes autoscaling
+
+ Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](../use-ci/view-your-builds/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](../ci-technical-reference/ci-stage-settings.md):
+
+```
+"cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
+```
+
+## Delegate is not able to connect to the created build farm
+
+If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
+
+For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).

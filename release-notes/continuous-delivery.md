@@ -1,6 +1,6 @@
 ---
 title: Continuous Delivery & GitOps
-date: 2023-03-31T10:00
+date: 2023-04-10T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -12,6 +12,174 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## April 10, 2023, version 79015
+
+### What's new
+
+- The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
+  
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+- The [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts) input and output variables are now optional. (CDS-57766, CDS-56448)
+  
+  Input and output variables were mandatory, but now you can choose whether to fill in values. This allows you more flexibility when modeling your pipeline.
+  Here's an example where the script declares two variables but one is set as a runtime input and one is empty.
+
+  ![picture 66](static/ecc637c511be5850e704bf1db61db5cbda37d8a10ad37eb3490a05570a0b5ece.png)
+- Tanzu Application Services (TAS) deployments now support additional artifact sources: Azure Artifacts, Bamboo, and GCS. (CDS-57681)
+  
+  TAS deployments now support Artifactory, Nexus, Bamboo, Amazon S3, Google Container Registry (GCR), Google Cloud Storage (GCS), Google Artifact Registry, AWS Elastic Container Registry (ECR), Azure Container Registry (ACR), Azure Artifacts, GitHub Package Registry, custom registries, and any Docker Registry such as DockerHub.
+
+  ![picture 67](static/162273825052b81df3a86e5b649c38bdcf12f9175bd60cb7db872d223c2635c5.png)
+- The **Retry** timeout failure strategy is now supported in [TAS steps](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
+  
+  If you set the [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) on these Tanzu Application Services (TAS) steps, you can now select **Retry** for **Timeout Failures**.
+
+  <docimage path={require('./static/e467e7de04d6d257e1871fad7181b65a39b7712b68826b84b7c79d849b411f04.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- View the freeze windows that impact a pipeline from the **Pipeline Executions** page. (CDS-53781)
+  
+  You can now select **Associated Freeze Window Details** from the more options setting (⋮) on the **Pipeline Executions** page. Selecting this option will take you to the related freeze windows that apply to the pipeline execution.
+- Helm Chart Version fetch is added to **Manifest Details** form. (CDS-53220)
+  
+  You can now select the Helm Chart name in the **Manifest Details** form of the service and get the list of chart versions.
+  
+  ![picture 72](static/f01d849d1372a8d1c67dcd7532d2a3d58562fb72453328008eb617ae5df0b127.png)
+
+  This only works for HTTP Helm or Git-based Helm Charts.
+- Harness recommends that you use the `kubelogin` auth plugin to authenticate the Google Kubernetes Engine cluster with Kubernetes version 1.22 or later. (CDS-52514)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Google Cloud cloud provider (connecting to GKE) supports two authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+- You can now trigger a pipeline when there are changes to an artifact in Bamboo. (CDS-51742)
+  
+  [On new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/) triggers are a simple way to automate deployments for new builds. On new artifact triggers simply listen to a Bamboo registry where one or more artifacts in your pipeline are hosted. Every time a new image is pushed to your Bamboo account, a CD pipeline is triggered that deploys the image automatically.
+
+  <docimage path={require('./static/6a9869b8714c6ef7316fcdc98fd5bda65f0758f5ed84a4991c4d7f3007dc5372.png')} width="60%" height="60%" title="Click to view full size image" />
+- ACR in Azure GovCloud is supported in the Docker Registry connector. (CDS-57777)
+  
+  You can now use `.io` and `.us` domains.
+
+  ![picture 73](static/40962ce702cb34f682116d48237a0b3a99d68d840ef0f6e39e4b260b79fba3dc.png)
+
+
+### Early access
+
+- ServiceNow custom table support. (CDS-55046)
+  
+  This functionality is behind a feature flag, `CDS_SERVICENOW_TICKET_TYPE_V2`.
+  
+  Custom table support is now available in Harness' ServiceNow integration. 
+  
+  Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
+
+  <details>
+  <summary>What is a table extending task?</summary>
+  
+  In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
+  
+  </details>
+  
+  Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
+  
+  When using template flow, your user role is required along with cross scope privileges to the custom table. 
+  
+  The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
+  
+  The custom table being used should allow access to this table via web services.
+- Harness will remove comments when evaluating commented lines in manifests to avoid rendering failures. (CDS-57721, ZD-41676)
+  
+  This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`.
+  
+  Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
+  
+  Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
+
+### Fixed issues
+
+- RBAC was enforced for [environment groups](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) based on environment group identifiers. (CDS-45758)
+  
+  Previously, you would see an error when trying to view environment groups if you had access to view only certain environment groups. Now, you can view those environment groups to which you have View access.
+- The Jenkins step was not exporting `GIT_SHA` variable as an output. (CDS-58256, ZD-42196)
+  
+  The Jenkins was only exporting the following five variables, which you could select in the step's **Output** tab:
+  
+  ![picture 70](static/1b5a85ed162b70c2c13e84e1b2b5e19f1a6f1e5f4367168cd920100afde0a93a.png)  
+
+  Now the Jenkins step will also export the `GIT_SHA` expression.
+- The GitOps Fetch Linked Apps step was returning a null value. (CDS-58150)
+  
+  The GitOps Fetch Linked Apps step output was not set correctly, leading to a null value for the step. This has been fixed and the step now returns the linked apps correctly.
+- The [Container step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/container-step/) was not using the JEXL expression [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) logic correctly. (CDS-58081)
+
+  The JEXL condition was not being evaluated and when the expression evaluated to `false` the step would still execute. This is now fixed and the JEXL expression is used correctly.
+- The [Deployment Template](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
+  
+  The search filters in the template is fixed now. The **Referenced By** setting now shows the pipelines that are using the template. 
+- The GitOps Clusters step was missing null checks. (CDS-58049)
+  
+  The Gitops Clusters step is added automatically during pipeline runtime when the stage **GitOps** option is selected. For example, in [PR pipeline](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial).
+  
+  <docimage path={require('./static/73cdc440ba09f067a25838780163b73f1afb34dc16e3fb4c625b6a84d0c295cf.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  DeployToAll is a Boolean field in the step that can have true, false, or null values. The DeployToAll value was not set correctly when re-running pipelines because null checks were not present in all places where DeployToAll was referred to. This is now fixed.
+- The Services dashboard was displaying deleted instances for project-level agents. (CDS-58041)
+  
+  The instance deletion did not happen due to an incorrect condition. This condition now picks up the instances for deletion.
+- Users were unable to delete a [V1 environments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2). (CDS-57943, ZD-41828)
+  
+  User can now delete V2 and V1 environments.
+- Missing task type support resulted in com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 873575 error. (CDS-57912)
+  Harness has added the unsupported task type.
+- Execution logs were not available once a step timed out. (CDS-56745)
+  
+  This issue was introduced at implementation and has been fixed.
+- Nexus 3 artifact **Tag** and **Repository** values were not updated when switching the repository type. (CDS-56640)
+  
+  When switching the repository format from Raw to Docker or any other supported formats, the **Tag** and **Repository** input fields were not cleared. This is fixed and the fields are cleared.
+- Schema validation for step group templates was not working.	(CDS-56492)
+  
+  Validation is now working. The entityType in template schema needed to be passed.
+- Docker artifact label expressions were not resolved in SSH or WinRm Command step scripts. (CDS-54744)
+  
+  You can now copy custom artifact output labels which have a '.' or a '-' in the output label and use that in an expression without encountering any errors during expression evaluation.
+- Editing SSH credentials in the Infrastructure Definition was failing. (CDS-54519)
+  
+  This is fixed. Editing the SSH Credentials is now working as expected.
+- Infrastructure runtime input was not visible in template inputs section. (CDS-54511)
+  
+  Support has been added to make the resolved pipeline YAML available to template inputs so that dependent fields can be rendered.
+- Pipeline name edits were lost when a template input was changed in a pipeline template. (CDS-54332)
+  
+  Pipeline template inputs such as pipeline name, if changed, are no longer getting reset when changing template inputs.
+- Data was not cleared in ACR artifact source template. (CDS-54212)
+  
+  In the ACR artifact source template, the form details were not getting cleared when the connector was changed. This issue has been fixed now.
+- Users were unable to create or edit the runtime input default values when configuring services, environments, templates, and pipelines. (CDS-53919, ZD-39998, ZD-40031, ZD-41197, ZD-41889)
+
+  This issue is fixed. Harness now supports adding and editing runtime input default values when configuring services, environments, templates, and pipelines.
+- Nexus connectors not filtered in artifact source for versions 2 and 3. (CDS-53879)
+  
+  When selecting a Nexus 3 connector in the Nexus artifact source, Harness was showing both version 2 and 3 connectors even if you had specified the version during the connector creation.
+
+  This is fixed and the connectors are now filtered by version.
+- Unclear error message in Triggers webhook registration. (CDS-53600)
+  
+  Harness improved the error handling for webhook registration failures. Users will now receive guidance. For example:
+
+  ![picture 75](static/e5e13558c63d546b0e9a597695b9320efe86c6306d8a08fdb052abb7e7e07b7d.png)
+- Incorrect error message when environment is set as an expression but no expression is provided. (CDS-53491)
+  We have added schema validation for empty identifiers for envGroupRef, environmentRef, and infrastructure identifiers. Now the correct error messages will appear.
+- Implemented code changes to ensure correct behavior and fixed the following issues:
+  - RepoName will now be rendered in Manifest Details section while adding manifest itself irrespective of whether connector is an expression or runtime input. (CDS-53309, ZD-39859)
+  - Configuring Bitbucket connector as an expression or runtime input should be an option to provide the repository name. (CDS-51247, ZD-38985)
+- The trigger YAML **Edit** button was taking users back to the visual editor. (CDS-50426)
+  
+  The trigger page was not maintaining the user preference of view type (Visual/YAML). Now the user's trigger view type preference is stored in local storage so that user need not to chose the view type every time.
 
 ## March 31, 2023, version 78914
 
@@ -68,16 +236,6 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
   * At the project level freeze window, you can access account, organization, and project level services and environments.
   
   For more information, go to [freeze deployments](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-freeze/).
-- Harness recommends that you use the `kubelogin` auth plugin to authenticate the Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
-  
-  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
-
-  The Harness Azure cloud provider (connecting to AKS) supports four authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
-
-  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
-  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
-  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency.
-  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency.
 - A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
 
   In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping. 

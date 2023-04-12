@@ -44,8 +44,8 @@ The following quickstart guides are available for Feature Flags:
 
 ## Cloud Cost Management (CCM)
 
-* [Kubernetes Autostopping Quickstart](../cloud-cost-management/2-use-cloud-cost-management/0-quick-start-guides/kubernetes-autostopping-quick-start-guide.md) shows you how to create and test an AutoStopping rule for your Kubernetes cluster.
-* [AutoStopping proxy as a downstream of ALB configuration tutorial](/docs/cloud-cost-management/2-use-cloud-cost-management/0-quick-start-guides/autostopping-proxy-alb-usecase.md) shows you how to configure an AutoStopping proxy as a downstream system of an Application Load Balancer in AWS.
+* [Kubernetes Autostopping Quickstart](../cloud-cost-management/2-getting-started-ccm/quick-start-guides/kubernetes-autostopping-quick-start-guide.md) shows you how to create and test an AutoStopping rule for your Kubernetes cluster.
+* [AutoStopping proxy as a downstream of ALB configuration tutorial](../cloud-cost-management/2-getting-started-ccm/quick-start-guides/autostopping-proxy-alb-usecase.md) shows you how to configure an AutoStopping proxy as a downstream system of an Application Load Balancer in AWS.
 
 ## Harness CD Community Edition
 
@@ -57,11 +57,7 @@ The following quickstart guides are available for Feature Flags:
 
 ## Service Reliability Management
 
-The following quickstart guides are available for Service Reliability Management:
-
-* [Change Impact Analysis Quickstart](../service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-quickstart.md) describes how you can correlate change events and understand their impact on a Monitored Service.
-
-* [SLO Management Quickstart](../service-reliability-management/howtos-service-reliability-management/slo-management-quickstart.md) walks you through the steps to create and manage an SLO.
+- [Introduction to SLO Management with Prometheus](https://developer.harness.io/tutorials/manage-service-reliability/intro-to-srm) provides an introduction to Service Level Objectives (SLOs) and shows how to measure and manage your SLOs using Prometheus.
 
 ## Security Testing Orchestration
 

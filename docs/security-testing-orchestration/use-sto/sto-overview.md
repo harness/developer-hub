@@ -8,11 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The STO Overview enables you to see all detected issues in your target baselines.
+The STO Overview enables you to see all detected issues in your `main` branches, `latest` images, and other target baselines. 
+
+To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline target, such as a feature or developer branch, go to the build results for that target and click **Security Tests**.
+
 
 ![](./static/sto-overview-06.png)
 
-To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline target, such as a feature or developer branch, go to the build results for that target and click **Security Tests**.
+This view has has the following components:
 
 * **Issue distribution over time** — Shows the daily distribution of all detected baseline issues by severity.
 	+ In this context, "daily" means from midnight GMT to midnight GMT.

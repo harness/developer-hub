@@ -209,3 +209,10 @@ Here's a YAML example of a stage configured to use a Kubernetes cluster build in
               nodeSelector: {}
               os: Linux
 ```
+
+## Troubleshooting
+
+For Kubernetes cluster build infrastructure troubleshooting guidance go to:
+
+* [Troubleshoot CI](../../troubleshoot/troubleshooting-ci.md)
+* [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen)
