@@ -345,7 +345,7 @@ module.exports = {
     
     {
       from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-jenkins-jobs-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
     },
     
     {
