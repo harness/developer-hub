@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can add steps to CI pipelines individually or in step groups. Steps in step groups can run serially or in parallel. Step group can have [Conditional Execution, Failure Strategy, and Looping Strategy](#advanced-settings) settings that apply to all steps in the group.
+You can add steps to CI pipelines individually or in step groups. Steps in step groups can run serially or in parallel. Step groups can have [Conditional Execution, Failure Strategy, and Looping Strategy](#advanced-settings) settings that apply to all steps in the group.
 
 One reason you might use step groups is to improve test times in pipelines that include a lot of tests. This is one of the [optimization methods](./optimizing-ci-build-times.md) you can use to speed up your CI pipelines.
 

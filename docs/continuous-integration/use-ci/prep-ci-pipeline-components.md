@@ -17,7 +17,7 @@ You can run a pipeline manually or set up triggers to automatically run it on a 
 <details>
 <summary>Create a pipeline in Harness CI</summary>
 
-1. Select **Pipelines** and then select **Create a Pipeline**.
+1. In the **Builds** (Continuous Integration) modules, select **Pipelines**, and then select **Create a Pipeline**.
 2. Enter a **Name** for the pipeline. **Description** and **Tags** are optional.
 3. Select **Inline** to store your pipeline configuration in Harness, or select **Remote** to store your pipeline as code in a Git repository.
 4. If you want to use a [pipeline template](/docs/platform/Templates/template), select **Start with Template**.

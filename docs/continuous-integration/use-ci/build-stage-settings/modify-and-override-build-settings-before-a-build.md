@@ -1,6 +1,6 @@
 ---
-title: Modify and override build settings at runtime
-description: You can modify and override Harness CI build settings before a build runs.
+title: Override secrets in settings.xml at runtime
+description: Override Harness CI build settings before a build runs.
 
 sidebar_position: 20
 helpdocs_topic_id: 2hpamxaqf0
@@ -9,15 +9,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to modify and override build settings before a build in Harness CI.
-
-## Override secrets in settings.xml at runtime
-
-Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) when a pipeline runs.
+Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) by modifying the **Build** stage settings when the pipeline runs.
 
 These steps assume you have an understanding of the [Harness Secret Manager](/docs/platform/Security/harness-secret-manager-overview) or that you know how to [add your own secrets manager](/docs/platform/Security/add-secrets-manager). You should also be familiar with [adding text secrets](/docs/platform/Security/add-use-text-secrets), [adding file secrets](/docs/platform/Security/add-file-secrets), and [adding SSH secrets](/docs/platform/Security/add-use-ssh-secrets).
 
-### Create a secret at the account level
+## Create a secret at the account level
 
 Create a [text secret](/docs/platform/Security/add-use-text-secrets) at the account level that contains the content of your `settings.xml` file.
 
@@ -35,7 +31,7 @@ You need the `Account: Secrets: Create/Edit/View` permission for the Harness Pla
 
 5. Select **Save**.
 
-### Transcribe the text secret into settings.xml
+## Transcribe the text secret into settings.xml
 
 Create a new `settings.xml` file in the Harness working directory and include a command in your pipeline to assign the value of your settings XML text secret to that file. Modify either the **Run** or **Run Tests** step where your Maven tests run.
 
@@ -70,7 +66,7 @@ In the **Run Tests** step, add the following to the **Pre-Command** field:
 </Tabs>
 ```
 
-### Modify the Maven test command
+## Modify the Maven test command
 
 Once the `settings.xml` file exists in the Harness working directory, Maven can read your text secret from this file, and you can run your Maven test as follows:
 
@@ -78,7 +74,7 @@ Once the `settings.xml` file exists in the Harness working directory, Maven can 
 mvn test -s settings.xml
 ```
 
-### Optional: Use a non-default directory
+## Optional: Use a non-default directory
 
 If you created the `settings.xml` file in the `~/.m2/` folder, Maven can read the secrets from the default location and you don't need to run the test with `-s` flag.
 

@@ -50,7 +50,7 @@ If the connector's URL Type is **Account**, then you must specify the name of th
 
 ## Build Type, Branch Name, and Tag Name
 
-For **Build Type**, select **Git Branch** if you want the step to clone code from a specific branch with in the repo, or select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**.
+For **Build Type**, select **Git Branch** if you want the step to clone code from a specific branch within the repo, or select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**.
 
 :::tip
 

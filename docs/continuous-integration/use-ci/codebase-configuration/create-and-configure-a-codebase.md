@@ -44,9 +44,9 @@ When you add a **Build** stage to a CI pipeline, you select a [code repo connect
 
 ![Configuring the codebase when adding a Build stage.](./static/create-and-configure-a-codebase-00.png)
 
-The codebase declared in a pipeline's first stage becomes the pipeline's default codebase. If you need to change the connector or other codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration).
+The first codebase declared in a pipeline becomes the pipeline's default codebase. If you need to change the connector or other codebase settings, go to [Edit the default codebase configuration](#edit-the-default-codebase-configuration).
 
-When you add additional stages to the pipeline, you can disable **Clone Codebase**, but you can't change the connector or repo. Usually, you only disable **Clone Codebase** if the codebase is not needed for the stage's operations. However, you can [use a Git Clone step to clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
+Once a default codebase is established, when you add subsequent stages to the pipeline, you can disable **Clone Codebase** for those stages, but you can't change the connector or repo. Usually, you disable **Clone Codebase** only if the codebase is not needed for the stage's operations. However, you can also [use a Git Clone step to clone multiple code repos in a pipeline](./clone-and-process-multiple-codebases-in-the-same-pipeline.md).
 
 ## Edit the default codebase configuration
 
@@ -87,7 +87,7 @@ If this is set to **Source Branch**, the pipeline builds the artifact from the l
 Set maximum resource limits for the containers that clone the codebase at runtime:
 
 * **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
-* * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ## Improve codebase clone time
 
