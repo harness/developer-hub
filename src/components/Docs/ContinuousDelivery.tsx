@@ -33,10 +33,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Continuous Delivery focuses on delivery and deployment of any sort
-              of change or new feature in a safe and sustainable way. Your
-              Continuous Delivery Pipeline focuses on all of the steps to get
-              your changes into production.
+            Make your software releases more efficient and reliable with Harness Continuous Delivery.
             </p>
           </div>
         </div>

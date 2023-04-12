@@ -17,7 +17,7 @@ This topic explains how you can use the **Save Cache to GCS** and **Restore Cach
 
 :::caution
 
-You can't share access credentials or other [Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md) across stages.
+You can't share access credentials or other [Text Secrets](/docs/platform/Security/add-use-text-secrets.md) across stages.
 
 :::
 

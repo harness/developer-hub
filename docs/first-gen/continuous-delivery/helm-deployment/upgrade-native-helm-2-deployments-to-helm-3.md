@@ -20,7 +20,7 @@ If you have already created native Helm 2 deployments, you can upgrade your depl
 ### Before You Begin
 
 * [Helm Deployments Overview](helm-deployments-overview.md)
-* [Kubernetes Deployments Overview](../kubernetes-deployments/kubernetes-deployments-overview.md)
+* [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
 
 ### Blog Post
 

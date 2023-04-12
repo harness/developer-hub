@@ -176,5 +176,5 @@ Now, when you deploy the Workflow, you can provide the file path for that values
 
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
 * [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
-* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
+* [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows)
 

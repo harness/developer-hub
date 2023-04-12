@@ -252,7 +252,7 @@ plugins:
   - serverless-deployment-bucket@latest
 ```
 
-You can see the [Harness expression](/docs/platform/12_Variables-and-Expressions/harness-variables.md) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
+You can see the [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables.md) `<+artifact.path>` in `artifact: <+artifact.path>`. The expression `<+artifact.path>` tells Harness to get the artifact from **Artifacts** section of the Service. We'll add the artifact next.
 
 The expression `<+service.name>` simply uses the Harness Service name for the deployed service name.
 
@@ -393,7 +393,7 @@ Now that you have configured the Service, we can define the target for our deplo
 7. Enter the following and click **Save and Continue**.
 	* **Name:** `AWS Serverless`.
 	* **Credentials:** `AWS Access Key`. Enter the AWS access key for the AWS User you created with the required policies in [Before You Begin](#before-you-begin).
-	* Enter the secret key as a [Harness Text Secret](/docs/platform/6_Security/2-add-use-text-secrets.md). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
+	* Enter the secret key as a [Harness Text Secret](/docs/platform/Security/add-use-text-secrets.md). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
 	* **Delegates Setup:** `Only use Delegates with all of the following tags`.
 	* Select the Delegate you added earlier in this quickstart.
 1. The **Connection Test** verifies the connection. Click **Finish**.
@@ -526,8 +526,8 @@ plugins:
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
-* [Built-in Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
+* [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets.md)
+* [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables.md)
 * [Run Pipelines using Input Sets and Overlays](../../../platform/8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
 
 ### Supported stores for Serverless Lambda YAML files

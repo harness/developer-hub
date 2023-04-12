@@ -63,7 +63,7 @@ Harness uses GCP connectors during pipeline runs to authenticate and perform ope
    * **Connect through a Harness Delegate:** Harness communicates with GCP through a Harness delegate in GCP. You must choose this option if you chose to inherit delegate credentials.
 2. If connecting through a Harness delegate, select either:
    * **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
-   * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+   * **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md).
      * Select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
 3. Select **Save and Continue** to run the connection test, and then, if the test succeeds, select **Finish**. The connection test confirms that your authentication and delegate selections are valid.
 

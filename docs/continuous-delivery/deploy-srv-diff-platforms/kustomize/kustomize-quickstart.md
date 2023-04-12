@@ -269,5 +269,5 @@ For steps on deleting the Delgate, go to [Delegate a delegate](../../../platform
 
 ### Next Steps
 
-See [Use Kustomize for Kubernetes Deployments](../../cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments) for more details on all the settings and Kustomize support in Harness.
+See [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments) for more details on all the settings and Kustomize support in Harness.
 

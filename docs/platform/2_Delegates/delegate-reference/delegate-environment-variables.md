@@ -88,7 +88,7 @@ Delegates at the account or organization level do not have a value for this vari
 
 Delegate tags are descriptors that are added to the delegate before the registration process, in Harness Manager or in YAML. Harness generates tags based on the delegate name; you can add others. You can specify multiple tags in YAML as a comma-separated list.
 
-Tags are displayed on the delegate details page in Harness Manager. See [Tags Reference](../../20_References/tags-reference.md) and [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). 
+Tags are displayed on the delegate details page in Harness Manager. See [Tags Reference](../../20_References/tags-reference.md) and [Select Delegates with Tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md). 
 
 ```
 - name: DELEGATE_TAGS

@@ -144,7 +144,7 @@ See:
 
 * [ECS Blue/Green Workflows](../../aws-deployments/ecs-deployment/ecs-blue-green-workflows.md)
 * [AMI Blue/Green Deployment](../../aws-deployments/ami-deployments/ami-blue-green.md)
-* [Kubernetes Blue/Green Deployment](/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
+* [Kubernetes Blue/Green Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment)
 * [Pivotal Cloud Foundry Deployments](../../pcf-deployments/pcf-tutorial-overview.md)
 
 ### Canary Deployment

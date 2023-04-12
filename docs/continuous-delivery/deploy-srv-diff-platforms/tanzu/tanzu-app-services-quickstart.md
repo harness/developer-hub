@@ -574,5 +574,5 @@ In your project's **Deployments**, you can see the deployment listed.
 
 ## Next steps
 
-See [CD tutorials](/docs/category/cd-tutorials) for other deployment features.
+See [CD tutorials](/tutorials/deploy-services) for other deployment features.
 

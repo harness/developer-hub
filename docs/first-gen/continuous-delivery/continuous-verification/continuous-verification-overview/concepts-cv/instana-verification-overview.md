@@ -50,7 +50,7 @@ You set up Instana and Harness in the following way:
 3. **Harness Application** – Create a Harness Application with a Service and an Environment. We do not cover Application setup in this sequence. See [Application Components](../../../model-cd-pipeline/applications/application-configuration.md).
 4. **​24/7 Service Guard Setup** – In the Environment, set up 24/7 Service Guard to monitor your live, production application.
 5. ​**Verify Deployments**:
-	1. Add a Workflow to your Harness Application and deploy your microservice or application to the [Infrastructure Definition](../../../model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) in your Environment.
+	1. Add a Workflow to your Harness Application and deploy your microservice or application to the [Infrastructure Definition](/docs/first-gen/continuous-delivery/model-cd-pipeline/environments/environment-configuration) in your Environment.
 	2. After you have run a successful deployment, you next add verification steps to the Workflow using your Verification Provider.
 	3. Harness combines semi-supervised machine-learning with Instana metrics to analyze your future deployments—discovering events that might be causing your deployments to fail. Then you can use this information to set rollback criteria and improve your deployments.
 

@@ -344,7 +344,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/12_Variables-and-Expressions/harness-variables.md) for the value that resolves to an image name at runtime. For this tutorial, we will use `image: <+artifact.image>` and an artifact.
+The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables.md) for the value that resolves to an image name at runtime. For this tutorial, we will use `image: <+artifact.image>` and an artifact.
 
 The Task Definition is added to the Service.
 
@@ -474,7 +474,7 @@ We'll create a Harness AWS Connector to connect to your AWS account using the IA
 4. In Credentials, enter the following and click **Continue**:
 	1. Select **AWS Access Key**.
 	2. **Access Key:** enter the IAM User access key.
-	3. **Secret Key:** add a new Harness Secret using the access key's secret key. Secrets are always stored in encrypted form and decrypted only when they are needed. To learn more about Harness secrets, go to [Harness Secrets Management Overview](/docs/platform/6_Security/1-harness-secret-manager-overview.md).
+	3. **Secret Key:** add a new Harness Secret using the access key's secret key. Secrets are always stored in encrypted form and decrypted only when they are needed. To learn more about Harness secrets, go to [Harness Secrets Management Overview](/docs/platform/Security/harness-secret-manager-overview.md).
 	4. **Test Region:** US East (Virginia).
 5. In **Connect to the provider**, click **Connect through a Harness Delegate**, and then click **Continue**.
 6. In **Delegates Setup**, click **Only use Delegates with all of the following tags**, and then enter the tag of the Delegate you set up earlier.
@@ -898,7 +898,7 @@ proxyConfiguration:
 volumes: []
 ```
 
-The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/12_Variables-and-Expressions/harness-variables.md) for the value that resolves to an image name at runtime.ECS Service Definition:
+The `image: <+artifact.image>` setting instructs Harness to pull the image you add to the Service **Artifacts** section and use it for deployment. You do not have to add an image in **Artifacts** and reference it using `<+artifact.image>`. You can hardcode the `image` instead or use a [Harness variable](/docs/platform/Variables-and-Expressions/harness-variables.md) for the value that resolves to an image name at runtime.ECS Service Definition:
 
 Replace `<Security Group Id>` and `<Subnet Id>` with the Ids from the ECS instances for your target ECS cluster.
 

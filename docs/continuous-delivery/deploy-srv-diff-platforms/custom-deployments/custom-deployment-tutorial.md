@@ -76,7 +76,7 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
   If your scripts will use utilities or software that does not come with the Delegate by default, you can install them on the Delegate manually or using the Delegate `INIT_SCRIPT` environment variable.
 
-  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+  For steps on using `INIT_SCRIPT`, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
   Harness Delegate installation packages include `TAR` and `cURL`. You can use `cURL` and `TAR` in your Delegate scripts and Pipeline steps without installing these tools.
 
@@ -297,7 +297,7 @@ If you do not use `<+artifact.image>`, Harness will not attempt to download and 
 
 For non-containerized artifacts, use `<+artifact.path>`.
 
-To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md#artifact).
+To learn more, go to [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables.md#artifact).
 
 ## Create the Environment
 
@@ -481,9 +481,9 @@ The `<+instance...>` expressions refer to the **Instance Attributes** in the Dep
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
-* [<+instance.hostName>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-host-name)
-* [<+instance.host.instanceName>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-host-instance-name)
-* [<+instance.name>](/docs/platform/12_Variables-and-Expressions/harness-variables.md#instance-name)
+* [<+instance.hostName>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-name)
+* [<+instance.host.instanceName>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-host-instance-name)
+* [<+instance.name>](/docs/platform/Variables-and-Expressions/harness-variables.md#instance-name)
 
 The expression `<+instance.host.properties.[property name]>` can used to reference the other properties you added to **Instance Attributes**.
 

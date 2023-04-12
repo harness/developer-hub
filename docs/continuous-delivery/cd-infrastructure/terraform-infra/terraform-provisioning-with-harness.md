@@ -37,7 +37,7 @@ You can do both in the same stage if you want.
 
 You set up a Terraform target infrastructure provisioning in the following order:
 
-1. Select **Dynamic Provisioning**. In the Pipeline Infrastructure, you select the **Dynamic Provisioning** option and select **Terraform**. Harness automatically adds the Terraform Plan, [Harness Approval](../approvals/using-harness-approval-steps-in-cd-stages), and Terraform Apply steps. You can change these steps, but plan, approve, and apply is the most common process. We use that process in our Terraform documentation.
+1. Select **Dynamic Provisioning**. In the Pipeline Infrastructure, you select the **Dynamic Provisioning** option and select **Terraform**. Harness automatically adds the Terraform Plan, [Harness Approval](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages), and Terraform Apply steps. You can change these steps, but plan, approve, and apply is the most common process. We use that process in our Terraform documentation.
 2. In the **Terraform Plan** step, you link Harness to the Terraform scripts you want to use. You add the scripts by connecting to a Git repo where the scripts are kept and setting up any inputs and other common options.
 3. **Map outputs to the** **target Infrastructure**. Harness needs a few script outputs so that it can target the provisioned infrastructure, such as namespace. You simply map some script outputs to the required Harness target infrastructure settings.
 4. **Deployment**. The Pipeline deploys to the provisioned infrastructure defined in its target Infrastructure Definition.
@@ -85,7 +85,7 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash

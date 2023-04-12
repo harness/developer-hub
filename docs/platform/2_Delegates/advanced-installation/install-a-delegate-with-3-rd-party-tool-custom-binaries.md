@@ -44,7 +44,7 @@ In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to 
 
 The SDKs you need to add depend on the type of deployment. For a list of the SDK versions that are certified for different types of deployments, go to [Delegate-required SDKs](/docs/platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
-For more information on how to use the `INIT_SCRIPT` environment variable, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information on how to use the `INIT_SCRIPT` environment variable, go to [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 ## Example Kubernetes manifest with required SDK downloads
 

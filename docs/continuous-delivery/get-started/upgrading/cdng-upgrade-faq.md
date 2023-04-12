@@ -149,7 +149,7 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     
     Harness NextGen does not perform artifact polling to collect the list of artifacts and maintain a history for future selection. NextGen fetches the list of tags at pipeline runtime. 
 
-  - For details on NextGen artifact collection, review the artifact sources covered in [Harness Kubernetes services](https://developer.harness.io/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services).
+  - For details on NextGen artifact collection, review the artifact sources covered in [Harness Kubernetes services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
 
 ## What are my CD NextGen upgrade options?
 

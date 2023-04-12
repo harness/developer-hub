@@ -54,7 +54,7 @@ files/
  |-service.yaml
 ```
 
-Harness evaluates the values.yaml files you add just like Helm does with its values file. Values.yaml files added to Harness don't use Helm templating, but instead use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/12_Variables-and-Expressions/harness-variables.md). This removes the need for Helm or Tiller to be installed.
+Harness evaluates the values.yaml files you add just like Helm does with its values file. Values.yaml files added to Harness don't use Helm templating, but instead use [Go templating](https://godoc.org/text/template) and [Harness built-in variable expressions](/docs/platform/Variables-and-Expressions/harness-variables.md). This removes the need for Helm or Tiller to be installed.
 
 ### Helm Charts
 
@@ -82,7 +82,7 @@ https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 
 You can hardcode the deployment artifact in your values.yaml file just as you might in a typical Helm deployment.
 
-Or you can add a path to the artifact in Harness and use a [Harness expression](/docs/platform/12_Variables-and-Expressions/harness-variables.md) in your values.yaml to refer to that path.
+Or you can add a path to the artifact in Harness and use a [Harness expression](/docs/platform/Variables-and-Expressions/harness-variables.md) in your values.yaml to refer to that path.
 
 When Harness executes the Pipeline, the Harness Delegate resolves the expression and pulls the artifact onto the target pods.
 
@@ -121,7 +121,7 @@ We'll cover this option below.
    
    ![](./static/add-and-override-values-yaml-files-33.png)
 
-1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
+1. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo.md).
 5. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
     This process is described in [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 1. Once you've selected a Connector, click **Continue**.

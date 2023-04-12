@@ -69,7 +69,7 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
 2. Optionally, enter a short description and tags.
 3. In the **Details** step, enter the base URL. For example, https://mycompany.atlassian.net. For more information, go to [Configuring the base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html).
 4. Enter the email ID used to log in to your Jira account.
-5. Create or select a Harness encrypted test secret for the API key. To create a secret, go to [Add and reference text secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
+5. Create or select a Harness encrypted test secret for the API key. To create a secret, go to [Add and reference text secrets](/docs/platform/Security/add-use-text-secrets.md).
 6. In the **Delegates Setup** step, select one of the following options: 
    * **Use any available Delegate**: Select this option to let Harness choose a Delegate at runtime.
    When a task is ready to be assigned, the Harness Manager first validates its lists of Delegates to assign the task.
@@ -77,7 +77,7 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
      
       * **Heartbeats**: Running Delegates send heartbeats to the Harness Manager in one-minute intervals. If the Manager does not have a heartbeat for a Delegate when a task is ready to be assigned, it will not assign the task to that Delegate.
      
-      * **Tags**: see [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+      * **Tags**: see [Select Delegates with Tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md).
        
       * **Allowlisting**: After a Delegate is validated for a task, it is allowlisted for that task. This Delegate is likely to be used again for that task. The allowlisting criteria is the URL associated with the task, such as a connection to a cloud platform, repo, or API. A Delegate is allowlisted for all tasks using that URL. The Time-To-Live (TTL) for the allowlisting is 6 hours, and the TTL is reset with each successful task validation.
      

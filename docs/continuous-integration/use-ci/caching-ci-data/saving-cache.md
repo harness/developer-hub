@@ -26,7 +26,7 @@ You can cache data to an AWS S3 bucket in one stage using the **Save Cache to S3
 
 This topic explains how to configure the **Save Cache to S3** and **Restore Cache From S3** steps in Harness CI.
 
-You cannot share access credentials or other [Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md) across Stages.
+You cannot share access credentials or other [Text Secrets](/docs/platform/Security/add-use-text-secrets.md) across Stages.
 
 :::info
 

@@ -25,7 +25,7 @@ For steps on using the Terraform Plan to provision the target infrastructure for
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -114,7 +114,7 @@ For this reason, it's important that all your Project members know the Provision
 
 Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Harness Secrets Manager Overview](/docs/platform/6_Security/1-harness-secret-manager-overview).
+See [Harness Secrets Manager Overview](/docs/platform/Security/harness-secret-manager-overview).
 
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
@@ -140,7 +140,7 @@ Click the provider where your files are hosted.
 
 ![](./static/run-a-terraform-plan-with-the-terraform-plan-step-12.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
 
@@ -162,7 +162,7 @@ The following sections cover common Terraform Plan step options.
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ### Source Module
 
@@ -210,7 +210,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](/docs/platform/12_Variables-and-Expressions/harness-variables) in **Workspace**.
+You can also use a [stage variable](/docs/platform/Variables-and-Expressions/harness-variables) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -266,7 +266,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 ```bash
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
-See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/Security/add-use-text-secrets).
 
 ### Remote Variables
 
@@ -296,7 +296,7 @@ Click **Submit**. The remote file(s) are added.
 
 #### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ## Backend Configuration
 
@@ -401,17 +401,17 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Security/add-use-text-secrets).
 
 ## Export JSON representation of Terraform Plan
 
 Enable this setting to use a JSON representation of the Terraform plan that is implemented in a Terraform Plan step.
 
-In subsequent **Execution** steps, such as a [Shell Script](../../cd-execution/cd-general-steps/using-shell-scripts) step, you can reference the Terraform plan using this expression format:
+In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step, you can reference the Terraform plan using this expression format:
 
 `<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
 
-For example, if you had a Terraform Plan step with the [Id](/docs/platform/20_References/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
+For example, if you had a Terraform Plan step with the [Id](/docs/platform/References/entity-identifier-reference) `Plan_Step`, you could use the expression in a Shell Script step like this:
 
 
 ```bash
@@ -438,7 +438,7 @@ The JSON of the Terraform Plan step is not available after Rollback.
 
 ## Export Human Readable representation of Terraform Plan
 
-Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](../../cd-execution/cd-general-steps/using-shell-scripts).
+Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
 
 Once you enable this option and run a CD stage with the Terraform Plan step, you can click in the Terraform Plan step's **Output** tab and copy the **Output Value** for the **humanReadableFilePath** output.
 
@@ -453,7 +453,7 @@ For example, if the Terraform Plan stage and step Ids are `tf` then you would ge
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
 
-Next, you can enter those expressions in a subsequent [Shell Script step](../../cd-execution/cd-general-steps/using-shell-scripts) step and Harness will resolve them to the human-readable paths and JSON.
+Next, you can enter those expressions in a subsequent [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step and Harness will resolve them to the human-readable paths and JSON.
 
 For example, here is a script using the variables:
 
@@ -474,7 +474,7 @@ and found no differences, so no changes are needed.
 
 You can use the standard `terraform plan` command option [detailed-exitcode](https://www.terraform.io/cli/commands/plan#other-options) with the Harness Terraform Plan step.
 
-If you use the `-detailed-exitcode` option in a step that follows the Harness Terraform Plan step, such as a [Shell Script](../../cd-execution/cd-general-steps/using-shell-scripts) step, Harness will return a detailed exit code:
+If you use the `-detailed-exitcode` option in a step that follows the Harness Terraform Plan step, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step, Harness will return a detailed exit code:
 
 * `0`: succeeded with empty diff (no changes)
 * `1`: error
@@ -485,8 +485,8 @@ If you use the `-detailed-exitcode` option in a step that follows the Harness Te
 In **Advanced**, you can use the following options:
 
 * [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors)
+* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
 
 ## See Also
 

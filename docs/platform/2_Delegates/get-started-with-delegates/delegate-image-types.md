@@ -288,5 +288,5 @@ spec:
 
 ### For more information
 
-* To build delegate images with a custom toolset, see [Build custom images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+* To build delegate images with a custom toolset, see [Build custom images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 * To find out about versions of the tools that are included on delegate images and how you can customize them, see [Install a delegate with third-party tool custom binaries](/docs/platform/2_Delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).

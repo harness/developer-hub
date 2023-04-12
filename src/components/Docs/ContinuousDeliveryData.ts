@@ -34,70 +34,70 @@ export const featuredTutorials: CardItem[] = [
     {
       name: "Documentation Topics",
       description:
-        "These are prudent topics to Continuous Delivery.",
+        "",
       list: [
         {
-          title: "Onboard with Continuous Delivery",
+          title: "Get started with Continuous Delivery",
           module: "cd",
           description:
             "Learn the basics of Harness Continuous Delivery.",
-          link: "/docs/category/onboard-with-continuous-delivery",
+          link: "/docs/category/get-started",
         },
         {
-          title: "Services",
+          title: "Integrations",
           module: "cd",
           description:
-            "Use Harness services to define your microservices and other workloads.",
-          link: "/docs/category/services",
+            "See the tools and platforms you can use to deploy your apps.",
+          link: "/docs/continuous-delivery/integrations/cd-integrations",
         },
         {
-          title: "Infrastructure",
+          title: "Provision infrastructure",
           module: "cd",
           description:
-            "Define the target infrastructures for your deployments.",
-          link: "/docs/category/infrastructure",
+            "Provision infrastructures for your deployments.",
+          link: "/docs/category/provision-infrastructure",
         },
         {
-          title: "Execution",
+          title: "Deploy services on different platforms",
           module: "cd",
           description:
-            "Use built-in steps to model your release process.",
-          link: "/docs/category/execution",
+            "Platform-specific deployment types.",
+          link: "/docs/category/deploy-services-on-different-platforms",
         },
         {
-          title: "Deployments",
+          title: "Cross-platform CD features",
           module: "cd",
           description:
-            "Manage how deployments impact your resources.",
-          link: "/docs/category/deployments",
+            "Features common to all deployment types.",
+          link: "/docs/category/cross-platform-cd-features",
+        },
+        {
+          title: "Verify deployments",
+          module: "cd",
+          description:
+            "Use Harness Continuous Verification (CV) to verify your deployments.",
+          link: "http://localhost:3000/docs/category/verify-deployments",
+        },
+        {
+          title: "Manage deployments",
+          module: "cd",
+          description:
+            "Control deployment resources and schedules.",
+          link: "/docs/continuous-delivery",
+        },
+        {
+          title: "Monitor deployments",
+          module: "cd",
+          description:
+            "Use DORA and other advanced metrics for deployments.",
+          link: "/docs/category/monitor-deployments",
         },
         {
           title: "GitOps",
           module: "cd",
           description:
-            "Use Harness GitOps to perform Ops tasks.",
+            "Perform GitOps deployments in Harness.",
           link: "/docs/category/gitops",
-        },
-        {
-          title: "Advanced CD",
-          module: "cd",
-          description:
-            "In depth topics to take your CD to the next level.",
-          link: "/docs/category/advanced-cd",
-        },
-        {
-          title: "CD Dashboards",
-          module: "cd",
-          description:
-            "Use DORA and other advanced metrics for deployments.",
-          link: "/docs/category/cd-dashboards",
-        },
-        {
-          title: "CD Tech Reference",
-          module: "cd",
-          description:
-            "Quickly reference settings, permissions, etc.",
-          link: "/docs/category/cd-tech-reference",
         },
       ],
     },

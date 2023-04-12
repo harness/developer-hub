@@ -210,7 +210,7 @@ To add Kubernetes manifests to your service, do the following:
 7. In **Specify Manifest Type**, select **K8s Manifest**, and then click **Continue**.
 8. In **Specify K8s Manifest Store**, select the Git provider.
    
-   The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
+   The settings for each Git provider are slightly different, but you simply want to point to the Git account For example, click GitHub, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/Connectors/connect-to-code-repo.md).
 9.  Click **Continue**. **Manifest Details** appears.
 10. In **Manifest Identifier**, enter an Id for the manifest.
 11. If you selected a Connector that uses a Git account instead of a Git repo, enter the name of the repo where your manifests are located in **Repository Name**.
@@ -236,7 +236,7 @@ To add Kubernetes manifests to your service, do the following:
   <TabItem value="Values YAML" label="Values YAML">
 ```
 
-Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/12_Variables-and-Expressions/harness-variables.md) in the Values YAML files.
+Harness Kubernetes Services can use Values YAML files just like you would using Helm. Harness manifests can use [Go templating](#go_templating) with your Values YAML files and you can include [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables.md) in the Values YAML files.
 
 If you are using a Values YAML file and it's in the same repo as your manifests, you can add it when you add your manifests, as described above (**Values YAML** --> **Add File**).
 
@@ -256,7 +256,7 @@ To add a Values YAML file, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Manifests**, click **Add Manifest**.
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
-8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
+8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo.md).
    
    If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
 9.  Once you've selected a Connector, click **Continue**.
@@ -649,7 +649,7 @@ To use Kustomize Patches, do the following:
 5. In **Service Definition**, select **Kubernetes**.
 6. In **Manifests**, select **Add Manifest**.
 7. In **Specify Manifest Type**, select **Kustomize Patches**, and select**Continue**.
-8. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
+8. In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo.md).
    
    The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 9.  Select **Continue**.
@@ -827,7 +827,7 @@ To add an OpenShift Template to a service, do the following:
 8.  In **Specify OpenShift Template Store**, select where your template is located. 
   
   You can use a Git provider, the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), a custom repo, or Azure Repos.
-1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
+1.  For example, click **GitHub**, and then select or create a new GitHub Connector. See [Connect to Code Repo](/docs/platform/Connectors/connect-to-code-repo.md).
 2.  Select **Continue**. **Manifest Details** appears.
 3.  In **Manifest Identifier**, enter an Id for the manifest. It must be unique. It can be used in Harness expressions to reference this template's settings.
 4.  In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit Id/Git Tag**, and then enter the branch or commit Id/[tag](https://git-scm.com/book/en/v2/Git-Basics-Tagging) for the repo.
@@ -3202,7 +3202,7 @@ For more information on runtime inputs and expressions, go to [Fixed values runt
 
 You can use pipeline, stage, service, environment, and Harness built-in variables in your values YAML files and service settings.
 
-See [Built-in Harness variables reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
+See [Built-in Harness variables reference](/docs/platform/Variables-and-Expressions/harness-variables.md) or watch this [short video](https://youtu.be/lqbmO6EVGuU).
 
 ### Propagate and override artifacts, manifests, and service variables
 

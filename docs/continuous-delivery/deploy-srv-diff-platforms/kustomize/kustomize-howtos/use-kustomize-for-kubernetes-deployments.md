@@ -77,7 +77,7 @@ In **Specify Kustomize Store**, select your Git provider, such as **GitHub**.
 
 If you already have a Git Connector that points to your Kustomization files, then select that. If not, click **New GitHub Connector**.
 
-The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
+The **Git Connector** settings appear. Enter the settings described in [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo.md).
 
 Click **Continue**.
 
@@ -132,7 +132,7 @@ In **Manifest Details**, enter the following required settings:
 You can list artifacts in two ways:
 
 * Artifacts can be hardcoded in the deployment YAML file deployed using your Kustomization files.
-* You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Option: Kustomize Patches](#option-kustomize-patches) below, and [Built-in Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md).
+* You can add artifacts to the Service **Artifacts** section and reference them in Kustomize Patch files using the Harness variable `<+artifact.image>`. See [Option: Kustomize Patches](#option-kustomize-patches) below, and [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables.md).
 
 ## Option: Kustomize Patches
 
@@ -197,7 +197,7 @@ In **Specify Manifest Type**, select **Kustomize Patches**, and click **Continue
 
 ![](./static/use-kustomize-for-kubernetes-deployments-04.png)
 
-In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/7_Connectors/connect-to-code-repo.md).
+In **Specify Kustomize Patches Store**, select your Git provider and Connector. See [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo.md).
 
 The Git Connector should point to the Git account or repo where you Kustomize files are located. In **Kustomize Patches** you will specify the path to the actual patch files.
 
@@ -223,7 +223,7 @@ If you have hardcoded patches in `patchesStrategicMerge`, but not add these patc
 
 ### Using Harness Variables in Patches
 
-Kustomize does not natively support variable substitution but Harness supports variable substitution using [Harness variable expressions](/docs/platform/12_Variables-and-Expressions/harness-variables.md) in Kustomize patches.
+Kustomize does not natively support variable substitution but Harness supports variable substitution using [Harness variable expressions](/docs/platform/Variables-and-Expressions/harness-variables.md) in Kustomize patches.
 
 This allows you to configure any patch YAML labels as Harness variables expressions and replace those values at Pipeline runtime.
 
@@ -348,7 +348,7 @@ spec:
 ```
 The secret output in the manifest will be asterisks (\*). The secret value is not displayed.
 
-See [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
+See [Add Text Secrets](/docs/platform/Security/add-use-text-secrets.md).
 
 ## Option: Overlays and Multibases
 
@@ -385,7 +385,7 @@ When Harness deploys, it will apply the plugin you reference just like you would
 
 To add a plugin to the Delegate, you can install it manually or use the `INIT_SCRIPT` environment variable in the Delegate config file to install it.
 
-For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 Once the plugin is installed, you add its path to the Harness Service you are using for the kustomization. See [Path to Plugin in Service Manifest](#path-to-plugin-in-service-manifest).
 

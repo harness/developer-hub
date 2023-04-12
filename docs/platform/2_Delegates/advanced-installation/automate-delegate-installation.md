@@ -111,5 +111,5 @@ After you update the delegate names, you can apply the configuration file. The d
 
 ### See also
 
-* [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md)
+* [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md)
 
