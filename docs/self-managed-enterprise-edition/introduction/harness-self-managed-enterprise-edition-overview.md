@@ -38,7 +38,7 @@ The following tables provide a summary of key differences between Harness SaaS a
 
 | **Module** | **Helm Install** | **KOTS Install** | **Notes** |
 | --- | :-: | :-: | --- |
-| Continuous Delivery | **✓** | **✓** |  |
+| Continuous Delivery (FG and NG) | **✓** | **✓** |  |
 | Security Testing Orchestration | **✓** | X |  |
 | Service Reliability Management | **✓** | **✓** |  |
 | Continuous Integration | **✓** | **✓** |  |
