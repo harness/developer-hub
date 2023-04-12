@@ -49,6 +49,14 @@ In most cases, this should match the repo name used in your Git provider.
 * `product_project_name`— The Veracode project with the scan results you want to ingest.  
      The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes how you can find your application ID's and project names.
 
+### Ingestion settings
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
 ### Fail on Severity
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';

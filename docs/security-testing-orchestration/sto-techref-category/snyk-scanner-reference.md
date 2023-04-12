@@ -201,23 +201,23 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `snyk_api` = URL to the Snyk instance, if you're using an on-prem installation.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-
-### Container Image scan settings
-
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
 
-
-### Repository scan settings
-
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
 <StoLegacyRepo />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 </details>
 

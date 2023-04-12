@@ -268,26 +268,23 @@ The following settings are also required, depending on the container type:
 	- `container_access_token`: Password/token
 
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
-
-#### Container Image scan settings
-
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
 
-
-<!-- REPOS --------------------------------------------------------------------------- -->
-
-#### Repository scan settings
-
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
 <StoLegacyRepo />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 </details>
 

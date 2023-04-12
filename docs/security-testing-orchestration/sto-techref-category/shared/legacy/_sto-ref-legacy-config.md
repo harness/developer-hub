@@ -1,6 +1,6 @@
-<details><summary>Configuration settings for orchestrated scans</summary>
+<details><summary>Configuration scan settings</summary>
 
-The following settings apply to all scanners where the `scan_type` is `configuration` and the `policy_type` is `orchestratedScan`.
+The following settings apply to all scanners where the `scan_type` is `configuration`.
 
 * `configuration_type`
 	+ accepted value(s)s: `aws_account`

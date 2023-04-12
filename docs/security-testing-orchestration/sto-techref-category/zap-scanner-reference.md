@@ -235,6 +235,14 @@ STO supports the following scan policy types for ZAP:
 * `instance_path` — Specify if the app URL includes a path beyond the domain. If you want to scan `https://app.my-domain.com/myModule/myApp`, the instance path is `myModule/myApp`.
 * `instance_port` — Specify if the site is accessed using a non-default port.
 
+#### Ingestion settings
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
 </details>
 
 ## YAML configuration

@@ -26,7 +26,19 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 	+ `product_access_token`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Fail on Severity
+```mdx-code-block
+import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
+```
+
+<StoLegacyRepo />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
+#### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
@@ -35,9 +47,5 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 
 
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
 
-<StoLegacyRepo />
 

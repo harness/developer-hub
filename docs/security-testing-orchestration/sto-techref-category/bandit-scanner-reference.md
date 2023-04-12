@@ -200,7 +200,14 @@ STO supports the following policy\_type settings for Bandit:
 * `repository_branch` — This tells Bandit the Git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md#manual-branch-build). This sets the branch based on the user input or trigger payload at runtime.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
 </details>
+
 
 
 ## YAML configuration

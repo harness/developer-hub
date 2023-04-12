@@ -259,7 +259,11 @@ STO supports the following scan types for SonarQube:
 
 #### `ingestionOnly` settings
 
-For information about setting up an ingestionOnly scan, go to [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 ####  `orchestratedScan` and `dataLoad` settings
 

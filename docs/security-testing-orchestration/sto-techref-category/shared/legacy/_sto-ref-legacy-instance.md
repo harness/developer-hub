@@ -1,6 +1,6 @@
-<details><summary>Instance settings for orchestrated scans</summary>
+<details><summary>Instance scan settings</summary>
 
-The following settings apply to Security steps where the `scan_type` is `instance`  and the `policy_type` is `orchestratedScan`.
+The following settings apply to Security steps where the `scan_type` is `instance`.
 
 * `instance_identifier` (required)
 * `instance_environment` (required)

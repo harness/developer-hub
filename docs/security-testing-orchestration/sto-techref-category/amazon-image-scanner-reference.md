@@ -37,7 +37,20 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `container_domain` = URI of the ECR container with the scan results you want to load.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-# Fail on Severity
+
+```mdx-code-block
+import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+```
+
+<StoLegacyContainer />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
+## Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
@@ -50,7 +63,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ## Container Image scan settings
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
+<!-- CONTAINERS --------------------------------------------------------------------------- 
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
