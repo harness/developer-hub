@@ -100,7 +100,7 @@ If automatic upgrade is enabled and you have a custom image, the following may o
 
 To avoid these issues, you can set up the upgrader to use your custom delegate tag.
 
-1. Type the following command to determine the delegate number for your account:
+1. Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
 
     `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<account_identifier>' \
     --header 'x-api-key: <your_api_key>'`
@@ -120,7 +120,7 @@ To avoid these issues, you can set up the upgrader to use your custom delegate t
 
     When the upgrader makes a request, it tries to change the image to harness/delegate:23.04.78910. You can take either the harness/delegate:23.04.78910 image or the harness/delegate:23.04.78910.minimal image and build your own image by adding more tools and binaries, and then push it to your own container repository. For example, you might publish the image to a private repository, such as artifactory-abc/harness/delegate:23.04.78910.
 
-2. Once the image is pushed, you can call another API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
+2. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
 
     `curl --location --request PUT 'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<account_identifier>&delegateTag=artifactory-abc%2Fharness%2Fdelegate%3A23.04.78910' \
     --header 'x-api-key: <your_api_key>'`
