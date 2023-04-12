@@ -35,7 +35,7 @@ spec:
 
 ## Schema
 
-Listed below is the probe schema for the command probe, with properties shared across all the probes and properties unique to the command probe.
+Listed below is the probe schema for the command probe with properties shared across all the probes and properties unique to the command probe.
 
 <table>
   <tr>

@@ -1,11 +1,11 @@
 ---
-title: Configure and Add Probe(s)
+title: Configure and add probe(s)
 sidebar_position: 2
 ---
 
 A probe explores the behavior of a [system that is in a chaotic or unpredictable state](../../technical-reference/chaos-faults) and helps validate the [declarative hypothesis](../../technical-reference/probes/overview.md) set by the user. The goal of a chaos probe is to understand the underlying patterns and laws that govern the behavior of these systems, and use this understanding to predict or control their behavior.
 
-This section walks you step-by-step through how to configure and add probes to a chaos experiment.
+This section walks you through how to configure and add probes to a chaos experiment.
 
 ## Before you begin
 
@@ -14,11 +14,11 @@ This section walks you step-by-step through how to configure and add probes to a
 
 ## Prerequisites
 
-- To configure and setup a probe inside a fault, you should have an active chaos infrastructure where you can schedule the chaos experiment.
+- You should have an active chaos infrastructure where you can schedule the chaos experiment.
 - Enterprise Hub connectivity status should be active
-- Probe requires the read/write access to the chaos experiment to schedule or navigate to the probe addition user interface.
-- Probe requires read access to the chaos infrastructure to select a chaos infrastructure when creating an experiment.
-- Probe requires read access to the chaos hub to select faults from the chaos hub while creating an experiment.
+- Read/write access to the chaos experiment to schedule or navigate to the probe addition UI.
+- Read access to the chaos infrastructure to select a chaos infrastructure when creating an experiment.
+- Read access to the chaos hub to select faults from the chaos hub while creating an experiment.
 
 Once the prerequisites are fulfilled, you can configure and add a probe to your experiment using the following steps. 
 
@@ -35,9 +35,9 @@ And then click on `Start with blank canvas` once you see the start off drawer po
 
 ## Step 2: Select a fault
 
-Click on the `+` icon to open the fault selection drawer and choose the fault to execute in your chaos experiment based on the hypothesis decided.
+Select the `+` icon to open the fault selection drawer and choose the fault to execute in your chaos experiment based on the hypothesis decided.
 
-Once you click on a fault, a **Tuning drawer** opens up. Navigate to the last tab `Probes`. A default health check command probe will already be present. You can either add or replace the existing probe with a new one by clicking `+ Deploy new Probe` button.
+Once you select a fault, a **Tuning drawer** opens up. Navigate to the last tab `Probes`. A default health check command probe will already be present. You can either add or replace the existing probe with a new one by selecting `+ Deploy new Probe` button.
 
 ![Step 2](./static/configure-and-add-probe/step2.png)
 
@@ -47,15 +47,15 @@ Once the `Add Probe` screen opens up, provide a name, the type of the probe (HTT
 
 ![Step 3.1](./static/configure-and-add-probe/step3.1.png)
 
-Now, the screen shows common probe properties, such as `Probe timeout`, `Retry`, `Interval`, and so on. Enter relevant values, and click `Continue`.
+Now, the screen shows common probe properties, such as `Probe timeout`, `Retry`, `Interval`, and so on. Enter relevant values, and select `Continue`.
 ![Step 3.2](./static/configure-and-add-probe/step3.2.png)
 
-Provide the required probe attributes. In this case, you have chosen HTTP probe, which shows attributes associated with it, such as `URL`, `Method`, `Criteria`, and so on. Enter relevant values, and click `Setup the probe`.
+Provide the required probe attributes. In this case, you have chosen HTTP probe, which shows attributes associated with it, such as `URL`, `Method`, `Criteria`, and so on. Enter relevant values, and select `Setup the probe`.
 ![Step 3.3](./static/configure-and-add-probe/step3.3.png)
 
 ## Step 4: Save the probe
 
-Once you have added the parameters for the probe, click `Setup the Probe >`. The newly configured probe will be saved and appended to the manifest. To view the configurations that you saved, hover over `View` of the respective probe.
+Once you have added the parameters for the probe, select `Setup the Probe >`. The newly configured probe is saved and appended to the manifest. To view the configurations that you saved, hover over `View` of the respective probe.
 
 ![Step 4](./static/configure-and-add-probe/step4.png)
 
