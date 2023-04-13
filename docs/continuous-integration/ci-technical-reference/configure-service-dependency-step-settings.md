@@ -66,7 +66,7 @@ Harness Connector for the container registry containing the Service Dependency i
 
 The name of the Docker image.
 
-The image name should include the tag and will default to the latest tag if unspecified.
+The image name should include the tag and will default to the `latest` tag if unspecified.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries.
 
