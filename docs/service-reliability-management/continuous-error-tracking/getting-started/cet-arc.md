@@ -48,9 +48,9 @@ ARC displays the following information related to an event:
 
 ### Snapshot
 
-Error Tracking captures snapshots when events, application errors (exceptions), and logs (warnings and errors) occur according to a defined algorithm.
+Continuous Error Tracking captures snapshots when events, application errors (exceptions), and logs (warnings and errors) occur according to a defined algorithm.
 
-An Error Tracking snapshot contains valuable information about events in the monitored application. This includes:
+A Continuous Error Tracking snapshot contains valuable information about events in the monitored application. This includes:
 
 * Date and time of the snapshot
 * The server and application where the event occurred
@@ -68,7 +68,7 @@ You can use the **Force Snapshot** option to take a snapshot the next time the s
 
 To understand and resolve errors, it is important to be able to trace their path through the code. The ARC screen provides a comprehensive call stack trace, covering the entry point to the method in which the event occurred, even if the source code spans across multiple machines.
 
-Error Tracking enables tracing of the code and variable state associated with the event all the way back to the initiation point, where the parameters were passed. If the event involves calls across multiple machines, ARC displays a unified call stack. 
+Continuous Error Tracking enables tracing of the code and variable state associated with the event all the way back to the initiation point, where the parameters were passed. If the event involves calls across multiple machines, ARC displays a unified call stack. 
 
 Select a method in the call stack to see its source code.
 
@@ -93,7 +93,7 @@ The source code pane displays a decompiled Java version of the bytecode being ex
 
 The **Recorded Variables** section displays the variable values and objects accessible from the method. It displays all the local variables and parameters including `this` in the non-static methods. The first method also contains thread-local variables defined for this thread as well as SLF4J and Log4J Mapped Diagnostics Context (MDC) values. The MDC objects are often too large for the full set of data to be available in the log. However, the Error Tracking Agent is capable of capturing and recording the entire object.
 
-In some scenarios, such as asynchronous message passing, the MDC objects contain a key-value map of the recorded requests, initial servlet information, and much more. However, back tracing the source of a bad request in an asynchronous environment is a known challenge. Error Tracking helps you overcome this challenge by providing extended visibility into MDC.
+In some scenarios, such as asynchronous message passing, the MDC objects contain a key-value map of the recorded requests, initial servlet information, and much more. However, back tracing the source of a bad request in an asynchronous environment is a known challenge. Continuous Error Tracking helps you overcome this challenge by providing extended visibility into MDC.
 
 The choice of the collected variables most relevant within an allocated timeframe is determined by the Error Tracking Agent using an adaptive machine learning algorithm. The selection process is based on which and how many variables to collect, the number of items to collect, the length of string to capture, and so on.
 
@@ -114,7 +114,7 @@ In the **Log** tab, the error or exception lines are displayed first, followed b
 
 
 :::info note
-Log4j2 allows you to create custom log levels and names. However, Error Tracking reports only on log levels that are less than or equal to 300.
+Log4j2 allows you to create custom log levels and names. However, Continuous Error Tracking reports only on log levels that are less than or equal to 300.
 :::
 
 
