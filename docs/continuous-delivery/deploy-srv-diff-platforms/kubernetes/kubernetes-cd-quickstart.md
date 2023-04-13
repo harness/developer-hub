@@ -41,12 +41,11 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
 :::
 
 1. In your Harness project, select **Deployments**, and then select **Create a Pipeline**.
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-81.png)
+   ![](./static/kubernetes-cd-quickstart-81.png)
 2. Enter the name **CD Quickstart** and select **Start**.
    
    Your pipeline appears.
 
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-82.png)
 3. Select **Add Stage** and select **Deploy**.
 4. Enter the name **Deploy Service**, make sure **Service** is selected, and then select **Set Up Stage**.
    
@@ -59,7 +58,7 @@ Pipelines are collections of stages. For this tutorial, we'll create a new pipel
    By separating services and service definitions, you can propagate the same Service across stages while changing the artifacts, manifests, and variables with each stage.
 
    :::
-1. Give the service the name **nginx** and select **Save**.
+6. Give the service the name **nginx** and select **Save**.
 
 Once you have created a service, it is persistent and can be used throughout the stages of this or any other pipeline in the project.
 
@@ -87,7 +86,7 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
      3. In **Secret Name**, enter a name for the secret like **github-pat**.
      4. In **Secret Value**, paste in a GitHub Personal access token. When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, go to [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub. Ensure you PAT has the **repo** scope selected:
 
-     ![](../../onboard-cd/cd-quickstarts/static/repoScope.png)
+     ![](./static/repoScope.png)
 4. Select **Continue**.
 5. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
    We don't use the **Connect through Harness Platform** option here simply because you'll need a Delegate later for the connection to your target Kubernetes cluster. Typically, the **Connect through Harness Platform** option is a very quick way to make connections without having to use Delegates.
@@ -145,7 +144,7 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
     cronjob.batch/cd-doc-delegate-upgrader-job created
     ```
 
-   8. Select **Verify** to make sure that the delegate is installed properly.
+   1. Select **Verify** to make sure that the delegate is installed properly.
    
    </details>
 
@@ -163,7 +162,7 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
     
    The manifest is now listed.
 
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-87.png)
+   ![](./static/kubernetes-cd-quickstart-87.png)
 
 11. Select **Next** at the bottom of the **Service** tab.
 
@@ -190,7 +189,7 @@ Harness connects to all of the common cloud platforms and provides a platform-ag
 6. Select **New Connector**.
 7. The Kubernetes cluster connector appears.
 
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-88.png)
+   ![](./static/kubernetes-cd-quickstart-88.png)
  
 The Kubernetes cluster connector is covered in detail [here](/docs/platform/connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/), but let's quickly walk through it.
 
@@ -199,7 +198,7 @@ Let's look at the steps:
 1. In **Kubernetes Cluster Connector**, in **Name**, enter **Kubernetes Quickstart**, and select **Continue**.
 2. In **Details**, select **Use the credentials of a specific Harness Delegate**. We will select the Delegate next.
    
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-89.png)
+   ![](./static/kubernetes-cd-quickstart-89.png)
 
 3. Select **Continue**.
 4. Select the Kubernetes Delegate you added earlier using its Tags, and then select **Save and Continue**.
@@ -212,7 +211,7 @@ Let's look at the steps:
     Harness requires a release name for tracking. It is applied to the pods as a label. The release name must be unique across the cluster.
 9.  When you are done, the **Cluster Details** will look something like this:
 
-    ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-90.png)
+    ![](./static/kubernetes-cd-quickstart-90.png)
 
     The target infrastructure is complete. Now we can add our stage steps.
 10. Select **Next** to move onto **Execution**.
@@ -223,11 +222,11 @@ Now you can select the [deployment strategy](/docs/continuous-delivery/manage-de
 
 1. In **Execution Strategies**, select **Rolling**, and then select **Use Strategy**.
 
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-91.png)
+   ![](./static/kubernetes-cd-quickstart-91.png)
 
 2. The **Rollout Deployment** step is added.
    
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-92.png)
+   ![](./static/kubernetes-cd-quickstart-92.png)
 
    This is a standard [Kubernetes rolling update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/). By default, Harness uses a `25% max unavailable, 25% max surge` strategy.
 
@@ -241,19 +240,19 @@ That's it. Now the pipeline stage is complete and you can deploy.
 3. Select **Run Pipeline**. Harness will verify the Pipeline and then run it.
    You can see the status of the deployment, and pause or abort it.
 
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-93.png)
+   ![](./static/kubernetes-cd-quickstart-93.png)
 
 4. Toggle **Console View** to watch the deployment with more detailed logging. Select the **Rollout Deployment** step and expand **Wait for Steady State**.
 
    You can see `deployment "my-nginx" successfully rolled out`.
 
-   ![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-94.png)
+   ![](./static/kubernetes-cd-quickstart-94.png)
 
 Congratulations! The deployment was successful.
 
 In your project's **Deployments**, you can see the deployment listed:
 
-![](../../onboard-cd/cd-quickstarts/static/kubernetes-cd-quickstart-95.png)
+![](./static/kubernetes-cd-quickstart-95.png)
 
 If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](#before_you_begin) section or the cluster's network setting does not allow the Delegate to connect to Docker Hub.In this tutorial, you learned how to:
 

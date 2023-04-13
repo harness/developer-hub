@@ -18,7 +18,7 @@ In each Stage, you define **what** you want to deploy using Services, **where** 
 
 For example, a **Service** uses your Kubernetes manifests and Docker image, an **Environment** connects to your dev cluster, and Harness automatically generates an **Execution** using a Rolling Deployment step.
 
-![](../onboard-cd/cd-concepts/static/cd-pipeline-modeling-overview-02.png)
+![](./static/cd-pipeline-modeling-overview-02.png)
 
 The image above shows you the order for modeling a CD stage:
 
@@ -34,19 +34,13 @@ You can model visually, using code, or via the REST API.
 
 Model your process visually using a guided sequence:
 
-
-
-| **Service** | **Infrastructure** | **Execution** |
-| --- | --- | --- |
-| ![](../onboard-cd/cd-concepts/static/service.png) | ![](../onboard-cd/cd-concepts/static/Infrastructure.png) | ![](../onboard-cd/cd-concepts/static/execution.png) |
-
-For more details, go to [Kubernetes deployment tutorial](../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
+![picture 1](./static/7974db787c16c8eb7cb108d856d86aa65a32914b82d356f21a9fe97f6184d2f1.png)
 
 #### YAML Builder
 
 Model your process in code using a full-featured YAML editor:
 
-![](../onboard-cd/cd-concepts/static/cd-pipeline-modeling-overview-03.png)
+![](./static/cd-pipeline-modeling-overview-03.png)
 
 For more details, go to [Harness YAML Quickstart](../../platform/8_Pipelines/harness-yaml-quickstart.md) and [YAML Reference: Pipelines](../../platform/8_Pipelines/w_pipeline-steps-reference/yaml-reference-cd-pipeline.md).
 
@@ -54,7 +48,7 @@ For more details, go to [Harness YAML Quickstart](../../platform/8_Pipelines/har
 
 Model your process using a full-featured REST API:
 
-![](../onboard-cd/cd-concepts/static/cd-pipeline-modeling-overview-04.png)
+![](./static/cd-pipeline-modeling-overview-04.png)
 
 For more details, go to [Harness API Quickstart](../../platform/16_APIs/api-quickstart.md) and [Use the Harness REST API](../../platform/16_APIs/harness-rest-api-reference.md).
 
@@ -66,7 +60,7 @@ Harness Continuous Delivery provides Triggers for automating the execution of Pi
 
 Automate the execution of a Pipeline in response to changes in manifests/specs, artifacts, or on a schedule:
 
-![](../onboard-cd/cd-concepts/static/cd-pipeline-modeling-overview-05.png)
+![](./static/cd-pipeline-modeling-overview-05.png)
 
 For more details, go to [Triggers](/docs/category/triggers).
 
@@ -74,7 +68,7 @@ For more details, go to [Triggers](/docs/category/triggers).
 
 Set when, if, and how a Stage executes and what to do if it fails:
 
-![](../onboard-cd/cd-concepts/static/cd-pipeline-modeling-overview-06.png)
+![](./static/cd-pipeline-modeling-overview-06.png)
 
 For more details, go to [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
@@ -82,7 +76,7 @@ For more details, go to [Stage and Step Conditional Execution Settings](/docs/pl
 
 Add checks at any point in your process to ensure that deployments are safe:
 
-![](../onboard-cd/cd-concepts/static/cd-pipeline-modeling-overview-07.png)
+![](./static/cd-pipeline-modeling-overview-07.png)
 
 For more details, see [Approvals](/docs/category/approvals).
 
@@ -95,7 +89,7 @@ Harness CV integrates with your APMs and logging tools to:
 * Verify that the deployed service is running safely and perform automatic rollbacks.
 * Apply machine learning to every deployment to identify and flag anomalies in future deployments.
 
-![](../onboard-cd/cd-concepts/static/cd-pipeline-modeling-overview-08.png)
+![](./static/cd-pipeline-modeling-overview-08.png)
 
 For more details, see [Verify Deployments with the Verify Step](../verify/verify-deployments-with-the-verify-step.md).
 

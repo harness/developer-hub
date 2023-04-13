@@ -57,7 +57,7 @@ Pipelines are collections of stages. In this tutorial, we will create a new Pipe
 6. For **Stage Name**, enter: **winrm****-stage.**
 7. For **Deployment Type**, select **WinRM** and click **Set Up Stage**.
 
-![](../../onboard-cd/cd-quickstarts/static/win-rm-tutorial-128.png)
+![](./static/win-rm-tutorial-128.png)
 
 ## Create a Harness WinRM Service
 

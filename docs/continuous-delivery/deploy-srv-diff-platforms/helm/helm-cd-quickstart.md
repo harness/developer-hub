@@ -53,7 +53,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 
 1. In your Harness Project, click **Deployments**, and then click **Create a** **Pipeline**.
    
-   ![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-00.png)
+   ![](./static/helm-cd-quickstart-00.png)
 
 2. Enter the name **Helm Quickstart** and click **Start**.
    Your Pipeline appears.
@@ -71,9 +71,9 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
    By separating Services and Service Definitions, you can propagate the same Service across stages while changing the artifacts, manifests, and variables with each stage.
 
    :::
-1. Give the Service the name **nginx** and click **Save**. 
+6. Give the Service the name **nginx** and click **Save**. 
    Once you have created a Service, it is persistent and can be used throughout the stages of this or any other Pipeline in the Project.
-2. In **Deployment Type**, click **Kubernetes**. Now your Service looks like this:
+7. In **Deployment Type**, click **Kubernetes**. Now your Service looks like this:
    ![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-02.png)
 
 Next, we'll add the NGINX Helm chart for the deployment.

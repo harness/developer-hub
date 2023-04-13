@@ -168,13 +168,13 @@ There are two Harness CD NextGen upgrade options.
 
 With the Harness upgrade team involved, the estimated timeline for a complete upgrade is about six weeks. Here is the upgrade process and the timeline for each stage.
 
-![picture 1](../../onboard-cd/upgrading/static/362da5ad5713ca1d3a30786f24eb71f6ce60ec094a00abf7e93b02bb8c2e0422.png)
+![picture 1](./static/362da5ad5713ca1d3a30786f24eb71f6ce60ec094a00abf7e93b02bb8c2e0422.png)
 
 ### Option 2: Self-service upgrade
 
 1. You access Harness CD NextGen from the home page of Harness FirstGen.
 
-    ![picture 2](../../onboard-cd/upgrading/static/d70937e8aa1a50af75650d5a64bfdb0e9e2bfc2278ff6fb7d4c5019b1487ef17.png)  
+    ![picture 2](./static/d70937e8aa1a50af75650d5a64bfdb0e9e2bfc2278ff6fb7d4c5019b1487ef17.png)  
 
 2. You pick the FirstGen applications to re-create in NextGen.
    

@@ -291,7 +291,7 @@ This Delegate will perform all operations at runtime.
 12. In **Secret Value**, paste in a GitHub Personal Access Token (PAT). When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>.
   For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
   Ensure you PAT has the **repo** scope selected:
-  ![](../../onboard-cd/cd-quickstarts/static/repoScope.png)
+  ![](./static/repoScope.png)
 1. Select **Save**, and then select **Continue**.
 2. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then **Continue**.
 3. In **Delegates Setup**, select **Install a New Delegate**.

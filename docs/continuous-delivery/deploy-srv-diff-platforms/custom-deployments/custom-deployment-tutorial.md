@@ -193,7 +193,7 @@ Now that you have provided a path to the instances array, you can map any useful
 
 **Important** The `instancename` value in the Field Name setting is **mandatory**.
 
-![](../../onboard-cd/cd-quickstarts/static/custom-deployment-tutorial-15.png)
+![](./static/custom-deployment-tutorial-15.png)
 
 You must use `instancename` to identify the target host(s) in the JSON array.
 
