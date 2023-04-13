@@ -105,7 +105,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 </details>
 
 
-- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/jira-integrations). (STO-5467)
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations). (STO-5467)
 
 ## February 15, 2023
 

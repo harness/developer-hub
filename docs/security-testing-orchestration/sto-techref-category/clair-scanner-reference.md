@@ -6,7 +6,7 @@ sidebar_position: 100
 
 You can set up Clair scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Before you begin
+### Before you begin
 
 ```mdx-code-block
 import StoCreateDinD from './shared/dind-bg-step.md';
@@ -14,7 +14,7 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 <StoCreateDinD />
 
-## Security step settings
+### Security step settings
 
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
@@ -34,7 +34,21 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_config_name` = `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Fail on Severity
+
+```mdx-code-block
+import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
+```
+
+<StoLegacyContainer />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
+
+#### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
@@ -42,10 +56,5 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 <StoSettingFailOnSeverity />
 
 
-```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
-
-<StoLegacyContainer />
 
 

@@ -204,7 +204,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 * The Snyk integration has been updated. Orchestrated Snyk scans now upload results to the external Snyk portal by default. (STO-5607)
 
-* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations):
+* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations):
    * After you create a new ticket, **Issue Details** replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
 
      Before:
@@ -446,7 +446,7 @@ The following security steps are now generally available:
 
 ### Security Testing Orchestration
 
-* The new [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, the Issue Details pane now shows the ticket status along with the number. (STO-5491)
+* The new [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, the Issue Details pane now shows the ticket status along with the number. (STO-5491)
 
 ## March 8, 2023, version 78619
 
@@ -1066,7 +1066,7 @@ The Custom Git Connector now supports connection via the Harness Platform, in ad
 
 * You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
 
-* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans). (STO-4958)	
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans). (STO-4958)	
 
 
 ## October 31, 2022

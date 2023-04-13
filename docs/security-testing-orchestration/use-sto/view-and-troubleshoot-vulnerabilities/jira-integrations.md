@@ -1,15 +1,15 @@
 ---
 title: Create Jira tickets for detected issues
 description: You can easily create Jira tickets for any issue detected during an STO build.
-sidebar_position: 200
+sidebar_position: 30
 ---
 
 
 ```mdx-code-block
-import create_ticket from './static/jira-integration-02-create-ticket.png'
-import ticket_num from './static/jira-integration-03-ticket-num-in-issue-details.png'
-import issue_link from './static/jira-integration-04-link-in-jira-ticket.png'
-import ticket_summary from './static/jira-integration-05-ticket-summary.png'
+import create_ticket from '../static/jira-integration-02-create-ticket.png'
+import ticket_num from '../static/jira-integration-03-ticket-num-in-issue-details.png'
+import issue_link from '../static/jira-integration-04-link-in-jira-ticket.png'
+import ticket_summary from '../static/jira-integration-05-ticket-summary.png'
 ```
 
 
@@ -39,19 +39,19 @@ This integration has a separate setup path that is unrelated to other Jira-relat
  
     2. The default Jira project where you want to create your tickets. (You can select a different project when you create a ticket.)
 
-       ![](./static/jira-integration-00-select-connector.png)
+       ![](../static/jira-integration-00-select-connector.png)
 
 ## Create a Jira ticket from a detected issue
 
 :::note
-You can only create Jira tickets for targets that have baselines specified. For more information, go to [Targets, baselines, and variants in STO](docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+You can only create Jira tickets for targets that have baselines specified. For more information, go to [Targets, baselines, and variants in STO](/docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
 :::
 
 1. Go to the **Pipeline Execution** &gt; **Security Tests** page with the detected issue. 
 
 2. Click on the issue to select it. Then click **Create Ticket**. 
 
-   ![](./static/jira-integration-01-create-ticket.png)
+   ![](../static/jira-integration-01-create-ticket.png)
 
 3. In **Create Ticket in Jira**, set the options as follows:
 

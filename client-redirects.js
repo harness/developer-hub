@@ -74,10 +74,6 @@ module.exports = {
       to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules",
     },
     {
-      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/k8s-connector-autostopping",
-      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/k8s-connector-autostopping",
-    },
-    {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-an-application-gateway-for-azure",
       to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-an-application-gateway-for-azure",
     },
@@ -839,9 +835,76 @@ module.exports = {
       to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp",
     },
     
+ // Created by doug bothwell to redirect topics in STO Workflows on Apr 13, 2023
+
     {
-      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
-      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
+      from: "/docs/security-testing-orchestration/use-sto/sto-workflows-overview",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/snyk-scans",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/java-scans",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/java-scans",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/add-artifacts-to-pipelines",
+      to: "/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-artifacts-to-pipelines",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/download-images-from-private-registry",
+      to: "/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/security-testing-dashboard",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/sto-overview",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/jira-integrations",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/email-notifications",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/exemption-workflows",
+      to: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/stop-pipelines-using-opa",
+      to: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa",
     },
     
 ],

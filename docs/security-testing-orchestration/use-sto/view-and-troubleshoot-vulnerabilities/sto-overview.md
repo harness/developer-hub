@@ -1,7 +1,7 @@
 ---
-title: STO Overview Page
+title: View issues in target baselines over time
 description: The STO Overview page enables you to see all detected issues in your target baselines.
-sidebar_position: 60
+sidebar_position: 10
 helpdocs_topic_id: 2ap1uol6ti
 helpdocs_category_id: utstv3qzqt
 helpdocs_is_private: false
@@ -13,7 +13,7 @@ The STO Overview enables you to see all detected issues in your `main` branches,
 To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline target, such as a feature or developer branch, go to the build results for that target and click **Security Tests**.
 
 
-![](./static/sto-overview-06.png)
+![](../static/sto-overview-06.png)
 
 This view has has the following components:
 

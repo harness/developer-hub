@@ -21,7 +21,7 @@ By ingesting your custom Issues, you can benefit from STO's refinement, deduplic
 
 1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
  
-   ![](./static/ingesting-issues-from-other-scanners-00.png)
+   ![](../static/ingesting-issues-from-other-scanners-00.png)
 
 2. Generate your issues data in the [required JSON format](#jaon-data-format-reference) described below and then save it in the shared folder.  
 You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. Go to [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) for an example.
@@ -160,7 +160,7 @@ You can add custom fields to an issue. The only restriction is that you cannot u
 ```
 The custom fields will get grouped together at the end of the issue details like this:
 
-![](./static/ingesting-issues-from-other-scanners-01.png)
+![](../static/ingesting-issues-from-other-scanners-01.png)
 
 #### Reserved Keywords
 

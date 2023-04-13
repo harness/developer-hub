@@ -15,7 +15,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 * This workflow assumes you're familiar with the following:
 
-  * [Set up Harness for STO](../onboard-sto/set-up-harness-for-sto.md) 
+  * [Set up Harness for STO](../../onboard-sto/set-up-harness-for-sto.md) 
   * [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md) 
   * [Setup requirements for AWS CodePipeline](https://docs.snyk.io/integrations/ci-cd-integrations/aws-codepipeline-integration/setup-requirements-for-aws-codepipeline)
   
@@ -25,7 +25,7 @@ This workflow describes how to ingest Snyk scan results into a Harness pipeline.
 
 The following example describes how to scan a local .NET image built using Mavan. A Run step installs the build; then it scans the image and saves the output to a shared folder. A Security step then ingests the output file.
 
-![](./static/snyk-scans-pipeline-00.png)
+![](../static/snyk-scans-pipeline-00.png)
 
 1. In your Harness pipeline, go to the Overview tab of the Security stage. Under **Shared Paths**, enter a shared path such as `/shared/customer_artifacts`.
 
@@ -50,13 +50,13 @@ The following example describes how to scan a local .NET image built using Mavan
    
    Your Run step should now look like this:
    
-   ![](./static/snyk-scans-run-step-01.png)
+   ![](../static/snyk-scans-run-step-01.png)
  
 6. In the Run step > **Advanced** tab > **Failure Strategies**, set the Failure Strategy to **Mark as Success**. 
  
    This step is required to ensure that the pipeline proceeds if Snyk finds a vulnerability. Otherwise the build will exit with a error code before STO can ingest the data.
    
-7. Add a Security step and [configure the scanner](../sto-techref-category/security-step-settings-reference#snyk) to ingest the results of the scan. In this example, the step is configured as follows:  
+7. Add a Security step and [configure the scanner](../../sto-techref-category/security-step-settings-reference#snyk) to ingest the results of the scan. In this example, the step is configured as follows:  
    ```yaml
     - step:
       type: Security

@@ -1,4 +1,4 @@
-<details><summary>Container Image scan settings</summary>
+<details><summary>Container image scan settings</summary>
 
 The following settings apply to all scanners where the `scan_type` is `containerImage`.
 
