@@ -123,6 +123,6 @@ Velero takes two kinds of backups: Backups with Volume (VolumeSnapshots) and Kub
 
     `velero restore create --from-backup harness-backup`
 
-    The PVs are recreated, but the PVs are not bound to it. Scale the MongoDB pods back to 3. This creates the PVs with the data that was backed up from the volumeSnapshots. 
+    The PVs are recreated, but the PVs are not bound to the Harness namespace. Scale the MongoDB pods back to 3. This creates the PVs with the data that was backed up from the volumeSnapshots. 
 
 
