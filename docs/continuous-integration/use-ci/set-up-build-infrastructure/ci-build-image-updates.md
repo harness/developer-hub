@@ -1,7 +1,7 @@
 ---
 title: CI build image updates
 description: Run security scans or other tests on new CI build images before you deploy them.
-sidebar_position: 40
+sidebar_position: 80
 helpdocs_topic_id: 1h724b6txn
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

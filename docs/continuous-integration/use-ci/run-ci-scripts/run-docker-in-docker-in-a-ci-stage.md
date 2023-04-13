@@ -27,7 +27,7 @@ These steps assume you are familiar with the following concepts:
 
 * Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 
 ## Step 1: Set Up the CI Stage
 

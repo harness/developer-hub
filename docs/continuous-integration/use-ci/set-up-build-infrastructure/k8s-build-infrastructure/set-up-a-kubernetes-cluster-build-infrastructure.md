@@ -114,7 +114,7 @@ In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster c
 
 In **Namespace**, enter the Kubernetes namespace to use. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../../platform/20_References/runtime-inputs.md).
 
-You may need to configure the settings described below, as well as other advanced settings described in [CI Build stage settings](../../build-stage-settings/ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
+You may need to configure the settings described below, as well as other advanced settings described in [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 
 <details>
 <summary>Service Account Name</summary>

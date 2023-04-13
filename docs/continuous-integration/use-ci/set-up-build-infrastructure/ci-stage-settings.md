@@ -1,7 +1,7 @@
 ---
 title: CI Build stage settings
 description: This topic describes CI Build stage settings.
-sidebar_position: 10
+sidebar_position: 60
 helpdocs_topic_id: yn4x8vzw3q
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -68,7 +68,7 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Bu
 
 These settings are found on the **Infrastructure** tab after adding a stage to a pipeline.
 
-Infrastructure is where the build runs the steps in this stage. It is a build farm, such as a Kubernetes cluster. Infrastructure settings vary by [build infrastructure type](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+Infrastructure is where the build runs the steps in this stage. It is a build farm, such as a Kubernetes cluster. Infrastructure settings vary by [build infrastructure type](./which-build-infrastructure-is-right-for-me.md).
 
 The first stage requires you to configure a build infrastructure. In stages after the first, you can either **Propagate from an existing stage** or **Use a New Infrastructure**.
 
@@ -81,7 +81,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="cloud" label="Cloud" default>
 ```
 
-Use the **Cloud** infrastructure option for [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+Use the **Cloud** infrastructure option for [Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
 
 The following **Platform** settings are available:
 
@@ -93,7 +93,7 @@ The following **Platform** settings are available:
   <TabItem value="kubernetes" label="Kubernetes">
 ```
 
-Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 The following **Platform** settings are available:
 
@@ -197,7 +197,7 @@ By default, [Harness pulls certain images from public DockerHub repos](./harness
   <TabItem value="local" label="Local">
 ```
 
-Use the **Local** infrastructure option for a [local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md).
+Use the **Local** infrastructure option for a [local runner build infrastructure](./define-a-docker-build-infrastructure.md).
 
 The following **Platform** settings are available:
 

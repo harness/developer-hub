@@ -28,7 +28,7 @@ Depending on the stage's build infrastructure, a **Run** step can use binaries t
 This topic assumes you are familiar with the following:
 
 * [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
-* [CI Build Stage Settings](../build-stage-settings/ci-stage-settings.md)
+* [CI Build Stage Settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Creating and configuring codebases for CI pipelines](../codebase-configuration/create-and-configure-a-codebase.md)
 
 You need a CI pipeline to which you can add the **Run** step.

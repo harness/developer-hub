@@ -27,7 +27,7 @@ This topic assumes you're familiar with the following:
 
 * [Building and testing on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm)
 * [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
-* [CI Build stage settings](../../build-stage-settings/ci-stage-settings.md)
+* [CI Build stage settings](../ci-stage-settings.md)
 * [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
 * Drone VM Runner
   * [Drone documentation - VM Runner overview](https://docs.drone.io/runner/vm/overview/)

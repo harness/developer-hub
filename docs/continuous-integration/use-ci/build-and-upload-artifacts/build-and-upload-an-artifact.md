@@ -48,7 +48,7 @@ You should have an understanding of the following:
 * How to create pipelines. If you haven't created a pipeline before, try one of the following tutorials:
   * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm).
   * [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add the Build and Push step
 

@@ -64,7 +64,7 @@ This setting applies only to the repo specified in this **Git Clone** step. It i
 
 An optional target path in the pipeline workspace where you want to clone the repo.
 
-You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../use-ci/build-stage-settings/ci-stage-settings.md) to share data across steps in your **Build** stage.
+You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../use-ci/set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
 
 ## Additional Configuration
 

@@ -14,7 +14,7 @@ You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipeli
 ### Before you Begin
 
 * [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 * [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
 

@@ -510,24 +510,6 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
     },
 
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 4, 2023
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-cluster-requirement",
-      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-cluster-requirement",
-    },
-
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 5, 2023
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-stage-settings",
-      to: "/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings",
-    },
-
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 5, 2023
-    {
-      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
-    },
-
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
     {
       from: "/docs/category/troubleshoot-and-optimize-ci",
@@ -567,13 +549,15 @@ module.exports = {
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
-      to: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
     },
 
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
       from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
-      to: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
@@ -620,6 +604,7 @@ module.exports = {
     },
 
     {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-cluster-requirement",
       from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-cluster-requirement",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/ci-cluster-requirement",
     },
@@ -637,6 +622,23 @@ module.exports = {
     {
       from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-stage-settings",
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
+    },
+
+    {
+      from: "/docs/category/build-stage-settings",
+      to: "/docs/category/set-up-build-infrastructure",
     },
 ],
 };

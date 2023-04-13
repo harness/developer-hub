@@ -37,7 +37,7 @@ The following steps explain how to create a pipeline and add a **Build** stage. 
 7. Select **Set Up Stage**.
 8. On the stage's **Infrastructure** tab, [set up the build infrastructure](/docs/category/set-up-build-infrastructure).
 
-For more information about configuring the **Build** stage's, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
+For more information about configuring the **Build** stage's, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add a Git Clone step
 
@@ -118,7 +118,7 @@ pipeline:
 
 As an alternative to the **Git Clone** step, you can use scripts in **Run** steps to clone multiple repos into a stage.
 
-You might want to define [stage variables](../build-stage-settings/ci-stage-settings.md#advanced-stage-variables) for the names and URLs of the codebases that you clone into the workspace. These variables are accessible across all steps in the stage.
+You might want to define [stage variables](../set-up-build-infrastructure/ci-stage-settings.md#advanced-stage-variables) for the names and URLs of the codebases that you clone into the workspace. These variables are accessible across all steps in the stage.
 
 Depending on the image you use for the **Run** step, you might need to install Git before you clone any repos. For example, you could use this code in a **Run** step to install git, verify that it's working, and clone the repo with the Dockerfile needed to build an image. This example uses stage variables for the GitHub usenrame and Docker repo.
 
