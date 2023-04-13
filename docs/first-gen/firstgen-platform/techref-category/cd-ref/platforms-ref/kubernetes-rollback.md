@@ -77,6 +77,6 @@ Simply add this command to the **Rollback Steps** in a Workflow where you want t
 ### See Also
 
 * [Kubernetes Quickstart](../../../../first-gen-quickstarts/kubernetes-quickstart.md)
-* [Kubernetes How-tos](../../..//docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md)
+* [Kubernetes How-tos](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
 * [Kubernetes Deployments Overview](../../../../continuous-delivery/concepts-cd/deployment-types/kubernetes-overview.md)
 
