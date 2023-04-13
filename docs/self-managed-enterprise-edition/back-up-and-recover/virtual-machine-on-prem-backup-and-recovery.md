@@ -1,7 +1,7 @@
 ---
 title: Back up and recover virtual machine installations with KOTS
 description: Learn how to back up and recover Self-Managed Enterprise Edition - Virtual Machine using KOTS snapshots. 
-# sidebar_position: 10
+# sidebar_position: 20
 helpdocs_topic_id: 1jqycx6omm
 helpdocs_category_id: 75ydek1suj
 helpdocs_is_private: false
