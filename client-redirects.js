@@ -434,6 +434,7 @@ module.exports = {
       },
     
       {
+        from: "/docs/platform/Delegates/delegate-guide/delegate-image-types",
         from: "/docs/platform/Delegates/get-started-with-delegates/delegate-image-types",
         to: "/docs/platform/Delegates/delegate-concepts/delegate-image-types",
       },
@@ -532,12 +533,6 @@ module.exports = {
        {
          from: "/docs/platform/Delegates/delegate-guide/delegate-how-tos",
          to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
-       },
-    
-    // Created by kat-enos for PR-2421 on Jan 13, 2023
-       {
-         from: "/docs/platform/Delegates/delegate-guide/delegate-image-types",
-         to: "/docs/platform/Delegates/delegate-concepts/delegate-image-types",
        },
     
     // Created by kat-enos for PR-2421 on Jan 13, 2023
