@@ -31,7 +31,9 @@ module.exports = {
     //  },    
     //===================================================================================
 
-     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
+  
+    
+    // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
      {
       from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
       to: "/tutorials/build-code/build/kubernetes-build-farm",
