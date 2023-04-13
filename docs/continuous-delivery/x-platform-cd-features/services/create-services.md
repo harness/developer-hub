@@ -12,7 +12,7 @@ You can create services from:
 * An account
 * An Organization
 
-If you are new to Harness, review [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md) and [create your first CD pipeline](../../get-started/create-first-pipeline.md).
+If you are new to Harness, review [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md) and [create your first CD pipeline](../../get-started/create-first-pipeline.md).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

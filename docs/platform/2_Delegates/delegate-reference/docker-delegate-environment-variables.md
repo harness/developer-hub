@@ -129,7 +129,7 @@ The tags that were added to the delegate in Harness Manager or YAML before deleg
 
 Harness generates tags based on the delegate name. You can add others. The tags appear on the delegate details page in Harness Manager. 
 
-See [Tags reference](/docs/platform/20_References/tags-reference.md) and [Select delegates with tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md).
+See [Tags reference](/docs/platform/20_References/tags-reference.md) and [Select delegates with tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ```
 - name: DELEGATE_TAGS  
@@ -147,7 +147,7 @@ The maximum number of tasks the delegate can perform at one time. Delegate opera
 
 ### DELEGATE_ORG_IDENTIFIER
 
-The Harness organization [Identifier](/docs/platform/References/entity-identifier-reference.md) where the delegate registers. 
+The Harness organization [Identifier](/docs/platform/20_References/entity-identifier-reference.md) where the delegate registers. 
 
 This value is not specified for delegates at the account level.
 
@@ -158,7 +158,7 @@ This value is not specified for delegates at the account level.
 
 ### DELEGATE_PROJECT_IDENTIFIER
 
-The Harness project [Identifier](/docs/platform/References/entity-identifier-reference.md) within which the delegate registers. 
+The Harness project [Identifier](/docs/platform/20_References/entity-identifier-reference.md) within which the delegate registers. 
 
 This value is not specified for delegates at the account or organization level.
 
@@ -183,11 +183,7 @@ You can use this environment variable to run scripts on the delegate. For exampl
 
 A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).
 
-<<<<<<< HEAD
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md). 
-=======
 See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). 
->>>>>>> main
 
 ```
 - INIT_SCRIPT =  echo hello world!

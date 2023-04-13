@@ -373,7 +373,7 @@ In this tutorial, you learned how to:
 * Create a Kubernetes Canary Workflow, using a Canary and Primary (rollout) phase.
 * Deploy your Kubernetes Canary Workflow to your target cluster.
 
-Next, try the [Kubernetes Deployments Overview](../continuous-delivery/kubernetes-deployments/kubernetes-deployments-overview.md) tutorial to learn how to use Harness for standard and Helm-based Kubernetes deployments.
+Next, try the [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md) tutorial to learn how to use Harness for standard and Helm-based Kubernetes deployments.
 
 Read the following related How-tos:
 

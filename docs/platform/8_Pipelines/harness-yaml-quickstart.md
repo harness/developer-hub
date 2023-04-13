@@ -33,11 +33,6 @@ You'll learn how to:
 ### Before you begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-<<<<<<< HEAD
-* The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio. See ​[CD Quickstarts](/tutorials/deploy-services) and [CI Quickstarts](/docs/category/onboard-with-ci).
-=======
-* The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio. See ​[CD Quickstarts](/docs/category/cd-tutorials) and [Get started with CI](/docs/category/get-started-with-ci).
->>>>>>> main
 
 ### Visual Summary
 
@@ -150,13 +145,8 @@ In `type`, you select the type of Stage you want to add. This is the same as cli
 For details on each type, see:
 
 * **Approval:** [Using Manual Harness Approval Stages](../9_Approvals/adding-harness-approval-stages.md), [Adding Jira Approval Stages and Steps](../9_Approvals/adding-jira-approval-stages.md)
-<<<<<<< HEAD
 * **CI:** [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 * **Deployment:** [CD Quickstarts](/tutorials/deploy-services)
-=======
-* **CI:** [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
-* **Deployment:** [CD Quickstarts](/docs/category/cd-tutorials)
->>>>>>> main
 
 For this quickstart, we're going to use the **Deployment** type.
 

@@ -76,25 +76,7 @@ Create output variables to be used by other steps in the stage. The **Value** se
 
 You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
-<<<<<<< HEAD:docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step.md
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
-=======
-You can use pipeline variables along with `httpResponseBody` and `httpResponseCode`. 
-
-Here are some examples:
-
-`<+json.object(httpResponseBody).title>`
-
-`<+json.select(<+pipeline.variables.title>, httpResponseBody)>`
-
-To concatenate strings within the JSON functor:
-
-`<+json.select(<+ <+pipeline.variables.user> + <+pipeline.variables.id>>,httpResponseBody)>` or
-
-`<+json.select("user".concat(<+pipeline.variables.id>),httpResponseBody)>`
-
-For more information, go to [JSON and XML Functors](json-and-xml-functors.md).
->>>>>>> main:docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step.md
 
 ## Step execution inputs and outputs
 
@@ -135,17 +117,13 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 In **Advanced**, you can use the following options:
 
-* [Step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Step skip condition settings](/docs/platform/8_pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step failure strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select delegates with selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ## Delegate proxy
 
-<<<<<<< HEAD:docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step.md
 HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/configure-delegates/configure-delegate-proxy-settings).
-=======
-HTTP step supports delegate proxy settings by default. For more information, go to [Delegate Proxy Settings](../../../platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings.md).
->>>>>>> main:docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step.md
 
 ## Header capability check
 

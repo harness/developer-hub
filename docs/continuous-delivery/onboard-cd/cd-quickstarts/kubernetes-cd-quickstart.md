@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This tutorial shows you how to deploy a publicly-available NGINX Docker image and manifest into your Kubernetes cluster using a [rolling update strategy](../../cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) in Harness.
+This tutorial shows you how to deploy a publicly-available NGINX Docker image and manifest into your Kubernetes cluster using a [rolling update strategy](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md) in Harness.
 
 ## Objectives
 
@@ -75,7 +75,7 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
 2. In **Manifests**, click **Add Manifest**.
    :::note
 
-   **What about Artifacts?** In this quickstart we are using a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the public manifest from Kubernetes. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in your values.yaml (`image: <+artifact.image>`). See [Add Container Images as Artifacts for Kubernetes Deployments](../../cd-advanced/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+   **What about Artifacts?** In this quickstart we are using a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the public manifest from Kubernetes. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in your values.yaml (`image: <+artifact.image>`). See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
 
    :::
 1. Select **K8s Manifest**, and click **Continue**.
@@ -199,7 +199,7 @@ Let's look at the steps:
 
 ## Step 4: Add a Rollout Deployment Step
 
-Now you can select the [deployment strategy](../../cd-deployments-category/deployment-concepts.md) for this stage of the Pipeline.
+Now you can select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) for this stage of the Pipeline.
 
 1. In Execution Strategies, select **Rolling**, and then click **Use Strategy**.
 

@@ -17,7 +17,7 @@ If you want to override your **Secrets** in `settings.xml` file at Pipeline exec
 
 * [Harness Secret Manager Overview](../../../platform/6_Security/1-harness-secret-manager-overview.md)
 * [Add Secrets Manager](../../../platform/6_Security/5-add-secrets-manager.md)
-* [Add Text Secrets](/docs/platform/Security/add-use-text-secrets.md)
+* [Add Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
 * [Add SSH Secrets](../../../platform/6_Security/4-add-use-ssh-secrets.md)
 
 ### Step 1: Create a Secret at Account level
@@ -27,7 +27,7 @@ Make sure that you have the **Account**> **Secrets**> **Create/Edit/View** p
 1. Go to **Account Settings**, **Account Resources**, **Secrets**.
 ![](./static/modify-and-override-build-settings-before-a-build-08.png)
 2. Click **Secrets**.  
-For details on creating a secret, see [Add Text Secret](/docs/platform/Security/add-use-text-secrets.md).
+For details on creating a secret, see [Add Text Secret](/docs/platform/6_Security/2-add-use-text-secrets.md).
 3. Create a new **Text** **Secret** in Harness.  
 In this example, we create a new **Text Secret** named: **settingsXML**.
 4. In **Secret Value**, paste the XML settings content from your **settings.xml** file.

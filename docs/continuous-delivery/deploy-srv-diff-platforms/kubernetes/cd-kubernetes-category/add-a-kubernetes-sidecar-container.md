@@ -22,19 +22,10 @@ This topic provides an example of a simple sidecar deployment.
 
 ## Before you begin
 
-<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md
 * [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments): review how to add container images as Artifacts for Kubernetes Deployments. Sidecar artifact are described there also.
-* [Install a Kubernetes Delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate): you must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
 * [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [What Can I Deploy in Kubernetes?](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes)
-=======
-* [Add Container Images as Artifacts for Kubernetes Deployments](add-artifacts-for-kubernetes-deployments.md): review how to add container images as Artifacts for Kubernetes Deployments. Sidecar artifact are described there also.
-* [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md): you must have a Harness Kubernetes Delegate running in your target Kubernetes cluster.
-* [Kubernetes Deployments Overview](kubernetes-deployments-overview.md)
-* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [What Can I Deploy in Kubernetes?](../../cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md)
->>>>>>> main:docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md
 
 ## Use Harness artifacts
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can add Steps to Pipelines individually or as a Step Group. You can run Steps and Step Groups serially or in parallel. Unlike individual steps, a step group can apply Conditional Execution (skip conditions) and Failure Strategy to all steps in the group.
 
-One key use case for Step Groups is to speed up Pipelines that include a lot of tests. This is one of the [available methods](../troubleshoot/optimizing-ci-build-times.md) you can use to speed up your CI Pipelines.
+One key use case for Step Groups is to speed up Pipelines that include a lot of tests. This is one of the [available methods](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md) you can use to speed up your CI Pipelines.
 
 ![](./static/group-ci-steps-using-step-groups-16.png)
 

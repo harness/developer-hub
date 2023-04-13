@@ -49,11 +49,7 @@ The following quickstart guides are available for Feature Flags:
 
 ## Harness CD Community Edition
 
-<<<<<<< HEAD
 * [Harness Community Edition deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-quickstart.md) shows you how to set up Harness CD Community Edition locally and create a CD Pipeline that deploys a public NGINX image to a local cluster. 
-=======
-* [Harness Community Edition deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/harness-community-edition-quickstart.md) shows you how to set up Harness CD Community Edition locally and create a CD Pipeline that deploys a public NGINX image to a local cluster.
->>>>>>> main
 
 ## Harness YAML
 

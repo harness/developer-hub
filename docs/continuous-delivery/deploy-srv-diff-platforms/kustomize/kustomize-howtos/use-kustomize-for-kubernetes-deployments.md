@@ -370,11 +370,6 @@ When Harness deploys, it will apply the plugin you reference just like you would
 
 To add a plugin to the Delegate, you can install it manually or use the `INIT_SCRIPT` environment variable in the Delegate config file to install it.
 
-<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md
-For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
-=======
-For steps on running scripts in Delegate config files, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
->>>>>>> main:docs/continuous-delivery/cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md
 
 [Path to Plugin in Service Manifest](#path-to-plugin-in-service-manifest)
 
@@ -478,11 +473,6 @@ name: KUSTOMIZE_PATH
 value: "<path>"  
 ...
 ```
-<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md
-See [Install a Kubernetes Delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate).
-=======
-See [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/overview.md).
->>>>>>> main:docs/continuous-delivery/cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md
 
 ### Docker delegate
 
@@ -492,11 +482,6 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 ```yaml
 - KUSTOMIZE_PATH=<path>
 ```
-<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md
-See [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
-=======
-See [Install a delegate](../../../platform/2_Delegates/install-delegates/overview.md).
->>>>>>> main:docs/continuous-delivery/cd-advanced/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md
 
 ## Next steps
 

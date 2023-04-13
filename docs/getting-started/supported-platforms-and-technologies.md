@@ -475,11 +475,7 @@ GitOps supports the following:
 - GnuPG Keys:
   - GnuPG Public Key Data (ASCII-armored).
 
-<<<<<<< HEAD
 See [Harness GitOps Basics](/docs/continuous-delivery/gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart.md)
-=======
-See [Harness GitOps Basics](../continuous-delivery/cd-gitops/harness-git-ops-basics.md) and [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md)
->>>>>>> main
 
 ## Continuous Integration (CI)
 
@@ -816,11 +812,7 @@ For Kubernetes deployments, the following SDKs/tools are included in the Delegat
 
 The versions can be found in this public GitHub repo: <https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools>
 
-<<<<<<< HEAD
-For details on updating the default tool versions, see [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
-=======
 For details on updating the default tool versions, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
->>>>>>> main
 
 For Kubernetes deployments, the following SDKs/tools are certified.
 

@@ -34,13 +34,13 @@ The **Create Stack** step is where you connect Harness to your templates and pro
 
 In **Name**, enter a name for the step, for example, **C****reate EC2 Instance**.
 
-Harness will create an [Entity Id](/docs/platform/References/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
+Harness will create an [Entity Id](/docs/platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. You can use an Harness expression and Id to refer to settings in this step from another step.
 
-See [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables.md).
+See [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### Timeout
 
-In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 ### Provisioner Identifier
 
@@ -111,8 +111,8 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets.md)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables.md)
+* [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### Stack Name
 
@@ -176,8 +176,8 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets.md)
-* [Built-in and Custom Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables.md)
+* [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### Option: CloudFormation Parameters Overrides
 
@@ -189,7 +189,7 @@ In **CloudFormation Parameters Overrides**, click **Retrieve Names from template
 
 For each parameter you want to override, enter a new values in **Value**.
 
-Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets.md).
+Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
 
 ### Option: Role ARN
 
@@ -236,6 +236,6 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 In **Advanced**, you can use the following options:
 
 * [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 

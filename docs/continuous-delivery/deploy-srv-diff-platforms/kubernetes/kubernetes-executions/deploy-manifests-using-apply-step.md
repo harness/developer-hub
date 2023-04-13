@@ -198,20 +198,6 @@ You cannot use `kubectl` subcommands in the **Command Flags** setting. For examp
 
 For more information on command flags, go to [Apply](https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#apply) in the Kubernetes documentation.
 
-<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md
-For more information on installing custom binaries on the delegate, go to [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/advanced-installation/install-a-delegate-with-3-rd-party-tool-custom-binaries/).
-=======
-For more information on installing custom binaries on the delegate, go to [Install a delegate with third-party tool custom binaries](https://developer.harness.io/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/).
->>>>>>> main:docs/continuous-delivery/cd-execution/kubernetes-executions/deploy-manifests-using-apply-step.md
-
-## Advanced settings
-
-In **Advanced**, you can use the following options:
-
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 
 ## Override value
 

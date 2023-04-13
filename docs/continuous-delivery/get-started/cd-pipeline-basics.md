@@ -121,17 +121,6 @@ For example, if your Pipeline deploys a Docker image to a Kubernetes cluster, yo
 
 The Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, monitoring systems, etc.
 
-For examples, see:
-
-<<<<<<< HEAD:docs/continuous-delivery/get-started/cd-pipeline-basics.md
-* [Delegate Installation Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegate-installation-overview.md)
-* [Install a Kubernetes Delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md)
-* [Install a Docker Delegate](/docs/getting-started/supported-platforms-and-technologies.md)
-=======
-* [Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
-* [Install a Kubernetes or Docker Delegate](/docs/platform/2_Delegates/install-delegates/overview.md)
->>>>>>> main:docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md
-
 #### Credentials and permissions
 
 The Delegate uses the credentials set up in the Connectors used by the Pipeline to perform deployment tasks.

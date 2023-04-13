@@ -30,9 +30,9 @@ How long Harness should run this step before failing it. Enter a minimum of 10m 
 
 ## Advanced
 
-* [Step Skip Condition Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step Failure Strategy Settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select Delegates with Selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Step skip condition settings](/docs/platform/8_pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step failure strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select delegates with selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
 ## See Also
 

@@ -17,13 +17,8 @@ For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipel
 ### ​Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-<<<<<<< HEAD
 * [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
-=======
-* [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
-* [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
->>>>>>> main
 
 ### ​Step 1: Add a trigger to a pipeline​
 

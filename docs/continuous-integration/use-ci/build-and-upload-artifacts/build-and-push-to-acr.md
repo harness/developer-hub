@@ -40,4 +40,4 @@ While the build runs, you can monitor the **Build and Push to ACR** step logs, a
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
-* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)

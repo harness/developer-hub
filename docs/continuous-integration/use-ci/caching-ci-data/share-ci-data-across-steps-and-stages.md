@@ -28,12 +28,7 @@ You must use one of the following caching methods to share data across stages:
 * [Save and Restore Caches from S3 buckets](saving-cache.md)
 * [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
 
-<<<<<<< HEAD
-You cannot share access credentials or other [Text Secrets](/docs/platform/Security/add-use-text-secrets.md) across stages. For complete end-to-end examples, go to the following:
-=======
-You cannot share access credentials or other [text secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages.
-## Share services
->>>>>>> main
+You cannot share access credentials or other [Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md) across stages. For complete end-to-end examples, go to the following:
 
 If you need to maintain a long-running service for the duration of a stage, use a [Background step](../../ci-technical-reference/background-step-settings.md).
 

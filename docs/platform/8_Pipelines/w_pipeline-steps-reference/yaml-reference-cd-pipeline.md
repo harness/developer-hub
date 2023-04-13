@@ -32,11 +32,6 @@ The Pipeline Studio includes visual and YAML editors.
 
 The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio.
 
-<<<<<<< HEAD
-See ​[CD Quickstarts](/tutorials/deploy-services) and [CI Quickstarts](/docs/category/onboard-with-ci).
-=======
-See [CD Quickstarts](/docs/category/cd-tutorials) and [Get started with CI](/docs/category/get-started-with-ci).
->>>>>>> main
 
 The YAML editor validates YAML before allowing you to save it.
 

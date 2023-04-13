@@ -23,13 +23,8 @@ You'll learn how to: 
 ### Before you begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
-<<<<<<< HEAD
 * The HTTP template in this quickstart is added to a CD Pipeline. If you are new to Harness CD, see [CD Quickstarts](https://developer.harness.io/tutorials/deploy-services).
 * See ​[CIE Quickstarts](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
-=======
-* The HTTP template in this quickstart is added to a CD Pipeline. If you are new to Harness CD, go to [CD Quickstarts](https://developer.harness.io/docs/category/cd-tutorials).
-* Go to [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
->>>>>>> main
 
 ### Step 1: Create a Template
 

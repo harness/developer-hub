@@ -149,13 +149,7 @@ Create the Infrastructure Definition for the target hosts.
    
    ![](static/ssh-ng-178.png)
    
-<<<<<<< HEAD:docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng.md
-   For information on installing a delegate, see [Delegate installation overview](/docs/platform/Delegates/get-started-with-delegates/delegate-installation-overview).
 9.  Click **Finish**. The Infrastructure Definition is updated with the PDC Connector.
-=======
-   For information on installing a delegate, see [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
-15. Click **Finish**. The Infrastructure Definition is updated with the PDC Connector.
->>>>>>> main:docs/continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md
   
 ![](static/ssh-ng-179.png)
 

@@ -299,11 +299,7 @@ The following changes apply to v2 environments:
 - Environments are now standalone objects with global environment variables and manifest configurations.
 - V2 **Environment Service Overrides** and **Environment Variables** can override service variables when the service is deployed into a given environment. Based on the variable name, Harness can override the service variable with the environment variable value.
 - Harness has introduced service-specific environment overrides where users can define specific services and variables they want to override for a given environment.
-<<<<<<< HEAD:docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2.md
 - For details on environments v2, go to [Services and environments overview](../services-and-environments-overview).
-=======
-- For details on environments v2, go to [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
->>>>>>> main:docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2.md
 
 
 #### Environment groups
@@ -312,11 +308,7 @@ V2 introduces environment groups. You can now aggregate environments and manage 
 
 Environment groups are simply a list of environments. You can deploy to a subset of environments within the group or to all of them.
 
-<<<<<<< HEAD:docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2.md
 For details on environments groups, go to [Services and environments overview](../services-and-environments-overview).
-=======
-For details on environments groups, go to [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
->>>>>>> main:docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2.md
 
 #### Environment YAML updates
 
@@ -473,11 +465,7 @@ resource "harness_platform_environment" "example" {
 
 ### Infrastructure definition
 
-<<<<<<< HEAD:docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2.md
 Harness has taken the infrastructure definition that was originally defined in the pipeline and moved it to the environment. For more information, go to [ Services and environments overview](../services-and-environments-overview).
-=======
-Harness has taken the infrastructure definition that was originally defined in the pipeline and moved it to the environment. For more information, go to [ Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
->>>>>>> main:docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2.md
 
 Here are the changes to infrastructure definition:
  
