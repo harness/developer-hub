@@ -28,7 +28,7 @@ Optional text string describing the step's purpose.
 
 The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
 
-The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the latest tag.
+The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
@@ -49,23 +49,157 @@ The stage's build infrastructure determines whether these fields are required or
 
 :::
 
-## Shell
+## Shell and Command
 
-Select the shell script type. If a Run step includes commands that aren't supported for the selected shell type, the build fails.
+Use these fields to define the commands that you need to run in this step.
 
-You can run PowerShell Core (`pwsh`) commands in pods or containers that have `pwsh` installed. You can run PowerShell commands on Windows VMs running in AWS build farms.
+For **Shell**, select the shell script type. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
 
-## Command
-
-[POSIX](https://www.grymoire.com/Unix/Sh.html) shell script executed inside the container.
-
-The script is invoked as if it were the container's entry point.
+In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
 
 :::tip
 
 You can reference services started in [Background steps](./background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
 ![The Background step ID, pythonscript, is used in a curl command in a Run step.](./static/background-step-settings-call-id-in-other-step.png)
+
+:::
+
+Select each tab below to view examples for each `shell` type.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="bash" label="Bash" default>
+```
+
+This Bash script example checks the Java version.
+
+```yaml
+              - step:
+                  ...
+                  spec:
+                    shell: Bash
+                    command: |-
+                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+                      if [[ $JAVA_VER == 17 ]]; then
+                        echo successfully installed $JAVA_VER
+                      else
+                        exit 1
+                      fi
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="powershell" label="Powershell">
+```
+This is a simple Powershell `Wait-Event` example.
+
+```yaml
+              - step:
+                  ...
+                  spec:
+                    shell: Powershell
+                    command: Wait-Event -SourceIdentifier "ProcessStarted"
+```
+
+:::tip
+
+You can run Powershell commands on Windows VMs running in AWS build farms.
+
+:::
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="pwsh" label="Pwsh">
+```
+
+This Powershell Core example runs `ForEach-Object` over a list of events.
+
+```yaml
+              - step:
+                  ...
+                  spec:
+                    shell: Pwsh
+                    command: |-
+                      $Events = Get-EventLog -LogName System -Newest 1000
+                      $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -FilePath Events.txt -Append -InputObject $_.Message} -End {Get-Date}
+```
+
+:::tip
+
+You can run Powershell Core commands in pods or containers that have `pwsh` installed.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="sh" label="Sh">
+```
+
+In this example, the pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
+
+```yaml
+              - step:
+                  ...
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    shell: Sh
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      uname -a
+                      pip install pytest
+                      pip install pytest-cov
+                      pip install -r requirements.txt
+
+                      pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="python" label="Python">
+```
+
+If the `shell` is `Python`, supply Python commands directly in `command`.
+
+This example uses a basic `print` command.
+
+```
+            steps:
+              - step:
+                  ...
+                  spec:
+                    shell: Python
+                    command: print('Hello, world!')
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+:::info
+
+If your script produces an output variable, you must declare the output variable in the Run step's [Output Variables](#output-variables). For example, the following step runs a `python` script that defines an output variable called `OS_VAR`, and `OS_VAR` is also declared in the `outputVariables`.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Python
+                    command: |-
+                      import os
+                      os.environ["OS_VAR"] = value
+                    outputVariables:
+                      - name: OS_VAR
+```
 
 :::
 

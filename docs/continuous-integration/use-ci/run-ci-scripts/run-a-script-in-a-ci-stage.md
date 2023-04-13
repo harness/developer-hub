@@ -64,7 +64,12 @@ import TabItem from '@theme/TabItem';
 3. Enter a **Name** and optional **Description**.
 4. Depending on the stage's build infrastructure, specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script. For example, a cURL script may require a cURL image, such as `curlimages/curl:7.73.0`. For information about when these fields are required and how to specify images, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md).
 5. Select the **Shell** type and input your script in the **Command** field.
-6. Populate other fields as necessary. For example, if your script runs tests, you might specify **Report Paths**, and, if your script requires a token or secret, you might supply the token as an **Environment Variable**. For information about these settings, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md).
+6. Populate other [Run step settings](../../ci-technical-reference/run-step-settings.md) as necessary. For example:
+
+   * If your script runs tests, you might specify **Report Paths**.
+   * If your script requires a token or secret, you might need to supply the token as an **Environment Variable**.
+   * If you script produces an output variable value, you must declare the variable name in **Output Variables**.
+
 7. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 ```mdx-code-block
@@ -104,9 +109,13 @@ The following example shows a `Run` step with `connectorRef` and `image`.
                       # Enter a command or script.
 ```
 
-Define other settings as necessary. For example, if the `command` runs tests, you might specify report paths. If your script requires a token or secret, you might supply the token in `envVariables`. For information about these settings, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md).
+Define other [Run step settings](../../ci-technical-reference/run-step-settings.md) as necessary. For example:
 
-The following example includes `reports` settings and commands that run tests.
+* If your script runs tests, you might specify `reports`.
+* If your script requires a token or secret, you might need to supply the token in `envVariables`.
+* If your script produces an output variable value, you must declare the variable name in `outputVariables`.
+
+The following example includes `reports` settings and commands that run `pytest` with code coverage.
 
 ```yaml
               - step:
