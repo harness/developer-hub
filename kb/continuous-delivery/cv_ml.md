@@ -1,5 +1,6 @@
 ---
 title: Continuous Verification - Machine Learning Usage
+sidebar_position: 1
 description: Insights on how the machine learning of Continuous Verification works. 
 keywords: [Continuous Verification, Machine Learning]
 tags: [Continuous Verification, Machine Learning]

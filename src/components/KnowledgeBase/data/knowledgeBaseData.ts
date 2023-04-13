@@ -20,6 +20,12 @@ export const knowledgeBaseList: CardItem[] = [
     link: "/kb/continuous-delivery/continuous-verification-ml",
   },
   {
+    title: "Continuous Verification - Results",
+    module: MODULES.cd,
+    date: "April 12, 2023",
+    link: "/kb/continuous-delivery/continuous-verification-results",
+  },
+  {
     title: "Continuous Verification - Templates",
     module: MODULES.cd,
     date: "April 12, 2023",
