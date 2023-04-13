@@ -68,7 +68,7 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
 
-If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ### Pull Request Clone Strategy
 
@@ -124,4 +124,4 @@ pipeline:
 
 * [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md)
 * [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)

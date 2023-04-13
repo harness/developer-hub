@@ -1,7 +1,7 @@
 ---
 title: Git Clone step settings
 description: The Git Clone step clones a repo to the pipeline workspace.
-sidebar_position: 70
+sidebar_position: 40
 helpdocs_topic_id: nl3ixvew4o
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -64,7 +64,7 @@ This setting applies only to the repo specified in this **Git Clone** step. It i
 
 An optional target path in the pipeline workspace where you want to clone the repo.
 
-You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../use-ci/build-stage-settings/ci-stage-settings.md) to share data across steps in your **Build** stage.
+You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../use-ci/set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
 
 ## Additional Configuration
 
@@ -82,7 +82,7 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
 
-If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ### Run as User
 

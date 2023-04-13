@@ -1,14 +1,14 @@
 ---
 title: Run Tests step settings
-description: The Run Tests step runs tests on container images and enables Test Intelligence.
-sidebar_position: 110
+description: The Run Tests step runs tests and enables Test Intelligence.
+sidebar_position: 70
 helpdocs_topic_id: axzckflbt2
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes the Harness CI Run Tests step settings. The Run Tests step runs tests on container images and can be used to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md) in CI pipelines.
+This topic describes settings for the Harness CI Run Tests step. Use the Run Tests step to [run tests](/docs/category/run-tests) and [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md) in CI pipelines.
 
 ## Name
 
@@ -34,7 +34,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
-* [Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
 * [Local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Container Registry** and **Image** are always required.
 * [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run Tests** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-hosted VM build infrastructure.
 * [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run Tests** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binaries you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.

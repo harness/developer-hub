@@ -54,8 +54,6 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [Deployment rate limits](#deployment-rate-limits)
   - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
 - [Continuous integration](#continuous-integration)
-  - [Test suites wrongly parsed](#test-suites-wrongly-parsed)
-  - [Test intelligence not working](#test-intelligence-not-working)
 - [Helm](#helm)
   - [Unable to get an update from the chart repository](#unable-to-get-an-update-from-the-chart-repository)
 - [Kubernetes](#kubernetes)
@@ -440,32 +438,8 @@ If Harness does not show standard error, then many errors will not be captured, 
 
 ### Continuous integration
 
-The following issues can occur when using Harness CI.
+For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshoot/troubleshooting-ci.md).
 
-#### Test suites wrongly parsed
-
-The parsed Test report in the Test tab comes strictly from the JUnit reports provided. It is important to adhere to the standard format to improve test suite parsing.
-
-Refer to the standard [JUnit format](https://llg.cubic.org/docs/junit/).
-
-#### Test intelligence not working
-
-Test Intelligence may not work even after you select the **Run only selected tests** option. One of the reasons could be that you're using **Maven** and your `**pom.xml**` contains `argLine`. In such a case, the Java Agent must be updated as follows:
-
-Before:
-
-
-```
-<argLine> something  
-</argLine>
-```
-After:
-
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
 ### Helm
 
 The following troubleshooting information should help you diagnose common Helm problems.

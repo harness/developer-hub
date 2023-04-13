@@ -106,6 +106,10 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 For information about CI pipeline components, go to [CI pipeline concepts](./ci-pipeline-basics.md).
 
+## FAQs
+
+For frequently asked questions about Harness CI, other Harness modules, and the Harness Platform, go to [FAQs](https://developer.harness.io/docs/category/faqs).
+
 ## Try Harness CI
 
 Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).

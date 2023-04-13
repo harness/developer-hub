@@ -48,7 +48,7 @@ You should have an understanding of the following:
 * How to create pipelines. If you haven't created a pipeline before, try one of the following tutorials:
   * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm).
   * [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add the Build and Push step
 
@@ -62,15 +62,15 @@ The codebase configuration specifies the repo to use for this pipeline. When you
 :::
 
 2. If your pipeline doesn't already have a **Build** stage, select **Add Stage**, and then select **Build**.
-3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [Define a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [Define a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 4. In the **Build** stage's **Execution** tab, select **Add Step**, select **Add Step** again, and then select a **Build and Push** step from the Step Library.
 
 For all **Build and Push** steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the reference topic that corresponds with your registry provider:
 
-* Docker: [Build and Push an image to Docker registry step settings](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* Azure Container Registry (ACR): [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-to-acr-step-settings.md) or [Build and Push an image to Docker registry step settings](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* Google Container Registry (GCR): [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
-* Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](../../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
+* Docker: [Build and Push an image to Docker Registry step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
+* Azure Container Registry (ACR): [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings.md) or [Build and Push an image to Docker Registry step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
+* Google Container Registry (GCR): [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings.md)
+* Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings.md)
 * Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/build-code/publish/google-gar#configure-pipeline-steps).
 
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.

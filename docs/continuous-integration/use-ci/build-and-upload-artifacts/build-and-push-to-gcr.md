@@ -16,9 +16,9 @@ These steps assume you're familiar with creating CI pipelines. If you haven't cr
 
 1. Go to **Pipelines** and create a new pipeline or edit an existing pipeline.
 2. If your pipeline doesn't already have a **Build** stage, select **Add Stage**, and then select **Build**.
-3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 4. In the **Build** stage's **Execution** tab, select **Add Step**, select **Add Step** again, and then select **Build and Push to GCR** from the Step Library.
-5. Configure the [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md).
+5. Configure the [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings.md).
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 ## Run the pipeline
@@ -40,6 +40,6 @@ If the build succeeds, you can find your pushed image on GCR.
 * [Run step settings](../../ci-technical-reference/run-step-settings.md)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
-* [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
+* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
 

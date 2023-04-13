@@ -1,6 +1,6 @@
 ---
 title: Background step settings
-description: Background steps are useful for running services that need to run for the entire lifetime of a build.
+description: Use Background steps to manage dependent services.
 sidebar_position: 10
 helpdocs_topic_id: kddyd0f33o
 helpdocs_category_id: 4xo13zdnfx
@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Background steps are useful for running services that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
+Use Background steps to [manage dependent services](../use-ci/manage-dependencies/dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
-![](./static/background-step-settings-07.png)
+![A Build stage with multiple services running in Background steps.](./static/background-step-settings-07.png)
 
 ## Important notes
 
@@ -56,7 +56,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 The stage's build infrastructure determines whether these fields are required or optional:
 
-* [Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
 * [Local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Container Registry** and **Image** are always required.
 * [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Background** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-hosted VM build infrastructure.
 * [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Background** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.

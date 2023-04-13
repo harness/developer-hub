@@ -46,14 +46,14 @@ This release does not include early access features.
 
 ### Fixed issues
 
-Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/ci-github-action-step). (CI-6969, CI-7300)
+Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step). (CI-6969, CI-7300)
 
 ## March 24, 2023, version 78817
 
 ### What's new
 
 * [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/) is now generally available. With Cache Intelligence, Harness automatically caches and restores common dependencies. You don't need to bring your own storage because Harness stores the cache in the Harness-hosted environment, Harness Cloud. (CI-7127)
-* [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) build infrastructure now supports **Run as User** for [Plugin](/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference) and [Run](/docs/continuous-integration/ci-technical-reference/run-step-settings) steps that are running on containers. (CI-7320)
+* [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) build infrastructure now supports **Run as User** for [Plugin](/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference) and [Run](/docs/continuous-integration/ci-technical-reference/run-step-settings) steps that are running on containers. (CI-7320)
 
 ### Early access
 
@@ -71,7 +71,7 @@ This release does not include early access features.
 
 ### What's new
 
-* The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
+* The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
 * You can now call pipeline-level variables in steps as environment variables. This is an extension of existing functionality that allows you to call stage-level variables in steps as environment variables. (CI-6709, ZD-39203)
 * When configuring [SCM connectors](/docs/category/code-repo-connectors):
   * Failed connection tests now return more detailed error messages. (CI-7089)

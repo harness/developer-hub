@@ -64,7 +64,7 @@ In addition to a Harness account, you need the following accounts and tools:
 
 :::caution
 
-Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not recommended. For more information, go to [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
+Google Kubernetes Engine (GKE) [Autopilot](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview) is not recommended. For more information, go to [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
 
 :::
 
@@ -176,7 +176,7 @@ For most CI pipelines, Build stages do most of the heavy lifting. Build stages a
 
 ### Define the build infrastructure
 
-Next, you need to define the build infrastructure. Harness offers several [build infrastructure options](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me), and this tutorial uses a [Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
+Next, you need to define the build infrastructure. Harness offers several [build infrastructure options](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me), and this tutorial uses a [Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure).
 
 1. Select the **Infrastructure** tab for your Build stage.
 2. Under **Infrastructure**, select **Kubernetes**.
@@ -225,7 +225,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 7. Under **Optional Configuration**, add a **Report Path** and enter `*.xml`.
 8. Select **Apply Changes** to save the step.
-9. Add a [Build and Push an Image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
+9. Add a [Build and Push an Image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
 
    * **Name:** Enter a name, such as `Build and push image to Docker Registry`.
    * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.

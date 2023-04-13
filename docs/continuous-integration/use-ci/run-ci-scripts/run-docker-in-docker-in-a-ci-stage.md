@@ -15,7 +15,7 @@ Docker-in-Docker (DinD) with privileged mode is necessary only when using a Kube
 
 :::
 
-CI pipelines that use a Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
+CI pipelines that use a Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
 
 This topic illustrates a simple build-and-push workflow using Docker-in-Docker for a pipeline that uses a Kubernetes build infrastructure.
 
@@ -26,8 +26,8 @@ Docker-in-Docker must run in privileged mode to work properly. Use caution becau
 These steps assume you are familiar with the following concepts:
 
 * Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm)
-* [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
+* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 
 ## Step 1: Set Up the CI Stage
 
