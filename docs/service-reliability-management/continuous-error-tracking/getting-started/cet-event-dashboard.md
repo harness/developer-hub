@@ -13,7 +13,7 @@ The Error Tracking Events dashboard displays a comprehensive list of all the mon
 
 To go to the Events dashboard, in Harness, go to **Service Reliability Management**, and then select **Code Errors**.
 
-![Error Tracking Events dashboard](./static/et-quickstart-errortracking-dashboard.png)
+![Continuous Error Tracking Events dashboard](./static/et-quickstart-errortracking-dashboard.png)
 
 By default, the dashboard displays the data for the last 24 hours time period. You can customize the dashboard using the following filters:
 
@@ -22,7 +22,7 @@ By default, the dashboard displays the data for the last 24 hours time period. Y
 * **Environment**: Choose an environment to see its data. You can select multiple environments. The default option is **All**.
 * **Deployment version**: Choose a deployment version in order to view the data associated with the monitored services of that specific version. You can select multiple deployment versions. The default option is **All**.
 
-Based on the filter settings, the dashboard displays the total number of services being monitored by Error Tracking and the number of services that have generated new events. An event is considered as new if it is observed for the first time in a monitored service.
+Based on the filter settings, the dashboard displays the total number of services being monitored by Continuous Error Tracking and the number of services that have generated new events. An event is considered as new if it is observed for the first time in a monitored service.
 
 
 ## View Event List

@@ -1,0 +1,11 @@
+{
+   "label":"Notifications",
+   "position": 3,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"CET Notifications"
+   }
+   }
