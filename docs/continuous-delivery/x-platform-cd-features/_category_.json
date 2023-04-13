@@ -1,0 +1,11 @@
+{
+  "label": "Cross-platform CD features",
+  "position": "500",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Cross-platform CD features"
+  }
+}

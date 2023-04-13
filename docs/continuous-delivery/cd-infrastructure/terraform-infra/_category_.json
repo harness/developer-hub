@@ -1,14 +1,15 @@
 {
-    "label": "Terraform Infrastructure Provisioning",
+    "label": "Terraform",
+    "position": "100",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Terraform Infrastructure Provisioning"
+        "title": "Terraform"
     },
     "customProps": {
-        "position": "200",
+        "position": "100",
         "helpdocs_category_id": "y5cc950ks3"
     }
 }

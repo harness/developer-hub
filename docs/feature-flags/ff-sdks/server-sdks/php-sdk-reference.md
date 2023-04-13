@@ -40,7 +40,7 @@ To use this SDK, make sure you:  
 * Install [Redis](https://redis.io/)
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-php-server-sdk)
 * Create a PHP application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-php-server-sample).
-* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
 * [Create an SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-an-sdk-key.md)
 
 ## Install the SDK

@@ -1,0 +1,14 @@
+{
+  "label": "Verify deployments",
+  "position": "600",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Verify deployments"
+  },
+  "customProps": {
+      "helpdocs_category_id": "wg94socpyo"
+  }
+}

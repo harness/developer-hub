@@ -1,6 +1,6 @@
 {
     "label": "Deployments",
-    "position": "500",
+    "position": "2500",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
