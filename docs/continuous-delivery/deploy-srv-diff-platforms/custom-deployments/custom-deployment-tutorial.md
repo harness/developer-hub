@@ -278,12 +278,11 @@ Now let's add the Docker image for deployment.
 10. In **Artifact Details**, enter the following:
 	3. **Image Path:** `library/nginx`.
 	4. **Tag:** Change the setting to a **Fixed value**, and then select **perl**.
-  ![](static/custom-deployment-tutorial-20.png)![](../../onboard-cd/cd-quickstarts/static/custom-deployment-tutorial-21.png)
 11. Click **Submit**. The artifact is now added to the Service.
-![](static/custom-deployment-tutorial-22.png)
+  ![](static/custom-deployment-tutorial-22.png)
 1.  Click **Save**. The Service is now added to the stage.
   ![](static/custom-deployment-tutorial-23.png)
-2. Click **Continue** to set up the Environment for the stage.
+1. Click **Continue** to set up the Environment for the stage.
 
 ## Referencing the artifact in your files
 

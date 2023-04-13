@@ -52,13 +52,8 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 :::
 
 1. In your Harness Project, click **Deployments**, and then click **Create a** **Pipeline**.
-   
-   ![](./static/helm-cd-quickstart-00.png)
-
 2. Enter the name **Helm Quickstart** and click **Start**.
    Your Pipeline appears.
-   
-   ![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-01.png)
 
 3. Click **Add Stage** and select **Deploy**.
 4. Enter the name **Deploy Service**, make sure **Service** is selected, and then click **Set Up Stage**.
@@ -73,8 +68,7 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
    :::
 6. Give the Service the name **nginx** and click **Save**. 
    Once you have created a Service, it is persistent and can be used throughout the stages of this or any other Pipeline in the Project.
-7. In **Deployment Type**, click **Kubernetes**. Now your Service looks like this:
-   ![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-02.png)
+7. In **Deployment Type**, click **Kubernetes**.
 
 Next, we'll add the NGINX Helm chart for the deployment.
 
@@ -83,8 +77,6 @@ Next, we'll add the NGINX Helm chart for the deployment.
 You can add a Harness Delegate inline when you configure the first setting that needs it. For example, when we add a Helm chart, we will add a Harness Connector to the HTTP server hosting the chart. This Connector uses a Delegate to verify credentials and pull charts, so we'll install the Delegate, too.
 
 1. In **Manifests**, click **Add Manifest**. The manifest types appear.
-
-   ![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-03.png)
 2. Click **Helm Chart**, and then click **Continue**.
 3. In **Specify Helm Chart Store**, click **HTTP Helm**.
    We're going to be pulling a Helm chart for NGINX from the Bitnami repo at `https://charts.bitnami.com/bitnami`. You don't need any credentials for pulling the public chart.
@@ -112,7 +104,7 @@ You can add a Harness Delegate inline when you configure the first setting that 
 
     `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
 
-    1. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
+    6. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
 
     | **Value** | **Description** |
     | :-- | :-- |
@@ -129,7 +121,7 @@ You can add a Harness Delegate inline when you configure the first setting that 
     | SaaS prod-2 | https://app.harness.io/gratis |
     | SaaS prod-3 | https://app3.harness.io |
 
-    1. Install the delegate by running the following command:
+    7. Install the delegate by running the following command:
 
     `kubectl apply -f harness-delegate.yaml`
 
@@ -167,8 +159,6 @@ You can add a Harness Delegate inline when you configure the first setting that 
 
 The Helm chart is added to the Service Definition.
 
-![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-08.png)
-
 Next, we can target your Kubernetes cluster for deployment.
 
 ## Define your target cluster
@@ -180,7 +170,6 @@ Next, we can target your Kubernetes cluster for deployment.
 5. Click **New Connector**.
 6. Enter a name for the Connector and click **Continue**.
 7. In **Details**, select **Use the credentials of a specific Harness Delegate**, and then click **Continue**.
-   ![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-09.png)
 8. In **Set Up Delegates**, select the Delegate you added earlier by entering one of its Tags.
 9.  Click **Save and Continue**. The Connector is tested. Click **Finish**.
 10. Select the new Connector and click **Apply Selector**.
@@ -194,8 +183,6 @@ We're going to use a Rolling [deployment strategy](/docs/continuous-delivery/man
 
 The **Rollout Deployment** step is added to **Execution**.
 
-![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-10.png)
-
 That's it. Now you're ready to deploy.
 
 ## Deploy and review
@@ -208,8 +195,6 @@ That's it. Now you're ready to deploy.
 
    Toggle **Console View** to watch the deployment with more detailed logging.
 
-   ![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-11.png)
-
 4. Click the **Rollout Deployment** step and expand **Wait for Steady State**.
 
 
@@ -217,9 +202,7 @@ You can see `Status : quickstart-nginx deployment "quickstart-nginx" successfull
 
 Congratulations! The deployment was successful.
 
-In your Project's Deployments, you can see the deployment listed:
-
-![](../../onboard-cd/cd-quickstarts/static/helm-cd-quickstart-12.png)
+In your Project's Deployments, you can see the deployment listed.
 
 If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](#before_you_begin) or the cluster's network settings do not allow the Delegate to connect to the chart or image repos.
 
