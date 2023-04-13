@@ -259,7 +259,7 @@ To set fail-fast thresholds for CV, follow these steps:
 
 #### Define a query
 
-1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed. Query should focus on extracting error logs happening on the service for verification to be effective.
+1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed. For the verification process to be effective, the query should be designed to accurately extract error logs specific to the service.```
 2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed with three properties which are time stamp of the log, host on which this log was seen and the log message. You can validate the accuracy of these properties; these 3 properties play the critical role in verification. In case the host information does not match to actual instance of your service, then relook in to the mapping provided for **Service Instance Identifier**. 
 
 <details>
