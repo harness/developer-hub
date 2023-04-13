@@ -693,12 +693,6 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry",
     },
 
-    //  Created by aimurphy for DOC-2484 on Mar 7, 2023
-    {
-      from: "/tutorials/build-code/ci-github-action-step",
-      to: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
-    },
-
     //  Created by aimurphy for CI-6241 on Mar 22, 2023
     {
       from: "/docs/category/onboard-with-ci",
@@ -870,6 +864,18 @@ module.exports = {
     {
       from: "/docs/category/build-stage-settings",
       to: "/docs/category/set-up-build-infrastructure",
+    },
+
+    // Created by aimurphy for branch ci-reorg-pt-3 on Apr 13, 2023
+//    {
+//      from: "/docs/category/ci-technical-reference",
+//      to: "/docs/category/reference-ci-step-settings",
+//    },
+
+    //  Created by aimurphy for DOC-2484 on Mar 7, 2023
+    {
+      from: "/tutorials/build-code/ci-github-action-step",
+      to: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
     },
 ],
 };

@@ -1,14 +1,14 @@
 ---
 title: CI Run step settings
 description: This topic describes settings for the CI Run step.
-sidebar_position: 50
+sidebar_position: 40
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use a CI **Run** step to run scripts and commands in Build stages in CI pipelines. This topic describes settings for the **Run** step. For instructions and examples for including **Run** steps in CI pipelines, go to [Run a script in a Build stage](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md).
+You can use a CI **Run** step to [run scripts in CI Build stages](/docs/category/run-scripts). This topic describes settings for the **Run** step.
 
 :::info
 

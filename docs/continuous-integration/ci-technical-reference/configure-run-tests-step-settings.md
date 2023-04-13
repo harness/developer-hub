@@ -1,14 +1,14 @@
 ---
 title: Run Tests step settings
-description: The Run Tests step runs tests on container images and enables Test Intelligence.
-sidebar_position: 110
+description: The Run Tests step runs tests and enables Test Intelligence.
+sidebar_position: 50
 helpdocs_topic_id: axzckflbt2
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes the Harness CI Run Tests step settings. The Run Tests step runs tests on container images and can be used to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md) in CI pipelines.
+This topic describes settings for the Harness CI Run Tests step. Use the Run Tests step to [run tests](/docs/category/run-tests) and [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md) in CI pipelines.
 
 ## Name
 
