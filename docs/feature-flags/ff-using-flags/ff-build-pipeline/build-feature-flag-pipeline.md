@@ -29,7 +29,7 @@ https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
 
 ## Before you begin
 
-You should be familiar with the [Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
+You should be familiar with the [Harness' Key Concepts](/docs/getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
 
 ## Create a Pipeline
 
@@ -59,7 +59,7 @@ Feature Flag pipeline is organized into stages. There has to be a minimum of one
 
 You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
 
-Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
+Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
 
 You can add multiple Stages, and insert new Stages between the existing Stages. To add another stage to the Pipeline, in **Pipeline Stages**, click **+** and then follow the same steps.
 
@@ -136,13 +136,13 @@ For more information, go to [Send Notifications using Slack](../../../platform/5
 
 For email notifications, simply type in the email addresses that you want to notify.
 
-For more information, go to [Send Notifications using Email](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md#option-email-notifications).
+For more information, go to [Send Notifications using Email](../../../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md#option-email-notifications).
 
 ### PagerDuty notification
 
 For PagerDuty notifications, enter the key for a PagerDuty Account/Service to which Harness can send notifications.
 
-For more information, go to [Send Notifications using PagerDuty](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md#option-pager-duty-notifications).
+For more information, go to [Send Notifications using PagerDuty](../../../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md#option-pager-duty-notifications).
 
 ### Microsoft Teams notification
 

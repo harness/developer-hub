@@ -24,30 +24,22 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Fail on Severity
-
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
-<StoSettingFailOnSeverity />
-
-
-### Instance settings
-
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 ```
 
 <StoLegacyInstance />
 
-<!-- LEGACY CONFIGS  ---------------------------------------------------------------------------  
-
-
 ```mdx-code-block
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
-<StoLegacyConfig  />
+<StoLegacyIngest />
 
 
-<!-- INSTANCES  --------------------------------------------------------------------------- -->
+#### Fail on Severity
+
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />

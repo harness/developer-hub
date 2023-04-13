@@ -188,4 +188,4 @@ The timeout limit for the step. Once the timeout is reached, the step fails and 
 
 To change what happens when steps fail, go to [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
-To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).

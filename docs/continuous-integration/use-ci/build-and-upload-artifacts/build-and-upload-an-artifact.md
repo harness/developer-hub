@@ -43,7 +43,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 You should have an understanding of the following:
 
-* Harness' [key concepts](../../../getting-started/learn-harness-key-concepts.md).
+* Harness' [key concepts](/docs/getting-started/learn-harness-key-concepts.md).
 * How to [set up build infrastructure](/docs/category/set-up-build-infrastructure).
 * How to create pipelines. If you haven't created a pipeline before, try one of the following tutorials:
   * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm).

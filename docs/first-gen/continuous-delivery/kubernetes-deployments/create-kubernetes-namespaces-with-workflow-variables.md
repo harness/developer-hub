@@ -58,7 +58,7 @@ To reference the variable we created, we use the expression `${workflow.variable
   ![](./static/create-kubernetes-namespaces-with-workflow-variables-210.png)
 
 3. For **namespace**, select one of the variable's allowed values.  
-If your Workflow variable is not limited to allowed values, you can enter custom values. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
+If your Workflow variable is not limited to allowed values, you can enter custom values. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows).
 4. Click **Submit**. When the Trigger condition is met, the Workflow deploys to the namespace you selected.
 
 ### Example: Trigger Parallel Workflow Executions
@@ -70,5 +70,5 @@ Using the steps in this topic, you can have parallel executions for same Workflo
 ### Next Steps
 
 * [Harness GitOps](../harness-git-based/harness-git-ops.md)
-* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
+* [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows)
 

@@ -74,10 +74,6 @@ module.exports = {
       to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules",
     },
     {
-      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/k8s-connector-autostopping",
-      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/k8s-connector-autostopping",
-    },
-    {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-an-application-gateway-for-azure",
       to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-an-application-gateway-for-azure",
     },
@@ -661,13 +657,13 @@ module.exports = {
     {
       from: "/docs/platform/Delegates/delegate-reference/sample-create-a-permanent-volume-nfs-server",
       to: "/docs/platform/Delegates/delegate-reference/YAML/sample-create-a-permanent-volume-nfs-server",
-     },
+    },
 
      // Created by KimberlyFields on March 29, 2023
     {
       from: "/docs/platform/Delegates/manage-delegates/delegate-auto-update",
       to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
-     },
+    },
 
     //  Created by aimurphy for PR-783 on Feb 23, 2023
     {
@@ -817,11 +813,264 @@ module.exports = {
       to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp",
     },
     
+ // Created by doug bothwell to redirect topics in STO Workflows on Apr 13, 2023
+
     {
-      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
-      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
+      from: "/docs/security-testing-orchestration/use-sto/sto-workflows-overview",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview",
     },
     
+    {
+      from: "/docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/snyk-scans",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/java-scans",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/java-scans",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/add-artifacts-to-pipelines",
+      to: "/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-artifacts-to-pipelines",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/download-images-from-private-registry",
+      to: "/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/security-testing-dashboard",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/sto-overview",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/jira-integrations",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/email-notifications",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/exemption-workflows",
+      to: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/stop-pipelines-using-opa",
+      to: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa",
+    },
+
+    // Created by michael cretzman for DOC-2694 on Apr 11, 2023
+    {
+      from: "/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/use-a-local-helm-chart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/use-a-local-helm-chart",
+    },
+
+    {  
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning",
+    },
+
+    {  
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-steps-timeouts-and-deadline-parameters",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-steps-timeouts-and-deadline-parameters",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/using-open-shift-with-harness-kubernetes",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-and-override-values-yaml-files",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/define-kubernetes-manifests",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/skip-harness-label-selector-tracking-on-kubernetes-deployments",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/delete-kubernetes-resources",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/deploy-manifests-using-apply-step",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/k8s-dry-run",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/k8s-dry-run",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/run-kubernetes-jobs",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/run-kubernetes-jobs",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/scale-kubernetes-replicas",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/container-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances",
+      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts",
+      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/wait-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/deployment-logs-and-limitations",
+      to: "/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd",
+      to: "/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/add-a-harness-git-ops-repository",
+      to: "/docs/continuous-delivery/gitops/add-a-harness-git-ops-repository",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/add-harness-git-ops-repository-credentials-template",
+      to: "/docs/continuous-delivery/gitops/add-harness-git-ops-repository-credentials-template",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart",
+      to: "/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial",
+      to: "/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/harness-git-ops-basics",
+      to: "/docs/continuous-delivery/gitops/harness-git-ops-basics",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/install-a-harness-git-ops-agent",
+      to: "/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/multiple-argo-to-single-harness",
+      to: "/docs/continuous-delivery/gitops/multiple-argo-to-single-harness",
+    },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/gitops-allowlist",
+      to: "/docs/continuous-delivery/gitops/gitops-allowlist",
+    },
+
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
     {
       from: "/docs/category/codebase-configuration",
@@ -942,5 +1191,5 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
       to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
     },
-],
+  ],
 };

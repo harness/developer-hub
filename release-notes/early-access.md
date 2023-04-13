@@ -105,7 +105,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 </details>
 
 
-- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/jira-integrations). (STO-5467)
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations). (STO-5467)
 
 ## February 15, 2023
 
@@ -191,7 +191,7 @@ Terraform Backend Configuration file path in the Terraform Apply step now suppor
 
 Terraform Backend Configuration now can be specified in the remote file repository.
 
-For more details, go to [Provision with the Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step/).
+For more details, go to [Provision with the Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
 
 This functionality is behind a feature flag: TERRAFORM_REMOTE_BACKEND_CONFIG.
 

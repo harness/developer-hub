@@ -132,7 +132,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/amazon-imge-scanner-reference">Amazon Image Scanning</a> Extraction </li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/amazon-image-scanner-reference">Amazon Image Scanning</a> Extraction </li>
               <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/docker-content-trust-dct-scanner-reference">Docker Content Trust (DCT)</a> Orchestration, Ingestion</li>

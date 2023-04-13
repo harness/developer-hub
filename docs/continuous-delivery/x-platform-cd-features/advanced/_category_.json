@@ -1,0 +1,11 @@
+{
+  "label": "Advanced CD use cases",
+  "position": "500",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Advanced CD use cases"
+  }
+}

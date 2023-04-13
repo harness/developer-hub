@@ -11,4 +11,4 @@ import StoConceptExemptions from '../shared/_exemptions.md';
 
 <StoConceptExemptions />
 
-For a full workflow description, go to [Exemptions (Ignore Rules) for Specific Issues](/docs/security-testing-orchestration/use-sto/exemption-workflows).
+For a full workflow description, go to [Exemptions (Ignore Rules) for Specific Issues](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows).

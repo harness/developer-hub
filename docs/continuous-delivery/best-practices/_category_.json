@@ -1,0 +1,11 @@
+{
+  "label": "Best practices and guidelines",
+  "position": "1000",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+      "type": "generated-index",
+      "title": "Best practices and guidelines"
+  }
+}

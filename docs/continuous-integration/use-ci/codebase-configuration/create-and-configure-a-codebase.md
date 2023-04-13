@@ -122,6 +122,6 @@ pipeline:
 
 ## See also
 
-* [Runtime Inputs](../../../platform/20_References/runtime-inputs.md)
+* [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md)
 * [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)

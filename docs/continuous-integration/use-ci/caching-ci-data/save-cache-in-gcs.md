@@ -17,13 +17,13 @@ This topic explains how you can use the **Save Cache to GCS** and **Restore Cach
 
 :::caution
 
-You can't share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages.
+You can't share access credentials or other [Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md) across stages.
 
 :::
 
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
-* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
 * [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)

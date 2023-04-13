@@ -40,7 +40,7 @@ You can select the necessary settings and deploy the Workflow.
 
 ### Option: Trigger Variables
 
-You can also use a Trigger to pass variables and set Workflow values. For details, see [Passing Variables into Workflows and Pipelines from Triggers](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
+You can also use a Trigger to pass variables and set Workflow values. For details, see [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows).
 
 
 ### Limitations

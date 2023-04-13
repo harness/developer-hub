@@ -83,7 +83,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## Step 1: Create a Kubernetes cluster
 
-Make sure your Kubernetes cluster meets the build infrastructure requirements in the [CI cluster requirements](../../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements) and the Harness-specific [permissions required for CI](../../../../platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required).
+Make sure your Kubernetes cluster meets the build infrastructure requirements in the [CI cluster requirements](/docs/platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#harness-ci-cluster-requirements) and the Harness-specific [permissions required for CI](/docs/platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md#permissions-required).
 
 You need to install the Harness Kubernetes Delegate on the same cluster you use as your build infrastructure. Make sure that the cluster has enough memory and CPU for the Delegate you are installing. Harness Kubernetes Delegates can be in a different [namespace](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) than the one you provide while defining the build farm infrastructure for the CI pipeline.
 
@@ -112,7 +112,7 @@ For instructions on creating clusters, go to:
 
 In the **Build** stage's **Infrastructure** tab, select the Kubernetes cluster connector you created previously.
 
-In **Namespace**, enter the Kubernetes namespace to use. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](../../../../platform/20_References/runtime-inputs.md).
+In **Namespace**, enter the Kubernetes namespace to use. You can also use a Runtime Input (`<+input>`) or expression for the namespace. For more information, go to [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md).
 
 You may need to configure the settings described below, as well as other advanced settings described in [CI Build stage settings](../ci-stage-settings.md). Review the details of each setting to understand whether it is required for your configuration.
 

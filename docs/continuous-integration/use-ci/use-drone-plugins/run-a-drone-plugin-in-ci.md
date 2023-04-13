@@ -19,14 +19,14 @@ To install and run a plugin, you need the following:
 
 * A familiarity with basic Harness CI concepts:
 	+ [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
-	+ [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+	+ [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
 * A build infrastructure and Delegate to run builds:
 	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
-	+ [Delegate installation overview](../../../platform/2_Delegates/install-delegates/overview.md)
+	+ [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md)
 * A CI pipeline with a Build stage to run the plugin:
 	+ [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.
-	+ [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
+	+ [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
 
 ## Workflow Description
 
@@ -60,7 +60,7 @@ This example describes how to run the Drone Downloads plugin, which downloads an
       + `source` = The artifact to download.
 	  + `destination` = Save the downloaded artifact to this file.
 	  + `username` = A valid username for the Git provider.
-	  + `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](../../../platform/6_Security/2-add-use-text-secrets.md#step-3-reference-the-encrypted-text-by-identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
+	  + `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](/docs/platform/6_Security/2-add-use-text-secrets.md#step-3-reference-the-encrypted-text-by-identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
 
    ![](./static/run-a-drone-plugin-in-ci-00.png)
 
