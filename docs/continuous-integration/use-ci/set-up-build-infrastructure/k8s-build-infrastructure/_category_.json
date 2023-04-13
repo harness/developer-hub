@@ -1,12 +1,12 @@
 {
-   "label":"Set up VM build infrastructures",
-   "position": 40,
+   "label":"Set up Kubernetes cluster build infrastructures",
+   "position": 30,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Set up VM build infrastructures"
+      "title":"Set up Kubernetes cluster build infrastructures"
    },
    "customProps":{
       "helpdocs_category_id":"rg8mrhqm95"

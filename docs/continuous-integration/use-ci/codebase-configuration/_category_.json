@@ -1,12 +1,12 @@
 {
-    "label": "Codebase configuration", 
+    "label": "Configure codebases", 
     "position": 20,
     "collapsible": "true", 
     "collapsed": "true", 
     "className": "red", 
     "link": {
         "type": "generated-index", 
-        "title": "Codebase configuration"
+        "title": "Configure codebases"
     }, 
     "customProps": {
         "helpdocs_category_id": "ojaa8v6fwz"

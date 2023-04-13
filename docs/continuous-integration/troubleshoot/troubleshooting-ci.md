@@ -44,7 +44,7 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Docker delegate environment variables](../../platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
 * [Set up a local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
 * [Install delegates](https://developer.harness.io/docs/category/install-delegates)
-* [Configure a Kubernetes build farm to use self-signed certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+* [Configure a Kubernetes build farm to use self-signed certificates](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 <!-- DOC-2692 removed -->
 

@@ -93,7 +93,7 @@ The following **Platform** settings are available:
   <TabItem value="kubernetes" label="Kubernetes">
 ```
 
-Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 The following **Platform** settings are available:
 

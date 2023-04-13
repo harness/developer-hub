@@ -14,10 +14,10 @@ You can run Windows builds in your Kubernetes build infrastructure. Windows Serv
 ## Important Notes
 
 * **Build and Push an image to Docker Registry**, **Build and Push to ECR**, and **Build and Push to GCR** steps are not supported with Windows builds on Kubernetes build infrastructure.
-* **Privileged mode is required for Docker-in-Docker.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you'll need to use another build infrastructure, such as [Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
+* **Privileged mode is required for Docker-in-Docker.** If your build process needs to run Docker commands, [Docker-in-Docker (DinD) with privileged mode](../../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) is necessary when using a Kubernetes cluster build infrastructure; however, Windows doesn't support privileged mode. If you need to run Docker commands, you'll need to use another build infrastructure, such as [Harness Cloud](../../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md) or a [VM build infrastructure](/docs/category/set-up-vm-build-infrastructures), where you can run Docker commands directly on the host.
 * Only Windows Server 2019 images are supported. If you are using Google Kubernetes Engine, make sure you use the recommended image type for Windows Server 2019.
 
-  ![](./static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
+  ![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-10.png)
 
 ## Configure cluster and build infrastructure
 
@@ -27,7 +27,7 @@ You can run Windows builds in your Kubernetes build infrastructure. Windows Serv
    1. Select **Windows** for the **OS**.
    2. Expand the **Advanced** section, and add a **Node Selector** to use the Windows node pool. Enter `kubernetes.io/os` as the **Key** and `windows` as the **Value**.
 
-  ![](./static/run-windows-builds-in-a-kubernetes-build-infrastructure-11.png)
+  ![](../static/run-windows-builds-in-a-kubernetes-build-infrastructure-11.png)
 
 4. Save and run your pipeline.
 

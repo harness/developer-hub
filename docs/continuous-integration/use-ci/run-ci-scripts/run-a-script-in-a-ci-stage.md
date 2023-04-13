@@ -18,7 +18,7 @@ You can use a CI **Run** step to run scripts and commands in Build stages in CI 
 
 Depending on the stage's build infrastructure, a **Run** step can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries.
 
-* [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): Image always required.
+* [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): Image always required.
 * [Local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): Image always required.
 * [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run** steps can use binaries that you've made available on your build VMs. An image is required if the VM doesn't have the necessary binaries.
 * [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). An image is required if the machine doesn't have the binary you need.

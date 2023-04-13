@@ -613,5 +613,30 @@ module.exports = {
       to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
     },
     
+    //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
+    {
+      from: "/docs/category/codebase-configuration",
+      to: "/docs/category/configure-codebases",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-cluster-requirement",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/ci-cluster-requirement",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure",
+    },
 ],
 };

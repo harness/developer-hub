@@ -62,7 +62,7 @@ The codebase configuration specifies the repo to use for this pipeline. When you
 :::
 
 2. If your pipeline doesn't already have a **Build** stage, select **Add Stage**, and then select **Build**.
-3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [Define a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [Define a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 4. In the **Build** stage's **Execution** tab, select **Add Step**, select **Add Step** again, and then select a **Build and Push** step from the Step Library.
 
 For all **Build and Push** steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the reference topic that corresponds with your registry provider:

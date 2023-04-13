@@ -72,7 +72,7 @@ To make pipelines more versatile, you can create [templates](/docs/category/temp
 
 ### Codebases
 
-CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you specify the Git account and repository where your code is stored. The codebase declared in the first stage in a pipeline becomes the pipeline's default codebase. You can use this codebase for later stages in the pipeline, or you can use multiple codebases in the same pipeline. For more information, go to [Codebase configuration](/docs/category/codebase-configuration/).
+CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you specify the Git account and repository where your code is stored. The codebase declared in the first stage in a pipeline becomes the pipeline's default codebase. You can use this codebase for later stages in the pipeline, or you can use multiple codebases in the same pipeline. For more information, go to [Configure codebases](/docs/category/configure-codebases/).
 
 Harness uses [code repo connectors](/docs/category/code-repo-connectors) to connect to Git repositories.
 
