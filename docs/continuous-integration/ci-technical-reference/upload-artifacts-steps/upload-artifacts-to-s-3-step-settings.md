@@ -1,14 +1,14 @@
 ---
 title: Upload Artifacts to S3 step settings
 description: Upload artifacts to AWS or other S3 providers such as MinIo.
-sidebar_position: 160
+sidebar_position: 30
 helpdocs_topic_id: wdzojt3ep3
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides details about the settings for the Upload Artifacts to S3 step, which uploads artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility).
+This topic provides details about the settings for the **Upload Artifacts to S3** step, which uploads artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility).
 
 :::info
 
@@ -18,7 +18,7 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness generates an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
+Enter a name summarizing the step's purpose. Harness generates an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id**.
 
 ## AWS Connector
 
@@ -26,8 +26,8 @@ The Harness AWS connector to use when connecting to AWS S3.
 
 The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to S3. For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](../../platform/7_Connectors/add-aws-connector.md)
-* [AWS connector settings reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
+* [Add an AWS connector](../../../platform/7_Connectors/add-aws-connector.md)
+* [AWS connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
 
 <details>
 <summary>Stage variable required for non-default ACLs</summary>
@@ -97,5 +97,5 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

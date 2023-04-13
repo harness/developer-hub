@@ -1,14 +1,14 @@
 ---
 title: Upload Artifacts to GCS step settings
 description: This topic provides settings for the Upload Artifacts to GCS step.
-sidebar_position: 140
+sidebar_position: 10
 helpdocs_topic_id: 3qeqd8pls7
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the Upload Artifacts to GCS step, which uploads artifacts to Google Cloud Storage. See [Uploads and downloads](https://cloud.google.com/storage/docs/uploads-downloads) in the Google Cloud docs.
+This topic provides settings for the **Upload Artifacts to GCS** step, which uploads artifacts to Google Cloud Storage. For more information, go to the Google Cloud documentation on [Uploads and downloads](https://cloud.google.com/storage/docs/uploads-downloads).
 
 :::info
 
@@ -18,11 +18,11 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## GCP Connector
 
-The Harness connector for the GCP account where you want to upload the artifact. For more information, go to [Google Cloud Platform (GCP) connector settings reference](../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md). This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+The Harness connector for the GCP account where you want to upload the artifact. For more information, go to [Google Cloud Platform (GCP) connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md). This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
 ## Bucket
 
@@ -55,5 +55,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

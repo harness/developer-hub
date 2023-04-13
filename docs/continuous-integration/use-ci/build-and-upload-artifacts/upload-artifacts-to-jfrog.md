@@ -9,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](../../ci-technical-reference/upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](../../ci-technical-reference/upload-artifacts-to-gcs-step-settings.md).
+You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](../../ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](../../ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-gcs-step-settings.md).
 
 ### Before you Begin
 
@@ -34,7 +34,7 @@ In the stage's Execution tab, add a **Run** step. The Run step executes one or m
 
 Add an **Upload Artifacts to JFrog Artifactory** step.
 
-To configure this step, select the Harness Artifactory connector, enter the source file/path, and the target path. For more information about these settings, go to the [Upload Artifacts to JFrog Artifactory step settings reference](../../ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md).
+To configure this step, select the Harness Artifactory connector, enter the source file/path, and the target path. For more information about these settings, go to the [Upload Artifacts to JFrog Artifactory step settings reference](../../ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-jfrog-artifactory-step-settings.md).
 
 The JFrog Account associated with the connector must have read/write permission. For more information, go to the [Artifactory connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
