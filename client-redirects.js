@@ -31,6 +31,233 @@ module.exports = {
     //  },    
     //===================================================================================
 
+     // Created by Charanya Jayaraman to fix CCM redirects on Apr 13, 2023
+
+     {
+      from: "/docs/cloud-cost-management/cloud-cost-technical-reference/ccm-ref/ccm-roles-and-permissions",
+      to: "/docs/cloud-cost-management/getting-started-ccm/access-control/ccm-roles-and-permissions",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/quick-start-guides/kubernetes-autostopping-quick-start-guide",
+      to: "/docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-quick-start-guide",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-anomaly-detection/detect-cloud-cost-anomalies-with-ccm",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-currency-preferences/currency-preferences",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/export-perspective-data",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/export-perspective-data",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/node-pool-recommendations",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/workload-recommendations",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/workload-recommendations",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/add-azure-connector",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/add-azure-connector",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-an-application-gateway-for-azure",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-an-application-gateway-for-azure",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-gcp-lb",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-gcp-lb",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-azure-autoproxy-lb",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-azure-autoproxy-lb",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-load-balancer-aws",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-load-balancer-aws",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/configure-ecg/configure-ecg-for-auto-stopping-rules",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/configure-ecg-for-auto-stopping-rules",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/k8s-connector-autostopping",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/k8s-connector-autostopping",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dry-run-mode",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dry-run-mode",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-ecs",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-ecs",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-azure",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-azure",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-gcp",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-gcp",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-rds",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-rds",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-terraform",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-terraform",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-for-kubernetes",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-for-kubernetes",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/review-autostopping-rules-reqs",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/review-autostopping-rules-reqs",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-a-budget-perspective",
+      to: "/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget",
+    },
+    {
+      from: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/integration/datadog-integration",
+      to: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/datadog-integration",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/share-cost-perspective-report",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/share-cost-perspective-report",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-categories/use-ccm-cost-categories",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-cost-categories/ccm-cost-categories",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/root-cost-analysis/analyze-cost-for-aws",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-aws",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/root-cost-analysis/analyze-cost-for-azure",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-azure",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/root-cost-analysis/analyze-cost-for-gcp-using-perspectives",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/root-cost-analysis/perform-root-cost-analysis",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/perform-root-cost-analysis",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/root-cost-analysis/understanding-ccm-perspective-date-ranges",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/understanding-ccm-perspective-date-ranges",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/quick-start-guides/autostopping-proxy-alb-usecase",
+      to: "/docs/cloud-cost-management/getting-started-ccm/quick-start-guides/autostopping-proxy-alb-usecase",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/access-control/manage-access-control-for-ccm-dashboards",
+      to: "/docs/cloud-cost-management/getting-started-ccm/access-control/manage-access-control-for-ccm-dashboards",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/access-control/manage-access-control-perspective-folders",
+      to: "/docs/cloud-cost-management/getting-started-ccm/access-control/manage-access-control-perspective-folders",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/access-ccm-dashboards",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/access-ccm-dashboards",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/aws-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/aws-reservation-coverage-and-service-cost",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/aws-reservation-coverage-and-service-cost",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/azure-cost-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/azure-cost-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/cluster-cost-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/cluster-cost-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/gcp-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/gcp-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/multi-cloud-cost-overview-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/multi-cloud-cost-overview-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/orphaned-ebs-volumes-and-snapshots-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/use-multiple-tags-in-aws",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/use-multiple-tags-in-aws",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-ec-2-instance-metrics",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-instance-metrics",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-ec-2-inventory-cost-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-dashboards-and-access-control/ccm-dashboards-by-harness/view-aws-resource-breakdown-cost-dashboard",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/use-ccm-dashboards/view-aws-resource-breakdown-cost-dashboard",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/home-recommendations",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/home-recommendations",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/ec2-recommendations",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/ec2-recommendations",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/ecs-recommendations",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/ecs-recommendations",
+    },
+    
     // Created by SudheendraKatte for SRM Docs reorg, PR-1276, on Apr 12, 2023
     {
       from: "/docs/service-reliability-management/howtos-service-reliability-management/service-reliability-management-basics",
@@ -608,9 +835,76 @@ module.exports = {
       to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-gcp",
     },
     
+ // Created by doug bothwell to redirect topics in STO Workflows on Apr 13, 2023
+
     {
-      from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
-      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes",
+      from: "/docs/security-testing-orchestration/use-sto/sto-workflows-overview",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/sto-workflows-overview",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/snyk-scans",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/java-scans",
+      to: "/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/java-scans",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/add-artifacts-to-pipelines",
+      to: "/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-artifacts-to-pipelines",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/download-images-from-private-registry",
+      to: "/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/security-testing-dashboard",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/sto-overview",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/jira-integrations",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/email-notifications",
+      to: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/email-notifications",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/exemption-workflows",
+      to: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows",
+    },
+    
+    {
+      from: "/docs/security-testing-orchestration/use-sto/stop-pipelines-using-opa",
+      to: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa",
     },
 
     // Created by michael cretzman for DOC-2694 on Apr 11, 2023

@@ -107,7 +107,7 @@ The following table specifies where the target to be tested is located.
 
 ### Can I use STO with custom or unsupported scanners? 
 
-Yes. STO supports a generic JSON format for ingesting results from custom or unsupported scanners. See [Ingest Scan Results into an STO Pipeline](docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners.md). 
+Yes. STO supports a generic JSON format for ingesting results from custom or unsupported scanners. See [Ingest Scan Results into an STO Pipeline](docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners.md). 
 
 By ingesting your custom issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
 
@@ -168,7 +168,7 @@ Here's an example. See also the [Checkmarx scanner reference](/docs/security-tes
 ```
 
 ### What is the purpose of the “Security Review” tab in STO? 
-The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions (Ignore Rules) for Specific Issues](/docs/security-testing-orchestration/use-sto/exemption-workflows). 
+The page (or tab) exists to grant and manage security exemptions. For more information, go to [Exemptions (Ignore Rules) for Specific Issues](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows). 
 
 ### What open-source scanner integrations does STO support? 
 
@@ -212,4 +212,4 @@ To get started, go to [Get started with STO](/docs/category/get-started-with-sto
         
 ### Why don't I see results from specific scans in the Security Testing Dashboard? 
 
-The most likely reason is that the scanned target does not have a baseline defined. The [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/security-testing-dashboard.md) is intended to show vulnerabilities that potentially affect production-ready artifacts. For this reason, the dashboard shows detected vulnerabilities for targets that have baselines defined. 
+The most likely reason is that the scanned target does not have a baseline defined. The [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard.md) is intended to show vulnerabilities that potentially affect production-ready artifacts. For this reason, the dashboard shows detected vulnerabilities for targets that have baselines defined. 

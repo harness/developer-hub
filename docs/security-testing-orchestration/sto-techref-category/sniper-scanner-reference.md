@@ -27,17 +27,23 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
   - `stealth`  — Run the web based scan
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Fail on Severity
+```mdx-code-block
+import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+```
+
+<StoLegacyInstance />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
+#### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
 <StoSettingFailOnSeverity />
 
-### Instance scan settings
 
-```mdx-code-block
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
-```
-
-<StoLegacyInstance />
