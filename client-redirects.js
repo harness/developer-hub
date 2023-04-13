@@ -922,5 +922,25 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
       to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
     },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings",
+      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-gcs-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings",
+      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-gcs-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings",
+      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-s-3-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
+      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
+    },
 ],
 };

@@ -1,16 +1,20 @@
 ---
-title: Save Cache to S3 step settings
-description: This topic provides settings for the Save Cache to S3 step.
-sidebar_position: 130
-helpdocs_topic_id: qtvjvrp9sn
+title: Save Cache to GCS step settings
+description: This topic provides settings and permissions for the Save Cache to GCS step.
+sidebar_position: 20
+helpdocs_topic_id: 11nzeuntrz
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the Save Cache to S3 step, which preserves files and directories between builds.
+This topic provides settings and permissions for the **Save Cache to GCS** step, which is used to store a cache of files and directories in a Google Cloud Storage (GCS) bucket.
 
-To restore a saved cache, add a [Restore Cache from S3 step](restore-cache-from-s-3-step-settings.md) to your pipeline.
+For more information about caching in CI pipelines, go to:
+
+* [Save and Restore Cache from GCS](../../use-ci/caching-ci-data/save-cache-in-gcs.md)
+* [Share CI data across steps and stages](../../use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md)
+* [Cache Intelligence](../../use-ci/caching-ci-data/cache-intelligence.md)
 
 :::info
 
@@ -20,35 +24,17 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-## AWS Connector
+## GCP Connector
 
-The Harness AWS connector to use when saving the cache to S3. The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to write to S3.
+The Harness connector for the GCP account where you want to save the cache. For more information, go to [Google Cloud Platform (GCP) connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
 
-:::note
-
-This step supports AWS connectors using **AWS Access Key**, **Assume IAM role on Delegate**, and IRSA authentication methods *without* cross-account access (ARN/STS).
-
-This step doesn't support AWS connectors that have enabled cross-account access (ARN/STS) for any authentication method.
-
-:::
-
-For more information about roles and permissions for AWS connectors, go to:
-
-* [Add an AWS connector](../../platform/7_Connectors/add-aws-connector.md)
-* [AWS connector settings reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
-
-## Region
-
-Define the AWS region to use when saving the cache, such as the AWS region you selected when you created the AWS S3 bucket. For more information go to the AWS documentation:
-
-* [Creating, configuring, and working with Amazon S3 buckets](https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-configure-bucket.html)
-* [Pushing a Docker image to an Amazon ECR repository](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
+This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
 ## Bucket
 
-The AWS S3 bucket where you want to save the cache.
+The GCS destination bucket name.
 
 ## Key
 
@@ -71,10 +57,6 @@ A list of the files/folders to cache. Add each file/folder separately.
 
 Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
-### Endpoint URL
-
-Endpoint URL for S3-compatible providers. This setting is not needed for AWS.
-
 ### Archive Format
 
 Select the archive format. The default archive format is Tar.
@@ -84,14 +66,6 @@ Select the archive format. The default archive format is Tar.
 Select this option if you want to override the cache if a cache with a matching **Key** already exists.
 
 By default, the **Override Cache** option is set to false (unselected).
-
-### Path Style
-
-If unselected, the step uses Virtual Hosted Style for paths, such as `http://bucket.host/key`. If selected, the step uses Path Style, such as `http://host/bucket/key`.
-
-For MinIO, you must use Path Style. Make sure **Path Style** is true (selected).
-
-By default, **Path Style** is false (unselected).
 
 ### Run as User
 
@@ -108,5 +82,5 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

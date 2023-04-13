@@ -69,7 +69,7 @@ You need a dedicated S3 bucket for your Harness CI cache operations, and you nee
 
 </details>
 
-For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](../../../../docs/platform/7_Connectors/add-aws-connector.md) and the [AWS connector settings reference](../../../../docs/platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](/docs/platform/7_Connectors/add-aws-connector.md) and the [AWS connector settings reference](/docs/platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
 Optionally, you can create a [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) to automatically delete old cache data from your S3 bucket.
 
@@ -100,7 +100,7 @@ Here is a YAML example of a **Save Cache to S3** step.
 ...
 ```
 
-For details about this step's settings, go to [Save Cache to S3 step settings](../../ci-technical-reference/save-cache-to-s-3-step-settings.md).
+For details about this step's settings, go to [Save Cache to S3 step settings](../../ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings.md).
 
 Pipeline steps within a stage share the same [workspace](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#workspace). You can optionally [share paths](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#shared-paths) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
 
@@ -143,7 +143,7 @@ Here is a YAML example of a **Restore Cache From S3** step.
 
 The `spec.key` value in this step must match the `spec.key` value in your **Save Cache to S3** step.
 
-For details about this step's settings, go to [Restore Cache from S3 step settings](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md).
+For details about this step's settings, go to [Restore Cache from S3 step settings](../../ci-technical-reference/cache-steps/restore-cache-from-s-3-step-settings.md).
 
 Add **Restore Cache From S3** step to your stage before steps that build and test your code, as shown in the following diagram:
 

@@ -1,14 +1,20 @@
 ---
 title: Restore Cache from S3 step settings
 description: This topic provides settings for the Restore Cache from S3 step.
-sidebar_position: 100
+sidebar_position: 30
 helpdocs_topic_id: zlpx6lli6d
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the Restore Cache from S3 step.
+This topic provides settings for the **Restore Cache from S3** step, which is used to retrieve cached files and directories from Amazon S3 buckets.
+
+For more information about caching in CI pipelines, go to:
+
+* [Save and Restore Cache from S3](../../use-ci/caching-ci-data/saving-cache.md)
+* [Share CI data across steps and stages](../../use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md)
+* [Cache Intelligence](../../use-ci/caching-ci-data/cache-intelligence.md)
 
 :::info
 
@@ -18,11 +24,11 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## AWS Connector
 
-The Harness Connector to use when restoring the cache from AWS S3. Typically, this is the same connector used when you saved the cache in a previous [Save Cache to S3 step](save-cache-to-s-3-step-settings.md).
+The Harness Connector to use when restoring the cache from AWS S3. If your pipeline also has a [Save Cache to S3 step](./save-cache-to-s-3-step-settings.md), these steps typically use the same connector.
 
 The AWS IAM roles and policies associated with the account used in the Harness AWS Connector must be able to read from S3.
 
@@ -36,20 +42,20 @@ This step doesn't support AWS connectors that have enabled cross-account access 
 
 For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](../../platform/7_Connectors/add-aws-connector.md)
-* [AWS connector settings reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
+* [Add an AWS connector](../../../platform/7_Connectors/add-aws-connector.md)
+* [AWS connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md)
 
 ## Region
 
-The AWS region you used when you saved the cache in a previous [Save Cache to S3 step](save-cache-to-s-3-step-settings.md).
+The relevant AWS region. If your pipeline also has a [Save Cache to S3 step](./save-cache-to-s-3-step-settings.md), the region is typically the same for both steps.
 
 ## Bucket
 
-The AWS S3 bucket where you saved the cache in a previous [Save Cache to S3 step](save-cache-to-s-3-step-settings.md).
+The AWS S3 bucket where the target cache is saved. If your pipeline also has a [Save Cache to S3 step](./save-cache-to-s-3-step-settings.md), the bucket is typically the same for both steps.
 
 ## Key
 
-The key you used to identify the cache when you saved it in a previous [Save Cache to S3 step](save-cache-to-s-3-step-settings.md).
+The key identifying the cache that you want to retrieve. If your pipeline also has a [Save Cache to S3 step](./save-cache-to-s-3-step-settings.md), the key is typically the same for both steps.
 
 The backslash character isn't allowed as part of the checksum value here. This is a limitation of the Go language (golang) template. You must use a forward slash instead:
 
@@ -97,5 +103,5 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

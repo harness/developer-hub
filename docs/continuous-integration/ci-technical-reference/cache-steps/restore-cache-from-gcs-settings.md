@@ -1,14 +1,20 @@
 ---
 title: Restore Cache from GCS step settings
 description: This topic provides settings for the Restore Cache from GCS step.
-sidebar_position: 90
+sidebar_position: 10
 helpdocs_topic_id: e2o4sektz1
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the Restore Cache from GCS step, which restores files and directories that were saved using the [Save Cache to GCS](save-cache-to-gcs-step-settings.md) step.
+This topic provides settings for the **Restore Cache from GCS** step, which is used to retrieve cached files and directories from Google Cloud Storage (GCS).
+
+For more information about caching in CI pipelines, go to:
+
+* [Save and Restore Cache from GCS](../../use-ci/caching-ci-data/save-cache-in-gcs.md)
+* [Share CI data across steps and stages](../../use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md)
+* [Cache Intelligence](../../use-ci/caching-ci-data/cache-intelligence.md)
 
 :::info
 
@@ -18,17 +24,17 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## GCP Connector
 
-The Harness connector for the GCP account where you saved the cache.
+The Harness connector for the GCP account where the cache is saved.
 
 This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
 ## Bucket
 
-GCS bucket name where you saved the cache.
+The name of the GCS bucket containing the target cache.
 
 ## Key
 
@@ -70,5 +76,5 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
