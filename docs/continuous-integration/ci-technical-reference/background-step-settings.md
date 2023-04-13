@@ -56,15 +56,17 @@ The stage's build infrastructure determines whether these fields are required or
 
 Use these fields to define the commands that you need to run in the Background step.
 
+For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+
 For **Entry Point** supply a list of arguments in `exec` format. **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. Enter each argument separately.
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 ```
 ```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Visual" default>
+<Tabs2>
+  <TabItem2 value="Visual" label="Visual">
 ```
 
 <!-- ![](./static/dind-background-step-entry-point.png) -->
@@ -72,24 +74,20 @@ import TabItem from '@theme/TabItem';
 <docimage path={require('./static/dind-background-step-entry-point.png')} />
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML">
+  </TabItem2>
+  <TabItem2 value="YAML" label="YAML" default>
 ```
 
 ```yaml
-entrypoint:
-  - dockerd-entrypoint.sh
-  - "--mtu=1450"
+                    entrypoint:
+                      - dockerd-entrypoint.sh
+                      - "--mtu=1450"
 ```
 
 ```mdx-code-block
-  </TabItem>
-</Tabs>
+  </TabItem2>
+</Tabs2>
 ```
-
-For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
-
-
 
 In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands (beyond the image's entry point) for this step. If the step runs in a container, the commands are executed inside the container.
 
