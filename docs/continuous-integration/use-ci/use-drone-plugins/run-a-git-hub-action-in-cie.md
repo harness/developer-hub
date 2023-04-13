@@ -21,7 +21,7 @@ With the **Plugin** step, you use the GitHub Actions Drone Plugin, [plugins/gith
 
 These steps assume you have a CI pipeline with a **Build** stage that is connected to your codebase and has defined build infrastructure.
 
-If you've never created a CI pipeline before, [get started with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci) or try the [Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra). If you're new to Harness CI, you might want to review [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md).
+If you've never created a CI pipeline before, [get started with the fastest CI on the planet](/tutorials/build-code/fastest-ci) or try the [Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm). If you're new to Harness CI, you might want to review [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md).
 
 <details>
 <summary>Add Build stage and connect codebase</summary>
@@ -43,7 +43,7 @@ To check codebase configuration for existing pipelines, select **Codebase** whil
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Infrastructure** tab.
 2. Define the build farm for the codebase. For more information, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
-For more information about stage configuration, go to [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md).
+For more information about stage configuration, go to [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
 
 :::tip
 

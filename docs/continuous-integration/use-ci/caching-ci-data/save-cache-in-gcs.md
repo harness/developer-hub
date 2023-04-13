@@ -25,7 +25,7 @@ This topic assumes you have created a pipeline and that you are familiar with th
 
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
-* [CI stage settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)
 
 ## Requirements

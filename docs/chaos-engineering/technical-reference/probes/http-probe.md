@@ -3,19 +3,19 @@ title: HTTP Probe
 sidebar_position: 3
 ---
 
-The HTTP Probe allows developers to specify a URL which the experiment uses to gauge health/service availability (or other custom conditions) as part of the entry/exit criteria. The received status code is mapped against an expected status. It supports HTTP [Get](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [Post](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
+HTTP probe allows you to specify a URL that the experiment uses to determine the health or service availability (or other custom conditions) that is a part of the entry or exit criteria. The status code received is mapped against an expected status. It supports HTTP [GET](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/GET) and [POST](https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods/POST) methods.
 
-In HTTP Get method it sends a http `GET` request to the provided url and matches the response code based on the given criteria(`==`, `!=`, `oneOf`).
+The HTTP GET method sends a GET request to the specified URL. The response code received is matched with the response code based on the given criteria (`==`, `!=`, `oneOf`).
 
-In HTTP Post method it sends a http `POST` request to the provided url.
+HTTP POST method sends a `POST` request to the provided URL.
 
-:::info YAML Only Feature
-In the case of a complex POST request in which the body spans multiple lines, the `bodyPath` attribute can be used to provide the path to a file consisting of the same. This file can be made available to the experiment pod via a ConfigMap resource, with the ConfigMap name being defined in the [ChaosEngine](https://docs.litmuschaos.io/docs/concepts/chaos-engine) or the [ChaosExperiment](https://docs.litmuschaos.io/docs/concepts/chaos-experiment) CR. It can be defined at `.spec.experiments[].spec.probe` inside ChaosEngine. Also, `body` and `bodyPath` attributes are mutually exclusive. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#httpprobe).
+:::info YAML only feature
+In the case of a complex `POST` request in which the body spans multiple lines, the `bodyPath` attribute is used to specify the path to a file consisting of the same. This file is available to the experiment pod through a ConfigMap resource, wherein the ConfigMap name is defined in the [chaos engine](https://docs.litmuschaos.io/docs/concepts/chaos-engine) or the [chaos experiment](https://docs.litmuschaos.io/docs/concepts/chaos-experiment) CR. The `body` and `bodyPath` attributes are mutually exclusive. Go to [probe schema](https://docs.litmuschaos.io/docs/concepts/probes#httpprobe) to learn more.
 :::
 
-## Where to define
+## Defining the probe
 
-The probes can be defined at **.spec.experiments[].spec.probe** path inside Chaos Engine.
+You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
 ```yaml
 kind: Workflow
@@ -39,7 +39,7 @@ spec:
 
 ## Schema
 
-Probe schema for HTTP Probe with common properties shared across all probes and properties unique to HTTP probe.
+Listed below is the probe schema for HTTP Probe with common properties shared across all probes and properties unique to HTTP probe.
 
 <table>
   <tr>
@@ -130,9 +130,7 @@ Probe schema for HTTP Probe with common properties shared across all probes and 
 
 ### Method
 
-Probe properties for method GET and POST.
-
-#### GET
+#### GET method properties
 
 <table>
   <tr>
@@ -173,7 +171,7 @@ Probe properties for method GET and POST.
   </tr>
 </table>
 
-#### POST
+#### POST method properties
 
 <table>
   <tr>
@@ -250,9 +248,7 @@ Probe properties for method GET and POST.
   </tr>
 </table>
 
-### Run Properties
-
-Probe run properties for HTTP Probe.
+### Run properties
 
 <table>
   <tr>

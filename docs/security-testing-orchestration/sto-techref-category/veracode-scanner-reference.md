@@ -30,7 +30,7 @@ Harness recommends you create [text secrets](../../platform/6_Security/2-add-use
 * `product_config_name` = `default`
 * `repository_project` — The name of the repo that gets scanned as shown in the Veracode UI. You use the [Codebase Config object](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) in the Harness pipeline to determine the URL of the repo to scan.  
 In most cases, this should match the repo name used in your Git provider.
-* `repository_branch` — The branch that gets reported in STO for the ingested results. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md). This sets the branch based on the user input or trigger payload at runtime.  
+* `repository_branch` — The branch that gets reported in STO for the ingested results. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.  
      In most cases, this field should match the name of Git branch that is getting scanned.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 * `product_auth_type`

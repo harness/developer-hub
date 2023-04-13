@@ -25,9 +25,9 @@ Docker-in-Docker must run in privileged mode to work properly. Use caution becau
 
 These steps assume you are familiar with the following concepts:
 
-* Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra)
+* Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
 
 ## Step 1: Set Up the CI Stage
 

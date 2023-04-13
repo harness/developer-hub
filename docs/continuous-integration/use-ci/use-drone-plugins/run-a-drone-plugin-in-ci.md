@@ -24,7 +24,7 @@ To install and run a plugin, you need the following:
 	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
 	+ [Delegate installation overview](../../../platform/2_Delegates/install-delegates/overview.md)
 * A CI pipeline with a Build stage to run the plugin:
-	+ [CI Build stage settings](../../ci-technical-reference/ci-stage-settings.md)
+	+ [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
 * You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.
 	+ [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
 

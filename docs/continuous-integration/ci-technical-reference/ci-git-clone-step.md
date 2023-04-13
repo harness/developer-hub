@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the Git Clone step, which clones a repo to the pipeline workspace. This step is useful when you want to include multiple repositories in your build. For example, suppose you maintain your code files in one repo and your build files (such as Dockerfiles) in a separate repo. In this case, you can set up your pipeline's **Build** stage to [clone your code files](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) and then add a Git Clone step to clone your build files into your pipeline workspace.
+This topic provides settings for the **Git Clone** step, which clones a repo to the pipeline workspace. This step is useful when you want to [include multiple repositories in your build](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md). For example, if you maintain your code files in one repo and your build files (such as Dockerfiles) in a separate repo, you can [configure the pipeline's default codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) to clone your code files and use a **Git Clone** step to clone your build files into the pipeline's workspace.
 
 :::info
 
@@ -20,27 +20,51 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
+## Description
+
+Optional text string.
+
 ## Connector
 
-The connector to the source control provider for the code repo you want the step to clone. For more information, go to [Code repo connectors](https://developer.harness.io/docs/category/code-repo-connectors).
+A connector for the source control provider hosting the code repo that you want the step to clone.
+
+The following topics provide more information about creating code repo connectors:
+
+* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/connect-to-code-repo#add-aws-codecommit-repo)
+* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/connect-to-a-azure-repo)
+* Bitbucket: [Bitbucket Connector Settings Reference](../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
+* GitHub:
+  * [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector)
+  * [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference)
+  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/git-hub-app-support)
+* GitLab: [GitLab Connector Settings Reference](../../platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md)
+* Other Git providers:
+  * [Connect to a Git repo](/docs/platform/Connectors/connect-to-code-repo)
+  * [Git connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-connector-settings-reference)
 
 ## Repository Name
 
-The name of the code repo you want to clone into the pipeline workspace, if this is not already designated in the connector's configuration.
+If the connector's [URL Type](/docs/platform/Connectors/ref-source-repo-provider/git-connector-settings-reference#url-type) is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration.
 
-This setting is required if the connector uses a Git account URL, such as `https://github.com/my-account/`, rather than to a URL for a specific repo within that account.
+If the connector's URL Type is **Account**, then you must specify the name of the code repo that you want to clone into the pipeline workspace.
 
-## Build Type
+## Build Type, Branch Name, and Tag Name
 
-Select **Git Branch** if you want the step to clone code from a specific branch with in the repo. Select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**. You can use fixed values, runtime input, and variable expressions for the branch and tag names.
+For **Build Type**, select **Git Branch** if you want the step to clone code from a specific branch within the repo, or select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**.
 
-This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. Make sure to set the input type to **Expression**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](built-in-cie-codebase-variables-reference.md).
+:::tip
+
+You can use [fixed values, runtime input, or variable expressions](/docs/platform/references/runtime-inputs/) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime. You could also use expressions to match the pipeline's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) branch or tag so that, for example, the pipeline and the Git Clone step both pull code from the same environment, such as `production` when a production build runs or `development` when a development build runs.
+
+:::
+
+This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](../use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Clone Directory
 
-The target path in the pipeline workspace where you want to clone the repo.
+An optional target path in the pipeline workspace where you want to clone the repo.
 
-You can't specify `/harness/` as a target for a **Git Clone** step because this folder is reserved for the repo defined in the **Build** stage's `codebase` object. However, you can set up your **Build** stage to use a custom workspace volume and share data across steps in your **Build** stage. For more information, go to the **Workspace** section in [CI Build stage settings](ci-stage-settings.md).
+You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../use-ci/build-stage-settings/ci-stage-settings.md) to share data across steps in your **Build** stage.
 
 ## Additional Configuration
 
@@ -58,7 +82,7 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
 
-If you want to use self-signed certificates in your build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ### Run as User
 
@@ -77,8 +101,3 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
-## See also
-
-* [Create and Configure a Codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md)
-* [Clone and Process Multiple Codebases in the Same Pipeline](../use-ci/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline.md)

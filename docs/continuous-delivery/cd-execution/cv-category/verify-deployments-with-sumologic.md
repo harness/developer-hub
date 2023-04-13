@@ -17,8 +17,8 @@ Currently, this feature is behind the feature flag `SRM_SUMO`. Contact [Harness 
 
 Harness Continuous Verification (CV) integrates with Sumo Logic to:
 
-* Verify that the deployed service is running safely and performing automatic rollbacks.
-* Apply machine learning to every deployment to identify and flag anomalies in future deployments.
+* Verify that the deployed service is running safely and perform automatic rollbacks.
+* Apply machine learning to every deployment to identify and flag anomalies with the new version.
 
 This topic describes how to set up a Sumo Logic health source when adding a CV step to your Continuous Deployment (CD).
 
@@ -259,8 +259,8 @@ To set fail-fast thresholds for CV, follow these steps:
 
 #### Define a query
 
-1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed.
-2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed that help you verify if the query you built is correct.
+1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed. For the verification process to be effective, the query should be designed to accurately extract error logs specific to the service.```
+2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed which include a timestamp, the host where the log was recorded, and the log message itself. These three properties are critical for accurate verification, so it's important to check their accuracy. If the host information doesn't match the actual instance of your service, you should review the mapping provided for the **Service Instance Identifier**.```
 
 <details>
    <summary><b>Sample log query</b></summary>

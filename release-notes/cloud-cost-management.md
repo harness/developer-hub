@@ -28,7 +28,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Fixed issues
 
-* Updated the default perspectives names from `Aws` to `AWS` and `Gcp` to `GCP` to prevent any discrepancies in cost data. (CCM-11770)
+* Updated the default perspective names from `Aws` to `AWS` and `Gcp` to `GCP`. (CCM-11770)
 * Discrepancy in the number of EC2 recommendations. (CCM-11730)
  
    The Terminate-type recommendations were not being saved, and certain EC2 recommendations were disappearing after a specific interval of time. This issue has been resolved.

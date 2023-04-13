@@ -396,7 +396,7 @@ echo <+codebase.pullRequestLink>
 echo <+codebase.pullRequestBody>  
 echo <+codebase.state>
 ```
-See [Built-in CIE Codebase Variables Reference](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md).
+See [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Account
 
@@ -1465,6 +1465,6 @@ For more information migrating to NextGen, go to the following:
 
 ## See also
 
-* [Codebase Variables Reference](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md)
+* [Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
 * [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 
