@@ -4,7 +4,7 @@ import Tooltip from "rc-tooltip";
 import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "rc-tooltip/assets/bootstrap.css";
-import styles from "src/components/LandingPage/TutorialCard.module.scss";
+import styles from "./TutorialCard.module.scss";
 import { MODULES } from "../../constants";
 
 export enum docType {
