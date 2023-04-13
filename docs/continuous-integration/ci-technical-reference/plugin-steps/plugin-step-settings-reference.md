@@ -1,14 +1,14 @@
 ---
 title: Plugin step settings
 description: Plugins are Docker containers that perform predefined tasks and are configured as steps.
-sidebar_position: 80
+sidebar_position: 30
 helpdocs_topic_id: 8r5c3yvb8k
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the CI Plugin step. Plugins are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more.
+This topic provides settings for the CI Plugin step. [Plugins](../../use-ci/use-drone-plugins/explore-ci-plugins.md) are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more.
 
 :::info
 
@@ -18,7 +18,7 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
@@ -44,7 +44,7 @@ Select this option to run the container with escalated privileges. This is the e
 
 ### Settings
 
-Specify plugin-specific settings according to the plugin's documentation. For more information, go to [Use plugins](../use-ci/use-drone-plugins/explore-ci-plugins.md) and the [Drone plugins documentation](http://plugins.drone.io/).
+Specify plugin-specific settings according to the plugin's documentation. For more information, go to [Explore plugins](../../use-ci/use-drone-plugins/explore-ci-plugins.md) and the [Drone plugins documentation](http://plugins.drone.io/).
 
 ### Image Pull Policy
 
@@ -69,5 +69,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

@@ -896,20 +896,31 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings",
       to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-gcs-step-settings",
     },
-//
+
     {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings",
       to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-jfrog-artifactory-step-settings",
     },
+
     {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings",
       to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings",
     },
-//
-    //  Created by aimurphy for DOC-2484 on Mar 7, 2023
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
+      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-bitrise-plugin",
+    },
+
     {
       from: "/tutorials/build-code/ci-github-action-step",
-      to: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
+      from: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
+      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
+      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
     },
 ],
 };

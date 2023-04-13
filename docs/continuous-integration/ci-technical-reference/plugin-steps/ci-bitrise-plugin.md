@@ -1,11 +1,11 @@
 ---
 title: Bitrise plugin step settings
 description: Use Bitrise Integrations in your Harness CI pipelines.
-sidebar_position: 100
+sidebar_position: 10
 ---
 
 
-With the **Bitrise plugin** step, you can use [Bitrise Integrations](https://bitrise.io/integrations/steps) in your Harness CI pipelines.
+With the **Bitrise plugin** step, you can use [Bitrise Integrations](https://bitrise.io/integrations/steps) in your Harness CI pipelines. For more information about plugins in CI pipelines, go to [Explore plugins](../../use-ci/use-drone-plugins/explore-ci-plugins.md).
 
 :::info
 
@@ -78,7 +78,7 @@ In the Visual editor, add the **Bitrise plugin** step to your pipeline's **Build
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ### Description
 
@@ -96,7 +96,7 @@ Refer to the Integration's usage specifications for details about specific input
 
 :::tip
 
-Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
+Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions. Select the **Thumbtack** ![](../static/icon-thumbtack.png) to change input types.
 
 :::
 
@@ -108,7 +108,7 @@ Refer to the Integration's usage specifications for details about specific envir
 
 :::tip
 
-You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
+You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](../static/icon-thumbtack.png) to change input types.
 
 :::
 
@@ -118,8 +118,8 @@ You can use fixed values, runtime input, or variable expressions for environment
 
 Found under **Optional Configuration**. Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ```mdx-code-block
   </TabItem>

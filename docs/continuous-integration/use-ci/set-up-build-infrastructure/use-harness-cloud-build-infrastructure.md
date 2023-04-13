@@ -72,11 +72,11 @@ If your build requires a specific version of a tool or a tool that isn't already
 
 :::tip
 
-Use the [Bitrise plugin step](../../ci-technical-reference/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
+Use the [Bitrise plugin step](../../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
 
 :::
 
-In the following YAML example, an [Action step](../../ci-technical-reference/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
+In the following YAML example, an [Action step](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
 
 ```yaml
             steps:

@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 A Drone Plugin is a Docker container that performs a predefined task. Plugins are essentially templated scripts that can be written in any programming language. The Drone community maintains an [extensive library](https://plugins.drone.io/) of plugins for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/).
 
-This topic describes how to set up and run Drone Plugins in your CI pipelines. You can also use [GitHub Action plugin](../../ci-technical-reference/ci-github-action-step.md) and [Bitrise plugin](../../ci-technical-reference/ci-bitrise-plugin.md) steps to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+This topic describes how to set up and run Drone Plugins in your CI pipelines. You can also use [GitHub Action plugin steps](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) and [Bitrise plugin steps](../../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ## Before You Begin
 
@@ -186,6 +186,6 @@ You can see additional examples in the [GitHub Actions Support in Harness CI blo
 
 * [Drone Plugins Marketplace](https://plugins.drone.io/)
 * [Run GitHub Actions in CI pipelines](run-a-git-hub-action-in-cie.md)
-* [Plugin step settings](../../ci-technical-reference/plugin-step-settings-reference.md)
+* [Plugin step settings](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md)
 * [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
 

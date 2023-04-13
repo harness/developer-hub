@@ -13,7 +13,7 @@ helpdocs_is_published: true
 
 Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
 
-This topic describes how to use the **Plugin** step to run GitHub Actions available in the [GitHub Marketplace](https://github.com/marketplace?category=&query=&type=actions&verification=). For information about the specialized **GitHub Action plugin** step, go to [GitHub Action plugin step settings](../../ci-technical-reference/ci-github-action-step.md).
+This topic describes how to use the **Plugin** step to run GitHub Actions available in the [GitHub Marketplace](https://github.com/marketplace?category=&query=&type=actions&verification=). For information about the specialized **GitHub Action plugin** step, go to [GitHub Action plugin step settings](../../ci-technical-reference/plugin-steps/ci-github-action-step.md).
 
 With the **Plugin** step, you use the GitHub Actions Drone Plugin, [plugins/github-actions](https://github.com/drone-plugins/github-actions), and then replicate the GitHub Action settings. When your pipeline runs, the Github Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
@@ -65,7 +65,7 @@ You can use expressions or [Runtime Inputs](../../../platform/20_References/runt
 
 :::tip
 
-For more information about Plugin step settings, go to the [Plugin step settings reference](../../ci-technical-reference/plugin-step-settings-reference.md).
+For more information about Plugin step settings, go to the [Plugin step settings reference](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md).
 
 :::
 

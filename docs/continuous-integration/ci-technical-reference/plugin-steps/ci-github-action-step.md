@@ -1,7 +1,7 @@
 ---
 title: GitHub Action plugin step settings
 description: Run Github Actions in your Harness CI pipelines.
-sidebar_position: 1
+sidebar_position: 20
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
@@ -12,7 +12,9 @@ You can use the **GitHub Action plugin** step to run GitHub Actions in your Harn
 
 Currently, the **GitHub Action plugin** step is supported for the Harness Cloud build infrastructure only.
 
-For other build infrastructures, you can use the generic **Plugin** step with the GitHub Actions Drone Plugin, as explained in [Run GitHub Actions in CI pipelines](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
+For other build infrastructures, you can use the generic **Plugin** step with the GitHub Actions Drone Plugin, as explained in [Run GitHub Actions in CI pipelines](../../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
+
+For more information about using plugins in CI pipelines, go to [Explore plugins](../../use-ci/use-drone-plugins/explore-ci-plugins.md).
 
 :::
 
@@ -213,7 +215,7 @@ You can use fixed values, runtime input, or variable expressions for **Settings*
 
 ### Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ### Description
 
@@ -241,8 +243,8 @@ Refer to the GitHub Action's `env` usage specifications for details about specif
 
 Found under **Optional Configuration**. Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ```mdx-code-block
   </TabItem2>
