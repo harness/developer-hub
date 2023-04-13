@@ -1,0 +1,14 @@
+{
+    "label": "Stop builds based on scan results",
+    "position": 40,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Stop builds based on scan results"
+    },
+    "customProps": {
+        "ref": "doc-2894"
+    }
+}

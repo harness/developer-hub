@@ -30,11 +30,11 @@ To set up an orchestrated scan, you specify the following information:
 	+ Code repo — project and branch
 	+ Instance (website) — identifier, environment, domain, path, protocol, port
 
-For an example of the setup workflow, go to [Run an Orchestrated Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md). This topic describes how to scan a container image using [Aqua Trivy](../sto-techref-category/aqua-trivy-scanner-reference.md). The **runTrivyScanOnImage** step specifies all the information needed to scan the object:
+For an example of the setup workflow, go to [Run an Orchestrated Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md). This topic describes how to scan a container image using [Aqua Trivy](../../sto-techref-category/aqua-trivy-scanner-reference.md). The **runTrivyScanOnImage** step specifies all the information needed to scan the object:
 
 * The scanner and scan settings
 * The object to scan: in this case, a Docker Hub image. This step also specifies the domain, project, and tag.
-  ![](./static/sto-workflows-overview-02.png)
+  ![](../static/sto-workflows-overview-02.png)
 
 ### Ingestion-Only workflows
 
@@ -45,7 +45,7 @@ An Ingestion-only workflow requires at least two steps:
 * A **Run step** saves the scan data to a shared folder. The Run step might run a scan locally or download scan results from an external tool.
 * A **Security step** ingests the data from the shared folder.
 
-For an example of the setup workflow, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline.md). This topic describes how to scan a container image using [Aqua Trivy](../sto-techref-category/aqua-trivy-scanner-reference.md). The pipeline works like this:
+For an example of the setup workflow, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). This topic describes how to scan a container image using [Aqua Trivy](../../sto-techref-category/aqua-trivy-scanner-reference.md). The pipeline works like this:
 
 * The Run step runs a Trivy scan on an image and outputs the results to a local shared folder.  
 Running the scanner outside of the Security step enables you to customize the scan settings rather than using a predefined settings profile.
@@ -53,17 +53,17 @@ Running the scanner outside of the Security step enables you to customize the sc
 	+ The scanner and scan settings
 	+ The path and filename of the results data file
 	+ Information about the scan and the scanned object: the object type and the container project and tag
-	  ![](./static/sto-workflows-overview-03.png)
+	  ![](../static/sto-workflows-overview-03.png)
 
 ### Data-Load Workflows
 
 Data-load scans are a sub-category of orchestrated scans. Instead of running a scan, the Security step pulls issues from an external source. In this case, you configure the Security Step to download from the external tool rather than running an orchestrated scan. This workflow is supported for scanners such as Veracode that support downloading results via an API endpoint.
 
-![](./static/sto-workflows-overview-04.png)
+![](../static/sto-workflows-overview-04.png)
 
 ### See Also
 
 * [Run an Orchestrated Scan in an STO Pipeline](run-an-orchestrated-scan-in-sto.md)
 * [Ingest Scan Results into an STO Pipeline](ingest-scan-results-into-an-sto-pipeline.md)
-* [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
+* [Security Step Settings Reference](../../sto-techref-category/security-step-settings-reference.md)
 

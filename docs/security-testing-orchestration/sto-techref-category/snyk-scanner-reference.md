@@ -10,7 +10,7 @@ Harness STO supports the following scan types for the following Snyk products:
 * Snyk Code  —  `ingestionOnly` 
 * Snyk Container  — `ingestionOnly` 
 
-For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
+For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
 
 ## Before you begin
 

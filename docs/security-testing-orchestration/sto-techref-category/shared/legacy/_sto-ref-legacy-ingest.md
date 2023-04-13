@@ -16,7 +16,7 @@ The following steps outline the general workflow for ingesting scan data into yo
 
    3. Add a Security step after the Run step and add the `target name`, `variant`, and `ingestion_file` settings as described above. 
 
-For a complete workflow description and example, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline).
+For a complete workflow description and example, go to [Ingest Scan Results into an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
 
 </details>

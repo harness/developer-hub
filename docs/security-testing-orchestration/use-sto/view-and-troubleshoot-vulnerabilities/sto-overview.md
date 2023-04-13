@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 The STO Overview enables you to see all detected issues in your target baselines.
 
-![](./static/sto-overview-06.png)
+![](../static/sto-overview-06.png)
 
 To see all target baselines in the project, go to **Security Tests** > **Test Targets**. To see detected issues in a non-baseline target, such as a feature or developer branch, go to the build results for that target and click **Security Tests**.
 

@@ -39,19 +39,19 @@ This integration has a separate setup path that is unrelated to other Jira-relat
  
     2. The default Jira project where you want to create your tickets. (You can select a different project when you create a ticket.)
 
-       ![](./static/jira-integration-00-select-connector.png)
+       ![](../static/jira-integration-00-select-connector.png)
 
 ## Create a Jira ticket from a detected issue
 
 :::note
-You can only create Jira tickets for targets that have baselines specified. For more information, go to [Targets, baselines, and variants in STO](docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
+You can only create Jira tickets for targets that have baselines specified. For more information, go to [Targets, baselines, and variants in STO](../docs/security-testing-orchestration/onboard-sto/key-concepts/targets-and-baselines).
 :::
 
 1. Go to the **Pipeline Execution** &gt; **Security Tests** page with the detected issue. 
 
 2. Click on the issue to select it. Then click **Create Ticket**. 
 
-   ![](./static/jira-integration-01-create-ticket.png)
+   ![](../static/jira-integration-01-create-ticket.png)
 
 3. In **Create Ticket in Jira**, set the options as follows:
 

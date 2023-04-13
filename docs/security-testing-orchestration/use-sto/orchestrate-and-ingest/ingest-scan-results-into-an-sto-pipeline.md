@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can run scans in a separate Run step, or outside Harness entirely, and ingest the results into your pipelines. This enables you to create advanced workflows that aren't possible with orchestrated scans. You can run custom scans with advanced settings that address specific security requirements. You can ingest results from multiple scans into the same pipeline, aggregate and deduplicate the data, and view all your results in a single pane of glass.
 
-STO also supports a generic JSON format if you want to to ingest data from tools that do not currently have STO integrations. For more information, go to [Ingest Results from Custom or Unsupported Scanners](/docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners).
+STO also supports a generic JSON format if you want to to ingest data from tools that do not currently have STO integrations. For more information, go to .
 
  To ingest scan results from outside a Security step, you set up your pipeline as follows:
 
@@ -21,16 +21,16 @@ STO also supports a generic JSON format if you want to to ingest data from tools
 
 The following example describes how to scans a local image using [Aqua Trivy](https://aquasecurity.github.io/trivy/dev/docs/), a popular open-source scanner, and ingest the results. A Run step installs Trivy; then it scans the image and saves the output to a shared folder. A Security step then ingests the output file.
 
-![](./static/ingest-scan-results-into-an-sto-pipeline-07.png)
+![](../static/ingest-scan-results-into-an-sto-pipeline-07.png)
 
 1. In your Harness pipeline, go to the Overview tab of the security stage and enter a shared path such as `/shared/customer_artifacts`.
 
-   ![](./static/ingest-scan-results-into-an-sto-pipeline-08.png)
+   ![](../static/ingest-scan-results-into-an-sto-pipeline-08.png)
 
 2. Add a Run step that save the results to the shared folder.  
 You can run a scan in this step or copy results from an external scan. In either case, the results file needs to be in the `/shared/customer_artifacts/` folder where the Security step can access it.  
 In this example, the Run step installs the Trivy software, runs a scan, and saves the output to `/shared/customer_artifacts/aqua.json`.  
-For [supported scanners](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach), STO can ingest the default data format for the published tool.  
+For [supported scanners](../../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach), STO can ingest the default data format for the published tool.  
 
 ```
 apt-get update -y  
@@ -61,7 +61,7 @@ To ingest the Trivy scan results, we configure the step as follows:
 - `customer_artifacts_path` = `/shared/customer_artifacts`
 - `manual_upload_filename` = `aqua.json`
 
-4. Specify any additional settings required for your specific scanner and the scanned object. Go to [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md).  
+4. Specify any additional settings required for your specific scanner and the scanned object. Go to [Security Step Settings Reference](../../sto-techref-category/security-step-settings-reference.md).  
 For the Trivy scan, we need to specify additional information about the scanned object:
 
 - `container_type` = `docker_v2`
@@ -158,7 +158,7 @@ The following example is based on the example workflow described in this topic.
 ```
 ### See Also
 
-* [STO Ingestion Workflows](sto-workflows-overview.md)
-* [Ingest Results from Custom or Unsupported Scanners](ingesting-issues-from-other-scanners.md)
-* [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md)
+* [STO Ingestion Workflows](./sto-workflows-overview.md)
+* [Ingest Results from Custom or Unsupported Scanners](./ingesting-issues-from-other-scanners.md)
+* [Security Step Settings Reference](../../sto-techref-category/security-step-settings-reference.md)
 
