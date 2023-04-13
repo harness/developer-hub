@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic contains general troubleshooting information for error messages and other issues that can arise.
+This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
 
@@ -48,9 +48,27 @@ For more information about self-signed certificates, delegates, and delegate env
 
 <!-- DOC-2692 removed -->
 
-## Test suites wrongly parsed
+## Test suites incorrectly parsed
 
 The parsed test report in the **Tests** tab comes strictly from the provided test reports. The reports must be in JUnit XML format. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing.
+
+## Test Intelligence isn't working
+
+Test Intelligence may not work even if you select the **Run only selected tests** option in your [Run Tests step](../ci-technical-reference/configure-run-tests-step-settings.md). One possible cause for this is that you're using **Maven** and your `**pom.xml**` contains `argLine`. In this case, you must update the Java Agent as follows:
+
+**Before:**
+
+```
+<argLine> something  
+</argLine>
+```
+
+**After:**
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
+</argLine>
+```
 
 ## Truncated execution logs
 

@@ -13,7 +13,7 @@ A Drone Plugin is a Docker container that performs a predefined task. Plugins ar
 
 This topic describes how to set up and run Drone Plugins in your CI pipelines. You can also use [GitHub Action plugin](../../ci-technical-reference/ci-github-action-step.md) and [Bitrise plugin](../../ci-technical-reference/ci-bitrise-plugin.md) steps to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
-### Before You Begin
+## Before You Begin
 
 To install and run a plugin, you need the following:
 
@@ -28,7 +28,7 @@ To install and run a plugin, you need the following:
 * You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.
 	+ [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
 
-### Workflow Description
+## Workflow Description
 
 The following steps describe the high-level workflow:
 
@@ -42,7 +42,7 @@ The following steps describe the high-level workflow:
 4. Click **Apply Changes** to apply your Stage settings, then **Save** to save the updated Pipeline
 5. Run the updated Pipeline and check the log output to verify that the Plugin Step works as intended.
 
-### Simple Example: Download a File
+## Simple Example: Download a File
 
 This example describes how to run the Drone Downloads plugin, which downloads an archive to your build infrastructure. You can use the following workflow to implement any plugin.
 
@@ -69,39 +69,102 @@ This example describes how to run the Drone Downloads plugin, which downloads an
 
   ![](./static/run-a-drone-plugin-in-ci-01.png)
 
-### Drone Plugin YAML and CI Step YAML
 
-You can use the examples in the [Drone Plugins Marketplace](https://plugins.drone.io/) to configure a Plugin Step in the Pipeline YAML editor. The formats are slightly different, but close enough that translating Drone Plugin definitions to Harness CI is fairly simple. You can see additional examples in [this blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
+## Convert Drone Plugin YAML to Harness CI YAML
 
-#### Text Secrets in Drone vs. Harness CI
+You can use YAML examples in the [Drone Plugins Marketplace](https://plugins.drone.io/) to configure a **Plugin** step in Harness CI. While the formats are slightly different, it is fairly simple to translate Drone Plugin definitions to Harness CI YAML.
 
-The following snippets illustrate the different ways that Drone and Harness CI handle text secrets. See [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+### Listed and nested settings
+
+To list-formatted settings from Drone Plugin YAML to Harness CI YAML, merge them with comma separation.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="drone" label="Drone Plugin YAML" default>
+```
+
+```yaml
+Settings:
+  tags:
+    - latest
+	- '1.0.1'
+	- '1.0'
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ci" label="Harness CI YAML">
+```
+
+```yaml
+settings:
+  tags: latest,1.0.1,1.0
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+For nested settings, maintain key-value pair definitions, as shown in the following Harness CI YAML example:
+
+```yaml
+settings:
+  mynestedsetting:
+    nextlevel:
+      varname: 100
+  mylistsetting:
+   - itemone
+   - itemtwo
+```
+
+It's often easier to define complex settings in the Pipeline Studio's YAML editor, rather than the Visual editor. The settings in the above example would be defined in the Visual editor as shown in the following screenshot.
+
+![](./static/run-a-drone-plugin-in-ci-02.png)
+
+### Text Secrets
+
+The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
 
 Note that the CI definition includes a few additional fields and that some fields use different formats.
 
-##### Example from Drone Download description
-
+```mdx-code-block
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
 ```
+```mdx-code-block
+<Tabs2>
+  <TabItem2 value="drone" label="Drone Plugin Marketplace definition" default>
+```
+
+```yaml
 steps:
     - name: download
 	  image: plugins/download
-	  settings:    
-	    username:     
+	  settings:
+	    username:
 		    from_secret: username
-		password:      
+		password:
 			from_secret: password
-		source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz                                  
+		source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-##### Equivalent definition in Harness CI Pipeline
-
+```mdx-code-block
+  </TabItem2>
+  <TabItem2 value="ci" label="Harness CI definition">
 ```
+
+```yaml
   - step:
     type: Plugin
 	name: download-drone
 	identifier: downloaddrone
-	spec:            
-	    connectorRef: mygithubconnector            
+	spec:
+	    connectorRef: mygithubconnector
 		image: plugins/download
 		privileged: false
 		settings:
@@ -110,26 +173,16 @@ steps:
 			source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
-
-#### Define Nested and List Settings
-
-You can specify nested and list settings in a Pipeline YAML definition, as shown here. It's easier to define complex settings in the YAML editor than the UI.
-
-
+```mdx-code-block
+  </TabItem2>
+</Tabs2>
 ```
-settings:  
-  mynestedsetting:  
-    nextlevel:   
-      varname: 100  
-  mylistsetting:  
-   - itemone   
-   - itemtwo
-```
-The settings appear in the UI like this:
 
-![](./static/run-a-drone-plugin-in-ci-02.png)
+### More examples
 
-### See also
+You can see additional examples in the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
+
+## See also
 
 * [Drone Plugins Marketplace](https://plugins.drone.io/)
 * [Run GitHub Actions in CI pipelines](run-a-git-hub-action-in-cie.md)
