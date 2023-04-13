@@ -10,19 +10,19 @@ ECS container HTTP reset peer injects HTTP reset on the service whose port is sp
 ![ECS Container HTTP Reset Peer](./static/images/ecs-container-http-reset-peer.png)
 
 ## Use cases
-
-- It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout).
-- It simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
+ECS container HTTP reset peer:
+- Simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout).
+- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 
 
 ## Prerequisites
 - Kubernetes >= 1.17
-- ECS container metadata is enabled (disabled by default). To enable it, refer to this [docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
+- ECS container metadata is enabled (disabled by default). To enable it, go to [container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is currently running, you may need to restart it to get the metadata directory.
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
 - Access to the ECS cluster instances with the necessary permissions to update the start and stop timeouts for containers. Refer to [systems manager docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
 - Backup and recovery mechanisms in place to handle potential failures during the testing process.
 - You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations.
-- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+- Kubernetes secret with AWS Access Key ID and secret access key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -38,20 +38,19 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-### Note
-
-You can pass the VM credentials as secrets or as an chaosengine environment variable.
+:::info note
+- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+- The ECS container should be in a healthy state before and after introducing chaos.
+- Refer to the [superset permission or policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+:::
 
 ## Permissions required
 
 Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -99,22 +98,11 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The ECS container should be in a healthy state.
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -134,10 +122,10 @@ The ECS container should be in a healthy state.
             <td> Defaults to port 80. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -182,18 +170,12 @@ The ECS container should be in a healthy state.
           <td> Defaults to `eth0`. </td>
         </tr>
     </table>
-</details>
-
-
-### Fault tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target service port
 
-It is the target service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
+Service port that is targeted. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/target-service-port.yaml yaml)
 ```yaml
@@ -217,9 +199,9 @@ spec:
 
 ### Proxy port
 
-It is the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
+Port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/proxy-port.yaml yaml)
 ```yaml
@@ -246,9 +228,9 @@ spec:
 
 ### Reset timeout
 
-It defines the reset timeout value that is added to the http request. You can tune it using the `RESET_TIMEOUT` environment variable.
+Reset timeout value added to the HTTP request. Tune it by using the `RESET_TIMEOUT` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/reset-timeout.yaml yaml)
 ```yaml
@@ -275,9 +257,9 @@ spec:
 
 ### Network interface
 
-It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
+Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/network-interface.yaml yaml)
 ```yaml

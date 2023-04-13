@@ -1,24 +1,26 @@
 ---
 id: ecs-update-container-resource-limit
-title: ECS Update Container Resource limit
+title: ECS update container resource limit
 ---
 
-ECS update container resource limits allows you to modify the CPU and memory resources of containers in an Amazon ECS (Elastic Container Service) task. This fault determines the behavior of your ECS tasks when their resource limits are changed, and verifies the scalability and resilience of your ECS tasks under different resource configurations.
+ECS update container resource limits allows you to modify the CPU and memory resources of containers in an Amazon ECS (Elastic Container Service) task.
 
 ![ECS Update Container Resource Limit](./static/images/ecs-update-container-resource-limit.png)
 
 ## Use cases
+ECS update container resource limit:
+- Determines the behavior of your ECS tasks when their resource limits are changed.
+- Verifies the scalability and resilience of your ECS tasks under different resource configurations.
+- Modifies the resource limits of a container by updating the task definition associated with the ECS service or task.
+- Simulates scenarios where containers experience changes in their allocated resources, which may affect their performance or availability. For example, you can increase or decrease the CPU or memory limits of a container to test how your application adapts to changes in resource availability.
+- Validates the behavior of your application and infrastructure during simulated resource limit changes, such as:
+  - Testing how your application scales up or down in response to changes in CPU or memory limits.
+  - Verifying the resilience of your system when containers are running with lower resource limits.
+  - Evaluating the impact of changes in resource limits on the performance and availability of your application.
 
-This fault modifies the resource limits of a container by updating the task definition associated with the ECS service or task. It allows you to simulate scenarios where containers experience changes in their allocated resources, which may affect their performance or availability. For example, you can increase or decrease the CPU or memory limits of a container to test how your application adapts to changes in resource availability.
-
-The fault can be used to validate the behavior of your application and infrastructure during simulated resource limit changes, such as:
-
-- Testing how your application scales up or down in response to changes in CPU or memory limits.
-- Verifying the resilience of your system when containers are running with lower resource limits.
-- Evaluating the impact of changes in resource limits on the performance and availability of your application.
-
-It's important to note that modifying container resource limits using the ECS Update Container Resource Limit fault is an intentional disruption and should be used carefully in controlled environments, such as during testing or staging, to avoid any negative impact on production workloads.
-
+:::tip
+Modifying the container resource limits using the ECS update container resource limit is an intentional disruption and should be used carefully in controlled environments, such as during testing or staging, to avoid any negative impact on the production workloads.
+:::
 
 ## Prerequisites
 
@@ -40,22 +42,18 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+:::info note
+- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- The ECS containers should be in a healthy state before and after introducing chaos.
+- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+:::
 
-## Default validations
-
-The ECS containers should be in a healthy state.
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+  <h3>Mandatory tunables</h3>
     <table>
         <tr>
-          <th> Variables </th>
+          <th> Tunable </th>
           <th> Description </th>
           <th> Notes </th>
         </tr>
@@ -75,10 +73,10 @@ The ECS containers should be in a healthy state.
           <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -113,17 +111,13 @@ The ECS containers should be in a healthy state.
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
 
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### CPU And Memory Resource limit
 
 It specifies the CPU and Memory limit for the task containers. You can tune it using the `CPU` and `MEMORY` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-update-container-resource-limit/container-resource-limit.yaml yaml)
 ```yaml

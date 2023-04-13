@@ -1,6 +1,6 @@
 ---
 id: aws
-title: Chaos Faults for AWS
+title: Chaos faults for AWS
 ---
 
 <!-- Import statement for Custom Components -->
@@ -433,6 +433,174 @@ This fault determines the resilience of an application when ECS tasks unexpected
 </FaultDetailsCard>
 
 <FaultDetailsCard category="aws">
+
+### ECS container HTTP latency
+
+ECS container HTTP latency induces HTTP chaos on containers running in an Amazon ECS (Elastic Container Service) task. This fault introduces latency in the HTTP responses of containers of a specific service using a proxy server, simulating delays in network connectivity or slow responses from the dependent services.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Modifies the HTTP responses of containers in a specified ECS service by starting a proxy server and redirecting traffic through the proxy server. 
+- Simulates scenarios where containers experience delays in network connectivity or slow responses from dependent services, which may impact the behavior of your application.
+- Validates the behavior of your application and infrastructure during simulated HTTP latency, such as:
+  - Testing how your application handles delays in network connectivity from containers to dependent services.
+  - Verifying the resilience of your system when containers experience slow responses from dependent services.
+  - Evaluating the impact of HTTP latency on the performance and availability of your application.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS container HTTP modify body
+
+CS container HTTP modify body injects HTTP chaos which affects the request or response by modifying the status code, body, or headers. This is achieved by starting a proxy server and redirecting the traffic through the proxy server.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Tests the application's resilience to erroneous (or incorrect) HTTP response body.
+- Tests the resilience of the ECS application container to erroneous or incorrect HTTP response body.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS container HTTP reset peer
+
+ECS container HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It stops the outgoing HTTP requests by resetting the TCP connection for the requests.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- It determines the application's resilience to a lossy (or flaky) HTTP connection.
+- Simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout).
+- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS container HTTP status code
+
+ECS container HTTP status code injects HTTP chaos that affects the request (or response) by modifying the status code (or the body or the headers) by starting a proxy server and redirecting the traffic through the proxy server on the target ECS containers.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Tests the ECS task container resilience to erroneous code HTTP responses from the application server.
+- Simulates unavailability of specific API services (503, 404), unavailability of specific APIs for(or from) a given microservice (TBD or Path Filter) (404).
+- Simulates unauthorized requests for 3rd party services (401 or 403), and API malfunction (internal server error) (50x) on ECS task container.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS invalid container image
+
+ECS invalid container image allows you to update the Docker image used by a container in an Amazon ECS (Elastic Container Service) task. 
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Tests the behavior of your ECS tasks when the container images are updated, and validates the resilience and performance of your ECS tasks during image updates.
+- Updates the Docker image of a container by modifying the task definition associated with the ECS service or task. 
+- Simulates scenarios where container images are updated, that may impact the behavior of your application or infrastructure. For example, you can update the Docker image of a container to a newer version or a different image to test how your application handles image updates.
+- Validates the behavior of your application and infrastructure during simulated container image updates, such as:
+  - Testing the resilience of your system during image updates, including verifying if the updated image is pulled successfully and if the container starts with the new image.
+  - Validating the performance and availability of your application after container image updates, including checking if the updated image performs as expected and if there are any issues with the new image.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS network restrict
+
+ECS network restrict allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. 
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Tests the resilience and performance of your ECS tasks when network access is restricted.
+- Validates the behavior of your application in a restricted networking environment.
+- Restricts the network connectivity of containers by modifying the container security rules associated with the ECS task. 
+- Simulates scenarios where network access is restricted, which may impact the behavior of your application or infrastructure. For example, you can restrict outgoing internet access from containers to test how your application handles restricted networking environments or to validate the behavior of your application when certain network resources are not accessible.
+- Validates the behavior of your application and infrastructure during simulated network restrictions, such as:
+  - Testing the resilience of your system when network access is restricted, including verifying if the containers can communicate with each other or with external resources when certain network restrictions are in place.
+  - Validating the performance and availability of your application in a restricted networking environment, including checking if the application can continue to function properly with limited network access.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS update container resource limit
+
+ECS update container resource limits allows you to modify the CPU and memory resources of containers in an Amazon ECS (Elastic Container Service) task.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Determines the behavior of your ECS tasks when their resource limits are changed.
+- Verifies the scalability and resilience of your ECS tasks under different resource configurations.
+- Modifies the resource limits of a container by updating the task definition associated with the ECS service or task.
+- Simulates scenarios where containers experience changes in their allocated resources, which may affect their performance or availability. For example, you can increase or decrease the CPU or memory limits of a container to test how your application adapts to changes in resource availability.
+- Validates the behavior of your application and infrastructure during simulated resource limit changes, such as:
+  - Testing how your application scales up or down in response to changes in CPU or memory limits.
+  - Verifying the resilience of your system when containers are running with lower resource limits.
+  - Evaluating the impact of changes in resource limits on the performance and availability of your application.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS update container timeout
+
+ECS update container timeout modifies the start and stop timeout for ECS containers in Amazon ECS clusters. It allows you to specify the duration for which the containers should be allowed to start or stop before they are considered as failed.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Tests the resilience of ECS tasks and their containers to timeouts during updates or deployments.
+- Verifies the behavior of ECS tasks and their containers when the start or stop timeout is exceeded during updates or deployments.
+- Tests the recovery mechanisms of the ECS service and container instances in case of timeouts. 
+- Simulates scenarios where containers take longer than expected to start or stop. 
+- Evaluates the impact of above-mentioned scenarios on the overall application availability and performance.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS update task role
+
+ECS update task role allows you to modify the IAM task role associated with an Amazon ECS (Elastic Container Service) task.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Determines the behavior of your ECS tasks when their IAM role is changed.
+- Verifies the authorization and access permissions of your ECS tasks under different IAM configurations.
+- Modifies the IAM task role associated with a container task by updating the task definition associated with the ECS service or task. 
+- Simulate scenarios where the IAM role associated with a task is changed, which may impact the authorization and access permissions of the containers running in the task.
+- Validates the behavior of your application and infrastructure during simulated IAM role changes, such as:
+  - Testing how your application handles changes in IAM role permissions and access.
+  - Verifying the authorization settings of your system when the IAM role is updated.
+  - Evaluating the impact of changes in IAM roles on the security and compliance of your application.
+
+</accordion>
+</FaultDetailsCard>
+
+
+<FaultDetailsCard category="aws">
+
 
 ### Lambda delete event source mapping
 

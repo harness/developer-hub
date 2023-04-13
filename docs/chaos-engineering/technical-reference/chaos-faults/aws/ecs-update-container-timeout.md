@@ -1,17 +1,20 @@
 ---
 id: ecs-update-container-timeout
-title: ECS Update Container timeout
+title: ECS update container timeout
 ---
 
-ECS update container timeout is used to modify the start and stop timeout for ECS containers in Amazon ECS clusters. It allows you to specify the duration for which the containers should be allowed to start or stop before they are considered as failed. This fault is useful for testing the resilience of ECS tasks and their containers to timeouts during updates or deployments.
-
+ECS update container timeout modifies the start and stop timeout for ECS containers in Amazon ECS clusters. It allows you to specify the duration for which the containers should be allowed to start or stop before they are considered as failed.
 
 ![ECS Update Container Timeout](./static/images/ecs-update-container-timeout.png)
 
 
 ## Use cases
-
-ECS Update Container Timeout is useful for verifying the behavior of ECS tasks and their containers when the start or stop timeout is exceeded during updates or deployments. It helps to test the recovery mechanisms of the ECS service and container instances in case of timeouts. This fault can be used to simulate scenarios where containers take longer than expected to start or stop, and to evaluate the impact of such scenarios on the overall application availability and performance.
+ECS update container timeout:
+- Tests the resilience of ECS tasks and their containers to timeouts during updates or deployments.
+- Verifies the behavior of ECS tasks and their containers when the start or stop timeout is exceeded during updates or deployments.
+- Tests the recovery mechanisms of the ECS service and container instances in case of timeouts. 
+- Simulates scenarios where containers take longer than expected to start or stop. 
+- Evaluates the impact of above-mentioned scenarios on the overall application availability and performance.
 
 
 ## Prerequisites
@@ -34,22 +37,18 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+:::info note
+- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- The ECS containers should be in a healthy state before and after introducing chaos.
+- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-## Default validations
-
-The ECS containers should be in a healthy state.
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
         <tr>
-          <th> Variables </th>
+          <th> Tunable </th>
           <th> Description </th>
           <th> Notes </th>
         </tr>
@@ -69,10 +68,10 @@ The ECS containers should be in a healthy state.
           <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -107,17 +106,12 @@ The ECS containers should be in a healthy state.
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Start and stop timeout
 
-It specifies the start and stop timeout for the task containers. You can tune it using the `START_TIMEOUT` and `STOP_TIMEOUT` environment variable. Its default value is set to 3,600 seconds if not provided
+The start and stop timeout for the task containers. Tune it by using the `START_TIMEOUT` and `STOP_TIMEOUT` environment variable. Its default value is set to 3,600 seconds.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-update-container-timeout/start-and-stop-timeout.yaml yaml)
 ```yaml

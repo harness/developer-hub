@@ -3,21 +3,25 @@ id: ecs-update-task-role
 title: ECS update task role
 ---
 
-ECS update task role allows you to modify the IAM task role associated with an Amazon ECS (Elastic Container Service) task. This fault determines the behavior of your ECS tasks when their IAM role is changed, and verifies the authorization and access permissions of your ECS tasks under different IAM configurations.
+ECS update task role allows you to modify the IAM task role associated with an Amazon ECS (Elastic Container Service) task.
 
 ![ECS Update Task Role](./static/images/ecs-update-task-role.png)
 
 ## Use cases
+ECS update task role:
+- Determines the behavior of your ECS tasks when their IAM role is changed.
+- Verifies the authorization and access permissions of your ECS tasks under different IAM configurations.
+- Modifies the IAM task role associated with a container task by updating the task definition associated with the ECS service or task. 
+- Simulate scenarios where the IAM role associated with a task is changed, which may impact the authorization and access permissions of the containers running in the task.
+- Validates the behavior of your application and infrastructure during simulated IAM role changes, such as:
+  - Testing how your application handles changes in IAM role permissions and access.
+  - Verifying the authorization settings of your system when the IAM role is updated.
+  - Evaluating the impact of changes in IAM roles on the security and compliance of your application.
 
-This fault modifies the IAM task role associated with a container task by updating the task definition associated with the ECS service or task. It allows you to simulate scenarios where the IAM role associated with a task is changed, which may impact the authorization and access permissions of the containers running in the task.
-The fault can be used to validate the behavior of your application and infrastructure during simulated IAM role changes, such as:
 
-1. Testing how your application handles changes in IAM role permissions and access.
-2. Verifying the authorization settings of your system when the IAM role is updated.
-3. Evaluating the impact of changes in IAM roles on the security and compliance of your application.
-
-It is important to note that modifying the IAM task role using the ECS Update Task Role fault is an intentional disruption and should be used carefully in controlled environments.
-
+:::tip
+Modifying the IAM task role using the ECS update task role is an intentional disruption and should be used carefully in controlled environments.
+:::
 
 ## Prerequisites
 
@@ -39,22 +43,18 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+:::info note
+- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- The ECS containers should be in a healthy state before and after introducing chaos.
+- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-## Default validations
-
-The ECS containers should be in a healthy state.
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
         <tr>
-          <th> Variables </th>
+          <th> Tunable </th>
           <th> Description </th>
           <th> Notes </th>
         </tr>
@@ -74,10 +74,10 @@ The ECS containers should be in a healthy state.
           <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunable</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -107,18 +107,12 @@ The ECS containers should be in a healthy state.
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
-
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Task role specification
 
-It specifies the Taks role for the ECS task containers. You can tune it using the `TASK_ROLE` environment variable.
+Task role for the ECS task containers. Tune it by using the `TASK_ROLE` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-update-task-role/task-role.yaml yaml)
 ```yaml

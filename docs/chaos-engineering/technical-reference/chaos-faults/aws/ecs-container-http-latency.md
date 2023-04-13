@@ -9,22 +9,23 @@ ECS container HTTP latency induces HTTP chaos on containers running in an Amazon
 
 ## Use cases
 
-This fault modifies the HTTP responses of containers in a specified ECS service by starting a proxy server and redirecting traffic through the proxy server. It allows you to simulate scenarios where containers experience delays in network connectivity or slow responses from dependent services, which may impact the behavior of your application.
-The fault can be used to validate the behavior of your application and infrastructure during simulated HTTP latency, such as:
-
-- Testing how your application handles delays in network connectivity from containers to dependent services.
-- Verifying the resilience of your system when containers experience slow responses from dependent services.
-- Evaluating the impact of HTTP latency on the performance and availability of your application.
+ECS container HTTP latency:
+- Modifies the HTTP responses of containers in a specified ECS service by starting a proxy server and redirecting traffic through the proxy server. 
+- Simulates scenarios where containers experience delays in network connectivity or slow responses from dependent services, which may impact the behavior of your application.
+- Validates the behavior of your application and infrastructure during simulated HTTP latency, such as:
+  - Testing how your application handles delays in network connectivity from containers to dependent services.
+  - Verifying the resilience of your system when containers experience slow responses from dependent services.
+  - Evaluating the impact of HTTP latency on the performance and availability of your application.
 
 
 ## Prerequisites
 - Kubernetes >= 1.17
-- ECS container metadata is enabled (disabled by default). To enable it, refer to this [docs](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is running from before, you may need to restart it to get the metadata directory.
+- ECS container metadata is enabled (disabled by default). To enable it, go to [container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If your task is currently running, restart it to get the metadata directory.
 - ECS cluster running with the desired tasks and containers and familiarity with ECS service update and deployment concepts.
-- Access to the ECS cluster instances with the necessary permissions to update the start and stop timeouts for containers. Refer to [systems manager docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
+- Access to the ECS cluster instances with the necessary permissions to update the start and stop timeouts for containers. Go to [systems manager documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
 - Backup and recovery mechanisms in place to handle potential failures during the testing process.
 - You and the ECS cluster instances have a role with the required AWS access to perform the SSM and ECS operations.
-- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+- Kubernetes secret with AWS Access Key ID and secret access key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -40,20 +41,20 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- It is recommended to use the same secret name, that is, `cloud-secret`. Else, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
 
-### Note
-
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+:::info note
+- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+- The ECS task container should be in a healthy state before and after introducing chaos.
+- Refer to the [superset permission or policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Refer to [AWS named rrofile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+:::
 
 ## Permissions required
 
 Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -101,21 +102,11 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-The ECS task conatiner should be in a healthy state.
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -135,10 +126,10 @@ The ECS task conatiner should be in a healthy state.
             <td> Defaults to port 80. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -183,18 +174,13 @@ The ECS task conatiner should be in a healthy state.
           <td> Defaults to `eth0`. </td>
         </tr>
     </table>
-</details>
 
-
-### Fault tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target service port
 
-It is the targeted service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
+Service port that is targeted. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
-You can tune it using the following example:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-container-http-latency/target-service-port.yaml yaml)
 ```yaml
@@ -218,9 +204,9 @@ spec:
 
 ### Proxy port
 
-It is the port where the proxy server listens to the requests. You can tune it using the `PROXY_PORT` environment variable.
+Port where the proxy server listens to the requests. Tune it by using the `PROXY_PORT` environment variable.
 
-You can use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-container-http-latency/proxy-port.yaml yaml)
 ```yaml
@@ -247,9 +233,9 @@ spec:
 
 ### Network latency
 
-It is the latency value that is added to the http request. You can tune it using the `LATENCY` environment variable.
+Delay added to the HTTP request. Tune it by using the `LATENCY` environment variable.
 
-You can use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-container-http-latency/latency.yaml yaml)
 ```yaml
@@ -276,9 +262,9 @@ spec:
 
 ### Network interface
 
-It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
+Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
-You can use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-container-http-latency/network-interface.yaml yaml)
 ```yaml

@@ -3,18 +3,19 @@ id: ecs-network-restrict
 title: ECS network restrict
 ---
 
-ECS network restrict is a fault that allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. This fault is useful for testing the resilience and performance of your ECS tasks when network access is restricted, and validating the behavior of your application in a restricted networking environment.
+ECS network restrict allows you to restrict the network connectivity of containers in an Amazon ECS (Elastic Container Service) task by modifying the container security rules. 
 
 ![ECS Network restrict](./static/images/ecs-network-restrict.png)
 
 ## Use cases
-
-This fault restricts the network connectivity of containers by modifying the container security rules associated with the ECS task. It allows you to simulate scenarios where network access is restricted, which may impact the behavior of your application or infrastructure. For example, you can restrict outgoing internet access from containers to test how your application handles restricted networking environments or to validate the behavior of your application when certain network resources are not accessible.
-The fault can be used to validate the behavior of your application and infrastructure during simulated network restrictions, such as:
-
-- Testing the resilience of your system when network access is restricted, including verifying if the containers can communicate with each other or with external resources when certain network restrictions are in place.
-
-- Validating the performance and availability of your application in a restricted networking environment, including checking if the application can continue to function properly with limited network access.
+ECS network restrict:
+- Tests the resilience and performance of your ECS tasks when network access is restricted.
+- Validates the behavior of your application in a restricted networking environment.
+- Restricts the network connectivity of containers by modifying the container security rules associated with the ECS task. 
+- Simulates scenarios where network access is restricted, which may impact the behavior of your application or infrastructure. For example, you can restrict outgoing internet access from containers to test how your application handles restricted networking environments or to validate the behavior of your application when certain network resources are not accessible.
+- Validates the behavior of your application and infrastructure during simulated network restrictions, such as:
+  - Testing the resilience of your system when network access is restricted, including verifying if the containers can communicate with each other or with external resources when certain network restrictions are in place.
+  - Validating the performance and availability of your application in a restricted networking environment, including checking if the application can continue to function properly with limited network access.
 
 
 ## Prerequisites
@@ -37,22 +38,18 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+:::info note
+- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+- The ECS containers should be in a healthy state before and after introducing chaos.
+:::
 
-## Default validations
-
-The ECS containers should be in a healthy state.
-
-## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
         <tr>
-          <th> Variables </th>
+          <th> Tunable </th>
           <th> Description </th>
           <th> Notes </th>
         </tr>
@@ -72,10 +69,10 @@ The ECS containers should be in a healthy state.
           <td> For example, <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -125,18 +122,12 @@ The ECS containers should be in a healthy state.
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
 
+### IP Address or CIDR range
 
-### Common and AWS-specific tunables
+IP address or the CIDR range. Tune it by using the `IP_ADDRESS` environment variable. If no IP address or CIDR range is provided, the fault detaches all the available rules from inbound or outbound traffic from the target security group.
 
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
-
-### IP Address or CIRD range
-
-It specifies the IP Address/CIRD range. You can tune it using the `IP_ADDRESS` environment variable. If no IP address/CIDR range is provided then it will detach/remove all the available rules from inbound/outbound traffic from the target security group.
-
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-restrict/ip-address.yaml yaml)
 ```yaml
@@ -164,9 +155,9 @@ spec:
 
 ### Rule type
 
-It specifies the rule type. You can tune it using the `RULE_TYPE` environment variable.
+Rule type associated with inbound or outbound traffic from the target security group. Tune it by using the `RULE_TYPE` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-restrict/rule-type.yaml yaml)
 ```yaml
@@ -194,9 +185,9 @@ spec:
 
 ### Rule mode
 
-It specifies the rule outbound. You can tune it using the `RULE_MODE` environment variable.
+Outbound traffic rule associated with the target security group. Tune it by using the `RULE_MODE` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-restrict/rule-mode.yaml yaml)
 ```yaml
@@ -224,9 +215,9 @@ spec:
 
 ### Protocol
 
-It specifies the protocol. You can tune it using the `PROTOCOL` environment variable.
+Network protocol associated with the rule. Tune it by using the `PROTOCOL` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-restrict/protocol.yaml yaml)
 ```yaml
@@ -254,9 +245,9 @@ spec:
 
 ### From port and to port
 
-It specifies the from-port and to-port. You can tune it using the `FROM_PORT` and `TO_PORT` environment variable.
+The port from which traffic arrives (host) and the port to which the traffic is routed (destination). Tune it by using the `FROM_PORT` and `TO_PORT` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-network-restrict/from-and-to-port.yaml yaml)
 ```yaml
