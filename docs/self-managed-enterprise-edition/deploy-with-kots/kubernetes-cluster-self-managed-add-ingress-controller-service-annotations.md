@@ -8,6 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info note
+
+This is an End of Life (EOL) notice for the KOTS installation method. This method will no longer be available after May 31, 2023.
+
+:::
+
 You can customize the behavior of the Nginx Ingress controller with annotations. This topic explains how to use the KOTS admin tool to configure the Ingress controller with annotations.
 
 **To add Ingress controller annotations**

@@ -8,6 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::info note
+
+This is an End of Life (EOL) notice for the KOTS installation method. This method will no longer be available after May 31, 2023.
+
+:::
+
 Installation of Harness Self-Managed Enterprise Edition in an existing Kubernetes cluster requires the following infrastructure.
 
 ## Production environment
