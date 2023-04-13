@@ -15,9 +15,15 @@ Background steps are useful for running services that need to run for the entire
 ## Important notes
 
 * Background steps do not support failure strategies or output variables.
-* A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests. You can use the Background step **Id** to call services started by Background steps in later steps, such as `curl` commands in Run steps.
-  ![The Background step ID, pythonscript, is used in a curl command in a Run step.](./static/background-step-settings-call-id-in-other-step.png)
 * If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
+* A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests. You can use the Background step **Id** to call services started by Background steps in later steps, such as `curl` commands in Run steps.
+
+<figure>
+
+![](./static/background-step-settings-call-id-in-other-step.png)
+
+<figcaption>Figure 1: The Background step ID, <code>pythonscript</code>, is used in a curl command in a Run step.</figcaption>
+</figure>
 
 :::info
 
@@ -33,13 +39,18 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 **Container Registry** is a Harness container registry connector that connects to the container registry, such as DockerHub, from which you want Harness to pull an image.
 
-**Image** is the container image to use for the background service. The image name should include the tag, or it defaults to the latest tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
+**Image** is the container image to use for the background service. The image name should include the tag, or it defaults to the `latest` tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
 * **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
 * **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`. Note that the following screenshot shows a **Run** step, but the fields are populated the same for **Background** steps.
+* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
-   ![](./static/background-step-settings-08.png)
+<figure>
+
+![](./static/background-step-settings-08.png)
+
+<figcaption>Figure 2: An example configuration for the <b>Container Registry</b> and <b>Image</b> fields. Note that this figure shows a <b>Run</b> step, but the fields are populated the same for <b>Background</b> steps.</figcaption>
+</figure>
 
 :::info
 
@@ -68,10 +79,14 @@ import TabItem2 from '@theme/TabItem';
 <Tabs2>
   <TabItem2 value="Visual" label="Visual">
 ```
+<figure>
 
 <!-- ![](./static/dind-background-step-entry-point.png) -->
 
 <docimage path={require('./static/dind-background-step-entry-point.png')} />
+
+<figcaption>Figure 3: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
+</figure>
 
 ```mdx-code-block
   </TabItem2>
@@ -238,7 +253,12 @@ You can reference environment variables in the **Command** script by their name.
 
 Variable values can be [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
 
+<figure>
+
 ![](./static/background-step-settings-09.png)
+
+<figcaption>Figure 4: Using an expression for an environment variable's value.</figcaption>
+</figure>
 
 ### Image Pull Policy
 

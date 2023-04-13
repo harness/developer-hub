@@ -30,7 +30,7 @@ A Harness container registry connector that has access to DockerHub. If you have
 
 ## Image
 
-The name of the plugin's Docker image. The image name should include the tag. If you don't include a tag, Harness uses the latest tag. For more information about tags, go to [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag).
+The name of the plugin's Docker image. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag. For more information about tags, go to [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag).
 
 You can use any Docker image from any Docker registry, including Docker images from private registries.
 
