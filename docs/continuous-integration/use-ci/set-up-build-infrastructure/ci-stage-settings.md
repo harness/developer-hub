@@ -224,7 +224,7 @@ The following **Platform** settings are available:
 
 ## Execution
 
-The **Execution** tab is where you add steps to the stage. For details about settings for each step, go to the [CI Technical Reference](/docs/category/reference-ci-step-settings).
+The **Execution** tab is where you add steps to the stage. For details about settings for each step, go to the [CI Technical Reference](/docs/category/reference-ci-steps-settings).
 
 ## Advanced
 

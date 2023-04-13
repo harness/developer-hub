@@ -65,7 +65,7 @@ import TabItem from '@theme/TabItem';
 4. Select **Apply changes** to save the step.
 5. Go to the stage where you want to add the **Restore Cache from GCS** step.
 6. Select **Add Step**, select **Add Step** again, and then select **Restore Cache from GCS** in the Step Library.
-7. Configure the [Restore Cache from GCS step settings](../../ci-technical-reference/restore-cache-from-gcs-settings.md). The bucket and key must correspond with the bucket and key settings in the **Save Cache to GCS** step.
+7. Configure the [Restore Cache from GCS step settings](../../ci-technical-reference/cache-steps/restore-cache-from-gcs-settings.md). The bucket and key must correspond with the bucket and key settings in the **Save Cache to GCS** step.
 8. Select **Apply changes** to save the step, and then select **Save** to save the pipeline.
 
 ```mdx-code-block

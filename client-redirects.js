@@ -869,7 +869,7 @@ module.exports = {
     // Created by aimurphy for branch ci-reorg-pt-3 on Apr 13, 2023
     {
       from: "/docs/category/ci-technical-reference",
-      to: "/docs/category/reference-ci-step-settings",
+      to: "/docs/category/reference-ci-steps-settings",
     },
 
     {

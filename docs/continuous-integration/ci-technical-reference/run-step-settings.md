@@ -1,7 +1,7 @@
 ---
 title: CI Run step settings
 description: This topic describes settings for the CI Run step.
-sidebar_position: 40
+sidebar_position: 60
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

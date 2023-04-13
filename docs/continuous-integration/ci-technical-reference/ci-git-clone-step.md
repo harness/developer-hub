@@ -1,7 +1,7 @@
 ---
 title: Git Clone step settings
 description: The Git Clone step clones a repo to the pipeline workspace.
-sidebar_position: 60
+sidebar_position: 40
 helpdocs_topic_id: nl3ixvew4o
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: Run Tests step settings
 description: The Run Tests step runs tests and enables Test Intelligence.
-sidebar_position: 50
+sidebar_position: 70
 helpdocs_topic_id: axzckflbt2
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
