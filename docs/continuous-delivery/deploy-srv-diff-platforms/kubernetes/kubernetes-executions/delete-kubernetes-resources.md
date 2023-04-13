@@ -75,7 +75,9 @@ If you select the **Delete namespace** option, Harness will delete the namespace
 
 ![](./static/delete-kubernetes-resources-20.png)
 
-Ensure that you are not deleting a namespace that is used by other deployments.### Example: Deleting a Deployment
+Ensure that you are not deleting a namespace that is used by other deployments.
+
+### Example: Deleting a Deployment
 
 Here is an example of the log from a Delete command:
 
