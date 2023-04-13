@@ -49,10 +49,48 @@ In the CI Build stage > **Infrastructure** tab, define the build infrastructure 
 
 In the Execution tab, add a [Background step](../../ci-technical-reference/background-step-settings.md) and configure it as follows:
 
-* **Name:** dind_Service.
-* **Container Registry:** A connector to your Docker registry.
+* **Name:** `dind_Service`
+* **Container Registry:** A DockerHub container registry connector.
 * **Image:** The image you want to use, such as [docker:dind](https://hub.docker.com/_/docker).
 * **Optional Configuration:** Select **Privileged**. This is required for Docker-in-Docker.
+
+<details>
+<summary>Providing arguments</summary>
+
+Provide arguments as a list in **Entry Point**.
+
+For example, the entry point for the `docker:dind` image is `dockerd-entrypoint.sh`. If you want to add an `--mtu` argument, you would include both the image entry point and the argument in your step's **Entry Point** specification.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+```
+
+<!-- ![](./static/dind-background-step-entry-point.png) -->
+
+<docimage path={require('./static/dind-background-step-entry-point.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+```yaml
+entrypoint:
+  - dockerd-entrypoint.sh
+  - "--mtu=1450"
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+</details>
 
 ## Step 4: Configure the Run Step
 
