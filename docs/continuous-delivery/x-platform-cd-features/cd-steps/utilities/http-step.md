@@ -117,9 +117,9 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 In **Advanced**, you can use the following options:
 
-* [Step skip condition settings](/docs/platform/8_pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step failure strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select delegates with selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
+* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
+* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
 
 ## Delegate proxy
 

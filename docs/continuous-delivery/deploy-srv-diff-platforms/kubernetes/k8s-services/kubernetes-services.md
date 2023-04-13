@@ -258,7 +258,7 @@ To add a Values YAML file, do the following:
 7. In **Specify Manifest Type**, select **Values YAML**, and click **Continue.**
 8. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo. The different Connectors are covered in [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo).
    
-   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) and [Install a Kubernetes delegate](/docs/platform/2_Delegates/advanced-installation/install-a-kubernetes-delegate.md).
+   If you haven't set up a Harness Delegate, you can add one as part of the Connector setup. This process is described in [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate).
 9.  Once you've selected a Connector, click **Continue**.
 10. In **Manifest Details**, you tell Harness where the values.yaml is located.
 11. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
@@ -293,11 +293,11 @@ You might have manifest files for resources that you do not want to deploy as pa
 
 Instead, you can tell Harness to ignore these files and then apply them separately using the Harness [Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) step. Or you can simply ignore them and deploy them later.
 
-See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md) and [Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md/kubernetes-apply-step).
+See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment) and [Apply](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step).
 
 #### Notes
 
-- If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
+- If this is your first time using Harness for a Kubernetes deployment, see [Kubernetes CD tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 - For a task-based walkthroughs of different Kubernetes features in Harness, see [Kubernetes How-tos](/docs/category/kubernetes).
 - You can hardcode your artifact in your manifests, our add your artifact source to your **Service Definition** and then reference it in your manifests.
 
@@ -309,7 +309,7 @@ See [Ignore a manifest file during deployment](/docs/continuous-delivery/deploy-
 <details>
 <summary>Use Helm Charts</summary>
 
-You can use Helm charts stored in an HTTP Helm Repository, OCI Registry, a Git repo provider, a cloud storage service (Google Cloud Storage, AWS S3, Azure Repo), a custom repo, or the [Harness File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/).
+You can use Helm charts stored in an HTTP Helm Repository, OCI Registry, a Git repo provider, a cloud storage service (Google Cloud Storage, AWS S3, Azure Repo), a custom repo, or the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 
 ```mdx-code-block
@@ -464,8 +464,8 @@ To add a Helm chart to your service, do the following:
 
 #### Important notes
 
-- If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
-- For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
+- If this is your first time using Harness for a Helm Chart deployment, see [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
+- For a detailed walkthrough of deploying Helm Charts in Harness, including limitations and binary support, see [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts).
 - Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness connector that uses this delegate in A cannot assume the role for the B account.
 - Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
 - Currently, you cannot list the OCI image tags in Harness. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
@@ -638,7 +638,7 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 - Kustomize patches override values in the base manifest. Harness supports the `patchesStrategicMerge` patches type.
 - If the `patchesStrategicMerge` label is missing from the kustomization YAML file, but you have added Kustomize Patches to your Harness Service, Harness will add the Kustomize Patches you added in Harness to the `patchesStrategicMerge` in the kustomization file. If you have hardcoded patches in `patchesStrategicMerge`, but not add these patches to Harness as Kustomize Patches, Harness will ignore them.
 
-For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments.md).
+For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments).
 
 To use Kustomize Patches, do the following:
 
@@ -2648,7 +2648,7 @@ You can use Github Packages as artifacts for deployments.
 
 Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. 
 
-You connect to Github using a Harness [Github Connector](https://developer.harness.io/docs/platform/connectors/ref-source-repo-provider/git-hub-connector-settings-reference/), username, and Personal Access Token (PAT).
+You connect to Github using a Harness [Github Connector](/docs/platform/connectors/ref-source-repo-provider/git-hub-connector-settings-reference/), username, and Personal Access Token (PAT).
 
 :::tip
 
@@ -2963,7 +2963,7 @@ You can add one or more values YAML files containing values for different scenar
 
 Built-in Go templating support enables you to use Kubernetes without the need for Helm.
 
-For more information, see [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+For more information, see [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
 Let's look at a few Kubernetes templating examples.
 
@@ -3156,7 +3156,7 @@ For example, a logging sidecar can be used to capture and store application logs
 
 Sidecars can also be used to implement advanced features like load balancing, service discovery, and circuit breaking. By using a sidecar container for these features, it's possible to keep the primary container simple and focused on its core functionality, while still providing advanced capabilities to the application.
 
-For more information, go to [Add a Kubernetes sidecar container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container.md).
+For more information, go to [Add a Kubernetes sidecar container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container).
 
 
 ## Variables
