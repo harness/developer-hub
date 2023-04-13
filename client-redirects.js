@@ -1088,5 +1088,10 @@ module.exports = {
       from: "/docs/continuous-delivery/cd-gitops/multiple-argo-to-single-harness",
       to: "/docs/continuous-delivery/gitops/multiple-argo-to-single-harness",
     },
+    
+    {
+      from: "/docs/continuous-delivery/cd-gitops/gitops-allowlist",
+      to: "/docs/continuous-delivery/gitops/gitops-allowlist",
+    },
   ],
 };
