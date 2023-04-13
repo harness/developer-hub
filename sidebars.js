@@ -80,12 +80,12 @@ const sidebars = {
           type: "category",
           label: "Feature Flags",
           link: {
-            type: "generated-index",
-            slug: "/feature-flags",
-            /* Uncomment this block while we have a landing page for module docs
+            /* type: "generated-index",
+            slug: "/feature-flags", */
+            /* Uncomment this block while we have a landing page for module docs */
             type: "doc",
             id: "feature-flags",
-            */
+            /**/
           },
           collapsed: true,
           items: [
