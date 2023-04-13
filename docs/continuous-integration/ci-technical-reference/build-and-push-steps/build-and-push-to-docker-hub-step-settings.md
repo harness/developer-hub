@@ -1,16 +1,14 @@
 ---
 title: Build and Push an image to Docker Registry step settings
 description: This topic describes settings for the Build and Push an image to Docker Registry step.
-sidebar_position: 20
+sidebar_position: 10
 helpdocs_topic_id: q6fr5bj63w
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes settings for the **Build and Push an image to Docker Registry** step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry.
-
-Because this step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands, you can use this step or the [Build and Push to ACR step](./build-and-push-to-acr-step-settings.md) to push to Azure Container Registry (ACR).
+This topic describes settings for the **Build and Push an image to Docker Registry** step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. For more information, go to [Build and push an artifact](../../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md).
 
 :::info
 
@@ -18,13 +16,19 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 :::
 
+:::tip Azure Container Registry
+
+Because the **Build and Push an image to Docker Registry** step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands, you can use this step or the [Build and Push to ACR step](./build-and-push-to-acr-step-settings.md) to push to Azure Container Registry (ACR).
+
+:::
+
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Docker Connector
 
-The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
+The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md).
 
 This step supports Docker connectors that use either anonymous or username and password authentication.
 
@@ -40,7 +44,7 @@ Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/bui
 
 Add each tag separately.
 
-![](./static/build-and-push-to-docker-hub-step-settings-10.png)
+![](../static/build-and-push-to-docker-hub-step-settings-10.png)
 
 :::tip
 
@@ -76,7 +80,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](./static/build-and-push-to-docker-hub-step-settings-11.png)
+![](../static/build-and-push-to-docker-hub-step-settings-11.png)
 
 ### Target
 
@@ -105,5 +109,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

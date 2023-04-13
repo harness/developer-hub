@@ -37,8 +37,8 @@ If you need to maintain a long-running service for the duration of a stage, use 
 
 Remote Docker layer caching can dramatically improve build times by sharing layers across pipelines, stages, and steps. You can set up Docker layer caching in the following steps:
 
-* [Build and Push to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* [Build and Push to ECR](../../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
-* [Build and Push to GCR](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
+* [Build and Push to Docker Registry](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
+* [Build and Push to ECR](../../ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings.md)
+* [Build and Push to GCR](../../ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings.md)
 
 For more recommendations for optimizing Docker images, go to [Optimize and enhance CI pipelines](../optimize-and-more/optimizing-ci-build-times.md).

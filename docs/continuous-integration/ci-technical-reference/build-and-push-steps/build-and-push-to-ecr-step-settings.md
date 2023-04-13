@@ -8,9 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the Build and Push to ECR step, which builds an image and pushes it to [AWS ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html).
+This topic provides settings for the **Build and Push to ECR** step, which builds an image and pushes it to [AWS ECR](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html).
 
-For more information, go to the AWS documentation for [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html).
+For more information, go to the following:
+
+* Harness CI tutorial: [Build and push a container image to Amazon ECR](/tutorials/build-code/publish/amazon-ecr)
+* AWS documentation: [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
+* Harness CI documentation: [Build and push an artifact](../../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md)
 
 :::info
 
@@ -20,7 +24,7 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## AWS Connector
 
@@ -28,8 +32,8 @@ The Harness AWS connector to use to connect to ECR.
 
 The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to ECR. For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](../../platform/7_Connectors/add-aws-connector.md)
-* [AWS connector settings reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+* [Add an AWS connector](../../../platform/7_Connectors/add-aws-connector.md)
+* [AWS connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
 
 This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross-account access).
 
@@ -55,7 +59,7 @@ Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/bui
 
 Add each tag separately.
 
-![](./static/build-and-push-to-ecr-step-settings-24.png)
+![](../static/build-and-push-to-ecr-step-settings-24.png)
 
 ## Optional Configuration
 
@@ -85,7 +89,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](./static/build-and-push-to-ecr-step-settings-25.png)
+![](../static/build-and-push-to-ecr-step-settings-25.png)
 
 ### Target
 
@@ -114,5 +118,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

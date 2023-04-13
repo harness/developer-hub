@@ -20,12 +20,12 @@ These steps assume you're familiar with creating CI pipelines. If you haven't cr
 
 :::note
 
-The **Build and Push to ACR** step is only available for [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md). For other build infrastructures, you can use the [Build and Push an image to Docker Registry step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md) to [build and push an artifact](./build-and-upload-an-artifact.md) to ACR.
+The **Build and Push to ACR** step is only available for [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md). For other build infrastructures, you can use the [Build and Push an image to Docker Registry step](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md) to [build and push an artifact](./build-and-upload-an-artifact.md) to ACR.
 
 :::
 
 4. In the **Build** stage's **Execution** tab, select **Add Step**, select **Add Step** again, and then select **Build and Push to ACR** from the Step Library.
-5. Configure the [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-to-acr-step-settings.md).
+5. Configure the [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings.md).
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 ## Run the pipeline

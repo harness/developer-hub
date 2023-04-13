@@ -1,12 +1,7 @@
 ---
 title: Use Harness Cloud build infrastructure
 description: You can use Harness-hosted build infrastructure for your Harness CI pipelines.
-
 sidebar_position: 20
-helpdocs_topic_id: ia5dwx5ya8
-helpdocs_category_id: rg8mrhqm95
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 With Harness Cloud you can run builds in isolation on Harness-hosted VMs that are preconfigured with the tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.

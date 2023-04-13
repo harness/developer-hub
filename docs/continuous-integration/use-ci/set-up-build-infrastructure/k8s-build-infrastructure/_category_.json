@@ -7,8 +7,5 @@
    "link":{
       "type":"generated-index",
       "title":"Set up Kubernetes cluster build infrastructures"
-   },
-   "customProps":{
-      "helpdocs_category_id":"rg8mrhqm95"
    }
 }

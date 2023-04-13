@@ -867,10 +867,30 @@ module.exports = {
     },
 
     // Created by aimurphy for branch ci-reorg-pt-3 on Apr 13, 2023
-//    {
-//      from: "/docs/category/ci-technical-reference",
-//      to: "/docs/category/reference-ci-step-settings",
-//    },
+    {
+      from: "/docs/category/ci-technical-reference",
+      to: "/docs/category/reference-ci-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings",
+      to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-acr-step-settings",
+      to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings",
+      to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings",
+      to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings",
+    },
 
     //  Created by aimurphy for DOC-2484 on Mar 7, 2023
     {
