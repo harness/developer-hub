@@ -169,7 +169,7 @@ If the `shell` is `Python`, supply Python commands directly in `command`.
 
 This example uses a basic `print` command.
 
-```yaml
+```
             steps:
               - step:
                   ...
