@@ -4,14 +4,14 @@ description: Mark events as hidden.
 sidebar_position: 3
 ---
 
+Continuous Error Tracking allows you to hide insignificant or known issues, as well as resolved events, from the Events page in order to reduce noise.
 
-You can hide events from the **Events** page. When you mark an event as "hidden", it will be moved to the **Hidden Events** page and no longer appear on the Events page.
+If you identify an issue as minor or known and mark it as "hidden", it will be moved to the **Hidden Events** page. A hidden event no longer appears on the Events page. You can restore a hidden event any time.
 
 
+## Hide events
 
-## Mark an event as hidden
-
-To mark an event as hidden:
+To hide events:
 
 1. In your Harness project, navigate to **Service Reliability Management** and select **Code Errors**.    
    List of all the services monitored by Continuous Error Tracking is displayed.
@@ -21,3 +21,12 @@ To mark an event as hidden:
 3. On the Events page, select the events that you want to mark as hidden and then select **Hide Events**.
 
    The selected events will be moved to the **Hidden Events** page and will no longer appear on the Events page.
+
+## Restore hidden events
+
+To restore hidden events:
+
+1. On the **Hidden Events** page, select the events that you want to restore and then select **Restore**.
+
+   The selected events will be moved to the **Events** page and will no longer appear on the **Hidden Events** page.
+
