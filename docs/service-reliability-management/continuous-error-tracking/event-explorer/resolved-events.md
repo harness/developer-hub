@@ -12,13 +12,15 @@ You can mark fixed issues as resolved. The resolved issues are moved from **Even
 To mark an event as resolved:
 
 1. In your Harness project, navigate to **Service Reliability Management** and select **Code Errors**.    
-   List of all the services monitored by Continuous Error Tracking is displayed.
+   A list of all the services monitored by Continuous Error Tracking is displayed.
 
 2. Select a monitored service for which you want to view the events.
 
-3. In the **Events** page, select the events that you want to mark as resolved and then select **Mark as Resolved**.  
+3. On the **Events** page, select the events that you want to mark as resolved and then select **Mark as Resolved**.  
    
    The selected events will be marked as resolved and moved to the **Resolved Events** page.
+
+   ![Mark event as resolved](./static/mark-event-resolved.gif)
 
 
 ## Resurfaced events

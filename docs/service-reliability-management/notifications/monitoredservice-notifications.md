@@ -26,7 +26,7 @@ To set up notifications for a monitored service:
      | **Change Observed**       |  Choose a **Change Type**. A notification is sent whenever changes are detected for that change type.   |
      | **Code Errors**      |   Choose the desired **Events**, such as new, critical, or resurface events, and the **Event Type**, such as log errors. A notification will be triggered when an event of the selected type occurs.  |
    
-   3. Select **Next** to go the Notification Method page.
+   3. Select **Next** to go to the Notification Method page.
    
    4. Select a **Notification Method** such as Slack, Email, PagerDuty, or Microsoft Teams and complete the following settings:
    
@@ -39,10 +39,10 @@ To set up notifications for a monitored service:
 
       If you choose Slack, PagerDuty, or Microsoft Teams as your notification method, you can select a Harness user group that is part of a Harness project, organization, or an account. Notifications are sent to the Slack or Microsoft Teams channels that are associated with the selected user group.
 
-      To create a new user group, click on **Select User Group(s)** and then **+ User Group**. In the New User Group dialog, enter name for the group, an optional **description** and **tags**, and then **Add Users**. Select **Save**. The new user group appears in the user groups list.
+      To create a new user group, click on **Select User Group(s)** and then **+ User Group**. In the New User Group dialog, enter a name for the group, an optional **description** and **tags**, and then **Add Users**. Select **Save**. The new user group appears in the user groups list.
    
    5. Select **Test** to verify that the alert is functioning correctly.
 
    6. Select **Finish** to save the settings. You should now see the notification rule displayed in the **Notifications** section. 
 
-4.  Enable the notification rule using toggle switch associated with it to start receiving alert notifications.
+4.  Enable the notification rule using the toggle switch to start receiving alert notifications.

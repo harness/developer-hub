@@ -14,13 +14,16 @@ If you identify an issue as minor or known and mark it as "hidden", it will be m
 To hide events:
 
 1. In your Harness project, navigate to **Service Reliability Management** and select **Code Errors**.    
-   List of all the services monitored by Continuous Error Tracking is displayed.
+   A list of all the services monitored by Continuous Error Tracking is displayed.
 
 2. Select a monitored service for which you want to view the events.
 
 3. On the Events page, select the events that you want to mark as hidden and then select **Hide Events**.
 
-   The selected events will be moved to the **Hidden Events** page and will no longer appear on the Events page.
+   The selected events will be moved to the **Hidden Events** page and no longer appear on the Events page.
+
+   ![Hide an event](./static/hide-events.gif)
+
 
 ## Restore hidden events
 
