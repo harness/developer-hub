@@ -13,7 +13,7 @@ import { experiments } from "./experiments"
 
 ## Introduction
 
-Security chaos is a set of chaos experiments that are used to test the security of the Kubernetes cluster.
+Security chaos is a set of chaos experiments that helps test the security of the Kubernetes cluster.
 
 <ExperimentListSection experiments={experiments} />
 
@@ -21,8 +21,7 @@ Security chaos is a set of chaos experiments that are used to test the security 
 
 ### Kube security CIS
 
-Kube security CIS runs the CIS benchmark on the Kubernetes cluster and checks for the compliance of the cluster with the CIS benchmark.
-- CIS benchmark is a set of security best practices for hardening the Kubernetes cluster.
+Kube security CIS runs the CIS benchmark on the Kubernetes cluster and checks for the compliance of the cluster with the CIS benchmark. CIS benchmark is a set of security best practices for hardening the Kubernetes cluster.
 
 <accordion color="green">
     <summary>Use cases</summary>

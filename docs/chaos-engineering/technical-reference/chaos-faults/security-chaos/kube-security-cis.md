@@ -1,28 +1,25 @@
 ---
 id: kube-security-cis
-title: Kube security cis
+title: Kube security CIS
 ---
-- Kube security CIS runs the CIS benchmark on the Kubernetes cluster and checks for the compliance of the cluster with the CIS benchmark.
-- CIS benchmark is a set of security best practices for hardening the Kubernetes cluster.
+Kube security CIS runs the CIS benchmark on the Kubernetes cluster and checks for the compliance of the cluster with the CIS benchmark. CIS benchmark is a set of security best practices to improve the resilience of the Kubernetes cluster.
 
 ![Kube Security CIS](./static/images/kube-security-cis.png)
 
 ## Use cases
-Kube security cis:
+Kube security CIS:
 - Determines the compliance of the Kubernetes cluster with the CIS benchmark.
-- Find and fix the security issues in the Kubernetes cluster.
+- Finds and fixes the security issues in the Kubernetes cluster.
 
-:::note
+:::info note
 - Kubernetes > 1.16 is required to execute this fault.
 - Appropriate permissions are required to execute this fault.
 :::
 
-## Fault tunables
-
-<h3>Mandatory fields</h3>
+<h3>Mandatory tunables</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -32,10 +29,10 @@ Kube security cis:
         <td> Defaults to <code>/run/containerd/containerd.sock</code>. </td>
     </tr>
 </table>
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -66,16 +63,14 @@ Kube security cis:
     </tr>
 </table>
 
-## Tune Benchmark using Config File
 
-### Sample Config File
-To tune the benchmark to run only a subset of the tests, you can provide a config file to the experiment. The config file contains the list of tests to be executed in a YAML format. The config file can be mounted as a configMap to the experiment pod.
+### Sample config file
+To tune the benchmark to run only a subset of the tests, you can provide a config file to the fault. The config file contains the list of tests (in the YAML format) to be executed. The config file can be mounted as a configMap on the experiment pod.
 
-Below is the format of the config file provided as a configMap:
+The following YAML snippet illustrates the format of config file provided as a configMap:
 
 [embedmd]:# (./static/manifests/kube-security-cis/sample-config.yaml yaml)
 ```yaml
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -106,13 +101,11 @@ data:
       - "3.1.4"
 ```
 
-### Kubernetes Version
-To specify the Kubernetes version manually, use the `KubernetesVersion` in the config file. If the Kubernetes version is not specified, the experiment will automatically detect the Kubernetes version.
-Note: Either `Benchmark` or `KubernetesVersion` can be specified in the config file, providing both will result in an error.
+### Kubernetes version
+To specify the Kubernetes version manually, use the `KubernetesVersion` environment variable in the config file. If the Kubernetes version is not specified, the experiment automatically detects the Kubernetes version.
 
 [embedmd]:# (./static/manifests/kube-security-cis/kubernetes-version.yaml yaml)
 ```yaml
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -123,13 +116,15 @@ data:
     KubernetesVersion: 1.18
 ```
 
-### Benchmark Platform
-To specify the benchmark platform manually, use the `BenchmarkPlatform` in the config file. This specifies the CIS benchmark version to be used. If the benchmark platform is not specified, the experiment will automatically detect the Kubernetes version and use the corresponding CIS benchmark version. <a href="https://github.com/aquasecurity/kube-bench/blob/main/docs/platforms.md">Check here</a> for supported benchmark versions.
-Note: Either `Benchmark` or `KubernetesVersion` can be specified in the config file, providing both will result in an error.
+:::tip
+Either `Benchmark` or `KubernetesVersion` environment variables can be specified in the config file. Providing both the variables throws an error.
+:::
+
+### Benchmark platform
+To specify the benchmark platform manually, use the `BenchmarkPlatform` environment variable in the config file. This specifies the CIS benchmark version to be used. If the benchmark platform is not specified, the experiment automatically detects the Kubernetes version and uses the corresponding CIS benchmark version. Go to <a href="https://github.com/aquasecurity/kube-bench/blob/main/docs/platforms.md">supported benchmark versions</a> to know more.
 
 [embedmd]:# (./static/manifests/kube-security-cis/benchmark-platform.yaml yaml)
 ```yaml
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -140,12 +135,17 @@ data:
     Benchmark: gke-1.2.0
 ```
 
+:::tip
+Either `Benchmark` or `KubernetesVersion` environment variables can be specified in the config file. Providing both the variables throws an error.
+:::
+
 ### Targets
-To specify the targets manually, use the `Targets` in the config file. This specifies the list of tests to be executed. If the targets are not specified, the experiment will execute the tests for all the targets. Supported targets are `[master, node, etcd, policies, managedservices]`. For example, if the target is `policies`, the experiment will execute the tests for all the policies. Certain benchmark versions support only a subset of the targets, <a href="https://github.com/aquasecurity/kube-bench/blob/main/docs/architecture.md">this table here</a> provides the list of supported targets for each benchmark version.
+To specify the targets manually, use the `Targets` environment variable in the config file. This specifies the list of tests to be executed. If the targets are not specified, the experiment executes the tests for all the targets. Supported targets include `[master, node, etcd, policies, managedservices]`. 
+
+For example, if the target is `policies`, the experiment executes the tests for all the policies. Certain benchmark versions support only a subset of the targets. Go to <a href="https://github.com/aquasecurity/kube-bench/blob/main/docs/architecture.md">supported targets</a> to know more about each benchmark version.
 
 [embedmd]:# (./static/manifests/kube-security-cis/targets.yaml yaml)
 ```yaml
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -159,12 +159,11 @@ data:
       - etcd
 ```
 
-### Specify Groups or Individual Tests
-To specify the groups or individual tests manually, use the `CheckIndividual` and/or `CheckGroup` in the config file. This specifies the list of tests to be executed. For example, if `1.1` is provided, the experiment will execute the tests for the `1.1.x` group of tests only.
+### Specify groups or individual tests
+To specify the groups or individual tests manually, use the `CheckIndividual` and/or `CheckGroup` environment variable in the config file. This specifies the list of tests to be executed. For example, if `1.1` is provided, the experiment executes the tests for the `1.1.x` group of tests only.
 
 [embedmd]:# (./static/manifests/kube-security-cis/specify-test-group-individual.yaml yaml)
 ```yaml
----
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -181,12 +180,11 @@ data:
       - "4.1.3"
 ```
 
-### Skip Tests
-To skip certain tests, use the `ExcludeIndividual` and/or `ExcludeGroup` in the config file. This specifies the list of tests to be skipped. For example, if `1.1` is provided, the experiment will skip the tests for the `1.1.x` group of tests.
+### Skip tests
+To skip certain tests, use the `ExcludeIndividual` and/or `ExcludeGroup` environment variable in the config file. This specifies the list of tests to be skipped. For example, if `1.1` is provided, the experiment skips the tests for the `1.1.x` group of tests.
 
 [embedmd]:# (./static/manifests/kube-security-cis/exclude-test-group-individual.yaml yaml)
 ```yaml
----
 apiVersion: v1
 kind: ConfigMap
 metadata:

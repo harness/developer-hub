@@ -6,10 +6,10 @@ metadata:
   namespace: litmus
 data:
   config.yaml: |
-    CheckGroup:
+    ExcludeGroup:
       - "3.1"
       - "3.2"
-    CheckIndividual:
-      - "4.1.1"
+    ExcludeIndividual:
       - "4.1.2"
       - "4.1.3"
+      - "4.1.4"
