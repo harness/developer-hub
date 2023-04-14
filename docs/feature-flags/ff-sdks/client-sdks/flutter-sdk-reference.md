@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
 This topic describes how to use the Harness Feature Flags SDK for your Flutter application. 
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-flutter-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Flutter SDK GitHub Repository.](https://github.com/harness/ff-flutter-client-sdk)
@@ -17,7 +19,7 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 You should read and understand the following:
 
 * [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
@@ -39,8 +41,8 @@ To check if you have installed the prerequisites, run the `flutter doctor` comma
 
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)
 * Create a Flutter application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-flutter-client-sdk).
-* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
 
 ## Install the SDK
 
@@ -152,7 +154,7 @@ var conf = CfConfigurationBuilder()
 
 To initialize the SDK, you must pass in the following:
 
-* `apiKey` - The Client SDK Key you created when [creating the Feature Flag](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
+* `apiKey` - The Client SDK Key you created when [creating the Feature Flag](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
 * Any configuration options you want to use.
 * The Target you want to evaluate.
 
@@ -264,6 +266,8 @@ CfClient.unregisterEventsListener(eventsListener)
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
 ![A gif showing the Flag being toggled on the Harness app, and the effect it has on the code.](./static/2-flutter-sdk-reference-00.gif)
+
+<Sixty />
 
 ## Close the SDK
 

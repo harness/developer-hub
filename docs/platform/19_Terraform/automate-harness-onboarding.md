@@ -301,8 +301,8 @@ For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial]
 
 To configure the stages for your pipeline, go to the following: 
 - [Custom Stage](https://developer.harness.io/docs/platform/pipelines/add-a-custom-stage/)
-- [Terraform Plan Step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step/)
-- [Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step)
+- [Terraform Plan Step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/)
+- [Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
    
 
 The **Terraform Plan** step fetches the terraform resource from Git. Harness then initiates a terraform plan on the files collected.
@@ -731,7 +731,7 @@ To manage the organization and project identifiers in code, we recommend user's 
 
 - We recommend for production grade delegate installation, to build your own delegate image and deploy it
 - When you build your own delegate image, you get to customize all the tooling you want installed on it.
-- [Harness offers Instructions to build your own delegate image](https://developer.harness.io/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools)
+- [Harness offers Instructions to build your own delegate image](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
 Tooling you should install:
 
@@ -739,7 +739,7 @@ Tooling you should install:
 - `helm`
 - `terraform`
 
-These options are all available in the [Harness Docs](https://developer.harness.io/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools)
+These options are all available in the [Harness Docs](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools)
 
 
 ### Create the connectors and secrets first

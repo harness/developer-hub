@@ -13,7 +13,7 @@ helpdocs_is_published: true
 
 Harness CI supports launching GitHub Actions as part of a pipeline stage using the generic **Plugin** step or the **GitHub Action plugin** steps.
 
-This topic describes how to use the **Plugin** step to run GitHub Actions available in the [GitHub Marketplace](https://github.com/marketplace?category=&query=&type=actions&verification=). For information about the specialized **GitHub Action plugin** step, go to [GitHub Action plugin step settings](../../ci-technical-reference/ci-github-action-step.md).
+This topic describes how to use the **Plugin** step to run GitHub Actions available in the [GitHub Marketplace](https://github.com/marketplace?category=&query=&type=actions&verification=). For information about the specialized **GitHub Action plugin** step, go to [GitHub Action plugin step settings](../../ci-technical-reference/plugin-steps/ci-github-action-step.md).
 
 With the **Plugin** step, you use the GitHub Actions Drone Plugin, [plugins/github-actions](https://github.com/drone-plugins/github-actions), and then replicate the GitHub Action settings. When your pipeline runs, the Github Actions Drone Plugin runs the GitHub Action in the background using [nektos/act](https://github.com/nektos/act).
 
@@ -21,7 +21,7 @@ With the **Plugin** step, you use the GitHub Actions Drone Plugin, [plugins/gith
 
 These steps assume you have a CI pipeline with a **Build** stage that is connected to your codebase and has defined build infrastructure.
 
-If you've never created a CI pipeline before, [get started with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci) or try the [CI pipeline tutorial](../../ci-quickstarts/ci-pipeline-quickstart.md). If you're new to Harness CI, you might want to review [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and [CI pipeline basics](../../ci-quickstarts/ci-pipeline-basics.md).
+If you've never created a CI pipeline before, [get started with the fastest CI on the planet](/tutorials/build-code/fastest-ci) or try the [Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm). If you're new to Harness CI, you might want to review [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md).
 
 <details>
 <summary>Add Build stage and connect codebase</summary>
@@ -33,7 +33,7 @@ To add a **Build** stage to an existing pipeline:
 2. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
 
-To check codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
+To check codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Create and Configure a Codebase](../codebase-configuration/create-and-configure-a-codebase.md).
 
 </details>
 
@@ -43,11 +43,11 @@ To check codebase configuration for existing pipelines, select **Codebase** whil
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Infrastructure** tab.
 2. Define the build farm for the codebase. For more information, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
-For more information about stage configuration, go to [CI stage settings](../../ci-technical-reference/ci-stage-settings.md).
+For more information about stage configuration, go to [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 :::tip
 
-You can use expressions or [Runtime Inputs](../../../platform/20_References/runtime-inputs.md) for **Platform** settings.
+You can use expressions or [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md) for **Platform** settings.
 
 :::
 
@@ -58,14 +58,14 @@ You can use expressions or [Runtime Inputs](../../../platform/20_References/runt
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Execution** tab.
 2. Select **Add Step**, select **Add Step** again, and then select **Plugins** from the **Step Library**.
 3. Enter a **Name** and optional **Description**.
-4. Select the **Container Registry** where the [GitHub Actions Drone Plugin](https://github.com/drone-plugins/github-actions) is located.
+4. For **Container Registry**, select a container registry connector that has DockerHub access.
 5. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
 6. Expand the **Optional Configuration**, and select **Privileged**.
    The GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI. It requires DinD (Docker-in-Docker) to run your images. Hence, the **Privileged** attribute needs to be enabled to run with escalated permissions. <!--If you're using local runner or VM build infra, do you need privileged? -->
 
 :::tip
 
-For more information about Plugin step settings, go to the [Plugin step settings reference](../../ci-technical-reference/plugin-step-settings-reference.md).
+For more information about Plugin step settings, go to the [Plugin step settings reference](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md).
 
 :::
 
@@ -89,7 +89,7 @@ You can use variable expressions in your values, such as `credentials: <+stage.v
 
 ### Private Action repos
 
-If you want to use an Action composite that is located in a private repository, you must add a `GITHUB_TOKEN` environment variable to the `env` **Settings**. The token must have pull permissions to the target repository.
+If you want to use an Action composite that is located in a private repository, you must add a `GITHUB_TOKEN` environment variable to the `env` **Settings**. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
 * Key: `env`
 * Value: `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`

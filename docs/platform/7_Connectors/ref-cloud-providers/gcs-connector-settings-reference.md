@@ -35,7 +35,7 @@ For Google Cloud Storage (GCS) and Google Container Registry (GCR), the followin
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
 
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. Registry host name is declared in, for example, the **Host** field in the [Build and Push to GCR step settings](../../../continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings.md).
+Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. Registry host name is declared in, for example, the **Host** field in the [Build and Push to GCR step settings](../../../continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings.md).
 
 ## Google Artifact Registry role requirements
 
@@ -105,8 +105,8 @@ To obtain the Google Cloud's service account key file, go to the Google document
 
 If connecting through a Harness delegate, select either:
 
-* **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](../../2_Delegates/get-started-with-delegates/delegates-overview.md).
-* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](../../2_Delegates/get-started-with-delegates/delegate-installation-overview.md).
+* **Use any available Delegate**: Harness selects an available Delegate at runtime. To learn how Harness selects delegates, go to [Delegates Overview](../../2_Delegates/delegate-concepts/delegate-overview.md).
+* **Only use Delegates with all of the following tags**: Use **Tags** to match one or more suitable delegates. To learn more about Delegate tags, go to [Select Delegates with Tags](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md). You can select **Install new Delegate** to add a delegate without exiting connector configuration. For guidance on installing delegates, go to [Delegate Installation Overview](../../2_Delegates/delegate-concepts/delegate-overview.md).
 
 </details>
 

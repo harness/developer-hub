@@ -5,7 +5,7 @@ import clsx from "clsx";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./ContinuousDeliveryData";
+import { featuredTutorials, docsCards } from "./data/continuousDeliveryData";
 
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -20,12 +20,16 @@ export default function CD() {
           <div className={styles.btnContainer}>
             <Link href="/tutorials/deploy-services">
               <button className={styles.btn}>
-                <i className="fa-regular fa-file"></i> Tutorials
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_tutorials.svg`} />
+                Tutorials
               </button>
             </Link>
             <Link href="/release-notes/continuous-delivery">
               <button className={styles.btn}>
-                <i className="fa-regular fa-file"></i> Release Notes
+                {/* <i className="fa-regular fa-file"></i> */}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
+                Release Notes
               </button>
             </Link>
           </div>
@@ -33,10 +37,7 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Continuous Delivery focuses on delivery and deployment of any sort
-              of change or new feature in a safe and sustainable way. Your
-              Continuous Delivery Pipeline focuses on all of the steps to get
-              your changes into production.
+            Make your software releases more efficient and reliable with Harness Continuous Delivery.
             </p>
           </div>
         </div>

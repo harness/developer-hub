@@ -1,0 +1,13 @@
+{
+  "position": 5,
+  "label": "Probes",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Probes"
+   },
+  "customProps": {
+    "description": "Probes documentation"
+  }
+}

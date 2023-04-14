@@ -1,18 +1,18 @@
 ---
 title: CI Run step settings
-description: This topic provides settings and permissions for the Harness CI Run step.
-sidebar_position: 50
+description: This topic describes settings for the CI Run step.
+sidebar_position: 60
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Harness CI Run step. In a **Build** stage, the **Run** step can be used to run scripts in your CI pipeline. The **Run** step pulls in a Docker image, such as a Docker image for Maven, and then runs a script with the tool, such as `mvn clean install`. You can use any Docker image from any public or private Docker registry.
+You can use a CI **Run** step to [run scripts in CI Build stages](/docs/category/run-scripts). This topic describes settings for the **Run** step.
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable.
+Depending on the stage's build infrastructure, some settings may be unavailable or optional.
 
 :::
 
@@ -24,42 +24,182 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 Optional text string describing the step's purpose.
 
-## Container Registry
+## Container Registry and Image
 
-A Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
+The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
 
-## Image
-
-The FQN (fully-qualified name) of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`.
-
-The image name should include the tag. If you don't include a tag, Harness uses the latest tag.
+The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
-* **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported.
-* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `us.gcr.io/playground-123/quickstart-image:latest`.
+* **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
+* **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
    ![](./static/run-step-settings-03.png)
 
-* **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+:::info
 
-## Shell
+The stage's build infrastructure determines whether these fields are required or optional:
 
-Select the shell script type. If a Run step includes commands that aren't supported for the selected shell type, the build fails.
+* [Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Container Registry** and **Image** are always required.
+* [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-hosted VM build infrastructure.
+* [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
 
-You can run PowerShell Core (`pwsh`) commands in pods or containers that have `pwsh` installed. You can run PowerShell commands on Windows VMs running in AWS build farms.
+:::
 
-## Command
+## Shell and Command
 
-[POSIX](https://www.grymoire.com/Unix/Sh.html) shell script executed inside the container.
+Use these fields to define the commands that you need to run in this step.
 
-The script is invoked as if it were the container's entry point.
+For **Shell**, select the shell script type. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+
+In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands for this step. The script is invoked as if it were the entry point. If the step runs in a container, the commands are executed inside the container.
 
 :::tip
 
 You can reference services started in [Background steps](./background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
 ![The Background step ID, pythonscript, is used in a curl command in a Run step.](./static/background-step-settings-call-id-in-other-step.png)
+
+:::
+
+Select each tab below to view examples for each `shell` type.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="bash" label="Bash" default>
+```
+
+This Bash script example checks the Java version.
+
+```yaml
+              - step:
+                  ...
+                  spec:
+                    shell: Bash
+                    command: |-
+                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
+                      if [[ $JAVA_VER == 17 ]]; then
+                        echo successfully installed $JAVA_VER
+                      else
+                        exit 1
+                      fi
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="powershell" label="Powershell">
+```
+This is a simple Powershell `Wait-Event` example.
+
+```yaml
+              - step:
+                  ...
+                  spec:
+                    shell: Powershell
+                    command: Wait-Event -SourceIdentifier "ProcessStarted"
+```
+
+:::tip
+
+You can run Powershell commands on Windows VMs running in AWS build farms.
+
+:::
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="pwsh" label="Pwsh">
+```
+
+This Powershell Core example runs `ForEach-Object` over a list of events.
+
+```yaml
+              - step:
+                  ...
+                  spec:
+                    shell: Pwsh
+                    command: |-
+                      $Events = Get-EventLog -LogName System -Newest 1000
+                      $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -FilePath Events.txt -Append -InputObject $_.Message} -End {Get-Date}
+```
+
+:::tip
+
+You can run Powershell Core commands in pods or containers that have `pwsh` installed.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="sh" label="Sh">
+```
+
+In this example, the pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
+
+```yaml
+              - step:
+                  ...
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    shell: Sh
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      uname -a
+                      pip install pytest
+                      pip install pytest-cov
+                      pip install -r requirements.txt
+
+                      pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="python" label="Python">
+```
+
+If the `shell` is `Python`, supply Python commands directly in `command`.
+
+This example uses a basic `print` command.
+
+```
+            steps:
+              - step:
+                  ...
+                  spec:
+                    shell: Python
+                    command: print('Hello, world!')
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+:::info
+
+If your script produces an output variable, you must declare the output variable in the Run step's [Output Variables](#output-variables). For example, the following step runs a `python` script that defines an output variable called `OS_VAR`, and `OS_VAR` is also declared in the `outputVariables`.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Python
+                    command: |-
+                      import os
+                      os.environ["OS_VAR"] = value
+                    outputVariables:
+                      - name: OS_VAR
+```
 
 :::
 
@@ -83,72 +223,86 @@ You can inject environment variables into a container and use them in the **Comm
 
 You can reference environment variables in the **Command** script by their name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
 
-Variable values can be [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
+Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
 
 ![](./static/run-step-settings-04.png)
 
-For more information, go to [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
+For more information, go to the [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### Output Variables
 
-Output variables expose environment variables for use by other steps/stages in a pipeline. You can reference the output variable of a step using the step ID and the name of the variable in output variables.
+Output variables expose values for use by other steps or stages in the pipeline.
 
-<details>
-<summary>Output variables example</summary>
-This example exports an output variable as a step's environment variable. It is then called in a later step.
+To create an output variable, do the following in the step where the output variable originates:
 
-1. In the **Command** field, include the following syntax to export a new variable:
+1. In the **Command** field, export the output variable. For example, the following command exports a variable called `myVar` with a value of `varValue`:
 
    ```
    export myVar=varValue
    ```
 
-2. In the **Output Variables**, list the exported variable name:
+2. In the step's **Output Variables**, declare the variable name, such as `myVar`.
 
-   ![](./static/run-step-settings-05.png)
+To call a previously-exported output variable in a later step or stage in the same pipeline, use a variable expression that includes the originating step's ID and the variable name.
 
-3. In a later **Run** step in the same stage of the same pipeline, reference the output variable in that step's **Command** field:
+<!-- ![](./static/run-step-output-variable-example.png) -->
 
-   ```
-   echo <+steps.S1.output.outputVariables.myVar>
-   ```
+<docimage path={require('./static/run-step-output-variable-example.png')} />
 
-Here is how the S1 step's output variable is referenced:
-
-![](./static/run-step-settings-06.png)
-
-The subsequent build job fails when exit 0 is present along with output variables.
-</details>
-
-<details>
-<summary>Output variable syntax</summary>
-To reference output variables between steps in the same stage, use the following syntax:
+To reference an output variable in another step in the same stage, use either of the following expressions:
 
 ```
 <+steps.[stepID].output.outputVariables.[varName]>
+<+execution.steps.[stepID].output.outputVariables.[varName]>
 ```
 
-To reference output variables across stages, there are several syntax options, as follows:
+To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
 
 ```
-<+stages.[stageID].execution.steps.[stepID].output.outputVariables.[varName]>
-
-<+pipeline.stages.[stage name].spec.execution.steps.[step name].output.outputVariables.[varName]>
+<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
+<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
 ```
-
-You can also access environment variables through the auto-suggest/ auto-complete feature in the Harness UI.
-</details>
 
 <details>
+<summary>YAML example: Output variable</summary>
+
+In the following YAML example, step `alpha` exports an output variable called `myVar`, and then step `beta` references that output variable.
+
+```yaml
+              - step:
+                  type: Run
+                  name: alpha
+                  identifier: alpha
+                  spec:
+                    shell: Sh
+                    command: export myVar=varValue
+                    outputVariables:
+                      - name: myVar
+              - step:
+                  type: Run
+                  name: beta
+                  identifier: beta
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo <+steps.alpha.output.outputVariables.myVar>
+                      echo <+execution.steps.alpha.output.outputVariables.myVar>
+```
+
+</details>
+
+<!--<details>
 <summary>Export output variables to stage or pipeline variables</summary>
+
 You can also export step output variables to stage/pipeline environment variables, because they are available through the pipeline.
 
 For example, if a step exported an output variable called `BUILD_NUM`, you could use the following syntax to reference this variable later in the pipeline:
 
 ```
-<+pipeline.stages.[stage Id].variables.BUILD_NUM>
+<+pipeline.stages.[stageID].variables.BUILD_NUM>
 ```
-</details>
+
+</details>-->
 
 ### Image Pull Policy
 
@@ -173,5 +327,5 @@ Maximum resources limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

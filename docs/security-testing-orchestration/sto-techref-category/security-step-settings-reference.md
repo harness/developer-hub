@@ -10,9 +10,26 @@ helpdocs_is_published: true
 
 This topic includes the Security step settings for each of the scanner providers supported by Harness.
 
+### What's new: Improved UIs and set-up workflows for popular scanners
+
+On March 14, 2023, Harness introduced a set of new UIs (step palettes) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps greatly simplify the process of setting up scans in your pipelines. Previously, the workflow for all scanners was to enter a set of hard-coded key and value strings in a Security step. These new steps have simplified user-friendly UIs that include only the options relevant to the specific scanner, mode, and target.
+
+The following security steps are now generally available:
+
+* [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) (STO-5393)
+* [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference) (STO-5050)
+* [Black Duck Hub](/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference) (STO-5052)
+* [Checkmarx](/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference) (STO-5073)
+* [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference) (STO-5394)
+* [Mend (formerly Whitesource)](/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference) (STO-5392)
+* [Prisma Cloud (formerly Twistlock)](/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference) (STO-5055)
+* [Snyk](/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference) (STO-5053)
+* [SonarQube](/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference) (STO-5051)
+* [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference) (STO-5058)
+
 ### Scanner categories
 
-The following table shows the scanner categories that STO supports for each scanner:
+The following list shows the scan types that STO supports:
 
 * **SAST (_Static Application Security Testing_)** scans a code repository and identifies known vulnerabilities in the proprietary code.
 * **SCA (Software Composition Analysis)** scans a code repository and identifies known vulnerabilities in open-source libraries and packages used by the code. 
@@ -30,34 +47,34 @@ Harness Security Testing Orchestration integrates with multiple scanners and tar
 
 The scanner, targets, and scan approach combinations are covered in the next section.
 
-## Harness STO scanner support
+### Harness STO scanner support
 
 <table>
     <tr>
         <th>Scan Mode</th>
         <th>Open Source</th>
-        <th>Licensed</th>
+        <th>Commercial</th>
     </tr>
     <tr>
         <td valign="top">SAST</td>
         <td valign="top">
          	<ul>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference">Anchore Grype (filesystem scans)</a>  Orchestration, Ingestion </li>
         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference">Bandit</a>  Orchestration, Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference">Brakeman</a> Orchestration, Ingestion </li>
          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/qwiet-scanner-reference">Qwiet AI (formerly ShiftLeft)</a> Orchestration, Extraction, Ingestion</li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (<i>free option</i>) </a> Orchestration, Extraction, Ingestion</li>
         	</ul>
         </td>
         <td valign="top">
         	<ul>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-scanner-reference">Fortify Static Code Analyzer</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Ingestion</li>
-                <li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/reapsaw-scanner-reference">Reapsaw</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference">Snyk Code</a>  Ingestion</li>
-                <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud (free option)</a> Orchestration, Extraction, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/sonarqube-sonar-scanner-reference">SonarQube/SonarCloud</a> Orchestration, Extraction, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Extraction, Ingestion</li>
         	</ul>
      </td>
@@ -66,19 +83,17 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         <td valign="top">SCA</td>
         <td valign="top">
          	<ul>
-        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Clair</a> Orchestration, Ingestion   </li>
+             <li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP Dependency Check</a>  Orchestration, Ingestion</li>
         	</ul>
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-open-hub-scanner-reference">Black Duck Open Hub</a> Orchestration, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Extraction, Ingestion </li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
+           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/xray-scanner-reference">JFrog Xray</a> Ingestion </li>
-         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference">OWASP</a>  Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference">Snyk Open Source</a>  Orchestration, Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode</a> Orchestration, Extraction, Ingestion </li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/veracode-scanner-reference">Veracode SCA</a> Orchestration, Extraction, Ingestion </li>
         	</ul>
      </td>
    </tr>
@@ -86,21 +101,23 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         <td valign="top">DAST</td>
         <td valign="top">
          	<ul>
-        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/niktos-scanner-reference">Nikto</a>  Orchestration, Ingestion </li>
-         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
+        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference">Nikto</a>  Orchestration, Ingestion </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/openvas-scanner-reference">OpenVAS</a> Orchestration, Ingestion </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference">OWASP ZAP</a> Orchestration, Ingestion </li>
         	</ul>
         </td>
         <td valign="top">
         	<ul>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Burp Enterprise</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
-                <li><a href="/docs/security-testing-orchestration/sto-techref-category/metasploit-scanner-reference">Metasploit Pro</a> Orchestration, Ingestion </li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nessus-scanner-reference">Nessus</a> Orchestration, Ingestion </li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Nexus IQ</a> Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/metasploit-scanner-reference">Metasploit Pro</a> Orchestration, Ingestion </li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Nexus IQ</a> Orchestration, Ingestion </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference">Nmap ("Network Mapper")</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/prowler-scanner-reference">Prowler</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/qualys-web-app-scanner-reference">Qualys Web Application Scanning (WAS)</a>  Ingestion </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/sniper-scanner-reference">Sniper</a> Orchestration, Ingestion </li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io</a> Orchestration, Extraction, Ingestion </li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/nexus-scanner-reference">Tenable.io Nessus vulnerability scan</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io Nessus web app scan</a> Orchestration, Extraction, Ingestion </li>
         	</ul>
      </td>
    </tr>
@@ -108,27 +125,28 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         <td valign="top">Containers</td>
         <td valign="top">
          	<ul>
-        		<li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy</a> Orchestration, Ingestion  </li>
-         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference">Grype</a>  Orchestration, Ingestion </li>
+         		<li><a href="/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference">Anchore Grype</a>  Orchestration, Ingestion </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference">Aqua Trivy</a> Orchestration, Ingestion  </li>
+            <li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Clair</a> Orchestration, Ingestion </li>
         	</ul>
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/amazon-imge-scanner-reference">Amazon Image Scanning</a> Extraction </li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-open-hub-scanner-reference">Black Duck Open Hub</a> Orchestration, Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/docker-content-trust-dct-scanner-reference">Docker Content Trust (DCT</a> Orchestration, Ingestion</li>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/clair-scanner-reference">Docker Content Trust (clair)</a> Orchestration, Ingestion </li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/amazon-image-scanner-reference">Amazon Image Scanning</a> Extraction </li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/black-duck-hub-scanner-reference">Black Duck Hub</a> Orchestration, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/data-theorem-scanner-reference">Data Theorem</a> Orchestration, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/docker-content-trust-dct-scanner-reference">Docker Content Trust (DCT)</a> Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/prisma-cloud-scanner-reference">Prisma Cloud (formerly Twistlock)</a> Orchestration, Extraction, Ingestion</li>
-                <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference">Snyk Container</a>  Orchestration, Ingestion</li>
+              <li><a href="/docs/security-testing-orchestration/sto-techref-category/snyk-scanner-reference">Snyk Container</a>  Orchestration, Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/tenable-scanner-reference">Tenable.io</a> Orchestration, Extraction, Ingestion  </li>
         	</ul>
      </td>
    </tr>
    </table>
 
-   ### Scanner support
+### Scanner binaries used in STO container images
 
-   Harness maintains and updates a container image for every scanner supported by STO. The following table lists the binaries and current versions for the most popular scanners.
+Harness maintains and updates a container image for every scanner supported by STO. The following table lists the binaries and versions used for the most popular scanners.
 
 <table>
 <thead>
@@ -151,7 +169,7 @@ The scanner, targets, and scan approach combinations are covered in the next sec
   </tr>
   <tr>
     <td>Black Duck Hub</td>
-    <td><code>synopsis detect</code></td>
+    <td><code>synopsys detect</code></td>
     <td>7.9.0</td>
   </tr>
   <tr>

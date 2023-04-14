@@ -4,10 +4,17 @@ description: Image scans with Docker Content Trust
 sidebar_position: 120
 ---
 
+You can set up  Docker Content Trust (DCT) scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-## Security step settings
+### Before you begin
 
-You can set up Fortify scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+```mdx-code-block
+import StoCreateDinD from './shared/dind-bg-step.md';
+```
+
+<StoCreateDinD />
+
+### Security step settings
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -21,9 +28,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `containerImage`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
 * `product_config_name` =`default`
-
-
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -31,35 +36,21 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <StoLegacyContainer />
 
-
-<!-- REPOS --------------------------------------------------------------------------- 
-
-### Repository scan settings
-
 ```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
-<StoLegacyRepo />
+<StoLegacyIngest />
 
-<!-- LEGACY INSTANCE  --------------------------------------------------------------------------- 
-
-### Instance settings 
+#### Fail on Severity
 
 ```mdx-code-block
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
-
-<StoLegacyInstance />
-
-<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- 
+<StoSettingFailOnSeverity />
 
 
-```mdx-code-block
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-```
-
-<StoLegacyConfig  />
+<!-- CONTAINERS --------------------------------------------------------------------------- -->
 
 
-<!-- INSTANCES  --------------------------------------------------------------------------- -->
+

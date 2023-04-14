@@ -5,9 +5,9 @@ sidebar_position: 160
 ---
 
 
-## Security step settings
+### Security step settings
 
-You can set up Metasploit scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up Metasploit scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -24,29 +24,8 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
    - `metasploit-weak-ssh` &nbsp; &nbsp;  Brute-force test a host for SSH weak ssh/pass
    - `metasploit-openssl-heartbleed`  &nbsp; &nbsp; Check HTTPS (443) for Heartbleed vulnerability
    - `dynamic-by-cve`  &nbsp; &nbsp; Finds and applies Metaspoit module by CVE 
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-
-
-<!-- CONTAINERS ---------------------------------------------------------------------------
-
-```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
-
-<StoLegacyContainer />
-
-
-<!-- REPOS ---------------------------------------------------------------------------  
-
-### Repository scan settings
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
-
-<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  -->
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
@@ -54,14 +33,16 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 
 <StoLegacyInstance />
 
-<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- 
-
-
 ```mdx-code-block
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
-<StoLegacyConfig  />
+<StoLegacyIngest />
 
+#### Fail on Severity
 
-<!-- INSTANCES  --------------------------------------------------------------------------- -->
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+
+<StoSettingFailOnSeverity />

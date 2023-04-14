@@ -8,7 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+:::note
 Currently, this feature is behind the feature flag `NG_CUSTOM_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 Custom approval stages and steps add control gates to your pipelines by allowing you to approve or reject a pipeline or stage at any point during build execution. When you add a Custom Approval step, you add a script to the step, and then use the script results as approval or rejection criteria.
 
@@ -51,7 +54,7 @@ Criteria can be the following:
 * Evaluating a JEXL Expression.
 	+ Harness supports JEXL expressions and you can use these with script outputs or Harness variables to create expressions.
 	+ If the resolved JEXL expression is a Boolean true, the approval criteria is met.
-	+ For example, you could evaluate the output from a previous [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
+	+ For example, you could evaluate the output from a previous [Shell Script](../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step named **test** by referencing its output in a JEXL expression and comparing it to the value `Approved`: `<+execution.steps.test.output.outputVariables.status>=="Approved"`.
 	+ See [Built-in and Custom Harness Variables Reference](../12_Variables-and-Expressions/harness-variables.md) and [Extracting Characters from Harness Variable Expressions](../12_Variables-and-Expressions/extracting-characters-from-harness-variable-expressions.md).
 
 ## Add a Custom Approval stage
@@ -92,7 +95,7 @@ It's important to understand how the Timeout, Retry Interval, and Script Timeout
 
 In **Timeout**, enter how long you want Harness to try to complete the step before failing (and initiating the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md)).
 
-You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, `1d` for one day.
+You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, `1d` for one day.
 
 In **Script Timeout**, set how long the step should wait for the script to complete before timing out.
 
@@ -148,7 +151,7 @@ Custom Approval steps must have at least one **Approval Criteria**. You can also
 
 ![](./static/custom-approvals-07.png)
 
-Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
+Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination, they both must evaluate to a Boolean `True` for the step to be approved.
 
 In **Conditions**, you can define approval criteria using outputs from the step script, [Harness expressions](../12_Variables-and-Expressions/harness-variables.md), or your custom ticketing system.
 
@@ -331,5 +334,5 @@ Please ensure that users adding scripts, as well as executing deployments that r
 
 * [Add a Custom Stage](../8_Pipelines/add-a-custom-stage.md)
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
-* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md)
+* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)
 

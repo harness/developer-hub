@@ -98,7 +98,7 @@ A step group is a collection of steps that share the same logic such as the same
 
 ![](./static/learn-harness-key-concepts-13.png)
 
-See [Run Steps in a Step Group](../continuous-delivery/cd-technical-reference/cd-gen-ref-category/step-groups.md).
+See [Run Steps in a Step Group](../continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups.md.
 
 ### Services
 
@@ -124,7 +124,7 @@ You can also propagate and override a service in subsequent stages by selecting 
 
 ![](./static/learn-harness-key-concepts-16.png)
 
-See [Monitor Deployments and Services in CD Dashboards](../continuous-delivery/cd-dashboards/monitor-cd-deployments.md).
+See [Monitor Deployments and Services in CD Dashboards](../continuous-delivery/monitor-deployments/monitor-cd-deployments.md).
 
 ### Environments
 
@@ -158,7 +158,7 @@ You can sync your Harness account, orgs, and projects with your Git repo to mana
 
 Harness can respond to Git events to trigger pipelines and pass in event data.
 
-See [Harness Git Experience Overview](../platform/10_Git-Experience/harness-git-experience-overview.md).
+See [Harness Git Experience Overview](/docs/platform/git-experience/git-experience-overview/).
 
 ### Recap
 

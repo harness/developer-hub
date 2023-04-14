@@ -26,7 +26,7 @@ This Trigger is a simple way to automate deployments for new Helm charts.
 
 ### Before you begin
 
-* You should be familiar with Harness CD Pipelines for Helm charts, such as the one you create in the [Helm Chart deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
+* You should be familiar with Harness CD Pipelines for Helm charts, such as the one you create in the [Helm Chart deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
 
 ### Summary and important notes
 
@@ -76,7 +76,7 @@ Typically, you add a Helm Chart Trigger to a Pipeline that deploys a Helm Chart.
 
    ![](./static/trigger-pipelines-on-new-helm-chart-06.png)
 
-   See [Helm Chart deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md) for details on adding Helm Charts to a Stage's **Service Definition**.
+   See [Helm Chart deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) for details on adding Helm Charts to a Stage's **Service Definition**.
 
 Next, let's add the Trigger.
 
@@ -151,7 +151,7 @@ And these records are also in the Trigger details:
 ![](./static/trigger-pipelines-on-new-helm-chart-12.png)
 You can test the Trigger by pushing a new chart version to your Helm Chart registry.
 
-You can build and push to your registry using Harness CIE. See [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).Here's a simple curl example using a Nexus repo that works as a Helm chart HTTP server.
+You can build and push to your registry using Harness CI. For examples, go to the [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md). Here's a simple curl example using a Nexus repo that works as a Helm chart HTTP server.
 
 Add repo:
 

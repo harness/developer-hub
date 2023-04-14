@@ -6,15 +6,15 @@ sidebar_position: 20
 
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
-There are several ways to configure caching in Harness CI: save and restore cache steps, mounting volumes, and Cache Intelligence. Mounting volumes or using save and restore cache steps requires you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Also, you don't need to bring your own storage with Cache Intellgience, because we store the cache in our hosted environment, Harness Cloud.
+There are several ways to configure caching in Harness CI: save and restore cache steps, mounting volumes, and Cache Intelligence. Mounting volumes or using save and restore cache steps requires you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Also, you don't need to bring your own storage with Cache Intelligence, because we store the cache in our hosted environment, Harness Cloud.
 
 ## Supported build infrastructures and tools
 
 Currently, Cache Intelligence is available only when using [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), the Harness-hosted build environment.
 
-Currently, Cache Intelligence supports Bazel, Maven, Gradle, Yarn, and Node build tools, if the dependencies are stored in the default location for the tool used.
+Currently, Cache Intelligence supports Bazel, Maven, Gradle, Yarn, Go, and Node build tools. The dependencies must be stored in the default location for the tool used.
 
-If you are using a different build tool or a non-default cache location, you can still leverage our cache storage by [specifying the location(s) to cache](#customize-cache-paths).
+If you are using a different build tool or a non-default cache location, you can still leverage Harness' cache storage by [specifying the location(s) to cache](#customize-cache-paths).
 
 ## Cache storage
 
@@ -96,6 +96,27 @@ If a path you want to cache is outside the `/harness` directory, you must also s
 ```
 
 In the Visual editor, you can add **Shared Paths** in the stage's **Overview** settings. However, you must use the YAML editor to enable caching and specify `paths`.
+
+### Customize cache keys
+
+Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
+
+To customize the cache key, add `key: [custom-key]` to `stage: spec: caching:` in your pipeline's YAML, and specify the custom key value. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) to create the key value.
+
+The following YAML example uses `key: <+input>`, which prompts the user to supply a cache key value at runtime.
+
+```yaml
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          caching:
+            enabled: true
+            key: <+input>
+          cloneCodebase: true
+...
+```
 
 ## Cache Intelligence API
 

@@ -299,8 +299,12 @@
     .studyGuide {
         margin-top: 24px; //50px;
         .studyGuideCard {
-            background-color: #BC8532;
+            background-color: var(--primary-8);
             border-radius: 8px;
+            &.Developers {background-color: #BC8532;}
+            &.Administrators {background-color: #88939A;}
+            &.Architects {background-color: #C8A320;
+                ;}
             .info {
                 // font-weight: 600;
                 font-size: 12px;
@@ -457,7 +461,7 @@
 
 @media screen and (max-width: 1344px) {
     /* for small desktop */
-    .certificationsCD {
+    .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
         .certDesc {
             .certCard {
                 .certCardContainer {
@@ -485,7 +489,7 @@
             }
         }
     }
-    .certificationsCD {
+    .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
         .certDesc {
             .certCard {
                 display: block;
@@ -530,7 +534,7 @@
             }
         }
     }
-    .certificationsCD {
+    .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
         padding-top: 36px;
         .hero {
             flex-direction: column;
@@ -611,7 +615,7 @@
             }
         }
     }
-    .certificationsCD {
+    .certificationsCI, .certificationsCD, .certificationsFF, .certificationsCCM, .certificationsSRM, .certificationsSTO, .certificationsCE, .certificationsPlatform {
         .certDesc {
             .certCard {
                 .certCardContainer {

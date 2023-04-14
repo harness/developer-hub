@@ -5,9 +5,9 @@ sidebar_position: 210
 ---
 
 
-## Security step settings
+### Security step settings
 
-You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then the `setting:value` pairs as specified below.
+You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -21,23 +21,9 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_name` = `owasp`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
-* `product_config_name`
-	+ Accepted values(s):
-		- `default`
-
-
-<!-- CONTAINERS ---------------------------------------------------------------------------
-
-```mdx-code-block
-import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
-```
-
-<StoLegacyContainer />
-
-
-<!-- REPOS ---------------------------------------------------------------------------  -->
-
-### Repository scan settings
+* `product_config_name` = `default`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+* `tool_args` — You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument: `tool_args` = `--scan ‘directory/**/*.jar’`
 
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
@@ -45,24 +31,15 @@ import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 
 <StoLegacyRepo />
 
-<!-- LEGACY INSTANCE  ---------------------------------------------------------------------------  
-
-### Instance settings 
-
 ```mdx-code-block
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
-<StoLegacyInstance />
+<StoLegacyIngest />
 
-<!-- LEGACY CONFIGS  --------------------------------------------------------------------------- 
-
+#### Fail on Severity
 
 ```mdx-code-block
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
-
-<StoLegacyConfig  />
-
-
-<!-- INSTANCES  --------------------------------------------------------------------------- -->
+<StoSettingFailOnSeverity />

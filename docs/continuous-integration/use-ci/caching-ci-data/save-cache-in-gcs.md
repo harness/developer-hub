@@ -17,15 +17,15 @@ This topic explains how you can use the **Save Cache to GCS** and **Restore Cach
 
 :::caution
 
-You can't share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages.
+You can't share access credentials or other [Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md) across stages.
 
 :::
 
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
-* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [CI pipeline basics](../../ci-quickstarts/ci-pipeline-basics.md)
-* [CI stage settings](../../ci-technical-reference/ci-stage-settings.md)
+* [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
+* [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)
 
 ## Requirements
@@ -58,14 +58,14 @@ import TabItem from '@theme/TabItem';
 
 1. Go to the pipeline and stage where you want to add the **Save Cache to GCS** step.
 2. Select **Add Step**, select **Add Step** again, and then select **Save Cache to GCS** in the Step Library.
-3. Configure the [Save Cache to GCS step settings](../../ci-technical-reference/save-cache-to-gcs-step-settings.md).
+3. Configure the [Save Cache to GCS step settings](../../ci-technical-reference/cache-steps/save-cache-to-gcs-step-settings.md).
 
    ![](./static/save-cache-in-gcs-00.png)
 
 4. Select **Apply changes** to save the step.
 5. Go to the stage where you want to add the **Restore Cache from GCS** step.
 6. Select **Add Step**, select **Add Step** again, and then select **Restore Cache from GCS** in the Step Library.
-7. Configure the [Restore Cache from GCS step settings](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md). The bucket and key must correspond with the bucket and key settings in the **Save Cache to GCS** step.
+7. Configure the [Restore Cache from GCS step settings](../../ci-technical-reference/cache-steps/restore-cache-from-gcs-settings.md). The bucket and key must correspond with the bucket and key settings in the **Save Cache to GCS** step.
 8. Select **Apply changes** to save the step, and then select **Save** to save the pipeline.
 
 ```mdx-code-block
