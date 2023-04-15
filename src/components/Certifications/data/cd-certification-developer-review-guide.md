@@ -1,9 +1,9 @@
 | Domain       | Topic | Material                                                                                                                                                              
 | :------------------------------ | :------------------------------ | :------------------------------ | 
 |**1. Application Architectures and Services for Deployment** | | |
-|| Define Continuous Delivery | [CD overview and key concepts](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics) |
+|| Define Continuous Delivery | [CD overview and key concepts](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/) |
 || Delegates | [Delegate overview ](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/) |
-|| Service Overrides | [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/#service-overrides) |
+|| Service Overrides | [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) |
 || Artifact/Kubernetes Manifest Sources  | [Harness Kubernetes Services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services/) |
 || Overrides  | [Propagate and Override CD Services](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services/#yaml-example) |
 |**2. Swimlanes** | | |

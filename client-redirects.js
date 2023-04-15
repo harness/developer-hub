@@ -31,9 +31,20 @@ module.exports = {
     //  },    
     //===================================================================================
 
+    // Created by ravilach to fix CD Cert re-directs April 15th, 2023
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics",
+      to: "/docs/continuous-delivery/get-started/cd-pipeline-basics",
+    },
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
+      to: "/docs/continuous-delivery/get-started/services-and-environments-overview",
+    },
+
      // Created by Charanya Jayaraman to fix CCM redirects on Apr 13, 2023
 
-     {
+    {
       from: "/docs/cloud-cost-management/cloud-cost-technical-reference/ccm-ref/ccm-roles-and-permissions",
       to: "/docs/cloud-cost-management/getting-started-ccm/access-control/ccm-roles-and-permissions",
     },
