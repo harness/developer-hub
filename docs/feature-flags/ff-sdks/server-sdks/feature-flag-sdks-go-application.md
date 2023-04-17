@@ -1,5 +1,5 @@
 ---
-title: Go SDK Reference
+title: Go SDK reference
 description: This topic explains how to integrate your feature flags with Go SDK.
 sidebar_position: 20
 helpdocs_topic_id: 4c8wljx60w

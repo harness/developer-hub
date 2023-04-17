@@ -1,5 +1,5 @@
 ---
-title: React Native SDK Reference
+title: React Native SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your React Native application.
 sidebar_position: 50
 helpdocs_topic_id: z2w6uj9mzb

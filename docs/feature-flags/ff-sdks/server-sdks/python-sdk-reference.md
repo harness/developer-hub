@@ -1,5 +1,5 @@
 ---
-title: Python SDK Reference
+title: Python SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your Python application.
 sidebar_position: 70
 helpdocs_topic_id: hwoxb6x2oe

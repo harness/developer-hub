@@ -1,5 +1,5 @@
 ---
-title: React Client SDK Reference
+title: React Client SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your React Client application.
 sidebar_position: 70
 helpdocs_category_id: y1oewjcb0q

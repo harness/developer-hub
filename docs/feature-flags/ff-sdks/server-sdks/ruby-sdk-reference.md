@@ -1,5 +1,5 @@
 ---
-title: Ruby SDK Reference
+title: Ruby SDK reference
 description: This topic explains how to use the Harness Feature Flags (FF) SDK in your Ruby application.
 sidebar_position: 80
 helpdocs_topic_id: uora4f0f22

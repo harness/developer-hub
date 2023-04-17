@@ -1,5 +1,5 @@
 ---
-title: JavaScript SDK Reference
+title: JavaScript SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your JavaScript application.
 sidebar_position: 400
 helpdocs_topic_id: bmlvsxhp13

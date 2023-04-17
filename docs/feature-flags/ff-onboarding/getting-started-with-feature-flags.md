@@ -1,5 +1,5 @@
 ---
-title: Get Started With with a Flag
+title: Get started with a flag
 description: This guide describes the basic steps for getting started with Harness Feature Flags. Visual summary. For an overview of Harness Feature Flags, watch the following video --  Watch Feature Flag overview v…
 tags: 
    - helpDocs

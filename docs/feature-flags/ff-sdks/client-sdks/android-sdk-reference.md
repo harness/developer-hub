@@ -1,5 +1,5 @@
 ---
-title: Android SDK Reference
+title: Android SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your Android application.
 sidebar_position: 10
 helpdocs_topic_id: 74t18egxbi

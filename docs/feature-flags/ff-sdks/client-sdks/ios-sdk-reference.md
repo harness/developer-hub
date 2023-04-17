@@ -1,5 +1,5 @@
 ---
-title: iOS SDK Reference
+title: iOS SDK reference
 description: This topic explains how to use the Continuous Features (CF) SDK in your iOS application.
 sidebar_position: 30
 helpdocs_topic_id: 6qt2v8g92m

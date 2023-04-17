@@ -1,5 +1,5 @@
 ---
-title: Create an Environment
+title: Create an environment
 description: Once you've created a Project, you need to create an Environment before you create a Feature Flag. Feature Flags can be used independently across multiple Environments within a single Project, for ex…
 sidebar_position: 20
 helpdocs_topic_id: nh1n5qtjmm
