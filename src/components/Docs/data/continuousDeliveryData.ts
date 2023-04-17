@@ -76,7 +76,7 @@ export const featuredTutorials: CardItem[] = [
           module: "cd",
           description:
             "Use Harness Continuous Verification (CV) to verify your deployments.",
-          link: "http://localhost:3000/docs/category/verify-deployments",
+          link: "/docs/category/verify-deployments",
         },
         {
           title: "Manage deployments",

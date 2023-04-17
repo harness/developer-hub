@@ -1,5 +1,5 @@
 ---
-title: Harness Community Edition deployment tutorial
+title: Harness Community Edition deployments
 description: This topic walks you through deploying setting up Harness CD Community Edition locally and creating and deploying a CD pipeline.
 sidebar_position: 2
 ---

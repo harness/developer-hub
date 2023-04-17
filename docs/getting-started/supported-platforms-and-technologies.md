@@ -260,7 +260,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      (../continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial.md)
+      (/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
       <p>Windows Remote Management (WinRM)</p>
     </td>
     <td>
@@ -855,13 +855,13 @@ The Update Framework (TUF) is an open source specification for that provides ins
 
 Harness includes native TUF support via the following:
 
-- Deployment templates: [Deployment Templates](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
+- Deployment templates: [Deployment Templates](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial) use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
   - Deployment Templates can obtain the required metadata for native TUF support, and generate and validate signatures in the software lifecycle.
 - OCI image registry support:
   - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
 - Enforce the rotation of secrets and key management practices:
   - Harness provides [token key rotation natively](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/#rotate-token).
-- Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step/#review-what-is-harness-continuous-verification-cv).
+- Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
 
 ## Harness Open Source Software (OSS) components
 

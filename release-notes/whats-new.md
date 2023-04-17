@@ -1159,7 +1159,7 @@ You can now use a readOnly vault as a default SM. (PL-24491)
 
   For more information, go to:
 
-  [Secure Shell (SSH) deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng/)
+  [Secure Shell (SSH) deployment tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
 
   [WinRM deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial)
 
