@@ -54,7 +54,7 @@ You can use Harness secrets for the username and password in your script. For e
 ```bash
 curl -sSf -u "<+secrets.getValue("username")>:<+secrets.getValue("password")>" -O 'https://mycompany.jfrog.io/module/example/manifest.zip'
 ```
-For more information, see [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets).
+For more information, see [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
 
 
 ## Start a pipeline
@@ -67,7 +67,7 @@ Enter a name for the Pipeline and click **Start**. Now you're ready to add a sta
 
 ## Add a Deploy stage
 
-For steps on adding a stage, see [Add a Stage](/docs/platform/Pipelines/add-a-stage).
+For steps on adding a stage, see [Add a Stage](/docs/platform/8_Pipelines/add-a-stage.md).
 
 1. Name the stage, and select what you'd like to deploy. For example, select Service.
 2. Click **Set Up Stage**. The new stage's settings appear.
@@ -100,7 +100,7 @@ If you are adding the image location to Harness as an Artifact in the Service De
 1. Enter the name in **Manifest Name**.
 1. In **Custom Remote Manifest Extraction Script**, enter the path to the Git repo where your remote manifest script is available. This script runs on the Harness Delegate selected for the deployment.
 2. In **Extracted Manifest File Location**, enter the folder path for the manifests.
-3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
+3. In **Define Delegate Selector**, Harness selects the best Delegate. See [Select Delegates with Delegate Selectors and Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). Select a specific delegate from the list of tags available for delegates or leave this blank and allow Harness to select a delegate.
 4. In **Values.yaml**, the field is populated with the folder path for the values.yaml.
 5. Click **Submit**. The new manifest is created and added to **Manifests** in Harness.
 

@@ -79,6 +79,7 @@ function CardCategory({
     return null;
   }
 
+  const customPropsDesc = item.customProps && item.customProps.description;
   return (
     <CardLayout
       href={href}
@@ -86,7 +87,9 @@ function CardCategory({
       title={item.label}
       description={translate(
         {
-          message: "{count} items",
+          message: customPropsDesc
+            ? `${customPropsDesc} ({count} items)`
+            : "{count} items",
           id: "theme.docs.DocCard.categoryDescription",
           description:
             "The default description for a category card in the generated index about how many items this category includes",
