@@ -128,4 +128,4 @@ org.<templateIdentifier>
 
 - To update the template click Save. Harness reconciles the change making it the default state.
 
-- Reconciliation is on-demand, we need to click on 3 dots next to run button and click on reconcile to check for runtime inputs validations, It will tell us if there is a need for reconciliation or not
+- To check for runtime input validations, click on the three dots next to **Run** and select **Reconcile**. The UI indicates if reconciliation is necessary.
