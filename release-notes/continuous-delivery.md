@@ -301,9 +301,11 @@ This release does not include any early access features.
 - Selecting the edit button on the YAML section of the **Triggers** page took users back to the visual section of the page. (CDS-50426)
   
   The **Triggers** page was not maintaining the user preference for the view type (Visual/YAML). This issue is fixed.
-- Pipeline execution failed with the following errors when an artifact is configured as runtime input. This is because the artifact source configuration had a `.` in it. (CDS-56646)
+- Pipeline execution failed with the following errors when an artifact was configured as runtime input. This was because the artifact source configuration had a `.` in it. (CDS-56646)
+
   `Invalid request: Unable to locate path`
   `serviceDefinition.spec.artifacts.primary.sources.output.zip.spec.repository within service yaml`
+  
   This issue is fixed. New validations such as restricting the identifiers from having dots, spaces, and hyphens have been added now. This validation applies to all existing and new artifact identifiers on the Harness platform.
 
 ## March 24, 2023, version 78817
