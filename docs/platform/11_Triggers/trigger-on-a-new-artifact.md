@@ -29,7 +29,7 @@ An artifact source does not need to be defined in the service definition for the
 
 ### Before you begin
 
-* You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+* You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 
 ### Important notes
 
@@ -68,7 +68,7 @@ You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>`
 
    ![](./static/trigger-on-a-new-artifact-24.png)
 
-   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](../../continuous-delivery/cd-advanced/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
 
 2. Click **Triggers**.
 3. Click **New Trigger**.

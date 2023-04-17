@@ -113,9 +113,14 @@ Click **Finish**.
 
 This step is only applicable when you want to override the default Delegate and download build images using the Connector you just created.
 
-In the Build Stage, go to the Infrastructure tab and specify your build-image Connector in the **Override Image Connector** field. The Delegate will use this Connector to download images from the Harness repository.
+In the [Build stage settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md), go to the Infrastructure tab and specify your build-image Connector in the **Override Image Connector** field. The Delegate will use this Connector to download images from the Harness repository.
 
+<<<<<<< HEAD:docs/platform/7_Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector.md
 ![](../../7_Connectors/static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
+=======
+![](./static/connect-to-harness-container-image-registry-using-docker-connector-49.png)
+
+>>>>>>> main:docs/platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md
 ### Step 6: Run the Pipeline
 
 You can now run your Pipeline. Harness will now pull images from the Harness Registry at Pipeline runtime using the configured Connector.
@@ -124,7 +129,13 @@ If a connector with`harnessImage` identifier already exists on your **Account**,
 
 ### See also
 
+<<<<<<< HEAD:docs/platform/7_Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector.md
 * [Permission Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 * [Harness CI Image List](../../../../docs/continuous-integration/ci-technical-reference/harness-ci.md)
 * [CI Build Image Updates](../../../../docs/continuous-integration/ci-technical-reference/ci-build-image-updates.md)
+=======
+* [Permission Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
+* [Harness CI Image List](../../continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md)
+* [CI Build Image Updates](../../continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates.md)
+>>>>>>> main:docs/platform/7_Connectors/connect-to-harness-container-image-registry-using-docker-connector.md
 

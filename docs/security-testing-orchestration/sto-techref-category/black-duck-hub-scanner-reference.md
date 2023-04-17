@@ -312,8 +312,6 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
-#### Container Image scan settings
-
 <!-- CONTAINERS --------------------------------------------------------------------------- -->
 
 ```mdx-code-block
@@ -325,7 +323,6 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <!-- REPOS --------------------------------------------------------------------------- -->
 
-#### Repository scan settings
 
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
@@ -333,7 +330,16 @@ import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 
 <StoLegacyRepo />
 
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
 </details>
+
+
 
 ## YAML configuration
 

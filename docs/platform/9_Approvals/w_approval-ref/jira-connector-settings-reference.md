@@ -14,7 +14,7 @@ You can connect Harness to Jira using a Harness Jira Connector. This Connector a
 
 For instructions on how to set up this Connector, see [Connect to Jira](../../7_Connectors/Ticketing-Systems/connect-to-jira.md).
 
-Looking for How-tos? See [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md), [Update Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md), and [Adding Jira Approval Stages and Steps](../adding-jira-approval-stages.md).
+Looking for How-tos? See [Create Jira Issues in CD Stages](../../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md), [Update Jira Issues in ../../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages.mdd-stages.md), and [Adding Jira Approval Stages and Steps](../adding-jira-approval-stages.md).
 
 ### Limitations
 
@@ -38,8 +38,8 @@ Enter your credentials. For **API Key**, use a Harness [Text Secret](../../Secre
 
 ### See also
 
-* [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md)
-* [Update Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
-* [Using Jira Approval Steps in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
+* [Create Jira Issues in CD Stages](../../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md)
+* [Update Jira Issues in CD Stages](../../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages.md)
+* [Using Jira Approval Steps in CD Stages](../../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages.md)
 * [Adding Jira Approval Stages](../adding-jira-approval-stages.md)
 

@@ -72,7 +72,7 @@ The following example shows the Terraform script outputs used for the mandatory 
 
 ![](./static/mapgcp-kube-terraform-infra-40.png)
 
-For information on Kubernetes deployments, see [Kubernetes How-tos](../kubernetes-deployments/kubernetes-deployments-overview.md).
+For information on Kubernetes deployments, see [Kubernetes How-tos](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview).
 
 ### Option 2: ​Map a GCP Kubernetes Infrastructure​
 
@@ -82,7 +82,7 @@ Provisioning Kubernetes is supported with the Kubernetes Cluster Cloud Provider 
 
 ![](./static/mapgcp-kube-terraform-infra-41.png)
 
-For information on Kubernetes deployments, see [Kubernetes How-tos](../kubernetes-deployments/kubernetes-deployments-overview.md).
+For information on Kubernetes deployments, see [Kubernetes How-tos](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview).
 
 #### Cluster Name Format
 

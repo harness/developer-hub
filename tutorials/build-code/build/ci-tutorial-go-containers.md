@@ -1,7 +1,7 @@
 ---
 sidebar_position: 2
-title: Go Application
-description: This build automation guide describes building a Go container in a a CI Pipeline.
+title: Go application
+description: This build automation guide describes building a Go container in a a CI pipeline.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Go,Ko]
 slug: /build-code/build/go
 ---

@@ -186,7 +186,7 @@ When you deploy the Workflow, **Start New Deployment** prompts you to enter valu
 
 You can select the necessary settings and deploy the Workflow.
 
-You can also pass variables into a Workflow from a Trigger that can be used for templatized values. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
+You can also pass variables into a Workflow from a Trigger that can be used for templatized values. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows).
 
 ### Review: Harness Expression Support in CV Settings
 

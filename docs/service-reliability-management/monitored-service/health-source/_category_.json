@@ -1,0 +1,11 @@
+{
+   "label":"Health sources catalog",
+   "position": 3,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Health sources"
+   }
+   }

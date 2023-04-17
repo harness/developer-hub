@@ -10,7 +10,11 @@ helpdocs_is_published: true
 
 You can connect Harness to Jira using a Harness Jira Connector. This Connector allows you to create and update Jira issues, and to use Jira issues in Approval steps.
 
+<<<<<<< HEAD:docs/platform/7_Connectors/Ticketing-Systems/connect-to-jira.md
 Looking for How-tos? See [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md), [Update Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md), and [Adding Jira Approval Stages and Steps](../../9_Approvals/adding-jira-approval-stages.md).
+=======
+Looking for How-tos? See [Create Jira Issues in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md), [Update Jira Issues in ../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages.mdd-stages.md), and [Adding Jira Approval Stages and Steps](../9_Approvals/adding-jira-approval-stages.md).
+>>>>>>> main:docs/platform/7_Connectors/connect-to-jira.md
 
 ### Before you begin
 
@@ -59,8 +63,15 @@ The Jira Connector is listed in Connectors.
 
 ### See also
 
+<<<<<<< HEAD:docs/platform/7_Connectors/Ticketing-Systems/connect-to-jira.md
 * [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md)
 * [Update Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
 * [Adding Jira Approval Stages and Steps](../../9_Approvals/adding-jira-approval-stages.md)
 * [Adding Jira Approval Stages](../../9_Approvals/adding-jira-approval-stages.md)
+=======
+* [Create Jira Issues in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md)
+* [Update Jira Issues in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages.md)
+* [Adding Jira Approval Stages and Steps](../9_Approvals/adding-jira-approval-stages.md)
+* [Adding Jira Approval Stages](../9_Approvals/adding-jira-approval-stages.md)
+>>>>>>> main:docs/platform/7_Connectors/connect-to-jira.md
 

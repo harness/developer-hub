@@ -18,7 +18,7 @@ You can use a CI **Run** step to run scripts and commands in Build stages in CI 
 
 Depending on the stage's build infrastructure, a **Run** step can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries.
 
-* [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): Image always required.
+* [Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): Image always required.
 * [Local runner build infrastructure](../set-up-build-infrastructure/define-a-docker-build-infrastructure.md): Image always required.
 * [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Run** steps can use binaries that you've made available on your build VMs. An image is required if the VM doesn't have the necessary binaries.
 * [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Run** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). An image is required if the machine doesn't have the binary you need.
@@ -28,7 +28,7 @@ Depending on the stage's build infrastructure, a **Run** step can use binaries t
 This topic assumes you are familiar with the following:
 
 * [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
-* [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI Build Stage Settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Creating and configuring codebases for CI pipelines](../codebase-configuration/create-and-configure-a-codebase.md)
 
 You need a CI pipeline to which you can add the **Run** step.
@@ -64,7 +64,12 @@ import TabItem from '@theme/TabItem';
 3. Enter a **Name** and optional **Description**.
 4. Depending on the stage's build infrastructure, specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script. For example, a cURL script may require a cURL image, such as `curlimages/curl:7.73.0`. For information about when these fields are required and how to specify images, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md).
 5. Select the **Shell** type and input your script in the **Command** field.
-6. Populate other fields as necessary. For example, if your script runs tests, you might specify **Report Paths**, and, if your script requires a token or secret, you might supply the token as an **Environment Variable**. For information about these settings, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md).
+6. Populate other [Run step settings](../../ci-technical-reference/run-step-settings.md) as necessary. For example:
+
+   * If your script runs tests, you might specify **Report Paths**.
+   * If your script requires a token or secret, you might need to supply the token as an **Environment Variable**.
+   * If you script produces an output variable value, you must declare the variable name in **Output Variables**.
+
 7. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 ```mdx-code-block
@@ -104,9 +109,13 @@ The following example shows a `Run` step with `connectorRef` and `image`.
                       # Enter a command or script.
 ```
 
-Define other settings as necessary. For example, if the `command` runs tests, you might specify report paths. If your script requires a token or secret, you might supply the token in `envVariables`. For information about these settings, go to the [Run step settings reference](../../ci-technical-reference/run-step-settings.md).
+Define other [Run step settings](../../ci-technical-reference/run-step-settings.md) as necessary. For example:
 
-The following example includes `reports` settings and commands that run tests.
+* If your script runs tests, you might specify `reports`.
+* If your script requires a token or secret, you might need to supply the token in `envVariables`.
+* If your script produces an output variable value, you must declare the variable name in `outputVariables`.
+
+The following example includes `reports` settings and commands that run `pytest` with code coverage.
 
 ```yaml
               - step:
@@ -145,12 +154,12 @@ Select **Run** to run the pipeline. Depending on your codebase configuration, yo
 
 While the build runs, you can observe the step logs on the [Build details page](../view-your-builds/viewing-builds.md).
 
-After the pipeline runs, you can [view test reports](../view-your-builds/viewing-tests.md) on the **Tests** tab of the Build details page.
+After the pipeline runs, you can [view test reports](../set-up-test-intelligence/viewing-tests.md) on the **Tests** tab of the Build details page.
 
 ![](./static/run-a-script-in-a-ci-stage-529.png)
 
 :::tip
 
-For an example of a **Run** step that runs tests and produces test reports, go to the [Code coverage with CodeCov in Harness CI tutorial](/tutorials/build-code/ci-tutorial-codecov-test).
+For an example of a **Run** step that runs tests and produces test reports, go to the [Code coverage with CodeCov in Harness CI tutorial](/tutorials/build-code/test/codecov).
 
 :::

@@ -77,7 +77,7 @@ The resilience score is the result of the experiment, and helps decide if a roll
 :::
 
 ## Retrieve the resilience score
-Retrive the resilience score using the Harness Chaos API and take appropriate action in the pipeline. An example of how to use the Harness Chaos API is shown below.
+Retrieve the resilience score using the Harness Chaos API and take appropriate action in the pipeline. An example of how to use the Harness Chaos API is shown below.
 
 ```
 #!/bin/bash
@@ -97,6 +97,6 @@ echo "${resiliencyScore}"
 
 ## Example end-to-end configuration
 
-Go to [GitLab demo](https://gitlab.com/ksatchit/hce-gitlab-integration-demo) for a sample configuration of the chaos launch script. This script can be included in the GitLab YAML file. 
+Go to [GitLab demo](https://gitlab.com/ksatchit/hce-gitlab-integration-demo) for a sample configuration of the chaos launch script. You can include this script in the GitLab YAML file. 
 This is a sample to include one single chaos experiment, but the same can be repeated so as to be included in multiple chaos experiments. 
 

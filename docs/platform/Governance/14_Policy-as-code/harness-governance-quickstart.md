@@ -141,7 +141,11 @@ We use the **Quickstart** `projectIdentifier` and the **default** `orgIdentifier
 
 Click **Save**. The Pipeline is now saved.
 
+<<<<<<< HEAD:docs/platform/Governance/14_Policy-as-code/harness-governance-quickstart.md
 Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](../../9_Approvals/adding-harness-approval-stages.md) and one [Shell Script](../../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step that echoes `hello`.
+=======
+Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](../9_Approvals/adding-harness-approval-stages.md) and one [Shell Script](../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step that echoes `hello`.
+>>>>>>> main:docs/platform/14_Policy-as-code/harness-governance-quickstart.md
 
 ![](./static/harness-governance-quickstart-60.png)
 
@@ -365,7 +369,11 @@ Add a new line before the `- step:` for the **Shell Script** step.
 
 ![](./static/harness-governance-quickstart-75.png)
 
+<<<<<<< HEAD:docs/platform/Governance/14_Policy-as-code/harness-governance-quickstart.md
 On the new line, paste the YAML for a [Manual Approval](../../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) step:
+=======
+On the new line, paste the YAML for a [Manual Approval](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md) step:
+>>>>>>> main:docs/platform/14_Policy-as-code/harness-governance-quickstart.md
 
 
 ```

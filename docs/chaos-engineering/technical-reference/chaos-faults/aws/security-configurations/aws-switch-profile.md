@@ -1,12 +1,11 @@
 ---
-title: AWS Named Profile For Chaos
+title: AWS named profile for chaos
 ---
+This section describes how different users are managed to perform AWS API calls.
 
-## Introduction
+An AWS profile is used to manage different users (settings and credentials) to perform the AWS API operations. HCE supports the AWS profile feature which enables you to run AWS faults with the desired named profile. This feature comes into play when you want to run multiple faults with different profiles or categorize the credentials for fault based on the environment or team or blast radius control.
 
-- An AWS profile is used to manage different users (settings and credentials) to perform the AWS API operations. HCE support the AWS profile feature which enables the user to run AWS faults with the desired named profile, so in case you want to run different fault with different profiles OR if you want to categorize the credentials for fault based on the environment/team/blast radius control using this you can easily do that.
-
-- Multiple named profiles can be stored in the AWS credentials files as shown below. You can specify one default profile that is used when no profile is explicitly referenced.
+You can store multiple named profiles in the AWS credentials files as shown below. You can specify one default profile, that is, used when no profile is explicitly referenced.
 
 ```bash
 [default]

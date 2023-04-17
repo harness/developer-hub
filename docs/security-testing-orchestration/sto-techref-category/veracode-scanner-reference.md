@@ -24,13 +24,13 @@ Harness recommends you create [text secrets](../../platform/Secrets/2-add-use-te
 * `product_name` = `veracode`
 * `scan_type` = `repository`
 * `policy_type` — STO supports the following scan policy types for Veracode:
-	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestrated Scan in an STO Pipeline](../use-sto/run-an-orchestrated-scan-in-sto.md).
-	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
+	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings. See [Run an Orchestrated Scan in an STO Pipeline](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md).
+	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 	+ `dataLoad` — A Security step downloads and ingests results from an external scanner.
 * `product_config_name` = `default`
 * `repository_project` — The name of the repo that gets scanned as shown in the Veracode UI. You use the [Codebase Config object](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) in the Harness pipeline to determine the URL of the repo to scan.  
 In most cases, this should match the repo name used in your Git provider.
-* `repository_branch` — The branch that gets reported in STO for the ingested results. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md). This sets the branch based on the user input or trigger payload at runtime.  
+* `repository_branch` — The branch that gets reported in STO for the ingested results. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.  
      In most cases, this field should match the name of Git branch that is getting scanned.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 * `product_auth_type`
@@ -48,6 +48,14 @@ In most cases, this should match the repo name used in your Git provider.
 `https://analysiscenter.veracode.com/auth/index.jsp#HomeAppProfile:88881:1973759`
 * `product_project_name`— The Veracode project with the scan results you want to ingest.  
      The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes how you can find your application ID's and project names.
+
+### Ingestion settings
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 ### Fail on Severity
 ```mdx-code-block

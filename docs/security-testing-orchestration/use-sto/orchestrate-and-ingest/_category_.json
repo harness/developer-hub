@@ -1,0 +1,14 @@
+{
+    "label": "Orchestrate scans and ingest data",
+    "position": 10,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Orchestrate scans and ingest data"
+    },
+    "customProps": {
+        "ref": "doc-2894"
+    }
+}

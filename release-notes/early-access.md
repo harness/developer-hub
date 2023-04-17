@@ -1,6 +1,6 @@
 ---
 title: Early Access
-date: 2023-03-24T10:00
+date: 2023-04-10T10:00
 sidebar_position: 2
 ---
 
@@ -11,6 +11,40 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
+
+## April 10, 2023, version 79015
+
+### Continuous Delivery
+
+- ServiceNow custom table support. (CDS-55046)
+  
+  This functionality is behind a feature flag, `CDS_SERVICENOW_TICKET_TYPE_V2`.
+  
+  Custom table support is now available in Harness' ServiceNow integration. 
+  
+  Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
+
+  <details>
+  <summary>What is a table extending task?</summary>
+  
+  In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
+  
+  </details>
+  
+  Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
+  
+  When using template flow, your user role is required along with cross scope privileges to the custom table. 
+  
+  The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
+  
+  The custom table being used should allow access to this table via web services.
+- Harness will remove comments when evaluating commented lines in manifests to avoid rendering failures. (CDS-57721, ZD-41676)
+  
+  This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`.
+  
+  Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
+  
+  Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
 
 ## March 24, 2023, version 78817
 
@@ -71,7 +105,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 </details>
 
 
-- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/jira-integrations). (STO-5467)
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations). (STO-5467)
 
 ## February 15, 2023
 
@@ -157,7 +191,7 @@ Terraform Backend Configuration file path in the Terraform Apply step now suppor
 
 Terraform Backend Configuration now can be specified in the remote file repository.
 
-For more details, go to [Provision with the Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step/).
+For more details, go to [Provision with the Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
 
 This functionality is behind a feature flag: TERRAFORM_REMOTE_BACKEND_CONFIG.
 

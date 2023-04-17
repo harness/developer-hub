@@ -36,36 +36,17 @@ For pipelines, the default timeout limit is, generally, the product of the stage
 
 For steps, you can set a custom timeout limit in each step's **Optional Configuration** settings. In stages that use a Kubernetes cluster build infrastructure, the default timeout for steps is 10 hours. However, this is constrained by the stage timeout limit of 24 hours. For example, if a stage has three steps, the total run time for the three steps can't exceed 24 hours or the stage fails due to the stage timeout limit.
 
-## What are the default values for memory and CPU for CIE steps?
+## What are the default values for memory and CPU for CI steps?
 
-| **Memory** | **CPU** |
-| --- | --- |
-| 500Mi | 400m |
+The default for memory is `500Mi`. The default for CPU is `400m`.
 
 ## How do you replicate a list of Drone plugin settings in CI?
 
-For lists, merge them with comma separation.
-
-For example, here are some Drone plugin settings:
-
-```
-Settings:
-  tags:
-    - latest
-	- '1.0.1'
-	- '1.0'
-```
-
-Here are the same settings as you would declare them in Harness CI:
-
-```yaml
-Settings:
-    tags: latest,1.0.1,1.0
-```
+For information about using Drone plugins in Harness CI, go to [Run a Drone Plugin in CI](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
 ## What permissions are required for GitHub personal access tokens in NextGen and GitX?
 
-When configuring permisisons for a GitHub personal access token (PAT) that you'll use in Harness NextGen, under **Scopes**, select all **repo** and **user** options.
+When configuring permissions for a GitHub personal access token (PAT) that you'll use in Harness NextGen, under **Scopes**, select all **repo** and **user** options.
 
 ![](./static/continuous-integration-ci-faqs-20.png)
 
@@ -105,14 +86,16 @@ You need the following permissions for a service account role for a Kubernetes C
 
 ## How can you share the codebase configuration between stages in a CI pipeline?
 
-Each CI stage runs in it's own container. Steps in a stage can share data within the shared workspace. To share data between stages, you can use the [Save and restore cache steps](../../continuous-integration/use-ci/caching-ci-data/saving-cache.md).
+Each CI stage runs in it's own container. Steps in a stage can share data within the shared workspace. To share data between stages, you can use [save and restore cache steps](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md).
 
 ## Does CI support running Docker-in-Docker images?
 
-Yes. For details, go to [Run Docker-in-Docker in a Build stage](../../continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
+Yes. For details, go to [Run Docker-in-Docker in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).
 
 ## How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?
 
-You can run Docker-in-Docker (DinD) as a service with the `sharedPaths`set to `/var/run`. Following that, the steps can be executed as Docker commands. This works regardless of the Kubernetes container runtime.
+You can run Docker-in-Docker (DinD) as a service with the `sharedPaths` set to `/var/run`. Following that, the steps can be executed as Docker commands. This works regardless of the Kubernetes container runtime.
 
 The DinD service does not connect to the Kubernetes node daemon. It launches a new Docker daemon on the pod, and then other containers use that Docker daemon to run their commands.
+
+For details, go to [Run Docker-in-Docker in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md).

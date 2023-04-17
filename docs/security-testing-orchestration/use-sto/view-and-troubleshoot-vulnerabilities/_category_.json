@@ -1,0 +1,14 @@
+{
+    "label": "View and troubleshoot vulnerabilities",
+    "position": 30,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "View and troubleshoot vulnerabilities"
+    },
+    "customProps": {
+        "ref": "doc-2894"
+    }
+}

@@ -1,0 +1,11 @@
+{
+   "label":"Set up Kubernetes cluster build infrastructures",
+   "position": 30,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Set up Kubernetes cluster build infrastructures"
+   }
+}

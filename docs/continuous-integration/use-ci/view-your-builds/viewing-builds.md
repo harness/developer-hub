@@ -1,6 +1,6 @@
 ---
 title: View builds
-description: You can inspect builds and monitor ongoing builds.
+description: You can inspect past builds and monitor ongoing builds.
 sidebar_position: 10
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
@@ -28,8 +28,13 @@ On the **Build details** page, you can investigate a variety of details about a 
 * **Inputs**: This tab lists pipeline-level inputs. Step-level inputs are reported in the step details on the **Pipeline** tab.
 * **Artifacts:** This tab provides links to artifacts, such as images or reports, produced during the build. Availability of artifact details depends on the upload location, build configuration, or build infrastructure.
 * **Commits:** If applicable, this tab provides a list of commits that triggered the build, along with [source code repo links](#source-code-repository-links).
+<<<<<<< HEAD
 * **Tests:** Test results from **Run** or **Run Tests** steps. For more information, go to [View tests](./viewing-tests.md).
 * **Policy Evaluations**, **Security Tests**, and **Error Tracking**: These tabs report information from other Harness modules and features, such as [Harness Policy As Code](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
+=======
+* **Tests:** Test results from **Run** or **Run Tests** steps. For more information, go to [View tests](../set-up-test-intelligence/viewing-tests.md).
+* **Policy Evaluations**, **Security Tests**, and **Error Tracking**: These tabs report information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/Policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
+>>>>>>> main
 
 ![The Build details page.](./static/ci-build-details-page.png)
 
@@ -48,3 +53,7 @@ Builds triggered by webhooks can include a link to the PR or commit that started
 Similarly, if a pull request triggers a build, you can follow the **Details** link from the PR's Git status to the build details page in Harness.
 
 ![A PR's Git status with a link to a Harness CI build.](./static/ci-builds-gh-pr-link.png)
+
+## Dashboards
+
+For information about Harness dashboards, go to the Platform documentation on [Dashboards](/docs/platform/Dashboards/dashboards-overview).

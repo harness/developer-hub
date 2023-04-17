@@ -30,7 +30,11 @@ You can add an Artifact Repository Connector at the Account/Org/Project scope.
 
 This topic will explain how to add it at the Project scope. The process is same for Org and Account.
 
+<<<<<<< HEAD:docs/platform/7_Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md
 Steps on adding the Artifact Repository Connector inline when developing a Pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](../../../../docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) and [Docker Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md).
+=======
+Steps on adding the Artifact Repository Connector inline when developing a Pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) and [Docker Connector Settings Reference](ref-cloud-providers/docker-registry-connector-settings-reference.md).
+>>>>>>> main:docs/platform/7_Connectors/connect-to-an-artifact-repo.md
 
 ### Step: Add an Artifactory Repository
 
@@ -75,7 +79,11 @@ You can add Helm Charts from an HTTP Helm Repo. Once you set up the Connector, y
 
 Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added to the service **Manifests** section and not its **Artifacts** section. 
 
+<<<<<<< HEAD:docs/platform/7_Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md
 If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to the service **Artifacts** section. See [Deploy Helm Charts](../../../continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-charts.md).
+=======
+If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to the service **Artifacts** section. See [Deploy Helm Charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
+>>>>>>> main:docs/platform/7_Connectors/connect-to-an-artifact-repo.md
 
 For details on settings and permissions, see [HTTP Helm Repo Connector Settings Reference](../../../platform/7_Connectors/Code-Repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
 
@@ -97,7 +105,11 @@ For details on settings and permissions, see [HTTP Helm Repo Connector Settings 
 
 You can add Helm Charts from an [OCI Helm Registry](https://helm.sh/docs/topics/registries/). Once you set up the Connector, you can use it in a Stage to add your Helm Chart.
 
+<<<<<<< HEAD:docs/platform/7_Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md
 Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](../../../../docs/continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-charts.md).
+=======
+Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
+>>>>>>> main:docs/platform/7_Connectors/connect-to-an-artifact-repo.md
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
