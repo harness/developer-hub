@@ -12,7 +12,7 @@ The Feature Flags dashboard lets you filter flags by state (for example, **Enabl
 
 ## Filter flags by state
 
-**To view filter your flags:**
+**To filter your flags:**
 
 1. In Harness, go to your project, and then select **Feature Flags**.
 
