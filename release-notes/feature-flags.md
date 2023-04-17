@@ -16,24 +16,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## April 11, 2023
-
-### What's new
-
-This release does not include new features.
-
-### Early access
-
-This release does not include early access features.
-
-### Fixed issues
-
-#### Feature Flags UI
-
-Fixed an issue where users with reduced access could not create Feature Flags SDK Keys as a result of a permission mismatch between the frontend and backend. (FFM-7295)
-
-
-## Latest - April 10, 2023
+## Latest - April 11, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -42,7 +25,7 @@ Fixed an issue where users with reduced access could not create Feature Flags SD
 
 ### What's new
 
-* The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
+This release does not include new features.
 
 ```mdx-code-block
   </TabItem>
@@ -60,7 +43,34 @@ This release does not include early access features.
 
 ### Fixed issues
 
-#### Feature Flags server
+#### Feature Flags UI
+
+Fixed an issue where users with reduced access could not create Feature Flags SDK Keys as a result of a permission mismatch between the frontend and backend. (FFM-7295)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 10, 2023
+
+##### What's new
+
+* The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
 
 The **FF server** has been updated to version **1.1007.0** with the following updates.
 
@@ -68,15 +78,6 @@ The **FF server** has been updated to version **1.1007.0** with the following up
 * Feature Flag identifiers now follow the same guidelines as the Harness Platform entities. This means they can include a `$` in the name. (FFM-7436)
 * Previously, FF was only checking permissions at the account and project level. With this update, permissions and roles assigned at the organization level will also be honored. (FFM-7376)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 5, 2023
 
