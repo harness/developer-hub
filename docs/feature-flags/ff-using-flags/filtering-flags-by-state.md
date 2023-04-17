@@ -30,7 +30,7 @@ The Feature Flags dashboard lets you filter flags by state (for example, **Enabl
 | **State** | **Description** |
 | --- | --- |
 | **Enabled Flags** | Flags that are currently toggled on. |
-| **Permanent Flags** | Flags you intend to stay in your systems indefinitely and that you marked as permanent when creating them. Permanent flags are never marked as stale. |
+| **Permanent Flags** | Flags you intend to keep in your systems indefinitely and that you marked as permanent when creating them. Permanent flags are never marked as stale. |
 | **Recently Changed Flags** | Flags that have been changed in the last 24 hours. Changes include enabling or disabling a flag, or adding new Rules or Targets. |
 | **Active Flags** | Flags that have been evaluated in the last 7 days |
 | **Potentially Stale Flags** | Flags are marked as potentially stale if in the past 60 days they haven't been changed or evaluated,their default rules or target rules haven’t been added to or updated, they haven’t been toggled on or off.|
