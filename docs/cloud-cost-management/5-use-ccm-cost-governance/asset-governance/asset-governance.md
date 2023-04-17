@@ -128,7 +128,8 @@ Enable the following permissions in AWS to execute cloud governance rules:
 :::
 
 ### Add permissions
-If you encounter an error message stating missing permissions as shown in the following screenshot, you need to add the missing permission [here](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles). 
+If you come across an error message indicating missing permissions, as displayed in the following screenshot, you need to add the missing permission [here](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles). 
+
 
 <docimage path={require('./static/asset-governance-test-output-error.png')} width="50%" height="50%" title="Click to view full size image" />
 
