@@ -45,6 +45,47 @@ stringData:
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
 :::
 
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
+
+<details>
+<summary>View policy for the fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:DescribeTasks",
+                "ecs:DescribeServices",
+                "ecs:DescribeTaskDefinition",
+                "ecs:RegisterTaskDefinition",
+                "ecs:UpdateService",
+                "ecs:ListTasks",
+                "ecs:DeregisterTaskDefinition"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+</details>
+
+Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+
+## Fault tunables
+
+
    <h3>Mandatory tunables</h3>
     <table>
         <tr>

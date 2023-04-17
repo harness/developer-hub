@@ -46,6 +46,43 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
 - The ECS containers should be in a healthy state before and after introducing chaos.
 :::
 
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
+
+<details>
+<summary>View policy for the fault</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+              "ec2:AuthorizeSecurityGroupEgress",
+              "ec2:RevokeSecurityGroupEgress",
+              "ec2:RevokeSecurityGroupIngress",
+              "ec2:DescribeSecurityGroups"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+              "ecs:DescribeServices"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+</details>
+
+Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+
+## Fault tunables
+
    <h3>Mandatory tunables</h3>
     <table>
         <tr>
