@@ -9,7 +9,7 @@ sidebar_position: 11
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md). 
+Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). 
 
 ## Latest - March 14, 2023, version 78426
 
@@ -118,7 +118,7 @@ This release includes the following Harness module and component versions.
   - Organization Viewer - All Organization Level Resources: This was a role-assignment within the organization scope and has been removed for all the users.
   - Project Viewer - All Project Level Resources: This was a role-assignment within the project scope and has been removed for all the users.
   
-  For more information, go to [Default User Group](/docs/platform/4_Role-Based-Access-Control/5-harness-default-user-groups.md). (PL-30916)
+  For more information, go to [Default User Group](/docs/platform/Role-Based-Access-Control/harness-default-user-groups). (PL-30916)
 
 - In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details as per the schema. (PL-30862)
 
