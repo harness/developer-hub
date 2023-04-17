@@ -1,0 +1,11 @@
+{
+    "label": "Kubernetes technical reference",
+    "position": "400",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Kubernetes technical reference"
+    }
+  }

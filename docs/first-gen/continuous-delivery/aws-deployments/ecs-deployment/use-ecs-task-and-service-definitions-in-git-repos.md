@@ -129,7 +129,7 @@ Next, in the Harness ECS Service's **Task Definition** settings, you add the Wor
 
 When you deploy the Workflow (independently or in a Pipeline), you are prompted to provide a value for the Workflow variable.
 
-You can also pass in a Workflow variable value using a Trigger or between Workflows in a Pipeline. See [Passing Variables into Workflows and Pipelines from Triggers](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md) and [Pass Variables between Workflows](../../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md).
+You can also pass in a Workflow variable value using a Trigger or between Workflows in a Pipeline. See [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows) and [Pass Variables between Workflows](../../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md).
 
 ### Configure As Code
 

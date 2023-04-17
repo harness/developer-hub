@@ -1,7 +1,7 @@
 ---
 title: Set up a local runner build infrastructure
 description: You can define a CI build infrastructure on any Linux or macOS host.
-sidebar_position: 70
+sidebar_position: 50
 helpdocs_topic_id: xd8u17be5h
 helpdocs_category_id: rg8mrhqm95
 helpdocs_is_private: false
@@ -124,13 +124,30 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
    sudo chmod +x drone-docker-runner-darwin-amd64
    ```
 
-4. To start the runner binary. For example:
+4. Start the runner binary. For example:
 
    ```
    ./drone-docker-runner-darwin-amd64 server
    ```
 
-   You might have modify **Security and Privacy** settings to allow this app to run.
+5. If [macOS Gatekeeper](https://support.apple.com/en-us/HT202491) stops the installation because it can't check for malicious software, you need to modify **Security & Privacy** settings to allow this app to run.
+
+   ![macOS Gatekeeper error message.](./static/define-a-macos-build-infrastructure-10.png)
+
+<details>
+<summary>Allow the runner binary app to run</summary>
+
+1. Go to **System Preferences** and select **Security & Privacy**.
+2. On the **General** tab, select the lock to make changes.
+3. Select **Allow** next to the `an app was blocked from loading` message.
+4. Select **OK**.
+5. Select **Open Anyway** next to the `not from an identified developer` message.
+
+  ![](./static/define-a-macos-build-infrastructure-11.png)
+
+6. Select **Open** to confirm that you want to run the binary. If this window doesn't appear, rerun the binary start command.
+
+</details>
 
 Here is an example of the three commands to install the Darwin amd64 Drone Runner with self-signed certificates:
 

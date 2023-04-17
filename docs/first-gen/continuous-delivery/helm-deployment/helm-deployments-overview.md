@@ -8,15 +8,15 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).
 
 Harness supports Helm 2 and Helm v3. This guide will walk you through deploying a Docker image to a Kubernetes cluster using a Helm chart. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 
-Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](../kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](../kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
+Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Harness [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](../kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
 
 ### Harness Helm or Kubernetes Deployments?
 
-You can also use Helm with Harness Kubernetes Service and deployments and take advantage of Harness advanced Kubernetes features. See [Kubernetes Deployments Overview](../kubernetes-deployments/kubernetes-deployments-overview.md).
+You can also use Helm with Harness Kubernetes Service and deployments and take advantage of Harness advanced Kubernetes features. See [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview).
 
 The main difference is that the Helm deployment performed using the Harness Helm Service and described in this guide uses Tiller. If you use Harness Kubernetes Service for deployment, you do not need to use Tiller.
 

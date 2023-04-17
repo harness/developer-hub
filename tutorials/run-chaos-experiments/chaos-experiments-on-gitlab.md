@@ -1,6 +1,6 @@
 ---
 sidebar_position: 4
-title: Running Chaos Experiments in GitLab pipelines
+title: Running Chaos Experiments in GitLab Pipelines
 description: Create experiments in Harness and run them in Gitlab pipelines
 ---
 
@@ -39,7 +39,7 @@ echo ${output}
 ```
 
 ## Insert chaos experiments into .gitlab-ci.yaml
-Include the above-mentioned launch script in the GitLab pipeline as a stage or a step. In the `script:` section, add the scripts for **launching**, **monitoring** and **retrieving** results. An example is shown below.
+You can include the above-mentioned launch script in the GitLab pipeline as a stage or a step. In the `script:` section, add the scripts for **launching**, **monitoring** and **retrieving** results. An example is shown below.
 
 ```
 # Insert a chaos stage where each chaos experiment is inserted as a launch script. 
@@ -73,11 +73,11 @@ rollback-job:
 ```
 
 :::info
-The resilience score is the result of the experiment, which helps decide if a rollback job needs to be invoked.
+The resilience score is the result of the experiment, and helps decide if a rollback job needs to be invoked.
 :::
 
-## Retrive the resilience score
-Retrive the resilience score using the Harness Chaos API and take appropriate action in the pipeline. An example of how to use the Harness Chaos API is shown below.
+## Retrieve the resilience score
+Retrieve the resilience score using the Harness Chaos API and take appropriate action in the pipeline. An example of how to use the Harness Chaos API is shown below.
 
 ```
 #!/bin/bash
@@ -97,6 +97,6 @@ echo "${resiliencyScore}"
 
 ## Example end-to-end configuration
 
-Go to [GitLab demo](https://gitlab.com/ksatchit/hce-gitlab-integration-demo) for a sample configuration of the chaos launch script. This script can be included in the GitLab YAML file. 
+Go to [GitLab demo](https://gitlab.com/ksatchit/hce-gitlab-integration-demo) for a sample configuration of the chaos launch script. You can include this script in the GitLab YAML file. 
 This is a sample to include one single chaos experiment, but the same can be repeated so as to be included in multiple chaos experiments. 
 

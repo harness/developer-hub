@@ -459,7 +459,7 @@ You can also select the Environment in a Trigger than executes the Workflow:
 
 ![](./static/use-kustomize-for-kubernetes-deployments-90.png)
 
-For more information, see [Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md) and [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
+For more information, see [Triggers](../model-cd-pipeline/triggers/add-a-trigger-2.md) and [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows).
 
 ##### Service Variables
 

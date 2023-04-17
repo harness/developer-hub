@@ -390,7 +390,7 @@ There are three authentication options for the AWS connector when used for AWS E
 
 You can also use STS roles with Serverless Lambda deployments. For details about this, go to [Serverless cross-account access (STS Role)](#serverless-cross-account-access-sts-role).
 
-For instructions for Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](../../../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md).
+For instructions for Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](../../../continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart.md).
 
 ### Permissions
 
@@ -583,7 +583,7 @@ The AWS connector settings include:
 * **Description:** Text string
 * **Tags**: Go to [Tags reference](../../20_References/tags-reference.md)
 * **Credentials**: Credentials that enable Harness to connect your AWS account. There are three primary options:
-  * **Assume IAM Role on Delegate:** This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
+  * **Assume IAM Role on Delegate:** This assumes the SA of the Delegate. Ensure the IAM roles attached to the nodes have the right access. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
   * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../6_Security/2-add-use-text-secrets.md) for both.
   * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
 

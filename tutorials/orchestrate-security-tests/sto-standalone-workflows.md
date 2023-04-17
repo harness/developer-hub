@@ -36,9 +36,9 @@ You will use a clone of this pipeline in these tutorials.
 
 STO supports three different workflows to ingest scan results into a pipeline:
 
-* [Orchestrated workflows](/docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto) — A Security step runs a scan with predefined settings and ingests the results. This tutorial illustrates an orchestrated workflow.  
+* [Orchestrated workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) — A Security step runs a scan with predefined settings and ingests the results. This tutorial illustrates an orchestrated workflow.  
 This is the simplest method to implement. STO supports orchestrated scans for Trivy, Bandit, SonarQube, and other popular tools.
-* [Ingestion-Only workflows](/docs/security-testing-orchestration/use-sto/ingesting-issues-from-other-scanners) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.  
+* [Ingestion-Only workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.  
 This provides the most flexibility. You can ingest results from highly targeted scan that address specific use case. You can also ingest results from scanners that currently have no STO integration.
 * Data-Load workflows — A Security step downloads and ingests results from an external scanner.  
 This workflow is supported for scanners that provide methods for transferring data programmatically.
