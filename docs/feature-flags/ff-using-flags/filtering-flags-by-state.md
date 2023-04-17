@@ -33,7 +33,7 @@ The Feature Flags dashboard lets you filter flags by state (for example, **Enabl
 | **Permanent Flags** | Flags you intend to keep in your systems indefinitely and that you marked as permanent when creating them. Permanent flags are never marked as stale. |
 | **Recently Changed Flags** | Flags that have been changed in the last 24 hours. Changes include enabling or disabling a flag, or adding new Rules or Targets. |
 | **Active Flags** | Flags that have been evaluated in the last 7 days |
-| **Potentially Stale Flags** | Flags are marked as potentially stale if in the past 60 days they haven't been changed or evaluated,their default rules or target rules haven’t been added to or updated, they haven’t been toggled on or off.|
+| **Potentially Stale Flags** | Flags are marked as potentially stale if in the past 60 days they haven't been changed or evaluated, their default rules or target rules haven’t been added to or updated, or they haven’t been toggled on or off.|
 
 :::info note
  A flag can be marked as both **Active** and **Potentially Stale** if it has been evaluated via an SDK but no other changes have been made in over 60 days. For example, if you evaluated `Flag_A` yesterday using an SDK, but haven’t made any changes on the Harness Platform in over three months, the flag will be marked as Active and Potentially Stale on the Platform.
