@@ -1,77 +1,30 @@
 ---
-title: Service Reliability Management release notes
-sidebar_label: Service Reliability Management
-date: 2023-04-10T10:00
+title: Service Reliability Management
+date: 2023-03-31T10:00
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-Review the notes below for details about recent changes to Harness Service Reliability Management, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
-:::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+Harness Service Reliability Management is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
+
+:::note
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## Latest - April 10, 2023, version 79015
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+## March 31, 2023, version 78914
 
 ### What's new
 
-Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+This release does not include any new features.
 
 ### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-
 ### Fixed issues
-
-- When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
-  
-  This issue has been resolved. Now, when you switch to a different project while a template is open, you will be redirected to the templates listing page.
-
-- The SLO health summary cards displayed in a monitored service's health dashboard show summarized data for SLOs associated with all the monitored services in the project, even if the SLOs are not connected to the selected monitored service. (SRM-14462)  
-
-  This issue has been resolved. Now, the SLO health summary cards displayed in a monitored service's health dashboard will show summarized data only for the SLOs associated with the selected monitored service.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-
-#### March 31, 2023, version 78914
-
-##### What's new
-
-This release does not include any new features.
-
-##### Early access
-
-This release does not include any early access features.
-
-##### Fixed issues
 
 - Monitored service creation fails when using a monitored service template that has Org or Account level service and environment. (SRM-14291)
   
@@ -86,20 +39,20 @@ This release does not include any early access features.
   This issue has been resolved. Now, SLO error budget notifications are not triggered if the notification rule is disabled.
 
 
-#### March 24, 2023, version 78817
+## March 24, 2023, version 78817
 
-##### What's new
+### What's new
 
 - When you try editing an existing SLO, you will see the **Tags (optional)** field autopopulated even if no value was entered while creating the SLO. Harness uses the selected SLI type as value to autopopulate the **Tags (optional)** field. (SRM-14121)
   
 - There is a new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
 
 
-##### Early access
+### Early access
 
 This release does not include any early access features.
 
-##### Fixed issues
+### Fixed issues
 
 - The Time Window in the Service Health tab does not display the information for an event by default when accessed using the link in the event notification. Users had to manually search for the information by moving the Time Window to the event's date and time. (SRM-14071)  
    
@@ -126,18 +79,18 @@ This release does not include any early access features.
   This issue has been resolved. Now, the validation passes if there is incoming data from any one of the metric packs.
 
 
-#### March 21, 2023
+## March 21, 2023
 
-##### Fixed issues
+### Fixed issues
 
 - The **Source Code** tab on the Automated Root Cause (ARC) screen shows blank during decompilation of source code instrumented with JaCoCo. This issue has been fixed. (CET-1175)
   
 - The impacted services values were shown as "0 Service(s)" in the Event list. This issue has been fixed. (CET-1136)
 
 
-#### March 15, 2023, version 78712
+## March 15, 2023, version 78712
 
-##### What's new
+### What's new
 
 - Metrics graphs are now added to the **Create SLO** screen. (SRM-14025)  
     
@@ -147,11 +100,11 @@ This release does not include any early access features.
   
   ![Metrics graph in Create SLO screen](./static/srm-rn-787-metricgraph.png)
 
-##### Early access
+### Early access
 
 This release does not include any early access features.
 
-##### Fixed issues
+### Fixed issues
 
 - Continuous Verification (CV) fails due to timestamp format difference. (SRM-14167)  
   
@@ -166,25 +119,25 @@ This release does not include any early access features.
   This issue is fixed, and the **Save** button is now enabled only if changes are made to the monitored service template. Additionally, an unsaved changes alert now appears next to the **Save** button when changes are made to the template values.
 
 
-#### March 8, 2023, version 78619
+## March 8, 2023, version 78619
 
-##### What's new
+### What's new
 
 - Specify metric thresholds in the monitored service template. (SRM-13972)  
 
   Now, you can specify metric thresholds for the health source when creating a monitored service template. This helps you predefine the metric thresholds and removes the hassle of specifying them every time you create a new monitored service.
 
-##### Early access
+### Early access
 
 This release does not include any early access features.
 
-##### Fixed issues
+### Fixed issues
 
 This release does not include any fixed issues.
 
-#### February 28, 2023
+## February 28, 2023
 
-##### Early access
+### Early access
 
 - Standalone Error Tracking experience. (SRM-12696)  
 
@@ -192,34 +145,34 @@ This release does not include any fixed issues.
 This feature is behind the feature flag `SRM_ET_EXPERIMENTAL`.
 
 
-#### February 23, 2023, version 78507
+## February 23, 2023, version 78507
 
 This release does not include new features, early access features, and fixed issues.
 
 
-#### February 15, 2023, version 78421
+## February 15, 2023, version 78421
 
 This release does not include new features, early access features, and fixed issues.
 
-#### February 6, 2023, version 78321
+## February 6, 2023, version 78321
 
 This release does not include new features, early access features, and fixed issues.
 
-#### January 17, 2023, version 78214
+## January 17, 2023, version 78214
 
 This release does not include new features, early access features, and fixed issues.
 
-#### January 10, 2023, version 78105
+## January 10, 2023, version 78105
 
-##### What's new
+### What's new
 
 This release does not include new features and enhancements.
 
-##### Early access
+### Early access
 
 This release does not include early access features.
 
-##### Fixed issues
+### Fixed issues
 
 - Saving the verify step in a stage template throws the `Invalid YAML. Can't find pipeline` error if the pipeline key is missing in YAML. (SRM-13320)
       
@@ -229,27 +182,23 @@ This release does not include early access features.
   
   Now, on the Service Health page, the **Overall Health Score** timeline displays grey bars if metric data is unavailable from the health source for a specific time period. It does not show the health score.
 
-</details>
 
-<details>
-<summary>2022 releases</summary>
-
-#### December 22, 2022, version 77908
+## December 22, 2022, version 77908
 
 This release does not include new features, early access features, enhancements, and fixed issues.
 
 
-#### December 13, 2022, version 77808
+## December 13, 2022, version 77808
 
-##### What's New
+### What's New
 
 This release does not include new features.
 
-##### Enhancements
+### Enhancements
 
 This release does not include enhancements.
 
-##### Early Access Features
+### Early Access Features
 
 Continuous Verification (CV) fails if the data for configured deployment strategy is not available. (SRM-12731)
 
@@ -259,39 +208,39 @@ Now, Harness does not automatically apply an alternate deployment strategy if th
 
 This feature is behind the feature flag SRM_LOG_HOST_SAMPLING_ENABLE.
 
-##### Fixed Issues
+### Fixed Issues
 
 This release does not include fixed issues.
 
-#### December 7, 2022, version 77716
+## December 7, 2022, version 77716
 
-##### What's New
+### What's New
 
 This release does not include new features.
 
-##### Enhancements
+### Enhancements
 
 Increased limit for number of PagerDuty services (SRM-13102)
 
 The PagerDuty Service dropdown list, which displayed up to 25 services, can now display up to 100 services.
 
-##### Early Access Features
+### Early Access Features
 
 This release does not include early access features.
 
-##### Fixed Issues
+### Fixed Issues
 
 Pipeline deployment throws an exception with the message RuntimeException: name cannot be more than 64 characters long. if the name of the monitored service exceeds 64 characters. (SRM-12811)
 
 This restriction is removed. Now, the name of the monitored service can contain up to 128 characters.
 
-#### November 29, 2022, version 77608
+## November 29, 2022, version 77608
 
-##### What's New
+### What's New
 
 N/A
 
-##### Enhancements
+### Enhancements
 
 The user interface no longer allows you to configure invalid metric thresholds. (SRM-12386)
 
@@ -301,11 +250,11 @@ Under the Ignore Thresholds settings, only the Less than option is available for
 
 Under the Fail-Fast Thresholds settings, only the Greater than option is available for the Percentage Deviation criteria. The Less than option is removed.
 
-##### Early Access Features
+### Early Access Features
 
 N/A
 
-##### Fixed Issues
+### Fixed Issues
 
 - When the metrics feature was selected for the Splunk health source, the Continuous Verification and Service Health options were getting selected by default, even though those options are not supported for Splunk. This was causing continuous verification to fail. (SRM-12793)
 
@@ -315,113 +264,113 @@ N/A
 
   Now, the Metric Value JSON Path and Timestamp Field/Locator JSON Path queries are automatically wrapped with square brackets and single quotes. This prevents the custom metric configuration from failing even if your JSON path queries contain a period (.)
 
-#### November 11, 2022, version 77433
+## November 11, 2022, version 77433
 
-##### What's New
-
-N/A
-
-##### Fixed Issues
+### What's New
 
 N/A
 
-##### Early Access
+### Fixed Issues
 
 N/A
 
-#### November 6, 2022, version 77317
-
-##### What's New
+### Early Access
 
 N/A
 
-##### Fixed Issues
+## November 6, 2022, version 77317
+
+### What's New
 
 N/A
 
-##### Early Access
+### Fixed Issues
 
 N/A
 
-#### October 18, 2022, version 77116
-
-##### What's New
+### Early Access
 
 N/A
 
-##### Early Access
+## October 18, 2022, version 77116
+
+### What's New
 
 N/A
 
-##### Fixed Issues
+### Early Access
 
 N/A
 
-##### October 7, 2022, version 77025
-
-###### What's New
+### Fixed Issues
 
 N/A
 
-###### Early Access
+## October 7, 2022, version 77025
+
+### What's New
 
 N/A
 
-###### Fixed Issues
+### Early Access
 
 N/A
 
-###### September 29, 2022, version 76921
-
-###### What's New
+### Fixed Issues
 
 N/A
 
-###### Early Access
+## September 29, 2022, version 76921
+
+### What's New
 
 N/A
 
-###### Fixed Issues
+### Early Access
 
 N/A
 
-##### September 14, 2022, version 76708
-
-###### What's New
+### Fixed Issues
 
 N/A
 
-###### Early Access
+## September 14, 2022, version 76708
+
+### What's New
 
 N/A
 
-###### Fixed Issues
+### Early Access
 
 N/A
 
-##### September 7th, 2022, version 76619
+### Fixed Issues
 
-###### Fixed issues
+N/A
+
+## September 7th, 2022, version 76619
+
+### Fixed issues
 
 - Metric Threshold configurations are not persisted if the criteria is percentage deviation and lesser than is selected in fast-fail thresholds (SRM-11696)
 
 - Not able to update prometheus source (SRM-11578, ZD-33879)
 
-##### August 31st, 2022, version 76518
+## August 31st, 2022, version 76518
 
-###### Fixed issues
+### Fixed issues
 
 - Error while setting up CV step in NG pipeline (SRM-11553, ZD-33562)
 
 - Updated ServiceMethodId when Dynatrace service is selected from dropdown.
 
-##### August 25th, 2022, version 76425
+## August 25th, 2022, version 76425
 
 No changes in this release.
 
-##### August 18th, 2022, version 76321
+## August 18th, 2022, version 76321
 
-###### Fixed issues
+### Fixed issues
 
 - Request body place holders are not serialized properly unless surrounded by "" (SRM-11217)
 
@@ -431,9 +380,9 @@ No changes in this release.
 
 - Fix the text wrapping in Health Sources table in Verify step (SRM-11185)
 
-##### August 8th, 2022, version 76128
+## August 8th, 2022, version 76128
 
-###### Fixed issues
+### Fixed issues
 
 - Fetching Audits and JSON DTO Issues in Audit List API (SRM-11140)
 
@@ -441,17 +390,17 @@ No changes in this release.
 
 - Monitored Service with New Relic health source displays error message “same identifier is used by multiple entities” even though there is no other health source with same Id (SRM-10999)
 
-##### August 1, 2022, version 76030
+## August 1, 2022, version 76030
 
-###### Fixed issues
+### Fixed issues
 
 - Verification is not happening correctly when we configure Monitored Service using templates (SRM-11097)
 
   Verify step for Template type Monitored Service was not working due to a missing record in the database. For such use cases, we use a transient entity. Updated to code to support both transient and persisted entities.
 
-##### July 18th, 2022, version 75921
+## July 18th, 2022, version 75921
 
-###### Fixed issues
+### Fixed issues
 
 - Data Collection for CustomLogs is failing in Verification step (SRM-11003)
 
@@ -469,9 +418,9 @@ No changes in this release.
 
   Adding better logging.
 
-##### July 11th, 2022, version 75829
+## July 11th, 2022, version 75829
 
-###### Fixed issues
+### Fixed issues
 
 - Continuous Verification not appearing in Deployment Stage template (SRM-10934)
 
@@ -492,5 +441,3 @@ No changes in this release.
 - Prometheus Continuous Verification perpetual task failing (SRM-10829)
   Caused by comparability issues in decrypting data. Handling it gracefully now.
   Fixed compatibility issues with perpetual task.
-
-</details>

@@ -18,14 +18,14 @@ import { MODULES } from "../../constants";
           title: "Amazon ECR",
           module: MODULES.ci,
           description:
-            "Publish an Image to an Amazon Elastic Container Registry.",
+            "Publish an Image to an Amazon ECR Registry.",
           link: "/tutorials/build-code/publish/amazon-ecr",
         },
         {
           title: "Google GAR",
           module: MODULES.ci,
           description:
-            "Publish an Image to a Google Artifact Registry.",
+            "Publish an Image to a Google GAR Registry.",
           link: "/tutorials/build-code/publish/google-gar",
         },
       ],

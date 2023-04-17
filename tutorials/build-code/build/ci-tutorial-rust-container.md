@@ -1,6 +1,6 @@
 ---
 sidebar_position: 7
-title: Rust application
+title: Rust Application
 description: Use a CI pipeline to build and push a multi-arch application container image.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial,Rust]
 slug: /build-code/build/rust
@@ -457,7 +457,7 @@ If your pipeline succeeded, add two more steps to build your Rust application im
 
    `secrets.getValue` is an expression that allows Harness to get the value from your `docker_hub_password` secret that you created earlier in the tutorial. For more information, go to [Add and Reference Text Secrets - Reference encrypted text by identifier](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier).
 
-   `codebase.shortCommitSha` allows you to get the Git commit short SHA. It is one of several [Build-in codebase variables](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference).
+   `codebase.shortCommitSha` allows you to get the Git commit short SHA. It is one of several [Build-in codebase variables](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference/).
 
    :::
 

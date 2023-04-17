@@ -1,0 +1,14 @@
+{
+    "label": "Kubernetes Services",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Kubernetes Services"
+    },
+    "customProps": {
+        "position": "200",
+        "helpdocs_category_id": "wfnd8y0ifs"
+    }
+}

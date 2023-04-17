@@ -328,17 +328,15 @@ You must configure the following settings depending on the product lookup type  
 * `product_project_token`
 
 
+<!-- CONTAINERS --------------------------------------------------------------------------- -->
+
+## Container Image scan settings
+
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
-
-```mdx-code-block
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
-
-<StoLegacyIngest />
 
 </details>
 

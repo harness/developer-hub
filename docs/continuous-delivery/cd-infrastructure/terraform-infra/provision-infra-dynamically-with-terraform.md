@@ -1,7 +1,7 @@
 ---
 title: Provision Target Deployment Infra Dynamically with Terraform
 description: This topic show you how to dynamically provision the target deployment infrastructure at runtime using the Terraform Plan and Apply steps.
-sidebar_position: 3
+sidebar_position: 1
 helpdocs_topic_id: uznls2lvod
 helpdocs_category_id: y5cc950ks3
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info
 
-Dynamic provisioning is only supported in [Service and Environments v1](../../get-started/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+Dynamic provisioning is only supported in [Service and Environments v1](../../onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
 
 :::
 
@@ -26,14 +26,14 @@ To provision non-target infrastructure, add the Terraform Plan and Apply steps t
 
 ## Before you begin
 
-* [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
-* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [Terraform Provisioning with Harness](../../cd-advanced/terraform-category/terraform-provisioning-with-harness.md)
+* [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md)
 
 ## Important: install Terraform on delegates
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 
 ```bash
@@ -56,7 +56,7 @@ microdnf install -y terraform
 
 ## Enable dynamic provisioning
 
-These steps assume you've created a Harness CD stage before. If Harness CD is new to you, see [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
+These steps assume you've created a Harness CD stage before. If Harness CD is new to you, see [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
 
 We'll start in the stage's **Infrastructure** section because the **Service** settings of the stage don't have specific settings for Terraform provisioning. The Service manifests and artifacts will be deployed to the infrastructure provisioned by Harness and Terraform.
 
@@ -69,7 +69,7 @@ The default Terraform provisioning steps appear:
 
 ![](./static/provision-infra-dynamically-with-terraform-00.png)
 
-Harness automatically adds the Terraform Plan, [Harness Approval](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages), and Terraform Apply steps. You can change these steps, but plan, approve, and apply is the most common process. We use that process in our Terraform documentation.
+Harness automatically adds the Terraform Plan, [Harness Approval](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), and Terraform Apply steps. You can change these steps, but plan, approve, and apply is the most common process. We use that process in our Terraform documentation.
 
 ## Terraform Plan step
 
@@ -79,7 +79,7 @@ The Terraform Plan step is where you connect Harness to your repo and add your T
 
 1. In **Name**, enter a name for the step, for example, **plan**.
 
-Harness will create an [Entity Id](/docs/platform/References/entity-identifier-reference) using the name. The Id is very important. It's used to refer to settings in this step.
+Harness will create an [Entity Id](../../../platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. It's used to refer to settings in this step.
 
 For example, if the Id of the stage is **terraform** and the Id of the step is **plan**, and you want to echo its timeout setting, you would use:
 
@@ -210,7 +210,7 @@ Harness will pass the workspace name you provide to the `terraform.workspace` 
 
 In the **Workspace** setting, you can simply select the name of the workspace to use.
 
-You can also use a [stage variable](/docs/platform/Variables-and-Expressions/harness-variables) in **Workspace**.
+You can also use a [stage variable](../../../platform/12_Variables-and-Expressions/harness-variables.md) in **Workspace**.
 
 Later, when the Pipeline is deployed, you specify the value for the stage variable and it is used in **Workspace**.
 
@@ -234,7 +234,7 @@ You can add inline variables just like you would in a tfvar file.
 2. The **Add Inline Terraform Var File** settings appear.
 3. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
 
-This Identifier is a [Harness Identifier](/docs/platform/References/entity-identifier-reference), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
+This Identifier is a [Harness Identifier](../../../platform/20_References/entity-identifier-reference.md), not a Terraform identifier.For example, if the **Identifier** is **myvars** you could refer to its content like this:
 
 `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myvars.spec.content>`
 
@@ -343,9 +343,9 @@ In **Advanced**, you can use the following options:
 
 ## Approval step
 
-By default, Harness adds an Approval step between the Terraform Plan and Terraform Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) to configure the step.
+By default, Harness adds an Approval step between the Terraform Plan and Terraform Apply steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) to configure the step.
 
-You can also use a Jira Approval step. See [Adding Jira Approval Stages and Steps](/docs/platform/Approvals/adding-jira-approval-stages).
+You can also use a Jira Approval step. See [Adding Jira Approval Stages and Steps](../../../platform/9_Approvals/adding-jira-approval-stages.md).
 
 ## Terraform Apply Step
 
@@ -438,5 +438,5 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 ## See also
 
-* [Apply a Terraform Plan with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+* [Apply a Terraform Plan with the Terraform Apply Step](../../cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md)
 

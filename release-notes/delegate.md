@@ -1,87 +1,61 @@
 ---
-title: Delegate release notes
-sidebar_label: Delegate
+title: Delegate
 tags: [NextGen, "Delegate"]
 date: 2023-03-31T10:00
 sidebar_position: 12
 ---
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-Review the notes below for details about recent changes to Harness Delegate, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
-:::info note
+
+These release notes document changes to Harness Delegate in Harness NextGen. 
+
+:::note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
+For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). For Self-Managed Enterprise Edition, see [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
-## Latest release - March 31, 2023, Harness version 78914, Harness Delegate version 78904
+## March 31, 2023, Harness version 78914, Harness Delegate version 78904
 
 Harness NextGen release 78914 includes the following changes for the Harness Delegate.
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
 ### What's new
 
 Added support for the latest Git CLI in the delegate maximal image. (DEL-6121) 
 
 The latest Git CLI is now included by default. 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-
+ 
 ### Early access
 
 This release does not include any early access features.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
 
 ### Fixed issues
 
 This release does not include any fixed issues.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
-
-#### March 24, 2023, Harness version 78817, Harness Delegate version 78705
+## March 24, 2023, Harness version 78817, Harness Delegate version 78705
 
 Harness NextGen release 78817 includes the following changes for the Harness Delegate.
 
-##### What's new
+### What's new
 
 This release does not include any new features. 
  
-##### Early access
+### Early access
 
 This release does not include any early access features.
 
-##### Fixed issues
+### Fixed issues
 
 Minor fixes to the delegate installation wizard. (DEL-6073)
 
 Previously, Helm was not pre-selected when you switched from Docker to Kubernetes. This has been fixed. Additionally, values that need to be copied in the Kubernetes manifest were moved into a copy block. 
 
 
-#### March 15, 2023, Harness version 78712, Harness Delegate version 78705
+## March 15, 2023, Harness version 78712, Harness Delegate version 78705
 
 Harness NextGen release 78712 includes the following changes for the Harness Delegate.
 
-##### What's new
+### What's new
 
 - Integrated **Logs** API in the **Executed Details** page where the delegate task ID is available. (DEL-6035)
 
@@ -91,11 +65,11 @@ Harness NextGen release 78712 includes the following changes for the Harness Del
 
   When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`. This is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
  
-##### Early access
+### Early access
 
 This release does not include any early access features.
 
-##### Fixed issues
+### Fixed issues
 
 A pipeline stalled with only one ServiceNow task running. (DEL-6042)
 
@@ -104,12 +78,11 @@ This issue was fixed with the following updates:
 - Tasks that were never assigned to a delegate explicitly fail after 4 successful broadcast attempts per delegate, to all eligible delegates in the account. 
 - Fail one minute after the last rebroadcast attempt. 
 
-
-#### March 8, 2023, Harness version 78619, Harness Delegate version 78500
+## March 8, 2023, Harness version 78619, Harness Delegate version 78500
 
 Harness NextGen release 78619 includes the following changes for the Harness Delegate.
 
-##### What's new
+### What's new
 
 - The delegate installation UI experience is now updated with a new installation method: the Terraform Helm provider. Also, the installation experience has been enhanced for the existing methods (Helm chart, Kubernetes manifest, and Docker). This new experience is more developer friendly. For example, it enables cutting and pasting of relevant commands. You can also automate the commands and use new values when necessary. 
 
@@ -126,16 +99,16 @@ Harness NextGen release 78619 includes the following changes for the Harness Del
 
  This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
  
-##### Early access
+### Early access
 
 This release does not include any early access features.
 
-##### Fixed issues
+### Fixed issues
 
 The new delegate installation wizard is now available in all delegate installation worfklows. (DEL-5989)
 
 
-#### February 23, 2023, Harness version 78507, Harness Delegate version 78500
+## February 23, 2023, Harness version 78507, Harness Delegate version 78500
 
 Harness NextGen release 78507 includes the following changes for the Harness Delegate.
 
@@ -145,19 +118,19 @@ The repository location of the Helm chart for the NextGen delegate is changing. 
 The repository at https://app.harness.io/storage/harness-download/harness-helm-charts/ is being deprecated. The Helm chart will no longer be available from the repository at https://app.harness.io/storage/harness-download/harness-helm-charts/. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/delegate-helm-chart/.
 :::
 
-##### What's new
+### What's new
 
 This release introduces the following new features and enhancements:
 
 You can dynamically select delegates by hostname during pipeline runs. To do so, select delegates by hostname from your delegate groups. (DEL-5052)
 
-##### Fixed issues
+### Fixed issues
 
 This release includes the following fixes:
 
 - Fixed an issue that interfered with the delegate installation process. Delegate API requests did not include the context that was required; organization and project ID information was not being sent with requests. The required context is now included. (DEL-5951)
 
-#### February 15, 2023, Harness version 78421, Harness Delegate version 78306
+## February 15, 2023, Harness version 78421, Harness Delegate version 78306
 
 Harness NextGen release 78421 includes the following changes for the Harness Delegate.
 
@@ -167,20 +140,20 @@ The repository location of the Helm chart for the NextGen delegate is changing. 
 The repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/ is being deprecated. The Helm chart will no longer be available from the repository at https://app.harness.io/storage/harness-download/delegate-helm-chart/. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
 :::
 
-##### What's new
+### What's new
 
 This release introduces the following new features and enhancements:
 
 - Added the `helm repo update` command to the delegate installer. The command is included in the instructions that apply the delegate manifest. This change reduces the chance of retrieving the wrong file from the repository. (DEL-5540)
 
-##### Fixed issues
+### Fixed issues
 
 This release includes the following fixes:
 
 - Resolved a problem that caused SCM log information to be displayed in the Watcher. The information was redirected to the delegate `slf4j` stream for display in the delegate logs. (DEL-5744)
 
 
-#### February 6, 2023, Harness version 78321, Harness Delegate version 78306
+## February 6, 2023, Harness version 78321, Harness Delegate version 78306
 
 Harness NextGen release 78321 includes the following changes for the Harness Delegate.
 
@@ -190,7 +163,7 @@ The repository location of the Helm chart for the NextGen delegate is changing. 
 The repository is being deprecated. Updates to the chart will not be made to https://app.harness.io/storage/harness-download/delegate-helm-chart/ and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to https://app.harness.io/storage/harness-download/harness-helm-charts/.
 :::
 
-##### What's new
+### What's new
 
 This release introduces the following new features and enhancements:
 
@@ -198,13 +171,13 @@ This release introduces the following new features and enhancements:
 
 - The delegate installation UI was changed to include the `helm repo update harness` command as an option on the **Apply YAML and verify connection** page. Use this option to obtain the latest version information on the charts in the Harness Helm repository. For more information about the `update` command, see [Helm Repo Update](https://v3-1-0.helm.sh/docs/helm/helm_repo_update/) in the Helm Docs. (DEL-5540)
 
-##### Fixed issues
+### Fixed issues
 
 This release includes the following fixes:
 
 - Added error checking to ensure that delegates immediately reject tasks that are not supported. (DEL-5602)
 
-##### Security enhancements
+### Security enhancements
 
 This release introduces the following security enhancements:
 
@@ -221,10 +194,8 @@ This release introduces the following security enhancements:
   | oc | 4.2.16 | 4.2.16 |
   | kustomize | 3.5.4, 4.0.0  | 4.5.4 |
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
+  
 
-
-#### January 17, 2023, Harness version 78214, Harness Delegate version 78101
+## January 17, 2023, Harness version 78214, Harness Delegate version 78101
 
 Harness NextGen release 78214 includes no changed features or fixes for the Harness Delegate.
-
-</details>

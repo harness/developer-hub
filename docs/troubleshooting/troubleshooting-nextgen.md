@@ -54,6 +54,8 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [Deployment rate limits](#deployment-rate-limits)
   - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
 - [Continuous integration](#continuous-integration)
+  - [Test suites wrongly parsed](#test-suites-wrongly-parsed)
+  - [Test intelligence not working](#test-intelligence-not-working)
 - [Helm](#helm)
   - [Unable to get an update from the chart repository](#unable-to-get-an-update-from-the-chart-repository)
 - [Kubernetes](#kubernetes)
@@ -438,8 +440,32 @@ If Harness does not show standard error, then many errors will not be captured, 
 
 ### Continuous integration
 
-For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshoot/troubleshooting-ci.md).
+The following issues can occur when using Harness CI.
 
+#### Test suites wrongly parsed
+
+The parsed Test report in the Test tab comes strictly from the JUnit reports provided. It is important to adhere to the standard format to improve test suite parsing.
+
+Refer to the standard [JUnit format](https://llg.cubic.org/docs/junit/).
+
+#### Test intelligence not working
+
+Test Intelligence may not work even after you select the **Run only selected tests** option. One of the reasons could be that you're using **Maven** and your `**pom.xml**` contains `argLine`. In such a case, the Java Agent must be updated as follows:
+
+Before:
+
+
+```
+<argLine> something  
+</argLine>
+```
+After:
+
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
+</argLine>
+```
 ### Helm
 
 The following troubleshooting information should help you diagnose common Helm problems.
@@ -462,7 +488,7 @@ The following problems can occur when developing and deploying to Kubernetes.
 
 Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback.
 
-See [Kubernetes releases and versioning](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+See [Kubernetes releases and versioning](../continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 If the ConfigMap is edited using kubectl or another tool between deployments future deployments often fail.
 
@@ -474,7 +500,7 @@ The release name you enter in the infrastructure definition **Release name** is 
 
 **Do not create a ConfigMap that uses the same name as the release name.** Your ConfigMap will override the Harness internal ConfigMap and cause a NullPointerException.
 
-See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your kubernetes target infrastructure](../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
 #### The server doesn't have a resource type "deployments"
 
@@ -559,11 +585,11 @@ spec:
 ```
 ### Terraform
 
-The following are resolutions to common configuration problems when [Terraform provisioning with Harness](../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
+The following are resolutions to common configuration problems when [Terraform provisioning with Harness](../continuous-delivery/cd-advanced/terraform-category/terraform-provisioning-with-harness.md).
 
 #### Provisioned resources already exist (Terraform state file locked)
 
-When a [Terraform Apply](../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md) step fails because of a timeout, subsequent deployments might see following error message:
+When a [Terraform Apply](../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md) step fails because of a timeout, subsequent deployments might see following error message:
 
 
 ```
@@ -637,7 +663,7 @@ For more information about SAML SSO configuration with Azure, see [Single sign-o
 
 ### Shell scripts
 
-This section covers common problems experienced when using a [Shell script](../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step.
+This section covers common problems experienced when using a [Shell script](../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step.
 
 #### FileNotFoundExeption inside shell script execution task
 

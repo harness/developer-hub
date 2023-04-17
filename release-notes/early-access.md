@@ -1,71 +1,34 @@
 ---
-title: Early access features
-date: 2023-04-10T10:00
+title: Early Access
+date: 2023-03-24T10:00
 sidebar_position: 2
 ---
 
-Review the notes below to learn about the early access (aka BETA) features in Harness NextGen SaaS across all Harness modules and the Harness Platform. Early access features require a feature flag. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+Learn about the early access (aka BETA) features in Harness SaaS across all Harness modules and the Harness Platform. Early access features require a feature flag.
 
-:::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+:::note
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-## Latest - April 10, 2023, version 79015
+## March 24, 2023, version 78817
 
-### Continuous Delivery
-
-- ServiceNow custom table support. (CDS-55046)
-  
-  This functionality is behind a feature flag, `CDS_SERVICENOW_TICKET_TYPE_V2`.
-  
-  Custom table support is now available in Harness' ServiceNow integration. 
-  
-  Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
-
-  <details>
-  <summary>What is a table extending task?</summary>
-  
-  In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
-  
-  </details>
-  
-  Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
-  
-  When using template flow, your user role is required along with cross scope privileges to the custom table. 
-  
-  The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
-  
-  The custom table being used should allow access to this table via web services.
-- Harness will remove comments when evaluating commented lines in manifests to avoid rendering failures. (CDS-57721, ZD-41676)
-  
-  This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`.
-  
-  Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
-  
-  Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### March 24, 2023, version 78817
-
-##### Harness Platform
+### Harness Platform
 
 - By enabling the feature flag,`PL_NEW_SCIM_STANDARDS`, any CRUD operation on a user now returns the details of the user groups that the user is part of. (PL-31496)
 
   You can use this to verify what groups a given user belongs to.
 
-#### March 15, 2023, version 78712
+## March 15, 2023, version 78712
 
-##### Continuous Delivery
+### Continuous Delivery
 
 - Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
 
   Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
-##### Harness Platform
+### Harness Platform
 
 - Harness now populates `givenName` and `familyName` for users via SCIM and returns the same when a GET, CREATE, or UPDATE request is made. (PL-31498)
 
@@ -84,9 +47,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     This is behind the feature flag `PL_NEW_SCIM_STANDARDS`.
 
 
-#### March 2, 2023
+## March 2, 2023
 
-##### Security Testing Orchestration
+### Security Testing Orchestration
 
 - Improved UI for configuring scan steps (STO-4867)
   
@@ -108,11 +71,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 </details>
 
 
-- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations). (STO-5467)
+- This release includes a Jira integration that enables you to create Jira tickets for issues detected during an STO build. For more information, go to [Create Jira tickets for detected issues](/docs/security-testing-orchestration/use-sto/jira-integrations). (STO-5467)
 
-#### February 15, 2023
+## February 15, 2023
 
-##### Continuous Delivery
+### Continuous Delivery
 
 - Kubernetes Dry Run step added. (CDS-43839)
   
@@ -138,15 +101,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   ```
   For more information, go to [Perform a Kubernetes dry run](https://developer.harness.io/docs/continuous-delivery/cd-execution/kubernetes-executions/k8s-dry-run/).
 
-#### February 6, 2023
+## February 6, 2023
 
-##### Harness Platform
+### Harness Platform
 
 - You can delete a user provisioned in Harness through SCIM in NextGen and retain the user in FirstGen by enabling the feature flag `PL_USER_DELETION_V2`. (PL-23577)
 
-#### January 12, 2023
+## January 12, 2023
 
-##### Continuous Delivery
+### Continuous Delivery
 
 - Convert imperative Kubernetes rollback to declarative rollback. (CDS-2993, ZD-26855, ZD-27690, ZD-36563, ZD-36670)
 
@@ -164,14 +127,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
     - The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/).
 
-</details>
+## December 13, 2022
 
-<details>
-<summary>2022 releases</summary>
-
-#### December 13, 2022
-
-##### Service Reliability Management
+### Service Reliability Management
 
 Continuous Verification (CV) fails if the data for configured deployment strategy is not available (SRM-12731)
 
@@ -181,9 +139,9 @@ Now, Harness does not automatically apply an alternate deployment strategy if th
 
 This feature is behind the feature flag SRM_LOG_HOST_SAMPLING_ENABLE.
 
-#### December 7, 2022
+## December 7, 2022
 
-##### Continuous Delivery
+### Continuous Delivery
 
 Nexus 3 is now supported for Azure Web App artifacts. (CDS-46372)
 
@@ -191,21 +149,21 @@ For more information, see [Azure Web Apps deployment tutorial](https://developer
 
 This functionality is behind a feature flag: AZURE_WEB_APP_NG_NEXUS_PACKAGE
 
-#### November 29, 2022
+## November 29, 2022
 
-##### Continuous Delivery
+### Continuous Delivery
 
 Terraform Backend Configuration file path in the Terraform Apply step now supports remote file repos. (CDS-39012, ZD-37065)
 
 Terraform Backend Configuration now can be specified in the remote file repository.
 
-For more details, go to [Provision with the Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
+For more details, go to [Provision with the Terraform Apply Step](https://developer.harness.io/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step/).
 
 This functionality is behind a feature flag: TERRAFORM_REMOTE_BACKEND_CONFIG.
 
-#### November 11, 2022
+## November 11, 2022
 
-##### Harness Platform
+### Harness Platform
 
 You can now create secrets using the Google Cloud Secret Manager in Harness. (PL-28978)
 
@@ -215,25 +173,25 @@ You can now create secrets using the Google Cloud Secret Manager in Harness. (PL
 
 Also, Projects is a new option in the left navigation. Click Projects to view the project-specific overview, pipeline, connector, and other details.
 
-#### November 6, 2022
+## November 6, 2022
 
-##### Harness Platform
+### Harness Platform
 
 You can now get optimized performance on remote pipelines by enabling the feature flag USE_GET_FILE_V2_GIT_CALL if you are on delegate version 772xx or higher. (PL-29459)
 
 If you are on an older delegate version, you can upgrade your delegate for optimized performance.
 
-#### October 20, 2022
+## October 20, 2022
 
-##### Feature Flags
+### Feature Flags
 
 We've released a beta version of an Apex SDK for Feature Flags.
 
 For more information and to access this SDK, see the [Apex SDK reference guide](https://developer.harness.io/docs/feature-flags/ff-sdks/server-sdks/apex-sdk-reference/) and the [GitHub repository](https://github.com/harness/ff-apex-server-sdk).
 
-#### October 18, 2022
+## October 18, 2022
 
-##### Continuous Delivery
+### Continuous Delivery
 
 ECS Run Task support
 
@@ -243,9 +201,9 @@ This functionality is behind feature flags: NG_SVC_ENV_REDESIGN and ECS_NG
 
 For more information, go to the [ECS tutorial's run task step](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial/).
 
-#### October 7, 2022
+## October 7, 2022
 
-##### Continuous Delivery
+### Continuous Delivery
 
 - ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies.
 
@@ -267,7 +225,7 @@ Enable Feature Flags NG_SVC_ENV_REDESIGN and NG_DEPLOYMENT_TEMPLATE.
 
 For more information, go to the [Custom deployments using deployment templates tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/).
 
-##### Harness Platform
+### Harness Platform
 
 - You can now create remote Templates in Harness and save it in your Git repo by enabling the feature flag NG_TEMPLATE_GITX. (PL-28573)
 
@@ -281,13 +239,13 @@ For more information, see [HashiCorp Vault Secrets](https://developer.harness.io
 
 Harness will not send any emails for user invites when the feature flag PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES is enabled.
 
-##### Continuous Integration
+### Continuous Integration
 
 This release includes a new Docker delegate that you can install directly on a host. This feature is behind the Feature Flag CI_DOCKER_INFRASTRUCTURE. (CI-5680)
 
-#### September 7, 2022
+## September 7, 2022
 
-##### Harness Platform
+### Harness Platform
 
 You can now create a Harness Custom Secret Manager in Next Gen. (PL-25545)
 
@@ -297,9 +255,9 @@ This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
 See [Add a custom secret manager](https://developer.harness.io/docs/platform/security/custom-secret-manager/).
 
-#### July 7, 2022
+## July 7, 2022
 
-##### Harness Platform
+### Harness Platform
 
 Simplified Git Experience
 
@@ -310,5 +268,3 @@ With Harness Git Experience, you can select the repository and branch from where
 For more information, refer to [Harness Git Experience Overview](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/).
 
 This functionality is behind a feature flag: NG_GIT_EXPERIENCE
-
-</details>

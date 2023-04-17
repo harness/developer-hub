@@ -1,3 +1,8 @@
+---
+title: Analyze Chaos Experiments
+sidebar_position: 41
+---
+
 ## Analyze chaos experiments
 
 You can observe the status of execution of fault/s of a chaos experiment during its run. The screen shows the experiment pipeline on the right hand side, and details such as **Environment**, **Infrastructure Name**, and the runs that have passed and failed on the left hand side. 

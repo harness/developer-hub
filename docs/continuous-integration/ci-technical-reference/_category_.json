@@ -1,12 +1,12 @@
 {
-   "label":"Reference: CI steps settings",
-   "position": 50,
+   "label":"CI Technical Reference",
+   "position": 30,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Reference: CI steps settings"
+      "title":"CI Technical Reference"
    },
    "customProps":{
       

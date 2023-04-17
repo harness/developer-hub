@@ -737,7 +737,7 @@ Harness provides expressions to view the plan in a more human readable format:
 
 Kubernetes Workflows use various expressions to represent Kubernetes services, Blue/Green and Canary deployment values, and Istio traffic splitting.
 
-For more information, see [Kubernetes How-tos](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview) and [Kubernetes Workflow Variable Expressions](../../../continuous-delivery/kubernetes-deployments/workflow-variables-expressions.md).
+For more information, see [Kubernetes How-tos](../../../continuous-delivery/kubernetes-deployments/kubernetes-deployments-overview.md) and [Kubernetes Workflow Variable Expressions](../../../continuous-delivery/kubernetes-deployments/workflow-variables-expressions.md).
 
 :::note 
 These variables access infrastructure settings and so they cannot be used in the **Pre-Deployment** Workflow section since Harness does not access the target infrastructure in pre-deployment.`${HARNESS_KUBE_CONFIG_PATH}`

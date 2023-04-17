@@ -1,7 +1,7 @@
 ---
 title: Enable Test Intelligence
 description: Reduce unit test time by running only relevant unit tests.
-sidebar_position: 20
+sidebar_position: 10
 helpdocs_topic_id: 428cs02e6u
 helpdocs_category_id: 29nai2tbs6
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works, go to [Get started with Test Intelligence](../../ci-quickstarts/test-intelligence-concepts.md).
 
-The **Run Tests** step executes one or more test on a container image. You must add the **Run Tests** step to a pipeline's **Build** stage to enable Test Intelligence on that pipeline. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
+The **Run Tests** step executes one or more test on a container image. Adding the **Run Tests** step to a pipeline's **Build** stage enables Test Intelligence on that pipeline. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
 
 You can also [enable test splitting for Test Intelligence](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your tests.
 
@@ -31,17 +31,26 @@ Test Intelligence is available for the following codebases:
 </details>
 
 <details>
-<summary>Prepare your pipeline</summary>
+<summary>Add Build stage and connect codebase</summary>
 
-Make sure you have a CI pipeline with a **Build** stage that is connected to your codebase. If you haven't created a pipeline before, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+Make sure you have a CI pipeline with a **Build** stage that is connected to your codebase.
+
+If you haven't created a pipeline before, [Get started with the fastest CI on the planet](https://developer.harness.io/tutorials/build-code/fastest-ci).
 
 To add a **Build** stage to an existing pipeline:
 1. Go to the pipeline you want to edit.
 2. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
 3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
-4. On the **Build** stage's **Infrastructure** tab, [set up the build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
-To edit codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+To check codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
+
+</details>
+
+<details>
+<summary>Define build infrastructure</summary>
+
+1. In the Pipeline Studio, select the **Build** stage, and then select the **Infrastructure** tab.
+2. Define the build farm for the codebase. For more information, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
 
 </details>
 
@@ -51,7 +60,7 @@ Use these steps to configure the **Run Tests** step and generate an initial call
 
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Execution** tab.
 2. Select **Add Step**, select **Add Step** again, and then select **Run Tests** from the **Step Library**.
-3. At minimum, you must configure the following settings to run tests with Test Intelligence:
+3. At minimum, you must configure the following settings to enable Test Intelligence:
    * **Name**
    * **Container Registry**
    * **Image**
@@ -64,7 +73,7 @@ Use these steps to configure the **Run Tests** step and generate an initial call
    * **Test Annotations:** Leave blank or provide a comma-separated list of test annotations to use in unit testing. If you do not provide a list of test annotations, the default is `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
    * **Namespaces:** For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.
 
-   For more information about these settings, and other **Run Tests** step settings, go to the [Run Tests step settings reference](../../ci-technical-reference/configure-run-tests-step-settings.md).
+   For more information about these settings, and other **Run Tests** step settings, go to [Run Tests step settings](../../ci-technical-reference/configure-run-tests-step-settings.md).
 
 <details>
 <summary>YAML example</summary>

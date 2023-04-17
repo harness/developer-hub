@@ -12,11 +12,7 @@ Continuous Integration (CI) can be performed in Harness using the module and [CI
 
 If you are using Harness Continuous Delivery (CD) but not Harness Continuous Integration (CI), you can still perform CI using the **Jenkins** step in your CD Stage.
 
-<<<<<<< HEAD:docs/platform/7_Connectors/Artifact-Repositories/connect-to-jenkins.md
 You can connect Harness to Jenkins using a Harness Jenkins Connector. This Connector allows you to Jenkins jobs in [Jenkins steps](../../../continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines.md).
-=======
-You can connect Harness to Jenkins using a Harness Jenkins Connector. This Connector allows you to Jenkins jobs in [Jenkins steps](../../continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines.md
->>>>>>> main:docs/platform/7_Connectors/connect-to-jenkins.md
 
 This topic shows you how to add a Jenkins Connector to Harness.
 
@@ -80,9 +76,5 @@ The Jenkins Connector is added.
 
 ### See also
 
-<<<<<<< HEAD:docs/platform/7_Connectors/Artifact-Repositories/connect-to-jenkins.md
 * [Run Jenkins Jobs in CD Pipelines](../../../continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines.md)
-=======
-* [Run Jenkins Jobs in CD Pipelines](../../continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines.md
->>>>>>> main:docs/platform/7_Connectors/connect-to-jenkins.md
 

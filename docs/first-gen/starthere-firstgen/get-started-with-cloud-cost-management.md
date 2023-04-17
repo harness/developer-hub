@@ -12,7 +12,7 @@ helpdocs_is_published: true
 This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). 
 :::
 
-Switch to [NextGen](../../cloud-cost-management/2-getting-started-ccm/2-harness-key-cloud-cost-concepts.md).Harness Cloud Cost Management (CCM) provides engineers and DevOps granular detail of their resource consumption hourly. It is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources.
+Switch to [NextGen](../../cloud-cost-management/1-onboard-with-cloud-cost-management/cloud-cost-management-overview/harness-key-cloud-cost-concepts.md).Harness Cloud Cost Management (CCM) provides engineers and DevOps granular detail of their resource consumption hourly. It is designed to bring cloud cost analysis and management into the hands of the engineers consuming cloud resources.
 
 The following topics will guide you through the concepts and how-tos of Cloud Cost Management:
 
@@ -49,7 +49,7 @@ The following topics will guide you through the concepts and how-tos of Cloud Co
 
 #### Concepts
 
-* [Cloud Cost Management Overview](../../cloud-cost-management/2-getting-started-ccm/1-continuous-efficiency-overview.md)
+* [Cloud Cost Management Overview](../../cloud-cost-management/1-onboard-with-cloud-cost-management/cloud-cost-management-overview/continuous-efficiency-overview.md)
 * [Cost Explorer Walkthrough](../cloud-cost-management/concepts-ccm/a-cost-explorer-walkthrough.md)
 
 #### GraphQL APIs

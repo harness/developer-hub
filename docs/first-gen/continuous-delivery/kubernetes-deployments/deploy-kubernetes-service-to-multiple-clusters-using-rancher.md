@@ -123,7 +123,7 @@ See:
 * [Built-in Variables List](../../firstgen-platform/techref-category/variables/built-in-variables-list.md)
 * [Set Workflow Variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md)
 * [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
-* [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows)
+* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 
 ### Step 4: Create a Workflow
 

@@ -169,7 +169,7 @@ The following procedure creates an Environment for the AMI Service you've config
 
 #### Add an Infrastructure Definition
 
-An [Infrastructure Definition](/docs/first-gen/continuous-delivery/model-cd-pipeline/environments/environment-configuration) specifies a target infrastructure for deployments. When you create a Harness Workflow, you will pick the Infrastructure Definition you want to use as the target deployment environment.
+An [Infrastructure Definition](../../model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) specifies a target infrastructure for deployments. When you create a Harness Workflow, you will pick the Infrastructure Definition you want to use as the target deployment environment.
 
 For AMI deployments, you build your Infrastructure Definition using an AWS Auto Scaling Group. To add the Infrastructure Definition:
 

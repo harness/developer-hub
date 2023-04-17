@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Java application
+title: JAVA Application
 description: This build automation guide walks you through building and testing a Java HTTP server application in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /build-code/build/java

@@ -38,7 +38,7 @@ The following list describes the major steps involved in a Traditional deploymen
 4. Create the Harness Application for your deploying your application packages.
 5. Create the Harness Service using the SSH type.
 	1. Add your packaged application file(s) as an Artifact Source.
-6. Create the Harness Environment containing the [Infrastructure Definition](/docs/first-gen/continuous-delivery/model-cd-pipeline/environments/environment-configuration) definition of your deployment infrastructure.
+6. Create the Harness Environment containing the [Infrastructure Definition](../../model-cd-pipeline/environments/environment-configuration.md#add-an-infrastructure-definition) definition of your deployment infrastructure.
 7. Create the Basic Deployment Workflow.
 8. Deploy the Workflow.
 9. Next steps:

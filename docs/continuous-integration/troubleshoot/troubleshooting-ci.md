@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
+This topic contains general troubleshooting information for error messages and other issues that can arise.
 
 If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
 
@@ -44,31 +44,13 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Docker delegate environment variables](../../platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
 * [Set up a local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
 * [Install delegates](https://developer.harness.io/docs/category/install-delegates)
-* [Configure a Kubernetes build farm to use self-signed certificates](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+* [Configure a Kubernetes build farm to use self-signed certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 <!-- DOC-2692 removed -->
 
-## Test suites incorrectly parsed
+## Test suites wrongly parsed
 
 The parsed test report in the **Tests** tab comes strictly from the provided test reports. The reports must be in JUnit XML format. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing.
-
-## Test Intelligence isn't working
-
-Test Intelligence may not work even if you select the **Run only selected tests** option in your [Run Tests step](../ci-technical-reference/configure-run-tests-step-settings.md). One possible cause for this is that you're using **Maven** and your `**pom.xml**` contains `argLine`. In this case, you must update the Java Agent as follows:
-
-**Before:**
-
-```
-<argLine> something  
-</argLine>
-```
-
-**After:**
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
 
 ## Truncated execution logs
 
@@ -81,17 +63,3 @@ Azure Kubernetes Service (AKS) security group restrictions can cause builds runn
 If you have a custom network security group, it must allow inbound traffic on port 8080, which the Delegate service uses.
 
 For more information, refer to the following Microsoft Azure troubleshooting documentation: [A custom network security group blocks traffic](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/custom-nsg-blocks-traffic).
-
-## CI pods appear to be evicted by Kubernetes autoscaling
-
- Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](../use-ci/view-your-builds/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](../use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
-
-```
-"cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
-```
-
-## Delegate is not able to connect to the created build farm
-
-If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
-
-For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).

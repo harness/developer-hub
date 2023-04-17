@@ -18,8 +18,8 @@ For the list of supported scanners, see [Security step settings reference](/docs
 
 STO supports three different workflows to ingest scan results into a pipeline:
 
-* [Orchestrated workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto) — A Security step runs a scan with predefined settings and ingests the results.
-* [Ingestion-Only workflows](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.
+* [Orchestrated workflows](/docs/security-testing-orchestration/use-sto/run-an-orchestrated-scan-in-sto) — A Security step runs a scan with predefined settings and ingests the results.
+* [Ingestion-Only workflows](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline) — Run a scan in a Run step, or outside the pipeline, and save in a shared folder. A Security step then ingests the results.
 * Data-Load workflows — A Security step downloads and ingests results from an external scanner.
 
 ### Fail pipelines on severity

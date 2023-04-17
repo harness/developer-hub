@@ -3,10 +3,6 @@
   "label": "Security Configurations",
   "collapsible": true,
   "collapsed": true,
-  "link":{
-      "type":"generated-index",
-      "title":"Security configurations"
-   },
   "customProps": {
     "description": "Security Configurations"
   }

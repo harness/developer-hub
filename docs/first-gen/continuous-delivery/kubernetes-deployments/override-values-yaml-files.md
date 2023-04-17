@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services.md).You can override the inline or remote values.yaml file(s) used in a Harness Kubernetes Service.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../../continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services.md).You can override the inline or remote values.yaml file(s) used in a Harness Kubernetes Service.
 
 You can override values.yaml at the Harness Service and Environment levels, and also use Workflow variables to replace values.yaml file names or values at deployment runtime.
 
@@ -176,5 +176,5 @@ Now, when you deploy the Workflow, you can provide the file path for that values
 
 * [Define Kubernetes Manifests](define-kubernetes-manifests.md)
 * [Pass Variables between Workflows](../model-cd-pipeline/expressions/how-to-pass-variables-between-workflows.md)
-* [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows)
+* [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md)
 

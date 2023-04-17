@@ -1,71 +1,21 @@
 ---
-title: Cloud Cost Management release notes
-sidebar_label: Cloud Cost Management
+title: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-04-11T10:00
+date: 2023-03-29T10:00
 sidebar_position: 5
 ---
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-Review the notes below for details about recent changes to Harness Cloud Cost Management, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
-:::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+Harness Cloud Cost Management is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
+
+:::note
+Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+
+Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
 :::
 
-
-## Latest - April 05, 2023, version 79001
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+## March 21, 2023, version 78903
 
 ### What's new
-* Workload recommendations enhancement. (CCM-9161)(Zendesk Ticket ID 34658)
-
-  Introduced support for 100th percentile in workload recommendations.  Recommendations will be displayed for 100% usage of workloads.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-
-### Early access
-
-  This release does not include any early access features.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-
-### Fixed issues
-
-* Updated the default perspective names from `Aws` to `AWS` and `Gcp` to `GCP`. (CCM-11770)
-* Discrepancy in the number of EC2 recommendations. (CCM-11730)
- 
-   The Terminate-type recommendations were not being saved, and certain EC2 recommendations were disappearing after a specific interval of time. This issue has been resolved.
-
-* The link to the perspective on the **Anomalies** page was incorrect. (CCM-11403)
-
-  This issue has been fixed, and the link now directs to the correct perspective.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### March 21, 2023, version 78903
-
-##### What's new
 * Enabled audit trail for budget groups. (CCM-11387)
 
   With this enhancement, you can track all CRUD operations such as Create, Delete, and Update related to budget groups.
@@ -83,10 +33,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   For more information, go to [Use Cost Categories](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-categories/use-ccm-cost-categories).
 
-##### Early access
+### Early access
 This release does not include any early access features.
 
-##### Fixed issues
+### Fixed issues
 * The error message displayed while creating a Jira ticket to apply recommendations was not meaningful. (CCM-10822)
 
   A comprehensive Jira error message will be displayed in the user interface whenever it is feasible. However, there may be instances where only a generic message such as "Error creating issue" will be displayed when the Jira error is not parsed.
@@ -94,9 +44,9 @@ This release does not include any early access features.
 
 
 
-#### March 13, 2023
+## March 13, 2023
 
-##### What's new
+### What's new
 * Cost Category enhancements (CCM-10280)
 
   - When calculating the cost for `Unattributed`, the rules present in the shared cost bucket are not considered to eliminate duplicate costs.
@@ -105,11 +55,11 @@ This release does not include any early access features.
   - Previously, all shared cost buckets were displayed as `No Groupby`. Now, when you apply a GroupBy option other than the cost category, the cost of the rules present in the shared cost bucket are displayed in a separate entity based on the GroupBy selection you have made. However, it is important to note that this change will be effective only if you have incorporated cost category with shared buckets in perspective rules.
 
 
-##### Early access
+### Early access
 This release does not include any early access features.
 
 
-##### Fixed issues
+### Fixed issues
 
 * Previously, deleting a cost category caused the perspectives that utilized the cost category in their rule or GroupBy to crash. (CCM-9902)
 
@@ -121,17 +71,17 @@ This release does not include any early access features.
  
   This issue has been fixed. Now, the Health Check option remains disabled when you edit the AutoStopping rule.
 
-#### March 06, 2023
+## March 06, 2023
 
-##### What's new
+### What's new
 This release does not include any new features.
 
 
-##### Early access
+### Early access
 This release does not include any early access features.
 
 
-##### Fixed issues
+### Fixed issues
 * The ECS service billing data was missing in the Perspectives. (CCM-11464)
 
    This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any errors.
@@ -145,21 +95,20 @@ This release does not include any early access features.
    This issue has been fixed now, and you can successfully delete a Recommendation filter without any error messages. 
 
 
-#### March 01, 2023
+## March 01, 2023
 
-##### What's new
+### What's new
 
 * Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
 * Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
 
 
-##### Early access
+### Early access
 
 This release does not include any early access features.
 
 
-##### Fixed issues
-
+### Fixed issues
 * Previously, the **Start Date** selected when creating a budget was not being saved and instead the date of budget creation was being displayed as the **Start Date**. (CCM-10952)
   
   This issue is fixed now, and the **Start Date** selected during budget creation is now being saved correctly.
@@ -168,20 +117,20 @@ This release does not include any early access features.
   This issue is fixed now. The budget amount is no longer being distributed among individual budgets, ensuring that the budget amount of each budget remains unchanged.
 * If a health check status code is not entered for the AutoStopping proxy, Harness falls back to using the default range of 200-299. (CCM-11007)
 
-#### February 20, 2023
+## February 20, 2023
 
-##### What's new
+### What's new
 
 * AutoStopping Proxy for HTTPS and TCP connections.
 
  Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
 
-##### Early access
+### Early access
 
 This release does not include any early access features.
 
 
-##### Fixed issues
+### Fixed issues
 
 * The potential monthly savings displayed on the UI did not match with the Spot or On-Demand recommendations. (CCM-10698)
 
@@ -199,17 +148,17 @@ This release does not include any early access features.
 
 
 
-#### January 31, 2023
+## January 31, 2023
 
-##### What's new
+### What's new
 
   This release does not include any new features.
 
-##### Early access
+### Early access
 
   This release does not includeany early access features.
 
-##### Fixed issues
+### Fixed issues
 
 * Hourly data on the **Perspectives** page showed an incorrect billing amount for multiple accounts. CloudFunction was unable to delete the existing records but continued ingesting a new entry in clusterDataHourly in BigQuery. (CCM-10711)
 
@@ -222,18 +171,18 @@ This release does not include any early access features.
 
 
 
-#### January 18, 2023
+## January 18, 2023
 
 
-##### What's new
+### What's new
 
   This release does not include any new features.
 
-##### Early access
+### Early access
 
   This release does not include any early access features.
 
-##### Fixed issues
+### Fixed issues
 
 * While creating a Jira ticket to apply EC2 recommendations, the **Account Name** field in the Jira description incorrectly displayed the Account ID. (CCM-10507)
 
@@ -241,13 +190,13 @@ This release does not include any early access features.
 
 
 
-#### January 04, 2023
+## January 04, 2023
 
-##### What's new
+### What's new
 This release does not include any new features.
 
 
-##### Early access
+### Early access
 * Standardize your currency across Harness CCM (CCM-9280)
 
   This release introduces Currency Preference that enables you to view the entire CCM application in your preferred currency for different cloud providers. This feature is behind a feature flag CCM_CURRENCY_PREFERENCES.
@@ -257,45 +206,41 @@ This release does not include any new features.
   You can now use the Currency Preference API to select the currency in which you want to view your entire CCM application across different cloud providers. Go to [Harness API Documentation](https://apidocs.harness.io/) for more information.
 
 
-##### Fixed issues
+### Fixed issues
 This release does not include any fixed issues.
-</details>
 
 
-<details>
-<summary>2022 releases</summary>
 
+## December 16, 2022
 
-#### December 16, 2022
-
-##### What's new
+### What's new
 
 * Introducing support to list the label keys that contain the string node-pool-name. (CCM-10203)
   
     While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
 
   
-##### Early access
+### Early access
 
   This release does not include any early access features.
   
 
-##### Fixed issues
+### Fixed issues
 
 - The messages in budget alert notification emails were misleading. Now, the emails convey more meaningful and dynamic messages. They provide the cost type and the period for which the alert is created. (CCM-9291)
 
 
-#### December 07, 2022, version 77716
+## December 07, 2022, version 77716
 
-##### What's new
+### What's new
 
 This release does not include new features.
 
-##### Early access
+### Early access
 
 This release does not include early access features.
 
-##### Fixed issues
+### Fixed issues
 
 - First-time users could not launch the Kubernetes cluster creation workflow by using the Quick Create option on the Cloud Integration page. (CCM-9953)
 
@@ -313,17 +258,17 @@ This release does not include early access features.
 
   Now, this issue is fixed.
 
-#### November 29, 2022, version 77608
+## November 29, 2022, version 77608
 
-##### What's new
-
-NA
-
-##### Early access
+### What's new
 
 NA
 
-##### Fixed issues
+### Early access
+
+NA
+
+### Fixed issues
 
 - The bars in the Perspectives chart grouped by cost categories were not rendering properly. (CCM-9502)
 
@@ -337,17 +282,17 @@ NA
 
   Now, this issue is fixed.
 
-#### November 06, 2022, version 77317
+## November 06, 2022, version 77317
 
-##### What's new
+### What's new
 
 This release adds validation to ensure that the load balancer domain name specified in the YAML file to create an AutoStopping rule is valid and exists in your Harness account. (CCM-9101)
 
-##### Early access
+### Early access
 
 NA
 
-##### Fixed issues
+### Fixed issues
 
 - When the Harness account ID of the customer begins with a hyphen, sts assume-role step in the data ingestion pipeline interpreted it as an additional argument, and thus failed to run the command.
 
@@ -357,35 +302,35 @@ NA
 
   Now, the Cost category name is unique. You can't have two Cost categories with the same name. If you enter an existing Cost category name while updating or creating a Cost category, an error message is displayed — Invalid request: Cost category name already exists. (CCM-8934)
 
-#### October 21, 2022, version 77221
+## October 21, 2022, version 77221
 
-##### What's new
+### What's new
 
 You can now add labels to enable node pool recommendations. `kops cluster` node label has been added for node pool recommendations. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information. (CCM-9309)
 
-##### Early access
+### Early access
 
 NA
 
-##### Fixed issues
+### Fixed issues
 
 The AWS cost shown in the Perspective section and the dashboard mismatched. Duplicate account name entries that belonged to the same account ID caused this issue in the dashboards. (CCM-9344)
 
 This issue is resolved.
 
-#### October 07, 2022, version 77025
+## October 07, 2022, version 77025
 
 Delegate version: 77021
 
-##### What's new
+### What's new
 
 NA
 
-##### Early access
+### Early access
 
 NA
 
-##### Fixed issues
+### Fixed issues
 
 - The cluster data displayed in the Perspective preview section and the Perspective section were different because data was retrieved from two different tables. (CCM-8961)
 
@@ -429,48 +374,48 @@ NA
 
   Now, while updating the connector name, the cluster name is also updated to fix this issue. However, it isn't recommended to update the connector name.
 
-#### September 29, 2022, version 76921​
+## September 29, 2022, version 76921​
 
-##### What's new
+### What's new
 
 - First-class Support for Istio is released with version 1.0.8 of autostopping-controller.​ (CCM-8386)
   You can now onboard Istio virtualservices-based workloads to AutoStopping without editing the virtualservice manually​.
 
 - Now, you can sort perspective filters while creating cost categories, perspectives, etc. You can search for a filter quickly and apply it easily.​ (CCM-8597)​​
 
-##### Early access​
+### Early access​
 
 NA
 
-##### Fixed issues
+### Fixed issues
 
 NA
 
-#### September 14, 2022, version 76708
+## September 14, 2022, version 76708
 
-##### What's new
+### What's new
 
 NA
 
-##### Early access
+### Early access
 
 N/A
 
-##### Fixed issues
+### Fixed issues
 
 - A validation error occurred while entering the URL with space. (CCM-8832)
   To fix this issue, the URL is now truncated before validation.
 
-#### September 7th, 2022, version 76619
+## September 7th, 2022, version 76619
 
-##### Fixed issues
+### Fixed issues
 
 - Round off Anomaly Slack Alerts to 2 Decimal Places (CCM-8769)
 - Refresh recommendation resources and instance details (CCM-8720)
 
-#### August 31st, 2022, version 76518
+## August 31st, 2022, version 76518
 
-##### Enhancements
+### Enhancements
 
 - Azure Connector Validations (CCM-7650)
 
@@ -478,16 +423,16 @@ N/A
 
   See Set Up Cloud Cost Management for Azure.
 
-##### Fixed issues
+### Fixed issues
 
 - Getting exceptions while fetching filter values for GCP and AWS (CCM-8738, ZD-33142, ZD-33948)
   In the Perspective preview section, we are now checking both `ruleFilters` and `idFilters` to deduce whether it's a cluster perspective or not and based on querying the correct table (`clusterDataAggregated` or `unifiedTable`).
 - API Docs were incorrect (CCM-8336, ZD-31845)
   Return the list of Recommendations API doc updated.
 
-#### August 25th, 2022, version 76425
+## August 25th, 2022, version 76425
 
-##### Fixed issues
+### Fixed issues
 
 - The Perspective recommendation filter is incorrect (CCM-8632)
   When you click on recommendations shown on the Perspective page, you will now see only the list of recommendations filtered for the Perspective that you are reviewing instead of listing the full list of recommendations unfiltered.
@@ -498,9 +443,9 @@ N/A
 - Cluster Costs missing for since 5th August (CCM-8535, ZD-33355)
   Now, we are checking AWS Cluster data in `billing_table` for last 3 days and if data does not exist, we will run `INSTANCE_BILLING` batchJob. So, we are no longer dependent on AWS cluster data to run batchJob.
 
-#### August 18th, 2022, version 76321
+## August 18th, 2022, version 76321
 
-##### What's new
+### What's new
 
 - Cluster Perspective - Total Cost, Table values UX improvement (CCM-7968, ZD-31764)
 
@@ -541,7 +486,7 @@ Example response:
 "correlationId": "bc71c537-048f-4d53-80cd-8462158e1471"
 }
 
-##### Fixed issues
+### Fixed issues
 
 - Fix labels null value (CCM-8558)
 
@@ -555,9 +500,9 @@ In the Perspective Preview section, we were not considering whether it’s a clu
 
 Something was changed in the base image for Docker files. Azcopy utility needs access to create .azcopy folder to keep job plan log files. It was not able to do so. Fix is to give an explicit path for it in which it has access.
 
-#### August 8th, 2022, version 76128
+## August 8th, 2022, version 76128
 
-##### Fixed issues
+### Fixed issues
 
 - RDS Instance data in Dashboards don't reflect changes in InstanceClass (CCM-8411, ZD-32945, ZD-32995)
 
@@ -566,9 +511,9 @@ Something was changed in the base image for Docker files. Azcopy utility needs a
 - Azure Connectors are failing (CCM-8298, ZD-32605, ZD-32612)
   We had a regression in the data pipeline. Fix is deployed.
 
-#### August 1, 2022, version 76030
+## August 1, 2022, version 76030
 
-##### What's new
+### What's new
 
 CCM Perspective Preferences.
 
@@ -576,17 +521,17 @@ When you create a CCM Perspective you can now set Preferences for Include Others
 
 For details, go to Perspective Preferences in Create Cost Perspectives.
 
-##### Early access
+### Early access
 
 N/A
 
-##### Enhancements
+### Enhancements
 
 Perspective Preferences: Unallocated and Include Others cost support added (CCM-7436)
 
 Now while creating a perspective, you will see a Preferences tab to select the preferences for a particular Perspective. And on the Perspective page, you can toggle the preferences options to see their cost in the Perspective chart section.
 
-##### Fixed issues
+### Fixed issues
 
 - CCM missing data for our production cluster (CCM-8214, ZD-32384)
 
@@ -604,21 +549,21 @@ Now while creating a perspective, you will see a Preferences tab to select the p
 
   Converting queries to Batch queries. Removing certain Alter statements as they are no longer required.
 
-#### July 18th, 2022, version 75921
+## July 18th, 2022, version 75921
 
-##### What's new
-
-N/A
-
-##### Early access
+### What's new
 
 N/A
 
-##### Enhancements
+### Early access
 
 N/A
 
-##### Fixed issues
+### Enhancements
+
+N/A
+
+### Fixed issues
 
 - AWS CCM Connector failing after previous successful connections (CCM-8143)
 
@@ -639,9 +584,9 @@ N/A
 - Azure perspective GCP Anomalies (CCM-7882)
   Azure perspective rules were not imposed on anomaly APIs. Added Azure rule enforcements.
 
-#### July 11th, 2002, version 75829
+## July 11th, 2002, version 75829
 
-##### What's new
+### What's new
 
 - Resource name display enhancement (CCM-8079)
 
@@ -665,11 +610,11 @@ N/A
   You can now set the notification channel to Slack and add multiple webhook URLs when creating a budget.
   For more information, refer to Create a Budget.
 
-##### Early access
+### Early access
 
 n/a
 
-##### Fixed issues
+### Fixed issues
 
 - Changed the APIs related to Recommendations and Anomaly recently as part of adding Filter Panels (CCM-7999, ZD-31845)
 
@@ -681,5 +626,3 @@ n/a
 - Add-hoc Perspective Filters not accepting values (CCM-7941, ZD-31977)
 
   Users can now filter perspectives AWS account by accountName.
-
-</details>

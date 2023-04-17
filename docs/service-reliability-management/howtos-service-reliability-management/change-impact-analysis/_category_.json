@@ -1,0 +1,14 @@
+{
+   "label":"Change Impact Analysis",
+   "position": 30,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Change Impact Analysis"
+   },
+   "customProps":{
+      "helpdocs_category_id":"km6d9j54ms"
+   }
+}

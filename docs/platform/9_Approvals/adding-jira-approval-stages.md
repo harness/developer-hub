@@ -14,15 +14,15 @@ During deployment, a Jira issue's fields are evaluated according to criteria you
 
 The **Jira Approval** step can be added in Jira Approval stages or in CD stages. The Jira Approval step prevents the stage execution from proceeding without an approval.
 
-For example, in a [Kubernetes Blue Green Deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
+For example, in a [Kubernetes Blue Green Deployment](../../continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
 
-Looking to create or update Jira issues? See [Create Jira Issues in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md), [Update Jira Issues in ../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages.mdd-stages.md).
+Looking to create or update Jira issues? See [Create Jira Issues in CD Stages](../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md), [Update Jira Issues in CD Stages](../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md).
 
 ### Before you begin
 
 * [Connect to Jira](../7_Connectors/Ticketing-Systems/connect-to-jira.md)
-* [Create Jira Issues in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md)
-* [Update Jira Issues in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages.md)
+* [Create Jira Issues in CD Stages](../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md)
+* [Update Jira Issues in CD Stages](../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
 
 ### Visual Summary
 
@@ -49,8 +49,8 @@ The Jira Create and Jira Update steps are described in other topics. This topic 
 
 See:
 
-* [Create Jira Issues in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md)
-* [Update Jira Issues in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages.md)
+* [Create Jira Issues in CD Stages](../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md)
+* [Update Jira Issues in CD Stages](../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
 
 ### Step 1: Add a Jira Approval Step
 
@@ -158,5 +158,5 @@ For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Express
 ### See also
 
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
-* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)
+* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md)
 

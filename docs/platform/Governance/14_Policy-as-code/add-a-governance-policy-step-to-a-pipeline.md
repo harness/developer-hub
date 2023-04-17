@@ -125,11 +125,7 @@ deny[sprintf("version must be greater than v0.200.0 but is currently '%s'", [inp
     semver.compare(version, "0.200.0") < 0  
 }
 ```
-<<<<<<< HEAD:docs/platform/Governance/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md
 Currently, only the **Custom** entity type is supported. The JSON payload you add is a free form payload that can be evaluated by your Policy Set at runtime. It does not need to be a Harness entity.Next, in our Pipeline we'll add an [HTTP step](../../../continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines.md) to check the version at the HTTP endpoint `https://app.harness.io/prod1/pm/api/v1/system/version`, and a **Policy** step to that uses our policy to check the version returned from the HTTP step:
-=======
-Currently, only the **Custom** entity type is supported. The JSON payload you add is a free form payload that can be evaluated by your Policy Set at runtime. It does not need to be a Harness entity.Next, in our Pipeline we'll add an [HTTP step](../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines.md) to check the version at the HTTP endpoint `https://app.harness.io/prod1/pm/api/v1/system/version`, and a **Policy** step to that uses our policy to check the version returned from the HTTP step:
->>>>>>> main:docs/platform/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md
 
 Here's the YAML for a Pipeline that uses the step:
 ```
@@ -198,11 +194,7 @@ Now when we run the Pipeline, the Policy Step will evaluate the JSON in Payload 
 
 ### Policy Step Expressions
 
-<<<<<<< HEAD:docs/platform/Governance/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md
 You can use the following Harness expressions to output Policy Step status in a [Shell Script](../../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step:
-=======
-You can use the following Harness expressions to output Policy Step status in a [Shell Script](../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step:
->>>>>>> main:docs/platform/14_Policy-as-code/add-a-governance-policy-step-to-a-pipeline.md
 
 * `<+execution.steps.[policy step Id].output.status>`
 * `<+execution.steps.[policy step Id].output.policySetDetails.Example.status>`

@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 :::note
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
+This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
 :::
 
 This quickstart shows you how to deploy a publicly available Docker image to your Kubernetes cluster using a Canary Deployment strategy in Harness.
@@ -373,7 +373,7 @@ In this tutorial, you learned how to:
 * Create a Kubernetes Canary Workflow, using a Canary and Primary (rollout) phase.
 * Deploy your Kubernetes Canary Workflow to your target cluster.
 
-Next, try the [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md) tutorial to learn how to use Harness for standard and Helm-based Kubernetes deployments.
+Next, try the [Kubernetes Deployments Overview](../continuous-delivery/kubernetes-deployments/kubernetes-deployments-overview.md) tutorial to learn how to use Harness for standard and Helm-based Kubernetes deployments.
 
 Read the following related How-tos:
 

@@ -31,8 +31,8 @@ To use this SDK, make sure you've: 
 
 * Installed Node.js v12 or a newer version.
 * Installed React.js v16.7 or a newer version.
-* [Created a Feature Flag on the Harness Platform](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Created an SDK key and made a copy of it](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key)
+* [Created a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Created an SDK key and made a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key)
 
 ## Install the SDK
 

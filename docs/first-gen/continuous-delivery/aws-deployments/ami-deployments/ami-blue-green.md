@@ -301,7 +301,7 @@ This step creates the new ASG. In this step, you name the new ASG, specify how i
 4. In **Production Listener Rule ARN**, select the ARN for the rule to use. You can find the ARN by its number in the AWS console.
 5. Click **Submit**.
 
-Most of the settings support  [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows).When you deploy this Workflow, the output for the step will show the ASG creation and load balancer assignments.
+Most of the settings support  [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).When you deploy this Workflow, the output for the step will show the ASG creation and load balancer assignments.
 
 
 ```
@@ -350,7 +350,7 @@ This is the step where you shift traffic from the TG for the previous ASG to the
 1. In **Name**, it can helpful to name the step after the traffic shift percentage it will apply, such as **10%**. You might also choose to name it according to its position, like **Shift Step 1**.
 2. In **New Autoscaling Group Weight**, enter the percentage of traffic you want shifted from the previous ASG to the new ASG you are deploying.
 
-Most of the settings support  [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows).Here is an example of what this step looks like when it shifts traffic 10% during deployment.
+Most of the settings support  [Workflow variable expressions](../../model-cd-pipeline/workflows/add-workflow-variables-new-template.md). You can use these to template this step and then allow its values to be specified at deployment runtime. You can even pass in the values using a Harness  [Trigger](../../model-cd-pipeline/expressions/passing-variable-into-workflows.md).Here is an example of what this step looks like when it shifts traffic 10% during deployment.
 
 
 ```

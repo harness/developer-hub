@@ -34,8 +34,8 @@ To use this SDK, make sure you:
 * Install Go version 1.6 or newer.
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-golang-server-sdk)
 * Create a Go application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-golang-server-sdk/blob/main/examples/getting_started.go).
-* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
+* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
 
 ## Install the SDK
 

@@ -1,0 +1,14 @@
+{
+    "label": "Helm Charts",
+    "position": "400",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Helm Charts"
+    },
+    "customProps": {
+        "helpdocs_category_id": "xot6u3ge9d"
+    }
+}

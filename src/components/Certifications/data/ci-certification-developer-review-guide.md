@@ -18,7 +18,8 @@
 ||Describe Available Connectors |[Connectors](https://developer.harness.io/docs/category/connectors)|
 ||Configure a Git Connector|[Add a GitHub Connector](https://developer.harness.io/docs/platform/Connectors/add-a-git-hub-connector)|
 ||Configure a DockerHub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/Connectors/connect-to-harness-container-image-registry-using-docker-connector)|
-||Understand Harness Delegate Role For The CI Capability|[CI pipeline basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics)| <!--- ||Describe Pipeline Studio Vs Yaml Structure|-| -->
+||Understand Harness Delegate Role For The CI Capability|[CI pipeline basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics)|
+||Describe Pipeline Studio Vs Yaml Structure|-|
 ||Secrets Management - Describe Possible Usages For Harness CI|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets)|
 ||Secrets Management - How To Retrieve And Render Secrets Using Harness Expressions|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets)|
 ||Describe Harness Variables And Expressions|[Built-in and Custom Harness Variables Reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)|
@@ -27,7 +28,8 @@
 ||Describe Built-In CI Codebase Variables|[Built-in CI codebase variables reference](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference/)|
 ||Describe Default Settings|[Default Settings](https://developer.harness.io/docs/platform/settings/default-settings/)|
 ||Configure Default Settings|[Default Settings](https://developer.harness.io/docs/platform/settings/default-settings/)|
-||Identify Types Of Artifacts|[Build and Upload Artifacts](https://developer.harness.io/docs/category/build-and-upload-artifacts)| <!--- ||Identify Scanning Options|-| -->
+||Identify Types Of Artifacts|[Build and Upload Artifacts](https://developer.harness.io/docs/category/build-and-upload-artifacts)|
+||Identify Scanning Options|-|
 ||Describe the Harness Manager|[Harness Platform architecture](https://developer.harness.io/docs/getting-started/harness-platform-architecture/)|
 ||Describe the Harness Delegate|[Harness Platform architecture](https://developer.harness.io/docs/getting-started/harness-platform-architecture/)|
 |**2. Harness CI Pipelines and its Features**|||

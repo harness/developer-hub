@@ -1,0 +1,14 @@
+{
+    "label": "Kustomize",
+    "position": "500",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Kustomize"
+    },
+    "customProps": {
+        "helpdocs_category_id": "hpy9lyd9b3"
+    }
+}

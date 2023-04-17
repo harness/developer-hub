@@ -10,7 +10,7 @@ Harness STO supports the following scan types for the following Snyk products:
 * Snyk Code  —  `ingestionOnly` 
 * Snyk Container  — `ingestionOnly` 
 
-For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
+For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
 
 ## Before you begin
 
@@ -201,23 +201,23 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `snyk_api` = URL to the Snyk instance, if you're using an on-prem installation.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+
+### Container Image scan settings
+
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
 
+
+### Repository scan settings
+
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
 <StoLegacyRepo />
-
-```mdx-code-block
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
-
-<StoLegacyIngest />
 
 </details>
 

@@ -1,7 +1,7 @@
 ---
 title: Configure Service Dependency step settings (Deprecated)
 description: A Service Dependency is a detached service that's accessible to all Steps in a Stage.
-sidebar_position: 90
+sidebar_position: 60
 helpdocs_topic_id: vo4sjbd09g
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::caution
 
-The Configure Service Dependency step is deprecated. Instead, use the [Background step](./background-step-settings.md).
+The Configure Service Dependency step is deprecated. Instead, use [Background step](./background-step-settings.md).
 
 For a short time, this step will be backwards compatible. Any pipelines that include Configure Service Dependency steps will remain valid until the step is removed from Harness CI. You are encouraged to replace Configure Service Dependency steps with Background steps as soon as possible.
 
@@ -66,7 +66,7 @@ Harness Connector for the container registry containing the Service Dependency i
 
 The name of the Docker image.
 
-The image name should include the tag and will default to the `latest` tag if unspecified.
+The image name should include the tag and will default to the latest tag if unspecified.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries.
 

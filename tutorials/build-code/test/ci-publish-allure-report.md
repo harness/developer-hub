@@ -117,7 +117,7 @@ pipeline:
                       allure-combine .
                       cd ../..
                       cp target/allure-report/complete.html .
-# STEP 4: Upload to GCS
+# STEP 4: Upload to GPS
               - step:                
                   type: GCSUpload
                   name: upload-report

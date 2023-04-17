@@ -6,9 +6,9 @@ This section describes AWS-specific fault tunables.
 
 ### Managed nodegroup
 
-Specifies whether AWS EC2 instances are a part of the managed nodeGroups. If instances belong to the managed nodeGroups, set `MANAGED_NODEGROUP` environment variable to `enable`, else set it to `disable`. The default value is `disabled`.
+It specifies whether AWS EC2 instances are a part of the managed nodeGroups. If instances belong to the managed nodeGroups, set `MANAGED_NODEGROUP` environment variable to `enable`, else set it to `disable`. The default value is `disabled`.
 
-The following YAML snippet illustrates the use of this environment variable:
+Use the following example to tune it:
 
 [embedmd]:# (./static/manifests/common/managed-nodegroup.yaml yaml)
 ```yaml

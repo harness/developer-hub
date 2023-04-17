@@ -233,5 +233,5 @@ After installation is complete, you should create the initial Harness account, a
 To get started with the modules, review the following topics:
 
 * For Harness Continuous Integration, go to [CI pipeline concepts](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
-* For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics.md).
+* For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md).
 * For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).

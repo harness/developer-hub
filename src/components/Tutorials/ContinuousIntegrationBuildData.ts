@@ -15,65 +15,54 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Build on a Kubernetes cluster",
+          title: "Build on a Kubernetes Cluster",
           module: MODULES.ci,
           description:
-            "Build a Docker Image on a Kubernetes cluster build farm.",
+            "Build a Docker Image on a Kubernetes Cluster Build Farm",
           link: "/tutorials/build-code/build/kubernetes-build-farm",
         },
         {
-          title: "Go application",
+          title: "Go Application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a Go application.",
+            "Build a Docker Image of a Go Application",
           link: "/tutorials/build-code/build/go",
         },
         {
-          title: "Java application",
+          title: "JAVA Application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of Java HTTP Server application.",
+            "Build a Docker Image of JAVA HTTP Server Application",
           link: "/tutorials/build-code/build/java",
         },
         {
-          title: "NodeJS application",
+          title: "NodeJS Application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a NodeJS application.",
+            "Build a Docker Image of a NodeJS Application",
           link: "/tutorials/build-code/build/nodejs",
         },
-
+   
         {
-          title: "React application",
+          title: "React Application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a React application.",
+            "Build a Docker Image of a React Application",
           link: "/tutorials/build-code/build/react",
         },
         {
-          title: "Rust application",
+          title: "Rust Application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a multi-architecture Rust application.",
+            "Build a Docker Image of a Rust Application",
           link: "/tutorials/build-code/build/rust",
         },
         {
-          title: "Signed images",
+          title: "Signed Image",
           module: MODULES.ci,
           description:
-            "Build a Signed Docker Image of a Go application.",
+            "Build a Signed Docker Image of a Go Application",
           link: "/tutorials/build-code/build/signed-image",
-        },
-        {
-          title: "Terraform Cloud notification triggers",
-          module: MODULES.ci,
-          icon: "img/icon_ci.svg",
-          description:
-            "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
-          newDoc: true,
-          type: [docType.Documentation],
-          time: '9 min',
-          link: "/tutorials/build-code/build/tfc-notification",
         },
       ],
     },

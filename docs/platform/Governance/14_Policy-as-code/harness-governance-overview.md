@@ -1,7 +1,11 @@
 ---
 title: Harness Policy As Code Overview
 description: Harness uses Open Policy Agent (OPA) to store and enforce policies for the Harness platform.
-sidebar_position: 1
+sidebar_position: 10
+helpdocs_topic_id: 1d3lmhv4jl
+helpdocs_category_id: zoc8fpiifm
+helpdocs_is_private: false
+helpdocs_is_published: true
 ---
 
 
@@ -171,11 +175,7 @@ A Policy Set at the account level applies to all entities in the Orgs and Projec
 
 When you create a policy, you identify the Harness entities were the policy is applied.
 
-<<<<<<< HEAD:docs/platform/Governance/14_Policy-as-code/harness-governance-overview.md
 For example, here's a policy that applies the [Harness Approval](../../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) steps:
-=======
-For example, here's a policy that applies the [Harness Approval](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md) steps:
->>>>>>> main:docs/platform/14_Policy-as-code/harness-governance-overview.md
 
 ![](./static/harness-governance-overview-12.png)
 

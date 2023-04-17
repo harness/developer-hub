@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-To decrease test cycle time, utilize parallelism by dividing tests into multiple sets and running them in parallel. *Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Whenever it's possible to divide the tasks of a particular step or stage into multiple sets and execute them concurrently, parallelism can be used to [speed things up](../../continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md).
+To decrease test cycle time, utilize parallelism by dividing tests into multiple sets and running them in parallel. *Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Whenever it's possible to divide the tasks of a particular step or stage into multiple sets and execute them concurrently, parallelism can be used to [speed things up](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md).
 
 ## Key concepts: parallelism and test splitting
 
@@ -328,7 +328,7 @@ pipeline:
 
 ## See also
 
-* [Optimizing CI Build Times](../../continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
+* [Optimizing CI Build Times](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md)
 * [Looping Strategies Overview: Matrix, For Loop, and Parallelism](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 * [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)

@@ -14,7 +14,7 @@ During deployment, the Service Config variables are created as environment varia
 
 Only Service Config Variables are added as environment variables and can be output with `env`. Workflow and other variables are not added as environment variables.Service variables can be overwritten at the Environment level. See [Override a Service Configuration](../environments/environment-configuration.md#override-a-service-configuration).
 
-For information about how configuration variables and files are used in a Kubernetes deployment, see [Kubernetes Deployments Overview](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md). For information on using Harness variables and expressions, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
+For information about how configuration variables and files are used in a Kubernetes deployment, see [Kubernetes Deployments Overview](../../kubernetes-deployments/kubernetes-deployments-overview.md). For information on using Harness variables and expressions, see [Variables and Expressions in Harness](../../../firstgen-platform/techref-category/variables/variables.md).
 
 ### Before You Begin
 

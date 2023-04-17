@@ -1,6 +1,6 @@
 ---
 title: Background step settings
-description: Use Background steps to manage dependent services.
+description: Background steps are useful for running services that need to run for the entire lifetime of a build.
 sidebar_position: 10
 helpdocs_topic_id: kddyd0f33o
 helpdocs_category_id: 4xo13zdnfx
@@ -8,22 +8,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Use Background steps to [manage dependent services](../use-ci/manage-dependencies/dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
+Background steps are useful for running services that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
-![A Build stage with multiple services running in Background steps.](./static/background-step-settings-07.png)
+![](./static/background-step-settings-07.png)
 
 ## Important notes
 
 * Background steps do not support failure strategies or output variables.
-* If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
 * A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests. You can use the Background step **Id** to call services started by Background steps in later steps, such as `curl` commands in Run steps.
-
-<figure>
-
-![](./static/background-step-settings-call-id-in-other-step.png)
-
-<figcaption>Figure 1: The Background step ID, <code>pythonscript</code>, is used in a curl command in a Run step.</figcaption>
-</figure>
+  ![The Background step ID, pythonscript, is used in a curl command in a Run step.](./static/background-step-settings-call-id-in-other-step.png)
+* If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
 
 :::info
 
@@ -35,195 +29,36 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-## Container Registry and Image
+## Container Registry
 
-**Container Registry** is a Harness container registry connector that connects to the container registry, such as DockerHub, from which you want Harness to pull an image.
+A Harness container registry connector that connects to the container registry from which you want Harness to pull an image, such as DockerHub.
 
-**Image** is the container image to use for the background service. The image name should include the tag, or it defaults to the `latest` tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
+## Image
 
-* **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
+The container image to use for the background service. The image name should include the tag, or it defaults to the latest tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries.
+
+Different container registries require different name formats:
+
+* **Docker Registry:** Input the name of the artifact you want to deploy, for example: `library/tomcat`. Wildcards aren't supported.
+* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `us.gcr.io/playground-123/quickstart-image:latest`.
+
+   ![](./static/background-step-settings-08.png)
+
 * **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
-<figure>
+## Shell
 
-![](./static/background-step-settings-08.png)
+Select the shell script type. If the step includes commands that aren't supported for the selected shell type, the build fails.
 
-<figcaption>Figure 2: An example configuration for the <b>Container Registry</b> and <b>Image</b> fields. Note that this figure shows a <b>Run</b> step, but the fields are populated the same for <b>Background</b> steps.</figcaption>
-</figure>
+You can run PowerShell Core (`pwsh`) commands in pods or containers that have `pwsh` installed. You can run PowerShell commands on Windows VMs running in AWS build farms.
 
-:::info
+## Entry Point
 
-The stage's build infrastructure determines whether these fields are required or optional:
+The entry point takes precedence over any commands in the **Command** field.
 
-* [Kubernetes cluster build infrastructure](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md): **Container Registry** and **Image** are always required.
-* [Local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md): **Container Registry** and **Image** are always required.
-* [Self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures): **Background** steps can use binaries that you've made available on your build VMs. The **Container Registry** and **Image** are required if the VM doesn't have the necessary binaries. These fields are located under **Optional Configuration** for stages that use self-hosted VM build infrastructure.
-* [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md): **Background** steps can use binaries available on Harness Cloud machines, as described in the [image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications). The **Container Registry** and **Image** are required if the machine doesn't have the binary you need. These fields are located under **Optional Configuration** for stages that use Harness Cloud build infrastructure.
+## Command
 
-:::
-
-## Shell, Entry Point, and Command
-
-Use these fields to define the commands that you need to run in the Background step.
-
-For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
-
-For **Entry Point** supply a list of arguments in `exec` format. **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. Enter each argument separately.
-
-```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs2>
-  <TabItem2 value="Visual" label="Visual">
-```
-<figure>
-
-<!-- ![](./static/dind-background-step-entry-point.png) -->
-
-<docimage path={require('./static/dind-background-step-entry-point.png')} />
-
-<figcaption>Figure 3: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
-</figure>
-
-```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="YAML" label="YAML" default>
-```
-
-```yaml
-                    entrypoint:
-                      - dockerd-entrypoint.sh
-                      - "--mtu=1450"
-```
-
-```mdx-code-block
-  </TabItem2>
-</Tabs2>
-```
-
-In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script commands (beyond the image's entry point) for this step. If the step runs in a container, the commands are executed inside the container.
-
-Select each tab below to view examples for each `shell` type.
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs>
-  <TabItem value="bash" label="Bash" default>
-```
-
-This Bash script example checks the Java version.
-
-```yaml
-              - step:
-                  ...
-                  spec:
-                    shell: Bash
-                    command: |-
-                      JAVA_VER=$(java -version 2>&1 | head -1 | cut -d'"' -f2 | sed '/^1\./s///' | cut -d'.' -f1)
-                      if [[ $JAVA_VER == 17 ]]; then
-                        echo successfully installed $JAVA_VER
-                      else
-                        exit 1
-                      fi
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="powershell" label="Powershell">
-```
-This is a simple Powershell `Wait-Event` example.
-
-```yaml
-              - step:
-                  ...
-                  spec:
-                    shell: Powershell
-                    command: Wait-Event -SourceIdentifier "ProcessStarted"
-```
-
-:::tip
-
-You can run Powershell commands on Windows VMs running in AWS build farms.
-
-:::
-
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="pwsh" label="Pwsh">
-```
-
-This Powershell Core example runs `ForEach-Object` over a list of events.
-
-```yaml
-              - step:
-                  ...
-                  spec:
-                    shell: Pwsh
-                    command: |-
-                      $Events = Get-EventLog -LogName System -Newest 1000
-                      $events | ForEach-Object -Begin {Get-Date} -Process {Out-File -FilePath Events.txt -Append -InputObject $_.Message} -End {Get-Date}
-```
-
-:::tip
-
-You can run Powershell Core commands in pods or containers that have `pwsh` installed.
-
-:::
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="sh" label="Sh">
-```
-
-In this example, the pulls a `python` image and executes a shell script (`Sh`) that runs `pytest` with code coverage.
-
-```yaml
-              - step:
-                  ...
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: python:latest
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      uname -a
-                      pip install pytest
-                      pip install pytest-cov
-                      pip install -r requirements.txt
-
-                      pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="python" label="Python">
-```
-
-If the `shell` is `Python`, supply Python commands directly in `command`.
-
-This example uses a basic `print` command.
-
-```
-            steps:
-              - step:
-                  ...
-                  spec:
-                    shell: Python
-                    command: print('Hello, world!')
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
+[POSIX](https://www.grymoire.com/Unix/Sh.html) shell script commands (beyond the entry point) executed inside the container.
 
 :::tip
 
@@ -241,9 +76,9 @@ Select this option to run the container with escalated privileges. This is the e
 
 ### Report Paths
 
-The path to the file(s) that store results in JUnit XML format. You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+The path to the file(s) that store results in JUnit XML format. You can add multiple paths. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This setting is required for commands run in the Background step to be able to publish test results.
+This setting is required for the Background step to be able to publish test results.
 
 ### Environment Variables
 
@@ -251,14 +86,9 @@ You can inject environment variables into a container and use them in the **Comm
 
 You can reference environment variables in the **Command** script by their name. For example, a Bash script would use `$var_name` or `${var_name}`, and a Windows PowerShell script would use `$Env:varName`.
 
-Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
-
-<figure>
+Variable values can be [Fixed Values, Runtime Inputs, and Expressions](../../platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
 
 ![](./static/background-step-settings-09.png)
-
-<figcaption>Figure 4: Using an expression for an environment variable's value.</figcaption>
-</figure>
 
 ### Image Pull Policy
 

@@ -39,7 +39,7 @@ Here's an example of the Service Health page for a selected service:
 
 For more information on monitored services, go to these topics to:
 
-* [Create a monitored service](/docs/service-reliability-management/monitored-service/create-monitored-service)
-* [Use the **Service Health** dashboard](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-service-health-dashboard)
-* [Use the **Changes** dashboard](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board)
+* [Create a monitored service](/docs/service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-quickstart)
+* [Use the **Service Health** dashboard](/docs/service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-service-health-dashboard)
+* [Use the **Changes** dashboard](/docs/service-reliability-management/howtos-service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board)
 

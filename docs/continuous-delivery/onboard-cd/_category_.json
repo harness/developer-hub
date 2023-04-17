@@ -1,0 +1,14 @@
+{
+    "label": "Onboard with Continuous Delivery",
+    "position": "100",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Onboard with Continuous Delivery"
+    },
+    "customProps": {
+        "helpdocs_category_id": "009029m3h6"
+    }
+}

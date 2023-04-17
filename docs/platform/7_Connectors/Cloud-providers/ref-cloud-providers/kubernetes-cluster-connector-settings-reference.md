@@ -119,12 +119,15 @@ The YAML provided for the Harness Delegate defaults to `cluster-admin` because t
 
 ### Harness CI Cluster Requirements
 
-The resources required for the Kubernetes cluster depend on the number of builds running in parallel, as well as the resources required for each build.
+For Harness **Continuous Integration**, the resources required for the Kubernetes cluster depends on the number of builds running in parallel, as well as the resources required for each build.
 
-The following table provides a rough estimation of the resources required, based on the number of daily builds:
+Below is a rough estimation of the resources required, based on the number of daily builds:
 
-| **PRs per day** | **Nodes with 4 CPU, 8GB RAM, 100GB disk** | **Nodes with 8 CPU, 16GB RAM, 200GB disk** |
+
+
+|  |  |  |
 | --- | --- | --- |
+| **PRs/Day** | **Nodes with 4 CPU, 8GB RAM,100GB disk** | **Nodes with 8 CPU, 16GB RAM, 200GB disk** |
 | 100 | 19 - 26 | 11 - 15 |
 | 500 | 87 - 121 | 45 - 62 |
 | 1000 | 172 - 239 | 89 - 123 |

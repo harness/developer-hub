@@ -33,16 +33,6 @@ Here is an example AWS superset policy to execute all AWS faults.
         {
             "Effect": "Allow",
             "Action": [
-              "ec2:AuthorizeSecurityGroupEgress",
-              "ec2:RevokeSecurityGroupEgress",
-              "ec2:RevokeSecurityGroupIngress",
-              "ec2:DescribeSecurityGroups"
-            ],
-            "Resource": "*"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
                 "autoscaling:DescribeAutoScalingInstances"
             ],
             "Resource": "*"
@@ -77,10 +67,6 @@ Here is an example AWS superset policy to execute all AWS faults.
                 "ecs:ListServices",
                 "ecs:StopTask",
                 "ecs:DescribeServices",
-                "ecs:DescribeTaskDefinition",
-                "ecs:RegisterTaskDefinition",
-                "ecs:DeregisterTaskDefinition",
-                "ecs:UpdateService",
                 "ecs:DescribeTasks"
             ],
             "Resource": "*"
@@ -118,7 +104,6 @@ Here is an example AWS superset policy to execute all AWS faults.
         {
             "Effect": "Allow",
             "Action": [
-                "iam:PassRole",
                 "iam:ListAttachedRolePolicies",
                 "iam:DetachRolePolicy",
                 "iam:AttachRolePolicy",
@@ -139,7 +124,3 @@ Here is an example AWS superset policy to execute all AWS faults.
     ]
 }
 ```
-
-:::note
-PassRole With Star In Resource: Using the iam:PassRole action with wildcards (*) in the resource can be overly permissive because it allows iam:PassRole permissions on multiple resources. We recommend that you specify resource ARNs or add the iam:PassedToService condition key to your statement.
-:::

@@ -25,19 +25,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 	+ Accepted values(s):
 		- `default`, `hipaa`, `gdpr`, `exclude_extras`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-* `tool_args` — You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, you can exclude specific check from a scan like this: `tool_args` = `-excluded-checks s3_bucket_public_access`
-
-```mdx-code-block
-import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
-```
-
-<StoLegacyConfig  />
-
-```mdx-code-block
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
-
-<StoLegacyIngest />
+* `tool_args` — You can use this field to run the [prowler aws scanner](https://github.com/prowler-cloud/prowler) with specific command-line arguments. For example, you can exclude specific check from a scan like this: tool_args = -excluded-checks s3_bucket_public_access
 
 ### Fail on Severity
 
@@ -49,4 +37,8 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Configuration settings
 
+```mdx-code-block
+import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
+```
 
+<StoLegacyConfig  />
