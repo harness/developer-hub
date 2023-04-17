@@ -74,6 +74,15 @@ Test Intelligence may not work even if you select the **Run only selected tests*
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.
 
+## Step logs disappear
+
+If step logs disappear from pipelines that are using a Kubernetes cluster build infrastructure, you must either allow outbound communication with `storage.googleapis.com` or contact [Harness Support](mailto:support@harness.io) to enable the `CI_INDIRECT_LOG_UPLOAD` feature flag.
+
+For more information about configuring connectivity, go to:
+
+* [Delegate system requirements - Network requirements](/docs/platform/delegates/delegate-concepts/delegate-requirements/#network-requirements)
+* [Allowlist Harness Domains an IPs](/docs/platform/References/allowlist-harness-domains-and-ips)
+
 ## AKS builds timeout
 
 Azure Kubernetes Service (AKS) security group restrictions can cause builds running on an AKS build infrastructure to timeout.
