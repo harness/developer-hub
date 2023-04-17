@@ -106,7 +106,7 @@ After adding the experiments to the GameDay, click **Save**.
 1. You can add a summary of the experiments in the GameDay by clicking **Add/View Notes**.  
 ![](./static/run-gameday/15-summary-at-exp-level.png)
 
-2. You can mark an experiment run as complete by clicking **Mark Run as Complete**. This way, you will not be able to run the experiment again. This completed run serves as a checkpoint within the GameDay that helps keep track of how the application fared during a specific situation.    
+2. You can mark a GameDay run as complete by clicking **Mark Run as Complete**. After this action, you will not be able to rerun the experiments inside the GameDay run. This completed run serves as a checkpoint within the GameDay that helps keep track of how the application fared during a specific situation.
 ![](./static/run-gameday/17-run-complete.png)
 
 ## Conclusion
