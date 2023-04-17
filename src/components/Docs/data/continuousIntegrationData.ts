@@ -32,17 +32,10 @@ import {
   // Docs
   export const docsCards: CardSections = [
     {
-      // name: "Documentation",
-      //description:
-      //  "",
+      name: "Get started",
+      description:
+        "",
       list: [
-        {
-          title: "Release notes",
-          module: "ci",
-          description:
-            "Learn about recent changes to Harness CI.",
-          link: "/release-notes/continuous-integration",
-        },
         {
           title: "Get started with CI",
           module: "ci",
@@ -51,53 +44,140 @@ import {
           link: "/docs/category/get-started-with-ci",
         },
         {
+          title: "Pipeline creation overview",
+          module: "ci",
+          description:
+            "Learn about creating Harness CI pipelines.",
+          link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
+        },
+        {
           title: "Migrate to Harness CI",
           module: "ci",
           description:
             "Migrate to Harness CI from another CI provider.",
           link: "/docs/category/migrate-to-harness-ci",
         },
+      ],
+    },
+
+    {
+      name: "Feature highlights",
+      description:
+        "",
+      list: [
         {
-          title: "Create CI pipelines",
+          title: "Harness Cloud",
           module: "ci",
           description:
-            "Learn how to build CI pipelines in Harness.",
-          link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
+            "Run builds at scale on VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines.",
+          link: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
         },
         {
-          title: "Optimize and enhance CI pipelines",
+          title: "Test Intelligence",
+          module: "ci",
+          description:
+            "Improve test times by running only those unit tests that are required to confirm the quality of the code changes that triggered the pipeline.",
+          link: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
+        },
+        {
+          title: "Cache Intelligence",
+          module: "ci",
+          description:
+            "With Cache Intelligence, Harness automatically caches and restores common dependencies.",
+          link: "/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence",
+        },
+        {
+          title: "Background steps",
+          module: "ci",
+          description:
+            "Use Background steps to manage long-running service dependencies.",
+          link: "/docs/continuous-integration/ci-technical-reference/background-step-settings",
+        },
+        {
+          title: "Plugins",
+          module: "ci",
+          description:
+            "Plugins perform predefined tasks. Use plugins to incorporate Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
+          link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
+        },
+        {
+          title: "Optimization strategies",
           module: "ci",
           description:
             "Make your CI pipelines faster, more efficient, and more versatile.",
           link: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
         },
+      ],
+    },
+
+    {
+      name: "Create pipelines",
+      description:
+        "",
+      list: [
         {
-          title: "Tutorials",
+          title: "Set up build infrastructure",
           module: "ci",
           description:
-            "For hands-on learning, try the Harness CI tutorials.",
-          link: "/tutorials/build-code",
+            "",
+          link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me",
         },
         {
-          title: "Troubleshooting",
+          title: "Build and upload artifacts",
           module: "ci",
           description:
-            "Get help with errors and other issues that can arise with Harness CI.",
+            "Build and upload artifacts in CI pipelines.",
+          link: "/docs/category/build-and-upload-artifacts",
+        },
+        {
+          title: "Run tests",
+          module: "ci",
+          description:
+            "Run tests in CI pipelines.",
+          link: "/docs/category/run-tests",
+        },
+        {
+          title: "Dependencies and caching",
+          module: "ci",
+          description:
+            "Manage dependencies, share data, and use caching in CI pipelines",
+          link: "/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies",
+        },
+        {
+          title: "Plugins",
+          module: "ci",
+          description:
+            "Plugins perform predefined tasks. Use plugins to incorporate Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
+          link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
+        },
+        {
+          title: "Optimization strategies",
+          module: "ci",
+          description:
+            "Make your CI pipelines faster, more efficient, and more versatile.",
+          link: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
+        },
+      ],
+    },
+
+    {
+      name: "Help and FAQs",
+      description:
+        "",
+      list: [
+        {
+          title: "Troubleshoot CI",
+          module: "ci",
+          description:
+            "",
           link: "/docs/continuous-integration/troubleshoot/troubleshooting-ci",
         },
         {
-          title: "Reference: Step settings",
+          title: "CI FAQs",
           module: "ci",
           description:
-            "Explore settings that you can configure for each Harness CI step type.",
-          link: "/docs/category/reference-ci-steps-settings",
-        },
-        {
-          title: "Reference: API docs",
-          module: "ci",
-          description:
-            "Explore Harness' API documentation.",
-          link: "https://apidocs.harness.io/",
+            "",
+          link: "/docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs",
         },
       ],
     },

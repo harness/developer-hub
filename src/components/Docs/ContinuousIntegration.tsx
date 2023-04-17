@@ -17,22 +17,22 @@ export default function CI() {
             <img src={`${baseUrl}img/icon_ci.svg`} />
             <h1>Continuous Integration Documentation</h1>
           </div>
-          {/*<div className={styles.btnContainer}>*/}
-            {/*<Link href="/tutorials/build-code">*/}
-              {/*<button className={styles.btn}>*/}
+          <div className={styles.btnContainer}>
+            <Link href="/tutorials/build-code">
+              <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
-                {/*<img src={`${baseUrl}img/icon_tutorials.svg`} />*/}
-                {/*Tutorials*/}
-              {/*</button>*/}
-            {/*</Link>*/}
-            {/*<Link href="/release-notes/continuous-integration">*/}
-              {/*<button className={styles.btn}>*/}
+                <img src={`${baseUrl}img/icon_tutorials.svg`} />
+                Tutorials
+              </button>
+            </Link>
+            <Link href="/release-notes/continuous-integration">
+              <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
-                {/*<img src={`${baseUrl}img/icon_release_notes.svg`} />*/}
-                {/*Release Notes*/}
-              {/*</button>*/}
-            {/*</Link>*/}
-          {/*</div>*/}
+                <img src={`${baseUrl}img/icon_release_notes.svg`} />
+                Release Notes
+              </button>
+            </Link>
+          </div>
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
