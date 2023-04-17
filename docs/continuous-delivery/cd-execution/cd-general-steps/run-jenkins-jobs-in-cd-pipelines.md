@@ -46,7 +46,7 @@ In your CD Stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
 ## Jenkins connector
 
-Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [Connect to Jenkins](../../../platform/5_Resources/Connectors/Artifact-Repositories/connect-to-jenkins.md).
+Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [Connect to Jenkins](../../../platform/7_Connectors/Artifact-Repositories/connect-to-jenkins.md).
 
 ## Job name
 
@@ -87,7 +87,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Captured environment variables from Jenkins builds
 

@@ -27,7 +27,7 @@ Review [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key
 * **Azure ACR and AKS Permissions:** make sure you have a Service Principal or Managed Identity you can use to connect Harness to your Azure App registration, and that it has the required permissions:
 	+ **ACR:** the **Reader** role must be assigned.
 	+ **AKS:** the **Owner** role must be assigned.
-	+ For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
+	+ For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
 
 * **AKS Cluster:** you'll need a target AKS cluster for the deployment. Ensure your cluster meets the following requirements:
   * **Number of nodes:** 2.
@@ -209,11 +209,11 @@ Now you can add an artifact from your ACR repo. We'll create a Harness Azure Con
 
   ![](./static/azure-cd-quickstart-103.png)
 
-   + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](../../../platform/5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md):
+   + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](../../../platform/7_Connectors/Cloud-providers/add-a-microsoft-azure-connector.md):
      
      + **ACR:** the **Reader** role must be assigned.
      + **AKS:** the **Owner** role must be assigned.
-     + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
+     + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](../../../platform/7_Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
   
 1. Click **Continue**.
 2. In **Delegates Setup**, click **Only use Delegates with all of the following tags**, and then select the Delegate you added earlier.

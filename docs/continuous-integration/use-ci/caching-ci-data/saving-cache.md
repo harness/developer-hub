@@ -70,7 +70,7 @@ You need a dedicated S3 bucket for your Harness CI cache operations, and you nee
 
 </details>
 
-For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](../../../platform/5_Resources/Connectors/Cloud-providers/add-aws-connector.md) and the [AWS connector settings reference](../../../../docs/platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](../../../platform/7_Connectors/Cloud-providers/add-aws-connector.md) and the [AWS connector settings reference](../../../../docs/platform/7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 
 Optionally, you can create a [lifecycle configuration](https://docs.aws.amazon.com/AmazonS3/latest/userguide/object-lifecycle-mgmt.html) to automatically delete old cache data from your S3 bucket.
 

@@ -46,7 +46,7 @@ Select the SCM type, such as GitHub.
 
 Enter the authentication credentials.
 
-We'll use GitHub in this example, but you can find the settings for all of the SCMs in [Source Code Manager Settings](../7_Connectors/ref-source-repo-provider/source-code-manager-settings.md).
+We'll use GitHub in this example, but you can find the settings for all of the SCMs in [Source Code Manager Settings](../7_Connectors/Code-Repositories/ref-source-repo-provider/source-code-manager-settings.md).
 
 Here's a GitHub example:
 
@@ -91,7 +91,7 @@ For example, here's the **Repository name** `GitExpDocExample` after Harness Git
 ![](./static/harness-git-experience-quickstart-58.png)
 In **Select Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
 
-Important: Connector must use the Enable API access option and Token**Important:** the Connector must use the **Enable API access** option and Username and **Token** authentication. Harness needs the PAT to access the Git platform APIs. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For details on source code manager settings, see [Source Code Manager Settings](../7_Connectors/ref-source-repo-provider/source-code-manager-settings.md).
+Important: Connector must use the Enable API access option and Token**Important:** the Connector must use the **Enable API access** option and Username and **Token** authentication. Harness needs the PAT to access the Git platform APIs. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For details on source code manager settings, see [Source Code Manager Settings](../7_Connectors/Code-Repositories/ref-source-repo-provider/source-code-manager-settings.md).
 
 ![](./static/harness-git-experience-quickstart-59.png)
 For GitHub, the token must have the following scopes:
@@ -192,7 +192,7 @@ In **About Your Stage**, enter the name **helloworld**.
 
 Enable **Clone Codebase**.
 
-In **Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](/docs/category/code-repo-connectors).
+In **Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](https://developer.harness.io/docs/category/code-repo-connectors).
 
 Click **Set Up Stage**.
 

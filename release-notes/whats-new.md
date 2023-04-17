@@ -20,7 +20,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### Continuous Integration
 
-* When you [use a GitHub App in a GitHub connector](/docs/platform/connectors/git-hub-app-support/#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+* When you [use a GitHub App in a GitHub connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
 * Added a [codebase expression](/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference) for commit messages: `<+codebase.commitMessage>`. (CI-7222)
 
 ### Harness Platform
@@ -526,7 +526,7 @@ In addition to fixed values and runtime inputs, you can now use [expressions](/d
 
 * Microsoft Windows (amd64) is now a supported [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructure option. (CI-5455)
 * **Python** is now available as a built-in **Shell** option for [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings). (CI-6692)
-* [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](https://developer.harness.io/docs/platform/Resources/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
+* [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
   * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
   * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
 * Use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)
@@ -1287,7 +1287,7 @@ Role-based Access Control has been added to Custom Dashboards. To access Dashboa
 
   You can now use the Assume IAM Role on Delegate and Use IRSA credentials options when setting up an AWS Connector for Serverless Lambda deployments.
 
-  For more information, refer to [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/ref-cloud-providers/aws-connector-settings-reference/).
+  For more information, refer to [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/).
 
 - Allow AWS ECR artifact for Serverless Lambda (CDS-38857)
 

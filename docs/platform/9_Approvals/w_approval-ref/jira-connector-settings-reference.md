@@ -12,7 +12,7 @@ This topic describes the settings and permissions for the Jira Connector.
 
 You can connect Harness to Jira using a Harness Jira Connector. This Connector allows you to create and update Jira issues, and to use Jira issues in Approval steps.
 
-For instructions on how to set up this Connector, see [Connect to Jira](../../5_Resources/Connectors/Ticketing-Systems/connect-to-jira.md).
+For instructions on how to set up this Connector, see [Connect to Jira](../../7_Connectors/Ticketing-Systems/connect-to-jira.md).
 
 Looking for How-tos? See [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md), [Update Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md), and [Adding Jira Approval Stages and Steps](../adding-jira-approval-stages.md).
 

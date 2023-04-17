@@ -73,7 +73,7 @@ zUfdbO+mWOKNUQDyQiBnlNNM3Gkkn5P8zYHfL97kSLXyadOOWwU0eEDd4iJJSDtJ
 
 
 
-14.   **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/16_APIs/api-quickstart.md) for more information.
+14.   **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](https://developer.harness.io//docs/platform/Resource-Development/16_APIs/api-quickstart.md) for more information.
 15.    **Select security groups**: Select the **Security Group** of your instance.
 16.    **Key pair**: Select the SSH key pair to connect to your VM.
 17.    **TLS Private Key Secret Version**: Enter the **Secret ARN** in this field.

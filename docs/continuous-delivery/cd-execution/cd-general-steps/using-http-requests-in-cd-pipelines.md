@@ -20,7 +20,7 @@ Other common uses are:
 
 This topic describes how to use the HTTP step. For comprehensive details on each setting, see [HTTP Step Reference](../../cd-technical-reference/cd-gen-ref-category/http-step.md).
 
-Looking for the Harness REST API? See [API Quickstart](../../../platform/16_APIs/api-quickstart.md).
+Looking for the Harness REST API? See [API Quickstart](../../../platform/Resource-Development/16_APIs/api-quickstart.md).
 
 ## Before you begin
 

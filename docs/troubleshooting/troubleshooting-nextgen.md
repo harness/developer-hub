@@ -314,7 +314,7 @@ This error occurs when you are testing a Harness AWS connector and the credentia
 
 The DescribeRegions action is required for all AWS connectors. Harness tests the connection using an API call for the DescribeRegions action.
 
-This is described in [Add an AWS connector](../platform/5_Resources/Connectors/Cloud-providers/add-aws-connector.md).
+This is described in [Add an AWS connector](../platform/7_Connectors/Cloud-providers/add-aws-connector.md).
 
 Ensure that one of the IAM roles assigned to the user account used for AWS connector credentials contains the DescribeRegions action.
 
@@ -508,8 +508,8 @@ When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernete
 
 You can handle cluster authentication in Google Kubernetes Engine by using Cloud IAM as the identity provider. However, legacy username-and-password-based authentication is enabled by default in Google Kubernetes Engine. For enhanced authentication security, you should ensure that you have disabled Basic Authentication by setting an empty username and password for the MasterAuth configuration. In the same configuration, you can also disable the client certificate which ensures that you have one less key to think about when locking down access to your cluster.
 
-* If Basic authentication is inadequate for your security requirements, use the [Kubernetes cluster connector](../platform/5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
-* While it can be easier to use the [Kubernetes cluster connector](../platform/5_Resources/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md) for Kubernetes cluster deployments, to use a Kubernetes cluster on Google GKE, Harness requires a combination of basic authentication and/or client certificate to be enabled on the cluster:
+* If Basic authentication is inadequate for your security requirements, use the [Kubernetes cluster connector](../platform/7_Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
+* While it can be easier to use the [Kubernetes cluster connector](../platform/7_Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md) for Kubernetes cluster deployments, to use a Kubernetes cluster on Google GKE, Harness requires a combination of basic authentication and/or client certificate to be enabled on the cluster:
 
 ![](./static/troubleshooting-nextgen-02.png)
 
@@ -675,7 +675,7 @@ If you publish output variables in your Shell Script step, structure your script
 
 ### Harness policy engine
 
-The following errors might occur during the set up or use of [Harness policy engine](../platform/14_Policy-as-code/harness-governance-overview.md).
+The following errors might occur during the set up or use of [Harness policy engine](../platform/Governance/14_Policy-as-code/harness-governance-overview.md).
 
 #### Policy evaluation failed
 

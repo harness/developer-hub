@@ -371,7 +371,7 @@ For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+p
 
 ## Built-in CIE codebase variables reference
 
-In Harness, you set up your [codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
+In Harness, you set up your [codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
 
 Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
 

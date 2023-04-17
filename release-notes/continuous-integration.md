@@ -17,7 +17,7 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
 ### What's new
 
-* When you [use a GitHub App in a GitHub connector](/docs/platform/connectors/git-hub-app-support/#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+* When you [use a GitHub App in a GitHub connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
 * Added a [codebase expression](/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference) for commit messages: `<+codebase.commitMessage>`. (CI-7222)
 
 ### Early access
@@ -41,9 +41,9 @@ This release does not include early access features.
 
 ### Fixed issues
 
-* You can now use [variable expressions](/docs/platform/references/runtime-inputs/#expressions) for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused a field validation error. (CI-7071, ZD-40277)
-* If a CI pipeline fails at the **Initialize** step due to an [Azure Repos connector](/docs/platform/connectors/connect-to-a-azure-repo/) having an on-premises **Azure Repos Project URL**, the error message clearly describes the root cause. This failure occurs because CI doesn't support Azure DevOps Server Repositories (also known as _on-premises Azure Repos_). (CI-6322)
-* If you configure a [code repo connector](/docs/category/code-repo-connectors) where the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL used to test the connection, rather than the account URL. (CI-4398)
+* You can now use [variable expressions](https://developer.harness.io/docs/platform/References/runtime-inputs#expressions) for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused a field validation error. (CI-7071, ZD-40277)
+* If a CI pipeline fails at the **Initialize** step due to an [Azure Repos connector](https://developer.harness.io/docs/platform/connectors/Code-Repositories/connect-to-a-azure-repo/) having an on-premises **Azure Repos Project URL**, the error message clearly describes the root cause. This failure occurs because CI doesn't support Azure DevOps Server Repositories (also known as _on-premises Azure Repos_). (CI-6322)
+* If you configure a [code repo connector](https://developer.harness.io/docs/category/code-repo-connectors) where the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL used to test the connection, rather than the account URL. (CI-4398)
 * Attempting to manually clone a PR through a Git connector that doesn't have API access enabled now returns an error message indicating that the connector doesn't have the required API access. (CI-7192)
 * The deprecated Harness images warning banner no longer appears when there are no deprecated images in use. (CI-7335)
 
@@ -53,7 +53,7 @@ This release does not include early access features.
 
 * The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
 * You can now call pipeline-level variables in steps as environment variables. This is an extension of existing functionality that allows you to call stage-level variables in steps as environment variables. (CI-6709, ZD-39203)
-* When configuring [SCM connectors](/docs/category/code-repo-connectors):
+* When configuring [SCM connectors](https://developer.harness.io/docs/category/code-repo-connectors):
   * Failed connection tests now return more detailed error messages. (CI-7089)
   * The placeholder text in the **Repository URL** field shows a complete repo URL example. (CI-5750)
 
@@ -79,7 +79,7 @@ This release does not include early access features.
 
 ### What's new
 
-In addition to fixed values and runtime inputs, you can now use [expressions](/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+In addition to fixed values and runtime inputs, you can now use [expressions](https://developer.harness.io/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
 
 ![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
 
@@ -98,7 +98,7 @@ Modifying a step template's **Step Parameters** no longer removes failure strate
 
 * Microsoft Windows (amd64) is now a supported [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructure option. (CI-5455)
 * **Python** is now available as a built-in **Shell** option for [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings). (CI-6692)
-* [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](https://developer.harness.io/docs/platform/Resources/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
+* [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
   * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
   * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
 * Use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)

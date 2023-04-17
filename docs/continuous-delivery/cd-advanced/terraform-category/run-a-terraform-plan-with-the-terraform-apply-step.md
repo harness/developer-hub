@@ -130,7 +130,7 @@ Click the provider where your files are hosted.
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-05.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/5_Resources/Connectors/Code-Repositories/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/7_Connectors/Code-Repositories/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
 
@@ -152,7 +152,7 @@ The following sections cover common Terraform Apply step options.
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ### Source Module
 
@@ -282,7 +282,7 @@ Click **Submit**. The remote file(s) are added.
 
 ##### Artifactory
 
-See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ## Option: Backend Configuration
 

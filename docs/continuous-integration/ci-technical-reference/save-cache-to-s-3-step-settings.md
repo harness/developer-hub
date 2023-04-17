@@ -36,8 +36,8 @@ This step doesn't support AWS connectors that have enabled cross-account access 
 
 For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](../../platform/5_Resources/Connectors/Cloud-providers/add-aws-connector.md)
-* [AWS connector settings reference](../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+* [Add an AWS connector](../../platform/7_Connectors/Cloud-providers/add-aws-connector.md)
+* [AWS connector settings reference](../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 
 ## Region
 

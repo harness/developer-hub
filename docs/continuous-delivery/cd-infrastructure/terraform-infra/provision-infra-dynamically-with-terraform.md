@@ -137,7 +137,7 @@ Here, you'll add a connection to the Terraform script repo.
 2. Click the provider where your files are hosted.
    
    ![](./static/provision-infra-dynamically-with-terraform-02.png)
-3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/5_Resources/Connectors/Code-Repositories/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](../../../platform/7_Connectors/Code-Repositories/connect-to-code-repo.md) or [Artifactory Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 If you're simply experimenting, you can use [HashiCorp's Kubernetes repo](https://github.com/hashicorp/terraform-provider-kubernetes/tree/main/_examples/gke).
 
@@ -161,7 +161,7 @@ You can jump ahead to the Terraform Apply step below. The following sections cov
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ### Source Module
 
@@ -288,7 +288,7 @@ You can connect Harness to remote variable files.
 
 #### Artifactory
 
-See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 ## Backend Configuration
 
@@ -339,7 +339,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Approval step
 

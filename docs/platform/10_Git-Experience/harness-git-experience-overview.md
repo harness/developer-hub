@@ -27,7 +27,7 @@ This topic introduces you to Harness Git Sync.
 
 ### Before you begin
 
-* In the Git Connectors, all Projects that connect to a given Git repo must use the same Connection Type: SSH or HTTP. For more information, see [Connection Type](../7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md#connection-type).  
+* In the Git Connectors, all Projects that connect to a given Git repo must use the same Connection Type: SSH or HTTP. For more information, see [Connection Type](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md#connection-type).  
 Let us take an example where Project1 and Project2 connect to repo Repo1. In this case, the Git connectors for both projects must use the same Connection Type.
 * Do not change any Types or Identifiers (Account Id, Org Id, Project Id, Connectors, etc) for any Harness entities. Ids are immutable and if they are out of sync, Harness Git Experience will not work.
 * Do not delete the branch that you used to enable Git sync. Deleting this branch will cause inconsistencies in the Harness Git Experience.0

@@ -16,7 +16,7 @@ This topic describes how to override the default behavior and use a private regi
    ```
    curl -X  GET https://app.harness.io/registry/_catalog
    ```
-   You can also [set up your CI pipelines](/docs/platform/5_Resources/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector.md) to download build images from this registry instead of Docker Hub.
+   You can also [set up your CI pipelines](/docs/platform/7_Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector.md) to download build images from this registry instead of Docker Hub.
 
 2. For each Security Scan step, add these settings:
 

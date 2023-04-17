@@ -66,7 +66,7 @@ When you add the Helm Chart to Harness as a Manifest, you have different options
 ![](./static/trigger-pipelines-on-new-helm-chart-05.png)
 #### OCI Helm registries are not supported with Harness Triggers
 
-You cannot use [OCI Helm Registries](../5_Resources/Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md) with Helm Chart Triggers.
+You cannot use [OCI Helm Registries](../7_Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md) with Helm Chart Triggers.
 
 ### Create a Helm Chart Trigger
 
@@ -91,9 +91,9 @@ Define what Helm Chart you want Harness to listen on for the Trigger.
 
 1. In **Listen on New Artifact**, click **Define Manifest Source**.
 2. In **Specify Helm Chart Store**, select the repo type.
-	1. HTTP Helm: go to [HTTP Helm Repo Connector Settings Reference](../7_Connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
-	2. Google Cloud Storage: go to [Google Cloud Platform (GCP) Connector Settings Reference](../7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
-	3. AWS S3: go to [AWS Connector Settings Reference](../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+	1. HTTP Helm: go to [HTTP Helm Repo Connector Settings Reference](../7_Connectors/Code-Repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
+	2. Google Cloud Storage: go to [Google Cloud Platform (GCP) Connector Settings Reference](../7_Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
+	3. AWS S3: go to [AWS Connector Settings Reference](../7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 3. Once you have selected a Connector, click **Continue**.
 4. In **Manifest Details**, enter the name of the Helm Chart to listen on in **Chart Name**. For example, `nginx` or `etcd`.
 5. In **Helm Version**, select the version of Helm your repo uses.

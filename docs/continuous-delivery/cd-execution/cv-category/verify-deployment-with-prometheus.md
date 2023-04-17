@@ -17,7 +17,7 @@ This topic covers how to add and configure Prometheus as a Health Source for the
 
 ## Before You Begin
 
-[Add Prometheus as a verification provider](../../../platform/5_Resources/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems.md)
+[Add Prometheus as a verification provider](../../../platform/7_Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems.md)
 
 ## Review: CV Setup Options
 

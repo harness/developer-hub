@@ -50,10 +50,10 @@ To run this pipeline in your project, do the following.
 2. Create the following connectors if you don't have them:
 
    -  [GitHub Connector](https://developer.harness.io/docs/platform/Resources/Connectors/add-a-git-hub-connector)
-   - [GCP Connector](https://developer.harness.io/docs/platform/Resources/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) 
+   - [GCP Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) 
       Use the file secret you just created for the GCP credentials.
-   - [Docker Hub Connector](https://developer.harness.io/docs/platform/Resources/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector)  
-      You can choose to download Harness images from the [Harness Image Registry](https://developer.harness.io/docs/platform/Resources/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead of Docker Hub.
+   - [Docker Hub Connector](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector)  
+      You can choose to download Harness images from the [Harness Image Registry](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead of Docker Hub.
 
 3.  Create a [publicly available bucket in GCS](https://cloud.google.com/storage/docs/access-control/making-data-public#objects) to store the report. 
 

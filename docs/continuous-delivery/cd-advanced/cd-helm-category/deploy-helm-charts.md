@@ -92,7 +92,7 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
    ![](./static/deploy-helm-charts-02.png)
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](../../../platform/5_Resources/Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md) How-tos.
+For the steps and settings of each option, see the [Connect to an Artifact Repo](../../../platform/7_Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md) How-tos.
 
 If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
