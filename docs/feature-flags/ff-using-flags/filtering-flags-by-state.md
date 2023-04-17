@@ -20,7 +20,7 @@ The Feature Flags dashboard lets you filter flags by state (for example, **Enabl
 
     ![A screenshot of the Permanent Flags tile selected to filter for permanent flags.](../static/9-filtering-flags-by-state-01.png)
 
-3. Select **All Flags**, or use one of the available filters, for example, **Permanent Flags**.
+1. Select **All Flags**, or use one of the available filters, for example, **Permanent Flags**.
 
     The dashboard displays the flags for your selected filter.
 
