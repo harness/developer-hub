@@ -15,11 +15,11 @@ It typically involves three steps:
 2. Observe the impact of the failure
 3. Discuss the technical outcomes
 
-### Begin at a minimal blast radius
-
+:::tip
 GameDays help decide the type of failure the system would undergo. Hence, it is strongly recommended to begin with easy use cases where the blast radius is minimal, such as breaking one container, degrading one instance, making one availability zone unavailable, and so on. Later on, you can delve into more complex failures, such as failing an entire service or affecting a large percentage of requests, and so on.
 
 At every step in implementing a GameDay, you will either find a glitch in the system that is addressed or gain confidence in your application.
+:::
 
 Let us jump into understanding how to run a GameDay using HCE’s GameDay feature.
 
@@ -33,13 +33,16 @@ This involves the following steps:
 7. Record the conclusion and action items
 
 :::info
-Once you create a GameDay in HCE, you can run it as many times as you wish. HCE saves the information about every run, which includes the date, results, any notes you add, and so on.
+Once you create a GameDay in HCE, you can run it as many times as you wish. HCE saves the information about every run, which includes the date, summary, any notes you add, and so on.
 :::
 
-### Prerequisites
-
+## Prerequisites
+You can create a GameDay provided you have the following prerequisites.
 1. HCE account
 2. Access to a cluster
+
+## Creating a GameDay
+You can create and run a GameDay with the following steps.
 
 ### Step 1: Plan your GameDay
 
@@ -86,7 +89,7 @@ After adding the experiments to the GameDay, click **Save**.
 1. Now that you have the experiments in the GameDay, you are all set to run them. 
 ![](./static/run-gameday/10-gameday-created.png)
 
-2. Click **Start GameDay**. This prepares your GameDay to run the experiments within the GameDay.
+2. Click **Start GameDay**. This creates experiments within your GameDay.
 ![](./static/run-gameday/11-start-gameday.png)
 
 3. Clicking GameDay leads you to the page that contains the experiments associated with the GameDay.
