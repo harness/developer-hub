@@ -48,7 +48,7 @@ To view flag states in different environments:
 
 1. In Harness, go to your project, and then select **Feature Flags**.
  
-1. In **Environments**, choose an environment from the drop-down, or **All Environments**.
+2. In **Environments**, select a specific environment, or **All Environments**.
 
     * If you choose one environment, you'll see this detailed view:
 
