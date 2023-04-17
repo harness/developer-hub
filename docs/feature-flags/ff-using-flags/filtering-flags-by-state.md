@@ -36,7 +36,7 @@ The Feature Flags dashboard lets you filter flags by state (for example, **Enabl
 | **Potentially Stale Flags** | Flags are marked as potentially stale if in the past 60 days they haven't been changed or evaluated, their default rules or target rules haven’t been added to or updated, or they haven’t been toggled on or off.|
 
 :::info note
- A flag can be marked as both **Active** and **Potentially Stale** if it has been evaluated via an SDK but no other changes have been made in over 60 days. For example, if you evaluated `Flag_A` yesterday using an SDK, but haven’t made any changes on the Harness Platform in over three months, the flag will be marked as Active and Potentially Stale on the Platform.
+ A flag can be marked as both **Active** and **Potentially Stale** if it has been evaluated via an SDK but no other changes have been made in over 60 days. For example, if you evaluated `Flag_A` yesterday using an SDK, but haven’t made any changes on the Harness Platform in over three months, the flag will be marked as **Active** and **Potentially Stale** on the Harness Platform.
 :::
 
 
