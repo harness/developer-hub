@@ -788,6 +788,65 @@ module.exports = {
     },
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
+      to: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-cloudwatch",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-elastic-search",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-sumologic",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
+    },
 
     {
       from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/cloud-cost-management-overview/continuous-efficiency-overview",
