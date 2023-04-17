@@ -1,5 +1,5 @@
 ---
-title: Helm chart deployment tutorial
+title: Helm chart deployments
 description: This topic shows you how to deploy a Docker image to your Kubernetes cluster using Helm charts in Harness.
 sidebar_position: 1
 ---

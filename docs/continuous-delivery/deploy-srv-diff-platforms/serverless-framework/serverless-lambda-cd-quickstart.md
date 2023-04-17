@@ -1,5 +1,5 @@
 ---
-title: Serverless.com Framework - AWS Lambda deployment tutorial
+title: AWS Lambda deployments (Serverless.com Framework)
 description: This topic walks you through deploying a Serverless Lambda application to AWS Lambda using Harness.
 sidebar_position: 7
 helpdocs_topic_id: 5fnx4hgwsa

@@ -1,5 +1,5 @@
 ---
-title: Secure Shell (SSH) deployment tutorial
+title: Secure Shell (SSH) deployments
 description: Deploy to any platform using SSH.
 sidebar_position: 8
 helpdocs_topic_id: mpx2y48ovx
@@ -12,7 +12,7 @@ You can use Secure Shell (SSH) to deploy your artifacts to hosts located in Micr
 
 This deployment is called Traditional because it uses Secure Shell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, such as those in the Kubernetes Tutorial.
 
-This tutorial shows you how to run a SSH deployment in Harness by setting up a Secure Shell Service and deploying artifacts from Artifactory to a target host in AWS. You will use a Canary deployment strategy.
+This topic shows you how to run a SSH deployment in Harness by setting up a Secure Shell Service and deploying artifacts from Artifactory to a target host in AWS. You will use a Canary deployment strategy.
 
 For Secure Shell, you can access artifacts from **Jenkins**, **Artifactory**, or **Custom**. If you select **Custom**, you will need to provide a Bash script.
 

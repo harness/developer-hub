@@ -1,10 +1,10 @@
 ---
-title: Kubernetes deployment tutorial
+title: Kubernetes deployments
 description: Deploy a Docker image into your Kubernetes cluster.
 sidebar_position: 2
 ---
 
-This tutorial shows you how to deploy a publicly-available NGINX Docker image and manifest into your Kubernetes cluster using a [rolling update strategy](kubernetes-executions/create-a-kubernetes-rolling-deployment.md) in Harness.
+This topic shows you how to deploy a publicly-available NGINX Docker image and manifest into your Kubernetes cluster using a [rolling update strategy](kubernetes-executions/create-a-kubernetes-rolling-deployment.md) in Harness.
 
 ## Objectives
 

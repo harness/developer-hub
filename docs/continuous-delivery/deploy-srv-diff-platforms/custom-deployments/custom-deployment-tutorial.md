@@ -1,5 +1,5 @@
 ---
-title: Custom deployments using Deployment Templates tutorial
+title: Custom deployments using Deployment Templates
 description: This topic walks you through a custom deployment in Harness using Deployment Templates to connect to target platforms, obtain target host information, and execute deployment steps.
 sidebar_position: 10
 helpdocs_topic_id: 6k9t49p6mn

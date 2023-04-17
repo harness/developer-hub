@@ -1,5 +1,5 @@
 ---
-title: Azure ACR to AKS deployment tutorial
+title: Azure ACR to AKS deployments
 description: This topic walks you through deploying an image from Azure ACR to Azure AKS using Harness.
 sidebar_position: 6
 helpdocs_topic_id: m7nkbph0ac
