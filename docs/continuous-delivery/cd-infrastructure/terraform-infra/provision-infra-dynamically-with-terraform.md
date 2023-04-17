@@ -438,5 +438,5 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 ## See also
 
-* [Apply a Terraform Plan with the Terraform Apply Step](../../cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+* [Apply a Terraform Plan with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
 
