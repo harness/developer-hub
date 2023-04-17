@@ -18,7 +18,7 @@ ECS update container resource limit:
   - Verifying the resilience of your system when containers are running with lower resource limits.
   - Evaluating the impact of changes in resource limits on the performance and availability of your application.
 
-:::tip
+:::warning
 Modifying the container resource limits using the ECS update container resource limit is an intentional disruption and should be used carefully in controlled environments, such as during testing or staging, to avoid any negative impact on the production workloads.
 :::
 
@@ -42,12 +42,47 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+:::tip
+It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+:::
+
+## Permissions required
+
+Here is an example AWS policy to execute the fault.
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "ecs:DescribeTasks",
+                "ecs:DescribeServices",
+                "ecs:DescribeTaskDefinition",
+                "ecs:RegisterTaskDefinition",
+                "ecs:UpdateService",
+                "ecs:ListTasks",
+                "ecs:DeregisterTaskDefinition"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": [
+                "iam:PassRole"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
 
 :::info note
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 - The ECS containers should be in a healthy state before and after introducing chaos.
 - Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+- Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 :::
 
   <h3>Mandatory tunables</h3>
