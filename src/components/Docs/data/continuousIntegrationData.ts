@@ -119,7 +119,7 @@ import {
           title: "Set up build infrastructure",
           module: "ci",
           description:
-            "",
+            "Configure build farms for your CI pipelines.",
           link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me",
         },
         {
