@@ -70,6 +70,10 @@ When building a pipeline in pipeline studio, you can copy the FQN of a setting u
 
 ![](./static/harness-variables-16.png)
 
+:::note
+FQNs are not supported when a [matrix strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/#matrix) is used, or when adding a multi-service or multi-environment in a stage or pipeline.
+:::
+
 #### Stage level and pipeline level expressions
 
 Every section and step in a stage contains input information you can reference as expressions.
@@ -598,7 +602,7 @@ You reference stage variables **within their stage** using the expression `<+
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage name].variables.[variable name]>`.
 
 :::note
-Fully Qualified Names (FQNs), for example, `<+pipeline.stages.s.variables.envname>`, are not supported when matrix strategy is used, or when adding a multi-service or multi-environment in a stage or pipeline.
+FQNs, for example, `<+pipeline.stages.s.variables.envname>`, are not supported when a [matrix strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/#matrix) is used, or when adding a multi-service or multi-environment in a stage or pipeline.
 :::
 
 
