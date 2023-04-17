@@ -893,6 +893,76 @@ module.exports = {
 
     // Created by michael cretzman for DOC-2694 on Apr 11, 2023
     {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/control-resource-usage-with-queue-steps",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/servicenow-import-set",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/servicenow-import-set",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/email_step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-rollback",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-delegate-step",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step",
+      to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step",
+      to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/terraform-category/rollback-provisioned-infra-with-the-terraform-rollback-step",
+      to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/terraform-category/remove-provisioned-infra-with-terraform-destroy",
+      to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy",
+    },
+
+    {
       from: "/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
     },
@@ -1196,6 +1266,12 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
       to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
+    },
+
+    // adding redirect for Rashmi
+    {
+      from: "/docs/platform/References/whitelist-harness-domains-and-ips",
+      to: "/docs/platform/References/allowlist-harness-domains-and-ips",
     },
   ],
 };
