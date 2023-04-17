@@ -597,6 +597,11 @@ You reference stage variables **within their stage** using the expression `<+
 
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage name].variables.[variable name]>`.
 
+:::note
+Fully Qualified Names (FQNs), for example, `<+pipeline.stages.s.variables.envname>`, are not supported when matrix strategy is used, or when adding a multi-service or multi-environment in a stage or pipeline.
+:::
+
+
 ### <+stage.name>
 
 The name of the stage where the expression is evaluated.
