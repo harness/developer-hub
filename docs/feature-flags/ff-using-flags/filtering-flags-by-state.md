@@ -16,7 +16,7 @@ The Feature Flags dashboard lets you filter flags by state (for example, **Enabl
 
 1. In Harness, go to your project, and then select **Feature Flags**.
 
-    The dashboard displays the total number of flags, and the number of flags in each state. For details, go to [Flag states](#flag-states) below. 
+    The dashboard displays the total number of flags, and the number of flags in each state. For details, go to [Flag states](#flag-states). 
 
     ![A screenshot of the Permanent Flags tile selected to filter for permanent flags.](../static/9-filtering-flags-by-state-01.png)
 
