@@ -127,3 +127,5 @@ org.<templateIdentifier>
 - You can view the Git YAML differences for the pipeline and see which lines have been modified.
 
 - To update the template click Save. Harness reconciles the change making it the default state.
+
+- Reconciliation is on-demand, we need to click on 3 dots next to run button and click on reconcile to check for runtime inputs validations, It will tell us if there is a need for reconciliation or not
