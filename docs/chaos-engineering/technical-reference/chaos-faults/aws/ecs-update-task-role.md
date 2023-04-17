@@ -18,8 +18,7 @@ ECS update task role:
   - Verifying the authorization settings of your system when the IAM role is updated.
   - Evaluating the impact of changes in IAM roles on the security and compliance of your application.
 
-
-:::tip
+:::warning
 Modifying the IAM task role using the ECS update task role is an intentional disruption and should be used carefully in controlled environments.
 :::
 
@@ -43,20 +42,13 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-:::info note
-- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
-- The ECS containers should be in a healthy state before and after introducing chaos.
-- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::tip
+It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 :::
 
 ## Permissions required
 
 Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -85,11 +77,13 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
 
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Fault tunables
+:::info note
+- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- The ECS containers should be in a healthy state before and after introducing chaos.
+- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+- Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+:::
 
    <h3>Mandatory tunables</h3>
     <table>

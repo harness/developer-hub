@@ -14,7 +14,7 @@ ECS invalid container image:
 - Simulates scenarios where container images are updated, that may impact the behavior of your application or infrastructure. For example, you can update the Docker image of a container to a newer version or a different image to test how your application handles image updates.
 - Validates the behavior of your application and infrastructure during simulated container image updates, such as:
   - Testing the resilience of your system during image updates, including verifying if the updated image is pulled successfully and if the container starts with the new image.
-  - Validating the performance and availability of your application after container image updates, including checking if the updated image performs as expected and if there are any issues with the new image.
+  - Validating the performance and availability of your application after the container image updates, that includes checking if the updated image performs as expected and if there are issues with the new image.
 
 ## Prerequisites
 
@@ -36,20 +36,13 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-:::info note
-- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-- The ECS containers should be in a healthy state before and after introducing chaos.
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::tip
+It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
 :::
 
 ## Permissions required
 
 Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
 
 ```json
 {
@@ -78,11 +71,12 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Fault tunables
+:::info note
+- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
+- The ECS containers should be in a healthy state before and after introducing chaos.
+Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+- Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+:::
 
    <h3>Mandatory tunables</h3>
     <table>
@@ -142,7 +136,7 @@ Refer to the [superset permission/policy](./security-configurations/policy-for-a
     </table>
 
 
-### Invalid ECS conatiner image
+### Invalid ECS container image
 
 Invalid image used for the ECS task containers. Tune it by using the `IMAGE` environment variable.
 
