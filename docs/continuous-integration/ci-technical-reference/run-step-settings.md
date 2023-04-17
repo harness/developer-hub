@@ -213,7 +213,7 @@ Enable this option to run the container with escalated privileges. This is equiv
 
 ### Report Paths
 
-The path to the file(s) that store test results in the JUnit XML format. You can add multiple paths. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+The path to the file(s) that store test results in the JUnit XML format. You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 This setting is required for the Run step to be able to publish test results.
 
