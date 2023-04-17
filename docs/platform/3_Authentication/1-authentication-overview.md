@@ -119,7 +119,7 @@ To configure your account's session timeout:
 
 1. In your Harness account, select **Account Settings**.
 
-2. Select Authentication.
+2. Select **Authentication**.
 
 3. In **Session Timeout (in minutes)**, enter the time in minutes to set the session time out.
 
