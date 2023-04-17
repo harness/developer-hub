@@ -14,7 +14,7 @@ The Terraform Apply step can apply a Terraform script with or without the Terraf
 
 Typically the Terraform Apply step is used with the Terraform Plan step to apply a plan. For steps on using the Terraform Plan step, see [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step).
 
-The Terraform Apply step can provision any resource, including the target infrastructure for a CD deployment. For steps on provisioning the target infrastructure for a CD deployment, see [Provision Target Deployment Infra Dynamically with Terraform](../../cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
+The Terraform Apply step can provision any resource, including the target infrastructure for a CD deployment. For steps on provisioning the target infrastructure for a CD deployment, see [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
 
 ## Before You Begin
 
@@ -50,7 +50,7 @@ Next, you add the Terraform Apply step, select **Inherit from Plan** in **Config
 
 For steps on using the Terraform Plan with the Apply step, see:
 
-* [Provision Target Deployment Infra Dynamically with Terraform](../../cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
+* [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
 
 You can also simply run the Terraform Apply step without applying the plan from the Terraform Plan step.
 
@@ -60,7 +60,7 @@ In that case, you simply add the Terraform Apply step and select the **Inline** 
 
 When you are provisioning the target infrastructure for a deployment, you add the Terraform Plan step in the stage's Infrastructure in **Dynamic Provisioning**. Dynamic Provisioning is used to provision the target infrastructure for the stage's deployment. Consequently, if you add Terraform Plan there, you must use a Terraform Apply step to apply the plan.
 
-See [Provision Target Deployment Infra Dynamically with Terraform](../../cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
+See [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
 
 You can also add a Terraform Apply step anywhere in the **Execution** steps for the stage. In that case, you can use a Terraform Plan step but it's not required.
 

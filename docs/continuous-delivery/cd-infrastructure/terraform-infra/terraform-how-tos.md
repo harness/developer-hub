@@ -12,7 +12,7 @@ Harness has first-class support for HashiCorp [Terraform](https://www.terraform.
 
 See the following Terraform How-tos:
 
-* [Provision Target Deployment Infra Dynamically with Terraform](../../cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
+* [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
 * [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step)
 * [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
 * [Remove Provisioned Infra with the Terraform Destroy Step](remove-provisioned-infra-with-terraform-destroy)

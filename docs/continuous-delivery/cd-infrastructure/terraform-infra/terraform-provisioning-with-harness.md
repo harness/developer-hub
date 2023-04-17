@@ -42,7 +42,7 @@ You set up a Terraform target infrastructure provisioning in the following order
 3. **Map outputs to the** **target Infrastructure**. Harness needs a few script outputs so that it can target the provisioned infrastructure, such as namespace. You simply map some script outputs to the required Harness target infrastructure settings.
 4. **Deployment**. The Pipeline deploys to the provisioned infrastructure defined in its target Infrastructure Definition.
 
-See [Provision Target Deployment Infra Dynamically with Terraform](../../cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
+See [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform).
 
 ### Limitations
 
