@@ -96,5 +96,5 @@ For more information, go to [Run a step on multiple target instances](../../cont
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 * [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 * [Speed Up CI Test Pipelines Using Parallelism](../8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md)
-* [Optimizing CI Build Times](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md)
+* [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
 

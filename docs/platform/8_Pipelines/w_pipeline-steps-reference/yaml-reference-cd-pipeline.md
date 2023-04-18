@@ -45,11 +45,13 @@ The YAML editor has an autocomplete feature that makes it very easy to see what 
 The keyboard command for autocomplete is `Ctrl + Space`.
 
 ![](./static/yaml-reference-cd-pipeline-01.png)
+
 If an entry already has a value, the autocomplete will not show you other options. You need to delete the value and then enter `Ctrl + Space`.
 
 The command palette keyboard command is `F1`.
 
 ![](./static/yaml-reference-cd-pipeline-02.png)
+
 The command palette displays the keyboard shortcuts for all commands.
 
 ### Limitations
@@ -417,7 +419,7 @@ That example is for the platform agnostic Kubernetes infrastructure. For a diffe
 See also:
 
 * [Define Your Kubernetes Target Infrastructure](../../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
-* [Set up a Kubernetes cluster build infrastructure](../../../continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
+* [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 
 ### Execution
 

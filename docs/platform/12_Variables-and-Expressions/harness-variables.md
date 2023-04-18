@@ -371,7 +371,7 @@ For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+p
 
 ## Built-in CIE codebase variables reference
 
-In Harness, you set up your [codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
+In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
 
 Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
 
@@ -396,7 +396,7 @@ echo <+codebase.pullRequestLink>
 echo <+codebase.pullRequestBody>  
 echo <+codebase.state>
 ```
-See [Built-in CIE Codebase Variables Reference](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md).
+See [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Account
 
@@ -486,6 +486,7 @@ For example, in the following execution URL, the UUID follows `executions` and i
 ```
 https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quickstart/pipelines/Helm_Quickstart/executions/kNHtmOaLTu66f_QNU-wdDw/pipeline
 ```
+
 ### <+pipeline.executionUrl>
 
 The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
@@ -517,7 +518,7 @@ For CD pipelines, the ID is named execution. For CI pipelines, the ID is named b
 
 ![](./static/harness-variables-26.png)
 
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repo, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For an example, go to the [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra).
+You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repo, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For an example, go to the [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm).
 
 ### <+pipeline.startTs>
 
@@ -1465,6 +1466,6 @@ For more information migrating to NextGen, go to the following:
 
 ## See also
 
-* [Codebase Variables Reference](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md)
+* [Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
 * [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 
