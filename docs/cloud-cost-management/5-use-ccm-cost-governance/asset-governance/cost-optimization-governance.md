@@ -36,7 +36,7 @@ Harness provides some out-of-the-box policies for EC2, RDS, EBS, ELB, and S3 tha
 
 ## Create a new rule set
 
-Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. They are especially useful when dealing with numerous rules, as it can become challenging to keep track of them individually. Rule Sets help to keep rules organized and easily accessible, making it easier to manage and maintain complex rule configurations.
+Rule sets serve as logical bindings on top of individual rules that help you organize and manage rules. They are especially useful when dealing with numerous rules, as it can become challenging to keep track of them individually. Rule sets help to keep rules organized and easily accessible, making it easier to manage and maintain complex rule configurations.
 
 To create a rule set, perform the following steps:
 
@@ -76,22 +76,23 @@ To create enforcement, perform the following steps:
 4. Click **+New Enforcement**.
 5. Enter a name for the enforcement.
 6. Optionally, enter a description of the enforcement.
-7. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule.
+7. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
 8. Click Continue. 
-
-    <docimage path={require('./static/rule-enforcements-page.png')} width="60%" height="60%" title="Click to view full size image" />
-
 9. Select the target accounts and target regions. You could select multiple AWS accounts and regions.
 10. You can set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
-11. Toggle the **Dry Run** mode if you do not want to take action right away.
+11. Toggle the **Dry Run** mode if you do not want to take action immediately.
 12. Click **Finish**. 
 
     <docimage path={require('./static/set-up-schedule.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-After setting up the schedule, you can view the enforcement on the **Rule Enforcements** page. Expand the enforcement to view the rules, target accounts, and regions included in the enforcement. Furthermore, you can disable the enforcement at any time using the toggle button found in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) to switch to active mode.
+After setting up the schedule, you can view the enforcement on the **Rule Enforcements** page. Expand the enforcement to view the rules, target accounts, and regions included in the enforcement. 
 
 <docimage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
+
+Furthermore, you can disable the enforcement at any time using the toggle button in the **Status** column. If you want to turn off the dry-run mode, select **Edit** from the vertical ellipsis menu (⋮) and switch to active mode.
+  
+<docimage path={require('./static/rule-enforcements-page.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 
@@ -105,6 +106,9 @@ After setting up the schedule, you can view the enforcement on the **Rule Enforc
 3. Select **Evaluations**.
 4. Select the rule to view the evaluation details. 
 The target accounts, regions, and evaluation logs are displayed.
+
+ <docimage path={require('./static/asset-gov-eval.png')} width="60%" height="60%" title="Click to view full size image" />
+
 
 ## Use filters in rule evaluation
 
