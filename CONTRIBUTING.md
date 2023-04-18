@@ -148,7 +148,7 @@ take a look at a [sample MD page ](http://developer.harness.io/tutorials/hdh/hdh
 on HDH. 
 
 ## Additional metadata
-When adding a new Markdown file, above the initial H1 tag, a `description` is needed for SEO. Below is an example for a [CI piece](https://github.com/harness/developer-hub/blob/main/tutorials/build-code/ci-node-docker-quickstart.md). Having `keywords` is recommended. 
+When adding a new Markdown file, above the initial H1 tag, a `description` is needed for SEO. Below is an example for a [CI piece](https://github.com/harness/developer-hub/blob/main/tutorials/ci-pipelines/build/ci-node-docker-quickstart.md). Having `keywords` is recommended. 
 
 ```
 ---

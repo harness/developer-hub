@@ -17,7 +17,7 @@ export default function Platform() {
     <div className="container">
       {/* <img src="/img/cd.svg" /> */}
       <div className={styles.SectionName}>
-        <h3>Administering The Harness Platform</h3>
+        <h3>Administer the Harness Platform with ease</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -43,7 +43,7 @@ export default function Platform() {
               </button>
             </Link>
 
-            <Link href="/release-notes/harness-platform">
+            <Link href="/release-notes/platform">
               <button
                 className={clsx(
                   "button button--lg",

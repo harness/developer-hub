@@ -82,8 +82,8 @@ All stages have an infrastructure definition, which represents the build infrast
 
 :::tip Tutorials
 
-* [Harness Cloud build infrastructure tutorial](/tutorials/build-code/fastest-ci)
-* [Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm)
+* [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci)
+* [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
 
 :::
 

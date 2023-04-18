@@ -19,28 +19,28 @@ import { MODULES } from "../../constants";
           module: MODULES.ci,
           description:
             "Build a Docker Image on a Kubernetes cluster build farm.",
-          link: "/tutorials/build-code/build/kubernetes-build-farm",
+          link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
         },
         {
           title: "Go application",
           module: MODULES.ci,
           description:
             "Build a Docker Image of a Go application.",
-          link: "/tutorials/build-code/build/go",
+          link: "/tutorials/ci-pipelines/build/go",
         },
         {
           title: "Java application",
           module: MODULES.ci,
           description:
             "Build a Docker Image of Java HTTP Server application.",
-          link: "/tutorials/build-code/build/java",
+          link: "/tutorials/ci-pipelines/build/java",
         },
         {
           title: "NodeJS application",
           module: MODULES.ci,
           description:
             "Build a Docker Image of a NodeJS application.",
-          link: "/tutorials/build-code/build/nodejs",
+          link: "/tutorials/ci-pipelines/build/nodejs",
         },
 
         {
@@ -48,21 +48,21 @@ import { MODULES } from "../../constants";
           module: MODULES.ci,
           description:
             "Build a Docker Image of a React application.",
-          link: "/tutorials/build-code/build/react",
+          link: "/tutorials/ci-pipelines/build/react",
         },
         {
           title: "Rust application",
           module: MODULES.ci,
           description:
             "Build a Docker Image of a multi-architecture Rust application.",
-          link: "/tutorials/build-code/build/rust",
+          link: "/tutorials/ci-pipelines/build/rust",
         },
         {
           title: "Signed images",
           module: MODULES.ci,
           description:
             "Build a Signed Docker Image of a Go application.",
-          link: "/tutorials/build-code/build/signed-image",
+          link: "/tutorials/ci-pipelines/build/signed-image",
         },
         {
           title: "Terraform Cloud notification triggers",
@@ -73,7 +73,7 @@ import { MODULES } from "../../constants";
           newDoc: true,
           type: [docType.Documentation],
           time: '9 min',
-          link: "/tutorials/build-code/build/tfc-notification",
+          link: "/tutorials/ci-pipelines/build/tfc-notification",
         },
       ],
     },

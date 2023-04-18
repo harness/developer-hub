@@ -19,28 +19,28 @@ import { MODULES } from "../../constants";
           module: MODULES.ci,
           description:
             "Use a Run step to include CodeCov code coverage.",
-          link: "/tutorials/build-code/test/codecov",
+          link: "/tutorials/ci-pipelines/test/codecov",
         },
         {
           title: "Publish Allure Report",
           module: MODULES.ci,
           description:
             "Publish an Allure Report.",
-          link: "/tutorials/build-code/test/allure-report",
+          link: "/tutorials/ci-pipelines/test/allure-report",
         },
         {
           title: "Run LocalStack",
           module: MODULES.ci,
           description:
             "Run LocalStack as a Background step.",
-          link: "/tutorials/build-code/test/localstack",
+          link: "/tutorials/ci-pipelines/test/localstack",
         },
         {
           title: "Run Sauce Connect Proxy",
           module: MODULES.ci,
           description:
             "Run Sauce Connect Proxy as a Background step.",
-          link: "/tutorials/build-code/test/saucelabs-proxy",
+          link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
         },
       ],
     },

@@ -14,7 +14,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
+    link: "/tutorials/security-tests/standalone-pipeline",
   },
   {
     title: "Create an integrated STO/CI pipeline",
@@ -26,7 +26,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
+    link: "/tutorials/security-tests/cicd-integrated-pipeline",
   },
 ];
 
@@ -41,10 +41,10 @@ export const STOList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
+    link: "/tutorials/security-tests/standalone-pipeline",
   },
   {
-    title: "Create an integrated STO/CI pipeline",
+    title: "Create an CI/CD pipeline integrated with STO",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
@@ -53,10 +53,10 @@ export const STOList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
+    link: "/tutorials/security-tests/cicd-integrated-pipeline",
   },
   {
-    title: "Scanning a NodeJS Application",
+    title: "Scan a NodeJS Application",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
@@ -65,6 +65,6 @@ export const STOList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
+    link: "/tutorials/security-tests/nodejs-owasp",
   },
 ];
