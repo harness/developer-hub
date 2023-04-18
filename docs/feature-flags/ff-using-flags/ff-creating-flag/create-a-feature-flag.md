@@ -70,7 +70,7 @@ There are two different types of Feature Flags you can create:
 After you have created your Boolean flag, you can:
 
 * [Manage the variations of the Feature Flag](../update-feature-flags/manage-variations.md)
-* [Add flag prerequisites](../add-prerequisites-to-feature-flag.md)
+* [Add flag prerequisites](../../add-prerequisites-to-feature-flag.md)
 * [Target users with flags](../ff-target-management/targeting-users-with-flags.md)
 
 ## Create a multivariate flag
@@ -108,6 +108,6 @@ To create a multivariate flag:
 After you have created your multivariate flag, you can then:
 
 * [Manage the Variations of the Feature Flag](../update-feature-flags/manage-variations.md)
-* [Add Flag Prerequisites](../add-prerequisites-to-feature-flag.md)
+* [Add Flag Prerequisites](../../add-prerequisites-to-feature-flag.md)
 * [Target Users with Flags](../ff-target-management/targeting-users-with-flags.md)
 
