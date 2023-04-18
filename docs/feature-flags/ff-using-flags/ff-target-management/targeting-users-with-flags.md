@@ -48,7 +48,7 @@ You should understand how the Harness Platform prioritizes targets and target gr
    - As the target group prioritization of `Group_A` is `0`, and the target group prioritization of `Group_C` is `2`, the flag is disabled for `Target_1`. This is because the lower-numbered target group priority, `0`, takes precedence. 
 
 :::info note
-If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](../manage-featureflags-in-git-repos.md).
+If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](../../manage-featureflags-in-git-repos.md).
 :::
 
 ## Target specific users or target groups when a flag is enabled

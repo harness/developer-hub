@@ -1,5 +1,5 @@
 ---
-title: Create a project
+title: Complete the prerequisites
 description: Before you can create a Feature Flag, you need to create a Project in the Harness platform. A Feature Flag is available only for the Project the Flag is created in, so you need to create any Flags in…
 sidebar_position: 10
 helpdocs_topic_id: 47fkt1ric5
@@ -13,15 +13,19 @@ import create_project from './static/1-create-a-project-00.png'
 import about_project from './static/1-create-a-project-01.png'
 import invite_collabs from './static/1-create-a-project-02.png'
 ```
+This topic contains instructions for completing the prerequisites, if you haven't done so already, for creating Feature Flags:
 
+* Create a project
+* Create an environment
+* Create an SDK key
 
 Before you can create a Feature Flag, you need to create a project in the Harness platform. A Feature Flag is available only for the project the flag is created in, so you need to create any flags in each project you want to use them for.
 
 This topic describes how to create a project in the Harness Platform. For more information, go to [Harness Platform documentation](/docs/platform).
 
-## Before you begin
-
+:::note info
 Before you create a Feature Flag, you must have [created an Organization](/docs/platform/organizations-and-projects/create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](../../ff-onboarding/ff-security-compliance/manage-access-control.md).
+:::
 
 ## Create a project
 
@@ -62,9 +66,60 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 
 4. In your project, click **Feature Flags**.
 
-## Next step
+## Create an environment 
 
-* [Create an Environment](create-an-environment.md) to host your Feature Flags. 
+Once you've created a project, you need to create an environment before you create a Feature Flag. Feature Flags can be used independently across multiple environments within a single project, for example:
+
+* In Project X you have two environments, `Environment_A` and `Environment_B`.
+* You create `Flag_1`.
+* In `Environment_A` you could have `Flag_1` toggled `on`, but in `Environment_B`, `Flag_1` is toggled `off`.
+
+![A side by side screenshot that shows the same flag in two environments. One is toggled on and one is toggled off.](./static/2-create-an-environment-03.png) 
+
+This topic describes how to create an environment in the Harness platform. 
+
+To read more about the Harness Platform, see [Harness Platform](https://harness.helpdocs.io/category/3fso53aw1u-howto-general).
+
+### Before you begin
+
+Before you create a Feature Flag, you must have:
+
+1. [Created an Organization](../../../platform/organizations-and-projects/create-an-organization.md)
+1. [Created a project](create-a-project.md)
+
+### Create an environment
+
+1. In your project, in **Environments**, click **Create an Environment**.
+1. Enter a **Name** for your environment.
+
+    Harness generates a unique identifier for names. For details and restrictions, go to [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference).
+
+1. Select the **Environment type** and click **Create**.
+
+    ![Create an environment form](./static/2-create-an-environment-04.png)
+
+1. Your environment is created and you can find it listed in **Environments**.
+
+
+## Create an SDK Key
+
+After you’ve created your environment, you need to create an SDK key for it. You need to use this SDK key in your application’s code to authenticate your connection to the Harness Feature Flag client. 
+
+:::info note
+ You can view and copy the SDK key only immediately after it is created. For security, after you leave the page, the key is redacted and you can’t view it. Make sure you make a copy of the key to use in your application.
+:::
+
+To create an SDK key:
+
+1. In the environment you created, in **Settings**, click **Create SDK Key**.
+2. In **Create SDK Key**, in **Name**, enter a name for your SDK key.
+3. In **Key Type**, select either **Client** or **Server** depending on the type of SDK you want to use. For more information about the SDK types Harness supports, go to [Chose a Client-side or Server-side SDK](../../ff-sdks/sdk-overview/client-side-and-server-side-sdks.md). If your organization needs to rotate the keys, you can choose to add more than one key for the same environment.
+4. Click **Create**.
+5. Copy and store your Secret.
+
+    :::info note
+     You can only view and copy the SDK key immediately after it is created. For security, after you leave the page, the key is redacted and you can’t view it. Make sure you make a copy of the key to use in your application.
+    :::
 
 
 
