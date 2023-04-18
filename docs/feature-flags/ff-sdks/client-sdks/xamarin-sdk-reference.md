@@ -1,5 +1,5 @@
 ---
-title: Xamarin SDK Reference
+title: Xamarin SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your Xamarin application.
 sidebar_position: 60
 helpdocs_topic_id: x9mh0o785u

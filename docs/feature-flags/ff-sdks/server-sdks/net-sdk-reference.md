@@ -1,5 +1,5 @@
 ---
-title: .NET SDK Reference
+title: .NET SDK reference
 description: This topic explains how to use the Harness Feature Flags (FF) SDK in your .NET application.
 sidebar_position: 40
 helpdocs_topic_id: c86rasy39v

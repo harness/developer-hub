@@ -1,5 +1,5 @@
 ---
-title: Target Users with Flags
+title: Target users with flags
 description: This topic describes how to use targeting rules to control variations that you want to serve to your users.
 sidebar_position: 30
 helpdocs_topic_id: xf3hmxbaji

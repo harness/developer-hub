@@ -1,5 +1,5 @@
 ---
-title: How SDKs Communicate with the Feature Flags Client
+title: How SDKs communicate with the Feature Flags client
 description: This topic describes how the SDKs communicate with Harness Feature Flags to receive flag changes.
 sidebar_position: 20
 helpdocs_topic_id: 7ikyqtmjce

@@ -1,5 +1,5 @@
 ---
-title: Policies Overview for Feature Flags
+title: Policies overview for Feature Flags
 description: This topic gives an overview of how Harness Policy Engine works with Feature Flags and OPA.
 tags: 
    - harness policy engine

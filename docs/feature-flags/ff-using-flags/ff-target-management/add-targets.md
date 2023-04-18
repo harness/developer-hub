@@ -1,5 +1,5 @@
 ---
-title: Add Targets
+title: Add targets
 description: This topic describes how to add targets to your environment.
 sidebar_position: 10
 helpdocs_topic_id: dbk9uoaid3

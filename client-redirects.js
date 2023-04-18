@@ -47,6 +47,7 @@ module.exports = {
       from: "/docs/feature-flags/ff-onboarding/ff-getting-started/feature-flag-best-practices",
       to: "/docs/feature-flags/ff-onboarding/feature-flag-best-practices",
     },
+
     {
       from: "/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags",
       to: "/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags",

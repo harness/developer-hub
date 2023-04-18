@@ -1,5 +1,5 @@
 ---
-title: Node.js SDK Reference
+title: Node.js SDK reference
 description: This topic describes how to use the Harness Feature Flags Node.js SDK for your Node.js application. For getting started quickly, you can use our sample code from the Node.js SDK README. You can also clone…
 sidebar_position: 50
 helpdocs_topic_id: 3v7fclfg59

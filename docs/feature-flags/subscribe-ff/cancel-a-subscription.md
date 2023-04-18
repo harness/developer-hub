@@ -1,5 +1,5 @@
 ---
-title: Cancel a Subscription
+title: Cancel a subscription
 description: To cancel your subscription --  On the Harness Platform, on the lefthand navigation, click Help. Select Submit a ticket. Complete the following fields in the form --  Feedback category  --  Select Question..…
 sidebar_position: 90
 helpdocs_topic_id: oxswgw7fvl

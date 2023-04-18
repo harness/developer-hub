@@ -1,5 +1,5 @@
 ---
-title: Build a Feature Flag Pipeline
+title: Build a Feature Flag pipeline
 description: This topic explains how to build a Feature Flag Pipeline.
 tags: 
    - helpDocs
