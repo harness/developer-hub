@@ -100,7 +100,11 @@ You can edit the YAML to include only the SDKs and versions Harness requires for
             cd /opt/harness-delegate  
 ...
 ```
-You can modify the desired export PATH as needed by using the command - export PATH=/opt/harness-delegate/custom-client-tools/:$PATH
+You can modify the export `PATH` as needed using the following command:
+
+```
+export PATH=/opt/harness-delegate/custom-client-tools/:$PATH
+```
 
 ## Add your custom tools
 
