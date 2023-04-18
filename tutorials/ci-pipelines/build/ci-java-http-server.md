@@ -6,8 +6,6 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/java
 ---
 
-<!-- Tabs/sections for Maven, Gradle, Ant -->
-
 # Build, test, and publish a Java app
 
 In this tutorial, you will create a Harness CI pipeline that does the following:
@@ -75,7 +73,10 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 4. When prompted to select a repository, search for **jhttp**, select the repository that you forked earlier, and then select **Configure Pipeline**. If your GitHub account isn't connected to your Harness account or project, you need to [add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector).
 4. Under **Choose a Starter Configuration**, select **Java with Maven** and then select **Create a Pipeline**.
 
-A pipeline is generated with the following YAML. To view the YAML, select **YAML** at the top of the Pipeline Studio.
+<details>
+<summary>Java with Maven starter pipeline YAML</summary>
+
+The YAML for the **Java with Maven** starter pipeline is as follows. To switch to the YAML editor, select **YAML** at the top of the Pipeline Studio.
 
 ```yaml
 pipeline:
@@ -116,8 +117,9 @@ pipeline:
                       mvn -B package --file pom.xml
 ```
 
-<details>
-<summary>Option: Change the build infrastructure</summary>
+</details>
+
+### Understand the build infrastructure
 
 This pipeline uses a Linux AMD64 machine on Harness Cloud build infrastructure, as declared in the stage's `platform` specifications.
 
@@ -134,9 +136,16 @@ This pipeline uses a Linux AMD64 machine on Harness Cloud build infrastructure, 
             spec: {}
 ```
 
-You can change the build infrastructure if you want to use a different OS, arch, or infrastructure. For more information, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+You can change the build infrastructure if you want to use a different OS, arch, or infrastructure. For more information on build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
 
-</details>
+Regardless of the build infrastructure you choose, you must ensure the build farm can run the commands required by your pipeline. For example, this tutorial uses tools that are publicly available through Docker Hub or already installed on [Harness Cloud's preconfigured machines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+
+In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) and your pipeline requires a tool that is not already available in the cluster, you can configure your pipeline to load those prerequisite tools when the build runs. There are several ways to do this in Harness CI, including:
+
+* [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies) for running dependent services.
+* [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) to run templated scripts, such as GitHub Actions, BitBucket Integrations, or any Drone plugin.
+* [Various caching options](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) to load dependency caches.
+* [Run steps](/docs/category/run-scripts) for running all manner of scripts and commands.
 
 ## Add a pipeline variable
 
@@ -205,6 +214,16 @@ Add a step to run tests against the JHTTP app code. This portion of the tutorial
 
 4. Select **Apply Changes**.
 
+:::tip
+
+Use **Pre-Command**, **Build Arguments**, and **Post-Command** to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in **Pre-Command**.
+
+Make sure you pull an **Image** corresponding with the test tool you're using. For example, with Bazel, you can use the Bazel image, `gcr.io/bazel-public/bazel:[VERSION]`.
+
+You could also use **Pre-Command** to prepare the test environment. For example, you could supply commands to [install Gradle](https://gradle.org/install/).
+
+:::
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML" default>
@@ -233,6 +252,16 @@ In the YAML editor, replace the `Build Java App` run step block with the followi
                           - "**/*.xml"
                   timeout: 30m
 ```
+
+:::tip
+
+Use `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
+
+Make sure you pull an `image` corresponding with the test tool you're using. For example, with Bazel, you can use the Bazel image, `gcr.io/bazel-public/bazel:[VERSION]`.
+
+You could also use `preCommand` to prepare the test environment. For example, you could supply commands to [install Gradle](https://gradle.org/install/).
+
+:::
 
 ```mdx-code-block
   </TabItem>
@@ -412,26 +441,6 @@ In the YAML editor, add the following `step` block after the `Background` step b
 </Tabs>
 ```
 
-
-<details>
-<summary>Option: Use Gradle</summary>
-content in md format
-</details>
-
-<details>
-<summary>Option: Use Ant</summary>
-content in md format
-</details>
-
-
-
-
-<!-- Compare w/ GH Actions, CircleCI docs.
-
-configure environment/dependencies-->
-
-
-
 ## Run the pipeline
 
 1. In the **Pipeline Studio**, save your pipeline and then select **Run**.
@@ -449,9 +458,23 @@ For a comprehensive guide on application testing, Harness provides O'Reilly's **
 
 :::
 
+## Do more with this pipeline
+
+Now that you've created a basic pipeline for building and testing a Java app, you might want to explore the ways that you can [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times), including:
+
+* Using [triggers](/docs/category/triggers/) to automatically start pipelines.
+* [Caching dependencies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
+
+You can also try adding more steps to add more functionality to this pipeline, such as:
+
+* [Uploading artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog).
+* [Publishing an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
+* [Including CodeCov code coverage and publishing results to your CodeCov dashboard](/tutorials/ci-pipelines/test/codecov/).
+* [Updating Jira issues when builds run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
+
 ## Reference: Pipeline YAML
 
-Here is the YAML for this tutorial's entire pipeline.
+Here is the complete YAML for this tutorial's pipeline.
 
 <details>
 <summary>Pipeline YAML</summary>
