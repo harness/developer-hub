@@ -12,7 +12,7 @@ Currently, this feature is behind the feature flag `SRM_DOWNTIME`. Contact [Har
 
 ## SLO downtime page
 
-The SLO downtime page displays information about all the configured SLO downtimes.
+The SLO Downtime page displays information about all the configured SLO downtimes.
 
 To view the SLO downtime list:
 
