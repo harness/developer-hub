@@ -6,11 +6,11 @@ import {
   
   /* Define the cards - start */
   // Featured Tutorials
-  export const featuredTutorials: CardItem[] = [
+  /*export const featuredTutorials: CardItem[] = [
     
       {
         title: "Optimize Cloud Costs for Kubernetes",
-        module: "cd",
+        module: "ccm",
         icon: "img/icon_ccm.svg",
         description: "Get started with optimizing your Kubernetes cloud costs by connecting your public cloud Kubernetes cluster to Harness.",
         newDoc: true,
@@ -18,7 +18,7 @@ import {
         time: "10min",
         link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
       },
-    ];
+    ];*/
     
     // Docs
     export const docsCards: CardSections = [
@@ -53,14 +53,7 @@ import {
             module: "ccm",
             description:
               "Manage your cloud environment and cloud spend using the asset governance rules and budgets.",
-            link: "/docs/category/deploy-services-on-different-platforms",
-          },
-          {
-            title: "Currency prefereces",
-            module: "ccm",
-            description:
-              "Use your preferred currency throughout Harness CCM by standardizing the currency.",
-            link: "/docs/category/cross-platform-cd-features",
+            link: "/docs/category/cost-governance",
           },
           {
             title: "Third-party integrations",
@@ -71,5 +64,59 @@ import {
           },
         ],
       },
+      {
+        name: "Key features",
+        description:
+          "",
+        list: [
+          {
+            title: "Currency preferences",
+            module: "ccm",
+            description:
+              "Use your preferred currency throughout Harness CCM.",
+            link: "/docs/cloud-cost-management/use-ccm-cost-reporting/currency-preferences",
+          },
+          {
+            title: "Cost categories",
+            module: "ccm",
+            description:
+              "Use cost categories to take data across multiple sources and attribute it to business contexts.",
+            link: "/docs/category/cost-categories",
+          },
+          {
+            title: "Detect cost anomalies",
+            module: "ccm",
+            description:
+              "Identify unusual or unexpected changes in your cloud service expenses.",
+            link: "/docs/cloud-cost-management/use-ccm-cost-reporting/detect-cloud-cost-anomalies-with-ccm",
+          },
+          {
+            title: "AutoStopping rules",
+            module: "ccm",
+            description:
+              "AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.",
+            link: "/docs/category/autostopping-rules",
+          },
+          {
+            title: "Cloud cost recommendations",
+            module: "ccm",
+            description:
+              "Optimize cloud costs by applying CCM recommendations.",
+            link: "/docs/category/recommendations",
+          },
+        ],
+    },
+    {
+      name: "FAQs",
+      description:
+        "",
+      list: [ 
+        {
+            title: "CCM FAQs",
+            module: "ccm",
+            description:
+              "",
+            link: "/docs/frequently-asked-questions/harness-faqs/cloud-cost-management-faqs",
+          },
     ];
     /* Define the cards - end */

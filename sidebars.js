@@ -98,10 +98,6 @@ const sidebars = {
         // Custom Cloud Cost Management Landing Page
         {
           /* Uncomment this block while we have a generated-index page for module docs
-          type: "category",
-          label: "Cloud Cost Management",
-          link: {
-            type: "generated-index",
             slug: "/cloud-cost-management",
           },
           */
