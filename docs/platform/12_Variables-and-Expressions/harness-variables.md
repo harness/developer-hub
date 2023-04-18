@@ -32,7 +32,7 @@ The content between the `<+...>` delimiters is passed on to the [Java Expressio
 ```
 <+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
-Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) and other steps.
+Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) and other steps.
 
 ### You can use all Java string methods
 
@@ -69,10 +69,6 @@ For example, you can click the copy button in a pipeline execution to get the ex
 When building a pipeline in pipeline studio, you can copy the FQN of a setting using **Variables**.
 
 ![](./static/harness-variables-16.png)
-
-:::note
-FQNs are not supported when a [matrix strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/#matrix) is used, or when adding a multi-service or multi-environment in a stage or pipeline.
-:::
 
 #### Stage level and pipeline level expressions
 
@@ -375,7 +371,7 @@ For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+p
 
 ## Built-in CIE codebase variables reference
 
-In Harness, you set up your [codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
+In Harness, you set up your [codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
 
 Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
 
@@ -400,7 +396,7 @@ echo <+codebase.pullRequestLink>
 echo <+codebase.pullRequestBody>  
 echo <+codebase.state>
 ```
-See [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
+See [Built-in CIE Codebase Variables Reference](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md).
 
 ## Account
 
@@ -601,11 +597,6 @@ You reference stage variables **within their stage** using the expression `<+
 
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage name].variables.[variable name]>`.
 
-:::note
-FQNs, for example, `<+pipeline.stages.s.variables.envname>`, are not supported when a [matrix strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/#matrix) is used, or when adding a multi-service or multi-environment in a stage or pipeline.
-:::
-
-
 ### <+stage.name>
 
 The name of the stage where the expression is evaluated.
@@ -643,7 +634,7 @@ Here is an example with a Shell script step.
 
 ![](./static/harness-variables-31.png)
 
-For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng.md).
+For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md).
 
 ### <+stage.executionUrl>
 
@@ -662,7 +653,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/get-started/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview.md).
 
 ### Service-level variables for service v2
 
@@ -736,7 +727,7 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 
 ![](./static/harness-variables-37.png)
 
-For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial.md).
+For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](../../continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial.md).
 
 ## Manifest
 
@@ -795,7 +786,7 @@ Resolves to the manifest type. For example, `K8sManifest`.
 ```
 ### <+manifests.[manifest name].store>
 
-Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](../../continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store.md).
+Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](../../continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store.md).
 
 
 ```
@@ -826,7 +817,7 @@ Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
 
 ## Artifact
 
-If an artifact expression is in a manifest or step and you have not selected an artifact in a service definition, or set the artifact is set as a runtime Input, you will be prompted to select an artifact at runtime. This is true even if the stage does not deploy an artifact (such as a custom stage or a stage performing a [Kustomize](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart.md) deployment). 
+If an artifact expression is in a manifest or step and you have not selected an artifact in a service definition, or set the artifact is set as a runtime Input, you will be prompted to select an artifact at runtime. This is true even if the stage does not deploy an artifact (such as a custom stage or a stage performing a [Kustomize](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md) deployment). 
 
 If you want to reference an artifact that isn't the primary deployment artifact without being prompted, you can use an expression with quotes, like `docker pull <+artifact<+".metadata.image">>`.The artifact expressions will resolve to settings and values specified in a service's **Artifacts** section.
 
@@ -839,7 +830,7 @@ For example, here is how the common artifact expressions resolve for a Kubernete
 * **<+artifact.type>:** `DockerRegistry`
 * **<+artifact.connectorRef>:** `DockerHub`
 
-Here is a script you can add to a [Shell Script](../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step to view the artifact info:
+Here is a script you can add to a [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step to view the artifact info:
 
 
 ```
@@ -894,7 +885,7 @@ namespace: <+infra.namespace>
   
 ...
 ```
-See [Example Kubernetes Manifests using Go Templating](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+See [Example Kubernetes Manifests using Go Templating](../../continuous-delivery/cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
 ### <+artifact.path>
 
@@ -928,7 +919,7 @@ createNamespace: true
 namespace: <+infra.namespace>  
 ...
 ```
-See [Pull an Image from a Private Registry for Kubernetes](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
+See [Pull an Image from a Private Registry for Kubernetes](../../continuous-delivery/cd-advanced/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
 
 ### <+artifact.type>
 
@@ -998,7 +989,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/get-started/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview.md).
 
 To reference an environment-level variable, use the expression `<+env.variables.[variable name]>`.
 
@@ -1114,7 +1105,7 @@ Use the following fully qualified expression to get the execution URL for a spec
 
 The following instance expressions are supported in SSH, WinRM, and custom deployments using deployment templates. These deployments can be done on physical data centers, AWS, and Azure.
 
-For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng.md), [WinRM deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial.md), and [Custom deployments using Deployment Templates tutorial](../../continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial.md).
+For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md), [WinRM deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial.md), and [Custom deployments using Deployment Templates tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md).
 
 To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
@@ -1125,7 +1116,7 @@ repeat:
 ```
 ![](./static/harness-variables-48.png)
 
-For examples, see [Run a script on multiple target instances](../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances.md).
+For examples, see [Run a script on multiple target instances](../../continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances.md).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
@@ -1140,7 +1131,7 @@ For Microsoft Azure or AWS:
 
 ### Deployment templates
 
-For [Deployment Templates](../../continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial.md), you can use `<+instance...>` expressions to reference host(s) properties.
+For [Deployment Templates](../../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md), you can use `<+instance...>` expressions to reference host(s) properties.
 
 The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
 
@@ -1236,7 +1227,7 @@ Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using 
 
 If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the Delegate is already an in-cluster process.
 
-You can use this variable in a [Shell script](../../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step to set the environment variable at the beginning of your kubectl script:
+You can use this variable in a [Shell script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step to set the environment variable at the beginning of your kubectl script:
 
 `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
 
@@ -1474,6 +1465,6 @@ For more information migrating to NextGen, go to the following:
 
 ## See also
 
-* [Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
+* [Codebase Variables Reference](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md)
 * [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 

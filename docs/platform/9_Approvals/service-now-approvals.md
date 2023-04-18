@@ -14,11 +14,11 @@ During deployment, a ServiceNow ticket's fields are evaluated according to the c
 
 Approvals can be added as stages or in-between stage steps to prevent stage execution from proceeding without approval.
 
-For example, in a [Kubernetes Blue Green Deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
+For example, in a [Kubernetes Blue Green Deployment](../../continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md), you might want to add an approval step between the Stage Deployment step, where the new app version is deployed to the staging environment, and the Swap Primary with Stage step, where production traffic is routed to the pods for the new version.
 
 ### Before you begin
 
-* [Connect to ServiceNow](../7_Connectors/connect-to-service-now.md)
+* [Connect to ServiceNow](../7_Connectors/Ticketing-Systems/connect-to-service-now.md)
 
 ### Review: ServiceNow Approval Stages vs Steps
 
@@ -59,7 +59,7 @@ You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**`�
 
 ServiceNow communication can take a few minutes. Do not use a brief timeout.
 
-The maximum is 3w 3d 20h 30m. In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](../7_Connectors/connect-to-service-now.md) you want to use.
+The maximum is 3w 3d 20h 30m. In **ServiceNow** **Connector,** create or select the [ServiceNow Connector](../7_Connectors/Ticketing-Systems/connect-to-service-now.md) you want to use.
 
 Select the ServiceNow **Ticket Type**. Use the same type as the ticket you created in the Workflow.
 
@@ -122,5 +122,5 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 ### See also
 
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
-* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md)
+* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md)
 
