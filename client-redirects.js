@@ -1273,7 +1273,7 @@ module.exports = {
     },
     {
       from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/analyze-chaos-experiment",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments#launch-an-experiment-from-the-chaos-hub",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments",
     },
     {
       from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/create-complex-chaos-experiments",
@@ -1294,10 +1294,6 @@ module.exports = {
     {
       from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/halt-chaos-experiments",
       to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/halt-chaos-experiments",
-    },
-    {
-      from: "/docs/chaos-engineering/technical-reference/architecture",
-      to: "/docs/chaos-engineering/technical-reference/architecture/",
     },
     {
       from: "/docs/chaos-engineering/chaos-faults/chaos-faults",
