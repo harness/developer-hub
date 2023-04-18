@@ -4,6 +4,12 @@ description: This topic talks about Harness asset governance.
 # sidebar_position: 2
 ---
 
+
+:::note
+Currently, this feature is behind the feature flag **CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI**. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+
 The Harness cloud asset governance platform enables you to achieve a highly managed cloud environment using a Governance-as-Code approach that includes real-time enforcement and auto-remediation capabilities. The platform operates through a set of rules, which are in a YAML configuration file, and focuses on cost optimization. Harness Cloud Asset Governance provides tools to optimize your cloud spending and avoid unnecessary costs.
 
 The platform is built on top of [Cloud Custodian](https://cloudcustodian.io/), an open-source project that is incubated by the Cloud Native Computing Foundation (CNCF).
@@ -105,7 +111,6 @@ Enable the following permissions in AWS to execute cloud governance rules:
                 "elasticbeanstalk:Validate*",
                 "elasticloadbalancing:Describe*",
                 "rds:Describe*",
-                "rds:Download*",
                 "rds:List*",
                 "autoscaling-plans:Describe*",
                 "autoscaling-plans:GetScalingPlanResourceForecastData",
