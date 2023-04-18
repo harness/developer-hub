@@ -207,5 +207,5 @@ To turn off syncing with Git:
 
 ## See also
 
-For more information about using Git Experience, go to [Git Experience How-tos](../../platform/10_Git-Experience/git-experience-overview.md).
+For more information about using Git Experience, go to [Git Experience How-tos](/docs/platform/Git-Experience/git-experience-overview).
 

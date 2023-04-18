@@ -32,5 +32,5 @@ Once you have created your flag, you can then:
 
 * [Manage Targets](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
 * Modify [Variations](/docs/feature-flags/ff-using-flags/update-feature-flags/manage-variations) and [Rules](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
-* [Add Prerequisites](/docs/feature-flags/ff-using-flags/add-prerequisites-to-feature-flag)
+* [Add Prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag)
 

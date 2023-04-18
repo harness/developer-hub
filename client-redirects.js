@@ -52,6 +52,39 @@ module.exports = {
       from: "/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags",
       to: "/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags",
     },
+    {
+      from: "/docs/feature-flags/ff-using-flags/add-prerequisites-to-feature-flag",
+      to: "/docs/feature-flags/add-prerequisites-to-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/connect-monitored-service",
+      to: "/docs/feature-flags/connect-monitored-service",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/filtering-flags-by-state",
+      to: "/docs/feature-flags/filtering-flags-by-state",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/harness-policy-engine",
+      to: "/docs/feature-flags/harness-policy-engine",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/integrate-feature-flag-with-jira",
+      to: "/docs/feature-flags/integrate-feature-flag-with-jira",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/manage-featureflags-in-git-repos",
+      to: "/docs/feature-flags/manage-featureflags-in-git-repos",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-environment",
+      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-sdk-key",
+      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project",
+    },
+
 
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
 
