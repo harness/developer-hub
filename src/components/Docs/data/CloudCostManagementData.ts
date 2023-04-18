@@ -7,97 +7,67 @@ import {
   /* Define the cards - start */
   // Featured Tutorials
   export const featuredTutorials: CardItem[] = [
+    
       {
-        title: "Deploy a Helm Chart using Harness GitOps for Argo CD",
+        title: "Optimize Cloud Costs for Kubernetes",
         module: "cd",
-        icon: "img/icon_cd.svg",
-        description: "Get started with Harness GitOps for Argo CD.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "8min",
-        link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
-      },
-      {
-        title: "Deploy a Helm Chart using CD Community Edition",
-        module: "cd",
-        icon: "img/icon_cd.svg",
-        description: "Use the 100% free, source-available, self-managed Harness CD Community Edition to automate Helm Chart deployments.",
+        icon: "img/icon_ccm.svg",
+        description: "Get started with optimizing your Kubernetes cloud costs by connecting your public cloud Kubernetes cluster to Harness.",
         newDoc: true,
         type: [docType.Documentation],
         time: "10min",
-        link: "/tutorials/deploy-services/cdce-helm-k8s",
+        link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
       },
     ];
     
     // Docs
     export const docsCards: CardSections = [
       {
-        name: "Documentation Topics",
+        name: "Get started",
         description:
           "",
         list: [
           {
-            title: "Get started with Continuous Delivery",
-            module: "cd",
+            title: "Get started with Cloud Cost Management",
+            module: "ccm",
             description:
-              "Learn the basics of Harness Continuous Delivery.",
-            link: "/docs/category/get-started",
+              "Learn the basic concepts of Harness Cloud Cost Management, and how to set up CCM for your cloud accounts.",
+            link: "/docs/category/get-started-1",
           },
           {
-            title: "Integrations",
-            module: "cd",
+            title: "Cost reporting",
+            module: "ccm",
             description:
-              "See the tools and platforms you can use to deploy your apps.",
-            link: "/docs/continuous-delivery/integrations/cd-integrations",
+              "Monitor and analyze the expenses incurred by your cloud resources by using Harness' cost reporting features.",
+            link: "/docs/category/cost-reporting",
           },
           {
-            title: "Provision infrastructure",
-            module: "cd",
+            title: "Cost optimization",
+            module: "ccm",
             description:
-              "Provision infrastructures for your deployments.",
-            link: "/docs/category/provision-infrastructure",
+              "Optimize cloud costs using CCM recommendations and AutoStopping idle cloud instances.",
+            link: "/docs/category/cost-optimization",
           },
           {
-            title: "Deploy services on different platforms",
-            module: "cd",
+            title: "Cost governance",
+            module: "ccm",
             description:
-              "Platform-specific deployment types.",
+              "Manage your cloud environment and cloud spend using the asset governance rules and budgets.",
             link: "/docs/category/deploy-services-on-different-platforms",
           },
           {
-            title: "Cross-platform CD features",
-            module: "cd",
+            title: "Currency prefereces",
+            module: "ccm",
             description:
-              "Features common to all deployment types.",
+              "Use your preferred currency throughout Harness CCM by standardizing the currency.",
             link: "/docs/category/cross-platform-cd-features",
           },
           {
-            title: "Verify deployments",
-            module: "cd",
+            title: "Third-party integrations",
+            module: "ccm",
             description:
-              "Use Harness Continuous Verification (CV) to verify your deployments.",
-            link: "/docs/category/verify-deployments",
-          },
-          {
-            title: "Manage deployments",
-            module: "cd",
-            description:
-              "Control deployment resources and schedules.",
-            link: "/docs/continuous-delivery",
-          },
-          {
-            title: "Monitor deployments",
-            module: "cd",
-            description:
-              "Use DORA and other advanced metrics for deployments.",
-            link: "/docs/category/monitor-deployments",
-          },
-          {
-            title: "GitOps",
-            module: "cd",
-            description:
-              "Perform GitOps deployments in Harness.",
-            link: "/docs/category/gitops",
+              "Monitor your cloud costs by integrating CCM with third-party tools such as Datadog.",
+            link: "/docs/category/third-party-integrations",
           },
         ],
       },

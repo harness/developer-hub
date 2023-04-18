@@ -10,11 +10,6 @@ import { FeaturedList, CCMList } from "./data/cloudCostManagementData";
 export default function CCM() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
-    // <Layout title="CCM" description="CCM">
-    //   <ul className={styles.breadCrumb}>
-    //     <li>Get Started</li>
-    //     <li>Optimize Cloud Costs</li>
-    //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
         <h3>Optimize Cloud Costs</h3>
@@ -27,27 +22,14 @@ export default function CCM() {
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/manage-cloud-costs">
-              <button
-                className={clsx(
-                  "button button--lg",
-                  styles.btn,
-                  styles.btnLight
-                )}
-              >
+              <button className={styles.btn}>  
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
                 Tutorials
               </button>
             </Link>
-
             <Link href="/release-notes/cloud-cost-management">
-              <button
-                className={clsx(
-                  "button button--lg",
-                  styles.btn,
-                  styles.btnLight
-                )}
-              >
+            <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
