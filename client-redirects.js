@@ -811,11 +811,6 @@ module.exports = {
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
     {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
       to: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
     },
