@@ -312,7 +312,7 @@ This error occurs when you are testing a Harness AWS connector and the credentia
 
 The DescribeRegions action is required for all AWS connectors. Harness tests the connection using an API call for the DescribeRegions action.
 
-This is described in [Add an AWS connector](../platform/7_Connectors/add-aws-connector.md).
+This is described in [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector).
 
 Ensure that one of the IAM roles assigned to the user account used for AWS connector credentials contains the DescribeRegions action.
 
