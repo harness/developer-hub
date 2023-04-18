@@ -1,5 +1,5 @@
 ---
-title: Create an SDK Key
+title: Create an SDK key
 description: After you’ve created your Environment , you need to create an SDK key for it. You need to use this SDK key in your application’s code to authenticate your connection to the Harness Feature Flag clien…
 sidebar_position: 30
 helpdocs_topic_id: 8ja1j98xgp

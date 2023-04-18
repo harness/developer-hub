@@ -1,5 +1,5 @@
 ---
-title: Change the Variations of Your Flags
+title: Change the variations of your flags
 description: This topic describes how to edit the default variations of your feature flag.
 tags: 
    - helpDocs

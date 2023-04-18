@@ -1,5 +1,5 @@
 ---
-title: Create a Project
+title: Create a project
 description: Before you can create a Feature Flag, you need to create a Project in the Harness platform. A Feature Flag is available only for the Project the Flag is created in, so you need to create any Flags in…
 sidebar_position: 10
 helpdocs_topic_id: 47fkt1ric5

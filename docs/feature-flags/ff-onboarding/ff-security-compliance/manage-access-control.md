@@ -1,5 +1,5 @@
 ---
-title: Manage Access Control
+title: Manage access control
 description: This topic describes how to add and manage access control for Feature Flags.
 tags: 
    - Access Control

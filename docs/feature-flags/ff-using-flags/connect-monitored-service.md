@@ -1,5 +1,5 @@
 ---
-title: Connect Flags to Monitored Services
+title: Connect flags to monitored services
 description: This topic describes how to connect flags to monitored services to see the impact of flag states on service health.
 tags: 
    - feature flag

@@ -1,5 +1,5 @@
 ---
-title: Edit the Details of Your Flags
+title: Edit the details of your flags
 description: After you have created a Flag, you can edit the following details of it --  Flag Name. Description. Whether or not it is marked as permanent. This topic describes how to edit these details on the Harnes…
 tags: 
    - helpDocs

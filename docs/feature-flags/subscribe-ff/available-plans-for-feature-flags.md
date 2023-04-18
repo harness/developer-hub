@@ -1,5 +1,5 @@
 ---
-title: Available Plans for Feature Flags
+title: Available plans for Feature Flags
 description: With Feature Flags, there are three tiers of subscription plans you can choose from --  Free plan. Team plan. Enterprise plan. Below is an overview of the features of each plan. For a full list of all f…
 sidebar_position: 30
 helpdocs_topic_id: wybv4q7ux2
