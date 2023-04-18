@@ -16,7 +16,7 @@ Harness supports only AWS cloud governance in its initial release.
 
 ## Anatomy of a cloud asset governance rule
 
-Cloud policies use a declarative vocabulary of resources, filters, and actions to configure policies in YAML. This vocabulary is explained in the table below:
+Cloud policies use a declarative vocabulary of resources, filters, and actions to be configured in YAML. This vocabulary is explained in the table below:
 
 <table>
   <tr>
