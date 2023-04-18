@@ -1,5 +1,5 @@
 ---
-title: Apex SDK Reference
+title: Apex SDK reference
 description: This topic describes how to use the Harness Feature Flags Apex SDK for your Apex application. For getting started quickly, you can use our sample code from the Apex SDK README. You can also clone and…
 sidebar_position: 10
 helpdocs_topic_id: aoe0y33mut

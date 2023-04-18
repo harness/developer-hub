@@ -1,5 +1,5 @@
 ---
-title: Erlang SDK Reference
+title: Erlang SDK reference
 description: This topic describes how to use the Harness Feature Flags Erlang SDK. For getting started quickly, you can use our sample code from the Erlang SDK README.
 sidebar_position: 15
 ---

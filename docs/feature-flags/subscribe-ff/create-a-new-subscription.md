@@ -1,5 +1,5 @@
 ---
-title: Create a New Subscription
+title: Create a new subscription
 description: This topic describes how to subscribe to Feature Flags through the Harness Platform. Currently, you can subscribe only to Feature Flags through the Harness Platform if you are a self-serve customer.…
 sidebar_position: 20
 helpdocs_topic_id: 0ft20zs6bm

@@ -1,5 +1,5 @@
 ---
-title: Java SDK Reference
+title: Java SDK reference
 description: This topic explains how to integrate your feature flags with Java SDK.
 sidebar_position: 30
 helpdocs_topic_id: i7et9ebkst

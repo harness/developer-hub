@@ -1,5 +1,5 @@
 ---
-title: Subscriptions Overview
+title: Subscriptions overview
 description: Harness subscriptions allow you to tailor the level of cover you need from each Harness module you use. For Feature Flags, you can subscribe and upgrade online directly through the Harness Platform i…
 sidebar_position: 10
 helpdocs_topic_id: fzehkjbn7j

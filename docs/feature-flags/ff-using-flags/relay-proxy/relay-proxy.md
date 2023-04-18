@@ -1,5 +1,5 @@
 ---
-title: Relay Proxy Overview
+title: Relay proxy overview
 description: This topic describes what is Relay Proxy and how to use it with Harness Feature Flags (FF).
 sidebar_position: 10
 helpdocs_topic_id: q0kvq8nd2o

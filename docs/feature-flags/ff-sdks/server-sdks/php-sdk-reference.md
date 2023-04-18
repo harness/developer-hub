@@ -1,5 +1,5 @@
 ---
-title: PHP SDK Reference
+title: PHP SDK reference
 description: This topic describes how to use the Harness Feature Flags PHP SDK for your PHP application. For getting started quickly, you can use our sample code from the PHP SDK README. You can also clone and ru…
 sidebar_position: 60
 helpdocs_topic_id: 3qrik15pkz

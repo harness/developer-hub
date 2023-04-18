@@ -1,5 +1,5 @@
 ---
-title: Deploy the Relay Proxy
+title: Deploy the relay proxy
 description: This topic describes how to deploy and start the Relay Proxy.
 sidebar_position: 20
 helpdocs_topic_id: rae6uk12hk
