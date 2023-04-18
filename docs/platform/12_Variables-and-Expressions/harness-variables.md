@@ -635,7 +635,7 @@ Here is an example with a Shell script step.
 
 ![](./static/harness-variables-31.png)
 
-For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md).
+For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
 
 ### <+stage.executionUrl>
 
@@ -654,7 +654,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ### Service-level variables for service v2
 
@@ -728,7 +728,7 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 
 ![](./static/harness-variables-37.png)
 
-For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](../../continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial.md).
+For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart).
 
 ## Manifest
 
@@ -787,7 +787,7 @@ Resolves to the manifest type. For example, `K8sManifest`.
 ```
 ### <+manifests.[manifest name].store>
 
-Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](../../continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store.md).
+Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 
 ```
@@ -818,7 +818,7 @@ Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
 
 ## Artifact
 
-If an artifact expression is in a manifest or step and you have not selected an artifact in a service definition, or set the artifact is set as a runtime Input, you will be prompted to select an artifact at runtime. This is true even if the stage does not deploy an artifact (such as a custom stage or a stage performing a [Kustomize](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md) deployment). 
+If an artifact expression is in a manifest or step and you have not selected an artifact in a service definition, or set the artifact is set as a runtime Input, you will be prompted to select an artifact at runtime. This is true even if the stage does not deploy an artifact (such as a custom stage or a stage performing a [Kustomize](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart) deployment). 
 
 If you want to reference an artifact that isn't the primary deployment artifact without being prompted, you can use an expression with quotes, like `docker pull <+artifact<+".metadata.image">>`.The artifact expressions will resolve to settings and values specified in a service's **Artifacts** section.
 
@@ -831,7 +831,7 @@ For example, here is how the common artifact expressions resolve for a Kubernete
 * **<+artifact.type>:** `DockerRegistry`
 * **<+artifact.connectorRef>:** `DockerHub`
 
-Here is a script you can add to a [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step to view the artifact info:
+Here is a script you can add to a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step to view the artifact info:
 
 
 ```
@@ -886,7 +886,7 @@ namespace: <+infra.namespace>
   
 ...
 ```
-See [Example Kubernetes Manifests using Go Templating](../../continuous-delivery/cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating/).
 
 ### <+artifact.path>
 
@@ -920,7 +920,7 @@ createNamespace: true
 namespace: <+infra.namespace>  
 ...
 ```
-See [Pull an Image from a Private Registry for Kubernetes](../../continuous-delivery/cd-advanced/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
+See [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/).
 
 ### <+artifact.type>
 
@@ -990,7 +990,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 To reference an environment-level variable, use the expression `<+env.variables.[variable name]>`.
 
@@ -1106,7 +1106,7 @@ Use the following fully qualified expression to get the execution URL for a spec
 
 The following instance expressions are supported in SSH, WinRM, and custom deployments using deployment templates. These deployments can be done on physical data centers, AWS, and Azure.
 
-For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md), [WinRM deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial.md), and [Custom deployments using Deployment Templates tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md).
+For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial).
 
 To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
@@ -1117,7 +1117,7 @@ repeat:
 ```
 ![](./static/harness-variables-48.png)
 
-For examples, see [Run a script on multiple target instances](../../continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances.md).
+For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
@@ -1132,7 +1132,7 @@ For Microsoft Azure or AWS:
 
 ### Deployment templates
 
-For [Deployment Templates](../../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md), you can use `<+instance...>` expressions to reference host(s) properties.
+For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
 
 The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
 
@@ -1228,7 +1228,7 @@ Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using 
 
 If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the Delegate is already an in-cluster process.
 
-You can use this variable in a [Shell script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step to set the environment variable at the beginning of your kubectl script:
+You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step to set the environment variable at the beginning of your kubectl script:
 
 `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
 
@@ -1461,8 +1461,8 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 For more information migrating to NextGen, go to the following:
 
 - [Harness FirstGen vs Harness NextGen](https://developer.harness.io/docs/getting-started/harness-first-gen-vs-harness-next-gen)
-- [FirstGen and NextGen CD parity matrix](https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/feature-parity-matrix)
-- [Harness CD upgrading FAQ](https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/cdng-upgrade-faq)
+- [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
+- [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
 
 ## See also
 

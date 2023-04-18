@@ -203,7 +203,7 @@ pipeline:
 ```
 See also:
 
-* [Using Shell Scripts in CD Stages](../../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md)
+* [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts)
 
 ### Stage
 
@@ -367,7 +367,7 @@ spec:
 ```
 See also:
 
-* [Propagate and Override CD Services](../../../continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services.md)
+* [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services)
 
 ### Infrastructure
 
@@ -418,7 +418,7 @@ That example is for the platform agnostic Kubernetes infrastructure. For a diffe
 ```
 See also:
 
-* [Define Your Kubernetes Target Infrastructure](../../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure)
 * [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 
 ### Execution
@@ -566,7 +566,7 @@ flowControl:
 ```
 See also:
 
-* [Synchronize Deployments using Barriers](../../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
+* [Synchronize Deployments using Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/)
 
 ### Notification Rules
 
@@ -618,7 +618,7 @@ notificationRules:
 ```
 See also:
 
-* [Add a Pipeline Notification Strategy](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
+* [Add a Pipeline Notification Strategy](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/)
 
 ### Triggers
 
