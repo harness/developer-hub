@@ -54,7 +54,7 @@ This topic explains the steps to add a Google Cloud Secrets Manager to the accou
 2. Click **Account Resources**.
 3. Click **Connectors** and then click **New Connector**.
 4. In Secret Managers, click **GCP Secrets Manager**.  
-The GCP Secrets Manager settings appear.![](../../6_Security/static/add-a-google-cloud-secret-manager-39.png)
+The GCP Secrets Manager settings appear.![](../../Secrets/static/add-a-google-cloud-secret-manager-39.png)
 
 ### Step 2: Add overview
 

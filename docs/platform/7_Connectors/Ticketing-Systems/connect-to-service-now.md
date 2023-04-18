@@ -36,7 +36,7 @@ This topic shows you how to add a ServiceNow connector to your project.
 
 2. Click **New Connector**, and then click **ServiceNow**. The ServiceNow connector settings appear.
 
-   ![](../../5_Resources/static/connect-to-service-now-43.png)
+   ![](../../7_Connectors/static/connect-to-service-now-43.png)
 
 3. Enter **Name** for this connector.
 
@@ -105,7 +105,7 @@ Click **Save and Continue**.
 
 Harness tests the connection.
 
-![](../../5_Resources/static/connect-to-service-now-44.png)
+![](../../7_Connectors/static/connect-to-service-now-44.png)
 
 Click **Finish**.
 

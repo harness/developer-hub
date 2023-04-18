@@ -23,10 +23,10 @@ Click **Secrets**.
 
 Click **Secret** and select **File.**
 
-![](../6_Security/static/add-file-secrets-55.png)
+![](../Secrets/static/add-file-secrets-55.png)
 The **Add new Encrypted File** settings appear.
 
-![](../6_Security/static/add-file-secrets-56.png)
+![](../Secrets/static/add-file-secrets-56.png)
 Select the **Secrets Manager** you will use to encrypt this secret.
 
 Enter a name for the encrypted file. You will use this name to reference the file in your resources.
@@ -45,10 +45,10 @@ You can reference the encrypted file in any resource that uses files.
 
 For example, in the following **Configuration and Authentication** dialog, click **Create or Select a Secret** under Select or Create a SSH Key File:
 
-![](../6_Security/static/add-file-secrets-57.png)
+![](../Secrets/static/add-file-secrets-57.png)
 Click **Select an existing Secret** in the dialog and the dropdown lets you choose the file you added in **Secret Management:**
 
-![](../6_Security/static/add-file-secrets-58.png)
+![](../Secrets/static/add-file-secrets-58.png)
 ### Step 3: Reference the Encrypted File by Identifier
 
 For an Encrypted File secret at the Project scope, you reference the secret in a Resource using its identifier and the expression: 
@@ -59,7 +59,7 @@ For an Encrypted File secret at the Project scope, you reference the secret in a
 ```
 The identifier is immutable and is located in the secret settings:
 
-![](../6_Security/static/add-file-secrets-59.png)
+![](../Secrets/static/add-file-secrets-59.png)
 Always reference a secret in an expression using its identifier. Names will not work.You can reference a secret at the Org scope using an expression with `org`:
 
 

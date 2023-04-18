@@ -106,7 +106,7 @@ vault token create -policy=harness -period=768h
 ```
 Next, use the new token with Harness. To do this, perform the below steps:
 
-* Click **Create or Select a Secret**.![](../../6_Security/static/add-hashicorp-vault-21.png)
+* Click **Create or Select a Secret**.![](../../Secrets/static/add-hashicorp-vault-21.png)
 * The secret settings page appears. Here you can either **Create a new** [**Secret**](../2-add-use-text-secrets.md) or **Select an existing secret**. If creating a new Secret, enter the token which you created in the **Secret Value** field.
   ![](../static/add-hashicorp-vault-22.png)
 

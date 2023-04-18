@@ -83,7 +83,7 @@ Create the repository in Git before entering it in **Select Repository**. Harnes
 Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.
 :::
 
-8. Enter the **YAML Path** from where you want to import the Pipeline. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
+1. Enter the **YAML Path** from where you want to import the Pipeline. All your configurations are stored in Git in the [Harness Folder](git-experience-overview.md#harness-folder).
    
 :::note
 Make sure that your YAML path starts with `.harness/` and the YAML file already exists in the specified Git repo and branch.

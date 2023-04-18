@@ -127,7 +127,7 @@ Create the branch in your repository before entering it in **Git Branch**. Harne
 
 :::
 
-Harness pre-populates the **YAML Path**. You can change this path and the file name. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
+Harness pre-populates the **YAML Path**. You can change this path and the file name. All your configurations are stored in Git in the [Harness Folder](git-experience-overview.md#harness-folder).
 
 
 :::note
