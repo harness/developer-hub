@@ -81,7 +81,7 @@ You can use an existing Harness API key token from the same Harness account that
 
 ## Variables in Harness CE Postman collection
 In order to work with Harness CE Postman collection, fork it under your Postman account and update the required variables.
-![Variables In Harness CE Postman Collection](./static/first-chaos-via-api/postman_variables.png)
+![Variables In Harness CE Postman Collection UX](./static/first-chaos-via-api/postman_variables.png)
 
 ## Authorization header for API request
 An authorization header with API-KEY-TOKEN value retrieved from above steps is required to work with chaos APIs. 
@@ -139,7 +139,7 @@ GraphQL variables: `registerInfra`
 ```
 
 The above mentioned values are pre-filled in Harness CE Postman collection as shown in the below screenshot:
-![Register Chaos Infrastructure](./static/first-chaos-via-API/register_infra.png)
+![Register Chaos Infrastructure](./static/first-chaos-via-api/register_infra.png)
 
 A sample response: `registerInfra`
 ```
@@ -286,7 +286,7 @@ Check the value of `isActive` field and ensure it is set to `true` i.e. the infr
 
 Above values are pre-filled in Harness CE Postman Collection as shown below:
 
-![Get Infra Details](./static/first-chaos-via-api/get_infra_details.png)
+![Get Infra Details UX](./static/first-chaos-via-api/get_infra_details.png)
 
 To run this API using Harness CE Postman collection, update the value of the `infraID` variable retrieved during `registerInfra` API call.
 
