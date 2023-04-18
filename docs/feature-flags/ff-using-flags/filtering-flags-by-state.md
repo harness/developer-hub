@@ -1,7 +1,7 @@
 ---
 title: View and Filter Flags
 description: To help manage your Feature Flags, you can use the filter tiles on the Harness Platform to filter your Flags based on the following states --  Figure 1 --  The Flag overview dashboard State Description All…
-sidebar_position: 25
+sidebar_position: 90
 helpdocs_topic_id: 2s5qt02s74
 helpdocs_category_id: t5s8pv9gjb
 helpdocs_is_private: false
