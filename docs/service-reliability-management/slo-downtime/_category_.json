@@ -1,11 +1,12 @@
 {
-   "label":"Continuous Error Tracking",
-   "position": 80,
+   "label":"SLO downtime",
+   "position": 30,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Continuous Error Tracking (CET)"
+      "title":"SLO downtime"
    }
+
    }
