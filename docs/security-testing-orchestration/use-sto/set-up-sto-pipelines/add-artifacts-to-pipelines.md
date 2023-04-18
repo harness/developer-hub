@@ -1,7 +1,7 @@
 ---
 title: Adding Custom Artifacts to STO Pipelines
 description: This topic describes how to include SSL certificates and other types of artifacts in your STO pipelines. 
-sidebar_position: 70
+sidebar_position: 20
 ---
 
 In some cases, a scanner might require additional files such as SSL certificates and license files. The following steps describe the high-level workflow.

@@ -1,7 +1,7 @@
 ---
-title: Configure STO to Download Images from a Private Registry
+title: Configure STO to download images from a private registry
 description: You can set up STO to download your scanner images from a private registry instead of Docker Hub.
-sidebar_position: 90
+sidebar_position: 30
 ---
 
 Harness maintains its own set of scan images for [STO-supported scanners](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). By default, a Harness pipeline build pulls scan images from Docker Hub.
