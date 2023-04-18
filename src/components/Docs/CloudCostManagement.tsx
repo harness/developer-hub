@@ -11,9 +11,6 @@ export default function CCM() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
     <div className="container">
-      <div className={styles.SectionName}>
-        <h3>Optimize Cloud Costs</h3>
-      </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
