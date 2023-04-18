@@ -178,74 +178,41 @@ In the YAML editor, add the following `variables` block between the `properties`
 </Tabs>
 ```
 
-## Add Run Tests step
+## Run initial tests
 
-In the **Build** (`CI`) stage, add a step to run tests against the JHTTP app code. This portion of the tutorial uses a **Run Tests** step so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature. Later in this tutorial, a **Run** step will be used to run a connectivity test script. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
-
-
-
-
-
-
-
-Build stage w RunTests (Maven, Gradle, Ant) & TI, Build and push to docker registry
-
-Build stage with Background step & run step (connectivity test).
-
-Visual & yaml for each - tabs
-
+Add a step to run tests against the JHTTP app code. This portion of the tutorial uses a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings.md) so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature. Later in this tutorial, a Run step is used to run a connectivity test script. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual">
 ```
 
-1. In the Pipeline Studio, select **Variables** on the right side of the Pipeline Studio.
-2. Under **Pipeline**, select **Add Variable**.
-3. For **Variable Name**, enter `DOCKERHUB_USERNAME`.
-4. For **Type** select **String**, and then select **Save**.
-5. Enter the value `<+input>`. This allows you to specify a Docker Hub username at runtime.
-1. Select **Apply Changes**.
+1. In the Pipeline Studio, select the **Build Java App with Maven** stage.
+2. Remove the **Build Java App** step.
+3. Select **Add Step** and add a **Run Tests** step configured as follows. Some settings are found under **Additional Configuration**.
+
+   * **Language:** Select **Java**.
+   * **Build Tool:** Select **Maven**.
+   * **Maven setup:** Select **No**.
+   * **Build Arguments:** Enter `test`.
+   * **Test Report Paths:** Select **Add** and enter `**/*.xml`.
+   * **Post-Command:** Enter `mvn package -DskipTests`.
+   * **Packages:** Enter `io.harness`.
+   * **Container Registry:** Select your Docker Hub connector.
+   * **Image:** Enter `maven:3.5.2-jdk-8-alpine`.
+   * **Run only selected tests:** This must be selected to enable Test Intelligence.
+   * **Timeout:** Enter `30m`.
+
+4. Select **Apply Changes**.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML" default>
 ```
 
-In the YAML editor, add the following `variables` block between the `properties` and `stages` sections.
+In the YAML editor, replace the `Build Java App` run step block with the following. Replace the bracketed value with your [Docker Hub connector](#create-a-docker-hub-connector) ID.
 
 ```yaml
-  variables:
-    - name: DOCKERHUB_USERNAME
-      type: String
-      description: Your Docker Hub username
-      value: <+input>
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-
-
-
-
-
-
-
-
-```yaml
-
-  stages:
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
               - step:
                   type: RunTests
                   name: Run Tests
@@ -265,6 +232,45 @@ In the YAML editor, add the following `variables` block between the `properties`
                         paths:
                           - "**/*.xml"
                   timeout: 30m
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Build and push an image to Docker Hub
+
+Add a step to build an image of the JHTTP app and push it to Docker Hub. While this tutorial uses a [Build and Push an image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings), Harness has a variety of options for [building and uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. In your Docker Hub account, create a repo called `jhttp`.
+2. In Harness, in the **Build Java App with Maven** stage, select **Add Step** and add a **Build and Push an image to Docker Registry** step configured as follows.
+
+   * **Docker Connector:** Select your Docker Hub connector.
+   * **Docker Repository:** Enter `<+pipeline.variables.DOCKERHUB_USERNAME>/jhttp`
+   * **Tags:** Select **Add** and enter `<+pipeline.sequenceId>`.
+
+3. Select **Apply Changes**.
+
+Notice the following about this step:
+
+* The **Docker Repository** value calls the [pipeline variable](#add-a-pipeline-variable) you created earlier.
+* The **Tag** value is an expression that uses the build ID as the image tag. Each time the pipeline runs, the build ID increments, creating a unique image tag for each run.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+1. In your Docker Hub account, create a repo called `jhttp`.
+2. In Harness, add the following `step` block to the `Build Java App with Maven` stage. Replace the bracketed value with your [Docker Hub connector](#create-a-docker-hub-connector) ID.
+
+```yaml
               - step:
                   type: BuildAndPushDockerRegistry
                   name: Build and Push an image to Docker Registry
@@ -274,12 +280,52 @@ In the YAML editor, add the following `variables` block between the `properties`
                     repo: <+pipeline.variables.DOCKERHUB_USERNAME>/jhttp
                     tags:
                       - <+pipeline.sequenceId>
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
+```
+
+Notice the following about this step:
+
+* The `repo` value calls the [pipeline variable](#add-a-pipeline-variable) you created earlier.
+* The `tag` value is an expression that uses the build ID as the tag. Each time the pipeline runs, the build ID increments, creating a unique image tag for each run.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Run the app as a service
+
+You can use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to run services needed by other steps in the same stage. This tutorial uses a **Background** step to run the JHTTP app so that a **Run** step can run a connection test against the app.
+
+Harness offers several options for [managing dependencies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies), including automated caching through [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. In the upper portion of the Pipeline Studio, select **Add Stage** to add a second **Build** stage to the pipeline.
+2. Enter a **Stage Name**, make sure **Clone Codebase** is *not* selected, and then select **Set Up Stage**.
+3. Select the **Infrastructure** tab, select **Propagate from an existing stage**, and then select the other **Build** stage.
+4. Select the **Execution** tab, select **Add Step**, and add a **Background** step configured as follows. Some settings are found under **Additional Configuration**.
+
+   * **Shell:** Select **Sh**.
+   * **Container Registry:** Select your Docker Hub connector.
+   * **Image:** Enter `<+pipeline.variables.DOCKERHUB_USERNAME>/jhttp:<+pipeline.sequenceId>`
+   * **Tags:** Select **Add** and enter `<+pipeline.sequenceId>`.
+   * **Port Bindings:** Select **Add** and enter `8888` for both **Host Port** and **Container Port**.
+
+5. Select **Apply Changes**.
+
+Notice that the **Image** value uses an expression that generates the image path by calling your [pipeline variable](#add-a-pipeline-variable) and the build ID expression, which was used as the **Tag** in the **Build and Push an image to Docker Registry** step.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+Add the following code block to the end of your pipeline YAML. Replace the bracketed value with your [Docker Hub connector](#create-a-docker-hub-connector) ID.
+
+```yaml
     - stage:
         name: Run Connectivity Test
         identifier: Run_Connectivity_Test
@@ -305,6 +351,50 @@ In the YAML editor, add the following `variables` block between the `properties`
                     shell: Sh
                     portBindings:
                       "8888": "8888"
+```
+
+This code block does the following:
+
+* `stage` - Adds a second `CI` stage to the pipeline.
+* `cloneCodebase: false` - This stage does not need to clone the GitHub repo because it will use the app image that was built and pushed to Docker Hub in the first stage.
+* `platform` - The stage uses the same build infrastructure as the first stage.
+* `step` - Adds a `Background` step that runs the JHTTP app image.
+* `image` - This value uses an expression that generates the image path by calling your [pipeline variable](#add-a-pipeline-variable) and the build ID expression, which was used as the `tag` value in the `Build and Push an image to Docker Registry` step.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Run the connectivity test
+
+Add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings.md) to run a connectivity test script against the JHTTP app. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. In your second **Build** stage, add a **Run** step.
+2. For **Shell**, select **Sh**.
+3. Enter the following code in the **Command** field:
+
+```
+until curl --max-time 1 http://localhost:8888; do
+  sleep 2;
+done
+```
+
+4. Select **Apply Changes**.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+In the YAML editor, add the following `step` block after the `Background` step block.
+
+```yaml
               - step:
                   type: Run
                   name: Test Connection to Java HTTP Server
@@ -317,16 +407,41 @@ In the YAML editor, add the following `variables` block between the `properties`
                       done
 ```
 
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
-## Run your pipeline
 
-1. In the **Pipeline Studio**, select **Run**.
-2. Enter your Docker Hub username in the `DOCKERHUB_USERNAME` field.
-2. In the **Build Type** field, select **Git Branch**, and then enter **main** in the **Branch Name** field.
-3. Select **Run Pipeline**.
-4. Observe each step of the pipeline execution. When the first stage completes, test results appear on the **Tests** tab.
+<details>
+<summary>Option: Use Gradle</summary>
+content in md format
+</details>
 
-   When the second stage completes, you should see the successful `curl` command in the **Test Connection to Java HTTP Server** step.
+<details>
+<summary>Option: Use Ant</summary>
+content in md format
+</details>
+
+
+
+
+<!-- Compare w/ GH Actions, CircleCI docs.
+
+configure environment/dependencies-->
+
+
+
+## Run the pipeline
+
+1. In the **Pipeline Studio**, save your pipeline and then select **Run**.
+2. Enter your Docker Hub username in the **DOCKERHUB_USERNAME** field.
+3. In the **Build Type** field, select **Git Branch**, and then enter `main` in the **Branch Name** field.
+4. Select **Run Pipeline**.
+
+While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds.md). When the first stage completes, test results appear on the **Tests** tab.
+
+When the second stage completes, you should see the successful `curl` command in the connectivity test step's logs.
 
 :::tip
 
@@ -334,10 +449,107 @@ For a comprehensive guide on application testing, Harness provides O'Reilly's **
 
 :::
 
-## Complete pipeline YAML
+## Reference: Pipeline YAML
 
-Here is the YAML for this tutorial's entire pipline:
+Here is the YAML for this tutorial's entire pipeline.
+
+<details>
+<summary>Pipeline YAML</summary>
 
 ```yaml
-
+pipeline:
+  name: Build Java with Maven
+  identifier: Build_Java_with_Maven_1681845696844
+  projectIdentifier: [your-project-ID]
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: [your-github-connector]
+        repoName: [your-github-account]/jhttp
+        build: <+input>
+  variables:
+    - name: DOCKERHUB_USERNAME
+      type: String
+      description: ""
+      value: <+input>
+  stages:
+    - stage:
+        name: Build Java App with Maven
+        identifier: Build_Java_App_with_Maven
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: RunTests
+                  name: RunTests_1
+                  identifier: RunTests_1
+                  spec:
+                    connectorRef: [your-Docker-Hub-connector-ID]
+                    image: maven:3.5.2-jdk-8-alpine
+                    language: Java
+                    buildTool: Maven
+                    args: test
+                    packages: io.harness
+                    runOnlySelectedTests: true
+                    postCommand: mvn package -DskipTests
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/*.xml"
+                  timeout: 30m
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: [your-Docker-Hub-connector-ID]
+                    repo: <+pipeline.variables.DOCKERHUB_USERNAME>/jhttp
+                    tags:
+                      - <+pipeline.sequenceId>
+    - stage:
+        name: Connectivity test
+        identifier: Connectivity_test
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: false
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: Background_1
+                  identifier: Background_1
+                  spec:
+                    connectorRef: [your-Docker-Hub-connector-ID]
+                    image: <+pipeline.variables.DOCKERHUB_USERNAME>/jhttp:<+pipeline.sequenceId>
+                    shell: Sh
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    shell: Sh
+                    command: |-
+                      until curl --max-time 1 http://localhost:8888; do
+                        sleep 2;
+                      done
 ```
+
+</details>
