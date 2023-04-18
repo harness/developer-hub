@@ -146,7 +146,7 @@ For details on each type, see:
 
 * **Approval:** [Using Manual Harness Approval Stages](../9_Approvals/adding-harness-approval-stages.md), [Adding Jira Approval Stages and Steps](../9_Approvals/adding-jira-approval-stages.md)
 * **CI:** [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
-* **Deployment:** [CD Quickstarts](/tutorials/deploy-services)
+* **Deployment:** [CD Quickstarts](/tutorials/cd-pipelines)
 
 For this quickstart, we're going to use the **Deployment** type.
 

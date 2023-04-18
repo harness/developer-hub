@@ -56,5 +56,5 @@ The Harness Service Reliability Management (SRM) module provides tools to help m
 The ability to release changes to a limited set of users makes it much easier to gather feedback about the product. You can create a group of users and target feature flags specifically to that group. Testing new features with a subset of users allows developers to find and address the bugs before the major release.
 
 :::tip
-You can also learn more using our [Feature Flag tutorials](https://developer.harness.io/tutorials/manage-feature-flags).
+You can also learn more using our [Feature Flag tutorials](https://developer.harness.io/tutorials/feature-flags).
 :::

@@ -14,7 +14,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
+    link: "/tutorials/chaos-experiments/first-chaos-engineering",
   },
 ];
 
@@ -29,7 +29,7 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
+    link: "/tutorials/chaos-experiments/first-chaos-engineering",
   },
   {
     title: "Chaos Experiment from a Blank Canvas",
@@ -41,7 +41,7 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5min",
-    link: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
+    link: "/tutorials/chaos-experiments/chaos-experiment-from-blank-canvas",
   },
   {
     title: "Integration with Harness CD",
@@ -56,7 +56,7 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
+    link: "/tutorials/chaos-experiments/integration-with-harness-cd",
   },
   {
     title: "Running Chaos Experiments on GitLab pipeline",
@@ -101,6 +101,6 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+    link: "/tutorials/chaos-experiments/first-chaos-experiment-via-API",
   },
 ];
