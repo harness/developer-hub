@@ -380,7 +380,7 @@ const config = {
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
-          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>Our FirstGen CD product will be phased out in about 12 months.</span> Learn more in our <a href='/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a> . For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>.",
+          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>FirstGen Harness CD will be EOL on 12/30/2023 and EOS on 3/30/2014.</span> Learn more in our <a href='/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a>. Contact  <a href='https://support.harness.io' target='_self'>Harness Support</a> with questions or concerns.",
         backgroundColor: "#FFF5ED",
         textColor: "#000000",
         isCloseable: true,
