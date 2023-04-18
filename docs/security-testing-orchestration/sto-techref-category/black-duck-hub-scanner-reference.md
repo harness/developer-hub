@@ -29,7 +29,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <details>
     <summary>Step Palette</summary>
 
-![](static/step-palette-00.png) 
+![](./static/sp-bdh.png) 
 
 </details>
 
@@ -291,11 +291,14 @@ In the **Advanced** settings, you can use the following options:
 
 You can set up a Black Duck Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
+<!-- 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+-->
 
 * `product_name` = `blackduckhub`
 * `product_config_name` = `default`
@@ -340,6 +343,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 </details>
 
 
+<!--
 
 ## YAML configuration
 
@@ -348,3 +352,5 @@ import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.m
 ```
 
 <StoSettingYAMLexample />
+
+-->

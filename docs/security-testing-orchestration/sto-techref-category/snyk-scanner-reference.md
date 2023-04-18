@@ -22,13 +22,17 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 ## Snyk step configuration
 
-The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. 
+
+<!-- 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
+
+-->
 
 <details>
     <summary>Step Palette</summary>
@@ -221,6 +225,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 </details>
 
+<!-- 
+
 ## YAML configuration
 
 ```mdx-code-block
@@ -228,3 +234,5 @@ import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.m
 ```
 
 <StoSettingYAMLexample />
+
+-->

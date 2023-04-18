@@ -30,7 +30,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <details>
     <summary>Step Palette</summary>
 
-![](static/step-palette-00.png) 
+![](./static/sp-grype.png) 
 
 </details>
 
@@ -290,8 +290,75 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 ## YAML configuration
 
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
+The following YAML pipeline includes an example step for scanning a container image using Grype. 
 
-<StoSettingYAMLexample />
+:::tip
+If you want to set up scan steps programmatically using YAML, the best practice is to set up your step in a pipeline using the Visual Editor and then copy, paste, and edit the YAML definition.
+:::  
+
+```yaml
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  identifier: grypestp
+  name: "grypestp"
+  tags: {}
+  stages:
+    - stage:
+        name: ci stage
+        identifier: ci_stage
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: docker_dind
+                  identifier: docker_dind
+                  spec:
+                    connectorRef: MY_DOCKERHUB_CONNECTOR
+                    image: docker:dind
+                    shell: Sh
+                    resources:
+                      limits:
+                        memory: 2048Mi
+                        cpu: 1000m
+              - step:
+                  type: Grype
+                  name: Grype
+                  identifier: Grype
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: grype_1njected/nodegoat
+                      type: container
+                      variant: latest
+                    advanced:
+                      log:
+                        level: info
+                      # args:
+                        # cli: "--help"
+                    resources:
+                      limits:
+                        memory: 2048Mi
+                        cpu: 1000m
+                    privileged: true
+                    imagePullPolicy: Always
+                    image:
+                      type: docker_v2
+                      name: 1njected/nodegoat
+                      tag: latest
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: MY_K8S_BUILD_INFRA_CONNECTOR
+              namespace: harness-qa-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
+
+```

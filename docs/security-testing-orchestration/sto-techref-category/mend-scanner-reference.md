@@ -25,12 +25,16 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <StoScannerStepNotes />
 
+<!-- 
+
 <details>
     <summary>Step Palette</summary>
 
 ![](static/step-palette-00.png) 
 
 </details>
+
+-->
 
 ### Scan
 
@@ -320,12 +324,14 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		
 :::note
 You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:
-:::
+
 
 * `product_product_name`
 * `product_project_name`
 * `product_project_token`
 * `product_project_token`
+
+:::
 
 
 ```mdx-code-block
@@ -342,6 +348,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 </details>
 
+<!-- 
+
 ## YAML configuration
 
 ```mdx-code-block
@@ -349,3 +357,5 @@ import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.m
 ```
 
 <StoSettingYAMLexample />
+
+-->

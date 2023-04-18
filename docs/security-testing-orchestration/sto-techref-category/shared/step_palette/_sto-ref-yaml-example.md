@@ -1,4 +1,4 @@
-The following YAML pipeline includes example stages for scanning a repository (Bandit step), an image (AquaTrivy step), and an app (ZAP step). 
+The following YAML pipeline includes example steps for scanning a repository (Bandit step), an image (AquaTrivy step), and an app (ZAP step). 
 
 :::tip
 If you want to set up scan steps programmatically using YAML, the best practice is to set up your step in a pipeline using the Visual Editor and then copy, paste, and edit the YAML definition.
