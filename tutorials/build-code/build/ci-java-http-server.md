@@ -1,12 +1,14 @@
 ---
 sidebar_position: 3
-title: Java application
-description: This build automation guide walks you through building and testing a Java HTTP server application in a CI Pipeline
+title: Build and test Java
+description: Use a CI pipeline to build and test a Java HTTP server application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /build-code/build/java
 ---
 
-# Build, test, and publish a Docker Image for a Java HTTP server application
+<!-- Tabs/sections for Maven, Gradle, Ant -->
+
+# Build, test, and publish a Java HTTP server app
 
 In this tutorial, you will create a Harness CI pipeline for a Java HTTP server application that does the following:
 1. Build and test the application.
