@@ -31,6 +31,13 @@ module.exports = {
     //  },    
     //===================================================================================
 
+    
+    // Created by ravilach/schoudhury to fix platform re-direct April 17th, 2023
+    {
+      from: "/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-using-helm",
+      to: "/tutorials/platform/install-delegate",
+    },
+
     // Created by Gigi Hanna to fix FF re-directs April 18th, 2023
 
     {
@@ -41,7 +48,7 @@ module.exports = {
       from: "/docs/feature-flags/ff-onboarding/ff-getting-started/feature-flag-best-practices",
       to: "/docs/feature-flags/ff-onboarding/feature-flag-best-practices",
     },
-{
+    {
       from: "/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags",
       to: "/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags",
     },
