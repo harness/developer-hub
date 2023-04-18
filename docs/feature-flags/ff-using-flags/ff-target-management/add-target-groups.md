@@ -1,5 +1,5 @@
 ---
-title: Add or Exclude a Target in a Target Group
+title: Add or exclude a target in a target group
 description: This topic describes how to add a Target Group to your Environment, add Targets to the group, and apply the Target Group to a Feature Flag. 
 sidebar_position: 20
 helpdocs_topic_id: 5qz1qrugyk

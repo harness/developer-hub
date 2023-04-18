@@ -31,6 +31,21 @@ module.exports = {
     //  },    
     //===================================================================================
 
+    // Created by Gigi Hanna to fix FF re-directs April 18th, 2023
+
+    {
+      from: "/docs/feature-flags/ff-onboarding/ff-getting-started/java-quickstart",
+      to: "/docs/feature-flags/ff-onboarding/java-quickstart",
+    },
+    {
+      from: "/docs/feature-flags/ff-onboarding/ff-getting-started/feature-flag-best-practices",
+      to: "/docs/feature-flags/ff-onboarding/feature-flag-best-practices",
+    },
+{
+      from: "/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags",
+      to: "/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags",
+    },
+
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
 
     {
@@ -788,6 +803,65 @@ module.exports = {
     },
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
+      to: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-cloudwatch",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-elastic-search",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-sumologic",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
+    },
 
     {
       from: "/docs/cloud-cost-management/onboard-with-cloud-cost-management/cloud-cost-management-overview/continuous-efficiency-overview",
@@ -892,6 +966,76 @@ module.exports = {
     },
 
     // Created by michael cretzman for DOC-2694 on Apr 11, 2023
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/control-resource-usage-with-queue-steps",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/control-resource-usage-with-queue-steps",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/servicenow-import-set",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/servicenow-import-set",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/email_step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-rollback",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-delegate-step",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step",
+      to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step",
+      to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/terraform-category/rollback-provisioned-infra-with-the-terraform-rollback-step",
+      to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/terraform-category/remove-provisioned-infra-with-terraform-destroy",
+      to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy",
+    },
+
     {
       from: "/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
@@ -1196,6 +1340,12 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
       to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
+    },
+
+    // adding redirect for Rashmi
+    {
+      from: "/docs/platform/References/whitelist-harness-domains-and-ips",
+      to: "/docs/platform/References/allowlist-harness-domains-and-ips",
     },
   ],
 };

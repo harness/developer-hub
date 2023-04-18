@@ -1,5 +1,5 @@
 ---
-title: Flutter SDK Reference
+title: Flutter SDK reference
 description: This topic explains how to use the Feature Flags (FF) SDK in your Flutter application.
 sidebar_position: 20
 helpdocs_topic_id: mmf7cu2owg

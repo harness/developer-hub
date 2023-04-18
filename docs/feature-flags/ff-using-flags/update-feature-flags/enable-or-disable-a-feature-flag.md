@@ -1,5 +1,5 @@
 ---
-title: Enable or Disable Your Flags
+title: Enable or disable your flags
 description: This topic describes how to turn on or off a flag in a specific environment.
 tags: 
    - feature flag

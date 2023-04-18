@@ -13,7 +13,7 @@ This topic describes how to roll back your provisioned infrastructure and resour
 ## Before You Begin
 
 * [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
-* [Provision Target Deployment Infra Dynamically with Terraform](../../cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
+* [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
 * [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
 
 ## Important: Install Terraform on Delegates

@@ -1,5 +1,5 @@
 ---
-title: Best Practices for Managing Flags
+title: Best practices for managing flags
 description: Best practices when using Harness Feature Flags.
 tags: 
    - helpDocs

@@ -1,5 +1,5 @@
 ---
-title: View the Usage of Your Subscriptions
+title: View the usage of your subscriptions
 description: When you subscribe to a Harness module, you select a number of licenses for developers and monthly active users (MAUs) to include in your subscription. You can check how many of these licenses you’re…
 sidebar_position: 50
 helpdocs_topic_id: ugsve8t4d9

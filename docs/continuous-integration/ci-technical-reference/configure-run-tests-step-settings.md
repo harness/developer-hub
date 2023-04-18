@@ -59,9 +59,9 @@ Enter the arguments for the build tool. These are used as input for the chosen b
 
 ## Report Paths
 
-This field is required for the Run Tests step to publish test results.
+The path to the file(s) that store test results in the JUnit XML format. You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-Specify one or more paths to test report files. You can specify multiple paths, and [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported. Test reports must be in JUnit XML format.
+This field is required for the Run Tests step to publish test results.
 
 ## Additional Configuration
 

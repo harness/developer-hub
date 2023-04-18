@@ -1,5 +1,5 @@
 ---
-title: Native Helm deployment tutorial
+title: Native Helm deployments
 description: This topic walks you through Native Helm deployments in Harness.
 sidebar_position: 3
 helpdocs_topic_id: lbhf2h71at

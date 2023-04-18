@@ -295,7 +295,7 @@ This section explains the steps to set up a sample pipeline.
 
 ### Build the pipeline
 
-For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart/).
+For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 ### Configure pipeline stages
 
