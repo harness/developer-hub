@@ -761,7 +761,7 @@ resource "harness_platform_connector_helm" "helm" {
 }
 ```
 
- These connectors will require [secrets](https://developer.harness.io/docs/platform/Security/harness-secret-manager-overview) to be configured because connectors are access objects that provide the Harness delegate access to a particular resource. You can create the connectors via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text) or in the Harness UI.
+ These connectors will require [secrets](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview) to be configured because connectors are access objects that provide the Harness delegate access to a particular resource. You can create the connectors via the [Terraform Provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_secret_text) or in the Harness UI.
 
 ![Secret](https://github.com/thisrohangupta/changelog/blob/master/terraform-provider/assets/secret.png)
 

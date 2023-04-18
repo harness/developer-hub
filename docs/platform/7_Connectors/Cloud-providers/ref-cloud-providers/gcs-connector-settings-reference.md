@@ -22,7 +22,7 @@ Alternately, you can use a service account that has only the **Storage Object Vi
 
 :::caution
 
-Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](../../../7_Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
+Harness supports GKE 1.19 and later. If you use a version prior to GKE 1.19, please enable Basic Authentication. If Basic authentication is inadequate for your security requirements, use the [Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 :::
 

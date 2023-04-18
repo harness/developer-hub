@@ -45,15 +45,15 @@ To run this pipeline in your project, do the following.
 
   a. [Create a service account key](https://cloud.google.com/iam/docs/creating-managing-service-account-keys#creating) as described in the Google Cloud documentation. 
 
-  b. Create a [Harness secret](/docs/platform/security/add-file-secrets) for your key. 
+  b. Create a [Harness secret](/docs/platform/Secrets/add-file-secrets) for your key. 
 
 1. Create the following connectors if you don't have them:
 
-   -  [GitHub Connector](/docs/platform/connectors/add-a-git-hub-connector)
-   - [GCP Connector](/docs/platform/connectors/connect-to-google-cloud-platform-gcp) 
+   -  [GitHub Connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
+   - [GCP Connector](/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) 
       Use the file secret you just created for the GCP credentials.
-   - [Docker Hub Connector](/docs/platform/connectors/ref-cloud-providers/docker-registry-connector-settings-reference)  
-      You can choose to download Harness images from the [Harness Image Registry](/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector) instead of Docker Hub.
+   - [Docker Hub Connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)  
+      You can choose to download Harness images from the [Harness Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead of Docker Hub.
 
 2.  Create a [publicly available bucket in GCS](https://cloud.google.com/storage/docs/access-control/making-data-public#objects) to store the report. 
 

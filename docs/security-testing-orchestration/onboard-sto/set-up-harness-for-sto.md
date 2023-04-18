@@ -191,7 +191,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 You'll need a GitHub Connector to do the [STO Tutorials](/tutorials/orchestrate-security-tests/sto-standalone-workflows). 
 
-You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in <!-- [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), --> [Azure](../../platform/7_Connectors/add-a-microsoft-azure-connector.md), [Bitbucket](/docs/platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md), [Git](/docs/platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) (platform-agnostic), [GitHub](/docs/platform/7_Connectors/ref-source-repo-provider/git-hub-connector-settings-reference.md), and [GitLab](/docs/platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md).
+You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in <!-- [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), --> [Azure](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector), [Bitbucket](/docs/platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md), [Git](/docs/platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) (platform-agnostic), [GitHub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), and [GitLab](/docs/platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md).
 
 To do the STO tutorials, point the connector at the following repo: <https://github.com/williamwissemann/dvpwa>
 

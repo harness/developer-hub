@@ -140,7 +140,7 @@ The step also exposes an [output variable](https://developer.harness.io/docs/con
 :::note 
 
 - As marked, ensure the `DOCKER_HUB_PASSWORD`,`COSIGN_PRIVATE_KEY` and `COSIGN_PASSWORD` are of the __Expression__ type.
-- `secrets.getValue` is an expression that allows you to get the value from the secret `docker_hub_password` that was created earlier in the tutorial. Check the [docs](https://developer.harness.io/docs/platform/security/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier) for more information. 
+- `secrets.getValue` is an expression that allows you to get the value from the secret `docker_hub_password` that was created earlier in the tutorial. Check the [docs](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier) for more information. 
 - All `$DOCKER_HUB_USERNAME` references should your Docker Hub Username.
 :::
 

@@ -236,7 +236,7 @@ module "dev_k8s_delegate" {
 }
 ```
 
-[Read more about k8s connectors on our developer hub](https://developer.harness.io/docs/platform/connectors/add-a-kubernetes-cluster-connector/)
+[Read more about k8s connectors on our developer hub](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector)
 
 ### [SCM GitHub](https://github.com/harness-community/terraform-harness-connectors/tree/main/modules/scms/github)
 
@@ -259,7 +259,7 @@ module "github" {
 }
 ```
 
-[Read more about GitHub connectors on our developer hub](https://developer.harness.io/docs/platform/connectors/add-a-git-hub-connector/)
+[Read more about GitHub connectors on our developer hub](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector/)
 
 ## [Delivery](https://github.com/harness-community/terraform-harness-delivery)
 

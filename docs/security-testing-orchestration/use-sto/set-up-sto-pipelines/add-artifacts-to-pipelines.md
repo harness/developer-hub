@@ -22,7 +22,7 @@ To add a PEM file or other SSL certificate, the shared folder should be **/share
 
 * If the scanner uses an SSL certificate such as a PEM file, save each certificate to **/shared/customer_artifacts/`<certificate_name>`**. 
 
-* The following example workflow uses a PEM file stored as a [Harness file secret](/docs/platform/6_Security/3-add-file-secrets.md). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. See [Harness Secrets Manager Overview](/docs/platform/6_Security/1-harness-secret-manager-overview.md).
+* The following example workflow uses a PEM file stored as a [Harness file secret](/docs/platform/6_Security/3-add-file-secrets.md). You can also use third-party managers such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager. See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
 
 * If the scanner requires a license file, save the file to **/shared/customer_artifacts/`<license_file_name>`**.  
 

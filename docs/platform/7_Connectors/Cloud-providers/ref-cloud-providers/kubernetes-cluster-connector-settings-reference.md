@@ -14,7 +14,7 @@ The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernet
 
 For cloud platform-specific connections, see platform [Cloud Connectors](/docs/category/cloud-platform-connectors).
 
-Looking for the How-to? See [Add a Kubernetes Cluster Connector](../../../7_Connectors/Cloud-providers/add-a-kubernetes-cluster-connector.md).
+Looking for the How-to? See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 ### Video Summary
 

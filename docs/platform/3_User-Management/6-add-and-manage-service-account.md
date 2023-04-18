@@ -50,7 +50,7 @@ Click the more options button (**︙**) next to the Service Account you want to
 ![](./static/add-and-manage-service-account-47.png)
 Click **Edit**.
 
-Follow the steps in [Create a Service Account](./6-add-and-manage-service-account.md#create-a-service-account) to modify any of the configured settings.
+Follow the steps in [Create a Service Account](/docs/platform/User-Management/add-and-manage-service-account) to modify any of the configured settings.
 
 ### Delete a Service Account
 

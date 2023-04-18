@@ -44,7 +44,7 @@ You can add a ServiceNow Import Set step anywhere in CD, approval, or custom sta
 1. In a Harness CD, approval, or custom stage, in **Execution**, click **Add Step**, and then select **ServiceNow Import Set**.
 2. Enter a name for the step.
 3. Enter a timeout period for the step. Once the timeout expires, Harness will initiate the step or stage [failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
-4. In **ServiceNow Connector**, select or create the [Harness ServiceNow connector](/docs/platform/Connectors/connect-to-service-now) to use.
+4. In **ServiceNow Connector**, select or create the [Harness ServiceNow connector](/docs/platform/Connectors/Ticketing-Systems/connect-to-service-now) to use.
 
 ## Select the stage table
 
