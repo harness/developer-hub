@@ -13,6 +13,10 @@ module.exports = {
       from: "/tutorials/get-started",
       to: "/tutorials",
     },
+    {
+      from: "/release-notes/harness-platform",
+      to: "/release-notes/platform",
+    },
 
 
     //===================================================================================
@@ -95,6 +99,188 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
       to: "/docs/continuous-delivery/get-started/services-and-environments-overview",
+    },
+    
+    // Created by schoudhury on Apr 18, 2023 - All tutorials
+
+    {
+      from: "/tutorials/build-code",
+      to: "/tutorials/ci-pipelines",
+    },
+    {
+      from: "/tutorials/build-code/fastest-ci",
+      to: "/tutorials/ci-pipelines/fastest-ci",
+    },
+    {
+      from: "/tutorials/build-code/build",
+      to: "/tutorials/ci-pipelines/build",
+    },
+    {
+      from: "/tutorials/build-code/build/kubernetes-build-farm",
+      to: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+    },
+    {
+      from: "/tutorials/build-code/build/nodejs",
+      to: "/tutorials/ci-pipelines/build/nodejs",
+    },
+    {
+      from: "/tutorials/build-code/build/java",
+      to: "/tutorials/ci-pipelines/build/java",
+    },
+    {
+      from: "/tutorials/build-code/build/react",
+      to: "/tutorials/ci-pipelines/build/react",
+    },
+    {
+      from: "/tutorials/build-code/build/go",
+      to: "/tutorials/ci-pipelines/build/go",
+    },
+    {
+      from: "/tutorials/build-code/build/rust",
+      to: "/tutorials/ci-pipelines/build/rust",
+    },
+    {
+      from: "/tutorials/build-code/build/signed-image",
+      to: "/tutorials/ci-pipelines/build/signed-image",
+    },
+    {
+      from: "/tutorials/build-code/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/build/tfc-notification",
+    },
+    {
+      from: "/tutorials/build-code/test",
+      to: "/tutorials/ci-pipelines/test",
+    },
+    {
+      from: "/tutorials/build-code/test/localstack",
+      to: "/tutorials/ci-pipelines/test/localstack",
+    },
+    {
+      from: "/tutorials/build-code/test/saucelabs-proxy",
+      to: "/tutorials/ci-pipelines/test/saucelabs-proxy",
+    },
+    {
+      from: "/tutorials/build-code/test/allure-report",
+      to: "/tutorials/ci-pipelines/test/allure-report",
+    },
+    {
+      from: "/tutorials/build-code/test/codecov",
+      to: "/tutorials/ci-pipelines/test/codecov",
+    },
+    {
+      from: "/tutorials/build-code/publish",
+      to: "/tutorials/ci-pipelines/publish",
+    },
+    {
+      from: "/tutorials/build-code/publish/amazon-ecr",
+      to: "/tutorials/ci-pipelines/publish/amazon-ecr",
+    },
+    {
+      from: "/tutorials/build-code/publish/google-gar",
+      to: "/tutorials/ci-pipelines/publish/google-gar",
+    },
+      
+    {
+      from: "/tutorials/deploy-services",
+      to: "/tutorials/cd-pipelines",
+    },
+    {
+      from: "/tutorials/deploy-services/kubernetes",
+      to: "/tutorials/cd-pipelines/kubernetes",
+    },
+    {
+      from: "/tutorials/deploy-services/kubernetes/helm-chart",
+      to: "/tutorials/cd-pipelines/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/kubernetes/manifest",
+      to: "/tutorials/cd-pipelines/kubernetes/manifest",
+    },
+    {
+      from: "/tutorials/deploy-services/amazon-ecs",
+      to: "/tutorials/cd-pipelines/amazon-ecs",
+    },
+    {
+      from: "/tutorials/deploy-services/unified-cicd",
+      to: "/tutorials/cd-pipelines/unified-cicd",
+    },
+
+    {
+      from: "/tutorials/manage-feature-flags",
+      to: "/tutorials/feature-flags",
+    },
+    {
+      from: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
+      to: "/tutorials/feature-flags/typescript-react",
+    },
+
+    {
+      from: "/tutorials/manage-cloud-costs",
+      to: "/tutorials/cloud-costs",
+    },
+    {
+      from: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
+      to: "/tutorials/cloud-costs/kubernetes",
+    },
+
+    {
+      from: "/tutorials/manage-service-reliability",
+      to: "/tutorials/service-reliability",
+    },
+    {
+      from: "/tutorials/manage-service-reliability/intro-to-srm",
+      to: "/tutorials/service-reliability/slo-prometheus",
+    },
+    {
+      from: "/tutorials/manage-service-reliability/intro-java-exception-management",
+      to: "/tutorials/service-reliability/java-error-tracking",
+    },
+
+    {
+      from: "/tutorials/orchestrate-security-tests",
+      to: "/tutorials/security-tests",
+    },
+    {
+      from: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
+      to: "/tutorials/security-tests/standalone-pipeline",
+    },
+    {
+      from: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
+      to: "/tutorials/security-tests/cicd-integrated-pipeline",
+    },
+    {
+      from: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
+      to: "/tutorials/security-tests/nodejs-owasp",
+    },
+
+
+    {
+      from: "/tutorials/run-chaos-experiments",
+      to: "/tutorials/chaos-experiments",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/first-chaos-engineering",
+      to: "/tutorials/chaos-experiments/first-chaos-engineering",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
+      to: "/tutorials/chaos-experiments/chaos-experiment-from-blank-canvas",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+      to: "/tutorials/chaos-experiments/first-chaos-experiment-via-api",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/chaos-experiments-on-gitlab",
+      to: "/tutorials/chaos-experiments/chaos-experiments-on-gitlab",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/chaos-experiments-on-jenkins",
+      to: "/tutorials/chaos-experiments/chaos-experiments-on-jenkins",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
+      to: "/tutorials/chaos-experiments/integration-with-harness-cd",
     },
 
     // Created by Charanya Jayaraman to fix CCM redirects on Apr 13, 2023
@@ -389,55 +575,55 @@ module.exports = {
     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
     {
       from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
-      to: "/tutorials/build-code/build/kubernetes-build-farm",
+      to: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
     },
     {
       from: "/tutorials/build-code/ci-node-docker-quickstart",
-      to: "/tutorials/build-code/build/nodejs",
+      to: "/tutorials/ci-pipelines/build/nodejs",
     },
     {
       from: "/tutorials/build-code/ci-localstack-background-step",
-      to: "/tutorials/build-code/test/localstack",
+      to: "/tutorials/ci-pipelines/test/localstack",
     },
     {
       from: "/tutorials/build-code/ci-saucelabs-background-step",
-      to: "/tutorials/build-code/test/saucelabs-proxy",
+      to: "/tutorials/ci-pipelines/test/saucelabs-proxy",
     },
     {
       from: "/tutorials/build-code/ci-java-http-server",
-      to: "/tutorials/build-code/build/java",
+      to: "/tutorials/ci-pipelines/build/java",
     },
     {
       from: "/tutorials/build-code/ci-build-push-to-ecr",
-      to: "/tutorials/build-code/publish/amazon-ecr",
+      to: "/tutorials/ci-pipelines/publish/amazon-ecr",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-go-containers",
-      to: "/tutorials/build-code/build/go",
+      to: "/tutorials/ci-pipelines/build/go",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-container-signing",
-      to: "/tutorials/build-code/build/signed-image",
+      to: "/tutorials/ci-pipelines/build/signed-image",
     },
     {
       from: "/tutorials/build-code/ci-react-quickstart",
-      to: "/tutorials/build-code/build/react",
+      to: "/tutorials/ci-pipelines/build/react",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-push-to-gar",
-      to: "/tutorials/build-code/publish/google-gar",
+      to: "/tutorials/ci-pipelines/publish/google-gar",
     },
     {
       from: "/tutorials/build-code/ci-publish-allure-report",
-      to: "/tutorials/build-code/test/allure-report",
+      to: "/tutorials/ci-pipelines/test/allure-report",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-rust-container",
-      to: "/tutorials/build-code/build/rust",
+      to: "/tutorials/ci-pipelines/build/rust",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-codecov-test",
-      to: "/tutorials/build-code/test/codecov",
+      to: "/tutorials/ci-pipelines/test/codecov",
     },
 
     // CD Tutorial
@@ -445,43 +631,38 @@ module.exports = {
     // Created by schoudhury on Apr 3, 2023
     {
       from: "/tutorials/deploy-services/microservice-manifest-k8s",
-      to: "/tutorials/deploy-services/kubernetes/manifest",
+      to: "/tutorials/cd-pipelines/kubernetes/manifest",
     },
     {
       from: "/tutorials/deploy-services/helm-k8s",
-      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+      to: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
     {
       from: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
-      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+      to: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
     {
       from: "/tutorials/deploy-services/cdce-helm-k8s",
-      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+      to: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
     {
       from: "/tutorials/deploy-services/docker-ecs",
-      to: "/tutorials/deploy-services/amazon-ecs",
+      to: "/tutorials/cd-pipelines/amazon-ecs",
     },
     {
       from: "/tutorials/deploy-services/docker-ecr-k8s",
-      to: "/tutorials/deploy-services/kubernetes",
+      to: "/tutorials/cd-pipelines/kubernetes",
     },
     {
       from: "/tutorials/deploy-services/harness-cicd-tutorial",
-      to: "/tutorials/deploy-services/unified-cicd",
+      to: "/tutorials/cd-pipelines/unified-cicd",
     },
-
-
-    // Platform Tutorial
 
     // Created by schoudhury on Feb 21, 2023
-    {
-      from: "/tutorials/platform/provision-azure-infrastructure",
-      to: "/tutorials/platform/install-delegate",
-    },
-
-    // Delegate Docs
+       {
+         from: "/tutorials/platform/provision-azure-infrastructure",
+         to: "/tutorials/platform/install-delegate",
+       },
 
     // Created by schoudhury on Mar 27, 2023 - Delegate concepts
     {
@@ -818,16 +999,15 @@ module.exports = {
 
     //  Created by dbothwell for DOC-2895 on Apr 5, 2023
     {
-      from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
-      to: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
-    },
-
-    //  Created by dbothwell for DOC-2895 on Apr 5, 2023
-    {
-      from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
-      to: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
-    },
-
+    from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
+    to: "/tutorials/security-tests/standalone-pipeline",
+  },
+   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+   {
+    from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
+    to: "/tutorials/security-tests/cicd-integrated-pipeline",
+  },
+    
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
