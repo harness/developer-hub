@@ -118,5 +118,7 @@ import {
               "",
             link: "/docs/frequently-asked-questions/harness-faqs/cloud-cost-management-faqs",
           },
-    ];
+        ],
+    },
+  ];
     /* Define the cards - end */

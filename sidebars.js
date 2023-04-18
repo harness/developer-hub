@@ -98,8 +98,12 @@ const sidebars = {
         // Custom Cloud Cost Management Landing Page
         {
           /* Uncomment this block while we have a generated-index page for module docs
-            slug: "/cloud-cost-management",
-          },
+             type: "category",
+             label: "Continuous Delivery & GitOps",
+             link: {
+             type: "generated-index",
+             slug: "/cloud-cost-management",
+             },
           */
           type: "category",
           label: "Cloud Cost Management",
