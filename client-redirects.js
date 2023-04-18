@@ -31,6 +31,21 @@ module.exports = {
     //  },    
     //===================================================================================
 
+    // Created by Gigi Hanna to fix FF re-directs April 18th, 2023
+
+    {
+      from: "/docs/feature-flags/ff-onboarding/ff-getting-started/java-quickstart",
+      to: "/docs/feature-flags/ff-onboarding/java-quickstart",
+    },
+    {
+      from: "/docs/feature-flags/ff-onboarding/ff-getting-started/feature-flag-best-practices",
+      to: "/docs/feature-flags/ff-onboarding/feature-flag-best-practices",
+    },
+{
+      from: "/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags",
+      to: "/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags",
+    },
+
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
 
     {
