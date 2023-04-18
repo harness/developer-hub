@@ -24,9 +24,9 @@ You can use the same flags across multiple environments within a single project,
 
 Before you create a Feature Flag, you must have:
 
-1. [Created a project](create-a-project.md)
-2. [Created an environment](create-an-environment.md)
-3. [Created an SDK key](create-an-sdk-key.md)
+1. [Created a project](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project)
+2. [Created an environment](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-environment)
+3. [Created an SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## How Feature Flag variations work
 
