@@ -79,5 +79,5 @@ To edit a SLO downtime:
 
 ## Delete a SLO downtime
 
-To delete a SLO downtime, select the delete icon next to it, and in the confirmation message that appears, select **Delete**.
+To delete a SLO downtime, select the delete icon next to it, and, in the confirmation message that appears, select **Delete**.
 
