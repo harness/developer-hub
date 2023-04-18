@@ -140,7 +140,7 @@ You can change the build infrastructure if you want to use a different OS, arch,
 
 Regardless of the build infrastructure you choose, you must ensure the build farm can run the commands required by your pipeline. For example, this tutorial uses tools that are publicly available through Docker Hub or already installed on [Harness Cloud's preconfigured machines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md) and your pipeline requires a tool that is not already available in the cluster, you can configure your pipeline to load those prerequisite tools when the build runs. There are several ways to do this in Harness CI, including:
+In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) and your pipeline requires a tool that is not already available in the cluster, you can configure your pipeline to load those prerequisite tools when the build runs. There are several ways to do this in Harness CI, including:
 
 * [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies) for running dependent services.
 * [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) to run templated scripts, such as GitHub Actions, BitBucket Integrations, or any Drone plugin.
@@ -189,7 +189,7 @@ In the YAML editor, add the following `variables` block between the `properties`
 
 ## Run initial tests
 
-Add a step to run tests against the JHTTP app code. This portion of the tutorial uses a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings.md) so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature. Later in this tutorial, a Run step is used to run a connectivity test script. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add a step to run tests against the JHTTP app code. This portion of the tutorial uses a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature. Later in this tutorial, a Run step is used to run a connectivity test script. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -397,7 +397,7 @@ This code block does the following:
 
 ## Run the connectivity test
 
-Add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings.md) to run a connectivity test script against the JHTTP app. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) to run a connectivity test script against the JHTTP app. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -448,13 +448,13 @@ In the YAML editor, add the following `step` block after the `Background` step b
 3. In the **Build Type** field, select **Git Branch**, and then enter `main` in the **Branch Name** field.
 4. Select **Run Pipeline**.
 
-While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds.md). When the first stage completes, test results appear on the **Tests** tab.
+While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds). When the first stage completes, test results appear on the **Tests** tab.
 
 When the second stage completes, you should see the successful `curl` command in the connectivity test step's logs.
 
 :::tip
 
-For a comprehensive guide on application testing, Harness provides O'Reilly's **Full Stack Testing** book for free at https://harness.io/resources/oreilly-full-stack-testing.
+For a comprehensive guide on application testing, [Harness provides O'Reilly's **Full Stack Testing** book for free](https://harness.io/resources/oreilly-full-stack-testing).
 
 :::
 
