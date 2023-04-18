@@ -31,7 +31,7 @@ module.exports = {
     //  },    
     //===================================================================================
 
-    // Created by ravilach/schoudhury to fix platform re-direct
+    // Created by ravilach/schoudhury to fix platform re-direct April 17th, 2023
     {
       from: "/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-using-helm",
       to: "/tutorials/platform/install-delegate",
