@@ -41,8 +41,8 @@ To check if you have installed the prerequisites, run the `flutter doctor` comma
 
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)
 * Create a Flutter application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-flutter-client-sdk).
-* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 
 ## Install the SDK
 
@@ -154,7 +154,7 @@ var conf = CfConfigurationBuilder()
 
 To initialize the SDK, you must pass in the following:
 
-* `apiKey` - The Client SDK Key you created when [creating the Feature Flag](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
+* `apiKey` - The Client SDK Key you created when creating the Feature Flag.
 * Any configuration options you want to use.
 * The Target you want to evaluate.
 

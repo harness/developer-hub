@@ -98,7 +98,7 @@ When you run the Pipeline, give the inputs for flag type.
 	1. In **Set Flag Switch**, Select ON and OFF for the Flag switch.
 	2. **Define rules for the flag,** Define the variation you want to see by default when the Flag is ON or OFF. Once you save the variations, a Flag is created for the Environment with these variations set as ON and OFF.  
 	For example, if the flag is `ON`, serve the variation `True`. If the flag is `OFF`, serve the variation `False`.  
-	For more information, go to [**Manage Variations for Feature Flags.**](/docs/feature-flags/ff-using-flags/ff-creating-flag/manage-variations)
+	For more information, go to [**Manage Variations for Feature Flags.**](/docs/feature-flags/ff-creating-flag/manage-variations)
 	3. **Serve Variations to Target Group**, Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation. For more information, go to [Targeting Users with Flags](../ff-target-management/targeting-users-with-flags.md).
 	4. **Serve Percentage Rollout**, use **Percentage Rollout** to distribute users dynamically between variations. For more information, go to [Percentage Rollout](../ff-target-management/targeting-users-with-flags.md#percentage-rollouts).
 2. Click **Apply Changes**.
