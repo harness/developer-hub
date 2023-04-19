@@ -61,7 +61,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### Continuous Delivery
 
-- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
 
   Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -275,7 +275,7 @@ For more information, see [Create a remote step template](https://developer.harn
 
 - You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
-For more information, see [HashiCorp Vault Secrets](https://developer.harness.io/docs/platform/Security/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
+For more information, see [HashiCorp Vault Secrets](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
 
 - Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
 
@@ -295,7 +295,7 @@ You can onboard any secret manager with Harness and reference their secrets in H
 
 This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a custom secret manager](https://developer.harness.io/docs/platform/security/custom-secret-manager/).
+See [Add a custom secret manager](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
 
 #### July 7, 2022
 

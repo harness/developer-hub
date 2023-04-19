@@ -80,7 +80,7 @@ curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' 
 
 :::note
 
-The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
+The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
 
 To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 
@@ -353,7 +353,7 @@ Currently, this functionality is behind the feature flag `NG_SETTINGS`. Contact 
 
 :::
 
-You can use [Harness API keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) in your cURL command to authorize the execution of a trigger.
+You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) in your cURL command to authorize the execution of a trigger.
 
 You can see the `-H 'X-Api-Key: sample_api_key'` parameter in the cURL command you copy from Harness.
 
@@ -371,7 +371,7 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 
 ### Adding authorization to custom triggers
 
-1. Create the [Harness API key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) you want to use for authorization.
+1. Create the [Harness API key](../3_User-Management/7-add-and-manage-api-keys.md) you want to use for authorization.
 2. Save the token from the key. Please make sure to copy and store your token value somewhere safe. You won't be able to see it again after you create it.
 3. Copy the cURL command for your custom trigger. For example:
 

@@ -391,14 +391,14 @@ You can now run your pipeline.
 ```
 The following example creates the Harness entities needed for a simple pipeline that deploys a publicly available Docker Nginx image to your target cluster using the manifest we just added.
 
-For information on using the Harness API, go to [Harness API Quickstart](https://developer.harness.io/docs/platform/apis/api-quickstart/). For information on the security token, go to [Add and Manage API Keys](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys).
+For information on using the Harness API, go to [Harness API Quickstart](/docs/platform/Resource-Development/APIs/api-quickstart). For information on the security token, go to [Add and Manage API Keys](/docs/platform/User-Management/add-and-manage-api-keys).
 
 <details>
 <summary>Create the Harness connector</summary>
 
 Create the Kubernetes Cluster connector using the [Create a Connector API](https://apidocs.harness.io/tag/Connectors#operation/createConnector).
 
-The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests. For steps, go to [Add and Manage API Keys](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys).
+The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests. For steps, go to [Add and Manage API Keys](/docs/platform/User-Management/add-and-manage-api-keys).
 
 Replace the following request settings in `[]` with your account information.
 
@@ -740,7 +740,7 @@ The following example creates the Harness entities needed for a simple pipeline 
 <details>
 <summary>Create the Harness connector</summary>
 
-For steps on adding the Kubernetes Cluster connector, go to [Add a Kubernetes Cluster Connector](https://developer.harness.io/docs/platform/Connectors/add-a-kubernetes-cluster-connector).
+For steps on adding the Kubernetes Cluster connector, go to [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 In **Delegates Setup**, ensure that you select the delegate you installed. For example:
 

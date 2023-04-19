@@ -154,7 +154,7 @@ The Relay Proxy obtains a list of all Environments and associated API keys for t
 
 The following are the required configuration variables to connect to the Feature Flags service:
 
-* **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](../../../platform/4_Role-Based-Access-Control/6-add-and-manage-service-account.md#create-a-service-account).
+* **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account).
 * **account-identifier**: Enter your account identifier for which you want to retrieve the config. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL. For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.
 * **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](../../../platform/organizations-and-projects/create-an-organization.md#step-1-create-a-harness-org).
 * **api-keys**: Enter your server SDK key. For more information, go to [Create an SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
