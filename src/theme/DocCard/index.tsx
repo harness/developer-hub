@@ -87,9 +87,7 @@ function CardCategory({
       title={item.label}
       description={translate(
         {
-          message: customPropsDesc
-            ? `${customPropsDesc} ({count} items)`
-            : "{count} items",
+          message: customPropsDesc ? `${customPropsDesc}` : "{count} items",
           id: "theme.docs.DocCard.categoryDescription",
           description:
             "The default description for a category card in the generated index about how many items this category includes",
