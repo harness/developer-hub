@@ -1024,6 +1024,10 @@ module.exports = {
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
     {
+      from: "/docs/continuous-delivery/cd-deployments-category/multiserv-multienv",
+      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv",
+    },
+    {
       from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
       to: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
     },
