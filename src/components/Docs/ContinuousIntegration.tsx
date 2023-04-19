@@ -18,7 +18,7 @@ export default function CI() {
             <h1>Continuous Integration Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/build-code">
+            <Link href="/tutorials/ci-pipelines">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
