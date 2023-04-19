@@ -176,12 +176,8 @@ const sidebars = {
           type: "category",
           label: "Chaos Engineering",
           link: {
-            type: "generated-index",
-            slug: "/chaos-engineering",
-            /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "chaos-engineering",
-            */
           },
           collapsed: true,
           items: [

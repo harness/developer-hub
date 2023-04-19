@@ -85,7 +85,7 @@ export default function CE() {
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>
-        <h3 id="all-tutorials">All CE Tutorials</h3>
+        <h3 id="all-tutorials">HCE Tutorials</h3>
         <TutorialCard FeatureList={CEList} />
       </div>
     </div>
