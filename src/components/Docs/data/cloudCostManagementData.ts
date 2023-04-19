@@ -45,7 +45,7 @@ import {
             title: "Cost optimization",
             module: "ccm",
             description:
-              "Optimize cloud costs using CCM recommendations and by auto-stopping idle cloud instances.",
+              "Optimize cloud costs by using CCM recommendations and auto-stopping idle cloud instances.",
             link: "/docs/category/cost-optimization",
           },
           {
@@ -109,7 +109,7 @@ import {
             title: "CCM FAQs",
             module: "ccm",
             description:
-              "",
+              "Find answers to frequently asked Harness CCM questions.",
             link: "/docs/frequently-asked-questions/harness-faqs/cloud-cost-management-faqs",
           },
         ],
