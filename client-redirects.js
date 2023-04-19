@@ -66,7 +66,7 @@ module.exports = {
     },
     {
       from: "/docs/feature-flags/ff-using-flags/filtering-flags-by-state",
-      to: "/docs/feature-flags/filtering-flags-by-state",
+      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/filtering-flags-by-state",
     },
     {
       from: "/docs/feature-flags/ff-using-flags/harness-policy-engine",
