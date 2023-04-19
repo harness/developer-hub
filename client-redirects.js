@@ -383,6 +383,18 @@ module.exports = {
       from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag",
       to: "/docs/feature-flags/ff-creating-flag/create-a-feature-flag",
     },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/add-targets",
+      to: "/docs/feature-flags/ff-target-management/add-targets",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/add-target-groups",
+      to: "/docs/feature-flags/ff-target-management/add-target-groups",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags",
+      to: "/docs/feature-flags/ff-target-management/targeting-users-with-flags",
+    },
 
 
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
