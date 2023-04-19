@@ -8,11 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
-import target_users_1 from './static/3-targeting-users-with-flags-03.png'
-import target_users_2 from './static/3-targeting-users-with-flags-04.png' 
-```
-
 Feature Flag targeting allows you to serve a particular Variation of a flag to specific target when the flag is enabled. Targets are anything that can be uniquely identified, we refer to these Targets as users, but they could also be apps, machines, resources, emails etc. 
 
 For example:
@@ -48,7 +43,7 @@ You should understand how the Harness Platform prioritizes targets and target gr
    - As the target group prioritization of `Group_A` is `0`, and the target group prioritization of `Group_C` is `2`, the flag is disabled for `Target_1`. This is because the lower-numbered target group priority, `0`, takes precedence. 
 
 :::info note
-If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](../../manage-featureflags-in-git-repos.md).
+If you have Git Experience set up with Feature Flags, you can manually edit the `priority` field of a flag via your YAML file. For more information about this, go to [Manage Your Flags Using Git Experience](/docs/feature-flags/manage-featureflags-in-git-repos).
 :::
 
 ## Target specific users or target groups when a flag is enabled
@@ -68,15 +63,11 @@ To add specific Targets: 
 
    * If you select one of the default Variations, for example, True or False, select the Target(s) or target group(s), then Click **Save**.
 
-      ```mdx-code-block
-      <img src={target_users_1} alt="The Targeting Tab of a Flag with the dropdown menus for adding a target highlighted." height="500" width="500" />
-      ```
+      ![The Targeting Tab of a Flag with the dropdown menus for adding a target highlighted.](./static/3-targeting-users-with-flags-03.png)
 
    * If you want to use a Percentage Rollout, select the target group, enter the percentage of each Variation you want to serve, then click **Save**.
 
-      ```mdx-code-block
-      <img src={target_users_2} alt="The Targeting Tab of a Flag with percentage roll out applied." height="500" width="500" /><br /><br />
-      ```
+      ![The Targeting Tab of a Flag with percentage roll out applied](./static/3-targeting-users-with-flags-04.png)
 
    :::info note
    You can only use Percentage Rollouts on a single target group for each flag.
