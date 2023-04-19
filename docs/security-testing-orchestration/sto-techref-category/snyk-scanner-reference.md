@@ -22,7 +22,7 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 ## Snyk step configuration
 
-The recommended workflow is add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a Snyk step to a Security Tests or CI Build stage and then configure it as described below. 
 
 <!-- 
 
