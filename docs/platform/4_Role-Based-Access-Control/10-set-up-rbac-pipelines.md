@@ -42,7 +42,7 @@ You will learn how to:
 
 To manage access control in Harness, you must have the following components in place:
 
-* **Principal**: can be a [User](./3-add-users.md), [User Group](./4-add-user-groups.md), or [Service Account](./6-add-and-manage-service-account.md).
+* **Principal**: can be a [User](../3_User-Management/3-add-users.md), [User Group](../3_User-Management/4-add-user-groups.md), or [Service Account](../3_User-Management/6-add-and-manage-service-account.md).
 * **Resource Group**: is a list of resources within a specific scope on which a Principal can perform actions. See [Add and Manage Resource Groups](./8-add-resource-groups.md).
 * **Roles**: is a set of permissions that is assigned to a Principal for specific Resource Groups. See [Add and Manage Roles](./9-add-manage-roles.md).
 

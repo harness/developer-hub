@@ -34,7 +34,7 @@ const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "8min",
-    link: "/tutorials/deploy-services/kubernetes/helm-chart",
+    link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
   },
   {
     title: "Deploy a Kubernetes Manifest",
@@ -48,7 +48,7 @@ const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/deploy-services/kubernetes/manifest",
+    link: "/tutorials/cd-pipelines/kubernetes/manifest",
   },
 ];
 
@@ -67,7 +67,7 @@ const CDList: CardItem[] = [
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     time: "10 min",
-    link: "/tutorials/deploy-services/kubernetes/helm-chart",
+    link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
   },
   {
     title: "Deploy a Kubernetes Manifest",
@@ -82,7 +82,7 @@ const CDList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/deploy-services/kubernetes/manifest",
+    link: "/tutorials/cd-pipelines/kubernetes/manifest",
   },
   {
     title: "Build and Deploy a NodeJS App to Kubernetes",
@@ -95,7 +95,7 @@ const CDList: CardItem[] = [
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     time: "10 min",
-    link: "/tutorials/deploy-services/unified-cicd",
+    link: "/tutorials/cd-pipelines/unified-cicd",
   },
   {
     title: "Deploy a Docker Image to Amazon ECS ",
@@ -105,7 +105,7 @@ const CDList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/deploy-services/amazon-ecs",
+    link: "/tutorials/cd-pipelines/amazon-ecs",
   },
 ];
 
@@ -119,7 +119,7 @@ export default function CD() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Deploy services</h3>
+        <h3>Set up CD pipelines to automate deployment of services to your infrastructure</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>

@@ -40,7 +40,7 @@ The current version of this SDK is **1.0.0**.
 To follow along with our test code sample, make sure you:
 
 * [Create a Feature Flag](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
-* [Create a server SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-sdk-key/#create-an-sdk-key) and made a copy of it.
+* [Create a server SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-sdk-key) and made a copy of it.
 
 ## Install the SDK
 

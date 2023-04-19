@@ -10,7 +10,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ci.svg",
     description: <>Create a CI build pipeline</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/build-code",
+    link: "/tutorials/ci-pipelines",
   },
   {
     title: "Deploy Services",
@@ -18,7 +18,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_cd.svg",
     description: <>Create a CD deployment</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/deploy-services",
+    link: "/tutorials/cd-pipelines",
   },
   {
     title: "Manage Feature Flags",
@@ -26,7 +26,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ff.svg",
     description: <>Rollout new features progressively</>,
     type: [docType.Documentation, docType.Interactive],
-    link: "/tutorials/manage-feature-flags",
+    link: "/tutorials/feature-flags",
   },
   {
     title: "Optimize Cloud Costs",
@@ -34,7 +34,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/manage-cloud-costs",
+    link: "/tutorials/cloud-costs",
   },
   {
     title: "Manage SLOs",
@@ -42,7 +42,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_srm.svg",
     description: <>Create SLOs. track error budgets, govern pipelines</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/manage-service-reliability",
+    link: "/tutorials/service-reliability",
   },
   {
     title: "Orchestrate Security Testings",
@@ -50,7 +50,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_sto.svg",
     description: <>Scan your code, containers and apps</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "/tutorials/orchestrate-security-tests",
+    link: "/tutorials/security-tests",
   },
   {
     title: "Run Chaos Experiments",
@@ -58,6 +58,6 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ce.svg",
     description: <>Ensure app and infrastructure resilience</>,
     type: [docType.Documentation, docType.Interactive],
-    link: "/tutorials/run-chaos-experiments",
+    link: "/tutorials/chaos-experiments",
   },
 ];

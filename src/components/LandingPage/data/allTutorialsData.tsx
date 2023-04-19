@@ -16,7 +16,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "8min",
-    link: "/tutorials/deploy-services/kubernetes/helm-chart",
+    link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
   },
   {
     title: "Get started with the fastest CI on the planet",
@@ -32,10 +32,10 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/build-code/fastest-ci",
+    link: "/tutorials/ci-pipelines/fastest-ci",
   },
   {
-    title: "Onboard with Terraform",
+    title: "Onboard with Terraform Provider",
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: (
@@ -61,7 +61,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/build-code/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
 ];
 
@@ -75,14 +75,14 @@ export const CIList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/build-code/fastest-ci",
+    link: "/tutorials/ci-pipelines/fastest-ci",
   },
   {
     title: "Build on a Kubernetes cluster",
     module: MODULES.ci,
     description:
       "Build a Docker Image on a Kubernetes cluster build farm.",
-    link: "/tutorials/build-code/build/kubernetes-build-farm",
+    link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
     type: [docType.Documentation],
     time: "30 min",
     icon: "img/icon_ci.svg",
@@ -92,7 +92,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of a Go application.",
-    link: "/tutorials/build-code/build/go",
+    link: "/tutorials/ci-pipelines/build/go",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -102,7 +102,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of Java HTTP Server application.",
-    link: "/tutorials/build-code/build/java",
+    link: "/tutorials/ci-pipelines/build/java",
     icon: "img/icon_ci.svg",
     time: "15 min",
     type: [docType.Documentation],
@@ -112,7 +112,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of a NodeJS application.",
-    link: "/tutorials/build-code/build/nodejs",
+    link: "/tutorials/ci-pipelines/build/nodejs",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -122,7 +122,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of a React application.",
-    link: "/tutorials/build-code/build/react",
+    link: "/tutorials/ci-pipelines/build/react",
     type: [docType.Documentation],
     time: "20 min",
     icon: "img/icon_ci.svg",
@@ -132,7 +132,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of a multi-architecture Rust application.",
-    link: "/tutorials/build-code/build/rust",
+    link: "/tutorials/ci-pipelines/build/rust",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -142,7 +142,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a signed Docker Image of a Go application.",
-    link: "/tutorials/build-code/build/signed-image",
+    link: "/tutorials/ci-pipelines/build/signed-image",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -156,14 +156,14 @@ export const CIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/build-code/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
   {
     title: "Amazon ECR",
     module: MODULES.ci,
     description:
       "Publish an Image to an Amazon Elastic Container Registry.",
-    link: "/tutorials/build-code/publish/amazon-ecr",
+    link: "/tutorials/ci-pipelines/publish/amazon-ecr",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
@@ -173,7 +173,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Publish an Image to a Google Artifact Registry.",
-    link: "/tutorials/build-code/publish/google-gar",
+    link: "/tutorials/ci-pipelines/publish/google-gar",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
@@ -183,7 +183,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Use a Run step to include CodeCov code coverage.",
-    link: "/tutorials/build-code/test/codecov",
+    link: "/tutorials/ci-pipelines/test/codecov",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -194,7 +194,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Publish an Allure Report.",
-    link: "/tutorials/build-code/test/allure-report",
+    link: "/tutorials/ci-pipelines/test/allure-report",
     type: [docType.Documentation],
     time: "5 min",
     icon: "img/icon_ci.svg"
@@ -204,7 +204,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Run LocalStack as a Background step.",
-    link: "/tutorials/build-code/test/localstack",
+    link: "/tutorials/ci-pipelines/test/localstack",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
@@ -214,7 +214,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Run Sauce Connect Proxy as a Background step.",
-    link: "/tutorials/build-code/test/saucelabs-proxy",
+    link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
@@ -236,7 +236,7 @@ export const CDList: CardItem[] = [
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     time: "10 min",
-    link: "/tutorials/deploy-services/kubernetes/helm-chart",
+    link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
   },
   {
     title: "Deploy a Kubernetes Manifest",
@@ -251,7 +251,7 @@ export const CDList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/deploy-services/kubernetes/manifest",
+    link: "/tutorials/cd-pipelines/kubernetes/manifest",
   },
   {
     title: "Build and Deploy a NodeJS App to Kubernetes",
@@ -264,7 +264,7 @@ export const CDList: CardItem[] = [
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     time: "10 min",
-    link: "/tutorials/deploy-services/unified-cicd",
+    link: "/tutorials/cd-pipelines/unified-cicd",
   },
   {
     title: "Deploy a Docker Image to Amazon ECS ",
@@ -274,7 +274,7 @@ export const CDList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/deploy-services/amazon-ecs",
+    link: "/tutorials/cd-pipelines/amazon-ecs",
   },
 ];
 
@@ -292,7 +292,7 @@ export const FFList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
+    link: "/tutorials/feature-flags/typescript-react",
   },
 ];
 
@@ -310,13 +310,13 @@ export const CCMList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
+    link: "/tutorials/cloud-costs/kubernetes",
   },
 ];
 
 export const SRMList: CardItem[] = [
   {
-    title: "Introduction to SLO Management with Prometheus",
+    title: "SLO Management with Prometheus",
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: (
@@ -328,10 +328,10 @@ export const SRMList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/manage-service-reliability/intro-to-srm",
+    link: "/tutorials/service-reliability/slo-prometheus",
   },
   {
-    title: "Introduction to Java Exception Management",
+    title: "Java Error Tracking",
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: (
@@ -343,7 +343,7 @@ export const SRMList: CardItem[] = [
     newDoc: false,
     type: [docType.Interactive, docType.Video],
     time: "10min",
-    link: "/tutorials/manage-service-reliability/intro-java-exception-management",
+    link: "/tutorials/service-reliability/java-error-tracking",
   },
 ];
 
@@ -358,7 +358,7 @@ export const STOList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
+    link: "/tutorials/security-tests/nodejs-owasp",
   },
 ];
 
@@ -373,7 +373,7 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
+    link: "/tutorials/chaos-experiments/first-chaos-engineering",
   },
   {
     title: "Chaos Experiment from a Blank Canvas",
@@ -385,7 +385,7 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5min",
-    link: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
+    link: "/tutorials/chaos-experiments/chaos-experiment-from-blank-canvas",
   },
   {
     title: "Integration with Harness CD",
@@ -400,7 +400,7 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
+    link: "/tutorials/chaos-experiments/integration-with-harness-cd",
   },
   {
     title: "Your first chaos experiment execution using APIs",
@@ -415,7 +415,7 @@ export const CEList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+    link: "/tutorials/chaos-experiments/first-chaos-experiment-via-API",
   },
 ];
 
@@ -461,7 +461,7 @@ export const PlatformList: CardItem[] = [
     link: "/tutorials/platform/customize-delegate",
   },
   {
-    title: "Onboard with Terraform",
+    title: "Onboard with Terraform Provider",
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: (

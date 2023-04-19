@@ -1,12 +1,12 @@
 {
-    "label": "Create a Feature Flag",
+    "label": "Create, update, and view flags",
     "position": 10,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "Create a Feature Flag"
+        "title": "Create, Update, and View Flags"
     },
     "customProps": {
         "helpdocs_category_id": "gjyyhm9f9h"
