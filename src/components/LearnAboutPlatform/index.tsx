@@ -206,7 +206,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/release-notes/harness-platform">
+            <a href="/release-notes/platform">
               <h4>Harness Platform</h4>
               <p>New features and fixed issues for the Harness Platform</p>
             </a>

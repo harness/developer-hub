@@ -100,5 +100,5 @@ Based on your selection in the Policy Evaluation criteria, you will either recei
 ![](./static/add-a-governance-policy-step-to-a-connector-21.png)
 ### See also
 
-* [Harness Policy As Code Overview](../../../feature-flags/ff-using-flags/harness-policy-engine.md)
+* [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine)
 

@@ -18,7 +18,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/build-code/fastest-ci",
+    link: "/tutorials/ci-pipelines/fastest-ci",
   },
   {
     title: "Build on a Kubernetes Cluster",
@@ -33,7 +33,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "30 min",
-    link: "/tutorials/build-code/build/kubernetes-build-farm",
+    link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
   },
   {
     title: "Code coverage with CodeCov",
@@ -47,7 +47,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15 min",
-    link: "/tutorials/build-code/test/codecov",
+    link: "/tutorials/ci-pipelines/test/codecov",
   },
   {
     title: "Terraform Cloud notification triggers",
@@ -61,7 +61,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/build-code/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
 ];
 
@@ -87,14 +87,14 @@ export const CIList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/build-code/fastest-ci",
+    link: "/tutorials/ci-pipelines/fastest-ci",
   },
   {
     title: "Build on a Kubernetes cluster",
     module: MODULES.ci,
     description:
       "Build a Docker Image on a Kubernetes cluster build farm.",
-    link: "/tutorials/build-code/build/kubernetes-build-farm",
+    link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
     type: [docType.Documentation],
     time: "30 min",
     icon: "img/icon_ci.svg",
@@ -104,7 +104,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of a Go application.",
-    link: "/tutorials/build-code/build/go",
+    link: "/tutorials/ci-pipelines/build/go",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -114,7 +114,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of Java HTTP Server application.",
-    link: "/tutorials/build-code/build/java",
+    link: "/tutorials/ci-pipelines/build/java",
     icon: "img/icon_ci.svg",
     time: "15 min",
     type: [docType.Documentation],
@@ -124,7 +124,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of a NodeJS application.",
-    link: "/tutorials/build-code/build/nodejs",
+    link: "/tutorials/ci-pipelines/build/nodejs",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -134,7 +134,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of a React application.",
-    link: "/tutorials/build-code/build/react",
+    link: "/tutorials/ci-pipelines/build/react",
     type: [docType.Documentation],
     time: "20 min",
     icon: "img/icon_ci.svg",
@@ -144,7 +144,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image of a multi-architecture Rust application.",
-    link: "/tutorials/build-code/build/rust",
+    link: "/tutorials/ci-pipelines/build/rust",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -154,7 +154,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a signed Docker Image of a Go application.",
-    link: "/tutorials/build-code/build/signed-image",
+    link: "/tutorials/ci-pipelines/build/signed-image",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -168,14 +168,14 @@ export const CIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/build-code/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
   {
     title: "Amazon ECR",
     module: MODULES.ci,
     description:
       "Publish an Image to an Amazon Elastic Container Registry.",
-    link: "/tutorials/build-code/publish/amazon-ecr",
+    link: "/tutorials/ci-pipelines/publish/amazon-ecr",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
@@ -185,7 +185,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Publish an Image to a Google Artifact Registry.",
-    link: "/tutorials/build-code/publish/google-gar",
+    link: "/tutorials/ci-pipelines/publish/google-gar",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
@@ -195,7 +195,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Use a Run step to include CodeCov code coverage.",
-    link: "/tutorials/build-code/test/codecov",
+    link: "/tutorials/ci-pipelines/test/codecov",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
@@ -206,7 +206,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Publish an Allure Report.",
-    link: "/tutorials/build-code/test/allure-report",
+    link: "/tutorials/ci-pipelines/test/allure-report",
     type: [docType.Documentation],
     time: "5 min",
     icon: "img/icon_ci.svg"
@@ -216,7 +216,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Run LocalStack as a Background step.",
-    link: "/tutorials/build-code/test/localstack",
+    link: "/tutorials/ci-pipelines/test/localstack",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
@@ -226,7 +226,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Run Sauce Connect Proxy as a Background step.",
-    link: "/tutorials/build-code/test/saucelabs-proxy",
+    link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"

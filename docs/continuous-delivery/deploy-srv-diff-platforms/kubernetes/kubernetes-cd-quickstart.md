@@ -271,7 +271,7 @@ For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/Dele
 
 ## Next Steps
 
-See [CD tutorials](/tutorials/deploy-services) for other deployment features.
+See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
 
 
 

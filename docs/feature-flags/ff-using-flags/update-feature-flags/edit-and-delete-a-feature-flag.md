@@ -59,7 +59,7 @@ You can also:
 
 
 * [Edit your Flag Variations](manage-variations.md)
-* [Add Prerequisite Flags](../add-prerequisites-to-feature-flag.md)
+* [Add Prerequisite Flags](../../add-prerequisites-to-feature-flag.md)
 * [Manage Your Targets](/docs/category/manage-feature-flag-targets)
 
 

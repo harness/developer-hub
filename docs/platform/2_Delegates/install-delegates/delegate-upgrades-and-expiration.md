@@ -8,7 +8,7 @@ The Harness Delegate for Kubernetes supports automatic upgrades. With automatic 
 
 Harness recommends that you enable automatic upgrades. 
 
-Delegate upgrades do not affect pipelines. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down gracefully. 
+Delegate upgrades do not affect pipelines. Before an upgrade is performed, the delegate finishes the tasks that are underway. The delegate then shuts down. 
 
 :::info note
 The automatic upgrade feature is enabled by default for the Kubernetes manifest installation option. However, it is disabled by default for the Helm, Terraform, and Docker installation options. 
@@ -16,11 +16,15 @@ The automatic upgrade feature is enabled by default for the Kubernetes manifest 
 
 ## How automatic upgrade works in the Kubernetes manifest
 
-The Kubernest manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour. Every time it runs, it makes a call to the Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:23.03.78314`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a rolling deployment of the delegate replicas with the newer image. 
+The Kubernetes manifest has a component called `upgrader`. The `upgrader` is a cron job that runs every hour. Every time it runs, it makes a call to the Harness Manager to determine which delegate version is published for the account. The API returns a payload, such as `harness/delegate:23.03.78314`. If the delegate that was involved in this upgrade cron job does not have the same image as what the API returns, the `kubectl set image` command runs to perform a rolling deployment of the delegate replicas with the newer image. 
 
 To prevent the installation of the automatic upgrade feature, remove the `cronJob` section before you apply the manifest.
 
-You can also change the time when the the upgrade cron job runs by updating the `schedule`. 
+You can also change the time when the upgrade cron job runs by updating the `schedule`. 
+
+:::info note
+The allowed value for `upgrader` schedule is between one and 90 minutes. Harness recommends a default value of 60 minutes.
+:::
 
 <details>
     <summary>Example Kubernetes manifest</summary>
@@ -52,10 +56,10 @@ You can also change the time when the the upgrade cron job runs by updating the 
                         name: test-upgrader-token
                     volumeMounts:
                         - name: config-volume
-                        mountPath: /etc/config
+                        - mountPath: /etc/config
                     volumes:
                         - name: config-volume
-                        configMap:
+                        - configMap:
                             name: test-upgrader-config
 
 ```
@@ -64,7 +68,7 @@ You can also change the time when the the upgrade cron job runs by updating the 
 
 ### Determine if automatic upgrade is enabled
 
-When a delegate is installed, it may take up to an hour to determine if the upgrader was removed during installation. During that time, the delegate shows a status of **DETECTING**. 
+When a delegate is installed, it may take up to an hour to determine if the `upgrader` was removed during installation. During that time, the delegate shows a status of **DETECTING**. 
 
 To find the delegate status, select an account, a project, or an organization, and then select **Delegates**. 
 
@@ -85,6 +89,57 @@ If you disable automatic upgrades, then you have to manually upgrade the delegat
 2. In the delegate manifest, locate the **CronJob** resource. In the resource `spec`, set the `suspend` field to `true`:   
 `spec:`  
 --`suspend: true`
+
+## Use automatic upgrade with custom delegate images
+
+You may choose to use a custom delegate image for the following reasons:
+
+- You don't have access to Docker Hub, so you pull the Harness images and put them in your own container registry.
+- You use the Harness Delegate as a base image and install tools, certificates, etc. 
+
+If automatic upgrade is enabled and you have a custom image, the following may occur:
+
+- If the Kubernetes cluster does not have access to Docker Hub, then the upgrade fails. 
+- If the Kubernetes cluster has access to Docker Hub, then the new published image is deployed. This action causes the custom tooling to be lost. 
+
+To avoid these issues, you can set up the `upgrader` to use your custom delegate tag.
+
+1. Use the [latest-supported-version](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/publishedDelegateVersion) API to determine the delegate number for your account:
+
+    `curl --location 'https://app.harness.io/ng/api/delegate-setup/latest-supported-version?accountIdentifier=<account_identifier>' \
+    --header 'x-api-key: <your_api_key>'`
+
+    The following example result is returned. It returns the tag of the delegate that is released to your account. 
+
+    ```
+    {
+    "metaData": {},
+    "resource": {
+        "latestSupportedVersion": "23.04.78910",
+        "latestSupportedMinimalVersion": "23.04.78910.minimal"
+    },
+    "responseMessages": []
+    }
+    ```
+
+    When the `upgrader` makes a request, it tries to change the image to `harness/delegate:23.04.78910`. You can take either the `harness/delegate:23.04.78910` image or the `harness/delegate:23.04.78910.minimal` image and build your own image by adding more tools and binaries, and then push it to your own container repository. For example, you might publish the image to a private repository, such as `artifactory-abc/harness/delegate:23.04.78910`.
+
+2. Once the image is pushed, you can call the [override-delegate-tag](https://apidocs.harness.io/tag/Delegate-Setup-Resource/#operation/overrideDelegateImageTag) API to enable the Harness back-end to supply the upgrader with the custom delegate tag:
+
+    `curl --location --request PUT 'https://app.harness.io/ng/api/delegate-setup/override-delegate-tag?accountIdentifier=<account_identifier>&delegateTag=artifactory-abc%2Fharness%2Fdelegate%3A23.04.78910' \
+    --header 'x-api-key: <your_api_key>'`
+
+    It returns the following results:
+
+    ```
+    {
+    "metaData": {},
+    "resource": "Updated Delegate image tag to artifactory-abc/harness/delegate:23.04.78910",
+    "responseMessages": []
+    }
+    ```
+
+    The next time the `upgrader` runs, it will receive the `artifactory-abc/harness/delegate:23.04.78910` image. 
 
 ## Delegate expiration policy
 
