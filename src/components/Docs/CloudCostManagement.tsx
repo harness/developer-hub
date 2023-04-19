@@ -5,7 +5,7 @@ import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
-import { featuredTutorials, docsCards } from "./data/cloudCostManagementData";
+import { docsCards } from "./data/cloudCostManagementData";
 
 export default function CCM() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
