@@ -64,13 +64,13 @@ A _policy set_ is a collection of one or more policies. You combine policies int
     
    2. Select the policy you just created and set the pull-down to **Error and Exit**. This is the action to take if any policies in the set are violated. 
 
-     ![]../static/notif-opa-select-policy.png)
+      ![](../static/notif-opa-select-policy.png)
 
    3. Click **Apply** to add the policy to the set, then **Finish** to close the Policy Set wizard.
 
 5. :exclamation: In the **Policy Sets** page, enable  **Enforced** for your new policy set.
 
-      ![]../static/notif-opa-policy-set-enforced-yes.png)
+    ![](../static/notif-opa-policy-set-enforced-yes.png)
 
 
 ### Add a step to evaluate your policy against the scan results
