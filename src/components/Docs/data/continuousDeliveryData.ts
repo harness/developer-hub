@@ -180,7 +180,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Kubernetes",
           module: "cd",
           description:
-            "Deploy a publicly-available Kubernetes artifact and manifest into your Kubernetes cluster using Harness.",
+            "Deploy a publicly available Kubernetes artifact and manifest into your Kubernetes cluster using Harness.",
           link: "/docs/category/kubernetes",
         },
         {
@@ -222,7 +222,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Google Cloud",
           module: "cd",
           description:
-            "Deploy new Cloud Functions to Google Clloud using Harness.",
+            "Deploy new Cloud Functions to Google Cloud using Harness.",
           link: "/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions",
         },
         {
