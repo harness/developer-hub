@@ -95,15 +95,15 @@ const sidebars = {
             },
           ],
         },
-        // Custom Cloud Cost Management Landing Page
+        // Custom Cloud Cost ManagementLanding Page
         {
           /* Uncomment this block while we have a generated-index page for module docs
-             type: "category",
-             label: "Continuous Delivery & GitOps",
-             link: {
-             type: "generated-index",
-             slug: "/cloud-cost-management",
-             },
+          type: "category",
+          label: "Cloud Cost Management",
+          link: {
+            type: "generated-index",
+            slug: "/cloud-cost-management",
+          },
           */
           type: "category",
           label: "Cloud Cost Management",
