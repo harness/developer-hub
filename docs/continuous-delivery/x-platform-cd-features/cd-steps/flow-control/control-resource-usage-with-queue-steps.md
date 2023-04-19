@@ -38,7 +38,7 @@ In **Advanced**, you can use the following options:
 * [Conditional execution](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
 * [Failure strategy](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
 * [Looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
-* [Policy Enforcement](/docs/platform/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ### Test
 

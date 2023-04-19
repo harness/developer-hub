@@ -87,7 +87,7 @@ For this reason, it's important that all your Project members know the Provision
 
 ### AWS Connector
 
-1. Add or select the Harness [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
+1. Add or select the Harness [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
 
 The credentials required for provisioning depend on what you are provisioning.
 
@@ -113,7 +113,7 @@ For example, if you wanted to give full access to create and manage EKS clusters
      ]  
  }
 ```
-Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) from AWS.
 
@@ -126,7 +126,7 @@ See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormat
 You can add your template in the following ways:
 
 * **Inline:** just enter the template in **Template File**. You can use CloudFormation-compliant JSON or YAML.
-* **AWS S3:** enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting are used for authentication. Ensure that the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+* **AWS S3:** enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting are used for authentication. Ensure that the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 * **Remote:** select a Git repo where you template is located. You'll add or select a Harness Git Connector for the repo. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206).
 
 #### Expression and Secret Support in Templates
@@ -135,7 +135,7 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
+* [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
 * [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### Stack Name
@@ -179,7 +179,7 @@ Where the JSON file contains parameters such as these:
 1. In **Cloud Formation Parameter Files**, click **Add**.
 2. In **Parameter File Connector**, select your Git platform, and the select or add a Git Connector. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206) for steps on adding a Git Connector.
    
-   For AWS S3, see [Add an AWS Connector](../../../platform/7_Connectors/add-aws-connector.md).
+   For AWS S3, see [Add an AWS Connector](docs/platform/Connectors/Cloud-providers/add-aws-connector).
 3. In **Parameter File Details**, enter the following:
 
    + **Identifier:** enter an Identifier for the file. This is just a name that indicates what the parameters are for.
@@ -197,7 +197,7 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md)
+* [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
 * [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### CloudFormation Parameters Overrides
@@ -210,7 +210,7 @@ In **CloudFormation Parameters Overrides**, click **Retrieve Names from template
 
 For each parameter you want to override, enter a new values in **Value**.
 
-Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
+Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 ### Role ARN
 
@@ -268,7 +268,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Approval step
 
@@ -292,7 +292,7 @@ You can use the Delete Stack step to remove resources provisioned by the Create 
 There are two options:
 
 * **Inline:** similar to `aws cloudformation delete-stack --stack-name my-stack`. **Inline** removes the stack you identify using these settings:
-	+ **AWS Connector:** add or select the Harness AWS Connector for connecting to AWS. Ensure its credentials have the permissions needed to remove the resources. See [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+	+ **AWS Connector:** add or select the Harness AWS Connector for connecting to AWS. Ensure its credentials have the permissions needed to remove the resources. See [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 	+ **Region:** select the region for the resources you are removing.
 	+ **Role ARN:** enter the AWS Role ARN to use when deleting the stack. This is the same as the role you would use when deleting a stack using the AWS console or CLI.
 	+ **Stack Name:** enter the name of the stack to delete.

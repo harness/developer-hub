@@ -14,7 +14,7 @@ This topic provides an overview of how Harness Policy As Code implemented govern
 
 
 :::note
-Looking for the quickstart? Go to [Harness Policy As Code quickstart](/docs/platform/Policy-as-code/harness-governance-quickstart).
+Looking for the quickstart? Go to [Harness Policy As Code quickstart](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart).
 
 :::
 
@@ -88,7 +88,7 @@ Harness policies are written and tested using the built-in policy editor.
 
 ![](./static/harness-governance-overview-07.png)
 
-For an example of how to use the policy editor, see [Harness Policy As Code quickstart](/docs/platform/Policy-as-code/harness-governance-quickstart).
+For an example of how to use the policy editor, see [Harness Policy As Code quickstart](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart).
 
 #### Policy Library
 
@@ -193,7 +193,7 @@ Severities:
 * **On error (Error and Exit):** a message is shown and the action does not complete.
 * **On warning (Warn and Continue):** a message is shown and the action is completed.
 
-The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. Go to [add a Governance Policy step to a pipeline](/docs/platform/policy-as-code/add-a-governance-policy-step-to-a-pipeline/) for more information.
+The Policy step in a Pipeline also enables evaluating policies during Pipeline execution. Go to [add a Governance Policy step to a pipeline](/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline) for more information.
 
 #### Feature Flags
 
@@ -205,13 +205,13 @@ Policy Sets can be configured to evaluate policies on these Feature Flag events:
 * Flag is created.
 * Flag is toggled on or off.
 
-See [Use Harness Policy As Code for Feature Flags](/docs/platform/policy-as-code/using-harness-policy-engine-for-feature-flags/).
+See [Use Harness Policy As Code for Feature Flags](/docs/platform/Governance/Policy-as-code/using-harness-policy-engine-for-feature-flags).
 
 #### Custom
 
 You can define a policy with the entity type Custom.
 
-The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. Go to [add a Governance Policy step to a pipeline](/docs/platform/policy-as-code/add-a-governance-policy-step-to-a-pipeline/) for more information.
+The Custom entity type provides flexibility to enforce policy evaluations against any input payload during Pipeline execution. This is done using the Policy step. Go to [add a Governance Policy step to a pipeline](/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline) for more information.
 
 Custom entity types are open ended. There is no pre-set JSON schema that is used for Custom policies. The payload that the policy is evaluated against is determined by you (defined in the Policy step).
 
@@ -227,7 +227,7 @@ Policies and Policy Sets are saved at the Harness Account, Organization, or Proj
 
 ### See also
 
-* [Harness Policy As Code quickstart](/docs/platform/Policy-as-code/harness-governance-quickstart)
-* [Add a Policy step to a pipeline](/docs/platform/policy-as-code/add-a-governance-policy-step-to-a-pipeline/)
-* [Harness Policy As Code overview for Feature Flags](/docs/feature-flags/harness-policy-engine/)
+* [Harness Policy As Code quickstart](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart)
+* [Add a Policy step to a pipeline](/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline)
+* [Harness Policy As Code overview for Feature Flags](/docs/feature-flags/ff-using-flags/harness-policy-engine/)
 

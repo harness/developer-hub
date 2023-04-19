@@ -85,7 +85,7 @@ Click **Remote**. The additional settings appear to configure Git Experience.
 
 ![](./static/configure-git-experience-for-harness-entities-39.png)
 
-In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
+In **Git Connector**, select or create a Git Connector to the repo for your Project. For steps, see [Code Repo Connectors](../7_Connectors/Code-Repositories/connect-to-code-repo.md).
 
 ![](./static/configure-git-experience-for-harness-entities-40.png)
 
@@ -127,7 +127,7 @@ Create the branch in your repository before entering it in **Git Branch**. Harne
 
 :::
 
-Harness pre-populates the **YAML Path**. You can change this path and the file name. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
+Harness pre-populates the **YAML Path**. You can change this path and the file name. All your configurations are stored in Git in the [Harness Folder](git-experience-overview.md#harness-folder).
 
 
 :::note
