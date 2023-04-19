@@ -16,7 +16,7 @@ Use the Azure Repos connector to [connect to Azure SCM repos](../Code-Repositori
 
 :::tip
 
-If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../../cloud-cost-management/1-onboard-with-cloud-cost-management/set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
 
 :::
 
