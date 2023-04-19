@@ -3,76 +3,59 @@ id: pod-autoscaler
 title: Pod autoscaler
 ---
 
-Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod.
-- It examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
+Pod autoscaler is a Kubernetes pod-level chaos fault that determines whether nodes can accomodate multiple replicas of a given application pod. This fault examines the node auto-scaling feature by determining whether the pods were successfully rescheduled within a specified time frame if the existing nodes are running at the specified limits.
 
 ![Pod Autoscaler](./static/images/pod-autoscaler.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault determines how an application accomodates multiple replicas of a given application pod at unexpected point in time.
-</div>
-</details>
+## Use cases
 
-## Prerequisites
+Pod autoscaler determines how an application accomodates multiple replicas of a given application pod at unexpected times.
 
-- Kubernetes > 1.16.
-
-
-## Default validations
-
-The application pods should be in running state before and after chaos injection.
-
+:::note
+- Kubernetes > 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> REPLICA_COUNT </td>
-        <td> Number of replicas to which you wish to scale. </td>
-        <td> <code>nil</code> </td>
+        <td> Number of replicas you wish to scale to. </td>
+        <td> <code>nil</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler#replica-counts">replica counts</a></td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 60s. </td>
+        <td> Duration for which to insert chaos (in seconds).</td>
+        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
 
 ### Replica counts
 
-It defines the number of replicas that are required to be present in the target application during chaos. You can tune it using the `REPLICA_COUNT` environment variable.
+Number of replicas that need to be present in the target application during chaos. Tune it by using the `REPLICA_COUNT` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/pod-autoscaler/replica-count.yaml yaml"
 

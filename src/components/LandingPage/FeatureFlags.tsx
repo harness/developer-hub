@@ -16,7 +16,7 @@ export default function FF() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Manage Feature Flags</h3>
+        <h3>Rollout new features progressively</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>

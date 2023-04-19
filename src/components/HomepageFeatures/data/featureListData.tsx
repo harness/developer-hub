@@ -4,21 +4,21 @@ import { MODULES } from "../../../constants";
 
 export const featureList: CardItem[] = [
   {
-    title: "Build & Test Code",
+    title: "Set up CI Pipelines",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
-    description: "Create a CI build pipeline.",
+    description: "Automate builds, tests and publishing of artifacts.",
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "tutorials/build-code",
+    link: "tutorials/ci-pipelines",
   },
   {
-    title: "Deploy Services",
+    title: "Set up CD Pipelines",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: "Create a CD deployment pipeline.",
+    description: "Automate deployment of application services to your infrastructure.",
     type: [docType.Documentation],
-    link: "tutorials/deploy-services",
+    link: "tutorials/cd-pipelines",
   },
   {
     title: "Manage Feature Flags",
@@ -26,7 +26,7 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ff.svg",
     description: <>Roll out new features progressively.</>,
     type: [docType.Documentation],
-    link: "tutorials/manage-feature-flags",
+    link: "tutorials/feature-flags",
   },
   {
     title: "Manage Cloud Costs",
@@ -34,7 +34,7 @@ export const featureList: CardItem[] = [
     icon: "img/icon_ccm.svg",
     description: <>Achieve cost transparency and cut costs.</>,
     type: [docType.Documentation],
-    link: "tutorials/manage-cloud-costs",
+    link: "tutorials/cloud-costs",
   },
   {
     title: "Manage Service Reliability",
@@ -42,23 +42,23 @@ export const featureList: CardItem[] = [
     icon: "img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, debug code errors.</>,
     type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "tutorials/manage-service-reliability",
+    link: "tutorials/service-reliability",
   },
   {
     title: "Orchestrate Security Tests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
-    description: <>Scan code, containers and apps.</>,
+    description: <>Scan code, containers and live applications.</>,
     type: [docType.Documentation],
-    link: "tutorials/orchestrate-security-tests",
+    link: "tutorials/security-tests",
   },
   {
     title: "Run Chaos Experiments",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
-    description: <>Ensure app and infrastructure resilience.</>,
+    description: <>Ensure application and infrastructure resilience.</>,
     type: [docType.Documentation],
-    link: "tutorials/run-chaos-experiments",
+    link: "tutorials/chaos-experiments",
   },
   {
     title: "Administer Harness Platform",
@@ -67,7 +67,7 @@ export const featureList: CardItem[] = [
     description: (
       <>
         Install a Kubernetes or Docker delegate, Onboard with Terraform
-        Provider.
+        Provider and more.
       </>
     ),
     type: [docType.Documentation],

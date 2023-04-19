@@ -12,7 +12,7 @@ This topic provides settings for the **Build and Push to ECR** step, which build
 
 For more information, go to the following:
 
-* Harness CI tutorial: [Build and push a container image to Amazon ECR](/tutorials/build-code/publish/amazon-ecr)
+* Harness CI tutorial: [Build and push a container image to Amazon ECR](/tutorials/ci-pipelines/publish/amazon-ecr)
 * AWS documentation: [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
 * Harness CI documentation: [Build and push an artifact](../../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md)
 

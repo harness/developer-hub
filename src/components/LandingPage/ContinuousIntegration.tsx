@@ -20,7 +20,7 @@ export default function CI() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Build & Test Code</h3>
+        <h3>Set up CI pipelines to automate builds, tests & publishing of artifacts</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>

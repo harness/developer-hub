@@ -60,8 +60,8 @@ The following sections describe the workflow for setting up STO. Once you comple
 
 Harness includes two RBAC roles specifically for STO users:
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](/tutorials/orchestrate-security-tests/sto-standalone-workflows).
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions (Ignore rules). These workflows are covered in [Tutorial 2](/tutorials/orchestrate-security-tests/sto-integrated-workflows).
+* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Tutorial 1](/tutorials/security-tests/standalone-pipeline).
+* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions (Ignore rules). These workflows are covered in [Tutorial 2](/tutorials/security-tests/cicd-integrated-pipeline).
 
 :::note
 You need Administrative privileges at the Account level (Account Admin role) to assign these roles.
@@ -189,7 +189,7 @@ A Docker Hub connector is required to run a Docker-in-Docker service as describe
 
 ### Create a Codebase Connector
 
-You'll need a GitHub Connector to do the [STO Tutorials](/tutorials/orchestrate-security-tests/sto-standalone-workflows). 
+You'll need a GitHub Connector to do the [STO Tutorials](/tutorials/security-tests/standalone-pipeline). 
 
 You also need a Git repo connector for any STO pipeline that scans a codebase. You can create connectors for codebases in <!-- [AWS CodeCommit](https://harness.helpdocs.io/article/jed9he2i45), --> [Azure](../../platform/7_Connectors/add-a-microsoft-azure-connector.md), [Bitbucket](/docs/platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md), [Git](/docs/platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) (platform-agnostic), [GitHub](/docs/platform/7_Connectors/ref-source-repo-provider/git-hub-connector-settings-reference.md), and [GitLab](/docs/platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md).
 
@@ -219,7 +219,7 @@ To do the STO tutorials, point the connector at the following repo: <https://git
 
 ### Create a base pipeline for STO
 
-The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. This workflow is described in [STO Tutorial 1](/tutorials/orchestrate-security-tests/nodejs-firstscan/sto-standalone-workflows.
+The following procedure creates a pipeline with the STO functionality required to run scans on your repos, images, and instances. Once you set up this pipeline, you can clone it to a new pipeline and update the pipeline to set up your scans. This workflow is described in [STO Tutorial 1](/tutorials/security-tests/nodejs-firstscan/sto-standalone-workflows.
 
 #### Add a Security Test stage
 

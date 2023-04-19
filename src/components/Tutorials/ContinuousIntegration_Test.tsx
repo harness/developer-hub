@@ -15,7 +15,7 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ci.svg`} />
-            <h1>Test Code and Artifacts</h1>
+            <h1>Test Code & Artifacts Tutorials</h1>
           </div>
         </div>
         <div className={styles.spaceBetween}>

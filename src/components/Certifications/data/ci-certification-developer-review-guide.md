@@ -4,7 +4,7 @@
 |Domain|Topic|Material |
 | :- | :- | :- |
 |**1. Harness Basics, Platform Entities, and Key Concepts**|||
-||Describe Continuous Integration Fundamentals|[Harness CI](https://developer.harness.io/tutorials/build-code/fastest-ci)|
+||Describe Continuous Integration Fundamentals|[Harness CI](https://developer.harness.io/tutorials/ci-pipelines/fastest-ci)|
 ||Understand Artifacts And Packages|[Harness CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
 ||Utilize The "Pipeline, Stages, Step Groups, Steps" Schema|[Harness Key Concepts](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)|
 ||Illistruate Harness Hierarchy "Account, Organizations, Projects"|[Connect to an Artifact Repo](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)|
@@ -62,8 +62,8 @@
 ||Configure Notifications - Based on Pipeline Events|[Add a Pipeline Notification Strategy](https://developer.harness.io/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events/)|
 ||Describe How To Run Steps on Host vs Containers|[Harness CI concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
 ||Configure To Send PR Status Updates|-|
-||Describe How To Test For Swimlanes With Harness Run Test Step|[Build, test, and publish a Docker Image for a Java HTTP server application](https://developer.harness.io/tutorials/build-code/ci-java-http-server)|
-||Configure Run Test Step|[Build, test, and publish a Docker Image for a Java HTTP server application](https://developer.harness.io/tutorials/build-code/ci-java-http-server)|
+||Describe How To Test For Swimlanes With Harness Run Test Step|[Build, test, and publish a Docker Image for a Java HTTP server application](https://developer.harness.io/tutorials/ci-pipelines/ci-java-http-server)|
+||Configure Run Test Step|[Build, test, and publish a Docker Image for a Java HTTP server application](https://developer.harness.io/tutorials/ci-pipelines/ci-java-http-server)|
 ||Configure Outputs From One Step To Another|[Run Tests step settings](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings/)|
 ||Step Library - Describe Save And Restore Cache In The Pipeline|[Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data)|
 ||Step Library - Configure Save And Restore Cache In The Pipeline|[Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data)|
