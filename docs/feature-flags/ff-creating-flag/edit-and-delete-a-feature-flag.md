@@ -38,12 +38,12 @@ To edit a flag:
 ### See also
 
 * [Edit your Flag Variations](manage-variations.md)
-* [Add Prerequisite Flags](../../add-prerequisites-to-feature-flag.md)
+* [Add Prerequisite Flags](/docs/feature-flags/add-prerequisites-to-feature-flag)
 * [Manage Your Targets](/docs/category/manage-feature-flag-targets)
 
 ## Delete a flag
 
-When you are finished with a Feature Flag, it's best practice to remove it to keep your Flags and application organised and tidy. This topic describes how to delete a Feature Flag on the Harness Platform and using [Git](../../manage-featureflags-in-git-repos.md).
+When you are finished with a Feature Flag, it's best practice to remove it to keep your Flags and application organised and tidy. This topic describes how to delete a Feature Flag on the Harness Platform and using [Git](/docs/feature-flags/manage-featureflags-in-git-repos).
 
 :::info note
  Make sure you are ready to delete the Flag from all of your Environments. When you delete a Flag on the Harness Platform or on Git, it is removed from all Environments.
@@ -62,7 +62,7 @@ When you are finished with a Feature Flag, it's best practice to remove it to ke
 ### Delete a flag using Git
 
 
-If you [have set up Git Experience to manage your Flags](../../manage-featureflags-in-git-repos.md) via a `.yaml` file on Git, you can delete Flags from there. To do this:
+If you [have set up Git Experience to manage your Flags](/docs/feature-flags/manage-featureflags-in-git-repos) via a `.yaml` file on Git, you can delete Flags from there. To do this:
 
 
 1. Go to the `.yaml` file where you manage your Feature Flags.

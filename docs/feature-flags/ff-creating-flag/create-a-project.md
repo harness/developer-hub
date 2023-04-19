@@ -24,7 +24,7 @@ Before you can create a Feature Flag, you need to create a project in the Harnes
 This topic describes how to create a project in the Harness Platform. For more information, go to [Harness Platform documentation](/docs/platform).
 
 :::note info
-Before you create a Feature Flag, you must have [created an Organization](/docs/platform/organizations-and-projects/create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](../../ff-onboarding/ff-security-compliance/manage-access-control.md).
+Before you create a Feature Flag, you must have [created an Organization](/docs/platform/organizations-and-projects/create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](/docs/feature-flags/ff-onboarding/ff-security-compliance/manage-access-control).
 :::
 
 ## Create a project
@@ -38,7 +38,7 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 	*Figure 1: Create a Project in Feature Flags*
 
 1. In **About the Project**, in **Name**, enter the name for your project and select a color for it.
-2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization#create-a-harness-org) and [Organizations and Projects](../../../platform/organizations-and-projects/projects-and-organizations.md).
+2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization#create-a-harness-org) and [Organizations and Projects](/docs/platform/organizations-and-projects/projects-and-organizations).
 3. Click **Save and Continue**.
 
 	```mdx-code-block
@@ -54,7 +54,7 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 	* Gitops Admin Role
 	* Feature Flag Manage Role
 
-	For more information about the permissions for each role, go to [Manage Access Control](../../ff-onboarding/ff-security-compliance/manage-access-control.md) and [Permissions Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
+	For more information about the permissions for each role, go to [Manage Access Control](/docs/feature-flags/ff-onboarding/ff-security-compliance/manage-access-control) and [Permissions Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
 
 3. Click **Save and Continue**. Your project is created.
 
@@ -84,7 +84,7 @@ To read more about the Harness Platform, see [Harness Platform](/docs/platform).
 
 Before you create a Feature Flag, you must have:
 
-1. [Created an Organization](../../../platform/organizations-and-projects/create-an-organization.md)
+1. [Created an Organization](/docs/platform/organizations-and-projects/create-an-organization)
 1. [Created a project](#create-a-project)
 
 ### Create an environment
@@ -113,7 +113,7 @@ To create an SDK key:
 
 1. In the environment you created, in **Settings**, click **Create SDK Key**.
 2. In **Create SDK Key**, in **Name**, enter a name for your SDK key.
-3. In **Key Type**, select either **Client** or **Server** depending on the type of SDK you want to use. For more information about the SDK types Harness supports, go to [Chose a Client-side or Server-side SDK](../../ff-sdks/sdk-overview/client-side-and-server-side-sdks.md). If your organization needs to rotate the keys, you can choose to add more than one key for the same environment.
+3. In **Key Type**, select either **Client** or **Server** depending on the type of SDK you want to use. For more information about the SDK types Harness supports, go to [Chose a Client-side or Server-side SDK](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks). If your organization needs to rotate the keys, you can choose to add more than one key for the same environment.
 4. Click **Create**.
 5. Copy and store your Secret.
 

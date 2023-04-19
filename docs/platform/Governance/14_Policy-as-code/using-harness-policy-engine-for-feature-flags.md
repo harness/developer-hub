@@ -173,7 +173,7 @@ After you have created your Policy Set and added your policies to it, apply the 
 
 1. In Harness Platform, click **Feature Flags**.
 2. Click **+ Flag**.
-3. [Create a new Feature Flag](../../../feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#before-you-begin). Make sure the flag [adheres to the policy you are testing.](using-harness-policy-engine-for-feature-flags.md#step-1-create-a-policy)
+3. [Create a new Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). Make sure the flag [adheres to the policy you are testing.](using-harness-policy-engine-for-feature-flags.md#step-1-create-a-policy)
 4. Click **Save and Close**. The result is one of the following:
 * **Success**: When you save the flag, the policy rule is evaluated, returns Flag created, and the flag is saved.
 * **Failure**:

@@ -340,10 +340,6 @@ module.exports = {
       to: "/docs/feature-flags/connect-monitored-service",
     },
     {
-      from: "/docs/feature-flags/ff-using-flags/filtering-flags-by-state",
-      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/filtering-flags-by-state",
-    },
-    {
       from: "/docs/feature-flags/ff-using-flags/harness-policy-engine",
       to: "/docs/feature-flags/harness-policy-engine",
     },
@@ -357,27 +353,35 @@ module.exports = {
     },
     {
       from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-environment",
-      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-project",
     },
     {
       from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-sdk-key",
-      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-project",
     },
     {
       from: "/docs/feature-flags/ff-using-flags/update-feature-flags/enable-or-disable-a-feature-flag",
-      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/enable-or-disable-a-feature-flag",
+      to: "/docs/feature-flags/ff-creating-flag/enable-or-disable-a-feature-flag",
     },
     {
       from: "/docs/feature-flags/ff-using-flags/update-feature-flags/edit-and-delete-a-feature-flag",
-      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/edit-and-delete-a-feature-flag",
+      to: "/docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag",
     },
     {
       from: "/docs/feature-flags/ff-using-flags/update-feature-flags/manage-variations",
-      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/manage-variations",
+      to: "/docs/feature-flags/ff-creating-flag/manage-variations",
     },
     {
       from: "/docs/feature-flags/ff-using-flags/update-feature-flags/delete-a-feature-flag",
-      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/edit-and-delete-a-feature-flag",
+      to: "/docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-project",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-feature-flag",
     },
 
 
