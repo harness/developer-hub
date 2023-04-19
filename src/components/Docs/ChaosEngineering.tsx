@@ -39,7 +39,7 @@ export default function CD() {
             <p>
               <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Chaos engineering</a> is the discipline of performing experiments on a software to build 
               confidence in the system's capability to withstand turbulent and unexpected conditions. 
-              It is a tool that helps identify weaknesses and misconfiguration in the services.
+              It is a tool that helps identify weaknesses and misconfiguration in the services. Harness Chaos Engineering module takes a holistic-approach to chaos engineering, and doesn't merely focus on fault-injection. It is designed to help users setup a fully-operational chaos function that is based on the original <a href = "https://principlesofchaos.org/">principles of chaos</a> as well as addressing several enterprise needs around its practice.
             </p>
           </div>
         </div>
