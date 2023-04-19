@@ -5,10 +5,10 @@ module.exports = {
       from: "/release-notes",
       to: "/release-notes/whats-new",
     },
-    {
-      from: "/docs",
-      to: "/docs/category/documentation",
-    },
+    // {
+    //   from: "/docs",
+    //   to: "/docs/category/documentation",
+    // },
     {
       from: "/tutorials/get-started",
       to: "/tutorials",
@@ -18,13 +18,12 @@ module.exports = {
       to: "/release-notes/platform",
     },
 
-
     //===================================================================================
-    // 
+    //
     //  H O W   T O   A D D   R E D I R E C T S
     //
-    //  - Use the form in the example below. 
-    //  - Create a redirect for each target page or folder on DevHub. 
+    //  - Use the form in the example below.
+    //  - Create a redirect for each target page or folder on DevHub.
     //  - Remove the forward-slash characters that comment out the lines of the example object.
     //  - Note the use of commas.
     //
@@ -32,9 +31,8 @@ module.exports = {
     //  {
     //    from: "/docs/platform/delegates/delegate-guide/automate-delegate-installation",
     //    to: "/docs/platform/delegates/installation",
-    //  },    
+    //  },
     //===================================================================================
-
 
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
@@ -309,7 +307,6 @@ module.exports = {
       from: "/docs/platform/Terraform/advanced-terraform-onboarding",
       to: "/docs/platform/Resource-Development/Terraform/advanced-terraform-onboarding",
     },
-    
 
     // Created by ravilach/schoudhury to fix platform re-direct April 17th, 2023
     {
@@ -396,7 +393,6 @@ module.exports = {
       to: "/docs/feature-flags/ff-target-management/targeting-users-with-flags",
     },
 
-
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
 
     {
@@ -407,7 +403,7 @@ module.exports = {
       from: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
       to: "/docs/continuous-delivery/get-started/services-and-environments-overview",
     },
-    
+
     // Created by schoudhury on Apr 18, 2023 - All tutorials
 
     {
@@ -486,7 +482,7 @@ module.exports = {
       from: "/tutorials/build-code/publish/google-gar",
       to: "/tutorials/ci-pipelines/publish/google-gar",
     },
-      
+
     {
       from: "/tutorials/deploy-services",
       to: "/tutorials/cd-pipelines",
@@ -559,7 +555,6 @@ module.exports = {
       from: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
       to: "/tutorials/security-tests/nodejs-owasp",
     },
-
 
     {
       from: "/tutorials/run-chaos-experiments",
@@ -966,10 +961,10 @@ module.exports = {
     },
 
     // Created by schoudhury on Feb 21, 2023
-       {
-         from: "/tutorials/platform/provision-azure-infrastructure",
-         to: "/tutorials/platform/install-delegate",
-       },
+    {
+      from: "/tutorials/platform/provision-azure-infrastructure",
+      to: "/tutorials/platform/install-delegate",
+    },
 
     // Created by schoudhury on Mar 27, 2023 - Delegate concepts
     {
@@ -1070,7 +1065,6 @@ module.exports = {
       to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
     },
 
-
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
     {
       from: "/docs/platform/Delegates/delegate-guide/build-custom-delegate-images-with-third-party-tools",
@@ -1107,21 +1101,17 @@ module.exports = {
       to: "/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools",
     },
 
-
-
     // Created by kat-enos for PR-738 on Feb 21, 2023
     {
       from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes",
       to: "/docs/platform/Delegates/install-delegates/overview",
     },
 
-
     // Created by kat-enos for PR-738 on Feb 21, 2023
     {
       from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm",
       to: "/docs/platform/Delegates/install-delegates/overview",
     },
-
 
     // Created by kat-enos for PR-2421 on Jan 13, 2023
     {
@@ -1200,7 +1190,6 @@ module.exports = {
       from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
       to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
     },
-
 
     // Created by kat-enos on Jan 22, 2023
     {
@@ -1306,15 +1295,15 @@ module.exports = {
 
     //  Created by dbothwell for DOC-2895 on Apr 5, 2023
     {
-    from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
-    to: "/tutorials/security-tests/standalone-pipeline",
-  },
-   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
-   {
-    from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
-    to: "/tutorials/security-tests/cicd-integrated-pipeline",
-  },
-    
+      from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
+      to: "/tutorials/security-tests/standalone-pipeline",
+    },
+    //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+    {
+      from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
+      to: "/tutorials/security-tests/cicd-integrated-pipeline",
+    },
+
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
@@ -2216,7 +2205,7 @@ module.exports = {
       from: "/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults",
     },
-    
+
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
     {
       from: "/docs/category/codebase-configuration",
