@@ -115,22 +115,49 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.cd,
           description:
             "Learn the basics of Harness Continuous Delivery",
-          link: "/docs/category/get-started",
-          // @Roshini: sample code for the sub categories -->
+          // @Roshni: sample code for the sub categories -->
           children: [
             {
-              title: "Sub category placeholder 1",
+              title: "CD pipeline basics",
               module: MODULES.cd,
               description:
-                "Upgrade from CD FirstGen to NextGen.",
-              link: "/docs/category/upgrading-cd",
+                "",
+              link: "/docs/continuous-delivery/get-started/cd-pipeline-basics",
             },
             {
-              title: "Sub category placeholder 2",
+              title: "CD pipeline modelling overview",
               module: MODULES.cd,
               description:
-                "Upgrade from CD FirstGen to NextGen.",
-              link: "/docs/category/upgrading-cd",
+                "",
+              link: "/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview",
+            },
+            {
+              title: "Create your first CD pipeline",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/get-started/create-first-pipeline",
+            },
+            {
+              title: "Integrate CD with other Harness modules",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/get-started/integrating-CD-other-modules",
+            },
+            {
+              title: "Server based licensing and usage",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/get-started/service-licensing-for-cd",
+            },
+            {
+              title: "CD ecosystem",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/integrations/cd-integrations",
             },
           ]
           // <-- sample code end
@@ -141,20 +168,90 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Upgrade from CD FirstGen to NextGen.",
           link: "/docs/category/upgrading-cd",
+          children: [
+            {
+              title: "Upgrade to NextGen",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd",
+            },
+            {
+              title: "Upgrade to service and environment V2",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2",
+            },
+            {
+              title: "FirstGen and NextGen parity matrix",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix",
+            },
+
+            {
+              title: "Upgrade FAQs",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq",
+            },
+          ]
         },
-        {
-          title: "Integrations",
-          module: MODULES.cd,
-          description:
-            "See the tools and platforms you can use to deploy your apps.",
-          link: "/docs/continuous-delivery/integrations/cd-integrations",
-        },
+        
         {
           title: "Cross-platform CD features",
           module: MODULES.cd,
           description:
             "Learn about the CD features that are common to all deployment types.",
           link: "/docs/category/cross-platform-cd-features",
+          children: [
+            {
+              title: "Services",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/services",
+            },
+            {
+              title: "Environments",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/environments",
+            },
+            {
+              title: "Executions",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/executions",
+            },
+
+            {
+              title: "Steps",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/steps",
+            },
+            {
+              title: "Templates",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/templates",
+            },
+            {
+              title: "Advanced CD use cases",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/advanced-cd-use-cases",
+            },
+          ]
         },
       ],
     },
