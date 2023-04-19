@@ -46,11 +46,9 @@ Here are the minimum AWS IAM role policies that you would need to deploy a Lambd
 For example, if the role you created was named `LambdaTutorial`, you can attach the policies like this:
 
 ```
-aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/AmazonEC2FullAccess --role-name LambdaTutorial  
+aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/IAMReadOnlyAccess --role-name LambdaTutorial
 
-aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaRole --role-name LambdaTutorial  
-
-aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/IAMReadOnlyAccess --role-name LambdaTutorial  
+aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaRole --role-name LambdaTutorial   
 
 aws iam attach-role-policy --policy-arn arn:aws:iam::aws:policy/AWSLambdaFullAccess --role-name LambdaTutorial  
 
@@ -161,7 +159,7 @@ The following video describes an end-to-end Lambda deployment including all of t
 
 ## AWS connector for Lambda deployments
 
-You need to add a Harness [AWS Connector](/docs/platform/7_Connectors/add-aws-connector) to connect Harness to your AWS Account and specify a region to deploy. AWS connectors are used to fetch the artifact ZIP/container and deploy your Lambda functions.
+You need to add a Harness [AWS Connector](/docs/platform/7_Connectors/add-aws-connector) to connect Harness to your AWS account, fetch artifacts, and specify a region to deploy.
 
 AWS connectors are used in your Harness service for the artifact you select in **Artifacts** and in the environment's **Infrastructure Definition**. 
 
@@ -177,7 +175,7 @@ The service contains the function artifact in **Artifacts** and the function def
 
 ### Artifacts
 
-You can deploy Lambda functions packaged as ZIP files in S3 Buckets or as containers in AWS ECR. These are the only two artifact sources AWS Cloud Provider supports today with AWS Lambda. 
+You can deploy Lambda functions packaged as ZIP files in S3 Buckets or as containers in AWS ECR. These are the only two artifact sources Harness supports today with AWS Lambda. 
 
 ![picture 2](./static/b2fe3a2941e8cdad79c802494c33c0b9e467e294d26e851512f38e78c837eee6.png)
 
@@ -194,13 +192,7 @@ Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/la
 
 The API takes a JSON object as input that defines the configuration settings for the Lambda function, such as the function name, runtime environment, handler function, memory allocation, and IAM role. This allows you to use the function definition as a configuration file in your Harness pipelines.
 
-In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API, such as the following:
-
-- VPC
-- Lambda Layers
-- Runtime
-- Handler
-- Tags
+In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
 
 The minimal requirements for an AWS Lambda function definition are:
 
@@ -209,7 +201,7 @@ The minimal requirements for an AWS Lambda function definition are:
 - Handler (`Handler`): The name of the function within your code that Lambda should call when the function is invoked.
 - AWS IAM role (`Role`): The IAM role that the function should use to access other AWS services or resources. You can create an IAM role specifically for the Lambda function, or you can reuse an existing IAM role if it has the necessary permissions.
 
-For a full list of supported fields, please check out the [AWS Lambda Create Function Request](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html)
+For a full list of supported fields, go to [AWS Lambda Create Function Request](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html).
 
 Harness supports all of the popular Git platforms for storing your function definition files. 
 
@@ -224,9 +216,9 @@ Here is a NodeJS hello world function example:
 }
 ```
 
-You can use [service variables](/docs/platform/12_Variables-and-Expressions/harness-variables) in your function definition JSON
+You can use [service variables](/docs/platform/12_Variables-and-Expressions/harness-variables) in your function definition JSON.
 
-Services variables allows your function definition to be reusable across multiple Lambda functions. 
+Services variables allow your function definition to be reusable across multiple Lambda functions. 
 
 You can override service variables using [Harness environment overrides](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments). Overrides can also be used to change the function definition when it is deployed to different environments.
 
@@ -234,16 +226,16 @@ Here's a function definition example using service variables:
 
 ```json
 {
-   "Runtime": "<+serviceVariables.runtime>",
-   "FunctionName": "<+serviceVariables.functionName>",
-   "Handler": "<+serviceVariables.handler>",
-   "Role": "<+serviceVariables.roleARN>"
+  "FunctionName": "<+serviceVariables.functionName>",
+  "Runtime": "<+serviceVariables.runtime>",
+  "Handler": "<+serviceVariables.handler>",
+  "Role": "<+serviceVariables.roleARN>"
 }
 ```
 
 You can also deploy an existing function using its ARN. Here is an ECR Lambda function definition example that uses an existing ARN:
 
-```JSON
+```json
 {
   "FunctionName": "arn:aws:lambda:us-west-2:123456789012:function:my-function",
   "Runtime": "nodejs14.x",
@@ -255,7 +247,15 @@ You can also deploy an existing function using its ARN. Here is an ECR Lambda fu
 
 ```
 
-Even though you are only updating an existing function in the above example, you still need to include the Artifact in the Harness service because the AWS API expects the `Code:ImageUri` in the definition.
+Even though you are only updating an existing function in the above example, you still need to include the artifact in the Harness service **Artifacts** section because the AWS API expects the `Code:ImageUri` in the definition. Harness will dynamically add the artifact in the `Code:ImageUri` at runtime.
+
+### Updating existing functions
+
+Typically, you will use Harness to deploy a new function and its future versions. You can also use Harness to update an existing function.
+
+To update an existing function, the function definition you supply Harness must have a `FunctionName` that matches the name of the function you are updating in AWS and follow the [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html#SSS-CreateFunction-request-FunctionName) conventions.
+
+You do not need to use the function ARN in the `FunctionName` of the function definition.
 
 ### Sample service YAML
 
@@ -305,17 +305,71 @@ service:
 
 ```
 
+### Service configuration using Harness API
+
+You can configure the Harness AWS Lambda service using the [Create Service API](https://apidocs.harness.io/tag/Services#operation/createServiceV2). Ensure you specify the service type as `AwsLambda`
+
+### Service configuration using Harness Terraform Provider
+
+You can configure the Harness AWS Lambda service using the Harness Terraform Provider [service platform resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
+
+Here's an example of creating a service using the Terraform Provider.
+
+```YAML
+resource "harness_platform_service" "service" {
+  identifier  = "helloworld"
+  name        = "hello-world lambda"
+  description = "lambda function"
+  org_id      = "default"
+  project_id  = "serverless"
+
+  yaml = <<-EOT
+            service:
+              name: helloworld
+              identifier: helloworld
+              description: "Hello World AWS Lambda"
+              tags: {}
+              serviceDefinition:
+                spec:
+                  manifests: # Harness introduces a function definition to define the properties of your AWS Lambda function
+                    - manifest:
+                        identifier: lambdaFunctionDefinition 
+                        type: AwsLambdaFunctionDefinition
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              connectorRef: rohitgithub
+                              gitFetchType: Branch
+                              paths:
+                                - serverless/aws-lambda/createFunction.json
+                              branch: master
+                  artifacts: # The artifact is the packaged .zip or Docker image you wish to deploy to AWS
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources:
+                        - spec:
+                            connectorRef: awscp
+                            bucketName: sainathlambda
+                            region: us-east-2
+                            filePath: <+serviceVariables.workload_name>
+                          identifier: test
+                          type: AmazonS3
+                  variables:
+                    - name: workload_name
+                      type: String
+                      description: "sample variable definition"
+                      value: workloadNameValue
+                type: AwsLambda
+              EOT
+}
+```
 
 ## Lambda environment and infrastructure definition
 
 Define a Harness environment and infrastructure definition to tell Harness where to deploy the Lambda function service you created in Harness.
 
-
-![picture 3](./static/841570811fe302e5b57b4e2ec99474e90abc1b97d7bf99414d0653ca98889997.png)  
-
-
-
-Below is an example of the YAML for an environment:
+Here's an example of the YAML for an environment:
 
 ```YAML
 environment:
@@ -356,7 +410,7 @@ infrastructureDefinition:
 
 ```
 
-## Lambda steps
+## Lambda deployment steps
 
 Once you have created the Harness service and environment for your deployment, you can model your pipeline in **Pipelines**.
 
@@ -364,36 +418,99 @@ Simply create a new **Deploy** stage, select AWS Lambda as the deployment type, 
 
 Harness includes execution steps to deploy your function:
 
-- Deploy Lambda
-- Rollback AWS Lambda
+- AWS Lambda Deploy
+- AWS Lambda Rollback
 
 These steps are added to your pipeline stage **Execution** automatically when you model your pipeline.
 
-### Deploy Lambda step
+### AWS Lambda Deploy step
 
-The Deploy Lambda step requires no configuration because Harness handles the logic to deploy the artifact to the proper AWS account and region. 
+The AWS Lambda Deploy step requires no configuration because Harness handles the logic to deploy the artifact to the proper AWS account and region. 
 
 Harness will deploy the Lambda function and automatically route the traffic from the old version of the Lambda function to the newly deployed one.
 
-Here is the YAML of the Deploy Lambda step. 
+Here is the YAML of the AWS Lambda Deploy step. 
 
 
 ```yaml
-- step:
+            steps:
+              - step:
                   name: Deploy Aws Lambda
                   identifier: deployawslambda
                   type: AwsLambdaDeploy
                   timeout: 10m
                   spec: {}
-                  when:
-                    stageStatus: Success
-                    condition: "false"
-                  failureStrategies: []
 ```
 
-### Lambda Rollback Step
+When the step executes Harness will save the information needed for rollback. Here's an example you can see when you deploy.
 
-When a pipeline deployment fails, Harness will automatically roll back your Lambda function to the previous version using the Rollback step. Harness remembers the successful version of the AWS Lambda Service deployed and rollback for you. 
+```
+Preparing Rollback Data..
+
+Fetching Function Details for function: test-lambda-10
+Fetched Function Details for most recent deployed function test-lambda-10 
+
+Function Version: 99 
+FunctionARN: arn:aws:lambda:us-east-2:123456789:function:test-lambda-10:99 
+CodeSha256: Sj0QxkDca5JABord90YoAC+123456789= 
+Memory Size: 128 
+Runtime: nodejs16.x 
+CodeSize: 967 
+Handler: handler.hello 
+Architecture: [x86_64] 
+
+Prepare Rollback Done.
+```
+
+Here's an example of a deployment log you can see when you deploy in Harness:
+
+```
+Deploying..
+
+Aws Lambda Manifest Content 
+{
+   "runtime": "nodejs16.x",
+   "functionName": "test-lambda-10",
+   "handler": "handler.hello",
+   "role": "arn:aws:iam::123456789:role/service-role/avengers-test-role-ypjbn4a8"
+}
+Function: [test-lambda-10] already exists. Update and Publish.
+Existing Lambda Function Code Sha256: [123456789/aQ=].
+Downloading AmazonS3 artifact with identifier: primary
+S3 Object Path: lambda/lambda-cg-test.zip
+Successfully downloaded artifact..
+Verifying if status of function to be Successful
+function: [test-lambda-10], status: [InProgress], reason: [The function is being created.]
+Updated Function Code Sha256: [Sj0QxkDca5JABord90YoAC+123456789=]
+Updated Function ARN: [arn:aws:lambda:us-east-2:123456789:function:test-lambda-10:101]
+Verifying if status of function to be Successful
+function: [test-lambda-10], status: [InProgress], reason: [The function is being created.]
+Publishing new version
+Published new version: [101]
+Published function ARN: [arn:aws:lambda:us-east-2:123456789:function:test-lambda-10:101]
+Successfully deployed lambda function: [test-lambda-10]
+
+================================================================================
+Aws Lambda Alias Manifest Content 
+{
+   "description": "creating alias",
+   "name": "test-alias-2"
+}
+
+Create or Update Aliases for function test-lambda-10 with version 101. 
+
+Updating Alias test-alias-2 for function test-lambda-10 with version 101. 
+
+Updated Alias test-alias-2 for function test-lambda-10 with version 101. 
+
+Done Creating Aliases
+Done
+```
+
+
+### AWS Lambda Rollback Step
+
+When a pipeline deployment fails, Harness will automatically roll back your Lambda function to the previous version using the AWS Lambda Rollback step. Harness remembers the successful version of the AWS Lambda service deployed and rollback for you. 
 
 Here is the YAML for the AWS Lambda Rollback step. 
 
@@ -485,65 +602,7 @@ pipeline:
 
 ```
 
-## Service configuration via Harness API
 
-You can configure the Harness AWS Lambda service using the [Create Service API](https://apidocs.harness.io/tag/Services#operation/createServiceV2). Ensure you specify the service type as `AwsLambda`
-
-## Service configure via Harness Terraform Provider
-
-You can configure the Harness AWS Lambda service using the Harness Terraform Provider [service platform resource](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
-
-
-```YAML
-resource "harness_platform_service" "service" {
-  identifier  = "helloworld"
-  name        = "hello-world lambda"
-  description = "lambda function"
-  org_id      = "default"
-  project_id  = "serverless"
-
-  yaml = <<-EOT
-            service:
-              name: helloworld
-              identifier: helloworld
-              description: "Hello World AWS Lambda"
-              tags: {}
-              serviceDefinition:
-                spec:
-                  manifests: # Harness introduces a function definition to define the properties of your AWS Lambda function
-                    - manifest:
-                        identifier: lambdaFunctionDefinition 
-                        type: AwsLambdaFunctionDefinition
-                        spec:
-                          store:
-                            type: Github
-                            spec:
-                              connectorRef: rohitgithub
-                              gitFetchType: Branch
-                              paths:
-                                - serverless/aws-lambda/createFunction.json
-                              branch: master
-                  artifacts: # The artifact is the packaged .zip or Docker image you wish to deploy to AWS
-                    primary:
-                      primaryArtifactRef: <+input>
-                      sources:
-                        - spec:
-                            connectorRef: awscp
-                            bucketName: sainathlambda
-                            region: us-east-2
-                            filePath: <+serviceVariables.workload_name>
-                          identifier: test
-                          type: AmazonS3
-                  variables:
-                    - name: workload_name
-                      type: String
-                      description: "sample variable definition"
-                      value: workloadNameValue
-                type: AwsLambda
-              EOT
-}
-
-```
 
 
 

@@ -14,6 +14,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Delivery
 
+- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments)
+  
+  This functionality is behind a feature flag, `CDS_AWS_NATIVE_LAMBDA`.
+  
+  Harness supports the deployment of AWS Lambda functions. 
+
 - ServiceNow custom table support. (CDS-55046)
   
   This functionality is behind a feature flag, `CDS_SERVICENOW_TICKET_TYPE_V2`.
