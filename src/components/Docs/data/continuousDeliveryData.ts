@@ -272,7 +272,7 @@ export const featuredTutorials: CardItem[] = [
           module: "cd",
           description:
             "Control deployment resources and schedules.",
-          link: "/docs/continuous-delivery",
+          link: "/docs/category/manage-deployments",
         },
         {
           title: "Monitor deployments",
