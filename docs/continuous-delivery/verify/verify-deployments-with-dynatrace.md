@@ -17,7 +17,11 @@ This topic covers how to add and configure Dynatrace as a Health Source for the 
 
 ## Before You Begin
 
-[Add Dynatrace as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
+:::info
+For Harness to have access to Dynatrace metrics via the Dynatrace API, the metrics need to be [marked as key requests](https://www.dynatrace.com/support/help/platform-modules/applications-and-microservices/services/analysis/monitor-key-requests). 
+:::
+
+- [Add Dynatrace as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace) to the Harness platform.
 
 ## Review: CV Setup Options
 
