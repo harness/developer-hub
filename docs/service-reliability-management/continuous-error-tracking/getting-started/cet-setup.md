@@ -161,7 +161,7 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
 
 1. [Download](https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz) the latest version of the Agent for Linux.
 
-2. Extract this version to a folder of your choice. For example`/home/user`. The contents of the archive will be inside a folder named Harness. You'll require the path to the Agent when starting your application. An example for the Agent path would be , `/home/user/harness/lib/libETAgent.so`.
+2. Extract this version to a folder of your choice. For example`/home/user`. The contents of the archive will be inside a folder named Harness. You'll require the path to the Agent when starting your application. An example for the Agent path would be, `/home/user/harness/lib/libETAgent.so`.
 
 3. Add JVM arguments which instruct the JVM to load the Agent.
 
@@ -279,7 +279,7 @@ value: b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a
 
 ## Verify Agent connection
 
-After installing Error Tracking Agent, you should verify that it is connected to Harness SRM. To verify the Error Tracking Agent connection, do the following:
+After installing Error Tracking Agent, you should verify that it is connected to Harness. To verify the Error Tracking Agent connection, do the following:
 
 1. Expand **PROJECT SETUP** and then select **Code Error Settings**.  
    
@@ -292,5 +292,5 @@ After installing Error Tracking Agent, you should verify that it is connected to
 
 ## Next steps
 
-Identify and prioritize error events using [Events dashboard](error-tracking-event-dashboard.md).
+Identify and prioritize error events using [Events dashboard](./cet-event-dashboard.md).
 
