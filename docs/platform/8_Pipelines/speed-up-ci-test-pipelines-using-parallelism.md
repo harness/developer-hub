@@ -16,8 +16,8 @@ Most CI pipelines are set up to run tests with every new commit. When you [set u
 
 1. The [parallelism strategy](#define-the-parallelism-strategy), which determines the number of instances of a stage or step to execute
 2. The strategy for splitting tests. How you do this depends on which step you're using to run tests:
-   * If you're using the **Run Tests** step, you specify the `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence#enable-parallelism-test-splitting-for-test-intelligence).
-   * If you're using a **Run** step, you use the `split_tests` command along with test split strategies, such as `--split-by file_size` to [](#define-test-splitting).
+   * If you're using the **Run Tests** step, you specify the `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-parallelism-test-splitting-for-test-intelligence).
+   * If you're using a **Run** step, you use the `split_tests` command along with test split strategies, such as `--split-by file_size` to [define test splitting](#define-test-splitting).
 
 :::info
 

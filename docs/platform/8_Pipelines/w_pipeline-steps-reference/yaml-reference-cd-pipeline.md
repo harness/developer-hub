@@ -32,7 +32,7 @@ The Pipeline Studio includes visual and YAML editors.
 
 The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio.
 
-See [CD Quickstarts](/docs/category/cd-tutorials) and [Get started with CI](/docs/category/get-started-with-ci).
+See [CD Quickstarts](https://developer.harness.io/tutorials/cd-pipelines) and [Get started with CI](/docs/category/get-started-with-ci).
 
 The YAML editor validates YAML before allowing you to save it.
 
@@ -517,7 +517,7 @@ Here is an example of a Canary Deployment step.
 ```
 See also:
 
-* [CD How-tos](/docs/category/advanced-cd)
+* [CD How-tos](https://developer.harness.io/docs/category/advanced-cd-use-cases)
 
 ### Fixed Value, Runtime Input, and Expression
 
