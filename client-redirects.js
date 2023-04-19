@@ -88,6 +88,22 @@ module.exports = {
       from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-sdk-key",
       to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project",
     },
+    {
+      from: "/docs/feature-flags/ff-using-flags/update-feature-flags/enable-or-disable-a-feature-flag",
+      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/enable-or-disable-a-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/update-feature-flags/edit-and-delete-a-feature-flag",
+      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/edit-and-delete-a-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/update-feature-flags/manage-variations",
+      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/manage-variations",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/update-feature-flags/delete-a-feature-flag",
+      to: "/docs/feature-flags/ff-using-flags/ff-creating-flag/edit-and-delete-a-feature-flag",
+    },
 
 
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
