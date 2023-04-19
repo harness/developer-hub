@@ -24,15 +24,20 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 Optional text string describing the step's purpose.
 
-## Container Registry
+## Container Registry and Image
 
-A Harness container registry connector that has access to DockerHub. If you have created your own plugin, the connector must have access to the container registry where your plugin image is located.
+**Container Registry** is a Harness container registry connector that has access to Docker Hub. If you have created your own plugin, the connector must have access to the container registry where your plugin image is located.
 
-## Image
 
-The name of the plugin's Docker image. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag. For more information about tags, go to [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag).
+The name of the plugin's Docker image. The image name should include the tag, or it defaults to the `latest` tag if unspecified. For more information about tags, go to [Docker build tags](https://docs.docker.com/engine/reference/commandline/build/#tag).
 
 You can use any Docker image from any Docker registry, including Docker images from private registries.
+
+:::info
+
+These fields are located under **Optional Configuration** for stages that use [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+
+:::
 
 ## Optional Configuration
 
@@ -48,7 +53,7 @@ Specify plugin-specific settings according to the plugin's documentation. For mo
 
 ### Image Pull Policy
 
-Select an option to set the pull policy for the image:
+If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
 
 * **Always:** The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
 * **If Not Present:** The image is pulled only if it isn't already present locally.
@@ -56,7 +61,9 @@ Select an option to set the pull policy for the image:
 
 ### Run as User
 
-Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+If you specified a [Container Registry and Image](#container-registry-and-image), you can specify the user ID to use for running processes in containerized steps.
+
+For a Kubernetes cluster build infrastructure, the step uses this user ID to run all processes in the pod. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 ### Set container resources
 
