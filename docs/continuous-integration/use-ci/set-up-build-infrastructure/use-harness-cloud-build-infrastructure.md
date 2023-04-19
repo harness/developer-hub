@@ -42,41 +42,28 @@ You can include steps in your pipeline to specify a version of a tool installed 
 
 :::caution
 
-Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in **Lock versions or install additional tools** to prevent your pipeline from failing when the image changes.
+Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 
 :::
 
-<details>
-<summary>Specify versions</summary>
+### Specify versions
 
-If there are multiple versions of a tool installed on an image, you can specify the version to use in a step's **Command**.
-
-For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a **Run** step to select an Xcode version:
+If there are multiple versions of a tool installed on an image, you can specify the version to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a **Run** step to select an Xcode version:
 
 ```
 sudo xcode-select -switch /Applications/Xcode_14.1.0.app
 ```
 
-:::caution
+However, Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 
-Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in **Lock versions or install additional tools** to prevent your pipeline from failing when the image changes.
-
-:::
-
-</details>
-
-<details>
-<summary>Lock versions or install additional tools</summary>
+### Lock versions or install additional tools
 
 If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as a [Run step](../../ci-technical-reference/run-step-settings.md) or a [Plugin step](../use-drone-plugins/explore-ci-plugins.md).
 
-:::tip
+<details>
+<summary>Example: Install Java 17</summary>
 
-Use the [Bitrise plugin step](../../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
-
-:::
-
-In the following YAML example, an [Action step](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
+In the following YAML example, an [Action step](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install Java 17, and then the **Run** step confirms the Java version.
 
 ```yaml
             steps:
@@ -103,6 +90,17 @@ In the following YAML example, an [Action step](../../ci-technical-reference/plu
                         exit 1
                       fi
 ```
+
+:::tip
+
+You can also use the [Bitrise plugin step](../../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
+
+:::
+        
+</details>
+
+<details>
+<summary>Example: Pull a Docker image</summary>
 
 The following YAML example demonstrates how a **Run** step can use a Docker image (specified in `conectorRef` and `image`) to leverage tools available on that image that aren't available on the host image:
 
