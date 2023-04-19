@@ -26,6 +26,7 @@ export type CardItem = {
   link?: string;
   featuredCard?: boolean;
   difficulty?: number; // [1, 3]
+  children?: CardItem[];
 };
 
 export type CardSections = {
@@ -45,6 +46,7 @@ function Card({
   featuredCard,
   link = "#",
   difficulty,
+  children,
 }: CardItem) {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   return (
@@ -68,11 +70,20 @@ function Card({
         )}
         <h4>{title}</h4>
         <p>{description}</p>
+        {children && children.length > 0 && (
+          <ul className={styles.subCategories}>
+            {children.map((sub, idx) => (
+              <li key={sub.link}>
+                <Link to={sub.link}>{sub.title}</Link>
+              </li>
+            ))}
+          </ul>
+        )}
         {type && (
           <div className={styles.tags}>
             <ul className={styles.docTypes}>
               {type.map((props, idx) => (
-                <li>
+                <li key={props}>
                   <Tooltip placement="top" overlay={props}>
                     <img
                       src={`${baseUrl}img/icon_doctype_${props}.svg`}
