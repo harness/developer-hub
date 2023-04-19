@@ -4,7 +4,7 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
 import TutorialCard from "./TutorialCard";
-import { FeaturedList, CCMList } from "./data/cloudCostManagementData";
+import { FeaturedList, CCMList } from "./data/CloudCostManagementData";
 
 export default function CCM() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
