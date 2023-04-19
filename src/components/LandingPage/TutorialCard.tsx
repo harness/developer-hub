@@ -72,8 +72,8 @@ function Card({
         <p>{description}</p>
         {children && children.length > 0 && (
           <ul className={styles.subCategories}>
-            {children.map((sub, idx) => (
-              <li key={sub.link}>
+            {children.map((sub) => (
+              <li key={sub.link} title={sub.description.toString()}>
                 <Link to={sub.link}>{sub.title}</Link>
               </li>
             ))}
@@ -82,7 +82,7 @@ function Card({
         {type && (
           <div className={styles.tags}>
             <ul className={styles.docTypes}>
-              {type.map((props, idx) => (
+              {type.map((props) => (
                 <li key={props}>
                   <Tooltip placement="top" overlay={props}>
                     <img
