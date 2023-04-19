@@ -395,6 +395,14 @@ module.exports = {
       from: "/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags",
       to: "/docs/feature-flags/ff-target-management/targeting-users-with-flags",
     },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/build-feature-flag-pipeline",
+      to: "/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/default-pipeline-ff",
+      to: "/docs/feature-flags/ff-build-pipeline/default-pipeline-ff",
+    },
 
 
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
