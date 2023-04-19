@@ -45,7 +45,7 @@ import {
             title: "Cost optimization",
             module: "ccm",
             description:
-              "Optimize cloud costs using CCM recommendations and auto-stopping idle cloud instances.",
+              "Optimize cloud costs using CCM recommendations and by auto-stopping idle cloud instances.",
             link: "/docs/category/cost-optimization",
           },
           {

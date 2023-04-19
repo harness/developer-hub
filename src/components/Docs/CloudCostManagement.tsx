@@ -18,7 +18,7 @@ export default function CCM() {
             <h1>Cloud Cost Management</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/manage-cloud-costs">
+            <Link href="/tutorials/cloud-costs">
               <button className={styles.btn}>  
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
