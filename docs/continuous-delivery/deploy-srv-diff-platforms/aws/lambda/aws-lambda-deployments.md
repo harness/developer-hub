@@ -159,7 +159,7 @@ The following video describes an end-to-end Lambda deployment including all of t
 
 ## AWS connector for Lambda deployments
 
-You need to add a Harness [AWS Connector](/docs/platform/7_Connectors/add-aws-connector) to connect Harness to your AWS account, fetch artifacts, and specify a region to deploy.
+You need to add a Harness AWS Connector to connect Harness to your AWS account, fetch artifacts, and specify a region to deploy.
 
 AWS connectors are used in your Harness service for the artifact you select in **Artifacts** and in the environment's **Infrastructure Definition**. 
 
@@ -216,7 +216,7 @@ Here is a NodeJS hello world function example:
 }
 ```
 
-You can use [service variables](/docs/platform/12_Variables-and-Expressions/harness-variables) in your function definition JSON.
+You can use Harness service variables in your function definition JSON.
 
 Services variables allow your function definition to be reusable across multiple Lambda functions. 
 
