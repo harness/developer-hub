@@ -5,7 +5,7 @@ tags:
    - feature flag
    - Enable
    - Disable
-sidebar_position: 10
+sidebar_position: 30
 helpdocs_topic_id: 0tlih9lee5
 helpdocs_category_id: skrwlcueml
 helpdocs_is_private: false

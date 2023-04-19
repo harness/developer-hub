@@ -38,7 +38,7 @@ Before you create a Feature Flag, you must have [created an Organization](/docs/
 	*Figure 1: Create a Project in Feature Flags*
 
 1. In **About the Project**, in **Name**, enter the name for your project and select a color for it.
-2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](../../../platform/organizations-and-projects/create-an-organization.md#step-1-create-a-harness-org) and [Projects and Organizations](../../../platform/organizations-and-projects/projects-and-organizations.md).
+2. In the **Organization** drop-down menu, select the Organization for your project. If you need to create a new Organization, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization#create-a-harness-org) and [Organizations and Projects](../../../platform/organizations-and-projects/projects-and-organizations.md).
 3. Click **Save and Continue**.
 
 	```mdx-code-block
@@ -78,14 +78,14 @@ Once you've created a project, you need to create an environment before you crea
 
 This topic describes how to create an environment in the Harness platform. 
 
-To read more about the Harness Platform, see [Harness Platform](https://harness.helpdocs.io/category/3fso53aw1u-howto-general).
+To read more about the Harness Platform, see [Harness Platform](/docs/platform).
 
 ### Before you begin
 
 Before you create a Feature Flag, you must have:
 
 1. [Created an Organization](../../../platform/organizations-and-projects/create-an-organization.md)
-1. [Created a project](create-a-project.md)
+1. [Created a project](#create-a-project)
 
 ### Create an environment
 

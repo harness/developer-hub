@@ -30,7 +30,7 @@ For example:
 This topic describes how to set up Targeting for a Feature Flag you’ve created. 
 
 :::info note
- To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](../update-feature-flags/manage-variations.md).
+ To edit the default Variations that are served to Targets, go to [Changing the Variations of Your Flags](/docs/feature-flags/ff-using-flags/ff-creating-flag/manage-variations).
 :::
 
 ## How Harness prioritizes targets and target groups

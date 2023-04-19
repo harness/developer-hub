@@ -1,7 +1,7 @@
 ---
 title: Filter flags by state
 description: To help manage your Feature Flags, you can use the filter tiles on the Harness Platform to filter your Flags based on the following states --  Figure 1 --  The Flag overview dashboard State Description All…
-sidebar_position: 90
+sidebar_position: 25
 helpdocs_topic_id: 2s5qt02s74
 helpdocs_category_id: t5s8pv9gjb
 helpdocs_is_private: false
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 To help manage your Feature Flags, you can use the filter tiles on the Harness Platform to filter your Flags based on the following states: 
 
-![A screenshot of the Feature Flag states dashboard. ](./static/9-filtering-flags-by-state-00.png)*Figure 1: The Flag overview dashboard*
+![A screenshot of the Feature Flag states dashboard. ](./static/9-filtering-flags-by-state-00.png)
 
 
 
@@ -37,7 +37,7 @@ To view filter your Flags:
 3. Click on the filter you want to use.
 4. A list of the relevant Flags are displayed.
 
-    ![A screenshot of the Permanent Flags tile selected to filter for permanent flags.](./static/9-filtering-flags-by-state-01.png)*Figure 2: A filtered list of Flags*
+    ![A screenshot of the Permanent Flags tile selected to filter for permanent flags.](./static/9-filtering-flags-by-state-01.png)
 
  
 
