@@ -1,5 +1,5 @@
 ---
-title: Integrate Feature Flags with Jira
+title: Integrate flags with Jira
 description: View Jira issues for a specific Harness feature flag.
 sidebar_position: 25
 ---

@@ -1,5 +1,5 @@
 ---
-title: Add a prerequisite to your flags
+title: Add a prerequisite to a flag
 description: This topic describes how to use feature flag prerequisites to enable or disable features based on different flag states.
 tags: 
    - feature flag
