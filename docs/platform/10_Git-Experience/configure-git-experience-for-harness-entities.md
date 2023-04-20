@@ -224,16 +224,16 @@ Here are the key points to keep in mind when the referenced entities reside in t
 
 - During pipeline execution, Harness fetches the template from the same branch as the pipeline. This lets you test the templates before merging them back into the "default" branch.
 - Harness recommends creating a separate project for testing templates.
-- Templates and pipelines should be in the same repository.
-- Whenever you change a template in a feature branch, the corresponding testing pipelines are also updated.
+- Templates and the corresponding pipelines to test them should be in the same repository.
+- When you modify a template in a feature branch, you can update the test pipeline.
 - As you can execute the pipeline from any branch, you can select the branch in which the changes to test templates were pushed. Merge the changes after testing. Upon merging, others will be able to access them.
 - This approach assumes the teams responsible for creating and managing templates will be different from those responsible for executing the pipeline (PE/DevOps teams versus Developers), so the test projects should be separate from the production projects.
 
 
 :::info
-Harness considers entities in the same repository if they are stored in different Git providers, but have the same repository names.
+Harness considers entities to be in the same repository if their repository names match, regardless of which GIT provider they use.
 
-For example, when you store your pipeline in GitHub and the entities it references in Bitbucket, Harness treats the two repositories as one if their repository names are identical.
+For example, when you store your pipeline in GitHub and the entities it references in Bitbucket, Harness treats the two repositories as same if their repository names are identical.
 :::
 
 
