@@ -36,6 +36,24 @@ module.exports = {
     //===================================================================================
 
 
+    // Created by Sudheendra Katte to fix error tracking re-directs April 20th, 2023
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
+    },
+
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
       from: "/docs/platform/Authentication/provision-users-with-okta-scim",
