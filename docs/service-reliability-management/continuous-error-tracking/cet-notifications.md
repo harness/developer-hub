@@ -11,7 +11,7 @@ With these alerts, you can ensure that your team is aware of important events an
 
 To set up notifications in CET:
 
-1. In your Harness project, navigate to **Service Reliability Management** > **Monitored Services**, and then select the monitored service to set up notification.
+1. In your Harness project, navigate to **Service Reliability Management** > **Monitored Services**, and then select the monitored service to set up notifications.
 
 2. In the monitored service details page, go to the **Configuration** tab, and under **Notifications**, select **+New Notification Rule**.
 
