@@ -37,21 +37,21 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Chaos engineering</a> is the discipline of performing experiments on a software to build 
+              <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Chaos engineering</a> helps perform experiments on software to build 
               confidence in the system's capability to withstand turbulent and unexpected conditions. 
-              It is a tool that helps identify weaknesses and misconfiguration in the services. Harness Chaos Engineering module takes a holistic-approach to chaos engineering, and doesn't merely focus on fault-injection. It is designed to help users setup a fully-operational chaos function that is based on the original <a href = "https://principlesofchaos.org/">principles of chaos</a> as well as addressing several enterprise needs around its practice.
+              It helps identify weaknesses and misconfiguration in the services, thereby building and validating resilience. 
             </p>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
       <div className={styles.subSection}>
-        <h3>Feature Highlights</h3>
-        <TutorialCard FeatureList={featureHighlights} featuredCard={true} />
+        <h3>Feature highlights</h3>
+        <TutorialCard FeatureList={featureHighlights} />
         </div>
         <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
-        <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
+        <h3>Featured tutorials</h3>
+        <TutorialCard FeatureList={featuredTutorials} />
       </div>
     </div>
     // </Layout>

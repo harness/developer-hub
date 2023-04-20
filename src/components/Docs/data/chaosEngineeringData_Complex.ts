@@ -12,7 +12,7 @@ export const featuredTutorials: CardItem[] = [
       title: "Run your first chaos experiment on a Kubernetes cluster",
       module: MODULES.ce,
       icon: "img/icon_ce.svg",
-      description: "Get started with Harness Chaos Engineering.",
+      description: "Execute your first chaos experiment on a Kubernetes cluster.",
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
@@ -48,49 +48,49 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "AWS Faults",
+          title: "AWS faults",
           module: MODULES.ce,
           description:
             "Execute AWS chaos faults",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/",
         },
         {
-          title: "Kubernetes Faults",
+          title: "Kubernetes faults",
           module: MODULES.ce,
           description:
             "Execute Kubernetes chaos faults ",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/",
         },
         {
-          title: "Azure Faults",
+          title: "Azure faults",
           module: MODULES.ce,
           description:
             "Execute Azure chaos faults",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/",
         },
         {
-          title: "GCP Faults",
+          title: "GCP faults",
           module: MODULES.ce,
           description:
             "Execute GCP chaos faults",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/",
         },
         {
-          title: "VMware Faults",
+          title: "VMware faults",
           module: MODULES.ce,
           description:
             "Execute VMware chaos faults",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/",
         },
         {
-          title: "Load Faults",
+          title: "Load faults",
           module: MODULES.ce,
           description:
             "Execute load chaos faults",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/load/",
         },
         {
-          title: "Kube Resilience Faults",
+          title: "Kube-resilience faults",
           module: MODULES.ce,
           description:
             "Execute kube-resilience chaos faults",
