@@ -1,6 +1,6 @@
 ---
 title: Chaos Infrastructure On OCP Cluster
-sidebar_position: 1
+sidebar_position: 3
 ---
 You can install [chaos infrastructure](./connect-chaos-infrastructures) in your target environment as a Kubernetes service, Linux daemon, and so on. This section walks you through steps to install chaos infrastructure on Openshift cluster.
 
