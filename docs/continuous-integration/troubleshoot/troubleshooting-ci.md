@@ -14,6 +14,14 @@ If you cannot find a resolution, please contact [Harness Support](mailto:support
 
 ## Git connector fails to connect to the SCM service
 
+The following SCM service errors can occur with [Git connectors](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference).
+
+### SCM request failed with: UNKNOWN
+
+This error may occur if your Git connector uses **SSH** authentication. To resolve this error, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
+
+### SCM connection errors when using self-signed certificates
+
 If you have configured your build infrastructure to use self-signed certificates, your builds may fail when the Git connector attempts to connect to the SCM service. Build logs may contain the following error messages:
 
 ```

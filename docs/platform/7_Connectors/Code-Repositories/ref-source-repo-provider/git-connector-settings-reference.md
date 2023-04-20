@@ -1,6 +1,6 @@
 ---
-title: Git Connector Settings Reference
-description: This topic provides settings and permissions for the Git Connector.
+title: Git connector settings reference
+description: This topic provides settings and permissions for the Git connector.
 sidebar_position: 20
 helpdocs_topic_id: tbm2hw6pr6
 helpdocs_category_id: xyexvcc206
@@ -8,79 +8,143 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the platform-agnostic Git Connector. For Connectors to popular Git platforms like GitHub, see [Code Repo Connectors](https://developer.harness.io/docs/category/code-repo-connectors).
+This topic provides settings and permissions for the platform-agnostic Git connector. For specialized connectors for popular Git platforms, like GitHub, go to [Code Repo Connectors](https://developer.harness.io/docs/category/code-repo-connectors).
 
-### Limitations
+## Overview settings
 
-* Before Harness syncs with your Git repo, it'll confirm that all Harness' settings are in a valid state. If a connection isn't working, Harness won't sync with your Git repo.
+* **Name:** The unique name for this connector. Harness generates an **Id** ([Entity Identifier](../../../20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id** during initial connector creation. Once you save the connector, the **Id** is locked.
+* **Description:** Optional text string.
+* **Tags:** Optional labels you can use for filtering. For details, go to the [Tags reference](../../../20_References/tags-reference.md).
 
-### Name
+## Details settings
 
-The unique name for this Connector.
-
-### ID
-
-See [Entity Identifier Reference](../../../20_References/entity-identifier-reference.md).
-
-### Description
-
-A description of this Connector.
-
-### Tags
-
-See [Tags Reference](../../../20_References/tags-reference.md).
+The **Details** settings specify which Git account or repository you want this connector to connect to, whether to connect over HTTP or SSH, and the URL to use.
 
 ### URL Type
 
-You can select **Account** or **Repository**.
+Select **Account** to connect an entire Git account. This option lets you use one connector to connect to all repositories in the specified account. Make sure you have at least one repo in the account; you need a repo to test the connection and save the connector.
 
-You can add a connection to your entire Git account or just a repo in the account. Selecting a Git account enables you to use one Connector for all of your subordinate repositories.
-
-Later when you test this connection, you will use a repo in the account.
-
-In either case, when you use the Connector later in Harness, you will specify which repo to use.
+Select **Repository** to connect to a single, specific repo in a Git account.
 
 ### Connection Type
 
-You can select **HTTPS** or **SSH** for the connection.
+Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication. The **Connection Type** determines the URL format required for the [Git Account or Repository URL field](#git-account-or-repository-url). It also determines the **Authentication** method you must use in the [Credentials settings](#credentials-settings).
 
-You will need to provide the protocol-relevant URL.
+Both connection types support two-factor authentication.
 
-If you use Two-Factor Authentication for your Git repo, you connect over **HTTPS** or **SSH**. **HTTS** requires a personal access token.
+:::info
 
-For SSH, ensure that the key is not OpenSSH, but rather PEM format. To generate an SSHv2 key, use: `ssh-keygen -t rsa -m PEM` The `rsa` and `-m PEM` ensure the algorithm and that the key is PEM. Next, follow the prompts to create the PEM key. For more information, see the [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen).
+If you select **SSH**, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
 
-#### Github deprecated RSA
-
-Starting March 15, 2022, GitHub is fully deprecating RSA with SHA-1. GitHub will allow ECDSA and Ed25519 to be used. RSA keys uploaded after this date will work with SHA-2 signatures only (RSA keys uploaded before this date will continue to work with SHA-1). See [Improving Git protocol security on GitHub](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective) from GitHub.  
-  
-Generating an SSH key in ECDSA looks like this:  
-  
-`ssh-keygen -t ecdsa -b 256 -f /home/user/Documents/ECDSA/key -m pem`
+:::
 
 ### Git Account or Repository URL
 
-The URL for your Git repo. Ensure that it matches the Connection Type option you selected.
+Enter the URL for the Git account or repository that you want to connect to. The required value is determined by the **URL Type** and **Connection Type**.
 
-If you selected **Git Repository** in **URL** **Type**, enter the full URL for the repo.
+If you selected **Git Repository** for **URL Type**, enter the full URL for the repo.
 
-If you selected **Git Account** in **URL** **Type**, enter the URL without the repo name. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
+If you selected **Git Account** for **URL Type**, enter the URL without the repo name. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
 
-### Username
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-Specify the username for the account, as either plaintext or a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
+```mdx-code-block
+<Tabs>
+  <TabItem value="account" label="URL Type: Account" default>
+```
 
-### Password
+In the **Git Account URL** field, provide only the account-identifying portion of the Git URL, such as `https://github.com/my-account`. Do not include a repo name in the URL.
 
-A [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md) for the credentials of your Git user account.
+The URL format depends on the **Connection Type**:
 
-### SSH Key
+* HTTP format: `https://<git-provider>.org/<username>`
+* SSH format: `git@<git-provider>.org:<username>`
 
-If you selected **SSH** as the connection protocol, you must add the **Username** as `git` and an **SSH Key** for use with the connection as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
+```mdx-code-block
+  </TabItem>
+  <TabItem value="repo" label="URL Type: Repository">
+```
 
-### Setup Delegates
+In the **Git Repository URL** field, provide the complete URL to the Git repository that you want this connector to point to.
 
-You can select **Connect via any available delegate** or **Connect only via delegates which has all of the following tags**.
+The URL format depends on the **Connection Type**:
 
-You need to enter **Selectors** to connect via specific delegates. For more information see [Select Delegates with Tags](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+* HTTP format: `https://<git-provider>.org/<username>/<repo-name>.git`
+* SSH format: `git@<git-provider>.org:<username>/<repo-name>.git`
 
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Test Repository
+
+This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your Git account that Harness can use to test the connector. Harness uses this repo path to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
+
+## Credentials settings
+
+Provide authentication credentials for the connector. The **Connection Type** you chose in the [Details settings](#details-settings) determines the authentication method.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="http" label="Username and Password" default>
+```
+
+The **HTTP** Connection Type requires **Username** and **Password** authentication for all accounts and repos, including read-only repos.
+
+In the **Username** field, enter the Git account username. You can use either plaintext or a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
+
+In the **Password** field, provide the account password or a personal access token. Passwords and tokens are stored as [Harness encrypted text secrets](../../../Secrets/2-add-use-text-secrets.md).
+
+If your Git account uses two-factor authentication, you must provide a personal access token for the **Password**.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ssh" label="SSH Key">
+```
+
+The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../../Secrets/3-add-file-secrets.md).
+
+:::tip
+
+If you use a `keygen` command to generate an SSH key, include arguments such as `rsa` and `-m PEM` to ensure your key is properly formatted and uses the RSA algorithm. For example, this command creates a PEM-formatted SSHv2 key:
+
+```
+ssh-keygen -t rsa -m PEM
+```
+
+Make sure to follow the prompts to finish creating the key. For more information, go to the Linux [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen).
+
+For GitHub repos, your SSH key must use ECDSA or Ed25519 instead of RSA. As an example, the following `ssh-keygen` command generates a PEM-formatted SSH key in ECDSA:
+
+```
+ssh-keygen -t ecdsa -b 256 -f /home/user/Documents/ECDSA/key -m pem
+```
+
+For more information about GitHub's deprecation of RSA support, go to the GitHub announcement on [Improving Git protocol security on GitHub](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective).
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Connectivity Mode settings
+
+Select whether you want Harness to connect directly to your Git account or repo, or if you want Harness to communicate with your Git account or repo through a delegate.
+
+### Delegates Setup
+
+If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.
+
+If you want to use specific delegates, you must identify those delegates. For more information, go to [Select Delegates with Tags](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+
+## Troubleshooting
+
+Before Harness syncs with your Git repo, it runs a connection test to confirm that the connector's settings are valid. If the connection fails, Harness won't sync with your Git repo.
+
+If your connector uses the **SSH** [Connection Type](#connection-type), and the connection test fails due to an unknown SCM request failure, make sure HTTPS is enabled on port 443. This is the protocol and port used by the Harness connection test for Git connectors.
