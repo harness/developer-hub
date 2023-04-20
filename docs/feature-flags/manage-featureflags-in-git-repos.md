@@ -28,6 +28,10 @@ import git_8 from './static/8-git-off.png'
 
 Using Harness Git Experience with Feature Flags allows you to manage your flags from a YAML file in your Git repository. When you enable Git Experience, changes you make to flags on the Harness Platform are committed on Git, and commits you make on Git are reflected in the Harness Platform. This means you can work on flags entirely from Git, the Harness Platform, or both, and your changes will be synchronized in both places. 
 
+:::info note
+This feature is not supported on the Harness Self-Managed Enterprise Edition (on-prem).
+:::
+
 ## Before you begin
 
 You must set up Git Experience before you can use it in your Feature Flags project. To do this:
