@@ -102,5 +102,45 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-### SSH-Keyscan Timeout
-If you are using ssh auth type for git-clone and want to override timeout of ssh-keyscan command(defalt is 5s), add a variable at stage level with key **PLUGIN_SSH_KEYSCAN_TIMEOUT** and value as the timeout you want to override. For example, if you want to override to be 20 seconds, set the value of the **PLUGIN_SSH_KEYSCAN_TIMEOUT** to 20. This needs to be done for all stages where you want to override the timeout. 
+## Troubleshooting
+
+### SSH-keyscan Timeout
+
+If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#option-stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. In your CI pipeline, select the stage with the **Git Clone** step, and then select the **Overview** tab.
+2. Under **Advanced**, select **New Variable**.
+3. For **Variable Name**, enter `PLUGIN_SSH_KEYSCAN_TIMEOUT`.
+4. Set the **Type** to **String**, and then select **Save**.
+5. Enter the desired timeout limit, such as `90s` for the **Value**.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+```yaml
+    - stage:
+        ...
+        variables:
+          - name: PLUGIN_SSH_KEYSCAN_TIMEOUT
+            type: String
+            description: ""
+            value: 90s
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+Add this variable to all stages where you need to override the `SSH-keyscan` timeout limit.
