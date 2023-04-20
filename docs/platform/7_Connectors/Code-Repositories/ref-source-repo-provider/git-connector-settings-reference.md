@@ -58,10 +58,14 @@ import TabItem from '@theme/TabItem';
 
 In the **Git Account URL** field, provide only the account-identifying portion of the Git URL, such as `https://github.com/my-account`. Do not include a repo name in the URL.
 
-The URL format depends on the **Connection Type**:
+The URL format depends on the Git provider and **Connection Type**:
 
-* HTTP format: `https://<git-provider>.org/<username>`
-* SSH format: `git@<git-provider>.org:<username>`
+* HTTP format: `https://<git-provider>.com/<username>`
+* SSH format: `git@<git-provider>.com:<username>`
+
+### Test Repository
+
+This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your Git account that Harness can use to test the connector. Harness uses this repo path to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
 ```mdx-code-block
   </TabItem>
@@ -70,19 +74,15 @@ The URL format depends on the **Connection Type**:
 
 In the **Git Repository URL** field, provide the complete URL to the Git repository that you want this connector to point to.
 
-The URL format depends on the **Connection Type**:
+The URL format depends on the Git provider and **Connection Type**:
 
-* HTTP format: `https://<git-provider>.org/<username>/<repo-name>.git`
-* SSH format: `git@<git-provider>.org:<username>/<repo-name>.git`
+* HTTP format: `https://<git-provider>.com/<username>/<repo-name>`
+* SSH format: `git@<git-provider>.com:<username>/<repo-name>`
 
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
-
-### Test Repository
-
-This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your Git account that Harness can use to test the connector. Harness uses this repo path to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
 ## Credentials settings
 

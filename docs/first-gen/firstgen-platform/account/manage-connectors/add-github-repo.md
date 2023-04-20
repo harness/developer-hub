@@ -69,7 +69,7 @@ In either case, when you use the Connector later in Harness, you will specify wh
 
 Select **HTTPS** or **SSH** for the connection. You will need to provide the protocol-relevant URL in **URL**. If you use Two-Factor Authentication for your Git repo, connect over **HTTPS** or **SSH**.
 
-**SSH** requires an SSH key in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../../Secrets/3-add-file-secrets.md).
+**SSH** requires an SSH key in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored in a [Secrets Manager](/docs/category/secrets-management-firstgen).
 
 :::tip
 
