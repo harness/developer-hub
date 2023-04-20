@@ -20,7 +20,7 @@ To hide events:
 
 3. On the Events page, select the events that you want to mark as hidden and then select **Hide Events**.
 
-   The selected events will be moved to the **Hidden Events** page and no longer appear on the Events page.
+   The selected events are moved to the **Hidden Events** page and no longer appear on the Events page.
 
    ![Hide an event](./static/hide-events.gif)
 
