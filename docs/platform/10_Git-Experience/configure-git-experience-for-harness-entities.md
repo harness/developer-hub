@@ -251,9 +251,12 @@ When you execute this pipeline, Harness fetches these entities from the branch t
 #### Referenced entities are in different repositories
 
 If the referenced entities exist in a different repository, they are fetched from the default branch of the repo where the entities are stored.​
+
 This ensures: 
 - Teams always use tested and approved templates.
 - Teams cannot execute pipelines using templates from different branches that have not yet been tested.
+
+If your inline entities refer remote entities, Harness fetches the remote entities from the default branch.
   
 Let us look at an example: 
   
