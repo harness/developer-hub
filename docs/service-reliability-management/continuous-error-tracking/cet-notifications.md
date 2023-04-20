@@ -19,7 +19,7 @@ To set up notifications in CET:
    
    1. Enter a name for the notification and select **Continue**.
 
-   2. In the Conditions page, select **Code Errors** from the **Condition** dropdown list, choose the desired **Events** (such as new, critical, or resurface events), and the **Event Type** (such as log errors). You can choose multiple events and event types.
+   2. On the Conditions page, select **Code Errors** from the **Condition** dropdown list, choose the desired **Events** (such as new, critical, or resurface events), and the **Event Type** (such as log errors). You can choose multiple events and event types.
    
    3. Optionally you can add multiple conditions by selecting **+ Add Condition**.
    
