@@ -103,4 +103,4 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### SSH-Keyscan Timeout
-If you are using ssh auth type for git-clone and want to override timeout of ssh-keyscan command, add a env variable with key **PLUGIN_SSH_KEYSCAN_TIMEOUT** and value as the timeout you want to override. For example, if you want to override to be 20 seconds, set the value of the **PLUGIN_SSH_KEYSCAN_TIMEOUT** to 20. 
+If you are using ssh auth type for git-clone and want to override timeout of ssh-keyscan command, add a variable at stage level with key **PLUGIN_SSH_KEYSCAN_TIMEOUT** and value as the timeout you want to override. For example, if you want to override to be 20 seconds, set the value of the **PLUGIN_SSH_KEYSCAN_TIMEOUT** to 20. 
