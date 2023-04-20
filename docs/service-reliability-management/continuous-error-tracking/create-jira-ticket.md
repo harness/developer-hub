@@ -22,7 +22,7 @@ To create a Jira ticket for an event:
 
 5. Select **Create Jira Ticket**.
 
-The Jira ticket gets created, and the ticket number is displayed along with the details of that event on the Events page.
+The Jira ticket is created, and the ticket number is displayed along with the details of that event on the Events page.
 
 
 <details>
