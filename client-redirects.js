@@ -872,19 +872,19 @@ module.exports = {
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm-overview",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-event-dashboard",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-arc",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
     },
 
     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
