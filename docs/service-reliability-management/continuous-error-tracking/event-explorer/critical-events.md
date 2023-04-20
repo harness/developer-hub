@@ -21,7 +21,7 @@ To add a condition:
    
    You can choose multiple events. If you select caught exception, uncaught exception, or swallowed exception as event type, then you must also select an **exception type**.
 
-5. Select the check mark (✔️) to save the condition. The condition gets added to the conditions list on the Critical Event Settings page.
+5. Select the check mark (✔️) to save the condition. The condition is added to the conditions list on the Critical Event Settings page.
 
    ![Add a condition for critical event](./static/critical-event-condition.png)
 
