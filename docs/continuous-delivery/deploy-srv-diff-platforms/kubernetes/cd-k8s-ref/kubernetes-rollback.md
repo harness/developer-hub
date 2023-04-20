@@ -26,7 +26,7 @@ Declarative rollback uses `kubectl apply -f <prevision version of manifest>` ins
 
 This method reduces the risk of getting in the wrong state in the subsequent deployment because the merge state is impacted by the `rollout undo` command.
 
-To enable declarative rollback, you configure the following Harness service options. These options are defined in the service because they are tied to the service's manifests.
+To enable declarative rollback, configure the following Harness service options. These options are defined in the service because they are tied to the service's manifests.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -37,7 +37,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="YAML" label="YAML" default>
 ```
 
-You set the following options in the Harness service YAML:
+Set the following options in the Harness service YAML:
 
 - `skipResourceVersioning: false`
 - `enableDeclarativeRollback: true`
@@ -110,10 +110,10 @@ The **Skip Resource Versioning** option is disabled automatically.
 
 ### Important notes:
 
-- Harness is storing the manifest in the release history and will fetch the last successful manifest for rollback.
-- There is no more incremental versioning of the ConfigMap and Secret objects as with `kubectl rollout undo`.
-- During rollback, Harness will reapply the previous manifest. This is the declarative method, and it includes the ConfigMap and Secrets of the last known good state.
-- In a standard rollback, Harness stores release history in one ConfigMap. With declarative rollback, Harness stores release history in Secrets. Each release is stored in a different Secret, with one Secret per release.
+- Harness stores the manifest in the release history and fetches the last successful manifest for rollback.
+- There is no more incremental versioning of the ConfigMap and Secret objects as there is with `kubectl rollout undo`.
+- During rollback, Harness reapplies the previous manifest. This is the declarative method, and it includes the ConfigMap and Secrets of the last known good state.
+- With standard rollback, Harness stores release history in one ConfigMap. With declarative rollback, Harness stores release history in Secrets. Each release is stored in a different Secret, with one Secret per release.
 -  Harness uses a fixed limit of 2 in its release history cleanup logic, but release history cleanup is performed before the currently executing release goes through. Consequently, on average, you will have 3 secrets:
    - Current release Secret.
    - Previous successful release Secret.
@@ -121,7 +121,7 @@ The **Skip Resource Versioning** option is disabled automatically.
 
 ### Canary and blue green deployments
 
-For canary and blue green deployments, Harness will append ConfigMaps and Secrets present in your manifests with suffixes. This is to differentiate them from the ConfigMaps and Secrets in already running, production manifests.
+For canary and blue green deployments, Harness appends ConfigMaps and Secrets present in your manifests with suffixes. This is to differentiate them from the ConfigMaps and Secrets in already running, production manifests.
 
 During canary deployments:
 
@@ -134,7 +134,7 @@ During blue green deployments, when the stage color is `GREEN`, ConfigMaps and S
 
 If the `name + suffix` reaches the 253 character limit for ConfigMaps and Secrets, Harness tries to reduce the suffix length to fit the limit. 
 
-For example, if name is 250 characters long, the suffix would be "-ca" for canary deployments.
+For example, if name is 250 characters long, the suffix would be `-ca` for canary deployments.
 
 ## Scaling and rollback
 
