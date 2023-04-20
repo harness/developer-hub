@@ -39,7 +39,7 @@ To edit a flag:
 
 * [Edit your Flag Variations](manage-variations.md)
 * [Add Prerequisite Flags](/docs/feature-flags/add-prerequisites-to-feature-flag)
-* [Manage Your Targets](/docs/category/manage-feature-flag-targets)
+* [Manage Your Targets](/docs/feature-flags/ff-target-management/add-targets)
 
 ## Delete a flag
 

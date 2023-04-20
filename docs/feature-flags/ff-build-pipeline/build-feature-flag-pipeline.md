@@ -29,17 +29,17 @@ https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
 
 ## Before you begin
 
-You should be familiar with the [Harness' Key Concepts](/docs/getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md).
+You should be familiar with the [Harness' Key Concepts](/docs/getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
 ## Create a Pipeline
 
-This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](../../../platform/organizations-and-projects/create-an-organization.md) to create one.
+This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization) to create one.
 
 This topic shows you how to create a Pipeline from the Feature Flags module.
 
 To do this, perform the following steps:
 
-1. Under **Feature Flags,** select an existing project or [Create a new project](../../../platform/organizations-and-projects/create-an-organization.md#step-3-create-a-project).
+1. Under **Feature Flags,** select an existing project or [Create a new project](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
 2. Once the project is selected or created, navigate to **Pipelines** and **Create a Pipeline**.
 3. In **Name**, enter a name for your Pipeline. An ID will be generated automatically.
 4. Enter **Description** and **Tags** for your Pipeline.
@@ -53,7 +53,7 @@ Feature Flag pipeline is organized into stages. There has to be a minimum of one
 
 1. Click **Add Stage**. This gives you two options to select stage types: **Feature Flags** and **Approval**.
 2. **Approval Stage** type approves or rejects a Pipeline at any point in its execution. Approvals are added in between stages to prevent pipeline execution from proceeding without an approval. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms.
-3. To add Approval Stage, go to [Manual Harness Approval Stages](../../../platform/9_Approvals/adding-harness-approval-stages.md).
+3. To add Approval Stage, go to [Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages/).
 4. To add a **Feature Flag** stage, select **Feature Flags.**
 5. In **About your Stage**, in **Name**, enter a name for your stage. Click **Set up Stage**.
 
@@ -80,7 +80,7 @@ With the Rollout Strategy, you can deploy multiple managed workloads. When a Rol
 1. In the Rollout Strategy view, click **Add Step**.
 2. **Step Library** Panel appears.
 
-![A screenshot of the Step library. ](./static/1-build-feature-flag-pipeline-05.png)*Figure 1: The Step Library panel*
+	![A screenshot of the Step library](./static/1-build-feature-flag-pipeline-05.png)
 
 ## Add Feature Flag Configurations
 
@@ -110,7 +110,7 @@ When you run the Pipeline, give the inputs for flag type.
 1. In the pipeline view, click **Run**.
 2. The pipeline runs and a success message is generated.
 
-![A pipeline with a Success message displayed.](./static/1-build-feature-flag-pipeline-06.png)*Figure 2: A success message when a pipeline has ran successfully*
+![A pipeline with a Success message displayed.](./static/1-build-feature-flag-pipeline-06.png)
 
 ## View the results
 
@@ -120,8 +120,6 @@ Click each stage's steps to see the logs in real-time. Click **Console View** 
 <img src={ff_pipeline} alt="A screenshot of the details console. " height="500" width="500" />
 ``` 
 
-*Figure 3: The Console View*
-
 ## Pipeline notification strategy
 
 You can create notification rules to send notifications about the events on your Feature Flag Pipeline that are important to you. You can notify your User Group members using Slack, Microsoft Teams, Email, or PagerDuty as one of the notification channels. Event notifications are set up using **Notification Rules.**
@@ -130,19 +128,19 @@ You can create notification rules to send notifications about the events on your
 
 You can notify your User Group members using Slack as one of the notification channels. You can add your User Group to a Notification Strategy and receive alert info in Slack.
 
-For more information, go to [Send Notifications using Slack](../../../platform/5_Notifications/send-notifications-using-slack.md).
+For more information, go to [Send Notifications using Slack](/docs/platform/Notifications/send-notifications-using-slack).
 
 ### Email notification
 
 For email notifications, simply type in the email addresses that you want to notify.
 
-For more information, go to [Send Notifications using Email](../../../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md#option-email-notifications).
+For more information, go to [Email notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events#email-notifications).
 
 ### PagerDuty notification
 
 For PagerDuty notifications, enter the key for a PagerDuty Account/Service to which Harness can send notifications.
 
-For more information, go to [Send Notifications using PagerDuty](../../../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md#option-pager-duty-notifications).
+For more information, go to [Send Notifications using PagerDuty](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events#pagerduty-notifications).
 
 ### Microsoft Teams notification
 
@@ -150,7 +148,7 @@ Harness notifies your User Groups of events in pipelines and general alerts.
 
 You can integrate your Harness User Group with Microsoft Teams and receive notifications in Teams channels.
 
-For more information, go to [Send Notifications using Microsoft Teams](../../../platform/5_Notifications/send-notifications-to-microsoft-teams.md).
+For more information, go to [Send Notifications using Microsoft Teams](/docs/platform/Notifications/send-notifications-to-microsoft-teams).
 
 ## View a Pipeline using YAML
 
@@ -159,7 +157,7 @@ The entire Pipeline is available as YAML, also.
 1. In **Feature Flag**, in **Pipelines**, click **YAML**.
 2. You can see the entire Pipeline as YAML. You can edit anything in the Pipeline and run it again.
 
-![A screenshot of a pipleline YAML file.](./static/1-build-feature-flag-pipeline-08.png)*Figure 4: The YAML for a Pipeline*
+![A screenshot of a pipleline YAML file.](./static/1-build-feature-flag-pipeline-08.png)
 
 ## Schedule Pipelines using triggers
 
@@ -167,5 +165,5 @@ You can trigger Feature Flag Pipeline on a time schedule. You can select how oft
 
 All the cron jobs are executed in Universal Time Coordinated (UTC). Cron triggers allow you to create Pipelines that start on a specific time schedule.
 
-For more information, go to [Schedule Pipeline using triggers](../../../platform/11_Triggers/schedule-pipelines-using-cron-triggers.md).
+For more information, go to [Schedule Pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers).
 

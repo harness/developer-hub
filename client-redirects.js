@@ -34,6 +34,26 @@ module.exports = {
     //  },
     //===================================================================================
 
+
+    // Created by Sudheendra Katte to fix error tracking re-directs April 20th, 2023
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
+    },
+
+
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
       from: "/docs/platform/Authentication/provision-users-with-okta-scim",
@@ -391,6 +411,22 @@ module.exports = {
     {
       from: "/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags",
       to: "/docs/feature-flags/ff-target-management/targeting-users-with-flags",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/build-feature-flag-pipeline",
+      to: "/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/default-pipeline-ff",
+      to: "/docs/feature-flags/ff-build-pipeline/default-pipeline-ff",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/relay-proxy",
+      to: "/docs/feature-flags/relay-proxy",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy",
+      to: "/docs/feature-flags/relay-proxy/deploy-relay-proxy",
     },
 
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
@@ -859,19 +895,19 @@ module.exports = {
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm-overview",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-event-dashboard",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-arc",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
     },
 
     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
@@ -1319,6 +1355,10 @@ module.exports = {
     },
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/multiserv-multienv",
+      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv",
+    },
     {
       from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
       to: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
