@@ -13,7 +13,7 @@ To set up notifications in CET:
 
 1. In your Harness project, navigate to **Service Reliability Management** > **Monitored Services**, and then select the monitored service to set up notifications.
 
-2. In the monitored service details page, go to the **Configuration** tab, and under **Notifications**, select **+New Notification Rule**.
+2. In the monitored service details page, go to the **Configuration** tab, and, under **Notifications**, select **+New Notification Rule**.
 
 3. In the New Notification wizard, do the following:
    
