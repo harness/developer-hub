@@ -220,7 +220,23 @@ The configurations of the required resources and any referenced entities like In
 
 #### Referenced entities are in the same repository
 
-If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.​
+Here are the key points to keep in mind when the referenced entities reside in the same repository: 
+
+- During pipeline execution, Harness fetches the template from the same branch as the pipeline. This lets you test the templates before merging them back into the "default" branch.
+- Harness recommends creating a separate project for testing templates.
+- Templates and pipelines should be in the same repository.
+- Whenever you change a template in a feature branch, the corresponding testing pipelines are also updated.
+- As you can execute the pipeline from any branch, you can select the branch in which the changes to test templates were pushed. Merge the changes after testing. Upon merging, others will be able to access them.
+- This approach assumes the teams responsible for creating and managing templates will be different from those responsible for executing the pipeline (PE/DevOps teams versus Developers), so the test projects should be separate from the production projects.
+
+
+:::info
+Harness considers entities in the same repository if they are stored in different Git providers, but have the same repository names.
+
+For example, when you store your pipeline in GitHub and the entities it references in Bitbucket, Harness treats the two repositories as one if their repository names are identical.
+:::
+
+
 
 Let us look at an example: 
 
@@ -234,7 +250,10 @@ When you execute this pipeline, Harness fetches these entities from the branch t
 
 #### Referenced entities are in different repositories
 
-If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.​
+If the referenced entities exist in a different repository, they are fetched from the default branch of the repo where the entities are stored.​
+This ensures: 
+- Teams always use tested and approved templates.
+- Teams cannot execute pipelines using templates from different branches that have not yet been tested.
   
 Let us look at an example: 
   
