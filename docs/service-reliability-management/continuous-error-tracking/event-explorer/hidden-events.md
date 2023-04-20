@@ -31,5 +31,5 @@ To restore hidden events:
 
 1. On the **Hidden Events** page, select the events that you want to restore and then select **Restore**.
 
-   The selected events will be moved to the **Events** page and will no longer appear on the **Hidden Events** page.
+   The selected events are moved to the **Events** page and no longer appear on the **Hidden Events** page.
 
