@@ -7,7 +7,6 @@
     .moduleTitle{
         display: flex;
         align-items: center;
-        margin-bottom: 16px;
         margin-top: 24px;
         flex-shrink: 1;
         img{
@@ -28,10 +27,16 @@
 .btnContainer {
     display: flex;
     align-items: center;
+    align-content: center;
     flex-shrink: 0;
+    max-width: 386px;
+    flex-flow: row wrap;
+    gap: 12px;
+    a:hover {
+        text-decoration: var(--ifm-link-decoration);
+    }
 }
 .link{
-    
     background: transparent;
     border: none;
     color: #0278D5;
@@ -47,7 +52,6 @@
 }
 .btn{
     padding: 12px 20px;
-    margin-left: 12px;
     height: 48px;
     // Gray scale 100 F3F3FA
     background: var(--gray-100);
@@ -61,6 +65,7 @@
     white-space: nowrap;
     display: flex;
     cursor: pointer;
+    min-width: 180px;
     &:hover {
         // text-decoration: underline;
         color: var(--primary-8);
@@ -74,6 +79,9 @@
 .spaceBetween{
     display: flex;
     justify-content: space-between;
+    .content {
+        margin-top: 16px;
+    }
 }
 
 .subSection{
@@ -136,6 +144,18 @@
         & > div {
             text-align: center;
         }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* for tablet */
+    .topSection{
+        .moduleTitle{
+            margin-bottom: 16px;
+        }
+    }
+    .spaceBetween{
+        align-items: center;
     }
 }
 
