@@ -102,8 +102,6 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-## Troubleshooting
-
 ### SSH-keyscan Timeout
 
 If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#option-stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
