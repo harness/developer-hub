@@ -1,5 +1,5 @@
 ---
-title: Use Multiple Tags in AWS Dashboards
+title: Use multiple tags in AWS dashboards
 description: This topic explains how to use multiple tags in AWS.
 # sidebar_position: 2
 helpdocs_topic_id: hmj2vg5thi
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Multiple Tags in AWS Dashboards can be used to filter and visualize data based on unique Tags and their values. This can be used to drill down the data for specific key values. If you filter `AWS: Multiple Tags - Key 1` with the environment or application, then `Dimension Value 1` will contain the values for that specific Tag. For example, the cost of `XYZ` application in the `ABC` cost center in the `QA` environment only.
+Multiple tags in AWS dashboards can be used to filter and visualize data based on unique Tags and their values. This can be used to drill down the data for specific key values. If you filter `AWS: Multiple Tags - Key 1` with the environment or application, then `Dimension Value 1` will contain the values for that specific Tag. For example, the cost of `XYZ` application in the `ABC` cost center in the `QA` environment only.
 
 :::note
 For information on core Dashboard functionality, see [Create Dashboards](https://developer.harness.io/docs/platform/Dashboards/create-dashboards).

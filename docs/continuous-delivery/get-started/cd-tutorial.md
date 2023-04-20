@@ -4,7 +4,7 @@ description: Links to CD tutorials and onboarding topics.
 sidebar_position: 3
 ---
 
-All CD tutorials can be found on the [Deploy Services](https://developer.harness.io/tutorials/deploy-services) tutorials page.
+All CD tutorials can be found on the [Set up CD Pipelines](/tutorials/cd-pipelines/) tutorials page.
 
 These tutorials includes Kubernetes, Helm, and other integrations.
 

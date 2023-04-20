@@ -1,5 +1,5 @@
 ---
-title: React Client SDK Reference
+title: React Client SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your React Client application.
 sidebar_position: 70
 helpdocs_category_id: y1oewjcb0q
@@ -31,8 +31,8 @@ To use this SDK, make sure you've: 
 
 * Installed Node.js v12 or a newer version.
 * Installed React.js v16.7 or a newer version.
-* [Created a Feature Flag on the Harness Platform](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Created an SDK key and made a copy of it](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key)
+* [Created a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Created an SDK key and made a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Install the SDK
 
@@ -80,7 +80,7 @@ apiKey="YOUR_API_KEY"
 Targets are used to control which users see which variation of a feature flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often, targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
+For more information about targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 To add a target that you want to evaluate, build it using `cfTarget` and pass in arguments for the following:
 

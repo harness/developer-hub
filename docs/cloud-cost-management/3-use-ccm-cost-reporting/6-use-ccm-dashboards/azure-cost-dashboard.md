@@ -1,5 +1,5 @@
 ---
-title: View Azure Cost Dashboard
+title: Azure Cost Dashboard
 description: This topic describes how to view By Harness Azure Cost Dashboard and get more information about that data.
 # sidebar_position: 2
 helpdocs_topic_id: n7vpieto0n
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# View Azure Cost Dashboard
 
 Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **Azure Cost Dashboard** you can:
 

@@ -1,5 +1,5 @@
 ---
-title: Update Your Billing Information
+title: Update your billing information
 description: To update your billing information --  On the Harness Platform, on the lefthand navigation, click Help. Select Submit a ticket. Complete the following fields in the form --  Feedback category  --  Select Q ue…
 sidebar_position: 60
 helpdocs_topic_id: dl3be0zzfe

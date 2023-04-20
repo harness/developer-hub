@@ -1,5 +1,5 @@
 ---
-title: View Your Current Subscriptions
+title: View your current subscriptions
 description: This topic describes how to view which Harness modules you are currently subscribed to, and how to view the details of your subscriptions. On the Harness Platform, you can view the following subscrip…
 sidebar_position: 40
 helpdocs_topic_id: 9d9x7m8xw8

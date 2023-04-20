@@ -21,7 +21,7 @@ Make sure you have the following set up before you create a Kubernetes connector
 	+ EKS (AWS): [Create an AWS Connector for AutoStopping Rules](../1-add-connectors/connect-to-an-aws-connector.md)
 	+ AKS (Azure): [Create an Azure Connector for AutoStopping Rules](../1-add-connectors/add-azure-connector.md)
 	+ GKE (GCP): [Create a GCP Connector for AutoStopping Rules](../1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md)
-* Make sure that you have added a **Kubernetes Cluster** in **Cloud Providers Connector.** See [Add a Kubernetes Cluster Connector](../../../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md).
+* Make sure that you have added a **Kubernetes Cluster** in **Cloud Providers Connector.** See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 
 :::note
@@ -49,7 +49,7 @@ You need a target Kubernetes cluster for the Harness Delegate and deployment. Ma
 :::important
 These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 :::
-* Make sure you are a member of the Harness Administrator Group in the Harness FirstGen version. This is required to [create an API key](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/).
+* Make sure you are a member of the Harness Administrator Group in the Harness FirstGen version. This is required to [create an API key](/docs/platform/User-Management/add-and-manage-api-keys).
 * **Metrics Server**: Metrics Server must be running on the Kubernetes cluster where your Harness Kubernetes Delegate is installed. Before enabling CCM for Kubernetes, you must make sure the utilization data for pods and nodes is available.
   
   

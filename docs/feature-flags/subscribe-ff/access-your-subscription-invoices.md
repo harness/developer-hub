@@ -1,5 +1,5 @@
 ---
-title: Access Your Subscription Invoices
+title: Access your subscription invoices
 description: To get a copy of your subscription invoice --  On the Harness Platform, on the lefthand navigation, click Help. Select Submit a ticket. Complete the following fields in the form --  Feedback category  --  Sel…
 sidebar_position: 80
 helpdocs_topic_id: vb1kd33p4p

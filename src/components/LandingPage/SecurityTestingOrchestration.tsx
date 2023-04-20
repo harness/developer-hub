@@ -16,7 +16,7 @@ export default function STO() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Orchestrate security tests</h3>
+        <h3>Scan your code, containers and live apps</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
