@@ -1,6 +1,6 @@
 {
     "label": "Manage Feature Flag targets",
-    "position": 40,
+    "position": 12,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

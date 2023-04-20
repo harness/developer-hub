@@ -156,7 +156,7 @@ The following are the required configuration variables to connect to the Feature
 
 * **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account).
 * **account-identifier**: Enter your account identifier for which you want to retrieve the config. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL. For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.
-* **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](../../../platform/organizations-and-projects/create-an-organization.md#step-1-create-a-harness-org).
+* **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization).
 * **api-keys**: Enter your server SDK key. For more information, go to [Create an SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 * **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager/).
 1. Specify your configuration details and Docker run the proxy image. The following are the examples:
@@ -190,7 +190,10 @@ The following are the required configuration variables to connect to the Feature
 	docker run -d -p 7000:7000 --env-file .env harness/ff-proxy
 	```
 2. (Optional) You can optionally provide config for a Redis instance used to store flag data using the `redis-address`, `redis-db` (optional), and `redis-password` (optional).  
-> **☆ NOTE —** If you do not use Redis, the flag data is stored in the memory. In-memory is the default option.
+
+    :::info note
+    If you do not use Redis, the flag data is stored in the memory. In-memory is the default option.
+    :::
 
 ## Configure SDKs to work With the Relay Proxy
 

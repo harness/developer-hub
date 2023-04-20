@@ -5,7 +5,7 @@ tags:
    - git experience
    - feature flag
    - SCM
-sidebar_position: 50
+sidebar_position: 20
 helpdocs_topic_id: 6f5eylg819
 helpdocs_category_id: 77l6flntwl
 helpdocs_is_private: false

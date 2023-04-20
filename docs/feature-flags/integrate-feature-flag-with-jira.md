@@ -1,7 +1,7 @@
 ---
 title: Integrate Feature Flags with Jira
 description: View Jira issues for a specific Harness feature flag.
-# sidebar_position: 100
+sidebar_position: 25
 ---
 
 With **Harness Feature Flags for Jira**, teams can use feature flags more quickly and easily from a single place.

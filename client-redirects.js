@@ -403,6 +403,14 @@ module.exports = {
       from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/default-pipeline-ff",
       to: "/docs/feature-flags/ff-build-pipeline/default-pipeline-ff",
     },
+    {
+      from: "/docs/feature-flags/ff-using-flags/relay-proxy",
+      to: "/docs/feature-flags/relay-proxy",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy",
+      to: "/docs/feature-flags/relay-proxy/deploy-relay-proxy",
+    },
 
 
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
