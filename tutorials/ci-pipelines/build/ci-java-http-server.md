@@ -81,7 +81,7 @@ The YAML for the **Java with Maven** starter pipeline is as follows. To switch t
 ```yaml
 pipeline:
   name: Build Java with Maven
-  identifier: Build_Java_with_Maven_1681845696844
+  identifier: Build_Java_with_Maven
   projectIdentifier: [your-project-ID]
   orgIdentifier: default
   properties:
@@ -482,7 +482,7 @@ Here is the complete YAML for this tutorial's pipeline.
 ```yaml
 pipeline:
   name: Build Java with Maven
-  identifier: Build_Java_with_Maven_1681845696844
+  identifier: Build_Java_with_Maven
   projectIdentifier: [your-project-ID]
   orgIdentifier: default
   properties:
