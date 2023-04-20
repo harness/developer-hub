@@ -494,7 +494,6 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.22.0
 - 1.23.0
 - 1.24.3
-- 1.24.9
 - 1.25.6
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](../platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
