@@ -1,13 +1,8 @@
 ---
-title: Migrating from GitHub Actions to Harness CI
+title: Migrate from GitHub Actions to Harness CI
 description: Learn how to migrate your existing GitHub Actions workflows to Harness CI.
-sidebar_position: 4
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 20
 ---
-## Introduction
 
 Harness CI and GitHub Actions both allow you to create workflows that automatically build, test, publish, release, and deploy code. Harness CI and GitHub Actions share some similarities in workflow configuration:
 - Workflow configuration files are written in YAML and stored in the repository.

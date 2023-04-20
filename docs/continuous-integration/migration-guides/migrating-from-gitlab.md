@@ -1,23 +1,18 @@
 ---
-title: Migrating from GitLab CI to Harness CI
+title: Migrate from GitLab CI to Harness CI
 description: Learn how to migrate your existing GitLab workflows to Harness CI.
-sidebar_position: 4
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 30
 ---
-## Introduction
 
-Harness CI and GitLab CI both allow you to create workflows that automatically build, test, publish, release, and deploy code. GitLab CI and Harness CI share some similarities in workflow configuration:
+Harness CI and GitLab CI both allow you to create workflows that automatically build, test, publish, release, and deploy code.
+
+GitLab CI and Harness CI share some similarities in workflow configuration:
 
 - Workflow configuration files are written in YAML and are stored in the code's repository.
 - Workflows include one or more stages.
-- Stages include one or more jobs / steps or individual commands.
+- Stages include one or more jobs/steps or individual commands.
 
-There are a few differences, and this guide will show you the important differences so that you can quickly migrate your existing GitLab workflows to Harness CI.
-
-For more information, see [Harness CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts).
+This guide describes the important differences between Harness CI and GitLab CI so that you can migrate your existing GitLab CI workflows to Harness CI.
 
 ## Key differences
 
@@ -637,6 +632,8 @@ echo "Testing matrix"
 ```
 We recommend going through the following list to make you more comfortable before going ahead with complex configiguration and migration:
 
+- [Platform Concepts](https://developer.harness.io/docs/platform)
+- [Harness CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)
+- [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 - [Caching](https://developer.harness.io/docs/category/share-and-cache-ci-data)
 - [Parallelism](https://developer.harness.io/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)
-- [Platform Concepts](https://developer.harness.io/docs/platform)
