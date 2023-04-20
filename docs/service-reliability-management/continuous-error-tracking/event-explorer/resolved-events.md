@@ -18,7 +18,7 @@ To mark an event as resolved:
 
 3. On the **Events** page, select the events that you want to mark as resolved and then select **Mark as Resolved**.  
    
-   The selected events will be marked as resolved and moved to the **Resolved Events** page.
+   The selected events are marked as resolved and moved to the **Resolved Events** page.
 
    ![Mark event as resolved](./static/mark-event-resolved.gif)
 
