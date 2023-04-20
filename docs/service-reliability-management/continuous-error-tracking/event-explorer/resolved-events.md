@@ -25,7 +25,7 @@ To mark an event as resolved:
 
 ## Resurfaced events
 
-When an issue is marked as resolved, it only applies to that specific combination of service, environment, and deployment. If an event that was previously marked as resolved occurs again in the same service and environment, but with the same or a newer deployment, it will be moved back to the **Events** page and labelled as **Resurfaced**.
+When an issue is marked as resolved, it only applies to that specific combination of service, environment, and deployment. If an event that was previously marked as resolved occurs again in the same service and environment, but with the same or a newer deployment, it is moved back to the **Events** page and labelled as **Resurfaced**.
 
 The following are examples of when an event is considered resurfaced or a new one:
 
