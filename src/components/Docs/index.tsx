@@ -33,7 +33,7 @@ export default function Docs() {
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
-            <p>The Modern Software Delivery Platform.</p>
+            <p>Explore Harness documentation to find step-by-step instructions, code samples, and reference information.</p>
           </div>
         </div>
       </div>
