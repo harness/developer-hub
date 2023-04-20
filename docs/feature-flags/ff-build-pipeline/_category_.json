@@ -1,6 +1,6 @@
 {
-    "label": "Use pipelines with Feature Flags",
-    "position": 28,
+    "label": "Use pipelines with flags",
+    "position": 35,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

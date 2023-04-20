@@ -1,11 +1,11 @@
 ---
-title: Manage your flags using Git Experience
+title: Manage flags using Git Experience
 description: Using Harness Git Experience with Feature Flags allows you to manage your Flags from a .yaml file in your Git repository.
 tags: 
    - git experience
    - feature flag
    - SCM
-sidebar_position: 50
+sidebar_position: 20
 helpdocs_topic_id: 6f5eylg819
 helpdocs_category_id: 77l6flntwl
 helpdocs_is_private: false

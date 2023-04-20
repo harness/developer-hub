@@ -223,7 +223,7 @@ log.setLevel(logging.WARN)
 ```
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](../../ff-using-flags/relay-proxy/relay-proxy.md) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. To do this:
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. To do this:
 
 1. Import the URL helper functions, for example:
 ```

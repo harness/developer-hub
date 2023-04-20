@@ -276,7 +276,7 @@ client.destroy()
 
 ### Use the Harness Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](../../ff-using-flags/relay-proxy/relay-proxy.md) you need to change the default URL.
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/) you need to change the default URL.
 
 To do this, import the following URL helper functions:
 
