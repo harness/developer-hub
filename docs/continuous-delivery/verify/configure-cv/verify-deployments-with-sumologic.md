@@ -1,7 +1,7 @@
 ---
-title: Verify Deployments with Sumo Logic
-description: This topic shows you how to verify deployments with Sumo Logic. 
-sidebar_position: 12
+title: Sumo Logic
+description: Verify deployments with Sumo Logic. 
+sidebar_position: 11
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -86,7 +86,7 @@ You can add a step at various points in the pipeline such as the beginning, end,
 
 2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
 3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
 
@@ -107,7 +107,7 @@ For instance, if you input the service as `todolist` and the environment as `dev
 :::
 
 
-![Autocreate monitored service](../cd-execution/cv-category/static/cv-sumologic-autocreate-monitoredservice.png)
+![Autocreate monitored service](./static/cv-sumologic-autocreate-monitoredservice.png)
 
 ## Add a health source
 
@@ -159,11 +159,11 @@ To add a health source:
 
    Query: `metric=memory`
 
-   ![Query - disk usage](../cd-execution/cv-category/static/cv-sumologic-select-metric-query-memory.png)
+   ![Query - disk usage](./static/cv-sumologic-select-metric-query-memory.png)
 
    Disk usage records and chart being displayed for the query
 
-   ![Memory usage records and charts](../cd-execution/cv-category/static/cv-sumologic-select-metric-query-memory-chart-records.png)
+   ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
 
 
    </details>
@@ -267,7 +267,7 @@ To set fail-fast thresholds for CV, follow these steps:
 
    Query: `_sourcename = "Http Input"`
 
-   ![Query - Logs](../cd-execution/cv-category/static/cv-sumologic-select-log-query-chart-records.png)
+   ![Query - Logs](./static/cv-sumologic-select-log-query-chart-records.png)
 
 
    </details>
@@ -305,26 +305,26 @@ The Summary section displays the following details when the Verify step begins:
 
 Note that it may take some time for the analysis to begin. The screenshot below shows a Verification step running in a deployment:
 
-![Verification summary](../cd-execution/cv-category/static/cv-sumologic-verify-summary-view.png)
+![Verification summary](./static/cv-sumologic-verify-summary-view.png)
 
 ## Console view
 
 The console view displays detailed logs of the pipeline, including verification logs. To view the console, select **View Details** in the **Summary** section or turn on the **Console View** toggle switch in the upper-right corner.
 
-![Verification step console view](../cd-execution/cv-category/static/cv-sumologic-verify-console-view.png)
+![Verification step console view](./static/cv-sumologic-verify-console-view.png)
 
 By default, the console displays logs of only the anomalous metrics and affected nodes. To see all logs, clear the **Display only anomalous metrics and affected nodes** check box.
 
-![Verification step console view all data](../cd-execution/cv-category/static/cv-sumologic-verify-view-anamalous-data.png)
+![Verification step console view all data](./static/cv-sumologic-verify-view-anamalous-data.png)
 
 The following screenshots show successful and failed verifications in a deployment run:
 
 **Successful verification**
 
-![Passed verification step](../cd-execution/cv-category/static/cv-sumologic-pipeline-pass.png)
+![Passed verification step](./static/cv-sumologic-pipeline-pass.png)
 
 **Failed verification**
 
-![Failed verification step](../cd-execution/cv-category/static/cv-sumologic-pipeline-fail.png)
+![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
 
