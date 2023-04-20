@@ -18,6 +18,13 @@ For more information, see [Harness CI Concepts](https://developer.harness.io/doc
 
 ## Key differences
 
+<!-- add sentence to introduce list, consider using table-->
+
+<!-- I'm not sure if it makes sense to add to this doc, but we have two big differentiators over GHA right now:
+
+Apple silicon support (currently not available on the free tier unfortunately)
+Linux arm64 support (available on the free tier) -->
+
 - With Harness, no scripting is needed and configurations are passed to pipelines securely and in a pragmatic way while Github Actions has third-party actions that you can use as semi-plug-and-play functionality.
 - HashiCorp created an action to set up and configure the Terraform CLI in the GitHub Actions workflow. There’s also an action for CloudFormation. Harness provides both infrastructure provisioners with a simpler structure and configuration.
 - GitHub Actions does not provide a native Accelerate metrics dashboard whereas Harness has a dashboard specifically for these metrics and allows you to set alerts as needed.
@@ -149,8 +156,9 @@ step:
 </Tabs>
 ```
 
-In Harness CI we have connectors for logging into the Docker registry. To learn more about connectors, go to  [Connecting to Docker Registry](https://developer.harness.io/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector/).
-A Connector in Harness is a configurable object that connects to an external resource automatically. We reference a Connector in your Pipeline by using its Id in `connectorRef`.
+A connector in Harness is a configurable object that connects to an external resource automatically. We reference a connector in your pipeline by using its Id in `connectorRef`.
+
+In Harness CI we have connectors for logging into the Docker registry. To learn more about connectors, go to  [Connecting to Docker Registry](/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector/).
 
 ## Defining an environment variable
 
@@ -181,7 +189,7 @@ variables:
 </TabItem>
 </Tabs>
 ```
-## Checkout Code
+## Check out code
 
 <Tabs
     defaultValue="harness"
@@ -212,13 +220,17 @@ stage:
 </TabItem>
 </Tabs>
 ```
-In Github Actions we use, `actions/checkout@v2`, which is the action that checks out your repository to the computer that runs the action.
-In Harness CI, we have to create a GitHub connector as part of the first step which is basically a configurable object that connects to an external source automatically.
-Harness Code Repository Connectors connect your Harness account with your Git platform.
-To know about creating a git connector visit [GitHub Connector](https://docs.harness.io/article/jd77qvieuw-add-a-git-hub-connector).
-Harness CI has a clone codebase option that acts similar to that of `actions/checkout@v2` in GitHub actions.
+In Github Actions we use `actions/checkout@v2`, which is the action that checks out your repository to the computer that runs the action.
 
-Each CI Pipeline has a Codebase that specifies the code repo (input) that the Pipeline uses to build the artifact (output). You specify the Codebase when you add the first Build Stage to the Pipeline. This becomes the default input for all other Stages in the Pipeline. By default, a Build Stage clones the repo from your Git provider into your build infrastructure when the Pipeline runs.
+In Harness CI, we have to create a GitHub connector as part of the first step which is basically a configurable object that connects to an external source automatically.
+
+Harness Code Repository Connectors connect your Harness account with your Git platform.
+
+To learn more about creating a GitHub connector, go to [Add a GitHub connector](/docs/platform/connectors/code-repositories/add-a-git-hub-connector/).
+
+Harness CI has a clone codebase option that is similar to that of the GitHub Actions `actions/checkout@v2`.
+
+Each CI pipeline has a codebase that specifies the code repo (input) that the pipeline uses to build the artifact (output). You specify the codebase when you add the first Build stage to the pipeline. This becomes the default input for all other stages in the pipeline. By default, a Build stage clones the repo from your Git provider into your build infrastructure when the pipeline runs.
 
 ![](./static/clone-codebase.png)
 
@@ -274,12 +286,15 @@ trigger:
 </TabItem>
 </Tabs>
 ```
-In Harness CI you can trigger Pipelines in response to Git events that match specific payload conditions you set up in the Harness Trigger.
-For example, when a pull request or push event occurs on a Git repo and your Trigger settings match the payload conditions, a CI Pipeline can execute.
-In Harness , you trigger a workflow using the trigger option in the pipeline studio.
-To know more about creating a trigger visit [Trigger Pipelines using Git Event Payload Conditions](https://docs.harness.io/article/10y3mvkdvk-trigger-pipelines-using-custom-payload-conditions)
+In Harness CI, you can trigger pipelines in response to Git events that match specific payload conditions you set up in the Harness trigger.
 
-## Build and Push to Docker Registry
+For example, when a pull request or push event occurs on a Git repo and your trigger settings match the payload conditions, a CI pipeline can execute.
+
+In Harness, you trigger a workflow using the trigger option in the pipeline studio.
+
+To learn more about creating a trigger, go to [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/)
+
+## Build and Push an image to Docker Registry
 
 <Tabs
     defaultValue="harness"
@@ -321,9 +336,10 @@ To know more about creating a trigger visit [Trigger Pipelines using Git Event P
 
 ## Matrix
 
-A matrix strategy lets you use variables in a single job definition to automatically create
-multiple job runs that are based on the combinations of the variables. For example, you can use a matrix strategy to test your code in multiple versions of a language or on multiple operating systems.
-To know more about matrix in Harness CI visit [Looping strategies in Harness](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism).
+A matrix strategy lets you use variables in a single job definition to automatically create multiple job runs that are based on the combinations of the variables. For example, you can use a matrix strategy to test your code in multiple versions of a language or on multiple operating systems.
+
+To learn more about matrix in Harness CI, go to [Looping strategies in Harness](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism).
+
 <Tabs
     defaultValue="harness"
     values={[
@@ -356,7 +372,7 @@ jobs:
 </Tabs>
 ```
 
-## Complete Example 
+## Complete example
 
 <Tabs
     defaultValue="harness"

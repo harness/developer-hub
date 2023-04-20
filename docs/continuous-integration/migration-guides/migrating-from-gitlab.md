@@ -15,16 +15,18 @@ Harness CI and GitLab CI both allow you to create workflows that automatically b
 - Workflows include one or more stages.
 - Stages include one or more jobs / steps or individual commands.
 
-There are a few differences, and this guide will show you the important differences so that you can quickly migrate your existing Gitlab workflows to Harness CI.
+There are a few differences, and this guide will show you the important differences so that you can quickly migrate your existing GitLab workflows to Harness CI.
+
 For more information, see [Harness CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts).
 
 ## Key differences
 
-- Gitlab configurations are stored in the .gitlab-ci.yml file in the root directory of your repository while Harness provides inline pipeline storage or importing [pipeline YAML (Pipeline-as-Code)](https://docs.harness.io/article/q1nnyk7h4v-import-a-pipeline) from Git option.
-- Harness CI provides proprietary technologies like Cache Intelligence and Test Intelligence™ enabling [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools 
-- Harness CI allows executing Github Actions plugins, Drone Plugins, and Bitrise Plugins using the [Plugin steps](https://docs.harness.io/category/ei5fgqxb0j-use-drone-plugins)
-- **Testing and Verification:** GitLab CI comes with a set of test suites which apply to any language. Harness CI goes beyond that. Test Intelligence is one of Harness CI's most advanced features which dramatically reduces build times. It does so by running incremental builds which allows Harness to run relevant tests and bypass unnecessary tests.
-- **Secrets Management:** GitLab does not offer native secrets management capabilities. They have selected Vault by HashiCorp as their first supported secrets management partner which means you must first configure your Vault server. Harness includes a built-in Secrets Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness applications.
+<!-- consider table-->
+- GitLab configurations are stored in the .gitlab-ci.yml file in the root directory of your repository while Harness provides inline pipeline storage or importing [pipeline YAML (Pipeline-as-Code)](/docs/platform/git-experience/import-a-pipeline/) from Git option.
+- Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, which enable Harness CI to be [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
+- Harness CI allows executing Github Actions plugins, Drone Plugins, and Bitrise Integrations using the [Plugin steps](https://docs.harness.io/category/ei5fgqxb0j-use-drone-plugins).
+- **Testing and Verification:** GitLab CI comes with a set of test suites that apply to any language. Harness CI goes beyond that. Test Intelligence is one of Harness CI's most advanced features that dramatically reduces build times. It does so by running incremental builds that allow Harness to run relevant tests and bypass unnecessary tests.
+- **Secrets Management:** GitLab does not offer native secrets management capabilities. They have selected Vault by HashiCorp as their first supported secrets management partner, which means you must first configure your Vault server. Harness includes a built-in secrets management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness applications.
 
 ### Harness Cache Intelligence
 
@@ -36,12 +38,12 @@ Harness [Test Intelligence](https://developer.harness.io/docs/continuous-integra
 
 ## Define a stage that executes a single build step
 
-In GitLab jobs are a fundamental element in the configuration file. Jobs in GitLab CI/CD are very similar to steps in Harness CI. In both systems it has the following characteristics: 
+In GitLab, jobs are a fundamental element in the configuration file. Jobs in GitLab CI/CD are very similar to steps in Harness CI. Jobs have the following characteristics in both products:
 
-- Jobs in Gitlab contain a series of steps or scripts that run sequentially similar to the steps in Harness CI
-- Jobs run in parallel by default in Gitlab, but can be configured to run sequentially.
-- A Stage in Harness CI is a subset of the Pipeline that contains the logic to perform one major segment of the Pipeline process. 
-- Stages are based on the different milestones of the Pipeline, such as building, approving etc
+- Jobs in GitLab contain a series of steps or scripts that run sequentially similar to the steps in Harness CI.
+- Jobs run in parallel by default in GitLab, but can be configured to run sequentially.
+- A Stage in Harness CI is a subset of the pipeline that contains the logic to perform one major segment of the pipeline process.
+- Stages are based on the different milestones of the pipeline, such as building, approving etc
 
 You can run a script or a shell command in a job. In GitLab CI/CD script steps are specified using the script key.
 
@@ -105,10 +107,10 @@ job1:
 
 ## Docker image definition
 
-Gitlab CI defines images at the job level and allows or supports setting this to be used by all jobs globally that don’t have a docker image defined.
-In Harness CI you add a docker image by connecting to your repository using an Harness Docker Connector. You can configure different types of artifact source connectors in Harness. 
+Gitlab CI defines images at the job level and allows or supports setting this to be used by all jobs globally that don't have a docker image defined.
+In Harness CI you add a docker image by connecting to your repository using an Harness Docker Connector. You can configure different types of artifact source connectors in Harness.
 
-For more information go to the documentation [here](https://developer.harness.io/docs/platform/Connectors/connect-to-harness-container-image-registry-using-docker-connector). 
+For more information go to the documentation [here](https://developer.harness.io/docs/platform/Connectors/connect-to-harness-container-image-registry-using-docker-connector).
 
 <Tabs
     defaultValue="harness"
@@ -130,11 +132,11 @@ job1:
 
 ```yaml
  - stage:
-  name: stage1 
+  name: stage1
   identifier: stage1
   type: CI
   spec:
-    cloneCodebase: true # Connector clones the repository 
+    cloneCodebase: true # Connector clones the repository
     execution:
       steps:
         - step:
@@ -325,7 +327,7 @@ variables:
 
 ## Matrix
 
-Parallel matrix jobs in Harness CI allows you to create jobs at runtime based on specified variables. Here to run multiple instances of a job with different variables values for each instance can be accomplished with a combination of `parallel:` and `matrix:`
+Parallel matrix jobs in Harness CI allow you to create jobs at runtime based on specified variables. Running multiple instances of a job with different variables values for each instance can be accomplished with a combination of `parallel:` and `matrix:`
 
 Matrix in Harness CI is one of the two looping executing strategies provided by Harness. Matrix gives the ability to execute the same set of tasks multiple times for a bunch of different configurations. This is achieved by mentioning user-defined tags and referencing them in the pipeline using the following expression:
 
@@ -390,11 +392,11 @@ test:
 
 ## Triggers
 
-Gitlab CI Trigger: Through API 
-
 Webhooks are a convenient way to trigger CI/CD on demand by sending an HTTP post request to specialized URLs. This is particularly useful for event-based triggering, in which a webhook can be called whenever a specified event occurs.
 
-Harness CI supports webhook triggers, artifact triggers, manifest triggers, and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on cron expressions. 
+In GitLab CI, pipelines can be triggered only through API.
+
+Harness CI supports webhook triggers, artifact triggers, manifest triggers, and scheduled triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on cron expressions.
 
 To learn more about creating a trigger, go to [Harness Triggers](https://developer.harness.io/docs/category/triggers).
 
