@@ -35,76 +35,6 @@ export const featuredTutorials: CardItem[] = [
   
   // Docs
   export const docsCards: CardSections = [
-    /*{
-      name: "Documentation Topics",
-      description:
-        "",
-      list: [
-        {
-          title: "Get started with Continuous Delivery",
-          module: MODULES.cd,
-          description:
-            "Learn the basics of Harness Continuous Delivery.",
-          link: "/docs/category/get-started",
-        },
-        {
-          title: "Integrations",
-          module: MODULES.cd,
-          description:
-            "See the tools and platforms you can use to deploy your apps.",
-          link: "/docs/continuous-delivery/integrations/cd-integrations",
-        },
-        {
-          title: "Provision infrastructure",
-          module: MODULES.cd,
-          description:
-            "Provision infrastructures for your deployments.",
-          link: "/docs/category/provision-infrastructure",
-        },
-        {
-          title: "Deploy services on different platforms",
-          module: MODULES.cd,
-          description:
-            "Platform-specific deployment types.",
-          link: "/docs/category/deploy-services-on-different-platforms",
-        },
-        {
-          title: "Cross-platform CD features",
-          module: MODULES.cd,
-          description:
-            "Features common to all deployment types.",
-          link: "/docs/category/cross-platform-cd-features",
-        },
-        {
-          title: "Verify deployments",
-          module: MODULES.cd,
-          description:
-            "Use Harness Continuous Verification (CV) to verify your deployments.",
-          link: "/docs/category/verify-deployments",
-        },
-        {
-          title: "Manage deployments",
-          module: MODULES.cd,
-          description:
-            "Control deployment resources and schedules.",
-          link: "/docs/continuous-delivery",
-        },
-        {
-          title: "Monitor deployments",
-          module: MODULES.cd,
-          description:
-            "Use DORA and other advanced metrics for deployments.",
-          link: "/docs/category/monitor-deployments",
-        },
-        {
-          title: "GitOps",
-          module: MODULES.cd,
-          description:
-            "Perform GitOps deployments in Harness.",
-          link: "/docs/category/gitops",
-        },
-      ],
-    },*/
     {
       name: "Get started with CD",
       description:
@@ -256,135 +186,218 @@ export const featuredTutorials: CardItem[] = [
       ],
     },
     {
-      name: "Infrastructure provisioning",
+      name: "Key features",
       description:
         "",
       list: [
         {
-          title: "Terraform",
+          title: "Provision infrastructure",
           module: MODULES.cd,
           description:
-            "Use Terraform to provision infrastructure as part of your deployment process.",
-          link: "/docs/category/terraform",
-        },
+            "Provision infrastructure as part of your deployment process.",
+          link: "/docs/category/provision-infrastructure",
+          children: [
+            {
+              title: "Terraform",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/terraform",
+            },
+            {
+              title: "CloudFormation",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/cloudformation",
+            },
+            {
+              title: "Terragrunt",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
+            },
+          ]  
+        }, 
         {
-          title: "CloudFormation",
+          title: "Deploy services on different platforms",
           module: MODULES.cd,
           description:
-            "Use CloudFormation to provision infrastructure as part of your deployment process.",
-          link: "/docs/category/cloudformation",
-        },
-        {
-          title: "Terragrunt",
-          module: MODULES.cd,
-          description:
-            "Use Terragrunt to provision infrastructure as part of your deployment process.",
-          link: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
-        },
-      ],
-    },
-    {
-      name: "Deploy services on different platforms",
-      description:
-        "",
-      list: [
-        {
-          title: "Community Edition",
-          module: MODULES.cd,
-          description:
-            "Set up Harness CD Community Edition locally and create a CD pipeline that deploys a publicly available Kubernetes artifact and manifest to a local cluster.",
+            "Create CD pipelines that deploy applications on different platforms using Harness.",
           link: "/docs/category/community-edition",
-        },
-        {
-          title: "Kubernetes",
-          module: MODULES.cd,
-          description:
-            "Deploy a publicly available Kubernetes artifact and manifest into your Kubernetes cluster using Harness.",
-          link: "/docs/category/kubernetes",
-        },
-        {
-          title: "Helm",
-          module: MODULES.cd,
-          description:
-            "Deploy a publicly available Docker image to your Kubernetes cluster using Helm charts using Harness.",
-          link: "/docs/category/helm",
-        },
-        {
-          title: "Native Helm",
-          module: MODULES.cd,
-          description:
-            "Perform Native Helm deployments using Harness.",
-          link: "/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart",
-        },
-        {
-          title: "Kustomize",
-          module: MODULES.cd,
-          description:
-            "Customize Kubernetes deployments using Kustomize in Harness.",
-          link: "/docs/category/kustomize",
-        },
-        {
-          title: "Microsoft Azure",
-          module: MODULES.cd,
-          description:
-            "Deploy containerized or non-containerized artifacts using Microsoft Azure using Harness.",
-          link: "/docs/category/azure",
-        },
-        {
-          title: "Amazon Web Services (AWS)",
-          module: MODULES.cd,
-          description:
-            "Deploy AWS Auto Scale Groups (ASG) and instances to Amazon Elastic Compute Cloud (EC2), and images to your Amazon Elastic Container Service (ECS) using Harness.",
-          link: "/docs/category/aws",
-        },
-        {
-          title: "Google Cloud",
-          module: MODULES.cd,
-          description:
-            "Deploy new Cloud Functions to Google Cloud using Harness.",
-          link: "/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions",
-        },
-        {
-          title: "Serverless Framework",
-          module: MODULES.cd,
-          description:
-            "Deploy a Serverless Lambda application to AWS Lambda using Harness.",
-          link: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
-        },
-        {
-          title: "Tanzu Application Services (TAS)",
-          module: MODULES.cd,
-          description:
-            "Deploy a publicly available application to your TAS space using Harness.",
-          link: "/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart",
-        },
-        {
-          title: "Traditional deployments",
-          module: MODULES.cd,
-          description:
-            "Deploy to any platform using SSH or WinRM using Harness.",
-          link: "/docs/category/traditional-deployments",
-        },
-        {
-          title: "Custom deployments",
-          module: MODULES.cd,
-          description:
-            "Deploy non-native applications using custom Deployment Templates in Harness.",
-          link: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
-        },
-      ],
-    }, 
-    {
-      name: "Featured contents",
-      description:
-        "",
-      list: [
+          children: [
+            {
+              title: "Kubernetes",
+              module: MODULES.cd,
+              description:
+                "Deploy a publicly available Kubernetes artifact and manifest into your Kubernetes cluster using Harness.",
+              link: "/docs/category/kubernetes",
+            },
+            {
+              title: "Helm",
+              module: MODULES.cd,
+              description:
+                "Deploy a publicly available Docker image to your Kubernetes cluster using Helm charts using Harness.",
+              link: "/docs/category/helm",
+            },
+            {
+              title: "Native Helm",
+              module: MODULES.cd,
+              description:
+                "Perform Native Helm deployments using Harness.",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart",
+            },
+            {
+              title: "Kustomize",
+              module: MODULES.cd,
+              description:
+                "Customize Kubernetes deployments using Kustomize in Harness.",
+              link: "/docs/category/kustomize",
+            },
+            {
+              title: "Microsoft Azure",
+              module: MODULES.cd,
+              description:
+                "Deploy containerized or non-containerized artifacts using Microsoft Azure using Harness.",
+              link: "/docs/category/azure",
+            },
+            {
+              title: "Amazon Web Services (AWS)",
+              module: MODULES.cd,
+              description:
+                "Deploy AWS Auto Scale Groups (ASG) and instances to Amazon Elastic Compute Cloud (EC2), and images to your Amazon Elastic Container Service (ECS) using Harness.",
+              link: "/docs/category/aws",
+            },
+            {
+              title: "Google Cloud",
+              module: MODULES.cd,
+              description:
+                "Deploy new Cloud Functions to Google Cloud using Harness.",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions",
+            },
+            {
+              title: "Serverless Framework",
+              module: MODULES.cd,
+              description:
+                "Deploy a Serverless Lambda application to AWS Lambda using Harness.",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
+            },
+            {
+              title: "Tanzu Application Services (TAS)",
+              module: MODULES.cd,
+              description:
+                "Deploy a publicly available application to your TAS space using Harness.",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart",
+            },
+            {
+              title: "Traditional deployments",
+              module: MODULES.cd,
+              description:
+                "Deploy to any platform using SSH or WinRM using Harness.",
+              link: "/docs/category/traditional-deployments",
+            },
+            {
+              title: "Custom deployments",
+              module: MODULES.cd,
+              description:
+                "Deploy non-native applications using custom Deployment Templates in Harness.",
+              link: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
+            },
+          ]  
+        }, 
         {
           title: "Verify deployments",
           module: MODULES.cd,
           description:
             "Use Harness Continuous Verification (CV) to verify your deployments.",
-          link: "/docs/category/verify-deployments",
+          link: "/docs/category/verify-deployments",  
+          children: [
+            {
+              title: "Verify step",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+            },
+            {
+              title: "Prometheus",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
+            },
+            {
+              title: "AppDynamics",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
+            },
+            {
+              title: "CloudWatch",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
+            },
+            {
+              title: "Custom Health Source",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
+            },
+            {
+              title: "Datadog",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
+            },
+            {
+              title: "Dynatrace",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
+            },
+            {
+              title: "Elasticsearch",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
+            },
+            {
+              title: "Google Cloud Operations",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
+            },
+            {
+              title: "New Relic",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
+            },
+            {
+              title: "Splunk",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
+            },
+            {
+              title: "Sumo Logic",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
+            },
+          ]  
         },
         {
           title: "Manage deployments",
@@ -392,6 +405,57 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Control deployment resources and schedules.",
           link: "/docs/category/manage-deployments",
+          children: [
+            {
+              title: "Concepts and strategies",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/manage-deployments/deployment-concepts",
+            },
+            {
+              title: "Pipeline resource constraints",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/manage-deployments/deployment-resource-constraints",
+            },
+            {
+              title: "Control resource usage with Barriers, Resource Constraints, and Queue Steps",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/manage-deployments/controlling-deployments-with-barriers-resource-constraints-and-queue-steps",
+            },
+            {
+              title: "Control resource usage with Queue Steps",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps",
+            },
+            {
+              title: "Synchronize parallel stages and step groups using Barriers",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers",
+            },
+            {
+              title: "Deployment logs and limitations",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations",
+            },
+            {
+              title: "Freeze deployments",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/manage-deployments/deployment-freeze",
+            },
+          ]  
         },
         {
           title: "Monitor deployments",
@@ -399,6 +463,36 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Use DORA and other advanced metrics for deployments.",
           link: "/docs/category/monitor-deployments",
+          children: [
+            {
+              title: "CD dashboard",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments",
+            },
+            {
+              title: "DORA metrics dashboard",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/monitor-deployments/dora-metrics-dashboard",
+            },
+            {
+              title: "Deployment dashboard (FirstGen)",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/monitor-deployments/view-deployments-current-gen-dashboard",
+            },
+            {
+              title: "Service dashboard (FirstGen)",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/monitor-deployments/view-services-current-gen-dashboard",
+            },
+          ]  
         },
         {
           title: "GitOps",
@@ -406,6 +500,64 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Perform GitOps deployments in Harness.",
           link: "/docs/category/gitops",
+          children: [
+            {
+              title: "Overview",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/gitops/harness-git-ops-basics",
+            },
+            {
+              title: "Install Harness GitOps Agent",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent",
+            },
+            {
+              title: "Add Harness GitOps repository",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/gitops/add-a-harness-git-ops-repository",
+            },
+            {
+              title: "Add Harness GitOps repository credentials template",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/gitops/add-harness-git-ops-repository-credentials-template",
+            },
+            {
+              title: "Harness hosted GitOps IP addresses",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/gitops/gitops-allowlist",
+            },
+            {
+              title: "Deploy services using Harness GitOps",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart",
+            },
+            {
+              title: "Map Argo projects to Harness GitOps projects",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/gitops/multiple-argo-to-single-harness",
+            },
+            {
+              title: "Create GitOps ApplicationSet and PR pipeline using Harness GitOps",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial",
+            },
+          ]
         },
       ],
     },
