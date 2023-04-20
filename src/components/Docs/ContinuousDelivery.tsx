@@ -30,16 +30,16 @@ export default function CD() {
                 Release Notes
               </button>
             </Link>
-            <Link href="/tutorials/deploy-services">
+            <Link href="https://registry.terraform.io/providers/harness/harness/latest/docs">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_documentation.svg`} />
-                Terraform
+                Harness Terraform documentation
               </button>
             </Link>
-            <Link href="/release-notes/continuous-delivery">
+            <Link href="https://apidocs.harness.io/">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_documentation.svg`} />
-                API Docs
+                Harness API reference
               </button>
             </Link>
           </div>
