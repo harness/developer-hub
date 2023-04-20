@@ -20,23 +20,55 @@ To view all targets in your account, and specify baselines for your targets, go 
 
 In some cases, you might want to specify the name of the latest release for your target baseline. Suppose your organization publishes releases with names such as: 
 
-* `3` (major release), `3.17` (minor release), `3.17.3` (hotfix), ... `3.18` (latest)
+* `3` , `3.17`, `3.17.3`, `3.18`, ...
 
-* `2023-02-29`, `2023-03-05`, `2023-03-12`, ... 2023-03-19 (latest)
+* `1.14.6-linux-amd64`, `1.14.11-linux-amd64`, `1.15.4-linux-amd64`, ...
 
-:::info TBD
+* `2023-02-29`, `2023-03-05`, `2023-03-12`, `2023-03-19`, ... 
 
-**Any other useful examples we might want to include?**
 
-:::
+With this cadence, the default baseline updates whenever you create a new release branch and scan it. In this case, you can use a regular expression (regex) to capture the latest release name and use it for the baseline. 
 
-With this cadence, the default baseline updates whenever a new release goes GA. In this case, you can use a regular expression (regex) to capture the latest release name and use it for the baseline. 
+<details><summary>Advantages of using regular expressions to define baselines</summary>
+
+Defining your baselines using regular expressions provides significant benefits over using hard-coded strings such as `main` or `latest`. In many 
+
+* Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. A typical sprint cycle might run like this:
+  
+  - Publish the current release — for example, `1.2.3` — and merge this branch into `main`. 
+  - Create a "next-release" branch — for example, `1.2.4` — from `main`.
+  - Create branches from `1.2.4` for different features, hotfixed, and so on. 
+  - When the release is ready to publish, merge the various branches into `1.2.4`. 
+  - Publish the release, merge `1.2.4` into `main`, create a new release branch such as `1.2.5`, and repeat the cycle.
+
+  Given this cadence, `1.2.4` more accurately reflects the baseline for the current sprint than  `main`. 
+
+* Dynamic baselines make it easier to track the introduction and remediation of specific vulnerabilities. The lifecyle of a specific vulnerability might run like this:
+
+   - A new release branch `1.2.3` is created. You scan this branch, which matches your regex, and it becomes the current baseline. 
+   - The scan detects a new vulnerability, **vXYZ**, with a severity of MEDIUM.
+   - A few sprints later, the vulnerability is remediated in a branch that gets merged into `1.2.7`.
+   - `1.2.7` is scanned before getting merged into `main`, and **vXYZ** is no longer in the scan results. 
+
+   <figure>
+
+   ![](../static/dynamic-baselines-example.png)
+
+   <figcaption>Figure 2: Tracking a vulnerability across baselines</figcaption>
+
+   </figure>
+
+</details>
 
 ### Important notes
 
-* When you specify a regex for the baseline, the scan step will determine the default based on the most recently created variant that matches the regex. 
+* You must use a consistent naming scheme for your scanned targets. This is necessary to ensure that your regular expression captures your baselines consistently and predictably. 
 
-* Use “Python syntax” for your expressions. This feature expects expressions based on the Python re module. 
+* You should consider carefully which targets you want to use for your baselines. In general, the baseline should be the root element for all your current variants. 
+
+* When you specify a regular expression, the baseline is the *most recently scanned target* that matches the expression. 
+
+* Use [re2 format](https://github.com/google/re2/wiki/Syntax) for your expressions. 
 
 * Defining regular expressions is outside the scope of this documentation. Harness recommends that you test any regular expressions thoroughly to ensure that the expression matches any variant name that might be used for the scan target.
 
@@ -52,11 +84,21 @@ The following table shows a few simple examples of expressions for specific use 
     </tr>
     <tr>
         <td>code-v1.1 <br /> code-v1.2 <br /> code-v1.3 <br /> code-v2.1 <br /> code-v2.2 <br /> code-v20.31 </td>
-        <td valign="top"><code>code\-v\d*\.\d*\</code></td>
+        <td valign="top"><code>code\-v\d+\.\d*\</code></td>
         <td valign="top">
             <ul>
                 <li><code><b>code\-v</b></code> start with <code>code</code>, dash, <code>v</code> </li>
-                <li><code><b>\d*\.\d*\</b></code> follow with one or more digits, dot, one or more digits </li>
+                <li><code><b>\d+\.\d+\</b></code> follow with one or more digits, dot, one or more digits </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
+        <td>1.14.6-linux-amd64<br /> 1.14.11-linux-amd64 <br /> 1.15.4-linux-amd64 </td>
+        <td valign="top"><code>\d*\.\d*\.\d*\-linux-amd64</code></td>
+        <td valign="top">
+            <ul>
+                <li><code><b>\d+\.\d+\.\d+</b></code> start with one or more digits, dot, one or more digits, dot, one or more digits </li>
+                <li><code><b>\-linux-amd64</b></code> follow with hyphen, <code>linux-amd64</code> </li>
             </ul>
         </td>
     </tr>
