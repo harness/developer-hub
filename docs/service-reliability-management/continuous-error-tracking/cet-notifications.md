@@ -25,7 +25,7 @@ To set up notifications in CET:
    
    4. Select **Next** to go to the Notification Method page.
    
-   5. Select a **Notification Method** such as Slack or Email and complete the following settings:
+   5. Select a **Notification Method**, such as Slack or Email, and complete the following settings:
    
         | Notification Method | Settings |
         | ------------------- | -------- |
