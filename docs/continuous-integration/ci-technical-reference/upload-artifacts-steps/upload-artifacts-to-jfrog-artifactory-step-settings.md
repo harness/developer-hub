@@ -26,7 +26,7 @@ Text string describing the step's purpose.
 
 ## Artifactory Connector
 
-Select the Harness Artifactory connector to use for this upload. For more information, go to the [Artifactory connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+Select the Harness Artifactory connector to use for this upload. For more information, go to the [Artifactory connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
 
 This step supports Artifactory connectors that use either anonymous or username and password authentication.
 

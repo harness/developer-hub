@@ -191,7 +191,7 @@ Harness connects to all of the common cloud platforms and provides a platform-ag
 
    ![](./static/kubernetes-cd-quickstart-88.png)
  
-The Kubernetes cluster connector is covered in detail [here](/docs/platform/connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/), but let's quickly walk through it.
+The Kubernetes cluster connector is covered in detail [here](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference), but let's quickly walk through it.
 
 Let's look at the steps:
 
@@ -271,7 +271,7 @@ For steps on deleting the Delgate, go to [delete a delegate](/docs/platform/Dele
 
 ## Next Steps
 
-See [CD tutorials](/tutorials/deploy-services) for other deployment features.
+See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
 
 
 

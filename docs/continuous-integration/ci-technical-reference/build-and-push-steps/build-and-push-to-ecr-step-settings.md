@@ -12,7 +12,7 @@ This topic provides settings for the **Build and Push to ECR** step, which build
 
 For more information, go to the following:
 
-* Harness CI tutorial: [Build and push a container image to Amazon ECR](/tutorials/build-code/publish/amazon-ecr)
+* Harness CI tutorial: [Build and push a container image to Amazon ECR](/tutorials/ci-pipelines/publish/amazon-ecr)
 * AWS documentation: [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
 * Harness CI documentation: [Build and push an artifact](../../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md)
 
@@ -32,8 +32,8 @@ The Harness AWS connector to use to connect to ECR.
 
 The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to ECR. For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](../../../platform/7_Connectors/add-aws-connector.md)
-* [AWS connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+* [Add an AWS connector](docs/platform/Connectors/Cloud-providers/add-aws-connector)
+* [AWS connector settings reference](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross-account access).
 

@@ -16,7 +16,7 @@ Other common uses are:
 
 This topic describes how to use the HTTP step. For comprehensive details on each setting, see [HTTP step reference](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step).
 
-Go to [Harness REST API quickstart](/docs/platform/APIs/api-quickstart) for more information.
+Go to [Harness REST API quickstart](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
 
 ## Before you begin
 
@@ -66,7 +66,7 @@ Before handing the execution of the HTTP step to a Harness Delegate, Harness per
 
 <!-- ### Using secrets in the HTTP step URL
 
-In some cases, you might want to use a [Harness text secret](/docs/platform/Security/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
+In some cases, you might want to use a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) in the **URL** setting. For example, `https://www.google.com/<+secrets.getValue("xyz")>`.
 
 It's important to know how Harness uses the secret when evaluating the URL.
 
@@ -125,7 +125,7 @@ You can use a Fixed Value, Runtime Input, or Expression.
 
 You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables) too.
 
-You can reference [Harness secrets](/docs/platform/Security/add-use-text-secrets) in the **Value** setting too.
+You can reference [Harness secrets](/docs/platform/Secrets/add-use-text-secrets) in the **Value** setting too.
 
 For example, in **Key**, enter `Token`.
 

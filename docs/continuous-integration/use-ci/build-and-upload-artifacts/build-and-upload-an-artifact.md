@@ -13,12 +13,12 @@ Add a **Build and Push** step to your CI pipeline to build your codebase and the
 * [Docker](#add-the-build-and-push-step)
 * [Azure Container Registry (ACR)](./build-and-push-to-acr.md)
 * [Google Container Registry (GCR)](./build-and-push-to-gcr.md)
-* [Amazon Elastic Container Registry (ECR)](/tutorials/build-code/publish/amazon-ecr)
-* [Google Artifact Registry (GAR)](/tutorials/build-code/publish/google-gar#configure-pipeline-steps)
+* [Amazon Elastic Container Registry (ECR)](/tutorials/ci-pipelines/publish/amazon-ecr)
+* [Google Artifact Registry (GAR)](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps)
 
 :::info
 
-For language-specific tutorials, go to the [CI Build tutorials](/tutorials/build-code/build/).
+For language-specific tutorials, go to the [CI Build tutorials](/tutorials/ci-pipelines/build/).
 
 For information about **Upload Artifact** steps, go to [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md)
 
@@ -46,8 +46,8 @@ You should have an understanding of the following:
 * Harness' [key concepts](/docs/getting-started/learn-harness-key-concepts.md).
 * How to [set up build infrastructure](/docs/category/set-up-build-infrastructure).
 * How to create pipelines. If you haven't created a pipeline before, try one of the following tutorials:
-  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm).
-  * [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
+  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm).
+  * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci).
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add the Build and Push step
@@ -71,7 +71,7 @@ For all **Build and Push** steps, you select or create a connector for the targe
 * Azure Container Registry (ACR): [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings.md) or [Build and Push an image to Docker Registry step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
 * Google Container Registry (GCR): [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings.md)
 * Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings.md)
-* Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/build-code/publish/google-gar#configure-pipeline-steps).
+* Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps).
 
 6. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
@@ -163,7 +163,7 @@ You can use your CI pipeline to test a Dockerfile used in your codebase and veri
 
 To use a CI pipeline to build multi-architecture images, create a stage for each architecture.
 
-The following YAML example describes a mulit-architecture pipeline. For a guided experience, try the [Rust application CI tutorial](/tutorials/build-code/build/rust).
+The following YAML example describes a mulit-architecture pipeline. For a guided experience, try the [Rust application CI tutorial](/tutorials/ci-pipelines/build/rust).
 
 ```yaml
 pipeline:

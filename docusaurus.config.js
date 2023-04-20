@@ -91,41 +91,41 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Build & Test Code",
-                to: "tutorials/build-code",
-                // docId: "build-code",
+                label: "Set up CI Pipelines",
+                to: "tutorials/ci-pipelines",
+                // docId: "ci-pipelines",
                 // activeBasePath: "to",
               },
               {
                 // type: "doc",
-                label: "Deploy Services",
-                to: "tutorials/deploy-services",
+                label: "Set up CD Pipelines",
+                to: "tutorials/cd-pipelines",
               },
               {
                 // type: "doc",
                 label: "Manage Feature Flags",
-                to: "tutorials/manage-feature-flags",
-                // activeBaseRegex: "/manage-feature-flags",
+                to: "tutorials/feature-flags",
+                // activeBaseRegex: "/feature-flags",
               },
               {
                 // type: "doc",
                 label: "Manage Cloud Costs",
-                to: "tutorials/manage-cloud-costs",
+                to: "tutorials/cloud-costs",
               },
               {
                 // type: "doc",
                 label: "Manage Service Reliability",
-                to: "tutorials/manage-service-reliability",
+                to: "tutorials/service-reliability",
               },
               {
                 // type: "doc",
                 label: "Orchestrate Security Tests",
-                to: "tutorials/orchestrate-security-tests",
+                to: "tutorials/security-tests",
               },
               {
                 // type: "doc",
                 label: "Run Chaos Experiments",
-                to: "tutorials/run-chaos-experiments",
+                to: "tutorials/chaos-experiments",
               },
               {
                 // type: "doc",
@@ -380,7 +380,7 @@ const config = {
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
-          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>Our FirstGen CD product will be phased out in about 12 months.</span> Learn more in our <a href='/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a> . For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>.",
+          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>FirstGen Harness CD will be EOL on 12/30/2023 and EOS on 3/30/2024.</span> Learn more in our <a href='/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a>. Contact  <a href='https://support.harness.io' target='_self'>Harness Support</a> with questions or concerns.",
         backgroundColor: "#FFF5ED",
         textColor: "#000000",
         isCloseable: true,
