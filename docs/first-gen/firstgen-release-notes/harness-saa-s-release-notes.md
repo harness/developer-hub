@@ -16,6 +16,12 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### April 21, 2023, version 791xx
+
+#### What's new
+
+- Switching accounts now loads accounts on scroll. This increases the modal load time if there are more accounts to be loaded. (PL-30467)
+
 ### April 10, 2023, version 79015
 
 #### What's new

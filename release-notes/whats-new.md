@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-04-10T10:00
+date: 2023-04-21T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,13 +17,27 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 10, 2023, version 79015
+## Latest - April 21, 2023, version 791xx
 
-### Feature Flags
+### Harness Platform
+
+- You can now configure session time-out in the UI. (PL-32258)
+  In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
+
+- You can now add descriptions to pipeline and stage variables. (PIE-3336)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 10, 2023, version 79015
+
+##### Feature Flags
 
 * The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
 
-### Harness Platform
+##### Harness Platform
 - You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
 
 - Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
@@ -34,7 +48,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
 
-### Continuous Integration
+##### Continuous Integration
 
 * Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
 * The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
@@ -42,11 +56,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   * `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run Tests](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
 
 
-### Service Reliability Management
+##### Service Reliability Management
 
 * Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
@@ -96,11 +110,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   You can now use `.io` and `.us` domains.
 
   ![picture 73](static/40962ce702cb34f682116d48237a0b3a99d68d840ef0f6e39e4b260b79fba3dc.png)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 05, 2023, version 79001
 
