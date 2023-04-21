@@ -1,7 +1,7 @@
 ---
-title: Verify Deployments with Datadog
-description: This topic shows you how to verify deployments with Splunk.
-sidebar_position: 6
+title: Datadog
+description: Verify deployments with Datadog.
+sidebar_position: 4
 helpdocs_topic_id: z3kpdn6vcb
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -35,8 +35,8 @@ There are two ways to add the Verify step:
 
 * **When selecting the stage deployment strategy:**  
 The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
-Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](../cd-execution/cv-category/static/verify-deployments-with-datadog-46.png)](../cd-execution/cv-category/static/verify-deployments-with-datadog-46.png)
-* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](../cd-execution/cv-category/static/verify-deployments-with-datadog-48.png)](../cd-execution/cv-category/static/verify-deployments-with-datadog-48.png)
+Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.![](./static/verify-deployments-with-datadog-46.png)
+* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.![](./static/verify-deployments-with-datadog-48.png)
 
 ## Step 2: Enter Name and Timeout
 
@@ -57,9 +57,9 @@ The maximum is `53w`.Timeouts can be set at the Pipeline level also.
 
 ## Step 3: Select a Continuous Verification Type
 
-In **Continuous Verification Type**, select a type that matches your [deployment strategy](./verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
+In **Continuous Verification Type**, select a type that matches your [deployment strategy](./../verify-deployments-with-the-verify-step.md#continuous-verification-type).
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-50.png)
+![](./static/verify-deployments-with-datadog-50.png)
 
 ## Step 4: Create a Monitored Service
 
@@ -83,7 +83,7 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 
 In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-51.png)
+![](./static/verify-deployments-with-datadog-51.png)
 
 In **Select health source type**, select Datadog.
 
@@ -93,13 +93,13 @@ Under **Connect Health Source**, click **Select Connector**.
 
 In **Connector** settings, you can either choose an existing connector or click **New Connector.**
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-52.png)
+![](./static/verify-deployments-with-datadog-52.png)
 
 Click **Apply Selected**. The Connector is added to the Health Source.
 
 In **Select Feature**, select the Datadog feature to be used. You can choose **Cloud Metrics** or **Cloud Logs**.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-53.png)
+![](./static/verify-deployments-with-datadog-53.png)
 
 Click **Next**.
 
@@ -107,7 +107,7 @@ The subsequent settings in **Customize Health Source** depend on the Health So
 
 If you select **Cloud Metrics**, the **Select Dashboards** settings appear. It displays a list of Datadog dashboards.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-54.png)
+![](./static/verify-deployments-with-datadog-54.png)
 
 Click the dashboards of your choice. If you don't have any preexisting dashboards or don't want to select the ones in the displayed result, click **Manually input query.**
 
@@ -115,7 +115,7 @@ Click **Next** and the **Customize Health Source** settings appear.
 
 Select a query from the options displayed on the left side of setting panel. The specification of the selected query auto-populates in the fields under **Query Specifications**.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-55.png)
+![](./static/verify-deployments-with-datadog-55.png)
 
 Click **Submit**. The Health Source is displayed in the Verify step.
 
@@ -127,7 +127,7 @@ You can customize the metrics to map the Harness Service to the monitored enviro
 
 Click **Map Queries to Harness Services** drop down.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-56.png)
+![](./static/verify-deployments-with-datadog-56.png)
 
 Enter a name for the query in **Name your Query**.
 
@@ -147,7 +147,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -155,11 +155,10 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../platform/../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
-See [Advanced Settings](./verify-deployments-with-the-verify-step.md#option-advanced-settings).
 
 ## Step 9: Deploy and Review Results
 
@@ -175,7 +174,7 @@ When the Pipeline is running, click the **Verify** step. You can see that the ve
 
 Once verification is complete, the Verify step shows the following:
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-57.png)
+![](./static/verify-deployments-with-datadog-57.png)
 
 The risk level might initially display a number of violations, but the red and orange colored host often change to green over the duration.
 
@@ -187,7 +186,7 @@ The **Summary** section shows the number of logs and metrics that are in violati
 
 Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-datadog-58.png)
+![](./static/verify-deployments-with-datadog-58.png)
 
 Click **Filter by Cluster Type** to drill down the metrics based on known events, unknown events, or unexpected frequency.
 
