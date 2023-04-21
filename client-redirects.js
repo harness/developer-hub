@@ -367,10 +367,6 @@ module.exports = {
       to: "/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems",
     },
     {
-      from: "/docs/platform/Connectors/create-a-connector-using-yaml",
-      to: "/docs/platform/Connectors/create-a-connector-using-yaml",
-    },
-    {
       from: "/docs/platform/Policy-as-code/harness-governance-overview",
       to: "/docs/platform/Governance/Policy-as-code/harness-governance-overview",
     },
