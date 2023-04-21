@@ -47,8 +47,7 @@ This release does not include early access features.
 
 * Fixed an issue where the metrics loading spinner was hanging indefinitely. (FFM-6735)
 
-* The field for the YAML path in the Git connection form did not prevent entering an invalid path name beginning with `./`.
-The validation of this field has been updated to catch this invalid , and an error message is displayed if it is entered. (FFM-7448)
+* Updated the field validation for the **YAML path** field in the Git connection form to prevent entering invalid path names beginning with `./`. (FFM-7448)
 
 ```mdx-code-block
   </TabItem>
