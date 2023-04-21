@@ -695,7 +695,7 @@ The following table lists Harness support for metrics platforms (APMs).
 | New Relic                                                                                                                           | Insights                       | Supported via Custom Metrics |
 | [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
 | Google Cloud Operations (GCP)                                                                                                       | Custom metrics from explorer   | No                           |
-| [Prometheus](../continuous-delivery/verify/configure-cv/verify-deployment-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
+| [Prometheus](../continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
 | [Datadog](../continuous-delivery/verify/configure-cv/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
 | [Dynatrace](../continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
 
