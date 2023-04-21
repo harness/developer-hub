@@ -205,24 +205,23 @@ const sidebars = {
             },
           ],
         },
+        // Custom Platform Landing Page
         {
-          /*
-          type: "doc",
-          label: "Harness Platform",
-          id: "platform",
-          */
+          /* Uncomment this block while we have a generated-index page for module docs
           type: "category",
-          label: "Harness Platform",
+          label: "Platform",
           link: {
             type: "generated-index",
             slug: "/platform",
-            /* Uncomment this block while we have a landing page for module docs
+          },
+          */
+         type: "category",
+         label: "Platform",
+         link: {
             type: "doc",
             id: "platform",
-          },         
-           */
-          },
-          customProps: {
+         },
+         customProps: {
             description: "Learn how to manage Harness features that integrate with all modules.",
           },   
           collapsed: true,
