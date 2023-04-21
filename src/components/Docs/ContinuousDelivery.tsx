@@ -17,7 +17,7 @@ export default function CD() {
             <img src={`${baseUrl}img/icon_cd.svg`} />
             <h1>Continuous Delivery & GitOps Documentation</h1>
           </div>
-          <div className={styles.btnContainer}>
+          <div className={styles.btnContainerCD}>
             <Link href="/tutorials/cd-pipelines">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
@@ -38,7 +38,7 @@ export default function CD() {
             </Link>
             <Link href="https://registry.terraform.io/providers/harness/harness/latest/docs">
               <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_documentation.svg`} />
+                <img src={`${baseUrl}img/icon_terraform.png`} />
                 Terraform Provider
               </button>
             </Link>

@@ -24,7 +24,7 @@
         color: #000000;
     }
 }
-.btnContainer {
+.btnContainer, .btnContainerCD {
     display: flex;
     align-items: center;
     align-content: center;
@@ -35,6 +35,9 @@
     a:hover {
         text-decoration: var(--ifm-link-decoration);
     }
+}
+.btnContainerCD {
+    max-width: 410px;
 }
 .link{
     background: transparent;
