@@ -79,7 +79,8 @@ function CardCategory({
     return null;
   }
 
-  const customPropsDesc = item.customProps && item.customProps.description;
+  const customPropsDesc =
+    item.description || (item.customProps && item.customProps.description);
   return (
     <CardLayout
       href={href}
@@ -106,7 +107,9 @@ function CardLink({ item }: { item: PropSidebarItemLink }): JSX.Element {
       href={item.href}
       icon={icon}
       title={item.label}
-      description={doc?.description}
+      description={
+        doc?.description || item.description || item?.customProps?.description
+      }
     />
   );
 }
