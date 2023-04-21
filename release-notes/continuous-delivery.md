@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
   
-  Since manifests can support 2 schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
+  Since manifests can support two schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
   
   Here are the expressions for referencing each version:
   - SHA value of `schemaVersion1`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
@@ -44,11 +44,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - Reference the current Harness release number as part of your manifest.
     - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
   
-  **Important:** Users must update their delegate to version 1.0.79100 to use the expression.
+  **Important:** Users must update their delegate to version 1.0.79100 to use this expression.
 - Deployment freeze supports quarterly recurrence.	(CDS-57792)
   
   You can now configure a deployment freeze with a recurrence of `n` months, where `n` can be between `2` to `11`.
-- Use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts). (CDS-57667, ZD-41758)
+- You can now use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts). (CDS-57667, ZD-41758)
   
   You can now specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
 
@@ -72,7 +72,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   ```
   
   **Important:** This change impacts existing Helm services in Harness. To use this feature, you will need to update the path to your subordinate chart(s) using `charts/`.
-- You can now see what deployment freeze failed a pipeline in the pipeline's execution history. (CDS-53781)
+- You can now see which deployment freeze failed a pipeline in the pipeline's execution history. (CDS-53781)
   
   We have added support to identify the associated freeze window that failed a pipeline execution. You can hover over the status of the pipeline in its execution history and the associated freeze window details are shown.
 
@@ -98,7 +98,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   This functionality is behind a feature flag, `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`.
   
   Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
-- Harness now supports variable expressions in the plain text config files. (CDS-58399)
+- Harness now supports variable expressions in plain text config files. (CDS-58399)
   
   This functionality is behind a feature flag, `CDS_NG_CONFIG_FILE_EXPRESSION`.
   
@@ -133,7 +133,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   The setting is now preserved when switching modeling methods.
 - Template inputs was throwing a 400 error.	(CDS-58726)
   
-  Templates inputs are now refreshed consistently to avoid this error.
+  Template inputs are now refreshed consistently to avoid this error.
 - White spaces and special characters (except for `_` and `$`) were causing errors in the **Artifact** and **Manifest Name** identifiers. (CDS-58678, ZD-42015)
   
   **Important:** white spaces and special characters (except for `_` and `$`) are prevented automatically in **Artifact** and **Manifest Name** identifiers. If you are using **Artifact** and **Manifest Name** identifiers with white spaces and special characters, you will need to update them.
@@ -154,7 +154,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   This is fixed and now Tanzu Application Service deployments using ECR as the artifact source are working as expected.
 - Harness was evaluating commented lines in manifests causing rendering failures for OpenShift Params, Kustomize patches, etc. (CDS-58445)
   
-  Expressions in comments were causing rendering of manifests failures. Harness now can retain their comments and Harness will evaluate the values.yaml as is.
+  Expressions in comments were causing rendering of manifests failures. Harness now can retain their comments and Harness will evaluate the values.yaml as-is.
 - The wrong Command step is being deleted. (CDS-58311)
   
   This is fixed and now the correct Command steps are always deleted.
@@ -163,7 +163,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Minor bug fix with resolving inputs in Fetch Linked Apps step.
 - Read-only Secret Manager was allowed for TerraForm plans. (CDS-57772, ZD-40401)
   
-  Harness stores TerraForm plans in secrets in the secret manager you have set up in your Harness account. Now Harness now won't allow the use of a secret manager for a Terraform plan if the secret manager is read-only.
+  Harness stores TerraForm plans in secrets in the Secret Manager you have set up in your Harness account. Now Harness won't allow the use of a secret manager for a Terraform plan if the secret manager is read-only.
 - Incorrect FQN paths were used in dropdowns for multi service deployments. (CDS-56752, ZD-40553)
   
   When listing values in the pipeline run form when using multi services, the incorrect FQNs were used. This is now fixed the correct FQNs are used.
@@ -171,7 +171,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   Perviously, our infrastructure APIs (create/update) required YAML as input, but the API also accepted some of the fields as part of request body directly (name/identifier/envRef etc.). Harness expected some of the fields to be present in both places (YAML as well as the request body).
   
-  Now Harness accepts everything as part of the YAML, making the YAML sufficient to create an infrastructure. Harness nows read all the required fields from the YAML or, if missing, reads them from the request body.
+  Now Harness accepts everything as part of the YAML, making the YAML sufficient to create an infrastructure. Harness now reads all the required fields from the YAML or, if missing, reads them from the request body.
   
   **Note:** The API will still fail if fields have different values in the YAML and request body.
 - Pipeline links in templates were opening pipeline with unsaved changes. (CDS-55066)
