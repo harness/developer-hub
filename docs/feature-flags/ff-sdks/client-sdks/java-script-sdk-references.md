@@ -95,24 +95,24 @@ Make sure you install the latest version of the SDK, which you can view in [GitH
 To initialize the JavaScript SDK, you need to:
 
 1. Add your Client SDK key to connect to your Harness Environment.
-2. Add a Target that you want to Evaluate against a Feature Flag.
+2. Add a target that you want to Evaluate against a Feature Flag.
 3. (Optional) Configure the SDK.
-4. Complete the initialization with the SDK using the Client SDK Key, Target, and Configuration parameters you set.
+4. Complete the initialization with the SDK using the client SDK Key, target, and Configuration parameters you set.
 
 ### Add your Client SDK Key
 
 To connect to the correct Environment that you set up on the Harness Platform, you need to add the Client SDK Key from that Environment. Input the Client SDK Key into the `FeatureFlagSDKKey` parameter.
 
-### Add a Target
+### Add a target
 
 <details>
-<summary>What is a Target?</summary> 
-Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
+<summary>What is a target?</summary> 
+Targets are used to control which users see which variation of a Feature Flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
+For more information about targets, go to [Targeting users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
-To create a Target, you **must enter an identifier** but you can optionally add a name and additional attributes.
+To create a target, you **must enter an identifier** but you can optionally add a name and additional attributes.
 
 The below shows the data type for each parameter:
 
@@ -126,7 +126,7 @@ interface Target {
 }
 ```
 <details>
-<summary> Regex requirements for Target names and identifiers </summary>
+<summary> Regex requirements for target names and identifiers </summary>
 
 **Identifier** 
 
@@ -166,7 +166,7 @@ interface Options {
 ```
 ### Complete the initialization
 
-Complete the initialization using the FeatureFlagSDKKey, Target, and Options variables:
+Complete the initialization using the FeatureFlagSDKKey, target, and Options variables:
 
 
 ```
@@ -184,21 +184,52 @@ const cf = initialize('00000000-1111-2222-3333-444444444444', {
     }  
   });
 ```
-## Evaluate a Flag
+## Evaluate a flag
 
-Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
+Evaluating a flag is when the SDK processes all flag rules and returns the correct variation of that flag for the target you provide. If a matching flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned.
 
-If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. 
+There are different methods for the different variation types and for each method you need to pass in:
 
-There are different methods for the different Variation types and for each method you need to pass in:
+* Identifier of the flag you want to evaluate
+* The default variation
 
-* Identifier of the Flag you want to evaluate
-* The default Variation
-
-The Flag is evaluated against the Target you pass in when initializing the SDK.
+The flag is evaluated against the target you pass in when initializing the SDK.
 ```
 const value = cf.variation('Dark_Theme', false) // second argument is the default value when variation does not exist
 ```
+
+### (Optional) Provide a set of evaluations
+
+In some cases it might be useful to provide the SDK with a set of evaluations that it can serve instantly. You
+might consider this when you need to:
+
+- **Reduce application startup time** by providing default values or a snapshot of evaluations. For example, if your
+  application is server-side generated, then it might make sense to retrieve evaluations on the server and provide them
+  in the HTML of the page to be injected into the SDK
+- **Provide network redundancy** by allowing your app to detect network connectivity issues when accessing the service and loading evaluations from another source
+
+To provide a set of evaluations:
+
+* Call the `setEvaluations` method at any time after initializing the client. The
+`setEvaluations` method takes an array of `Evaluation` objects as an argument.
+
+  ```typescript
+  client.setEvaluations(evals);
+  ```
+
+  Where `Evaluation` is defined as:
+
+  ```typescript
+  export interface Evaluation {
+    flag: string // Feature flag identifier
+    identifier: string // variation identifier
+    value: boolean | string | number | object | undefined // variation value
+    kind: string // boolean | json | string | int
+    deleted?: boolean // mark that feature flag is deleted
+  }
+  ```
+
+
 ## Listen for events
 
 ### Register the event listener
@@ -245,7 +276,7 @@ cf.off()
 ```
 ## Test your app is connected to Harness
 
-When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
+When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the flag variation displayed is updated with the variation you toggled.
 
 <Sixty />
 
