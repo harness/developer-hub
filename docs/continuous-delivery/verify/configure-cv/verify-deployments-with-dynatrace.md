@@ -1,7 +1,7 @@
 ---
-title: Verify Deployments with Dynatrace
-description: This topic shows you how to verify deployments with Dynatrace.
-sidebar_position: 7
+title: Dynatrace
+description: Verify deployments with Dynatrace.
+sidebar_position: 5
 helpdocs_topic_id: eamwqs2x5a
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -18,6 +18,12 @@ This topic covers how to add and configure Dynatrace as a Health Source for the 
 ## Before You Begin
 
 [Add Dynatrace as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)
+
+
+:::info
+To allow Harness to access Dynatrace metrics through the Dynatrace API, you must label the metrics as [key requests](https://www.dynatrace.com/support/help/platform-modules/applications-and-microservices/services/analysis/monitor-key-requests).
+:::
+
 
 ## Review: CV Setup Options
 
@@ -36,8 +42,8 @@ There are two ways to add the Verify step:
 
 * **When selecting the stage deployment strategy:**  
 The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
-Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-09.png)](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-09.png)
-* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-11.png)](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-11.png)
+Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.![](./static/verify-deployments-with-dynatrace-09.png)
+* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.![](./static/verify-deployments-with-dynatrace-11.png)
 
 ## Step 2: Enter a Name and Timeout
 
@@ -54,13 +60,13 @@ You can use:
 * `s` for seconds
 * `ms` for milliseconds
 
-The maximum is `53w`.Timeouts can be set at the Pipeline level also.
+The maximum is `53w`. Timeouts can be set at the Pipeline level also.
 
 ## Step 3: Select a Continuous Verification Type
 
-In **Continuous Verification Type**, select a type that matches your [deployment strategy](./verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
+In **Continuous Verification Type**, select a type that matches your [deployment strategy](./../verify-deployments-with-the-verify-step.md#continuous-verification-type).
 
-![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-13.png)
+![](./static/verify-deployments-with-dynatrace-13.png)
 
 ## Step 4: Create a Monitored Service
 
@@ -82,14 +88,14 @@ A Health Source is basically a mapping of a Harness Monitored Service to the Ser
 
 In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-14.png)
+![](./static/verify-deployments-with-dynatrace-14.png)
 
 1. In **Select health source type**, select **Dynatrace**.
 2. In **Health Source Name**, enter a name for the Health Source. For example Quickstart.
 3. Under **Connect Health Source**, click **Select Connector**.
 4. In **Connector** settings, you can either choose an existing connector or click **New Connector** to create a new **Connector.**
    
-   ![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-15.png)
+   ![](./static/verify-deployments-with-dynatrace-15.png)
 
 5. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
 6. In **Select Feature**, a Dynatrace feature is selected by default.
@@ -97,7 +103,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
    
    The subsequent steps in **Customize Health Source** depend on the Health Source type you selected.
    
-   ![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-16.png)
+   ![](./static/verify-deployments-with-dynatrace-16.png)
    	
 8. In **Find a Dynatrace service**, enter the name of the desired Dynatrace service.
 9.  In **Select Metric Packs to be monitored,** you can select **Infrastructure** or **Performance** or both.
@@ -114,7 +120,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 	* SLI
 18. In **Risk Category**, select a risk type.
 19. In **Deviation Compared to Baseline**, select one of the options based on the selected risk type.
-    ![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-17.png)
+    ![](./static/verify-deployments-with-dynatrace-17.png)
 20. Click **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.
@@ -129,7 +135,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -137,11 +143,10 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../platform/../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
-See [Advanced Settings](./verify-deployments-with-the-verify-step.md#option-advanced-settings).
 
 ## Step 9: Deploy and Review Results
 
@@ -157,7 +162,7 @@ When the Pipeline is running, click the **Verify** step.
 
 The verification takes a few minutes.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-18.png)
+![](./static/verify-deployments-with-dynatrace-18.png)
 
 The risk level might initially display a number of violations, but often changes over the duration.
 
@@ -169,7 +174,7 @@ The **Summary** section shows the number of metrics that are in violation.
 
 Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-dynatrace-19.png)
+![](./static/verify-deployments-with-dynatrace-19.png)
 
 If you have more than one Health Source, you can use the **Health Source** dropdown to select each one.
 
