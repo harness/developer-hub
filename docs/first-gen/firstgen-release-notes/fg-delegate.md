@@ -10,6 +10,28 @@ To identify the cluster that hosts your account, open Harness FirstGen and go to
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
+## April 21, 2023, Harness version 791xx, Harness Delegate version 79100
+
+Harness FirstGen release 791xx includes the following feature changes and fixes for the Harness Delegate.
+
+### What's new
+
+This release introduces the following new features and enhancements:
+
+The `DELEGATE_IMAGE_TAG` version override is not considered when immutable delegates are enabled. (DEL-6202)
+
+### Early access 
+
+This release does not include any new early access features. 
+
+### Fixed issues
+
+This release includes the following fixes:
+
+- Updated legacy delegate images `kubectl` version to 1.25.8. (DEL-6087)
+
+- Updated the error message for failed task execution to include the delegate host name or ID. (DEL-6187)
+
 ## March 23, 2023, Harness version 78817, Harness Delegate version 78705
 
 Harness FirstGen release 78817 includes the following feature changes and fixes for the Harness Delegate.
