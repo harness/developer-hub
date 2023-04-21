@@ -76,7 +76,7 @@ clusterrole.rbac.authorization.k8s.io/system:openshift:scc:litmus-scc added: ["l
 ```
 
 :::tip
-To learn more about SCC, go to [SCC documentation](../overview/Security/security-templates/openshift-scc).
+To learn more about SCC, go to [SCC documentation](../../technical-reference/security/security-templates/openshift-scc).
 :::
 
 ### 3. Get the manifest to install chaos infrastructure

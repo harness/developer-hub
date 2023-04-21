@@ -84,4 +84,4 @@ Deleting a Linux infrastructure involves two steps:
 
 
 ## Conclusion
-In this section, you learned how to connect to LCI, perform experiments on it, and delete LCI. Go to [advanced setup](./linux-chas-infrastructure-advanced-management) to learn more about Linux chaos infrastructure.
+In this section, you learned how to connect to LCI, perform experiments on it, and delete LCI. Go to [advanced setup](./linux-chaos-infrastructure-advanced-management) to learn more about Linux chaos infrastructure.
