@@ -2,11 +2,14 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../../LandingPage/TutorialCard";
+} from "@site/src/components/LandingPage/TutorialCard";
+import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
+export const featuredTutorials: CardItem[] = []
+/* Uncomment if you want to show the Featured Tutorials section -->
 // Featured Tutorials
-/* export const featuredTutorials: CardItem[] = [
+export const featuredTutorials: CardItem[] = [
     {
       title: "Get started for free with the fastest CI on the planet",
       module: "ci",
@@ -27,7 +30,8 @@ import {
       time: "9min",
       link: "/tutorials/build-code/build/tfc-notification",
     },
-  ];*/
+  ];
+  */
   
   // Docs
   export const docsCards: CardSections = [
