@@ -97,7 +97,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   This functionality is behind a feature flag, `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`.
   
-  Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's [Harness secret manager](/docs/platform/Secrets/Secrets-Management/1-harness-secret-manager-overview).
+  Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
 - Harness now supports variable expressions in the plain text config files. (CDS-58399)
   
   This functionality is behind a feature flag, `CDS_NG_CONFIG_FILE_EXPRESSION`.
