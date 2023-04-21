@@ -42,8 +42,8 @@ In addition to a default [codebase](#codebases), the following settings are conf
 * [Triggers](/docs/category/triggers)
 * [Variables](/docs/category/variables-and-expressions)
 * [Notifications](/docs/category/notifications-1)
-* [Flow Control: Synchronization barriers](/docs/continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers/)
-* [Policy Sets](/docs/platform/Policy-as-code/harness-governance-overview)
+* [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
+* [Policy Sets](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
 
 :::tip
@@ -62,17 +62,17 @@ A CI stage is a subset of a pipeline that contains one major segment of the CI w
 
 To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **Add Stage** in the Pipeline Studio. The most essential stage for CI pipelines is the **Build** stage. A **Build** stage often includes [steps](#steps) for building, pushing, and testing code, among other steps.
 
-[CI Build stage settings](./build-stage-settings/ci-stage-settings.md) include [codebase configuration](#codebases), [build infrastructure](#build-infrastructure), [shared paths](#shared-paths), and other [advanced settings](#advanced-stage-and-step-settings).
+[CI Build stage settings](./set-up-build-infrastructure/ci-stage-settings.md) include [codebase configuration](#codebases), [build infrastructure](#build-infrastructure), [shared paths](#shared-paths), and other [advanced settings](#advanced-stage-and-step-settings).
 
 :::tip
 
-To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables), [modify build settings at runtime](./build-stage-settings/modify-and-override-build-settings-before-a-build.md), and create [custom stages](/docs/platform/pipelines/add-a-custom-stage/), among other optimization techniques.
+To make pipelines more versatile, you can create [templates](/docs/category/templates), use [stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables), and create [custom stages](/docs/platform/pipelines/add-a-custom-stage/), among other [optimization techniques](./optimize-and-more/optimizing-ci-build-times.md).
 
 :::
 
 ### Codebases
 
-CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you specify the Git account and repository where your code is stored. The codebase declared in the first stage in a pipeline becomes the pipeline's default codebase. You can use this codebase for later stages in the pipeline, or you can use multiple codebases in the same pipeline. For more information, go to [Codebase configuration](/docs/category/codebase-configuration/).
+CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you specify the Git account and repository where your code is stored. The codebase declared in the first stage in a pipeline becomes the pipeline's default codebase. You can use this codebase for later stages in the pipeline, or you can use multiple codebases in the same pipeline. For more information, go to [Configure codebases](/docs/category/configure-codebases/).
 
 Harness uses [code repo connectors](/docs/category/code-repo-connectors) to connect to Git repositories.
 
@@ -82,8 +82,8 @@ All stages have an infrastructure definition, which represents the build infrast
 
 :::tip Tutorials
 
-* [Harness Cloud build infrastructure tutorial](/tutorials/build-code/fastest-ci)
-* [Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm)
+* [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci)
+* [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
 
 :::
 

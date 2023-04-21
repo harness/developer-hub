@@ -10,7 +10,7 @@ Harness STO supports the following scan types for the following Snyk products:
 * Snyk Code  —  `ingestionOnly` 
 * Snyk Container  — `ingestionOnly` 
 
-For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
+For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
 
 ## Before you begin
 
@@ -171,7 +171,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 
 
@@ -201,23 +201,23 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `snyk_api` = URL to the Snyk instance, if you're using an on-prem installation.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-
-### Container Image scan settings
-
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
 
-
-### Repository scan settings
-
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
 <StoLegacyRepo />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 </details>
 

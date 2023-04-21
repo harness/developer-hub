@@ -1,5 +1,5 @@
 ---
-title: Get Started with an SDK
+title: Get started with an SDK
 description: This quickstart shows you how to create a Feature Flag in Harness and use Feature Flags (FF) SDK in your Java application.
 tags: 
    - feature flag
@@ -82,7 +82,7 @@ To create a boolean Flag:
 1. In **Feature Flags**, click **Flag**.
 2. Select the **Boolean** type.
 3. In **About the Flag**, in **Name**, enter a name for your boolean flag and click **Next**.  
-When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/References/entity-identifier-reference).
+When you name a Feature Flag, Harness automatically generates its unique identifier based on the name you give it. You can edit the identifier when you are creating the Flag, but not after it is saved. If you rename the feature flag, the identifier remains the same. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
 
 :::info note
 If you need to make the flag a permanent Flag, select the checkbox **This is a permanent flag**.
@@ -100,7 +100,7 @@ If you need to make the flag a permanent Flag, select the checkbox **This is a 
 5. Click **Save and Close**. The Feature Flag is created. By default, the flag is set to OFF.
 
 :::info note
-Once you have created your flag type, optionally you can [manage targets](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets) and modify the [variations](/docs/feature-flags/ff-using-flags/update-feature-flags/manage-variations), [rules](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags), and [add prerequisites](/docs/feature-flags/ff-using-flags/add-prerequisites-to-feature-flag) of your flag.
+Once you have created your flag type, optionally you can [manage targets](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets) and modify the [variations](/docs/feature-flags/ff-creating-flag/manage-variations), [rules](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags), and [add prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag) of your flag.
 :::
 
 ## Use Harness Feature Flags SDKs with Java applications
@@ -155,7 +155,7 @@ CfClient cfClient = new CfClient(apiKey, Config.builder().build());
 	+ Enter a name that will identify this target.
 	+ Enter a unique identifier for your target. For example, an application, systems, services, machines, resources uniquely identified by an IP address, email ID, user ID, etc.
 
-	+ For more information about Targets, go to [Target Management](/docs/category/manage-feature-flag-targets/).
+	+ For more information about Targets, go to [Target Management](/docs/feature-flags/ff-target-management/add-targets).
 
 
 #### Add a Target
@@ -182,7 +182,7 @@ Evaluate a Target for your Feature Flag. Once you have added the Target, evaluat
 ```
 boolean result = cfClient.boolVariation(<feature_identifier>, target, <default_result>);
 ```
-The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](/docs/platform/References/entity-identifier-reference) and [Create a flag type](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag#create-a-boolean-flag).
+The `<feature_identifier>` is your Feature Flag identifier. When you name a Feature Flag, Harness automatically generates its identifier. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md) and [Create a flag type](/docs/feature-flags/ff-creating-flag/create-a-feature-flag#create-a-boolean-flag).
 
 **Sample code for a boolean Flag**
 

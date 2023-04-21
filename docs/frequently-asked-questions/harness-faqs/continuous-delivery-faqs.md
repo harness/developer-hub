@@ -53,7 +53,7 @@ Notes:
 
 #### How does Harness calculate pricing for CD?
 
-See [Service-based licensing and usage for CD](../../continuous-delivery/onboard-cd/cd-concepts/service-licensing-for-cd.md).
+See [Service-based licensing and usage for CD](../../continuous-delivery/get-started/service-licensing-for-cd.md).
 
 #### My definition of a service differs from the above standard definition. How will pricing work in my case?
 
@@ -129,7 +129,7 @@ Harness does not count an instance/pod if it no longer exists. For example, if t
 
 Harness supports all deployment strategies, such as blue/green, rolling, and canary.
 
-See [Deployment concepts and strategies](../../continuous-delivery/cd-deployments-category/deployment-concepts.md).
+See [Deployment concepts and strategies](../../continuous-delivery/manage-deployments/deployment-concepts.md).
 
 #### How do I filter deployments on the Deployments page?
 
@@ -153,7 +153,7 @@ See [Add and manage roles](../../platform/4_Role-Based-Access-Control/9-add-mana
 
 Each stage has a service and target Infrastructure. If your Pipeline has multiple stages, you can deploy the same service to multiple infrastructures.
 
-See [Define your Kubernetes target infrastructure](../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
 #### Can I re-run a failed deployment?
 
@@ -169,13 +169,13 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness takes the artifacts and Kubernetes manifests you provide and deploys them to the target Kubernetes cluster. You can simply deploy Kubernetes objects via manifests and you can provide manifests using remote sources and Helm charts.
 
-See the [Kubernetes deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/cd-advanced/cd-kubernetes-category/kubernetes-deployments-overview.md).
+See the [Kubernetes deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) and [Kubernetes deployments overview](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md).
 
 For detailed instructions on using Kubernetes in Harness, see the [Kubernetes how-tos](/docs/category/kubernetes).
 
 #### What workloads can Harness deploy in a Kubernetes cluster?
 
-See [What can I deploy in Kubernetes?](../../continuous-delivery/cd-technical-reference/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
+See [What can I deploy in Kubernetes?](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/what-can-i-deploy-in-kubernetes.md).
 
 #### Does Harness support everything in Kubernetes?
 
@@ -226,9 +226,9 @@ Harness Kubernetes deployments also support all deployment strategies (canary, b
 
 Harness includes both Kubernetes and Helm deployments, and you can use Helm charts in both. Here's the difference:
 
-* Harness [Kubernetes deployments](../../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
+* Harness [Kubernetes deployments](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 Harness Kubernetes deployments also support all deployment strategies (canary, blue/green, rolling, and so on).
-* For Harness [Native Helm deployments](../../continuous-delivery/onboard-cd/cd-quickstarts/native-helm-quickstart.md), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
+* For Harness [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Rolling deployment strategy only (no canary or blue/green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to the Rolling deployment strategy.
 	+ **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and secrets. Native Helm does not.
 	+ **Rollback:** Harness Kubernetes deployments will roll back to the last successful version. Native Helm will not. If you did two bad Native Helm deployments, the second one will roll back to the first. Harness will roll back to the last successful version.
 
@@ -240,13 +240,13 @@ Harness Kubernetes deployments using Helm charts can involve adding your artifac
 
 In addition to this method, you can also deploy the Helm chart without adding your artifact to Harness. Instead, the Helm chart identifies the artifact. Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
 
-See [Deploy helm charts](../../continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-charts.md).
+See [Deploy helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
 
 #### Can I run Kubernetes jobs?
 
 Yes. In Harness Kubernetes deployments, you define jobs in the Harness Service **Manifests**. Next you add the Apply step to your Harness workflow to execute the job.
 
-See [Run Kubernetes jobs](../../continuous-delivery/cd-execution/kubernetes-executions/run-kubernetes-jobs.md).
+See [Run Kubernetes jobs](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/run-kubernetes-jobs.md).
 
 #### Can I deploy a Kubernetes resources using CRDs?
 
@@ -266,33 +266,33 @@ In some cases, you might have resources that you do not want to deploy as part o
 
 workflows include an **Apply** step that allows you to deploy any resource you have set up in the Service **Manifests** section.
 
-See [Deploy manifests separately using the Apply step](../../continuous-delivery/cd-execution/kubernetes-executions/deploy-manifests-using-apply-step.md).
+See [Deploy manifests separately using the Apply step](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step.md).
 
 #### Can I ignore a manifest during deployment?
 
 You might have manifest files for resources that you do not want to deploy as part of the main deployment.
 
-Instead, you tell Harness to ignore these files and then apply them separately using the Harness [Kubernetes Apply step](../../continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step.md).
+Instead, you tell Harness to ignore these files and then apply them separately using the Harness [Kubernetes Apply step](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step.md).
 
 Or you can simply ignore them until you wish to deploy them as part of the main deployment.
 
-See [Ignore a manifest file during deployment](../../continuous-delivery/cd-advanced/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md).
+See [Ignore a manifest file during deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/ignore-a-manifest-file-during-deployment.md).
 
 #### Can I pull an image from a private registry?
 
-Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](../../platform/7_Connectors/connect-to-an-artifact-repo.md).
+Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
 
-See [Pull an image from a private registry for Kubernetes](../../continuous-delivery/cd-advanced/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
+See [Pull an image from a private registry for Kubernetes](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
 
 #### Can I use remote sources for my manifests?
 
 You can use your Git repo for the configuration files in **Manifests** and Harness uses them at runtime. You have the following options for remote files:
 
-* **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](../../continuous-delivery/cd-advanced/cd-kubernetes-category/define-kubernetes-manifests.md).
-* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md).
-* **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+* **Kubernetes Specs in YAML format** - These files are simply the YAML manifest files stored on a remote Git repo. See [Add Kubernetes manifests](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
+* **Helm Chart from Helm Repository** - Helm charts files stored in standard Helm syntax in YAML on a remote Helm repo. See [Helm chart deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
+* **Kustomization Configuration** — kustomization.yaml files stored on a remote Git repo. See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart.md).
 * **OpenShift Template** — OpenShift params file from a Git repo.
 
 :::note 
@@ -303,21 +303,21 @@ Remote files can also use Go templating.
 
 Yes. you can use [Go templating](https://godoc.org/text/template) and Harness built-in variables in combination in your **Manifests** files.
 
-See [Example Kubernetes manifests using Go templating](../../continuous-delivery/cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+See [Example Kubernetes manifests using Go templating](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
 
 #### Can I provision Kubernetes infrastructure?
 
 Yes, you can use Terraform. You can provision the target Kubernetes infrastructure as part of a pre-deployment setup in your stage. When the Pipeline runs, it builds your Kubernetes infrastructure first, and then deploys to the new infrastructure.
 
-See [Terraform provisioning with Harness](../../continuous-delivery/cd-advanced/terraform-category/terraform-provisioning-with-harness.md).
+See [Terraform provisioning with Harness](../../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
 
 #### What deployment strategies can I use with Kubernetes?
 
 You can use canary, rolling, and blue/green. See:
 
-* [Create a Kubernetes canary deployment](../../continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
-* [Create a Kubernetes rolling deployment](../../continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
-* [Create a Kubernetes blue/green deployment](../../continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
+* [Create a Kubernetes canary deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
+* [Create a Kubernetes rolling deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
+* [Create a Kubernetes blue/green deployment](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
 
 #### Can I select namespaces during deployment?
 
@@ -327,7 +327,7 @@ Yes. You can select namespaces on the fly using Harness variables that are evalu
 
 Yes. Harness supports [Kustomize](https://kustomize.io/) kustomizations in your Kubernetes deployments. You can use overlays, multibase, plugins, sealed secrets, and so on, just as you would in any native kustomization.
 
-See [Kustomize deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md).
+See [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart.md).
 
 #### Can I use Ingress traffic routing?
 
@@ -339,13 +339,13 @@ Yes. When you deploy a Kubernetes workload using Harness, you set the number of 
 
 With the Scale step, you can scale this number of running pods up or down, by count or percentage.
 
-See [Scale Kubernetes pods](../../continuous-delivery/cd-execution/kubernetes-executions/scale-kubernetes-replicas.md).
+See [Scale Kubernetes pods](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas.md).
 
 #### How do I delete Kubernetes resources?
 
 Harness includes a Delegate step to remove any deployed Kubernetes resources.
 
-See [Delete Kubernetes resources](../../continuous-delivery/cd-execution/kubernetes-executions/delete-kubernetes-resources.md).
+See [Delete Kubernetes resources](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources.md).
 
 #### Can I use Helm 3 with Kubernetes?
 
@@ -355,7 +355,7 @@ You can select Helm 3 when you create the service, or upgrade Helm 2 to Helm 3.
 
 ![](./static/continuous-delivery-faqs-04.png)
 
-See [Deploy Helm charts](../../continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-charts.md).
+See [Deploy Helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
 
 #### Can I use Helm Chart Hooks in Kubernetes deployments?
 
@@ -380,15 +380,15 @@ You can use Harness with Terraform in two ways:
 
 You can do both in the same stage if you want.
 
-For an overview of the process see [Terraform provisioning with Harness](../../continuous-delivery/cd-advanced/terraform-category/terraform-provisioning-with-harness.md). 
+For an overview of the process see [Terraform provisioning with Harness](../../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md). 
 
 See the following Terraform how-tos:
 
 * [Provision target deployment infrastructure dynamically with Terraform](../../continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform.md)
-* [Plan Terraform provisioning with the Terraform Plan step](../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step.md)
-* [Provision with the Terraform Apply step](../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md)
-* [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-advanced/terraform-category/remove-provisioned-infra-with-terraform-destroy.md)
-* [Roll back provisioned infrastructure with the Terraform Rollback step](../../continuous-delivery/cd-advanced/terraform-category/rollback-provisioned-infra-with-the-terraform-rollback-step.md)
+* [Plan Terraform provisioning with the Terraform Plan step](../../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step.md)
+* [Provision with the Terraform Apply step](../../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md)
+* [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md)
+* [Roll back provisioned infrastructure with the Terraform Rollback step](../../continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step.md)
 
 #### Do I need to deploy an application to use Terraform?
 
@@ -397,8 +397,8 @@ You do not need to deploy artifacts through Harness services to use Terraform pr
 See the following Terraform how-tos:
 
 * [Provision target deployment infrastructure dynamically with Terraform](../../continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform.md)
-* [Plan Terraform provisioning with the Terraform Plan step](../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step.md)
-* [Provision with the Terraform Apply step](../../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md)
+* [Plan Terraform provisioning with the Terraform Plan step](../../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step.md)
+* [Provision with the Terraform Apply step](../../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md)
 
 #### Are Harness service instances counted with Terraform provisioning?
 
@@ -422,7 +422,7 @@ Next, you add the Terraform Apply step, select **Inherit from Plan** in **Con
 
 Yes. You can add a **Terraform Destroy** step to remove any provisioned infrastructure, just like running the `terraform destroy` command. See [destroy](https://www.terraform.io/docs/commands/destroy.html) from Terraform.
 
-See [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-advanced/terraform-category/remove-provisioned-infra-with-terraform-destroy.md).
+See [Remove provisioned infrastructure with the Terraform Destroy step](../../continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy.md).
 
 ### Harness Configure as Code
 
@@ -510,7 +510,7 @@ You can also propagate and override a service in subsequent stages by selecting 
 
 Harness supports all of the common repos.
 
-See [Connect to an artifact repo](../../platform/7_Connectors/connect-to-an-artifact-repo.md).
+See [Connect to an artifact repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
 
 #### What's a Harness environment?
 
@@ -538,7 +538,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness includes built-in secrets management to store your encrypted secrets, such as access keys, and use them in your Harness account. Harness integrates will all popular secrets managers.
 
-See [Harness secrets management overview](../../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness secrets management overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
 
 ### Harness variables expressions
 
@@ -548,7 +548,7 @@ See [Built-in Harness variables reference](../../platform/12_Variables-and-Expre
 
 Most settings in Harness pipelines allow you to use fixed values, runtime inputs, and expressions.
 
-See [Fixed values, runtime inputs, and expressions](../../platform/20_References/runtime-inputs.md).
+See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
 
 #### Can I reference settings using expressions?
 
@@ -560,7 +560,7 @@ See [Built-in Harness variables reference](../../platform/12_Variables-and-Expre
 
 Yes. You can use runtime Inputs to set placeholders for values that will be provided when you start a pipeline execution.
 
-See [Fixed values, runtime inputs, and expressions](../../platform/20_References/runtime-inputs.md).
+See [Fixed values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
 
 #### Can I evaluate values at run time?
 
@@ -570,5 +570,5 @@ All of these variables represent settings and values in the pipeline before and 
 
 At run time, Harness will replace the variable with the runtime value.
 
-See [Fixed Values, runtime inputs, and expressions](../../platform/20_References/runtime-inputs.md).
+See [Fixed Values, runtime inputs, and expressions](/docs/platform/20_References/runtime-inputs.md).
 

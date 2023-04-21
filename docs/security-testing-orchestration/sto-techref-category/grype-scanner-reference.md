@@ -227,7 +227,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
  
 ## Security step configuration (_deprecated_)
@@ -241,7 +241,7 @@ You can set up a Security step with [Grype](https://github.com/anchore/grype) to
 #### Important Notes
 
 * STO supports Grype scans of containers and repositories.
-* STO supports [orchestrated scans](../use-sto/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](../use-sto/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
+* STO supports [orchestrated scans](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
 
 #### Required Settings
 
@@ -268,26 +268,23 @@ The following settings are also required, depending on the container type:
 	- `container_access_token`: Password/token
 
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
-
-#### Container Image scan settings
-
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
 
-
-<!-- REPOS --------------------------------------------------------------------------- -->
-
-#### Repository scan settings
-
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
 <StoLegacyRepo />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 </details>
 

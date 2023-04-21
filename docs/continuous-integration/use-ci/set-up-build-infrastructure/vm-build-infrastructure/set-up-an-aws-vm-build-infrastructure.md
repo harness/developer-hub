@@ -15,7 +15,7 @@ Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Conta
 
 This topic describes how to set up and use AWS VMs as build infrastructures for running builds and tests in a CI Stage. You will create an Ubuntu VM and install a Delegate on it. This Delegate will create new VMs dynamically in response to CI build requests. You can also configure the Delegate to hibernate AWS Linux and Windows VMs when they aren't needed.
 
-For information on using Kubernetes as a build farm, go to [Set up a Kubernetes cluster build infrastructure](../set-up-a-kubernetes-cluster-build-infrastructure.md).
+For information on using Kubernetes as a build farm, go to [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/2_Delegates/install-delegates/overview.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
@@ -25,9 +25,9 @@ The following diagram illustrates an AWS build farm. The [Harness Delegate](/doc
 
 This topic assumes you're familiar with the following:
 
-* [Building and testing on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm)
+* [Building and testing on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
 * [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
-* [CI Build stage settings](../../build-stage-settings/ci-stage-settings.md)
+* [CI Build stage settings](../ci-stage-settings.md)
 * [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
 * Drone VM Runner
   * [Drone documentation - VM Runner overview](https://docs.drone.io/runner/vm/overview/)

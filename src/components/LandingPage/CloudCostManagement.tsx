@@ -16,7 +16,7 @@ export default function CCM() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Optimize Cloud Costs</h3>
+        <h3>Achieve cost transparency and cut costs</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>

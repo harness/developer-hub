@@ -11,12 +11,13 @@ import CustomImage from './build-custom-delegate-images-with-third-party-tools.m
 
 ## Install the default delegate
 
-The inline [tutorial](/tutorials/platform/install-delegate) below shows you how to install the default delegate for your Harness account. It can be either a Kubernetes delegate installed using a Helm chart, Terraform Helm Provider, and Kubernetes manifest or a Docker delegate using the `docker run` command. 
+The inline tutorial below shows you how to install the default delegate for your Harness account. It can be either a Kubernetes delegate installed using a Helm chart, Terraform Helm Provider, and Kubernetes manifest or a Docker delegate using the `docker run` command. You can also review the tutorial directly [here](/tutorials/platform/install-delegate).
 
 <details>
 <summary>Install the default delegate on Kubernetes or Docker</summary>
 <DelegateInstall />
 </details>
+
 
 The default delegate image, denoted by the `yy.mm.xxxxx` image tag, includes a set of pre-installed 3rd-party custom binaries for convenience. You can find the list of these binaries [here](/docs/platform/Delegates/delegate-concepts/delegate-image-types#third-party-tools-included-in-the-delegate-image-type). If you are concerned about the security vulnerabilities that potentially come with these pre-installed binaries, our recommendation is to use the minimal delegate noted below.
 
@@ -26,7 +27,7 @@ The minimal delegate image, denoted by the `yy.mm.xxxxx.minimal` image tag, does
 
 ### Use INIT_SCRIPT
 
-This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image itself. Here is an inline [document](./install-a-delegate-with-3-rd-party-tool-custom-binaries) that shows how to use this option.
+This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image itself. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](./install-a-delegate-with-3-rd-party-tool-custom-binaries).
 
 <details>
 <summary>Use INIT_SCRIPT</summary>
@@ -35,7 +36,7 @@ This option installs the 3rd party custom binaries on a delegate container insta
 
 ### Build a custom image
 
-This option installs the 3rd party custom binaries on a new custom delegate image that uses the Harness minimal delegate image as its base image. Here is an inline [document](./build-custom-delegate-images-with-third-party-tools) that shows how to use this option.
+This option installs the 3rd party custom binaries on a new custom delegate image that uses the Harness minimal delegate image as its base image. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](./build-custom-delegate-images-with-third-party-tools).
 
 <details>
 <summary>Build a custom image</summary>

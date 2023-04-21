@@ -1,5 +1,5 @@
 ---
-title: View AWS Resource Breakdown Dashboard
+title: AWS Resource Breakdown Dashboard
 description: Dashboards are a collection of charts and data tables with filters that you can use to get at the data you're interested in. Dashboards serve as a platform for data modeling and analytics using a com…
 # sidebar_position: 2
 helpdocs_topic_id: aeluxvvheb
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# View AWS Resource Breakdown Dashboard
 
 Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS Resource Breakdown Dashboard** you can:
 

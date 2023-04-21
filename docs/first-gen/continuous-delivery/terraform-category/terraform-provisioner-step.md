@@ -323,7 +323,7 @@ This allows you to specify a different workspace name each time the Workflow is 
 
 You can even set a Harness Trigger where you can set the workspace name used by the Workflow.
 
-This Trigger can then be run in response to different events, such as a Git push. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
+This Trigger can then be run in response to different events, such as a Git push. For more information, see [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows).
 
 When rollbacks occur, Harness will rollback the Terraform state to the previous version of same workspace.
 
@@ -337,7 +337,7 @@ You can even add a Workflow variable for the Delegate Selector and the use an ex
 
 ![](./static/terraform-provisioner-step-23\.png)
 
-For more information, see [Add Workflow Variables](../model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables) and [Passing Variables into Workflows and Pipelines from Triggers](../model-cd-pipeline/expressions/passing-variable-into-workflows.md).
+For more information, see [Add Workflow Variables](../model-cd-pipeline/workflows/workflow-configuration.md#add-workflow-variables) and [Passing Variables into Workflows and Pipelines from Triggers](/docs/first-gen/continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows).
 
 ### Option: Add Environment Variables
 

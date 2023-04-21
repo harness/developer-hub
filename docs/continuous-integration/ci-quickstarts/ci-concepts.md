@@ -47,8 +47,8 @@ When a CI pipeline build finishes successfully, the build infrastructure then se
 
 Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the following tutorials:
 
-* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/build-code/build/kubernetes-build-farm)
-* [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci)
+* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->
@@ -106,6 +106,10 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 For information about CI pipeline components, go to [CI pipeline concepts](./ci-pipeline-basics.md).
 
+## FAQs
+
+For frequently asked questions about Harness CI, other Harness modules, and the Harness Platform, go to [FAQs](/docs/category/faqs).
+
 ## Try Harness CI
 
-Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
+Interested in trying CI for yourself? No need to wait any longer! [Request a demo](https://harness.io/demo) and [get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci).

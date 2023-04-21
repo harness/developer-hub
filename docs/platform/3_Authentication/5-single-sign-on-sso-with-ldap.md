@@ -1,5 +1,5 @@
 ---
-title: Provision Users and Single Sign-On (SSO) with LDAP
+title: Single Sign-On (SSO) with LDAP
 description: This topic explains how to configure Single Sign-On with LDAP in Harness.
 # sidebar_position: 2
 helpdocs_topic_id: 142gh64nux

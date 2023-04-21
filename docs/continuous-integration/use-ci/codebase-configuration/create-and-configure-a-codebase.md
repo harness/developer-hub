@@ -17,17 +17,17 @@ This topic assumes you have an understanding of [Harness CI concepts](../../ci-q
 
 Harness uses code repo connectors to connect to Git providers, such as Bitbucket, GitHub, GitLab, and others. You can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
 
-* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/connect-to-code-repo#add-aws-codecommit-repo)
-* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
+* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#add-aws-codecommit-repo)
+* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
+* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
 * GitHub:
-  * [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector)
-  * [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference)
-  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/git-hub-app-support)
-* GitLab: [GitLab Connector Settings Reference](../../../platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md)
+  * [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
+  * [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Connect to a Git repo](/docs/platform/Connectors/connect-to-code-repo)
-  * [Git connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to a Git repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
+  * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
 
 The CodeCommit, Bitbucket, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git connector can connect with any provider using basic authentication over HTTPS.
 
@@ -68,7 +68,7 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
 
-If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ### Pull Request Clone Strategy
 
@@ -122,6 +122,6 @@ pipeline:
 
 ## See also
 
-* [Runtime Inputs](../../../platform/20_References/runtime-inputs.md)
+* [Runtime Inputs](/docs/platform/20_References/runtime-inputs.md)
 * [Create a Connector using YAML](../../../platform/7_Connectors/create-a-connector-using-yaml.md)
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)

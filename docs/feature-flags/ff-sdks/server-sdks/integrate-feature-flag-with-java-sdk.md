@@ -1,5 +1,5 @@
 ---
-title: Java SDK Reference
+title: Java SDK reference
 description: This topic explains how to integrate your feature flags with Java SDK.
 sidebar_position: 30
 helpdocs_topic_id: i7et9ebkst
@@ -36,8 +36,8 @@ To use this SDK, make sure you:  
 * Install [Maven](https://maven.apache.org/), [Gradle](https://gradle.org/) or an alternative build automation tool for your application
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-java-server-sdk)
 * Create a Java application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-java-server-sdk).
-* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key)
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Install the SDK
 
@@ -91,7 +91,7 @@ String apiKey = System.getProperty("FF_API_KEY", "<default api key>");
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about Targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
+For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 To add a Target, build it and pass in arguments for the following:
 
@@ -151,7 +151,7 @@ You can configure the following features of the SDK through the `baseConfig`:
 | --- | --- | --- | --- |
 | **Name** | **Example** | **Description** | **Default Value** |
 | baseUrl | `HarnessConfig.configUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| eventUrl | `HarnessConfig.eventUrl("https://config.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
+| eventUrl | `HarnessConfig.eventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
 | pollInterval | `BaseConfig.pollIntervalInSeconds(60))` | The interval **in seconds** that we poll for changes when you are not using stream mode. | `60` (seconds) |
 | streamEnabled | `BaseConfig.streamEnabled(false)` | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode. | `true` |
 | analyticsEnabled | `BaseConfig.analyticsEnabled(true)` | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
@@ -182,7 +182,7 @@ To complete the initialization, create an instance of the `cfClient` and pass in
 // Connector Config  
 HarnessConfig connectorConfig = HarnessConfig.builder()  
         .configUrl("https://config.ff.harness.io/api/1.0")  
-        .eventUrl("https://config.ff.harness.io/api/1.0")  
+        .eventUrl("https://events.ff.harness.io/api/1.0")  
         .build();  
   
 // Create Options  
@@ -467,7 +467,7 @@ To use the Relay Proxy, you need to change the following URLs in the HarnessConf
 | --- | --- | --- | --- |
 | **Name** | **Example** | **Description** | **Default Value** |
 | baseUrl | `HarnessConfig.configUrl("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| eventUrl | `HarnessConfig.eventUrl("https://config.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
+| eventUrl | `HarnessConfig.eventUrl("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
 
 For example: 
 

@@ -290,7 +290,7 @@ To clone a codebase in CircleCI, you use a _checkout_ step to check out source c
 
 Harness integrates with many different types of repositories and providers. A connection from Harness to other platforms is called a [connector](/docs/category/connectors). Connectors can connect to source control providers, cloud providers, container registries, and more.
 
-For example, in the [Complete pipeline comparison](#complete-pipeline-comparison), the `connectorRef` in the Harness YAML example references to a Docker connector. [Docker connectors](/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+For example, in the [Complete pipeline comparison](#complete-pipeline-comparison), the `connectorRef` in the Harness YAML example references to a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
 
 :::
 

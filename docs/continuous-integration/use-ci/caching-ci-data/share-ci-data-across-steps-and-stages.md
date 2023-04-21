@@ -14,7 +14,7 @@ This topic describes how you can share CI data across steps and stages.
 
 When a pipeline runs, it creates a temporary volume called a *workspace*. During initialization, the stage clones your codebase to the root of the workspace. Then, the steps in the stage run inside the root. The workspace is a volume that persists for the lifetime of the stage and enables steps in that stage to communicate and share state information. The workspace is destroyed when the stage ends.
 
-The workspace is the current working directory for each step in the stage, and the default shared working directory for any stage is `/harness`. Any step in the stage can create, retrieve, update, and delete files in this folder. If you need to share additional volumes between steps in the stage, you can add **Shared Paths** in the [Build stage settings](../build-stage-settings/ci-stage-settings.md). Paths must begin with a forward slash, such as `/vol`. <!-- resolves as `/vol/harness`? -->
+The workspace is the current working directory for each step in the stage, and the default shared working directory for any stage is `/harness`. Any step in the stage can create, retrieve, update, and delete files in this folder. If you need to share additional volumes between steps in the stage, you can add **Shared Paths** in the [Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md). Paths must begin with a forward slash, such as `/vol`. <!-- resolves as `/vol/harness`? -->
 
 For example, the maven `m2` repo is stored in `/root/.m2` by default, which is outside the `/harness` directory. If your Build stage uses Maven, you can specify `/root/.m2` as a **Shared Path** so that all steps in that stage can access that directory.
 
@@ -28,8 +28,7 @@ You must use one of the following caching methods to share data across stages:
 * [Save and Restore Caches from S3 buckets](saving-cache.md)
 * [Save and Restore Caches from GCS buckets](save-cache-in-gcs.md)
 
-You cannot share access credentials or other [text secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages.
-## Share services
+You cannot share access credentials or other [Text Secrets](/docs/platform/Secrets/add-use-text-secrets) across stages. For complete end-to-end examples, go to the following:
 
 If you need to maintain a long-running service for the duration of a stage, use a [Background step](../../ci-technical-reference/background-step-settings.md).
 
@@ -37,8 +36,8 @@ If you need to maintain a long-running service for the duration of a stage, use 
 
 Remote Docker layer caching can dramatically improve build times by sharing layers across pipelines, stages, and steps. You can set up Docker layer caching in the following steps:
 
-* [Build and Push to Docker Registry](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md)
-* [Build and Push to ECR](../../ci-technical-reference/build-and-push-to-ecr-step-settings.md)
-* [Build and Push to GCR](../../ci-technical-reference/build-and-push-to-gcr-step-settings.md)
+* [Build and Push to Docker Registry](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
+* [Build and Push to ECR](../../ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings.md)
+* [Build and Push to GCR](../../ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings.md)
 
 For more recommendations for optimizing Docker images, go to [Optimize and enhance CI pipelines](../optimize-and-more/optimizing-ci-build-times.md).

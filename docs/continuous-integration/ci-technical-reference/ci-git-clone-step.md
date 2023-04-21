@@ -1,7 +1,7 @@
 ---
 title: Git Clone step settings
 description: The Git Clone step clones a repo to the pipeline workspace.
-sidebar_position: 70
+sidebar_position: 40
 helpdocs_topic_id: nl3ixvew4o
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -30,21 +30,21 @@ A connector for the source control provider hosting the code repo that you want 
 
 The following topics provide more information about creating code repo connectors:
 
-* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/connect-to-code-repo#add-aws-codecommit-repo)
-* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket Connector Settings Reference](../../platform/7_Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference.md)
+* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#add-aws-codecommit-repo)
+* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
+* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
 * GitHub:
-  * [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector)
-  * [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference)
-  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/git-hub-app-support)
-* GitLab: [GitLab Connector Settings Reference](../../platform/7_Connectors/ref-source-repo-provider/git-lab-connector-settings-reference.md)
+  * [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
+  * [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Connect to a Git repo](/docs/platform/Connectors/connect-to-code-repo)
-  * [Git connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to a Git repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
+  * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
 
 ## Repository Name
 
-If the connector's [URL Type](/docs/platform/Connectors/ref-source-repo-provider/git-connector-settings-reference#url-type) is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration.
+If the connector's [URL Type](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference#url-type) is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration.
 
 If the connector's URL Type is **Account**, then you must specify the name of the code repo that you want to clone into the pipeline workspace.
 
@@ -64,7 +64,7 @@ This setting applies only to the repo specified in this **Git Clone** step. It i
 
 An optional target path in the pipeline workspace where you want to clone the repo.
 
-You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../use-ci/build-stage-settings/ci-stage-settings.md) to share data across steps in your **Build** stage.
+You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../use-ci/set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
 
 ## Additional Configuration
 
@@ -82,7 +82,7 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
 
-If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ### Run as User
 
@@ -99,5 +99,5 @@ Set maximum resource limits for the resources used by the container at runtime:
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
-* [Step Skip Condition settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)

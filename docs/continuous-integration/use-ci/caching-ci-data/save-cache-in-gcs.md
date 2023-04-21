@@ -17,27 +17,27 @@ This topic explains how you can use the **Save Cache to GCS** and **Restore Cach
 
 :::caution
 
-You can't share access credentials or other [Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md) across stages.
+You can't share access credentials or other [Text Secrets](/docs/platform/Secrets/add-use-text-secrets) across stages.
 
 :::
 
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
-* [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
+* [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
 * [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
-* [CI Build stage settings](../build-stage-settings/ci-stage-settings.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)
 
 ## Requirements
 
 You need a dedicated GCS bucket for your Harness cache operations. Don't save files to the bucket manually. The Retrieve Cache operation fails if the bucket includes any files that don't have a Harness cache key.
 
-You need a [GCP connector](/docs/platform/connectors/ref-cloud-providers/gcs-connector-settings-reference/) that authenticates through a GCP service account key. To do this:
+You need a [GCP connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/) that authenticates through a GCP service account key. To do this:
 
 1. In GCP, create an IAM service account. Note the email address generated for the IAM service account; you can use this to identify the service account when assigning roles.
-2. Assign the required GCS roles to the service account, as described in the [GCP connector settings reference](/docs/platform/connectors/ref-cloud-providers/gcs-connector-settings-reference/#gcs-and-gcr-role-requirements).
+2. Assign the required GCS roles to the service account, as described in the [GCP connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#gcs-and-gcr-role-requirements).
 3. Generate a JSON-formatted service account key.
-4. In the GCP connector's **Details**, select **Specify credentials here**, and then provide the service account key for authentication. For more information, refer to **Store service account keys as Harness secrets** in the [GCP connector settings reference](/docs/platform/connectors/ref-cloud-providers/gcs-connector-settings-reference/#gcp-connector-settings).
+4. In the GCP connector's **Details**, select **Specify credentials here**, and then provide the service account key for authentication. For more information, refer to **Store service account keys as Harness secrets** in the [GCP connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/#gcp-connector-settings).
 
 ## Configure save and restore cache steps
 
@@ -58,14 +58,14 @@ import TabItem from '@theme/TabItem';
 
 1. Go to the pipeline and stage where you want to add the **Save Cache to GCS** step.
 2. Select **Add Step**, select **Add Step** again, and then select **Save Cache to GCS** in the Step Library.
-3. Configure the [Save Cache to GCS step settings](../../ci-technical-reference/save-cache-to-gcs-step-settings.md).
+3. Configure the [Save Cache to GCS step settings](../../ci-technical-reference/cache-steps/save-cache-to-gcs-step-settings.md).
 
    ![](./static/save-cache-in-gcs-00.png)
 
 4. Select **Apply changes** to save the step.
 5. Go to the stage where you want to add the **Restore Cache from GCS** step.
 6. Select **Add Step**, select **Add Step** again, and then select **Restore Cache from GCS** in the Step Library.
-7. Configure the [Restore Cache from GCS step settings](../../ci-technical-reference/restore-cache-from-s-3-step-settings.md). The bucket and key must correspond with the bucket and key settings in the **Save Cache to GCS** step.
+7. Configure the [Restore Cache from GCS step settings](../../ci-technical-reference/cache-steps/restore-cache-from-gcs-settings.md). The bucket and key must correspond with the bucket and key settings in the **Save Cache to GCS** step.
 8. Select **Apply changes** to save the step, and then select **Save** to save the pipeline.
 
 ```mdx-code-block

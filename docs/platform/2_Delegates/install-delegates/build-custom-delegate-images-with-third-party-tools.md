@@ -127,18 +127,28 @@ Open the delegate manifest file and locate the container `spec` (`spec.container
 
 For purposes of this example, the image was uploaded to `example/org:custom-delegate`.
 
-### Custom images and delegate automatic upgrade
+### Suspend delegate auto-upgrade
 
-If automatic upgrade is enabled and you have a custom image, the following may occur:
+Before you deploy a custom delegate, you must suspend its auto-upgrade functionality. This step prevents your image from being automatically upgraded and the installed binaries removed. 
 
-- If the Kubernetes cluster does not have access to Docker Hub, then the upgrade fails. 
-- If the Kubernetes cluster has access to Docker Hub, then the new published image is deployed. This action causes the custom tooling to be lost. 
-
-You can either set up the upgrader to use your custom delegate tag or disable automatic upgrades.
-
-For details about how to set up the upgrader to use your custom delegate tag or to disable automatic upgrades, go to [Delegate automatic upgrades and expiration policy](/docs/platform/2_Delegates/install-delegates/delegate-upgrades-and-expiration.md)
+To suspend auto-upgrade, in the delegate manifest, locate the `CronJob` resource. In the resource `spec`, set the `suspend` field to `true` as shown in the following YAML:
 
 
+```
+apiVersion: batch/v1beta1  
+kind: CronJob  
+metadata:  
+ labels:  
+   harness.io/name: custom-del-upgrader-job  
+ name: custom-del-upgrader-job  
+ namespace: harness-delegate-ng  
+spec:  
+ suspend: true  
+ schedule: "0 */1 * * *"  
+ concurrencyPolicy: Forbid  
+ startingDeadlineSeconds: 20  
+
+```
 ### Example manifest file
 
 For the complete file, expand the following example.
@@ -399,9 +409,9 @@ You can confirm the successful deployment and registration of the delegate in Ha
 
 You can use your registered delegate to run Kubernetes and Terraform pipelines.
 
-For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](/docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-09.png)
 
-For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md).
+For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
 

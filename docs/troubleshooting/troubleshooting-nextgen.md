@@ -54,8 +54,6 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [Deployment rate limits](#deployment-rate-limits)
   - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
 - [Continuous integration](#continuous-integration)
-  - [Test suites wrongly parsed](#test-suites-wrongly-parsed)
-  - [Test intelligence not working](#test-intelligence-not-working)
 - [Helm](#helm)
   - [Unable to get an update from the chart repository](#unable-to-get-an-update-from-the-chart-repository)
 - [Kubernetes](#kubernetes)
@@ -158,7 +156,7 @@ Do not run multiple delegates on the same host, pod, or container. This will res
 
 Most often, Delegate errors are the result of delegate setup issues. Ensure you are familiar with how the delegate and Harness Manager work together. See [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
-Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](../platform/6_Security/1-harness-secret-manager-overview.md) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
+Another common issue is the SSH key used by the delegate to deploy to a target host is incorrect. This can happen if the SSH key in [Harness secrets management](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview) was set up incorrectly, or if it is not the correct key for the target host, or the target host is not set up to allow SSH connections.
 
 The delegate is monitored locally using its Watcher component. The Watcher component has a watcher.log file that can provide delegate version information for troubleshooting.
 
@@ -314,7 +312,7 @@ This error occurs when you are testing a Harness AWS connector and the credentia
 
 The DescribeRegions action is required for all AWS connectors. Harness tests the connection using an API call for the DescribeRegions action.
 
-This is described in [Add an AWS connector](../platform/7_Connectors/add-aws-connector.md).
+This is described in [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector).
 
 Ensure that one of the IAM roles assigned to the user account used for AWS connector credentials contains the DescribeRegions action.
 
@@ -440,32 +438,8 @@ If Harness does not show standard error, then many errors will not be captured, 
 
 ### Continuous integration
 
-The following issues can occur when using Harness CI.
+For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshoot/troubleshooting-ci.md).
 
-#### Test suites wrongly parsed
-
-The parsed Test report in the Test tab comes strictly from the JUnit reports provided. It is important to adhere to the standard format to improve test suite parsing.
-
-Refer to the standard [JUnit format](https://llg.cubic.org/docs/junit/).
-
-#### Test intelligence not working
-
-Test Intelligence may not work even after you select the **Run only selected tests** option. One of the reasons could be that you're using **Maven** and your `**pom.xml**` contains `argLine`. In such a case, the Java Agent must be updated as follows:
-
-Before:
-
-
-```
-<argLine> something  
-</argLine>
-```
-After:
-
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
 ### Helm
 
 The following troubleshooting information should help you diagnose common Helm problems.
@@ -488,7 +462,7 @@ The following problems can occur when developing and deploying to Kubernetes.
 
 Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback.
 
-See [Kubernetes releases and versioning](../continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-releases-and-versioning.md).
+See [Kubernetes releases and versioning](../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-releases-and-versioning.md).
 
 If the ConfigMap is edited using kubectl or another tool between deployments future deployments often fail.
 
@@ -500,7 +474,7 @@ The release name you enter in the infrastructure definition **Release name** is 
 
 **Do not create a ConfigMap that uses the same name as the release name.** Your ConfigMap will override the Harness internal ConfigMap and cause a NullPointerException.
 
-See [Define your kubernetes target infrastructure](../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
 
 #### The server doesn't have a resource type "deployments"
 
@@ -508,8 +482,8 @@ When you attempt to connect to the Kubernetes cluster via **GCP**, the Kubernete
 
 You can handle cluster authentication in Google Kubernetes Engine by using Cloud IAM as the identity provider. However, legacy username-and-password-based authentication is enabled by default in Google Kubernetes Engine. For enhanced authentication security, you should ensure that you have disabled Basic Authentication by setting an empty username and password for the MasterAuth configuration. In the same configuration, you can also disable the client certificate which ensures that you have one less key to think about when locking down access to your cluster.
 
-* If Basic authentication is inadequate for your security requirements, use the [Kubernetes cluster connector](../platform/7_Connectors/add-a-kubernetes-cluster-connector.md).
-* While it can be easier to use the [Kubernetes cluster connector](../platform/7_Connectors/add-a-kubernetes-cluster-connector.md) for Kubernetes cluster deployments, to use a Kubernetes cluster on Google GKE, Harness requires a combination of basic authentication and/or client certificate to be enabled on the cluster:
+* If Basic authentication is inadequate for your security requirements, use the [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+* While it can be easier to use the [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector) for Kubernetes cluster deployments, to use a Kubernetes cluster on Google GKE, Harness requires a combination of basic authentication and/or client certificate to be enabled on the cluster:
 
 ![](./static/troubleshooting-nextgen-02.png)
 
@@ -585,11 +559,11 @@ spec:
 ```
 ### Terraform
 
-The following are resolutions to common configuration problems when [Terraform provisioning with Harness](../continuous-delivery/cd-advanced/terraform-category/terraform-provisioning-with-harness.md).
+The following are resolutions to common configuration problems when [Terraform provisioning with Harness](../continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
 
 #### Provisioned resources already exist (Terraform state file locked)
 
-When a [Terraform Apply](../continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step.md) step fails because of a timeout, subsequent deployments might see following error message:
+When a [Terraform Apply](../continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step.md) step fails because of a timeout, subsequent deployments might see following error message:
 
 
 ```
@@ -633,7 +607,7 @@ If the Harness delegate(s) cannot authenticate with a secret manager, you might 
 Was not able to login Vault using the AppRole auth method.   
 Please check your credentials and try again
 ```
-For most authentication issues, try to connect to the [Harness Secrets Manager](../platform/6_Security/1-harness-secret-manager-overview.md) from the host running your Harness delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
+For most authentication issues, try to connect to the [Harness Secrets Manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview) from the host running your Harness delegate(s). This is done simply by using a cURL command and the same login credentials you provided when you set up the Harness Secrets Manager.
 
 For example, here is a cURL command for HashiCorp Vault:
 
@@ -663,7 +637,7 @@ For more information about SAML SSO configuration with Azure, see [Single sign-o
 
 ### Shell scripts
 
-This section covers common problems experienced when using a [Shell script](../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step.
+This section covers common problems experienced when using a [Shell script](../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step.
 
 #### FileNotFoundExeption inside shell script execution task
 
@@ -675,7 +649,7 @@ If you publish output variables in your Shell Script step, structure your script
 
 ### Harness policy engine
 
-The following errors might occur during the set up or use of [Harness policy engine](../platform/14_Policy-as-code/harness-governance-overview.md).
+The following errors might occur during the set up or use of [Harness policy engine](/docs/platform/Governance/Policy-as-code/harness-governance-overview).
 
 #### Policy evaluation failed
 

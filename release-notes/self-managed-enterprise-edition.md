@@ -1,17 +1,17 @@
 ---
-title: Self-Managed Enterprise Edition
+title: Self-Managed Enterprise Edition release notes
+sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
 date: 2023-02-06T10:00
 sidebar_position: 11
 ---
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). 
 
-Harness Self-Managed Enterprise Edition is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
-
-:::note
-The release notes below are only for Self-Managed Enterprise Edition. NextGen SaaS release notes are available [here](/release-notes/whats-new) and FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
-:::
-
-## March 14, 2023, version 78426
+## Latest - March 14, 2023, version 78426
 
 This release includes the following Harness module and component versions.
 
@@ -27,9 +27,14 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.339.19 |
 | LE NG | 67500 |
 
-### New features and enhancements
+```mdx-code-block
+<Tabs>
+  <TabItem value="What's new">
+```
 
-- The **kotsadmin minor version** is upgraded from 1.88.0 to 1.95.0. (SMP-835)
+### What's new
+
+- The kotsadmin minor version is upgraded from 1.88.0 to 1.95.0. (SMP-835)
 
    To upgrade kots to 1.95.0, run:  
 
@@ -49,7 +54,7 @@ This release includes the following Harness module and component versions.
        
        kubectl kots version
 
-- The **mongoDB minor version** is upgraded from 4.2 to 4.4. (SMP-837)
+- The mongoDB minor version is upgraded from 4.2 to 4.4. (SMP-837)
 
   To upgrade to 4.4, do the following.
 
@@ -113,7 +118,7 @@ This release includes the following Harness module and component versions.
   - Organization Viewer - All Organization Level Resources: This was a role-assignment within the organization scope and has been removed for all the users.
   - Project Viewer - All Project Level Resources: This was a role-assignment within the project scope and has been removed for all the users.
   
-  For more information, go to [Default User Group](/docs/platform/role-based-access-control/harness-default-user-groups/). (PL-30916)
+  For more information, go to [Default User Group](/docs/platform/User-Management/harness-default-user-groups). (PL-30916)
 
 - In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details as per the schema. (PL-30862)
 
@@ -183,6 +188,11 @@ This release includes the following Harness module and component versions.
 - The **Referenced by** tab in the Connector UI now shows the environment name.	(CDS-45347)	
 
    ![](static/cds-45347.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
 
 ### Fixed issues
 
@@ -376,7 +386,7 @@ This release includes the following Harness module and component versions.
   
   The templates REST GET call was throwing a 400 Bad Request with error code `INVALID_REQUEST`. We have updated this error code to `RESOURCE_NOT_FOUND_EXCEPTION`. This is in line with best practices.
 
-- Added an **Anonymous** credential option in [OCI Helm Registry connector](https://developer.harness.io/docs/platform/connectors/connect-to-an-artifact-repo/). (CDS-50173, ZD-38625)
+- Added an **Anonymous** credential option in [OCI Helm Registry connector](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo/). (CDS-50173, ZD-38625)
   
   The OCI Helm Registry connector supported anonymous credentials but there was no UI option. This issue has been resolved. The OCI Helm Registry now has an **Anonymous** option. This enables you to connect to public OCI registries from Azure, AWS, JFrog, etc., and deploy Helm charts from these registries.
 
@@ -583,8 +593,17 @@ This release includes the following Harness module and component versions.
 
 - The cost details API was returning only the AWS account ID without the account name. Now, the API returns both account name and ID. (CCM-10573, ZD-38510)
 
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
-## February 9, 2023, version 78109
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### February 9, 2023, version 78109
 
 This release includes the following Harness module and component versions.
 
@@ -601,7 +620,7 @@ This release includes the following Harness module and component versions.
 | LE NG | 67300 |
 
 
-### New features and enhancements
+##### What's new
 
 This release introduces the following features and enhancements.
 
@@ -609,7 +628,7 @@ This release introduces the following features and enhancements.
   
   While adding a node pool name, Harness CCM looked only for the exact match. Now, CCM has introduced support to check if the node label key contains the string node-pool-name. CCM falls back to _contains_ if an exact match is not found. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations#prerequisites) for more information.
 
-- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
+- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/get-started/services-and-environments-overview). (CDS-39989)
 
   You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
 
@@ -641,7 +660,7 @@ This release introduces the following features and enhancements.
 
 - ECS Run Task supports configuration of task definition using ARN. This allows for the creation of definitions for AWS ECS tasks using ARN or task definition in JSON/YAML. (CDS-47984)
 
-- The [Deployment Templates](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
+- The [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
 
   Earlier, only the Utilities steps were supported. Now you can add any CD step.
 
@@ -705,7 +724,7 @@ This release introduces the following features and enhancements.
 
   The PagerDuty Service dropdown list, which displayed up to 25 services, can now display up to 100 services.
 
-### Issues fixed in this release
+##### Fixed issues
 
 This release includes the following fixed issues.
 
@@ -918,7 +937,7 @@ This release includes the following fixed issues.
 
 - Unable to select a Primary Artifact in the pipeline input form. (CDS-48065)
   
-  Multiple Artifact Source is only available with [service V2](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). With this fix, the UI only allows the multiple artifact option with service V2. As this UI check was not present earlier, some users had multiple artifact sources with service V1. Users with existing configurations must fix this.
+  Multiple Artifact Source is only available with [service V2](/docs/continuous-delivery/get-started/services-and-environments-overview). With this fix, the UI only allows the multiple artifact option with service V2. As this UI check was not present earlier, some users had multiple artifact sources with service V1. Users with existing configurations must fix this.
   
 - Google Artifact Registry Artifacts: Better error message when the connector does not have access to a project. (CDS-48102)
 
@@ -942,7 +961,7 @@ This release includes the following fixed issues.
   
 - Terraform Apply **Delegate Selector** selection does not retain its value. (CDS-48375)
   
-  Users can see existing [delegate selectors](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors/) in the step's **Advanced** section in case of [Terraform Apply](/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-apply-step) and [Terraform Rollback](/docs/continuous-delivery/cd-advanced/terraform-category/rollback-provisioned-infra-with-the-terraform-rollback-step).
+  Users can see existing [delegate selectors](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/select-delegates-for-specific-tasks-with-selectors/) in the step's **Advanced** section in case of [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step) and [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step).
 
 - Improve error messaging in case of Terraform plugin error. (CDS-48414)
 
@@ -950,7 +969,7 @@ This release includes the following fixed issues.
 
 - Template always shows an unsaved changes message even after repeated save attempts. (CDS-48422)
   
-  Now you can save a [stage template](https://developer.harness.io/docs/platform/templates/add-a-stage-template/) with service and environments as runtime inputs and can eventually update them to [multi-services and multi-environments](/docs/continuous-delivery/cd-deployments-category/multiserv-multienv) as well.
+  Now you can save a [stage template](https://developer.harness.io/docs/platform/templates/add-a-stage-template/) with service and environments as runtime inputs and can eventually update them to [multi-services and multi-environments](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv) as well.
 
   ![stage template](static/ab0ebd2fe7e4f06d25a19ad1e62969c9a7ff6fafcf2ab753e732b155a0b7b6ce.png)  
 
@@ -974,7 +993,7 @@ This release includes the following fixed issues.
 
   ![remote template](static/746afe2da521f0b80cae4fd566e7f251ea2caffedd3244216728d6e5259e838d.png)  
 
-- The [OpenShift](/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/using-open-shift-with-harness-kubernetes) template path on the runtime screen is populated as a string instead of a list. (CDS-49256)
+- The [OpenShift](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/using-open-shift-with-harness-kubernetes) template path on the runtime screen is populated as a string instead of a list. (CDS-49256)
 
   The text was updated to list component so that the path is stored in the form of an array.
 
@@ -1053,10 +1072,16 @@ This release includes the following fixed issues.
 
   Changing the signature of the authorization header to Authorization: Bearer `<token>` has fixed this issue.
 
+</details>
 
-## December 21, 2022, version 77622
 
-### New features and enhancements
+<details>
+<summary>2022 releases</summary>
+
+
+#### December 21, 2022, version 77622
+
+##### What's new
 
 This release introduces the following features and enhancements.
 
@@ -1094,7 +1119,7 @@ This release introduces the following features and enhancements.
 |           | -   Under the Fail-Fast Thresholds settings, only the Greater than option is available for the Percentage Deviation criteria. The Less than option is removed.
 
 
-### Issues fixed in this release
+##### Fixed issues
 
 This release introduces the following fixes.
 
@@ -1191,9 +1216,9 @@ This release introduces the following fixes.
 | PIE-6155, ZD-36720 | **Service V2 does not resolve the infrastructure definition parameters passed from the triggers**. When a trigger invokes a pipeline, the YAML definition of the trigger and the corresponding pipeline with runtime inputs are merged. In YAML files with a single node element, the infrastructure definition is not processed on the triggers and is not passed as a runtime value. This has now been fixed. The YAML processing on triggers now takes care of processing the single node elements and propagates the value to the respective pipeline. |
 | PIE-6264 | **Clicking Run in pipeline studio navigates to the input sets section in Run Pipeline window. This happens even when you have no runtime inputs for a Pipeline**. This has now been fixed. If a pipeline does not need any runtime inputs, clicking on Run starts the pipeline execution. |
 
-## October 31, 2022, version 77117
+#### October 31, 2022, version 77117
 
-### New features and enhancements
+##### What's new
 
 This release introduces the following features and enhancements.
 
@@ -1223,7 +1248,7 @@ This release introduces the following features and enhancements.
 
 - Feature flag `NG_TEMPLATE_GITX_ACCOUNT_ORG` was removed to decrease complexity. This means that the functionality used to create templates on `gitx` primarily depends on the `NG_TEMPLATE_GITX` feature flag. (PL-28573)
 
-### Fixed issues
+##### Fixed issues
 
 This release introduces the following fixes.
 
@@ -1353,9 +1378,9 @@ This release introduces the following fixes.
 
 - Add a check to ensure that if `authMechanism=UsernamePassword`,that takes precedence on FF `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES=ON`. (PL-28739)
 
-## October 7, 2022, version 76918
+#### October 7, 2022, version 76918
 
-### New features and enhancements
+##### What's new
 
 This release introduces the following features and enhancements.
 
@@ -1433,7 +1458,7 @@ At Organization scope, Organization Viewer - All Organization Resources.
 
 At Project Scope, Project Viewer - All Project Resources.
 
-### Fixed issues
+##### Fixed issues
 
 This release introduces the following fixes.
 
@@ -1775,9 +1800,9 @@ PL-27952
 
 Changed the handling of soft-deleted vaults; they are no longer subject to renewal.
 
-## September 15, 2022, version 76620
+#### September 15, 2022, version 76620
 
-### New Features and Enhancements
+##### What's new
 
 This release introduces the following features and enhancements.
 
@@ -1831,7 +1856,7 @@ PL-27237
 
 Removed the feature flags CUSTOM_RESOURCEGROUP_SCOPE and INHERITED_USER_GROUP.
 
-### Fixed issues
+##### Fixed issues
 
 CDS-35685
 
@@ -2149,19 +2174,19 @@ PL-27383 Fixed vault connector creation in the presence of namespaces.
 
 PL-27395 Fixed the mongo update method call used to create lastUpdatedTemplate.
 
-## September 6, 2022
+#### September 6, 2022
 
-### What's New
+##### What's New
 
 You can now install and maintain Continuous Delivery, Continuous Integration and Security Testing Orchestration using Helm package manager in a self-managed environment.
 
 For more information, see Install Self-Managed Enterprise Edition Using Helm.
 
-## August 31, 2022, minor release 76324
+#### August 31, 2022, minor release 76324
 
 Delegate version 76324
 
-### New Features and Enhancements
+##### What's new
 
 This release introduces the following features and enhancements.
 
@@ -2197,7 +2222,7 @@ spec:
 
 PL-21667 Accounts list with greater speed during transitions from one to another.
 
-### Fixed issues
+##### Fixed issues
 
 - The RDS inventory dashboards did not reflect the updated DBInstanceClass when RDS instance class was updated. The RDS Inventory dashboard now displays the updated instance-class as expected. A data discrepancy that occurred because of an error in the join condition of the looker query was fixed. (CCM-8484, ZD-33142)
 
@@ -2316,3 +2341,5 @@ PL-21667 Accounts list with greater speed during transitions from one to another
 - The sequence in which services are deleted when project is deleted was incorrect.Now while deleting the project we can see both Monitored service and SLO audits. (SRM-11140)
 
 - The request body for custom log source was not getting serialised properly due to the treatment of numbers in Gson library which we use. By upgrading the version of the library, we now have support to customise this behaviour. Now we have defined how a number will be deserialised. This issue is now resolved. (SRM-11217)
+
+</details>

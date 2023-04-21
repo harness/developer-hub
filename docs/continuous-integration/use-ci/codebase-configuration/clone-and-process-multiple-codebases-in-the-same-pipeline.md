@@ -37,7 +37,7 @@ The following steps explain how to create a pipeline and add a **Build** stage. 
 7. Select **Set Up Stage**.
 8. On the stage's **Infrastructure** tab, [set up the build infrastructure](/docs/category/set-up-build-infrastructure).
 
-For more information about configuring the **Build** stage's, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../build-stage-settings/ci-stage-settings.md).
+For more information about configuring the **Build** stage's, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add a Git Clone step
 
@@ -53,9 +53,9 @@ Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
 
 ## Build an artifact from both code repos
 
-Now that the files from both repos will be cloned into a common workspace, you can add a step, such as a [Build and Push an image to DockerHub step](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings), to the **Build** stage to build an artifact using code from both repos.
+Now that the files from both repos will be cloned into a common workspace, you can add a step to build an artifact using code from both repos, such as a [Build and Push an image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings).
 
-Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings#dockerfile) which assume files are located at the codebase's root directory if not otherwise specified. Depending on the default codebase, you might need to specify a non-root path for build files.
+Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. Depending on the default codebase, you might need to specify a non-root path for build files.
 
 You can also use, for example, a `cp` command in a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) to move cloned files around the workspace before building an artifact.
 
@@ -118,7 +118,7 @@ pipeline:
 
 As an alternative to the **Git Clone** step, you can use scripts in **Run** steps to clone multiple repos into a stage.
 
-You might want to define [stage variables](../build-stage-settings/ci-stage-settings.md#advanced-stage-variables) for the names and URLs of the codebases that you clone into the workspace. These variables are accessible across all steps in the stage.
+You might want to define [stage variables](../set-up-build-infrastructure/ci-stage-settings.md#advanced-stage-variables) for the names and URLs of the codebases that you clone into the workspace. These variables are accessible across all steps in the stage.
 
 Depending on the image you use for the **Run** step, you might need to install Git before you clone any repos. For example, you could use this code in a **Run** step to install git, verify that it's working, and clone the repo with the Dockerfile needed to build an image. This example uses stage variables for the GitHub usenrame and Docker repo.
 

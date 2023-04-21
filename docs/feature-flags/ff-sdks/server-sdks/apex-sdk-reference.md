@@ -1,5 +1,5 @@
 ---
-title: Apex SDK Reference
+title: Apex SDK reference
 description: This topic describes how to use the Harness Feature Flags Apex SDK for your Apex application. For getting started quickly, you can use our sample code from the Apex SDK README. You can also clone and…
 sidebar_position: 10
 helpdocs_topic_id: aoe0y33mut
@@ -35,8 +35,8 @@ To use this SDK, make sure you:  
 * Install [SalesForce SFDX cli](https://developer.salesforce.com/tools/sfdxcli).
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-apex-server-sdk)
 * Create an Apex application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-apex-server-sample).
-* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called harnessappdemodarkmode.
-* [Create an SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key)
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called harnessappdemodarkmode.
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Install the SDK
 
@@ -66,7 +66,7 @@ To connect to the correct Environment that you set up on the Harness Platform, y
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about Targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
+For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 
 To create a Target, pass in arguments for the following:

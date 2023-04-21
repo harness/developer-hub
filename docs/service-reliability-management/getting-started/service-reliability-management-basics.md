@@ -25,7 +25,7 @@ Key capabilities of Harness SRM are:
 
 * [SLO Management](../getting-started/create-first-slo.md)
 * [Change Impact Analysis](../change-impact-analysis/change-impact-analysis.md)
-* [Service Reliability Checks](../../continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step.md)
+* [Service Reliability Checks](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step.md)
 * [SLO Driven Governance](..//slo-driven-deployment-governance.md)
 
 This topic explains the basic concepts of Service Reliability Management (SRM).
@@ -76,7 +76,7 @@ Harness supported Health Sources:
 * Datadog
 * Dynatrace
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../../continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
 ### Change Source
 

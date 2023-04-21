@@ -51,8 +51,8 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
 1. Click **Create a ticket**.
 2. Enter the following details:
    * **Jira connector** — Select the connector if you have created one already. Otherwise, [create a new connector](1-home-recommendations.md#create-a-jira-connector). 
-   * **Jira project** — Select the Jira project where you want to create a ticket. Go to [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md).
-   * **Issue type** — Select a Jira issue type from the list of types in the Jira project you selected. Go to [Create Jira Issues in CD Stages](../../../continuous-delivery/cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md).
+   * **Jira project** — Select the Jira project where you want to create a ticket. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
+   * **Issue type** — Select a Jira issue type from the list of types in the Jira project you selected. Go to [Create Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md).
    * **Ticket summary** — Add a summary of the issue.
    * **Description** — Add a description for the issue.
 3. Click **Create Ticket**. 
@@ -69,7 +69,7 @@ You can use the **Create a ticket** link to raise a JIRA ticket to apply the rec
 2. Optionally, enter a short description and tags.
 3. In the **Details** step, enter the base URL. For example, https://mycompany.atlassian.net. For more information, go to [Configuring the base URL](https://confluence.atlassian.com/adminjiraserver071/configuring-the-base-url-802593107.html).
 4. Enter the email ID used to log in to your Jira account.
-5. Create or select a Harness encrypted test secret for the API key. To create a secret, go to [Add and reference text secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).
+5. Create or select a Harness encrypted test secret for the API key. To create a secret, go to [Add and reference text secrets](/docs/platform/Secrets/add-use-text-secrets).
 6. In the **Delegates Setup** step, select one of the following options: 
    * **Use any available Delegate**: Select this option to let Harness choose a Delegate at runtime.
    When a task is ready to be assigned, the Harness Manager first validates its lists of Delegates to assign the task.

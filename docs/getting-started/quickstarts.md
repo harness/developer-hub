@@ -12,7 +12,7 @@ helpdocs_is_published: true
 
 ## Continuous Integration
 
-If you're new to Harness Continuous Integration (CI), you can learn about the [CI pipeline concepts](../continuous-integration/ci-quickstarts/ci-pipeline-basics.md), [Harness CI concepts](../continuous-integration/ci-quickstarts/ci-concepts.md), and try some of the [CI tutorials](/tutorials/build-code), such as [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
+If you're new to Harness Continuous Integration (CI), you can learn about the [CI pipeline concepts](../continuous-integration/ci-quickstarts/ci-pipeline-basics.md), [Harness CI concepts](../continuous-integration/ci-quickstarts/ci-concepts.md), and try some of the [CI tutorials](/tutorials/ci-pipelines), such as [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci).
 
 If you're also new to the Harness Platform, you can learn about [Harness' key concepts](./learn-harness-key-concepts.md) and [Harness YAML](#harness-yaml).
 
@@ -20,19 +20,19 @@ If you're also new to the Harness Platform, you can learn about [Harness' key co
 
 Select the tutorial for the platform you want to use to deploy.
 
-* [Kubernetes deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md) shows you how to create a CD Pipeline that deploys a publicly available Docker image and manifest to your target cluster.
-* [Helm Chart deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart.md) shows you how to create a CD Pipeline that uses a Helm chart to deploy a publicly available Docker image to your target cluster.
-* [Kustomize deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md) shows you how to create a CD Pipeline that uses a kustomization to deploy multiple variants of a simple public Hello World server.
-* [Azure ACR to AKS deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/azure-cd-quickstart.md) shows you how to create a CD Pipeline that deploys your ACR image to your target AKS cluster.
-* [Azure Web Apps Tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/azure-web-apps-tutorial.md) deploy a Docker image or non-containerized artifact for your Azure Web App. You can deploy to source and target deployment slots, and perform traffic shifting.
-* [Serverless Lambda deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart.md) shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness.
-* [ECS deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial.md) shows you how to deploy a publicly available Docker image to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy.
-* [Custom deployments using Deployment Templates tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md) shows you how to use Deployment Templates for non-native deployments (integrations other than those Harness supports out of the box). Deployment Templates use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
+* [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md) shows you how to create a CD Pipeline that deploys a publicly available Docker image and manifest to your target cluster.
+* [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) shows you how to create a CD Pipeline that uses a Helm chart to deploy a publicly available Docker image to your target cluster.
+* [Kustomize deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart.md) shows you how to create a CD Pipeline that uses a kustomization to deploy multiple variants of a simple public Hello World server.
+* [Azure ACR to AKS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart.md) shows you how to create a CD Pipeline that deploys your ACR image to your target AKS cluster.
+* [Azure Web Apps Tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial.md) deploy a Docker image or non-containerized artifact for your Azure Web App. You can deploy to source and target deployment slots, and perform traffic shifting.
+* [Serverless Lambda deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart.md) shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness.
+* [ECS deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial.md) shows you how to deploy a publicly available Docker image to your Amazon Elastic Container Service (ECS) cluster using a Rolling Deployment strategy.
+* [Custom deployments using Deployment Templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial.md) shows you how to use Deployment Templates for non-native deployments (integrations other than those Harness supports out of the box). Deployment Templates use shell scripts to connect to target platforms, obtain target host information, and execute deployment steps.
 
 
 ## GitOps
 
-* [Harness CD GitOps Quickstart](../continuous-delivery/cd-gitops/harness-cd-git-ops-quickstart.md) shows you how to use Harness native GitOps to deploy services by syncing the Kubernetes manifests in your source repos with your target clusters.
+* [Harness CD GitOps Quickstart](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart.md) shows you how to use Harness native GitOps to deploy services by syncing the Kubernetes manifests in your source repos with your target clusters.
 
 
 ## Feature Flags
@@ -49,7 +49,7 @@ The following quickstart guides are available for Feature Flags:
 
 ## Harness CD Community Edition
 
-* [Harness Community Edition deployment tutorial](../continuous-delivery/onboard-cd/cd-quickstarts/harness-community-edition-quickstart.md) shows you how to set up Harness CD Community Edition locally and create a CD Pipeline that deploys a public NGINX image to a local cluster.
+* [Harness Community Edition deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-quickstart.md) shows you how to set up Harness CD Community Edition locally and create a CD Pipeline that deploys a public NGINX image to a local cluster. 
 
 ## Harness YAML
 
@@ -63,6 +63,6 @@ The following quickstart guides are available for Feature Flags:
 
 The following quickstart guides are available for Security Testing Orchestration:
 
-* [STO Tutorial 1: Stand-Alone Pipelines](/tutorials/orchestrate-security-tests/sto-standalone-workflows) shows you how to set up a Pipeline with a scanner, run scans, analyze the results, and learn the key features of STO.
+* [STO Tutorial 1: Stand-Alone Pipelines](/tutorials/security-tests/standalone-pipeline) shows you how to set up a Pipeline with a scanner, run scans, analyze the results, and learn the key features of STO.
 
-* [Tutorial 2: Integrated STO Pipelines](/tutorials/orchestrate-security-tests/sto-integrated-workflows) shows you how to integrate STO functionality into CI and CD Pipelines.
+* [Tutorial 2: Integrated STO Pipelines](/tutorials/security-tests/cicd-integrated-pipeline) shows you how to integrate STO functionality into CI and CD Pipelines.
