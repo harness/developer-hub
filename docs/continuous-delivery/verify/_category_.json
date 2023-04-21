@@ -7,8 +7,5 @@
   "link": {
       "type": "generated-index",
       "title": "Verify deployments"
-  },
-  "customProps": {
-      "helpdocs_category_id": "wg94socpyo"
   }
 }

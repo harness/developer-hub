@@ -24,4 +24,4 @@ Test reports must be in JUnit XML format to appear on the **Tests** tab. Harness
 
 If you use Test Intelligence for your unit tests, the **Tests** tab contains information unique to Test Intelligence. To learn more about the contents of this dashboard with Test Intelligence enabled, go to [Enable Test Intelligence](./set-up-test-intelligence.md).
 
-You can also publish reports to the **Artifacts** tab. For example, you can [Publish an Allure Report to the Artifacts tab](/tutorials/build-code/test/allure-report).
+You can also publish reports to the **Artifacts** tab. For example, you can [Publish an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).

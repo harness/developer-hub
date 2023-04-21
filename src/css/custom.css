@@ -226,6 +226,7 @@
   --ifm-color-primary-lightest: var(--primary-3);
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-announcement-bar-height: 48px !important;
 
   --ifm-link-color: var(--ifm-color-primary);
 

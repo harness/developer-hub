@@ -1,5 +1,5 @@
 ---
-title: Analyze cost for GCP 
+title: GCP 
 description: This topic describes how to analyze costs for GCP using Perspectives.
 # sidebar_position: 2
 helpdocs_topic_id: ryhe4aut1y
@@ -7,6 +7,8 @@ helpdocs_category_id: jkwta6oexk
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Analyze cost for GCP 
 
 Harness Cloud Cost Management (CCM) allows you to view your Google Cloud Platform (GCP) costs, understand what is costing the most, and analyze cost trends. CE displays data for all your GCP products (such as Compute Engine, Cloud Storage, BigQuery, and so on), projects, SKUs, location, and labels and also provides details on:
 

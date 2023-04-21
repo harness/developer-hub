@@ -11,7 +11,7 @@ export default function SRM() {
   return (
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Manage Service Reliability</h3>
+        <h3>Monitor SLOs, track error budget burndown, identify change impact</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>

@@ -17,7 +17,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
+    link: "/tutorials/cloud-costs/kubernetes",
   },
 ];
 
@@ -35,6 +35,6 @@ export const CCMList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
+    link: "/tutorials/cloud-costs/kubernetes",
   },
 ];

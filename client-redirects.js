@@ -5,22 +5,25 @@ module.exports = {
       from: "/release-notes",
       to: "/release-notes/whats-new",
     },
-    {
-      from: "/docs",
-      to: "/docs/category/documentation",
-    },
+    // {
+    //   from: "/docs",
+    //   to: "/docs/category/documentation",
+    // },
     {
       from: "/tutorials/get-started",
       to: "/tutorials",
     },
-
+    {
+      from: "/release-notes/harness-platform",
+      to: "/release-notes/platform",
+    },
 
     //===================================================================================
-    // 
+    //
     //  H O W   T O   A D D   R E D I R E C T S
     //
-    //  - Use the form in the example below. 
-    //  - Create a redirect for each target page or folder on DevHub. 
+    //  - Use the form in the example below.
+    //  - Create a redirect for each target page or folder on DevHub.
     //  - Remove the forward-slash characters that comment out the lines of the example object.
     //  - Note the use of commas.
     //
@@ -28,9 +31,413 @@ module.exports = {
     //  {
     //    from: "/docs/platform/delegates/delegate-guide/automate-delegate-installation",
     //    to: "/docs/platform/delegates/installation",
-    //  },    
+    //  },
     //===================================================================================
 
+
+    // Created by Sudheendra Katte to fix cv re-directs April 21st, 2023
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-cloudwatch",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-datadog",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-elastic-search",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-splunk",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-sumologic",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-cloudwatch",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-cloudwatch",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-datadog",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-elastic-search",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-elastic-search",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-splunk",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-sumologic",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-sumologic",
+    },
+
+    // Created by Sudheendra Katte to fix error tracking re-directs April 20th, 2023
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
+    },
+
+
+    // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
+    {
+      from: "/docs/platform/Authentication/provision-users-with-okta-scim",
+      to: "/docs/platform/User-Management/provision-users-with-okta-scim",
+    },
+    {
+      from: "/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim",
+      to: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+    },
+    {
+      from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
+      to: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/add-users",
+      to: "/docs/platform/User-Management/add-users",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/add-user-groups",
+      to: "/docs/platform/User-Management/add-user-groups",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/harness-default-user-groups",
+      to: "/docs/platform/User-Management/harness-default-user-groups",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-service-account",
+      to: "/docs/platform/User-Management/add-and-manage-service-account",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys",
+      to: "/docs/platform/User-Management/add-and-manage-api-keys",
+    },
+    {
+      from: "/docs/platform/Security/add-use-text-secrets",
+      to: "/docs/platform/Secrets/add-use-text-secrets",
+    },
+    {
+      from: "/docs/platform/Security/add-file-secrets",
+      to: "/docs/platform/Secrets/add-file-secrets",
+    },
+    {
+      from: "/docs/platform/Security/add-use-ssh-secrets",
+      to: "/docs/platform/Secrets/add-use-ssh-secrets",
+    },
+    {
+      from: "/docs/platform/Security/harness-secret-manager-overview",
+      to: "/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview",
+    },
+    {
+      from: "/docs/platform/Security/add-secrets-manager",
+      to: "/docs/platform/Secrets/Secrets-Management/add-secrets-manager",
+    },
+    {
+      from: "/docs/platform/Security/add-an-aws-kms-secrets-manager",
+      to: "/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager",
+    },
+    {
+      from: "/docs/platform/Security/add-an-aws-secret-manager",
+      to: "/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager",
+    },
+    {
+      from: "/docs/platform/Security/azure-key-vault",
+      to: "/docs/platform/Secrets/Secrets-Management/azure-key-vault",
+    },
+    {
+      from: "/docs/platform/Security/custom-secret-manager",
+      to: "/docs/platform/Secrets/Secrets-Management/custom-secret-manager",
+    },
+    {
+      from: "/docs/platform/Security/add-google-kms-secrets-manager",
+      to: "/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager",
+    },
+    {
+      from: "/docs/platform/Security/add-a-google-cloud-secret-manager",
+      to: "/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager",
+    },
+    {
+      from: "/docs/platform/Security/add-hashicorp-vault",
+      to: "/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault",
+    },
+    {
+      from: "/docs/platform/Security/disable-harness-secret-manager",
+      to: "/docs/platform/Secrets/Secrets-Management/disable-harness-secret-manager",
+    },
+    {
+      from: "/docs/platform/Security/reference-existing-secret-manager-secrets",
+      to: "/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets",
+    },
+    {
+      from: "/docs/platform/Security/ref-security/secrets-and-log-sanitization",
+      to: "/docs/platform/Secrets/Secrets-Management/secrets-and-log-sanitization",
+    },
+    {
+      from: "/docs/platform/Connectors/add-aws-connector",
+      to: "/docs/platform/Connectors/Cloud-providers/add-aws-connector",
+    },
+    {
+      from: "/docs/platform/Connectors/add-a-microsoft-azure-connector",
+      to: "/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-google-cloud-platform-gcp",
+      to: "/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp",
+    },
+    {
+      from: "/docs/platform/Connectors/add-a-kubernetes-cluster-connector",
+      to: "/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-a-cloud-provider",
+      to: "/docs/platform/Connectors/Cloud-providers/connect-to-a-cloud-provider",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference",
+      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-cloud-providers/aws-connector-settings-reference",
+      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-cloud-providers/docker-registry-connector-settings-reference",
+      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-cloud-providers/gcs-connector-settings-reference",
+      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
+      to: "/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-jenkins",
+      to: "/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-an-artifact-repo",
+      to: "/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-harness-container-image-registry-using-docker-connector",
+      to: "/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector",
+    },
+    {
+      from: "/docs/platform/Connectors/using-ibm-registry-to-create-a-docker-connector",
+      to: "/docs/platform/Connectors/Artifact-Repositories/using-ibm-registry-to-create-a-docker-connector",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-code-repo",
+      to: "/docs/platform/Connectors/Code-Repositories/connect-to-code-repo",
+    },
+    {
+      from: "/docs/platform/Connectors/add-a-git-hub-connector",
+      to: "/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-a-azure-repo",
+      to: "/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo",
+    },
+    {
+      from: "/docs/platform/Connectors/git-hub-app-support",
+      to: "/docs/platform/Connectors/Code-Repositories/git-hub-app-support",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-source-repo-provider/bitbucket-connector-settings-reference",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-source-repo-provider/git-connector-settings-reference",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-source-repo-provider/git-lab-connector-settings-reference",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference",
+    },
+    {
+      from: "/docs/platform/Connectors/ref-source-repo-provider/source-code-manager-settings",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/source-code-manager-settings",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-service-now",
+      to: "/docs/platform/Connectors/Ticketing-Systems/connect-to-service-now",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-jira",
+      to: "/docs/platform/Connectors/Ticketing-Systems/connect-to-jira",
+    },
+    {
+      from: "/docs/platform/Connectors/connect-to-monitoring-and-logging-systems",
+      to: "/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems",
+    },
+    {
+      from: "/docs/platform/Connectors/create-a-connector-using-yaml",
+      to: "/docs/platform/Connectors/create-a-connector-using-yaml",
+    },
+    {
+      from: "/docs/platform/Policy-as-code/harness-governance-overview",
+      to: "/docs/platform/Governance/Policy-as-code/harness-governance-overview",
+    },
+    {
+      from: "/docs/platform/Policy-as-code/add-a-governance-policy-step-to-a-connector",
+      to: "/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-connector",
+    },
+    {
+      from: "/docs/platform/Policy-as-code/add-a-governance-policy-step-to-a-pipeline",
+      to: "/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline",
+    },
+    {
+      from: "/docs/platform/Policy-as-code/add-a-policy-engine-step-to-a-secret",
+      to: "/docs/platform/Governance/Policy-as-code/add-a-policy-engine-step-to-a-secret",
+    },
+    {
+      from: "/docs/platform/Policy-as-code/disable-a-policy-set",
+      to: "/docs/platform/Governance/Policy-as-code/disable-a-policy-set",
+    },
+    {
+      from: "/docs/platform/Policy-as-code/harness-governance-quickstart",
+      to: "/docs/platform/Governance/Policy-as-code/harness-governance-quickstart",
+    },
+    {
+      from: "/docs/platform/Policy-as-code/using-harness-policy-engine-for-feature-flags",
+      to: "/docs/platform/Governance/Policy-as-code/using-harness-policy-engine-for-feature-flags",
+    },
+    {
+      from: "/docs/platform/Audit-Trail/audit-trail",
+      to: "/docs/platform/Governance/Audit-Trail/audit-trail",
+    },
+    {
+      from: "/docs/platform/Audit-Trail/audit-streaming",
+      to: "/docs/platform/Governance/Audit-Trail/audit-streaming",
+    },
+    {
+      from: "/docs/platform/APIs/api-quickstart",
+      to: "/docs/platform/Resource-Development/APIs/api-quickstart",
+    },
+    {
+      from: "/docs/platform/APIs/default-settings-for-jwt-token",
+      to: "/docs/platform/Resource-Development/APIs/default-settings-for-jwt-token",
+    },
+    {
+      from: "/docs/platform/APIs/harness-rest-api-reference",
+      to: "/docs/platform/Resource-Development/APIs/harness-rest-api-reference",
+    },
+    {
+      from: "/docs/platform/APIs/jwt-token-auth",
+      to: "/docs/platform/Resource-Development/APIs/jwt-token-auth",
+    },
+    {
+      from: "/docs/platform/Terraform/harness-terraform-provider-overview",
+      to: "/docs/platform/Resource-Development/Terraform/harness-terraform-provider-overview",
+    },
+    {
+      from: "/docs/platform/Terraform/harness-terraform-provider",
+      to: "/docs/platform/Resource-Development/Terraform/harness-terraform-provider",
+    },
+    {
+      from: "/docs/platform/Terraform/automate-harness-onboarding",
+      to: "/docs/platform/Resource-Development/Terraform/automate-harness-onboarding",
+    },
+    {
+      from: "/docs/platform/Terraform/advanced-terraform-onboarding",
+      to: "/docs/platform/Resource-Development/Terraform/advanced-terraform-onboarding",
+    },
 
     // Created by ravilach/schoudhury to fix platform re-direct April 17th, 2023
     {
@@ -52,6 +459,86 @@ module.exports = {
       from: "/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags",
       to: "/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags",
     },
+    {
+      from: "/docs/feature-flags/ff-using-flags/add-prerequisites-to-feature-flag",
+      to: "/docs/feature-flags/add-prerequisites-to-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/connect-monitored-service",
+      to: "/docs/feature-flags/connect-monitored-service",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/harness-policy-engine",
+      to: "/docs/feature-flags/harness-policy-engine",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/integrate-feature-flag-with-jira",
+      to: "/docs/feature-flags/integrate-feature-flag-with-jira",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/manage-featureflags-in-git-repos",
+      to: "/docs/feature-flags/manage-featureflags-in-git-repos",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-environment",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-project",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-sdk-key",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-project",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/update-feature-flags/enable-or-disable-a-feature-flag",
+      to: "/docs/feature-flags/ff-creating-flag/enable-or-disable-a-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/update-feature-flags/edit-and-delete-a-feature-flag",
+      to: "/docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/update-feature-flags/manage-variations",
+      to: "/docs/feature-flags/ff-creating-flag/manage-variations",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/update-feature-flags/delete-a-feature-flag",
+      to: "/docs/feature-flags/ff-creating-flag/edit-and-delete-a-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-project",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-feature-flag",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/add-targets",
+      to: "/docs/feature-flags/ff-target-management/add-targets",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/add-target-groups",
+      to: "/docs/feature-flags/ff-target-management/add-target-groups",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags",
+      to: "/docs/feature-flags/ff-target-management/targeting-users-with-flags",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/build-feature-flag-pipeline",
+      to: "/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/default-pipeline-ff",
+      to: "/docs/feature-flags/ff-build-pipeline/default-pipeline-ff",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/relay-proxy",
+      to: "/docs/feature-flags/relay-proxy",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy",
+      to: "/docs/feature-flags/relay-proxy/deploy-relay-proxy",
+    },
 
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
 
@@ -62,6 +549,187 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
       to: "/docs/continuous-delivery/get-started/services-and-environments-overview",
+    },
+
+    // Created by schoudhury on Apr 18, 2023 - All tutorials
+
+    {
+      from: "/tutorials/build-code",
+      to: "/tutorials/ci-pipelines",
+    },
+    {
+      from: "/tutorials/build-code/fastest-ci",
+      to: "/tutorials/ci-pipelines/fastest-ci",
+    },
+    {
+      from: "/tutorials/build-code/build",
+      to: "/tutorials/ci-pipelines/build",
+    },
+    {
+      from: "/tutorials/build-code/build/kubernetes-build-farm",
+      to: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+    },
+    {
+      from: "/tutorials/build-code/build/nodejs",
+      to: "/tutorials/ci-pipelines/build/nodejs",
+    },
+    {
+      from: "/tutorials/build-code/build/java",
+      to: "/tutorials/ci-pipelines/build/java",
+    },
+    {
+      from: "/tutorials/build-code/build/react",
+      to: "/tutorials/ci-pipelines/build/react",
+    },
+    {
+      from: "/tutorials/build-code/build/go",
+      to: "/tutorials/ci-pipelines/build/go",
+    },
+    {
+      from: "/tutorials/build-code/build/rust",
+      to: "/tutorials/ci-pipelines/build/rust",
+    },
+    {
+      from: "/tutorials/build-code/build/signed-image",
+      to: "/tutorials/ci-pipelines/build/signed-image",
+    },
+    {
+      from: "/tutorials/build-code/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/build/tfc-notification",
+    },
+    {
+      from: "/tutorials/build-code/test",
+      to: "/tutorials/ci-pipelines/test",
+    },
+    {
+      from: "/tutorials/build-code/test/localstack",
+      to: "/tutorials/ci-pipelines/test/localstack",
+    },
+    {
+      from: "/tutorials/build-code/test/saucelabs-proxy",
+      to: "/tutorials/ci-pipelines/test/saucelabs-proxy",
+    },
+    {
+      from: "/tutorials/build-code/test/allure-report",
+      to: "/tutorials/ci-pipelines/test/allure-report",
+    },
+    {
+      from: "/tutorials/build-code/test/codecov",
+      to: "/tutorials/ci-pipelines/test/codecov",
+    },
+    {
+      from: "/tutorials/build-code/publish",
+      to: "/tutorials/ci-pipelines/publish",
+    },
+    {
+      from: "/tutorials/build-code/publish/amazon-ecr",
+      to: "/tutorials/ci-pipelines/publish/amazon-ecr",
+    },
+    {
+      from: "/tutorials/build-code/publish/google-gar",
+      to: "/tutorials/ci-pipelines/publish/google-gar",
+    },
+
+    {
+      from: "/tutorials/deploy-services",
+      to: "/tutorials/cd-pipelines",
+    },
+    {
+      from: "/tutorials/deploy-services/kubernetes",
+      to: "/tutorials/cd-pipelines/kubernetes",
+    },
+    {
+      from: "/tutorials/deploy-services/kubernetes/helm-chart",
+      to: "/tutorials/cd-pipelines/kubernetes/helm-chart",
+    },
+    {
+      from: "/tutorials/deploy-services/kubernetes/manifest",
+      to: "/tutorials/cd-pipelines/kubernetes/manifest",
+    },
+    {
+      from: "/tutorials/deploy-services/amazon-ecs",
+      to: "/tutorials/cd-pipelines/amazon-ecs",
+    },
+    {
+      from: "/tutorials/deploy-services/unified-cicd",
+      to: "/tutorials/cd-pipelines/unified-cicd",
+    },
+
+    {
+      from: "/tutorials/manage-feature-flags",
+      to: "/tutorials/feature-flags",
+    },
+    {
+      from: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
+      to: "/tutorials/feature-flags/typescript-react",
+    },
+
+    {
+      from: "/tutorials/manage-cloud-costs",
+      to: "/tutorials/cloud-costs",
+    },
+    {
+      from: "/tutorials/manage-cloud-costs/ccm-first-kubernetes-tutorial",
+      to: "/tutorials/cloud-costs/kubernetes",
+    },
+
+    {
+      from: "/tutorials/manage-service-reliability",
+      to: "/tutorials/service-reliability",
+    },
+    {
+      from: "/tutorials/manage-service-reliability/intro-to-srm",
+      to: "/tutorials/service-reliability/slo-prometheus",
+    },
+    {
+      from: "/tutorials/manage-service-reliability/intro-java-exception-management",
+      to: "/tutorials/service-reliability/java-error-tracking",
+    },
+
+    {
+      from: "/tutorials/orchestrate-security-tests",
+      to: "/tutorials/security-tests",
+    },
+    {
+      from: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
+      to: "/tutorials/security-tests/standalone-pipeline",
+    },
+    {
+      from: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
+      to: "/tutorials/security-tests/cicd-integrated-pipeline",
+    },
+    {
+      from: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
+      to: "/tutorials/security-tests/nodejs-owasp",
+    },
+
+    {
+      from: "/tutorials/run-chaos-experiments",
+      to: "/tutorials/chaos-experiments",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/first-chaos-engineering",
+      to: "/tutorials/chaos-experiments/first-chaos-engineering",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
+      to: "/tutorials/chaos-experiments/chaos-experiment-from-blank-canvas",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+      to: "/tutorials/chaos-experiments/first-chaos-experiment-via-api",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/chaos-experiments-on-gitlab",
+      to: "/tutorials/chaos-experiments/chaos-experiments-on-gitlab",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/chaos-experiments-on-jenkins",
+      to: "/tutorials/chaos-experiments/chaos-experiments-on-jenkins",
+    },
+    {
+      from: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
+      to: "/tutorials/chaos-experiments/integration-with-harness-cd",
     },
 
     // Created by Charanya Jayaraman to fix CCM redirects on Apr 13, 2023
@@ -338,73 +1006,73 @@ module.exports = {
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm-overview",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-event-dashboard",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-arc",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
     },
 
     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
     {
       from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
-      to: "/tutorials/build-code/build/kubernetes-build-farm",
+      to: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
     },
     {
       from: "/tutorials/build-code/ci-node-docker-quickstart",
-      to: "/tutorials/build-code/build/nodejs",
+      to: "/tutorials/ci-pipelines/build/nodejs",
     },
     {
       from: "/tutorials/build-code/ci-localstack-background-step",
-      to: "/tutorials/build-code/test/localstack",
+      to: "/tutorials/ci-pipelines/test/localstack",
     },
     {
       from: "/tutorials/build-code/ci-saucelabs-background-step",
-      to: "/tutorials/build-code/test/saucelabs-proxy",
+      to: "/tutorials/ci-pipelines/test/saucelabs-proxy",
     },
     {
       from: "/tutorials/build-code/ci-java-http-server",
-      to: "/tutorials/build-code/build/java",
+      to: "/tutorials/ci-pipelines/build/java",
     },
     {
       from: "/tutorials/build-code/ci-build-push-to-ecr",
-      to: "/tutorials/build-code/publish/amazon-ecr",
+      to: "/tutorials/ci-pipelines/publish/amazon-ecr",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-go-containers",
-      to: "/tutorials/build-code/build/go",
+      to: "/tutorials/ci-pipelines/build/go",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-container-signing",
-      to: "/tutorials/build-code/build/signed-image",
+      to: "/tutorials/ci-pipelines/build/signed-image",
     },
     {
       from: "/tutorials/build-code/ci-react-quickstart",
-      to: "/tutorials/build-code/build/react",
+      to: "/tutorials/ci-pipelines/build/react",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-push-to-gar",
-      to: "/tutorials/build-code/publish/google-gar",
+      to: "/tutorials/ci-pipelines/publish/google-gar",
     },
     {
       from: "/tutorials/build-code/ci-publish-allure-report",
-      to: "/tutorials/build-code/test/allure-report",
+      to: "/tutorials/ci-pipelines/test/allure-report",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-rust-container",
-      to: "/tutorials/build-code/build/rust",
+      to: "/tutorials/ci-pipelines/build/rust",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-codecov-test",
-      to: "/tutorials/build-code/test/codecov",
+      to: "/tutorials/ci-pipelines/test/codecov",
     },
 
     // CD Tutorial
@@ -412,43 +1080,38 @@ module.exports = {
     // Created by schoudhury on Apr 3, 2023
     {
       from: "/tutorials/deploy-services/microservice-manifest-k8s",
-      to: "/tutorials/deploy-services/kubernetes/manifest",
+      to: "/tutorials/cd-pipelines/kubernetes/manifest",
     },
     {
       from: "/tutorials/deploy-services/helm-k8s",
-      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+      to: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
     {
       from: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
-      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+      to: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
     {
       from: "/tutorials/deploy-services/cdce-helm-k8s",
-      to: "/tutorials/deploy-services/kubernetes/helm-chart",
+      to: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
     {
       from: "/tutorials/deploy-services/docker-ecs",
-      to: "/tutorials/deploy-services/amazon-ecs",
+      to: "/tutorials/cd-pipelines/amazon-ecs",
     },
     {
       from: "/tutorials/deploy-services/docker-ecr-k8s",
-      to: "/tutorials/deploy-services/kubernetes",
+      to: "/tutorials/cd-pipelines/kubernetes",
     },
     {
       from: "/tutorials/deploy-services/harness-cicd-tutorial",
-      to: "/tutorials/deploy-services/unified-cicd",
+      to: "/tutorials/cd-pipelines/unified-cicd",
     },
-
-
-    // Platform Tutorial
 
     // Created by schoudhury on Feb 21, 2023
     {
       from: "/tutorials/platform/provision-azure-infrastructure",
       to: "/tutorials/platform/install-delegate",
     },
-
-    // Delegate Docs
 
     // Created by schoudhury on Mar 27, 2023 - Delegate concepts
     {
@@ -549,7 +1212,6 @@ module.exports = {
       to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
     },
 
-
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
     {
       from: "/docs/platform/Delegates/delegate-guide/build-custom-delegate-images-with-third-party-tools",
@@ -586,21 +1248,17 @@ module.exports = {
       to: "/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools",
     },
 
-
-
     // Created by kat-enos for PR-738 on Feb 21, 2023
     {
       from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes",
       to: "/docs/platform/Delegates/install-delegates/overview",
     },
 
-
     // Created by kat-enos for PR-738 on Feb 21, 2023
     {
       from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm",
       to: "/docs/platform/Delegates/install-delegates/overview",
     },
-
 
     // Created by kat-enos for PR-2421 on Jan 13, 2023
     {
@@ -679,7 +1337,6 @@ module.exports = {
       from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
       to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
     },
-
 
     // Created by kat-enos on Jan 22, 2023
     {
@@ -786,13 +1443,12 @@ module.exports = {
     //  Created by dbothwell for DOC-2895 on Apr 5, 2023
     {
       from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
-      to: "/tutorials/orchestrate-security-tests/sto-standalone-workflows",
+      to: "/tutorials/security-tests/standalone-pipeline",
     },
-
     //  Created by dbothwell for DOC-2895 on Apr 5, 2023
     {
       from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
-      to: "/tutorials/orchestrate-security-tests/sto-integrated-workflows",
+      to: "/tutorials/security-tests/cicd-integrated-pipeline",
     },
 
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
@@ -809,60 +1465,11 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
 
+   
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
     {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
-      to: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-cloudwatch",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-elastic-search",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-sumologic",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
+      from: "/docs/continuous-delivery/cd-deployments-category/multiserv-multienv",
+      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv",
     },
 
     {
@@ -1221,6 +1828,480 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/cd-gitops/gitops-allowlist",
       to: "/docs/continuous-delivery/gitops/gitops-allowlist",
+    },
+
+    // Created by SmritiSatya for branch redirects-for-ce on April 18,2023
+    {
+      from: "/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/common-tunables-for-all-faults",
+    },
+    {
+      from: "/docs/chaos-engineering/overview/Security/security-templates/kyverno-policies",
+      to: "/docs/chaos-engineering/technical-reference/security/security-templates/kyverno-policies",
+    },
+    {
+      from: "/docs/chaos-engineering/overview/Security/security-templates/psp",
+      to: "/docs/chaos-engineering/technical-reference/security/security-templates/psp",
+    },
+    {
+      from: "/docs/chaos-engineering/overview/Security/security-templates/openshift-scc",
+      to: "/docs/chaos-engineering/technical-reference/security/security-templates/openshift-scc",
+    },
+    {
+      from: "/docs/chaos-engineering/overview/Security/introduction",
+      to: "/docs/chaos-engineering/technical-reference/security/introduction",
+    },
+    {
+      from: "/docs/chaos-engineering/overview/Security/namespace-considerations",
+      to: "/docs/chaos-engineering/technical-reference/security/namespace-considerations",
+    },
+    {
+      from: "/docs/chaos-engineering/overview/glossary",
+      to: "/docs/chaos-engineering/get-started/terminologies",
+    },
+    {
+      from: "/docs/chaos-engineering/overview/introduction-to-chaos-module",
+      to: "/docs/chaos-engineering/get-started/introduction-to-chaos-module",
+    },
+    {
+      from: "/docs/chaos-engineering/overview/powered-by-litmus",
+      to: "/docs/chaos-engineering/get-started/powered-by-litmus",
+    },
+    {
+      from: "/docs/chaos-engineering/technical-reference/probes/configure-and-add-probe",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/validate-hypothesis-using-probes",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/probes/validate-hypothesis-using-probes",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/add-a-new-user-to-a-project",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/prerequisites/add-a-new-user-to-a-project",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/add-chaos-hub",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/add-chaos-hub",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/connect-chaos-infrastructures",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/disconnect-chaos-infrastructure",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/disconnect-chaos-infrastructure",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/construct-and-run-custom-chaos-experiments",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/analyze-chaos-experiment",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/create-complex-chaos-experiments",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/delete-chaos-experiments",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/delete-chaos-experiments",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/edit-chaos-experiment",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/edit-chaos-experiment",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/export-chaos-experiments",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/export-chaos-experiments",
+    },
+    {
+      from: "/docs/chaos-engineering/user-guides/manage-chaos-experiment-execution/halt-chaos-experiments",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/experiments/halt-chaos-experiments",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/chaos-faults",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss-by-label",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss-by-label",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-disk-loss",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-disk-loss",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop-by-label",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop-by-label",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/gcp/gcp-vm-instance-stop",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/gcp-vm-instance-stop",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-disk-loss",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-disk-loss",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-instance-cpu-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-cpu-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-instance-io-stress",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-io-stress",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-instance-memory-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-memory-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-instance-stop",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-instance-stop",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-web-app-access-restrict",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-web-app-access-restrict",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/azure/azure-web-app-stop",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/azure-web-app-stop",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kube-resilience/kubelet-density",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/kubelet-density",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/load/locust-loadgen",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-cpu-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-disk-loss",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-disk-loss",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-DNS-chaos",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-DNS-chaos",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-host-reboot",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-host-reboot",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-http-latency",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-http-latency",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-http-modify-response",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-http-modify-response",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-http-reset-peer",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-http-reset-peer",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-io-stress",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-io-stress",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-memory-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-memory-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-network-latency",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-network-latency",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-network-loss",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-network-loss",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-process-kill",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-process-kill",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-service-stop",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-service-stop",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/VMware-vm-power-off",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/VMware-vm-power-off",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/vmware/vmware-windows-cpu-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/vmware/vmware-windows-cpu-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/common-tunables-for-node-faults",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/docker-service-kill",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/docker-service-kill",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/kubelet-service-kill",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/kubelet-service-kill",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-cpu-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-cpu-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-drain",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-drain",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-io-stress",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-memory-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-memory-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-restart",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-restart",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/node/node-taint",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/node/node-taint",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/container-kill",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/container-kill",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/disk-fill",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/disk-fill",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-autoscaler",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-autoscaler",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog-exec",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog-exec",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-cpu-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-delete",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-delete",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-error",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-spoof",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-dns-spoof",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-latency",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-body",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-modify-body",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-modify-header",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-modify-header",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-reset-peer",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-reset-peer",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-http-status-code",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-status-code",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-io-stress",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog-exec",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog-exec",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-memory-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-memory-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-corruption",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-corruption",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-duplication",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-duplication",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-latency",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-loss",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-loss",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-network-partition",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-partition",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/alb-az-down",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/alb-az-down",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/clb-az-down",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/clb-az-down",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ebs-loss-by-id",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ebs-loss-by-id",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ebs-loss-by-tag",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ebs-loss-by-tag",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-cpu-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-cpu-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-dns-chaos",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-dns-chaos",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-latency",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-latency",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-body",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-modify-body",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-modify-header",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-modify-header",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-reset-peer",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-reset-peer",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-http-status-code",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-http-status-code",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-io-stress",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-io-stress",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-memory-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-memory-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-network-latency",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-latency",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/eec2-network-loss",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-network-loss",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-process-kill",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-process-kill",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-id",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-stop-by-id",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ec2-stop-by-tag",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ec2-stop-by-tag",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-agent-stop",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-agent-stop",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-cpu-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-cpu-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-io-stress",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-io-stress",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-memory-hog",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-memory-hog",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-loss",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-network-loss",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-instance-stop",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-instance-stop",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/ecs-container-network-latency",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/ecs-container-network-latency",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-delete-event-source-mapping",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-delete-event-source-mapping",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-delete-function-concurrency",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-delete-function-concurrency",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-toggle-event-mapping-state",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-toggle-event-mapping-state",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-memory",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-function-memory",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-update-function-timeout",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-function-timeout",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/lambda-update-role-permission",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/lambda-update-role-permission",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/rds-instance-delete",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/rds-instance-delete",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/rds-instance-reboot",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/rds-instance-reboot",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/aws-fault-tunables",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/aws-fault-tunables",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/security/aws-switch-profile",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/aws-switch-profile",
+    },
+    {
+      from: "/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults",
     },
 
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023

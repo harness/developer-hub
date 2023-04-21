@@ -280,7 +280,7 @@ See [Ignore a manifest file during deployment](../../continuous-delivery/deploy
 
 #### Can I pull an image from a private registry?
 
-Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](../../platform/7_Connectors/connect-to-an-artifact-repo.md).
+Typically, If the Docker artifact source is in a private registry, Harness has access to that registry using the credentials set up in the Harness [Artifact connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml file added in the Service **Manifests** section must contain `dockercfg: <+artifact.imagePullSecret>` . This key will import the credentials from the Docker credentials file in the artifact.
 
@@ -510,7 +510,7 @@ You can also propagate and override a service in subsequent stages by selecting 
 
 Harness supports all of the common repos.
 
-See [Connect to an artifact repo](../../platform/7_Connectors/connect-to-an-artifact-repo.md).
+See [Connect to an artifact repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
 
 #### What's a Harness environment?
 
@@ -538,7 +538,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness includes built-in secrets management to store your encrypted secrets, such as access keys, and use them in your Harness account. Harness integrates will all popular secrets managers.
 
-See [Harness secrets management overview](../../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness secrets management overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
 
 ### Harness variables expressions
 

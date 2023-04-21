@@ -98,6 +98,21 @@ helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
   --set delegateDockerImage=harness/delegate:23.02.78306 \
   --set replicas=1 --set upgrader.enabled=false
 ```
+
+The above command uses the default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo. If you want change one or more values in a persistent manner instead of the command line, then you can download and update the values.yaml file as per your need. You can use the updated values.yaml file as shown below.
+
+```
+helm upgrade -i firstk8sdel --namespace harness-delegate-ng --create-namespace \
+  harness-delegate/harness-delegate-ng \
+  -f values.yaml \
+  --set delegateName=firstk8sdel \
+  --set accountId=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+  --set delegateToken=PUT_YOUR_DELEGATE_TOKEN_HERE \
+  --set managerEndpoint=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+  --set delegateDockerImage=harness/delegate:23.02.78306 \
+  --set replicas=1 --set upgrader.enabled=false
+```
+
 `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` should be replaced by the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location in the Account Overview page under Account Settings section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
@@ -201,7 +216,7 @@ curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/
 
 <h3> Replace Variables in the Template </h3>
 
-Open the `harness-delegate.yml` file in a text editor and replace `PUT_YOUR_DELEGATE_NAME_HERE`, `PUT_YOUR_HARNESS_ACCOUNTID_HERE` and `PUT_YOUR_DELEGATE_TOKEN_HERE` with your delegate name (say `firstk8sdel`), Harness accountId, delegate token value respectively.
+Open the `harness-delegate.yaml` file in a text editor and replace `PUT_YOUR_DELEGATE_NAME_HERE`, `PUT_YOUR_HARNESS_ACCOUNTID_HERE` and `PUT_YOUR_DELEGATE_TOKEN_HERE` with your delegate name (say `firstk8sdel`), Harness accountId, delegate token value respectively.
 
 `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` should be replaced by the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location in the Account Overview page under Account Settings section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
@@ -216,7 +231,7 @@ Open the `harness-delegate.yml` file in a text editor and replace `PUT_YOUR_DELE
 <h3> Apply Kubernetes Manifest </h3>
 
 ```
-kubectl apply -f harness-delegate.yml
+kubectl apply -f harness-delegate.yaml
 ```
 
 ```mdx-code-block
@@ -243,14 +258,15 @@ Ensure that you have the Docker runtime installed on your host. If not, use one 
 Now you can install the delegate using the following command.
 
 ```bash
-docker run -d --name="firstdockerdel" --cpus="0.5" --memory="2g" \
--e DELEGATE_NAME=firstdockerdel \
--e NEXT_GEN=true \
--e DELEGATE_TYPE=DOCKER \
--e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
--e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
--e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-harness/delegate:22.11.77436
+docker run --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+  -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
+  -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
+  -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+  harness/delegate:23.03.78904
 ```
 `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` should be replaced by the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location in the Account Overview page under Account Settings section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
@@ -290,7 +306,7 @@ The delegate installer provides troubleshooting information for each installatio
 
 Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
 
-If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Harness Documentation](https://developer.harness.io/docs/category/delegates).
+If the steps did not resolve the problem, click **No** and use the form to describe the issue. You'll also find links to Harness Support and to [Delegate Docs](/docs/category/delegates).
 
 ```mdx-code-block
 <Tabs>

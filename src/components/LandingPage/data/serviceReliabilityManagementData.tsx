@@ -5,7 +5,7 @@ import { MODULES } from "../../../constants";
 /* Define the cards here */
 export const FeaturedList: CardItem[] = [
   {
-    title: "Introduction to SLO Management with Prometheus",
+    title: "SLO Management with Prometheus",
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: (
@@ -17,13 +17,13 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/manage-service-reliability/intro-to-srm",
+    link: "/tutorials/service-reliability/slo-prometheus",
   },
 ];
 
 export const SRMList: CardItem[] = [
   {
-    title: "Introduction to SLO Management with Prometheus",
+    title: "SLO Management with Prometheus",
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: (
@@ -35,10 +35,10 @@ export const SRMList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "15min",
-    link: "/tutorials/manage-service-reliability/intro-to-srm",
+    link: "/tutorials/service-reliability/slo-prometheus",
   },
   {
-    title: "Introduction to Java Exception Management",
+    title: "Java Error Tracking",
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: (
@@ -50,6 +50,6 @@ export const SRMList: CardItem[] = [
     newDoc: false,
     type: [docType.Interactive, docType.Video],
     time: "10min",
-    link: "/tutorials/manage-service-reliability/intro-java-exception-management",
+    link: "/tutorials/service-reliability/java-error-tracking",
   },
 ];
