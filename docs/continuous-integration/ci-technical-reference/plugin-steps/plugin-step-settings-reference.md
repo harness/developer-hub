@@ -35,7 +35,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 :::info
 
-These fields are located under **Optional Configuration** for stages that use [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+These fields are located under **Optional Configuration** for stages that use [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 :::
 
