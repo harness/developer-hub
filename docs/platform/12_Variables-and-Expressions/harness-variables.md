@@ -1250,7 +1250,7 @@ This will help you to:
   - Reference the current Harness release number as part of your manifest.
   - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
 
-**Important:** Users should update their delegate to version 1.0.79100 to use the expression.
+**Important:** Users must update their delegate to version 1.0.79100 to use this expression.
 
 ## Tag expressions
 
