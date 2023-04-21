@@ -123,6 +123,8 @@ name: code compilation
 
 ### Complete example
 
+<!-- revise this to not use service dependency -->
+
 <Tabs
     defaultValue="harness"
     values={[
