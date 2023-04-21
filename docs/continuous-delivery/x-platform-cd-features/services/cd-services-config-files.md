@@ -10,7 +10,7 @@ You can use files added to the **Config Files** section in your Harness services
 
 All platform [integrations](/docs/continuous-delivery/integrations/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store. Eventually, Harness will support config files from Git platforms.
 
-## Limitations
+## Important notes
 
 - Files must be 1MB or less.
 - All file types are supported.
@@ -26,7 +26,7 @@ You can add plain or encrypted text files. Both types can be referenced using a 
 
 With a plain text config file, Harness renders the contents of the file. 
 
-With an encrypted text config file, you need to base64 decode it before you can reference it within the deployment. This is described below.
+With an encrypted text config file, you need to base64 decode it before you can reference it within the deployment.
 
 ## Adding config files to a service
 
