@@ -279,22 +279,36 @@ Harness CI has two options for reusable, pre-packaged functionality:
 * [Use Plugin steps](/docs/category/use-plugins) to run GitHub Actions, Bitrise Integrations, Drone plugins, and other plugins in your CI pipelines. Drone Plugins are Docker containers that perform a predefined task.
 * [Create standardized step templates](/docs/platform/Templates/run-step-template-quickstart) that can be reused across pipelines and teams in your Harness account.
 
-## Comparison: Specify a Docker image to use for a job
+## Comparison: Specify a codebase or Docker image
 
 To clone a codebase in CircleCI, you use a _checkout_ step to check out source code to the configured path. In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). In Harness CI, codebases have two components, both of which you can edit:
 
 * The codebase _connector_, which specifies the codebase URL and required credentials to access your code repos.
 * A series of settings describing how you want the pipeline to clone and build the repo.
 
+When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
+
+You can also use connectors in individual steps to specify Docker images or even [clone additional codebases](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) in the same pipeline.
+
 :::info What are connectors?
 
 Harness integrates with many different types of repositories and providers. A connection from Harness to other platforms is called a [connector](/docs/category/connectors). Connectors can connect to source control providers, cloud providers, container registries, and more.
 
-For example, in the [Complete pipeline comparison](#complete-pipeline-comparison), the `connectorRef` in the Harness YAML example references to a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+For example, in the following YAML example, the `connectorRef` references a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+
+```yaml
+              - step:
+                  type: Run
+                  name: step1
+                  identifier: step1
+                  spec:
+                    connectorRef: my-dockerhub-connector
+                    image: openjdk:17.0-jdk
+                    shell: Bash
+                    command: echo "this runs on openjdk"
+```
 
 :::
-
-When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
 
 ## Comparison: Define a multi-stage build pipeline
 
@@ -462,9 +476,10 @@ workflows:
 In CircleCI, you use the web app to set project-level environment variables, and then reference them in the pipeline. You can use _Context_ to use environment variables across multiple projects.
 
 In Harness CI, you can add variables at the project, organization, and account levels. To reference these variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
-  - Account-level variable reference: `<+variable.account.[var_id]>`
-  - Organization-level variable reference: `<+variable.org.[var_id]>`
-  - Project-level variable reference: `<+variable.[var_id]>`
+
+- Account-level variable reference: `<+variable.account.[var_id]>`
+- Organization-level variable reference: `<+variable.org.[var_id]>`
+- Project-level variable reference: `<+variable.[var_id]>`
 
 To learn more about variables for accounts, projects, and organizations, go to [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/).
 
