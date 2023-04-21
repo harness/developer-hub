@@ -10,6 +10,7 @@ helpdocs_is_published: true
 
 
 :::note
+
 Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
@@ -25,7 +26,10 @@ You can set conditions on the Triggers, such as matching a Docker tag or label o
 This Trigger is a simple way to automate deployments for new builds.
 
 :::note
+
 An artifact source does not need to be defined in the service definition for the trigger to work. The only possible scenario of failure is during the initial collection of the artifact within one minute of creating the trigger. For instance, suppose the Docker registry contains 10 tags for a specific image and a trigger is created. In that case, the delegate's polling job retrieves all 10 tags and sends them to the manager, which does not initiate any pipelines. This is because running the pipeline for all 10 tags that were pushed before creation of the trigger could leave the system in an undesirable state. However, when an 11th or any subsequent tag is pushed, the trigger executes and initiates the pipeline.
+
+:::
 
 ### Before you begin
 
@@ -153,6 +157,16 @@ Jump to [Step 2: Set Conditions](#step_2_set_conditions).
 5. In **Registry**, select the registry you want to use.
 6. In **Repository**, select the repository to use.
 7. Click **Continue**.
+
+Jump to [Step 2: Set Conditions](#step_2_set_conditions).
+
+### Option: Bamboo
+
+1. In **Configuration**, in **Name**, enter a name for the Trigger.
+2. In **Listen on New Artifact**, click **Define Artifact Source**.
+3. Create or select the Bamboo Connector to connect Harness to Bamboo, and then click **Continue**.
+4. In **Artifact Details**, specify the plan name, artifact paths, and builds to monitor.
+5. Click **Continue**.
 
 Jump to [Step 2: Set Conditions](#step_2_set_conditions).
 
