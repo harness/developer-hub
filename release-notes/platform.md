@@ -48,9 +48,6 @@ This release does not include any early access feature.
 
 ### Fixed issues
 
-- Hovering over texts does not display tooltips. (PL-32348)
-  A code enhancement fixed this issue.
-
 - The creation of secrets on Custom secret manager validates the existence of those secrets. (PL-31715)
   A code enhancement to remove secret validation during Custom Secret manager creation has fixed the issue.
 
