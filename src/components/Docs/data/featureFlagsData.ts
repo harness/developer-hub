@@ -94,7 +94,7 @@ export const featuredTutorials: CardItem[] = [
     },
 
     {
-      name: "Try some more cool features",
+      name: "Explore other cool features",
       description:
         "",
       list: [
