@@ -176,7 +176,6 @@ import TabItem1 from '@theme/TabItem';
 
 <Tabs1>
   <TabItem1 value="YAML" label="YAML" default>
-```
 
 Here's an example of an environment with config file overrides in its **overrides**.
 
