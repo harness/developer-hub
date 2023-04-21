@@ -16,9 +16,7 @@ Harness FirstGen release 791xx includes the following feature changes and fixes 
 
 ### What's new
 
-This release introduces the following new features and enhancements:
-
-The `DELEGATE_IMAGE_TAG` version override is not considered when immutable delegates are enabled. (DEL-6202)
+This release does not include any new features.
 
 ### Early access 
 
@@ -31,6 +29,8 @@ This release includes the following fixes:
 - Updated legacy delegate images `kubectl` version to 1.25.8. (DEL-6087)
 
 - Updated the error message for failed task execution to include the delegate host name or ID. (DEL-6187)
+
+- Removed the `DELEGATE_IMAGE_TAG` version override when immutable delegates are enabled. (DEL-6202)
 
 ## March 23, 2023, Harness version 78817, Harness Delegate version 78705
 
