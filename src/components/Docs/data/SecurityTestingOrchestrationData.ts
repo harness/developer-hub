@@ -153,26 +153,6 @@ import {
             },
           ],
         },
-        {
-            name: "Set up popular scanners",
-            description:
-              "",
-            list: [
-              {
-                title: "Bandit (open-source)",
-                module: "sto",
-                description:
-                  "Scan container images",
-                link: "/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference",
-              },
-              {
-                title: "Stop pipelines automatically using governance policies",
-                module: "sto",
-                description:
-                  "Learn how to create OPA policies to stop pipelines automatically",
-                link: "/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/stop-pipelines-using-opa",
-              },
-            ],
-          },
+
         ];
     /* Define the cards - end */
