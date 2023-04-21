@@ -156,10 +156,10 @@ The following sections cover common Terraform Apply step options.
 
 See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
-### S3
+### AWS S3
 
 1. In **Region**, select the region where your bucket is stored.
-2. In **Bucket**, select the bucket where you terraform files are stored (all buckets from selected region that are available to the connector will be fetched).
+2. In **Bucket**, select the bucket where your Terraform files are stored (all buckets from the selected region that are available to the connector will be fetched).
 3. In **Folder Path**, enter the path from the root of the repo to the folder containing the script.
 
    ![](./static/provision-infra-dynamically-with-terraform-09.png)
@@ -304,7 +304,7 @@ In **Identifier**, enter an identifier, so you can refer to variables using expr
 
 In **Region**, select the region where your bucket is stored.
 
-In **Bucket**, select the bucket where you terraform var files are stored (all buckets from selected region that are available to the connector will be fetched).
+In **Bucket**, select the bucket where your Terraform var files are stored (all buckets from the selected region that are available to the connector will be fetched).
 
 In **File Paths**, add one or more file paths from the root of the bucket to the variable file.
 
@@ -344,10 +344,10 @@ Currently, remote state file support is behind the feature flag `TERRAFORM_REMOT
 
 See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
-#### S3 provider
+#### AWS S3
 
 1. In **Region**, select the region where your bucket is stored.
-2. In **Bucket**, select the bucket where your backend config file is stored (all buckets from selected region that are available to the connector will be fetched).
+2. In **Bucket**, select the bucket where your backend config file is stored (all buckets from the selected region that are available to the connector will be fetched).
 3. In **File Path**, add file path from the root of the bucket to the backend config file.
 
     ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-17.png)
