@@ -1,10 +1,10 @@
 {
-   "label":"CV Concepts",
+   "label":"CV concepts",
    "position": 10,
    "collapsible":"true",
    "collapsed":"true",
    "link":{
       "type":"generated-index",
-      "title":"Concepts"
+      "title":"CV concepts"
    }
    }
