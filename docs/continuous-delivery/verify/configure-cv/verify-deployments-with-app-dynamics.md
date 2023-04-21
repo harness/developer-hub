@@ -1,7 +1,7 @@
 ---
-title: Verify Deployments with AppDynamics
-description: This topic shows you how to verify deployments with AppDynamics.
-sidebar_position: 3
+title: AppDynamics
+description: Verify deployments with AppDynamics.
+sidebar_position: 1
 helpdocs_topic_id: 916vrl4l76
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -17,7 +17,7 @@ This topic covers how to add and configure AppDynamics as a Health Source for th
 
 ## Before You Begin
 
-[Add AppDynamics as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+[Add AppDynamics as a verification provider](./platform/../../../../platform/7_Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems.md)
 
 ## Review: CV Setup Options
 
@@ -33,8 +33,8 @@ There are two ways to add the Verify step:
 
 * **When selecting the stage deployment strategy:**  
 The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
-Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-59.png)](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-59.png)
-* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-61.png)](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-61.png)
+Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.![](./static/verify-deployments-with-app-dynamics-59.png)
+* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.![](./static/verify-deployments-with-app-dynamics-61.png)
 
 ## Step 2: Enter Name and Timeout
 
@@ -55,9 +55,9 @@ The maximum is `53w`.Timeouts can be set at the Pipeline level also.
 
 ## Step 3: Select a Continuous Verification Type
 
-In **Continuous Verification Type**, select a type that matches your [deployment strategy](./verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
+In **Continuous Verification Type**, select a type that matches your [deployment strategy](./../verify-deployments-with-the-verify-step.md#continuous-verification-type).
 
-![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-63.png)
+![](./static/verify-deployments-with-app-dynamics-63.png)
 
 ## Step 4: Create a Monitored Service
 
@@ -81,18 +81,18 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 
 In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-64.png)
+![](./static/verify-deployments-with-app-dynamics-64.png)
 
 1. In **Select health source type**, select AppDynamics.
 2. In **Health Source Name**, enter a name for the Health Source.
 3. Under **Connect Health Source**, click **Select Connector**.
 4. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
    
-   ![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-65.png)
+   ![](./static/verify-deployments-with-app-dynamics-65.png)
 
 5. Click **Apply Selected**. The Connector is added to the Health Source.
 
-   ![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-66.png)
+   ![](./static/verify-deployments-with-app-dynamics-66.png)
 
 6. In **Select Feature**, select the APM or logging tool component to use.
 7. Click **Next** and **Customize Health Source** settings appear.
@@ -101,9 +101,9 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 
 8. In **Find an AppDynamics application** enter the name of the application and select an option from the list.
 9.  In **Find an AppDynamics tier** enter a tier name from which you want usage metrics, code exceptions, error conditions, or exit calls.
-10. In **Metric Packs** select the metrics you want Harness to monitor. **Errors** and **Performance** are selected by default.![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-67.png)
+10. In **Metric Packs** select the metrics you want Harness to monitor. **Errors** and **Performance** are selected by default.![](./static/verify-deployments-with-app-dynamics-67.png)
 11. In **Custom Metrics (optional)**, click **Add Metric** to add any other metric to be monitored.
-12. In **Query Specifications and Mapping**, you can customize the query to get the desired output and map it to a Harness Service.![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-68.png)
+12. In **Query Specifications and Mapping**, you can customize the query to get the desired output and map it to a Harness Service.![](./static/verify-deployments-with-app-dynamics-68.png)
 13. In **Map Metric(s) to Harness Services**, in **Metric Name** enter a name for the metric.
 14. In **Group Name**, enter a group name of the metric.
 15. In **AppDynamics Path**, you can either provide the complete metric path in **Specify a complete metric path**, or provide the base path of the AppDynamics metric in **Select the path from the AppD metric**.
@@ -115,7 +115,7 @@ In **Health Sources**, click **Add**. The **Add New Health Source** settings
 18. In **Deviation Compared to Baseline**, select one of the options based on the selected risk type.
 19. Click **Submit**. The Health Source is displayed in the Verify step.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-69.png)
+![](./static/verify-deployments-with-app-dynamics-69.png)
 
 You can add one or more Health Sources for each APM or logging provider.### Step 6: Select Sensitivity
 
@@ -127,7 +127,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -135,11 +135,10 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In Advanced, you can select the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../platform/../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
-See [Advanced Settings](./verify-deployments-with-the-verify-step.md#option-advanced-settings).
 
 ## Step 9: Deploy and Review Results
 
@@ -157,7 +156,7 @@ You can see that the verification takes a few minutes.
 
 Once verification is complete, the Verify step shows the following:
 
-![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-70.png)
+![](./static/verify-deployments-with-app-dynamics-70.png)
 
 The risk level might initially display a number of violations, but the red and orange colored host often change to green over the duration.
 
@@ -169,7 +168,7 @@ The **Summary** section shows how many metrics and logs are in violation.
 
 Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
 
-![](../cd-execution/cv-category/static/verify-deployments-with-app-dynamics-71.png)
+![](./static/verify-deployments-with-app-dynamics-71.png)
 
 If you have more than one Health Source, you can use the **View** dropdown to select each one.
 

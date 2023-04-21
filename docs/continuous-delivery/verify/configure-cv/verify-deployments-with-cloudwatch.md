@@ -1,7 +1,7 @@
 ---
-title: Verify Deployments with CloudWatch
-description: This topic shows you how to verify deployments with CloudWatch.
-sidebar_position: 4
+title: CloudWatch
+description: Verify deployments with CloudWatch.
+sidebar_position: 2
 helpdocs_topic_id: zjclrbon90
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -37,8 +37,8 @@ There are two ways to add the Verify step:
 
 * **When selecting the stage deployment strategy:**  
 The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
-Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.[![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-108.png)](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-108.png)
-* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.[![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-110.png)](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-110.png)
+Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.![](./static/verify-deployments-with-cloudwatch-108.png)
+* **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.![](./static/verify-deployments-with-cloudwatch-110.png)
 
 ## Step 2: Enter a Name and Timeout
 
@@ -59,9 +59,9 @@ The maximum is `53w`.Timeouts can be set at the Pipeline level also.
 
 ## Step 3: Select a Continuous Verification Type
 
-In **Continuous Verification Type**, select a type that matches your [deployment strategy](./verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
+In **Continuous Verification Type**, select a type that matches your [deployment strategy](./../verify-deployments-with-the-verify-step.md#continuous-verification-type)
 
-![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-112.png)
+![](./static/verify-deployments-with-cloudwatch-112.png)
 
 ## Step 4: Create a Monitored Service
 
@@ -83,8 +83,8 @@ You can also create a monitored service using a monitored service template. To u
 1. In Monitored Service, click **Use Template**.  
 The Monitored Service templates slider appears on the right. It displays all the available monitored service templates.
 2. Select the appropriate monitored service template.  
-The template details appear on the right. The fields that are configured as **Runtime Input** while creating the template are displayed here.![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-113.png)
-3. Click **Use Template** to close the Monitored Service Templates slider.  
+The template details appear on the right. The fields that are configured as **Runtime Input** while creating the template are displayed here.![](./static/verify-deployments-with-cloudwatch-113.png)
+1. Click **Use Template** to close the Monitored Service Templates slider.  
 The fields that are configured as Runtime Input while creating the template are displayed under **Template Inputs**.You can modify the template by clicking the Open in Template Studio button on the top. This opens the template in a separate tab where you can make changes. After making the changes, you can save the changes to the current template, save as a new version, or save as a new template.
 4. Enter appropriate values.  
 For example, if the health source has been configured as a runtime input while creating the template, the health source related fields are displayed.
@@ -97,14 +97,14 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 
 1. In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
    
-   ![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-114.png)
+   ![](./static/verify-deployments-with-cloudwatch-114.png)
 
 2. In **Select health source type**, select **CloudWatch**.
 3. In **Health Source Name**, enter a name for the Health Source.
 4. Under **Connect Health Source**, click **Select Connector**.
 5. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
    
-   ![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-115.png)
+   ![](./static/verify-deployments-with-cloudwatch-115.png)
 
 6. Click **Apply Selected**. The Connector is added to the Health Source.
 7. In **Select Feature**, select the CloudWatch feature to be used.
@@ -117,12 +117,12 @@ You can customize the metrics to map the Harness Service to the monitored enviro
 4.  Click **Select Query** to select a saved query. This is an optional step. You can also enter the query manually in the **Query** field.
 5.  Click **Fetch Records** to retrieve the details. The results are displayed under **Records.**
    
-   ![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-116.png)
+   ![](./static/verify-deployments-with-cloudwatch-116.png)
    
 6.  Once the records are fetched, click the plus icon in **Identify Service Instance** to select the path for service instance.
 7.  Click **Submit**. The Health Source is displayed in the Verify step.
    
-   ![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-117.png)
+   ![](./static/verify-deployments-with-cloudwatch-117.png)
 
 You can add one or more Health Sources for each APM or logging provider.### Step 6: Select Sensitivity
 
@@ -134,7 +134,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md)
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -142,11 +142,10 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../platform/../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
-See [Advanced Settings](./verify-deployments-with-the-verify-step.md#option-advanced-settings).
 
 ## Step 9: Deploy and Review Results
 
@@ -164,7 +163,7 @@ You can see that the verification takes a few minutes.
 
 Once verification is complete, the Verify step shows the following:
 
-![](../cd-execution/cv-category/static/verify-deployments-with-cloudwatch-118.png)
+![](./static/verify-deployments-with-cloudwatch-118.png)
 
 The risk level might initially display a number of violations, but the red and orange colored host often change to green over the duration.
 
