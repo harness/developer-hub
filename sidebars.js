@@ -300,6 +300,9 @@ const sidebars = {
           type: "link",
           label: "Release notes",
           href: "/release-notes/whats-new",
+          customProps: {
+            description: "Review the notes to learn about new features.",
+          },
         },
         {
           /*
