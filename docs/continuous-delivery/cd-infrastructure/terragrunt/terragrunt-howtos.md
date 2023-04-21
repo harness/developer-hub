@@ -172,6 +172,10 @@ For this reason, it's important that all your project members know the provision
 A Terragrunt plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terragrunt plan file as plain text.
 
 Harness only passes the Terragrunt plan between the Harness Manager and delegate as an encrypted file using a secrets manager.
+Note that some third-party Secret Managers, for example: HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager have a max secret size.
+If the generated plan would exceed that size, an error woul be thrown by the correstondig third-party system.
+
+The Key Management Services for example: Google Cloud KMS or AWS KMS do not have tahat limitation.
 
 When the `terragrunt plan` command runs on the Harness delegate, the delegate encrypts the plan and saves it to the secrets manager you selected. The encrypted data is passed to the Harness Manager.
 
