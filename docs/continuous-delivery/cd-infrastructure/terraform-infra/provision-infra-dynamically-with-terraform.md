@@ -118,7 +118,11 @@ See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Managemen
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
 Harness only passes the Terraform plan between the Harness Manager and Delegate as an encrypted file using a Secrets Manager.
+Note that some third-party Secret Managers, for example: HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager have a max secret size.
+If the generated plan would exceed that size, an error woul be thrown by the correstondig third-party system.
 
+The Key Management Services for example: Google Cloud KMS or AWS KMS do not have tahat limitation
+ 
 When the `terraform plan` command runs on the Harness Delegate, the Delegate encrypts the plan and saves it to the Secrets Manager you selected. The encrypted data is passed to the Harness Manager.
 
 When the plan is applied, the Harness Manager passes the encrypted data to the Delegate.
