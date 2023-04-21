@@ -67,7 +67,7 @@ export const featuredTutorials: CardItem[] = [
           module: "ff",
           description:
             "Add a flag as dependency to another flag.",
-          link: "/feature-flags/add-prerequisites-to-feature-flag",
+          link: "/docs/feature-flags/add-prerequisites-to-feature-flag",
         },
         {
           title: "Manage flags using Git Experience",
