@@ -44,7 +44,8 @@ export const featuredTutorials: CardItem[] = [
           title: "Get started",
           module: MODULES.cd,
           description:
-            "Learn the basics of Harness Continuous Delivery",
+            "Learn the basics of Harness Continuous Delivery (CD)",
+          link: "/docs/category/get-started",
           // @Roshni: sample code for the sub categories -->
           children: [
             {
@@ -132,7 +133,7 @@ export const featuredTutorials: CardItem[] = [
         },
         
         {
-          title: "Cross-platform CD features",
+          title: "Key concepts",
           module: MODULES.cd,
           description:
             "Learn about the CD features that are common to all deployment types.",
@@ -189,43 +190,13 @@ export const featuredTutorials: CardItem[] = [
       name: "Key features",
       description:
         "",
-      list: [
-        {
-          title: "Provision infrastructure",
-          module: MODULES.cd,
-          description:
-            "Provision infrastructure as part of your deployment process.",
-          link: "/docs/category/provision-infrastructure",
-          children: [
-            {
-              title: "Terraform",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/category/terraform",
-            },
-            {
-              title: "CloudFormation",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/category/cloudformation",
-            },
-            {
-              title: "Terragrunt",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
-            },
-          ]  
-        }, 
+      list: [ 
         {
           title: "Deploy services on different platforms",
           module: MODULES.cd,
           description:
             "Create CD pipelines that deploy applications on different platforms using Harness.",
-          link: "/docs/category/community-edition",
+          link: "/docs/category/deploy-services-on-different-platforms",
           children: [
             {
               title: "Kubernetes",
@@ -306,99 +277,6 @@ export const featuredTutorials: CardItem[] = [
             },
           ]  
         }, 
-        {
-          title: "Verify deployments",
-          module: MODULES.cd,
-          description:
-            "Use Harness Continuous Verification (CV) to verify your deployments.",
-          link: "/docs/category/verify-deployments",  
-          children: [
-            {
-              title: "Verify step",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
-            },
-            {
-              title: "Prometheus",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
-            },
-            {
-              title: "AppDynamics",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
-            },
-            {
-              title: "CloudWatch",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
-            },
-            {
-              title: "Custom Health Source",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
-            },
-            {
-              title: "Datadog",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
-            },
-            {
-              title: "Dynatrace",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
-            },
-            {
-              title: "Elasticsearch",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
-            },
-            {
-              title: "Google Cloud Operations",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
-            },
-            {
-              title: "New Relic",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
-            },
-            {
-              title: "Splunk",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
-            },
-            {
-              title: "Sumo Logic",
-              module: MODULES.cd,
-              description:
-                "",
-              link: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
-            },
-          ]  
-        },
         {
           title: "Manage deployments",
           module: MODULES.cd,
@@ -495,6 +373,36 @@ export const featuredTutorials: CardItem[] = [
           ]  
         },
         {
+          title: "Provision infrastructure",
+          module: MODULES.cd,
+          description:
+            "Provision infrastructure as part of your deployment process.",
+          link: "/docs/category/provision-infrastructure",
+          children: [
+            {
+              title: "Terraform",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/terraform",
+            },
+            {
+              title: "CloudFormation",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/category/cloudformation",
+            },
+            {
+              title: "Terragrunt",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
+            },
+          ]  
+        },
+        {
           title: "GitOps",
           module: MODULES.cd,
           description:
@@ -558,6 +466,99 @@ export const featuredTutorials: CardItem[] = [
               link: "/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial",
             },
           ]
+        },
+        {
+          title: "Continuous Verification (CV)",
+          module: MODULES.cd,
+          description:
+            "Use Harness Continuous Verification (CV) to verify your deployments.",
+          link: "/docs/category/verify-deployments",  
+          children: [
+            {
+              title: "Verify step",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+            },
+            {
+              title: "Prometheus",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
+            },
+            {
+              title: "AppDynamics",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
+            },
+            {
+              title: "CloudWatch",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
+            },
+            {
+              title: "Custom Health Source",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
+            },
+            {
+              title: "Datadog",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
+            },
+            {
+              title: "Dynatrace",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
+            },
+            {
+              title: "Elasticsearch",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
+            },
+            {
+              title: "Google Cloud Operations",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
+            },
+            {
+              title: "New Relic",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
+            },
+            {
+              title: "Splunk",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
+            },
+            {
+              title: "Sumo Logic",
+              module: MODULES.cd,
+              description:
+                "",
+              link: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
+            },
+          ]  
         },
       ],
     },
