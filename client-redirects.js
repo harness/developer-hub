@@ -37,17 +37,17 @@ module.exports = {
     // Created by ravilach to move CVKB into Docs April 21st, 2023
     {
       from: "/kb/continuous-delivery/continuous-verification-ml",
-      to: "/continuous-delivery/verify/configure-cv/continuous-verification-ml",
+      to: "/docs/continuous-delivery/verify/cv-concepts/machine-learning",
     },
 
     {
       from: "/kb/continuous-delivery/continuous-verification-results",
-      to: "/continuous-delivery/verify/configure-cv/continuous-verification-results",
+      to: "/docs/continuous-delivery/verify/cv-concepts/verification-results",
     },
 
     {
       from: "/kb/continuous-delivery/continuous-verification-templates",
-      to: "/continuous-delivery/verify/configure-cv/continuous-verification-templates",
+      to: "/docs/continuous-delivery/verify/cv-concepts/templates",
     },
 
     // Created by Sudheendra Katte to fix cv re-directs April 21st, 2023

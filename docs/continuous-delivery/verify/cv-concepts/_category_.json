@@ -3,9 +3,8 @@
    "position": 10,
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"CV Concepts"
+      "title":"Concepts"
    }
    }

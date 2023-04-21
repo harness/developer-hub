@@ -2,7 +2,7 @@
 title: Machine learning usage
 sidebar_position: 2
 description: Insights on how the machine learning of Continuous Verification works. 
-slug: /continuous-delivery/verify/configure-cv/continuous-verification-ml
+slug: /continuous-delivery/verify/cv-concepts/machine-learning
 ---
 
 # Machine Learning Usage in Continuous Verification

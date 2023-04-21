@@ -2,7 +2,7 @@
 title: Templates and templatization
 sidebar_position: 3
 description: Strategies to template out Continuous Verification workflow items. 
-slug: /continuous-delivery/verify/configure-cv/continuous-verification-templates
+slug: /continuous-delivery/verify/cv-concepts/templates
 ---
 
 # Templates and Templatization in Continuous Verification
