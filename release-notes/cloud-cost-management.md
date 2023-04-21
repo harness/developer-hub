@@ -16,7 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - April 05, 2023, version 79001
+## Latest - April 19, 2023, version 79104
 
 ```mdx-code-block
 <Tabs>
@@ -24,9 +24,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 ### What's new
-* Workload recommendations enhancement. (CCM-9161)(Zendesk Ticket ID 34658)
 
-  Introduced support for 100th percentile in workload recommendations.  Recommendations will be displayed for 100% usage of workloads.
+* Recommendations enhancement (CCM-11769)
+
+  A new filter has been added to recommendations, which allows the selection of the age of the recommendations. This filter allows you to specify how many days old recommendations should be included in the results. 
+
 
 ```mdx-code-block
   </TabItem>
@@ -37,6 +39,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This release does not include any early access features.
 
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
@@ -44,14 +47,21 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Fixed issues
 
-* Updated the default perspective names from `Aws` to `AWS` and `Gcp` to `GCP`. (CCM-11770)
-* Discrepancy in the number of EC2 recommendations. (CCM-11730)
- 
-   The Terminate-type recommendations were not being saved, and certain EC2 recommendations were disappearing after a specific interval of time. This issue has been resolved.
+* The **Recommendations** page displayed incorrect savings value. (CCM-12082)
 
-* The link to the perspective on the **Anomalies** page was incorrect. (CCM-11403)
+  This issue has been resolved. The value in the grid now matches with the widgets.
+* Spike in BigQuery cost (CCM-12027)
 
-  This issue has been fixed, and the link now directs to the correct perspective.
+  Limited the data queried by users with restricted access by implementing a time filter of 30 days. These users can retrieve data only from the past 30 days, effectively reducing the overall size of the query results.
+* Modifying individual budgets within a budget group resulted in inconsistencies within the budget group as a whole. (CCM-11854)
+
+  To fix this issue, you are allowed to modify only the budget amount and the alert type for individual budgets. You cannot modify other parameters.
+* While configuring budget groups, you cannot add a negative integer in the **Cascading** > **Proportionally** field. (CCM-11852)
+
+    <docimage path={require('./static/budget-group-release-note.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+  
 
 ```mdx-code-block
   </TabItem>
@@ -62,6 +72,28 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 <details>
 <summary>2023 releases</summary>
+
+#### April 05, 2023, version 79001
+
+##### What's new
+* Workload recommendations enhancement. (CCM-9161)(Zendesk Ticket ID 34658)
+
+  Introduced support for 100th percentile in workload recommendations.  Recommendations will be displayed for 100% usage of workloads.
+
+##### Early access
+
+  This release does not include any early access features.
+
+##### Fixed issues
+
+* Updated the default perspective names from `Aws` to `AWS` and `Gcp` to `GCP`. (CCM-11770)
+* Discrepancy in the number of EC2 recommendations. (CCM-11730)
+ 
+   The Terminate-type recommendations were not being saved, and certain EC2 recommendations were disappearing after a specific interval of time. This issue has been resolved.
+
+* The link to the perspective on the **Anomalies** page was incorrect. (CCM-11403)
+
+  This issue has been fixed, and the link now directs to the correct perspective.
 
 #### March 21, 2023, version 78903
 
