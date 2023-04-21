@@ -18,7 +18,7 @@ export default function STO() {
             <h1>Security Testing Orchestration Docs</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/orchestrate-security-tests">
+            <Link href="/tutorials/security-tests">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
