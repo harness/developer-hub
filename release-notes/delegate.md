@@ -27,7 +27,7 @@ Harness NextGen release 791xx includes the following changes for the Harness Del
 
 This release introduces the following new features and enhancements:
 
-- Added the following metrics for immutable delegates that you can scrape via prometheus: (DEL-5363)
+- Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
 
     - io_harness_delegate_connected
     - io_harness_delegate_disconnected 
@@ -98,9 +98,9 @@ This release does not include any early access features.
 
 This release includes the following fixes:
 
-- Added WebSocket reconnect logic when Harness Manager does not recieve a heartbeat handshake from Harness Delegate for more than five minutes. (DEL-5954)
+- Added WebSocket reconnect logic for when the Harness Manager does not receive a heartbeat from the Harness Delegate for more than five minutes. (DEL-5954)
 
-- Set the `LANG` environment variable to en_US.UTF-8 by default for delegates. (DEL-6221)
+- Set the delegate `LANG` environment variable to en_US.UTF-8 by default. (DEL-6221)
 
 ```mdx-code-block
   </TabItem>
@@ -114,13 +114,12 @@ This release includes the following fixes:
 
 #### March 31, 2023, Harness version 78914, Harness Delegate version 78904
 
-Harness NextGen release 78914 includes the following changes for the Harness Delegate.
+Harness release 78914 includes the following changes for the Harness Delegate.
 
 ##### What's new
 
 - Added support for the latest Git CLI in the delegate maximal image. (DEL-6121)
-
-- The latest Git CLI is now included by default.
+  - The latest Git CLI is now included by default.
 
 #### Early access
 
