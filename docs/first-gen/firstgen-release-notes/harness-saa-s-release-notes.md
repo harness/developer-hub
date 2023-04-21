@@ -20,7 +20,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### What's new
 
-- Switching accounts now loads accounts on scroll. This increases the modal load time if there are more accounts to be loaded. (PL-30467)
+- Switching accounts now loads accounts on scroll. This increases the modal load time when there are more accounts to load. (PL-30467)
 
 ### April 10, 2023, version 79015
 
