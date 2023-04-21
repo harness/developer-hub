@@ -1,7 +1,7 @@
 ---
-title: Verify Deployment with Prometheus
-description: This topic shows you how to verify deployments with Prometheus.
-sidebar_position: 2
+title: Prometheus
+description: Verify deployments with Prometheus.
+sidebar_position: 9
 helpdocs_topic_id: e9z7944qhw
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -35,11 +35,11 @@ There are two ways to add the Verify step:
 The **Verify** step can be enabled in a CD stage the first time you open the **Execution** settings and select the deployment strategy. When you select the deployment strategy you want to use, there is also an **Enable Verification** option. Select the **Enable Verification** option.  
 Harness will automatically add the **Verify** step. For example, here is a stage where Canary strategy and the **Enable Verification** option were selected.
 
-![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-72.png)
+![](./static/verify-deployment-with-prometheus-72.png)
 
 * **Add the Verify step to an existing Execution setup:** You can also add the Verify step to the Execution section of a CD stage in a Pipeline you previously created. Simply click **Add Step** after the deployment step, and then select **Verify**.
  
-![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-74.png)
+![](./static/verify-deployment-with-prometheus-74.png)
 
 ## Step 2: Enter a Name and Timeout
 
@@ -56,13 +56,13 @@ You can use:
 * `s` for seconds
 * `ms` for milliseconds
 
-The maximum is `53w`.Timeouts can be set at the Pipeline level also.
+The maximum is `53w`. Timeouts can be set at the Pipeline level also.
 
 ## Step 3: Select a Continuous Verification Type
 
-In **Continuous Verification Type**, select a type that matches your [deployment strategy](./verify-deployments-with-the-verify-step.md#step-3-select-a-continuous-verification-type).
+In **Continuous Verification Type**, select a type that matches your [deployment strategy](./../verify-deployments-with-the-verify-step.md#continuous-verification-type).
 
-![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-76.png)
+![](./static/verify-deployment-with-prometheus-76.png)
 
 ## Step 4: Create a Monitored Service
 
@@ -86,32 +86,32 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 
 In **Health Sources**, click **Add**. The **Add New Health Source** settings appear.
 
-![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-77.png)
+![](./static/verify-deployment-with-prometheus-77.png)
 
 1. In **Select health source type**, select Prometheus.
 2. In **Health Source Name**, enter a name for the Health Source.
 3. Under **Connect Health Source**, click **Select Connector**.
 4. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
-   ![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-78.png)
-1. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
-   ![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-79.png)
-2. In **Select Feature**, select the Prometheus feature to be used.
-3. Click **Next**. The **Customize Health Source** settings appear.
+   ![](./static/verify-deployment-with-prometheus-78.png)
+5. After selecting the connector, click **Apply Selected**. The Connector is added to the Health Source.
+   ![](./static/verify-deployment-with-prometheus-79.png)
+6. In **Select Feature**, select the Prometheus feature to be used.
+7. Click **Next**. The **Customize Health Source** settings appear.
 
    The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment.
 
-   ![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-80.png)
+   ![](./static/verify-deployment-with-prometheus-80.png)
    
-1. In **Query Specifications and Mapping**, first click **Map Metric(s) to Harness Services**.
-2. Enter the desired metric name in **Metric** **Name**.
-3. Enter a name for the Prometheus group in **Group Name**.
-4. Click **Build your Query** drop down.
-5. In **Prometheus Metric**, select the Prometheus metric.
-6. In **Filter on Environment**, select a filter.
-7. In **Filter on Service**, select a filter. To add more filters, click **Additional Filter** which is optional.
-8. To add an aggregator for the metric, click **Aggregator** which is also optional.
-9. In **Assign**, you can select the services for which you want to apply the metric.![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-81.png)
-10. Click **Submit**. The Health Source is displayed in the Verify step.
+8. In **Query Specifications and Mapping**, first click **Map Metric(s) to Harness Services**.
+9. Enter the desired metric name in **Metric** **Name**.
+10. Enter a name for the Prometheus group in **Group Name**.
+11. Click **Build your Query** drop down.
+12. In **Prometheus Metric**, select the Prometheus metric.
+13. In **Filter on Environment**, select a filter.
+14. In **Filter on Service**, select a filter. To add more filters, click **Additional Filter** which is optional.
+15. To add an aggregator for the metric, click **Aggregator** which is also optional.
+16. In **Assign**, you can select the services for which you want to apply the metric.![](./static/verify-deployment-with-prometheus-81.png)
+17. Click **Submit**. The Health Source is displayed in the Verify step.
 
 You can add one or more Health Sources for each APM or logging provider.
 
@@ -131,7 +131,7 @@ The Add New Health Source settings appear.
 3. In **Health Source Name**, enter a name for the Health Source.
 4. Under **Connect Health Source** > **Via Cloud Provider**, select Amazon web services.
    
-   ![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-82.png)
+   ![](./static/verify-deployment-with-prometheus-82.png)
 
 5. Under **Connect Health Source**, click **Select Connector**.
 6. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
@@ -155,7 +155,7 @@ Select how long you want Harness to analyze and monitor the logs/APM data points
 
 The recommended **Duration** is **10 min** for logging providers and **15 min** for APM and infrastructure providers.### Step 8: Specify Artifact Tag
 
-In **Artifact Tag**, use a [Harness expression](../../platform/12_Variables-and-Expressions/harness-variables.md) to reference the artifact in the stage Service settings.
+In **Artifact Tag**, use a [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary artifact.
 
@@ -163,11 +163,10 @@ The expression `<+serviceConfig.artifacts.primary.tag>` refers to the primary 
 
 In **Advanced**, you can select the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Step Skip Condition Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy Settings](../../platform/../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Select Delegates with Selectors](../../platform/../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
 
-See [Advanced Settings](./verify-deployments-with-the-verify-step.md#option-advanced-settings).
 
 ## Step 9: Deploy and Review Results
 
@@ -185,7 +184,7 @@ You can see that the verification takes a few minutes.
 
 Once verification is complete, the Verify step shows the following:
 
-![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-83.png)
+![](./static/verify-deployment-with-prometheus-83.png)
 
 The risk level might initially display a number of violations, but the red and orange colored host often change to green over the duration.
 
@@ -197,7 +196,7 @@ The **Summary** section shows the number of logs that are in violation.
 
 Click **Console View** or simply click **View Details** in **Summary** to take a deeper look at verification.
 
-![](../cd-execution/cv-category/static/verify-deployment-with-prometheus-84.png)
+![](./static/verify-deployment-with-prometheus-84.png)
 
 You can use the search option to search for any specific metric or transaction you want.
 

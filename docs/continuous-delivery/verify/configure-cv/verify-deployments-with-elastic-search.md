@@ -1,7 +1,7 @@
 ---
-title: Verify Deployments with Elasticsearch
-description: This topic shows you how to verify deployments with Elasticsearch. 
-sidebar_position: 8
+title: Elasticsearch
+description: Verify deployments with Elasticsearch. 
+sidebar_position: 6
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -92,7 +92,7 @@ You can add a step at various points in the pipeline such as the beginning, end,
    
 3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Artifact](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#artifact).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
    
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
@@ -118,7 +118,7 @@ For instance, if you input the service as `todolist` and the environment as `dev
 :::
 
 
-![Autocreate monitored service](../cd-execution/cv-category/static/cv-sumologic-autocreate-monitoredservice.png)
+![Autocreate monitored service](./static/cv-sumologic-autocreate-monitoredservice.png)
 
 ## Add a health source
 
@@ -223,26 +223,26 @@ The Summary section displays the following details when the Verify step begins:
 
 Note that it may take some time for the analysis to begin. The screenshot below shows a Verification step running in a deployment:
 
-![Verification summary](../cd-execution/cv-category/static/cv-sumologic-verify-summary-view.png)
+![Verification summary](./static/cv-sumologic-verify-summary-view.png)
 
 ## Console view
 
 The console view displays detailed logs of the pipeline, including verification logs. To view the console, select **View Details** in the **Summary** section or turn on the **Console View** toggle switch in the upper-right corner.
 
-![Verification step console view](../cd-execution/cv-category/static/cv-sumologic-verify-console-view.png)
+![Verification step console view](./static/cv-sumologic-verify-console-view.png)
 
 By default, the console displays logs of only the anomalous metrics and affected nodes. To see all logs, clear the **Display only anomalous metrics and affected nodes** check box.
 
-![Verification step console view all data](../cd-execution/cv-category/static/cv-sumologic-verify-view-anamalous-data.png)
+![Verification step console view all data](./static/cv-sumologic-verify-view-anamalous-data.png)
 
 The following screenshots show successful and failed verifications in a deployment run:
 
 **Successful verification**
 
-![Passed verification step](../cd-execution/cv-category/static/cv-sumologic-pipeline-pass.png)
+![Passed verification step](./static/cv-sumologic-pipeline-pass.png)
 
 **Failed verification**
 
-![Failed verification step](../cd-execution/cv-category/static/cv-sumologic-pipeline-fail.png)
+![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
 

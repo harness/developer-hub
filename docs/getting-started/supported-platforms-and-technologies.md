@@ -494,15 +494,14 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.22.0
 - 1.23.0
 - 1.24.3
-- 1.25.6
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](../platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
 Guidelines:
 
-- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.25.6, and so Harness supports 1.24, 1.23, and 1.22.
+- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.24.3, and so Harness supports 1.23, 1.22, and 1.21.
 - Harness supports any other versions of Kubernetes you are using on a best effort basis.
-- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.25.6 occurs on April 15th, we will support it for compatibility by July 15th.
+- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.24.3 occurs on August 15th, we will support it for compatibility by November 15th.
 
 #### Helm
 
@@ -690,15 +689,15 @@ The following table lists Harness support for metrics platforms (APMs).
 
 | Metrics Provider Name                                                                                                               | Metric Pack                    | Deployment Verification      |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------- |
-| [AppDynamics](../continuous-delivery/verify/verify-deployments-with-app-dynamics.md)                              | Business Transactions          | Yes                          |
-| [AppDynamics](../continuous-delivery/verify/verify-deployments-with-app-dynamics.md)                              | JVM and Infra Metrics          | Supported via Custom Metrics |
-| [New Relic](../continuous-delivery/verify/verify-deployments-with-new-relic.md)                                   | Business Transactions          | Yes                          |
+| [AppDynamics](../continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics.md)                              | Business Transactions          | Yes                          |
+| [AppDynamics](../continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics.md)                              | JVM and Infra Metrics          | Supported via Custom Metrics |
+| [New Relic](../continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic.md)                                   | Business Transactions          | Yes                          |
 | New Relic                                                                                                                           | Insights                       | Supported via Custom Metrics |
-| [Google Cloud Operations (GCP)](../continuous-delivery/verify/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
+| [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
 | Google Cloud Operations (GCP)                                                                                                       | Custom metrics from explorer   | No                           |
-| [Prometheus](../continuous-delivery/verify/verify-deployment-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
-| [Datadog](../continuous-delivery/verify/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
-| [Dynatrace](../continuous-delivery/verify/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
+| [Prometheus](../continuous-delivery/verify/configure-cv/verify-deployment-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
+| [Datadog](../continuous-delivery/verify/configure-cv/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
+| [Dynatrace](../continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
 
 ### Log providers
 
@@ -707,14 +706,14 @@ Most logging platforms are also supported.
 |                                                                                                                                     |                             |
 | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | **Log Provider Name**                                                                                                               | **Deployment Verification** |
-| [Splunk](../continuous-delivery/verify/verify-deployments-with-splunk.md)                                         | Yes                         |
-| [Google Cloud Operations (GCP)](../continuous-delivery/verify/verify-deployments-with-google-cloud-operations.md) | Yes                         |
+| [Splunk](../continuous-delivery/verify/configure-cv/verify-deployments-with-splunk.md)                                         | Yes                         |
+| [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Yes                         |
 
 ### Custom health sources
 
 Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
 
-See [Verify Deployments with Custom Health Source](../continuous-delivery/verify/verify-deployments-with-custom-health-metrics.md).
+See [Verify Deployments with Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md).
 
 ## Cloud Cost Management
 
@@ -792,7 +791,7 @@ Harness supports the following Health Sources and Change Sources.
 
 A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
 #### Metrics providers and logging tools
 
@@ -958,16 +957,16 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 |                                     |                       |                       |
 | ----------------------------------- | --------------------- | --------------------- |
 | **Manifest Type**                   | **Required Tool/SDK** | **Certified Version** |
-| Kubernetes                          | kubectl               | v1.25.6               |
+| Kubernetes                          | kubectl               | v1.24.3               |
 |                                     | go-template           | v0.4                  |
-| Helm                                | kubectl               | v1.25.6               |
+| Helm                                | kubectl               | v1.24.3               |
 |                                     | helm                  | v3.9.2                |
-| Helm (chart is stored in GCS or S3) | kubectl               | v1.25.6               |
+| Helm (chart is stored in GCS or S3) | kubectl               | v1.24.3               |
 |                                     | helm                  | v3.9.2                |
 |                                     | chartmuseum           | v0.8.2 and v0.12.0    |
-| Kustomize                           | kubectl               | v1.25.6               |
+| Kustomize                           | kubectl               | v1.24.3               |
 |                                     | kustomize             | v4.5.4                |
-| OpenShift                           | kubectl               | v1.25.6               |
+| OpenShift                           | kubectl               | v1.24.3               |
 |                                     | oc                    | v4                    |
 
 ### Native Helm deployments
@@ -978,7 +977,7 @@ For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platform
 | ----------------- | ----------------------------------------------- | --------------------- |
 | **Manifest Type** | **Required Tool/SDK**                           | **Certified Version** |
 | Helm Chart        | helm                                            | v3.9.2                |
-|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.25.6               |
+|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.24.3               |
 
 ### Install a Delegate with custom SDK and 3rd-party tool binaries
 
