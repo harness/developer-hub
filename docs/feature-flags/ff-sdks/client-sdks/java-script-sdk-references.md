@@ -206,7 +206,7 @@ might consider this when you need to:
 - **Reduce application startup time** by providing default values or a snapshot of evaluations. For example, if your
   application is server-side generated, then it might make sense to retrieve evaluations on the server and provide them
   in the HTML of the page to be injected into the SDK.
-- **Provide network redundancy** by allowing your app to detect network connectivity issues when accessing the service and loading evaluations from another source
+- **Provide network redundancy** by allowing your app to detect network connectivity issues when accessing the service and loading evaluations from another source.
 
 To provide a set of evaluations:
 
