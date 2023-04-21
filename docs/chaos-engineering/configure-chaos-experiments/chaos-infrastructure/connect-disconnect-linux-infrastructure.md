@@ -26,7 +26,7 @@ Described below are the detailed steps to inject chaos and run experiments on LC
 
 ![](./static/linux-user-guide/3.configure-chaos.png)
 
-* Copy the command, select **Done**, and execute the copied command on your terminal.
+* Copy the command, select **Done**, and execute the copied command in your Linux machine.
 
 ![](./static/linux-user-guide/4.deploy-infra.png)
 
@@ -78,7 +78,7 @@ Deleting a Linux infrastructure involves two steps:
 ![](./static/linux-user-guide/12.delete-infra.png)
 
 ### 2. Execute the command to delete the infrastructure
-* It displays a command on the screen. Copy this command, and select **Confirm**. Execute the command on your terminal. 
+* It displays a command on the screen. Copy this command, and select **Confirm**. Execute the command in your Linux machine. 
 
 ![](./static/linux-user-guide/13.execute-command.png)
 
