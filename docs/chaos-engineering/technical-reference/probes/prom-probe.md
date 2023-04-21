@@ -1,5 +1,5 @@
 ---
-title: Prometheus Probe
+title: Prometheus probe
 sidebar_position: 6
 ---
 
