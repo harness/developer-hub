@@ -1,9 +1,9 @@
 {
-  "position": 1,
-  "label": "Chaos Faults",
+  "position": 3,
+  "label": "Chaos faults",
   "collapsible": "true",
   "collapsed": "true",
   "customProps": {
-    "description": "Chaos Faults documentation"
+    "description": "Chaos faults documentation"
   }
 }
