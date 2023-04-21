@@ -1,6 +1,6 @@
 ---
 title: Chaos Infrastructure On OCP Cluster
-sidebar_position: 1
+sidebar_position: 3
 ---
 You can install [chaos infrastructure](./connect-chaos-infrastructures) in your target environment as a Kubernetes service, Linux daemon, and so on. This section walks you through steps to install chaos infrastructure on Openshift cluster.
 
@@ -76,7 +76,7 @@ clusterrole.rbac.authorization.k8s.io/system:openshift:scc:litmus-scc added: ["l
 ```
 
 :::tip
-To learn more about SCC, go to [SCC documentation](../overview/Security/security-templates/openshift-scc).
+To learn more about SCC, go to [SCC documentation](../../technical-reference/security/security-templates/openshift-scc).
 :::
 
 ### 3. Get the manifest to install chaos infrastructure

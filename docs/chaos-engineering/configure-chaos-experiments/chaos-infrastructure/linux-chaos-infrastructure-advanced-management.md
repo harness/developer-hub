@@ -1,6 +1,6 @@
 ---
 title: Linux Chaos Infrastructure Advanced Management
-sidebar_position: 8
+sidebar_position: 5
 ---
 This section describes the advanced setup, infrastructure service, and logs associated with the Linux chaos infrastructure. 
 
