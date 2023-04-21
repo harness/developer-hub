@@ -276,7 +276,7 @@ cf.off()
 ```
 ## Test your app is connected to Harness
 
-When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the flag variation displayed is updated with the variation you toggled.
+When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the flag on and off. Then, check your app to verify if the flag variation displayed is updated with the variation you toggled.
 
 <Sixty />
 
