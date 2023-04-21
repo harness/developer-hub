@@ -158,8 +158,8 @@ const sidebars = {
           type: "category",
           label: "Security Testing Orchestration",
           link: {
-            type: "generated-index",
-            slug: "/security-testing-orchestration",
+            type: "doc",
+            id: "security-testing-orchestration",
             // type: "doc",
             // id: "security-testing-orchestration",
           },
