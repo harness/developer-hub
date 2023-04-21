@@ -1,5 +1,5 @@
 ---
-title: Analyze cost for AWS 
+title: AWS 
 description: This topic describes how to analyze costs for AWS using Perspectives.
 # sidebar_position: 2
 helpdocs_topic_id: 1nf0qcz4o0
@@ -7,6 +7,8 @@ helpdocs_category_id: jkwta6oexk
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Analyze cost for AWS
 
 Harness Cloud Cost Management (CCM) allows you to view your AWS costs at a glance, understand what is costing the most, and analyze cost trends. CCM Perspectives displays the data for all your Amazon Web Services (ECS, EC2, and so on) and also helps you get details of:
 

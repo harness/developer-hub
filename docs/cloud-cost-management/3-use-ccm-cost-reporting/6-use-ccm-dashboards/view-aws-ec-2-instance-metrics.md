@@ -1,5 +1,5 @@
 ---
-title: View AWS EC2 Instance Metrics Dashboard
+title: AWS EC2 Instance Metrics Dashboard
 description: This topic describes how to view the AWS EC2 Instance Metrics Dashboard and get more information about that data.
 # sidebar_position: 2
 helpdocs_topic_id: mwhraec911
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# View AWS EC2 Instance Metrics Dashboard
 
 Harness provides preloaded **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS EC2** **Instance Metrics** **Dashboard** you can:
 

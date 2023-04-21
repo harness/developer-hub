@@ -42,6 +42,7 @@ The following table differentiates between delegate images based on key features
   | tf-config-inspect | 1.0, 1.1 | 1.1 |
   | oc | 4.2.16 | 4.2.16 |
   | kustomize | 3.5.4, 4.0.0  | 4.5.4 |
+  | git | NA | 2.31.1
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
 
 ## docker pull commands
