@@ -16,7 +16,7 @@ export default function CE() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Run chaos experiments</h3>
+        <h3>Ensure app and infrastructure resilience</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>

@@ -54,7 +54,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </p>
           </li>
         </a>
-        <a href="/docs/platform/security/harness-secret-manager-overview">
+        <a href="/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview">
           <li>
             <img src={`${baseUrl}img/secret-mgmt.svg`} />
             <h4>Secrets Managment</h4>
@@ -206,7 +206,7 @@ export default function LearnAboutPlatform(): JSX.Element {
             </a>
           </li>
           <li>
-            <a href="/release-notes/harness-platform">
+            <a href="/release-notes/platform">
               <h4>Harness Platform</h4>
               <p>New features and fixed issues for the Harness Platform</p>
             </a>

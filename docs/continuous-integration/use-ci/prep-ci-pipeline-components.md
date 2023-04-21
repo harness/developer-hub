@@ -43,7 +43,7 @@ In addition to a default [codebase](#codebases), the following settings are conf
 * [Variables](/docs/category/variables-and-expressions)
 * [Notifications](/docs/category/notifications-1)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
-* [Policy Sets](/docs/platform/Policy-as-code/harness-governance-overview)
+* [Policy Sets](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
 
 :::tip
@@ -82,8 +82,8 @@ All stages have an infrastructure definition, which represents the build infrast
 
 :::tip Tutorials
 
-* [Harness Cloud build infrastructure tutorial](/tutorials/build-code/fastest-ci)
-* [Kubernetes cluster build infrastructure tutorial](/tutorials/build-code/build/kubernetes-build-farm)
+* [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci)
+* [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
 
 :::
 

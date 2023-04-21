@@ -11,11 +11,11 @@ helpdocs_is_published: true
 
 Use the following steps to override secrets in a [Maven settings.xml file](https://maven.apache.org/settings.html) by modifying the **Build** stage settings when the pipeline runs.
 
-These steps assume you have an understanding of the [Harness Secret Manager](/docs/platform/Security/harness-secret-manager-overview) or that you know how to [add your own secrets manager](/docs/platform/Security/add-secrets-manager). You should also be familiar with [adding text secrets](/docs/platform/Security/add-use-text-secrets), [adding file secrets](/docs/platform/Security/add-file-secrets), and [adding SSH secrets](/docs/platform/Security/add-use-ssh-secrets).
+These steps assume you have an understanding of the [Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview) or that you know how to [add your own secrets manager](/docs/platform/Secrets/Secrets-Management/add-secrets-manager). You should also be familiar with [adding text secrets](/docs/platform/Secrets/add-use-text-secrets), [adding file secrets](/docs/platform/Secrets/add-file-secrets), and [adding SSH secrets](/docs/platform/Secrets/add-use-ssh-secrets).
 
 ## Create a secret at the account level
 
-Create a [text secret](/docs/platform/Security/add-use-text-secrets) at the account level that contains the content of your `settings.xml` file.
+Create a [text secret](/docs/platform/Secrets/add-use-text-secrets) at the account level that contains the content of your `settings.xml` file.
 
 You need the `Account: Secrets: Create/Edit/View` permission for the Harness Platform to be able to do this. For more information, go to the [Permission Reference](/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference).
 

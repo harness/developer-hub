@@ -12,7 +12,7 @@ helpdocs_is_published: true
 
 ## Continuous Integration
 
-If you're new to Harness Continuous Integration (CI), you can learn about the [CI pipeline concepts](../continuous-integration/ci-quickstarts/ci-pipeline-basics.md), [Harness CI concepts](../continuous-integration/ci-quickstarts/ci-concepts.md), and try some of the [CI tutorials](/tutorials/build-code), such as [Get started for free with the fastest CI on the planet](/tutorials/build-code/fastest-ci).
+If you're new to Harness Continuous Integration (CI), you can learn about the [CI pipeline concepts](../continuous-integration/ci-quickstarts/ci-pipeline-basics.md), [Harness CI concepts](../continuous-integration/ci-quickstarts/ci-concepts.md), and try some of the [CI tutorials](/tutorials/ci-pipelines), such as [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci).
 
 If you're also new to the Harness Platform, you can learn about [Harness' key concepts](./learn-harness-key-concepts.md) and [Harness YAML](#harness-yaml).
 
@@ -63,6 +63,6 @@ The following quickstart guides are available for Feature Flags:
 
 The following quickstart guides are available for Security Testing Orchestration:
 
-* [STO Tutorial 1: Stand-Alone Pipelines](/tutorials/orchestrate-security-tests/sto-standalone-workflows) shows you how to set up a Pipeline with a scanner, run scans, analyze the results, and learn the key features of STO.
+* [STO Tutorial 1: Stand-Alone Pipelines](/tutorials/security-tests/standalone-pipeline) shows you how to set up a Pipeline with a scanner, run scans, analyze the results, and learn the key features of STO.
 
-* [Tutorial 2: Integrated STO Pipelines](/tutorials/orchestrate-security-tests/sto-integrated-workflows) shows you how to integrate STO functionality into CI and CD Pipelines.
+* [Tutorial 2: Integrated STO Pipelines](/tutorials/security-tests/cicd-integrated-pipeline) shows you how to integrate STO functionality into CI and CD Pipelines.

@@ -215,7 +215,7 @@ Harness connects to all of the common cloud platforms and provides a platform-ag
 
    ![](static/kustomize-quickstart-74.png)
 
-The Kubernetes Cluster Connector is covered in detail [here](/docs/platform/Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference), but let's quickly walk through it.
+The Kubernetes Cluster Connector is covered in detail [here](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference), but let's quickly walk through it.
 
 Let's look at the steps:
 

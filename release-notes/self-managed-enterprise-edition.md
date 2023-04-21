@@ -118,7 +118,7 @@ This release includes the following Harness module and component versions.
   - Organization Viewer - All Organization Level Resources: This was a role-assignment within the organization scope and has been removed for all the users.
   - Project Viewer - All Project Level Resources: This was a role-assignment within the project scope and has been removed for all the users.
   
-  For more information, go to [Default User Group](/docs/platform/Role-Based-Access-Control/harness-default-user-groups). (PL-30916)
+  For more information, go to [Default User Group](/docs/platform/User-Management/harness-default-user-groups). (PL-30916)
 
 - In the SCIM API, the Groups endpoint returns all the user groups associated with an account. The ResourceTypes endpoint also returns incorrect information. A code enhancement has fixed this issue. The Groups endpoint returns only externally managed user groups and the ResourceTypes endpoint returns details as per the schema. (PL-30862)
 
@@ -386,7 +386,7 @@ This release includes the following Harness module and component versions.
   
   The templates REST GET call was throwing a 400 Bad Request with error code `INVALID_REQUEST`. We have updated this error code to `RESOURCE_NOT_FOUND_EXCEPTION`. This is in line with best practices.
 
-- Added an **Anonymous** credential option in [OCI Helm Registry connector](https://developer.harness.io/docs/platform/connectors/connect-to-an-artifact-repo/). (CDS-50173, ZD-38625)
+- Added an **Anonymous** credential option in [OCI Helm Registry connector](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo/). (CDS-50173, ZD-38625)
   
   The OCI Helm Registry connector supported anonymous credentials but there was no UI option. This issue has been resolved. The OCI Helm Registry now has an **Anonymous** option. This enables you to connect to public OCI registries from Azure, AWS, JFrog, etc., and deploy Helm charts from these registries.
 

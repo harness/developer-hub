@@ -19,14 +19,14 @@ import { MODULES } from "../../constants";
           module: MODULES.cd,
           description:
             "Deploy a Helm Chart onto your Kubernetes cluster.",
-          link: "/tutorials/deploy-services/kubernetes/helm-chart",
+          link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
         },
         {
           title: "Deploy a Kubernetes Manifest",
           module: MODULES.cd,
           description:
             "Deploy a Kubernetes Manifest onto your Kubernetes cluster.",
-          link: "/tutorials/deploy-services/kubernetes/manifest",
+          link: "/tutorials/cd-pipelines/kubernetes/manifest",
         },
       ],
     },

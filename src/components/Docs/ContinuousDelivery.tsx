@@ -18,7 +18,7 @@ export default function CD() {
             <h1>Continuous Delivery & GitOps Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/deploy-services">
+            <Link href="/tutorials/cd-pipelines">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
                 Tutorials

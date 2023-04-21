@@ -27,7 +27,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
 <tbody>
   <tr valign="top">
     <td>
-      <p> <a href="#see-also">Kubernetes</a></p>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview">Kubernetes</a></p>
     </td>
     <td>
       <ul>
@@ -70,7 +70,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
         <li>Canary</li>
         <li>Blue/Green</li>
       </ul>
-      <p>See <a href="#notes">Note on Kubernetes</a> for more deatils.</p>
+      <p>See <a href="#notes">Note on Kubernetes</a> for more details.</p>
     </td>
     <td>
       <p> <strong>Rolling:</strong></p>
@@ -89,7 +89,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="#see-also">Helm v3.0</a></p>
+      <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart">Helm v3.0</a></p>
     </td>
     <td>
       <p> <strong>Docker Image Repo:</strong></p>
@@ -153,9 +153,10 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <p> Previous Analysis - Synthetic Load</p>
     </td>
   </tr>
+  
   <tr valign="top">
     <td>
-      <p><a href="#see-also">Serverless.com Framework - Lambda</a></p>
+      <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart">Serverless.com Framework - Lambda</a></p>
     </td>
     <td>
       <ul>
@@ -175,7 +176,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="#see-also">Azure Web App</a></p>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure Web App</a></p>
     </td>
     <td>
       <p> <strong>Container and non-container:</strong></p>
@@ -212,10 +213,10 @@ The following table lists Harness support for deployment platforms, artifacts, s
         <li>Previous Analysis - Synthetic Load</li>
       </ul>
     </td>
-  </tr>
+  </tr>  
   <tr valign="top">
     <td>
-      <p> <a href="#see-also">Secure Shell (SSH)</a></p>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng">Secure Shell (SSH)</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -260,8 +261,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      (/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
-      <p>Windows Remote Management (WinRM)</p>
+      <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial">Windows Remote Management (WinRM)</a>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -295,10 +295,9 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="#see-also">AWS ECS</a></p>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial">AWS ECS</a></p>
     </td>
     <td>
-      <p> <strong>Non-container:</strong></p>
       <ul>
         <li>Docker Registry</li>
         <li>Artifactory</li>
@@ -335,6 +334,139 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <p>For Fargate: The <code>complete-docker-id</code><br/>must be present in the monitoring provider.</p>
     </td>
   </tr>
+    <tr valign="top">
+    <td>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial">AWS ASG</a></p>
+    </td>
+    <td>AWS AMI Repository (private AMIs only)
+    </td>
+    <td><p> Static Infrastructure:</p>
+      <ul class="">
+        <li>AWS ASG</li>
+        <li>SpotInst-based ASG</li>
+        <li>AWS Launch Template/Configuration</li></ul>
+    </td>
+    <td>
+      <ul>
+        <li>Canary</li>
+        <li>Rolling</li>
+        <li>Blue/Green</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li> <strong>Canary:</strong> Canary Analysis - Realtime Load</li>
+        <li> <strong>Blue/Green:</strong> Previous Analysis - Synthetic Load</li>
+        <li> <strong>Rolling:</strong> Previous Analysis - Synthetic Load</li>
+      </ul>
+    </td>
+  </tr>
+  
+  <tr valign="top">
+    <td>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments">AWS Lambda</a></p>
+    </td>
+    <td>
+      <p> <strong>Container and non-container:</strong></p>
+      <ul>
+        <li>AWS S3</li>
+        <li>AWS ECR</li>
+      </ul>
+    </td>
+    <td>
+      <p> <strong>Static Infrastructure:</strong><br/>AWS Lambda</p>
+    </td>
+    <td>
+      Basic
+    </td>
+    <td>
+      <p> <strong>Basic:</strong></p>
+      <ul>
+        <li>Previous Analysis - Synthetic Load</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart#tas-execution-strategies">VMware Tanzu Application Service</a></td>
+    <td valign="top">
+    <p>Cloud Foundry CLI: Version 6 and 7.</p>
+    <p> Artifact Repo:</p>
+    <ul class="">
+      <li>Artifactory</li>
+      <li>Nexus</li>
+      <li>Amazon S3</li>
+      <li>Google Container Registry (GCR)</li>
+      <li>Amazon Elastic Container Registry (ECR)</li>
+      <li>Azure Container Registry (ACR)</li>
+      <li>Google Artifact Registry</li>
+      <li>GitHub Package Registry</li>
+      <li>Custom registry</li>
+      <li>any Docker Registry such as DockerHub</li>
+    </ul>
+    <p> Manifest Repo:</p><ul class=""><li>Github</li><li>GitLab</li><li>Bitbucket</li><li> Code Commit (Not Certified)</li><li> Google Cloud Source Repository (Not Certified)</li></ul></td>
+  <td valign="top">
+    <p> PAS/PCF</p>
+  </td>
+  <td valign="top">
+    <ul class="">
+      <li>Canary</li>
+      <li>Blue/Green</li>
+      <li>Rolling</li>
+      <li>Basic</li>
+    </ul>
+  </td>
+  <td valign="top">
+    <p> Rolling:</p>
+    <ul class="">
+      <li>Previous Analysis - Synthetic Load</li>
+    </ul>
+    <p> Canary:</p>
+    <ul class="">
+      <li>Canary Analysis - Realtime Load</li>
+    </ul>
+    <p> Blue/Green:</p>
+    <ul class="">
+      <li>Previous Analysis - Synthetic Load</li>
+    </ul>
+  </td>
+</tr>
+<tr>
+  <td><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions">Google Function</a></td>
+  <td>
+  <p>Function definition:</p>
+  <ul>
+  <li>Github</li>
+  <li>GitLab</li>
+  <li>Bitbucket</li>
+  </ul>
+  <p>Artifacts:</p>
+  <ul>
+    <li>ZIP file in Google Cloud Storage</li>
+  </ul>
+  </td>
+  <td>Google Cloud Functions</td>
+  <td>
+  <ul>
+    <li>Basic</li>
+    <li>Canary</li>
+    <li>Blue Green</li>
+  </ul>
+  </td>
+  <td>
+      <p> Basic:</p>
+    <ul class="">
+      <li>Previous Analysis - Synthetic Load</li>
+    </ul>
+    <p> Canary:</p>
+    <ul class="">
+      <li>Canary Analysis - Realtime Load</li>
+    </ul>
+    <p> Blue Green:</p>
+    <ul class="">
+      <li>Previous Analysis - Synthetic Load</li>
+    </ul>
+  </td>
+</tr>
 </tbody>
 </table>
 
@@ -362,14 +494,15 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.22.0
 - 1.23.0
 - 1.24.3
+- 1.25.6
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](../platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
 Guidelines:
 
-- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.24.3, and so Harness supports 1.23, 1.22, and 1.21.
+- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.25.6, and so Harness supports 1.24, 1.23, and 1.22.
 - Harness supports any other versions of Kubernetes you are using on a best effort basis.
-- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.24.3 occurs on August 15th, we will support it for compatibility by November 15th.
+- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.25.6 occurs on April 15th, we will support it for compatibility by July 15th.
 
 #### Helm
 
@@ -385,36 +518,42 @@ The maximum number of artifact image tags fetched by Harness that is 10000.
 
 The following table lists Harness integrations and their artifact source support:
 
-|                    |                |         |         |         |                 |             |            |                              |                              |             |            |
-| ------------------ | -------------- | ------- | ------- | ------- | --------------- | ----------- | ---------- | ---------------------------- | ---------------------------- | ----------- | ---------- |
-|                    | **Docker Hub** | **ECR** | **GCR** | **ACR** | **Artifactory** | **Nexus 3** | **Custom** | **Google Artifact Registry** | **Github Artifact Registry** | **Jenkins** | **AWS S3** |
-| **Kubernetes**     | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         | ✅                           | ✅                           |             |            |
-| **Helm**           | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
-| **AWS ECS**        | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
-| **Azure Web Apps** | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          |            |                              |                              |             |            |
-| **SSH**            |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
-| **WinRM**          |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
-| **Serverless.com Framework**     |                | ✅      |         |         | ✅              |             |            |                              |                              |             | ✅         |
+|                              | **Docker Hub** | **ECR** | **GCR** | **GCS** | **ACR** | **Artifactory** | **Nexus 3** | **Custom** | **Google Artifact Registry** | **Github Artifact Registry** | **Jenkins** | **AWS S3** |
+| ---------------------------- | -------------- | ------- | ------- | --- | ------- | --------------- | ----------- | ---------- | ---------------------------- | ---------------------------- | ----------- | ---------- |
+| **Kubernetes**               | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          | ✅         | ✅                           | ✅                           |             |            |
+| **Helm**                     | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
+| **AWS ECS**                  | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
+| **AWS ASG**                  |                |         |         |     |         |                 |             |            |                              |                              |             |            |
+| **AWS Lambda**               |                | ✅      |         |     |         |                 |             |            |                              |                              |             | ✅         |
+| **Azure Web Apps**           | ✅             |         |         |     | ✅      | ✅              | ✅          |            |                              |                              |             |            |
+| **Tanzu**                    | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          |            |                              |                              |             |            |
+| **SSH**                      |                |         |         |     |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
+| **WinRM**                    |                |         |         |     |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
+| **Serverless.com Framework** |                | ✅      |         |     |         | ✅              |             |            |                              |                              |             | ✅         |
+| **Google Cloud Function**    |                |         |         | ✅    |         |                 |             |            |                              |                              |             |            |
+
 
 #### Manifest and Config file Store Support
 
 The following table lists where you can store your manifests or config files for each integration.
 
-|                               |            |            |               |                       |             |              |               |            |            |                          |                           |
+
+
+|                               | **Github** | **Gitlab** | **Bitbucket** | **Harness File Store** | **Any Git** | **OCI Helm** | **HTTP Helm** | **AWS S3** | **Custom** | **Google Cloud Storage** | **Inherit from manifest** |
 | ----------------------------- | ---------- | ---------- | ------------- | --------------------- | ----------- | ------------ | ------------- | ---------- | ---------- | ------------------------ | ------------------------- |
-|                               | **Github** | **Gitlab** | **Bitbucket** | **Harness Filestore** | **Any Git** | **OCI Helm** | **HTTP Helm** | **AWS S3** | **Custom** | **Google Cloud Storage** | **Inherit from manifest** |
 | **Kubernetes**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
 | **Values YAML**               | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          | ✅                        |
 | **Kustomize**                 | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          |                           |
-| **Kustomize\*\***Patches\*\*  | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
-| **Openshift\*\***Template\*\* | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
-| **Openshift\*\***Params\*\*   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
+| **Kustomize Patches**  | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
+| **OpenShift Template** | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
+| **OpenShift Params**   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
 | **AWS ECS**                   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
 | **Helm Chart**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
 | **Serverless.com Framework**            | ✅         | ✅         | ✅            |                       | ✅          |              |               |            |            |                          |                           |
 | **SSH**                       |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **WinRM**                     |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **Azure Web Apps**            |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
+| **Google Cloud Function**     | ✅         | ✅         | ✅            | ✅                    | ✅          |              |              |           |           |                         |                         |
 
 #### Terraform version support
 
@@ -764,15 +903,15 @@ See [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-c
 
 The following table lists Harness support for cloud platform secrets management services.
 
-See [Harness Secrets Management Overview](../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager).
 
 | Provider Name                                                               | Key Encryption Support | Encrypted Data Storaged with Harness | Support for Referencing Existing Secrets |
 | --------------------------------------------------------------------------- | ---------------------- | ------------------------------------ | ---------------------------------------- |
-| [AWS KMS](../platform/6_Security/7-add-an-aws-kms-secrets-manager.md)       | Yes                    | Yes                                  | No                                       |
-| [AWS Secret Manager](../platform/6_Security/6-add-an-aws-secret-manager.md) | Yes                    | No                                   | Yes                                      |
-| [Hashicorp Vault](../platform/6_Security/12-add-hashicorp-vault.md)         | Yes                    | No                                   | Yes                                      |
-| [Azure Key Vault](../platform/6_Security/8-azure-key-vault.md)              | Yes                    | No                                   | Yes                                      |
-| [Google KMS](../platform/6_Security/10-add-google-kms-secrets-manager.md)   | Yes                    | Yes                                  | No                                       |
+| [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager)       | Yes                    | Yes                                  | No                                       |
+| [AWS Secret Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager) | Yes                    | No                                   | Yes                                      |
+| [Hashicorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault)         | Yes                    | No                                   | Yes                                      |
+| [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault)              | Yes                    | No                                   | Yes                                      |
+| [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager)   | Yes                    | Yes                                  | No                                       |
 
 ## Harness Self-Managed Enterprise Edition
 
@@ -819,16 +958,16 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 |                                     |                       |                       |
 | ----------------------------------- | --------------------- | --------------------- |
 | **Manifest Type**                   | **Required Tool/SDK** | **Certified Version** |
-| Kubernetes                          | kubectl               | v1.24.3               |
+| Kubernetes                          | kubectl               | v1.25.6               |
 |                                     | go-template           | v0.4                  |
-| Helm                                | kubectl               | v1.24.3               |
+| Helm                                | kubectl               | v1.25.6               |
 |                                     | helm                  | v3.9.2                |
-| Helm (chart is stored in GCS or S3) | kubectl               | v1.24.3               |
+| Helm (chart is stored in GCS or S3) | kubectl               | v1.25.6               |
 |                                     | helm                  | v3.9.2                |
 |                                     | chartmuseum           | v0.8.2 and v0.12.0    |
-| Kustomize                           | kubectl               | v1.24.3               |
+| Kustomize                           | kubectl               | v1.25.6               |
 |                                     | kustomize             | v4.5.4                |
-| OpenShift                           | kubectl               | v1.24.3               |
+| OpenShift                           | kubectl               | v1.25.6               |
 |                                     | oc                    | v4                    |
 
 ### Native Helm deployments
@@ -839,7 +978,7 @@ For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platform
 | ----------------- | ----------------------------------------------- | --------------------- |
 | **Manifest Type** | **Required Tool/SDK**                           | **Certified Version** |
 | Helm Chart        | helm                                            | v3.9.2                |
-|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.24.3               |
+|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.25.6               |
 
 ### Install a Delegate with custom SDK and 3rd-party tool binaries
 
@@ -860,7 +999,7 @@ Harness includes native TUF support via the following:
 - OCI image registry support:
   - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
 - Enforce the rotation of secrets and key management practices:
-  - Harness provides [token key rotation natively](https://developer.harness.io/docs/platform/role-based-access-control/add-and-manage-api-keys/#rotate-token).
+  - Harness provides [token key rotation natively](/docs/platform/User-Management/add-and-manage-api-keys#rotate-token).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
 
 ## Harness Open Source Software (OSS) components
