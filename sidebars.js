@@ -92,10 +92,10 @@ const sidebars = {
             type: "doc",
             id: "feature-flags",
           },
+          */
+          },
           customProps: {
             description: "Learn how to change your software's functionality without deploying new code.",
-          },
-          */
           },
           collapsed: true,
           items: [
@@ -142,10 +142,10 @@ const sidebars = {
             type: "doc",
             id: "security-testing-orchestration",
           },
+          */
+          },
           customProps: {
             description: "Learn how to use real-time insights to improve the reliability of applications and services.",
-          },
-          */
           },
           collapsed: true,
           items: [
@@ -170,10 +170,10 @@ const sidebars = {
             type: "doc",
             id: "security-testing-orchestration",
           },
+          */
+          },
           customProps: {
             description: "Learn how to left shift your security testing.",
-          },
-          */
           },
           collapsed: true,
           items: [
@@ -197,12 +197,12 @@ const sidebars = {
             /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "chaos-engineering",
+          },         
+          */
           },
           customProps: {
             description: "Learn how to build and validate resilience.",
-          },            
-          */
-          },
+          },   
           collapsed: true,
           items: [
             {
@@ -225,12 +225,12 @@ const sidebars = {
             /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "platform",
+          },         
+           */
           },
           customProps: {
             description: "Learn how to manage Harness features that integrate with all modules.",
-          },            
-           */
-          },
+          },   
           collapsed: true,
           items: [
             {
@@ -253,12 +253,12 @@ const sidebars = {
             /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "self-managed-enterprise-edition",
+          },          
+            */
           },
           customProps: {
             description: "Learn how to use this end-to-end solution for continuous, self-managed delivery.",
-          },            
-            */
-          },
+          },  
           collapsed: true,
           items: [
             {
@@ -282,10 +282,10 @@ const sidebars = {
             type: "doc",
             id: "first-gen",
           },
+          */
+          },
           customProps: {
             description: "Learn how to use Harness FirstGen modules.",
-          },
-          */
           },
           collapsed: true,
           items: [
@@ -315,12 +315,12 @@ const sidebars = {
             /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "frequently-asked-questions",
+          },           
+          */
           },
           customProps: {
             description: "Find answers to frequently asked questions.",
-          },            
-          */
-          },
+          }, 
           collapsed: true,
           items: [
             {
@@ -367,12 +367,12 @@ const sidebars = {
             /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "troubleshooting",
+          },         
+            */
           },
           customProps: {
             description: "Find details about common error messages, what causes them, and solutions.",
-          },            
-            */
-          },
+          },   
           collapsed: true,
           items: [
             {
