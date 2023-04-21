@@ -93,8 +93,6 @@ const sidebars = {
             type: "doc",
             id: "feature-flags",
           },
-          */
-          },
           customProps: {
             description: "Learn how to change your software's functionality without deploying new code.",
           },
