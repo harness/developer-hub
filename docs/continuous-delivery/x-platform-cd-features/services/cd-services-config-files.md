@@ -107,16 +107,16 @@ You can attach multiple files to one config file. All the files must be either p
 
 ## Referencing and encoding config files
 
-Files added in the **Config Files** section of a service are referenced using the `<+configFile.getAsString("config_file_Id")>` Harness expression:
+Files added in the **Config Files** section of a service are referenced using the Harness expression `<+configFile.getAsString("config_file_Id")>`.
 
-* `<+configFile.getAsString("config_file_Id")>` - Plain text file contents.
-* `<+configFile.getAsBase64("config_file_Id")>` - Base64-encoded file contents.
+* Plain text file contents: `<+configFile.getAsString("config_file_Id")>`
+* Base64-encoded file contents: `<+configFile.getAsBase64("config_file_Id")>`
 
 ### Use Base64 to avoid new lines
 
 If you are going to use a config file in a manifest or shell script, be aware that `<+configFile.getAsString()>` can cause problems by adding new lines to your manifest (unless you have formatted the file very carefully).
 
-Instead, use `<+configFile.getAsBase64()>`. This will ensure that the contents of the file are rendered as a single line.
+Instead, use `<+configFile.getAsBase64()>`. This ensures that the contents of the file are rendered as a single line.
 
 In a Shell Script step or service command it would look like this:
 
@@ -256,7 +256,7 @@ The priority from top to bottom is:
 
 When you have Variables with the same name at two or more of the environment Service Overrides, Configuration, and the service itself, the standard override priority is applied.
 
-## Use Copy Configs Command
+## Use the Copy Configs command
 
 In most cases, you can use the Copy command to copy the config files to your target hosts. 
 
