@@ -1,10 +1,8 @@
 ---
-title: Continuous Verification - Results
-sidebar_position: 2
+title: Interpreting results
+sidebar_position: 1
 description: How to interpret the metric and log results of Continuous Verification. 
-keywords: [Continuous Verification, Results]
-tags: [Continuous Verification]
-slug: /continuous-delivery/continuous-verification-results
+slug: /continuous-delivery/verify/configure-cv/continuous-verification-results
 ---
 
 # Interpretation of Continuous Verification Results 
@@ -69,7 +67,7 @@ This view explains the actual metric data along with comparative analysis, the m
 
 In these metric graphs, the Canary/After nodes are called “Test Host” and the Primary/Before nodes are called “Control Host”.
 
-![Metric Detialed View](static/cv_results/metric_detailed_view.png)
+<docimage path={require('./static/cv_results/metric_detailed_view.png')} />
 
 In the above example there are two Canary nodes : “test-host-1” and “test-host-2”. As we know each one the canary node is compared against all the Primary nodes as part of verification, but in the result graph the user is shown only that comparison where deviation is minimum. In the above example, we can see that the “test-host-1” metric graph is shown against the Primary node “control-host-1” while for the “test-host-2” the metric graph is shown against the Primary node “control-host-2”.
 
