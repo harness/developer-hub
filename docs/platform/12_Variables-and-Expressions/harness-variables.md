@@ -1240,6 +1240,18 @@ export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
 ```
 The `${HARNESS_KUBE_CONFIG_PATH}` expression can be used in scripts in Shell script steps. It cannot be used in other scripts such as a Terraform script.
 
+### kubernetes.release.revision
+
+Harness expression for the deployment revision number.
+
+You can use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. 
+
+This will help you to:
+  - Reference the current Harness release number as part of your manifest.
+  - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
+
+**Important:** Users should update their delegate to version 1.0.79100 to use the expression.
+
 ## Tag expressions
 
 You can reference tags using Harness expressions.
