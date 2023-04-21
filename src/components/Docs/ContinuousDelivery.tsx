@@ -33,7 +33,7 @@ export default function CD() {
             <Link href="https://apidocs.harness.io/">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_documentation.svg`} />
-                API
+                API Reference
               </button>
             </Link>
             <Link href="https://registry.terraform.io/providers/harness/harness/latest/docs">

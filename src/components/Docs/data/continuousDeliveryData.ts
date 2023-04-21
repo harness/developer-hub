@@ -47,7 +47,7 @@ export const featuredTutorials: CardItem[] = [
             "Learn the basics of Harness Continuous Delivery (CD)",
           link: "/docs/category/get-started",
           // @Roshni: sample code for the sub categories -->
-          children: [
+          /*children: [
             {
               title: "CD pipeline basics",
               module: MODULES.cd,
@@ -90,7 +90,7 @@ export const featuredTutorials: CardItem[] = [
                 "",
               link: "/docs/continuous-delivery/integrations/cd-integrations",
             },
-          ]
+          ]*/
           // <-- sample code end
         },
         {
@@ -99,7 +99,7 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Upgrade from CD FirstGen to NextGen.",
           link: "/docs/category/upgrading-cd",
-          children: [
+          /*children: [
             {
               title: "Upgrade to NextGen",
               module: MODULES.cd,
@@ -129,16 +129,15 @@ export const featuredTutorials: CardItem[] = [
                 "",
               link: "/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq",
             },
-          ]
+          ]*/
         },
-        
         {
-          title: "Key concepts",
+          title: "Common CD features across platforms",
           module: MODULES.cd,
           description:
             "Learn about the CD features that are common to all deployment types.",
           link: "/docs/category/cross-platform-cd-features",
-          children: [
+          /*children: [
             {
               title: "Services",
               module: MODULES.cd,
@@ -182,7 +181,7 @@ export const featuredTutorials: CardItem[] = [
                 "",
               link: "/docs/category/advanced-cd-use-cases",
             },
-          ]
+          ]*/
         },
       ],
     },
@@ -197,7 +196,7 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Create CD pipelines that deploy applications on different platforms using Harness.",
           link: "/docs/category/deploy-services-on-different-platforms",
-          children: [
+          /*children: [
             {
               title: "Kubernetes",
               module: MODULES.cd,
@@ -275,7 +274,7 @@ export const featuredTutorials: CardItem[] = [
                 "Deploy non-native applications using custom Deployment Templates in Harness.",
               link: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
             },
-          ]  
+          ]*/  
         }, 
         {
           title: "Manage deployments",
@@ -283,7 +282,7 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Control deployment resources and schedules.",
           link: "/docs/category/manage-deployments",
-          children: [
+          /*children: [
             {
               title: "Concepts and strategies",
               module: MODULES.cd,
@@ -333,7 +332,7 @@ export const featuredTutorials: CardItem[] = [
                 "",
               link: "/docs/continuous-delivery/manage-deployments/deployment-freeze",
             },
-          ]  
+          ]*/  
         },
         {
           title: "Monitor deployments",
@@ -341,7 +340,7 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Use DORA and other advanced metrics for deployments.",
           link: "/docs/category/monitor-deployments",
-          children: [
+          /*children: [
             {
               title: "CD dashboard",
               module: MODULES.cd,
@@ -370,7 +369,7 @@ export const featuredTutorials: CardItem[] = [
                 "",
               link: "/docs/continuous-delivery/monitor-deployments/view-services-current-gen-dashboard",
             },
-          ]  
+          ]*/  
         },
         {
           title: "Provision infrastructure",
@@ -378,7 +377,7 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Provision infrastructure as part of your deployment process.",
           link: "/docs/category/provision-infrastructure",
-          children: [
+          /*children: [
             {
               title: "Terraform",
               module: MODULES.cd,
@@ -400,7 +399,7 @@ export const featuredTutorials: CardItem[] = [
                 "",
               link: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
             },
-          ]  
+          ]*/  
         },
         {
           title: "GitOps",
@@ -408,7 +407,7 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Perform GitOps deployments in Harness.",
           link: "/docs/category/gitops",
-          children: [
+          /*children: [
             {
               title: "Overview",
               module: MODULES.cd,
@@ -465,7 +464,7 @@ export const featuredTutorials: CardItem[] = [
                 "",
               link: "/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial",
             },
-          ]
+          ]*/
         },
         {
           title: "Continuous Verification (CV)",
@@ -473,7 +472,7 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Use Harness Continuous Verification (CV) to verify your deployments.",
           link: "/docs/category/verify-deployments",  
-          children: [
+          /*children: [
             {
               title: "Verify step",
               module: MODULES.cd,
@@ -558,7 +557,28 @@ export const featuredTutorials: CardItem[] = [
                 "",
               link: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
             },
-          ]  
+          ]*/ 
+        },
+      ],
+    },
+    {
+      name: "Help and FAQs",
+      description:
+        "",
+      list: [
+        {
+          title: "Troubleshoot CD",
+          module: "MODULES.cd",
+          description:
+            "",
+          link: "/docs/troubleshooting/troubleshooting-nextgen#continuous-delivery",
+        },
+        {
+          title: "CD FAQs",
+          module: "ci",
+          description:
+            "",
+          link: "/docs/frequently-asked-questions/harness-faqs/continuous-delivery-faqs",
         },
       ],
     },
