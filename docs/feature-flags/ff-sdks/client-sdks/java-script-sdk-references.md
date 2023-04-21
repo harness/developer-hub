@@ -95,7 +95,7 @@ Make sure you install the latest version of the SDK, which you can view in [GitH
 To initialize the JavaScript SDK, you need to:
 
 1. Add your Client SDK key to connect to your Harness Environment.
-2. Add a target that you want to Evaluate against a Feature Flag.
+2. Add a target that you want to evaluate against a Feature Flag.
 3. (Optional) Configure the SDK.
 4. Complete the initialization with the SDK using the client SDK Key, target, and Configuration parameters you set.
 
