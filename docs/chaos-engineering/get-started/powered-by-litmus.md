@@ -38,5 +38,5 @@ Harness chaos engineering module adds the following additional capabilities:
 
 In addition to the above features, the chaos engineering module has the following integrations in the Harness platform:
 
-- [Harness Continuous Delivery (CD)](../../../tutorials/run-chaos-experiments/integration-with-harness-cd)
+- [Harness Continuous Delivery (CD)](/tutorials/run-chaos-experiments/integration-with-harness-cd)
 
