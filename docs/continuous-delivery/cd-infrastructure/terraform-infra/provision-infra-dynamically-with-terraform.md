@@ -137,7 +137,7 @@ Here, you'll add a connection to the Terraform script repo.
 2. Click the provider where your files are hosted.
    
    ![](./static/provision-infra-dynamically-with-terraform-02.png)
-3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo),  [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**) or [AWS Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
 
 If you're simply experimenting, you can use [HashiCorp's Kubernetes repo](https://github.com/hashicorp/terraform-provider-kubernetes/tree/main/_examples/gke).
 
@@ -162,6 +162,16 @@ You can jump ahead to the Terraform Apply step below. The following sections cov
 ### Artifactory
 
 See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+### AWS S3
+
+1. In **Region**, select the region where your bucket is stored.
+2. In **Bucket**, select the bucket where your Terraform files are stored (all buckets from the selected region that are available to the connector will be fetched).
+3. In **Folder Path**, enter the path from the root of the repo to the folder containing the script.
+
+   ![](./static/provision-infra-dynamically-with-terraform-09.png)
+
+Harness will fetch all files from the specified folder.
 
 ### Source Module
 
@@ -272,23 +282,37 @@ See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 You can connect Harness to remote variable files.
 
 1. Click **Add Terraform Var File**, and then click **Add Remote**.
-2. Select your Git provider (GitHub, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
+2. Select your provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
 3. Click **Continue**. The **Var File Details** settings appear.
-   
+
+
+#### Git providers
    ![](./static/provision-infra-dynamically-with-terraform-04.png)
-4. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
+
+1. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
    
    For example, if the **Identifier** is **myremotevars** you could refer to its content like this:
    
    `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths>`
-5. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
-6. In **Branch**, enter the name of the branch.
-7. In **File Paths**, add one or more file paths from the root of the repo to the variable file.
-8. Click **Submit**. The remote file(s) are added.
+2. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
+3. In **Branch**, enter the name of the branch.
+4. In **File Paths**, add one or more file paths from the root of the repo to the variable file.
+5. Click **Submit**. The remote file(s) are added.
 
 #### Artifactory
 
 See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+#### AWS S3
+
+1. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
+2. In **Region**, select the region where your bucket is stored.
+3. In **Bucket**, select the bucket where your Terraform var files are stored (all buckets from the selected region that are available to the connector will be fetched).
+4. In **File Paths**, add one or more file paths from the root of the bucket to the variable file.
+
+   ![](./static/provision-infra-dynamically-with-terraform-10.png)
+
+ Click **Submit**. The remote file(s) are added.
 
 ## Backend Configuration
 
