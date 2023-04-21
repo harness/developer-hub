@@ -1,13 +1,13 @@
 {
   "position": 5,
-  "label": "Chaos Hubs",
+  "label": "Chaos hubs",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Chaos Hubs"
+      "title":"Chaos hubs"
    },
   "customProps": {
-    "description": "Chaos Hubs documentation"
+    "description": "Chaos hubs documentation"
   }
 }

@@ -1,6 +1,6 @@
 ---
 id: chaos-faults
-title: Chaos Faults
+title: Chaos faults
 ---
 
 ```mdx-code-block
