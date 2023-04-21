@@ -35,9 +35,38 @@
     a:hover {
         text-decoration: var(--ifm-link-decoration);
     }
+    .btn{
+        padding: 12px 20px;
+        height: 48px;
+        // Gray scale 100 F3F3FA
+        background: var(--gray-100);
+        // Grayscale 300
+        border: 1px solid var(--gray-300);
+        border-radius: 4px;
+        font-weight: 600;
+        font-size: 16px;
+        line-height: 24px;
+        color: var(--gray-600);
+        white-space: nowrap;
+        display: flex;
+        cursor: pointer;
+        min-width: 180px;
+        &:hover {
+            // text-decoration: underline;
+            color: var(--primary-8);
+        }
+        img {
+            margin-right: 4px;
+            height: 24px;
+            width: auto;
+        }
+    }
 }
 .btnContainerCD {
-    max-width: 410px;
+    max-width: 446px;
+    .btn {
+        min-width: 215px;
+    }
 }
 .link{
     background: transparent;
@@ -51,32 +80,6 @@
     &:hover {
         text-decoration: underline;
         color: var(--primary-8);
-    }
-}
-.btn{
-    padding: 12px 20px;
-    height: 48px;
-    // Gray scale 100 F3F3FA
-    background: var(--gray-100);
-    // Grayscale 300
-    border: 1px solid var(--gray-300);
-    border-radius: 4px;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    color: var(--gray-600);
-    white-space: nowrap;
-    display: flex;
-    cursor: pointer;
-    min-width: 180px;
-    &:hover {
-        // text-decoration: underline;
-        color: var(--primary-8);
-    }
-    img {
-        margin-right: 4px;
-        height: 24px;
-        width: auto;
     }
 }
 .spaceBetween{
