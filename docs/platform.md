@@ -9,6 +9,6 @@ title: Platform
 
 <!-- Custom component -->
 
-import Platform from '@site/src/components/Docs/platform';
+import Platform from '@site/src/components/Docs/Platform';
 
 <Platform />
