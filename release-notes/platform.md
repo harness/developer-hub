@@ -49,7 +49,7 @@ This release does not include any early access feature.
 ### Fixed issues
 
 - The creation of secrets on Custom Secret Manager validates the existence of those secrets. (PL-31715)
-  A code enhancement to remove secret validation during Custom Secret manager creation has fixed the issue.
+  A code enhancement to remove secret validation during Custom Secret Manager creation has fixed the issue.
 
 - The tooltip for **Optional Configuration** in **Run Step** flashes in and out in loop making it difficult to read the text.(PL-32462, ZD-42201)
   A code enhancement fixed this issue.
