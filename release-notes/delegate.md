@@ -27,7 +27,7 @@ Harness NextGen release 791xx includes the following changes for the Harness Del
 
 This release introduces the following new features and enhancements:
 
-- Added the following metrics for immutable delegates that you can scrapge via prometheus: (DEL-5363)
+- Added the following metrics for immutable delegates that you can scrape via prometheus: (DEL-5363)
 
     - io_harness_delegate_connected
     - io_harness_delegate_disconnected 
