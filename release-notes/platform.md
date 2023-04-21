@@ -77,7 +77,7 @@ This release does not include any early access feature.
 #### April 10, 2023, version 79015
 
 ##### What's new
-- You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
+- You can now navigate to the parent organization by selecting its name on a project details page. (PL-32182, ZD-41785)
 
 - Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
   * Github
