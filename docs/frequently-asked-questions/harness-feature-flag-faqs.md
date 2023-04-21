@@ -1,14 +1,15 @@
 ---
-title: Feature Flags (FF) FAQs
-description: This article addresses some frequently asked questions about Harness Feature Flags (FF).
-# sidebar_position: 2
+title: Feature Flags FAQs
+sidebar_label: Feature Flags
+description: Frequently asked questions about Harness Feature Flags.
+sidebar_position: 30
 helpdocs_topic_id: oo05aywiel
 helpdocs_category_id: y7j7dl46ua
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This article addresses some frequently asked questions about Harness Feature Flags (FF).
+This topic addresses some frequently asked questions about Harness Feature Flags (FF).
 
 In this topic:
 

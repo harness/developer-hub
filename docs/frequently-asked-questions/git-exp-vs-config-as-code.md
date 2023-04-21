@@ -1,7 +1,8 @@
 ---
 title: Git Experience vs Configuration as Code FAQs
-description: Learn about Git Experience in NextGen and Config as code in FirstGen.
-
+sidebar_label: Git Experience vs Configuration as Code
+description: Learn about Git Experience in NextGen and Configuration as Code in FirstGen.
+sidebar_position: 70
 ---
 
 ## What is Git Experience in NextGen?

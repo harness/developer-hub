@@ -187,7 +187,7 @@ For Kubernetes delegates, you can increase the number of replicas run using a si
 
 #### No delegates could reach the resource
 
-This error means that no delegate could meet the URL criteria for validation. For more information, see [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
+This error means that no delegate could meet the URL criteria for validation. For more information, see [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-harness-manager-picks-delegates).
 
 #### Google Cloud Platform: cluster has unschedulable pods
 
@@ -292,7 +292,7 @@ This section lists common error and alert messages you might receive.
 
 #### No delegates could reach the resource
 
-This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. See [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-does-harness-manager-pick-delegates).
+This error means that no delegate could meet the URL validation criteria. When a task is ready to be assigned, Harness Manager first validates its lists of delegates to see which delegate should be assigned the task. It validates the delegate by using the URL in the task, such as an API call or SSH command. See [How does Harness Manager pick delegates?](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md#how-harness-manager-picks-delegates).
 
 #### Harness SecretStore is not able to encrypt/decrypt
 

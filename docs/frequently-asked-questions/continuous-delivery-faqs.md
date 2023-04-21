@@ -1,14 +1,15 @@
 ---
-title: Continuous Delivery (CD) FAQs
-description: Frequently asked questions about Harness Continuous Delivery (CD).
-# sidebar_position: 2
+title: Continuous Delivery & GitOps FAQs
+sidebar_label: Continuous Delivery & GitOps
+description: Frequently asked questions about Harness Continuous Delivery & GitOps.
+sidebar_position: 20
 helpdocs_topic_id: dhlon9vd17
 helpdocs_category_id: y7j7dl46ua
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This article addresses some frequently asked questions about Harness Continuous Deployments (CD).
+This topic addresses some frequently asked questions about Harness Continuous Delivery & GitOps.
 
 In this topic:
 

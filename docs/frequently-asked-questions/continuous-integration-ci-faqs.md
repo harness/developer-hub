@@ -1,14 +1,15 @@
 ---
-title: Continuous Integration (CI) FAQs
-description: Here are some frequently asked questions about Harness CI.
-# sidebar_position: 2
+title: Continuous Integration FAQs
+sidebar_label: Continuous Integration
+description: Frequently asked questions about Harness CI.
+sidebar_position: 10
 helpdocs_topic_id: qn0f5ut6ok
 helpdocs_category_id: y7j7dl46ua
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This article addresses some frequently asked questions about Harness Continuous Integration (CI).
+This topic addresses some frequently asked questions about Harness Continuous Integration (CI).
 
 In this topic:
 

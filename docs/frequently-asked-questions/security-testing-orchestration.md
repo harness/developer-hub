@@ -1,10 +1,11 @@
 ---
 title: Security Testing Orchstration FAQs
-description: This article addresses some frequently asked questions about Harness security features.
-# sidebar_position: 2
+sidebar_label: Security Testing Orchestration
+description: Frequently asked questions about Harness Security Testing Orchestration.
+sidebar_position: 50
 ---
 
-This article addresses some frequently asked questions about Security Testing Orchestration (STO).
+This topic addresses some frequently asked questions about Security Testing Orchestration (STO).
 
 In this topic:
 
@@ -44,7 +45,7 @@ The following pictorial highlights a typical SDLC process.
 ![](./static/sto-faqs-00.png)
 
 ### How many scanners does STO support?
-STO supports many popular scanners. For a list of all supported tools, go to the [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach). 
+STO supports many popular scanners. For a list of all supported tools, go to the [Security Step Settings Reference](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference.md#harness-sto-scanner-support). 
 
 ### Do similar category tools show identical issues?
 
@@ -137,7 +138,7 @@ Harness is currently working to remove this requirement for other scanners that 
 
 Harness  supports two RBAC roles specifically for STO users. You can customize these roles as needed in the Harness platform. 
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Create a standalone STO pipeline](/tutorials/orchestrate-security-tests/sto-standalone-workflows/).
+* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline/).
 
 * **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions. These workflows are covered in [Create an integration STO/CI pipeline](/tutorials/orchestrate-security-tests/sto-integrated-workflows).
 
