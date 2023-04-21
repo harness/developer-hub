@@ -34,6 +34,15 @@ Delegate scripts are applied under the following conditions:
 * **New Delegate.** Scripts added on delegate creation run before the delegate starts.
 * **Running Delegate.** Scripts applied during delegate runtime, either by application as a new script or by switching the Delegate’s current script, run on delegate restart, before the delegate reaches steady state.
 
+### Unzip
+
+Run `microdnf update` before you run `microdnf` commands.
+```
+microdnf update  
+# Install Unzip  
+microdnf install unzip
+```
+
 ### Terraform
 
 Here is an example of a script for installing Terraform:
@@ -107,15 +116,6 @@ microdnf update
 microdnf -y install python3-pip  
 # Check pip install  
 pip -v
-```
-
-### Unzip
-
-Run `microdnf update` before you run `microdnf` commands.
-```
-microdnf update  
-# Install Unzip  
-microdnf install unzip
 ```
 
 ### AWS CLI
