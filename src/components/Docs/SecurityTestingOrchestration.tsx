@@ -37,7 +37,7 @@ export default function STO() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Set up your pipelines to detect security vulnerabilities automaticallyn using Security Testing Orchestration.
+            Set up your pipelines to detect security vulnerabilities automatically using Security Testing Orchestration.
             </p>
           </div>
         </div>
