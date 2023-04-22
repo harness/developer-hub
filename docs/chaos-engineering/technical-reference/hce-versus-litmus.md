@@ -220,7 +220,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
     </tr>
 </table>
 
-### [Kubernetes pod-level chaos faults](../technical-reference/chaos-faults/kubernetes/pod)
+### [Kubernetes pod-level chaos faults](/docs/category/pod)
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -334,7 +334,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
     </tr>
 </table>
 
-### [Kubernetes node-level chaos faults](../technical-reference/chaos-faults/kubernetes/node)
+### [Kubernetes node-level chaos faults](/docs/category/node)
 
 <table>
   <tr>
