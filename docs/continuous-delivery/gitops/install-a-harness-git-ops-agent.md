@@ -89,7 +89,7 @@ Click **Next**. The **Review YAML** settings appear.
 
 This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
 
-## Option: Harness GitOps Agent with Existing Argo CD Project
+## Harness GitOps Agent with Existing Argo CD Project
 
 In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.
 
