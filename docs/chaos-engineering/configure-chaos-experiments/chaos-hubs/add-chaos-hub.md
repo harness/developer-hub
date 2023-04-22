@@ -1,5 +1,5 @@
 ---
-title: Add a Chaos Hub
+title: Add a chaos hub
 sidebar_position: 5
 ---
 

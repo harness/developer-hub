@@ -1,5 +1,5 @@
 ---
-title: Run Chaos Experiments with Serial and Parallel Faults
+title: Run chaos experiments with serial and parallel faults
 sidebar_position: 3
 ---
 

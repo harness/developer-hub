@@ -16,6 +16,21 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+## Latest - April 21, 2023, version 79111
+
+#### Continuous Delivery
+
+- Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
+  
+	This occurred when the user skipped the dry run in the Canary Deployment step, and Harness was unable to process the manifest.yaml file during error handling. This resulted in the storage of the primary resource name as the canary workload name.
+	
+	The issue has been resolved, and Harness now relies on release history instead of populating the canary workload if there is an error in the deployment manifest and the dry run is skipped.
+- When an app was removed it was still returning inside the GraphQL query result for a short period of time. (CDS-54879, ZD-40375)
+  
+	We added new functionality to verify each appId before returning the user group GraphQL. If the appId does not exist it's removed from the response. 
+	
+	This change is behind the feature flag `SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP`.
+
 ### April 10, 2023, version 79015
 
 #### What's new

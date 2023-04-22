@@ -5,10 +5,10 @@ module.exports = {
       from: "/release-notes",
       to: "/release-notes/whats-new",
     },
-    // {
-    //   from: "/docs",
-    //   to: "/docs/category/documentation",
-    // },
+    {
+      from: "/docs/category/documentation",
+      to: "/docs",
+    },
     {
       from: "/tutorials/get-started",
       to: "/tutorials",
@@ -365,10 +365,6 @@ module.exports = {
     {
       from: "/docs/platform/Connectors/connect-to-monitoring-and-logging-systems",
       to: "/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems",
-    },
-    {
-      from: "/docs/platform/Connectors/create-a-connector-using-yaml",
-      to: "/docs/platform/Connectors/create-a-connector-using-yaml",
     },
     {
       from: "/docs/platform/Policy-as-code/harness-governance-overview",
@@ -1465,7 +1461,7 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
 
-   
+
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
     {
       from: "/docs/continuous-delivery/cd-deployments-category/multiserv-multienv",
