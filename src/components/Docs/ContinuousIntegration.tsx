@@ -18,7 +18,7 @@ export default function CI() {
             <h1>Continuous Integration Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/build-code">
+            <Link href="/tutorials/ci-pipelines">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
@@ -37,17 +37,22 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Learn how you can build faster and be more productive with Harness CI.
+              Learn how you can build faster and be more productive with Harness
+              CI.
             </p>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      <div className={styles.sectionDivider}></div>
-      {/*<div className={styles.subSection}>*/}
-        {/*<h3>Featured Tutorials</h3>*/}
-        {/*<TutorialCard FeatureList={featuredTutorials} featuredCard={true} />*/}
-      {/*</div>*/}
+      {featuredTutorials && featuredTutorials.length > 0 && (
+        <>
+          <div className={styles.sectionDivider}></div>
+          <div className={styles.subSection}>
+            <h3>Featured Tutorials</h3>
+            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
+          </div>
+        </>
+      )}
     </div>
     // </Layout>
   );

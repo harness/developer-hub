@@ -1,5 +1,5 @@
 ---
-title: View AWS Reservation Efficiency Dashboard
+title: AWS Reservation Efficiency Dashboard
 description: This topic describes how to view By Harness AWS Reservation Efficiency Dashboard and get more information about that data.
 # sidebar_position: 2
 helpdocs_topic_id: o86lf6qgr2
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# View AWS Reservation Efficiency Dashboard
 
 Harness provides **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across cloud providers.
 

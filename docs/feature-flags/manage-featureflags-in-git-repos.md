@@ -1,11 +1,11 @@
 ---
-title: Manage your flags using Git Experience
+title: Manage flags using Git Experience
 description: Using Harness Git Experience with Feature Flags allows you to manage your Flags from a .yaml file in your Git repository.
 tags: 
    - git experience
    - feature flag
    - SCM
-sidebar_position: 50
+sidebar_position: 20
 helpdocs_topic_id: 6f5eylg819
 helpdocs_category_id: 77l6flntwl
 helpdocs_is_private: false
@@ -27,6 +27,10 @@ import git_8 from './static/8-git-off.png'
 :::
 
 Using Harness Git Experience with Feature Flags allows you to manage your flags from a YAML file in your Git repository. When you enable Git Experience, changes you make to flags on the Harness Platform are committed on Git, and commits you make on Git are reflected in the Harness Platform. This means you can work on flags entirely from Git, the Harness Platform, or both, and your changes will be synchronized in both places. 
+
+:::info note
+This feature is not supported on the Harness Self-Managed Enterprise Edition (on-prem).
+:::
 
 ## Before you begin
 

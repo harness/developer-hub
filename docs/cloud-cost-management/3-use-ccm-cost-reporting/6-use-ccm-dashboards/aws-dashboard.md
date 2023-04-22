@@ -1,5 +1,5 @@
 ---
-title: View AWS Cost Dashboard
+title: AWS Cost Dashboard
 description: This topic describes how to view By Harness AWS Cost Dashboard and get more information about that data.
 # sidebar_position: 2
 helpdocs_topic_id: u3yxrebj6r
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# View AWS Cost Dashboard
 
 Harness provides pre-loaded **By Harness** (pre-defined) and **Custom** (user-defined) dashboards to visualize cloud cost data across clusters and cloud accounts. Using the **AWS Cost Dashboard** you can:
 

@@ -27,7 +27,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
 <tbody>
   <tr valign="top">
     <td>
-      <p> <a href="#see-also">Kubernetes</a></p>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview">Kubernetes</a></p>
     </td>
     <td>
       <ul>
@@ -70,7 +70,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
         <li>Canary</li>
         <li>Blue/Green</li>
       </ul>
-      <p>See <a href="#notes">Note on Kubernetes</a> for more deatils.</p>
+      <p>See <a href="#notes">Note on Kubernetes</a> for more details.</p>
     </td>
     <td>
       <p> <strong>Rolling:</strong></p>
@@ -89,7 +89,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p><a href="#see-also">Helm v3.0</a></p>
+      <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart">Helm v3.0</a></p>
     </td>
     <td>
       <p> <strong>Docker Image Repo:</strong></p>
@@ -153,9 +153,10 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <p> Previous Analysis - Synthetic Load</p>
     </td>
   </tr>
+  
   <tr valign="top">
     <td>
-      <p><a href="#see-also">Serverless.com Framework - Lambda</a></p>
+      <p><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart">Serverless.com Framework - Lambda</a></p>
     </td>
     <td>
       <ul>
@@ -175,7 +176,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="#see-also">Azure Web App</a></p>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial">Azure Web App</a></p>
     </td>
     <td>
       <p> <strong>Container and non-container:</strong></p>
@@ -212,10 +213,10 @@ The following table lists Harness support for deployment platforms, artifacts, s
         <li>Previous Analysis - Synthetic Load</li>
       </ul>
     </td>
-  </tr>
+  </tr>  
   <tr valign="top">
     <td>
-      <p> <a href="#see-also">Secure Shell (SSH)</a></p>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng">Secure Shell (SSH)</a></p>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -260,8 +261,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      (/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
-      <p>Windows Remote Management (WinRM)</p>
+      <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial">Windows Remote Management (WinRM)</a>
     </td>
     <td>
       <p> <strong>Non-container:</strong></p>
@@ -295,10 +295,9 @@ The following table lists Harness support for deployment platforms, artifacts, s
   </tr>
   <tr valign="top">
     <td>
-      <p> <a href="#see-also">AWS ECS</a></p>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial">AWS ECS</a></p>
     </td>
     <td>
-      <p> <strong>Non-container:</strong></p>
       <ul>
         <li>Docker Registry</li>
         <li>Artifactory</li>
@@ -335,6 +334,139 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <p>For Fargate: The <code>complete-docker-id</code><br/>must be present in the monitoring provider.</p>
     </td>
   </tr>
+    <tr valign="top">
+    <td>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial">AWS ASG</a></p>
+    </td>
+    <td>AWS AMI Repository (private AMIs only)
+    </td>
+    <td><p> Static Infrastructure:</p>
+      <ul class="">
+        <li>AWS ASG</li>
+        <li>SpotInst-based ASG</li>
+        <li>AWS Launch Template/Configuration</li></ul>
+    </td>
+    <td>
+      <ul>
+        <li>Canary</li>
+        <li>Rolling</li>
+        <li>Blue/Green</li>
+      </ul>
+    </td>
+    <td>
+      <ul>
+        <li> <strong>Canary:</strong> Canary Analysis - Realtime Load</li>
+        <li> <strong>Blue/Green:</strong> Previous Analysis - Synthetic Load</li>
+        <li> <strong>Rolling:</strong> Previous Analysis - Synthetic Load</li>
+      </ul>
+    </td>
+  </tr>
+  
+  <tr valign="top">
+    <td>
+      <p> <a href="/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments">AWS Lambda</a></p>
+    </td>
+    <td>
+      <p> <strong>Container and non-container:</strong></p>
+      <ul>
+        <li>AWS S3</li>
+        <li>AWS ECR</li>
+      </ul>
+    </td>
+    <td>
+      <p> <strong>Static Infrastructure:</strong><br/>AWS Lambda</p>
+    </td>
+    <td>
+      Basic
+    </td>
+    <td>
+      <p> <strong>Basic:</strong></p>
+      <ul>
+        <li>Previous Analysis - Synthetic Load</li>
+      </ul>
+    </td>
+  </tr>
+  <tr>
+    <td><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart#tas-execution-strategies">VMware Tanzu Application Service</a></td>
+    <td valign="top">
+    <p>Cloud Foundry CLI: Version 6 and 7.</p>
+    <p> Artifact Repo:</p>
+    <ul class="">
+      <li>Artifactory</li>
+      <li>Nexus</li>
+      <li>Amazon S3</li>
+      <li>Google Container Registry (GCR)</li>
+      <li>Amazon Elastic Container Registry (ECR)</li>
+      <li>Azure Container Registry (ACR)</li>
+      <li>Google Artifact Registry</li>
+      <li>GitHub Package Registry</li>
+      <li>Custom registry</li>
+      <li>any Docker Registry such as DockerHub</li>
+    </ul>
+    <p> Manifest Repo:</p><ul class=""><li>Github</li><li>GitLab</li><li>Bitbucket</li><li> Code Commit (Not Certified)</li><li> Google Cloud Source Repository (Not Certified)</li></ul></td>
+  <td valign="top">
+    <p> PAS/PCF</p>
+  </td>
+  <td valign="top">
+    <ul class="">
+      <li>Canary</li>
+      <li>Blue/Green</li>
+      <li>Rolling</li>
+      <li>Basic</li>
+    </ul>
+  </td>
+  <td valign="top">
+    <p> Rolling:</p>
+    <ul class="">
+      <li>Previous Analysis - Synthetic Load</li>
+    </ul>
+    <p> Canary:</p>
+    <ul class="">
+      <li>Canary Analysis - Realtime Load</li>
+    </ul>
+    <p> Blue/Green:</p>
+    <ul class="">
+      <li>Previous Analysis - Synthetic Load</li>
+    </ul>
+  </td>
+</tr>
+<tr>
+  <td><a href="/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions">Google Function</a></td>
+  <td>
+  <p>Function definition:</p>
+  <ul>
+  <li>Github</li>
+  <li>GitLab</li>
+  <li>Bitbucket</li>
+  </ul>
+  <p>Artifacts:</p>
+  <ul>
+    <li>ZIP file in Google Cloud Storage</li>
+  </ul>
+  </td>
+  <td>Google Cloud Functions</td>
+  <td>
+  <ul>
+    <li>Basic</li>
+    <li>Canary</li>
+    <li>Blue Green</li>
+  </ul>
+  </td>
+  <td>
+      <p> Basic:</p>
+    <ul class="">
+      <li>Previous Analysis - Synthetic Load</li>
+    </ul>
+    <p> Canary:</p>
+    <ul class="">
+      <li>Canary Analysis - Realtime Load</li>
+    </ul>
+    <p> Blue Green:</p>
+    <ul class="">
+      <li>Previous Analysis - Synthetic Load</li>
+    </ul>
+  </td>
+</tr>
 </tbody>
 </table>
 
@@ -385,36 +517,42 @@ The maximum number of artifact image tags fetched by Harness that is 10000.
 
 The following table lists Harness integrations and their artifact source support:
 
-|                    |                |         |         |         |                 |             |            |                              |                              |             |            |
-| ------------------ | -------------- | ------- | ------- | ------- | --------------- | ----------- | ---------- | ---------------------------- | ---------------------------- | ----------- | ---------- |
-|                    | **Docker Hub** | **ECR** | **GCR** | **ACR** | **Artifactory** | **Nexus 3** | **Custom** | **Google Artifact Registry** | **Github Artifact Registry** | **Jenkins** | **AWS S3** |
-| **Kubernetes**     | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         | ✅                           | ✅                           |             |            |
-| **Helm**           | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
-| **AWS ECS**        | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
-| **Azure Web Apps** | ✅             | ✅      | ✅      | ✅      | ✅              | ✅          |            |                              |                              |             |            |
-| **SSH**            |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
-| **WinRM**          |                |         |         |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
-| **Serverless.com Framework**     |                | ✅      |         |         | ✅              |             |            |                              |                              |             | ✅         |
+|                              | **Docker Hub** | **ECR** | **GCR** | **GCS** | **ACR** | **Artifactory** | **Nexus 3** | **Custom** | **Google Artifact Registry** | **Github Artifact Registry** | **Jenkins** | **AWS S3** |
+| ---------------------------- | -------------- | ------- | ------- | --- | ------- | --------------- | ----------- | ---------- | ---------------------------- | ---------------------------- | ----------- | ---------- |
+| **Kubernetes**               | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          | ✅         | ✅                           | ✅                           |             |            |
+| **Helm**                     | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
+| **AWS ECS**                  | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          | ✅         |                              |                              |             |            |
+| **AWS ASG**                  |                |         |         |     |         |                 |             |            |                              |                              |             |            |
+| **AWS Lambda**               |                | ✅      |         |     |         |                 |             |            |                              |                              |             | ✅         |
+| **Azure Web Apps**           | ✅             |         |         |     | ✅      | ✅              | ✅          |            |                              |                              |             |            |
+| **Tanzu**                    | ✅             | ✅      | ✅      |     | ✅      | ✅              | ✅          |            |                              |                              |             |            |
+| **SSH**                      |                |         |         |     |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
+| **WinRM**                    |                |         |         |     |         | ✅              | ✅          | ✅         |                              |                              | ✅          | ✅         |
+| **Serverless.com Framework** |                | ✅      |         |     |         | ✅              |             |            |                              |                              |             | ✅         |
+| **Google Cloud Function**    |                |         |         | ✅    |         |                 |             |            |                              |                              |             |            |
+
 
 #### Manifest and Config file Store Support
 
 The following table lists where you can store your manifests or config files for each integration.
 
-|                               |            |            |               |                       |             |              |               |            |            |                          |                           |
+
+
+|                               | **Github** | **Gitlab** | **Bitbucket** | **Harness File Store** | **Any Git** | **OCI Helm** | **HTTP Helm** | **AWS S3** | **Custom** | **Google Cloud Storage** | **Inherit from manifest** |
 | ----------------------------- | ---------- | ---------- | ------------- | --------------------- | ----------- | ------------ | ------------- | ---------- | ---------- | ------------------------ | ------------------------- |
-|                               | **Github** | **Gitlab** | **Bitbucket** | **Harness Filestore** | **Any Git** | **OCI Helm** | **HTTP Helm** | **AWS S3** | **Custom** | **Google Cloud Storage** | **Inherit from manifest** |
 | **Kubernetes**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
 | **Values YAML**               | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          | ✅                        |
 | **Kustomize**                 | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          |                           |
-| **Kustomize\*\***Patches\*\*  | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
-| **Openshift\*\***Template\*\* | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
-| **Openshift\*\***Params\*\*   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
+| **Kustomize Patches**  | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
+| **OpenShift Template** | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
+| **OpenShift Params**   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            | ✅         |                          |                           |
 | **AWS ECS**                   | ✅         | ✅         | ✅            | ✅                    | ✅          |              |               |            |            |                          | ✅                        |
 | **Helm Chart**                | ✅         | ✅         | ✅            | ✅                    | ✅          | ✅           | ✅            | ✅         | ✅         | ✅                       | ✅                        |
 | **Serverless.com Framework**            | ✅         | ✅         | ✅            |                       | ✅          |              |               |            |            |                          |                           |
 | **SSH**                       |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **WinRM**                     |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
 | **Azure Web Apps**            |            |            |               | ✅                    |             |              |               |            |            |                          |                           |
+| **Google Cloud Function**     | ✅         | ✅         | ✅            | ✅                    | ✅          |              |              |           |           |                         |                         |
 
 #### Terraform version support
 
@@ -551,15 +689,15 @@ The following table lists Harness support for metrics platforms (APMs).
 
 | Metrics Provider Name                                                                                                               | Metric Pack                    | Deployment Verification      |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------- |
-| [AppDynamics](../continuous-delivery/verify/verify-deployments-with-app-dynamics.md)                              | Business Transactions          | Yes                          |
-| [AppDynamics](../continuous-delivery/verify/verify-deployments-with-app-dynamics.md)                              | JVM and Infra Metrics          | Supported via Custom Metrics |
-| [New Relic](../continuous-delivery/verify/verify-deployments-with-new-relic.md)                                   | Business Transactions          | Yes                          |
+| [AppDynamics](../continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics.md)                              | Business Transactions          | Yes                          |
+| [AppDynamics](../continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics.md)                              | JVM and Infra Metrics          | Supported via Custom Metrics |
+| [New Relic](../continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic.md)                                   | Business Transactions          | Yes                          |
 | New Relic                                                                                                                           | Insights                       | Supported via Custom Metrics |
-| [Google Cloud Operations (GCP)](../continuous-delivery/verify/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
+| [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
 | Google Cloud Operations (GCP)                                                                                                       | Custom metrics from explorer   | No                           |
-| [Prometheus](../continuous-delivery/verify/verify-deployment-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
-| [Datadog](../continuous-delivery/verify/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
-| [Dynatrace](../continuous-delivery/verify/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
+| [Prometheus](../continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
+| [Datadog](../continuous-delivery/verify/configure-cv/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
+| [Dynatrace](../continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
 
 ### Log providers
 
@@ -568,14 +706,14 @@ Most logging platforms are also supported.
 |                                                                                                                                     |                             |
 | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | **Log Provider Name**                                                                                                               | **Deployment Verification** |
-| [Splunk](../continuous-delivery/verify/verify-deployments-with-splunk.md)                                         | Yes                         |
-| [Google Cloud Operations (GCP)](../continuous-delivery/verify/verify-deployments-with-google-cloud-operations.md) | Yes                         |
+| [Splunk](../continuous-delivery/verify/configure-cv/verify-deployments-with-splunk.md)                                         | Yes                         |
+| [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Yes                         |
 
 ### Custom health sources
 
 Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
 
-See [Verify Deployments with Custom Health Source](../continuous-delivery/verify/verify-deployments-with-custom-health-metrics.md).
+See [Verify Deployments with Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md).
 
 ## Cloud Cost Management
 
@@ -653,7 +791,7 @@ Harness supports the following Health Sources and Change Sources.
 
 A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
 #### Metrics providers and logging tools
 

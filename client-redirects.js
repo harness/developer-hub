@@ -6,8 +6,8 @@ module.exports = {
       to: "/release-notes/whats-new",
     },
     {
-      from: "/docs",
-      to: "/docs/category/documentation",
+      from: "/docs/category/documentation",
+      to: "/docs",
     },
     {
       from: "/tutorials/get-started",
@@ -18,13 +18,12 @@ module.exports = {
       to: "/release-notes/platform",
     },
 
-
     //===================================================================================
-    // 
+    //
     //  H O W   T O   A D D   R E D I R E C T S
     //
-    //  - Use the form in the example below. 
-    //  - Create a redirect for each target page or folder on DevHub. 
+    //  - Use the form in the example below.
+    //  - Create a redirect for each target page or folder on DevHub.
     //  - Remove the forward-slash characters that comment out the lines of the example object.
     //  - Note the use of commas.
     //
@@ -32,8 +31,138 @@ module.exports = {
     //  {
     //    from: "/docs/platform/delegates/delegate-guide/automate-delegate-installation",
     //    to: "/docs/platform/delegates/installation",
-    //  },    
+    //  },
     //===================================================================================
+
+
+    // Created by Sudheendra Katte to fix cv re-directs April 21st, 2023
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-cloudwatch",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-datadog",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-elastic-search",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-splunk",
+    },
+
+    {
+      from: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-sumologic",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-cloudwatch",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-cloudwatch",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-datadog",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-elastic-search",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-elastic-search",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-splunk",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-sumologic",
+      to: "/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-sumologic",
+    },
+
+    // Created by Sudheendra Katte to fix error tracking re-directs April 20th, 2023
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
+    },
+    {
+      from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
+    },
 
 
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
@@ -238,10 +367,6 @@ module.exports = {
       to: "/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems",
     },
     {
-      from: "/docs/platform/Connectors/create-a-connector-using-yaml",
-      to: "/docs/platform/Connectors/create-a-connector-using-yaml",
-    },
-    {
       from: "/docs/platform/Policy-as-code/harness-governance-overview",
       to: "/docs/platform/Governance/Policy-as-code/harness-governance-overview",
     },
@@ -309,7 +434,6 @@ module.exports = {
       from: "/docs/platform/Terraform/advanced-terraform-onboarding",
       to: "/docs/platform/Resource-Development/Terraform/advanced-terraform-onboarding",
     },
-    
 
     // Created by ravilach/schoudhury to fix platform re-direct April 17th, 2023
     {
@@ -383,7 +507,34 @@ module.exports = {
       from: "/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag",
       to: "/docs/feature-flags/ff-creating-flag/create-a-feature-flag",
     },
-
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/add-targets",
+      to: "/docs/feature-flags/ff-target-management/add-targets",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/add-target-groups",
+      to: "/docs/feature-flags/ff-target-management/add-target-groups",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags",
+      to: "/docs/feature-flags/ff-target-management/targeting-users-with-flags",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/build-feature-flag-pipeline",
+      to: "/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/ff-build-pipeline/default-pipeline-ff",
+      to: "/docs/feature-flags/ff-build-pipeline/default-pipeline-ff",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/relay-proxy",
+      to: "/docs/feature-flags/relay-proxy",
+    },
+    {
+      from: "/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy",
+      to: "/docs/feature-flags/relay-proxy/deploy-relay-proxy",
+    },
 
     // Created by ravilach to fix CD Cert re-directs April 15th, 2023
 
@@ -395,7 +546,7 @@ module.exports = {
       from: "/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview",
       to: "/docs/continuous-delivery/get-started/services-and-environments-overview",
     },
-    
+
     // Created by schoudhury on Apr 18, 2023 - All tutorials
 
     {
@@ -474,7 +625,7 @@ module.exports = {
       from: "/tutorials/build-code/publish/google-gar",
       to: "/tutorials/ci-pipelines/publish/google-gar",
     },
-      
+
     {
       from: "/tutorials/deploy-services",
       to: "/tutorials/cd-pipelines",
@@ -547,7 +698,6 @@ module.exports = {
       from: "/tutorials/orchestrate-security-tests/nodejs-firstscan",
       to: "/tutorials/security-tests/nodejs-owasp",
     },
-
 
     {
       from: "/tutorials/run-chaos-experiments",
@@ -852,19 +1002,19 @@ module.exports = {
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm-overview",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-event-dashboard",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-arc",
-      to: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
     },
 
     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
@@ -954,10 +1104,10 @@ module.exports = {
     },
 
     // Created by schoudhury on Feb 21, 2023
-       {
-         from: "/tutorials/platform/provision-azure-infrastructure",
-         to: "/tutorials/platform/install-delegate",
-       },
+    {
+      from: "/tutorials/platform/provision-azure-infrastructure",
+      to: "/tutorials/platform/install-delegate",
+    },
 
     // Created by schoudhury on Mar 27, 2023 - Delegate concepts
     {
@@ -1058,7 +1208,6 @@ module.exports = {
       to: "/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration",
     },
 
-
     // Created by kat-enos for PR-2421 on Jan 13, 2023; modified Jan 22, 2023
     {
       from: "/docs/platform/Delegates/delegate-guide/build-custom-delegate-images-with-third-party-tools",
@@ -1095,21 +1244,17 @@ module.exports = {
       to: "/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools",
     },
 
-
-
     // Created by kat-enos for PR-738 on Feb 21, 2023
     {
       from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-on-kubernetes",
       to: "/docs/platform/Delegates/install-delegates/overview",
     },
 
-
     // Created by kat-enos for PR-738 on Feb 21, 2023
     {
       from: "/docs/platform/Delegates/install-delegates/kubernetes-delegates/install-harness-delegate-using-helm",
       to: "/docs/platform/Delegates/install-delegates/overview",
     },
-
 
     // Created by kat-enos for PR-2421 on Jan 13, 2023
     {
@@ -1188,7 +1333,6 @@ module.exports = {
       from: "/docs/platform/Delegates/delegate-reference/example-harness-delegate-yaml",
       to: "/docs/platform/Delegates/delegate-reference/YAML/example-harness-delegate-yaml",
     },
-
 
     // Created by kat-enos on Jan 22, 2023
     {
@@ -1294,15 +1438,15 @@ module.exports = {
 
     //  Created by dbothwell for DOC-2895 on Apr 5, 2023
     {
-    from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
-    to: "/tutorials/security-tests/standalone-pipeline",
-  },
-   //  Created by dbothwell for DOC-2895 on Apr 5, 2023
-   {
-    from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
-    to: "/tutorials/security-tests/cicd-integrated-pipeline",
-  },
-    
+      from: "/docs/security-testing-orchestration/onboard-sto/tutorial-1-standalone-workflows",
+      to: "/tutorials/security-tests/standalone-pipeline",
+    },
+    //  Created by dbothwell for DOC-2895 on Apr 5, 2023
+    {
+      from: "/docs/security-testing-orchestration/onboard-sto/sto-tutorial-2-integrated-sto-ci-cd-workflows",
+      to: "/tutorials/security-tests/cicd-integrated-pipeline",
+    },
+
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
@@ -1317,60 +1461,11 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
 
+
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
     {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployment-with-prometheus",
-      to: "/docs/continuous-delivery/verify/verify-deployment-with-prometheus",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-app-dynamics",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-app-dynamics",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-cloudwatch",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-cloudwatch",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-custom-health-metrics",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-datadog",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-datadog",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-dynatrace",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-dynatrace",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-elastic-search",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-elastic-search",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-google-cloud-operations",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-google-cloud-operations",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-new-relic",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-new-relic",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-splunk",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-splunk",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-sumologic",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-sumologic",
+      from: "/docs/continuous-delivery/cd-deployments-category/multiserv-multienv",
+      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv",
     },
 
     {
@@ -2204,7 +2299,7 @@ module.exports = {
       from: "/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults",
     },
-    
+
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
     {
       from: "/docs/category/codebase-configuration",
