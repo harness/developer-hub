@@ -98,6 +98,66 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings), [Run Tests steps](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings), and [Plugin steps](/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
 * Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
 
+### Service Reliability Management
+
+- Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
+
+- Removed the mandatory check for the presence of Tier in the AppD complete metric path. (SRM-14463)
+
+### Harness Delegate 
+
+- Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
+
+    - io_harness_delegate_connected
+    - io_harness_delegate_disconnected 
+
+- Upgraded the following libraries: (DEL-6069)
+
+    - org.yaml:snakeyaml from 1.33 -> 2.0
+    - com.fasterxml.jackson.core:jackson-annotations from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.core:jackson-core from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-cbor from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-smile from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-xml from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-yaml from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-guava from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-jdk8 from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-joda from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-jsr310 from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-base from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-yaml-provider from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-afterburner from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-jaxb-annotations from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-jsonSchema from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-parameter-names from 2.13.4 -> 2.14.2
+    - io.kubernetes:client-java-api from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-extended from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-proto from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-api-fluent from 16.0.0 -> 18.0.0
+    - org.springframework.boot:spring-boot-autoconfigure from 2.1.6.RELEASE -> 2.7.10
+    - org.springframework.boot:spring-boot-loader from 2.4.5 -> 2.7.10
+    - org.springframework.boot:spring-boot-starter-batch from 2.1.6.RELEASE -> 2.7.10
+    - org.springframework.boot:spring-boot from 2.3.2.RELEASE -> 2.7.10
+
+- Added APIs to enable auto upgrading with custom delegate images. (DEL-6183)
+
+    - `SupportedDelegateVersion` returns the maximum delegate version number to install.
+    - `overrideDelegateImageTag` changes the tag the upgrader uses to upgrade delegates when auto upgrade is on.
+
+- Upgraded the following libraries: (DEL-6198)
+
+    - org.springframework:spring-aop from 5.3.23 -> 5.3.26
+    - org.springframework:spring-beans from 5.3.25 -> 5.3.26
+    - org.springframework:spring-context from 5.3.25 -> 5.3.26
+    - org.springframework:spring-core from 5.3.25 -> 5.3.26
+    - org.springframework:spring-expression from 5.3.25 -> 5.3.26
+    - org.springframework:spring-jcl from 5.3.25 -> 5.3.26
+    - org.springframework:spring-messaging from 5.3.25 -> 5.3.26
+    - org.springframework:spring-test from 5.3.25 -> 5.3.26
+    - org.springframework:spring-tx from 5.3.25 -> 5.3.26
+    - org.springframework:spring-web from 5.3.25 -> 5.3.26
 
 ## Previous releases
 
