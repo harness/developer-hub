@@ -175,21 +175,11 @@ const sidebars = {
           ],
         },
         {
-          /*
-          type: "doc",
-          label: "Chaos Engineering",
-          id: "chaos-engineering",
-          */
           type: "category",
           label: "Chaos Engineering",
           link: {
-            type: "generated-index",
-            slug: "/chaos-engineering",
-            /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "chaos-engineering",
-          },         
-          */
           },
           customProps: {
             description: "Learn how to build and validate resilience.",
