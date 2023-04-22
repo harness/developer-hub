@@ -115,18 +115,18 @@ import {
               link: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/sto-overview",
             },
             {
-              title: "Build and upload artifacts",
+              title: "Create Jira tickets for detected issues",
               module: "ci",
               description:
-                "Build and upload artifacts in CI pipelines.",
-              link: "/docs/category/build-and-upload-artifacts",
+                "You can easily create Jira tickets for issues detected during an STO build.",
+              link: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations/",
             },
             {
-              title: "Run tests",
+              title: "Navigate and drill down into detected vulnerabilities",
               module: "ci",
               description:
-                "Run tests in CI pipelines.",
-              link: "/docs/category/run-tests",
+                "The Security Testing Dashboard enables you to view, navigate, discover, and investigate detected vulnerabilities in your organization.",
+              link: "/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard",
             },
 
           ],
