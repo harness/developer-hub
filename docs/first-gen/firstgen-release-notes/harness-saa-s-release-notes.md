@@ -16,9 +16,17 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## Latest - April 21, 2023, version 79111
+### April 22, 2023, version 79111
 
-#### Continuous Delivery
+#### What's new
+
+- Switching accounts now loads accounts on scroll. This increases the modal load time when there are more accounts to load. (PL-30467)
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
 
 - Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
   
