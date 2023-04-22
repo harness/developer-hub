@@ -26,7 +26,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-### What's new
 - You can now configure session time-out in the UI. (PL-32258)
   In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
 
@@ -37,16 +36,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Early access">
 ```
 
-### Early access
-
 This release does not include any early access feature.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
-### Fixed issues
 
 - The creation of secrets on Custom Secret Manager validates the existence of those secrets. (PL-31715)
   A code enhancement to remove secret validation during Custom Secret Manager creation has fixed the issue.
