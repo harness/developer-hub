@@ -1,7 +1,7 @@
 ---
 hide_table_of_contents: true
 hide_title: true
-title: Security Testing Orchestration Docs
+title: Security Testing Orchestration Documentation
 # id: continuous-delivery
 ---
 
