@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-04-21T10:00
+date: 2023-04-22T10:00
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 21, 2023, version 79111
+## Latest - April 22, 2023, version 79111
 
 ```mdx-code-block
 <Tabs>
@@ -91,8 +91,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Early access">
 ```
 
-### Early access
-
 - Protecting secrets used in webhook-based triggers that use secret decryption on delegates (CDS-58488, ZD-42117)
   
   This functionality is behind a feature flag, `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`.
@@ -115,8 +113,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
-### Fixed issues
 
 - Usernames that were provided as secrets were not being decrypted for Github packages artifacts. (CDS-59187)
   
