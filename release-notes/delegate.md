@@ -23,7 +23,6 @@ Harness NextGen release 79111 includes the following changes for the Harness Del
 <Tabs>
   <TabItem value="What's new">
 ```
-### What's new
 
 This release introduces the following new features and enhancements:
 
@@ -85,16 +84,12 @@ This release introduces the following new features and enhancements:
   <TabItem value="Early access">
 ```
 
-### Early access
-
 This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
-### Fixed issues
 
 This release includes the following fixes:
 
