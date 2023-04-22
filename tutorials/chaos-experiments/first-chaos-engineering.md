@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Your First Chaos Experiment Run
+title: Your first chaos experiment run
 description: Running a chaos experiment on Kubernetes for the first time.
 ---
 

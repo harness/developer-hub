@@ -22,6 +22,23 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 - Switching accounts now loads accounts on scroll. This increases the modal load time when there are more accounts to load. (PL-30467)
 
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
+  
+	This occurred when the user skipped the dry run in the Canary Deployment step, and Harness was unable to process the manifest.yaml file during error handling. This resulted in the storage of the primary resource name as the canary workload name.
+	
+	The issue has been resolved, and Harness now relies on release history instead of populating the canary workload if there is an error in the deployment manifest and the dry run is skipped.
+- When an app was removed it was still returning inside the GraphQL query result for a short period of time. (CDS-54879, ZD-40375)
+  
+	We added new functionality to verify each appId before returning the user group GraphQL. If the appId does not exist it's removed from the response. 
+	
+	This change is behind the feature flag `SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP`.
+
 ### April 10, 2023, version 79015
 
 #### What's new

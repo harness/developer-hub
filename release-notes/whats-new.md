@@ -14,7 +14,7 @@ import delete_project from './static/delete-project.png'
 Review the notes below to learn about the new features that are Generally Available (GA) in Harness NextGen SaaS across all Harness modules and the Harness Platform. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
 :::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
 ## Latest - April 22, 2023, version 79111
@@ -25,6 +25,79 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
 
 - You can now add descriptions to pipeline and stage variables. (PIE-3336)
+
+### Continuous Delivery
+
+- SHA support for Artifactory (CDS-58629), ECR (CDS-58304), GCR	(CDS-56531), Nexus 3 Docker (CDS-56530), ACR (CDS-56529), Github Packages	(CDS-41930)
+  
+  SHA values and labels for the artifact are now visible in the Harness service **Output** section of a pipeline execution.
+
+  <docimage path={require('./static/726cd79347c2dabba5bd47f2264f91b0b2618f872663c90048453719e87ff634.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  
+  Labels are visible if the artifact manifest supports `schemaVersion1`.
+  
+  Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
+  
+  Since manifests can support 2 schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
+  
+  Here are the expressions for referencing each version:
+  - SHA value of `schemaVersion1`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
+  - SHA value of `schemaVersion2`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+- New Harness expression for revision number. (CDS-57826)
+  
+  You can now use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. This will help you to:
+    - Reference the current Harness release number as part of your manifest.
+    - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
+  
+  **Important:** Users must update their delegate to version 1.0.79100 to use the expression.
+- Deployment freeze supports quarterly recurrence.	(CDS-57792)
+  
+  You can now configure a deployment freeze with a recurrence of `n` months, where `n` can be between `2` to `11`.
+- Use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts). (CDS-57667, ZD-41758)
+  
+  You can now specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
+
+  <docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  When you deploy, the logs will include all subcharts, like this:
+
+  ```sh
+  Successfully fetched following files:
+  - Chart.yaml
+  - values.yaml
+  - charts/first-child/Chart.yaml
+  - charts/first-child/values.yaml
+  - charts/first-child/templates/deployment.yaml
+  - charts/shared-lib/Chart.yaml
+  - charts/shared-lib/templates/_service.yaml
+  - charts/shared-lib/templates/_helpers.tpl
+  - charts/shared-lib/templates/_deployment.yaml
+  - templates/_helpers.tpl
+  - README.md
+  ```
+  
+  **Important:** This change impacts existing Helm services in Harness. To use this feature, you will need to update the path to your subordinate chart(s) using `charts/`.
+- You can now see what deployment freeze failed a pipeline in the pipeline's execution history. (CDS-53781)
+  
+  We have added support to identify the associated freeze window that failed a pipeline execution. You can hover over the status of the pipeline in its execution history and the associated freeze window details are shown.
+
+  <docimage path={require('./static/eca1e7dd02fa705e9158c78f44ab49676270e4a477cc260e817c06da91bdf631.png')} width="60%" height="60%" title="Click to view full size image" />
+- Bamboo is now supported in On Artifact triggers. (CDS-51742)
+  
+  You can now use artifacts in Bamboo to initiate Triggers for your pipelines.
+
+  <docimage path={require('./static/d5512549a2cb085680c609e42aef000fec60a5dc8ac6f20ee48ec31282f6f61e.png')} width="30%" height="30%" title="Click to view full size image" />
+- Repository format is now supported for Artifactory artifact source templates. (CDS-59092)
+
+  <docimage path={require('./static/61a6e0b480e05303bfc5926bec326c1555eff5ae087014c0b6a7e00a1fa94ec2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### Continuous Integration
+
+* The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. This workflow has been improved to generate a pipeline based on the repository you select. (CI-7603)
+* The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings), [Run Tests steps](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings), and [Plugin steps](/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
+* Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
+
 
 ## Previous releases
 
@@ -38,6 +111,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
 
 ##### Harness Platform
+
 - You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
 
 - Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
@@ -54,7 +128,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
   * `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
   * `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run Tests](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
-
 
 ##### Service Reliability Management
 
@@ -1156,7 +1229,7 @@ For more information about how to use a default pipeline for your Flags, go to [
 
 You can now use a readOnly vault as a default SM. (PL-24491)
 
-####3 Continuous Delivery
+#### Continuous Delivery
 
 - ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies.
 
