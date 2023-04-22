@@ -233,14 +233,14 @@ For steps on setting up the mapping and import, go to [Map Argo projects to Harn
 The GitOps Agent can work on environments where traffic is routed through a proxy. Perform the following steps to configure proxy support for GitOps Agent.
 
 1. Make sure that the Agent is running in HTTP mode.  
-   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the in the configmap({agentname}-agent) present in the YAML you get after creating the Agent.  
+   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap({agentname}-agent)` present in the YAML you get after creating the Agent.  
    `GITOPS_SERVICE_PROTOCOL: HTTP1`
 2. Add a property/config `HTTPS_PROXY` and add proxy details such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "https://squid.proxy-test:3128"`.
 3. Add an environment variable `NO_PROXY` in the GitOps Agent deployment with the following value.  
    ```
    localhost,argocd-repo-server,argocd-dex-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
    ```
-   A squid proxy will be setup in the `gitops-private-cluster` under the namespace `proxy-test`. You can use the URL mentioned in Step 2 when installing the Agent in this cluster to test out the proxy flows.  
+### Proxy setup for testing
 
    Use the following YAML example to install proxy in any other environment.
    
