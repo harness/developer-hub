@@ -4,7 +4,7 @@ title: Node taint
 ---
 ## Introduction
 
-Node taint taints the node by applying the desired effect. The resources that contain the corresponding tolerations only can bypass the taints.
+Node taint taints the node by applying the desired effect. Only the resources that contain the corresponding tolerations can bypass the taints.
 
 ![Node Taint](./static/images/node-taint.png)
 
