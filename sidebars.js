@@ -158,13 +158,10 @@ const sidebars = {
           type: "category",
           label: "Security Testing Orchestration",
           link: {
-            type: "generated-index",
-            slug: "/security-testing-orchestration",
-            /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "security-testing-orchestration",
-          },
-          */
+            // type: "doc",
+            // id: "security-testing-orchestration",
           },
           customProps: {
             description: "Learn how to left shift your security testing.",
@@ -178,21 +175,11 @@ const sidebars = {
           ],
         },
         {
-          /*
-          type: "doc",
-          label: "Chaos Engineering",
-          id: "chaos-engineering",
-          */
           type: "category",
           label: "Chaos Engineering",
           link: {
-            type: "generated-index",
-            slug: "/chaos-engineering",
-            /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "chaos-engineering",
-          },         
-          */
           },
           customProps: {
             description: "Learn how to build and validate resilience.",

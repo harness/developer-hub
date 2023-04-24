@@ -50,6 +50,20 @@
         font-family: 'Inter';
         color: #22222A;
     }
+    ul.subCategories {
+        padding-left: 2em;
+        margin: 0;
+        margin-top: -0.5em;
+        li {
+            list-style: square;
+            font-size: 12px;
+            line-height: 150%;
+            img {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
     .tags {
         display: flex;
         align-items: center;
@@ -59,20 +73,20 @@
             padding-left: 0;
             margin: 0;
             li {
-            width: 24px;
-            height: 24px;
-            overflow: hidden;
-            background-color: #F3F3FA;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
-            border-radius: 4px;
-            margin: 0 4px 0 0;
-            img {
-                width: 16px;
-                height: 16px;
-            }
+                width: 24px;
+                height: 24px;
+                overflow: hidden;
+                background-color: #F3F3FA;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                border-radius: 4px;
+                margin: 0 4px 0 0;
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
             }
         }
         .difficulty {

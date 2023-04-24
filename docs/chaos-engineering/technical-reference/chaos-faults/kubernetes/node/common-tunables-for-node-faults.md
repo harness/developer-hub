@@ -1,16 +1,18 @@
 ---
 title: Common node fault tunables
 ---
+## Introduction
 Fault tunables which are common to all the node faults are described here. These tunables can be provided at `.spec.experiment[*].spec.components.env` in the chaosengine.
 
 ### Target single node
 
-It defines the name of the target node subject to chaos. You can tune it using the `TARGET_NODE` environment variable. It contains a single node name.
+Name of the target node. Tune it by using the `TARGET_NODE` environment variable. It contains a single node name.
 
-### Note
+:::info note
 It supports node drain, node taint, node restart, kubelet service kill, and docker service kill faults. 
+:::
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/common/target-node.yaml yaml)
 ```yaml
@@ -36,10 +38,13 @@ spec:
 
 ### Target multiple nodes
 
-It defines the comma-separated names of the target nodes subject to chaos. You can tune it using the `TARGET_NODES` environment variable.
-`NOTE`: It supports node CPU hog, node memory hog, and node I/O stress faults.
+Comma-separated names of the target nodes. Tune it by using the `TARGET_NODES` environment variable.
 
-Use the following example to tune it:
+:::info note
+It supports node CPU hog, node memory hog, and node I/O stress faults.
+:::
+
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/common/target-nodes.yaml yaml)
 ```yaml
@@ -65,10 +70,10 @@ spec:
 
 ### Target nodes with labels
 
-It defines the labels of the target node(s) subject to chaos. You can tune it using the `NODE_LABEL` environment variable.
-It is mutually exclusive with the `TARGET_NODE` environment variable. If `TARGET_NODE` environment variable is set, the nodes provided will be used. Otherwise, it derives the node name(s) by matching it with the node labels.
+Labels of the target nodes. Tune it by using the `NODE_LABEL` environment variable.
+This variable is mutually exclusive with the `TARGET_NODE` environment variable. If `TARGET_NODE` environment variable is set, the nodes provided will be used. Otherwise, it derives the node name(s) by matching it with the node labels.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/common/target-label.yaml yaml)
 ```yaml
@@ -94,10 +99,10 @@ spec:
 
 ### Node affected percentage
 
-It defines the percentage of nodes subject to chaos by matching the node labels. You can tune it using the `NODES_AFFECTED_PERC` environment variable. If `NODES_AFFECTED_PERC` environment variable is set to `empty` or `0`, it targets a minimum of one node.
+Percentage of target nodes that match the node labels. Tune it by using the `NODES_AFFECTED_PERC` environment variable. If `NODES_AFFECTED_PERC` environment variable is set to `empty` or `0`, it targets a minimum of one node.
 It supports node CPU hog, node memory hog, and node I/O stress faults.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/common/node-affected-percentage.yaml yaml)
 ```yaml

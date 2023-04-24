@@ -2,6 +2,7 @@
 id: pod-cpu-hog-exec
 title: Pod CPU hog exec
 ---
+## Introduction
 
 Pod CPU hog exec is a Kubernetes pod-level chaos fault that consumes excess CPU resources of the application container. This fault applies stress on the target pods by simulating a lack of CPU for processes running on the Kubernetes application. This degrades the performance of the application. 
 
@@ -17,7 +18,7 @@ CPU hog exec:
 - Verifies multi-tenant load issues, that is, when the load increases on one container, this does not cause downtime in other containers. 
 
 
-:::note
+:::info note
 - Kubernetes > 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
 :::
