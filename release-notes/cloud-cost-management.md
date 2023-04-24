@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-04-11T10:00
+date: 2023-04-24T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -50,13 +50,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * The **Recommendations** page displayed incorrect savings value. (CCM-12082)
 
   This issue has been resolved. The value in the grid now matches with the widgets.
-* Spike in BigQuery cost (CCM-12027)
+* Spike in BigQuery cost. (CCM-12027)
 
-  Limited the data queried by users with restricted access by implementing a time filter of 30 days. These users can retrieve data only from the past 30 days, effectively reducing the overall size of the query results.
+  Limited the data queried by users with restricted access (granular RBAC enabled) by implementing a time filter of 30 days. These users can retrieve recommendations only from the past 30 days, effectively reducing the overall size of the query results.
 * Modifying individual budgets within a budget group resulted in inconsistencies within the budget group as a whole. (CCM-11854)
 
-  To fix this issue, you are allowed to modify only the budget amount and the alert type for individual budgets. You cannot modify other parameters.
-* While configuring budget groups, you cannot add a negative integer in the **Cascading** > **Proportionally** field. (CCM-11852)
+  To fix this issue, you are allowed to modify only the budget type, budget amount, and configure alerts for individual budgets. You cannot modify other parameters.
+* While configuring budget groups, you cannot add a negative integer in the **Cascading** > **Proportionally** field. The total sum of the proportions should always be 100. (CCM-11852)
 
     <docimage path={require('./static/budget-group-release-note.png')} width="60%" height="60%" title="Click to view full size image" />
 

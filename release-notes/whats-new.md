@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-04-10T10:00
+date: 2023-04-24T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,7 +17,16 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 10, 2023, version 79015
+## Latest - April 19, 2023, version 79104
+
+### Cloud Cost Management
+
+* Recommendations enhancement (CCM-11769)
+
+  A new filter has been added to recommendations, which allows the selection of the age of the recommendations. This filter allows you to specify how many days old recommendations should be included in the results. 
+
+
+## April 10, 2023, version 79015
 
 ### Feature Flags
 
