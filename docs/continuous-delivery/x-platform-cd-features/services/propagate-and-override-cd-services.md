@@ -1,7 +1,7 @@
 ---
 title: Propagate CD services
 description: Use the same service across multiple stages.
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 This topic describes how to propagate CD services between stages.
