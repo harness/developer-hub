@@ -37,7 +37,7 @@ stringData:
 ```
 
 - It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-- Refer to the [common attributes](./common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
