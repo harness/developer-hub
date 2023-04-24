@@ -19,11 +19,11 @@ Do the following, depending on the steps in your Build or Security stages:
 
 ### Kubernetes infrastructure AND scanner-specific (non-Security) step 
  
-If your pipeline includes a scanner-specific step with a graphical UI, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) or [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference), do the workflow described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#harness-cloud-infrastructure-or-security-step).
+If your pipeline includes a scanner-specific step with a graphical step-palette UI, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) or [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference), do the workflow described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#harness-cloud-infrastructure-or-security-step).
 
 :::note
 
-* Make sure that you place your files in the correct location in the delegate workspace and that you set up the set the CI_MOUNT_VOLUMES and ADDITIONAL_CERTS_PATH environment variables correctly.
+* Make sure that you place your files in the correct location in the delegate workspace and that you set up the CI_MOUNT_VOLUMES and ADDITIONAL_CERTS_PATH environment variables correctly.
 
 * STO supports certificates in DAR format as well as PEM.
 
@@ -31,7 +31,7 @@ If your pipeline includes a scanner-specific step with a graphical UI, such as [
 
 ### Kubernetes infrastructure OR Security step
 
-If you're using a generic (non-scanner-specific) Security steps, do the [Harness Cloud workflow](#harness-cloud-infrastructure-or-security-step) described below. 
+If you're using a generic (non-scanner-specific) Security steps, do the [Harness Cloud infrastructure OR Security step](#harness-cloud-infrastructure-or-security-step) described below. 
 
 
 ## Harness Cloud infrastructure OR Security step
@@ -70,7 +70,7 @@ The following steps describe the high-level workflow.
   
 ### Example workflow
   
-This example shows how to include a PEM file in a pipeline that runs a SonarQube scan. This workflow assumes that you have a valid SonarQube PEM stored as a Harness File Secret. 
+This example shows how to include a PEM file in a pipeline that runs a scan using a Security step. This workflow assumes that you have a valid PEM stored as a Harness File Secret. 
 
 1. In your Harness pipeline, go to the Overview tab of the Security stage. Under **Shared Paths**, enter the following shared path: 
 
