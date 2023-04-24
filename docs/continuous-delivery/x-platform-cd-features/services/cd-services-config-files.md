@@ -1,7 +1,7 @@
 ---
 title: Use config files in your deployments
 description: Use plain text and encrypted files in your deployments
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 You can use files added to the **Config Files** section in your Harness services in your manifests, such as in a ConfigMap. You can reference unencrypted and encrypted files, and they can be single or multiline.
