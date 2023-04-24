@@ -26,12 +26,6 @@ The Harness Self-Managed Platform is designed to cater to various deployment sce
 
 - Kubernetes version 1.22+ (Harness recommends v1.23.x)
 
-## Kubernetes cluster requirements
-
-|**Modules**|**Pods**|**CPU**|**Memory (GB)**|**Storage (GB)**|
-|---|---|---|---|---|
-|HarnessPlatform|40|50.4|125.4|1090|
-|Harness FirstGen|21|28|27|960|
 
 ## Installation workflow
 
@@ -42,6 +36,8 @@ The flowchart below shows the air-gapped environment installation workflow steps
 ## Download required files
 
 To begin your installation, download the following files:
+
+Note: Different Harness releases are listed here including the hotfix, pick the relevant versions from https://storage.googleapis.com/smp-airgap-bundles
 
 - Harness Docker images [harness-docker-images.txt](https://storage.googleapis.com/smp-airgap-bundles/harness-docker-images.txt)
 - Harness air-gapped bundle [harness-airgapped.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped.tgz)
