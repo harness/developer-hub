@@ -229,6 +229,41 @@
   }
 }
 
+@media screen and (max-width: 996px) {
+  .homepageCertifications {
+    .inner {
+      .dualColumn {
+        flex-direction: column;
+        .left {
+          .desc {
+            min-height: unset;
+            padding-bottom: 2em;
+          }
+        }
+        .right {
+          margin-top: 2em;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (max-width: 512px) {
+  .homepageCertifications {
+    .inner {
+      .dualColumn {
+        .right {
+          margin-top: 0;
+          .cards {
+            flex-direction: column;
+          }
+        }
+      }
+    }
+  }
+}
+
 @media screen and (max-width: 393px) {
   /* for mobile */
   .homepageCertifications h2 {

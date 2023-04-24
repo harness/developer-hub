@@ -15,13 +15,13 @@ export default function CI() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ci.svg`} />
-            <h1>Build Code Tutorials</h1>
+            <h1>Build Application Code Tutorials</h1>
           </div>
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Learn how to build various code bases.
+              Learn how to build application code written in various languages.
             </p>
           </div>
         </div>

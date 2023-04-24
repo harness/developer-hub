@@ -10,6 +10,7 @@ helpdocs_is_published: true
 
 
 :::note
+
 Currently, this feature is behind the feature flags `NG_SVC_ENV_REDESIGN` and `CD_TRIGGERS_REFACTOR`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
@@ -25,11 +26,14 @@ You can set conditions on the Triggers, such as matching a Docker tag or label o
 This Trigger is a simple way to automate deployments for new builds.
 
 :::note
+
 An artifact source does not need to be defined in the service definition for the trigger to work. The only possible scenario of failure is during the initial collection of the artifact within one minute of creating the trigger. For instance, suppose the Docker registry contains 10 tags for a specific image and a trigger is created. In that case, the delegate's polling job retrieves all 10 tags and sends them to the manager, which does not initiate any pipelines. This is because running the pipeline for all 10 tags that were pushed before creation of the trigger could leave the system in an undesirable state. However, when an 11th or any subsequent tag is pushed, the trigger executes and initiates the pipeline.
+
+:::
 
 ### Before you begin
 
-* You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
+* You should be familiar with Harness CD Pipelines, such as the one you create in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 ### Important notes
 
@@ -68,7 +72,7 @@ You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>`
 
    ![](./static/trigger-on-a-new-artifact-24.png)
 
-   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/).
 
 2. Click **Triggers**.
 3. Click **New Trigger**.
@@ -92,7 +96,7 @@ In your Docker Registry Connector, to connect to a public Docker registry like D
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
-3. Create or select the GCP Connector to connect Harness to GCR, and then click **Continue**. For steps on GCP Connectors, go to [Add a Google Cloud Platform (GCP) Connector](../7_Connectors/connect-to-google-cloud-platform-gcp.md).
+3. Create or select the GCP Connector to connect Harness to GCR, and then click **Continue**. For steps on GCP Connectors, go to [Add a Google Cloud Platform (GCP) Connector](../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md).
 4. In **Artifact Details**, in GCR Registry URL, select the location of the registry, listed as **Hostname** in GCR.
    
 5. ![](./static/trigger-on-a-new-artifact-26.png)
@@ -110,7 +114,7 @@ Jump to [Step 2: Set Conditions](#step-2-set-conditions).
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
-3. Create or select the AWS Connector to connect Harness to ECR, and then click **Continue**. For steps on AWS Connectors, go to [AWS Connector Settings Reference](../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+3. Create or select the AWS Connector to connect Harness to ECR, and then click **Continue**. For steps on AWS Connectors, go to [AWS Connector Settings Reference](../7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 4. In **Artifact Details**, in **Region**, select the region for the ECR service you are using.
 5. In **Image Path**, enter the path to the repo and image. You can copy the URI value from the repo in ECR. For example, `public.ecr.aws/l7w9l6a8/todolist` (public repo) or `085111111113.dkr.ecr.us-west-2.amazonaws.com/todolist` (private repo).
 6. Click **Continue**.
@@ -121,7 +125,7 @@ Jump to [Step 2: Set Conditions](#step_2_set_conditions).
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
-3. Create or select the AWS Connector to connect Harness to S3, and then click **Continue**. For steps on AWS Connectors, go to [AWS Connector Settings Reference](../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+3. Create or select the AWS Connector to connect Harness to S3, and then click **Continue**. For steps on AWS Connectors, go to [AWS Connector Settings Reference](../7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 4. In **Artifact Details**, in **Region**, select the region for the S3 service you are using. While S3 is regionless, Harness needs a region for the S3 API.
 5. In **Bucket Name**, enter the S3 bucket name.
 6. In **File Path Regex**, enter a regex like `todolist*.zip`. The expression must either contain a `*` or end with `/`.
@@ -131,7 +135,7 @@ Jump to [Step 2: Set Conditions](#step_2_set_conditions).
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
-3. Create or select the Artifactory Connector to connect Harness to Artifactory, and then click **Continue**. For steps on Artifactory Connectors, go to [Artifactory Connector Settings Reference](../7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+3. Create or select the Artifactory Connector to connect Harness to Artifactory, and then click **Continue**. For steps on Artifactory Connectors, go to [Artifactory Connector Settings Reference](../7_Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md).
 4. In **Artifact Details**, in **Repository Format**, select **Generic** or **Docker**.
 	1. Generic:
 		1. **Repository:** enter the **Name** of the repo.
@@ -148,11 +152,21 @@ Jump to [Step 2: Set Conditions](#step_2_set_conditions).
 
 1. In **Configuration**, in **Name**, enter a name for the Trigger.
 2. In **Listen on New Artifact**, click **Define Artifact Source**.
-3. Create or select the Azure Connector to connect Harness to ACR, and then click **Continue**. For steps on Azure Connectors, go to [Add a Microsoft Azure Cloud Connector](../7_Connectors/add-a-microsoft-azure-connector.md).
+3. Create or select the Azure Connector to connect Harness to ACR, and then click **Continue**. For steps on Azure Connectors, go to [Add a Microsoft Azure Cloud Connector](../7_Connectors/Cloud-providers/add-a-microsoft-azure-connector.md).
 4. In **Artifact Details**, in **Subscription Id**, select the Subscription Id from the ACR registry.
 5. In **Registry**, select the registry you want to use.
 6. In **Repository**, select the repository to use.
 7. Click **Continue**.
+
+Jump to [Step 2: Set Conditions](#step_2_set_conditions).
+
+### Option: Bamboo
+
+1. In **Configuration**, in **Name**, enter a name for the Trigger.
+2. In **Listen on New Artifact**, click **Define Artifact Source**.
+3. Create or select the Bamboo Connector to connect Harness to Bamboo, and then click **Continue**.
+4. In **Artifact Details**, specify the plan name, artifact paths, and builds to monitor.
+5. Click **Continue**.
 
 Jump to [Step 2: Set Conditions](#step_2_set_conditions).
 

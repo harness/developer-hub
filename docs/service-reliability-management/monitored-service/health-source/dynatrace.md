@@ -11,8 +11,13 @@ This topic describes how to set up Dynatrace as a health source in a monitored s
 
 ## Prerequisites
 
-- Dynatrace connector has been added to the Harness platform.
 - A monitored service has already been created in the Harness SRM.
+  
+- Dynatrace connector has been added to the Harness platform.
+
+:::info
+To allow Harness to access Dynatrace metrics through the Dynatrace API, you must label the metrics as [key requests](https://www.dynatrace.com/support/help/platform-modules/applications-and-microservices/services/analysis/monitor-key-requests).
+:::
 
 ## Add Dynatrace health source
 

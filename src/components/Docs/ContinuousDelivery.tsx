@@ -15,21 +15,31 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_cd.svg`} />
-            <h1>Continuous Delivery & GitOps Docs</h1>
+            <h1>Continuous Delivery & GitOps Documentation</h1>
           </div>
-          <div className={styles.btnContainer}>
-            <Link href="/tutorials/deploy-services">
+          <div className={styles.btnContainerCD}>
+            <Link href="/tutorials/cd-pipelines">
               <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
                 Tutorials
               </button>
             </Link>
             <Link href="/release-notes/continuous-delivery">
               <button className={styles.btn}>
-                {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
+              </button>
+            </Link>
+            <Link href="https://apidocs.harness.io/">
+              <button className={styles.btn}>
+                <img src={`${baseUrl}img/icon_documentation.svg`} />
+                API Reference
+              </button>
+            </Link>
+            <Link href="https://registry.terraform.io/providers/harness/harness/latest/docs">
+              <button className={styles.btn}>
+                <img src={`${baseUrl}img/icon_terraform.png`} />
+                Terraform Provider
               </button>
             </Link>
           </div>
@@ -37,17 +47,22 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-            Make your software releases more efficient and reliable with Harness Continuous Delivery.
+              Make your software releases more efficient and reliable with
+              Harness Continuous Delivery.
             </p>
           </div>
         </div>
       </div>
       <TutorialCards data={docsCards} sectionClass={styles.subSection} />
-      <div className={styles.sectionDivider}></div>
-      <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
-        <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
-      </div>
+      {featuredTutorials && featuredTutorials.length > 0 && (
+        <>
+          <div className={styles.sectionDivider}></div>
+          <div className={styles.subSection}>
+            <h3>Featured Tutorials</h3>
+            <TutorialCard FeatureList={featuredTutorials} featuredCard={true} />
+          </div>
+        </>
+      )}
     </div>
     // </Layout>
   );

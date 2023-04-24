@@ -1,5 +1,5 @@
 ---
-title: HTTP Probe
+title: HTTP probe
 sidebar_position: 3
 ---
 

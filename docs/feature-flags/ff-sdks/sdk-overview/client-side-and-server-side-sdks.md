@@ -1,5 +1,5 @@
 ---
-title: Choose a Client-Side or Server-Side SDK
+title: Choose a client-side or server-side SDK
 description: This topic will help you understand the difference between Harness Feature Flag's client-side and server-side SDKs.
 sidebar_position: 10
 helpdocs_topic_id: rvqprvbq8f

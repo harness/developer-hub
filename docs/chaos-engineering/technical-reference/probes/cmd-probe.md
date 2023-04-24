@@ -1,5 +1,5 @@
 ---
-title: Command Probe
+title: Command probe
 sidebar_position: 4
 ---
 

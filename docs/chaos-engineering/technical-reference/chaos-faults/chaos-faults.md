@@ -1,6 +1,6 @@
 ---
 id: chaos-faults
-title: Chaos Faults
+title: Chaos faults
 ---
 
 ```mdx-code-block
@@ -22,6 +22,8 @@ title: Chaos Faults
 ### Kube-Resilience
 
 ### Load
+
+### Security-chaos
 
 ```mdx-code-block
 </div>

@@ -48,7 +48,7 @@ Harness STO enables DevOps and DevSecOps teams to left shift security testing:
 
 * **Test:** test code, OSS libraries, containers, and live apps with popular security scanners as part of the CI/CD Pipeline. Harness orchestrates the scanners to ensure that scanning is timely and easy to apply.
 * **Remediate:** repair security vulnerabilities by empowering developers with a prioritized list that is intelligently deduplicated across all scanners. Harness provides dashboards with clear security vulnerabilities identified.
-* **Govern:** use governance policies and real-time security dashboards for ensuring critical security issues never make it to production. You can apply [Harness existing OPA policy governance](../../platform/14_Policy-as-code/harness-governance-overview.md) to enforce your security testing practices.
+* **Govern:** use governance policies and real-time security dashboards for ensuring critical security issues never make it to production. You can apply [Harness existing OPA policy governance](/docs/platform/Governance/Policy-as-code/harness-governance-overview) to enforce your security testing practices.
 
 With Harness STO, you are scanning at any stage in the CI/CD Pipeline, and providing developers with deduplicated and prioritized vulnerabilities:
 
@@ -64,9 +64,9 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ### STO Features
 
-Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules. See [STO Tutorial 1: Standalone STO Workflows](/tutorials/orchestrate-security-tests/sto-standalone-workflows).
+Harness STO automatically aggregates, normalizes, and deduplicates data to identify vulnerabilities across all your scanners. You can use STO with no other Harness modules. See [STO Tutorial 1: Standalone STO Workflows](/tutorials/security-tests/standalone-pipeline).
 
-You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. See [STO Quickstart 2: Integrated STO/CI/CD Workflows](/tutorials/orchestrate-security-tests/sto-integrated-workflows).
+You can also include STO features in CI and CD workflows. You can set up your Pipelines to scan repos, images, and artifacts, and then fail the Pipeline automatically if any "show-stopper" vulnerabilities are detected. See [STO Quickstart 2: Integrated STO/CI/CD Workflows](/tutorials/security-tests/cicd-integrated-pipeline).
 
 ![](./static/security-testing-orchestration-basics-31.png)
 

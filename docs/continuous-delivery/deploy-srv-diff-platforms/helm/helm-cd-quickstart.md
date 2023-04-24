@@ -214,6 +214,6 @@ In this quickstart, you learned how to:
 
 ## Next steps
 
-* See [CD tutorials](/tutorials/deploy-services) for other deployment features.
+* See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
 * [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart).
 

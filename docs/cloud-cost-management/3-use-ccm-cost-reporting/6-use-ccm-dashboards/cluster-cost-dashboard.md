@@ -1,5 +1,5 @@
 ---
-title: View Cluster Cost Dashboard
+title: Cluster Cost Dashboard
 description: This topic describes how to view By Harness Cluster Cost Dashboard and get more information about that data.
 # sidebar_position: 2
 helpdocs_topic_id: uai4ud1ibi
@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+# View Cluster Cost Dashboard
 
 Harness provides **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across cloud providers. Using the Cluster Cost Dashboard you can:
 

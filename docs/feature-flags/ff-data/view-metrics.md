@@ -1,5 +1,5 @@
 ---
-title: View the Analytics of Your Flags
+title: View the analytics for your flags
 description: This topic describes how to view the metrics of a feature flag.
 sidebar_position: 30
 helpdocs_topic_id: wb2nmcpo9x

@@ -87,7 +87,7 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
 
 ## Select approvers
 
-1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [add and manage user groups](/docs/platform/Role-Based-Access-Control/add-user-groups).
+1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [add and manage user groups](/docs/platform/User-Management/add-user-groups).
 2. In **Number of approvers that are required at this step**, enter how many of the users in the user groups must approve the step.
 
 ## Prevent approval by pipeline executor

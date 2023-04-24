@@ -97,7 +97,7 @@ Perform the following steps to limit the access to specific Dashboards for diffe
 1. In **Harness**, click **Access Control**.
    
      ![](./static/manage-access-control-for-ccm-dashboards-07.png)
-2. In **User**, in **New User**, select the User for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Add and Manage Users](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-users).
+2. In **User**, in **New User**, select the User for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Add and Manage Users](/docs/platform/User-Management/add-users).
 3. In **Assign Roles**, select the **Role** from the drop-down list. You can select either **Dashboard - Static Editor** or **Dashboard - All View**.
 4. In **Resource Groups**, select the resource group for which you want to add or modiy the access control.
    

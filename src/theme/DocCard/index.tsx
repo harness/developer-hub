@@ -79,7 +79,8 @@ function CardCategory({
     return null;
   }
 
-  const customPropsDesc = item.customProps && item.customProps.description;
+  const customPropsDesc =
+    item.description || (item.customProps && item.customProps.description);
   return (
     <CardLayout
       href={href}
@@ -87,9 +88,7 @@ function CardCategory({
       title={item.label}
       description={translate(
         {
-          message: customPropsDesc
-            ? `${customPropsDesc} ({count} items)`
-            : "{count} items",
+          message: customPropsDesc ? `${customPropsDesc}` : "{count} items",
           id: "theme.docs.DocCard.categoryDescription",
           description:
             "The default description for a category card in the generated index about how many items this category includes",
@@ -108,7 +107,9 @@ function CardLink({ item }: { item: PropSidebarItemLink }): JSX.Element {
       href={item.href}
       icon={icon}
       title={item.label}
-      description={doc?.description}
+      description={
+        doc?.description || item.description || item?.customProps?.description
+      }
     />
   );
 }

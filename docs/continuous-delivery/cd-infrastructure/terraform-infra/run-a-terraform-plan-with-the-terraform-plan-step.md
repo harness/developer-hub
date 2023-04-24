@@ -114,7 +114,7 @@ For this reason, it's important that all your Project members know the Provision
 
 Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Harness Secrets Manager Overview](/docs/platform/Security/harness-secret-manager-overview).
+See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
 
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
@@ -138,9 +138,9 @@ The **Terraform Config File Store** settings appear.
 
 Click the provider where your files are hosted.
 
-![](./static/run-a-terraform-plan-with-the-terraform-plan-step-12.png)
+![](./static/provision-infra-dynamically-with-terraform-02.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
 In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
 
@@ -162,7 +162,17 @@ The following sections cover common Terraform Plan step options.
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+### AWS S3
+
+1. In **Region**, select the region where your bucket is stored.
+2. In **Bucket**, select the bucket where your Terraform files are stored (all buckets from the selected region that are available to the connector will be fetched).
+3. In **Folder Path**, enter the path from the root of the repo to the folder containing the script.
+
+   ![](./static/provision-infra-dynamically-with-terraform-09.png)
+
+Harness will fetch all files from specified folder.
 
 ### Source Module
 
@@ -266,7 +276,7 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 ```bash
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
-See [Add Text Secrets](/docs/platform/Security/add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 ### Remote Variables
 
@@ -296,7 +306,18 @@ Click **Submit**. The remote file(s) are added.
 
 #### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+#### AWS S3
+
+1. In **Identifier**, enter an identifier, so you can refer to variables using expressions if needed.
+2. In **Region**, select the region where your bucket is stored.
+3. In **Bucket**, select the bucket where your Terraform var files are stored (all buckets from the selected region that are available to the connector will be fetched).
+4. In **File Paths**, add one or more file paths from the root of the bucket to the variable file.
+
+   ![](./static/provision-infra-dynamically-with-terraform-10.png)
+
+Click **Submit**. The remote file(s) are added.
 
 ## Backend Configuration
 
@@ -313,9 +334,30 @@ Currently, remote state file support is behind the feature flag `TERRAFORM_REMOT
 :::
 
 1. In Backend Configuration, select **Remote**.
-2. Click **Specify Backend Config File**, add a Connector to your repo, and select the backend config file.  
+2. Click **Specify Backend Config File**
+3. Select your provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
+   ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-16.png)
 
-![](./static/run-a-terraform-plan-with-the-terraform-plan-step-15.png)
+#### Git providers
+
+1. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
+2. In **Branch**, enter the name of the branch.
+3. In **File Path**, add file path from the root of the repo to the backend config file.
+4. Click **Submit**. The remote file(s) are added.
+
+   ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-08.png)
+
+#### Artifactory
+
+See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+#### AWS S3
+
+1. In **Region**, select the region where your bucket is stored.
+2. In **Bucket**, select the bucket where your backend config file is stored (all buckets from the selected region that are available to the connector will be fetched).
+3. In **File Path**, add file path from the root of the bucket to the backend config file.
+
+   ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-17.png)
 
 You can also use files in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
@@ -401,7 +443,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Security/add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 ## Export JSON representation of Terraform Plan
 

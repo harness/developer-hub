@@ -34,6 +34,15 @@ Delegate scripts are applied under the following conditions:
 * **New Delegate.** Scripts added on delegate creation run before the delegate starts.
 * **Running Delegate.** Scripts applied during delegate runtime, either by application as a new script or by switching the Delegate’s current script, run on delegate restart, before the delegate reaches steady state.
 
+### Unzip
+
+Run `microdnf update` before you run `microdnf` commands.
+```
+microdnf update  
+# Install Unzip  
+microdnf install unzip
+```
+
 ### Terraform
 
 Here is an example of a script for installing Terraform:
@@ -77,7 +86,7 @@ The `helm init` command is used with Helm 2 to install Tiller into a Kubernetes 
 kubectl config current-context cluster_name
 ```
 
-If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](../../6_Security/2-add-use-text-secrets.md). 
+If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](../../Secrets/2-add-use-text-secrets.md). 
 
 
 ```
@@ -107,15 +116,6 @@ microdnf update
 microdnf -y install python3-pip  
 # Check pip install  
 pip -v
-```
-
-### Unzip
-
-Run `microdnf update` before you run `microdnf` commands.
-```
-microdnf update  
-# Install Unzip  
-microdnf install unzip
 ```
 
 ### AWS CLI

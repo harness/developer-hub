@@ -110,6 +110,8 @@ You can rotate tokens for shell script delegates using one of the following meth
 
 If your delegates were not recently installed, the shart.sh, config-watcher.yaml, and config-delegate.yaml files might refer to the token name `accountSecret`. Replace these references with `delegateToken`. 
 
+When you build the delegate image, add the changes in the init.sh file to the image. The init.sh file must be at the same level as start.sh (`/opt/harness-delegate`).
+
 ### Docker Delegate
 
 Docker doesn't provide a way to modify an environment variable in a running container because the operating system doesn't provide a way to modify an environment variable in a running process. You must destroy and recreate the container.

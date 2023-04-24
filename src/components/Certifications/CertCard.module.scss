@@ -130,5 +130,9 @@
     /* for mobile */
     .certCard{
         width: unset;
+        &.thumb {
+            width: unset;
+            margin-top: 1.5em;
+        }
     }
 }

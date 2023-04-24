@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Probe
+title: Kubernetes probe
 sidebar_position: 5
 ---
 

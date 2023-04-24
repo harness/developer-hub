@@ -16,7 +16,7 @@ export default function CE() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Run chaos experiments</h3>
+        <h3>Ensure app and infrastructure resilience</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -81,11 +81,11 @@ export default function CE() {
         </div>
       </div>
       <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
+        <h3>Featured tutorials</h3>
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>
-        <h3 id="all-tutorials">All CE Tutorials</h3>
+        <h3 id="all-tutorials">HCE tutorials</h3>
         <TutorialCard FeatureList={CEList} />
       </div>
     </div>

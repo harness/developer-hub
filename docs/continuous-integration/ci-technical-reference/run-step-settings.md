@@ -306,7 +306,7 @@ For example, if a step exported an output variable called `BUILD_NUM`, you could
 
 ### Image Pull Policy
 
-Select an option to set the pull policy for the image.
+If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
 
 * **Always**: The kubelet queries the container image registry to resolve the name to an image digest every time the kubelet launches a container. If the kubelet encounters an exact digest cached locally, it uses its cached image; otherwise, the kubelet downloads (pulls) the image with the resolved digest, and uses that image to launch the container.
 * **If Not Present**: The image is pulled only if it is not already present locally.
@@ -314,7 +314,9 @@ Select an option to set the pull policy for the image.
 
 ### Run as User
 
-Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+If you specified a [Container Registry and Image](#container-registry-and-image), you can specify the user ID to use for running processes in containerized steps.
+
+For a Kubernetes cluster build infrastructure, the step uses this user ID to run all processes in the pod. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 ### Set Container Resources
 
