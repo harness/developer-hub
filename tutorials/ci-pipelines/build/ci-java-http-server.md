@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-title: Build and test Java
+title: Java application
 description: Use a CI pipeline to build and test a Java HTTP server application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/java
@@ -15,24 +15,18 @@ In this tutorial, you will create a Harness CI pipeline that does the following:
 3. Pull the published Docker image and run it as a service dependency.
 4. Run a connectivity test against the running application.
 
-## Prerequisites
-
-In addition to a Harness account, you need the following accounts and tools:
-
-* A **GitHub account** where you can fork the tutorial repo.
-* A **DockerHub account and repo** where your pipeline can push and pull app images.
-
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
 <CISignupTip />
 
-## Create a Docker Hub connector
+## Prepare the codebase
 
-You need a Docker Hub connector to allow Harness to authenticate and publish the Java HTTP server image to your [Docker Hub](https://hub.docker.com/) account.
-
-1. In Harness, select the **Continuous Integration** module, and then select an existing project or create a new project.
+1. Fork the [jhttp app tutorial repository](https://github.com/harness-community/jhttp) into your GitHub account.
+2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the **Authentication** section of the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference#authentication).
+3. Copy the token so you can use it when you create the GitHub connector in the next steps.
+4. In Harness, select the **Continuous Integration** module and then switch to the **Project** you want to use for this tutorial or create a project.
 
 <details>
 <summary>Create a project</summary>
@@ -51,27 +45,55 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 </details>
 
-2. Under **Project Setup**, select **Connectors**.
-3. Select **New Connector**, and then select **Docker Registry**.
-4. Configure the [Docker Hub connector settings](/docs/platform/connectors/ref-cloud-providers/docker-registry-connector-settings-reference/) as follows:
+### Create a GitHub connector
 
-   * **Name:** Enter a recognizable name for the connector.
+Next, you'll create a _connector_ that allows Harness to connect to your Git codebase. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference).
+
+1. Under **Project Setup**, select **Connectors**.
+2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
+3. Enter a **Name**, and select **Continue**.
+4. Configure the **Details** as follows, and then select **Continue**:
+
+   * **URL Type:** Select **Repository**.
+   * **Connection Type:** Select **HTTP**.
+   * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo.
+
+5. Configure the **Credentials** as follows, and then select **Continue**:
+
+   * **Username:** Enter the username for the GitHub account where you forked the tutorial repo.
+   * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/Security/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
+   * **Enable API access:** Select this option and select the same personal access token secret.
+
+6. For **Select Connectivity Mode**, select **Connect through Harness Platform**, and then select **Save and Continue**.
+7. Wait while Harness tests the connection, and then select **Finish**.
+
+## Prepare Docker Hub
+
+You must create a Docker Hub connector to allow Harness to authenticate and publish the Java HTTP server image to Docker Hub.
+
+1. Create a [Docker Hub](https://hub.docker.com/) account if you don't have one already.
+2. Create a repo called `jhttp` in your Docker Hub account.
+3. Create a Docker Hub personal access token with **Read, Write, Delete** permissions. Copy the token; you need it when you create the Docker Hub connector in the next steps.
+4. In Harness, select the **Continuous Integration** module, and then select your project.
+5. Under **Project Setup**, select **Connectors**.
+6. Select **New Connector**, and then select **Docker Registry**.
+7. Configure the [Docker Hub connector settings](/docs/platform/connectors/ref-cloud-providers/docker-registry-connector-settings-reference/) as follows:
+
+   * **Name:** Enter a name.
    * **Provider Type:** Select **DockerHub**.
    * **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
    * **Username:** Enter the username for your Docker Hub account.
-   * **Password:** Create a [secret](/docs/platform/security/add-use-text-secrets/) for a Docker Hub Personal Access Token that Harness can use to access your Docker Hub account. The token must have **Read, Write, Delete** permissions.
+   * **Password:** Create a [secret](/docs/platform/security/add-use-text-secrets/) for your Docker Hub personal access token.
    * **Select Connectivity Mode:** Select **Connect through Harness Platform**.
    * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
 
-5. In the list of connectors, make a note of your Docker Hub connector's ID.
+8. In the list of connectors, make a note of your Docker Hub connector's ID.
 
 ## Create a Java starter pipeline
 
-1. Fork the [jhttp app tutorial repository](https://github.com/harness-community/jhttp) into your GitHub account.
-2. In Harness, select the **Continuous Integration** module, and select the project you want to use for this tutorial.
-3. Under **Project Setup**, select **Get Started**.
-4. When prompted to select a repository, search for **jhttp**, select the repository that you forked earlier, and then select **Configure Pipeline**. If your GitHub account isn't connected to your Harness account or project, you need to [add a GitHub connector](/docs/platform/Connectors/add-a-git-hub-connector).
-4. Under **Choose a Starter Configuration**, select **Java with Maven** and then select **Create a Pipeline**.
+1. Under **Project Setup**, select **Get Started**.
+2. When prompted to select a repository, search for **jhttp**, select the repository that you forked earlier, and then select **Configure Pipeline**.
+3. Under **Choose a Starter Configuration**, select **Java with Maven** and then select **Create a Pipeline**.
 
 <details>
 <summary>Java with Maven starter pipeline YAML</summary>
@@ -321,7 +343,7 @@ Notice the following about this step:
 </Tabs>
 ```
 
-## Run the app as a service
+## Manage dependencies: Run the app as a service
 
 You can use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to run services needed by other steps in the same stage. This tutorial uses a **Background** step to run the JHTTP app so that a **Run** step can run a connection test against the app.
 
@@ -409,7 +431,7 @@ Add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-se
 3. Enter the following code in the **Command** field:
 
 ```
-until curl --max-time 1 http://localhost:8888; do
+until curl --max-time 1 https://localhost:8888; do
   sleep 2;
 done
 ```
@@ -474,7 +496,7 @@ You can also try adding more steps to add more functionality to this pipeline, s
 
 ## Reference: Pipeline YAML
 
-Here is the complete YAML for this tutorial's pipeline.
+Here is the complete YAML for this tutorial's pipeline. If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project, [GitHub connector ID](#create-a-github-connector), GitHub account name, and [Docker Hub connector ID](#prepare-docker-hub).
 
 <details>
 <summary>Pipeline YAML</summary>
