@@ -147,6 +147,12 @@ At runtime, the config file is decoded and used as plaintext.
 
 ## Using Harness variables in config files
 
+:::note
+
+Currently, this feature is behind the feature flag `CDS_NG_CONFIG_FILE_EXPRESSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 Plain text config files support the following [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables):
 
 - Pipeline variables
