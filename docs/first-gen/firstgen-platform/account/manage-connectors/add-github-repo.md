@@ -73,7 +73,7 @@ Select **HTTPS** or **SSH** for the connection. You will need to provide the pro
 
 :::tip
 
-If you use a `keygen` command to generate an SSH key, include arguments such as `rsa` and `-m PEM` to ensure your key is properly formatted and uses the RSA algorithm. For example, this command creates a PEM-formatted SSHv2 key:
+If you use the `keygen` command to generate an SSH key, include arguments such as `rsa` and `-m PEM` to ensure your key is properly formatted and uses the RSA algorithm. For example, this command creates a PEM-formatted SSHv2 key:
 
 ```
 ssh-keygen -t rsa -m PEM
