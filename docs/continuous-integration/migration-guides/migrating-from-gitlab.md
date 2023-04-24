@@ -26,11 +26,10 @@ Harness CI is part of The [Harness Platform](/docs/getting-started/harness-platf
 
 ## Comparison: Workflow architecture
 
-Both Harness CI and GitLab CI use workflows written in YAML. Whereas GitLab workflow configurations are always stored in the `.gitlab-ci.yml` file in your code repo's root directory, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
-
 Both Harness CI and GitLab CI use workflows to organize builds. In Harness CI, these workflows are called pipelines. In both products, workflows are made up of one or more stages, which represent major segments of the workflow. Each stage include one or more jobs or steps, which in turn contain individual commands.
 
 The following truncated examples provide a simple comparison of stage and step structure in GitLab CI and Harness CI.
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -84,11 +83,19 @@ For more information about Harness terminology, features, and pipeline component
 
 Jobs in GitLab CI are similar to steps in Harness CI. In both products, jobs/steps contain commands. Some commands are declared explicitly, whereas others run inherently based on the step type or configuration. An important difference is that GitLab CI jobs run in parallel by default, whereas in Harness CI steps run sequentially. However, you can enable [parallelism and other looping strategies](#comparison-matrix-and-parallelism) in Harness CI.
 
-### Scripts
+### Scripts in workflows
 
 Both Harness CI and GitLab CI support running scripts or a shell commands in jobs/steps. In GitLab CI, you use the `script` key to declare a script step.
 
 In Harness CI scripts are supplied in the `command` key, and can be supplied for any step type that supports `command`.
+
+### Writing workflows
+
+Both Harness CI and GitLab CI workflows are written in YAML. Whereas GitLab workflow configurations are always stored in the `.gitlab-ci.yml` file in your code repo's root directory, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
+
+* The Harness YAML editor includes schema validation and auto-complete recommendations to simplify and expedite pipeline configuration.
+* The Harness visual editor provides a guided experience that enables anyone to easily build, debug, and run pipelines.
+* You can switch back and forth between editors.
 
 <details>
 <summary>Complete workflow comparison</summary>
@@ -164,7 +171,7 @@ echo "Testing matrix"
 pipeline:
   name: gitlab test
   identifier: gitlab_test
-  projectIdentifier: greeter_api_tutorial_test
+  projectIdentifier: gitlab_test
   orgIdentifier: default
   tags: {}
   stages:
@@ -192,7 +199,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: DhrubajyotiDocker
+                    connectorRef: myDockerHubConnector
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -215,7 +222,7 @@ pipeline:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: DhrubajyotiDocker
+                    connectorRef: myDockerHubConnector
                     image: node:13.0.0
                     shell: Bash
                     command: |-
@@ -261,8 +268,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: dhrubaaccountconnector
-        repoName: go-pipeline-sample
+        connectorRef: account.myscm
+        repoName: test
         build: <+input>
   variables:
     - name: pipelinevar1
@@ -451,17 +458,9 @@ compile:
 
 ## Comparison: Environment variables
 
-In GitLab CI, you can use environment variables to control the behavior of jobs and pipelines, store values you want to reuse, or avoid hard-coding values in your `.gitlab-ci.yml` file. You can use predefined environment variables or define custom variables in the `.gitlab-ci.yml` file, or as project, group, or instance variables.
+In GitLab CI, you can use environment variables to control the behavior of jobs and pipelines, store values you want to reuse, or avoid hard-coding values in your `.gitlab-ci.yml` file. You can use predefined environment variables, define custom variables in the `.gitlab-ci.yml` file, or define variables at the project, group, or instance levels.
 
-In Harness CI, you can define variables at the project, organization, and account levels and then reference those variables throughout your pipelines. To reference these variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
-
-- Account-level variable reference: `<+variable.account.[var_id]>`
-- Organization-level variable reference: `<+variable.org.[var_id]>`
-- Project-level variable reference: `<+variable.[var_id]>`
-
-To learn more about variables for accounts, projects, and organizations, go to [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/).
-
-You can also define variables within individual pipelines, stages, and steps.
+This range of variable definition is also possible in Harness CI. In addition to built-in variables, you can define variables within individual pipelines, stages, and steps as well as at the project, organization, and account levels.
 
 ```mdx-code-block
 <Tabs>
@@ -487,6 +486,12 @@ variables:
   <TabItem value="harness" label="Harness">
 ```
 
+To reference project, organization, and account variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
+
+- Account-level variable reference: `<+variable.account.[var_id]>`
+- Organization-level variable reference: `<+variable.org.[var_id]>`
+- Project-level variable reference: `<+variable.[var_id]>`
+
 In this example, a step references a project-level environment variable called `ENV_VAR`.
 
 ```yaml
@@ -498,7 +503,7 @@ In this example, a step references a project-level environment variable called `
                     command: echo "environment variable: " <+variable.env_var>
 ```
 
-Within a pipeline's configuration, you can define variables at the step, stage, and pipeline level. For example, this step includes environment variable definitions.
+Within a single pipeline, you can define variables at the step, stage, and pipeline levels. For example, this step includes environment variable definitions.
 
 ```yaml
               - step:
@@ -513,6 +518,11 @@ Within a pipeline's configuration, you can define variables at the step, stage, 
                       POSTGRES_PASSWORD: <+secrets.getValue("DbPasswordSecret")>
                       POSTGRES_DB: postgres
 ```
+
+To learn more about defining and fetching variables go to:
+
+* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
+* [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
 
 ```mdx-code-block
   </TabItem>

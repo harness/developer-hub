@@ -63,13 +63,13 @@ stages:
 </Tabs>
 ```
 
+For more information about Harness terminology, features, and pipeline components, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline concepts](../ci-quickstarts/ci-pipeline-basics.md).
+
 When creating pipelines, CircleCI supports pipeline configuration as code only. In contrast, the Harness CI Pipeline Studio provides both a visual editor and a YAML code editor.
 
 * The Harness YAML editor includes schema validation and auto-complete recommendations to simplify and expedite pipeline configuration.
 * The Harness visual editor provides a guided experience that enables anyone to easily build, debug, and run pipelines.
 * You can switch back and forth between editors.
-
-For more information about Harness terminology, features, and pipeline components, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline concepts](../ci-quickstarts/ci-pipeline-basics.md).
 
 <details>
 <summary>Complete pipeline comparison</summary>
@@ -281,18 +281,18 @@ Harness CI has two options for reusable, pre-packaged functionality:
 
 ## Comparison: Specify a codebase or Docker image
 
-To clone a codebase in CircleCI, you use a _checkout_ step to check out source code to the configured path. In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). In Harness CI, codebases have two components, both of which you can edit:
+To clone a codebase in CircleCI, you use a _checkout_ step to check out source code to the configured path. In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). In Harness CI, [codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
 
 * The codebase _connector_, which specifies the codebase URL and required credentials to access your code repos.
 * A series of settings describing how you want the pipeline to clone and build the repo.
 
-When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
-
-You can also use connectors in individual steps to specify Docker images or even [clone additional codebases](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) in the same pipeline.
+When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage automatically clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
 
 :::info What are connectors?
 
 Harness integrates with many different types of repositories and providers. A connection from Harness to other platforms is called a [connector](/docs/category/connectors). Connectors can connect to source control providers, cloud providers, container registries, and more.
+
+In addition to codebase configuration, you can also use connectors in individual steps to specify Docker images or even [clone additional codebases](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) in the same pipeline.
 
 For example, in the following YAML example, the `connectorRef` references a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
 
@@ -473,15 +473,13 @@ workflows:
 
 ## Comparison: Environment variables
 
-In CircleCI, you use the web app to set project-level environment variables, and then reference them in the pipeline. You can use _Context_ to use environment variables across multiple projects.
+In CircleCI, you use the web app to define project-level environment variables, and then you can reference them in a pipeline. You can use _Context_ to use environment variables across multiple projects.
 
-In Harness CI, you can add variables at the project, organization, and account levels. To reference these variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
+In Harness CI, you can define variables at the project, organization, and account levels. To reference these variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
 
 - Account-level variable reference: `<+variable.account.[var_id]>`
 - Organization-level variable reference: `<+variable.org.[var_id]>`
 - Project-level variable reference: `<+variable.[var_id]>`
-
-To learn more about variables for accounts, projects, and organizations, go to [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/).
 
 ```mdx-code-block
 import Tabs4 from '@theme/Tabs';
@@ -519,6 +517,11 @@ jobs:
                   spec:
                     command: echo "project var: " <+variable.proj_var>
 ```
+
+In addition to project, organization, and account variables, you can use built-in variables or define custom variables within individual pipelines, stages, and steps. To learn more about defining and fetching variables in Harness, go to:
+
+* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
+* [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
 
 ```mdx-code-block
   </TabItem4>

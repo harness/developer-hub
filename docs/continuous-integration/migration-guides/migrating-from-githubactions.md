@@ -23,7 +23,7 @@ Harness CI is part of The [Harness Platform](/docs/getting-started/harness-platf
 
 ### GitHub Actions plugins
 
-Harness CI offers built-in support for GitHub Actions. Use the [GitHub Action plugin step](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) in pipelines that use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For other build infrastructures, use the [Plugin step](./run-a-git-hub-action-in-cie.md).
+Harness CI offers built-in support for GitHub Actions. You can use the [GitHub Action plugin step](../ci-technical-reference/plugin-steps/ci-github-action-step.md) in pipelines that use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
 
 ### Other advantages
 
@@ -33,105 +33,87 @@ Harness CI offers the following additional advantages over GitHub Actions:
 * Harness supports both [Terraform](/docs/platform/resource-development/terraform/harness-terraform-provider-overview/) and [CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-provisioning-with-harness/) infrastructure provisioning with simpler structures and configurations than their corresponding GitHub Actions.
 * GitHub Actions does not provide a native Accelerate metrics dashboard, whereas Harness offers both a dedicated dashboard and the ability to configure alerts.
 
-## Comparison: Pipeline architecture
+## Comparison: Workflow architecture
 
-Harness CI and GitHub Actions share some similarities in workflow configuration:
-- Workflow configuration files are written in YAML and stored in the repository. The YAML file for Github actions is stored in the .github/workflows folder in a repository and for Harness CI it’s stored on the Harness itself and can be created from UI or by importing it from a Git Source.
-- Workflows include one or more stages/jobs.
-- Stages include one or more steps or individual commands.
-Steps or tasks can be reused and shared with the community.
-For more information, see [Harness CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts).
+Both Harness CI and GitHub Actions use workflows to organize builds. In Harness CI, these workflows are called pipelines. In both products, workflows are divided into major segments, which are called *stages* in Harness CI and *jobs* in GitHub Actions. Each stage or job includes one or more steps or individual commands.
 
-- The Harness YAML editor provides schema validation and auto-complete recommendations to simplify and expedite the configuration experience. Harness is also equipped with a visual editor providing a guided experience that enables anyone to build, debug, and run pipelines easily. Users can switch back and forth between the YAML and Visual Editor as required.
+In GitHub Actions, if a job has a lot of steps, those steps might be organized into groups, which are called *stages*. Similarly, in Harness CI, you can use [step groups](../use-ci/optimize-and-more/group-ci-steps-using-step-groups.md) to group steps within a stage.
 
-### Define a stage that executes a single build step
+The following truncated examples provide a simple comparison of stage and step structure in GitLab CI and Harness CI.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github">
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="github" label="GitHub Actions">
 ```
 
 ```yaml
 jobs:
-  build_test_and_run:
-   name: build test and run
+  job_1:
+   name: job_1
+   runs-on: ubuntu-latest
+   steps:
+      -  name: compile code
+         container:
+               image: python:3.10.6-alpine
+         run: |
+           python -m compileall ./
 ```
 
 ```mdx-code-block
-</TabItem>
-<TabItem value="harness">
+  </TabItem>
+  <TabItem value="harness" label="Harness" default>
 ```
 
 ```yaml
-stages:
+  stages:
     - stage:
-        name: build test and run   
+        name: stage1
+        ...
+        spec:
+          ...
+          platform:
+            os: Linux
+            arch: Amd64
+          ...
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: compile code
+                  identifier: compile_code
+                  spec:
+                    connectorRef: myDockerHubConnector
+                    image: python:3.10.6-alpine
+                    shell: Sh
+                    command: python -m compileall ./
 ```
 
 ```mdx-code-block
-</TabItem>
+  </TabItem>
 </Tabs>
 ```
 
-### Define a step inside a stage 
+For more information about Harness terminology, features, and pipeline components, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline concepts](../ci-quickstarts/ci-pipeline-basics.md).
 
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github-actions'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github-actions">
+Both Harness CI and GitHub Actions workflows are written in YAML. Whereas GitHub Actions workflow configurations are always stored in the `.github/workflows` directory in your code repo, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
 
-```yaml
-name: code compilation
-   container:
-         image: python:3.10.6-alpine
- run: |
-        python -m compileall ./
-```
+* The Harness YAML editor includes schema validation and auto-complete recommendations to simplify and expedite pipeline configuration.
+* The Harness visual editor provides a guided experience that enables anyone to easily build, debug, and run pipelines.
+* You can switch back and forth between editors.
+
+<details>
+<summary>Complete workflow comparison</summary>
+
+Here are YAML examples of complete workflows in GitHub Actions and Harness CI.
 
 ```mdx-code-block
-</TabItem>
-<TabItem value="harness">
+<Tabs>
+  <TabItem value="gha" label="GitHub Actions">
 ```
-
-```yaml
- step:
-      type: Run
-      name: "code compilation "
-      identifier: code_compilation
-      spec:
-          connectorRef: docker_Quickstart
-          image: python:3.10.6-alpine
-          shell: Sh
-          command: python -m compileall ./ 
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-### Complete example
-
-<!-- revise this to not use service dependency -->
-
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github-actions'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github-actions">
 
 ```yaml
 name: Github_actions
@@ -140,8 +122,8 @@ on:
     branches:
       - main
 jobs:
-  Stage_1:
-   name: Stage_1
+  job_1:
+   name: job_1
    runs-on: ubuntu-latest
    steps:
       - name: Checkout code
@@ -165,8 +147,8 @@ jobs:
               POSTGRES_USER: postgres
               POSTGRES_DB: postgres
               POSTGRES_PASSWORD: ""
-  Stage_2:
-     name: Stage_2
+  job_2:
+     name: job_2
      runs-on: ubuntu-latest
      steps:
       - name: step_2 
@@ -176,8 +158,8 @@ jobs:
             echo "pipeline var:" $pipeline_var
             echo "project level var:" $project_var
             echo "secret example :" ${{ secrets.Db_Password)}}
-  Stage_3:
-     name: Stage_3
+  job_3:
+     name: job_3
      runs-on: ubuntu-latest
      strategy:
         matrix:
@@ -187,224 +169,227 @@ jobs:
         run: |
            echo "Testing on ${{ matrix.version }}
 ```
+
 ```mdx-code-block
-</TabItem>
-<TabItem value="harness">
+  </TabItem>
+  <TabItem value="harness" label="Harness" default>
 ```
+
 ```yaml
 pipeline:
- name: react
- identifier: react
- projectIdentifier:NgLabs
- orgIdentifier: default
- tags: {}
- stages:
-   - stage:
-       name: Stage1
-       identifier: stage1
-       type: CI
-       spec:
-         cloneCodebase: true
-         execution:
-           steps:
-             - step:
-                 type: Run
-                 name: step1
-                 identifier: step1
-                 spec:
-                   connectorRef: krishikaDocker
-                   image: openjdk:17.0-jdk
-                   shell: Bash
-                   command: echo "this runs on openjdk"
-         platform:
-           os: Linux
-           arch: Amd64
-         runtime:
-           type: Cloud
-           spec: {}
-         serviceDependencies:
-           - identifier: PostgressDependecyService
-             name: Postgress-Dependecy-Service
-             type: Service
-             spec:
-               connectorRef: account.harnessImage
-               image: postgres:10.8
-               envVariables:
-                 POSTGRES_USER: postgres
-                 POSTGRES_PASSWORD: <+secrets.getValue("DbPasswordSecret")>
-                 POSTGRES_DB: postgres
-   - stage:
-       name: Stage2
-       identifier: Stage2
-       type: CI
-       spec:
-         cloneCodebase: true
-         execution:
-           steps:
-             - step:
-                 type: Run
-                 name: step1
-                 identifier: step1
-                 spec:
-                   connectorRef: krishikaDocker
-                   image: node:13.0.0
-                   shell: Bash
-                   command: |-
-                     echo "pipeline var:" <+pipeline.variables.pipelinevar1>
-                     echo "project level var:" <+variable.proj_var>
-                     echo "secret example :" <+secrets.getValue("DbPasswordSecret")>
-         platform:
-           os: Linux
-           arch: Amd64
-         runtime:
-           type: Cloud
-           spec: {}
-       variables: []
-   - stage:
-       name: matrix stage
-       identifier: Stage4
-       type: CI
-       spec:
-         cloneCodebase: true
-         execution:
-           steps:
-             - step:
-                 type: Run
-                 name: step1
-                 identifier: step1
-                 spec:
-                   shell: Bash
-                   command: echo "Testing on  <+matrix.testparam>"
-         platform:
-           os: Linux
-           arch: Amd64
-         runtime:
-           type: Cloud
-           spec: {}
-       strategy:
-         matrix:
-           testparam:
-             - node
-             - python
-             - ubuntu
-         maxConcurrency: 3
- properties:
-   ci:
-     codebase:
-       connectorRef: gitforronak
-       repoName: test
-       build: <+input>
- variables:
-   - name: pipelinevar1
-     type: String
-     description: ""
-     value: someval
-```
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-## Comparison: Clone codebases
-
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github-actions'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github-actions">
-
-```yaml
-steps:
-   - name: Checkout code
-     uses: actions/checkout@v2
-```
-```mdx-code-block
-</TabItem>
-<TabItem value="harness">
-```
-```yaml
-stage:
-  name: build test and run
-  identifier: build_test_and_run
-  type: CI
-      spec:
+  name: gha-test
+  identifier: ghatest
+  projectIdentifier: gha_test
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: account.myscm
+        repoName: test
+        build: <+input>
+  stages:
+    - stage:
+        name: stage1
+        identifier: stage1
+        description: ""
+        type: CI
+        spec:
           cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: postgres-dependency
+                  identifier: postgresdependency
+                  spec:
+                    connectorRef: myDockerHubConnector
+                    image: postgres:10.8
+                    shell: Sh
+                    envVariables:
+                      POSTGRES_USER: postgres
+                      POSTGRES_PASSWORD: <+secrets.getValue("DbPasswordSecret")>
+                      POSTGRES_DB: postgres
+              - step:
+                  type: Run
+                  name: Run_1
+                  identifier: Run_1
+                  spec:
+                    connectorRef: myDockerHubConnector
+                    image: openjdk:17.0-jdk
+                    shell: Bash
+                    command: echo "this runs on openjdk"
+    - stage:
+        name: stage2
+        identifier: stage2
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    connectorRef: myDockerHubConnector
+                    image: node:13.0.0
+                    shell: Bash
+                    command: |-
+                      echo "pipeline var:" <+pipeline.variables.pipelinevar1>
+                      echo "project level var:" <+variable.proj_var>
+                      echo "secret example :" <+secrets.getValue("DbPasswordSecret")>
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+    - stage:
+        name: matrix stage
+        identifier: matrix_stage
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run_3
+                  identifier: Run_3
+                  spec:
+                    shell: Bash
+                    command: echo "Testing on  <+matrix.testparam>"
+        strategy:
+          matrix:
+            testparam:
+              - node
+              - python
+              - ubuntu
+          maxConcurrency: 3
+  variables:
+    - name: pipelinevar1
+      type: String
+      description: ""
+      value: someval
 ```
+
 ```mdx-code-block
-</TabItem>
+  </TabItem>
 </Tabs>
 ```
-In Github Actions we use `actions/checkout@v2`, which is the action that checks out your repository to the computer that runs the action.
 
-In Harness CI, we have to create a GitHub connector as part of the first step which is basically a configurable object that connects to an external source automatically.
+</details>
 
-Harness Code Repository Connectors connect your Harness account with your Git platform.
+## Comparison: Clone a codebase
 
-To learn more about creating a GitHub connector, go to [Add a GitHub connector](/docs/platform/connectors/code-repositories/add-a-git-hub-connector/).
+```mdx-code-block
+<Tabs>
+  <TabItem value="gha" label="GitHub Actions" default>
+```
 
-Harness CI has a clone codebase option that is similar to that of the GitHub Actions `actions/checkout@v2`.
+Github Actions workflows are inherently associated with a code repo because the workflow YAML exists in the `.github/workflows` directory in the target code repo. The workflow can use [actions/checkout](https://github.com/actions/checkout) in a step to clone the associated codebase into the workflow workspace.
 
-Each CI pipeline has a codebase that specifies the code repo (input) that the pipeline uses to build the artifact (output). You specify the codebase when you add the first Build stage to the pipeline. This becomes the default input for all other stages in the pipeline. By default, a Build stage clones the repo from your Git provider into your build infrastructure when the pipeline runs.
+```yaml
+name: Github_actions
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  job_1:
+   name: job_1
+   ...
+   steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+```
 
-![](./static/clone-codebase.png)
+```mdx-code-block
+  </TabItem>
+  <TabItem value="harness" label="Harness">
+```
+
+In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). [Codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
+
+* The codebase _connector_, such as a [GitHub connector](/docs/platform/connectors/code-repositories/add-a-git-hub-connector/), that specifies the codebase URL and required credentials to access your code repos.
+* A series of settings describing how you want the pipeline to clone and build the repo.
+
+When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage automatically clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
+
+```yaml
+pipeline:
+  ...
+      codebase:
+        connectorRef: account.myscm ## Codebase connector ID.
+        repoName: test ## A repo name. If set to <+input>, you can specify a repo when the pipeline runs.
+        build: <+input> ## This value means you'll specify the branch to pull when the pipeline runs.
+  stages:
+    - stage:
+        name: stage1
+        ...
+        spec:
+          cloneCodebase: true ## Indicates that this stage will clone the pipeline's default codebase. If set to false, the stage won't clone the codebase.
+```
+
+:::info What are connectors?
+
+Harness integrates with many different types of repositories and providers. A connection from Harness to other platforms is called a [connector](/docs/category/connectors). Connectors can connect to source control providers, cloud providers, container registries, and more.
+
+In addition to codebase configuration, you can also use connectors in individual steps to specify Docker images or even [clone additional codebases](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md) in the same pipeline.
+
+For example, in the following YAML example, the `connectorRef` references a Docker connector. [Docker connectors](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) are platform-agnostic and can be used to connect to any Docker container registry.
+
+```yaml
+              - step:
+                  type: Run
+                  name: step1
+                  identifier: step1
+                  spec:
+                    connectorRef: my-dockerhub-connector
+                    image: openjdk:17.0-jdk
+                    shell: Bash
+                    command: echo "this runs on openjdk"
+```
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Comparison: Access Docker
 
-Log in to Docker registry
+```mdx-code-block
+<Tabs>
+  <TabItem value="gha" label="GitHub Actions" default>
+```
 
-A connector in Harness is a configurable object that connects to an external resource automatically. We reference a connector in your pipeline by using its Id in `connectorRef`.
-
-In Harness CI we have connectors for logging into the Docker registry. To learn more about connectors, go to  [Connecting to Docker Registry](/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector/).
-
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github-actions'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github-actions">
+To log in to Docker Hub in a GitHub Actions workflow, you use `docker/login-action` in a step. You then use other `docker` actions in other steps to pull images, push images, and so on.
 
 ```yaml
   name: login to dockerhub
-   uses: docker/login-action@v2
-   with: 
-        username: {{ secrets.DOCKERHUB_USERNAME }}
-        password: {{ secrets.DOCKERHUB_TOKEN }}
-```
+    uses: docker/login-action@v2
+    with:
+      username: {{ secrets.DOCKERHUB_USERNAME }}
+      password: {{ secrets.DOCKERHUB_TOKEN }}
 
-```mdx-code-block
-</TabItem>
-<TabItem value="harness">
-```
-
-```yaml
-step:
-    type: Run
-    name: "code compilation "
-    identifier: code_compilation
-    spec:
-        connectorRef: docker_Quickstart  
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-### Build and Push an image to Docker Registry
-
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github-actions'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github-actions">
-
-```yaml
-    name: build and push docker image
+  name: build and push docker image
     uses: docker/build-push-action@v3
     with:
       context:
@@ -412,105 +397,193 @@ step:
         push: true
         tags: user/pythonsample:latest
 ```
+
 ```mdx-code-block
-</TabItem>
-<TabItem value="harness">
+  </TabItem>
+  <TabItem value="harness" label="Harness">
 ```
+
+To interact with Docker registries in Harness, you use a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference). In the following YAML example, the `connectorRef` references a Docker connector and the `image` indicates the image to pull. You do not need an extra step to connect to Docker - Harness handles the login/connection through the connector configuration.
+
+```yaml
+              - step:
+                  type: Run
+                  name: step1
+                  identifier: step1
+                  spec:
+                    connectorRef: my-dockerhub-connector
+                    image: openjdk:17.0-jdk
+                    shell: Bash
+                    command: echo "this runs on openjdk"
+```
+
+In the previous example, a Docker connector was used to pull an image for a script. You can also use Docker connectors to do other Docker-related actions, such as [building and pushing images to Docker registries](../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md).
+
 ```yaml
      - step:
           type: BuildAndPushDockerRegistry
           name: build and push to the docker registry
           identifier: build_and_push_to_the_docker_registry
           spec:
-            connectorRef: docker_Quickstart
-            repo: krishi0408/pythonsample
+            connectorRef: myDockerConnector
+            repo: myrepo/pythonsample
              tags:
                 - latest
              dockerfile: pythondockerfile
 ```
+
 ```mdx-code-block
-</TabItem>
+  </TabItem>
 </Tabs>
 ```
 
 ## Comparison: Environment variables
 
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github-actions'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github-actions">
+In GitHub Actions, you can use predefined environment variables, define custom variables within a single workflow, or define custom variables at the organization, account, and environment levels. You can use predefined environment variables or define custom variables.
+
+This range of variable definition is also possible in Harness CI. In addition to built-in variables, you can define variables within individual pipelines, stages, and steps as well as at the project, organization, and account levels.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="gha" label="GitHub Actions">
+```
+
+This GitHub Actions example defines environment variables at the workflow and job levels.
 
 ```yaml
 env:
-  BUILD_PURPOSE: RELEASE
+  ENV_VAR: value1
+
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    env:
+      JOB_VAR: value2
+    steps:
+      - name: simple script
+        run: echo "$JOB_VAR $ENV_VAR"
 ```
+
 ```mdx-code-block
-</TabItem>
-<TabItem value="harness">
+  </TabItem>
+  <TabItem value="harness" label="Harness">
 ```
+
+To reference project, organization, and account variables, you use variable expressions formatted as: `<+variable.[scope].[variable_id]>`. Here are the syntax formats for variables declared at different levels:
+
+- Account-level variable reference: `<+variable.account.[var_id]>`
+- Organization-level variable reference: `<+variable.org.[var_id]>`
+- Project-level variable reference: `<+variable.[var_id]>`
+
+In this example, a step references a project-level environment variable called `ENV_VAR`.
+
 ```yaml
-variables:
-   - name: BUILD_PURPOSE
-     type: String
-     description: ""
-     value: RELEASE 
+              - step:
+                  type: Run
+                  name: test-variable
+                  identifier: test_variable
+                  spec:
+                    command: echo "environment variable: " <+variable.env_var>
 ```
+
+Within a single pipeline, you can define variables at the step, stage, and pipeline levels. For example, this step includes environment variable definitions.
+
+```yaml
+              - step:
+                  type: Background
+                  name: Background_1
+                  identifier: Background_1
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: postgres:10.8
+                    envVariables:
+                      POSTGRES_USER: postgres
+                      POSTGRES_PASSWORD: <+secrets.getValue("DbPasswordSecret")>
+                      POSTGRES_DB: postgres
+```
+
+To learn more about defining and fetching variables go to:
+
+* [Built-in and custom Harness variables reference](/docs/platform/variables-and-expressions/harness-variables/)
+* [Add Account, Org, and Project-level variables](/docs/platform/variables-and-expressions/add-a-variable/)
+
 ```mdx-code-block
-</TabItem>
+  </TabItem>
 </Tabs>
 ```
 
-## Comparison: Matrix strategies
+## Comparison: Matrix jobs
 
-A matrix strategy lets you use variables in a single job definition to automatically create multiple job runs that are based on the combinations of the variables. For example, you can use a matrix strategy to test your code in multiple versions of a language or on multiple operating systems.
+In both Harness CI and GitHub Actions, you can define matrix strategies for your jobs to iterate over a series of inputs. In both products, you define a matrix strategy and then call the strategy by it's tag or other identifier when you want to use it in a command or step.
 
-To learn more about matrix in Harness CI, go to [Looping strategies in Harness](https://docs.harness.io/article/eh4azj73m4-looping-strategies-matrix-repeat-and-parallelism).
+In Harness, matrix looping strategies are one of several looping execution strategies. To learn about the looping strategies available in Harness, go to [Looping Strategies Overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism)
 
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github-actions'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github-actions">
+```mdx-code-block
+<Tabs>
+  <TabItem value="gha" label="GitHub Actions">
+```
 
 ```yaml
 jobs:
- example_matrix:
-  strategy:
-   matrix:
-     python: [ 3.10.6-alpine,3.10.4-alpine]
+  example_matrix:
+    strategy:
+      matrix:
+        testparam: [node, python, ubuntu]
+    steps:
+      - name: simple script
+        run: echo "Testing on ${{ matrix.testparam }}"
 ```
+
 ```mdx-code-block
-</TabItem>
-<TabItem value="harness">
+  </TabItem>
+  <TabItem value="harness" label="Harness" default>
 ```
+
+The following example describes a stage in a Harness CI pipeline that includes one step with matrix and parallelism strategies. The looping strategies are defined in `strategy` at the stage level. One matrix strategy, called `testparam`, is defined in `matrix` and parallelism is defined by `maxConcurrency: 3`. The script in the `Run` step calls the inputs from the matrix strategy by using the expression `+matrix.testparam>`.
+
 ```yaml
- strategy:
-    repeat:
-      items:
-        - 3.10.6-alpine
-        - 3.10.4-alpine
-    maxConcurrency: 2
+  stages:
+    - stage:
+        name: Stage1
+        ...
+            steps:
+              - step:
+                  type: Run
+                  name: step1
+                  identifier: step1
+                  spec:
+                    shell: Bash
+                    command: echo "Testing on  <+matrix.testparam>"
+        strategy:
+          matrix:
+            testparam:
+              - node
+              - python
+              - ubuntu
+          maxConcurrency: 3
 ```
+
 ```mdx-code-block
-</TabItem>
+  </TabItem>
 </Tabs>
 ```
 
-
 ## Comparison: Triggers
 
-<Tabs
-    defaultValue="harness"
-    values={[
-        {label: 'Github Actions', value: 'github-actions'},
-        {label: 'Harness CI', value: 'harness'},
-    ]}>
-<TabItem value="github-actions">
+In GitHub Actions, triggers are defined in the workflow based on Git events against specified branches or conditions.
+
+Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating triggers, go to:
+
+* [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/)
+* [Triggers](https://developer.harness.io/docs/category/triggers)
+* [Built-in CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="gha" label="GitHub Actions" default>
+```
+
+This GitHub Actions trigger listens for specific words in the name of pull requests against the `main` branch.
 
 ```yaml
 on:
@@ -521,10 +594,14 @@ jobs:
   gobuild:
     if: contains(github.event.pull_request.labels.*.name, 'go') || contains(github.event.pull_request.labels.*.name, 'gojava')
 ```
+
 ```mdx-code-block
-</TabItem>
-<TabItem value="harness">
+  </TabItem>
+  <TabItem value="harness" label="Harness">
 ```
+
+This Harness CI example shows a `cron` trigger on the `main` branch.
+
 ```yaml
 trigger:
   name: trigger
@@ -550,17 +627,11 @@ trigger:
               spec:
                 branch: main
 ```
+
 ```mdx-code-block
-</TabItem>
+  </TabItem>
 </Tabs>
 ```
-In Harness CI, you can trigger pipelines in response to Git events that match specific payload conditions you set up in the Harness trigger.
-
-For example, when a pull request or push event occurs on a Git repo and your trigger settings match the payload conditions, a CI pipeline can execute.
-
-In Harness, you trigger a workflow using the trigger option in the pipeline studio.
-
-To learn more about creating a trigger, go to [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/)
 
 ## See also
 
