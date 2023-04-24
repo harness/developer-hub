@@ -18,7 +18,7 @@ export default function CD() {
             <h1>Chaos Engineering Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
-            <Link href="/tutorials/run-chaos-experiments">
+            <Link href="/tutorials/chaos-experiments">
               <button className={styles.btn}>
                 {/* <i className="fa-regular fa-file"></i> */}
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
