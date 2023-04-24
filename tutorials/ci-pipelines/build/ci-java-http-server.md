@@ -67,9 +67,9 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 6. For **Select Connectivity Mode**, select **Connect through Harness Platform**, and then select **Save and Continue**.
 7. Wait while Harness tests the connection, and then select **Finish**.
 
-## Prepare Docker Hub
+## Prepare Docker registry
 
-You must create a Docker Hub connector to allow Harness to authenticate and publish the Java HTTP server image to Docker Hub.
+For this tutorial, you'll need a Docker Hub connector to allow Harness to authenticate and publish the Java HTTP app image to a Docker Hub repo. Harnesss supports a variety of container registry platforms either through dedicated connectors, such as the Docker Hub connector, or the platform-agnostic [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/).
 
 1. Create a [Docker Hub](https://hub.docker.com/) account if you don't have one already.
 2. Create a repo called `jhttp` in your Docker Hub account.
