@@ -2,8 +2,8 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants"
+} from "@site/src/components/LandingPage/TutorialCard";
+import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
 // Featured Tutorials

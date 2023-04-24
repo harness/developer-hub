@@ -568,14 +568,14 @@ export const featuredTutorials: CardItem[] = [
       list: [
         {
           title: "Troubleshoot CD",
-          module: "MODULES.cd",
+          module: MODULES.cd,
           description:
             "",
           link: "/docs/troubleshooting/troubleshooting-nextgen#continuous-delivery",
         },
         {
           title: "CD FAQs",
-          module: "ci",
+          module: MODULES.cd,
           description:
             "",
           link: "/docs/frequently-asked-questions/harness-faqs/continuous-delivery-faqs",
