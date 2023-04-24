@@ -31,7 +31,7 @@ With this cadence, the default baseline updates whenever you create a new releas
 
 <details><summary>Advantages of using regular expressions to define baselines</summary>
 
-Defining your baselines using regular expressions provides significant benefits over using hard-coded strings such as `main` or `latest`. In many 
+Defining your baselines using regular expressions provides significant benefits over using hard-coded strings such as `main` or `latest`. 
 
 * Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. A typical sprint cycle might run like this:
   
@@ -41,7 +41,7 @@ Defining your baselines using regular expressions provides significant benefits 
   - When the release is ready to publish, merge the various branches into `1.2.4`. 
   - Publish the release, merge `1.2.4` into `main`, create a new release branch such as `1.2.5`, and repeat the cycle.
 
-  Given this cadence, `1.2.4` more accurately reflects the baseline for the current sprint than  `main`. 
+  Given this cadence, `1.2.4` more accurately reflects the baseline for the current sprint than  `main`. Given a matching regex, the first scan after creating the branch establishes `1.2.4` as the current baseline. This remains the current baseline until `1.2.4` gets merged into `main` and `1.2.5` gets created and scanned.
 
 * Dynamic baselines make it easier to track the introduction and remediation of specific vulnerabilities. The lifecyle of a specific vulnerability might run like this:
 
