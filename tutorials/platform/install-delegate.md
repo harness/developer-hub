@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 
 ## What is Harness Delegate?
 
-[Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
+[Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
 
 You can install the Harness Delegate on either Docker or Kubernetes. 
 
@@ -307,7 +307,7 @@ The delegate installer provides troubleshooting information for each installatio
 
 Harness asks for feedback after the troubleshooting steps. You are asked, **Did the delegate come up?** 
 
-If the steps did not resolve the problem, select **No**, and use the form to describe the issue. You'll also find links to Harness Support and to [Delegate Docs](/docs/category/delegates).
+If the steps did not resolve the problem, select **No**, and use the form to describe the issue. You'll also find links to Harness Support and to [Delegate cocs](/docs/platform/2_Delegates/delegate-concepts/delegate-overview).
 
 ```mdx-code-block
 <Tabs>
