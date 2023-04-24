@@ -54,7 +54,7 @@ In addition to a Harness account, you need the following accounts and tools:
 
 * A **GitHub account** where you can fork the tutorial repo.
 * A **Docker Hub account and repo** where the pipeline can push and pull app images.
-* A **Kubernetes cluster** where you'll install the [Harness Delegate](/docs/platform/Delegates/get-started-with-delegates/delegates-overview) and run the build farm. The cluster needs the following minimum specifications:
+* A **Kubernetes cluster** where you'll install the [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview/) and run the build farm. The cluster needs the following minimum specifications:
   * Pods: 3 (two for the Delegate and one for the build farm)
   * Machine type: 4vCPU
   * Memory: 16GB RAM
