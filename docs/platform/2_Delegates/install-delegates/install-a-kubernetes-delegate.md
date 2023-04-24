@@ -104,7 +104,7 @@ For example, if you use the Small option that requires 3.3GB of memory, don't us
 
 Click **Download Script**. The YAML file for the Kubernetes delegate, and its README, downloads to your computer as an archive.
 
-Open a terminal and navigate to where the delegate file is located.
+Open a terminal and change your directory to the delegate file's location.
 
 Extract the YAML file from the download, and then navigate to the extracted file:
 
@@ -118,6 +118,14 @@ You'll connect to your cluster using the terminal, so you can simply copy the YA
 In the same terminal, log into your Kubernetes cluster. In most platforms, you select the cluster, select **Connect**, and copy the access command.
 
 To confirm that the cluster you created can connect to the Harness platform, enter the following command:
+```
+wget -p https://app.harness.io/ -O /dev/null
+```
+
+A successful connection displays the following:
+```
+HTTP request sent, awaiting response... 200 OK
+```
 
 Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. In the terminal connected to your cluster, run this command:
 
