@@ -72,7 +72,7 @@ import {
             title: "Supported platforms and technologies",
             module: "gs",
             description:
-              "Review that platforms, methodologies, and related technologies that Harness supports.",
+              "Review the platforms, methodologies, and related technologies that Harness supports.",
             link: "/docs/getting-started/supported-platforms-and-technologies",
           },
         ],
