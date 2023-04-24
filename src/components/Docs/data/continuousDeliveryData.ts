@@ -402,7 +402,7 @@ export const featuredTutorials: CardItem[] = [
           ]*/  
         },
         {
-          title: "GitOps",
+          title: "Deploy services using GitOps",
           module: MODULES.cd,
           description:
             "Perform GitOps deployments in Harness.",
@@ -467,7 +467,7 @@ export const featuredTutorials: CardItem[] = [
           ]*/
         },
         {
-          title: "Continuous Verification (CV)",
+          title: "Verify deployments",
           module: MODULES.cd,
           description:
             "Use Harness Continuous Verification (CV) to verify your deployments.",
