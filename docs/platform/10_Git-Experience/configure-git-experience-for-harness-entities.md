@@ -49,6 +49,7 @@ The following section lists the support for Git providers for Harness Git Sync:â
 * Bitbucket Cloud
 * Bitbucket Server
 * Azure Repos
+* GitLab
 
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 

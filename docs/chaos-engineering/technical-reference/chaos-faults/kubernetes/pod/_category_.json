@@ -3,6 +3,10 @@
   "label": "Pod",
   "collapsible": true,
   "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Pod faults"
+   },
   "customProps": {
     "description": "Pod faults documentation"
   }
