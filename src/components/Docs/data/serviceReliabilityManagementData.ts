@@ -2,7 +2,8 @@ import {
     CardItem,
     CardSections,
     docType,
-} from "../../LandingPage/TutorialCard";
+  } from "@site/src/components/LandingPage/TutorialCard";
+  import { MODULES } from "@site/src/constants"
   
 /* Define the cards - start */
 // Featured Tutorials
@@ -16,21 +17,21 @@ import {
         list: [
           {
             title: "Overview",
-            module: "srm",
+            module: MODULES.srm,
             description:
               "Learn about SRM and how it can benefit you.",
             link: "/docs/service-reliability-management/getting-started/srm-intro",
           },
           {
             title: "Key concepts",
-            module: "srm",
+            module: MODULES.srm,
             description:
               "Understand concepts such as SLOs, SLIs, and error budgets.",
             link: "/docs/service-reliability-management/getting-started/service-reliability-management-basics",
           },
           {
             title: "Your first SLO",
-            module: "srm",
+            module: MODULES.srm,
             description:
               "Learn how to create, track, and monitor a SLO.",
             link: "/docs/service-reliability-management/getting-started/create-first-slo",
@@ -45,21 +46,21 @@ import {
         list: [
           {
             title: "SLO types",
-            module: "srm",
+            module: MODULES.srm,
             description:
               "Explore the different types of SLOs, such as composite SLOs and SLO as Code, and learn how to create and use them.",
             link: "/docs/category/slo-types",
           },
           {
             title: "SLO downtime",
-            module: "srm",
+            module: MODULES.srm,
             description:
               "Learn how to schedule a maintenance window for your service without impacting the SLO.",
             link: "/docs/category/slo-downtime",
           },
           {
             title: "Change impact analysis",
-            module: "srm",
+            module: MODULES.srm,
             description:
               "Learn how to conduct change impact analysis by tracking health and change events in your service.",
             link: "/docs/category/change-impact-analysis",
@@ -74,14 +75,14 @@ import {
         list: [
           {
             title: "Change source catalog",
-            module: "srm",
+            module: MODULES.srm,
             description:
               "Explore the range of change sources supported by Harness and learn how to add them to your monitored service.",
             link: "/docs/category/change-sources-catalog",
           },
           {
             title: "Health source catalog",
-            module: "srm",
+            module: MODULES.srm,
             description:
               "Discover the range of health sources supported by Harness and learn how to add them to your monitored service.",
             link: "/docs/category/health-sources-catalog",
