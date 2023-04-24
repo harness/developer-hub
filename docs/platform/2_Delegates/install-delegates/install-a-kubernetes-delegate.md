@@ -480,7 +480,7 @@ You do not need to change `serviceName`, but you can if you have a static code a
 
 Add the delegate name as the value using the syntax `harness.io/name: [Delegate name]`.
 
-For example, if your delegate name is `myDelegate`, you would add `harness.io/name: myDelegate`:
+For example, if your delegate name is `myDelegate`, add `harness.io/name: myDelegate`:
 
 
 ```
