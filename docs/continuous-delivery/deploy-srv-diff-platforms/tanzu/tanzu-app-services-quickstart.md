@@ -1,7 +1,7 @@
 ---
 title: Tanzu Application Services deployments
 description: Deploy a publicly available application to Tanzu Application Service (TAS) by using Harness.
-sidebar_position: 13
+sidebar_position: 1
 ---
 
 This topic shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) in Harness.
