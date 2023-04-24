@@ -4,7 +4,7 @@ title: EBS loss by ID
 ---
 ## Introduction
 
-EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration. In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
+EBS (Elastic Block Store) loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration. In case of EBS persistent volumes, the volumes can self-attach, and the re-attachment step can be skipped.
 
 ![EBS Loss By ID](./static/images/ebs-loss-by-id.png)
 
@@ -12,10 +12,10 @@ EBS loss by ID disrupts the state of EBS volume by detaching it from the node (o
 EBS loss by ID tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
 :::info note
-- Kubernetes > 1.16 is required to execute this fault.
+- Kubernetes version 1.17 or later is required to execute this fault.
 - Appropriate AWS access to attach or detach an EBS volume for the instance.
 - The EBS volume should be attached to the instance.
-- Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- The Kubernetes secret should have AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -29,9 +29,9 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes.
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes.
 - Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
+- Go to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 :::
 
 Below is an example AWS policy to execute the fault.

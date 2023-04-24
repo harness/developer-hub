@@ -3,7 +3,7 @@ id: alb-az-down
 title: ALB AZ down
 ---
 ## Introduction
-ALB AZ down takes down the AZ (Availability Zones) on a target application load balancer for a specific duration thereby impacting the delivery. This fault restricts access to certain availability zones for a specific duration.
+ALB (Application Load Balancer) AZ (Availability Zones) down takes down the AZ on a target application load balancer for a specific duration thereby impacting the delivery. This fault restricts access to certain availability zones for a specific duration.
 
 ![ALB AZ Down](./static/images/alb-az-down.png)
 
@@ -14,11 +14,11 @@ ALB AZ down:
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 :::info note
-- Kubernetes > 1.17 is required to execute this fault.
+- Kubernetes version 1.17 or later is required to execute this fault.
 - Appropriate AWS access to attach or detach subnet from the target ALB.
 - There needs to be a minimum of two AZs attached to the target ALB after injecting chaos; otherwise, the fault will fail to detach the given AZ.
 - The ALB should be attached to the given availability zones.
-- Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file.
+- The Kubernetes secret should have AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file.
 ```yaml
 apiVersion: v1
 kind: Secret
@@ -32,8 +32,8 @@ stringData:
     aws_access_key_id = XXXXXXXXXXXXXXXXXXX
     aws_secret_access_key = XXXXXXXXXXXXXXX
 ```
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name and you may be unable to use the default health check probes. 
-- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name but you may be unable to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
 Below is an example AWS policy to execute the fault.

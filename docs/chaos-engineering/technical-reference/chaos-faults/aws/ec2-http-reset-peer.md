@@ -10,16 +10,16 @@ EC2 HTTP reset peer injects HTTP reset on the service whose port is specified us
 
 ## Use cases
 EC2 HTTP reset peer:
-- Simulates premature connection loss (firewall issues or other issues) between microservices, that is, verifies connection timeout.
+- Verifies connection timeout by simulating premature connection loss (firewall issues or other issues) between microservices.
 - Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
 - Determines the application's resilience to a lossy (or flaky) HTTP connection.
 
 :::info note
-- Kubernetes >= 1.17 is required to execute this fault.
+- Kubernetes version 1.17 or later is required to execute this fault.
 - The EC2 instance should be in a healthy state.
 - SSM agent is installed and running in the target EC2 instance.
 - You can pass the VM credentials as secrets or as an chaosengine environment variable.
-- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
 
 ```yaml
 apiVersion: v1
@@ -35,8 +35,8 @@ stringData:
     aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
 Below is an example AWS policy to execute the fault.
