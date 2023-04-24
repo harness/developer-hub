@@ -138,11 +138,11 @@ The `spec` parameters define which Action to use, the Action settings, and envir
 
 For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
-:::tip
+:::tip Tips
 
-If you already configured GitHub Actions elsewhere, you can quickly [transfer GitHub Actions into Harness CI](#transfer-github-actions-into-harness-ci) by copying the `spec` details from your existing GitHub Actions YAML.
-
-You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+* If you already configured GitHub Actions elsewhere, you can quickly [transfer GitHub Actions into Harness CI](#transfer-github-actions-into-harness-ci) by copying the `spec` details from your existing GitHub Actions YAML.
+* You can use variable expressions in the `with` and `env` settings. For example, `credentials: <+stage.variables.[TOKEN_SECRET]>` uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+* For GitHub Actions steps, `with` mappings are automatically exported as [output variables](#output-variables-from-github-actions-steps).
 
 :::
 
@@ -230,6 +230,12 @@ Specify the repo and branch or tag of the GitHub Action that you want to use, fo
 Found under **Optional Configuration**. If required by the Action, add key-value pairs representing GitHub Action settings. For example, you would specify `go-version: '>=1.17.0'` by entering `go-version` in the key field and `>=1.17.0` in the value field.
 
 Refer to the GitHub Action's `with` usage specifications for details about specific settings available for the Action that you want to use.
+
+:::tip
+
+For GitHub Actions steps, **Settings** are automatically exported as [output variables](#output-variables-from-github-actions-steps).
+
+:::
 
 ### Environment Variables
 
@@ -354,3 +360,60 @@ For more information about configuring the GitHub Action plugin step's settings,
   </TabItem3>
 </Tabs3>
 ```
+
+## Output variables from GitHub Actions steps
+
+Output variables are exposed values that can be used by other steps or stages in the pipeline. For GitHub Actions steps, `with`/**Settings** values are automatically exported as output variables, and you can fetch those values in later steps or stages in the same pipeline.
+
+To reference an output variable in another step in the same stage, use either of the following expressions:
+
+```
+<+steps.[stepID].output.outputVariables.[varName]>
+<+execution.steps.[stepID].output.outputVariables.[varName]>
+```
+
+To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
+
+```
+<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
+<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
+```
+
+For each expression:
+
+* Replace `[stepID]` with the ID of the GitHub Actions step
+* Replace `[varName]` with the relevant variable name, wrapped in quotes.
+* In cross-stage references, replace `[stageID]` with the ID of the stage where the GitHub Actions step exists.
+
+:::caution
+
+Github Actions settings keys can include `-`, which is not supported by JEXL. Therefore, you must wrap these variable names in quotes when using them in Harness expressions.
+
+:::
+
+<details>
+<summary>YAML example: GitHub Actions output variable</summary>
+
+In the following YAML example, the `setup_go` step uses a `go-version` setting, which is automatically exported as an output variable. The `beta` step includes two expressions referencing the `go-version` output variable.
+
+```yaml
+              - step:
+                  type: Action
+                  name: setup golang
+                  identifier: setup_go
+                  spec:
+                    uses: actions/setup-go@v3
+                    with:
+                      go-version: `1.17`
+              - step:
+                  type: Run
+                  name: beta
+                  identifier: beta
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo <+steps.setup_go.output.outputVariables."go-version">
+                      echo <+execution.steps.setup_go.output.outputVariables."go-version">
+```
+
+</details>
