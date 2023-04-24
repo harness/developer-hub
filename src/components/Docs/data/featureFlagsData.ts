@@ -80,7 +80,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Integrate flags with Jira",
           module: "ff",
           description:
-            "Manage flags using a YAML file in your Git repository.",
+            "Link flags to Jira issues so you and your team can easily see the associations, jump to creating a flag from a jira ticket, and see a list of jira tickets linked to a flag.",
           link: "/docs/feature-flags/integrate-feature-flag-with-jira",
         },
         {
@@ -123,7 +123,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Add policies for a flag",
           module: "ff",
           description:
-            "This topic give you an overview of Harness Policy Engine and includes an example for how to add a policy for a flag.",
+            "This topic gives you an overview of Harness Policy Engine and includes an example for how to add a policy for a flag.",
           link: "/docs/category/use-pipelines-with-flags",
         },
       ],
