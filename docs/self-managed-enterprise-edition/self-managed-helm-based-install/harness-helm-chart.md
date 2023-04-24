@@ -1,7 +1,7 @@
 ---
 title: Helm installation requirements and included components
 description: Requirements for using Helm installation for Harness Self-Managed Enterprise Edition.
-# sidebar_position: 10
+# sidebar_position: 1
 helpdocs_topic_id: nsx1d4z86l
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false

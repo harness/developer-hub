@@ -1,7 +1,7 @@
 ---
 title: Install in an air-gapped environment
 description: Learn how to install the Harness Self-Managed Enterprise Edition using Helm in an air-gapped environment. 
-sidebar_position: 60
+# sidebar_position: 6
 ---
 
 This document explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. It explains the process of obtaining and transferring Docker images to a private registry for you to access them securely. The steps include pulling Docker images, saving them as .tgz files, uploading to Google Cloud storage, downloading Helm charts, and pushing charts to your private repositories. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments.
