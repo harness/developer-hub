@@ -8,4 +8,5 @@ export enum FaultCategory {
   Boutique = "boutique",
   Linux = "linux",
   Load = "load",
+  SecurityChaos = "security-chaos"
 }
