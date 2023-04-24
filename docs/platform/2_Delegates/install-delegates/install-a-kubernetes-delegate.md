@@ -19,7 +19,7 @@ If you are migrating from Harness FirstGen to Harness NextGen, you must install 
 
 Currently, Harness Kubernetes Delegates don't install with the default settings in GKE Auto Pilot Mode. Use the Manual mode when creating the cluster to make sure it meets the delegate requirements.
 
-The delegate requires access to all the cnnectors and Harness Secrets needed to run a pipeline. This means that the delegate requires permissions to do the following:
+The delegate requires access to all the connectors and Harness Secrets needed to run a pipeline. This means that the delegate requires permissions to do the following:
 
 * Access all the secrets used by all the connectors used in a pipeline.
 * Create and update secrets in Kubernetes. This is necessary to pull the images needed to run individual Steps.
