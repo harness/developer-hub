@@ -83,6 +83,13 @@ import { MODULES } from "../../../constants"
             "Execute kube-resilience chaos faults",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/",
         },
+        {
+          title: "Security chaos faults",
+          module: MODULES.ce,
+          description:
+            "Execute security chaos faults",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/",
+        },
 ];
 
 // Featured Tutorials
