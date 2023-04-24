@@ -8,42 +8,41 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to install the legacy Kubernetes Delegate which always auto upgrades to the default delegate version associated with a Harness Manager version.
+This topic describes how to install the legacy Kubernetes delegate, which always auto upgrades to the default delegate version associated with a Harness Manager version.
 
-
-:::note
-If you are migrating from Harness FirstGen to Harness NextGen, you must install new Delegates in Harness NextGen. Harness FirstGen Delegates won't work with Harness NextGen.
+:::info note
+If you are migrating from Harness FirstGen to Harness NextGen, you must install new delegates in Harness NextGen. Harness FirstGen Delegates won't work with Harness NextGen.
 :::
 
 
 ### Limitations
 
-Currently, Harness Kubernetes Delegates don't install with the default settings in GKE Auto Pilot Mode. Please use the Manual mode when creating the cluster to make sure it meets the Delegate requirements.
+Currently, Harness Kubernetes Delegates don't install with the default settings in GKE Auto Pilot Mode. Use the Manual mode when creating the cluster to make sure it meets the delegate requirements.
 
-The Delegate requires access to all the Connectors and Harness Secrets needed to run a Pipeline. This means that the Delegate requires permissions to do the following:
+The delegate requires access to all the cnnectors and Harness Secrets needed to run a pipeline. This means that the delegate requires permissions to do the following:
 
-* Access all the secrets used by all the Connectors used in a Pipeline.
+* Access all the secrets used by all the connectors used in a pipeline.
 * Create and update secrets in Kubernetes. This is necessary to pull the images needed to run individual Steps.
 
 
 ### Inline or standalone installation
 
-You can install a Delegate whenever you are adding a Connector to a Pipeline or you can install one outside a Pipeline in **Resources**.
+You can install a delegate whenever you are adding a connector to a pipeline, or you can install one outside a pipeline in **Resources**.
 
 The steps involved are the same.
 
 ### Installation location
 
-You can install the Kubernetes Delegate inside or outside your deployment target cluster (CD) or build farm cluster (CIE).
+You can install the Kubernetes delegate inside or outside your deployment target cluster (CD) or build farm cluster (CIE).
 
-* **Inside the cluster:** you can install the Kubernetes Delegate inside the target or build farm cluster. Later, when you add a Kubernetes Cluster Connector, the Connector can inherit its credentials from the Kubernetes Delegate.
-* **Outside the cluster:** you can install the Kubernetes Delegate outside the target or build farm cluster. Later, when you add a Kubernetes Cluster Connector, the Connector cannot inherit its credentials from the Kubernetes Delegate. In this case, the Kubernetes Cluster Connector must use an alternate method for credentials. For example, the master URL of the target cluster and a Service Account with the required credentials.
+* **Inside the cluster:** you can install the Kubernetes delegate inside the target or build farm cluster. Later, when you add a Kubernetes Cluster Connector, the connector can inherit its credentials from the Kubernetes delegate.
+* **Outside the cluster:** you can install the Kubernetes delegate outside the target or build farm cluster. Later, when you add a Kubernetes Cluster Connector, the connector cannot inherit its credentials from the Kubernetes delegate. In this case, the Kubernetes Cluster Connector must use an alternate method for credentials. For example, the master URL of the target cluster and a Service Account with the required credentials.
 
 ### Step 1: Ensure Kubernetes prerequisites
 
-To install a Kubernetes Delegate, you must have access to a Kubernetes cluster. You'll install the Harness Delegate as YAML or Helm Chart.
+To install a Kubernetes delegate, you must have access to a Kubernetes cluster. You'll install the Harness Delegate as YAML or Helm Chart.
 
-For connectivity, see [Delegate Requirements](/docs/platform/2_Delegates/delegate-concepts/delegate-requirements.md).
+For connectivity, go to [Delegate Requirements](/docs/platform/2_Delegates/delegate-concepts/delegate-requirements.md).
 
 You'll need the following Kubernetes permissions to install the delegate:
 
@@ -52,41 +51,37 @@ You'll need the following Kubernetes permissions to install the delegate:
 
 ### Step 2: Select the Kubernetes delegate type
 
-Inline or standalone, click **New Delegate**. Delegate selection options appear.
+Inline or standalone, select **New Delegate**. Delegate selection options appear.
 
-Click **Kubernetes**, and then click **Continue**.
+Select **Kubernetes**, and then select **Continue**.
 
-Enter a name and description for the Delegate that will let others know what it is used for, or where it's installed.
+Enter a name and description for the delegate that informs others of its use or installation location.
 
 ### Step 3: Add delegate name
 
 
-:::note
-**Do not run Delegates with the same name in different clusters.** See [Troubleshooting](/docs/troubleshooting/troubleshooting-nextgen.md).
+:::info note
+**Do not run delegates with the same name in different clusters.** See [Troubleshooting](/docs/troubleshooting/troubleshooting-nextgen.md).
 :::
 
 
-Add a name for the Delegate. The name will be added to the Delegate YAML as the `name` metadata of the StatefulSet.
+Add a name for the delegate. The name will be added to the delegate YAML as the `name` metadata of the StatefulSet.
 
-
-:::note
+:::info note
 **Legacy Delegates are deployed as StatefulSet objects. By default, the StatefulSet.serviceName field is empty (“”) and does not need to be specified. Delegates do not require service names.**
 :::
 
-
-
-:::note
+:::info note
 **The combined length of the Delegate name and the service name must not exceed 255 bytes. If the maximum length is exceeded, the Delegate might not appear in the Harness Manager UI. For more information on StatefulSet.serviceName, see** [**StatefulSetSpec**](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/stateful-set-v1/#StatefulSetSpec) **in** [**Kubernetes API**](https://kubernetes.io/docs/reference/kubernetes-api/)**.
 :::
 
+Add tags to the delegate. By default, Harness adds a tag using the name you enter, but you can more. Simply type them in, and press Enter.
 
-Add Tags to the Delegate. By default, Harness adds a Tag using the name you enter, but you can more. Simply type them in and press Enter.
-
-These Tags are useful for selecting the Delegate when creating a Connector.
+These tags are useful for selecting the delegate when creating a connector.
 
 ### Step 4: Select delegate size
 
-In **Delegate Size**, select the size of Delegate you want to install.
+In **Delegate Size**, select the size of delegate you want to install.
 
 Your Kubernetes cluster must have the unallocated resources required to run the Harness Delegate workload:
 
@@ -95,44 +90,41 @@ Your Kubernetes cluster must have the unallocated resources required to run the 
 * Medium - 6.6GB memory, 2CPU
 * Large - 13.2GB memory, 4CPU
 
-**Important:** these sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services.
+**Important:** These sizing requirements are for the delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services.
 
 #### Important resource considerations
 
-These requirements are for the Delegate only. Your cluster will have system, Kubernetes, and other resources consumers. Make sure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
+These requirements are for the delegate only. Your cluster will have system, Kubernetes, and other resources consumers. Make sure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 
-Most importantly, when the Delegate is installed inside the target deployment or build farm cluster, the cluster must also support the resources needed by the services you are deploying or building.
+Most importantly, when the delegate is installed inside the target deployment or build farm cluster, the cluster must also support the resources needed by the services you are deploying or building.
 
-For example, if you use the Small option that requires 3.3GB of memory, don't use a cluster with only 4GB or memory. It won't be enough to run the Delegate and other resources.
+For example, if you use the Small option that requires 3.3GB of memory, don't use a cluster with only 4GB or memory. It won't be enough to run the delegate and other resources.
 
 ### Step 5: Download and install the script
 
-Click **Download Script**. The YAML file for the Kubernetes Delegate, and its README, will download to your computer as an archive.
+Click **Download Script**. The YAML file for the Kubernetes delegate, and its README, downloads to your computer as an archive.
 
-Open a terminal and navigate to where the Delegate file is located.
+Open a terminal and navigate to where the delegate file is located.
 
-Extract the YAML file's folder from the download and then navigate to the folder that you extracted:
-
+Extract the YAML file from the download, and then navigate to the extracted file:
 
 ```
 tar -zxvf harness-delegate-kubernetes.tar.gz  
   
 cd harness-delegate-kubernetes
 ```
-You'll connect to your cluster using the terminal so you can simply copy the YAML file over.
+You'll connect to your cluster using the terminal, so you can simply copy the YAML file over.
 
-In the same terminal, log into your Kubernetes cluster. In most platforms, you select the cluster, click **Connect**, and copy the access command.
+In the same terminal, log into your Kubernetes cluster. In most platforms, you select the cluster, select **Connect**, and copy the access command.
 
-Let's quickly confirm that the cluster you created can connect to the Harness platform. Enter the following command:
+To confirm that the cluster you created can connect to the Harness platform, enter the following command:
 
 Next, install the Harness Delegate using the **harness-delegate.yaml** file you just downloaded. In the terminal connected to your cluster, run this command:
-
 
 ```
 kubectl apply -f harness-delegate.yaml
 ```
 The successful output is something like this:
-
 
 ```
 % kubectl apply -f harness-delegate.yaml  
@@ -142,46 +134,43 @@ secret/k8s-quickstart-proxy unchanged
 statefulset.apps/k8s-quickstart-sngxpn created  
 service/delegate-service unchanged
 ```
-Run this command to verify that the Delegate pod was created:
-
+Run this command to verify that the delegate pod was created:
 
 ```
 kubectl get pods -n harness-delegate-ng
 ```
-It'll take a moment for the Delegate to appear in Harness' **Delegates** list.
+It'll take a moment for the delegate to appear in Harness' **Delegates** list.
 
-You're ready to connect Harness to your artifact server and cluster. After those quick steps, you'll begin creating your deployment.
+You're ready to connect Harness to your artifact server and cluster. After those steps, you'll begin creating your deployment.
 
 ### Review: Delegate role requirements
 
-The YAML provided for the Harness Delegate defaults to the `cluster-admin` role because that ensures anything could be applied. If you can't use `cluster-admin` because you are using a cluster in your company, you'll need to edit the Delegate YAML.
+The YAML provided for the Harness Delegate defaults to the `cluster-admin` role to ensure you can apply updates. If you can't use `cluster-admin` because you are using a cluster in your company, you'll need to edit the delegate YAML.
 
-The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each of the entity types Harness uses.
+The set of permissions should include `list`, `get`, `create`, `watch` (to fetch the pod events), and `delete` permissions for each entity type Harness uses.
 
-If you don’t want to use `resources: [“*”]` for the Role, you can list out the resources you want to grant. Harness needs `configMap`, `secret`, `event`, `deployment`, and `pod` at a minimum for deployments, as stated above.
+If you don’t want to use `resources: [“*”]` for the role, you can list out the resources you want to grant. Harness requires `configMap`, `secret`, `event`, `deployment`, and `pod` at a minimum for deployments, as stated above.
 
-In the Delegate installation settings, you also have the option to select cluster read-only access and namespace-specific access. When you select these options, the YAML generated by Harness is changed to reflect the limited access.
+In the delegate installation settings, you also have the option to select cluster read-only access and namespace-specific access. When you select these options, the YAML generated by Harness is changed to reflect the limited access.
 
 ### Step 6: Verify
 
-For an overview of verification, see [Delegate Registration and Verification](/docs/platform/2_Delegates/delegate-concepts/delegate-registration.md).
+For an overview of verification, go to [Delegate Registration and Verification](/docs/platform/2_Delegates/delegate-concepts/delegate-registration.md).
 
-In the Delegate wizard, click **Verify** and Harness will verify that it is receiving heartbeats from the Delegate.
+In the delegate wizard, select **Verify**. Harness verifies that it is receiving heartbeats from the delegate.
 
-Your Delegate is installed.
+Your delegate is installed.
 
 ### Option: Troubleshooting
 
-Harness will provide a lot of troubleshooting steps. Here are a few:
+If Harness does not receive heartbeats from the delegeat, here are a few troubleshooting steps:
 
-Check the status of the Delegate on your cluster:
-
+Check the status of the delegate on your cluster:
 
 ```
 kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 ```
-Check the Delegate logs:
-
+Check the delegate logs:
 
 ```
 kubectl logs -f <harness-delegate> -n harness-delegate-ng
@@ -194,19 +183,18 @@ CrashLoopBackOff: Kubernetes Cluster Resources are not available.
 ```
 Make sure the Kubernetes Cluster Resources (CPU, Memory) are enough.
 
-If the Delegate didn’t reach a healthy state, try this:
-
+If the delegate didn’t reach a healthy state, run the following:
 
 ```
 kubectl describe pod <your-delegate-pod> -n harness-delegate-ng
 ```
 ### Environment variables
 
-The following environment variables are available in the legacy Kubernetes Delegate YAML.
+The following environment variables are available in the legacy Kubernetes delegate YAML.
 
 #### `JAVA_OPTS` 
 
-JVM options for the Delegate. Use this variable to override or add JVM parameters.  
+JVM options for the delegate. Use this variable to override or add JVM parameters.  
 
   ```
   - name: JAVA_OPTS  value: "-XX:+UnlockExperimentalVMOptions -XX:+UseCGroupMemoryLimitForHeap -XX:MaxRAMFraction=2 -Xms64M"
@@ -214,7 +202,7 @@ JVM options for the Delegate. Use this variable to override or add JVM parameter
 
 #### `ACCOUNT_ID` 
 
-The Harness account Id for the account where this Delegate will attempt to register. This value is added automatically to the Delegate config file (YAML, etc) when you add the Delegate. 
+The Harness account Id for the account where this delegate will attempt to register. This value is added automatically to the Delegate config file (YAML, etc) when you add the delegate. 
 
   ```
   - name: ACCOUNT_ID  value: H5W8iol5TNWc4G9h5A2MXg
@@ -222,7 +210,7 @@ The Harness account Id for the account where this Delegate will attempt to regis
  
 #### `DELEGATE_TOKEN` 
 
-The Harness account token used to register the Delegate. 
+The Harness account token used to register the delegate. 
 
   ```
   - name: DELEGATE_TOKEN  value: d239xx88bf7xxxxxxx836ea
@@ -246,7 +234,7 @@ The URL for the Watcher versions.
  
 #### `WATCHER_CHECK_LOCATION` 
 
-The Delegate version location for the Watcher to check for. 
+The delegate version location for the Watcher to check for. 
 
   ```
   - name: WATCHER_CHECK_LOCATION  value: current.version
@@ -262,7 +250,7 @@ The CDN URL for Watcher builds.
  
 #### `DELEGATE_STORAGE_URL` 
 
-The URL where published Delegate jars are stored. 
+The URL where published delegate jars are stored. 
 
   ```
   - name: DELEGATE_STORAGE_URL  value: https://app.harness.io
@@ -270,7 +258,7 @@ The URL where published Delegate jars are stored.
  
 #### `DELEGATE_CHECK_LOCATION`
 
-The storage location hosting the published Delegate versions. 
+The storage location hosting the published delegate versions. 
 
   ```
   - name: DELEGATE_CHECK_LOCATION  value: delegateprod.txt
@@ -286,7 +274,7 @@ Deployment mode: Kubernetes, Docker, etc.
  
 #### `DELEGATE_NAME` 
 
-The name of the Delegate. This is the name that will appear in Harness when the Delegate is registered.You can automate Delegate creation by omitting the name, and then have a script copying the Delegate YAML file and add a unique name to `value` for each new Delegate you want to register.See [Automate Delegate Installation](/docs/platform/2_Delegates/install-delegates/automate-delegate-installation.md). 
+The name of the delegate. This is the name that displays in Harness when the delegate is registered. You can automate delegate creation by omitting the name, and use a script to copy the delegate YAML file and add a unique name to `value` for each new delegate you want to register. For more information, go to [Automate Delegate Installation](/docs/platform/2_Delegates/install-delegates/automate-delegate-installation.md). 
 
   ```
   - name: DELEGATE_NAME  value: qa
@@ -294,7 +282,7 @@ The name of the Delegate. This is the name that will appear in Harness when the 
  
 #### `NEXT_GEN`
 
-Indicates that this Delegate will register in Harness NextGen(`true`) or FirstGen(`false`). 
+Indicates that this delegate will register in Harness NextGen(`true`) or FirstGen(`false`). 
 
   ```
   - name: NEXT_GEN  value: "true"
@@ -302,7 +290,7 @@ Indicates that this Delegate will register in Harness NextGen(`true`) or FirstGe
  
 #### `DELEGATE_DESCRIPTION` 
 
-The description added to the Delegate in the Harness Manager or YAML before registering.It appears in the Delegate details page in the Harness Manager. 
+The description added to the delegate in the Harness Manager or YAML before registering.It appears on the **Delegate details** page in the Harness Manager. 
 
   ```
   - name: DELEGATE_DESCRIPTION  value: ""
@@ -310,7 +298,7 @@ The description added to the Delegate in the Harness Manager or YAML before regi
  
 #### `DELEGATE_TYPE` 
 
-The type of Delegate. 
+The type of delegate. 
 
   ```
   - name: DELEGATE_TYPE  value: "KUBERNETES"
@@ -318,7 +306,7 @@ The type of Delegate.
  
 #### `DELEGATE_TAGS` 
 
-The Tags added to the Delegate in the Harness Manager or YAML before registering.Tags are generated by Harness using the Delegate name but you can also add your own Tags.Tags appear in the Delegate details page in the Harness Manager.See [Tags Reference](/docs/platform/20_References/tags-reference.md) and [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). 
+The tags added to the delegate in the Harness Manager or YAML before registering. Tags are generated by Harness using the delegate name, but you can also add your own tags.Tags appear on the **Delegate details** page in the Harness Manager. For more information, go to [Tags Reference](/docs/platform/20_References/tags-reference.md) and [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). 
 
   ```
   - name: DELEGATE_TAGS  value: ""
@@ -326,7 +314,7 @@ The Tags added to the Delegate in the Harness Manager or YAML before registering
  
 #### `DELEGATE_TASK_LIMIT` 
 
-The maximum number of tasks the Delegate can perform at once.All of the operations performed by the Delegate are categorized as different types of tasks. 
+The maximum number of tasks the delegate can perform at once. All of the operations performed by the delegate are categorized as different types of tasks. 
 
   ```
   - name: DELEGATE_TASK_LIMIT  value: "50"
@@ -334,7 +322,7 @@ The maximum number of tasks the Delegate can perform at once.All of the operatio
  
 #### `DELEGATE_ORG_IDENTIFIER` 
 
-The Harness Organization [Identifier](/docs/platform/20_References/entity-identifier-reference.md) where the Delegate will register.Delegates at the account-level do not have a value for this variable. 
+The Harness Organization [Identifier](/docs/platform/20_References/entity-identifier-reference.md) where the delegate will register. Delegates at the account-level do not have a value for this variable. 
 
   ```
   - name: DELEGATE_ORG_IDENTIFIER  value: "engg"
@@ -342,7 +330,7 @@ The Harness Organization [Identifier](/docs/platform/20_References/entity-identi
  
 #### `DELEGATE_PROJECT_IDENTIFIER` 
 
-The Harness Project [Identifier](/docs/platform/20_References/entity-identifier-reference.md) where the Delegate will register.Delegates at the account or Org-level do not have a value for this variable. 
+The Harness Project [Identifier](/docs/platform/20_References/entity-identifier-reference.md) where the delegate will register. Delegates at the account or org-level do not have a value for this variable. 
 
   ```
   - name: DELEGATE_PROJECT_IDENTIFIER  value: "myproject"
@@ -350,7 +338,7 @@ The Harness Project [Identifier](/docs/platform/20_References/entity-identifier-
  
 #### `PROXY_*`
 
-All of the Delegates include proxy settings you can use to change how the Delegate connects to the Harness Manager.The `secretKeyRef` are named using the Delegate name. 
+All delegates include proxy settings you can use to change how the delegate connects to the Harness Manager. The `secretKeyRef` are named using the delegate name. 
 
   ```
   - name: PROXY_HOST  value: ""- name: PROXY_PORT  value: ""- name: PROXY_SCHEME  value: ""- name: NO_PROXY  value: ""- name: PROXY_MANAGER  value: "true"- name: PROXY_USER  valueFrom:    secretKeyRef:      name: mydel-proxy      key: PROXY_USER- name: PROXY_PASSWORD  valueFrom:    secretKeyRef:      name: mydel-proxy      key: PROXY_PASSWORD
@@ -358,7 +346,7 @@ All of the Delegates include proxy settings you can use to change how the Delega
  
 #### `INIT_SCRIPT` 
 
-You can run scripts on the Delegate using `INIT_SCRIPT`.For example, if you wanted to install software on the Delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the Delegate YAML.A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). 
+You can run scripts on delegate using `INIT_SCRIPT`. For example, if you wanted to install software on the delegate pod, you can enter the script in `INIT_SCRIPT` and then apply the delegate YAML. A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688). For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). 
 
   ```
   - name: INIT_SCRIPT  value: |-    echo install wget    apt-get install wget    echo wget installed
@@ -366,7 +354,7 @@ You can run scripts on the Delegate using `INIT_SCRIPT`.For example, if you want
  
 #### `POLL_FOR_TASKS` 
 
-Enables or disables polling for Delegate tasks.By default, the Delegate uses Secure WebSocket (WSS) for tasks. If the `PROXY_*` settings are used and the proxy or some intermediary does not allow WSS, then set `POLL_FOR_TASKS` to true to enable polling. 
+Enables or disables polling for delegate tasks. By default, the delegate uses Secure WebSocket (WSS) for tasks. If the `PROXY_*` settings are used and the proxy or some intermediary does not allow WSS, then set `POLL_FOR_TASKS` to `true` to enable polling. 
 
   ```
   - name: POLL_FOR_TASKS  value: "false"
@@ -374,7 +362,7 @@ Enables or disables polling for Delegate tasks.By default, the Delegate uses Sec
  
 #### `HELM_DESIRED_VERSION` 
 
-By default, Harness Delegates are installed with and use Helm 3.You can set the Helm version in the Harness Delegate YAML file using the `HELM_DESIRED_VERSION` environment property. Include the `v` with the version. For example, `HELM_DESIRED_VERSION: v2.13.0`. 
+By default, Harness Delegates are installed with and use Helm 3. You can set the Helm version in the Harness Delegate YAML file using the `HELM_DESIRED_VERSION` environment property. Include the `v` with the version. For example, `HELM_DESIRED_VERSION: v2.13.0`. 
 
   ```
   - name: HELM_DESIRED_VERSION  value: ""
@@ -382,7 +370,7 @@ By default, Harness Delegates are installed with and use Helm 3.You can set the 
  
 #### `USE_CDN` 
 
-Makes the Delegate use a CDN for new versions. 
+Makes the delegate use a CDN for new versions. 
 
   ```
   - name: USE_CDN  value: "true"
@@ -390,7 +378,7 @@ Makes the Delegate use a CDN for new versions.
  
 #### `CDN_URL`
 
-The CDN URL for Delegate versions. 
+The CDN URL for delegate versions. 
 
   ```
   - name: CDN_URL  value: https://app.harness.io
@@ -398,7 +386,7 @@ The CDN URL for Delegate versions.
  
 #### `JRE_VERSION` 
 
-The Java Runtime Environment version used by the Delegate. 
+The Java Runtime Environment version used by the delegate. 
 
   ```
   - name: JRE_VERSION  value: 1.8.0_242
@@ -406,7 +394,7 @@ The Java Runtime Environment version used by the Delegate.
  
 #### `HELM3_PATH`,`HELM_PATH` 
 
-When you Install and run a new Harness Delegate, Harness includes Helm 3 support automatically. But in some cases, you might want to use one of the custom Helm binaries available from [Helm release](https://github.com/helm/helm/releases).For a Helm 3 binary, enter the local path to the binary in `HELM3_PATH`.For a Helm 2 binary, enter the path local path to the binary in `HELM_PATH`.If you are performing a [Native Helm deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness will look for the Helm 2 binary on the Delegate in its standard path, such as `/usr/local/bin/helm`. 
+When you Install and run a new Harness Delegate, Harness includes Helm 3 support automatically. In some cases, you may want to use one of the custom Helm binaries available from [Helm release](https://github.com/helm/helm/releases). For a Helm 3 binary, enter the local path to the binary in `HELM3_PATH`. For a Helm 2 binary, enter the path local path to the binary in `HELM_PATH`. If you are performing a [Native Helm deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness looks for the Helm 2 binary on the delegate in its standard path, such as `/usr/local/bin/helm`. 
 
   ```
   - name: HELM3_PATH  value: ""- name: HELM_PATH  value: ""
@@ -414,7 +402,7 @@ When you Install and run a new Harness Delegate, Harness includes Helm 3 support
  
 #### `KUSTOMIZE_PATH` 
 
-The Harness Delegate ships with the 3.5.4 release of Kustomize.If you want to use a different release of Kustomize, add it to a location on the Delegate, update `KUSTOMIZE_PATH`, and (re)start the Delegate. 
+The Harness Delegate ships with the 3.5.4 release of Kustomize. If you want to use a different release of Kustomize, add it to a location on the delegate, update `KUSTOMIZE_PATH`, and (re)start the delegate. 
 
   ```
   - name: KUSTOMIZE_PATH  value: ""
@@ -430,7 +418,7 @@ You can use `KUBECTL_PATH` to change the kubectl config path. The default is `~/
  
 #### `GRPC_SERVICE_ENABLED`,`GRPC_SERVICE_CONNECTOR_PORT` 
 
-By default, the Delegate requires HTTP/2 for gRPC (gRPC Remote Procedure Calls) be enabled for connectivity between the Delegate and Harness Manager. 
+By default, the delegate requires HTTP/2 for gRPC (gRPC Remote Procedure Calls) to be enabled for connectivity between the delegate and Harness Manager. 
 
   ```
   - name: GRPC_SERVICE_ENABLED  value: "true"- name: GRPC_SERVICE_CONNECTOR_PORT  value: "8080"
@@ -438,7 +426,7 @@ By default, the Delegate requires HTTP/2 for gRPC (gRPC Remote Procedure Calls) 
  
 #### `VERSION_CHECK_DISABLED` 
 
-By default, the Delegate always checks for new versions (via the Watcher). 
+By default, the delegate always checks for new versions (via the Watcher). 
 
   ```
   - name: VERSION_CHECK_DISABLED  value: "false"
@@ -446,7 +434,7 @@ By default, the Delegate always checks for new versions (via the Watcher).
  
 #### `DELEGATE_NAMESPACE` 
 
-The namespace for the Delegate is taken from the `StatefulSet` namespace. 
+The namespace for the delegate is taken from the `StatefulSet` namespace. 
 
   ```
   - name: DELEGATE_NAMESPACE  valueFrom:    fieldRef:      fieldPath: metadata.namespace
@@ -456,8 +444,7 @@ The namespace for the Delegate is taken from the `StatefulSet` namespace.
 
 #### Empty serviceName
 
-By default, Harness does not include a value for `serviceName` in the `StatefulSet` in the Delegate YAML:
-
+By default, Harness does not include a value for `serviceName` in the `StatefulSet` in the delegate YAML:
 
 ```
 ...  
@@ -483,9 +470,9 @@ spec:
 ```
 You do not need to change `serviceName`, but you can if you have a static code analysis tool that flags it or some other use case.
 
-Simply add the Delegate name as the value using the syntax `harness.io/name: [Delegate name]`.
+Add the delegate name as the value using the syntax `harness.io/name: [Delegate name]`.
 
-For example, if your Delegate name is `myDelegate`, you would add `harness.io/name: myDelegate`:
+For example, if your delegate name is `myDelegate`, you would add `harness.io/name: myDelegate`:
 
 
 ```
