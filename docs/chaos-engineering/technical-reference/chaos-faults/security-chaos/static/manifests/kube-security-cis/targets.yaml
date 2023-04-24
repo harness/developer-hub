@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cis-bench
+  namespace: litmus
+data:
+  config.yaml: |
+    Target:
+      - master
+      - node
+      - etcd

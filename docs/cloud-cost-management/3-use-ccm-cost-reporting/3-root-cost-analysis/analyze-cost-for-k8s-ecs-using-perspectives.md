@@ -1,5 +1,5 @@
 ---
-title: Analyze cost for Kubernetes or AWS ECS 
+title: Kubernetes or AWS ECS 
 description: Harness Cloud Cost Management (CCM) allows you to view your cloud costs at a glance, understand what is costing the most, and analyze cost trends. CCM displays the data for all your resources and als…
 # sidebar_position: 2
 helpdocs_topic_id: b8sdsxlfee
@@ -7,6 +7,8 @@ helpdocs_category_id: jkwta6oexk
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Analyze cost for Kubernetes or AWS ECS
 
 Harness Cloud Cost Management (CCM) allows you to view your cloud costs at a glance, understand what is costing the most, and analyze cost trends. CCM displays the data for all your resources and also provides the following details:
 

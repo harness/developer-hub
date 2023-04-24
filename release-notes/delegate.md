@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-03-31T10:00
+date: 2023-04-21T10:00
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -15,27 +15,74 @@ Review the notes below for details about recent changes to Harness Delegate, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
+## Latest release - April 22, 2023, Harness version 79111, Harness Delegate version 79106
 
-## Latest release - March 31, 2023, Harness version 78914, Harness Delegate version 78904
-
-Harness NextGen release 78914 includes the following changes for the Harness Delegate.
+Harness NextGen release 79111 includes the following changes for the Harness Delegate.
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-### What's new
 
-Added support for the latest Git CLI in the delegate maximal image. (DEL-6121) 
+This release introduces the following new features and enhancements:
 
-The latest Git CLI is now included by default. 
+- Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
+
+    - io_harness_delegate_connected
+    - io_harness_delegate_disconnected 
+
+- Upgraded the following libraries: (DEL-6069)
+
+    - org.yaml:snakeyaml from 1.33 -> 2.0
+    - com.fasterxml.jackson.core:jackson-annotations from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.core:jackson-core from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-cbor from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-smile from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-xml from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-yaml from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-guava from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-jdk8 from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-joda from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-jsr310 from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-base from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-yaml-provider from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-afterburner from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-jaxb-annotations from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-jsonSchema from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-parameter-names from 2.13.4 -> 2.14.2
+    - io.kubernetes:client-java-api from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-extended from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-proto from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-api-fluent from 16.0.0 -> 18.0.0
+    - org.springframework.boot:spring-boot-autoconfigure from 2.1.6.RELEASE -> 2.7.10
+    - org.springframework.boot:spring-boot-loader from 2.4.5 -> 2.7.10
+    - org.springframework.boot:spring-boot-starter-batch from 2.1.6.RELEASE -> 2.7.10
+    - org.springframework.boot:spring-boot from 2.3.2.RELEASE -> 2.7.10
+
+- Added APIs to enable auto upgrading with custom delegate images. (DEL-6183)
+
+    - `SupportedDelegateVersion` returns the maximum delegate version number to install.
+    - `overrideDelegateImageTag` changes the tag the upgrader uses to upgrade delegates when auto upgrade is on.
+
+- Upgraded the following libraries: (DEL-6198)
+
+    - org.springframework:spring-aop from 5.3.23 -> 5.3.26
+    - org.springframework:spring-beans from 5.3.25 -> 5.3.26
+    - org.springframework:spring-context from 5.3.25 -> 5.3.26
+    - org.springframework:spring-core from 5.3.25 -> 5.3.26
+    - org.springframework:spring-expression from 5.3.25 -> 5.3.26
+    - org.springframework:spring-jcl from 5.3.25 -> 5.3.26
+    - org.springframework:spring-messaging from 5.3.25 -> 5.3.26
+    - org.springframework:spring-test from 5.3.25 -> 5.3.26
+    - org.springframework:spring-tx from 5.3.25 -> 5.3.26
+    - org.springframework:spring-web from 5.3.25 -> 5.3.26
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
-### Early access
 
 This release does not include any early access features.
 
@@ -44,9 +91,11 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
+This release includes the following fixes:
 
-This release does not include any fixed issues.
+- Added WebSocket reconnect logic for when the Harness Manager does not receive a heartbeat from the Harness Delegate for more than five minutes. (DEL-5954)
+
+- Set the delegate `LANG` environment variable to en_US.UTF-8 by default. (DEL-6221)
 
 ```mdx-code-block
   </TabItem>
@@ -57,6 +106,23 @@ This release does not include any fixed issues.
 
 <details>
 <summary>Expand this section to view changes to previous releases</summary>
+
+#### March 31, 2023, Harness version 78914, Harness Delegate version 78904
+
+Harness release 78914 includes the following changes for the Harness Delegate.
+
+##### What's new
+
+- Added support for the latest Git CLI in the delegate maximal image. (DEL-6121)
+  - The latest Git CLI is now included by default.
+
+#### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
 
 #### March 24, 2023, Harness version 78817, Harness Delegate version 78705
 

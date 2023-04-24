@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-04-10T10:00
+date: 2023-04-24T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -14,16 +14,172 @@ import delete_project from './static/delete-project.png'
 Review the notes below to learn about the new features that are Generally Available (GA) in Harness NextGen SaaS across all Harness modules and the Harness Platform. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
 :::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
+ 
+## Latest - April 22, 2023, version 79111
 
-## Latest - April 10, 2023, version 79015
+### Harness Platform
 
-### Feature Flags
+- You can now configure session time-out in the UI. (PL-32258)
+  In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
+
+- You can now add descriptions to pipeline and stage variables. (PIE-3336)
+
+### Continuous Delivery
+
+- SHA support for Artifactory (CDS-58629), ECR (CDS-58304), GCR	(CDS-56531), Nexus 3 Docker (CDS-56530), ACR (CDS-56529), Github Packages	(CDS-41930)
+  
+  SHA values and labels for the artifact are now visible in the Harness service **Output** section of a pipeline execution.
+
+  <docimage path={require('./static/726cd79347c2dabba5bd47f2264f91b0b2618f872663c90048453719e87ff634.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  
+  Labels are visible if the artifact manifest supports `schemaVersion1`.
+  
+  Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
+  
+  Since manifests can support 2 schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
+  
+  Here are the expressions for referencing each version:
+  - SHA value of `schemaVersion1`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
+  - SHA value of `schemaVersion2`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+- New Harness expression for revision number. (CDS-57826)
+  
+  You can now use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. This will help you to:
+    - Reference the current Harness release number as part of your manifest.
+    - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
+  
+  **Important:** Users must update their delegate to version 1.0.79100 to use the expression.
+- Deployment freeze supports quarterly recurrence.	(CDS-57792)
+  
+  You can now configure a deployment freeze with a recurrence of `n` months, where `n` can be between `2` to `11`.
+- Use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts). (CDS-57667, ZD-41758)
+  
+  You can now specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
+
+  <docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  When you deploy, the logs will include all subcharts, like this:
+
+  ```sh
+  Successfully fetched following files:
+  - Chart.yaml
+  - values.yaml
+  - charts/first-child/Chart.yaml
+  - charts/first-child/values.yaml
+  - charts/first-child/templates/deployment.yaml
+  - charts/shared-lib/Chart.yaml
+  - charts/shared-lib/templates/_service.yaml
+  - charts/shared-lib/templates/_helpers.tpl
+  - charts/shared-lib/templates/_deployment.yaml
+  - templates/_helpers.tpl
+  - README.md
+  ```
+  
+  **Important:** This change impacts existing Helm services in Harness. To use this feature, you will need to update the path to your subordinate chart(s) using `charts/`.
+- You can now see what deployment freeze failed a pipeline in the pipeline's execution history. (CDS-53781)
+  
+  We have added support to identify the associated freeze window that failed a pipeline execution. You can hover over the status of the pipeline in its execution history and the associated freeze window details are shown.
+
+  <docimage path={require('./static/eca1e7dd02fa705e9158c78f44ab49676270e4a477cc260e817c06da91bdf631.png')} width="60%" height="60%" title="Click to view full size image" />
+- Bamboo is now supported in On Artifact triggers. (CDS-51742)
+  
+  You can now use artifacts in Bamboo to initiate Triggers for your pipelines.
+
+  <docimage path={require('./static/d5512549a2cb085680c609e42aef000fec60a5dc8ac6f20ee48ec31282f6f61e.png')} width="30%" height="30%" title="Click to view full size image" />
+- Repository format is now supported for Artifactory artifact source templates. (CDS-59092)
+
+  <docimage path={require('./static/61a6e0b480e05303bfc5926bec326c1555eff5ae087014c0b6a7e00a1fa94ec2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### Continuous Integration
+
+* The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. This workflow has been improved to generate a pipeline based on the repository you select. (CI-7603)
+* The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings), [Run Tests steps](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings), and [Plugin steps](/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
+* Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
+
+### Service Reliability Management
+
+- Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
+
+- Removed the mandatory check for the presence of Tier in the AppD complete metric path. (SRM-14463)
+
+### Harness Delegate 
+
+- Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
+
+    - io_harness_delegate_connected
+    - io_harness_delegate_disconnected 
+
+- Upgraded the following libraries: (DEL-6069)
+
+    - org.yaml:snakeyaml from 1.33 -> 2.0
+    - com.fasterxml.jackson.core:jackson-annotations from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.core:jackson-core from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-cbor from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-smile from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-xml from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-yaml from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-guava from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-jdk8 from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-joda from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-jsr310 from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-base from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-yaml-provider from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-afterburner from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-jaxb-annotations from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-jsonSchema from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-parameter-names from 2.13.4 -> 2.14.2
+    - io.kubernetes:client-java-api from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-extended from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-proto from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-api-fluent from 16.0.0 -> 18.0.0
+    - org.springframework.boot:spring-boot-autoconfigure from 2.1.6.RELEASE -> 2.7.10
+    - org.springframework.boot:spring-boot-loader from 2.4.5 -> 2.7.10
+    - org.springframework.boot:spring-boot-starter-batch from 2.1.6.RELEASE -> 2.7.10
+    - org.springframework.boot:spring-boot from 2.3.2.RELEASE -> 2.7.10
+
+- Added APIs to enable auto upgrading with custom delegate images. (DEL-6183)
+
+    - `SupportedDelegateVersion` returns the maximum delegate version number to install.
+    - `overrideDelegateImageTag` changes the tag the upgrader uses to upgrade delegates when auto upgrade is on.
+
+- Upgraded the following libraries: (DEL-6198)
+
+    - org.springframework:spring-aop from 5.3.23 -> 5.3.26
+    - org.springframework:spring-beans from 5.3.25 -> 5.3.26
+    - org.springframework:spring-context from 5.3.25 -> 5.3.26
+    - org.springframework:spring-core from 5.3.25 -> 5.3.26
+    - org.springframework:spring-expression from 5.3.25 -> 5.3.26
+    - org.springframework:spring-jcl from 5.3.25 -> 5.3.26
+    - org.springframework:spring-messaging from 5.3.25 -> 5.3.26
+    - org.springframework:spring-test from 5.3.25 -> 5.3.26
+    - org.springframework:spring-tx from 5.3.25 -> 5.3.26
+    - org.springframework:spring-web from 5.3.25 -> 5.3.26
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 19, 2023, version 79104
+
+##### Cloud Cost Management
+
+- Recommendations enhancement (CCM-11769)
+
+  A new filter has been added to recommendations, which allows the selection of the age of the recommendations. This filter allows you to specify how many days old recommendations should be included in the results. 
+
+#### April 10, 2023, version 79015
+
+##### Feature Flags
 
 * The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
 
-### Harness Platform
+##### Harness Platform
+
 - You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
 
 - Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
@@ -34,19 +190,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
 
-### Continuous Integration
+##### Continuous Integration
 
 * Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
 * The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
   * `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
   * `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/ci-technical-reference/run-step-settings) and [Run Tests](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
 
-
-### Service Reliability Management
+##### Service Reliability Management
 
 * Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
@@ -97,11 +252,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   ![picture 73](static/40962ce702cb34f682116d48237a0b3a99d68d840ef0f6e39e4b260b79fba3dc.png)
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 #### April 05, 2023, version 79001
 
 ##### Cloud Cost Management
@@ -114,7 +264,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### Continuous Integration
 
-* When you [use a GitHub App in a GitHub connector](/docs/platform/connectors/git-hub-app-support), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+* When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
 * Added a [codebase expression](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) for commit messages: `<+codebase.commitMessage>`. (CI-7222)
 
 ##### Harness Platform
@@ -248,7 +398,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### Continuous Delivery
 
-- [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/) is now supported as a manifest repo for Amazon Elastic Container Service (ECS) and Serverless.com Framework Lambda deployments. (CDS-54961)
+- [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo) is now supported as a manifest repo for Amazon Elastic Container Service (ECS) and Serverless.com Framework Lambda deployments. (CDS-54961)
 
   When creating Amazon ECS or Serverless.com Framework Lambda deployment pipelines, you can now use Azure Repo as a manifest repo in the service definition.
   
@@ -616,7 +766,7 @@ In addition to fixed values and runtime inputs, you can now use [expressions](/d
 
 * Microsoft Windows (amd64) is now a supported [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructure option. (CI-5455)
 * **Python** is now available as a built-in **Shell** option for [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings). (CI-6692)
-* [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](/docs/platform/connectors/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
+* [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
   * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
   * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
 * Use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)
@@ -923,7 +1073,7 @@ infrastructure:
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.iohttps://developer.harness.io/docs/platform/security/reference-existing-secret-manager-secrets/).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 
@@ -1147,7 +1297,7 @@ For more information about how to use a default pipeline for your Flags, go to [
 
 You can now use a readOnly vault as a default SM. (PL-24491)
 
-####3 Continuous Delivery
+#### Continuous Delivery
 
 - ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies.
 
@@ -1225,7 +1375,7 @@ For information about the current plans you can subscribe to, go to [Pricing & P
 
 - Harness now has a default User Group at each scope. ​These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
-  See [Harness Default User Groups](https://developer.harness.io/docs/platform/role-based-access-control/harness-default-user-groups/).
+  See [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
 
 #### September 14, 2022
 
@@ -1279,7 +1429,7 @@ To get the PHP SDK, go to our [PHP Git Repository](https://github.com/harness/ff
 
 You can now inherit User Groups created at a higher scope by using Assign Roles.
 
-See [Assign Roles](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-user-groups#step-assign-roles).
+See [Assign Roles](https://developer.harness.io/docs/platform/User-Management/add-user-groups#step-assign-roles).
 
 #### August 31, 2022
 
@@ -1311,7 +1461,7 @@ The Feature Flag Relay Proxy has been updated to version 0.9.7.
 
 - Now you can add up to 50,000 users in the Harness Non-Community Edition. (PL-27300)
 
-  See [Add and Manage Users](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-users).
+  See [Add and Manage Users](/docs/platform/User-Management/add-users).
 
 - You can now use an enhanced Git Experience. (PL-26339)
 
@@ -1381,7 +1531,7 @@ Role-based Access Control has been added to Custom Dashboards. To access Dashboa
 
   You can now use the Assume IAM Role on Delegate and Use IRSA credentials options when setting up an AWS Connector for Serverless Lambda deployments.
 
-  For more information, refer to [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/ref-cloud-providers/aws-connector-settings-reference/).
+  For more information, refer to [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference/).
 
 - Allow AWS ECR artifact for Serverless Lambda (CDS-38857)
 

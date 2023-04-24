@@ -2,6 +2,7 @@
 id: pod-dns-spoof
 title: Pod DNS Spoof
 ---
+## Introduction
 
 Pod DNS spoof is a Kubernetes pod-level chaos fault that injects chaos into pods to mimic DNS resolution. This fault resolves DNS target host names or domains to other IPs as specified in the `SPOOF_MAP` environment variable in the chaos engine configuration.
 
@@ -15,7 +16,7 @@ Pod DNS spoof:
 - Determines how quickly an application can resolve the host names and recover from the failure. 
 - Simulates custom responses from a spoofed upstream service.
 
-:::note
+:::info note
 - Kubernetes > 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
 :::

@@ -10,9 +10,37 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 10, 2023, version 79015
+## Latest - April 21, 2023, version 79111
 
 ### Continuous Delivery
+
+- Protecting secrets used in webhook-based triggers that use secret decryption on delegates (CDS-58488, ZD-42117)
+  
+  This functionality is behind a feature flag, `CDS_NG_TRIGGER_AUTHENTICATION_WITH_DELEGATE_SELECTOR`.
+  
+  Github triggers that use a secret for authentication will now use the same delegate selectors saved in the secret's Harness secret manager.
+- Harness now supports variable expressions in the plain text config files. (CDS-58399)
+  
+  This functionality is behind a feature flag, `CDS_NG_CONFIG_FILE_EXPRESSION`.
+  
+  Variable expression support includes service, environment, pipeline, and stage variables. Any Harness expression is supported.
+  
+  Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
+- Config files can now be pulled from Github. (CDS-56652)
+  
+  This functionality is behind a feature flag, `CDS_GIT_CONFIG_FILES`.
+
+  For Harness services using the Tanzu deployment type, config files can be configured using Github, in addition to the Harness file store. Support for other deployment types in coming soon.
+
+## April 10, 2023, version 79015
+
+### Continuous Delivery
+
+- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments)
+  
+  This functionality is behind a feature flag, `CDS_AWS_NATIVE_LAMBDA`.
+  
+  Harness supports the deployment of AWS Lambda functions. 
 
 - ServiceNow custom table support. (CDS-55046)
   
@@ -61,7 +89,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### Continuous Delivery
 
-- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`.
 
   Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -275,7 +303,7 @@ For more information, see [Create a remote step template](https://developer.harn
 
 - You can now use expressions to reference pre-existing secrets in Vault using a fully-qualified path. (PL-28352)
 
-For more information, see [HashiCorp Vault Secrets](https://developer.harness.io/docs/platform/Security/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
+For more information, see [HashiCorp Vault Secrets](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets#option-hashicorp-vault-secrets).
 
 - Harness will now send email notification for user invites when the feature flag AUTO_ACCEPT_SAML_ACCOUNT_INVITES is enabled. (PL-26218, ZD-32152,35287)
 
@@ -295,7 +323,7 @@ You can onboard any secret manager with Harness and reference their secrets in H
 
 This is behind the feature flag CUSTOM_SECRET_MANAGER_NG.
 
-See [Add a custom secret manager](https://developer.harness.io/docs/platform/security/custom-secret-manager/).
+See [Add a custom secret manager](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/custom-secret-manager).
 
 #### July 7, 2022
 

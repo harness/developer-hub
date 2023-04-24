@@ -33,6 +33,7 @@ You'll learn how to:
 ### Before you begin
 
 * Review [Harness Key Concepts](../../first-gen/starthere-firstgen/harness-key-concepts.md) to establish a general understanding of Harness.
+* The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio. See ​[CD Quickstarts](https://developer.harness.io/tutorials/deploy-services) and [Get started with CI](/docs/category/get-started-with-ci).
 
 ### Visual Summary
 
@@ -209,7 +210,7 @@ For this quickstart, we'll just use `service` and `serviceDefinition`. We're jus
 ```
 This stage simply adds a Service named `myservice` and a Service Definition using Kubernetes manifests.
 
-For details on adding manifests to a Service Definition, see [Add Kubernetes Manifests](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md).
+For details on adding manifests to a Service Definition, see [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests/).
 
 The `connectorRef` setting is for the Harness Connector that connects to the Git repo where the manifests are located. In the Visual editor you can create/select Connectors inline, but in the YAML editor, you must use the name of an existing Connector. In this example, we simply use a Runtime Input (`connectorRef: <+input>`) and we can add the Connector later.
 
@@ -237,7 +238,7 @@ For this quickstart, we'll just use `environment` and `infrastructureDefinition`
                               namespace: <+input>  
                               releaseName: <+input>
 ```
-In `infrastructureDefinition`, you can see that we are using a [Kubernetes Cluster Connector](../7_Connectors/add-a-kubernetes-cluster-connector.md) for a platform-agnostic direct connection to the target cluster.
+In `infrastructureDefinition`, you can see that we are using a [Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector) for a platform-agnostic direct connection to the target cluster.
 
 #### Stage Execution
 

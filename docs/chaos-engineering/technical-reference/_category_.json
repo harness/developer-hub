@@ -1,13 +1,13 @@
 {
   "position": 2,
-  "label": "Technical Reference",
+  "label": "Technical reference",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
       "type":"generated-index",
-      "title":"Technical Reference"
+      "title":"Technical reference"
    },
   "customProps": {
-    "description": "Technical Reference to Harness Chaos Engineering"
+    "description": "Technical reference to Harness Chaos Engineering"
   }
 }

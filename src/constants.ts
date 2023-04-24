@@ -1,3 +1,5 @@
+import gs from "./components/Docs/GettingStarted";
+
 export enum MODULES {
     ci = 'ci',
     cd = 'cd',
@@ -6,7 +8,8 @@ export enum MODULES {
     sto = 'sto',
     srm = 'srm',
     ce = 'ce',
-    platform= 'platform'
+    sei = 'sei',
+    platform= 'platform',
 }
 export const MODULE_DISPLAY_NAME = {
     [MODULES.ci]: 'Continuous Integration',
@@ -16,5 +19,6 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.sto]: 'Security Testing Orchestration',
     [MODULES.srm]: 'Service Reliability Management',
     [MODULES.ce]: 'Chaos Engineering',
-    [MODULES.platform]: 'Harness Platform'
+    [MODULES.sei]: 'Software Engineering Insights',
+    [MODULES.platform]: 'Harness Platform',
 }

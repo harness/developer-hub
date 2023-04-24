@@ -11,6 +11,14 @@ It takes two things to build software; teamwork and iteration. As software engin
 
 [Feature Flags](https://harness.io/blog/what-are-feature-flags) by definition allow blocks of code to be executed conditionally. Conditional statements are nothing new and have been around for several decades; the management of inventorying and toggling these conditional statements are newer and Feature Flag platforms are here. Feature Flags enable a concept called Progressive Delivery, or the incremental release of features. In this example we will walk you through your first Feature Flag creation and execution.
 
+## Video Tutorial
+
+This tutorial gives you a quick overview of adding Feature Flags.
+
+<!-- Video:
+Your First Feature Flag-->
+<docvideo src="https://www.youtube.com/watch?v=Zf51EDcDa80" />
+
 ## What You Need For Executing Your First Feature Flag
 
 Feature Flags have a close relationship with the code base since they surround/decorate conditional statements. You’ll need to include a Feature Flag SDK as a dependency then wire the Feature Flag client. To support this, the underlying code base and necessary dependencies to build/run the code base is needed. If this is your first time leveraging a Feature Flag, [Google’s React Store](https://github.com/google-pay/react-store) is a great sample app to modify and use with Harness Feature Flags. This example will require a GitHub Account, an editor such as an IDE, a [Harness Feature Flags Account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started), and the ability to run an [NPM Install](https://docs.npmjs.com/cli/v7/commands/npm-install) in your local or remote environment.

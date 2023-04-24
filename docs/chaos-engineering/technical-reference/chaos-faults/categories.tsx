@@ -51,4 +51,10 @@ export const categories: FaultCardItem[] = [
     faults: LoadExperiments.length,
     category: "load",
   },
+  {
+    title: "Security chaos",
+    description: <>Chaos faults for security CIS </>,
+    faults: LoadExperiments.length,
+    category: "security-chaos",
+  },
 ];

@@ -2,6 +2,7 @@
 id: pod-http-status-code
 title: Pod HTTP status code
 ---
+## Introduction
 
 Pod HTTP status code is a Kubernetes pod-level fault that injects chaos inside the pod by modifying the status code of the response from the application server to the desired status code provided by the user. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
@@ -14,7 +15,7 @@ Pod HTTP status code:
 - Simulates unavailability of specific APIs for (or from) a given microservice.
 - Simulates unauthorized requests for third party services (401 or 403), and API malfunction, that is internal server error (50x). 
 
-:::note
+:::info note
 - Kubernetes > 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
 :::

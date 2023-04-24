@@ -2,6 +2,8 @@
 id: pod-memory-hog
 title: Pod memory hog
 ---
+## Introduction
+
 Pod memory hog is a Kubernetes pod-level chaos fault that consumes excessive memory resources on the application container. Since this fault stresses the target container, the primary process within the container may consume the available system memory on the node. 
 - Memory usage within containers is subject to various constraints in Kubernetes. 
 - When specification mentions the resource limits, exceeding these limits results in termination of the container due to OOM kill. 
@@ -18,7 +20,7 @@ Pod memory hog exec:
 - Verifies application restarts on OOM (out of memory) kills. 
 - Tests how the overall application stack behaves when such a situation occurs.
 
-:::note
+:::info note
 - Kubernetes> 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
 :::

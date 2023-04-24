@@ -16,11 +16,11 @@
 ||Harness Cloud - Describe Supported Platform And Os (Linux, Mac, Windows)|[Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/)|
 ||Harness Cloud - Test Build Infrastructure On Harness Cloud|[Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
 ||Describe Available Connectors |[Connectors](https://developer.harness.io/docs/category/connectors)|
-||Configure a Git Connector|[Add a GitHub Connector](https://developer.harness.io/docs/platform/Connectors/add-a-git-hub-connector)|
-||Configure a DockerHub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/Connectors/connect-to-harness-container-image-registry-using-docker-connector)|
+||Configure a Git Connector|[Add a GitHub Connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)|
+||Configure a DockerHub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector)|
 ||Understand Harness Delegate Role For The CI Capability|[CI pipeline basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics)| <!--- ||Describe Pipeline Studio Vs Yaml Structure|-| -->
-||Secrets Management - Describe Possible Usages For Harness CI|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/security/add-use-text-secrets/)|
-||Secrets Management - How To Retrieve And Render Secrets Using Harness Expressions|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/security/add-use-text-secrets/)|
+||Secrets Management - Describe Possible Usages For Harness CI|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/)|
+||Secrets Management - How To Retrieve And Render Secrets Using Harness Expressions|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/)|
 ||Describe Harness Variables And Expressions|[Built-in and Custom Harness Variables Reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)|
 ||Configure And Use Variables And Expressions|[Built-in CI codebase variables reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)|
 ||Describe Built-In Variables|[Built-in and Custom Harness Variables Reference](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/)|
@@ -85,7 +85,7 @@
 ||Pipeline Studio - Describe the Execution History Tab|[View and Compare Pipeline Executions](https://developer.harness.io/docs/platform/pipelines/view-and-compare-pipeline-executions/)|
 ||Step - Describe Details, Inputs, Outputs|[Runtime Inputs](https://developer.harness.io/docs/platform/references/runtime-inputs/)|
 |**4. RBAC, best practices, and small configuration tasks**|||
-||Elaborate on Anonymous Docker Image pulls and Their Risks |[Use a Docker Connector](https://developer.harness.io/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector/#step-2-enter-credentials)|
+||Elaborate on Anonymous Docker Image pulls and Their Risks |[Use a Docker Connector](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials)|
 ||Utilize Images When Shells Are Not Available|-|
 ||Debug A Pipeline Step By Running The Step Locally (Troubleshooting)|[Troubleshoot Continuous Integration](https://developer.harness.io/docs/continuous-integration/troubleshoot/troubleshooting-ci/)|
 ||Describe Harness Cloud Characteristics And Its Advantages|[Hosted Builds on VM Quickstart](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|

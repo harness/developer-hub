@@ -97,7 +97,7 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
    ![](./static/deploy-helm-charts-02.png)
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](/docs/platform/Connectors/connect-to-an-artifact-repo) How-tos.
+For the steps and settings of each option, see the [Connect to an Artifact Repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo) How-tos.
 
 If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
 
@@ -154,6 +154,29 @@ If you haven't set up a Harness delegate, you can add one as part of the connect
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
 ![](./static/deploy-helm-charts-04.png)
+
+### Using subcharts
+
+You can specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
+
+<docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+When you deploy, the logs will include all subcharts, like this:
+
+```sh
+  Successfully fetched following files:
+  - Chart.yaml
+  - values.yaml
+  - charts/first-child/Chart.yaml
+  - charts/first-child/values.yaml
+  - charts/first-child/templates/deployment.yaml
+  - charts/shared-lib/Chart.yaml
+  - charts/shared-lib/templates/_service.yaml
+  - charts/shared-lib/templates/_helpers.tpl
+  - charts/shared-lib/templates/_deployment.yaml
+  - templates/_helpers.tpl
+  - README.md
+```
 
 ## Reference the artifact
 

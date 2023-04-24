@@ -1,6 +1,6 @@
 {
     "label": "Subscribe to Feature Flags",
-    "position": 50,
+    "position": 55,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
