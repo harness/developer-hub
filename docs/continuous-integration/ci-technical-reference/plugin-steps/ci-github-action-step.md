@@ -354,3 +354,31 @@ For more information about configuring the GitHub Action plugin step's settings,
   </TabItem3>
 </Tabs3>
 ```
+
+## Fetching Output Variables of a GitHub Actions Step
+
+If you want to fetch the output variables of a github action step then it is similar to [Fetching an output variable](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/run-step-settings/#output-variables) in Harness. Let's take an example with below yaml.
+
+```yaml
+- step:
+    name: setup golang
+    identifier: setup_go
+    type: Action
+    spec:
+      uses: actions/setup-go@v3
+      with:
+        go-version: '1.17'
+```
+
+The `action/setup-go` github action plugin exports an output `go-version` which can be accessed using the following expression.
+
+```
+<+steps.setup_go.output.outputVariables."go-version">
+<+pipeline.stages.[stageID].spec.execution.steps.setup_go.output.outputVariables."go-version">
+```
+
+:::note
+
+Github actions output variables can have `-` which is not supported by Jexl. Therefore to access the output variable you need to wrap the variable name with a quote.
+
+:::
