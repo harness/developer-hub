@@ -21,14 +21,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-
-### What’s new
 * **Schedule** tab to schedule cron jobs (CHAOS-710)
-    * **Schedule** tab has been added to the experiment builder page, that allows you to select from cron and non-cron jobs. You can schedule a job, **Save** it, and then **Run** it. Previously, cron jobs could not be saved, they were created and run.
+    * A **Schedule** tab has been added to the experiment builder page where you can select from cron and non-cron jobs, schedule a job, **Save** it, and then **Run** it. Previously, cron jobs could not be saved; they were created and run.
 
 
 * **Save** button when creating, editing, and cloning an experiment (CHAOS-1409)
-    * After creating, editing, and cloning an experiment, you can **Save** and then **Run** the experiment. The **Run** button is disabled for unsaved changes.
+    * After creating, editing, or cloning an experiment, you can **Save** and then **Run** the experiment. The **Run** button is disabled for unsaved changes. Previously, the **Run** button would save and execute the experiment.
 
 
 * New status `Completed_with_probe_failure` to show probe failure (CHAOS-1431)
@@ -47,14 +45,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     * After specifying values for the **Target application**, **Tune faults**, and **Probes**, you need to select the **Apply changes** button to apply the changes to the experiment. Otherwise, you can choose to **Discard** the changes. 
 
 
-* Successful deletion notification displayed upon deleting an experiment (CHAOS-1434)
+* Delete experiment confirmation notification (CHAOS-1434)
     * When you delete an experiment, a notification stating "The experiment has been deleted successfully" appears on the user interface indicating the successful deletion of the experiment.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-### Early access
 * This release does not include any early access features.
 
 
@@ -63,7 +60,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
 * When connecting to an existing chaos hub, selecting a connector from the **Organization** failed to load the page. This has been fixed. (CHAOS-1456)
 
 
@@ -80,7 +76,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <details>
 <summary>2023 releases</summary>
 
-### What’s new
+#### April 4, 2023, version 0.9.6
+
+##### What’s new
 
 * **Update** button to see available updates for a chaos infrastructure (CHAOS-1069)
     * This release displays an **Update** button alongside the chaos infrastructure. When you click this button, it shows if an update is available for the infrastructure.
@@ -127,12 +125,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     * This release has changed the **All runs** screen name to **Run history**. The **Run history** screen displays all the runs of a chaos experiment. Clicking on a specific run of the chaos experiment displays the fault executed, the status of the experiment, the status of the probes, the fault weights, and the duration of the experiment.
 
 
-### Early access
+##### Early access
  
 * This release does not include any early access features.
 
 
-### Fixed issues
+##### Fixed issues
 
 * When tuning the target application, the OpenShift cluster timed out before fetching the information from your cluster. This issue is fixed. The duration of timeout has been increased. (CHAOS-1299)
  
