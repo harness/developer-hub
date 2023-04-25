@@ -1,5 +1,5 @@
 ---
-title: Use Dashboard Actions
+title: Use dashboard actions
 description: This topic describes how to use different dashboard actions.
 # sidebar_position: 2
 helpdocs_topic_id: y1oh7mkwmh

@@ -1,5 +1,5 @@
 ---
-title: GitHub Connector Settings Reference
+title: GitHub connector settings reference
 description: This topic provides settings and permissions for the GitHub Connector.
 sidebar_position: 30
 helpdocs_topic_id: v9sigwjlgo

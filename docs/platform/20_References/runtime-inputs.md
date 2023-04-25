@@ -1,5 +1,5 @@
 ---
-title: Fixed Values, Runtime Inputs, and Expressions
+title: Fixed values, runtime inputs, and expressions
 description: Most settings in Harness Pipelines allow you to use Fixed Values, Runtime Inputs, and Expressions. This topic describes each of these options. Fixed Values. Fixed Values are simply values that you en…
 # sidebar_position: 2
 helpdocs_topic_id: f6yobn7iq0

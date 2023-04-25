@@ -1,5 +1,5 @@
 ---
-title: Connect to Harness Container Image Registry Using Docker Connector
+title: Connect to Harness container image registry Using Docker connector
 description: This topic explains how to set up the account-level Docker Connector to connect to the Harness Container Image Registry.
 sidebar_position: 4
 helpdocs_topic_id: my8n93rxnw

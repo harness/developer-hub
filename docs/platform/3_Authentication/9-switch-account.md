@@ -1,5 +1,5 @@
 ---
-title: Switch Account
+title: Switch account
 description: This topic explains the authentication mechanism when the Account is switched for a user.
 # sidebar_position: 2
 helpdocs_topic_id: 918lei069y

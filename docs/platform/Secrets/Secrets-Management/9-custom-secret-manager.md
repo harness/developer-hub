@@ -1,5 +1,5 @@
 ---
-title: Add a Custom Secret Manager
+title: Add a custom secret manager
 description: This topic explains how to create and use a Custom Secret Manager.
 # sidebar_position: 2
 helpdocs_topic_id: mg09uspsx1

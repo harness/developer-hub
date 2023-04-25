@@ -1,5 +1,5 @@
 ---
-title: Create an HTTP Step Template
+title: Create an HTTP step template
 description: The Harness Template Library enables you to standardize and distribute reusable Step Templates across teams that use Harness. This topic walks you through the steps to create an HTTP Step template. O…
 sidebar_position: 7
 helpdocs_topic_id: zh49vfdy0a

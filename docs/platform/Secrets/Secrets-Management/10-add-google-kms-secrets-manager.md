@@ -1,5 +1,5 @@
 ---
-title: Add Google KMS as a Harness Secret Manager
+title: Add Google KMS as a Harness secret manager
 description: This topic explains steps to add Google KMS as a Secret Manager.
 # sidebar_position: 2
 helpdocs_topic_id: cyyym9tbqt

@@ -1,5 +1,5 @@
 ---
-title: Using Manual Harness Approval Stages
+title: Using manual Harness approval stages
 description: Approve or reject a Pipeline at any point in its execution using Manual Approval Stages.
 sidebar_position: 10
 helpdocs_topic_id: fkvso46bok

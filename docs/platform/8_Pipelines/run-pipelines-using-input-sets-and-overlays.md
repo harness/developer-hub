@@ -1,5 +1,5 @@
 ---
-title: Run Pipelines using Input Sets and Overlays
+title: Run pipelines using input sets and overlays
 description: Create a Pipeline template that can use different runtime variable values for different services, codebases, target environments, and goals.
 sidebar_position: 8
 helpdocs_topic_id: gfk52g74xt

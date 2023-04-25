@@ -1,5 +1,5 @@
 ---
-title: Add an Azure Key Vault Secret Manager
+title: Add an Azure Key Vault secret manager
 description: This document explains steps to add and use Azure Key Vault to store and use encrypted secrets, such as access keys.
 # sidebar_position: 2
 helpdocs_topic_id: 53jrd1cv4i
