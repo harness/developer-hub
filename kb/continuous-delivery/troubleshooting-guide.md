@@ -1,9 +1,9 @@
 ---
-description: KB Sample Troubleshooting
-title: Troubleshooting Guide
+description: KB - Troubleshooting
+title: Troubleshooting guide
 ---
 
-# Troubleshooting Guide
+# Troubleshooting guide
 KB Coming Soon
 
 
