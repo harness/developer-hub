@@ -4,7 +4,7 @@ description: Learn how the CD module works with other Harness modules.
 sidebar_position: 5
 ---
 
-
+This topic describes a few of the cross-module use cases in the Harness platform.
 
 ## Harness Continuous Integration
 
