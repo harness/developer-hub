@@ -55,7 +55,7 @@ To create a pipeline:
    You will be asked for this secret when applying the Terraform Plan step.
 6. In **Configuration File Repository**, select the GitHub repository that you created.
 7. On the **Advanced** tab, select the delegate that you created as the default delegate for Terraform Plan.
-8. Select Apply Changes to save and add the Terraform Plan step to the pipeline.
+8. Select **Apply Changes** to save and add the Terraform Plan step to the pipeline.
 
 
 ## Add Terraform Apply step
