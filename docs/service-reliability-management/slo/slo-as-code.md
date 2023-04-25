@@ -54,7 +54,7 @@ To create a pipeline:
 5. Enter a name for the **Provisioner Identifier** and add a **Secret**. 
    You will be asked for this secret when applying the Terraform Plan step.
 6. In **Configuration File Repository**, select the GitHub repository that you created.
-7. In the **Advanced** tab and select the delegate that you created as the default delegate for Terraform Plan.
+7. On the **Advanced** tab, select the delegate that you created as the default delegate for Terraform Plan.
 8. Select Apply Changes to save and add the Terraform Plan step to the pipeline.
 
 
