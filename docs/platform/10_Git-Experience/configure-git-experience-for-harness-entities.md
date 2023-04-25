@@ -216,7 +216,7 @@ Click **Run Pipeline**.
 
 ### Branch selection logic for fetching referenced entities in remote pipelines
 
-The configurations of the required resources and any referenced entities like input sets, and templates are fetched from Git during pipeline fetch, creation, or execution.
+The configurations of the required resources and any referenced entities like input sets and templates are fetched from Git during pipeline fetch, creation, or execution.
 
 Following are the possible scenarios when your remote pipelines reference entities:
 - The referenced entities are stored in the same repository as the pipeline.
