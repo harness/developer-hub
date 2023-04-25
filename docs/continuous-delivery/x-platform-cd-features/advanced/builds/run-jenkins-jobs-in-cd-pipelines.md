@@ -129,6 +129,12 @@ In **Job Name**, multibranch pipelines are displayed alongside other jobs, with 
 
 Select **>** and select the branch.
 
+:::note
+
+Some components in Jenkins, like controllers, may require a separate harness connector for proper integration. If you're experiencing issues integrating Jenkins components, check if a separate connector is required and update the connector's URL accordingly.
+
+:::
+
 ## Output expressions
 
 You can copy expressions for the job outputs from the **Output** tab of the Jenkins step.
