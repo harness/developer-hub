@@ -67,7 +67,7 @@ You cannot propagate services between different deployment types. For example, y
 
 Make sure that the service is configured as a runtime input in the stage template or stage.
 
-### Visual summary
+### Video
 
 <!-- Video:
 https://www.loom.com/embed/79b0d4c9c4634d2e95da1a832ef8060f%22-->
@@ -89,7 +89,7 @@ https://www.loom.com/embed/79b0d4c9c4634d2e95da1a832ef8060f%22-->
 
    You can also propagate a service from one template stage to another if it is a runtime input. 
 
-Here is a sample service propagation YAML
+Here is a sample service propagation YAML:
 
 ```
 pipeline:
@@ -151,11 +151,7 @@ pipeline:
 
 ## Multiple service deployment
 
-:::info
-
 A multiple service deployment is when you deploy multiple services in the same stage. Multiple service deployments do not support service propagation.
-
-:::
 
 If you select multiple services in a stage, you cannot propagate them to subsequent stages.
 
