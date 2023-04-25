@@ -71,7 +71,7 @@ Select **Apply Changes** to save and add the Terraform Plan step to the pipeline
 To learn how to create a webhook trigger, go to [Trigger Deployments using Custom Triggers](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/).
 
 
-## Add webhook to the GitHub repository
+## Add a webhook to the GitHub repository
 
 To add a webhook URL to a GitHub repository:
 
