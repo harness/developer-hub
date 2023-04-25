@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the CI Plugin step. [Plugins](../../use-ci/use-drone-plugins/explore-ci-plugins.md) are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more.
+This topic provides settings for the CI Plugin step. [Plugins](./explore-ci-plugins.md) are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more.
 
 :::info
 
@@ -35,7 +35,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
 :::info
 
-These fields are located under **Optional Configuration** for stages that use [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
+These fields are located under **Optional Configuration** for stages that use [self-hosted cloud provider VM build infrastructure](/docs/category/set-up-vm-build-infrastructures) or [Harness Cloud build infrastructure](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md).
 
 :::
 
@@ -49,7 +49,7 @@ Select this option to run the container with escalated privileges. This is the e
 
 ### Settings
 
-Specify plugin-specific settings according to the plugin's documentation. For more information, go to [Explore plugins](../../use-ci/use-drone-plugins/explore-ci-plugins.md) and the [Drone plugins documentation](http://plugins.drone.io/).
+Specify plugin-specific settings according to the plugin's documentation. For more information, go to [Explore plugins](./explore-ci-plugins.md) and the [Drone plugins documentation](http://plugins.drone.io/).
 
 ### Image Pull Policy
 

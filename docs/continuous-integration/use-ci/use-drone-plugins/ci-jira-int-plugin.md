@@ -28,7 +28,7 @@ import TabItem3 from '@theme/TabItem';
   <TabItem3 value="Visual" label="Visual">
 ```
 
-1. In your CI pipeline's **Build** stage, add a [Plugin step](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md).
+1. In your CI pipeline's **Build** stage, add a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
 3. For **Container Registry**, select a container registry connector with DockerHub access.
 4. In the **Image** field, enter `plugins/jira`.
@@ -47,7 +47,7 @@ import TabItem3 from '@theme/TabItem';
   </TabItem3>
   <TabItem3 value="YAML" label="YAML" default>
 ```
-The following YAML example describes a [Plugin step](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
+The following YAML example describes a [Plugin step](./plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
 
 ```yaml
               - step:

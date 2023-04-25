@@ -5,7 +5,7 @@ sidebar_position: 10
 ---
 
 
-With the **Bitrise plugin** step, you can use [Bitrise Integrations](https://bitrise.io/integrations/steps) in your Harness CI pipelines. For more information about plugins in CI pipelines, go to [Explore plugins](../../use-ci/use-drone-plugins/explore-ci-plugins.md).
+With the **Bitrise plugin** step, you can use [Bitrise Integrations](https://bitrise.io/integrations/steps) in your Harness CI pipelines. For more information about plugins in CI pipelines, go to [Explore plugins](./explore-ci-plugins.md).
 
 :::info
 
@@ -96,7 +96,7 @@ Refer to the Integration's usage specifications for details about specific input
 
 :::tip
 
-Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions. Select the **Thumbtack** ![](../static/icon-thumbtack.png) to change input types.
+Settings as a whole can be supplied as fixed values or runtime input, and individual setting values can be supplied as fixed values, runtime input, or expressions. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
 
 :::
 
@@ -108,7 +108,7 @@ Refer to the Integration's usage specifications for details about specific envir
 
 :::tip
 
-You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](../static/icon-thumbtack.png) to change input types.
+You can use fixed values, runtime input, or variable expressions for environment variable values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables). Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change input types.
 
 :::
 

@@ -16,7 +16,7 @@ Use the [GitHub Action plugin step](../../ci-technical-reference/plugin-steps/ci
 
 ## Bitrise Integrations
 
-Use the [Bitrise plugin step](../../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) in pipelines that use Harness Cloud build infrastructure. For other build infrastructures, use the [Plugin step](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md).
+Use the [Bitrise plugin step](./ci-bitrise-plugin.md) in pipelines that use Harness Cloud build infrastructure. For other build infrastructures, use the [Plugin step](./plugin-step-settings-reference.md).
 
 ## Jira integrations
 

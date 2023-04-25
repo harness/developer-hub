@@ -2361,19 +2361,9 @@ module.exports = {
 
     // Created by aimurphy for branch ci-reorg-pt-3 on Apr 13, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
-      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-bitrise-plugin",
-    },
-
-    {
       from: "/tutorials/build-code/ci-github-action-step",
       from: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
       to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
-      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
     },
 
     {
@@ -2474,6 +2464,18 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings",
       from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-bitrise-plugin",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference",
     },
   ],
 };

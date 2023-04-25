@@ -65,7 +65,7 @@ You can use expressions or [Runtime Inputs](/docs/platform/20_References/runtime
 
 :::tip
 
-For more information about Plugin step settings, go to the [Plugin step settings reference](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md).
+For more information about Plugin step settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).
 
 :::
 
