@@ -1,11 +1,10 @@
 {
-   "label":"Configure CV",
-   "position": 20,
+   "label":"CV concepts",
+   "position": 10,
    "collapsible":"true",
    "collapsed":"true",
-   "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Configure CV"
+      "title":"CV concepts"
    }
    }

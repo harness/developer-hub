@@ -1,13 +1,11 @@
 ---
-title: Continuous Verification - Machine Learning Usage
-sidebar_position: 1
-description: Insights on how the machine learning of Continuous Verification works. 
-keywords: [Continuous Verification, Machine Learning]
-tags: [Continuous Verification, Machine Learning]
-slug: /continuous-delivery/continuous-verification-ml
+title: Machine learning usage
+sidebar_position: 2
+description: Learn how the machine learning of Continuous Verification works. 
+slug: /continuous-delivery/verify/cv-concepts/machine-learning
 ---
 
-# Continuous Verification - Machine Learning Usage
+# Machine Learning Usage in Continuous Verification
 
 Continuous Verification [CV] works on two basic units which are metric & logs. Metrics are time series data plotted against time stamps, while logs are raw text.
 
