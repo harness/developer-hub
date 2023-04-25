@@ -2378,11 +2378,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
-      to: "/docs/continuous-integration/use-ci/codebase-configuration/ci-git-clone-step",
-    },
-
-    {
       from: "/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings",
       to: "/docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings",
     },
@@ -2480,6 +2475,11 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
       from: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
       to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
+      to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
     },
   ],
 };
