@@ -2443,5 +2443,10 @@ module.exports = {
       from: "/docs/category/reference-ci-steps-settings",
       to: "/docs/category/use-ci",
     },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/background-step-settings",
+      to: "/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings",
+    },
   ],
 };

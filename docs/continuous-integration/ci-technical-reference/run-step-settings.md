@@ -59,9 +59,9 @@ In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) she
 
 :::tip
 
-You can reference services started in [Background steps](./background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
+You can reference services started in [Background steps](../use-ci/manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
-![The Background step ID, pythonscript, is used in a curl command in a Run step.](./static/background-step-settings-call-id-in-other-step.png)
+![The Background step ID, pythonscript, is used in a curl command in a Run step.](/docs/continuous-integration/use-ci/manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
 
 :::
 

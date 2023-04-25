@@ -132,7 +132,7 @@ The following YAML example demonstrates how a **Run** step can use a Docker imag
 
 :::caution
 
-Steps running in containers can't communicate with [Background steps](../../ci-technical-reference/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
+Steps running in containers can't communicate with [Background steps](../manage-dependencies/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
 
 :::
 

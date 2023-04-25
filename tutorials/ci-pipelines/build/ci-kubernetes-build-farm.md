@@ -255,7 +255,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 
 3. In the **Infrastructure** tab, select **Propagate from an existing stage**, and select the first **Build** stage in your pipeline. This configures the pipeline to use the same Kubernetes cluster and namespace for both stages.
 4. Select **Continue**.
-5. Add a **Background** step to this stage and configure it as follows. For more information, go to the [Background step settings reference](/docs/continuous-integration/ci-technical-reference/background-step-settings).
+5. Add a **Background** step to this stage and configure it as follows. For more information, go to the [Background step settings reference](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 
    * **Name:** Enter a recognizable name.
    * **Container Registry:** Select the Docker Hub connector you used for the steps in the previous stage.

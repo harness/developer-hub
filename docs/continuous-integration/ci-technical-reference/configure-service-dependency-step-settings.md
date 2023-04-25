@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::caution
 
-The Configure Service Dependency step is deprecated. Instead, use the [Background step](./background-step-settings.md).
+The Configure Service Dependency step is deprecated. Instead, use the [Background step](../use-ci/manage-dependencies/background-step-settings.md).
 
 For a short time, this step will be backwards compatible. Any pipelines that include Configure Service Dependency steps will remain valid until the step is removed from Harness CI. You are encouraged to replace Configure Service Dependency steps with Background steps as soon as possible.
 

@@ -137,7 +137,7 @@ The `Build Id` tags an image that you pushed in an earlier stage of your pipelin
 
 For example, you can use the `<+pipeline.sequenceId>` expression as a variable tag to reference images in future pipeline stages by using syntax such as: `harnessdev/ciquickstart:<+pipeline.sequenceId>`.
 
-As a more specific example, if you have a [Background step](../../ci-technical-reference/background-step-settings.md) in a later stage in your pipeline, you can use the `<+pipeline.sequenceId>` variable to identify the image without needing to call on a fixed value.
+As a more specific example, if you have a [Background step](../manage-dependencies/background-step-settings.md) in a later stage in your pipeline, you can use the `<+pipeline.sequenceId>` variable to identify the image without needing to call on a fixed value.
 
 ![](./static/build-and-upload-an-artifact-11.png)
 

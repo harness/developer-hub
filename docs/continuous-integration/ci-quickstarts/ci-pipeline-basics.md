@@ -70,7 +70,7 @@ If you're using Harness Cloud build infrastructure, you can also use the [GitHub
 
 ## Dependencies and background services
 
-If you decide to split your pipeline into multiple stages, you need to make sure each stage has access to any dependencies. An example of a use case for background services is when your unit tests require a running Redis server. Background services can run in an isolated container or on the host. For information about configuring and calling background services, go to [Background step settings](../ci-technical-reference/background-step-settings.md).
+If you decide to split your pipeline into multiple stages, you need to make sure each stage has access to any dependencies. An example of a use case for background services is when your unit tests require a running Redis server. Background services can run in an isolated container or on the host. For information about configuring and calling background services, go to [Background step settings](../use-ci/manage-dependencies/background-step-settings.md).
 
 ### Caching
 

@@ -30,7 +30,7 @@ You must use one of the following caching methods to share data across stages:
 
 You cannot share access credentials or other [Text Secrets](/docs/platform/Secrets/add-use-text-secrets) across stages. For complete end-to-end examples, go to the following:
 
-If you need to maintain a long-running service for the duration of a stage, use a [Background step](../../ci-technical-reference/background-step-settings.md).
+If you need to maintain a long-running service for the duration of a stage, use a [Background step](../manage-dependencies/background-step-settings.md).
 
 ## Docker layer caching
 

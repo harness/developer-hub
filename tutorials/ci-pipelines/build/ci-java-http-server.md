@@ -11,7 +11,7 @@ slug: /ci-pipelines/build/java
 In this tutorial, you will create a Harness CI pipeline for a Java HTTP server application that does the following:
 1. Build and test the application.
 2. Publish a Docker image.
-3. Pull the published Docker image, then pull and run it as a [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings).
+3. Pull the published Docker image, then pull and run it as a [Background step](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 4. Run a connectivity test against the running application.
 
 ```mdx-code-block

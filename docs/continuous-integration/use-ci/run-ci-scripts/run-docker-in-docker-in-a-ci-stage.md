@@ -47,7 +47,7 @@ In the CI Build stage > **Infrastructure** tab, define the build infrastructure 
 
 ## Step 3: Add a DinD Background step
 
-In the Execution tab, add a [Background step](../../ci-technical-reference/background-step-settings.md) and configure it as follows:
+In the Execution tab, add a [Background step](../manage-dependencies/background-step-settings.md) and configure it as follows:
 
 * **Name:** `dind_Service`
 * **Container Registry:** A DockerHub container registry connector.

@@ -95,7 +95,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ci,
           description:
             "Use Background steps to manage long-running service dependencies.",
-          link: "/docs/continuous-integration/ci-technical-reference/background-step-settings",
+          link: "/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings",
         },
         {
           title: "Plugins",
