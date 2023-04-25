@@ -690,7 +690,7 @@ To add an artifact from GCS, do the following:
 
 #### Permissions
 
-For Google Container Registry (GCS), the following roles are required:
+For Google Cloud Storage (GCS), the following roles are required:
 
 - Storage Object Viewer (roles/storage.objectViewer)
 - Storage Object Admin (roles/storage.objectAdmin)
