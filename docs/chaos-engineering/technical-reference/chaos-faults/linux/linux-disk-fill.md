@@ -32,7 +32,7 @@ Linux disk fill fault fills up the available disk space at a given system path f
   <tr>
     <td> fillPercentage </td>
     <td> The percentage of available storage space to fill. </td>
-    <td> Mutually exclusive to <code>fillStorageMebibytes</code>. Defaults to <code>50%</code>. </td>
+    <td> Mutually exclusive to <code>fillStorageMebibytes</code>. Defaults to 50%. </td>
   </tr>
   <tr>
     <td> fillStorageMebibytes </td>
