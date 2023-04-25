@@ -15,5 +15,4 @@ Billing Admins can manage payments on the Harness Platform. To add a Billing Adm
 ```mdx-code-block
 <img src={billing_admin} alt="Selecting the Billing Admin role" height="500" width="400" />
 ```
-*Figure 1: Selecting the Billing Admin role*
 
