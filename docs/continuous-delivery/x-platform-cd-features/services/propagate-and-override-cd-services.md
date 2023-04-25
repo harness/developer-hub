@@ -57,20 +57,15 @@ This feature is currently behind the feature flag, `CDS_PROPAGATE_STAGE_TEMPLATE
 
 :::
 
-When defining a pipeline, you can pass the service, its variables, artifact and manifest inputs through multiple stages.
+When defining a pipeline, you can pass the service, its variables, artifact, and manifest inputs through multiple stages. You can propagate a service from a previous templated or non-templated stage. You can also propagate a service from one templated stage to another stage referring to a different template. 
 
-Following are the supported service propagation combinations: 
+### Limitations
 
-- A non-template CD stage with subsequent non-templated CD stages
-- A templated CD stage with subsequent templated CD stages (stages referring the same template) 
-- A templated CD stage with subsequent templated CD stages (stages referring a different template)
+You cannot propagate services between different deployment types. For example, you cannot propagate a Kubernetes service between a Kubernetes deployment stage and a Native Helm deployment stage.
 
 ### Requirements
 
-Make sure you have met the following requirements.
-
-- The service must be configured as a runtime input in the stage template or stage.
-- The template or the configured subsequent stage must support service inputs.
+Make sure that the service is configured as a runtime input in the stage template or stage.
 
 ### Visual summary
 
@@ -153,10 +148,6 @@ pipeline:
                   stage: Deploy_Dev
 
 ```
-
-### Limitations
-
-You cannot propagate services between different deployment types. For example, you cannot propagate a Kubernetes service between a Kubernetes deployment stage and a Native Helm deployment stage.
 
 ## Multiple service deployment
 
