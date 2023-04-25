@@ -2094,7 +2094,7 @@ Make sure the connected user account has the following required permissions to t
 - View plan.
 - Build plan (if you plan to trigger a build as part of your pipeline).
 
-For more information, see [Bamboo Permissions](https://confluence.atlassian.com/bamboo/bamboo-permissions-369296034.html).
+For more information, go to [Bamboo Permissions](https://confluence.atlassian.com/bamboo/bamboo-permissions-369296034.html).
 
 </details>
 
