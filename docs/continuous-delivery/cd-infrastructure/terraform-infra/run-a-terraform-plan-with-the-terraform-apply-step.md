@@ -84,6 +84,24 @@ or simply `<+execution.steps.apply.timeout>`.
 
 In **Timeout**, enter how long Harness should wait to complete the Terraform Apply step before failing the step.
 
+### Run on Remote Workspace
+
+This checkbox is used to identify whether terraform configuration uses terraform **"remote"** backend.
+If this checkbox is selected, there won't be possible to provide the workspace input in harness, workspace will be outlined in your configuration for remote backend.
+Also, **"remote"** backend is supported only when Configuration Type is **"Inline"**
+Currently, this logic is behind a feature flag **CD_TERRAFORM_CLOUD_CLI_NG**
+```
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "your-organization"
+    workspaces {
+      name = "your-workspace"
+    }
+  }
+}
+```
+
 ### Configuration Type
 
 In **Configuration Type**, select **Inline** or **Inherit from Plan**.

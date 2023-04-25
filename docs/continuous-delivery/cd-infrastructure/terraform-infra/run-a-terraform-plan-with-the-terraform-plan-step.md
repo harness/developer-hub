@@ -81,6 +81,23 @@ For example, if the name of the stage is **Terraform** and the name of the step 
 
 In **Timeout**, enter how long Harness should wait to complete the Terraform Plan step before failing the step.
 
+### Run on Remote Workspace
+
+This checkbox is used to identify whether terraform configuration uses terraform "remote" backend.
+If this checkbox is selected, there won't be possible to provide the workspace input in harness, workspace will be outlined in your configuration for remote backend.
+Currently, this logic is behind a feature flag CD_TERRAFORM_CLOUD_CLI_NG
+```
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "your-organization"
+    workspaces {
+      name = "your-workspace"
+    }
+  }
+}
+```
+
 ### Command
 
 In **Command**, select **Apply or Destroy**.
