@@ -24,7 +24,7 @@ To create a Flag, you need to complete the following steps:
 
 You can also follow the Get Started tutorial for Feature Flags on the Harness Platform.
 
-![A screenshot of the Harness Platform that highlights the Get Started button on the left navigation.](./static/2-getting-started-with-feature-flags-01.png)*Figure 1: The Get Started tutorial for Feature Flags*
+![A screenshot of the Harness Platform that highlights the Get Started button on the left navigation.](./static/2-getting-started-with-feature-flags-01.png)
 
 ## Next steps
 
