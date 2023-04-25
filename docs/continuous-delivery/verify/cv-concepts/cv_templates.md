@@ -1,7 +1,7 @@
 ---
 title: Templates and templatization
 sidebar_position: 3
-description: Learn about strategies to template out Continuous Verification workflow items. 
+description: Learn about strategies to template out CV workflow items. 
 slug: /continuous-delivery/verify/cv-concepts/templates
 ---
 
