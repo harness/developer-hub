@@ -1,6 +1,6 @@
 ---
 title: Snyk scanner reference
-description: Image or Repository scans with Snyk
+description: Image and repository scans with Snyk
 sidebar_position: 290
 ---
 

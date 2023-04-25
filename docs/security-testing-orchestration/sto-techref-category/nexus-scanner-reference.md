@@ -1,6 +1,6 @@
 ---
 title: Nexus scanner reference
-description: Instance scans with Nexus
+description: Repository scans with Nexus
 sidebar_position: 180
 ---
 
