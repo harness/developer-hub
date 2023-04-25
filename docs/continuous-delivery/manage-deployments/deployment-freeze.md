@@ -35,13 +35,13 @@ The schedule defines when to freeze deployments and the recurrence, if any (year
 
 Freeze windows can be set at the Harness account, org, or project levels, with the following differences:
 
-- **Account**: rules can apply to specific, multiple, or all services, environments, or pipelines in the account.
-- **Org**: rules can apply to specific, multiple, or all services, environments, or pipelines in the org.
+- **Account**: rules can apply to specific, multiple, or all services or environments in the account.
+- **Org**: rules can apply to specific, multiple, or all services or environments in the org.
 - **Project**: rules can apply to specific, multiple, or all services, environments, or pipelines in the project.
 
 ### Exceptions
 
-For each scope level, you can exclude specific pipelines by selecting them in **Exclude specific Pipelines**.
+For each scope level, you can select all subordinate entities and then add exceptions. For example, you can select **All Projects** at the org level, but then select one or more projects as exceptions.
 
 Exceptions save you the time of having to select multiple subordinate entities individually.
 
