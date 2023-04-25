@@ -8,14 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can scan your container images using [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code. 
+You can scan your code repositories using [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code. 
 
 
 <!-- START step-palette-config ----------------------------------------------------------------------------- -->
 
 ## Bandit step configuration
 
-The recommended workflow is to add an Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Banditscans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add an Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Bandit scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
