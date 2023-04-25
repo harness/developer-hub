@@ -1,7 +1,7 @@
 ---
 title: Harness Policy As Code Overview
 description: Harness uses Open Policy Agent (OPA) to store and enforce policies for the Harness platform.
-sidebar_position: 10
+sidebar_position: 2
 helpdocs_topic_id: 1d3lmhv4jl
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false

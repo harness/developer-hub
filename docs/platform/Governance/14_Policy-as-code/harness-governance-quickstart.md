@@ -1,7 +1,7 @@
 ---
 title: Harness Policy As Code Quickstart
 description: Learn how to use OPA policies in Harness to enforce governance across your DevOps processes.
-# sidebar_position: 2
+sidebar_position: 8
 helpdocs_topic_id: jws2znftay
 helpdocs_category_id: w6r9f17pk3
 helpdocs_is_private: false

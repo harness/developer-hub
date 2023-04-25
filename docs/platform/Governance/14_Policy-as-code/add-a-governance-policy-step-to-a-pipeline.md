@@ -1,7 +1,7 @@
 ---
 title: Add a Policy Step to a Pipeline
 description: Add a Policy step to your Stage.
-# sidebar_position: 2
+sidebar_position: 6
 helpdocs_topic_id: xy8zsn8fa3
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false
