@@ -224,7 +224,7 @@ Following are the possible scenarios when your remote pipelines reference entiti
 
 #### The referenced entities are stored in the same repository as the pipeline
 
-Here are the key points to keep in mind when the referenced entities reside in the same repository: 
+Following are the key points to keep in mind when the referenced entities reside in the same repository: 
 
 - During pipeline execution, Harness fetches the entities like templates from the same branch as the pipeline. This lets you test the templates before merging them back into the "default" branch.
 - Harness recommends creating a separate project for testing templates.
