@@ -2,7 +2,7 @@
 title: Run Docker-in-Docker in a Build stage
 description: You can run Docker-in-Docker as a Background step in a Build stage.
 
-sidebar_position: 20
+sidebar_position: 30
 helpdocs_topic_id: ajehk588p4
 helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false
@@ -15,7 +15,7 @@ Docker-in-Docker (DinD) with privileged mode is necessary only when using a Kube
 
 :::
 
-CI pipelines that use a Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
+CI pipelines that use a Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](./run-step-settings.md).
 
 This topic illustrates a simple build-and-push workflow using Docker-in-Docker for a pipeline that uses a Kubernetes build infrastructure.
 
@@ -94,7 +94,7 @@ entrypoint:
 
 ## Step 4: Configure the Run Step
 
-In the Execution tab, add a [Run Step](../../ci-technical-reference/run-step-settings.md) and configure it as follows:
+In the Execution tab, add a [Run Step](./run-step-settings.md) and configure it as follows:
 
 * **Container Registry:** A Connector to your Docker registry.
 * **Image:** The Docker image, with the Docker binary, that you want to run the **Run** step in.

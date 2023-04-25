@@ -419,7 +419,7 @@ This code block does the following:
 
 ## Run the connectivity test
 
-Add a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) to run a connectivity test script against the JHTTP app. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to run a connectivity test script against the JHTTP app. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>

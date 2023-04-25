@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Your pipelines can run tests in **Run** and **Run Tests** steps.
 
-To publish test results, set the **Report Paths** setting in the relevant [Run](../../ci-technical-reference/run-step-settings.md) or [Run Tests](./configure-run-tests-step-settings.md) step.
+To publish test results, set the **Report Paths** setting in the relevant [Run](../run-ci-scripts/run-step-settings.md) or [Run Tests](./configure-run-tests-step-settings.md) step.
 
 If the test reports are in JUnit XML format, you can review test reports on the **Tests** tab on the [Build details page](../view-your-builds/viewing-builds.md).
 

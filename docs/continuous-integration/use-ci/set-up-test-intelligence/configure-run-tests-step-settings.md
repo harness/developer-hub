@@ -117,9 +117,9 @@ To create an output variable, do the following in the step where the output vari
 
 To call a previously-exported output variable in a later step or stage in the same pipeline, use a variable expression that includes the originating step's ID and the variable name.
 
-<!-- ![](../../ci-technical-reference/static/run-step-output-variable-example.png) -->
+<!-- ![](../run-ci-scripts/static/run-step-output-variable-example.png) -->
 
-<docimage path={require('../../ci-technical-reference/static/run-step-output-variable-example.png')} />
+<docimage path={require('../run-ci-scripts/static/run-step-output-variable-example.png')} />
 
 To reference an output variable in another step in the same stage, use either of the following expressions:
 

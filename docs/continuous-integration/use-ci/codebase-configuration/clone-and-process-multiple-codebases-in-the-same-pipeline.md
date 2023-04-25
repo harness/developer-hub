@@ -57,7 +57,7 @@ Now that the files from both repos will be cloned into a common workspace, you c
 
 Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. Depending on the default codebase, you might need to specify a non-root path for build files.
 
-You can also use, for example, a `cp` command in a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) to move cloned files around the workspace before building an artifact.
+You can also use, for example, a `cp` command in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to move cloned files around the workspace before building an artifact.
 
 ## YAML example
 

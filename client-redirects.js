@@ -2458,5 +2458,15 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings",
       to: "/docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings",
     },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/run-step-settings",
+      to: "/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings",
+    },
   ],
 };

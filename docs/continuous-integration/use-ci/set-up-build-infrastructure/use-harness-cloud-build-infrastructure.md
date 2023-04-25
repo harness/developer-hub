@@ -58,7 +58,7 @@ However, Harness Cloud machine images can change. If your pipeline relies on a s
 
 ### Lock versions or install additional tools
 
-If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as a [Run step](../../ci-technical-reference/run-step-settings.md) or a [Plugin step](../use-drone-plugins/explore-ci-plugins.md).
+If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as a [Run step](../run-ci-scripts/run-step-settings.md) or a [Plugin step](../use-drone-plugins/explore-ci-plugins.md).
 
 <details>
 <summary>Example: Install Java 17</summary>
