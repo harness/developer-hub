@@ -2381,16 +2381,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-gcs-step-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings",
-    },
-
-    {
       from: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
       to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-bitrise-plugin",
     },
@@ -2468,6 +2458,18 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings",
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-jfrog-artifactory-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog/",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-gcs-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings",
     },
   ],
 };

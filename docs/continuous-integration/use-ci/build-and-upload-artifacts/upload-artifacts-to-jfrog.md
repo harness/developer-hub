@@ -2,14 +2,14 @@
 title: Upload Artifacts to JFrog
 description: Add a step to upload artifacts to JFrog.
 
-sidebar_position: 40
+sidebar_position: 50
 helpdocs_topic_id: lh082yv36h
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](../../ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](../../ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-gcs-step-settings.md).
+You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md).
 
 ## Prepare a pipeline
 
