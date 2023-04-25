@@ -23,7 +23,7 @@ Before you can create a Feature Flag, you need to create a project in the Harnes
 
 This topic describes how to create a project in the Harness Platform. For more information, go to [Harness Platform documentation](/docs/platform).
 
-:::note info
+:::info note
 Before you create a Feature Flag, you must have [created an Organization](/docs/platform/organizations-and-projects/create-an-organization). It's also useful to know about how Access Control works in Harness, to learn more about this, go to [Manage Access Control](/docs/feature-flags/ff-onboarding/ff-security-compliance/manage-access-control).
 :::
 
