@@ -58,12 +58,12 @@ However, Harness Cloud machine images can change. If your pipeline relies on a s
 
 ### Lock versions or install additional tools
 
-If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as a [Run step](../../ci-technical-reference/run-step-settings.md) or a [Plugin step](../use-drone-plugins/explore-ci-plugins.md).
+If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as a [Run step](../run-ci-scripts/run-step-settings.md) or a [Plugin step](../use-drone-plugins/explore-ci-plugins.md).
 
 <details>
 <summary>Example: Install Java 17</summary>
 
-In the following YAML example, an [Action step](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install Java 17, and then the **Run** step confirms the Java version.
+In the following YAML example, an [Action step](../use-drone-plugins/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install Java 17, and then the **Run** step confirms the Java version.
 
 ```yaml
             steps:
@@ -93,10 +93,10 @@ In the following YAML example, an [Action step](../../ci-technical-reference/plu
 
 :::tip
 
-You can also use the [Bitrise plugin step](../../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
+You can also use the [Bitrise plugin step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
 
 :::
-        
+
 </details>
 
 <details>
@@ -132,7 +132,7 @@ The following YAML example demonstrates how a **Run** step can use a Docker imag
 
 :::caution
 
-Steps running in containers can't communicate with [Background steps](../../ci-technical-reference/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
+Steps running in containers can't communicate with [Background steps](../manage-dependencies/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
 
 :::
 

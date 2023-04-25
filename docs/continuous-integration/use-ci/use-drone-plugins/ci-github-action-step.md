@@ -1,7 +1,7 @@
 ---
-title: GitHub Action plugin step settings
+title: Use the GitHub Action plugin step
 description: Run Github Actions in your Harness CI pipelines.
-sidebar_position: 20
+sidebar_position: 30
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
@@ -12,9 +12,9 @@ You can use the **GitHub Action plugin** step to run GitHub Actions in your Harn
 
 Currently, the **GitHub Action plugin** step is supported for the Harness Cloud build infrastructure only.
 
-For other build infrastructures, you can use the generic **Plugin** step with the GitHub Actions Drone Plugin, as explained in [Run GitHub Actions in CI pipelines](../../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
+For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
-For more information about using plugins in CI pipelines, go to [Explore plugins](../../use-ci/use-drone-plugins/explore-ci-plugins.md).
+For more information about using plugins in CI pipelines, go to [Explore plugins](./explore-ci-plugins.md).
 
 :::
 

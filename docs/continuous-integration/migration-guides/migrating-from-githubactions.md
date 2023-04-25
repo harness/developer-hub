@@ -23,7 +23,7 @@ Harness CI is part of The [Harness Platform](/docs/getting-started/harness-platf
 
 ### GitHub Actions plugins
 
-Harness CI offers built-in support for GitHub Actions. You can use the [GitHub Action plugin step](../ci-technical-reference/plugin-steps/ci-github-action-step.md) in pipelines that use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
+Harness CI offers built-in support for GitHub Actions. You can use the [GitHub Action plugin step](../use-ci/use-drone-plugins/ci-github-action-step.md) in pipelines that use [Harness Cloud build infrastructure](../use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md). For other build infrastructures, you can use the [GitHub Actions Drone plugin in a Plugin step](../use-ci/use-drone-plugins/run-a-git-hub-action-in-cie.md).
 
 ### Other advantages
 
@@ -417,7 +417,7 @@ To interact with Docker registries in Harness, you use a [Docker connector](/doc
                     command: echo "this runs on openjdk"
 ```
 
-In the previous example, a Docker connector was used to pull an image for a script. You can also use Docker connectors to do other Docker-related actions, such as [building and pushing images to Docker registries](../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md).
+In the previous example, a Docker connector was used to pull an image for a script. You can also use Docker connectors to do other Docker-related actions, such as [building and pushing images to Docker registries](../use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md).
 
 ```yaml
      - step:

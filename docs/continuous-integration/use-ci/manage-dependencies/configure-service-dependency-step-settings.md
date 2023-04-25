@@ -1,7 +1,7 @@
 ---
 title: Configure Service Dependency step settings (Deprecated)
 description: A Service Dependency is a detached service that's accessible to all Steps in a Stage.
-sidebar_position: 90
+sidebar_position: 30
 helpdocs_topic_id: vo4sjbd09g
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -19,7 +19,7 @@ For a short time, this step will be backwards compatible. Any pipelines that inc
 A *service dependency* is a detached service that's accessible to all steps in a stage. Service dependencies support workflows such as:
 
 * Integration testing: You can set up a service and then run tests against this service.
-* Running Docker-in-Docker: You can [set up a DinD service](../use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to process Docker commands in Run Steps.
+* Running Docker-in-Docker: You can [set up a DinD service](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md) to process Docker commands in Run Steps.
 
 This topic provides settings and permissions for the Configure Service Dependency step.
 
@@ -52,7 +52,7 @@ Enter a name summarizing the step's purpose.
 
 ### Id
 
-For information about this setting, go to [Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md).
+For information about this setting, go to [Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md).
 
 ### Description
 
@@ -148,6 +148,6 @@ Timeout for the step. Once the timeout is reached, the Step fails and the Pipeli
 
 ### See Also
 
-* [Share CI Data across Steps and Stages](../use-ci/caching-ci-data/share-ci-data-across-steps-and-stages.md)
-* [Run Docker-in-Docker in a Build stage](../use-ci/run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md)
+* [Share CI Data across Steps and Stages](../caching-ci-data/share-ci-data-across-steps-and-stages.md)
+* [Run Docker-in-Docker in a Build stage](../run-ci-scripts/run-docker-in-docker-in-a-ci-stage.md)
 

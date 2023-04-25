@@ -1,14 +1,14 @@
 ---
-title: Upload Artifacts to JFrog Artifactory step settings
-description: This topic provides settings for the Upload Artifacts to JFrog Artifactory step.
-sidebar_position: 20
-helpdocs_topic_id: gjoggc66fy
+title: Upload Artifacts to GCS
+description: This topic provides settings for the Upload Artifacts to GCS step.
+sidebar_position: 60
+helpdocs_topic_id: 3qeqd8pls7
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the **Upload Artifacts to JFrog Artifactory** step, which is used to [upload artifacts to JFrog](../../use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog.md).
+This topic provides settings for the **Upload Artifacts to GCS** step, which uploads artifacts to Google Cloud Storage. For more information, go to the Google Cloud documentation on [Uploads and downloads](https://cloud.google.com/storage/docs/uploads-downloads).
 
 :::info
 
@@ -20,21 +20,13 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-## Description
+## GCP Connector
 
-Text string describing the step's purpose.
+The Harness connector for the GCP account where you want to upload the artifact. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference). This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
 
-## Artifactory Connector
+## Bucket
 
-Select the Harness Artifactory connector to use for this upload. For more information, go to the [Artifactory connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
-
-This step supports Artifactory connectors that use either anonymous or username and password authentication.
-
-## Target
-
-The target folder in the registry.
-
-Target repository name relative to the server URL in the connector. If `pom.xml` is not present, then the **Target** must be a full path to an artifacts folder, such as `groupId/artifactId/version`.
+The GCS destination bucket name.
 
 ## Source Path
 
@@ -44,9 +36,13 @@ Path to the artifact file/folder you want to upload. Harness creates the compres
 
 Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
+### Target
+
+The path, relative to the **Bucket** where you want to store the cache. If no target path is provided, the cache is saved to `[bucket]/`.
+
 ### Run as User
 
-Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+Specify the user ID to use to run all processes in the pod, if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 ### Set container resources
 

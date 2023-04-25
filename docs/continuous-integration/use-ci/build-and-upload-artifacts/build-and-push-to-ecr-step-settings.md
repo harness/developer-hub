@@ -1,7 +1,7 @@
 ---
-title: Build and Push to ECR step settings
+title: Build and Push to ECR
 description: This topic provides settings for the Build and Push to ECR step.
-sidebar_position: 30
+sidebar_position: 40
 helpdocs_topic_id: aiqbxaef15
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -14,7 +14,7 @@ For more information, go to the following:
 
 * Harness CI tutorial: [Build and push a container image to Amazon ECR](/tutorials/ci-pipelines/publish/amazon-ecr)
 * AWS documentation: [Pushing a Docker image](https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html)
-* Harness CI documentation: [Build and push an artifact](../../use-ci/build-and-upload-artifacts/build-and-upload-an-artifact.md)
+* Harness CI documentation: [Build and push an artifact](./build-and-upload-an-artifact.md)
 
 :::info
 
@@ -32,8 +32,8 @@ The Harness AWS connector to use to connect to ECR.
 
 The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to ECR. For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
+* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross-account access).
 
@@ -59,7 +59,7 @@ Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/bui
 
 Add each tag separately.
 
-![](../static/build-and-push-to-ecr-step-settings-24.png)
+![](./static/build-and-push-to-ecr-step-settings-24.png)
 
 ## Optional Configuration
 
@@ -89,7 +89,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](../static/build-and-push-to-ecr-step-settings-25.png)
+![](./static/build-and-push-to-ecr-step-settings-25.png)
 
 ### Target
 
