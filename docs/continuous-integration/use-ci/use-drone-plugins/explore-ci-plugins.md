@@ -12,7 +12,7 @@ To include a plugin in a CI pipeline, you use either the generic **Plugin** step
 
 ## GitHub Actions
 
-Use the [GitHub Action plugin step](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) in pipelines that use Harness Cloud build infrastructure. For other build infrastructures, use the [Plugin step](./run-a-git-hub-action-in-cie.md).
+Use the [GitHub Action plugin step](./ci-github-action-step.md) in pipelines that use Harness Cloud build infrastructure. For other build infrastructures, use the [GitHub Action Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
 ## Bitrise Integrations
 

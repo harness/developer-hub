@@ -63,7 +63,7 @@ If your build requires a specific version of a tool or a tool that isn't already
 <details>
 <summary>Example: Install Java 17</summary>
 
-In the following YAML example, an [Action step](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install Java 17, and then the **Run** step confirms the Java version.
+In the following YAML example, an [Action step](../use-drone-plugins/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install Java 17, and then the **Run** step confirms the Java version.
 
 ```yaml
             steps:

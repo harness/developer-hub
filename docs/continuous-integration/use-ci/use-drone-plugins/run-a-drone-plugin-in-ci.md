@@ -2,7 +2,7 @@
 title: Run a Drone Plugin in CI
 description: A Drone Plugin is a Docker container that performs a predefined task.
 
-sidebar_position: 20
+sidebar_position: 60
 helpdocs_topic_id: fjagoj8mez
 helpdocs_category_id: ei5fgqxb0j
 helpdocs_is_private: false
@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 A Drone Plugin is a Docker container that performs a predefined task. Plugins are essentially templated scripts that can be written in any programming language. The Drone community maintains an [extensive library](https://plugins.drone.io/) of plugins for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/).
 
-This topic describes how to set up and run Drone Plugins in your CI pipelines. You can also use [GitHub Action plugin steps](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) and [Bitrise plugin steps](./ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+This topic describes how to set up and run Drone Plugins in your CI pipelines. You can also use [GitHub Action plugin steps](./ci-github-action-step.md) and [Bitrise plugin steps](./ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ## Before You Begin
 

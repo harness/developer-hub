@@ -1,7 +1,7 @@
 ---
 title: Plugin step settings
 description: Plugins are Docker containers that perform predefined tasks and are configured as steps.
-sidebar_position: 30
+sidebar_position: 70
 helpdocs_topic_id: 8r5c3yvb8k
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

@@ -85,7 +85,7 @@ This release does not include early access features.
 
 ##### Fixed issues
 
-Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step). (CI-6969, CI-7300)
+Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step). (CI-6969, CI-7300)
 
 #### March 24, 2023, version 78817
 

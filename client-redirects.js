@@ -2361,12 +2361,6 @@ module.exports = {
 
     // Created by aimurphy for branch ci-reorg-pt-3 on Apr 13, 2023
     {
-      from: "/tutorials/build-code/ci-github-action-step",
-      from: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
-      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step",
-    },
-
-    {
       from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings",
       to: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-gcs-settings",
     },
@@ -2476,6 +2470,13 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
       from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
       to: "/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference",
+    },
+
+    {
+      from: "/tutorials/build-code/ci-github-action-step",
+      from: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step",
     },
   ],
 };

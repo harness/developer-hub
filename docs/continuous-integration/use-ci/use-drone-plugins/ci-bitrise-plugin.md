@@ -1,7 +1,7 @@
 ---
 title: Bitrise plugin step settings
 description: Use Bitrise Integrations in your Harness CI pipelines.
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 
