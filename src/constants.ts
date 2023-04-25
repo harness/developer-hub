@@ -9,6 +9,7 @@ export enum MODULES {
     srm = 'srm',
     ce = 'ce',
     sei = 'sei',
+    cet = 'cet',
     platform= 'platform',
 }
 export const MODULE_DISPLAY_NAME = {
@@ -20,5 +21,6 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.srm]: 'Service Reliability Management',
     [MODULES.ce]: 'Chaos Engineering',
     [MODULES.sei]: 'Software Engineering Insights',
+    [MODULES.cet]: 'Continuous Error Tracking',
     [MODULES.platform]: 'Harness Platform',
 }
