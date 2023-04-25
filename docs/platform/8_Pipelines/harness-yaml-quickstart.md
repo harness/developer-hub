@@ -1,5 +1,5 @@
 ---
-title: Harness YAML Quickstart
+title: Harness YAML quickstart
 description: This quickstart shows you how to create a Harness Pipelines using YAML. It's not an exhaustive reference for all of the YAML entries, but a quick procedure to get you started with Harness Pipeline YA…
 sidebar_position: 2
 helpdocs_topic_id: 1eishcolt3

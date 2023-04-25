@@ -1,5 +1,5 @@
 ---
-title: Create a Connector using YAML
+title: Create a connector using YAML
 description: To solve [problem], [general description of How-to solution]. In this topic --  Before you begin. Visual Summary. Step 1 --  Title. Step 2 --  Title. Next steps. Before you begin. Your target environment must…
 # sidebar_position: 2
 helpdocs_topic_id: m0awmzipdp

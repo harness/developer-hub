@@ -1,5 +1,5 @@
 ---
-title: Default Settings
+title: Default settings
 description: This topic explains the default settings.
 # sidebar_position: 2
 helpdocs_topic_id: k6ib32mh82

@@ -1,5 +1,5 @@
 ---
-title: GitLab Connector Settings Reference
+title: GitLab connector settings reference
 description: This topic provides settings and permissions for the GitLab Connector. Limitations. Before Harness syncs with your Git repo, it will confirm that all Harness' settings are in a valid state. If a conn…
 sidebar_position: 40
 helpdocs_topic_id: 5abnoghjgo

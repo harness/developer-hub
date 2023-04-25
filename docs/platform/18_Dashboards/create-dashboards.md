@@ -1,5 +1,5 @@
 ---
-title: Create Dashboards
+title: Create dashboards
 description: This topic describes how to create a Dashboard.
 # sidebar_position: 2
 helpdocs_topic_id: ardf4nbvcy

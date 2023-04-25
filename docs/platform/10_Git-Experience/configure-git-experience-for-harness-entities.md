@@ -1,5 +1,5 @@
 ---
-title: Harness Git Experience Quickstart
+title: Harness Git Experience quickstart
 description: This topic explains steps to configure Git Experience for Harness Entities.
 sidebar_position: 3
 helpdocs_topic_id: grfeel98am

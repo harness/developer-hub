@@ -1,5 +1,5 @@
 ---
-title: Two-Factor Authentication
+title: Two-Factor authentication
 description: This document explains Two-Factor Authentication.
 # sidebar_position: 2
 helpdocs_topic_id: ipsux8n7gm
