@@ -34,9 +34,9 @@ This release includes the following Harness module and component versions.
 <Tabs>
   <TabItem value="What's new">
 ```
-## Continuous Integration
+#### Continuous Integration
 - When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
-## Continous Delivery & GitOps
+#### Continous Delivery & GitOps
 - You can no longer delete an infrastructure used in a pipeline or template. (CDS-42182)
 
   This check ensures that you do not remove an entity you are using in your delivery.
@@ -167,20 +167,20 @@ This release includes the following Harness module and component versions.
             templateRef: account.same_name
             versionLabel: v1
     delegateSelectors: <+input>
-## Cloud Cost Management
+#### Cloud Cost Management
 - Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
 - Enabled audit trail for budget groups. (CCM-11387)
 
   With this enhancement, you can track all CRUD operations such as Create, Delete, and Update related to budget groups.
-## Service Reliability Management
+#### Service Reliability Management
 - When you try editing an existing SLO, you will see the **Tags (optional)** field autopopulated even if no value was entered while creating the SLO. Harness uses the selected SLI type as value to autopopulate the **Tags (optional)** field. (SRM-14121)
 - There is a new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
-## Harness Platform
+#### Harness Platform
 - The feature flag `FF_ALLOW_OPTIONAL_VARIABLE` now lets you make runtime variables optional in pipelines and stages. (PIE-8209)
 - Template expressions now support `when` conditions. (PIE-8762)
 - You can now access your account immediately after resetting your password. (PL-30878)
 
-### Important announcement
+#### Important announcement
 
 - The following API endpoints have been deprecated:
   - https://apidocs.harness.io/tag/Harness-Resource-Group#operation/createResourceGroup
@@ -254,7 +254,7 @@ This release includes the following Harness module and component versions.
 - A failed decryption of secrets managed by the Harness Secret Manager causes the secret value inside values.yaml to be resolved as null. (PL-32043)
   
   The pipeline execution now fails with an exception if there is a failure in decrypting secrets.
-## Delegate
+#### Delegate
 - Set an expiry for delegate tokens. (DEL-5652)
 
   When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`. This is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked.
@@ -270,7 +270,7 @@ This release includes the following Harness module and component versions.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-## Continuous Integration
+#### Continuous Integration
 - Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step). (CI-6969, CI-7300)
 - The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
 - Builds no longer fail if steps in different step groups have the same `identifier`. Additionally, to prevent steps in step groups from producing artifacts with identical artifact IDs, when steps in step groups produce artifacts, the resulting artifact IDs now use a unique identifier that reflects the step's presence in a step group. (CI-7115)
@@ -291,7 +291,7 @@ This release includes the following Harness module and component versions.
 - If a CI pipeline fails at the **Initialize** step due to an [Azure Repos connector](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo) having an on-premises **Azure Repos Project URL**, the error message clearly describes the root cause. This failure occurs because CI doesn't support Azure DevOps Server Repositories (also known as _on-premises Azure Repos_). (CI-6322)
 - If you change a stage's build infrastructure after adding steps to the stage, field validations for step settings are now triggered as expected when building and saving pipelines. This is important for settings that are unavailable or optional with some build infrastructures but required for others. (CI-6209)
 - If you configure a [code repo connector](/docs/category/code-repo-connectors) where the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL used to test the connection, rather than the account URL. (CI-4398)
-## Continous Delivery & GitOps
+#### Continous Delivery & GitOps
 - Read-only Secret Manager was allowed for TerraForm plans. (CDS-57772, ZD-40401)
   
   Harness stores TerraForm plans in secrets in the Secret Manager you have set up in your Harness account. Now Harness won't allow the use of a secret manager for a Terraform plan if the secret manager is read-only.
@@ -669,7 +669,7 @@ This release includes the following Harness module and component versions.
   The Git diff in the YAML reconcile screen was performing unnecessary changes like adding quotes to each string value, shifting YAML indentation, converting multiline strings to single line using the newline character, etc.
   
   Now you can see the correct Git diff in the Harness YAML. The diff consist of necessary changes only, such as the addition and removal of fields.
-## Cloud Cost Management
+#### Cloud Cost Management
 - The ECS service billing data was missing in the Perspectives. (CCM-11464)
 
    This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any errors.
@@ -684,10 +684,10 @@ This release includes the following Harness module and component versions.
   This issue has been fixed. Now, before the cost category is deleted, you will receive a prompt to perform one of the following actions:
    - Delete any perspectives that depend on the cost category.
    - Remove the cost category from the perspective's rule or GroupBy.
-## Feature Flags
+#### Feature Flags
 - Onboarding examples displayed a flag name instead of the required flag identifier.   
   This issue is now fixed. (FFM-6921)
-## Service Reliability Management
+#### Service Reliability Management
 - Monitored service creation fails when using a monitored service template that has Org or Account level service and environment. (SRM-14291)
   
   This restriction is removed. Now, you can create a monitored service using a monitored service template with Org or Account level service and environment.
@@ -718,7 +718,7 @@ This release includes the following Harness module and component versions.
 - If there is no data received from one of the metric packs while configuring AppDynamics as a health source, the validation fails.(SRM-13597)  
   
   This issue has been resolved. Now, the validation passes if there is incoming data from any one of the metric packs.
-## Harness Platform
+#### Harness Platform
 - Despite having an active license, the CD module is not visible. (PLG-2047)
   
   A code enhancement has fixed this issue.
@@ -805,7 +805,7 @@ This release includes the following Harness module and component versions.
 - The API to retrieve filtered pipeline executions does not return executions that are successful in the UI, but failed in the backend. (PIE-8042)
 
   A code enhancement has fixed this issue.
-## Delegate
+#### Delegate
 - Minor fixes to the delegate installation wizard. (DEL-6073)
 
   Previously, Helm was not pre-selected when you switched from Docker to Kubernetes. This has been fixed. Additionally, values that need to be copied in the Kubernetes manifest were moved into a copy block.
