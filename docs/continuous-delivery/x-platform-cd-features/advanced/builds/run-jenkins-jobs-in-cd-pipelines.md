@@ -131,7 +131,7 @@ Select **>** and select the branch.
 
 :::note
 
-Some components in Jenkins, like controllers, may require a separate harness connector for proper integration. If you're experiencing issues integrating Jenkins components, check if a separate connector is required and update the connector's URL accordingly.
+Some components in Jenkins, like controllers, might require a separate Harness Jenkins connector for proper integration. The URL for accessing Jenkins could be different for different installations of Jenkins or even for different instances of Jenkins running on the same server. If you're experiencing issues integrating Jenkins components, try a separate connector and update the connector's URL accordingly.
 
 :::
 
