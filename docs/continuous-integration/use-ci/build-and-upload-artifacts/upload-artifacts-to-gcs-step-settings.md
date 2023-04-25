@@ -1,5 +1,5 @@
 ---
-title: Upload Artifacts to GCS step settings
+title: Upload Artifacts to GCS
 description: This topic provides settings for the Upload Artifacts to GCS step.
 sidebar_position: 60
 helpdocs_topic_id: 3qeqd8pls7

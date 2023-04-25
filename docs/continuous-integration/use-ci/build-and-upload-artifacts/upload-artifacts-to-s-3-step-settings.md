@@ -1,5 +1,5 @@
 ---
-title: Upload Artifacts to S3 step settings
+title: Upload Artifacts to S3
 description: Upload artifacts to AWS or other S3 providers such as MinIo.
 sidebar_position: 80
 helpdocs_topic_id: wdzojt3ep3
