@@ -59,5 +59,5 @@ Harness displays the last sync details for this remote policy as well as the **C
 
 
 :::important
-Harness always evaluates policies using the main branch of the Git repository.
+Harness always evaluates policies using the main or default branch of the Git repository. Policies are not evaluated until you commit them to the default branch of your repository. To do this, you can merge them or commit directly to the default branch.
 :::
