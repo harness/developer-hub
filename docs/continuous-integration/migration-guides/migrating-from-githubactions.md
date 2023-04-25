@@ -10,7 +10,7 @@ Harness does not require scripting, and configurations are passed to pipelines s
 
 ## What makes Harness CI unique?
 
-Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, which make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
+Harness CI provides proprietary technologies, like Cache Intelligence and Test Intelligence, that make Harness CI [four times faster](https://harness.io/blog/fastest-ci-tool) than other leading CI tools.
 
 * Harness [Test Intelligence (TI)](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) is a proprietary technology that speeds up test cycles by running only the tests required to confirm the quality of the code changes that triggered a build. Visualizations show which code changes caused which tests to be selected, and it can help you identify gaps in your test plan. TI also identifies negative trends and provides actionable insights to improve quality. It's possible to reduce build cycle times by up to 90 percent without compromising application quality. This functionality is not built into CircleCI.
 * Harness [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence.md) is a proprietary technology that reduces pipeline execution time by automatically caching well-known directories for languages like Java and Node.js.
