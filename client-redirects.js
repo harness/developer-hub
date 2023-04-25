@@ -2359,27 +2359,6 @@ module.exports = {
       to: "/docs/category/set-up-build-infrastructure",
     },
 
-    // Created by aimurphy for branch ci-reorg-pt-3 on Apr 13, 2023
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-gcs-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-gcs-step-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-s-3-step-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
-    },
-
     // adding redirect for Rashmi
     {
       from: "/docs/platform/References/whitelist-harness-domains-and-ips",
@@ -2477,6 +2456,30 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
       from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step",
       to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-gcs-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-gcs-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
     },
   ],
 };
