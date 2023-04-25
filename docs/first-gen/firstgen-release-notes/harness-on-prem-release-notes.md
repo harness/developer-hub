@@ -14,6 +14,67 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
+### April 26, 2023, version 78926
+
+Delegate: 78904
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 78926 |
+| Delegate | 78904 |
+| Watcher | 78424 |
+| Verification Service | 78926 |
+| UI | 78901 |
+| Learning Engine | 67708 | 
+| Gateway | 2000185 |
+
+### New features and enhancements
+#### Harness Platform
+- Upgrades have been made to the following libraries:
+
+  - The Spring Data MongoDB package has been upgraded to version 3.4.7.
+  - Spring Data Commons has been upgraded to version 2.77.
+  - The MongoDB Java Driver has been upgraded to version 4.6.1. (PL-30730)
+- The API keys will now be encrypted with Harness Global Secrets Manager. (PL-30970)
+#### Delegate
+- Harness Delegate task collections were migrated to a new database. (DEL-5831) 
+
+  This migration is controlled through a configuration flag. For a period of time after the migration, any newly created tasks will have an ID with a **- DEL** suffix.
+- Users can override the delegate image for their account using an endpoint. (DEL-6024)
+
+  Use the following endpoint: 
+
+  - /version-override/delegate-tag
+
+  Pass the arguments in query param:
+
+  - 1- accountIdentifier : String
+
+  - 2- delegate image tag : String
+
+  Optional arguments:
+
+  - 1- validTillNextRelease : Boolean
+
+  - 2- validForDays : int
+
+  Use an api-key with account edit permission in the API header.
+### Fixed issues
+#### Harness Platform
+- When a secret is used to create a Prometheus connector, the setup usage is not displayed. (PL-30755)
+  
+  A code enhancement has fixed this issue.
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+#### Delegate
+- Upgraded org.codehaus.groovy:groovy to 3.0.15 to fix a vulnerability. (DEL-6015)
+- API output includes a new field called **Disconnected**, which determines if a delegate is connected. (DEL-5995)
+
+  The **Disconnected** field is set to **true** if no heartbeat communications occur between the delegate and the Harness Manager for five minutes. 
+
 ### March 14, 2023, version 78426
 
 Delegate: 78310
