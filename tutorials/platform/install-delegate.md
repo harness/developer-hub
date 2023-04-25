@@ -9,7 +9,9 @@ description: Install Harness Delegate on Kubernetes or Docker
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-
+```mdx-code-block
+import delete_project from './static/delete-project.png'
+```
 ## What is Harness Delegate?
 
 [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview) is a lightweight worker process that is installed on your infrastructure and communicates only via outbound HTTP/HTTPS to the Harness Platform. This enables the Harness Platform to leverage the delegate to execute the CI/CD and other tasks on your behalf, without any of your secrets leaving your network.
