@@ -76,7 +76,7 @@ To learn how to create a webhook trigger, go to [Trigger Deployments using Custo
 To add a webhook URL to a GitHub repository:
 
 1. In your GitHub repository go to settings > webhooks.
-2. Add a new webhook and paste the payload URL from that you have copied from step 1.
+2. Add a new webhook and paste the payload URL from that you copied in step 1.
 3. Paste the secret created while setting up the trigger.
 4. Select the event as **Just the push event** to trigger the webhook.
 5. Save the webhook.
