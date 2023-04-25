@@ -66,6 +66,7 @@ This release includes the following Harness module and component versions.
     * **Routes** - Enter the routes you want to map or unmap to this deployment. 
      
   ![](static/route-mapping.png)
+- The **Infrastructure Section** step is renamed **Infrastructure**. (CDS-52440)
 - Harness recommends that you use the `kubelogin` auth plugin to authenticate the Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
   
   The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
@@ -76,6 +77,9 @@ This release includes the following Harness module and component versions.
   * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
   * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency.
   * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency.
+- The `FF: OPTIMIZED_GIT_FETCH_FILES` lets you use the Azure Repo Store for Kubernetes and native Helm deployments. (CDS-53176, CDS-53850)
+  This enhancement helps you leverage the Drone SCM service to fetch manifest files from Azure DevOps Repositories.
+- Manifests now default to Helm version 3. (CDS-52961)
 - You can now use a Personal Access Token (PAT) in a Jira connector. (CDS-52847)
 
   A Jira connector connects Harness with your Jira account for creating and updating issues during a pipeline execution.
@@ -139,6 +143,7 @@ This release includes the following Harness module and component versions.
 - [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo) is now supported as a manifest repo for Amazon Elastic Container Service (ECS) and Serverless.com Framework Lambda deployments. (CDS-54961)
 
   When creating Amazon ECS or Serverless.com Framework Lambda deployment pipelines, you can now use Azure Repo as a manifest repo in the service definition.
+- You can now manually add input values to the yaml when service/environment is an expression. Values you add are retained when a pipeline with a linked template is displayed. (CDS-58404)
 - You can now view the ServiceNow Active Directory Federation Services (ADFS) and Jira Personal Access Token (PAT) in the **Credentials** section of the **Connectors** page. (CDS-55670)
   
   ![](static/connector-credentials.png)
@@ -173,6 +178,9 @@ This release includes the following Harness module and component versions.
 
   With this enhancement, you can track all CRUD operations such as Create, Delete, and Update related to budget groups.
 #### Service Reliability Management
+- Added the ability to create a notification trigger when an error tracking event defined as critical is detected. (CET-1005)
+
+  You can set Slack or email message notification methods.
 - When you try editing an existing SLO, you will see the **Tags (optional)** field autopopulated even if no value was entered while creating the SLO. Harness uses the selected SLI type as value to autopopulate the **Tags (optional)** field. (SRM-14121)
 - There is a new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
 #### Harness Platform
@@ -254,6 +262,8 @@ This release includes the following Harness module and component versions.
 - A failed decryption of secrets managed by the Harness Secret Manager causes the secret value inside values.yaml to be resolved as null. (PL-32043)
   
   The pipeline execution now fails with an exception if there is a failure in decrypting secrets.
+#### Self-Managed Enterprise Edition
+- Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Delegate
 - Set an expiry for delegate tokens. (DEL-5652)
 
@@ -272,8 +282,14 @@ This release includes the following Harness module and component versions.
 ```
 #### Continuous Integration
 - Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step). (CI-6969, CI-7300)
+- Repository names are sent without the repository namespace, causing an SCM exception. (CI-7468)
+
+  A code enhancement has fixed this issue.
 - The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
 - Builds no longer fail if steps in different step groups have the same `identifier`. Additionally, to prevent steps in step groups from producing artifacts with identical artifact IDs, when steps in step groups produce artifacts, the resulting artifact IDs now use a unique identifier that reflects the step's presence in a step group. (CI-7115)
+- Step execution logs are truncated. (CI-7114)
+
+  A code enhancement has fixed this issue.
 - When configuring [local build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), it was not possible to select the Windows operating system. This issue has been resolved and the Windows OS is available again. (CI-7111, ZD-40311)
 - An `unsupported image` warning banner incorrectly appeared for builds that did not use Kubernetes build infrastructure. (CI-7098, ZD-40428)
 - The `unsupported image` warning banner no longer pushes the bottom of the log region outside the scrollable area. (CI-7098, ZD-40428)
@@ -290,6 +306,9 @@ This release includes the following Harness module and component versions.
 - Modifying a step template's **Step Parameters** no longer removes failure strategies from the template's **Advanced** settings. (CI-6801, ZD-39108)
 - If a CI pipeline fails at the **Initialize** step due to an [Azure Repos connector](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo) having an on-premises **Azure Repos Project URL**, the error message clearly describes the root cause. This failure occurs because CI doesn't support Azure DevOps Server Repositories (also known as _on-premises Azure Repos_). (CI-6322)
 - If you change a stage's build infrastructure after adding steps to the stage, field validations for step settings are now triggered as expected when building and saving pipelines. This is important for settings that are unavailable or optional with some build infrastructures but required for others. (CI-6209)
+- Documentation does not open as expected for the GitHub Connector Connection Test.(CI-5696)
+
+  This issue is fixed.
 - If you configure a [code repo connector](/docs/category/code-repo-connectors) where the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL used to test the connection, rather than the account URL. (CI-4398)
 #### Continous Delivery & GitOps
 - Read-only Secret Manager was allowed for TerraForm plans. (CDS-57772, ZD-40401)
@@ -379,6 +398,9 @@ This release includes the following Harness module and component versions.
   The [Container step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/container-step/) lets you run any Docker container in your Kubernetes cluster as part of your continuous deployment (CD) stage. Harness orchestrates the container in your cluster as part of your Harness deployment.
   When creating a Container step, Harness appended the step name with an `_` character. This led to an invalid container name because the step name is used to name the container.
   Now, the `_` is no longer added to the container name.
+- An image location dropdown is not available for the ECR artifact source. (CDS-5445)
+
+  This issue is fixed. A region dropdown is now available. 
 - Dragging and dropping the steps of one stage to another stage generated a service propagation modal. (CDS-54340)
   
   This issues is fixed.
@@ -395,7 +417,13 @@ This release includes the following Harness module and component versions.
   ![](static/auto-suggestion.png)
 
   This issue is fixed. Automatic suggestions now appear and you can use them when creating pipelines and templates.
-- The artifactory **Artifact Details** settings were not updated when a new repository was selected.	(CDS-54087)
+- The error message displayed for the version dropdown when parent fields were empty was unclear. (CDS-54204)
+
+  This issue is fixed. The error message now displays a proper error summary.
+- Removal of the **Project Overview** page introduced user workflow confusion. (CDS-54123)
+
+  This issue is fixed. The **Project Overview** page now displays when you open a CD module.
+- The artifactory **Artifact Details** settings were not updated when a new repository was selected. (CDS-54087)
   
   When you select a new repository, the settings are now cleared, and you can select new values for the new repository.
 - Harness was unable to fetch Docker images even if the service account had proper permissions. (CDS-54085, ZD-39980, ZD-40582)
@@ -412,6 +440,7 @@ This release includes the following Harness module and component versions.
   * URL with the `oci://` prefix. For example, `oci://public.ecr.aws`.
   * URL with port number. For example, `public.ecr.aws:443`.
   * URL with the `oci://` prefix and port number. For example, `oci://public.ecr.aws:443`.
+- Nexus3 Artifacts provided by Nexus APIs are now sorted by versions in descending order. (CDS-54056)
 - The error message displayed for a failed OpenShift CLI (OC) process was unclear. (CDS-54052)
 
   This issue is fixed. The error messages for OpenShift deployments now displays proper error summary.
@@ -495,6 +524,7 @@ This release includes the following Harness module and component versions.
  The **Environments** section under the **Template Inputs** tab appeared empty if infrastructure inputs were not required when deploying to all infrastructures. (CDS-53712)
 
   If infrastructure inputs are not required when deploying to all infrastructure in an environment, the message is now displayed under the **Environments** section.
+- (CDS-53715)
 - YAML validation succeeded even when whitespaces were added in the command flags of a Helm chart. (CDS-53708)
 
   This issue is fixed. Command flags no longer accept empty values.
@@ -534,6 +564,9 @@ This release includes the following Harness module and component versions.
   By default, Harness Kubernetes deployment steps perform a dry run. The error messages for related failures are improved to detect what resource failed and what binary version was used.
 
   ![error message](static/3b844b27de9cd72be3fd0502931c388b2993c7e4089dc7376a3b34eddc8467f2.png)
+- Helm commmand flags are not available on the **Manifest Details** when you select the Harness File Store. (CDS-53377)
+
+  This issue is fixed. Helm commmand flags are now available when you select the Harness File Store.
 - The environment's **Service Overrides** were not operating additively. (CDS-53373)
   
   You can override specific service options using the [Service Overrides settings](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview#service-overrides) in an environment. Whenever a specific service is used with the environment, the environment's **Service Overrides** settings override the service's setting.
@@ -569,6 +602,9 @@ This release includes the following Harness module and component versions.
 - The service information of a stage disappeared when swapping two stages if the stage was propagated from the other stage. (CDS-53331)
 
   The service details of stages appear properly now when you swap service propagated stages.
+- Files created with the [File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) do not save consistently witht the correct file type. (CDS-53329)
+
+  A code enhancement has fixed this issue.
 - The Nexus version selected for an artifact source can be overridden in the artifact connector. (CDS-53308)
   
   When you create the artifact source for a service, you could choose Nexus 3 or 2, but when you create the Harness connector you could also select Nexus 3 or 2. Consequently, you could create a Nexus 2 artifact source with a Nexus 3 connector.
@@ -589,6 +625,9 @@ This release includes the following Harness module and component versions.
   The trigger event history for the first trigger was not deleted. This resulted in showing the stale information when a new trigger with the same identifier was used.
   
   Now, once a trigger delete succeeds, the event history for the trigger is deleted as well. This cleans up all the information related to the deleted trigger.
+- The Trigger list has overlapping columns. (CDS-53106)
+
+  A code enhancement has fixed this issue.
 - Empty string inputs caused errors when a runtime input was expecting an object. (CDS-53078)
   
   Now Harness allows empty strings in this case. This applies to inputs in services, environments, service overrides, and infrastructures.
@@ -609,6 +648,9 @@ This release includes the following Harness module and component versions.
   The **Infrastructure Type** is now immutable once the **Infrastructure Definition** is saved. When a user tries to change it, an error message appears.
 
   ![Infrastructure Definition](static/6c79c55a410bdffab32baff365b512d2c90fcbcf6ee36a621326400f7c730098.png)
+- Child elements overlapped with tabs when you scroll the template inputs section in the template details right drawer. (CDS-52933)
+
+  This issue is fixed.
 - ECR artifact **Tag** setting is not sorting artifacts by most recent version. (CDS-52878, ZD-39709)
   
   Harness was fetching build metadata for ECR using the AWS `listImages` API (SDK). That API returns the artifacts in no particular order.
@@ -622,6 +664,9 @@ This release includes the following Harness module and component versions.
 - Trigger name and identifier validation is in UI but not YAML.	(CDS-52175)
   
   Now the trigger YAML name value is validated with the pattern `^[a-zA-Z_][-0-9a-zA-Z_\\s]{0,127}$` and the identifier is validated the pattern `^[a-zA-Z_][0-9a-zA-Z_]{0,127}$`.
+- When trying to authenticate triggers, the error message is unclear.
+
+  The message has been enhanced for clarity. (CDS-51560)
 - A NullPointerException appears when the temporary file (`tmp`) cannot be created during Shell Script step execution. (CDS-51521)
   
   The Shell Script step creates a `tmp` file when running its script. If the `tmp` file cannot be created, Harness needs to log the cause returned by the host.
@@ -630,6 +675,9 @@ This release includes the following Harness module and component versions.
 - Missing support for expressions with single environment and single infrastructure in **Run Pipeline**. (CDS-51145, ZD-37561)
   
   Now expressions are supported for the single environment and single infrastructure use case in **Run Pipeline**. You can now use expressions to pass in values at pipeline runtime.
+- When the Service Now stage fails with a `SocketTimeoutException`, the error message is unclear.
+
+  The message has been enhanced for clarity. (CDS-50877)
 - Trigger **Payload Conditions** do not have a **Does Not Contain** operator. (CDS-50427)
   
   Triggers now have an option to filter conditions using a **Does Not Contain** operator.
@@ -669,7 +717,13 @@ This release includes the following Harness module and component versions.
   The Git diff in the YAML reconcile screen was performing unnecessary changes like adding quotes to each string value, shifting YAML indentation, converting multiline strings to single line using the newline character, etc.
   
   Now you can see the correct Git diff in the Harness YAML. The diff consist of necessary changes only, such as the addition and removal of fields.
+- The hint text for the Specify Environment and Connector fields is not standardized. (CDS-43840)
+
+  This issue has been fixed, the hint text is now standardized to use "Select."
 #### Cloud Cost Management
+- In accounts without a Cluster Connector, the `ANOMALY_DETECTION_CLOUD` job responsible for displaying Cloud Anomalies was not executed. (CCM-11798)
+
+  This issue has been fixed and now the anomalies are computed, even when the account does not have a Cluster Connector. 
 - The ECS service billing data was missing in the Perspectives. (CCM-11464)
 
    This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any errors.
@@ -688,12 +742,16 @@ This release includes the following Harness module and component versions.
 - Onboarding examples displayed a flag name instead of the required flag identifier.   
   This issue is now fixed. (FFM-6921)
 #### Service Reliability Management
+- The field type changes expressions to fixed when you edit a GCP metric monitored service template. (SRM-11985)
+  This issue is fixed. The field type no longer changes expressions to fixed.
 - Monitored service creation fails when using a monitored service template that has Org or Account level service and environment. (SRM-14291)
   
   This restriction is removed. Now, you can create a monitored service using a monitored service template with Org or Account level service and environment.
 - On the Monitored Services list page, a help panel appears for every monitored service listed. This is resulting in an overwhelming number of help panels that need to be closed individually. (SRM-14266)
   
   This issue has been resolved. Now, only one help panel appears for all monitored services listed on the page.
+- Filters by hostname returned clusters with a zero count. (SRM-14203)
+  This issue has been resolved. Now, only valid clusters are included in filters.
 - Error encountered when setting up monitored service in verify step with Org or Account level service and environment. (SRM-14191)  
   
   This restriction is removed. You can create a monitored service in the verify step even if the service and environments are at the Org or Account level.
@@ -703,6 +761,8 @@ This release includes the following Harness module and component versions.
 - Long Prometheus metric links overflow outside the **METRIC NAME** column and obstruct adjacent column values in the console view during pipeline runs. (SRM-14107)  
   
   This issue is fixed and the long Prometheus metric links are now contained within the **METRIC NAME** column, preventing them from obstructing values in the adjacent column.
+- The **Save** button is always enabled for monitored service templates. (SRM-14085)
+  This issue is fixed. **Save** is only enabled when you make a change to a template.
 - The Time Window in the Service Health tab does not display the information for an event by default when accessed using the link in the event notification. Users had to manually search for the information by moving the Time Window to the event's date and time. (SRM-14071)  
    
   This issue has been resolved. The Time Window now displays the event information automatically when accessed using the link in the notification. Users no longer need to manually search for the information by moving the Time Window to the event's date and time.
@@ -722,12 +782,21 @@ This release includes the following Harness module and component versions.
 - Despite having an active license, the CD module is not visible. (PLG-2047)
   
   A code enhancement has fixed this issue.
--  HTML injection occurs due to a lack of server-side validation. (PLG-657)
+- The `SubscriptionId` parameter was removed from the GET subscription request because only one subscription is currently allowed. (PLG-2018)
   
-   Server-side validation now occurs. 
+  This issue has been resolved. Added the `SubscriptionId` parameter in the GET request to allow future expansion.
+- Fixed a typographical error in the labeling of the quickstart UI for Service Reliability. (PLG-1834)
+- HTML injection occurs due to a lack of server-side validation. (PLG-657)
+  
+   Server-side validation now occurs.
+- When a password was entered on the **Credentials** page for **SMTP Configuration**, an incorrect error displayed. (PL-32113)
+
+  This issue has been fixed.
+- 
 - The template service APIs do not have trace filters. (PL-31829)
 
   Template service now includes an open telemetry trace filter and the responses have `X-Harness-Trace-ID` in the header.
+- Your selected sorting method now persists on all supported pages. (PL-31816)
 - When an author's GitLab profile does not include a public email, the email attribute in the webhook payload appears as `REDACTED`. (PL-31795)
 
   A code enhancement has fixed this issue.
@@ -743,6 +812,10 @@ This release includes the following Harness module and component versions.
 - The execution of a chained pipeline with triggers fails with the error "User is not authorized". (PL-31594,ZD-39808,39954,40294,40337,40662)
   
   A code enhancement has fixed this issue.
+- The Terraform user resource included multiple schemas with the same name. (PL-31626)
+
+  This issue has been fixed by renaming schemas to use unique names.
+- The SCIM `getGroups` call now passes null references as an empty string. (PL-31593)
 - The enterprise HashiCorp vault's namespace feature does not delete secrets. (PL-31456, ZD-39470)
   
   A code enhancement has fixed this issue.
@@ -752,6 +825,10 @@ This release includes the following Harness module and component versions.
 - User alerts are enabled even when notification preferences are disabled. (PL-31144)
   
   A code enhancement has fixed this issue.
+- Permission warnings do not display properly on the **Org** page. (PL-31278)
+
+  A code enhancement has fixed this issue.
+- Migrated all secrets encrypted using `encryptedRecords` to GCP_KMS and deprecated local encryption in SaaS. (PL-30979)
 - When creating Azure Key Vault and HashiCorp Vault connectors, selecting invalid delegate selectors displays an "UNKNOWN ERROR". (PL-30660)
 
   A code enhancement to display appropriate error message has fixed this issue. 
@@ -772,6 +849,9 @@ This release includes the following Harness module and component versions.
   ![](./static/audittrail-chrome-issue.png)
 
   A change in the configuration to load the web workers fixed this issue.
+- Dropdown lists on the create connector modal are inconsistent. (PL-20547)
+
+  A code enhancement has fixed this issue.
 - Clicking **Retry** does not display the list of pipelines in the **Pipelines** page.  (PIE-8874)
 
   A code enhancement has fixed this issue.
@@ -790,9 +870,15 @@ This release includes the following Harness module and component versions.
 - Pre-flight check does not work with selective stage execution and pipeline YAML validation fails. (PIE-8476)
 
   Users can now skip or select pre-flight checks and the pipeline runs successfully.
+- The right drawer for step details does not close when you use the **Back** button. (PIE-8449)
+
+  A code enhancement has fixed this issue.
 - On the **Input Sets** page, the **Clone** option is disabled. (PIE-8373)
   
-  The option has been removed.  
+  The option has been removed.
+- The UI does not display an error message for failed pipeline runs when the delegate is down. (PIE-8310)
+
+  A code enhancement has fixed this issue.
 - After pipeline failure, the console view does not show error details. (PIE-8229)
   
   A code enhancement has fixed this issue.
@@ -802,13 +888,17 @@ This release includes the following Harness module and component versions.
 - Removing the default value from a variable in a service results in the addition of `.nan` as the default value in the YAML. (PIE-8129)
   
   In the absence of a value, the default value is now removed from the YAML.
+- The email body field cannot be expanded on the email step. (PIE-8097)
+
+  A code enhancement has fixed this issue.
 - The API to retrieve filtered pipeline executions does not return executions that are successful in the UI, but failed in the backend. (PIE-8042)
 
   A code enhancement has fixed this issue.
 #### Delegate
 - Minor fixes to the delegate installation wizard. (DEL-6073)
-
+  
   Previously, Helm was not pre-selected when you switched from Docker to Kubernetes. This has been fixed. Additionally, values that need to be copied in the Kubernetes manifest were moved into a copy block.
+- Changed **Synchronizing** status to **Detecting** on the Delegate list page. (DEL-6067)
 - A pipeline stalled with only one ServiceNow task running. (DEL-6042)
 
   This issue was fixed with the following updates:

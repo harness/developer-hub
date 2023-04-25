@@ -62,6 +62,10 @@ This release includes the following module and component versions.
 
   Use an api-key with account edit permission in the API header.
 ### Fixed issues
+#### Continuous Delivery & GitOps
+- When manually triggering the workflow, there is an issue preventing the selection and retrieval of GCS artifacts. (CDS-53074)
+
+  A code enhancement has fixed this issue.
 #### Harness Platform
 - When a secret is used to create a Prometheus connector, the setup usage is not displayed. (PL-30755)
   
@@ -551,7 +555,7 @@ N/A
 Before you upgrade to this release, you must run the following **timescaledb\_upgrade.sh** script against your Harness namespace to update Timescale DB.  
 :::
 
-### timescaledb\_upgrade.sh
+**timescaledb\_upgrade.sh**
 
 ```
 #!/bin/bash  
