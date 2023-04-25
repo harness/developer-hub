@@ -65,10 +65,10 @@ The codebase configuration specifies the repo to use for this pipeline. When you
 3. On the **Build** stage's **Infrastructure** tab, configure the build infrastructure. For example, you can [Define a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 4. In the **Build** stage's **Execution** tab, select **Add Step**, select **Add Step** again, and then select a **Build and Push** step from the Step Library.
 
-For all **Build and Push** steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the reference topic that corresponds with your registry provider:
+For all **Build and Push** steps, you select or create a connector for the target repo, add repo-specific information, and specify Dockerfile information. For information about each **Build and Push** step's settings, go to the topic that corresponds with your registry provider:
 
 * Docker: [Build and Push an image to Docker Registry step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
-* Azure Container Registry (ACR): [Build and Push to ACR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings.md) or [Build and Push an image to Docker Registry step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
+* Azure Container Registry (ACR): [Build and Push to ACR step settings](./build-and-push-to-acr.md) or [Build and Push an image to Docker Registry step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md)
 * Google Container Registry (GCR): [Build and Push to GCR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings.md)
 * Amazon Elastic Container Registry (ECR): [Build and Push to ECR step settings](../../ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings.md)
 * Google Artifact Registry (GAR): Use a **Run** step, as described in the [GAR CI tutorial](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps).

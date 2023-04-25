@@ -26,8 +26,8 @@ The Harness AWS connector to use when connecting to AWS S3.
 
 The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to S3. For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](../../ci-technical-reference/upload-artifacts-steps/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](../../ci-technical-reference/upload-artifacts-steps/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
+* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
 
 <details>
 <summary>Stage variable required for non-default ACLs</summary>

@@ -18,7 +18,7 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 :::tip Azure Container Registry
 
-Because the **Build and Push an image to Docker Registry** step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands, you can use this step or the [Build and Push to ACR step](./build-and-push-to-acr-step-settings.md) to push to Azure Container Registry (ACR).
+Because the **Build and Push an image to Docker Registry** step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands, you can use this step or the [Build and Push to ACR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr) to push to Azure Container Registry (ACR).
 
 :::
 

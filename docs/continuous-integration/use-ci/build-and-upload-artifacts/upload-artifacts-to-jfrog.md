@@ -13,7 +13,7 @@ You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipeli
 
 ## Prepare a pipeline
 
-You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) and defined [build infrastructure](/docs/category/set-up-build-infrastructure).
+You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 
 If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
@@ -71,7 +71,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-## Run the pipeline
+## Confirm the upload
 
 After adding the steps and saving the pipeline, select **Run** to run the pipeline.
 
