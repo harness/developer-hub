@@ -210,7 +210,15 @@ Create fixed uptime or downtime schedules for the resources managed by this Auto
 
 In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
 
-The fixed schedule takes precedence over the defined AutoStopping Rule.To create a fixed schedule for your rule, do the following:
+:::note
+The fixed schedule takes precedence over the defined AutoStopping Rule. 
+:::
+
+:::note
+Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
+:::
+
+To create a fixed schedule for your rule, do the following:
 
 1. In **Fixed Schedules**, click **Add Fixed Schedule**.
    

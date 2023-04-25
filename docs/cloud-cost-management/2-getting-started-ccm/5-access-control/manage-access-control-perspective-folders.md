@@ -1,8 +1,10 @@
 ---
-title: Manage access control for CCM perspective folders
+title: Perspective folders
 description: This topic describes how to add and manage access control for CCM Perspectives folder.
 # sidebar_position: 2
 ---
+
+# Manage access control for CCM perspective folders
 
 You can now manage access to Perspective folders by assigning Resource Groups to users bound by the roles assigned to them.
 
