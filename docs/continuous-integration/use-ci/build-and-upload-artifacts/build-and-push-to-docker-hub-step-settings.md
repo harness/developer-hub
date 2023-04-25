@@ -1,14 +1,14 @@
 ---
-title: Build and Push to GCR step settings
-description: This topic provides settings for the Build and Push to GCR step.
-sidebar_position: 40
-helpdocs_topic_id: 66ykcm0sf0
+title: Build and Push an image to Docker Registry step settings
+description: This topic describes settings for the Build and Push an image to Docker Registry step.
+sidebar_position: 20
+helpdocs_topic_id: q6fr5bj63w
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the **Build and Push to GCR** Step, which [builds and pushes and artifact to GCR](../../use-ci/build-and-upload-artifacts/build-and-push-to-gcr.md). This step assumes that the target GCR registry meets the GCR requirements for pushing images. For more information, go to the Google documentation on [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling).
+This topic describes settings for the **Build and Push an image to Docker Registry** step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. For more information, go to [Build and push an artifact](./build-and-upload-an-artifact.md).
 
 :::info
 
@@ -16,27 +16,27 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 :::
 
+:::tip Azure Container Registry
+
+Because the **Build and Push an image to Docker Registry** step is equivalent to the Docker [build](https://docs.docker.com/engine/reference/commandline/build/) and [push](https://docs.docker.com/engine/reference/commandline/push/) commands, you can use this step or the [Build and Push to ACR step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr) to push to Azure Container Registry (ACR).
+
+:::
+
 ## Name
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-## GCP Connector
+## Docker Connector
 
-The Harness GCP connector to use to connect to GCR. The GCP account associated with the GCP connector needs specific roles. For more information, go to [Google Cloud Platform (GCP) connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
+The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
-This step supports GCP connectors that use access key authentication. It does not support GCP connectors that inherit delegate credentials.
+This step supports Docker connectors that use either anonymous or username and password authentication.
 
-## Host
+## Docker Repository
 
-The Google Container Registry hostname. For example, `us.gcr.io` hosts images in data centers in the United States in a separate storage bucket from images hosted by `gcr.io`. For a list of Container Registries, go to the Google documentation on [Pushing and pulling images](https://cloud.google.com/container-registry/docs/pushing-and-pulling).
+The name of the repository where you want to store the image, for example, `<hub-user>/<repo-name>`.
 
-## Project ID
-
-The [GCP resource manager project ID](https://cloud.google.com/resource-manager/docs/creating-managing-projects#identifying_projects).
-
-## Image Name
-
-The name of the image you want to build and push to the target container registry.
+For private Docker registries, specify a fully qualified repo name.
 
 ## Tags
 
@@ -44,9 +44,11 @@ Add [Docker build tags](https://docs.docker.com/engine/reference/commandline/bui
 
 Add each tag separately.
 
+![](./static/build-and-push-to-docker-hub-step-settings-10.png)
+
 :::tip
 
-s are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
+Harness expressions are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
 
 :::
 
@@ -66,6 +68,10 @@ The name of the Dockerfile. If you don't provide a name, Harness assumes that th
 
 Enter a path to a directory containing files that make up the [build's context](https://docs.docker.com/engine/reference/commandline/build/#description). When the pipeline runs, the build process can refer to any files found in the context. For example, a Dockerfile can use a `COPY` instruction to reference a file in the context.
 
+Kaniko requires root access to build the Docker image. If you have not already enabled root access, you will receive the following error:
+
+`failed to create docker config file: open/kaniko/ .docker/config.json: permission denied`
+
 ### Labels
 
 Specify [Docker object labels](https://docs.docker.com/config/labels-custom-metadata/) to add metadata to the Docker image.
@@ -74,7 +80,7 @@ Specify [Docker object labels](https://docs.docker.com/config/labels-custom-meta
 
 The [Docker build-time variables](https://docs.docker.com/engine/reference/commandline/build/#build-arg). This is equivalent to the `--build-arg` flag.
 
-![](../static/build-and-push-to-gcr-step-settings-23.png)
+![](./static/build-and-push-to-docker-hub-step-settings-11.png)
 
 ### Target
 
@@ -82,17 +88,17 @@ The [Docker target build stage](https://docs.docker.com/engine/reference/command
 
 ### Remote Cache Image
 
-Enter the name of the remote cache image, such as `gcr.io/project-id/<image>`.
+Enter the name of the remote cache image, such as `<container-registry-repo-name>/<image-name>`.
 
-The remote cache repository must be in the same account and organization as the build image. For caching to work, the specified image name must exist.
+The remote cache repository must exist in the same host and project as the build image. The repository will be automatically created if it doesn't exist. For caching to work, the entered image name must exist.
 
-Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in later builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
+Harness enables remote Docker layer caching where each Docker layer is uploaded as an image to a Docker repo you identify. If the same layer is used in subsequent builds, Harness downloads the layer from the Docker repo. You can also specify the same Docker repo for multiple **Build and Push** steps, enabling these steps to share the same remote cache. This can dramatically improve build time by sharing layers across pipelines, stages, and steps.
 
 ### Run as User
 
 Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-### Set container resources
+### Set Container Resources
 
 Set maximum resource limits for the resources used by the container at runtime:
 
@@ -105,10 +111,3 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-
-## Advanced settings
-
-You can find the following settings on the **Advanced** tab in the step settings pane:
-
-* [Conditional Execution](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md): Set conditions to determine when/if the step should run.
-* [Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md): Control what happens to your pipeline when a step fails.

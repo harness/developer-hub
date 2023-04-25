@@ -2,7 +2,7 @@
 title: Upload Artifacts to JFrog
 description: Add a step to upload artifacts to JFrog.
 
-sidebar_position: 50
+sidebar_position: 70
 helpdocs_topic_id: lh082yv36h
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false

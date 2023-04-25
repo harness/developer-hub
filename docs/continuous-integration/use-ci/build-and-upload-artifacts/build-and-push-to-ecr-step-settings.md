@@ -1,7 +1,7 @@
 ---
 title: Build and Push to ECR step settings
 description: This topic provides settings for the Build and Push to ECR step.
-sidebar_position: 30
+sidebar_position: 40
 helpdocs_topic_id: aiqbxaef15
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false

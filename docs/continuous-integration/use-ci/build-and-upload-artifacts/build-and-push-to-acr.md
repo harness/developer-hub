@@ -1,7 +1,7 @@
 ---
 title: Build and Push to ACR
 description: Use a CI pipeline to build and push an image to ACR.
-sidebar_position: 20
+sidebar_position: 30
 helpdocs_topic_id: gstwrwjwgu
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
@@ -116,7 +116,7 @@ You can find the following settings on the **Advanced** tab in the step settings
 
 ## Run the pipeline
 
-After adding the steps and saving the pipeline, select **Run** to run the pipeline.
+After saving the pipeline, select **Run** to run the pipeline.
 
 On the [build details page](../view-your-builds/viewing-builds.md), you can see the logs for each step as they run.
 

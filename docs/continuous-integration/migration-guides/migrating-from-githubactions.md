@@ -417,7 +417,7 @@ To interact with Docker registries in Harness, you use a [Docker connector](/doc
                     command: echo "this runs on openjdk"
 ```
 
-In the previous example, a Docker connector was used to pull an image for a script. You can also use Docker connectors to do other Docker-related actions, such as [building and pushing images to Docker registries](../ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings.md).
+In the previous example, a Docker connector was used to pull an image for a script. You can also use Docker connectors to do other Docker-related actions, such as [building and pushing images to Docker registries](../use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md).
 
 ```yaml
      - step:
