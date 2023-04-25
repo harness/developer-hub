@@ -45,7 +45,7 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 </details>
 
-### Create a GitHub connector
+### Create the GitHub connector
 
 Next, you'll create a _connector_ that allows Harness to connect to your Git codebase. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
@@ -89,7 +89,7 @@ For this tutorial, you'll need a Docker Hub connector to allow Harness to authen
 
 8. In the list of connectors, make a note of your Docker Hub connector's ID.
 
-## Create a Java starter pipeline
+## Create the Java starter pipeline
 
 1. Under **Project Setup**, select **Get Started**.
 2. When prompted to select a repository, search for **jhttp**, select the repository that you forked earlier, and then select **Configure Pipeline**.
@@ -141,7 +141,7 @@ pipeline:
 
 </details>
 
-### Understand the build infrastructure
+### Understand build infrastructure
 
 This pipeline uses a Linux AMD64 machine on Harness Cloud build infrastructure, as declared in the stage's `platform` specifications.
 
@@ -169,7 +169,7 @@ In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/d
 * [Various caching options](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) to load dependency caches.
 * [Run steps](/docs/category/run-scripts) for running all manner of scripts and commands.
 
-## Add a pipeline variable
+## Use variables
 
 [Variables and expressions](/docs/category/variables-and-expressions) make your pipelines more versatile by allowing variable inputs and values. As an example, add a pipeline-level variable that lets you specify a Docker Hub username when the pipeline runs.
 
@@ -209,7 +209,7 @@ In the YAML editor, add the following `variables` block between the `properties`
 </Tabs>
 ```
 
-## Run initial tests
+## Run the initial tests
 
 Add a step to run tests against the JHTTP app code. This portion of the tutorial uses a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings) so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature. Later in this tutorial, a Run step is used to run a connectivity test script. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
@@ -290,7 +290,7 @@ You could also use `preCommand` to prepare the test environment. For example, yo
 </Tabs>
 ```
 
-## Build and push an image to Docker Hub
+## Build and push to Docker Hub
 
 Add a step to build an image of the JHTTP app and push it to Docker Hub. While this tutorial uses a [Build and Push an image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings), Harness has a variety of options for [building and uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
