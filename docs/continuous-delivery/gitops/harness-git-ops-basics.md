@@ -1,5 +1,5 @@
 ---
-title: Harness GitOps Basics
+title: Harness GitOps basics
 description: This topic describes Harness GitOps concepts.
 sidebar_position: 1
 helpdocs_topic_id: w1vg9l1j7q

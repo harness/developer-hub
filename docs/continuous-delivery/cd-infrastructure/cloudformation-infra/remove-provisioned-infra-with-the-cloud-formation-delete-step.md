@@ -1,5 +1,5 @@
 ---
-title: Remove Provisioned Infra with the CloudFormation Delete Step
+title: Remove provisioned infrastructure with the CloudFormation Delete step
 description: Remove a provisioned stack or any resources created by CloudFormation.
 sidebar_position: 5
 helpdocs_topic_id: mmzimok6vp

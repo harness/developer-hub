@@ -1,11 +1,11 @@
 {
-    "label": "General CD Execution Steps",
+    "label": "General CD execution steps",
     "position": "200",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
     "link": {
         "type": "generated-index",
-        "title": "General CD Execution Steps"
+        "title": "General CD execution steps"
     }
 }

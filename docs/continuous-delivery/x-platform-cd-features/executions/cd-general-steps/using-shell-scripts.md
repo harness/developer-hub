@@ -1,5 +1,5 @@
 ---
-title: Using shell scripts in CD Stages
+title: Using shell scripts in CD stages
 description: This topic shows you how to run shell scripts in a CD stage using the Shell Script step.
 sidebar_position: 2
 ---
