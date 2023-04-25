@@ -32,8 +32,8 @@ The Harness AWS connector to use to connect to ECR.
 
 The AWS IAM roles and policies associated with the account connected to the Harness AWS connector must be able to push to ECR. For more information about roles and permissions for AWS connectors, go to:
 
-* [Add an AWS connector](../../ci-technical-reference/build-and-push-steps/docs/platform/Connectors/Cloud-providers/add-aws-connector)
-* [AWS connector settings reference](../../ci-technical-reference/build-and-push-steps/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+* [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector)
+* [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 This step supports AWS connectors with any authentication method (AWS access key, Delegate IAM role assumption, IRSA, and cross-account access).
 
