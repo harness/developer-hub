@@ -124,8 +124,10 @@ Permitted values:
 * minimum value: `2m`.
 * maxium value: `1h`.
 
-You will also need to enter the Github's webhook id in **Webhook Id**, which can be found in your Github webhook settings page:
-![image](https://user-images.githubusercontent.com/109106581/234139128-8962eb89-c589-4f63-9d30-c741022844f9.png)
+You will also need to enter the Github's webhook Id in **Webhook Id**, which can be found in your Github webhook settings page:
+
+<docimage path={require('./static/752891ea2d0d9bcee2511ad039994271c20f002eb525570b5bc8038915b85da1.png')} width="60%" height="60%" title="Click to view full size image" />  
+
 
 
 ## Set trigger conditions
