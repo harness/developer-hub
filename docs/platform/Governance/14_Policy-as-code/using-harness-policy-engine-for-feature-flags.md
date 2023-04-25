@@ -1,5 +1,5 @@
 ---
-title: Use Harness Policy As Code for feature flags
+title: Use Harness Policy As Code for Feature Flags
 description: This topic gives steps to create, update, and view policies and policy sets for Feature Flags.
 # sidebar_position: 2
 helpdocs_topic_id: vb6ilyz194
