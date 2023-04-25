@@ -2386,11 +2386,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-jfrog-artifactory-step-settings",
-    },
-
-    {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings",
       to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings",
     },
@@ -2467,6 +2462,12 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/run-step-settings",
       to: "/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-jfrog-artifactory-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog/",
     },
   ],
 };
