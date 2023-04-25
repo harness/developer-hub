@@ -24,7 +24,7 @@ Create a Git repository in GitHub. This repository must include a folder that co
 For detailed instructions on how to prepare files required for Terraform setup, go to [Harness Provider on Terraform](https://registry.terraform.io/providers/harness/harness/latest/docs). 
 
 
-## Setup terraform complainant Delegate
+## Set up a Terraform compliant delegate
 
 Set up Harness Delegate to run the Terraform setup for appling the changes.
 
