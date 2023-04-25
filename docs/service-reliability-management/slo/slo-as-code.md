@@ -64,7 +64,7 @@ To add a Terraform Apply step:
 In the custom stage, select **Add Step** and choose **Terraform Apply**.
 Enter a name for the Terraform Apply step, select **Configuration Type**, and **Provisioner Identifier**.
 In **Configuration File Repository**, select the GitHub repository that you created.
-In the **Advanced** tab and select the delegate that you created as the default delegate for Terraform Plan.
+On the **Advanced** tab, select the delegate that you created as the default delegate for Terraform Plan.
 Select **Apply Changes** to save and add the Terraform Plan step to the pipeline.
 
 ## Create a webhook trigger
