@@ -4,7 +4,7 @@ title: Troubleshooting guide
 ---
 
 # Troubleshooting guide
-KB Coming Soon
+KB coming soon
 
 
 
