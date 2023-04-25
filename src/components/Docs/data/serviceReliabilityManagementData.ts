@@ -73,28 +73,28 @@ export const featuredTutorials: CardItem[] = [
           title: "SLO types",
           module: MODULES.srm,
           description:
-            "Explore the different types of SLOs, such as composite SLOs and SLO as Code, and learn how to create and use them.",
+            "Explore different types of SLOs, such as composite SLOs and SLO as Code, and learn how to create and use them.",
           link: "/docs/category/slo-types",
         },
         {
           title: "SLO downtime",
           module: MODULES.srm,
           description:
-            "Learn how to schedule a maintenance window for your service without impacting the SLO.",
+            "Schedule a maintenance window for your service without impacting the SLO.",
           link: "/docs/category/slo-downtime",
         },
         {
           title: "Health source catalog",
           module: MODULES.srm,
           description:
-            "Discover the range of health sources supported by Harness and learn how to add them to your monitored service.",
+            "Explore the range of health sources supported by Harness and learn how to add them to your monitored service.",
           link: "/docs/category/health-sources-catalog",
         },
       ],
     },
 
     {
-      name: "Explore health and change sources",
+      name: "Analyze health and change impact on services",
       description:
         "",
       list: [
@@ -102,7 +102,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Change impact analysis",
           module: MODULES.srm,
           description:
-            "Learn how to conduct change impact analysis by tracking health and change events in your service.",
+            "Conduct change impact analysis by tracking health and change events in your service.",
           link: "/docs/category/change-impact-analysis",
         },
         {
