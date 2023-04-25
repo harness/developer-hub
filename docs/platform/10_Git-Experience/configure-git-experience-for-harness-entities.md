@@ -233,15 +233,6 @@ Here are the key points to keep in mind when the referenced entities reside in t
 - As you can execute the pipeline from any branch, you can select the branch in which the changes to test templates were pushed. Merge the changes after testing. Upon merging, others will be able to access them.
 - This approach works best when the teams responsible for creating and managing templates will be different from those responsible for executing the pipeline (Platform Engineering or DevOps teams versus Developers), so the test projects should be separate from the production projects.
 
-
-:::info
-Harness considers entities to be in the same repository if their repository names match, regardless of which GIT provider they use.
-
-For example, when you store your pipeline in GitHub and the entities it references in Bitbucket, Harness treats the two repositories as same if their repository names are identical.
-:::
-
-
-
 Let us look at an example: 
 
 There is a pipeline `DocRemotePipeline` that references a remote pipeline template named `remotedocpipelinetemplate`. This remote pipeline template references a remote stage template named `RemoteStageTemplate`. These 3 entities are in the same Git repo.
