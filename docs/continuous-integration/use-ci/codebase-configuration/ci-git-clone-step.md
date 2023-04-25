@@ -1,14 +1,14 @@
 ---
 title: Git Clone step settings
 description: The Git Clone step clones a repo to the pipeline workspace.
-sidebar_position: 40
+sidebar_position: 30
 helpdocs_topic_id: nl3ixvew4o
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the **Git Clone** step, which clones a repo to the pipeline workspace. This step is useful when you want to [include multiple repositories in your build](../use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline.md). For example, if you maintain your code files in one repo and your build files (such as Dockerfiles) in a separate repo, you can [configure the pipeline's default codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) to clone your code files and use a **Git Clone** step to clone your build files into the pipeline's workspace.
+This topic provides settings for the **Git Clone** step, which clones a repo to the pipeline workspace. This step is useful when you want to [include multiple repositories in your build](./clone-and-process-multiple-codebases-in-the-same-pipeline.md). For example, if you maintain your code files in one repo and your build files (such as Dockerfiles) in a separate repo, you can [configure the pipeline's default codebase](./create-and-configure-a-codebase.md) to clone your code files and use a **Git Clone** step to clone your build files into the pipeline's workspace.
 
 :::info
 
@@ -18,7 +18,7 @@ Depending on the stage's build infrastructure, some settings may be unavailable.
 
 ## Name
 
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Description
 
@@ -54,17 +54,17 @@ For **Build Type**, select **Git Branch** if you want the step to clone code fro
 
 :::tip
 
-You can use [fixed values, runtime input, or variable expressions](/docs/platform/references/runtime-inputs/) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime. You could also use expressions to match the pipeline's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) branch or tag so that, for example, the pipeline and the Git Clone step both pull code from the same environment, such as `production` when a production build runs or `development` when a development build runs.
+You can use [fixed values, runtime input, or variable expressions](/docs/platform/references/runtime-inputs/) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime. You could also use expressions to match the pipeline's [codebase](./create-and-configure-a-codebase.md) branch or tag so that, for example, the pipeline and the Git Clone step both pull code from the same environment, such as `production` when a production build runs or `development` when a development build runs.
 
 :::
 
-This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](../use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
+This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](./built-in-cie-codebase-variables-reference.md).
 
 ## Clone Directory
 
 An optional target path in the pipeline workspace where you want to clone the repo.
 
-You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](../use-ci/codebase-configuration/create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../use-ci/set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
+You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](./create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
 
 ## Additional Configuration
 
@@ -82,7 +82,7 @@ For more information, go to the [git clone documentation](https://git-scm.com/do
 
 If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
 
-If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ### Run as User
 
@@ -100,7 +100,7 @@ Set maximum resource limits for the resources used by the container at runtime:
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
 * [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ### SSH-keyscan timeout
 

@@ -48,7 +48,7 @@ Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
 3. For **Connector**, select or create a [code repo connector](./create-and-configure-a-codebase.md#code-repo-connectors) for your second code repo.
 4. If **Repository Name** is not automatically populated, enter the second code repo's name.
 5. For **Build Type**, select **Git Branch** if you want the step to clone code from a specific branch with in the repo, or select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**.
-6. Populate other fields as desired. For example, use **Clone Directory** to clone the code repo to a specific location in the workspace. For information about all **Git Clone** step settings, go to the [Git Clone step settings reference](../../ci-technical-reference/ci-git-clone-step.md).
+6. Populate other fields as desired. For example, use **Clone Directory** to clone the code repo to a specific location in the workspace. For information about all **Git Clone** step settings, go to the [Git Clone step settings reference](./ci-git-clone-step.md).
 7. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
 ## Build an artifact from both code repos

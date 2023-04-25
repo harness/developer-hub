@@ -2448,5 +2448,10 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/background-step-settings",
       to: "/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings",
     },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
+      to: "/docs/continuous-integration/use-ci/codebase-configuration/ci-git-clone-step",
+    },
   ],
 };
