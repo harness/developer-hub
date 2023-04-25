@@ -41,6 +41,13 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
+          title: "CI Tutorials",
+          module: MODULES.ci,
+          description:
+            "Dive in with these hands-on tutorials.",
+          link: "/tutorials/ci-pipelines",
+        },
+        {
           title: "Get started with CI",
           module: MODULES.ci,
           description:
@@ -53,13 +60,6 @@ export const featuredTutorials: CardItem[] = [
           description:
             "Learn about creating Harness CI pipelines.",
           link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
-        },
-        {
-          title: "Migrate to Harness CI",
-          module: MODULES.ci,
-          description:
-            "Migrate to Harness CI from another CI provider.",
-          link: "/docs/category/migrate-to-harness-ci",
         },
       ],
     },
@@ -169,6 +169,13 @@ export const featuredTutorials: CardItem[] = [
       description:
         "",
       list: [
+        {
+          title: "Migrate to Harness CI",
+          module: MODULES.ci,
+          description:
+            "",
+          link: "/docs/category/migrate-to-harness-ci",
+        },
         {
           title: "Troubleshoot CI",
           module: MODULES.ci,

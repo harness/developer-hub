@@ -2361,11 +2361,6 @@ module.exports = {
 
     // Created by aimurphy for branch ci-reorg-pt-3 on Apr 13, 2023
     {
-      from: "/docs/category/ci-technical-reference",
-      to: "/docs/category/reference-ci-steps-settings",
-    },
-
-    {
       from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings",
       to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings",
     },
@@ -2440,6 +2435,13 @@ module.exports = {
     {
       from: "/docs/platform/References/whitelist-harness-domains-and-ips",
       to: "/docs/platform/References/allowlist-harness-domains-and-ips",
+    },
+
+    // Created by aimurphy for branch ci-reorg-pt-5 on Apr 25, 2023
+    {
+      from: "/docs/category/ci-technical-reference",
+      from: "/docs/category/reference-ci-steps-settings",
+      to: "/docs/category/use-ci",
     },
   ],
 };
