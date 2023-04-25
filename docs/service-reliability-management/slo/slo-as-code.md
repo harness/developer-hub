@@ -84,7 +84,7 @@ To add a webhook URL to a GitHub repository:
 
 ## Push changes to the repository
 
-Push changes to the GitHub repository, to trigger a workflow for the pipeline. During the pipeline run, the Terraform Plan step fetches changes from GitHub and applies to all the entities which have changes. The changes can be creating a new entity, updating an existing entity, or deleting an existing entity. During the pipeline run, the Terraform Plan step fetches the latest changes from the repository and generates a plan for updating the infrastructure. The plan may include creating a new entity, updating an existing entity, or deleting an existing entity. 
+Push your changes to the GitHub repository to trigger a workflow for the pipeline. During the pipeline run, the Terraform Plan step fetches changes from GitHub and applies them to all updated entities. The changes can be creating a new entity, updating an existing entity, or deleting an existing entity. During the pipeline run, the Terraform Plan step fetches the latest changes from the repository and generates a plan for updating the infrastructure. The plan may include creating a new entity, updating an existing entity, or deleting an existing entity. 
 
 ![Push Terraform changes to repo](./static/terraform-push-changes.png)
 
