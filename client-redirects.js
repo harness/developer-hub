@@ -2453,5 +2453,10 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
       to: "/docs/continuous-integration/use-ci/codebase-configuration/ci-git-clone-step",
     },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings",
+      to: "/docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings",
+    },
   ],
 };

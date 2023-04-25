@@ -62,7 +62,7 @@ The parsed test report in the **Tests** tab comes strictly from the provided tes
 
 ## Test Intelligence isn't working
 
-Test Intelligence may not work even if you select the **Run only selected tests** option in your [Run Tests step](../ci-technical-reference/configure-run-tests-step-settings.md). One possible cause for this is that you're using **Maven** and your `**pom.xml**` contains `argLine`. In this case, you must update the Java Agent as follows:
+Test Intelligence may not work even if you select the **Run only selected tests** option in your [Run Tests step](../use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md). One possible cause for this is that you're using **Maven** and your `**pom.xml**` contains `argLine`. In this case, you must update the Java Agent as follows:
 
 **Before:**
 

@@ -28,7 +28,7 @@ In the CI stage Infrastructure, define the build farm for the codebase. See [Set
 
 ### Step 3: Configure the Run Step
 
-In the stage's Execution tab, add a **Run** step. The Run step executes one or more commands on a container image. See [Run step settings](../../ci-technical-reference/configure-run-tests-step-settings.md).
+In the stage's Execution tab, add a **Run** step. The Run step executes one or more commands on a container image. See [Run step settings](../set-up-test-intelligence/configure-run-tests-step-settings.md).
 
 ### Step 4: Upload Artifacts to JFrog Artifactory
 
