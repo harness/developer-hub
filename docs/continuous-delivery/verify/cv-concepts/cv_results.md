@@ -1,7 +1,7 @@
 ---
 title: Interpret results
 sidebar_position: 1
-description: Learn how to interpret the metric and log results of Continuous Verification. 
+description: Learn how to interpret the metric and log results of CV. 
 slug: /continuous-delivery/verify/cv-concepts/verification-results
 ---
 
