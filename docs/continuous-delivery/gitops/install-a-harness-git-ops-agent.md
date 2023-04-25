@@ -75,7 +75,7 @@ Click **GitOps** **Agents**.
 
 Click **New GitOps Agent**. The Agent wizard appears.
 
-## Harness GitOps Agent with no existing Argo CD project
+## Harness GitOps Agent without an existing Argo CD project
 
 In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.
 
@@ -230,13 +230,13 @@ For steps on setting up the mapping and import, go to [Map Argo projects to Harn
 
 ## Proxy support
 
-The GitOps Agent can work on environments where traffic is routed through a proxy. Perform the following steps to configure proxy support for GitOps Agent.
+The Harness GitOps Agent can work on environments where traffic is routed through a proxy. Perform the following steps to configure proxy support for the agent.
 
-1. Make sure that the Agent is running in HTTP mode.  
-   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap({agentname}-agent)` present in the YAML you get after creating the Agent.  
+1. Make sure that the agent is running in HTTP mode.  
+   To verify, check if the property/config `GITOPS_SERVICE_PROTOCOL` value is set to `HTTP1` in the `configmap({agentname}-agent)` present in the YAML after you create the agent.  
    `GITOPS_SERVICE_PROTOCOL: HTTP1`
-2. Add a property/config `HTTPS_PROXY` and add proxy details such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "https://squid.proxy-test:3128"`.
-3. Add an environment variable `NO_PROXY` in the GitOps Agent deployment with the following value.  
+2. Add a property/config `HTTPS_PROXY`, and add proxy details, such as URL, port, and auth details as its value in the configmap mentioned in Step 1. For example, `HTTPS_PROXY: "https://squid.proxy-test:3128"`.
+3. Add an environment variable `NO_PROXY` in the Harness GitOps Agent deployment with the following value.  
    ```
    localhost,argocd-repo-server,argocd-dex-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
    ```
