@@ -16,7 +16,8 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - April 22, 2023
+
+## Latest - May XX, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -39,9 +40,7 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
-* Fixed an issue where the metrics loading spinner was hanging indefinitely. (FFM-6735)
-
-* Updated the field validation for the **YAML path** field in the Git connection form to prevent entering invalid path names beginning with `./`. (FFM-7448)
+* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-6735)
 
 ```mdx-code-block
   </TabItem>
@@ -53,7 +52,7 @@ This release does not include early access features.
 <details>
 <summary>2023 releases</summary>
 
-#### Latest - April 11, 2023
+#### April 22, 2023
 
 ##### What's new
 
@@ -63,9 +62,27 @@ This release does not include new features.
 
 This release does not include early access features.
 
-#### Fixed issues
+##### Fixed issues
 
 ##### Feature Flags UI
+
+* Fixed an issue where the metrics loading spinner was hanging indefinitely. (FFM-6735)
+
+* Updated the field validation for the **YAML path** field in the Git connection form to prevent entering invalid path names beginning with `./`. (FFM-7448)
+
+#### April 11, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
 
 Fixed an issue where users with reduced access could not create Feature Flags SDK Keys as a result of a permission mismatch between the frontend and backend. (FFM-7295)
 
