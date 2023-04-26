@@ -13,15 +13,15 @@ Linux process kill fault kills the target processes running on the Linux machine
 - Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
 
 :::note
-- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
-<h3>Mandatory fields</h3>
+<h3>Mandatory tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
@@ -31,10 +31,10 @@ Linux process kill fault kills the target processes running on the Linux machine
     <td> For example <code>13453,32444,27436</code> </td>
   </tr>
 </table>
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
@@ -54,7 +54,7 @@ Linux process kill fault kills the target processes running on the Linux machine
 
 The `processIDs` input variable targets process IDs to kill.
 
-Use the following example to tune the process IDs:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/process-ids.yaml yaml)
 ```yaml

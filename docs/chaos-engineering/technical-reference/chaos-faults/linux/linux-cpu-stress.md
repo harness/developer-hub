@@ -11,23 +11,23 @@ Linux CPU stress fault applies stress on the CPU of the target Linux machines fo
 - Simulates a lack of CPU for processes running on the application, which degrades their performance.
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the machine.
 
-:::note
-- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
+:::info note
+- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
   <tr>
     <td> load </td>
     <td> Percentage load to be exerted on a single CPU core. </td>
-    <td> Default: 100%. </td>
+    <td> Default: 100 %. </td>
   </tr>
   <tr>
     <td> workers </td>
@@ -37,12 +37,12 @@ Linux CPU stress fault applies stress on the CPU of the target Linux machines fo
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s. </td>
+    <td> Default: 30 s. </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0s. </td>
+    <td> Default: 0 s. </td>
   </tr>
 </table>
 
@@ -50,7 +50,7 @@ Linux CPU stress fault applies stress on the CPU of the target Linux machines fo
 
 The `workers` input variable utilizes a specific number of workers for the CPU stress fault.
 
-Use the following example to tune the number of workers:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-cpu-stress/workers.yaml yaml)
 ```yaml
@@ -71,7 +71,7 @@ spec:
 
 The `load` input variable exerts the CPU load (in percentage) per core.
 
-Use the following example to tune the load percentage:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-cpu-stress/load.yaml yaml)
 ```yaml
