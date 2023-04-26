@@ -1481,6 +1481,11 @@ module.exports = {
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
     {
+      from: "/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events",
+    },
+
+    {
       from: "/docs/continuous-delivery/cd-deployments-category/multiserv-multienv",
       to: "/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv",
     },
