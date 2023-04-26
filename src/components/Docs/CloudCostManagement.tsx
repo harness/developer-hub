@@ -15,7 +15,7 @@ export default function CCM() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ccm.svg`} />
-            <h1>Cloud Cost Management</h1>
+            <h1>Cloud Cost Management Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/cloud-costs">
