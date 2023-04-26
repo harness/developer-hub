@@ -94,7 +94,7 @@ export const featuredTutorials: CardItem[] = [
     },
 
     {
-      name: "Analyze health and change impact on services",
+      name: "Measure service health and impact of changes",
       description:
         "",
       list: [
