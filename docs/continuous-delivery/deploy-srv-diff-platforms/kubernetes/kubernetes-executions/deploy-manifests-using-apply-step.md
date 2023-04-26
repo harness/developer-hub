@@ -209,7 +209,7 @@ Values YAML files can be specified at several places in Harness:
 * Environment configuration (if you are using [Services and Environments v2](/docs/continuous-delivery/get-started/services-and-environments-overview))
 * Service definition manifests
 
-You can also add a values YAML values and/or files or Kustomize Patch files in the Apply step **Override Value**.
+You can also add values YAML values and/or files or Kustomize Patch files in the Apply step **Override Value**.
 
 1. Select **Add Manifest**.
 2. In **Specify Manifest Type**, select **Values YAML** or **Kustomize Patches**, and then select **Continue**.
