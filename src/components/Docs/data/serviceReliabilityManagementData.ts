@@ -36,7 +36,7 @@ export const featuredTutorials: CardItem[] = [
   // Docs
   export const docsCards: CardSections = [
     {
-      name: "Essentials",
+      name: "Get started",
       description:
         "",
       list: [
@@ -45,7 +45,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.srm,
           description:
             "Learn about SRM and how it can benefit you.",
-          link: "/docs/service-reliability-management/getting-started/srm-intro",
+          link: "/tutorials/service-reliability",
         },
         {
           title: "Key concepts",
@@ -58,7 +58,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Your first SLO",
           module: MODULES.srm,
           description:
-            "Learn how to create, track, and monitor a SLO.",
+            "Learn how to create, track, and monitor an SLO.",
           link: "/docs/service-reliability-management/getting-started/create-first-slo",
         },
       ],
