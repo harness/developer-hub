@@ -15,7 +15,7 @@ export default function PL() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_harness.svg`} />
-            <h1>Platform</h1>
+            <h1>Platform Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/platform">
