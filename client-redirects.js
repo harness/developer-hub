@@ -2316,33 +2316,15 @@ module.exports = {
       from: "/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults",
     },
+
     {
       from: "/docs/chaos-engineering/chaos-faults/",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
     },
+
     {
       from: "/docs/article/1cqpe6f5id-chaos-enterprise-hub-experiments",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
-    },
-    {
-      from: "/docs/article/1cqpe6f5id-chaos-enterprise-hub-experiments#kubernetes",
-      to: "/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/",
-    },
-    {
-      from: "/docs/article/1cqpe6f5id-chaos-enterprise-hub-experiments#amazon_web_services_aws",
-      to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/",
-    },
-    {
-      from: "/docs/article/1cqpe6f5id-chaos-enterprise-hub-experiments#google_cloud_platform_gcp",
-      to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/",
-    },
-    {
-      from: "/docs/article/1cqpe6f5id-chaos-enterprise-hub-experiments#azure",
-      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/",
-    },
-    {
-      from: "/docs/article/v64rj2maiz-harness-chaos-engineering-basics#probes",
-      to: "/docs/category/probes-1",
     },
 
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
