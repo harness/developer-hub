@@ -833,7 +833,6 @@ This release includes the following Harness module and component versions.
 - When a password was entered on the **Credentials** page for **SMTP Configuration**, an incorrect error displayed. (PL-32113)
 
   This issue has been fixed.
-- 
 - The template service APIs do not have trace filters. (PL-31829)
 
   Template service now includes an open telemetry trace filter and the responses have `X-Harness-Trace-ID` in the header.
